@@ -16,6 +16,8 @@ class Attachment extends AbstractController
 			throw $this->exception($this->notFound());
 		}
 
+		// dsfsdfsdf
+
 		if ($attachment->temp_hash)
 		{
 			$hash = $this->filter('hash', 'str');
