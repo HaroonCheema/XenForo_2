@@ -1,0 +1,12 @@
+{
+    "public/crud_record_all.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "3def260b7a542eff75b5e136d34fb109"
+    },
+    "public/crud_record_insert.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "e948f3ec9fccc5be054b3ab9279ca0cb"
+    }
+}

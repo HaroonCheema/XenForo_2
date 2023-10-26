@@ -1,0 +1,5 @@
+{
+    "require": {
+        "corbpie/bunny-cdn-api": "^1.5"
+    }
+}

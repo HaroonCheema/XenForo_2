@@ -1,0 +1,161 @@
+<xf:title>{{ phrase('CRUD') }}</xf:title>
+
+<xf:breadcrumb href="#">{{ phrase('CRUD') }}</xf:breadcrumb>
+
+<xf:pageaction>
+	<xf:button href="{{ link('crud/add') }}" icon="add"
+			   >{{ phrase('Add Record') }}</xf:button
+		>
+	<xf:csrf/>
+</xf:pageaction>
+
+<div class="block">
+	<div class="block-outer">
+		<xf:macro
+				  template="filter_macro"
+				  name="quick_filter"
+				  arg-key="crud"
+				  arg-class="block-outer-opposite"
+				  />
+	</div>
+	<div class="block-container">
+		<!-- filter macro -->
+
+		<xf:macro name="search_menu" arg-conditions="{$conditions}" />
+
+		<!-- filter macro -->
+		<div class="block-body">
+
+
+			<div>
+				
+				<xf:formrow rowtype="fullWidth noLabel mergePrev noTopPadding">
+					<xf:css src="fs_bunny_disp_video_thumb.less" />
+					
+					<div class="attachmentUploads is-active">
+					
+					<ul class="attachUploadList">
+						<li class="file">
+							<a class="file-preview" href="data/CrudTesting/video.mp4" target="_blank">
+								<video>
+									<source src="data/CrudTesting/video.mp4" />
+								</video>
+							</a>
+							<div class="file-content">
+								<div class="file-insert">
+									<a class="file-insertLink" data-action="full" data-type="video" role="button" tabindex="0">
+										{{ phrase('insert') }}
+									</a>
+								</div>
+								<a class="file-info"
+								   href="data/CrudTesting/video.mp4"
+								   target="_blank">
+									<span class="file-name">file name here</span>
+									<div class="file-meta">
+										2.6 MB
+									</div>
+								</a>
+							</div>
+						</li>
+					</ul>
+					</div>
+					
+					<span class="custom-file-upload">
+					<label for="bunny_video" class="button button--link"><i class="fa fa-upload" aria-hidden="true" style="padding-right: 8px;"></i>{{ phrase('fs_bunny_upload_video') }}</label>
+					<input type="file" id="bunny_video" name="bunny_video" onchange="uploadFile()" accept=".mp4, .avi, .mov" style="display: none;" />
+				</span>
+					
+				</xf:formrow>
+				
+				
+				
+			</div>
+			
+			
+			<!--       < Records >  -->
+
+			<xf:datalist data-xf-init="responsive-data-list">
+				<xf:if is="$data is not empty">
+					<!-- list macro -->
+
+					<xf:macro name="record_table_list" arg-data="{$data}" />
+
+					<!-- list macro -->
+					<xf:else />
+					<div class="blockMessage">
+						{{ phrase('no_items_have_been_created_yet') }}
+					</div>
+				</xf:if>
+			</xf:datalist>
+			<xf:pagenav
+						page="{$page}"
+						perpage="{$perPage}"
+						total="{$total}"
+						link="crud"
+						wrapperclass="block"
+						/>
+			<!--       </ Records > -->
+		</div>
+
+		<!-- <div class="block-footer">
+  <span class="block-footer-counter">footer</span>
+   </div> -->
+	</div>
+</div>
+
+<!-- All macros is here define in below -->
+
+<!-- Filter Bar Macro Start -->
+
+<xf:macro name="search_menu" arg-conditions="!">
+	<div class="block-filterBar">
+		<div class="filterBar">
+			<a
+			   class="filterBar-menuTrigger"
+			   data-xf-click="menu"
+			   role="button"
+			   tabindex="0"
+			   aria-expanded="false"
+			   aria-haspopup="true"
+			   >{{ phrase('filters') }}</a
+				>
+			<div
+				 class="menu menu--wide"
+				 data-menu="menu"
+				 aria-hidden="true"
+				 data-href="{{ link('crud/refine-search', null, $conditions)}}"
+				 data-load-target=".js-filterMenuBody"
+				 >
+				<div class="menu-content">
+					<h4 class="menu-header">{{ phrase('show_only:') }}</h4>
+					<div class="js-filterMenuBody">
+						<div class="menu-row">{{ phrase('loading...') }}</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</xf:macro>
+
+<!-- Filter Bar Macro End -->
+
+<!-- Record Table List Start -->
+
+<xf:macro name="record_table_list" arg-data="{$data}">
+	<xf:datarow rowtype="header">
+		<xf:cell> Name </xf:cell>
+		<xf:cell> Class </xf:cell>
+		<xf:cell> Roll No </xf:cell>
+		<xf:cell class="dataList-cell--min"> Action </xf:cell>
+	</xf:datarow>
+	<xf:foreach loop="{$data}" value="$val">
+		<xf:datarow>
+			<xf:cell href="{{ link('crud/edit', $val) }}"> {{$val.name}} </xf:cell>
+			<xf:cell> {{$val.class}} </xf:cell>
+			<xf:cell> {{$val.rollNo}} </xf:cell>
+			<xf:delete href="{{ link('crud/delete-record', $val) }}" overlay="true" />
+		</xf:datarow>
+	</xf:foreach>
+</xf:macro>
+
+<!-- Record Table List End -->
