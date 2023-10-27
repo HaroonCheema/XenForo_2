@@ -71,19 +71,13 @@ return array(
 	$__finalCompiled = '';
 		$__finalCompiled .= '
 				<div class="structItemContainer">
-					';
-	if ($__vars['forum']['Node']['parent_node_id'] != $__vars['xf']['options']['fs_web_ranking_parent_web_id']) {
-		$__finalCompiled .= '
-	' . $__templater->callMacro(null, ($__vars['templateOverrides']['quick_thread_macro'] ?: 'thread_list_macros::quick_thread'), $__templater->combineMacroArgumentAttributes($__vars['templateOverrides']['quick_thread_macro_args'], array(
-			'forum' => $__vars['forum'],
-			'page' => $__vars['page'],
-			'order' => $__vars['sortInfo']['order'],
-			'direction' => $__vars['sortInfo']['direction'],
-			'prefixes' => $__vars['quickThreadPrefixes'],
-		)), $__vars) . '
-';
-	}
-	$__finalCompiled .= '
+					' . $__templater->callMacro(null, ($__vars['templateOverrides']['quick_thread_macro'] ?: 'thread_list_macros::quick_thread'), $__templater->combineMacroArgumentAttributes($__vars['templateOverrides']['quick_thread_macro_args'], array(
+		'forum' => $__vars['forum'],
+		'page' => $__vars['page'],
+		'order' => $__vars['sortInfo']['order'],
+		'direction' => $__vars['sortInfo']['direction'],
+		'prefixes' => $__vars['quickThreadPrefixes'],
+	)), $__vars) . '
 
 					';
 	if (!$__templater->test($__vars['stickyThreads'], 'empty', array()) OR !$__templater->test($__vars['threads'], 'empty', array())) {
@@ -182,7 +176,7 @@ return array(
 		} else {
 			$__finalCompiled .= '
 								<div class="structItem js-emptyThreadList">
-									<div class="structItem-cell">' . (($__vars['forum']['Node']['parent_node_id'] == $__vars['xf']['options']['fs_web_ranking_parent_web_id']) ? 'There are no issue in this website.' : 'There are no threads in this forum.') . '</div>
+									<div class="structItem-cell">' . 'There are no threads in this forum.' . '</div>
 								</div>
 							';
 		}
@@ -377,17 +371,7 @@ return array(
 ';
 		} else {
 			$__compilerTemp1 .= '
-	';
-			if ($__vars['forum']['Node']['parent_node_id'] == $__vars['xf']['options']['fs_web_ranking_parent_web_id']) {
-				$__compilerTemp1 .= '
-	' . 'Create Issue' . '
-';
-			} else {
-				$__compilerTemp1 .= '
 	' . 'Post thread' . '
-';
-			}
-			$__compilerTemp1 .= '
 ';
 		}
 		$__templater->pageParams['pageAction'] = $__templater->preEscaped('
@@ -494,106 +478,94 @@ return array(
 ' . '
 <div class="block ' . $__templater->escape($__templater->renderExtension('thread_list_block_classes', $__vars, $__extensions)) . '" data-xf-init="' . ($__vars['canInlineMod'] ? 'inline-mod' : '') . '" data-type="thread" data-href="' . $__templater->func('link', array('inline-mod', ), true) . '">
 
-	';
-	if ($__vars['forum']['Node']['parent_node_id'] != $__vars['xf']['options']['fs_web_ranking_parent_web_id']) {
-		$__finalCompiled .= '
 	<div class="block-outer">';
-		$__compilerTemp2 = '';
-		$__compilerTemp3 = '';
-		$__compilerTemp3 .= '
+	$__compilerTemp2 = '';
+	$__compilerTemp3 = '';
+	$__compilerTemp3 .= '
 					';
-		if ($__vars['canInlineMod']) {
-			$__compilerTemp3 .= '
+	if ($__vars['canInlineMod']) {
+		$__compilerTemp3 .= '
 						' . $__templater->callMacro('inline_mod_macros', 'button', array(), $__vars) . '
 					';
-		}
-		$__compilerTemp3 .= '
+	}
+	$__compilerTemp3 .= '
 					';
-		if ($__vars['xf']['visitor']['user_id']) {
-			$__compilerTemp3 .= '
+	if ($__vars['xf']['visitor']['user_id']) {
+		$__compilerTemp3 .= '
 						' . $__templater->button('
 							' . 'Mark read' . '
 						', array(
-				'href' => $__templater->func('link', array('forums/mark-read', $__vars['forum'], array('date' => $__vars['xf']['time'], ), ), false),
-				'class' => 'button--link',
-				'overlay' => 'true',
-			), '', array(
-			)) . '
+			'href' => $__templater->func('link', array('forums/mark-read', $__vars['forum'], array('date' => $__vars['xf']['time'], ), ), false),
+			'class' => 'button--link',
+			'overlay' => 'true',
+		), '', array(
+		)) . '
 					';
-		}
+	}
+	$__compilerTemp3 .= '
+					';
+	if ($__templater->method($__vars['forum'], 'canWatch', array())) {
 		$__compilerTemp3 .= '
-					';
-		if ($__templater->method($__vars['forum'], 'canWatch', array())) {
-			$__compilerTemp3 .= '
 						';
-			$__compilerTemp4 = '';
-			if ($__vars['forum']['Watch'][$__vars['xf']['visitor']['user_id']]) {
-				$__compilerTemp4 .= 'Unwatch';
-			} else {
-				$__compilerTemp4 .= 'Watch';
-			}
-			$__compilerTemp3 .= $__templater->button('
+		$__compilerTemp4 = '';
+		if ($__vars['forum']['Watch'][$__vars['xf']['visitor']['user_id']]) {
+			$__compilerTemp4 .= 'Unwatch';
+		} else {
+			$__compilerTemp4 .= 'Watch';
+		}
+		$__compilerTemp3 .= $__templater->button('
 							' . $__compilerTemp4 . '
 						', array(
-				'href' => $__templater->func('link', array('forums/watch', $__vars['forum'], ), false),
-				'class' => 'button--link',
-				'data-xf-click' => 'switch-overlay',
-				'data-sk-watch' => 'Watch',
-				'data-sk-unwatch' => 'Unwatch',
-			), '', array(
-			)) . '
+			'href' => $__templater->func('link', array('forums/watch', $__vars['forum'], ), false),
+			'class' => 'button--link',
+			'data-xf-click' => 'switch-overlay',
+			'data-sk-watch' => 'Watch',
+			'data-sk-unwatch' => 'Unwatch',
+		), '', array(
+		)) . '
 					';
-		}
-		$__compilerTemp3 .= '
+	}
+	$__compilerTemp3 .= '
 				';
-		if (strlen(trim($__compilerTemp3)) > 0) {
-			$__compilerTemp2 .= '
+	if (strlen(trim($__compilerTemp3)) > 0) {
+		$__compilerTemp2 .= '
 
 ';
-			if ($__templater->func('in_array', array($__vars['forum']['node_id'], $__vars['xf']['options']['fs_forums'], ), false)) {
-				$__compilerTemp2 .= '
+		if ($__templater->func('in_array', array($__vars['forum']['node_id'], $__vars['xf']['options']['fs_forums'], ), false)) {
+			$__compilerTemp2 .= '
     <div class="blockMessage ' . $__templater->escape($__vars['xf']['options']['fs_color']) . ' ';
-				if ($__vars['xf']['options']['fs_show_icon'] == 1) {
-					$__compilerTemp2 .= 'blockMessage--iconic';
-				}
-				$__compilerTemp2 .= '">
+			if ($__vars['xf']['options']['fs_show_icon'] == 1) {
+				$__compilerTemp2 .= 'blockMessage--iconic';
+			}
+			$__compilerTemp2 .= '">
         ' . $__templater->filter($__vars['xf']['options']['fs_thread_rules'], array(array('raw', array()),), true) . '
     </div>
 ';
-			}
-			$__compilerTemp2 .= '
+		}
+		$__compilerTemp2 .= '
 			<div class="block-outer-opposite">
 				<div class="buttonGroup">
 				' . $__compilerTemp3 . '
 				</div>
 			</div>
 		';
-		}
-		$__finalCompiled .= trim('
+	}
+	$__finalCompiled .= trim('
 		' . $__templater->func('page_nav', array(array(
-			'page' => $__vars['page'],
-			'total' => $__vars['total'],
-			'link' => 'forums',
-			'data' => $__vars['forum'],
-			'params' => $__vars['filters'],
-			'wrapperclass' => 'block-outer-main',
-			'perPage' => $__vars['perPage'],
-		))) . '
+		'page' => $__vars['page'],
+		'total' => $__vars['total'],
+		'link' => 'forums',
+		'data' => $__vars['forum'],
+		'params' => $__vars['filters'],
+		'wrapperclass' => 'block-outer-main',
+		'perPage' => $__vars['perPage'],
+	))) . '
 		' . $__compilerTemp2 . '
 	') . '</div>
-';
-	}
-	$__finalCompiled .= '
 
 	<div class="block-container">
 
-		';
-	if ($__vars['forum']['Node']['parent_node_id'] != $__vars['xf']['options']['fs_web_ranking_parent_web_id']) {
-		$__finalCompiled .= '
-	' . $__templater->renderExtension('thread_list_header', $__vars, $__extensions) . '
-';
-	}
-	$__finalCompiled .= '
+		' . $__templater->renderExtension('thread_list_header', $__vars, $__extensions) . '
 
 		';
 	$__vars['qtPos'] = $__templater->preEscaped(((($__vars['sortInfo']['order'] == 'last_post_date') AND ($__vars['sortInfo']['direction'] == 'asc')) ? 'bottom' : 'top'));

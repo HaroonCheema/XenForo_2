@@ -281,30 +281,6 @@ return array(
 	$__compilerTemp2 = '';
 	$__compilerTemp2 .= '
 						';
-	if (($__vars['thread']['Forum']['Node']['parent_node_id'] == $__vars['xf']['options']['fs_web_ranking_parent_web_id']) AND $__vars['xf']['visitor']['is_admin']) {
-		$__compilerTemp2 .= '
-
-	<li class="wr_issue_status blockMessage ' . ($__vars['thread']['issue_status'] ? (($__vars['thread']['issue_status'] == 1) ? 'blockMessage--success' : 'blockMessage--error') : 'blockMessage--important') . '" style="margin-bottom:0px !important">
-		';
-		if ($__vars['thread']['issue_status'] == 1) {
-			$__compilerTemp2 .= '
-			<span>' . 'Issue Solved' . '</span>
-			';
-		} else if ($__vars['thread']['issue_status'] == 2) {
-			$__compilerTemp2 .= '
-			<span>' . 'Issue Unsolved' . '</span>
-			';
-		} else {
-			$__compilerTemp2 .= '
-			<span>' . 'Issue Pending' . '</span>
-		';
-		}
-		$__compilerTemp2 .= '
-	</li>
-';
-	}
-	$__compilerTemp2 .= '
-';
 	if (($__templater->func('property', array('reactionSummaryOnLists', ), false) == 'minor_opposite') AND $__vars['thread']['first_post_reactions']) {
 		$__compilerTemp2 .= '
 							<li>' . $__templater->func('reactions_summary', array($__vars['thread']['first_post_reactions'])) . '</li>

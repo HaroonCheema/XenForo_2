@@ -93,16 +93,6 @@ return function($__templater, $__selectedNav, array $__vars)
 
 	}
 
-	$__navTemp = [
-		'title' => \XF::phrase('nav.fsWebsiteRanking'),
-		'href' => $__templater->func('link', array('web-ranking', ), false),
-		'attributes' => [],
-	];
-	if ($__navTemp) {
-		$__tree['fsWebsiteRanking'] = $__navTemp;
-		$__flat['fsWebsiteRanking'] =& $__tree['fsWebsiteRanking'];
-	}
-
 	if ($__vars['xf']['homePageUrl']) {
 		$__navTemp = [
 		'title' => \XF::phrase('nav.home'),

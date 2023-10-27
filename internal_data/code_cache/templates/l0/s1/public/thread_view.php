@@ -699,61 +699,9 @@ return array(
 	)) . '
 
 ';
-	if (($__vars['forum']['Node']['parent_node_id'] == $__vars['xf']['options']['fs_web_ranking_parent_web_id']) AND $__vars['xf']['visitor']['is_admin']) {
-		$__finalCompiled .= '
-	<div class="blockMessage ' . ($__vars['thread']['issue_status'] ? (($__vars['thread']['issue_status'] == 1) ? 'blockMessage--success' : 'blockMessage--error') : 'blockMessage--important') . ' blockMessage--iconic">
-		';
-		if ($__vars['thread']['issue_status'] == 1) {
-			$__finalCompiled .= '
-		 	' . 'Issue Solved' . '
-		';
-		} else if ($__vars['thread']['issue_status'] == 2) {
-			$__finalCompiled .= '
-			' . 'Issue Unsolved' . '
-		';
-		} else {
-			$__finalCompiled .= '
-			' . 'Issue Pending' . '
-		';
-		}
-		$__finalCompiled .= '
-    </div>
-	';
-		$__vars['threadActionsHtml'] = $__templater->preEscaped('
-	<div class="block-outer-opposite">
-				<div class="buttonGroup">
-					
-							' . $__templater->button('
-								' . 'Solved' . '
-							', array(
-			'href' => $__templater->func('link', array('threads/solved', $__vars['thread'], ), false),
-			'class' => 'button--link ' . (($__vars['thread']['issue_status'] == 1) ? 'is-solved-btn' : ''),
-			'overlay' => 'true',
-		), '', array(
-		)) . '
-							' . $__templater->button('
-								' . 'Unsolved' . '
-							', array(
-			'href' => $__templater->func('link', array('threads/unsolved', $__vars['thread'], ), false),
-			'class' => 'button--link ' . (($__vars['thread']['issue_status'] == 2) ? 'is-unsolved-btn' : ''),
-			'overlay' => 'true',
-		), '', array(
-		)) . '
-			
-				</div>
-	</div>
-	');
-		$__finalCompiled .= '
-';
-	} else {
-		$__finalCompiled .= '
-	';
-		$__vars['threadActionsHtml'] = $__templater->preEscaped('
+	$__vars['threadActionsHtml'] = $__templater->preEscaped('
 	' . $__templater->renderExtension('thread_actions', $__vars, $__extensions) . '
 ');
-		$__finalCompiled .= '
-';
-	}
 	$__finalCompiled .= '
 
 ';
@@ -982,7 +930,6 @@ return array(
 					'lastKnownDate' => $__vars['thread']['last_post_date'],
 					'loadExtra' => $__vars['isSimpleDateDisplay'],
 					'showGuestControls' => (!$__vars['isPreRegReply']),
-					'submitText' => (($__vars['forum']['Node']['parent_node_id'] == $__vars['xf']['options']['fs_web_ranking_parent_web_id']) ? 'Issue Reply' : ''),
 					'previewUrl' => $__templater->func('link', array('threads/reply-preview', $__vars['thread'], ), false),
 				), $__vars) . '
 ';
@@ -1002,7 +949,6 @@ return array(
 				'lastKnownDate' => $__vars['thread']['last_post_date'],
 				'loadExtra' => $__vars['isSimpleDateDisplay'],
 				'showGuestControls' => (!$__vars['isPreRegReply']),
-				'submitText' => (($__vars['forum']['Node']['parent_node_id'] == $__vars['xf']['options']['fs_web_ranking_parent_web_id']) ? 'Issue Reply' : ''),
 				'previewUrl' => $__templater->func('link', array('threads/reply-preview', $__vars['thread'], ), false),
 			), $__vars) . '
 ';

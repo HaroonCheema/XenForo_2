@@ -14,7 +14,7 @@ return array(
 		'content' => $__vars['content'],
 		'user' => $__vars['content']['User'],
 		'messageHtml' => $__vars['messageHtml'],
-		'typePhraseHtml' => (($__vars['content']['Forum']['Node']['parent_node_id'] == $__vars['xf']['options']['fs_web_ranking_parent_web_id']) ? 'Website Issue' : 'Thread'),
+		'typePhraseHtml' => 'Thread',
 		'spamDetails' => $__vars['spamDetails'],
 		'unapprovedItem' => $__vars['unapprovedItem'],
 		'handler' => $__vars['handler'],

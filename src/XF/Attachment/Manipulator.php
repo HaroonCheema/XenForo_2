@@ -123,19 +123,11 @@ class Manipulator
 
 	public function deleteAttachment($id)
 	{
-
-		var_dump("deleteAttachment");
-
 		if (isset($this->existingAttachments[$id])) {
-
-			var_dump($this->existingAttachments[$id]);
-			exit;
 			$this->existingAttachments[$id]->delete();
 			unset($this->existingAttachments[$id]);
 			return true;
 		} else if (isset($this->newAttachments[$id])) {
-			var_dump($this->newAttachments[$id]);
-			exit;
 			$this->newAttachments[$id]->delete();
 			unset($this->newAttachments[$id]);
 			return true;

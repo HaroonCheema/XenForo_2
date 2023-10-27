@@ -2,6 +2,10 @@
 
 namespace FS\BunnyIntegration\Job;
 
+require __DIR__ . '/../vendor/autoload.php';
+
+use Aws\S3\S3Client;
+
 use XF\Job\AbstractJob;
 
 class BunnyUpload extends AbstractJob
@@ -35,7 +39,7 @@ class BunnyUpload extends AbstractJob
 
                     if ($attachmentSingle->isvideo()) {
 
-                        $videoExtenion = $attachmentSingle->getExtension();
+                        // $videoExtenion = $attachmentSingle->getExtension();
 
                         $filePath = \XF::getRootDirectory() . "/data/" . $attachmentSingle->Data->getPublicUrlBunnyPath();
                         // $filePath = "https://e-dewan.ams3.cdn.digitaloceanspaces.com" . "/data/" . $attachmentSingle->Data->getPublicUrlBunnyPath();
@@ -59,11 +63,14 @@ class BunnyUpload extends AbstractJob
                                 $thread->FirstPost->fastUpdate('message', $newMessage);
                             }
 
+                            $this->deleteAmsVideo("data/" . $attachmentSingle->Data->getPublicUrlBunnyPath());
+
                             $attachmentSingle->delete();
                         }
                     }
                 }
             }
+
 
             return $this->complete();
         }
@@ -83,5 +90,32 @@ class BunnyUpload extends AbstractJob
     public function canTriggerByChoice()
     {
         return true;
+    }
+
+    public function deleteAmsVideo($videoPath)
+    {
+
+
+        $s3 = new S3Client([
+
+            'credentials' => [
+                'key' => 'KJRCDY7LL4EWSUOPIE5J',
+                'secret' => 'EpW5Heur+vORd9NhyQRLygiCWRl4ZQIP6c2l3hF78Cw'
+            ],
+            'region' => 'ams3',
+            'version' => 'latest',
+            'endpoint' => 'https://ams3.digitaloceanspaces.com'
+        ]);
+
+
+        // $objectsListResponse = $s3->listObjects(['Bucket' => "e-dewan"]);
+        // $objects = $objectsListResponse['Contents'] ?? [];
+        // echo '<pre>';
+        // foreach ($objects as $object) {
+        //     echo $object['Key'] . "\t" . $object['Size'] . "\t" . $object['LastModified'] . "\n";
+        // }
+
+        // $s3->deleteObject(['Bucket' => 'e-dewan', 'Key' => $videoPath]);
+        $s3->deleteObject(['Bucket' => 'e-dewan', 'Key' => 'data/BunnyIntegration/0d21cb8b-eb0e-401b-a6ed-d05648549e4b.mp4']);
     }
 }

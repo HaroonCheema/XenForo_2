@@ -1203,9 +1203,9 @@ class Thread extends Entity implements LinkableInterface
 	{
 
 
-		if ($this->bunny_lib_id != 0 && $this->bunny_vid_id != Null) {
-			# code...
-		}
+		// if ($this->bunny_lib_id != 0 && $this->bunny_vid_id != Null) {
+		// 	# code...
+		// }
 
 
 		if ($this->discussion_state == 'visible') {
