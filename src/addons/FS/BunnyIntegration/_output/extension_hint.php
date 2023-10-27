@@ -7,6 +7,7 @@ namespace FS\BunnyIntegration\XF\Entity
 {
 	class XFCP_Attachment extends \XF\Entity\Attachment {}
 	class XFCP_AttachmentData extends \XF\Entity\AttachmentData {}
+	class XFCP_Thread extends \XF\Entity\Thread {}
 }
 
 namespace FS\BunnyIntegration\XF\Pub\Controller

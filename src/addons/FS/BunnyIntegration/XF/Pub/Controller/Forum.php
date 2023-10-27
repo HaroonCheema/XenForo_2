@@ -25,8 +25,8 @@ class Forum extends XFCP_Forum
 
         $jobID = $visitor->user_id . '_bunnyVideo_' . time();
 
-        $app->jobManager()->enqueueUnique($jobID, 'FS\BunnyIntegration:BunnyUpload', $jopParams, true);
-        $app->jobManager()->runUnique($jobID, 120);
+        $app->jobManager()->enqueueUnique($jobID, 'FS\BunnyIntegration:BunnyUpload', $jopParams, false);
+        // $app->jobManager()->runUnique($jobID, 120);
 
         return parent::finalizeThreadCreate($creator);
     }

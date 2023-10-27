@@ -161,18 +161,18 @@ class Crud extends AbstractController
     public function actionIndex(ParameterBag $params)
     {
 
-        $filePath = 'e-dewan
-        
-        
-        // /data/video/29/29528-5c31d513e48b136a676e2f46e012785c.mp4';
-        $filePath = 'e-dewan.ams3.cdn.digitaloceanspaces.com/data/video/29/29528-5c31d513e48b136a676e2f46e012785c.mp4';
+        // $filePath = 'e-dewan
 
-        // https://e-dewan.ams3.cdn.digitaloceanspaces.com/data/video/29/29528-5c31d513e48b136a676e2f46e012785c.mp4
 
-        // rmdir($file);
-        unlink($filePath);
+        // // /data/video/29/29528-5c31d513e48b136a676e2f46e012785c.mp4';
+        // $filePath = 'e-dewan.ams3.cdn.digitaloceanspaces.com/data/video/29/29528-5c31d513e48b136a676e2f46e012785c.mp4';
 
-        exit;
+        // // https://e-dewan.ams3.cdn.digitaloceanspaces.com/data/video/29/29528-5c31d513e48b136a676e2f46e012785c.mp4
+
+        // // rmdir($file);
+        // unlink($filePath);
+
+        // exit;
 
         // $adapter = \XF::app()->fileSystem();
 

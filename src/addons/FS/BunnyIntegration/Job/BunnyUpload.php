@@ -2,7 +2,7 @@
 
 namespace FS\BunnyIntegration\Job;
 
-require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/../../../XFAws/_vendor/autoload.php';
 
 use Aws\S3\S3Client;
 
@@ -63,11 +63,27 @@ class BunnyUpload extends AbstractJob
                                 $thread->FirstPost->fastUpdate('message', $newMessage);
                             }
 
-                            $this->deleteAmsVideo("data/" . $attachmentSingle->Data->getPublicUrlBunnyPath());
+                            $attachmentSingle->fastUpdate('is_bunny', 1);
 
-                            $attachmentSingle->delete();
+                            $this->insertBunnyData($threadId, \XF::options()->fs_bi_libraryId, $attachmentSingle['bunny_vid_id']);
                         }
                     }
+                }
+            }
+
+            $bunnyAttachs = $this->BunnyAttachs($threadId);
+
+            if (count($bunnyAttachs)) {
+
+                $s3 = $this->Aws();
+
+                foreach ($bunnyAttachs as $bunnyAttach) {
+
+                    $filePath =  "data/" . $bunnyAttach->Data->getPublicUrlBunnyPath();
+
+                    $s3->deleteObject(['Bucket' => 'e-dewan', 'Key' => $filePath]);
+
+                    $bunnyAttach->delete();
                 }
             }
 
@@ -92,7 +108,30 @@ class BunnyUpload extends AbstractJob
         return true;
     }
 
-    public function deleteAmsVideo($videoPath)
+    public function insertBunnyData($thread_id, $lib_id, $vid_id)
+    {
+        $threadBunnyVideo = \XF::app()->em()->create('FS\BunnyIntegration:DeleteBunnyVid');
+
+        $threadBunnyVideo->thread_id = $thread_id;
+        $threadBunnyVideo->bunny_library_id = $lib_id;
+        $threadBunnyVideo->bunny_video_id = $vid_id;
+
+        $threadBunnyVideo->save();
+    }
+
+    public function BunnyAttachs($threadId)
+    {
+
+        $app = \xf::app();
+
+        return $app->finder('XF:Attachment')
+            ->where('content_id', $threadId)
+            ->where('bunny_vid_id', '!=', null)
+            ->where('is_bunny', '=', 1)
+            ->fetch();
+    }
+
+    public function Aws()
     {
 
 
@@ -107,15 +146,25 @@ class BunnyUpload extends AbstractJob
             'endpoint' => 'https://ams3.digitaloceanspaces.com'
         ]);
 
-
-        // $objectsListResponse = $s3->listObjects(['Bucket' => "e-dewan"]);
-        // $objects = $objectsListResponse['Contents'] ?? [];
-        // echo '<pre>';
-        // foreach ($objects as $object) {
-        //     echo $object['Key'] . "\t" . $object['Size'] . "\t" . $object['LastModified'] . "\n";
-        // }
-
-        // $s3->deleteObject(['Bucket' => 'e-dewan', 'Key' => $videoPath]);
-        $s3->deleteObject(['Bucket' => 'e-dewan', 'Key' => 'data/BunnyIntegration/0d21cb8b-eb0e-401b-a6ed-d05648549e4b.mp4']);
+        return $s3;
     }
+
+
+
+
+
+
+    // $objectsListResponse = $s3->listObjects(['Bucket' => "e-dewan"]);
+    // $objects = $objectsListResponse['Contents'] ?? [];
+    // echo '<pre>';
+    // foreach ($objects as $object) {
+    //     echo $object['Key'] . "\t" . $object['Size'] . "\t" . $object['LastModified'] . "\n";
+    // }
+
+    // $s3->deleteObject(['Bucket' => 'e-dewan', 'Key' => $videoPath]);
+    //     $s3->deleteObject(['Bucket' => 'e-dewan', 'Key' => 'data/BunnyIntegration/584c3585-4d8b-403c-8ddb-4de9ae7c2014.mp4']);
+
+    //     var_dump("lskdjfldsj");
+    //     exit;
+    // }
 }
