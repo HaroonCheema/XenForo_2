@@ -26,6 +26,7 @@ You may set a user into \'discouraged\' mode by editing their user profile, or d
   'option_group_description.fsEscrow' => '[FS] Escrow',
   'option_group_description.fs_MediaTagSetting' => '',
   'option_group_description.fs_bunny_integration' => 'bunny.net Api Integration',
+  'option_group_description.fs_hide_usernames' => '',
   'option_group_description.fs_post_schdueling' => '',
   'option_group_description.fs_question_answers' => '',
   'option_group_description.fs_thread_rules' => '',

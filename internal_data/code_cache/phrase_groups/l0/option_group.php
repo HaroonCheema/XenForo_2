@@ -24,6 +24,7 @@ return array (
   'option_group.fsEscrow' => '[FS] Escrow',
   'option_group.fs_MediaTagSetting' => '[FS] Media-Tag-Setting',
   'option_group.fs_bunny_integration' => '[FS] Bunny-Integration',
+  'option_group.fs_hide_usernames' => '[FS] Hide Usernames',
   'option_group.fs_post_schdueling' => '[FS] Post schedule',
   'option_group.fs_question_answers' => '[FS] Question-Answers',
   'option_group.fs_thread_rules' => '[FS] Threads Rules',

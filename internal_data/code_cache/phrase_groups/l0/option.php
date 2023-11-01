@@ -198,6 +198,7 @@ return array (
   'option.fs_scheduled_ban_user_timezone' => 'Timezones',
   'option.fs_show_icon' => 'Show Icon',
   'option.fs_thread_rules' => 'Thread Rules',
+  'option.fs_unhide_user_ids' => 'User ids',
   'option.fs_web_ranking_parent_web_id' => 'Parent Website Id',
   'option.fs_wr_numOfSites' => 'Number of sites',
   'option.geoLocationUrl' => 'Location information URL',

@@ -14,6 +14,7 @@ return array (
   'permission_interface.fs_attachment' => '[FS] Like See Attachment',
   'permission_interface.fs_auction_permissions' => 'FS Auction Plugin Permissions',
   'permission_interface.fs_bunny_integration' => '[FS] Bunny Integration',
+  'permission_interface.fs_hide_usernames' => '[FS] Hide Usernames',
   'permission_interface.fs_thread_replies_abrove' => 'Thread Post Approve',
   'permission_interface.fs_threadsaleitem' => '[FS] ThreadSaleItem',
   'permission_interface.fs_website_ranking' => '[FS] Website Ranking',

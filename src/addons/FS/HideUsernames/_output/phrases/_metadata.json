@@ -1,0 +1,44 @@
+{
+    "cron_entry.fsHideUsernames.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d3b485366d006d6af74909e44476be8a"
+    },
+    "option.fs_unhide_user_ids.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "fc6a7af2d092ceceb33fdf58805ebce3"
+    },
+    "option_explain.fs_unhide_user_ids.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "05a57af2168e82bae388ab775af86abd"
+    },
+    "option_group.fs_hide_usernames.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d3b485366d006d6af74909e44476be8a"
+    },
+    "option_group_description.fs_hide_usernames.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "permission.fs_user_names_hide.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "80e6d3d1ab7f4c4bd5feea52e8a1ed82"
+    },
+    "permission_interface.fs_hide_usernames.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d3b485366d006d6af74909e44476be8a"
+    }
+}

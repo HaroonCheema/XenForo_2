@@ -244,6 +244,8 @@ This option requires that the specified account is a catch-all account or suppor
   'option_explain.fs_scheduled_ban_user_timezone' => 'According to this Time Zone User will be banned.',
   'option_explain.fs_show_icon' => '',
   'option_explain.fs_thread_rules' => '',
+  'option_explain.fs_unhide_user_ids' => 'List the user ids that are allowed to be display username to all. Use , (comma) between ids.
+Example: 1,2,3,4,..',
   'option_explain.fs_web_ranking_parent_web_id' => '',
   'option_explain.fs_wr_numOfSites' => 'How many Websites will be display in stats list (sits percentage)',
   'option_explain.geoLocationUrl' => 'The URL specified here will be used to give information (such as a map) about a physical location. The URL must include a <strong>{location}</strong> token.',
