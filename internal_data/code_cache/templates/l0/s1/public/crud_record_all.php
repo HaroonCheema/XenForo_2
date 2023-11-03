@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 3def260b7a542eff75b5e136d34fb109
+// FROM HASH: 34e98d87a13bb0f4c129149fea857ad7
 return array(
 'macros' => array('search_menu' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -137,56 +137,6 @@ return array(
 
 		<!-- filter macro -->
 		<div class="block-body">
-
-
-			<div>
-				
-				';
-	$__templater->includeCss('fs_bunny_disp_video_thumb.less');
-	$__finalCompiled .= $__templater->formRow('
-					' . '' . '
-					
-					<div class="attachmentUploads is-active">
-					
-					<ul class="attachUploadList">
-						<li class="file">
-							<a class="file-preview" href="data/CrudTesting/video.mp4" target="_blank">
-								<video>
-									<source src="data/CrudTesting/video.mp4" />
-								</video>
-							</a>
-							<div class="file-content">
-								<div class="file-insert">
-									<a class="file-insertLink" data-action="full" data-type="video" role="button" tabindex="0">
-										' . 'Insert' . '
-									</a>
-								</div>
-								<a class="file-info"
-								   href="data/CrudTesting/video.mp4"
-								   target="_blank">
-									<span class="file-name">file name here</span>
-									<div class="file-meta">
-										2.6 MB
-									</div>
-								</a>
-							</div>
-						</li>
-					</ul>
-					</div>
-					
-					<span class="custom-file-upload">
-					<label for="bunny_video" class="button button--link"><i class="fa fa-upload" aria-hidden="true" style="padding-right: 8px;"></i>' . 'Upload Video' . '</label>
-					<input type="file" id="bunny_video" name="bunny_video" onchange="uploadFile()" accept=".mp4, .avi, .mov" style="display: none;" />
-				</span>
-					
-				', array(
-		'rowtype' => 'fullWidth noLabel mergePrev noTopPadding',
-	)) . '
-				
-				
-				
-			</div>
-			
 			
 			<!--       < Records >  -->
 

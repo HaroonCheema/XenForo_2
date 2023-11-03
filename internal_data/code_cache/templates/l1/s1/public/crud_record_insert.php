@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: e948f3ec9fccc5be054b3ab9279ca0cb
+// FROM HASH: 21e3ef205f1be3c2fcc28233c6cfc512
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -22,29 +22,9 @@ return array(
 ');
 	$__finalCompiled .= '
 
-';
-	$__templater->includeJs(array(
-		'src' => 'Crud/Upload.js',
-	));
-	$__templater->includeCss('fs_bunny_loader_style.less');
-	$__finalCompiled .= $__templater->form('
+' . $__templater->form('
 	<div class="block-container">
 		<div class="block-body">
-
-			' . '' . '
-			' . '' . '
-
-			<span class="custom-file-upload">
-				<label for="bunny_video" class="button button--link"><i class="fa fa-upload" aria-hidden="true" style="padding-right: 8px;"></i>' . 'Upload Video' . '</label>
-				<input type="file" id="bunny_video" name="bunny_video" onchange="uploadFile()" accept=".mp4, .avi, .mov" style="display: none;" multiple/>
-			</span>
-
-			' . $__templater->formHiddenVal('bunnyVidId', '', array(
-	)) . '
-
-			<div id="overlay">
-				<div class="loader" id="loader"></div>
-			</div>
 			' . $__templater->formTextBoxRow(array(
 		'name' => 'name',
 		'value' => $__vars['crud']['name'],
