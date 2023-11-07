@@ -20,7 +20,7 @@ class HideUserNames extends \XF\Service\AbstractService
         }
     }
 
-    protected function replaceUserNames($message)
+    public function replaceUserNames($message)
     {
         $pattern = '/\[USER=(\d+)\]@([^[]+)\[\/USER\]/';
 
