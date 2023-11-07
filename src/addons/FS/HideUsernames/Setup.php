@@ -18,12 +18,6 @@ class Setup extends AbstractSetup
 		$this->alterTable('xf_user', function (\XF\Db\Schema\Alter $table) {
 			$table->addColumn('random_name', 'mediumtext')->nullable()->setDefault(null);
 		});
-
-		$app = \xf::app();
-
-		$service = $app->service('FS\HideUsernames:HideUserNames');
-
-		$service->genrateRandomNames();
 	}
 
 	public function uninstallStep1()
@@ -31,5 +25,17 @@ class Setup extends AbstractSetup
 		$this->schemaManager()->alterTable('xf_user', function (\XF\Db\Schema\Alter $table) {
 			$table->dropColumns(['random_name']);
 		});
+	}
+
+	public function postInstall(array &$stateChanges)
+	{
+
+
+		$app = \XF::app();
+
+		$jobID = "random_usernames";
+
+		$app->jobManager()->enqueueUnique($jobID, 'FS\HideUsernames:RandomUsername', [], false);
+		// $app->jobManager()->runUnique($jobID, 120);
 	}
 }

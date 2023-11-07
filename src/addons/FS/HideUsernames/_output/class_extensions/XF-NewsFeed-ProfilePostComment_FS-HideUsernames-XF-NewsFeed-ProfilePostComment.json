@@ -1,0 +1,6 @@
+{
+    "from_class": "XF\\NewsFeed\\ProfilePostComment",
+    "to_class": "FS\\HideUsernames\\XF\\NewsFeed\\ProfilePostComment",
+    "execute_order": 10,
+    "active": true
+}

@@ -13,6 +13,8 @@ class User extends XFCP_User
         $user_id = $this->user_id_;
         $randomName = $this->random_name_;
 
+            // return $username;
+
         $visitor = \XF::visitor();
 
         if (!$visitor->user_id) {
