@@ -1,6 +1,0 @@
-{
-    "from_class": "XF\\NewsFeed\\Post",
-    "to_class": "FS\\HideUsernames\\XF\\NewsFeed\\Post",
-    "execute_order": 10,
-    "active": true
-}

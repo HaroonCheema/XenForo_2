@@ -15,8 +15,9 @@ class Member extends XFCP_Member
             $userFinder = $this->finder('XF:User');
 
             $conditions = [
-                ['username', 'like', $userFinder->escapeLike($q, '?%')],
                 ['random_name', 'like', $userFinder->escapeLike($q, '?%')],
+                ['username', 'like', $userFinder->escapeLike($q, '?%')],
+              
             ];
 
             $users = $userFinder

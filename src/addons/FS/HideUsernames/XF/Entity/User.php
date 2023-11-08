@@ -7,37 +7,79 @@ use XF\Mvc\Entity\Structure;
 class User extends XFCP_User
 {
 
-    public function getUsername()
-    {
-        $username = $this->username_;
+    
+    
+    public function allowRandomUsername(){
+        
         $user_id = $this->user_id_;
-        $randomName = $this->random_name_;
-
-            // return $username;
-
+        
         $visitor = \XF::visitor();
 
         if (!$visitor->user_id) {
-            return $randomName;
+            
+            return true;
         }
-
-        if ($visitor->user_id == $user_id) {
-            return $username;
+        
+         if ($visitor->user_id == $user_id) {
+            return false;
         }
-
+        
         if (!\xf::visitor()->hasPermission('fs_user_names', 'hide')) {
-            return $username;
+            return false;
         }
-
+        
         $options = $this->app()->options();
 
         $userIds = explode(",", $options->fs_unhide_user_ids);
 
         if (in_array($visitor->user_id, $userIds)) {
-            return $username;
+            return false;
         }
 
-        return $randomName;
+        return true;
+        
+    }
+    public function getUsername()
+    {
+        
+        $result=$this->allowRandomUsername();
+        
+        if($result){
+            
+            return  $this->random_name_;
+        }
+        
+       return  $this->username_;
+        
+        
+//        $username = $this->username_;
+//        $user_id = $this->user_id_;
+//        $randomName = $this->random_name_;
+//
+//
+//        $visitor = \XF::visitor();
+//
+//        if (!$visitor->user_id) {
+//            return $randomName;
+//        }
+//
+//        if ($visitor->user_id == $user_id) {
+//            return $username;
+//        }
+//
+//        if (!\xf::visitor()->hasPermission('fs_user_names', 'hide')) {
+//            return $username;
+//        }
+//
+//        $options = $this->app()->options();
+//
+//        $userIds = explode(",", $options->fs_unhide_user_ids);
+//
+//        if (in_array($visitor->user_id, $userIds)) {
+//            return $username;
+//        }
+//
+//        return $randomName;
     }
 
     public static function getStructure(Structure $structure)

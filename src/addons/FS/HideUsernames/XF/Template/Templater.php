@@ -8,15 +8,7 @@ class Templater extends XFCP_Templater
 {
 
 
-	/**
-	 * @param $templater
-	 * @param $escape
-	 * @param Entity|\XF\Entity\ReactionTrait $content
-	 * @param $link
-	 * @param array $linkParams
-	 *
-	 * @return string
-	 */
+	
 	public function fnReactions($templater, &$escape, $content, $link, array $linkParams = [])
 	{
 		if (!($content instanceof Entity)) {
