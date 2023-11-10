@@ -5,7 +5,7 @@ return array(
 {
 	$__finalCompiled = '';
 	$__finalCompiled .= '<div class="contentRow-title">
-	' . '' . $__templater->func('username_link', array($__vars['user'], false, array('defaultname' => $__vars['newsFeed']['username'], ), ), true) . ' posted the thread ' . ((((('<a href="' . $__templater->func('link', array('threads', $__vars['content'], ), true)) . '">') . $__templater->func('prefix', array('thread', $__vars['content'], ), true)) . $__templater->escape($__vars['content']['title'])) . '</a>') . ' in ' . (((('<a href="' . $__templater->func('link', array('forums', $__vars['content']['Forum'], ), true)) . '">') . $__templater->escape($__vars['content']['Forum']['title'])) . '</a>') . '.' . '
+	' . '' . $__templater->func('username_link', array($__vars['user'], false, array('defaultname' => $__vars['newsFeed']['username'], ), ), true) . ' posted the thread ' . ((((('<a href="' . $__templater->func('link', array('threads', $__vars['content'], ), true)) . '">') . $__templater->func('prefix', array('thread', $__vars['content'], ), true)) . $__templater->filter($__vars['content']['title'], array(array('replace_visitor_name', array()),), true)) . '</a>') . ' in ' . (((('<a href="' . $__templater->func('link', array('forums', $__vars['content']['Forum'], ), true)) . '">') . $__templater->escape($__vars['content']['Forum']['title'])) . '</a>') . '.' . '
 </div>
 
 <div class="contentRow-snippet">' . $__templater->func('snippet', array($__vars['content']['FirstPost']['message'], $__vars['xf']['options']['newsFeedMessageSnippetLength'], array('stripQuote' => true, ), ), true) . '</div>

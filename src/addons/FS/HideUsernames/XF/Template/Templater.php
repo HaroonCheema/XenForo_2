@@ -6,11 +6,20 @@ use XF\Mvc\Entity\Entity;
 
 class Templater extends XFCP_Templater
 {
-
-
-	
 	public function fnReactions($templater, &$escape, $content, $link, array $linkParams = [])
 	{
+
+		$options = \XF::app()->options();
+		if (trim($options->fs_unhide_user_ids)) {
+			$visitor = \XF::visitor();
+
+			$userIds = explode(",", $options->fs_unhide_user_ids);
+
+			if (in_array($visitor->user_id, $userIds) or $visitor->is_admin or $visitor->is_moderator) {
+				return parent::fnReactions($templater, $escape, $content, $link,  $linkParams = []);
+			}
+		}
+
 		if (!($content instanceof Entity)) {
 			trigger_error("Content for reactions is not an entity", E_USER_WARNING);
 			return '';

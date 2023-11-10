@@ -37,6 +37,7 @@ return array (
   'option_group.messageOptions' => 'Messages',
   'option_group.newsfeed' => 'News feed',
   'option_group.nodeList' => 'Node & forum list',
+  'option_group.ozzmodz_dvn' => '[OzzModz] Display Visitor Name',
   'option_group.performance' => 'System and performance',
   'option_group.postCounter' => '[FS] Post Counter',
   'option_group.pwa' => 'PWA options',

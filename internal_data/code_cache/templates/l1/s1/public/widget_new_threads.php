@@ -90,7 +90,7 @@ return array(
 						data-xf-init="lightbox">
 
 						<h4 class="block-header">
-							<a href="' . $__templater->func('link', array('threads', $__vars['thread'], ), true) . '">' . $__templater->escape($__vars['thread']['title']) . '</a>
+							<a href="' . $__templater->func('link', array('threads', $__vars['thread'], ), true) . '">' . $__templater->filter($__vars['thread']['title'], array(array('replace_visitor_name', array()),), true) . '</a>
 						</h4>
 						<div class="block-body">
 							<div class="message message--post">

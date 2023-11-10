@@ -70,7 +70,7 @@ return array(
 									';
 		}
 		$__finalCompiled .= '
-									<a href="' . $__templater->func('link', array('threads' . (($__templater->method($__vars['thread'], 'isUnread', array()) AND (!$__vars['forceRead'])) ? '/unread' : ''), $__vars['thread'], ), true) . '">' . $__templater->escape($__vars['thread']['title']) . '</a>
+									<a href="' . $__templater->func('link', array('threads' . (($__templater->method($__vars['thread'], 'isUnread', array()) AND (!$__vars['forceRead'])) ? '/unread' : ''), $__vars['thread'], ), true) . '">' . $__templater->filter($__vars['thread']['title'], array(array('replace_visitor_name', array()),), true) . '</a>
 								</h2>
 							';
 	}
@@ -522,7 +522,7 @@ return array(
 						';
 	}
 	$__finalCompiled .= '
-						<a href="' . $__templater->escape($__vars['linkUnread']) . '">' . $__templater->escape($__vars['thread']['title']) . '</a>
+						<a href="' . $__templater->escape($__vars['linkUnread']) . '">' . $__templater->filter($__vars['thread']['title'], array(array('replace_visitor_name', array()),), true) . '</a>
 					</h2>
 				</div>
 				<div class="articlePreview-content">

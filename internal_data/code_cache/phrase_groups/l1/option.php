@@ -255,6 +255,7 @@ return array (
   'option.oEmbedLogLength' => 'oEmbed media log length',
   'option.oEmbedRequestReferrer' => 'Log oEmbed request referrers for x days:',
   'option.onlineStatusTimeout' => 'Online status timeout',
+  'option.ozzmodz_dvn_token' => 'Token for replacement',
   'option.pinterestShare' => 'Enable Pinterest share button',
   'option.pollMaximumResponses' => 'Maximum number of poll choices',
   'option.preRegAction' => 'Writing before registering setup',

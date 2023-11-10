@@ -273,7 +273,7 @@ return array(
 				';
 	}
 	$__finalCompiled .= '
-				<a href="' . $__templater->func('link', array('threads' . (($__templater->method($__vars['thread'], 'isUnread', array()) AND (!$__vars['forceRead'])) ? '/unread' : ''), $__vars['thread'], ), true) . '" class="" data-tp-primary="on" data-xf-init="' . ($__vars['canPreview'] ? 'preview-tooltip' : '') . '" data-preview-url="' . ($__vars['canPreview'] ? $__templater->func('link', array('threads/preview', $__vars['thread'], ), true) : '') . '">' . $__templater->escape($__vars['thread']['title']) . '</a>
+				<a href="' . $__templater->func('link', array('threads' . (($__templater->method($__vars['thread'], 'isUnread', array()) AND (!$__vars['forceRead'])) ? '/unread' : ''), $__vars['thread'], ), true) . '" class="" data-tp-primary="on" data-xf-init="' . ($__vars['canPreview'] ? 'preview-tooltip' : '') . '" data-preview-url="' . ($__vars['canPreview'] ? $__templater->func('link', array('threads/preview', $__vars['thread'], ), true) : '') . '">' . $__templater->filter($__vars['thread']['title'], array(array('replace_visitor_name', array()),), true) . '</a>
 			</div>
 
 			<div class="structItem-minor">
@@ -540,18 +540,29 @@ return array(
 			';
 	if ($__templater->method($__vars['thread'], 'isUnread', array())) {
 		$__finalCompiled .= '
-				<a href="' . $__templater->func('link', array('threads/unread', $__vars['thread'], ), true) . '">' . $__templater->func('prefix', array('thread', $__vars['thread'], ), true) . $__templater->escape($__vars['thread']['title']) . '</a>
+				<a href="' . $__templater->func('link', array('threads/unread', $__vars['thread'], ), true) . '">' . $__templater->func('prefix', array('thread', $__vars['thread'], ), true) . $__templater->filter($__vars['thread']['title'], array(array('replace_visitor_name', array()),), true) . '</a>
 			';
 	} else {
 		$__finalCompiled .= '
-				<a href="' . $__templater->func('link', array('threads/post', $__vars['thread'], array('post_id' => $__vars['thread']['last_post_id'], ), ), true) . '">' . $__templater->func('prefix', array('thread', $__vars['thread'], ), true) . $__templater->escape($__vars['thread']['title']) . '</a>
+				<a href="' . $__templater->func('link', array('threads/post', $__vars['thread'], array('post_id' => $__vars['thread']['last_post_id'], ), ), true) . '">' . $__templater->func('prefix', array('thread', $__vars['thread'], ), true) . $__templater->filter($__vars['thread']['title'], array(array('replace_visitor_name', array()),), true) . '</a>
 			';
 	}
 	$__finalCompiled .= '
 
 			<div class="contentRow-minor contentRow-minor--hideLinks">
 				<ul class="listInline listInline--bullet">
-					<li>' . 'Latest: ' . $__templater->escape($__vars['thread']['last_post_cache']['username']) . '' . '</li>
+					';
+	if ($__templater->method($__vars['xf']['visitor'], 'hasPermission', array('fs_user_names', 'hide', ))) {
+		$__finalCompiled .= '
+
+	<li>' . 'Latest: ' . $__templater->escape($__vars['thread']['User']['username']) . '' . '</li>
+';
+	} else {
+		$__finalCompiled .= '
+	<li>' . 'Latest: ' . $__templater->escape($__vars['thread']['last_post_cache']['username']) . '' . '</li>
+';
+	}
+	$__finalCompiled .= '
 					<li>' . $__templater->func('date_dynamic', array($__vars['thread']['last_post_date'], array(
 	))) . '</li>
 				</ul>
@@ -580,7 +591,7 @@ return array(
 	))) . '
 		</div>
 		<div class="contentRow-main contentRow-main--close">
-			<a href="' . $__templater->func('link', array('threads', $__vars['thread'], ), true) . '">' . $__templater->func('prefix', array('thread', $__vars['thread'], ), true) . $__templater->escape($__vars['thread']['title']) . '</a>
+			<a href="' . $__templater->func('link', array('threads', $__vars['thread'], ), true) . '">' . $__templater->func('prefix', array('thread', $__vars['thread'], ), true) . $__templater->filter($__vars['thread']['title'], array(array('replace_visitor_name', array()),), true) . '</a>
 
 			<div class="contentRow-minor contentRow-minor--hideLinks">
 				<ul class="listInline listInline--bullet">

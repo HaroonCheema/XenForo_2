@@ -119,6 +119,7 @@ return array (
   'permission.fs_auction_permissions_add' => 'Add auction listing',
   'permission.fs_bunny_allow' => 'Can Upload Video',
   'permission.fs_threadsaleitem_fs_saleitem' => 'Allow to enable Sale Item?',
+  'permission.fs_user_names_can_see_usernames' => 'Can see Usernames',
   'permission.fs_user_names_hide' => 'Hide Usernames',
   'permission.fs_website_ranking_check' => 'Check Website',
   'permission.fs_website_ranking_perm_check' => 'Check Website Ranking',

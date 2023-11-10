@@ -16,7 +16,7 @@ return array(
 				$__finalCompiled .= '
 		';
 				$__vars['header'] = $__templater->preEscaped('
-			<a href="' . $__templater->func('link', array('canonical:threads', $__vars['thread'], ), true) . '">' . $__templater->escape($__vars['thread']['title']) . '</a>
+			<a href="' . $__templater->func('link', array('canonical:threads', $__vars['thread'], ), true) . '">' . $__templater->filter($__vars['thread']['title'], array(array('replace_visitor_name', array()),), true) . '</a>
 		');
 				$__finalCompiled .= '
 		';

@@ -6,6 +6,7 @@
 Example: 1,2,3,4,..]]></phrase>
   <phrase title="option_group.fs_hide_usernames" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Hide Usernames]]></phrase>
   <phrase title="option_group_description.fs_hide_usernames" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="permission.fs_user_names_can_see_usernames" version_id="1040000" version_string="1.4.0 Alpha"><![CDATA[Can see Usernames]]></phrase>
   <phrase title="permission.fs_user_names_hide" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Hide Usernames]]></phrase>
   <phrase title="permission_interface.fs_hide_usernames" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Hide Usernames]]></phrase>
 </phrases>

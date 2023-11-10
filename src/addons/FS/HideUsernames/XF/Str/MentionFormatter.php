@@ -4,11 +4,8 @@ namespace FS\HideUsernames\XF\Str;
 
 class MentionFormatter extends XFCP_MentionFormatter
 {
-
     protected function getMentionMatchUsers(array $matches)
     {
-        
-        
         $db = \XF::db();
         $matchKeys = array_keys($matches);
         $whereParts = [];

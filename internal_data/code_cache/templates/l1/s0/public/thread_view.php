@@ -564,11 +564,11 @@ return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
 	$__finalCompiled = '';
-	$__templater->pageParams['pageTitle'] = $__templater->preEscaped($__templater->func('prefix', array('thread', $__vars['thread'], 'escaped', ), true) . $__templater->escape($__vars['thread']['title']));
+	$__templater->pageParams['pageTitle'] = $__templater->preEscaped($__templater->func('prefix', array('thread', $__vars['thread'], 'escaped', ), true) . $__templater->filter($__vars['thread']['title'], array(array('replace_visitor_name', array()),), true));
 	$__templater->pageParams['pageNumber'] = $__vars['page'];
 	$__finalCompiled .= '
 ';
-	$__templater->pageParams['pageH1'] = $__templater->preEscaped($__templater->func('prefix', array('thread', $__vars['thread'], ), true) . $__templater->escape($__vars['thread']['title']));
+	$__templater->pageParams['pageH1'] = $__templater->preEscaped($__templater->func('prefix', array('thread', $__vars['thread'], ), true) . $__templater->filter($__vars['thread']['title'], array(array('replace_visitor_name', array()),), true));
 	$__finalCompiled .= '
 
 ';

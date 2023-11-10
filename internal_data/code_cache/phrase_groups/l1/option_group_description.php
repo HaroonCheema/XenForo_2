@@ -41,6 +41,7 @@ You may set a user into \'discouraged\' mode by editing their user profile, or d
 <br />
 It is possible to filter the news feed down to just users you follow, or a single user.',
   'option_group_description.nodeList' => 'The node and forum list is the primary navigational structure for XenForo\'s forums and pages.',
+  'option_group_description.ozzmodz_dvn' => '',
   'option_group_description.performance' => 'Options here allow you to turn off or tweak systems in order to fine-tune the performance of your site.',
   'option_group_description.postCounter' => 'For Display limited Forums.',
   'option_group_description.pwa' => 'This group controls the options that will be shown on the PWA setup helper.',
