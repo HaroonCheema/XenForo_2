@@ -1,0 +1,14 @@
+{
+    "option.fs_thumbnail_applicable_forums.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "167847f7264c7306d4d8e1f81e91ff87"
+    },
+    "option_explain.fs_thumbnail_applicable_forums.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "1a0d27468400ced3240433585bb80622"
+    }
+}

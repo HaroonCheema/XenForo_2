@@ -76,13 +76,11 @@ return array(
 	$__compilerTemp4 = $__templater->method($__vars['nodeTree'], 'getFlattened', array(0, ));
 	if ($__templater->isTraversable($__compilerTemp4)) {
 		foreach ($__compilerTemp4 AS $__vars['treeEntry']) {
-			if (($__vars['treeEntry']['record']['node_id'] != $__vars['xf']['options']['fs_questionAnswerForum']) AND ($__vars['treeEntry']['record']['parent_node_id'] != $__vars['xf']['options']['fs_questionAnswerForum'])) {
-				$__compilerTemp3[] = array(
-					'value' => $__vars['treeEntry']['record']['node_id'],
-					'label' => $__templater->filter($__templater->func('repeat', array('&nbsp;&nbsp;', $__vars['treeEntry']['depth'], ), false), array(array('raw', array()),), true) . ' ' . $__templater->escape($__vars['treeEntry']['record']['title']),
-					'_type' => 'option',
-				);
-			}
+			$__compilerTemp3[] = array(
+				'value' => $__vars['treeEntry']['record']['node_id'],
+				'label' => $__templater->filter($__templater->func('repeat', array('&nbsp;&nbsp;', $__vars['treeEntry']['depth'], ), false), array(array('raw', array()),), true) . ' ' . $__templater->escape($__vars['treeEntry']['record']['title']),
+				'_type' => 'option',
+			);
 		}
 	}
 	$__finalCompiled .= $__templater->formRow('

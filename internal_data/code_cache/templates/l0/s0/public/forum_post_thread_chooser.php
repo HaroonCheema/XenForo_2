@@ -15,19 +15,13 @@ return array(
 	if ($__templater->isTraversable($__vars['children'])) {
 		foreach ($__vars['children'] AS $__vars['id'] => $__vars['child']) {
 			$__finalCompiled .= '
-		';
-			if ($__vars['child']['id'] != $__vars['xf']['options']['fs_questionAnswerForum']) {
-				$__finalCompiled .= '
-' . $__templater->callMacro(null, 'node_list_entry', array(
-					'node' => $__vars['child']['record'],
-					'extras' => $__vars['extras'][$__vars['id']],
-					'children' => $__vars['child']['children'],
-					'childExtras' => $__vars['extras'],
-					'depth' => $__vars['depth'],
-				), $__vars) . '
-';
-			}
-			$__finalCompiled .= '
+		' . $__templater->callMacro(null, 'node_list_entry', array(
+				'node' => $__vars['child']['record'],
+				'extras' => $__vars['extras'][$__vars['id']],
+				'children' => $__vars['child']['children'],
+				'childExtras' => $__vars['extras'],
+				'depth' => $__vars['depth'],
+			), $__vars) . '
 	';
 		}
 	}
@@ -64,19 +58,13 @@ return array(
 		';
 		} else if (($__vars['node']['node_type_id'] == 'Forum') AND ($__templater->method($__vars['node']['Data'], 'canCreateThread', array()) OR $__templater->method($__vars['node']['Data'], 'canCreateThreadPreReg', array()))) {
 			$__finalCompiled .= '
-			';
-			if ($__vars['node']['node_id'] != $__vars['xf']['options']['fs_questionAnswerForum']) {
-				$__finalCompiled .= '
 			' . $__templater->callMacro(null, 'node_list_entry_forum_level_0', array(
-					'node' => $__vars['node'],
-					'extras' => $__vars['extras'],
-					'children' => $__vars['children'],
-					'childExtras' => $__vars['childExtras'],
-					'depth' => $__vars['depth'],
-				), $__vars) . '
-				';
-			}
-			$__finalCompiled .= '
+				'node' => $__vars['node'],
+				'extras' => $__vars['extras'],
+				'children' => $__vars['children'],
+				'childExtras' => $__vars['childExtras'],
+				'depth' => $__vars['depth'],
+			), $__vars) . '
 		';
 		} else {
 			$__finalCompiled .= '

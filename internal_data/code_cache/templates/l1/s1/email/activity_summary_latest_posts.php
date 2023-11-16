@@ -16,7 +16,7 @@ return array(
 				$__finalCompiled .= '
 		';
 				$__vars['attribution'] = $__templater->preEscaped('
-			' . ($__vars['post']['User'] ? $__templater->escape($__vars['post']['User']['username']) : $__templater->escape($__vars['post']['username'])) . ' &middot; ' . 'Thread' . $__vars['xf']['language']['label_separator'] . ' <a href="' . $__templater->func('link', array('canonical:threads/post', $__vars['post']['Thread'], array('post_id' => $__vars['post']['post_id'], ), ), true) . '">' . $__templater->filter($__vars['post']['Thread']['title'], array(array('replace_visitor_name', array()),), true) . '</a> &middot; ' . $__templater->func('date_time', array($__vars['post']['post_date'], ), true) . '
+			' . ($__vars['post']['User'] ? $__templater->escape($__vars['post']['User']['username']) : $__templater->escape($__vars['post']['username'])) . ' &middot; ' . 'Thread' . $__vars['xf']['language']['label_separator'] . ' <a href="' . $__templater->func('link', array('canonical:threads/post', $__vars['post']['Thread'], array('post_id' => $__vars['post']['post_id'], ), ), true) . '">' . $__templater->escape($__vars['post']['Thread']['title']) . '</a> &middot; ' . $__templater->func('date_time', array($__vars['post']['post_date'], ), true) . '
 		');
 				$__finalCompiled .= '
 		';

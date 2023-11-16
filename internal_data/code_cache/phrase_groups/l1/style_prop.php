@@ -157,6 +157,7 @@ return array (
   'style_prop.formSectionHeader' => 'Form section header',
   'style_prop.formSubmitRow' => 'Form submit row',
   'style_prop.formSubmitSticky' => 'Enable sticky form submit rows',
+  'style_prop.fs_avatarBorderRadius' => 'Group avatar border radius',
   'style_prop.globalActionColor' => 'Global action indicator color',
   'style_prop.gtf_float' => 'Float',
   'style_prop.gtf_options' => 'Set style for FS Translator',

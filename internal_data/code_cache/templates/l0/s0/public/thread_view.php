@@ -139,6 +139,13 @@ return array(
 	}
 	$__compilerTemp2 .= '
 											';
+	if ($__templater->method($__vars['xf']['visitor'], 'canChangeThreadThumbnail', array())) {
+		$__compilerTemp2 .= '
+	<a href="' . $__templater->func('link', array('threads/thumbnail', $__vars['thread'], ), true) . '" data-xf-click="overlay" class="menu-linkRow">' . 'Thread Thumbnail' . '</a>
+';
+	}
+	$__compilerTemp2 .= '
+';
 	if ($__templater->method($__vars['thread'], 'canLockUnlock', array())) {
 		$__compilerTemp2 .= '
 												<a href="' . $__templater->func('link', array('threads/quick-close', $__vars['thread'], ), true) . '"
@@ -564,11 +571,11 @@ return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
 	$__finalCompiled = '';
-	$__templater->pageParams['pageTitle'] = $__templater->preEscaped($__templater->func('prefix', array('thread', $__vars['thread'], 'escaped', ), true) . $__templater->filter($__vars['thread']['title'], array(array('replace_visitor_name', array()),), true));
+	$__templater->pageParams['pageTitle'] = $__templater->preEscaped($__templater->func('prefix', array('thread', $__vars['thread'], 'escaped', ), true) . $__templater->escape($__vars['thread']['title']));
 	$__templater->pageParams['pageNumber'] = $__vars['page'];
 	$__finalCompiled .= '
 ';
-	$__templater->pageParams['pageH1'] = $__templater->preEscaped($__templater->func('prefix', array('thread', $__vars['thread'], ), true) . $__templater->filter($__vars['thread']['title'], array(array('replace_visitor_name', array()),), true));
+	$__templater->pageParams['pageH1'] = $__templater->preEscaped($__templater->func('prefix', array('thread', $__vars['thread'], ), true) . $__templater->escape($__vars['thread']['title']));
 	$__finalCompiled .= '
 
 ';
@@ -913,53 +920,25 @@ return array(
 			'src' => 'xf/message.js',
 			'min' => '1',
 		));
-		$__compilerTemp4 = '';
-		if ((($__vars['xf']['reply']['containerKey'] == ('node-' . $__vars['xf']['options']['fs_questionAnswerForum'])) OR ($__templater->method($__vars['xf']['app']['request'], 'getRoutePath', array()) == 'esperto/'))) {
-			$__compilerTemp4 .= '
-	';
-			if ($__vars['xf']['visitor']['is_admin']) {
-				$__compilerTemp4 .= '
-' . $__templater->callMacro('quick_reply_macros', 'body', array(
-					'message' => $__vars['thread']['draft_reply']['message'],
-					'attachmentData' => $__vars['attachmentData'],
-					'forceHash' => $__vars['thread']['draft_reply']['attachment_hash'],
-					'messageSelector' => '.js-post',
-					'multiQuoteHref' => $__templater->func('link', array('threads/multi-quote', $__vars['thread'], ), false),
-					'multiQuoteStorageKey' => 'multiQuoteThread',
-					'lastDate' => $__vars['lastPost']['post_date'],
-					'lastKnownDate' => $__vars['thread']['last_post_date'],
-					'loadExtra' => $__vars['isSimpleDateDisplay'],
-					'showGuestControls' => (!$__vars['isPreRegReply']),
-					'previewUrl' => $__templater->func('link', array('threads/reply-preview', $__vars['thread'], ), false),
-				), $__vars) . '
-';
-			}
-			$__compilerTemp4 .= '
-';
-		} else {
-			$__compilerTemp4 .= '
-	' . $__templater->callMacro('quick_reply_macros', 'body', array(
-				'message' => $__vars['thread']['draft_reply']['message'],
-				'attachmentData' => $__vars['attachmentData'],
-				'forceHash' => $__vars['thread']['draft_reply']['attachment_hash'],
-				'messageSelector' => '.js-post',
-				'multiQuoteHref' => $__templater->func('link', array('threads/multi-quote', $__vars['thread'], ), false),
-				'multiQuoteStorageKey' => 'multiQuoteThread',
-				'lastDate' => $__vars['lastPost']['post_date'],
-				'lastKnownDate' => $__vars['thread']['last_post_date'],
-				'loadExtra' => $__vars['isSimpleDateDisplay'],
-				'showGuestControls' => (!$__vars['isPreRegReply']),
-				'previewUrl' => $__templater->func('link', array('threads/reply-preview', $__vars['thread'], ), false),
-			), $__vars) . '
-';
-		}
 		$__finalCompiled .= $__templater->form('
 
 		' . '' . '
 
 		<div class="block-container">
 			<div class="block-body">
-				' . $__compilerTemp4 . '
+				' . $__templater->callMacro('quick_reply_macros', 'body', array(
+			'message' => $__vars['thread']['draft_reply']['message'],
+			'attachmentData' => $__vars['attachmentData'],
+			'forceHash' => $__vars['thread']['draft_reply']['attachment_hash'],
+			'messageSelector' => '.js-post',
+			'multiQuoteHref' => $__templater->func('link', array('threads/multi-quote', $__vars['thread'], ), false),
+			'multiQuoteStorageKey' => 'multiQuoteThread',
+			'lastDate' => $__vars['lastPost']['post_date'],
+			'lastKnownDate' => $__vars['thread']['last_post_date'],
+			'loadExtra' => $__vars['isSimpleDateDisplay'],
+			'showGuestControls' => (!$__vars['isPreRegReply']),
+			'previewUrl' => $__templater->func('link', array('threads/reply-preview', $__vars['thread'], ), false),
+		), $__vars) . '
 			</div>
 		</div>
 	', array(

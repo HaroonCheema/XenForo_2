@@ -15,6 +15,7 @@ return array (
   'style_prop_group_desc.fonts' => 'Settings controlling the style and size of text within the system.',
   'style_prop_group_desc.footer' => 'The lower elements of public-facing pages are controlled here, including the footer background and text styling.',
   'style_prop_group_desc.form' => 'Styling for form structural elements, such as form headers, label columns etc., as well as dimensions for elements within differing viewport sizes, are housed here.',
+  'style_prop_group_desc.fs_forum_gorups' => '',
   'style_prop_group_desc.headerNav' => 'The upper elements of public-facing pages are controlled with these settings, including navigation tabs and the header logo.',
   'style_prop_group_desc.inlineMod' => 'Inline moderation allows moderators to take actions against multiple pieces of content simultaneously. It may also be exposed to members via systems like conversations.',
   'style_prop_group_desc.input' => 'Individual form controls - primarily text boxes, are styled here, including focused and disabled variants.',

@@ -15,6 +15,7 @@ return array (
   'style_prop_group.fonts' => 'Typography',
   'style_prop_group.footer' => 'Footer',
   'style_prop_group.form' => 'Forms',
+  'style_prop_group.fs_forum_gorups' => '[FS] Forum Groups',
   'style_prop_group.headerNav' => 'Header and navigation',
   'style_prop_group.inlineMod' => 'Inline moderation',
   'style_prop_group.input' => 'Inputs',

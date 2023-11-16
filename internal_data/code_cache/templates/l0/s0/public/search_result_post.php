@@ -13,11 +13,7 @@ return array(
 		</span>
 		<div class="contentRow-main">
 			<h3 class="contentRow-title">
-				<a href="' . $__templater->func('link', array('threads/post', $__vars['post']['Thread'], array('post_id' => $__vars['post']['post_id'], ), ), true) . '">' . ($__templater->func('prefix', array('thread', $__vars['post']['Thread'], ), true) . $__templater->func('highlight', array($__templater->filter($__vars['post']['Thread']['title'], array(array('replace_visitor_name', array()),), false), $__vars['options']['term'], ), true)) . '</a> ';
-	if ($__vars['post']['Thread']['node_id'] == $__vars['xf']['options']['fs_questionAnswerForum']) {
-		$__finalCompiled .= ' ' . '<span style="color: red; float: right; margin-right: 10px;">' . $__templater->escape($__vars['post']['Thread']['Forum']['title']) . '</span>' . ' ';
-	}
-	$__finalCompiled .= '
+				<a href="' . $__templater->func('link', array('threads/post', $__vars['post']['Thread'], array('post_id' => $__vars['post']['post_id'], ), ), true) . '">' . ($__templater->func('prefix', array('thread', $__vars['post']['Thread'], ), true) . $__templater->func('highlight', array($__vars['post']['Thread']['title'], $__vars['options']['term'], ), true)) . '</a>
 			</h3>
 
 			<div class="contentRow-snippet">' . $__templater->func('snippet', array($__vars['post']['message'], 300, array('term' => $__vars['options']['term'], 'stripQuote' => true, ), ), true) . '</div>

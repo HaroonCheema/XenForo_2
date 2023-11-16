@@ -23,8 +23,6 @@ return array(
 	}
 	$__finalCompiled .= '
 ' . '
-<a class="' . $__templater->escape($__vars['baseClass']) . ' ' . (($__vars['pageSelected'] == 'fs_questions') ? $__templater->escape($__vars['selectedClass']) : '') . '" href="' . $__templater->func('link', array('whats-new/questions', ), true) . '" rel="nofollow">' . 'New Questions' . '</a>
-<a class="' . $__templater->escape($__vars['baseClass']) . ' ' . (($__vars['pageSelected'] == 'fs_answers') ? $__templater->escape($__vars['selectedClass']) : '') . '" href="' . $__templater->func('link', array('whats-new/answers', ), true) . '" rel="nofollow">' . 'New Answers' . '</a>
 ';
 	if ($__templater->method($__vars['xf']['visitor'], 'canViewResources', array())) {
 		$__finalCompiled .= '

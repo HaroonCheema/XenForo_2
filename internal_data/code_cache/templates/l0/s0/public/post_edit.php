@@ -37,56 +37,30 @@ return array(
 				';
 	}
 	$__compilerTemp3 = '';
-	if ((($__templater->method($__vars['xf']['visitor'], 'hasPermission', array('fs_bunny', 'allow', )) AND ($__vars['xf']['options']['fs_bi_accessKey'] AND $__vars['xf']['options']['fs_bi_libraryId']))) AND $__templater->method($__vars['post'], 'isFirstPost', array())) {
-		$__compilerTemp3 .= '
-
-	<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
-';
-		$__templater->inlineJs('
-	$(document).ready(function() {
-		
-			$("#bunnyVideoBtn").click(function () {
-			
-				$(\'input[name="isBunnyUpload"]\').val("1");
-			});
-			 $("#attachVideoBtn").click(function () {
-				
-			  $(\'input[name="isBunnyUpload"]\').val("0");
-			});
-	});
-');
-		$__compilerTemp3 .= '
-	' . $__templater->callMacro('bunny_helper_attach_upload', 'upload_block', array(
-			'attachmentData' => $__vars['attachmentData'],
-			'forceHash' => $__vars['forum']['draft_thread']['attachment_hash'],
-		), $__vars) . '
-';
-	}
-	$__compilerTemp4 = '';
 	if ($__templater->method($__vars['post'], 'isFirstPost', array()) AND $__templater->method($__vars['thread'], 'canEdit', array())) {
-		$__compilerTemp4 .= '
+		$__compilerTemp3 .= '
 				';
-		$__compilerTemp5 = '';
-		$__compilerTemp5 .= '
+		$__compilerTemp4 = '';
+		$__compilerTemp4 .= '
 						' . $__templater->filter($__templater->method($__vars['thread']['TypeHandler'], 'renderExtraDataEdit', array($__vars['thread'], 'edit', ($__vars['quickEdit'] ? 'first_post_quick' : 'first_post'), )), array(array('raw', array()),), true) . '
 					';
-		if (strlen(trim($__compilerTemp5)) > 0) {
-			$__compilerTemp4 .= '
+		if (strlen(trim($__compilerTemp4)) > 0) {
+			$__compilerTemp3 .= '
 					';
 			if (!$__vars['quickEdit']) {
-				$__compilerTemp4 .= '
+				$__compilerTemp3 .= '
 						<hr class="formRowSep" />
 					';
 			}
-			$__compilerTemp4 .= '
-					' . $__compilerTemp5 . '
+			$__compilerTemp3 .= '
+					' . $__compilerTemp4 . '
 				';
 		}
-		$__compilerTemp4 .= '
+		$__compilerTemp3 .= '
 
 				';
-		$__compilerTemp6 = '';
-		$__compilerTemp6 .= '
+		$__compilerTemp5 = '';
+		$__compilerTemp5 .= '
 						' . $__templater->callMacro('custom_fields_macros', 'custom_fields_edit', array(
 			'type' => 'threads',
 			'set' => $__vars['thread']['custom_fields'],
@@ -95,18 +69,18 @@ return array(
 			'rowType' => ($__vars['quickEdit'] ? 'fullWidth' : ''),
 		), $__vars) . '
 					';
-		if (strlen(trim($__compilerTemp6)) > 0) {
-			$__compilerTemp4 .= '
+		if (strlen(trim($__compilerTemp5)) > 0) {
+			$__compilerTemp3 .= '
 					<hr class="formRowSep" />
-					' . $__compilerTemp6 . '
+					' . $__compilerTemp5 . '
 				';
 		}
-		$__compilerTemp4 .= '
+		$__compilerTemp3 .= '
 			';
 	}
-	$__compilerTemp7 = '';
+	$__compilerTemp6 = '';
 	if ($__templater->method($__vars['post'], 'canEditSilently', array())) {
-		$__compilerTemp7 .= '
+		$__compilerTemp6 .= '
 				' . $__templater->formRow('
 					' . $__templater->callMacro('helper_action', 'edit_type', array(
 			'canEditSilently' => $__templater->method($__vars['post'], 'canEditSilently', array()),
@@ -116,9 +90,9 @@ return array(
 		)) . '
 			';
 	}
-	$__compilerTemp8 = '';
+	$__compilerTemp7 = '';
 	if ($__templater->method($__vars['post'], 'canSendModeratorActionAlert', array())) {
-		$__compilerTemp8 .= '
+		$__compilerTemp7 .= '
 				' . $__templater->formRow('
 					' . $__templater->callMacro('helper_action', 'author_alert', array(
 			'row' => false,
@@ -128,9 +102,9 @@ return array(
 		)) . '
 			';
 	}
-	$__compilerTemp9 = '';
+	$__compilerTemp8 = '';
 	if ($__vars['quickEdit']) {
-		$__compilerTemp9 .= '
+		$__compilerTemp8 .= '
 					' . $__templater->button('Cancel', array(
 			'class' => 'js-cancelButton',
 		), '', array(
@@ -160,14 +134,12 @@ return array(
 			', array(
 		'rowtype' => ($__vars['quickEdit'] ? 'fullWidth noLabel mergePrev' : ''),
 	)) . '
-' . $__compilerTemp3 . '
 
+			' . $__compilerTemp3 . '
 
-			' . $__compilerTemp4 . '
+			' . $__compilerTemp6 . '
 
 			' . $__compilerTemp7 . '
-
-			' . $__compilerTemp8 . '
 		</div>
 		' . $__templater->formSubmitRow(array(
 		'icon' => 'save',
@@ -175,7 +147,7 @@ return array(
 	), array(
 		'rowtype' => ($__vars['quickEdit'] ? 'simple' : ''),
 		'html' => '
-				' . $__compilerTemp9 . '
+				' . $__compilerTemp8 . '
 			',
 	)) . '
 	</div>

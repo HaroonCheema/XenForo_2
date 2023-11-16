@@ -21,44 +21,15 @@ return array(
 	));
 	$__finalCompiled .= '
 
-	';
-	if (($__templater->method($__vars['xf']['visitor'], 'hasPermission', array('fs_bunny', 'allow', )) AND ($__vars['xf']['options']['fs_bi_accessKey'] AND $__vars['xf']['options']['fs_bi_libraryId']))) {
-		$__finalCompiled .= '
-	';
-		$__templater->includeJs(array(
-			'src' => 'Bunny/OnClickBunny.js',
-		));
-		$__finalCompiled .= '
-	';
-		$__templater->includeJs(array(
-			'src' => 'Bunny/extend_manager.js',
-		));
-		$__finalCompiled .= '
 	' . $__templater->button('', array(
-			'href' => $__templater->func('link', array('attachments/upload', null, array('type' => $__vars['type'], 'context' => $__vars['context'], 'hash' => $__vars['hash'], ), ), false),
-			'target' => '_blank',
-			'class' => 'button--link js-attachmentUpload',
-			'icon' => 'attach',
-			'data-accept' => '.' . $__templater->filter($__vars['constraints']['extensions'], array(array('join', array(',.', )),), false),
-			'data-video-size' => $__vars['constraints']['video_size'],
-			'id' => 'attachVideoBtn',
-		), '', array(
-		)) . '
-	';
-	} else {
-		$__finalCompiled .= '
-	' . $__templater->button('', array(
-			'href' => $__templater->func('link', array('attachments/upload', null, array('type' => $__vars['type'], 'context' => $__vars['context'], 'hash' => $__vars['hash'], ), ), false),
-			'target' => '_blank',
-			'class' => 'button--link js-attachmentUpload',
-			'icon' => 'attach',
-			'data-accept' => '.' . $__templater->filter($__vars['constraints']['extensions'], array(array('join', array(',.', )),), false),
-			'data-video-size' => $__vars['constraints']['video_size'],
-		), '', array(
-		)) . '
-';
-	}
-	$__finalCompiled .= '
+		'href' => $__templater->func('link', array('attachments/upload', null, array('type' => $__vars['type'], 'context' => $__vars['context'], 'hash' => $__vars['hash'], ), ), false),
+		'target' => '_blank',
+		'class' => 'button--link js-attachmentUpload',
+		'icon' => 'attach',
+		'data-accept' => '.' . $__templater->filter($__vars['constraints']['extensions'], array(array('join', array(',.', )),), false),
+		'data-video-size' => $__vars['constraints']['video_size'],
+	), '', array(
+	)) . '
 	' . $__templater->formHiddenVal($__vars['hiddenName'], $__vars['hash'], array(
 	)) . '
 	' . $__templater->formHiddenVal($__vars['hiddenName'] . '_combined', $__templater->filter(array('type' => $__vars['type'], 'context' => $__vars['context'], 'hash' => $__vars['hash'], ), array(array('json', array()),), false), array(

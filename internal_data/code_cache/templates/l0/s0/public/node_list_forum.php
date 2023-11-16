@@ -226,11 +226,11 @@ return array(
 						';
 		if ($__templater->method($__vars['extras']['LastThread'], 'isUnread', array())) {
 			$__finalCompiled .= '
-							<a href="' . $__templater->func('link', array('threads/unread', $__vars['extras']['LastThread'], ), true) . '" class="node-extra-title" title="' . $__templater->filter($__vars['extras']['LastThread']['title'], array(array('replace_visitor_name', array()),), true) . '">' . $__templater->func('prefix', array('thread', $__vars['extras']['LastThread'], ), true) . $__templater->filter($__vars['extras']['LastThread']['title'], array(array('replace_visitor_name', array()),), true) . '</a>
+							<a href="' . $__templater->func('link', array('threads/unread', $__vars['extras']['LastThread'], ), true) . '" class="node-extra-title" title="' . $__templater->escape($__vars['extras']['LastThread']['title']) . '">' . $__templater->func('prefix', array('thread', $__vars['extras']['LastThread'], ), true) . $__templater->escape($__vars['extras']['LastThread']['title']) . '</a>
 						';
 		} else {
 			$__finalCompiled .= '
-							<a href="' . $__templater->func('link', array('threads/post', $__vars['extras']['LastThread'], array('post_id' => $__vars['extras']['last_post_id'], ), ), true) . '" class="node-extra-title" title="' . $__templater->filter($__vars['extras']['LastThread']['title'], array(array('replace_visitor_name', array()),), true) . '">' . $__templater->func('prefix', array('thread', $__vars['extras']['LastThread'], ), true) . $__templater->filter($__vars['extras']['LastThread']['title'], array(array('replace_visitor_name', array()),), true) . '</a>
+							<a href="' . $__templater->func('link', array('threads/post', $__vars['extras']['LastThread'], array('post_id' => $__vars['extras']['last_post_id'], ), ), true) . '" class="node-extra-title" title="' . $__templater->escape($__vars['extras']['LastThread']['title']) . '">' . $__templater->func('prefix', array('thread', $__vars['extras']['LastThread'], ), true) . $__templater->escape($__vars['extras']['LastThread']['title']) . '</a>
 						';
 		}
 		$__finalCompiled .= '

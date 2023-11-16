@@ -143,19 +143,7 @@ return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
 	$__finalCompiled = '';
-	if ((($__vars['xf']['reply']['containerKey'] == ('node-' . $__vars['xf']['options']['fs_questionAnswerForum'])) OR ($__templater->method($__vars['xf']['app']['request'], 'getRoutePath', array()) == 'esperto/'))) {
-		$__finalCompiled .= '
-	';
-		$__templater->pageParams['pageTitle'] = $__templater->preEscaped('Submit your question');
-		$__finalCompiled .= '
-';
-	} else {
-		$__finalCompiled .= '
-	';
-		$__templater->pageParams['pageTitle'] = $__templater->preEscaped('Post thread');
-		$__finalCompiled .= '
-';
-	}
+	$__templater->pageParams['pageTitle'] = $__templater->preEscaped('Post thread');
 	$__finalCompiled .= '
 
 
@@ -179,18 +167,8 @@ return array(
 					';
 	}
 	$__compilerTemp2 = '';
-	if (($__templater->method($__vars['xf']['visitor'], 'hasPermission', array('fs_bunny', 'allow', )) AND ($__vars['xf']['options']['fs_bi_accessKey'] AND $__vars['xf']['options']['fs_bi_libraryId']))) {
-		$__compilerTemp2 .= '
-
-	' . $__templater->callMacro('bunny_helper_attach_upload', 'upload_block', array(
-			'attachmentData' => $__vars['attachmentData'],
-			'forceHash' => $__vars['forum']['draft_thread']['attachment_hash'],
-		), $__vars) . '
-';
-	}
-	$__compilerTemp3 = '';
 	if ($__vars['xf']['options']['multiQuote']) {
-		$__compilerTemp3 .= '
+		$__compilerTemp2 .= '
 						' . $__templater->callMacro('multi_quote_macros', 'button', array(
 			'href' => $__templater->func('link', array('threads/multi-quote', $__vars['thread'], ), false),
 			'messageSelector' => '.js-post',
@@ -198,9 +176,9 @@ return array(
 		), $__vars) . '
 					';
 	}
+	$__compilerTemp3 = '';
 	$__compilerTemp4 = '';
-	$__compilerTemp5 = '';
-	$__compilerTemp5 .= '
+	$__compilerTemp4 .= '
 						' . $__templater->callMacro('custom_fields_macros', 'custom_fields_edit', array(
 		'type' => 'threads',
 		'set' => $__vars['thread']['custom_fields'],
@@ -209,24 +187,24 @@ return array(
 		'requiredOnly' => ($__vars['inlineMode'] ? true : false),
 	), $__vars) . '
 					';
-	if (strlen(trim($__compilerTemp5)) > 0) {
-		$__compilerTemp4 .= '
+	if (strlen(trim($__compilerTemp4)) > 0) {
+		$__compilerTemp3 .= '
 					<hr class="formRowSep" />
-					' . $__compilerTemp5 . '
+					' . $__compilerTemp4 . '
 				';
 	}
-	$__compilerTemp6 = '';
+	$__compilerTemp5 = '';
 	if ($__vars['canEditTags']) {
-		$__compilerTemp6 .= '
+		$__compilerTemp5 .= '
 					<hr class="formRowSep" />
 					';
-		$__compilerTemp7 = '';
+		$__compilerTemp6 = '';
 		if ($__vars['forum']['min_tags']) {
-			$__compilerTemp7 .= '
+			$__compilerTemp6 .= '
 								' . 'This content must have at least ' . $__templater->escape($__vars['forum']['min_tags']) . ' tag(s).' . '
 							';
 		}
-		$__compilerTemp6 .= $__templater->formTokenInputRow(array(
+		$__compilerTemp5 .= $__templater->formTokenInputRow(array(
 			'name' => 'tags',
 			'value' => (($__vars['thread']['tags'] ? $__templater->filter($__vars['thread']['tags'], array(array('join', array(', ', )),), false) : $__vars['forum']['draft_thread']['tags']) ?: $__vars['tags']),
 			'href' => $__templater->func('link', array('misc/tag-auto-complete', ), false),
@@ -237,14 +215,14 @@ return array(
 			'label' => 'Tags',
 			'explain' => '
 							' . 'Multiple tags may be separated by commas.' . '
-							' . $__compilerTemp7 . '
+							' . $__compilerTemp6 . '
 						',
 		)) . '
 				';
 	}
-	$__compilerTemp8 = '';
+	$__compilerTemp7 = '';
 	if ((!$__vars['xf']['visitor']['user_id']) AND (!$__templater->method($__vars['forum'], 'canCreateThreadPreReg', array()))) {
-		$__compilerTemp8 .= '
+		$__compilerTemp7 .= '
 					' . $__templater->formTextBoxRow(array(
 			'name' => '_xfUsername',
 			'data-xf-init' => 'guest-username',
@@ -254,23 +232,13 @@ return array(
 		)) . '
 				';
 	} else if ($__vars['xf']['visitor']['user_id']) {
-		$__compilerTemp8 .= '
+		$__compilerTemp7 .= '
 					' . $__templater->callMacro('helper_thread_options', 'watch_input', array(
 			'thread' => $__vars['thread'],
 		), $__vars) . '
-					';
-		if ((($__vars['xf']['reply']['containerKey'] == ('node-' . $__vars['xf']['options']['fs_questionAnswerForum'])) OR ($__templater->method($__vars['xf']['app']['request'], 'getRoutePath', array()) == 'esperto/'))) {
-			$__compilerTemp8 .= '
- 
-';
-		} else {
-			$__compilerTemp8 .= '
-	' . $__templater->callMacro('helper_thread_options', 'thread_status', array(
-				'thread' => $__vars['thread'],
-			), $__vars) . '
-';
-		}
-		$__compilerTemp8 .= '
+					' . $__templater->callMacro('helper_thread_options', 'thread_status', array(
+			'thread' => $__vars['thread'],
+		), $__vars) . '
 				';
 	}
 	$__finalCompiled .= $__templater->form('
@@ -322,7 +290,6 @@ return array(
 					' . $__compilerTemp1 . '
 
 					' . $__compilerTemp2 . '
-' . $__compilerTemp3 . '
 				', array(
 		'rowtype' => 'fullWidth noLabel mergePrev noTopPadding',
 	)) . '
@@ -337,12 +304,12 @@ return array(
 		'subContext' => 'full',
 	), $__vars) . '
 
-				' . $__compilerTemp4 . '
+				' . $__compilerTemp3 . '
 
-				' . $__compilerTemp6 . '
+				' . $__compilerTemp5 . '
 
 				<hr class="formRowSep" />
-				' . $__compilerTemp8 . '
+				' . $__compilerTemp7 . '
 
 				' . $__templater->formRowIfContent($__templater->func('captcha', array(false, false)), array(
 		'label' => 'Verification',

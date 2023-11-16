@@ -161,18 +161,6 @@ return array(
 	}
 	$__finalCompiled .= '
 	' . '
-	<dl class="pairs pairs--rows pairs--rows--centered menu-fauxLinkRow">
-		<dt>' . 'Question Expert' . '</dt>
-		<dd>
-			' . $__templater->filter($__vars['user']['question_count'], array(array('number', array()),), true) . '
-		</dd>
-	</dl>
-	<dl class="pairs pairs--rows pairs--rows--centered menu-fauxLinkRow">
-		<dt>' . 'Answer Expert' . '</dt>
-		<dd>
-			' . $__templater->filter($__vars['user']['answer_count'], array(array('number', array()),), true) . '
-		</dd>
-	</dl>
 	';
 	if ($__templater->method($__vars['xf']['visitor'], 'canViewWarnings', array()) AND $__vars['user']['warning_points']) {
 		$__finalCompiled .= '
@@ -282,13 +270,7 @@ return array(
 							' . '
 							<a href="' . $__templater->func('link', array('search/member', null, array('user_id' => $__vars['user']['user_id'], ), ), true) . '" rel="nofollow" class="menu-linkRow">' . 'Find all content by ' . $__templater->escape($__vars['user']['username']) . '' . '</a>
 							<a href="' . $__templater->func('link', array('search/member', null, array('user_id' => $__vars['user']['user_id'], 'content' => 'thread', ), ), true) . '" rel="nofollow" class="menu-linkRow">' . 'Find all threads by ' . $__templater->escape($__vars['user']['username']) . '' . '</a>
-						';
-		$__vars['questionForumIds'] = $__vars['xf']['options']['fs_questionAnswerForum'];
-		$__compilerTemp2 .= '
-<a href="' . $__templater->func('link', array('search/member', null, array('user_id' => $__vars['user']['user_id'], 'content' => 'thread', 'thread_type' => 'question', 'qa_nodes' => array($__vars['questionForumIds'], ), ), ), true) . '" rel="nofollow" class="menu-linkRow">' . 'Find all questions by ' . $__templater->escape($__vars['user']['username']) . '' . '</a>
-<a href="' . $__templater->func('link', array('search/member', null, array('user_id' => $__vars['user']['user_id'], 'content' => 'fs_answer', ), ), true) . '" rel="nofollow" class="menu-linkRow">' . 'Find all answers by ' . $__templater->escape($__vars['user']['username']) . '' . '</a>
-<a href="' . $__templater->func('link', array('search/member', null, array('user_id' => $__vars['user']['user_id'], 'content' => 'thread', 'thread_type' => 'article', ), ), true) . '" rel="nofollow" class="menu-linkRow">' . 'Find all articles by ' . $__templater->escape($__vars['user']['username']) . '' . '</a>
-	' . '
+							' . '
 						</div>
 					</div>
 				</div>

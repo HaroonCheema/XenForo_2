@@ -14,31 +14,25 @@ return array(
 	$__finalCompiled = '';
 	$__finalCompiled .= '
 	';
-	if ($__vars['node']['node_id'] != $__vars['xf']['options']['fs_questionAnswerForum']) {
+	$__templater->includeCss('node_list.less');
+	$__finalCompiled .= '
+	';
+	$__vars['nodeTemplate'] = $__templater->method($__vars['node'], 'getNodeTemplateRenderer', array($__vars['depth'], ));
+	$__finalCompiled .= '
+	';
+	if ($__vars['nodeTemplate']['macro']) {
 		$__finalCompiled .= '
-		';
-		$__templater->includeCss('node_list.less');
+		' . $__templater->callMacro($__vars['nodeTemplate']['template'], $__vars['nodeTemplate']['macro'], array(
+			'node' => $__vars['node'],
+			'extras' => $__vars['extras'],
+			'children' => $__vars['children'],
+			'childExtras' => $__vars['childExtras'],
+			'depth' => $__vars['depth'],
+		), $__vars) . '
+	';
+	} else if ($__vars['nodeTemplate']['template']) {
 		$__finalCompiled .= '
-		';
-		$__vars['nodeTemplate'] = $__templater->method($__vars['node'], 'getNodeTemplateRenderer', array($__vars['depth'], ));
-		$__finalCompiled .= '
-		';
-		if ($__vars['nodeTemplate']['macro']) {
-			$__finalCompiled .= '
-			' . $__templater->callMacro($__vars['nodeTemplate']['template'], $__vars['nodeTemplate']['macro'], array(
-				'node' => $__vars['node'],
-				'extras' => $__vars['extras'],
-				'children' => $__vars['children'],
-				'childExtras' => $__vars['childExtras'],
-				'depth' => $__vars['depth'],
-			), $__vars) . '
-		';
-		} else if ($__vars['nodeTemplate']['template']) {
-			$__finalCompiled .= '
-			' . $__templater->includeTemplate($__vars['nodeTemplate']['template'], $__vars) . '
-		';
-		}
-		$__finalCompiled .= '
+		' . $__templater->includeTemplate($__vars['nodeTemplate']['template'], $__vars) . '
 	';
 	}
 	$__finalCompiled .= '

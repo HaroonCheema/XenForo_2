@@ -158,6 +158,7 @@ return array (
   'style_prop_desc.formSectionHeader' => 'Occasionally, forms are long enough to warrant being divided into sections, with each section headed by an element using these style rules',
   'style_prop_desc.formSubmitRow' => 'At the bottom of most forms is a bar containing the submit button etc.',
   'style_prop_desc.formSubmitSticky' => 'If selected, longer forms may attach their submit rows to the bottom of the window when they wouldn\'t otherwise be visible.',
+  'style_prop_desc.fs_avatarBorderRadius' => '',
   'style_prop_desc.globalActionColor' => 'This is the base color of the gadgets that display when an action is being processed in the background.',
   'style_prop_desc.gtf_float' => '',
   'style_prop_desc.gtf_options' => '',
