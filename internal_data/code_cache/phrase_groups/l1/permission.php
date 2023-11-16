@@ -296,6 +296,7 @@ return array (
   'permission.trader_rate' => 'Rate',
   'permission.trader_view' => 'View',
   'permission.xa_showcase_scheduledPostingShowcase' => 'Create scheduled showcase items',
+  'permission.xc_thread_article_xc_change_to_article_view' => 'Allow to Change Thread View ?',
   'permission.xfmgStorage_maxAllowedStorage' => 'Maximum allowed storage (MB)',
   'permission.xfmg_add' => 'Add media items',
   'permission.xfmg_addAudio' => 'Upload audio to album',

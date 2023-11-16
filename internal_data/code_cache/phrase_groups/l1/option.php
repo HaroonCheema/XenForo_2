@@ -212,6 +212,7 @@ return array (
   'option.gravatarEnable' => 'Enable Gravatar support',
   'option.guestShowSignatures' => 'Show signatures to guests',
   'option.guestTimeZone' => 'Guests\' time zone',
+  'option.headerImageDimensions' => 'Minimum Header Image dimensions',
   'option.hide_forum_items' => 'Hide items block on forum',
   'option.homePageUrl' => 'Home page URL',
   'option.hou_attachment_exclude_extension' => 'Excluded extensions',

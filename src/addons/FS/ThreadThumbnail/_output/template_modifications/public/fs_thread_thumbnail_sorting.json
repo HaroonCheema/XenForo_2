@@ -1,0 +1,9 @@
+{
+    "template": "forum_view",
+    "description": "fs_thread_thumbnail_sorting",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "\"<xf:if is=\\\"\\$stickyThreads is not empty\\\">.*?</xf:if>\"si",
+    "replace": "$0\n<xf:if is=\"$forum And $forum.forum_type_id == 'article'\">\n\n\t<div class=\"sorting-heading\">\n\t\t<div class=\"sorting-heading-title\">\n\t\t\t<h1>\n\t\t\t\tTF CONTENT\n\t\t\t</h1>\n\t\t</div>\n\t\t<div class=\"sorting\">\n\t\t\t<span>Sort By:</span>\n\t\t\t<ul>\n\t\t\t\t<li>\n\t\t\t\t\t<a class=\"sorting-button active\">All</a>\n\t\t\t\t</li>\n\t\t\t\t<li>\n\t\t\t\t\t<a class=\"sorting-button\">Interviews</a>\n\t\t\t\t</li>\n\n\t\t\t</ul>\n\t\t</div>\n\t</div>\n\n</xf:if>"
+}

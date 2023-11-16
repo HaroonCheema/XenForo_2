@@ -38,6 +38,7 @@ return array (
   'permission_interface.tl_groups_general' => '[tl] Social Groups: General Permissions',
   'permission_interface.tl_groups_moderator' => '[tl] Social Groups: Moderator Permissions',
   'permission_interface.trader' => 'Trader',
+  'permission_interface.xc_thread_article' => '[FS] Thread Change Article',
   'permission_interface.xfmgAlbum' => 'XFMG: Album permissions',
   'permission_interface.xfmgAlbumModerator' => 'XFMG: Album moderator permissions',
   'permission_interface.xfmgComment' => 'XFMG: Comment permissions',

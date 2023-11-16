@@ -106,38 +106,105 @@ return array(
 						';
 		}
 		$__finalCompiled .= '
+';
+		if ($__vars['forum'] AND ($__vars['forum']['forum_type_id'] == 'article')) {
+			$__finalCompiled .= '
 
-						<div class="structItemContainer-group js-threadList">
-							';
-		if (!$__templater->test($__vars['threads'], 'empty', array())) {
-			$__finalCompiled .= '
-								';
-			if ($__templater->isTraversable($__vars['threads'])) {
-				foreach ($__vars['threads'] AS $__vars['thread']) {
-					$__finalCompiled .= '
-									' . $__templater->callMacro(null, ($__vars['templateOverrides']['thread_list_macro'] ?: 'thread_list_macros::item'), $__templater->combineMacroArgumentAttributes($__vars['templateOverrides']['thread_list_macro_args'], array(
-						'thread' => $__vars['thread'],
-						'forum' => $__vars['forum'],
-					)), $__vars) . '
-								';
-				}
-			}
-			$__finalCompiled .= '
-								';
-			if ($__vars['showDateLimitDisabler']) {
-				$__finalCompiled .= '
-									' . $__templater->callMacro(null, 'date_limit_disabler', array(
-					'forum' => $__vars['forum'],
-					'page' => $__vars['page'],
-					'filters' => $__vars['filters'],
-				), $__vars) . '
-								';
-			}
-			$__finalCompiled .= '
-							';
+	<div class="sorting-heading">
+		<div class="sorting-heading-title">
+			<h1>
+				TF CONTENT
+			</h1>
+		</div>
+		<div class="sorting">
+			<span>Sort By:</span>
+			<ul>
+				<li>
+					<a class="sorting-button active">All</a>
+				</li>
+				<li>
+					<a class="sorting-button">Interviews</a>
+				</li>
+
+			</ul>
+		</div>
+	</div>
+
+';
 		}
 		$__finalCompiled .= '
+
+						';
+		if ($__vars['forum'] AND ($__vars['forum']['forum_type_id'] == 'article')) {
+			$__finalCompiled .= '
+	<div class="structItemContainer-group js-threadList thread-grid">
+		';
+			if (!$__templater->test($__vars['threads'], 'empty', array())) {
+				$__finalCompiled .= '
+			';
+				if ($__templater->isTraversable($__vars['threads'])) {
+					foreach ($__vars['threads'] AS $__vars['thread']) {
+						$__finalCompiled .= '
+				' . $__templater->callMacro(null, ($__vars['templateOverrides']['thread_list_macro'] ?: 'thread_list_macros::item'), $__templater->combineMacroArgumentAttributes($__vars['templateOverrides']['thread_list_macro_args'], array(
+							'thread' => $__vars['thread'],
+							'forum' => $__vars['forum'],
+						)), $__vars) . '
+			';
+					}
+				}
+				$__finalCompiled .= '
+			';
+				if ($__vars['showDateLimitDisabler']) {
+					$__finalCompiled .= '
+				' . $__templater->callMacro(null, 'date_limit_disabler', array(
+						'forum' => $__vars['forum'],
+						'page' => $__vars['page'],
+						'filters' => $__vars['filters'],
+					), $__vars) . '
+			';
+				}
+				$__finalCompiled .= '
+		';
+			}
+			$__finalCompiled .= '
+	</div>
+	';
+		} else {
+			$__finalCompiled .= '
+	<div class="structItemContainer-group js-threadList">
+							';
+			if (!$__templater->test($__vars['threads'], 'empty', array())) {
+				$__finalCompiled .= '
+								';
+				if ($__templater->isTraversable($__vars['threads'])) {
+					foreach ($__vars['threads'] AS $__vars['thread']) {
+						$__finalCompiled .= '
+									' . $__templater->callMacro(null, ($__vars['templateOverrides']['thread_list_macro'] ?: 'thread_list_macros::item'), $__templater->combineMacroArgumentAttributes($__vars['templateOverrides']['thread_list_macro_args'], array(
+							'thread' => $__vars['thread'],
+							'forum' => $__vars['forum'],
+						)), $__vars) . '
+								';
+					}
+				}
+				$__finalCompiled .= '
+								';
+				if ($__vars['showDateLimitDisabler']) {
+					$__finalCompiled .= '
+									' . $__templater->callMacro(null, 'date_limit_disabler', array(
+						'forum' => $__vars['forum'],
+						'page' => $__vars['page'],
+						'filters' => $__vars['filters'],
+					), $__vars) . '
+								';
+				}
+				$__finalCompiled .= '
+							';
+			}
+			$__finalCompiled .= '
 						</div>
+';
+		}
+		$__finalCompiled .= '
 					';
 	} else if ($__vars['filters']) {
 		$__finalCompiled .= '

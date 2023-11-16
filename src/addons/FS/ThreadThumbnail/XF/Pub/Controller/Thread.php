@@ -4,10 +4,12 @@ namespace FS\ThreadThumbnail\XF\Pub\Controller;
 
 use XF\Mvc\ParameterBag;
 
-class Thread extends XFCP_Thread {
+class Thread extends XFCP_Thread
+{
 
 
-    public function actionThumbnail(ParameterBag $params) {
+    public function actionThumbnail(ParameterBag $params)
+    {
 
 
         if (!\xf::visitor()->canChangeThreadThumbnail()) {
@@ -21,22 +23,22 @@ class Thread extends XFCP_Thread {
 
             $upload = $this->request->getFile('upload', false, false);
             $title = $this->filter('thumbnail_title', 'str');
-           
-            if (!$title || $title == " " ){
+
+            if (!$title || $title == " ") {
                 throw $this->exception(
                     $this->notFound(\XF::phrase("fs_thumbnail_title_required"))
                 );
             }
-            
+
 
             if (!$thread->getThumbnailExit() && !$upload) {
 
                 throw $this->exception(
-                                $this->notFound(\XF::phrase("fs_thumbnail_image_required"))
+                    $this->notFound(\XF::phrase("fs_thumbnail_image_required"))
                 );
             }
 
-           
+
 
             if ($upload) {
 
@@ -45,14 +47,14 @@ class Thread extends XFCP_Thread {
                 if (!in_array($extension, ['jpg', 'png', 'svg', 'jpeg'])) {
 
                     throw $this->exception(
-                                    $this->notFound(\XF::phrase("fs_thread_image_format_required"))
+                        $this->notFound(\XF::phrase("fs_thread_image_format_required"))
                     );
                 }
 
                 if ($upload->getImageWidth() < \xf::options()->thumbnailImageDimensions['width'] || $upload->getImageHeight() < \xf::options()->thumbnailImageDimensions['height']) {
 
                     throw $this->exception(
-                                    $this->notFound(\XF::phrase("fs_thumbnail_image_demension_required", ['width' => \xf::options()->thumbnailImageDimensions['width'], 'height' => \xf::options()->thumbnailImageDimensions['height']]))
+                        $this->notFound(\XF::phrase("fs_thumbnail_image_demension_required", ['width' => \xf::options()->thumbnailImageDimensions['width'], 'height' => \xf::options()->thumbnailImageDimensions['height']]))
                     );
                 }
 
@@ -71,7 +73,7 @@ class Thread extends XFCP_Thread {
                 }
             }
 
-            $thread->thumbnail_title =  $title ;
+            $thread->thumbnail_title =  $title;
             $thread->save();
 
             return $this->redirect($this->getDynamicRedirect());
@@ -85,6 +87,4 @@ class Thread extends XFCP_Thread {
             return $this->view('FS\ThreadThumbnail:Thread', 'fs_thread_thumbnail', $viewParams);
         }
     }
-
- 
 }

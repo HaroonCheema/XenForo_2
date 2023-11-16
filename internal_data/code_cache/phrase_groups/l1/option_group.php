@@ -53,6 +53,7 @@ return array (
   'option_group.spam' => 'Spam management',
   'option_group.stats' => 'Statistics and metrics',
   'option_group.tagging' => 'Content tagging',
+  'option_group.thread_article_view' => '[FS] Thread Article View',
   'option_group.tl_groups' => '[tl] Social Groups',
   'option_group.tournament' => 'Tournament',
   'option_group.trader' => 'Trader',

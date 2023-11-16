@@ -57,6 +57,7 @@ It is possible to filter the news feed down to just users you follow, or a singl
   'option_group_description.spam' => 'Default options for the spam cleaner and prevention systems are located here.',
   'option_group_description.stats' => '',
   'option_group_description.tagging' => 'Options that control how tags can be applied to content.',
+  'option_group_description.thread_article_view' => '',
   'option_group_description.tl_groups' => '',
   'option_group_description.tournament' => 'Tournament options',
   'option_group_description.trader' => 'Options here control the Trader add-on.',

@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: e9f36ffca1e786068708b494899570ec
+// FROM HASH: 553da66537e1937364e53e11c7776a39
 return array(
 'macros' => array('item' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -275,6 +275,19 @@ return array(
 	$__finalCompiled .= '
 				<a href="' . $__templater->func('link', array('threads' . (($__templater->method($__vars['thread'], 'isUnread', array()) AND (!$__vars['forceRead'])) ? '/unread' : ''), $__vars['thread'], ), true) . '" class="" data-tp-primary="on" data-xf-init="' . ($__vars['canPreview'] ? 'preview-tooltip' : '') . '" data-preview-url="' . ($__vars['canPreview'] ? $__templater->func('link', array('threads/preview', $__vars['thread'], ), true) : '') . '">' . $__templater->escape($__vars['thread']['title']) . '</a>
 			</div>
+';
+	if ($__vars['forum'] AND ($__vars['forum']['forum_type_id'] == 'article')) {
+		$__finalCompiled .= '
+
+	<div class="inter-view-des">
+		<p>
+			' . $__templater->func('snippet', array($__vars['thread']['FirstPost']['message'], 50, array('stripBbCode' => true, ), ), true) . '...
+		</p>
+	</div>
+
+';
+	}
+	$__finalCompiled .= '
 
 			<div class="structItem-minor">
 				';
@@ -506,7 +519,58 @@ return array(
 	$__finalCompiled .= '
 
 	<div class="structItem structItem--thread' . ($__vars['thread']['prefix_id'] ? (' is-prefix' . $__templater->escape($__vars['thread']['prefix_id'])) : '') . ($__templater->method($__vars['thread'], 'isIgnored', array()) ? ' is-ignored' : '') . (($__templater->method($__vars['thread'], 'isUnread', array()) AND (!$__vars['forceRead'])) ? ' is-unread' : '') . (($__vars['thread']['discussion_state'] == 'moderated') ? ' is-moderated' : '') . (($__vars['thread']['discussion_state'] == 'deleted') ? ' is-deleted' : '') . ' js-inlineModContainer js-threadListItem-' . $__templater->escape($__vars['thread']['thread_id']) . '" data-author="' . ($__templater->escape($__vars['thread']['User']['username']) ?: $__templater->escape($__vars['thread']['username'])) . '">
+';
+	if ($__vars['forum'] AND ($__vars['forum']['forum_type_id'] == 'article')) {
+		$__finalCompiled .= '
 
+	<div class="num-top">024</div>
+	<div class="thread-cover">
+		' . '
+		<img src="' . ($__templater->method($__vars['thread'], 'getThumbnailExit', array()) ? $__templater->escape($__templater->method($__vars['thread'], 'getThumbnailPath', array())) : $__templater->func('base_url', array('styles/FS/ThreadThumbnail/no_image.png', true, ), true)) . '" style="width:100%;" />
+
+
+		<div class="structItem-title-cover-perifix">
+			';
+		$__vars['canPreview'] = $__templater->method($__vars['thread'], 'canPreview', array());
+		$__finalCompiled .= '
+			';
+		if ($__vars['thread']['prefix_id']) {
+			$__finalCompiled .= '
+				';
+			if ($__vars['forum']) {
+				$__finalCompiled .= '
+					<a href="' . $__templater->func('link', array('forums', $__vars['forum'], array('prefix_id' => $__vars['thread']['prefix_id'], ), ), true) . '" class="labelLink" rel="nofollow">' . $__templater->func('prefix', array('thread', $__vars['thread'], 'html', '', ), true) . '</a>
+					';
+			} else {
+				$__finalCompiled .= '
+					' . $__templater->func('prefix', array('thread', $__vars['thread'], 'html', '', ), true) . '
+				';
+			}
+			$__finalCompiled .= '
+			';
+		}
+		$__finalCompiled .= '
+
+		</div>
+	</div>
+	<div class="date-thread">
+		<div class="time-thread">
+			' . $__templater->func('date_dynamic', array($__vars['thread']['post_date'], array(
+		))) . '	
+		</div>
+		<div class="dot">
+			•
+		</div>
+		<div class="thread-comments">
+			' . $__templater->filter($__vars['thread']['reply_count'], array(array('number_short', array()),), true) . '<span>comments </span>	
+		</div>
+
+	</div>
+
+';
+	}
+	$__finalCompiled .= '
+		
 	' . $__templater->renderExtension('icon_cell', $__vars, $__extensions) . '
 
 	' . $__templater->renderExtension('main_cell', $__vars, $__extensions) . '

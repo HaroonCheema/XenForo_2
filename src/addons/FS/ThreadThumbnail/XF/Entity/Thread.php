@@ -6,27 +6,29 @@ use XF\Mvc\Entity\Structure;
 
 class Thread extends XFCP_Thread
 {
-    
-     public static function getStructure(Structure $structure)
+
+    public static function getStructure(Structure $structure)
     {
         $structure = parent::getStructure($structure);
 
-       
+
         $structure->columns['thumbnail_title'] =  ['type' => self::STR, 'default' => null];
         $structure->columns['thumbnail_ext'] =  ['type' => self::STR, 'default' => null];
 
 
         return $structure;
     }
-    
-    public function getAbstractedCustomThumbnailSvgPath($extension) {
+
+    public function getAbstractedCustomThumbnailSvgPath($extension)
+    {
 
         $thread_id = $this->thread_id;
 
         return sprintf('data://ThreadThumbnail/%d/%d.' . $extension, floor($thread_id / 1000), $thread_id);
     }
 
-    public function getThumbnailPath($canonical = true) {
+    public function getThumbnailPath($canonical = true)
+    {
 
         $thread_id = $this->thread_id;
 
@@ -41,7 +43,8 @@ class Thread extends XFCP_Thread
         return $path;
     }
 
-    public function getThumbnailExit() {
+    public function getThumbnailExit()
+    {
 
         $file_ex = $this->thumbnail_ext;
 
