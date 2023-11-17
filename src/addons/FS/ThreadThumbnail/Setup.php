@@ -13,31 +13,25 @@ class Setup extends AbstractSetup
 	use StepRunnerUpgradeTrait;
 	use StepRunnerUninstallTrait;
 
-
 	public function installstep1()
 	{
-		
 		$this->alterTable('xf_thread', function (\XF\Db\Schema\Alter $table) {
 
-			$table->addColumn('thumbnail_ext', 'varchar',20)->nullable();
-            $table->addColumn('thumbnail_title', 'varchar', 200)->nullable();
-			
+			$table->addColumn('thumbnail_ext', 'varchar', 20)->nullable();
+			$table->addColumn('thumbnail_title', 'varchar', 200)->nullable();
 		});
-
 	}
 
 	public function uninstallStep1()
 	{
-		
-
 		$this->schemaManager()->alterTable('xf_thread', function (\XF\Db\Schema\Alter $table) {
-			
+
 			$table->dropColumns(['thumbnail_ext']);
 			$table->dropColumns(['thumbnail_title']);
-						
 		});
 
-		
+		$directory = "data/ThreadThumbnail";
+
+		\XF\Util\File::deleteDirectory($directory);
 	}
-	
 }

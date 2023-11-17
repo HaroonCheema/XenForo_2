@@ -276,7 +276,7 @@ return array(
 				<a href="' . $__templater->func('link', array('threads' . (($__templater->method($__vars['thread'], 'isUnread', array()) AND (!$__vars['forceRead'])) ? '/unread' : ''), $__vars['thread'], ), true) . '" class="" data-tp-primary="on" data-xf-init="' . ($__vars['canPreview'] ? 'preview-tooltip' : '') . '" data-preview-url="' . ($__vars['canPreview'] ? $__templater->func('link', array('threads/preview', $__vars['thread'], ), true) : '') . '">' . $__templater->escape($__vars['thread']['title']) . '</a>
 			</div>
 ';
-	if ($__vars['forum'] AND ($__vars['forum']['forum_type_id'] == 'article')) {
+	if ($__vars['forum'] AND $__templater->func('in_array', array($__vars['forum']['node_id'], $__templater->filter($__vars['xf']['options']['fs_thumbnail_applicable_forums'], array(array('split', array()),), false), ), false)) {
 		$__finalCompiled .= '
 
 	<div class="inter-view-des">
@@ -520,10 +520,9 @@ return array(
 
 	<div class="structItem structItem--thread' . ($__vars['thread']['prefix_id'] ? (' is-prefix' . $__templater->escape($__vars['thread']['prefix_id'])) : '') . ($__templater->method($__vars['thread'], 'isIgnored', array()) ? ' is-ignored' : '') . (($__templater->method($__vars['thread'], 'isUnread', array()) AND (!$__vars['forceRead'])) ? ' is-unread' : '') . (($__vars['thread']['discussion_state'] == 'moderated') ? ' is-moderated' : '') . (($__vars['thread']['discussion_state'] == 'deleted') ? ' is-deleted' : '') . ' js-inlineModContainer js-threadListItem-' . $__templater->escape($__vars['thread']['thread_id']) . '" data-author="' . ($__templater->escape($__vars['thread']['User']['username']) ?: $__templater->escape($__vars['thread']['username'])) . '">
 ';
-	if ($__vars['forum'] AND ($__vars['forum']['forum_type_id'] == 'article')) {
+	if ($__vars['forum'] AND $__templater->func('in_array', array($__vars['forum']['node_id'], $__templater->filter($__vars['xf']['options']['fs_thumbnail_applicable_forums'], array(array('split', array()),), false), ), false)) {
 		$__finalCompiled .= '
 
-	<div class="num-top">024</div>
 	<div class="thread-cover">
 		' . '
 		<img src="' . ($__templater->method($__vars['thread'], 'getThumbnailExit', array()) ? $__templater->escape($__templater->method($__vars['thread'], 'getThumbnailPath', array())) : $__templater->func('base_url', array('styles/FS/ThreadThumbnail/no_image.png', true, ), true)) . '" style="width:100%;" />

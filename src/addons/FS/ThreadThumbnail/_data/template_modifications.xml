@@ -185,7 +185,7 @@ a.sorting-button.active {
   <modification type="public" template="forum_view" modification_key="fs_thread_thumbnail_article_change_view" description="fs_thread_thumbnail_article_change_view" execution_order="10" enabled="1" action="preg_replace">
     <find><![CDATA["<div class=\"structItemContainer-group js-threadList\">
 							<xf:if is=\"\$threads is not empty\">.*?</div>"si]]></find>
-    <replace><![CDATA[<xf:if is="$forum And $forum.forum_type_id == 'article'">
+    <replace><![CDATA[<xf:if is="$forum And in_array($forum.node_id,$xf.options.fs_thumbnail_applicable_forums|split)">
 	<div class="structItemContainer-group js-threadList thread-grid">
 		<xf:if is="$threads is not empty">
 			<xf:foreach loop="$threads" value="$thread">
@@ -206,25 +206,13 @@ a.sorting-button.active {
   <modification type="public" template="forum_view" modification_key="fs_thread_thumbnail_sorting" description="fs_thread_thumbnail_sorting" execution_order="10" enabled="1" action="preg_replace">
     <find><![CDATA["<xf:if is=\"\$stickyThreads is not empty\">.*?</xf:if>"si]]></find>
     <replace><![CDATA[$0
-<xf:if is="$forum And $forum.forum_type_id == 'article'">
+<xf:if is="$forum And in_array($forum.node_id,$xf.options.fs_thumbnail_applicable_forums|split)">
 
 	<div class="sorting-heading">
 		<div class="sorting-heading-title">
 			<h1>
-				TF CONTENT
+				{$forum.Node.title}
 			</h1>
-		</div>
-		<div class="sorting">
-			<span>Sort By:</span>
-			<ul>
-				<li>
-					<a class="sorting-button active">All</a>
-				</li>
-				<li>
-					<a class="sorting-button">Interviews</a>
-				</li>
-
-			</ul>
 		</div>
 	</div>
 
@@ -233,7 +221,7 @@ a.sorting-button.active {
   <modification type="public" template="thread_list_macros" modification_key="fs_thread_thumbnail_firstPost_message" description="fs_thread_thumbnail_firstPost_message" execution_order="10" enabled="1" action="preg_replace">
     <find><![CDATA["<div class=\"structItem-title\">.*?</div>"si]]></find>
     <replace><![CDATA[$0
-<xf:if is="$forum And $forum.forum_type_id == 'article'">
+<xf:if is="$forum And in_array($forum.node_id,$xf.options.fs_thumbnail_applicable_forums|split)">
 
 	<div class="inter-view-des">
 		<p>
@@ -246,9 +234,8 @@ a.sorting-button.active {
   <modification type="public" template="thread_list_macros" modification_key="fs_thread_thumbnail_image_display" description="fs_thread_thumbnail_image_display" execution_order="10" enabled="1" action="str_replace">
     <find><![CDATA[<div class="structItem structItem--thread{{ $thread.prefix_id ? ' is-prefix' . $thread.prefix_id : '' }}{{ $thread.isIgnored() ? ' is-ignored' : '' }}{{ ($thread.isUnread() AND !$forceRead) ? ' is-unread' : '' }}{{ $thread.discussion_state == 'moderated' ? ' is-moderated' : '' }}{{ $thread.discussion_state == 'deleted' ? ' is-deleted' : '' }} js-inlineModContainer js-threadListItem-{$thread.thread_id}" data-author="{{ $thread.User.username ?: $thread.username }}">]]></find>
     <replace><![CDATA[$0
-<xf:if is="$forum And $forum.forum_type_id == 'article'">
+<xf:if is="$forum And in_array($forum.node_id,$xf.options.fs_thumbnail_applicable_forums|split)">
 
-	<div class="num-top">024</div>
 	<div class="thread-cover">
 		<xf:comment>	<img src="https://imageupload.io/ib/rT1WB46T1PhMg0k_1699905741.png" style="width:100%;" /> </xf:comment>
 		<img src="{{ $thread.getThumbnailExit() ? $thread.getThumbnailPath() : base_url('styles/FS/ThreadThumbnail/no_image.png',true) }}" style="width:100%;" />

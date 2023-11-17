@@ -107,26 +107,14 @@ return array(
 		}
 		$__finalCompiled .= '
 ';
-		if ($__vars['forum'] AND ($__vars['forum']['forum_type_id'] == 'article')) {
+		if ($__vars['forum'] AND $__templater->func('in_array', array($__vars['forum']['node_id'], $__templater->filter($__vars['xf']['options']['fs_thumbnail_applicable_forums'], array(array('split', array()),), false), ), false)) {
 			$__finalCompiled .= '
 
 	<div class="sorting-heading">
 		<div class="sorting-heading-title">
 			<h1>
-				TF CONTENT
+				' . $__templater->escape($__vars['forum']['Node']['title']) . '
 			</h1>
-		</div>
-		<div class="sorting">
-			<span>Sort By:</span>
-			<ul>
-				<li>
-					<a class="sorting-button active">All</a>
-				</li>
-				<li>
-					<a class="sorting-button">Interviews</a>
-				</li>
-
-			</ul>
 		</div>
 	</div>
 
@@ -135,7 +123,7 @@ return array(
 		$__finalCompiled .= '
 
 						';
-		if ($__vars['forum'] AND ($__vars['forum']['forum_type_id'] == 'article')) {
+		if ($__vars['forum'] AND $__templater->func('in_array', array($__vars['forum']['node_id'], $__templater->filter($__vars['xf']['options']['fs_thumbnail_applicable_forums'], array(array('split', array()),), false), ), false)) {
 			$__finalCompiled .= '
 	<div class="structItemContainer-group js-threadList thread-grid">
 		';
