@@ -139,13 +139,6 @@ return array(
 	}
 	$__compilerTemp2 .= '
 											';
-	if ($__templater->method($__vars['xf']['visitor'], 'canChangeThreadThumbnail', array())) {
-		$__compilerTemp2 .= '
-	<a href="' . $__templater->func('link', array('threads/thumbnail', $__vars['thread'], ), true) . '" data-xf-click="overlay" class="menu-linkRow">' . 'Thread Thumbnail' . '</a>
-';
-	}
-	$__compilerTemp2 .= '
-';
 	if ($__templater->method($__vars['thread'], 'canLockUnlock', array())) {
 		$__compilerTemp2 .= '
 												<a href="' . $__templater->func('link', array('threads/quick-close', $__vars['thread'], ), true) . '"
