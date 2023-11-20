@@ -214,6 +214,36 @@ a.sorting-button.active {
 				{$forum.Node.title}
 			</h1>
 		</div>
+		<xf:if is="count($forum.prefixes)">
+			<div class="sorting">
+				<span>Sort By:</span>
+
+				<ul>
+					<xf:set var="$prefixesGroups" value="{{$forum.getPrefixesGroups()}}"/>
+					<xf:foreach
+								loop="$prefixesGroups.prefixGroups"
+								key="$prefixGroupId"
+								value="$prefixGroup"
+								>
+						<xf:foreach
+									loop="{$prefixesGroups.prefixesGrouped.{$prefixGroupId}}"
+									key="$prefix_id"
+									value="$prefix"
+									>
+							<xf:if is="in_array($prefix_id,$forum.prefix_cache)">
+
+								<li>
+									<a href="{{ link('forums', $forum, {'prefix_id': $prefix_id}) }}" class="sorting-button active">{$prefix.title}</a>
+								</li>
+
+							</xf:if>
+
+						</xf:foreach>
+					</xf:foreach>
+
+				</ul>
+			</div>
+		</xf:if>
 	</div>
 
 </xf:if>]]></replace>
