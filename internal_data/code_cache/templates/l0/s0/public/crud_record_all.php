@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 34e98d87a13bb0f4c129149fea857ad7
+// FROM HASH: 52e9b5e0428441600d4112da85ee8820
 return array(
 'macros' => array('search_menu' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -122,6 +122,7 @@ return array(
 	$__finalCompiled .= '
 
 <div class="block">
+	
 	<div class="block-outer">
 		' . $__templater->callMacro('filter_macro', 'quick_filter', array(
 		'key' => 'crud',
