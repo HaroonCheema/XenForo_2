@@ -110,10 +110,11 @@ display:block;
 	margin:0px;
 	line-height:20px;
 }
-/*
+
 .thread-cover img {
 	max-height:240px;
-}*/
+}
+
 .sorting-heading {
     display: flex;
     align-items: center;
@@ -255,7 +256,7 @@ a.sorting-button.active {
 
 	<div class="inter-view-des">
 		<p>
-			{{ snippet($thread.FirstPost.message, 50, {'stripBbCode': true}) }}...
+			{{ strlen($thread.FirstPost.message) > 113 ? snippet($thread.FirstPost.message, 113, {'stripBbCode': true})."...." : $thread.FirstPost.message}}
 		</p>
 	</div>
 
@@ -266,8 +267,8 @@ a.sorting-button.active {
     <replace><![CDATA[$0
 <xf:if is="$forum And in_array($forum.node_id,$xf.options.fs_thumbnail_applicable_forums|split)">
 
+	<div class="num-top">{$thread.thread_id}</div>
 	<div class="thread-cover">
-		<xf:comment>	<img src="https://imageupload.io/ib/rT1WB46T1PhMg0k_1699905741.png" style="width:100%;" /> </xf:comment>
 		<img src="{{ $thread.getThumbnailExit() ? $thread.getThumbnailPath() : base_url('styles/FS/ThreadThumbnail/no_image.png',true) }}" style="width:100%;" />
 
 
@@ -296,6 +297,18 @@ a.sorting-button.active {
 
 	</div>
 
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="thread_list_macros" modification_key="fs_thread_thumbnail_replace_title" description="fs_thread_thumbnail_replace_title_with_thumbnail_title" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<a href="{{ link\('threads' \. \(\(\$thread\.isUnread\(\) AND !\$forceRead\) \? '\/unread' : ''\), \$thread\) }}" class="" data-tp-primary="on" data-xf-init="{{ \$canPreview \? 'preview-tooltip' : '' }}" data-preview-url="{{ \$canPreview \? link\('threads\/preview', \$thread\) : '' }}">.*?<\/a>/is]]></find>
+    <replace><![CDATA[<xf:if is="$forum And in_array($forum.node_id,$xf.options.fs_thumbnail_applicable_forums|split)">
+	<xf:if is="$thread.thumbnail_title">
+		<a href="{{ link('threads' . (($thread.isUnread() AND !$forceRead) ? '/unread' : ''), $thread) }}" class="" data-tp-primary="on" data-xf-init="{{ $canPreview ? 'preview-tooltip' : '' }}" data-preview-url="{{ $canPreview ? link('threads/preview', $thread) : '' }}">{{ strlen($thread.thumbnail_title) > 40 ? snippet($thread.thumbnail_title, 40, {'stripBbCode': true})."...." : $thread.thumbnail_title}}</a>
+		<xf:else />
+		<a href="{{ link('threads' . (($thread.isUnread() AND !$forceRead) ? '/unread' : ''), $thread) }}" class="" data-tp-primary="on" data-xf-init="{{ $canPreview ? 'preview-tooltip' : '' }}" data-preview-url="{{ $canPreview ? link('threads/preview', $thread) : '' }}">{{ strlen($thread.title) > 40 ? snippet($thread.title, 40, {'stripBbCode': true})."...." : $thread.title}}</a>
+	</xf:if>
+	<xf:else />
+	$0
 </xf:if>]]></replace>
   </modification>
   <modification type="public" template="thread_view" modification_key="fs_thread_add_thumbnail_btn" description="fs_thread_add_thumbnail_btn" execution_order="10" enabled="1" action="str_replace">

@@ -273,7 +273,27 @@ return array(
 				';
 	}
 	$__finalCompiled .= '
-				<a href="' . $__templater->func('link', array('threads' . (($__templater->method($__vars['thread'], 'isUnread', array()) AND (!$__vars['forceRead'])) ? '/unread' : ''), $__vars['thread'], ), true) . '" class="" data-tp-primary="on" data-xf-init="' . ($__vars['canPreview'] ? 'preview-tooltip' : '') . '" data-preview-url="' . ($__vars['canPreview'] ? $__templater->func('link', array('threads/preview', $__vars['thread'], ), true) : '') . '">' . $__templater->escape($__vars['thread']['title']) . '</a>
+				';
+	if ($__vars['forum'] AND $__templater->func('in_array', array($__vars['forum']['node_id'], $__templater->filter($__vars['xf']['options']['fs_thumbnail_applicable_forums'], array(array('split', array()),), false), ), false)) {
+		$__finalCompiled .= '
+	';
+		if ($__vars['thread']['thumbnail_title']) {
+			$__finalCompiled .= '
+		<a href="' . $__templater->func('link', array('threads' . (($__templater->method($__vars['thread'], 'isUnread', array()) AND (!$__vars['forceRead'])) ? '/unread' : ''), $__vars['thread'], ), true) . '" class="" data-tp-primary="on" data-xf-init="' . ($__vars['canPreview'] ? 'preview-tooltip' : '') . '" data-preview-url="' . ($__vars['canPreview'] ? $__templater->func('link', array('threads/preview', $__vars['thread'], ), true) : '') . '">' . (($__templater->func('strlen', array($__vars['thread']['thumbnail_title'], ), false) > 40) ? ($__templater->func('snippet', array($__vars['thread']['thumbnail_title'], 40, array('stripBbCode' => true, ), ), true) . '....') : $__templater->escape($__vars['thread']['thumbnail_title'])) . '</a>
+		';
+		} else {
+			$__finalCompiled .= '
+		<a href="' . $__templater->func('link', array('threads' . (($__templater->method($__vars['thread'], 'isUnread', array()) AND (!$__vars['forceRead'])) ? '/unread' : ''), $__vars['thread'], ), true) . '" class="" data-tp-primary="on" data-xf-init="' . ($__vars['canPreview'] ? 'preview-tooltip' : '') . '" data-preview-url="' . ($__vars['canPreview'] ? $__templater->func('link', array('threads/preview', $__vars['thread'], ), true) : '') . '">' . (($__templater->func('strlen', array($__vars['thread']['title'], ), false) > 40) ? ($__templater->func('snippet', array($__vars['thread']['title'], 40, array('stripBbCode' => true, ), ), true) . '....') : $__templater->escape($__vars['thread']['title'])) . '</a>
+	';
+		}
+		$__finalCompiled .= '
+	';
+	} else {
+		$__finalCompiled .= '
+	<a href="' . $__templater->func('link', array('threads' . (($__templater->method($__vars['thread'], 'isUnread', array()) AND (!$__vars['forceRead'])) ? '/unread' : ''), $__vars['thread'], ), true) . '" class="" data-tp-primary="on" data-xf-init="' . ($__vars['canPreview'] ? 'preview-tooltip' : '') . '" data-preview-url="' . ($__vars['canPreview'] ? $__templater->func('link', array('threads/preview', $__vars['thread'], ), true) : '') . '">' . $__templater->escape($__vars['thread']['title']) . '</a>
+';
+	}
+	$__finalCompiled .= '
 			</div>
 ';
 	if ($__vars['forum'] AND $__templater->func('in_array', array($__vars['forum']['node_id'], $__templater->filter($__vars['xf']['options']['fs_thumbnail_applicable_forums'], array(array('split', array()),), false), ), false)) {
@@ -281,7 +301,7 @@ return array(
 
 	<div class="inter-view-des">
 		<p>
-			' . $__templater->func('snippet', array($__vars['thread']['FirstPost']['message'], 50, array('stripBbCode' => true, ), ), true) . '...
+			' . (($__templater->func('strlen', array($__vars['thread']['FirstPost']['message'], ), false) > 113) ? ($__templater->func('snippet', array($__vars['thread']['FirstPost']['message'], 113, array('stripBbCode' => true, ), ), true) . '....') : $__templater->escape($__vars['thread']['FirstPost']['message'])) . '
 		</p>
 	</div>
 
@@ -523,8 +543,8 @@ return array(
 	if ($__vars['forum'] AND $__templater->func('in_array', array($__vars['forum']['node_id'], $__templater->filter($__vars['xf']['options']['fs_thumbnail_applicable_forums'], array(array('split', array()),), false), ), false)) {
 		$__finalCompiled .= '
 
+	<div class="num-top">' . $__templater->escape($__vars['thread']['thread_id']) . '</div>
 	<div class="thread-cover">
-		' . '
 		<img src="' . ($__templater->method($__vars['thread'], 'getThumbnailExit', array()) ? $__templater->escape($__templater->method($__vars['thread'], 'getThumbnailPath', array())) : $__templater->func('base_url', array('styles/FS/ThreadThumbnail/no_image.png', true, ), true)) . '" style="width:100%;" />
 
 

@@ -112,10 +112,11 @@ display:block;
 	margin:0px;
 	line-height:20px;
 }
-/*
+
 .thread-cover img {
 	max-height:240px;
-}*/
+}
+
 .sorting-heading {
     display: flex;
     align-items: center;

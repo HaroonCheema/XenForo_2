@@ -1,15 +1,21 @@
 {
+    "public/fs_thread_add_thumbnail_btn.json": {
+        "hash": "c768ddfa3c5f2623f3eb8ce43d159c83"
+    },
     "public/fs_thread_thumbnail_add_extra_less_style.json": {
-        "hash": "2bf52a3be26ec002cb4afea65dcfb52b"
+        "hash": "93dfb0fb0e21050bbdefbae85ae7b533"
     },
     "public/fs_thread_thumbnail_article_change_view.json": {
         "hash": "6ecd8b7afd4a17f584dd1bf8cc09a057"
     },
     "public/fs_thread_thumbnail_firstPost_message.json": {
-        "hash": "d3dac872b3ba34f8457e3a4ad75712f5"
+        "hash": "95101f8f50eec187df7a7400f9aef18e"
     },
     "public/fs_thread_thumbnail_image_display.json": {
-        "hash": "b4db9d755b31ef884340947cf4d557c2"
+        "hash": "37fbea68e8ca8a2503c44ddf47416075"
+    },
+    "public/fs_thread_thumbnail_replace_title.json": {
+        "hash": "5565d8ca2da9e4a2850d8558d33c7242"
     },
     "public/fs_thread_thumbnail_sorting.json": {
         "hash": "b35e8acebcbd5b5c701c8b6a0bb4e3bd"
