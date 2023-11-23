@@ -549,7 +549,7 @@ return array(
 	))) . '
 
 			';
-	if ($__templater->test($__vars['thread']['Movie'], 'empty', array()) OR (!$__templater->method($__vars['post'], 'isFirstPost', array()))) {
+	if ($__templater->test($__vars['thread']['TV'], 'empty', array()) OR (!$__templater->method($__vars['post'], 'isFirstPost', array()))) {
 		$__compilerTemp1 .= '
 	';
 		if ($__templater->method($__vars['thread'], 'canReply', array()) OR $__templater->method($__vars['thread'], 'canReplyPreReg', array())) {
@@ -648,6 +648,7 @@ return array(
 			';
 	}
 	$__compilerTemp2 .= '
+			' . $__templater->includeTemplate('snog_tv_post_macros_action_bar', $__vars) . '
 			';
 	if ($__vars['post']['edit_count'] AND $__templater->method($__vars['post'], 'canViewHistory', array())) {
 		$__compilerTemp2 .= '

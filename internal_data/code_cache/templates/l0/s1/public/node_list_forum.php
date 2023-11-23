@@ -94,10 +94,20 @@ return array(
 
 	<div class="node node--id' . $__templater->escape($__vars['node']['node_id']) . ' node--depth' . $__templater->escape($__vars['depth']) . ' node--forum ' . ($__vars['extras']['hasNew'] ? 'node--unread' : 'node--read') . '">
 		<div class="node-body">
-			<span class="node-icon" aria-hidden="true">
+			';
+	if (!$__templater->test($__vars['node']['TVForum'], 'empty', array())) {
+		$__finalCompiled .= '
+	' . $__templater->includeTemplate('snog_tv_node_poster', $__vars) . '
+';
+	} else {
+		$__finalCompiled .= '
+	<span class="node-icon" aria-hidden="true">
 				' . $__templater->fontAwesome(($__templater->escape($__templater->method($__vars['node']['Data']['TypeHandler'], 'getTypeIconClass', array())) ?: 'fa-comments'), array(
-	)) . '
+		)) . '
 			</span>
+';
+	}
+	$__finalCompiled .= '
 			<div class="node-main js-nodeMain">
 				';
 	if ($__vars['chooseName']) {
@@ -122,6 +132,13 @@ return array(
 					<a href="' . $__templater->func('link', array('forums', $__vars['node'], ), true) . '" data-xf-init="' . (($__vars['descriptionDisplay'] == 'tooltip') ? 'element-tooltip' : '') . '" data-shortcut="node-description">' . $__templater->escape($__vars['node']['title']) . '</a>
 				</h3>
 				';
+	if (!$__templater->test($__vars['node']['TVForum'], 'empty', array())) {
+		$__finalCompiled .= '
+	' . $__templater->includeTemplate('snog_tv_node_info', $__vars) . '
+';
+	}
+	$__finalCompiled .= '
+';
 	if (($__vars['descriptionDisplay'] != 'none') AND $__vars['node']['description']) {
 		$__finalCompiled .= '
 					<div class="node-description ' . (($__vars['descriptionDisplay'] == 'tooltip') ? 'node-description--tooltip js-nodeDescTooltip' : '') . '">' . $__templater->filter($__vars['node']['description'], array(array('raw', array()),), true) . '</div>
@@ -185,6 +202,16 @@ return array(
 	if (!$__vars['extras']['privateInfo']) {
 		$__finalCompiled .= '
 				<div class="node-stats">
+';
+		if ((!$__vars['node']['TVForum']['tv_parent_id']) AND $__vars['node']['TVForum']['tv_id']) {
+			$__finalCompiled .= '
+	' . $__templater->callMacro('rating_macros', 'stars', array(
+				'rating' => $__vars['node']['TVForum']['tv_rating'],
+			), $__vars) . '
+';
+		}
+		$__finalCompiled .= '
+
 					<dl class="pairs pairs--rows">
 						<dt>' . 'Threads' . '</dt>
 						<dd>' . $__templater->filter($__vars['extras']['discussion_count'], array(array('number_short', array(1, )),), true) . '</dd>

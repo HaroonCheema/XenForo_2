@@ -445,15 +445,15 @@ return array(
 		}
 	}
 	$__compilerTemp22 = '';
-	if (!$__templater->func('in_array', array('', $__vars['xf']['options']['tmdbthreads_watchProviderRegions'], ), false)) {
+	if (!$__templater->func('in_array', array('', $__vars['xf']['options']['TvThreads_watchProviderRegions'], ), false)) {
 		$__compilerTemp22 .= '
 				';
-		$__compilerTemp23 = $__templater->mergeChoiceOptions(array(), $__vars['snogMoviesWatchRegions']);
+		$__compilerTemp23 = $__templater->mergeChoiceOptions(array(), $__vars['snogTvWatchRegions']);
 		$__compilerTemp22 .= $__templater->formSelectRow(array(
-			'name' => 'option[snog_movies_tmdb_watch_region]',
-			'value' => $__vars['user']['Option']['snog_movies_tmdb_watch_region'],
+			'name' => 'option[snog_tv_tmdb_watch_region]',
+			'value' => $__vars['user']['Option']['snog_tv_tmdb_watch_region'],
 		), $__compilerTemp23, array(
-			'label' => 'Movie watch providers default region',
+			'label' => 'TV watch providers default region',
 		)) . '
 			';
 	}

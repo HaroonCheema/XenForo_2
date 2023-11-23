@@ -9,5 +9,6 @@ return array (
   'thread_type.redirect' => 'Redirect',
   'thread_type.resource' => 'Resource',
   'thread_type.snog_movies_movie' => 'TMDb Movie',
+  'thread_type.snog_tv' => 'TMDb TV',
   'thread_type.suggestion' => 'Suggestion',
 );

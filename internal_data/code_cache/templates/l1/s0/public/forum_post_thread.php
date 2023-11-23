@@ -143,21 +143,8 @@ return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
 	$__finalCompiled = '';
-	if (($__vars['forum']['forum_type_id'] == 'snog_movies_movie') AND (!$__vars['xf']['options']['tmdbthreads_mix'])) {
-		$__finalCompiled .= '
-	';
-		$__templater->pageParams['pageTitle'] = $__templater->preEscaped('Post movie');
-		$__finalCompiled .= '
-';
-	} else {
-		$__finalCompiled .= '
-';
-		$__templater->pageParams['pageTitle'] = $__templater->preEscaped('Post thread');
-		$__finalCompiled .= '	
-';
-	}
+	$__templater->pageParams['pageTitle'] = $__templater->preEscaped('Post thread');
 	$__finalCompiled .= '
-
 
 
 ';
@@ -338,7 +325,7 @@ return array(
 	)) . '
 	</div>
 ', array(
-		'action' => $__templater->func('link', array('forums/post-thread', $__vars['forum'], ), false),
+		'action' => ((!$__templater->test($__vars['forum']['TVForum'], 'empty', array()) AND $__vars['forum']['TVForum']['tv_parent_id']) ? $__templater->func('link', array('forums/newepisode', $__vars['forum'], ), false) : $__templater->func('link', array('forums/post-thread', $__vars['forum'], ), false)),
 		'ajax' => 'true',
 		'class' => 'block',
 		'data-xf-init' => 'attachment-manager',
