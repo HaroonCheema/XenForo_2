@@ -444,27 +444,24 @@ return array(
 			);
 		}
 	}
-	$__compilerTemp22 = $__templater->mergeChoiceOptions(array(), $__vars['timeZones']);
-	$__compilerTemp23 = '';
-	if ($__vars['user']['user_id']) {
-		$__compilerTemp23 .= '
-				<li data-href="' . $__templater->func('link', array('users/extra', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="user-extras">
-					<div class="block-body block-row">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
-				</li>
+	$__compilerTemp22 = '';
+	if (!$__templater->func('in_array', array('', $__vars['xf']['options']['tmdbthreads_watchProviderRegions'], ), false)) {
+		$__compilerTemp22 .= '
+				';
+		$__compilerTemp23 = $__templater->mergeChoiceOptions(array(), $__vars['snogMoviesWatchRegions']);
+		$__compilerTemp22 .= $__templater->formSelectRow(array(
+			'name' => 'option[snog_movies_tmdb_watch_region]',
+			'value' => $__vars['user']['Option']['snog_movies_tmdb_watch_region'],
+		), $__compilerTemp23, array(
+			'label' => 'Movie watch providers default region',
+		)) . '
 			';
 	}
-	$__compilerTemp24 = '';
-	if ($__vars['user']['user_id']) {
-		$__compilerTemp24 .= '
-				<li data-href="' . $__templater->func('link', array('users/user-ips', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="user-ips">
-					<div class="block-body block-row">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
-				</li>
-			';
-	}
+	$__compilerTemp24 = $__templater->mergeChoiceOptions(array(), $__vars['timeZones']);
 	$__compilerTemp25 = '';
 	if ($__vars['user']['user_id']) {
 		$__compilerTemp25 .= '
-				<li data-href="' . $__templater->func('link', array('users/change-log', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="user-changes">
+				<li data-href="' . $__templater->func('link', array('users/extra', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="user-extras">
 					<div class="block-body block-row">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
 				</li>
 			';
@@ -472,6 +469,22 @@ return array(
 	$__compilerTemp26 = '';
 	if ($__vars['user']['user_id']) {
 		$__compilerTemp26 .= '
+				<li data-href="' . $__templater->func('link', array('users/user-ips', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="user-ips">
+					<div class="block-body block-row">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
+				</li>
+			';
+	}
+	$__compilerTemp27 = '';
+	if ($__vars['user']['user_id']) {
+		$__compilerTemp27 .= '
+				<li data-href="' . $__templater->func('link', array('users/change-log', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="user-changes">
+					<div class="block-body block-row">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
+				</li>
+			';
+	}
+	$__compilerTemp28 = '';
+	if ($__vars['user']['user_id']) {
+		$__compilerTemp28 .= '
 				<li data-href="' . $__templater->func('link', array('permissions/users', $__vars['user'], array('tabbed' => 1, ), ), true) . '" role="tabpanel" aria-labelledby="user-permissions">
 					<div class="block-body block-row">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
 				</li>
@@ -759,10 +772,12 @@ return array(
 		'label' => 'Language',
 	)) . '
 
-					' . $__templater->formSelectRow(array(
+								' . $__compilerTemp22 . '
+
+' . $__templater->formSelectRow(array(
 		'name' => 'user[timezone]',
 		'value' => $__vars['user']['timezone'],
-	), $__compilerTemp22, array(
+	), $__compilerTemp24, array(
 		'label' => 'Time zone',
 	)) . '
 
@@ -943,13 +958,13 @@ return array(
 	)) . '
 			</li>
 
-			' . $__compilerTemp23 . '
-
-			' . $__compilerTemp24 . '
-
 			' . $__compilerTemp25 . '
 
 			' . $__compilerTemp26 . '
+
+			' . $__compilerTemp27 . '
+
+			' . $__compilerTemp28 . '
 			' . '
 		</ul>
 	', array(

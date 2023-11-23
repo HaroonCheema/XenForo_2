@@ -24,6 +24,8 @@ return array (
   'widget_def.siropu_chat_rooms' => 'Chat: Rooms',
   'widget_def.siropu_chat_top_chatters' => 'Chat: Top chatters',
   'widget_def.siropu_chat_users' => 'Chat: Active users',
+  'widget_def.snog_movies_poster_slider' => '[OzzModz] TMDb Movie Thread Starter: Poster Carousel',
+  'widget_def.snog_movies_slider' => '[OzzModz] TMDb Movie Thread Starter: Detailed carousel',
   'widget_def.template_syntax' => 'Template syntax',
   'widget_def.thread_poll' => 'Thread poll',
   'widget_def.tl_groups_event' => '[tl] Social Groups: Events',

@@ -50,6 +50,7 @@ return array (
   'option_group.sharing' => 'Sharing',
   'option_group.siropuChat' => 'Chat',
   'option_group.sitemap' => 'XML sitemap generation',
+  'option_group.snogMovies' => '[OzzModz] TMDb Movie Thread Starter',
   'option_group.spam' => 'Spam management',
   'option_group.stats' => 'Statistics and metrics',
   'option_group.tagging' => 'Content tagging',

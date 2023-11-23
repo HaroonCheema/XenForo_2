@@ -35,6 +35,7 @@ return array (
   'permission_interface.siropuChatAdmin' => 'Chat admin permissions',
   'permission_interface.siropuChatModerator' => 'Chat moderator permissions',
   'permission_interface.siropuChatUser' => 'Chat user permissions',
+  'permission_interface.snog_movies' => '[OzzModz] TMDb Movie Thread Starter',
   'permission_interface.tl_groups_general' => '[tl] Social Groups: General Permissions',
   'permission_interface.tl_groups_moderator' => '[tl] Social Groups: Moderator Permissions',
   'permission_interface.trader' => 'Trader',

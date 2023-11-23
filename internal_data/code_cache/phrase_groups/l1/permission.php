@@ -269,6 +269,7 @@ return array (
   'permission.siropuChat_viewSanctioned' => 'View sanctioned users',
   'permission.siropuChat_viewTopChatters' => 'View top chatters',
   'permission.siropuChat_whisper' => 'Can whisper',
+  'permission.snog_movies_updatePersons' => 'Can update persons data',
   'permission.tl_groups_addClosedGroups' => 'Add closed groups',
   'permission.tl_groups_addSecretGroups' => 'Add secret groups',
   'permission.tl_groups_approveUnapprove' => 'Approve/unapprove groups',

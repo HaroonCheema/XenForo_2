@@ -139,13 +139,6 @@ return array(
 	}
 	$__compilerTemp2 .= '
 											';
-	if ($__templater->method($__vars['xf']['visitor'], 'canChangeThreadThumbnail', array())) {
-		$__compilerTemp2 .= '
-	<a href="' . $__templater->func('link', array('threads/thumbnail', $__vars['thread'], ), true) . '" data-xf-click="overlay" class="menu-linkRow">' . 'Thread Thumbnail' . '</a>
-';
-	}
-	$__compilerTemp2 .= '
-';
 	if ($__templater->method($__vars['thread'], 'canLockUnlock', array())) {
 		$__compilerTemp2 .= '
 												<a href="' . $__templater->func('link', array('threads/quick-close', $__vars['thread'], ), true) . '"
@@ -226,6 +219,16 @@ return array(
 											';
 	}
 	$__compilerTemp2 .= '
+											';
+	if ((($__templater->func('property', array('snog_movies_posterUpdateButtonPosition', ), false) == 'thread_tools_menu') AND ($__vars['thread']['Movie'] AND ($__vars['xf']['visitor']['is_admin'] OR $__vars['xf']['visitor']['is_moderator'])))) {
+		$__compilerTemp2 .= '
+												<a href="' . $__templater->func('link', array('movies/poster', $__vars['thread']['Movie'], ), true) . '" data-xf-click="overlay" class="menu-linkRow">
+													' . 'Check for new poster' . '
+												</a>
+											';
+	}
+	$__compilerTemp2 .= '
+
 											' . '
 											';
 	if ($__templater->method($__vars['thread'], 'canUseInlineModeration', array())) {
