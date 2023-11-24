@@ -19,6 +19,15 @@ class Setup extends AbstractSetup
 
 			$table->addColumn('thumbnail_ext', 'varchar', 20)->nullable();
 			$table->addColumn('thumbnail_title', 'varchar', 200)->nullable();
+			$table->addColumn('thumb_unique_id', 'int')->setDefault(0);
+		});
+	}
+
+	public function upgrade1020600Step1()
+	{
+		$this->alterTable('xf_thread', function (\XF\Db\Schema\Alter $table) {
+
+			$table->addColumn('thumb_unique_id', 'int')->setDefault(0);
 		});
 	}
 
@@ -28,6 +37,7 @@ class Setup extends AbstractSetup
 
 			$table->dropColumns(['thumbnail_ext']);
 			$table->dropColumns(['thumbnail_title']);
+			$table->dropColumns(['thumb_unique_id']);
 		});
 
 		$directory = "data/ThreadThumbnail";

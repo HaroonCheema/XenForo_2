@@ -14,6 +14,7 @@ class Thread extends XFCP_Thread
 
         $structure->columns['thumbnail_title'] =  ['type' => self::STR, 'default' => null];
         $structure->columns['thumbnail_ext'] =  ['type' => self::STR, 'default' => null];
+        $structure->columns['thumb_unique_id'] =  ['type' => self::UINT, 'default' => 0];
 
 
         return $structure;

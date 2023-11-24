@@ -36,6 +36,14 @@ return array(
 					</a>
 				';
 	}
+	$__compilerTemp5 = '';
+	if ($__templater->method($__vars['xf']['visitor'], 'hasPermission', array('klUI', 'klUISelfDeactivate', ))) {
+		$__compilerTemp5 .= '
+	<a class="blockLink ' . (($__vars['pageSelected'] == 'self_deactivate') ? 'is-selected' : '') . '" href="' . $__templater->func('link', array('account/thui-deactivate/', ), true) . '">
+		' . 'Deactivate account' . '
+	</a>
+';
+	}
 	$__templater->modifySideNavHtml(null, '
 	<div class="block">
 		<div class="block-container">
@@ -86,6 +94,7 @@ return array(
 		<div class="block-container">
 			<div class="block-body">
 				<a href="' . $__templater->func('link', array('logout', null, array('t' => $__templater->func('csrf_token', array(), false), ), ), true) . '" class="blockLink">' . 'Log out' . '</a>
+' . $__compilerTemp5 . '
 			</div>
 		</div>
 	</div>

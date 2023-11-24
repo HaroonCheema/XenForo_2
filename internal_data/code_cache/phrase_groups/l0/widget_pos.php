@@ -34,6 +34,8 @@ return array (
   'widget_pos.thread_view_below_messages' => 'Thread view: Below messages',
   'widget_pos.thread_view_below_quick_reply' => 'Thread view: Below quick reply',
   'widget_pos.thread_view_sidebar' => 'Thread view: Sidebar',
+  'widget_pos.thuserimprovements_trophy_category_view_sidebar' => '[TH] User Improvements: Trophy category view: Sidebar',
+  'widget_pos.thuserimprovements_trophy_view_sidebar' => '[TH] User Improvements: Trophy view: Sidebar',
   'widget_pos.tlg_category_view' => '[tl] Social Groups: Category view sidebar (left)',
   'widget_pos.tlg_group_index' => '[tl] Social Groups: Group index sidebar (left)',
   'widget_pos.tlg_group_view_sidenav' => '[tl] Social Groups: Group view sidebar (left)',

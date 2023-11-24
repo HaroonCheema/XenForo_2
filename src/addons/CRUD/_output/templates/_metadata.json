@@ -1,4 +1,9 @@
 {
+    "admin/connected_account_provider_th_trakt.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "a7bf856494ff92c9b4899fd742284339"
+    },
     "public/crud_record_all.html": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",

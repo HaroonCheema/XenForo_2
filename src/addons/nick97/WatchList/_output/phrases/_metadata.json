@@ -1,0 +1,20 @@
+{
+    "con_acc.nick_trakt.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "a5570c8009900fc3ddb40cfdc44d42f4"
+    },
+    "nick97_trakt_client_id_explain.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "235bcf3876bd436848c84475fcaeebee"
+    },
+    "nick97_trakt_client_secret_explain.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "9a83c1ecd1e242b1211cc6b8e3ccd2d5"
+    }
+}

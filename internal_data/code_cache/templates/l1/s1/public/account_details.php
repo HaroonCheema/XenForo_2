@@ -134,6 +134,21 @@ return array(
 				<hr class="formRowSep" />
 
 				';
+		if ($__vars['xf']['options']['klUiProfileViews'] AND $__templater->method($__vars['xf']['visitor'], 'hasPermission', array('klUI', 'klUIResetProfileViews', ))) {
+			$__compilerTemp7 .= '
+		' . $__templater->formCheckBoxRow(array(
+			), array(array(
+				'value' => '1',
+				'name' => 'reset_profile_views',
+				'label' => 'Reset profile view counter',
+				'_type' => 'option',
+			)), array(
+			)) . '
+';
+		}
+		$__compilerTemp7 .= '
+<hr class="formRowSep" />
+';
 		if (($__vars['xf']['visitor']['Profile']['dob_day'] AND ($__vars['xf']['visitor']['Profile']['dob_month'] AND $__vars['xf']['visitor']['Profile']['dob_year']))) {
 			$__compilerTemp7 .= '
 					';
@@ -253,7 +268,9 @@ return array(
 		'showExplain' => true,
 	), $__vars) . '
 
-			' . $__compilerTemp5 . '
+			' . $__templater->includeTemplate('thuserimprovements_username_color_select', $__vars) . '
+' . $__templater->includeTemplate('thuserimprovements_change_username', $__vars) . '
+' . $__compilerTemp5 . '
 
 			' . $__compilerTemp6 . '
 

@@ -8,8 +8,10 @@
   <phrase title="fs_thread_thumbnail_img" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Thumbnail Image]]></phrase>
   <phrase title="fs_thread_thumbnail_required" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Required]]></phrase>
   <phrase title="fs_thread_thumbnail_title" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Thumbnail Title]]></phrase>
+  <phrase title="fs_thread_thumbnail_unique_id" version_id="1020500" version_string="1.2.5 Alpha"><![CDATA[Id]]></phrase>
   <phrase title="fs_thumbnail_image_demension_required" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Image dimension required in {width} * {height} ]]></phrase>
   <phrase title="fs_thumbnail_image_required" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Thumbnail Image Required]]></phrase>
+  <phrase title="fs_thumbnail_only_numbers" version_id="1020500" version_string="1.2.5 Alpha"><![CDATA[Only numeric value allowed...!]]></phrase>
   <phrase title="fs_thumbnail_title_required" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Thumbnail Title required]]></phrase>
   <phrase title="option.fs_thumbnail_applicable_forums" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Applicable Forums]]></phrase>
   <phrase title="option.thumbnailImageDimensions" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Minimum Thumbnail Image dimensions]]></phrase>

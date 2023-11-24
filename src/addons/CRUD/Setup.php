@@ -25,6 +25,12 @@ class Setup extends AbstractSetup
             $table->addColumn('rollNo', 'int');
             // $table->addColumn('rollNo', 'int')->setDefault(0);
         });
+
+    }
+
+
+    public function uninstallStep1()
+    {
     }
 }
 

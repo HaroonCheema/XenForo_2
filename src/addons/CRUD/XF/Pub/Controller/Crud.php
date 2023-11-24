@@ -157,9 +157,68 @@ class Crud extends AbstractController
 
     // http://localhost/xenforo/index.php?crud/
 
+    protected function CheckRequestError($statusCode)
+    {
+        // if ($statusCode == 404) {
+        //     throw new \XF\PrintableException(\XF::phrase('fs_bunny_request_not_found'));
+        // } elseif ($statusCode == 401) {
+        //     throw new \XF\PrintableException(\XF::phrase('fs_bunny_request_unauthorized'));
+        // } elseif ($statusCode == 415) {
+        //     throw new \XF\PrintableException(\XF::phrase('fs_bunny_request_unsported_media'));
+        // } elseif ($statusCode == 400) {
+        //     throw new \XF\PrintableException(\XF::phrase('fs_bunny_request_empty_body'));
+        // } elseif ($statusCode == 405) {
+        //     throw new \XF\PrintableException(\XF::phrase('fs_bunny_request_method_not_allowed'));
+        // } elseif ($statusCode == 500) {
+        //     throw new \XF\PrintableException(\XF::phrase('fs_bunny_request_server_error1'));
+        // }
+    }
+
 
     public function actionIndex(ParameterBag $params)
     {
+
+        $pattern = '/^[0-9]+$/';
+        $numericValue = 'df;lgkdf123oierut';
+
+        var_dump(preg_match($pattern, $numericValue));
+        exit;
+
+
+
+        // $curl = curl_init();
+
+        // $params = [
+        //     'response_type' => 'code',
+        //     'client_id' => '1137c10c70622f8cbb2056b83c94111443fbf06560db4fb099b9a9db5adb16b7',
+        //     'redirect_uri' => 'http://localhost/xenforo/index.php?crud/',
+        // ];
+
+        // $queryString = http_build_query($params);
+
+        // curl_setopt($curl, CURLOPT_URL, "https://trakt.tv/oauth/authorize?" . $queryString);
+        // curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        // curl_setopt($curl, CURLOPT_HTTPHEADER, [
+        //     'Content-Type: application/json',
+        // ]);
+
+        // $server_output = curl_exec($curl);
+
+        // $resCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+
+        // $this->CheckRequestError($resCode);
+        // exit;
+
+
+        // curl_close($curl);
+
+        // $getVideoRes = json_decode($server_output, true);
+
+        // echo "<pre>";
+        // var_dump($getVideoRes);
+        // exit;
+
+        // return $getVideoRes["encodeProgress"] >= 50 ? true : false;
 
         // $filePath = 'e-dewan
 

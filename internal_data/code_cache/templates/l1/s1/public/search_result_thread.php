@@ -8,15 +8,26 @@ return array(
 	<div class="contentRow ' . ((!$__templater->method($__vars['thread'], 'isVisible', array())) ? 'is-deleted' : '') . '">
 		<span class="contentRow-figure">
 			';
-	if (!$__templater->test($__vars['thread']['TV'], 'empty', array())) {
+	if (!$__templater->test($__vars['thread']['Movie'], 'empty', array())) {
 		$__finalCompiled .= '
-				' . $__templater->includeTemplate('snog_tv_search_result_thread_poster', $__vars) . '
+				' . $__templater->includeTemplate('snog_movie_search_result_thread_poster', $__vars) . '
 			';
 	} else {
 		$__finalCompiled .= '
+			';
+		if (!$__templater->test($__vars['thread']['TV'], 'empty', array())) {
+			$__finalCompiled .= '
+				' . $__templater->includeTemplate('snog_tv_search_result_thread_poster', $__vars) . '
+			';
+		} else {
+			$__finalCompiled .= '
 			' . $__templater->func('avatar', array($__vars['thread']['User'], 's', false, array(
-			'defaultname' => $__vars['thread']['username'],
-		))) . '
+				'defaultname' => $__vars['thread']['username'],
+			))) . '
+			';
+		}
+		$__finalCompiled .= '
+
 			';
 	}
 	$__finalCompiled .= '

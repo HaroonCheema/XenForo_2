@@ -143,8 +143,21 @@ return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
 	$__finalCompiled = '';
-	$__templater->pageParams['pageTitle'] = $__templater->preEscaped('Post thread');
+	if (($__vars['forum']['forum_type_id'] == 'snog_movies_movie') AND (!$__vars['xf']['options']['tmdbthreads_mix'])) {
+		$__finalCompiled .= '
+	';
+		$__templater->pageParams['pageTitle'] = $__templater->preEscaped('Post movie');
+		$__finalCompiled .= '
+';
+	} else {
+		$__finalCompiled .= '
+';
+		$__templater->pageParams['pageTitle'] = $__templater->preEscaped('Post thread');
+		$__finalCompiled .= '	
+';
+	}
 	$__finalCompiled .= '
+
 
 
 ';

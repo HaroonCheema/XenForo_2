@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 19b33a3a8d5d12bf5c2420e2793f1fe8
+// FROM HASH: 4d60f364f06905676a98b7d4c0b20dd3
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -28,6 +28,12 @@ return array(
 	), array(
 		'label' => 'Thumbnail Title',
 		'hint' => 'Required',
+	)) . '
+			' . $__templater->formTextBoxRow(array(
+		'value' => $__vars['thread']['thumb_unique_id'],
+		'name' => 'thumb_unique_id',
+	), array(
+		'label' => 'Id',
 	)) . '
 			' . $__templater->formUploadRow(array(
 		'name' => 'upload',

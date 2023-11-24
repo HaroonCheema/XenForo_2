@@ -243,33 +243,18 @@ return array(
 	$__compilerTemp1 .= '
 
 			';
-	if (!$__templater->test($__vars['trophies'], 'empty', array()) AND $__vars['xf']['options']['enableTrophies']) {
+	if (!$__vars['xf']['options']['klUISeparateTrophyTab']) {
 		$__compilerTemp1 .= '
+	';
+		if (!$__templater->test($__vars['trophies'], 'empty', array()) AND $__vars['xf']['options']['enableTrophies']) {
+			$__compilerTemp1 .= '
 				<div class="block-row block-row--separated">
-					<h4 class="block-textHeader">' . 'Trophies' . '</h4>
-					<ol class="listPlain">
-						';
-		if ($__templater->isTraversable($__vars['trophies'])) {
-			foreach ($__vars['trophies'] AS $__vars['trophy']) {
-				$__compilerTemp1 .= '
-							<li class="block-row">
-								<div class="contentRow">
-									<span class="contentRow-figure contentRow-figure--text contentRow-figure--fixedSmall">' . $__templater->escape($__vars['trophy']['Trophy']['trophy_points']) . '</span>
-									<div class="contentRow-main">
-										<span class="contentRow-extra">' . $__templater->func('date_dynamic', array($__vars['trophy']['award_date'], array(
-				))) . '</span>
-										<h2 class="contentRow-header">' . $__templater->escape($__vars['trophy']['Trophy']['title']) . '</h2>
-										<div class="contentRow-minor">' . $__templater->filter($__vars['trophy']['Trophy']['description'], array(array('raw', array()),), true) . '</div>
-									</div>
-								</div>
-							</li>
-						';
-			}
-		}
-		$__compilerTemp1 .= '
-					</ol>
+					' . $__templater->includeTemplate('thuserimprovements_member_about', $__vars) . '
 				</div>
 			';
+		}
+		$__compilerTemp1 .= '
+';
 	}
 	$__compilerTemp1 .= '
 		';

@@ -1,7 +1,30 @@
 <?php
 // FROM HASH: 426ea89559d91425ccfdf0ce408b4684
 return array(
-'extensions' => array('above_node_list' => function($__templater, array $__vars, $__extensions = null)
+'extensions' => array('structured_data_extra_params' => function($__templater, array $__vars, $__extensions = null)
+{
+	return array();
+},
+'structured_data' => function($__templater, array $__vars, $__extensions = null)
+{
+	$__finalCompiled = '';
+		$__finalCompiled .= '
+		';
+	$__vars['ldJson'] = $__templater->method($__vars['forum'], 'getLdStructuredData', array($__vars['threads'], $__vars['page'], $__templater->renderExtension('structured_data_extra_params', $__vars, $__extensions), ));
+	$__finalCompiled .= '
+		';
+	if ($__vars['ldJson']) {
+		$__finalCompiled .= '
+			<script type="application/ld+json">
+				' . $__templater->filter($__vars['ldJson'], array(array('json', array(true, )),array('raw', array()),), true) . '
+			</script>
+		';
+	}
+	$__finalCompiled .= '
+	';
+	return $__finalCompiled;
+},
+'above_node_list' => function($__templater, array $__vars, $__extensions = null)
 {
 	$__finalCompiled = '';
 	
@@ -112,38 +135,137 @@ return array(
 						';
 		}
 		$__finalCompiled .= '
+';
+		if ($__vars['forum'] AND $__templater->func('in_array', array($__vars['forum']['node_id'], $__templater->filter($__vars['xf']['options']['fs_thumbnail_applicable_forums'], array(array('split', array()),), false), ), false)) {
+			$__finalCompiled .= '
 
-						<div class="structItemContainer-group js-threadList">
-							';
-		if (!$__templater->test($__vars['threads'], 'empty', array())) {
-			$__finalCompiled .= '
-								';
-			if ($__templater->isTraversable($__vars['threads'])) {
-				foreach ($__vars['threads'] AS $__vars['thread']) {
-					$__finalCompiled .= '
-									' . $__templater->callMacro(null, ($__vars['templateOverrides']['thread_list_macro'] ?: 'thread_list_macros::item'), $__templater->combineMacroArgumentAttributes($__vars['templateOverrides']['thread_list_macro_args'], array(
-						'thread' => $__vars['thread'],
-						'forum' => $__vars['forum'],
-					)), $__vars) . '
-								';
-				}
-			}
-			$__finalCompiled .= '
-								';
-			if ($__vars['showDateLimitDisabler']) {
+	<div class="sorting-heading">
+		<div class="sorting-heading-title">
+			<h1>
+				' . $__templater->escape($__vars['forum']['Node']['title']) . '
+			</h1>
+		</div>
+		';
+			if ($__templater->func('count', array($__vars['forum']['prefixes'], ), false)) {
 				$__finalCompiled .= '
-									' . $__templater->callMacro(null, 'date_limit_disabler', array(
-					'forum' => $__vars['forum'],
-					'page' => $__vars['page'],
-					'filters' => $__vars['filters'],
-				), $__vars) . '
-								';
+			<div class="sorting">
+				<span>Sort By:</span>
+
+				<ul>
+					';
+				$__vars['prefixesGroups'] = $__templater->method($__vars['forum'], 'getPrefixesGroups', array());
+				$__finalCompiled .= '
+					';
+				if ($__templater->isTraversable($__vars['prefixesGroups']['prefixGroups'])) {
+					foreach ($__vars['prefixesGroups']['prefixGroups'] AS $__vars['prefixGroupId'] => $__vars['prefixGroup']) {
+						$__finalCompiled .= '
+						';
+						if ($__templater->isTraversable($__vars['prefixesGroups']['prefixesGrouped'][$__vars['prefixGroupId']])) {
+							foreach ($__vars['prefixesGroups']['prefixesGrouped'][$__vars['prefixGroupId']] AS $__vars['prefix_id'] => $__vars['prefix']) {
+								$__finalCompiled .= '
+							';
+								if ($__templater->func('in_array', array($__vars['prefix_id'], $__vars['forum']['prefix_cache'], ), false)) {
+									$__finalCompiled .= '
+
+								<li>
+									<a href="' . $__templater->func('link', array('forums', $__vars['forum'], array('prefix_id' => $__vars['prefix_id'], ), ), true) . '" class="sorting-button active">' . $__templater->escape($__vars['prefix']['title']) . '</a>
+								</li>
+
+							';
+								}
+								$__finalCompiled .= '
+
+						';
+							}
+						}
+						$__finalCompiled .= '
+					';
+					}
+				}
+				$__finalCompiled .= '
+
+				</ul>
+			</div>
+		';
 			}
 			$__finalCompiled .= '
-							';
+	</div>
+
+';
 		}
 		$__finalCompiled .= '
+
+						';
+		if ($__vars['forum'] AND $__templater->func('in_array', array($__vars['forum']['node_id'], $__templater->filter($__vars['xf']['options']['fs_thumbnail_applicable_forums'], array(array('split', array()),), false), ), false)) {
+			$__finalCompiled .= '
+	<div class="structItemContainer-group js-threadList thread-grid">
+		';
+			if (!$__templater->test($__vars['threads'], 'empty', array())) {
+				$__finalCompiled .= '
+			';
+				if ($__templater->isTraversable($__vars['threads'])) {
+					foreach ($__vars['threads'] AS $__vars['thread']) {
+						$__finalCompiled .= '
+				' . $__templater->callMacro(null, ($__vars['templateOverrides']['thread_list_macro'] ?: 'thread_list_macros::item'), $__templater->combineMacroArgumentAttributes($__vars['templateOverrides']['thread_list_macro_args'], array(
+							'thread' => $__vars['thread'],
+							'forum' => $__vars['forum'],
+						)), $__vars) . '
+			';
+					}
+				}
+				$__finalCompiled .= '
+			';
+				if ($__vars['showDateLimitDisabler']) {
+					$__finalCompiled .= '
+				' . $__templater->callMacro(null, 'date_limit_disabler', array(
+						'forum' => $__vars['forum'],
+						'page' => $__vars['page'],
+						'filters' => $__vars['filters'],
+					), $__vars) . '
+			';
+				}
+				$__finalCompiled .= '
+		';
+			}
+			$__finalCompiled .= '
+	</div>
+	';
+		} else {
+			$__finalCompiled .= '
+	<div class="structItemContainer-group js-threadList">
+							';
+			if (!$__templater->test($__vars['threads'], 'empty', array())) {
+				$__finalCompiled .= '
+								';
+				if ($__templater->isTraversable($__vars['threads'])) {
+					foreach ($__vars['threads'] AS $__vars['thread']) {
+						$__finalCompiled .= '
+									' . $__templater->callMacro(null, ($__vars['templateOverrides']['thread_list_macro'] ?: 'thread_list_macros::item'), $__templater->combineMacroArgumentAttributes($__vars['templateOverrides']['thread_list_macro_args'], array(
+							'thread' => $__vars['thread'],
+							'forum' => $__vars['forum'],
+						)), $__vars) . '
+								';
+					}
+				}
+				$__finalCompiled .= '
+								';
+				if ($__vars['showDateLimitDisabler']) {
+					$__finalCompiled .= '
+									' . $__templater->callMacro(null, 'date_limit_disabler', array(
+						'forum' => $__vars['forum'],
+						'page' => $__vars['page'],
+						'filters' => $__vars['filters'],
+					), $__vars) . '
+								';
+				}
+				$__finalCompiled .= '
+							';
+			}
+			$__finalCompiled .= '
 						</div>
+';
+		}
+		$__finalCompiled .= '
 					';
 	} else if ($__vars['filters']) {
 		$__finalCompiled .= '
@@ -269,7 +391,47 @@ return array(
 {
 	$__finalCompiled = '';
 		$__finalCompiled .= '
-		' . $__templater->includeTemplate('snog_tv_filter_removal', $__vars) . '
+		';
+	if ($__vars['filters']['genre']) {
+		$__finalCompiled .= '
+	<li><a href="' . $__templater->func('link', array('forums', $__vars['forum'], $__templater->filter($__vars['filters'], array(array('replace', array('genre', null, )),), false), ), true) . '"
+		class="filterBar-filterToggle" data-xf-init="tooltip" title="' . 'Remove this filter' . '">
+		<span class="filterBar-filterToggle-label">' . 'Genre' . ':</span>
+		' . $__templater->escape($__vars['filters']['genre']) . '</a></li>
+';
+	}
+	$__finalCompiled .= '
+';
+	if ($__vars['filters']['director']) {
+		$__finalCompiled .= '
+	<li><a href="' . $__templater->func('link', array('forums', $__vars['forum'], $__templater->filter($__vars['filters'], array(array('replace', array('director', null, )),), false), ), true) . '"
+		class="filterBar-filterToggle" data-xf-init="tooltip" title="' . 'Remove this filter' . '">
+		<span class="filterBar-filterToggle-label">' . 'Director' . ':</span>
+		' . $__templater->escape($__vars['filters']['director']) . '</a></li>
+';
+	}
+	$__finalCompiled .= '
+';
+	if ($__vars['filters']['cast']) {
+		$__finalCompiled .= '
+	<li><a href="' . $__templater->func('link', array('forums', $__vars['forum'], $__templater->filter($__vars['filters'], array(array('replace', array('cast', null, )),), false), ), true) . '"
+		class="filterBar-filterToggle" data-xf-init="tooltip" title="' . 'Remove this filter' . '">
+		<span class="filterBar-filterToggle-label">' . 'Cast' . ':</span>
+		' . $__templater->escape($__vars['filters']['cast']) . '</a></li>
+';
+	}
+	$__finalCompiled .= '
+';
+	if ($__vars['filters']['movie_title']) {
+		$__finalCompiled .= '
+	<li><a href="' . $__templater->func('link', array('forums', $__vars['forum'], $__templater->filter($__vars['filters'], array(array('replace', array('movie_title', null, )),), false), ), true) . '"
+		class="filterBar-filterToggle" data-xf-init="tooltip" title="' . 'Remove this filter' . '">
+		<span class="filterBar-filterToggle-label">' . 'Movie title' . ':</span>
+		' . $__templater->escape($__vars['filters']['movie_title']) . '</a></li>
+';
+	}
+	$__finalCompiled .= '
+' . $__templater->includeTemplate('snog_tv_filter_removal', $__vars) . '
 ';
 	if ($__vars['filters']['last_days'] AND $__vars['dateLimits'][$__vars['filters']['last_days']]) {
 		$__finalCompiled .= '
@@ -386,13 +548,24 @@ return array(
 	';
 			if ($__templater->method($__vars['forum'], 'canCreateThread', array()) OR $__templater->method($__vars['forum'], 'canCreateThreadPreReg', array())) {
 				$__compilerTemp1 = '';
-				if ($__templater->func('in_array', array($__vars['forum']['node_id'], $__vars['xf']['options']['TvThreads_forum'], ), false) AND (!$__vars['xf']['options']['TvThreads_mix'])) {
+				if ($__vars['forum']['forum_type_id'] == 'snog_movies_movie') {
 					$__compilerTemp1 .= '
-	' . 'Post a new TV show' . '
+	' . 'Post movie' . '
 ';
 				} else {
 					$__compilerTemp1 .= '
+	';
+					if ($__templater->func('in_array', array($__vars['forum']['node_id'], $__vars['xf']['options']['TvThreads_forum'], ), false) AND (!$__vars['xf']['options']['TvThreads_mix'])) {
+						$__compilerTemp1 .= '
+	' . 'Post a new TV show' . '
+';
+					} else {
+						$__compilerTemp1 .= '
 ' . 'Post thread' . '	
+';
+					}
+					$__compilerTemp1 .= '
+	
 ';
 				}
 				$__templater->pageParams['pageAction'] = $__templater->preEscaped('
@@ -438,6 +611,13 @@ return array(
 		$__finalCompiled .= '
 ';
 	}
+	$__finalCompiled .= '
+
+';
+	$__templater->setPageParam('ldJsonHtml', '
+	' . '' . '
+	' . $__templater->renderExtension('structured_data', $__vars, $__extensions) . '
+');
 	$__finalCompiled .= '
 
 ' . $__templater->callMacro('metadata_macros', 'canonical_url', array(

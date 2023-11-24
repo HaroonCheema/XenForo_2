@@ -30,6 +30,7 @@ return array (
   'widget_def.snog_tv_slider' => '[OzzModz] TMDb TV Thread Starter: Detailed carousel',
   'widget_def.template_syntax' => 'Template syntax',
   'widget_def.thread_poll' => 'Thread poll',
+  'widget_def.thui_progress_bar' => '[TH] User Improvements: Progress to next level',
   'widget_def.tl_groups_event' => '[tl] Social Groups: Events',
   'widget_def.tl_groups_group' => '[tl] Social Groups: Groups',
   'widget_def.visitor_panel' => 'Visitor panel',

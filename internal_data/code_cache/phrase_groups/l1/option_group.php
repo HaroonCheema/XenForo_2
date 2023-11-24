@@ -56,6 +56,7 @@ return array (
   'option_group.stats' => 'Statistics and metrics',
   'option_group.tagging' => 'Content tagging',
   'option_group.thread_article_view' => '[FS] Thread Article View',
+  'option_group.thuserimprovements' => '[TH] User Improvements',
   'option_group.tl_groups' => '[tl] Social Groups',
   'option_group.tournament' => 'Tournament',
   'option_group.trader' => 'Trader',

@@ -127,6 +127,10 @@ return array(
 ';
 	} else {
 		$__finalCompiled .= '
+	' . $__templater->callMacro('thuserimprovements_member_notable_macros', 'trophies', array(
+			'active' => $__vars['active'],
+			'trophies' => $__vars['trophies'],
+		), $__vars) . '
 	<section class="block">
 		<div class="block-container">
 			';

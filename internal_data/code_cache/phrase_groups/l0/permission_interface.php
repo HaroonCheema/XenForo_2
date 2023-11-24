@@ -23,6 +23,8 @@ return array (
   'permission_interface.generalModeratorPermissions' => 'General moderator permissions',
   'permission_interface.generalPermissions' => 'General permissions',
   'permission_interface.hou_attachment' => '[HoU] Attachment List with Like',
+  'permission_interface.klUI' => '[TH] User Improvements permissions',
+  'permission_interface.klUIModerator' => '[TH] User Improvements moderator permissions',
   'permission_interface.postAttachmentPermissions' => 'Post attachment permissions',
   'permission_interface.profilePostModeratorPermissions' => 'Profile post moderator permissions',
   'permission_interface.profilePostPermissions' => 'Profile post permissions',

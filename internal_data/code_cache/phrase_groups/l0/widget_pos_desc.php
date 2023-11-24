@@ -34,6 +34,8 @@ return array (
   'widget_pos_desc.thread_view_below_messages' => 'A position in the main content area of the thread view, below the messages. Widget templates rendered in this position can use the current thread entity in the <code>{$context.thread}</code> param.',
   'widget_pos_desc.thread_view_below_quick_reply' => 'A position in the main content area of the thread view, below the quick reply. Widget templates rendered in this position can use the current thread entity in the <code>{$context.thread}</code> param.',
   'widget_pos_desc.thread_view_sidebar' => 'Position in the sidebar while viewing a thread. Widget templates rendered in this position can use the current thread entity in the <code>{$context.thread}</code> param.',
+  'widget_pos_desc.thuserimprovements_trophy_category_view_sidebar' => 'Position inside the trophy view sidebar for various stats and new content widgets.',
+  'widget_pos_desc.thuserimprovements_trophy_view_sidebar' => 'Position inside the trophy view sidebar for various stats and new content widgets.',
   'widget_pos_desc.tlg_category_view' => '',
   'widget_pos_desc.tlg_group_index' => '',
   'widget_pos_desc.tlg_group_view_sidenav' => '',

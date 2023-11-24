@@ -43,6 +43,7 @@ return array (
   'cron_entry.snogTvWatchProvider' => '[OzzModz] TMDb TV Thread Starter: Update watch provider data',
   'cron_entry.snog_movies_changes' => '[OzzModz] TMDb Movie Thread Starter: Check for Movie changes',
   'cron_entry.snog_tv_changes' => '[OzzModz] TMDb TV Thread Starter: Check for TV changes',
+  'cron_entry.thui_profileviewcounters' => '[TH] User Improvements: Update profile view counters',
   'cron_entry.tl_groups_everyTwoHours' => '[tl] Social Groups: Clean up data (every 2 hours)',
   'cron_entry.tlg_autoHourly' => '[tl] Social Groups: Run hourly',
   'cron_entry.tlg_runMinutely' => '[tl] Social Groups: Update group metadata (every minutes)',

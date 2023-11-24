@@ -23,6 +23,21 @@ class Thread extends XFCP_Thread
 
             $upload = $this->request->getFile('upload', false, false);
             $title = $this->filter('thumbnail_title', 'str');
+            $thumb_id = $this->filter('thumb_unique_id', 'str');
+
+            $pattern = '/^[0-9]+$/';
+
+            if (!preg_match($pattern, $thumb_id)) {
+                throw $this->exception(
+                    $this->notFound(\XF::phrase("fs_thumbnail_only_numbers"))
+                );
+            }
+
+
+            if (preg_match($pattern, $thumb_id) && $thumb_id != "0") {
+                $thread->thumb_unique_id =  $thumb_id;
+            }
+
 
             if (!$title || $title == " ") {
                 throw $this->exception(
