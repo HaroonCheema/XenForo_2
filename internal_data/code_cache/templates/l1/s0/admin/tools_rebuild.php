@@ -387,7 +387,6 @@ return array(
 ' . '
 ' . $__templater->includeTemplate('xfmg_tools_rebuild', $__vars) . '
 ' . $__templater->includeTemplate('xfrm_tools_rebuild', $__vars) . '
-' . $__templater->includeTemplate('snog_tv_tools_rebuild', $__vars) . '
 ' . $__templater->includeTemplate('snog_movies_tools_rebuild', $__vars) . '
 
 ';

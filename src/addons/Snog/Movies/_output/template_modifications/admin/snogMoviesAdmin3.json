@@ -1,0 +1,9 @@
+{
+    "template": "helper_criteria",
+    "description": "Adds movie threads started to criteria",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<!--[XF:user:content_after_messages]-->",
+    "replace": "<xf:option name=\"user_criteria[movies_posted][rule]\" value=\"movies_posted\" selected=\"{$criteria.movies_posted}\"\n\tlabel=\"{{ phrase('snog_movies_started_x_threads') }}\">\n\t<xf:numberbox name=\"user_criteria[movies_posted][data][movies]\" value=\"{$criteria.movies_posted.movies}\"\n\t\tsize=\"5\" min=\"0\" step=\"1\" />\n</xf:option>\n$0"
+}

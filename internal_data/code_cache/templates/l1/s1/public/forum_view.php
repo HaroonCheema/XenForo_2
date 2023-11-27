@@ -94,19 +94,13 @@ return array(
 	$__finalCompiled = '';
 		$__finalCompiled .= '
 				<div class="structItemContainer">
-					';
-	if ($__templater->test($__vars['forum']['TVForum'], 'empty', array()) OR (!$__vars['forum']['TVForum']['tv_season'])) {
-		$__finalCompiled .= '
-	' . $__templater->callMacro(null, ($__vars['templateOverrides']['quick_thread_macro'] ?: 'thread_list_macros::quick_thread'), $__templater->combineMacroArgumentAttributes($__vars['templateOverrides']['quick_thread_macro_args'], array(
-			'forum' => $__vars['forum'],
-			'page' => $__vars['page'],
-			'order' => $__vars['sortInfo']['order'],
-			'direction' => $__vars['sortInfo']['direction'],
-			'prefixes' => $__vars['quickThreadPrefixes'],
-		)), $__vars) . '
-';
-	}
-	$__finalCompiled .= '
+					' . $__templater->callMacro(null, ($__vars['templateOverrides']['quick_thread_macro'] ?: 'thread_list_macros::quick_thread'), $__templater->combineMacroArgumentAttributes($__vars['templateOverrides']['quick_thread_macro_args'], array(
+		'forum' => $__vars['forum'],
+		'page' => $__vars['page'],
+		'order' => $__vars['sortInfo']['order'],
+		'direction' => $__vars['sortInfo']['direction'],
+		'prefixes' => $__vars['quickThreadPrefixes'],
+	)), $__vars) . '
 
 					';
 	if (!$__templater->test($__vars['stickyThreads'], 'empty', array()) OR !$__templater->test($__vars['threads'], 'empty', array())) {
@@ -135,137 +129,38 @@ return array(
 						';
 		}
 		$__finalCompiled .= '
-';
-		if ($__vars['forum'] AND $__templater->func('in_array', array($__vars['forum']['node_id'], $__templater->filter($__vars['xf']['options']['fs_thumbnail_applicable_forums'], array(array('split', array()),), false), ), false)) {
-			$__finalCompiled .= '
 
-	<div class="sorting-heading">
-		<div class="sorting-heading-title">
-			<h1>
-				' . $__templater->escape($__vars['forum']['Node']['title']) . '
-			</h1>
-		</div>
-		';
-			if ($__templater->func('count', array($__vars['forum']['prefixes'], ), false)) {
-				$__finalCompiled .= '
-			<div class="sorting">
-				<span>Sort By:</span>
-
-				<ul>
-					';
-				$__vars['prefixesGroups'] = $__templater->method($__vars['forum'], 'getPrefixesGroups', array());
-				$__finalCompiled .= '
-					';
-				if ($__templater->isTraversable($__vars['prefixesGroups']['prefixGroups'])) {
-					foreach ($__vars['prefixesGroups']['prefixGroups'] AS $__vars['prefixGroupId'] => $__vars['prefixGroup']) {
-						$__finalCompiled .= '
-						';
-						if ($__templater->isTraversable($__vars['prefixesGroups']['prefixesGrouped'][$__vars['prefixGroupId']])) {
-							foreach ($__vars['prefixesGroups']['prefixesGrouped'][$__vars['prefixGroupId']] AS $__vars['prefix_id'] => $__vars['prefix']) {
-								$__finalCompiled .= '
+						<div class="structItemContainer-group js-threadList">
 							';
-								if ($__templater->func('in_array', array($__vars['prefix_id'], $__vars['forum']['prefix_cache'], ), false)) {
-									$__finalCompiled .= '
-
-								<li>
-									<a href="' . $__templater->func('link', array('forums', $__vars['forum'], array('prefix_id' => $__vars['prefix_id'], ), ), true) . '" class="sorting-button active">' . $__templater->escape($__vars['prefix']['title']) . '</a>
-								</li>
-
-							';
-								}
-								$__finalCompiled .= '
-
-						';
-							}
-						}
-						$__finalCompiled .= '
-					';
-					}
-				}
-				$__finalCompiled .= '
-
-				</ul>
-			</div>
-		';
-			}
+		if (!$__templater->test($__vars['threads'], 'empty', array())) {
 			$__finalCompiled .= '
-	</div>
-
-';
-		}
-		$__finalCompiled .= '
-
-						';
-		if ($__vars['forum'] AND $__templater->func('in_array', array($__vars['forum']['node_id'], $__templater->filter($__vars['xf']['options']['fs_thumbnail_applicable_forums'], array(array('split', array()),), false), ), false)) {
-			$__finalCompiled .= '
-	<div class="structItemContainer-group js-threadList thread-grid">
-		';
-			if (!$__templater->test($__vars['threads'], 'empty', array())) {
-				$__finalCompiled .= '
-			';
-				if ($__templater->isTraversable($__vars['threads'])) {
-					foreach ($__vars['threads'] AS $__vars['thread']) {
-						$__finalCompiled .= '
-				' . $__templater->callMacro(null, ($__vars['templateOverrides']['thread_list_macro'] ?: 'thread_list_macros::item'), $__templater->combineMacroArgumentAttributes($__vars['templateOverrides']['thread_list_macro_args'], array(
-							'thread' => $__vars['thread'],
-							'forum' => $__vars['forum'],
-						)), $__vars) . '
-			';
-					}
-				}
-				$__finalCompiled .= '
-			';
-				if ($__vars['showDateLimitDisabler']) {
-					$__finalCompiled .= '
-				' . $__templater->callMacro(null, 'date_limit_disabler', array(
-						'forum' => $__vars['forum'],
-						'page' => $__vars['page'],
-						'filters' => $__vars['filters'],
-					), $__vars) . '
-			';
-				}
-				$__finalCompiled .= '
-		';
-			}
-			$__finalCompiled .= '
-	</div>
-	';
-		} else {
-			$__finalCompiled .= '
-	<div class="structItemContainer-group js-threadList">
-							';
-			if (!$__templater->test($__vars['threads'], 'empty', array())) {
-				$__finalCompiled .= '
 								';
-				if ($__templater->isTraversable($__vars['threads'])) {
-					foreach ($__vars['threads'] AS $__vars['thread']) {
-						$__finalCompiled .= '
+			if ($__templater->isTraversable($__vars['threads'])) {
+				foreach ($__vars['threads'] AS $__vars['thread']) {
+					$__finalCompiled .= '
 									' . $__templater->callMacro(null, ($__vars['templateOverrides']['thread_list_macro'] ?: 'thread_list_macros::item'), $__templater->combineMacroArgumentAttributes($__vars['templateOverrides']['thread_list_macro_args'], array(
-							'thread' => $__vars['thread'],
-							'forum' => $__vars['forum'],
-						)), $__vars) . '
-								';
-					}
-				}
-				$__finalCompiled .= '
-								';
-				if ($__vars['showDateLimitDisabler']) {
-					$__finalCompiled .= '
-									' . $__templater->callMacro(null, 'date_limit_disabler', array(
+						'thread' => $__vars['thread'],
 						'forum' => $__vars['forum'],
-						'page' => $__vars['page'],
-						'filters' => $__vars['filters'],
-					), $__vars) . '
+					)), $__vars) . '
 								';
 				}
-				$__finalCompiled .= '
-							';
 			}
 			$__finalCompiled .= '
-						</div>
-';
+								';
+			if ($__vars['showDateLimitDisabler']) {
+				$__finalCompiled .= '
+									' . $__templater->callMacro(null, 'date_limit_disabler', array(
+					'forum' => $__vars['forum'],
+					'page' => $__vars['page'],
+					'filters' => $__vars['filters'],
+				), $__vars) . '
+								';
+			}
+			$__finalCompiled .= '
+							';
 		}
 		$__finalCompiled .= '
+						</div>
 					';
 	} else if ($__vars['filters']) {
 		$__finalCompiled .= '
@@ -431,7 +326,6 @@ return array(
 ';
 	}
 	$__finalCompiled .= '
-' . $__templater->includeTemplate('snog_tv_filter_removal', $__vars) . '
 ';
 	if ($__vars['filters']['last_days'] AND $__vars['dateLimits'][$__vars['filters']['last_days']]) {
 		$__finalCompiled .= '
@@ -532,71 +426,34 @@ return array(
 	$__finalCompiled .= '
 
 ';
-	if (!$__templater->test($__vars['forum']['TVForum'], 'empty', array()) AND (!$__vars['forum']['TVForum']['tv_parent_id'])) {
-		$__finalCompiled .= '
-	' . $__templater->includeTemplate('snog_tv_add_season', $__vars) . '
-';
-	} else {
-		$__finalCompiled .= '
-	';
-		if (!$__templater->test($__vars['forum']['TVForum'], 'empty', array()) AND $__vars['forum']['TVForum']['tv_parent_id']) {
-			$__finalCompiled .= '
-	' . $__templater->includeTemplate('snog_tv_add_episode', $__vars) . '
-';
-		} else {
-			$__finalCompiled .= '
-	';
-			if ($__templater->method($__vars['forum'], 'canCreateThread', array()) OR $__templater->method($__vars['forum'], 'canCreateThreadPreReg', array())) {
-				$__compilerTemp1 = '';
-				if ($__vars['forum']['forum_type_id'] == 'snog_movies_movie') {
-					$__compilerTemp1 .= '
+	if ($__templater->method($__vars['forum'], 'canCreateThread', array()) OR $__templater->method($__vars['forum'], 'canCreateThreadPreReg', array())) {
+		$__compilerTemp1 = '';
+		if ($__vars['forum']['forum_type_id'] == 'snog_movies_movie') {
+			$__compilerTemp1 .= '
 	' . 'Post movie' . '
 ';
-				} else {
-					$__compilerTemp1 .= '
-	';
-					if ($__templater->func('in_array', array($__vars['forum']['node_id'], $__vars['xf']['options']['TvThreads_forum'], ), false) AND (!$__vars['xf']['options']['TvThreads_mix'])) {
-						$__compilerTemp1 .= '
-	' . 'Post a new TV show' . '
+		} else {
+			$__compilerTemp1 .= '
+	' . 'Post thread' . '	
 ';
-					} else {
-						$__compilerTemp1 .= '
-' . 'Post thread' . '	
-';
-					}
-					$__compilerTemp1 .= '
-	
-';
-				}
-				$__templater->pageParams['pageAction'] = $__templater->preEscaped('
+		}
+		$__templater->pageParams['pageAction'] = $__templater->preEscaped('
 	' . $__templater->button('
 		' . $__compilerTemp1 . '
 
 	', array(
-					'href' => $__templater->func('link', array('forums/post-thread', $__vars['forum'], ), false),
-					'class' => 'button--cta',
-					'icon' => 'write',
-				), '', array(
-				)) . '
+			'href' => $__templater->func('link', array('forums/post-thread', $__vars['forum'], ), false),
+			'class' => 'button--cta',
+			'icon' => 'write',
+		), '', array(
+		)) . '
 ');
-			}
-			$__finalCompiled .= '
-';
-		}
-		$__finalCompiled .= '
-';
 	}
 	$__finalCompiled .= '
 
 ';
-	if ($__templater->test($__vars['forum']['TVForum'], 'empty', array())) {
-		$__finalCompiled .= '
-	';
-		$__templater->pageParams['pageDescription'] = $__templater->preEscaped($__templater->filter($__vars['forum']['Node']['description'], array(array('raw', array()),), true));
-		$__templater->pageParams['pageDescriptionMeta'] = true;
-		$__finalCompiled .= '
-';
-	}
+	$__templater->pageParams['pageDescription'] = $__templater->preEscaped($__templater->filter($__vars['forum']['Node']['description'], array(array('raw', array()),), true));
+	$__templater->pageParams['pageDescriptionMeta'] = true;
 	$__finalCompiled .= '
 
 ';
@@ -686,19 +543,6 @@ return array(
 ' . $__templater->callAdsMacro('forum_view_above_thread_list', array(
 		'forum' => $__vars['forum'],
 	), $__vars) . '
-';
-	if (!$__templater->test($__vars['forum']['TVForum'], 'empty', array()) AND (!$__vars['forum']['TVForum']['tv_parent_id'])) {
-		$__finalCompiled .= '
-	';
-		if ($__templater->method($__vars['forum'], 'canCreateThread', array())) {
-			$__finalCompiled .= '
-		' . $__templater->includeTemplate('snog_tv_post_thread', $__vars) . '
-	';
-		}
-		$__finalCompiled .= '
-';
-	}
-	$__finalCompiled .= '
 
 ' . '
 <div class="block ' . $__templater->escape($__templater->renderExtension('thread_list_block_classes', $__vars, $__extensions)) . '" data-xf-init="' . ($__vars['canInlineMod'] ? 'inline-mod' : '') . '" data-type="thread" data-href="' . $__templater->func('link', array('inline-mod', ), true) . '">
