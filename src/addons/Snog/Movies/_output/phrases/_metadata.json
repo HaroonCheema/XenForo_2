@@ -1,0 +1,20 @@
+{
+    "snog_movies_explain_link.txt": {
+        "global_cache": false,
+        "version_id": 2020051,
+        "version_string": "2.2.0 Release Candidate 1",
+        "hash": "3646bdb7f68bfc7844e6b426ccc5ce91"
+    },
+    "snog_movies_link_id.txt": {
+        "global_cache": false,
+        "version_id": 2020051,
+        "version_string": "2.2.0 Release Candidate 1",
+        "hash": "fa996afb1924253fe3e556e08c49d685"
+    },
+    "thread_type_plural.snog_movies_movie.txt": {
+        "global_cache": false,
+        "version_id": 2020051,
+        "version_string": "2.2.0 Release Candidate 1",
+        "hash": "9be80e6a213e1fbe68f1f811af7e5c02"
+    }
+}

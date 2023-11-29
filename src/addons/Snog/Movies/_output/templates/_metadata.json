@@ -1,0 +1,27 @@
+{
+    "admin/snog_movies_forum_type_config_movie.html": {
+        "version_id": 2020051,
+        "version_string": "2.2.0 Release Candidate 1",
+        "hash": "f04b0afe0f44a2ec4816d88060015335"
+    },
+    "public/snog_movie_forum_filters_type_movie.html": {
+        "version_id": 2020051,
+        "version_string": "2.2.0 Release Candidate 1",
+        "hash": "9d009f105aa41ea4aad710651643db57"
+    },
+    "public/snog_movies_forum_view_type_movie.html": {
+        "version_id": 2020051,
+        "version_string": "2.2.0 Release Candidate 1",
+        "hash": "ab6bb843ffbd21bd4b3eb219061ed6de"
+    },
+    "public/snog_movies_thread_list_movie_macros.html": {
+        "version_id": 2020051,
+        "version_string": "2.2.0 Release Candidate 1",
+        "hash": "bb97eaee897ef137c231d9412d584b25"
+    },
+    "public/snog_movies_thread_type_fields_movie.html": {
+        "version_id": 2020051,
+        "version_string": "2.2.0 Release Candidate 1",
+        "hash": "fd2c014b9e9d3f08b6e82f9d7742f5c1"
+    }
+}

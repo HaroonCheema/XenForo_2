@@ -43,8 +43,7 @@ class Creator extends \XF\Service\AbstractService
 		/** @var \Snog\Movies\Entity\Movie $movie */
 		$movie = $this->em()->create('Snog\Movies:Movie');
 		$threadId = $thread->thread_id;
-		if (!$threadId)
-		{
+		if (!$threadId) {
 			$threadId = $movie->em()->getDeferredValue(function () use ($thread) {
 				return $thread->thread_id;
 			}, 'save');
@@ -74,22 +73,22 @@ class Creator extends \XF\Service\AbstractService
 
 	public function setMovieId(int $movieId)
 	{
-		if (!$movieId)
-		{
+		if (!$movieId) {
 			return;
-		}
+		};
 
 		$this->movie->tmdb_id = $movieId;
 
-		if (!$this->apiResponse)
-		{
+		if (!$this->apiResponse) {
 			/** @var \Snog\Movies\Helper\Tmdb\Api $apiHelper */
 			$apiHelper = \XF::helper('Snog\Movies:Tmdb\Api');
+
 			$tmdbClient = $apiHelper->getClient();
 
 			$apiResponse = $tmdbClient->getMovie($movieId)->getDetails(['casts', 'trailers', 'videos', 'watch/providers']);
-			if ($tmdbClient->hasError())
-			{
+
+
+			if ($tmdbClient->hasError()) {
 				$this->movie->error($tmdbClient->getError());
 				return;
 			}
@@ -131,13 +130,10 @@ class Creator extends \XF\Service\AbstractService
 		$movie->preSave();
 		$errors = $movie->getErrors();
 
-		if ($this->performValidations)
-		{
-			if (!empty($movie->tmdb_release))
-			{
+		if ($this->performValidations) {
+			if (!empty($movie->tmdb_release)) {
 				$releaseExploded = explode('-', $movie->tmdb_release);
-				if (!isset($releaseExploded[0]) || strlen($releaseExploded[0]) !== 4)
-				{
+				if (!isset($releaseExploded[0]) || strlen($releaseExploded[0]) !== 4) {
 					$errors[] = \XF::phrase('snog_movies_error_release_date_format');
 				}
 			}
@@ -154,10 +150,8 @@ class Creator extends \XF\Service\AbstractService
 
 		$apiResponse = $this->apiResponse;
 
-		if ($options->tmdbthreads_fetchCredits)
-		{
-			if (isset($apiResponse['casts']))
-			{
+		if ($options->tmdbthreads_fetchCredits) {
+			if (isset($apiResponse['casts'])) {
 				$casts = $apiResponse['casts']['cast'] ?? [];
 				$crews = $apiResponse['casts']['crew'] ?? [];
 
@@ -171,8 +165,7 @@ class Creator extends \XF\Service\AbstractService
 			}
 		}
 
-		if ($options->tmdbthreads_fetchCompanies && !empty($apiResponse['production_companies']))
-		{
+		if ($options->tmdbthreads_fetchCompanies && !empty($apiResponse['production_companies'])) {
 			$jobList[] = [
 				'Snog\Movies:MovieNewCompanies', [
 					'companyIds' => array_column($apiResponse['production_companies'], 'id')
@@ -187,8 +180,7 @@ class Creator extends \XF\Service\AbstractService
 	{
 		$jobList = $this->getBlockingJobs();
 
-		if ($jobList)
-		{
+		if ($jobList) {
 			$this->app->jobManager()->enqueueAutoBlocking('XF:Atomic', [
 				'execute' => $jobList
 			]);
@@ -203,8 +195,7 @@ class Creator extends \XF\Service\AbstractService
 		$apiResponse = $this->apiResponse;
 		$options = $this->app->options();
 
-		if ($options->tmdbthreads_use_genres && $options->tmdbthreads_crosslink)
-		{
+		if ($options->tmdbthreads_use_genres && $options->tmdbthreads_crosslink) {
 			$jobList[] = [
 				'Snog\Movies:CrossLinkCreate',
 				[
@@ -224,8 +215,7 @@ class Creator extends \XF\Service\AbstractService
 
 		$jobList = $this->getFinalJobs();
 
-		if ($jobList)
-		{
+		if ($jobList) {
 			$this->app->jobManager()->enqueueUnique('snogMoviesInsert' . $movie->thread_id, 'XF:Atomic', [
 				'execute' => $jobList
 			], false);
@@ -252,23 +242,19 @@ class Creator extends \XF\Service\AbstractService
 		$imageService->setImageFromApiPath($movie->tmdb_image);
 		$imageService->updateImage();
 
-		if (isset($thread->User) && $thread->User->user_id != \XF::visitor()->user_id)
-		{
+		if (isset($thread->User) && $thread->User->user_id != \XF::visitor()->user_id) {
 			$app->logger()->logModeratorAction('thread', $thread, 'snog_movies_movie_create');
 		}
 
 		$apiResponse = $this->apiResponse;
 
-		if ($options->tmdbthreads_force_comments)
-		{
+		if ($options->tmdbthreads_force_comments) {
 			$comment = $thread->getOption('movieOriginalMessage');
-			if ($comment)
-			{
+			if ($comment) {
 				/** @var \XF\Service\Thread\Replier $replier */
 				$replier = \XF::service('XF:Thread\Replier', $thread);
 				$replier->setMessage($comment);
-				if ($thread->Forum->canUploadAndManageAttachments())
-				{
+				if ($thread->Forum->canUploadAndManageAttachments()) {
 					$replier->setAttachmentHash(\XF::app()->request()->filter('attachment_hash', 'str'));
 				}
 				$replier->save();
@@ -280,13 +266,11 @@ class Creator extends \XF\Service\AbstractService
 		/** @var \Snog\Movies\Repository\Movie $movieRepo */
 		$movieRepo = $this->repository('Snog\Movies:Movie');
 
-		if ($options->tmdbthreads_fetchCredits && isset($apiResponse['casts']))
-		{
+		if ( $options->tmdbthreads_fetchCredits && isset($apiResponse['casts'])) {
 			$movieRepo->insertOrUpdateMovieCredits($movie->tmdb_id, $apiResponse['casts']);
 		}
 
-		if ($options->tmdbthreads_fetchVideos && isset($apiResponse['videos']['results']))
-		{
+		if ($options->tmdbthreads_fetchVideos && isset($apiResponse['videos']['results'])) {
 			$movieRepo->insertOrUpdateMovieVideos($movie->tmdb_id, $apiResponse['videos']['results']);
 		}
 

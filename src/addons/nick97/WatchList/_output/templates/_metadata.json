@@ -3,5 +3,15 @@
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
         "hash": "ea511d3a47fd33cb4ad2567c72d29650"
+    },
+    "public/nick97_trakt_movies_thread_type_fields_movie.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "b6a428dcce87b19b8e39e9f4411f9cf3"
+    },
+    "public/nick97_trakt_tv_thread_type_fields_tv.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "ab3f032f549ff2beadb6b7187244441c"
     }
 }

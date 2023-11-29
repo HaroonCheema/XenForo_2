@@ -177,12 +177,16 @@ class Crud extends AbstractController
 
     public function actionIndex(ParameterBag $params)
     {
+        // $url = "https://trakt.tv/movies/the-hunger-games-the-ballad-of-songbirds-snakes-2023";
 
-        $pattern = '/^[0-9]+$/';
-        $numericValue = 'df;lgkdf123oierut';
+        // $pattern = "/https:\/\/trakt\.tv\/movies\//";
+        // $cleanUrl = preg_replace($pattern, "", $url);
 
-        var_dump(preg_match($pattern, $numericValue));
-        exit;
+        // // $pattern = '/^[0-9]+$/';
+        // // $numericValue = 'df;lgkdf123oierut';
+
+        // var_dump($cleanUrl);
+        // exit;
 
 
 

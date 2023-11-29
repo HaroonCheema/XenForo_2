@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="admin" title="connected_account_provider_nick_trakt" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:textboxrow name="options[client_id]" value="{$options.client_id}"
+	label="{{ phrase('client_id') }}"
+	hint="{{ phrase('required') }}"
+	explain="{{ phrase('nick97_trakt_client_id_explain') }}" />
+
+<xf:textboxrow name="options[client_secret]" value="{$options.client_secret}"
+	label="{{ phrase('client_secret') }}"
+	hint="{{ phrase('required') }}"
+	explain="{{ phrase('nick97_trakt_client_secret_explain') }}" />]]></template>
+  <template type="public" title="nick97_trakt_movies_thread_type_fields_movie" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:if is="$context == 'create' AND $subContext == 'quick'">
+	<xf:set var="$rowType" value="fullWidth noGutter mergeNext" />
+<xf:elseif is="$context == 'edit' AND $subContext == 'first_post_quick'" />
+	<xf:set var="$rowType" value="fullWidth mergeNext" />
+<xf:else />
+	<xf:set var="$rowType" value="" />
+</xf:if>
+
+<xf:textboxrow name="nick97_trakt_movies_tmdb_id" value="{$thread.Movie.tmdb_id}"
+			   label="{{ phrase('nick97_trakt_movies_link_id') }}"
+			   explain="{{ phrase('nick97_trakt_movies_explain_link') }}"
+			   rowtype="{$rowType}"
+			   disabled="{{ $context == 'edit' }}" />]]></template>
+  <template type="public" title="nick97_trakt_tv_thread_type_fields_tv" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:if is="$context == 'create' AND $subContext == 'quick'">
+	<xf:set var="$rowType" value="fullWidth noGutter mergeNext" />
+<xf:elseif is="$context == 'edit' AND $subContext == 'first_post_quick'" />
+	<xf:set var="$rowType" value="fullWidth mergeNext" />
+<xf:else />
+	<xf:set var="$rowType" value="" />
+</xf:if>
+
+<xf:if is="$thread.Forum.TVForum is not empty && $thread.Forum.TVForum.tv_parent_id">
+	<xf:textboxrow name="nick97_trakt_tv_tv_id" value="{$thread.TV.tv_episode}"
+				   label="{{ phrase('nick97_trakt_tv_episode_number') }}"
+				   explain="{{ phrase('nick97_trakt_tv_episode_enter_episode_number') }}"
+				   rowtype="{$rowType}"
+				   disabled="{{ $context == 'edit' }}" />
+<xf:else />
+	<xf:textboxrow name="snog_tv_tv_id" value="{$thread.TV.tv_id}"
+				   label="{{ phrase('nick97_trakt_tv_post_show_title') }}"
+				   explain="{{ phrase('nick97_trakt_tv_show_lookup') }}"
+				   rowtype="{$rowType}"
+				   disabled="{{ $context == 'edit' }}" />
+</xf:if>]]></template>
+</templates>
