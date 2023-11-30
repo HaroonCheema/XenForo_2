@@ -17,4 +17,4 @@ $config['designer']['enabled'] = true;
 
 $config['fullUnicode'] = true;
 
-$config['development']['defaultAddOn'] = 'nick97/WatchList';
+$config['development']['defaultAddOn'] = 'nick97/TraktMovies';

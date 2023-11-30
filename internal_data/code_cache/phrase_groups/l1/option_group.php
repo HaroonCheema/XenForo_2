@@ -1,7 +1,6 @@
 <?php
 return array (
   'option_group.Fs_NodeIcon' => '[FS] Node Icon',
-  'option_group.TvThreads' => '[OzzModz] TMDb TV Thread Starter',
   'option_group.acp' => 'Admin control panel',
   'option_group.addCategoryImage' => '[FS] Add Category Image',
   'option_group.alerts' => 'User alerts and notifications',
@@ -51,7 +50,6 @@ return array (
   'option_group.sharing' => 'Sharing',
   'option_group.siropuChat' => 'Chat',
   'option_group.sitemap' => 'XML sitemap generation',
-  'option_group.snogMovies' => '[OzzModz] TMDb Movie Thread Starter',
   'option_group.spam' => 'Spam management',
   'option_group.stats' => 'Statistics and metrics',
   'option_group.tagging' => 'Content tagging',
@@ -60,6 +58,7 @@ return array (
   'option_group.tl_groups' => '[tl] Social Groups',
   'option_group.tournament' => 'Tournament',
   'option_group.trader' => 'Trader',
+  'option_group.traktMovies' => '[nickp7] Trakt Movie Thread Starter',
   'option_group.users' => 'User options',
   'option_group.usersAndRegistration' => 'User registration',
   'option_group.xb_stop_human_span' => '[XB] Stop Human Spam',

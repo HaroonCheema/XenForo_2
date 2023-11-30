@@ -10,7 +10,7 @@ return array(
 			';
 	if (!$__templater->test($__vars['thread']['Movie'], 'empty', array())) {
 		$__finalCompiled .= '
-				' . $__templater->includeTemplate('snog_movie_search_result_thread_poster', $__vars) . '
+				' . $__templater->includeTemplate('trakt_movie_search_result_thread_poster', $__vars) . '
 			';
 	} else {
 		$__finalCompiled .= '

@@ -1,7 +1,6 @@
 <?php
 return array (
   'option_group_description.Fs_NodeIcon' => '',
-  'option_group_description.TvThreads' => 'Options for the TMDb TV thread starter add-on',
   'option_group_description.acp' => 'Contains various options relating to the admin control panel itself.',
   'option_group_description.addCategoryImage' => '',
   'option_group_description.alerts' => 'When events happen that affect individual users, they are alerted via this system. If you are using a supported device, alerts can be sent directly to the device as a push notification. As large volumes of alerts are generated, they are periodically pruned from the database.',
@@ -55,7 +54,6 @@ It is possible to filter the news feed down to just users you follow, or a singl
   'option_group_description.sharing' => 'These options control the social network sharing features of XenForo.',
   'option_group_description.siropuChat' => 'Options for Chat by Siropu.',
   'option_group_description.sitemap' => 'These options allow you to control how the XML sitemap is generated and submitted to search engines. The sitemap can be used to speed up search engine indexing of your site.',
-  'option_group_description.snogMovies' => 'Options for the TMDb movie thread starter add-on',
   'option_group_description.spam' => 'Default options for the spam cleaner and prevention systems are located here.',
   'option_group_description.stats' => '',
   'option_group_description.tagging' => 'Options that control how tags can be applied to content.',
@@ -64,6 +62,7 @@ It is possible to filter the news feed down to just users you follow, or a singl
   'option_group_description.tl_groups' => '',
   'option_group_description.tournament' => 'Tournament options',
   'option_group_description.trader' => 'Options here control the Trader add-on.',
+  'option_group_description.traktMovies' => 'Options for the Trakt movie thread starter add-on',
   'option_group_description.users' => '',
   'option_group_description.usersAndRegistration' => '',
   'option_group_description.xb_stop_human_span' => '',

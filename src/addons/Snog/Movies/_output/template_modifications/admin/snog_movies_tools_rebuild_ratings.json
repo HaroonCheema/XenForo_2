@@ -1,9 +1,0 @@
-{
-    "template": "tools_rebuild",
-    "description": "Rebuilding job",
-    "execution_order": 10,
-    "enabled": true,
-    "action": "str_replace",
-    "find": "<!--[XF:rebuild_bottom]-->",
-    "replace": "$0\n<xf:include template=\"snog_movies_tools_rebuild\" />"
-}

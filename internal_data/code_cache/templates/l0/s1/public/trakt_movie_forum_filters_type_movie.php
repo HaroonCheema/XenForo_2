@@ -1,0 +1,64 @@
+<?php
+// FROM HASH: 9b4b8b20aafa3188f60644afa6d76582
+return array(
+'extends' => function($__templater, array $__vars) { return 'forum_filters'; },
+'extensions' => array('before_date_limit' => function($__templater, array $__vars, $__extensions = null)
+{
+	$__finalCompiled = '';
+		$__finalCompiled .= '
+	<div class="menu-row menu-row--separated">
+		' . 'trakt_movies_genre:' . '
+		<div class="u-inputSpacer">
+			' . $__templater->formTextBox(array(
+		'name' => 'genre',
+		'value' => ($__vars['filters']['genre'] ? $__vars['filters']['genre'] : ''),
+		'maxlength' => '50',
+	)) . '
+		</div>
+	</div>
+
+	<div class="menu-row menu-row--separated">
+		' . 'trakt_movies_director:' . '
+		<div class="u-inputSpacer">
+			' . $__templater->formTextBox(array(
+		'name' => 'director',
+		'value' => ($__vars['filters']['director'] ? $__vars['filters']['director'] : ''),
+		'maxlength' => '50',
+	)) . '
+		</div>
+	</div>
+
+	<div class="menu-row menu-row--separated">
+		' . 'trakt_movies_cast:' . '
+		<div class="u-inputSpacer">
+			' . $__templater->formTextBox(array(
+		'name' => 'cast',
+		'value' => ($__vars['filters']['cast'] ? $__vars['filters']['cast'] : ''),
+		'maxlength' => '50',
+	)) . '
+		</div>
+	</div>
+
+	<div class="menu-row menu-row--separated">
+		' . 'trakt_movies_title:' . '
+		<div class="u-inputSpacer">
+			' . $__templater->formTextBox(array(
+		'name' => 'movie_title',
+		'value' => ($__vars['filters']['movie_title'] ? $__vars['filters']['movie_title'] : ''),
+		'maxlength' => '50',
+	)) . '
+		</div>
+	</div>
+
+';
+	return $__finalCompiled;
+}),
+'code' => function($__templater, array $__vars, $__extensions = null)
+{
+	$__finalCompiled = '';
+	$__finalCompiled .= '
+
+' . $__templater->renderExtension('before_date_limit', $__vars, $__extensions);
+	return $__finalCompiled;
+}
+);

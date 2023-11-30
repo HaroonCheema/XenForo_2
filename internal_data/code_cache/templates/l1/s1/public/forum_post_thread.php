@@ -143,10 +143,10 @@ return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
 	$__finalCompiled = '';
-	if (($__vars['forum']['forum_type_id'] == 'snog_movies_movie') AND (!$__vars['xf']['options']['tmdbthreads_mix'])) {
+	if (($__vars['forum']['forum_type_id'] == 'trakt_movies_movie') AND (!$__vars['xf']['options']['traktthreads_mix'])) {
 		$__finalCompiled .= '
 	';
-		$__templater->pageParams['pageTitle'] = $__templater->preEscaped('Post movie');
+		$__templater->pageParams['pageTitle'] = $__templater->preEscaped('trakt_movies_post_button');
 		$__finalCompiled .= '
 ';
 	} else {
@@ -157,7 +157,6 @@ return array(
 ';
 	}
 	$__finalCompiled .= '
-
 
 
 ';

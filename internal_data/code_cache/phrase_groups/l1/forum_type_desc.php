@@ -5,7 +5,5 @@ return array (
   'forum_type_desc.nick97_trakt_movie' => 'Trakt movie thread starter',
   'forum_type_desc.nick97_trakt_tv' => 'Trakt TV thread starter',
   'forum_type_desc.question' => 'Question forums allow users to ask questions which other users can answer. The best answer given to the question can be highlighted and pinned. Answers given to "Votable questions" can be up/down-voted and can be sorted by score.',
-  'forum_type_desc.snog_movies_movie' => 'TMDb movie thread starter',
-  'forum_type_desc.snog_tv' => 'TMDb TV thread starter',
   'forum_type_desc.suggestion' => 'Suggestion forums allow users to vote for ideas that they like. The most popular suggestions can be easily accessed.',
 );

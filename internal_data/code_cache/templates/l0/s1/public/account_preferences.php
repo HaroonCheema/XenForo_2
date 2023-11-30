@@ -73,15 +73,15 @@ return array(
 	}
 	$__compilerTemp5 = $__templater->mergeChoiceOptions(array(), $__vars['timeZones']);
 	$__compilerTemp6 = '';
-	if (!$__templater->func('in_array', array('', $__vars['xf']['options']['tmdbthreads_watchProviderRegions'], ), false)) {
+	if (!$__templater->func('in_array', array('', $__vars['xf']['options']['traktthreads_watchProviderRegions'], ), false)) {
 		$__compilerTemp6 .= '
 				';
-		$__compilerTemp7 = $__templater->mergeChoiceOptions(array(), $__vars['snogMoviesWatchRegions']);
+		$__compilerTemp7 = $__templater->mergeChoiceOptions(array(), $__vars['traktMoviesWatchRegions']);
 		$__compilerTemp6 .= $__templater->formSelectRow(array(
-			'name' => 'option[snog_movies_tmdb_watch_region]',
-			'value' => $__vars['xf']['visitor']['Option']['snog_movies_tmdb_watch_region'],
+			'name' => 'option[nick97_movies_trakt_watch_region]',
+			'value' => $__vars['xf']['visitor']['Option']['nick97_movies_trakt_watch_region'],
 		), $__compilerTemp7, array(
-			'label' => 'Movie watch providers default region',
+			'label' => 'nick97_movies_trakt_watch_region',
 		)) . '
 			';
 	}
@@ -279,7 +279,7 @@ return array(
 		'label' => 'Time zone',
 	)) . '
 
-						' . $__compilerTemp6 . '
+			' . $__compilerTemp6 . '
 ' . $__templater->callMacro('helper_account', 'email_options_row', array(
 		'showConversationOption' => true,
 	), $__vars) . '
