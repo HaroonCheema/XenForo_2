@@ -20,7 +20,7 @@ return array(
 	if ((($__templater->func('property', array('trakt_movies_posterUpdateButtonPosition', ), false) == 'default') AND ($__vars['thread']['Movie'] AND ($__vars['xf']['visitor']['is_admin'] OR $__vars['xf']['visitor']['is_moderator'])))) {
 		$__finalCompiled .= '
 		' . $__templater->button('
-			' . 'trakt_movies_check_poster' . '
+			' . 'Check for new poster' . '
 		', array(
 			'href' => $__templater->func('link', array('movies/poster', $__vars['thread']['Movie'], ), false),
 			'class' => 'button--link',
@@ -42,7 +42,7 @@ return array(
 	';
 	if (!$__templater->test($__vars['thread']['Movie'], 'empty', array()) AND ($__vars['page'] <= 1)) {
 		$__finalCompiled .= '
-		<span class="moviehint">' . 'trakt_movies_information_thread' . '</span>
+		<span class="moviehint">' . 'Movie information in first post provided by <a href="https://trakt.tv/movies" target="_blank" >Trakt Movie Database</a>' . '</span>
 	';
 	}
 	$__finalCompiled .= '

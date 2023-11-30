@@ -11,7 +11,7 @@ return array(
 'below_thread_list' => function($__templater, array $__vars, $__extensions = null)
 {
 	$__finalCompiled = '';
-		$__finalCompiled .= '<span class="moviehint">' . 'trakt_movies_information' . '</span>';
+		$__finalCompiled .= '<span class="moviehint">' . 'Movie information provided by <a href="https://trakt.tv/movies" target="_blank" >Trakt Movie Database</a>' . '</span>';
 	return $__finalCompiled;
 }),
 'code' => function($__templater, array $__vars, $__extensions = null)

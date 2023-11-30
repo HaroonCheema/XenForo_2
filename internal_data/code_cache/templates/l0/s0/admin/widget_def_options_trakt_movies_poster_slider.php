@@ -22,17 +22,17 @@ return array(
 		'value' => $__vars['options']['order'],
 	), array(array(
 		'value' => 'latest',
-		'label' => 'trakt_movies_latest_movies',
+		'label' => 'Latest movies',
 		'_type' => 'option',
 	),
 	array(
 		'value' => 'rating',
-		'label' => 'trakt_movies_most_rated_movies',
+		'label' => 'Most rated movies',
 		'_type' => 'option',
 	),
 	array(
 		'value' => 'random',
-		'label' => 'trakt_movies_random_movies',
+		'label' => 'Random movies',
 		'_type' => 'option',
 	),
 	array(
@@ -85,14 +85,14 @@ return array(
 		'name' => 'options[image_width]',
 		'value' => $__vars['options']['image_width'],
 	), array(
-		'label' => 'trakt_movies_image_width',
+		'label' => 'Image width',
 	)) . '
 	
 ' . $__templater->formTextBoxRow(array(
 		'name' => 'options[image_height]',
 		'value' => $__vars['options']['image_height'],
 	), array(
-		'label' => 'trakt_movies_image_height',
+		'label' => 'Image height',
 	)) . '
 
 ' . $__templater->formCheckBoxRow(array(
@@ -100,14 +100,14 @@ return array(
 		'name' => 'options[show_rating]',
 		'value' => '1',
 		'selected' => $__vars['options']['show_rating'],
-		'label' => 'trakt_movies_show_rating',
+		'label' => 'Show rating',
 		'_type' => 'option',
 	)), array(
 	)) . '
 
 <h3 class="block-formSectionHeader">
 	<span class="collapseTrigger collapseTrigger--block" data-xf-click="toggle" data-target="< :up:next">
-		<span class="block-formSectionHeader-aligner">' . 'trakt_movies_slider_options' . '</span>
+		<span class="block-formSectionHeader-aligner">' . 'Slider options' . '</span>
 	</span>
 </h3>
 
@@ -117,7 +117,7 @@ return array(
 		'value' => $__vars['options']['slider']['items'],
 		'min' => '1',
 	), array(
-		'label' => 'trakt_movies_slider_items',
+		'label' => 'Number of slides to show at a time',
 	)) . '
 	
 	<hr class="formRowSep" />
@@ -130,7 +130,7 @@ return array(
 		'min' => '1',
 	)) . '
 
-			<span class="inputGroup-text">' . 'trakt_movies_breakpoint:' . '</span>
+			<span class="inputGroup-text">' . 'Breakpoint' . $__vars['xf']['language']['label_separator'] . '</span>
 			' . $__templater->formNumberBox(array(
 		'name' => 'options[slider][breakpointWide]',
 		'value' => $__vars['options']['slider']['breakpointWide'],
@@ -140,7 +140,7 @@ return array(
 		</div>
 	', array(
 		'rowtype' => 'input',
-		'label' => 'trakt_movies_slider_items_items_wide',
+		'label' => 'Wide items',
 	)) . '
 
 	' . $__templater->formRow('
@@ -151,7 +151,7 @@ return array(
 		'min' => '1',
 	)) . '
 
-			<span class="inputGroup-text">' . 'trakt_movies_breakpoint:' . '</span>
+			<span class="inputGroup-text">' . 'Breakpoint' . $__vars['xf']['language']['label_separator'] . '</span>
 			' . $__templater->formNumberBox(array(
 		'name' => 'options[slider][breakpointMedium]',
 		'value' => $__vars['options']['slider']['breakpointMedium'],
@@ -161,7 +161,7 @@ return array(
 		</div>
 	', array(
 		'rowtype' => 'input',
-		'label' => 'trakt_movies_slider_items_items_medium',
+		'label' => 'Medium items',
 	)) . '
 	
 	<hr class="formRowSep" />
@@ -171,7 +171,7 @@ return array(
 		'name' => 'options[slider][auto]',
 		'value' => '1',
 		'selected' => $__vars['options']['slider']['auto'],
-		'label' => 'trakt_movies_slider_auto_play',
+		'label' => 'Automatically start to play',
 		'data-hide' => 'true',
 		'_dependent' => array('
 				' . $__templater->formNumberBox(array(
@@ -179,7 +179,7 @@ return array(
 		'value' => $__vars['options']['slider']['pause'],
 		'min' => '1',
 	)) . '
-				<p class="formRow-explain">' . 'trakt_movies_slider_pause' . '</p>
+				<p class="formRow-explain">' . 'The time (in ms) between each auto transition' . '</p>
 			'),
 		'_type' => 'option',
 	),
@@ -187,25 +187,25 @@ return array(
 		'name' => 'options[slider][controls]',
 		'value' => '1',
 		'selected' => $__vars['options']['slider']['controls'],
-		'label' => 'trakt_movies_slider_controls',
+		'label' => 'Show prev/next buttons',
 		'_type' => 'option',
 	),
 	array(
 		'name' => 'options[slider][pauseOnHover]',
 		'selected' => $__vars['options']['slider']['pauseOnHover'],
-		'label' => 'trakt_movies_slider_pause_on_hover',
+		'label' => 'Pause on hover',
 		'_type' => 'option',
 	),
 	array(
 		'name' => 'options[slider][loop]',
 		'selected' => $__vars['options']['slider']['loop'],
-		'label' => 'trakt_movies_slider_loop_slides',
+		'label' => 'Loop slides',
 		'_type' => 'option',
 	),
 	array(
 		'name' => 'options[slider][pager]',
 		'selected' => $__vars['options']['slider']['pager'],
-		'label' => 'trakt_movies_slider_pager',
+		'label' => 'Display pager',
 		'_type' => 'option',
 	)), array(
 	)) . '

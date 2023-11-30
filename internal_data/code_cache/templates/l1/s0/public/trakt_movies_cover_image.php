@@ -15,16 +15,16 @@ return array(
 	$__compilerTemp1 = '';
 	if ($__vars['hasNewBackdrop']) {
 		$__compilerTemp1 .= '
-				' . 'trakt_movies_new_backdrop_available' . '<br /><br />
+				' . 'New backdrop available' . '<br /><br />
 				<span style="text-align:center;"><img src="https://image.tmdb.org/t/p/' . $__templater->escape($__vars['xf']['options']['traktthreads_backdropCoverSize']) . $__templater->escape($__vars['backdropPath']) . '" alt="" /></span>
 			';
 	} else {
 		$__compilerTemp1 .= '
-				' . 'trakt_movies_new_backdrop_not_available' . '
+				' . 'New backdrop is not available' . '
 				';
 		if ($__vars['backdropPath']) {
 			$__compilerTemp1 .= '
-					<strong>' . 'trakt_movies_reupload_old_backdrop' . '</strong>
+					<strong>' . 'Re-upload old backdrop?' . '</strong>
 				';
 		}
 		$__compilerTemp1 .= '

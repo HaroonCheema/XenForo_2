@@ -146,7 +146,7 @@ return array(
 	if (($__vars['forum']['forum_type_id'] == 'trakt_movies_movie') AND (!$__vars['xf']['options']['traktthreads_mix'])) {
 		$__finalCompiled .= '
 	';
-		$__templater->pageParams['pageTitle'] = $__templater->preEscaped('trakt_movies_post_button');
+		$__templater->pageParams['pageTitle'] = $__templater->preEscaped('Post movie');
 		$__finalCompiled .= '
 ';
 	} else {

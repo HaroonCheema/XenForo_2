@@ -4,7 +4,7 @@ return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
 	$__finalCompiled = '';
-	$__templater->pageParams['pageTitle'] = $__templater->preEscaped('trakt_movies_edit_movie');
+	$__templater->pageParams['pageTitle'] = $__templater->preEscaped('Edit movie');
 	$__finalCompiled .= '
 
 ';
@@ -71,14 +71,14 @@ return array(
 		'name' => 'trakt_tagline',
 		'value' => $__vars['movie']['trakt_tagline'],
 	), array(
-		'label' => 'trakt_movies_tagline',
+		'label' => 'Tagline',
 	)) . '
 			
 			' . $__templater->formTextBoxRow(array(
 		'name' => 'trakt_genres',
 		'value' => $__vars['movie']['trakt_genres'],
 	), array(
-		'label' => 'trakt_movies_genre',
+		'label' => 'Genre',
 	)) . '
 
 			' . $__templater->formTextAreaRow(array(
@@ -86,7 +86,7 @@ return array(
 		'value' => $__vars['movie']['trakt_director'],
 		'autosize' => 'true',
 	), array(
-		'label' => 'trakt_movies_director',
+		'label' => 'Director',
 	)) . '
 
 			' . $__templater->formTextAreaRow(array(
@@ -94,28 +94,28 @@ return array(
 		'value' => $__vars['movie']['trakt_cast'],
 		'autosize' => 'true',
 	), array(
-		'label' => 'trakt_movies_cast',
+		'label' => 'Cast',
 	)) . '
 			
 			' . $__templater->formTextBoxRow(array(
 		'name' => 'trakt_status',
 		'value' => $__vars['movie']['trakt_status'],
 	), array(
-		'label' => 'trakt_movies_status',
+		'label' => 'Status',
 	)) . '
 
 			' . $__templater->formTextBoxRow(array(
 		'name' => 'trakt_release',
 		'value' => $__vars['movie']['trakt_release'],
 	), array(
-		'label' => 'trakt_movies_release',
+		'label' => 'Release',
 	)) . '
 
 			' . $__templater->formTextBoxRow(array(
 		'name' => 'trakt_runtime',
 		'value' => $__vars['movie']['trakt_runtime'],
 	), array(
-		'label' => 'trakt_movies_runtime',
+		'label' => 'Runtime',
 	)) . '
 
 			' . $__templater->formTextAreaRow(array(
@@ -123,15 +123,15 @@ return array(
 		'value' => $__vars['movie']['trakt_plot'],
 		'autosize' => 'true',
 	), array(
-		'label' => 'trakt_movies_plot',
+		'label' => 'Plot',
 	)) . '
 			
 			' . $__templater->formTextBoxRow(array(
 		'name' => 'trakt_trailer',
 		'value' => $__vars['movie']['trakt_trailer'],
 	), array(
-		'label' => 'trakt_movies_trailer',
-		'explain' => 'trakt_movies_trailer_explain',
+		'label' => 'Trailer',
+		'explain' => 'Enter either a youtube video ID or a youtube link',
 	)) . '
 
 			' . $__compilerTemp1 . '

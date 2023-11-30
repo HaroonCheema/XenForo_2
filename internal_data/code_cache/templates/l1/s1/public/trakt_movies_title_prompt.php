@@ -11,13 +11,13 @@ return array(
 	if (!$__vars['xf']['options']['traktthreads_mix']) {
 		$__finalCompiled .= '
 	';
-		$__vars['placeholder'] = 'trakt_movies_link_id';
+		$__vars['placeholder'] = 'Trakt link or Movie ID';
 		$__finalCompiled .= '
 ';
 	} else {
 		$__finalCompiled .= '
 	';
-		$__vars['placeholder'] = 'trakt_movies_title_link_id';
+		$__vars['placeholder'] = 'Thread title, Trakt link or Movie ID';
 		$__finalCompiled .= '
 ';
 	}
@@ -33,7 +33,7 @@ return array(
 		'maxlength' => $__templater->func('max_length', array('XF:Thread', 'title', ), false),
 	), array(
 		'label' => 'Title',
-		'explain' => 'trakt_movies_explain_link',
+		'explain' => 'Don\'t have the Trakt Link or ID for your movie? Go to <a href="https://trakt.tv/movies" target="_blank" >Trakt Movie Database</a> and look it up.',
 		'rowtype' => 'fullWidth noLabel',
 	));
 	return $__finalCompiled;

@@ -9,43 +9,43 @@ return array(
 ';
 	$__compilerTemp1 = array(array(
 		'value' => 'nick97\\TraktMovies:MovieRatingRebuild',
-		'label' => 'trakt_movies_recalculate_ratings',
+		'label' => 'Recalculate ratings',
 		'_type' => 'option',
 	)
 ,array(
 		'value' => 'nick97\\TraktMovies:MovieRebuild',
-		'label' => 'trakt_movies_rebuild_general_movie_info',
+		'label' => 'Rebuild general movie info',
 		'_type' => 'option',
 	)
 ,array(
 		'value' => 'nick97\\TraktMovies:MovieCreditsRebuild',
-		'label' => 'trakt_movies_rebuild_credits',
+		'label' => 'Movie casts & crew',
 		'_type' => 'option',
 	)
 ,array(
 		'value' => 'nick97\\TraktMovies:MoviePersonsRebuild',
-		'label' => 'trakt_movies_rebuild_persons',
+		'label' => 'Rebuild person data',
 		'_type' => 'option',
 	)
 ,array(
 		'value' => 'nick97\\TraktMovies:MovieVideosRebuild',
-		'label' => 'trakt_movies_rebuild_videos',
+		'label' => 'Rebuild videos',
 		'_type' => 'option',
 	)
 ,array(
 		'value' => 'nick97\\TraktMovies:MovieWatchProvidersRebuild',
-		'label' => 'trakt_movies_rebuild_watch_providers',
+		'label' => 'Rebuild watch providers',
 		'_type' => 'option',
 	)
 ,array(
 		'value' => 'nick97\\TraktMovies:MovieProductionCompaniesRebuild',
-		'label' => 'trakt_movies_rebuild_movie_production_companies',
+		'label' => 'Rebuild movie production companies',
 		'_type' => 'option',
 	));
 	if ($__templater->func('is_addon_active', array('ThemeHouse/Covers', ), false)) {
 		$__compilerTemp1[] = array(
 			'value' => 'nick97\\TraktMovies:MovieThreadCoverUpdate',
-			'label' => 'trakt_movies_rebuild_thread_covers',
+			'label' => 'Rebuild thread covers',
 			'_type' => 'option',
 		);
 	}

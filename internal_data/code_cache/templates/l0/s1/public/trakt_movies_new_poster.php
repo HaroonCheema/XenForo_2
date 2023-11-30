@@ -4,23 +4,23 @@ return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
 	$__finalCompiled = '';
-	$__templater->pageParams['pageTitle'] = $__templater->preEscaped('trakt_movies_check_poster');
+	$__templater->pageParams['pageTitle'] = $__templater->preEscaped('Check for new poster');
 	$__finalCompiled .= '
 
 ';
 	$__compilerTemp1 = '';
 	if ($__vars['newposter']) {
 		$__compilerTemp1 .= '
-					' . 'trakt_movies_poster_available' . '
+					' . 'A new poster is available' . '
 					<div class="u-alignCenter"><img src="https://image.tmdb.org/t/p/' . $__templater->escape($__vars['xf']['options']['traktthreads_largePosterSize']) . $__templater->escape($__vars['posterpath']) . '" alt="" /></div>
 				';
 	} else {
 		$__compilerTemp1 .= '
-					' . 'trakt_movies_poster_not_available' . '
+					' . 'A new poster is not available' . '
 					';
 		if ($__vars['posterpath']) {
 			$__compilerTemp1 .= '
-						<strong>' . 'trakt_movies_reupload_old_poster' . '</strong>
+						<strong>' . 'Re-upload old poster?' . '</strong>
 					';
 		}
 		$__compilerTemp1 .= '
@@ -30,7 +30,7 @@ return array(
 	if ($__vars['posterpath']) {
 		$__compilerTemp2 .= '
 				' . $__templater->formSubmitRow(array(
-			'submit' => 'trakt_movies_save_poster',
+			'submit' => 'Save new poster',
 		), array(
 			'rowtype' => 'simple',
 		)) . '

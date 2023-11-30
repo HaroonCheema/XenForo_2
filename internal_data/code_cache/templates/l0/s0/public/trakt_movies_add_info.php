@@ -4,7 +4,7 @@ return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
 	$__finalCompiled = '';
-	$__templater->pageParams['pageTitle'] = $__templater->preEscaped('trakt_movies_add_info');
+	$__templater->pageParams['pageTitle'] = $__templater->preEscaped('Add movie information');
 	$__finalCompiled .= '
 
 ' . $__templater->form('
@@ -14,7 +14,7 @@ return array(
 		'name' => 'trakt',
 		'value' => '',
 	), array(
-		'label' => 'trakt_movies_link_id',
+		'label' => 'Trakt link or Movie ID',
 	)) . '
 			
 			' . $__templater->formCheckBoxRow(array(
@@ -22,7 +22,7 @@ return array(
 		'name' => 'changetitle',
 		'value' => '1',
 		'selected' => $__vars['group']['postview'],
-		'label' => 'trakt_movies_change_title',
+		'label' => 'Change thread title to movie title',
 		'_type' => 'option',
 	)), array(
 	)) . '
@@ -33,7 +33,7 @@ return array(
 				<div class="formSubmitRow-bar"></div>
 				<div class="formSubmitRow-controls" style="padding: 5px 0 5px 0; !important;">
 					<div style="text-align:center;margin-left:auto;margin-right:auto;">
-						' . $__templater->button('trakt_movies_add_info', array(
+						' . $__templater->button('Add movie information', array(
 		'type' => 'submit',
 		'accesskey' => 's',
 		'class' => 'button button--icon button--icon--save',

@@ -11,4 +11,5 @@ return array (
   'thread_type.redirect' => 'Redirect',
   'thread_type.resource' => 'Resource',
   'thread_type.suggestion' => 'Suggestion',
+  'thread_type.trakt_movies_movie' => 'Trakt Movie',
 );

@@ -62,37 +62,37 @@ return array(
 									<ul class="listInline listInline--bullet">
 										';
 				if ($__vars['options']['show_tagline'] AND $__vars['movie']['trakt_tagline']) {
-					$__finalCompiled .= '<li><b>' . 'trakt_movies_tagline' . ':</b> ' . $__templater->escape($__vars['movie']['trakt_tagline']) . '</li>';
+					$__finalCompiled .= '<li><b>' . 'Tagline' . ':</b> ' . $__templater->escape($__vars['movie']['trakt_tagline']) . '</li>';
 				}
 				$__finalCompiled .= '
 										';
 				if ($__vars['options']['show_genres'] AND $__vars['movie']['trakt_genres']) {
-					$__finalCompiled .= '<li><b>' . 'trakt_movies_genre' . ':</b> ' . $__templater->escape($__vars['movie']['trakt_genres']) . '</li>';
+					$__finalCompiled .= '<li><b>' . 'Genre' . ':</b> ' . $__templater->escape($__vars['movie']['trakt_genres']) . '</li>';
 				}
 				$__finalCompiled .= '
 										';
 				if ($__vars['options']['show_director'] AND $__vars['movie']['trakt_director']) {
-					$__finalCompiled .= '<li><b>' . 'trakt_movies_director' . ':</b> ' . $__templater->escape($__vars['movie']['trakt_director']) . '</li>';
+					$__finalCompiled .= '<li><b>' . 'Director' . ':</b> ' . $__templater->escape($__vars['movie']['trakt_director']) . '</li>';
 				}
 				$__finalCompiled .= '
 										';
 				if ($__vars['options']['show_cast'] AND $__vars['movie']['trakt_cast']) {
-					$__finalCompiled .= '<li><b>' . 'trakt_movies_cast' . ':</b> ' . $__templater->escape($__vars['movie']['trakt_cast']) . '</li>';
+					$__finalCompiled .= '<li><b>' . 'Cast' . ':</b> ' . $__templater->escape($__vars['movie']['trakt_cast']) . '</li>';
 				}
 				$__finalCompiled .= '
 										';
 				if ($__vars['options']['show_status'] AND $__vars['movie']['trakt_status']) {
-					$__finalCompiled .= '<li><b>' . 'trakt_movies_status' . ':</b> ' . $__templater->escape($__vars['movie']['trakt_status']) . '</li>';
+					$__finalCompiled .= '<li><b>' . 'Status' . ':</b> ' . $__templater->escape($__vars['movie']['trakt_status']) . '</li>';
 				}
 				$__finalCompiled .= '
 										';
 				if ($__vars['options']['show_release_date'] AND $__vars['movie']['trakt_release']) {
-					$__finalCompiled .= '<li><b>' . 'trakt_movies_release' . ':</b> ' . $__templater->escape($__vars['movie']['trakt_release']) . '</li>';
+					$__finalCompiled .= '<li><b>' . 'Release' . ':</b> ' . $__templater->escape($__vars['movie']['trakt_release']) . '</li>';
 				}
 				$__finalCompiled .= '
 										';
 				if ($__vars['options']['show_runtime'] AND $__vars['movie']['trakt_runtime']) {
-					$__finalCompiled .= '<li><b>' . 'trakt_movies_runtime' . ':</b> ' . $__templater->escape($__vars['movie']['trakt_runtime']) . '</li>';
+					$__finalCompiled .= '<li><b>' . 'Runtime' . ':</b> ' . $__templater->escape($__vars['movie']['trakt_runtime']) . '</li>';
 				}
 				$__finalCompiled .= '
 									</ul>

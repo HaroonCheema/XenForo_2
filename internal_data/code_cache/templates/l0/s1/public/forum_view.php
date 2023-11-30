@@ -291,7 +291,7 @@ return array(
 		$__finalCompiled .= '
 	<li><a href="' . $__templater->func('link', array('forums', $__vars['forum'], $__templater->filter($__vars['filters'], array(array('replace', array('genre', null, )),), false), ), true) . '"
 		class="filterBar-filterToggle" data-xf-init="tooltip" title="' . 'Remove this filter' . '">
-		<span class="filterBar-filterToggle-label">' . 'trakt_movies_genre' . ':</span>
+		<span class="filterBar-filterToggle-label">' . 'Genre' . ':</span>
 		' . $__templater->escape($__vars['filters']['genre']) . '</a></li>
 ';
 	}
@@ -301,7 +301,7 @@ return array(
 		$__finalCompiled .= '
 	<li><a href="' . $__templater->func('link', array('forums', $__vars['forum'], $__templater->filter($__vars['filters'], array(array('replace', array('director', null, )),), false), ), true) . '"
 		class="filterBar-filterToggle" data-xf-init="tooltip" title="' . 'Remove this filter' . '">
-		<span class="filterBar-filterToggle-label">' . 'trakt_movies_director' . ':</span>
+		<span class="filterBar-filterToggle-label">' . 'Director' . ':</span>
 		' . $__templater->escape($__vars['filters']['director']) . '</a></li>
 ';
 	}
@@ -311,7 +311,7 @@ return array(
 		$__finalCompiled .= '
 	<li><a href="' . $__templater->func('link', array('forums', $__vars['forum'], $__templater->filter($__vars['filters'], array(array('replace', array('cast', null, )),), false), ), true) . '"
 		class="filterBar-filterToggle" data-xf-init="tooltip" title="' . 'Remove this filter' . '">
-		<span class="filterBar-filterToggle-label">' . 'trakt_movies_cast' . ':</span>
+		<span class="filterBar-filterToggle-label">' . 'Cast' . ':</span>
 		' . $__templater->escape($__vars['filters']['cast']) . '</a></li>
 ';
 	}
@@ -321,7 +321,7 @@ return array(
 		$__finalCompiled .= '
 	<li><a href="' . $__templater->func('link', array('forums', $__vars['forum'], $__templater->filter($__vars['filters'], array(array('replace', array('movie_title', null, )),), false), ), true) . '"
 		class="filterBar-filterToggle" data-xf-init="tooltip" title="' . 'Remove this filter' . '">
-		<span class="filterBar-filterToggle-label">' . 'trakt_movies_title' . ':</span>
+		<span class="filterBar-filterToggle-label">' . 'Movie title' . ':</span>
 		' . $__templater->escape($__vars['filters']['movie_title']) . '</a></li>
 ';
 	}
@@ -430,7 +430,7 @@ return array(
 		$__compilerTemp1 = '';
 		if ($__vars['forum']['forum_type_id'] == 'trakt_movies_movie') {
 			$__compilerTemp1 .= '
-	' . 'trakt_movies_post_button' . '
+	' . 'Post movie' . '
 ';
 		} else {
 			$__compilerTemp1 .= '

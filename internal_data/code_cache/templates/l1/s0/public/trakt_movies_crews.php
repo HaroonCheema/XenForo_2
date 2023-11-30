@@ -4,7 +4,7 @@ return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
 	$__finalCompiled = '';
-	$__templater->pageParams['pageTitle'] = $__templater->preEscaped('trakt_movies_x_crews');
+	$__templater->pageParams['pageTitle'] = $__templater->preEscaped('' . $__templater->escape($__vars['movie']['trakt_title']) . ' crew');
 	$__finalCompiled .= '
 
 ';

@@ -7,7 +7,7 @@ return array(
 	$__finalCompiled = '';
 		$__finalCompiled .= '
 	<div class="menu-row menu-row--separated">
-		' . 'trakt_movies_genre:' . '
+		' . 'Genre' . $__vars['xf']['language']['label_separator'] . '
 		<div class="u-inputSpacer">
 			' . $__templater->formTextBox(array(
 		'name' => 'genre',
@@ -18,7 +18,7 @@ return array(
 	</div>
 
 	<div class="menu-row menu-row--separated">
-		' . 'trakt_movies_director:' . '
+		' . 'Director' . $__vars['xf']['language']['label_separator'] . '
 		<div class="u-inputSpacer">
 			' . $__templater->formTextBox(array(
 		'name' => 'director',
@@ -29,7 +29,7 @@ return array(
 	</div>
 
 	<div class="menu-row menu-row--separated">
-		' . 'trakt_movies_cast:' . '
+		' . 'Cast' . $__vars['xf']['language']['label_separator'] . '
 		<div class="u-inputSpacer">
 			' . $__templater->formTextBox(array(
 		'name' => 'cast',
@@ -40,7 +40,7 @@ return array(
 	</div>
 
 	<div class="menu-row menu-row--separated">
-		' . 'trakt_movies_title:' . '
+		' . 'Movie title' . $__vars['xf']['language']['label_separator'] . '
 		<div class="u-inputSpacer">
 			' . $__templater->formTextBox(array(
 		'name' => 'movie_title',

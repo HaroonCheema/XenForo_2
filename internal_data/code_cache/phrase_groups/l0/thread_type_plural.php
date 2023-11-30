@@ -11,4 +11,5 @@ return array (
   'thread_type_plural.redirect' => 'Redirects',
   'thread_type_plural.resource' => 'Resources',
   'thread_type_plural.suggestion' => 'Suggestions',
+  'thread_type_plural.trakt_movies_movie' => 'Trakt Movies',
 );

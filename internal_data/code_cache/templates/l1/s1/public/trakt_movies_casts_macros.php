@@ -94,7 +94,7 @@ return array(
 						';
 	if ($__templater->method($__vars['person'], 'canUpdate', array())) {
 		$__compilerTemp1 .= '
-							<a href="' . $__templater->func('link', array('movies/person/update', $__vars['person'], ), true) . '" data-xf-click="overlay" class="menu-linkRow">' . 'trakt_movies_update_person_info' . '</a>
+							<a href="' . $__templater->func('link', array('movies/person/update', $__vars['person'], ), true) . '" data-xf-click="overlay" class="menu-linkRow">' . 'Update person image & data' . '</a>
 						';
 	}
 	$__compilerTemp1 .= '

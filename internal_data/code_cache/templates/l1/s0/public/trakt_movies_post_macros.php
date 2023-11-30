@@ -35,7 +35,7 @@ return array(
 		$__finalCompiled .= '
 												<div class="message message--movie messageMovie--watch">
 													<h4 class="block-textHeader">
-														' . 'trakt_movies_where_to_watch' . '
+														' . 'Where to watch' . '
 														<div class="u-pullRight">
 															';
 		$__compilerTemp1 = array();
@@ -70,7 +70,7 @@ return array(
 															';
 					if ($__vars['watchProvider']['flatrate']) {
 						$__finalCompiled .= '
-																' . 'trakt_movies_streaming:' . '
+																' . 'Streaming' . $__vars['xf']['language']['label_separator'] . '
 																' . $__templater->callMacro(null, 'watch_provider_list', array(
 							'providerType' => $__vars['watchProvider']['flatrate'],
 						), $__vars) . '
@@ -81,7 +81,7 @@ return array(
 															';
 					if ($__vars['watchProvider']['buy']) {
 						$__finalCompiled .= '
-																' . 'trakt_movies_buy:' . '
+																' . 'Buy' . $__vars['xf']['language']['label_separator'] . '
 																' . $__templater->callMacro(null, 'watch_provider_list', array(
 							'providerType' => $__vars['watchProvider']['buy'],
 						), $__vars) . '
@@ -92,7 +92,7 @@ return array(
 															';
 					if ($__vars['watchProvider']['rent']) {
 						$__finalCompiled .= '
-																' . 'trakt_movies_rent:' . '
+																' . 'Rent' . $__vars['xf']['language']['label_separator'] . '
 																' . $__templater->callMacro(null, 'watch_provider_list', array(
 							'providerType' => $__vars['watchProvider']['rent'],
 						), $__vars) . '
@@ -213,7 +213,7 @@ return array(
 			$__finalCompiled .= '
 													<div>
 														' . $__templater->button('
-															' . 'trakt_movies_change_rating' . '
+															' . 'Add/Change rating' . '
 														', array(
 				'class' => 'button--link button--wrap',
 				'href' => $__templater->func('link', array('movies/rate', $__vars['thread']['Movie'], ), false),
@@ -239,7 +239,7 @@ return array(
 														';
 			if ($__templater->func('property', array('trakt_movies_messageCompaniesTitle', ), false)) {
 				$__finalCompiled .= '
-															<h4 class="block-textHeader">' . 'trakt_movies_production_companies:' . '</h4>
+															<h4 class="block-textHeader">' . 'Production companies' . $__vars['xf']['language']['label_separator'] . '</h4>
 														';
 			}
 			$__finalCompiled .= '
@@ -267,42 +267,42 @@ return array(
 	$__finalCompiled .= '
 											';
 	if ($__vars['xf']['options']['traktthreads_showThreadInfo']['tagline'] AND $__vars['thread']['Movie']['trakt_tagline']) {
-		$__finalCompiled .= '<p><b>' . 'trakt_movies_tagline' . ':</b> ' . $__templater->escape($__vars['thread']['Movie']['trakt_tagline']) . '</p>';
+		$__finalCompiled .= '<p><b>' . 'Tagline' . ':</b> ' . $__templater->escape($__vars['thread']['Movie']['trakt_tagline']) . '</p>';
 	}
 	$__finalCompiled .= '
 											';
 	if ($__vars['xf']['options']['traktthreads_showThreadInfo']['genres'] AND $__vars['thread']['Movie']['trakt_genres']) {
-		$__finalCompiled .= '<p><b>' . 'trakt_movies_genre' . ':</b> ' . $__templater->escape($__vars['thread']['Movie']['trakt_genres']) . '</p>';
+		$__finalCompiled .= '<p><b>' . 'Genre' . ':</b> ' . $__templater->escape($__vars['thread']['Movie']['trakt_genres']) . '</p>';
 	}
 	$__finalCompiled .= '
 											';
 	if ($__vars['xf']['options']['traktthreads_showThreadInfo']['director'] AND $__vars['thread']['Movie']['trakt_director']) {
-		$__finalCompiled .= '<p><b>' . 'trakt_movies_director' . ':</b> ' . $__templater->escape($__vars['thread']['Movie']['trakt_director']) . '</p>';
+		$__finalCompiled .= '<p><b>' . 'Director' . ':</b> ' . $__templater->escape($__vars['thread']['Movie']['trakt_director']) . '</p>';
 	}
 	$__finalCompiled .= '
 											';
 	if ($__vars['xf']['options']['traktthreads_showThreadInfo']['cast'] AND $__vars['thread']['Movie']['trakt_cast']) {
-		$__finalCompiled .= '<p><b>' . 'trakt_movies_cast' . ':</b> ' . $__templater->escape($__vars['thread']['Movie']['trakt_cast']) . '</p>';
+		$__finalCompiled .= '<p><b>' . 'Cast' . ':</b> ' . $__templater->escape($__vars['thread']['Movie']['trakt_cast']) . '</p>';
 	}
 	$__finalCompiled .= '
 											';
 	if ($__vars['xf']['options']['traktthreads_showThreadInfo']['status'] AND $__vars['thread']['Movie']['trakt_status']) {
-		$__finalCompiled .= '<p><b>' . 'trakt_movies_status' . ':</b> ' . $__templater->escape($__vars['thread']['Movie']['trakt_status']) . '</p>';
+		$__finalCompiled .= '<p><b>' . 'Status' . ':</b> ' . $__templater->escape($__vars['thread']['Movie']['trakt_status']) . '</p>';
 	}
 	$__finalCompiled .= '
 											';
 	if ($__vars['xf']['options']['traktthreads_showThreadInfo']['release_date'] AND $__vars['thread']['Movie']['trakt_release']) {
-		$__finalCompiled .= '<p><b>' . 'trakt_movies_release' . ':</b> ' . $__templater->escape($__vars['thread']['Movie']['trakt_release']) . '</p>';
+		$__finalCompiled .= '<p><b>' . 'Release' . ':</b> ' . $__templater->escape($__vars['thread']['Movie']['trakt_release']) . '</p>';
 	}
 	$__finalCompiled .= '
 											';
 	if ($__vars['xf']['options']['traktthreads_showThreadInfo']['runtime'] AND $__vars['thread']['Movie']['trakt_runtime']) {
-		$__finalCompiled .= '<p><b>' . 'trakt_movies_runtime' . ':</b> ' . $__templater->escape($__vars['thread']['Movie']['trakt_runtime']) . '</p>';
+		$__finalCompiled .= '<p><b>' . 'Runtime' . ':</b> ' . $__templater->escape($__vars['thread']['Movie']['trakt_runtime']) . '</p>';
 	}
 	$__finalCompiled .= '
 											';
 	if ($__vars['xf']['options']['traktthreads_showThreadInfo']['plot'] AND $__vars['thread']['Movie']['trakt_plot']) {
-		$__finalCompiled .= '<b>' . 'trakt_movies_plot' . ':</b> ' . $__templater->escape($__vars['thread']['Movie']['trakt_plot']);
+		$__finalCompiled .= '<b>' . 'Plot' . ':</b> ' . $__templater->escape($__vars['thread']['Movie']['trakt_plot']);
 	}
 	$__finalCompiled .= '
 										</div>
@@ -318,7 +318,7 @@ return array(
 													';
 			if ($__templater->func('property', array('trakt_movies_messageCompaniesTitle', ), false)) {
 				$__finalCompiled .= '
-														<h4 class="block-textHeader">' . 'trakt_movies_production_companies' . '</h4>
+														<h4 class="block-textHeader">' . 'Production companies' . '</h4>
 													';
 			}
 			$__finalCompiled .= '
@@ -364,7 +364,7 @@ return array(
 	if ($__vars['xf']['options']['traktthreads_showThreadInfo']['trailer'] AND $__vars['thread']['Movie']['trakt_trailer']) {
 		$__compilerTemp1 .= '
 														<a class="tabs-tab is-active" role="tab" tabindex="0" aria-controls="movie-trailer">
-															' . 'trakt_movies_trailer' . '
+															' . 'Trailer' . '
 														</a>
 													';
 	}
@@ -374,7 +374,7 @@ return array(
 	if ($__vars['xf']['options']['traktthreads_showThreadInfo']['cast_tab'] AND !$__templater->test($__vars['casts'], 'empty', array())) {
 		$__compilerTemp1 .= '
 														<a class="tabs-tab" role="tab" tabindex="0" aria-controls="movie-cast">
-															' . 'trakt_movies_cast' . '
+															' . 'Cast' . '
 														</a>
 													';
 	}
@@ -384,7 +384,7 @@ return array(
 	if ($__vars['xf']['options']['traktthreads_showThreadInfo']['crew_tab'] AND !$__templater->test($__vars['crews'], 'empty', array())) {
 		$__compilerTemp1 .= '
 														<a class="tabs-tab" role="tab" tabindex="0" aria-controls="movie-crew">
-															' . 'trakt_movies_crew' . '
+															' . 'Crew' . '
 														</a>
 													';
 	}
@@ -394,7 +394,7 @@ return array(
 	if ($__vars['xf']['options']['traktthreads_showThreadInfo']['videos_tab'] AND !$__templater->test($__vars['videos'], 'empty', array())) {
 		$__compilerTemp1 .= '
 														<a class="tabs-tab" role="tab" tabindex="0" aria-controls="movie-videos">
-															' . 'trakt_movies_videos' . '
+															' . 'Videos' . '
 														</a>
 													';
 	}

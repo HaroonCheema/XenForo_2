@@ -11,17 +11,17 @@ return array(
 		'value' => $__vars['options']['order'],
 	), array(array(
 		'value' => 'latest',
-		'label' => 'trakt_movies_latest_movies',
+		'label' => 'Latest movies',
 		'_type' => 'option',
 	),
 	array(
 		'value' => 'rating',
-		'label' => 'trakt_movies_most_rated_movies',
+		'label' => 'Most rated movies',
 		'_type' => 'option',
 	),
 	array(
 		'value' => 'random',
-		'label' => 'trakt_movies_random_movies',
+		'label' => 'Random movies',
 		'_type' => 'option',
 	),
 	array(
@@ -74,52 +74,52 @@ return array(
 		'name' => 'options[show_plot]',
 		'value' => '1',
 		'selected' => $__vars['options']['show_plot'],
-		'label' => 'trakt_movies_plot',
+		'label' => 'Plot',
 		'_type' => 'option',
 	),
 	array(
 		'name' => 'options[show_genres]',
 		'value' => '1',
 		'selected' => $__vars['options']['show_genres'],
-		'label' => 'trakt_movies_genre',
+		'label' => 'Genre',
 		'_type' => 'option',
 	),
 	array(
 		'name' => 'options[show_director]',
 		'value' => '1',
 		'selected' => $__vars['options']['show_director'],
-		'label' => 'trakt_movies_director',
+		'label' => 'Director',
 		'_type' => 'option',
 	),
 	array(
 		'name' => 'options[show_cast]',
 		'value' => '1',
 		'selected' => $__vars['options']['show_cast'],
-		'label' => 'trakt_movies_cast',
+		'label' => 'Cast',
 		'_type' => 'option',
 	),
 	array(
 		'name' => 'options[show_status]',
 		'value' => '1',
 		'selected' => $__vars['options']['show_status'],
-		'label' => 'trakt_movies_status',
+		'label' => 'Status',
 		'_type' => 'option',
 	),
 	array(
 		'name' => 'options[show_release_date]',
 		'value' => '1',
 		'selected' => $__vars['options']['show_release_date'],
-		'label' => 'trakt_movies_release',
+		'label' => 'Release',
 		'_type' => 'option',
 	),
 	array(
 		'name' => 'options[show_runtime]',
 		'value' => '1',
 		'selected' => $__vars['options']['show_runtime'],
-		'label' => 'trakt_movies_runtime',
+		'label' => 'Runtime',
 		'_type' => 'option',
 	)), array(
-		'label' => 'trakt_movies_slider_widget_shown_elements',
+		'label' => 'Elements to show',
 	)) . '
 
 ' . $__templater->formCheckBoxRow(array(
@@ -127,7 +127,7 @@ return array(
 		'name' => 'options[slider][auto]',
 		'value' => '1',
 		'selected' => $__vars['options']['slider']['auto'],
-		'label' => 'trakt_movies_slider_auto_play',
+		'label' => 'Automatically start to play',
 		'data-hide' => 'true',
 		'_dependent' => array('
 			' . $__templater->formNumberBox(array(
@@ -135,7 +135,7 @@ return array(
 		'value' => $__vars['options']['slider']['pause'],
 		'min' => '1',
 	)) . '
-			<p class="formRow-explain">' . 'trakt_movies_slider_pause' . '</p>
+			<p class="formRow-explain">' . 'The time (in ms) between each auto transition' . '</p>
 		'),
 		'_type' => 'option',
 	),
@@ -143,25 +143,25 @@ return array(
 		'name' => 'options[slider][controls]',
 		'value' => '1',
 		'selected' => $__vars['options']['slider']['controls'],
-		'label' => 'trakt_movies_slider_controls',
+		'label' => 'Show prev/next buttons',
 		'_type' => 'option',
 	),
 	array(
 		'name' => 'options[slider][pauseOnHover]',
 		'selected' => $__vars['options']['slider']['pauseOnHover'],
-		'label' => 'trakt_movies_slider_pause_on_hover',
+		'label' => 'Pause on hover',
 		'_type' => 'option',
 	),
 	array(
 		'name' => 'options[slider][loop]',
 		'selected' => $__vars['options']['slider']['loop'],
-		'label' => 'trakt_movies_slider_loop_slides',
+		'label' => 'Loop slides',
 		'_type' => 'option',
 	),
 	array(
 		'name' => 'options[slider][pager]',
 		'selected' => $__vars['options']['slider']['pager'],
-		'label' => 'trakt_movies_slider_pager',
+		'label' => 'Display pager',
 		'_type' => 'option',
 	)), array(
 		'label' => 'trakt_tv_slider_options',

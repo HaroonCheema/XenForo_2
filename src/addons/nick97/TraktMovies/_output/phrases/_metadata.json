@@ -17,6 +17,54 @@
         "version_string": "1.0.0 Alpha",
         "hash": "d3a169e85e9e82daae848b08e3ba2495"
     },
+    "forum_sort.trakt_movies_director.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "56ce6529e3b774d21b5fdf3643e2ba6c"
+    },
+    "forum_sort.trakt_movies_genres.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "3f3b033ec6e7485dd6a1d7a06e20c7dc"
+    },
+    "forum_sort.trakt_movies_rating.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "5715941115645a8dca58c6282e761fff"
+    },
+    "forum_sort.trakt_movies_release.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d097c95b33fc7b7c3f5d28f45ec72d75"
+    },
+    "forum_type.trakt_movies_movie.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "9841db696f101fccf94551c2350d530d"
+    },
+    "forum_type_desc.trakt_movies_movie.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "3d615a326c6a6bbf602969e8adffb1ea"
+    },
+    "nick97_movies_more_details_on_trakt.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "b532573d9200c50a64e0677b9b3062cf"
+    },
+    "nick97_movies_trakt_watch_region.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "aef960d5c7c9c9d72e45817251985abd"
+    },
     "option.traktthreads_apikey.txt": {
         "global_cache": false,
         "version_id": 1000010,
@@ -600,6 +648,600 @@
         "hash": "43bb9b3d5127643e0ba876591c403c31"
     },
     "style_prop_group_desc.trakt_movies.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "thread_type.trakt_movies_movie.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "557a6fd6f9a9b711ab964527aa16c896"
+    },
+    "thread_type_plural.trakt_movies_movie.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "b3ce6605b294de4c6982f6bee86bd270"
+    },
+    "trakt_movies_add_info.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "0a30e319e582d1d012fc288633abf87f"
+    },
+    "trakt_movies_already_rated.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "7a955e7a1e4be71179cde42c2140008a"
+    },
+    "trakt_movies_apply_changes.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "3d6aea7f98cd88d497d4ef27b40ae782"
+    },
+    "trakt_movies_available_genre.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "ade2d400cf14cf519982468939f81a46"
+    },
+    "trakt_movies_available_genre_explain.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "2c37336520a7d88565fce1e5faf4b615"
+    },
+    "trakt_movies_breakpoint.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "7129472c5eb598faf47e4e877f2618fd"
+    },
+    "trakt_movies_buy.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "831a28f1e8df07c553fcd59546465d13"
+    },
+    "trakt_movies_cast.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "4cd9f3996d60790cd11c04f842ebc43c"
+    },
+    "trakt_movies_cast_tab.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "1335390e9dda5ab516ee93ed8c672feb"
+    },
+    "trakt_movies_change_rating.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "c4b1614bcaaf4e5fbd943181647ceea9"
+    },
+    "trakt_movies_change_title.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "39ff5416523a42baac6931efca98116f"
+    },
+    "trakt_movies_check_for_new_backdrop_image.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "5bd628baeb87a152bcaf26b58f3ffc3e"
+    },
+    "trakt_movies_check_poster.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "261087e32ec5b881e6756d86cc131513"
+    },
+    "trakt_movies_crew.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "e2eb313ebe80eedde70387f31c96bd8c"
+    },
+    "trakt_movies_crew_tab.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "fa4a80329603459fbe2d9da27617ae77"
+    },
+    "trakt_movies_director.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "7c5ba892645af8d7dba520e3978c726f"
+    },
+    "trakt_movies_edit_movie.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "eeb422748a9a407a9371c6ddfe920ae1"
+    },
+    "trakt_movies_error_badapi.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "aa0b8cb02d45d1c5ef6fe4606a95b995"
+    },
+    "trakt_movies_error_genre.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "55ac190b64ae2d7bdd0fc0ddf99c485d"
+    },
+    "trakt_movies_error_no_forum.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "1e20cde274baf6e9fb65a33c69856c28"
+    },
+    "trakt_movies_error_no_movie.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "5880e3d22b512ca182d112c6777365cf"
+    },
+    "trakt_movies_error_not_found.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "dd44a69d4356282b263c9259aba8fa2f"
+    },
+    "trakt_movies_error_not_valid.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "4dbcb91aab0ae360ef84b0c51ad0b3bd"
+    },
+    "trakt_movies_error_posted.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "64a2ca22a675b84a6f262753a7050130"
+    },
+    "trakt_movies_error_release_date_format.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "1c55ebd5fd4c01d4601ce59fae5fa975"
+    },
+    "trakt_movies_error_tv_id.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "07132878e7b78124042c97fe3d58506c"
+    },
+    "trakt_movies_error_valid_3166.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "af2d0fc45cf9d069dbbcc7e0733e0b19"
+    },
+    "trakt_movies_error_valid_639.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "32fb7a437bf2cb88fb51558a2e0ab400"
+    },
+    "trakt_movies_explain_link.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "948bc50eeac9408285c3a3fbb42f1348"
+    },
+    "trakt_movies_fetch_changes.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "e2326c86e8acde3b34153163a70a6988"
+    },
+    "trakt_movies_genre.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "91563b044939df33670bd362715e334e"
+    },
+    "trakt_movies_genres.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "4798cc774d4e385a2e87e911a1be6378"
+    },
+    "trakt_movies_image_height.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "2aa3aa9d021c7cfffb5afa08f52fbc51"
+    },
+    "trakt_movies_image_width.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "6fed80a8c8ded2f5e14a687e4a443abc"
+    },
+    "trakt_movies_information.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "f05b44032d2eaf2c53eb1d0f873a4feb"
+    },
+    "trakt_movies_information_thread.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "6cca1e3d533d6b2ee5478716d048c56f"
+    },
+    "trakt_movies_insert_new_companies.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "692531058f59eb9b09d2f8938da36148"
+    },
+    "trakt_movies_insert_new_persons.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "0d7684e76b45a56782980f55a01684ee"
+    },
+    "trakt_movies_latest_movies.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "ed9c750e9f72482358a3b70cc5166dd7"
+    },
+    "trakt_movies_link_id.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "166afe9076ad80eb3f1c6ccaeb661967"
+    },
+    "trakt_movies_most_rated_movies.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "a55616b32f1cc06ee1c1671ee418b9fd"
+    },
+    "trakt_movies_new_backdrop_available.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "c7f34da8645f5d5ffa81f5954ecee7bb"
+    },
+    "trakt_movies_new_backdrop_not_available.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "52c56b7b75fa4bc04f1c2a38021f5370"
+    },
+    "trakt_movies_plot.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "36be98b843e778a6e7350354b6937cfe"
+    },
+    "trakt_movies_post_button.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "757525ce68ced9ea4ee7b6ae62322a17"
+    },
+    "trakt_movies_post_movie.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "ec5fcd843534644297ef6a8eb53081c6"
+    },
+    "trakt_movies_poster_available.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "55bef1306b79911a9949f8f54e041af0"
+    },
+    "trakt_movies_poster_not_available.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "21e08f44bc50746efb8e4eb3b49d4c59"
+    },
+    "trakt_movies_production_companies.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "089df87514e1d76644d5c760bb48ace6"
+    },
+    "trakt_movies_random_movies.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "87af1dc4a24ef2c8ecf8110450f356b6"
+    },
+    "trakt_movies_rebuild_credits.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "f4046830979132fc7d0f99a066722f3f"
+    },
+    "trakt_movies_rebuild_general_movie_info.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "58ec339bc7dd52e5eb19c822ccd019a3"
+    },
+    "trakt_movies_rebuild_movie_production_companies.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "2d2e3314f850a545211e4df67f0cdea2"
+    },
+    "trakt_movies_rebuild_persons.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "a63dca8c65538387104565106c052384"
+    },
+    "trakt_movies_rebuild_thread_covers.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "8ebec1fde8e52f2583a5bc082071338a"
+    },
+    "trakt_movies_rebuild_videos.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "76b9a09aab7ee0689b5bb585fb1f1e09"
+    },
+    "trakt_movies_rebuild_watch_providers.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "a7508077fbe2556b499dc81d9afc34d5"
+    },
+    "trakt_movies_recalculate_ratings.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "a3d83165b75e235ee866f5f1859c3d72"
+    },
+    "trakt_movies_release.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "b8e7b465df7c5979dc731d06e84ce2cf"
+    },
+    "trakt_movies_release_date.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "9b2d288c7b0c5d6240966cf13bfc6ec8"
+    },
+    "trakt_movies_rent.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "7f41186f64717af909e4fd69e8da6585"
+    },
+    "trakt_movies_reupload_old_backdrop.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "739a5d02dcecc0292ccf781862fecb03"
+    },
+    "trakt_movies_reupload_old_poster.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "faf90347ac6301b7180b44c00213a9c4"
+    },
+    "trakt_movies_runtime.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "bc366f2d0ba3d681e7a3899917c5d3de"
+    },
+    "trakt_movies_save_poster.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "7acc0f5c8cf915641bff0e16cd2550ce"
+    },
+    "trakt_movies_show_rating.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "b46d6e541f1ec231dbe2072fb69a6915"
+    },
+    "trakt_movies_slider_auto_play.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "1909f6b63702fb652693f426e082e668"
+    },
+    "trakt_movies_slider_controls.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "fc1ee43add264e044b5d1ba0ce20e006"
+    },
+    "trakt_movies_slider_items.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "2d2d4c0c4986afbb924207db10bd4df2"
+    },
+    "trakt_movies_slider_items_items_medium.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "f699d365fb911069c81cba6ac8902c80"
+    },
+    "trakt_movies_slider_items_items_wide.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "43f35c36b7beabef46e8586dabc064ec"
+    },
+    "trakt_movies_slider_loop_slides.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "ca0eef27e30c6edc33acc96118175611"
+    },
+    "trakt_movies_slider_options.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "96cfdf8b4e2a9c08b42b2d316eb431f0"
+    },
+    "trakt_movies_slider_pager.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "4d31ec7fe6db924c2a263e2fd8074640"
+    },
+    "trakt_movies_slider_pause.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "a92625e96bb8b90d396c7bbe48b992fe"
+    },
+    "trakt_movies_slider_pause_on_hover.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "8836d88aaad538c39647aab768d91932"
+    },
+    "trakt_movies_slider_widget_shown_elements.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "c276d2935679101b30628634a8d1aedd"
+    },
+    "trakt_movies_started_x_threads.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "53f2fae65e4b849df9f22cb1793d47d3"
+    },
+    "trakt_movies_status.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "ec53a8c4f07baed5d8825072c89799be"
+    },
+    "trakt_movies_streaming.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "ac21d502848247aa2f578d0f718f5d1d"
+    },
+    "trakt_movies_tagline.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "122a05774113cd494d44a50e17914937"
+    },
+    "trakt_movies_thread_movie.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "a44f2434cb7f6700dfb9f950d0b75d7a"
+    },
+    "trakt_movies_thread_tools_menu.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d92e81d8b1a3f0a905e16201547ace30"
+    },
+    "trakt_movies_title.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "4c506b493c61d2f53c859ccdca738ced"
+    },
+    "trakt_movies_title_link_id.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "2e830c65912a39ad38df67fb0ca3160e"
+    },
+    "trakt_movies_trailer.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "7777d162b1fa729345ddb7de48654012"
+    },
+    "trakt_movies_trailer_explain.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "a22d639d69c67dc4b95a5ef55bec35da"
+    },
+    "trakt_movies_update_person_info.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "8cb9ea0a5073985ed3c8c5bb6a85501f"
+    },
+    "trakt_movies_videos.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "554cfab3938e21d9270bd6b75931f96f"
+    },
+    "trakt_movies_where_to_watch.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "82c9667996daa5cdd7db4bb3bb6c0470"
+    },
+    "trakt_movies_x_casts.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "1ef8505464d0a9fcb5315702d986bc74"
+    },
+    "trakt_movies_x_crews.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "23d2c36bfdb412979b3ff76d485eff80"
+    },
+    "trakt_movies_x_videos.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "3763c91ea726e0845d8c4451bcf3ac11"
+    },
+    "widget_def.trakt_movie_poster_slider.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "170d149905d8201eeb4b9708e5db80a3"
+    },
+    "widget_def.trakt_movies_slider.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "e5d6dd74d3cada38c99325bc43502915"
+    },
+    "widget_def_desc.trakt_movie_poster_slider.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "widget_def_desc.trakt_movies_slider.txt": {
         "global_cache": false,
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",

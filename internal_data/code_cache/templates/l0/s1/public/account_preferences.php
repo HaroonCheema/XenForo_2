@@ -81,7 +81,7 @@ return array(
 			'name' => 'option[nick97_movies_trakt_watch_region]',
 			'value' => $__vars['xf']['visitor']['Option']['nick97_movies_trakt_watch_region'],
 		), $__compilerTemp7, array(
-			'label' => 'nick97_movies_trakt_watch_region',
+			'label' => 'Movie watch providers default region',
 		)) . '
 			';
 	}

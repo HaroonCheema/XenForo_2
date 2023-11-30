@@ -223,7 +223,7 @@ return array(
 	if ((($__templater->func('property', array('trakt_movies_posterUpdateButtonPosition', ), false) == 'thread_tools_menu') AND ($__vars['thread']['Movie'] AND ($__vars['xf']['visitor']['is_admin'] OR $__vars['xf']['visitor']['is_moderator'])))) {
 		$__compilerTemp2 .= '
 												<a href="' . $__templater->func('link', array('movies/poster', $__vars['thread']['Movie'], ), true) . '" data-xf-click="overlay" class="menu-linkRow">
-													' . 'trakt_movies_check_poster' . '
+													' . 'Check for new poster' . '
 												</a>
 											';
 	}
