@@ -451,7 +451,7 @@ class TV extends AbstractController
 	public function actionAddInfo(ParameterBag $params)
 	{
 		$visitor = \XF::visitor();
-		if (!$visitor->user_id || !$visitor->hasPermission('tvthreads_interface', 'add_info')) {
+		if (!$visitor->user_id || !$visitor->hasPermission('trakt_tvthreads_interface', 'add_info')) {
 			throw $this->exception($this->noPermission());
 		}
 

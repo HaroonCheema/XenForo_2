@@ -50,7 +50,7 @@ class Person extends Entity
 
 	public function canUpdate(&$error = null)
 	{
-		return \XF::visitor()->hasPermission('tvthreads_interface', 'updatePersons');
+		return \XF::visitor()->hasPermission('trakt_tvthreads_interface', 'updatePersons');
 	}
 
 	public function getImageUrl($sizeCode = 's', $canonical = true)

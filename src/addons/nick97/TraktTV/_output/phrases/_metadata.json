@@ -1,0 +1,344 @@
+{
+    "cron_entry.traktTV1.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "9879ce13dcb9c90a69a15ede2b8d519e"
+    },
+    "cron_entry.traktTvWatchProvider.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "2badb3a1957689c3e59d58137275f118"
+    },
+    "cron_entry.trakt_tv_changes.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d563c9e8a106c48696c940d68e25f2bc"
+    },
+    "permission.forum_trakt_edit_episodes.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "f50f7793c64219ec0dff853682e36264"
+    },
+    "permission.forum_trakt_edit_shows.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "3f988568dcc4c0b856ea09cbf2b493af"
+    },
+    "permission.trakt_tvthreads_interface_add_info.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "715c4c18a8aa0bc9ec2d201f05da6980"
+    },
+    "permission.trakt_tvthreads_interface_new_episode.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "6f07874c29be05ab8de49e7d60079f0e"
+    },
+    "permission.trakt_tvthreads_interface_new_season.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "837fd675ae22a1acb5040e5caeed1cd7"
+    },
+    "permission.trakt_tvthreads_interface_new_show.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "21819ff3ae614edb47c3e9d25ed46e20"
+    },
+    "permission.trakt_tvthreads_interface_updatePersons.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "0afa5c7386211b7bb6d47b625f651c51"
+    },
+    "permission_interface.trakt_tvthreads_interface.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "65b0d6e06caf43353c42325645a45be3"
+    },
+    "style_prop.trakt_tv_castPersonLargeImageUrl.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "31c1d0b05d05b379018eabdbcf8f9ad2"
+    },
+    "style_prop.trakt_tv_castPersonSmallImageUrl.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "5b90763437ac178a3259f4f2d296fb6d"
+    },
+    "style_prop.trakt_tv_crewPersonLargeImageUrl.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "189d1cc0a200bc878b4868518635bcd3"
+    },
+    "style_prop.trakt_tv_crewPersonSmallImageUrl.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "8a244176014fc1c9c0a662632a2621ff"
+    },
+    "style_prop.trakt_tv_episodeImageHeight.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "a7e569a7daa8a313b7fa747f3ab577c6"
+    },
+    "style_prop.trakt_tv_episodeImageWidth.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "4b6f4170df7c59fe993e78d03e8a1806"
+    },
+    "style_prop.trakt_tv_episodeSearchImageHeight.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "e81f29e694342250155d6bfa588c0085"
+    },
+    "style_prop.trakt_tv_episodeSearchImageWidth.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d16d9d8fa18632afa6a0a0e85a59e67e"
+    },
+    "style_prop.trakt_tv_messageCompaniesPosition.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "a3fa991c90d9b6299a7a31d6a8f677ca"
+    },
+    "style_prop.trakt_tv_messageCompaniesTitle.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "5c078f40fae76bdbeffb719f84da58b1"
+    },
+    "style_prop.trakt_tv_messageNetworksPosition.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "f6dfe82d4ad2dac90659533358c2c80e"
+    },
+    "style_prop.trakt_tv_messageNetworksTitle.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "7edbc44ca014b97db8e5ffb62b49f02c"
+    },
+    "style_prop.trakt_tv_messagePosterPosition.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "13a4de4cec6be2cb1d9fe530a748d015"
+    },
+    "style_prop.trakt_tv_networkImgHeight.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "3294f635b1edb4a79a207e57e876ed66"
+    },
+    "style_prop.trakt_tv_networkImgWidth.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "20078243836b220098d95178fdc05c55"
+    },
+    "style_prop.trakt_tv_posterImageHeight.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "a5030120fe4d2cbec95feb71a8d6a770"
+    },
+    "style_prop.trakt_tv_posterImageWidth.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "e62d18523d1a77787ca843bb76d1dff8"
+    },
+    "style_prop.trakt_tv_posterUpdateButtonPosition.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "5a3153b4edc22199f1fad965a807095d"
+    },
+    "style_prop.trakt_tv_productionCompanyImgHeight.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "0b3797bc5b78f71b724a22a77e711c11"
+    },
+    "style_prop.trakt_tv_productionCompanyImgWidth.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "903bc3a2ec8e16c741b415dbc1b88941"
+    },
+    "style_prop.trakt_tv_watchProviderImgHeight.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "eedf82d4fc6f8e7eaebbf22a4bbee1a4"
+    },
+    "style_prop.trakt_tv_watchProviderImgWidth.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "6570df3d0d0ceb996dfb35b12be3b379"
+    },
+    "style_prop_desc.trakt_tv_castPersonLargeImageUrl.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "36c3cd633a3e01d47baca9d146f5f821"
+    },
+    "style_prop_desc.trakt_tv_castPersonSmallImageUrl.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d650bcd95d2a96822d99aef6303a0c27"
+    },
+    "style_prop_desc.trakt_tv_crewPersonLargeImageUrl.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "36c3cd633a3e01d47baca9d146f5f821"
+    },
+    "style_prop_desc.trakt_tv_crewPersonSmallImageUrl.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d650bcd95d2a96822d99aef6303a0c27"
+    },
+    "style_prop_desc.trakt_tv_episodeImageHeight.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "style_prop_desc.trakt_tv_episodeImageWidth.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "style_prop_desc.trakt_tv_episodeSearchImageHeight.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "style_prop_desc.trakt_tv_episodeSearchImageWidth.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "style_prop_desc.trakt_tv_messageCompaniesPosition.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "style_prop_desc.trakt_tv_messageCompaniesTitle.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "style_prop_desc.trakt_tv_messageNetworksPosition.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "style_prop_desc.trakt_tv_messageNetworksTitle.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "style_prop_desc.trakt_tv_messagePosterPosition.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "8ab5144815346d4acedda08f6435974d"
+    },
+    "style_prop_desc.trakt_tv_networkImgHeight.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "style_prop_desc.trakt_tv_networkImgWidth.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "style_prop_desc.trakt_tv_posterImageHeight.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "style_prop_desc.trakt_tv_posterImageWidth.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "style_prop_desc.trakt_tv_posterUpdateButtonPosition.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "style_prop_desc.trakt_tv_productionCompanyImgHeight.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "style_prop_desc.trakt_tv_productionCompanyImgWidth.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "style_prop_desc.trakt_tv_watchProviderImgHeight.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "style_prop_desc.trakt_tv_watchProviderImgWidth.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "style_prop_group.trakt_tv.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "65b0d6e06caf43353c42325645a45be3"
+    },
+    "style_prop_group_desc.trakt_tv.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    }
+}

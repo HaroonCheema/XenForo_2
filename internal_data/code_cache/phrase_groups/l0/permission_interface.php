@@ -41,6 +41,7 @@ return array (
   'permission_interface.tl_groups_moderator' => '[tl] Social Groups: Moderator Permissions',
   'permission_interface.trader' => 'Trader',
   'permission_interface.trakt_movies' => '[nick97] Trakt Movie Thread Starter',
+  'permission_interface.trakt_tvthreads_interface' => '[nick97] Trakt TV Thread Starter',
   'permission_interface.xc_thread_article' => '[FS] Thread Change Article',
   'permission_interface.xfmgAlbum' => 'XFMG: Album permissions',
   'permission_interface.xfmgAlbumModerator' => 'XFMG: Album moderator permissions',
