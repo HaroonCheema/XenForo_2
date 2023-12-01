@@ -46,7 +46,7 @@ class TvThreadRebuild extends \XF\Job\AbstractRebuildJob
 		if ($tv) {
 			/** @var \nick97\TraktTV\Helper\Trakt\Api $apiHelper */
 			$apiHelper = \XF::helper('nick97\TraktTV:Trakt\Api');
-			$tmdbClient = $apiHelper->getClient();
+			$traktClient = $apiHelper->getClient();
 
 			$options = $this->app->options();
 
@@ -55,12 +55,12 @@ class TvThreadRebuild extends \XF\Job\AbstractRebuildJob
 
 			try {
 				$subRequests = $tvRepo->getSubRequestForFullApiRequest('rebuild');
-				$tvData = $tmdbClient->getTv($tv->tv_id)->getDetails($subRequests);
+				$tvData = $traktClient->getTv($tv->tv_id)->getDetails($subRequests);
 			} catch (\Exception $exception) {
 				return;
 			}
 
-			if ($tmdbClient->hasError()) {
+			if ($traktClient->hasError()) {
 				return;
 			}
 
@@ -145,6 +145,6 @@ class TvThreadRebuild extends \XF\Job\AbstractRebuildJob
 
 	protected function getStatusType()
 	{
-		return \XF::phrase('snog_tv_rebuild_general_info');
+		return \XF::phrase('trakt_tv_rebuild_general_info');
 	}
 }

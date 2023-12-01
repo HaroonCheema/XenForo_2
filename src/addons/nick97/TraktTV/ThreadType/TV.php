@@ -22,7 +22,7 @@ class TV extends \XF\ThreadType\AbstractHandler
 	{
 		/** @var \nick97\TraktTV\XF\Entity\Thread $thread */
 		if ($thread->TV) {
-			return ['nick97\TraktTV:Forum\ViewTypeTv', 'snog_tv_thread_view_type_tv'];
+			return ['nick97\TraktTV:Forum\ViewTypeTv', 'trakt_tv_thread_view_type_tv'];
 		}
 
 		return parent::getThreadViewAndTemplate($thread);
@@ -39,9 +39,9 @@ class TV extends \XF\ThreadType\AbstractHandler
 		$tv = $thread->TV;
 		if ($tv) {
 			$overrides = [
-				'pinned_first_post_macro' => 'snog_tv_post_macros::tv',
+				'pinned_first_post_macro' => 'trakt_tv_post_macros::tv',
 				'pinned_first_post_macro_args' => [],
-				'post_macro' => 'snog_tv_post_macros::post',
+				'post_macro' => 'trakt_tv_post_macros::post',
 			];
 
 			$options = \XF::options();
@@ -52,7 +52,7 @@ class TV extends \XF\ThreadType\AbstractHandler
 				$companyRepo = \XF::repository('nick97\TraktTV:Company');
 
 				$companyFinder = $companyRepo->findCompaniesForList()
-					->where('company_id', $tv->tmdb_production_company_ids);
+					->where('company_id', $tv->trakt_production_company_ids);
 
 				$companies = $companyFinder->fetch($options->TvThreads_companiesLimit);
 
@@ -66,7 +66,7 @@ class TV extends \XF\ThreadType\AbstractHandler
 				$networkRepo = \XF::repository('nick97\TraktTV:Network');
 
 				$networkFinder = $networkRepo->findNetworksForList()
-					->where('network_id', $tv->tmdb_network_ids);
+					->where('network_id', $tv->trakt_network_ids);
 
 				$networks = $networkFinder->fetch($options->TvThreads_networksLimit);
 
@@ -194,7 +194,7 @@ class TV extends \XF\ThreadType\AbstractHandler
 			'draft' => $options['draft'] ?? []
 		];
 
-		return \XF::app()->templater()->renderTemplate('public:snog_tv_thread_type_fields_tv', $params);
+		return \XF::app()->templater()->renderTemplate('public:trakt_tv_thread_type_fields_tv', $params);
 	}
 
 	public function addTypeDataToApiResult(Thread $thread, \XF\Api\Result\EntityResult $result, int $verbosity = \XF\Mvc\Entity\Entity::VERBOSITY_NORMAL, array $options = [])
@@ -265,18 +265,18 @@ class TV extends \XF\ThreadType\AbstractHandler
 		$typeCreator = \XF::service('nick97\TraktTV:Thread\TypeData\TvCreator', $thread);
 		$tvCreator = $typeCreator->getTvCreator();
 
-		$tvId = $request->filter('snog_tv_tv_id', 'str');
+		$tvId = $request->filter('trakt_tv_tv_id', 'str');
 		if (stristr($tvId, 'themoviedb.org/movie/')) {
-			$thread->error(\XF::phrase('snog_tv_error_movie_id'));
+			$thread->error(\XF::phrase('trakt_tv_error_movie_id'));
 		}
 
 		if (stristr($tvId, 'themoviedb.org/search')) {
-			$thread->error(\XF::phrase('snog_tv_error_id_not_valid'));
+			$thread->error(\XF::phrase('trakt_tv_error_id_not_valid'));
 		}
 
-		/** @var \nick97\TraktTV\Helper\Trakt\Show $tmdbHelper */
-		$tmdbHelper = \XF::helper('nick97\TraktTV:Trakt\Show');
-		$tvCreator->setTvId($tmdbHelper->parseShowId($tvId));
+		/** @var \nick97\TraktTV\Helper\Trakt\Show $traktHelper */
+		$traktHelper = \XF::helper('nick97\TraktTV:Trakt\Show');
+		$tvCreator->setTvId($traktHelper->parseShowId($tvId));
 
 		$thread->setOption('tvData', $tvCreator->getTvData());
 

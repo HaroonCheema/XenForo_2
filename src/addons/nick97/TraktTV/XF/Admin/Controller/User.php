@@ -21,7 +21,7 @@ class User extends XFCP_User
 				return in_array($country, $allowedCountries);
 			}, ARRAY_FILTER_USE_KEY);
 
-			$reply->setParam('snogTvWatchRegions', $countryList);
+			$reply->setParam('traktTvWatchRegions', $countryList);
 		}
 
 		return $reply;
@@ -33,7 +33,7 @@ class User extends XFCP_User
 
 		$allowedCountries = $this->app()->options()->TvThreads_watchProviderRegions;
 		if (!in_array('', $allowedCountries)) {
-			$input = $this->filter(['option' => ['snog_tv_tmdb_watch_region' => 'str']]);
+			$input = $this->filter(['option' => ['nick97_tv_trakt_watch_region' => 'str']]);
 
 			/** @var \XF\Entity\UserOption $userOptions */
 			$userOptions = $user->getRelationOrDefault('Option');

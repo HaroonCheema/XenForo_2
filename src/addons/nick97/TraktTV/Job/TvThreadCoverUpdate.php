@@ -48,9 +48,9 @@ class TvThreadCoverUpdate extends \XF\Job\AbstractRebuildJob
 
 		/** @var \nick97\TraktTV\Helper\Trakt\Api $apiHelper */
 		$apiHelper = \XF::helper('nick97\TraktTV:Trakt\Api');
-		$tmdbClient = $apiHelper->getClient();
+		$traktClient = $apiHelper->getClient();
 
-		$tvData = $tmdbClient->getTv($tv->tv_id)->getDetails();
+		$tvData = $traktClient->getTv($tv->tv_id)->getDetails();
 		if (empty($tvData['backdrop_path']) || $tv->backdrop_path == $tvData['backdrop_path']) {
 			return;
 		}
@@ -62,6 +62,6 @@ class TvThreadCoverUpdate extends \XF\Job\AbstractRebuildJob
 
 	protected function getStatusType()
 	{
-		return \XF::phrase('snog_tv_update_thread_covers');
+		return \XF::phrase('trakt_tv_update_thread_covers');
 	}
 }

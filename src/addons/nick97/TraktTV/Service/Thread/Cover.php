@@ -66,8 +66,8 @@ class Cover extends \XF\Service\AbstractService
 
 		$coverImageService = $this->coverImageService;
 
-		$tmdbApi = new \nick97\TraktTV\Trakt\Image();
-		$backdropUrl = $tmdbApi->getImageUrl($backdropPath, $backdropSize);
+		$traktApi = new \nick97\TraktTV\Trakt\Image();
+		$backdropUrl = $traktApi->getImageUrl($backdropPath, $backdropSize);
 
 		if ($coverImageService->downloadImage($backdropUrl) && $coverImageService->validateImageSet()) {
 			$coverDetails = $coverImageService->updateCoverImage();

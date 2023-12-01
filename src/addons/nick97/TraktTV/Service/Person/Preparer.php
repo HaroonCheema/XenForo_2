@@ -24,9 +24,9 @@ class Preparer extends \XF\Service\AbstractService
 
 	public function saveImage($srcPath, $size, $localPath, $tempPath)
 	{
-		$tmdbApi = new \nick97\TraktTV\Trakt\Image();
-		$poster = $tmdbApi->getImage($srcPath, $size, $lastModified);
-		if ($tmdbApi->hasError()) {
+		$traktApi = new \nick97\TraktTV\Trakt\Image();
+		$poster = $traktApi->getImage($srcPath, $size, $lastModified);
+		if ($traktApi->hasError()) {
 			return 0;
 		}
 

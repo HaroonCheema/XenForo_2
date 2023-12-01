@@ -36,6 +36,6 @@ class TvPostImageDownload extends \XF\Job\AbstractRebuildJob
 
 	protected function getStatusType()
 	{
-		return \XF::phrase('snog_tv_rebuild_episodes');
+		return \XF::phrase('trakt_tv_rebuild_episodes');
 	}
 }

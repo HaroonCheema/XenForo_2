@@ -23,15 +23,15 @@ class EpisodeUpdate
 
 		/** @var \nick97\TraktTV\Helper\Trakt\Api $apiHelper */
 		$apiHelper = \XF::helper('nick97\TraktTV:Trakt\Api');
-		$tmdbClient = $apiHelper->getClient();
+		$traktClient = $apiHelper->getClient();
 
 		foreach ($episodes as $episode) {
-			$tvepisode = $tmdbClient->getTv($episode->tv_id)
+			$tvepisode = $traktClient->getTv($episode->tv_id)
 				->getSeason($episode->tv_season)
 				->getEpisode($episode->tv_episode)
 				->getDetails(['credits', 'videos']);
 
-			if ($tmdbClient->hasError()) {
+			if ($traktClient->hasError()) {
 				continue;
 			}
 

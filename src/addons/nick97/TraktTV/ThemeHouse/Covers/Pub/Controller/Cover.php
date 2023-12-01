@@ -29,9 +29,9 @@ class Cover extends XFCP_Cover
 
 		/** @var \nick97\TraktTV\Helper\Trakt\Api $apiHelper */
 		$apiHelper = \XF::helper('nick97\TraktTV:Trakt\Api');
-		$tmdbClient = $apiHelper->getClient();
+		$traktClient = $apiHelper->getClient();
 
-		$tvData = $tmdbClient->getTv($tv->tv_id)->getDetails();
+		$tvData = $traktClient->getTv($tv->tv_id)->getDetails();
 
 		if ($this->isPost()) {
 			if (empty($tvData['backdrop_path'])) {
@@ -72,6 +72,6 @@ class Cover extends XFCP_Cover
 			'maxSize' => $this->getCoverRepo()->getCoverSizeMap()['m'],
 		];
 
-		return $this->view('ThemeHouse\Covers:Cover\Image', 'snog_tv_cover_image', $viewParams);
+		return $this->view('ThemeHouse\Covers:Cover\Image', 'trakt_tv_cover_image', $viewParams);
 	}
 }

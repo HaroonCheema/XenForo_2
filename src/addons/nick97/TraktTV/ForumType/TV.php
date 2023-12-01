@@ -16,7 +16,7 @@ class TV extends \XF\ForumType\AbstractHandler
 	 */
 	public function getDefaultThreadType(Forum $forum): string
 	{
-		return 'snog_tv';
+		return 'trakt_tv';
 	}
 
 	/**
@@ -66,10 +66,10 @@ class TV extends \XF\ForumType\AbstractHandler
 	{
 		/** @var \nick97\TraktTV\Helper\Trakt\Api $apiHelper */
 		$apiHelper = \XF::helper('nick97\TraktTV:Trakt\Api');
-		$tmdbClient = $apiHelper->getClient();
+		$traktClient = $apiHelper->getClient();
 
-		$codes = $tmdbClient->getGenres()->getTvList();
-		if ($tmdbClient->hasError()) {
+		$codes = $traktClient->getGenres()->getTvList();
+		if ($traktClient->hasError()) {
 			return null;
 		}
 
@@ -81,18 +81,18 @@ class TV extends \XF\ForumType\AbstractHandler
 
 		$reply->setParams(['availableGenres' => $availableGenres]);
 
-		return 'snog_tv_forum_type_config_tv';
+		return 'trakt_tv_forum_type_config_tv';
 	}
 
 	public function getForumViewAndTemplate(Forum $forum): array
 	{
-		return ['nick97\TraktTV:Forum\ViewTypeTv', 'snog_tv_forum_view_type_tv'];
+		return ['nick97\TraktTV:Forum\ViewTypeTv', 'trakt_tv_forum_view_type_tv'];
 	}
 
 	public function getForumViewTemplateOverrides(Forum $forum, array $extra = []): array
 	{
 		return [
-			'thread_list_macro' => 'snog_tv_thread_list_tv_macros::item'
+			'thread_list_macro' => 'trakt_tv_thread_list_tv_macros::item'
 		];
 	}
 
@@ -148,7 +148,7 @@ class TV extends \XF\ForumType\AbstractHandler
 
 	public function adjustForumFiltersPopup(Forum $forum, \XF\Mvc\Reply\View $filtersView): \XF\Mvc\Reply\AbstractReply
 	{
-		$filtersView->setTemplateName('snog_tv_forum_filters_type_tv');
+		$filtersView->setTemplateName('trakt_tv_forum_filters_type_tv');
 		return $filtersView;
 	}
 
@@ -160,12 +160,12 @@ class TV extends \XF\ForumType\AbstractHandler
 	public function getThreadListSortOptions(Forum $forum, bool $forAdminConfig = false): array
 	{
 		$options = parent::getThreadListSortOptions($forum, $forAdminConfig);
-		$options['snog_tv_creator'] = 'TV.tv_director';
-		$options['snog_tv_first_aired'] = 'TV.tv_release';
-		$options['snog_tv_rating'] = 'TV.tv_rating';
-		$options['snog_tv_genres'] = 'TV.tv_genres';
-		$options['snog_tv_season'] = 'TV.tv_season';
-		$options['snog_tv_episode'] = 'TV.tv_episode';
+		$options['trakt_tv_creator'] = 'TV.tv_director';
+		$options['trakt_tv_first_aired'] = 'TV.tv_release';
+		$options['trakt_tv_rating'] = 'TV.tv_rating';
+		$options['trakt_tv_genres'] = 'TV.tv_genres';
+		$options['trakt_tv_season'] = 'TV.tv_season';
+		$options['trakt_tv_episode'] = 'TV.tv_episode';
 
 		return $options;
 	}

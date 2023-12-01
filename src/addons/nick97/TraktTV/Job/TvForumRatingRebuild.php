@@ -35,6 +35,6 @@ class TvForumRatingRebuild extends \XF\Job\AbstractRebuildJob
 
 	protected function getStatusType()
 	{
-		return \XF::phrase('snog_tv_recalculate_forum_ratings');
+		return \XF::phrase('trakt_tv_recalculate_forum_ratings');
 	}
 }

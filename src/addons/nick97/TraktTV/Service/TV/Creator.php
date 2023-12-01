@@ -80,15 +80,15 @@ class Creator extends \XF\Service\AbstractService
 		if (!$this->tvData) {
 			/** @var \nick97\TraktTV\Helper\Trakt\Api $apiHelper */
 			$apiHelper = \XF::helper('nick97\TraktTV:Trakt\Api');
-			$tmdbClient = $apiHelper->getClient();
+			$traktClient = $apiHelper->getClient();
 
 			/** @var \nick97\TraktTV\Repository\TV $tvRepo */
 			$tvRepo = $this->repository('nick97\TraktTV:TV');
 			$subRequests = $tvRepo->getSubRequestForFullApiRequest('create');
 
-			$tvData = $tmdbClient->getTv($id)->getDetails($subRequests);
-			if ($tmdbClient->hasError()) {
-				$this->validationErrors += [$tmdbClient->getError()];
+			$tvData = $traktClient->getTv($id)->getDetails($subRequests);
+			if ($traktClient->hasError()) {
+				$this->validationErrors += [$traktClient->getError()];
 			}
 
 			$this->tvData = $tvData;
@@ -217,7 +217,7 @@ class Creator extends \XF\Service\AbstractService
 		$jobList = $this->getFinalJobs();
 
 		if ($jobList) {
-			$this->app->jobManager()->enqueueUnique('snogTvInsert' . $tv->thread_id, 'XF:Atomic', [
+			$this->app->jobManager()->enqueueUnique('traktTvInsert' . $tv->thread_id, 'XF:Atomic', [
 				'execute' => $jobList
 			], false);
 		}
@@ -238,7 +238,7 @@ class Creator extends \XF\Service\AbstractService
 		$this->tvPreparer->afterInsert();
 
 		if (isset($thread->User) && $thread->User->user_id != \XF::visitor()->user_id) {
-			$app->logger()->logModeratorAction('thread', $thread, 'snog_tv_tv_create');
+			$app->logger()->logModeratorAction('thread', $thread, 'trakt_tv_tv_create');
 		}
 
 		$tvData = $this->tvData;

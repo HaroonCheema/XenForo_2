@@ -13,7 +13,7 @@ class Post extends XFCP_Post
 
 		$thread = $post->Thread;
 
-		if ($thread->discussion_type === 'snog_tv') {
+		if ($thread->discussion_type === 'trakt_tv') {
 			if ($post->isFirstPost() && $thread->TV) {
 				return $this->rerouteController('nick97\TraktTV:TV', 'edit', ['thread_id' => $thread->thread_id]);
 			} elseif ($post->TVPost) {

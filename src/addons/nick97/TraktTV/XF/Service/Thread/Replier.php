@@ -36,15 +36,15 @@ class Replier extends XFCP_Replier
 
 		/** @var \nick97\TraktTV\Helper\Trakt\Api $apiHelper */
 		$apiHelper = \XF::helper('nick97\TraktTV:Trakt\Api');
-		$tmdbClient = $apiHelper->getClient();
+		$traktClient = $apiHelper->getClient();
 
-		$apiResponse = $tmdbClient->getTv($tv->tv_id)
+		$apiResponse = $traktClient->getTv($tv->tv_id)
 			->getSeason($season)
 			->getEpisode($episode)
 			->getDetails(['credits']);
 
-		if ($tmdbClient->hasError()) {
-			$this->post->error($tmdbClient->getError());
+		if ($traktClient->hasError()) {
+			$this->post->error($traktClient->getError());
 			return;
 		}
 

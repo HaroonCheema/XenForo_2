@@ -35,6 +35,6 @@ class TvRatingRebuild extends \XF\Job\AbstractRebuildJob
 
 	protected function getStatusType()
 	{
-		return \XF::phrase('snog_tv_recalculate_ratings');
+		return \XF::phrase('trakt_tv_recalculate_ratings');
 	}
 }

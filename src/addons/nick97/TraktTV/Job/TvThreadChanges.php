@@ -25,10 +25,10 @@ class TvThreadChanges extends \XF\Job\AbstractJob
 
 		/** @var \nick97\TraktTV\Helper\Trakt\Api $apiHelper */
 		$apiHelper = \XF::helper('nick97\TraktTV:Trakt\Api');
-		$tmdbClient = $apiHelper->getClient();
+		$traktClient = $apiHelper->getClient();
 
 		try {
-			$response = $tmdbClient->getChanges()->getTvChangeList($nextPage, [
+			$response = $traktClient->getChanges()->getTvChangeList($nextPage, [
 				'start_date' => date(
 					'Y-m-d',
 					\XF::$time - $this->app->options()->TvThreads_trackChangesPeriod * 86400
@@ -90,7 +90,7 @@ class TvThreadChanges extends \XF\Job\AbstractJob
 
 	public function getStatusMessage()
 	{
-		$actionPhrase = \XF::phrase('snog_tv_fetch_changes');
+		$actionPhrase = \XF::phrase('trakt_tv_fetch_changes');
 		return sprintf('%s... (%d/%d)', $actionPhrase, $this->data['nextPage'], $this->data['totalPages']);
 	}
 

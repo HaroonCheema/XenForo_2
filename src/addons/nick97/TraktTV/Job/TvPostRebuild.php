@@ -28,10 +28,10 @@ class TvPostRebuild extends \XF\Job\AbstractRebuildJob
 		if ($episode) {
 			/** @var \nick97\TraktTV\Helper\Trakt\Api $apiHelper */
 			$apiHelper = \XF::helper('nick97\TraktTV:Trakt\Api');
-			$tmdbClient = $apiHelper->getClient();
+			$traktClient = $apiHelper->getClient();
 
 			try {
-				$response = $tmdbClient->getTv($episode->Post->Thread->TV->tv_id)
+				$response = $traktClient->getTv($episode->Post->Thread->TV->tv_id)
 					->getSeason($episode->tv_season)
 					->getEpisode($episode->tv_episode)
 					->getDetails(['credits']);
@@ -40,8 +40,8 @@ class TvPostRebuild extends \XF\Job\AbstractRebuildJob
 				return;
 			}
 
-			if ($tmdbClient->hasError()) {
-				\XF::logError('TV Episode rebuild error: ' . $tmdbClient->getError());
+			if ($traktClient->hasError()) {
+				\XF::logError('TV Episode rebuild error: ' . $traktClient->getError());
 				return;
 			}
 
@@ -65,6 +65,6 @@ class TvPostRebuild extends \XF\Job\AbstractRebuildJob
 
 	protected function getStatusType()
 	{
-		return \XF::phrase('snog_tv_rebuild_episodes');
+		return \XF::phrase('trakt_tv_rebuild_episodes');
 	}
 }

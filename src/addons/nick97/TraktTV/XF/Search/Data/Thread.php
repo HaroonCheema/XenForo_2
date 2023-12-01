@@ -11,7 +11,7 @@ class Thread extends XFCP_Thread
 		/** @var \nick97\TraktTV\XF\Entity\Thread $entity */
 		if ($entity->TV && \XF::options()->TvThreads_replaceSearchTemplate) {
 			$data = $this->getTemplateData($entity, $options);
-			return \XF::app()->templater()->renderTemplate('public:search_result_snog_tv_thread', $data);
+			return \XF::app()->templater()->renderTemplate('public:search_result_trakt_tv_thread', $data);
 		}
 
 		return parent::renderResult($entity, $options);

@@ -51,10 +51,10 @@ class TvNetworksRebuild extends \XF\Job\AbstractJob
 
 			/** @var \nick97\TraktTV\Helper\Trakt\Api $apiHelper */
 			$apiHelper = \XF::helper('nick97\TraktTV:Trakt\Api');
-			$tmdbClient = $apiHelper->getClient();
+			$traktClient = $apiHelper->getClient();
 
-			$apiResponse = $tmdbClient->getTv($show->tv_id)->getDetails();
-			if ($tmdbClient->hasError()) {
+			$apiResponse = $traktClient->getTv($show->tv_id)->getDetails();
+			if ($traktClient->hasError()) {
 				continue;
 			}
 
@@ -63,7 +63,7 @@ class TvNetworksRebuild extends \XF\Job\AbstractJob
 			}
 
 			$networkIds = array_column($apiResponse['networks'], 'id');
-			$show->tmdb_network_ids = $networkIds;
+			$show->trakt_network_ids = $networkIds;
 			$show->saveIfChanged();
 
 			$this->data['networkIds'] = array_merge($this->data['networkIds'], $networkIds);
@@ -86,7 +86,7 @@ class TvNetworksRebuild extends \XF\Job\AbstractJob
 
 	public function getStatusMessage()
 	{
-		$actionPhrase = \XF::phrase('snog_tv_rebuild_tv_networks');
+		$actionPhrase = \XF::phrase('trakt_tv_rebuild_tv_networks');
 		return sprintf('%s.. (%d / %d)', $actionPhrase, $this->data['count'], $this->data['total']);
 	}
 

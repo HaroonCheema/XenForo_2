@@ -39,7 +39,7 @@ class TV extends AbstractController
 			'total' => $castsTotal,
 			'hasMore' => $hasMore
 		];
-		return $this->view('nick97\TraktTV:TV\Casts', 'snog_tv_casts', $viewParams);
+		return $this->view('nick97\TraktTV:TV\Casts', 'trakt_tv_casts', $viewParams);
 	}
 
 	public function actionCrews(ParameterBag $params)
@@ -73,7 +73,7 @@ class TV extends AbstractController
 			'total' => $crewsTotal,
 			'hasMore' => $hasMore
 		];
-		return $this->view('Snog\Movies:TV\Crew', 'snog_tv_crews', $viewParams);
+		return $this->view('nick97\TraktMovies:TV\Crew', 'trakt_tv_crews', $viewParams);
 	}
 
 	public function actionVideos(ParameterBag $params)
@@ -107,7 +107,7 @@ class TV extends AbstractController
 			'total' => $videosTotal,
 			'hasMore' => $hasMore
 		];
-		return $this->view('nick97\TraktTV:TV\Videos', 'snog_tv_videos', $viewParams);
+		return $this->view('nick97\TraktTV:TV\Videos', 'trakt_tv_videos', $viewParams);
 	}
 
 	public function actionRate(ParameterBag $params)
@@ -141,7 +141,7 @@ class TV extends AbstractController
 			'tvshow' => $show,
 			'userRating' => $userRating
 		];
-		return $this->view('Snog:TV\TV', 'snog_tv_rate', $viewParams);
+		return $this->view('Snog:TV\TV', 'trakt_tv_rate', $viewParams);
 	}
 
 	protected function setupShowRate(\nick97\TraktTV\Entity\TV $tv)
@@ -184,7 +184,7 @@ class TV extends AbstractController
 			'tvshow' => $show,
 			'userRating' => $userRating
 		];
-		return $this->view('Snog:TV\TV', 'snog_tv_rate_show', $viewParams);
+		return $this->view('Snog:TV\TV', 'trakt_tv_rate_show', $viewParams);
 	}
 
 	protected function setupForumRate(\nick97\TraktTV\Entity\TVForum $tvForum)
@@ -263,7 +263,7 @@ class TV extends AbstractController
 			'attachmentData' => $attachmentData,
 			'quickEdit' => $this->filter('_xfWithData', 'bool')
 		];
-		return $this->view('XF:Post\Edit', 'snog_tv_edit_show', $viewParams);
+		return $this->view('XF:Post\Edit', 'trakt_tv_edit_show', $viewParams);
 	}
 
 	protected function setupShowEdit(\nick97\TraktTV\Entity\TV $tv)
@@ -421,16 +421,16 @@ class TV extends AbstractController
 
 		/** @var \nick97\TraktTV\Helper\Trakt\Api $apiHelper */
 		$apiHelper = \XF::helper('nick97\TraktTV:Trakt\Api');
-		$tmdbClient = $apiHelper->getClient();
+		$traktClient = $apiHelper->getClient();
 
-		$tvInfo = $tmdbClient->getTv($tvShow->tv_id)->getDetails(['credits', 'videos']);
+		$tvInfo = $traktClient->getTv($tvShow->tv_id)->getDetails(['credits', 'videos']);
 
-		if ($tmdbClient->hasError()) {
-			return $this->error($tmdbClient->getError());
+		if ($traktClient->hasError()) {
+			return $this->error($traktClient->getError());
 		}
 
 		if (!isset($tvInfo['id'])) {
-			return $this->error(\XF::phrase('snog_tv_error_not_returned'));
+			return $this->error(\XF::phrase('trakt_tv_error_not_returned'));
 		}
 
 		if (isset($tvInfo['poster_path'])) {
@@ -445,7 +445,7 @@ class TV extends AbstractController
 			'newposter' => $newPoster,
 			'posterpath' => $posterPath
 		];
-		return $this->view('nick97\TraktTV:TV', 'snog_tv_new_poster', $viewParams);
+		return $this->view('nick97\TraktTV:TV', 'trakt_tv_new_poster', $viewParams);
 	}
 
 	public function actionAddInfo(ParameterBag $params)
@@ -459,16 +459,16 @@ class TV extends AbstractController
 
 		if ($this->isPost()) {
 			$post = $this->assertViewablePost($thread->first_post_id, ['Thread.Prefix']);
-			$title = $this->filter('tmdb', 'str');
+			$title = $this->filter('trakt', 'str');
 			$changeTitle = $this->filter('changetitle', 'uint');
 
 			if (!$title) {
-				return $this->error(\XF::phrase('snog_tv_error_no_show'));
+				return $this->error(\XF::phrase('trakt_tv_error_no_show'));
 			}
 
-			/** @var \nick97\TraktTV\Helper\Trakt\Show $tmdbShowHelper */
-			$tmdbShowHelper = \XF::helper('nick97\TraktTV:Trakt\Show');
-			$showId = $tmdbShowHelper->parseShowId($title);
+			/** @var \nick97\TraktTV\Helper\Trakt\Show $traktShowHelper */
+			$traktShowHelper = \XF::helper('nick97\TraktTV:Trakt\Show');
+			$showId = $traktShowHelper->parseShowId($title);
 
 			if (stristr($showId, '?')) {
 				$showIdParts = explode('?', $showId);
@@ -476,7 +476,7 @@ class TV extends AbstractController
 			}
 
 			if (!$showId) {
-				return $this->error(\XF::phrase('snog_tv_error_id_not_valid'));
+				return $this->error(\XF::phrase('trakt_tv_error_id_not_valid'));
 			}
 
 			$comment = $post->message;
@@ -484,16 +484,16 @@ class TV extends AbstractController
 			/** @var \nick97\TraktTV\Entity\TV $existingShow */
 			$existingShow = $this->em()->findOne('nick97\TraktTV:TV', ['tv_id' => $showId]);
 			if (!$this->options()->TvThreads_multiple && $existingShow) {
-				return $this->error(\XF::phrase('snog_tv_error_show_posted'));
+				return $this->error(\XF::phrase('trakt_tv_error_show_posted'));
 			}
 
 			/** @var \nick97\TraktTV\Helper\Trakt\Api $apiHelper */
 			$apiHelper = \XF::helper('nick97\TraktTV:Trakt\Api');
-			$tmdbClient = $apiHelper->getClient();
+			$traktClient = $apiHelper->getClient();
 
-			$apiResponse = $tmdbClient->getTv($showId)->getDetails(['credits', 'videos']);
-			if ($tmdbClient->hasError()) {
-				return $this->error($tmdbClient->getError());
+			$apiResponse = $traktClient->getTv($showId)->getDetails(['credits', 'videos']);
+			if ($traktClient->hasError()) {
+				return $this->error($traktClient->getError());
 			}
 
 			/** @var \nick97\TraktTV\Entity\TV $tvShow */
@@ -588,7 +588,7 @@ class TV extends AbstractController
 		$viewParams = [
 			'thread' => $thread
 		];
-		return $this->view('nick97\TraktTV:TV', 'snog_tv_add_info', $viewParams);
+		return $this->view('nick97\TraktTV:TV', 'trakt_tv_add_info', $viewParams);
 	}
 
 	protected function assertViewablePost($postId, array $extraWith = [])

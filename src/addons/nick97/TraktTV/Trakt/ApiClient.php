@@ -81,7 +81,7 @@ class ApiClient
 			$response = \XF::app()->http()->client()->get($url . '?' . http_build_query($params), $options);
 		} catch (\GuzzleHttp\Exception\RequestException $e) {
 			if (null !== $e->getResponse()) {
-				$error = 'TMDb Error ' . $e->getResponse()->getStatusCode();
+				$error = 'Trakt Error ' . $e->getResponse()->getStatusCode();
 				$error .= ': ' . $e->getResponse()->getReasonPhrase();
 			} else {
 				$error = $e->getMessage();

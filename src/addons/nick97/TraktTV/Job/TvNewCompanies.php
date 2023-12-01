@@ -44,10 +44,10 @@ class TvNewCompanies extends \XF\Job\AbstractJob
 
 			/** @var \nick97\TraktTV\Helper\Trakt\Api $apiHelper */
 			$apiHelper = \XF::helper('nick97\TraktTV:Trakt\Api');
-			$tmdbClient = $apiHelper->getClient();
+			$traktClient = $apiHelper->getClient();
 
-			$companyData = $tmdbClient->getCompany()->getDetails($id);
-			if ($tmdbClient->hasError()) {
+			$companyData = $traktClient->getCompany()->getDetails($id);
+			if ($traktClient->hasError()) {
 				continue;
 			}
 
@@ -105,7 +105,7 @@ class TvNewCompanies extends \XF\Job\AbstractJob
 
 	public function getStatusMessage()
 	{
-		return \XF::phrase('snog_tv_insert_new_companies...');
+		return \XF::phrase('trakt_tv_insert_new_companies...');
 	}
 
 	public function canCancel()

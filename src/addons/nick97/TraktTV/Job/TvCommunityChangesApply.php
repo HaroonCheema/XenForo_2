@@ -22,7 +22,7 @@ class TvCommunityChangesApply extends \XF\Job\AbstractRebuildJob
 			"
 				SELECT thread_id
 				FROM nick97_trakt_tv_thread
-				WHERE thread_id > ? AND tmdb_last_change_date < ?
+				WHERE thread_id > ? AND trakt_last_change_date < ?
 				ORDER BY thread_id
 			",
 			$batch
@@ -36,10 +36,10 @@ class TvCommunityChangesApply extends \XF\Job\AbstractRebuildJob
 		if ($tv) {
 			/** @var \nick97\TraktTV\Helper\Trakt\Api $apiHelper */
 			$apiHelper = \XF::helper('nick97\TraktTV:Trakt\Api');
-			$tmdbClient = $apiHelper->getClient();
+			$traktClient = $apiHelper->getClient();
 
 			try {
-				$apiResponse = $tmdbClient->getTv($tv->tv_id)->getChanges([
+				$apiResponse = $traktClient->getTv($tv->tv_id)->getChanges([
 					'start_date' => date(
 						'Y-m-d',
 						\XF::$time + $this->app->options()->TvThreads_trackChangesPeriod * 86400
@@ -68,7 +68,7 @@ class TvCommunityChangesApply extends \XF\Job\AbstractRebuildJob
 				}
 
 				$this->applyInternalChanges($tv, $group);
-				$tv->tmdb_last_change_date = \XF::$time;
+				$tv->trakt_last_change_date = \XF::$time;
 			}
 
 			$tv->saveIfChanged($tvChanges, true, false);
@@ -290,6 +290,6 @@ class TvCommunityChangesApply extends \XF\Job\AbstractRebuildJob
 
 	protected function getStatusType()
 	{
-		return \XF::phrase('snog_tv_apply_changes');
+		return \XF::phrase('trakt_tv_apply_changes');
 	}
 }

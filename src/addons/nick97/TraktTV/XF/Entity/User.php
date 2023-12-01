@@ -4,7 +4,7 @@ namespace nick97\TraktTV\XF\Entity;
 
 /**
  * COLUMNS
- * @property int $snog_tv_thread_count
+ * @property int $trakt_tv_thread_count
  */
 class User extends XFCP_User
 {
@@ -22,6 +22,6 @@ class User extends XFCP_User
 			WHERE user_id = ? AND discussion_state = 'visible'
 		", [$this->user_id]);
 
-		$this->fastUpdate('snog_tv_thread_count', max(0, $count));
+		$this->fastUpdate('trakt_tv_thread_count', max(0, $count));
 	}
 }

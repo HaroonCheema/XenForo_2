@@ -30,10 +30,10 @@ class TvPersonsRebuild extends \XF\Job\AbstractRebuildJob
 
 		/** @var \nick97\TraktTV\Helper\Trakt\Api $apiHelper */
 		$apiHelper = \XF::helper('nick97\TraktTV:Trakt\Api');
-		$tmdbClient = $apiHelper->getClient();
+		$traktClient = $apiHelper->getClient();
 
-		$personData = $tmdbClient->getPeople()->getDetails($id);
-		if ($tmdbClient->hasError()) {
+		$personData = $traktClient->getPeople()->getDetails($id);
+		if ($traktClient->hasError()) {
 			return;
 		}
 
@@ -75,6 +75,6 @@ class TvPersonsRebuild extends \XF\Job\AbstractRebuildJob
 
 	protected function getStatusType()
 	{
-		return \XF::phrase('snog_tv_rebuild_persons');
+		return \XF::phrase('trakt_tv_rebuild_persons');
 	}
 }

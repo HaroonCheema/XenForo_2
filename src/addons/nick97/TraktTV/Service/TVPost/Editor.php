@@ -59,7 +59,7 @@ class Editor extends \XF\Service\AbstractService
 
 		$releaseExploded = explode('-', $airDate);
 		if (!isset($releaseExploded[0]) || strlen($releaseExploded[0]) !== 4) {
-			$this->tvPost->error(\XF::phrase('snog_tv_error_aired_date'));
+			$this->tvPost->error(\XF::phrase('trakt_tv_error_aired_date'));
 		}
 	}
 

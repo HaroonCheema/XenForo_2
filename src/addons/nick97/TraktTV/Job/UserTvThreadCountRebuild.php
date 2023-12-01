@@ -30,6 +30,6 @@ class UserTvThreadCountRebuild extends \XF\Job\AbstractRebuildJob
 
 	protected function getStatusType()
 	{
-		return \XF::phrase('snog_tv_thread_count_rebuild');
+		return \XF::phrase('trakt_tv_thread_count_rebuild');
 	}
 }

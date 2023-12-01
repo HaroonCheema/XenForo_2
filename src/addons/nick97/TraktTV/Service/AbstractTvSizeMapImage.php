@@ -36,8 +36,8 @@ abstract class AbstractTvSizeMapImage extends \XF\Service\AbstractService
 
 	public function setImageFromApiPath($srcPath, $size = 'original')
 	{
-		$tmdbApi = new \nick97\TraktTV\Trakt\Image();
-		$url = $tmdbApi->getImageUrl($srcPath, $size);
+		$traktApi = new \nick97\TraktTV\Trakt\Image();
+		$url = $traktApi->getImageUrl($srcPath, $size);
 
 		$tempFile = File::getTempFile();
 		$response = $this->app->http()->reader()->getUntrusted($url, [], $tempFile);

@@ -47,7 +47,7 @@ class CrossLinkCreate extends \XF\Job\AbstractRebuildJob
 			"
 				SELECT node_id
 				FROM xf_forum
-				WHERE forum_type_id = 'snog_tv'
+				WHERE forum_type_id = 'trakt_tv'
 					AND node_id > ?
 				ORDER BY node_id
 			",
@@ -57,7 +57,7 @@ class CrossLinkCreate extends \XF\Job\AbstractRebuildJob
 
 	protected function rebuildById($id)
 	{
-		/** @var \Snog\Movies\XF\Entity\Forum $genreForum */
+		/** @var \nick97\TraktMovies\XF\Entity\Forum $genreForum */
 		$genreForum = $this->app->em()->find('XF:Forum', $id);
 		if (!$genreForum) {
 			return;
@@ -79,7 +79,7 @@ class CrossLinkCreate extends \XF\Job\AbstractRebuildJob
 		}
 	}
 
-	protected function checkGenre($genre, \Snog\Movies\XF\Entity\Forum $genreForum, $tvData, $threadData)
+	protected function checkGenre($genre, \nick97\TraktMovies\XF\Entity\Forum $genreForum, $tvData, $threadData)
 	{
 		if ($genreForum->inMovieGenreAllowed($genre) && !in_array($genreForum->node_id, $this->linkedNodes)) {
 			$this->linkedNodes[] = $genreForum->node_id;
@@ -101,7 +101,7 @@ class CrossLinkCreate extends \XF\Job\AbstractRebuildJob
 			$redirect->save();
 
 			/** @var \nick97\TraktTV\Entity\TV $tv */
-			$tv = $this->app->em()->create('Snog\Movies:Movie');
+			$tv = $this->app->em()->create('nick97\TraktMovies:Movie');
 
 			$tv->setFromApiResponse($tvData);
 			$tv->thread_id = $crosslinkThreadId;

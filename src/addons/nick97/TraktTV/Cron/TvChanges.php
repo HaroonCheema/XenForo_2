@@ -11,7 +11,7 @@ class TvChanges
 
 		if ($options->TvThreads_trackChanges) {
 			$app->jobManager()->enqueueUnique(
-				'snogTvThreadChanges',
+				'traktTvThreadChanges',
 				'nick97\TraktTV:TvThreadChanges',
 				[],
 				false
@@ -20,7 +20,7 @@ class TvChanges
 
 		if ($options->TvThreads_trackChangesAiringToday) {
 			$app->jobManager()->enqueueUnique(
-				'snogTvThreadChangesAiringToday',
+				'traktTvThreadChangesAiringToday',
 				'nick97\TraktTV:TvThreadChangesAiringToday',
 				[],
 				false
@@ -29,7 +29,7 @@ class TvChanges
 
 		if ($options->TvThreads_trackCommunityChanges) {
 			$app->jobManager()->enqueueUnique(
-				'snogTvCommunityChanges',
+				'traktTvCommunityChanges',
 				'nick97\TraktTV:TvCommunityChangesApply',
 				[],
 				false

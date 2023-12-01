@@ -26,20 +26,20 @@ class TvWatchProviderRebuild extends \XF\Job\AbstractRebuildJob
 		if ($tv) {
 			/** @var \nick97\TraktTV\Helper\Trakt\Api $apiHelper */
 			$apiHelper = \XF::helper('nick97\TraktTV:Trakt\Api');
-			$tmdbClient = $apiHelper->getClient();
+			$traktClient = $apiHelper->getClient();
 
-			$apiResponse = $tmdbClient->getTv($tv->tv_id)->getWatchProviders();
-			if ($tmdbClient->hasError()) {
+			$apiResponse = $traktClient->getTv($tv->tv_id)->getWatchProviders();
+			if ($traktClient->hasError()) {
 				return;
 			}
 
-			$tv->tmdb_watch_providers = $apiResponse['results'] ?? [];
+			$tv->trakt_watch_providers = $apiResponse['results'] ?? [];
 			$tv->saveIfChanged();
 		}
 	}
 
 	protected function getStatusType()
 	{
-		return \XF::phrase('snog_tv_rebuild_watch_providers');
+		return \XF::phrase('trakt_tv_rebuild_watch_providers');
 	}
 }

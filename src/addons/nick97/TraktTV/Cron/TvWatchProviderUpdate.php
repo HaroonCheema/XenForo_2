@@ -7,7 +7,7 @@ class TvWatchProviderUpdate
 	public static function runDaily()
 	{
 		\XF::app()->jobManager()->enqueueUnique(
-			'snogTvWatchProvider',
+			'traktTvWatchProvider',
 			'nick97\TraktTV:TvWatchProviderRebuild',
 			[],
 			false

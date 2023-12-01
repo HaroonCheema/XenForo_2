@@ -27,11 +27,11 @@ class Forum extends XFCP_Forum
 		/** @var \nick97\TraktTV\XF\Entity\Forum $forum */
 		$forum = $this->assertViewableForum($params->node_id ?: $params->node_name, ['DraftThreads|' . $visitor->user_id]);
 
-		if (!$forum->isThreadTypeCreatable('snog_tv')) {
+		if (!$forum->isThreadTypeCreatable('trakt_tv')) {
 			return parent::actionPostThread($params);
 		}
 
-		$title = $this->filter('snog_tv_tv_id', 'str');
+		$title = $this->filter('trakt_tv_tv_id', 'str');
 
 		if (!$forum->canCreateThread($error)) {
 			return $this->noPermission($error);
@@ -45,9 +45,9 @@ class Forum extends XFCP_Forum
 		$editorPlugin = $this->plugin('XF:Editor');
 		$comment = $editorPlugin->fromInput('message');
 
-		/** @var \nick97\TraktTV\Helper\Trakt\Show $tmdbHelper */
-		$tmdbHelper = \XF::helper('nick97\TraktTV:Trakt\Show');
-		$showId = $tmdbHelper->parseShowId($title);
+		/** @var \nick97\TraktTV\Helper\Trakt\Show $traktHelper */
+		$traktHelper = \XF::helper('nick97\TraktTV:Trakt\Show');
+		$showId = $traktHelper->parseShowId($title);
 
 		if (!$this->options()->TvThreads_multiple) {
 			/** @var \nick97\TraktTV\Entity\TV $exists */
@@ -92,27 +92,27 @@ class Forum extends XFCP_Forum
 		if ($this->isPost()) {
 			$title = $this->filter('tvlink', 'str');
 
-			/** @var \nick97\TraktTV\Helper\Trakt\Show $tmdbHelper */
-			$tmdbHelper = \XF::helper('nick97\TraktTV:Trakt\Show');
-			$showId = $tmdbHelper->parseShowId($title);
+			/** @var \nick97\TraktTV\Helper\Trakt\Show $traktHelper */
+			$traktHelper = \XF::helper('nick97\TraktTV:Trakt\Show');
+			$showId = $traktHelper->parseShowId($title);
 			if (!$showId) {
-				return $this->error(\XF::phrase('snog_tv_error_id_not_valid'));
+				return $this->error(\XF::phrase('trakt_tv_error_id_not_valid'));
 			}
 
 			/** @var \nick97\TraktTV\Entity\TVForum $exists */
 			$exists = $this->finder('nick97\TraktTV:TVForum')->where('tv_id', $showId)->fetchOne();
 			if ($exists) {
-				return $this->error(\XF::phrase('snog_tv_error_forum_exists'));
+				return $this->error(\XF::phrase('trakt_tv_error_forum_exists'));
 			}
 
 			/** @var \nick97\TraktTV\Helper\Trakt\Api $apiHelper */
 			$apiHelper = $this->helper('nick97\TraktTV:Trakt\Api');
-			$tmdbClient = $apiHelper->getClient();
+			$traktClient = $apiHelper->getClient();
 
-			$showInfo = $tmdbClient->getTv($showId)->getDetails(['credits']);
+			$showInfo = $traktClient->getTv($showId)->getDetails(['credits']);
 
-			if ($tmdbClient->hasError()) {
-				return $this->error($tmdbClient->getError());
+			if ($traktClient->hasError()) {
+				return $this->error($traktClient->getError());
 			}
 
 			$creator = $this->setupTVForumCreate($node, $showInfo);
@@ -128,7 +128,7 @@ class Forum extends XFCP_Forum
 		$viewParams = [
 			'node' => $node
 		];
-		return $this->view('XF:Forum\AddTVForum', 'snog_tv_new_forum', $viewParams);
+		return $this->view('XF:Forum\AddTVForum', 'trakt_tv_new_forum', $viewParams);
 	}
 
 	protected function setupTVForumCreate(\XF\Entity\Node $parentNode, $showInfo)
@@ -174,17 +174,17 @@ class Forum extends XFCP_Forum
 			/** @var \nick97\TraktTV\Entity\TVForum $exists */
 			$exists = $this->em()->findOne('nick97\TraktTV:TVForum', ['tv_id' => $showId, 'tv_season' => $season]);
 			if ($exists) {
-				return $this->error(\XF::phrase('snog_tv_error_forum_exists'));
+				return $this->error(\XF::phrase('trakt_tv_error_forum_exists'));
 			}
 
 			/** @var \nick97\TraktTV\Helper\Trakt\Api $apiHelper */
 			$apiHelper = $this->helper('nick97\TraktTV:Trakt\Api');
-			$tmdbClient = $apiHelper->getClient();
+			$traktClient = $apiHelper->getClient();
 
-			$seasonInfo = $tmdbClient->getTv($showId)->getSeason($season)->getDetails();
+			$seasonInfo = $traktClient->getTv($showId)->getSeason($season)->getDetails();
 
-			if ($tmdbClient->hasError()) {
-				return $this->error($tmdbClient->getError());
+			if ($traktClient->hasError()) {
+				return $this->error($traktClient->getError());
 			}
 
 			$creator = $this->setupTVSeasonCreate($node, $show, $season, $seasonInfo);
@@ -200,7 +200,7 @@ class Forum extends XFCP_Forum
 		$viewParams = [
 			'node' => $node
 		];
-		return $this->view('nick97\TraktTV:TV', 'snog_tv_new_season', $viewParams);
+		return $this->view('nick97\TraktTV:TV', 'trakt_tv_new_season', $viewParams);
 	}
 
 	protected function setupTVSeasonCreate(\XF\Entity\Node $parentNode, \nick97\TraktTV\Entity\TVForum $show, $season, $seasonInfo)
@@ -242,9 +242,9 @@ class Forum extends XFCP_Forum
 			return parent::actionPostThread($params);
 		}
 
-		$episode = $this->filter('snog_tv_tv_id', 'uint');
+		$episode = $this->filter('trakt_tv_tv_id', 'uint');
 		if (!is_numeric($episode) || $episode <= 0) {
-			return $this->error(\XF::phrase('snog_tv_error_episode_number'));
+			return $this->error(\XF::phrase('trakt_tv_error_episode_number'));
 		}
 
 		$forum = $this->assertViewableForum($params->node_id ?: $params->node_name, ['DraftThreads|' . \XF::visitor()->user_id]);
@@ -274,15 +274,15 @@ class Forum extends XFCP_Forum
 
 		/** @var \nick97\TraktTV\Helper\Trakt\Api $apiHelper */
 		$apiHelper = \XF::helper('nick97\TraktTV:Trakt\Api');
-		$tmdbClient = $apiHelper->getClient();
+		$traktClient = $apiHelper->getClient();
 
-		$episodeInfo = $tmdbClient->getTv($tvShow)
+		$episodeInfo = $traktClient->getTv($tvShow)
 			->getSeason($tvSeason)
 			->getEpisode($episode)
 			->getDetails(['credits']);
 
-		if ($tmdbClient->hasError()) {
-			return $this->error($tmdbClient->getError());
+		if ($traktClient->hasError()) {
+			return $this->error($traktClient->getError());
 		}
 
 		if (!$this->options()->TvThreads_episode_exclude) {
@@ -322,11 +322,11 @@ class Forum extends XFCP_Forum
 		}
 
 		$messageInfo .= "[B]" . $episodeInfo['name'] . "[/B]" . "\r\n";
-		$messageInfo .= "[B]" . \XF::phrase('snog_tv_season') . ":[/B] " . $episodeInfo['season_number'] . "\r\n";
-		$messageInfo .= "[B]" . \XF::phrase('snog_tv_episode') . ":[/B] " . $episodeInfo['episode_number'] . "\r\n";
-		$messageInfo .= "[B]" . \XF::phrase('snog_tv_air_date') . ":[/B] " . $episodeInfo['air_date'] . "\r\n\r\n";
+		$messageInfo .= "[B]" . \XF::phrase('trakt_tv_season') . ":[/B] " . $episodeInfo['season_number'] . "\r\n";
+		$messageInfo .= "[B]" . \XF::phrase('trakt_tv_episode') . ":[/B] " . $episodeInfo['episode_number'] . "\r\n";
+		$messageInfo .= "[B]" . \XF::phrase('trakt_tv_air_date') . ":[/B] " . $episodeInfo['air_date'] . "\r\n\r\n";
 		if (!empty($guest)) {
-			$messageInfo .= "[B]" . \XF::phrase('snog_tv_guest_stars') . ":[/B] " . $guest . "\r\n\r\n";
+			$messageInfo .= "[B]" . \XF::phrase('trakt_tv_guest_stars') . ":[/B] " . $guest . "\r\n\r\n";
 		}
 		$messageInfo .= $episodeInfo['overview'] . "\r\n";
 		$message = $messageInfo . "\r\n\r\n";
@@ -453,8 +453,8 @@ class Forum extends XFCP_Forum
 
 	protected function getTvImage($srcPath, $size, $localPath, $tempPath)
 	{
-		$tmdbApi = new \nick97\TraktTV\Trakt\Image();
-		$poster = $tmdbApi->getImage($srcPath, $size);
+		$traktApi = new \nick97\TraktTV\Trakt\Image();
+		$poster = $traktApi->getImage($srcPath, $size);
 
 		if (file_exists($tempPath)) {
 			unlink($tempPath);

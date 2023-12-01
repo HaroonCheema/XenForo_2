@@ -29,9 +29,9 @@ class TvCreditsRebuild extends \XF\Job\AbstractRebuildJob
 
 		/** @var \nick97\TraktTV\Helper\Trakt\Api $apiHelper */
 		$apiHelper = \XF::helper('nick97\TraktTV:Trakt\Api');
-		$tmdbClient = $apiHelper->getClient();
+		$traktClient = $apiHelper->getClient();
 
-		$apiShow = $tmdbClient->getTv($tv->tv_id);
+		$apiShow = $traktClient->getTv($tv->tv_id);
 
 		if ($tv->tv_episode) {
 			$rawCredits = $apiShow->getSeason($tv->tv_season)->getEpisode($tv->tv_episode)->getCredits();
@@ -43,7 +43,7 @@ class TvCreditsRebuild extends \XF\Job\AbstractRebuildJob
 			$rawCredits = $apiShow->getCredits();
 		}
 
-		if ($tmdbClient->hasError()) {
+		if ($traktClient->hasError()) {
 			return;
 		}
 		$casts = $rawCredits['cast'] ?? [];
@@ -51,7 +51,7 @@ class TvCreditsRebuild extends \XF\Job\AbstractRebuildJob
 
 		$ungroupedCredits = array_merge($casts, $crews);
 
-		$this->app->jobManager()->enqueueUnique('snog_tv_' . $tv->tv_id, 'nick97\TraktTV:TvNewPersons', [
+		$this->app->jobManager()->enqueueUnique('trakt_tv_' . $tv->tv_id, 'nick97\TraktTV:TvNewPersons', [
 			'newPersons' => $ungroupedCredits
 		]);
 

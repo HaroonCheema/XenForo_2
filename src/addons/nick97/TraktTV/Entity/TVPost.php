@@ -48,8 +48,8 @@ class TVPost extends Entity
 
 	public function setFromApiResponse(array $apiResponse)
 	{
-		/** @var \nick97\TraktTV\Helper\Trakt\Episode $tmdbHelper */
-		$tmdbHelper = \XF::helper('nick97\TraktTV:Trakt\Episode');
+		/** @var \nick97\TraktTV\Helper\Trakt\Episode $traktHelper */
+		$traktHelper = \XF::helper('nick97\TraktTV:Trakt\Episode');
 
 		$this->bulkSet([
 			'tv_id' => $apiResponse['id'],
@@ -59,8 +59,8 @@ class TVPost extends Entity
 			'tv_image' => $apiResponse['still_path'] ?? '',
 			'tv_title' => $apiResponse['name'] ?? '',
 			'tv_plot' => $apiResponse['overview'] ?? '',
-			'tv_cast' => $tmdbHelper->getCastList($apiResponse, false),
-			'tv_guest' => $tmdbHelper->getGuestStarsList($apiResponse),
+			'tv_cast' => $traktHelper->getCastList($apiResponse, false),
+			'tv_guest' => $traktHelper->getGuestStarsList($apiResponse),
 		], ['forceConstraint' => true]);
 
 		$this->setOption('apiResponse', $apiResponse);
@@ -72,16 +72,16 @@ class TVPost extends Entity
 
 		$message = "[img]{$imageUrl}[/img]\r\n";
 		$message .= "[B]{$this->tv_title}[/B]\r\n\r\n";
-		$message .= "[B]" . \XF::phrase('snog_tv_season') . ":[/B] " . $this->tv_season . "\r\n";
-		$message .= "[B]" . \XF::phrase('snog_tv_episode') . ":[/B] " . $this->tv_episode . "\r\n";
+		$message .= "[B]" . \XF::phrase('trakt_tv_season') . ":[/B] " . $this->tv_season . "\r\n";
+		$message .= "[B]" . \XF::phrase('trakt_tv_episode') . ":[/B] " . $this->tv_episode . "\r\n";
 		if ($this->tv_aired) {
-			$message .= "[B]" . \XF::phrase('snog_tv_air_date') . ":[/B] " . $this->tv_aired . "\r\n\r\n";
+			$message .= "[B]" . \XF::phrase('trakt_tv_air_date') . ":[/B] " . $this->tv_aired . "\r\n\r\n";
 		}
 		if ($this->tv_cast) {
-			$message .= "[B]" . \XF::phrase('snog_tv_cast') . ":[/B] " . $this->tv_cast . "\r\n\r\n";
+			$message .= "[B]" . \XF::phrase('trakt_tv_cast') . ":[/B] " . $this->tv_cast . "\r\n\r\n";
 		}
 		if ($this->tv_guest) {
-			$message .= "[B]" . \XF::phrase('snog_tv_guest_stars') . ":[/B] " . $this->tv_guest . "\r\n\r\n";
+			$message .= "[B]" . \XF::phrase('trakt_tv_guest_stars') . ":[/B] " . $this->tv_guest . "\r\n\r\n";
 		}
 		if ($this->tv_plot) {
 			$message .= $this->tv_plot . "\r\n\r\n";

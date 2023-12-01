@@ -21,11 +21,11 @@ class Person extends \XF\Pub\Controller\AbstractController
 
 		/** @var \nick97\TraktTV\Helper\Trakt\Api $apiHelper */
 		$apiHelper = \XF::helper('nick97\TraktTV:Trakt\Api');
-		$tmdbClient = $apiHelper->getClient();
+		$traktClient = $apiHelper->getClient();
 
-		$personData = $tmdbClient->getPeople()->getDetails($person->person_id);
-		if ($tmdbClient->hasError()) {
-			return $this->error($tmdbClient->getError());
+		$personData = $traktClient->getPeople()->getDetails($person->person_id);
+		if ($traktClient->hasError()) {
+			return $this->error($traktClient->getError());
 		}
 
 		$editor = $this->setupPersonEdit($person, $personData);

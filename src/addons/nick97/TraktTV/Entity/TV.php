@@ -31,10 +31,10 @@ use XF\Mvc\Entity\Structure;
  * @property int $first_air_date
  * @property int $last_air_date
  * @property string $status
- * @property array $tmdb_watch_providers
- * @property array|null $tmdb_production_company_ids
- * @property array|null $tmdb_network_ids
- * @property int $tmdb_last_change_date
+ * @property array $trakt_watch_providers
+ * @property array|null $trakt_production_company_ids
+ * @property array|null $trakt_network_ids
+ * @property int $trakt_last_change_date
  *
  * RELATIONS
  * @property \nick97\TraktTV\XF\Entity\Thread $Thread
@@ -46,8 +46,8 @@ class TV extends Entity
 {
 	public function setFromApiResponse(array $apiResponse)
 	{
-		/** @var \nick97\TraktTV\Helper\Trakt\Show $tmdbHelper */
-		$tmdbHelper = \XF::helper('nick97\TraktTV:Trakt\Show');
+		/** @var \nick97\TraktTV\Helper\Trakt\Show $traktHelper */
+		$traktHelper = \XF::helper('nick97\TraktTV:Trakt\Show');
 
 		$this->bulkSet([
 			'tv_id' => $apiResponse['id'] ?? 0,
@@ -56,17 +56,17 @@ class TV extends Entity
 			'tv_plot' => isset($apiResponse['overview']) ? html_entity_decode($apiResponse['overview']) : '',
 			'tv_image' => $apiResponse['poster_path'] ?? '',
 			'backdrop_path' => $apiResponse['backdrop_path'] ?? '',
-			'tv_genres' => $tmdbHelper->getGenresList($apiResponse),
-			'tv_director' => $tmdbHelper->getDirectorsList($apiResponse),
-			'tv_cast' => $tmdbHelper->getCastList($apiResponse),
+			'tv_genres' => $traktHelper->getGenresList($apiResponse),
+			'tv_director' => $traktHelper->getDirectorsList($apiResponse),
+			'tv_cast' => $traktHelper->getCastList($apiResponse),
 			'tv_release' => $apiResponse['first_air_date'] ?? '',
-			'tv_trailer' => $tmdbHelper->getTrailer($apiResponse),
+			'tv_trailer' => $traktHelper->getTrailer($apiResponse),
 			'first_air_date' => isset($apiResponse['first_air_date']) ? strtotime($apiResponse['first_air_date']) : '',
 			'last_air_date' => isset($apiResponse['last_air_date']) ? strtotime($apiResponse['last_air_date']) : '',
 			'status' => $apiResponse['status'] ?? '',
-			'tmdb_watch_providers' => $tmdbHelper->getWatchProviders($apiResponse),
-			'tmdb_production_company_ids' => array_column($tmdbHelper->getProductionCompanies($apiResponse), 'id'),
-			'tmdb_network_ids' => array_column($tmdbHelper->getNetworks($apiResponse), 'id')
+			'trakt_watch_providers' => $traktHelper->getWatchProviders($apiResponse),
+			'trakt_production_company_ids' => array_column($traktHelper->getProductionCompanies($apiResponse), 'id'),
+			'trakt_network_ids' => array_column($traktHelper->getNetworks($apiResponse), 'id')
 		], ['forceConstraint' => true]);
 	}
 
@@ -94,24 +94,24 @@ class TV extends Entity
 		$message = '[IMG]' . $posterPath . '[/IMG]' . "\r\n\r\n";
 		$message .= '[B]' . \XF::phrase('title') . ':[/B] ' . $this->tv_title . "\r\n\r\n";
 		if ($this->tv_genres) {
-			$message .= '[B]' . \XF::phrase('snog_tv_genre') . ':[/B] ' . $this->tv_genres . "\r\n\r\n";
+			$message .= '[B]' . \XF::phrase('trakt_tv_genre') . ':[/B] ' . $this->tv_genres . "\r\n\r\n";
 		}
 		if ($this->tv_director) {
-			$message .= '[B]' . \XF::phrase('snog_tv_creator') . ':[/B] ' . $this->tv_director . "\r\n\r\n";
+			$message .= '[B]' . \XF::phrase('trakt_tv_creator') . ':[/B] ' . $this->tv_director . "\r\n\r\n";
 		}
 		if ($this->tv_cast) {
-			$message .= '[B]' . \XF::phrase('snog_tv_cast') . ':[/B] ' . $this->tv_cast . "\r\n\r\n";
+			$message .= '[B]' . \XF::phrase('trakt_tv_cast') . ':[/B] ' . $this->tv_cast . "\r\n\r\n";
 		}
 		if ($this->first_air_date) {
 			$date = $app->templater()->func('date', [$this->first_air_date]);
-			$message .= '[B]' . \XF::phrase('snog_tv_first_aired') . ':[/B] ' . $date . "\r\n\r\n";
+			$message .= '[B]' . \XF::phrase('trakt_tv_first_aired') . ':[/B] ' . $date . "\r\n\r\n";
 		}
 		if ($this->last_air_date) {
 			$date = $app->templater()->func('date', [$this->last_air_date]);
-			$message .= '[B]' . \XF::phrase('snog_tv_last_air_date') . ':[/B] ' . $date . "\r\n\r\n";
+			$message .= '[B]' . \XF::phrase('trakt_tv_last_air_date') . ':[/B] ' . $date . "\r\n\r\n";
 		}
 		if ($this->tv_plot) {
-			$message .= '[B]' . \XF::phrase('snog_tv_overview') . ':[/B] ' . $this->tv_plot . "\r\n\r\n";
+			$message .= '[B]' . \XF::phrase('trakt_tv_overview') . ':[/B] ' . $this->tv_plot . "\r\n\r\n";
 		}
 		if ($this->tv_trailer) {
 			$message .= '[MEDIA=youtube]' . $this->tv_trailer . '[/MEDIA]' . "\r\n\r\n";
@@ -126,7 +126,7 @@ class TV extends Entity
 
 	public function getWatchProviders()
 	{
-		$watchProviders = $this->tmdb_watch_providers ?? [];
+		$watchProviders = $this->trakt_watch_providers ?? [];
 		$regionCodes = $this->app()->options()->TvThreads_watchProviderRegions;
 
 		return array_filter($watchProviders, function ($country) use ($regionCodes) {
@@ -136,7 +136,7 @@ class TV extends Entity
 
 	public function getWatchProviderCountries()
 	{
-		$availableCountries = array_keys($this->tmdb_watch_providers);
+		$availableCountries = array_keys($this->trakt_watch_providers);
 
 		/** @var \nick97\TraktTV\Data\Country $countryData */
 		$countryData = $this->app()->data('nick97\TraktTV:Country');
@@ -297,7 +297,7 @@ class TV extends Entity
 		$structure->primaryKey = 'thread_id';
 		$structure->columns = [
 			'thread_id' => ['type' => self::UINT],
-			'tv_id' => ['type' => self::UINT, 'required' => 'snog_tv_error_id_not_valid', 'api' => true],
+			'tv_id' => ['type' => self::UINT, 'required' => 'trakt_tv_error_id_not_valid', 'api' => true],
 			'imdb_id' => ['type' => self::STR, 'default' => '', 'maxLength' => 32, 'api' => true],
 			'tv_image' => ['type' => self::STR, 'default' => '', 'maxLength' => 150, 'api' => true],
 			'backdrop_path' => ['type' => self::STR, 'default' => '', 'maxLength' => 150, 'api' => true],
@@ -319,10 +319,10 @@ class TV extends Entity
 			'first_air_date' => ['type' => self::INT, 'default' => 0, 'api' => true],
 			'last_air_date' => ['type' => self::INT, 'default' => 0, 'api' => true],
 			'status' => ['type' => self::STR, 'default' => '', 'maxLength' => 150, 'forced' => true, 'api' => true],
-			'tmdb_watch_providers' => ['type' => self::JSON_ARRAY, 'default' => [], 'api' => true],
-			'tmdb_production_company_ids' => ['type' => self::JSON_ARRAY, 'default' => [], 'nullable' => true, 'api' => true],
-			'tmdb_network_ids' => ['type' => self::JSON_ARRAY, 'default' => [], 'nullable' => true, 'api' => true],
-			'tmdb_last_change_date' => ['type' => self::UINT, 'default' => \XF::$time],
+			'trakt_watch_providers' => ['type' => self::JSON_ARRAY, 'default' => [], 'api' => true],
+			'trakt_production_company_ids' => ['type' => self::JSON_ARRAY, 'default' => [], 'nullable' => true, 'api' => true],
+			'trakt_network_ids' => ['type' => self::JSON_ARRAY, 'default' => [], 'nullable' => true, 'api' => true],
+			'trakt_last_change_date' => ['type' => self::UINT, 'default' => \XF::$time],
 		];
 
 		$structure->relations = [

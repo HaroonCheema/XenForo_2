@@ -11,7 +11,7 @@ class Thread extends XFCP_Thread
 		/** @var \nick97\TraktTV\XF\Service\Thread\Replier $replier */
 		$replier = parent::setupThreadReply($thread);
 
-		if ($thread->discussion_type == 'snog_tv') {
+		if ($thread->discussion_type == 'trakt_tv') {
 			$season = $this->filter('season', 'uint');
 			$episode = $this->filter('episode', 'uint');
 
@@ -30,7 +30,7 @@ class Thread extends XFCP_Thread
 		/** @var \nick97\TraktTV\XF\Entity\Thread $thread */
 		$thread = $this->assertViewableThread($params->thread_id, ['FirstPost']);
 
-		if (($thread->discussion_type != 'snog_tv' && !isset($thread->TV->tv_plot)) || !isset($thread->TV->tv_plot)) {
+		if (($thread->discussion_type != 'trakt_tv' && !isset($thread->TV->tv_plot)) || !isset($thread->TV->tv_plot)) {
 			return parent::actionPreview($params);
 		}
 

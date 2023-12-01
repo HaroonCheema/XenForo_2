@@ -26,9 +26,9 @@ class TvImdb2020001 extends \XF\Job\AbstractRebuildJob
 		if ($tv) {
 			/** @var \nick97\TraktTV\Helper\Trakt\Api $apiHelper */
 			$apiHelper = \XF::helper('nick97\TraktTV:Trakt\Api');
-			$tmdbClient = $apiHelper->getClient();
+			$traktClient = $apiHelper->getClient();
 
-			$externalIds = $tmdbClient->getTv($tv->tv_id)->getExternalIds();
+			$externalIds = $traktClient->getTv($tv->tv_id)->getExternalIds();
 			if (isset($externalIds['imdb_id'])) {
 				$tv->fastUpdate('imdb_id', $externalIds['imdb_id']);
 			}

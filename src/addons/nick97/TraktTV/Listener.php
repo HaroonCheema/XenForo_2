@@ -175,7 +175,7 @@ class Listener
 	 */
 	public static function userEntityStructure(\XF\Mvc\Entity\Manager $em, \XF\Mvc\Entity\Structure &$structure)
 	{
-		$structure->columns['snog_tv_thread_count'] = ['type' => Entity::UINT, 'default' => 0];
+		$structure->columns['trakt_tv_thread_count'] = ['type' => Entity::UINT, 'default' => 0];
 	}
 
 	/**
@@ -207,7 +207,7 @@ class Listener
 	{
 		if ($rule == 'tv_posted') {
 			/** @var \nick97\TraktTV\XF\Entity\User $user */
-			$returnValue = $user->snog_tv_thread_count >= $data['tv'];;
+			$returnValue = $user->trakt_tv_thread_count >= $data['tv'];;
 		}
 	}
 
@@ -222,7 +222,7 @@ class Listener
 	 */
 	public static function userOptionEntityStructure(\XF\Mvc\Entity\Manager $em, \XF\Mvc\Entity\Structure &$structure)
 	{
-		$structure->columns['snog_tv_tmdb_watch_region'] = ['type' => Entity::STR, 'default' => 'US', 'maxLength' => 2];
+		$structure->columns['nick97_tv_trakt_watch_region'] = ['type' => Entity::STR, 'default' => 'US', 'maxLength' => 2];
 	}
 
 
@@ -241,7 +241,7 @@ class Listener
 	public static function templaterMacroPreRender(\XF\Template\Templater $templater, &$type, &$template, &$name, array &$arguments, array &$globalVars)
 	{
 		if ($arguments['group'] instanceof \XF\Entity\OptionGroup && $arguments['group']->group_id == 'TvThreads') {
-			$template = 'snog_tv_option_macros';
+			$template = 'trakt_tv_option_macros';
 			$name = 'option_form_block';
 
 			$arguments['tabs'] = [

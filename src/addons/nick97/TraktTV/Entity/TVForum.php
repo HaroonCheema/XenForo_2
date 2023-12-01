@@ -106,7 +106,7 @@ class TVForum extends Entity
 		/** @var \XF\Entity\Forum $forum */
 		$forum = $this->_em->create('XF:Forum');
 
-		$forum->forum_type_id = 'snog_tv';
+		$forum->forum_type_id = 'trakt_tv';
 		$forum->node_id = $this->_getDeferredValue(function () {
 			return $this->node_id;
 		}, 'save');

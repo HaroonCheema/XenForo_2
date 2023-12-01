@@ -48,12 +48,12 @@ class Language
 		}
 
 		if (!in_array(strtolower($optionCheck), $verifyCodes)) {
-			$option->error(\XF::phrase('snog_tv_error_valid_639'));
+			$option->error(\XF::phrase('trakt_tv_error_valid_639'));
 			return false;
 		}
 
 		if ($countryCheck && !in_array(strtoupper($countryCheck), $verifyCountry)) {
-			$option->error(\XF::phrase('snog_tv_error_valid_3166'));
+			$option->error(\XF::phrase('trakt_tv_error_valid_3166'));
 			return false;
 		}
 

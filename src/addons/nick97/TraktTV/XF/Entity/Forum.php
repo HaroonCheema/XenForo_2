@@ -10,7 +10,7 @@ class Forum extends XFCP_Forum
 {
 	public function canCreatePoll(&$error = null)
 	{
-		if ($this->forum_type_id == 'snog_tv') {
+		if ($this->forum_type_id == 'trakt_tv') {
 			return false;
 		}
 
@@ -22,7 +22,7 @@ class Forum extends XFCP_Forum
 		parent::threadAdded($thread);
 
 		/** @var Thread $thread */
-		if ($thread->discussion_type == 'snog_tv') {
+		if ($thread->discussion_type == 'trakt_tv') {
 			$thread->adjustTvThreadCount(1);
 		}
 	}

@@ -57,7 +57,7 @@ class TVPost extends \XF\Pub\Controller\AbstractController
 			'attachmentData' => $attachmentData,
 			'quickEdit' => $this->filter('_xfWithData', 'bool')
 		];
-		return $this->view('XF:Post\Edit', 'snog_tv_edit_episode', $viewParams);
+		return $this->view('XF:Post\Edit', 'trakt_tv_edit_episode', $viewParams);
 	}
 
 	protected function finalizeTvPostEdit(\nick97\TraktTV\Service\TVPost\Editor $editor)
@@ -107,15 +107,15 @@ class TVPost extends \XF\Pub\Controller\AbstractController
 
 		/** @var \nick97\TraktTV\Helper\Trakt\Api $apiHelper */
 		$apiHelper = \XF::helper('nick97\TraktTV:Trakt\Api');
-		$tmdbClient = $apiHelper->getClient();
+		$traktClient = $apiHelper->getClient();
 
-		$apiResponse = $tmdbClient->getTv($episode->getTraktTvId())
+		$apiResponse = $traktClient->getTv($episode->getTraktTvId())
 			->getSeason($episode->tv_season)
 			->getEpisode($episode->tv_episode)
 			->getDetails(['credits']);
 
-		if ($tmdbClient->hasError()) {
-			return $this->error($tmdbClient->getError());
+		if ($traktClient->hasError()) {
+			return $this->error($traktClient->getError());
 		}
 
 		$episode->setFromApiResponse($apiResponse);

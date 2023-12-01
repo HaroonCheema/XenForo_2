@@ -40,7 +40,7 @@ class Thread extends XFCP_Thread
 		/** @var User $user */
 		$user = $this->User;
 		if ($user) {
-			$user->fastUpdate('snog_tv_thread_count', max(0, $user->snog_tv_thread_count + $amount));
+			$user->fastUpdate('trakt_tv_thread_count', max(0, $user->trakt_tv_thread_count + $amount));
 		}
 	}
 

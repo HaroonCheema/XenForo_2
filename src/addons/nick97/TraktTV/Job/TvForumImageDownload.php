@@ -42,6 +42,6 @@ class TvForumImageDownload extends \XF\Job\AbstractRebuildJob
 
 	protected function getStatusType()
 	{
-		return \XF::phrase('snog_tv_rebuild_tv_forums');
+		return \XF::phrase('trakt_tv_rebuild_tv_forums');
 	}
 }

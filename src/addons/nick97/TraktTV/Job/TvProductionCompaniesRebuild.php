@@ -51,10 +51,10 @@ class TvProductionCompaniesRebuild extends \XF\Job\AbstractJob
 
 			/** @var \nick97\TraktTV\Helper\Trakt\Api $apiHelper */
 			$apiHelper = \XF::helper('nick97\TraktTV:Trakt\Api');
-			$tmdbClient = $apiHelper->getClient();
+			$traktClient = $apiHelper->getClient();
 
-			$apiResponse = $tmdbClient->getTv($show->tv_id)->getDetails();
-			if ($tmdbClient->hasError()) {
+			$apiResponse = $traktClient->getTv($show->tv_id)->getDetails();
+			if ($traktClient->hasError()) {
 				continue;
 			}
 
@@ -63,7 +63,7 @@ class TvProductionCompaniesRebuild extends \XF\Job\AbstractJob
 			}
 
 			$companyIds = array_column($apiResponse['production_companies'], 'id');
-			$show->tmdb_production_company_ids = $companyIds;
+			$show->trakt_production_company_ids = $companyIds;
 			$show->saveIfChanged();
 
 			$this->data['companyIds'] = array_merge($this->data['companyIds'], $companyIds);
@@ -87,7 +87,7 @@ class TvProductionCompaniesRebuild extends \XF\Job\AbstractJob
 
 	public function getStatusMessage()
 	{
-		$actionPhrase = \XF::phrase('snog_tv_rebuild_tv_production_companies');
+		$actionPhrase = \XF::phrase('trakt_tv_rebuild_tv_production_companies');
 		return sprintf('%s.. (%d / %d)', $actionPhrase, $this->data['count'], $this->data['total']);
 	}
 

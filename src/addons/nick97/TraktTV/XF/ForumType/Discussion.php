@@ -9,7 +9,7 @@ class Discussion extends XFCP_Discussion
 	public function getPossibleCreatableThreadTypes(Forum $forum): array
 	{
 		$threadTypes = parent::getPossibleCreatableThreadTypes($forum);
-		$threadTypes[] = 'snog_tv';
+		$threadTypes[] = 'trakt_tv';
 
 		return  $threadTypes;
 	}

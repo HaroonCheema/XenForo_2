@@ -108,6 +108,6 @@ class Slider extends \XF\Widget\AbstractWidget
 			'options' => $options,
 			'title' => $this->getTitle(),
 		];
-		return $this->renderer('widget_snog_tv_slider', $viewParams);
+		return $this->renderer('widget_trakt_tv_slider', $viewParams);
 	}
 }

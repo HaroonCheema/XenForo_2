@@ -46,8 +46,8 @@ class Image extends \XF\Service\AbstractService
 			return false;
 		}
 
-		$tmdbApi = new \nick97\TraktTV\Trakt\Image();
-		$url = $tmdbApi->getImageUrl($srcPath, $size);
+		$traktApi = new \nick97\TraktTV\Trakt\Image();
+		$url = $traktApi->getImageUrl($srcPath, $size);
 
 		$tempFile = File::getTempFile();
 		$response = $this->app->http()->reader()->getUntrusted($url, [], $tempFile);
