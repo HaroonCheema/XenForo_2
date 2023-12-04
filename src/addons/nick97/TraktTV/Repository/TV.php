@@ -8,13 +8,13 @@ class TV extends \XF\Mvc\Entity\Repository
 	{
 		$options = $this->options();
 		$subRequests = ['videos', 'external_ids'];
-		if ($options->TvThreads_aggregateCredits) {
+		if ($options->traktTvThreads_aggregateCredits) {
 			$subRequests[] = 'aggregate_credits';
 		} else {
 			$subRequests[] = 'credits';
 		}
 
-		if (!in_array('', $options->TvThreads_watchProviderRegions)) {
+		if (!in_array('', $options->traktTvThreads_watchProviderRegions)) {
 			$subRequests[] = 'watch/providers';
 		}
 

@@ -31,6 +31,13 @@ return array(
 ';
 	$__templater->breadcrumbs($__templater->method($__vars['category'], 'getBreadcrumbs', array(false, )));
 	$__finalCompiled .= '
+';
+	if ($__templater->func('in_array', array($__vars['category']['node_id'], $__vars['xf']['options']['traktTvThreads_category'], ), false)) {
+		$__finalCompiled .= '
+	' . $__templater->includeTemplate('trakt_tv_add_show', $__vars) . '
+';
+	}
+	$__finalCompiled .= '
 
 ';
 	if ($__vars['nodeTree']) {
@@ -76,6 +83,15 @@ return array(
 		), $__vars) . '
 			</div>
 		</div>
+';
+		if ($__templater->func('in_array', array($__vars['category']['node_id'], $__vars['xf']['options']['traktTvThreads_category'], ), false)) {
+			$__finalCompiled .= '
+	<span class="tvhint">' . 'trakt_tv_information' . '</span>
+';
+		}
+		$__finalCompiled .= '
+
+
 	</div>
 ';
 	} else {

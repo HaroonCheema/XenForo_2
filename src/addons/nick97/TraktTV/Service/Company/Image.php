@@ -17,7 +17,7 @@ class Image extends AbstractTvSizeMapImage
 	{
 		return [
 			'l' => 0,
-			's' => $this->app->options()->TvThreads_smallCompanyLogoWidth
+			's' => $this->app->options()->traktTvThreads_smallCompanyLogoWidth
 		];
 	}
 

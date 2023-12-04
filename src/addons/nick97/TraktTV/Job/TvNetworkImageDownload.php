@@ -32,7 +32,7 @@ class TvNetworkImageDownload extends \XF\Job\AbstractRebuildJob
 		$imageService = $this->app->service('nick97\TraktTV:Network\Image', $network);
 		$imageService->deleteImageFiles();
 
-		$imageService->setImageFromApiPath($network->logo_path, $this->app->options()->TvThreads_largeCompanyLogoSize);
+		$imageService->setImageFromApiPath($network->logo_path, $this->app->options()->traktTvThreads_largeCompanyLogoSize);
 		if (!$imageService->updateImage()) {
 			$network->logo_path = '';
 		}

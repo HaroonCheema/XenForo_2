@@ -49,7 +49,7 @@ class Forum extends XFCP_Forum
 		$traktHelper = \XF::helper('nick97\TraktTV:Trakt\Show');
 		$showId = $traktHelper->parseShowId($title);
 
-		if (!$this->options()->TvThreads_multiple) {
+		if (!$this->options()->traktTvThreads_multiple) {
 			/** @var \nick97\TraktTV\Entity\TV $exists */
 			$exists = $this->finder('nick97\TraktTV:TV')->where('tv_id', $showId)->fetchOne();
 
@@ -264,7 +264,7 @@ class Forum extends XFCP_Forum
 		$tvShow = $show->TVForum->tv_parent_id;
 		$tvSeason = $show->TVForum->tv_season;
 
-		if (!$this->options()->TvThreads_episode_exclude) {
+		if (!$this->options()->traktTvThreads_episode_exclude) {
 			$newThreadTitle = $parent->TVForum->tv_title;
 		}
 
@@ -285,7 +285,7 @@ class Forum extends XFCP_Forum
 			return $this->error($traktClient->getError());
 		}
 
-		if (!$this->options()->TvThreads_episode_exclude) {
+		if (!$this->options()->traktTvThreads_episode_exclude) {
 			$newThreadTitle .= ': ';
 		}
 

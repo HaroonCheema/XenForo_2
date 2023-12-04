@@ -77,7 +77,7 @@ class TvNewPersons extends \XF\Job\AbstractJob
 	protected function finalizePersonCreate(\nick97\TraktTV\Service\Person\Creator $creator)
 	{
 		$person = $creator->getPerson();
-		if ($this->app->options()->TvThreads_useLocalImages && $person->profile_path) {
+		if ($this->app->options()->traktTvThreads_useLocalImages && $person->profile_path) {
 			/** @var \nick97\TraktTV\Service\Person\Image $imageService */
 			$imageService = $this->app->service('nick97\TraktTV:Person\Image', $person);
 

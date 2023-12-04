@@ -6,7 +6,7 @@ class TvCommunityChangesApply extends \XF\Job\AbstractRebuildJob
 {
 	public function run($maxRunTime)
 	{
-		$changesTracking = $this->app->options()->TvThreads_trackCommunityChanges;
+		$changesTracking = $this->app->options()->traktTvThreads_trackCommunityChanges;
 		if (empty($changesTracking)) {
 			return $this->complete();
 		}
@@ -26,7 +26,7 @@ class TvCommunityChangesApply extends \XF\Job\AbstractRebuildJob
 				ORDER BY thread_id
 			",
 			$batch
-		), [$start, \XF::$time - 86400 * $this->app->options()->TvThreads_trackChangesPeriod]);
+		), [$start, \XF::$time - 86400 * $this->app->options()->traktTvThreads_trackChangesPeriod]);
 	}
 
 	protected function rebuildById($id)
@@ -42,7 +42,7 @@ class TvCommunityChangesApply extends \XF\Job\AbstractRebuildJob
 				$apiResponse = $traktClient->getTv($tv->tv_id)->getChanges([
 					'start_date' => date(
 						'Y-m-d',
-						\XF::$time + $this->app->options()->TvThreads_trackChangesPeriod * 86400
+						\XF::$time + $this->app->options()->traktTvThreads_trackChangesPeriod * 86400
 					)
 				]);
 			} catch (\Exception $exception) {
@@ -57,7 +57,7 @@ class TvCommunityChangesApply extends \XF\Job\AbstractRebuildJob
 			$db = $this->app->db();
 			$db->beginTransaction();
 
-			$changesTracking = $this->app->options()->TvThreads_trackCommunityChanges;
+			$changesTracking = $this->app->options()->traktTvThreads_trackCommunityChanges;
 
 			foreach ($changes as $group) {
 				if (isset($changesTracking[$group['key']])) {
@@ -84,7 +84,7 @@ class TvCommunityChangesApply extends \XF\Job\AbstractRebuildJob
 	protected function filterItemsLanguage(array $items)
 	{
 		return array_filter($items, function ($item) {
-			$langCode = $this->app->options()->TvThreads_changesLanguage;
+			$langCode = $this->app->options()->traktTvThreads_changesLanguage;
 			$langCodeParts = explode('-', $langCode);
 
 			$lang = $langCodeParts[0] ?? '';
@@ -120,10 +120,10 @@ class TvCommunityChangesApply extends \XF\Job\AbstractRebuildJob
 			}
 		}
 
-		if ($this->app->options()->TvThreads_useLocalImages) {
+		if ($this->app->options()->traktTvThreads_useLocalImages) {
 			/** @var \nick97\TraktTV\Service\TV\Image $imageService */
 			$imageService = $this->app->service('nick97\TraktTV:TV\Image', $tv);
-			$imageService->setImageFromApiPath($tv->tv_image, $this->app->options()->TvThreads_largePosterSize);
+			$imageService->setImageFromApiPath($tv->tv_image, $this->app->options()->traktTvThreads_largePosterSize);
 			$imageService->updateImage();
 		}
 	}

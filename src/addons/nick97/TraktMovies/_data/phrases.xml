@@ -1,2 +1,213 @@
 <?xml version="1.0" encoding="utf-8"?>
-<phrases/>
+<phrases>
+  <phrase title="cron_entry.traktMoviesConvert" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Convert XF1 movie threads to XF2 version]]></phrase>
+  <phrase title="cron_entry.traktMoviesWatchProvider" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[nick97] Trakt Movie Thread Starter: Update watch provider data]]></phrase>
+  <phrase title="cron_entry.trakt_movies_changes" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[nick97] Trakt Movie Thread Starter: Check for Movie changes]]></phrase>
+  <phrase title="forum_sort.trakt_movies_director" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Movie director]]></phrase>
+  <phrase title="forum_sort.trakt_movies_genres" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Movie genres]]></phrase>
+  <phrase title="forum_sort.trakt_movies_rating" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Movie rating]]></phrase>
+  <phrase title="forum_sort.trakt_movies_release" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Movie release date]]></phrase>
+  <phrase title="forum_type.trakt_movies_movie" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trakt Movie Forum]]></phrase>
+  <phrase title="forum_type_desc.trakt_movies_movie" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trakt movie thread starter]]></phrase>
+  <phrase title="nick97_movies_more_details_on_trakt" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[More details on Trakt]]></phrase>
+  <phrase title="nick97_movies_trakt_watch_region" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Movie watch providers default region]]></phrase>
+  <phrase title="option.traktthreads_apikey" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trakt API Key]]></phrase>
+  <phrase title="option.traktthreads_backdropCoverSize" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Backdrop cover size]]></phrase>
+  <phrase title="option.traktthreads_castsLimit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Casts results on thread tab]]></phrase>
+  <phrase title="option.traktthreads_cdn_path" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[CDN Path]]></phrase>
+  <phrase title="option.traktthreads_changesLanguage" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Movie changes tracking language]]></phrase>
+  <phrase title="option.traktthreads_companiesLimit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Production results limit on thread view]]></phrase>
+  <phrase title="option.traktthreads_crewLimit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Crew results on thread tab]]></phrase>
+  <phrase title="option.traktthreads_crosslink" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Crosslink into all genre forums]]></phrase>
+  <phrase title="option.traktthreads_fetchCompanies" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Fetch movie companies]]></phrase>
+  <phrase title="option.traktthreads_fetchCredits" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Fetch movie credits]]></phrase>
+  <phrase title="option.traktthreads_fetchVideos" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Fetch movie videos]]></phrase>
+  <phrase title="option.traktthreads_force_comments" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Force comments to second post]]></phrase>
+  <phrase title="option.traktthreads_forum_local" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Use local poster images]]></phrase>
+  <phrase title="option.traktthreads_language" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Movie information language]]></phrase>
+  <phrase title="option.traktthreads_largeCompanyLogoSize" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Large company logo size]]></phrase>
+  <phrase title="option.traktthreads_largePosterSize" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Large poster size]]></phrase>
+  <phrase title="option.traktthreads_replaceSearchTemplate" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Replace search results template]]></phrase>
+  <phrase title="option.traktthreads_showThreadInfo" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Items to show in thread]]></phrase>
+  <phrase title="option.traktthreads_smallCompanyLogoWidth" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Small company logo size]]></phrase>
+  <phrase title="option.traktthreads_smallPosterWidth" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Small poster width]]></phrase>
+  <phrase title="option.traktthreads_syncTitle" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Sync thread title with Trakt movie title]]></phrase>
+  <phrase title="option.traktthreads_threadListInfo" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Items to show in forum thread list]]></phrase>
+  <phrase title="option.traktthreads_trackChanges" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Track movie change list]]></phrase>
+  <phrase title="option.traktthreads_trackChangesPeriod" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Movies changes tracking period]]></phrase>
+  <phrase title="option.traktthreads_use_genres" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Use forum genre limiting]]></phrase>
+  <phrase title="option.traktthreads_use_rating" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Use Rating System]]></phrase>
+  <phrase title="option.traktthreads_usecdn" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Use CDN]]></phrase>
+  <phrase title="option.traktthreads_useyear" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Include release year in thread title]]></phrase>
+  <phrase title="option.traktthreads_videoLimit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Video results on thread tab]]></phrase>
+  <phrase title="option.traktthreads_watchProviderRegion" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Default watch provider region]]></phrase>
+  <phrase title="option.traktthreads_watchProviderRegions" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enabled watch provider regions]]></phrase>
+  <phrase title="option_explain.traktthreads_apikey" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_explain.traktthreads_backdropCoverSize" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Requires <a href="https://xenforo.com/community/resources/ozzmodz-covers.8589/" target="_blank">[OzzModz] Covers</a> add-on installed. Select "none" to disable. The file size of the selected option must not exceed the max. file cover size.]]></phrase>
+  <phrase title="option_explain.traktthreads_castsLimit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_explain.traktthreads_cdn_path" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[If you are using your own CDN, enter the CDN path here.<br />Example: http://cdn.yourpath.com/data<br />DO NOT end the path with a /]]></phrase>
+  <phrase title="option_explain.traktthreads_changesLanguage" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter the ISO 639-1 Language Code that will be used for movie information.<br />These codes are available at <a href="http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes" target="_blank">List of ISO 639-1 codes</a><br /><br />You may also include a two letter country code in the language selection (en-US, en-GB, pt-PT, pt-BR, etc...).<br />This is a list of the two letter country codes: <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2" target="_blank">ISO 3166-1 alpha-2 Country Codes</a><br /><br /><b>NOTE:</b> There is no guarantee that the translation to the language selected will be the proper translation. And there is no guarantee there will be a translation of a movie at The Movie Database. Those are both handled by The Movie Database and not translated by this add-on.<br />]]></phrase>
+  <phrase title="option_explain.traktthreads_companiesLimit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_explain.traktthreads_crewLimit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_explain.traktthreads_crosslink" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[To place a redirect link to the main movie thread in all genre limited forums that a movie can belong to, check this box.<br />EXAMPLE: A movie is in these genres: Drama, Science Fiction, Thriller<br />A member posts the movie in the Science Fiction forum.<br />Redirect links will be placed in the Drama and Thriller forums.<br /><b>NOTE: </b>Forum genre limiting must be enabled for this to work]]></phrase>
+  <phrase title="option_explain.traktthreads_fetchCompanies" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enable this option if you want to receive a list of movie companies. Enabling it can slow down the thread creation process.]]></phrase>
+  <phrase title="option_explain.traktthreads_fetchCredits" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enable this option if you want to receive a list of movie credits. Enabling it can slow down the thread creation process.]]></phrase>
+  <phrase title="option_explain.traktthreads_fetchVideos" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enable this option if you want to receive a list of movie videos. Enabling it can slow down the thread creation process.]]></phrase>
+  <phrase title="option_explain.traktthreads_force_comments" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Check this box if you want to force any comments entered with a new movie thread to be posted as the second post in the new movie thread. NOTE: This does not change existing threads. This only affects the first post in a new movie thread.]]></phrase>
+  <phrase title="option_explain.traktthreads_forum_local" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Instead of using the TMDb cloud for poster images, you can use the poster images that are stored on your server. To use the images stored on your server, check this box.]]></phrase>
+  <phrase title="option_explain.traktthreads_language" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter the ISO 639-1 Language Code that will be used for movie information.<br />These codes are available at <a href="http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes" target="_blank">List of ISO 639-1 codes</a><br /><br />You may also include a two letter country code in the language selection (en-US, en-GB, pt-PT, pt-BR, etc...).<br />This is a list of the two letter country codes: <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2" target="_blank">ISO 3166-1 alpha-2 Country Codes</a><br /><br /><b>NOTE:</b> There is no guarantee that the translation to the language selected will be the proper translation. And there is no guarantee there will be a translation of a movie at The Movie Database. Those are both handled by The Movie Database and not translated by this add-on.<br /><br />Changing language will NOT change threads already posted. Only new threads will post in the new language.]]></phrase>
+  <phrase title="option_explain.traktthreads_largeCompanyLogoSize" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_explain.traktthreads_largePosterSize" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Changing this value will only apply to new entries. Larger values will take up more space and take longer to download.]]></phrase>
+  <phrase title="option_explain.traktthreads_replaceSearchTemplate" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Check this option if you want to display movie data in XF search/tag results.]]></phrase>
+  <phrase title="option_explain.traktthreads_showThreadInfo" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Select the items to show in a movie thread.]]></phrase>
+  <phrase title="option_explain.traktthreads_smallCompanyLogoWidth" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Changing this value will only apply to new entries. Larger values will take up more space and take longer to resize.]]></phrase>
+  <phrase title="option_explain.traktthreads_smallPosterWidth" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Changing this value will only apply to new entries. Larger values will take up more space and take longer to resize.]]></phrase>
+  <phrase title="option_explain.traktthreads_syncTitle" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_explain.traktthreads_threadListInfo" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Select the items to show in the forum thread list.]]></phrase>
+  <phrase title="option_explain.traktthreads_trackChanges" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enable if you want to keep track of the list of changed TVs to automatically apply rebuilding data.
+<b>Note:</b> This will overwrite all your manual edits if the TV has been updated.]]></phrase>
+  <phrase title="option_explain.traktthreads_trackChangesPeriod" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You can query up to 14 days]]></phrase>
+  <phrase title="option_explain.traktthreads_use_genres" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You can limit the type of movies posted in each forum to a specific genre. Check this box to enable this option. The genre for each forum is specified in Forums->Nodes. Click on the forum you wish to limit and select the genres you wish to allow in the forum.]]></phrase>
+  <phrase title="option_explain.traktthreads_use_rating" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Check this box to turn on the movie rating system.]]></phrase>
+  <phrase title="option_explain.traktthreads_usecdn" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Check this box to use your own CDN for all poster images. Your CDN must pick up images from your server's data/movies folder.]]></phrase>
+  <phrase title="option_explain.traktthreads_useyear" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[To include the year a movie was released in the thread title, check this box.<br />Example: Blended (2014)]]></phrase>
+  <phrase title="option_explain.traktthreads_videoLimit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_explain.traktthreads_watchProviderRegion" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_explain.traktthreads_watchProviderRegions" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Leave it empty to disable.<br />
+Phrases can be translated with "snog_movies_country.{countryCode}" key.]]></phrase>
+  <phrase title="option_group.traktMovies" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[nickp7] Trakt Movie Thread Starter]]></phrase>
+  <phrase title="option_group_description.traktMovies" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Options for the Trakt movie thread starter add-on]]></phrase>
+  <phrase title="permission.trakt_movies_updatePersons" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Can update persons data]]></phrase>
+  <phrase title="permission_interface.trakt_movies" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[nick97] Trakt Movie Thread Starter]]></phrase>
+  <phrase title="style_prop.trakt_moviesMessagePosterMaxWidth" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Movie message poster max width]]></phrase>
+  <phrase title="style_prop.trakt_moviesMessageSidebarWidth" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Movie message sidebar width]]></phrase>
+  <phrase title="style_prop.trakt_movies_castPersonLargeImageUrl" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Default cast person avatar (large)]]></phrase>
+  <phrase title="style_prop.trakt_movies_castPersonSmallImageUrl" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Default cast person avatar (small)]]></phrase>
+  <phrase title="style_prop.trakt_movies_crewPersonLargeImageUrl" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Default crew person avatar (large)]]></phrase>
+  <phrase title="style_prop.trakt_movies_crewPersonSmallImageUrl" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Default crew person avatar (small)]]></phrase>
+  <phrase title="style_prop.trakt_movies_messageCompaniesPosition" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Movie production company list position]]></phrase>
+  <phrase title="style_prop.trakt_movies_messageCompaniesTitle" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Show movies production company list block title]]></phrase>
+  <phrase title="style_prop.trakt_movies_messagePosterPosition" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Movie poster position]]></phrase>
+  <phrase title="style_prop.trakt_movies_posterImageHeight" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Thread list poster image height]]></phrase>
+  <phrase title="style_prop.trakt_movies_posterImageWidth" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Thread list poster image width]]></phrase>
+  <phrase title="style_prop.trakt_movies_posterUpdateButtonPosition" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Check poster updates button position]]></phrase>
+  <phrase title="style_prop.trakt_movies_productionCompanyImgHeight" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Production company image height]]></phrase>
+  <phrase title="style_prop.trakt_movies_productionCompanyImgWidth" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Production company image width]]></phrase>
+  <phrase title="style_prop.trakt_movies_watchProviderImgSize" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Watch provider image size]]></phrase>
+  <phrase title="style_prop_desc.trakt_moviesMessagePosterMaxWidth" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.trakt_moviesMessageSidebarWidth" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.trakt_movies_castPersonLargeImageUrl" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Recommended size 300x450]]></phrase>
+  <phrase title="style_prop_desc.trakt_movies_castPersonSmallImageUrl" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Recommended size 138x175]]></phrase>
+  <phrase title="style_prop_desc.trakt_movies_crewPersonLargeImageUrl" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Recommended size 300x450]]></phrase>
+  <phrase title="style_prop_desc.trakt_movies_crewPersonSmallImageUrl" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Recommended size 138x175]]></phrase>
+  <phrase title="style_prop_desc.trakt_movies_messageCompaniesPosition" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.trakt_movies_messageCompaniesTitle" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.trakt_movies_messagePosterPosition" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Select the position for the Movie Poster in threads. Note that this will invert the settings below.]]></phrase>
+  <phrase title="style_prop_desc.trakt_movies_posterImageHeight" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.trakt_movies_posterImageWidth" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.trakt_movies_posterUpdateButtonPosition" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.trakt_movies_productionCompanyImgHeight" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.trakt_movies_productionCompanyImgWidth" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.trakt_movies_watchProviderImgSize" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="style_prop_group.trakt_movies" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[nick97] Trakt Movie Thread Starter]]></phrase>
+  <phrase title="style_prop_group_desc.trakt_movies" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="thread_type.trakt_movies_movie" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trakt Movie]]></phrase>
+  <phrase title="thread_type_plural.trakt_movies_movie" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trakt Movies]]></phrase>
+  <phrase title="trakt_movies_add_info" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add movie information]]></phrase>
+  <phrase title="trakt_movies_already_rated" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[If you have already rated this movie, your current rating is shown]]></phrase>
+  <phrase title="trakt_movies_apply_changes" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Apply changes]]></phrase>
+  <phrase title="trakt_movies_available_genre" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Available movie genres]]></phrase>
+  <phrase title="trakt_movies_available_genre_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You can limit the movie type by genre in this forum.<br />If you select ALL then any movie genre will be allowed.<br />If you select any other genres then new threads for this forum will be limited to movies in those genres.<br />NOTE: If someone tries to post a movie in a genre that does not have a node assigned to it, then they will receive an error message stating that the genre is not allowed to be posted. So, if you decide to keep movie genres in separate forums, be sure to either create a forum for every genre listed or create one forum set to accept ALL genres. The ALL genre is the last to be considered for a new thread. That way, if someone tries to post a movie with a different genre for the node they are posting in, it will be automatically posted in the correct node without an error.]]></phrase>
+  <phrase title="trakt_movies_breakpoint" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Breakpoint]]></phrase>
+  <phrase title="trakt_movies_buy" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Buy]]></phrase>
+  <phrase title="trakt_movies_cast" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Cast]]></phrase>
+  <phrase title="trakt_movies_cast_tab" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Casts (tab)]]></phrase>
+  <phrase title="trakt_movies_change_rating" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add/Change rating]]></phrase>
+  <phrase title="trakt_movies_change_title" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Change thread title to movie title]]></phrase>
+  <phrase title="trakt_movies_check_for_new_backdrop_image" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Check new backdrop image]]></phrase>
+  <phrase title="trakt_movies_check_poster" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Check for new poster]]></phrase>
+  <phrase title="trakt_movies_crew" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Crew]]></phrase>
+  <phrase title="trakt_movies_crew_tab" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Crew (tab)]]></phrase>
+  <phrase title="trakt_movies_director" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Director]]></phrase>
+  <phrase title="trakt_movies_edit_movie" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Edit movie]]></phrase>
+  <phrase title="trakt_movies_error_badapi" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[TMDb API Key is not valid]]></phrase>
+  <phrase title="trakt_movies_error_genre" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Movie genre not allowed]]></phrase>
+  <phrase title="trakt_movies_error_no_forum" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You must select a forum for movie threads]]></phrase>
+  <phrase title="trakt_movies_error_no_movie" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[No movie entered]]></phrase>
+  <phrase title="trakt_movies_error_not_found" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[The movie was not found at The Movie Database]]></phrase>
+  <phrase title="trakt_movies_error_not_valid" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trakt ID not valid]]></phrase>
+  <phrase title="trakt_movies_error_posted" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Movie has already been posted]]></phrase>
+  <phrase title="trakt_movies_error_release_date_format" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Release date must be formatted YYYY-MM-DD]]></phrase>
+  <phrase title="trakt_movies_error_tv_id" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You are trying to post a TV show in a movie forum]]></phrase>
+  <phrase title="trakt_movies_error_valid_3166" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Please enter a valid ISO 3166-1 Country Code]]></phrase>
+  <phrase title="trakt_movies_error_valid_639" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Please enter a valid ISO 639-1 Language Code]]></phrase>
+  <phrase title="trakt_movies_explain_link" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Don't have the Trakt Link or ID for your movie? Go to <a href="https://trakt.tv/movies" target="_blank" >Trakt Movie Database</a> and look it up.]]></phrase>
+  <phrase title="trakt_movies_fetch_changes" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Fetch changes]]></phrase>
+  <phrase title="trakt_movies_genre" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Genre]]></phrase>
+  <phrase title="trakt_movies_genres" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Genres]]></phrase>
+  <phrase title="trakt_movies_image_height" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Image height]]></phrase>
+  <phrase title="trakt_movies_image_width" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Image width]]></phrase>
+  <phrase title="trakt_movies_information" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Movie information provided by <a href="https://trakt.tv/movies" target="_blank" >Trakt Movie Database</a>]]></phrase>
+  <phrase title="trakt_movies_information_thread" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Movie information in first post provided by <a href="https://trakt.tv/movies" target="_blank" >Trakt Movie Database</a>]]></phrase>
+  <phrase title="trakt_movies_insert_new_companies" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Inserting new companies]]></phrase>
+  <phrase title="trakt_movies_insert_new_persons" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Inserting new persons]]></phrase>
+  <phrase title="trakt_movies_latest_movies" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Latest movies]]></phrase>
+  <phrase title="trakt_movies_link_id" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trakt link or Movie ID]]></phrase>
+  <phrase title="trakt_movies_most_rated_movies" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Most rated movies]]></phrase>
+  <phrase title="trakt_movies_new_backdrop_available" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[New backdrop available]]></phrase>
+  <phrase title="trakt_movies_new_backdrop_not_available" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[New backdrop is not available]]></phrase>
+  <phrase title="trakt_movies_plot" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Plot]]></phrase>
+  <phrase title="trakt_movies_post_button" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Post movie]]></phrase>
+  <phrase title="trakt_movies_post_movie" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Post a new movie]]></phrase>
+  <phrase title="trakt_movies_poster_available" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[A new poster is available]]></phrase>
+  <phrase title="trakt_movies_poster_not_available" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[A new poster is not available]]></phrase>
+  <phrase title="trakt_movies_production_companies" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Production companies]]></phrase>
+  <phrase title="trakt_movies_random_movies" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Random movies]]></phrase>
+  <phrase title="trakt_movies_rebuild_credits" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Movie casts & crew]]></phrase>
+  <phrase title="trakt_movies_rebuild_general_movie_info" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Rebuild general movie info]]></phrase>
+  <phrase title="trakt_movies_rebuild_movie_production_companies" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Rebuild movie production companies]]></phrase>
+  <phrase title="trakt_movies_rebuild_persons" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Rebuild person data]]></phrase>
+  <phrase title="trakt_movies_rebuild_thread_covers" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Rebuild thread covers]]></phrase>
+  <phrase title="trakt_movies_rebuild_videos" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Rebuild videos]]></phrase>
+  <phrase title="trakt_movies_rebuild_watch_providers" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Rebuild watch providers]]></phrase>
+  <phrase title="trakt_movies_recalculate_ratings" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Recalculate ratings]]></phrase>
+  <phrase title="trakt_movies_release" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Release]]></phrase>
+  <phrase title="trakt_movies_release_date" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Release date]]></phrase>
+  <phrase title="trakt_movies_rent" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Rent]]></phrase>
+  <phrase title="trakt_movies_reupload_old_backdrop" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Re-upload old backdrop?]]></phrase>
+  <phrase title="trakt_movies_reupload_old_poster" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Re-upload old poster?]]></phrase>
+  <phrase title="trakt_movies_runtime" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Runtime]]></phrase>
+  <phrase title="trakt_movies_save_poster" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Save new poster]]></phrase>
+  <phrase title="trakt_movies_show_rating" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Show rating]]></phrase>
+  <phrase title="trakt_movies_slider_auto_play" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Automatically start to play]]></phrase>
+  <phrase title="trakt_movies_slider_controls" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Show prev/next buttons]]></phrase>
+  <phrase title="trakt_movies_slider_items" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Number of slides to show at a time]]></phrase>
+  <phrase title="trakt_movies_slider_items_items_medium" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Medium items]]></phrase>
+  <phrase title="trakt_movies_slider_items_items_wide" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Wide items]]></phrase>
+  <phrase title="trakt_movies_slider_loop_slides" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Loop slides]]></phrase>
+  <phrase title="trakt_movies_slider_options" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Slider options]]></phrase>
+  <phrase title="trakt_movies_slider_pager" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Display pager]]></phrase>
+  <phrase title="trakt_movies_slider_pause" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[The time (in ms) between each auto transition]]></phrase>
+  <phrase title="trakt_movies_slider_pause_on_hover" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Pause on hover]]></phrase>
+  <phrase title="trakt_movies_slider_widget_shown_elements" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Elements to show]]></phrase>
+  <phrase title="trakt_movies_started_x_threads" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[User has started at least X movie threads]]></phrase>
+  <phrase title="trakt_movies_status" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Status]]></phrase>
+  <phrase title="trakt_movies_streaming" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Streaming]]></phrase>
+  <phrase title="trakt_movies_tagline" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Tagline]]></phrase>
+  <phrase title="trakt_movies_thread_movie" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Post a new thread or movie]]></phrase>
+  <phrase title="trakt_movies_thread_tools_menu" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Thread tools menu]]></phrase>
+  <phrase title="trakt_movies_title" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Movie title]]></phrase>
+  <phrase title="trakt_movies_title_link_id" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Thread title, Trakt link or Movie ID]]></phrase>
+  <phrase title="trakt_movies_trailer" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trailer]]></phrase>
+  <phrase title="trakt_movies_trailer_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter either a youtube video ID or a youtube link]]></phrase>
+  <phrase title="trakt_movies_update_person_info" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Update person image & data]]></phrase>
+  <phrase title="trakt_movies_videos" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Videos]]></phrase>
+  <phrase title="trakt_movies_where_to_watch" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Where to watch]]></phrase>
+  <phrase title="trakt_movies_x_casts" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[{name} casts]]></phrase>
+  <phrase title="trakt_movies_x_crews" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[{name} crew]]></phrase>
+  <phrase title="trakt_movies_x_videos" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Movie {name} videos]]></phrase>
+  <phrase title="widget_def.trakt_movie_poster_slider" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[nick97] Trakt Movie Thread Starter: Poster Carousel]]></phrase>
+  <phrase title="widget_def.trakt_movies_slider" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[nick97] Trakt Movie Thread Starter: Detailed carousel]]></phrase>
+  <phrase title="widget_def_desc.trakt_movie_poster_slider" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="widget_def_desc.trakt_movies_slider" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+</phrases>

@@ -48,21 +48,21 @@ class Company extends Entity
 			$image = str_ireplace('/', '', $this->logo_path);
 
 			if ($sizeCode == 's') {
-				if ($options->TvThreads_usecdn) {
-					return "$options->TvThreads_cdn_path/tv/SmallCompanies/$image";
-				} elseif ($options->TvThreads_useLocalImages) {
+				if ($options->traktTvThreads_usecdn) {
+					return "$options->traktTvThreads_cdn_path/tv/SmallCompanies/$image";
+				} elseif ($options->traktTvThreads_useLocalImages) {
 					return $app->applyExternalDataUrl("tv/SmallCompanies/$image", $canonical);
 				}
 
-				return "https://image.tmdb.org/t/p/$options->TvThreads_largeCompanyLogoSize/$image";
+				return "https://image.tmdb.org/t/p/$options->traktTvThreads_largeCompanyLogoSize/$image";
 			} elseif ($sizeCode == 'l') {
-				if ($options->TvThreads_usecdn) {
-					return "$options->TvThreads_cdn_path/tv/LargeCompanies/$image";
-				} elseif ($options->TvThreads_useLocalImages) {
+				if ($options->traktTvThreads_usecdn) {
+					return "$options->traktTvThreads_cdn_path/tv/LargeCompanies/$image";
+				} elseif ($options->traktTvThreads_useLocalImages) {
 					return $app->applyExternalDataUrl("tv/LargeCompanies/$image", $canonical);
 				}
 
-				return "https://image.tmdb.org/t/p/$options->TvThreads_largeCompanyLogoSize/$image";
+				return "https://image.tmdb.org/t/p/$options->traktTvThreads_largeCompanyLogoSize/$image";
 			}
 		}
 

@@ -107,14 +107,14 @@ class TvThreadRebuild extends \XF\Job\AbstractRebuildJob
 		$tv = $editor->getTv();
 
 		$options = $this->app->options();
-		if ($options->TvThreads_useLocalImages) {
+		if ($options->traktTvThreads_useLocalImages) {
 			/** @var \nick97\TraktTV\Service\TV\Image $imageService */
 			$imageService = $this->app->service('nick97\TraktTV:TV\Image', $tv);
-			$imageService->setImageFromApiPath($tv->tv_image, $this->app->options()->TvThreads_largePosterSize);
+			$imageService->setImageFromApiPath($tv->tv_image, $this->app->options()->traktTvThreads_largePosterSize);
 			$imageService->updateImage();
 		}
 
-		$backdropSize = $this->app->options()->TvThreads_backdropCoverSize;
+		$backdropSize = $this->app->options()->traktTvThreads_backdropCoverSize;
 		if (\XF::isAddOnActive('ThemeHouse/Covers') && $backdropSize != 'none' && isset($tvData['backdrop_path'])) {
 			/** @var \nick97\TraktTV\Service\Thread\Cover $coverService */
 			$coverService = $this->app->service('nick97\TraktTV:Thread\Cover', $tv);
@@ -125,7 +125,7 @@ class TvThreadRebuild extends \XF\Job\AbstractRebuildJob
 		/** @var \nick97\TraktTV\Repository\TV $tvRepo */
 		$tvRepo = $this->app->repository('nick97\TraktTV:TV');
 
-		if (in_array('credits', $this->data['rebuildTypes']) && $options->TvThreads_fetchCredits) {
+		if (in_array('credits', $this->data['rebuildTypes']) && $options->traktTvThreads_fetchCredits) {
 			$creditsData = [];
 			if (isset($tvData['aggregate_credits'])) {
 				$creditsData = $tvData['aggregate_credits'];
@@ -138,7 +138,7 @@ class TvThreadRebuild extends \XF\Job\AbstractRebuildJob
 			}
 		}
 
-		if (in_array('videos', $this->data['rebuildTypes']) && $options->TvThreads_fetchVideos && isset($tvData['videos']['results'])) {
+		if (in_array('videos', $this->data['rebuildTypes']) && $options->traktTvThreads_fetchVideos && isset($tvData['videos']['results'])) {
 			$tvRepo->insertOrUpdateShowVideos($tv->tv_id, 0, 0, $tvData['videos']['results'], true);
 		}
 	}

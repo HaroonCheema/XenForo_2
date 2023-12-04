@@ -31,7 +31,7 @@ class TvThreadImageDownload extends \XF\Job\AbstractRebuildJob
 		if ($tv) {
 			/** @var \nick97\TraktTV\Service\TV\Image $imageService */
 			$imageService = $this->app->service('nick97\TraktTV:TV\Image', $tv);
-			$imageService->setImageFromApiPath($tv->tv_image, $this->app->options()->TvThreads_largePosterSize);
+			$imageService->setImageFromApiPath($tv->tv_image, $this->app->options()->traktTvThreads_largePosterSize);
 			if (!$imageService->updateImage()) {
 				$tv->tv_image = '';
 			}

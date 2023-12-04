@@ -9,7 +9,7 @@ class TvChanges
 		$app = \XF::app();
 		$options = \XF::options();
 
-		if ($options->TvThreads_trackChanges) {
+		if ($options->traktTvThreads_trackChanges) {
 			$app->jobManager()->enqueueUnique(
 				'traktTvThreadChanges',
 				'nick97\TraktTV:TvThreadChanges',
@@ -18,7 +18,7 @@ class TvChanges
 			);
 		}
 
-		if ($options->TvThreads_trackChangesAiringToday) {
+		if ($options->traktTvThreads_trackChangesAiringToday) {
 			$app->jobManager()->enqueueUnique(
 				'traktTvThreadChangesAiringToday',
 				'nick97\TraktTV:TvThreadChangesAiringToday',
@@ -27,7 +27,7 @@ class TvChanges
 			);
 		}
 
-		if ($options->TvThreads_trackCommunityChanges) {
+		if ($options->traktTvThreads_trackCommunityChanges) {
 			$app->jobManager()->enqueueUnique(
 				'traktTvCommunityChanges',
 				'nick97\TraktTV:TvCommunityChangesApply',

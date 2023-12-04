@@ -14,7 +14,7 @@ class TvThreadChangesAiringToday extends \XF\Job\AbstractJob
 
 	public function run($maxRunTime)
 	{
-		$changesTracking = $this->app->options()->TvThreads_trackChangesAiringToday;
+		$changesTracking = $this->app->options()->traktTvThreads_trackChangesAiringToday;
 		if (!$changesTracking) {
 			return $this->complete();
 		}

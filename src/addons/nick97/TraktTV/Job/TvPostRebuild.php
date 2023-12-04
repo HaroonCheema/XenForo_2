@@ -51,7 +51,7 @@ class TvPostRebuild extends \XF\Job\AbstractRebuildJob
 
 			$episode->setFromApiResponse($response);
 
-			if ($this->app->options()->TvThreads_useLocalImages && $episode->tv_image) {
+			if ($this->app->options()->traktTvThreads_useLocalImages && $episode->tv_image) {
 				/** @var \nick97\TraktTV\Service\TVPost\Image $imageService */
 				$imageService = $this->app->service('nick97\TraktTV:TVPost\Image', $episode);
 				$imageService->setImageFromApiPath($episode->tv_image, 'w300');

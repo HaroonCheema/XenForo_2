@@ -4,6 +4,7 @@ return array(
 'macros' => array('body' => array(
 'arguments' => function($__templater, array $__vars) { return array(
 		'message' => '',
+		'thread' => '',
 		'attachmentData' => null,
 		'forceHash' => '',
 		'messageSelector' => '',
@@ -56,6 +57,7 @@ return array(
 	$__vars['editorHtml'] = $__templater->preEscaped('
 						' . $__templater->callMacro(null, 'editor', array(
 		'message' => $__vars['message'],
+		'thread' => $__vars['thread'],
 		'attachmentData' => $__vars['attachmentData'],
 		'forceHash' => $__vars['forceHash'],
 		'messageSelector' => $__vars['messageSelector'],
@@ -102,6 +104,7 @@ return array(
 'editor' => array(
 'arguments' => function($__templater, array $__vars) { return array(
 		'message' => '',
+		'thread' => '',
 		'attachmentData' => null,
 		'forceHash' => '',
 		'messageSelector' => '',
@@ -122,16 +125,36 @@ return array(
 {
 	$__finalCompiled = '';
 	$__finalCompiled .= '
+	';
+	if ($__vars['thread'] AND (!$__templater->test($__vars['thread']['TV'], 'empty', array()) AND (!$__vars['thread']['TV']['tv_episode']))) {
+		$__finalCompiled .= '
 	' . $__templater->formEditor(array(
-		'name' => 'message',
-		'value' => $__vars['message'],
-		'attachments' => ($__vars['attachmentData'] ? $__vars['attachmentData']['attachments'] : array()),
-		'data-min-height' => $__vars['minHeight'],
-		'placeholder' => $__vars['placeholder'],
-		'data-deferred' => ($__vars['deferred'] ? 'on' : 'off'),
-		'data-xf-key' => 'r',
-		'data-preview-url' => $__vars['previewUrl'],
-	)) . '
+			'name' => 'message',
+			'value' => $__vars['message'],
+			'attachments' => ($__vars['attachmentData'] ? $__vars['attachmentData']['attachments'] : array()),
+			'data-min-height' => $__vars['minHeight'],
+			'placeholder' => $__vars['placeholder'],
+			'data-deferred' => ($__vars['deferred'] ? 'on' : 'off'),
+			'data-xf-key' => 'r',
+			'data-preview-url' => $__vars['previewUrl'],
+		)) . '
+	' . $__templater->includeTemplate('trakt_tv_quick_reply_episode', $__vars) . '
+';
+	} else {
+		$__finalCompiled .= '
+	' . $__templater->formEditor(array(
+			'name' => 'message',
+			'value' => $__vars['message'],
+			'attachments' => ($__vars['attachmentData'] ? $__vars['attachmentData']['attachments'] : array()),
+			'data-min-height' => $__vars['minHeight'],
+			'placeholder' => $__vars['placeholder'],
+			'data-deferred' => ($__vars['deferred'] ? 'on' : 'off'),
+			'data-xf-key' => 'r',
+			'data-preview-url' => $__vars['previewUrl'],
+		)) . '
+';
+	}
+	$__finalCompiled .= '
 
 	';
 	if ((!$__vars['xf']['visitor']['user_id']) AND $__vars['showGuestControls']) {

@@ -9,7 +9,7 @@ class Post extends XFCP_Post
 	public function renderResult(Entity $entity, array $options = [])
 	{
 		/** @var \nick97\TraktTV\XF\Entity\Post $entity */
-		if ($entity->TVPost && \XF::options()->TvThreads_replaceSearchTemplate) {
+		if ($entity->TVPost && \XF::options()->traktTvThreads_replaceSearchTemplate) {
 			$data = $this->getTemplateData($entity, $options);
 			return \XF::app()->templater()->renderTemplate('public:search_result_trakt_tv_post', $data);
 		}

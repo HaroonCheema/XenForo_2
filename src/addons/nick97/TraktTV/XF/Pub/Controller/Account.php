@@ -23,7 +23,7 @@ class Account extends XFCP_Account
 	{
 		$form = parent::preferencesSaveProcess($visitor);
 
-		$allowedCountries = $this->app()->options()->TvThreads_watchProviderRegions;
+		$allowedCountries = $this->app()->options()->traktTvThreads_watchProviderRegions;
 		if (!in_array('', $allowedCountries)) {
 			$input = $this->filter(['option' => ['nick97_tv_trakt_watch_region' => 'str']]);
 

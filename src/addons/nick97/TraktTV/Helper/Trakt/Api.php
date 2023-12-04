@@ -8,7 +8,7 @@ class Api
 	public function getClient()
 	{
 		$options = \XF::options();
-		return new \nick97\TraktTV\Trakt\ApiClient($options->TvThreads_apikey, $options->TvThreads_language);
+		return new \nick97\TraktTV\Trakt\ApiClient($options->traktTvThreads_apikey, $options->traktTvThreads_language);
 	}
 
 	public function getNewClient()
@@ -17,7 +17,7 @@ class Api
 		$eventDispatcher = new \Symfony\Component\EventDispatcher\EventDispatcher();
 
 		$client = new \Trakt\Client([
-			'api_token' => new \Trakt\Token\Api\ApiToken($options->TvThreads_apikey),
+			'api_token' => new \Trakt\Token\Api\ApiToken($options->traktTvThreads_apikey),
 			'event_dispatcher' => [
 				'adapter' => $eventDispatcher
 			],
@@ -34,7 +34,7 @@ class Api
 		$requestListener = new \Trakt\Event\Listener\RequestListener($client->getHttpClient(), $eventDispatcher);
 		$eventDispatcher->addListener(\Trakt\Event\RequestEvent::class, $requestListener);
 
-		$languageFilterListener = new \Trakt\Event\Listener\Request\LanguageFilterRequestListener($options->TvThreads_language);
+		$languageFilterListener = new \Trakt\Event\Listener\Request\LanguageFilterRequestListener($options->traktTvThreads_language);
 		$eventDispatcher->addListener(\Trakt\Event\BeforeRequestEvent::class, $languageFilterListener);
 
 		$apiTokenListener = new \Trakt\Event\Listener\Request\ApiTokenRequestListener($client->getToken());

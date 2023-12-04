@@ -83,11 +83,11 @@ class TvNewCompanies extends \XF\Job\AbstractJob
 	protected function finalizeCompanyCreate(\nick97\TraktTV\Service\Company\Creator $creator)
 	{
 		$company = $creator->getCompany();
-		if ($this->app->options()->TvThreads_useLocalImages && $company->logo_path) {
+		if ($this->app->options()->traktTvThreads_useLocalImages && $company->logo_path) {
 			/** @var \nick97\TraktTV\Service\Company\Image $imageService */
 			$imageService = $this->app->service('nick97\TraktTV:Company\Image', $company);
 
-			$imageService->setImageFromApiPath($company->logo_path, $this->app->options()->TvThreads_largeCompanyLogoSize);
+			$imageService->setImageFromApiPath($company->logo_path, $this->app->options()->traktTvThreads_largeCompanyLogoSize);
 			$imageService->updateImage();
 		}
 	}

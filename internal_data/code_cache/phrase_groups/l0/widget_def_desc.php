@@ -31,6 +31,8 @@ return array (
   'widget_def_desc.tl_groups_group' => '',
   'widget_def_desc.trakt_movie_poster_slider' => '',
   'widget_def_desc.trakt_movies_slider' => '',
+  'widget_def_desc.trakt_tv_poster_slider' => '',
+  'widget_def_desc.trakt_tv_slider' => '',
   'widget_def_desc.visitor_panel' => 'Displays the visitor\'s avatar and basic information to the visitor about themselves.',
   'widget_def_desc.xfmg_albums_slider' => 'Displays a slider showing the most recent or a random selection of albums.',
   'widget_def_desc.xfmg_gallery_statistics' => 'Displays the gallery statistics',

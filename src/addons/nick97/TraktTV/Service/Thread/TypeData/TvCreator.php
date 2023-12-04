@@ -82,7 +82,7 @@ class TvCreator extends \XF\Service\AbstractService implements SaverInterface
 			return;
 		}
 
-		$backdropSize = $this->app->options()->TvThreads_backdropCoverSize;
+		$backdropSize = $this->app->options()->traktTvThreads_backdropCoverSize;
 		if ($backdropSize == 'none') {
 			return;
 		}

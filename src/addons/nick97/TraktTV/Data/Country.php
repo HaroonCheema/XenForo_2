@@ -258,7 +258,7 @@ class Country
 			'ZW' => ['phrase' => 'trakt_tv_country.zw']
 		];
 
-		$enabledCountries = \XF::options()->TvThreads_watchProviderRegions;
+		$enabledCountries = \XF::options()->traktTvThreads_watchProviderRegions;
 		if ($filterDisabled) {
 			$countryData = array_intersect_key($countryData, array_flip($enabledCountries));
 		}

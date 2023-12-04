@@ -7,12 +7,14 @@ class Show
 	public function parseShowId($url)
 	{
 		$showId = 0;
-		if (stristr($url, 'themoviedb')) {
+		if (stristr($url, 'trakt.tv/')) {
 			// preg_match_all USED FOR FUTURE API PARAMETER CAPTURING
-			preg_match_all('/\d+/', $url, $matches);
+			$pattern = "/https:\/\/trakt\.tv\/shows\//";
+			$cleanUrl = preg_replace($pattern, "", $url);
 
-			if (!empty($matches[0][0])) {
-				$showId = $matches[0][0];
+			if (!empty($cleanUrl)) {
+				$tmdbId = $this->getIdFromTrakt($cleanUrl);
+				$showId = intval($tmdbId);
 			} elseif (stristr($url, '?')) {
 				$showIdParts = explode('?', $url);
 				if (!empty($showIdParts[0])) {
@@ -24,6 +26,37 @@ class Show
 		}
 
 		return $showId;
+	}
+
+	protected function getIdFromTrakt($id)
+	{
+		$endpoint = 'https://api.trakt.tv/shows/' . $id;
+
+		$headers = array(
+			'Content-Type: application/json',
+			'trakt-api-version: 2',
+			'trakt-api-key: 1d0f918e4f03cf101d342025c836ad72cb26b24184f6e19d5d499de7710019c2'
+		);
+
+		$ch = curl_init();
+
+		curl_setopt($ch, CURLOPT_URL, $endpoint);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+		$result = curl_exec($ch);
+
+		curl_close($ch);
+
+		$toArray = json_decode($result, true);
+
+		$movieId = $toArray["ids"]["tmdb"];
+
+		if (isset($movieId)) {
+			return $movieId;
+		} else {
+			return 0;
+		}
 	}
 
 	public function parseGenres(array $apiResponse): array

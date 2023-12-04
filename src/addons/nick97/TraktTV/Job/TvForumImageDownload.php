@@ -31,7 +31,7 @@ class TvForumImageDownload extends \XF\Job\AbstractRebuildJob
 		if ($TVForum) {
 			/** @var \nick97\TraktTV\Service\TVForum\Image $imageService */
 			$imageService = $this->app->service('nick97\TraktTV:TVForum\Image', $TVForum);
-			$imageService->setImageFromApiPath($TVForum->tv_image, $this->app->options()->TvThreads_largePosterSize);
+			$imageService->setImageFromApiPath($TVForum->tv_image, $this->app->options()->traktTvThreads_largePosterSize);
 			if (!$imageService->updateImage()) {
 				$TVForum->tv_image = '';
 			}

@@ -136,7 +136,7 @@ class Creator extends \XF\Service\AbstractService
 
 		$apiResponse = $this->tvData;
 
-		if ($options->TvThreads_fetchCredits) {
+		if ($options->traktTvThreads_fetchCredits) {
 			$creditsData = [];
 			if (isset($apiResponse['aggregate_credits'])) {
 				$creditsData = $apiResponse['aggregate_credits'];
@@ -158,7 +158,7 @@ class Creator extends \XF\Service\AbstractService
 			}
 		}
 
-		if ($options->TvThreads_fetchCompanies && !empty($apiResponse['production_companies'])) {
+		if ($options->traktTvThreads_fetchCompanies && !empty($apiResponse['production_companies'])) {
 			$jobList[] = [
 				'nick97\TraktTV:TvNewCompanies', [
 					'companyIds' => array_column($apiResponse['production_companies'], 'id')
@@ -196,7 +196,7 @@ class Creator extends \XF\Service\AbstractService
 		$apiResponse = $this->tvData;
 		$options = $this->app->options();
 
-		if ($options->TvThreads_use_genres && $options->TvThreads_crosslink) {
+		if ($options->traktTvThreads_use_genres && $options->traktTvThreads_crosslink) {
 			$jobList[] = [
 				'nick97\TraktTV:CrossLinkCreate',
 				[
@@ -243,7 +243,7 @@ class Creator extends \XF\Service\AbstractService
 
 		$tvData = $this->tvData;
 
-		if ($app->options()->TvThreads_force_comments) {
+		if ($app->options()->traktTvThreads_force_comments) {
 			$comment = $thread->getOption('tvOriginalMessage');
 			if ($comment) {
 				/** @var \XF\Service\Thread\Replier $replier */
@@ -261,7 +261,7 @@ class Creator extends \XF\Service\AbstractService
 		/** @var \nick97\TraktTV\Repository\TV $tvRepo */
 		$tvRepo = $this->repository('nick97\TraktTV:TV');
 
-		if ($options->TvThreads_fetchCredits) {
+		if ($options->traktTvThreads_fetchCredits) {
 			$creditsData = [];
 			if (isset($tvData['aggregate_credits'])) {
 				$creditsData = $tvData['aggregate_credits'];
@@ -274,14 +274,14 @@ class Creator extends \XF\Service\AbstractService
 			}
 		}
 
-		if ($options->TvThreads_fetchVideos && isset($tvData['videos']['results'])) {
+		if ($options->traktTvThreads_fetchVideos && isset($tvData['videos']['results'])) {
 			$tvRepo->insertOrUpdateShowVideos($tv->tv_id, 0, 0, $tvData['videos']['results']);
 		}
 
-		if ($this->app->options()->TvThreads_useLocalImages && $tv->tv_image) {
+		if ($this->app->options()->traktTvThreads_useLocalImages && $tv->tv_image) {
 			/** @var Image $imageService */
 			$imageService = \XF::service('nick97\TraktTV:TV\Image', $tv);
-			$imageService->setImageFromApiPath($tv->tv_image, $this->app->options()->TvThreads_largePosterSize);
+			$imageService->setImageFromApiPath($tv->tv_image, $this->app->options()->traktTvThreads_largePosterSize);
 			$imageService->updateImage();
 		}
 

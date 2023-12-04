@@ -74,7 +74,7 @@ class TV extends Entity
 	{
 		$title = $this->tv_title;
 
-		if ($this->app()->options()->TvThreads_titleYear) {
+		if ($this->app()->options()->traktTvThreads_titleYear) {
 			$year = '';
 			if ($this->first_air_date) {
 				$year = date('Y', $this->first_air_date);
@@ -117,7 +117,7 @@ class TV extends Entity
 			$message .= '[MEDIA=youtube]' . $this->tv_trailer . '[/MEDIA]' . "\r\n\r\n";
 		}
 
-		if ($this->comment && !$app->options()->TvThreads_force_comments) {
+		if ($this->comment && !$app->options()->traktTvThreads_force_comments) {
 			$message .= $this->comment;
 		}
 
@@ -127,7 +127,7 @@ class TV extends Entity
 	public function getWatchProviders()
 	{
 		$watchProviders = $this->trakt_watch_providers ?? [];
-		$regionCodes = $this->app()->options()->TvThreads_watchProviderRegions;
+		$regionCodes = $this->app()->options()->traktTvThreads_watchProviderRegions;
 
 		return array_filter($watchProviders, function ($country) use ($regionCodes) {
 			return in_array($country, $regionCodes);
@@ -168,17 +168,17 @@ class TV extends Entity
 		if ($this->tv_image) {
 			$image = str_ireplace('/', '', $this->tv_image);
 			if ($sizeCode == 'l') {
-				if ($options->TvThreads_usecdn) {
-					return "$options->TvThreads_cdn_path/tv/LargePosters/$image";
-				} elseif ($options->TvThreads_useLocalImages) {
+				if ($options->traktTvThreads_usecdn) {
+					return "$options->traktTvThreads_cdn_path/tv/LargePosters/$image";
+				} elseif ($options->traktTvThreads_useLocalImages) {
 					return $app->applyExternalDataUrl("tv/LargePosters/$this->thread_id-$image", $canonical);
 				}
 
-				return "https://image.tmdb.org/t/p/$options->TvThreads_largePosterSize/$image";
+				return "https://image.tmdb.org/t/p/$options->traktTvThreads_largePosterSize/$image";
 			} elseif ($sizeCode == 's') {
-				if ($options->TvThreads_usecdn) {
-					return "$options->TvThreads_cdn_path/tv/SmallPosters$this->tv_image";
-				} elseif ($options->TvThreads_useLocalImages) {
+				if ($options->traktTvThreads_usecdn) {
+					return "$options->traktTvThreads_cdn_path/tv/SmallPosters$this->tv_image";
+				} elseif ($options->traktTvThreads_useLocalImages) {
 					return $app->applyExternalDataUrl("tv/SmallPosters/$this->thread_id-$image", $canonical);
 				}
 
@@ -186,13 +186,13 @@ class TV extends Entity
 			}
 		} else {
 			if ($sizeCode == 'l') {
-				if ($options->TvThreads_usecdn) {
-					return "$options->TvThreads_cdn_path/tv/LargePosters/no-poster.png";
+				if ($options->traktTvThreads_usecdn) {
+					return "$options->traktTvThreads_cdn_path/tv/LargePosters/no-poster.png";
 				}
 				return $app->applyExternalDataUrl("tv/LargePosters/no-poster.png", $canonical);
 			} elseif ($sizeCode == 's') {
-				if ($options->TvThreads_usecdn) {
-					return "$options->TvThreads_cdn_path/tv/SmallPosters/no-poster.png";
+				if ($options->traktTvThreads_usecdn) {
+					return "$options->traktTvThreads_cdn_path/tv/SmallPosters/no-poster.png";
 				}
 				return $app->applyExternalDataUrl("tv/SmallPosters/no-poster.png", $canonical);
 			}
@@ -222,16 +222,16 @@ class TV extends Entity
 		if ($this->tv_season && $this->tv_image) {
 			$image = str_ireplace('/', '', $this->tv_image);
 
-			if ($options->TvThreads_usecdn) {
-				return "$options->TvThreads_cdn_path/tv/EpisodePosters/$image";
-			} elseif ($options->TvThreads_useLocalImages) {
+			if ($options->traktTvThreads_usecdn) {
+				return "$options->traktTvThreads_cdn_path/tv/EpisodePosters/$image";
+			} elseif ($options->traktTvThreads_useLocalImages) {
 				return $app->applyExternalDataUrl("tv/EpisodePosters/$image", $canonical);
 			}
 
 			return "https://image.tmdb.org/t/p/w300/$image";
 		} else {
-			if ($options->TvThreads_usecdn) {
-				return "$options->TvThreads_cdn_path/tv/EpisodePosters/no-poster.png";
+			if ($options->traktTvThreads_usecdn) {
+				return "$options->traktTvThreads_cdn_path/tv/EpisodePosters/no-poster.png";
 			}
 
 			return $app->applyExternalDataUrl("tv/EpisodePosters/no-poster.png", $canonical);

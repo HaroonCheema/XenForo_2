@@ -10,7 +10,7 @@ class TvThreadCoverUpdate extends \XF\Job\AbstractRebuildJob
 			return $this->complete();
 		}
 
-		$backdropSize = $this->app->options()->TvThreads_backdropCoverSize;
+		$backdropSize = $this->app->options()->traktTvThreads_backdropCoverSize;
 		if ($backdropSize == 'none') {
 			return $this->complete();
 		}

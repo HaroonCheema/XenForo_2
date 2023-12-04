@@ -37,7 +37,7 @@ class TvCreditsRebuild extends \XF\Job\AbstractRebuildJob
 			$rawCredits = $apiShow->getSeason($tv->tv_season)->getEpisode($tv->tv_episode)->getCredits();
 		} elseif ($tv->tv_season) {
 			$rawCredits = $apiShow->getSeason($tv->tv_season)->getCredits();
-		} else if ($this->app->options()->TvThreads_aggregateCredits) {
+		} else if ($this->app->options()->traktTvThreads_aggregateCredits) {
 			$rawCredits = $apiShow->getAggregateCredits();
 		} else {
 			$rawCredits = $apiShow->getCredits();

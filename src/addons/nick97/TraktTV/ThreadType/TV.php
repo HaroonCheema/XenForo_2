@@ -45,7 +45,7 @@ class TV extends \XF\ThreadType\AbstractHandler
 			];
 
 			$options = \XF::options();
-			$threadInfo = $options->TvThreads_showThread;
+			$threadInfo = $options->traktTvThreads_showThread;
 
 			if (isset($threadInfo['production_companies'])) {
 				/** @var \nick97\TraktTV\Repository\Company $companyRepo */
@@ -54,7 +54,7 @@ class TV extends \XF\ThreadType\AbstractHandler
 				$companyFinder = $companyRepo->findCompaniesForList()
 					->where('company_id', $tv->trakt_production_company_ids);
 
-				$companies = $companyFinder->fetch($options->TvThreads_companiesLimit);
+				$companies = $companyFinder->fetch($options->traktTvThreads_companiesLimit);
 
 				$overrides['pinned_first_post_macro_args'] += [
 					'companies' => $companies,
@@ -68,7 +68,7 @@ class TV extends \XF\ThreadType\AbstractHandler
 				$networkFinder = $networkRepo->findNetworksForList()
 					->where('network_id', $tv->trakt_network_ids);
 
-				$networks = $networkFinder->fetch($options->TvThreads_networksLimit);
+				$networks = $networkFinder->fetch($options->traktTvThreads_networksLimit);
 
 				$overrides['pinned_first_post_macro_args'] += [
 					'networks' => $networks,
@@ -81,7 +81,7 @@ class TV extends \XF\ThreadType\AbstractHandler
 				$castFinder = $castRepo->findCastForTv($tv);
 				$castFinder->useDefaultOrder();
 
-				$castLimit = $options->TvThreads_castsLimit;
+				$castLimit = $options->traktTvThreads_castsLimit;
 				$castFinder->limit($castLimit);
 				$castsTotal = $castFinder->total();
 				$castsHasMore = $castsTotal > $castLimit;
@@ -101,7 +101,7 @@ class TV extends \XF\ThreadType\AbstractHandler
 				$crewFinder = $crewRepo->findCrewForTv($tv);
 				$crewFinder->useDefaultOrder();
 
-				$crewLimit = $options->TvThreads_creditsLimit;
+				$crewLimit = $options->traktTvThreads_creditsLimit;
 				$crewFinder->limit($crewLimit);
 				$crewTotal = $crewFinder->total();
 				$crewsHasMore = $crewTotal > $crewLimit;
@@ -123,7 +123,7 @@ class TV extends \XF\ThreadType\AbstractHandler
 					->forSeason($tv->tv_season)
 					->forEpisode($tv->tv_episode);
 
-				$videosLimit = $options->TvThreads_videosLimit;
+				$videosLimit = $options->traktTvThreads_videosLimit;
 				$videoFinder->limit($videosLimit);
 				$videosTotal = $videoFinder->total();
 				$videosHasMore = $videosTotal > $videosLimit;
@@ -238,7 +238,7 @@ class TV extends \XF\ThreadType\AbstractHandler
 
 		// CREATE DEFAULT THREAD/MESSAGE WITHOUT PRETTY FORMATTING
 
-		if ($options->TvThreads_syncTitle) {
+		if ($options->traktTvThreads_syncTitle) {
 			$title = $tv->getExpectedThreadTitle();
 		} else {
 			$title = $thread->title;
@@ -247,7 +247,7 @@ class TV extends \XF\ThreadType\AbstractHandler
 		$creator->setContent($title, $tv->getPostMessage());
 
 		$forum = $creator->getForum();
-		if (!$options->TvThreads_force_comments && $forum->canUploadAndManageAttachments()) {
+		if (!$options->traktTvThreads_force_comments && $forum->canUploadAndManageAttachments()) {
 			// Unassociate attachments from this post
 			$creator->setAttachmentHash(null);
 		}

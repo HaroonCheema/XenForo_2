@@ -120,7 +120,7 @@ class TVPost extends \XF\Pub\Controller\AbstractController
 
 		$episode->setFromApiResponse($apiResponse);
 
-		if ($this->app->options()->TvThreads_useLocalImages && $episode->tv_image) {
+		if ($this->app->options()->traktTvThreads_useLocalImages && $episode->tv_image) {
 			/** @var \nick97\TraktTV\Service\TVPost\Image $imageService */
 			$imageService = $this->app->service('nick97\TraktTV:TVPost\Image', $episode);
 			$imageService->setImageFromApiPath($episode->tv_image, 'w300');

@@ -15,7 +15,7 @@ class User extends XFCP_User
 			$countryData = $this->app()->data('nick97\TraktTV:Country');
 			$countryList = $countryData->getCountryOptions();
 
-			$allowedCountries = $this->app()->options()->TvThreads_watchProviderRegions;
+			$allowedCountries = $this->app()->options()->traktTvThreads_watchProviderRegions;
 
 			$countryList = array_filter($countryList, function ($country) use ($allowedCountries) {
 				return in_array($country, $allowedCountries);
@@ -31,7 +31,7 @@ class User extends XFCP_User
 	{
 		$formAction = parent::userSaveProcess($user);
 
-		$allowedCountries = $this->app()->options()->TvThreads_watchProviderRegions;
+		$allowedCountries = $this->app()->options()->traktTvThreads_watchProviderRegions;
 		if (!in_array('', $allowedCountries)) {
 			$input = $this->filter(['option' => ['nick97_tv_trakt_watch_region' => 'str']]);
 

@@ -337,7 +337,7 @@ return array(
 	)) . '
 	</div>
 ', array(
-		'action' => $__templater->func('link', array('forums/post-thread', $__vars['forum'], ), false),
+		'action' => ((!$__templater->test($__vars['forum']['TVForum'], 'empty', array()) AND $__vars['forum']['TVForum']['tv_parent_id']) ? $__templater->func('link', array('forums/newepisode', $__vars['forum'], ), false) : $__templater->func('link', array('forums/post-thread', $__vars['forum'], ), false)),
 		'ajax' => 'true',
 		'class' => 'block',
 		'data-xf-init' => 'attachment-manager',

@@ -41,21 +41,21 @@ class Network extends Entity
 			$image = str_ireplace('/', '', $this->logo_path);
 
 			if ($sizeCode == 's') {
-				if ($options->TvThreads_usecdn) {
-					return "$options->TvThreads_cdn_path/tv/SmallNetworks/$image";
-				} elseif ($options->TvThreads_useLocalImages) {
+				if ($options->traktTvThreads_usecdn) {
+					return "$options->traktTvThreads_cdn_path/tv/SmallNetworks/$image";
+				} elseif ($options->traktTvThreads_useLocalImages) {
 					return $app->applyExternalDataUrl("tv/SmallNetworks/$image", $canonical);
 				}
 
-				return "https://image.tmdb.org/t/p/$options->TvThreads_largeNetworkLogoSize/$image";
+				return "https://image.tmdb.org/t/p/$options->traktTvThreads_largeNetworkLogoSize/$image";
 			} elseif ($sizeCode == 'l') {
-				if ($options->TvThreads_usecdn) {
-					return "$options->TvThreads_cdn_path/tv/LargeNetworks/$image";
-				} elseif ($options->TvThreads_useLocalImages) {
+				if ($options->traktTvThreads_usecdn) {
+					return "$options->traktTvThreads_cdn_path/tv/LargeNetworks/$image";
+				} elseif ($options->traktTvThreads_useLocalImages) {
 					return $app->applyExternalDataUrl("tv/LargeNetworks/$image", $canonical);
 				}
 
-				return "https://image.tmdb.org/t/p/$options->TvThreads_largeNetworkLogoSize/$image";
+				return "https://image.tmdb.org/t/p/$options->traktTvThreads_largeNetworkLogoSize/$image";
 			}
 		}
 

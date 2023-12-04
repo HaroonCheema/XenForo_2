@@ -94,13 +94,19 @@ return array(
 	$__finalCompiled = '';
 		$__finalCompiled .= '
 				<div class="structItemContainer">
-					' . $__templater->callMacro(null, ($__vars['templateOverrides']['quick_thread_macro'] ?: 'thread_list_macros::quick_thread'), $__templater->combineMacroArgumentAttributes($__vars['templateOverrides']['quick_thread_macro_args'], array(
-		'forum' => $__vars['forum'],
-		'page' => $__vars['page'],
-		'order' => $__vars['sortInfo']['order'],
-		'direction' => $__vars['sortInfo']['direction'],
-		'prefixes' => $__vars['quickThreadPrefixes'],
-	)), $__vars) . '
+					';
+	if ($__templater->test($__vars['forum']['TVForum'], 'empty', array()) OR (!$__vars['forum']['TVForum']['tv_season'])) {
+		$__finalCompiled .= '
+	' . $__templater->callMacro(null, ($__vars['templateOverrides']['quick_thread_macro'] ?: 'thread_list_macros::quick_thread'), $__templater->combineMacroArgumentAttributes($__vars['templateOverrides']['quick_thread_macro_args'], array(
+			'forum' => $__vars['forum'],
+			'page' => $__vars['page'],
+			'order' => $__vars['sortInfo']['order'],
+			'direction' => $__vars['sortInfo']['direction'],
+			'prefixes' => $__vars['quickThreadPrefixes'],
+		)), $__vars) . '
+';
+	}
+	$__finalCompiled .= '
 
 					';
 	if (!$__templater->test($__vars['stickyThreads'], 'empty', array()) OR !$__templater->test($__vars['threads'], 'empty', array())) {
@@ -326,6 +332,7 @@ return array(
 ';
 	}
 	$__finalCompiled .= '
+' . $__templater->includeTemplate('trakt_tv_filter_removal', $__vars) . '
 ';
 	if ($__vars['filters']['last_days'] AND $__vars['dateLimits'][$__vars['filters']['last_days']]) {
 		$__finalCompiled .= '
@@ -426,33 +433,70 @@ return array(
 	$__finalCompiled .= '
 
 ';
-	if ($__templater->method($__vars['forum'], 'canCreateThread', array()) OR $__templater->method($__vars['forum'], 'canCreateThreadPreReg', array())) {
-		$__compilerTemp1 = '';
-		if ($__vars['forum']['forum_type_id'] == 'trakt_movies_movie') {
-			$__compilerTemp1 .= '
-	' . 'Post movie' . '
+	if (!$__templater->test($__vars['forum']['TVForum'], 'empty', array()) AND (!$__vars['forum']['TVForum']['tv_parent_id'])) {
+		$__finalCompiled .= '
+	' . $__templater->includeTemplate('trakt_tv_add_season', $__vars) . '
+';
+	} else {
+		$__finalCompiled .= '
+	';
+		if (!$__templater->test($__vars['forum']['TVForum'], 'empty', array()) AND $__vars['forum']['TVForum']['tv_parent_id']) {
+			$__finalCompiled .= '
+	' . $__templater->includeTemplate('trakt_tv_add_episode', $__vars) . '
 ';
 		} else {
-			$__compilerTemp1 .= '
-	' . 'Post thread' . '	
+			$__finalCompiled .= '
+	';
+			if ($__templater->method($__vars['forum'], 'canCreateThread', array()) OR $__templater->method($__vars['forum'], 'canCreateThreadPreReg', array())) {
+				$__compilerTemp1 = '';
+				if ($__vars['forum']['forum_type_id'] == 'trakt_movies_movie') {
+					$__compilerTemp1 .= '
+	' . 'Post movie' . '
 ';
-		}
-		$__templater->pageParams['pageAction'] = $__templater->preEscaped('
+				} else {
+					$__compilerTemp1 .= '
+	';
+					if ($__templater->func('in_array', array($__vars['forum']['node_id'], $__vars['xf']['options']['traktTvThreads_forum'], ), false) AND (!$__vars['xf']['options']['traktTvThreads_mix'])) {
+						$__compilerTemp1 .= '
+	' . 'trakt_tv_post_new_show' . '
+';
+					} else {
+						$__compilerTemp1 .= '
+' . 'Post thread' . '	
+';
+					}
+					$__compilerTemp1 .= '
+	
+';
+				}
+				$__templater->pageParams['pageAction'] = $__templater->preEscaped('
 	' . $__templater->button('
 		' . $__compilerTemp1 . '
 	', array(
-			'href' => $__templater->func('link', array('forums/post-thread', $__vars['forum'], ), false),
-			'class' => 'button--cta',
-			'icon' => 'write',
-		), '', array(
-		)) . '
+					'href' => $__templater->func('link', array('forums/post-thread', $__vars['forum'], ), false),
+					'class' => 'button--cta',
+					'icon' => 'write',
+				), '', array(
+				)) . '
 ');
+			}
+			$__finalCompiled .= '
+';
+		}
+		$__finalCompiled .= '
+';
 	}
 	$__finalCompiled .= '
 
 ';
-	$__templater->pageParams['pageDescription'] = $__templater->preEscaped($__templater->filter($__vars['forum']['Node']['description'], array(array('raw', array()),), true));
-	$__templater->pageParams['pageDescriptionMeta'] = true;
+	if ($__templater->test($__vars['forum']['TVForum'], 'empty', array())) {
+		$__finalCompiled .= '
+	';
+		$__templater->pageParams['pageDescription'] = $__templater->preEscaped($__templater->filter($__vars['forum']['Node']['description'], array(array('raw', array()),), true));
+		$__templater->pageParams['pageDescriptionMeta'] = true;
+		$__finalCompiled .= '
+';
+	}
 	$__finalCompiled .= '
 
 ';
@@ -542,6 +586,19 @@ return array(
 ' . $__templater->callAdsMacro('forum_view_above_thread_list', array(
 		'forum' => $__vars['forum'],
 	), $__vars) . '
+';
+	if (!$__templater->test($__vars['forum']['TVForum'], 'empty', array()) AND (!$__vars['forum']['TVForum']['tv_parent_id'])) {
+		$__finalCompiled .= '
+	';
+		if ($__templater->method($__vars['forum'], 'canCreateThread', array())) {
+			$__finalCompiled .= '
+		' . $__templater->includeTemplate('trakt_tv_post_thread', $__vars) . '
+	';
+		}
+		$__finalCompiled .= '
+';
+	}
+	$__finalCompiled .= '
 
 ' . '
 <div class="block ' . $__templater->escape($__templater->renderExtension('thread_list_block_classes', $__vars, $__extensions)) . '" data-xf-init="' . ($__vars['canInlineMod'] ? 'inline-mod' : '') . '" data-type="thread" data-href="' . $__templater->func('link', array('inline-mod', ), true) . '">

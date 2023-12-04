@@ -83,11 +83,11 @@ class TvNewNetworks extends \XF\Job\AbstractJob
 	protected function finalizeNetworkCreate(\nick97\TraktTV\Service\Network\Creator $creator)
 	{
 		$network = $creator->getNetwork();
-		if ($this->app->options()->TvThreads_useLocalImages && $network->logo_path) {
+		if ($this->app->options()->traktTvThreads_useLocalImages && $network->logo_path) {
 			/** @var \nick97\TraktTV\Service\Network\Image $imageService */
 			$imageService = $this->app->service('nick97\TraktTV:Network\Image', $network);
 
-			$imageService->setImageFromApiPath($network->logo_path, $this->app->options()->TvThreads_largeNetworkLogoSize);
+			$imageService->setImageFromApiPath($network->logo_path, $this->app->options()->traktTvThreads_largeNetworkLogoSize);
 			$imageService->updateImage();
 		}
 	}

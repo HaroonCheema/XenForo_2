@@ -9,6 +9,11 @@
     "faq_url": "",
     "support_url": "",
     "extra_urls": [],
-    "require": [],
-    "icon": ""
+    "require": {
+        "XF": [
+            2020070,
+            "XenForo 2.2.0+"
+        ]
+    },
+    "icon": "fa-film"
 }

@@ -23,8 +23,7 @@ class Setup extends AbstractSetup
 	{
 		$sm = $this->schemaManager();
 
-		foreach ($this->getTables() as $tableName => $callback)
-		{
+		foreach ($this->getTables() as $tableName => $callback) {
 			$sm->createTable($tableName, $callback);
 		}
 	}
@@ -32,10 +31,8 @@ class Setup extends AbstractSetup
 	public function installStep2()
 	{
 		$sm = $this->schemaManager();
-		foreach ($this->getAlters() as $table => $schema)
-		{
-			if ($sm->tableExists($table))
-			{
+		foreach ($this->getAlters() as $table => $schema) {
+			if ($sm->tableExists($table)) {
 				$sm->alterTable($table, $schema);
 			}
 		}
@@ -77,8 +74,7 @@ class Setup extends AbstractSetup
 	{
 		$sm = $this->schemaManager();
 
-		foreach (array_keys($this->getTables()) as $tableName)
-		{
+		foreach (array_keys($this->getTables()) as $tableName) {
 			$sm->dropTable($tableName);
 		}
 	}
@@ -86,10 +82,8 @@ class Setup extends AbstractSetup
 	public function uninstallStep2()
 	{
 		$sm = $this->schemaManager();
-		foreach ($this->getReverseAlters() as $table => $schema)
-		{
-			if ($sm->tableExists($table))
-			{
+		foreach ($this->getReverseAlters() as $table => $schema) {
+			if ($sm->tableExists($table)) {
 				$sm->alterTable($table, $schema);
 			}
 		}
@@ -425,8 +419,7 @@ class Setup extends AbstractSetup
 		$sm = $this->schemaManager();
 		$tableExists = $db->fetchRow("SHOW TABLES LIKE 'xf_tv_thread'");
 
-		if ($tableExists)
-		{
+		if ($tableExists) {
 			$sm->renameTable('xf_tv_thread', 'nick97_trakt_tv_thread');
 
 			$sm->alterTable('nick97_trakt_tv_thread', function (Alter $table) {
@@ -445,8 +438,7 @@ class Setup extends AbstractSetup
 		$sm = $this->schemaManager();
 		$tableExists = $db->fetchRow("SHOW TABLES LIKE 'xf_tv_post'");
 
-		if ($tableExists)
-		{
+		if ($tableExists) {
 			$sm->renameTable('xf_tv_post', 'nick97_trakt_tv_post');
 
 			$sm->alterTable('nick97_trakt_tv_post', function (Alter $table) {
@@ -462,8 +454,7 @@ class Setup extends AbstractSetup
 		$sm = $this->schemaManager();
 		$tableExists = $db->fetchRow("SHOW TABLES LIKE 'xf_tv_ratings'");
 
-		if ($tableExists)
-		{
+		if ($tableExists) {
 			$sm->renameTable('xf_tv_ratings', 'nick97_trakt_tv_ratings');
 
 			// MAY NEED TO DROP MOVIE_ID KEY
@@ -479,8 +470,7 @@ class Setup extends AbstractSetup
 		$sm = $this->schemaManager();
 		$tableExists = $db->fetchRow("SHOW TABLES LIKE 'xf_tv_ratings_node'");
 
-		if ($tableExists)
-		{
+		if ($tableExists) {
 			$sm->renameTable('xf_tv_ratings_node', 'nick97_trakt_tv_ratings_node');
 
 			// MAY NEED TO DROP MOVIE_ID KEY
@@ -504,8 +494,7 @@ class Setup extends AbstractSetup
 		// COPY OLD FORUM FIELD TO NEW TABLE
 		$tmpData = $db->fetchAll("SELECT node_id, tv_genre FROM xf_forum WHERE tv_genre > ''");
 
-		foreach ($tmpData as $data)
-		{
+		foreach ($tmpData as $data) {
 			$genres = explode(',', $data['tv_genre']);
 
 			$db->insert('nick97_trakt_tv_node', [
@@ -524,14 +513,13 @@ class Setup extends AbstractSetup
 	public function upgrade1000010Step7()
 	{
 		$db = $this->db();
-		$forum = $db->fetchRow("SELECT * FROM xf_option WHERE OPTION_ID = 'TvThreads_show_forum'");
+		$forum = $db->fetchRow("SELECT * FROM xf_option WHERE OPTION_ID = 'traktTvThreads_show_forum'");
 		$newValue = '';
 		$step1 = str_replace('{', '', $forum['option_value']);
 		$step2 = str_replace('}', '', $step1);
 		$step3 = explode(',', $step2);
 
-		foreach ($step3 as $value)
-		{
+		foreach ($step3 as $value) {
 			$value = str_replace('"', '', $value);
 			$expValue = explode(':', $value);
 			if ($newValue) $newValue .= ',';
@@ -540,17 +528,16 @@ class Setup extends AbstractSetup
 		$newValue = '[' . $newValue . ']';
 
 		$update = ['option_value' => $newValue];
-		$db->update('xf_option', $update, "OPTION_ID = 'TvThreads_show_forum'");
+		$db->update('xf_option', $update, "OPTION_ID = 'traktTvThreads_show_forum'");
 
-		$thread = $db->fetchRow("SELECT * FROM xf_option WHERE OPTION_ID = 'TvThreads_show_thread'");
+		$thread = $db->fetchRow("SELECT * FROM xf_option WHERE OPTION_ID = 'traktTvThreads_show_thread'");
 
 		$newValue = '';
 		$step1 = str_replace('{', '', $thread['option_value']);
 		$step2 = str_replace('}', '', $step1);
 		$step3 = explode(',', $step2);
 
-		foreach ($step3 as $value)
-		{
+		foreach ($step3 as $value) {
 			$value = str_replace('"', '', $value);
 			$expValue = explode(':', $value);
 			if ($newValue) $newValue .= ',';
@@ -559,7 +546,7 @@ class Setup extends AbstractSetup
 		$newValue = '[' . $newValue . ']';
 
 		$update = ['option_value' => $newValue];
-		$db->update('xf_option', $update, "OPTION_ID = 'TvThreads_show_thread'");
+		$db->update('xf_option', $update, "OPTION_ID = 'traktTvThreads_show_thread'");
 	}
 
 	// UPDATE THREAD TABLE WITH SEASON/EPISODE INFO
@@ -581,8 +568,7 @@ class Setup extends AbstractSetup
 			  ON (post.post_id = xfthread.first_post_id)
 			  WHERE tvthread.tv_episode > 0 AND tvthread.tv_season = 0 AND tvthread.tv_checked = 0");
 
-		foreach ($threadChange as $change)
-		{
+		foreach ($threadChange as $change) {
 			$comment = '';
 			$episode_name = $this->getValue($change['message'], '[EPISODENAME]', '[/EPISODENAME');
 			$after_episode = explode('[/EPISODE]', $change['message']);
@@ -590,8 +576,7 @@ class Setup extends AbstractSetup
 			$update = ['tv_id' => $change['mainid'], 'tv_season' => $change['tvseason'], 'tv_title' => $episode_name, 'comment' => $comment, 'tv_checked' => 1];
 			$db->update('nick97_trakt_tv_thread', $update, 'thread_id = ?', $change['thread_id']);
 
-			if ($maxRunTime && (microtime(true) - $s) > $maxRunTime)
-			{
+			if ($maxRunTime && (microtime(true) - $s) > $maxRunTime) {
 				return [
 					'complete' => false,
 					'params' => [],
@@ -616,7 +601,7 @@ class Setup extends AbstractSetup
 		$maxRunTime = \XF::config('jobMaxRunTime');
 		$s = microtime(true);
 		$options = \XF::options();
-		$tvForums = $options->TvThreads_forum;
+		$tvForums = $options->traktTvThreads_forum;
 
 		// SOME SYSTEMS MAY HAVE NO POSTER IN DATABASE - REMOVE IT
 		$update = ['tv_image' => ''];
@@ -624,8 +609,7 @@ class Setup extends AbstractSetup
 
 		$postChange = $db->fetchAll("SELECT * FROM xf_post WHERE message LIKE '[EPISODE]%'");
 
-		foreach ($postChange as $change)
-		{
+		foreach ($postChange as $change) {
 			$comment = '';
 			$guests = '';
 			$episodeInfo = '';
@@ -635,15 +619,12 @@ class Setup extends AbstractSetup
 			$originalThread = $db->fetchRow("SELECT * FROM xf_thread WHERE thread_id = " . $change['thread_id']);
 			$thread = $db->fetchRow("SELECT * FROM nick97_trakt_tv_thread WHERE thread_id = " . $change['thread_id']);
 
-			if (!$thread || !in_array($originalThread['node_id'], $tvForums))
-			{
-				if ($thread && !in_array($originalThread['node_id'], $tvForums))
-				{
+			if (!$thread || !in_array($originalThread['node_id'], $tvForums)) {
+				if ($thread && !in_array($originalThread['node_id'], $tvForums)) {
 					$db->delete("nick97_trakt_tv_thread", 'thread_id = ' . $thread['thread_id']);
 				}
 
-				if (!$thread || !in_array($originalThread['node_id'], $tvForums))
-				{
+				if (!$thread || !in_array($originalThread['node_id'], $tvForums)) {
 					$db->delete('nick97_trakt_tv_post', 'post_id = ' . $change['post_id']);
 					$tvPostDeleted = true;
 				}
@@ -659,8 +640,7 @@ class Setup extends AbstractSetup
 			$imgparts = explode('/', $tempimg);
 			$partcount = count($imgparts);
 
-			if ($partcount > 0)
-			{
+			if ($partcount > 0) {
 				$episode_image = '/' . $imgparts[$partcount - 1];
 			}
 
@@ -682,12 +662,10 @@ class Setup extends AbstractSetup
 
 			$guestvalue = $this->getValue($change['message'], '[B]GUEST STARS:[/B] ', '[/EPISODEDATA]');
 
-			if ($guestvalue)
-			{
+			if ($guestvalue) {
 				$guestarray = explode(',', $guestvalue);
 
-				foreach ($guestarray as $guestitem)
-				{
+				foreach ($guestarray as $guestitem) {
 					if ($guests) $guests .= ', ';
 					$guests .= $this->getValue($guestitem, '[ACTOR]', '[/ACTOR');
 				}
@@ -696,8 +674,7 @@ class Setup extends AbstractSetup
 			$after_episode = explode('[/EPISODE]', $change['message']);
 			if (isset($after_episode[1])) $comment = trim($after_episode[1], " \t\n\r\0");
 
-			if (isset($thread['tv_id']) && $thread['tv_id'] > '' && !$tvPostDeleted)
-			{
+			if (isset($thread['tv_id']) && $thread['tv_id'] > '' && !$tvPostDeleted) {
 				$db->insert('nick97_trakt_tv_post', [
 					'post_id' => $change['post_id'],
 					'tv_id' => $thread['tv_id'],
@@ -713,15 +690,12 @@ class Setup extends AbstractSetup
 
 				$newTitle = $thread['tv_title'];
 
-				if ($thread['tv_season'] && $thread['tv_episode'])
-				{
+				if ($thread['tv_season'] && $thread['tv_episode']) {
 					$forum = $db->fetchRow("SELECT * FROM nick97_trakt_tv_forum WHERE tv_id = " . $thread['tv_id']);
 					$parentForum = $db->fetchRow("SELECT * FROM nick97_trakt_tv_forum WHERE tv_id = " . $forum['tv_parent_id']);
 					$newTitle = $parentForum['tv_title'];
 				}
-			}
-			else
-			{
+			} else {
 				$newTitle = $thread['title'];
 			}
 
@@ -739,8 +713,7 @@ class Setup extends AbstractSetup
 			$update = ['message' => $message];
 			$db->update('xf_post', $update, 'post_id = ?', $change['post_id']);
 
-			if ($maxRunTime && (microtime(true) - $s) > $maxRunTime)
-			{
+			if ($maxRunTime && (microtime(true) - $s) > $maxRunTime) {
 				return [
 					'complete' => false,
 					'params' => [],
@@ -764,20 +737,15 @@ class Setup extends AbstractSetup
 			ON (xfthread.thread_id = thread.thread_id)
 			WHERE thread.tv_episode = 0 AND thread.tv_season = 0 AND thread.tv_checked = 0");
 
-		foreach ($threadChange as $change)
-		{
-			if ($change['first_post_id'])
-			{
+		foreach ($threadChange as $change) {
+			if ($change['first_post_id']) {
 				$post = $db->fetchRow("SELECT * FROM xf_post WHERE post_id = " . $change['first_post_id']);
 				$comment = '';
 
 				// ACCOUNT FOR THREADS WHERE FIRST POST WAS EDITED AND TV INFO WAS REMOVED
-				if (!stristr($post['message'], '[/SERIES]'))
-				{
+				if (!stristr($post['message'], '[/SERIES]')) {
 					$comment = $post['message'];
-				}
-				else
-				{
+				} else {
 					$after_series = explode('[/SERIES]', $post['message']);
 
 					if (isset($after_series[1])) $comment = trim($after_series[1], " \t\n\r\0");
@@ -796,24 +764,18 @@ class Setup extends AbstractSetup
 				$update = ['message' => $message];
 				$db->update('xf_post', $update, 'post_id = ?', $change['first_post_id']);
 
-				if ($comment > '')
-				{
+				if ($comment > '') {
 					$update = ['comment' => $comment, 'tv_checked' => 1];
-				}
-				else
-				{
+				} else {
 					$update = ['tv_checked' => 1];
 				}
 				$db->update('nick97_trakt_tv_thread', $update, 'thread_id = ?', $change['thread_id']);
-			}
-			else
-			{
+			} else {
 				// DELETE THREADS FROM TV SYSTEM THAT NO LONGER EXIST
 				$db->delete("nick97_trakt_tv_thread", 'thread_id = ' . $change['thread_id']);
 			}
 
-			if ($maxRunTime && (microtime(true) - $s) > $maxRunTime)
-			{
+			if ($maxRunTime && (microtime(true) - $s) > $maxRunTime) {
 				return [
 					'complete' => false,
 					'params' => [],
@@ -865,8 +827,7 @@ class Setup extends AbstractSetup
 			FROM nick97_trakt_tv_forum
 			WHERE tv_season > 0");
 
-		foreach ($parentChanges as $parentChange)
-		{
+		foreach ($parentChanges as $parentChange) {
 			$newParent = $db->fetchRow("SELECT * FROM xf_node WHERE `node_id` = " . $parentChange['node_id']);
 
 			$update = ['tv_parent' => $newParent['parent_node_id']];
@@ -891,14 +852,12 @@ class Setup extends AbstractSetup
 
 		$postChange = $db->fetchAll("SELECT * FROM nick97_trakt_tv_post WHERE tv_image > '' AND tv_checked = 0");
 
-		foreach ($postChange as $change)
-		{
+		foreach ($postChange as $change) {
 			$imageName = $change['post_id'] . '-' . str_ireplace('/', '', $change['tv_image']);
 
 			$filePath = 'data://tv/EpisodePosters' . $change['tv_image'];
 
-			if ($app->fs()->has($filePath))
-			{
+			if ($app->fs()->has($filePath)) {
 				$tempPath = File::copyAbstractedPathToTempFile('data://tv/EpisodePosters' . $change['tv_image']);
 				$path = 'data://tv/EpisodePosters/' . $imageName;
 				File::copyFileToAbstractedPath($tempPath, $path);
@@ -908,8 +867,7 @@ class Setup extends AbstractSetup
 			$update = ['tv_checked' => 1];
 			$db->update('nick97_trakt_tv_post', $update, 'post_id = ' . $change['post_id']);
 
-			if ($maxRunTime && (microtime(true) - $s) > $maxRunTime)
-			{
+			if ($maxRunTime && (microtime(true) - $s) > $maxRunTime) {
 				return [
 					'complete' => false,
 					'params' => [],
@@ -934,12 +892,10 @@ class Setup extends AbstractSetup
 
 		$postChange = $db->fetchAll("SELECT * FROM nick97_trakt_tv_post WHERE tv_image > '' AND tv_checked = 0");
 
-		foreach ($postChange as $change)
-		{
+		foreach ($postChange as $change) {
 			$filePath = 'data://tv/EpisodePosters' . $change['tv_image'];
 
-			if ($app->fs()->has($filePath))
-			{
+			if ($app->fs()->has($filePath)) {
 				$path = sprintf('data://tv/EpisodePosters%s', $change['tv_image']);
 				File::deleteFromAbstractedPath($path);
 			}
@@ -947,8 +903,7 @@ class Setup extends AbstractSetup
 			$update = ['tv_checked' => 1];
 			$db->update('nick97_trakt_tv_post', $update, 'post_id = ' . $change['post_id']);
 
-			if ($maxRunTime && (microtime(true) - $s) > $maxRunTime)
-			{
+			if ($maxRunTime && (microtime(true) - $s) > $maxRunTime) {
 				return [
 					'complete' => false,
 					'params' => [],
@@ -973,15 +928,13 @@ class Setup extends AbstractSetup
 
 		$postChange = $db->fetchAll("SELECT * FROM nick97_trakt_tv_thread WHERE tv_image > '' AND tv_checked = 0");
 
-		foreach ($postChange as $change)
-		{
+		foreach ($postChange as $change) {
 			$posterName = $change['thread_id'] . '-' . str_ireplace('/', '', $change['tv_image']);
 
 			// SMALL POSTER
 			$filePath = 'data://tv/SmallPosters' . $change['tv_image'];
 
-			if ($app->fs()->has($filePath))
-			{
+			if ($app->fs()->has($filePath)) {
 				$tempPath = File::copyAbstractedPathToTempFile('data://tv/SmallPosters' . $change['tv_image']);
 				$path = 'data://tv/SmallPosters/' . $posterName;
 				File::copyFileToAbstractedPath($tempPath, $path);
@@ -991,8 +944,7 @@ class Setup extends AbstractSetup
 			// LARGE POSTER
 			$filePath = 'data://tv/LargePosters' . $change['tv_image'];
 
-			if ($app->fs()->has($filePath))
-			{
+			if ($app->fs()->has($filePath)) {
 				$tempPath = File::copyAbstractedPathToTempFile('data://tv/LargePosters' . $change['tv_image']);
 				$path = 'data://tv/LargePosters/' . $posterName;
 				File::copyFileToAbstractedPath($tempPath, $path);
@@ -1002,8 +954,7 @@ class Setup extends AbstractSetup
 			$update = ['tv_checked' => 1];
 			$db->update('nick97_trakt_tv_thread', $update, 'thread_id = ' . $change['thread_id']);
 
-			if ($maxRunTime && (microtime(true) - $s) > $maxRunTime)
-			{
+			if ($maxRunTime && (microtime(true) - $s) > $maxRunTime) {
 				return [
 					'complete' => false,
 					'params' => [],
@@ -1028,13 +979,11 @@ class Setup extends AbstractSetup
 
 		$postChange = $db->fetchAll("SELECT * FROM nick97_trakt_tv_thread WHERE tv_image > '' AND tv_checked = 0");
 
-		foreach ($postChange as $change)
-		{
+		foreach ($postChange as $change) {
 			// SMALL POSTER
 			$filePath = 'data://tv/SmallPosters' . $change['tv_image'];
 
-			if ($app->fs()->has($filePath))
-			{
+			if ($app->fs()->has($filePath)) {
 				$path = sprintf('data://tv/SmallPosters%s', $change['tv_image']);
 				File::deleteFromAbstractedPath($path);
 			}
@@ -1042,8 +991,7 @@ class Setup extends AbstractSetup
 			// LARGE POSTER
 			$filePath = 'data://tv/LargePosters' . $change['tv_image'];
 
-			if ($app->fs()->has($filePath))
-			{
+			if ($app->fs()->has($filePath)) {
 				$path = sprintf('data://tv/LargePosters%s', $change['tv_image']);
 				File::deleteFromAbstractedPath($path);
 			}
@@ -1051,8 +999,7 @@ class Setup extends AbstractSetup
 			$update = ['tv_checked' => 1];
 			$db->update('nick97_trakt_tv_thread', $update, 'thread_id = ' . $change['thread_id']);
 
-			if ($maxRunTime && (microtime(true) - $s) > $maxRunTime)
-			{
+			if ($maxRunTime && (microtime(true) - $s) > $maxRunTime) {
 				return [
 					'complete' => false,
 					'params' => [],
@@ -1133,19 +1080,16 @@ class Setup extends AbstractSetup
 	{
 		/** @var \XF\Entity\Forum[] $forums */
 		$forums = $this->app->finder('XF:Forum')->where([
-			'node_id' => $this->app->options()->TvThreads_forum
+			'node_id' => $this->app->options()->traktTvThreads_forum
 		]);
-		if (!$forums)
-		{
+		if (!$forums) {
 			return;
 		}
 
-		foreach ($forums as $forum)
-		{
+		foreach ($forums as $forum) {
 			$forum->forum_type_id = 'trakt_tv';
 
-			if (!empty($forum->type_config_['allowed_thread_types']))
-			{
+			if (!empty($forum->type_config_['allowed_thread_types'])) {
 				$typeConfig = $forum->type_config_;
 				$typeConfig['allowed_thread_types'][] = 'trakt_tv';
 
@@ -1160,16 +1104,14 @@ class Setup extends AbstractSetup
 	{
 		/** @var \XF\Entity\Thread[] $threads */
 		$threads = $this->app->finder('XF:Thread')->where([
-			'node_id' => $this->app->options()->TvThreads_forum,
+			'node_id' => $this->app->options()->traktTvThreads_forum,
 			'discussion_type' => 'discussion'
 		]);
-		if (!$threads)
-		{
+		if (!$threads) {
 			return;
 		}
 
-		foreach ($threads as $thread)
-		{
+		foreach ($threads as $thread) {
 			$thread->discussion_type = 'trakt_tv';
 			$thread->saveIfChanged();
 		}
@@ -1182,32 +1124,27 @@ class Setup extends AbstractSetup
 			FROM nick97_trakt_tv_forum
 		");
 
-		$forumIds = $this->app->options()->TvThreads_forum + $tvForumIds;
-		if (empty($forumIds))
-		{
+		$forumIds = $this->app->options()->traktTvThreads_forum + $tvForumIds;
+		if (empty($forumIds)) {
 			return;
 		}
 
 		/** @var \XF\Entity\Forum[] $forums */
 		$forums = $this->app->finder('XF:Forum')->where('node_id', '=', $forumIds);
-		if (!$forums)
-		{
+		if (!$forums) {
 			return;
 		}
 
 		$tvForums = $this->db()->fetchAllKeyed("SELECT * FROM nick97_trakt_tv_node", 'node_id');
 
-		foreach ($forums as $forumId => $forum)
-		{
+		foreach ($forums as $forumId => $forum) {
 			$forum->forum_type_id = 'trakt_tv';
 			$typeConfig = $forum->type_config_;
 
-			if (!empty($typeConfig['allowed_thread_types']))
-			{
+			if (!empty($typeConfig['allowed_thread_types'])) {
 				$typeConfig['allowed_thread_types'][] = 'trakt_tv';
 			}
-			if (isset($tvForums[$forumId]))
-			{
+			if (isset($tvForums[$forumId])) {
 				$typeConfig['available_genres'] = @unserialize($tvForums[$forumId]['tv_genre']);
 			}
 
@@ -1515,10 +1452,8 @@ class Setup extends AbstractSetup
 
 	public function postUpgrade($previousVersion, array &$stateChanges)
 	{
-		if ($previousVersion)
-		{
-			if ($previousVersion < 2020000)
-			{
+		if ($previousVersion) {
+			if ($previousVersion < 2020000) {
 				$this->app->jobManager()->enqueueUnique(
 					'trakt_tv_counter',
 					'nick97\TraktTV:UserTvThreadCountRebuild',
@@ -1527,8 +1462,7 @@ class Setup extends AbstractSetup
 				);
 			}
 
-			if ($previousVersion < 2020008)
-			{
+			if ($previousVersion < 2020008) {
 				$this->app->jobManager()->enqueueUnique(
 					'traktTvTvFirstAirDate',
 					'nick97\TraktTV:Upgrade\TvFirstAirDate2020008',
@@ -1536,8 +1470,7 @@ class Setup extends AbstractSetup
 					false
 				);
 			}
-			if ($previousVersion < 2020037)
-			{
+			if ($previousVersion < 2020037) {
 				$this->app->jobManager()->enqueueUnique(
 					'trakt_tv_imdb',
 					'nick97\TraktTV:Upgrade\TvImdb2020001',
@@ -1552,16 +1485,14 @@ class Setup extends AbstractSetup
 
 	public function checkRequirements(&$errors = [], &$warnings = [])
 	{
-		if (\XF::$versionId < 2010031)
-		{
+		if (\XF::$versionId < 2010031) {
 			$errors[] = 'This add-on may only be used on XenForo 2.1 or higher';
 			return $errors;
 		}
 
 		$versionId = $this->addOn->version_id;
 
-		if ($versionId && $versionId < '24')
-		{
+		if ($versionId && $versionId < '24') {
 			$errors[] = 'Upgrades can only be to the XF 1.x Trakt TV Thread Starter version 2.1.11 or later';
 			return $errors;
 		}
@@ -1597,25 +1528,17 @@ class Setup extends AbstractSetup
 		if ($sub) $basePath = str_ireplace('src/addons/nick97/TraktTV/defaultdata/', '', $src);
 		$dir = opendir($src);
 
-		while (false !== ($file = readdir($dir)))
-		{
-			if (($file != '.') && ($file != '..'))
-			{
-				if (is_dir($src . '/' . $file))
-				{
+		while (false !== ($file = readdir($dir))) {
+			if (($file != '.') && ($file != '..')) {
+				if (is_dir($src . '/' . $file)) {
 					$newSrc = $src . '/' . $file;
 					$this->copyContents($newSrc, true);
-				}
-				else
-				{
+				} else {
 					$oldPath = $src . '/' . $file;
 
-					if ($sub)
-					{
+					if ($sub) {
 						$newFile = $basePath . '/' . $file;
-					}
-					else
-					{
+					} else {
 						$newFile = $file;
 					}
 

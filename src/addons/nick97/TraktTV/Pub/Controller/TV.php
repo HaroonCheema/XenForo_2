@@ -17,7 +17,7 @@ class TV extends AbstractController
 		}
 
 		$page = $this->filterPage($params->page);
-		$perPage = $this->options()->TvThreads_castsLimit;
+		$perPage = $this->options()->traktTvThreads_castsLimit;
 
 		/** @var \nick97\TraktTV\Repository\Cast $castRepo */
 		$castRepo = $this->repository('nick97\TraktTV:Cast');
@@ -51,7 +51,7 @@ class TV extends AbstractController
 		}
 
 		$page = $this->filterPage($params->page);
-		$perPage = $this->options()->TvThreads_creditsLimit;
+		$perPage = $this->options()->traktTvThreads_creditsLimit;
 
 		/** @var \nick97\TraktTV\Repository\Crew $crewRepo */
 		$crewRepo = $this->repository('nick97\TraktTV:Crew');
@@ -85,7 +85,7 @@ class TV extends AbstractController
 		}
 
 		$page = $this->filterPage($params->page);
-		$perPage = $this->options()->TvThreads_videosLimit;
+		$perPage = $this->options()->traktTvThreads_videosLimit;
 
 		/** @var \nick97\TraktTV\Repository\Video $videoRepo */
 		$videoRepo = $this->repository('nick97\TraktTV:Video');
@@ -310,7 +310,7 @@ class TV extends AbstractController
 		$editorPlugin = $this->plugin('XF:Editor');
 		$comment = $editorPlugin->fromInput('message');
 
-		if (!$this->options()->TvThreads_force_comments) {
+		if (!$this->options()->traktTvThreads_force_comments) {
 			$editor->setComment($comment);
 		} else {
 			$editor->setComment('');
@@ -318,7 +318,7 @@ class TV extends AbstractController
 
 		$tv = $editor->getTv();
 
-		if ($this->app()->options()->TvThreads_syncTitle) {
+		if ($this->app()->options()->traktTvThreads_syncTitle) {
 			$threadEditor = $editor->getThreadEditor();
 			$threadEditor->setTitle($tv->getExpectedThreadTitle());
 		}
@@ -395,7 +395,7 @@ class TV extends AbstractController
 
 			$tvShow->tv_image = $posterPath;
 
-			if ($this->app->options()->TvThreads_useLocalImages) {
+			if ($this->app->options()->traktTvThreads_useLocalImages) {
 				/** @var \nick97\TraktTV\Service\TV\Image $imageService */
 				$imageService = $this->app()->service('nick97\TraktTV:TV\Image', $tvShow);
 				if (!$imageService->setImageFromApiPath($posterPath)) {
@@ -483,7 +483,7 @@ class TV extends AbstractController
 
 			/** @var \nick97\TraktTV\Entity\TV $existingShow */
 			$existingShow = $this->em()->findOne('nick97\TraktTV:TV', ['tv_id' => $showId]);
-			if (!$this->options()->TvThreads_multiple && $existingShow) {
+			if (!$this->options()->traktTvThreads_multiple && $existingShow) {
 				return $this->error(\XF::phrase('trakt_tv_error_show_posted'));
 			}
 
@@ -504,7 +504,7 @@ class TV extends AbstractController
 			if (isset($apiResponse['poster_path'])) {
 				$tvShow->tv_image = $apiResponse['poster_path'];
 
-				if ($this->app->options()->TvThreads_useLocalImages) {
+				if ($this->app->options()->traktTvThreads_useLocalImages) {
 					/** @var \nick97\TraktTV\Service\TV\Image $imageService */
 					$imageService = $this->app()->service('nick97\TraktTV:TV\Image', $tvShow);
 
@@ -522,7 +522,7 @@ class TV extends AbstractController
 			$post->last_edit_date = 0;
 			$post->save();
 
-			if ($comment && $this->options()->TvThreads_force_comments) {
+			if ($comment && $this->options()->traktTvThreads_force_comments) {
 				$newFirstPost = false;
 				$newLastPost = false;
 
@@ -576,7 +576,7 @@ class TV extends AbstractController
 				}
 			}
 
-			if (!$this->options()->TvThreads_force_comments) {
+			if (!$this->options()->traktTvThreads_force_comments) {
 				$tvShow->comment = $comment;
 			}
 

@@ -14,7 +14,7 @@ class TvThreadChanges extends \XF\Job\AbstractJob
 
 	public function run($maxRunTime)
 	{
-		$changesTracking = $this->app->options()->TvThreads_trackChanges;
+		$changesTracking = $this->app->options()->traktTvThreads_trackChanges;
 		if (!$changesTracking) {
 			return $this->complete();
 		}
@@ -31,7 +31,7 @@ class TvThreadChanges extends \XF\Job\AbstractJob
 			$response = $traktClient->getChanges()->getTvChangeList($nextPage, [
 				'start_date' => date(
 					'Y-m-d',
-					\XF::$time - $this->app->options()->TvThreads_trackChangesPeriod * 86400
+					\XF::$time - $this->app->options()->traktTvThreads_trackChangesPeriod * 86400
 				)
 			]);
 		} catch (\Exception $exception) {

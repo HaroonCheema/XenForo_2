@@ -62,17 +62,17 @@ class Person extends Entity
 			$image = str_ireplace('/', '', $this->profile_path);
 
 			if ($sizeCode == 's') {
-				if ($options->TvThreads_usecdn) {
-					return "$options->TvThreads_cdn_path/tv/SmallPersons/$image";
-				} elseif ($options->TvThreads_useLocalImages) {
+				if ($options->traktTvThreads_usecdn) {
+					return "$options->traktTvThreads_cdn_path/tv/SmallPersons/$image";
+				} elseif ($options->traktTvThreads_useLocalImages) {
 					return $app->applyExternalDataUrl("tv/SmallPersons/$image", $canonical);
 				}
 
 				return "https://image.tmdb.org/t/p/w300_and_h450_bestv2/$image";
 			} elseif ($sizeCode == 'l') {
-				if ($options->TvThreads_usecdn) {
-					return "$options->TvThreads_cdn_path/tv/LargePersons/$image";
-				} elseif ($options->TvThreads_useLocalImages) {
+				if ($options->traktTvThreads_usecdn) {
+					return "$options->traktTvThreads_cdn_path/tv/LargePersons/$image";
+				} elseif ($options->traktTvThreads_useLocalImages) {
 					return $app->applyExternalDataUrl("tv/LargePersons/$image", $canonical);
 				}
 

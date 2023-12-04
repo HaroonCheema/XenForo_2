@@ -140,14 +140,14 @@ class Create extends \XF\Service\AbstractService
 
 		/** @var Image $imageService */
 		$imageService = $this->app->service('nick97\TraktTV:TVForum\Image', $tvForum);
-		$imageService->setImageFromApiPath($tvForum->tv_image, $this->app->options()->TvThreads_largePosterSize);
+		$imageService->setImageFromApiPath($tvForum->tv_image, $this->app->options()->traktTvThreads_largePosterSize);
 		$imageService->updateImage();
 
 		if ($this->tvForum->tv_season) {
 			/** @var \XF\Entity\Node[] $nodeSort */
 			$nodeSort = $this->finder('XF:Node')
 				->where('parent_node_id', $this->parentNode->node_id)
-				->order('TVForum.tv_season', $this->app->options()->TvThreads_sort)
+				->order('TVForum.tv_season', $this->app->options()->traktTvThreads_sort)
 				->fetch();
 		} else {
 			/** @var \XF\Entity\Node[] $nodeSort */

@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="cron_entry.traktTV1" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Update TV episode posts that are missing images or plots]]></phrase>
+  <phrase title="cron_entry.traktTvWatchProvider" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[nick97] Trakt TV Thread Starter: Update watch provider data]]></phrase>
+  <phrase title="cron_entry.trakt_tv_changes" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[nick97] Trakt TV Thread Starter: Check for TV changes]]></phrase>
+  <phrase title="nick97_tv_more_details_on_trakt" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[More details on Trakt]]></phrase>
+  <phrase title="option.traktTvThreads_aggregateCredits" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Fetch aggregated credits]]></phrase>
+  <phrase title="option.traktTvThreads_apikey" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[TMDB API key]]></phrase>
+  <phrase title="option.traktTvThreads_backdropCoverSize" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Backdrop cover size]]></phrase>
+  <phrase title="option.traktTvThreads_castsLimit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Casts results on thread tab]]></phrase>
+  <phrase title="option.traktTvThreads_category" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Categories for TV shows]]></phrase>
+  <phrase title="option.traktTvThreads_cdn_path" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[CDN path]]></phrase>
+  <phrase title="option.traktTvThreads_changesLanguage" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[TV show changes tracking language]]></phrase>
+  <phrase title="option.traktTvThreads_companiesLimit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Production results limit on thread view]]></phrase>
+  <phrase title="option.traktTvThreads_creditsLimit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Credits results on thread tab]]></phrase>
+  <phrase title="option.traktTvThreads_crosslink" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Crosslink into all genre forums]]></phrase>
+  <phrase title="option.traktTvThreads_episode_exclude" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Exclude TV show title in season episode threads]]></phrase>
+  <phrase title="option.traktTvThreads_fetchCompanies" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Fetch TV companies]]></phrase>
+  <phrase title="option.traktTvThreads_fetchCredits" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Fetch TV credits]]></phrase>
+  <phrase title="option.traktTvThreads_fetchNetworks" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Fetch TV companies]]></phrase>
+  <phrase title="option.traktTvThreads_fetchVideos" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Fetch TV videos]]></phrase>
+  <phrase title="option.traktTvThreads_force_comments" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Force comments to second post]]></phrase>
+  <phrase title="option.traktTvThreads_language" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[TV show information language]]></phrase>
+  <phrase title="option.traktTvThreads_largeCompanyLogoSize" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Large company logo size]]></phrase>
+  <phrase title="option.traktTvThreads_largeNetworkLogoSize" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Large network logo size]]></phrase>
+  <phrase title="option.traktTvThreads_largePosterSize" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Large poster size]]></phrase>
+  <phrase title="option.traktTvThreads_multiple" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Allow TV shows to be posted multiple times]]></phrase>
+  <phrase title="option.traktTvThreads_networksLimit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Networks results limit on thread view]]></phrase>
+  <phrase title="option.traktTvThreads_replaceSearchTemplate" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Replace search results template]]></phrase>
+  <phrase title="option.traktTvThreads_showThread" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Items to show in threads]]></phrase>
+  <phrase title="option.traktTvThreads_smallCompanyLogoWidth" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Small company logo size width]]></phrase>
+  <phrase title="option.traktTvThreads_smallNetworkLogoWidth" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Small network logo image width]]></phrase>
+  <phrase title="option.traktTvThreads_smallPosterWidth" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Small poster width]]></phrase>
+  <phrase title="option.traktTvThreads_sort" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Sort Seasons]]></phrase>
+  <phrase title="option.traktTvThreads_syncTitle" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Sync thread title with Trakt show title]]></phrase>
+  <phrase title="option.traktTvThreads_threadListInfo" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Items to show in forum thread list]]></phrase>
+  <phrase title="option.traktTvThreads_titleYear" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Include release year in thread title]]></phrase>
+  <phrase title="option.traktTvThreads_trackChanges" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Track TV change list]]></phrase>
+  <phrase title="option.traktTvThreads_trackChangesAiringToday" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Track TV change list based on "Airing today" results]]></phrase>
+  <phrase title="option.traktTvThreads_trackChangesPeriod" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[TV show changes tracking period]]></phrase>
+  <phrase title="option.traktTvThreads_useLocalImages" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Store image files locally]]></phrase>
+  <phrase title="option.traktTvThreads_use_genres" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Use forum genre limiting]]></phrase>
+  <phrase title="option.traktTvThreads_use_rating" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Use rating system]]></phrase>
+  <phrase title="option.traktTvThreads_usecdn" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Use CDN]]></phrase>
+  <phrase title="option.traktTvThreads_videosLimit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Video results on thread tab]]></phrase>
+  <phrase title="option.traktTvThreads_watchProviderRegion" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Default watch provider region]]></phrase>
+  <phrase title="option.traktTvThreads_watchProviderRegions" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Watch provider region code]]></phrase>
+  <phrase title="option_explain.traktTvThreads_aggregateCredits" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[If checked, cast & crew data for TV shows will be fetched all the entire cast & crew for all episodes belonging to a TV show.</br>
+This can be a large amount of data and will affect performance.]]></phrase>
+  <phrase title="option_explain.traktTvThreads_apikey" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter your API key for The Movie Database]]></phrase>
+  <phrase title="option_explain.traktTvThreads_backdropCoverSize" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Requires <a href="https://xenforo.com/community/resources/ozzmodz-covers.8589/" target="_blank">[OzzModz] Covers</a> add-on installed. Select "none" to disable. The file size of the selected option must not exceed the max. file cover size.]]></phrase>
+  <phrase title="option_explain.traktTvThreads_castsLimit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_explain.traktTvThreads_category" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Categories selected in this list can only be used to create forums dedicated to individual TV shows.<br />Do not select any categories if you do not wish to use this option.]]></phrase>
+  <phrase title="option_explain.traktTvThreads_cdn_path" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[If you are using your own CDN, enter the CDN path here.<br />Example: http://cdn.yourpath.com/data<br />DO NOT end the path with a /]]></phrase>
+  <phrase title="option_explain.traktTvThreads_changesLanguage" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter the ISO 639-1 Language Code that will be used for TV information.<br />These codes are available at <a href="http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes" target="_blank">List of ISO 639-1 codes</a><br /><br />You may also include a two letter country code in the language selection (en-US, en-GB, pt-PT, pt-BR, etc...).<br />This is a list of the two letter country codes: <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2" target="_blank">ISO 3166-1 alpha-2 Country Codes</a><br /><br /><b>NOTE:</b> There is no guarantee that the translation to the language selected will be the proper translation. And there is no guarantee there will be a translation of a TV show at The Movie Database.]]></phrase>
+  <phrase title="option_explain.traktTvThreads_companiesLimit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_explain.traktTvThreads_creditsLimit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_explain.traktTvThreads_crosslink" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[To place a redirect link to the main TV thread in all genre limited forums that a TV show can belong to, check this box. <font style="color:blue;">Genre limiting must be enabled for this to work</font><br />EXAMPLE: A TV show is in these genres: Drama, Science Fiction, Thriller<br />A member posts the show in the Science Fiction forum.<br />Redirect links will be placed in the Drama and Thriller forums.]]></phrase>
+  <phrase title="option_explain.traktTvThreads_episode_exclude" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Check this box to exclude the TV show title in the title for episode threads.<br />This may be needed if tv show names and episode titles exceed the XenForo thread title limit.]]></phrase>
+  <phrase title="option_explain.traktTvThreads_fetchCompanies" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enable this option if you want to receive a list of TV companies. Enabling it can slow down the thread creation process.]]></phrase>
+  <phrase title="option_explain.traktTvThreads_fetchCredits" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enable this option if you want to receive a list of TV credits. Enabling it can slow down the thread creation process.]]></phrase>
+  <phrase title="option_explain.traktTvThreads_fetchNetworks" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enable this option if you want to receive a list of TV networks. Enabling it can slow down the thread creation process.]]></phrase>
+  <phrase title="option_explain.traktTvThreads_fetchVideos" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enable this option if you want to receive a list of TV videos. Enabling it can slow down the thread creation process.]]></phrase>
+  <phrase title="option_explain.traktTvThreads_force_comments" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Check this box if you want to force any comments entered with a new TV thread to be posted as the second post in the new TV thread.<br /><b>NOTE:</b> This does not change existing threads. This only affects the first post in a new TV thread.]]></phrase>
+  <phrase title="option_explain.traktTvThreads_language" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter the ISO 639-1 Language Code that will be used for TV information.<br />These codes are available at <a href="http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes" target="_blank">List of ISO 639-1 codes</a><br /><br />You may also include a two letter country code in the language selection (en-US, en-GB, pt-PT, pt-BR, etc...).<br />This is a list of the two letter country codes: <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2" target="_blank">ISO 3166-1 alpha-2 Country Codes</a><br /><br /><b>NOTE:</b> There is no guarantee that the translation to the language selected will be the proper translation. And there is no guarantee there will be a translation of a TV show at The Movie Database. Those are both handled by The Movie Database and not translated by this add-on.<br /><br />Changing language will NOT change threads already posted. Only new threads will post in the new language.]]></phrase>
+  <phrase title="option_explain.traktTvThreads_largeCompanyLogoSize" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[This setting affects the size of files on the system.]]></phrase>
+  <phrase title="option_explain.traktTvThreads_largeNetworkLogoSize" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[This setting affects the size of files on the system.]]></phrase>
+  <phrase title="option_explain.traktTvThreads_largePosterSize" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Changing this value will only apply to new entries. Larger values will take up more space and take longer to download.]]></phrase>
+  <phrase title="option_explain.traktTvThreads_multiple" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Check this box to allow a TV show to be posted more than once.]]></phrase>
+  <phrase title="option_explain.traktTvThreads_networksLimit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_explain.traktTvThreads_replaceSearchTemplate" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Check this option if you want to display TV data in XF search/tag results.]]></phrase>
+  <phrase title="option_explain.traktTvThreads_showThread" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Select the items to be shown in the first post of a TV thread]]></phrase>
+  <phrase title="option_explain.traktTvThreads_smallCompanyLogoWidth" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[This setting affects the size of files on the system.]]></phrase>
+  <phrase title="option_explain.traktTvThreads_smallNetworkLogoWidth" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[This setting affects the size of files on the system.]]></phrase>
+  <phrase title="option_explain.traktTvThreads_smallPosterWidth" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Changing this value will only apply to new entries. Larger values will take up more space.]]></phrase>
+  <phrase title="option_explain.traktTvThreads_sort" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[The default sort order when a new season forum is created is descending. To sort them in ascending order, check this box.]]></phrase>
+  <phrase title="option_explain.traktTvThreads_syncTitle" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_explain.traktTvThreads_threadListInfo" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Select the items to show in the forum thread list]]></phrase>
+  <phrase title="option_explain.traktTvThreads_titleYear" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[To include the year a TV show was released in the thread title, check this box.<br />
+Example: Flash (2014)]]></phrase>
+  <phrase title="option_explain.traktTvThreads_trackChanges" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enable if you want to keep track of the list of changed TVs to automatically apply rebuilding data.</br>
+<b>Note: </b> This will overwrite all your manual edits if the TV has been updated.]]></phrase>
+  <phrase title="option_explain.traktTvThreads_trackChangesAiringToday" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[This will help to keep track of last-aired data changes since the <a href="https://developers.themoviedb.org/3/changes/get-movie-change-list">/movie/changes</a> endpoint doesn't report added episodes.<br/>
+<b>Note:</b> This will overwrite all your manual edits if the TV has been updated.]]></phrase>
+  <phrase title="option_explain.traktTvThreads_trackChangesPeriod" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You can query up to 14 days]]></phrase>
+  <phrase title="option_explain.traktTvThreads_useLocalImages" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Store the poster images stored directly on your server. If not, TMDb image links will be used to display.]]></phrase>
+  <phrase title="option_explain.traktTvThreads_use_genres" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You can limit the type of TV shows posted in each forum to a specific genre. Check this box to enable this option. The genre for each forum is specified in Forums->Nodes. Click on the forum you wish to limit and select the genres you wish to allow in the forum.]]></phrase>
+  <phrase title="option_explain.traktTvThreads_use_rating" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Check this box to turn on the TV show rating system.]]></phrase>
+  <phrase title="option_explain.traktTvThreads_usecdn" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Check this box to use your own CDN for all poster images.]]></phrase>
+  <phrase title="option_explain.traktTvThreads_videosLimit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_explain.traktTvThreads_watchProviderRegion" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_explain.traktTvThreads_watchProviderRegions" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Leave it empty to disable.<br />
+Phrases can be translated with "snog_tv_country.{countryCode}" key.]]></phrase>
+  <phrase title="option_group.traktTvThreads" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[nick97] Trakt TV Thread Starter]]></phrase>
+  <phrase title="option_group_description.traktTvThreads" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Options for the Trakt TV add-on]]></phrase>
+  <phrase title="permission.forum_trakt_edit_episodes" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Can edit TV episodes]]></phrase>
+  <phrase title="permission.forum_trakt_edit_shows" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Can edit TV shows]]></phrase>
+  <phrase title="permission.trakt_tvthreads_interface_add_info" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Can add missing TV information]]></phrase>
+  <phrase title="permission.trakt_tvthreads_interface_new_episode" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Can add new episode to TV season]]></phrase>
+  <phrase title="permission.trakt_tvthreads_interface_new_season" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Can add new season to TV show]]></phrase>
+  <phrase title="permission.trakt_tvthreads_interface_new_show" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Can add TV show to category]]></phrase>
+  <phrase title="permission.trakt_tvthreads_interface_updatePersons" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Can update persons data]]></phrase>
+  <phrase title="permission_interface.trakt_tvthreads_interface" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[nick97] Trakt TV Thread Starter]]></phrase>
+  <phrase title="style_prop.trakt_tv_castPersonLargeImageUrl" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Default cast person avatar (large)]]></phrase>
+  <phrase title="style_prop.trakt_tv_castPersonSmallImageUrl" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Default cast person avatar (small)]]></phrase>
+  <phrase title="style_prop.trakt_tv_crewPersonLargeImageUrl" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Default crew person avatar (large)]]></phrase>
+  <phrase title="style_prop.trakt_tv_crewPersonSmallImageUrl" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Default crew person avatar (small)]]></phrase>
+  <phrase title="style_prop.trakt_tv_episodeImageHeight" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Episode image height]]></phrase>
+  <phrase title="style_prop.trakt_tv_episodeImageWidth" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Episode image width]]></phrase>
+  <phrase title="style_prop.trakt_tv_episodeSearchImageHeight" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Episode image height (search results)]]></phrase>
+  <phrase title="style_prop.trakt_tv_episodeSearchImageWidth" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Episode image width (search results)]]></phrase>
+  <phrase title="style_prop.trakt_tv_messageCompaniesPosition" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[TV show production company list position]]></phrase>
+  <phrase title="style_prop.trakt_tv_messageCompaniesTitle" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Show TV show production company list block title]]></phrase>
+  <phrase title="style_prop.trakt_tv_messageNetworksPosition" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[TV show network list position]]></phrase>
+  <phrase title="style_prop.trakt_tv_messageNetworksTitle" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Show TV show networks list block title]]></phrase>
+  <phrase title="style_prop.trakt_tv_messagePosterPosition" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[TV show poster position]]></phrase>
+  <phrase title="style_prop.trakt_tv_networkImgHeight" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Network image height]]></phrase>
+  <phrase title="style_prop.trakt_tv_networkImgWidth" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Network image width]]></phrase>
+  <phrase title="style_prop.trakt_tv_posterImageHeight" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Thread list poster image height]]></phrase>
+  <phrase title="style_prop.trakt_tv_posterImageWidth" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Thread list poster image width]]></phrase>
+  <phrase title="style_prop.trakt_tv_posterUpdateButtonPosition" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Check poster updates button position]]></phrase>
+  <phrase title="style_prop.trakt_tv_productionCompanyImgHeight" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Production company image height]]></phrase>
+  <phrase title="style_prop.trakt_tv_productionCompanyImgWidth" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Production company image width]]></phrase>
+  <phrase title="style_prop.trakt_tv_watchProviderImgHeight" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Watch provider image height]]></phrase>
+  <phrase title="style_prop.trakt_tv_watchProviderImgWidth" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Watch provider image width]]></phrase>
+  <phrase title="style_prop_desc.trakt_tv_castPersonLargeImageUrl" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Recommended size 300x450]]></phrase>
+  <phrase title="style_prop_desc.trakt_tv_castPersonSmallImageUrl" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Recommended size 138x175]]></phrase>
+  <phrase title="style_prop_desc.trakt_tv_crewPersonLargeImageUrl" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Recommended size 300x450]]></phrase>
+  <phrase title="style_prop_desc.trakt_tv_crewPersonSmallImageUrl" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Recommended size 138x175]]></phrase>
+  <phrase title="style_prop_desc.trakt_tv_episodeImageHeight" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.trakt_tv_episodeImageWidth" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.trakt_tv_episodeSearchImageHeight" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.trakt_tv_episodeSearchImageWidth" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.trakt_tv_messageCompaniesPosition" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.trakt_tv_messageCompaniesTitle" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.trakt_tv_messageNetworksPosition" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.trakt_tv_messageNetworksTitle" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.trakt_tv_messagePosterPosition" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Select the position for the TV show poster in threads. Note that this will invert the settings below.]]></phrase>
+  <phrase title="style_prop_desc.trakt_tv_networkImgHeight" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.trakt_tv_networkImgWidth" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.trakt_tv_posterImageHeight" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.trakt_tv_posterImageWidth" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.trakt_tv_posterUpdateButtonPosition" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.trakt_tv_productionCompanyImgHeight" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.trakt_tv_productionCompanyImgWidth" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.trakt_tv_watchProviderImgHeight" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.trakt_tv_watchProviderImgWidth" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="style_prop_group.trakt_tv" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[nick97] Trakt TV Thread Starter]]></phrase>
+  <phrase title="style_prop_group_desc.trakt_tv" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="trakt_tv_cast" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Cast]]></phrase>
+  <phrase title="trakt_tv_check_poster" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Check for new poster]]></phrase>
+  <phrase title="trakt_tv_crew" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Crew]]></phrase>
+  <phrase title="trakt_tv_director" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Director]]></phrase>
+  <phrase title="trakt_tv_first_aired" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[First aired]]></phrase>
+  <phrase title="trakt_tv_genre" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Genre]]></phrase>
+  <phrase title="trakt_tv_information_thread" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Show information in first post provided by <a href="https://trakt.tv/" target="_blank" >Trakt Database</a>]]></phrase>
+  <phrase title="trakt_tv_last_air_date" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Last air date]]></phrase>
+  <phrase title="trakt_tv_overview" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Overview]]></phrase>
+  <phrase title="trakt_tv_post_episode" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[If you wish to post an episode for this TV show, enter the Season and Episode numbers]]></phrase>
+  <phrase title="trakt_tv_status" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Show status]]></phrase>
+  <phrase title="trakt_tv_streaming" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Streaming]]></phrase>
+  <phrase title="trakt_tv_trailer" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trailer]]></phrase>
+  <phrase title="trakt_tv_videos" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Videos]]></phrase>
+  <phrase title="trakt_tv_where_to_watch" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Where to watch]]></phrase>
+  <phrase title="widget_def.trakt_tv_poster_slider" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[nick97] Trakt TV Thread Starter: Poster Slider]]></phrase>
+  <phrase title="widget_def.trakt_tv_slider" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[nick97] Trakt TV Thread Starter: Detailed carousel]]></phrase>
+  <phrase title="widget_def_desc.trakt_tv_poster_slider" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="widget_def_desc.trakt_tv_slider" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+</phrases>

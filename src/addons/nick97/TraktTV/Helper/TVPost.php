@@ -27,7 +27,7 @@ class TVPost
 	{
 		$episodeData = $this->standardizeEpisodeData($episodeData);
 
-		if ($parentShow && !\XF::options()->TvThreads_episode_exclude) {
+		if ($parentShow && !\XF::options()->traktTvThreads_episode_exclude) {
 			$title = $parentShow->tv_title . ': ';
 			$title .= 'S' . str_pad($episodeData['tv_season'], 2, '0', STR_PAD_LEFT);
 			$title .= 'E' . str_pad($episodeData['tv_episode'], 2, '0', STR_PAD_LEFT);

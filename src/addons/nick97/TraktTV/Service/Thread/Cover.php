@@ -55,7 +55,7 @@ class Cover extends \XF\Service\AbstractService
 	public function update($backdropPath)
 	{
 		$tv = $this->tv;
-		$backdropSize = $this->app->options()->TvThreads_backdropCoverSize;
+		$backdropSize = $this->app->options()->traktTvThreads_backdropCoverSize;
 		if ($backdropSize == 'none') {
 			return false;
 		}

@@ -99,16 +99,16 @@ class TVPost extends Entity
 
 		if ($this->tv_image) {
 			$image = str_ireplace('/', '', $this->tv_image);
-			if ($options->TvThreads_usecdn) {
-				return "$options->TvThreads_cdn_path/tv/EpisodePosters/$this->post_id-$image";
-			} elseif ($options->TvThreads_useLocalImages) {
+			if ($options->traktTvThreads_usecdn) {
+				return "$options->traktTvThreads_cdn_path/tv/EpisodePosters/$this->post_id-$image";
+			} elseif ($options->traktTvThreads_useLocalImages) {
 				return $app->applyExternalDataUrl("tv/EpisodePosters/{$this->post_id}-{$image}", $canonical);
 			}
 
 			return "https://image.tmdb.org/t/p/w300/$image";
 		} else {
-			if ($options->TvThreads_usecdn) {
-				return "$options->TvThreads_cdn_path/tv/EpisodePosters/no-poster.png";
+			if ($options->traktTvThreads_usecdn) {
+				return "$options->traktTvThreads_cdn_path/tv/EpisodePosters/no-poster.png";
 			}
 
 			return $app->applyExternalDataUrl("tv/EpisodePosters/no-poster.png", $canonical);

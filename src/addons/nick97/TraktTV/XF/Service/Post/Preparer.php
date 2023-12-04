@@ -30,7 +30,7 @@ class Preparer extends XFCP_Preparer
 		if ($post->TVPost && $post->TVPost->tv_episode) {
 			$episodePost = $post->TVPost;
 
-			if ($this->app->options()->TvThreads_useLocalImages && $episodePost->tv_image) {
+			if ($this->app->options()->traktTvThreads_useLocalImages && $episodePost->tv_image) {
 				/** @var \nick97\TraktTV\Service\TVPost\Image $imageService */
 				$imageService = $this->app->service('nick97\TraktTV:TVPost\Image', $episodePost);
 				$imageService->setImageFromApiPath($episodePost->tv_image, 'w300');
