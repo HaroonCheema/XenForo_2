@@ -29,6 +29,8 @@ return array (
   'style_prop_vgroup.setup' => 'Setup',
   'style_prop_vgroup.sidebar' => 'Sidebar',
   'style_prop_vgroup.size' => 'Size',
+  'style_prop_vgroup.snog_movies_message' => 'Post message',
+  'style_prop_vgroup.snog_movies_thumbnail' => 'Thumbnails',
   'style_prop_vgroup.spacer' => 'Spacer',
   'style_prop_vgroup.spacing' => 'Spacing',
   'style_prop_vgroup.subNavPad' => 'Sub-navigation padding',

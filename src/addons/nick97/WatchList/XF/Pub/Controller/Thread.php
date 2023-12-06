@@ -1,32 +1,36 @@
 <?php
 
-namespace Snog\Movies\XF\Pub\Controller;
+namespace nick97\WatchList\XF\Pub\Controller;
 
 use XF\Mvc\ParameterBag;
 
 class Thread extends XFCP_Thread
 {
-	public function actionPreview(ParameterBag $params)
+
+	public function actionWatchList(ParameterBag $params)
 	{
-		// HAVE TO QUERY FOR VIEWABLE TO GET THE NODE ID
-		$thread = $this->assertViewableThread($params->thread_id, ['FirstPost', 'Movie']);
-		if ($thread->discussion_type !== 'snog_movies_movie' || !isset($thread->Movie->tmdb_plot))
-		{
-			return parent::actionPreview($params);
+		$visitor = \XF::visitor();
+		if (!$visitor->user_id) {
+			return $this->noPermission();
 		}
 
-		$firstPost['user'] = $thread->user_id;
-		$firstPost['message'] = $thread->Movie->tmdb_plot;
-		$viewParams = ['thread' => $thread, 'firstPost' => $firstPost];
-		return $this->view('XF:Thread\Preview', 'thread_preview', $viewParams);
-	}
+		$thread = $this->assertViewableThread($params->thread_id);
 
-	protected function getThreadViewExtraWith()
-	{
-		$extraWith = parent::getThreadViewExtraWith();
+		if ($this->isPost()) {
+			if ($this->filter('stop', 'bool')) {
+				$thread->fastUpdate('watch_list', 0);
+			} else {
+				$thread->fastUpdate('watch_list', 1);
+			}
 
-		$extraWith[] = 'Movie';
-
-		return $extraWith;
+			$redirect = $this->redirect($this->buildLink('threads', $thread));
+			$redirect->setJsonParam('switchKey', $this->filter('stop', 'bool') ? 'watch' : 'unwatch');
+			return $redirect;
+		} else {
+			$viewParams = [
+				'thread' => $thread,
+			];
+			return $this->view('XF:Thread\WatchList', 'fs_watch_list_thread_watch_list', $viewParams);
+		}
 	}
 }

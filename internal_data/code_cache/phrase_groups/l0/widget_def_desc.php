@@ -24,6 +24,8 @@ return array (
   'widget_def_desc.siropu_chat_rooms' => 'Display Chat by Siropu rooms.',
   'widget_def_desc.siropu_chat_top_chatters' => 'Display Chat by Siropu top chatters.',
   'widget_def_desc.siropu_chat_users' => 'Display Chat by Siropu active users.',
+  'widget_def_desc.snog_movies_poster_slider' => '',
+  'widget_def_desc.snog_movies_slider' => '',
   'widget_def_desc.template_syntax' => 'Widget that creates an associated template which will allow you to display XF template syntax and HTML.',
   'widget_def_desc.thread_poll' => 'Displays the specified poll in a widget.',
   'widget_def_desc.thui_progress_bar' => 'Displays visitors progress to the next user title.',

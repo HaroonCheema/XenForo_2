@@ -586,6 +586,20 @@ return array(
 		'_type' => 'option',
 	),
 	array(
+		'name' => 'user_criteria[movies_posted][rule]',
+		'value' => 'movies_posted',
+		'selected' => $__vars['criteria']['movies_posted'],
+		'label' => 'User has started at least X movie threads',
+		'_dependent' => array($__templater->formNumberBox(array(
+		'name' => 'user_criteria[movies_posted][data][movies]',
+		'value' => $__vars['criteria']['movies_posted']['movies'],
+		'size' => '5',
+		'min' => '0',
+		'step' => '1',
+	))),
+		'_type' => 'option',
+	),
+	array(
 		'name' => 'user_criteria[tv_posted][rule]',
 		'value' => 'tv_posted',
 		'selected' => $__vars['criteria']['tv_posted'],

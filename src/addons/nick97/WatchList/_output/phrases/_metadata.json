@@ -1,4 +1,16 @@
 {
+    "add_watch_list.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "7486d011e4621c5e039f875cabec27df"
+    },
+    "add_watch_list_submit.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "ec211f7c20af43e742bf2570c3cb84f9"
+    },
     "con_acc.nick_trakt.txt": {
         "global_cache": false,
         "version_id": 1000010,
@@ -77,6 +89,18 @@
         "version_string": "1.0.0 Alpha",
         "hash": "a2bbbf94ee5fd01ef88f37dfd73c1468"
     },
+    "remove_watch_list.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "58fe4c7a06f7d2380bcaa188b29010e2"
+    },
+    "remove_watch_list_submit.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "1063e38cb53d94d386f21227fcd84717"
+    },
     "thread_type.nick97_trakt_movie.txt": {
         "global_cache": false,
         "version_id": 1000010,
@@ -100,5 +124,17 @@
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
         "hash": "fbd0b2e3dacf6551101015ee2f557fd3"
+    },
+    "you_sure_you_want_to_add_watch_from_list.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d0af6cfba320101bc5e9a2face990740"
+    },
+    "you_sure_you_want_to_remove_watch_from_list.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "087d87ca2be6d9b038b873f31f680c0c"
     }
 }
