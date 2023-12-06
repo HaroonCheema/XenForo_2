@@ -54,6 +54,7 @@ return array (
   'nav.newMedia' => 'New media',
   'nav.newPosts' => 'New posts',
   'nav.newProfilePosts' => 'New profile posts',
+  'nav.nick97WatchList' => 'Watch List',
   'nav.registeredMembers' => 'Registered members',
   'nav.searchForums' => 'Search forums',
   'nav.searchProfilePosts' => 'Search profile posts',

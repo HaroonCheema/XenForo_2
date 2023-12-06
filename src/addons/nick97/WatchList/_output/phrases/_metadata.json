@@ -41,6 +41,12 @@
         "version_string": "1.0.0 Alpha",
         "hash": "6d5443c0376254f58963f3c60da83c98"
     },
+    "nav.nick97WatchList.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "afcfcce1c3bc846f73ed81877dae88b7"
+    },
     "nick97_trakt_client_id_explain.txt": {
         "global_cache": false,
         "version_id": 1000010,
@@ -88,6 +94,18 @@
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
         "hash": "a2bbbf94ee5fd01ef88f37dfd73c1468"
+    },
+    "nick97_watch_list_movies_empty.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "184f94f3389d68e3931f92b11c89719d"
+    },
+    "nick97_watch_list_tv_show_empty.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "153f6fe22bdd605c7c251a3c9db8576e"
     },
     "remove_watch_list.txt": {
         "global_cache": false,

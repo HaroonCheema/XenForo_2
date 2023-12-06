@@ -155,7 +155,7 @@ class Forum extends XFCP_Forum
 		return $creator;
 	}
 
-	protected function finalizeTVForumCreate(\nick97\TraktTV\Service\TVForum\Create $creator)
+	protected function finalizeTraktTVForumCreate(\nick97\TraktTV\Service\TVForum\Create $creator)
 	{
 	}
 
@@ -187,12 +187,12 @@ class Forum extends XFCP_Forum
 				return $this->error($traktClient->getError());
 			}
 
-			$creator = $this->setupTVSeasonCreate($node, $show, $season, $seasonInfo);
+			$creator = $this->setupTraktTVSeasonCreate($node, $show, $season, $seasonInfo);
 			if (!$creator->validate($errors)) {
 				return $this->error($errors);
 			}
 			$newNode = $creator->save();
-			$this->finalizeTVSeasonCreate($creator);
+			$this->finalizeTraktTVSeasonCreate($creator);
 
 			return $this->redirect($this->buildLink('forums', $newNode));
 		}
@@ -203,7 +203,7 @@ class Forum extends XFCP_Forum
 		return $this->view('nick97\TraktTV:TV', 'trakt_tv_new_season', $viewParams);
 	}
 
-	protected function setupTVSeasonCreate(\XF\Entity\Node $parentNode, \nick97\TraktTV\Entity\TVForum $show, $season, $seasonInfo)
+	protected function setupTraktTVSeasonCreate(\XF\Entity\Node $parentNode, \nick97\TraktTV\Entity\TVForum $show, $season, $seasonInfo)
 	{
 		$title = $show->tv_title;
 		$title .= ": " . html_entity_decode($seasonInfo['name']);
@@ -232,7 +232,7 @@ class Forum extends XFCP_Forum
 		return $creator;
 	}
 
-	protected function finalizeTVSeasonCreate(\nick97\TraktTV\Service\TVForum\Create $creator)
+	protected function finalizeTraktTVSeasonCreate(\nick97\TraktTV\Service\TVForum\Create $creator)
 	{
 	}
 

@@ -45,8 +45,8 @@ return array(
 			'value' => $__vars['thread']['TV']['tv_id'],
 			'disabled' => ($__vars['context'] == 'edit'),
 		), array(
-			'label' => 'trakt_tv_post_show_title',
-			'explain' => 'trakt_tv_show_lookup',
+			'label' => 'Trakt TV show link or TV show ID',
+			'explain' => 'Don\'t have the Trakt Link or ID for your TV show? Go to <a href="https://trakt.tv/shows/trending" target="_blank" >Trakt Shows</a> and look it up.',
 			'rowtype' => $__vars['rowType'],
 		)) . '
 ';

@@ -17,6 +17,18 @@
         "version_string": "1.0.0 Alpha",
         "hash": "d563c9e8a106c48696c940d68e25f2bc"
     },
+    "forum_type.trakt_tv.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "2e9de7416bac8f5f34e5fb205a5c251c"
+    },
+    "forum_type_desc.trakt_tv.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "6d5443c0376254f58963f3c60da83c98"
+    },
     "nick97_tv_more_details_on_trakt.txt": {
         "global_cache": false,
         "version_id": 1000010,
@@ -851,6 +863,18 @@
         "version_string": "1.0.0 Alpha",
         "hash": "d41d8cd98f00b204e9800998ecf8427e"
     },
+    "thread_type.trakt_tv.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "62460e5e14ad9cd062f975b9bea35dbe"
+    },
+    "thread_type_plural.trakt_tv.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "fbd0b2e3dacf6551101015ee2f557fd3"
+    },
     "trakt_tv_cast.txt": {
         "global_cache": false,
         "version_id": 1000010,
@@ -910,6 +934,18 @@
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
         "hash": "186361851d64a86172d623044334365c"
+    },
+    "trakt_tv_post_show_title.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d9ec95f561e74b4361049c8463717167"
+    },
+    "trakt_tv_show_lookup.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "00c43342a0ddc6cdd5a5f12571012c20"
     },
     "trakt_tv_status.txt": {
         "global_cache": false,

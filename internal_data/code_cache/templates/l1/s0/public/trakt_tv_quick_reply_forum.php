@@ -16,7 +16,7 @@ return array(
 	} else {
 		$__finalCompiled .= '
 	';
-		$__vars['placeholder'] = 'trakt_tv_post_show_title';
+		$__vars['placeholder'] = 'Trakt TV show link or TV show ID';
 		$__finalCompiled .= '
 	';
 		$__vars['titleholder'] = 'trakt_tv_post_show_thread';
@@ -34,7 +34,7 @@ return array(
 		'data-xf-init' => 'tooltip',
 	)) . '
 
-<span class="tvhint">' . 'trakt_tv_show_lookup' . '</span>';
+<span class="tvhint">' . 'Don\'t have the Trakt Link or ID for your TV show? Go to <a href="https://trakt.tv/shows/trending" target="_blank" >Trakt Shows</a> and look it up.' . '</span>';
 	return $__finalCompiled;
 }
 );

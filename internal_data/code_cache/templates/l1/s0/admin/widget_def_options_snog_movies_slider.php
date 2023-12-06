@@ -164,7 +164,7 @@ return array(
 		'label' => 'Display pager',
 		'_type' => 'option',
 	)), array(
-		'label' => 'snog_tv_slider_options',
+		'label' => 'Slider options',
 	));
 	return $__finalCompiled;
 }

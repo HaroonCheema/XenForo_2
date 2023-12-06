@@ -252,6 +252,19 @@ return array(
 	}
 	$__compilerTemp3 .= '
 											';
+	if (($__vars['forum']['forum_type_id'] == 'snog_tv') AND $__templater->method($__vars['xf']['visitor'], 'hasPermission', array('tvthreads_interface', 'add_info', ))) {
+		$__compilerTemp3 .= '
+	';
+		if (!$__vars['thread']['TV']) {
+			$__compilerTemp3 .= '
+		<a href="' . $__templater->func('link', array('tv/addinfo', $__vars['thread'], ), true) . '" data-xf-click="overlay" class="menu-linkRow">' . 'Add TV show info' . '</a>
+	';
+		}
+		$__compilerTemp3 .= '
+';
+	}
+	$__compilerTemp3 .= '
+';
 	if ((($__templater->func('property', array('snog_movies_posterUpdateButtonPosition', ), false) == 'thread_tools_menu') AND ($__vars['thread']['Movie'] AND ($__vars['xf']['visitor']['is_admin'] OR $__vars['xf']['visitor']['is_moderator'])))) {
 		$__compilerTemp3 .= '
 												<a href="' . $__templater->func('link', array('movies/poster', $__vars['thread']['Movie'], ), true) . '" data-xf-click="overlay" class="menu-linkRow">
@@ -261,6 +274,15 @@ return array(
 	}
 	$__compilerTemp3 .= '
 
+											';
+	if ((($__templater->func('property', array('snog_tv_posterUpdateButtonPosition', ), false) == 'thread_tools_menu') AND ($__vars['thread']['TV'] AND ($__vars['xf']['visitor']['is_admin'] OR $__vars['xf']['visitor']['is_moderator'])))) {
+		$__compilerTemp3 .= '
+												<a href="' . $__templater->func('link', array('tv/poster', $__vars['thread']['TV'], ), true) . '" data-xf-click="overlay" class="menu-linkRow">
+													' . 'Check for new poster' . '
+												</a>
+											';
+	}
+	$__compilerTemp3 .= '
 											';
 	if (($__vars['forum']['forum_type_id'] == 'trakt_tv') AND $__templater->method($__vars['xf']['visitor'], 'hasPermission', array('tvthreads_interface', 'add_info', ))) {
 		$__compilerTemp3 .= '
@@ -988,17 +1010,31 @@ return array(
 			$__compilerTemp4 .= '
 	';
 			$__templater->includeJs(array(
-				'src' => 'nick97/TraktTV/message.min.js',
+				'src' => 'Snog/TV/message.min.js',
 			));
 			$__compilerTemp4 .= '
 ';
 		} else {
 			$__compilerTemp4 .= '
 	';
-			$__templater->includeJs(array(
-				'src' => 'xf/message.js',
-				'min' => '1',
-			));
+			if (!$__templater->test($__vars['thread']['TV'], 'empty', array()) AND (!$__vars['thread']['TV']['tv_episode'])) {
+				$__compilerTemp4 .= '
+	';
+				$__templater->includeJs(array(
+					'src' => 'nick97/TraktTV/message.min.js',
+				));
+				$__compilerTemp4 .= '
+';
+			} else {
+				$__compilerTemp4 .= '
+	';
+				$__templater->includeJs(array(
+					'src' => 'xf/message.js',
+					'min' => '1',
+				));
+				$__compilerTemp4 .= '
+';
+			}
 			$__compilerTemp4 .= '
 ';
 		}

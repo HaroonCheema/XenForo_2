@@ -86,32 +86,45 @@ return array(
 			';
 	}
 	$__compilerTemp8 = '';
-	if (!$__templater->func('in_array', array('', $__vars['xf']['options']['traktthreads_watchProviderRegions'], ), false)) {
+	if (!$__templater->func('in_array', array('', $__vars['xf']['options']['TvThreads_watchProviderRegions'], ), false)) {
 		$__compilerTemp8 .= '
 				';
-		$__compilerTemp9 = $__templater->mergeChoiceOptions(array(), $__vars['traktMoviesWatchRegions']);
+		$__compilerTemp9 = $__templater->mergeChoiceOptions(array(), $__vars['snogTvWatchRegions']);
 		$__compilerTemp8 .= $__templater->formSelectRow(array(
-			'name' => 'option[nick97_movies_trakt_watch_region]',
-			'value' => $__vars['xf']['visitor']['Option']['nick97_movies_trakt_watch_region'],
+			'name' => 'option[snog_tv_tmdb_watch_region]',
+			'value' => $__vars['xf']['visitor']['Option']['snog_tv_tmdb_watch_region'],
 		), $__compilerTemp9, array(
-			'label' => 'Movie watch providers default region',
+			'label' => 'TV watch providers default region',
 		)) . '
 			';
 	}
 	$__compilerTemp10 = '';
-	if (!$__templater->func('in_array', array('', $__vars['xf']['options']['traktTvThreads_watchProviderRegions'], ), false)) {
+	if (!$__templater->func('in_array', array('', $__vars['xf']['options']['traktthreads_watchProviderRegions'], ), false)) {
 		$__compilerTemp10 .= '
 				';
-		$__compilerTemp11 = $__templater->mergeChoiceOptions(array(), $__vars['traktTvWatchRegions']);
+		$__compilerTemp11 = $__templater->mergeChoiceOptions(array(), $__vars['traktMoviesWatchRegions']);
 		$__compilerTemp10 .= $__templater->formSelectRow(array(
+			'name' => 'option[nick97_movies_trakt_watch_region]',
+			'value' => $__vars['xf']['visitor']['Option']['nick97_movies_trakt_watch_region'],
+		), $__compilerTemp11, array(
+			'label' => 'Movie watch providers default region',
+		)) . '
+			';
+	}
+	$__compilerTemp12 = '';
+	if (!$__templater->func('in_array', array('', $__vars['xf']['options']['traktTvThreads_watchProviderRegions'], ), false)) {
+		$__compilerTemp12 .= '
+				';
+		$__compilerTemp13 = $__templater->mergeChoiceOptions(array(), $__vars['traktTvWatchRegions']);
+		$__compilerTemp12 .= $__templater->formSelectRow(array(
 			'name' => 'option[nick97_tv_trakt_watch_region]',
 			'value' => $__vars['xf']['visitor']['Option']['nick97_tv_trakt_watch_region'],
-		), $__compilerTemp11, array(
+		), $__compilerTemp13, array(
 			'label' => 'nick97_tv_trakt_watch_region',
 		)) . '
 			';
 	}
-	$__compilerTemp12 = array(array(
+	$__compilerTemp14 = array(array(
 		'value' => 'watch_no_email',
 		'name' => 'option[creation_watch_state]',
 		'checked' => ($__vars['xf']['visitor']['Option']['creation_watch_state'] ? true : false),
@@ -148,7 +161,7 @@ return array(
 		'_type' => 'option',
 	));
 	if ($__vars['xf']['options']['tl_groups_enableBadge']) {
-		$__compilerTemp12[] = array(
+		$__compilerTemp14[] = array(
 			'name' => 'tlg_show_badge',
 			'value' => '1',
 			'label' => 'Show people\'s group badges with their messages',
@@ -156,9 +169,9 @@ return array(
 			'_type' => 'option',
 		);
 	}
-	$__compilerTemp13 = '';
+	$__compilerTemp15 = '';
 	if ($__vars['xf']['options']['enableNotices'] AND ($__templater->func('count', array($__vars['xf']['session']['dismissedNotices'], ), false) > 0)) {
-		$__compilerTemp13 .= '
+		$__compilerTemp15 .= '
 				<hr class="formRowSep" />
 
 				' . $__templater->formCheckBoxRow(array(
@@ -171,9 +184,9 @@ return array(
 		)) . '
 			';
 	}
-	$__compilerTemp14 = '';
+	$__compilerTemp16 = '';
 	if ($__templater->method($__vars['xf']['visitor'], 'canUsePushNotifications', array())) {
-		$__compilerTemp14 .= '
+		$__compilerTemp16 .= '
 				' . $__templater->formRow('
 					' . $__templater->button('
 						' . 'Checking device capabilities' . $__vars['xf']['language']['ellipsis'] . '
@@ -212,37 +225,37 @@ return array(
 						push_blocked_label: "' . $__templater->filter('Push notifications blocked', array(array('escape', array('js', )),), false) . '"
 					});
 				');
-		$__compilerTemp14 .= '
+		$__compilerTemp16 .= '
 			';
 	} else {
-		$__compilerTemp14 .= '
+		$__compilerTemp16 .= '
 				' . $__templater->formHiddenVal('option[push_on_conversation]', $__vars['xf']['visitor']['Option']['push_on_conversation'], array(
 		)) . '
 			';
 	}
-	$__compilerTemp15 = '';
+	$__compilerTemp17 = '';
 	if (!$__templater->test($__vars['alertOptOuts'], 'empty', array())) {
-		$__compilerTemp15 .= '
+		$__compilerTemp17 .= '
 			';
 		$__templater->includeCss('notification_opt_out.less');
-		$__compilerTemp15 .= '
+		$__compilerTemp17 .= '
 			<h2 class="block-formSectionHeader"><span class="block-formSectionHeader-aligner">' . 'Receive a notification when someone' . $__vars['xf']['language']['ellipsis'] . '</span></h2>
 			<div class="block-body">
 				';
 		$__vars['canPush'] = $__templater->method($__vars['xf']['visitor'], 'canUsePushNotifications', array());
-		$__compilerTemp15 .= '
+		$__compilerTemp17 .= '
 				';
 		if ($__templater->isTraversable($__vars['alertOptOuts'])) {
 			foreach ($__vars['alertOptOuts'] AS $__vars['contentType'] => $__vars['options']) {
-				$__compilerTemp15 .= '
+				$__compilerTemp17 .= '
 					';
 				if ($__templater->isTraversable($__vars['options'])) {
 					foreach ($__vars['options'] AS $__vars['action'] => $__vars['label']) {
-						$__compilerTemp15 .= '
+						$__compilerTemp17 .= '
 						';
-						$__compilerTemp16 = '';
+						$__compilerTemp18 = '';
 						if ($__vars['canPush']) {
-							$__compilerTemp16 .= '
+							$__compilerTemp18 .= '
 									<li class="notificationChoices-choice notificationChoices-choice--push">
 										' . $__templater->formCheckBox(array(
 								'standalone' => 'true',
@@ -257,7 +270,7 @@ return array(
 									</li>
 								';
 						}
-						$__compilerTemp15 .= $__templater->formRow('
+						$__compilerTemp17 .= $__templater->formRow('
 							<ul class="notificationChoices">
 								<li class="notificationChoices-choice notificationChoices-choice--alert">
 									' . $__templater->formCheckBox(array(
@@ -271,7 +284,7 @@ return array(
 							'_type' => 'option',
 						))) . '
 								</li>
-								' . $__compilerTemp16 . '
+								' . $__compilerTemp18 . '
 							</ul>
 						', array(
 							'label' => $__templater->escape($__vars['label']),
@@ -281,12 +294,12 @@ return array(
 					';
 					}
 				}
-				$__compilerTemp15 .= '
+				$__compilerTemp17 .= '
 					<hr class="formRowSep" />
 				';
 			}
 		}
-		$__compilerTemp15 .= '
+		$__compilerTemp17 .= '
 
 			</div>
 		';
@@ -306,15 +319,17 @@ return array(
 	)) . '
 
 						' . $__compilerTemp6 . '
-' . $__compilerTemp8 . '
+			' . $__compilerTemp8 . '
+
 ' . $__compilerTemp10 . '
+' . $__compilerTemp12 . '
 
 ' . $__templater->callMacro('helper_account', 'email_options_row', array(
 		'showConversationOption' => true,
 	), $__vars) . '
 
 			' . $__templater->formCheckBoxRow(array(
-	), $__compilerTemp12, array(
+	), $__compilerTemp14, array(
 		'label' => 'Content options',
 	)) . '
 
@@ -326,12 +341,12 @@ return array(
 		'set' => $__vars['xf']['visitor']['Profile']['custom_fields'],
 	), $__vars) . '
 
-			' . $__compilerTemp13 . '
+			' . $__compilerTemp15 . '
 
-			' . $__compilerTemp14 . '
+			' . $__compilerTemp16 . '
 		</div>
 
-		' . $__compilerTemp15 . '
+		' . $__compilerTemp17 . '
 
 		' . $__templater->formSubmitRow(array(
 		'icon' => 'save',

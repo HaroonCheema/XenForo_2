@@ -101,10 +101,20 @@ return array(
 ';
 	} else {
 		$__finalCompiled .= '
+	';
+		if (!$__templater->test($__vars['node']['TVForum'], 'empty', array())) {
+			$__finalCompiled .= '
+	' . $__templater->includeTemplate('snog_tv_node_poster', $__vars) . '
+';
+		} else {
+			$__finalCompiled .= '
 	<span class="node-icon" aria-hidden="true">
 				' . $__templater->fontAwesome(($__templater->escape($__templater->method($__vars['node']['Data']['TypeHandler'], 'getTypeIconClass', array())) ?: 'fa-comments'), array(
-		)) . '
+			)) . '
 			</span>
+';
+		}
+		$__finalCompiled .= '
 ';
 	}
 	$__finalCompiled .= '
@@ -132,6 +142,13 @@ return array(
 					<a href="' . $__templater->func('link', array('forums', $__vars['node'], ), true) . '" data-xf-init="' . (($__vars['descriptionDisplay'] == 'tooltip') ? 'element-tooltip' : '') . '" data-shortcut="node-description">' . $__templater->escape($__vars['node']['title']) . '</a>
 				</h3>
 				';
+	if (!$__templater->test($__vars['node']['TVForum'], 'empty', array())) {
+		$__finalCompiled .= '
+	' . $__templater->includeTemplate('snog_tv_node_info', $__vars) . '
+';
+	}
+	$__finalCompiled .= '
+';
 	if (!$__templater->test($__vars['node']['TVForum'], 'empty', array())) {
 		$__finalCompiled .= '
 	' . $__templater->includeTemplate('trakt_tv_node_info', $__vars) . '
@@ -202,6 +219,16 @@ return array(
 	if (!$__vars['extras']['privateInfo']) {
 		$__finalCompiled .= '
 				<div class="node-stats">
+';
+		if ((!$__vars['node']['TVForum']['tv_parent_id']) AND $__vars['node']['TVForum']['tv_id']) {
+			$__finalCompiled .= '
+	' . $__templater->callMacro('rating_macros', 'stars', array(
+				'rating' => $__vars['node']['TVForum']['tv_rating'],
+			), $__vars) . '
+';
+		}
+		$__finalCompiled .= '
+
 ';
 		if ((!$__vars['node']['TVForum']['tv_parent_id']) AND $__vars['node']['TVForum']['tv_id']) {
 			$__finalCompiled .= '

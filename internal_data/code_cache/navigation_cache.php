@@ -729,6 +729,16 @@ return function($__templater, $__selectedNav, array $__vars)
 	}
 
 	$__navTemp = [
+		'title' => \XF::phrase('nav.nick97WatchList'),
+		'href' => $__templater->func('link', array('watch-list', ), false),
+		'attributes' => [],
+	];
+	if ($__navTemp) {
+		$__tree['nick97WatchList'] = $__navTemp;
+		$__flat['nick97WatchList'] =& $__tree['nick97WatchList'];
+	}
+
+	$__navTemp = [
 		'title' => \XF::phrase('nav.createCrud'),
 		'href' => $__templater->func('link', array('crud', ), false),
 		'attributes' => [],

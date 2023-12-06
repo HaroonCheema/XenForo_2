@@ -1,495 +1,242 @@
-@_fileMinSize: 165px;
-@_fileBorderRadius: @xf-borderRadiusSmall;
+<xf:macro name="movies" arg-movies="!">
 
-.attachmentUploads
-{
-	display: none;
-	margin-bottom: @xf-paddingLarge;
+	<style>
 
-	&.is-active
-	{
-		display: block;
-	}
-
-	&.attachmentUploads--spaced
-	{
-		margin-top: @xf-paddingLarge;
-	}
-
-	.hScroller-action
-	{
-		color: @xf-linkColor;
-
-		&:hover
-		{
-			color: @xf-linkHoverColor;
+		.p-body-section1{
+			margin-bottom:0 !important;
 		}
-
-		&.hScroller-action--start
+		#container1
 		{
-			&:before
-			{
-				content: '';
-				position: absolute;
-				left: 0;
-				height: 50px;
-				width: 35px;
-				background: @xf-contentBg;
-				.m-borderRightRadius(@xf-borderRadiusMedium);
-				.m-dropShadow(1px, 0, 4px, 1px, .3);
-			}
 
-			&:after
-			{
-				position: absolute;
-				left: 10px;
-			}
-		}
-
-		&.hScroller-action--end
-		{
-			&:before
-			{
-				content: '';
-				position: absolute;
-				right: 0;
-				height: 50px;
-				width: 35px;
-				background: @xf-contentBg;
-				.m-borderLeftRadius(@xf-borderRadiusMedium);
-				.m-dropShadow(-1px, 0, 4px, 1px, .3);
-			}
-
-			&:after
-			{
-				position: absolute;
-				right: 10px;
-			}
-		}
-	}
-}
-
-.attachmentUploads-banner
-{
-	.xf-contentAltBase();
-	border: @xf-borderSize solid @xf-borderColor;
-	border-radius: @xf-borderRadiusSmall;
-	margin-top: @xf-paddingLarge;
-	padding: @xf-paddingSmall @xf-paddingMedium;
-}
-
-.attachmentUploads-selectActions
-{
-	.m-listPlain();
-	display: none;
-	font-size: @xf-fontSizeSmall;
-
-	.attachmentUploads.is-selecting &
-	{
-		display: flex;
-	}
-
-	> li
-	{
-		margin-right: .35em;
-
-		.buttonGroup
-		{
-			vertical-align: middle;
-		}
-
-		&:last-of-type
-		{
-			flex: 1 1 auto;
-			text-align: right;
-		}
-	}
-
-	.selectAll .iconic
-	{
-		cursor: pointer;
-
-		input + i
-		{
-			color: @xf-linkColor;
-		}
-	}
-}
-
-.is-selecting button.js-attachmentSelect
-{
-	float: right;
-}
-
-.file
-{
-	position: relative;
-	width: @_fileMinSize;
-	height: @_fileMinSize;
-	margin-right: @xf-paddingMedium;
-	background: @xf-contentAltBg;
-	border-radius: @_fileBorderRadius;
-
-	&:last-child
-	{
-		margin-right: 0;
-	}
-}
-
-.attachUploadList
-{
-	.m-listPlain();
-	display: block;
-	white-space: nowrap;
-	font-size: 0;
-
-	.file
-	{
-		display: inline-block;
-		white-space: nowrap;
-		font-size: @xf-fontSizeNormal;
-	}
-}
-
-.attachmentList
-{
-	.m-listPlain();
-
-	display: flex;
-	flex-wrap: wrap;
-}
-
-@supports (display: grid)
-{
-	.attachmentList
-	{
-		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(@_fileMinSize, 1fr));
-		column-gap: @xf-paddingMedium;
-		row-gap: @xf-paddingMedium;
-
-		.file
-		{
-			width: 100%;
 			height: auto;
-			padding-bottom: 100%; // forces squareness
-			margin-right: 0;
+			overflow: hidden;
+			margin: 0 auto;
+			position: relative;
+			margin-bottom:20px;
 		}
-	}
-}
-
-.file-preview
-{
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	border-radius: @_fileBorderRadius;
-	overflow: hidden;
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-
-	img, video
-	{
-		position: absolute;
-		object-fit: cover;
-		width: 100%;
-		height: 100%;
-	}
-
-	.file--linked &:after
-	{
-		content: '';
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		z-index: @zIndex-1;
-	}
-}
-
-.file-typeIcon
-{
-	font-size: 80px;
-	vertical-align: middle;
-	color: @xf-textColorFeature;
-}
-
-.file-error
-{
-	color: @xf-textColorAttention;
-	font-size: @xf-fontSizeSmaller;
-	white-space: normal;
-	padding: @xf-paddingMedium;
-}
-
-.file-progress
-{
-	position: relative;
-	width: 100%;
-	width: calc(~'100% - 8px');
-	font-size: @xf-fontSizeSmallest;
-	line-height: 1.3;
-
-	i
-	{
-		position: absolute;
-		top: 0;
-		bottom: 0;
-		left: 0;
-		background: @xf-progressBarColor;
-		color: contrast(@xf-progressBarColor);
-		border-radius: @xf-borderRadiusSmall;
-		padding-right: .2em;
-		text-align: right;
-		font-style: normal;
-		white-space: nowrap;
-		min-width: 2em;
-
-		.m-transition(width);
-	}
-}
-
-.file-content
-{
-	position: absolute;
-	width: 100%;
-	height: 100%;
-}
-
-.file-info
-{
-	position: absolute;
-	left: 0;
-	bottom: 0;
-	width: 100%;
-	padding: 0 @xf-paddingLarge;
-	height: 2.5em;
-	line-height: 2.5;
-	overflow: hidden;
-	.m-transition(height);
-	.m-borderBottomRadius(@_fileBorderRadius);
-
-	font-size: @xf-fontSizeSmaller;
-	color: rgb(255, 255, 255);
-	background: rgba(0, 0, 0, 0.5);
-	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
-
-	@supports (backdrop-filter: blur(3px)) or (-webkit-backdrop-filter: blur(3px))
-	{
-		.m-backdropFilter(blur(3px));
-	}
-
-	a&
-	{
-		color: rgb(255, 255, 255);
-
-		&:hover
+		#list-container1
 		{
-			color: rgb(255, 255, 255);
-			text-decoration: none;
-
-			.file-name
-			{
-				text-decoration: underline;
-			}
+			overflow: hidden;
+			width: 100%;
+			float: left;
 		}
-	}
-
-	&:hover,
-	.file--linked:hover &,
-	.has-touchevents &
-	{
-		height: 5em;
-	}
-}
-
-.file-name,
-.file-meta
-{
-	display: block;
-	white-space: nowrap;
-	text-overflow: ellipsis;
-	overflow: hidden;
-}
-
-.file-delete,
-.file-insert
-{
-	position: absolute;
-	color: rgb(255, 255, 255);
-	text-shadow: 1px 1px 1px rgba(0, 0, 0, .6);
-}
-
-.file-checkbox
-{
-	display: none;
-
-	.attachmentUploads.is-selecting &
-	{
-		display: block;
-	}
-
-	.iconic
-	{
-		position: static;
-
-		&:after
+		.list1
 		{
-			content: '';
-			position: absolute;
-			top: 0;
-			left: 0;
-			right: 0;
-			bottom: 0;
-			z-index: @zIndex-1;
+
+			min-width: 3400px;
+			float: left;
+			display: flex;
 		}
 
-		> i
-		{
-			position: absolute;
-			top: 4px;
-			left: 4px;
-			box-sizing: content-box;
-			width: 1em;
-			height: 1em;
-			color: rgb(220, 220, 220);
-			text-shadow: 1px 1px 1px rgba(0, 0, 0, .6);
-			background: rgba(0, 0, 0, .2);
-			border-radius: @xf-borderRadiusMedium;
-			padding: @xf-paddingMedium;
-			line-height: 1;
-		}
+		#arrowL1::before,#arrowR1::before{
+			font-family: "Font Awesome 5 Pro";
+			content: "\f053";
+			background: #fff;
+			border-radius: 50%;
 
-		&:hover > i
-		{
-			color: rgb(255, 255, 255);
-
-			&:before
-			{
-				content: @fa-var-check-square;
-			}
-		}
-
-		> input + i
-		{
-			&:before,
-			&:after
-			{
-				top: @xf-paddingMedium;
-				left: @xf-paddingMedium;
-			}
-		}
-
-		> input:checked + i:after
-		{
-			font-weight: bold;
-		}
-	}
-}
-
-.file-insert
-{
-	top: 4px;
-	left: 4px;
-	font-size: @xf-fontSizeSmaller;
-
-	&.is-active
-	{
-		.file-insertLink
-		{
-			display: none;
-		}
-
-		.file-menuOptions
-		{
+			color: #2196f3;
 			display: block;
+			font-size: 20px;
+			font-weight: bold;
+			height: 40px;
+			line-height: 40px;
+			opacity: 1;
+			width: 40px;
+			text-align: center;
 		}
-	}
-}
 
-.file-delete
-{
-	top: 4px;
-	right: 4px;
-	font-size: @xf-fontSizeNormal;
-}
 
-.file-insert,
-.file-delete
-{
-	.attachmentUploads.is-selecting &
-	{
-		display: none;
-	}
-}
 
-.file-insertLink,
-.file-deleteLink
-{
-	display: inline-block;
-}
+		#arrowR1::before {
+			font-family: "Font Awesome 5 Pro";
+			content: "\f054";
+		}	
 
-a.file-deleteLink
-{
-	color: inherit;
-	background: rgba(0, 0, 0, .2);
-	border-radius: @xf-borderRadiusMedium;
-	padding: @xf-paddingMedium;
-	.m-transition(background);
 
-	&:hover
-	{
-		text-decoration: none;
-		background: rgba(0, 0, 0, .5);
-	}
-}
-
-a.file-insertLink,
-.file-menuOptions > a
-{
-	color: inherit;
-	background: rgba(0, 0, 0, 0.4);
-	border-radius: @xf-borderRadiusMedium;
-	padding: @xf-paddingMedium;
-	.m-transition(background);
-
-	&:hover
-	{
-		text-decoration: none;
-		background: rgba(0, 0, 0, .5);
-	}
-}
-
-.file-menuOptions
-{
-	.m-listPlain();
-	display: none;
-
-	> a
-	{
-		display: block;
-		text-align: center;
-		margin-top: @xf-paddingSmall;
-
-		&:first-child
+		#arrowR1
 		{
-			margin-top: 0;
-		}
-	}
-}
+			background: transparent;
+			width: 40px;
+			height: 40px;
+			border-radius: 50%;
+			float: right;
+			cursor: pointer;
+			top: 126px;
+			text-align: center;
+			font-family: Arial;
+			font-size: 0px;
+			color: transparent;
+			padding:2px 2px;
+			position: absolute;
+			z-index: 100;
+			right: 20px;
 
-@media (max-width: @xf-responsiveNarrow)
-{
-	.attachmentUploads
-	{
-		.iconic-label,
-		.insert-label
-		{
-			display: none;
+			display: block;
+			line-height: 0px;
+			font-size: 0px;
+			padding: 0;
+			border: none;
+			outline: none;
 		}
-	}
-}
+		#arrowL1
+		{
+			top: 145px;
+			left: 9px;
+			background: transparent;
+			width: 40px;
+			height: 40px;
+			float: left;
+			cursor: pointer;
+			text-align: center;
+			font-family: Arial;
+			color: transparent;
+			position: absolute;
+			z-index: 100;
+			border-radius: 50%;
+			cursor: pointer;
+			display: block;
+			line-height: 0px;
+			font-size: 0px;
+			-webkit-transform: translate(0, -50%);
+			padding: 0;
+			border: none;
+			outline: none;
+		}
+		.item1
+		{
+			margin: 0 30px 0 0;
+			float: left;
+			position: relative;
+			text-align: center;
+			font-family: Arial;
+			font-size: 20px;
+			color: White;
+		}
+
+		div.item1 iframe1{
+			width: 100%;
+			height: 100%;
+		}
+		div.p-body-section1 div.p-body-section-header1 span.p-body-section-icon1 i.fa-gamepad-alt1.screen-icon1:before {
+			content: "\f108" !important;
+		}
+
+
+		/* MEDIA QUERIES.............
+		MEDIA QUERIES.............
+		MEDIA QUERIES............. */
+
+		@media only screen and (max-width: 600px) {
+			#container1{
+				width: 100%;
+			}
+			.item1{
+				margin: 0 15px 0 15px;
+			}
+		}
+
+
+
+		/* container1 to hold the two boxes */
+		.container1 {
+			display: flex; /* Use flexbox */
+			justify-content: space-between; /* Add space between the two boxes */
+			flex-wrap: wrap; /* Allow wrapping to the next line on smaller screens */
+		}
+
+		/* Styles for the individual boxes */
+		.box1 {
+			display: block;
+			box-sizing: border-box; /* Include padding and border in the box's total width */
+			margin-bottom: 5px; /* Add some space between the boxes */
+		}
+
+		.right_glitchvideo1{
+			cursor: pointer;
+		}
+
+		.right_glitchvideo1:hover{
+			color: blue;
+		}
+
+
+	</style>
+
+
+	<div class="p-body-section1">
+		<div class="p-body-section-header1">
+			<div class="container1">
+				<div class="box1">
+					<h2>Movies</h2>
+				</div>
+
+				<div class="right_glitchvideo1 box1">
+					<h2><i class="fas fa-chevron-right"></i></h2>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div id="container1">
+
+		<xf:comment>
+
+			<div id="arrowL1" class="left_glitchvideo1" style="">
+				<i class="fa fa-chevron-left"></i>
+			</div>
+			<div id="arrowR1" class="right_glitchvideo1"  style="">
+				<i class="fa fa-chevron-right"></i>
+			</div>	
+
+		</xf:comment>
+
+		<div id="list-container1">
+
+			<xf:comment>===========only glitch youtube channel</xf:comment>
+
+			<div class='list1 glitchvideo' style="">
+
+				<xf:foreach loop="{$movies}" value="$movie">
+
+					<div class='item1'>
+						<img src="{$movie.getImageUrl()}" style="width: 185px; height: 278px" />
+					</div>
+
+				</xf:foreach>		
+
+			</div>
+
+
+		</div>
+
+	</div>
+
+
+	<xf:js>
+
+		$(document).ready(function(){
+		$(".right_glitchvideo1").click(function(){
+		var item_width = $('#list-container1 div.glitchvideo div.item1').width(); 
+		var left_value = item_width * (-1); 
+		var left_indent = parseInt($('#list-container1 div.glitchvideo').css('left')) - item_width;
+		$('#list-container1 div.glitchvideo ').animate({'left' : left_indent}, 100, function () {
+		$('#list-container1 div.glitchvideo div.item1:last').after($('#list-container1 div.glitchvideo div.item1:first'));                  
+		$('#list-container1 div.glitchvideo').css({'left' : left_value});
+		});
+		});
+
+		$(".left_glitchvideo1").click(function(){
+		var item_width = $('#list-container1 div.glitchvideo div.item1').width(); 
+		var right_value = item_width * (+1); 
+		var right_indent = parseInt($('#list-container1 div.glitchvideo').css('right')) + item_width;
+		$('#list-container1 div.glitchvideo ').animate({'right' : right_indent}, 100, function () {
+		$('#list-container1 div.glitchvideo div.item1:first').before($('#list-container1 div.glitchvideo div.item1:last'));                  
+		$('#list-container1 div.glitchvideo').css({'right' : right_value});
+		});
+		});
+		});
+
+	</xf:js>
+
+</xf:macro>

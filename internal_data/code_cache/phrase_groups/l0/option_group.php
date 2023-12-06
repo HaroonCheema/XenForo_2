@@ -1,6 +1,7 @@
 <?php
 return array (
   'option_group.Fs_NodeIcon' => '[FS] Node Icon',
+  'option_group.TvThreads' => '[OzzModz] TMDb TV Thread Starter',
   'option_group.acp' => 'Admin control panel',
   'option_group.addCategoryImage' => '[FS] Add Category Image',
   'option_group.alerts' => 'User alerts and notifications',

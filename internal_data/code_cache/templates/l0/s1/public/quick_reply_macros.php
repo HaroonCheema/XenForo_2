@@ -128,30 +128,70 @@ return array(
 	';
 	if ($__vars['thread'] AND (!$__templater->test($__vars['thread']['TV'], 'empty', array()) AND (!$__vars['thread']['TV']['tv_episode']))) {
 		$__finalCompiled .= '
+	';
+		if ($__vars['thread'] AND (!$__templater->test($__vars['thread']['TV'], 'empty', array()) AND (!$__vars['thread']['TV']['tv_episode']))) {
+			$__finalCompiled .= '
 	' . $__templater->formEditor(array(
-			'name' => 'message',
-			'value' => $__vars['message'],
-			'attachments' => ($__vars['attachmentData'] ? $__vars['attachmentData']['attachments'] : array()),
-			'data-min-height' => $__vars['minHeight'],
-			'placeholder' => $__vars['placeholder'],
-			'data-deferred' => ($__vars['deferred'] ? 'on' : 'off'),
-			'data-xf-key' => 'r',
-			'data-preview-url' => $__vars['previewUrl'],
-		)) . '
+				'name' => 'message',
+				'value' => $__vars['message'],
+				'attachments' => ($__vars['attachmentData'] ? $__vars['attachmentData']['attachments'] : array()),
+				'data-min-height' => $__vars['minHeight'],
+				'placeholder' => $__vars['placeholder'],
+				'data-deferred' => ($__vars['deferred'] ? 'on' : 'off'),
+				'data-xf-key' => 'r',
+				'data-preview-url' => $__vars['previewUrl'],
+			)) . '
 	' . $__templater->includeTemplate('trakt_tv_quick_reply_episode', $__vars) . '
+';
+		} else {
+			$__finalCompiled .= '
+	' . $__templater->formEditor(array(
+				'name' => 'message',
+				'value' => $__vars['message'],
+				'attachments' => ($__vars['attachmentData'] ? $__vars['attachmentData']['attachments'] : array()),
+				'data-min-height' => $__vars['minHeight'],
+				'placeholder' => $__vars['placeholder'],
+				'data-deferred' => ($__vars['deferred'] ? 'on' : 'off'),
+				'data-xf-key' => 'r',
+				'data-preview-url' => $__vars['previewUrl'],
+			)) . '
+';
+		}
+		$__finalCompiled .= '
+	' . $__templater->includeTemplate('snog_tv_quick_reply_episode', $__vars) . '
 ';
 	} else {
 		$__finalCompiled .= '
+	';
+		if ($__vars['thread'] AND (!$__templater->test($__vars['thread']['TV'], 'empty', array()) AND (!$__vars['thread']['TV']['tv_episode']))) {
+			$__finalCompiled .= '
 	' . $__templater->formEditor(array(
-			'name' => 'message',
-			'value' => $__vars['message'],
-			'attachments' => ($__vars['attachmentData'] ? $__vars['attachmentData']['attachments'] : array()),
-			'data-min-height' => $__vars['minHeight'],
-			'placeholder' => $__vars['placeholder'],
-			'data-deferred' => ($__vars['deferred'] ? 'on' : 'off'),
-			'data-xf-key' => 'r',
-			'data-preview-url' => $__vars['previewUrl'],
-		)) . '
+				'name' => 'message',
+				'value' => $__vars['message'],
+				'attachments' => ($__vars['attachmentData'] ? $__vars['attachmentData']['attachments'] : array()),
+				'data-min-height' => $__vars['minHeight'],
+				'placeholder' => $__vars['placeholder'],
+				'data-deferred' => ($__vars['deferred'] ? 'on' : 'off'),
+				'data-xf-key' => 'r',
+				'data-preview-url' => $__vars['previewUrl'],
+			)) . '
+	' . $__templater->includeTemplate('trakt_tv_quick_reply_episode', $__vars) . '
+';
+		} else {
+			$__finalCompiled .= '
+	' . $__templater->formEditor(array(
+				'name' => 'message',
+				'value' => $__vars['message'],
+				'attachments' => ($__vars['attachmentData'] ? $__vars['attachmentData']['attachments'] : array()),
+				'data-min-height' => $__vars['minHeight'],
+				'placeholder' => $__vars['placeholder'],
+				'data-deferred' => ($__vars['deferred'] ? 'on' : 'off'),
+				'data-xf-key' => 'r',
+				'data-preview-url' => $__vars['previewUrl'],
+			)) . '
+';
+		}
+		$__finalCompiled .= '
 ';
 	}
 	$__finalCompiled .= '

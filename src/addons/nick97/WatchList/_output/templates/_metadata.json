@@ -18,5 +18,15 @@
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
         "hash": "ab3f032f549ff2beadb6b7187244441c"
+    },
+    "public/nick97_watch_list_index.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "3472c3b6c610b592b821fbd72f313be8"
+    },
+    "public/nick97_watch_list_movies_macro.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "ff6915f7b3d8f925f2d046b7e84ee3d8"
     }
 }

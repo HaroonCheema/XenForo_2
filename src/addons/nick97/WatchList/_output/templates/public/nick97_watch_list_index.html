@@ -1,0 +1,226 @@
+<xf:comment>================video section================================</xf:comment>
+
+<br>
+
+<xf:macro template="nick97_watch_list_movies_macro" name="movies" arg-movies="{$movies}" />
+
+<xf:macro template="nick97_watch_list_movies_macro" name="tvShow" arg-tvShows="{$tvShows}" />
+
+
+<br>
+
+
+
+
+<xf:comment>
+
+
+
+	<xf:set var="$template">
+		<xf:if is="$movies is not empty">
+			<xf:css src="carousel.less" />
+			<xf:css src="lightslider.less" />
+			<xf:css src="snog_movies_slider.less" />
+
+			<xf:js prod="xf/carousel-compiled.js" dev="vendor/lightslider/lightslider.min.js" />
+			<xf:js dev="Snog/Movies/slider.js" prod="Snog/Movies/slider.min.js" addon="Snog/Movies" />
+
+			<div class="carousel carousel-moviePosterSlider carousel--withFooter" {{ widget_data($widget) }}>
+				<ul class="carousel-body" data-xf-init="snog-movies-slider"
+					data-xf-snog-movies-slider="{$options.slider|json}">
+
+					<xf:foreach loop="$movies" value="$movie">
+						<li>
+							<div class="carousel-item-simple">
+								<a class="carousel-item-image" href="{{ link('threads', $movie.Thread) }}">
+									<img src="{$movie.getImageUrl()}" style="width: 185px; height: 278px" />
+
+									<xf:if is="{$options.show_rating}">
+										<span class="carousel-item-label">
+											<xf:fa icon="star" /> {$movie.tmdb_rating}
+										</span>
+									</xf:if>
+
+									<span class="carousel-item-caption" title="{$movie.Thread.title}">
+										{$movie.Thread.title}
+									</span>
+								</a>
+							</div>
+						</li>
+					</xf:foreach>
+				</ul>
+
+			</div>
+		</xf:if>
+	</xf:set>
+
+	<xf:if is="!$options.advanced_mode">
+		<xf:if contentcheck="true">
+			<div class="block">
+				<div class="block-container" {{ widget_data($widget) }}>
+					<xf:if is="$title">
+						<h3 class="block-minorHeader">{$title}</h3>
+					</xf:if>
+					<div class="block-body block-row">
+						<xf:contentcheck>{$template|raw}</xf:contentcheck>
+					</div>
+				</div>
+			</div>
+		</xf:if>
+		<xf:else />
+		{$template|raw}
+	</xf:if>
+
+
+
+	<style>
+
+		*, *::before, *::after {
+			box-sizing: border-box;
+			margin: 0;
+		}
+
+		body { 
+
+			background-color: green;
+
+		}
+
+		img, svg {
+			max-width: 100%;
+			display: block;
+		}
+
+		.section-title {margin-block: 4rem 1rem;}
+
+		.media-container {position: relative;}
+
+		.media-scroller, .media-group {
+			display: grid;
+			gap: 0.25rem;
+			grid-auto-flow: column;
+		}
+
+		.media-scroller {
+			overflow-x: hidden;
+			scroll-behavior: smooth;
+			grid-auto-columns: 100%;
+			padding: 0 3rem;
+			scroll-padding-inline: 3rem;
+		}
+		.media-scroller:first-of-type {padding-left: 0;}
+
+		.media-group {
+			grid-auto-columns: 1fr;
+			overflow: hidden;
+		}
+
+		.media-element {
+			position: relative;
+			border-radius: 0.25rem;
+			overflow: hidden;
+		}
+		.media-element > img {
+			width: 100%;
+			aspect-ratio: 16 / 9;
+			object-fit: cover;
+		}
+
+		.next, .previous {
+			display: none;
+			align-items: center;
+			z-index: 10;
+			position: absolute;
+			width: 3rem;
+			padding: 1rem;
+			background: rgb(0 0 0 / 0);
+			opacity: 0;
+			transition: opacity .25s;
+		}
+		.previous {
+			left: 0;
+			top: 0;
+			bottom: 0;
+		}
+		.next {
+			right: 0;
+			top: 0;
+			bottom: 0;
+		}
+
+		.media-group:first-child :where(.next, .previous) {display: flex;}
+
+		:where(.next, .previous):hover {background: rgb(0 0 0 / 0.3);}
+		:where(.next, .previous) > svg {
+			transition: transform 75ms linear;
+			transform: scale(1);
+		}
+		:where(.next, .previous):hover > svg {transform: scale(1.2);}
+
+		.media-group:target :where(.next, .previous) {display: flex;}
+
+		.media-scroller:has(:target:not(:first-child)) .media-group:first-of-type .next {display: none;}
+
+		.navigation-indicators {
+			opacity: 0;
+			position: absolute;
+			display: flex;
+			gap: 3px;
+			top: -1rem;
+			right: 2rem;
+			transition: opacity .25s;
+		}
+
+		.navigation-indicators > * {
+			width: 1rem;
+			height: 2px;
+			background: white;
+			opacity: 0.5;
+			transition-delay: .5s;
+		}
+
+		.media-scroller:hover :where(.next, .previous),
+		.media-group:not(:target) ~ .navigation-indicators > *:nth-child(1),
+		.media-group:nth-child(1):target ~ .navigation-indicators > *:nth-child(1),
+		.media-group:nth-child(2):target ~ .navigation-indicators > *:nth-child(2),
+		.media-group:nth-child(3):target ~ .navigation-indicators > *:nth-child(3),
+		.media-group:nth-child(4):target ~ .navigation-indicators > *:nth-child(4),
+		.media-scroller:hover .navigation-indicators {opacity: 1;}
+
+		.media-group:not(:nth-child(1)):target ~ .navigation-indicators > *:nth-child(1) {opacity: .5;}	
+
+		.p-body {
+			background-color: red;
+		}
+
+	</style>
+
+
+	<button type="button" class="btn btn-primary">Primary</button>
+
+	<h2 class="section-title">Trending now</h2>';
+	<div class="media-container">
+		<div class="media-scroller">
+
+			{{dump($numGroups)}}
+
+			<xf:foreach loop="$numGroups" value="$group">
+
+				<h2 class="section-title">$index</h2>';
+
+
+				{{dump($numGroups)}}
+
+				<xf:foreach loop="$imageUrls" start="$group * $imagesPerGroup" limit="$imagesPerGroup" value="$imageUrl">
+					<div class="media-element">
+						<img src="{$imageUrl}" alt="">
+					</div>
+				</xf:foreach>
+
+			</xf:foreach>
+
+		</div>
+	</div>
+
+
+</xf:comment>
