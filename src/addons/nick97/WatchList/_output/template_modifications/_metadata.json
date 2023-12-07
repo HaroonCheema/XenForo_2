@@ -1,5 +1,11 @@
 {
     "public/fs_watch_list_add_or_remove_btn.json": {
         "hash": "3895a578fc5eb2127b0256d5a401b020"
+    },
+    "public/nick97_watch_list_add_tab_in_account_visitor_menu.json": {
+        "hash": "149ba05bdeed2070e65289d6065d1b29"
+    },
+    "public/nick97_watch_list_add_tab_in_account_wrapper.json": {
+        "hash": "9681c1602dd5b253f2181d9877055c34"
     }
 }

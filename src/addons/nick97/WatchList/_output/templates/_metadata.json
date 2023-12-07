@@ -28,5 +28,10 @@
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
         "hash": "ff6915f7b3d8f925f2d046b7e84ee3d8"
+    },
+    "public/nick97_watch_list_my_watch_list.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "e791c2bf3a2b0a47c95adadd15ade921"
     }
 }

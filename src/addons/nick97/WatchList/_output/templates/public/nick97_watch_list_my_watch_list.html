@@ -1,0 +1,52 @@
+<xf:title>{{ phrase('my_watch_list') }}</xf:title>
+
+<xf:wrap template="account_wrapper" />
+
+<div class="block-container">
+	<div class="block-body">
+
+		<xf:css src="structured_list.less" />
+		<xf:css src="xfrm.less" />
+			<xf:foreach loop="$movies" value="$movie">
+		
+		<div class="structItem structItem--resource" data-author="{{ $resource.User.username ?: $resource.username }}">
+					
+			<div class="structItem-cell structItem-cell--icon structItem-cell--iconExpanded">
+				<div class="structItem-iconContainer">
+
+					<img class="tvPoster" src="{$movie.getImageUrl()}">
+
+				</div>
+			</div>
+			<div class="structItem-cell structItem-cell--main" data-xf-init="touch-proxy">
+
+				<div class="structItem-title">
+
+					<a href="{{ link('resources', $resource) }}" class="" data-tp-primary="on">{$movie.Thread.title}</a>
+
+				</div>
+
+				<xf:if is="$resource.resource_state != 'deleted'">
+					<div class="structItem-resourceTagLine">{$movie.tmdb_tagline}</div>
+				</xf:if>
+			</div>
+			<div class="structItem-cell structItem-cell--resourceMeta">
+
+				<dl class="pairs pairs--justified structItem-minor structItem-metaItem structItem-metaItem--status">
+					<dt>{{ phrase('nick97_watch_list_status') }}</dt>
+					<dd>{$movie.tmdb_status}</dd>
+				</dl>
+
+				<dl class="pairs pairs--justified structItem-minor structItem-metaItem structItem-metaItem--release">
+					<dt>{{ phrase('nick97_watch_list_release') }}</dt>
+					<dd><a href="{{ link('resources/updates', $resource) }}" class="u-concealed">{$movie.tmdb_release}</a></dd>
+				</dl>
+
+			</div>
+		</div>
+				</xf:foreach>
+
+	</div>
+	
+	
+</div>

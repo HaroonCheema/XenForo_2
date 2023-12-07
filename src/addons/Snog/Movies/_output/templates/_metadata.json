@@ -1,4 +1,9 @@
 {
+    "public/snog_movies_thread_view_type_movie.html": {
+        "version_id": 2020051,
+        "version_string": "2.2.0 Release Candidate 1",
+        "hash": "994b22284ff5f39737cfc543aea029cd"
+    },
     "public/widget_snog_movies_poster_slider.html": {
         "version_id": 2020049,
         "version_string": "2.2.0 Beta 19",
