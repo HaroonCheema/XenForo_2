@@ -58,45 +58,49 @@ class WatchList extends AbstractController
 	public function actionMy()
 	{
 
-		// return $this->message("Template not created yet.");
-
-		$conditions = [
-			['discussion_type', 'snog_movies_movie'],
-			['discussion_type', 'trakt_movies_movie'],
-		];
-
 		$threadIds = $this->finder('XF:Thread')
-			->whereOr($conditions)->where('watch_list', 1)->pluckfrom('thread_id')->fetch()->toArray();
+			->where('discussion_type', 'snog_movies_movie')->where('watch_list', 1)->pluckfrom('thread_id')->fetch()->toArray();
 
-		$tmdbMovies = $this->finder('Snog\Movies:Movie')->where('thread_id', $threadIds)->fetch()->toArray();
-		// $traktMovies = $this->finder('nick97\TraktMovies:Movie')->where('thread_id', $threadIds)->fetch()->toArray();
+		if (count($threadIds) > 0) {
+			$tmdbMovies = $this->finder('Snog\Movies:Movie')->where('thread_id', $threadIds)->fetch()->toArray();
+		} else {
+			$tmdbMovies = null;
+		}
 
-		// $movies = array_merge($tmdbMovies, $traktMovies);
+		$traktThreadIds = $this->finder('XF:Thread')
+			->where('discussion_type', 'trakt_movies_movie')->where('watch_list', 1)->pluckfrom('thread_id')->fetch()->toArray();
 
+		if (count($traktThreadIds) > 0) {
+			$traktMovies = $this->finder('nick97\TraktMovies:Movie')->where('thread_id', $traktThreadIds)->fetch()->toArray();
+		} else {
+			$traktMovies = null;
+		}
 
-		// $tvConditions = [
-		// 	['discussion_type', 'trakt_tv'],
-		// 	['discussion_type', 'snog_tv'],
-		// ];
+		$tvThreadIds = $this->finder('XF:Thread')
+			->where('discussion_type', 'snog_tv')->where('watch_list', 1)->pluckfrom('thread_id')->fetch()->toArray();
 
-		// $tvThreadIds = $this->finder('XF:Thread')
-		// 	->whereOr($tvConditions)->where('watch_list', 1)->pluckfrom('thread_id')->fetch()->toArray();
+		if (count($tvThreadIds) > 0) {
+			$tmdbTvShows = $this->finder('Snog\TV:TV')->where('thread_id', $tvThreadIds)->fetch()->toArray();
+		} else {
+			$tmdbTvShows = null;
+		}
 
-		// if (count($tvThreadIds) > 0) {
-		// 	$tmdbTv = $this->finder('Snog\TV:TV')->where('thread_id', $tvThreadIds)->fetch()->toArray();
-		// 	$traktTv = $this->finder('nick97\TraktTV:TV')->where('thread_id', $tvThreadIds)->fetch()->toArray();
+		$traktTvThreadIds = $this->finder('XF:Thread')
+			->where('discussion_type', 'trakt_tv')->where('watch_list', 1)->pluckfrom('thread_id')->fetch()->toArray();
 
-		// 	$tvShows = array_merge($tmdbTv, $traktTv);
-		// } else {
-		// 	$tvShows = null;
-		// }
+		if (count($traktTvThreadIds) > 0) {
+			$traktTvShows = $this->finder('nick97\TraktTV:TV')->where('thread_id', $traktTvThreadIds)->fetch()->toArray();
+		} else {
+			$traktTvShows = null;
+		}
 
 		$viewpParams = [
 			'pageSelected' => 'my',
 
 			"movies" => $tmdbMovies,
-			// "movies" => $movies,
-			// "tvShows" => $tvShows,
+			"traktMovies" => $traktMovies,
+			"tmdbTvShows" => $tmdbTvShows,
+			"traktTvShows" => $traktTvShows,
 		];
 
 		return $this->view('nick97\WatchList:index', 'nick97_watch_list_my_watch_list', $viewpParams);

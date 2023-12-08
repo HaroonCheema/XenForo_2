@@ -107,6 +107,12 @@
         "version_string": "1.0.0 Alpha",
         "hash": "184f94f3389d68e3931f92b11c89719d"
     },
+    "nick97_watch_list_my_tv_and_movies_empty.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "16ebe69ebf4907d6a411322a0511477b"
+    },
     "nick97_watch_list_release.txt": {
         "global_cache": false,
         "version_id": 1000010,

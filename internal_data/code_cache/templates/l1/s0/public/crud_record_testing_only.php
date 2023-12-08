@@ -1,244 +1,195 @@
 <?php
-// FROM HASH: 7e31b14264406b85939bc0fba1178f88
+// FROM HASH: c9d95fb3db2070ae98734c32a54af1c7
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
 	$__finalCompiled = '';
-	$__finalCompiled .= '
+	$__finalCompiled .= '<style>
+	
+	
+	.stats-p-body-section{
+			margin-bottom:0 !important;
+		}
 
-<style>
-.p-body-section{
-		margin-bottom:0 !important;
+		/* Container to hold the two boxes */
+		.statsContainer {
+			display: flex; /* Use flexbox */
+			justify-content: space-between; /* Add space between the two boxes */
+			flex-wrap: wrap; /* Allow wrapping to the next line on smaller screens */
+		}
+
+		/* Styles for the individual boxes */
+		.statsBox {
+			display: block;
+			box-sizing: border-box; /* Include padding and border in the box\'s total width */
+			margin-bottom: 5px; /* Add some space between the boxes */
+		}
+	
+	.myContainer {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		margin: 0 auto;
+		width: 100%;
 	}
-#container
-{
 
-height: auto;
-overflow: hidden;
-margin: 0 auto;
-position: relative;
-margin-bottom:20px;
-}
-#list-container
-{
-overflow: hidden;
-width: 100%;
-float: left;
-}
-.list
-{
-
-min-width: 3400px;
-float: left;
-display: flex;
-}
-	
-#arrowL::before,#arrowR::before{
-    font-family: "Font Awesome 5 Pro";
-    content: "\\f053";
-    background: #fff;
-    border-radius: 50%;
-  
-    color: #2196f3;
-    display: block;
-    font-size: 20px;
-    font-weight: bold;
-    height: 40px;
-    line-height: 40px;
-    opacity: 1;
-    width: 40px;
-    text-align: center;
-}
-
-
-
-#arrowR::before {
-    font-family: "Font Awesome 5 Pro";
-    content: "\\f054";
-}	
-	
-	
-#arrowR
-{
-background: transparent;
-width: 40px;
-height: 40px;
-border-radius: 50%;
-float: right;
-cursor: pointer;
-top: 126px;
-text-align: center;
-font-family: Arial;
-font-size: 0px;
-color: transparent;
-padding:2px 2px;
-position: absolute;
-z-index: 100;
-right: 20px;
-
-display: block;
-line-height: 0px;
-font-size: 0px;
-padding: 0;
-border: none;
-outline: none;
-}
-#arrowL
-{
-top: 145px;
-left: 9px;
-background: transparent;
-width: 40px;
-height: 40px;
-float: left;
-cursor: pointer;
-text-align: center;
-font-family: Arial;
-color: transparent;
-position: absolute;
-z-index: 100;
-border-radius: 50%;
-cursor: pointer;
-display: block;
-line-height: 0px;
-font-size: 0px;
--webkit-transform: translate(0, -50%);
-padding: 0;
-border: none;
-outline: none;
-}
-.item
-{
-width: 350px;
-height: 350px;
-margin: 0 30px 0 0;
-float: left;
-position: relative;
-text-align: center;
-font-family: Arial;
-font-size: 20px;
-color: White;
-}
-
-div.item iframe{
-width: 100%;
-height: 100%;
-}
-div.p-body-section div.p-body-section-header span.p-body-section-icon i.fa-gamepad-alt.screen-icon:before {
-content: "\\f108" !important;
-}
-
-
-/* MEDIA QUERIES.............
-MEDIA QUERIES.............
-MEDIA QUERIES............. */
-
-@media only screen and (max-width: 600px) {
-#container{
-width: 100%;
-}
-	.item{
-		    margin: 0 15px 0 15px;
+	.myBox {
+		background-color: #eee;
+		border: 1px solid #ddd; /* Added border definition */
+		border-radius: 4px;
+		width: 24%;
+		margin-bottom: 10px;
 	}
-}
 
+	.myBox-heading {
+		font-size: 18px;
+		font-weight: bold;
+		margin-bottom: 10px;
+		text-align: center;
+		border-bottom: 1px solid #ddd;
+		padding-bottom: 10px;
+	}
+
+	.myBox-body{
+		text-align: center;
+	}
+
+	@media screen and (max-width: 768px) {
+		.myBox {
+			width: 45%;
+		}
+	}
+
+	@media screen and (max-width: 480px) {
+		.myBox {
+			width: 100%;
+		}
+	}
+
+	.myContainer1 {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-around;
+		margin: 0 auto;
+		width: 100%;
+	}
 
 </style>
 
-<br>
 
-<div class="p-body-section">
-<div class="p-body-section-header">
-		<span class="p-body-section-icon">
-			<i class="fas fa-gamepad-alt screen-icon"></i>
-		</span>
-		<span class="p-body-section-title" id="highlights">
-			<span>' . 'Latest_tournament_highlights' . '</span>
-		</span>
-		<span class="p-body-section-view-more">
-			<a href="' . $__templater->func('base_url', array('tournament-results', ), true) . '">' . 'View more' . ' <i class="fas fa-chevron-right"></i></a>
-		</span>
-		
+	<div class="stats-p-body-section">
+		<div class="p-body-section-header">
+			<div class="statsContainer">
+				<div class="statsBox">
+					<h2>Stats</h2>
+				</div>
+
+				';
+	if (true) {
+		$__finalCompiled .= '
+
+					<div class="statsBox">
+						<h2><i class="fas fa-chevron-right"></i></h2>
+					</div>
+
+				';
+	}
+	$__finalCompiled .= '
+			</div>
+		</div>
+	</div>
+
+<div class="myContainer">
+	<div class="myBox">
+		<h1 class="myBox-heading"><i class="fa fa-tv"></i> TV time</h1>
+		<div class="myContainer1">
+			<div class="myBox-body">
+				<h2>
+					1
+				</h2>
+				<h5>
+					MONTH
+				</h5>
+			</div>
+			<div class="myBox-body">
+				<h2>
+					0
+				</h2>
+				<h5>
+					DAYS
+				</h5>
+			</div>
+
+			<div class="myBox-body">
+				<h2>
+					22
+				</h2>
+				<h5>
+					HOURS
+				</h5>
+			</div>
+		</div>
+	</div>
+	<div class="myBox">
+		<h1 class="myBox-heading"><i class="fa fa-tv"></i> Episode watched</h1>
+		<div class="myBox-body">
+			<h1>
+				1,974
+			</h1>
+		</div>
+	</div>
+	<div class="myBox">
+		<h1 class="myBox-heading"><i class="fa fa-film"></i> Movie time</h1>
+		<div class="myContainer1">
+			<div class="myBox-body">
+				<h2>
+					0
+				</h2>
+				<h5>
+					MONTH
+				</h5>
+			</div>
+			<div class="myBox-body">
+				<h2>
+					2
+				</h2>
+				<h5>
+					DAYS
+				</h5>
+			</div>
+
+			<div class="myBox-body">
+				<h2>
+					21
+				</h2>
+				<h5>
+					HOURS
+				</h5>
+			</div>
+		</div>
+	</div>
+	<div class="myBox">
+		<h1 class="myBox-heading"><i class="fa fa-film"></i> Movie watched</h1>
+		<div class="myBox-body">
+			<h1>
+				38
+			</h1>
+		</div>
 	</div>
 </div>
 
 
-<div id="container">
-	
-<div id="arrowL" class="left_glitchvideo" style="">
-<i class="fa fa-chevron-left"></i>
-</div>
-<div id="arrowR" class="right_glitchvideo"  style="">
-<i class="fa fa-chevron-right"></i>
-</div>	
-	
-<div id="list-container">
-	
+
+
+
+
 ' . '
-	
-		<div class=\'list glitchvideo\' style="">
 
+' . '
 
-		<div class=\'item\'>
-			<img
-            src="https://images.unsplash.com/photo-1643148636637-58b3eb95cdad?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTY0MzM5ODg0OA&ixlib=rb-1.2.1&q=80&w=400"
-            alt="">
-		</div>
-		<div class=\'item\'>
-			<img
-            src="https://images.unsplash.com/photo-1643039952431-38adfa91f320?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTY0MzM5ODg0OA&ixlib=rb-1.2.1&q=80&w=400"
-            alt="">
-		</div>
-		<div class=\'item\'>
-			<img
-            src="https://images.unsplash.com/photo-1640808238224-5520de93c939?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTY0MzM5ODg4OQ&ixlib=rb-1.2.1&q=80&w=400"
-            alt="">
-		</div>
-		<div class=\'item\'>
-			<img
-            src="https://images.unsplash.com/photo-1642034451735-2a8df1eaa2c0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTY0MzM5ODg4OQ&ixlib=rb-1.2.1&q=80&w=400"
-            alt="">
-		</div>
+		' . '
 
-		</div>
-
-
-</div>
-	
-</div>
-
-<br>
-
-';
-	$__templater->inlineJs('
-
-	$(document).ready(function(){
-            $(".right_glitchvideo").click(function(){
-                var item_width = $(\'#list-container div.glitchvideo div.item\').width(); 
-                var left_value = item_width * (-1); 
-                var left_indent = parseInt($(\'#list-container div.glitchvideo\').css(\'left\')) - item_width;
-                $(\'#list-container div.glitchvideo \').animate({\'left\' : left_indent}, 100, function () {
-                $(\'#list-container div.glitchvideo div.item:last\').after($(\'#list-container div.glitchvideo div.item:first\'));                  
-                $(\'#list-container div.glitchvideo\').css({\'left\' : left_value});
-            });
-            });
-
-            $(".left_glitchvideo").click(function(){
-                var item_width = $(\'#list-container div.glitchvideo div.item\').width(); 
-                var right_value = item_width * (+1); 
-                var right_indent = parseInt($(\'#list-container div.glitchvideo\').css(\'right\')) + item_width;
-                $(\'#list-container div.glitchvideo \').animate({\'right\' : right_indent}, 100, function () {
-                $(\'#list-container div.glitchvideo div.item:first\').before($(\'#list-container div.glitchvideo div.item:last\'));                  
-                $(\'#list-container div.glitchvideo\').css({\'right\' : right_value});
-            });
-            });
-        });
-
-');
-	$__finalCompiled .= '
-
-
-';
+		';
 	return $__finalCompiled;
 }
 );

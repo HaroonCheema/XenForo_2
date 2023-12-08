@@ -178,6 +178,10 @@ class Crud extends AbstractController
     public function actionIndex(ParameterBag $params)
     {
 
+
+        return $this->view('CRUD\XF:Crud\Index', 'crud_record_testing_only', []);
+
+
         // $this->installedAddOns = \XF::em()->getFinder('XF:AddOn')->fetch()->toArray();
 
         // $array1 = [1, 2, 3];

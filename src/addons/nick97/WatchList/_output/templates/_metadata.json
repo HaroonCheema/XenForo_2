@@ -14,6 +14,11 @@
         "version_string": "1.0.0 Alpha",
         "hash": "b6a428dcce87b19b8e39e9f4411f9cf3"
     },
+    "public/nick97_trakt_thread_my_watch_list.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "76942c234fe00b14a6866ea0cc3cd92c"
+    },
     "public/nick97_trakt_tv_thread_type_fields_tv.html": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
@@ -32,6 +37,6 @@
     "public/nick97_watch_list_my_watch_list.html": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
-        "hash": "e791c2bf3a2b0a47c95adadd15ade921"
+        "hash": "080ddc0fd3811a734f4c93f230b0ef92"
     }
 }
