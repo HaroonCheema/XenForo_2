@@ -47,6 +47,7 @@ class WatchList extends AbstractController
 
 
 		$viewpParams = [
+			'stats' => $this->userStats(),
 			"movies" => $movies,
 			"tvShows" => $tvShows,
 		];
@@ -104,5 +105,70 @@ class WatchList extends AbstractController
 		];
 
 		return $this->view('nick97\WatchList:index', 'nick97_watch_list_my_watch_list', $viewpParams);
+	}
+
+	protected function userStats()
+	{
+
+		$endpoint = 'https://api.trakt.tv/users/sean/stats';
+
+		$headers = array(
+			'Content-Type: application/json',
+			'trakt-api-version: 2',
+			'trakt-api-key: 1d0f918e4f03cf101d342025c836ad72cb26b24184f6e19d5d499de7710019c2'
+		);
+
+		$ch = curl_init();
+
+		curl_setopt($ch, CURLOPT_URL, $endpoint);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+		$result = curl_exec($ch);
+
+		if ($result === false) {
+			echo "cURL Error: " . curl_error($ch) . "\n";
+			exit;
+		}
+
+		curl_close($ch);
+
+		$toArray = json_decode($result, true);
+
+		$stats = [
+			'moviesWatched' => number_format($toArray["movies"]["watched"]),
+			'moviesTime' => $this->convertMinutes($toArray["movies"]["minutes"]),
+			'episodesWatched' => number_format($toArray["episodes"]["watched"]),
+			'episodesTime' => $this->convertMinutes($toArray["episodes"]["minutes"]),
+		];
+
+
+		return $stats;
+	}
+
+
+	protected function convertMinutes($minutes)
+	{
+
+		// Convert minutes to hours
+		$hours = floor($minutes / 60);
+		// $remaining_minutes = $minutes % 60;
+
+		// Convert hours to days
+		$days = floor($hours / 24);
+		// $remaining_hours = $hours % 24;
+
+		// Convert days to months
+		// Assuming 30 days per month (can be adjusted)
+		$months = floor($days / 30);
+		// $remaining_days = $days % 30;
+
+		$viewParams = [
+			'hours' => number_format($hours),
+			'days' => number_format($days),
+			'months' => number_format($months),
+		];
+
+		return $viewParams;
 	}
 }

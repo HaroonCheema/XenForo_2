@@ -174,12 +174,123 @@ class Crud extends AbstractController
         // }
     }
 
+    protected function convertMinutes($minutes)
+    {
+
+        // Convert minutes to hours
+        $hours = floor($minutes / 60);
+        // $remaining_minutes = $minutes % 60;
+
+        // Convert hours to days
+        $days = floor($hours / 24);
+        // $remaining_hours = $hours % 24;
+
+        // Convert days to months
+        // Assuming 30 days per month (can be adjusted)
+        $months = floor($days / 30);
+        // $remaining_days = $days % 30;
+
+        $viewParams = [
+            'hours' => $hours,
+            'days' => $days,
+            'months' => $months,
+        ];
+
+        return $viewParams;
+    }
+
 
     public function actionIndex(ParameterBag $params)
     {
 
+        // return $this->view('CRUD\XF:Crud\Index', 'crud_record_testing_only', []);
+        // exit;
 
-        return $this->view('CRUD\XF:Crud\Index', 'crud_record_testing_only', []);
+        // $authUrl = 'https://trakt.tv/oauth/authorize';
+        // $clientId = '678ef863baa3eca3bfa427eabfa2e353a1bc473bc5355181d85acc3bced5f6ff';
+        // $redirectUri = 'http://localhost/xenforo/index.php?crud';
+
+        // $authParams = [
+        //     'response_type' => 'code',
+        //     'client_id' => $clientId,
+        //     'redirect_uri' => $redirectUri,
+        // ];
+
+        // $curl = curl_init();
+        // curl_setopt($curl, CURLOPT_URL, $authUrl . '?' . http_build_query($authParams));
+        // curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
+        // $response = curl_exec($curl);
+
+        // if ($response === false) {
+        //     echo "cURL Error: " . curl_error($curl) . "\n";
+        // } else {
+        //     echo "Visit the following URL to authorize your application:\n" . $response . "\n";
+        // }
+
+        // curl_close($curl);
+
+
+        $endpoint = 'https://api.trakt.tv/users/sean/stats';
+
+        $headers = array(
+            'Content-Type: application/json',
+            'trakt-api-version: 2',
+            'trakt-api-key: 1d0f918e4f03cf101d342025c836ad72cb26b24184f6e19d5d499de7710019c2'
+        );
+
+        $ch = curl_init();
+
+        curl_setopt($ch, CURLOPT_URL, $endpoint);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+        $result = curl_exec($ch);
+
+        if ($result === false) {
+            echo "cURL Error: " . curl_error($ch) . "\n";
+            exit;
+        }
+
+        curl_close($ch);
+
+        $toArray = json_decode($result, true);
+
+        $stats = [
+            'moviesWatched' => $toArray["movies"]["watched"],
+            'moviesTime' => $this->convertMinutes($toArray["movies"]["minutes"]),
+            'episodesWatched' => $toArray["episodes"]["watched"],
+            'episodesTime' => $this->convertMinutes($toArray["episodes"]["minutes"]),
+        ];
+
+
+        $viewParams = [
+            'stats' => $stats,
+        ];
+
+
+
+        // echo "<pre>";
+        // var_dump($viewParams);
+
+
+
+
+
+        return $this->view('CRUD\XF:Crud\Index', 'crud_record_testing_only', $viewParams);
+
+
+
+
+
+        exit;
+
+
+
+
+
+
+
 
 
         // $this->installedAddOns = \XF::em()->getFinder('XF:AddOn')->fetch()->toArray();

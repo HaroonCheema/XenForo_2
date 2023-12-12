@@ -51,7 +51,7 @@ class Trakt extends AbstractService
         );
 
         # $parameters['scope'] = implode(' ', $this->scopes);
-        $parameters['scope'] = 'user:read:email';
+        $parameters['scope'] = '';
 
         // Build the url
         $url = clone $this->getAuthorizationEndpoint();

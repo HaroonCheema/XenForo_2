@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: c9d95fb3db2070ae98734c32a54af1c7
+// FROM HASH: 218bafbd8390142d4f19fb12c3258750
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -105,7 +105,7 @@ return array(
 		<div class="myContainer1">
 			<div class="myBox-body">
 				<h2>
-					1
+					' . $__templater->escape($__vars['stats']['moviesTime']['months']) . '
 				</h2>
 				<h5>
 					MONTH
@@ -113,7 +113,7 @@ return array(
 			</div>
 			<div class="myBox-body">
 				<h2>
-					0
+					' . $__templater->escape($__vars['stats']['moviesTime']['days']) . '
 				</h2>
 				<h5>
 					DAYS
@@ -122,7 +122,7 @@ return array(
 
 			<div class="myBox-body">
 				<h2>
-					22
+					' . $__templater->escape($__vars['stats']['moviesTime']['hours']) . '
 				</h2>
 				<h5>
 					HOURS
@@ -134,7 +134,7 @@ return array(
 		<h1 class="myBox-heading"><i class="fa fa-tv"></i> Episode watched</h1>
 		<div class="myBox-body">
 			<h1>
-				1,974
+				' . $__templater->escape($__vars['stats']['episodesWatched']) . '
 			</h1>
 		</div>
 	</div>
@@ -143,7 +143,7 @@ return array(
 		<div class="myContainer1">
 			<div class="myBox-body">
 				<h2>
-					0
+					' . $__templater->escape($__vars['stats']['episodesTime']['months']) . '
 				</h2>
 				<h5>
 					MONTH
@@ -151,7 +151,7 @@ return array(
 			</div>
 			<div class="myBox-body">
 				<h2>
-					2
+					' . $__templater->escape($__vars['stats']['episodesTime']['days']) . '
 				</h2>
 				<h5>
 					DAYS
@@ -160,7 +160,7 @@ return array(
 
 			<div class="myBox-body">
 				<h2>
-					21
+					' . $__templater->escape($__vars['stats']['episodesTime']['hours']) . '
 				</h2>
 				<h5>
 					HOURS
@@ -172,7 +172,7 @@ return array(
 		<h1 class="myBox-heading"><i class="fa fa-film"></i> Movie watched</h1>
 		<div class="myBox-body">
 			<h1>
-				38
+				' . $__templater->escape($__vars['stats']['moviesWatched']) . '
 			</h1>
 		</div>
 	</div>
