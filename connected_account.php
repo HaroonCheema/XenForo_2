@@ -1,7 +1,7 @@
 <?php
 
 $dir = __DIR__;
-require ($dir . '/src/XF.php');
+require($dir . '/src/XF.php');
 
 XF::start($dir);
 $app = XF::setupApp('XF\Pub\App');
@@ -13,16 +13,13 @@ $provider = null;
 
 $connectedAccountRequest = $session->get('connectedAccountRequest');
 
-if (!is_array($connectedAccountRequest) || !isset($connectedAccountRequest['provider']))
-{
+
+if (!is_array($connectedAccountRequest) || !isset($connectedAccountRequest['provider'])) {
 	$message = \XF::phrase('there_is_no_valid_connected_account_request_available');
 	$response->httpCode(404);
-}
-else
-{
+} else {
 	$provider = $app->em()->find('XF:ConnectedAccountProvider', $connectedAccountRequest['provider']);
-	if (!$provider)
-	{
+	if (!$provider) {
 		$message = \XF::phrase('connected_account_provider_specified_cannot_be_found');
 		$response->httpCode(404);
 
@@ -31,8 +28,7 @@ else
 	}
 }
 
-if ($response->httpCode() !== 200)
-{
+if ($response->httpCode() !== 200) {
 	$response
 		->body($message)
 		->contentType('text/plain')
@@ -43,8 +39,7 @@ if ($response->httpCode() !== 200)
 
 $visitor = \XF::visitor();
 
-if ($provider->isAssociated($visitor))
-{
+if ($provider->isAssociated($visitor)) {
 	$response
 		->redirect($connectedAccountRequest['returnUrl'])
 		->send($request);
@@ -55,9 +50,9 @@ if ($provider->isAssociated($visitor))
 $handler = $provider->getHandler();
 $storageState = $handler->getStorageState($provider, $visitor);
 
+
 // If we're in test mode, we'll bypass getting the existing token from the session.
-if (!$token = $handler->requestProviderToken($storageState, $request, $error, $connectedAccountRequest['test']))
-{
+if (!$token = $handler->requestProviderToken($storageState, $request, $error, $connectedAccountRequest['test'])) {
 	$response
 		->body($error)
 		->contentType('text/plain')
@@ -70,12 +65,9 @@ $connectedAccountRequest['tokenStored'] = true;
 $session->set('connectedAccountRequest', $connectedAccountRequest);
 $session->save();
 
-if (!empty($connectedAccountRequest['test']))
-{
+if (!empty($connectedAccountRequest['test'])) {
 	$redirect = $app->router('admin')->buildLink('connected-accounts/perform-test', $provider);
-}
-else
-{
+} else {
 	$redirect = $app->router('public')->buildLink('register/connected-accounts', $provider);
 }
 

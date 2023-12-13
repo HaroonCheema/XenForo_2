@@ -53,6 +53,12 @@
         "version_string": "1.0.0 Alpha",
         "hash": "3d615a326c6a6bbf602969e8adffb1ea"
     },
+    "nick97_movie_trakt_api_key_not_found.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "f7b8ecc03a8ba3aa4d18d02823fef077"
+    },
     "nick97_movies_more_details_on_trakt.txt": {
         "global_cache": false,
         "version_id": 1000010,
@@ -65,11 +71,17 @@
         "version_string": "1.0.0 Alpha",
         "hash": "aef960d5c7c9c9d72e45817251985abd"
     },
+    "option.traktMovieThreads_apikey.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "3b7d33b56fcf2f6d28ff69b5ebbee0a4"
+    },
     "option.traktthreads_apikey.txt": {
         "global_cache": false,
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
-        "hash": "d874092765698849430bce83cc6b1cab"
+        "hash": "4d155b624142bc8e16970ada23f38642"
     },
     "option.traktthreads_backdropCoverSize.txt": {
         "global_cache": false,
@@ -250,6 +262,12 @@
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
         "hash": "fedf3a63351123dd4c5d824d6b381eae"
+    },
+    "option_explain.traktMovieThreads_apikey.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "289d2b690a4018c64cc63cce8ba4aef4"
     },
     "option_explain.traktthreads_apikey.txt": {
         "global_cache": false,

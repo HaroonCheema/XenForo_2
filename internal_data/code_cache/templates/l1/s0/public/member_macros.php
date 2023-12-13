@@ -107,26 +107,6 @@ return array(
 		}
 		$__finalCompiled .= '
 	';
-		if ($__templater->method($__vars['xf']['visitor'], 'canViewMedia', array())) {
-			$__finalCompiled .= '
-	';
-			if ($__vars['user']['xfmg_media_count']) {
-				$__finalCompiled .= '
-		<dl class="pairs pairs--rows pairs--rows--centered menu-fauxLinkRow">
-			<dt>' . 'Media' . '</dt>
-			<dd>
-				<a href="' . $__templater->func('link', array('media/users', $__vars['user'], ), true) . '" class="menu-fauxLinkRow-linkRow u-concealed">
-					' . $__templater->filter($__vars['user']['xfmg_media_count'], array(array('number', array()),), true) . '
-				</a>
-			</dd>
-		</dl>
-	';
-			}
-			$__finalCompiled .= '
-';
-		}
-		$__finalCompiled .= '
-';
 		if ($__vars['xf']['options']['klUiProfileViews'] AND ($__vars['user']['th_view_count'] AND $__templater->method($__vars['user'], 'canViewTHUIProfileViewCount', array()))) {
 			$__finalCompiled .= '
 	<dl class="pairs pairs--rows pairs--rows--centered menu-fauxLinkRow">

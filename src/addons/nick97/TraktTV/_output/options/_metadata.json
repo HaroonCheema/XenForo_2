@@ -20,6 +20,9 @@
     "traktTvThreads_changesLanguage.json": {
         "hash": "3bb7fcfec01d4d1cd20a0f33a5f9792d"
     },
+    "traktTvThreads_clientkey.json": {
+        "hash": "c17b479874d9d619a4ab53ec329041ae"
+    },
     "traktTvThreads_companiesLimit.json": {
         "hash": "672b659e7c9315e52f1667a3dcc05b57"
     },

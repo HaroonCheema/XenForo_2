@@ -29,7 +29,7 @@ abstract class AbstractProvider
 	 * @return string
 	 */
 	abstract public function getOAuthServiceName();
-	
+
 	abstract public function getDefaultOptions();
 
 	abstract public function getOAuthConfig(ConnectedAccountProvider $provider, $redirectUri = null);
@@ -51,8 +51,7 @@ abstract class AbstractProvider
 
 	public function isUsable(ConnectedAccountProvider $provider)
 	{
-		if (!$provider->options)
-		{
+		if (!$provider->options) {
 			return false;
 		}
 
@@ -61,10 +60,8 @@ abstract class AbstractProvider
 
 	protected function isConfigured(array $options)
 	{
-		foreach ($options AS $key => $value)
-		{
-			if (is_string($value) && trim($value) === '')
-			{
+		foreach ($options as $key => $value) {
+			if (is_string($value) && trim($value) === '') {
 				return false;
 			}
 		}
@@ -109,19 +106,14 @@ abstract class AbstractProvider
 
 		$additionalAuthParams = $this->getAdditionalAuthParams();
 
-		if ($this->getOAuthVersion() === 1)
-		{
-			try
-			{
+		if ($this->getOAuthVersion() === 1) {
+			try {
 				/** @var \OAuth\OAuth1\Service\AbstractService $oAuth */
 				$requestToken = $oAuth->requestRequestToken();
 				$additionalAuthParams['oauth_token'] = $requestToken->getRequestToken();
-			}
-			catch (HttpResponseException $e)
-			{
+			} catch (HttpResponseException $e) {
 				$error = \XF::phraseDeferred('error_occurred_while_connecting_with_x', ['provider' => $this->getTitle()]);
-				if ($this->testMode && $e->getResponseContent())
-				{
+				if ($this->testMode && $e->getResponseContent()) {
 					$this->parseProviderError($e, $error);
 				}
 				throw $controller->exception($controller->error($error));
@@ -157,9 +149,12 @@ abstract class AbstractProvider
 			'storageType' => null
 		], $config);
 
+
 		$provider = \XF::app()->oAuth()->provider($this->getOAuthServiceName(), $config);
-		if (!$provider)
-		{
+
+
+		//exit;
+		if (!$provider) {
 			throw new \InvalidArgumentException(
 				"Cannot find a valid OAuth Service for provider '{$this->getOAuthServiceName()}'"
 			);
@@ -175,8 +170,7 @@ abstract class AbstractProvider
 	public function getProviderData(StorageState $storageState)
 	{
 		$providerData = \XF::app()->oAuth()->providerData($this->getProviderDataClass(), $this->providerId, $storageState);
-		if (!$providerData)
-		{
+		if (!$providerData) {
 			throw new \InvalidArgumentException(
 				"Cannot find a valid ProviderData object for class '{$this->getProviderDataClass()}'"
 			);
@@ -199,45 +193,37 @@ abstract class AbstractProvider
 	{
 		$version = $this->getOAuthVersion();
 		$token = false;
-		if (!$skipStoredToken)
-		{
+		if (!$skipStoredToken) {
 			$token = $storageState->getProviderToken();
-			if ($token && $version == 2)
-			{
+			if ($token && $version == 2) {
 				return $token;
 			}
 		}
 
-		if ($request->filter('error', 'str') == 'access_denied' || $request->filter('denied', 'str'))
-		{
+		if ($request->filter('error', 'str') == 'access_denied' || $request->filter('denied', 'str')) {
 			$error = \XF::phraseDeferred('you_did_not_grant_permission_to_access_connected_account');
 			return false;
 		}
 
-		switch ($version)
-		{
+		switch ($version) {
 			case 2:
 				$code = $request->filter('code', 'str');
 
-				try
-				{
+
+				try {
 					/** @var \OAuth\OAuth2\Service\ServiceInterface $oAuth */
 					$oAuth = $this->getOAuth($this->getOAuthConfig($storageState->getProvider()));
+
+
 					$token = $oAuth->requestAccessToken($code);
-				}
-				catch (\Exception $e)
-				{
+				} catch (\Exception $e) {
 					$error = \XF::phraseDeferred('error_occurred_while_connecting_with_x', ['provider' => $this->getTitle()]);
-					if (!($e instanceof HttpResponseException))
-					{
+					if (!($e instanceof HttpResponseException)) {
 						// Token response exception can be thrown in the internals of the library
 						$e = new HttpResponseException($e->getMessage());
 						$e->setResponseContent($e->getMessage());
-					}
-					else
-					{
-						if ($this->testMode && $e->getResponseContent())
-						{
+					} else {
+						if ($this->testMode && $e->getResponseContent()) {
 							$this->parseProviderError($e, $error);
 						}
 					}
@@ -248,17 +234,13 @@ abstract class AbstractProvider
 			case 1:
 				$oToken = $request->filter('oauth_token', 'str');
 				$oVerifier = $request->filter('oauth_verifier', 'str');
-				if ($oToken && $oVerifier)
-				{
-					try
-					{
-						if (!$token)
-						{
+				if ($oToken && $oVerifier) {
+					try {
+						if (!$token) {
 							$token = $storageState->getProviderToken();
 						}
 
-						if (!$token)
-						{
+						if (!$token) {
 							$error = \XF::phraseDeferred(
 								'error_occurred_while_connecting_with_x',
 								['provider' => $this->getTitle()]
@@ -269,19 +251,14 @@ abstract class AbstractProvider
 						/** @var \OAuth\OAuth1\Service\ServiceInterface $oAuth */
 						$oAuth = $this->getOAuth($this->getOAuthConfig($storageState->getProvider()));
 						$token =  $oAuth->requestAccessToken($oToken, $oVerifier, $token->getRequestTokenSecret());
-					}
-					catch (HttpResponseException $e)
-					{
+					} catch (HttpResponseException $e) {
 						$error = \XF::phraseDeferred('error_occurred_while_connecting_with_x', ['provider' => $this->getTitle()]);
-						if ($this->testMode && $e->getResponseContent())
-						{
+						if ($this->testMode && $e->getResponseContent()) {
 							$this->parseProviderError($e, $error);
 						}
 						return false;
 					}
-				}
-				else
-				{
+				} else {
 					$error = \XF::phraseDeferred('error_occurred_while_connecting_with_x', ['provider' => $this->getTitle()]);
 					return false;
 				}
@@ -308,29 +285,21 @@ abstract class AbstractProvider
 	{
 		$finalOptions = [];
 
-		foreach ($this->getDefaultOptions() AS $key => $null)
-		{
+		foreach ($this->getDefaultOptions() as $key => $null) {
 			$valid = true;
 
-			if (!isset($options[$key]))
-			{
+			if (!isset($options[$key])) {
 				$valid = false;
-			}
-			else
-			{
+			} else {
 				$value = $options[$key];
-				if (!is_string($value) || trim($value) === '')
-				{
+				if (!is_string($value) || trim($value) === '') {
 					$valid = false;
-				}
-				else
-				{
+				} else {
 					$finalOptions[$key] = $value;
 				}
 			}
 
-			if (!$valid)
-			{
+			if (!$valid) {
 				$error = \XF::phrase('please_complete_required_fields');
 				return false;
 			}

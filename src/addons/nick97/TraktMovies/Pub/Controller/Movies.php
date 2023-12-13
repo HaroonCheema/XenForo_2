@@ -11,8 +11,7 @@ class Movies extends AbstractController
 	{
 		$thread = $this->assertViewableThread($params->thread_id, ['Movie']);
 		$movie = $thread->Movie;
-		if (!$movie)
-		{
+		if (!$movie) {
 			return $this->notFound();
 		}
 
@@ -45,8 +44,7 @@ class Movies extends AbstractController
 	{
 		$thread = $this->assertViewableThread($params->thread_id, ['Movie']);
 		$movie = $thread->Movie;
-		if (!$movie)
-		{
+		if (!$movie) {
 			return $this->notFound();
 		}
 
@@ -79,8 +77,7 @@ class Movies extends AbstractController
 	{
 		$thread = $this->assertViewableThread($params->thread_id, ['Movie']);
 		$movie = $thread->Movie;
-		if (!$movie)
-		{
+		if (!$movie) {
 			return $this->notFound();
 		}
 
@@ -117,23 +114,19 @@ class Movies extends AbstractController
 		$thread = $this->assertViewableThread($params->thread_id, ['Movie']);
 		$movie = $thread->Movie;
 
-		if (!$movie)
-		{
+		if (!$movie) {
 			return $this->notFound();
 		}
 
 		/** @var \nick97\TraktMovies\Entity\Rating $userRating */
 		$userRating = $this->em()->create('nick97\TraktMovies:Rating');
-		if ($movie->hasRated())
-		{
+		if ($movie->hasRated()) {
 			$userRating = $movie->Ratings[$visitor->user_id];
 		}
 
-		if ($this->isPost())
-		{
+		if ($this->isPost()) {
 			$rater = $this->setupMovieRate($movie);
-			if (!$rater->validate($errors))
-			{
+			if (!$rater->validate($errors)) {
 				return $errors;
 			}
 
@@ -160,32 +153,27 @@ class Movies extends AbstractController
 		$thread = $this->assertViewableThread($params->thread_id);
 		$post = $this->assertViewablePost($thread->first_post_id, ['Thread.Prefix']);
 
-		if (!$post->canEdit($error))
-		{
+		if (!$post->canEdit($error)) {
 			return $this->noPermission($error);
 		}
 
 		$movie = $this->assertMovieExists($params->thread_id);
 
-		if ($this->isPost())
-		{
+		if ($this->isPost()) {
 			$editor = $this->setupMovieEdit($movie);
-			if (!$editor->validate($errors))
-			{
+			if (!$editor->validate($errors)) {
 				return $this->error($errors);
 			}
 
 			$threadChanges = [];
 			$newThread = $editor->getThread();
-			if ($newThread)
-			{
+			if ($newThread) {
 				$threadChanges['title'] = $newThread->isChanged('title');
 			}
 
 			$editor->save();
 
-			if ($this->filter('_xfWithData', 'bool'))
-			{
+			if ($this->filter('_xfWithData', 'bool')) {
 				$viewParams = ['post' => $post, 'thread' => $thread];
 
 				$reply = $this->view('XF:Post\EditNewPost', 'post_edit_new_post', $viewParams);
@@ -201,14 +189,11 @@ class Movies extends AbstractController
 		}
 
 		$forum = $post->Thread->Forum;
-		if ($forum->canUploadAndManageAttachments())
-		{
+		if ($forum->canUploadAndManageAttachments()) {
 			/** @var \XF\Repository\Attachment $attachmentRepo */
 			$attachmentRepo = $this->repository('XF:Attachment');
 			$attachmentData = $attachmentRepo->getEditorData('post', $post);
-		}
-		else
-		{
+		} else {
 			$attachmentData = null;
 		}
 
@@ -257,19 +242,15 @@ class Movies extends AbstractController
 		$url = $this->filter('trakt_trailer', 'str');
 		$trailer = '';
 
-		if (stristr($url, 'youtube'))
-		{
+		if (stristr($url, 'youtube')) {
 			/** @var \XF\Repository\BbCodeMediaSite $mediaRepo */
 			$mediaRepo = $this->repository('XF:BbCodeMediaSite');
 			$sites = $mediaRepo->findActiveMediaSites()->fetch();
 			$match = $mediaRepo->urlMatchesMediaSiteList($url, $sites);
-			if ($match)
-			{
+			if ($match) {
 				$trailer = $match['media_id'];
 			}
-		}
-		else
-		{
+		} else {
 			$trailer = $url;
 		}
 
@@ -279,17 +260,13 @@ class Movies extends AbstractController
 		$editorPlugin = $this->plugin('XF:Editor');
 		$comment = $editorPlugin->fromInput('message');
 
-		if (!$this->options()->traktthreads_force_comments)
-		{
+		if (!$this->options()->traktthreads_force_comments) {
 			$editor->setComment($comment);
-		}
-		else
-		{
+		} else {
 			$editor->setComment('');
 		}
 
-		if (\XF::options()->traktthreads_syncTitle)
-		{
+		if (\XF::options()->traktthreads_syncTitle) {
 			$title = $movie->getExpectedThreadTitle();
 			$threadEditor = $editor->getThreadEditor();
 			$threadEditor->setTitle($title);
@@ -300,15 +277,13 @@ class Movies extends AbstractController
 		$movie = $editor->getMovie();
 		$message = $movie->getPostMessage();
 
-		if (!$this->app->options()->traktthreads_force_comments)
-		{
+		if (!$this->app->options()->traktthreads_force_comments) {
 			$message .= $comment;
 		}
 		$postEditor->setMessage($message);
 
 		$forum = $movie->Thread->Forum;
-		if ($forum->canUploadAndManageAttachments())
-		{
+		if ($forum->canUploadAndManageAttachments()) {
 			$postEditor->setAttachmentHash($this->filter('attachment_hash', 'str'));
 		}
 
@@ -318,29 +293,24 @@ class Movies extends AbstractController
 	public function actionPoster(ParameterBag $params)
 	{
 		$visitor = \XF::visitor();
-		if (!$visitor->user_id || (!$visitor->is_moderator && !$visitor->is_admin))
-		{
+		if (!$visitor->user_id || (!$visitor->is_moderator && !$visitor->is_admin)) {
 			throw $this->exception($this->noPermission());
 		}
 
 		$thread = $this->assertViewableThread($params->thread_id);
 		$movie = $thread->Movie;
-		if (!$movie)
-		{
+		if (!$movie) {
 			return $this->notFound();
 		}
 
-		if ($this->isPost())
-		{
+		if ($this->isPost()) {
 			$posterPath = $this->filter('posterpath', 'str');
 			$movie->trakt_image = $posterPath;
 
-			if ($this->options()->traktthreads_forum_local)
-			{
+			if ($this->options()->traktthreads_forum_local) {
 				/** @var \nick97\TraktMovies\Service\Movie\Image $imageService */
 				$imageService = $this->app->service('nick97\TraktMovies:Movie\Image', $movie);
-				if (!$imageService->setImageFromApiPath($posterPath))
-				{
+				if (!$imageService->setImageFromApiPath($posterPath)) {
 					return $this->error($imageService->getError());
 				}
 
@@ -360,22 +330,18 @@ class Movies extends AbstractController
 		$traktClient = $apiHelper->getClient();
 
 		$movieInfo = $traktClient->getMovie($movie->trakt_id)->getDetails();
-		if ($traktClient->hasError())
-		{
+		if ($traktClient->hasError()) {
 			return $this->error($traktClient->getError());
 		}
 
-		if (!isset($movieInfo['id']))
-		{
+		if (!isset($movieInfo['id'])) {
 			return $this->error('Movie Information Not Returned from Trakt.');
 		}
 
-		if (isset($movieInfo['poster_path']))
-		{
+		if (isset($movieInfo['poster_path'])) {
 			$posterPath = $movieInfo['poster_path'];
 		}
-		if ($posterPath !== $movie->trakt_image)
-		{
+		if ($posterPath !== $movie->trakt_image) {
 			$newPoster = true;
 		}
 
@@ -389,8 +355,7 @@ class Movies extends AbstractController
 		$editor = $this->service('nick97\TraktMovies:Movie\Editor', $movie);
 		$editor->setIsAutomated();
 
-		if (\XF::options()->traktthreads_syncTitle)
-		{
+		if (\XF::options()->traktthreads_syncTitle) {
 			$title = $movie->getExpectedThreadTitle();
 			$threadEditor = $editor->getThreadEditor();
 			$threadEditor->setTitle($title);
@@ -401,8 +366,7 @@ class Movies extends AbstractController
 		$movie = $editor->getMovie();
 		$message = $movie->getPostMessage();
 
-		if ($movie->comment && !$this->app->options()->traktthreads_force_comments)
-		{
+		if ($movie->comment && !$this->app->options()->traktthreads_force_comments) {
 			$message .= $movie->comment;
 		}
 		$postEditor->setMessage($message);
@@ -413,29 +377,35 @@ class Movies extends AbstractController
 	public function actionAddInfo(ParameterBag $params)
 	{
 		$visitor = \XF::visitor();
-		if (!$visitor->user_id || (!$visitor->is_moderator && !$visitor->is_admin))
-		{
+		if (!$visitor->user_id || (!$visitor->is_moderator && !$visitor->is_admin)) {
 			throw $this->exception($this->noPermission());
 		}
 
 		$thread = $this->assertViewableThread($params->thread_id);
 
-		if ($this->isPost())
-		{
+		if ($this->isPost()) {
+
+			$clientKey = \XF::options()->traktMovieThreads_apikey;
+
+			if (!$clientKey) {
+
+				throw $this->exception(
+					$this->notFound(\XF::phrase("nick97_movie_trakt_api_key_not_found"))
+				);
+			}
+
 			$post = $this->assertViewablePost($thread->first_post_id, ['Thread.Prefix']);
 			$title = $this->filter('trakt', 'str');
 			$changeTitle = $this->filter('changetitle', 'uint');
 
-			if (!$title)
-			{
+			if (!$title) {
 				return $this->error(\XF::phrase('trakt_movies_error_no_movie'));
 			}
 
 			/** @var \nick97\TraktMovies\Helper\Trakt $traktHelper */
 			$traktHelper = \XF::helper('nick97\TraktMovies:Trakt');
 			$movieId = $traktHelper->parseMovieId($title);
-			if (!$movieId)
-			{
+			if (!$movieId) {
 				return $this->error(\XF::phrase('trakt_movies_error_not_valid'));
 			}
 
@@ -444,8 +414,7 @@ class Movies extends AbstractController
 			$comment = $post->message;
 
 			// MOVIE ALREADY EXISTS
-			if (isset($exists->trakt_id))
-			{
+			if (isset($exists->trakt_id)) {
 				return $this->error(\XF::phrase('trakt_movies_error_posted'));
 			}
 
@@ -454,8 +423,7 @@ class Movies extends AbstractController
 			$traktClient = $apiHelper->getClient();
 
 			$apiResponse = $traktClient->getMovie($movieId)->getDetails(['casts', 'trailers', 'videos']);
-			if ($traktClient->hasError())
-			{
+			if ($traktClient->hasError()) {
 				return $this->error($traktClient->getError());
 			}
 
@@ -464,8 +432,7 @@ class Movies extends AbstractController
 			$movie->thread_id = $thread->thread_id;
 			$movie->setFromApiResponse($apiResponse);
 
-			if (!empty($apiResponse['poster_path']))
-			{
+			if (!empty($apiResponse['poster_path'])) {
 				/** @var \nick97\TraktMovies\Service\Movie\Image $imageService */
 				$imageService = $this->app->service('nick97\TraktMovies:Movie\Image', $movie);
 				$imageService->setImageFromApiPath($apiResponse['poster_path']);
@@ -476,24 +443,21 @@ class Movies extends AbstractController
 			$traktHelper = \XF::helper('nick97\TraktMovies:Trakt');
 
 			$message = $movie->getPostMessage();
-			if (!$this->options()->traktthreads_force_comments)
-			{
+			if (!$this->options()->traktthreads_force_comments) {
 				$message .= $comment;
 			}
 
 			$post->message = $message;
 			$post->last_edit_date = 0;
 
-			if ($changeTitle)
-			{
+			if ($changeTitle) {
 				$thread->title = $movie->getThreadTitle($thread);
 				$thread->save();
 			}
 
 			$post->save();
 
-			if ($comment && $this->options()->traktthreads_force_comments)
-			{
+			if ($comment && $this->options()->traktthreads_force_comments) {
 				$newFirstPost = false;
 				$newLastPost = false;
 
@@ -510,18 +474,15 @@ class Movies extends AbstractController
 				$newPost->save();
 				$newpostId = $newPost->getEntityId();
 
-				if ($thread->first_post_id > 0 && $thread->first_post_id <> $post->post_id)
-				{
+				if ($thread->first_post_id > 0 && $thread->first_post_id <> $post->post_id) {
 					$newFirstPost = true;
 				}
-				if ($thread->first_post_id == $thread->last_post_id)
-				{
+				if ($thread->first_post_id == $thread->last_post_id) {
 					$newLastPost = true;
 				}
 
 				if ($newFirstPost) $thread->first_post_id = $newpostId;
-				if ($newLastPost)
-				{
+				if ($newLastPost) {
 					$thread->last_post_date = $thread->post_date;
 					$thread->last_post_id = $newpostId;
 					$thread->last_post_user_id = $thread->user_id;
@@ -536,10 +497,8 @@ class Movies extends AbstractController
 					->fetch();
 
 				$order = 1;
-				foreach ($postorder as $changeorder)
-				{
-					if ($changeorder->post_id <> $thread->first_post_id)
-					{
+				foreach ($postorder as $changeorder) {
+					if ($changeorder->post_id <> $thread->first_post_id) {
 						$changeorder->position = $order;
 						$changeorder->save();
 						$order = $order + 1;
@@ -547,8 +506,7 @@ class Movies extends AbstractController
 				}
 			}
 
-			if (!$this->options()->traktthreads_force_comments)
-			{
+			if (!$this->options()->traktthreads_force_comments) {
 				$movie->comment = $comment;
 			}
 
@@ -574,20 +532,17 @@ class Movies extends AbstractController
 		$extraWith[] = 'Forum.Node';
 		$extraWith[] = 'Forum.Node.Permissions|' . $visitor->permission_combination_id;
 
-		if ($visitor->user_id)
-		{
+		if ($visitor->user_id) {
 			$extraWith[] = 'Read|' . $visitor->user_id;
 			$extraWith[] = 'Forum.Read|' . $visitor->user_id;
 		}
 
 		/** @var \nick97\TraktMovies\XF\Entity\Thread $thread */
 		$thread = $this->em()->find('XF:Thread', $threadId, $extraWith);
-		if (!$thread)
-		{
+		if (!$thread) {
 			throw $this->exception($this->notFound(\XF::phrase('requested_thread_not_found')));
 		}
-		if (!$thread->canView($error))
-		{
+		if (!$thread->canView($error)) {
 			throw $this->exception($this->noPermission($error));
 		}
 
@@ -609,12 +564,10 @@ class Movies extends AbstractController
 
 		/** @var \XF\Entity\Post $post */
 		$post = $this->em()->find('XF:Post', $postId, $extraWith);
-		if (!$post)
-		{
+		if (!$post) {
 			throw $this->exception($this->notFound(\XF::phrase('requested_post_not_found')));
 		}
-		if (!$post->canView($error))
-		{
+		if (!$post->canView($error)) {
 			throw $this->exception($this->noPermission($error));
 		}
 

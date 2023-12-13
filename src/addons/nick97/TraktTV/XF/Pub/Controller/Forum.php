@@ -45,6 +45,14 @@ class Forum extends XFCP_Forum
 		$editorPlugin = $this->plugin('XF:Editor');
 		$comment = $editorPlugin->fromInput('message');
 
+		$clientKey = \XF::options()->traktTvThreads_clientkey;
+
+		if (!$clientKey) {
+			throw $this->exception(
+				$this->notFound(\XF::phrase("nick97_tv_trakt_api_key_not_found"))
+			);
+		}
+
 		/** @var \nick97\TraktTV\Helper\Trakt\Show $traktHelper */
 		$traktHelper = \XF::helper('nick97\TraktTV:Trakt\Show');
 		$showId = $traktHelper->parseShowId($title);
@@ -91,6 +99,14 @@ class Forum extends XFCP_Forum
 
 		if ($this->isPost()) {
 			$title = $this->filter('tvlink', 'str');
+
+			$clientKey = \XF::options()->traktTvThreads_clientkey;
+
+			if (!$clientKey) {
+				throw $this->exception(
+					$this->notFound(\XF::phrase("nick97_tv_trakt_api_key_not_found"))
+				);
+			}
 
 			/** @var \nick97\TraktTV\Helper\Trakt\Show $traktHelper */
 			$traktHelper = \XF::helper('nick97\TraktTV:Trakt\Show');

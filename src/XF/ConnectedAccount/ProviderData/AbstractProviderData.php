@@ -39,8 +39,7 @@ abstract class AbstractProviderData implements \ArrayAccess
 		$provider = $storageState->getProvider();
 		$handler = $provider->handler;
 
-		switch ($version = $handler->getOAuthVersion())
-		{
+		switch ($version = $handler->getOAuthVersion()) {
 			case 2:
 				$extraData = [
 					'token' => $token->getAccessToken()
@@ -66,21 +65,18 @@ abstract class AbstractProviderData implements \ArrayAccess
 	{
 		$endpoint = $endpoint ?: $this->getDefaultEndpoint();
 
-		if ($value = $this->requestFromCache($endpoint, $key))
-		{
+
+
+		if ($value = $this->requestFromCache($endpoint, $key)) {
 			return $value;
 		}
 
 		$storageState = $this->storageState;
 		$data = $storageState->retrieveProviderData();
-		if ($data && $endpoint == $this->getDefaultEndpoint())
-		{
-			if ($key === null)
-			{
+		if ($data && $endpoint == $this->getDefaultEndpoint()) {
+			if ($key === null) {
 				$value = $data;
-			}
-			else
-			{
+			} else {
 				$value = $data[$key] ?? null;
 			}
 			$this->storeInCache($endpoint, $value, $key);
@@ -90,46 +86,44 @@ abstract class AbstractProviderData implements \ArrayAccess
 		$provider = $storageState->getProvider();
 		$handler = $provider->handler;
 
-		try
-		{
+		try {
 			$config = $handler->getOAuthConfig($provider);
 			$config['storageType'] = $storageState->getStorageType();
 
+
+
+
 			$data = $handler->getOAuth($config)->request($endpoint, $method);
+			echo "<pre>";
+			var_dump($data, $endpoint, $method, $config);
+			exit;
+
+			exit;
 			$data = json_decode($data, true);
 			$this->storeInCache($endpoint, $data);
-			if ($endpoint == $this->getDefaultEndpoint())
-			{
+			if ($endpoint == $this->getDefaultEndpoint()) {
 				$storageState->storeProviderData($data);
 			}
 			return $this->requestFromCache($endpoint, $key);
-		}
-		catch(\Exception $e)
-		{
+		} catch (\Exception $e) {
 			return null;
 		}
 	}
 
 	public function requestFromCache($endpoint, $key = null)
 	{
-		if ($key === null)
-		{
+		if ($key === null) {
 			return $this->cache[$endpoint] ?? null;
-		}
-		else
-		{
+		} else {
 			return $this->cache[$endpoint][$key] ?? null;
 		}
 	}
 
 	public function storeInCache($endpoint, $value, $key = null)
 	{
-		if ($key === null)
-		{
+		if ($key === null) {
 			$this->cache[$endpoint] = $value;
-		}
-		else
-		{
+		} else {
 			$this->cache[$endpoint][$key] = $value;
 		}
 	}
@@ -141,8 +135,7 @@ abstract class AbstractProviderData implements \ArrayAccess
 			'd' => '(?P<day>\d{1,2})',
 			'y' => '(?P<year>\d{1,4})',
 		]);
-		if (!preg_match('#^' . $format . '$#i', $birthday, $match))
-		{
+		if (!preg_match('#^' . $format . '$#i', $birthday, $match)) {
 			return false;
 		}
 
@@ -150,8 +143,7 @@ abstract class AbstractProviderData implements \ArrayAccess
 		$day = intval($match['day']);
 		$year = intval($match['year']);
 
-		if (!$year)
-		{
+		if (!$year) {
 			return false;
 		}
 
@@ -166,12 +158,9 @@ abstract class AbstractProviderData implements \ArrayAccess
 	public function offsetGet($offset)
 	{
 		$method = 'get' . \XF\Util\Php::camelCase($offset);
-		if (method_exists($this, $method))
-		{
+		if (method_exists($this, $method)) {
 			$value = $this->$method();
-		}
-		else
-		{
+		} else {
 			$value = $this->requestFromEndpoint($offset);
 		}
 		return $value ?: null;

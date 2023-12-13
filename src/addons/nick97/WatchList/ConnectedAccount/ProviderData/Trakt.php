@@ -11,7 +11,7 @@ class Trakt extends AbstractProviderData
      */
     public function getDefaultEndpoint()
     {
-        return 'users';
+        return 'users/me';
     }
 
     /**
@@ -19,8 +19,12 @@ class Trakt extends AbstractProviderData
      */
     public function getProviderKey()
     {
-        $data = $this->requestUserData();
-        return $data['id'];
+
+        // var_dump($this->requestFromEndpoint('name'));exit;
+
+        return $this->requestFromEndpoint('name');
+
+        // return "NAME";
     }
 
     /**
@@ -28,34 +32,6 @@ class Trakt extends AbstractProviderData
      */
     public function getUsername()
     {
-        $data = $this->requestUserData();
-        return $data['display_name'];
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getEmail()
-    {
-        $data = $this->requestUserData();
-        return $data['email'];
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAvatarUrl()
-    {
-        $data = $this->requestUserData();
-        return $data['profile_image_url'];
-    }
-
-    /**
-     * @return mixed
-     */
-    protected function requestUserData()
-    {
-        $user = $this->requestFromEndpoint('data');
-        return $user[0];
+        return $this->requestFromEndpoint('username');
     }
 }

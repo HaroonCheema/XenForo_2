@@ -274,6 +274,14 @@ class TV extends \XF\ThreadType\AbstractHandler
 			$thread->error(\XF::phrase('trakt_tv_error_id_not_valid'));
 		}
 
+		// $clientKey = \XF::options()->traktTvThreads_clientkey;
+
+		// 	if (!$clientKey) {
+		// 		throw $this->exception(
+		// 			$this->notFound(\XF::phrase("nick97_tv_trakt_api_key_not_found"))
+		// 		);
+		// 	}
+
 		/** @var \nick97\TraktTV\Helper\Trakt\Show $traktHelper */
 		$traktHelper = \XF::helper('nick97\TraktTV:Trakt\Show');
 		$tvCreator->setTvId($traktHelper->parseShowId($tvId));

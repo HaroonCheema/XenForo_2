@@ -62,6 +62,7 @@ return array (
   'option_group.trader' => 'Trader',
   'option_group.traktMovies' => '[nickp7] Trakt Movie Thread Starter',
   'option_group.traktTvThreads' => '[nick97] Trakt TV Thread Starter',
+  'option_group.traktWatchLists' => '[nick97] Trakt Watch List',
   'option_group.users' => 'User options',
   'option_group.usersAndRegistration' => 'User registration',
   'option_group.xb_stop_human_span' => '[XB] Stop Human Spam',

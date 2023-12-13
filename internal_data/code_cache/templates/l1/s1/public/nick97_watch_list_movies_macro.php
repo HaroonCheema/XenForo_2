@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 54af37142fb50c7fdc2aaac3e137beda
+// FROM HASH: a652822bc0736bb9b34fe514d57713d3
 return array(
 'macros' => array('stats' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -79,7 +79,7 @@ return array(
 			margin: 0 auto;
 			width: 100%;
 		}
-		
+
 		.right_statsvideo{
 			cursor: pointer;
 		}
@@ -98,17 +98,7 @@ return array(
 					<h2>Stats</h2>
 				</div>
 
-				';
-	if (true) {
-		$__finalCompiled .= '
-
-					<div class="statsBox right_statsvideo">
-						<h2><i class="fas fa-chevron-right"></i></h2>
-					</div>
-
-				';
-	}
-	$__finalCompiled .= '
+				' . '
 			</div>
 		</div>
 	</div>

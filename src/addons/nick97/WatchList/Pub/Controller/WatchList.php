@@ -11,8 +11,6 @@ class WatchList extends AbstractController
 
 	public function actionIndex(ParameterBag $params)
 	{
-		// return $this->message("Index page. Template not created yet.");
-
 		$conditions = [
 			['discussion_type', 'snog_movies_movie'],
 			['discussion_type', 'trakt_movies_movie'],
@@ -112,10 +110,18 @@ class WatchList extends AbstractController
 
 		$endpoint = 'https://api.trakt.tv/users/sean/stats';
 
+		$clientKey = \XF::options()->nick97_watch_list_trakt_api_key;
+
+		if (!$clientKey) {
+			throw $this->exception(
+				$this->notFound(\XF::phrase("nick97_watch_list_trakt_api_key_not_found"))
+			);
+		}
+
 		$headers = array(
 			'Content-Type: application/json',
 			'trakt-api-version: 2',
-			'trakt-api-key: 1d0f918e4f03cf101d342025c836ad72cb26b24184f6e19d5d499de7710019c2'
+			'trakt-api-key: ' . $clientKey
 		);
 
 		$ch = curl_init();
@@ -136,12 +142,11 @@ class WatchList extends AbstractController
 		$toArray = json_decode($result, true);
 
 		$stats = [
-			'moviesWatched' => number_format($toArray["movies"]["watched"]),
+			'moviesWatched' => isset($toArray["movies"]["watched"]) ? number_format($toArray["movies"]["watched"]) : null,
 			'moviesTime' => $this->convertMinutes($toArray["movies"]["minutes"]),
-			'episodesWatched' => number_format($toArray["episodes"]["watched"]),
+			'episodesWatched' => isset($toArray["episodes"]["watched"]) ? number_format($toArray["episodes"]["watched"]) : null,
 			'episodesTime' => $this->convertMinutes($toArray["episodes"]["minutes"]),
 		];
-
 
 		return $stats;
 	}
@@ -164,9 +169,9 @@ class WatchList extends AbstractController
 		// $remaining_days = $days % 30;
 
 		$viewParams = [
-			'hours' => number_format($hours),
-			'days' => number_format($days),
-			'months' => number_format($months),
+			'hours' => isset($hours) ? number_format($hours) : 0,
+			'days' => isset($days) ? number_format($days) : 0,
+			'months' => isset($months) ? number_format($months) : 0,
 		];
 
 		return $viewParams;

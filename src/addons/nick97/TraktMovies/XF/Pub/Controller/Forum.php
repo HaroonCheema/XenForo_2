@@ -22,6 +22,15 @@ class Forum extends XFCP_Forum
 				return parent::actionPostThread($params);
 			}
 
+			$clientKey = \XF::options()->traktMovieThreads_apikey;
+
+			if (!$clientKey) {
+
+				throw $this->exception(
+					$this->notFound(\XF::phrase("nick97_movie_trakt_api_key_not_found"))
+				);
+			}
+
 			/** @var \nick97\TraktMovies\Helper\Trakt $traktHelper */
 			$traktHelper = \XF::helper('nick97\TraktMovies:Trakt');
 			$movieId = $traktHelper->parseMovieId($this->filter('nick97_movies_trakt_id', 'str'));

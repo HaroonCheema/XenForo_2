@@ -466,6 +466,14 @@ class TV extends AbstractController
 				return $this->error(\XF::phrase('trakt_tv_error_no_show'));
 			}
 
+			$clientKey = \XF::options()->traktTvThreads_clientkey;
+
+			if (!$clientKey) {
+				throw $this->exception(
+					$this->notFound(\XF::phrase("nick97_tv_trakt_api_key_not_found"))
+				);
+			}
+
 			/** @var \nick97\TraktTV\Helper\Trakt\Show $traktShowHelper */
 			$traktShowHelper = \XF::helper('nick97\TraktTV:Trakt\Show');
 			$showId = $traktShowHelper->parseShowId($title);

@@ -35,6 +35,12 @@
         "version_string": "1.0.0 Alpha",
         "hash": "b532573d9200c50a64e0677b9b3062cf"
     },
+    "nick97_tv_trakt_api_key_not_found.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "f7b8ecc03a8ba3aa4d18d02823fef077"
+    },
     "option.traktTvThreads_aggregateCredits.txt": {
         "global_cache": false,
         "version_id": 1000010,
@@ -76,6 +82,12 @@
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
         "hash": "ca62408007a0b054f41ccaa12d9fae35"
+    },
+    "option.traktTvThreads_clientkey.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "3b7d33b56fcf2f6d28ff69b5ebbee0a4"
     },
     "option.traktTvThreads_companiesLimit.txt": {
         "global_cache": false,
@@ -322,6 +334,12 @@
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
         "hash": "d947f8e54162b58f6e8db43d353efb62"
+    },
+    "option_explain.traktTvThreads_clientkey.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "787ad90d431566de262de6d3e70b28ff"
     },
     "option_explain.traktTvThreads_companiesLimit.txt": {
         "global_cache": false,

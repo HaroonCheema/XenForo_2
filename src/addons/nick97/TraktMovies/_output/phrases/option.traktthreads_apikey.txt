@@ -1,1 +1,1 @@
-Trakt API Key
+TMDb API Key

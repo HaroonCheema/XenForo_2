@@ -32,10 +32,12 @@ class Show
 	{
 		$endpoint = 'https://api.trakt.tv/shows/' . $id;
 
+		$clientKey = \XF::options()->traktTvThreads_clientkey;
+
 		$headers = array(
 			'Content-Type: application/json',
 			'trakt-api-version: 2',
-			'trakt-api-key: 1d0f918e4f03cf101d342025c836ad72cb26b24184f6e19d5d499de7710019c2'
+			'trakt-api-key: ' . $clientKey
 		);
 
 		$ch = curl_init();

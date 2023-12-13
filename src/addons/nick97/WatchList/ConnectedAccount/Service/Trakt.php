@@ -32,7 +32,7 @@ class Trakt extends AbstractService
         parent::__construct($credentials, $httpClient, $storage, $scopes, $baseApiUri);
 
         if (null === $baseApiUri) {
-            $this->baseApiUri = new Uri('hhttps://api.trakt.tv/');
+            $this->baseApiUri = new Uri('https://api.trakt.tv/');
         }
     }
 

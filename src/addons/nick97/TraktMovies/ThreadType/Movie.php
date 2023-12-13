@@ -252,6 +252,15 @@ class Movie extends AbstractHandler
 			$thread->error(\XF::phrase('trakt_movies_error_tv_id'));
 		}
 
+		// $clientKey = \XF::options()->traktMovieThreads_apikey;
+
+		// if (!$clientKey) {
+
+		// 	throw $this->exception(
+		// 		$this->notFound(\XF::phrase("nick97_movie_trakt_api_key_not_found"))
+		// 	);
+		// }
+
 		/** @var \nick97\TraktMovies\Helper\Trakt $traktHelper */
 		$traktHelper = \XF::helper('nick97\TraktMovies:Trakt');
 		$movieCreator->setMovieId($traktHelper->parseMovieId($movieId));
