@@ -132,7 +132,7 @@
     "public/trakt_movies_thread_view_type_movie.html": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
-        "hash": "7ce5844038c37aee023b9e9d6c7cfcf1"
+        "hash": "b32dc7f5ce2e94b2db7eda28eb22ad1a"
     },
     "public/trakt_movies_title_prompt.html": {
         "version_id": 1000010,

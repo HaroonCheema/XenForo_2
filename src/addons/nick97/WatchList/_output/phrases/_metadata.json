@@ -11,6 +11,18 @@
         "version_string": "1.0.0 Alpha",
         "hash": "ec211f7c20af43e742bf2570c3cb84f9"
     },
+    "choose_who_see_my_stats.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "89afecd0acfd97caba5129cacf05379d"
+    },
+    "choose_who_see_my_watchlist.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "2e75c12f2daaa3992ceeef6d93079d76"
+    },
     "con_acc.nick_trakt.txt": {
         "global_cache": false,
         "version_id": 1000010,
@@ -52,6 +64,18 @@
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
         "hash": "afcfcce1c3bc846f73ed81877dae88b7"
+    },
+    "nick97_member_limits_viewing_stats.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "8f2f72eac1f4f6bbc2445dee7756ecf1"
+    },
+    "nick97_member_limits_viewing_watchlist.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "baee952dee22f32a41a0506cd86418f5"
     },
     "nick97_trakt_client_id_explain.txt": {
         "global_cache": false,

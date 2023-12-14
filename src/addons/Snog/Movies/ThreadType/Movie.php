@@ -22,8 +22,7 @@ class Movie extends AbstractHandler
 	public function getThreadViewAndTemplate(Thread $thread): array
 	{
 		/** @var \Snog\Movies\XF\Entity\Thread $thread */
-		if ($thread->Movie)
-		{
+		if ($thread->Movie) {
 			return ['Snog\Movies:Forum\ViewTypeMovie', 'snog_movies_thread_view_type_movie'];
 		}
 
@@ -39,8 +38,7 @@ class Movie extends AbstractHandler
 	{
 		/** @var \Snog\Movies\XF\Entity\Thread $thread */
 		$movie = $thread->Movie;
-		if ($movie)
-		{
+		if ($movie) {
 			$overrides = [
 				'pinned_first_post_macro' => 'snog_movies_post_macros::movie',
 				'pinned_first_post_macro_args' => []
@@ -49,8 +47,7 @@ class Movie extends AbstractHandler
 			$options = \XF::options();
 			$threadInfo = $options->tmdbthreads_showThreadInfo;
 
-			if (isset($threadInfo['production_companies']))
-			{
+			if (isset($threadInfo['production_companies'])) {
 				/** @var \Snog\Movies\Repository\Company $companyRepo */
 				$companyRepo = \XF::repository('Snog\Movies:Company');
 
@@ -64,8 +61,7 @@ class Movie extends AbstractHandler
 				];
 			}
 
-			if (isset($threadInfo['cast_tab']))
-			{
+			if (isset($threadInfo['cast_tab'])) {
 				/** @var \Snog\Movies\Repository\Cast $castRepo */
 				$castRepo = \XF::repository('Snog\Movies:Cast');
 				$castFinder = $castRepo->findCastForMovie($movie->tmdb_id);
@@ -84,8 +80,7 @@ class Movie extends AbstractHandler
 				];
 			}
 
-			if (isset($threadInfo['crew_tab']))
-			{
+			if (isset($threadInfo['crew_tab'])) {
 				/** @var \Snog\Movies\Repository\Crew $crewRepo */
 				$crewRepo = \XF::repository('Snog\Movies:Crew');
 				$crewFinder = $crewRepo->findCrewForMovie($movie->tmdb_id);
@@ -104,8 +99,7 @@ class Movie extends AbstractHandler
 				];
 			}
 
-			if (isset($threadInfo['videos_tab']))
-			{
+			if (isset($threadInfo['videos_tab'])) {
 				/** @var \Snog\Movies\Repository\Video $videoRepo */
 				$videoRepo = \XF::repository('Snog\Movies:Video');
 
@@ -148,8 +142,7 @@ class Movie extends AbstractHandler
 		$data = parent::getLdStructuredData($thread, $firstDisplayedPost, $page, $extraData);
 
 		$movie = $thread->Movie;
-		if (!$movie)
-		{
+		if (!$movie) {
 			return $data;
 		}
 
@@ -161,8 +154,7 @@ class Movie extends AbstractHandler
 		$data['image'] = $movie->getImageUrl('l');
 		$data['description'] = $movie->tmdb_plot;
 
-		if ($movie->tmdb_rating > 0)
-		{
+		if ($movie->tmdb_rating > 0) {
 			$data['aggregateRating'] = [
 				'@type' => 'AggregateRating',
 				'bestRating' => 5,
@@ -190,8 +182,7 @@ class Movie extends AbstractHandler
 
 	public function setupMessagePreparer(Thread $thread, Post $post, \XF\Service\Message\Preparer $preparer)
 	{
-		if (!$post->isFirstPost())
-		{
+		if (!$post->isFirstPost()) {
 			return;
 		}
 
@@ -207,8 +198,7 @@ class Movie extends AbstractHandler
 		$thread = $creator->getThread();
 
 		$apiResponse = $thread->getOption('movieApiResponse');
-		if (!$apiResponse)
-		{
+		if (!$apiResponse) {
 			return;
 		}
 
@@ -225,25 +215,20 @@ class Movie extends AbstractHandler
 		// CREATE DEFAULT THREAD/MESSAGE WITHOUT PRETTY FORMATTING
 
 		$message = $movie->getPostMessage();
-		if (!$options->tmdbthreads_force_comments)
-		{
+		if (!$options->tmdbthreads_force_comments) {
 			$message .= $comment;
 		}
 
-		if (\XF::options()->tmdbthreads_syncTitle)
-		{
+		if (\XF::options()->tmdbthreads_syncTitle) {
 			$title = $movie->getExpectedThreadTitle();
-		}
-		else
-		{
+		} else {
 			$title = $thread->title;
 		}
 
 		$creator->setContent($title, $message);
 
 		$forum = $creator->getForum();
-		if (!$options->tmdbthreads_force_comments && $forum->canUploadAndManageAttachments())
-		{
+		if (!$options->tmdbthreads_force_comments && $forum->canUploadAndManageAttachments()) {
 			// Unassociate attachments from this post
 			$creator->setAttachmentHash(null);
 		}
@@ -253,10 +238,10 @@ class Movie extends AbstractHandler
 
 	public function processExtraDataService(Thread $thread, string $context, Request $request, array $options = [])
 	{
-		if (!$thread->isInsert())
-		{
+		if (!$thread->isInsert()) {
 			return null;
 		}
+
 
 		/** @var \Snog\Movies\Service\Thread\TypeData\MovieCreator $typeCreator */
 		$typeCreator = \XF::service('Snog\Movies:Thread\TypeData\MovieCreator', $thread);
@@ -264,8 +249,7 @@ class Movie extends AbstractHandler
 		$movieCreator = $typeCreator->getMovieCreator();
 
 		$movieId = $request->filter('snog_movies_tmdb_id', 'str');
-		if (stristr($movieId, 'themoviedb.org/tv/'))
-		{
+		if (stristr($movieId, 'themoviedb.org/tv/')) {
 			$thread->error(\XF::phrase('snog_movies_error_tv_id'));
 		}
 
@@ -282,20 +266,17 @@ class Movie extends AbstractHandler
 	{
 		/** @var \Snog\Movies\XF\Entity\Thread $thread */
 		$movie = $thread->Movie;
-		if ($movie)
-		{
+		if ($movie) {
 			$movie->delete();
 		}
 	}
 
 	public function onThreadLeaveType(Thread $thread, array $typeData, bool $isDelete)
 	{
-		if (!$isDelete)
-		{
+		if (!$isDelete) {
 			/** @var \Snog\Movies\XF\Entity\Thread $thread */
 			$movie = $thread->Movie;
-			if ($movie)
-			{
+			if ($movie) {
 				$movie->delete();
 				$thread->adjustMovieThreadCount(-1);
 			}

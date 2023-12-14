@@ -93,8 +93,7 @@ abstract class Entity implements \ArrayAccess
 		$this->_relations = $relations;
 		$this->rootClass = \XF::extension()->resolveExtendedClassToRoot($this);
 
-		if (!$values)
-		{
+		if (!$values) {
 			$this->_setupDefaults();
 
 			\XF::fire('entity_defaults', [$this], $this->rootClass);
@@ -120,80 +119,62 @@ abstract class Entity implements \ArrayAccess
 		$structure = $this->_structure;
 		$originalKey = $key;
 
-		if (substr($key, -1) == '_')
-		{
+		if (substr($key, -1) == '_') {
 			$key = substr($key, 0, -1);
 			$useGetter = false;
-		}
-		else
-		{
+		} else {
 			$useGetter = true;
 		}
 
-		if ($useGetter && isset($structure->getters[$key]))
-		{
+		if ($useGetter && isset($structure->getters[$key])) {
 			$getterVal = $structure->getters[$key];
-			if (is_array($getterVal))
-			{
+			if (is_array($getterVal)) {
 				$cache = $getterVal['cache'] ?? true;
 				$getter = $getterVal['getter'];
-			}
-			else
-			{
+			} else {
 				$cache = $getterVal; // is a boolean indicating cacheability
 				$getter = true; // key indicates getter name so build that below
 			}
 
-			if ($cache && array_key_exists($key, $this->_getterCache))
-			{
+			if ($cache && array_key_exists($key, $this->_getterCache)) {
 				return $this->_getterCache[$key];
 			}
 
-			if ($getter === true)
-			{
+			if ($getter === true) {
 				$getter = 'get' . \XF\Util\Php::camelCase($key);
 			}
 
 			$result = $this->$getter();
-			if ($cache)
-			{
+			if ($cache) {
 				$this->_getterCache[$key] = $result;
 			}
 
 			return $result;
 		}
 
-		if (!empty($structure->columns[$key]))
-		{
-			if ($useGetter && !empty($structure->columns[$key]['censor']))
-			{
-				if (!array_key_exists($key, $this->_getterCache))
-				{
+		if (!empty($structure->columns[$key])) {
+			if ($useGetter && !empty($structure->columns[$key]['censor'])) {
+				if (!array_key_exists($key, $this->_getterCache)) {
 					$v = $this->getValue($key);
 					$this->_getterCache[$key] = $this->app()->stringFormatter()->censorText($v);
 				}
 
 				return $this->_getterCache[$key];
-			}
-			else
-			{
+			} else {
 				return $this->getValue($key);
 			}
 		}
 
-		if (!empty($structure->relations[$key]))
-		{
+		if (!empty($structure->relations[$key])) {
 			return $this->getRelation($key);
 		}
 
-		if (!empty($structure->columnAliases[$key]))
-		{
+		if (!empty($structure->columnAliases[$key])) {
 			$alias = $structure->columnAliases[$key] . ($useGetter ? '' : '_');
 			return $this->get($alias);
 		}
 
-		if (\XF::$debugMode)
-		{
+		if (\XF::$debugMode) {
 			// Note: this is intentionally triggering a warning rather than an exception. This will commonly
 			// trigger in templates and we will still be able to render in that case.
 			trigger_error("Accessed unknown getter '$originalKey' on " . $this->__toString(), E_USER_WARNING);
@@ -209,43 +190,30 @@ abstract class Entity implements \ArrayAccess
 	public function getValue($key)
 	{
 		$columns = $this->_structure->columns;
-		
-		if (empty($columns[$key]))
-		{
+
+		if (empty($columns[$key])) {
 			throw new \InvalidArgumentException("Unknown column $key");
 		}
 
 		$column = $columns[$key];
 
-		if (array_key_exists($key, $this->_newValues))
-		{
+		if (array_key_exists($key, $this->_newValues)) {
 			$value = $this->_newValues[$key];
-			if ($value instanceof DeferredValue)
-			{
+			if ($value instanceof DeferredValue) {
 				$value = $this->_resolveDeferredValue($key, $value, 'get');
 			}
-		}
-		else if (array_key_exists($key, $this->_values))
-		{
-			if ($column['type'] & self::REQUIRES_DECODING)
-			{
-				if (!array_key_exists($key, $this->_valueCache))
-				{
+		} else if (array_key_exists($key, $this->_values)) {
+			if ($column['type'] & self::REQUIRES_DECODING) {
+				if (!array_key_exists($key, $this->_valueCache)) {
 					$this->_valueCache[$key] = $this->_em->decodeValueFromSourceExtended($column['type'], $this->_values[$key], $column);
 				}
 				$value = $this->_valueCache[$key];
-			}
-			else
-			{
+			} else {
 				$value = $this->_values[$key];
 			}
-		}
-		else if (array_key_exists('default', $column))
-		{
+		} else if (array_key_exists('default', $column)) {
 			$value = $column['default'];
-		}
-		else
-		{
+		} else {
 			$value = null;
 		}
 
@@ -256,32 +224,23 @@ abstract class Entity implements \ArrayAccess
 	{
 		$columns = $this->_structure->columns;
 
-		if (empty($columns[$key]))
-		{
+		if (empty($columns[$key])) {
 			throw new \InvalidArgumentException("Unknown column $key");
 		}
 
 		$column = $columns[$key];
 
-		if (array_key_exists($key, $this->_newValues))
-		{
+		if (array_key_exists($key, $this->_newValues)) {
 			$value = $this->_newValues[$key];
-			if ($value instanceof DeferredValue)
-			{
+			if ($value instanceof DeferredValue) {
 				$value = $this->_resolveDeferredValue($key, $value, 'get');
 			}
-		}
-		else if (array_key_exists($key, $this->_values))
-		{
+		} else if (array_key_exists($key, $this->_values)) {
 			// already encoded
 			return $this->_values[$key];
-		}
-		else if (array_key_exists('default', $column))
-		{
+		} else if (array_key_exists('default', $column)) {
 			$value = $column['default'];
-		}
-		else
-		{
+		} else {
 			$value = null;
 		}
 
@@ -292,34 +251,24 @@ abstract class Entity implements \ArrayAccess
 	{
 		$columns = $this->_structure->columns;
 
-		if (empty($columns[$key]))
-		{
+		if (empty($columns[$key])) {
 			throw new \InvalidArgumentException("Unknown column $key");
 		}
 
 		$column = $columns[$key];
 
-		if (array_key_exists($key, $this->_values))
-		{
-			if ($column['type'] & self::REQUIRES_DECODING)
-			{
-				if (!array_key_exists($key, $this->_valueCache))
-				{
+		if (array_key_exists($key, $this->_values)) {
+			if ($column['type'] & self::REQUIRES_DECODING) {
+				if (!array_key_exists($key, $this->_valueCache)) {
 					$this->_valueCache[$key] = $this->_em->decodeValueFromSourceExtended($column['type'], $this->_values[$key], $column);
 				}
 				$value = $this->_valueCache[$key];
-			}
-			else
-			{
+			} else {
 				$value = $this->_values[$key];
 			}
-		}
-		else if (array_key_exists('default', $column))
-		{
+		} else if (array_key_exists('default', $column)) {
 			$value = $column['default'];
-		}
-		else
-		{
+		} else {
 			$value = null;
 		}
 
@@ -330,36 +279,25 @@ abstract class Entity implements \ArrayAccess
 	{
 		$columns = $this->_structure->columns;
 
-		if (empty($columns[$key]))
-		{
+		if (empty($columns[$key])) {
 			throw new \InvalidArgumentException("Unknown column $key");
 		}
 
 		$column = $columns[$key];
 
-		if (array_key_exists($key, $this->_previousValues))
-		{
+		if (array_key_exists($key, $this->_previousValues)) {
 			$v = $this->_previousValues[$key];
-		}
-		else if (array_key_exists($key, $this->_values))
-		{
+		} else if (array_key_exists($key, $this->_values)) {
 			$v = $this->_values[$key];
-		}
-		else if (array_key_exists('default', $column))
-		{
+		} else if (array_key_exists('default', $column)) {
 			return $column['default'];
-		}
-		else
-		{
+		} else {
 			return null;
 		}
 
-		if ($column['type'] & self::REQUIRES_DECODING)
-		{
+		if ($column['type'] & self::REQUIRES_DECODING) {
 			return $this->_em->decodeValueFromSourceExtended($column['type'], $v, $column);
-		}
-		else
-		{
+		} else {
 			return $v;
 		}
 	}
@@ -372,8 +310,7 @@ abstract class Entity implements \ArrayAccess
 	public function getPreviousValues()
 	{
 		$values = [];
-		foreach (array_keys($this->_structure->columns) AS $k)
-		{
+		foreach (array_keys($this->_structure->columns) as $k) {
 			$values[$k] = $this->getPreviousValue($k);
 		}
 
@@ -384,13 +321,11 @@ abstract class Entity implements \ArrayAccess
 	{
 		$relations = $this->_structure->relations;
 
-		if (empty($relations[$key]))
-		{
+		if (empty($relations[$key])) {
 			throw new \InvalidArgumentException("Unknown relation $key");
 		}
 
-		if (!array_key_exists($key, $this->_relations))
-		{
+		if (!array_key_exists($key, $this->_relations)) {
 			$this->_relations[$key] = $this->_em->getRelation($relations[$key], $this);
 		}
 
@@ -401,26 +336,22 @@ abstract class Entity implements \ArrayAccess
 	{
 		$relations = $this->_structure->relations;
 
-		if (empty($relations[$key]))
-		{
+		if (empty($relations[$key])) {
 			throw new \InvalidArgumentException("Unknown relation $key");
 		}
 
 		$relation = $relations[$key];
 
-		if (empty($this->_relations[$key]))
-		{
+		if (empty($this->_relations[$key])) {
 			$data = $this->_em->getRelation($relation, $this);
-			if (!$data)
-			{
+			if (!$data) {
 				$data = $this->_em->hydrateDefaultFromRelation($this, $relation);
 			}
 
 			$this->_relations[$key] = $data;
 		}
 
-		if ($cascadeSave)
-		{
+		if ($cascadeSave) {
 			$this->addCascadedSave($this->_relations[$key]);
 		}
 
@@ -441,23 +372,19 @@ abstract class Entity implements \ArrayAccess
 	{
 		$relations = $this->_structure->relations;
 
-		if (!isset($relations[$key]))
-		{
+		if (!isset($relations[$key])) {
 			throw new \InvalidArgumentException("Unknown relation $key");
 		}
 
 		$relation = $relations[$key];
 
-		if (empty($relation['key']) || $relation['type'] != self::TO_MANY)
-		{
+		if (empty($relation['key']) || $relation['type'] != self::TO_MANY) {
 			throw new \InvalidArgumentException("Relation $key does not support finder hydration");
 		}
 
 		$falseEntities = [];
-		foreach ($entities AS $entityKey => $value)
-		{
-			if (!$value)
-			{
+		foreach ($entities as $entityKey => $value) {
+			if (!$value) {
 				$falseEntities[$entityKey] = true;
 				unset($entities[$entityKey]);
 			}
@@ -471,24 +398,18 @@ abstract class Entity implements \ArrayAccess
 	{
 		$relations = $this->_structure->relations;
 
-		if (!isset($relations[$key]))
-		{
+		if (!isset($relations[$key])) {
 			throw new \InvalidArgumentException("Unknown relation $key");
 		}
 
 		$relation = $relations[$key];
 
-		if ($relation['type'] == self::TO_MANY)
-		{
-			if (!($value instanceof AbstractCollection))
-			{
+		if ($relation['type'] == self::TO_MANY) {
+			if (!($value instanceof AbstractCollection)) {
 				throw new \InvalidArgumentException("To many relations must be hydrated with collections");
 			}
-		}
-		else
-		{
-			if ($value !== null && !($value instanceof Entity))
-			{
+		} else {
+			if ($value !== null && !($value instanceof Entity)) {
 				throw new \InvalidArgumentException("To one relations must be hydrated with entities or null");
 			}
 		}
@@ -500,8 +421,7 @@ abstract class Entity implements \ArrayAccess
 	{
 		$relations = $this->_structure->relations;
 
-		if (empty($relations[$key]))
-		{
+		if (empty($relations[$key])) {
 			throw new \InvalidArgumentException("Unknown relation $key");
 		}
 
@@ -512,8 +432,7 @@ abstract class Entity implements \ArrayAccess
 	{
 		$relations = $this->_structure->relations;
 
-		if (empty($relations[$key]))
-		{
+		if (empty($relations[$key])) {
 			throw new \InvalidArgumentException("Unknown relation $key");
 		}
 
@@ -523,8 +442,7 @@ abstract class Entity implements \ArrayAccess
 	public function toArray($allowGetters = true)
 	{
 		$output = [];
-		foreach ($this->_structure->columns AS $key => $null)
-		{
+		foreach ($this->_structure->columns as $key => $null) {
 			$output[$key] = $allowGetters ? $this->get($key) : $this->getValue($key);
 		}
 
@@ -536,12 +454,9 @@ abstract class Entity implements \ArrayAccess
 		$result = new \XF\Api\Result\EntityResult($this);
 		$subResult = $this->setupApiResultData($result, $verbosity, $options);
 
-		if ($subResult instanceof \XF\Api\Result\EntityResultInterface)
-		{
+		if ($subResult instanceof \XF\Api\Result\EntityResultInterface) {
 			return $subResult;
-		}
-		else
-		{
+		} else {
 			return $result;
 		}
 	}
@@ -554,9 +469,10 @@ abstract class Entity implements \ArrayAccess
 	 * @param array $options
 	 */
 	protected function setupApiResultData(
-		\XF\Api\Result\EntityResult $result, $verbosity = self::VERBOSITY_NORMAL, array $options = []
-	)
-	{
+		\XF\Api\Result\EntityResult $result,
+		$verbosity = self::VERBOSITY_NORMAL,
+		array $options = []
+	) {
 		throw new \LogicException(
 			"API result rules not defined by " . $this->_structure->shortName . '. Override setupApiResultData().'
 		);
@@ -574,30 +490,24 @@ abstract class Entity implements \ArrayAccess
 
 	public function set($key, $value, array $options = [])
 	{
-		if ($this->_readOnly)
-		{
+		if ($this->_readOnly) {
 			throw new \LogicException("Entity is read only");
 		}
 
-		if ($this->_deleted)
-		{
+		if ($this->_deleted) {
 			throw new \LogicException("Attempted to set '$key' on a deleted entity");
 		}
 
-		if ($this->_writePending == 'delete')
-		{
+		if ($this->_writePending == 'delete') {
 			throw new \LogicException("Attempted to set '$key' while a deletion was pending");
 		}
 
-		if ($this->_writePending && empty($options['forceSet']))
-		{
+		if ($this->_writePending && empty($options['forceSet'])) {
 			throw new \LogicException("Attempted to set '$key' while a save was pending without forceSet");
 		}
 
-		if (!isset($this->_structure->columns[$key]))
-		{
-			if (empty($options['skipInvalid']))
-			{
+		if (!isset($this->_structure->columns[$key])) {
+			if (empty($options['skipInvalid'])) {
 				throw new \InvalidArgumentException("Column '$key' is unknown");
 			}
 			return false;
@@ -605,62 +515,53 @@ abstract class Entity implements \ArrayAccess
 
 		$column = $this->_structure->columns[$key];
 
-		if ((!empty($column['readOnly']) || !empty($column['autoIncrement'])) && empty($options['forceSet']))
-		{
-			if (empty($options['skipInvalid']))
-			{
+		if ((!empty($column['readOnly']) || !empty($column['autoIncrement'])) && empty($options['forceSet'])) {
+			if (empty($options['skipInvalid'])) {
 				throw new \InvalidArgumentException("Column '$key' is read only, can only be set with forceSet");
 			}
 			return false;
 		}
 
-		if (!empty($column['writeOnce']) && $this->isUpdate() && empty($options['forceSet']))
-		{
-			if (empty($options['skipInvalid']))
-			{
+		if (!empty($column['writeOnce']) && $this->isUpdate() && empty($options['forceSet'])) {
+			if (empty($options['skipInvalid'])) {
 				throw new \InvalidArgumentException("Column '$key' can only be written on insert or set with forceSet");
 			}
 			return false;
 		}
 
-		if ($value instanceof DeferredValue)
-		{
+		if ($value instanceof DeferredValue) {
 			$this->_setInternal($key, $value);
 			return true;
 		}
 
-		if (!$this->_verifyValueCustom($value, $key, $column['type'], $column))
-		{
+		if (!$this->_verifyValueCustom($value, $key, $column['type'], $column)) {
 			return false;
 		}
 
 		$value = $this->_castValueToType($value, $key, $column['type'], $column);
 
 		if (!$this->_em->getValueFormatter()->applyValueConstraints(
-			$value, $column['type'], $column, $constraintError, !empty($options['forceConstraint'])
-		))
-		{
-			if ($constraintError)
-			{
+			$value,
+			$column['type'],
+			$column,
+			$constraintError,
+			!empty($options['forceConstraint'])
+		)) {
+			if ($constraintError) {
 				$this->error($constraintError, $key, false);
 			}
 
 			return false;
 		}
 
-		if ($this->_columnValueIsDifferent($key, $value, $column) && $value !== null)
-		{
-			if (!empty($column['unique']))
-			{
-				if (!$this->_verifyUniqueValue($value, $key, $column['unique']))
-				{
+		if ($this->_columnValueIsDifferent($key, $value, $column) && $value !== null) {
+
+			if (!empty($column['unique'])) {
+				if (!$this->_verifyUniqueValue($value, $key, $column['unique'])) {
 					return false;
 				}
-			}
-			else if (!empty($column['autoIncrement']) || $this->_structure->primaryKey === $key)
-			{
-				if (!$this->_verifyUniqueValue($value, $key, true))
-				{
+			} else if (!empty($column['autoIncrement']) || $this->_structure->primaryKey === $key) {
+				if (!$this->_verifyUniqueValue($value, $key, true)) {
 					return false;
 				}
 			}
@@ -672,8 +573,7 @@ abstract class Entity implements \ArrayAccess
 
 	public function setTrusted($key, $value)
 	{
-		if (!isset($this->_structure->columns[$key]))
-		{
+		if (!isset($this->_structure->columns[$key])) {
 			throw new \InvalidArgumentException("Column '$key' is unknown");
 		}
 
@@ -686,8 +586,7 @@ abstract class Entity implements \ArrayAccess
 
 	public function setFromEncoded($key, $value, array $options = [])
 	{
-		if (!isset($this->_structure->columns[$key]))
-		{
+		if (!isset($this->_structure->columns[$key])) {
 			throw new \InvalidArgumentException("Column '$key' is unknown");
 		}
 
@@ -699,13 +598,11 @@ abstract class Entity implements \ArrayAccess
 
 	public function setAsSaved($key, $value)
 	{
-		if (!$this->exists() && !$this->_writeRunning)
-		{
+		if (!$this->exists() && !$this->_writeRunning) {
 			throw new \LogicException("Can only set an already saved value on a saved entity");
 		}
 
-		if (!isset($this->_structure->columns[$key]))
-		{
+		if (!isset($this->_structure->columns[$key])) {
 			throw new \InvalidArgumentException("Column '$key' is unknown");
 		}
 
@@ -714,14 +611,11 @@ abstract class Entity implements \ArrayAccess
 
 		$sourceValue = $this->_em->encodeValueForSource($column['type'], $value);
 
-		if ($this->_writeRunning)
-		{
+		if ($this->_writeRunning) {
 			// If a write is currently happening, we can't write into $_values as it may cause isInsert and similar
 			// to fail or it may potentially be overwritten. Treat it like a new value and it'll be pushed
 			$this->_setInternal($key, $value);
-		}
-		else
-		{
+		} else {
 			$this->_values[$key] = $sourceValue;
 			$this->_invalidateCachesOnChange($key);
 		}
@@ -734,8 +628,7 @@ abstract class Entity implements \ArrayAccess
 	public function bulkSet(array $values, array $options = [])
 	{
 		$results = [];
-		foreach ($values AS $key => $value)
-		{
+		foreach ($values as $key => $value) {
 			$results[$key] = $this->set($key, $value, $options);
 		}
 
@@ -750,12 +643,9 @@ abstract class Entity implements \ArrayAccess
 
 	protected function _castValueToType($value, $key, $type, array $columnOptions = [])
 	{
-		try
-		{
+		try {
 			return $this->_em->getValueFormatter()->castValueToType($value, $type, $columnOptions);
-		}
-		catch (\Exception $e)
-		{
+		} catch (\Exception $e) {
 			throw new \InvalidArgumentException($e->getMessage() . " [$key]", $e->getCode(), $e);
 		}
 	}
@@ -763,33 +653,25 @@ abstract class Entity implements \ArrayAccess
 	protected function _verifyValueCustom(&$value, $key, $type, array $columnOptions)
 	{
 		$success = true;
-		if (!empty($columnOptions['verify']))
-		{
+		if (!empty($columnOptions['verify'])) {
 			$verifier = $columnOptions['verify'];
-			if (is_array($verifier) && $verifier[0] == '$this')
-			{
+			if (is_array($verifier) && $verifier[0] == '$this') {
 				$verifier[0] = $this;
-			}
-			else if (is_string($verifier))
-			{
+			} else if (is_string($verifier)) {
 				$verifier = [$this, $verifier];
 			}
 
 			$success = call_user_func_array($verifier, [
 				&$value, $key, $type, $columnOptions, $this
 			]);
-		}
-		else
-		{
+		} else {
 			$verifyMethod = 'verify' . \XF\Util\Php::camelCase($key);
-			if (method_exists($this, $verifyMethod))
-			{
+			if (method_exists($this, $verifyMethod)) {
 				$success = $this->$verifyMethod($value, $key, $type, $columnOptions);
 			}
 		}
 
-		if ($success !== true && $success !== false)
-		{
+		if ($success !== true && $success !== false) {
 			throw new \LogicException("Verification method of $key did not return a valid indicator (true/false)");
 		}
 
@@ -798,27 +680,20 @@ abstract class Entity implements \ArrayAccess
 
 	protected function _verifyUniqueValue($value, $key, $error = true)
 	{
-		if ($value === null)
-		{
+		if ($value === null) {
 			return true;
 		}
 
 		$match = $this->_em->getFinder($this->_structure->shortName)->where($key, '=', $value)->fetchOne();
-		if (!$match || $match === $this)
-		{
+		if (!$match || $match === $this) {
 			return true;
 		}
 
-		if ($error === true)
-		{
+		if ($error === true) {
 			$this->error(\XF::phrase('all_x_values_must_be_unique', ['key' => $key]), $key);
-		}
-		else if (is_string($error))
-		{
+		} else if (is_string($error)) {
 			$this->error(\XF::phrase($error), $key);
-		}
-		else if ($error instanceof \Closure)
-		{
+		} else if ($error instanceof \Closure) {
 			$error($key, $this);
 		}
 
@@ -846,8 +721,7 @@ abstract class Entity implements \ArrayAccess
 
 	protected function _setInternal($key, $value)
 	{
-		if (!isset($this->_structure->columns[$key]))
-		{
+		if (!isset($this->_structure->columns[$key])) {
 			throw new \InvalidArgumentException("Column $key is unknown");
 		}
 
@@ -855,25 +729,20 @@ abstract class Entity implements \ArrayAccess
 
 		$skipInvalidate = ($this->isInsert() && !empty($column['autoIncrement']) && $value === null);
 
-		if ($this->_columnValueIsDifferent($key, $value, $column))
-		{
+		if ($this->_columnValueIsDifferent($key, $value, $column)) {
 			// this means the value is different from the stored value
 			$this->_newValues[$key] = $value;
 
-			if (!$skipInvalidate)
-			{
+			if (!$skipInvalidate) {
 				$this->_invalidateCachesOnChange($key);
 			}
 
 			return true;
-		}
-		else if (array_key_exists($key, $this->_newValues))
-		{
+		} else if (array_key_exists($key, $this->_newValues)) {
 			// value is different from the new value but the same as the old value
 			unset($this->_newValues[$key]);
 
-			if (!$skipInvalidate)
-			{
+			if (!$skipInvalidate) {
 				$this->_invalidateCachesOnChange($key);
 			}
 
@@ -889,57 +758,42 @@ abstract class Entity implements \ArrayAccess
 		unset($this->_relations[$key]);
 
 		// invalidate any getters that depend on this value
-		foreach ($this->_structure->getters AS $getterName => $getter)
-		{
-			if (!is_array($getter) || !isset($getter['invalidate']))
-			{
+		foreach ($this->_structure->getters as $getterName => $getter) {
+			if (!is_array($getter) || !isset($getter['invalidate'])) {
 				continue;
 			}
 
-			foreach ($getter['invalidate'] AS $invalidate)
-			{
-				if ($invalidate === $key)
-				{
+			foreach ($getter['invalidate'] as $invalidate) {
+				if ($invalidate === $key) {
 					unset($this->_getterCache[$getterName]);
 				}
 			}
 		}
 
-		foreach ($this->_structure->relations AS $relationName => $relation)
-		{
+		foreach ($this->_structure->relations as $relationName => $relation) {
 			$conditions = $relation['conditions'];
-			if (!is_array($conditions))
-			{
+			if (!is_array($conditions)) {
 				$conditions = [$conditions];
 			}
 
-			foreach ($conditions AS $condition)
-			{
-				if (is_string($condition))
-				{
-					if ($condition == $key)
-					{
+			foreach ($conditions as $condition) {
+				if (is_string($condition)) {
+					if ($condition == $key) {
 						unset($this->_relations[$relationName]);
 					}
-				}
-				else if (count($condition) > 3)
-				{
-					foreach (array_slice($condition, 2) AS $v)
-					{
-						if ($v && $v[0] == '$' && substr($v, 1) == $key)
-						{
+				} else if (count($condition) > 3) {
+					foreach (array_slice($condition, 2) as $v) {
+						if ($v && $v[0] == '$' && substr($v, 1) == $key) {
 							unset($this->_relations[$relationName]);
 							break;
 						}
 					}
-				}
-				else if (
+				} else if (
 					is_string($condition[2])
 					&& strlen($condition[2])
 					&& $condition[2][0] == '$'
 					&& substr($condition[2], 1) == $key
-				)
-				{
+				) {
 					unset($this->_relations[$relationName]);
 				}
 
@@ -949,8 +803,7 @@ abstract class Entity implements \ArrayAccess
 					&& strlen($condition[0])
 					&& $condition[0][0] == '$'
 					&& substr($condition[0], 1) == $key
-				)
-				{
+				) {
 					unset($this->_relations[$relationName]);
 				}
 			}
@@ -965,24 +818,18 @@ abstract class Entity implements \ArrayAccess
 	public function updateVersionId($versionIdField = 'version_id', $versionStringField = 'version_string', $addOnIdField = 'addon_id')
 	{
 		$addOnId = $this->getValue($addOnIdField);
-		if ($addOnId)
-		{
+		if ($addOnId) {
 			$addOn = $this->_em->find('XF:AddOn', $addOnId);
-			if (!$addOn)
-			{
+			if (!$addOn) {
 				$this->set($addOnIdField, ''); // no add-on found, make it custom
 
 				$versionId = 0;
 				$versionString = '';
-			}
-			else
-			{
+			} else {
 				$versionId = $addOn->version_id;
 				$versionString = $addOn->version_string;
 			}
-		}
-		else
-		{
+		} else {
 			$versionId = 0;
 			$versionString = '';
 		}
@@ -994,8 +841,7 @@ abstract class Entity implements \ArrayAccess
 
 	public function setOption($name, $value)
 	{
-		if (!array_key_exists($name, $this->_structure->options))
-		{
+		if (!array_key_exists($name, $this->_structure->options)) {
 			throw new \InvalidArgumentException("Unknown entity option: $name");
 		}
 
@@ -1004,16 +850,14 @@ abstract class Entity implements \ArrayAccess
 
 	public function setOptions(array $options)
 	{
-		foreach ($options AS $name => $value)
-		{
+		foreach ($options as $name => $value) {
 			$this->setOption($name, $value);
 		}
 	}
 
 	public function resetOption($name)
 	{
-		if (!array_key_exists($name, $this->_structure->options))
-		{
+		if (!array_key_exists($name, $this->_structure->options)) {
 			throw new \InvalidArgumentException("Unknown entity option: $name");
 		}
 
@@ -1032,16 +876,11 @@ abstract class Entity implements \ArrayAccess
 	 */
 	public function getOption($name)
 	{
-		if (array_key_exists($name, $this->_options))
-		{
+		if (array_key_exists($name, $this->_options)) {
 			return $this->_options[$name];
-		}
-		else if (array_key_exists($name, $this->_structure->options))
-		{
+		} else if (array_key_exists($name, $this->_structure->options)) {
 			return $this->_structure->options[$name];
-		}
-		else
-		{
+		} else {
 			throw new \InvalidArgumentException("Unknown entity option: $name");
 		}
 	}
@@ -1053,8 +892,7 @@ abstract class Entity implements \ArrayAccess
 
 	public function isInsert()
 	{
-		if ($this->_deleted)
-		{
+		if ($this->_deleted) {
 			return false;
 		}
 
@@ -1063,8 +901,7 @@ abstract class Entity implements \ArrayAccess
 
 	public function exists()
 	{
-		if ($this->_deleted)
-		{
+		if ($this->_deleted) {
 			return false;
 		}
 
@@ -1073,12 +910,9 @@ abstract class Entity implements \ArrayAccess
 
 	public function isChanged($key)
 	{
-		if (is_array($key))
-		{
-			foreach ($key AS $subKey)
-			{
-				if ($this->isChanged($subKey))
-				{
+		if (is_array($key)) {
+			foreach ($key as $subKey) {
+				if ($this->isChanged($subKey)) {
 					return true;
 				}
 			}
@@ -1088,8 +922,7 @@ abstract class Entity implements \ArrayAccess
 
 		$columns = $this->_structure->columns;
 
-		if (empty($columns[$key]))
-		{
+		if (empty($columns[$key])) {
 			return false;
 		}
 
@@ -1103,22 +936,14 @@ abstract class Entity implements \ArrayAccess
 
 	public function isStateChanged($key, $state)
 	{
-		
-		if (!$this->isChanged($key))
-		{
+
+		if (!$this->isChanged($key)) {
 			return false;
-		}
-		
-		else if ($this->getValue($key) == $state)
-		{
+		} else if ($this->getValue($key) == $state) {
 			return 'enter';
-		}
-		else if ($this->isUpdate() && $this->getExistingValue($key) == $state)
-		{
+		} else if ($this->isUpdate() && $this->getExistingValue($key) == $state) {
 			return 'leave';
-		}
-		else
-		{
+		} else {
 			return false;
 		}
 	}
@@ -1128,11 +953,9 @@ abstract class Entity implements \ArrayAccess
 	 */
 	public function getBehaviors()
 	{
-		if ($this->_behaviors === null)
-		{
+		if ($this->_behaviors === null) {
 			$this->_behaviors = $this->_em->getBehaviors($this, $this->_structure->behaviors);
-			foreach ($this->_behaviors AS $behavior)
-			{
+			foreach ($this->_behaviors as $behavior) {
 				$behavior->onSetup();
 			}
 		}
@@ -1143,8 +966,7 @@ abstract class Entity implements \ArrayAccess
 	public function getBehavior($behavior)
 	{
 		$behaviors = $this->getBehaviors();
-		if (!isset($behaviors[$behavior]))
-		{
+		if (!isset($behaviors[$behavior])) {
 			throw new \InvalidArgumentException("Unknown behavior '$behavior'");
 		}
 
@@ -1164,20 +986,16 @@ abstract class Entity implements \ArrayAccess
 
 	public function whenSaveable(\Closure $fn)
 	{
-		if ($this->_writeRunning)
-		{
+		if ($this->_writeRunning) {
 			$this->_whenSaveable[] = $fn;
-		}
-		else
-		{
+		} else {
 			$fn($this);
 		}
 	}
 
 	public function addCascadedSave(Entity $entity)
 	{
-		if ($entity === $this)
-		{
+		if ($entity === $this) {
 			return;
 		}
 
@@ -1187,8 +1005,7 @@ abstract class Entity implements \ArrayAccess
 
 	public function removeCascadedSave(Entity $entity)
 	{
-		if ($entity === $this)
-		{
+		if ($entity === $this) {
 			return;
 		}
 
@@ -1198,31 +1015,24 @@ abstract class Entity implements \ArrayAccess
 
 	public final function save($throw = true, $newTransaction = true)
 	{
-		if ($this->_readOnly)
-		{
+		if ($this->_readOnly) {
 			throw new \LogicException("Entity is read only");
 		}
-		if ($this->_deleted)
-		{
+		if ($this->_deleted) {
 			throw new \LogicException("Cannot save a deleted entity");
 		}
 
-		if (!$this->preSave())
-		{
-			if ($throw)
-			{
+		if (!$this->preSave()) {
+			if ($throw) {
 				throw new \XF\PrintableException($this->_errors);
 			}
 			return false;
 		}
-		if ($this->_fillDeferredValues('save'))
-		{
+		if ($this->_fillDeferredValues('save')) {
 			// this could cause a required field to be invalid
 			$this->_validateRequirements();
-			if ($this->_errors)
-			{
-				if ($throw)
-				{
+			if ($this->_errors) {
+				if ($throw) {
 					throw new \XF\PrintableException($this->_errors);
 				}
 				return false;
@@ -1232,30 +1042,24 @@ abstract class Entity implements \ArrayAccess
 		$db = $this->db();
 		$isInsert = $this->isInsert();
 
-		if ($newTransaction)
-		{
+		if ($newTransaction) {
 			$db->beginTransaction();
 		}
 
 		$this->_writeRunning = true;
 
-		try
-		{
+		try {
 			$this->_saveToSource();
 
-			if ($isInsert)
-			{
+			if ($isInsert) {
 				$this->_em->attachEntity($this);
 			}
 
-			if ($this->_cascadeSave)
-			{
+			if ($this->_cascadeSave) {
 				$this->_em->startCascadeEvent('save', $this);
 
-				foreach ($this->_cascadeSave AS $save)
-				{
-					if (!$this->_em->triggerCascadeAttempt('save', $save))
-					{
+				foreach ($this->_cascadeSave as $save) {
+					if (!$this->_em->triggerCascadeAttempt('save', $save)) {
 						continue;
 					}
 
@@ -1266,25 +1070,20 @@ abstract class Entity implements \ArrayAccess
 			}
 
 			$this->_postSave();
-			foreach ($this->getBehaviors() AS $behaviorId => $behavior)
-			{
+			foreach ($this->getBehaviors() as $behaviorId => $behavior) {
 				$behavior->postSave();
 			}
 
 			\XF::fire('entity_post_save', [$this], $this->rootClass);
-		}
-		catch (\Exception $e)
-		{
-			if ($newTransaction)
-			{
+		} catch (\Exception $e) {
+			if ($newTransaction) {
 				$db->rollback();
 			}
 
 			throw $e;
 		}
 
-		if ($newTransaction)
-		{
+		if ($newTransaction) {
 			$db->commit();
 		}
 
@@ -1292,8 +1091,7 @@ abstract class Entity implements \ArrayAccess
 		// by calls to things like fastUpdate or setAsSaved.
 		$newDbValues = $this->_newValues;
 		$columns = $this->_structure->columns;
-		foreach ($newDbValues AS $column => $value)
-		{
+		foreach ($newDbValues as $column => $value) {
 			$newDbValues[$column] = $this->_em->encodeValueForSource($columns[$column]['type'], $value);
 		}
 
@@ -1304,8 +1102,7 @@ abstract class Entity implements \ArrayAccess
 
 	public final function saveIfChanged(&$saved = null, $throw = true, $newTransaction = true)
 	{
-		if (!$this->_newValues && $this->isUpdate())
-		{
+		if (!$this->_newValues && $this->isUpdate()) {
 			$saved = false;
 			return true;
 		}
@@ -1316,22 +1113,17 @@ abstract class Entity implements \ArrayAccess
 
 	public function fastUpdate($key, $value = null)
 	{
-		if (!$this->exists() && !$this->_writeRunning)
-		{
+		if (!$this->exists() && !$this->_writeRunning) {
 			throw new \LogicException("Cannot call fastUpdate until the entity is saved");
 		}
 
-		if (is_array($key))
-		{
+		if (is_array($key)) {
 			$fields = $key;
-		}
-		else
-		{
+		} else {
 			$fields = [$key => $value];
 		}
 
-		if (!$fields)
-		{
+		if (!$fields) {
 			return;
 		}
 
@@ -1340,8 +1132,7 @@ abstract class Entity implements \ArrayAccess
 		$condition = $this->_getUpdateCondition($this->_writeRunning);
 
 		$dbUpdate = [];
-		foreach ($fields AS $key => $value)
-		{
+		foreach ($fields as $key => $value) {
 			$dbUpdate[$key] = $this->setAsSaved($key, $value);
 		}
 
@@ -1351,33 +1142,26 @@ abstract class Entity implements \ArrayAccess
 	public final function preSave()
 	{
 		// write will be pending after calling this; this means call it only once
-		if ($this->_writePending != 'save')
-		{
+		if ($this->_writePending != 'save') {
 			$this->_fillDeferredValues('preSave');
 			$this->_preSave();
 
-			foreach ($this->getBehaviors() AS $behavior)
-			{
+			foreach ($this->getBehaviors() as $behavior) {
 				$behavior->preSave();
 			}
 
 			\XF::fire('entity_pre_save', [$this], $this->rootClass);
 
-			if ($this->_cascadeSave)
-			{
+			if ($this->_cascadeSave) {
 				$this->_em->startCascadeEvent('preSave', $this);
 
-				foreach ($this->_cascadeSave AS $childObjectId => $save)
-				{
-					if (!$this->_em->triggerCascadeAttempt('preSave', $save))
-					{
+				foreach ($this->_cascadeSave as $childObjectId => $save) {
+					if (!$this->_em->triggerCascadeAttempt('preSave', $save)) {
 						continue;
 					}
 
-					if (!$save->preSave())
-					{
-						foreach ($save->getErrors() AS $key => $error)
-						{
+					if (!$save->preSave()) {
+						foreach ($save->getErrors() as $key => $error) {
 							$this->error($error, is_int($key) ? null : $key, false);
 						}
 					}
@@ -1386,8 +1170,7 @@ abstract class Entity implements \ArrayAccess
 				$this->_em->finishCascadeEvent('preSave');
 			}
 
-			if ($this->isInsert())
-			{
+			if ($this->isInsert()) {
 				$this->_fillInsertDefaults();
 			}
 			$this->_validateRequirements();
@@ -1398,15 +1181,15 @@ abstract class Entity implements \ArrayAccess
 		return count($this->_errors) == 0;
 	}
 
-	protected function _preSave() {}
+	protected function _preSave()
+	{
+	}
 
 	protected function _fillDeferredValues($context)
 	{
 		$keys = [];
-		foreach ($this->_newValues AS $key => $value)
-		{
-			if ($value instanceof DeferredValue)
-			{
+		foreach ($this->_newValues as $key => $value) {
+			if ($value instanceof DeferredValue) {
 				$this->_resolveDeferredValue($key, $value, $context);
 				$keys[] = $key;
 			}
@@ -1418,8 +1201,7 @@ abstract class Entity implements \ArrayAccess
 	protected function _resolveDeferredValue($key, DeferredValue $deferred, $context)
 	{
 		$result = $deferred($this, $context);
-		if ($deferred->isAssignableAt($context))
-		{
+		if ($deferred->isAssignableAt($context)) {
 			$this->set($key, $result, ['forceSet' => true]);
 		}
 
@@ -1428,19 +1210,14 @@ abstract class Entity implements \ArrayAccess
 
 	protected function _fillInsertDefaults()
 	{
-		foreach ($this->_structure->columns AS $key => $column)
-		{
-			if (array_key_exists($key, $this->_newValues))
-			{
+		foreach ($this->_structure->columns as $key => $column) {
+			if (array_key_exists($key, $this->_newValues)) {
 				continue;
 			}
 
-			if (array_key_exists('default', $column))
-			{
+			if (array_key_exists('default', $column)) {
 				$this->_setInternal($key, $column['default']);
-			}
-			else if (!empty($column['nullable']))
-			{
+			} else if (!empty($column['nullable'])) {
 				$this->_setInternal($key, null);
 			}
 		}
@@ -1448,40 +1225,31 @@ abstract class Entity implements \ArrayAccess
 
 	protected function _validateRequirements()
 	{
-		foreach ($this->_structure->columns AS $key => $column)
-		{
-			if (empty($column['required']))
-			{
+		foreach ($this->_structure->columns as $key => $column) {
+			if (empty($column['required'])) {
 				continue;
 			}
 
-			if (isset($this->_newValues[$key]) && $this->_newValues[$key] instanceof DeferredValue)
-			{
+			if (isset($this->_newValues[$key]) && $this->_newValues[$key] instanceof DeferredValue) {
 				// this will be resolved later
 				continue;
 			}
 
-			if ($this->isUpdate() && !array_key_exists($key, $this->_newValues))
-			{
+			if ($this->isUpdate() && !array_key_exists($key, $this->_newValues)) {
 				continue;
 			}
 
 			$value = $this->getValue($key);
 			$exists = array_key_exists($key, $this->_newValues) || array_key_exists($key, $this->_values);
 
-			if (!empty($column['nullable']) && $value === null && $exists)
-			{
+			if (!empty($column['nullable']) && $value === null && $exists) {
 				continue;
 			}
 
-			if (!$exists || $value === '' || $value === [] || $value === null)
-			{
-				if (is_string($column['required']))
-				{
+			if (!$exists || $value === '' || $value === [] || $value === null) {
+				if (is_string($column['required'])) {
 					$this->error(\XF::phrase($column['required']), $key, false);
-				}
-				else
-				{
+				} else {
 					$this->error(\XF::phrase('please_enter_value_for_required_field_x', ['field' => $key]), $key, false);
 				}
 			}
@@ -1495,25 +1263,19 @@ abstract class Entity implements \ArrayAccess
 		$columns = $structure->columns;
 
 		$save = $this->_newValues;
-		foreach ($save AS $column => $value)
-		{
-			if (!isset($columns[$column]))
-			{
+		foreach ($save as $column => $value) {
+			if (!isset($columns[$column])) {
 				throw new \LogicException("Unknown column $column was found in data to be saved");
 			}
 
 			$save[$column] = $this->_em->encodeValueForSource($columns[$column]['type'], $value);
 		}
 
-		if ($save)
-		{
-			if ($this->isInsert())
-			{
+		if ($save) {
+			if ($this->isInsert()) {
 				$db->insert($structure->table, $save, $this->_useReplaceInto);
 				$this->_fillAutoIncrement($db->lastInsertId(), $save);
-			}
-			else
-			{
+			} else {
 				$db->update($structure->table, $save, $this->_getUpdateCondition());
 			}
 		}
@@ -1523,10 +1285,8 @@ abstract class Entity implements \ArrayAccess
 
 	protected function _fillAutoIncrement($value, array &$newSourceValues)
 	{
-		foreach ($this->_structure->columns AS $key => $column)
-		{
-			if (!empty($column['autoIncrement']))
-			{
+		foreach ($this->_structure->columns as $key => $column) {
+			if (!empty($column['autoIncrement'])) {
 				$this->_setInternal($key, $value);
 				$newSourceValues[$key] = $value;
 				return true;
@@ -1536,7 +1296,9 @@ abstract class Entity implements \ArrayAccess
 		return false;
 	}
 
-	protected function _postSave() {}
+	protected function _postSave()
+	{
+	}
 
 	protected function _saveCleanUp(array $newDbValues)
 	{
@@ -1548,14 +1310,12 @@ abstract class Entity implements \ArrayAccess
 		$this->_errors = [];
 
 		// need to wipe out this cache as we've overridden
-		foreach ($newDbValues AS $key => $null)
-		{
+		foreach ($newDbValues as $key => $null) {
 			unset($this->_valueCache[$key]);
 		}
 
 		// need to run any pending callbacks now that writing is complete
-		while ($fn = array_shift($this->_whenSaveable))
-		{
+		while ($fn = array_shift($this->_whenSaveable)) {
 			$fn($this);
 		}
 	}
@@ -1572,27 +1332,21 @@ abstract class Entity implements \ArrayAccess
 
 	public final function delete($throw = true, $newTransaction = true)
 	{
-		if ($this->_deleted)
-		{
+		if ($this->_deleted) {
 			return true;
 		}
-		if (!$this->exists())
-		{
+		if (!$this->exists()) {
 			throw new \LogicException("Cannot delete a non-saved entity");
 		}
-		if ($this->_newValues)
-		{
+		if ($this->_newValues) {
 			throw new \LogicException("Cannot delete an entity that has been partially updated");
 		}
-		if ($this->_readOnly)
-		{
+		if ($this->_readOnly) {
 			throw new \LogicException("Entity is read only");
 		}
 
-		if (!$this->preDelete())
-		{
-			if ($throw)
-			{
+		if (!$this->preDelete()) {
+			if ($throw) {
 				throw new \XF\PrintableException($this->_errors);
 			}
 			return false;
@@ -1600,8 +1354,7 @@ abstract class Entity implements \ArrayAccess
 
 		$db = $this->db();
 
-		if ($newTransaction)
-		{
+		if ($newTransaction) {
 			$db->beginTransaction();
 		}
 
@@ -1612,26 +1365,18 @@ abstract class Entity implements \ArrayAccess
 
 		$this->_em->startCascadeEvent('delete', $this);
 
-		foreach ($this->_structure->relations AS $relationId => $definition)
-		{
-			if (!empty($definition['cascadeDelete']) && $relation = $this->getRelation($relationId))
-			{
-				if ($relation instanceof Entity)
-				{
-					if (!$this->_em->triggerCascadeAttempt('delete', $relation))
-					{
+		foreach ($this->_structure->relations as $relationId => $definition) {
+			if (!empty($definition['cascadeDelete']) && $relation = $this->getRelation($relationId)) {
+				if ($relation instanceof Entity) {
+					if (!$this->_em->triggerCascadeAttempt('delete', $relation)) {
 						continue;
 					}
 
 					$relation->delete($throw, false);
-				}
-				else
-				{
+				} else {
 					/** @var $child Entity */
-					foreach ($relation AS $child)
-					{
-						if (!$this->_em->triggerCascadeAttempt('delete', $child))
-						{
+					foreach ($relation as $child) {
+						if (!$this->_em->triggerCascadeAttempt('delete', $child)) {
 							continue;
 						}
 
@@ -1645,20 +1390,17 @@ abstract class Entity implements \ArrayAccess
 
 		// note: only perform the following actions if the actual delete affected a row
 		// this ensures there cannot be any unintended consequences by calling them repeatedly
-		if ($rowAffected)
-		{
+		if ($rowAffected) {
 			$this->_postDelete();
 
-			foreach ($this->getBehaviors() AS $behavior)
-			{
+			foreach ($this->getBehaviors() as $behavior) {
 				$behavior->postDelete();
 			}
 
 			\XF::fire('entity_post_delete', [$this], $this->rootClass);
 		}
 
-		if ($newTransaction)
-		{
+		if ($newTransaction) {
 			$db->commit();
 		}
 
@@ -1671,17 +1413,14 @@ abstract class Entity implements \ArrayAccess
 
 	public final function preDelete()
 	{
-		if ($this->_deleted)
-		{
+		if ($this->_deleted) {
 			return true;
 		}
 
-		if ($this->_writePending != 'delete')
-		{
+		if ($this->_writePending != 'delete') {
 			$this->_preDelete();
 
-			foreach ($this->getBehaviors() AS $behavior)
-			{
+			foreach ($this->getBehaviors() as $behavior) {
 				$behavior->preDelete();
 			}
 
@@ -1689,39 +1428,27 @@ abstract class Entity implements \ArrayAccess
 
 			$this->_em->startCascadeEvent('preDelete', $this);
 
-			foreach ($this->_structure->relations AS $relationId => $definition)
-			{
-				if (!empty($definition['cascadeDelete']) && $relation = $this->getRelation($relationId))
-				{
-					if ($relation instanceof Entity)
-					{
-						if (!$this->_em->triggerCascadeAttempt('preDelete', $relation))
-						{
+			foreach ($this->_structure->relations as $relationId => $definition) {
+				if (!empty($definition['cascadeDelete']) && $relation = $this->getRelation($relationId)) {
+					if ($relation instanceof Entity) {
+						if (!$this->_em->triggerCascadeAttempt('preDelete', $relation)) {
 							continue;
 						}
 
-						if (!$relation->preDelete())
-						{
-							foreach ($relation->getErrors() AS $key => $error)
-							{
+						if (!$relation->preDelete()) {
+							foreach ($relation->getErrors() as $key => $error) {
 								$this->error($error, is_int($key) ? null : $key, false);
 							}
 						}
-					}
-					else
-					{
+					} else {
 						/** @var $child Entity */
-						foreach ($relation AS $child)
-						{
-							if (!$this->_em->triggerCascadeAttempt('preDelete', $child))
-							{
+						foreach ($relation as $child) {
+							if (!$this->_em->triggerCascadeAttempt('preDelete', $child)) {
 								continue;
 							}
 
-							if (!$child->preDelete())
-							{
-								foreach ($child->getErrors() AS $key => $error)
-								{
+							if (!$child->preDelete()) {
+								foreach ($child->getErrors() as $key => $error) {
 									$this->error($error, is_int($key) ? null : $key, false);
 								}
 							}
@@ -1742,34 +1469,33 @@ abstract class Entity implements \ArrayAccess
 		return $this->_deleted;
 	}
 
-	protected function _preDelete() {}
+	protected function _preDelete()
+	{
+	}
 
-	protected function _postDelete() {}
+	protected function _postDelete()
+	{
+	}
 
 	protected function _getUpdateCondition($current = false)
 	{
-		if (!$this->_values)
-		{
-			if (!$current || !$this->_writeRunning)
-			{
+		if (!$this->_values) {
+			if (!$current || !$this->_writeRunning) {
 				throw new \LogicException("Cannot get the update condition for a non-existing entity");
 			}
 		}
 
 		$conditions = [];
 		$db = $this->db();
-		foreach ((array)$this->_structure->primaryKey AS $key)
-		{
+		foreach ((array)$this->_structure->primaryKey as $key) {
 			$value = $current ? $this->getValue($key) : $this->getExistingValue($key);
-			if ($value === null)
-			{
+			if ($value === null) {
 				throw new \LogicException("Found null in primary key for entity. Was this called before saving?");
 			}
 			$conditions[] = "`$key` = " . $db->quote($value);
 		}
 
-		if (!$conditions)
-		{
+		if (!$conditions) {
 			throw new \LogicException("No primary key defined for entity " . get_class($this));
 		}
 
@@ -1779,18 +1505,15 @@ abstract class Entity implements \ArrayAccess
 	public function getIdentifierValues()
 	{
 		$values = [];
-		foreach ((array)$this->_structure->primaryKey AS $key)
-		{
+		foreach ((array)$this->_structure->primaryKey as $key) {
 			$value = $this->getValue($key);
-			if ($value === null)
-			{
+			if ($value === null) {
 				return null; // primary keys cannot be null (after being saved at least)
 			}
 			$values[$key] = $value;
 		}
 
-		if (!$values)
-		{
+		if (!$values) {
 			throw new \LogicException("No primary key defined for entity " . get_class($this));
 		}
 
@@ -1824,8 +1547,7 @@ abstract class Entity implements \ArrayAccess
 
 	protected function assertSimpleEntityId()
 	{
-		if (is_array($this->_structure->primaryKey))
-		{
+		if (is_array($this->_structure->primaryKey)) {
 			throw new \LogicException("Cannot get a simple ID from the entity " . $this->_structure->shortName);
 		}
 	}
@@ -1842,8 +1564,7 @@ abstract class Entity implements \ArrayAccess
 
 	public function getEntityContentTypeId()
 	{
-		if (!$this->_structure->contentType)
-		{
+		if (!$this->_structure->contentType) {
 			throw new \LogicException("No content type specified in entity structure for " . $this->_structure->shortName);
 		}
 
@@ -1852,15 +1573,11 @@ abstract class Entity implements \ArrayAccess
 
 	public function error($message, $key = null, $specificError = true)
 	{
-		if ($key)
-		{
-			if ($specificError || !isset($this->_errors[$key]))
-			{
+		if ($key) {
+			if ($specificError || !isset($this->_errors[$key])) {
 				$this->_errors[$key] = $message;
 			}
-		}
-		else
-		{
+		} else {
 			$this->_errors[] = $message;
 		}
 	}
@@ -1889,18 +1606,14 @@ abstract class Entity implements \ArrayAccess
 	{
 		$structure = $this->_structure;
 
-		if (substr($key, -1) == '_')
-		{
+		if (substr($key, -1) == '_') {
 			$key = substr($key, 0, -1);
 			$useGetter = false;
-		}
-		else
-		{
+		} else {
 			$useGetter = true;
 		}
 
-		if ($useGetter && isset($structure->getters[$key]))
-		{
+		if ($useGetter && isset($structure->getters[$key])) {
 			return true;
 		}
 
@@ -2000,12 +1713,9 @@ abstract class Entity implements \ArrayAccess
 	public function __toString()
 	{
 		$key = $this->getIdentifierValues();
-		if (!$key)
-		{
+		if (!$key) {
 			$key = '[unsaved]';
-		}
-		else
-		{
+		} else {
 			$key = '[' . implode(', ', $key) . ']';
 		}
 
@@ -2032,12 +1742,9 @@ abstract class Entity implements \ArrayAccess
 
 	public function getMaxLength($fieldName)
 	{
-		if (isset($this->_structure->columns[$fieldName]['maxLength']))
-		{
+		if (isset($this->_structure->columns[$fieldName]['maxLength'])) {
 			return $this->_structure->columns[$fieldName]['maxLength'];
-		}
-		else
-		{
+		} else {
 			return null;
 		}
 	}

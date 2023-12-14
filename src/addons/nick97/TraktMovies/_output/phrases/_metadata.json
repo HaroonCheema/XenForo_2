@@ -1163,6 +1163,12 @@
         "version_string": "1.0.0 Alpha",
         "hash": "ac21d502848247aa2f578d0f718f5d1d"
     },
+    "trakt_movies_sync.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d8e87c0927539672f54462c837be0b7f"
+    },
     "trakt_movies_tagline.txt": {
         "global_cache": false,
         "version_id": 1000010,

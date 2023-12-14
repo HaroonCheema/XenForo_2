@@ -5,8 +5,12 @@
 </xf:extension>
 
 <xf:extension name="thread_action_buttons">
+	<xf:button href="{{ link('traktMovies/sync', $thread.Movie) }}" class="button--link" overlay="true">
+		{{ phrase('trakt_movies_sync') }}
+	</xf:button>
+
 	<xf:if is="{{ property('trakt_movies_posterUpdateButtonPosition') == 'default' && $thread.Movie && ($xf.visitor.is_admin || $xf.visitor.is_moderator) }}">
-		<xf:button href="{{ link('movies/poster', $thread.Movie) }}" class="button--link" overlay="true">
+		<xf:button href="{{ link('traktMovies/poster', $thread.Movie) }}" class="button--link" overlay="true">
 			{{ phrase('trakt_movies_check_poster') }}
 		</xf:button>
 	</xf:if>

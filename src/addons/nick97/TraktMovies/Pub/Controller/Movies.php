@@ -292,6 +292,40 @@ class Movies extends AbstractController
 
 	public function actionPoster(ParameterBag $params)
 	{
+
+
+
+		$thread = $this->assertViewableThread($params->thread_id);
+
+
+
+		$typeCreator = \XF::service('nick\Movies:Thread\TypeData\MovieCreator', $thread);
+
+		$movieCreator = $typeCreator->getMovieCreator();
+
+
+
+
+
+		$movieId = 256358;
+		/** @var \Snog\Movies\Helper\Tmdb $tmdbHelper */
+		$tmdbHelper = \XF::helper('Snog\Movies:Tmdb');
+		$movieCreator->setMovieId($tmdbHelper->parseMovieId($movieId));
+
+		$thread->setOption('movieApiResponse', $movieCreator->getMovieApiResponse());
+
+		$movieCreator->save();
+
+		$message = $thread->Movie->getPostMessage();
+
+
+		$thread->setOption('movieOriginalMessage', $message);
+		exit;
+		$typeCreator->save();
+
+
+		return $typeCreator;
+
 		$visitor = \XF::visitor();
 		if (!$visitor->user_id || (!$visitor->is_moderator && !$visitor->is_admin)) {
 			throw $this->exception($this->noPermission());
@@ -586,5 +620,94 @@ class Movies extends AbstractController
 	public function assertMovieExists($id, $with = null)
 	{
 		return $this->assertRecordExists('nick97\TraktMovies:Movie', $id, $with);
+	}
+
+	public function actionSync(ParameterBag $params)
+	{
+
+		$thread = $this->assertViewableThread($params->thread_id);
+
+		$typeCreator = \XF::service('nick97\TraktMovies:Thread\TypeData\MovieCreator', $thread, 22525);
+
+
+		$movieCreator = $typeCreator->getMovieCreator();
+
+		$movieId = $thread->Movie->trakt_id;
+
+		$threadId = $thread->thread_id;
+
+
+
+		\xf::db()->delete('nick97_trakt_movies_thread', 'thread_id = ?', $thread->thread_id);
+
+		\xf::db()->delete('nick97_trakt_movies_crew', 'trakt_id = ?', $movieId);
+		\xf::db()->delete('nick97_trakt_movies_cast', 'trakt_id = ?', $movieId);
+
+
+		$casts = $this->finder('nick97\TraktMovies:Cast')->where('trakt_id', $movieId)->fetch();
+
+		if (count($casts)) {
+
+			$this->deleteMovies($casts);
+		}
+
+		$Crews = $this->finder('nick97\TraktMovies:Crew')->where('trakt_id', $movieId)->fetch();
+
+		if (count($Crews)) {
+
+			$this->deleteMovies($Crews);
+		}
+		$Videos = $this->finder('nick97\TraktMovies:Video')->where('trakt_id', $movieId)->fetch();
+
+		if (count($Videos)) {
+
+			$this->deleteMovies($Videos);
+		}
+
+		$Ratings = $this->finder('nick97\TraktMovies:Rating')->where('thread_id', $thread->thread_id)->fetch();
+
+		if (count($Ratings)) {
+
+			$this->deleteMovies($Ratings);
+		}
+
+		// if ($thread->Movie->Casts->delete()) {
+		// 	# code...
+		// }
+
+		// $thread->Movie->delete();
+		// $thread->Movie->Ratings->delete();
+		// $thread->Movie->Casts->delete();
+		// $thread->Movie->Crews->delete();
+		// $thread->Movie->Videos->delete();
+
+		// echo "<pre>";
+		// // var_dump($thread->Movie->trakt_id);
+		// var_dump($thread->Movie->delete());
+		// var_dump($movieId);
+		// exit;
+
+		// $movieId = 299054;
+		// /** @var \Snog\Movies\Helper\Tmdb $tmdbHelper */
+		// $traktHelper = \XF::helper('nick97\TraktMovies:Trakt');
+		// $movieCreator->setMovieId($traktHelper->parseMovieId($movieId));
+		// $movieCreator->setMovieId($movieId);
+		$movieCreator->setMovieId($movieId);
+
+		// $thread->setOption('movieApiResponse', $movieCreator->getMovieApiResponse());
+
+		$movieCreator->save();
+
+		$movie = $this->finder('nick97\TraktMovies:Movie')->where('thread_id', 22525)->fetchOne();
+		$movie->fastUpdate('thread_id', $threadId);
+	}
+
+	public function deleteMovies($datas)
+	{
+
+		foreach ($datas as $data) {
+
+			$data->delete();
+		}
 	}
 }

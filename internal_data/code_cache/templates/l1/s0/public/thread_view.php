@@ -42,35 +42,42 @@ return array(
 		$__finalCompiled .= '
 
 ';
-	if (((($__vars['thread']['discussion_type'] == 'snog_movies_movie') OR ($__vars['thread']['discussion_type'] == 'snog_tv')) OR ($__vars['thread']['discussion_type'] == 'trakt_movies_movie')) OR ($__vars['thread']['discussion_type'] == 'trakt_tv')) {
+	if ($__templater->method($__vars['xf']['visitor'], 'hasPermission', array('nick97_watch_list', 'manage_watchlist', ))) {
 		$__finalCompiled .= '
 
 	';
-		$__compilerTemp1 = '';
-		if ($__vars['thread']['watch_list']) {
-			$__compilerTemp1 .= '
-			' . 'Remove Watch List' . '
-			';
-		} else {
-			$__compilerTemp1 .= '
-			' . 'Add Watch List' . '
+		if (((($__vars['thread']['discussion_type'] == 'snog_movies_movie') OR ($__vars['thread']['discussion_type'] == 'snog_tv')) OR ($__vars['thread']['discussion_type'] == 'trakt_movies_movie')) OR ($__vars['thread']['discussion_type'] == 'trakt_tv')) {
+			$__finalCompiled .= '
+
 		';
+			$__compilerTemp1 = '';
+			if ($__vars['thread']['watch_list']) {
+				$__compilerTemp1 .= '
+				' . 'Remove Watch List' . '
+				';
+			} else {
+				$__compilerTemp1 .= '
+				' . 'Add Watch List' . '
+			';
+			}
+			$__finalCompiled .= $__templater->button('
+			' . $__compilerTemp1 . '
+		', array(
+				'href' => $__templater->func('link', array('threads/watch-list', $__vars['thread'], ), false),
+				'class' => 'button--link',
+				'data-xf-click' => 'switch-overlay',
+				'data-sk-watch' => 'Add Watch List',
+				'data-sk-unwatch' => 'Remove Watch List',
+			), '', array(
+			)) . '
+
+	';
 		}
-		$__finalCompiled .= $__templater->button('
-		' . $__compilerTemp1 . '
-	', array(
-			'href' => $__templater->func('link', array('threads/watch-list', $__vars['thread'], ), false),
-			'class' => 'button--link',
-			'data-xf-click' => 'switch-overlay',
-			'data-sk-watch' => 'Add Watch List',
-			'data-sk-unwatch' => 'Remove Watch List',
-		), '', array(
-		)) . '
+		$__finalCompiled .= '
 
 ';
 	}
 	$__finalCompiled .= '
-
 						
 						';
 	if ($__vars['canInlineMod']) {

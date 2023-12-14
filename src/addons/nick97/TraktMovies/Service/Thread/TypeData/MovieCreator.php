@@ -20,11 +20,11 @@ class MovieCreator extends \XF\Service\AbstractService implements SaverInterface
 	 */
 	protected $movieCreator;
 
-	public function __construct(\XF\App $app, \XF\Entity\Thread $thread)
+	public function __construct(\XF\App $app, \XF\Entity\Thread $thread, $dummyId = null)
 	{
 		parent::__construct($app);
 		$this->thread = $thread;
-		$this->movieCreator = $this->service('nick97\TraktMovies:Movie\Creator', $thread);
+		$this->movieCreator = $this->service('nick97\TraktMovies:Movie\Creator', $thread, $dummyId);
 		$this->movieCreator->setIsAutomated();
 	}
 

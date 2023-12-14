@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 7ce5844038c37aee023b9e9d6c7cfcf1
+// FROM HASH: b32dc7f5ce2e94b2db7eda28eb22ad1a
 return array(
 'extends' => function($__templater, array $__vars) { return 'thread_view'; },
 'extensions' => array('content_top' => function($__templater, array $__vars, $__extensions = null)
@@ -16,13 +16,22 @@ return array(
 {
 	$__finalCompiled = '';
 		$__finalCompiled .= '
+	' . $__templater->button('
+		' . 'Sync' . '
+	', array(
+		'href' => $__templater->func('link', array('traktMovies/sync', $__vars['thread']['Movie'], ), false),
+		'class' => 'button--link',
+		'overlay' => 'true',
+	), '', array(
+	)) . '
+
 	';
 	if ((($__templater->func('property', array('trakt_movies_posterUpdateButtonPosition', ), false) == 'default') AND ($__vars['thread']['Movie'] AND ($__vars['xf']['visitor']['is_admin'] OR $__vars['xf']['visitor']['is_moderator'])))) {
 		$__finalCompiled .= '
 		' . $__templater->button('
 			' . 'Check for new poster' . '
 		', array(
-			'href' => $__templater->func('link', array('movies/poster', $__vars['thread']['Movie'], ), false),
+			'href' => $__templater->func('link', array('traktMovies/poster', $__vars['thread']['Movie'], ), false),
 			'class' => 'button--link',
 			'overlay' => 'true',
 		), '', array(

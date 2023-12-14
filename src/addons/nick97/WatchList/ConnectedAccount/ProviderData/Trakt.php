@@ -20,7 +20,7 @@ class Trakt extends AbstractProviderData
     public function getProviderKey()
     {
 
-        // var_dump($this->requestFromEndpoint('name'));exit;
+
 
         return $this->requestFromEndpoint('name');
 

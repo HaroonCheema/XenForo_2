@@ -28,6 +28,22 @@ class Setup extends AbstractSetup
 			]
 		], 'provider_id');
 
+		$this->schemaManager()->alterTable(
+			'xf_user_privacy',
+			function (Alter $table) {
+				$table->addColumn(
+					'allow_view_watchlist',
+					'ENUM',
+					['everyone', 'members', 'followed', 'none']
+				)->setDefault('everyone');
+				$table->addColumn(
+					'allow_view_stats',
+					'ENUM',
+					['everyone', 'members', 'followed', 'none']
+				)->setDefault('everyone');
+			}
+		);
+
 		$this->alterTable('xf_thread', function (\XF\Db\Schema\Alter $table) {
 
 			$table->addColumn('watch_list', 'int')->setDefault(0);
@@ -41,5 +57,15 @@ class Setup extends AbstractSetup
 		$this->schemaManager()->alterTable('xf_thread', function (\XF\Db\Schema\Alter $table) {
 			$table->dropColumns(['watch_list']);
 		});
+
+		$this->schemaManager()->alterTable(
+			'xf_user_privacy',
+			function (Alter $table) {
+				$table->dropColumns([
+					'allow_view_watchlist',
+					'allow_view_stats',
+				]);
+			}
+		);
 	}
 }

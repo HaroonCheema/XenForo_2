@@ -94,12 +94,16 @@
 					<dt>{{ phrase('nick97_watch_list_release') }}</dt>
 					<dd><a href="{{ link('resources/updates', $resource) }}" class="u-concealed">{$movie.tmdb_release}</a></dd>
 				</dl>
-				
-				<dl>
-					<xf:button href="{{ link('threads/my-watch-list', $movie.Thread) }}" icon="delete" overlay="true">
-					{{ phrase('remove') }}
-					</xf:button>
-				</dl>
+
+				<xf:if is="$xf.visitor.hasPermission('nick97_watch_list', 'manage_watchlist')">
+
+					<dl>
+						<xf:button href="{{ link('threads/my-watch-list', $movie.Thread) }}" icon="delete" overlay="true">
+							{{ phrase('remove') }}
+						</xf:button>
+					</dl>
+
+				</xf:if>
 
 			</div>
 		</div>
@@ -147,10 +151,10 @@
 					<dt>{{ phrase('nick97_watch_list_release') }}</dt>
 					<dd><a href="{{ link('resources/updates', $resource) }}" class="u-concealed">{$movie.trakt_release}</a></dd>
 				</dl>
-				
+
 				<dl>
 					<xf:button href="{{ link('threads/my-watch-list', $movie.Thread) }}" icon="delete" overlay="true">
-					{{ phrase('remove') }}
+						{{ phrase('remove') }}
 					</xf:button>
 				</dl>
 
@@ -200,10 +204,10 @@
 					<dt>{{ phrase('nick97_watch_list_release') }}</dt>
 					<dd><a href="{{ link('resources/updates', $resource) }}" class="u-concealed">{$tv.tv_release}</a></dd>
 				</dl>
-				
+
 				<dl>
 					<xf:button href="{{ link('threads/my-watch-list', $movie.Thread) }}" icon="delete" overlay="true">
-					{{ phrase('remove') }}
+						{{ phrase('remove') }}
 					</xf:button>
 				</dl>
 
@@ -253,10 +257,10 @@
 					<dt>{{ phrase('nick97_watch_list_release') }}</dt>
 					<dd><a href="{{ link('resources/updates', $resource) }}" class="u-concealed">{$tv.tv_release}</a></dd>
 				</dl>
-				
+
 				<dl>
 					<xf:button href="{{ link('threads/my-watch-list', $movie.Thread) }}" icon="delete" overlay="true">
-					{{ phrase('remove') }}
+						{{ phrase('remove') }}
 					</xf:button>
 				</dl>
 

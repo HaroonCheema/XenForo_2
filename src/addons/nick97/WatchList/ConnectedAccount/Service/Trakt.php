@@ -93,6 +93,8 @@ class Trakt extends AbstractService
     {
         $data = json_decode($responseBody, true);
 
+        var_dump($data);
+        exit;
         if (null === $data || !is_array($data)) {
             throw new TokenResponseException('Unable to parse response.');
         } elseif (isset($data['error'])) {
@@ -101,6 +103,7 @@ class Trakt extends AbstractService
 
         $token = new StdOAuth2Token();
         $token->setAccessToken($data['access_token']);
+        $token->setLifeTime($data['expires_in']);
 
         if (isset($data['refresh_token'])) {
             $token->setRefreshToken($data['refresh_token']);
@@ -108,6 +111,7 @@ class Trakt extends AbstractService
         }
 
         unset($data['access_token']);
+        unset($data['expires_in']);
 
         $token->setExtraParams($data);
 
@@ -126,5 +130,8 @@ class Trakt extends AbstractService
     public function request($path, $method = 'GET', $body = null, array $extraHeaders = array())
     {
         return parent::request($path, $method, $body, $extraHeaders);
+        //  echo '<pre>';
+        // var_dump("test",$path, $method, $body, $extraHeaders);exit;
+        return parent::request($parent, $path, $method, $body, $extraHeaders);
     }
 }

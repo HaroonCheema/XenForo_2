@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 080ddc0fd3811a734f4c93f230b0ef92
+// FROM HASH: 81ab288c44603c3a098c8d4c95546b8e
 return array(
 'macros' => array('my_watch_list_tmdb_movies' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -53,17 +53,25 @@ return array(
 					<dt>' . 'Release' . '</dt>
 					<dd><a href="' . $__templater->func('link', array('resources/updates', $__vars['resource'], ), true) . '" class="u-concealed">' . $__templater->escape($__vars['movie']['tmdb_release']) . '</a></dd>
 				</dl>
-				
-				<dl>
-					' . $__templater->button('
-					' . 'Remove' . '
-					', array(
-				'href' => $__templater->func('link', array('threads/my-watch-list', $__vars['movie']['Thread'], ), false),
-				'icon' => 'delete',
-				'overlay' => 'true',
-			), '', array(
-			)) . '
-				</dl>
+
+				';
+			if ($__templater->method($__vars['xf']['visitor'], 'hasPermission', array('nick97_watch_list', 'manage_watchlist', ))) {
+				$__finalCompiled .= '
+
+					<dl>
+						' . $__templater->button('
+							' . 'Remove' . '
+						', array(
+					'href' => $__templater->func('link', array('threads/my-watch-list', $__vars['movie']['Thread'], ), false),
+					'icon' => 'delete',
+					'overlay' => 'true',
+				), '', array(
+				)) . '
+					</dl>
+
+				';
+			}
+			$__finalCompiled .= '
 
 			</div>
 		</div>
@@ -128,10 +136,10 @@ return array(
 					<dt>' . 'Release' . '</dt>
 					<dd><a href="' . $__templater->func('link', array('resources/updates', $__vars['resource'], ), true) . '" class="u-concealed">' . $__templater->escape($__vars['movie']['trakt_release']) . '</a></dd>
 				</dl>
-				
+
 				<dl>
 					' . $__templater->button('
-					' . 'Remove' . '
+						' . 'Remove' . '
 					', array(
 				'href' => $__templater->func('link', array('threads/my-watch-list', $__vars['movie']['Thread'], ), false),
 				'icon' => 'delete',
@@ -203,10 +211,10 @@ return array(
 					<dt>' . 'Release' . '</dt>
 					<dd><a href="' . $__templater->func('link', array('resources/updates', $__vars['resource'], ), true) . '" class="u-concealed">' . $__templater->escape($__vars['tv']['tv_release']) . '</a></dd>
 				</dl>
-				
+
 				<dl>
 					' . $__templater->button('
-					' . 'Remove' . '
+						' . 'Remove' . '
 					', array(
 				'href' => $__templater->func('link', array('threads/my-watch-list', $__vars['movie']['Thread'], ), false),
 				'icon' => 'delete',
@@ -278,10 +286,10 @@ return array(
 					<dt>' . 'Release' . '</dt>
 					<dd><a href="' . $__templater->func('link', array('resources/updates', $__vars['resource'], ), true) . '" class="u-concealed">' . $__templater->escape($__vars['tv']['tv_release']) . '</a></dd>
 				</dl>
-				
+
 				<dl>
 					' . $__templater->button('
-					' . 'Remove' . '
+						' . 'Remove' . '
 					', array(
 				'href' => $__templater->func('link', array('threads/my-watch-list', $__vars['movie']['Thread'], ), false),
 				'icon' => 'delete',

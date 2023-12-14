@@ -125,6 +125,9 @@ class Discord extends AbstractService
      */
     public function request($path, $method = 'GET', $body = null, array $extraHeaders = array())
     {
+        // $parent=parent::request($path, $method, $body, $extraHeaders);
+        // echo '<pre>';
+        // var_dump($parent,"test",$path, $method, $body, $extraHeaders);exit;
         return parent::request($path, $method, $body, $extraHeaders);
     }
 }

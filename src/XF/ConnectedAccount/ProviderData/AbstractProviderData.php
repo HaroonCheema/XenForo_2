@@ -95,8 +95,7 @@ abstract class AbstractProviderData implements \ArrayAccess
 
 			$data = $handler->getOAuth($config)->request($endpoint, $method);
 			echo "<pre>";
-			var_dump($data, $endpoint, $method, $config);
-			exit;
+			var_dump("test",$data);exit;
 
 			exit;
 			$data = json_decode($data, true);

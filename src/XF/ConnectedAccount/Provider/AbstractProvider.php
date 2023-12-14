@@ -152,6 +152,9 @@ abstract class AbstractProvider
 
 		$provider = \XF::app()->oAuth()->provider($this->getOAuthServiceName(), $config);
 
+		// echo   '<pre>';
+		// var_dump($provider);
+		// exit;
 
 		//exit;
 		if (!$provider) {
@@ -170,6 +173,8 @@ abstract class AbstractProvider
 	public function getProviderData(StorageState $storageState)
 	{
 		$providerData = \XF::app()->oAuth()->providerData($this->getProviderDataClass(), $this->providerId, $storageState);
+		//var_dump($providerData);
+		//	exit;
 		if (!$providerData) {
 			throw new \InvalidArgumentException(
 				"Cannot find a valid ProviderData object for class '{$this->getProviderDataClass()}'"

@@ -11,24 +11,22 @@ class Movie extends \XF\Mvc\Entity\Repository
 
 		// Save casts & crew
 		$castData = [];
-		foreach ($casts as $cast)
-		{
+		foreach ($casts as $cast) {
 			$castData[] = $this->getCastDataForInsert($cast, $movieId);
 		}
-
-		if ($castData)
-		{
+		// echo '<pre>';
+		// var_dump($castData);
+		// exit;
+		if ($castData) {
 			$this->db()->insertBulk('xf_snog_movies_cast', $castData, true);
 		}
 
 		$crewData = [];
-		foreach ($crews as $crew)
-		{
+		foreach ($crews as $crew) {
 			$crewData[] = $this->getCrewDataForInsert($crew, $movieId);
 		}
 
-		if ($crewData)
-		{
+		if ($crewData) {
 			$this->db()->insertBulk('xf_snog_movies_crew', $crewData, true);
 		}
 	}
@@ -56,7 +54,7 @@ class Movie extends \XF\Mvc\Entity\Repository
 		/** @var \Snog\Movies\Entity\Crew $entity */
 		$entity = $this->em->create('Snog\Movies:Crew');
 
-		 $entity->bulkSet([
+		$entity->bulkSet([
 			'tmdb_id' => $movieId,
 			'person_id' => $crew['id'],
 			'credit_id' => $crew['credit_id'],
@@ -80,14 +78,12 @@ class Movie extends \XF\Mvc\Entity\Repository
 
 		$videoData = [];
 		$i = 0;
-		foreach ($videosApiData as $video)
-		{
+		foreach ($videosApiData as $video) {
 			$i++;
 			$videoData[$i] = $this->getVideoDataForInsert($video, $movieId);
 		}
 
-		if ($videoData)
-		{
+		if ($videoData) {
 			$db->insertBulk('xf_snog_movies_video', $videoData, true);
 		}
 	}
