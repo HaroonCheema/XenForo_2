@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: f156662c771b672c962898a8a0fa8e85
+// FROM HASH: 4e8ec56eeb6836f088e47d8773efe74c
 return array(
 'extends' => function($__templater, array $__vars) { return 'thread_view'; },
 'extensions' => array('content_top' => function($__templater, array $__vars, $__extensions = null)
@@ -16,6 +16,24 @@ return array(
 {
 	$__finalCompiled = '';
 		$__finalCompiled .= '
+	
+	';
+	if (($__vars['thread']['TV'] AND (((($__vars['xf']['visitor']['user_id'] == $__vars['thread']['user_id']) OR $__vars['xf']['visitor']['is_admin']) OR $__vars['xf']['visitor']['is_moderator']) AND ($__vars['thread']['discussion_type'] == 'trakt_tv')))) {
+		$__finalCompiled .= '
+
+		' . $__templater->button('
+			' . 'Sync' . '
+		', array(
+			'href' => $__templater->func('link', array('tvTrakt/sync', $__vars['thread']['TV'], ), false),
+			'class' => 'button--link',
+			'overlay' => 'true',
+		), '', array(
+		)) . '
+
+	';
+	}
+	$__finalCompiled .= '
+	
 	';
 	if ((($__templater->func('property', array('trakt_tv_posterUpdateButtonPosition', ), false) == 'default') AND ($__vars['thread']['TV'] AND ($__vars['xf']['visitor']['is_admin'] OR $__vars['xf']['visitor']['is_moderator'])))) {
 		$__finalCompiled .= '

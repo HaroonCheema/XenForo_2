@@ -624,83 +624,161 @@ class Movies extends AbstractController
 
 	public function actionSync(ParameterBag $params)
 	{
+		$visitor = \XF::visitor();
+		if (!$visitor->user_id) {
+			return $this->noPermission();
+		}
 
 		$thread = $this->assertViewableThread($params->thread_id);
 
-		$typeCreator = \XF::service('nick97\TraktMovies:Thread\TypeData\MovieCreator', $thread, 22525);
+		if ($this->isPost()) {
+			$typeCreator = \XF::service('nick97\TraktMovies:Thread\TypeData\MovieCreator', $thread, 22525);
 
 
-		$movieCreator = $typeCreator->getMovieCreator();
+			$movieCreator = $typeCreator->getMovieCreator();
 
-		$movieId = $thread->Movie->trakt_id;
+			$movieId = $thread->Movie->trakt_id;
 
-		$threadId = $thread->thread_id;
-
-
-
-		\xf::db()->delete('nick97_trakt_movies_thread', 'thread_id = ?', $thread->thread_id);
-
-		\xf::db()->delete('nick97_trakt_movies_crew', 'trakt_id = ?', $movieId);
-		\xf::db()->delete('nick97_trakt_movies_cast', 'trakt_id = ?', $movieId);
+			$threadId = $thread->thread_id;
 
 
-		$casts = $this->finder('nick97\TraktMovies:Cast')->where('trakt_id', $movieId)->fetch();
 
-		if (count($casts)) {
+			\xf::db()->delete('nick97_trakt_movies_thread', 'thread_id = ?', $thread->thread_id);
 
-			$this->deleteMovies($casts);
+			\xf::db()->delete('nick97_trakt_movies_crew', 'trakt_id = ?', $movieId);
+			\xf::db()->delete('nick97_trakt_movies_cast', 'trakt_id = ?', $movieId);
+
+
+			$casts = $this->finder('nick97\TraktMovies:Cast')->where('trakt_id', $movieId)->fetch();
+
+			if (count($casts)) {
+
+				$this->deleteMovies($casts);
+			}
+
+			$Crews = $this->finder('nick97\TraktMovies:Crew')->where('trakt_id', $movieId)->fetch();
+
+			if (count($Crews)) {
+
+				$this->deleteMovies($Crews);
+			}
+			$Videos = $this->finder('nick97\TraktMovies:Video')->where('trakt_id', $movieId)->fetch();
+
+			if (count($Videos)) {
+
+				$this->deleteMovies($Videos);
+			}
+
+			$Ratings = $this->finder('nick97\TraktMovies:Rating')->where('thread_id', $thread->thread_id)->fetch();
+
+			if (count($Ratings)) {
+
+				$this->deleteMovies($Ratings);
+			}
+
+
+			$movieCreator->setMovieId($movieId);
+
+			$thread->setOption('movieApiResponse', $movieCreator->getMovieApiResponse());
+
+			$movieCreator->save();
+
+			$movie = $this->finder('nick97\TraktMovies:Movie')->where('thread_id', 22525)->fetchOne();
+			$movie->fastUpdate('thread_id', $threadId);
+			$thread->fastUpdate('title', $thread->Movie->trakt_title);
+
+			return $this->redirect($this->buildLink('threads', $thread));
+		} else {
+			$viewParams = [
+				'thread' => $thread,
+			];
+			return $this->view('XF:Thread\WatchList', 'nick97_trakt_watch_list_sync_confirm', $viewParams);
 		}
-
-		$Crews = $this->finder('nick97\TraktMovies:Crew')->where('trakt_id', $movieId)->fetch();
-
-		if (count($Crews)) {
-
-			$this->deleteMovies($Crews);
-		}
-		$Videos = $this->finder('nick97\TraktMovies:Video')->where('trakt_id', $movieId)->fetch();
-
-		if (count($Videos)) {
-
-			$this->deleteMovies($Videos);
-		}
-
-		$Ratings = $this->finder('nick97\TraktMovies:Rating')->where('thread_id', $thread->thread_id)->fetch();
-
-		if (count($Ratings)) {
-
-			$this->deleteMovies($Ratings);
-		}
-
-		// if ($thread->Movie->Casts->delete()) {
-		// 	# code...
-		// }
-
-		// $thread->Movie->delete();
-		// $thread->Movie->Ratings->delete();
-		// $thread->Movie->Casts->delete();
-		// $thread->Movie->Crews->delete();
-		// $thread->Movie->Videos->delete();
-
-		// echo "<pre>";
-		// // var_dump($thread->Movie->trakt_id);
-		// var_dump($thread->Movie->delete());
-		// var_dump($movieId);
-		// exit;
-
-		// $movieId = 299054;
-		// /** @var \Snog\Movies\Helper\Tmdb $tmdbHelper */
-		// $traktHelper = \XF::helper('nick97\TraktMovies:Trakt');
-		// $movieCreator->setMovieId($traktHelper->parseMovieId($movieId));
-		// $movieCreator->setMovieId($movieId);
-		$movieCreator->setMovieId($movieId);
-
-		// $thread->setOption('movieApiResponse', $movieCreator->getMovieApiResponse());
-
-		$movieCreator->save();
-
-		$movie = $this->finder('nick97\TraktMovies:Movie')->where('thread_id', 22525)->fetchOne();
-		$movie->fastUpdate('thread_id', $threadId);
 	}
+
+	// public function actionSync(ParameterBag $params)
+	// {
+
+	// 	$thread = $this->assertViewableThread($params->thread_id);
+
+	// 	// $editor = $this->setupThreadEdit($thread);
+
+	// 	// 	$editor->save();
+
+	// 	// echo "<pre>";
+	// 	// var_dump($thread->Movie->getPostMessage());
+	// 	// exit;
+
+	// 	$typeCreator = \XF::service('nick97\TraktMovies:Thread\TypeData\MovieCreator', $thread, 22525);
+
+
+	// 	$movieCreator = $typeCreator->getMovieCreator();
+
+	// 	$movieId = $thread->Movie->trakt_id;
+
+	// 	$threadId = $thread->thread_id;
+
+
+
+	// 	\xf::db()->delete('nick97_trakt_movies_thread', 'thread_id = ?', $thread->thread_id);
+
+	// 	\xf::db()->delete('nick97_trakt_movies_crew', 'trakt_id = ?', $movieId);
+	// 	\xf::db()->delete('nick97_trakt_movies_cast', 'trakt_id = ?', $movieId);
+
+
+	// 	$casts = $this->finder('nick97\TraktMovies:Cast')->where('trakt_id', $movieId)->fetch();
+
+	// 	if (count($casts)) {
+
+	// 		$this->deleteMovies($casts);
+	// 	}
+
+	// 	$Crews = $this->finder('nick97\TraktMovies:Crew')->where('trakt_id', $movieId)->fetch();
+
+	// 	if (count($Crews)) {
+
+	// 		$this->deleteMovies($Crews);
+	// 	}
+	// 	$Videos = $this->finder('nick97\TraktMovies:Video')->where('trakt_id', $movieId)->fetch();
+
+	// 	if (count($Videos)) {
+
+	// 		$this->deleteMovies($Videos);
+	// 	}
+
+	// 	$Ratings = $this->finder('nick97\TraktMovies:Rating')->where('thread_id', $thread->thread_id)->fetch();
+
+	// 	if (count($Ratings)) {
+
+	// 		$this->deleteMovies($Ratings);
+	// 	}
+
+
+	// 	$movieCreator->setMovieId($movieId);
+
+	// 	$thread->setOption('movieApiResponse', $movieCreator->getMovieApiResponse());
+
+	// 	$movieCreator->save();
+
+	// 	$movie = $this->finder('nick97\TraktMovies:Movie')->where('thread_id', 22525)->fetchOne();
+	// 	$movie->fastUpdate('thread_id', $threadId);
+	// 	$thread->fastUpdate('title', $thread->Movie->trakt_title);
+
+	// 	// $editor = $this->setupThreadEdit($thread);
+
+	// 	// $editor->save();
+	// }
+
+	// protected function setupThreadEdit(\XF\Entity\Thread $thread)
+	// {
+	// 	$editor = $this->getEditorService($thread);
+
+	// 	$editor->setTitle($thread->Movie->title);
+
+	// 	return $editor;
+	// }
+
+
 
 	public function deleteMovies($datas)
 	{

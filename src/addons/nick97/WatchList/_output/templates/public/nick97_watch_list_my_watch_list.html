@@ -156,6 +156,14 @@
 					<xf:button href="{{ link('threads/my-watch-list', $movie.Thread) }}" icon="delete" overlay="true">
 						{{ phrase('remove') }}
 					</xf:button>
+
+					<xf:if is="{{ $movie.Thread.discussion_type == 'trakt_movies_movie' }}">
+
+						<xf:button href="{{ link('traktMovies/sync', $movie.Thread) }}" icon="refresh" overlay="true">
+							{{ phrase('trakt_movies_sync') }}
+						</xf:button>
+
+					</xf:if>
 				</dl>
 
 			</div>
@@ -206,7 +214,7 @@
 				</dl>
 
 				<dl>
-					<xf:button href="{{ link('threads/my-watch-list', $movie.Thread) }}" icon="delete" overlay="true">
+					<xf:button href="{{ link('threads/my-watch-list', $tv.Thread) }}" icon="delete" overlay="true">
 						{{ phrase('remove') }}
 					</xf:button>
 				</dl>
@@ -259,9 +267,17 @@
 				</dl>
 
 				<dl>
-					<xf:button href="{{ link('threads/my-watch-list', $movie.Thread) }}" icon="delete" overlay="true">
+					<xf:button href="{{ link('threads/my-watch-list', $tv.Thread) }}" icon="delete" overlay="true">
 						{{ phrase('remove') }}
 					</xf:button>
+					
+					<xf:if is="{{ $tv.Thread.discussion_type == 'trakt_tv' }}">
+
+						<xf:button href="{{ link('tvTrakt/sync', $tv.Thread) }}" icon="refresh" overlay="true">
+							{{ phrase('trakt_movies_sync') }}
+						</xf:button>
+
+					</xf:if>
 				</dl>
 
 			</div>

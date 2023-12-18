@@ -274,5 +274,11 @@
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
         "hash": "087d87ca2be6d9b038b873f31f680c0c"
+    },
+    "you_sure_you_want_to_sync.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "3e170d18530e4e7d18727668552f138d"
     }
 }

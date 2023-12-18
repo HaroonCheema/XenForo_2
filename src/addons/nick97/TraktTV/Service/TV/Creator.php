@@ -26,15 +26,15 @@ class Creator extends \XF\Service\AbstractService
 
 	protected $performValidations = true;
 
-	public function __construct(\XF\App $app, \XF\Entity\Thread $thread)
+	public function __construct(\XF\App $app, \XF\Entity\Thread $thread, $dummyId)
 	{
 		parent::__construct($app);
-		$this->setThread($thread);
+		$this->setThread($thread, $dummyId);
 
 		$this->tvPreparer = $this->service('nick97\TraktTV:TV\Preparer', $this->tv);
 	}
 
-	protected function setThread(\XF\Entity\Thread $thread)
+	protected function setThread(\XF\Entity\Thread $thread, $dummyId)
 	{
 		$this->thread = $thread;
 
@@ -47,7 +47,14 @@ class Creator extends \XF\Service\AbstractService
 			}, 'save');
 		}
 
-		$tv->thread_id = $threadId;
+		// $tv->thread_id = $threadId;
+
+		if ($dummyId) {
+			$tv->thread_id = $dummyId;
+		} else {
+
+			$tv->thread_id = $threadId;
+		}
 
 		$this->tvData = $this->thread->getOption('tvData');
 

@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 81ab288c44603c3a098c8d4c95546b8e
+// FROM HASH: 0f05010ee879873028a65761bf7cec56
 return array(
 'macros' => array('my_watch_list_tmdb_movies' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -146,6 +146,23 @@ return array(
 				'overlay' => 'true',
 			), '', array(
 			)) . '
+
+					';
+			if (($__vars['movie']['Thread']['discussion_type'] == 'trakt_movies_movie')) {
+				$__finalCompiled .= '
+
+						' . $__templater->button('
+							' . 'Sync' . '
+						', array(
+					'href' => $__templater->func('link', array('traktMovies/sync', $__vars['movie']['Thread'], ), false),
+					'icon' => 'refresh',
+					'overlay' => 'true',
+				), '', array(
+				)) . '
+
+					';
+			}
+			$__finalCompiled .= '
 				</dl>
 
 			</div>
@@ -216,7 +233,7 @@ return array(
 					' . $__templater->button('
 						' . 'Remove' . '
 					', array(
-				'href' => $__templater->func('link', array('threads/my-watch-list', $__vars['movie']['Thread'], ), false),
+				'href' => $__templater->func('link', array('threads/my-watch-list', $__vars['tv']['Thread'], ), false),
 				'icon' => 'delete',
 				'overlay' => 'true',
 			), '', array(
@@ -291,11 +308,28 @@ return array(
 					' . $__templater->button('
 						' . 'Remove' . '
 					', array(
-				'href' => $__templater->func('link', array('threads/my-watch-list', $__vars['movie']['Thread'], ), false),
+				'href' => $__templater->func('link', array('threads/my-watch-list', $__vars['tv']['Thread'], ), false),
 				'icon' => 'delete',
 				'overlay' => 'true',
 			), '', array(
 			)) . '
+					
+					';
+			if (($__vars['tv']['Thread']['discussion_type'] == 'trakt_tv')) {
+				$__finalCompiled .= '
+
+						' . $__templater->button('
+							' . 'Sync' . '
+						', array(
+					'href' => $__templater->func('link', array('tvTrakt/sync', $__vars['tv']['Thread'], ), false),
+					'icon' => 'refresh',
+					'overlay' => 'true',
+				), '', array(
+				)) . '
+
+					';
+			}
+			$__finalCompiled .= '
 				</dl>
 
 			</div>

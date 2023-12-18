@@ -19,11 +19,11 @@ class TvCreator extends \XF\Service\AbstractService implements SaverInterface
 	 */
 	protected $tvCreator;
 
-	public function __construct(\XF\App $app, \XF\Entity\Thread $thread)
+	public function __construct(\XF\App $app, \XF\Entity\Thread $thread, $dummyId = null)
 	{
 		parent::__construct($app);
 		$this->thread = $thread;
-		$this->tvCreator = $this->service('nick97\TraktTV:TV\Creator', $thread);
+		$this->tvCreator = $this->service('nick97\TraktTV:TV\Creator', $thread, $dummyId);
 		$this->tvCreator->setIsAutomated();
 	}
 

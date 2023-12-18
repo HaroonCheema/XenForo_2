@@ -24,6 +24,11 @@
         "version_string": "1.0.0 Alpha",
         "hash": "19c9ba611b27a5f3c800721cf32d09af"
     },
+    "public/nick97_trakt_watch_list_sync_confirm.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "dbb0251720b22896b14c16099d687ab0"
+    },
     "public/search_result_trakt_movies_thread.html": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
@@ -132,7 +137,7 @@
     "public/trakt_movies_thread_view_type_movie.html": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
-        "hash": "b32dc7f5ce2e94b2db7eda28eb22ad1a"
+        "hash": "17b645c9759526912a4d810543db8234"
     },
     "public/trakt_movies_title_prompt.html": {
         "version_id": 1000010,

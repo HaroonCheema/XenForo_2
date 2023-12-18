@@ -93,8 +93,8 @@ class Trakt extends AbstractService
     {
         $data = json_decode($responseBody, true);
 
-        var_dump($data);
-        exit;
+        // var_dump($data);
+        // exit;
         if (null === $data || !is_array($data)) {
             throw new TokenResponseException('Unable to parse response.');
         } elseif (isset($data['error'])) {

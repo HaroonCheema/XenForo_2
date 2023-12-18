@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: b32dc7f5ce2e94b2db7eda28eb22ad1a
+// FROM HASH: 17b645c9759526912a4d810543db8234
 return array(
 'extends' => function($__templater, array $__vars) { return 'thread_view'; },
 'extensions' => array('content_top' => function($__templater, array $__vars, $__extensions = null)
@@ -16,14 +16,23 @@ return array(
 {
 	$__finalCompiled = '';
 		$__finalCompiled .= '
-	' . $__templater->button('
-		' . 'Sync' . '
-	', array(
-		'href' => $__templater->func('link', array('traktMovies/sync', $__vars['thread']['Movie'], ), false),
-		'class' => 'button--link',
-		'overlay' => 'true',
-	), '', array(
-	)) . '
+
+	';
+	if (($__vars['thread']['Movie'] AND (((($__vars['xf']['visitor']['user_id'] == $__vars['thread']['user_id']) OR $__vars['xf']['visitor']['is_admin']) OR $__vars['xf']['visitor']['is_moderator']) AND (($__vars['thread']['discussion_type'] == 'trakt_movies_movie') OR ($__vars['thread']['discussion_type'] == 'trakt_tv'))))) {
+		$__finalCompiled .= '
+
+		' . $__templater->button('
+			' . 'Sync' . '
+		', array(
+			'href' => $__templater->func('link', array('traktMovies/sync', $__vars['thread']['Movie'], ), false),
+			'class' => 'button--link',
+			'overlay' => 'true',
+		), '', array(
+		)) . '
+
+	';
+	}
+	$__finalCompiled .= '
 
 	';
 	if ((($__templater->func('property', array('trakt_movies_posterUpdateButtonPosition', ), false) == 'default') AND ($__vars['thread']['Movie'] AND ($__vars['xf']['visitor']['is_admin'] OR $__vars['xf']['visitor']['is_moderator'])))) {
