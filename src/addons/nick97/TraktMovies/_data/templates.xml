@@ -218,6 +218,20 @@
 	<xf:option name="options[slider][loop]" selected="{$options.slider.loop}" label="{{ phrase('trakt_movies_slider_loop_slides') }}" />
 	<xf:option name="options[slider][pager]" selected="{$options.slider.pager}" label="{{ phrase('trakt_movies_slider_pager') }}" />
 </xf:checkboxrow>]]></template>
+  <template type="public" title="nick97_trakt_watch_list_sync_confirm" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{$thread.title}</xf:title>
+
+<xf:breadcrumb source="$thread.getBreadcrumbs()" />
+
+<xf:form action="{{ link('traktMovies/sync', $thread) }}" class="block" ajax="true">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:inforow rowtype="confirm">
+				{{ phrase('you_sure_you_want_to_sync') }}
+			</xf:inforow>
+		</div>
+		<xf:submitrow submit="{{ phrase('trakt_movies_sync') }}" rowtype="simple" />
+	</div>
+</xf:form>]]></template>
   <template type="public" title="search_result_trakt_movies_thread" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<li class="block-row block-row--separated {{ $thread.isIgnored() ? 'is-ignored' : '' }} js-inlineModContainer" data-author="{{ $thread.User.username ?: $thread.username }}">
 	<xf:css src="trakt_movies.less" />
 	
@@ -1557,8 +1571,17 @@
 </xf:extension>
 
 <xf:extension name="thread_action_buttons">
+
+	<xf:if is="{{ $thread.Movie && ($xf.visitor.user_id == $thread.user_id || $xf.visitor.is_admin || $xf.visitor.is_moderator) && ($thread.discussion_type == 'trakt_movies_movie' || $thread.discussion_type == 'trakt_tv') }}">
+
+		<xf:button href="{{ link('traktMovies/sync', $thread.Movie) }}" class="button--link" overlay="true">
+			{{ phrase('trakt_movies_sync') }}
+		</xf:button>
+
+	</xf:if>
+
 	<xf:if is="{{ property('trakt_movies_posterUpdateButtonPosition') == 'default' && $thread.Movie && ($xf.visitor.is_admin || $xf.visitor.is_moderator) }}">
-		<xf:button href="{{ link('movies/poster', $thread.Movie) }}" class="button--link" overlay="true">
+		<xf:button href="{{ link('traktMovies/poster', $thread.Movie) }}" class="button--link" overlay="true">
 			{{ phrase('trakt_movies_check_poster') }}
 		</xf:button>
 	</xf:if>

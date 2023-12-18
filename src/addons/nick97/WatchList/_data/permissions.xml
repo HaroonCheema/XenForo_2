@@ -1,2 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<permissions/>
+<permissions>
+  <permission permission_group_id="nick97_watch_list" permission_id="manage_watchlist" permission_type="flag" interface_group_id="nick97_watch_list" display_order="1"/>
+  <permission permission_group_id="nick97_watch_list" permission_id="use_trakt" permission_type="flag" interface_group_id="nick97_watch_list" display_order="1"/>
+  <permission permission_group_id="nick97_watch_list" permission_id="view_anyone_stats" permission_type="flag" interface_group_id="nick97_watch_list" display_order="1"/>
+  <permission permission_group_id="nick97_watch_list" permission_id="view_everyone_watchlist" permission_type="flag" interface_group_id="nick97_watch_list" display_order="1"/>
+  <permission permission_group_id="nick97_watch_list" permission_id="view_own_stats" permission_type="flag" interface_group_id="nick97_watch_list" display_order="1"/>
+  <permission permission_group_id="nick97_watch_list" permission_id="view_own_watchlist" permission_type="flag" interface_group_id="nick97_watch_list" display_order="1"/>
+</permissions>

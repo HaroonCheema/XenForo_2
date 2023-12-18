@@ -34,6 +34,10 @@ w1400_and_h450_face=w1400_and_h450_face</edit_format_params>
     <default_value>en</default_value>
     <relation group_id="traktTvThreads" display_order="21"/>
   </option>
+  <option option_id="traktTvThreads_clientkey" edit_format="textbox" data_type="string">
+    <default_value></default_value>
+    <relation group_id="traktTvThreads" display_order="1"/>
+  </option>
   <option option_id="traktTvThreads_companiesLimit" edit_format="spinbox" data_type="integer">
     <default_value>10</default_value>
     <edit_format_params>min=0</edit_format_params>

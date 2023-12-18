@@ -240,6 +240,20 @@
 	<xf:option name="options[slider][loop]" selected="{$options.slider.loop}" label="{{ phrase('trakt_tv_slider_loop_slides') }}" />
 	<xf:option name="options[slider][pager]" selected="{$options.slider.pager}" label="{{ phrase('trakt_tv_slider_pager') }}" />
 </xf:checkboxrow>]]></template>
+  <template type="public" title="nick97_trakt_tv_sync_confirm" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{$thread.title}</xf:title>
+
+<xf:breadcrumb source="$thread.getBreadcrumbs()" />
+
+<xf:form action="{{ link('tvTrakt/sync', $thread) }}" class="block" ajax="true">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:inforow rowtype="confirm">
+				{{ phrase('you_sure_you_want_to_sync') }}
+			</xf:inforow>
+		</div>
+		<xf:submitrow submit="{{ phrase('trakt_movies_sync') }}" rowtype="simple" />
+	</div>
+</xf:form>]]></template>
   <template type="public" title="search_result_trakt_tv_post" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:css src="trakt_tv.less" />
 
 <li class="block-row block-row--separated {{ $post.isIgnored() ? 'is-ignored' : '' }} js-inlineModContainer" data-author="{{ $post.User.username ?: $post.username }}">
@@ -2055,6 +2069,15 @@
 </xf:extension>
 
 <xf:extension name="thread_action_buttons">
+	
+	<xf:if is="{{ $thread.TV && ($xf.visitor.user_id == $thread.user_id || $xf.visitor.is_admin || $xf.visitor.is_moderator) && ($thread.discussion_type == 'trakt_tv') }}">
+
+		<xf:button href="{{ link('tvTrakt/sync', $thread.TV) }}" class="button--link" overlay="true">
+			{{ phrase('trakt_movies_sync') }}
+		</xf:button>
+
+	</xf:if>
+	
 	<xf:if is="{{ property('trakt_tv_posterUpdateButtonPosition') == 'default' && $thread.TV && ($xf.visitor.is_admin || $xf.visitor.is_moderator) }}">
 		<xf:button href="{{ link('tv/poster', $thread.TV) }}" class="button--link" overlay="true">
 			{{ phrase('trakt_tv_check_poster') }}

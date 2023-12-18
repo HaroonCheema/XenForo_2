@@ -9,9 +9,11 @@
   <phrase title="forum_sort.trakt_movies_release" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Movie release date]]></phrase>
   <phrase title="forum_type.trakt_movies_movie" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trakt Movie Forum]]></phrase>
   <phrase title="forum_type_desc.trakt_movies_movie" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trakt movie thread starter]]></phrase>
+  <phrase title="nick97_movie_trakt_api_key_not_found" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trakt API key not found...!]]></phrase>
   <phrase title="nick97_movies_more_details_on_trakt" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[More details on Trakt]]></phrase>
   <phrase title="nick97_movies_trakt_watch_region" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Movie watch providers default region]]></phrase>
-  <phrase title="option.traktthreads_apikey" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trakt API Key]]></phrase>
+  <phrase title="option.traktMovieThreads_apikey" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trakt API key]]></phrase>
+  <phrase title="option.traktthreads_apikey" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[TMDb API Key]]></phrase>
   <phrase title="option.traktthreads_backdropCoverSize" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Backdrop cover size]]></phrase>
   <phrase title="option.traktthreads_castsLimit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Casts results on thread tab]]></phrase>
   <phrase title="option.traktthreads_cdn_path" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[CDN Path]]></phrase>
@@ -42,6 +44,7 @@
   <phrase title="option.traktthreads_videoLimit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Video results on thread tab]]></phrase>
   <phrase title="option.traktthreads_watchProviderRegion" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Default watch provider region]]></phrase>
   <phrase title="option.traktthreads_watchProviderRegions" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enabled watch provider regions]]></phrase>
+  <phrase title="option_explain.traktMovieThreads_apikey" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter your Trakt API key]]></phrase>
   <phrase title="option_explain.traktthreads_apikey" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
   <phrase title="option_explain.traktthreads_backdropCoverSize" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Requires <a href="https://xenforo.com/community/resources/ozzmodz-covers.8589/" target="_blank">[OzzModz] Covers</a> add-on installed. Select "none" to disable. The file size of the selected option must not exceed the max. file cover size.]]></phrase>
   <phrase title="option_explain.traktthreads_castsLimit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
@@ -193,6 +196,7 @@ Phrases can be translated with "snog_movies_country.{countryCode}" key.]]></phra
   <phrase title="trakt_movies_started_x_threads" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[User has started at least X movie threads]]></phrase>
   <phrase title="trakt_movies_status" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Status]]></phrase>
   <phrase title="trakt_movies_streaming" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Streaming]]></phrase>
+  <phrase title="trakt_movies_sync" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Sync]]></phrase>
   <phrase title="trakt_movies_tagline" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Tagline]]></phrase>
   <phrase title="trakt_movies_thread_movie" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Post a new thread or movie]]></phrase>
   <phrase title="trakt_movies_thread_tools_menu" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Thread tools menu]]></phrase>

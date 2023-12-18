@@ -3,7 +3,10 @@
   <phrase title="cron_entry.traktTV1" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Update TV episode posts that are missing images or plots]]></phrase>
   <phrase title="cron_entry.traktTvWatchProvider" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[nick97] Trakt TV Thread Starter: Update watch provider data]]></phrase>
   <phrase title="cron_entry.trakt_tv_changes" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[nick97] Trakt TV Thread Starter: Check for TV changes]]></phrase>
+  <phrase title="forum_type.trakt_tv" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trakt TV Forum]]></phrase>
+  <phrase title="forum_type_desc.trakt_tv" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trakt TV thread starter]]></phrase>
   <phrase title="nick97_tv_more_details_on_trakt" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[More details on Trakt]]></phrase>
+  <phrase title="nick97_tv_trakt_api_key_not_found" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trakt API key not found...!]]></phrase>
   <phrase title="option.traktTvThreads_aggregateCredits" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Fetch aggregated credits]]></phrase>
   <phrase title="option.traktTvThreads_apikey" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[TMDB API key]]></phrase>
   <phrase title="option.traktTvThreads_backdropCoverSize" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Backdrop cover size]]></phrase>
@@ -11,6 +14,7 @@
   <phrase title="option.traktTvThreads_category" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Categories for TV shows]]></phrase>
   <phrase title="option.traktTvThreads_cdn_path" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[CDN path]]></phrase>
   <phrase title="option.traktTvThreads_changesLanguage" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[TV show changes tracking language]]></phrase>
+  <phrase title="option.traktTvThreads_clientkey" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trakt API key]]></phrase>
   <phrase title="option.traktTvThreads_companiesLimit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Production results limit on thread view]]></phrase>
   <phrase title="option.traktTvThreads_creditsLimit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Credits results on thread tab]]></phrase>
   <phrase title="option.traktTvThreads_crosslink" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Crosslink into all genre forums]]></phrase>
@@ -53,6 +57,7 @@ This can be a large amount of data and will affect performance.]]></phrase>
   <phrase title="option_explain.traktTvThreads_category" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Categories selected in this list can only be used to create forums dedicated to individual TV shows.<br />Do not select any categories if you do not wish to use this option.]]></phrase>
   <phrase title="option_explain.traktTvThreads_cdn_path" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[If you are using your own CDN, enter the CDN path here.<br />Example: http://cdn.yourpath.com/data<br />DO NOT end the path with a /]]></phrase>
   <phrase title="option_explain.traktTvThreads_changesLanguage" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter the ISO 639-1 Language Code that will be used for TV information.<br />These codes are available at <a href="http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes" target="_blank">List of ISO 639-1 codes</a><br /><br />You may also include a two letter country code in the language selection (en-US, en-GB, pt-PT, pt-BR, etc...).<br />This is a list of the two letter country codes: <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2" target="_blank">ISO 3166-1 alpha-2 Country Codes</a><br /><br /><b>NOTE:</b> There is no guarantee that the translation to the language selected will be the proper translation. And there is no guarantee there will be a translation of a TV show at The Movie Database.]]></phrase>
+  <phrase title="option_explain.traktTvThreads_clientkey" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter your API key for Trakt Database]]></phrase>
   <phrase title="option_explain.traktTvThreads_companiesLimit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
   <phrase title="option_explain.traktTvThreads_creditsLimit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
   <phrase title="option_explain.traktTvThreads_crosslink" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[To place a redirect link to the main TV thread in all genre limited forums that a TV show can belong to, check this box. <font style="color:blue;">Genre limiting must be enabled for this to work</font><br />EXAMPLE: A TV show is in these genres: Drama, Science Fiction, Thriller<br />A member posts the show in the Science Fiction forum.<br />Redirect links will be placed in the Drama and Thriller forums.]]></phrase>
@@ -147,6 +152,8 @@ Phrases can be translated with "snog_tv_country.{countryCode}" key.]]></phrase>
   <phrase title="style_prop_desc.trakt_tv_watchProviderImgWidth" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
   <phrase title="style_prop_group.trakt_tv" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[nick97] Trakt TV Thread Starter]]></phrase>
   <phrase title="style_prop_group_desc.trakt_tv" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="thread_type.trakt_tv" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trakt Tv]]></phrase>
+  <phrase title="thread_type_plural.trakt_tv" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trakt TV]]></phrase>
   <phrase title="trakt_tv_cast" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Cast]]></phrase>
   <phrase title="trakt_tv_check_poster" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Check for new poster]]></phrase>
   <phrase title="trakt_tv_crew" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Crew]]></phrase>
@@ -157,6 +164,8 @@ Phrases can be translated with "snog_tv_country.{countryCode}" key.]]></phrase>
   <phrase title="trakt_tv_last_air_date" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Last air date]]></phrase>
   <phrase title="trakt_tv_overview" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Overview]]></phrase>
   <phrase title="trakt_tv_post_episode" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[If you wish to post an episode for this TV show, enter the Season and Episode numbers]]></phrase>
+  <phrase title="trakt_tv_post_show_title" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trakt TV show link or TV show ID]]></phrase>
+  <phrase title="trakt_tv_show_lookup" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Don't have the Trakt Link or ID for your TV show? Go to <a href="https://trakt.tv/shows/trending" target="_blank" >Trakt Shows</a> and look it up.]]></phrase>
   <phrase title="trakt_tv_status" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Show status]]></phrase>
   <phrase title="trakt_tv_streaming" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Streaming]]></phrase>
   <phrase title="trakt_tv_trailer" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trailer]]></phrase>
