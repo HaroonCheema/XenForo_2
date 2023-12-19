@@ -10,5 +10,8 @@
     },
     "public/nick97_watch_list_privacy_options.json": {
         "hash": "8bd5c1cb7936d646d195066b64f53333"
+    },
+    "public/nick97_watch_list_register_username.json": {
+        "hash": "35d0b975f31502f7affdb2b94d82d7b1"
     }
 }

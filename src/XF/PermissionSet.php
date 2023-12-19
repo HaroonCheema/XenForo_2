@@ -49,8 +49,6 @@ class PermissionSet
 	{
 		$permissions = $this->permCache->getContentPerms($this->permissionCombinationId, $contentType, $contentId);
 
-		// var_dump($permissions);
-		// exit;
 		if (!$permissions || !isset($permissions[$permission])) {
 			return false;
 		}

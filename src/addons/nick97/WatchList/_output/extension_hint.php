@@ -13,5 +13,6 @@ namespace nick97\WatchList\XF\Entity
 namespace nick97\WatchList\XF\Pub\Controller
 {
 	class XFCP_Account extends \XF\Pub\Controller\Account {}
+	class XFCP_Member extends \XF\Pub\Controller\Member {}
 	class XFCP_Thread extends \XF\Pub\Controller\Thread {}
 }

@@ -41,12 +41,14 @@ class Trakt extends AbstractService
      */
     public function getAuthorizationUri(array $additionalParameters = array())
     {
+
         $parameters = array_merge(
             $additionalParameters,
             array(
                 'client_id' => $this->credentials->getConsumerId(),
                 'redirect_uri' => $this->credentials->getCallbackUrl(),
                 'response_type' => 'code',
+                'scope' => 'public'
             )
         );
 
@@ -93,8 +95,7 @@ class Trakt extends AbstractService
     {
         $data = json_decode($responseBody, true);
 
-        // var_dump($data);
-        // exit;
+
         if (null === $data || !is_array($data)) {
             throw new TokenResponseException('Unable to parse response.');
         } elseif (isset($data['error'])) {
@@ -129,9 +130,6 @@ class Trakt extends AbstractService
      */
     public function request($path, $method = 'GET', $body = null, array $extraHeaders = array())
     {
-        return parent::request($path, $method, $body, $extraHeaders);
-        //  echo '<pre>';
-        // var_dump("test",$path, $method, $body, $extraHeaders);exit;
         return parent::request($parent, $path, $method, $body, $extraHeaders);
     }
 }

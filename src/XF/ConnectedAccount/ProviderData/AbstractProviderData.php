@@ -91,18 +91,21 @@ abstract class AbstractProviderData implements \ArrayAccess
 			$config['storageType'] = $storageState->getStorageType();
 
 
-			echo "<pre>";
-			var_dump($endpoint,$method);exit;
+
 
 
 			$data = $handler->getOAuth($config)->request($endpoint, $method);
-			
+
+
 
 			$data = json_decode($data, true);
+
 			$this->storeInCache($endpoint, $data);
 			if ($endpoint == $this->getDefaultEndpoint()) {
 				$storageState->storeProviderData($data);
 			}
+
+
 			return $this->requestFromCache($endpoint, $key);
 		} catch (\Exception $e) {
 			return null;

@@ -25,7 +25,6 @@ class Debugger
 	public function dumpSimple($var, $echo = true, $escape = true)
 	{
 		ob_start();
-		var_dump($var);
 		$dump = ob_get_clean();
 
 		$dump = preg_replace("/\]\=\>\n(\s+)/m", "] => ", $dump);

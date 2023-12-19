@@ -411,8 +411,6 @@ class Thread extends AbstractController
 	protected function finalizeThreadReply(\XF\Service\Thread\Replier $replier)
 	{
 
-		// var_dump($replier->sendNotifications());
-		// exit;
 		$replier->sendNotifications();
 
 		$thread = $replier->getThread();

@@ -191,6 +191,8 @@ abstract class AbstractProvider
 	public function requestProviderToken(StorageState $storageState, Request $request, &$error = null, $skipStoredToken = false)
 	{
 		$version = $this->getOAuthVersion();
+
+
 		$token = false;
 		if (!$skipStoredToken) {
 			$token = $storageState->getProviderToken();

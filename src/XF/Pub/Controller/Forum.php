@@ -926,8 +926,7 @@ class Forum extends AbstractController
 
 		$forumRepo = $this->getForumRepo();
 
-		// echo var_dump($params);
-		// exit;
+
 		$lookup = $params->node_id ?: $params->node_name;
 		if ($lookup) {
 			$forum = $this->assertViewableForum($lookup);

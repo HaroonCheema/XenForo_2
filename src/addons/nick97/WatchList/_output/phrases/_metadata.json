@@ -161,6 +161,48 @@
         "version_string": "1.0.0 Alpha",
         "hash": "153f6fe22bdd605c7c251a3c9db8576e"
     },
+    "nick9t_watchlist_request_empty_body.txt": {
+        "global_cache": false,
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "9c0b5fec18a8b70126b833de771d84e8"
+    },
+    "nick9t_watchlist_request_method_not_allowed.txt": {
+        "global_cache": false,
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "d8b6ac9ee89ebf22124fd652f69e43d2"
+    },
+    "nick9t_watchlist_request_not_found.txt": {
+        "global_cache": false,
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "ab8b4e5b8190ee1b0ae0817623b6ca70"
+    },
+    "nick9t_watchlist_request_not_success.txt": {
+        "global_cache": false,
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "e0d9b82f2da1eb5b18d70b92db3fdc72"
+    },
+    "nick9t_watchlist_request_server_error.txt": {
+        "global_cache": false,
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "2dcea37424779992a82da727cead6818"
+    },
+    "nick9t_watchlist_request_unauthorized.txt": {
+        "global_cache": false,
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "28045961007db78defefcce04ff6cbfd"
+    },
+    "nick9t_watchlist_request_unsported_media.txt": {
+        "global_cache": false,
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "f12c0ddf5b63d9da81c47b69b07cf89a"
+    },
     "option.nick97_watch_list_trakt_api_key.txt": {
         "global_cache": false,
         "version_id": 1000010,

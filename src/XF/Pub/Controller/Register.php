@@ -63,7 +63,7 @@ class Register extends AbstractController
 
 		$storageState = $handler->getStorageState($provider, $visitor);
 
-		
+
 		if ($this->filter('setup', 'bool')) {
 			$storageState->clearToken();
 			return $handler->handleAuthorization($this, $provider, $redirect);
@@ -95,7 +95,7 @@ class Register extends AbstractController
 		$redirect = $connectedAccountRequest['returnUrl'];
 
 		$providerData = $handler->getProviderData($storageState);
-		
+
 
 		// If we find this provider account is associated with a local account, we'll log into it.
 		$connectedRepo = $this->getConnectedAccountRepo();
@@ -105,14 +105,8 @@ class Register extends AbstractController
 				return $this->error(\XF::phrase('this_account_is_already_associated_with_another_member'));
 			}
 			//
-			echo '<pre>';
-			var_dump($providerData->extra_data);
-			exit;
 
-			// otherwise, just log into that account
-			//echo '<pre>';
-	//	var_dump($providerData,$providerData->extra_data);
-	//	exit;
+
 			$userConnected->extra_data = $providerData->extra_data;
 			$userConnected->save();
 

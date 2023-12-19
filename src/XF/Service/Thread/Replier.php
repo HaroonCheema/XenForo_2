@@ -217,17 +217,13 @@ class Replier extends \XF\Service\AbstractService
 
 	public function sendNotifications()
 	{
-		//var_dump($this->post->isVisible());
-		//exit;
-		//if ($this->post->isVisible()) {
+	
 		/** @var \XF\Service\Post\Notifier $notifier */
 		$notifier = $this->service('XF:Post\Notifier', $this->post, 'reply');
 
-		// var_dump($this->postPreparer->getMentionedUserIds(), $this->postPreparer->getQuotedUserIds());
-		//exit;
+	
 		$notifier->setMentionedUserIds($this->postPreparer->getMentionedUserIds());
 		$notifier->setQuotedUserIds($this->postPreparer->getQuotedUserIds());
 		$notifier->notifyAndEnqueue(3);
-		//}
 	}
 }

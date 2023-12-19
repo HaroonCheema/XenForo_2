@@ -203,6 +203,12 @@ class Crud extends AbstractController
     public function actionIndex(ParameterBag $params)
     {
 
+        $visitor = \XF::visitor();
+
+        echo "<pre>";
+        var_dump($visitor);
+        exit;
+
         // return $this->view('CRUD\XF:Crud\Index', 'crud_record_testing_only', []);
         // exit;
 

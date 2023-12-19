@@ -11,7 +11,6 @@ class WatchList extends AbstractController
 
 	public function actionIndex(ParameterBag $params)
 	{
-
 		// /** @var \XF\Entity\User $user */
 		// $user = $this->assertRecordExists('XF:User', 1);
 
@@ -22,7 +21,6 @@ class WatchList extends AbstractController
 		// if (!$user->canViewStats($error)) {
 		//     throw $this->exception($this->noPermission($error));
 		// }
-
 
 		$conditions = [
 			['discussion_type', 'snog_movies_movie'],
@@ -73,10 +71,9 @@ class WatchList extends AbstractController
 			$tvShows = [];
 		}
 
-
-
 		$viewpParams = [
-			'stats' => $this->userStats(),
+			'stats' => $this->userStats("sean"),
+			// 'stats' => $this->userStats("harooncheema"),
 			"movies" => $movies,
 			"tvShows" => $tvShows,
 		];
@@ -84,10 +81,8 @@ class WatchList extends AbstractController
 		return $this->view('nick97\WatchList:index', 'nick97_watch_list_index', $viewpParams);
 	}
 
-
 	public function actionMy()
 	{
-
 		$threadIds = $this->finder('XF:Thread')
 			->where('discussion_type', 'snog_movies_movie')->where('watch_list', 1)->pluckfrom('thread_id')->fetch()->toArray();
 
@@ -136,11 +131,8 @@ class WatchList extends AbstractController
 		return $this->view('nick97\WatchList:index', 'nick97_watch_list_my_watch_list', $viewpParams);
 	}
 
-	protected function userStats()
+	protected function userStats($userId)
 	{
-
-		$endpoint = 'https://api.trakt.tv/users/sean/stats';
-
 		$clientKey = \XF::options()->nick97_watch_list_trakt_api_key;
 
 		if (!$clientKey) {
@@ -149,28 +141,10 @@ class WatchList extends AbstractController
 			);
 		}
 
-		$headers = array(
-			'Content-Type: application/json',
-			'trakt-api-version: 2',
-			'trakt-api-key: ' . $clientKey
-		);
+		$app = \xf::app();
+		$watchListService = $app->service('nick97\WatchList:watchList');
 
-		$ch = curl_init();
-
-		curl_setopt($ch, CURLOPT_URL, $endpoint);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-		curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-
-		$result = curl_exec($ch);
-
-		if ($result === false) {
-			echo "cURL Error: " . curl_error($ch) . "\n";
-			exit;
-		}
-
-		curl_close($ch);
-
-		$toArray = json_decode($result, true);
+		$toArray = $watchListService->getStatsById($userId, $clientKey);
 
 		$stats = [
 			'moviesWatched' => isset($toArray["movies"]["watched"]) ? number_format($toArray["movies"]["watched"]) : null,
@@ -185,7 +159,6 @@ class WatchList extends AbstractController
 
 	protected function convertMinutes($minutes)
 	{
-
 		// Convert minutes to hours
 		$hours = floor($minutes / 60);
 		// $remaining_minutes = $minutes % 60;
