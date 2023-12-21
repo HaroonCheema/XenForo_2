@@ -3,7 +3,7 @@
 	
 	<div class="contentRow {{ !$thread.isVisible() ? 'is-deleted' : '' }}">
 		<span class="contentRow-figure">
-			<img class="tvPoster" src="{{ $thread.TV.getImageUrl('s') }}" />
+			<img class="tvPoster" src="{{ $thread.traktTV.getImageUrl('s') }}" />
 		</span>
 		<div class="contentRow-main">
 			<h3 class="contentRow-title">

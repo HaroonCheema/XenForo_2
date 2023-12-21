@@ -40,39 +40,60 @@ class WatchList extends AbstractController
 
 		// get permission
 		if ($visitor->hasPermission('nick97_watch_list', 'view_own_watchlist')) {
+
+			$allThreadIds = $this->finder('nick97\WatchList:WatchList')
+				->where('user_id', $visitor->user_id)->pluckfrom('thread_id')->fetch()->toArray();
+
 			$threadIds = $this->finder('XF:Thread')
-				->whereOr($conditions)->where('user_id', $visitor->user_id)->where('watch_list', 1)->pluckfrom('thread_id')->fetch()->toArray();
+				->whereOr($conditions)->where('thread_id', $allThreadIds)->pluckfrom('thread_id')->fetch()->toArray();
 
 			$tvThreadIds = $this->finder('XF:Thread')
-				->whereOr($tvConditions)->where('user_id', $visitor->user_id)->where('watch_list', 1)->pluckfrom('thread_id')->fetch()->toArray();
-		} elseif ($visitor->hasPermission('nick97_watch_list', 'view_everyone_watchlist')) {
-			$threadIds = $this->finder('XF:Thread')
-				->whereOr($conditions)->where('watch_list', 1)->pluckfrom('thread_id')->fetch()->toArray();
-
-			$tvThreadIds = $this->finder('XF:Thread')
-				->whereOr($tvConditions)->where('watch_list', 1)->pluckfrom('thread_id')->fetch()->toArray();
+				->whereOr($tvConditions)->where('thread_id', $allThreadIds)->pluckfrom('thread_id')->fetch()->toArray();
 		}
 
+		// elseif ($visitor->hasPermission('nick97_watch_list', 'view_everyone_watchlist')) {
+		// 	$threadIds = $this->finder('XF:Thread')
+		// 		->whereOr($conditions)->where('watch_list', 1)->pluckfrom('thread_id')->fetch()->toArray();
+
+		// 	$tvThreadIds = $this->finder('XF:Thread')
+		// 		->whereOr($tvConditions)->where('watch_list', 1)->pluckfrom('thread_id')->fetch()->toArray();
+		// }
+
 		if (count($threadIds) > 0) {
-			$tmdbMovies = $this->finder('Snog\Movies:Movie')->where('thread_id', $threadIds)->fetch()->toArray();
+			// $tmdbMovies = $this->finder('Snog\Movies:Movie')->where('thread_id', $threadIds)->fetch()->toArray();
 			$traktMovies = $this->finder('nick97\TraktMovies:Movie')->where('thread_id', $threadIds)->fetch()->toArray();
 
-			$movies = array_merge($tmdbMovies, $traktMovies);
+			// $movies = array_merge($tmdbMovies, $traktMovies);
+			$movies = $traktMovies;
 		} else {
 			$movies = [];
 		}
 
 		if (count($tvThreadIds) > 0) {
-			$tmdbTv = $this->finder('Snog\TV:TV')->where('thread_id', $tvThreadIds)->fetch()->toArray();
+			// $tmdbTv = $this->finder('Snog\TV:TV')->where('thread_id', $tvThreadIds)->fetch()->toArray();
 			$traktTv = $this->finder('nick97\TraktTV:TV')->where('thread_id', $tvThreadIds)->fetch()->toArray();
 
-			$tvShows = array_merge($tmdbTv, $traktTv);
+			// $tvShows = array_merge($tmdbTv, $traktTv);
+			$tvShows = $traktTv;
 		} else {
 			$tvShows = [];
 		}
 
+
+
+		$providerFinder = \XF::finder('XF:UserConnectedAccount');
+		$traktUser = $providerFinder
+			->where('user_id', $visitor->user_id)->where('provider', 'nick_trakt')
+			->fetchOne();
+
+		$traktUserId = null;
+
+		if (!empty($traktUser)) {
+			$traktUserId = $traktUser['provider_key'];
+		}
+
 		$viewpParams = [
-			'stats' => $this->userStats("sean"),
+			'stats' => $traktUserId ? $this->userStats($traktUserId) : '',
 			// 'stats' => $this->userStats("harooncheema"),
 			"movies" => $movies,
 			"tvShows" => $tvShows,
@@ -83,8 +104,13 @@ class WatchList extends AbstractController
 
 	public function actionMy()
 	{
+		$visitor = \XF::visitor();
+
+		$allThreadIds = $this->finder('nick97\WatchList:WatchList')
+			->where('user_id', $visitor->user_id)->pluckfrom('thread_id')->fetch()->toArray();
+
 		$threadIds = $this->finder('XF:Thread')
-			->where('discussion_type', 'snog_movies_movie')->where('watch_list', 1)->pluckfrom('thread_id')->fetch()->toArray();
+			->where('discussion_type', 'snog_movies_movie')->where('thread_id', $allThreadIds)->pluckfrom('thread_id')->fetch()->toArray();
 
 		if (count($threadIds) > 0) {
 			$tmdbMovies = $this->finder('Snog\Movies:Movie')->where('thread_id', $threadIds)->fetch()->toArray();
@@ -93,7 +119,7 @@ class WatchList extends AbstractController
 		}
 
 		$traktThreadIds = $this->finder('XF:Thread')
-			->where('discussion_type', 'trakt_movies_movie')->where('watch_list', 1)->pluckfrom('thread_id')->fetch()->toArray();
+			->where('discussion_type', 'trakt_movies_movie')->where('thread_id', $allThreadIds)->pluckfrom('thread_id')->fetch()->toArray();
 
 		if (count($traktThreadIds) > 0) {
 			$traktMovies = $this->finder('nick97\TraktMovies:Movie')->where('thread_id', $traktThreadIds)->fetch()->toArray();
@@ -102,7 +128,7 @@ class WatchList extends AbstractController
 		}
 
 		$tvThreadIds = $this->finder('XF:Thread')
-			->where('discussion_type', 'snog_tv')->where('watch_list', 1)->pluckfrom('thread_id')->fetch()->toArray();
+			->where('discussion_type', 'snog_tv')->where('thread_id', $allThreadIds)->pluckfrom('thread_id')->fetch()->toArray();
 
 		if (count($tvThreadIds) > 0) {
 			$tmdbTvShows = $this->finder('Snog\TV:TV')->where('thread_id', $tvThreadIds)->fetch()->toArray();
@@ -111,7 +137,7 @@ class WatchList extends AbstractController
 		}
 
 		$traktTvThreadIds = $this->finder('XF:Thread')
-			->where('discussion_type', 'trakt_tv')->where('watch_list', 1)->pluckfrom('thread_id')->fetch()->toArray();
+			->where('discussion_type', 'trakt_tv')->where('thread_id', $allThreadIds)->pluckfrom('thread_id')->fetch()->toArray();
 
 		if (count($traktTvThreadIds) > 0) {
 			$traktTvShows = $this->finder('nick97\TraktTV:TV')->where('thread_id', $traktTvThreadIds)->fetch()->toArray();

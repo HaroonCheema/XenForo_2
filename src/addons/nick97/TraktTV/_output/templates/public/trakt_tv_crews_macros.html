@@ -10,7 +10,7 @@
 	<xf:if is="$hasMore">
 		<div class="block-footer js-tvCrewsLoadMore{$tv.tv_id}">
 			<span class="block-footer-controls">
-				<xf:button href="{{ link('tv/crews', $tv, {'page': $page + 1}) }}"
+				<xf:button href="{{ link('tvTrakt/crews', $tv, {'page': $page + 1}) }}"
 					data-xf-click="inserter"
 					data-append=".js-tvCrewsList{$tv.tv_id}"
 					data-replace=".js-tvCrewsLoadMore{$tv.tv_id}">

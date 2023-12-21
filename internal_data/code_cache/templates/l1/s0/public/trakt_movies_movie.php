@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 5681ecd6d06d6f276faa11be1d3d0743
+// FROM HASH: 7a7d631f0e19d0533d438c0c1bb8417a
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -14,18 +14,18 @@ return array(
 	if ($__vars['xf']['options']['traktthreads_use_rating']) {
 		$__finalCompiled .= '
 	';
-		$__vars['rating'] = $__vars['thread']['Movie']['trakt_rating'];
+		$__vars['rating'] = $__vars['thread']['traktMovie']['trakt_rating'];
 		$__finalCompiled .= '
 	<div style="margin-bottom:10px;">
 		' . $__templater->callMacro('rating_macros', 'stars_text', array(
 			'rating' => $__vars['rating'],
-			'text' => 'Rating' . ': ' . $__vars['thread']['Movie']['trakt_rating'] . '/5 ' . $__vars['thread']['Movie']['trakt_votes'] . ' ' . 'Votes',
+			'text' => 'Rating' . ': ' . $__vars['thread']['traktMovie']['trakt_rating'] . '/5 ' . $__vars['thread']['traktMovie']['trakt_votes'] . ' ' . 'Votes',
 		), $__vars) . '
 	
 		';
 		if ($__vars['xf']['visitor']['user_id']) {
 			$__finalCompiled .= '
-			<a href="' . $__templater->func('link', array('movies/rate', $__vars['thread']['Movie'], ), true) . '" data-xf-click="overlay"><button type="button" class="button--link button"><span class="button-text">' . 'Add/Change rating' . '</span></button></a>
+			<a href="' . $__templater->func('link', array('movies/rate', $__vars['thread']['traktMovie'], ), true) . '" data-xf-click="overlay"><button type="button" class="button--link button"><span class="button-text">' . 'Add/Change rating' . '</span></button></a>
 		';
 		}
 		$__finalCompiled .= '
@@ -39,7 +39,7 @@ return array(
 	if ($__templater->func('property', array('trakt_movies_messagePosterPosition', ), false) == 'left') {
 		$__finalCompiled .= '
 		<div class="moviethreadposter">
-			<img src="' . $__templater->escape($__templater->method($__vars['thread']['Movie'], 'getImageUrl', array('l', ))) . '" />
+			<img src="' . $__templater->escape($__templater->method($__vars['thread']['traktMovie'], 'getImageUrl', array('l', ))) . '" />
 		</div>
 	';
 	}
@@ -48,42 +48,42 @@ return array(
 	<div class="message' . (($__templater->func('property', array('trakt_movies_messagePosterPosition', ), false) == 'left') ? ' messageMovie' : ' messageMovieLeft') . '">
 		';
 	if ($__vars['xf']['options']['traktthreads_showThreadInfo']['title']) {
-		$__finalCompiled .= '<b>' . 'Title' . ':</b> ' . $__templater->escape($__vars['thread']['Movie']['trakt_title']) . '<br />';
+		$__finalCompiled .= '<b>' . 'Title' . ':</b> ' . $__templater->escape($__vars['thread']['traktMovie']['trakt_title']) . '<br />';
 	}
 	$__finalCompiled .= '
 		';
-	if ($__vars['xf']['options']['traktthreads_showThreadInfo']['tagline'] AND $__vars['thread']['Movie']['trakt_tagline']) {
-		$__finalCompiled .= '<p><b>' . 'Tagline' . ':</b> ' . $__templater->escape($__vars['thread']['Movie']['trakt_tagline']) . '</p>';
+	if ($__vars['xf']['options']['traktthreads_showThreadInfo']['tagline'] AND $__vars['thread']['traktMovie']['trakt_tagline']) {
+		$__finalCompiled .= '<p><b>' . 'Tagline' . ':</b> ' . $__templater->escape($__vars['thread']['traktMovie']['trakt_tagline']) . '</p>';
 	}
 	$__finalCompiled .= '
 		';
-	if ($__vars['xf']['options']['traktthreads_showThreadInfo']['genres'] AND $__vars['thread']['Movie']['trakt_genres']) {
-		$__finalCompiled .= '<p><b>' . 'Genre' . ':</b> ' . $__templater->escape($__vars['thread']['Movie']['trakt_genres']) . '</p>';
+	if ($__vars['xf']['options']['traktthreads_showThreadInfo']['genres'] AND $__vars['thread']['traktMovie']['trakt_genres']) {
+		$__finalCompiled .= '<p><b>' . 'Genre' . ':</b> ' . $__templater->escape($__vars['thread']['traktMovie']['trakt_genres']) . '</p>';
 	}
 	$__finalCompiled .= '
 		';
-	if ($__vars['xf']['options']['traktthreads_showThreadInfo']['director'] AND $__vars['thread']['Movie']['trakt_director']) {
-		$__finalCompiled .= '<p><b>' . 'Director' . ':</b> ' . $__templater->escape($__vars['thread']['Movie']['trakt_director']) . '</p>';
+	if ($__vars['xf']['options']['traktthreads_showThreadInfo']['director'] AND $__vars['thread']['traktMovie']['trakt_director']) {
+		$__finalCompiled .= '<p><b>' . 'Director' . ':</b> ' . $__templater->escape($__vars['thread']['traktMovie']['trakt_director']) . '</p>';
 	}
 	$__finalCompiled .= '
 		';
-	if ($__vars['xf']['options']['traktthreads_showThreadInfo']['cast'] AND $__vars['thread']['Movie']['trakt_cast']) {
-		$__finalCompiled .= '<p><b>' . 'Cast' . ':</b> ' . $__templater->escape($__vars['thread']['Movie']['trakt_cast']) . '</p>';
+	if ($__vars['xf']['options']['traktthreads_showThreadInfo']['cast'] AND $__vars['thread']['traktMovie']['trakt_cast']) {
+		$__finalCompiled .= '<p><b>' . 'Cast' . ':</b> ' . $__templater->escape($__vars['thread']['traktMovie']['trakt_cast']) . '</p>';
 	}
 	$__finalCompiled .= '
 		';
-	if ($__vars['xf']['options']['traktthreads_showThreadInfo']['release_date'] AND $__vars['thread']['Movie']['trakt_release']) {
-		$__finalCompiled .= '<p><b>' . 'Release' . ':</b> ' . $__templater->escape($__vars['thread']['Movie']['trakt_release']) . '</p>';
+	if ($__vars['xf']['options']['traktthreads_showThreadInfo']['release_date'] AND $__vars['thread']['traktMovie']['trakt_release']) {
+		$__finalCompiled .= '<p><b>' . 'Release' . ':</b> ' . $__templater->escape($__vars['thread']['traktMovie']['trakt_release']) . '</p>';
 	}
 	$__finalCompiled .= '
 		';
-	if ($__vars['xf']['options']['traktthreads_showThreadInfo']['runtime'] AND $__vars['thread']['Movie']['trakt_runtime']) {
-		$__finalCompiled .= '<p><b>' . 'Runtime' . ':</b> ' . $__templater->escape($__vars['thread']['Movie']['trakt_runtime']) . '</p>';
+	if ($__vars['xf']['options']['traktthreads_showThreadInfo']['runtime'] AND $__vars['thread']['traktMovie']['trakt_runtime']) {
+		$__finalCompiled .= '<p><b>' . 'Runtime' . ':</b> ' . $__templater->escape($__vars['thread']['traktMovie']['trakt_runtime']) . '</p>';
 	}
 	$__finalCompiled .= '
 		';
-	if ($__vars['xf']['options']['traktthreads_showThreadInfo']['plot'] AND $__vars['thread']['Movie']['trakt_plot']) {
-		$__finalCompiled .= '<b>' . 'Plot' . ':</b> ' . $__templater->escape($__vars['thread']['Movie']['trakt_plot']);
+	if ($__vars['xf']['options']['traktthreads_showThreadInfo']['plot'] AND $__vars['thread']['traktMovie']['trakt_plot']) {
+		$__finalCompiled .= '<b>' . 'Plot' . ':</b> ' . $__templater->escape($__vars['thread']['traktMovie']['trakt_plot']);
 	}
 	$__finalCompiled .= '
 	</div>
@@ -92,7 +92,7 @@ return array(
 	if ($__templater->func('property', array('trakt_movies_messagePosterPosition', ), false) == 'right') {
 		$__finalCompiled .= '
 		<div class="moviethreadposter">
-			<img src="' . $__templater->escape($__templater->method($__vars['thread']['Movie'], 'getImageUrl', array('l', ))) . '" />
+			<img src="' . $__templater->escape($__templater->method($__vars['thread']['traktMovie'], 'getImageUrl', array('l', ))) . '" />
 		</div>
 	';
 	}
@@ -100,14 +100,14 @@ return array(
 </div>
 
 ';
-	if ($__vars['xf']['options']['traktthreads_showThreadInfo']['trailer'] AND $__vars['thread']['Movie']['trakt_trailer']) {
+	if ($__vars['xf']['options']['traktthreads_showThreadInfo']['trailer'] AND $__vars['thread']['traktMovie']['trakt_trailer']) {
 		$__finalCompiled .= '
 	<div class="bbMediaWrapper">
 		<div class="bbMediaWrapper-inner">
 			<iframe width="500"
 				height="300"
 				allowfullscreen
-				src="https://www.youtube.com/embed/' . $__templater->escape($__vars['thread']['Movie']['trakt_trailer']) . '?wmode=opaque&start=0"
+				src="https://www.youtube.com/embed/' . $__templater->escape($__vars['thread']['traktMovie']['trakt_trailer']) . '?wmode=opaque&start=0"
 				style="border:none;"></iframe>
 		</div>
 	</div>
@@ -119,7 +119,7 @@ return array(
 ';
 	if (!$__vars['xf']['options']['traktthreads_force_comments']) {
 		$__finalCompiled .= '
-	' . $__templater->func('bb_code', array($__vars['thread']['Movie']['comment'], 'post', $__vars['post']['User'], array('attachments' => ($__vars['post']['attach_count'] ? $__vars['post']['Attachments'] : array()), 'viewAttachments' => $__templater->method($__vars['thread'], 'canViewAttachments', array()), ), ), true) . '
+	' . $__templater->func('bb_code', array($__vars['thread']['traktMovie']['comment'], 'post', $__vars['post']['User'], array('attachments' => ($__vars['post']['attach_count'] ? $__vars['post']['Attachments'] : array()), 'viewAttachments' => $__templater->method($__vars['thread'], 'canViewAttachments', array()), ), ), true) . '
 ';
 	}
 	$__finalCompiled .= '
@@ -130,14 +130,14 @@ return array(
 
 ';
 	$__compilerTemp1 = '';
-	if ($__vars['thread']['Movie']['trakt_rating'] > 0) {
+	if ($__vars['thread']['traktMovie']['trakt_rating'] > 0) {
 		$__compilerTemp1 .= ',
 		"aggregateRating": {
     		"@type": "AggregateRating",
     		"bestRating": "5",
 			"worstRating": "1",
-    		"ratingCount": "' . $__templater->escape($__vars['thread']['Movie']['trakt_votes']) . '",
-    		"ratingValue": "' . $__templater->escape($__vars['thread']['Movie']['trakt_rating']) . '"
+    		"ratingCount": "' . $__templater->escape($__vars['thread']['traktMovie']['trakt_votes']) . '",
+    		"ratingValue": "' . $__templater->escape($__vars['thread']['traktMovie']['trakt_rating']) . '"
   		}';
 	}
 	$__templater->setPageParam('ldJsonHtml', '
@@ -166,12 +166,12 @@ return array(
 	{
   		"@context": "http://schema.org/",
   		"@type": "Movie",
-  		"name": "' . $__templater->escape($__vars['thread']['Movie']['trakt_title']) . '",
-		"director": "' . $__templater->escape($__vars['thread']['Movie']['trakt_director']) . '",
-		"dateCreated": "' . $__templater->escape($__vars['thread']['Movie']['trakt_release']) . '",
-		"duration": "PT' . $__templater->escape($__vars['thread']['Movie']['trakt_runtime']) . 'M",
-  		"image": "' . $__templater->escape($__templater->method($__vars['thread']['Movie'], 'getImageUrl', array('l', ))) . '",
-  		"description": "' . $__templater->escape($__vars['thread']['Movie']['trakt_plot']) . '"' . $__compilerTemp1 . '
+  		"name": "' . $__templater->escape($__vars['thread']['traktMovie']['trakt_title']) . '",
+		"director": "' . $__templater->escape($__vars['thread']['traktMovie']['trakt_director']) . '",
+		"dateCreated": "' . $__templater->escape($__vars['thread']['traktMovie']['trakt_release']) . '",
+		"duration": "PT' . $__templater->escape($__vars['thread']['traktMovie']['trakt_runtime']) . 'M",
+  		"image": "' . $__templater->escape($__templater->method($__vars['thread']['traktMovie'], 'getImageUrl', array('l', ))) . '",
+  		"description": "' . $__templater->escape($__vars['thread']['traktMovie']['trakt_plot']) . '"' . $__compilerTemp1 . '
 	}
 	</script>
 ');

@@ -1,10 +1,10 @@
 <?php
-// FROM HASH: 86a998d871eacfe51d7fe7b5d4be48f2
+// FROM HASH: 045362c66472bb442af4934682651004
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
 	$__finalCompiled = '';
-	if ($__vars['thread']['watch_list']) {
+	if ($__templater->method($__vars['thread'], 'getWatchListExist', array())) {
 		$__finalCompiled .= '
 	';
 		$__templater->pageParams['pageTitle'] = $__templater->preEscaped('Remove Watch List');
@@ -25,7 +25,7 @@ return array(
 
 ';
 	$__compilerTemp1 = '';
-	if ($__vars['thread']['watch_list']) {
+	if ($__templater->method($__vars['thread'], 'getWatchListExist', array())) {
 		$__compilerTemp1 .= '
 				' . $__templater->formInfoRow('
 					' . 'Are you sure you want to remove from watch list?' . '
@@ -46,7 +46,7 @@ return array(
 			';
 	}
 	$__compilerTemp2 = '';
-	if ($__vars['thread']['watch_list']) {
+	if ($__templater->method($__vars['thread'], 'getWatchListExist', array())) {
 		$__compilerTemp2 .= '
 			' . $__templater->formSubmitRow(array(
 			'submit' => 'Remove',

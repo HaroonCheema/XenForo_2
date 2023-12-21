@@ -5,8 +5,15 @@
   <phrase title="cron_entry.trakt_tv_changes" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[nick97] Trakt TV Thread Starter: Check for TV changes]]></phrase>
   <phrase title="forum_type.trakt_tv" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trakt TV Forum]]></phrase>
   <phrase title="forum_type_desc.trakt_tv" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trakt TV thread starter]]></phrase>
+  <phrase title="nick97_trakt_tv_request_empty_body" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[A non-empty request body is required...!]]></phrase>
+  <phrase title="nick97_trakt_tv_request_method_not_allowed" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Method Not Allowed...!]]></phrase>
+  <phrase title="nick97_trakt_tv_request_not_found" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Requested data not found...!]]></phrase>
+  <phrase title="nick97_trakt_tv_request_not_success" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Server not responding please try again...!]]></phrase>
+  <phrase title="nick97_trakt_tv_request_server_error" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Server Error...!]]></phrase>
+  <phrase title="nick97_trakt_tv_request_unauthorized" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Unauthorized, Authentication has been denied for this request.]]></phrase>
+  <phrase title="nick97_trakt_tv_request_unsported_media" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Unsupported Media Type..!]]></phrase>
   <phrase title="nick97_tv_more_details_on_trakt" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[More details on Trakt]]></phrase>
-  <phrase title="nick97_tv_trakt_api_key_not_found" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trakt API key not found...!]]></phrase>
+  <phrase title="nick97_tv_trakt_api_key_not_found" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Trakt API key not found...!]]></phrase>
   <phrase title="option.traktTvThreads_aggregateCredits" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Fetch aggregated credits]]></phrase>
   <phrase title="option.traktTvThreads_apikey" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[TMDB API key]]></phrase>
   <phrase title="option.traktTvThreads_backdropCoverSize" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Backdrop cover size]]></phrase>

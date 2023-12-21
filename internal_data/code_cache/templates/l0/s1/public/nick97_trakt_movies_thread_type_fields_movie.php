@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: b6a428dcce87b19b8e39e9f4411f9cf3
+// FROM HASH: d2047909846064889a324ffc8a275e0b
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -27,7 +27,7 @@ return array(
 
 ' . $__templater->formTextBoxRow(array(
 		'name' => 'nick97_trakt_movies_tmdb_id',
-		'value' => $__vars['thread']['Movie']['tmdb_id'],
+		'value' => $__vars['thread']['traktMovie']['tmdb_id'],
 		'disabled' => ($__vars['context'] == 'edit'),
 	), array(
 		'label' => 'Trakt link or Movie ID',

@@ -28,6 +28,90 @@ $0]]></replace>
 
 $0]]></replace>
   </modification>
+  <modification type="public" template="core.less" modification_key="nick97_trakt_bottun_less_provider" description="Add trakt provider button styling." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[{{ include('core_button.less') }}]]></find>
+    <replace><![CDATA[$0
+{{ include('nick97_trakt_button.less') }}]]></replace>
+  </modification>
+  <modification type="public" template="member_view" modification_key="nick97_watch_list_add_tab_in_profile" description="nick97_watch_list_add_tab_in_profile" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<a href="{{ link('members/about', $user) }}"
+					class="tabs-tab"
+					id="about"
+					role="tab">{{ phrase('about') }}</a>]]></find>
+    <replace><![CDATA[$0
+
+<a href="{{ link('members/stats', $user) }}"
+					class="tabs-tab"
+					id="stats"
+					role="tab">{{ phrase('nick97_watchlist_stats') }}</a>
+				
+				<a href="{{ link('members/watchlist', $user) }}"
+					class="tabs-tab"
+					id="watchlist"
+					role="tab">{{ phrase('nick97_watchlist') }}</a>]]></replace>
+  </modification>
+  <modification type="public" template="member_view" modification_key="nick97_watch_list_add_tab_in_profile_arialabel" description="nick97_watch_list_add_tab_in_profile_arialabel" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<li data-href="{{ link('members/about', $user) }}" role="tabpanel" aria-labelledby="about">
+		<div class="blockMessage">{{ phrase('loading...') }}</div>
+	</li>]]></find>
+    <replace><![CDATA[$0 
+
+<li data-href="{{ link('members/stats', $user) }}" role="tabpanel" aria-labelledby="stats">
+		<div class="blockMessage">{{ phrase('loading...') }}</div>
+	</li>
+	
+	<li data-href="{{ link('members/watchlist', $user) }}" role="tabpanel" aria-labelledby="watchlist">
+		<div class="blockMessage">{{ phrase('loading...') }}</div>
+	</li>]]></replace>
+  </modification>
+  <modification type="public" template="register_connected_account" modification_key="nick97_watch_list_register_username" description="nick97_watch_list_register_username" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:macro template="register_macros" name="username_row" />]]></find>
+    <replace><![CDATA[<xf:if is="$providerData.username">
+	<xf:macro template="register_macros" name="username_row" arg-value="{$providerData.username}"/>
+	<xf:else/>
+	$0
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="thread_list_macros" modification_key="nick97_watch_list_thread_view_add_images" description="nick97_watch_list_thread_view_add_images" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:avatar user="$thread.User" size="s" defaultname="{$thread.username}" />
+				<xf:if is="$thread.getUserPostCount()">
+					<xf:avatar user="$xf.visitor" size="s"
+						href=""
+						class="avatar--separated structItem-secondaryIcon"
+						tabindex="0"
+						data-xf-init="tooltip"
+						data-trigger="auto"
+						title="{{ phrase('you_have_posted_x_messages_in_this_thread', {'count': $thread.getUserPostCount() }) }}" />
+				</xf:if>]]></find>
+    <replace><![CDATA[<xf:if is="$thread.discussion_type == 'snog_movies_movie'">
+					<a class="carousel-item-image" href="{{ link('threads', $thread) }}">
+						<img class="tvPoster" src="{$thread.Movie.getImageUrl()}">
+					</a>
+					<xf:elseif is="$thread.discussion_type == 'snog_tv'" />
+					<a class="carousel-item-image" href="{{ link('threads', $thread) }}">
+						<img class="tvPoster" src="{$thread.TV.getImageUrl()}">
+					</a>
+					<xf:elseif is="$thread.discussion_type == 'trakt_movies_movie'" />
+					<a class="carousel-item-image" href="{{ link('threads', $thread) }}">
+						<img class="tvPoster" src="{$thread.traktMovie.getImageUrl()}">
+					</a>
+					<xf:elseif is="$thread.discussion_type == 'trakt_tv'" />
+					<a class="carousel-item-image" href="{{ link('threads', $thread) }}">
+						<img class="tvPoster" src="{$thread.traktTV.getImageUrl()}">
+					</a>
+					<xf:else />
+					<xf:avatar user="$thread.User" size="s" defaultname="{$thread.username}" />
+					<xf:if is="$thread.getUserPostCount()">
+						<xf:avatar user="$xf.visitor" size="s"
+								   href=""
+								   class="avatar--separated structItem-secondaryIcon"
+								   tabindex="0"
+								   data-xf-init="tooltip"
+								   data-trigger="auto"
+								   title="{{ phrase('you_have_posted_x_messages_in_this_thread', {'count': $thread.getUserPostCount() }) }}" />
+					</xf:if>
+				</xf:if>]]></replace>
+  </modification>
   <modification type="public" template="thread_view" modification_key="fs_watch_list_add_or_remove_btn" description="fs_watch_list_add_or_remove_btn" execution_order="10" enabled="1" action="str_replace">
     <find><![CDATA[<xf:extension name="thread_action_buttons">]]></find>
     <replace><![CDATA[$0
@@ -40,7 +124,7 @@ $0]]></replace>
 				   data-xf-click="switch-overlay"
 				   data-sk-watch="{{ phrase('add_watch_list') }}"
 				   data-sk-unwatch="{{ phrase('remove_watch_list') }}">
-			<xf:if is="{$thread.watch_list}">
+			<xf:if is="{$thread.getWatchListExist()}">
 				{{ phrase('remove_watch_list') }}
 				<xf:else />
 				{{ phrase('add_watch_list') }}

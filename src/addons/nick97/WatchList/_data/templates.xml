@@ -9,7 +9,7 @@
 	label="{{ phrase('client_secret') }}"
 	hint="{{ phrase('required') }}"
 	explain="{{ phrase('nick97_trakt_client_secret_explain') }}" />]]></template>
-  <template type="public" title="fs_watch_list_thread_watch_list" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:if is="$thread.watch_list">
+  <template type="public" title="fs_watch_list_thread_watch_list" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[<xf:if is="$thread.getWatchListExist()">
 	<xf:title>{{ phrase('remove_watch_list') }}</xf:title>
 <xf:else />
 	<xf:title>{{ phrase('add_watch_list') }}</xf:title>
@@ -20,7 +20,7 @@
 <xf:form action="{{ link('threads/watch-list', $thread) }}" class="block" ajax="true">
 	<div class="block-container">
 		<div class="block-body">
-			<xf:if is="$thread.watch_list">
+			<xf:if is="$thread.getWatchListExist()">
 				<xf:inforow rowtype="confirm">
 					{{ phrase('you_sure_you_want_to_remove_watch_from_list') }}
 				</xf:inforow>
@@ -32,14 +32,111 @@
 				</xf:inforow>
 			</xf:if>
 		</div>
-		<xf:if is="$thread.watch_list">
+		<xf:if is="$thread.getWatchListExist()">
 			<xf:submitrow submit="{{ phrase('remove_watch_list_submit') }}" rowtype="simple" />
 		<xf:else />
 			<xf:submitrow submit="{{ phrase('add_watch_list_submit') }}" />
 		</xf:if>
 	</div>
 </xf:form>]]></template>
-  <template type="public" title="nick97_trakt_movies_thread_type_fields_movie" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:if is="$context == 'create' AND $subContext == 'quick'">
+  <template type="public" title="nick97_stats.less" version_id="1000300" version_string="1.0.3 Alpha"><![CDATA[.stats-p-body-section{
+				margin-bottom:0 !important;
+			}
+
+			/* Container to hold the two boxes */
+			.statsContainer {
+				display: flex; /* Use flexbox */
+				justify-content: space-between; /* Add space between the two boxes */
+				flex-wrap: wrap; /* Allow wrapping to the next line on smaller screens */
+			}
+
+			/* Styles for the individual boxes */
+			.statsBox {
+				display: block;
+				box-sizing: border-box; /* Include padding and border in the box's total width */
+				margin-bottom: 5px; /* Add some space between the boxes */
+			}
+
+			.myContainer {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: space-between;
+				margin: 0 auto;
+				width: 100%;
+			}
+
+			.myBox {
+				background-color: #eee;
+				border: 1px solid #ddd; /* Added border definition */
+				border-radius: 4px;
+				width: 24%;
+				margin-bottom: 10px;
+			}
+
+			.myBox-heading {
+				font-size: 18px;
+				font-weight: bold;
+				margin-bottom: 10px;
+				text-align: center;
+				border-bottom: 1px solid #ddd;
+				padding-bottom: 10px;
+			}
+
+			.myBox-body{
+				text-align: center;
+			}
+
+			@media screen and (max-width: 768px) {
+				.myBox {
+					width: 45%;
+				}
+			}
+
+			@media screen and (max-width: 480px) {
+				.myBox {
+					width: 100%;
+				}
+			}
+
+			.myContainer1 {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: space-around;
+				margin: 0 auto;
+				width: 100%;
+			}
+
+			.right_statsvideo{
+				cursor: pointer;
+			}
+
+			.right_statsvideo:hover{
+				color: blue;
+			}]]></template>
+  <template type="public" title="nick97_trakt_button.less" version_id="1000300" version_string="1.0.3 Alpha"><![CDATA[.button,
+a.button // needed for specificity over a:link
+{
+	&.button--provider
+	{
+		&--nick_trakt
+		{
+			.m-buttonColorVariation(#7289DA, white);
+			.button-text::before {
+				background: url(styles/nick97/TraktLogo/trakt-icon-red.svg);
+				width: 20px;
+				height: 20px;
+				background-size: 20px 20px;
+				background-position: center;
+				content: ' ';
+				display: inline-block;
+				margin-left: -3px;
+				margin-top: -8px;
+				margin-right: 0;
+			}
+		}
+	}
+}]]></template>
+  <template type="public" title="nick97_trakt_movies_thread_type_fields_movie" version_id="1000400" version_string="1.0.4 Alpha"><![CDATA[<xf:if is="$context == 'create' AND $subContext == 'quick'">
 	<xf:set var="$rowType" value="fullWidth noGutter mergeNext" />
 <xf:elseif is="$context == 'edit' AND $subContext == 'first_post_quick'" />
 	<xf:set var="$rowType" value="fullWidth mergeNext" />
@@ -47,29 +144,23 @@
 	<xf:set var="$rowType" value="" />
 </xf:if>
 
-<xf:textboxrow name="nick97_trakt_movies_tmdb_id" value="{$thread.Movie.tmdb_id}"
+<xf:textboxrow name="nick97_trakt_movies_tmdb_id" value="{$thread.traktMovie.tmdb_id}"
 			   label="{{ phrase('nick97_trakt_movies_link_id') }}"
 			   explain="{{ phrase('nick97_trakt_movies_explain_link') }}"
 			   rowtype="{$rowType}"
 			   disabled="{{ $context == 'edit' }}" />]]></template>
-  <template type="public" title="nick97_trakt_thread_my_watch_list" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:if is="$thread.watch_list">
-	<xf:title>{{ phrase('remove_watch_list') }}</xf:title>
-</xf:if>
+  <template type="public" title="nick97_trakt_thread_my_watch_list" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[<xf:title>{{ phrase('remove_watch_list') }}</xf:title>
 
 <xf:breadcrumb source="$thread.getBreadcrumbs()" />
 
 <xf:form action="{{ link('threads/my-watch-list', $thread) }}" class="block" ajax="true">
 	<div class="block-container">
 		<div class="block-body">
-			<xf:if is="$thread.watch_list">
-				<xf:inforow rowtype="confirm">
-					{{ phrase('you_sure_you_want_to_remove_watch_from_list') }}
-				</xf:inforow>
-			</xf:if>
+			<xf:inforow rowtype="confirm">
+				{{ phrase('you_sure_you_want_to_remove_watch_from_list') }}
+			</xf:inforow>
 		</div>
-		<xf:if is="$thread.watch_list">
-			<xf:submitrow submit="{{ phrase('remove_watch_list_submit') }}" rowtype="simple" />
-		</xf:if>
+		<xf:submitrow submit="{{ phrase('remove_watch_list_submit') }}" rowtype="simple" />
 	</div>
 </xf:form>]]></template>
   <template type="public" title="nick97_trakt_tv_thread_type_fields_tv" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:if is="$context == 'create' AND $subContext == 'quick'">
@@ -93,11 +184,9 @@
 				   rowtype="{$rowType}"
 				   disabled="{{ $context == 'edit' }}" />
 </xf:if>]]></template>
-  <template type="public" title="nick97_watch_list_index" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:comment>================video section================================</xf:comment>
+  <template type="public" title="nick97_watch_list_index" version_id="1000300" version_string="1.0.3 Alpha"><![CDATA[<br>
 
-<br>
-
-<xf:if is="$xf.visitor.hasPermission('nick97_watch_list', 'view_own_stats') OR $xf.visitor.hasPermission('nick97_watch_list', 'view_anyone_stats')">
+<xf:if is="$xf.visitor.hasPermission('nick97_watch_list', 'view_own_stats') && $stats">
 
 <xf:macro template="nick97_watch_list_movies_macro" name="stats" arg-stats="{$stats}" />
 	
@@ -105,314 +194,172 @@
 
 <xf:macro template="nick97_watch_list_movies_macro" name="movies" arg-movies="{$movies}" />
 
-<xf:macro template="nick97_watch_list_movies_macro" name="tvShow" arg-tvShows="{$tvShows}" />
-
-
-<br>
-
-
-
-
-<xf:comment>
-
-
-
-	<xf:set var="$template">
-		<xf:if is="$movies is not empty">
-			<xf:css src="carousel.less" />
-			<xf:css src="lightslider.less" />
-			<xf:css src="snog_movies_slider.less" />
-
-			<xf:js prod="xf/carousel-compiled.js" dev="vendor/lightslider/lightslider.min.js" />
-			<xf:js dev="Snog/Movies/slider.js" prod="Snog/Movies/slider.min.js" addon="Snog/Movies" />
-
-			<div class="carousel carousel-moviePosterSlider carousel--withFooter" {{ widget_data($widget) }}>
-				<ul class="carousel-body" data-xf-init="snog-movies-slider"
-					data-xf-snog-movies-slider="{$options.slider|json}">
-
-					<xf:foreach loop="$movies" value="$movie">
-						<li>
-							<div class="carousel-item-simple">
-								<a class="carousel-item-image" href="{{ link('threads', $movie.Thread) }}">
-									<img src="{$movie.getImageUrl()}" style="width: 185px; height: 278px" />
-
-									<xf:if is="{$options.show_rating}">
-										<span class="carousel-item-label">
-											<xf:fa icon="star" /> {$movie.tmdb_rating}
-										</span>
-									</xf:if>
-
-									<span class="carousel-item-caption" title="{$movie.Thread.title}">
-										{$movie.Thread.title}
-									</span>
-								</a>
-							</div>
-						</li>
-					</xf:foreach>
-				</ul>
-
-			</div>
-		</xf:if>
-	</xf:set>
-
-	<xf:if is="!$options.advanced_mode">
-		<xf:if contentcheck="true">
-			<div class="block">
-				<div class="block-container" {{ widget_data($widget) }}>
-					<xf:if is="$title">
-						<h3 class="block-minorHeader">{$title}</h3>
-					</xf:if>
-					<div class="block-body block-row">
-						<xf:contentcheck>{$template|raw}</xf:contentcheck>
-					</div>
-				</div>
-			</div>
-		</xf:if>
-		<xf:else />
-		{$template|raw}
-	</xf:if>
-
-
-
-	<style>
-
-		*, *::before, *::after {
-			box-sizing: border-box;
-			margin: 0;
-		}
-
-		body { 
-
-			background-color: green;
-
-		}
-
-		img, svg {
-			max-width: 100%;
-			display: block;
-		}
-
-		.section-title {margin-block: 4rem 1rem;}
-
-		.media-container {position: relative;}
-
-		.media-scroller, .media-group {
-			display: grid;
-			gap: 0.25rem;
-			grid-auto-flow: column;
-		}
-
-		.media-scroller {
-			overflow-x: hidden;
-			scroll-behavior: smooth;
-			grid-auto-columns: 100%;
-			padding: 0 3rem;
-			scroll-padding-inline: 3rem;
-		}
-		.media-scroller:first-of-type {padding-left: 0;}
-
-		.media-group {
-			grid-auto-columns: 1fr;
-			overflow: hidden;
-		}
-
-		.media-element {
-			position: relative;
-			border-radius: 0.25rem;
-			overflow: hidden;
-		}
-		.media-element > img {
-			width: 100%;
-			aspect-ratio: 16 / 9;
-			object-fit: cover;
-		}
-
-		.next, .previous {
-			display: none;
-			align-items: center;
-			z-index: 10;
-			position: absolute;
-			width: 3rem;
-			padding: 1rem;
-			background: rgb(0 0 0 / 0);
-			opacity: 0;
-			transition: opacity .25s;
-		}
-		.previous {
-			left: 0;
-			top: 0;
-			bottom: 0;
-		}
-		.next {
-			right: 0;
-			top: 0;
-			bottom: 0;
-		}
-
-		.media-group:first-child :where(.next, .previous) {display: flex;}
-
-		:where(.next, .previous):hover {background: rgb(0 0 0 / 0.3);}
-		:where(.next, .previous) > svg {
-			transition: transform 75ms linear;
-			transform: scale(1);
-		}
-		:where(.next, .previous):hover > svg {transform: scale(1.2);}
-
-		.media-group:target :where(.next, .previous) {display: flex;}
-
-		.media-scroller:has(:target:not(:first-child)) .media-group:first-of-type .next {display: none;}
-
-		.navigation-indicators {
-			opacity: 0;
-			position: absolute;
-			display: flex;
-			gap: 3px;
-			top: -1rem;
-			right: 2rem;
-			transition: opacity .25s;
-		}
-
-		.navigation-indicators > * {
-			width: 1rem;
-			height: 2px;
-			background: white;
-			opacity: 0.5;
-			transition-delay: .5s;
-		}
-
-		.media-scroller:hover :where(.next, .previous),
-		.media-group:not(:target) ~ .navigation-indicators > *:nth-child(1),
-		.media-group:nth-child(1):target ~ .navigation-indicators > *:nth-child(1),
-		.media-group:nth-child(2):target ~ .navigation-indicators > *:nth-child(2),
-		.media-group:nth-child(3):target ~ .navigation-indicators > *:nth-child(3),
-		.media-group:nth-child(4):target ~ .navigation-indicators > *:nth-child(4),
-		.media-scroller:hover .navigation-indicators {opacity: 1;}
-
-		.media-group:not(:nth-child(1)):target ~ .navigation-indicators > *:nth-child(1) {opacity: .5;}	
-
-		.p-body {
-			background-color: red;
-		}
-
-	</style>
-
-
-	<button type="button" class="btn btn-primary">Primary</button>
-
-	<h2 class="section-title">Trending now</h2>';
-	<div class="media-container">
-		<div class="media-scroller">
-
-			{{dump($numGroups)}}
-
-			<xf:foreach loop="$numGroups" value="$group">
-
-				<h2 class="section-title">$index</h2>';
-
-
-				{{dump($numGroups)}}
-
-				<xf:foreach loop="$imageUrls" start="$group * $imagesPerGroup" limit="$imagesPerGroup" value="$imageUrl">
-					<div class="media-element">
-						<img src="{$imageUrl}" alt="">
-					</div>
-				</xf:foreach>
-
-			</xf:foreach>
-
-		</div>
-	</div>
-
-
-</xf:comment>]]></template>
-  <template type="public" title="nick97_watch_list_movies_macro" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:macro name="stats" arg-stats="!">
-
-	<style>
-
-
-		.stats-p-body-section{
-			margin-bottom:0 !important;
-		}
-
-		/* Container to hold the two boxes */
-		.statsContainer {
-			display: flex; /* Use flexbox */
-			justify-content: space-between; /* Add space between the two boxes */
-			flex-wrap: wrap; /* Allow wrapping to the next line on smaller screens */
-		}
-
-		/* Styles for the individual boxes */
-		.statsBox {
-			display: block;
-			box-sizing: border-box; /* Include padding and border in the box's total width */
-			margin-bottom: 5px; /* Add some space between the boxes */
-		}
-
-		.myContainer {
-			display: flex;
-			flex-wrap: wrap;
-			justify-content: space-between;
-			margin: 0 auto;
-			width: 100%;
-		}
-
-		.myBox {
-			background-color: #eee;
-			border: 1px solid #ddd; /* Added border definition */
-			border-radius: 4px;
-			width: 24%;
-			margin-bottom: 10px;
-		}
-
-		.myBox-heading {
-			font-size: 18px;
-			font-weight: bold;
-			margin-bottom: 10px;
-			text-align: center;
-			border-bottom: 1px solid #ddd;
-			padding-bottom: 10px;
-		}
-
-		.myBox-body{
-			text-align: center;
-		}
-
-		@media screen and (max-width: 768px) {
-			.myBox {
-				width: 45%;
-			}
-		}
-
-		@media screen and (max-width: 480px) {
-			.myBox {
-				width: 100%;
-			}
-		}
-
-		.myContainer1 {
-			display: flex;
-			flex-wrap: wrap;
-			justify-content: space-around;
-			margin: 0 auto;
-			width: 100%;
-		}
-
-		.right_statsvideo{
-			cursor: pointer;
-		}
-
-		.right_statsvideo:hover{
-			color: blue;
-		}
-
-	</style>
-
+<xf:macro template="nick97_watch_list_movies_macro" name="tvShow" arg-tvShows="{$tvShows}" />]]></template>
+  <template type="public" title="nick97_watch_list_movies.less" version_id="1000300" version_string="1.0.3 Alpha"><![CDATA[.p-body-section{
+	margin-bottom:0 !important;
+}
+#container
+{
+
+	height: auto;
+	overflow: hidden;
+	margin: 0 auto;
+	position: relative;
+	margin-bottom:20px;
+}
+#list-container
+{
+	overflow: hidden;
+	width: 100%;
+	float: left;
+}
+.list
+{
+
+	min-width: 3400px;
+	float: left;
+	display: flex;
+}
+
+#arrowL::before,#arrowR::before{
+	font-family: "Font Awesome 5 Pro";
+	content: "\f053";
+	background: #fff;
+	border-radius: 50%;
+
+	color: #2196f3;
+	display: block;
+	font-size: 20px;
+	font-weight: bold;
+	height: 40px;
+	line-height: 40px;
+	opacity: 1;
+	width: 40px;
+	text-align: center;
+}
+
+
+
+#arrowR::before {
+	font-family: "Font Awesome 5 Pro";
+	content: "\f054";
+}	
+
+
+#arrowR
+{
+	background: transparent;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	float: right;
+	cursor: pointer;
+	top: 126px;
+	text-align: center;
+	font-family: Arial;
+	font-size: 0px;
+	color: transparent;
+	padding:2px 2px;
+	position: absolute;
+	z-index: 100;
+	right: 20px;
+
+	display: block;
+	line-height: 0px;
+	font-size: 0px;
+	padding: 0;
+	border: none;
+	outline: none;
+}
+#arrowL
+{
+	top: 145px;
+	left: 9px;
+	background: transparent;
+	width: 40px;
+	height: 40px;
+	float: left;
+	cursor: pointer;
+	text-align: center;
+	font-family: Arial;
+	color: transparent;
+	position: absolute;
+	z-index: 100;
+	border-radius: 50%;
+	cursor: pointer;
+	display: block;
+	line-height: 0px;
+	font-size: 0px;
+	-webkit-transform: translate(0, -50%);
+	padding: 0;
+	border: none;
+	outline: none;
+}
+.item
+{
+	margin: 0 10px 0 0;
+	float: left;
+	position: relative;
+	text-align: center;
+	font-family: Arial;
+	font-size: 20px;
+	color: White;
+}
+
+div.item iframe{
+	width: 100%;
+	height: 100%;
+}
+div.p-body-section div.p-body-section-header span.p-body-section-icon i.fa-gamepad-alt.screen-icon:before {
+	content: "\f108" !important;
+}
+
+
+/* MEDIA QUERIES.............
+MEDIA QUERIES.............
+MEDIA QUERIES............. */
+
+@media only screen and (max-width: 600px) {
+	#container{
+		width: 100%;
+	}
+	.item{
+		margin: 0 15px 0 15px;
+	}
+}
+
+
+
+/* Container to hold the two boxes */
+.container {
+	display: flex; /* Use flexbox */
+	justify-content: space-between; /* Add space between the two boxes */
+	flex-wrap: wrap; /* Allow wrapping to the next line on smaller screens */
+}
+
+/* Styles for the individual boxes */
+.box {
+	display: block;
+	box-sizing: border-box; /* Include padding and border in the box's total width */
+	margin-bottom: 5px; /* Add some space between the boxes */
+}
+
+.right_watch_list{
+	cursor: pointer;
+}
+
+.right_watch_list:hover{
+	color: blue;
+}]]></template>
+  <template type="public" title="nick97_watch_list_movies_macro" version_id="1000300" version_string="1.0.3 Alpha"><![CDATA[<xf:macro name="stats" arg-stats="!">
+
+	<xf:css src="nick97_stats.less" />
 
 	<div class="stats-p-body-section">
 		<div class="p-body-section-header">
 			<div class="statsContainer">
 				<div class="statsBox">
-					<h2>Stats</h2>
+					<h2>{{ phrase('nick97_watch_list_stats') }}</h2>
 				</div>
 
 				<xf:comment>
@@ -432,14 +379,14 @@
 
 	<div class="myContainer">
 		<div class="myBox">
-			<h1 class="myBox-heading"><i class="fa fa-tv"></i> TV time</h1>
+			<h1 class="myBox-heading"><i class="fa fa-tv"></i> {{ phrase('nick97_watch_list_tv_time') }}</h1>
 			<div class="myContainer1">
 				<div class="myBox-body">
 					<h2>
 						{$stats.moviesTime.months}
 					</h2>
 					<h5>
-						MONTH
+						{{ phrase('nick97_stats_month') }}
 					</h5>
 				</div>
 				<div class="myBox-body">
@@ -447,7 +394,7 @@
 						{$stats.moviesTime.days}
 					</h2>
 					<h5>
-						DAYS
+						{{ phrase('nick97_stats_days') }}
 					</h5>
 				</div>
 
@@ -456,13 +403,13 @@
 						{$stats.moviesTime.hours}
 					</h2>
 					<h5>
-						HOURS
+						{{ phrase('nick97_stats_hours') }}
 					</h5>
 				</div>
 			</div>
 		</div>
 		<div class="myBox">
-			<h1 class="myBox-heading"><i class="fa fa-tv"></i> Episode watched</h1>
+			<h1 class="myBox-heading"><i class="fa fa-tv"></i> {{ phrase('nick97_stats_episode_watched') }}</h1>
 			<div class="myBox-body">
 				<h1>
 					{$stats.episodesWatched}
@@ -470,14 +417,14 @@
 			</div>
 		</div>
 		<div class="myBox">
-			<h1 class="myBox-heading"><i class="fa fa-film"></i> Movie time</h1>
+			<h1 class="myBox-heading"><i class="fa fa-film"></i> {{ phrase('nick97_stats_movie_time') }}</h1>
 			<div class="myContainer1">
 				<div class="myBox-body">
 					<h2>
 						{$stats.episodesTime.months}
 					</h2>
 					<h5>
-						MONTH
+						{{ phrase('nick97_stats_month') }}
 					</h5>
 				</div>
 				<div class="myBox-body">
@@ -485,7 +432,7 @@
 						{$stats.episodesTime.days}
 					</h2>
 					<h5>
-						DAYS
+						{{ phrase('nick97_stats_days') }}
 					</h5>
 				</div>
 
@@ -494,13 +441,13 @@
 						{$stats.episodesTime.hours}
 					</h2>
 					<h5>
-						HOURS
+						{{ phrase('nick97_stats_hours') }}
 					</h5>
 				</div>
 			</div>
 		</div>
 		<div class="myBox">
-			<h1 class="myBox-heading"><i class="fa fa-film"></i> Movie watched</h1>
+			<h1 class="myBox-heading"><i class="fa fa-film"></i> {{ phrase('nick97_stats_movie_watched') }}</h1>
 			<div class="myBox-body">
 				<h1>
 					{$stats.moviesWatched}
@@ -515,179 +462,18 @@
 
 <xf:macro name="movies" arg-movies="!">
 
-	<style>
-
-		.p-body-section{
-			margin-bottom:0 !important;
-		}
-		#container
-		{
-
-			height: auto;
-			overflow: hidden;
-			margin: 0 auto;
-			position: relative;
-			margin-bottom:20px;
-		}
-		#list-container
-		{
-			overflow: hidden;
-			width: 100%;
-			float: left;
-		}
-		.list
-		{
-
-			min-width: 3400px;
-			float: left;
-			display: flex;
-		}
-
-		#arrowL::before,#arrowR::before{
-			font-family: "Font Awesome 5 Pro";
-			content: "\f053";
-			background: #fff;
-			border-radius: 50%;
-
-			color: #2196f3;
-			display: block;
-			font-size: 20px;
-			font-weight: bold;
-			height: 40px;
-			line-height: 40px;
-			opacity: 1;
-			width: 40px;
-			text-align: center;
-		}
-
-
-
-		#arrowR::before {
-			font-family: "Font Awesome 5 Pro";
-			content: "\f054";
-		}	
-
-
-		#arrowR
-		{
-			background: transparent;
-			width: 40px;
-			height: 40px;
-			border-radius: 50%;
-			float: right;
-			cursor: pointer;
-			top: 126px;
-			text-align: center;
-			font-family: Arial;
-			font-size: 0px;
-			color: transparent;
-			padding:2px 2px;
-			position: absolute;
-			z-index: 100;
-			right: 20px;
-
-			display: block;
-			line-height: 0px;
-			font-size: 0px;
-			padding: 0;
-			border: none;
-			outline: none;
-		}
-		#arrowL
-		{
-			top: 145px;
-			left: 9px;
-			background: transparent;
-			width: 40px;
-			height: 40px;
-			float: left;
-			cursor: pointer;
-			text-align: center;
-			font-family: Arial;
-			color: transparent;
-			position: absolute;
-			z-index: 100;
-			border-radius: 50%;
-			cursor: pointer;
-			display: block;
-			line-height: 0px;
-			font-size: 0px;
-			-webkit-transform: translate(0, -50%);
-			padding: 0;
-			border: none;
-			outline: none;
-		}
-		.item
-		{
-			margin: 0 10px 0 0;
-			float: left;
-			position: relative;
-			text-align: center;
-			font-family: Arial;
-			font-size: 20px;
-			color: White;
-		}
-
-		div.item iframe{
-			width: 100%;
-			height: 100%;
-		}
-		div.p-body-section div.p-body-section-header span.p-body-section-icon i.fa-gamepad-alt.screen-icon:before {
-			content: "\f108" !important;
-		}
-
-
-		/* MEDIA QUERIES.............
-		MEDIA QUERIES.............
-		MEDIA QUERIES............. */
-
-		@media only screen and (max-width: 600px) {
-			#container{
-				width: 100%;
-			}
-			.item{
-				margin: 0 15px 0 15px;
-			}
-		}
-
-
-
-		/* Container to hold the two boxes */
-		.container {
-			display: flex; /* Use flexbox */
-			justify-content: space-between; /* Add space between the two boxes */
-			flex-wrap: wrap; /* Allow wrapping to the next line on smaller screens */
-		}
-
-		/* Styles for the individual boxes */
-		.box {
-			display: block;
-			box-sizing: border-box; /* Include padding and border in the box's total width */
-			margin-bottom: 5px; /* Add some space between the boxes */
-		}
-
-		.right_glitchvideo{
-			cursor: pointer;
-		}
-
-		.right_glitchvideo:hover{
-			color: blue;
-		}
-
-
-	</style>
-
+	<xf:css src="nick97_watch_list_movies.less" />
 
 	<div class="p-body-section">
 		<div class="p-body-section-header">
 			<div class="container">
 				<div class="box">
-					<h2>Movies</h2>
+					<h2>{{ phrase('nick97_watch_list_movies') }}</h2>
 				</div>
 
 				<xf:if is="count($movies) > 1">
 
-					<div class="right_glitchvideo box">
+					<div class="right_watch_list box">
 						<h2><i class="fas fa-chevron-right"></i></h2>
 					</div>
 
@@ -701,22 +487,12 @@
 
 		<div id="container">
 
-			<xf:comment>
-
-				<div id="arrowL" class="left_glitchvideo" style="">
-					<i class="fa fa-chevron-left"></i>
-				</div>
-				<div id="arrowR" class="right_glitchvideo"  style="">
-					<i class="fa fa-chevron-right"></i>
-				</div>	
-
-			</xf:comment>
 
 			<div id="list-container">
 
-				<xf:comment>===========only glitch youtube channel</xf:comment>
 
-				<div class='list glitchvideo' style="">
+
+				<div class='list watch_list' style="">
 
 					<xf:foreach loop="{$movies}" value="$movie">
 
@@ -726,7 +502,7 @@
 							</a>
 						</div>
 
-					</xf:foreach>		
+					</xf:foreach>
 
 				</div>
 
@@ -745,23 +521,23 @@
 	<xf:js>
 
 		$(document).ready(function(){
-		$(".right_glitchvideo").click(function(){
-		var item_width = $('#list-container div.glitchvideo div.item').width(); 
+		$(".right_watch_list").click(function(){
+		var item_width = $('#list-container div.watch_list div.item').width(); 
 		var left_value = item_width * (-1); 
-		var left_indent = parseInt($('#list-container div.glitchvideo').css('left')) - item_width;
-		$('#list-container div.glitchvideo ').animate({'left' : left_indent}, 100, function () {
-		$('#list-container div.glitchvideo div.item:last').after($('#list-container div.glitchvideo div.item:first'));                  
-		$('#list-container div.glitchvideo').css({'left' : left_value});
+		var left_indent = parseInt($('#list-container div.watch_list').css('left')) - item_width;
+		$('#list-container div.watch_list ').animate({'left' : left_indent}, 100, function () {
+		$('#list-container div.watch_list div.item:last').after($('#list-container div.watch_list div.item:first'));                  
+		$('#list-container div.watch_list').css({'left' : left_value});
 		});
 		});
 
-		$(".left_glitchvideo").click(function(){
-		var item_width = $('#list-container div.glitchvideo div.item').width(); 
+		$(".left_watch_list").click(function(){
+		var item_width = $('#list-container div.watch_list div.item').width(); 
 		var right_value = item_width * (+1); 
-		var right_indent = parseInt($('#list-container div.glitchvideo').css('right')) + item_width;
-		$('#list-container div.glitchvideo ').animate({'right' : right_indent}, 100, function () {
-		$('#list-container div.glitchvideo div.item:first').before($('#list-container div.glitchvideo div.item:last'));                  
-		$('#list-container div.glitchvideo').css({'right' : right_value});
+		var right_indent = parseInt($('#list-container div.watch_list').css('right')) + item_width;
+		$('#list-container div.watch_list ').animate({'right' : right_indent}, 100, function () {
+		$('#list-container div.watch_list div.item:first').before($('#list-container div.watch_list div.item:last'));                  
+		$('#list-container div.watch_list').css({'right' : right_value});
 		});
 		});
 		});
@@ -773,185 +549,19 @@
 
 <xf:macro name="tvShow" arg-tvShows="!">
 
-	<style>
-
-		.p-body-section1{
-			margin-bottom:0 !important;
-		}
-		#container1
-		{
-
-			height: auto;
-			overflow: hidden;
-			margin: 0 auto;
-			position: relative;
-			margin-bottom:20px;
-		}
-		#list-container1
-		{
-			overflow: hidden;
-			width: 100%;
-			float: left;
-		}
-		.list1
-		{
-
-			min-width: 3400px;
-			float: left;
-			display: flex;
-		}
-
-		#arrowL1::before,#arrowR1::before{
-			font-family: "Font Awesome 5 Pro";
-			content: "\f053";
-			background: #fff;
-			border-radius: 50%;
-
-			color: #2196f3;
-			display: block;
-			font-size: 20px;
-			font-weight: bold;
-			height: 40px;
-			line-height: 40px;
-			opacity: 1;
-			width: 40px;
-			text-align: center;
-		}
-
-
-
-		#arrowR1::before {
-			font-family: "Font Awesome 5 Pro";
-			content: "\f054";
-		}	
-
-
-		#arrowR1
-		{
-			background: transparent;
-			width: 40px;
-			height: 40px;
-			border-radius: 50%;
-			float: right;
-			cursor: pointer;
-			top: 126px;
-			text-align: center;
-			font-family: Arial;
-			font-size: 0px;
-			color: transparent;
-			padding:2px 2px;
-			position: absolute;
-			z-index: 100;
-			right: 20px;
-
-			display: block;
-			line-height: 0px;
-			font-size: 0px;
-			padding: 0;
-			border: none;
-			outline: none;
-		}
-		#arrowL1
-		{
-			top: 145px;
-			left: 9px;
-			background: transparent;
-			width: 40px;
-			height: 40px;
-			float: left;
-			cursor: pointer;
-			text-align: center;
-			font-family: Arial;
-			color: transparent;
-			position: absolute;
-			z-index: 100;
-			border-radius: 50%;
-			cursor: pointer;
-			display: block;
-			line-height: 0px;
-			font-size: 0px;
-			-webkit-transform: translate(0, -50%);
-			padding: 0;
-			border: none;
-			outline: none;
-		}
-		.item1
-		{
-			margin: 0 10px 0 0;
-			float: left;
-			position: relative;
-			text-align: center;
-			font-family: Arial;
-			font-size: 20px;
-			color: White;
-		}
-
-		div.item1 iframe1{
-			width: 100%;
-			height: 100%;
-		}
-		div.p-body-section1 div.p-body-section-header1 span.p-body-section-icon1 i.fa-gamepad-alt1.screen-icon1:before {
-			content: "\f108" !important;
-		}
-
-
-		/* MEDIA QUERIES.............
-		MEDIA QUERIES.............
-		MEDIA QUERIES............. */
-
-		@media only screen and (max-width: 600px) {
-			#container1{
-				width: 100%;
-			}
-			.item1{
-				margin: 0 15px 0 15px;
-			}
-		}
-
-
-
-		/* container1 to hold the two boxes */
-		.container1 {
-			display: flex; /* Use flexbox */
-			justify-content: space-between; /* Add space between the two boxes */
-			flex-wrap: wrap; /* Allow wrapping to the next line on smaller screens */
-		}
-
-		/* Styles for the individual boxes */
-		.box1 {
-			display: block;
-			box-sizing: border-box; /* Include padding and border in the box's total width */
-			margin-bottom: 5px; /* Add some space between the boxes */
-		}
-
-		.right_glitchvideo1{
-			cursor: pointer;
-		}
-
-		.right_glitchvideo1:hover{
-			color: blue;
-		}
-
-		.empty {
-			text-align: center;
-			font-size: 18px;
-			color: #555;
-		}
-
-
-	</style>
+	<xf:css src="nick97_watch_list_tv_shows.less" />
 
 
 	<div class="p-body-section1">
 		<div class="p-body-section-header1">
 			<div class="container1">
 				<div class="box1">
-					<h2>TV & Shows</h2>
+					<h2>{{ phrase('nick97_watch_list_tv_shows') }}</h2>
 				</div>
 
 				<xf:if is="count($tvShows) > 1">
 
-					<div class="right_glitchvideo1 box1">
+					<div class="right_watch_list1 box1">
 						<h2><i class="fas fa-chevron-right"></i></h2>
 					</div>
 
@@ -966,10 +576,10 @@
 
 			<xf:comment>
 
-				<div id="arrowL1" class="left_glitchvideo1" style="">
+				<div id="arrowL1" class="left_watch_list1" style="">
 					<i class="fa fa-chevron-left"></i>
 				</div>
-				<div id="arrowR1" class="right_glitchvideo1"  style="">
+				<div id="arrowR1" class="right_watch_list1"  style="">
 					<i class="fa fa-chevron-right"></i>
 				</div>	
 
@@ -977,9 +587,8 @@
 
 			<div id="list-container1">
 
-				<xf:comment>===========only glitch youtube channel</xf:comment>
 
-				<div class='list1 glitchvideo' style="">
+				<div class='list1 watch_list1' style="">
 
 					<xf:foreach loop="{$tvShows}" value="$movie">
 
@@ -1008,23 +617,23 @@
 	<xf:js>
 
 		$(document).ready(function(){
-		$(".right_glitchvideo1").click(function(){
-		var item_width = $('#list-container1 div.glitchvideo div.item1').width(); 
+		$(".right_watch_list1").click(function(){
+		var item_width = $('#list-container1 div.watch_list1 div.item1').width(); 
 		var left_value = item_width * (-1); 
-		var left_indent = parseInt($('#list-container1 div.glitchvideo').css('left')) - item_width;
-		$('#list-container1 div.glitchvideo ').animate({'left' : left_indent}, 100, function () {
-		$('#list-container1 div.glitchvideo div.item1:last').after($('#list-container1 div.glitchvideo div.item1:first'));                  
-		$('#list-container1 div.glitchvideo').css({'left' : left_value});
+		var left_indent = parseInt($('#list-container1 div.watch_list1').css('left')) - item_width;
+		$('#list-container1 div.watch_list1 ').animate({'left' : left_indent}, 100, function () {
+		$('#list-container1 div.watch_list1 div.item1:last').after($('#list-container1 div.watch_list1 div.item1:first'));                  
+		$('#list-container1 div.watch_list1').css({'left' : left_value});
 		});
 		});
 
-		$(".left_glitchvideo1").click(function(){
-		var item_width = $('#list-container1 div.glitchvideo div.item1').width(); 
+		$(".left_watch_list1").click(function(){
+		var item_width = $('#list-container1 div.watch_list1 div.item1').width(); 
 		var right_value = item_width * (+1); 
-		var right_indent = parseInt($('#list-container1 div.glitchvideo').css('right')) + item_width;
-		$('#list-container1 div.glitchvideo ').animate({'right' : right_indent}, 100, function () {
-		$('#list-container1 div.glitchvideo div.item1:first').before($('#list-container1 div.glitchvideo div.item1:last'));                  
-		$('#list-container1 div.glitchvideo').css({'right' : right_value});
+		var right_indent = parseInt($('#list-container1 div.watch_list1').css('right')) + item_width;
+		$('#list-container1 div.watch_list1 ').animate({'right' : right_indent}, 100, function () {
+		$('#list-container1 div.watch_list1 div.item1:first').before($('#list-container1 div.watch_list1 div.item1:last'));                  
+		$('#list-container1 div.watch_list1').css({'right' : right_value});
 		});
 		});
 		});
@@ -1319,4 +928,184 @@
 	</xf:foreach>
 
 </xf:macro>]]></template>
+  <template type="public" title="nick97_watch_list_tv_shows.less" version_id="1000300" version_string="1.0.3 Alpha"><![CDATA[.p-body-section1{
+margin-bottom:0 !important;
+}
+#container1
+{
+
+height: auto;
+overflow: hidden;
+margin: 0 auto;
+position: relative;
+margin-bottom:20px;
+}
+#list-container1
+{
+overflow: hidden;
+width: 100%;
+float: left;
+}
+.list1
+{
+
+min-width: 3400px;
+float: left;
+display: flex;
+}
+
+#arrowL1::before,#arrowR1::before{
+font-family: "Font Awesome 5 Pro";
+content: "\f053";
+background: #fff;
+border-radius: 50%;
+
+color: #2196f3;
+display: block;
+font-size: 20px;
+font-weight: bold;
+height: 40px;
+line-height: 40px;
+opacity: 1;
+width: 40px;
+text-align: center;
+}
+
+
+
+#arrowR1::before {
+font-family: "Font Awesome 5 Pro";
+content: "\f054";
+}	
+
+
+#arrowR1
+{
+background: transparent;
+width: 40px;
+height: 40px;
+border-radius: 50%;
+float: right;
+cursor: pointer;
+top: 126px;
+text-align: center;
+font-family: Arial;
+font-size: 0px;
+color: transparent;
+padding:2px 2px;
+position: absolute;
+z-index: 100;
+right: 20px;
+
+display: block;
+line-height: 0px;
+font-size: 0px;
+padding: 0;
+border: none;
+outline: none;
+}
+#arrowL1
+{
+top: 145px;
+left: 9px;
+background: transparent;
+width: 40px;
+height: 40px;
+float: left;
+cursor: pointer;
+text-align: center;
+font-family: Arial;
+color: transparent;
+position: absolute;
+z-index: 100;
+border-radius: 50%;
+cursor: pointer;
+display: block;
+line-height: 0px;
+font-size: 0px;
+-webkit-transform: translate(0, -50%);
+padding: 0;
+border: none;
+outline: none;
+}
+.item1
+{
+margin: 0 10px 0 0;
+float: left;
+position: relative;
+text-align: center;
+font-family: Arial;
+font-size: 20px;
+color: White;
+}
+
+div.item1 iframe1{
+width: 100%;
+height: 100%;
+}
+div.p-body-section1 div.p-body-section-header1 span.p-body-section-icon1 i.fa-gamepad-alt1.screen-icon1:before {
+content: "\f108" !important;
+}
+
+
+/* MEDIA QUERIES.............
+MEDIA QUERIES.............
+MEDIA QUERIES............. */
+
+@media only screen and (max-width: 600px) {
+#container1{
+width: 100%;
+}
+.item1{
+margin: 0 15px 0 15px;
+}
+}
+
+
+
+/* container1 to hold the two boxes */
+.container1 {
+display: flex; /* Use flexbox */
+justify-content: space-between; /* Add space between the two boxes */
+flex-wrap: wrap; /* Allow wrapping to the next line on smaller screens */
+}
+
+/* Styles for the individual boxes */
+.box1 {
+display: block;
+box-sizing: border-box; /* Include padding and border in the box's total width */
+margin-bottom: 5px; /* Add some space between the boxes */
+}
+
+.right_watch_list1{
+cursor: pointer;
+}
+
+.right_watch_list1:hover{
+color: blue;
+}
+
+.empty {
+text-align: center;
+font-size: 18px;
+color: #555;
+}]]></template>
+  <template type="public" title="nick97_watchlist_profile_stats" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[<xf:if is="$stats">
+	<xf:macro template="nick97_watch_list_movies_macro" name="stats" arg-stats="{$stats}" />
+	<xf:else/>
+
+	<xf:if is="$limit">
+		<div class="blockMessage">{{ phrase('nick97_member_limits_viewing_stats') }}</div>
+		<xf:else/>
+		<div class="blockMessage">{{ phrase('nick97_member_empty_viewing_stats') }}</div>
+	</xf:if>
+</xf:if>]]></template>
+  <template type="public" title="nick97_watchlist_profile_watchlist" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[<xf:if is="$limit">
+	<div class="blockMessage">{{ phrase('nick97_member_limits_viewing_watchlist') }}</div>
+
+	<xf:else/>
+	<xf:macro template="nick97_watch_list_movies_macro" name="movies" arg-movies="{$movies}" />
+
+	<xf:macro template="nick97_watch_list_movies_macro" name="tvShow" arg-tvShows="{$tvShows}" />
+</xf:if>]]></template>
 </templates>

@@ -49,7 +49,7 @@
 											<xf:if is="$post.TVPost">
 												<img src="{$post.TVPost.episode_image_url}" />
 											<xf:else />
-												<img src="{$thread.TV.getImageUrl('l', 1)}" />
+												<img src="{$thread.traktTV.getImageUrl('l', 1)}" />
 											</xf:if>
 											
 											<xf:if is="$xf.options.traktTvThreads_use_rating">
@@ -98,14 +98,14 @@
 													<xf:if is="$post.Thread.TV.tv_cast"><b>{{ phrase('trakt_tv_guest_stars') }}: </b>{$post.Thread.TV.tv_cast}<br /></xf:if>
 												</xf:if>
 											<xf:else />
-												<xf:if is="$xf.options.traktTvThreads_showThread.title"><b>{{ phrase('title') }}:</b> {$thread.TV.tv_title}<br /></xf:if>
-												<xf:if is="$xf.options.traktTvThreads_showThread.genres && $thread.TV.tv_genres"><p><b>{{ phrase('trakt_tv_genre') }}:</b> {$thread.TV.tv_genres}</p></xf:if>
-												<xf:if is="$xf.options.traktTvThreads_showThread.director && $thread.TV.tv_director"><p><b>{{ phrase('trakt_tv_director') }}:</b> {$thread.TV.tv_director}</p></xf:if>
-												<xf:if is="$xf.options.traktTvThreads_showThread.cast && $thread.TV.tv_cast"><p><b>{{ phrase('trakt_tv_cast') }}:</b> {$thread.TV.tv_cast}</p></xf:if>
-												<xf:if is="$xf.options.traktTvThreads_showThread.release && $thread.TV.first_air_date"><p><b>{{ phrase('trakt_tv_first_aired') }}:</b> <xf:date time="{$thread.TV.first_air_date}" /></p></xf:if>
-												<xf:if is="$xf.options.traktTvThreads_showThread.last_air_date && $thread.TV.last_air_date"><p><b>{{ phrase('trakt_tv_last_air_date') }}:</b> <xf:date time="{$thread.TV.last_air_date}" /></p></xf:if>
-												<xf:if is="$xf.options.traktTvThreads_showThread.status && $thread.TV.status is not empty"><p><b>{{ phrase('trakt_tv_status') }}:</b> {$thread.TV.status}</p></xf:if>
-												<xf:if is="$xf.options.traktTvThreads_showThread.plot && $thread.TV.tv_plot"><b>{{ phrase('trakt_tv_overview') }}:</b> {$thread.TV.tv_plot}</xf:if>
+												<xf:if is="$xf.options.traktTvThreads_showThread.title"><b>{{ phrase('title') }}:</b> {$thread.traktTV.tv_title}<br /></xf:if>
+												<xf:if is="$xf.options.traktTvThreads_showThread.genres && $thread.traktTV.tv_genres"><p><b>{{ phrase('trakt_tv_genre') }}:</b> {$thread.traktTV.tv_genres}</p></xf:if>
+												<xf:if is="$xf.options.traktTvThreads_showThread.director && $thread.traktTV.tv_director"><p><b>{{ phrase('trakt_tv_director') }}:</b> {$thread.traktTV.tv_director}</p></xf:if>
+												<xf:if is="$xf.options.traktTvThreads_showThread.cast && $thread.traktTV.tv_cast"><p><b>{{ phrase('trakt_tv_cast') }}:</b> {$thread.traktTV.tv_cast}</p></xf:if>
+												<xf:if is="$xf.options.traktTvThreads_showThread.release && $thread.traktTV.first_air_date"><p><b>{{ phrase('trakt_tv_first_aired') }}:</b> <xf:date time="{$thread.traktTV.first_air_date}" /></p></xf:if>
+												<xf:if is="$xf.options.traktTvThreads_showThread.last_air_date && $thread.traktTV.last_air_date"><p><b>{{ phrase('trakt_tv_last_air_date') }}:</b> <xf:date time="{$thread.traktTV.last_air_date}" /></p></xf:if>
+												<xf:if is="$xf.options.traktTvThreads_showThread.status && $thread.traktTV.status is not empty"><p><b>{{ phrase('trakt_tv_status') }}:</b> {$thread.traktTV.status}</p></xf:if>
+												<xf:if is="$xf.options.traktTvThreads_showThread.plot && $thread.traktTV.tv_plot"><b>{{ phrase('trakt_tv_overview') }}:</b> {$thread.traktTV.tv_plot}</xf:if>
 											</xf:if>
 										</div>
 										<!--[XF:trakt_tv_tv_message_bottom]-->
@@ -133,14 +133,14 @@
 										</xf:if>
 
 										<xf:extension name="watch_providers">
-											<xf:set var="$watchProviders" value="{$thread.TV.getWatchProviders()}" />
+											<xf:set var="$watchProviders" value="{$thread.traktTV.getWatchProviders()}" />
 											<xf:if is="$watchProviders">
 												<div class="message message--tv tv-providers">
 													<h4 class="block-textHeader">
 														{{ phrase('trakt_tv_where_to_watch') }}
 														<div class="u-pullRight">
 															<xf:select value="{{ $xf.visitor.Option.nick97_tv_trakt_watch_region ?: $xf.options.traktTvThreads_watchProviderRegion }}">
-																<xf:foreach loop="{{ $thread.TV.getWatchProviderCountries() }}" key="$region" value="$phrase">
+																<xf:foreach loop="{{ $thread.traktTV.getWatchProviderCountries() }}" key="$region" value="$phrase">
 																	<xf:option value="{$region}" data-xf-init="disabler" data-container=".js-tvWatchData-{$region}" data-hide="on">
 																		{$phrase}
 																	</xf:option>
@@ -181,7 +181,7 @@
 
 								<xf:if is="!$xf.options.traktTvThreads_force_comments">
 									<article class="message-body">
-										{{ bb_code($thread.TV.comment, 'post', $post.User, {
+										{{ bb_code($thread.traktTV.comment, 'post', $post.User, {
 											'attachments': $post.attach_count ? $post.Attachments : [],
 											'viewAttachments': $thread.canViewAttachments()
 										}) }}
@@ -193,7 +193,7 @@
 										<span class="hScroller-scroll">
 											<xf:contentcheck>
 												<!--[XF:trakt_tv_tabs_start]-->
-												<xf:if is="$xf.options.traktTvThreads_showThread.trailer_tab && $thread.TV.tv_trailer">
+												<xf:if is="$xf.options.traktTvThreads_showThread.trailer_tab && $thread.traktTV.tv_trailer">
 													<a class="tabs-tab is-active" role="tab" tabindex="0" aria-controls="tv-trailer">
 														{{ phrase('trakt_tv_trailer') }}
 													</a>
@@ -226,7 +226,7 @@
 									<ul class="tabPanes">
 										<xf:contentcheck>
 											<!--[XF:trakt_tv_tabPanes_start]-->
-											<xf:if is="$xf.options.traktTvThreads_showThread.trailer_tab && $thread.TV.tv_trailer">
+											<xf:if is="$xf.options.traktTvThreads_showThread.trailer_tab && $thread.traktTV.tv_trailer">
 												<li class="block-body is-active" role="tabpanel" id="tv-trailer">
 													<div class="block-row">
 														<div class="bbMediaWrapper">
@@ -234,7 +234,7 @@
 																<iframe width="500"
 																	height="300"
 																	allowfullscreen
-																	src="https://www.youtube.com/embed/{$thread.TV.tv_trailer}?wmode=opaque&start=0"
+																	src="https://www.youtube.com/embed/{$thread.traktTV.tv_trailer}?wmode=opaque&start=0"
 																	style="border:none;"></iframe>
 															</div>
 														</div>
@@ -247,7 +247,7 @@
 												<li class="block-body" role="tabpanel" id="tv-casts">
 													<div class="block-row">
 														<xf:macro template="trakt_tv_casts_macros" name="cast_list"
-															  arg-tv="{$thread.TV}" arg-casts="{$casts}" arg-page="1"
+															  arg-tv="{$thread.traktTV}" arg-casts="{$casts}" arg-page="1"
 															  arg-hasMore="{$castsHasMore}" />
 													</div>
 												</li>
@@ -258,7 +258,7 @@
 												<li class="block-body" role="tabpanel" id="tv-crew">
 													<div class="block-row">
 														<xf:macro template="trakt_tv_crews_macros" name="crew_list"
-															  arg-tv="{$thread.TV}" arg-crews="{$crews}" arg-page="1"
+															  arg-tv="{$thread.traktTV}" arg-crews="{$crews}" arg-page="1"
 															  arg-hasMore="{$crewsHasMore}" />
 													</div>
 												</li>
@@ -269,7 +269,7 @@
 												<li class="block-body" role="tabpanel" id="tv-videos">
 													<div class="block-row">
 														<xf:macro template="trakt_tv_videos_macros" name="video_list"
-															  arg-tv="{$thread.TV}" arg-videos="{$videos}" arg-page="1"
+															  arg-tv="{$thread.traktTV}" arg-videos="{$videos}" arg-page="1"
 															  arg-hasMore="{$videosHasMore}" />
 													</div>
 												</li>
@@ -418,17 +418,17 @@
 </xf:macro>
 
 <xf:macro name="rating_block" arg-thread="!">
-	<xf:set var="$rating" value="{$thread.TV.tv_rating}" />
+	<xf:set var="$rating" value="{$thread.traktTV.tv_rating}" />
 	<div style="padding-top: 10px;">
 		<xf:macro template="rating_macros" name="stars_text"
 			arg-rating="{$rating}" arg-text=" " />
 	</div>
 
-	<div>{$thread.TV.tv_rating}/5 {$thread.TV.tv_votes} {{ phrase('votes') }}</div>
+	<div>{$thread.traktTV.tv_rating}/5 {$thread.traktTV.tv_votes} {{ phrase('votes') }}</div>
 
 	<xf:if is="$xf.visitor.user_id">
 		<div>
-			<xf:button class="button--link button--wrap" href="{{ link('tv/rate', $thread.TV) }}" overlay="true">
+			<xf:button class="button--link button--wrap" href="{{ link('tv/rate', $thread.traktTV) }}" overlay="true">
 				{{ phrase('trakt_tv_change_rating') }}
 			</xf:button>
 		</div>
@@ -441,7 +441,7 @@
 
 			<div class="message messageEpisode" itemprop="episode" itemscope itemtype="http://schema.org/TVEpisode">
 				<xf:if is="$post.Thread.TV is not empty">
-					<b><meta itemprop="partOfTVSeries" content="{$thread.TV.tv_title}">{$thread.TV.tv_title}</b><br />
+					<b><meta itemprop="partOfTVSeries" content="{$thread.traktTV.tv_title}">{$thread.traktTV.tv_title}</b><br />
 				</xf:if>
 
 				<div class="episodeImage">

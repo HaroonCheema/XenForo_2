@@ -10,8 +10,8 @@ class TV extends AbstractController
 {
 	public function actionCasts(ParameterBag $params)
 	{
-		$thread = $this->assertViewableThread($params->thread_id, ['TV']);
-		$tv = $thread->TV;
+		$thread = $this->assertViewableThread($params->thread_id, ['traktTV']);
+		$tv = $thread->traktTV;
 		if (!$tv) {
 			return $this->notFound();
 		}
@@ -44,8 +44,8 @@ class TV extends AbstractController
 
 	public function actionCrews(ParameterBag $params)
 	{
-		$thread = $this->assertViewableThread($params->thread_id, ['TV']);
-		$tv = $thread->TV;
+		$thread = $this->assertViewableThread($params->thread_id, ['traktTV']);
+		$tv = $thread->traktTV;
 		if (!$tv) {
 			return $this->notFound();
 		}
@@ -78,8 +78,8 @@ class TV extends AbstractController
 
 	public function actionVideos(ParameterBag $params)
 	{
-		$thread = $this->assertViewableThread($params->thread_id, ['TV']);
-		$tv = $thread->TV;
+		$thread = $this->assertViewableThread($params->thread_id, ['traktTV']);
+		$tv = $thread->traktTV;
 		if (!$tv) {
 			return $this->notFound();
 		}
@@ -115,7 +115,7 @@ class TV extends AbstractController
 		$visitor = \XF::visitor();
 
 		$thread = $this->assertViewableThread($params->thread_id);
-		$show = $thread->TV;
+		$show = $thread->traktTV;
 		if (!$show) {
 			return $this->notFound();
 		}
@@ -198,8 +198,8 @@ class TV extends AbstractController
 
 	public function actionEdit(ParameterBag $params)
 	{
-		$thread = $this->assertViewableThread($params->thread_id, ['TV']);
-		$tvShow = $thread->TV;
+		$thread = $this->assertViewableThread($params->thread_id, ['traktTV']);
+		$tvShow = $thread->traktTV;
 		if (!$tvShow) {
 			return $this->notFound();
 		}
@@ -380,8 +380,8 @@ class TV extends AbstractController
 			throw $this->exception($this->noPermission());
 		}
 
-		$thread = $this->assertViewableThread($params->thread_id, ['TV']);
-		$tvShow = $thread->TV;
+		$thread = $this->assertViewableThread($params->thread_id, ['traktTV']);
+		$tvShow = $thread->traktTV;
 		if (!$tvShow) {
 			return $this->notFound();
 		}
@@ -686,7 +686,7 @@ class TV extends AbstractController
 
 	// 	$tvCreator = $typeCreator->getTvCreator();
 
-	// 	// $tvId = $thread->TV->tv_id;
+	// 	// $tvId = $thread->traktTV->tv_id;
 	// 	$tvId = 87917;
 
 	// 	$threadId = $thread->thread_id;
@@ -717,7 +717,7 @@ class TV extends AbstractController
 
 			$tvCreator = $typeCreator->getTvCreator();
 
-			$tvId = $thread->TV->tv_id;
+			$tvId = $thread->traktTV->tv_id;
 
 			$threadId = $thread->thread_id;
 
@@ -756,7 +756,7 @@ class TV extends AbstractController
 
 			$movie = $this->finder('nick97\TraktTV:TV')->where('thread_id', 42525)->fetchOne();
 			$movie->fastUpdate('thread_id', $threadId);
-			$thread->fastUpdate('title', $thread->TV->tv_title);
+			$thread->fastUpdate('title', $thread->traktTV->tv_title);
 
 			return $this->redirect($this->buildLink('threads', $thread));
 		} else {

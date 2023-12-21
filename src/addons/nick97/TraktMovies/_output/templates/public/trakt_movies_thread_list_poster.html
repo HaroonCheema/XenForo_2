@@ -1,6 +1,6 @@
-<xf:if is="$thread.Movie is not empty">
+<xf:if is="$thread.traktMovie is not empty">
 	<div class="structItem-cell structItem-cell--movie">
-		<img class="moviePoster" src="{{ $thread.Movie.getImageUrl('s') }}" />
+		<img class="moviePoster" src="{{ $thread.traktMovie.getImageUrl('s') }}" />
 	</div>
 <xf:else />
 	<div class="structItem-cell structItem-cell--movie">

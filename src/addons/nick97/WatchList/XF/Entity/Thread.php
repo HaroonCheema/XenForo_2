@@ -6,12 +6,16 @@ use XF\Mvc\Entity\Structure;
 
 class Thread extends XFCP_Thread
 {
-    public static function getStructure(Structure $structure)
+    public function getWatchListExist()
     {
-        $structure = parent::getStructure($structure);
+        $visitor = \XF::visitor();
 
-        $structure->columns['watch_list'] =  ['type' => self::UINT, 'default' => 0];
+        $recordWatchList = $this->finder('nick97\WatchList:WatchList')->where('user_id', $visitor->user_id)->where('thread_id', $this->thread_id)->fetchOne();
 
-        return $structure;
+        if ($recordWatchList) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

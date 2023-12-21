@@ -22,7 +22,7 @@ class Movie extends AbstractHandler
 	public function getThreadViewAndTemplate(Thread $thread): array
 	{
 		/** @var \nick97\TraktMovies\XF\Entity\Thread $thread */
-		if ($thread->Movie) {
+		if ($thread->traktMovie) {
 			return ['nick97\TraktMovies:Forum\ViewTypeMovie', 'trakt_movies_thread_view_type_movie'];
 		}
 
@@ -37,7 +37,7 @@ class Movie extends AbstractHandler
 	public function getThreadViewTemplateOverrides(Thread $thread, array $extra = []): array
 	{
 		/** @var \nick97\TraktMovies\XF\Entity\Thread $thread */
-		$movie = $thread->Movie;
+		$movie = $thread->traktMovie;
 		if ($movie) {
 			$overrides = [
 				'pinned_first_post_macro' => 'trakt_movies_post_macros::movie',
@@ -141,7 +141,7 @@ class Movie extends AbstractHandler
 	{
 		$data = parent::getLdStructuredData($thread, $firstDisplayedPost, $page, $extraData);
 
-		$movie = $thread->Movie;
+		$movie = $thread->traktMovie;
 		if (!$movie) {
 			return $data;
 		}
@@ -273,7 +273,7 @@ class Movie extends AbstractHandler
 	public function onThreadDelete(Thread $thread)
 	{
 		/** @var \nick97\TraktMovies\XF\Entity\Thread $thread */
-		$movie = $thread->Movie;
+		$movie = $thread->traktMovie;
 		if ($movie) {
 			$movie->delete();
 		}
@@ -283,7 +283,7 @@ class Movie extends AbstractHandler
 	{
 		if (!$isDelete) {
 			/** @var \nick97\TraktMovies\XF\Entity\Thread $thread */
-			$movie = $thread->Movie;
+			$movie = $thread->traktMovie;
 			if ($movie) {
 				$movie->delete();
 				$thread->adjustMovieThreadCount(-1);

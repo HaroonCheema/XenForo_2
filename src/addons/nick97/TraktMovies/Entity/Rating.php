@@ -30,7 +30,7 @@ class Rating extends Entity
 
 	protected function ratingAdded()
 	{
-		$movie = $this->Movie;
+		$movie = $this->traktMovie;
 		if ($movie)
 		{
 			$movie->rebuildRating(true);
@@ -39,7 +39,7 @@ class Rating extends Entity
 
 	protected function ratingRemoved()
 	{
-		$movie = $this->Movie;
+		$movie = $this->traktMovie;
 		if ($movie)
 		{
 			$movie->rebuildRating(true);

@@ -1,4 +1,4 @@
-<xf:if is="(!$post.isFirstPost() && $post.TVPost is not empty) || ($post.isFirstPost() && $thread.TV.tv_season && $thread.TV.tv_episode)">
+<xf:if is="(!$post.isFirstPost() && $post.TVPost is not empty) || ($post.isFirstPost() && $thread.traktTV.tv_season && $thread.traktTV.tv_episode)">
 	<xf:if is="$post.canEdit()">
 		<xf:js src="xf/message.js" min="1" />
 		<a href="{{ link('tv/episode/update', $post) }}"

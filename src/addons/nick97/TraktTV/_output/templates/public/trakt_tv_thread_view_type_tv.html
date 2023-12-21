@@ -6,20 +6,20 @@
 
 <xf:extension name="thread_action_buttons">
 	
-	<xf:if is="{{ $thread.TV && ($xf.visitor.user_id == $thread.user_id || $xf.visitor.is_admin || $xf.visitor.is_moderator) && ($thread.discussion_type == 'trakt_tv') }}">
+	<xf:if is="{{ $thread.traktTV && ($xf.visitor.user_id == $thread.user_id || $xf.visitor.is_admin || $xf.visitor.is_moderator) && ($thread.discussion_type == 'trakt_tv') }}">
 
-		<xf:button href="{{ link('tvTrakt/sync', $thread.TV) }}" class="button--link" overlay="true">
+		<xf:button href="{{ link('tvTrakt/sync', $thread.traktTV) }}" class="button--link" overlay="true">
 			{{ phrase('trakt_movies_sync') }}
 		</xf:button>
 
 	</xf:if>
 	
-	<xf:if is="{{ property('trakt_tv_posterUpdateButtonPosition') == 'default' && $thread.TV && ($xf.visitor.is_admin || $xf.visitor.is_moderator) }}">
-		<xf:button href="{{ link('tv/poster', $thread.TV) }}" class="button--link" overlay="true">
+	<xf:if is="{{ property('trakt_tv_posterUpdateButtonPosition') == 'default' && $thread.traktTV && ($xf.visitor.is_admin || $xf.visitor.is_moderator) }}">
+		<xf:button href="{{ link('tvTrakt/poster', $thread.traktTV) }}" class="button--link" overlay="true">
 			{{ phrase('trakt_tv_check_poster') }}
 		</xf:button>
 	</xf:if>
-	<xf:if is="$xf.options.traktTvThreads_update && !$thread.TV && $canAddInfo">
+	<xf:if is="$xf.options.traktTvThreads_update && !$thread.traktTV && $canAddInfo">
 		<xf:button href="{{ link('tv/add-info', $thread) }}" class="button--link" overlay="true">
 			{{ phrase('trakt_tv_add_info') }}
 		</xf:button>
@@ -28,7 +28,7 @@
 </xf:extension>
 
 <xf:extension name="above_messages_below_pinned">
-	<xf:if is="$thread.TV is not empty && $page <= 1">
+	<xf:if is="$thread.traktTV is not empty && $page <= 1">
 		<span class="tvhint">{{ phrase('trakt_tv_information_thread')}}</span>
 	</xf:if>
 </xf:extension>

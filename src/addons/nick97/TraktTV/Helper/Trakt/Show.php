@@ -34,6 +34,10 @@ class Show
 
 		$clientKey = \XF::options()->traktTvThreads_clientkey;
 
+		if (!$clientKey) {
+			throw new \XF\PrintableException(\XF::phrase('nick97_tv_trakt_api_key_not_found'));
+		}
+
 		$headers = array(
 			'Content-Type: application/json',
 			'trakt-api-version: 2',
@@ -48,6 +52,10 @@ class Show
 
 		$result = curl_exec($ch);
 
+		$resCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+		$this->CheckRequestError($resCode);
+
 		curl_close($ch);
 
 		$toArray = json_decode($result, true);
@@ -58,6 +66,25 @@ class Show
 			return $movieId;
 		} else {
 			return 0;
+		}
+	}
+
+	protected function CheckRequestError($statusCode)
+	{
+		if ($statusCode == 404) {
+			throw new \XF\PrintableException(\XF::phrase('nick97_trakt_movies_request_not_found'));
+		} elseif ($statusCode == 401) {
+			throw new \XF\PrintableException(\XF::phrase('nick97_trakt_movies_request_unauthorized'));
+		} elseif ($statusCode == 415) {
+			throw new \XF\PrintableException(\XF::phrase('nick97_trakt_movies_request_unsported_media'));
+		} elseif ($statusCode == 400) {
+			throw new \XF\PrintableException(\XF::phrase('nick97_trakt_movies_request_empty_body'));
+		} elseif ($statusCode == 405) {
+			throw new \XF\PrintableException(\XF::phrase('nick97_trakt_movies_request_method_not_allowed'));
+		} elseif ($statusCode == 500) {
+			throw new \XF\PrintableException(\XF::phrase('nick97_trakt_movies_request_server_error'));
+		} elseif ($statusCode != 200) {
+			throw new \XF\PrintableException(\XF::phrase('nick97_trakt_movies_request_not_success'));
 		}
 	}
 

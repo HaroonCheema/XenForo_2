@@ -46,30 +46,30 @@
 									
 									<div class="message-movie-sidebar">
 										<div class="movie-poster">
-											<xf:if is="$thread.Movie.trakt_image">
+											<xf:if is="$thread.traktMovie.trakt_image">
 												<xf:if is="$xf.options.traktthreads_forum_local">
-													<img src="{$thread.Movie.getImageUrl('l')}" />
+													<img src="{$thread.traktMovie.getImageUrl('l')}" />
 												<xf:elseif is="$xf.options.traktthreads_usecdn" />
-													<img src="{$xf.options.traktthreads_cdn_path}/movies/LargePosters{$thread.Movie.trakt_image}" />
+													<img src="{$xf.options.traktthreads_cdn_path}/movies/LargePosters{$thread.traktMovie.trakt_image}" />
 												<xf:else />
-													<img src="https://image.tmdb.org/t/p/w185{$thread.Movie.trakt_image}" />
+													<img src="https://image.tmdb.org/t/p/w185{$thread.traktMovie.trakt_image}" />
 												</xf:if>
 											<xf:else />
-												<img src="{$thread.Movie.getImageUrl('l', 1)}" />
+												<img src="{$thread.traktMovie.getImageUrl('l', 1)}" />
 											</xf:if>
 
 											<xf:if is="$xf.options.traktthreads_use_rating">
-												<xf:set var="$rating" value="{$thread.Movie.trakt_rating}" />
+												<xf:set var="$rating" value="{$thread.traktMovie.trakt_rating}" />
 												<div style="padding-top: 10px;">
 													<xf:macro template="rating_macros" name="stars_text"
 														arg-rating="{$rating}" arg-text=" " />
 												</div>
 												
-												<div>{$thread.Movie.trakt_rating}/5 {$thread.Movie.trakt_votes} {{ phrase('votes') }}</div>
+												<div>{$thread.traktMovie.trakt_rating}/5 {$thread.traktMovie.trakt_votes} {{ phrase('votes') }}</div>
 												
 												<xf:if is="$xf.visitor.user_id">
 													<div>
-														<xf:button class="button--link button--wrap" href="{{ link('movies/rate', $thread.Movie) }}" overlay="true">
+														<xf:button class="button--link button--wrap" href="{{ link('movies/rate', $thread.traktMovie) }}" overlay="true">
 															{{ phrase('trakt_movies_change_rating') }}
 														</xf:button>
 													</div>
@@ -94,15 +94,15 @@
 									<div class="message-movie-main">
 										<!--[XF:trakt_movies_movie_message_top]-->
 										<div class="message message--movie">
-											<xf:if is="$xf.options.traktthreads_showThreadInfo.title"><b>{{ phrase('title') }}:</b> {$thread.Movie.trakt_title}<br /></xf:if>
-											<xf:if is="$xf.options.traktthreads_showThreadInfo.tagline && $thread.Movie.trakt_tagline"><p><b>{{ phrase('trakt_movies_tagline') }}:</b> {$thread.Movie.trakt_tagline}</p></xf:if>
-											<xf:if is="$xf.options.traktthreads_showThreadInfo.genres && $thread.Movie.trakt_genres"><p><b>{{ phrase('trakt_movies_genre') }}:</b> {$thread.Movie.trakt_genres}</p></xf:if>
-											<xf:if is="$xf.options.traktthreads_showThreadInfo.director && $thread.Movie.trakt_director"><p><b>{{ phrase('trakt_movies_director') }}:</b> {$thread.Movie.trakt_director}</p></xf:if>
-											<xf:if is="$xf.options.traktthreads_showThreadInfo.cast && $thread.Movie.trakt_cast"><p><b>{{ phrase('trakt_movies_cast') }}:</b> {$thread.Movie.trakt_cast}</p></xf:if>
-											<xf:if is="$xf.options.traktthreads_showThreadInfo.status && $thread.Movie.trakt_status"><p><b>{{ phrase('trakt_movies_status') }}:</b> {$thread.Movie.trakt_status}</p></xf:if>
-											<xf:if is="$xf.options.traktthreads_showThreadInfo.release_date && $thread.Movie.trakt_release"><p><b>{{ phrase('trakt_movies_release') }}:</b> {$thread.Movie.trakt_release}</p></xf:if>
-											<xf:if is="$xf.options.traktthreads_showThreadInfo.runtime && $thread.Movie.trakt_runtime"><p><b>{{ phrase('trakt_movies_runtime') }}:</b> {$thread.Movie.trakt_runtime}</p></xf:if>
-											<xf:if is="$xf.options.traktthreads_showThreadInfo.plot && $thread.Movie.trakt_plot"><b>{{ phrase('trakt_movies_plot') }}:</b> {$thread.Movie.trakt_plot}</xf:if>
+											<xf:if is="$xf.options.traktthreads_showThreadInfo.title"><b>{{ phrase('title') }}:</b> {$thread.traktMovie.trakt_title}<br /></xf:if>
+											<xf:if is="$xf.options.traktthreads_showThreadInfo.tagline && $thread.traktMovie.trakt_tagline"><p><b>{{ phrase('trakt_movies_tagline') }}:</b> {$thread.traktMovie.trakt_tagline}</p></xf:if>
+											<xf:if is="$xf.options.traktthreads_showThreadInfo.genres && $thread.traktMovie.trakt_genres"><p><b>{{ phrase('trakt_movies_genre') }}:</b> {$thread.traktMovie.trakt_genres}</p></xf:if>
+											<xf:if is="$xf.options.traktthreads_showThreadInfo.director && $thread.traktMovie.trakt_director"><p><b>{{ phrase('trakt_movies_director') }}:</b> {$thread.traktMovie.trakt_director}</p></xf:if>
+											<xf:if is="$xf.options.traktthreads_showThreadInfo.cast && $thread.traktMovie.trakt_cast"><p><b>{{ phrase('trakt_movies_cast') }}:</b> {$thread.traktMovie.trakt_cast}</p></xf:if>
+											<xf:if is="$xf.options.traktthreads_showThreadInfo.status && $thread.traktMovie.trakt_status"><p><b>{{ phrase('trakt_movies_status') }}:</b> {$thread.traktMovie.trakt_status}</p></xf:if>
+											<xf:if is="$xf.options.traktthreads_showThreadInfo.release_date && $thread.traktMovie.trakt_release"><p><b>{{ phrase('trakt_movies_release') }}:</b> {$thread.traktMovie.trakt_release}</p></xf:if>
+											<xf:if is="$xf.options.traktthreads_showThreadInfo.runtime && $thread.traktMovie.trakt_runtime"><p><b>{{ phrase('trakt_movies_runtime') }}:</b> {$thread.traktMovie.trakt_runtime}</p></xf:if>
+											<xf:if is="$xf.options.traktthreads_showThreadInfo.plot && $thread.traktMovie.trakt_plot"><b>{{ phrase('trakt_movies_plot') }}:</b> {$thread.traktMovie.trakt_plot}</xf:if>
 										</div>
 										<!--[XF:trakt_movies_movie_message_bottom]-->
 
@@ -118,14 +118,14 @@
 										</xf:if>
 
 										<xf:extension name="watch_providers">
-											<xf:set var="$watchProviders" value="{$thread.Movie.getWatchProviders()}" />
+											<xf:set var="$watchProviders" value="{$thread.traktMovie.getWatchProviders()}" />
 											<xf:if is="$watchProviders">
 												<div class="message message--movie messageMovie--watch">
 													<h4 class="block-textHeader">
 														{{ phrase('trakt_movies_where_to_watch') }}
 														<div class="u-pullRight">
 															<xf:select value="{{ $xf.visitor.Option.nick97_movies_trakt_watch_region ?: $xf.options.traktthreads_watchProviderRegion }}">
-																<xf:foreach loop="{{ $thread.Movie.getWatchProviderCountries() }}" key="$region" value="$phrase">
+																<xf:foreach loop="{{ $thread.traktMovie.getWatchProviderCountries() }}" key="$region" value="$phrase">
 																	<xf:option value="{$region}" data-xf-init="disabler" data-container=".js-movieWatchData-{$region}" data-hide="on">
 																		{$phrase}
 																	</xf:option>
@@ -162,11 +162,11 @@
 											</xf:if>
 										</xf:extension>
 
-										<xf:if is="!$xf.options.traktthreads_force_comments && $thread.Movie.comment is not empty">
+										<xf:if is="!$xf.options.traktthreads_force_comments && $thread.traktMovie.comment is not empty">
 											<div class="message">
 												<div class="message-userContent">
 													<article class="message-body">
-														{{ bb_code($thread.Movie.comment, 'post', $post.User, {
+														{{ bb_code($thread.traktMovie.comment, 'post', $post.User, {
 															'attachments': $post.attach_count ? $post.Attachments : [],
 															'viewAttachments': $thread.canViewAttachments()
 														}) }}
@@ -187,7 +187,7 @@
 											<span class="hScroller-scroll">
 												<xf:contentcheck>
 													<!--[XF:trakt_movies_tabs_start]-->
-													<xf:if is="$xf.options.traktthreads_showThreadInfo.trailer && $thread.Movie.trakt_trailer">
+													<xf:if is="$xf.options.traktthreads_showThreadInfo.trailer && $thread.traktMovie.trakt_trailer">
 														<a class="tabs-tab is-active" role="tab" tabindex="0" aria-controls="movie-trailer">
 															{{ phrase('trakt_movies_trailer') }}
 														</a>
@@ -220,7 +220,7 @@
 										<ul class="tabPanes">
 											<xf:contentcheck>
 												<!--[XF:trakt_movies_tabPanes_start]-->
-												<xf:if is="$xf.options.traktthreads_showThreadInfo.trailer && $thread.Movie.trakt_trailer">
+												<xf:if is="$xf.options.traktthreads_showThreadInfo.trailer && $thread.traktMovie.trakt_trailer">
 													<li class="block-body is-active" role="tabpanel" id="movie-trailer">
 														<div class="block-row">
 															<div class="bbMediaWrapper">
@@ -228,7 +228,7 @@
 																	<iframe width="500"
 																		height="300"
 																		allowfullscreen
-																		src="https://www.youtube.com/embed/{$thread.Movie.trakt_trailer}?wmode=opaque&start=0"
+																		src="https://www.youtube.com/embed/{$thread.traktMovie.trakt_trailer}?wmode=opaque&start=0"
 																		style="border:none;"></iframe>
 																</div>
 															</div>
@@ -240,7 +240,7 @@
 													<li class="block-body" role="tabpanel" id="movie-casts">
 														<div class="block-row">
 															<xf:macro template="trakt_movies_casts_macros" name="cast_list"
-																  arg-movie="{$thread.Movie}" arg-casts="{$casts}" arg-page="1"
+																  arg-movie="{$thread.traktMovie}" arg-casts="{$casts}" arg-page="1"
 																  arg-hasMore="{$castsHasMore}" />
 														</div>
 													</li>
@@ -251,7 +251,7 @@
 													<li class="block-body" role="tabpanel" id="movie-crew">
 														<div class="block-row">
 															<xf:macro template="trakt_movies_crews_macros" name="crew_list"
-																  arg-movie="{$thread.Movie}" arg-crews="{$crews}" arg-page="1"
+																  arg-movie="{$thread.traktMovie}" arg-crews="{$crews}" arg-page="1"
 																  arg-hasMore="{$crewsHasMore}" />
 														</div>
 													</li>
@@ -262,7 +262,7 @@
 													<li class="block-body" role="tabpanel" id="movies-videos">
 														<div class="block-row">
 															<xf:macro template="trakt_movies_videos_macros" name="video_list"
-																  arg-movie="{$thread.Movie}" arg-videos="{$videos}" arg-page="1"
+																  arg-movie="{$thread.traktMovie}" arg-videos="{$videos}" arg-page="1"
 																  arg-hasMore="{$videosHasMore}" />
 														</div>
 													</li>

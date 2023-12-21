@@ -18,9 +18,15 @@ class Thread extends XFCP_Thread
 
 		if ($this->isPost()) {
 			if ($this->filter('stop', 'bool')) {
-				$thread->fastUpdate('watch_list', 0);
+				$recordWatchList = $this->finder('nick97\WatchList:WatchList')->where('user_id', $visitor->user_id)->where('thread_id', $thread->thread_id)->fetchOne();
+
+				$recordWatchList->delete();
 			} else {
-				$thread->fastUpdate('watch_list', 1);
+				$insertData = $this->em()->create('nick97\WatchList:WatchList');
+
+				$insertData->user_id = $visitor->user_id;
+				$insertData->thread_id = $thread->thread_id;
+				$insertData->save();
 			}
 
 			$redirect = $this->redirect($this->buildLink('threads', $thread));
@@ -45,7 +51,9 @@ class Thread extends XFCP_Thread
 		$thread = $this->assertViewableThread($params->thread_id);
 
 		if ($this->isPost()) {
-			$thread->fastUpdate('watch_list', 0);
+			$recordWatchList = $this->finder('nick97\WatchList:WatchList')->where('user_id', $visitor->user_id)->where('thread_id', $thread->thread_id)->fetchOne();
+
+			$recordWatchList->delete();
 
 			$redirect = $this->redirect($this->buildLink('watch-list/my'));
 			return $redirect;

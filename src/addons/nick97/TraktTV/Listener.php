@@ -84,14 +84,14 @@ class Listener
 	 */
 	public static function threadEntityStructure(\XF\Mvc\Entity\Manager $em, \XF\Mvc\Entity\Structure &$structure)
 	{
-		$structure->relations['TV'] = [
+		$structure->relations['traktTV'] = [
 			'entity' => 'nick97\TraktTV:TV',
 			'type' => Entity::TO_ONE,
 			'conditions' => 'thread_id',
 			'primary' => true
 		];
 
-		$structure->defaultWith[] = 'TV';
+		$structure->defaultWith[] = 'traktTV';
 		$structure->options['tvData'] = [];
 		$structure->options['tvOriginalMessage'] = '';
 	}
@@ -143,8 +143,8 @@ class Listener
 	public static function threadEntityPostDelete(Entity $entity)
 	{
 		/** @var \nick97\TraktTV\XF\Entity\Thread $entity */
-		if ($entity->TV) {
-			$entity->TV->delete();
+		if ($entity->traktTV) {
+			$entity->traktTV->delete();
 		}
 	}
 

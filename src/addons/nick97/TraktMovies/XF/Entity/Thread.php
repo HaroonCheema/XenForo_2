@@ -14,7 +14,7 @@ class Thread extends XFCP_Thread
 
 		/** @var User $user */
 		$user = $this->User;
-		if ($user && $this->Movie) {
+		if ($user && $this->traktMovie) {
 			$this->adjustMovieThreadCount(1);
 		}
 	}
@@ -25,7 +25,7 @@ class Thread extends XFCP_Thread
 
 		/** @var User $user */
 		$user = $this->User;
-		if ($user && $this->Movie) {
+		if ($user && $this->traktMovie) {
 			$this->adjustMovieThreadCount(-1);
 		}
 	}

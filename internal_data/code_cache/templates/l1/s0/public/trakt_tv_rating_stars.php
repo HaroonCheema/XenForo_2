@@ -1,12 +1,12 @@
 <?php
-// FROM HASH: 6f0bdb2e6507982096aec6553c59b84e
+// FROM HASH: 7c5f9338048b2a2b7bb8d750b66e8ee1
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
 	$__finalCompiled = '';
 	$__finalCompiled .= '<li>
 	' . $__templater->callMacro('rating_macros', 'stars', array(
-		'rating' => $__vars['thread']['TV']['tv_rating'],
+		'rating' => $__vars['thread']['traktTV']['tv_rating'],
 	), $__vars) . '
 </li>';
 	return $__finalCompiled;

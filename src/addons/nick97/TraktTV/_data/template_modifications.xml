@@ -124,7 +124,7 @@ $0]]></replace>
   </modification>
   <modification type="public" template="post_macros" modification_key="traktTV32" description="Removes reply link from TV thread" execution_order="10" enabled="1" action="preg_replace">
     <find><![CDATA[/<xf:if is="\$thread.canReply().+xf:if>.+xf:if>/isU]]></find>
-    <replace><![CDATA[<xf:if is="$thread.TV is empty || !$post.isFirstPost()">
+    <replace><![CDATA[<xf:if is="$thread.traktTV is empty || !$post.isFirstPost()">
 	$0
 </xf:if>]]></replace>
   </modification>
@@ -135,7 +135,7 @@ $0]]></replace>
   </modification>
   <modification type="public" template="quick_reply_macros" modification_key="traktTV11" description="Adds tv episode input to quick reply (template: trakt_tv_quick_reply_episode)" execution_order="10" enabled="1" action="preg_replace">
     <find><![CDATA[#<xf:editor name="message".*\/>#Us]]></find>
-    <replace><![CDATA[<xf:if is="$thread && $thread.TV is not empty && !$thread.TV.tv_episode">
+    <replace><![CDATA[<xf:if is="$thread && $thread.traktTV is not empty && !$thread.traktTV.tv_episode">
 	$0
 	<xf:include template="trakt_tv_quick_reply_episode" />
 <xf:else />
@@ -154,7 +154,7 @@ arg-thread=""]]></replace>
   </modification>
   <modification type="public" template="search_result_thread" modification_key="trakt_tv_search_result_thread" description="Add poster to search results (NOTE: Replaced with own template if &quot;Replace search results template&quot; option enabled)" execution_order="10" enabled="1" action="str_replace">
     <find><![CDATA[<xf:avatar user="{$thread.User}" size="s" defaultname="{$thread.username}" />]]></find>
-    <replace><![CDATA[<xf:if is="$thread.TV is not empty">
+    <replace><![CDATA[<xf:if is="$thread.traktTV is not empty">
 				<xf:include template="trakt_tv_search_result_thread_poster" />
 			<xf:else />
 			$0
@@ -180,7 +180,7 @@ arg-thread=""]]></replace>
   </modification>
   <modification type="public" template="thread_view" modification_key="traktTV15" description="Changes script for quick reply to allow clearing of other fields (js: nick97/TraktTV/message.min.js)" execution_order="10" enabled="1" action="str_replace">
     <find><![CDATA[<xf:js src="xf/message.js" min="1" />]]></find>
-    <replace><![CDATA[<xf:if is="$thread.TV is not empty && !$thread.TV.tv_episode">
+    <replace><![CDATA[<xf:if is="$thread.traktTV is not empty && !$thread.traktTV.tv_episode">
 	<xf:js src="nick97/TraktTV/message.min.js" />
 <xf:else />
 	$0
@@ -189,7 +189,7 @@ arg-thread=""]]></replace>
   <modification type="public" template="thread_view" modification_key="traktTV37" description="Adds add tv info to menu" execution_order="10" enabled="1" action="str_replace">
     <find><![CDATA[<!--[XF:thread_tools_menu:before_footer]-->]]></find>
     <replace><![CDATA[<xf:if is="$forum.forum_type_id == 'trakt_tv' && $xf.visitor.hasPermission('tvthreads_interface', 'add_info')">
-	<xf:if is="!$thread.TV">
+	<xf:if is="!$thread.traktTV">
 		<a href="{{ link('tv/addinfo', $thread) }}" data-xf-click="overlay" class="menu-linkRow">{{ phrase('trakt_tv_add_info') }}</a>
 	</xf:if>
 </xf:if>
@@ -197,8 +197,8 @@ $0]]></replace>
   </modification>
   <modification type="public" template="thread_view" modification_key="trakt_tv_thread_view_thread_tools_menu" description="Add button" execution_order="10" enabled="1" action="str_replace">
     <find><![CDATA[<!--[XF:thread_tools_menu:before_footer]-->]]></find>
-    <replace><![CDATA[<xf:if is="{{ property('trakt_tv_posterUpdateButtonPosition') == 'thread_tools_menu' && $thread.TV && ($xf.visitor.is_admin || $xf.visitor.is_moderator) }}">
-												<a href="{{ link('tv/poster', $thread.TV) }}" data-xf-click="overlay" class="menu-linkRow">
+    <replace><![CDATA[<xf:if is="{{ property('trakt_tv_posterUpdateButtonPosition') == 'thread_tools_menu' && $thread.traktTV && ($xf.visitor.is_admin || $xf.visitor.is_moderator) }}">
+												<a href="{{ link('tv/poster', $thread.traktTV) }}" data-xf-click="overlay" class="menu-linkRow">
 													{{ phrase('trakt_tv_check_poster') }}
 												</a>
 											</xf:if>

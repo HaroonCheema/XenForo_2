@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 60f559fa994ad5a3616afca76206476b
+// FROM HASH: 6d693ba7aa860c80fa92a5dbc4dcff19
 return array(
 'macros' => array('item' => array(
 'extends' => 'thread_list_macros::item',
@@ -8,7 +8,7 @@ return array(
 	$__finalCompiled = '';
 		$__finalCompiled .= '
 		';
-	if (!$__templater->test($__vars['thread']['TV'], 'empty', array())) {
+	if (!$__templater->test($__vars['thread']['traktTV'], 'empty', array())) {
 		$__finalCompiled .= '
 			' . $__templater->includeTemplate('trakt_tv_thread_list_poster', $__vars) . '
 		';
@@ -60,7 +60,7 @@ return array(
 								<ul class="structItem-extraInfo">
 									<li>
 										' . $__templater->callMacro('rating_macros', 'stars', array(
-			'rating' => $__vars['thread']['TV']['tv_rating'],
+			'rating' => $__vars['thread']['traktTV']['tv_rating'],
 		), $__vars) . '
 									</li>
 								</ul>
@@ -219,7 +219,7 @@ return array(
 	$__finalCompiled = '';
 		$__finalCompiled .= '
 		';
-	if (!$__templater->test($__vars['thread']['TV'], 'empty', array())) {
+	if (!$__templater->test($__vars['thread']['traktTV'], 'empty', array())) {
 		$__finalCompiled .= '
 			<div class="structItem-cell structItem-cell--main" data-xf-init="touch-proxy">
 				';
@@ -439,37 +439,37 @@ return array(
 	' . '
 	';
 	if ((!$__vars['onlyInclude']) OR $__vars['onlyInclude']['title']) {
-		$__finalCompiled .= '<b>' . 'Title' . ':</b> ' . $__templater->escape($__vars['thread']['TV']['tv_title']) . '<br />';
+		$__finalCompiled .= '<b>' . 'Title' . ':</b> ' . $__templater->escape($__vars['thread']['traktTV']['tv_title']) . '<br />';
 	}
 	$__finalCompiled .= '
 	';
-	if (((!$__vars['onlyInclude']) OR $__vars['onlyInclude']['genres']) AND $__vars['thread']['TV']['tv_genres']) {
-		$__finalCompiled .= '<b>' . 'Genre' . ':</b> ' . $__templater->escape($__vars['thread']['TV']['tv_genres']) . '<br />';
+	if (((!$__vars['onlyInclude']) OR $__vars['onlyInclude']['genres']) AND $__vars['thread']['traktTV']['tv_genres']) {
+		$__finalCompiled .= '<b>' . 'Genre' . ':</b> ' . $__templater->escape($__vars['thread']['traktTV']['tv_genres']) . '<br />';
 	}
 	$__finalCompiled .= '
 	';
-	if (((!$__vars['onlyInclude']) OR $__vars['onlyInclude']['director']) AND $__vars['thread']['TV']['tv_director']) {
-		$__finalCompiled .= '<b>' . 'trakt_tv_creator' . ':</b> ' . $__templater->escape($__vars['thread']['TV']['tv_director']) . '<br />';
+	if (((!$__vars['onlyInclude']) OR $__vars['onlyInclude']['director']) AND $__vars['thread']['traktTV']['tv_director']) {
+		$__finalCompiled .= '<b>' . 'trakt_tv_creator' . ':</b> ' . $__templater->escape($__vars['thread']['traktTV']['tv_director']) . '<br />';
 	}
 	$__finalCompiled .= '
 	';
-	if (((!$__vars['onlyInclude']) OR $__vars['onlyInclude']['first_air_date']) AND $__vars['thread']['TV']['first_air_date']) {
-		$__finalCompiled .= '<b>' . 'First aired' . ':</b> ' . $__templater->func('date', array($__vars['thread']['TV']['first_air_date'], ), true) . '<br />';
+	if (((!$__vars['onlyInclude']) OR $__vars['onlyInclude']['first_air_date']) AND $__vars['thread']['traktTV']['first_air_date']) {
+		$__finalCompiled .= '<b>' . 'First aired' . ':</b> ' . $__templater->func('date', array($__vars['thread']['traktTV']['first_air_date'], ), true) . '<br />';
 	}
 	$__finalCompiled .= '
 	';
-	if (((!$__vars['onlyInclude']) OR $__vars['onlyInclude']['last_air_date']) AND $__vars['thread']['TV']['last_air_date']) {
-		$__finalCompiled .= '<b>' . 'Last air date' . ':</b> ' . $__templater->func('date', array($__vars['thread']['TV']['last_air_date'], ), true) . '<br />';
+	if (((!$__vars['onlyInclude']) OR $__vars['onlyInclude']['last_air_date']) AND $__vars['thread']['traktTV']['last_air_date']) {
+		$__finalCompiled .= '<b>' . 'Last air date' . ':</b> ' . $__templater->func('date', array($__vars['thread']['traktTV']['last_air_date'], ), true) . '<br />';
 	}
 	$__finalCompiled .= '
 	';
-	if (((!$__vars['onlyInclude']) OR $__vars['onlyInclude']['status']) AND !$__templater->test($__vars['thread']['TV']['status'], 'empty', array())) {
-		$__finalCompiled .= '<b>' . 'Show status' . ':</b> ' . $__templater->escape($__vars['thread']['TV']['status']) . '<br />';
+	if (((!$__vars['onlyInclude']) OR $__vars['onlyInclude']['status']) AND !$__templater->test($__vars['thread']['traktTV']['status'], 'empty', array())) {
+		$__finalCompiled .= '<b>' . 'Show status' . ':</b> ' . $__templater->escape($__vars['thread']['traktTV']['status']) . '<br />';
 	}
 	$__finalCompiled .= '
 	';
-	if (((!$__vars['onlyInclude']) OR $__vars['onlyInclude']['plot']) AND !$__templater->test($__vars['thread']['TV']['tv_plot'], 'empty', array())) {
-		$__finalCompiled .= '<b>' . 'Overview' . ':</b> ' . $__templater->escape($__vars['thread']['TV']['tv_plot']) . '<br />';
+	if (((!$__vars['onlyInclude']) OR $__vars['onlyInclude']['plot']) AND !$__templater->test($__vars['thread']['traktTV']['tv_plot'], 'empty', array())) {
+		$__finalCompiled .= '<b>' . 'Overview' . ':</b> ' . $__templater->escape($__vars['thread']['traktTV']['tv_plot']) . '<br />';
 	}
 	$__finalCompiled .= '
 	' . '

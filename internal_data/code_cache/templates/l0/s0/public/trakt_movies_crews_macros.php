@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 0c497624c0b0ef51e21f66e5ef28e011
+// FROM HASH: 1d8ef9e6a0d2f36a2efde3afe8314cec
 return array(
 'macros' => array('crew_list' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -36,7 +36,7 @@ return array(
 				' . $__templater->button('
 					' . 'More' . $__vars['xf']['language']['ellipsis'] . '
 				', array(
-			'href' => $__templater->func('link', array('movies/crews', $__vars['movie'], array('page' => $__vars['page'] + 1, ), ), false),
+			'href' => $__templater->func('link', array('traktMovies/crews', $__vars['movie'], array('page' => $__vars['page'] + 1, ), ), false),
 			'data-xf-click' => 'inserter',
 			'data-append' => '.js-movieCrewList' . $__vars['movie']['trakt_id'],
 			'data-replace' => '.js-movieCrewLoadMore' . $__vars['movie']['trakt_id'],

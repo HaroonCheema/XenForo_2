@@ -301,12 +301,12 @@
 		</div>
 	</div>
 </li>]]></template>
-  <template type="public" title="search_result_trakt_tv_thread" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<li class="block-row block-row--separated {{ $thread.isIgnored() ? 'is-ignored' : '' }} js-inlineModContainer" data-author="{{ $thread.User.username ?: $thread.username }}">
+  <template type="public" title="search_result_trakt_tv_thread" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[<li class="block-row block-row--separated {{ $thread.isIgnored() ? 'is-ignored' : '' }} js-inlineModContainer" data-author="{{ $thread.User.username ?: $thread.username }}">
 	<xf:css src="trakt_tv.less" />
 	
 	<div class="contentRow {{ !$thread.isVisible() ? 'is-deleted' : '' }}">
 		<span class="contentRow-figure">
-			<img class="tvPoster" src="{{ $thread.TV.getImageUrl('s') }}" />
+			<img class="tvPoster" src="{{ $thread.traktTV.getImageUrl('s') }}" />
 		</span>
 		<div class="contentRow-main">
 			<h3 class="contentRow-title">
@@ -674,7 +674,7 @@
 			  arg-tv="{$tv}" arg-casts="{$casts}" arg-page="{$page}"
 			  arg-hasMore="{$hasMore}" />
 </div>]]></template>
-  <template type="public" title="trakt_tv_casts_macros" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:macro name="cast_list" arg-tv="!" arg-casts="!" arg-page="1" arg-hasMore="{{ false }}">
+  <template type="public" title="trakt_tv_casts_macros" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[<xf:macro name="cast_list" arg-tv="!" arg-casts="!" arg-page="1" arg-hasMore="{{ false }}">
 	<ul class="listPlain listColumns listColumns--3 listColumns--spaced js-tvCastsList{$tv.tv_id}">
 		<xf:foreach loop="{$casts}" value="$cast">
 			<li>
@@ -686,7 +686,7 @@
 	<xf:if is="$hasMore">
 		<div class="block-footer js-tvCastsLoadMore{$tv.tv_id}">
 			<span class="block-footer-controls">
-				<xf:button href="{{ link('tv/casts', $tv, {'page': $page + 1}) }}"
+				<xf:button href="{{ link('tvTrakt/casts', $tv, {'page': $page + 1}) }}"
 					data-xf-click="inserter"
 					data-append=".js-tvCastsList{$tv.tv_id}"
 					data-replace=".js-tvCastsLoadMore{$tv.tv_id}">
@@ -784,7 +784,7 @@
 			  arg-tv="{$tv}" arg-crews="{$crews}" arg-page="{$page}"
 			  arg-hasMore="{$hasMore}" />
 </div>]]></template>
-  <template type="public" title="trakt_tv_crews_macros" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:macro name="crew_list" arg-tv="!" arg-crews="!" arg-page="1" arg-hasMore="{{ false }}">
+  <template type="public" title="trakt_tv_crews_macros" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[<xf:macro name="crew_list" arg-tv="!" arg-crews="!" arg-page="1" arg-hasMore="{{ false }}">
 	<ul class="listPlain listColumns listColumns--3 listColumns--spaced js-tvCrewsList{$tv.tv_id}">
 		<xf:foreach loop="{$crews}" value="$crew">
 			<li>
@@ -796,7 +796,7 @@
 	<xf:if is="$hasMore">
 		<div class="block-footer js-tvCrewsLoadMore{$tv.tv_id}">
 			<span class="block-footer-controls">
-				<xf:button href="{{ link('tv/crews', $tv, {'page': $page + 1}) }}"
+				<xf:button href="{{ link('tvTrakt/crews', $tv, {'page': $page + 1}) }}"
 					data-xf-click="inserter"
 					data-append=".js-tvCrewsList{$tv.tv_id}"
 					data-replace=".js-tvCrewsLoadMore{$tv.tv_id}">
@@ -981,11 +981,11 @@
 		</xf:submitrow>
 	</div>
 </xf:form>]]></template>
-  <template type="public" title="trakt_tv_edit_show_link" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:if is="$post.isFirstPost() && $thread.TV is not empty && !$thread.TV.tv_episode">
+  <template type="public" title="trakt_tv_edit_show_link" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[<xf:if is="$post.isFirstPost() && $thread.traktTV is not empty && !$thread.traktTV.tv_episode">
 	<xf:if is="$post.canEdit()">
-		<xf:if is="($xf.visitor.hasPermission('forum', 'trakt_edit_shows') && !$thread.TV.comment) || $thread.TV.comment">
+		<xf:if is="($xf.visitor.hasPermission('forum', 'trakt_edit_shows') && !$thread.traktTV.comment) || $thread.traktTV.comment">
 			<xf:js src="xf/message.js" min="1" />
-			<a href="{{ link('tv/edit', $thread.TV) }}"
+			<a href="{{ link('tv/edit', $thread.traktTV) }}"
 				class="actionBar-action actionBar-action--edit actionBar-action--menuItem"
 				data-xf-click="quick-edit"
 				data-editor-target="#js-post-{$post.post_id} .js-quickEditTarget"
@@ -1126,9 +1126,9 @@
 		<xf:submitrow icon="save" />
 	</div>
 </xf:form>]]></template>
-  <template type="public" title="trakt_tv_new_poster" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('trakt_tv_check_poster') }}</xf:title>
+  <template type="public" title="trakt_tv_new_poster" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[<xf:title>{{ phrase('trakt_tv_check_poster') }}</xf:title>
 
-<xf:form action="{{ link('tv/poster', $tvshow) }}" ajax="true" class="block">
+<xf:form action="{{ link('tvTrakt/poster', $tvshow) }}" ajax="true" class="block">
 	<div class="block-container">
 		<div class="block-body">
 			<xf:inforow rowtype="confirm">
@@ -1175,7 +1175,7 @@
 		<img src="{$node.TVForum.getForumPosterUrl()}" />
 	</xf:if>
 </div>]]></template>
-  <template type="public" title="trakt_tv_post_macros" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:macro name="tv"
+  <template type="public" title="trakt_tv_post_macros" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[<xf:macro name="tv"
 	arg-post="!"
 	arg-thread="!"
 	arg-forum="{{ null }}"
@@ -1226,7 +1226,7 @@
 											<xf:if is="$post.TVPost">
 												<img src="{$post.TVPost.episode_image_url}" />
 											<xf:else />
-												<img src="{$thread.TV.getImageUrl('l', 1)}" />
+												<img src="{$thread.traktTV.getImageUrl('l', 1)}" />
 											</xf:if>
 											
 											<xf:if is="$xf.options.traktTvThreads_use_rating">
@@ -1275,14 +1275,14 @@
 													<xf:if is="$post.Thread.TV.tv_cast"><b>{{ phrase('trakt_tv_guest_stars') }}: </b>{$post.Thread.TV.tv_cast}<br /></xf:if>
 												</xf:if>
 											<xf:else />
-												<xf:if is="$xf.options.traktTvThreads_showThread.title"><b>{{ phrase('title') }}:</b> {$thread.TV.tv_title}<br /></xf:if>
-												<xf:if is="$xf.options.traktTvThreads_showThread.genres && $thread.TV.tv_genres"><p><b>{{ phrase('trakt_tv_genre') }}:</b> {$thread.TV.tv_genres}</p></xf:if>
-												<xf:if is="$xf.options.traktTvThreads_showThread.director && $thread.TV.tv_director"><p><b>{{ phrase('trakt_tv_director') }}:</b> {$thread.TV.tv_director}</p></xf:if>
-												<xf:if is="$xf.options.traktTvThreads_showThread.cast && $thread.TV.tv_cast"><p><b>{{ phrase('trakt_tv_cast') }}:</b> {$thread.TV.tv_cast}</p></xf:if>
-												<xf:if is="$xf.options.traktTvThreads_showThread.release && $thread.TV.first_air_date"><p><b>{{ phrase('trakt_tv_first_aired') }}:</b> <xf:date time="{$thread.TV.first_air_date}" /></p></xf:if>
-												<xf:if is="$xf.options.traktTvThreads_showThread.last_air_date && $thread.TV.last_air_date"><p><b>{{ phrase('trakt_tv_last_air_date') }}:</b> <xf:date time="{$thread.TV.last_air_date}" /></p></xf:if>
-												<xf:if is="$xf.options.traktTvThreads_showThread.status && $thread.TV.status is not empty"><p><b>{{ phrase('trakt_tv_status') }}:</b> {$thread.TV.status}</p></xf:if>
-												<xf:if is="$xf.options.traktTvThreads_showThread.plot && $thread.TV.tv_plot"><b>{{ phrase('trakt_tv_overview') }}:</b> {$thread.TV.tv_plot}</xf:if>
+												<xf:if is="$xf.options.traktTvThreads_showThread.title"><b>{{ phrase('title') }}:</b> {$thread.traktTV.tv_title}<br /></xf:if>
+												<xf:if is="$xf.options.traktTvThreads_showThread.genres && $thread.traktTV.tv_genres"><p><b>{{ phrase('trakt_tv_genre') }}:</b> {$thread.traktTV.tv_genres}</p></xf:if>
+												<xf:if is="$xf.options.traktTvThreads_showThread.director && $thread.traktTV.tv_director"><p><b>{{ phrase('trakt_tv_director') }}:</b> {$thread.traktTV.tv_director}</p></xf:if>
+												<xf:if is="$xf.options.traktTvThreads_showThread.cast && $thread.traktTV.tv_cast"><p><b>{{ phrase('trakt_tv_cast') }}:</b> {$thread.traktTV.tv_cast}</p></xf:if>
+												<xf:if is="$xf.options.traktTvThreads_showThread.release && $thread.traktTV.first_air_date"><p><b>{{ phrase('trakt_tv_first_aired') }}:</b> <xf:date time="{$thread.traktTV.first_air_date}" /></p></xf:if>
+												<xf:if is="$xf.options.traktTvThreads_showThread.last_air_date && $thread.traktTV.last_air_date"><p><b>{{ phrase('trakt_tv_last_air_date') }}:</b> <xf:date time="{$thread.traktTV.last_air_date}" /></p></xf:if>
+												<xf:if is="$xf.options.traktTvThreads_showThread.status && $thread.traktTV.status is not empty"><p><b>{{ phrase('trakt_tv_status') }}:</b> {$thread.traktTV.status}</p></xf:if>
+												<xf:if is="$xf.options.traktTvThreads_showThread.plot && $thread.traktTV.tv_plot"><b>{{ phrase('trakt_tv_overview') }}:</b> {$thread.traktTV.tv_plot}</xf:if>
 											</xf:if>
 										</div>
 										<!--[XF:trakt_tv_tv_message_bottom]-->
@@ -1310,14 +1310,14 @@
 										</xf:if>
 
 										<xf:extension name="watch_providers">
-											<xf:set var="$watchProviders" value="{$thread.TV.getWatchProviders()}" />
+											<xf:set var="$watchProviders" value="{$thread.traktTV.getWatchProviders()}" />
 											<xf:if is="$watchProviders">
 												<div class="message message--tv tv-providers">
 													<h4 class="block-textHeader">
 														{{ phrase('trakt_tv_where_to_watch') }}
 														<div class="u-pullRight">
 															<xf:select value="{{ $xf.visitor.Option.nick97_tv_trakt_watch_region ?: $xf.options.traktTvThreads_watchProviderRegion }}">
-																<xf:foreach loop="{{ $thread.TV.getWatchProviderCountries() }}" key="$region" value="$phrase">
+																<xf:foreach loop="{{ $thread.traktTV.getWatchProviderCountries() }}" key="$region" value="$phrase">
 																	<xf:option value="{$region}" data-xf-init="disabler" data-container=".js-tvWatchData-{$region}" data-hide="on">
 																		{$phrase}
 																	</xf:option>
@@ -1358,7 +1358,7 @@
 
 								<xf:if is="!$xf.options.traktTvThreads_force_comments">
 									<article class="message-body">
-										{{ bb_code($thread.TV.comment, 'post', $post.User, {
+										{{ bb_code($thread.traktTV.comment, 'post', $post.User, {
 											'attachments': $post.attach_count ? $post.Attachments : [],
 											'viewAttachments': $thread.canViewAttachments()
 										}) }}
@@ -1370,7 +1370,7 @@
 										<span class="hScroller-scroll">
 											<xf:contentcheck>
 												<!--[XF:trakt_tv_tabs_start]-->
-												<xf:if is="$xf.options.traktTvThreads_showThread.trailer_tab && $thread.TV.tv_trailer">
+												<xf:if is="$xf.options.traktTvThreads_showThread.trailer_tab && $thread.traktTV.tv_trailer">
 													<a class="tabs-tab is-active" role="tab" tabindex="0" aria-controls="tv-trailer">
 														{{ phrase('trakt_tv_trailer') }}
 													</a>
@@ -1403,7 +1403,7 @@
 									<ul class="tabPanes">
 										<xf:contentcheck>
 											<!--[XF:trakt_tv_tabPanes_start]-->
-											<xf:if is="$xf.options.traktTvThreads_showThread.trailer_tab && $thread.TV.tv_trailer">
+											<xf:if is="$xf.options.traktTvThreads_showThread.trailer_tab && $thread.traktTV.tv_trailer">
 												<li class="block-body is-active" role="tabpanel" id="tv-trailer">
 													<div class="block-row">
 														<div class="bbMediaWrapper">
@@ -1411,7 +1411,7 @@
 																<iframe width="500"
 																	height="300"
 																	allowfullscreen
-																	src="https://www.youtube.com/embed/{$thread.TV.tv_trailer}?wmode=opaque&start=0"
+																	src="https://www.youtube.com/embed/{$thread.traktTV.tv_trailer}?wmode=opaque&start=0"
 																	style="border:none;"></iframe>
 															</div>
 														</div>
@@ -1424,7 +1424,7 @@
 												<li class="block-body" role="tabpanel" id="tv-casts">
 													<div class="block-row">
 														<xf:macro template="trakt_tv_casts_macros" name="cast_list"
-															  arg-tv="{$thread.TV}" arg-casts="{$casts}" arg-page="1"
+															  arg-tv="{$thread.traktTV}" arg-casts="{$casts}" arg-page="1"
 															  arg-hasMore="{$castsHasMore}" />
 													</div>
 												</li>
@@ -1435,7 +1435,7 @@
 												<li class="block-body" role="tabpanel" id="tv-crew">
 													<div class="block-row">
 														<xf:macro template="trakt_tv_crews_macros" name="crew_list"
-															  arg-tv="{$thread.TV}" arg-crews="{$crews}" arg-page="1"
+															  arg-tv="{$thread.traktTV}" arg-crews="{$crews}" arg-page="1"
 															  arg-hasMore="{$crewsHasMore}" />
 													</div>
 												</li>
@@ -1446,7 +1446,7 @@
 												<li class="block-body" role="tabpanel" id="tv-videos">
 													<div class="block-row">
 														<xf:macro template="trakt_tv_videos_macros" name="video_list"
-															  arg-tv="{$thread.TV}" arg-videos="{$videos}" arg-page="1"
+															  arg-tv="{$thread.traktTV}" arg-videos="{$videos}" arg-page="1"
 															  arg-hasMore="{$videosHasMore}" />
 													</div>
 												</li>
@@ -1595,17 +1595,17 @@
 </xf:macro>
 
 <xf:macro name="rating_block" arg-thread="!">
-	<xf:set var="$rating" value="{$thread.TV.tv_rating}" />
+	<xf:set var="$rating" value="{$thread.traktTV.tv_rating}" />
 	<div style="padding-top: 10px;">
 		<xf:macro template="rating_macros" name="stars_text"
 			arg-rating="{$rating}" arg-text=" " />
 	</div>
 
-	<div>{$thread.TV.tv_rating}/5 {$thread.TV.tv_votes} {{ phrase('votes') }}</div>
+	<div>{$thread.traktTV.tv_rating}/5 {$thread.traktTV.tv_votes} {{ phrase('votes') }}</div>
 
 	<xf:if is="$xf.visitor.user_id">
 		<div>
-			<xf:button class="button--link button--wrap" href="{{ link('tv/rate', $thread.TV) }}" overlay="true">
+			<xf:button class="button--link button--wrap" href="{{ link('tv/rate', $thread.traktTV) }}" overlay="true">
 				{{ phrase('trakt_tv_change_rating') }}
 			</xf:button>
 		</div>
@@ -1618,7 +1618,7 @@
 
 			<div class="message messageEpisode" itemprop="episode" itemscope itemtype="http://schema.org/TVEpisode">
 				<xf:if is="$post.Thread.TV is not empty">
-					<b><meta itemprop="partOfTVSeries" content="{$thread.TV.tv_title}">{$thread.TV.tv_title}</b><br />
+					<b><meta itemprop="partOfTVSeries" content="{$thread.traktTV.tv_title}">{$thread.traktTV.tv_title}</b><br />
 				</xf:if>
 
 				<div class="episodeImage">
@@ -1666,7 +1666,7 @@
 	</xf:extension>
 
 </xf:macro>]]></template>
-  <template type="public" title="trakt_tv_post_macros_action_bar" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:if is="(!$post.isFirstPost() && $post.TVPost is not empty) || ($post.isFirstPost() && $thread.TV.tv_season && $thread.TV.tv_episode)">
+  <template type="public" title="trakt_tv_post_macros_action_bar" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[<xf:if is="(!$post.isFirstPost() && $post.TVPost is not empty) || ($post.isFirstPost() && $thread.traktTV.tv_season && $thread.traktTV.tv_episode)">
 	<xf:if is="$post.canEdit()">
 		<xf:js src="xf/message.js" min="1" />
 		<a href="{{ link('tv/episode/update', $post) }}"
@@ -1765,11 +1765,11 @@
 		</div>
 	</div>
 </xf:form>]]></template>
-  <template type="public" title="trakt_tv_rating_stars" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<li>
-	<xf:macro template="rating_macros" name="stars" arg-rating="{$thread.TV.tv_rating}"/>
+  <template type="public" title="trakt_tv_rating_stars" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[<li>
+	<xf:macro template="rating_macros" name="stars" arg-rating="{$thread.traktTV.tv_rating}"/>
 </li>]]></template>
-  <template type="public" title="trakt_tv_search_result_thread_poster" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:css src="trakt_tv.less" />
-<img class="tvPoster" src="{$thread.TV.getImageUrl('s')}" />]]></template>
+  <template type="public" title="trakt_tv_search_result_thread_poster" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[<xf:css src="trakt_tv.less" />
+<img class="tvPoster" src="{$thread.traktTV.getImageUrl('s')}" />]]></template>
   <template type="public" title="trakt_tv_slider.less" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[.carousel-tvPosterSlider
 {
 	.carousel-item-simple
@@ -1815,9 +1815,9 @@
 
 	}
 }]]></template>
-  <template type="public" title="trakt_tv_thread_list_poster" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:if is="$thread.TV is not empty">
+  <template type="public" title="trakt_tv_thread_list_poster" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[<xf:if is="$thread.traktTV is not empty">
 	<div class="structItem-cell structItem-cell--tv">
-		<img class="tvPoster" src="{$thread.TV.getImageUrl('s')}" />
+		<img class="tvPoster" src="{$thread.traktTV.getImageUrl('s')}" />
 	</div>
 <xf:else />
 	<xf:css src="trakt_tv.less" />
@@ -1833,9 +1833,9 @@
 		</div>
 	</div>
 </xf:if>]]></template>
-  <template type="public" title="trakt_tv_thread_list_tv_macros" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:macro name="item" extends="thread_list_macros::item">
+  <template type="public" title="trakt_tv_thread_list_tv_macros" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[<xf:macro name="item" extends="thread_list_macros::item">
 	<xf:extension name="icon_cell">
-		<xf:if is="$thread.TV is not empty">
+		<xf:if is="$thread.traktTV is not empty">
 			<xf:include template="trakt_tv_thread_list_poster" />
 		<xf:else />
 			<xf:extensionparent />
@@ -1843,7 +1843,7 @@
 	</xf:extension>
 	
 	<xf:extension name="main_cell">
-		<xf:if is="$thread.TV is not empty">
+		<xf:if is="$thread.traktTV is not empty">
 			<div class="structItem-cell structItem-cell--main" data-xf-init="touch-proxy">
 				<xf:if contentcheck="true">
 					<ul class="structItem-statuses">
@@ -1901,7 +1901,7 @@
 								<ul class="structItem-extraInfo">
 									<li>
 										<xf:macro template="rating_macros" name="stars"
-												  arg-rating="{$thread.TV.tv_rating}" />
+												  arg-rating="{$thread.traktTV.tv_rating}" />
 									</li>
 								</ul>
 							</xf:if>
@@ -2032,16 +2032,16 @@
 
 <xf:macro name="tv_info" arg-thread="!" arg-onlyInclude="{{ null }}">
 	<!--[XF:trakt_tv_thread_list_info_top]-->
-	<xf:if is="!$onlyInclude || $onlyInclude.title"><b>{{ phrase('title') }}:</b> {$thread.TV.tv_title}<br /></xf:if>
-	<xf:if is="(!$onlyInclude || $onlyInclude.genres) && $thread.TV.tv_genres"><b>{{ phrase('trakt_tv_genre') }}:</b> {$thread.TV.tv_genres}<br /></xf:if>
-	<xf:if is="(!$onlyInclude || $onlyInclude.director) && $thread.TV.tv_director"><b>{{ phrase('trakt_tv_creator') }}:</b> {$thread.TV.tv_director}<br /></xf:if>
-	<xf:if is="(!$onlyInclude || $onlyInclude.first_air_date) && $thread.TV.first_air_date"><b>{{ phrase('trakt_tv_first_aired') }}:</b> {{ date($thread.TV.first_air_date) }}<br /></xf:if>
-	<xf:if is="(!$onlyInclude || $onlyInclude.last_air_date) && $thread.TV.last_air_date"><b>{{ phrase('trakt_tv_last_air_date') }}:</b> {{ date($thread.TV.last_air_date) }}<br /></xf:if>
-	<xf:if is="(!$onlyInclude || $onlyInclude.status) && $thread.TV.status is not empty"><b>{{ phrase('trakt_tv_status') }}:</b> {$thread.TV.status}<br /></xf:if>
-	<xf:if is="(!$onlyInclude || $onlyInclude.plot) && $thread.TV.tv_plot is not empty"><b>{{ phrase('trakt_tv_overview') }}:</b> {$thread.TV.tv_plot}<br /></xf:if>
+	<xf:if is="!$onlyInclude || $onlyInclude.title"><b>{{ phrase('title') }}:</b> {$thread.traktTV.tv_title}<br /></xf:if>
+	<xf:if is="(!$onlyInclude || $onlyInclude.genres) && $thread.traktTV.tv_genres"><b>{{ phrase('trakt_tv_genre') }}:</b> {$thread.traktTV.tv_genres}<br /></xf:if>
+	<xf:if is="(!$onlyInclude || $onlyInclude.director) && $thread.traktTV.tv_director"><b>{{ phrase('trakt_tv_creator') }}:</b> {$thread.traktTV.tv_director}<br /></xf:if>
+	<xf:if is="(!$onlyInclude || $onlyInclude.first_air_date) && $thread.traktTV.first_air_date"><b>{{ phrase('trakt_tv_first_aired') }}:</b> {{ date($thread.traktTV.first_air_date) }}<br /></xf:if>
+	<xf:if is="(!$onlyInclude || $onlyInclude.last_air_date) && $thread.traktTV.last_air_date"><b>{{ phrase('trakt_tv_last_air_date') }}:</b> {{ date($thread.traktTV.last_air_date) }}<br /></xf:if>
+	<xf:if is="(!$onlyInclude || $onlyInclude.status) && $thread.traktTV.status is not empty"><b>{{ phrase('trakt_tv_status') }}:</b> {$thread.traktTV.status}<br /></xf:if>
+	<xf:if is="(!$onlyInclude || $onlyInclude.plot) && $thread.traktTV.tv_plot is not empty"><b>{{ phrase('trakt_tv_overview') }}:</b> {$thread.traktTV.tv_plot}<br /></xf:if>
 	<!--[XF:trakt_tv_thread_list_info_bottom]-->
 </xf:macro>]]></template>
-  <template type="public" title="trakt_tv_thread_type_fields_tv" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:if is="$context == 'create' AND $subContext == 'quick'">
+  <template type="public" title="trakt_tv_thread_type_fields_tv" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[<xf:if is="$context == 'create' AND $subContext == 'quick'">
 	<xf:set var="$rowType" value="fullWidth noGutter mergeNext" />
 <xf:elseif is="$context == 'edit' AND $subContext == 'first_post_quick'" />
 	<xf:set var="$rowType" value="fullWidth mergeNext" />
@@ -2050,19 +2050,19 @@
 </xf:if>
 
 <xf:if is="$thread.Forum.TVForum is not empty && $thread.Forum.TVForum.tv_parent_id">
-	<xf:textboxrow name="trakt_tv_tv_id" value="{$thread.TV.tv_episode}"
+	<xf:textboxrow name="trakt_tv_tv_id" value="{$thread.traktTV.tv_episode}"
 				   label="{{ phrase('trakt_tv_episode_number') }}"
 				   explain="{{ phrase('trakt_tv_episode_enter_episode_number') }}"
 				   rowtype="{$rowType}"
 				   disabled="{{ $context == 'edit' }}" />
 <xf:else />
-	<xf:textboxrow name="trakt_tv_tv_id" value="{$thread.TV.tv_id}"
+	<xf:textboxrow name="trakt_tv_tv_id" value="{$thread.traktTV.tv_id}"
 				   label="{{ phrase('trakt_tv_post_show_title') }}"
 				   explain="{{ phrase('trakt_tv_show_lookup') }}"
 				   rowtype="{$rowType}"
 				   disabled="{{ $context == 'edit' }}" />
 </xf:if>]]></template>
-  <template type="public" title="trakt_tv_thread_view_type_tv" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:extends template="thread_view" />
+  <template type="public" title="trakt_tv_thread_view_type_tv" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[<xf:extends template="thread_view" />
 
 <xf:extension name="content_top">
 	<xf:css src="trakt_tv.less" />
@@ -2070,20 +2070,20 @@
 
 <xf:extension name="thread_action_buttons">
 	
-	<xf:if is="{{ $thread.TV && ($xf.visitor.user_id == $thread.user_id || $xf.visitor.is_admin || $xf.visitor.is_moderator) && ($thread.discussion_type == 'trakt_tv') }}">
+	<xf:if is="{{ $thread.traktTV && ($xf.visitor.user_id == $thread.user_id || $xf.visitor.is_admin || $xf.visitor.is_moderator) && ($thread.discussion_type == 'trakt_tv') }}">
 
-		<xf:button href="{{ link('tvTrakt/sync', $thread.TV) }}" class="button--link" overlay="true">
+		<xf:button href="{{ link('tvTrakt/sync', $thread.traktTV) }}" class="button--link" overlay="true">
 			{{ phrase('trakt_movies_sync') }}
 		</xf:button>
 
 	</xf:if>
 	
-	<xf:if is="{{ property('trakt_tv_posterUpdateButtonPosition') == 'default' && $thread.TV && ($xf.visitor.is_admin || $xf.visitor.is_moderator) }}">
-		<xf:button href="{{ link('tv/poster', $thread.TV) }}" class="button--link" overlay="true">
+	<xf:if is="{{ property('trakt_tv_posterUpdateButtonPosition') == 'default' && $thread.traktTV && ($xf.visitor.is_admin || $xf.visitor.is_moderator) }}">
+		<xf:button href="{{ link('tvTrakt/poster', $thread.traktTV) }}" class="button--link" overlay="true">
 			{{ phrase('trakt_tv_check_poster') }}
 		</xf:button>
 	</xf:if>
-	<xf:if is="$xf.options.traktTvThreads_update && !$thread.TV && $canAddInfo">
+	<xf:if is="$xf.options.traktTvThreads_update && !$thread.traktTV && $canAddInfo">
 		<xf:button href="{{ link('tv/add-info', $thread) }}" class="button--link" overlay="true">
 			{{ phrase('trakt_tv_add_info') }}
 		</xf:button>
@@ -2092,7 +2092,7 @@
 </xf:extension>
 
 <xf:extension name="above_messages_below_pinned">
-	<xf:if is="$thread.TV is not empty && $page <= 1">
+	<xf:if is="$thread.traktTV is not empty && $page <= 1">
 		<span class="tvhint">{{ phrase('trakt_tv_information_thread')}}</span>
 	</xf:if>
 </xf:extension>]]></template>

@@ -30,7 +30,7 @@ class Rating extends Entity
 
 	protected function ratingAdded()
 	{
-		$show = $this->TV;
+		$show = $this->traktTV;
 		if ($show) {
 			if ($this->isInsert()) {
 				$show->tv_votes += 1;
@@ -43,7 +43,7 @@ class Rating extends Entity
 
 	protected function ratingRemoved()
 	{
-		$show = $this->TV;
+		$show = $this->traktTV;
 		if ($show) {
 			$show->tv_votes -= 1;
 

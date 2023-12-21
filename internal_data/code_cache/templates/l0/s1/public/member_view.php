@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 02b47d35ab214ef6335b9a222937df94
+// FROM HASH: 6476573ad5d5d1995a8b6f5ff5a289f1
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -44,17 +44,6 @@ return array(
 	$__templater->includeCss('member.less');
 	$__finalCompiled .= '
 
-';
-	if ($__vars['stats']) {
-		$__finalCompiled .= '
-	' . $__templater->callMacro('nick97_watch_list_movies_macro', 'stats', array(
-			'stats' => $__vars['stats'],
-		), $__vars) . '
-';
-	}
-	$__finalCompiled .= '
-
-
 <div class="block">
 	<div class="block-container">
 		<div class="block-body">
@@ -69,110 +58,110 @@ return array(
 	$__compilerTemp2 = '';
 	$__compilerTemp3 = '';
 	$__compilerTemp3 .= '
-										' . '
-										';
+								' . '
+								';
 	$__compilerTemp4 = '';
 	$__compilerTemp4 .= '
-													';
+											';
 	if ($__templater->method($__vars['user'], 'canBeReported', array())) {
 		$__compilerTemp4 .= '
-														' . $__templater->button('
-															' . 'Report' . '
-														', array(
+												' . $__templater->button('
+													' . 'Report' . '
+												', array(
 			'href' => $__templater->func('link', array('members/report', $__vars['user'], ), false),
 			'class' => 'button--link',
 			'overlay' => 'true',
 		), '', array(
 		)) . '
-													';
+											';
 	}
 	$__compilerTemp4 .= '
-													';
+											';
 	if (($__vars['user']['user_id'] == $__vars['xf']['visitor']['user_id']) AND $__templater->method($__vars['xf']['visitor'], 'canUploadProfileBanner', array())) {
 		$__compilerTemp4 .= '
-														' . $__templater->button('
-															' . 'Edit profile banner' . '
-														', array(
+												' . $__templater->button('
+													' . 'Edit profile banner' . '
+												', array(
 			'href' => $__templater->func('link', array('account/banner', ), false),
 			'class' => 'button--link',
 			'overlay' => 'true',
 		), '', array(
 		)) . '
-													';
+											';
 	}
 	$__compilerTemp4 .= '
-													';
+											';
 	$__compilerTemp5 = '';
 	$__compilerTemp5 .= '
-																		' . $__templater->callMacro('member_macros', 'moderator_menu_actions', array(
+																' . $__templater->callMacro('member_macros', 'moderator_menu_actions', array(
 		'user' => $__vars['user'],
 		'context' => 'profile',
 	), $__vars) . '
-																	';
+															';
 	if (strlen(trim($__compilerTemp5)) > 0) {
 		$__compilerTemp4 .= '
-														<div class="buttonGroup-buttonWrapper">
-															' . $__templater->button('Moderator tools', array(
+												<div class="buttonGroup-buttonWrapper">
+													' . $__templater->button('Moderator tools', array(
 			'class' => 'button--link menuTrigger',
 			'data-xf-click' => 'menu',
 			'aria-expanded' => 'false',
 			'aria-haspopup' => 'true',
 		), '', array(
 		)) . '
-															<div class="menu" data-menu="menu" aria-hidden="true">
-																<div class="menu-content">
-																	<h3 class="menu-header">' . 'Moderator tools' . '</h3>
-																	' . $__compilerTemp5 . '
-																</div>
-															</div>
+													<div class="menu" data-menu="menu" aria-hidden="true">
+														<div class="menu-content">
+															<h3 class="menu-header">' . 'Moderator tools' . '</h3>
+															' . $__compilerTemp5 . '
 														</div>
-													';
+													</div>
+												</div>
+											';
 	}
 	$__compilerTemp4 .= '
-												';
+										';
 	if (strlen(trim($__compilerTemp4)) > 0) {
 		$__compilerTemp3 .= '
-											<div class="buttonGroup">
-												' . $__compilerTemp4 . '
-											</div>
-										';
+									<div class="buttonGroup">
+										' . $__compilerTemp4 . '
+									</div>
+								';
 	}
 	$__compilerTemp3 .= '
-										' . '
-									';
+								' . '
+								';
 	if (strlen(trim($__compilerTemp3)) > 0) {
 		$__compilerTemp2 .= '
-								<div class="memberHeader-actionTop">
-									' . $__compilerTemp3 . '
-								</div>
-							';
+							<div class="memberHeader-actionTop">
+								' . $__compilerTemp3 . '
+							</div>
+						';
 	}
 	$__compilerTemp6 = '';
 	if ($__templater->method($__vars['user'], 'hasViewableUsernameHistory', array())) {
 		$__compilerTemp6 .= '
-									<a class="memberHeader-nameChangeIndicator"
-									   data-xf-click="menu"
-									   data-xf-init="tooltip"
-									   title="' . 'Username changed' . '"
-									   role="button"
-									   tabindex="0"
-									   aria-expanded="false"
-									   aria-haspopup="true"
-									   aria-label="' . 'Username changed' . '">' . $__templater->fontAwesome('fa-history', array(
+								<a class="memberHeader-nameChangeIndicator"
+									data-xf-click="menu"
+									data-xf-init="tooltip"
+									title="' . 'Username changed' . '"
+									role="button"
+									tabindex="0"
+									aria-expanded="false"
+									aria-haspopup="true"
+									aria-label="' . 'Username changed' . '">' . $__templater->fontAwesome('fa-history', array(
 		)) . '</a>
-									<div class="menu" data-menu="menu" aria-hidden="true"
-										 data-href="' . $__templater->func('link', array('members/username-history', $__vars['user'], array('menu' => 1, ), ), true) . '"
-										 data-load-target=".js-usernameHistoryBody">
-										<div class="menu-content">
-											<h3 class="menu-header">' . 'Previous usernames' . '</h3>
-											<div class="js-usernameHistoryBody">
-												<div class="menu-row">
-													' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '
-												</div>
+								<div class="menu" data-menu="menu" aria-hidden="true"
+									data-href="' . $__templater->func('link', array('members/username-history', $__vars['user'], array('menu' => 1, ), ), true) . '"
+									data-load-target=".js-usernameHistoryBody">
+									<div class="menu-content">
+										<h3 class="menu-header">' . 'Previous usernames' . '</h3>
+										<div class="js-usernameHistoryBody">
+											<div class="menu-row">
+												' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '
 											</div>
 										</div>
 									</div>
-								';
+								</div>
+							';
 	}
 	$__compilerTemp7 = '';
 	if ($__vars['xf']['options']['klUIProfileShowcase']) {
@@ -189,25 +178,25 @@ return array(
 	)));
 	if (strlen(trim($__compilerTemp9)) > 0) {
 		$__compilerTemp8 .= '
-								<div class="memberHeader-banners">
-									' . $__compilerTemp9 . '
-								</div>
-							';
+							<div class="memberHeader-banners">
+								' . $__compilerTemp9 . '
+							</div>
+						';
 	}
 	$__compilerTemp10 = '';
 	$__compilerTemp11 = '';
 	$__compilerTemp11 .= $__templater->func('user_activity', array($__vars['user']));
 	if (strlen(trim($__compilerTemp11)) > 0) {
 		$__compilerTemp10 .= '
-									<div class="memberHeader-blurb">
-										<dl class="pairs pairs--inline">
-											<dt>' . 'Last seen' . '</dt>
-											<dd dir="auto">
-												' . $__compilerTemp11 . '
-											</dd>
-										</dl>
-									</div>
-								';
+								<div class="memberHeader-blurb">
+									<dl class="pairs pairs--inline">
+										<dt>' . 'Last seen' . '</dt>
+										<dd dir="auto">
+											' . $__compilerTemp11 . '
+										</dd>
+									</dl>
+								</div>
+							';
 	}
 	$__finalCompiled .= $__templater->func('profile_banner', array($__vars['user'], 'l', false, array(
 		'class' => 'memberHeader-main',
@@ -223,38 +212,38 @@ return array(
 							</span>
 						</span>
 						<div class="memberHeader-content memberHeader-content--info">
-							' . $__compilerTemp2 . '
+						' . $__compilerTemp2 . '
 
-							<h1 class="memberHeader-name">
-								<span class="memberHeader-nameWrapper" data-stroke="' . $__templater->escape($__vars['user']['username']) . '">
-									' . $__templater->func('username_link', array($__vars['user'], true, array(
+						<h1 class="memberHeader-name">
+							<span class="memberHeader-nameWrapper" data-stroke="' . $__templater->escape($__vars['user']['username']) . '">
+								' . $__templater->func('username_link', array($__vars['user'], true, array(
 		'href' => '',
 	))) . '
 ' . $__templater->includeTemplate('thuserimprovements_username_change_history', $__vars) . '
-								</span>
-								' . $__compilerTemp6 . '
-							' . $__compilerTemp7 . '
+							</span>
+							' . $__compilerTemp6 . '
+						' . $__compilerTemp7 . '
 </h1>
 
-							' . $__compilerTemp8 . '
+						' . $__compilerTemp8 . '
 
-							<div class="memberHeader-blurbContainer">
-								' . $__templater->func('user_blurb', array($__vars['user'], array(
+						<div class="memberHeader-blurbContainer">
+							' . $__templater->func('user_blurb', array($__vars['user'], array(
 		'tag' => 'div',
 		'class' => 'memberHeader-blurb',
 	))) . '
 
-								<div class="memberHeader-blurb">
-									<dl class="pairs pairs--inline">
-										<dt>' . 'Joined' . '</dt>
-										<dd>' . $__templater->func('date_dynamic', array($__vars['user']['register_date'], array(
+							<div class="memberHeader-blurb">
+								<dl class="pairs pairs--inline">
+									<dt>' . 'Joined' . '</dt>
+									<dd>' . $__templater->func('date_dynamic', array($__vars['user']['register_date'], array(
 	))) . '</dd>
-									</dl>
-								</div>
-
-								' . $__compilerTemp10 . '
+								</dl>
 							</div>
+
+							' . $__compilerTemp10 . '
 						</div>
+					</div>
 					</div>
 				')) . '
 
@@ -301,9 +290,9 @@ return array(
 	if ($__templater->method($__vars['user'], 'canViewPostsOnProfile', array())) {
 		$__finalCompiled .= '
 					<a href="' . $__templater->func('link', array('members', $__vars['user'], ), true) . '"
-					   class="tabs-tab is-active"
-					   role="tab"
-					   aria-controls="profile-posts">' . 'Profile posts' . '</a>
+						class="tabs-tab is-active"
+						role="tab"
+						aria-controls="profile-posts">' . 'Profile posts' . '</a>
 				';
 	}
 	$__finalCompiled .= '
@@ -312,19 +301,19 @@ return array(
 	if ($__templater->method($__vars['user'], 'canViewLatestActivity', array())) {
 		$__finalCompiled .= '
 					<a href="' . $__templater->func('link', array('members/latest-activity', $__vars['user'], ), true) . '"
-					   rel="nofollow"
-					   class="tabs-tab"
-					   id="latest-activity"
-					   role="tab">' . 'Latest activity' . '</a>
+						rel="nofollow"
+						class="tabs-tab"
+						id="latest-activity"
+						role="tab">' . 'Latest activity' . '</a>
 				';
 	}
 	$__finalCompiled .= '
 
 				<a href="' . $__templater->func('link', array('members/recent-content', $__vars['user'], ), true) . '"
-				   rel="nofollow"
-				   class="tabs-tab"
-				   id="recent-content"
-				   role="tab">' . 'Postings' . '</a>
+					rel="nofollow"
+					class="tabs-tab"
+					id="recent-content"
+					role="tab">' . 'Postings' . '</a>
 
 				' . '
 
@@ -340,17 +329,27 @@ return array(
 	$__finalCompiled .= '
 
 				<a href="' . $__templater->func('link', array('members/about', $__vars['user'], ), true) . '"
-				   class="tabs-tab"
-				   id="about"
-				   role="tab">' . 'About' . '</a>
+					class="tabs-tab"
+					id="about"
+					role="tab">' . 'About' . '</a>
+
+<a href="' . $__templater->func('link', array('members/stats', $__vars['user'], ), true) . '"
+					class="tabs-tab"
+					id="stats"
+					role="tab">' . 'Stats' . '</a>
+				
+				<a href="' . $__templater->func('link', array('members/watchlist', $__vars['user'], ), true) . '"
+					class="tabs-tab"
+					id="watchlist"
+					role="tab">' . 'Watch List' . '</a>
 
 				';
 	if ($__templater->method($__vars['xf']['visitor'], 'canViewWarnings', array()) AND $__vars['user']['warning_count']) {
 		$__finalCompiled .= '
 					<a href="' . $__templater->func('link', array('members/warnings', $__vars['user'], ), true) . '"
-					   class="tabs-tab"
-					   id="warnings"
-					   role="tab">' . 'Warnings' . '</a>
+						class="tabs-tab"
+						id="warnings"
+						role="tab">' . 'Warnings' . '</a>
 				';
 	}
 	$__finalCompiled .= '
@@ -392,9 +391,9 @@ return array(
 		), $__vars) . '
 
 			<div class="block block--messages"
-				 data-xf-init="lightbox inline-mod"
-				 data-type="profile_post"
-				 data-href="' . $__templater->func('link', array('inline-mod', ), true) . '">
+				data-xf-init="lightbox inline-mod"
+				data-type="profile_post"
+				data-href="' . $__templater->func('link', array('inline-mod', ), true) . '">
 
 				<div class="block-container">
 					<div class="block-body js-replyNewMessageContainer">
@@ -429,7 +428,7 @@ return array(
 				}
 			}
 			$__finalCompiled .= '
-							';
+						';
 		} else {
 			$__finalCompiled .= '
 							<div class="block-row js-replyNoMessages">' . 'There are no messages on ' . $__templater->escape($__vars['user']['username']) . '\'s profile yet.' . '</div>
@@ -493,6 +492,14 @@ return array(
 	$__finalCompiled .= '
 
 	<li data-href="' . $__templater->func('link', array('members/about', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="about">
+		<div class="blockMessage">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
+	</li> 
+
+<li data-href="' . $__templater->func('link', array('members/stats', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="stats">
+		<div class="blockMessage">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
+	</li>
+	
+	<li data-href="' . $__templater->func('link', array('members/watchlist', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="watchlist">
 		<div class="blockMessage">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
 	</li>
 

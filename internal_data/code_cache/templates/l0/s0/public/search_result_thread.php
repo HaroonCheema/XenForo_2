@@ -22,14 +22,14 @@ return array(
 		} else {
 			$__finalCompiled .= '
 			';
-			if (!$__templater->test($__vars['thread']['Movie'], 'empty', array())) {
+			if (!$__templater->test($__vars['thread']['traktMovie'], 'empty', array())) {
 				$__finalCompiled .= '
 				' . $__templater->includeTemplate('trakt_movie_search_result_thread_poster', $__vars) . '
 			';
 			} else {
 				$__finalCompiled .= '
 			';
-				if (!$__templater->test($__vars['thread']['TV'], 'empty', array())) {
+				if (!$__templater->test($__vars['thread']['traktTV'], 'empty', array())) {
 					$__finalCompiled .= '
 				' . $__templater->includeTemplate('trakt_tv_search_result_thread_poster', $__vars) . '
 			';

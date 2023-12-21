@@ -8,12 +8,12 @@ class Post extends XFCP_Post
 {
 	public function actionEdit(ParameterBag $params)
 	{
-		$post = $this->assertViewablePost($params->post_id, ['Thread', 'Thread.Movie']);
+		$post = $this->assertViewablePost($params->post_id, ['Thread', 'Thread.traktMovie']);
 
 		/** @var \nick97\TraktMovies\XF\Entity\Thread $thread */
 		$thread = $post->Thread;
 
-		if ($post->isFirstPost() && $thread->discussion_type === 'trakt_movies_movie' && $thread->Movie) {
+		if ($post->isFirstPost() && $thread->discussion_type === 'trakt_movies_movie' && $thread->traktMovie) {
 			return $this->rerouteController('nick97\TraktMovies:Movies', 'edit', ['thread_id' => $thread->thread_id]);
 		}
 

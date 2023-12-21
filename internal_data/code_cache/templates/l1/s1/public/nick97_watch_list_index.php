@@ -1,15 +1,13 @@
 <?php
-// FROM HASH: 39eb5dbd44888c825640f6db66c4d106
+// FROM HASH: 8846ed4cc80e0360436721c10143f718
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
 	$__finalCompiled = '';
-	$__finalCompiled .= '
-
-<br>
+	$__finalCompiled .= '<br>
 
 ';
-	if ($__templater->method($__vars['xf']['visitor'], 'hasPermission', array('nick97_watch_list', 'view_own_stats', )) OR $__templater->method($__vars['xf']['visitor'], 'hasPermission', array('nick97_watch_list', 'view_anyone_stats', ))) {
+	if ($__templater->method($__vars['xf']['visitor'], 'hasPermission', array('nick97_watch_list', 'view_own_stats', )) AND $__vars['stats']) {
 		$__finalCompiled .= '
 
 ' . $__templater->callMacro('nick97_watch_list_movies_macro', 'stats', array(
@@ -26,15 +24,7 @@ return array(
 
 ' . $__templater->callMacro('nick97_watch_list_movies_macro', 'tvShow', array(
 		'tvShows' => $__vars['tvShows'],
-	), $__vars) . '
-
-
-<br>
-
-
-
-
-';
+	), $__vars);
 	return $__finalCompiled;
 }
 );

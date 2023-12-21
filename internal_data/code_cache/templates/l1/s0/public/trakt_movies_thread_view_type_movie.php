@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 17b645c9759526912a4d810543db8234
+// FROM HASH: 2fce0b5e68f89a480a52a16bad60bb29
 return array(
 'extends' => function($__templater, array $__vars) { return 'thread_view'; },
 'extensions' => array('content_top' => function($__templater, array $__vars, $__extensions = null)
@@ -18,13 +18,13 @@ return array(
 		$__finalCompiled .= '
 
 	';
-	if (($__vars['thread']['Movie'] AND (((($__vars['xf']['visitor']['user_id'] == $__vars['thread']['user_id']) OR $__vars['xf']['visitor']['is_admin']) OR $__vars['xf']['visitor']['is_moderator']) AND (($__vars['thread']['discussion_type'] == 'trakt_movies_movie') OR ($__vars['thread']['discussion_type'] == 'trakt_tv'))))) {
+	if (($__vars['thread']['traktMovie'] AND (((($__vars['xf']['visitor']['user_id'] == $__vars['thread']['user_id']) OR $__vars['xf']['visitor']['is_admin']) OR $__vars['xf']['visitor']['is_moderator']) AND (($__vars['thread']['discussion_type'] == 'trakt_movies_movie') OR ($__vars['thread']['discussion_type'] == 'trakt_tv'))))) {
 		$__finalCompiled .= '
 
 		' . $__templater->button('
 			' . 'Sync' . '
 		', array(
-			'href' => $__templater->func('link', array('traktMovies/sync', $__vars['thread']['Movie'], ), false),
+			'href' => $__templater->func('link', array('traktMovies/sync', $__vars['thread']['traktMovie'], ), false),
 			'class' => 'button--link',
 			'overlay' => 'true',
 		), '', array(
@@ -35,12 +35,12 @@ return array(
 	$__finalCompiled .= '
 
 	';
-	if ((($__templater->func('property', array('trakt_movies_posterUpdateButtonPosition', ), false) == 'default') AND ($__vars['thread']['Movie'] AND ($__vars['xf']['visitor']['is_admin'] OR $__vars['xf']['visitor']['is_moderator'])))) {
+	if ((($__templater->func('property', array('trakt_movies_posterUpdateButtonPosition', ), false) == 'default') AND ($__vars['thread']['traktMovie'] AND ($__vars['xf']['visitor']['is_admin'] OR $__vars['xf']['visitor']['is_moderator'])))) {
 		$__finalCompiled .= '
 		' . $__templater->button('
 			' . 'Check for new poster' . '
 		', array(
-			'href' => $__templater->func('link', array('traktMovies/poster', $__vars['thread']['Movie'], ), false),
+			'href' => $__templater->func('link', array('traktMovies/poster', $__vars['thread']['traktMovie'], ), false),
 			'class' => 'button--link',
 			'overlay' => 'true',
 		), '', array(
@@ -58,7 +58,7 @@ return array(
 	$__finalCompiled = '';
 		$__finalCompiled .= '
 	';
-	if (!$__templater->test($__vars['thread']['Movie'], 'empty', array()) AND ($__vars['page'] <= 1)) {
+	if (!$__templater->test($__vars['thread']['traktMovie'], 'empty', array()) AND ($__vars['page'] <= 1)) {
 		$__finalCompiled .= '
 		<span class="moviehint">' . 'Movie information in first post provided by <a href="https://trakt.tv/movies" target="_blank" >Trakt Movie Database</a>' . '</span>
 	';

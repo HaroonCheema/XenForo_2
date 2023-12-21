@@ -9,7 +9,7 @@
         "hash": "8fb6758587fa2aadc6c7fed48c117730"
     },
     "public/traktMovies5.json": {
-        "hash": "f61cc207978fc75fe383631de5479a33"
+        "hash": "98867f7a2c4ee4097eea026647874552"
     },
     "public/trakt_movies_account_preferences_region.json": {
         "hash": "c2aff7d738a33e283acfacaeeec6d73e"
@@ -18,12 +18,12 @@
         "hash": "7cf9310fef006d77932bec99c1c7e520"
     },
     "public/trakt_movies_search_result_thread.json": {
-        "hash": "6025a097e754eb586e13c4b3db752150"
+        "hash": "a989dcca9fdce40a10f11f5c8aa97795"
     },
     "public/trakt_movies_thcovers_cover_macros.json": {
         "hash": "e328e3f912377202bbfbf8edb9409180"
     },
     "public/trakt_movies_thread_view_thread_tools_menu.json": {
-        "hash": "41d333d910b1323badd62f79780291a6"
+        "hash": "0a34618e929f4dab10634fed184bf3d4"
     }
 }

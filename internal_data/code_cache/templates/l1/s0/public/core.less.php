@@ -67,6 +67,7 @@ svg
 ' . $__templater->includeTemplate('core_fixedmessage.less', $__vars) . '
 ' . $__templater->includeTemplate('core_button.less', $__vars) . '
 ' . $__templater->includeTemplate('thuserimprovements_core_button.less', $__vars) . '
+' . $__templater->includeTemplate('nick97_trakt_button.less', $__vars) . '
 ' . $__templater->includeTemplate('core_meter_bar.less', $__vars) . '
 
 // ################################# INPUTS & FORMS #####################

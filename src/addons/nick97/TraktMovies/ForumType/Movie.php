@@ -183,7 +183,7 @@ class Movie extends \XF\ForumType\AbstractHandler
 			$i = 1;
 			foreach ($threads as $thread)
 			{
-				$movie = $thread->Movie;
+				$movie = $thread->traktMovie;
 				if (!$movie)
 				{
 					continue;

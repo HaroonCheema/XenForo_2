@@ -129,7 +129,7 @@ return array(
 	if ($__vars['thread'] AND (!$__templater->test($__vars['thread']['TV'], 'empty', array()) AND (!$__vars['thread']['TV']['tv_episode']))) {
 		$__finalCompiled .= '
 	';
-		if ($__vars['thread'] AND (!$__templater->test($__vars['thread']['TV'], 'empty', array()) AND (!$__vars['thread']['TV']['tv_episode']))) {
+		if ($__vars['thread'] AND (!$__templater->test($__vars['thread']['traktTV'], 'empty', array()) AND (!$__vars['thread']['traktTV']['tv_episode']))) {
 			$__finalCompiled .= '
 	' . $__templater->formEditor(array(
 				'name' => 'message',
@@ -163,7 +163,7 @@ return array(
 	} else {
 		$__finalCompiled .= '
 	';
-		if ($__vars['thread'] AND (!$__templater->test($__vars['thread']['TV'], 'empty', array()) AND (!$__vars['thread']['TV']['tv_episode']))) {
+		if ($__vars['thread'] AND (!$__templater->test($__vars['thread']['traktTV'], 'empty', array()) AND (!$__vars['thread']['traktTV']['tv_episode']))) {
 			$__finalCompiled .= '
 	' . $__templater->formEditor(array(
 				'name' => 'message',

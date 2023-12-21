@@ -44,19 +44,22 @@ class Setup extends AbstractSetup
 			}
 		);
 
-		$this->alterTable('xf_thread', function (\XF\Db\Schema\Alter $table) {
+		$this->schemaManager()->createTable('nick97_watch_list_all', function (Create $table) {
 
-			$table->addColumn('watch_list', 'int')->setDefault(0);
+			$table->addColumn('id', 'int')->autoIncrement();
+
+			$table->addColumn('user_id', 'int');
+			$table->addColumn('thread_id', 'int');
+			$table->addColumn('created_at', 'int')->setDefault(0);
+
+			$table->addPrimaryKey('id');
 		});
+
 	}
 
 	public function uninstallStep1()
 	{
 		$this->db()->delete('xf_connected_account_provider', "provider_id = 'nick_trakt'");
-
-		$this->schemaManager()->alterTable('xf_thread', function (\XF\Db\Schema\Alter $table) {
-			$table->dropColumns(['watch_list']);
-		});
 
 		$this->schemaManager()->alterTable(
 			'xf_user_privacy',
@@ -67,5 +70,9 @@ class Setup extends AbstractSetup
 				]);
 			}
 		);
+
+		$sm = $this->schemaManager();
+
+		$sm->dropTable('nick97_watch_list_all');
 	}
 }

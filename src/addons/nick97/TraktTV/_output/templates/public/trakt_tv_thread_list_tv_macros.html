@@ -1,6 +1,6 @@
 <xf:macro name="item" extends="thread_list_macros::item">
 	<xf:extension name="icon_cell">
-		<xf:if is="$thread.TV is not empty">
+		<xf:if is="$thread.traktTV is not empty">
 			<xf:include template="trakt_tv_thread_list_poster" />
 		<xf:else />
 			<xf:extensionparent />
@@ -8,7 +8,7 @@
 	</xf:extension>
 	
 	<xf:extension name="main_cell">
-		<xf:if is="$thread.TV is not empty">
+		<xf:if is="$thread.traktTV is not empty">
 			<div class="structItem-cell structItem-cell--main" data-xf-init="touch-proxy">
 				<xf:if contentcheck="true">
 					<ul class="structItem-statuses">
@@ -66,7 +66,7 @@
 								<ul class="structItem-extraInfo">
 									<li>
 										<xf:macro template="rating_macros" name="stars"
-												  arg-rating="{$thread.TV.tv_rating}" />
+												  arg-rating="{$thread.traktTV.tv_rating}" />
 									</li>
 								</ul>
 							</xf:if>
@@ -197,12 +197,12 @@
 
 <xf:macro name="tv_info" arg-thread="!" arg-onlyInclude="{{ null }}">
 	<!--[XF:trakt_tv_thread_list_info_top]-->
-	<xf:if is="!$onlyInclude || $onlyInclude.title"><b>{{ phrase('title') }}:</b> {$thread.TV.tv_title}<br /></xf:if>
-	<xf:if is="(!$onlyInclude || $onlyInclude.genres) && $thread.TV.tv_genres"><b>{{ phrase('trakt_tv_genre') }}:</b> {$thread.TV.tv_genres}<br /></xf:if>
-	<xf:if is="(!$onlyInclude || $onlyInclude.director) && $thread.TV.tv_director"><b>{{ phrase('trakt_tv_creator') }}:</b> {$thread.TV.tv_director}<br /></xf:if>
-	<xf:if is="(!$onlyInclude || $onlyInclude.first_air_date) && $thread.TV.first_air_date"><b>{{ phrase('trakt_tv_first_aired') }}:</b> {{ date($thread.TV.first_air_date) }}<br /></xf:if>
-	<xf:if is="(!$onlyInclude || $onlyInclude.last_air_date) && $thread.TV.last_air_date"><b>{{ phrase('trakt_tv_last_air_date') }}:</b> {{ date($thread.TV.last_air_date) }}<br /></xf:if>
-	<xf:if is="(!$onlyInclude || $onlyInclude.status) && $thread.TV.status is not empty"><b>{{ phrase('trakt_tv_status') }}:</b> {$thread.TV.status}<br /></xf:if>
-	<xf:if is="(!$onlyInclude || $onlyInclude.plot) && $thread.TV.tv_plot is not empty"><b>{{ phrase('trakt_tv_overview') }}:</b> {$thread.TV.tv_plot}<br /></xf:if>
+	<xf:if is="!$onlyInclude || $onlyInclude.title"><b>{{ phrase('title') }}:</b> {$thread.traktTV.tv_title}<br /></xf:if>
+	<xf:if is="(!$onlyInclude || $onlyInclude.genres) && $thread.traktTV.tv_genres"><b>{{ phrase('trakt_tv_genre') }}:</b> {$thread.traktTV.tv_genres}<br /></xf:if>
+	<xf:if is="(!$onlyInclude || $onlyInclude.director) && $thread.traktTV.tv_director"><b>{{ phrase('trakt_tv_creator') }}:</b> {$thread.traktTV.tv_director}<br /></xf:if>
+	<xf:if is="(!$onlyInclude || $onlyInclude.first_air_date) && $thread.traktTV.first_air_date"><b>{{ phrase('trakt_tv_first_aired') }}:</b> {{ date($thread.traktTV.first_air_date) }}<br /></xf:if>
+	<xf:if is="(!$onlyInclude || $onlyInclude.last_air_date) && $thread.traktTV.last_air_date"><b>{{ phrase('trakt_tv_last_air_date') }}:</b> {{ date($thread.traktTV.last_air_date) }}<br /></xf:if>
+	<xf:if is="(!$onlyInclude || $onlyInclude.status) && $thread.traktTV.status is not empty"><b>{{ phrase('trakt_tv_status') }}:</b> {$thread.traktTV.status}<br /></xf:if>
+	<xf:if is="(!$onlyInclude || $onlyInclude.plot) && $thread.traktTV.tv_plot is not empty"><b>{{ phrase('trakt_tv_overview') }}:</b> {$thread.traktTV.tv_plot}<br /></xf:if>
 	<!--[XF:trakt_tv_thread_list_info_bottom]-->
 </xf:macro>

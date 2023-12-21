@@ -1,6 +1,9 @@
 {
     "public/fs_watch_list_add_or_remove_btn.json": {
-        "hash": "c7b0d80bdacadc28ec7999e4c74476e3"
+        "hash": "a8450a84e7cc52861a0014d7eb37274f"
+    },
+    "public/nick97_trakt_bottun_less_provider.json": {
+        "hash": "88f28e8f49da4d0e0963109b16040930"
     },
     "public/nick97_watch_list_add_tab_in_account_visitor_menu.json": {
         "hash": "149ba05bdeed2070e65289d6065d1b29"
@@ -8,10 +11,19 @@
     "public/nick97_watch_list_add_tab_in_account_wrapper.json": {
         "hash": "9681c1602dd5b253f2181d9877055c34"
     },
+    "public/nick97_watch_list_add_tab_in_profile.json": {
+        "hash": "9c4a61c8c03a3fa7a6b7fa3099cbb038"
+    },
+    "public/nick97_watch_list_add_tab_in_profile_arialabel.json": {
+        "hash": "a102d0ff3337d54256268802bc42dc40"
+    },
     "public/nick97_watch_list_privacy_options.json": {
         "hash": "8bd5c1cb7936d646d195066b64f53333"
     },
     "public/nick97_watch_list_register_username.json": {
         "hash": "35d0b975f31502f7affdb2b94d82d7b1"
+    },
+    "public/nick97_watch_list_thread_view_add_images.json": {
+        "hash": "2b6ef9ed4adf0f8dd6c3639bfb71c3f1"
     }
 }

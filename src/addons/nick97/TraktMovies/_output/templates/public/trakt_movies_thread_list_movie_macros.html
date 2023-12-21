@@ -1,6 +1,6 @@
 <xf:macro name="item" extends="thread_list_macros::item">
 	<xf:extension name="icon_cell">
-		<xf:if is="$thread.Movie is not empty">
+		<xf:if is="$thread.traktMovie is not empty">
 			<xf:include template="trakt_movies_thread_list_poster" />
 		<xf:else />
 			<xf:extensionparent />
@@ -8,7 +8,7 @@
 	</xf:extension>
 	
 	<xf:extension name="main_cell">
-		<xf:if is="$thread.Movie is not empty">
+		<xf:if is="$thread.traktMovie is not empty">
 			<div class="structItem-cell structItem-cell--main" data-xf-init="touch-proxy">
 				<xf:if contentcheck="true">
 					<ul class="structItem-statuses">
@@ -66,7 +66,7 @@
 								<ul class="structItem-extraInfo">
 									<li>
 										<xf:macro template="rating_macros" name="stars"
-												  arg-rating="{$thread.Movie.trakt_rating}" />
+												  arg-rating="{$thread.traktMovie.trakt_rating}" />
 									</li>
 								</ul>
 							</xf:if>
@@ -197,12 +197,12 @@
 
 <xf:macro name="movie_info" arg-thread="!" arg-onlyInclude="{{ null }}">
 	<!--[XF:trakt_movies_thread_list_info_top]-->
-	<xf:if is="!$onlyInclude || $onlyInclude.title"><b>{{ phrase('title') }}:</b> {$thread.Movie.trakt_title}<br /></xf:if>
-	<xf:if is="(!$onlyInclude || $onlyInclude.tagline) && $thread.Movie.trakt_tagline"><b>{{ phrase('trakt_movies_tagline') }}:</b> {$thread.Movie.trakt_tagline}<br /></xf:if>
-	<xf:if is="(!$onlyInclude || $onlyInclude.genres) && $thread.Movie.trakt_genres"><b>{{ phrase('trakt_movies_genre') }}:</b> {$thread.Movie.trakt_genres}<br /></xf:if>
-	<xf:if is="(!$onlyInclude || $onlyInclude.director) && $thread.Movie.trakt_director"><b>{{ phrase('trakt_movies_director') }}:</b> {$thread.Movie.trakt_director}<br /></xf:if>
-	<xf:if is="(!$onlyInclude || $onlyInclude.runtime) && $thread.Movie.trakt_runtime"><b>{{ phrase('trakt_movies_runtime') }}:</b> {$thread.Movie.trakt_runtime}<br /></xf:if>
-	<xf:if is="(!$onlyInclude || $onlyInclude.status) && $thread.Movie.trakt_status"><b>{{ phrase('trakt_movies_status') }}:</b> {$thread.Movie.trakt_status}<br /></xf:if>
-	<xf:if is="(!$onlyInclude || $onlyInclude.release_date) && $thread.Movie.trakt_release"><b>{{ phrase('trakt_movies_release') }}:</b> {$thread.Movie.trakt_release}<br /></xf:if>
+	<xf:if is="!$onlyInclude || $onlyInclude.title"><b>{{ phrase('title') }}:</b> {$thread.traktMovie.trakt_title}<br /></xf:if>
+	<xf:if is="(!$onlyInclude || $onlyInclude.tagline) && $thread.traktMovie.trakt_tagline"><b>{{ phrase('trakt_movies_tagline') }}:</b> {$thread.traktMovie.trakt_tagline}<br /></xf:if>
+	<xf:if is="(!$onlyInclude || $onlyInclude.genres) && $thread.traktMovie.trakt_genres"><b>{{ phrase('trakt_movies_genre') }}:</b> {$thread.traktMovie.trakt_genres}<br /></xf:if>
+	<xf:if is="(!$onlyInclude || $onlyInclude.director) && $thread.traktMovie.trakt_director"><b>{{ phrase('trakt_movies_director') }}:</b> {$thread.traktMovie.trakt_director}<br /></xf:if>
+	<xf:if is="(!$onlyInclude || $onlyInclude.runtime) && $thread.traktMovie.trakt_runtime"><b>{{ phrase('trakt_movies_runtime') }}:</b> {$thread.traktMovie.trakt_runtime}<br /></xf:if>
+	<xf:if is="(!$onlyInclude || $onlyInclude.status) && $thread.traktMovie.trakt_status"><b>{{ phrase('trakt_movies_status') }}:</b> {$thread.traktMovie.trakt_status}<br /></xf:if>
+	<xf:if is="(!$onlyInclude || $onlyInclude.release_date) && $thread.traktMovie.trakt_release"><b>{{ phrase('trakt_movies_release') }}:</b> {$thread.traktMovie.trakt_release}<br /></xf:if>
 	<!--[XF:trakt_movies_thread_list_info_bottom]-->
 </xf:macro>

@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: c5e3cb185956ee0319f323209ffa45ea
+// FROM HASH: 7a5e2d5b43cd02c45ecbf93197a9665f
 return array(
 'macros' => array('tv' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -29,7 +29,7 @@ return array(
 	$__finalCompiled = '';
 		$__finalCompiled .= '
 											';
-	$__vars['watchProviders'] = $__templater->method($__vars['thread']['TV'], 'getWatchProviders', array());
+	$__vars['watchProviders'] = $__templater->method($__vars['thread']['traktTV'], 'getWatchProviders', array());
 	$__finalCompiled .= '
 											';
 	if ($__vars['watchProviders']) {
@@ -40,7 +40,7 @@ return array(
 														<div class="u-pullRight">
 															';
 		$__compilerTemp1 = array();
-		$__compilerTemp2 = $__templater->method($__vars['thread']['TV'], 'getWatchProviderCountries', array());
+		$__compilerTemp2 = $__templater->method($__vars['thread']['traktTV'], 'getWatchProviderCountries', array());
 		if ($__templater->isTraversable($__compilerTemp2)) {
 			foreach ($__compilerTemp2 AS $__vars['region'] => $__vars['phrase']) {
 				$__compilerTemp1[] = array(
@@ -171,7 +171,7 @@ return array(
 											';
 	} else {
 		$__finalCompiled .= '
-												<img src="' . $__templater->escape($__templater->method($__vars['thread']['TV'], 'getImageUrl', array('l', 1, ))) . '" />
+												<img src="' . $__templater->escape($__templater->method($__vars['thread']['traktTV'], 'getImageUrl', array('l', 1, ))) . '" />
 											';
 	}
 	$__finalCompiled .= '
@@ -276,44 +276,44 @@ return array(
 		$__finalCompiled .= '
 												';
 		if ($__vars['xf']['options']['traktTvThreads_showThread']['title']) {
-			$__finalCompiled .= '<b>' . 'Title' . ':</b> ' . $__templater->escape($__vars['thread']['TV']['tv_title']) . '<br />';
+			$__finalCompiled .= '<b>' . 'Title' . ':</b> ' . $__templater->escape($__vars['thread']['traktTV']['tv_title']) . '<br />';
 		}
 		$__finalCompiled .= '
 												';
-		if ($__vars['xf']['options']['traktTvThreads_showThread']['genres'] AND $__vars['thread']['TV']['tv_genres']) {
-			$__finalCompiled .= '<p><b>' . 'Genre' . ':</b> ' . $__templater->escape($__vars['thread']['TV']['tv_genres']) . '</p>';
+		if ($__vars['xf']['options']['traktTvThreads_showThread']['genres'] AND $__vars['thread']['traktTV']['tv_genres']) {
+			$__finalCompiled .= '<p><b>' . 'Genre' . ':</b> ' . $__templater->escape($__vars['thread']['traktTV']['tv_genres']) . '</p>';
 		}
 		$__finalCompiled .= '
 												';
-		if ($__vars['xf']['options']['traktTvThreads_showThread']['director'] AND $__vars['thread']['TV']['tv_director']) {
-			$__finalCompiled .= '<p><b>' . 'Director' . ':</b> ' . $__templater->escape($__vars['thread']['TV']['tv_director']) . '</p>';
+		if ($__vars['xf']['options']['traktTvThreads_showThread']['director'] AND $__vars['thread']['traktTV']['tv_director']) {
+			$__finalCompiled .= '<p><b>' . 'Director' . ':</b> ' . $__templater->escape($__vars['thread']['traktTV']['tv_director']) . '</p>';
 		}
 		$__finalCompiled .= '
 												';
-		if ($__vars['xf']['options']['traktTvThreads_showThread']['cast'] AND $__vars['thread']['TV']['tv_cast']) {
-			$__finalCompiled .= '<p><b>' . 'Cast' . ':</b> ' . $__templater->escape($__vars['thread']['TV']['tv_cast']) . '</p>';
+		if ($__vars['xf']['options']['traktTvThreads_showThread']['cast'] AND $__vars['thread']['traktTV']['tv_cast']) {
+			$__finalCompiled .= '<p><b>' . 'Cast' . ':</b> ' . $__templater->escape($__vars['thread']['traktTV']['tv_cast']) . '</p>';
 		}
 		$__finalCompiled .= '
 												';
-		if ($__vars['xf']['options']['traktTvThreads_showThread']['release'] AND $__vars['thread']['TV']['first_air_date']) {
-			$__finalCompiled .= '<p><b>' . 'First aired' . ':</b> ' . $__templater->func('date_dynamic', array($__vars['thread']['TV']['first_air_date'], array(
+		if ($__vars['xf']['options']['traktTvThreads_showThread']['release'] AND $__vars['thread']['traktTV']['first_air_date']) {
+			$__finalCompiled .= '<p><b>' . 'First aired' . ':</b> ' . $__templater->func('date_dynamic', array($__vars['thread']['traktTV']['first_air_date'], array(
 			))) . '</p>';
 		}
 		$__finalCompiled .= '
 												';
-		if ($__vars['xf']['options']['traktTvThreads_showThread']['last_air_date'] AND $__vars['thread']['TV']['last_air_date']) {
-			$__finalCompiled .= '<p><b>' . 'Last air date' . ':</b> ' . $__templater->func('date_dynamic', array($__vars['thread']['TV']['last_air_date'], array(
+		if ($__vars['xf']['options']['traktTvThreads_showThread']['last_air_date'] AND $__vars['thread']['traktTV']['last_air_date']) {
+			$__finalCompiled .= '<p><b>' . 'Last air date' . ':</b> ' . $__templater->func('date_dynamic', array($__vars['thread']['traktTV']['last_air_date'], array(
 			))) . '</p>';
 		}
 		$__finalCompiled .= '
 												';
-		if ($__vars['xf']['options']['traktTvThreads_showThread']['status'] AND !$__templater->test($__vars['thread']['TV']['status'], 'empty', array())) {
-			$__finalCompiled .= '<p><b>' . 'Show status' . ':</b> ' . $__templater->escape($__vars['thread']['TV']['status']) . '</p>';
+		if ($__vars['xf']['options']['traktTvThreads_showThread']['status'] AND !$__templater->test($__vars['thread']['traktTV']['status'], 'empty', array())) {
+			$__finalCompiled .= '<p><b>' . 'Show status' . ':</b> ' . $__templater->escape($__vars['thread']['traktTV']['status']) . '</p>';
 		}
 		$__finalCompiled .= '
 												';
-		if ($__vars['xf']['options']['traktTvThreads_showThread']['plot'] AND $__vars['thread']['TV']['tv_plot']) {
-			$__finalCompiled .= '<b>' . 'Overview' . ':</b> ' . $__templater->escape($__vars['thread']['TV']['tv_plot']);
+		if ($__vars['xf']['options']['traktTvThreads_showThread']['plot'] AND $__vars['thread']['traktTV']['tv_plot']) {
+			$__finalCompiled .= '<b>' . 'Overview' . ':</b> ' . $__templater->escape($__vars['thread']['traktTV']['tv_plot']);
 		}
 		$__finalCompiled .= '
 											';
@@ -381,7 +381,7 @@ return array(
 	if (!$__vars['xf']['options']['traktTvThreads_force_comments']) {
 		$__finalCompiled .= '
 									<article class="message-body">
-										' . $__templater->func('bb_code', array($__vars['thread']['TV']['comment'], 'post', $__vars['post']['User'], array('attachments' => ($__vars['post']['attach_count'] ? $__vars['post']['Attachments'] : array()), 'viewAttachments' => $__templater->method($__vars['thread'], 'canViewAttachments', array()), ), ), true) . '
+										' . $__templater->func('bb_code', array($__vars['thread']['traktTV']['comment'], 'post', $__vars['post']['User'], array('attachments' => ($__vars['post']['attach_count'] ? $__vars['post']['Attachments'] : array()), 'viewAttachments' => $__templater->method($__vars['thread'], 'canViewAttachments', array()), ), ), true) . '
 									</article>
 								';
 	}
@@ -392,7 +392,7 @@ return array(
 	$__compilerTemp1 .= '
 												' . '
 												';
-	if ($__vars['xf']['options']['traktTvThreads_showThread']['trailer_tab'] AND $__vars['thread']['TV']['tv_trailer']) {
+	if ($__vars['xf']['options']['traktTvThreads_showThread']['trailer_tab'] AND $__vars['thread']['traktTV']['tv_trailer']) {
 		$__compilerTemp1 .= '
 													<a class="tabs-tab is-active" role="tab" tabindex="0" aria-controls="tv-trailer">
 														' . 'Trailer' . '
@@ -448,7 +448,7 @@ return array(
 	$__compilerTemp2 .= '
 											' . '
 											';
-	if ($__vars['xf']['options']['traktTvThreads_showThread']['trailer_tab'] AND $__vars['thread']['TV']['tv_trailer']) {
+	if ($__vars['xf']['options']['traktTvThreads_showThread']['trailer_tab'] AND $__vars['thread']['traktTV']['tv_trailer']) {
 		$__compilerTemp2 .= '
 												<li class="block-body is-active" role="tabpanel" id="tv-trailer">
 													<div class="block-row">
@@ -457,7 +457,7 @@ return array(
 																<iframe width="500"
 																	height="300"
 																	allowfullscreen
-																	src="https://www.youtube.com/embed/' . $__templater->escape($__vars['thread']['TV']['tv_trailer']) . '?wmode=opaque&start=0"
+																	src="https://www.youtube.com/embed/' . $__templater->escape($__vars['thread']['traktTV']['tv_trailer']) . '?wmode=opaque&start=0"
 																	style="border:none;"></iframe>
 															</div>
 														</div>
@@ -474,7 +474,7 @@ return array(
 												<li class="block-body" role="tabpanel" id="tv-casts">
 													<div class="block-row">
 														' . $__templater->callMacro('trakt_tv_casts_macros', 'cast_list', array(
-			'tv' => $__vars['thread']['TV'],
+			'tv' => $__vars['thread']['traktTV'],
 			'casts' => $__vars['casts'],
 			'page' => '1',
 			'hasMore' => $__vars['castsHasMore'],
@@ -492,7 +492,7 @@ return array(
 												<li class="block-body" role="tabpanel" id="tv-crew">
 													<div class="block-row">
 														' . $__templater->callMacro('trakt_tv_crews_macros', 'crew_list', array(
-			'tv' => $__vars['thread']['TV'],
+			'tv' => $__vars['thread']['traktTV'],
 			'crews' => $__vars['crews'],
 			'page' => '1',
 			'hasMore' => $__vars['crewsHasMore'],
@@ -510,7 +510,7 @@ return array(
 												<li class="block-body" role="tabpanel" id="tv-videos">
 													<div class="block-row">
 														' . $__templater->callMacro('trakt_tv_videos_macros', 'video_list', array(
-			'tv' => $__vars['thread']['TV'],
+			'tv' => $__vars['thread']['traktTV'],
 			'videos' => $__vars['videos'],
 			'page' => '1',
 			'hasMore' => $__vars['videosHasMore'],
@@ -790,7 +790,7 @@ return array(
 	$__finalCompiled = '';
 	$__finalCompiled .= '
 	';
-	$__vars['rating'] = $__vars['thread']['TV']['tv_rating'];
+	$__vars['rating'] = $__vars['thread']['traktTV']['tv_rating'];
 	$__finalCompiled .= '
 	<div style="padding-top: 10px;">
 		' . $__templater->callMacro('rating_macros', 'stars_text', array(
@@ -799,7 +799,7 @@ return array(
 	), $__vars) . '
 	</div>
 
-	<div>' . $__templater->escape($__vars['thread']['TV']['tv_rating']) . '/5 ' . $__templater->escape($__vars['thread']['TV']['tv_votes']) . ' ' . 'Votes' . '</div>
+	<div>' . $__templater->escape($__vars['thread']['traktTV']['tv_rating']) . '/5 ' . $__templater->escape($__vars['thread']['traktTV']['tv_votes']) . ' ' . 'Votes' . '</div>
 
 	';
 	if ($__vars['xf']['visitor']['user_id']) {
@@ -809,7 +809,7 @@ return array(
 				' . 'trakt_tv_change_rating' . '
 			', array(
 			'class' => 'button--link button--wrap',
-			'href' => $__templater->func('link', array('tv/rate', $__vars['thread']['TV'], ), false),
+			'href' => $__templater->func('link', array('tv/rate', $__vars['thread']['traktTV'], ), false),
 			'overlay' => 'true',
 		), '', array(
 		)) . '
@@ -835,7 +835,7 @@ return array(
 				';
 		if (!$__templater->test($__vars['post']['Thread']['TV'], 'empty', array())) {
 			$__finalCompiled .= '
-					<b><meta itemprop="partOfTVSeries" content="' . $__templater->escape($__vars['thread']['TV']['tv_title']) . '">' . $__templater->escape($__vars['thread']['TV']['tv_title']) . '</b><br />
+					<b><meta itemprop="partOfTVSeries" content="' . $__templater->escape($__vars['thread']['traktTV']['tv_title']) . '">' . $__templater->escape($__vars['thread']['traktTV']['tv_title']) . '</b><br />
 				';
 		}
 		$__finalCompiled .= '

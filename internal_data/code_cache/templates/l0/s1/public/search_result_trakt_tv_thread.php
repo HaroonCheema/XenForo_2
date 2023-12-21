@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 8b9b5b4b976ab75b90e23d60cf364f74
+// FROM HASH: 1a489ba4c6928c5c04e3a689bcf4660b
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -11,7 +11,7 @@ return array(
 	
 	<div class="contentRow ' . ((!$__templater->method($__vars['thread'], 'isVisible', array())) ? 'is-deleted' : '') . '">
 		<span class="contentRow-figure">
-			<img class="tvPoster" src="' . $__templater->escape($__templater->method($__vars['thread']['TV'], 'getImageUrl', array('s', ))) . '" />
+			<img class="tvPoster" src="' . $__templater->escape($__templater->method($__vars['thread']['traktTV'], 'getImageUrl', array('s', ))) . '" />
 		</span>
 		<div class="contentRow-main">
 			<h3 class="contentRow-title">

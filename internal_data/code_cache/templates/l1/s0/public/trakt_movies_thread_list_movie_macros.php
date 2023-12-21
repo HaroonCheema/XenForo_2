@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: e713517fa377d3ba4b3d218fd51482f9
+// FROM HASH: 04aa871038ef1c5795c3bb6e872e0990
 return array(
 'macros' => array('item' => array(
 'extends' => 'thread_list_macros::item',
@@ -8,7 +8,7 @@ return array(
 	$__finalCompiled = '';
 		$__finalCompiled .= '
 		';
-	if (!$__templater->test($__vars['thread']['Movie'], 'empty', array())) {
+	if (!$__templater->test($__vars['thread']['traktMovie'], 'empty', array())) {
 		$__finalCompiled .= '
 			' . $__templater->includeTemplate('trakt_movies_thread_list_poster', $__vars) . '
 		';
@@ -60,7 +60,7 @@ return array(
 								<ul class="structItem-extraInfo">
 									<li>
 										' . $__templater->callMacro('rating_macros', 'stars', array(
-			'rating' => $__vars['thread']['Movie']['trakt_rating'],
+			'rating' => $__vars['thread']['traktMovie']['trakt_rating'],
 		), $__vars) . '
 									</li>
 								</ul>
@@ -219,7 +219,7 @@ return array(
 	$__finalCompiled = '';
 		$__finalCompiled .= '
 		';
-	if (!$__templater->test($__vars['thread']['Movie'], 'empty', array())) {
+	if (!$__templater->test($__vars['thread']['traktMovie'], 'empty', array())) {
 		$__finalCompiled .= '
 			<div class="structItem-cell structItem-cell--main" data-xf-init="touch-proxy">
 				';
@@ -439,37 +439,37 @@ return array(
 	' . '
 	';
 	if ((!$__vars['onlyInclude']) OR $__vars['onlyInclude']['title']) {
-		$__finalCompiled .= '<b>' . 'Title' . ':</b> ' . $__templater->escape($__vars['thread']['Movie']['trakt_title']) . '<br />';
+		$__finalCompiled .= '<b>' . 'Title' . ':</b> ' . $__templater->escape($__vars['thread']['traktMovie']['trakt_title']) . '<br />';
 	}
 	$__finalCompiled .= '
 	';
-	if (((!$__vars['onlyInclude']) OR $__vars['onlyInclude']['tagline']) AND $__vars['thread']['Movie']['trakt_tagline']) {
-		$__finalCompiled .= '<b>' . 'Tagline' . ':</b> ' . $__templater->escape($__vars['thread']['Movie']['trakt_tagline']) . '<br />';
+	if (((!$__vars['onlyInclude']) OR $__vars['onlyInclude']['tagline']) AND $__vars['thread']['traktMovie']['trakt_tagline']) {
+		$__finalCompiled .= '<b>' . 'Tagline' . ':</b> ' . $__templater->escape($__vars['thread']['traktMovie']['trakt_tagline']) . '<br />';
 	}
 	$__finalCompiled .= '
 	';
-	if (((!$__vars['onlyInclude']) OR $__vars['onlyInclude']['genres']) AND $__vars['thread']['Movie']['trakt_genres']) {
-		$__finalCompiled .= '<b>' . 'Genre' . ':</b> ' . $__templater->escape($__vars['thread']['Movie']['trakt_genres']) . '<br />';
+	if (((!$__vars['onlyInclude']) OR $__vars['onlyInclude']['genres']) AND $__vars['thread']['traktMovie']['trakt_genres']) {
+		$__finalCompiled .= '<b>' . 'Genre' . ':</b> ' . $__templater->escape($__vars['thread']['traktMovie']['trakt_genres']) . '<br />';
 	}
 	$__finalCompiled .= '
 	';
-	if (((!$__vars['onlyInclude']) OR $__vars['onlyInclude']['director']) AND $__vars['thread']['Movie']['trakt_director']) {
-		$__finalCompiled .= '<b>' . 'Director' . ':</b> ' . $__templater->escape($__vars['thread']['Movie']['trakt_director']) . '<br />';
+	if (((!$__vars['onlyInclude']) OR $__vars['onlyInclude']['director']) AND $__vars['thread']['traktMovie']['trakt_director']) {
+		$__finalCompiled .= '<b>' . 'Director' . ':</b> ' . $__templater->escape($__vars['thread']['traktMovie']['trakt_director']) . '<br />';
 	}
 	$__finalCompiled .= '
 	';
-	if (((!$__vars['onlyInclude']) OR $__vars['onlyInclude']['runtime']) AND $__vars['thread']['Movie']['trakt_runtime']) {
-		$__finalCompiled .= '<b>' . 'Runtime' . ':</b> ' . $__templater->escape($__vars['thread']['Movie']['trakt_runtime']) . '<br />';
+	if (((!$__vars['onlyInclude']) OR $__vars['onlyInclude']['runtime']) AND $__vars['thread']['traktMovie']['trakt_runtime']) {
+		$__finalCompiled .= '<b>' . 'Runtime' . ':</b> ' . $__templater->escape($__vars['thread']['traktMovie']['trakt_runtime']) . '<br />';
 	}
 	$__finalCompiled .= '
 	';
-	if (((!$__vars['onlyInclude']) OR $__vars['onlyInclude']['status']) AND $__vars['thread']['Movie']['trakt_status']) {
-		$__finalCompiled .= '<b>' . 'Status' . ':</b> ' . $__templater->escape($__vars['thread']['Movie']['trakt_status']) . '<br />';
+	if (((!$__vars['onlyInclude']) OR $__vars['onlyInclude']['status']) AND $__vars['thread']['traktMovie']['trakt_status']) {
+		$__finalCompiled .= '<b>' . 'Status' . ':</b> ' . $__templater->escape($__vars['thread']['traktMovie']['trakt_status']) . '<br />';
 	}
 	$__finalCompiled .= '
 	';
-	if (((!$__vars['onlyInclude']) OR $__vars['onlyInclude']['release_date']) AND $__vars['thread']['Movie']['trakt_release']) {
-		$__finalCompiled .= '<b>' . 'Release' . ':</b> ' . $__templater->escape($__vars['thread']['Movie']['trakt_release']) . '<br />';
+	if (((!$__vars['onlyInclude']) OR $__vars['onlyInclude']['release_date']) AND $__vars['thread']['traktMovie']['trakt_release']) {
+		$__finalCompiled .= '<b>' . 'Release' . ':</b> ' . $__templater->escape($__vars['thread']['traktMovie']['trakt_release']) . '<br />';
 	}
 	$__finalCompiled .= '
 	' . '

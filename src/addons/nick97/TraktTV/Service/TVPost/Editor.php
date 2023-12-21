@@ -109,7 +109,7 @@ class Editor extends \XF\Service\AbstractService
 
 		$post = $tvPost->Post;
 		$thread = $post->Thread;
-		$tvForum = $thread->TV->Thread->Forum->TVForum;
+		$tvForum = $thread->traktTV->Thread->Forum->TVForum;
 
 		/** @var \nick97\TraktTV\Helper\TVPost $postHelper */
 		$postHelper = \XF::helper('nick97\TraktTV:TVPost');

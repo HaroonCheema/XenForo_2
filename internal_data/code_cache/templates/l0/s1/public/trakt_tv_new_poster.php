@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: b097d9d0566fd199f15470c667d76e1b
+// FROM HASH: 135f91d81e7f0834f408dbbe7057e777
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -51,7 +51,7 @@ return array(
 		</div>
 	</div>
 ', array(
-		'action' => $__templater->func('link', array('tv/poster', $__vars['tvshow'], ), false),
+		'action' => $__templater->func('link', array('tvTrakt/poster', $__vars['tvshow'], ), false),
 		'ajax' => 'true',
 		'class' => 'block',
 	));

@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 8a88286cfd1a4b020d34e9ca683c6877
+// FROM HASH: 0402f032a959bca46099efec2b23a513
 return array(
 'macros' => array('crew_list' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -36,7 +36,7 @@ return array(
 				' . $__templater->button('
 					' . 'More' . $__vars['xf']['language']['ellipsis'] . '
 				', array(
-			'href' => $__templater->func('link', array('tv/crews', $__vars['tv'], array('page' => $__vars['page'] + 1, ), ), false),
+			'href' => $__templater->func('link', array('tvTrakt/crews', $__vars['tv'], array('page' => $__vars['page'] + 1, ), ), false),
 			'data-xf-click' => 'inserter',
 			'data-append' => '.js-tvCrewsList' . $__vars['tv']['tv_id'],
 			'data-replace' => '.js-tvCrewsLoadMore' . $__vars['tv']['tv_id'],

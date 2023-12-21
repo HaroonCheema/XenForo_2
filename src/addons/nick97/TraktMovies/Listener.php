@@ -21,7 +21,8 @@ class Listener
 	 */
 	public static function forumEntityStructure(\XF\Mvc\Entity\Manager $em, \XF\Mvc\Entity\Structure &$structure)
 	{
-		$structure->columns['default_sort_order'] = ['type' => Entity::STR, 'default' => 'last_post_date',
+		$structure->columns['default_sort_order'] = [
+			'type' => Entity::STR, 'default' => 'last_post_date',
 			'allowedValues' => ['title', 'post_date', 'reply_count', 'view_count', 'last_post_date', 'Movie.trakt_rating']
 		];
 	}
@@ -36,7 +37,7 @@ class Listener
 	 */
 	public static function threadEntityStructure(\XF\Mvc\Entity\Manager $em, \XF\Mvc\Entity\Structure &$structure)
 	{
-		$structure->relations['Movie'] = [
+		$structure->relations['traktMovie'] = [
 			'entity' => 'nick97\TraktMovies:Movie',
 			'type' => Entity::TO_ONE,
 			'conditions' => 'thread_id',
@@ -46,7 +47,7 @@ class Listener
 		$structure->options['movieApiResponse'] = [];
 		$structure->options['movieOriginalMessage'] = '';
 
-		$structure->defaultWith[] = 'Movie';
+		$structure->defaultWith[] = 'traktMovie';
 	}
 
 	/**
@@ -76,8 +77,7 @@ class Listener
 	 */
 	public static function criteriaUser(string $rule, array $data, \XF\Entity\User $user, bool &$returnValue)
 	{
-		if ($rule == 'movies_posted')
-		{
+		if ($rule == 'movies_posted') {
 			/** @var \nick97\TraktMovies\XF\Entity\User $user */
 			$returnValue = $user->trakt_movies_thread_count && $user->trakt_movies_thread_count >= $data['movies'];
 		}
@@ -112,8 +112,7 @@ class Listener
 	 */
 	public static function templaterMacroPreRender(\XF\Template\Templater $templater, &$type, &$template, &$name, array &$arguments, array &$globalVars)
 	{
-		if ($arguments['group'] instanceof \XF\Entity\OptionGroup && $arguments['group']->group_id == 'traktMovies')
-		{
+		if ($arguments['group'] instanceof \XF\Entity\OptionGroup && $arguments['group']->group_id == 'traktMovies') {
 			$template = 'trakt_movies_option_macros';
 			$name = 'option_form_block';
 
@@ -139,5 +138,4 @@ class Listener
 			];
 		}
 	}
-
 }

@@ -21,7 +21,7 @@ class TV extends \XF\ThreadType\AbstractHandler
 	public function getThreadViewAndTemplate(Thread $thread): array
 	{
 		/** @var \nick97\TraktTV\XF\Entity\Thread $thread */
-		if ($thread->TV) {
+		if ($thread->traktTV) {
 			return ['nick97\TraktTV:Forum\ViewTypeTv', 'trakt_tv_thread_view_type_tv'];
 		}
 
@@ -36,7 +36,7 @@ class TV extends \XF\ThreadType\AbstractHandler
 	public function getThreadViewTemplateOverrides(Thread $thread, array $extra = []): array
 	{
 		/** @var \nick97\TraktTV\XF\Entity\Thread $thread */
-		$tv = $thread->TV;
+		$tv = $thread->traktTV;
 		if ($tv) {
 			$overrides = [
 				'pinned_first_post_macro' => 'trakt_tv_post_macros::tv',
@@ -159,7 +159,7 @@ class TV extends \XF\ThreadType\AbstractHandler
 	{
 		$data = parent::getLdStructuredData($thread, $firstDisplayedPost, $page, $extraData);
 
-		$TV = $thread->TV;
+		$TV = $thread->traktTV;
 		if (!$TV) {
 			return $data;
 		}
@@ -294,7 +294,7 @@ class TV extends \XF\ThreadType\AbstractHandler
 	public function onThreadDelete(Thread $thread)
 	{
 		/** @var \nick97\TraktTV\XF\Entity\Thread $thread */
-		$tv = $thread->TV;
+		$tv = $thread->traktTV;
 		if ($tv) {
 			$tv->delete();
 		}
@@ -304,7 +304,7 @@ class TV extends \XF\ThreadType\AbstractHandler
 	{
 		if (!$isDelete) {
 			/** @var \nick97\TraktTV\XF\Entity\Thread $thread */
-			$tv = $thread->TV;
+			$tv = $thread->traktTV;
 			if ($tv) {
 				$tv->delete();
 				$thread->adjustTvThreadCount(-1);

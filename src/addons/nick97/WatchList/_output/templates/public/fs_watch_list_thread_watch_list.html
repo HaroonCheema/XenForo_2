@@ -1,4 +1,4 @@
-<xf:if is="$thread.watch_list">
+<xf:if is="$thread.getWatchListExist()">
 	<xf:title>{{ phrase('remove_watch_list') }}</xf:title>
 <xf:else />
 	<xf:title>{{ phrase('add_watch_list') }}</xf:title>
@@ -9,7 +9,7 @@
 <xf:form action="{{ link('threads/watch-list', $thread) }}" class="block" ajax="true">
 	<div class="block-container">
 		<div class="block-body">
-			<xf:if is="$thread.watch_list">
+			<xf:if is="$thread.getWatchListExist()">
 				<xf:inforow rowtype="confirm">
 					{{ phrase('you_sure_you_want_to_remove_watch_from_list') }}
 				</xf:inforow>
@@ -21,7 +21,7 @@
 				</xf:inforow>
 			</xf:if>
 		</div>
-		<xf:if is="$thread.watch_list">
+		<xf:if is="$thread.getWatchListExist()">
 			<xf:submitrow submit="{{ phrase('remove_watch_list_submit') }}" rowtype="simple" />
 		<xf:else />
 			<xf:submitrow submit="{{ phrase('add_watch_list_submit') }}" />

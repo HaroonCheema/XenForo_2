@@ -1,10 +1,10 @@
 <?php
-// FROM HASH: 35fa903dd375427fc1a449c765947741
+// FROM HASH: 09cc8f3b93f47b86b7b03d31801fe94a
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
 	$__finalCompiled = '';
-	if (((!$__templater->method($__vars['post'], 'isFirstPost', array())) AND !$__templater->test($__vars['post']['TVPost'], 'empty', array())) OR ($__templater->method($__vars['post'], 'isFirstPost', array()) AND ($__vars['thread']['TV']['tv_season'] AND $__vars['thread']['TV']['tv_episode']))) {
+	if (((!$__templater->method($__vars['post'], 'isFirstPost', array())) AND !$__templater->test($__vars['post']['TVPost'], 'empty', array())) OR ($__templater->method($__vars['post'], 'isFirstPost', array()) AND ($__vars['thread']['traktTV']['tv_season'] AND $__vars['thread']['traktTV']['tv_episode']))) {
 		$__finalCompiled .= '
 	';
 		if ($__templater->method($__vars['post'], 'canEdit', array())) {

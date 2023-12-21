@@ -1,13 +1,13 @@
 <?php
-// FROM HASH: 232656d16288c266551f085cd6c1b76d
+// FROM HASH: 01cc3de3350fcde20881cf52b13f3051
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
 	$__finalCompiled = '';
-	if (!$__templater->test($__vars['thread']['Movie'], 'empty', array())) {
+	if (!$__templater->test($__vars['thread']['traktMovie'], 'empty', array())) {
 		$__finalCompiled .= '
 	<div class="structItem-cell structItem-cell--movie">
-		<img class="moviePoster" src="' . $__templater->escape($__templater->method($__vars['thread']['Movie'], 'getImageUrl', array('s', ))) . '" />
+		<img class="moviePoster" src="' . $__templater->escape($__templater->method($__vars['thread']['traktMovie'], 'getImageUrl', array('s', ))) . '" />
 	</div>
 ';
 	} else {

@@ -24,7 +24,7 @@ class Cover extends XFCP_Cover
 		}
 
 		/** @var \nick97\TraktMovies\Entity\Movie $movie */
-		$movie = $thread->Movie;
+		$movie = $thread->traktMovie;
 		if (!$movie)
 		{
 			return $this->notFound();

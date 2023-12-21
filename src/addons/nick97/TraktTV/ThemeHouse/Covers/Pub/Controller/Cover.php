@@ -22,7 +22,7 @@ class Cover extends XFCP_Cover
 		}
 
 		/** @var \nick97\TraktTV\Entity\TV $tv */
-		$tv = $thread->TV;
+		$tv = $thread->traktTV;
 		if (!$tv) {
 			return $this->notFound();
 		}

@@ -29,6 +29,48 @@
         "version_string": "1.0.0 Alpha",
         "hash": "6d5443c0376254f58963f3c60da83c98"
     },
+    "nick97_trakt_tv_request_empty_body.txt": {
+        "global_cache": false,
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "9c0b5fec18a8b70126b833de771d84e8"
+    },
+    "nick97_trakt_tv_request_method_not_allowed.txt": {
+        "global_cache": false,
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "d8b6ac9ee89ebf22124fd652f69e43d2"
+    },
+    "nick97_trakt_tv_request_not_found.txt": {
+        "global_cache": false,
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "ab8b4e5b8190ee1b0ae0817623b6ca70"
+    },
+    "nick97_trakt_tv_request_not_success.txt": {
+        "global_cache": false,
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "e0d9b82f2da1eb5b18d70b92db3fdc72"
+    },
+    "nick97_trakt_tv_request_server_error.txt": {
+        "global_cache": false,
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "2dcea37424779992a82da727cead6818"
+    },
+    "nick97_trakt_tv_request_unauthorized.txt": {
+        "global_cache": false,
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "28045961007db78defefcce04ff6cbfd"
+    },
+    "nick97_trakt_tv_request_unsported_media.txt": {
+        "global_cache": false,
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "f12c0ddf5b63d9da81c47b69b07cf89a"
+    },
     "nick97_tv_more_details_on_trakt.txt": {
         "global_cache": false,
         "version_id": 1000010,
@@ -37,8 +79,8 @@
     },
     "nick97_tv_trakt_api_key_not_found.txt": {
         "global_cache": false,
-        "version_id": 1000010,
-        "version_string": "1.0.0 Alpha",
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
         "hash": "f7b8ecc03a8ba3aa4d18d02823fef077"
     },
     "option.traktTvThreads_aggregateCredits.txt": {

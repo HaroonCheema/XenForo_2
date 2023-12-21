@@ -30,12 +30,12 @@ class Thread extends XFCP_Thread
 		/** @var \nick97\TraktTV\XF\Entity\Thread $thread */
 		$thread = $this->assertViewableThread($params->thread_id, ['FirstPost']);
 
-		if (($thread->discussion_type != 'trakt_tv' && !isset($thread->TV->tv_plot)) || !isset($thread->TV->tv_plot)) {
+		if (($thread->discussion_type != 'trakt_tv' && !isset($thread->traktTV->tv_plot)) || !isset($thread->traktTV->tv_plot)) {
 			return parent::actionPreview($params);
 		}
 
 		$firstPost['user'] = $thread->user_id;
-		$firstPost['message'] = $thread->TV->tv_plot;
+		$firstPost['message'] = $thread->traktTV->tv_plot;
 		$viewParams = ['thread' => $thread, 'firstPost' => $firstPost];
 		return $this->view('XF:Thread\Preview', 'thread_preview', $viewParams);
 	}
@@ -44,7 +44,7 @@ class Thread extends XFCP_Thread
 	{
 		$extraWith = parent::getThreadViewExtraWith();
 
-		$extraWith[] = 'TV';
+		$extraWith[] = 'traktTV';
 
 		return $extraWith;
 	}

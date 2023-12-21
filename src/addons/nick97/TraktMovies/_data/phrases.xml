@@ -9,9 +9,16 @@
   <phrase title="forum_sort.trakt_movies_release" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Movie release date]]></phrase>
   <phrase title="forum_type.trakt_movies_movie" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trakt Movie Forum]]></phrase>
   <phrase title="forum_type_desc.trakt_movies_movie" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trakt movie thread starter]]></phrase>
-  <phrase title="nick97_movie_trakt_api_key_not_found" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trakt API key not found...!]]></phrase>
+  <phrase title="nick97_movie_trakt_api_key_not_found" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Trakt API key not found...!]]></phrase>
   <phrase title="nick97_movies_more_details_on_trakt" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[More details on Trakt]]></phrase>
   <phrase title="nick97_movies_trakt_watch_region" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Movie watch providers default region]]></phrase>
+  <phrase title="nick97_trakt_movies_request_empty_body" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[A non-empty request body is required...!]]></phrase>
+  <phrase title="nick97_trakt_movies_request_method_not_allowed" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Method Not Allowed...!]]></phrase>
+  <phrase title="nick97_trakt_movies_request_not_found" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Requested data not found...!]]></phrase>
+  <phrase title="nick97_trakt_movies_request_not_success" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Server not responding please try again...!]]></phrase>
+  <phrase title="nick97_trakt_movies_request_server_error" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Server Error...!]]></phrase>
+  <phrase title="nick97_trakt_movies_request_unauthorized" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Unauthorized, Authentication has been denied for this request.]]></phrase>
+  <phrase title="nick97_trakt_movies_request_unsported_media" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Unsupported Media Type..!]]></phrase>
   <phrase title="option.traktMovieThreads_apikey" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trakt API key]]></phrase>
   <phrase title="option.traktthreads_apikey" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[TMDb API Key]]></phrase>
   <phrase title="option.traktthreads_backdropCoverSize" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Backdrop cover size]]></phrase>

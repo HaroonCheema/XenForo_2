@@ -9,7 +9,7 @@ class Thread extends XFCP_Thread
 	public function renderResult(Entity $entity, array $options = [])
 	{
 		/** @var \nick97\TraktMovies\XF\Entity\Thread $entity */
-		if ($entity->Movie && \XF::options()->traktthreads_replaceSearchTemplate) {
+		if ($entity->traktMovie && \XF::options()->traktthreads_replaceSearchTemplate) {
 			$data = $this->getTemplateData($entity, $options);
 			return \XF::app()->templater()->renderTemplate('public:search_result_trakt_movies_thread', $data);
 		}

@@ -9,8 +9,8 @@ class Movies extends AbstractController
 {
 	public function actionCasts(ParameterBag $params)
 	{
-		$thread = $this->assertViewableThread($params->thread_id, ['Movie']);
-		$movie = $thread->Movie;
+		$thread = $this->assertViewableThread($params->thread_id, ['traktMovie']);
+		$movie = $thread->traktMovie;
 		if (!$movie) {
 			return $this->notFound();
 		}
@@ -42,8 +42,8 @@ class Movies extends AbstractController
 
 	public function actionCrews(ParameterBag $params)
 	{
-		$thread = $this->assertViewableThread($params->thread_id, ['Movie']);
-		$movie = $thread->Movie;
+		$thread = $this->assertViewableThread($params->thread_id, ['traktMovie']);
+		$movie = $thread->traktMovie;
 		if (!$movie) {
 			return $this->notFound();
 		}
@@ -75,8 +75,8 @@ class Movies extends AbstractController
 
 	public function actionVideos(ParameterBag $params)
 	{
-		$thread = $this->assertViewableThread($params->thread_id, ['Movie']);
-		$movie = $thread->Movie;
+		$thread = $this->assertViewableThread($params->thread_id, ['traktMovie']);
+		$movie = $thread->traktMovie;
 		if (!$movie) {
 			return $this->notFound();
 		}
@@ -111,8 +111,8 @@ class Movies extends AbstractController
 	{
 		$visitor = \XF::visitor();
 
-		$thread = $this->assertViewableThread($params->thread_id, ['Movie']);
-		$movie = $thread->Movie;
+		$thread = $this->assertViewableThread($params->thread_id, ['traktMovie']);
+		$movie = $thread->traktMovie;
 
 		if (!$movie) {
 			return $this->notFound();
@@ -292,47 +292,13 @@ class Movies extends AbstractController
 
 	public function actionPoster(ParameterBag $params)
 	{
-
-
-
-		$thread = $this->assertViewableThread($params->thread_id);
-
-
-
-		$typeCreator = \XF::service('nick\Movies:Thread\TypeData\MovieCreator', $thread);
-
-		$movieCreator = $typeCreator->getMovieCreator();
-
-
-
-
-
-		$movieId = 256358;
-		/** @var \Snog\Movies\Helper\Tmdb $tmdbHelper */
-		$tmdbHelper = \XF::helper('Snog\Movies:Tmdb');
-		$movieCreator->setMovieId($tmdbHelper->parseMovieId($movieId));
-
-		$thread->setOption('movieApiResponse', $movieCreator->getMovieApiResponse());
-
-		$movieCreator->save();
-
-		$message = $thread->Movie->getPostMessage();
-
-
-		$thread->setOption('movieOriginalMessage', $message);
-		exit;
-		$typeCreator->save();
-
-
-		return $typeCreator;
-
 		$visitor = \XF::visitor();
 		if (!$visitor->user_id || (!$visitor->is_moderator && !$visitor->is_admin)) {
 			throw $this->exception($this->noPermission());
 		}
 
 		$thread = $this->assertViewableThread($params->thread_id);
-		$movie = $thread->Movie;
+		$movie = $thread->traktMovie;
 		if (!$movie) {
 			return $this->notFound();
 		}
@@ -637,7 +603,7 @@ class Movies extends AbstractController
 
 			$movieCreator = $typeCreator->getMovieCreator();
 
-			$movieId = $thread->Movie->trakt_id;
+			$movieId = $thread->traktMovie->trakt_id;
 
 			$threadId = $thread->thread_id;
 
@@ -685,7 +651,7 @@ class Movies extends AbstractController
 
 			$movie = $this->finder('nick97\TraktMovies:Movie')->where('thread_id', 22525)->fetchOne();
 			$movie->fastUpdate('thread_id', $threadId);
-			$thread->fastUpdate('title', $thread->Movie->trakt_title);
+			$thread->fastUpdate('title', $thread->traktMovie->trakt_title);
 
 			return $this->redirect($this->buildLink('threads', $thread));
 		} else {
@@ -695,90 +661,6 @@ class Movies extends AbstractController
 			return $this->view('XF:Thread\WatchList', 'nick97_trakt_watch_list_sync_confirm', $viewParams);
 		}
 	}
-
-	// public function actionSync(ParameterBag $params)
-	// {
-
-	// 	$thread = $this->assertViewableThread($params->thread_id);
-
-	// 	// $editor = $this->setupThreadEdit($thread);
-
-	// 	// 	$editor->save();
-
-	// 	// echo "<pre>";
-	// 	// var_dump($thread->Movie->getPostMessage());
-	// 	// exit;
-
-	// 	$typeCreator = \XF::service('nick97\TraktMovies:Thread\TypeData\MovieCreator', $thread, 22525);
-
-
-	// 	$movieCreator = $typeCreator->getMovieCreator();
-
-	// 	$movieId = $thread->Movie->trakt_id;
-
-	// 	$threadId = $thread->thread_id;
-
-
-
-	// 	\xf::db()->delete('nick97_trakt_movies_thread', 'thread_id = ?', $thread->thread_id);
-
-	// 	\xf::db()->delete('nick97_trakt_movies_crew', 'trakt_id = ?', $movieId);
-	// 	\xf::db()->delete('nick97_trakt_movies_cast', 'trakt_id = ?', $movieId);
-
-
-	// 	$casts = $this->finder('nick97\TraktMovies:Cast')->where('trakt_id', $movieId)->fetch();
-
-	// 	if (count($casts)) {
-
-	// 		$this->deleteMovies($casts);
-	// 	}
-
-	// 	$Crews = $this->finder('nick97\TraktMovies:Crew')->where('trakt_id', $movieId)->fetch();
-
-	// 	if (count($Crews)) {
-
-	// 		$this->deleteMovies($Crews);
-	// 	}
-	// 	$Videos = $this->finder('nick97\TraktMovies:Video')->where('trakt_id', $movieId)->fetch();
-
-	// 	if (count($Videos)) {
-
-	// 		$this->deleteMovies($Videos);
-	// 	}
-
-	// 	$Ratings = $this->finder('nick97\TraktMovies:Rating')->where('thread_id', $thread->thread_id)->fetch();
-
-	// 	if (count($Ratings)) {
-
-	// 		$this->deleteMovies($Ratings);
-	// 	}
-
-
-	// 	$movieCreator->setMovieId($movieId);
-
-	// 	$thread->setOption('movieApiResponse', $movieCreator->getMovieApiResponse());
-
-	// 	$movieCreator->save();
-
-	// 	$movie = $this->finder('nick97\TraktMovies:Movie')->where('thread_id', 22525)->fetchOne();
-	// 	$movie->fastUpdate('thread_id', $threadId);
-	// 	$thread->fastUpdate('title', $thread->Movie->trakt_title);
-
-	// 	// $editor = $this->setupThreadEdit($thread);
-
-	// 	// $editor->save();
-	// }
-
-	// protected function setupThreadEdit(\XF\Entity\Thread $thread)
-	// {
-	// 	$editor = $this->getEditorService($thread);
-
-	// 	$editor->setTitle($thread->Movie->title);
-
-	// 	return $editor;
-	// }
-
-
 
 	public function deleteMovies($datas)
 	{

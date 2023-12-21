@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: aa84b78816509d217cff53b547d98fe4
+// FROM HASH: d3731f36ac177b2ae66c92602147cec8
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -30,7 +30,7 @@ return array(
 		$__finalCompiled .= '
 	' . $__templater->formTextBoxRow(array(
 			'name' => 'trakt_tv_tv_id',
-			'value' => $__vars['thread']['TV']['tv_episode'],
+			'value' => $__vars['thread']['traktTV']['tv_episode'],
 			'disabled' => ($__vars['context'] == 'edit'),
 		), array(
 			'label' => 'trakt_tv_episode_number',
@@ -42,7 +42,7 @@ return array(
 		$__finalCompiled .= '
 	' . $__templater->formTextBoxRow(array(
 			'name' => 'trakt_tv_tv_id',
-			'value' => $__vars['thread']['TV']['tv_id'],
+			'value' => $__vars['thread']['traktTV']['tv_id'],
 			'disabled' => ($__vars['context'] == 'edit'),
 		), array(
 			'label' => 'Trakt TV show link or TV show ID',
