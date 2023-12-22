@@ -627,9 +627,9 @@
 		</xf:button>
 	</xf:pageaction>
 </xf:if>]]></template>
-  <template type="public" title="trakt_tv_add_info" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('trakt_tv_add_info') }}</xf:title>
+  <template type="public" title="trakt_tv_add_info" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[<xf:title>{{ phrase('trakt_tv_add_info') }}</xf:title>
 
-<xf:form action="{{ link('tv/addinfo', $thread) }}" ajax="true" class="block">
+<xf:form action="{{ link('tvTrakt/addinfo', $thread) }}" ajax="true" class="block">
 	<div class="block-container">
 		<div class="block-body">
 			<xf:textboxrow label="{{ phrase('trakt_tv_link') }}" name="trakt" value="" />
@@ -745,7 +745,7 @@
 				<div class="menu-content">
 					<xf:contentcheck>
 						<xf:if is="$person.canUpdate()">
-							<a href="{{ link('tv/person/update', $person) }}" data-xf-click="overlay" class="menu-linkRow">{{ phrase('trakt_tv_update_person_info') }}</a>
+							<a href="{{ link('tvTrakt/person/update', $person) }}" data-xf-click="overlay" class="menu-linkRow">{{ phrase('trakt_tv_update_person_info') }}</a>
 						</xf:if>
 					</xf:contentcheck>
 				</div>
@@ -854,7 +854,7 @@
 				<div class="menu-content">
 					<xf:contentcheck>
 						<xf:if is="$person.canUpdate()">
-							<a href="{{ link('tv/person/update', $person) }}" data-xf-click="overlay" class="menu-linkRow">{{ phrase('trakt_tv_update_person_info') }}</a>
+							<a href="{{ link('tvTrakt/person/update', $person) }}" data-xf-click="overlay" class="menu-linkRow">{{ phrase('trakt_tv_update_person_info') }}</a>
 						</xf:if>
 					</xf:contentcheck>
 				</div>
@@ -862,11 +862,11 @@
 		</div>
 	</xf:if>
 </xf:macro>]]></template>
-  <template type="public" title="trakt_tv_edit_episode" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('trakt_tv_edit_episode') }}</xf:title>
+  <template type="public" title="trakt_tv_edit_episode" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[<xf:title>{{ phrase('trakt_tv_edit_episode') }}</xf:title>
 
 <xf:breadcrumb source="$post.Thread.getBreadcrumbs()" />
 
-<xf:form action="{{ link('tv/episode/edit', $post) }}" ajax="true" class="block"
+<xf:form action="{{ link('tvTrakt/episode/edit', $post) }}" ajax="true" class="block"
 	data-xf-init="attachment-manager{{ ($post.isFirstPost() AND $post.canEdit()) ? ' post-edit' : '' }}"
 	data-preview-url="{{ link('posts/preview', $post) }}">
 
@@ -918,11 +918,11 @@
 		</xf:submitrow>
 	</div>
 </xf:form>]]></template>
-  <template type="public" title="trakt_tv_edit_show" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('trakt_tv_edit_show') }}</xf:title>
+  <template type="public" title="trakt_tv_edit_show" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[<xf:title>{{ phrase('trakt_tv_edit_show') }}</xf:title>
 
 <xf:breadcrumb source="$thread.getBreadcrumbs()" />
 
-<xf:form action="{{ link('tv/edit', $tvshow) }}" ajax="true" class="block"
+<xf:form action="{{ link('tvTrakt/edit', $tvshow) }}" ajax="true" class="block"
 	data-xf-init="attachment-manager{{ ($post.isFirstPost() AND $thread.canEdit()) ? ' post-edit' : '' }}"
 	data-preview-url="{{ link('posts/preview', $post) }}">
 
@@ -981,11 +981,11 @@
 		</xf:submitrow>
 	</div>
 </xf:form>]]></template>
-  <template type="public" title="trakt_tv_edit_show_link" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[<xf:if is="$post.isFirstPost() && $thread.traktTV is not empty && !$thread.traktTV.tv_episode">
+  <template type="public" title="trakt_tv_edit_show_link" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[<xf:if is="$post.isFirstPost() && $thread.traktTV is not empty && !$thread.traktTV.tv_episode">
 	<xf:if is="$post.canEdit()">
 		<xf:if is="($xf.visitor.hasPermission('forum', 'trakt_edit_shows') && !$thread.traktTV.comment) || $thread.traktTV.comment">
 			<xf:js src="xf/message.js" min="1" />
-			<a href="{{ link('tv/edit', $thread.traktTV) }}"
+			<a href="{{ link('tvTrakt/edit', $thread.traktTV) }}"
 				class="actionBar-action actionBar-action--edit actionBar-action--menuItem"
 				data-xf-click="quick-edit"
 				data-editor-target="#js-post-{$post.post_id} .js-quickEditTarget"
@@ -1175,7 +1175,7 @@
 		<img src="{$node.TVForum.getForumPosterUrl()}" />
 	</xf:if>
 </div>]]></template>
-  <template type="public" title="trakt_tv_post_macros" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[<xf:macro name="tv"
+  <template type="public" title="trakt_tv_post_macros" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[<xf:macro name="tv"
 	arg-post="!"
 	arg-thread="!"
 	arg-forum="{{ null }}"
@@ -1345,7 +1345,8 @@
 															</xf:if>
 
 															<br />
-															<xf:button href="{$watchProvider.link}"  target="_blank">{{ phrase('nick97_tv_more_details_on_trakt') }}</xf:button>
+															
+															<xf:button href="https://trakt.tv/shows/{{$thread.getTraktTVLink($thread.traktTV.tv_id)}}"  target="_blank">{{ phrase('nick97_tv_more_details_on_trakt') }}</xf:button>
 														</div>
 													</xf:foreach>
 												</div>
@@ -1605,7 +1606,7 @@
 
 	<xf:if is="$xf.visitor.user_id">
 		<div>
-			<xf:button class="button--link button--wrap" href="{{ link('tv/rate', $thread.traktTV) }}" overlay="true">
+			<xf:button class="button--link button--wrap" href="{{ link('tvTrakt/rate', $thread.traktTV) }}" overlay="true">
 				{{ phrase('trakt_tv_change_rating') }}
 			</xf:button>
 		</div>
@@ -1666,10 +1667,10 @@
 	</xf:extension>
 
 </xf:macro>]]></template>
-  <template type="public" title="trakt_tv_post_macros_action_bar" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[<xf:if is="(!$post.isFirstPost() && $post.TVPost is not empty) || ($post.isFirstPost() && $thread.traktTV.tv_season && $thread.traktTV.tv_episode)">
+  <template type="public" title="trakt_tv_post_macros_action_bar" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[<xf:if is="(!$post.isFirstPost() && $post.TVPost is not empty) || ($post.isFirstPost() && $thread.traktTV.tv_season && $thread.traktTV.tv_episode)">
 	<xf:if is="$post.canEdit()">
 		<xf:js src="xf/message.js" min="1" />
-		<a href="{{ link('tv/episode/update', $post) }}"
+		<a href="{{ link('tvTrakt/episode/update', $post) }}"
 			class="actionBar-action actionBar-action--updateEpisode actionBar-action--menuItem"
 			data-menu-closer="true">{{ phrase('trakt_tv_update_episode') }}</a>
 		<xf:set var="$hasActionBarMenu" value="{{ true }}" />
@@ -1713,9 +1714,9 @@
 	data-xf-init="tooltip" />
 
 <span class="tvhint">{{ phrase('trakt_tv_show_lookup') }}</span>]]></template>
-  <template type="public" title="trakt_tv_rate" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{$tvshow.tv_title}</xf:title>
+  <template type="public" title="trakt_tv_rate" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[<xf:title>{$tvshow.tv_title}</xf:title>
 
-<xf:form action="{{ link('tv/rate', $tvshow) }}" ajax="true" class="block">
+<xf:form action="{{ link('tvTrakt/rate', $tvshow) }}" ajax="true" class="block">
 	<div class="block-container">
 			<div class="block-body">
 				<xf:macro template="rating_macros" name="rating"
@@ -2084,7 +2085,7 @@
 		</xf:button>
 	</xf:if>
 	<xf:if is="$xf.options.traktTvThreads_update && !$thread.traktTV && $canAddInfo">
-		<xf:button href="{{ link('tv/add-info', $thread) }}" class="button--link" overlay="true">
+		<xf:button href="{{ link('tvTrakt/add-info', $thread) }}" class="button--link" overlay="true">
 			{{ phrase('trakt_tv_add_info') }}
 		</xf:button>
 	</xf:if>
@@ -2105,7 +2106,7 @@
 			  arg-tv="{$tv}" arg-videos="{$videos}" arg-page="{$page}"
 			  arg-hasMore="{$hasMore}" />
 </div>]]></template>
-  <template type="public" title="trakt_tv_videos_macros" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:macro name="video_list" arg-tv="!" arg-videos="!" arg-page="1" arg-hasMore="{{ false }}">
+  <template type="public" title="trakt_tv_videos_macros" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[<xf:macro name="video_list" arg-tv="!" arg-videos="!" arg-page="1" arg-hasMore="{{ false }}">
 	<ul class="listPlain js-tvVideoList{$tv.tv_id}">
 		<xf:foreach loop="{$videos}" value="$video">
 			<li class="block-row block-row--separated">
@@ -2117,7 +2118,7 @@
 	<xf:if is="$hasMore">
 		<div class="block-footer js-tvVideoLoadMore{$tv.tv_id}">
 			<span class="block-footer-controls">
-				<xf:button href="{{ link('tv/videos', $tv, {'page': $page + 1}) }}"
+				<xf:button href="{{ link('tvTrakt/videos', $tv, {'page': $page + 1}) }}"
 					data-xf-click="inserter"
 					data-append=".js-tvVideoList{$tv.tv_id}"
 					data-replace=".js-tvVideoLoadMore{$tv.tv_id}">

@@ -49,4 +49,13 @@ class Thread extends XFCP_Thread
 		$this->db()->delete('nick97_trakt_tv_post', 'post_id IN (' . $this->db()->quote($postIds) . ')');
 		parent::_postDeletePosts($postIds);
 	}
+
+	public function getTraktTVLink($id)
+	{
+		$recordExist = \XF::finder('nick97\TraktTV:TraktTVSlug')->where('tmdb_id', $id)->fetchOne();
+
+		if ($recordExist) {
+			return $recordExist["trakt_slug"];
+		}
+	}
 }

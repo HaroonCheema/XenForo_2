@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 7a5e2d5b43cd02c45ecbf93197a9665f
+// FROM HASH: 8f9e5c1e2c86ea493b96921acce73e50
 return array(
 'macros' => array('tv' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -102,8 +102,9 @@ return array(
 					$__finalCompiled .= '
 
 															<br />
+															
 															' . $__templater->button('More details on Trakt', array(
-						'href' => $__vars['watchProvider']['link'],
+						'href' => 'https://trakt.tv/shows/' . $__templater->method($__vars['thread'], 'getTraktTVLink', array($__vars['thread']['traktTV']['tv_id'], )),
 						'target' => '_blank',
 					), '', array(
 					)) . '
@@ -806,10 +807,10 @@ return array(
 		$__finalCompiled .= '
 		<div>
 			' . $__templater->button('
-				' . 'trakt_tv_change_rating' . '
+				' . 'Add/Change rating' . '
 			', array(
 			'class' => 'button--link button--wrap',
-			'href' => $__templater->func('link', array('tv/rate', $__vars['thread']['traktTV'], ), false),
+			'href' => $__templater->func('link', array('tvTrakt/rate', $__vars['thread']['traktTV'], ), false),
 			'overlay' => 'true',
 		), '', array(
 		)) . '

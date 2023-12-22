@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 4747e4ade17fb9a22dd727e5408885a7
+// FROM HASH: f1c5cf0d25c7f020a9c1c1f2127a1ca9
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -18,7 +18,7 @@ return array(
 					'min' => '1',
 				));
 				$__finalCompiled .= '
-			<a href="' . $__templater->func('link', array('tv/edit', $__vars['thread']['traktTV'], ), true) . '"
+			<a href="' . $__templater->func('link', array('tvTrakt/edit', $__vars['thread']['traktTV'], ), true) . '"
 				class="actionBar-action actionBar-action--edit actionBar-action--menuItem"
 				data-xf-click="quick-edit"
 				data-editor-target="#js-post-' . $__templater->escape($__vars['post']['post_id']) . ' .js-quickEditTarget"

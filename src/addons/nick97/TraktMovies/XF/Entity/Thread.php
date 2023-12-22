@@ -42,4 +42,13 @@ class Thread extends XFCP_Thread
 			$user->fastUpdate('trakt_movies_thread_count', max(0, $user->trakt_movies_thread_count + $amount));
 		}
 	}
+
+	public function getTraktMovLink($id)
+	{
+		$recordExist = \XF::finder('nick97\TraktMovies:TraktMovSlug')->where('tmdb_id', $id)->fetchOne();
+
+		if ($recordExist) {
+			return $recordExist["trakt_slug"];
+		}
+	}
 }

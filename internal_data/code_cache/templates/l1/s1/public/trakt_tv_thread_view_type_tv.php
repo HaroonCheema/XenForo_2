@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 226e0628255496cba5f91c3b407284d4
+// FROM HASH: 35db462409e650a81b0a1adde6d8d233
 return array(
 'extends' => function($__templater, array $__vars) { return 'thread_view'; },
 'extensions' => array('content_top' => function($__templater, array $__vars, $__extensions = null)
@@ -54,7 +54,7 @@ return array(
 		' . $__templater->button('
 			' . 'trakt_tv_add_info' . '
 		', array(
-			'href' => $__templater->func('link', array('tv/add-info', $__vars['thread'], ), false),
+			'href' => $__templater->func('link', array('tvTrakt/add-info', $__vars['thread'], ), false),
 			'class' => 'button--link',
 			'overlay' => 'true',
 		), '', array(

@@ -2,7 +2,7 @@
 	<xf:if is="$post.canEdit()">
 		<xf:if is="($xf.visitor.hasPermission('forum', 'trakt_edit_shows') && !$thread.traktTV.comment) || $thread.traktTV.comment">
 			<xf:js src="xf/message.js" min="1" />
-			<a href="{{ link('tv/edit', $thread.traktTV) }}"
+			<a href="{{ link('tvTrakt/edit', $thread.traktTV) }}"
 				class="actionBar-action actionBar-action--edit actionBar-action--menuItem"
 				data-xf-click="quick-edit"
 				data-editor-target="#js-post-{$post.post_id} .js-quickEditTarget"

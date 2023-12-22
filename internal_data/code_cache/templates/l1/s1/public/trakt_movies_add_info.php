@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 7a72f71a11ee63facd4087115a49937b
+// FROM HASH: 501178bb06ab3c521562e92922b0dc4a
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -45,7 +45,7 @@ return array(
 		</div>
 	</div>
 ', array(
-		'action' => $__templater->func('link', array('movies/addinfo', $__vars['thread'], ), false),
+		'action' => $__templater->func('link', array('traktMovies/addinfo', $__vars['thread'], ), false),
 		'ajax' => 'true',
 		'class' => 'block',
 	));

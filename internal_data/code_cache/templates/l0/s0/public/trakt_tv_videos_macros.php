@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: b7bdd94c9a0ec0631db285c66139691d
+// FROM HASH: c63b5f610261093d6a337f1510ba3041
 return array(
 'macros' => array('video_list' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -36,7 +36,7 @@ return array(
 				' . $__templater->button('
 					' . 'More' . $__vars['xf']['language']['ellipsis'] . '
 				', array(
-			'href' => $__templater->func('link', array('tv/videos', $__vars['tv'], array('page' => $__vars['page'] + 1, ), ), false),
+			'href' => $__templater->func('link', array('tvTrakt/videos', $__vars['tv'], array('page' => $__vars['page'] + 1, ), ), false),
 			'data-xf-click' => 'inserter',
 			'data-append' => '.js-tvVideoList' . $__vars['tv']['tv_id'],
 			'data-replace' => '.js-tvVideoLoadMore' . $__vars['tv']['tv_id'],

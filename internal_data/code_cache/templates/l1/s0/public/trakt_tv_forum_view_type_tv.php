@@ -38,7 +38,7 @@ return array(
 			if ($__vars['xf']['visitor']['user_id']) {
 				$__finalCompiled .= '
 							' . $__templater->button('
-								' . 'trakt_tv_change_rating' . '
+								' . 'Add/Change rating' . '
 							', array(
 					'class' => 'button--link',
 					'href' => $__templater->func('link', array('tvshow/rate-show', $__vars['forum'], ), false),

@@ -16,7 +16,7 @@ return array(
 		'currentRating' => $__vars['userRating']['rating'],
 		'rowLabel' => 'Rating',
 		'rowHint' => '',
-		'rowExplain' => 'trakt_tv_already_rated',
+		'rowExplain' => 'If you have already rated this show, your current rating is shown',
 	), $__vars) . '
 		</div>
 		

@@ -19,5 +19,8 @@
     },
     "trakt_tvthreads_interface-updatePersons.json": {
         "hash": "58e00f99965bdaedf5f26fdd3e752965"
+    },
+    "trakt_tvthreads_interface-use_trakt_tv.json": {
+        "hash": "d7788959c4a7309965dde2c924097f7e"
     }
 }

@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 7a7d631f0e19d0533d438c0c1bb8417a
+// FROM HASH: 47f31da637cb2966b8c835fad224b1fa
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -25,7 +25,7 @@ return array(
 		';
 		if ($__vars['xf']['visitor']['user_id']) {
 			$__finalCompiled .= '
-			<a href="' . $__templater->func('link', array('movies/rate', $__vars['thread']['traktMovie'], ), true) . '" data-xf-click="overlay"><button type="button" class="button--link button"><span class="button-text">' . 'Add/Change rating' . '</span></button></a>
+			<a href="' . $__templater->func('link', array('traktMovies/rate', $__vars['thread']['traktMovie'], ), true) . '" data-xf-click="overlay"><button type="button" class="button--link button"><span class="button-text">' . 'Add/Change rating' . '</span></button></a>
 		';
 		}
 		$__finalCompiled .= '

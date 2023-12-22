@@ -10,7 +10,7 @@
 	<xf:if is="$hasMore">
 		<div class="block-footer js-tvVideoLoadMore{$tv.tv_id}">
 			<span class="block-footer-controls">
-				<xf:button href="{{ link('tv/videos', $tv, {'page': $page + 1}) }}"
+				<xf:button href="{{ link('tvTrakt/videos', $tv, {'page': $page + 1}) }}"
 					data-xf-click="inserter"
 					data-append=".js-tvVideoList{$tv.tv_id}"
 					data-replace=".js-tvVideoLoadMore{$tv.tv_id}">

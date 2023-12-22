@@ -50,7 +50,7 @@
 												<xf:if is="$xf.options.traktthreads_forum_local">
 													<img src="{$thread.traktMovie.getImageUrl('l')}" />
 												<xf:elseif is="$xf.options.traktthreads_usecdn" />
-													<img src="{$xf.options.traktthreads_cdn_path}/movies/LargePosters{$thread.traktMovie.trakt_image}" />
+													<img src="{$xf.options.traktthreads_cdn_path}/traktMovies/LargePosters{$thread.traktMovie.trakt_image}" />
 												<xf:else />
 													<img src="https://image.tmdb.org/t/p/w185{$thread.traktMovie.trakt_image}" />
 												</xf:if>
@@ -69,7 +69,7 @@
 												
 												<xf:if is="$xf.visitor.user_id">
 													<div>
-														<xf:button class="button--link button--wrap" href="{{ link('movies/rate', $thread.traktMovie) }}" overlay="true">
+														<xf:button class="button--link button--wrap" href="{{ link('traktMovies/rate', $thread.traktMovie) }}" overlay="true">
 															{{ phrase('trakt_movies_change_rating') }}
 														</xf:button>
 													</div>
@@ -153,8 +153,8 @@
 															</xf:if>
 
 															<br />
-
-															<xf:button href="{$watchProvider.link}"  target="_blank">{{ phrase('trakt_movies_more_details_on_trakt') }}</xf:button>
+	
+															<xf:button href="https://trakt.tv/movies/{{$thread.getTraktMovLink($thread.traktMovie.trakt_id)}}"  target="_blank">{{ phrase('trakt_movies_more_details_on_trakt') }}</xf:button>
 														</div>
 													</xf:foreach>
 

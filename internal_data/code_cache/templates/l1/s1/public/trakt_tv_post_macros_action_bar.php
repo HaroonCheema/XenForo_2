@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 09cc8f3b93f47b86b7b03d31801fe94a
+// FROM HASH: cbc6704c5dcd26b87f6978db15415e38
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -15,7 +15,7 @@ return array(
 				'min' => '1',
 			));
 			$__finalCompiled .= '
-		<a href="' . $__templater->func('link', array('tv/episode/update', $__vars['post'], ), true) . '"
+		<a href="' . $__templater->func('link', array('tvTrakt/episode/update', $__vars['post'], ), true) . '"
 			class="actionBar-action actionBar-action--updateEpisode actionBar-action--menuItem"
 			data-menu-closer="true">' . 'trakt_tv_update_episode' . '</a>
 		';

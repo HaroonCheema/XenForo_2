@@ -11,17 +11,6 @@ class WatchList extends AbstractController
 
 	public function actionIndex(ParameterBag $params)
 	{
-		// /** @var \XF\Entity\User $user */
-		// $user = $this->assertRecordExists('XF:User', 1);
-
-		// if (!$user->canViewWatchList($error)) {
-		//     throw $this->exception($this->noPermission($error));
-		// }
-
-		// if (!$user->canViewStats($error)) {
-		//     throw $this->exception($this->noPermission($error));
-		// }
-
 		$conditions = [
 			['discussion_type', 'snog_movies_movie'],
 			['discussion_type', 'trakt_movies_movie'],
@@ -38,6 +27,10 @@ class WatchList extends AbstractController
 		// get visitor
 		$visitor = \XF::visitor();
 
+		if (!$visitor->user_id) {
+			return $this->noPermission();
+		}
+
 		// get permission
 		if ($visitor->hasPermission('nick97_watch_list', 'view_own_watchlist')) {
 
@@ -51,30 +44,22 @@ class WatchList extends AbstractController
 				->whereOr($tvConditions)->where('thread_id', $allThreadIds)->pluckfrom('thread_id')->fetch()->toArray();
 		}
 
-		// elseif ($visitor->hasPermission('nick97_watch_list', 'view_everyone_watchlist')) {
-		// 	$threadIds = $this->finder('XF:Thread')
-		// 		->whereOr($conditions)->where('watch_list', 1)->pluckfrom('thread_id')->fetch()->toArray();
-
-		// 	$tvThreadIds = $this->finder('XF:Thread')
-		// 		->whereOr($tvConditions)->where('watch_list', 1)->pluckfrom('thread_id')->fetch()->toArray();
-		// }
-
 		if (count($threadIds) > 0) {
-			// $tmdbMovies = $this->finder('Snog\Movies:Movie')->where('thread_id', $threadIds)->fetch()->toArray();
+			$tmdbMovies = $this->finder('Snog\Movies:Movie')->where('thread_id', $threadIds)->fetch()->toArray();
 			$traktMovies = $this->finder('nick97\TraktMovies:Movie')->where('thread_id', $threadIds)->fetch()->toArray();
 
-			// $movies = array_merge($tmdbMovies, $traktMovies);
-			$movies = $traktMovies;
+			$movies = array_merge($tmdbMovies, $traktMovies);
+			// $movies = $traktMovies;
 		} else {
 			$movies = [];
 		}
 
 		if (count($tvThreadIds) > 0) {
-			// $tmdbTv = $this->finder('Snog\TV:TV')->where('thread_id', $tvThreadIds)->fetch()->toArray();
+			$tmdbTv = $this->finder('Snog\TV:TV')->where('thread_id', $tvThreadIds)->fetch()->toArray();
 			$traktTv = $this->finder('nick97\TraktTV:TV')->where('thread_id', $tvThreadIds)->fetch()->toArray();
 
-			// $tvShows = array_merge($tmdbTv, $traktTv);
-			$tvShows = $traktTv;
+			$tvShows = array_merge($tmdbTv, $traktTv);
+			// $tvShows = $traktTv;
 		} else {
 			$tvShows = [];
 		}
@@ -94,7 +79,6 @@ class WatchList extends AbstractController
 
 		$viewpParams = [
 			'stats' => $traktUserId ? $this->userStats($traktUserId) : '',
-			// 'stats' => $this->userStats("harooncheema"),
 			"movies" => $movies,
 			"tvShows" => $tvShows,
 		];
@@ -105,6 +89,10 @@ class WatchList extends AbstractController
 	public function actionMy()
 	{
 		$visitor = \XF::visitor();
+
+		if (!$visitor->user_id) {
+			return $this->noPermission();
+		}
 
 		$allThreadIds = $this->finder('nick97\WatchList:WatchList')
 			->where('user_id', $visitor->user_id)->pluckfrom('thread_id')->fetch()->toArray();

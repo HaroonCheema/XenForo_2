@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: aa99457c1839a753b3eb534494db8eca
+// FROM HASH: b8ccb29abc634221e41c3bd5d2af470f
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -16,7 +16,7 @@ return array(
 		'currentRating' => $__vars['userRating']['rating'],
 		'rowLabel' => 'Rating',
 		'rowHint' => '',
-		'rowExplain' => 'trakt_tv_already_rated',
+		'rowExplain' => 'If you have already rated this show, your current rating is shown',
 	), $__vars) . '
 		</div>
 
@@ -37,7 +37,7 @@ return array(
 		</div>
 	</div>
 ', array(
-		'action' => $__templater->func('link', array('tv/rate', $__vars['tvshow'], ), false),
+		'action' => $__templater->func('link', array('tvTrakt/rate', $__vars['tvshow'], ), false),
 		'ajax' => 'true',
 		'class' => 'block',
 	));

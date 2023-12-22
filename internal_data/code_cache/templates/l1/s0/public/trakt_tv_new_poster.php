@@ -16,11 +16,11 @@ return array(
 				';
 	} else {
 		$__compilerTemp1 .= '
-					' . 'trakt_tv_poster_not_available' . '
+					' . 'A new poster is not available' . '
 					';
 		if ($__vars['posterpath']) {
 			$__compilerTemp1 .= '
-						<strong>' . 'trakt_tv_reupload_old_poster' . '</strong>
+						<strong>' . 'Reupload old poster?' . '</strong>
 					';
 		}
 		$__compilerTemp1 .= '
@@ -31,7 +31,7 @@ return array(
 		$__compilerTemp2 .= '
 				<input type="hidden" name="posterpath" value="' . $__templater->escape($__vars['posterpath']) . '" />
 				' . $__templater->formSubmitRow(array(
-			'submit' => 'trakt_tv_save_poster',
+			'submit' => 'Save poster',
 		), array(
 			'rowtype' => 'simple',
 		)) . '

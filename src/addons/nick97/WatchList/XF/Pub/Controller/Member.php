@@ -7,38 +7,6 @@ use XF\Mvc\ParameterBag;
 class Member extends XFCP_Member
 {
 
-	// public function actionView(ParameterBag $params)
-	// {
-	// 	$parent = parent::actionView($params);
-	// 	$user = $this->assertViewableUser($params->user_id);
-
-	// 	$finder = \XF::finder('XF:UserConnectedAccount');
-	// 	$traktUser = $finder
-	// 		->where('user_id', $params->user_id)->where('provider', 'nick_trakt')
-	// 		->fetchOne();
-
-	// 	if (!empty($traktUser)) {
-
-	// 		if (!$user->canViewStats($error)) {
-	// 			return $parent;
-	// 		} else {
-	// 			$traktUserId = null;
-
-	// 			if (!empty($traktUser)) {
-	// 				$traktUserId = $traktUser['provider_key'];
-	// 			}
-
-	// 			if ($parent instanceof  \XF\Mvc\Reply\View) {
-	// 				$parent->setParam('stats', $traktUserId ? $this->userStats($traktUserId) : '');
-	// 			}
-
-	// 			return $parent;
-	// 		}
-	// 	} else {
-	// 		return $parent;
-	// 	}
-	// }
-
 	protected function userStats($userId)
 	{
 		$clientKey = \XF::options()->nick97_watch_list_trakt_api_key;
@@ -93,6 +61,21 @@ class Member extends XFCP_Member
 	{
 		$user = $this->assertViewableUser($params->user_id);
 
+		$visitor = \XF::visitor();
+		if (!$visitor->user_id) {
+			return $this->noPermission();
+		}
+
+		if ($visitor->user_id == $user->user_id) {
+			if (!\XF::visitor()->hasPermission('nick97_watch_list', 'view_own_stats')) {
+				throw $this->exception($this->noPermission());
+			}
+		} else {
+			if (!\XF::visitor()->hasPermission('nick97_watch_list', 'view_anyone_stats')) {
+				throw $this->exception($this->noPermission());
+			}
+		}
+
 		$finder = \XF::finder('XF:UserConnectedAccount');
 		$traktUser = $finder
 			->where('user_id', $params->user_id)->where('provider', 'nick_trakt')
@@ -145,6 +128,20 @@ class Member extends XFCP_Member
 		// get visitor
 		$visitor = \XF::visitor();
 
+		if (!$visitor->user_id) {
+			return $this->noPermission();
+		}
+
+		if ($visitor->user_id == $user->user_id) {
+			if (!\XF::visitor()->hasPermission('nick97_watch_list', 'view_own_watchlist')) {
+				throw $this->exception($this->noPermission());
+			}
+		} else {
+			if (!\XF::visitor()->hasPermission('nick97_watch_list', 'view_everyone_watchlist')) {
+				throw $this->exception($this->noPermission());
+			}
+		}
+
 		// get permission
 
 		if ($user->canViewWatchList($error)) {
@@ -165,22 +162,22 @@ class Member extends XFCP_Member
 		}
 
 		if (count($threadIds) > 0) {
-			// $tmdbMovies = $this->finder('Snog\Movies:Movie')->where('thread_id', $threadIds)->fetch()->toArray();
+			$tmdbMovies = $this->finder('Snog\Movies:Movie')->where('thread_id', $threadIds)->fetch()->toArray();
 			$traktMovies = $this->finder('nick97\TraktMovies:Movie')->where('thread_id', $threadIds)->fetch()->toArray();
 
-			// $movies = array_merge($tmdbMovies, $traktMovies);
-			$movies = $traktMovies;
+			$movies = array_merge($tmdbMovies, $traktMovies);
+			// $movies = $traktMovies;
 		} else {
 			$movies = [];
 		}
 
 		if (count($tvThreadIds) > 0) {
 
-			// $tmdbTv = $this->finder('Snog\TV:TV')->where('thread_id', $tvThreadIds)->fetch()->toArray();
+			$tmdbTv = $this->finder('Snog\TV:TV')->where('thread_id', $tvThreadIds)->fetch()->toArray();
 			$traktTv = $this->finder('nick97\TraktTV:TV')->where('thread_id', $tvThreadIds)->fetch()->toArray();
 
-			// $tvShows = array_merge($tmdbTv, $traktTv);
-			$tvShows = $traktTv;
+			$tvShows = array_merge($tmdbTv, $traktTv);
+			// $tvShows = $traktTv;
 		} else {
 			$tvShows = [];
 		}

@@ -1,6 +1,6 @@
 <xf:title>{$movie.trakt_title}</xf:title>
 
-<xf:form action="{{ link('movies/rate', $movie) }}" ajax="true" class="block">
+<xf:form action="{{ link('traktMovies/rate', $movie) }}" ajax="true" class="block">
 	<div class="block-container">
 			<div class="block-body">
 				<xf:macro template="rating_macros" name="rating"

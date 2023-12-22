@@ -18,6 +18,12 @@ class Forum extends XFCP_Forum
 			/** @var \nick97\TraktMovies\XF\Entity\Forum $forum */
 			$forum = $this->assertViewableForum($params->node_id ?: $params->node_name, ['DraftThreads|' . $visitor->user_id]);
 
+			if ($forum->isThreadTypeCreatable('trakt_movies_movie')) {
+				if (!\XF::visitor()->hasPermission('trakt_movies', 'use_trakt_movies')) {
+					throw $this->exception($this->noPermission());
+				}
+			}
+
 			if (!$forum->isThreadTypeCreatable('trakt_movies_movie')) {
 				return parent::actionPostThread($params);
 			}
@@ -25,7 +31,6 @@ class Forum extends XFCP_Forum
 			$clientKey = \XF::options()->traktMovieThreads_apikey;
 
 			if (!$clientKey) {
-
 				throw $this->exception(
 					$this->notFound(\XF::phrase("nick97_movie_trakt_api_key_not_found"))
 				);

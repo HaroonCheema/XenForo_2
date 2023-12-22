@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 0fbf82092787363f794110a8d92c01ce
+// FROM HASH: 7f11d774981f559a4d80de90fcbb6282
 return array(
 'macros' => array('movie' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -101,9 +101,9 @@ return array(
 					$__finalCompiled .= '
 
 															<br />
-
-															' . $__templater->button('trakt_movies_more_details_on_trakt', array(
-						'href' => $__vars['watchProvider']['link'],
+	
+															' . $__templater->button('More details on Trakt', array(
+						'href' => 'https://trakt.tv/movies/' . $__templater->method($__vars['thread'], 'getTraktMovLink', array($__vars['thread']['traktMovie']['trakt_id'], )),
 						'target' => '_blank',
 					), '', array(
 					)) . '
@@ -177,7 +177,7 @@ return array(
 												';
 		} else if ($__vars['xf']['options']['traktthreads_usecdn']) {
 			$__finalCompiled .= '
-													<img src="' . $__templater->escape($__vars['xf']['options']['traktthreads_cdn_path']) . '/movies/LargePosters' . $__templater->escape($__vars['thread']['traktMovie']['trakt_image']) . '" />
+													<img src="' . $__templater->escape($__vars['xf']['options']['traktthreads_cdn_path']) . '/traktMovies/LargePosters' . $__templater->escape($__vars['thread']['traktMovie']['trakt_image']) . '" />
 												';
 		} else {
 			$__finalCompiled .= '
@@ -216,7 +216,7 @@ return array(
 															' . 'Add/Change rating' . '
 														', array(
 				'class' => 'button--link button--wrap',
-				'href' => $__templater->func('link', array('movies/rate', $__vars['thread']['traktMovie'], ), false),
+				'href' => $__templater->func('link', array('traktMovies/rate', $__vars['thread']['traktMovie'], ), false),
 				'overlay' => 'true',
 			), '', array(
 			)) . '

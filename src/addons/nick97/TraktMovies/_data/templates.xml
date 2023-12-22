@@ -467,9 +467,9 @@
 		}
 	}
 }]]></template>
-  <template type="public" title="trakt_movies_add_info" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('trakt_movies_add_info') }}</xf:title>
+  <template type="public" title="trakt_movies_add_info" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[<xf:title>{{ phrase('trakt_movies_add_info') }}</xf:title>
 
-<xf:form action="{{ link('movies/addinfo', $thread) }}" ajax="true" class="block">
+<xf:form action="{{ link('traktMovies/addinfo', $thread) }}" ajax="true" class="block">
 	<div class="block-container">
 		<div class="block-body">
 			<xf:textboxrow label="{{ phrase('trakt_movies_link_id') }}" name="trakt" value="" />
@@ -557,7 +557,7 @@
 				<div class="menu-content">
 					<xf:contentcheck>
 						<xf:if is="$person.canUpdate()">
-							<a href="{{ link('movies/person/update', $person) }}" data-xf-click="overlay" class="menu-linkRow">{{ phrase('trakt_movies_update_person_info') }}</a>
+							<a href="{{ link('traktMovies/person/update', $person) }}" data-xf-click="overlay" class="menu-linkRow">{{ phrase('trakt_movies_update_person_info') }}</a>
 						</xf:if>
 					</xf:contentcheck>
 				</div>
@@ -657,7 +657,7 @@
 				<div class="menu-content">
 					<xf:contentcheck>
 						<xf:if is="$person.canUpdate()">
-							<a href="{{ link('movies/person/update', $person) }}" data-xf-click="overlay" class="menu-linkRow">{{ phrase('trakt_movies_update_person_info') }}</a>
+							<a href="{{ link('traktMovies/person/update', $person) }}" data-xf-click="overlay" class="menu-linkRow">{{ phrase('trakt_movies_update_person_info') }}</a>
 						</xf:if>
 					</xf:contentcheck>
 				</div>
@@ -670,7 +670,7 @@
 <xf:extension name="above_node_list"><xf:css src="trakt_movies.less" /></xf:extension>
 
 <xf:extension name="below_thread_list"><span class="moviehint">{{ phrase('trakt_movies_information')}}</span></xf:extension>]]></template>
-  <template type="public" title="trakt_movies_movie" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[<xf:title>{{ prefix('thread', $thread, 'escaped') }}{$thread.title}</xf:title>
+  <template type="public" title="trakt_movies_movie" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[<xf:title>{{ prefix('thread', $thread, 'escaped') }}{$thread.title}</xf:title>
 <xf:h1>{{ prefix('thread', $thread) }}{$thread.title}</xf:h1>
 
 <xf:if is="$xf.options.traktthreads_use_rating">
@@ -682,7 +682,7 @@
 		/>
 	
 		<xf:if is="$xf.visitor.user_id">
-			<a href="{{ link('movies/rate',$thread.traktMovie)}}" data-xf-click="overlay"><button type="button" class="button--link button"><span class="button-text">{{ phrase('trakt_movies_change_rating') }}</span></button></a>
+			<a href="{{ link('traktMovies/rate',$thread.traktMovie)}}" data-xf-click="overlay"><button type="button" class="button--link button"><span class="button-text">{{ phrase('trakt_movies_change_rating') }}</span></button></a>
 		</xf:if>
 	</div>
 </xf:if>
@@ -776,11 +776,11 @@
 	}
 	</script>
 </xf:page>]]></template>
-  <template type="public" title="trakt_movies_movie_edit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('trakt_movies_edit_movie') }}</xf:title>
+  <template type="public" title="trakt_movies_movie_edit" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[<xf:title>{{ phrase('trakt_movies_edit_movie') }}</xf:title>
 
 <xf:breadcrumb source="$thread.getBreadcrumbs()" />
 
-<xf:form action="{{ link('movies/edit', $movie) }}" ajax="true" class="block"
+<xf:form action="{{ link('traktMovies/edit', $movie) }}" ajax="true" class="block"
 	data-xf-init="attachment-manager{{ ($post.isFirstPost() AND $thread.canEdit()) ? ' post-edit' : '' }}"
 	data-preview-url="{{ link('posts/preview', $post) }}">
 
@@ -859,7 +859,7 @@
 		</div>
 	</div>
 </xf:form>]]></template>
-  <template type="public" title="trakt_movies_post_macros" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[<xf:macro name="movie"
+  <template type="public" title="trakt_movies_post_macros" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[<xf:macro name="movie"
 	arg-post="!"
 	arg-thread="!"
 	arg-forum="{{ null }}"
@@ -911,7 +911,7 @@
 												<xf:if is="$xf.options.traktthreads_forum_local">
 													<img src="{$thread.traktMovie.getImageUrl('l')}" />
 												<xf:elseif is="$xf.options.traktthreads_usecdn" />
-													<img src="{$xf.options.traktthreads_cdn_path}/movies/LargePosters{$thread.traktMovie.trakt_image}" />
+													<img src="{$xf.options.traktthreads_cdn_path}/traktMovies/LargePosters{$thread.traktMovie.trakt_image}" />
 												<xf:else />
 													<img src="https://image.tmdb.org/t/p/w185{$thread.traktMovie.trakt_image}" />
 												</xf:if>
@@ -930,7 +930,7 @@
 												
 												<xf:if is="$xf.visitor.user_id">
 													<div>
-														<xf:button class="button--link button--wrap" href="{{ link('movies/rate', $thread.traktMovie) }}" overlay="true">
+														<xf:button class="button--link button--wrap" href="{{ link('traktMovies/rate', $thread.traktMovie) }}" overlay="true">
 															{{ phrase('trakt_movies_change_rating') }}
 														</xf:button>
 													</div>
@@ -1014,8 +1014,8 @@
 															</xf:if>
 
 															<br />
-
-															<xf:button href="{$watchProvider.link}"  target="_blank">{{ phrase('trakt_movies_more_details_on_trakt') }}</xf:button>
+	
+															<xf:button href="https://trakt.tv/movies/{{$thread.getTraktMovLink($thread.traktMovie.trakt_id)}}"  target="_blank">{{ phrase('trakt_movies_more_details_on_trakt') }}</xf:button>
 														</div>
 													</xf:foreach>
 
@@ -1255,9 +1255,9 @@
 		</div>
 	</div>
 </xf:macro>]]></template>
-  <template type="public" title="trakt_movies_rate" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{$movie.trakt_title}</xf:title>
+  <template type="public" title="trakt_movies_rate" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[<xf:title>{$movie.trakt_title}</xf:title>
 
-<xf:form action="{{ link('movies/rate', $movie) }}" ajax="true" class="block">
+<xf:form action="{{ link('traktMovies/rate', $movie) }}" ajax="true" class="block">
 	<div class="block-container">
 			<div class="block-body">
 				<xf:macro template="rating_macros" name="rating"
@@ -1623,7 +1623,7 @@
 			  arg-movie="{$movie}" arg-videos="{$videos}" arg-page="{$page}"
 			  arg-hasMore="{$hasMore}" />
 </div>]]></template>
-  <template type="public" title="trakt_movies_videos_macros" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:macro name="video_list" arg-movie="!" arg-videos="!" arg-page="1" arg-hasMore="{{ false }}">
+  <template type="public" title="trakt_movies_videos_macros" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[<xf:macro name="video_list" arg-movie="!" arg-videos="!" arg-page="1" arg-hasMore="{{ false }}">
 	<ul class="listPlain js-movieVideoList{$movie.trakt_id}">
 		<xf:foreach loop="{$videos}" value="$video">
 			<li class="block-row block-row--separated">
@@ -1635,7 +1635,7 @@
 	<xf:if is="$hasMore">
 		<div class="block-footer js-movieVideoLoadMore{$movie.trakt_id}">
 			<span class="block-footer-controls">
-				<xf:button href="{{ link('movies/videos', $movie, {'page': $page + 1}) }}"
+				<xf:button href="{{ link('traktMovies/videos', $movie, {'page': $page + 1}) }}"
 					data-xf-click="inserter"
 					data-append=".js-movieVideoList{$movie.trakt_id}"
 					data-replace=".js-movieVideoLoadMore{$movie.trakt_id}">

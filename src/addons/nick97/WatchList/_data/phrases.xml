@@ -5,6 +5,7 @@
   <phrase title="choose_who_see_my_stats" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Who see my stats]]></phrase>
   <phrase title="choose_who_see_my_watchlist" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Who see my watchlist]]></phrase>
   <phrase title="con_acc.nick_trakt" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trakt]]></phrase>
+  <phrase title="con_acc_desc.nick_trakt" version_id="1000400" version_string="1.0.4 Alpha"><![CDATA[]]></phrase>
   <phrase title="forum_type.nick97_trakt_movie" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trakt Movie Forum]]></phrase>
   <phrase title="forum_type.nick97_trakt_tv" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trakt TV Forum]]></phrase>
   <phrase title="forum_type_desc.nick97_trakt_movie" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trakt movie thread starter]]></phrase>
@@ -50,10 +51,9 @@
   <phrase title="nick9t_watchlist_request_unsported_media" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Unsupported Media Type..!]]></phrase>
   <phrase title="option.nick97_watch_list_trakt_api_key" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trakt API key]]></phrase>
   <phrase title="option_explain.nick97_watch_list_trakt_api_key" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter your Trakt API key]]></phrase>
-  <phrase title="option_group.traktWatchLists" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[nick97] Trakt Watch List]]></phrase>
+  <phrase title="option_group.traktWatchLists" version_id="1000500" version_string="1.0.5 Alpha"><![CDATA[[nick97] Watch List]]></phrase>
   <phrase title="option_group_description.traktWatchLists" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[nick97] Trakt Watch List Options]]></phrase>
   <phrase title="permission.nick97_watch_list_manage_watchlist" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Can manage watchlist]]></phrase>
-  <phrase title="permission.nick97_watch_list_use_trakt" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Can use Trakt]]></phrase>
   <phrase title="permission.nick97_watch_list_view_anyone_stats" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Can view anyone stats]]></phrase>
   <phrase title="permission.nick97_watch_list_view_everyone_watchlist" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Can view everyone watchlist]]></phrase>
   <phrase title="permission.nick97_watch_list_view_own_stats" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Can view own stats]]></phrase>

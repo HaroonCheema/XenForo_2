@@ -7,4 +7,5 @@
   <permission permission_group_id="trakt_tvthreads_interface" permission_id="new_season" permission_type="flag" interface_group_id="trakt_tvthreads_interface" display_order="4"/>
   <permission permission_group_id="trakt_tvthreads_interface" permission_id="new_show" permission_type="flag" interface_group_id="trakt_tvthreads_interface" display_order="3"/>
   <permission permission_group_id="trakt_tvthreads_interface" permission_id="updatePersons" permission_type="flag" interface_group_id="trakt_tvthreads_interface" display_order="100"/>
+  <permission permission_group_id="trakt_tvthreads_interface" permission_id="use_trakt_tv" permission_type="flag" interface_group_id="trakt_tvthreads_interface" display_order="1"/>
 </permissions>

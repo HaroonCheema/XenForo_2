@@ -168,7 +168,8 @@
 															</xf:if>
 
 															<br />
-															<xf:button href="{$watchProvider.link}"  target="_blank">{{ phrase('nick97_tv_more_details_on_trakt') }}</xf:button>
+															
+															<xf:button href="https://trakt.tv/shows/{{$thread.getTraktTVLink($thread.traktTV.tv_id)}}"  target="_blank">{{ phrase('nick97_tv_more_details_on_trakt') }}</xf:button>
 														</div>
 													</xf:foreach>
 												</div>
@@ -428,7 +429,7 @@
 
 	<xf:if is="$xf.visitor.user_id">
 		<div>
-			<xf:button class="button--link button--wrap" href="{{ link('tv/rate', $thread.traktTV) }}" overlay="true">
+			<xf:button class="button--link button--wrap" href="{{ link('tvTrakt/rate', $thread.traktTV) }}" overlay="true">
 				{{ phrase('trakt_tv_change_rating') }}
 			</xf:button>
 		</div>

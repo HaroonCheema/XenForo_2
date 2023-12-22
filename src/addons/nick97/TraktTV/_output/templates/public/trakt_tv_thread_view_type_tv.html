@@ -20,7 +20,7 @@
 		</xf:button>
 	</xf:if>
 	<xf:if is="$xf.options.traktTvThreads_update && !$thread.traktTV && $canAddInfo">
-		<xf:button href="{{ link('tv/add-info', $thread) }}" class="button--link" overlay="true">
+		<xf:button href="{{ link('tvTrakt/add-info', $thread) }}" class="button--link" overlay="true">
 			{{ phrase('trakt_tv_add_info') }}
 		</xf:button>
 	</xf:if>

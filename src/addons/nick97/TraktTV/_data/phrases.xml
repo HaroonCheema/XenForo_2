@@ -103,7 +103,7 @@ Example: Flash (2014)]]></phrase>
   <phrase title="option_explain.traktTvThreads_watchProviderRegion" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
   <phrase title="option_explain.traktTvThreads_watchProviderRegions" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Leave it empty to disable.<br />
 Phrases can be translated with "snog_tv_country.{countryCode}" key.]]></phrase>
-  <phrase title="option_group.traktTvThreads" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[nick97] Trakt TV Thread Starter]]></phrase>
+  <phrase title="option_group.traktTvThreads" version_id="1000300" version_string="1.0.3 Alpha"><![CDATA[[nick97] Trakt TV]]></phrase>
   <phrase title="option_group_description.traktTvThreads" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Options for the Trakt TV add-on]]></phrase>
   <phrase title="permission.forum_trakt_edit_episodes" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Can edit TV episodes]]></phrase>
   <phrase title="permission.forum_trakt_edit_shows" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Can edit TV shows]]></phrase>
@@ -112,6 +112,7 @@ Phrases can be translated with "snog_tv_country.{countryCode}" key.]]></phrase>
   <phrase title="permission.trakt_tvthreads_interface_new_season" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Can add new season to TV show]]></phrase>
   <phrase title="permission.trakt_tvthreads_interface_new_show" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Can add TV show to category]]></phrase>
   <phrase title="permission.trakt_tvthreads_interface_updatePersons" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Can update persons data]]></phrase>
+  <phrase title="permission.trakt_tvthreads_interface_use_trakt_tv" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Can use Trakt]]></phrase>
   <phrase title="permission_interface.trakt_tvthreads_interface" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[nick97] Trakt TV Thread Starter]]></phrase>
   <phrase title="style_prop.trakt_tv_castPersonLargeImageUrl" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Default cast person avatar (large)]]></phrase>
   <phrase title="style_prop.trakt_tv_castPersonSmallImageUrl" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Default cast person avatar (small)]]></phrase>
@@ -161,8 +162,246 @@ Phrases can be translated with "snog_tv_country.{countryCode}" key.]]></phrase>
   <phrase title="style_prop_group_desc.trakt_tv" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
   <phrase title="thread_type.trakt_tv" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trakt Tv]]></phrase>
   <phrase title="thread_type_plural.trakt_tv" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trakt TV]]></phrase>
+  <phrase title="trakt_tv_already_rated" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[If you have already rated this show, your current rating is shown]]></phrase>
   <phrase title="trakt_tv_cast" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Cast]]></phrase>
+  <phrase title="trakt_tv_change_rating" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Add/Change rating]]></phrase>
   <phrase title="trakt_tv_check_poster" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Check for new poster]]></phrase>
+  <phrase title="trakt_tv_country.ad" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Andorra]]></phrase>
+  <phrase title="trakt_tv_country.ae" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[United Arab Emirates]]></phrase>
+  <phrase title="trakt_tv_country.af" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Afghanistan]]></phrase>
+  <phrase title="trakt_tv_country.ag" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Antigua and Barbuda]]></phrase>
+  <phrase title="trakt_tv_country.ai" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Anguilla]]></phrase>
+  <phrase title="trakt_tv_country.al" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Albania]]></phrase>
+  <phrase title="trakt_tv_country.am" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Armenia]]></phrase>
+  <phrase title="trakt_tv_country.an" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Netherlands Antilles]]></phrase>
+  <phrase title="trakt_tv_country.ao" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Angola]]></phrase>
+  <phrase title="trakt_tv_country.aq" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Antarctica]]></phrase>
+  <phrase title="trakt_tv_country.ar" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Argentina]]></phrase>
+  <phrase title="trakt_tv_country.as" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[American Samoa]]></phrase>
+  <phrase title="trakt_tv_country.at" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Austria]]></phrase>
+  <phrase title="trakt_tv_country.au" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Australia]]></phrase>
+  <phrase title="trakt_tv_country.aw" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Aruba]]></phrase>
+  <phrase title="trakt_tv_country.az" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Azerbaijan]]></phrase>
+  <phrase title="trakt_tv_country.ba" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Bosnia and Herzegovina]]></phrase>
+  <phrase title="trakt_tv_country.bb" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Barbados]]></phrase>
+  <phrase title="trakt_tv_country.bd" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Bangladesh]]></phrase>
+  <phrase title="trakt_tv_country.be" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Belgium]]></phrase>
+  <phrase title="trakt_tv_country.bf" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Burkina Faso]]></phrase>
+  <phrase title="trakt_tv_country.bg" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Bulgaria]]></phrase>
+  <phrase title="trakt_tv_country.bh" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Bahrain]]></phrase>
+  <phrase title="trakt_tv_country.bi" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Burundi]]></phrase>
+  <phrase title="trakt_tv_country.bj" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Benin]]></phrase>
+  <phrase title="trakt_tv_country.bm" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Bermuda]]></phrase>
+  <phrase title="trakt_tv_country.bn" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Brunei Darussalam]]></phrase>
+  <phrase title="trakt_tv_country.bo" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Bolivia]]></phrase>
+  <phrase title="trakt_tv_country.br" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Brazil]]></phrase>
+  <phrase title="trakt_tv_country.bs" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Bahamas]]></phrase>
+  <phrase title="trakt_tv_country.bt" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Bhutan]]></phrase>
+  <phrase title="trakt_tv_country.bv" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Bouvet Island]]></phrase>
+  <phrase title="trakt_tv_country.bw" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Botswana]]></phrase>
+  <phrase title="trakt_tv_country.by" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Belarus]]></phrase>
+  <phrase title="trakt_tv_country.bz" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Belize]]></phrase>
+  <phrase title="trakt_tv_country.ca" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Canada]]></phrase>
+  <phrase title="trakt_tv_country.cc" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Cocos (Keeling) Islands]]></phrase>
+  <phrase title="trakt_tv_country.cd" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Congo, the Democratic Republic of the]]></phrase>
+  <phrase title="trakt_tv_country.cf" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Central African Republic]]></phrase>
+  <phrase title="trakt_tv_country.cg" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Congo]]></phrase>
+  <phrase title="trakt_tv_country.ch" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Switzerland]]></phrase>
+  <phrase title="trakt_tv_country.ci" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Cote D'Ivoire]]></phrase>
+  <phrase title="trakt_tv_country.ck" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Cook Islands]]></phrase>
+  <phrase title="trakt_tv_country.cl" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Chile]]></phrase>
+  <phrase title="trakt_tv_country.cm" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Cameroon]]></phrase>
+  <phrase title="trakt_tv_country.cn" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[China]]></phrase>
+  <phrase title="trakt_tv_country.co" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Colombia]]></phrase>
+  <phrase title="trakt_tv_country.cr" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Costa Rica]]></phrase>
+  <phrase title="trakt_tv_country.cs" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Serbia and Montenegro]]></phrase>
+  <phrase title="trakt_tv_country.cu" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Cuba]]></phrase>
+  <phrase title="trakt_tv_country.cv" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Cape Verde]]></phrase>
+  <phrase title="trakt_tv_country.cx" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Christmas Island]]></phrase>
+  <phrase title="trakt_tv_country.cy" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Cyprus]]></phrase>
+  <phrase title="trakt_tv_country.cz" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Czech Republic]]></phrase>
+  <phrase title="trakt_tv_country.de" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Germany]]></phrase>
+  <phrase title="trakt_tv_country.dj" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Djibouti]]></phrase>
+  <phrase title="trakt_tv_country.dk" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Denmark]]></phrase>
+  <phrase title="trakt_tv_country.dm" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Dominica]]></phrase>
+  <phrase title="trakt_tv_country.do" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Dominican Republic]]></phrase>
+  <phrase title="trakt_tv_country.dz" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Algeria]]></phrase>
+  <phrase title="trakt_tv_country.ee" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Estonia]]></phrase>
+  <phrase title="trakt_tv_country.eg" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Egypt]]></phrase>
+  <phrase title="trakt_tv_country.eh" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Western Sahara]]></phrase>
+  <phrase title="trakt_tv_country.er" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Eritrea]]></phrase>
+  <phrase title="trakt_tv_country.es" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Spain]]></phrase>
+  <phrase title="trakt_tv_country.et" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Ethiopia]]></phrase>
+  <phrase title="trakt_tv_country.fi" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Finland]]></phrase>
+  <phrase title="trakt_tv_country.fk" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Falkland Islands (Malvinas)]]></phrase>
+  <phrase title="trakt_tv_country.fm" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Micronesia, Federated States of]]></phrase>
+  <phrase title="trakt_tv_country.fo" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Faroe Islands]]></phrase>
+  <phrase title="trakt_tv_country.fr" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[France]]></phrase>
+  <phrase title="trakt_tv_country.ga" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Gabon]]></phrase>
+  <phrase title="trakt_tv_country.gb" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[United Kingdom]]></phrase>
+  <phrase title="trakt_tv_country.gd" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Grenada]]></phrase>
+  <phrase title="trakt_tv_country.ge" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Georgia]]></phrase>
+  <phrase title="trakt_tv_country.gf" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[French Guiana]]></phrase>
+  <phrase title="trakt_tv_country.gh" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Ghana]]></phrase>
+  <phrase title="trakt_tv_country.gi" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Gibraltar]]></phrase>
+  <phrase title="trakt_tv_country.gl" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Greenland]]></phrase>
+  <phrase title="trakt_tv_country.gm" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Gambia]]></phrase>
+  <phrase title="trakt_tv_country.gn" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Guinea]]></phrase>
+  <phrase title="trakt_tv_country.gp" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Guadeloupe]]></phrase>
+  <phrase title="trakt_tv_country.gq" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Equatorial Guinea]]></phrase>
+  <phrase title="trakt_tv_country.gr" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Greece]]></phrase>
+  <phrase title="trakt_tv_country.gs" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[South Georgia and the South Sandwich Islands]]></phrase>
+  <phrase title="trakt_tv_country.gt" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Guatemala]]></phrase>
+  <phrase title="trakt_tv_country.gu" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Guam]]></phrase>
+  <phrase title="trakt_tv_country.gw" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Guinea-Bissau]]></phrase>
+  <phrase title="trakt_tv_country.gy" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Guyana]]></phrase>
+  <phrase title="trakt_tv_country.hk" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Hong Kong]]></phrase>
+  <phrase title="trakt_tv_country.hm" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Heard Island and Mcdonald Islands]]></phrase>
+  <phrase title="trakt_tv_country.hn" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Honduras]]></phrase>
+  <phrase title="trakt_tv_country.hr" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Croatia]]></phrase>
+  <phrase title="trakt_tv_country.ht" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Haiti]]></phrase>
+  <phrase title="trakt_tv_country.hu" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Hungary]]></phrase>
+  <phrase title="trakt_tv_country.id" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Indonesia]]></phrase>
+  <phrase title="trakt_tv_country.ie" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Ireland]]></phrase>
+  <phrase title="trakt_tv_country.il" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Israel]]></phrase>
+  <phrase title="trakt_tv_country.in" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[India]]></phrase>
+  <phrase title="trakt_tv_country.io" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[British Indian Ocean Territory]]></phrase>
+  <phrase title="trakt_tv_country.iq" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Iraq]]></phrase>
+  <phrase title="trakt_tv_country.ir" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Iran, Islamic Republic of]]></phrase>
+  <phrase title="trakt_tv_country.is" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Iceland]]></phrase>
+  <phrase title="trakt_tv_country.it" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Italy]]></phrase>
+  <phrase title="trakt_tv_country.jm" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Jamaica]]></phrase>
+  <phrase title="trakt_tv_country.jo" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Jordan]]></phrase>
+  <phrase title="trakt_tv_country.jp" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Japan]]></phrase>
+  <phrase title="trakt_tv_country.ke" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Kenya]]></phrase>
+  <phrase title="trakt_tv_country.kg" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Kyrgyzstan]]></phrase>
+  <phrase title="trakt_tv_country.kh" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Cambodia]]></phrase>
+  <phrase title="trakt_tv_country.ki" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Kiribati]]></phrase>
+  <phrase title="trakt_tv_country.km" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Comoros]]></phrase>
+  <phrase title="trakt_tv_country.kn" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Saint Kitts and Nevis]]></phrase>
+  <phrase title="trakt_tv_country.kp" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Korea, Democratic People's Republic of]]></phrase>
+  <phrase title="trakt_tv_country.kr" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Korea, Republic of]]></phrase>
+  <phrase title="trakt_tv_country.kw" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Kuwait]]></phrase>
+  <phrase title="trakt_tv_country.ky" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Cayman Islands]]></phrase>
+  <phrase title="trakt_tv_country.kz" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Kazakhstan]]></phrase>
+  <phrase title="trakt_tv_country.la" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Lao People's Democratic Republic]]></phrase>
+  <phrase title="trakt_tv_country.lb" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Lebanon]]></phrase>
+  <phrase title="trakt_tv_country.li" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Liechtenstein]]></phrase>
+  <phrase title="trakt_tv_country.lk" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Sri Lanka]]></phrase>
+  <phrase title="trakt_tv_country.lr" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Liberia]]></phrase>
+  <phrase title="trakt_tv_country.ls" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Lesotho]]></phrase>
+  <phrase title="trakt_tv_country.lt" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Lithuania]]></phrase>
+  <phrase title="trakt_tv_country.lu" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Luxembourg]]></phrase>
+  <phrase title="trakt_tv_country.lv" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Latvia]]></phrase>
+  <phrase title="trakt_tv_country.ly" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Libyan Arab Jamahiriya]]></phrase>
+  <phrase title="trakt_tv_country.ma" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Morocco]]></phrase>
+  <phrase title="trakt_tv_country.mc" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Monaco]]></phrase>
+  <phrase title="trakt_tv_country.md" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Moldova, Republic of]]></phrase>
+  <phrase title="trakt_tv_country.mg" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Madagascar]]></phrase>
+  <phrase title="trakt_tv_country.mh" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Marshall Islands]]></phrase>
+  <phrase title="trakt_tv_country.mk" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Macedonia, the Former Yugoslav Republic of]]></phrase>
+  <phrase title="trakt_tv_country.ml" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Mali]]></phrase>
+  <phrase title="trakt_tv_country.mm" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Myanmar]]></phrase>
+  <phrase title="trakt_tv_country.mn" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Mongolia]]></phrase>
+  <phrase title="trakt_tv_country.mo" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Macao]]></phrase>
+  <phrase title="trakt_tv_country.mp" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Northern Mariana Islands]]></phrase>
+  <phrase title="trakt_tv_country.mq" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Martinique]]></phrase>
+  <phrase title="trakt_tv_country.mr" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Mauritania]]></phrase>
+  <phrase title="trakt_tv_country.ms" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Montserrat]]></phrase>
+  <phrase title="trakt_tv_country.mt" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Malta]]></phrase>
+  <phrase title="trakt_tv_country.mu" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Mauritius]]></phrase>
+  <phrase title="trakt_tv_country.mv" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Maldives]]></phrase>
+  <phrase title="trakt_tv_country.mw" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Malawi]]></phrase>
+  <phrase title="trakt_tv_country.mx" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Mexico]]></phrase>
+  <phrase title="trakt_tv_country.my" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Malaysia]]></phrase>
+  <phrase title="trakt_tv_country.mz" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Mozambique]]></phrase>
+  <phrase title="trakt_tv_country.na" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Namibia]]></phrase>
+  <phrase title="trakt_tv_country.nc" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[New Caledonia]]></phrase>
+  <phrase title="trakt_tv_country.ne" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Niger]]></phrase>
+  <phrase title="trakt_tv_country.nf" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Norfolk Island]]></phrase>
+  <phrase title="trakt_tv_country.ng" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Nigeria]]></phrase>
+  <phrase title="trakt_tv_country.ni" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Nicaragua]]></phrase>
+  <phrase title="trakt_tv_country.nl" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Netherlands]]></phrase>
+  <phrase title="trakt_tv_country.no" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Norway]]></phrase>
+  <phrase title="trakt_tv_country.np" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Nepal]]></phrase>
+  <phrase title="trakt_tv_country.nr" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Nauru]]></phrase>
+  <phrase title="trakt_tv_country.nu" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Niue]]></phrase>
+  <phrase title="trakt_tv_country.nz" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[New Zealand]]></phrase>
+  <phrase title="trakt_tv_country.om" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Oman]]></phrase>
+  <phrase title="trakt_tv_country.pa" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Panama]]></phrase>
+  <phrase title="trakt_tv_country.pe" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Peru]]></phrase>
+  <phrase title="trakt_tv_country.pf" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[French Polynesia]]></phrase>
+  <phrase title="trakt_tv_country.pg" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Papua New Guinea]]></phrase>
+  <phrase title="trakt_tv_country.ph" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Philippines]]></phrase>
+  <phrase title="trakt_tv_country.pk" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Pakistan]]></phrase>
+  <phrase title="trakt_tv_country.pl" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Poland]]></phrase>
+  <phrase title="trakt_tv_country.pm" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Saint Pierre and Miquelon]]></phrase>
+  <phrase title="trakt_tv_country.pn" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Pitcairn]]></phrase>
+  <phrase title="trakt_tv_country.pr" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Puerto Rico]]></phrase>
+  <phrase title="trakt_tv_country.ps" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Palestinian Territory, Occupied]]></phrase>
+  <phrase title="trakt_tv_country.pt" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Portugal]]></phrase>
+  <phrase title="trakt_tv_country.pw" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Palau]]></phrase>
+  <phrase title="trakt_tv_country.py" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Paraguay]]></phrase>
+  <phrase title="trakt_tv_country.qa" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Qatar]]></phrase>
+  <phrase title="trakt_tv_country.re" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Reunion]]></phrase>
+  <phrase title="trakt_tv_country.ro" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Romania]]></phrase>
+  <phrase title="trakt_tv_country.ru" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Russian Federation]]></phrase>
+  <phrase title="trakt_tv_country.rw" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Rwanda]]></phrase>
+  <phrase title="trakt_tv_country.sa" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Saudi Arabia]]></phrase>
+  <phrase title="trakt_tv_country.sb" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Solomon Islands]]></phrase>
+  <phrase title="trakt_tv_country.sc" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Seychelles]]></phrase>
+  <phrase title="trakt_tv_country.sd" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Sudan]]></phrase>
+  <phrase title="trakt_tv_country.se" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Sweden]]></phrase>
+  <phrase title="trakt_tv_country.sg" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Singapore]]></phrase>
+  <phrase title="trakt_tv_country.sh" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Saint Helena]]></phrase>
+  <phrase title="trakt_tv_country.si" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Slovenia]]></phrase>
+  <phrase title="trakt_tv_country.sj" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Svalbard and Jan Mayen]]></phrase>
+  <phrase title="trakt_tv_country.sk" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Slovakia]]></phrase>
+  <phrase title="trakt_tv_country.sl" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Sierra Leone]]></phrase>
+  <phrase title="trakt_tv_country.sm" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[San Marino]]></phrase>
+  <phrase title="trakt_tv_country.sn" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Senegal]]></phrase>
+  <phrase title="trakt_tv_country.so" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Somalia]]></phrase>
+  <phrase title="trakt_tv_country.sr" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Suriname]]></phrase>
+  <phrase title="trakt_tv_country.st" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Sao Tome and Principe]]></phrase>
+  <phrase title="trakt_tv_country.sv" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[El Salvador]]></phrase>
+  <phrase title="trakt_tv_country.sy" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Syrian Arab Republic]]></phrase>
+  <phrase title="trakt_tv_country.sz" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Swaziland]]></phrase>
+  <phrase title="trakt_tv_country.tc" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Turks and Caicos Islands]]></phrase>
+  <phrase title="trakt_tv_country.td" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Chad]]></phrase>
+  <phrase title="trakt_tv_country.tf" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[French Southern Territories]]></phrase>
+  <phrase title="trakt_tv_country.tg" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Togo]]></phrase>
+  <phrase title="trakt_tv_country.th" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Thailand]]></phrase>
+  <phrase title="trakt_tv_country.tj" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Tajikistan]]></phrase>
+  <phrase title="trakt_tv_country.tk" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Tokelau]]></phrase>
+  <phrase title="trakt_tv_country.tl" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Timor-Leste]]></phrase>
+  <phrase title="trakt_tv_country.tm" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Turkmenistan]]></phrase>
+  <phrase title="trakt_tv_country.tn" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Tunisia]]></phrase>
+  <phrase title="trakt_tv_country.to" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Tonga]]></phrase>
+  <phrase title="trakt_tv_country.tr" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Turkey]]></phrase>
+  <phrase title="trakt_tv_country.tt" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Trinidad and Tobago]]></phrase>
+  <phrase title="trakt_tv_country.tv" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Tuvalu]]></phrase>
+  <phrase title="trakt_tv_country.tw" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Taiwan, Province of China]]></phrase>
+  <phrase title="trakt_tv_country.tz" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Tanzania, United Republic of]]></phrase>
+  <phrase title="trakt_tv_country.ua" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Ukraine]]></phrase>
+  <phrase title="trakt_tv_country.ug" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Uganda]]></phrase>
+  <phrase title="trakt_tv_country.um" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[United States Minor Outlying Islands]]></phrase>
+  <phrase title="trakt_tv_country.us" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[United States]]></phrase>
+  <phrase title="trakt_tv_country.uy" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Uruguay]]></phrase>
+  <phrase title="trakt_tv_country.uz" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Uzbekistan]]></phrase>
+  <phrase title="trakt_tv_country.va" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Holy See (Vatican City State)]]></phrase>
+  <phrase title="trakt_tv_country.vc" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Saint Vincent and the Grenadines]]></phrase>
+  <phrase title="trakt_tv_country.ve" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Venezuela]]></phrase>
+  <phrase title="trakt_tv_country.vg" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Virgin Islands, British]]></phrase>
+  <phrase title="trakt_tv_country.vi" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Virgin Islands, U.s.]]></phrase>
+  <phrase title="trakt_tv_country.vn" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Viet Nam]]></phrase>
+  <phrase title="trakt_tv_country.vu" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Vanuatu]]></phrase>
+  <phrase title="trakt_tv_country.wf" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Wallis and Futuna]]></phrase>
+  <phrase title="trakt_tv_country.ws" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Samoa]]></phrase>
+  <phrase title="trakt_tv_country.ye" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Yemen]]></phrase>
+  <phrase title="trakt_tv_country.yt" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Mayotte]]></phrase>
+  <phrase title="trakt_tv_country.za" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[South Africa]]></phrase>
+  <phrase title="trakt_tv_country.zm" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Zambia]]></phrase>
+  <phrase title="trakt_tv_country.zw" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Zimbabwe]]></phrase>
   <phrase title="trakt_tv_crew" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Crew]]></phrase>
   <phrase title="trakt_tv_director" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Director]]></phrase>
   <phrase title="trakt_tv_first_aired" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[First aired]]></phrase>
@@ -172,10 +411,14 @@ Phrases can be translated with "snog_tv_country.{countryCode}" key.]]></phrase>
   <phrase title="trakt_tv_overview" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Overview]]></phrase>
   <phrase title="trakt_tv_post_episode" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[If you wish to post an episode for this TV show, enter the Season and Episode numbers]]></phrase>
   <phrase title="trakt_tv_post_show_title" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trakt TV show link or TV show ID]]></phrase>
+  <phrase title="trakt_tv_poster_not_available" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[A new poster is not available]]></phrase>
+  <phrase title="trakt_tv_reupload_old_poster" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Reupload old poster?]]></phrase>
+  <phrase title="trakt_tv_save_poster" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Save poster]]></phrase>
   <phrase title="trakt_tv_show_lookup" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Don't have the Trakt Link or ID for your TV show? Go to <a href="https://trakt.tv/shows/trending" target="_blank" >Trakt Shows</a> and look it up.]]></phrase>
   <phrase title="trakt_tv_status" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Show status]]></phrase>
   <phrase title="trakt_tv_streaming" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Streaming]]></phrase>
   <phrase title="trakt_tv_trailer" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trailer]]></phrase>
+  <phrase title="trakt_tv_update_person_info" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Update person image & data]]></phrase>
   <phrase title="trakt_tv_videos" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Videos]]></phrase>
   <phrase title="trakt_tv_where_to_watch" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Where to watch]]></phrase>
   <phrase title="widget_def.trakt_tv_poster_slider" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[nick97] Trakt TV Thread Starter: Poster Slider]]></phrase>

@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 1d8ef9e6a0d2f36a2efde3afe8314cec
+// FROM HASH: 2a9e617c1062abcae2c7a94e057f4ea6
 return array(
 'macros' => array('crew_list' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -104,7 +104,7 @@ return array(
 						';
 	if ($__templater->method($__vars['person'], 'canUpdate', array())) {
 		$__compilerTemp1 .= '
-							<a href="' . $__templater->func('link', array('movies/person/update', $__vars['person'], ), true) . '" data-xf-click="overlay" class="menu-linkRow">' . 'Update person image & data' . '</a>
+							<a href="' . $__templater->func('link', array('traktMovies/person/update', $__vars['person'], ), true) . '" data-xf-click="overlay" class="menu-linkRow">' . 'Update person image & data' . '</a>
 						';
 	}
 	$__compilerTemp1 .= '

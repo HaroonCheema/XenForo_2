@@ -63,6 +63,16 @@ class Show
 		$movieId = $toArray["ids"]["tmdb"];
 
 		if (isset($movieId)) {
+
+			$recordExist = \XF::finder('nick97\TraktTV:TraktTVSlug')->where('tmdb_id', $movieId)->fetchOne();
+
+			if (!$recordExist) {
+				$insertData = \XF::em()->create('nick97\TraktTV:TraktTVSlug');
+
+				$insertData->tmdb_id = $movieId;
+				$insertData->trakt_slug = $toArray["ids"]["slug"];
+				$insertData->save();
+			}
 			return $movieId;
 		} else {
 			return 0;

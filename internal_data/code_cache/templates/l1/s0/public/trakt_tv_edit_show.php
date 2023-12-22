@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: aef04384be7fcd0d16e88c0ea75254e3
+// FROM HASH: 6df079b781258ca788f64d1b8f4ef936
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -157,7 +157,7 @@ return array(
 	)) . '
 	</div>
 ', array(
-		'action' => $__templater->func('link', array('tv/edit', $__vars['tvshow'], ), false),
+		'action' => $__templater->func('link', array('tvTrakt/edit', $__vars['tvshow'], ), false),
 		'ajax' => 'true',
 		'class' => 'block',
 		'data-xf-init' => 'attachment-manager' . (($__templater->method($__vars['post'], 'isFirstPost', array()) AND $__templater->method($__vars['thread'], 'canEdit', array())) ? ' post-edit' : ''),

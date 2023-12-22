@@ -642,6 +642,18 @@ class Movies extends AbstractController
 				$this->deleteMovies($Ratings);
 			}
 
+			// $movie = $thread->traktMovie;
+			// $message = $movie->getPostMessage();
+
+			// $comment = $thread->FirstPost->message;
+
+			// if (!\xf::options()->traktthreads_force_comments) {
+			// 	$message .= $comment;
+			// }
+
+
+
+			// $thread->setOption('movieOriginalMessage', $comment);
 
 			$movieCreator->setMovieId($movieId);
 

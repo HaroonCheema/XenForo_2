@@ -23,8 +23,7 @@ class Setup extends AbstractSetup
 	{
 		$sm = $this->schemaManager();
 
-		foreach ($this->getTables() as $tableName => $callback)
-		{
+		foreach ($this->getTables() as $tableName => $callback) {
 			$sm->createTable($tableName, $callback);
 		}
 	}
@@ -32,10 +31,8 @@ class Setup extends AbstractSetup
 	public function installStep2()
 	{
 		$sm = $this->schemaManager();
-		foreach ($this->getAlters() as $table => $schema)
-		{
-			if ($sm->tableExists($table))
-			{
+		foreach ($this->getAlters() as $table => $schema) {
+			if ($sm->tableExists($table)) {
 				$sm->alterTable($table, $schema);
 			}
 		}
@@ -71,14 +68,25 @@ class Setup extends AbstractSetup
 		$this->copyContents($src);
 	}
 
+	public function installStep5()
+	{
+		$this->schemaManager()->createTable('nick97_trakt_movies_url', function (Create $table) {
+			$table->addColumn('id', 'int')->autoIncrement();
+
+			$table->addColumn('tmdb_id', 'int');
+			$table->addColumn('trakt_slug', 'mediumtext')->nullable();
+
+			$table->addPrimaryKey('id');
+		});
+	}
+
 	// ################################## UNINSTALL ###########################################
 
 	public function uninstallStep1()
 	{
 		$sm = $this->schemaManager();
 
-		foreach (array_keys($this->getTables()) as $tableName)
-		{
+		foreach (array_keys($this->getTables()) as $tableName) {
 			$sm->dropTable($tableName);
 		}
 	}
@@ -86,10 +94,8 @@ class Setup extends AbstractSetup
 	public function uninstallStep2()
 	{
 		$sm = $this->schemaManager();
-		foreach ($this->getReverseAlters() as $table => $schema)
-		{
-			if ($sm->tableExists($table))
-			{
+		foreach ($this->getReverseAlters() as $table => $schema) {
+			if ($sm->tableExists($table)) {
 				$sm->alterTable($table, $schema);
 			}
 		}
@@ -99,7 +105,7 @@ class Setup extends AbstractSetup
 	{
 		$db = $this->db();
 		$db->delete('xf_forum_type', 'forum_type_id = ?', 'trakt_movies_movie');
-		$db->delete('xf_thread_type','thread_type_id = ?', 'trakt_movies_movie');
+		$db->delete('xf_thread_type', 'thread_type_id = ?', 'trakt_movies_movie');
 
 		/** @var \XF\Repository\ForumType $forumTypeRepo */
 		$forumTypeRepo = $this->app->repository('XF:ForumType');
@@ -108,6 +114,12 @@ class Setup extends AbstractSetup
 		/** @var \XF\Repository\ThreadType $threadTypeRepo */
 		$threadTypeRepo = $this->app->repository('XF:ThreadType');
 		$threadTypeRepo->rebuildThreadTypeCache();
+	}
+
+	public function uninstallStep5()
+	{
+		$sm = $this->schemaManager();
+		$sm->dropTable('nick97_trakt_movies_url');
 	}
 
 	// ################################## DATA ###########################################
@@ -314,7 +326,7 @@ class Setup extends AbstractSetup
 
 	// ################################## UPGRADE ###########################################
 
-	
+
 
 	// ################################## HELPERS ###########################################
 
@@ -323,25 +335,17 @@ class Setup extends AbstractSetup
 		if ($sub) $basePath = str_ireplace('src/addons/nick97/TraktMovies/defaultdata/', '', $src);
 		$dir = opendir($src);
 
-		while (false !== ($file = readdir($dir)))
-		{
-			if (($file != '.') && ($file != '..'))
-			{
-				if (is_dir($src . '/' . $file))
-				{
+		while (false !== ($file = readdir($dir))) {
+			if (($file != '.') && ($file != '..')) {
+				if (is_dir($src . '/' . $file)) {
 					$newSrc = $src . '/' . $file;
 					$this->copyContents($newSrc, true);
-				}
-				else
-				{
+				} else {
 					$oldPath = $src . '/' . $file;
 
-					if ($sub)
-					{
+					if ($sub) {
 						$newFile = $basePath . '/' . $file;
-					}
-					else
-					{
+					} else {
 						$newFile = $file;
 					}
 
@@ -356,16 +360,14 @@ class Setup extends AbstractSetup
 
 	public function checkRequirements(&$errors = [], &$warnings = [])
 	{
-		if (\XF::$versionId < 2010031)
-		{
+		if (\XF::$versionId < 2010031) {
 			$errors[] = 'This add-on may only be used on XenForo 2.1 or higher';
 			return $errors;
 		}
 
 		$versionId = $this->addOn->version_id;
 
-		if ($versionId && $versionId < '28')
-		{
+		if ($versionId && $versionId < '28') {
 			$errors[] = 'Upgrades can only be to the XF 1.x Trakt Movie Thread Starter version 2.1.13 or later';
 			return $errors;
 		}

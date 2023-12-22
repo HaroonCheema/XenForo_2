@@ -27,6 +27,12 @@ class Forum extends XFCP_Forum
 		/** @var \nick97\TraktTV\XF\Entity\Forum $forum */
 		$forum = $this->assertViewableForum($params->node_id ?: $params->node_name, ['DraftThreads|' . $visitor->user_id]);
 
+		if ($forum->isThreadTypeCreatable('trakt_tv')) {
+			if (!\XF::visitor()->hasPermission('trakt_tvthreads_interface', 'use_trakt_tv')) {
+				throw $this->exception($this->noPermission());
+			}
+		}
+
 		if (!$forum->isThreadTypeCreatable('trakt_tv')) {
 			return parent::actionPostThread($params);
 		}

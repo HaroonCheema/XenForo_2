@@ -68,6 +68,18 @@ class Setup extends AbstractSetup
 		$this->copyContents($src);
 	}
 
+	public function installStep5()
+	{
+		$this->schemaManager()->createTable('nick97_trakt_tv_url', function (Create $table) {
+			$table->addColumn('id', 'int')->autoIncrement();
+
+			$table->addColumn('tmdb_id', 'int');
+			$table->addColumn('trakt_slug', 'mediumtext')->nullable();
+
+			$table->addPrimaryKey('id');
+		});
+	}
+
 	// ################################## UNINSTALL ###########################################
 
 	public function uninstallStep1()
@@ -102,6 +114,12 @@ class Setup extends AbstractSetup
 		/** @var \XF\Repository\ThreadType $threadTypeRepo */
 		$threadTypeRepo = $this->app->repository('XF:ThreadType');
 		$threadTypeRepo->rebuildThreadTypeCache();
+	}
+
+	public function uninstallStep5()
+	{
+		$sm = $this->schemaManager();
+		$sm->dropTable('nick97_trakt_tv_url');
 	}
 
 	// ################################## DATA ###########################################

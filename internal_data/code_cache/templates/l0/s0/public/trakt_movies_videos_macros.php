@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 2504b0d9827a3e4dc2c155e9e9ff4182
+// FROM HASH: a5d66a47002621db18529fddfc1cfb30
 return array(
 'macros' => array('video_list' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -36,7 +36,7 @@ return array(
 				' . $__templater->button('
 					' . 'More' . $__vars['xf']['language']['ellipsis'] . '
 				', array(
-			'href' => $__templater->func('link', array('movies/videos', $__vars['movie'], array('page' => $__vars['page'] + 1, ), ), false),
+			'href' => $__templater->func('link', array('traktMovies/videos', $__vars['movie'], array('page' => $__vars['page'] + 1, ), ), false),
 			'data-xf-click' => 'inserter',
 			'data-append' => '.js-movieVideoList' . $__vars['movie']['trakt_id'],
 			'data-replace' => '.js-movieVideoLoadMore' . $__vars['movie']['trakt_id'],

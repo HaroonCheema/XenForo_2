@@ -29,6 +29,12 @@
         "version_string": "1.0.0 Alpha",
         "hash": "a5570c8009900fc3ddb40cfdc44d42f4"
     },
+    "con_acc_desc.nick_trakt.txt": {
+        "global_cache": false,
+        "version_id": 1000400,
+        "version_string": "1.0.4 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
     "forum_type.nick97_trakt_movie.txt": {
         "global_cache": false,
         "version_id": 1000010,
@@ -301,9 +307,9 @@
     },
     "option_group.traktWatchLists.txt": {
         "global_cache": false,
-        "version_id": 1000010,
-        "version_string": "1.0.0 Alpha",
-        "hash": "06bbd2c0fe9ebf0c820b48fb63b18ed7"
+        "version_id": 1000500,
+        "version_string": "1.0.5 Alpha",
+        "hash": "ee807dde4641654d6c3f6941bd9d0e17"
     },
     "option_group_description.traktWatchLists.txt": {
         "global_cache": false,
@@ -316,12 +322,6 @@
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
         "hash": "d21f53fd4be8fb0b8a0fe714839aedae"
-    },
-    "permission.nick97_watch_list_use_trakt.txt": {
-        "global_cache": false,
-        "version_id": 1000010,
-        "version_string": "1.0.0 Alpha",
-        "hash": "2cac9c86dd3e171b99dfbc467fc9451d"
     },
     "permission.nick97_watch_list_view_anyone_stats.txt": {
         "global_cache": false,

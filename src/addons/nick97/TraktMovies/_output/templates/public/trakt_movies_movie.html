@@ -10,7 +10,7 @@
 		/>
 	
 		<xf:if is="$xf.visitor.user_id">
-			<a href="{{ link('movies/rate',$thread.traktMovie)}}" data-xf-click="overlay"><button type="button" class="button--link button"><span class="button-text">{{ phrase('trakt_movies_change_rating') }}</span></button></a>
+			<a href="{{ link('traktMovies/rate',$thread.traktMovie)}}" data-xf-click="overlay"><button type="button" class="button--link button"><span class="button-text">{{ phrase('trakt_movies_change_rating') }}</span></button></a>
 		</xf:if>
 	</div>
 </xf:if>

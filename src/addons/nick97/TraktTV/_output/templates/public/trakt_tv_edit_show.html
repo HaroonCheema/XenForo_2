@@ -2,7 +2,7 @@
 
 <xf:breadcrumb source="$thread.getBreadcrumbs()" />
 
-<xf:form action="{{ link('tv/edit', $tvshow) }}" ajax="true" class="block"
+<xf:form action="{{ link('tvTrakt/edit', $tvshow) }}" ajax="true" class="block"
 	data-xf-init="attachment-manager{{ ($post.isFirstPost() AND $thread.canEdit()) ? ' post-edit' : '' }}"
 	data-preview-url="{{ link('posts/preview', $post) }}">
 
