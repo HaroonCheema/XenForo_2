@@ -118,6 +118,7 @@ class Member extends XFCP_Member
 		$conditions = [
 			['discussion_type', 'snog_movies_movie'],
 			['discussion_type', 'trakt_movies_movie'],
+			['discussion_type', 'nick97_trakt_movies'],
 		];
 
 		$tvConditions = [

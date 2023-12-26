@@ -8,39 +8,39 @@ use \XF\Entity\User;
 
 class Account extends XFCP_Account
 {
-    /**
-     * @param User $visitor
-     * @return FormAction
-     */
-    protected function savePrivacyProcess(User $visitor)
-    {
-        $form = parent::savePrivacyProcess($visitor);
+	/**
+	 * @param User $visitor
+	 * @return FormAction
+	 */
+	protected function savePrivacyProcess(User $visitor)
+	{
+		$form = parent::savePrivacyProcess($visitor);
 
-        $visitor = \XF::visitor();
+		$visitor = \XF::visitor();
 
-        if ($form instanceof FormAction) {
-            $input = $this->filter([
-                'privacy' => [
-                    'allow_view_watchlist' => 'str',
-                    'allow_view_stats' => 'str',
-                ]
-            ]);
+		if ($form instanceof FormAction) {
+			$input = $this->filter([
+				'privacy' => [
+					'allow_view_watchlist' => 'str',
+					'allow_view_stats' => 'str',
+				]
+			]);
 
-            $userPrivacy = $visitor->getRelationOrDefault('Privacy');
-            $form->setupEntityInput($userPrivacy, $input['privacy']);
+			$userPrivacy = $visitor->getRelationOrDefault('Privacy');
+			$form->setupEntityInput($userPrivacy, $input['privacy']);
 
-            $form->complete(function () use ($visitor) {
-                /** @var \XF\Repository\IP $ipRepo */
-                $ipRepo = $this->repository('XF:Ip');
-                $ipRepo->logIp($visitor->user_id, $this->request->getIp(), 'user', $visitor->user_id, 'privacy_edit');
-            });
-        }
+			$form->complete(function () use ($visitor) {
+				/** @var \XF\Repository\IP $ipRepo */
+				$ipRepo = $this->repository('XF:Ip');
+				$ipRepo->logIp($visitor->user_id, $this->request->getIp(), 'user', $visitor->user_id, 'privacy_edit');
+			});
+		}
 
-        return $form;
-    }
+		return $form;
+	}
 
 
-    public function actionWatchlist()
+	public function actionWatchlist()
 	{
 		$visitor = \XF::visitor();
 
@@ -48,11 +48,16 @@ class Account extends XFCP_Account
 			return $this->noPermission();
 		}
 
+		$conditions = [
+			['discussion_type', 'snog_movies_movie'],
+			['discussion_type', 'nick97_trakt_movies'],
+		];
+
 		$allThreadIds = $this->finder('nick97\WatchList:WatchList')
 			->where('user_id', $visitor->user_id)->pluckfrom('thread_id')->fetch()->toArray();
 
 		$threadIds = $this->finder('XF:Thread')
-			->where('discussion_type', 'snog_movies_movie')->where('thread_id', $allThreadIds)->pluckfrom('thread_id')->fetch()->toArray();
+			->whereOr($conditions)->where('thread_id', $allThreadIds)->pluckfrom('thread_id')->fetch()->toArray();
 
 		if (count($threadIds) > 0) {
 			$tmdbMovies = $this->finder('Snog\Movies:Movie')->where('thread_id', $threadIds)->fetch()->toArray();
@@ -61,7 +66,8 @@ class Account extends XFCP_Account
 		}
 
 		$traktThreadIds = $this->finder('XF:Thread')
-			->where('discussion_type', 'trakt_movies_movie')->where('thread_id', $allThreadIds)->pluckfrom('thread_id')->fetch()->toArray();
+			// ->where('discussion_type', 'trakt_movies_movie')->where('thread_id', $allThreadIds)->pluckfrom('thread_id')->fetch()->toArray();
+			->where('discussion_type', 'nick97_trakt_movies')->where('thread_id', $allThreadIds)->pluckfrom('thread_id')->fetch()->toArray();
 
 		if (count($traktThreadIds) > 0) {
 			$traktMovies = $this->finder('nick97\TraktMovies:Movie')->where('thread_id', $traktThreadIds)->fetch()->toArray();

@@ -13,12 +13,14 @@ class WatchList extends AbstractController
 	{
 		$conditions = [
 			['discussion_type', 'snog_movies_movie'],
-			['discussion_type', 'trakt_movies_movie'],
+			// ['discussion_type', 'trakt_movies_movie'],
+			['discussion_type', 'nick97_trakt_movies'],
 		];
 
 		$tvConditions = [
-			['discussion_type', 'trakt_tv'],
+			// ['discussion_type', 'trakt_tv'],
 			['discussion_type', 'snog_tv'],
+			['discussion_type', 'nick97_trakt_tv'],
 		];
 
 		$threadIds = [];

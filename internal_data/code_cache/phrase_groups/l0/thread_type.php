@@ -5,6 +5,7 @@ return array (
   'thread_type.dbtech_ecommerce_product' => 'eCommerce product',
   'thread_type.discussion' => 'Discussion',
   'thread_type.nick97_trakt_movie' => 'Trakt Movie',
+  'thread_type.nick97_trakt_movies' => 'nick97 Trakt Movies',
   'thread_type.nick97_trakt_tv' => 'Trakt TV',
   'thread_type.poll' => 'Poll',
   'thread_type.question' => 'Question',

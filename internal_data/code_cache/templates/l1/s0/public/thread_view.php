@@ -46,7 +46,7 @@ return array(
 		$__finalCompiled .= '
 
 	';
-		if (((($__vars['thread']['discussion_type'] == 'snog_movies_movie') OR ($__vars['thread']['discussion_type'] == 'snog_tv')) OR ($__vars['thread']['discussion_type'] == 'trakt_movies_movie')) OR ($__vars['thread']['discussion_type'] == 'trakt_tv')) {
+		if ((((($__vars['thread']['discussion_type'] == 'snog_movies_movie') OR ($__vars['thread']['discussion_type'] == 'snog_tv')) OR ($__vars['thread']['discussion_type'] == 'nick97_trakt_movies')) OR ($__vars['thread']['discussion_type'] == 'trakt_movies_movie')) OR ($__vars['thread']['discussion_type'] == 'trakt_tv')) {
 			$__finalCompiled .= '
 
 		';
