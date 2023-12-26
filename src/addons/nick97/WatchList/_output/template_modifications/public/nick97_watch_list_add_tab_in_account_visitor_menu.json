@@ -5,5 +5,5 @@
     "enabled": true,
     "action": "str_replace",
     "find": "<!--[XF:account_links:bottom]-->",
-    "replace": "<li><a href=\"{{ link('watch-list/my') }}\" class=\"menu-linkRow\">{{ phrase('my_watch_list') }}</a></li>\n\n$0"
+    "replace": "<li><a href=\"{{ link('account/watchlist') }}\" class=\"menu-linkRow\">{{ phrase('my_watch_list') }}</a></li>\n\n$0"
 }

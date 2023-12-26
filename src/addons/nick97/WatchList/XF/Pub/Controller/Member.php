@@ -57,9 +57,9 @@ class Member extends XFCP_Member
 		return $viewParams;
 	}
 
-	public function actionStats(ParameterBag $params)
+	protected function checkStats($userId)
 	{
-		$user = $this->assertViewableUser($params->user_id);
+		$user = $this->assertViewableUser($userId);
 
 		$visitor = \XF::visitor();
 		if (!$visitor->user_id) {
@@ -68,17 +68,26 @@ class Member extends XFCP_Member
 
 		if ($visitor->user_id == $user->user_id) {
 			if (!\XF::visitor()->hasPermission('nick97_watch_list', 'view_own_stats')) {
-				throw $this->exception($this->noPermission());
+				// throw $this->exception($this->noPermission());
+
+				return [
+					'stats' => [],
+					'limit' => false
+				];
 			}
 		} else {
 			if (!\XF::visitor()->hasPermission('nick97_watch_list', 'view_anyone_stats')) {
-				throw $this->exception($this->noPermission());
+				// throw $this->exception($this->noPermission());
+				return [
+					'stats' => [],
+					'limit' => false
+				];
 			}
 		}
 
 		$finder = \XF::finder('XF:UserConnectedAccount');
 		$traktUser = $finder
-			->where('user_id', $params->user_id)->where('provider', 'nick_trakt')
+			->where('user_id', $userId)->where('provider', 'nick_trakt')
 			->fetchOne();
 
 		$traktUserId = null;
@@ -101,11 +110,10 @@ class Member extends XFCP_Member
 			'limit' => $limit
 		];
 
-		return $this->view('XF:Member\Stats', 'nick97_watchlist_profile_stats', $viewParams);
+		return $viewParams;
 	}
 
-
-	public function actionWatchlist(ParameterBag $params)
+	protected function checkWatchList($user_id)
 	{
 		$conditions = [
 			['discussion_type', 'snog_movies_movie'],
@@ -123,9 +131,8 @@ class Member extends XFCP_Member
 		$limit = false;
 
 
-		$user = $this->assertViewableUser($params->user_id);
+		$user = $this->assertViewableUser($user_id);
 
-		// get visitor
 		$visitor = \XF::visitor();
 
 		if (!$visitor->user_id) {
@@ -134,20 +141,27 @@ class Member extends XFCP_Member
 
 		if ($visitor->user_id == $user->user_id) {
 			if (!\XF::visitor()->hasPermission('nick97_watch_list', 'view_own_watchlist')) {
-				throw $this->exception($this->noPermission());
+				// throw $this->exception($this->noPermission());
+
+				return [
+					'movies' => [],
+					'tvShows' => [],
+					'limit' => false
+				];
 			}
 		} else {
 			if (!\XF::visitor()->hasPermission('nick97_watch_list', 'view_everyone_watchlist')) {
-				throw $this->exception($this->noPermission());
+				// throw $this->exception($this->noPermission());
+
+				return [
+					'movies' => [],
+					'tvShows' => [],
+					'limit' => false
+				];
 			}
 		}
 
-		// get permission
-
 		if ($user->canViewWatchList($error)) {
-
-			// if ($visitor->hasPermission('nick97_watch_list', 'view_own_watchlist')) {
-
 			$allThreadIds = $this->finder('nick97\WatchList:WatchList')
 				->where('user_id', $user->user_id)->pluckfrom('thread_id')->fetch()->toArray();
 
@@ -156,7 +170,6 @@ class Member extends XFCP_Member
 
 			$tvThreadIds = $this->finder('XF:Thread')
 				->whereOr($tvConditions)->where('thread_id', $allThreadIds)->pluckfrom('thread_id')->fetch()->toArray();
-			// }
 		} else {
 			$limit = true;
 		}
@@ -182,11 +195,30 @@ class Member extends XFCP_Member
 			$tvShows = [];
 		}
 
-		$viewParams = [
+		$watchList = [
 			"movies" => $movies,
 			"tvShows" => $tvShows,
 
 			'limit' => $limit
+		];
+
+		return $watchList;
+	}
+
+
+	public function actionWatchlist(ParameterBag $params)
+	{
+		$watchList = $this->checkWatchList($params->user_id);
+		$stats = $this->checkStats($params->user_id);
+
+		$viewParams = [
+			"movies" => $watchList['movies'],
+			"tvShows" => $watchList['tvShows'],
+
+			'limit' => $watchList['limit'],
+
+			'stats' => $stats['stats'],
+			'statsLimit' => $stats['limit']
 		];
 
 		return $this->view('XF:Member\Watchlist', 'nick97_watchlist_profile_watchlist', $viewParams);

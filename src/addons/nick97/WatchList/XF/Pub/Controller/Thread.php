@@ -55,7 +55,7 @@ class Thread extends XFCP_Thread
 
 			$recordWatchList->delete();
 
-			$redirect = $this->redirect($this->buildLink('watch-list/my'));
+			$redirect = $this->redirect($this->buildLink('account/watchlist'));
 			return $redirect;
 		} else {
 			$viewParams = [

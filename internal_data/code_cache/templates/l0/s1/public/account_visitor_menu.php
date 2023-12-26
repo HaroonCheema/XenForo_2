@@ -194,7 +194,7 @@ return array(
 		' . $__compilerTemp5 . '
 		<li><a href="' . $__templater->func('link', array('account/following', ), true) . '" class="menu-linkRow">' . 'Following' . '</a></li>
 		<li><a href="' . $__templater->func('link', array('account/ignored', ), true) . '" class="menu-linkRow">' . 'Ignoring' . '</a></li>
-		<li><a href="' . $__templater->func('link', array('watch-list/my', ), true) . '" class="menu-linkRow">' . 'Watch List' . '</a></li>
+		<li><a href="' . $__templater->func('link', array('account/watchlist', ), true) . '" class="menu-linkRow">' . 'Watch List' . '</a></li>
 
 ' . '
 	</ul>

@@ -15,9 +15,9 @@
         "hash": "492b5520903f29d6174bbb7ef8761001"
     },
     "public/nick97_trakt_button.less": {
-        "version_id": 1000300,
-        "version_string": "1.0.3 Alpha",
-        "hash": "41ebb08d632e0159a98c5c344ff181a8"
+        "version_id": 1000500,
+        "version_string": "1.0.5 Alpha",
+        "hash": "ded88a1798bc3363ed61749631cca1de"
     },
     "public/nick97_trakt_movies_thread_type_fields_movie.html": {
         "version_id": 1000400,
@@ -59,14 +59,9 @@
         "version_string": "1.0.3 Alpha",
         "hash": "52c9ba09fc9aa7d46bccd80914f86be2"
     },
-    "public/nick97_watchlist_profile_stats.html": {
-        "version_id": 1000200,
-        "version_string": "1.0.2 Alpha",
-        "hash": "42fa56f6afa0b3316af35641945021e4"
-    },
     "public/nick97_watchlist_profile_watchlist.html": {
-        "version_id": 1000200,
-        "version_string": "1.0.2 Alpha",
-        "hash": "c2083750de2569d5421b73d90d8e4fc4"
+        "version_id": 1000500,
+        "version_string": "1.0.5 Alpha",
+        "hash": "551620fe99a206f7b30d90ca9f47615c"
     }
 }

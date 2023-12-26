@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 41ebb08d632e0159a98c5c344ff181a8
+// FROM HASH: ded88a1798bc3363ed61749631cca1de
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -26,6 +26,26 @@ a.button // needed for specificity over a:link
 			}
 		}
 	}
+}
+
+a.button.button--provider--nick_trakt{
+	background-color: #000;	
+	border-color: #000000 #000000 #000000 #000000;
+}
+
+a.button.button--provider--nick_trakt:hover{
+	background-color: #000;
+	border-color: #000000 #000000 #000000 #000000;
+}
+
+a.button.button--provider--nick_trakt:focus{
+	background-color: #000;
+	border-color: #000000 #000000 #000000 #000000;
+}
+
+a.button.button--provider--nick_trakt:active{
+	background-color: #000;
+	border-color: #000000 #000000 #000000 #000000;
 }';
 	return $__finalCompiled;
 }

@@ -1,9 +1,34 @@
 <?php
-// FROM HASH: c2083750de2569d5421b73d90d8e4fc4
+// FROM HASH: 551620fe99a206f7b30d90ca9f47615c
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
 	$__finalCompiled = '';
+	if ($__vars['stats']) {
+		$__finalCompiled .= '
+	' . $__templater->callMacro('nick97_watch_list_movies_macro', 'stats', array(
+			'stats' => $__vars['stats'],
+		), $__vars) . '
+	';
+	} else {
+		$__finalCompiled .= '
+
+	';
+		if ($__vars['statsLimit']) {
+			$__finalCompiled .= '
+		<div class="blockMessage">' . 'This member limits who may view their stats.' . '</div>
+		';
+		} else {
+			$__finalCompiled .= '
+		<div class="blockMessage">' . 'This member have no any stats.' . '</div>
+	';
+		}
+		$__finalCompiled .= '
+';
+	}
+	$__finalCompiled .= '
+
+';
 	if ($__vars['limit']) {
 		$__finalCompiled .= '
 	<div class="blockMessage">' . 'This member limits who may view their watch list.' . '</div>

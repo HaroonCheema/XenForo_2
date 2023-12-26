@@ -16,13 +16,13 @@ $0]]></replace>
   </modification>
   <modification type="public" template="account_visitor_menu" modification_key="nick97_watch_list_add_tab_in_account_visitor_menu" description="nick97_watch_list_add_tab_in_account_visitor_menu" execution_order="10" enabled="1" action="str_replace">
     <find><![CDATA[<!--[XF:account_links:bottom]-->]]></find>
-    <replace><![CDATA[<li><a href="{{ link('watch-list/my') }}" class="menu-linkRow">{{ phrase('my_watch_list') }}</a></li>
+    <replace><![CDATA[<li><a href="{{ link('account/watchlist') }}" class="menu-linkRow">{{ phrase('my_watch_list') }}</a></li>
 
 $0]]></replace>
   </modification>
   <modification type="public" template="account_wrapper" modification_key="nick97_watch_list_add_tab_in_account_wrapper" description="nick97_watch_list_add_tab_in_account_wrapper" execution_order="10" enabled="1" action="str_replace">
     <find><![CDATA[<!--[XF:settings_links:bottom]-->]]></find>
-    <replace><![CDATA[<a class="blockLink {{ $pageSelected == 'my' ? 'is-selected' : '' }}" href="{{ link('watch-list/my') }}">
+    <replace><![CDATA[<a class="blockLink {{ $pageSelected == 'my' ? 'is-selected' : '' }}" href="{{ link('account/watchlist') }}">
 	{{ phrase('my_watch_list') }}
 </a>
 
@@ -38,31 +38,20 @@ $0]]></replace>
 					class="tabs-tab"
 					id="about"
 					role="tab">{{ phrase('about') }}</a>]]></find>
-    <replace><![CDATA[$0
-
-<a href="{{ link('members/stats', $user) }}"
-					class="tabs-tab"
-					id="stats"
-					role="tab">{{ phrase('nick97_watchlist_stats') }}</a>
-				
-				<a href="{{ link('members/watchlist', $user) }}"
-					class="tabs-tab"
-					id="watchlist"
-					role="tab">{{ phrase('nick97_watchlist') }}</a>]]></replace>
+    <replace><![CDATA[$0	
+<a href="{{ link('members/watchlist', $user) }}"
+   class="tabs-tab"
+   id="watchlist"
+   role="tab">{{ phrase('nick97_watchlist') }}</a>]]></replace>
   </modification>
   <modification type="public" template="member_view" modification_key="nick97_watch_list_add_tab_in_profile_arialabel" description="nick97_watch_list_add_tab_in_profile_arialabel" execution_order="10" enabled="1" action="str_replace">
     <find><![CDATA[<li data-href="{{ link('members/about', $user) }}" role="tabpanel" aria-labelledby="about">
 		<div class="blockMessage">{{ phrase('loading...') }}</div>
 	</li>]]></find>
     <replace><![CDATA[$0 
-
-<li data-href="{{ link('members/stats', $user) }}" role="tabpanel" aria-labelledby="stats">
-		<div class="blockMessage">{{ phrase('loading...') }}</div>
-	</li>
-	
-	<li data-href="{{ link('members/watchlist', $user) }}" role="tabpanel" aria-labelledby="watchlist">
-		<div class="blockMessage">{{ phrase('loading...') }}</div>
-	</li>]]></replace>
+<li data-href="{{ link('members/watchlist', $user) }}" role="tabpanel" aria-labelledby="watchlist">
+	<div class="blockMessage">{{ phrase('loading...') }}</div>
+</li>]]></replace>
   </modification>
   <modification type="public" template="register_connected_account" modification_key="nick97_watch_list_register_username" description="nick97_watch_list_register_username" execution_order="10" enabled="1" action="str_replace">
     <find><![CDATA[<xf:macro template="register_macros" name="username_row" />]]></find>

@@ -116,7 +116,7 @@ class Setup extends AbstractSetup
 		$threadTypeRepo->rebuildThreadTypeCache();
 	}
 
-	public function uninstallStep5()
+	public function uninstallStep4()
 	{
 		$sm = $this->schemaManager();
 		$sm->dropTable('nick97_trakt_tv_url');

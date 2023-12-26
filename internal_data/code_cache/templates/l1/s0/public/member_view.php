@@ -331,17 +331,11 @@ return array(
 				<a href="' . $__templater->func('link', array('members/about', $__vars['user'], ), true) . '"
 					class="tabs-tab"
 					id="about"
-					role="tab">' . 'About' . '</a>
-
-<a href="' . $__templater->func('link', array('members/stats', $__vars['user'], ), true) . '"
-					class="tabs-tab"
-					id="stats"
-					role="tab">' . 'Stats' . '</a>
-				
-				<a href="' . $__templater->func('link', array('members/watchlist', $__vars['user'], ), true) . '"
-					class="tabs-tab"
-					id="watchlist"
-					role="tab">' . 'Watch List' . '</a>
+					role="tab">' . 'About' . '</a>	
+<a href="' . $__templater->func('link', array('members/watchlist', $__vars['user'], ), true) . '"
+   class="tabs-tab"
+   id="watchlist"
+   role="tab">' . 'Watch List' . '</a>
 
 				';
 	if ($__templater->method($__vars['xf']['visitor'], 'canViewWarnings', array()) AND $__vars['user']['warning_count']) {
@@ -494,14 +488,9 @@ return array(
 	<li data-href="' . $__templater->func('link', array('members/about', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="about">
 		<div class="blockMessage">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
 	</li> 
-
-<li data-href="' . $__templater->func('link', array('members/stats', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="stats">
-		<div class="blockMessage">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
-	</li>
-	
-	<li data-href="' . $__templater->func('link', array('members/watchlist', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="watchlist">
-		<div class="blockMessage">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
-	</li>
+<li data-href="' . $__templater->func('link', array('members/watchlist', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="watchlist">
+	<div class="blockMessage">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
+</li>
 
 	';
 	if ($__templater->method($__vars['xf']['visitor'], 'canViewWarnings', array()) AND $__vars['user']['warning_count']) {

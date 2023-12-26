@@ -5,5 +5,5 @@
     "enabled": true,
     "action": "str_replace",
     "find": "<!--[XF:settings_links:bottom]-->",
-    "replace": "<a class=\"blockLink {{ $pageSelected == 'my' ? 'is-selected' : '' }}\" href=\"{{ link('watch-list/my') }}\">\n\t{{ phrase('my_watch_list') }}\n</a>\n\n$0"
+    "replace": "<a class=\"blockLink {{ $pageSelected == 'my' ? 'is-selected' : '' }}\" href=\"{{ link('account/watchlist') }}\">\n\t{{ phrase('my_watch_list') }}\n</a>\n\n$0"
 }

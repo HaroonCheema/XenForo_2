@@ -113,7 +113,7 @@
 			.right_statsvideo:hover{
 				color: blue;
 			}]]></template>
-  <template type="public" title="nick97_trakt_button.less" version_id="1000300" version_string="1.0.3 Alpha"><![CDATA[.button,
+  <template type="public" title="nick97_trakt_button.less" version_id="1000500" version_string="1.0.5 Alpha"><![CDATA[.button,
 a.button // needed for specificity over a:link
 {
 	&.button--provider
@@ -135,6 +135,26 @@ a.button // needed for specificity over a:link
 			}
 		}
 	}
+}
+
+a.button.button--provider--nick_trakt{
+	background-color: #000;	
+	border-color: #000000 #000000 #000000 #000000;
+}
+
+a.button.button--provider--nick_trakt:hover{
+	background-color: #000;
+	border-color: #000000 #000000 #000000 #000000;
+}
+
+a.button.button--provider--nick_trakt:focus{
+	background-color: #000;
+	border-color: #000000 #000000 #000000 #000000;
+}
+
+a.button.button--provider--nick_trakt:active{
+	background-color: #000;
+	border-color: #000000 #000000 #000000 #000000;
 }]]></template>
   <template type="public" title="nick97_trakt_movies_thread_type_fields_movie" version_id="1000400" version_string="1.0.4 Alpha"><![CDATA[<xf:if is="$context == 'create' AND $subContext == 'quick'">
 	<xf:set var="$rowType" value="fullWidth noGutter mergeNext" />
@@ -1090,17 +1110,18 @@ text-align: center;
 font-size: 18px;
 color: #555;
 }]]></template>
-  <template type="public" title="nick97_watchlist_profile_stats" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[<xf:if is="$stats">
+  <template type="public" title="nick97_watchlist_profile_watchlist" version_id="1000500" version_string="1.0.5 Alpha"><![CDATA[<xf:if is="$stats">
 	<xf:macro template="nick97_watch_list_movies_macro" name="stats" arg-stats="{$stats}" />
 	<xf:else/>
 
-	<xf:if is="$limit">
+	<xf:if is="$statsLimit">
 		<div class="blockMessage">{{ phrase('nick97_member_limits_viewing_stats') }}</div>
 		<xf:else/>
 		<div class="blockMessage">{{ phrase('nick97_member_empty_viewing_stats') }}</div>
 	</xf:if>
-</xf:if>]]></template>
-  <template type="public" title="nick97_watchlist_profile_watchlist" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[<xf:if is="$limit">
+</xf:if>
+
+<xf:if is="$limit">
 	<div class="blockMessage">{{ phrase('nick97_member_limits_viewing_watchlist') }}</div>
 
 	<xf:else/>
