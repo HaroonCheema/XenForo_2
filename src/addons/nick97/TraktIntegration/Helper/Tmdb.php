@@ -15,7 +15,7 @@ class Tmdb extends \Snog\Movies\Helper\Tmdb
 			} else {
 				$movieId = 0;
 			}
-		} else if (stristr($url, 'trakt.tv/')) {
+		} else if (stristr($url, 'trakt.tv/movies')) {
 			// preg_match_all USED FOR FUTURE API PARAMETER CAPTURING
 			$pattern = "/https:\/\/trakt\.tv\/movies\//";
 			$cleanUrl = preg_replace($pattern, "", $url);
@@ -43,10 +43,10 @@ class Tmdb extends \Snog\Movies\Helper\Tmdb
 	{
 		$endpoint = 'https://api.trakt.tv/movies/' . $id;
 
-		$clientKey = \XF::options()->traktMovieThreads_apikey;
+		$clientKey = \XF::options()->nick97_trakt_api_key;
 
 		if (!$clientKey) {
-			throw new \XF\PrintableException(\XF::phrase('nick97_movie_trakt_api_key_not_found'));
+			throw new \XF\PrintableException(\XF::phrase('nick97_trakt_api_key_not_found'));
 		}
 
 		$headers = array(
@@ -74,10 +74,10 @@ class Tmdb extends \Snog\Movies\Helper\Tmdb
 		$movieId = $toArray["ids"]["tmdb"];
 
 		if (isset($movieId)) {
-			$recordExist = \XF::finder('nick97\TraktMovies:TraktMovSlug')->where('tmdb_id', $movieId)->fetchOne();
+			$recordExist = \XF::finder('nick97\TraktIntegration:TraktMovSlug')->where('tmdb_id', $movieId)->fetchOne();
 
 			if (!$recordExist) {
-				$insertData = \XF::em()->create('nick97\TraktMovies:TraktMovSlug');
+				$insertData = \XF::em()->create('nick97\TraktIntegration:TraktMovSlug');
 
 				$insertData->tmdb_id = $movieId;
 				$insertData->trakt_slug = $toArray["ids"]["slug"];
@@ -93,19 +93,19 @@ class Tmdb extends \Snog\Movies\Helper\Tmdb
 	protected function CheckRequestError($statusCode)
 	{
 		if ($statusCode == 404) {
-			throw new \XF\PrintableException(\XF::phrase('nick97_trakt_movies_request_not_found'));
+			throw new \XF\PrintableException(\XF::phrase('nick97_trakt_request_not_found'));
 		} elseif ($statusCode == 401) {
-			throw new \XF\PrintableException(\XF::phrase('nick97_trakt_movies_request_unauthorized'));
+			throw new \XF\PrintableException(\XF::phrase('nick97_trakt_request_unauthorized'));
 		} elseif ($statusCode == 415) {
-			throw new \XF\PrintableException(\XF::phrase('nick97_trakt_movies_request_unsported_media'));
+			throw new \XF\PrintableException(\XF::phrase('nick97_trakt_request_unsported_media'));
 		} elseif ($statusCode == 400) {
-			throw new \XF\PrintableException(\XF::phrase('nick97_trakt_movies_request_empty_body'));
+			throw new \XF\PrintableException(\XF::phrase('nick97_trakt_request_empty_body'));
 		} elseif ($statusCode == 405) {
-			throw new \XF\PrintableException(\XF::phrase('nick97_trakt_movies_request_method_not_allowed'));
+			throw new \XF\PrintableException(\XF::phrase('nick97_trakt_request_method_not_allowed'));
 		} elseif ($statusCode == 500) {
-			throw new \XF\PrintableException(\XF::phrase('nick97_trakt_movies_request_server_error'));
+			throw new \XF\PrintableException(\XF::phrase('nick97_trakt_request_server_error'));
 		} elseif ($statusCode != 200) {
-			throw new \XF\PrintableException(\XF::phrase('nick97_trakt_movies_request_not_success'));
+			throw new \XF\PrintableException(\XF::phrase('nick97_trakt_request_not_success'));
 		}
 	}
 }

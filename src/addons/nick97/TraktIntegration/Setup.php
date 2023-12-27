@@ -7,6 +7,9 @@ use XF\AddOn\StepRunnerInstallTrait;
 use XF\AddOn\StepRunnerUninstallTrait;
 use XF\AddOn\StepRunnerUpgradeTrait;
 
+use XF\Db\Schema\Alter;
+use XF\Db\Schema\Create;
+
 class Setup extends AbstractSetup
 {
 	use StepRunnerInstallTrait;
@@ -53,6 +56,26 @@ class Setup extends AbstractSetup
 		/** @var \XF\Repository\ThreadType $threadTypeRepo */
 		$threadTypeRepo = $this->app->repository('XF:ThreadType');
 		$threadTypeRepo->rebuildThreadTypeCache();
+
+
+		$this->schemaManager()->createTable('nick97_trakt_url_tv', function (Create $table) {
+			$table->addColumn('id', 'int')->autoIncrement();
+
+			$table->addColumn('tmdb_id', 'int');
+			$table->addColumn('trakt_slug', 'mediumtext')->nullable();
+
+			$table->addPrimaryKey('id');
+		});
+
+
+		$this->schemaManager()->createTable('nick97_trakt_url_movies', function (Create $table) {
+			$table->addColumn('id', 'int')->autoIncrement();
+
+			$table->addColumn('tmdb_id', 'int');
+			$table->addColumn('trakt_slug', 'mediumtext')->nullable();
+
+			$table->addPrimaryKey('id');
+		});
 	}
 
 	// ################################## UNINSTALL ###########################################
@@ -73,5 +96,9 @@ class Setup extends AbstractSetup
 		/** @var \XF\Repository\ThreadType $threadTypeRepo */
 		$threadTypeRepo = $this->app->repository('XF:ThreadType');
 		$threadTypeRepo->rebuildThreadTypeCache();
+
+		$sm = $this->schemaManager();
+		$sm->dropTable('nick97_trakt_url_tv');
+		$sm->dropTable('nick97_trakt_url_movies');
 	}
 }

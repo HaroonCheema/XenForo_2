@@ -701,71 +701,71 @@ class TV extends AbstractController
 
 	// }
 
-	public function actionSync(ParameterBag $params)
-	{
-		$visitor = \XF::visitor();
-		if (!$visitor->user_id) {
-			return $this->noPermission();
-		}
+	// public function actionSync(ParameterBag $params)
+	// {
+	// 	$visitor = \XF::visitor();
+	// 	if (!$visitor->user_id) {
+	// 		return $this->noPermission();
+	// 	}
 
-		$thread = $this->assertViewableThread($params->thread_id);
-
-
-		if ($this->isPost()) {
-			$typeCreator = \XF::service('nick97\TraktTV:Thread\TypeData\TvCreator', $thread, 42525);
+	// 	$thread = $this->assertViewableThread($params->thread_id);
 
 
-			$tvCreator = $typeCreator->getTvCreator();
-
-			$tvId = $thread->traktTV->tv_id;
-
-			$threadId = $thread->thread_id;
-
-			\xf::db()->delete('nick97_trakt_tv_thread', 'thread_id = ?', $thread->thread_id);
-
-			\xf::db()->delete('nick97_trakt_tv_crew', 'tv_id = ?', $tvId);
-			\xf::db()->delete('nick97_trakt_tv_cast', 'tv_id = ?', $tvId);
+	// 	if ($this->isPost()) {
+	// 		$typeCreator = \XF::service('nick97\TraktTV:Thread\TypeData\TvCreator', $thread, 42525);
 
 
-			$casts = $this->finder('nick97\TraktTV:Cast')->where('tv_id', $tvId)->fetch();
+	// 		$tvCreator = $typeCreator->getTvCreator();
 
-			if (count($casts)) {
+	// 		$tvId = $thread->traktTV->tv_id;
 
-				$this->deleteMovies($casts);
-			}
+	// 		$threadId = $thread->thread_id;
 
-			$Crews = $this->finder('nick97\TraktTV:Crew')->where('tv_id', $tvId)->fetch();
+	// 		\xf::db()->delete('nick97_trakt_tv_thread', 'thread_id = ?', $thread->thread_id);
 
-			if (count($Crews)) {
+	// 		\xf::db()->delete('nick97_trakt_tv_crew', 'tv_id = ?', $tvId);
+	// 		\xf::db()->delete('nick97_trakt_tv_cast', 'tv_id = ?', $tvId);
 
-				$this->deleteMovies($Crews);
-			}
 
-			$Ratings = $this->finder('nick97\TraktTV:Rating')->where('thread_id', $thread->thread_id)->fetch();
+	// 		$casts = $this->finder('nick97\TraktTV:Cast')->where('tv_id', $tvId)->fetch();
 
-			if (count($Ratings)) {
+	// 		if (count($casts)) {
 
-				$this->deleteMovies($Ratings);
-			}
+	// 			$this->deleteMovies($casts);
+	// 		}
 
-			$tvCreator->setTvId($tvId);
+	// 		$Crews = $this->finder('nick97\TraktTV:Crew')->where('tv_id', $tvId)->fetch();
 
-			$thread->setOption('tvData', $tvCreator->getTvData());
+	// 		if (count($Crews)) {
 
-			$tvCreator->save();
+	// 			$this->deleteMovies($Crews);
+	// 		}
 
-			$movie = $this->finder('nick97\TraktTV:TV')->where('thread_id', 42525)->fetchOne();
-			$movie->fastUpdate('thread_id', $threadId);
-			$thread->fastUpdate('title', $thread->traktTV->tv_title);
+	// 		$Ratings = $this->finder('nick97\TraktTV:Rating')->where('thread_id', $thread->thread_id)->fetch();
 
-			return $this->redirect($this->buildLink('threads', $thread));
-		} else {
-			$viewParams = [
-				'thread' => $thread,
-			];
-			return $this->view('nick97\TraktTV:TV\Sync', 'nick97_trakt_tv_sync_confirm', $viewParams);
-		}
-	}
+	// 		if (count($Ratings)) {
+
+	// 			$this->deleteMovies($Ratings);
+	// 		}
+
+	// 		$tvCreator->setTvId($tvId);
+
+	// 		$thread->setOption('tvData', $tvCreator->getTvData());
+
+	// 		$tvCreator->save();
+
+	// 		$movie = $this->finder('nick97\TraktTV:TV')->where('thread_id', 42525)->fetchOne();
+	// 		$movie->fastUpdate('thread_id', $threadId);
+	// 		$thread->fastUpdate('title', $thread->traktTV->tv_title);
+
+	// 		return $this->redirect($this->buildLink('threads', $thread));
+	// 	} else {
+	// 		$viewParams = [
+	// 			'thread' => $thread,
+	// 		];
+	// 		return $this->view('nick97\TraktTV:TV\Sync', 'nick97_trakt_tv_sync_confirm', $viewParams);
+	// 	}
+	// }
 
 	public function deleteMovies($datas)
 	{

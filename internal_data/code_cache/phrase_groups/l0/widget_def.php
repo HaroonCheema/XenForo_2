@@ -35,8 +35,6 @@ return array (
   'widget_def.tl_groups_group' => '[tl] Social Groups: Groups',
   'widget_def.trakt_movie_poster_slider' => '[nick97] Trakt Movie Thread Starter: Poster Carousel',
   'widget_def.trakt_movies_slider' => '[nick97] Trakt Movie Thread Starter: Detailed carousel',
-  'widget_def.trakt_tv_poster_slider' => '[nick97] Trakt TV Thread Starter: Poster Slider',
-  'widget_def.trakt_tv_slider' => '[nick97] Trakt TV Thread Starter: Detailed carousel',
   'widget_def.visitor_panel' => 'Visitor panel',
   'widget_def.xfmg_albums_slider' => 'XFMG: Albums slider',
   'widget_def.xfmg_gallery_statistics' => 'XFMG: Gallery statistics',

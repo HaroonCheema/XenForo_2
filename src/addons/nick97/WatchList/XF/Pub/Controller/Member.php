@@ -117,12 +117,11 @@ class Member extends XFCP_Member
 	{
 		$conditions = [
 			['discussion_type', 'snog_movies_movie'],
-			['discussion_type', 'trakt_movies_movie'],
 			['discussion_type', 'nick97_trakt_movies'],
 		];
 
 		$tvConditions = [
-			['discussion_type', 'trakt_tv'],
+			['discussion_type', 'nick97_trakt_tv'],
 			['discussion_type', 'snog_tv'],
 		];
 
@@ -176,21 +175,20 @@ class Member extends XFCP_Member
 		}
 
 		if (count($threadIds) > 0) {
-			$tmdbMovies = $this->finder('Snog\Movies:Movie')->where('thread_id', $threadIds)->fetch()->toArray();
-			$traktMovies = $this->finder('nick97\TraktMovies:Movie')->where('thread_id', $threadIds)->fetch()->toArray();
+			$movies = $this->finder('Snog\Movies:Movie')->where('thread_id', $threadIds)->fetch()->toArray();
+			// $traktMovies = $this->finder('nick97\TraktMovies:Movie')->where('thread_id', $threadIds)->fetch()->toArray();
 
-			$movies = array_merge($tmdbMovies, $traktMovies);
+			// $movies = array_merge($tmdbMovies, $traktMovies);
 			// $movies = $traktMovies;
 		} else {
 			$movies = [];
 		}
 
 		if (count($tvThreadIds) > 0) {
+			$tvShows = $this->finder('Snog\TV:TV')->where('thread_id', $tvThreadIds)->fetch()->toArray();
+			// $traktTv = $this->finder('nick97\TraktTV:TV')->where('thread_id', $tvThreadIds)->fetch()->toArray();
 
-			$tmdbTv = $this->finder('Snog\TV:TV')->where('thread_id', $tvThreadIds)->fetch()->toArray();
-			$traktTv = $this->finder('nick97\TraktTV:TV')->where('thread_id', $tvThreadIds)->fetch()->toArray();
-
-			$tvShows = array_merge($tmdbTv, $traktTv);
+			// $tvShows = array_merge($tmdbTv, $traktTv);
 			// $tvShows = $traktTv;
 		} else {
 			$tvShows = [];

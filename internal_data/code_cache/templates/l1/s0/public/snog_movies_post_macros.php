@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 1b41cf3ceddd2939c355cf427a185425
+// FROM HASH: 8ca5ac92b92da50f0641ab213f4986e0
 return array(
 'macros' => array('movie' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -101,12 +101,25 @@ return array(
 					$__finalCompiled .= '
 
 															<br />
-
-															' . $__templater->button('More details on TMDb', array(
-						'href' => $__vars['watchProvider']['link'],
-						'target' => '_blank',
-					), '', array(
-					)) . '
+															';
+					if ($__templater->method($__vars['thread'], 'getTraktMovLink', array($__vars['thread']['Movie']['tmdb_id'], ))) {
+						$__finalCompiled .= '
+	' . $__templater->button('More details on Trakt', array(
+							'href' => 'https://trakt.tv/movies/' . $__templater->method($__vars['thread'], 'getTraktMovLink', array($__vars['thread']['Movie']['tmdb_id'], )),
+							'target' => '_blank',
+						), '', array(
+						)) . '
+	';
+					} else {
+						$__finalCompiled .= '
+	' . $__templater->button('More details on TMDb', array(
+							'href' => $__vars['watchProvider']['link'],
+							'target' => '_blank',
+						), '', array(
+						)) . '
+';
+					}
+					$__finalCompiled .= '
 														</div>
 													';
 				}

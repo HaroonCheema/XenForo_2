@@ -46,7 +46,7 @@ return array(
 		$__finalCompiled .= '
 
 	';
-		if ((((($__vars['thread']['discussion_type'] == 'snog_movies_movie') OR ($__vars['thread']['discussion_type'] == 'snog_tv')) OR ($__vars['thread']['discussion_type'] == 'nick97_trakt_movies')) OR ($__vars['thread']['discussion_type'] == 'trakt_movies_movie')) OR ($__vars['thread']['discussion_type'] == 'trakt_tv')) {
+		if (((($__vars['thread']['discussion_type'] == 'snog_movies_movie') OR ($__vars['thread']['discussion_type'] == 'snog_tv')) OR ($__vars['thread']['discussion_type'] == 'nick97_trakt_movies')) OR ($__vars['thread']['discussion_type'] == 'nick97_trakt_tv')) {
 			$__finalCompiled .= '
 
 		';
@@ -291,19 +291,6 @@ return array(
 	}
 	$__compilerTemp3 .= '
 											';
-	if (($__vars['forum']['forum_type_id'] == 'trakt_tv') AND $__templater->method($__vars['xf']['visitor'], 'hasPermission', array('tvthreads_interface', 'add_info', ))) {
-		$__compilerTemp3 .= '
-	';
-		if (!$__vars['thread']['traktTV']) {
-			$__compilerTemp3 .= '
-		<a href="' . $__templater->func('link', array('tvTrakt/addinfo', $__vars['thread'], ), true) . '" data-xf-click="overlay" class="menu-linkRow">' . 'trakt_tv_add_info' . '</a>
-	';
-		}
-		$__compilerTemp3 .= '
-';
-	}
-	$__compilerTemp3 .= '
-';
 	if ((($__templater->func('property', array('trakt_movies_posterUpdateButtonPosition', ), false) == 'thread_tools_menu') AND ($__vars['thread']['traktMovie'] AND ($__vars['xf']['visitor']['is_admin'] OR $__vars['xf']['visitor']['is_moderator'])))) {
 		$__compilerTemp3 .= '
 												<a href="' . $__templater->func('link', array('traktMovies/poster', $__vars['thread']['traktMovie'], ), true) . '" data-xf-click="overlay" class="menu-linkRow">
@@ -313,15 +300,6 @@ return array(
 	}
 	$__compilerTemp3 .= '
 
-											';
-	if ((($__templater->func('property', array('trakt_tv_posterUpdateButtonPosition', ), false) == 'thread_tools_menu') AND ($__vars['thread']['traktTV'] AND ($__vars['xf']['visitor']['is_admin'] OR $__vars['xf']['visitor']['is_moderator'])))) {
-		$__compilerTemp3 .= '
-												<a href="' . $__templater->func('link', array('tvTrakt/poster', $__vars['thread']['traktTV'], ), true) . '" data-xf-click="overlay" class="menu-linkRow">
-													' . 'Check for new poster' . '
-												</a>
-											';
-	}
-	$__compilerTemp3 .= '
 											' . '
 											';
 	if ($__templater->method($__vars['thread'], 'canUseInlineModeration', array())) {
@@ -1024,24 +1002,10 @@ return array(
 		} else {
 			$__compilerTemp4 .= '
 	';
-			if (!$__templater->test($__vars['thread']['traktTV'], 'empty', array()) AND (!$__vars['thread']['traktTV']['tv_episode'])) {
-				$__compilerTemp4 .= '
-	';
-				$__templater->includeJs(array(
-					'src' => 'nick97/TraktTV/message.min.js',
-				));
-				$__compilerTemp4 .= '
-';
-			} else {
-				$__compilerTemp4 .= '
-	';
-				$__templater->includeJs(array(
-					'src' => 'xf/message.js',
-					'min' => '1',
-				));
-				$__compilerTemp4 .= '
-';
-			}
+			$__templater->includeJs(array(
+				'src' => 'xf/message.js',
+				'min' => '1',
+			));
 			$__compilerTemp4 .= '
 ';
 		}

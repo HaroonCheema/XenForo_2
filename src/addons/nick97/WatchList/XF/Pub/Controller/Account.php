@@ -65,18 +65,23 @@ class Account extends XFCP_Account
 			$tmdbMovies = null;
 		}
 
-		$traktThreadIds = $this->finder('XF:Thread')
-			// ->where('discussion_type', 'trakt_movies_movie')->where('thread_id', $allThreadIds)->pluckfrom('thread_id')->fetch()->toArray();
-			->where('discussion_type', 'nick97_trakt_movies')->where('thread_id', $allThreadIds)->pluckfrom('thread_id')->fetch()->toArray();
+		// $traktThreadIds = $this->finder('XF:Thread')
+		// 	// ->where('discussion_type', 'trakt_movies_movie')->where('thread_id', $allThreadIds)->pluckfrom('thread_id')->fetch()->toArray();
+		// 	->where('discussion_type', 'nick97_trakt_movies')->where('thread_id', $allThreadIds)->pluckfrom('thread_id')->fetch()->toArray();
 
-		if (count($traktThreadIds) > 0) {
-			$traktMovies = $this->finder('nick97\TraktMovies:Movie')->where('thread_id', $traktThreadIds)->fetch()->toArray();
-		} else {
-			$traktMovies = null;
-		}
+		// if (count($traktThreadIds) > 0) {
+		// 	$traktMovies = $this->finder('nick97\TraktMovies:Movie')->where('thread_id', $traktThreadIds)->fetch()->toArray();
+		// } else {
+		// 	$traktMovies = null;
+		// }
+
+		$tvConditions = [
+			['discussion_type', 'snog_tv'],
+			['discussion_type', 'nick97_trakt_tv'],
+		];
 
 		$tvThreadIds = $this->finder('XF:Thread')
-			->where('discussion_type', 'snog_tv')->where('thread_id', $allThreadIds)->pluckfrom('thread_id')->fetch()->toArray();
+			->whereOr($tvConditions)->where('thread_id', $allThreadIds)->pluckfrom('thread_id')->fetch()->toArray();
 
 		if (count($tvThreadIds) > 0) {
 			$tmdbTvShows = $this->finder('Snog\TV:TV')->where('thread_id', $tvThreadIds)->fetch()->toArray();
@@ -84,22 +89,22 @@ class Account extends XFCP_Account
 			$tmdbTvShows = null;
 		}
 
-		$traktTvThreadIds = $this->finder('XF:Thread')
-			->where('discussion_type', 'trakt_tv')->where('thread_id', $allThreadIds)->pluckfrom('thread_id')->fetch()->toArray();
+		// $traktTvThreadIds = $this->finder('XF:Thread')
+		// 	->where('discussion_type', 'trakt_tv')->where('thread_id', $allThreadIds)->pluckfrom('thread_id')->fetch()->toArray();
 
-		if (count($traktTvThreadIds) > 0) {
-			$traktTvShows = $this->finder('nick97\TraktTV:TV')->where('thread_id', $traktTvThreadIds)->fetch()->toArray();
-		} else {
-			$traktTvShows = null;
-		}
+		// if (count($traktTvThreadIds) > 0) {
+		// 	$traktTvShows = $this->finder('nick97\TraktTV:TV')->where('thread_id', $traktTvThreadIds)->fetch()->toArray();
+		// } else {
+		// 	$traktTvShows = null;
+		// }
 
 		$viewpParams = [
 			'pageSelected' => 'my',
 
 			"movies" => $tmdbMovies,
-			"traktMovies" => $traktMovies,
+			// "traktMovies" => $traktMovies,
 			"tmdbTvShows" => $tmdbTvShows,
-			"traktTvShows" => $traktTvShows,
+			// "traktTvShows" => $traktTvShows,
 		];
 
 		return $this->view('nick97\WatchList:index', 'nick97_watch_list_my_watch_list', $viewpParams);

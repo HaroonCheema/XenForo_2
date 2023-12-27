@@ -9,5 +9,4 @@ return array (
   'forum_type.snog_tv' => 'TMDb TV Forum',
   'forum_type.suggestion' => 'Suggestion',
   'forum_type.trakt_movies_movie' => 'Trakt Movie Forum',
-  'forum_type.trakt_tv' => 'Trakt TV Forum',
 );

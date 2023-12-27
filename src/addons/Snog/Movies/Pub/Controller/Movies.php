@@ -579,24 +579,24 @@ class Movies extends AbstractController
 	}
 
 
-	public function actionSync(ParameterBag $params)
-	{
-		$thread = $this->assertViewableThread($params->thread_id);
+	// public function actionSync(ParameterBag $params)
+	// {
+	// 	$thread = $this->assertViewableThread($params->thread_id);
 
-		$typeCreator = \XF::service('Snog\Movies:Thread\TypeData\MovieCreator', $thread);
+	// 	$typeCreator = \XF::service('Snog\Movies:Thread\TypeData\MovieCreator', $thread);
 
-		$movieCreator = $typeCreator->getMovieCreator();
+	// 	$movieCreator = $typeCreator->getMovieCreator();
 
-		// var_dump($thread->Movie->delete());
-		// exit;
+	// 	// var_dump($thread->Movie->delete());
+	// 	// exit;
 
-		$movieId = 299054;
-		/** @var \Snog\Movies\Helper\Tmdb $tmdbHelper */
-		$tmdbHelper = \XF::helper('Snog\Movies:Tmdb');
-		$movieCreator->setMovieId($tmdbHelper->parseMovieId($movieId));
+	// 	$movieId = 299054;
+	// 	/** @var \Snog\Movies\Helper\Tmdb $tmdbHelper */
+	// 	$tmdbHelper = \XF::helper('Snog\Movies:Tmdb');
+	// 	$movieCreator->setMovieId($tmdbHelper->parseMovieId($movieId));
 
-		$thread->setOption('movieApiResponse', $movieCreator->getMovieApiResponse());
+	// 	$thread->setOption('movieApiResponse', $movieCreator->getMovieApiResponse());
 
-		$movieCreator->save();
-	}
+	// 	$movieCreator->save();
+	// }
 }

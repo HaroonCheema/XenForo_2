@@ -24,11 +24,6 @@
         "version_string": "1.0.0 Alpha",
         "hash": "19c9ba611b27a5f3c800721cf32d09af"
     },
-    "public/nick97_trakt_watch_list_sync_confirm.html": {
-        "version_id": 1000010,
-        "version_string": "1.0.0 Alpha",
-        "hash": "dbb0251720b22896b14c16099d687ab0"
-    },
     "public/search_result_trakt_movies_thread.html": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",

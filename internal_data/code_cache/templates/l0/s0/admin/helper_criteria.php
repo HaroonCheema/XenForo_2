@@ -603,20 +603,6 @@ return array(
 		'name' => 'user_criteria[tv_posted][rule]',
 		'value' => 'tv_posted',
 		'selected' => $__vars['criteria']['tv_posted'],
-		'label' => 'trakt_tv_started_x_threads',
-		'_dependent' => array($__templater->formNumberBox(array(
-		'name' => 'user_criteria[tv_posted][data][tv]',
-		'value' => $__vars['criteria']['tv_posted']['tv'],
-		'size' => '5',
-		'min' => '0',
-		'step' => '1',
-	))),
-		'_type' => 'option',
-	),
-	array(
-		'name' => 'user_criteria[tv_posted][rule]',
-		'value' => 'tv_posted',
-		'selected' => $__vars['criteria']['tv_posted'],
 		'label' => 'User has started at least X TV threads',
 		'_dependent' => array($__templater->formNumberBox(array(
 		'name' => 'user_criteria[tv_posted][data][tv]',

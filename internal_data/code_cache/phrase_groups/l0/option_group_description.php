@@ -43,6 +43,7 @@ You may set a user into \'discouraged\' mode by editing their user profile, or d
   'option_group_description.newsfeed' => 'The news feed, or activity stream is a constantly-updated log of things that your registered members do, which can be viewed back by other visitors.<br />
 <br />
 It is possible to filter the news feed down to just users you follow, or a single user.',
+  'option_group_description.nick97traktIntegration' => 'Options for the Trakt Movies and TV Show',
   'option_group_description.nodeList' => 'The node and forum list is the primary navigational structure for XenForo\'s forums and pages.',
   'option_group_description.ozzmodz_dvn' => '',
   'option_group_description.performance' => 'Options here allow you to turn off or tweak systems in order to fine-tune the performance of your site.',
@@ -65,7 +66,6 @@ It is possible to filter the news feed down to just users you follow, or a singl
   'option_group_description.tournament' => 'Tournament options',
   'option_group_description.trader' => 'Options here control the Trader add-on.',
   'option_group_description.traktMovies' => 'Options for the Trakt movie thread starter add-on',
-  'option_group_description.traktTvThreads' => 'Options for the Trakt TV add-on',
   'option_group_description.traktWatchLists' => '[nick97] Trakt Watch List Options',
   'option_group_description.users' => '',
   'option_group_description.usersAndRegistration' => '',

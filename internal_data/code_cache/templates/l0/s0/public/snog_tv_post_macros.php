@@ -102,11 +102,25 @@ return array(
 					$__finalCompiled .= '
 
 															<br />
-															' . $__templater->button('More details on TMDb', array(
-						'href' => $__vars['watchProvider']['link'],
-						'target' => '_blank',
-					), '', array(
-					)) . '
+															';
+					if ($__templater->method($__vars['thread'], 'getTraktTVLink', array($__vars['thread']['TV']['tv_id'], ))) {
+						$__finalCompiled .= '
+	' . $__templater->button('More details on Trakt', array(
+							'href' => 'https://trakt.tv/shows/' . $__templater->method($__vars['thread'], 'getTraktTVLink', array($__vars['thread']['TV']['tv_id'], )),
+							'target' => '_blank',
+						), '', array(
+						)) . '
+	';
+					} else {
+						$__finalCompiled .= '
+	' . $__templater->button('More details on TMDb', array(
+							'href' => $__vars['watchProvider']['link'],
+							'target' => '_blank',
+						), '', array(
+						)) . '
+';
+					}
+					$__finalCompiled .= '
 														</div>
 													';
 				}

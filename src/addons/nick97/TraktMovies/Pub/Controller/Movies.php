@@ -588,91 +588,91 @@ class Movies extends AbstractController
 		return $this->assertRecordExists('nick97\TraktMovies:Movie', $id, $with);
 	}
 
-	public function actionSync(ParameterBag $params)
-	{
-		$visitor = \XF::visitor();
-		if (!$visitor->user_id) {
-			return $this->noPermission();
-		}
+	// public function actionSync(ParameterBag $params)
+	// {
+	// 	$visitor = \XF::visitor();
+	// 	if (!$visitor->user_id) {
+	// 		return $this->noPermission();
+	// 	}
 
-		$thread = $this->assertViewableThread($params->thread_id);
+	// 	$thread = $this->assertViewableThread($params->thread_id);
 
-		if ($this->isPost()) {
-			$typeCreator = \XF::service('nick97\TraktMovies:Thread\TypeData\MovieCreator', $thread, 22525);
-
-
-			$movieCreator = $typeCreator->getMovieCreator();
-
-			$movieId = $thread->traktMovie->trakt_id;
-
-			$threadId = $thread->thread_id;
+	// 	if ($this->isPost()) {
+	// 		$typeCreator = \XF::service('nick97\TraktMovies:Thread\TypeData\MovieCreator', $thread, 22525);
 
 
+	// 		$movieCreator = $typeCreator->getMovieCreator();
 
-			\xf::db()->delete('nick97_trakt_movies_thread', 'thread_id = ?', $thread->thread_id);
+	// 		$movieId = $thread->traktMovie->trakt_id;
 
-			\xf::db()->delete('nick97_trakt_movies_crew', 'trakt_id = ?', $movieId);
-			\xf::db()->delete('nick97_trakt_movies_cast', 'trakt_id = ?', $movieId);
-
-
-			$casts = $this->finder('nick97\TraktMovies:Cast')->where('trakt_id', $movieId)->fetch();
-
-			if (count($casts)) {
-
-				$this->deleteMovies($casts);
-			}
-
-			$Crews = $this->finder('nick97\TraktMovies:Crew')->where('trakt_id', $movieId)->fetch();
-
-			if (count($Crews)) {
-
-				$this->deleteMovies($Crews);
-			}
-			$Videos = $this->finder('nick97\TraktMovies:Video')->where('trakt_id', $movieId)->fetch();
-
-			if (count($Videos)) {
-
-				$this->deleteMovies($Videos);
-			}
-
-			$Ratings = $this->finder('nick97\TraktMovies:Rating')->where('thread_id', $thread->thread_id)->fetch();
-
-			if (count($Ratings)) {
-
-				$this->deleteMovies($Ratings);
-			}
-
-			// $movie = $thread->traktMovie;
-			// $message = $movie->getPostMessage();
-
-			// $comment = $thread->FirstPost->message;
-
-			// if (!\xf::options()->traktthreads_force_comments) {
-			// 	$message .= $comment;
-			// }
+	// 		$threadId = $thread->thread_id;
 
 
 
-			// $thread->setOption('movieOriginalMessage', $comment);
+	// 		\xf::db()->delete('nick97_trakt_movies_thread', 'thread_id = ?', $thread->thread_id);
 
-			$movieCreator->setMovieId($movieId);
+	// 		\xf::db()->delete('nick97_trakt_movies_crew', 'trakt_id = ?', $movieId);
+	// 		\xf::db()->delete('nick97_trakt_movies_cast', 'trakt_id = ?', $movieId);
 
-			$thread->setOption('movieApiResponse', $movieCreator->getMovieApiResponse());
 
-			$movieCreator->save();
+	// 		$casts = $this->finder('nick97\TraktMovies:Cast')->where('trakt_id', $movieId)->fetch();
 
-			$movie = $this->finder('nick97\TraktMovies:Movie')->where('thread_id', 22525)->fetchOne();
-			$movie->fastUpdate('thread_id', $threadId);
-			$thread->fastUpdate('title', $thread->traktMovie->trakt_title);
+	// 		if (count($casts)) {
 
-			return $this->redirect($this->buildLink('threads', $thread));
-		} else {
-			$viewParams = [
-				'thread' => $thread,
-			];
-			return $this->view('XF:Thread\WatchList', 'nick97_trakt_watch_list_sync_confirm', $viewParams);
-		}
-	}
+	// 			$this->deleteMovies($casts);
+	// 		}
+
+	// 		$Crews = $this->finder('nick97\TraktMovies:Crew')->where('trakt_id', $movieId)->fetch();
+
+	// 		if (count($Crews)) {
+
+	// 			$this->deleteMovies($Crews);
+	// 		}
+	// 		$Videos = $this->finder('nick97\TraktMovies:Video')->where('trakt_id', $movieId)->fetch();
+
+	// 		if (count($Videos)) {
+
+	// 			$this->deleteMovies($Videos);
+	// 		}
+
+	// 		$Ratings = $this->finder('nick97\TraktMovies:Rating')->where('thread_id', $thread->thread_id)->fetch();
+
+	// 		if (count($Ratings)) {
+
+	// 			$this->deleteMovies($Ratings);
+	// 		}
+
+	// 		// $movie = $thread->traktMovie;
+	// 		// $message = $movie->getPostMessage();
+
+	// 		// $comment = $thread->FirstPost->message;
+
+	// 		// if (!\xf::options()->traktthreads_force_comments) {
+	// 		// 	$message .= $comment;
+	// 		// }
+
+
+
+	// 		// $thread->setOption('movieOriginalMessage', $comment);
+
+	// 		$movieCreator->setMovieId($movieId);
+
+	// 		$thread->setOption('movieApiResponse', $movieCreator->getMovieApiResponse());
+
+	// 		$movieCreator->save();
+
+	// 		$movie = $this->finder('nick97\TraktMovies:Movie')->where('thread_id', 22525)->fetchOne();
+	// 		$movie->fastUpdate('thread_id', $threadId);
+	// 		$thread->fastUpdate('title', $thread->traktMovie->trakt_title);
+
+	// 		return $this->redirect($this->buildLink('threads', $thread));
+	// 	} else {
+	// 		$viewParams = [
+	// 			'thread' => $thread,
+	// 		];
+	// 		return $this->view('XF:Thread\WatchList', 'nick97_trakt_watch_list_sync_confirm', $viewParams);
+	// 	}
+	// }
 
 	public function deleteMovies($datas)
 	{

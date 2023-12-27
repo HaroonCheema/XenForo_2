@@ -43,12 +43,12 @@ class Thread extends XFCP_Thread
 		}
 	}
 
-	public function getTraktMovLink($id)
-	{
-		$recordExist = \XF::finder('nick97\TraktMovies:TraktMovSlug')->where('tmdb_id', $id)->fetchOne();
+	// public function getTraktMovLink($id)
+	// {
+	// 	$recordExist = \XF::finder('nick97\TraktMovies:TraktMovSlug')->where('tmdb_id', $id)->fetchOne();
 
-		if ($recordExist) {
-			return $recordExist["trakt_slug"];
-		}
-	}
+	// 	if ($recordExist) {
+	// 		return $recordExist["trakt_slug"];
+	// 	}
+	// }
 }

@@ -28,20 +28,9 @@ return array(
 			';
 			} else {
 				$__finalCompiled .= '
-			';
-				if (!$__templater->test($__vars['thread']['traktTV'], 'empty', array())) {
-					$__finalCompiled .= '
-				' . $__templater->includeTemplate('trakt_tv_search_result_thread_poster', $__vars) . '
-			';
-				} else {
-					$__finalCompiled .= '
 			' . $__templater->func('avatar', array($__vars['thread']['User'], 's', false, array(
-						'defaultname' => $__vars['thread']['username'],
-					))) . '
-			';
-				}
-				$__finalCompiled .= '
-
+					'defaultname' => $__vars['thread']['username'],
+				))) . '
 			';
 			}
 			$__finalCompiled .= '

@@ -72,34 +72,26 @@ $0]]></replace>
 						data-trigger="auto"
 						title="{{ phrase('you_have_posted_x_messages_in_this_thread', {'count': $thread.getUserPostCount() }) }}" />
 				</xf:if>]]></find>
-    <replace><![CDATA[<xf:if is="$thread.discussion_type == 'snog_movies_movie'">
-					<a class="carousel-item-image" href="{{ link('threads', $thread) }}">
-						<img class="tvPoster" src="{$thread.Movie.getImageUrl()}">
-					</a>
-					<xf:elseif is="$thread.discussion_type == 'snog_tv'" />
-					<a class="carousel-item-image" href="{{ link('threads', $thread) }}">
-						<img class="tvPoster" src="{$thread.TV.getImageUrl()}">
-					</a>
-					<xf:elseif is="$thread.discussion_type == 'trakt_movies_movie'" />
-					<a class="carousel-item-image" href="{{ link('threads', $thread) }}">
-						<img class="tvPoster" src="{$thread.traktMovie.getImageUrl()}">
-					</a>
-					<xf:elseif is="$thread.discussion_type == 'trakt_tv'" />
-					<a class="carousel-item-image" href="{{ link('threads', $thread) }}">
-						<img class="tvPoster" src="{$thread.traktTV.getImageUrl()}">
-					</a>
-					<xf:else />
-					<xf:avatar user="$thread.User" size="s" defaultname="{$thread.username}" />
-					<xf:if is="$thread.getUserPostCount()">
-						<xf:avatar user="$xf.visitor" size="s"
-								   href=""
-								   class="avatar--separated structItem-secondaryIcon"
-								   tabindex="0"
-								   data-xf-init="tooltip"
-								   data-trigger="auto"
-								   title="{{ phrase('you_have_posted_x_messages_in_this_thread', {'count': $thread.getUserPostCount() }) }}" />
-					</xf:if>
-				</xf:if>]]></replace>
+    <replace><![CDATA[<xf:if is="$thread.discussion_type == 'snog_movies_movie' OR $thread.discussion_type == 'nick97_trakt_movies'">
+	<a class="carousel-item-image" href="{{ link('threads', $thread) }}">
+		<img class="tvPoster" src="{$thread.Movie.getImageUrl()}">
+	</a>
+	<xf:elseif is="$thread.discussion_type == 'snog_tv' OR $thread.discussion_type == 'nick97_trakt_tv'" />
+	<a class="carousel-item-image" href="{{ link('threads', $thread) }}">
+		<img class="tvPoster" src="{$thread.TV.getImageUrl()}">
+	</a>
+	<xf:else />
+	<xf:avatar user="$thread.User" size="s" defaultname="{$thread.username}" />
+	<xf:if is="$thread.getUserPostCount()">
+		<xf:avatar user="$xf.visitor" size="s"
+				   href=""
+				   class="avatar--separated structItem-secondaryIcon"
+				   tabindex="0"
+				   data-xf-init="tooltip"
+				   data-trigger="auto"
+				   title="{{ phrase('you_have_posted_x_messages_in_this_thread', {'count': $thread.getUserPostCount() }) }}" />
+	</xf:if>
+</xf:if>]]></replace>
   </modification>
   <modification type="public" template="thread_view" modification_key="fs_watch_list_add_or_remove_btn" description="fs_watch_list_add_or_remove_btn" execution_order="10" enabled="1" action="str_replace">
     <find><![CDATA[<xf:extension name="thread_action_buttons">]]></find>
@@ -107,7 +99,7 @@ $0]]></replace>
 
 <xf:if is="$xf.visitor.hasPermission('nick97_watch_list', 'manage_watchlist')">
 
-	<xf:if is="$thread.discussion_type == 'snog_movies_movie' OR $thread.discussion_type == 'snog_tv' OR $thread.discussion_type == 'trakt_movies_movie' OR $thread.discussion_type == 'trakt_tv'">
+	<xf:if is="$thread.discussion_type == 'snog_movies_movie' OR $thread.discussion_type == 'snog_tv' OR $thread.discussion_type == 'nick97_trakt_movies' OR $thread.discussion_type == 'nick97_trakt_tv'">
 
 		<xf:button href="{{ link('threads/watch-list', $thread) }}" class="button--link"
 				   data-xf-click="switch-overlay"

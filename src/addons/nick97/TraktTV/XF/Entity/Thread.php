@@ -50,12 +50,12 @@ class Thread extends XFCP_Thread
 		parent::_postDeletePosts($postIds);
 	}
 
-	public function getTraktTVLink($id)
-	{
-		$recordExist = \XF::finder('nick97\TraktTV:TraktTVSlug')->where('tmdb_id', $id)->fetchOne();
+	// public function getTraktTVLink($id)
+	// {
+	// 	$recordExist = \XF::finder('nick97\TraktTV:TraktTVSlug')->where('tmdb_id', $id)->fetchOne();
 
-		if ($recordExist) {
-			return $recordExist["trakt_slug"];
-		}
-	}
+	// 	if ($recordExist) {
+	// 		return $recordExist["trakt_slug"];
+	// 	}
+	// }
 }

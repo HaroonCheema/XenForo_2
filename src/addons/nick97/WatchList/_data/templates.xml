@@ -661,7 +661,7 @@ MEDIA QUERIES............. */
 	</xf:js>
 
 </xf:macro>]]></template>
-  <template type="public" title="nick97_watch_list_my_watch_list" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('my_watch_list') }}</xf:title>
+  <template type="public" title="nick97_watch_list_my_watch_list" version_id="1000600" version_string="1.0.6 Alpha"><![CDATA[<xf:title>{{ phrase('my_watch_list') }}</xf:title>
 
 <xf:wrap template="account_wrapper" />
 
@@ -679,27 +679,11 @@ MEDIA QUERIES............. */
 
 		</xf:if>
 
-		<!-- Trakt Movies -->
-
-		<xf:if is="$traktMovies is not empty">
-
-			<xf:macro name="my_watch_list_trakt_movies" arg-traktMovies="{$traktMovies}" />
-
-		</xf:if>
-
 		<!-- Tmdb Tv & Shows -->
 
 		<xf:if is="$tmdbTvShows is not empty">
 
 			<xf:macro name="my_watch_list_tmdb_tv" arg-tmdbTvShows="{$tmdbTvShows}" />
-
-		</xf:if>
-
-		<!-- Trakt Tv & Shows -->
-
-		<xf:if is="$traktTvShows is not empty">
-
-			<xf:macro name="my_watch_list_trakt_tv" arg-traktTvShows="{$traktTvShows}" />
 
 		</xf:if>
 
@@ -712,7 +696,6 @@ MEDIA QUERIES............. */
 		</xf:if>
 
 	</div>
-
 
 </div>
 
@@ -764,70 +747,13 @@ MEDIA QUERIES............. */
 						<xf:button href="{{ link('threads/my-watch-list', $movie.Thread) }}" icon="delete" overlay="true">
 							{{ phrase('remove') }}
 						</xf:button>
+
+						<xf:button href="{{ link('movies/sync', $movie.Thread) }}" icon="refresh" overlay="true">
+							{{ phrase('nick97_trakt_movies_sync') }}
+						</xf:button>
 					</dl>
 
 				</xf:if>
-
-			</div>
-		</div>
-	</xf:foreach>
-
-</xf:macro>
-
-<!-- Trakt Movies -->
-
-<xf:macro name="my_watch_list_trakt_movies" arg-traktMovies="!">
-
-	<xf:foreach loop="$traktMovies" value="$movie">
-
-		<div class="structItem structItem--resource">
-
-			<div class="structItem-cell structItem-cell--icon structItem-cell--iconExpanded">
-				<div class="structItem-iconContainer">
-
-					<a class="carousel-item-image" href="{{ link('threads', $movie.Thread) }}">
-						<img class="tvPoster" src="{$movie.getImageUrl()}">
-					</a>
-
-				</div>
-			</div>
-			<div class="structItem-cell structItem-cell--main" data-xf-init="touch-proxy">
-
-				<div class="structItem-title">
-
-					<a href="{{ link('threads', $movie.Thread) }}" class="" data-tp-primary="on">{$movie.Thread.title}</a>
-
-				</div>
-
-				<xf:if is="$resource.resource_state != 'deleted'">
-					<div class="structItem-resourceTagLine">{$movie.trakt_tagline}</div>
-				</xf:if>
-			</div>
-			<div class="structItem-cell structItem-cell--resourceMeta">
-
-				<dl class="pairs pairs--justified structItem-minor structItem-metaItem structItem-metaItem--status">
-					<dt>{{ phrase('nick97_watch_list_status') }}</dt>
-					<dd>{$movie.trakt_status}</dd>
-				</dl>
-
-				<dl class="pairs pairs--justified structItem-minor structItem-metaItem structItem-metaItem--release">
-					<dt>{{ phrase('nick97_watch_list_release') }}</dt>
-					<dd><a href="{{ link('resources/updates', $resource) }}" class="u-concealed">{$movie.trakt_release}</a></dd>
-				</dl>
-
-				<dl>
-					<xf:button href="{{ link('threads/my-watch-list', $movie.Thread) }}" icon="delete" overlay="true">
-						{{ phrase('remove') }}
-					</xf:button>
-
-					<xf:if is="{{ $movie.Thread.discussion_type == 'trakt_movies_movie' }}">
-
-						<xf:button href="{{ link('traktMovies/sync', $movie.Thread) }}" icon="refresh" overlay="true">
-							{{ phrase('trakt_movies_sync') }}
-						</xf:button>
-
-					</xf:if>
-				</dl>
 
 			</div>
 		</div>
@@ -880,67 +806,10 @@ MEDIA QUERIES............. */
 					<xf:button href="{{ link('threads/my-watch-list', $tv.Thread) }}" icon="delete" overlay="true">
 						{{ phrase('remove') }}
 					</xf:button>
-				</dl>
 
-			</div>
-		</div>
-	</xf:foreach>
-
-</xf:macro>
-
-<!-- Trakt Tv & Shows -->
-
-<xf:macro name="my_watch_list_trakt_tv" arg-traktTvShows="!">
-
-	<xf:foreach loop="$traktTvShows" value="$tv">
-
-		<div class="structItem structItem--resource">
-
-			<div class="structItem-cell structItem-cell--icon structItem-cell--iconExpanded">
-				<div class="structItem-iconContainer">
-
-					<a class="carousel-item-image" href="{{ link('threads', $tv.Thread) }}">
-						<img class="tvPoster" src="{$tv.getImageUrl()}">
-					</a>
-
-				</div>
-			</div>
-			<div class="structItem-cell structItem-cell--main" data-xf-init="touch-proxy">
-
-				<div class="structItem-title">
-
-					<a href="{{ link('threads', $tv.Thread) }}" class="" data-tp-primary="on">{$tv.Thread.title}</a>
-
-				</div>
-
-				<xf:if is="$resource.resource_state != 'deleted'">
-					<div class="structItem-resourceTagLine">{$tv.tv_genres}</div>
-				</xf:if>
-			</div>
-			<div class="structItem-cell structItem-cell--resourceMeta">
-
-				<dl class="pairs pairs--justified structItem-minor structItem-metaItem structItem-metaItem--status">
-					<dt>{{ phrase('nick97_watch_list_status') }}</dt>
-					<dd>{$tv.status}</dd>
-				</dl>
-
-				<dl class="pairs pairs--justified structItem-minor structItem-metaItem structItem-metaItem--release">
-					<dt>{{ phrase('nick97_watch_list_release') }}</dt>
-					<dd><a href="{{ link('resources/updates', $resource) }}" class="u-concealed">{$tv.tv_release}</a></dd>
-				</dl>
-
-				<dl>
-					<xf:button href="{{ link('threads/my-watch-list', $tv.Thread) }}" icon="delete" overlay="true">
-						{{ phrase('remove') }}
+					<xf:button href="{{ link('tv/sync', $tv.Thread) }}" icon="refresh" overlay="true">
+						{{ phrase('nick97_trakt_tv_sync') }}
 					</xf:button>
-					
-					<xf:if is="{{ $tv.Thread.discussion_type == 'trakt_tv' }}">
-
-						<xf:button href="{{ link('tvTrakt/sync', $tv.Thread) }}" icon="refresh" overlay="true">
-							{{ phrase('trakt_movies_sync') }}
-						</xf:button>
-
-					</xf:if>
 				</dl>
 
 			</div>
