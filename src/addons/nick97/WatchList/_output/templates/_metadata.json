@@ -4,6 +4,11 @@
         "version_string": "1.0.0 Alpha",
         "hash": "ea511d3a47fd33cb4ad2567c72d29650"
     },
+    "public/connected_account_associated_nick_trakt.html": {
+        "version_id": 1000700,
+        "version_string": "1.0.7 Alpha",
+        "hash": "8db09e51b4048cc4dc5f0d910b5b7cbb"
+    },
     "public/fs_watch_list_thread_watch_list.html": {
         "version_id": 1000200,
         "version_string": "1.0.2 Alpha",

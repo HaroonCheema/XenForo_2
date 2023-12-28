@@ -9,6 +9,12 @@
 	label="{{ phrase('client_secret') }}"
 	hint="{{ phrase('required') }}"
 	explain="{{ phrase('nick97_trakt_client_secret_explain') }}" />]]></template>
+  <template type="public" title="connected_account_associated_nick_trakt" version_id="1000700" version_string="1.0.7 Alpha"><![CDATA[<xf:if is="$providerData.avatar_url">
+	<img src="{$providerData.avatar_url}" width="48" alt="" />
+</xf:if>
+<div>
+	{{ $providerData.username ?: phrase('th_cap_unknown_account') }}
+</div>]]></template>
   <template type="public" title="fs_watch_list_thread_watch_list" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[<xf:if is="$thread.getWatchListExist()">
 	<xf:title>{{ phrase('remove_watch_list') }}</xf:title>
 <xf:else />
