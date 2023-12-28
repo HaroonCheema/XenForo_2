@@ -65,7 +65,6 @@ It is possible to filter the news feed down to just users you follow, or a singl
   'option_group_description.tl_groups' => '',
   'option_group_description.tournament' => 'Tournament options',
   'option_group_description.trader' => 'Options here control the Trader add-on.',
-  'option_group_description.traktMovies' => 'Options for the Trakt movie thread starter add-on',
   'option_group_description.traktWatchLists' => '[nick97] Trakt Watch List Options',
   'option_group_description.users' => '',
   'option_group_description.usersAndRegistration' => '',

@@ -321,8 +321,6 @@ return array (
   'permission.trader_admin' => 'Admin',
   'permission.trader_rate' => 'Rate',
   'permission.trader_view' => 'View',
-  'permission.trakt_movies_updatePersons' => 'Can update persons data',
-  'permission.trakt_movies_use_trakt_movies' => 'Can use Trakt',
   'permission.tvthreads_interface_add_info' => 'Can add missing TV information',
   'permission.tvthreads_interface_new_episode' => 'Can add new episode to TV season',
   'permission.tvthreads_interface_new_season' => 'Can add new season to TV show',

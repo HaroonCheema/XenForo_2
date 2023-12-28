@@ -15,10 +15,6 @@ return array (
   'forum_sort.snog_tv_rating' => 'TV Rating',
   'forum_sort.snog_tv_season' => 'TV season',
   'forum_sort.title' => 'Title',
-  'forum_sort.trakt_movies_director' => 'Movie director',
-  'forum_sort.trakt_movies_genres' => 'Movie genres',
-  'forum_sort.trakt_movies_rating' => 'Movie rating',
-  'forum_sort.trakt_movies_release' => 'Movie release date',
   'forum_sort.view_count' => 'Views',
   'forum_sort.vote_score' => 'Votes',
 );

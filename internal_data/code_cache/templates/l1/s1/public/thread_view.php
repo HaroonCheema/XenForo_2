@@ -290,16 +290,6 @@ return array(
 											';
 	}
 	$__compilerTemp3 .= '
-											';
-	if ((($__templater->func('property', array('trakt_movies_posterUpdateButtonPosition', ), false) == 'thread_tools_menu') AND ($__vars['thread']['traktMovie'] AND ($__vars['xf']['visitor']['is_admin'] OR $__vars['xf']['visitor']['is_moderator'])))) {
-		$__compilerTemp3 .= '
-												<a href="' . $__templater->func('link', array('traktMovies/poster', $__vars['thread']['traktMovie'], ), true) . '" data-xf-click="overlay" class="menu-linkRow">
-													' . 'Check for new poster' . '
-												</a>
-											';
-	}
-	$__compilerTemp3 .= '
-
 											' . '
 											';
 	if ($__templater->method($__vars['thread'], 'canUseInlineModeration', array())) {

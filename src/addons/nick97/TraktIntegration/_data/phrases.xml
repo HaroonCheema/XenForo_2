@@ -22,6 +22,6 @@
   <phrase title="option_explain.nick97_trakt_api_key" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter your Trakt API key]]></phrase>
   <phrase title="option_group.nick97traktIntegration" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[nick97] Trakt Integration]]></phrase>
   <phrase title="option_group_description.nick97traktIntegration" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Options for the Trakt Movies and TV Show]]></phrase>
-  <phrase title="thread_type.nick97_trakt_movies" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[nick97 Trakt Movies]]></phrase>
-  <phrase title="thread_type_plural.nick97_trakt_movies" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[nick97 Trakt Movies]]></phrase>
+  <phrase title="thread_type.nick97_trakt_movies" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trakt Movies]]></phrase>
+  <phrase title="thread_type_plural.nick97_trakt_movies" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trakt Movies]]></phrase>
 </phrases>

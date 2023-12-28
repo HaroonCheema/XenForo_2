@@ -37,6 +37,5 @@ return array (
   'style_prop_group.thuserimprovements_trophies' => '[TH] User Improvements: Trophies',
   'style_prop_group.tl_Groups' => '[tl] Social Groups',
   'style_prop_group.tooltip' => 'Tooltips',
-  'style_prop_group.trakt_movies' => '[nick97] Trakt Movie Thread Starter',
   'style_prop_group.xfmgAppearance' => 'XFMG: Appearance',
 );

@@ -8,5 +8,4 @@ return array (
   'forum_type_desc.snog_movies_movie' => 'TMDb movie thread starter',
   'forum_type_desc.snog_tv' => 'TMDb TV thread starter',
   'forum_type_desc.suggestion' => 'Suggestion forums allow users to vote for ideas that they like. The most popular suggestions can be easily accessed.',
-  'forum_type_desc.trakt_movies_movie' => 'Trakt movie thread starter',
 );

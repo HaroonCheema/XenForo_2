@@ -152,19 +152,7 @@ return array(
 	} else {
 		$__finalCompiled .= '
 ';
-		if (($__vars['forum']['forum_type_id'] == 'trakt_movies_movie') AND (!$__vars['xf']['options']['traktthreads_mix'])) {
-			$__finalCompiled .= '
-	';
-			$__templater->pageParams['pageTitle'] = $__templater->preEscaped('Post movie');
-			$__finalCompiled .= '
-';
-		} else {
-			$__finalCompiled .= '
-';
-			$__templater->pageParams['pageTitle'] = $__templater->preEscaped('Post thread');
-			$__finalCompiled .= '	
-';
-		}
+		$__templater->pageParams['pageTitle'] = $__templater->preEscaped('Post thread');
 		$__finalCompiled .= '	
 ';
 	}

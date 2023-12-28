@@ -61,7 +61,6 @@ return array (
   'option_group.tl_groups' => '[tl] Social Groups',
   'option_group.tournament' => 'Tournament',
   'option_group.trader' => 'Trader',
-  'option_group.traktMovies' => '[nick97] Trakt Movie',
   'option_group.traktWatchLists' => '[nick97] Watch List',
   'option_group.users' => 'User options',
   'option_group.usersAndRegistration' => 'User registration',
