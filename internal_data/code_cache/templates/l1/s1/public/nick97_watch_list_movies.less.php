@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: d9979bbd2d4d83b4beffad708580272a
+// FROM HASH: 9b37caf4bb3dbe428bd350169b5c88f0
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -113,6 +113,10 @@ return array(
 	font-family: Arial;
 	font-size: 20px;
 	color: White;
+	max-width: 185px;
+	max-height: 278px;
+	min-width: 185px;
+    min-height: 278px;
 }
 
 div.item iframe{

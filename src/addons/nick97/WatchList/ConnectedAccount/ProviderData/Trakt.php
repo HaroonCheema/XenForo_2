@@ -70,9 +70,11 @@ class Trakt extends AbstractProviderData
 
             $accessToken = $storageState->getProviderToken();
 
-            if ($accessToken->getAccessToken()) {
-
+            // if ($accessToken->getAccessToken()) {
+            if (method_exists($accessToken, 'getAccessToken')) {
                 $accessToken = $accessToken->getAccessToken();
+            } else {
+                $accessToken = '';
             }
 
             $response = $this->userRequest($endpoint, $accessToken, $config['key']);
@@ -86,7 +88,6 @@ class Trakt extends AbstractProviderData
                 $data['slug'] = $responseData['user']['ids']['slug'];
                 $data['avatar'] = $responseData['user']['images']['avatar']['full'];
                 $data['verified'] = true;
-                // $data['email'] = "test@gmail.com";
             }
 
             $this->storeInCache($endpoint, $data);

@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 492b5520903f29d6174bbb7ef8761001
+// FROM HASH: 7a6804013e3573ac2b13bae71a8c3f9c
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -36,6 +36,7 @@ return array(
 				border-radius: 4px;
 				width: 24%;
 				margin-bottom: 10px;
+				color: #000;
 			}
 
 			.myBox-heading {

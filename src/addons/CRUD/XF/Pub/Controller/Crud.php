@@ -205,6 +205,24 @@ class Crud extends AbstractController
 
         $visitor = \XF::visitor();
 
+        $accessToken = [
+            'name' => "Access Token",
+        ];
+
+        // try {
+        //     $accessToken = $accessToken->getAccessToken();
+        // } catch (\Exception $e) {
+        //     throw new \InvalidArgumentException($e->getMessage(), $e->getCode(), $e);
+        // }
+
+        $dummyId = time() - rand(1000, 9999);
+
+        $finalId = $dummyId;
+
+
+        var_dump($finalId, $dummyId);
+        exit;
+
         echo "<pre>";
         var_dump($visitor);
         exit;

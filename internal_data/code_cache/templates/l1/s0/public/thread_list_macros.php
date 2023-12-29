@@ -19,13 +19,13 @@ return array(
 		<div class="structItem-cell structItem-cell--icon">
 			<div class="structItem-iconContainer">
 				';
-	if (($__vars['thread']['discussion_type'] == 'snog_movies_movie') OR ($__vars['thread']['discussion_type'] == 'nick97_trakt_movies')) {
+	if ($__vars['thread']['Movie'] AND (($__vars['thread']['discussion_type'] == 'snog_movies_movie') OR ($__vars['thread']['discussion_type'] == 'nick97_trakt_movies'))) {
 		$__finalCompiled .= '
 	<a class="carousel-item-image" href="' . $__templater->func('link', array('threads', $__vars['thread'], ), true) . '">
 		<img class="tvPoster" src="' . $__templater->escape($__templater->method($__vars['thread']['Movie'], 'getImageUrl', array())) . '">
 	</a>
 	';
-	} else if (($__vars['thread']['discussion_type'] == 'snog_tv') OR ($__vars['thread']['discussion_type'] == 'nick97_trakt_tv')) {
+	} else if ($__vars['thread']['TV'] AND (($__vars['thread']['discussion_type'] == 'snog_tv') OR ($__vars['thread']['discussion_type'] == 'nick97_trakt_tv'))) {
 		$__finalCompiled .= '
 	<a class="carousel-item-image" href="' . $__templater->func('link', array('threads', $__vars['thread'], ), true) . '">
 		<img class="tvPoster" src="' . $__templater->escape($__templater->method($__vars['thread']['TV'], 'getImageUrl', array())) . '">

@@ -10,9 +10,9 @@ class WatchList extends Entity
 
     public static function getStructure(Structure $structure)
     {
-        $structure->table = 'nick97_watch_list_all';
+        $structure->table = 'xf_watch_list_all';
         $structure->shortName = 'nick97\WatchList:WatchList';
-        $structure->contentType = 'nick97_watch_list_all';
+        $structure->contentType = 'xf_watch_list_all';
         $structure->primaryKey = 'id';
         $structure->columns = [
             'id' => ['type' => self::UINT, 'autoIncrement' => true],

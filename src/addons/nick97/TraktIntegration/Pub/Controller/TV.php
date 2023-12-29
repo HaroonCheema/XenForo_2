@@ -18,9 +18,20 @@ class TV extends \Snog\TV\Pub\Controller\TV
 		$thread = $this->assertViewableThread($params->thread_id);
 
 		if ($this->isPost()) {
-			$typeCreator = \XF::service('Snog\TV:Thread\TypeData\TvCreator', $thread, 42525);
+
+			$dummyId = time() - rand(10000, 99999);
+
+			$finalId = $dummyId;
+
+			$typeCreator = \XF::service('Snog\TV:Thread\TypeData\TvCreator', $thread, $finalId);
 
 			$tvCreator = $typeCreator->getTvCreator();
+
+			if (isset($thread->TV->tv_id)) {
+				$tvId = $thread->TV->tv_id;
+			} else {
+				return $this->redirect($this->buildLink('threads', $thread));
+			}
 
 			$tvId = $thread->TV->tv_id;
 
@@ -58,7 +69,7 @@ class TV extends \Snog\TV\Pub\Controller\TV
 
 			$tvCreator->save();
 
-			$movie = $this->finder('Snog\TV:TV')->where('thread_id', 42525)->fetchOne();
+			$movie = $this->finder('Snog\TV:TV')->where('thread_id', $finalId)->fetchOne();
 			$movie->fastUpdate('thread_id', $threadId);
 			$thread->fastUpdate('title', $thread->TV->tv_title);
 

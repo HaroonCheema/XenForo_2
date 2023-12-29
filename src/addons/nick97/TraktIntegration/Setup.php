@@ -23,7 +23,6 @@ class Setup extends AbstractSetup
 		$db = $this->db();
 		$db->insert('xf_forum_type', [
 			'forum_type_id' => 'nick97_trakt_movies',
-			// 'handler_class' => 'nick97\TraktIntegration:Movie',
 			'handler_class' => 'Snog\Movies:Movie',
 			'addon_id' => 'nick97/TraktIntegration'
 		]);
@@ -31,13 +30,11 @@ class Setup extends AbstractSetup
 		$db->insert('xf_thread_type', [
 			'thread_type_id' => 'nick97_trakt_movies',
 			'handler_class' => 'nick97\TraktIntegration:Movie',
-			// 'handler_class' => 'Snog\Movies:Movie',
 			'addon_id' => 'nick97/TraktIntegration'
 		]);
 
 		$db->insert('xf_forum_type', [
 			'forum_type_id' => 'nick97_trakt_tv',
-			// 'handler_class' => 'nick97\TraktIntegration:TV',
 			'handler_class' => 'Snog\TV:TV',
 			'addon_id' => 'nick97/TraktIntegration'
 		]);
@@ -45,7 +42,6 @@ class Setup extends AbstractSetup
 		$db->insert('xf_thread_type', [
 			'thread_type_id' => 'nick97_trakt_tv',
 			'handler_class' => 'nick97\TraktIntegration:TV',
-			// 'handler_class' => 'Snog\TV:TV',
 			'addon_id' => 'nick97/TraktIntegration'
 		]);
 
@@ -58,7 +54,7 @@ class Setup extends AbstractSetup
 		$threadTypeRepo->rebuildThreadTypeCache();
 
 
-		$this->schemaManager()->createTable('nick97_trakt_url_tv', function (Create $table) {
+		$this->schemaManager()->createTable('xf_trakt_url_tv', function (Create $table) {
 			$table->addColumn('id', 'int')->autoIncrement();
 
 			$table->addColumn('tmdb_id', 'int');
@@ -68,7 +64,7 @@ class Setup extends AbstractSetup
 		});
 
 
-		$this->schemaManager()->createTable('nick97_trakt_url_movies', function (Create $table) {
+		$this->schemaManager()->createTable('xf_trakt_url_movies', function (Create $table) {
 			$table->addColumn('id', 'int')->autoIncrement();
 
 			$table->addColumn('tmdb_id', 'int');
@@ -98,7 +94,16 @@ class Setup extends AbstractSetup
 		$threadTypeRepo->rebuildThreadTypeCache();
 
 		$sm = $this->schemaManager();
-		$sm->dropTable('nick97_trakt_url_tv');
-		$sm->dropTable('nick97_trakt_url_movies');
+		$sm->dropTable('xf_trakt_url_tv');
+		$sm->dropTable('xf_trakt_url_movies');
+	}
+
+	// ################################## UPGRADE ###########################################
+
+	public function upgrade1000100Step1()
+	{
+		$sm = $this->schemaManager();
+		$sm->renameTable('nick97_trakt_url_tv', 'xf_trakt_url_tv');
+		$sm->renameTable('nick97_trakt_url_movies', 'xf_trakt_url_movies');
 	}
 }

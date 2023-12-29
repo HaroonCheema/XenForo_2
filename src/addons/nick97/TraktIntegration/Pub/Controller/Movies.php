@@ -17,11 +17,20 @@ class Movies extends \Snog\Movies\Pub\Controller\Movies
 		$thread = $this->assertViewableThread($params->thread_id);
 
 		if ($this->isPost()) {
-			$typeCreator = \XF::service('Snog\Movies:Thread\TypeData\MovieCreator', $thread, 22525);
+
+			$dummyId = time() - rand(1000, 9999);
+
+			$finalId = $dummyId;
+
+			$typeCreator = \XF::service('Snog\Movies:Thread\TypeData\MovieCreator', $thread, $finalId);
 
 			$movieCreator = $typeCreator->getMovieCreator();
 
-			$movieId = $thread->Movie->tmdb_id;
+			if (isset($thread->Movie->tmdb_id)) {
+				$movieId = $thread->Movie->tmdb_id;
+			} else {
+				return $this->redirect($this->buildLink('threads', $thread));
+			}
 
 			$threadId = $thread->thread_id;
 
@@ -76,7 +85,7 @@ class Movies extends \Snog\Movies\Pub\Controller\Movies
 
 			$movieCreator->save();
 
-			$movie = $this->finder('Snog\Movies:Movie')->where('thread_id', 22525)->fetchOne();
+			$movie = $this->finder('Snog\Movies:Movie')->where('thread_id', $finalId)->fetchOne();
 			$movie->fastUpdate('thread_id', $threadId);
 			$thread->fastUpdate('title', $thread->Movie->tmdb_title);
 

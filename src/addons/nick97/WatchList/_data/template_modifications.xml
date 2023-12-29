@@ -61,6 +61,14 @@ $0]]></replace>
 	$0
 </xf:if>]]></replace>
   </modification>
+  <modification type="public" template="structured_list.less" modification_key="structured_list_less_size_adjusted" description="structured_list_less_size_adjusted" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[@_structItem-cellPaddingV: @xf-paddingLarge;]]></find>
+    <replace><![CDATA[$0
+
+.structItem-cell.structItem-cell--icon.structItem-cell--iconExpanded {
+    width: calc(177px - 2px - 52px - 43px) !important;
+}]]></replace>
+  </modification>
   <modification type="public" template="thread_list_macros" modification_key="nick97_watch_list_thread_view_add_images" description="nick97_watch_list_thread_view_add_images" execution_order="10" enabled="1" action="str_replace">
     <find><![CDATA[<xf:avatar user="$thread.User" size="s" defaultname="{$thread.username}" />
 				<xf:if is="$thread.getUserPostCount()">
@@ -72,11 +80,11 @@ $0]]></replace>
 						data-trigger="auto"
 						title="{{ phrase('you_have_posted_x_messages_in_this_thread', {'count': $thread.getUserPostCount() }) }}" />
 				</xf:if>]]></find>
-    <replace><![CDATA[<xf:if is="$thread.discussion_type == 'snog_movies_movie' OR $thread.discussion_type == 'nick97_trakt_movies'">
+    <replace><![CDATA[<xf:if is="$thread.Movie AND ($thread.discussion_type == 'snog_movies_movie' OR $thread.discussion_type == 'nick97_trakt_movies')">
 	<a class="carousel-item-image" href="{{ link('threads', $thread) }}">
 		<img class="tvPoster" src="{$thread.Movie.getImageUrl()}">
 	</a>
-	<xf:elseif is="$thread.discussion_type == 'snog_tv' OR $thread.discussion_type == 'nick97_trakt_tv'" />
+	<xf:elseif is="$thread.TV AND ($thread.discussion_type == 'snog_tv' OR $thread.discussion_type == 'nick97_trakt_tv')" />
 	<a class="carousel-item-image" href="{{ link('threads', $thread) }}">
 		<img class="tvPoster" src="{$thread.TV.getImageUrl()}">
 	</a>

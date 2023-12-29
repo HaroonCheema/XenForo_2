@@ -10,9 +10,9 @@ class TraktMovSlug extends Entity
 
     public static function getStructure(Structure $structure)
     {
-        $structure->table = 'nick97_trakt_url_movies';
+        $structure->table = 'xf_trakt_url_movies';
         $structure->shortName = 'nick97\TraktIntegration:TraktMovSlug';
-        $structure->contentType = 'nick97_trakt_url_movies';
+        $structure->contentType = 'xf_trakt_url_movies';
         $structure->primaryKey = 'id';
         $structure->columns = [
             'id' => ['type' => self::UINT, 'autoIncrement' => true],

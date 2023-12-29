@@ -4,6 +4,11 @@
         "version_string": "1.0.0 Alpha",
         "hash": "ea511d3a47fd33cb4ad2567c72d29650"
     },
+    "admin/connected_account_provider_test_nick_trakt.html": {
+        "version_id": 1000800,
+        "version_string": "1.0.8 Alpha",
+        "hash": "c1c09aaadc9d2fe9f435c19a8a1b3b67"
+    },
     "public/connected_account_associated_nick_trakt.html": {
         "version_id": 1000700,
         "version_string": "1.0.7 Alpha",
@@ -15,9 +20,9 @@
         "hash": "045362c66472bb442af4934682651004"
     },
     "public/nick97_stats.less": {
-        "version_id": 1000300,
-        "version_string": "1.0.3 Alpha",
-        "hash": "492b5520903f29d6174bbb7ef8761001"
+        "version_id": 1000800,
+        "version_string": "1.0.8 Alpha",
+        "hash": "7a6804013e3573ac2b13bae71a8c3f9c"
     },
     "public/nick97_trakt_button.less": {
         "version_id": 1000500,
@@ -45,9 +50,9 @@
         "hash": "8846ed4cc80e0360436721c10143f718"
     },
     "public/nick97_watch_list_movies.less": {
-        "version_id": 1000300,
-        "version_string": "1.0.3 Alpha",
-        "hash": "d9979bbd2d4d83b4beffad708580272a"
+        "version_id": 1000800,
+        "version_string": "1.0.8 Alpha",
+        "hash": "9b37caf4bb3dbe428bd350169b5c88f0"
     },
     "public/nick97_watch_list_movies_macro.html": {
         "version_id": 1000300,
@@ -60,9 +65,9 @@
         "hash": "067bc607639a62a84e6f5f42ce164065"
     },
     "public/nick97_watch_list_tv_shows.less": {
-        "version_id": 1000300,
-        "version_string": "1.0.3 Alpha",
-        "hash": "52c9ba09fc9aa7d46bccd80914f86be2"
+        "version_id": 1000800,
+        "version_string": "1.0.8 Alpha",
+        "hash": "b00ee6a48ba116193d7d34b0d5605183"
     },
     "public/nick97_watchlist_profile_watchlist.html": {
         "version_id": 1000500,

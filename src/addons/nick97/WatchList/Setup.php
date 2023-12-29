@@ -44,7 +44,7 @@ class Setup extends AbstractSetup
 			}
 		);
 
-		$this->schemaManager()->createTable('nick97_watch_list_all', function (Create $table) {
+		$this->schemaManager()->createTable('xf_watch_list_all', function (Create $table) {
 
 			$table->addColumn('id', 'int')->autoIncrement();
 
@@ -54,7 +54,6 @@ class Setup extends AbstractSetup
 
 			$table->addPrimaryKey('id');
 		});
-
 	}
 
 	public function uninstallStep1()
@@ -73,6 +72,14 @@ class Setup extends AbstractSetup
 
 		$sm = $this->schemaManager();
 
-		$sm->dropTable('nick97_watch_list_all');
+		$sm->dropTable('xf_watch_list_all');
+	}
+
+	// ################################## UPGRADE ###########################################
+
+	public function upgrade1000800Step1()
+	{
+		$sm = $this->schemaManager();
+		$sm->renameTable('nick97_watch_list_all', 'xf_watch_list_all');
 	}
 }
