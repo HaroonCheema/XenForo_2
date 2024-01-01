@@ -107,7 +107,7 @@ $0]]></replace>
 
 <xf:if is="$xf.visitor.hasPermission('nick97_watch_list', 'manage_watchlist')">
 
-	<xf:if is="$thread.discussion_type == 'snog_movies_movie' OR $thread.discussion_type == 'snog_tv' OR $thread.discussion_type == 'nick97_trakt_movies' OR $thread.discussion_type == 'nick97_trakt_tv'">
+	<xf:if is="($thread.Movie OR $thread.TV) AND ($thread.discussion_type == 'snog_movies_movie' OR $thread.discussion_type == 'snog_tv' OR $thread.discussion_type == 'nick97_trakt_movies' OR $thread.discussion_type == 'nick97_trakt_tv')">
 
 		<xf:button href="{{ link('threads/watch-list', $thread) }}" class="button--link"
 				   data-xf-click="switch-overlay"
