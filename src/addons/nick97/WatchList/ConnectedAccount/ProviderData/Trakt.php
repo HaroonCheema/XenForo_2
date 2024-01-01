@@ -71,7 +71,7 @@ class Trakt extends AbstractProviderData
             $accessToken = $storageState->getProviderToken();
 
             // if ($accessToken->getAccessToken()) {
-            if (method_exists($accessToken, 'getAccessToken')) {
+            if (is_object($accessToken) && method_exists($accessToken, 'getAccessToken')) {
                 $accessToken = $accessToken->getAccessToken();
             } else {
                 $accessToken = '';
