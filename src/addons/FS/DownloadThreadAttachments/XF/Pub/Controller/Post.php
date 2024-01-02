@@ -3,7 +3,7 @@
 namespace FS\DownloadThreadAttachments\XF\Pub\Controller;
 
 use XF\Mvc\ParameterBag;
-
+use ZipArchive;
 use RecursiveIteratorIterator;
 use RecursiveDirectoryIterator;
 
@@ -56,7 +56,7 @@ class Post extends XFCP_Post
         }
 
 
-        return $this->view('FS\DownloadThreadAttachments:Thread', 'fs_export_post_attachments_confirm', ['post' => $post]);
+        return $this->view('FS\DownloadThreadAttachments:Post', 'fs_export_post_attachments_confirm', ['post' => $post]);
     }
 
     public function MakeZip($rootPath, $zipName, $download)
