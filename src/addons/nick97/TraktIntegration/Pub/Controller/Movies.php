@@ -87,7 +87,7 @@ class Movies extends \Snog\Movies\Pub\Controller\Movies
 
 			$movie = $this->finder('Snog\Movies:Movie')->where('thread_id', $finalId)->fetchOne();
 			$movie->fastUpdate('thread_id', $threadId);
-			$thread->fastUpdate('title', $thread->Movie->tmdb_title);
+			$thread->fastUpdate('title', $thread->Movie->getExpectedThreadTitle());
 
 			return $this->redirect($this->buildLink('threads', $thread));
 		} else {

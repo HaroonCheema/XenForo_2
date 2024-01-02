@@ -71,7 +71,7 @@ class TV extends \Snog\TV\Pub\Controller\TV
 
 			$movie = $this->finder('Snog\TV:TV')->where('thread_id', $finalId)->fetchOne();
 			$movie->fastUpdate('thread_id', $threadId);
-			$thread->fastUpdate('title', $thread->TV->tv_title);
+			$thread->fastUpdate('title', $thread->TV->getExpectedThreadTitle());
 
 			return $this->redirect($this->buildLink('threads', $thread));
 		} else {
