@@ -27,8 +27,6 @@ return array(
 			}
 		}
 	}
-	$__finalCompiled .= $__templater->includeTemplate('thuserimprovements_app_username_styles.less', $__vars) . '
-';
 	return $__finalCompiled;
 }
 );

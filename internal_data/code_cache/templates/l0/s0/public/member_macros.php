@@ -80,9 +80,6 @@ return array(
 {
 	$__finalCompiled = '';
 	$__finalCompiled .= '
-	';
-	if ($__templater->method($__vars['user'], 'canViewTHUIProfileStatsBar', array())) {
-		$__finalCompiled .= '
 	' . '
 	' . '
 	<dl class="pairs pairs--rows pairs--rows--centered fauxBlockLink">
@@ -94,8 +91,8 @@ return array(
 		</dd>
 	</dl>
 	';
-		if ($__vars['user']['question_solution_count']) {
-			$__finalCompiled .= '
+	if ($__vars['user']['question_solution_count']) {
+		$__finalCompiled .= '
 		' . '
 		<dl class="pairs pairs--rows pairs--rows--centered fauxBlockLink">
 			<dt>' . 'Solutions' . '</dt>
@@ -104,23 +101,11 @@ return array(
 			</dd>
 		</dl>
 	';
-		}
-		$__finalCompiled .= '
+	}
+	$__finalCompiled .= '
 	';
-		if ($__vars['xf']['options']['klUiProfileViews'] AND ($__vars['user']['th_view_count'] AND $__templater->method($__vars['user'], 'canViewTHUIProfileViewCount', array()))) {
-			$__finalCompiled .= '
-	<dl class="pairs pairs--rows pairs--rows--centered menu-fauxLinkRow">
-		<dt>' . 'Profile views' . '</dt>
-		<dd>
-			' . $__templater->filter($__vars['user']['th_view_count'], array(array('number', array()),), true) . '
-		</dd>
-	</dl>
-';
-		}
+	if ($__templater->method($__vars['xf']['visitor'], 'canViewResources', array()) AND $__vars['user']['xfrm_resource_count']) {
 		$__finalCompiled .= '
-';
-		if ($__templater->method($__vars['xf']['visitor'], 'canViewResources', array()) AND $__vars['user']['xfrm_resource_count']) {
-			$__finalCompiled .= '
 	<dl class="pairs pairs--rows pairs--rows--centered menu-fauxLinkRow">
 		<dt>' . 'Resources' . '</dt>
 		<dd>
@@ -130,8 +115,8 @@ return array(
 		</dd>
 	</dl>
 ';
-		}
-		$__finalCompiled .= '
+	}
+	$__finalCompiled .= '
 ' . '
 	' . '
 	<dl class="pairs pairs--rows pairs--rows--centered">
@@ -142,8 +127,8 @@ return array(
 	</dl>
 	' . '
 	';
-		if ($__vars['xf']['options']['enableTrophies']) {
-			$__finalCompiled .= '
+	if ($__vars['xf']['options']['enableTrophies']) {
+		$__finalCompiled .= '
 		<dl class="pairs pairs--rows pairs--rows--centered fauxBlockLink">
 			<dt title="' . $__templater->filter('Trophy points', array(array('for_attr', array()),), true) . '">' . 'Points' . '</dt>
 			<dd>
@@ -153,16 +138,9 @@ return array(
 			</dd>
 		</dl>
 	';
-		}
-		$__finalCompiled .= '
-	' . '
-';
-	} else {
-		$__finalCompiled .= '
-	<style>.memberHeader-separator{display: none}</style>
-';
 	}
 	$__finalCompiled .= '
+	' . '
 	';
 	if ($__templater->method($__vars['xf']['visitor'], 'canViewWarnings', array()) AND $__vars['user']['warning_points']) {
 		$__finalCompiled .= '
