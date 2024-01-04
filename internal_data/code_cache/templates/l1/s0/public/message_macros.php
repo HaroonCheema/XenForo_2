@@ -144,7 +144,8 @@ return array(
 					';
 		}
 		$__compilerTemp1 .= '
-					';
+					' . $__templater->includeTemplate('dbtech_credits_postbit', $__vars) . '
+	';
 		if ($__vars['extras']['custom_fields']) {
 			$__compilerTemp1 .= '
 						' . $__templater->callMacro('custom_fields_macros', 'custom_fields_values', array(

@@ -119,6 +119,9 @@ If enabled, any data collected will be stored anonymously and will not include a
   'option_explain.conversationPopupExpiryHours' => 'The conversations popup will show all conversations with unread replies, plus any read conversations whose most recent replies fall within the time frame (in hours) before now.',
   'option_explain.convertMarkdownToBbCode' => 'If enabled, some Markdown styling will automatically be converted to BB code when saved. Markdown is a simple method for adding formatting by using common patterns such as changing *example* into italics. This can make adding formatting to messages easier, but it can sometimes cause unexpected formatting changes.',
   'option_explain.currentVersionId' => '',
+  'option_explain.dbtechCreditsSmartNegate' => 'If enabled, a negation event trigger (f.ex. a post being deleted) will delete the existing transaction instead of inserting a new transaction. This does not work for all event triggers.<br />
+If multiple transactions are found, it will negate the event using a new transaction instead.<br />
+You can also override this feature by setting the "Negation amount" to a value other than 0.',
   'option_explain.dbtechEcommerceAddonProductTitle' => 'Add-on product licenses can display the parent product in the title, controllable with this setting.',
   'option_explain.dbtechEcommerceAddress' => '',
   'option_explain.dbtechEcommerceAddressCountry' => 'Your business\' resident country. The native name of the country will be printed on the invoice.',
@@ -204,6 +207,23 @@ To customise the wording of the refund policy, change the phrase <code>dbtech_ec
   'option_explain.dbtechEcommerceShippingWeightUnit' => 'For physical items, this is the unit of measurement that will be displayed when showing the item\'s weight.',
   'option_explain.dbtechEcommerceTermsPageId' => 'If a page is selected here, the contents of this page will be displayed in a scrollable area before purchase / download.<br />
 Updating this page in the AdminCP will force users to accept the Terms of Service again.',
+  'option_explain.dbtech_credits_best_event' => 'If more than one event per currency applies to a situation, choose whether the highest amount or all of them will be triggered.',
+  'option_explain.dbtech_credits_enable_events' => 'Master toggle for all events should you want to temporarily disable the whole system. Does not disable Displays.',
+  'option_explain.dbtech_credits_eventtrigger_content_bbcode' => 'This BBCode will be used for designating charged content. Change this to something else to take over the tags from other content hiding plugins. Blank out this setting to disable the charged content functionality, which would expose such content for free.',
+  'option_explain.dbtech_credits_eventtrigger_content_currency' => 'The currency that will be used for charged content transactions. Make sure corresponding events are set to use this currency as well.',
+  'option_explain.dbtech_credits_eventtrigger_donate_whole' => 'To ease rounding issues, you can set a number of decimals that the target currency will be rounded up to that adjusts the source currency amounts accordingly when transferring or donating currency.<br />
+Use 0 for whole number amounts.',
+  'option_explain.dbtech_credits_eventtrigger_interest_interval' => 'Number of days between each interest event trigger.',
+  'option_explain.dbtech_credits_eventtrigger_message_multiple' => 'If unchecked, the event will only occur once no matter how many recipients are attached to a single message.',
+  'option_explain.dbtech_credits_eventtrigger_paycheck_interval' => 'Number of days between each paycheck event trigger.',
+  'option_explain.dbtech_credits_eventtrigger_purchase_currency' => 'The currency you\'re selling your credits in.',
+  'option_explain.dbtech_credits_eventtrigger_revival_threshold' => 'Time (in seconds) since the last reply before a thread is considered "old".',
+  'option_explain.dbtech_credits_eventtrigger_taxation_interval' => 'Number of days between each taxation event trigger.',
+  'option_explain.dbtech_credits_eventtrigger_taxation_user' => 'If you wish to send the taxed amount to another user, enter the user name here.',
+  'option_explain.dbtech_credits_licensekey' => 'This is the license key associated with your product. Removing this will affect your ability to use the free "Product Manager" product to check for updates.',
+  'option_explain.dbtech_credits_navbar' => '',
+  'option_explain.dbtech_credits_size_words' => 'Choose whether it\'s the number of words or number of characters in a message that will be used for size multipliers. This only affects certain event triggers.',
+  'option_explain.dbtech_credits_transactions' => 'The currency page lists the latest transactions for each user. This is the number of transactions to show before splitting to the next page.',
   'option_explain.defaultEmailAddress' => 'This is the default email address that emails will be sent from.',
   'option_explain.defaultEmailStyleId' => '',
   'option_explain.defaultLanguageId' => '',

@@ -30,6 +30,13 @@ return array(
 	';
 		}
 		$__finalCompiled .= '
+	';
+		$__templater->includeJs(array(
+			'src' => 'DBTech/Credits/editor.js',
+			'min' => '1',
+			'addon' => 'DBTech/Credits',
+		));
+		$__finalCompiled .= '
 	' . '
 
 	<script class="js-editorToolbars" type="application/json">' . $__templater->filter($__vars['editorToolbars'], array(array('json', array()),array('raw', array()),), true) . '</script>

@@ -3,6 +3,7 @@ return array (
   'widget_pos.category_view_sidebar' => 'Category view: Sidebar',
   'widget_pos.conversation_list_sidebar' => 'Conversation list: Sidebar',
   'widget_pos.conversation_view_sidebar' => 'Conversation view: Sidebar',
+  'widget_pos.dbtech_credits_transactions_sidebar' => 'DragonByte Tech: Credits - Transactions Sidebar',
   'widget_pos.dbtech_ecommerce_category_sidenav' => 'Product category: Sidenav',
   'widget_pos.dbtech_ecommerce_overview_sidenav' => 'Product overview: Sidenav',
   'widget_pos.dbtech_ecommerce_product_sidebar' => 'Product page: Sidebar',

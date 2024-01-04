@@ -2,6 +2,7 @@
 return array (
   'custom_bb_code_title.actor' => 'TMDB actor',
   'custom_bb_code_title.br' => 'New Line',
+  'custom_bb_code_title.charge' => 'Charge',
   'custom_bb_code_title.container' => 'TMDb container',
   'custom_bb_code_title.director' => 'TMDb director',
   'custom_bb_code_title.fs_custom_msg' => '[FS] Media Tags Custom message',

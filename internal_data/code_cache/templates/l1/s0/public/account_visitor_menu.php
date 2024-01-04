@@ -32,7 +32,8 @@ return array(
 				</div>
 
 				<div class="contentRow-minor">
-					' . '
+					' . $__templater->includeTemplate('dbtech_credits_member_dropdown', $__vars) . '
+				' . '
 					<dl class="pairs pairs--justified fauxBlockLink">
 						<dt>' . 'Messages' . '</dt>
 						<dd>

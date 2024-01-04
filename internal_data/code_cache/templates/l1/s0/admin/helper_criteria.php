@@ -644,6 +644,7 @@ return array(
 			<hr class="formRowSep" />
 
 			' . '
+			' . $__templater->includeTemplate('dbtech_credits_user_criteria', $__vars) . '
 
 			' . $__templater->formCheckBoxRow(array(
 	), $__compilerTemp6, array(

@@ -2,6 +2,7 @@
 return array (
   'custom_bb_code_output.actor' => '',
   'custom_bb_code_output.br' => '',
+  'custom_bb_code_output.charge' => '',
   'custom_bb_code_output.container' => '',
   'custom_bb_code_output.director' => '',
   'custom_bb_code_output.fs_custom_msg' => '',

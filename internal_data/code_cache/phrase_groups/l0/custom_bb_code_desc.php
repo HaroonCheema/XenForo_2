@@ -2,6 +2,7 @@
 return array (
   'custom_bb_code_desc.actor' => 'For formatting old XF1 TMDb movie threads',
   'custom_bb_code_desc.br' => '',
+  'custom_bb_code_desc.charge' => 'Charging users to view your content.',
   'custom_bb_code_desc.container' => 'For formatting old XF1 TMDb movie threads',
   'custom_bb_code_desc.director' => 'For formatting old XF1 TMDb movie threads',
   'custom_bb_code_desc.fs_custom_msg' => 'Add custom message for media tags',

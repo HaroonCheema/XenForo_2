@@ -5,6 +5,8 @@ return array (
   'permission_interface.bot_option' => 'Thread GPT Bot',
   'permission_interface.conversationModeratorPermissions' => 'Conversation moderator permissions',
   'permission_interface.conversationPermissions' => 'Conversation permissions',
+  'permission_interface.dbtechCredits' => 'DragonByte Credits permissions',
+  'permission_interface.dbtechCreditsModerator' => 'DragonByte Credits moderator permissions',
   'permission_interface.dbtechEcommerce' => 'DragonByte eCommerce permissions',
   'permission_interface.dbtechEcommerceAdmin' => 'DragonByte eCommerce admin permissions',
   'permission_interface.dbtechEcommerceModerator' => 'DragonByte eCommerce moderator permissions',

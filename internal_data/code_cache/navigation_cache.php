@@ -62,18 +62,6 @@ return function($__templater, $__selectedNav, array $__vars)
 			}
 		}
 
-		if ($__vars['xf']['visitor']['user_id']) {
-			$__navTemp = [
-		'title' => \XF::phrase('nav.defaultLogOut'),
-		'href' => $__templater->func('link', array('logout', null, array('t' => $__templater->func('csrf_token', array(), false), ), ), false),
-		'attributes' => [],
-	];
-			if ($__navTemp) {
-				$__tree['_default']['children']['defaultLogOut'] = $__navTemp;
-				$__flat['defaultLogOut'] =& $__tree['_default']['children']['defaultLogOut'];
-			}
-		}
-
 		if (((!$__vars['xf']['visitor']['user_id']) AND $__vars['xf']['options']['registrationSetup']['enabled'])) {
 			$__navTemp = [
 		'title' => \XF::phrase('nav.defaultRegister'),
@@ -83,6 +71,18 @@ return function($__templater, $__selectedNav, array $__vars)
 			if ($__navTemp) {
 				$__tree['_default']['children']['defaultRegister'] = $__navTemp;
 				$__flat['defaultRegister'] =& $__tree['_default']['children']['defaultRegister'];
+			}
+		}
+
+		if ($__vars['xf']['visitor']['user_id']) {
+			$__navTemp = [
+		'title' => \XF::phrase('nav.defaultLogOut'),
+		'href' => $__templater->func('link', array('logout', null, array('t' => $__templater->func('csrf_token', array(), false), ), ), false),
+		'attributes' => [],
+	];
+			if ($__navTemp) {
+				$__tree['_default']['children']['defaultLogOut'] = $__navTemp;
+				$__flat['defaultLogOut'] =& $__tree['_default']['children']['defaultLogOut'];
 			}
 		}
 
@@ -542,6 +542,30 @@ return function($__templater, $__selectedNav, array $__vars)
 	if ($__navTemp) {
 		$__tree['nick97WatchList'] = $__navTemp;
 		$__flat['nick97WatchList'] =& $__tree['nick97WatchList'];
+	}
+
+	if ($__templater->method($__vars['xf']['visitor'], 'canViewDbtechCredits', array())) {
+		$__navTemp = [
+		'title' => \XF::phrase('nav.dbtechCredits'),
+		'href' => $__templater->func('link', array('dbtech-credits', ), false),
+		'attributes' => [],
+	];
+		if ($__navTemp) {
+			$__tree['dbtechCredits'] = $__navTemp;
+			$__flat['dbtechCredits'] =& $__tree['dbtechCredits'];
+			if (empty($__tree['dbtechCredits']['children'])) { $__tree['dbtechCredits']['children'] = []; }
+
+			$__navTemp = [
+		'title' => \XF::phrase('nav.dbtechCreditsTransactions'),
+		'href' => $__templater->func('link', array('dbtech-credits', ), false),
+		'attributes' => [],
+	];
+			if ($__navTemp) {
+				$__tree['dbtechCredits']['children']['dbtechCreditsTransactions'] = $__navTemp;
+				$__flat['dbtechCreditsTransactions'] =& $__tree['dbtechCredits']['children']['dbtechCreditsTransactions'];
+			}
+
+		}
 	}
 
 	$__navTemp = [

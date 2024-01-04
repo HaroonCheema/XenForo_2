@@ -12,21 +12,24 @@ return array(
 {
 	$__finalCompiled = '';
 	$__finalCompiled .= '
+';
+	if (($__vars['navId'] != 'dbtechCredits') OR ($__vars['xf']['options']['dbtech_credits_navbar']['enabled'] == 1)) {
+		$__finalCompiled .= '
 	<div class="p-navEl ' . ($__vars['selected'] ? 'is-selected' : '') . '" ' . ($__vars['nav']['children'] ? 'data-has-children="true"' : '') . '>
 		';
-	if ($__vars['nav']['href']) {
-		$__finalCompiled .= '
+		if ($__vars['nav']['href']) {
+			$__finalCompiled .= '
 
 			' . $__templater->callMacro(null, 'nav_link', array(
-			'navId' => $__vars['navId'],
-			'nav' => $__vars['nav'],
-			'class' => 'p-navEl-link ' . ($__vars['nav']['children'] ? 'p-navEl-link--splitMenu' : ''),
-			'shortcut' => ($__vars['nav']['children'] ? false : $__vars['shortcut']),
-		), $__vars) . '
+				'navId' => $__vars['navId'],
+				'nav' => $__vars['nav'],
+				'class' => 'p-navEl-link ' . ($__vars['nav']['children'] ? 'p-navEl-link--splitMenu' : ''),
+				'shortcut' => ($__vars['nav']['children'] ? false : $__vars['shortcut']),
+			), $__vars) . '
 
 			';
-		if ($__vars['nav']['children']) {
-			$__finalCompiled .= '<a data-xf-key="' . $__templater->escape($__vars['shortcut']) . '"
+			if ($__vars['nav']['children']) {
+				$__finalCompiled .= '<a data-xf-key="' . $__templater->escape($__vars['shortcut']) . '"
 				data-xf-click="menu"
 				data-menu-pos-ref="< .p-navEl"
 				class="p-navEl-splitTrigger"
@@ -35,12 +38,12 @@ return array(
 				aria-label="' . $__templater->filter('Toggle expanded', array(array('for_attr', array()),), true) . '"
 				aria-expanded="false"
 				aria-haspopup="true"></a>';
-		}
-		$__finalCompiled .= '
+			}
+			$__finalCompiled .= '
 
 		';
-	} else if ($__vars['nav']['children']) {
-		$__finalCompiled .= '<a data-xf-key="' . $__templater->escape($__vars['shortcut']) . '"
+		} else if ($__vars['nav']['children']) {
+			$__finalCompiled .= '<a data-xf-key="' . $__templater->escape($__vars['shortcut']) . '"
 			data-xf-click="menu"
 			data-menu-pos-ref="< .p-navEl"
 			class="p-navEl-linkHolder"
@@ -49,49 +52,52 @@ return array(
 			aria-expanded="false"
 			aria-haspopup="true">
 			' . $__templater->callMacro(null, 'nav_link', array(
-			'navId' => $__vars['navId'],
-			'nav' => $__vars['nav'],
-			'class' => 'p-navEl-link p-navEl-link--menuTrigger',
-		), $__vars) . '
+				'navId' => $__vars['navId'],
+				'nav' => $__vars['nav'],
+				'class' => 'p-navEl-link p-navEl-link--menuTrigger',
+			), $__vars) . '
 		</a>
 
 		';
-	} else {
-		$__finalCompiled .= '
+		} else {
+			$__finalCompiled .= '
 
 			' . $__templater->callMacro(null, 'nav_link', array(
-			'navId' => $__vars['navId'],
-			'nav' => $__vars['nav'],
-			'class' => 'p-navEl-link',
-			'shortcut' => $__vars['shortcut'],
-		), $__vars) . '
+				'navId' => $__vars['navId'],
+				'nav' => $__vars['nav'],
+				'class' => 'p-navEl-link',
+				'shortcut' => $__vars['shortcut'],
+			), $__vars) . '
 
 		';
-	}
-	$__finalCompiled .= '
-		';
-	if ($__vars['nav']['children']) {
+		}
 		$__finalCompiled .= '
+		';
+		if ($__vars['nav']['children']) {
+			$__finalCompiled .= '
 			<div class="menu menu--structural" data-menu="menu" aria-hidden="true">
 				<div class="menu-content">
 					';
-		if ($__templater->isTraversable($__vars['nav']['children'])) {
-			foreach ($__vars['nav']['children'] AS $__vars['childNavId'] => $__vars['child']) {
-				$__finalCompiled .= '
+			if ($__templater->isTraversable($__vars['nav']['children'])) {
+				foreach ($__vars['nav']['children'] AS $__vars['childNavId'] => $__vars['child']) {
+					$__finalCompiled .= '
 						' . $__templater->callMacro(null, 'nav_menu_entry', array(
-					'navId' => $__vars['childNavId'],
-					'nav' => $__vars['child'],
-				), $__vars) . '
+						'navId' => $__vars['childNavId'],
+						'nav' => $__vars['child'],
+					), $__vars) . '
 					';
+				}
 			}
-		}
-		$__finalCompiled .= '
+			$__finalCompiled .= '
 				</div>
 			</div>
 		';
+		}
+		$__finalCompiled .= '
+	</div>
+';
 	}
 	$__finalCompiled .= '
-	</div>
 ';
 	return $__finalCompiled;
 }
@@ -562,6 +568,10 @@ return array(
 						';
 		} else {
 			$__compilerTemp4 .= '
+							' . $__templater->callMacro('dbtech_credits_navbar_macro', 'navbar', array(
+				'section' => 'start',
+				'nav' => $__vars['navTree']['dbtechCredits'],
+			), $__vars) . '
 							<a href="' . $__templater->func('link', array('account', ), true) . '"
 								class="p-navgroup-link p-navgroup-link--iconic p-navgroup-link--user"
 								data-xf-click="menu"
@@ -622,6 +632,10 @@ return array(
 								</div>
 							</div>
 
+							' . $__templater->callMacro('dbtech_credits_navbar_macro', 'navbar', array(
+				'section' => 'middle',
+				'nav' => $__vars['navTree']['dbtechCredits'],
+			), $__vars) . '
 							<a href="' . $__templater->func('link', array('account/alerts', ), true) . '"
 								class="p-navgroup-link p-navgroup-link--iconic p-navgroup-link--alerts js-badge--alerts badgeContainer' . ($__vars['xf']['visitor']['alerts_unviewed'] ? ' badgeContainer--highlighted' : '') . '"
 								data-badge="' . $__templater->filter($__vars['xf']['visitor']['alerts_unviewed'], array(array('number', array()),), true) . '"
@@ -654,6 +668,10 @@ return array(
 									</div>
 								</div>
 							</div>
+							' . $__templater->callMacro('dbtech_credits_navbar_macro', 'navbar', array(
+				'section' => 'end',
+				'nav' => $__vars['navTree']['dbtechCredits'],
+			), $__vars) . '
 						';
 		}
 		$__compilerTemp4 .= '

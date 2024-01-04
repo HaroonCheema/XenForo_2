@@ -140,6 +140,7 @@ return array(
 	';
 	}
 	$__finalCompiled .= '
+	' . $__templater->includeTemplate('dbtech_credits_member_stats', $__vars) . '
 	' . '
 	';
 	if ($__templater->method($__vars['xf']['visitor'], 'canViewWarnings', array()) AND $__vars['user']['warning_points']) {

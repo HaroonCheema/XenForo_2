@@ -5,6 +5,8 @@ return array (
   'widget_def.dbt_ecom_new_products' => 'DragonByte eCommerce: New Products',
   'widget_def.dbt_ecom_rnd_products' => 'DragonByte eCommerce: Random Products',
   'widget_def.dbt_ecom_top_products' => 'DragonByte eCommerce: Top Rated Products',
+  'widget_def.dbtech_credits_richest' => 'DragonByte Credits: Richest Users',
+  'widget_def.dbtech_credits_wallet' => 'DragonByte Credits: Wallet',
   'widget_def.find_member' => 'Find member',
   'widget_def.forum_statistics' => 'Forum statistics',
   'widget_def.highestRatedInCategory' => 'Highest rated Item in Category',

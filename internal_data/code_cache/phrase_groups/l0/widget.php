@@ -1,6 +1,8 @@
 <?php
 return array (
   'widget.bh_highest_rated_items' => '',
+  'widget.dbtech_credits_richest' => '',
+  'widget.dbtech_credits_wallet' => '',
   'widget.dbtech_ecommerce_forum_overview_new_products' => '',
   'widget.dbtech_ecommerce_list_top_products' => '',
   'widget.dbtech_ecommerce_overview_latest_reviews' => '',

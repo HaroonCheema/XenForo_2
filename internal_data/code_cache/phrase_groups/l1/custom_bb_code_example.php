@@ -2,6 +2,7 @@
 return array (
   'custom_bb_code_example.actor' => '',
   'custom_bb_code_example.br' => '',
+  'custom_bb_code_example.charge' => '[CHARGE=5]It costs 5 credits to see this text.[/CHARGE]',
   'custom_bb_code_example.container' => '',
   'custom_bb_code_example.director' => '',
   'custom_bb_code_example.fs_custom_msg' => '',
