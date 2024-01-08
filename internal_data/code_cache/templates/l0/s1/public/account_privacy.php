@@ -117,19 +117,7 @@ return array(
 		'name' => 'allow_view_identities',
 		'label' => 'View your identities' . $__vars['xf']['language']['label_separator'],
 	), $__vars) . '
-			' . $__templater->callMacro(null, 'privacy_option', array(
-		'user' => $__vars['xf']['visitor'],
-		'name' => 'allow_view_watchlist',
-		'label' => 'Who see my watchlist' . $__vars['xf']['language']['label_separator'],
-	), $__vars) . '
-
-' . $__templater->callMacro(null, 'privacy_option', array(
-		'user' => $__vars['xf']['visitor'],
-		'name' => 'allow_view_stats',
-		'label' => 'Who see my stats' . $__vars['xf']['language']['label_separator'],
-	), $__vars) . '
-
-', array(
+			', array(
 		'rowtype' => 'inputLabelPair noColon',
 		'label' => 'Allow users to' . $__vars['xf']['language']['ellipsis'],
 	)) . '

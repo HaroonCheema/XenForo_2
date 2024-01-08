@@ -592,6 +592,9 @@ class Crud extends AbstractController
 
     public function actionIndex(ParameterBag $params)
     {
+
+        return $this->view('CRUD\XF:Crud\Index', 'crud_record_testing_only', []);
+
         $finder = $this->finder('CRUD\XF:Crud');
 
         // ager filter search wala set hai to ye code chaley ga or is k ander wala function or code run ho ga

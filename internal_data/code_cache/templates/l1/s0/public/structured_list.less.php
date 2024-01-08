@@ -10,10 +10,6 @@ return array(
 @_structItem-cellPaddingH: ((@xf-paddingMedium) + (@xf-paddingLarge)) / 2; // average
 @_structItem-cellPaddingV: @xf-paddingLarge;
 
-.structItem-cell.structItem-cell--icon.structItem-cell--iconExpanded {
-    width: calc(177px - 2px - 52px - 43px) !important;
-}
-
 .structItemContainer
 {
 	border-collapse: collapse;

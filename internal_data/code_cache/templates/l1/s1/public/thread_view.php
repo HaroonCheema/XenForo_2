@@ -40,44 +40,6 @@ return array(
 {
 	$__finalCompiled = '';
 		$__finalCompiled .= '
-
-';
-	if ($__templater->method($__vars['xf']['visitor'], 'hasPermission', array('nick97_watch_list', 'manage_watchlist', ))) {
-		$__finalCompiled .= '
-
-	';
-		if (($__vars['thread']['Movie'] OR $__vars['thread']['TV']) AND (((($__vars['thread']['discussion_type'] == 'snog_movies_movie') OR ($__vars['thread']['discussion_type'] == 'snog_tv')) OR ($__vars['thread']['discussion_type'] == 'nick97_trakt_movies')) OR ($__vars['thread']['discussion_type'] == 'nick97_trakt_tv'))) {
-			$__finalCompiled .= '
-
-		';
-			$__compilerTemp1 = '';
-			if ($__templater->method($__vars['thread'], 'getWatchListExist', array())) {
-				$__compilerTemp1 .= '
-				' . 'Remove Watch List' . '
-				';
-			} else {
-				$__compilerTemp1 .= '
-				' . 'Add Watch List' . '
-			';
-			}
-			$__finalCompiled .= $__templater->button('
-			' . $__compilerTemp1 . '
-		', array(
-				'href' => $__templater->func('link', array('threads/watch-list', $__vars['thread'], ), false),
-				'class' => 'button--link',
-				'data-xf-click' => 'switch-overlay',
-				'data-sk-watch' => 'Add Watch List',
-				'data-sk-unwatch' => 'Remove Watch List',
-			), '', array(
-			)) . '
-
-	';
-		}
-		$__finalCompiled .= '
-
-';
-	}
-	$__finalCompiled .= '
 						
 						';
 	if ($__vars['canInlineMod']) {
@@ -135,18 +97,18 @@ return array(
 							
 						
 							';
-		$__compilerTemp2 = '';
+		$__compilerTemp1 = '';
 		if ($__vars['thread']['Watch'][$__vars['xf']['visitor']['user_id']]) {
-			$__compilerTemp2 .= '
+			$__compilerTemp1 .= '
 									' . 'Unwatch' . '
 								';
 		} else {
-			$__compilerTemp2 .= '
+			$__compilerTemp1 .= '
 									' . 'Watch' . '
 								';
 		}
 		$__finalCompiled .= $__templater->button('
-								' . $__compilerTemp2 . '
+								' . $__compilerTemp1 . '
 							', array(
 			'href' => $__templater->func('link', array('threads/watch', $__vars['thread'], ), false),
 			'class' => 'button--link',
@@ -160,26 +122,26 @@ return array(
 	$__finalCompiled .= '
 
 						';
-	$__compilerTemp3 = '';
-	$__compilerTemp3 .= '
+	$__compilerTemp2 = '';
+	$__compilerTemp2 .= '
 											' . '
 											';
 	if ($__templater->method($__vars['thread'], 'canEdit', array())) {
-		$__compilerTemp3 .= '
+		$__compilerTemp2 .= '
 												<a href="' . $__templater->func('link', array('threads/edit', $__vars['thread'], ), true) . '" data-xf-click="overlay" class="menu-linkRow">' . 'Edit thread' . '</a>
 											';
 	}
-	$__compilerTemp3 .= '
+	$__compilerTemp2 .= '
 											';
 	if ($__templater->method($__vars['thread'], 'canChangeType', array()) AND ($__templater->func('count', array($__vars['creatableThreadTypes'], ), false) > 1)) {
-		$__compilerTemp3 .= '
+		$__compilerTemp2 .= '
 												<a href="' . $__templater->func('link', array('threads/change-type', $__vars['thread'], ), true) . '" data-xf-click="overlay" class="menu-linkRow">' . 'Change thread type' . '</a>
 											';
 	}
-	$__compilerTemp3 .= '
+	$__compilerTemp2 .= '
 											';
 	if ($__templater->method($__vars['thread'], 'canLockUnlock', array())) {
-		$__compilerTemp3 .= '
+		$__compilerTemp2 .= '
 												<a href="' . $__templater->func('link', array('threads/quick-close', $__vars['thread'], ), true) . '"
 													class="menu-linkRow"
 													data-xf-click="switch"
@@ -187,22 +149,22 @@ return array(
 
 													';
 		if ($__vars['thread']['discussion_open']) {
-			$__compilerTemp3 .= '
+			$__compilerTemp2 .= '
 														' . 'Lock thread' . '
 													';
 		} else {
-			$__compilerTemp3 .= '
+			$__compilerTemp2 .= '
 														' . 'Unlock thread' . '
 													';
 		}
-		$__compilerTemp3 .= '
+		$__compilerTemp2 .= '
 												</a>
 											';
 	}
-	$__compilerTemp3 .= '
+	$__compilerTemp2 .= '
 											';
 	if ($__templater->method($__vars['thread'], 'canStickUnstick', array())) {
-		$__compilerTemp3 .= '
+		$__compilerTemp2 .= '
 												<a href="' . $__templater->func('link', array('threads/quick-stick', $__vars['thread'], ), true) . '"
 													class="menu-linkRow"
 													data-xf-click="switch"
@@ -210,90 +172,58 @@ return array(
 
 													';
 		if ($__vars['thread']['sticky']) {
-			$__compilerTemp3 .= '
+			$__compilerTemp2 .= '
 														' . 'Unstick thread' . '
 													';
 		} else {
-			$__compilerTemp3 .= '
+			$__compilerTemp2 .= '
 														' . 'Stick thread' . '
 													';
 		}
-		$__compilerTemp3 .= '
+		$__compilerTemp2 .= '
 												</a>
 											';
 	}
-	$__compilerTemp3 .= '
+	$__compilerTemp2 .= '
 											';
 	if ($__templater->method($__vars['thread'], 'canCreatePoll', array())) {
-		$__compilerTemp3 .= '
+		$__compilerTemp2 .= '
 												<a href="' . $__templater->func('link', array('threads/poll/create', $__vars['thread'], ), true) . '" data-xf-click="overlay" class="menu-linkRow">' . 'Create poll' . '</a>
 											';
 	}
-	$__compilerTemp3 .= '
+	$__compilerTemp2 .= '
 											';
 	if ($__templater->method($__vars['thread'], 'canDelete', array('soft', ))) {
-		$__compilerTemp3 .= '
+		$__compilerTemp2 .= '
 												<a href="' . $__templater->func('link', array('threads/delete', $__vars['thread'], ), true) . '" data-xf-click="overlay" class="menu-linkRow">' . 'Delete thread' . '</a>
 											';
 	}
-	$__compilerTemp3 .= '
+	$__compilerTemp2 .= '
 											';
 	if ($__templater->method($__vars['thread'], 'canMove', array())) {
-		$__compilerTemp3 .= '
+		$__compilerTemp2 .= '
 												<a href="' . $__templater->func('link', array('threads/move', $__vars['thread'], ), true) . '" data-xf-click="overlay" class="menu-linkRow">' . 'Move thread' . '</a>
 											';
 	}
-	$__compilerTemp3 .= '
+	$__compilerTemp2 .= '
 											';
 	if ($__templater->method($__vars['thread'], 'canReplyBan', array())) {
-		$__compilerTemp3 .= '
+		$__compilerTemp2 .= '
 												<a href="' . $__templater->func('link', array('threads/reply-bans', $__vars['thread'], ), true) . '" data-xf-click="overlay" class="menu-linkRow">' . 'Manage reply bans' . '</a>
 											';
 	}
-	$__compilerTemp3 .= '
+	$__compilerTemp2 .= '
 											';
 	if ($__templater->method($__vars['thread'], 'canViewModeratorLogs', array())) {
-		$__compilerTemp3 .= '
+		$__compilerTemp2 .= '
 												<a href="' . $__templater->func('link', array('threads/moderator-actions', $__vars['thread'], ), true) . '" data-xf-click="overlay" class="menu-linkRow">' . 'Moderator actions' . '</a>
 											';
 	}
-	$__compilerTemp3 .= '
-											';
-	if (($__vars['forum']['forum_type_id'] == 'snog_tv') AND $__templater->method($__vars['xf']['visitor'], 'hasPermission', array('tvthreads_interface', 'add_info', ))) {
-		$__compilerTemp3 .= '
-	';
-		if (!$__vars['thread']['TV']) {
-			$__compilerTemp3 .= '
-		<a href="' . $__templater->func('link', array('tv/addinfo', $__vars['thread'], ), true) . '" data-xf-click="overlay" class="menu-linkRow">' . 'Add TV show info' . '</a>
-	';
-		}
-		$__compilerTemp3 .= '
-';
-	}
-	$__compilerTemp3 .= '
-';
-	if ((($__templater->func('property', array('snog_movies_posterUpdateButtonPosition', ), false) == 'thread_tools_menu') AND ($__vars['thread']['Movie'] AND ($__vars['xf']['visitor']['is_admin'] OR $__vars['xf']['visitor']['is_moderator'])))) {
-		$__compilerTemp3 .= '
-												<a href="' . $__templater->func('link', array('movies/poster', $__vars['thread']['Movie'], ), true) . '" data-xf-click="overlay" class="menu-linkRow">
-													' . 'Check for new poster' . '
-												</a>
-											';
-	}
-	$__compilerTemp3 .= '
-
-											';
-	if ((($__templater->func('property', array('snog_tv_posterUpdateButtonPosition', ), false) == 'thread_tools_menu') AND ($__vars['thread']['TV'] AND ($__vars['xf']['visitor']['is_admin'] OR $__vars['xf']['visitor']['is_moderator'])))) {
-		$__compilerTemp3 .= '
-												<a href="' . $__templater->func('link', array('tv/poster', $__vars['thread']['TV'], ), true) . '" data-xf-click="overlay" class="menu-linkRow">
-													' . 'Check for new poster' . '
-												</a>
-											';
-	}
-	$__compilerTemp3 .= '
+	$__compilerTemp2 .= '
 											' . '
 											';
 	if ($__templater->method($__vars['thread'], 'canUseInlineModeration', array())) {
-		$__compilerTemp3 .= '
+		$__compilerTemp2 .= '
 												<div class="menu-footer"
 													data-xf-init="inline-mod"
 													data-type="thread"
@@ -309,10 +239,10 @@ return array(
 												</div>
 											';
 	}
-	$__compilerTemp3 .= '
+	$__compilerTemp2 .= '
 											' . '
 										';
-	if (strlen(trim($__compilerTemp3)) > 0) {
+	if (strlen(trim($__compilerTemp2)) > 0) {
 		$__finalCompiled .= '
 							<div class="buttonGroup-buttonWrapper">
 								' . $__templater->button('&#8226;&#8226;&#8226;', array(
@@ -326,7 +256,7 @@ return array(
 								<div class="menu" data-menu="menu" aria-hidden="true">
 									<div class="menu-content">
 										<h4 class="menu-header">' . 'More options' . '</h4>
-										' . $__compilerTemp3 . '
+										' . $__compilerTemp2 . '
 									</div>
 								</div>
 							</div>
@@ -980,34 +910,18 @@ return array(
 	if ($__templater->method($__vars['thread'], 'canReply', array()) OR $__vars['isPreRegReply']) {
 		$__finalCompiled .= '
 	';
-		$__compilerTemp4 = '';
-		if (!$__templater->test($__vars['thread']['TV'], 'empty', array()) AND (!$__vars['thread']['TV']['tv_episode'])) {
-			$__compilerTemp4 .= '
-	';
-			$__templater->includeJs(array(
-				'src' => 'Snog/TV/message.min.js',
-			));
-			$__compilerTemp4 .= '
-';
-		} else {
-			$__compilerTemp4 .= '
-	';
-			$__templater->includeJs(array(
-				'src' => 'xf/message.js',
-				'min' => '1',
-			));
-			$__compilerTemp4 .= '
-';
-		}
+		$__templater->includeJs(array(
+			'src' => 'xf/message.js',
+			'min' => '1',
+		));
 		$__finalCompiled .= $__templater->form('
 
-		' . $__compilerTemp4 . '
+		' . '' . '
 
 		<div class="block-container">
 			<div class="block-body">
 				' . $__templater->callMacro('quick_reply_macros', 'body', array(
 			'message' => $__vars['thread']['draft_reply']['message'],
-			'thread' => $__vars['thread'],
 			'attachmentData' => $__vars['attachmentData'],
 			'forceHash' => $__vars['thread']['draft_reply']['attachment_hash'],
 			'messageSelector' => '.js-post',

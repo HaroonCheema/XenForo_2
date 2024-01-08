@@ -18,39 +18,21 @@ return array(
 		$__finalCompiled .= '
 		<div class="structItem-cell structItem-cell--icon">
 			<div class="structItem-iconContainer">
+				' . $__templater->func('avatar', array($__vars['thread']['User'], 's', false, array(
+		'defaultname' => $__vars['thread']['username'],
+	))) . '
 				';
-	if ($__vars['thread']['Movie'] AND (($__vars['thread']['discussion_type'] == 'snog_movies_movie') OR ($__vars['thread']['discussion_type'] == 'nick97_trakt_movies'))) {
+	if ($__templater->method($__vars['thread'], 'getUserPostCount', array())) {
 		$__finalCompiled .= '
-	<a class="carousel-item-image" href="' . $__templater->func('link', array('threads', $__vars['thread'], ), true) . '">
-		<img class="tvPoster" src="' . $__templater->escape($__templater->method($__vars['thread']['Movie'], 'getImageUrl', array())) . '">
-	</a>
-	';
-	} else if ($__vars['thread']['TV'] AND (($__vars['thread']['discussion_type'] == 'snog_tv') OR ($__vars['thread']['discussion_type'] == 'nick97_trakt_tv'))) {
-		$__finalCompiled .= '
-	<a class="carousel-item-image" href="' . $__templater->func('link', array('threads', $__vars['thread'], ), true) . '">
-		<img class="tvPoster" src="' . $__templater->escape($__templater->method($__vars['thread']['TV'], 'getImageUrl', array())) . '">
-	</a>
-	';
-	} else {
-		$__finalCompiled .= '
-	' . $__templater->func('avatar', array($__vars['thread']['User'], 's', false, array(
-			'defaultname' => $__vars['thread']['username'],
+					' . $__templater->func('avatar', array($__vars['xf']['visitor'], 's', false, array(
+			'href' => '',
+			'class' => 'avatar--separated structItem-secondaryIcon',
+			'tabindex' => '0',
+			'data-xf-init' => 'tooltip',
+			'data-trigger' => 'auto',
+			'title' => 'You have posted ' . $__templater->method($__vars['thread'], 'getUserPostCount', array()) . ' message(s) in this thread',
 		))) . '
-	';
-		if ($__templater->method($__vars['thread'], 'getUserPostCount', array())) {
-			$__finalCompiled .= '
-		' . $__templater->func('avatar', array($__vars['xf']['visitor'], 's', false, array(
-				'href' => '',
-				'class' => 'avatar--separated structItem-secondaryIcon',
-				'tabindex' => '0',
-				'data-xf-init' => 'tooltip',
-				'data-trigger' => 'auto',
-				'title' => 'You have posted ' . $__templater->method($__vars['thread'], 'getUserPostCount', array()) . ' message(s) in this thread',
-			))) . '
-	';
-		}
-		$__finalCompiled .= '
-';
+				';
 	}
 	$__finalCompiled .= '
 			</div>

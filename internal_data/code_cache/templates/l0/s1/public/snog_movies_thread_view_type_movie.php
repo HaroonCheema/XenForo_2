@@ -16,21 +16,6 @@ return array(
 {
 	$__finalCompiled = '';
 		$__finalCompiled .= '
-
-';
-	if (($__vars['thread']['Movie'] AND (((($__vars['xf']['visitor']['user_id'] == $__vars['thread']['user_id']) OR $__vars['xf']['visitor']['is_admin']) OR $__vars['xf']['visitor']['is_moderator']) AND (($__vars['thread']['discussion_type'] == 'snog_movies_movie') OR ($__vars['thread']['discussion_type'] == 'nick97_trakt_movies'))))) {
-		$__finalCompiled .= '
-	' . $__templater->button('
-		' . 'Sync' . '
-	', array(
-			'href' => $__templater->func('link', array('movies/sync', $__vars['thread']['Movie'], ), false),
-			'class' => 'button--link',
-			'overlay' => 'true',
-		), '', array(
-		)) . '
-';
-	}
-	$__finalCompiled .= '
 	';
 	if ((($__templater->func('property', array('snog_movies_posterUpdateButtonPosition', ), false) == 'default') AND ($__vars['thread']['Movie'] AND ($__vars['xf']['visitor']['is_admin'] OR $__vars['xf']['visitor']['is_moderator'])))) {
 		$__finalCompiled .= '
