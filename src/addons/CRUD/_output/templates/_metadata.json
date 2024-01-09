@@ -17,6 +17,11 @@
     "public/crud_record_testing_only.html": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
-        "hash": "b585d5fd9a0955bc3bc78ec592176c62"
+        "hash": "4c019e5aa4f62327b628fb9bed2fd989"
+    },
+    "public/crud_record_testing_pg_2.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "b1003a5d46ad3c419f763899a6c32381"
     }
 }
