@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: d161e8dc0d9309f56aa8758f8ecc8526
+// FROM HASH: f25d56e1c2127ae678c6417d93c17a63
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -47,7 +47,7 @@ return array(
 	position: absolute;
 }
 .user-upgrades__block {
-	border-bottom: 1px solid #f1f1f2;
+/**	border-bottom: 1px solid #f1f1f2; **/
 	padding: 16px 15px;
 }
 .user-upgrades__block ul {
@@ -77,6 +77,7 @@ return array(
 	background: linear-gradient(315deg, #facc6b 0%, #fabc3c 74%) !important;
 	color: #fff;
 	border: none !important;
+	margin-top: 7px;
 }
 
 .box2-top{
@@ -107,6 +108,7 @@ return array(
 	background: linear-gradient(105.1deg, #5EA5EA 3.2%, #CAE5FF 138.92%) !important;
 	color: #fff;
 	border: none !important;
+	margin-top: 7px;
 }
 
 

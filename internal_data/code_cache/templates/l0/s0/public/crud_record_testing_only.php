@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 4c019e5aa4f62327b628fb9bed2fd989
+// FROM HASH: 1d63e62f6abc66439cb67524cc112322
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -68,7 +68,7 @@ return array(
 		<div class="inCenter">
 			<a href="" class="blockoPayBtn button button--icon " data-toggle="modal" data-uid=07f50d8e6a44405c>
 				Purchase 
-				<img class="paymnet_btc_img " src="' . $__templater->func('base_url', array('styles/FS/BitcoinIntegration/btc.png', ), true) . '">
+				<img class="paymnet_btc_img "  src="' . $__templater->func('base_url', array('styles/FS/BitcoinIntegration/btc.png', ), true) . '">
 			</a>
 		</div>
 	</div>
@@ -136,11 +136,45 @@ return array(
 		<div>
 			<a href="" class="blockoPayBtn button button--icon " data-toggle="modal" data-uid=7d7e97f3cf4d403c>
 				Purchase 
-				<img class="paymnet_btc_img " src="' . $__templater->func('base_url', array('styles/FS/BitcoinIntegration/btc.png', ), true) . '">
+				<img class="paymnet_btc_img "  src="' . $__templater->func('base_url', array('styles/FS/BitcoinIntegration/btc.png', ), true) . '">
 			</a>
 		</div>
 	</div>
-</div>';
+</div>
+<style>
+
+</style>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<script src="https://blockonomics.co/js/pay_widget.js"></script>
+<input type="email" id="email" placeholder="Email Address"/>
+
+<button id="pay">Pay with Bitcoin</button>
+<div id="bitcoinpay"></div>
+
+<script src="https://blockonomics.co/js/pay_widget.js"></script> 
+<script>
+  function pay() {
+    var email = document.getElementById(\'email\').value;
+    Blockonomics.widget({
+      msg_area: \'bitcoinpay\',
+		custom_field1: \'testeer\',
+      uid: \'08785fe7b68d4191\',
+      email: email,
+		 custom_one: \'testeeye\'
+    });
+  }
+
+  document.getElementById(\'pay\').onclick = function() { pay() };
+</script>
+<script> 
+	$("#blockoPayBtnSubmit").click(function() {
+    // Your code to execute when the element is clicked
+    alert("Button clicked!");
+});
+	
+
+</script>';
 	return $__finalCompiled;
 }
 );
