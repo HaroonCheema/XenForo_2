@@ -25,6 +25,7 @@ return array (
   'option_group.form_thread_moderation' => '[FS] Form Thread Moderation',
   'option_group.fsEscrow' => '[FS] Escrow',
   'option_group.fs_MediaTagSetting' => '[FS] Media-Tag-Setting',
+  'option_group.fs_bitcoin_integ' => '[FS] Bitcoin Integration',
   'option_group.fs_bunny_integration' => '[FS] Bunny-Integration',
   'option_group.fs_forum_groups' => '[FS] Forum Groups',
   'option_group.fs_hide_usernames' => '[FS] Hide Usernames',

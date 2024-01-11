@@ -37,6 +37,7 @@ return array (
   'nav.forums' => 'Forums',
   'nav.fsWebsiteRanking' => 'Website Ranking',
   'nav.fs_auction_category' => 'Auction',
+  'nav.fs_bitcoin_integration' => 'Account Upgrade',
   'nav.fs_escrow' => 'Escrow',
   'nav.fs_escrow_add' => 'Start Escrow',
   'nav.fs_forumGroups_index' => 'Forum Groups',

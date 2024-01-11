@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 1d63e62f6abc66439cb67524cc112322
+// FROM HASH: 335e3786cd0a5fe9fa335c9364dbcd59
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -152,27 +152,26 @@ return array(
 <button id="pay">Pay with Bitcoin</button>
 <div id="bitcoinpay"></div>
 
-<script src="https://blockonomics.co/js/pay_widget.js"></script> 
 <script>
-  function pay() {
-    var email = document.getElementById(\'email\').value;
-    Blockonomics.widget({
-      msg_area: \'bitcoinpay\',
-		custom_field1: \'testeer\',
-      uid: \'08785fe7b68d4191\',
-      email: email,
-		 custom_one: \'testeeye\'
-    });
-  }
+	function pay() {
+		var email = document.getElementById(\'email\').value;
+		Blockonomics.widget({
+			msg_area: \'bitcoinpay\',
+			custom_field1: \'testeer\',
+			uid: \'08785fe7b68d4191\',
+			email: email,
+			custom_one: \'testeeye\'
+		});
+	}
 
-  document.getElementById(\'pay\').onclick = function() { pay() };
+	document.getElementById(\'pay\').onclick = function() { pay() };
 </script>
 <script> 
 	$("#blockoPayBtnSubmit").click(function() {
-    // Your code to execute when the element is clicked
-    alert("Button clicked!");
-});
-	
+		// Your code to execute when the element is clicked
+		alert("Button clicked!");
+	});
+
 
 </script>';
 	return $__finalCompiled;

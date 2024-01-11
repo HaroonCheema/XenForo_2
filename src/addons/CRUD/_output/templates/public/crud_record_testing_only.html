@@ -141,26 +141,25 @@
 <button id="pay">Pay with Bitcoin</button>
 <div id="bitcoinpay"></div>
 
-<script src="https://blockonomics.co/js/pay_widget.js"></script> 
 <script>
-  function pay() {
-    var email = document.getElementById('email').value;
-    Blockonomics.widget({
-      msg_area: 'bitcoinpay',
-		custom_field1: 'testeer',
-      uid: '08785fe7b68d4191',
-      email: email,
-		 custom_one: 'testeeye'
-    });
-  }
+	function pay() {
+		var email = document.getElementById('email').value;
+		Blockonomics.widget({
+			msg_area: 'bitcoinpay',
+			custom_field1: 'testeer',
+			uid: '08785fe7b68d4191',
+			email: email,
+			custom_one: 'testeeye'
+		});
+	}
 
-  document.getElementById('pay').onclick = function() { pay() };
+	document.getElementById('pay').onclick = function() { pay() };
 </script>
 <script> 
 	$("#blockoPayBtnSubmit").click(function() {
-    // Your code to execute when the element is clicked
-    alert("Button clicked!");
-});
-	
+		// Your code to execute when the element is clicked
+		alert("Button clicked!");
+	});
+
 
 </script>

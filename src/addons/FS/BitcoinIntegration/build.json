@@ -1,0 +1,9 @@
+{
+  "additional_files": [
+    "styles/FS/BitcoinIntegration",
+    "blockonomics_callback.php"
+  ],
+  "exec": [
+    "echo '{title} version {version_string} ({version_id}) has been built successfully!' > 'src/addons/FS/BitcoinIntegration/_build/built.txt'"
+  ]
+}

@@ -1,108 +1,111 @@
 <?php
-// FROM HASH: 8b5ac9dfb6805c25ca0e49936d6bd713
+// FROM HASH: 1557e1e2cb1cd5c914a6ebf3b866c3ec
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
 	$__finalCompiled = '';
-	$__templater->includeCss('user_upgrad_card.less');
+	$__templater->inlineCss('
+	.paymnet_btc_img{
+	margin-left:3px;
+	display:inline-block;
+	width:25px;
+	height:25px;
+	}
+');
 	$__finalCompiled .= '
-<div class="creditsPricingCards" id="recurringCreditsCards">
-	<div class="creditsPricingCard">
-		<div class="creditsPricingCardTop box1-top">
-			' . '<p>Premium Companion Subscription</p>
-<h2>$80</h2>
-<p>/monthly</p>' . '
+
+<a href=""  class="blockoPayBtn button button--icon blockoPayButton">
+	Purchase 
+	<img class="paymnet_btc_img "  src="' . $__templater->func('base_url', array('styles/FS/BitcoinIntegration/btc.png', ), true) . '">
+</a>
+
+<div class="modal fade in show myElement" id="blockoPayModal" tabindex="-1" role="dialog" aria-labelledby="blockoPayModalLabel" style="display:none;padding-right: 15px;">
+	<div class="modal-dialog modal-sm" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close" ><span aria-hidden="true">×</span></button>
+				<h4 class="modal-title" id="myModalLabel">Premium Companion Subscription</h4>
+				<p class="modal-desc">Upgrade your existed pakage to avail new features. This upgrading is valid for one month.</p>
+			</div>
+			<div class="modal-body">
+
+				<div class="form-group">
+					<input type="email" class="form-control" id="email" placeholder="Email Address">
+				</div>
+				
+				<div class="form-group">
+					<input type="text" class="form-control" id="name" placeholder="Name">
+				</div>
+
+				<div class="form-group centered">
+					<button type="submit" class="btn btn-warning" onclick="pay(' . $__templater->escape($__vars['xf']['visitor']['user_id']) . ',5)">Pay 80 USD</button>
+				</div>
+
+				<div id="bitcoinpay"></div>
+
+				<div id="blockoPayBtnResponse" style="display: none;">
+					<p id="blockoPaySection">
+						<a id="blockoPayBtnQrCode"></a>
+					</p>
+					<div id="blockoCopyAmountText">To pay send this amount</div>
+					<input class="form-control" id="blockoPayBtnBTCAmount" value="" readonly="">
+					<div id="blockoCopyAddressText">to this bitcoin address</div>
+					<input class="form-control" id="blockoPayBtnBTCAddress" value="" readonly="">
+					<p></p>
+					<div class="ticker clearfix">
+						<div id="timeRemainingText"></div>
+						<div class="time-progress">
+							<div id="prog" class="prog" style="width: 0px;"></div>
+						</div>
+					</div>
+					<div id="btcConversion"><span id="blockoPayBtnCurAmount"></span> &lt;-&gt; <span id="blockoPayBtnBTCEqui"></span> BTC</div>
+				</div>
+				<div id="blockoPayBtnSuccess" style="display: none;">
+					<p class="message"> <span id="blockoPayBtnTick">✔</span> </p>
+					<p>Thank you, your order has been received.</p>
+				</div>
+			</div>
 		</div>
-		' . '<div class="card_descriptions" style="">
-	<div class="user-upgrades__block box1-upgrades__block">
-		<ul>
-			<li>Post up to 2 times daily.</li>
-			<li>Great for those who plan to use the site multiple times.</li>
-		</ul>
 	</div>
 </div>
-<br/>
-<br/>
-<br/><br/><br/>' . '
-		<a href="" class="blockoPayBtn button box1-btn" data-toggle="modal" data-uid=07f50d8e6a44405c>
-			' . 'Upgrade' . '
-			<img class="paymnet_btc_img" src="' . $__templater->func('base_url', array('styles/FS/BitcoinIntegration/btc.png', ), true) . '">
-		</a>
-	</div>
 
-	<div class="creditsPricingCard">
-		<div class="creditsPricingCardTop box2-top">
-		' . '<p><b>Top 10 Provider City Highlight</b></p>
-<h2>$100</h2>
-<p>/monthly</p>' . '
-		</div>
-		' . '<div class="card_descriptions" style="">
-	<div class="user-upgrades__block  box2-upgrades__block">
-		<ul>
-			<li>Limited to 10 spots.</li>
-			<li>30-day highlighted period.</li>
-			<li>Featured at the top of each city listing.</li>
-		</ul>
-	</div>
-</div>
-<br/>
-<br/>
-<br/>
-<br/><br/>' . '
-		<a href="" class="blockoPayBtn button box2-btn" data-toggle="modal" data-uid=08785fe7b68d4191>
-			' . 'Upgrade' . ' 
-			<img class="paymnet_btc_img" src="' . $__templater->func('base_url', array('styles/FS/BitcoinIntegration/btc.png', ), true) . '">
-		</a>
-	</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script src="https://blockonomics.co/js/pay_widget.js"></script>
 
-	<div class="creditsPricingCard">
-		<div class="creditsPricingCardTop box3-top">
-		' . '<p><b>VIP Companion Subscription</b></p>
-<h2>$120</h2>
-<p>/monthly</p>' . '
-		</div>
-		' . '<div class="card_descriptions" style="">
-	<div class="user-upgrades__block  box3-upgrades__block">
-		<ul>
-			<li>Option to repost.</li>
-			<li>Post up to 4 times daily.</li>
-			<li>Enhanced photo storage capacity.</li>
-			<li>Ideal for highly active board members.</li>
-			<li>1-month subscription with each purchase.</li>
-		</ul>
-	</div>
-</div>' . '
-		<a href="" class="blockoPayBtn button box3-btn" data-toggle="modal" data-uid=bdc79d69a8644148>
-			' . 'Upgrade' . ' 
-			<img class="paymnet_btc_img" src="' . $__templater->func('base_url', array('styles/FS/BitcoinIntegration/btc.png', ), true) . '">
-		</a>
-	</div>
+<script>
 
-	<div class="creditsPricingCard">
-		<div class="creditsPricingCardTop box4-top">
-			' . '<p><b>Top 20 Provider VIP Highlight</b></p>
-<h2>$200</h2>
-<p>/monthly</p>' . ' 
-		</div>
-			' . '<div class="card_descriptions" style="">
-	<div class="user-upgrades__block  box4-upgrades__block">
-		<ul>
-			<li>Limited to 20 spots.</li>
-			<li>30-day highlight period.</li>
-			<li>Featured at the top of the board.</li>
-		</ul>
-	</div>
-</div>
-<br/>
-<br/>
-<br/>
-<br/><br/>' . ' 
-		<a href="" class="blockoPayBtn button box4-btn" data-toggle="modal" data-uid=c55436c607ba44f1>
-			' . 'Upgrade' . ' 
-			<img class="paymnet_btc_img" src="' . $__templater->func('base_url', array('styles/FS/BitcoinIntegration/btc.png', ), true) . '">
-		</a>
-	</div>
-</div>';
+		
+	function pay(userid,groupid) {
+
+		var userid = userid;
+		var groupid = groupid;
+		var email = document.getElementById(\'email\').value;
+		var blockoPayModal = document.getElementById("blockoPayModal");
+		blockoPayModal.style.display = "block";
+		Blockonomics.widget({
+			msg_area: \'bitcoinpay\',
+			custom_field1: \'testeer\',
+			uid: \'08785fe7b68d4191\',
+			email: email,
+			custom_one: userid,
+			custom_two: groupid
+		});
+		
+	}
+
+
+	$(document).ready(function() {
+		
+
+		$(".blockoPayBtn").click(function() {
+			$(".myElement").css("display", "block"); // Change color to red
+		});
+		$(".close").click(function() {
+			$(".myElement").css("display", "none"); // Change color to red
+		});
+	});
+
+</script>';
 	return $__finalCompiled;
 }
 );

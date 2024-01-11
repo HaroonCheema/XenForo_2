@@ -62,18 +62,6 @@ return function($__templater, $__selectedNav, array $__vars)
 			}
 		}
 
-		if (((!$__vars['xf']['visitor']['user_id']) AND $__vars['xf']['options']['registrationSetup']['enabled'])) {
-			$__navTemp = [
-		'title' => \XF::phrase('nav.defaultRegister'),
-		'href' => $__templater->func('link', array('register', ), false),
-		'attributes' => [],
-	];
-			if ($__navTemp) {
-				$__tree['_default']['children']['defaultRegister'] = $__navTemp;
-				$__flat['defaultRegister'] =& $__tree['_default']['children']['defaultRegister'];
-			}
-		}
-
 		if ($__vars['xf']['visitor']['user_id']) {
 			$__navTemp = [
 		'title' => \XF::phrase('nav.defaultLogOut'),
@@ -86,6 +74,28 @@ return function($__templater, $__selectedNav, array $__vars)
 			}
 		}
 
+		if (((!$__vars['xf']['visitor']['user_id']) AND $__vars['xf']['options']['registrationSetup']['enabled'])) {
+			$__navTemp = [
+		'title' => \XF::phrase('nav.defaultRegister'),
+		'href' => $__templater->func('link', array('register', ), false),
+		'attributes' => [],
+	];
+			if ($__navTemp) {
+				$__tree['_default']['children']['defaultRegister'] = $__navTemp;
+				$__flat['defaultRegister'] =& $__tree['_default']['children']['defaultRegister'];
+			}
+		}
+
+	}
+
+	$__navTemp = [
+		'title' => \XF::phrase('nav.fs_bitcoin_integration'),
+		'href' => $__templater->func('link', array('account-upgrade', ), false),
+		'attributes' => [],
+	];
+	if ($__navTemp) {
+		$__tree['fs_bitcoin_integration'] = $__navTemp;
+		$__flat['fs_bitcoin_integration'] =& $__tree['fs_bitcoin_integration'];
 	}
 
 	if ($__vars['xf']['homePageUrl']) {
