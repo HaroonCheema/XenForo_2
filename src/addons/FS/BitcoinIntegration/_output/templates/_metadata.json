@@ -2,12 +2,17 @@
     "public/fs_bitcoin_upgrade_cards_index.html": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
-        "hash": "1c2c573264589366957607ee952f982d"
+        "hash": "c66d385cdbe288afb89bf6ea675ccdfc"
     },
     "public/fs_encrpt_bitcoin_purchase.html": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
-        "hash": "d9b48522d9a2f8f1dd62d02385528648"
+        "hash": "fda22d8dd26fea15881c5193531534eb"
+    },
+    "public/fs_purchase_by_bitcoin.js": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d74524b036e5f45fb2f898477253885c"
     },
     "public/user_upgrad_card.less": {
         "version_id": 1000010,

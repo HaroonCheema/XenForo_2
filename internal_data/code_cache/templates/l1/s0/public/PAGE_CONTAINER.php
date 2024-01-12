@@ -1389,8 +1389,7 @@ return array(
 
 ' . '
 
-' . '
-<script src="https://www.blockonomics.co/js/pay_button.js"></script>';
+';
 	return $__finalCompiled;
 }
 );

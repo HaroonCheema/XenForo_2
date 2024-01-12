@@ -13,99 +13,21 @@
 
       var $targetUrl = $(e.currentTarget).data("validation-url");
 
-      var $social_data = "test";
+      if (!$(e.currentTarget).data("option-value")) {
+        alert("Some Thing Went wrong.......!");
+      }
+      var optionValue = {
+        optionValue: $(e.currentTarget).data("option-value"),
+      };
+
       //  $targetUrl =
       //    "http://localhost/xenforo/index.php?account-upgrade/purchase";
-      XF.ajax("get", $targetUrl, $social_data, function (data) {
+      XF.ajax("get", $targetUrl, optionValue, function (data) {
         if (data.html) {
           $("#purchase_bitcoin").empty();
           $("#purchase_bitcoin").append(data.html.content);
         }
       });
-    },
-  });
-
-  XF.PostExport = XF.Click.newHandler({
-    eventNameSpace: "XFPostExport",
-
-    errorMessage_empty_box: "Image Url Required......",
-    errorMessage_invalid_url:
-      "Required Valid Post Image Url.Follow the instructions how to get Post Image url......",
-
-    init: function () {},
-
-    click: function (e) {
-      e.preventDefault();
-      var errorMessage_empty_box = this.errorMessage_empty_box;
-      var errorMessage_invalid_url = this.errorMessage_invalid_url;
-
-      var errorMessage_valid_url = this.errorMessage_valid_url;
-
-      var imgsrc = $(".import_textbox_url").val();
-
-      if (!imgsrc) {
-        $("#response-error-message").text(errorMessage_empty_box).fadeIn();
-
-        return;
-      }
-
-      switch (socialPostType) {
-        case "facebook":
-          if (
-            imgsrc.indexOf("scontent") == -1 ||
-            imgsrc.indexOf("https") == -1
-          ) {
-            $("#response-error-message")
-              .text(errorMessage_invalid_url)
-              .fadeIn();
-
-            return;
-          }
-          this.performEmmbedImage(imgsrc);
-          break;
-
-        case "twitter":
-          if (imgsrc.indexOf("twimg") == -1 || imgsrc.indexOf("https") == -1) {
-            $("#response-error-message")
-              .text(errorMessage_invalid_url)
-              .fadeIn();
-
-            return;
-          }
-
-          this.performEmmbedImage(imgsrc);
-          break;
-
-        case "instagram":
-          if (imgsrc.indexOf("igcdn") == -1 || imgsrc.indexOf("https") == -1) {
-            $("#response-error-message")
-              .text(errorMessage_invalid_url)
-              .fadeIn();
-
-            return;
-          }
-
-          this.performInstragamImage(imgsrc);
-          break;
-      }
-    },
-    performInstragamImage: function (imgsrc) {
-      var editor = XF.getEditorInContainer($("body"));
-      XF.insertIntoEditor(
-        $("body"),
-        '<img src="' + imgsrc + '"style="width: auto;" />',
-        "[IMG]" + imgsrc + "[/IMG]"
-      );
-      $("#social_post").empty();
-    },
-    performEmmbedImage: function (imgsrc) {
-      var editor = XF.getEditorInContainer($("body"));
-      XF.insertIntoEditor(
-        $("body"),
-        '<img src="' + imgsrc + '"style="width: auto;" />',
-        "[IMG]" + imgsrc + "[/IMG]"
-      );
-      $("#social_post").empty();
     },
   });
 

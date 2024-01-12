@@ -1,25 +1,34 @@
 <xf:title>{{phrase('fs_bitcoin_account_upgrade')}}</xf:title>
 
 <xf:css src="user_upgrad_card.less"/>
+
 <xf:js src="{{'bionomics/upgrade.js?'.$xf.time}}"  />
 <div class="creditsPricingCards" id="recurringCreditsCards">
 	<div class="creditsPricingCard">
 		<div class="creditsPricingCardTop box1-top">
-			{{phrase('fs_bitcoin_integ_premium_top')}}
+			{{phrase('fs_bitcoin_integ_premium_top',{'title':$premiumUpgrade.title,'cost_amount':$premiumUpgrade.cost_amount,'length_unit':$premiumUpgrade.length_unit})}}
 		</div>
 		{{phrase('fs_bitcoin_integ_premium_body')}}
-		<a href=""  data-validation-url="{{ link('account-upgrade/purchase') }}" data-xf-click="show-upgrade-box" data-social="facebook" class="blockoPayBtn button box1-btn" data-toggle="modal" data-uid=07f50d8e6a44405c>
-			{{phrase('upgrade')}}
-			<img class="paymnet_btc_img" src="{{ base_url('styles/FS/BitcoinIntegration/btc.png') }}">
-		</a>
+		
+		<xf:if is="$premiumUpgrade && $premiumUpgrade.getUserUpgradeExit()">
+			<a href=""  data-validation-url="{{ link('account-upgrade/purchase') }}" data-xf-click="show-upgrade-box" data-option-value="fs_bitcoin_premium_companion" class=" button box1-btn"  >
+				{{phrase('upgrade')}}
+				<img class="paymnet_btc_img" src="{{ base_url('styles/FS/BitcoinIntegration/btc.png') }}">
+			</a>
+		<xf:else/>
+			{{phrase('fs_group_is_activated')}}
+		</xf:if>
+			
 	</div>
 
 	<div class="creditsPricingCard">
 		<div class="creditsPricingCardTop box2-top">
-			{{phrase('fs_bitcoin_integ_top_ten_top')}}
+				{{phrase('fs_bitcoin_integ_top_ten_top',{'title':$providerCityUpgrade.title,'cost_amount':$providerCityUpgrade.cost_amount,'length_unit':$providerCityUpgrade.length_unit})}}
+		
+	
 		</div>
 		{{phrase('fs_bitcoin_integ_top_ten_body')}}
-		<a href="" class="blockoPayBtn button box2-btn" data-toggle="modal" data-uid=08785fe7b68d4191>
+		<a href=""  data-validation-url="{{ link('account-upgrade/purchase') }}" data-xf-click="show-upgrade-box" data-option-value="fs_bitcoin_provider_city" class=" button box1-btn"  >
 			{{phrase('upgrade')}} 
 			<img class="paymnet_btc_img" src="{{ base_url('styles/FS/BitcoinIntegration/btc.png') }}">
 		</a>
@@ -27,10 +36,11 @@
 
 	<div class="creditsPricingCard">
 		<div class="creditsPricingCardTop box3-top">
-			{{phrase('fs_bitcoin_integ_vip_top')}}
+				{{phrase('fs_bitcoin_integ_vip_top',{'title':$vipUpgrade.title,'cost_amount':$vipUpgrade.cost_amount,'length_unit':$vipUpgrade.length_unit})}}
+		
 		</div>
 		{{phrase('fs_bitcoin_integ_vip_body')}}
-		<a href="" class="blockoPayBtn button box3-btn" data-toggle="modal" data-uid=bdc79d69a8644148>
+			<a href=""  data-validation-url="{{ link('account-upgrade/purchase') }}" data-xf-click="show-upgrade-box" data-option-value="fs_bitcoin_vip_companion" class=" button box1-btn"  >
 			{{phrase('upgrade')}} 
 			<img class="paymnet_btc_img" src="{{ base_url('styles/FS/BitcoinIntegration/btc.png') }}">
 		</a>
@@ -38,11 +48,13 @@
 
 	<div class="creditsPricingCard">
 		<div class="creditsPricingCardTop box4-top">
-			{{phrase('fs_bitcoin_integ_provider_top')}} 
+			{{phrase('fs_bitcoin_integ_provider_top',{'title':$providerVipUpgrade.title,'cost_amount':$providerVipUpgrade.cost_amount,'length_unit':$providerVipUpgrade.length_unit})}}
+		
+			
 		</div>
 		{{phrase('fs_bitcoin_integ_provider_body')}} 
-		<a href="" class="blockoPayBtn button box4-btn" data-toggle="modal" data-uid=c55436c607ba44f1>
-			{{phrase('upgrade')}} 
+		<a href=""  data-validation-url="{{ link('account-upgrade/purchase') }}" data-xf-click="show-upgrade-box" data-option-value="fs_bitcoin_provider_vip" class=" button box1-btn"  >
+				{{phrase('upgrade')}} 
 			<img class="paymnet_btc_img" src="{{ base_url('styles/FS/BitcoinIntegration/btc.png') }}">
 		</a>
 	</div>

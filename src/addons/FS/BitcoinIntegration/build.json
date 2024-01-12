@@ -1,6 +1,7 @@
 {
   "additional_files": [
     "styles/FS/BitcoinIntegration",
+    "js/bionomics",
     "blockonomics_callback.php"
   ],
   "exec": [

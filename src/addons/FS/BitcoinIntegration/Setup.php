@@ -28,6 +28,19 @@ class Setup extends AbstractSetup
 					('fs_bitcoin', 'FS\\\\BitcoinIntegration:BitcoinIntegration', 'FS/BitcoinIntegration')
 			"
 		);
+
+
+		$this->schemaManager()->createTable('xf_bitcoin_purchase_record', function (Create $table) {
+
+			$table->addColumn('id', 'int')->autoIncrement();
+
+			$table->addColumn('user_id', 'int');
+			$table->addColumn('user_upgrade_id', 'int');
+			$table->addColumn('status', 'int')->setDefault(0);
+			$table->addColumn('end_at', 'int')->setDefault(0);
+
+			$table->addPrimaryKey('id');
+		});
 	}
 
 	public function uninstallStep1()
@@ -35,5 +48,7 @@ class Setup extends AbstractSetup
 		$sm = $this->schemaManager();
 
 		$this->db()->delete('xf_payment_provider', "provider_id = 'fs_bitcoin'");
+
+		$sm->dropTable('xf_bitcoin_purchase_record');
 	}
 }

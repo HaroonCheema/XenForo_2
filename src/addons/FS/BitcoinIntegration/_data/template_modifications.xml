@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="PAGE_CONTAINER" modification_key="add_js_libray_of_blockonomics_bitcoin" description="add_js_libray_of_blockonomics_bitcoin" execution_order="10" enabled="0" action="preg_replace">
+    <find><![CDATA[/<xf:macro name="crumb" arg-href="!" arg-value="!" arg-position="{{ 0 }}">.*?<\/xf:macro>/is]]></find>
+    <replace><![CDATA[$0
+<script src="https://www.blockonomics.co/js/pay_button.js"></script>]]></replace>
+  </modification>
+</template_modifications>

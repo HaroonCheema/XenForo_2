@@ -15,7 +15,7 @@
         "global_cache": false,
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
-        "hash": "f173bf8664472ebdb9ad50f230c5378c"
+        "hash": "af5bd535dc1ec8a47b621e9a55e1ae48"
     },
     "fs_bitcoin_integ_provider_body.txt": {
         "global_cache": false,
@@ -27,7 +27,7 @@
         "global_cache": false,
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
-        "hash": "548bf07f4a020a90aae3859bdced52fd"
+        "hash": "af5bd535dc1ec8a47b621e9a55e1ae48"
     },
     "fs_bitcoin_integ_top_ten_body.txt": {
         "global_cache": false,
@@ -39,7 +39,7 @@
         "global_cache": false,
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
-        "hash": "aac8d5bac3219a28cf14994797032b4a"
+        "hash": "af5bd535dc1ec8a47b621e9a55e1ae48"
     },
     "fs_bitcoin_integ_vip_body.txt": {
         "global_cache": false,
@@ -51,7 +51,25 @@
         "global_cache": false,
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
-        "hash": "e947da383ce14b2f65750cd57d2e60ed"
+        "hash": "af5bd535dc1ec8a47b621e9a55e1ae48"
+    },
+    "fs_bitcoin_integration_api_key_not_found.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "e961bc7f1842f6d58b0b6bfb77dafd11"
+    },
+    "fs_bitcoin_integration_user_upgrade_id_not_found.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "765aaf03daffcece8bfbf94e6476b505"
+    },
+    "fs_group_is_activated.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "cb456215c3333db0551bd0788bc258c7"
     },
     "nav.fs_bitcoin_integration.txt": {
         "global_cache": false,
@@ -65,7 +83,7 @@
         "version_string": "1.0.0 Alpha",
         "hash": "462e69d478d0d5f2bf99454e62117fb6"
     },
-    "option.fs_bitcoin_premium_companion_group_id.txt": {
+    "option.fs_bitcoin_premium_companion.txt": {
         "global_cache": false,
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
@@ -77,7 +95,7 @@
         "version_string": "1.0.0 Alpha",
         "hash": "e459e8db6ea86f662624a9e3d61813a7"
     },
-    "option.fs_bitcoin_provider_city_group_id.txt": {
+    "option.fs_bitcoin_provider_city.txt": {
         "global_cache": false,
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
@@ -89,7 +107,7 @@
         "version_string": "1.0.0 Alpha",
         "hash": "1f9781759c730e45bde9b0df1b02060f"
     },
-    "option.fs_bitcoin_provider_vip_group_id.txt": {
+    "option.fs_bitcoin_provider_vip.txt": {
         "global_cache": false,
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
@@ -101,7 +119,7 @@
         "version_string": "1.0.0 Alpha",
         "hash": "f67e56902798a24a0fc93a467bf90897"
     },
-    "option.fs_bitcoin_vip_companion_group_id.txt": {
+    "option.fs_bitcoin_vip_companion.txt": {
         "global_cache": false,
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
@@ -119,7 +137,7 @@
         "version_string": "1.0.0 Alpha",
         "hash": "d41d8cd98f00b204e9800998ecf8427e"
     },
-    "option_explain.fs_bitcoin_premium_companion_group_id.txt": {
+    "option_explain.fs_bitcoin_premium_companion.txt": {
         "global_cache": false,
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
@@ -131,7 +149,7 @@
         "version_string": "1.0.0 Alpha",
         "hash": "d41d8cd98f00b204e9800998ecf8427e"
     },
-    "option_explain.fs_bitcoin_provider_city_group_id.txt": {
+    "option_explain.fs_bitcoin_provider_city.txt": {
         "global_cache": false,
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
@@ -143,7 +161,7 @@
         "version_string": "1.0.0 Alpha",
         "hash": "d41d8cd98f00b204e9800998ecf8427e"
     },
-    "option_explain.fs_bitcoin_provider_vip_group_id.txt": {
+    "option_explain.fs_bitcoin_provider_vip.txt": {
         "global_cache": false,
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
@@ -155,7 +173,7 @@
         "version_string": "1.0.0 Alpha",
         "hash": "d41d8cd98f00b204e9800998ecf8427e"
     },
-    "option_explain.fs_bitcoin_vip_companion_group_id.txt": {
+    "option_explain.fs_bitcoin_vip_companion.txt": {
         "global_cache": false,
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
