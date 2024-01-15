@@ -2,6 +2,7 @@
     "missing": [],
     "inconsistent": {
         "CRUD": [
+            "src/addons/CRUD/Setup.php",
             "src/addons/CRUD/XF/Pub/Controller/Crud.php"
         ],
         "BS/ScheduledPosting": [
@@ -14,15 +15,20 @@
             "src/addons/XenBulletins/StopHumanSpam/_data/phrases.xml"
         ],
         "XF": [
+            "connected_account.php",
             "index.php",
             "js/xf/attachment_manager.js",
+            "js/xf/core/action.min.js",
             "js/xf/editor-compiled.js",
             "src/XF/Admin/Controller/AbstractNode.php",
             "src/XF/Admin/Controller/Moderator.php",
             "src/XF/Admin/Controller/Notice.php",
             "src/XF/Attachment/Manipulator.php",
+            "src/XF/ConnectedAccount/Provider/AbstractProvider.php",
+            "src/XF/ConnectedAccount/ProviderData/AbstractProviderData.php",
             "src/XF/ControllerPlugin/AbstractCategoryTree.php",
             "src/XF/ControllerPlugin/AbstractPermission.php",
+            "src/XF/Debugger.php",
             "src/XF/Entity/AbstractNode.php",
             "src/XF/Entity/ApprovalQueue.php",
             "src/XF/Entity/AttachmentData.php",
@@ -55,6 +61,15 @@
         "XFRM": [
             "src/addons/XFRM/addon.json"
         ],
+        "devsell/BitcoinPayments": [
+            "src/addons/devsell/BitcoinPayments/addon.json",
+            "src/addons/devsell/BitcoinPayments/LICENSE",
+            "src/addons/devsell/BitcoinPayments/logo.jpg",
+            "src/addons/devsell/BitcoinPayments/Payment/CoinbaseCommerce.php",
+            "src/addons/devsell/BitcoinPayments/Setup.php",
+            "src/addons/devsell/BitcoinPayments/_data/phrases.xml",
+            "src/addons/devsell/BitcoinPayments/_data/templates.xml"
+        ],
         "FS/ApproveThreadPost": [
             "src/addons/FS/ApproveThreadPost/addon.json",
             "src/addons/FS/ApproveThreadPost/Entity/Forum.php",
@@ -79,6 +94,15 @@
             "src/addons/FS/AuctionPlugin/_data/routes.xml",
             "src/addons/FS/AuctionPlugin/_data/templates.xml",
             "src/addons/FS/AuctionPlugin/_data/template_modifications.xml"
+        ],
+        "FS/DownloadThreadAttachments": [
+            "src/addons/FS/DownloadThreadAttachments/addon.json",
+            "src/addons/FS/DownloadThreadAttachments/XF/Pub/Controller/Thread.php",
+            "src/addons/FS/DownloadThreadAttachments/XF/Pub/Views/DownloadZip.php",
+            "src/addons/FS/DownloadThreadAttachments/_data/class_extensions.xml",
+            "src/addons/FS/DownloadThreadAttachments/_data/phrases.xml",
+            "src/addons/FS/DownloadThreadAttachments/_data/templates.xml",
+            "src/addons/FS/DownloadThreadAttachments/_data/template_modifications.xml"
         ],
         "FS/Escrow": [
             "src/addons/FS/Escrow/Pub/Controller/Escrow.php",
@@ -150,6 +174,19 @@
             "src/addons/FS/SecurityQuestion/Pub/Controller/SecurityQuestion.php",
             "src/addons/FS/SecurityQuestion/Setup.php"
         ],
+        "FS/ThreadThumbnail": [
+            "src/addons/FS/ThreadThumbnail/addon.json",
+            "src/addons/FS/ThreadThumbnail/Service/Upload.php",
+            "src/addons/FS/ThreadThumbnail/Setup.php",
+            "src/addons/FS/ThreadThumbnail/XF/Entity/Thread.php",
+            "src/addons/FS/ThreadThumbnail/XF/Entity/User.php",
+            "src/addons/FS/ThreadThumbnail/XF/Pub/Controller/Thread.php",
+            "src/addons/FS/ThreadThumbnail/_data/class_extensions.xml",
+            "src/addons/FS/ThreadThumbnail/_data/options.xml",
+            "src/addons/FS/ThreadThumbnail/_data/phrases.xml",
+            "src/addons/FS/ThreadThumbnail/_data/templates.xml",
+            "src/addons/FS/ThreadThumbnail/_data/template_modifications.xml"
+        ],
         "FS/UpdateUserId": [
             "src/addons/FS/UpdateUserId/addon.json",
             "src/addons/FS/UpdateUserId/Service/UpdateUser.php"
@@ -157,9 +194,22 @@
         "FS/WebsiteRanking": [
             "src/addons/FS/WebsiteRanking/XF/Entity/Forum.php"
         ],
+        "nick97/WatchList": [
+            "src/addons/nick97/WatchList/addon.json",
+            "src/addons/nick97/WatchList/_data/template_modifications.xml"
+        ],
         "Awedo/PostAreas": [
             "src/addons/Awedo/PostAreas/Model/PostAndThreadStats.php",
             "src/addons/Awedo/PostAreas/XF/Pub/Controller/Member.php"
+        ],
+        "Snog/Movies": [
+            "src/addons/Snog/Movies/Pub/Controller/Movies.php",
+            "src/addons/Snog/Movies/Repository/Movie.php",
+            "src/addons/Snog/Movies/Service/Movie/Creator.php",
+            "src/addons/Snog/Movies/ThreadType/Movie.php"
+        ],
+        "ThemeHouse/UserImprovements": [
+            "src/addons/ThemeHouse/UserImprovements/ConnectedAccount/Service/Discord.php"
         ],
         "XenBulletins/BrandHub": [
             "src/addons/XenBulletins/BrandHub/Admin/Controller/Item.php"
@@ -175,6 +225,6 @@
         ]
     },
     "total_missing": 0,
-    "total_inconsistent": 130,
-    "total_checked": 9652
+    "total_inconsistent": 168,
+    "total_checked": 10415
 }

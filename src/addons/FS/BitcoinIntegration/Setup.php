@@ -20,16 +20,6 @@ class Setup extends AbstractSetup
 	{
 		$sm = $this->schemaManager();
 
-		$this->query(
-			"
-				REPLACE INTO `xf_payment_provider`
-					(`provider_id`, `provider_class`, `addon_id`)
-				VALUES
-					('fs_bitcoin', 'FS\\\\BitcoinIntegration:BitcoinIntegration', 'FS/BitcoinIntegration')
-			"
-		);
-
-
 		$this->schemaManager()->createTable('xf_bitcoin_purchase_record', function (Create $table) {
 
 			$table->addColumn('id', 'int')->autoIncrement();
@@ -46,8 +36,6 @@ class Setup extends AbstractSetup
 	public function uninstallStep1()
 	{
 		$sm = $this->schemaManager();
-
-		$this->db()->delete('xf_payment_provider', "provider_id = 'fs_bitcoin'");
 
 		$sm->dropTable('xf_bitcoin_purchase_record');
 	}
