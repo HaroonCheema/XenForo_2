@@ -11,7 +11,7 @@ class UserUpgrade extends XFCP_UserUpgrade
 {
     public function getUserUpgradeExit()
     {
-        $userUpgradeActive = $this->finder('XF:UserUpgradeActive')->where('user_upgrade_record_id', $this->user_upgrade_id)->where('user_id', \xf::visitor()->user_id)->fetchOne();
+        $userUpgradeActive = $this->finder('XF:UserUpgradeActive')->where('user_upgrade_id', $this->user_upgrade_id)->where('user_id', \xf::visitor()->user_id)->fetchOne();
         if ($userUpgradeActive) {
 
             return true;

@@ -1,8 +1,8 @@
 {
     "public/fs_bitcoin_upgrade_cards_index.html": {
-        "version_id": 1000010,
-        "version_string": "1.0.0 Alpha",
-        "hash": "c66d385cdbe288afb89bf6ea675ccdfc"
+        "version_id": 1010100,
+        "version_string": "1.1.1 Alpha",
+        "hash": "b5296c4ef402f7711cee4ed58bd18507"
     },
     "public/fs_encrpt_bitcoin_purchase.html": {
         "version_id": 1000010,

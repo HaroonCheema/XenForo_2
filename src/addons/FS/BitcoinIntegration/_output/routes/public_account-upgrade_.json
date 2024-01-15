@@ -6,6 +6,6 @@
     "build_class": "",
     "build_method": "",
     "controller": "FS\\BitcoinIntegration:BitcoinIntegration",
-    "context": "fs_bitcoin_integration",
+    "context": "upgradeAccount",
     "action_prefix": ""
 }

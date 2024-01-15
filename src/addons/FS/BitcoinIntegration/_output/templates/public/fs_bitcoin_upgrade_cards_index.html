@@ -10,7 +10,7 @@
 		</div>
 		{{phrase('fs_bitcoin_integ_premium_body')}}
 		
-		<xf:if is="$premiumUpgrade && $premiumUpgrade.getUserUpgradeExit()">
+		<xf:if is="$premiumUpgrade && !$premiumUpgrade.getUserUpgradeExit()">
 			<a href=""  data-validation-url="{{ link('account-upgrade/purchase') }}" data-xf-click="show-upgrade-box" data-option-value="fs_bitcoin_premium_companion" class=" button box1-btn"  >
 				{{phrase('upgrade')}}
 				<img class="paymnet_btc_img" src="{{ base_url('styles/FS/BitcoinIntegration/btc.png') }}">
@@ -28,10 +28,14 @@
 	
 		</div>
 		{{phrase('fs_bitcoin_integ_top_ten_body')}}
-		<a href=""  data-validation-url="{{ link('account-upgrade/purchase') }}" data-xf-click="show-upgrade-box" data-option-value="fs_bitcoin_provider_city" class=" button box1-btn"  >
-			{{phrase('upgrade')}} 
-			<img class="paymnet_btc_img" src="{{ base_url('styles/FS/BitcoinIntegration/btc.png') }}">
-		</a>
+		<xf:if is="$providerCityUpgrade && !$providerCityUpgrade.getUserUpgradeExit()">
+			<a href=""  data-validation-url="{{ link('account-upgrade/purchase') }}" data-xf-click="show-upgrade-box" data-option-value="fs_bitcoin_provider_city" class=" button box2-btn"  >
+				{{phrase('upgrade')}} 
+				<img class="paymnet_btc_img" src="{{ base_url('styles/FS/BitcoinIntegration/btc.png') }}">
+			</a>
+		<xf:else/>
+			{{phrase('fs_group_is_activated')}}
+		</xf:if>
 	</div>
 
 	<div class="creditsPricingCard">
@@ -40,10 +44,14 @@
 		
 		</div>
 		{{phrase('fs_bitcoin_integ_vip_body')}}
-			<a href=""  data-validation-url="{{ link('account-upgrade/purchase') }}" data-xf-click="show-upgrade-box" data-option-value="fs_bitcoin_vip_companion" class=" button box1-btn"  >
+	    <xf:if is="$vipUpgrade && !$vipUpgrade.getUserUpgradeExit()">
+			<a href=""  data-validation-url="{{ link('account-upgrade/purchase') }}" data-xf-click="show-upgrade-box" data-option-value="fs_bitcoin_vip_companion" class=" button box3-btn"  >
 			{{phrase('upgrade')}} 
-			<img class="paymnet_btc_img" src="{{ base_url('styles/FS/BitcoinIntegration/btc.png') }}">
-		</a>
+			<img class="paymnet_btc_img" src="{{ base_url('styles/FS/BitcoinIntegration/btc.png') }}"></a>
+		<xf:else/>
+			{{phrase('fs_group_is_activated')}}
+		</xf:if>
+		
 	</div>
 
 	<div class="creditsPricingCard">
@@ -53,10 +61,14 @@
 			
 		</div>
 		{{phrase('fs_bitcoin_integ_provider_body')}} 
-		<a href=""  data-validation-url="{{ link('account-upgrade/purchase') }}" data-xf-click="show-upgrade-box" data-option-value="fs_bitcoin_provider_vip" class=" button box1-btn"  >
-				{{phrase('upgrade')}} 
-			<img class="paymnet_btc_img" src="{{ base_url('styles/FS/BitcoinIntegration/btc.png') }}">
-		</a>
+		<xf:if is="$providerVipUpgrade && !$providerVipUpgrade.getUserUpgradeExit()">
+			<a href=""  data-validation-url="{{ link('account-upgrade/purchase') }}" data-xf-click="show-upgrade-box" data-option-value="fs_bitcoin_provider_vip" class=" button box4-btn"  >
+					{{phrase('upgrade')}} 
+				<img class="paymnet_btc_img" src="{{ base_url('styles/FS/BitcoinIntegration/btc.png') }}">
+			</a>
+		<xf:else/>
+			{{phrase('fs_group_is_activated')}}
+		</xf:if>
 	</div>
 </div>
 <div id="purchase_bitcoin"></div>

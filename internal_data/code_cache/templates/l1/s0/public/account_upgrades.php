@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: b7bd825e4f7a549da46821b620b554a4
+// FROM HASH: f29b4d6ad0a5446f0116fee6ddfd9f57
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -34,68 +34,74 @@ return array(
 		if ($__templater->isTraversable($__vars['available'])) {
 			foreach ($__vars['available'] AS $__vars['upgrade']) {
 				$__compilerTemp1 .= '
+	';
+				if (!$__templater->func('in_array', array($__vars['upgrade']['user_upgrade_id'], array($__vars['xf']['options']['fs_bitcoin_premium_companion'], $__vars['xf']['options']['fs_bitcoin_provider_city'], $__vars['xf']['options']['fs_bitcoin_vip_companion'], $__vars['xf']['options']['fs_bitcoin_provider_vip'], ), ), false)) {
+					$__compilerTemp1 .= '
+		';
+					$__compilerTemp2 = '';
+					if (($__templater->func('count', array($__vars['upgrade']['payment_profile_ids'], ), false) > 1)) {
+						$__compilerTemp2 .= '
 						';
-				$__compilerTemp2 = '';
-				if (($__templater->func('count', array($__vars['upgrade']['payment_profile_ids'], ), false) > 1)) {
-					$__compilerTemp2 .= '
-										';
-					$__compilerTemp3 = array(array(
-						'label' => $__vars['xf']['language']['parenthesis_open'] . 'Choose a payment method' . $__vars['xf']['language']['parenthesis_close'],
-						'_type' => 'option',
-					));
-					if ($__templater->isTraversable($__vars['upgrade']['payment_profile_ids'])) {
-						foreach ($__vars['upgrade']['payment_profile_ids'] AS $__vars['profileId']) {
-							$__compilerTemp3[] = array(
-								'value' => $__vars['profileId'],
-								'label' => $__templater->escape($__vars['profiles'][$__vars['profileId']]),
-								'_type' => 'option',
-							);
+						$__compilerTemp3 = array(array(
+							'label' => $__vars['xf']['language']['parenthesis_open'] . 'Choose a payment method' . $__vars['xf']['language']['parenthesis_close'],
+							'_type' => 'option',
+						));
+						if ($__templater->isTraversable($__vars['upgrade']['payment_profile_ids'])) {
+							foreach ($__vars['upgrade']['payment_profile_ids'] AS $__vars['profileId']) {
+								$__compilerTemp3[] = array(
+									'value' => $__vars['profileId'],
+									'label' => $__templater->escape($__vars['profiles'][$__vars['profileId']]),
+									'_type' => 'option',
+								);
+							}
 						}
-					}
-					$__compilerTemp2 .= $__templater->formSelect(array(
-						'name' => 'payment_profile_id',
-					), $__compilerTemp3) . '
+						$__compilerTemp2 .= $__templater->formSelect(array(
+							'name' => 'payment_profile_id',
+						), $__compilerTemp3) . '
 
-										<span class="inputGroup-splitter"></span>
+						<span class="inputGroup-splitter"></span>
 
-										' . $__templater->button('', array(
-						'type' => 'submit',
-						'icon' => 'purchase',
-					), '', array(
-					)) . '
-									';
-				} else {
-					$__compilerTemp2 .= '
-										' . $__templater->button('', array(
-						'type' => 'submit',
-						'icon' => 'purchase',
-					), '', array(
-					)) . '
+						' . $__templater->button('', array(
+							'type' => 'submit',
+							'icon' => 'purchase',
+						), '', array(
+						)) . '
+						';
+					} else {
+						$__compilerTemp2 .= '
+						' . $__templater->button('', array(
+							'type' => 'submit',
+							'icon' => 'purchase',
+						), '', array(
+						)) . '
 
-										' . $__templater->formHiddenVal('payment_profile_id', $__templater->filter($__vars['upgrade']['payment_profile_ids'], array(array('first', array()),), false), array(
-					)) . '
-									';
-				}
-				$__compilerTemp1 .= $__templater->formRow('
-
-							' . $__templater->form('
-								<div class="inputGroup">
-									' . $__compilerTemp2 . '
-								</div>
-								<div class="js-paymentProviderReply-user_upgrade' . $__templater->escape($__vars['upgrade']['user_upgrade_id']) . '"></div>
-							', array(
-					'action' => $__templater->func('link', array('purchase', $__vars['upgrade'], array('user_upgrade_id' => $__vars['upgrade']['user_upgrade_id'], ), ), false),
-					'ajax' => 'true',
-					'data-xf-init' => 'payment-provider-container',
-				)) . '
-
-						', array(
-					'rowtype' => 'button',
-					'label' => $__templater->escape($__vars['upgrade']['title']),
-					'hint' => $__templater->escape($__vars['upgrade']['cost_phrase']),
-					'explain' => $__templater->filter($__vars['upgrade']['description'], array(array('raw', array()),), true),
-				)) . '
+						' . $__templater->formHiddenVal('payment_profile_id', $__templater->filter($__vars['upgrade']['payment_profile_ids'], array(array('first', array()),), false), array(
+						)) . '
 					';
+					}
+					$__compilerTemp1 .= $__templater->formRow('
+
+			' . $__templater->form('
+				<div class="inputGroup">
+					' . $__compilerTemp2 . '
+				</div>
+				<div class="js-paymentProviderReply-user_upgrade' . $__templater->escape($__vars['upgrade']['user_upgrade_id']) . '"></div>
+			', array(
+						'action' => $__templater->func('link', array('purchase', $__vars['upgrade'], array('user_upgrade_id' => $__vars['upgrade']['user_upgrade_id'], ), ), false),
+						'ajax' => 'true',
+						'data-xf-init' => 'payment-provider-container',
+					)) . '
+
+		', array(
+						'rowtype' => 'button',
+						'label' => $__templater->escape($__vars['upgrade']['title']),
+						'hint' => $__templater->escape($__vars['upgrade']['cost_phrase']),
+						'explain' => $__templater->filter($__vars['upgrade']['description'], array(array('raw', array()),), true),
+					)) . '
+	';
+				}
+				$__compilerTemp1 .= '
+';
 			}
 		}
 		$__compilerTemp1 .= '
@@ -176,8 +182,6 @@ return array(
 	<div class="blockMessage">' . 'There are currently no purchasable user upgrades.' . '</div>
 ';
 	}
-	$__finalCompiled .= '
-';
 	return $__finalCompiled;
 }
 );

@@ -13,6 +13,9 @@ class BitcoinIntegration extends AbstractController
 
 		$visitor = \XF::visitor();
 
+		if($visitor->account_type==1){
+		return $this->noPermission();
+		}
 		$premiumUpgradeId = \xf::options()->fs_bitcoin_premium_companion;
 		$providerCityUpgradeId = \xf::options()->fs_bitcoin_provider_city;
 		$vipUpgradeId = \xf::options()->fs_bitcoin_vip_companion;
@@ -90,7 +93,9 @@ class BitcoinIntegration extends AbstractController
 		}
 
 		$visitor = \xf::visitor();
-
+		if($visitor->account_type==1){
+		return $this->noPermission();
+		}
 
 
 		if (!$visitor->user_id) {
