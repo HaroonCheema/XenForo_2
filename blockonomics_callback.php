@@ -57,7 +57,7 @@ if ($response && $resCode == 200) {
     }
 
     $encrypt = $response["data"]["extra_data"];
-
+    
     $data = decrypt($encrypt);
 
 
