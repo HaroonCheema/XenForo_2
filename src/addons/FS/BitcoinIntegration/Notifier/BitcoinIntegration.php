@@ -7,7 +7,7 @@ use XF\Notifier\AbstractNotifier;
 
 class BitcoinIntegration extends AbstractNotifier
 {
-    /** @var Auction $auction */
+    // /** @var Auction $auction */
     // private $auc;
 
     // public function __construct(\XF\App $app, AuctionListing $auc)
@@ -26,19 +26,20 @@ class BitcoinIntegration extends AbstractNotifier
     {
         $visitor = \XF::visitor();
 
-        $auc = $this->auc;
+        // $auc = $this->auc;
 
         return $this->basicAlert(
-            $auc->User,
+            $visitor,
             $visitor->user_id,
             $visitor->username,
-            'fs_auction',
-            $auc->auction_id,
+            'fs_bitcoin',
+            $visitor->user_id,
             'send_alert',
-            [
-                'category_id' => $auc->category_id,
-                'title' => $auc->title
-            ]
+            []
+            // [
+            //     'category_id' => $auc->category_id,
+            //     'title' => $auc->title
+            // ]
         );
     }
 }

@@ -12,7 +12,7 @@ class PurchaseRec extends Entity
     {
         $structure->table = 'xf_bitcoin_purchase_record';
         $structure->shortName = 'FS\BitcoinIntegration:PurchaseRec';
-        $structure->contentType = 'xf_bitcoin_purchase_record';
+        $structure->contentType = 'fs_bitcoin';
         $structure->primaryKey = 'id';
         $structure->columns = [
             'id' => ['type' => self::UINT, 'autoIncrement' => true],
