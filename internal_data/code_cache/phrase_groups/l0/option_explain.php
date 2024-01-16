@@ -293,6 +293,7 @@ This option requires that the specified account is a catch-all account or suppor
   'option_explain.fsPositions' => '',
   'option_explain.fsShowLanguage' => '',
   'option_explain.fsWidgetLook' => '',
+  'option_explain.fs_assign_group_applicable' => 'Use as default group for registration.',
   'option_explain.fs_auction_applicable_forum' => '',
   'option_explain.fs_auction_bumping_allowed' => 'how many times user can bump there auction...!',
   'option_explain.fs_auction_dropDown_list_limit' => '',

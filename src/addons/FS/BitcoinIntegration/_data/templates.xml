@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <templates>
+  <template type="public" title="alert_fs_bitcoin_send_alert" version_id="1010100" version_string="1.1.1 Alpha"><![CDATA[{{ phrase('send') }}]]></template>
   <template type="public" title="fs_bitcoin_upgrade_cards_index" version_id="1010100" version_string="1.1.1 Alpha"><![CDATA[<xf:title>{{phrase('fs_bitcoin_account_upgrade')}}</xf:title>
 
 <xf:css src="user_upgrad_card.less"/>

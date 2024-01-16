@@ -27,6 +27,7 @@ You may set a user into \'discouraged\' mode by editing their user profile, or d
   'option_group_description.form_thread_moderation' => '',
   'option_group_description.fsEscrow' => '[FS] Escrow',
   'option_group_description.fs_MediaTagSetting' => '',
+  'option_group_description.fs_assign_group' => '[FS] Assign Group',
   'option_group_description.fs_bitcoin_integ' => '[FS] Bitcoin Integration',
   'option_group_description.fs_bunny_integration' => 'bunny.net Api Integration',
   'option_group_description.fs_forum_groups' => '[FS] Forum Groups',
