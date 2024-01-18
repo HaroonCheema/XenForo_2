@@ -2,10 +2,11 @@
 	<div class="user-upgrades__block  box3-upgrades__block">
 		<ul>
 			<li>Option to repost.</li>
-			<li>Post up to 4 times daily.</li>
+			<li>Post as many times per day.</li>
+			<li>Enhanced message storage.</li>
 			<li>Enhanced photo storage capacity.</li>
 			<li>Ideal for highly active board members.</li>
 			<li>1-month subscription with each purchase.</li>
 		</ul>
 	</div>
-</div>
+</div><br/>

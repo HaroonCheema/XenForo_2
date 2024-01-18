@@ -1,5 +1,11 @@
 {
-    "fs_bitcoin_integration.json": {
-        "hash": "c1ae912360bcf96b7743af039df2b81b"
+    "upgradeAccount.json": {
+        "hash": "b091b611a69ed9347cfe3eab3552a755"
+    },
+    "upgradeAdmirer.json": {
+        "hash": "b5240bbb7eadb10b40a08b0dcaab2439"
+    },
+    "upgradeCompanion.json": {
+        "hash": "3baa874686a4165976a7eefdd28693ba"
     }
 }

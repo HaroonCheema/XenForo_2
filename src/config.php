@@ -17,4 +17,4 @@ $config['designer']['enabled'] = true;
 
 $config['fullUnicode'] = true;
 
-$config['development']['defaultAddOn'] = 'FS/AssignGroup';
+$config['development']['defaultAddOn'] = 'FS/BitcoinIntegration';

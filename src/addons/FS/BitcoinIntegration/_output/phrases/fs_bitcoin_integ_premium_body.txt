@@ -2,7 +2,9 @@
 	<div class="user-upgrades__block box1-upgrades__block">
 		<ul>
 			<li>Post up to 2 times daily.</li>
-			<li>Great for those who plan to use the site multiple times.</li>
+			<li>Limited message storage.</li>
+			<li>Limited photo storage capacity.</li>
+			<li>Great for those who plan to use the site multiple times weekly.</li>
 		</ul>
 	</div>
 </div>

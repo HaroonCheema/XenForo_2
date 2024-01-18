@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: c733d09b1d4f7a1ec629aca92f0b80f8
+// FROM HASH: ebc732f8fc97beeb05a3509ca8796c2b
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -19,14 +19,14 @@ return array(
 <div class="creditsPricingCards" id="recurringCreditsCards">
 
 	';
-	if ($__vars['xf']['visitor']['user_id'] == 2) {
+	if ($__vars['men']) {
 		$__finalCompiled .= '
 		' . $__templater->callMacro('fs_bitcoin_upgrade_card_macros', 'men', array(
 			'sixMonthUpgrade' => $__vars['sixMonthUpgrade'],
 			'oneYearUpgrade' => $__vars['oneYearUpgrade'],
 		), $__vars) . '
 		';
-	} else if ($__vars['xf']['visitor']['user_id'] == 1) {
+	} else if ($__vars['women']) {
 		$__finalCompiled .= '
 		' . $__templater->callMacro('fs_bitcoin_upgrade_card_macros', 'women', array(
 			'premiumUpgrade' => $__vars['premiumUpgrade'],

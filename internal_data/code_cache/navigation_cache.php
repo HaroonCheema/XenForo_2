@@ -62,18 +62,6 @@ return function($__templater, $__selectedNav, array $__vars)
 			}
 		}
 
-		if ($__vars['xf']['visitor']['user_id']) {
-			$__navTemp = [
-		'title' => \XF::phrase('nav.defaultLogOut'),
-		'href' => $__templater->func('link', array('logout', null, array('t' => $__templater->func('csrf_token', array(), false), ), ), false),
-		'attributes' => [],
-	];
-			if ($__navTemp) {
-				$__tree['_default']['children']['defaultLogOut'] = $__navTemp;
-				$__flat['defaultLogOut'] =& $__tree['_default']['children']['defaultLogOut'];
-			}
-		}
-
 		if (((!$__vars['xf']['visitor']['user_id']) AND $__vars['xf']['options']['registrationSetup']['enabled'])) {
 			$__navTemp = [
 		'title' => \XF::phrase('nav.defaultRegister'),
@@ -86,16 +74,18 @@ return function($__templater, $__selectedNav, array $__vars)
 			}
 		}
 
-	}
-
-	$__navTemp = [
-		'title' => \XF::phrase('nav.fs_bitcoin_integration'),
-		'href' => $__templater->func('link', array('account-upgrade', ), false),
+		if ($__vars['xf']['visitor']['user_id']) {
+			$__navTemp = [
+		'title' => \XF::phrase('nav.defaultLogOut'),
+		'href' => $__templater->func('link', array('logout', null, array('t' => $__templater->func('csrf_token', array(), false), ), ), false),
 		'attributes' => [],
 	];
-	if ($__navTemp) {
-		$__tree['fs_bitcoin_integration'] = $__navTemp;
-		$__flat['fs_bitcoin_integration'] =& $__tree['fs_bitcoin_integration'];
+			if ($__navTemp) {
+				$__tree['_default']['children']['defaultLogOut'] = $__navTemp;
+				$__flat['defaultLogOut'] =& $__tree['_default']['children']['defaultLogOut'];
+			}
+		}
+
 	}
 
 	if ($__vars['xf']['homePageUrl']) {
@@ -418,6 +408,44 @@ return function($__templater, $__selectedNav, array $__vars)
 				if ($__navTemp) {
 					$__tree['xfrm']['children']['xfrmSearchResources'] = $__navTemp;
 					$__flat['xfrmSearchResources'] =& $__tree['xfrm']['children']['xfrmSearchResources'];
+				}
+			}
+
+		}
+	}
+
+	if ($__vars['xf']['visitor']['user_id']) {
+		$__navTemp = [
+		'title' => \XF::phrase('nav.upgradeAccount'),
+		'href' => $__templater->func('link', array('account-upgrade', ), false),
+		'attributes' => [],
+	];
+		if ($__navTemp) {
+			$__tree['upgradeAccount'] = $__navTemp;
+			$__flat['upgradeAccount'] =& $__tree['upgradeAccount'];
+			if (empty($__tree['upgradeAccount']['children'])) { $__tree['upgradeAccount']['children'] = []; }
+
+			if ($__vars['xf']['visitor']['user_id']) {
+				$__navTemp = [
+		'title' => \XF::phrase('nav.upgradeCompanion'),
+		'href' => $__templater->func('link', array('account-upgrade/companion', ), false),
+		'attributes' => [],
+	];
+				if ($__navTemp) {
+					$__tree['upgradeAccount']['children']['upgradeCompanion'] = $__navTemp;
+					$__flat['upgradeCompanion'] =& $__tree['upgradeAccount']['children']['upgradeCompanion'];
+				}
+			}
+
+			if ($__vars['xf']['visitor']['user_id']) {
+				$__navTemp = [
+		'title' => \XF::phrase('nav.upgradeAdmirer'),
+		'href' => $__templater->func('link', array('account-upgrade/admirer', ), false),
+		'attributes' => [],
+	];
+				if ($__navTemp) {
+					$__tree['upgradeAccount']['children']['upgradeAdmirer'] = $__navTemp;
+					$__flat['upgradeAdmirer'] =& $__tree['upgradeAccount']['children']['upgradeAdmirer'];
 				}
 			}
 
