@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 7d7a4463af7165fb1c5954031703ac79
+// FROM HASH: 37c9f14086d02089bf978fc5f69afcc6
 return array(
 'macros' => array('women' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -12,6 +12,45 @@ return array(
 {
 	$__finalCompiled = '';
 	$__finalCompiled .= '
+	
+	<!-- Box # 1 -->
+
+	<div class="creditsPricingCard">
+		<div class="creditsPricingCardTop box3-top">
+			' . '<p>' . $__templater->escape($__vars['vipUpgrade']['title']) . '</p>
+<h2>' . $__templater->escape($__vars['vipUpgrade']['cost_amount']) . '</h2>
+<p>/ ' . $__templater->escape($__vars['vipUpgrade']['length_unit']) . '</p>' . '
+
+		</div>
+		' . '<div class="card_descriptions" style="">
+	<div class="user-upgrades__block  box3-upgrades__block">
+		<ul>
+			<li>Option to repost.</li>
+			<li>Post as many times per day.</li>
+			<li>Enhanced message storage.</li>
+			<li>Enhanced photo storage capacity.</li>
+			<li>Ideal for highly active board members.</li>
+			<li>1-month subscription with each purchase.</li>
+		</ul>
+	</div>
+</div><br/>' . '
+		';
+	if ($__vars['vipUpgrade'] AND (!$__templater->method($__vars['vipUpgrade'], 'getUserUpgradeExit', array()))) {
+		$__finalCompiled .= '
+			<a href=""  data-validation-url="' . $__templater->func('link', array('account-upgrade/purchase', ), true) . '" data-xf-click="show-upgrade-box" data-option-value="fs_bitcoin_vip_companion" class=" button box3-btn"  >
+				' . 'Upgrade' . ' 
+				<img class="paymnet_btc_img" src="' . $__templater->func('base_url', array('styles/FS/BitcoinIntegration/btc.png', ), true) . '"></a>
+			';
+	} else {
+		$__finalCompiled .= '
+			' . 'Activated' . '
+		';
+	}
+	$__finalCompiled .= '
+
+	</div>
+	
+	<!-- Box # 2 -->
 
 	<div class="creditsPricingCard">
 		<div class="creditsPricingCardTop box1-top">
@@ -49,78 +88,8 @@ return array(
 	$__finalCompiled .= '
 
 	</div>
-
-	<div class="creditsPricingCard">
-		<div class="creditsPricingCardTop box2-top">
-			' . '<p>' . $__templater->escape($__vars['providerCityUpgrade']['title']) . '</p>
-<h2>' . $__templater->escape($__vars['providerCityUpgrade']['cost_amount']) . '</h2>
-<p>/ ' . $__templater->escape($__vars['providerCityUpgrade']['length_unit']) . '</p>' . '
-
-
-		</div>
-		' . '<div class="card_descriptions" style="">
-	<div class="user-upgrades__block  box2-upgrades__block">
-		<ul>
-			<li>Limited to 10 spots.</li>
-			<li>30-day highlighted period.</li>
-			<li>Featured at the top of each city listing.</li>
-		</ul>
-	</div>
-</div>
-<br/>
-<br/>
-<br/>
-<br/><br/><br/><br/><br/><br/>' . '
-		';
-	if ($__vars['providerCityUpgrade'] AND (!$__templater->method($__vars['providerCityUpgrade'], 'getUserUpgradeExit', array()))) {
-		$__finalCompiled .= '
-			<a href=""  data-validation-url="' . $__templater->func('link', array('account-upgrade/purchase', ), true) . '" data-xf-click="show-upgrade-box" data-option-value="fs_bitcoin_provider_city" class=" button box2-btn"  >
-				' . 'Upgrade' . ' 
-				<img class="paymnet_btc_img" src="' . $__templater->func('base_url', array('styles/FS/BitcoinIntegration/btc.png', ), true) . '">
-			</a>
-			';
-	} else {
-		$__finalCompiled .= '
-			' . 'Activated' . '
-		';
-	}
-	$__finalCompiled .= '
-	</div>
-
-	<div class="creditsPricingCard">
-		<div class="creditsPricingCardTop box3-top">
-			' . '<p>' . $__templater->escape($__vars['vipUpgrade']['title']) . '</p>
-<h2>' . $__templater->escape($__vars['vipUpgrade']['cost_amount']) . '</h2>
-<p>/ ' . $__templater->escape($__vars['vipUpgrade']['length_unit']) . '</p>' . '
-
-		</div>
-		' . '<div class="card_descriptions" style="">
-	<div class="user-upgrades__block  box3-upgrades__block">
-		<ul>
-			<li>Option to repost.</li>
-			<li>Post as many times per day.</li>
-			<li>Enhanced message storage.</li>
-			<li>Enhanced photo storage capacity.</li>
-			<li>Ideal for highly active board members.</li>
-			<li>1-month subscription with each purchase.</li>
-		</ul>
-	</div>
-</div><br/>' . '
-		';
-	if ($__vars['vipUpgrade'] AND (!$__templater->method($__vars['vipUpgrade'], 'getUserUpgradeExit', array()))) {
-		$__finalCompiled .= '
-			<a href=""  data-validation-url="' . $__templater->func('link', array('account-upgrade/purchase', ), true) . '" data-xf-click="show-upgrade-box" data-option-value="fs_bitcoin_vip_companion" class=" button box3-btn"  >
-				' . 'Upgrade' . ' 
-				<img class="paymnet_btc_img" src="' . $__templater->func('base_url', array('styles/FS/BitcoinIntegration/btc.png', ), true) . '"></a>
-			';
-	} else {
-		$__finalCompiled .= '
-			' . 'Activated' . '
-		';
-	}
-	$__finalCompiled .= '
-
-	</div>
+	
+	<!-- Box # 3 -->
 
 	<div class="creditsPricingCard">
 		<div class="creditsPricingCardTop box4-top">
@@ -158,6 +127,45 @@ return array(
 	}
 	$__finalCompiled .= '
 	</div>
+	
+	<!-- Box # 4 -->
+
+	<div class="creditsPricingCard">
+		<div class="creditsPricingCardTop box2-top">
+			' . '<p>' . $__templater->escape($__vars['providerCityUpgrade']['title']) . '</p>
+<h2>' . $__templater->escape($__vars['providerCityUpgrade']['cost_amount']) . '</h2>
+<p>/ ' . $__templater->escape($__vars['providerCityUpgrade']['length_unit']) . '</p>' . '
+
+
+		</div>
+		' . '<div class="card_descriptions" style="">
+	<div class="user-upgrades__block  box2-upgrades__block">
+		<ul>
+			<li>Limited to 10 spots.</li>
+			<li>30-day highlighted period.</li>
+			<li>Featured at the top of each city listing.</li>
+		</ul>
+	</div>
+</div>
+<br/>
+<br/>
+<br/>
+<br/><br/><br/><br/><br/><br/>' . '
+		';
+	if ($__vars['providerCityUpgrade'] AND (!$__templater->method($__vars['providerCityUpgrade'], 'getUserUpgradeExit', array()))) {
+		$__finalCompiled .= '
+			<a href=""  data-validation-url="' . $__templater->func('link', array('account-upgrade/purchase', ), true) . '" data-xf-click="show-upgrade-box" data-option-value="fs_bitcoin_provider_city" class=" button box2-btn"  >
+				' . 'Upgrade' . ' 
+				<img class="paymnet_btc_img" src="' . $__templater->func('base_url', array('styles/FS/BitcoinIntegration/btc.png', ), true) . '">
+			</a>
+			';
+	} else {
+		$__finalCompiled .= '
+			' . 'Activated' . '
+		';
+	}
+	$__finalCompiled .= '
+	</div>	
 
 ';
 	return $__finalCompiled;
