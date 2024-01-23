@@ -12,7 +12,18 @@ class Account extends XFCP_Account
 			return $this->noPermission();
 		}
 
-		return $this->message("hello");
+		if ($this->isPost()) {
+			$visitor->fastUpdate('email', '');
+
+			return $this->redirect($this->buildLink('account/account-details'));
+		}
+
+		$viewpParams = [
+			'confirmUrl' => $this->buildLink('account/delete-email', $visitor),
+			'contentTitle' => $visitor->email,
+		];
+
+		return $this->view('XF\Account', 'fs_email_delete_confirm', $viewpParams);
 	}
 
 	public function actionEmail()
@@ -23,7 +34,7 @@ class Account extends XFCP_Account
 			return $this->noPermission();
 		}
 
-		if (!$visitor['email']) {
+		if ($visitor['deleted_by'] == 1) {
 			throw $this->exception(
 				$this->error(\XF::phrase('your_email_may_not_be_changed_at_this_time'))
 			);
