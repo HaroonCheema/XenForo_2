@@ -9,9 +9,7 @@ $config['enableAddOnArchiveInstaller'] = true;
 
 $config['debug'] = true;
 
-
 $config['development']['enabled'] = true;
-$config['development']['defaultAddOn'] = 'Demo';
 
 $config['designer']['enabled'] = true;
 
