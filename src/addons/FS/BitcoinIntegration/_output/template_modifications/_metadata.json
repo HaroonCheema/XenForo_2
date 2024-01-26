@@ -1,5 +1,8 @@
 {
     "public/fs_bitcoin_account_upgrades_remove.json": {
         "hash": "b99fa98a28e3ac606c01b9a1d4e364ac"
+    },
+    "public/fs_bitcoin_register_complete_add_account_upgrade.json": {
+        "hash": "be97021161bc65534dd29763ba5d3956"
     }
 }
