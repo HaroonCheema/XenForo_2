@@ -70,9 +70,7 @@ return array(
 		$__finalCompiled .= '<li><a href="' . $__templater->func('link', array($__vars['redirect'], ), true) . '">' . 'Return to the page you were viewing' . '</a></li>';
 	}
 	$__finalCompiled .= '
-		<li><a href="' . $__templater->func('link', array('account-upgrade', ), true) . '">' . 'Upgrade your account to start posting' . '</a></li>
-
-<li><a href="' . $__templater->func('link', array('index', ), true) . '">' . 'Return to the forum home page' . '</a></li>
+		<li><a href="' . $__templater->func('link', array('index', ), true) . '">' . 'Return to the forum home page' . '</a></li>
 		';
 	if ($__templater->method($__vars['xf']['visitor'], 'canEditProfile', array())) {
 		$__finalCompiled .= '

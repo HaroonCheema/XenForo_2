@@ -414,44 +414,6 @@ return function($__templater, $__selectedNav, array $__vars)
 		}
 	}
 
-	if ($__vars['xf']['visitor']['user_id']) {
-		$__navTemp = [
-		'title' => \XF::phrase('nav.upgradeAccount'),
-		'href' => $__templater->func('link', array('account-upgrade', ), false),
-		'attributes' => [],
-	];
-		if ($__navTemp) {
-			$__tree['upgradeAccount'] = $__navTemp;
-			$__flat['upgradeAccount'] =& $__tree['upgradeAccount'];
-			if (empty($__tree['upgradeAccount']['children'])) { $__tree['upgradeAccount']['children'] = []; }
-
-			if ($__vars['xf']['visitor']['user_id']) {
-				$__navTemp = [
-		'title' => \XF::phrase('nav.upgradeCompanion'),
-		'href' => $__templater->func('link', array('account-upgrade/companion', ), false),
-		'attributes' => [],
-	];
-				if ($__navTemp) {
-					$__tree['upgradeAccount']['children']['upgradeCompanion'] = $__navTemp;
-					$__flat['upgradeCompanion'] =& $__tree['upgradeAccount']['children']['upgradeCompanion'];
-				}
-			}
-
-			if ($__vars['xf']['visitor']['user_id']) {
-				$__navTemp = [
-		'title' => \XF::phrase('nav.upgradeAdmirer'),
-		'href' => $__templater->func('link', array('account-upgrade/admirer', ), false),
-		'attributes' => [],
-	];
-				if ($__navTemp) {
-					$__tree['upgradeAccount']['children']['upgradeAdmirer'] = $__navTemp;
-					$__flat['upgradeAdmirer'] =& $__tree['upgradeAccount']['children']['upgradeAdmirer'];
-				}
-			}
-
-		}
-	}
-
 	if ($__templater->method($__vars['xf']['visitor'], 'canViewMemberList', array())) {
 		$__navTemp = [
 		'title' => \XF::phrase('nav.members'),

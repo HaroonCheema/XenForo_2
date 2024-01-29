@@ -165,15 +165,6 @@ Before your content can be posted, please take a few moments to register a free 
 		'hint' => 'Required',
 	)) . '
 
-' . $__templater->formPasswordBoxRow(array(
-		'name' => 'password_confirm',
-		'autocomplete' => 'new-password',
-		'required' => 'required',
-	), array(
-		'label' => 'Confirm new password',
-		'hint' => 'Required',
-	)) . '
-
 			' . $__templater->callMacro('register_macros', 'dob_row', array(), $__vars) . '
 
 			' . $__templater->callMacro('register_macros', 'location_row', array(
