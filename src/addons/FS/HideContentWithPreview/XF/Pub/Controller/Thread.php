@@ -17,47 +17,40 @@ class Thread extends XFCP_Thread
 
             $userGroupIds = $options->fs_hcwp_userGroups;
 
-            if (!$visitor->isMemberOf($userGroupIds)) {
-                $posts = $parent->getParam('posts');
-                foreach ($posts as $post) {
+            $posts = $parent->getParam('posts');
+            foreach ($posts as $post) {
+
+                if (!$visitor->isMemberOf($userGroupIds)) {
+                    $this->filterPost($post);
+                } elseif ($visitor['register_date'] <= (time() - (24 * 60 * 60))) {
                     $pattern = "/\[\s*locked\s*=\s*(\d+)\s*\]/i";
-                    if (preg_match($pattern, $post->message)) // Check if [locked] tags exist in message
-                    {
-                        $rmPattern = "/\[\s*locked\s*=\s*\d+\]\s*(.*?)\s*\[\/locked\]/si";
 
-                        $customizedMessage = preg_replace($rmPattern, '$1', $post->message); // Remove [locked] tags
+                    if (preg_match($pattern, $post->message, $matches)) {
 
-                        $post->message = $customizedMessage;
-                    }
-                }
-            } else {
-                $regDate = time() - (24 * 60 * 60);
+                        $postCount = $matches[1];
 
-                if ($visitor['register_date'] <= $regDate) {
-
-                    $posts = $parent->getParam('posts');
-                    foreach ($posts as $post) {
-
-                        $pattern = "/\[\s*locked\s*=\s*(\d+)\s*\]/i";
-
-                        if (preg_match($pattern, $post->message, $matches)) {
-
-                            $postCount = $matches[1];
-
-                            if ($visitor['message_count'] >= $postCount) {
-
-                                $rmPattern = "/\[\s*locked\s*=\s*\d+\]\s*(.*?)\s*\[\/locked\]/si";
-
-                                $customizedMessage = preg_replace($rmPattern, '$1', $post->message); // Remove [locked] tags
-
-                                $post->message = $customizedMessage;
-                            }
+                        if ($visitor['message_count'] >= $postCount) {
+                            $this->filterPost($post);
                         }
                     }
                 }
             }
+
         }
 
         return $parent;
+    }
+
+    protected function filterPost($post)
+    {
+        $pattern = "/\[\s*locked\s*=\s*(\d+)\s*\]/i";
+        if (preg_match($pattern, $post->message)) // Check if [locked] tags exist in message
+        {
+            $rmPattern = "/\[\s*locked\s*=\s*\d+\]\s*(.*?)\s*\[\/locked\]/si";
+
+            $customizedMessage = preg_replace($rmPattern, '$1', $post->message); // Remove [locked] tags
+
+            $post->message = $customizedMessage;
+        }
     }
 }
