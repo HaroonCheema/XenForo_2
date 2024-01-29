@@ -268,6 +268,8 @@ return array (
   'option.fs_forum_groups_applicable_forum' => 'Parent Forum Id',
   'option.fs_forum_groups_approval' => 'Allow without admin Approvel',
   'option.fs_forums' => 'Select Forums',
+  'option.fs_hcwp_btnUrl' => 'widget Button Url',
+  'option.fs_hcwp_userGroups' => 'Hide Content from users',
   'option.fs_mts_customMsgColor' => 'Custom message Text Color',
   'option.fs_mts_customMsgbackGroundColor' => 'Custom message Background Color',
   'option.fs_qa_routeFilterId' => 'Route Filter ID',

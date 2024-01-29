@@ -11,6 +11,7 @@ return array (
   'custom_bb_code_title.gallery' => 'Gallery embed',
   'custom_bb_code_title.genre' => 'TMDb genre',
   'custom_bb_code_title.group' => 'Embed groups',
+  'custom_bb_code_title.locked' => 'Hide Content and show preview with image',
   'custom_bb_code_title.movie' => 'TMDb movie',
   'custom_bb_code_title.plot' => 'TMDb plot',
   'custom_bb_code_title.poster' => 'TMDb poster container',

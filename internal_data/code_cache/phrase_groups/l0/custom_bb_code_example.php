@@ -11,6 +11,7 @@ return array (
   'custom_bb_code_example.gallery' => '[GALLERY=media, X]Gallery BB Code[/GALLERY]',
   'custom_bb_code_example.genre' => '',
   'custom_bb_code_example.group' => '[GROUP]123[/GROUP]',
+  'custom_bb_code_example.locked' => '[locked=15] some content [/locked]',
   'custom_bb_code_example.movie' => '',
   'custom_bb_code_example.plot' => '',
   'custom_bb_code_example.poster' => '',

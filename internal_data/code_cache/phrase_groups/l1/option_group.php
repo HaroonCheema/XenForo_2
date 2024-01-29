@@ -29,6 +29,7 @@ return array (
   'option_group.fs_bitcoin_integ' => '[FS] Bitcoin Integration',
   'option_group.fs_bunny_integration' => '[FS] Bunny-Integration',
   'option_group.fs_forum_groups' => '[FS] Forum Groups',
+  'option_group.fs_hcwp' => '[FS] HideConten-With-Preview',
   'option_group.fs_hide_usernames' => '[FS] Hide Usernames',
   'option_group.fs_post_schdueling' => '[FS] Post schedule',
   'option_group.fs_question_answers' => '[FS] Question-Answers',

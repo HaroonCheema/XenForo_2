@@ -322,6 +322,8 @@ This option requires that the specified account is a catch-all account or suppor
   'option_explain.fs_forum_groups_applicable_forum' => 'Forum Id',
   'option_explain.fs_forum_groups_approval' => 'Allow withdrawal without admin apprvel.',
   'option_explain.fs_forums' => '',
+  'option_explain.fs_hcwp_btnUrl' => 'Provide the link for button of hidden content widget',
+  'option_explain.fs_hcwp_userGroups' => 'The content will be hidden for users belonging to these UserGroups',
   'option_explain.fs_mts_customMsgColor' => 'Enter the colour name or colour code for Custom message',
   'option_explain.fs_mts_customMsgbackGroundColor' => 'Enter the colour name or colour code for custom message Background',
   'option_explain.fs_qa_routeFilterId' => 'Enter the ID of RouteFilter which you yave create for QuestionsAnswers forum',

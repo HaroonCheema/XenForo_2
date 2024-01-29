@@ -11,6 +11,7 @@ return array (
   'custom_bb_code_desc.gallery' => 'BB code for displaying gallery media items and albums.',
   'custom_bb_code_desc.genre' => 'For formatting old XF1 TMDb movie threads',
   'custom_bb_code_desc.group' => 'Display specific group information.',
+  'custom_bb_code_desc.locked' => 'first image if exist else default image will be show on preview',
   'custom_bb_code_desc.movie' => 'For formatting old XF1 TMDb movie threads',
   'custom_bb_code_desc.plot' => 'For formatting old XF1 TMDb movie threads',
   'custom_bb_code_desc.poster' => 'For formatting old XF1 TMDb movie threads',
