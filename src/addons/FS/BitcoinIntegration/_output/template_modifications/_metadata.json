@@ -4,5 +4,8 @@
     },
     "public/fs_bitcoin_register_complete_add_account_upgrade.json": {
         "hash": "be97021161bc65534dd29763ba5d3956"
+    },
+    "public/fs_bitcoin_register_complete_email_veri_notice.json": {
+        "hash": "76a26c0242b9187459a2f44bb1ba3f83"
     }
 }
