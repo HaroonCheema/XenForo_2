@@ -89,6 +89,18 @@
         "version_string": "1.0.0 Alpha",
         "hash": "765aaf03daffcece8bfbf94e6476b505"
     },
+    "fs_bitcoin_mail_body.txt": {
+        "global_cache": false,
+        "version_id": 1010100,
+        "version_string": "1.1.1 Alpha",
+        "hash": "f36e2f11dd80bf315ef10da9e56080cb"
+    },
+    "fs_bitcoin_mail_subject.txt": {
+        "global_cache": false,
+        "version_id": 1010100,
+        "version_string": "1.1.1 Alpha",
+        "hash": "dfc8c5b703ddddac165fb273184e87f8"
+    },
     "fs_bitcoin_notice_email_verify_top.txt": {
         "global_cache": false,
         "version_id": 1010100,

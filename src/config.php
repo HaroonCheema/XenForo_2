@@ -15,4 +15,4 @@ $config['designer']['enabled'] = true;
 
 $config['fullUnicode'] = true;
 
-$config['development']['defaultAddOn'] = 'FS/DeleteEmail';
+$config['development']['defaultAddOn'] = 'FS/BitcoinIntegration';

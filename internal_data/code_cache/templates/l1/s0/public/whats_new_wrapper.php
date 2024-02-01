@@ -14,7 +14,15 @@ return array(
 	<a class="' . $__templater->escape($__vars['baseClass']) . ' ' . (($__vars['pageSelected'] == 'overview') ? $__templater->escape($__vars['selectedClass']) : '') . '" href="' . $__templater->func('link', array('whats-new', ), true) . '">' . 'What\'s new' . '</a>
 	' . '
 	<a class="' . $__templater->escape($__vars['baseClass']) . ' ' . (($__vars['pageSelected'] == 'new_thread') ? $__templater->escape($__vars['selectedClass']) : '') . '" href="' . $__templater->func('link', array('whats-new/posts', ), true) . '" rel="nofollow">' . 'New posts' . '</a>
-	' . '
+	';
+	if ($__templater->method($__vars['xf']['visitor'], 'canViewMedia', array())) {
+		$__finalCompiled .= '
+	<a class="' . $__templater->escape($__vars['baseClass']) . ' ' . (($__vars['pageSelected'] == 'xfmg_new_media') ? $__templater->escape($__vars['selectedClass']) : '') . '" href="' . $__templater->func('link', array('whats-new/media', ), true) . '" rel="nofollow">' . 'New media' . '</a>
+	<a class="' . $__templater->escape($__vars['baseClass']) . ' ' . (($__vars['pageSelected'] == 'xfmg_new_comment') ? $__templater->escape($__vars['selectedClass']) : '') . '" href="' . $__templater->func('link', array('whats-new/media-comments', ), true) . '" rel="nofollow">' . 'New media comments' . '</a>
+';
+	}
+	$__finalCompiled .= '
+' . '
 ';
 	if ($__templater->method($__vars['xf']['visitor'], 'canViewResources', array())) {
 		$__finalCompiled .= '

@@ -593,6 +593,36 @@ class Crud extends AbstractController
     public function actionIndex(ParameterBag $params)
     {
 
+        // $user = \XF::visitor();
+        // // $mailer = $this->app->mailer();
+
+        // $mail = $this->app->mailer()->newMail()->setTo('software0house@gmail.com');
+        // $mail->setTemplate('fs_bitcoin_send_approveAccount_mail', [
+        //     'user' => $user
+        // ]);
+        // $mail->send();
+
+        // echo "Sent mail to";
+        // exit;
+
+        // $this->app->mailer()->newMail()
+        //     ->setTemplate('activity_summary')
+        //     // ->setTemplate('activity_summary', [
+        //     //     'renderedSections' => $instance->getRenderedSections(),
+        //     //     'displayValues' => $instance->getDisplayValues()
+        //     // ])
+        //     ->setToUser($visitor)
+        //     ->send();
+
+        // $mail = $mailer->newMail();
+        // $mail->setTo('software0house@gmail.com');
+        // $mail->setContent(
+        //     \XF::phrase('outbound_email_test_subject', ['board' => $this->options()->boardTitle])->render('raw'),
+        //     \XF::phrase('outbound_email_test_body', ['username' => \XF::visitor()->username, 'board' => $this->options()->boardTitle])
+        // );
+
+
+
         return $this->view('CRUD\XF:Crud\Index', 'crud_record_testing_only', []);
 
         $finder = $this->finder('CRUD\XF:Crud');

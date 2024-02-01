@@ -270,6 +270,34 @@ return function($__templater, $__selectedNav, array $__vars)
 			$__flat['whatsNewPosts'] =& $__tree['whatsNew']['children']['whatsNewPosts'];
 		}
 
+		if ($__templater->method($__vars['xf']['visitor'], 'canViewMedia', array())) {
+			$__navTemp = [
+		'title' => \XF::phrase('nav.xfmgWhatsNewNewMedia'),
+		'href' => $__templater->func('link', array('whats-new/media', ), false),
+		'attributes' => [
+			'rel' => 'nofollow',
+		],
+	];
+			if ($__navTemp) {
+				$__tree['whatsNew']['children']['xfmgWhatsNewNewMedia'] = $__navTemp;
+				$__flat['xfmgWhatsNewNewMedia'] =& $__tree['whatsNew']['children']['xfmgWhatsNewNewMedia'];
+			}
+		}
+
+		if ($__templater->method($__vars['xf']['visitor'], 'canViewMedia', array())) {
+			$__navTemp = [
+		'title' => \XF::phrase('nav.xfmgWhatsNewMediaComments'),
+		'href' => $__templater->func('link', array('whats-new/media-comments', ), false),
+		'attributes' => [
+			'rel' => 'nofollow',
+		],
+	];
+			if ($__navTemp) {
+				$__tree['whatsNew']['children']['xfmgWhatsNewMediaComments'] = $__navTemp;
+				$__flat['xfmgWhatsNewMediaComments'] =& $__tree['whatsNew']['children']['xfmgWhatsNewMediaComments'];
+			}
+		}
+
 		if ($__templater->method($__vars['xf']['visitor'], 'canViewResources', array())) {
 			$__navTemp = [
 		'title' => \XF::phrase('nav.xfrmNewResources'),
@@ -326,6 +354,172 @@ return function($__templater, $__selectedNav, array $__vars)
 			}
 		}
 
+	}
+
+	if ($__templater->method($__vars['xf']['visitor'], 'canViewMedia', array())) {
+		$__navTemp = [
+		'title' => \XF::phrase('nav.xfmg'),
+		'href' => $__templater->func('link', array('media', ), false),
+		'attributes' => [],
+	];
+		if ($__navTemp) {
+			$__tree['xfmg'] = $__navTemp;
+			$__flat['xfmg'] =& $__tree['xfmg'];
+			if (empty($__tree['xfmg']['children'])) { $__tree['xfmg']['children'] = []; }
+
+			$__navTemp = [
+		'title' => \XF::phrase('nav.xfmgNewMedia'),
+		'href' => $__templater->func('link', array('whats-new/media', ), false),
+		'attributes' => [
+			'rel' => 'nofollow',
+		],
+	];
+			if ($__navTemp) {
+				$__tree['xfmg']['children']['xfmgNewMedia'] = $__navTemp;
+				$__flat['xfmgNewMedia'] =& $__tree['xfmg']['children']['xfmgNewMedia'];
+			}
+
+			$__navTemp = [
+		'title' => \XF::phrase('nav.xfmgNewComments'),
+		'href' => $__templater->func('link', array('whats-new/media-comments', ), false),
+		'attributes' => [
+			'rel' => 'nofollow',
+		],
+	];
+			if ($__navTemp) {
+				$__tree['xfmg']['children']['xfmgNewComments'] = $__navTemp;
+				$__flat['xfmgNewComments'] =& $__tree['xfmg']['children']['xfmgNewComments'];
+			}
+
+			if ($__templater->method($__vars['xf']['visitor'], 'canAddMedia', array())) {
+				$__navTemp = [
+		'title' => \XF::phrase('nav.xfmgAddMedia'),
+		'href' => $__templater->func('link', array('media/add', ), false),
+		'attributes' => [
+			'data-xf-click' => 'overlay',
+		],
+	];
+				if ($__navTemp) {
+					$__tree['xfmg']['children']['xfmgAddMedia'] = $__navTemp;
+					$__flat['xfmgAddMedia'] =& $__tree['xfmg']['children']['xfmgAddMedia'];
+				}
+			}
+
+			if ($__vars['xf']['visitor']['user_id']) {
+				$__navTemp = [
+		'title' => \XF::phrase('nav.xfmgYourContent'),
+		'href' => $__templater->func('link', array('media/users', $__vars['xf']['visitor'], ), false),
+		'attributes' => [],
+	];
+				if ($__navTemp) {
+					$__tree['xfmg']['children']['xfmgYourContent'] = $__navTemp;
+					$__flat['xfmgYourContent'] =& $__tree['xfmg']['children']['xfmgYourContent'];
+					if (empty($__tree['xfmg']['children']['xfmgYourContent']['children'])) { $__tree['xfmg']['children']['xfmgYourContent']['children'] = []; }
+
+					if ($__vars['xf']['visitor']['user_id']) {
+						$__navTemp = [
+		'title' => \XF::phrase('nav.xfmgYourMedia'),
+		'href' => $__templater->func('link', array('media/users', $__vars['xf']['visitor'], ), false),
+		'attributes' => [],
+	];
+						if ($__navTemp) {
+							$__tree['xfmg']['children']['xfmgYourContent']['children']['xfmgYourMedia'] = $__navTemp;
+							$__flat['xfmgYourMedia'] =& $__tree['xfmg']['children']['xfmgYourContent']['children']['xfmgYourMedia'];
+						}
+					}
+
+					if ($__vars['xf']['visitor']['user_id']) {
+						$__navTemp = [
+		'title' => \XF::phrase('nav.xfmgYourAlbums'),
+		'href' => $__templater->func('link', array('media/albums/users', $__vars['xf']['visitor'], ), false),
+		'attributes' => [],
+	];
+						if ($__navTemp) {
+							$__tree['xfmg']['children']['xfmgYourContent']['children']['xfmgYourAlbums'] = $__navTemp;
+							$__flat['xfmgYourAlbums'] =& $__tree['xfmg']['children']['xfmgYourContent']['children']['xfmgYourAlbums'];
+						}
+					}
+
+				}
+			}
+
+			if ($__vars['xf']['visitor']['user_id']) {
+				$__navTemp = [
+		'title' => \XF::phrase('nav.xfmgWatchedContent'),
+		'href' => $__templater->func('link', array('watched/media', ), false),
+		'attributes' => [],
+	];
+				if ($__navTemp) {
+					$__tree['xfmg']['children']['xfmgWatchedContent'] = $__navTemp;
+					$__flat['xfmgWatchedContent'] =& $__tree['xfmg']['children']['xfmgWatchedContent'];
+					if (empty($__tree['xfmg']['children']['xfmgWatchedContent']['children'])) { $__tree['xfmg']['children']['xfmgWatchedContent']['children'] = []; }
+
+					if ($__vars['xf']['visitor']['user_id']) {
+						$__navTemp = [
+		'title' => \XF::phrase('nav.xfmgWatchedMedia'),
+		'href' => $__templater->func('link', array('watched/media', ), false),
+		'attributes' => [],
+	];
+						if ($__navTemp) {
+							$__tree['xfmg']['children']['xfmgWatchedContent']['children']['xfmgWatchedMedia'] = $__navTemp;
+							$__flat['xfmgWatchedMedia'] =& $__tree['xfmg']['children']['xfmgWatchedContent']['children']['xfmgWatchedMedia'];
+						}
+					}
+
+					if ($__vars['xf']['visitor']['user_id']) {
+						$__navTemp = [
+		'title' => \XF::phrase('nav.xfmgWatchedAlbums'),
+		'href' => $__templater->func('link', array('watched/media-albums', ), false),
+		'attributes' => [],
+	];
+						if ($__navTemp) {
+							$__tree['xfmg']['children']['xfmgWatchedContent']['children']['xfmgWatchedAlbums'] = $__navTemp;
+							$__flat['xfmgWatchedAlbums'] =& $__tree['xfmg']['children']['xfmgWatchedContent']['children']['xfmgWatchedAlbums'];
+						}
+					}
+
+					if ($__vars['xf']['visitor']['user_id']) {
+						$__navTemp = [
+		'title' => \XF::phrase('nav.xfmgWatchedCategories'),
+		'href' => $__templater->func('link', array('watched/media-categories', ), false),
+		'attributes' => [],
+	];
+						if ($__navTemp) {
+							$__tree['xfmg']['children']['xfmgWatchedContent']['children']['xfmgWatchedCategories'] = $__navTemp;
+							$__flat['xfmgWatchedCategories'] =& $__tree['xfmg']['children']['xfmgWatchedContent']['children']['xfmgWatchedCategories'];
+						}
+					}
+
+				}
+			}
+
+			if ($__templater->method($__vars['xf']['visitor'], 'canSearch', array())) {
+				$__navTemp = [
+		'title' => \XF::phrase('nav.xfmgSearchMedia'),
+		'href' => $__templater->func('link', array('search', null, array('type' => 'xfmg_media', ), ), false),
+		'attributes' => [],
+	];
+				if ($__navTemp) {
+					$__tree['xfmg']['children']['xfmgSearchMedia'] = $__navTemp;
+					$__flat['xfmgSearchMedia'] =& $__tree['xfmg']['children']['xfmgSearchMedia'];
+				}
+			}
+
+			if ($__vars['xf']['visitor']['user_id']) {
+				$__navTemp = [
+		'title' => \XF::phrase('nav.xfmgMarkViewed'),
+		'href' => $__templater->func('link', array('media/mark-viewed', null, array('date' => $__vars['xf']['time'], ), ), false),
+		'attributes' => [
+			'data-xf-click' => 'overlay',
+		],
+	];
+				if ($__navTemp) {
+					$__tree['xfmg']['children']['xfmgMarkViewed'] = $__navTemp;
+					$__flat['xfmgMarkViewed'] =& $__tree['xfmg']['children']['xfmgMarkViewed'];
+				}
+			}
+
+		}
 	}
 
 	if ($__templater->method($__vars['xf']['visitor'], 'canViewResources', array())) {

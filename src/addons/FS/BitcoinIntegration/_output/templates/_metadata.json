@@ -1,4 +1,9 @@
 {
+    "email/fs_bitcoin_send_approveAccount_mail.html": {
+        "version_id": 1010100,
+        "version_string": "1.1.1 Alpha",
+        "hash": "b075b2f2819b59885656ddbce520349c"
+    },
     "public/alert_fs_bitcoin_send_alert.html": {
         "version_id": 1010100,
         "version_string": "1.1.1 Alpha",

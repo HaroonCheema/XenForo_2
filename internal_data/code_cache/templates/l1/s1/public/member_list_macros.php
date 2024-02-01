@@ -51,6 +51,32 @@ return array(
 ';
 	}
 	$__finalCompiled .= '
+';
+	if ($__templater->method($__vars['xf']['visitor'], 'canViewMedia', array())) {
+		$__finalCompiled .= '
+	';
+		if ($__vars['user']['xfmg_media_count']) {
+			$__finalCompiled .= '
+		<li><dl class="pairs pairs--inline">
+			<dt>' . 'Media' . '</dt>
+			<dd>' . $__templater->filter($__vars['user']['xfmg_media_count'], array(array('number', array()),), true) . '</dd>
+		</dl></li>
+	';
+		}
+		$__finalCompiled .= '
+	';
+		if ($__vars['user']['xfmg_album_count']) {
+			$__finalCompiled .= '
+		<li><dl class="pairs pairs--inline">
+			<dt>' . 'Albums' . '</dt>
+			<dd>' . $__templater->filter($__vars['user']['xfmg_album_count'], array(array('number', array()),), true) . '</dd>
+		</dl></li>
+	';
+		}
+		$__finalCompiled .= '
+';
+	}
+	$__finalCompiled .= '
 					';
 	if ($__vars['user']['question_solution_count']) {
 		$__finalCompiled .= '

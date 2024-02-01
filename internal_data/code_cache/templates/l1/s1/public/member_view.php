@@ -307,6 +307,28 @@ return array(
 				' . '
 
 ';
+	if ($__templater->method($__vars['xf']['visitor'], 'canViewMedia', array()) AND $__vars['user']['xfmg_media_count']) {
+		$__finalCompiled .= '
+	<a href="' . $__templater->func('link', array('media/users', $__vars['user'], ), true) . '"
+	   class="tabs-tab"
+	   id="xfmgMedia"
+	   role="tab">' . 'Media' . '</a>
+';
+	}
+	$__finalCompiled .= '
+
+';
+	if ($__templater->method($__vars['xf']['visitor'], 'canViewMedia', array()) AND $__vars['user']['xfmg_album_count']) {
+		$__finalCompiled .= '
+	<a href="' . $__templater->func('link', array('media/albums/users', $__vars['user'], ), true) . '"
+	   class="tabs-tab"
+	   id="xfmgAlbums"
+	   role="tab">' . 'Albums' . '</a>
+';
+	}
+	$__finalCompiled .= '
+
+';
 	if ($__templater->method($__vars['xf']['visitor'], 'canViewResources', array()) AND $__vars['user']['xfrm_resource_count']) {
 		$__finalCompiled .= '
 	<a href="' . $__templater->func('link', array('resources/authors', $__vars['user'], ), true) . '"
@@ -449,6 +471,26 @@ return array(
 	</li>
 
 	' . '
+
+';
+	if ($__templater->method($__vars['xf']['visitor'], 'canViewMedia', array()) AND $__vars['user']['xfmg_media_count']) {
+		$__finalCompiled .= '
+	<li data-href="' . $__templater->func('link', array('media/users', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="xfmgMedia">
+		<div class="blockMessage">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
+	</li>
+';
+	}
+	$__finalCompiled .= '
+
+';
+	if ($__templater->method($__vars['xf']['visitor'], 'canViewMedia', array()) AND $__vars['user']['xfmg_album_count']) {
+		$__finalCompiled .= '
+	<li data-href="' . $__templater->func('link', array('media/albums/users', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="xfmgAlbums">
+		<div class="blockMessage">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
+	</li>
+';
+	}
+	$__finalCompiled .= '
 
 ';
 	if ($__templater->method($__vars['xf']['visitor'], 'canViewResources', array()) AND $__vars['user']['xfrm_resource_count']) {
