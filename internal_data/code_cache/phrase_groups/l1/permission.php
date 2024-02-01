@@ -130,6 +130,8 @@ return array (
   'permission.fs_auction_permissions_add' => 'Add auction listing',
   'permission.fs_bunny_allow' => 'Can Upload Video',
   'permission.fs_forum_group_permission_add' => 'Add Forum Group',
+  'permission.fs_limitations_fs_conversationLimit' => 'Conversation Limit',
+  'permission.fs_limitations_fs_dailyDiscussiontLimit' => 'Daily Discussion Limit',
   'permission.fs_thread_thumbnail_group_fs_thread_thumbnail' => 'Allow Thread Thumbnail',
   'permission.fs_threadsaleitem_fs_saleitem' => 'Allow to enable Sale Item?',
   'permission.fs_user_names_can_see_usernames' => 'Can see Usernames',

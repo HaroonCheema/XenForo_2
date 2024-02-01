@@ -19,6 +19,70 @@ use XF\Pub\Controller\AbstractController;
 class Crud extends AbstractController
 {
 
+    public function actionAbout(ParameterBag $params)
+	{
+		$user = $this->assertViewableUser($params->user_id);
+
+		/** @var \XF\Repository\UserFollow $userFollowRepo */
+		$userFollowRepo = $this->repository('XF:UserFollow');
+
+		$following = [];
+		$followingCount = 0;
+		if ($user->Profile->following)
+		{
+			$userFollowingFinder = $userFollowRepo->findFollowingForProfile($user);
+			$userFollowingFinder->order($userFollowingFinder->expression('RAND()'));
+
+			$following = $userFollowingFinder->fetch(12)->pluckNamed('FollowUser');
+			$followingCount = $userFollowingFinder->total();
+		}
+
+		$userFollowersFinder = $userFollowRepo->findFollowersForProfile($user);
+		$userFollowersFinder->order($userFollowersFinder->expression('RAND()'));
+
+		$followers = $userFollowersFinder->fetch(12)->pluckNamed('User');
+		$followersCount = $userFollowersFinder->total();
+
+		if ($this->options()->enableTrophies)
+		{
+			/** @var \XF\Repository\Trophy $trophyRepo */
+			$trophyRepo = $this->repository('XF:Trophy');
+			$trophies = $trophyRepo->findUserTrophies($user->user_id)
+				->with('Trophy')
+				->fetch();
+		}
+		else
+		{
+			$trophies = null;
+		}
+		
+		/** @var \XF\Entity\User $user */
+		$user = $this->assertRecordExists('XF:User', $params->user_id);
+
+		/** @var \XFMG\ControllerPlugin\MediaList $mediaListPlugin */
+		$mediaListPlugin = $this->plugin('XFMG:MediaList');
+
+		$categoryParams = $mediaListPlugin->getCategoryListData();
+		$viewableCategoryIds = $categoryParams['viewableCategories']->keys();
+
+		$listParams = $mediaListPlugin->getMediaListData($viewableCategoryIds, $params->page, $user);
+
+		$this->assertValidPage($listParams['page'], $listParams['perPage'], $listParams['totalItems'], 'media/users', $user);
+		$this->assertCanonicalUrl($this->buildLink('media/users', $user, ['page' => $listParams['page']]));
+
+		$viewParams = [
+			'user' => $user,
+
+			'following' => $following,
+			'followingCount' => $followingCount,
+			'followers' => $followers,
+			'followersCount' => $followersCount,
+
+			'trophies' => $trophies
+		] + $categoryParams + $listParams;
+		return $this->view('XF:Member\About', 'member_about', $viewParams);
+	}
+
     // public function generateThumbnail()
     // {
     //     try {
@@ -592,6 +656,46 @@ class Crud extends AbstractController
 
     public function actionIndex(ParameterBag $params)
     {
+
+        $visitor = \XF::visitor();
+
+        // $conditions = [
+        //     ['user_group_id', $value->current_userGroup],
+        //     ['secondary_group_ids', 'LIKE', '%' . $value->current_userGroup . '%'],
+        // ];
+
+        // $secondary_group_ids = implode(",", $visitor['secondary_group_ids']);
+        $secondary_group_ids = $visitor['secondary_group_ids'];
+        $secondary_group_ids[] = $visitor['user_group_id'];
+
+        $finder = $this->finder('FS\Limitations:Limitations')->where('user_group_id', $secondary_group_ids)->order('daily_repost', 'DESC')->fetchOne();
+
+        if ($visitor['daily_repost'] >= $finder['daily_repost']) {
+            throw $this->exception($this->notFound(\XF::phrase('fs_limitations_repost_not_permission', $upgradeUrl)));
+        }
+
+        var_dump($visitor['daily_repost']);
+        var_dump($finder['daily_repost']);
+
+        // if ($finder) {
+        //     $nodeIds = explode(",", $finder['node_ids']);
+
+        //     if (!in_array($post->Thread->Forum->node_id, $nodeIds)) {
+        //         echo "hello world";
+        //         exit;
+        //     }
+        // }
+
+
+
+        // $users_names = explode(",", $user_name);
+
+        echo "<pre>";
+        // var_dump($nodeIds);
+        var_dump($visitor['daily_repost']);
+        var_dump($finder['daily_repost']);
+        exit;
+
 
         // $user = \XF::visitor();
         // // $mailer = $this->app->mailer();

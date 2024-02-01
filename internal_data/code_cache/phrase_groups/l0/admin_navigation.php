@@ -111,6 +111,8 @@ return array (
   'admin_navigation.fsEscrowList' => 'Escrows',
   'admin_navigation.fsEscrowListNav' => 'Escrows',
   'admin_navigation.fsForumAutoReply' => 'Forum Auto Reply',
+  'admin_navigation.fsLimitations' => 'Insert',
+  'admin_navigation.fsLimitationsMain' => '[FS] Limitations',
   'admin_navigation.fsLoginSecurityQuestion' => 'Security Question',
   'admin_navigation.fsNodeUrl' => 'Node Url',
   'admin_navigation.fsScheduledPosting' => 'Scheduled Posting',
