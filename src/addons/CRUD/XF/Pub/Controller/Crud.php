@@ -20,68 +20,64 @@ class Crud extends AbstractController
 {
 
     public function actionAbout(ParameterBag $params)
-	{
-		$user = $this->assertViewableUser($params->user_id);
+    {
+        $user = $this->assertViewableUser($params->user_id);
 
-		/** @var \XF\Repository\UserFollow $userFollowRepo */
-		$userFollowRepo = $this->repository('XF:UserFollow');
+        /** @var \XF\Repository\UserFollow $userFollowRepo */
+        $userFollowRepo = $this->repository('XF:UserFollow');
 
-		$following = [];
-		$followingCount = 0;
-		if ($user->Profile->following)
-		{
-			$userFollowingFinder = $userFollowRepo->findFollowingForProfile($user);
-			$userFollowingFinder->order($userFollowingFinder->expression('RAND()'));
+        $following = [];
+        $followingCount = 0;
+        if ($user->Profile->following) {
+            $userFollowingFinder = $userFollowRepo->findFollowingForProfile($user);
+            $userFollowingFinder->order($userFollowingFinder->expression('RAND()'));
 
-			$following = $userFollowingFinder->fetch(12)->pluckNamed('FollowUser');
-			$followingCount = $userFollowingFinder->total();
-		}
+            $following = $userFollowingFinder->fetch(12)->pluckNamed('FollowUser');
+            $followingCount = $userFollowingFinder->total();
+        }
 
-		$userFollowersFinder = $userFollowRepo->findFollowersForProfile($user);
-		$userFollowersFinder->order($userFollowersFinder->expression('RAND()'));
+        $userFollowersFinder = $userFollowRepo->findFollowersForProfile($user);
+        $userFollowersFinder->order($userFollowersFinder->expression('RAND()'));
 
-		$followers = $userFollowersFinder->fetch(12)->pluckNamed('User');
-		$followersCount = $userFollowersFinder->total();
+        $followers = $userFollowersFinder->fetch(12)->pluckNamed('User');
+        $followersCount = $userFollowersFinder->total();
 
-		if ($this->options()->enableTrophies)
-		{
-			/** @var \XF\Repository\Trophy $trophyRepo */
-			$trophyRepo = $this->repository('XF:Trophy');
-			$trophies = $trophyRepo->findUserTrophies($user->user_id)
-				->with('Trophy')
-				->fetch();
-		}
-		else
-		{
-			$trophies = null;
-		}
-		
-		/** @var \XF\Entity\User $user */
-		$user = $this->assertRecordExists('XF:User', $params->user_id);
+        if ($this->options()->enableTrophies) {
+            /** @var \XF\Repository\Trophy $trophyRepo */
+            $trophyRepo = $this->repository('XF:Trophy');
+            $trophies = $trophyRepo->findUserTrophies($user->user_id)
+                ->with('Trophy')
+                ->fetch();
+        } else {
+            $trophies = null;
+        }
 
-		/** @var \XFMG\ControllerPlugin\MediaList $mediaListPlugin */
-		$mediaListPlugin = $this->plugin('XFMG:MediaList');
+        /** @var \XF\Entity\User $user */
+        $user = $this->assertRecordExists('XF:User', $params->user_id);
 
-		$categoryParams = $mediaListPlugin->getCategoryListData();
-		$viewableCategoryIds = $categoryParams['viewableCategories']->keys();
+        /** @var \XFMG\ControllerPlugin\MediaList $mediaListPlugin */
+        $mediaListPlugin = $this->plugin('XFMG:MediaList');
 
-		$listParams = $mediaListPlugin->getMediaListData($viewableCategoryIds, $params->page, $user);
+        $categoryParams = $mediaListPlugin->getCategoryListData();
+        $viewableCategoryIds = $categoryParams['viewableCategories']->keys();
 
-		$this->assertValidPage($listParams['page'], $listParams['perPage'], $listParams['totalItems'], 'media/users', $user);
-		$this->assertCanonicalUrl($this->buildLink('media/users', $user, ['page' => $listParams['page']]));
+        $listParams = $mediaListPlugin->getMediaListData($viewableCategoryIds, $params->page, $user);
 
-		$viewParams = [
-			'user' => $user,
+        $this->assertValidPage($listParams['page'], $listParams['perPage'], $listParams['totalItems'], 'media/users', $user);
+        $this->assertCanonicalUrl($this->buildLink('media/users', $user, ['page' => $listParams['page']]));
 
-			'following' => $following,
-			'followingCount' => $followingCount,
-			'followers' => $followers,
-			'followersCount' => $followersCount,
+        $viewParams = [
+            'user' => $user,
 
-			'trophies' => $trophies
-		] + $categoryParams + $listParams;
-		return $this->view('XF:Member\About', 'member_about', $viewParams);
-	}
+            'following' => $following,
+            'followingCount' => $followingCount,
+            'followers' => $followers,
+            'followersCount' => $followersCount,
+
+            'trophies' => $trophies
+        ] + $categoryParams + $listParams;
+        return $this->view('XF:Member\About', 'member_about', $viewParams);
+    }
 
     // public function generateThumbnail()
     // {
@@ -654,8 +650,63 @@ class Crud extends AbstractController
     //     return $this->view('CRUD\XF:Crud\Index', 'crud_record_all', $viewParams);
     // }
 
+    public function actionRepost(ParameterBag $params)
+    {
+        $post = $this->assertViewablePost($params->post_id, ['Thread.Prefix']);
+        if (!$post->canEdit($error)) {
+            return $this->noPermission($error);
+        }
+
+        $visitor = \XF::visitor();
+
+        $secondary_group_ids = $visitor['secondary_group_ids'];
+        $secondary_group_ids[] = $visitor['user_group_id'];
+
+        $finder = $this->finder('FS\Limitations:Limitations')->where('user_group_id', $secondary_group_ids)->order('daily_ads', 'DESC')->fetchOne();
+
+        $upgradeUrl = [
+            'upgradeUrl' => $this->buildLink('account-upgrade/')
+        ];
+
+        if (!$finder) {
+            throw $this->exception($this->notFound(\XF::phrase('fs_limitations_repost_not_permission', $upgradeUrl)));
+        }
+
+        $nodeIds = explode(",", $finder['node_ids']);
+
+        if (!in_array($post->Thread->Forum->node_id, $nodeIds)) {
+            throw $this->exception($this->notFound(\XF::phrase('fs_limitations_repost_not_permission', $upgradeUrl)));
+        }
+
+        if ($visitor['daily_ads'] >= $finder['daily_ads']) {
+            throw $this->exception($this->notFound(\XF::phrase('fs_limitations_repost_limit_reached', $upgradeUrl)));
+        }
+
+        $thread = $post->Thread;
+
+        if ($this->isPost()) {
+        }
+
+
+        if ($this->filter('_xfWithData', 'bool') && $this->filter('_xfInlineEdit', 'bool')) {
+
+
+            $this->bumpThreadRepo()->bump($thread);
+            $this->bumpThreadRepo()->log($thread->thread_id, $visitor->user_id);
+
+            $increment = $visitor->daily_ads + 1;
+
+            $visitor->fastUpdate('daily_ads', $increment);
+        }
+    }
+
+
     public function actionIndex(ParameterBag $params)
     {
+
+        echo "<pre>";
+        var_dump((time() + 3600));
+        exit;
 
         $visitor = \XF::visitor();
 

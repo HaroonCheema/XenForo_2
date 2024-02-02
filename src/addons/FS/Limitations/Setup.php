@@ -33,10 +33,11 @@ class Setup extends AbstractSetup
         });
 
         $sm->alterTable('xf_user', function (Alter $table) {
-            // $table->addColumn('daily_discussion_count', 'smallint', 5)->setDefault(0);
-            // $table->addColumn('conversation_message_count', 'int')->setDefault(0);
+            $table->addColumn('daily_discussion_count', 'smallint', 5)->setDefault(0);
+            $table->addColumn('conversation_message_count', 'int')->setDefault(0);
             $table->addColumn('daily_ads', 'int')->setDefault(0);
             $table->addColumn('daily_repost', 'int')->setDefault(0);
+            $table->addColumn('last_repost', 'int')->setDefault(0);
             // $table->addColumn('media_storage_size', 'bigint')->setDefault(0)->comment('size in bytes');
         });
     }
@@ -53,6 +54,7 @@ class Setup extends AbstractSetup
                 'conversation_message_count',
                 'daily_ads',
                 'daily_repost',
+                'last_repost',
                 // 'media_storage_size'
             ];
 
