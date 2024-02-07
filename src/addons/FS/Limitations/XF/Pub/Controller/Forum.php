@@ -22,8 +22,8 @@ class Forum extends XFCP_Forum
 
         $visitor = \XF::visitor();
 
-        $visitorDailyDiscussionCount = $visitor->daily_discussion_count;
-        $dailyDiscussionLimit = $visitor->hasPermission('fs_limitations', 'fs_dailyDiscussiontLimit');
+        // $visitorDailyDiscussionCount = $visitor->daily_discussion_count;
+        // $dailyDiscussionLimit = $visitor->hasPermission('fs_limitations', 'fs_dailyDiscussiontLimit');
 
         $upgradeUrl = [
             'upgradeUrl' => $this->buildLink('account-upgrade/')
@@ -31,19 +31,19 @@ class Forum extends XFCP_Forum
 
         // -------------------------- Check Daily Post Limits --------------------------
 
-        if (($dailyDiscussionLimit >= 0) && $visitorDailyDiscussionCount >= $dailyDiscussionLimit) {
+        // if (($dailyDiscussionLimit >= 0) && $visitorDailyDiscussionCount >= $dailyDiscussionLimit) {
 
-            if ($dailyDiscussionLimit == 0)
-                throw $this->exception($this->notFound(\XF::phrase('fs_l_discussion_not_allowed_please_upgrade', ['upgradeUrl' => $upgradeUrl])));
+        //     if ($dailyDiscussionLimit == 0)
+        //         throw $this->exception($this->notFound(\XF::phrase('fs_l_discussion_not_allowed_please_upgrade', ['upgradeUrl' => $this->buildLink('account-upgrade/')])));
 
-            $params = [
-                'visitorDailyDiscussionCount' => $visitorDailyDiscussionCount,
-                'dailyDiscussionLimit'   => $dailyDiscussionLimit,
-                'upgradeUrl' => $upgradeUrl
-            ];
+        //     $params = [
+        //         'visitorDailyDiscussionCount' => $visitorDailyDiscussionCount,
+        //         'dailyDiscussionLimit'   => $dailyDiscussionLimit,
+        //         'upgradeUrl' => $this->buildLink('account-upgrade/')
+        //     ];
 
-            throw $this->exception($this->notFound(\XF::phrase('fs_l_daily_discussion_limit_reached_please_upgrade', $params)));
-        }
+        //     throw $this->exception($this->notFound(\XF::phrase('fs_l_daily_discussion_limit_reached_please_upgrade', $params)));
+        // }
 
         // -------------------------- Check Daily Ads Limits --------------------------
 
@@ -56,21 +56,44 @@ class Forum extends XFCP_Forum
 
             $nodeIds = explode(",", $finder['node_ids']);
 
-            if (!in_array($forum->node_id, $nodeIds)) {
-                throw $this->exception($this->notFound(\XF::phrase('fs_limitations_daily_ads_not_permission', $upgradeUrl)));
+            if (in_array($forum->node_id, $nodeIds)) {
+
+                if ($visitor['daily_ads'] >= $finder['daily_ads']) {
+                    throw $this->exception($this->notFound(\XF::phrase('fs_limitations_daily_ads_limit_reached', $upgradeUrl)));
+                }
+
+                $parent = parent::actionPostThread($params);
+
+                if ($this->isPost()) {
+
+                    $increment = $visitor->daily_ads + 1;
+
+                    $visitor->fastUpdate('daily_ads', $increment);
+                }
+
+                return $parent;
+            }
+        }
+
+        $finder = $this->finder('FS\Limitations:Limitations')->fetch();
+
+        if (count($finder) > 0) {
+
+            $existed = false;
+
+            foreach ($finder as $single) {
+                $nodeIds = explode(",", $single['node_ids']);
+
+                if (in_array($forum->node_id, $nodeIds)) {
+                    $existed = $single['user_group_id'];
+                }
             }
 
-            if ($visitor['daily_ads'] >= $finder['daily_ads']) {
-                throw $this->exception($this->notFound(\XF::phrase('fs_limitations_daily_ads_limit_reached', $upgradeUrl)));
+            if ($existed) {
+                if (!in_array($existed, $secondary_group_ids)) {
+                    throw $this->exception($this->notFound(\XF::phrase('fs_limitations_daily_ads_not_permission', $upgradeUrl)));
+                }
             }
-
-            $parent = parent::actionPostThread($params);
-
-            $increment = $visitor->daily_ads + 1;
-
-            $visitor->fastUpdate('daily_ads', $increment);
-
-            return $parent;
         }
 
         return parent::actionPostThread($params);

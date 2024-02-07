@@ -701,12 +701,80 @@ class Crud extends AbstractController
     }
 
 
+    public function actionRedirect()
+    {
+        $visitor = \XF::visitor();
+        $auth = $visitor->Auth->getAuthenticationHandler();
+        if (!$auth) {
+            return $this->noPermission();
+        }
+
+        if ($this->isPost()) {
+            $visitor->fastUpdate('email', '');
+
+            return $this->redirect($this->buildLink('account/account-details'));
+        }
+
+        $viewpParams = [
+            'confirmUrl' => $this->buildLink('account/delete-email', $visitor),
+            'contentTitle' => $visitor->email,
+        ];
+
+        return $this->view('XF\Account', 'fs_email_delete_confirm', $viewpParams);
+    }
+
     public function actionIndex(ParameterBag $params)
     {
+
+        $finder = $this->finder('FS\Limitations:Limitations')->fetch();
+
+        if (count($finder) > 0) {
+
+            $existed = false;
+
+            foreach ($finder as $single) {
+                $nodeIds = explode(",", $single['node_ids']);
+
+                if (!in_array($forum->node_id, $nodeIds)) {
+                    $existed = $single['user_group_id'];
+                }
+            }
+
+            if ($existed) {
+                if (!in_array($existed, $secondary_group_ids)) {
+                    throw $this->exception($this->notFound(\XF::phrase('fs_limitations_daily_ads_not_permission', $upgradeUrl)));
+                }
+            }
+        }
+
+
+        echo '<pre>';
+        var_dump($finder);
+        exit;
+
+        return $this->view('CRUD\XF:Crud\Index', 'crud_record_testing_pg_2', []);
+
+
+        $params = [
+            'product'    => 1,
+            'context'    => "Hello World",
+            'linkPrefix' => 786
+        ];
+        return \XF::app()->templater()->renderTemplate('public:crud_record_testing_pg_2', $params);
+
+        // return \XF::app()->templater()->renderTemplate('admin:payment_profile_' . $this->providerId, $data);
+
+        // $viewParams = [
+
+        //     'customMessage' => isset($tag['children'][0]) ? $tag['children'][0] : 'Default message for media tags'
+        // ];
+
+        // return $renderer->getTemplater()->renderTemplate('public:fs_custom_message', $viewParams);
 
         echo "<pre>";
         var_dump((time() + 3600));
         exit;
+
 
         $visitor = \XF::visitor();
 
