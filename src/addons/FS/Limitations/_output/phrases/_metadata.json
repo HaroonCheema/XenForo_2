@@ -59,6 +59,18 @@
         "version_string": "1.0.0 Alpha",
         "hash": "2e70c3824c128eb860cfb630b6bdde10"
     },
+    "fs_limitations_admirer_mail_body.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "654f12891adcc958ca4af9ffef8b05da"
+    },
+    "fs_limitations_companion_mail_body.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "7bc9d2c94ab2863a1607b1e888e8a036"
+    },
     "fs_limitations_daily_ads.txt": {
         "global_cache": false,
         "version_id": 1000010,

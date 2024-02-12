@@ -8,5 +8,15 @@
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
         "hash": "f15b4131a1c41c918b69be352b1093af"
+    },
+    "email/fs_limitations_admirer_mail.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "1872f53f49e49597734b7e883ffe12f0"
+    },
+    "email/fs_limitations_companion_mail.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "f99727c400a8023ea114028d91119f08"
     }
 }

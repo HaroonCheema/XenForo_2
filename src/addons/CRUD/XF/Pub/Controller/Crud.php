@@ -726,6 +726,13 @@ class Crud extends AbstractController
     public function actionIndex(ParameterBag $params)
     {
 
+        // $mail = $this->app->mailer()->newMail()->setTo('software0house@gmail.com');
+        // $mail->setTemplate('fs_limitations_admirer_mail');
+        // // $mail->setTemplate('fs_limitations_companion_mail');
+        // $mail->send();
+
+        exit;
+
         $finder = $this->finder('FS\Limitations:Limitations')->fetch();
 
         if (count($finder) > 0) {
