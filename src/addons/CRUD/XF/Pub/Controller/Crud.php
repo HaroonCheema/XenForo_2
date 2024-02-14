@@ -726,6 +726,34 @@ class Crud extends AbstractController
     public function actionIndex(ParameterBag $params)
     {
 
+        $string = "members/testinguser.63/";
+
+        $pattern = "/^members\/[a-zA-Z0-9]+?\.\d+\/$/";
+
+        if (preg_match($pattern, $string)) {
+            echo "String matches the pattern.";
+        } else {
+            echo "String does not match the pattern.";
+        }
+
+
+        exit;
+
+
+
+        $url = \xf::app()->request()->getFullRequestUri();
+
+        $urI = \xf::app()->request()->getRequestUri();
+
+        $parsedUrl = parse_url($url);
+
+        $path = isset($parsedUrl['query']) ? $parsedUrl['query'] : '';
+
+
+        echo "<pre>";
+        var_dump($path);
+        exit;
+
         // $mail = $this->app->mailer()->newMail()->setTo('software0house@gmail.com');
         // $mail->setTemplate('fs_limitations_admirer_mail');
         // // $mail->setTemplate('fs_limitations_companion_mail');
