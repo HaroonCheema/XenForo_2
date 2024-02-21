@@ -725,19 +725,20 @@ class Crud extends AbstractController
 
     public function actionIndex(ParameterBag $params)
     {
+        return $this->view('CRUD\XF:Crud\Index', 'crud_record_testing_pg_2', []);
 
-        $string = "members/testinguser.63/";
+        // $string = "members/testinguser.63/";
 
-        $pattern = "/^members\/[a-zA-Z0-9]+?\.\d+\/$/";
+        // $pattern = "/^members\/[a-zA-Z0-9]+?\.\d+\/$/";
 
-        if (preg_match($pattern, $string)) {
-            echo "String matches the pattern.";
-        } else {
-            echo "String does not match the pattern.";
-        }
+        // if (preg_match($pattern, $string)) {
+        //     echo "String matches the pattern.";
+        // } else {
+        //     echo "String does not match the pattern.";
+        // }
 
 
-        exit;
+        // exit;
 
 
 
