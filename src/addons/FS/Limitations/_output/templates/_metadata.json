@@ -9,6 +9,11 @@
         "version_string": "1.0.0 Alpha",
         "hash": "f15b4131a1c41c918b69be352b1093af"
     },
+    "email/fs_bitcoin_integ_thanks_redirect_mail.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "7c118828d6b7b2e5491648280e5592a0"
+    },
     "email/fs_limitations_admirer_mail.html": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
@@ -18,5 +23,10 @@
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
         "hash": "f99727c400a8023ea114028d91119f08"
+    },
+    "email/fs_limitations_send_payment_confirm_male.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "5df479769ee5e07f01fe8c2cb412c873"
     }
 }

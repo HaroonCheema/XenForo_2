@@ -725,6 +725,22 @@ class Crud extends AbstractController
 
     public function actionIndex(ParameterBag $params)
     {
+
+        // return $this->view('CRUD\XF:Crud\Index', 'crud_record_testing_pg_1', []);
+        return $this->view('CRUD\XF:Crud\Index', 'crud_record_testing_pg_2', []);
+
+        // $user = \XF::app()->em()->find('XF:User', 1);
+        // // $upgrade = \XF::app()->em()->find('XF:UserUpgrade', 3);
+
+        // $mail = \XF::app()->mailer()->newMail()->setTo($user->email);
+        // $mail->setTemplate('fs_bitcoin_integ_thanks_redirect_mail');
+        // // $mail->setTemplate('fs_limitations_send_payment_confirm_male', [
+        // //     'username' => $user->username,
+        // //     'title' => $upgrade->title,
+        // //     'price' => $upgrade->cost_amount,
+        // // ]);
+        // $mail->send();
+
         return $this->view('CRUD\XF:Crud\Index', 'crud_record_testing_pg_2', []);
 
         // $string = "members/testinguser.63/";

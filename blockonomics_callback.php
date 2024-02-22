@@ -57,7 +57,7 @@ if ($response && $resCode == 200) {
     }
 
     $encrypt = $response["data"]["extra_data"];
-    
+
     $data = decrypt($encrypt);
 
 
@@ -107,6 +107,8 @@ if ($response && $resCode == 200) {
             $recExist->fastUpdate($purchaseUpdate);
 
             return true;
+
+            // $redirect = $app->router('public')->buildLink('register/connected-accounts', $provider);
         }
     }
 } else {
