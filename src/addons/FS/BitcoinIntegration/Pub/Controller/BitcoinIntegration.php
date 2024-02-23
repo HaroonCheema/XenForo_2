@@ -190,28 +190,28 @@ class BitcoinIntegration extends AbstractController
 			);
 		}
 
-		if ($visitor->account_type == 1) {
+		// if ($visitor->account_type == 1) {
 
-			$sixMonthUpgradeId = \xf::options()->fs_bitcoin_six_month;
-			$oneYearUpgradeId = \xf::options()->fs_bitcoin_one_year;
+		// 	$sixMonthUpgradeId = \xf::options()->fs_bitcoin_six_month;
+		// 	$oneYearUpgradeId = \xf::options()->fs_bitcoin_one_year;
 
-			if (!($sixMonthUpgradeId == $id || $oneYearUpgradeId == $id)) {
-				throw $this->exception(
-					$this->noPermission()
-				);
-			}
-		} elseif ($visitor->account_type == 2) {
-			$premiumUpgradeId = \xf::options()->fs_bitcoin_premium_companion;
-			$providerCityUpgradeId = \xf::options()->fs_bitcoin_provider_city;
-			$vipUpgradeId = \xf::options()->fs_bitcoin_vip_companion;
-			$providerVipUpgradeId = \xf::options()->fs_bitcoin_provider_vip;
+		// 	if (!($sixMonthUpgradeId == $id || $oneYearUpgradeId == $id)) {
+		// 		throw $this->exception(
+		// 			$this->noPermission()
+		// 		);
+		// 	}
+		// } elseif ($visitor->account_type == 2) {
+		// 	$premiumUpgradeId = \xf::options()->fs_bitcoin_premium_companion;
+		// 	$providerCityUpgradeId = \xf::options()->fs_bitcoin_provider_city;
+		// 	$vipUpgradeId = \xf::options()->fs_bitcoin_vip_companion;
+		// 	$providerVipUpgradeId = \xf::options()->fs_bitcoin_provider_vip;
 
-			if (!($premiumUpgradeId == $id || $providerCityUpgradeId == $id || $vipUpgradeId == $id || $providerVipUpgradeId == $id)) {
-				throw $this->exception(
-					$this->noPermission()
-				);
-			}
-		}
+		// 	if (!($premiumUpgradeId == $id || $providerCityUpgradeId == $id || $vipUpgradeId == $id || $providerVipUpgradeId == $id)) {
+		// 		throw $this->exception(
+		// 			$this->noPermission()
+		// 		);
+		// 	}
+		// }
 	}
 
 	public function insertPrucase($userId, $upgradeId)

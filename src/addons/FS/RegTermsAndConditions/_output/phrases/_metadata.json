@@ -1,0 +1,20 @@
+{
+    "fs_register_terms_conditions_text.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "571a9834ef78d446aa5573ebabc1ac60"
+    },
+    "fs_register_terms_title.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "ee73420e9463c602f0e3ad6fa59c2c39"
+    },
+    "fs_register_terms_you_agree_to_our_terms_and_conditions.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "456e96470678b45c8dcb2001fe72f858"
+    }
+}

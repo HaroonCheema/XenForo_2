@@ -28,5 +28,10 @@
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
         "hash": "5df479769ee5e07f01fe8c2cb412c873"
+    },
+    "public/fs_discussion_post_limits_info.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "2f033e699c8dd61bdd4b14f8acc5371a"
     }
 }
