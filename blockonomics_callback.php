@@ -6,16 +6,24 @@ require($dir . '/src/XF.php');
 XF::start($dir);
 $app = XF::setupApp('XF\Pub\App');
 
+
 $status = $_GET['status'];
 $addr = $_GET['addr'];
 $uuid = $_GET['uuid'];
 
-if ($status != 2) {
+
+
+
+// http://localhost/swb/blockonomics_callback.php?addr=bc1qpzdrcedfethzj4y53tqh4ddx63m2ddsgtvtlxt&status=1&uuid=d3e1ce3533aa4ffe8acd&order_id=d3e1ce3533aa4ffe8acd
+
+if ($status != 2 && $status != 1) {
     //Only accept confirmed transactions
     return;
 }
 
 $blockonomicsApiKey = \XF::options()->fs_bitcoin_blockonomics_api_key;
+
+
 
 if (!$blockonomicsApiKey) {
     return;
@@ -33,23 +41,16 @@ $server_output = curl_exec($curl);
 
 $resCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 
-
-
 curl_close($curl);
 
 $response = json_decode($server_output, true);
 
-
-
-
 if ($response && $resCode == 200) {
 
-    if (isset($response['status']) && ($response['status'] == -1 || $response['status'] == 0 || $response['status'] == 1)) {
+    if (isset($response['status']) && ($response['status'] == -1 || $response['status'] == 0)) {
 
         return;
     }
-
-
 
     if (!isset($response['data']['extra_data'])) {
 
@@ -60,7 +61,6 @@ if ($response && $resCode == 200) {
 
     $data = decrypt($encrypt);
 
-
     $userUpgradeGroupId = $data["groupId"];
     $userId = $data["userId"];
     $id = $data["id"];
@@ -68,10 +68,13 @@ if ($response && $resCode == 200) {
 
     $upgrade = $app->em()->find('XF:UserUpgrade', $userUpgradeGroupId);
 
-
-
-
     if (!$upgrade) {
+
+        return;
+    }
+
+    if ($status == 1) {
+        orderStaus($userId, $userUpgradeGroupId, $response['order_id'], $status);
 
         return;
     }
@@ -83,15 +86,12 @@ if ($response && $resCode == 200) {
         $oneMonthLaterTimestamp = strtotime('+' . $upgrade['length_amount'] . '' . $upgrade['length_unit'], $createdAt);
     }
 
-
     $recExist = $app->em()->find('FS\BitcoinIntegration:PurchaseRec', $id);
-
 
     if ($recExist && $recExist["user_id"] == $userId && $recExist["user_upgrade_id"] == $userUpgradeGroupId) {
 
         $user = $app->em()->find('XF:User', $userId);
         $upgrade = $app->em()->find('XF:UserUpgrade', $userUpgradeGroupId);
-
 
         if ($user && $upgrade) {
             $upgradeService = \XF::app()->service('XF:User\Upgrade', $upgrade, $user);
@@ -106,12 +106,52 @@ if ($response && $resCode == 200) {
 
             $recExist->fastUpdate($purchaseUpdate);
 
-            return true;
+            $mail = \XF::app()->mailer()->newMail()->setTo($user->email);
+            $mail->setTemplate('fs_limitations_send_payment_confirm_male', [
+                'username' => $user->username,
+                'title' => $upgrade->title,
+                'price' => $upgrade->cost_amount,
+            ]);
+            $mail->send();
 
-            // $redirect = $app->router('public')->buildLink('register/connected-accounts', $provider);
+            orderStaus($userId, $userUpgradeGroupId, $response['order_id'], $status);
+
+
+            return true;
         }
     }
 } else {
+    return;
+}
+
+function orderStaus($user_id, $user_upgrade_id, $order_id, $status)
+{
+    if ($status == 1) {
+        $paymentOrderStatus = \xf::app()->finder('FS\BitcoinIntegration:OrderStatus')->where('order_id', $order_id)->fetchOne();
+
+        if (!$paymentOrderStatus) {
+            $paymentOrderStatus = \XF::app()->em()->create('FS\BitcoinIntegration:OrderStatus');
+
+            $paymentOrderStatus->user_id = $user_id;
+            $paymentOrderStatus->user_upgrade_id = $user_upgrade_id;
+            $paymentOrderStatus->order_id = $order_id;
+            $paymentOrderStatus->status = $status;
+            $paymentOrderStatus->save();
+
+            return $paymentOrderStatus;
+        }
+        return;
+    } elseif ($status == 2) {
+        $upgradePaymentStatus = \xf::app()->finder('FS\BitcoinIntegration:OrderStatus')->where('order_id', $order_id)->fetchOne();
+
+        if ($upgradePaymentStatus) {
+            $upgradePaymentStatus->fastUpdate('status', $status);
+
+            return $upgradePaymentStatus;
+        }
+        return;
+    }
+
     return;
 }
 
