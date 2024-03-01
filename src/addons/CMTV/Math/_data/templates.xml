@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="admin" title="CMTV_Math_option_json" version_id="3000170" version_string="3.0.1"><![CDATA[<xf:formrow rowtype="input"
+			label="{$option.title}"
+			hint="{$hintHtml}"
+			explain="{$explainHtml}"
+			html="{$listedHtml}"
+			rowclass="{$rowClass}">
+	<xf:codeeditor
+				   mode="json"
+				   name="{$inputName}"
+				   value="{$option.option_value}"
+				   class="codeEditor--autoSize"
+				   rowtype="fullWidth noLabel" />
+</xf:formrow>]]></template>
+  <template type="public" title="CMTV_Math.less" version_id="3000170" version_string="3.0.1"><![CDATA[//
+// Katex settings
+//
+
+ .katex-display
+{
+	margin: 0 !important;
+	.base { margin: 15px/2.2 0; }
+	
+	overflow: hidden;
+    overflow-x: auto;
+
+	&::-webkit-scrollbar
+	{
+		height: 5px;
+	}
+
+	&::-webkit-scrollbar-track
+	{
+		background: @xf-contentAltBg;
+		border-radius: @xf-borderRadiusSmall;
+	}
+
+	&::-webkit-scrollbar-thumb
+	{
+		background: @xf-borderColor;
+		border-radius: @xf-borderRadiusSmall;
+
+		&:hover
+		{
+			background: @xf-borderColorHeavy;
+		}
+	}
+}
+
+.katex > .katex-html
+{
+	white-space: normal;
+}
+
+
+//
+// "Insert math" dialog
+//
+
+._fadeInOut()
+{
+	opacity: 0;
+	transition: opacity .2s;
+	&.showing
+	{
+		opacity: 1;
+	}
+}
+
+#editor_math_form
+{	
+	.preview-loading,
+	.preview-container
+	{
+		._fadeInOut();
+	}
+	
+	.preview-loading
+	{
+		margin-right: 5px;
+	}
+	
+	.preview-container
+	{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		
+		min-height: 100px;
+		
+		.empty, .error
+		{
+			font-size: 120%;
+			color: @xf-textColorMuted;
+		}
+		
+		.error
+		{
+			color: @xf-errorColor;
+		}
+		
+		.preview
+		{
+			//overflow: auto;
+		}
+	}
+}]]></template>
+  <template type="public" title="CMTV_Math_insert_math_dialog" version_id="3010070" version_string="3.1.0"><![CDATA[<xf:title>{{ phrase('CMTV_Math_insert_math') }}</xf:title>
+
+<xf:js src="CMTV/Math/insertMathDialog.js" />
+
+<form class="block" id="editor_math_form" data-xf-init="insert-math-form">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:radiorow name="math_type" label="{{ phrase('CMTV_Math_type') }}" explain="{{ phrase('CMTV_Math_type_explain') }}">
+				<xf:option value="block" checked="checked" label="{{ phrase('CMTV_Math_block') }}" />
+				<xf:option value="inline" label="{{ phrase('CMTV_Math_inline') }}" />
+			</xf:radiorow>
+
+			<xf:textarearow name="latex_input" rows="2" autosize="true" autofocus="1"id="latex_input"
+							label="{{ phrase('CMTV_Math_latex_input') }}" explain="{{ phrase('CMTV_Math_latex_input_explain') }}" />
+
+			<h2 class="block-formSectionHeader">
+				<span class="block-formSectionHeader-aligner">
+					<span class="preview-loading"><xf:fa icon="fa-sync-alt fa-spin" /></span>
+					{{ phrase('CMTV_Math_preview') }}
+				</span>
+			</h2>
+
+			<div class="preview-container showing">
+				<div class="preview" id="preview">{{ phrase('preview') }}</div>
+				<div class="error" id="error">{{ phrase('CMTV_Math_incorrect_latex_input') }}</div>
+				<div class="empty" id="empty">{{ phrase('CMTV_Math_start_typing_math') }}</div>
+			</div>
+		</div>
+
+		<xf:submitrow submit="{{ phrase('continue') }}" id="editor_math_submit" />
+	</div>
+</form>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+		id="MathJax-script"
+		async
+		src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+		></script>
+<script>
+	const formulaInput = document.getElementById("latex_input");
+	const outputDiv = document.getElementById("preview");
+	const emptyDiv = document.getElementById("empty");
+	const previewDiv = document.getElementById("preview");
+	const errorDiv = document.getElementById("error");
+	const loadingIcon = document.querySelector(".preview-loading");
+
+	previewDiv.style.display = "none";
+	errorDiv.style.display = "none";
+
+	function showLoadingIcon() {
+		loadingIcon.classList.add("showing");
+	}
+
+	function hideLoadingIcon() {
+		loadingIcon.classList.remove("showing");
+	}
+
+	function convertFormula() {
+		const formula = formulaInput.value;
+		outputDiv.textContent = "";
+		showLoadingIcon();
+
+		// Regular expression to match LaTeX delimiters or commands
+		const mathJaxPattern = /\\\[|\\\]|\\\(|\\\)|\\(?:[^a-zA-Z]|[a-zA-Z]+ ?)/;
+		if (mathJaxPattern.test(formula)) {
+			MathJax.tex2chtmlPromise(formula)
+				.then((node) => {
+				outputDiv.appendChild(node);
+				return MathJax.startup.promise;
+			})
+				.then(() => {
+
+				if (formulaInput.value.trim() === "") {
+					emptyDiv.style.display = "block";
+				} else {
+					emptyDiv.style.display = "none";
+				}
+
+				errorDiv.style.display = "none";
+				previewDiv.style.display = "block";
+				MathJax.typesetPromise();
+			}).finally(() => {
+				hideLoadingIcon();
+			}).catch((error) => {
+				errorDiv.style.display = "block";
+				hideLoadingIcon();
+			});
+
+		} else {
+			// Show the empty div if the formula does not match MathJax patterns
+			if (formulaInput.value.trim() === "") {
+				emptyDiv.style.display = "block";
+				errorDiv.style.display = "none";
+			} else {
+				emptyDiv.style.display = "none";
+				errorDiv.style.display = "block";
+			}
+			outputDiv.style.display = "none";
+			hideLoadingIcon();
+		}
+	}
+
+	formulaInput.addEventListener("input", convertFormula);
+</script>]]></template>
+  <template type="public" title="CMTV_Math_js" version_id="3010070" version_string="3.1.0"><![CDATA[<script>
+	const CMTV_MATH_RENDER_OPTIONS =
+	{
+		"delimiters":
+		[
+			{left: "[imath]", right: "[/imath]", display: false},
+			{left: "[math]",  right: "[/math]", display: true}
+		].concat({$xf.options.CMTV_Math_customMathDelimiters|raw}),
+
+		"ignoredClasses": [].concat({$xf.options.CMTV_Math_ignoredClasses|raw}),
+
+		"macros": {{ $xf.options.CMTV_Math_macros ? $xf.options.CMTV_Math_macros|raw : '{}' }}
+	};
+	
+	(function ($, document)
+	{
+		$(document).on('xf:reinit', function (e)
+		{
+		});
+	})
+	(jQuery, document);
+</script>]]></template>
+  <template type="public" title="CMTV_Math_katex" version_id="3010070" version_string="3.1.0"><![CDATA[<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>]]></template>
+  <template type="public" title="cmtv_math_bbcode" version_id="3010070" version_string="3.1.0"><![CDATA[<div id="mathJaxEqu">{$equation}</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var mathJaxEqu = document.getElementById('mathJaxEqu').innerText;
+
+        // Render the equation using MathJax
+        MathJax.tex2chtmlPromise(mathJaxEqu)
+            .then((node) => {
+                // Replace the content of the div with the rendered equation
+                document.getElementById('mathJaxEqu').innerHTML = '';
+                document.getElementById('mathJaxEqu').appendChild(node);
+                return MathJax.startup.promise;
+            })
+            .then(() => {
+                MathJax.typesetPromise();
+            });
+    });
+</script>]]></template>
+</templates>

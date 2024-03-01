@@ -1,6 +1,9 @@
 <?php
 return array (
   'option.AwedoTceSpecialChars' => 'Special Characters to Exclude',
+  'option.CMTV_Math_customMathDelimiters' => 'Custom math delimiters',
+  'option.CMTV_Math_ignoredClasses' => 'Igonre math in elements with classes',
+  'option.CMTV_Math_macros' => 'Math macros',
   'option.Fs_NodeIcon_nodeDimensions' => 'Node icon dimensions',
   'option.TvThreads_aggregateCredits' => 'Fetch aggregated credits',
   'option.TvThreads_apikey' => 'TMDb API key',

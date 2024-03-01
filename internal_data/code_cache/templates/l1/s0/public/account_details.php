@@ -67,7 +67,7 @@ return array(
 				';
 	}
 	$__compilerTemp4 = '';
-	if ($__vars['xf']['visitor']['email'] AND ($__vars['xf']['visitor']['user_state'] == 'valid')) {
+	if ($__vars['xf']['visitor']['email']) {
 		$__compilerTemp4 .= '
 					' . $__templater->escape($__vars['xf']['visitor']['email']) . '
 				';
@@ -77,19 +77,8 @@ return array(
 				';
 	}
 	$__compilerTemp5 = '';
-	if ($__vars['xf']['visitor']['email'] AND ($__vars['xf']['visitor']['user_state'] == 'valid')) {
-		$__compilerTemp5 .= '
-	' . $__templater->button('Delete', array(
-			'href' => $__templater->func('link', array('account/delete-email', ), false),
-			'class' => 'button--link',
-			'overlay' => 'true',
-		), '', array(
-		)) . '
-';
-	}
-	$__compilerTemp6 = '';
 	if ($__templater->method($__vars['xf']['visitor'], 'canUploadAvatar', array())) {
-		$__compilerTemp6 .= '
+		$__compilerTemp5 .= '
 				' . $__templater->formRow('
 
 					' . $__templater->func('avatar', array($__vars['xf']['visitor'], 'm', false, array(
@@ -102,9 +91,9 @@ return array(
 		)) . '
 			';
 	}
-	$__compilerTemp7 = '';
+	$__compilerTemp6 = '';
 	if ($__templater->method($__vars['xf']['visitor'], 'canUploadProfileBanner', array())) {
-		$__compilerTemp7 .= '
+		$__compilerTemp6 .= '
 				' . $__templater->formRow('
 
 					' . $__templater->func('profile_banner', array($__vars['xf']['visitor'], 'l', false, array(
@@ -124,12 +113,12 @@ return array(
 		)) . '
 			';
 	}
-	$__compilerTemp8 = '';
+	$__compilerTemp7 = '';
 	if ($__templater->method($__vars['xf']['visitor'], 'canEditProfile', array())) {
-		$__compilerTemp8 .= '
+		$__compilerTemp7 .= '
 				';
 		if ($__templater->method($__vars['xf']['visitor'], 'hasPermission', array('general', 'editCustomTitle', ))) {
-			$__compilerTemp8 .= '
+			$__compilerTemp7 .= '
 					' . $__templater->formTextBoxRow(array(
 				'name' => 'user[custom_title]',
 				'value' => $__vars['xf']['visitor']['custom_title_'],
@@ -140,16 +129,16 @@ return array(
 			)) . '
 				';
 		}
-		$__compilerTemp8 .= '
+		$__compilerTemp7 .= '
 
 				<hr class="formRowSep" />
 
 				';
 		if (($__vars['xf']['visitor']['Profile']['dob_day'] AND ($__vars['xf']['visitor']['Profile']['dob_month'] AND $__vars['xf']['visitor']['Profile']['dob_year']))) {
-			$__compilerTemp8 .= '
+			$__compilerTemp7 .= '
 					';
 			$__vars['birthday'] = $__templater->method($__vars['xf']['visitor']['Profile'], 'getBirthday', array(true, ));
-			$__compilerTemp8 .= $__templater->formRow('
+			$__compilerTemp7 .= $__templater->formRow('
 
 						' . '' . '
 						' . $__templater->func('date', array($__vars['birthday']['timeStamp'], $__vars['birthday']['format'], ), true) . '
@@ -159,13 +148,13 @@ return array(
 			)) . '
 				';
 		} else {
-			$__compilerTemp8 .= '
+			$__compilerTemp7 .= '
 					' . $__templater->callMacro('helper_user_dob_edit', 'dob_edit', array(
 				'dobData' => $__vars['xf']['visitor']['Profile'],
 			), $__vars) . '
 				';
 		}
-		$__compilerTemp8 .= '
+		$__compilerTemp7 .= '
 
 				' . $__templater->callMacro('helper_account', 'dob_privacy_row', array(), $__vars) . '
 
@@ -204,27 +193,27 @@ return array(
 		)) . '
 			';
 	}
-	$__compilerTemp9 = '';
+	$__compilerTemp8 = '';
 	if ($__templater->method($__vars['xf']['visitor'], 'canEditProfile', array())) {
-		$__compilerTemp9 .= '
+		$__compilerTemp8 .= '
 			';
-		$__compilerTemp10 = '';
-		$__compilerTemp10 .= '
+		$__compilerTemp9 = '';
+		$__compilerTemp9 .= '
 						' . $__templater->callMacro('custom_fields_macros', 'custom_fields_edit', array(
 			'type' => 'users',
 			'group' => 'contact',
 			'set' => $__vars['xf']['visitor']['Profile']['custom_fields'],
 		), $__vars) . '
 					';
-		if (strlen(trim($__compilerTemp10)) > 0) {
-			$__compilerTemp9 .= '
+		if (strlen(trim($__compilerTemp9)) > 0) {
+			$__compilerTemp8 .= '
 				<h2 class="block-formSectionHeader"><span class="block-formSectionHeader-aligner">' . 'Identities' . '</span></h2>
 				<div class="block-body">
-					' . $__compilerTemp10 . '
+					' . $__compilerTemp9 . '
 				</div>
 			';
 		}
-		$__compilerTemp9 .= '
+		$__compilerTemp8 .= '
 			' . $__templater->formSubmitRow(array(
 			'icon' => 'save',
 			'sticky' => 'true',
@@ -255,8 +244,6 @@ return array(
 		'overlay' => 'true',
 	), '', array(
 	)) . '
-
-' . $__compilerTemp5 . '
 			', array(
 		'rowtype' => 'button',
 		'label' => 'Email',
@@ -266,13 +253,13 @@ return array(
 		'showExplain' => true,
 	), $__vars) . '
 
+			' . $__compilerTemp5 . '
+
 			' . $__compilerTemp6 . '
 
 			' . $__compilerTemp7 . '
-
-			' . $__compilerTemp8 . '
 		</div>
-		' . $__compilerTemp9 . '
+		' . $__compilerTemp8 . '
 	</div>
 ', array(
 		'action' => $__templater->func('link', array('account/account-details', ), false),

@@ -1,0 +1,22 @@
+{
+    "public/CMTV_Math_insert_math_dialog.html": {
+        "version_id": 3010070,
+        "version_string": "3.1.0",
+        "hash": "e6033cdc76d0864b6f1b64908a366d46"
+    },
+    "public/CMTV_Math_js.html": {
+        "version_id": 3010070,
+        "version_string": "3.1.0",
+        "hash": "26c2d8e8c87b127c07f880d690e88357"
+    },
+    "public/CMTV_Math_katex.html": {
+        "version_id": 3010070,
+        "version_string": "3.1.0",
+        "hash": "10899cffdd683e1139a6b9eb8c3c0bba"
+    },
+    "public/cmtv_math_bbcode.html": {
+        "version_id": 3010070,
+        "version_string": "3.1.0",
+        "hash": "b4de486437e58e0e4ad24724cbf2701b"
+    }
+}

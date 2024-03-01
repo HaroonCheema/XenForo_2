@@ -18,7 +18,6 @@ return array(
 ';
 	if ($__templater->method($__vars['xf']['visitor'], 'canStartConversation', array())) {
 		$__templater->pageParams['pageAction'] = $__templater->preEscaped('
-' . $__templater->includeTemplate('fs_conversation_limits_info', $__vars) . '
 	' . $__templater->button('Start conversation', array(
 			'href' => $__templater->func('link', array('conversations/add', ), false),
 			'class' => 'button--cta',

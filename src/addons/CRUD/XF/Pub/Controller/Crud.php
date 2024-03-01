@@ -725,9 +725,43 @@ class Crud extends AbstractController
 
     public function actionIndex(ParameterBag $params)
     {
+//         $testing = "[math]\int[/math]
+
+
+
+//         hello
+        
+        
+        
+//         [math]\begin{align*} \int_a^b f(x) dx &= \lim_{n \to \infty} \sum_{i=1}^n f(a + i \Delta x) \Delta x \\ \frac{d}{dx} \sin(x) &= \cos(x) \end{align*}[/math]";
+
+
+
+//         $text = "[imath]\\alpha = \\beta \\gamma + \\delta[/imath]
+
+// [imath]\\alpha = \\beta \\gamma + \\delta \\epsilon[/imath]";
+
+//         // Regular expression to match the text between [imath] and [/imath] tags
+//         $regex = '/\[imath\](.*?)\[\/imath\]/s';
+
+//         if (preg_match_all($regex, $text, $matches)) {
+//             $innerTextArray = $matches[1]; // Extract the text between the tags
+//             foreach ($innerTextArray as $innerText) {
+//                 echo $innerText . "\n";
+//             }
+//         } else {
+//             echo "No matches found";
+//         }
+//         exit;
+
+//         echo "<pre>";
+//         var_dump($matches);
+
+//         exit;
+
 
         // return $this->view('CRUD\XF:Crud\Index', 'crud_record_testing_pg_1', []);
-        return $this->view('CRUD\XF:Crud\Index', 'crud_record_testing_pg_2', []);
+        return $this->view('CRUD\XF:Crud\Index', 'CMTV_Math_insert_math_dialog', []);
 
         // $user = \XF::app()->em()->find('XF:User', 1);
         // // $upgrade = \XF::app()->em()->find('XF:UserUpgrade', 3);
