@@ -1,6 +1,9 @@
 <?php
 return array (
   'option_explain.AwedoTceSpecialChars' => 'Each of the characters will be removed from the content before it is checked for banned words. Note: Blanks will be ignored.',
+  'option_explain.CMTV_Math_customMathDelimiters' => 'The value in this field is parsed inside PHP so write only strict JSON data!',
+  'option_explain.CMTV_Math_ignoredClasses' => '',
+  'option_explain.CMTV_Math_macros' => '',
   'option_explain.Fs_NodeIcon_nodeDimensions' => '',
   'option_explain.TvThreads_aggregateCredits' => 'If checked, cast & crew data for TV shows will be fetched all the entire cast & crew for all episodes belonging to a TV show.</br>
 This can be a large amount of data and will affect performance.',

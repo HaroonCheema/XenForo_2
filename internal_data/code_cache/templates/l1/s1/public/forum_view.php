@@ -365,7 +365,6 @@ return array(
 ';
 	if ($__templater->method($__vars['forum'], 'canCreateThread', array()) OR $__templater->method($__vars['forum'], 'canCreateThreadPreReg', array())) {
 		$__templater->pageParams['pageAction'] = $__templater->preEscaped('
-' . $__templater->includeTemplate('fs_discussion_post_limits_info', $__vars) . '
 	' . $__templater->button('
 		' . 'Post thread' . '
 	', array(

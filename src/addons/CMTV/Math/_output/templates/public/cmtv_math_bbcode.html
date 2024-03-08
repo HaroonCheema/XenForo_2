@@ -1,0 +1,19 @@
+<div id="mathJaxEqu">{$equation}</div>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+	
+        var mathJaxEqu = document.getElementById('mathJaxEqu').innerText;
+        // Render the equation using MathJax
+        MathJax.tex2chtmlPromise(mathJaxEqu)
+            .then((node) => {
+                // Replace the content of the div with the rendered equation
+                document.getElementById('mathJaxEqu').innerHTML = '';
+                document.getElementById('mathJaxEqu').appendChild(node);
+                return MathJax.startup.promise;
+            })
+            .then(() => {
+                MathJax.typesetPromise();
+            });
+</script>

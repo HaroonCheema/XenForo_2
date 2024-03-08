@@ -391,6 +391,10 @@ class Thread extends AbstractController
 
 		$message = $this->plugin('XF:Editor')->fromInput('message');
 
+		$pattern = '/\[math\]([\s\S]*?)\[\/math\]/';
+
+		preg_match($pattern, $message, $matches);
+
 		/** @var \XF\Service\Thread\Replier $replier */
 		$replier = $this->service('XF:Thread\Replier', $thread);
 
@@ -406,6 +410,23 @@ class Thread extends AbstractController
 		}
 
 		return $replier;
+	}
+
+	function processWithMathJax($content)
+	{
+		// Generate JavaScript code for processing the math content using MathJax
+		$jsCode = <<<EOD
+	<script>
+		// MathJax processing logic (replace this with your actual MathJax code)
+		const formula = "$content";
+		const processedFormula = MathJax.tex2chtml(formula);
+		// Output the processed formula to the document
+		document.write(processedFormula.outerHTML);
+	</script>
+	EOD;
+
+		// Return the generated JavaScript code
+		return $jsCode;
 	}
 
 	protected function finalizeThreadReply(\XF\Service\Thread\Replier $replier)

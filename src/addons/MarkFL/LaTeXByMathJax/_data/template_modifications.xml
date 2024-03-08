@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="PAGE_CONTAINER" modification_key="markfl_mathjax_PAGE_CONTAINER" description="Adds main MathJax scipts to all pages." execution_order="20" enabled="1" action="str_replace">
+    <find><![CDATA[</body>]]></find>
+    <replace><![CDATA[<script type="text/x-mathjax-config">
+	MathJax.Hub.Config(
+	{
+		 TeX:
+		 {
+			  extensions: ["autoload-all.js"],
+			  noErrors:
+			  {
+					style: {"display": "block !important",
+					"margin": "1em 0em 1em 2em",
+					"border": "none",
+					"text-decoration": "underline"
+			  }
+		 },
+		 Macros:
+		 {
+			  pd: ["{\\frac{\\partial#1}{\\partial#2}}",2],
+			  d: ["{\\frac{d#1}{d#2}}",2],
+			  E: ["\\times 10^{#1}",1],
+			  csch: ["\\mathop{\\rm csch}\\nolimits"],
+			  arccsc: ["\\mathop{\\rm arccsc}\\nolimits"],
+			  arcsec: ["\\mathop{\\rm arcsec}\\nolimits"],
+			  arccot: ["\\mathop{\\rm arccot}\\nolimits"],
+			  sech: ["\\mathop{\\rm sech}\\nolimits"],
+			  arsinh: ["\\mathop{\\rm arsinh}\\nolimits"],
+			  arcosh: ["\\mathop{\\rm arcosh}\\nolimits"],
+			  artanh: ["\\mathop{\\rm artanh}\\nolimits"],
+			  arcsch: ["\\mathop{\\rm arcsch}\\nolimits"],
+			  arsech: ["\\mathop{\\rm arsech}\\nolimits"],
+			  arcoth: ["\\mathop{\\rm arcoth}\\nolimits"],
+			  cis: ["\\mathop{\\rm cis}\\nolimits"],
+		 }
+	},
+	extensions: ["tex2jax.js"],
+	jax: ["input/TeX", "output/HTML-CSS"],
+
+	"HTML-CSS": {linebreaks: {automatic: true, width: "90% container"}},
+	"SVG": {linebreaks: {automatic: true, width: "90% container"}},
+										
+	displayAlign: "left", displayIndent: "2em", displayErrorAlign: "left",
+	tex2jax:
+	{
+		 inlineMath: [['\\(','\\)']],
+		 displayMath: [['\\\[','\\\]']],
+		 processEscapes: true
+	}
+	});
+
+	MathJax.Hub.Register.StartupHook("TeX Jax Ready",function ()
+	{
+		 MathJax.InputJax.TeX.prefilterHooks.Add(function (data)
+		 {
+			  if (data.display)
+			  {
+					var next = data.script.nextSibling;
+					while (next && next.nodeName.toLowerCase() === "#text")
+					{
+						 next = next.nextSibling
+					}
+					if (next && next.nodeName.toLowerCase() === "br")
+					{
+						 next.parentNode.removeChild(next)
+					}
+			  }
+		 });
+	});
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+<script>
+	function parseNewPost()
+	{
+		 var newpost = document.getElementById("js-post-{$post.post_id}");
+		 MathJax.Hub.Queue(["Typeset", MathJax.Hub, newpost]);
+		 MathJax.Hub.Queue.autoReset = true;
+	}
+
+	function parseNewProfilePost()
+	{
+		 var newpost = document.getElementById("js-profilePost-{$profilePost.profile_post_id}");
+		 MathJax.Hub.Queue(["Typeset", MathJax.Hub, newpost]);
+		 MathJax.Hub.Queue.autoReset = true;
+	}
+
+	function parsePreview()
+	{
+		 var preview = document.getElementsByClassName("bbCodePreview");
+		 MathJax.Hub.Queue(["Typeset", MathJax.Hub, preview]);
+		 MathJax.Hub.Queue.autoReset = true;
+	}
+
+	function parseTooltip()
+	{
+		 var tooltip = document.getElementsByClassName("bbCodePreview-content");
+		 MathJax.Hub.Queue(["Typeset", MathJax.Hub, tooltip]);
+		 MathJax.Hub.Queue.autoReset = true;
+	}
+</script>
+
+$0]]></replace>
+  </modification>
+  <modification type="public" template="PAGE_CONTAINER" modification_key="markfl_mathjax_css_PAGE_CONTAINER" description="Adds CSS to fix MathJax issues" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[</head>]]></find>
+    <replace><![CDATA[$0
+
+<xf:css src="mathjax.css" />]]></replace>
+  </modification>
+  <modification type="public" template="bb_code_preview" modification_key="markfl_mathjax_bb_code_preview" description="Adds call to javascript function for post preview." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[</xf:if>]]></find>
+    <replace><![CDATA[<script>
+	setTimeout(parsePreview, 500);
+</script>
+$0]]></replace>
+  </modification>
+  <modification type="public" template="conversation_message_macros" modification_key="markfl_mathjax_conversation_message_macros" description="Adds call to parse new conversation post." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[</footer>]]></find>
+    <replace><![CDATA[$0
+
+<script>
+	if (typeof parseNewProfilePost == 'function')
+	{
+		parseNewProfilePost();
+	}
+</script>]]></replace>
+  </modification>
+  <modification type="public" template="post_macros" modification_key="markfl_mathjax_post_macros" description="Adds call to parse new post." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:if is="$post.isFirstPost()">]]></find>
+    <replace><![CDATA[<script>
+	if (typeof parseNewPost == 'function')
+	{
+		parseNewPost();
+	}
+</script>
+
+$0]]></replace>
+  </modification>
+  <modification type="public" template="profile_post_macros" modification_key="markfl_mathjax_profile_post_macros" description="Adds call to parse new profile post." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[</footer>]]></find>
+    <replace><![CDATA[$0
+
+<script>
+	if (typeof parseNewProfilePost == 'function')
+	{
+		parseNewProfilePost();
+	}
+</script>]]></replace>
+  </modification>
+  <modification type="public" template="quick_reply_macros" modification_key="markfl_mathjax_quick_reply_macros" description="Prevents parsing within quick reply editor." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<div class="message-editorWrapper">]]></find>
+    <replace><![CDATA[<div class="message-editorWrapper tex2jax_ignore">]]></replace>
+  </modification>
+  <modification type="public" template="thread_preview" modification_key="markfl_mathjax_thread_preview" description="Parses math in thread previews." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[</div>]]></find>
+    <replace><![CDATA[<script>
+	parseTooltip();
+</script>
+$0]]></replace>
+  </modification>
+</template_modifications>

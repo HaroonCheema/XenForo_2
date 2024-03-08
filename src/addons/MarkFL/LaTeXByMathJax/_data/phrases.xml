@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="custom_bb_code_desc.math" version_id="1000020" version_string="1.0"><![CDATA[Allows LaTeX markup to be added.]]></phrase>
+  <phrase title="custom_bb_code_example.math" version_id="1000020" version_string="1.0"><![CDATA[[math]x^2+y^2=r^2[/math]]]></phrase>
+  <phrase title="custom_bb_code_output.math" version_id="1000020" version_string="1.0"><![CDATA[]]></phrase>
+  <phrase title="custom_bb_code_title.math" version_id="1000020" version_string="1.0"><![CDATA[Add LaTeX Powered by MathJax]]></phrase>
+</phrases>

@@ -1,0 +1,14 @@
+{
+    "legacy_addon_id": "",
+    "title": "MarkFL - LaTeX By MathJax",
+    "description": "Adds LaTeX powered by MathJax to your forum.",
+    "version_id": 1000200,
+    "version_string": "1.3",
+    "dev": "MarkFL",
+    "dev_url": "",
+    "faq_url": "",
+    "support_url": "",
+    "extra_urls": [],
+    "require": [],
+    "icon": "fa-calculator"
+}

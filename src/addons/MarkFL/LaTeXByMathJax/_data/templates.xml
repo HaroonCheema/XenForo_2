@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="public" title="mathjax.css" version_id="1000200" version_string="1.2"><![CDATA[.mjx-chtml {
+	white-space: normal !important;
+}]]></template>
+</templates>

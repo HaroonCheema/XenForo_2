@@ -1,0 +1,9 @@
+{
+    "template": "CMTV_Math_insert_math_dialog",
+    "description": "cmtv_math_add_script_file",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "</form>",
+    "replace": "$0\n<xf:include template=\"CMTV_Math_JAX_js\" />"
+}

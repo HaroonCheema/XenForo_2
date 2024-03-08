@@ -723,11 +723,86 @@ class Crud extends AbstractController
         return $this->view('XF\Account', 'fs_email_delete_confirm', $viewpParams);
     }
 
+    function processWithMathJax($content)
+    {
+        // Generate JavaScript code for processing the math content using MathJax
+        $jsCode = <<<EOD
+	<script>
+		// MathJax processing logic (replace this with your actual MathJax code)
+		const formula = "$content";
+		const processedFormula = MathJax.tex2chtml(formula);
+		// Output the processed formula to the document
+		document.write(processedFormula.outerHTML);
+	</script>
+	EOD;
+
+        // Return the generated JavaScript code
+        return $jsCode;
+    }
+
     public function actionIndex(ParameterBag $params)
     {
 
+        $equation = 'This is an equation: [math]\int f(x)[/math]';
+
+
+        $pattern = '/\[math\]([^[]*?)\[\/math\]/';
+
+        // Match the pattern in the equation string
+        if (preg_match($pattern, $equation, $matches)) {
+            // Extracted content is in $matches[1]
+            $mathContent = $matches[1];
+
+            // Process the math content using MathJax (replace this with your MathJax processing logic)
+            $processedMathContent = $this->processWithMathJax($mathContent);
+
+            // Output the processed math content
+            echo "Processed math content: " . $processedMathContent;
+        } else {
+            // No match found
+            echo "No math content found.";
+        }
+
+        exit;
+
+
+        //         $testing = "[math]\int[/math]
+
+
+
+        //         hello
+
+
+
+        //         [math]\begin{align*} \int_a^b f(x) dx &= \lim_{n \to \infty} \sum_{i=1}^n f(a + i \Delta x) \Delta x \\ \frac{d}{dx} \sin(x) &= \cos(x) \end{align*}[/math]";
+
+
+
+        //         $text = "[imath]\\alpha = \\beta \\gamma + \\delta[/imath]
+
+        // [imath]\\alpha = \\beta \\gamma + \\delta \\epsilon[/imath]";
+
+        //         // Regular expression to match the text between [imath] and [/imath] tags
+        //         $regex = '/\[imath\](.*?)\[\/imath\]/s';
+
+        //         if (preg_match_all($regex, $text, $matches)) {
+        //             $innerTextArray = $matches[1]; // Extract the text between the tags
+        //             foreach ($innerTextArray as $innerText) {
+        //                 echo $innerText . "\n";
+        //             }
+        //         } else {
+        //             echo "No matches found";
+        //         }
+        //         exit;
+
+        //         echo "<pre>";
+        //         var_dump($matches);
+
+        //         exit;
+
+
         // return $this->view('CRUD\XF:Crud\Index', 'crud_record_testing_pg_1', []);
-        return $this->view('CRUD\XF:Crud\Index', 'crud_record_testing_pg_2', []);
+        return $this->view('CRUD\XF:Crud\Index', 'CMTV_Math_insert_math_dialog', []);
 
         // $user = \XF::app()->em()->find('XF:User', 1);
         // // $upgrade = \XF::app()->em()->find('XF:UserUpgrade', 3);
