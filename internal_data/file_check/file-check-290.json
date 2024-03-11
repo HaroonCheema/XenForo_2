@@ -5,6 +5,15 @@
             "src/addons/CRUD/Setup.php",
             "src/addons/CRUD/XF/Pub/Controller/Crud.php"
         ],
+        "CMTV/Math": [
+            "js/CMTV/Math/insert-math-dialog.min.js",
+            "src/addons/CMTV/Math/addon.json",
+            "src/addons/CMTV/Math/EventListener.php",
+            "src/addons/CMTV/Math/_data/bb_codes.xml",
+            "src/addons/CMTV/Math/_data/phrases.xml",
+            "src/addons/CMTV/Math/_data/templates.xml",
+            "src/addons/CMTV/Math/_data/template_modifications.xml"
+        ],
         "BS/ScheduledPosting": [
             "src/addons/BS/ScheduledPosting/XF/Entity/User.php"
         ],
@@ -129,6 +138,21 @@
             "src/addons/FS/HideUsernames/_data/phrases.xml",
             "src/addons/FS/HideUsernames/_data/template_modifications.xml"
         ],
+        "FS/HideContentWithPreview": [
+            "src/addons/FS/HideContentWithPreview/addon.json",
+            "src/addons/FS/HideContentWithPreview/BbCode/Locked.php",
+            "src/addons/FS/HideContentWithPreview/XF/Pub/Controller/Thread.php",
+            "src/addons/FS/HideContentWithPreview/_data/bb_codes.xml",
+            "src/addons/FS/HideContentWithPreview/_data/options.xml",
+            "src/addons/FS/HideContentWithPreview/_data/phrases.xml"
+        ],
+        "FS/Limitations": [
+            "src/addons/FS/Limitations/Cron/Limits.php",
+            "src/addons/FS/Limitations/Setup.php",
+            "src/addons/FS/Limitations/XF/Entity/User.php",
+            "src/addons/FS/Limitations/XF/Pub/Controller/Conversation.php",
+            "src/addons/FS/Limitations/XF/Pub/Controller/Forum.php"
+        ],
         "FS/MediaTagSetting": [
             "src/addons/FS/MediaTagSetting/addon.json",
             "src/addons/FS/MediaTagSetting/XF/Pub/Controller/Thread.php"
@@ -225,6 +249,6 @@
         ]
     },
     "total_missing": 0,
-    "total_inconsistent": 168,
-    "total_checked": 10797
+    "total_inconsistent": 186,
+    "total_checked": 10520
 }
