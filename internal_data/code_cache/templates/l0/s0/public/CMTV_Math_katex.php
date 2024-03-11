@@ -1,5 +1,9 @@
 <?php
+<<<<<<< HEAD
 // FROM HASH: 739a56414e78782ba0597494fef03088
+=======
+// FROM HASH: 10899cffdd683e1139a6b9eb8c3c0bba
+>>>>>>> ec84cb00a69fdecad2b7ec284b83c9f007c870e0
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {

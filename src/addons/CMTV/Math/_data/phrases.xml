@@ -11,6 +11,7 @@
   <phrase title="CMTV_Math_type" version_id="1000070" version_string="1.0.0"><![CDATA[Type]]></phrase>
   <phrase title="CMTV_Math_type_explain" version_id="1000070" version_string="1.0.0"><![CDATA[Inline math is smaller and should be used inside the plain text. Block math is bigger and should be used for big equations and formulas. It also creates line breaks before and after.]]></phrase>
   <phrase title="custom_bb_code_desc.imath" version_id="3000170" version_string="3.0.1"><![CDATA[]]></phrase>
+<<<<<<< HEAD
   <phrase title="custom_bb_code_desc.math" version_id="4030100" version_string="4.3.1"><![CDATA[]]></phrase>
   <phrase title="custom_bb_code_example.imath" version_id="3000170" version_string="3.0.1"><![CDATA[]]></phrase>
   <phrase title="custom_bb_code_example.math" version_id="4030100" version_string="4.3.1"><![CDATA[]]></phrase>
@@ -18,6 +19,15 @@
   <phrase title="custom_bb_code_output.math" version_id="4030100" version_string="4.3.1"><![CDATA[]]></phrase>
   <phrase title="custom_bb_code_title.imath" version_id="3000170" version_string="3.0.1"><![CDATA[Inline math]]></phrase>
   <phrase title="custom_bb_code_title.math" version_id="4030100" version_string="4.3.1"><![CDATA[Block math]]></phrase>
+=======
+  <phrase title="custom_bb_code_desc.math" version_id="3000170" version_string="3.0.1"><![CDATA[]]></phrase>
+  <phrase title="custom_bb_code_example.imath" version_id="3000170" version_string="3.0.1"><![CDATA[]]></phrase>
+  <phrase title="custom_bb_code_example.math" version_id="3000170" version_string="3.0.1"><![CDATA[]]></phrase>
+  <phrase title="custom_bb_code_output.imath" version_id="3000170" version_string="3.0.1"><![CDATA[]]></phrase>
+  <phrase title="custom_bb_code_output.math" version_id="3000170" version_string="3.0.1"><![CDATA[]]></phrase>
+  <phrase title="custom_bb_code_title.imath" version_id="3000170" version_string="3.0.1"><![CDATA[Inline math]]></phrase>
+  <phrase title="custom_bb_code_title.math" version_id="3000170" version_string="3.0.1"><![CDATA[Block math]]></phrase>
+>>>>>>> ec84cb00a69fdecad2b7ec284b83c9f007c870e0
   <phrase title="option.CMTV_Math_customMathDelimiters" version_id="3000170" version_string="3.0.1"><![CDATA[Custom math delimiters]]></phrase>
   <phrase title="option.CMTV_Math_ignoredClasses" version_id="3000170" version_string="3.0.1"><![CDATA[Igonre math in elements with classes]]></phrase>
   <phrase title="option.CMTV_Math_macros" version_id="3000170" version_string="3.0.1"><![CDATA[Math macros]]></phrase>

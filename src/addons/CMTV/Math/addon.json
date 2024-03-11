@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "legacy_addon_id": "",
   "title": "Math",
   "description": "Math support and a handy button to insert it all rolled into one addon!",
@@ -18,3 +19,30 @@
   },
   "icon": "fa-function"
 }
+=======
+    "legacy_addon_id": "",
+    "title": "Math",
+    "description": "Math support and a handy button to insert it all rolled into one addon!",
+    "version_id": 3020000,
+    "version_string": "3.2.0",
+    "dev": "CMTV",
+    "dev_url": "https://xenforo.com/community/members/cmtv.162075/",
+    "faq_url": "",
+    "support_url": "",
+    "extra_urls": {
+        "My addons & tutorials": "https://xenforo.com/community/resources/authors/cmtv.162075/",
+        "Support me!": "https://www.patreon.com/cmtv"
+    },
+    "require": {
+        "XF": [
+            2010070,
+            "XenForo 2.1"
+        ],
+        "php": [
+            "7.0.0",
+            "PHP 7+"
+        ]
+    },
+    "icon": "fa-function"
+}
+>>>>>>> ec84cb00a69fdecad2b7ec284b83c9f007c870e0
