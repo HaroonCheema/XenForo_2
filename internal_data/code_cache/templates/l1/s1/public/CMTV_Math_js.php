@@ -1,9 +1,5 @@
 <?php
-<<<<<<< HEAD
 // FROM HASH: 20907afa386f8773a490f5d97cf6c6fd
-=======
-// FROM HASH: 26c2d8e8c87b127c07f880d690e88357
->>>>>>> ec84cb00a69fdecad2b7ec284b83c9f007c870e0
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -26,10 +22,7 @@ return array(
 	{
 		$(document).on(\'xf:reinit\', function (e)
 		{
-<<<<<<< HEAD
 			
-=======
->>>>>>> ec84cb00a69fdecad2b7ec284b83c9f007c870e0
 		});
 	})
 	(jQuery, document);

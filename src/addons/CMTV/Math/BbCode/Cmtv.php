@@ -14,7 +14,6 @@ class Cmtv
 
         $empty = "";
 
-
         $viewParams = [
             'equation' => isset($tagChildren[0]) ? $tagChildren[0] : $empty
         ];
@@ -31,7 +30,6 @@ class Cmtv
         // }
 
         $empty = "";
-
 
         $viewParams = [
             'equation' => isset($tagChildren[0]) ? $tagChildren[0] : $empty
