@@ -22,7 +22,7 @@ return array(
 	{
 		$(document).on(\'xf:reinit\', function (e)
 		{
-			
+			renderMathInElement(document.body, CMTV_MATH_RENDER_OPTIONS);
 		});
 	})
 	(jQuery, document);
