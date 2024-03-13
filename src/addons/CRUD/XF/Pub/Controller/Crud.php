@@ -742,39 +742,43 @@ class Crud extends AbstractController
 
     public function actionIndex(ParameterBag $params)
     {
-//         $testing = "[math]\int[/math]
+
+        return $this->view('CRUD\XF:Crud\Index', 'CMTV_Math_insert_math_jax_dialog', []);
+
+
+        //         $testing = "[math]\int[/math]
 
 
 
-//         hello
-        
-        
-        
-//         [math]\begin{align*} \int_a^b f(x) dx &= \lim_{n \to \infty} \sum_{i=1}^n f(a + i \Delta x) \Delta x \\ \frac{d}{dx} \sin(x) &= \cos(x) \end{align*}[/math]";
+        //         hello
 
 
 
-//         $text = "[imath]\\alpha = \\beta \\gamma + \\delta[/imath]
+        //         [math]\begin{align*} \int_a^b f(x) dx &= \lim_{n \to \infty} \sum_{i=1}^n f(a + i \Delta x) \Delta x \\ \frac{d}{dx} \sin(x) &= \cos(x) \end{align*}[/math]";
 
-// [imath]\\alpha = \\beta \\gamma + \\delta \\epsilon[/imath]";
 
-//         // Regular expression to match the text between [imath] and [/imath] tags
-//         $regex = '/\[imath\](.*?)\[\/imath\]/s';
 
-//         if (preg_match_all($regex, $text, $matches)) {
-//             $innerTextArray = $matches[1]; // Extract the text between the tags
-//             foreach ($innerTextArray as $innerText) {
-//                 echo $innerText . "\n";
-//             }
-//         } else {
-//             echo "No matches found";
-//         }
-//         exit;
+        //         $text = "[imath]\\alpha = \\beta \\gamma + \\delta[/imath]
 
-//         echo "<pre>";
-//         var_dump($matches);
+        // [imath]\\alpha = \\beta \\gamma + \\delta \\epsilon[/imath]";
 
-//         exit;
+        //         // Regular expression to match the text between [imath] and [/imath] tags
+        //         $regex = '/\[imath\](.*?)\[\/imath\]/s';
+
+        //         if (preg_match_all($regex, $text, $matches)) {
+        //             $innerTextArray = $matches[1]; // Extract the text between the tags
+        //             foreach ($innerTextArray as $innerText) {
+        //                 echo $innerText . "\n";
+        //             }
+        //         } else {
+        //             echo "No matches found";
+        //         }
+        //         exit;
+
+        //         echo "<pre>";
+        //         var_dump($matches);
+
+        //         exit;
 
 
         $equation = 'This is an equation: [math]\int f(x)[/math]';
@@ -836,7 +840,6 @@ class Crud extends AbstractController
 
 
         // return $this->view('CRUD\XF:Crud\Index', 'crud_record_testing_pg_1', []);
-        return $this->view('CRUD\XF:Crud\Index', 'CMTV_Math_insert_math_dialog', []);
 
         // $user = \XF::app()->em()->find('XF:User', 1);
         // // $upgrade = \XF::app()->em()->find('XF:UserUpgrade', 3);

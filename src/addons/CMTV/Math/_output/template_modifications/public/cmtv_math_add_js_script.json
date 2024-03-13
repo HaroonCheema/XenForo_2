@@ -1,0 +1,9 @@
+{
+    "template": "PAGE_CONTAINER",
+    "description": "cmtv_math_add_js_script",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:set var=\"$description\"><xf:description /></xf:set>",
+    "replace": "$0\n\n<script src=\"https://polyfill.io/v3/polyfill.min.js?features=es6\"></script>\n<script type=\"text/javascript\" id=\"MathJax-script\" async\n  src=\"https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js\">\n</script>\n <script>\n\t \n      MathJax = {\n\t\t  \n        options: {\n          renderActions: {\n            find: [\n              10,\n              function (doc) {\n\t\t\t\t  \n                for (const node of document.querySelectorAll(\"formula\")) {\n\t\t\t\n                  const math = new doc.options.MathItem(\n                    node.textContent,\n                    doc.inputJax[0],\n                    false\n                  );\n                  const text = document.createTextNode(\"\");\n                  node.parentNode.replaceChild(text, node);\n                  math.start = { node: text, delim: \"\", n: 0 };\n                  math.end = { node: text, delim: \"\", n: 0 };\n                  doc.math.push(math);\n                }\n              },\n              \"\",\n            ],\n          },\n        },\n      };\n    </script>"
+}

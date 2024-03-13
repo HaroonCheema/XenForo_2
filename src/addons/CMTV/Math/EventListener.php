@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Math xF2 addon by CMTV
  * Enjoy!
@@ -21,7 +22,7 @@ class EventListener
 
     public static function editorDialog(array &$data, Controller $controller)
     {
-        $data['template'] = 'CMTV_Math_insert_math_dialog';
+        $data['template'] = 'CMTV_Math_insert_math_jax_dialog';
     }
 
     public static function bbCodeProcessorActionMap(array &$processorActionMap)
