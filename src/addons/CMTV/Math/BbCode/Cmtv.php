@@ -35,6 +35,6 @@ class Cmtv
             'equation' => isset($tagChildren[0]) ? $tagChildren[0] : $empty
         ];
 
-        return $renderer->getTemplater()->renderTemplate('public:cmtv_math_bbcode', $viewParams);
+        return $renderer->getTemplater()->renderTemplate('public:cmtv_math_bbcode_disp_inline', $viewParams);
     }
 }

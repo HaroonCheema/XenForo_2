@@ -184,7 +184,19 @@
 
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" crossorigin="anonymous"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>]]></template>
-  <template type="public" title="cmtv_math_bbcode" version_id="4030400" version_string="4.3.4"><![CDATA[<formula  id="mathJaxEqu" class="mathJaxEqu">{$equation}</formula>
+  <template type="public" title="cmtv_math_bbcode" version_id="4040400" version_string="4.4.4"><![CDATA[<mjx-container display="true" jax="CHTML">
+<formula  id="mathJaxEqu" class="mathJaxEqu">{$equation}</formula>
+</mjx-container>
+
+<script>
+	var preview = document.getElementsByClassName("mathJaxEqu");
+
+	if(preview.length==!0)
+	{
+		MathJax.typeset(preview);
+	}
+</script>]]></template>
+  <template type="public" title="cmtv_math_bbcode_disp_inline" version_id="4040400" version_string="4.4.4"><![CDATA[<formula  id="mathJaxEqu" class="mathJaxEqu">{$equation}</formula>
 
 <script>
 	var preview = document.getElementsByClassName("mathJaxEqu");

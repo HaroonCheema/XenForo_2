@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: a11332f3fcb3c6e0ed71dbec695cbe92
+// FROM HASH: 18da672969f2faed00787c231f9d441d
 return array(
 'macros' => array('post' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -526,6 +526,12 @@ return array(
 
 		<div class="js-historyTarget message-historyTarget toggleTarget" data-href="trigger-href"></div>
 	</footer>
+	
+	<script>
+	$(document).ready(function() {
+			$(document).ajaxStop(parseNewPost(' . $__templater->escape($__vars['post']['post_id']) . '));
+		});
+	</script>
 ';
 	return $__finalCompiled;
 }
