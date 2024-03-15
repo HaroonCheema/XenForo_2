@@ -138,7 +138,7 @@
 		<xf:submitrow submit="{{ phrase('continue') }}" id="editor_math_submit" />
 	</div>
 </form>]]></template>
-  <template type="public" title="CMTV_Math_insert_math_jax_dialog" version_id="4030400" version_string="4.3.4"><![CDATA[<xf:title>{{ phrase('CMTV_Math_insert_math') }}</xf:title>
+  <template type="public" title="CMTV_Math_insert_math_jax_dialog" version_id="4040800" version_string="4.4.8"><![CDATA[<xf:title>{{ phrase('CMTV_Math_insert_math') }}</xf:title>
 
 <xf:js src="CMTV/Math/insertMathDialog.js" addon="CMTV/Math" />
 
@@ -151,12 +151,90 @@
 			</xf:radiorow>
 
 			<xf:textarearow name="latex_input" rows="2" autosize="true" autofocus="1"id="latex_input"
-							label="{{ phrase('CMTV_Math_latex_input') }}" explain="{{ phrase('CMTV_Math_latex_input_explain') }}" />			
+							label="{{ phrase('CMTV_Math_latex_input') }}" explain="{{ phrase('CMTV_Math_latex_input_explain') }}" />
+
+			<h2 class="block-formSectionHeader">
+				<span class="block-formSectionHeader-aligner">
+					<span class="preview-loading"><xf:fa icon="fa-sync-alt fa-spin" /></span>
+					{{ phrase('CMTV_Math_preview') }}
+				</span>
+			</h2>
+
+			<div class="preview-container showing">
+				<div id="mathPreview"><formula id="preview">{{ phrase('preview') }}</formula></div>
+				<div class="error" id="error">{{ phrase('CMTV_Math_incorrect_latex_input') }}</div>
+				<div class="empty" id="empty">{{ phrase('CMTV_Math_start_typing_math') }}</div>
+			</div>
 		</div>
 
 		<xf:submitrow submit="{{ phrase('continue') }}" id="editor_math_submit" />
 	</div>
-</form>]]></template>
+</form>
+
+<script>
+	const formulaInput = document.getElementById("latex_input");
+	const outputDiv = document.getElementById("preview");
+	const emptyDiv = document.getElementById("empty");
+	const previewDiv = document.getElementById("mathPreview");
+	const errorDiv = document.getElementById("error");
+	const loadingIcon = document.querySelector(".preview-loading");
+
+	previewDiv.style.display = "none";
+	errorDiv.style.display = "none";
+	outputDiv.textContent = "";
+
+	function showLoadingIcon() {
+		loadingIcon.classList.add("showing");
+	}
+
+	function hideLoadingIcon() {
+		loadingIcon.classList.remove("showing");
+	}
+
+	function convertFormula() {
+
+		const formula = formulaInput.value;
+		outputDiv.textContent = "";
+		showLoadingIcon();
+
+		// Regular expression to match LaTeX delimiters or commands
+		const mathJaxPattern = /\\\[|\\\]|\\\(|\\\)|\\(?:[^a-zA-Z]|[a-zA-Z]+ ?)/;
+		if (mathJaxPattern.test(formula)) {
+
+			previewDiv.style.display = "block";
+			emptyDiv.style.display = "none";
+			errorDiv.style.display = "none";
+
+			var mathPreviewDiv = document.getElementById("mathPreview");
+
+			var formulaElement = document.createElement("formula");
+
+			formulaElement.textContent = formula;
+
+			mathPreviewDiv.innerHTML = "";
+			mathPreviewDiv.appendChild(formulaElement);
+
+			hideLoadingIcon();
+
+			var preview = document.getElementsByClassName("mathJaxEqu");
+			MathJax.typeset(preview);
+
+		} else {
+			if (formulaInput.value.trim() === "") {
+				emptyDiv.style.display = "block";
+				errorDiv.style.display = "none";
+			} else {
+				emptyDiv.style.display = "none";
+				errorDiv.style.display = "block";
+			}
+			previewDiv.style.display = "none";
+
+			hideLoadingIcon();
+		}
+	}
+
+	formulaInput.addEventListener("input", convertFormula);
+</script>]]></template>
   <template type="public" title="CMTV_Math_js" version_id="4030100" version_string="4.3.1"><![CDATA[<script>
 	const CMTV_MATH_RENDER_OPTIONS =
 	{

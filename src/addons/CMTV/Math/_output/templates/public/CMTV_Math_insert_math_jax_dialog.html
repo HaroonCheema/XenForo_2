@@ -1,70 +1,33 @@
-<?php
-// FROM HASH: a3cd14b974b4b8d28632e89d6dbb0be5
-return array(
-'code' => function($__templater, array $__vars, $__extensions = null)
-{
-	$__finalCompiled = '';
-	$__templater->pageParams['pageTitle'] = $__templater->preEscaped('Insert math');
-	$__finalCompiled .= '
+<xf:title>{{ phrase('CMTV_Math_insert_math') }}</xf:title>
 
-';
-	$__templater->includeJs(array(
-		'src' => 'CMTV/Math/insertMathDialog.js',
-		'addon' => 'CMTV/Math',
-	));
-	$__finalCompiled .= '
+<xf:js src="CMTV/Math/insertMathDialog.js" addon="CMTV/Math" />
 
 <form class="block" id="editor_math_form" data-xf-init="insert-math-form">
 	<div class="block-container">
 		<div class="block-body">
-			' . $__templater->formRadioRow(array(
-		'name' => 'math_type',
-	), array(array(
-		'value' => 'block',
-		'checked' => 'checked',
-		'label' => 'Block',
-		'_type' => 'option',
-	),
-	array(
-		'value' => 'inline',
-		'label' => 'Inline',
-		'_type' => 'option',
-	)), array(
-		'label' => 'Type',
-		'explain' => 'Inline math is smaller and should be used inside the plain text. Block math is bigger and should be used for big equations and formulas. It also creates line breaks before and after.',
-	)) . '
+			<xf:radiorow name="math_type" label="{{ phrase('CMTV_Math_type') }}" explain="{{ phrase('CMTV_Math_type_explain') }}">
+				<xf:option value="block" checked="checked" label="{{ phrase('CMTV_Math_block') }}" />
+				<xf:option value="inline" label="{{ phrase('CMTV_Math_inline') }}" />
+			</xf:radiorow>
 
-			' . $__templater->formTextAreaRow(array(
-		'name' => 'latex_input',
-		'rows' => '2',
-		'autosize' => 'true',
-		'autofocus' => '1',
-		'id' => 'latex_input',
-	), array(
-		'label' => 'LaTeX input',
-		'explain' => '<a href="https://www.latex-tutorial.com/tutorials/amsmath/" target="_blank">How to write math using LaTeX?</a> • <a href="https://katex.org/docs/supported.html" target="_blank">List of supported functions</a>',
-	)) . '
+			<xf:textarearow name="latex_input" rows="2" autosize="true" autofocus="1"id="latex_input"
+							label="{{ phrase('CMTV_Math_latex_input') }}" explain="{{ phrase('CMTV_Math_latex_input_explain') }}" />
 
 			<h2 class="block-formSectionHeader">
 				<span class="block-formSectionHeader-aligner">
-					<span class="preview-loading">' . $__templater->fontAwesome('fa-sync-alt fa-spin', array(
-	)) . '</span>
-					' . 'Preview' . '
+					<span class="preview-loading"><xf:fa icon="fa-sync-alt fa-spin" /></span>
+					{{ phrase('CMTV_Math_preview') }}
 				</span>
 			</h2>
 
 			<div class="preview-container showing">
-				<div id="mathPreview"><formula id="preview">' . 'Preview' . '</formula></div>
-				<div class="error" id="error">' . 'Incorrect latex input!' . '</div>
-				<div class="empty" id="empty">' . 'Start typing math in "LaTeX input"...' . '</div>
+				<div id="mathPreview"><formula id="preview">{{ phrase('preview') }}</formula></div>
+				<div class="error" id="error">{{ phrase('CMTV_Math_incorrect_latex_input') }}</div>
+				<div class="empty" id="empty">{{ phrase('CMTV_Math_start_typing_math') }}</div>
 			</div>
 		</div>
 
-		' . $__templater->formSubmitRow(array(
-		'submit' => 'Continue',
-		'id' => 'editor_math_submit',
-	), array(
-	)) . '
+		<xf:submitrow submit="{{ phrase('continue') }}" id="editor_math_submit" />
 	</div>
 </form>
 
@@ -95,7 +58,7 @@ return array(
 		showLoadingIcon();
 
 		// Regular expression to match LaTeX delimiters or commands
-		const mathJaxPattern = /\\\\\\[|\\\\\\]|\\\\\\(|\\\\\\)|\\\\(?:[^a-zA-Z]|[a-zA-Z]+ ?)/;
+		const mathJaxPattern = /\\\[|\\\]|\\\(|\\\)|\\(?:[^a-zA-Z]|[a-zA-Z]+ ?)/;
 		if (mathJaxPattern.test(formula)) {
 
 			previewDiv.style.display = "block";
@@ -131,7 +94,4 @@ return array(
 	}
 
 	formulaInput.addEventListener("input", convertFormula);
-</script>';
-	return $__finalCompiled;
-}
-);
+</script>
