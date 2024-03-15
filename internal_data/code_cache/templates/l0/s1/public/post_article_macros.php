@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: a393c0e77e1ddbcba3460eb66251c4cd
+// FROM HASH: b998eac856e2bf3a6b88ea23b6ce077f
 return array(
 'macros' => array('article' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -244,7 +244,6 @@ return array(
 	$__finalCompiled .= '
 		</div>
 	</footer>
-	
 ';
 	return $__finalCompiled;
 }

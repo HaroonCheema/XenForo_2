@@ -1,17 +1,12 @@
 {
-    "public/CMTV_Math_insert_math_jax_dialog.html": {
-        "version_id": 4030400,
-        "version_string": "4.3.4",
-        "hash": "8c4a74f8caf990ac217509d601aff96b"
-    },
     "public/cmtv_math_bbcode.html": {
-        "version_id": 4040600,
-        "version_string": "4.4.6",
-        "hash": "3e7e66c75a238df9eaadf68a150ea597"
+        "version_id": 4040500,
+        "version_string": "4.4.5",
+        "hash": "19cd056813425f9385c3799f656b322a"
     },
     "public/cmtv_math_bbcode_disp_inline.html": {
-        "version_id": 4040400,
-        "version_string": "4.4.4",
-        "hash": "3e7e66c75a238df9eaadf68a150ea597"
+        "version_id": 4040600,
+        "version_string": "4.4.6",
+        "hash": "889e25dbec4760236ad0c51bd943fdfc"
     }
 }

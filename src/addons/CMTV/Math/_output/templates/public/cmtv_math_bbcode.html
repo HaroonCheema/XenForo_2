@@ -1,9 +1,9 @@
-<formula  id="mathJaxEqu" class="mathJaxEqu">{$equation}</formula>
+<mjx-container display="true" jax="CHTML">
+	<formula  id="mathJaxEqu" class="mathJaxEqu">{$equation}</formula>
+</mjx-container>
 
 <script>
 	var preview = document.getElementsByClassName("mathJaxEqu");
-	if(preview.length==!0)
-	{
-		MathJax.typeset(preview);
-	}
+
+	MathJax.typeset(preview);
 </script>
