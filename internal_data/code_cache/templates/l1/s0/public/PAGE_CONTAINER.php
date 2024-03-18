@@ -316,41 +316,6 @@ return array(
 	$__vars['description'] = $__templater->preEscaped($__templater->func('page_description'));
 	$__finalCompiled .= '
 
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script type="text/javascript" id="MathJax-script" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-</script>
- <script>
-	 
-      MathJax = {
-		  
-        options: {
-          renderActions: {
-            find: [
-              10,
-              function (doc) {
-				  
-                for (const node of document.querySelectorAll("formula")) {
-			
-                  const math = new doc.options.MathItem(
-                    node.textContent,
-                    doc.inputJax[0],
-                    false
-                  );
-                  const text = document.createTextNode("");
-                  node.parentNode.replaceChild(text, node);
-                  math.start = { node: text, delim: "", n: 0 };
-                  math.end = { node: text, delim: "", n: 0 };
-                  doc.math.push(math);
-                }
-              },
-              "",
-            ],
-          },
-        },
-      };
-    </script>
-
 	<title>' . $__templater->func('page_title', array('%s | %s', $__vars['xf']['options']['boardTitle'], $__vars['pageNumber'])) . '</title>
 
 	<link rel="manifest" href="' . $__templater->func('base_url', array('webmanifest.php', ), true) . '">
