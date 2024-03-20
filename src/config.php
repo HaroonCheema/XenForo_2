@@ -13,6 +13,8 @@ $config['designer']['enabled'] = true;
 
 $config['fullUnicode'] = true;
 
+$config['enableLivePayments'] = false;
+
 $config['debug'] = true;
 
 $config['development']['defaultAddOn'] = 'CMTV/Math';

@@ -1,5 +1,5 @@
 {
-  "additional_files": ["js/CMTV/Math/insertMathDialog.js"],
+  "additional_files": ["js/CMTV/Math"],
   "exec": [
     "echo '{title} version {version_string} ({version_id}) has been built successfully!' > 'src/addons/CMTV/Math/_build/built.txt'"
   ]
