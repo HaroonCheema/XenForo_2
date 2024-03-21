@@ -1,0 +1,9 @@
+{
+    "template": "thread_view",
+    "description": "Change Thread Style",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:if is=\"$thread.canLockUnlock()\">",
+    "replace": "<xf:if is=\"$xf.visitor.canChangeThreadStyle()\">\n\t<xf:include template=\"fs_change_thread_view\"/>\n</xf:if>\n$0"
+}

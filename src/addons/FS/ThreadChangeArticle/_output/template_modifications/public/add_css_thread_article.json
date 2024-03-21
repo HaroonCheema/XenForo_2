@@ -1,0 +1,9 @@
+{
+    "template": "thread_view",
+    "description": "Add css Thread Article",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:title page=\"{$page}\">{{ prefix('thread', $thread, 'escaped') }}{$thread.title}</xf:title>",
+    "replace": "$0\n<xf:if is=\"$thread && $thread.is_view_change==1\">\n\t<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n\t<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n\t<link href=\"https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap\" rel=\"stylesheet\">\n\t<xf:css src=\"xc_article_view.less\"/>\n</xf:if>"
+}

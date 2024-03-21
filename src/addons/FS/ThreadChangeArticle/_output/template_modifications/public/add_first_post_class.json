@@ -1,0 +1,9 @@
+{
+    "template": "post_macros",
+    "description": "Add first post class",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<article class=\"message {{ extension_value('extra_classes') }} js-post js-inlineModContainer {{ $post.isIgnored() ? 'is-ignored' : '' }} {{ $post.isUnread() ? ' is-unread' : '' }}\"\n\t\tdata-author=\"{{ $post.User.username ?: $post.username }}\"\n\t\tdata-content=\"post-{$post.post_id}\"\n\t\tid=\"js-post-{$post.post_id}\">",
+    "replace": "<article class=\"message {{ extension_value('extra_classes') }} js-post js-inlineModContainer {{ $post.isIgnored() ? 'is-ignored' : '' }} {{($thread.first_post_id==$post.post_id)?'first-post-article':''}}  {{ $post.isUnread() ? ' is-unread' : '' }}\"\n\t\tdata-author=\"{{ $post.User.username ?: $post.username }}\"\n\t\tdata-content=\"post-{$post.post_id}\"\n\t\tid=\"js-post-{$post.post_id}\">"
+}

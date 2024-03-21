@@ -1,0 +1,9 @@
+{
+    "template": "thread_view",
+    "description": "Display header image",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:extension name=\"messages_block_outer_secondary\"></xf:extension>",
+    "replace": "$0\n<div class=\"banner-slider\">\n\t<xf:if is=\"$thread.getimageExit() && $thread.is_view_change\">\n\t\t<img src=\"{$thread.getImgPath()}\" style=\"width:100%\" />\n\t</xf:if>\n</div>"
+}

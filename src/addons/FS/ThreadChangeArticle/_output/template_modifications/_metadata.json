@@ -1,0 +1,14 @@
+{
+    "public/add_css_thread_article.json": {
+        "hash": "ace55e106330eed67335bb011adaca61"
+    },
+    "public/add_first_post_class.json": {
+        "hash": "1459a836faf2f5a42eeab19128d27fe0"
+    },
+    "public/change_thread_style.json": {
+        "hash": "7c8eac09ee85707a7c4e7ae988a405dd"
+    },
+    "public/display_header_image.json": {
+        "hash": "787bbb63400cf17b0bc976d2c63c3b64"
+    }
+}
