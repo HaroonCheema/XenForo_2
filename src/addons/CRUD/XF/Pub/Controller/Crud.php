@@ -743,8 +743,7 @@ class Crud extends AbstractController
     public function actionIndex(ParameterBag $params)
     {
 
-        return $this->view('CRUD\XF:Crud\Index', 'CMTV_Math_insert_math_jax_dialog', []);
-
+        return $this->view('CRUD\XF:Crud\Index', 'crud_record_testing_pg_1', []);
 
         //         $testing = "[math]\int[/math]
 
