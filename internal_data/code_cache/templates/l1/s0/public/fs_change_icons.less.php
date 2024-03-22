@@ -1,6 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
-<templates>
-  <template type="public" title="fs_change_icons.less" version_id="1010200" version_string="1.1.2 Alpha"><![CDATA[.p-navgroup-link.p-navgroup-link--conversations i:after {
+<?php
+// FROM HASH: c3bca14a625888cdc6311d6824f13a64
+return array(
+'code' => function($__templater, array $__vars, $__extensions = null)
+{
+	$__finalCompiled = '';
+	$__finalCompiled .= '.p-navgroup-link.p-navgroup-link--conversations i:after {
 	content: url(styles/FS/Trancefix/Icons_White/mail_FILL0_wght400_GRAD0_opsz24.svg);
 	padding-top: 2px;
 }
@@ -19,5 +23,7 @@
 
 .structItem-status--sticky::before {
 	content: url(styles/FS/Trancefix/Icons_White/push_pin_FILL0_wght400_GRAD0_opsz24.svg);
-}]]></template>
-</templates>
+}';
+	return $__finalCompiled;
+}
+);
