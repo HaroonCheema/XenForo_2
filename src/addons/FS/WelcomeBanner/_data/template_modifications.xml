@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="welcome_banner_thread_list_macros" modification_key="fs_welcome_banner_firstPost_message" description="fs_welcome_banner_firstPost_message" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA["<div class=\"structItem-title\">.*?</div>"si]]></find>
+    <replace><![CDATA[$0
+<xf:if is="$forum And in_array($thread.thread_id,$xf.options.fs_welcome_banner_applicable_threads|split)">
+
+	<div class="inter-view-des">
+		<p>
+			{{ strlen($thread.FirstPost.message) > 113 ? snippet($thread.FirstPost.message, 113, {'stripBbCode': true})."...." : $thread.FirstPost.message}}
+		</p>
+	</div>
+
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="welcome_banner_thread_list_macros" modification_key="fs_welcome_banner_image_display" description="fs_welcome_banner_image_display" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<div class="structItem structItem--thread{{ $thread.prefix_id ? ' is-prefix' . $thread.prefix_id : '' }}{{ $thread.isIgnored() ? ' is-ignored' : '' }}{{ ($thread.isUnread() AND !$forceRead) ? ' is-unread' : '' }}{{ $thread.discussion_state == 'moderated' ? ' is-moderated' : '' }}{{ $thread.discussion_state == 'deleted' ? ' is-deleted' : '' }} js-inlineModContainer js-threadListItem-{$thread.thread_id}" data-author="{{ $thread.User.username ?: $thread.username }}">]]></find>
+    <replace><![CDATA[$0
+<xf:if is="$forum And in_array($thread.thread_id,$xf.options.fs_welcome_banner_applicable_threads|split)">
+
+	<div class="num-top">{{$thread.thumb_unique_id != 0 ? $thread.thumb_unique_id : $thread.thread_id}}</div>
+	<div class="thread-cover">
+		<img src="{{ $thread.getThumbnailExit() ? $thread.getThumbnailPath() : base_url('styles/FS/ThreadThumbnail/no_image.png',true) }}" style="width:100%;" />
+
+
+		<div class="structItem-title-cover-perifix">
+			<xf:set var="$canPreview" value="{{ $thread.canPreview() }}" />
+			<xf:if is="$thread.prefix_id">
+				<xf:if is="$forum">
+					<a href="{{ link('forums', $forum, {'prefix_id': $thread.prefix_id}) }}" class="labelLink" rel="nofollow">{{ prefix('thread', $thread, 'html', '') }}</a>
+					<xf:else />
+					{{ prefix('thread', $thread, 'html', '') }}
+				</xf:if>
+			</xf:if>
+
+		</div>
+	</div>
+	<div class="date-thread">
+		<div class="time-thread">
+			<xf:date time="{$thread.post_date}" />	
+		</div>
+		<div class="dot">
+			•
+		</div>
+		<div class="thread-comments">
+			{$thread.reply_count|number_short}<span>comments </span>	
+		</div>
+
+	</div>
+
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="welcome_banner_thread_list_macros" modification_key="fs_welcome_banner_replace_title" description="fs_welcome_banner_replace_title_with_thumbnail_title" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<a href="{{ link\('threads' \. \(\(\$thread\.isUnread\(\) AND !\$forceRead\) \? '\/unread' : ''\), \$thread\) }}" class="" data-tp-primary="on" data-xf-init="{{ \$canPreview \? 'preview-tooltip' : '' }}" data-preview-url="{{ \$canPreview \? link\('threads\/preview', \$thread\) : '' }}">.*?<\/a>/is]]></find>
+    <replace><![CDATA[<xf:if is="$forum And in_array($thread.thread_id,$xf.options.fs_welcome_banner_applicable_threads|split)">
+	<xf:if is="$thread.thumbnail_title">
+		<a href="{{ link('threads' . (($thread.isUnread() AND !$forceRead) ? '/unread' : ''), $thread) }}" class="" data-tp-primary="on" data-xf-init="{{ $canPreview ? 'preview-tooltip' : '' }}" data-preview-url="{{ $canPreview ? link('threads/preview', $thread) : '' }}">{{ strlen($thread.thumbnail_title) > 45 ? snippet($thread.thumbnail_title, 45, {'stripBbCode': true}) : $thread.thumbnail_title}}</a>
+		<xf:else />
+		<a href="{{ link('threads' . (($thread.isUnread() AND !$forceRead) ? '/unread' : ''), $thread) }}" class="" data-tp-primary="on" data-xf-init="{{ $canPreview ? 'preview-tooltip' : '' }}" data-preview-url="{{ $canPreview ? link('threads/preview', $thread) : '' }}">{{ strlen($thread.title) > 45 ? snippet($thread.title, 45, {'stripBbCode': true}) : $thread.title}}</a>
+	</xf:if>
+	<xf:else />
+	$0
+</xf:if>]]></replace>
+  </modification>
+</template_modifications>

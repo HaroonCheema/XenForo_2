@@ -168,7 +168,7 @@ return array(
 	' . $__templater->renderExtension('before', $__vars, $__extensions) . '
 
 	' . '
-	<article class="message ' . $__templater->escape($__templater->renderExtension('extra_classes', $__vars, $__extensions)) . ' js-post js-inlineModContainer ' . ($__templater->method($__vars['post'], 'isIgnored', array()) ? 'is-ignored' : '') . ' ' . (($__vars['thread']['first_post_id'] == $__vars['post']['post_id']) ? 'first-post-article' : '') . '  ' . ($__templater->method($__vars['post'], 'isUnread', array()) ? ' is-unread' : '') . '"
+	<article class="message ' . $__templater->escape($__templater->renderExtension('extra_classes', $__vars, $__extensions)) . ' js-post js-inlineModContainer ' . ($__templater->method($__vars['post'], 'isIgnored', array()) ? 'is-ignored' : '') . ' ' . ($__templater->method($__vars['post'], 'isUnread', array()) ? ' is-unread' : '') . '"
 		data-author="' . ($__templater->escape($__vars['post']['User']['username']) ?: $__templater->escape($__vars['post']['username'])) . '"
 		data-content="post-' . $__templater->escape($__vars['post']['post_id']) . '"
 		id="js-post-' . $__templater->escape($__vars['post']['post_id']) . '">

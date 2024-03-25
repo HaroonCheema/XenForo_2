@@ -284,6 +284,7 @@ return array (
   'option.fs_thumbnail_applicable_forums' => 'Applicable Forums',
   'option.fs_unhide_user_ids' => 'User ids',
   'option.fs_web_ranking_parent_web_id' => 'Parent Website Id',
+  'option.fs_welcome_banner_applicable_threads' => 'Welcome Banner Applicable Threads',
   'option.fs_wr_numOfSites' => 'Number of sites',
   'option.geoLocationUrl' => 'Location information URL',
   'option.giphy' => 'Enable GIPHY support',

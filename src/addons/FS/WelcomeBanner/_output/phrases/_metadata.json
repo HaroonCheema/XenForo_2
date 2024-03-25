@@ -1,0 +1,38 @@
+{
+    "option.fs_welcome_banner_applicable_threads.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "9789a7c88db2ca7fb0d363a0b939cbbe"
+    },
+    "option_explain.fs_welcome_banner_applicable_threads.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "cb35099a870547af03b66b7a96cc55a5"
+    },
+    "option_group.fs_welcome_banner.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "c0e4cc7d37585aceddae5ee8569584dd"
+    },
+    "option_group_description.fs_welcome_banner.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "widget_def.WelcomeBanner.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "cffa1685c910358446d35d3afb0b18d2"
+    },
+    "widget_def_desc.WelcomeBanner.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "46c6ef8b818da9766ddf743ec6a72f62"
+    }
+}

@@ -140,13 +140,6 @@ return array(
 	}
 	$__compilerTemp2 .= '
 											';
-	if ($__templater->method($__vars['xf']['visitor'], 'canChangeThreadStyle', array())) {
-		$__compilerTemp2 .= '
-	' . $__templater->includeTemplate('fs_change_thread_view', $__vars) . '
-';
-	}
-	$__compilerTemp2 .= '
-';
 	if ($__templater->method($__vars['xf']['visitor'], 'canChangeThreadThumbnail', array())) {
 		$__compilerTemp2 .= '
 	<a href="' . $__templater->func('link', array('threads/thumbnail', $__vars['thread'], ), true) . '" data-xf-click="overlay" class="menu-linkRow">' . 'Thread Thumbnail' . '</a>
@@ -583,18 +576,6 @@ return array(
 	$__templater->pageParams['pageNumber'] = $__vars['page'];
 	$__finalCompiled .= '
 ';
-	if ($__vars['thread'] AND ($__vars['thread']['is_view_change'] == 1)) {
-		$__finalCompiled .= '
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
-	';
-		$__templater->includeCss('xc_article_view.less');
-		$__finalCompiled .= '
-';
-	}
-	$__finalCompiled .= '
-';
 	$__templater->pageParams['pageH1'] = $__templater->preEscaped($__templater->func('prefix', array('thread', $__vars['thread'], ), true) . $__templater->escape($__vars['thread']['title']));
 	$__finalCompiled .= '
 
@@ -782,15 +763,6 @@ return array(
 	<div class="block-outer">' . $__templater->renderExtension('messages_block_outer', $__vars, $__extensions) . '</div>
 
 	' . $__templater->renderExtension('messages_block_outer_secondary', $__vars, $__extensions) . '
-<div class="banner-slider">
-	';
-	if ($__templater->method($__vars['thread'], 'getimageExit', array()) AND $__vars['thread']['is_view_change']) {
-		$__finalCompiled .= '
-		<img src="' . $__templater->escape($__templater->method($__vars['thread'], 'getImgPath', array())) . '" style="width:100%" />
-	';
-	}
-	$__finalCompiled .= '
-</div>
 
 	';
 	if (!$__vars['isFirstPostPinned']) {

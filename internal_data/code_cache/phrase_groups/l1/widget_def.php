@@ -1,5 +1,6 @@
 <?php
 return array (
+  'widget_def.WelcomeBanner' => 'Welcome Banner',
   'widget_def.birthdays' => 'Today\'s birthdays',
   'widget_def.dbt_ecom_latest_reviews' => 'DragonByte eCommerce: Latest reviews',
   'widget_def.dbt_ecom_new_products' => 'DragonByte eCommerce: New Products',

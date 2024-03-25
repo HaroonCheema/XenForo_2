@@ -1,0 +1,14 @@
+{
+    "widget_def.WelcomeBanner.txt": {
+        "global_cache": false,
+        "version_id": 1010300,
+        "version_string": "1.1.3 Alpha",
+        "hash": "46c6ef8b818da9766ddf743ec6a72f62"
+    },
+    "widget_def_desc.WelcomeBanner.txt": {
+        "global_cache": false,
+        "version_id": 1010300,
+        "version_string": "1.1.3 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    }
+}

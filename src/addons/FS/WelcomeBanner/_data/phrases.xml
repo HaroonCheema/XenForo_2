@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="option.fs_welcome_banner_applicable_threads" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Welcome Banner Applicable Threads]]></phrase>
+  <phrase title="option_explain.fs_welcome_banner_applicable_threads" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[List the welcome banner thread ids that are allowed to be display. Use , (comma) between ids.
+Example: 1,2,3,4,..]]></phrase>
+  <phrase title="option_group.fs_welcome_banner" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Welcome Banner]]></phrase>
+  <phrase title="option_group_description.fs_welcome_banner" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="widget_def.WelcomeBanner" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Welcome Banner]]></phrase>
+  <phrase title="widget_def_desc.WelcomeBanner" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Welcome Banner Threads]]></phrase>
+</phrases>

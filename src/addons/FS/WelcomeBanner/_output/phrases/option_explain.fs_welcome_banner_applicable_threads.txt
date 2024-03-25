@@ -1,0 +1,2 @@
+List the welcome banner thread ids that are allowed to be display. Use , (comma) between ids.
+Example: 1,2,3,4,..

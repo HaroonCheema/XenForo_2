@@ -1,0 +1,26 @@
+<style>
+	.structItem:nth-child(even) {
+		background-color: transparent !important;
+	}
+
+	.structItem:nth-child(even):hover {
+		background-color: #272727 !important;
+	}
+</style>
+
+<div class="block-container">
+	<div class="block-body">
+		<div class="structItemContainer">
+			<div class="structItemContainer-group js-threadList thread-grid">
+				<xf:if is="$threads is not empty">
+					<xf:foreach loop="$threads" value="$thread">
+						<xf:macro name="{{ $templateOverrides.thread_list_macro ?: 'welcome_banner_thread_list_macros::item' }}"
+								  arg-thread="{$thread}"
+								  arg-forum="{$thread.Forum}"
+								  args="null" />
+					</xf:foreach>
+				</xf:if>
+			</div>
+		</div>
+	</div>
+</div>

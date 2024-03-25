@@ -1,5 +1,6 @@
 <?php
 return array (
+  'widget_def_desc.WelcomeBanner' => 'Welcome Banner Threads',
   'widget_def_desc.birthdays' => 'A block containing a heap of avatars of users whose birthday is today.',
   'widget_def_desc.dbt_ecom_latest_reviews' => 'Displays the latest product reviews.',
   'widget_def_desc.dbt_ecom_new_products' => 'Displays the most recently updated products.',

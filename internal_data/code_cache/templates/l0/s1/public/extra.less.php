@@ -1,10 +1,10 @@
 <?php
-// FROM HASH: 9752432a103702d607751a02625c89db
+// FROM HASH: d41d8cd98f00b204e9800998ecf8427e
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
 	$__finalCompiled = '';
-	$__finalCompiled .= $__templater->includeTemplate('fs_change_icons.less', $__vars) . '
+	$__finalCompiled .= '
 @font-face {
 	font-family: \'nebularegular\';
 	src: url(\'/styles/new-theme/fonts/nebula-regular-webfont.woff2\') format(\'woff2\'),

@@ -743,7 +743,31 @@ class Crud extends AbstractController
     public function actionIndex(ParameterBag $params)
     {
 
-        return $this->view('CRUD\XF:Crud\Index', 'crud_record_testing_pg_1', []);
+        $request = \XF::app()->request()->getRequestUri();
+
+
+        $parsedUri = parse_url($request);
+
+        echo "<pre>";
+        var_dump($parsedUri);
+        exit;
+
+
+        $visitor = \XF::visitor();
+
+        $threadIds = explode(",", $this->options()->fs_thumbnail_applicable_threads);
+
+        $threads = $this->finder('XF:Thread')->where('thread_id', $threadIds)->fetch();
+
+        $viewParams = [
+            'threads' => $threads,
+        ];
+
+        // echo "<pre>";
+        // var_dump($viewParams);
+        // exit;
+
+        return $this->view('CRUD\XF:Crud\Index', 'crud_record_testing_pg_1', $viewParams);
 
         //         $testing = "[math]\int[/math]
 
