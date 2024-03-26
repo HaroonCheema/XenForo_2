@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <templates>
-  <template type="public" title="welcome_banner_thread_list" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<div class="block-container">
+  <template type="public" title="welcome_banner_thread_list" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<style>
+	.structItem:nth-child(even) {
+		background-color: transparent !important;
+	}
+
+	.structItem:nth-child(even):hover {
+		background-color: #272727 !important;
+	}
+</style>
+
+<div class="block-container">
 	<div class="block-body">
 		<div class="structItemContainer">
 			<div class="structItemContainer-group js-threadList thread-grid">

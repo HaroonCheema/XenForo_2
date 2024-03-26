@@ -279,11 +279,11 @@ return array(
 	';
 		if ($__vars['thread']['thumbnail_title']) {
 			$__finalCompiled .= '
-		<a href="' . $__templater->func('link', array('threads' . (($__templater->method($__vars['thread'], 'isUnread', array()) AND (!$__vars['forceRead'])) ? '/unread' : ''), $__vars['thread'], ), true) . '" class="" data-tp-primary="on" data-xf-init="' . ($__vars['canPreview'] ? 'preview-tooltip' : '') . '" data-preview-url="' . ($__vars['canPreview'] ? $__templater->func('link', array('threads/preview', $__vars['thread'], ), true) : '') . '">' . (($__templater->func('strlen', array($__vars['thread']['thumbnail_title'], ), false) > 45) ? $__templater->func('snippet', array($__vars['thread']['thumbnail_title'], 45, array('stripBbCode' => true, ), ), true) : $__templater->escape($__vars['thread']['thumbnail_title'])) . '</a>
+		<a href="' . $__templater->func('link', array('threads' . (($__templater->method($__vars['thread'], 'isUnread', array()) AND (!$__vars['forceRead'])) ? '/unread' : ''), $__vars['thread'], ), true) . '" class="" data-tp-primary="on" data-xf-init="' . ($__vars['canPreview'] ? 'preview-tooltip' : '') . '" data-preview-url="' . ($__vars['canPreview'] ? $__templater->func('link', array('threads/preview', $__vars['thread'], ), true) : '') . '">' . (($__templater->func('strlen', array($__vars['thread']['thumbnail_title'], ), false) > 40) ? $__templater->func('snippet', array($__vars['thread']['thumbnail_title'], 40, array('stripBbCode' => true, ), ), true) : $__templater->escape($__vars['thread']['thumbnail_title'])) . '</a>
 		';
 		} else {
 			$__finalCompiled .= '
-		<a href="' . $__templater->func('link', array('threads' . (($__templater->method($__vars['thread'], 'isUnread', array()) AND (!$__vars['forceRead'])) ? '/unread' : ''), $__vars['thread'], ), true) . '" class="" data-tp-primary="on" data-xf-init="' . ($__vars['canPreview'] ? 'preview-tooltip' : '') . '" data-preview-url="' . ($__vars['canPreview'] ? $__templater->func('link', array('threads/preview', $__vars['thread'], ), true) : '') . '">' . (($__templater->func('strlen', array($__vars['thread']['title'], ), false) > 45) ? $__templater->func('snippet', array($__vars['thread']['title'], 45, array('stripBbCode' => true, ), ), true) : $__templater->escape($__vars['thread']['title'])) . '</a>
+		<a href="' . $__templater->func('link', array('threads' . (($__templater->method($__vars['thread'], 'isUnread', array()) AND (!$__vars['forceRead'])) ? '/unread' : ''), $__vars['thread'], ), true) . '" class="" data-tp-primary="on" data-xf-init="' . ($__vars['canPreview'] ? 'preview-tooltip' : '') . '" data-preview-url="' . ($__vars['canPreview'] ? $__templater->func('link', array('threads/preview', $__vars['thread'], ), true) : '') . '">' . (($__templater->func('strlen', array($__vars['thread']['title'], ), false) > 40) ? $__templater->func('snippet', array($__vars['thread']['title'], 40, array('stripBbCode' => true, ), ), true) : $__templater->escape($__vars['thread']['title'])) . '</a>
 	';
 		}
 		$__finalCompiled .= '
@@ -295,19 +295,6 @@ return array(
 	}
 	$__finalCompiled .= '
 			</div>
-';
-	if ($__vars['forum'] AND $__templater->func('in_array', array($__vars['thread']['thread_id'], $__templater->filter($__vars['xf']['options']['fs_welcome_banner_applicable_threads'], array(array('split', array()),), false), ), false)) {
-		$__finalCompiled .= '
-
-	<div class="inter-view-des">
-		<p>
-			' . (($__templater->func('strlen', array($__vars['thread']['FirstPost']['message'], ), false) > 113) ? ($__templater->func('snippet', array($__vars['thread']['FirstPost']['message'], 113, array('stripBbCode' => true, ), ), true) . '....') : $__templater->escape($__vars['thread']['FirstPost']['message'])) . '
-		</p>
-	</div>
-
-';
-	}
-	$__finalCompiled .= '
 
 			<div class="structItem-minor">
 				';
