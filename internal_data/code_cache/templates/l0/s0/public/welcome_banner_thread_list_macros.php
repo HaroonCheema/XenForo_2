@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 553da66537e1937364e53e11c7776a39
+// FROM HASH: f40cc9a96e360c18997c0126bdcf95a0
 return array(
 'macros' => array('item' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -329,48 +329,11 @@ return array(
 							';
 		}
 		$__compilerTemp2 .= '
-							';
-		if ($__vars['thread']['discussion_type'] != 'redirect') {
-			$__compilerTemp2 .= '
-								<li class="structItem-extraInfoMinor">
-									<a href="' . $__templater->func('link', array('threads/edit', $__vars['thread'], ), true) . '" data-xf-click="overlay" data-cache="false" data-href="' . $__templater->func('link', array('threads/edit', $__vars['thread'], $__vars['editParams'], ), true) . '">
-										' . 'Edit' . '
-									</a>
-								</li>
-							';
-		}
-		$__compilerTemp2 .= '
+							
 						';
 	}
 	$__compilerTemp2 .= '
-						';
-	if ($__vars['chooseName']) {
-		$__compilerTemp2 .= '
-							<li>' . $__templater->formCheckBox(array(
-			'standalone' => 'true',
-		), array(array(
-			'name' => $__vars['chooseName'] . '[]',
-			'value' => $__vars['thread']['thread_id'],
-			'class' => 'js-chooseItem',
-			'_type' => 'option',
-		))) . '</li>
-						';
-	} else if ($__vars['allowInlineMod'] AND $__templater->method($__vars['thread'], 'canUseInlineModeration', array())) {
-		$__compilerTemp2 .= '
-							<li>' . $__templater->formCheckBox(array(
-			'standalone' => 'true',
-		), array(array(
-			'value' => $__vars['thread']['thread_id'],
-			'class' => 'js-inlineModToggle',
-			'data-xf-init' => 'tooltip',
-			'title' => 'Select for moderation',
-			'label' => 'Select for moderation',
-			'hiddenlabel' => 'true',
-			'_type' => 'option',
-		))) . '</li>
-						';
-	}
-	$__compilerTemp2 .= '
+						
 					';
 	if (strlen(trim($__compilerTemp2)) > 0) {
 		$__finalCompiled .= '
@@ -410,25 +373,6 @@ return array(
 		}
 		$__finalCompiled .= '
 					</ul>
-
-					';
-		if (($__vars['thread']['discussion_type'] != 'redirect') AND (($__vars['thread']['reply_count'] >= $__vars['xf']['options']['messagesPerPage']) AND $__vars['xf']['options']['lastPageLinks'])) {
-			$__finalCompiled .= '
-						<span class="structItem-pageJump">
-						';
-			$__compilerTemp3 = $__templater->func('last_pages', array($__vars['thread']['reply_count'] + 1, $__vars['xf']['options']['messagesPerPage'], $__vars['xf']['options']['lastPageLinks'], ), false);
-			if ($__templater->isTraversable($__compilerTemp3)) {
-				foreach ($__compilerTemp3 AS $__vars['p']) {
-					$__finalCompiled .= '
-							<a href="' . $__templater->func('link', array('threads', $__vars['thread'], array('page' => $__vars['p'], ), ), true) . '">' . $__templater->escape($__vars['p']) . '</a>
-						';
-				}
-			}
-			$__finalCompiled .= '
-						</span>
-					';
-		}
-		$__finalCompiled .= '
 				';
 	}
 	$__finalCompiled .= '
@@ -530,7 +474,6 @@ return array(
 	if ($__vars['forum'] AND $__templater->func('in_array', array($__vars['thread']['thread_id'], $__templater->filter($__vars['xf']['options']['fs_welcome_banner_applicable_threads'], array(array('split', array()),), false), ), false)) {
 		$__finalCompiled .= '
 
-	<div class="num-top">' . (($__vars['thread']['thumb_unique_id'] != 0) ? $__templater->escape($__vars['thread']['thumb_unique_id']) : $__templater->escape($__vars['thread']['thread_id'])) . '</div>
 	<div class="thread-cover">
 		<img src="' . ($__templater->method($__vars['thread'], 'getThumbnailExit', array()) ? $__templater->escape($__templater->method($__vars['thread'], 'getThumbnailPath', array())) : $__templater->func('base_url', array('styles/FS/ThreadThumbnail/no_image.png', true, ), true)) . '" style="width:100%;" />
 

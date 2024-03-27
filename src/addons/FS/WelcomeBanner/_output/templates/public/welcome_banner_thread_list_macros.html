@@ -153,28 +153,9 @@
 							<xf:else />
 								<xf:set var="$editParams" value="{{ [] }}" />
 							</xf:if>
-							<xf:if is="$thread.discussion_type != 'redirect'">
-								<li class="structItem-extraInfoMinor">
-									<a href="{{ link('threads/edit', $thread) }}" data-xf-click="overlay" data-cache="false" data-href="{{ link('threads/edit', $thread, $editParams) }}">
-										{{ phrase('edit') }}
-									</a>
-								</li>
-							</xf:if>
+							
 						</xf:if>
-						<xf:if is="$chooseName">
-							<li><xf:checkbox standalone="true">
-								<xf:option name="{$chooseName}[]" value="{$thread.thread_id}" class="js-chooseItem" />
-							</xf:checkbox></li>
-						<xf:elseif is="$allowInlineMod AND $thread.canUseInlineModeration()" />
-							<li><xf:checkbox standalone="true">
-								<xf:option value="{$thread.thread_id}" class="js-inlineModToggle"
-									data-xf-init="tooltip"
-									title="{{ phrase('select_for_moderation') }}"
-									label="{{ phrase('select_for_moderation') }}"
-									hiddenlabel="true"
-								/>
-							</xf:checkbox></li>
-						</xf:if>
+						
 					</xf:contentcheck>
 					</ul>
 				</xf:if>
@@ -191,14 +172,6 @@
 							<li><a href="{{ link('forums', $thread.Forum) }}">{$thread.Forum.title}</a></li>
 						</xf:if>
 					</ul>
-
-					<xf:if is="$thread.discussion_type != 'redirect' && $thread.reply_count >= $xf.options.messagesPerPage && $xf.options.lastPageLinks">
-						<span class="structItem-pageJump">
-						<xf:foreach loop="{{ last_pages($thread.reply_count + 1, $xf.options.messagesPerPage, $xf.options.lastPageLinks) }}" value="$p">
-							<a href="{{ link('threads', $thread, {'page': $p}) }}">{$p}</a>
-						</xf:foreach>
-						</span>
-					</xf:if>
 				</xf:if>
 			</div>
 		</div>

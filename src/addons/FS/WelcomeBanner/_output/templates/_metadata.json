@@ -1,12 +1,12 @@
 {
     "public/welcome_banner_thread_list.html": {
-        "version_id": 1000010,
-        "version_string": "1.0.0 Alpha",
-        "hash": "dde05ab8ee0638fecad121c1eb61a80e"
+        "version_id": 1010100,
+        "version_string": "1.1.1 Alpha",
+        "hash": "987496e4e76fb52a6dbe45d06d63aaf4"
     },
     "public/welcome_banner_thread_list_macros.html": {
-        "version_id": 1000010,
-        "version_string": "1.0.0 Alpha",
-        "hash": "553da66537e1937364e53e11c7776a39"
+        "version_id": 1010100,
+        "version_string": "1.1.1 Alpha",
+        "hash": "f40cc9a96e360c18997c0126bdcf95a0"
     }
 }

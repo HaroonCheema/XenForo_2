@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <templates>
-  <template type="public" title="welcome_banner_thread_list" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<style>
+  <template type="public" title="welcome_banner_thread_list" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[<style>
 	.structItem:nth-child(even) {
 		background-color: transparent !important;
 	}
@@ -8,12 +8,20 @@
 	.structItem:nth-child(even):hover {
 		background-color: #272727 !important;
 	}
+
+	.block-container {
+		background: #1d1d1d;
+	}
+
 </style>
 
-<div class="block-container">
+<div class="" style="margin-bottom: 20px;">
 	<div class="block-body">
 		<div class="structItemContainer">
-			<div class="structItemContainer-group js-threadList thread-grid">
+			<p>
+				{{ phrase('editorial') }}
+			</p>
+			<div class="structItemContainer-group js-threadList thread-grid" style="padding: 8px;">
 				<xf:if is="$threads is not empty">
 					<xf:foreach loop="$threads" value="$thread">
 						<xf:macro name="{{ $templateOverrides.thread_list_macro ?: 'welcome_banner_thread_list_macros::item' }}"
@@ -26,7 +34,7 @@
 		</div>
 	</div>
 </div>]]></template>
-  <template type="public" title="welcome_banner_thread_list_macros" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:macro name="item"
+  <template type="public" title="welcome_banner_thread_list_macros" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[<xf:macro name="item"
 	arg-thread="!"
 	arg-forum=""
 	arg-forceRead="{{ false }}"
@@ -103,19 +111,6 @@
 					</xf:extension>
 
 					<xf:extension name="before_status_watch"></xf:extension>
-					<xf:if is="{$showWatched} AND {$xf.visitor.user_id}">
-						<xf:if is="{$thread.Watch.{$xf.visitor.user_id}}">
-							<li>
-								<i class="structItem-status structItem-status--watched" aria-hidden="true" title="{{ phrase('thread_watched')|for_attr }}"></i>
-								<span class="u-srOnly">{{ phrase('thread_watched') }}</span>
-							</li>
-							<xf:elseif is="!$forum AND {$thread.Forum.Watch.{$xf.visitor.user_id}}" />
-							<li>
-								<i class="structItem-status structItem-status--watched" aria-hidden="true" title="{{ phrase('forum_watched')|for_attr }}"></i>
-								<span class="u-srOnly">{{ phrase('forum_watched') }}</span>
-							</li>
-						</xf:if>
-					</xf:if>
 
 					<xf:extension name="before_status_type"></xf:extension>
 					<xf:if is="$thread.discussion_type == 'redirect'">
@@ -181,28 +176,9 @@
 							<xf:else />
 								<xf:set var="$editParams" value="{{ [] }}" />
 							</xf:if>
-							<xf:if is="$thread.discussion_type != 'redirect'">
-								<li class="structItem-extraInfoMinor">
-									<a href="{{ link('threads/edit', $thread) }}" data-xf-click="overlay" data-cache="false" data-href="{{ link('threads/edit', $thread, $editParams) }}">
-										{{ phrase('edit') }}
-									</a>
-								</li>
-							</xf:if>
+							
 						</xf:if>
-						<xf:if is="$chooseName">
-							<li><xf:checkbox standalone="true">
-								<xf:option name="{$chooseName}[]" value="{$thread.thread_id}" class="js-chooseItem" />
-							</xf:checkbox></li>
-						<xf:elseif is="$allowInlineMod AND $thread.canUseInlineModeration()" />
-							<li><xf:checkbox standalone="true">
-								<xf:option value="{$thread.thread_id}" class="js-inlineModToggle"
-									data-xf-init="tooltip"
-									title="{{ phrase('select_for_moderation') }}"
-									label="{{ phrase('select_for_moderation') }}"
-									hiddenlabel="true"
-								/>
-							</xf:checkbox></li>
-						</xf:if>
+						
 					</xf:contentcheck>
 					</ul>
 				</xf:if>
@@ -219,14 +195,6 @@
 							<li><a href="{{ link('forums', $thread.Forum) }}">{$thread.Forum.title}</a></li>
 						</xf:if>
 					</ul>
-
-					<xf:if is="$thread.discussion_type != 'redirect' && $thread.reply_count >= $xf.options.messagesPerPage && $xf.options.lastPageLinks">
-						<span class="structItem-pageJump">
-						<xf:foreach loop="{{ last_pages($thread.reply_count + 1, $xf.options.messagesPerPage, $xf.options.lastPageLinks) }}" value="$p">
-							<a href="{{ link('threads', $thread, {'page': $p}) }}">{$p}</a>
-						</xf:foreach>
-						</span>
-					</xf:if>
 				</xf:if>
 			</div>
 		</div>

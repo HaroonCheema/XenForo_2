@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: dde05ab8ee0638fecad121c1eb61a80e
+// FROM HASH: 987496e4e76fb52a6dbe45d06d63aaf4
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -12,12 +12,19 @@ return array(
 	.structItem:nth-child(even):hover {
 		background-color: #272727 !important;
 	}
+
+	.block-container {
+		background: #1d1d1d;
+	}
 </style>
 
-<div class="block-container">
+<div class="" style="padding-top: 8px; margin-bottom: 7px;">
 	<div class="block-body">
 		<div class="structItemContainer">
-			<div class="structItemContainer-group js-threadList thread-grid">
+			<h3 class="node-title" style="padding-left: 12.5px; padding-bottom: 4px;">
+				' . 'EDITORIAL' . '
+			</h3>
+			<div class="structItemContainer-group js-threadList thread-grid" style="padding: 8px;">
 				';
 	if (!$__templater->test($__vars['threads'], 'empty', array())) {
 		$__finalCompiled .= '

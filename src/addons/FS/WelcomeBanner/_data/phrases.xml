@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <phrases>
+  <phrase title="editorial" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[EDITORIAL]]></phrase>
   <phrase title="option.fs_welcome_banner_applicable_threads" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Welcome Banner Applicable Threads]]></phrase>
   <phrase title="option_explain.fs_welcome_banner_applicable_threads" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[List the welcome banner thread ids that are allowed to be display. Use , (comma) between ids.
 Example: 1,2,3,4,..]]></phrase>

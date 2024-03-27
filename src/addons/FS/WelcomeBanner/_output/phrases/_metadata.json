@@ -1,4 +1,10 @@
 {
+    "editorial.txt": {
+        "global_cache": false,
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "56d0396ae9ea1660bd6f830cde284e33"
+    },
     "option.fs_welcome_banner_applicable_threads.txt": {
         "global_cache": false,
         "version_id": 1000010,

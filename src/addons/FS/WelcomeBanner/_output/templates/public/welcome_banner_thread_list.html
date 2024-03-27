@@ -6,12 +6,19 @@
 	.structItem:nth-child(even):hover {
 		background-color: #272727 !important;
 	}
+
+	.block-container {
+		background: #1d1d1d;
+	}
 </style>
 
-<div class="block-container">
+<div class="" style="padding-top: 8px; margin-bottom: 7px;">
 	<div class="block-body">
 		<div class="structItemContainer">
-			<div class="structItemContainer-group js-threadList thread-grid">
+			<h3 class="node-title" style="padding-left: 12.5px; padding-bottom: 4px;">
+				{{ phrase('editorial') }}
+			</h3>
+			<div class="structItemContainer-group js-threadList thread-grid" style="padding: 8px;">
 				<xf:if is="$threads is not empty">
 					<xf:foreach loop="$threads" value="$thread">
 						<xf:macro name="{{ $templateOverrides.thread_list_macro ?: 'welcome_banner_thread_list_macros::item' }}"
