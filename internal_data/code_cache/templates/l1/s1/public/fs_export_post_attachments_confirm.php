@@ -12,7 +12,7 @@ return array(
 	<div class="block-container">
 		<div class="block-body">
 			' . $__templater->formInfoRow('
-				' . 'Please confirm that you want to <b>export all attachments</b> of the following post' . $__vars['xf']['language']['label_separator'] . '
+				' . 'Please confirm that you want to <b>export all attachments</b> of this post  <b>{message}</b> of the following thread' . $__vars['xf']['language']['label_separator'] . '
 				<strong>' . $__templater->escape($__vars['post']['Thread']['title']) . '</strong>
 			', array(
 		'rowtype' => 'confirm',

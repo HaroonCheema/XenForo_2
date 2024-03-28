@@ -1,10 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <phrases>
+  <phrase title="cron_entry.fs_resetDailyDownloadSize" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Reset Daily download size limit of all Users.]]></phrase>
+  <phrase title="cron_entry.fs_resetWeeklDownloadSize" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Reset Weekly download size limit of all Users.]]></phrase>
   <phrase title="fs_download_all_attachments" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Download all attachments]]></phrase>
+  <phrase title="fs_dta_daily_download_size_limit" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Daily download size limit]]></phrase>
+  <phrase title="fs_dta_daily_download_size_limit_explain" version_id="1000300" version_string="1.0.3 Alpha"><![CDATA[Enter daily download size limit for users of this userGroup in gigaBytes (GB).  If 0 then Unlimited]]></phrase>
+  <phrase title="fs_dta_daily_download_size_limit_reached" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Daily download size limit has been reached. You have downloaded<b> {visitorDailyDownloadSize}</b> of data today.  <b>( {visitorDailyDownloadSize} / {dailyDownloadSizeLimit} )</b>]]></phrase>
+  <phrase title="fs_dta_download_size_limit" version_id="1000500" version_string="1.0.5 Alpha"><![CDATA[Download size limit]]></phrase>
+  <phrase title="fs_dta_download_size_limit_explain" version_id="1000500" version_string="1.0.5 Alpha"><![CDATA[Enter download size limit for users of this userGroup in gigaBytes (GB).  If 0 then Unlimited
+(post-attachments File greater than this size will not be allowed to download.)]]></phrase>
+  <phrase title="fs_dta_file_size" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[File size]]></phrase>
+  <phrase title="fs_dta_remaining" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Remaining]]></phrase>
+  <phrase title="fs_dta_requested_file_size_is_larger_then_your_daily_remaining_download_size" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Requested file size is larger then your Daily remaining download size. <br>
+File size: <b>{sizeOfAttachments}</b>
+your daily remaining download size : <b>{dailyRemainingDownloadSize}</b>]]></phrase>
+  <phrase title="fs_dta_requested_file_size_is_larger_then_your_download_size_limit" version_id="1000500" version_string="1.0.5 Alpha"><![CDATA[Requested file size is larger then your Download size limit. <br>
+File size: <b>{sizeOfAttachments}</b>
+Your download size limit : <b>{downloadSizeLimit}</b>]]></phrase>
+  <phrase title="fs_dta_requested_file_size_is_larger_then_your_weekly_remaining_download_size" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Requested file size is larger then your weekly remaining download size. <br>
+File size: <b>{sizeOfAttachments}</b>.
+ Your weekly remaining download size : <b>{weeklyRemainingDownloadSize}</b>]]></phrase>
+  <phrase title="fs_dta_requested_userGroup_not_found" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Requested User Group not found.]]></phrase>
+  <phrase title="fs_dta_units_gb" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[GB]]></phrase>
+  <phrase title="fs_dta_weekly_download_size_limit" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Weekly download size limit]]></phrase>
+  <phrase title="fs_dta_weekly_download_size_limit_explain" version_id="1000300" version_string="1.0.3 Alpha"><![CDATA[Enter weekly download size limit for users of this userGroup in gigaBytes (GB).  If 0 then Unlimited]]></phrase>
+  <phrase title="fs_dta_weekly_download_size_limit_reached" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Weekly download size limit has been reached. You have downloaded<b> {visitorWeeklyDownloadSize}</b> of data this week.  <b>( {visitorWeeklyDownloadSize} / {weeklyDownloadSizeLimit} )</b>]]></phrase>
+  <phrase title="fs_dta_your_daily_download_size" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Your daily download size]]></phrase>
+  <phrase title="fs_dta_your_weekly_download_size" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Your weekly download size]]></phrase>
   <phrase title="fs_export_post_attachments" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Export post attachments (Confirm)]]></phrase>
   <phrase title="fs_export_thread_attachments" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Export thread attachments (Confirm)]]></phrase>
   <phrase title="fs_no_attachments_exist_in_this_post" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[No attachments exist in this post.]]></phrase>
   <phrase title="fs_no_attachments_exist_in_this_thread" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[No attachments exist in this thread.]]></phrase>
-  <phrase title="please_confirm_that_you_want_to_export_all_attachments_of_the_following_post" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Please confirm that you want to <b>export all attachments</b> of the following post]]></phrase>
+  <phrase title="please_confirm_that_you_want_to_export_all_attachments_of_the_following_post" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Please confirm that you want to <b>export all attachments</b> of this post  <b>{message}</b> of the following thread]]></phrase>
   <phrase title="please_confirm_that_you_want_to_export_all_attachments_of_the_following_thread" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Please confirm that you want to <b>export all attachments</b> of the following thread]]></phrase>
 </phrases>

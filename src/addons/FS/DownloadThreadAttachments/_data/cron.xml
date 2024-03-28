@@ -1,2 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<cron/>
+<cron>
+  <entry entry_id="fs_resetDailyDownloadSize" cron_class="FS\DownloadThreadAttachments\Cron\DownloadSizeLimit" cron_method="resetDailyDownloadSizeLimit" active="1"><![CDATA[{"day_type":"dom","dom":[-1],"hours":[0],"minutes":[0]}]]></entry>
+  <entry entry_id="fs_resetWeeklDownloadSize" cron_class="FS\DownloadThreadAttachments\Cron\DownloadSizeLimit" cron_method="resetWeeklyDownloadSizeLimit" active="1"><![CDATA[{"day_type":"dow","dow":[1],"hours":[0],"minutes":[0]}]]></entry>
+</cron>

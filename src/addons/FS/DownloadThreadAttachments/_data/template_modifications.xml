@@ -21,4 +21,9 @@
 </xf:comment>
 $0]]></replace>
   </modification>
+  <modification type="admin" template="user_group_edit" modification_key="fs_dta_attachDownloadLimit" description="add attachment Download size Limit inputs" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:codeeditorrow name="username_css" value="{$userGroup.username_css}"]]></find>
+    <replace><![CDATA[<xf:include template="fs_dta_download_size_limit" />
+$0]]></replace>
+  </modification>
 </template_modifications>

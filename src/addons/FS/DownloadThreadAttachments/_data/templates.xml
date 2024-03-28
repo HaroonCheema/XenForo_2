@@ -1,5 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <templates>
+  <template type="admin" title="fs_dta_download_size_limit" version_id="1000400" version_string="1.0.4 Alpha"><![CDATA[<xf:formrow rowtype="input"
+			label="{{ phrase('fs_dta_download_size_limit') }}">
+	<div class="inputGroup">
+		<xf:numberbox name="download_size_limit" value="{{ $userGroup.download_size_limit ?: 0 }}" min="0" />
+		<span class="inputGroup-splitter"></span>
+		<span class="inputGroup-text">{{ phrase('fs_dta_units_gb') }}</span>
+	</div>
+	<div class="formRow-explain">{{ phrase('fs_dta_download_size_limit_explain') }}</div>
+</xf:formrow>
+
+<xf:formrow rowtype="input"
+			label="{{ phrase('fs_dta_daily_download_size_limit') }}">
+	<div class="inputGroup">
+		<xf:numberbox name="daily_download_size_limit" value="{{ $userGroup.daily_download_size_limit ?: 0 }}" min="0" />
+		<span class="inputGroup-splitter"></span>
+		<span class="inputGroup-text">{{ phrase('fs_dta_units_gb') }}</span>
+	</div>
+	<div class="formRow-explain">{{ phrase('fs_dta_daily_download_size_limit_explain') }}</div>
+</xf:formrow>
+
+<xf:formrow rowtype="input"
+			label="{{ phrase('fs_dta_weekly_download_size_limit') }}">
+	<div class="inputGroup">
+		<xf:numberbox name="weekly_download_size_limit" value="{{ $userGroup.weekly_download_size_limit ?: 0 }}" min="0" />
+		<span class="inputGroup-splitter"></span>
+		<span class="inputGroup-text">{{ phrase('fs_dta_units_gb') }}</span>
+	</div>
+	<div class="formRow-explain">{{ phrase('fs_dta_weekly_download_size_limit_explain') }}</div>
+</xf:formrow>]]></template>
   <template type="public" title="fs_export_post_attachments_confirm" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('fs_export_post_attachments') }}</xf:title>
 
 
