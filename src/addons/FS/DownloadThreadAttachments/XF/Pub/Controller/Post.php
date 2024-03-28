@@ -144,7 +144,7 @@ class Post extends XFCP_Post
                 }
             }
 
-            $this->addTxtFile($post, $postMessage, $destinationDirPath);
+            $this->addTxtFile($post, $destinationDirPath);
 
             $fileName .= '.zip';
 
@@ -180,11 +180,23 @@ class Post extends XFCP_Post
         return $this->view('FS\DownloadThreadAttachments:Post', 'fs_export_post_attachments_confirm', $params);
     }
 
-    protected function addTxtFile($post, $postMessage, $destinationDirPath)
+    protected function addTxtFile($post, $destinationDirPath)
     {
         $postFulLink = \XF::app()->request()->getHost() . $this->buildLink('posts', $post);
 
-        $textFileName = "README.txt"; // Name of the text file
+        $stringFormatter = $this->app()->stringFormatter();
+
+        // $string = preg_replace(
+        // 	'#\[(code|icode)[^\]]*\].*\[/\\1\]#siU',
+        // 	'',
+        // 	$string
+        // );
+
+        $postMessage = $stringFormatter->stripBbCode($post->message, [
+            'stripQuote' => true,
+        ]);
+
+        $textFileName = "Post Message.txt"; // Name of the text file
         $fileContent = $postMessage . "\n\nPost Url :-  $postFulLink";
 
         // Path to the text file
