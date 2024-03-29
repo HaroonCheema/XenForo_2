@@ -32,25 +32,11 @@ return array(
 		$__finalCompiled .= '
 	';
 		$__templater->includeJs(array(
-			'src' => 'DBTech/Credits/editor.js',
-			'min' => '1',
-			'addon' => 'DBTech/Credits',
-		));
-		$__finalCompiled .= '
-	';
-		$__templater->includeJs(array(
 			'src' => 'xfmg/editor.js',
 			'min' => '1',
 		));
 		$__finalCompiled .= '
 ' . '
-';
-		$__templater->includeJs(array(
-			'src' => 'CMTV/Math/insert-math-button.js',
-			'min' => '1',
-			'addon' => 'CMTV/Math',
-		));
-		$__finalCompiled .= '
 
 	<script class="js-editorToolbars" type="application/json">' . $__templater->filter($__vars['editorToolbars'], array(array('json', array()),array('raw', array()),), true) . '</script>
 	<script class="js-editorToolbarSizes" type="application/json">' . $__templater->filter($__vars['editorToolbarSizes'], array(array('json', array()),array('raw', array()),), true) . '</script>
@@ -142,8 +128,7 @@ return array(
 			"Change Size": "' . $__templater->filter('Change size', array(array('escape', array('json', )),), true) . '",
 			"None": "' . $__templater->filter('None', array(array('escape', array('json', )),), true) . '",
 			"Alternative Text": "' . $__templater->filter('Alt text', array(array('escape', array('json', )),), true) . '",
-			"CMTV_Math_insert_math": "' . $__templater->filter('Insert math', array(array('escape', array('json', )),), true) . '",
-"__lang end__": ""
+			"__lang end__": ""
 		}
 	</script>
 

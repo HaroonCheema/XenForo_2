@@ -488,7 +488,6 @@ return array(
 					aria-controls="user-details"
 					href="' . $__templater->func('link', array('users/edit', $__vars['user'], ), true) . '#user-details">' . 'User details' . '</a>
 				' . $__compilerTemp8 . '
-				' . $__templater->includeTemplate('dbtech_credits_user_edit_tab', $__vars) . '
 				' . '
 			</span>
 		</h2>
@@ -951,7 +950,6 @@ return array(
 			' . $__compilerTemp25 . '
 
 			' . $__compilerTemp26 . '
-			' . $__templater->includeTemplate('dbtech_credits_user_edit_pane', $__vars) . '
 			' . '
 		</ul>
 	', array(

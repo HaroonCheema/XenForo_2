@@ -106,8 +106,7 @@ return array(
 		'explain' => 'You may use HTML',
 	)) . '
 
-			' . $__templater->includeTemplate('fs_dta_download_size_limit', $__vars) . '
-' . $__templater->formCodeEditorRow(array(
+			' . $__templater->formCodeEditorRow(array(
 		'name' => 'username_css',
 		'value' => $__vars['userGroup']['username_css'],
 		'mode' => 'css',
