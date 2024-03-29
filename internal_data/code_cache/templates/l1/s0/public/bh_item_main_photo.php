@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: f22f326fa5df4c048c18601426f93d98
+// FROM HASH: 77ea0aacf0165e13346dca21d5b626da
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -33,7 +33,7 @@ return array(
 	)) . '
 </div>
 ', array(
-		'action' => $__templater->func('link', array('bh_brands/item/setmainphoto', $__vars['item'], ), false),
+		'action' => $__templater->func('link', array('bh-item/setmainphoto', $__vars['item'], ), false),
 		'ajax' => 'true',
 		'class' => 'block',
 		'data-force-flash-message' => 'true',

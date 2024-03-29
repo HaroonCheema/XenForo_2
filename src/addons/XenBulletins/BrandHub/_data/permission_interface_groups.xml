@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <permission_interface_groups>
+  <interface_group interface_group_id="OwnerPagePostModeratorPermissions" display_order="252" is_moderator="1"/>
+  <interface_group interface_group_id="OwnerPagePostPermissions" display_order="251" is_moderator="0"/>
   <interface_group interface_group_id="bh_brand_hub" display_order="250" is_moderator="0"/>
 </permission_interface_groups>

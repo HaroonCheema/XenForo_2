@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: e93d35c00583fe45255cf6d3bbb9ba4e
+// FROM HASH: 6a11de4d382323f5c2b36fd3a26d6ed6
 return array(
 'macros' => array('ratingBar' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -38,15 +38,14 @@ return array(
 			<div class="p-description">' . 'Read what TractorByNet members think about the ' . $__templater->escape($__vars['item']['Brand']['brand_title']) . ' ' . $__templater->escape($__vars['item']['item_title']) . ' Subcompact Tractor' . '</div>
 		</div>
 		<div class="block-body block-row block-row--separated">
-			<div class="block-body">
 
 				<div class="reviewStarsDiv">
 					<strong>' . $__templater->filter($__vars['item']['rating_avg'], array(array('number', array(1, )),), true) . $__templater->callMacro('rating_macros', 'stars', array(
 		'rating' => $__vars['item']['rating_avg'],
 	), $__vars) . '</strong>  <br/><br/>
 
-					<a href="' . $__templater->func('link', array('bh_brands/item/rate', $__vars['item'], ), true) . '" class="bh_a" data-name="' . $__templater->escape($__vars['item']['item_title']) . '" data-xf-click="overlay">' . 'Write a review  >' . '</a><br />
-					<a href="' . $__templater->func('link', array('bh_brands/item/reviews', $__vars['item'], ), true) . '" target="_blank" class="bh_a" data-name="' . $__templater->escape($__vars['item']['item_title']) . '">' . 'View all ' . $__templater->escape($__vars['item']['review_count']) . ' reviews' . '</a>
+					<a href="' . $__templater->func('link', array('bh-item/rate', $__vars['item'], ), true) . '" class="bh_a" data-name="' . $__templater->escape($__vars['item']['item_title']) . '" data-xf-click="overlay">' . 'Write a review  >' . '</a><br />
+					<a href="' . $__templater->func('link', array('bh-item/reviews', $__vars['item'], ), true) . '" target="_blank" class="bh_a" data-name="' . $__templater->escape($__vars['item']['item_title']) . '">' . 'View all ' . $__templater->escape($__vars['item']['review_count']) . ' reviews' . '</a>
 				</div>
 				<div class="ratingBarsDiv">
 					';
@@ -66,41 +65,42 @@ return array(
 				</div>
 				<div class="clearfix"></div>
 				
-	<h6 class="block-body block-row block-row--separated">' . 'Most recent ' . $__templater->escape($__vars['item']['Brand']['brand_title']) . ' ' . $__templater->escape($__vars['item']['item_title']) . ' reviews' . '</h6><br>
-		';
-	if (!$__templater->test($__vars['itemReviews'], 'empty', array())) {
-		$__finalCompiled .= '
-					';
-		if ($__templater->isTraversable($__vars['itemReviews'])) {
-			foreach ($__vars['itemReviews'] AS $__vars['review']) {
-				$__finalCompiled .= '
-						' . $__templater->callMacro('bh_item_review_macros', 'review_simple', array(
-					'review' => $__vars['review'],
-				), $__vars) . '
-						<br>
-					';
-			}
-		}
-		$__finalCompiled .= '
-			<hr class="menu-separator menu-separator--hard" />
+			<div class="block-row block-row--separated"></div>
 			
-		';
-	} else {
-		$__finalCompiled .= '
-			<div class="blockMessage">' . 'No results found.' . '</div>
-		';
-	}
-	$__finalCompiled .= '
-			<div class="block-footer">
 				';
-	if ($__templater->func('count', array($__vars['itemRatings'], ), false) > $__vars['xf']['options']['bh_RecentReviewsCount']) {
-		$__finalCompiled .= '
-					<span class="block-footer-controls"><a href="' . $__templater->func('link', array('bh_brands/item/reviews', $__vars['item'], ), true) . '" target="_blank" class="bh_a button--link button" data-name="' . $__templater->escape($__vars['item']['item_title']) . '"><span class="button-text">' . 'Load more ' . $__templater->escape($__vars['item']['Brand']['brand_title']) . ' ' . $__templater->escape($__vars['item']['item_title']) . ' reviews' . '</span></a></span>
-				';
-	}
+	$__templater->includeJs(array(
+		'src' => 'BrandHub/brand_hub.js',
+	));
 	$__finalCompiled .= '
-				<a href="' . $__templater->func('link', array('bh_brands/item/rate', $__vars['item'], ), true) . '" class="bh_a button--link button" data-name="' . $__templater->escape($__vars['item']['item_title']) . '" data-xf-click="overlay"><span class="button-text">' . 'Write a review  >' . '</span></a>
-			</div>
+				<div data-xf-init="xb-bh-pagenav">
+					<div class="block">
+						<div class="block-container">
+							' . $__templater->callMacro('bh_overview_macros', 'list_filter_bar', array(
+		'filters' => $__vars['filters'],
+		'baseLinkPath' => 'bh-item/reviews',
+		'content' => $__vars['item'],
+	), $__vars) . '
+							
+							<div class="bloc block-row block-row--separated">
+								' . $__templater->callMacro('bh_item_reviews', 'item_reviews', array(
+		'item' => $__vars['item'],
+		'itemReviews' => $__vars['itemReviews'],
+		'visitorReview' => $__vars['visitorReview'],
+		'page' => $__vars['page'],
+		'perPage' => $__vars['perPage'],
+		'total' => $__vars['total'],
+		'filters' => $__vars['filters'],
+	), $__vars) . '
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="block-footer">
+					' . '
+					
+					<a href="' . $__templater->func('link', array('bh-item/rate', $__vars['item'], ), true) . '" class="bh_a button--link button" data-name="' . $__templater->escape($__vars['item']['item_title']) . '" data-xf-click="overlay" data-cache="false"><span class="button-text">' . 'Write a review  >' . '</span></a>
+				</div>
 				
 		
 		';
@@ -124,7 +124,6 @@ return array(
 		
 		</div>
 	</div>
-</div>
 </div>
 
 

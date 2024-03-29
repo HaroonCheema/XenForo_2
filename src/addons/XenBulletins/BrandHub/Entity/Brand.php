@@ -9,11 +9,10 @@ class Brand extends Entity {
     
      public function getBreadcrumbs($includeSelf = true)
 	{
-
 		if ($includeSelf)
 		{
 			$breadcrumbs[] = [
-				'href' => $this->app()->router()->buildLink('bh_brands/brand', $this),
+				'href' => $this->app()->router()->buildLink(\XF::options()->bh_main_route, $this),
 				'value' => $this->brand_title
 			];
 		}
@@ -31,6 +30,7 @@ class Brand extends Entity {
             'brand_title' => ['type' => self::STR, 'maxLength' => 100, 'required' => true],
             'discussion_count' => ['type' => self::UINT, 'default' => 0],
             'view_count' => ['type' => self::UINT, 'default' => 0],
+            'owner_count' => ['type' => self::UINT, 'default' => 0],
             'rating_count' => ['type' => self::UINT, 'default' => 0],
             'rating_sum' => ['type' => self::UINT, 'default' => 0],
             'rating_avg' => ['type' => self::FLOAT, 'default' => 0],

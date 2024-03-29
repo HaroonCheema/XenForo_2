@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 175a30969e61820beaf01a08b94030a8
+// FROM HASH: 7a341ba6ce6f31df2deab6e4a76f0bac
 return array(
 'macros' => array('link' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -54,18 +54,18 @@ return array(
 	if ($__vars['alreadySub']) {
 		$__finalCompiled .= '
 				
-					 ' . $__templater->button('UnSubsribe', array(
+					 ' . $__templater->button('Unsubscribe', array(
 			'id' => 'white-button',
 			'data-xf-click' => 'overlay',
-			'href' => $__templater->func('link', array('bh_brands/item/unsub', $__vars['item'], ), false),
+			'href' => $__templater->func('link', array('bh-item/unsub', $__vars['item'], ), false),
 		), '', array(
 		)) . '
 						';
 	} else {
 		$__finalCompiled .= '
-					 ' . $__templater->button('Subsribe', array(
+					 ' . $__templater->button('Subscribe', array(
 			'id' => 'white-button',
-			'href' => $__templater->func('link', array('bh_brands/item/itemsub', $__vars['item'], ), false),
+			'href' => $__templater->func('link', array('bh-item/itemsub', $__vars['item'], ), false),
 		), '', array(
 		)) . '
 				';
@@ -78,7 +78,7 @@ return array(
 
       	' . $__templater->callMacro(null, 'link', array(
 			'content' => $__vars['item'],
-			'confirmUrl' => $__templater->func('link', array('bh_brands/item/bookmark', $__vars['item'], ), false),
+			'confirmUrl' => $__templater->func('link', array('bh-item/bookmark', $__vars['item'], ), false),
 		), $__vars) . '
 	
 	';

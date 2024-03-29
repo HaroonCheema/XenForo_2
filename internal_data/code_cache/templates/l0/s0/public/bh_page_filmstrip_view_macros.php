@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 81d88c8970291d08efe0b12c57795b08
+// FROM HASH: 7ff8c7a448b817d07a35eea31595c11d
 return array(
 'macros' => array('attachment_film_strip' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -30,7 +30,7 @@ return array(
 				<div class="itemList itemList--strip js-filmStrip">
 					
 					<a data-xf-click="inserter" data-replace=".js-filmStrip"
-						href="' . $__templater->func('link', array('bh_item/ownerpage/filmstripjump', $__vars['item'], array('direction' => 'prev', 'attachment_id' => $__vars['filmStripParams']['firstItem']['attachment_id'], ), ), true) . '"
+						href="' . $__templater->func('link', array('owners/filmstripjump', $__vars['item'], array('direction' => 'prev', 'attachment_id' => $__vars['filmStripParams']['firstItem']['attachment_id'], ), ), true) . '"
 						class="js-filmStrip-button itemList-button itemList-button--prev' . ((!$__vars['filmStripParams']['hasPrev']) ? ' is-disabled' : '') . '">
 
 						<i class="itemList-button-icon"></i>
@@ -41,7 +41,7 @@ return array(
 			foreach ($__vars['filmStripParams']['Items'] AS $__vars['attachItem']) {
 				$__finalCompiled .= '
 						<div class="js-filmStrip-item itemList-item">
-							<a href="' . $__templater->func('link', array('bh_item/ownerpage/page', $__vars['item'], array('attachment_id' => $__vars['attachItem']['attachment_id'], ), ), true) . '">
+							<a href="' . $__templater->func('link', array('owners', $__vars['item'], array('attachment_id' => $__vars['attachItem']['attachment_id'], ), ), true) . '">
 								
 	
 					<span class="xfmgThumbnail xfmgThumbnail--image xfmgThumbnail--fluid xfmgThumbnail--iconSmallest ' . (($__vars['mainItem']['attachment_id'] == $__vars['attachItem']['attachment_id']) ? 'is-selected' : '') . ' ">
@@ -56,7 +56,7 @@ return array(
 		$__finalCompiled .= '
 
 					<a data-xf-click="inserter" data-replace=".js-filmStrip"
-						href="' . $__templater->func('link', array('bh_item/ownerpage/filmstripjump', $__vars['item'], array('direction' => 'next', 'attachment_id' => $__vars['filmStripParams']['lastItem']['attachment_id'], ), ), true) . '"
+						href="' . $__templater->func('link', array('owners/filmstripjump', $__vars['item'], array('direction' => 'next', 'attachment_id' => $__vars['filmStripParams']['lastItem']['attachment_id'], ), ), true) . '"
 						class="js-filmStrip-button itemList-button itemList-button--next' . ((!$__vars['filmStripParams']['hasNext']) ? ' is-disabled' : '') . '">
 
 						<i class="itemList-button-icon"></i>

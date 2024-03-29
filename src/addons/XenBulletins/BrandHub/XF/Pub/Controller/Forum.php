@@ -47,7 +47,11 @@ class Forum extends XFCP_Forum {
             $forum = $this->finder('XF:Forum')->where('node_id',$params->node_id)->fetchOne();
             if($forum && $forum->brand_id)
             {
-                $items = $this->Finder('XenBulletins\BrandHub:Item')->where('brand_id', $forum->brand_id)->fetch();
+//     
+                $defaultOrder = $this->options()->bh_dropdownItemListDefaultOrder ?: 'item_title';
+                $defaultDir =   'DESC';
+                        
+                $items = $this->Finder('XenBulletins\BrandHub:Item')->where('brand_id', $forum->brand_id)->order($defaultOrder,$defaultDir)->fetch();
                 $postThread->setParam('items', $items);
             }     
             

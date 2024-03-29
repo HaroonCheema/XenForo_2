@@ -3,6 +3,7 @@ return array (
   'style_prop_group.avatar' => 'Avatars',
   'style_prop_group.basic' => 'Basic options',
   'style_prop_group.bbCode' => 'BB code elements',
+  'style_prop_group.bh_brand_hub' => '[XB] Brand-Hub',
   'style_prop_group.block' => 'Blocks',
   'style_prop_group.borderSpacing' => 'Borders and spacing',
   'style_prop_group.button' => 'Buttons',

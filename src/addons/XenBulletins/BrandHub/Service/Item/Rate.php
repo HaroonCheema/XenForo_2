@@ -90,7 +90,7 @@ class Rate extends \XF\Service\AbstractService
 
 		$checker = $this->app->spam()->contentChecker();
 		$checker->check($user, $message, [
-			'permalink' => $this->app->router('public')->buildLink('canonical:bh_brands/item', $rating->Item),
+			'permalink' => $this->app->router('public')->buildLink('canonical:'.\XF::options()->bh_main_route.'/item', $rating->Item),
 			'content_type' => 'item_rating'
 		]);
 
@@ -136,7 +136,7 @@ class Rate extends \XF\Service\AbstractService
 		return $errors;
 	}
 
-	protected function _save()
+        protected function _save()
 	{
 		$rating = $this->rating;
                 $item = $this->item;
@@ -146,7 +146,11 @@ class Rate extends \XF\Service\AbstractService
 		if ($existing)
 		{
                     \XenBulletins\BrandHub\Helper::updateRatingAndReviewCount($rating, 'minus');
-			$existing->delete();
+                    
+//                    $attachRepo = $this->repository('XF:Attachment');
+//                    $attachRepo->fastDeleteContentAttachments('bh_review', $existing->item_rating_id);
+            
+                    $existing->delete();
 		}
                 
 		$rating->save(true, false);
@@ -157,7 +161,7 @@ class Rate extends \XF\Service\AbstractService
 
 //		if ($this->sendAlert)
 //		{
-//			$this->repository('XFRM:ResourceRating')->sendReviewAlertToResourceAuthor($rating);
+//			$this->repository('TEST:ResourceRating')->sendReviewAlertToResourceAuthor($rating);
 //		}
 
 		return $rating;

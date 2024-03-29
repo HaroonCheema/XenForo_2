@@ -17,19 +17,29 @@ class Setup extends AbstractSetup {
     use StepRunnerUninstallTrait;
 
 
+//    public function installStep2() 
+//    {
+//        $sm = $this->schemaManager();
+//
+//        
+//
+//    }
    
     
     public function installStep1() 
     {
         $sm = $this->schemaManager();
-
+        
         foreach ($this->getTables() AS $tableName => $closure) {
             $sm->createTable($tableName, $closure);
         }
         
         
-        $sm->alterTable('xf_thread', function(Alter $table) {
-             $table->addColumn('item_id', 'int')->setDefault(0);
+        $sm->alterTable('xf_thread', function(Alter $table) 
+        {
+            $table->addColumn('item_id', 'int')->setDefault(0);
+            $table->addColumn('thread_description', 'text')->comment('BrandHub item thread description');
+            $table->addKey('item_id');
         });
         
         $sm->alterTable('xf_forum', function(Alter $table) {
@@ -68,7 +78,7 @@ class Setup extends AbstractSetup {
         }
         
         $sm->alterTable('xf_thread', function(Alter $table) {
-             $table->dropColumns(['item_id']);
+             $table->dropColumns(['item_id','thread_description']);
         });
         
         $sm->alterTable('xf_forum', function(Alter $table) {
@@ -135,10 +145,166 @@ public function upgrade1020000Step1() {
         });
         
     }
+    
+    public function upgrade1020700Step1() {
+
+        $sm = $this->schemaManager();
+
+        $sm->alterTable('bh_item', function(Alter $table) {
+                 $table->addColumn('brand_title', 'varchar', 100)->setDefault('');
+        });
+        
+        $this->setBrandTitleInItems();
+        
+    }
+    
+    public function setBrandTitleInItems()
+    {
+        $items = \xf::app()->finder('XenBulletins\BrandHub:Item')->fetch();
+        foreach ($items as $item)
+        {
+            $item->fastUpdate('brand_title',$item->Brand->brand_title);
+        }
+    }
+
+    
+    public function upgrade1020900Step1() 
+    {
+        $sm = $this->schemaManager();
+
+        $sm->alterTable('xf_thread', function(Alter $table) 
+        {
+            $table->addColumn('thread_description', 'text')->comment('BrandHub item thread description');
+        });
+    }
    
+    public function upgrade3000100Step1() 
+    {
+        $sm = $this->schemaManager();
 
+        $sm->alterTable('bh_brand', function(Alter $table) 
+        {
+            $table->addColumn('owner_count', 'int')->after('view_count')->setDefault(0);
+        });
+        
+        $sm->alterTable('bh_item', function(Alter $table) 
+        {
+            $table->addColumn('owner_count', 'int')->after('view_count')->setDefault(0);
+        });
+    }
     
-    
-    
+    public function upgrade3000800Step1() 
+    {
+        $sm = $this->schemaManager();
 
+        $sm->alterTable('bh_item_rating', function(Alter $table) 
+        {
+            $table->addColumn('reaction_score', 'int')->setDefault(0);
+            $table->addColumn('reactions', 'blob');
+            $table->addColumn('reaction_users', 'blob');
+        });
+        
+        $sm->alterTable('bh_owner_page', function(Alter $table) 
+        {
+            $table->addColumn('title', 'varchar', 255)->nullable(true)->after('page_id');
+        });
+        
+    }
+    
+    
+    
+    public function upgrade3010000Step1() 
+    {
+        $sm = $this->schemaManager();
+        
+        $mysqlData = new MySql();
+        
+        foreach ($mysqlData->getTables3010000() AS $tableName => $closure) 
+        {
+            $sm->createTable($tableName, $closure);
+        }
+    }
+    
+    
+    
+    public function upgrade3030000Step1() 
+    {
+        $sm = $this->schemaManager();
+        
+        
+        $sm->alterTable('xf_thread', function(Alter $table) 
+        {
+            $table->addKey('item_id');
+        });
+        
+        
+        $sm->alterTable('bh_owner_page', function(Alter $table) 
+        {
+            $table->addKey('item_id');
+            $table->addKey('user_id');
+        });
+        
+        
+        $sm->alterTable('bh_item_subscribe', function(Alter $table) 
+        {
+            $table->addKey('item_id');
+        });
+        
+        
+        $sm->alterTable('bh_page_subscribe', function(Alter $table) 
+        {
+            $table->addKey('page_id');
+        });
+        
+        
+        $sm->alterTable('bh_item', function(Alter $table) 
+        {
+            $table->addKey('brand_id');
+        });
+        
+        
+        $sm->alterTable('bh_brand_description', function(Alter $table) 
+        {
+            $table->addKey('brand_id');
+        });
+        
+         
+        $sm->alterTable('bh_item_description', function(Alter $table) 
+        {
+            $table->addKey('item_id');
+        });
+        
+        
+        $sm->alterTable('bh_item_rating', function(Alter $table) 
+        {
+            $table->addKey('item_id');
+            $table->addKey('user_id');
+        });
+        
+        
+        $sm->alterTable('bh_owner_page_detail', function(Alter $table) 
+        {
+            $table->addKey('page_id');
+        });
+        
+        
+        $sm->alterTable('bh_page_count', function(Alter $table) 
+        {
+            $table->addKey('page_id');
+        });
+        
+        
+        
+        
+        $sm->createTable('bh_item_view', function (Create $table) 
+        {
+            $table->engine('MEMORY');
+
+            $table->addColumn('item_id', 'int');
+            $table->addColumn('total', 'int');
+            $table->addPrimaryKey('item_id');
+        });
+    }
+   
+   
 }

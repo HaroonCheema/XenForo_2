@@ -1,10 +1,23 @@
 <?php
-// FROM HASH: 01fbfe416f493fefdb5399b6d2da8b07
+// FROM HASH: 32b96130d479e0b529c2b15be81523d1
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
 	$__finalCompiled = '';
 	$__templater->pageParams['pageTitle'] = $__templater->preEscaped('Thread link to BrandHub (Inline moderation)');
+	$__finalCompiled .= '
+
+';
+	$__templater->includeCss('select2.less');
+	$__finalCompiled .= '
+';
+	$__templater->includeCss('bh_select2.less');
+	$__finalCompiled .= '
+';
+	$__templater->includeJs(array(
+		'prod' => 'xf/token_input-compiled.js',
+		'dev' => 'vendor/select2/select2.full.js, xf/token_input.js',
+	));
 	$__finalCompiled .= '
 
 ';
@@ -42,8 +55,10 @@ return array(
 			' . $__templater->formSelectRow(array(
 		'name' => 'item_id',
 		'value' => $__vars['selectedItem'],
+		'data-xf-init' => 'token-input-select',
 	), $__compilerTemp1, array(
 		'label' => 'Item',
+		'explain' => 'Select item to assign this thread. (you can find item quickly by typing the name of item)',
 	)) . '
 			
 		</div>
@@ -67,7 +82,14 @@ return array(
 		'action' => $__templater->func('link', array('inline-mod', ), false),
 		'class' => 'block',
 		'ajax' => 'true',
-	));
+	)) . '
+
+';
+	$__templater->inlineJs('
+	jQuery.extend(XF.phrases, {
+			s2_no_results: "' . $__templater->filter('No results found.', array(array('escape', array('js', )),), false) . '"
+		});	
+');
 	return $__finalCompiled;
 }
 );

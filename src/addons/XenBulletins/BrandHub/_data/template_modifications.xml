@@ -3,15 +3,13 @@
   <modification type="public" template="forum_post_thread" modification_key="add_items_dropdown" description="Add items dropDown in post thread template" execution_order="10" enabled="1" action="str_replace">
     <find><![CDATA[<!--[XF:after_title]-->]]></find>
     <replace><![CDATA[$0
-<xf:if is="$xf.visitor.hasPermission('bh_brand_hub', 'bh_can_assignThreadsToHub')">
-<xf:selectrow name="item_id" value="{$thread.item_id}" label="{{ phrase('bh_item') }}">
-	<xf:option value="0" selected="!{$thread.item_id}">{{ phrase('(none)') }}</xf:option>
+<xf:include template="bh_assign_Item_to_thread" />
 
-	<xf:foreach loop="$items" value="$item">
-		<xf:option value="{$item.item_id}" label="{$item.item_title}" />
-	</xf:foreach>
-</xf:selectrow>
-</xf:if>]]></replace>
+
+
+
+
+]]></replace>
   </modification>
   <modification type="public" template="forum_view" modification_key="item_lists" description="brand item lists" execution_order="10" enabled="1" action="str_replace">
     <find><![CDATA[<xf:extension name="above_node_list"></xf:extension>]]></find>
@@ -25,21 +23,16 @@
 			<div class="brandHub">	
 				<div>
 					<h4> {{phrase ('popular_items')}}
-				<a href="{{ link('bh_brands/brand', $brand) }}" class="bh_a" data-name="{$brand.brand_title}"> (view all)</a>
-				
+						
+						<a href="{{ link($xf.options.bh_main_route, $brand) }}" class="bh_a" data-name="{$brand.brand_title}"> (view all)</a>
 					</h4>
 				</div>
 					<ul class="grid-list">
 						<xf:foreach loop="$items" value="$item">
 							<li class="bh_item">
-								<a href="{{ link('bh_brands/item', $item) }}" class="bh_a" data-name="{$item.item_title}">{$item.item_title} ({{$item.discussion_count}})</a>
+								<a href="{{ link({$xf.options.bh_main_route}.'/item', $item) }}" class="bh_a" data-name="{$item.item_title}">{$item.item_title} ({{$item.discussion_count}})</a>
 							</li>
 						</xf:foreach>
-				
-					 <xf:if is="$itemCount > count($items)">
-						<a href="{{ link('bh_brands/brand', $brand) }}" class="bh_a" data-name="{$brand.brand_title}">{{phrase('bh_item_more')}}</a>
-					</xf:if>
-						
 					</ul>	
 				</div>
 	
@@ -86,15 +79,6 @@
   <modification type="public" template="thread_edit" modification_key="items_dropdown_in_thread_edit" description="Add items Drop-down in thread-edit template" execution_order="10" enabled="1" action="str_replace">
     <find><![CDATA[help-href="{{ link('forums/prefix-help', $forum) }}"/>]]></find>
     <replace><![CDATA[$0
-<xf:if is="$xf.visitor.hasPermission('bh_brand_hub', 'bh_can_assignThreadsToHub')">
-<xf:selectrow name="item_id" value="{$thread.item_id}" label="{{ phrase('bh_item') }}">
-	<xf:option value="0" selected="!{$thread.item_id}">{{ phrase('(none)') }}</xf:option>
-
-	<xf:foreach loop="$items" value="$item">
-		<xf:option value="{$item.item_id}" label="{$item.item_title}" />
-	</xf:foreach>
-</xf:selectrow>
-</xf:if>
-]]></replace>
+<xf:include template="bh_assign_Item_to_thread" />]]></replace>
   </modification>
 </template_modifications>

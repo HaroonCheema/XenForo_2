@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 6f365625d612eb5a5a810dbe73c05492
+// FROM HASH: 4df3ee4537a64ca82d94690819b02a88
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -31,12 +31,15 @@ return array(
 								<li class="bh_item">
 									<div class="borderpage">
 
+										';
+				$__vars['pageThumbnailUrl'] = $__templater->method($__vars['ownerPage'], 'getthumbnailurl', array());
+				$__finalCompiled .= '
 
-												<a href="' . $__templater->func('link', array('bh_item/ownerpage/page', $__vars['ownerPage'], ), true) . '" class="bh_a" >
+												<a href="' . $__templater->func('link', array('owners', $__vars['ownerPage'], ), true) . '" class="bh_a" >
 													';
-				if ($__templater->method($__vars['ownerPage'], 'getthumbnailurl', array())) {
+				if ($__vars['pageThumbnailUrl']) {
 					$__finalCompiled .= '
-														<img src="' . $__templater->escape($__templater->method($__vars['ownerPage'], 'getthumbnailurl', array())) . '"  />	
+														<img src="' . $__templater->escape($__vars['pageThumbnailUrl']) . '"  />	
 													';
 				} else {
 					$__finalCompiled .= '
@@ -45,7 +48,9 @@ return array(
 				}
 				$__finalCompiled .= '	
 
-													<strong>' . $__templater->escape($__vars['ownerPage']['User']['username']) . ' in ' . $__templater->escape($__vars['ownerPage']['Item']['item_title']) . ' </strong>
+													' . '
+													
+													<strong>' . ($__templater->escape($__vars['ownerPage']['title']) ?: '' . $__templater->escape($__vars['ownerPage']['User']['username']) . '\'s ' . $__templater->escape($__vars['ownerPage']['Item']['Brand']['brand_title']) . ' ' . $__templater->escape($__vars['ownerPage']['Item']['item_title']) . ' ') . '</strong></a>
 												</a>
 									</div>
 
@@ -69,7 +74,11 @@ return array(
 			</div>
 		</div>
 	</div>
-</div>';
+</div>
+
+
+
+';
 	return $__finalCompiled;
 }
 );

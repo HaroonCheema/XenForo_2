@@ -10,6 +10,10 @@ use XF\Mvc\ParameterBag;
 class Category extends AbstractController
 {
 
+//        protected function preDispatchController($action, ParameterBag $params)
+//	{
+//		$this->assertAdminPermission('brandhub');
+//	}
         
        public function actionIndex()
        {

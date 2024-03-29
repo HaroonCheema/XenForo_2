@@ -28,6 +28,7 @@ class ItemReview extends AbstractController
 
 		if ($this->isPost())
 		{
+                    $item = $review->Item;
                 
 			$type = $this->filter('hard_delete', 'bool') ? 'hard' : 'soft';
 			$reason = $this->filter('reason', 'str');
@@ -53,21 +54,44 @@ class ItemReview extends AbstractController
                         
                       
                         $review = $this->em()->find('XenBulletins\BrandHub:ItemRating', $params->item_rating_id);
-                        if (!$review)
-                        {
-                            return $this->redirect($this->buildLink('bh_brands/item/'.$params->item_id.'/#reviews'));
-                        }
+//                        
+//                        if (!$review)
+//                        {
+//                            $viewParams = [
+//                                'item' => $item,
+//                                'itemReview' => null,
+//                                'reviewDeleted' => true
+//                            ];
+//                                
+////                            return $this->redirect($this->buildLink(\XF::options()->bh_main_route.'/item/#reviews', $item));
+//                            $reply = $this->view('XenBulletins\BrandHub:Item\ItemReview', 'bh_list_review', $viewParams);
+//                            $reply->setJsonParam('message', \XF::phrase('your_changes_have_been_saved'));
+//                            return $reply;
+//                        }
                         
                         
-			return $this->redirect(
-				$this->buildLink('bh_brands/review', $review)
-			);
+//			return $this->redirect(
+//				$this->buildLink('bh-item/review', $review)
+//			);
+//                        
+//                        $this->setResponseType('json');
+                        
+                        $viewParams = [
+                            'item' => $item,
+                            'itemReview' => $review
+                        ];
+                        
+                        $reply = $this->view('XenBulletins\BrandHub:Item\ItemReview', 'bh_list_review', $viewParams);
+                        $reply->setJsonParam('message', \XF::phrase('your_changes_have_been_saved'));
+                        return $reply;
 		}
 		else
 		{
 			$viewParams = [
 				'review' => $review,
-				'item' => $review->Item
+				'item' => $review->Item,
+                                'route' => 'bh-item/review'
+                           
 			];
 			return $this->view('XenBulletins\BrandHub:ItemReview\Delete', 'bh_delete_review', $viewParams);
 		}
@@ -90,16 +114,29 @@ class ItemReview extends AbstractController
                     $review->save();
                     
                     \XenBulletins\BrandHub\Helper::updateRatingAndReviewCount($review, 'plus');
+                    
+                    
+                    $viewParams = [
+                            'item' => $review->Item,
+                            'itemReview' => $review
+                        ];
+                            
+                    $reply = $this->view('XenBulletins\BrandHub:Item', 'bh_list_review', $viewParams);
+                    $reply->setJsonParam('message', \XF::phrase('your_changes_have_been_saved'));
+                    return $reply;
                 }
-		/** @var \XF\ControllerPlugin\Undelete $plugin */
-		$plugin = $this->plugin('XF:Undelete');
-		return $plugin->actionUndelete(
-			$review,
-			$this->buildLink('bh_brands/review/undelete', $review),
-			$this->buildLink('bh_brands/review', $review),
-			\XF::phrase('bh_review_in_x_item', ['itemTitle' => $review->Item->item_title]),
-			'rating_state'
-		);
+                
+                
+                
+                
+                $viewParams = [
+                        'content' => $review,
+                        'confirmUrl' => $this->buildLink('bh-item/review/undelete', $review),
+                        'contentUrl' => $this->buildLink('bh-item/review', $review),
+                        'contentTitle' => \XF::phrase('bh_review_in_x_item', ['itemTitle' => $review->Item->item_title])
+                ];
+                        
+                return $this->view('XenBulletins\BrandHub:ItemReview\UnDelete', 'bh_review_undelete_confirm', $viewParams);
 	}
 
 	protected function redirectToReview(\XenBulletins\BrandHub\Entity\ItemRating $review)
@@ -123,7 +160,7 @@ class ItemReview extends AbstractController
 		}
 
 		return $this->redirect(
-			$this->buildLink('bh_brands/item/reviews', $item, $params)
+			$this->buildLink('bh-item/reviews', $item, $params)
 			. '#item-review-' . $review->item_rating_id
 		);
 	}
@@ -150,6 +187,43 @@ class ItemReview extends AbstractController
 
 		return $review;
 	}
+        
+        
+        //********************* React and Reactons **********************
+        public function actionReact(ParameterBag $params)
+	{
+//            $visitor = \xf::visitor();
+//            if (!$visitor->hasPermission('bh_brand_hub', 'bh_reactToReviews'))
+//            {
+//                return $this->noPermission();
+//            }
+            
+            $review = $this->assertViewableReview($params->item_rating_id);
+            $reactionPlugin = $this->plugin('XF:Reaction');
+            
+            return $reactionPlugin->actionReactSimple($review, 'bh-item/review');
+                 
+	}
+        
+        public function actionReactions(ParameterBag $params)
+	{
+            $review = $this->assertViewableReview($params->item_rating_id);
+            
+            $breadcrumbs = $review->Item->getBreadcrumbs();
+
+            $title = \XF::phrase('members_who_reacted_to_message_x', ['position' => ($review->position + 1)]);
+
+
+            /* @var \XF\ControllerPlugin\Reaction $reactionPlugin */
+            $reactionPlugin = $this->plugin('XF:Reaction');
+            return $reactionPlugin->actionReactions(
+                    $review,
+                    'bh-item/review/reactions',
+                    $title, $breadcrumbs
+            );
+	}
+        
+        //***************************************************************
 
 	protected function getRatingRepo()
 	{

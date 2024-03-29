@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 232eaad5e5bc1cd4832d4703f7c914d5
+// FROM HASH: da985edf36b865fe24992264b262f85b
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -16,20 +16,39 @@ return array(
 	)) . '
 ');
 	$__finalCompiled .= '
+
+<div class="block">
+	';
+	if (!$__templater->test($__vars['brands'], 'empty', array())) {
+		$__finalCompiled .= '
+		<div class="block-outer">
+			' . $__templater->callMacro('filter_macros', 'quick_filter', array(
+			'key' => 'bh_brand',
+			'ajax' => $__templater->func('link', array('bh_brand', null, ), false),
+			'class' => 'block-outer-opposite',
+		), $__vars) . '
+		</div>
+	';
+	}
+	$__finalCompiled .= '
 	
 	<div class="block-container">
 		';
 	if (!$__templater->test($__vars['brands'], 'empty', array())) {
 		$__finalCompiled .= '
-			<div class="block-body">
-				
-				';
+			';
 		$__compilerTemp1 = '';
 		if ($__templater->isTraversable($__vars['brands'])) {
 			foreach ($__vars['brands'] AS $__vars['brand']) {
 				$__compilerTemp1 .= '
-						' . $__templater->dataRow(array(
+							' . $__templater->dataRow(array(
 				), array(array(
+					'name' => 'brand_ids[]',
+					'value' => $__vars['brand']['brand_id'],
+					'_type' => 'toggle',
+					'html' => '',
+				),
+				array(
 					'_type' => 'cell',
 					'html' => $__templater->escape($__vars['brand']['brand_title']),
 				),
@@ -63,13 +82,23 @@ return array(
 					'_type' => 'delete',
 					'html' => '',
 				))) . '
-					';
+						';
 			}
 		}
-		$__finalCompiled .= $__templater->dataList('
-					' . $__templater->dataRow(array(
+		$__finalCompiled .= $__templater->form('
+					
+					
+				<div class="block-body">
+
+					' . $__templater->dataList('
+						' . $__templater->dataRow(array(
 			'rowtype' => 'header',
 		), array(array(
+			'class' => 'dataList-cell--min',
+			'_type' => 'cell',
+			'html' => '&nbsp;',
+		),
+		array(
 			'_type' => 'cell',
 			'html' => 'Title',
 		),
@@ -103,14 +132,36 @@ return array(
 			'_type' => 'cell',
 			'html' => '&nbsp;',
 		))) . '
-					' . $__compilerTemp1 . '
-				', array(
+						' . $__compilerTemp1 . '
+					', array(
 			'data-xf-init' => 'responsive-data-list',
 		)) . '
-			</div>
-			<div class="block-footer">
-				<span class="block-footer-counter">' . $__templater->func('display_totals', array($__vars['brands'], $__vars['total'], ), true) . '</span>
-			</div>
+				</div>
+				<div class="block-footer block-footer--split">
+					<span class="block-footer-counter">' . $__templater->func('display_totals', array($__vars['brands'], $__vars['total'], ), true) . '</span>
+					<span class="block-footer-select">' . $__templater->formCheckBox(array(
+			'standalone' => 'true',
+		), array(array(
+			'check-all' => '.dataList',
+			'label' => 'Select all',
+			'_type' => 'option',
+		))) . '</span>
+					<span class="block-footer-controls">' . $__templater->button('', array(
+			'type' => 'submit',
+			'name' => 'quickdelete',
+			'value' => '1',
+			'icon' => 'delete',
+		), '', array(
+		)) . '</span>
+				</div>
+			', array(
+			'action' => $__templater->func('link', array('bh_brand/quick-delete', ), false),
+			'ajax' => 'true',
+			'data-xf-init' => 'select-plus',
+			'data-sp-checkbox' => '.dataList-cell--toggle input:checkbox',
+			'data-sp-container' => '.dataList-row',
+			'data-sp-control' => '.dataList-cell a',
+		)) . '
 		';
 	} else {
 		$__finalCompiled .= '
@@ -125,9 +176,10 @@ return array(
 		'total' => $__vars['total'],
 		'link' => 'bh_brand',
 		'params' => $__vars['filters'],
-		'wrapperclass' => 'block-outer block-outer--after',
+		'wrapperclass' => 'js-filterHide block-outer block-outer--after',
 		'perPage' => $__vars['perPage'],
-	)));
+	))) . '
+</div>';
 	return $__finalCompiled;
 }
 );

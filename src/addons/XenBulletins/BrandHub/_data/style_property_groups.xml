@@ -1,2 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<style_property_groups/>
+<style_property_groups>
+  <style_property_group group_name="bh_brand_hub" title="[XB] Brand-Hub" description="Elements for the special page on BrandHub are styled here." display_order="0"/>
+</style_property_groups>

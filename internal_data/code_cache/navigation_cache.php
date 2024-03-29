@@ -62,18 +62,6 @@ return function($__templater, $__selectedNav, array $__vars)
 			}
 		}
 
-		if (((!$__vars['xf']['visitor']['user_id']) AND $__vars['xf']['options']['registrationSetup']['enabled'])) {
-			$__navTemp = [
-		'title' => \XF::phrase('nav.defaultRegister'),
-		'href' => $__templater->func('link', array('register', ), false),
-		'attributes' => [],
-	];
-			if ($__navTemp) {
-				$__tree['_default']['children']['defaultRegister'] = $__navTemp;
-				$__flat['defaultRegister'] =& $__tree['_default']['children']['defaultRegister'];
-			}
-		}
-
 		if ($__vars['xf']['visitor']['user_id']) {
 			$__navTemp = [
 		'title' => \XF::phrase('nav.defaultLogOut'),
@@ -83,6 +71,18 @@ return function($__templater, $__selectedNav, array $__vars)
 			if ($__navTemp) {
 				$__tree['_default']['children']['defaultLogOut'] = $__navTemp;
 				$__flat['defaultLogOut'] =& $__tree['_default']['children']['defaultLogOut'];
+			}
+		}
+
+		if (((!$__vars['xf']['visitor']['user_id']) AND $__vars['xf']['options']['registrationSetup']['enabled'])) {
+			$__navTemp = [
+		'title' => \XF::phrase('nav.defaultRegister'),
+		'href' => $__templater->func('link', array('register', ), false),
+		'attributes' => [],
+	];
+			if ($__navTemp) {
+				$__tree['_default']['children']['defaultRegister'] = $__navTemp;
+				$__flat['defaultRegister'] =& $__tree['_default']['children']['defaultRegister'];
 			}
 		}
 
@@ -726,6 +726,62 @@ return function($__templater, $__selectedNav, array $__vars)
 			}
 
 		}
+	}
+
+	$__navTemp = [
+		'title' => \XF::phrase('nav.bh_brand_hub'),
+		'href' => $__templater->func('link', array($__vars['xf']['options']['bh_main_route'], ), false),
+		'attributes' => [],
+	];
+	if ($__navTemp) {
+		$__tree['bh_brand_hub'] = $__navTemp;
+		$__flat['bh_brand_hub'] =& $__tree['bh_brand_hub'];
+		if (empty($__tree['bh_brand_hub']['children'])) { $__tree['bh_brand_hub']['children'] = []; }
+
+		if ($__templater->method($__vars['xf']['visitor'], 'hasPermission', array('bh_brand_hub', 'canViewRecentContent', ))) {
+			$__navTemp = [
+		'title' => \XF::phrase('nav.bh_recent_reviews'),
+		'href' => $__templater->func('link', array('bh-recent-reviews', ), false),
+		'attributes' => [],
+	];
+			if ($__navTemp) {
+				$__tree['bh_brand_hub']['children']['bh_recent_reviews'] = $__navTemp;
+				$__flat['bh_recent_reviews'] =& $__tree['bh_brand_hub']['children']['bh_recent_reviews'];
+			}
+		}
+
+		if ($__templater->method($__vars['xf']['visitor'], 'hasPermission', array('bh_brand_hub', 'canViewRecentContent', ))) {
+			$__navTemp = [
+		'title' => \XF::phrase('nav.bh_recent_photos'),
+		'href' => $__templater->func('link', array('bh-recent-photos', ), false),
+		'attributes' => [],
+	];
+			if ($__navTemp) {
+				$__tree['bh_brand_hub']['children']['bh_recent_photos'] = $__navTemp;
+				$__flat['bh_recent_photos'] =& $__tree['bh_brand_hub']['children']['bh_recent_photos'];
+			}
+		}
+
+		$__navTemp = [
+		'title' => \XF::phrase('nav.bh_quick_review'),
+		'href' => $__templater->func('link', array('bh-quick-review', ), false),
+		'attributes' => [],
+	];
+		if ($__navTemp) {
+			$__tree['bh_brand_hub']['children']['bh_quick_review'] = $__navTemp;
+			$__flat['bh_quick_review'] =& $__tree['bh_brand_hub']['children']['bh_quick_review'];
+		}
+
+		$__navTemp = [
+		'title' => \XF::phrase('nav.bh_quick_ownerPage'),
+		'href' => $__templater->func('link', array('bh-quick-owner-page', ), false),
+		'attributes' => [],
+	];
+		if ($__navTemp) {
+			$__tree['bh_brand_hub']['children']['bh_quick_ownerPage'] = $__navTemp;
+			$__flat['bh_quick_ownerPage'] =& $__tree['bh_brand_hub']['children']['bh_quick_ownerPage'];
+		}
+
 	}
 
 	$__navTemp = [

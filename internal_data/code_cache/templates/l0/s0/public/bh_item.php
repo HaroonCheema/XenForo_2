@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 50e38cee484e99d8b2c719482d33b505
+// FROM HASH: 51a544319825a61949d2f64976b90996
 return array(
 'macros' => array('navigation' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -64,13 +64,13 @@ return array(
 	$__finalCompiled = '';
 	$__finalCompiled .= '
 	<a class="' . $__templater->escape($__vars['baseClass']) . ' ' . (($__vars['pageSelected'] == 'all') ? $__templater->escape($__vars['selectedClass']) : '') . '"
-		href="' . $__templater->func('link', array('bh_brands', ), true) . '" rel="nofollow">' . 'All' . '</a>
+		href="' . $__templater->func('link', array($__vars['xf']['options']['bh_main_route'], ), true) . '" rel="nofollow">' . 'All' . '</a>
 	<a class="' . $__templater->escape($__vars['baseClass']) . ' ' . (($__vars['pageSelected'] == 'view_count') ? $__templater->escape($__vars['selectedClass']) : '') . '"
-		href="' . $__templater->func('link', array('bh_brands&type=view_count', ), true) . '" rel="nofollow">' . 'Most Viewed' . '</a>
+		href="' . $__templater->func('link', array($__vars['xf']['options']['bh_main_route'] . '&type=view_count', ), true) . '" rel="nofollow">' . 'Most Viewed' . '</a>
 	<a class="' . $__templater->escape($__vars['baseClass']) . ' ' . (($__vars['pageSelected'] == 'discussion_count') ? $__templater->escape($__vars['selectedClass']) : '') . '"
-		href="' . $__templater->func('link', array('bh_brands&type=discussion_count', ), true) . '" rel="nofollow">' . 'Most Discussed' . '</a>
+		href="' . $__templater->func('link', array($__vars['xf']['options']['bh_main_route'] . '&type=discussion_count', ), true) . '" rel="nofollow">' . 'Most Discussed' . '</a>
 	<a class="' . $__templater->escape($__vars['baseClass']) . ' ' . (($__vars['pageSelected'] == 'rating_avg') ? $__templater->escape($__vars['selectedClass']) : '') . '"
-		href="' . $__templater->func('link', array('bh_brands&type=rating_avg', ), true) . '" rel="nofollow">' . 'Highest Rated' . '</a>
+		href="' . $__templater->func('link', array($__vars['xf']['options']['bh_main_route'] . '&type=rating_avg', ), true) . '" rel="nofollow">' . 'Highest Rated' . '</a>
 ';
 	return $__finalCompiled;
 }

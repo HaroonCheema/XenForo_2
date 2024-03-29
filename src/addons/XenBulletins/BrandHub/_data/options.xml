@@ -11,7 +11,7 @@ gif</default_value>
   </option>
   <option option_id="bh_MinimumReviewLength" edit_format="spinbox" data_type="unsigned_integer">
     <default_value>0</default_value>
-    <relation group_id="bh_brand_hub" display_order="2"/>
+    <relation group_id="bh_brand_hub" display_order="3"/>
   </option>
   <option option_id="bh_RecentReviewsCount" edit_format="spinbox" data_type="unsigned_integer">
     <default_value>10</default_value>
@@ -26,13 +26,90 @@ gif</default_value>
     <default_value>10</default_value>
     <relation group_id="bh_brand_hub" display_order="4"/>
   </option>
+  <option option_id="bh_brandListDefaultOrder" edit_format="select" data_type="string">
+    <default_value>brand_id</default_value>
+    <edit_format_params>brand_id={{ phrase('bh_brand_id') }}
+brand_title={{ phrase('bh_brand_title') }}
+discussion_count={{ phrase('bh_discussions') }}
+view_count={{ phrase('bh_views') }}
+rating_avg={{ phrase('bh_rating_avg') }}
+review_count={{ phrase('bh_reviews') }}</edit_format_params>
+    <relation group_id="bh_brand_hub" display_order="2"/>
+  </option>
+  <option option_id="bh_default_tab" edit_format="select" data_type="string">
+    <default_value>view_count</default_value>
+    <edit_format_params>all = All 
+view_count = Most Viewed
+discussion_count = Most Discussed
+rating_avg = Highest Rated
+owner_count = Most Owners</edit_format_params>
+    <relation group_id="bh_brand_hub" display_order="1"/>
+  </option>
   <option option_id="bh_discussions_on_item" edit_format="spinbox" data_type="integer">
     <default_value>9</default_value>
     <relation group_id="bh_brand_hub" display_order="9"/>
   </option>
+  <option option_id="bh_dropdownItemListDefaultOrder" edit_format="select" data_type="string">
+    <default_value>item_title</default_value>
+    <edit_format_params>item_id={{ phrase('bh_item_id') }}
+item_title={{ phrase('bh_item_title') }}
+discussion_count={{ phrase('bh_discussions') }}
+view_count={{ phrase('bh_views') }}
+rating_avg={{ phrase('bh_rating_avg') }}
+review_count={{ phrase('bh_reviews') }}</edit_format_params>
+    <relation group_id="bh_brand_hub" display_order="2"/>
+  </option>
   <option option_id="bh_highest_rated_items" edit_format="spinbox" data_type="integer">
     <default_value>4</default_value>
     <relation group_id="bh_brand_hub" display_order="10"/>
+  </option>
+  <option option_id="bh_itemListDefaultOrder" edit_format="select" data_type="string">
+    <default_value>item_id</default_value>
+    <edit_format_params>item_id={{ phrase('bh_item_id') }}
+item_title={{ phrase('bh_item_title') }}
+discussion_count={{ phrase('bh_discussions') }}
+view_count={{ phrase('bh_views') }}
+rating_avg={{ phrase('bh_rating_avg') }}
+review_count={{ phrase('bh_reviews') }}</edit_format_params>
+    <relation group_id="bh_brand_hub" display_order="2"/>
+  </option>
+  <option option_id="bh_itemsPerPage" edit_format="spinbox" data_type="integer">
+    <default_value>20</default_value>
+    <relation group_id="bh_brand_hub" display_order="3"/>
+  </option>
+  <option option_id="bh_main_route" edit_format="textbox" data_type="string">
+    <default_value>bh-brands</default_value>
+    <relation group_id="bh_brand_hub" display_order="11"/>
+  </option>
+  <option option_id="bh_main_route_id" edit_format="textbox" data_type="integer">
+    <default_value>0</default_value>
+    <relation group_id="bh_brand_hub" display_order="12"/>
+  </option>
+  <option option_id="bh_makesPerPage" edit_format="spinbox" data_type="integer">
+    <default_value>20</default_value>
+    <relation group_id="bh_brand_hub" display_order="3"/>
+  </option>
+  <option option_id="bh_ownerPageDefaultOrder" edit_format="select" data_type="string">
+    <default_value>page_id,desc</default_value>
+    <edit_format_params>page_id,desc = {{ phrase('bh_newest') }}
+page_id,asc = {{ phrase('bh_oldest') }}
+view_count,desc = {{ phrase('bh_highest_views') }}
+view_count,asc = {{ phrase('bh_lowest_views') }}
+discussion_count,desc = {{ phrase('bh_highest_discussions') }}
+discussion_count,asc = {{ phrase('bh_lowest_discussions') }}
+reaction_score,desc = {{ phrase('bh_highest_reaction') }}
+reaction_score,asc = {{ phrase('bh_lowest_reaction') }}</edit_format_params>
+    <relation group_id="bh_brand_hub" display_order="2"/>
+  </option>
+  <option option_id="bh_reviewsDefaultOrder" edit_format="select" data_type="string">
+    <default_value>rating_date,desc</default_value>
+    <edit_format_params>rating_date,desc = {{ phrase('bh_newest_rating') }}
+rating_date,asc = {{ phrase('bh_oldest_rating') }}
+rating,desc = {{ phrase('bh_highest_rating') }}
+rating,asc = {{ phrase('bh_lowest_rating') }}
+reaction_score,desc = {{ phrase('bh_highest_reaction') }}
+reaction_score,asc = {{ phrase('bh_lowest_reaction') }}</edit_format_params>
+    <relation group_id="bh_brand_hub" display_order="2"/>
   </option>
   <option option_id="forum_items_display" edit_format="textbox" data_type="integer">
     <default_value>40</default_value>

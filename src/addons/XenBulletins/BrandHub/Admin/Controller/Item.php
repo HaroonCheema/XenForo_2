@@ -2,21 +2,38 @@
 
 namespace XenBulletins\BrandHub\Admin\Controller;
 
-use XF\Pub\Controller\AbstractController;
+use XF\Admin\Controller\AbstractController;
 use XF\Mvc\ParameterBag;
 use XF\Mvc\Entity\ArrayCollection;
 use XF\Mvc\FormAction;
 use XF\Mvc\Reply\View;
 
 class Item extends AbstractController {
+    
+//    protected function preDispatchController($action, ParameterBag $params)
+//    {
+//            $this->assertAdminPermission('brandhub');
+//    }
 
     public function actionIndex() {
         $page = $this->filterPage();
         $perPage = 20;
 
         $items = $this->Finder('XenBulletins\BrandHub:Item')->with('Category')->with('Brand');
+        
+        $filter = $this->filter('_xfFilter', [
+                'text' => 'str',
+                'prefix' => 'bool'
+        ]);
+
+        if (strlen($filter['text']))
+        {
+            $items->where('item_title', 'LIKE', $items->escapeLike($filter['text'], $filter['prefix'] ? '?%' : '%?%'));
+        }
+        
 
         $total = $items->total();
+        
         $this->assertValidPage($page, $perPage, $total, 'bh_brand');
         $items->limitByPage($page, $perPage);
 
@@ -28,6 +45,137 @@ class Item extends AbstractController {
         ];
 
         return $this->view('XenBulletins\BrandHub:Brand', 'bh_items', $viewParams);
+    }
+    
+    
+    protected function itemQuickSetProcess()
+    {
+        $form = $this->formAction();
+
+        $itemIds = $this->filter('item_ids', 'array-uint');
+        if (!$itemIds)
+        {
+                return $form;
+        }
+
+        $items = $this->Finder('XenBulletins\BrandHub:Item')->where('item_id',$itemIds)->fetch();
+
+        $input = $this->filter([
+
+            'brand_id' => 'STR',
+            'category_id' => 'UINT',
+        ]);
+
+        if(isset($input['brand_id']))
+        {
+           $explode = explode(',', $input['brand_id']);
+
+           $input['brand_id'] = intval($explode[0]);
+           $input['brand_title'] = $explode[1];
+        }
+
+
+        if (!$input['brand_id']) {
+            $this->validateItem('Brand');
+        }
+        if (!$input['category_id']) {
+            $this->validateItem('Category');
+        }
+
+        foreach ($items AS $item)
+        {
+            if ($input['brand_id'])
+            {
+                    $item->brand_id = $input['brand_id'];
+                    $item->brand_title =  $input['brand_title'];
+            }
+
+            if ($input['category_id'])
+            {
+                    $item->category_id = $input['category_id'];
+            }
+
+            $item->save();
+        }
+
+        return $form;
+    }
+    
+    public function actionQuickDelete()
+    {
+        $this->assertPostOnly();
+         
+        $itemIds = $this->filter('item_ids', 'array-uint');
+        
+        if (empty($itemIds))
+        {
+              return $this->redirect($this->buildLink('bh_item'));
+        }
+        
+        $items = $this->Finder('XenBulletins\BrandHub:Item')->where('item_id',$itemIds)->fetch();
+        
+        if ($this->isPost() && !$this->filter('quickdelete', 'bool'))
+        {
+            // deleting these items (all things related to these items will be deleted)
+            foreach($items as $item)
+            {   
+                $item->delete();
+            }
+
+            return $this->redirect($this->buildLink('bh_item'));
+        }
+        else
+        {
+
+            $viewParams = [
+
+                    'items' => $items
+            ];
+
+            return $this->view('XenBulletins\BrandHub:Brand', 'bh_items_quick_delete_editor', $viewParams);
+        }
+          
+    }
+    
+    public function actionQuickSet()
+    {
+            $this->assertPostOnly();            
+
+            $itemIds = $this->filter('item_ids', 'array-uint');
+
+            if (empty($itemIds))
+            {
+                return $this->redirect($this->buildLink('bh_item'));
+            }
+            
+            if($this->filter('quickdelete', 'bool'))
+            {
+                return $this->rerouteController(__CLASS__, 'quick-delete');
+            }
+
+            
+            if ($this->isPost() && !$this->filter('quickset', 'bool'))
+            {
+                $this->itemQuickSetProcess()->run();
+
+                return $this->redirect($this->buildLink('bh_item'));
+            }
+            else
+            {
+
+                $items = $this->Finder('XenBulletins\BrandHub:Item')->where('item_id',$itemIds)->fetch();
+                $brands = $this->Finder('XenBulletins\BrandHub:Brand')->order('brand_id', 'DESC')->fetch();
+                $brandCategories = $this->Finder('XenBulletins\BrandHub:Category')->order('category_id', 'DESC')->fetch();
+
+                $viewParams = [
+                    
+                        'items' => $items,
+                        'brands' => $brands,
+                        'brandCategories' => $brandCategories
+                ];
+
+                return $this->view('XenBulletins\BrandHub:Brand', 'bh_item_quickset_editor', $viewParams);
+            }
     }
 
     public function itemAddEdit($item) {
@@ -85,12 +233,21 @@ class Item extends AbstractController {
 
          $input = $this->filter([
             'item_title' => 'STR',
-            'brand_id' => 'UINT',
+            'brand_id' => 'STR',
             'category_id' => 'UINT',
             'make' => 'STR',
             'model' => 'STR',
             'user_id'=>'STR',
         ]);
+         
+         if(isset($input['brand_id']))
+         {
+            $explode = explode(',', $input['brand_id']);
+         
+            $input['brand_id'] = intval($explode[0]);
+            $input['brand_title'] = $explode[1];
+         }
+         
         
         $input['user_id']=\XF::visitor()->user_id;
         
@@ -137,7 +294,7 @@ class Item extends AbstractController {
 
                 $detail = $detail . " Model";
             }
-            if (strcmp($this->plugin('XF:Editor')->fromInput('description'), $item->Description->description)) {
+            if ($item->Description && strcmp($this->plugin('XF:Editor')->fromInput('description'), $item->Description->description)) {
 
                 $detail = $detail . " Description";
             }
@@ -157,7 +314,7 @@ class Item extends AbstractController {
             if ($detail != '') {
                 foreach ($requests as $request) {
 
-                    $link = $this->app->router('public')->buildLink('bh_brands/item', $request->Item);
+                    $link = $this->app->router('public')->buildLink(\XF::options()->bh_main_route.'/item', $request->Item);
                   
                     \XenBulletins\BrandHub\Helper::updateItemNotificiation($request->Item->item_title, $link, $detail, $request->User);
                 }
@@ -168,30 +325,28 @@ class Item extends AbstractController {
 
 
 
-        $itemName = $this->actionFind($input['item_title']);
+        $namedItemInBrand = $this->actionFind($input);
 
-        if (!$itemName) {
+        if (!$namedItemInBrand) 
+        {
             $form->basicEntitySave($item, $input);
-
-            return $form;
-        } else {
-            if ($item->item_id == $itemName->item_id) {
-
-
-
-
-
-
+        } 
+        else 
+        {
+            if ($item->item_id == $namedItemInBrand->item_id) 
+            {
                 $form->basicEntitySave($item, $input);
-
-                return $form;
-            } else {
-                $phraseKey = $itemName->item_title . " item already exists.";
+            } 
+            else 
+            {
+                $phraseKey = $namedItemInBrand->item_title . " item already exists in $namedItemInBrand->brand_title brand.";
                 throw $this->exception(
                                 $this->notFound(\XF::phrase($phraseKey))
                 );
             }
         }
+        
+        return $form;
     }
 
     public function actionSave(ParameterBag $params) {
@@ -203,6 +358,10 @@ class Item extends AbstractController {
         } else {
             $item = $this->em()->create('XenBulletins\BrandHub:Item');
         }
+
+
+
+
 
         $this->itemSaveProcess($item)->run();
 
@@ -276,7 +435,9 @@ class Item extends AbstractController {
               }
          
             $description = $this->finder('XenBulletins\BrandHub:ItemDescription')->where('item_id',$params->item_id)->fetchOne();
-            $description->delete();
+            
+            if($description) $description->delete();
+                
 
         }
       
@@ -307,10 +468,14 @@ class Item extends AbstractController {
         return $this->assertRecordExists('XenBulletins\BrandHub:Item', $id, $with, $phraseKey);
     }
 
-    public function actionFind($title) {
+    public function actionFind(array $input) 
+    {
 
-        $itemName = $this->finder('XenBulletins\BrandHub:Item')->where('item_title', $title)->fetchOne();
-        return $itemName;
+        $title = $input['item_title'];
+        $brandId = $input['brand_id'];
+        
+        $namedItemInBrand = $this->finder('XenBulletins\BrandHub:Item')->where('brand_id',$brandId)->where('item_title', $title)->fetchOne();
+        return $namedItemInBrand;
     }
 
     protected function getNodeTree() {
@@ -336,8 +501,10 @@ class Item extends AbstractController {
       
         $customFields = $this->filter('item.custom_fields', 'array');
          
+        $sepcification=0;
+        
         if($customFields){
-                  $sepcification=0;
+
                   $fieldSet=[];
                    $keys=array_keys($customFields);
 

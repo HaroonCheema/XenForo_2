@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 96670c2126a09373a4669061709fc1d7
+// FROM HASH: 19dd239e688efacfaee5933abf1a2b56
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -16,22 +16,46 @@ return array(
 	)) . '
 ');
 	$__finalCompiled .= '
-	
+
+<div class="block">
+	';
+	if (!$__templater->test($__vars['items'], 'empty', array())) {
+		$__finalCompiled .= '
+		<div class="block-outer">
+			' . $__templater->callMacro('filter_macros', 'quick_filter', array(
+			'key' => 'bh_item',
+			'ajax' => $__templater->func('link', array('bh_item', null, ), false),
+			'class' => 'block-outer-opposite',
+		), $__vars) . '
+		</div>
+	';
+	}
+	$__finalCompiled .= '
+
+
 	<div class="block-container">
 		';
 	if (!$__templater->test($__vars['items'], 'empty', array())) {
 		$__finalCompiled .= '
-			<div class="block-body">
-				
-				';
+			';
 		$__compilerTemp1 = '';
 		if ($__templater->isTraversable($__vars['items'])) {
 			foreach ($__vars['items'] AS $__vars['item']) {
 				$__compilerTemp1 .= '
-						' . $__templater->dataRow(array(
+							' . $__templater->dataRow(array(
 				), array(array(
+					'name' => 'item_ids[]',
+					'value' => $__vars['item']['item_id'],
+					'_type' => 'toggle',
+					'html' => '',
+				),
+				array(
 					'_type' => 'cell',
 					'html' => $__templater->escape($__vars['item']['item_title']),
+				),
+				array(
+					'_type' => 'cell',
+					'html' => $__templater->escape($__vars['item']['brand_title']),
 				),
 				array(
 					'_type' => 'cell',
@@ -67,15 +91,28 @@ return array(
 					'_type' => 'delete',
 					'html' => '',
 				))) . '
-					';
+						';
 			}
 		}
-		$__finalCompiled .= $__templater->dataList('
-					' . $__templater->dataRow(array(
+		$__finalCompiled .= $__templater->form('
+			
+				<div class="block-body">
+
+					' . $__templater->dataList('
+						' . $__templater->dataRow(array(
 			'rowtype' => 'header',
 		), array(array(
+			'class' => 'dataList-cell--min',
+			'_type' => 'cell',
+			'html' => '&nbsp;',
+		),
+		array(
 			'_type' => 'cell',
 			'html' => 'Title',
+		),
+		array(
+			'_type' => 'cell',
+			'html' => 'Brand',
 		),
 		array(
 			'_type' => 'cell',
@@ -111,14 +148,43 @@ return array(
 			'_type' => 'cell',
 			'html' => '&nbsp;',
 		))) . '
-					' . $__compilerTemp1 . '
-				', array(
+						' . $__compilerTemp1 . '
+					', array(
 			'data-xf-init' => 'responsive-data-list',
 		)) . '
-			</div>
-			<div class="block-footer">
-				<span class="block-footer-counter">' . $__templater->func('display_totals', array($__vars['items'], $__vars['total'], ), true) . '</span>
-			</div>
+				</div>
+				<div class="block-footer block-footer--split">
+					<span class="block-footer-counter">' . $__templater->func('display_totals', array($__vars['items'], $__vars['total'], ), true) . '</span>
+					<span class="block-footer-select">' . $__templater->formCheckBox(array(
+			'standalone' => 'true',
+		), array(array(
+			'check-all' => '.dataList',
+			'label' => 'Select all',
+			'_type' => 'option',
+		))) . '</span>
+					<span class="block-footer-controls">' . $__templater->button('Quick set', array(
+			'type' => 'submit',
+			'name' => 'quickset',
+			'value' => '1',
+		), '', array(
+		)) . '</span>
+					&nbsp;
+					<span class="block-footer-controls">' . $__templater->button('', array(
+			'type' => 'submit',
+			'name' => 'quickdelete',
+			'value' => '1',
+			'icon' => 'delete',
+		), '', array(
+		)) . '</span>
+				</div>
+			', array(
+			'action' => $__templater->func('link', array('bh_item/quick-set', ), false),
+			'ajax' => 'true',
+			'data-xf-init' => 'select-plus',
+			'data-sp-checkbox' => '.dataList-cell--toggle input:checkbox',
+			'data-sp-container' => '.dataList-row',
+			'data-sp-control' => '.dataList-cell a',
+		)) . '
 		';
 	} else {
 		$__finalCompiled .= '
@@ -133,9 +199,11 @@ return array(
 		'total' => $__vars['total'],
 		'link' => 'bh_item',
 		'params' => $__vars['filters'],
-		'wrapperclass' => 'block-outer block-outer--after',
+		'wrapperclass' => 'js-filterHide block-outer block-outer--after',
 		'perPage' => $__vars['perPage'],
-	)));
+	))) . '
+	
+</div>';
 	return $__finalCompiled;
 }
 );

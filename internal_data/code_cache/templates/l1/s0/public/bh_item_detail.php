@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: b4aa10ac38b16297a24118905b4b1fa6
+// FROM HASH: 762f54fc174a5291caadaed310282fc9
 return array(
 'extensions' => array('footer' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -76,7 +76,7 @@ return array(
 	<a class="' . $__templater->escape($__vars['baseClass']) . ' ' . (($__vars['pageSelected'] == 'reviews') ? $__templater->escape($__vars['selectedClass']) : '') . '"
 		href="' . $__templater->func('link', array($__vars['route'] . '/#reviews', $__vars['item'], ), true) . '" rel="nofollow">' . 'Reviews' . '</a>
 	<a class="' . $__templater->escape($__vars['baseClass']) . ' ' . (($__vars['pageSelected'] == 'ownerPage') ? $__templater->escape($__vars['selectedClass']) : '') . '"
-		href="' . $__templater->func('link', array($__vars['route'] . '/#ownerPage', $__vars['item'], ), true) . '" rel="nofollow">' . 'Owner Page' . '</a>
+		href="' . $__templater->func('link', array($__vars['route'] . '/#ownerPage', $__vars['item'], ), true) . '" rel="nofollow">' . 'Owner Pages' . '</a>
 ';
 	return $__finalCompiled;
 }
@@ -107,7 +107,7 @@ return array(
 	$__finalCompiled .= '
 
 		<div class="reactionsBar js-reactionsList ' . ($__vars['item']['reactions'] ? 'is-active' : '') . '">
-					' . $__templater->func('reactions', array($__vars['item'], 'bh_brands/item/reactions', array())) . '
+					' . $__templater->func('reactions', array($__vars['item'], 'bh-item/reactions', array())) . '
 		</div>
 
 		<div class="js-historyTarget message-historyTarget toggleTarget" data-href="trigger-href"></div>
@@ -129,7 +129,7 @@ return array(
 	$__compilerTemp1 .= '
 			' . $__templater->func('react', array(array(
 		'content' => $__vars['item'],
-		'link' => 'bh_brands/item/react',
+		'link' => 'bh-item/react',
 		'list' => '.js-reactionsList',
 	))) . '
 		';
@@ -150,17 +150,20 @@ return array(
 	$__finalCompiled = '';
 	$__templater->includeCss('bh_brandHub_list.less');
 	$__finalCompiled .= '
+
 ';
-	$__templater->pageParams['pageTitle'] = $__templater->preEscaped($__templater->escape($__vars['item']['Brand']['brand_title']) . ' ' . $__templater->escape($__vars['item']['item_title']) . ' ');
-	$__finalCompiled .= '	
-<div>' . $__templater->escape($__vars['item']['Category']['category_title']) . ' </div>
-<div class="title-rating">
-' . $__templater->callMacro('rating_macros', 'stars', array(
+	$__templater->pageParams['pageTitle'] = $__templater->preEscaped($__templater->escape($__vars['item']['Brand']['brand_title']) . ' ' . $__templater->escape($__vars['item']['item_title']));
+	$__finalCompiled .= '
+';
+	$__templater->pageParams['pageH1'] = $__templater->preEscaped('
+	' . $__templater->escape($__vars['item']['Brand']['brand_title']) . ' ' . $__templater->escape($__vars['item']['item_title']) . ' <span class="item-rating">' . $__templater->callMacro('rating_macros', 'stars', array(
 		'rating' => $__vars['item']['rating_avg'],
 		'class' => 'ratingStars--smaller',
-	), $__vars) . ' (' . $__templater->escape($__vars['item']['rating_count']) . ')
+	), $__vars) . '(' . $__templater->escape($__vars['item']['rating_count']) . ')</span>
+');
+	$__finalCompiled .= '
+<div>' . $__templater->escape($__vars['item']['Category']['category_title']) . ' </div>
 
-</div>
 
 
 ';
@@ -171,29 +174,43 @@ return array(
 	$__compilerTemp1 = '';
 	if ($__templater->method($__vars['xf']['visitor'], 'hasPermission', array('bh_brand_hub', 'bh_canUploadPhotos', ))) {
 		$__compilerTemp1 .= '
-	' . $__templater->button('Upload Photos', array(
-			'href' => $__templater->func('link', array('bh_brands/item/uploadphoto', $__vars['item'], ), false),
+		' . $__templater->button('Upload Photos', array(
+			'href' => $__templater->func('link', array('bh-item/uploadphoto', $__vars['item'], ), false),
 			'class' => 'button--cta',
 			'overlay' => 'true',
 		), '', array(
 		)) . '
-
 	';
 	}
 	$__compilerTemp2 = '';
 	if ($__templater->method($__vars['xf']['visitor'], 'hasPermission', array('bh_brand_hub', 'bh_canSetItemMainPhoto', ))) {
 		$__compilerTemp2 .= '
  		' . $__templater->button('Main Photo', array(
-			'href' => $__templater->func('link', array('bh_brands/item/mainphoto', $__vars['item'], ), false),
+			'href' => $__templater->func('link', array('bh-item/mainphoto', $__vars['item'], ), false),
 			'class' => '',
 			'overlay' => 'true',
 		), '', array(
 		)) . '
 	';
 	}
+	$__compilerTemp3 = '';
+	if ($__vars['xf']['visitor']['is_admin']) {
+		$__compilerTemp3 .= '
+		' . $__templater->button('Edit this Item', array(
+			'href' => $__templater->func('link_type', array('admin', 'bh_item/edit', $__vars['item'], ), false),
+			'class' => '',
+			'target' => '_blank',
+		), '', array(
+		)) . '
+	';
+	}
 	$__templater->pageParams['pageAction'] = $__templater->preEscaped('
+	
 	' . $__compilerTemp1 . '
+	
 	' . $__compilerTemp2 . '
+	
+	' . $__compilerTemp3 . '
 ');
 	$__finalCompiled .= '
 
@@ -203,7 +220,7 @@ return array(
 	<div style="float:right;">
 		' . $__templater->callMacro(null, 'navigation', array(
 		'pageSelected' => $__vars['pageSelected'],
-		'route' => 'bh_brands/item',
+		'route' => $__vars['xf']['options']['bh_main_route'] . '/item',
 		'alreadySub' => $__vars['alreadySub'],
 		'item' => $__vars['item'],
 	), $__vars) . '
@@ -223,7 +240,7 @@ return array(
 		if ($__vars['filmStripParams']['prevItem']) {
 			$__finalCompiled .= '
 		
-	<a href="' . $__templater->func('link', array('bh_brands/item', $__vars['item'], array('attachment_id' => $__vars['filmStripParams']['prevItem']['attachment_id'], ), ), true) . '" class="media-button media-button--prev" data-xf-key="ArrowLeft"><i class="media-button-icon"></i></a>	
+	<a href="' . $__templater->func('link', array($__vars['xf']['options']['bh_main_route'] . '/item', $__vars['item'], array('attachment_id' => $__vars['filmStripParams']['prevItem']['attachment_id'], ), ), true) . '" class="media-button media-button--prev" data-xf-key="ArrowLeft"><i class="media-button-icon"></i></a>	
 	
 		';
 		}
@@ -248,7 +265,7 @@ return array(
 	';
 		if ($__vars['filmStripParams']['nextItem']) {
 			$__finalCompiled .= '
-		<a href="' . $__templater->func('link', array('bh_brands/item', $__vars['item'], array('attachment_id' => $__vars['filmStripParams']['nextItem']['attachment_id'], ), ), true) . '" class="media-button media-button--next" data-xf-key="ArrowRight"><i class="media-button-icon"></i></a>
+		<a href="' . $__templater->func('link', array($__vars['xf']['options']['bh_main_route'] . '/item', $__vars['item'], array('attachment_id' => $__vars['filmStripParams']['nextItem']['attachment_id'], ), ), true) . '" class="media-button media-button--next" data-xf-key="ArrowRight"><i class="media-button-icon"></i></a>
 	
 	';
 		}
@@ -278,9 +295,9 @@ return array(
 
 		
 	';
-	$__compilerTemp3 = '';
 	$__compilerTemp4 = '';
-	$__compilerTemp4 .= '
+	$__compilerTemp5 = '';
+	$__compilerTemp5 .= '
 								   ' . $__templater->callMacro('item_custom_fields_macros_public', 'custom_fields_view', array(
 		'type' => 'bhItemfield',
 		'group' => 'below_record',
@@ -291,17 +308,17 @@ return array(
 		'wrapperClass' => 'resourceBody-fields resourceBody-fields--before',
 	), $__vars) . '
 								';
-	if (strlen(trim($__compilerTemp4)) > 0) {
-		$__compilerTemp3 .= '
+	if (strlen(trim($__compilerTemp5)) > 0) {
+		$__compilerTemp4 .= '
 						<h3 class="block-minorHeader">' . 'Specifications' . '</h3>
-								' . $__compilerTemp4 . '
+								' . $__compilerTemp5 . '
 						';
 	}
 	$__templater->modifySidebarHtml('shareSidebar', '
 			<div class="block">
 				<div class="block-container">
 					<div class="block-body block-row">
-					' . $__compilerTemp3 . '
+					' . $__compilerTemp4 . '
 
 						</div>
 				</div>
@@ -311,13 +328,13 @@ return array(
 
 
 	';
-	$__compilerTemp5 = '';
 	$__compilerTemp6 = '';
-	$__compilerTemp6 .= '
-								';
 	$__compilerTemp7 = '';
+	$__compilerTemp7 .= '
+								';
+	$__compilerTemp8 = '';
 	if ($__vars['itemPosition']['categoryItemReviewPosition']) {
-		$__compilerTemp7 .= '
+		$__compilerTemp8 .= '
 										' . $__templater->dataRow(array(
 		), array(array(
 			'_type' => 'cell',
@@ -325,9 +342,9 @@ return array(
 		))) . '
 								';
 	}
-	$__compilerTemp8 = '';
+	$__compilerTemp9 = '';
 	if ($__vars['itemPosition']['categoryItemViewPosition']) {
-		$__compilerTemp8 .= '
+		$__compilerTemp9 .= '
 										' . $__templater->dataRow(array(
 		), array(array(
 			'_type' => 'cell',
@@ -335,9 +352,9 @@ return array(
 		))) . '	
 								';
 	}
-	$__compilerTemp9 = '';
+	$__compilerTemp10 = '';
 	if ($__vars['itemPosition']['categoryItemDiscussionPosition']) {
-		$__compilerTemp9 .= '
+		$__compilerTemp10 .= '
 										' . $__templater->dataRow(array(
 		), array(array(
 			'_type' => 'cell',
@@ -345,9 +362,9 @@ return array(
 		))) . '
 								';
 	}
-	$__compilerTemp10 = '';
+	$__compilerTemp11 = '';
 	if ($__vars['itemPosition']['overallItemReviewPosition']) {
-		$__compilerTemp10 .= '
+		$__compilerTemp11 .= '
 										' . $__templater->dataRow(array(
 		), array(array(
 			'_type' => 'cell',
@@ -355,9 +372,9 @@ return array(
 		))) . '	
 								';
 	}
-	$__compilerTemp11 = '';
+	$__compilerTemp12 = '';
 	if ($__vars['itemPosition']['overallItemViewPosition']) {
-		$__compilerTemp11 .= '
+		$__compilerTemp12 .= '
 										' . $__templater->dataRow(array(
 		), array(array(
 			'_type' => 'cell',
@@ -365,9 +382,9 @@ return array(
 		))) . '	
 								';
 	}
-	$__compilerTemp12 = '';
+	$__compilerTemp13 = '';
 	if ($__vars['itemPosition']['overallItemDiscussionPosition']) {
-		$__compilerTemp12 .= '
+		$__compilerTemp13 .= '
 										' . $__templater->dataRow(array(
 		), array(array(
 			'_type' => 'cell',
@@ -375,19 +392,34 @@ return array(
 		))) . '	
 								';
 	}
-	$__compilerTemp6 .= $__templater->dataList('
+	$__compilerTemp14 = '';
+	if ($__vars['itemPosition']['itemOwnerPageRanking']) {
+		$__compilerTemp14 .= '
+										' . $__templater->dataRow(array(
+		), array(array(
+			'_type' => 'cell',
+			'html' => '#' . $__templater->escape($__vars['itemPosition']['itemOwnerPageRanking']) . ' Ranking of Most-OwnerPages in ' . $__templater->escape($__vars['itemPosition']['totalItems']) . ' items overall',
+		))) . '	
+								';
+	}
+	$__compilerTemp7 .= $__templater->dataList('
 									
-								' . $__compilerTemp7 . '
 								' . $__compilerTemp8 . '
+								' . $__compilerTemp9 . '
 									
-                          		' . $__compilerTemp9 . '
+                          		' . $__compilerTemp10 . '
 									
 							
-								' . $__compilerTemp10 . '
-									
 								' . $__compilerTemp11 . '
 									
 								' . $__compilerTemp12 . '
+									
+								' . $__compilerTemp13 . '
+									
+									
+								' . $__compilerTemp14 . '
+									
+									
 								
 								
 									
@@ -395,12 +427,12 @@ return array(
 		'data-xf-init' => 'responsive-data-list',
 	)) . '
 							';
-	if (strlen(trim($__compilerTemp6)) > 0) {
-		$__compilerTemp5 .= '
+	if (strlen(trim($__compilerTemp7)) > 0) {
+		$__compilerTemp6 .= '
  					<h3 class="block-minorHeader">' . '' . $__templater->escape($__vars['item']['Brand']['brand_title']) . ' ' . $__templater->escape($__vars['item']['item_title']) . ' Community Rankings' . '</h3>
 						<div class="block-body block-row">
 
-							' . $__compilerTemp6 . '
+							' . $__compilerTemp7 . '
 
 							</div>
 					';
@@ -408,7 +440,7 @@ return array(
 	$__templater->modifySidebarHtml('', '
 			<div class="block">
 				<div class="block-container">
-					' . $__compilerTemp5 . '
+					' . $__compilerTemp6 . '
 				</div>
 			</div>
 		', 'replace');
@@ -426,10 +458,12 @@ return array(
 		';
 	if ($__templater->method($__vars['xf']['visitor'], 'hasPermission', array('bh_brand_hub', 'bh_can_edit_itemDescript', ))) {
 		$__finalCompiled .= '
-			<a href="' . $__templater->func('link', array('bh_brands/item/edit', $__vars['item'], ), true) . '" data-xf-click="overlay">' . 'Edit' . '</a>
+			<a href="' . $__templater->func('link', array('bh-item/edit', $__vars['item'], ), true) . '" data-xf-click="overlay">' . 'Edit' . '</a>
 		';
 	}
 	$__finalCompiled .= '
+		
+		
 		';
 	if ($__templater->method($__vars['xf']['visitor'], 'hasPermission', array('bh_brand_hub', 'react', )) AND $__vars['xf']['visitor']['user_id']) {
 		$__finalCompiled .= '
@@ -444,8 +478,8 @@ return array(
 <div class=\'clearfix\'></div>
 
 ';
-	$__compilerTemp13 = '';
-	$__compilerTemp13 .= '
+	$__compilerTemp15 = '';
+	$__compilerTemp15 .= '
 					' . $__templater->callMacro('item_custom_fields_macros_public', 'custom_fields_view', array(
 		'type' => 'bhItemfield',
 		'group' => 'above_record',
@@ -456,14 +490,14 @@ return array(
 		'wrapperClass' => 'resourceBody-fields resourceBody-fields--before',
 	), $__vars) . '
 				';
-	if (strlen(trim($__compilerTemp13)) > 0) {
+	if (strlen(trim($__compilerTemp15)) > 0) {
 		$__finalCompiled .= '
 	<div class="block">
 		<div class="block-container">
 			<div class="block-body block-row">
 
 				<h3 class="block-minorHeader">' . 'Specifications' . '</h3>
-				' . $__compilerTemp13 . '
+				' . $__compilerTemp15 . '
 				<br>
 			</div>
 		</div>
@@ -482,68 +516,82 @@ return array(
 					</div>
 							<div class="block-body block-row block-row--separated">
 								<div class="block-body">
-									';
-	$__compilerTemp14 = '';
+									
+										
+										';
 	if (!$__templater->test($__vars['discussions'], 'empty', array())) {
-		$__compilerTemp14 .= '
+		$__finalCompiled .= '
 											';
+		$__compilerTemp16 = '';
 		if ($__templater->isTraversable($__vars['discussions'])) {
 			foreach ($__vars['discussions'] AS $__vars['discussion']) {
-				$__compilerTemp14 .= '
-											';
-				if ($__templater->method($__vars['discussion'], 'isUnread', array())) {
-					$__compilerTemp14 .= '
-												' . $__templater->dataRow(array(
-					), array(array(
-						'style' => 'font-weight:700;',
-						'href' => $__templater->func('link', array('threads', $__vars['discussion'], ), false),
-						'target' => '_blank',
-						'_type' => 'cell',
-						'html' => '<i class="fal fa-greater-than"></i>&nbsp;&nbsp;' . $__templater->func('prefix', array('thread', $__vars['discussion'], ), true) . $__templater->escape($__vars['discussion']['title']),
-					))) . '
+				$__compilerTemp16 .= '
+													' . $__templater->callMacro('bh_brand_hub_macros', 'itemDiscussion', array(
+					'discussion' => $__vars['discussion'],
+				), $__vars) . '
 												';
-				} else {
-					$__compilerTemp14 .= '
-													' . $__templater->dataRow(array(
-					), array(array(
-						'href' => $__templater->func('link', array('threads', $__vars['discussion'], ), false),
-						'target' => '_blank',
-						'_type' => 'cell',
-						'html' => '<i class="fal fa-greater-than"></i>&nbsp;&nbsp;' . $__templater->escape($__vars['discussion']['title']),
-					))) . '
-												';
-				}
-				$__compilerTemp14 .= '
-											';
 			}
 		}
-		$__compilerTemp14 .= '
-											';
-		if ($__vars['item']['discussion_count'] > $__vars['xf']['options']['bh_discussions_on_item']) {
-			$__compilerTemp14 .= '
-													' . $__templater->dataRow(array(
+		$__compilerTemp17 = '';
+		if ($__templater->method($__vars['xf']['visitor'], 'hasPermission', array('bh_brand_hub', 'bh_canEditDiscussionDesc', ))) {
+			$__compilerTemp17 .= '
+													<div class="block-footer block-footer--split">
+														';
+			if ($__vars['item']['discussion_count'] > $__vars['xf']['options']['bh_discussions_on_item']) {
+				$__compilerTemp17 .= '
+															<span class="block-footer-counter"><a href="' . $__templater->func('link', array('bh-item/itemthreads', $__vars['item'], ), true) . '" target="_blank">' . 'View all ' . $__templater->escape($__vars['item']['Brand']['brand_title']) . ' ' . $__templater->escape($__vars['item']['item_title']) . ' Topics' . '&nbsp;&nbsp;<i class="fal fa-greater-than"></i></a></span>
+														';
+			} else {
+				$__compilerTemp17 .= '
+															<span class="block-footer-counter"></span>
+														';
+			}
+			$__compilerTemp17 .= '
+														
+														<span class="block-footer-select">' . $__templater->formCheckBox(array(
+				'standalone' => 'true',
 			), array(array(
-				'href' => $__templater->func('link', array('bh_brands/item/itemthreads', $__vars['item'], ), false),
-				'target' => '_blank',
-				'_type' => 'cell',
-				'html' => '<i class="fal fa-greater-than"></i>&nbsp;&nbsp;' . 'View all ' . $__templater->escape($__vars['item']['Brand']['brand_title']) . ' ' . $__templater->escape($__vars['item']['item_title']) . ' Topics',
-			))) . '
+				'check-all' => '.dataList',
+				'label' => 'Select all',
+				'_type' => 'option',
+			))) . '</span>
+														<span class="block-footer-controls">' . $__templater->button('', array(
+				'type' => 'submit',
+				'name' => 'quickdelete',
+				'value' => '1',
+				'icon' => 'delete',
+			), '', array(
+			)) . '</span>
+													</div>
 												';
 		}
-		$__compilerTemp14 .= '
+		$__finalCompiled .= $__templater->form('
+												
+											' . $__templater->dataList('
+													
+												' . $__compilerTemp16 . '
+				
+											', array(
+			'data-xf-init' => 'responsive-data-list',
+		)) . '
+												' . $__compilerTemp17 . '
+											', array(
+			'action' => $__templater->func('link', array('bh-item/quick-delete', $__vars['item'], ), false),
+			'ajax' => 'true',
+			'data-xf-init' => 'select-plus',
+			'data-sp-checkbox' => '.dataList-cell--toggle input:checkbox',
+			'data-sp-container' => '.dataList-row',
+			'data-sp-control' => '.dataList-cell a',
+		)) . '
 										';
 	} else {
-		$__compilerTemp14 .= '
+		$__finalCompiled .= '
 											<div class="blockMessage">' . 'No results found.' . '</div>
 										';
 	}
-	$__finalCompiled .= $__templater->dataList('
-										
-										' . $__compilerTemp14 . '
+	$__finalCompiled .= '
 
-									', array(
-		'data-xf-init' => 'responsive-data-list',
-	)) . '
+
 								</div>
 							</div>			
 				</div>
@@ -554,6 +602,7 @@ return array(
 
 ' . $__templater->callMacro('bh_ad_macros', 'center_itemdetail1', array(), $__vars) . '
 	<div class=\'clearfix\'></div>
+
 
 ' . $__templater->includeTemplate('bh_user_reviews', $__vars) . '
 	<div class=\'clearfix\'></div>

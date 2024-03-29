@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 00f8ebd2c1d3308bd1d32675f701d17b
+// FROM HASH: c2c17b3495962c8c6b2d7ae65cdc66ba
 return array(
 'macros' => array('navigation' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -76,7 +76,7 @@ return array(
 	$__finalCompiled = '';
 	$__finalCompiled .= '
 	<a class="' . $__templater->escape($__vars['baseClass']) . ' ' . (($__vars['pageSelected'] == 'all') ? $__templater->escape($__vars['selectedClass']) : '') . '"
-		href="' . $__templater->func('link', array($__vars['route'], $__vars['brand'], ), true) . '" rel="nofollow">' . 'All' . ' (' . $__templater->escape($__vars['total']) . ') </a>
+		href="' . $__templater->func('link', array($__vars['route'], $__vars['brand'], array('type' => 'all', ), ), true) . '" rel="nofollow">' . 'All' . ' (' . $__templater->escape($__vars['total']) . ') </a>
 	
 	<a class="' . $__templater->escape($__vars['baseClass']) . ' ' . (($__vars['pageSelected'] == 'view_count') ? $__templater->escape($__vars['selectedClass']) : '') . '"
 		href="' . $__templater->func('link', array($__vars['route'], $__vars['brand'], array('type' => 'view_count', ), ), true) . '" rel="nofollow">' . 'Most Viewed' . '</a>
@@ -86,6 +86,9 @@ return array(
 	
 	<a class="' . $__templater->escape($__vars['baseClass']) . ' ' . (($__vars['pageSelected'] == 'rating_avg') ? $__templater->escape($__vars['selectedClass']) : '') . '"
 		href="' . $__templater->func('link', array($__vars['route'], $__vars['brand'], array('type' => 'rating_avg', ), ), true) . '" rel="nofollow">' . 'Highest Rated' . '</a>
+	
+	<a class="' . $__templater->escape($__vars['baseClass']) . ' ' . (($__vars['pageSelected'] == 'owner_count') ? $__templater->escape($__vars['selectedClass']) : '') . '"
+		href="' . $__templater->func('link', array($__vars['route'], $__vars['brand'], array('type' => 'owner_count', ), ), true) . '" rel="nofollow">' . 'Most Owners' . '</a>
 ';
 	return $__finalCompiled;
 }
@@ -186,6 +189,96 @@ return array(
 ';
 	return $__finalCompiled;
 }
+),
+'itemDiscussion' => array(
+'arguments' => function($__templater, array $__vars) { return array(
+		'discussion' => '!',
+	); },
+'code' => function($__templater, array $__vars, $__extensions = null)
+{
+	$__finalCompiled = '';
+	$__finalCompiled .= '
+	';
+	if ($__templater->method($__vars['discussion'], 'isUnread', array())) {
+		$__finalCompiled .= '
+		';
+		$__compilerTemp1 = '';
+		$__compilerTemp2 = '';
+		$__compilerTemp2 .= '
+							' . $__templater->func('snippet', array($__vars['discussion']['thread_description'], 120, array('stripBbCode' => true, ), ), true) . '
+						';
+		if (strlen(trim($__compilerTemp2)) > 0) {
+			$__compilerTemp1 .= '
+					&#13;
+					<div class="p-description">
+						' . $__compilerTemp2 . '
+					</div>
+				';
+		}
+		$__compilerTemp3 = array(array(
+			'style' => 'font-weight:700;',
+			'_type' => 'cell',
+			'html' => '
+				<a href="' . $__templater->func('link', array('threads', $__vars['discussion'], ), true) . '" target="_blank"><i class="fal fa-greater-than"></i>&nbsp;&nbsp;' . $__templater->func('prefix', array('thread', $__vars['discussion'], ), true) . $__templater->escape($__vars['discussion']['title']) . '</a>
+				' . $__compilerTemp1 . '
+			',
+		));
+		if ($__templater->method($__vars['xf']['visitor'], 'hasPermission', array('bh_brand_hub', 'bh_canEditDiscussionDesc', ))) {
+			$__compilerTemp3[] = array(
+				'href' => $__templater->func('link', array('threads/edit-description', $__vars['discussion'], ), false),
+				'overlay' => 'true',
+				'_type' => 'action',
+				'html' => ($__vars['discussion']['thread_description'] ? 'Edit description' : 'Add description'),
+			);
+		}
+		$__finalCompiled .= $__templater->dataRow(array(
+		), $__compilerTemp3) . '
+	';
+	} else {
+		$__finalCompiled .= '
+		';
+		$__compilerTemp4 = '';
+		$__compilerTemp5 = '';
+		$__compilerTemp5 .= '
+							' . $__templater->func('snippet', array($__vars['discussion']['thread_description'], 120, array('stripBbCode' => true, ), ), true) . '
+						';
+		if (strlen(trim($__compilerTemp5)) > 0) {
+			$__compilerTemp4 .= '
+					&#13;
+					<div class="p-description">
+						' . $__compilerTemp5 . '
+					</div>
+				';
+		}
+		$__compilerTemp6 = array(array(
+			'_type' => 'cell',
+			'html' => '
+				<a href="' . $__templater->func('link', array('threads', $__vars['discussion'], ), true) . '" target="_blank"><i class="fal fa-greater-than"></i>&nbsp;&nbsp;' . $__templater->escape($__vars['discussion']['title']) . '</a>
+				' . $__compilerTemp4 . '
+			',
+		));
+		if ($__templater->method($__vars['xf']['visitor'], 'hasPermission', array('bh_brand_hub', 'bh_canEditDiscussionDesc', ))) {
+			$__compilerTemp6[] = array(
+				'name' => 'thread_ids[]',
+				'value' => $__vars['discussion']['thread_id'],
+				'_type' => 'toggle',
+				'html' => '',
+			);
+			$__compilerTemp6[] = array(
+				'href' => $__templater->func('link', array('threads/edit-description', $__vars['discussion'], ), false),
+				'overlay' => 'true',
+				'_type' => 'action',
+				'html' => ($__vars['discussion']['thread_description'] ? 'Edit description' : 'Add description'),
+			);
+		}
+		$__finalCompiled .= $__templater->dataRow(array(
+		), $__compilerTemp6) . '
+	';
+	}
+	$__finalCompiled .= '
+';
+	return $__finalCompiled;
+}
 )),
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -194,6 +287,9 @@ return array(
 
 ' . '
 
+
+
+' . '
 
 
 ';

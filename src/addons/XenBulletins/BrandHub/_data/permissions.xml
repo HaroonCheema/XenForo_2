@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <permissions>
+  <permission permission_group_id="bh_brand_hub" permission_id="bh_canEditDiscussionDesc" permission_type="flag" interface_group_id="bh_brand_hub" display_order="13"/>
   <permission permission_group_id="bh_brand_hub" permission_id="bh_canSetItemMainPhoto" permission_type="flag" interface_group_id="bh_brand_hub" display_order="15"/>
   <permission permission_group_id="bh_brand_hub" permission_id="bh_canUploadPhotos" permission_type="flag" interface_group_id="bh_brand_hub" display_order="14"/>
   <permission permission_group_id="bh_brand_hub" permission_id="bh_canViewOwnerPageTab" permission_type="flag" interface_group_id="bh_brand_hub" display_order="15"/>
   <permission permission_group_id="bh_brand_hub" permission_id="bh_can_assignThreadsToHub" permission_type="flag" interface_group_id="bh_brand_hub" display_order="13"/>
+  <permission permission_group_id="bh_brand_hub" permission_id="bh_can_delete_Ownerpage" permission_type="flag" interface_group_id="bh_brand_hub" display_order="10"/>
   <permission permission_group_id="bh_brand_hub" permission_id="bh_can_edit_brandDescript" permission_type="flag" interface_group_id="bh_brand_hub" display_order="11"/>
   <permission permission_group_id="bh_brand_hub" permission_id="bh_can_edit_itemDescript" permission_type="flag" interface_group_id="bh_brand_hub" display_order="12"/>
   <permission permission_group_id="bh_brand_hub" permission_id="bh_can_edit_ownerpage" permission_type="flag" interface_group_id="bh_brand_hub" display_order="10"/>
   <permission permission_group_id="bh_brand_hub" permission_id="bh_rate_item" permission_type="flag" interface_group_id="bh_brand_hub" display_order="1"/>
+  <permission permission_group_id="bh_brand_hub" permission_id="bh_reactToReviews" permission_type="flag" interface_group_id="bh_brand_hub" display_order="17"/>
+  <permission permission_group_id="bh_brand_hub" permission_id="canViewRecentContent" permission_type="flag" interface_group_id="bh_brand_hub" display_order="10"/>
   <permission permission_group_id="bh_brand_hub" permission_id="can_view_subscribe_items" permission_type="flag" interface_group_id="bh_brand_hub" display_order="16"/>
   <permission permission_group_id="bh_brand_hub" permission_id="create_bookmark" permission_type="flag" interface_group_id="bh_brand_hub" display_order="16"/>
   <permission permission_group_id="bh_brand_hub" permission_id="deleteAnyReview" permission_type="flag" interface_group_id="bh_brand_hub" display_order="6"/>
@@ -16,4 +20,23 @@
   <permission permission_group_id="bh_brand_hub" permission_id="react_page" permission_type="flag" interface_group_id="bh_brand_hub" display_order="16"/>
   <permission permission_group_id="bh_brand_hub" permission_id="undelete" permission_type="flag" interface_group_id="bh_brand_hub" display_order="8"/>
   <permission permission_group_id="bh_brand_hub" permission_id="viewDeleted" permission_type="flag" interface_group_id="bh_brand_hub" display_order="9"/>
+  <permission permission_group_id="ownerPagePost" permission_id="approveUnapprove" permission_type="flag" interface_group_id="OwnerPagePostModeratorPermissions" display_order="9"/>
+  <permission permission_group_id="ownerPagePost" permission_id="comment" permission_type="flag" interface_group_id="OwnerPagePostPermissions" display_order="5"/>
+  <permission permission_group_id="ownerPagePost" permission_id="deleteAny" permission_type="flag" interface_group_id="OwnerPagePostModeratorPermissions" display_order="3"/>
+  <permission permission_group_id="ownerPagePost" permission_id="deleteOwn" permission_type="flag" interface_group_id="OwnerPagePostPermissions" display_order="6"/>
+  <permission permission_group_id="ownerPagePost" permission_id="editAny" permission_type="flag" interface_group_id="OwnerPagePostModeratorPermissions" display_order="2"/>
+  <permission permission_group_id="ownerPagePost" permission_id="editOwn" permission_type="flag" interface_group_id="OwnerPagePostPermissions" display_order="7"/>
+  <permission permission_group_id="ownerPagePost" permission_id="hardDeleteAny" permission_type="flag" interface_group_id="OwnerPagePostModeratorPermissions" display_order="4"/>
+  <permission permission_group_id="ownerPagePost" permission_id="inlineMod" permission_type="flag" interface_group_id="OwnerPagePostModeratorPermissions" display_order="1"/>
+  <permission permission_group_id="ownerPagePost" permission_id="manageOwn" permission_type="flag" interface_group_id="OwnerPagePostPermissions" display_order="3"/>
+  <permission permission_group_id="ownerPagePost" permission_id="post" permission_type="flag" interface_group_id="OwnerPagePostPermissions" display_order="4"/>
+  <permission permission_group_id="ownerPagePost" permission_id="react" permission_type="flag" interface_group_id="OwnerPagePostPermissions" display_order="2"/>
+  <permission permission_group_id="ownerPagePost" permission_id="undelete" permission_type="flag" interface_group_id="OwnerPagePostModeratorPermissions" display_order="8"/>
+  <permission permission_group_id="ownerPagePost" permission_id="uploadAttachment" permission_type="flag" interface_group_id="OwnerPagePostPermissions" display_order="9"/>
+  <permission permission_group_id="ownerPagePost" permission_id="uploadVideo" permission_type="flag" interface_group_id="OwnerPagePostPermissions" display_order="10"/>
+  <permission permission_group_id="ownerPagePost" permission_id="view" permission_type="flag" interface_group_id="OwnerPagePostPermissions" display_order="1"/>
+  <permission permission_group_id="ownerPagePost" permission_id="viewAttachment" permission_type="flag" interface_group_id="OwnerPagePostPermissions" display_order="8"/>
+  <permission permission_group_id="ownerPagePost" permission_id="viewDeleted" permission_type="flag" interface_group_id="OwnerPagePostModeratorPermissions" display_order="6"/>
+  <permission permission_group_id="ownerPagePost" permission_id="viewModerated" permission_type="flag" interface_group_id="OwnerPagePostModeratorPermissions" display_order="7"/>
+  <permission permission_group_id="ownerPagePost" permission_id="warn" permission_type="flag" interface_group_id="OwnerPagePostModeratorPermissions" display_order="5"/>
 </permissions>

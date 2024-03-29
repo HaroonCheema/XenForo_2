@@ -265,6 +265,13 @@ return array(
 	)) . '
 
 			' . '
+' . $__templater->includeTemplate('bh_assign_Item_to_thread', $__vars) . '
+
+
+
+
+
+
 
 			' . $__templater->callMacro(null, 'type_chooser', array(
 		'thread' => $__vars['thread'],

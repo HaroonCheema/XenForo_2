@@ -9,12 +9,109 @@ use XF\Mvc\Entity\Entity;
 use XF\Util\Arr;
 use XF\Entity\LinkableInterface;
 use XF\Entity\ReactionTrait;
+use XenBulletins\BrandHub\Helper;
 
 class OwnerPage extends Entity implements LinkableInterface {
     
      use ReactionTrait;
      
-         public function getBreadcrumbs($includeSelf = true)
+        public function canView(&$error = null)
+        {
+            return true;
+
+   //        $visitor = \XF::visitor();
+   //        if ($visitor->user_id == $this->user_id)
+   //        {
+   //                return true;
+   //        }
+        }
+     
+        public function canViewPostsOnOwnerPage(&$error = null)
+        {
+                $visitor = \XF::visitor();
+		if ( $visitor->user_id == $this->user_id )
+		{
+			return true;
+		}
+
+
+		if ($this->page_state != 'visible')
+		{
+			$error = \XF::phraseDeferred('this_owner_page_is_not_available');
+			return false;
+		}
+                
+                return \XF::visitor()->hasPermission('ownerPagePost', 'view');
+        }
+        
+        public function canViewDeletedPostsOnOwnerPage()
+	{
+		return \XF::visitor()->hasPermission('ownerPagePost', 'viewDeleted');
+	}
+
+	public function canViewModeratedPostsOnOwnerPage()
+	{
+		return \XF::visitor()->hasPermission('ownerPagePost', 'viewModerated');
+	}
+
+	public function canPostOnOwnerPage()
+	{
+		$visitor = \XF::visitor();
+                
+		return ($visitor->user_id
+			&& $visitor->hasPermission('ownerPagePost', 'view')
+			&& $visitor->hasPermission('ownerPagePost', 'post')
+//			&& ($this->user_id == $visitor->user_id)
+			&& $this->page_state == 'visible'
+		);
+	}
+        
+        public function canUploadAndManageAttachmentsOnOwnerPage(): bool
+	{
+		$visitor = \XF::visitor();
+
+		return ($visitor->user_id && $visitor->hasPermission('ownerPagePost', 'uploadAttachment'));
+	}
+        
+        
+        public function canUploadVideosOnOwnerPage(): bool
+	{
+		$options = $this->app()->options();
+
+		if (empty($options->allowVideoUploads['enabled']))
+		{
+			return false;
+		}
+
+		$visitor = \XF::visitor();
+
+		return ($visitor->user_id && $visitor->hasPermission('ownerPagePost', 'uploadVideo'));
+	}
+        
+        
+        public function getNewOwnerPagePost()
+	{
+		$ownerPagePost = $this->_em->create('XenBulletins\BrandHub:OwnerPagePost');
+		$ownerPagePost->owner_page_id = $this->page_id;
+
+		return $ownerPagePost;
+	}
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+        public function getBreadcrumbs($includeSelf = true)
 	{
               $breadcrumbs = $this->Item ? $this->Item->getBreadcrumbs() : [];
 
@@ -22,7 +119,7 @@ class OwnerPage extends Entity implements LinkableInterface {
 		if ($includeSelf)
 		{
 			$breadcrumbs[] = [
-				'href' => $this->app()->router()->buildLink('bh_item/ownerpage', $this),
+				'href' => $this->app()->router()->buildLink('owners', $this),
 			
 			];
 		}
@@ -40,14 +137,14 @@ class OwnerPage extends Entity implements LinkableInterface {
            public function getContentUrl(bool $canonical = false, array $extraParams = [], $hash = null)
 	{
           
-		$route = $canonical ? 'canonical:bh_item/ownerpage' : 'bh_item/ownerpage';
+		$route = $canonical ? 'canonical:owners' : 'owners';
                 
 		return $this->app()->router('public')->buildLink($route, $this, $extraParams, $hash);
 	}
 
 	public function getContentPublicRoute()
 	{
-		return 'bh_item/ownerpage';
+		return 'owners';
 	}
 
 	public function getContentTitle(string $context = '')
@@ -86,9 +183,46 @@ class OwnerPage extends Entity implements LinkableInterface {
 //        }
     }
     
+    
+    protected function _postSave() 
+    {
+        if($this->isInsert())
+        {
+            Helper::updateOwnerCount($this->Item, 'added');
+        }
+    }
+
+
+    protected function _postDelete()
+    {
+        
+        $pageDetail = $this->Detail;   
+                    
+        if($pageDetail)
+        {
+            $pageDetail->delete();
+        }
+        
+        $db = $this->db();
+        $db->delete('bh_page_subscribe', 'page_id = ?', [$this->page_id]);
+        
+        $db->delete('bh_page_count', 'page_id = ?', [$this->page_id]);
+        
+        if($this->Item)
+        {
+            Helper::updateOwnerCount($this->Item, 'removed');
+        }
+        
+
+        $attachRepo = $this->repository('XF:Attachment');
+        $attachRepo->fastDeleteOwnerPageAttachments('bh_item', $this->page_id);
+    }
+    
+    
+       
+    
     public function getThumbnailUrl()
 	{
-        
             $attachmentData = $this->finder('XF:Attachment')->where('content_type', 'bh_item')->where('page_id', $this->page_id)->where('page_main_photo', 1)->order('attach_date','Desc')->fetchOne();
             
            if(!$attachmentData){
@@ -97,7 +231,7 @@ class OwnerPage extends Entity implements LinkableInterface {
                     
            }
 
-            return $attachmentData->Data ? $attachmentData->Data->getThumbnailUrl() : '';
+            return ($attachmentData && $attachmentData->Data) ? $attachmentData->Data->getThumbnailUrl() : '';
 	}
     
         public static function getStructure(Structure $structure) {
@@ -110,6 +244,7 @@ class OwnerPage extends Entity implements LinkableInterface {
         
         $structure->columns = [
             'page_id' => ['type' => self::UINT, 'autoIncrement' => true],
+            'title' =>   ['type' => self::STR, 'default' => NULL],
             'page_state' => ['type' => self::STR, 'default' => 'visible',
                 'allowedValues' => ['visible', 'moderated', 'deleted'], 'api' => true
             ],

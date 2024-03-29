@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 9ae039a6308baf8f154c11dc964ee8e8
+// FROM HASH: c25355acdd5e50ded44f9dd3af6d6e9b
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -19,40 +19,36 @@ return array(
 		if ($__templater->isTraversable($__vars['highestRatedItems'])) {
 			foreach ($__vars['highestRatedItems'] AS $__vars['highestRatedItem']) {
 				$__finalCompiled .= '
+									
+									';
+				$__vars['itemThumbnailUrl'] = $__templater->method($__vars['highestRatedItem'], 'getthumbnailurl', array());
+				$__finalCompiled .= '
 								
 								<li class="bh_item">
 
 									<div class="contentRow-main contentRow-main--close">
-										';
-				if ($__templater->method($__vars['highestRatedItem'], 'getthumbnailurl', array()) != '') {
+										
+										<a href="' . $__templater->func('link', array($__vars['xf']['options']['bh_main_route'] . '/item', $__vars['highestRatedItem'], ), true) . '" class="bh_a" >
+											';
+				if ($__vars['itemThumbnailUrl']) {
 					$__finalCompiled .= '
-											   <a href="' . $__templater->func('link', array('bh_item/ownerpage', $__vars['highestRatedItem'], ), true) . '" class="bh_a" >
-												<img src="' . $__templater->escape($__templater->method($__vars['highestRatedItem'], 'getthumbnailurl', array())) . '" alt="Item-image" />		
-
-													<div class="contentRow-lesser">
-														' . $__templater->escape($__vars['highestRatedItem']['item_title']) . '
-														' . $__templater->callMacro('rating_macros', 'stars', array(
-						'rating' => $__vars['highestRatedItem']['rating_avg'],
-						'class' => 'ratingStars--smaller',
-					), $__vars) . ' (' . $__templater->escape($__vars['highestRatedItem']['rating_count']) . ') 
-													</div>
-												</a>
-										';
+												<img src="' . $__templater->escape($__vars['itemThumbnailUrl']) . '" alt="Item-image" />
+											';
 				} else {
 					$__finalCompiled .= '
-											   <a href="' . $__templater->func('link', array('bh_item/ownerpage', $__vars['highestRatedItem'], ), true) . '" class="bh_a" >
-												   <i class="fas fa-image fa-4x" ></i>
-												<div class="contentRow-lesser">
-														' . $__templater->escape($__vars['highestRatedItem']['item_title']) . '
-														' . $__templater->callMacro('rating_macros', 'stars', array(
-						'rating' => $__vars['highestRatedItem']['rating_avg'],
-						'class' => 'ratingStars--smaller',
-					), $__vars) . ' (' . $__templater->escape($__vars['highestRatedItem']['rating_count']) . ') 
-													</div>
-												</a>
-										';
+												<i class="fas fa-image fa-4x" ></i>
+											';
 				}
 				$__finalCompiled .= '
+
+											<div class="contentRow-lesser">
+												' . $__templater->escape($__vars['highestRatedItem']['item_title']) . '
+												' . $__templater->callMacro('rating_macros', 'stars', array(
+					'rating' => $__vars['highestRatedItem']['rating_avg'],
+					'class' => 'ratingStars--smaller',
+				), $__vars) . ' (' . $__templater->escape($__vars['highestRatedItem']['rating_count']) . ') 
+											</div>
+										</a>
 									</div>
 
 									</li>

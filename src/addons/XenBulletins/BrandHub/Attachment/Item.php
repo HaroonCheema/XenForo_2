@@ -98,7 +98,7 @@ class Item extends AbstractHandler
 
 	public function getContainerLink(Entity $container, array $extraParams = [])
 	{
-		return \XF::app()->router('admin')->buildLink('item-list', $container, $extraParams);
+		return \XF::app()->router('public')->buildLink('bh-item', $container, $extraParams);
 	}
 
 	public function getContext(Entity $entity = null, array $extraContext = [])

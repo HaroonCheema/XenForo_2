@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: e2ebc927de748c6bcd90d6e0b964ac55
+// FROM HASH: 88095fa4b5eb7ddbb339268f92a0e06b
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -315,6 +315,7 @@ return array(
 {
 	position: relative;
 	margin-bottom: 10px;
+	
 }
 
 
@@ -394,7 +395,57 @@ return array(
 	}
 }
 
-//*************************';
+@media screen and (min-width: 768px)
+{
+	.media
+	{
+		float:left;
+		width: 50%;
+	}
+	
+	[data-template="bh_item_detail"] .itemList--strip .itemList-item,
+	[data-template="bh_page_detail"] .itemList--strip .itemList-item
+	{
+		margin: 10px;
+		 min-width: 120px; 
+		/* min-height: 100px; */
+		max-height: 100px;
+		max-width: 120px;	
+	}
+}
+
+//*************************
+.item-rating
+{
+	margin-left: 10px;
+}
+@media screen and (max-width: 388px)
+{
+	.item-rating
+	{
+		margin-left: 0px;
+    	font-size: smaller;
+	}
+}
+
+
+@media screen and (max-width: 480px)
+{
+	.grid-list 
+	{
+		grid-template-columns: repeat(4, 1fr);
+	}
+	.reviewStarsDiv
+	{
+		float:none;
+	}
+	.ratingBarsDiv
+	{
+		float:none;
+		width:90%;
+		margin:6%;
+	}
+}';
 	return $__finalCompiled;
 }
 );

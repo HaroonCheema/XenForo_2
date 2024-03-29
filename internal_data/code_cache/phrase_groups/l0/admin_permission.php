@@ -6,6 +6,7 @@ return array (
   'admin_permission.attachment' => 'Manage attached files',
   'admin_permission.ban' => 'Manage bans',
   'admin_permission.bbCodeSmilie' => 'Manage BB codes and smilies',
+  'admin_permission.brandhub' => 'Manage BrandHub',
   'admin_permission.cron' => 'Manage cron entries',
   'admin_permission.dbtechCredits' => 'Manage DragonByte Credits',
   'admin_permission.dbtechEcomBusiness' => 'Manage DragonByte eCommerce: Business Profiles',

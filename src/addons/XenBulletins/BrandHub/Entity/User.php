@@ -32,5 +32,11 @@ class User extends XFCP_User
                
 		return false;
 	}
+        
+        public function canViewDeletedContent()
+	{
+            $visitor = \XF::visitor();
+            return $visitor->hasPermission('bh_brand_hub','viewDeleted');
+	}
     
 }

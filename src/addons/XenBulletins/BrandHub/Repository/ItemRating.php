@@ -23,19 +23,25 @@ class ItemRating extends Repository
 
 		return $finder;
 	}
+        
 
 	public function findLatestReviews()
 	{
             
-            $finder = $this->finder('XenBulletins\BrandHub:ItemRating');
+            $finder = $this->finder('XenBulletins\BrandHub:ItemRating')->with('Item');
 
             $finder->where([
                             'is_review' => 1
                     ]);
-            if(!$item->canViewDeletedContent())
+            
+            
+            $visitor = \XF::visitor();
+            
+            if(!$visitor->canViewDeletedContent())
             {
                 $finder->where('rating_state','visible');
             }
+            
             $finder->setDefaultOrder('rating_date', 'desc');
 
 //		$cutOffDate = \XF::$time - ($this->options()->readMarkingDataLifetime * 86400);

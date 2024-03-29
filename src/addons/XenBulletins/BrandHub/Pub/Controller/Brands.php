@@ -10,80 +10,134 @@ use XF\Mvc\ParameterBag;
 class Brands extends AbstractController
 {
      
-       public function actionIndex()
-       {
+       public function actionIndex(ParameterBag $params)
+       {    
+           if($params->item_id)
+           {
+               return $this->rerouteController('XenBulletins\BrandHub\Pub\Controller\Item', 'index', $params);
+           }
+           
+           if($params->brand_id)
+           {
+               return $this->rerouteController(__CLASS__, 'brand', $params);
+           }
           
             $page = $this->filterPage();
-            $perPage = 20;
+            $perPage = \xf::options()->bh_makesPerPage;
 
             $brands = $this->Finder('XenBulletins\BrandHub:Brand');
             
+            
+            $filter = $this->filter('_xfFilter', [
+                    'text' => 'str',
+                    'prefix' => 'bool'
+            ]);
+            
+            if (strlen($filter['text']))
+            {
+                $brands->where('brand_title', 'LIKE', $brands->escapeLike($filter['text'], $filter['prefix'] ? '?%' : '%?%'));
+            }
+            
+            
 
             $total = $brands->total();
-            $this->assertValidPage($page, $perPage, $total, 'bh_brands');
+            $this->assertValidPage($page, $perPage, $total, \XF::options()->bh_main_route);
             $brands->limitByPage($page, $perPage);
             
             
-            $type = $this->filter('type', 'str');
-            if ($type) {
-                $brands->order($type, 'DESC');
-                $pageSelected = $type;
-            }
+            $filters = $this->getFilterInput();
+            
+            if($filters)
+                $brands->order($filters['order'], $filters['direction']);
             else
             {
-                $brands->order('brand_id', 'DESC');
-                $pageSelected = 'all';
+                $defaultOrder = $this->options()->bh_brandListDefaultOrder;
+                $defaultDir =  'desc'; 
+                
+                $brands->order($defaultOrder, $defaultDir);
             }
+                
+
 
             $viewParams = [
 
                     'brands' => $brands->fetch(),
-                    'pageSelected' => $pageSelected,
                 
                     'page' => $page,
                     'perPage' => $perPage,
-                    'total' => $total
+                    'total' => $total,
+                    'filters' => $filters
             ];
 
             return $this->view('XenBulletins\BrandHub:Brand', 'bh_brand_list', $viewParams);
        }
        
+      
+       
+//        public function actionItem(ParameterBag $params)
+//        { 
+//            echo 'actionItem <pre>';
+//            var_dump($params);exit;
+//        }
+       
        public function actionBrand(ParameterBag $params)
-       {
-          
+       {   
             $page = $this->filterPage();
-            $perPage = 20;
+          
+            $perPage = \xf::options()->bh_itemsPerPage;
+
+            $brandObj = $this->Finder('XenBulletins\BrandHub:Brand')->with('Description')->where('brand_id',$params->brand_id)->fetchOne();
             
-            $brandObj = $this->Finder('XenBulletins\BrandHub:Brand')->with('Description')->where('brand_id',$params->brand_id);
+            
+//            $isPrefetchRequest = $this->request->isPrefetch();
+//            
+//            if (!$isPrefetchRequest)
+//            {
+//                    $brandRepo = $this->repository('XenBulletins\BrandHub:Brand');
+//                    $brandRepo->logBrandView($brandObj);
+//            }
+            
             
             $items = $this->Finder('XenBulletins\BrandHub:Item')->where('brand_id',$params->brand_id);
             
+            
+            $filter = $this->filter('_xfFilter', [
+                    'text' => 'str',
+                    'prefix' => 'bool'
+            ]);
+            
+            if (strlen($filter['text']))
+            {
+                $items->where('item_title', 'LIKE', $items->escapeLike($filter['text'], $filter['prefix'] ? '?%' : '%?%'));
+            }
+            
 
             $total = $items->total();
-            $this->assertValidPage($page, $perPage, $total, 'bh_brands/brand-items');
+            $this->assertValidPage($page, $perPage, $total, \XF::options()->bh_main_route);
             $items->limitByPage($page, $perPage);
             
             
-            $type = $this->filter('type', 'str');
-            if ($type) {
-                $items->order($type, 'DESC');
-                $pageSelected = $type;
-            }
+            $filters = $this->getFilterInput(true);            
+            
+            if($filters)
+                $items->order($filters['order'], $filters['direction']);
             else
             {
-                $items->order('brand_id', 'DESC');
-                $pageSelected = 'all';
+                $defaultOrder = $this->options()->bh_itemListDefaultOrder;
+                $defaultDir = 'desc'; 
+                
+                $items->order($defaultOrder, $defaultDir);
             }
 
             $viewParams = [
 
                     'items' => $items->fetch(),
-                    'brandObj' => $brandObj->fetchOne(),
-                    'pageSelected' => $pageSelected,
+                    'brandObj' => $brandObj,
                 
                     'page' => $page,
                     'perPage' => $perPage,
-                    'total' => $total
+                    'total' => $total,
+                    'filters' => $filters
             ];
 
             return $this->view('XenBulletins\BrandHub:Brand', 'bh_item_list', $viewParams);
@@ -150,7 +204,7 @@ class Brands extends AbstractController
             
             $descEntity = $this->saveDescription($brand);
 
-            return $this->redirect($this->buildLink('bh_brands/brand', $brand));
+            return $this->redirect($this->buildLink(\XF::options()->bh_main_route, $brand));
 	}
         
         
@@ -159,7 +213,85 @@ class Brands extends AbstractController
                 return $this->assertRecordExists('XenBulletins\BrandHub:Brand', $id, $with, $phraseKey);
         }
         
-//*********************************************************************************
+        
+//***************************** Filters ****************************************************
+        
+        
+        public function actionFilters(ParameterBag $params)
+	{
+		$filters = $this->getFilterInput();
+                
+                if ($params->brand_id)
+                {
+                    $brand = $this->assertBrandExists($params->brand_id);
+                }
+                else
+                    $brand = null;
+
+		
+		$viewParams = [
+			'brand' => $brand,
+			'filters' => $filters,
+                        'route' => \XF::options()->bh_main_route,
+		];
+		return $this->view('XenBulletins\BrandHub:Filters', 'bh_filters', $viewParams);
+	}
+        
+        
+        
+        public function getFilterInput($brand=false): array
+	{
+		$filters = [];
+
+		$input = $this->filter([
+			'order' => 'str',
+			'direction' => 'str'
+		]);
 
 
+		$sorts = $this->getAvailableSorts();
+
+		if ($input['order'] && isset($sorts[$input['order']]))
+		{
+			if (!in_array($input['direction'], ['asc', 'desc']))
+			{
+				$input['direction'] = 'desc';
+			}
+
+                        if($brand)
+                            $defaultOrder = $this->options()->bh_itemListDefaultOrder;
+                        else
+                            $defaultOrder = $this->options()->bh_brandListDefaultOrder;
+			$defaultDir =  'desc';
+
+			if ($input['order'] != $defaultOrder || $input['direction'] != $defaultDir)
+			{
+				$filters['order'] = $input['order'];
+				$filters['direction'] = $input['direction'];
+			}
+		}
+                
+                
+
+		return $filters;
+	}
+        
+              
+        public function getAvailableSorts(): array
+	{
+		// maps [name of sort] => field in/relative to brand entity
+		return [
+                        'item_id' => 'item_id',
+			'item_title' => 'item_title',
+                    
+                        'brand_id' => 'brand_id',
+			'brand_title' => 'brand_title',
+                        'discussion_count' => 'discussion_count',
+			'view_count' => 'view_count',
+			'rating_avg' => 'rating_avg',
+			'review_count' => 'review_count'
+		];
+	}
+        
+        
 }

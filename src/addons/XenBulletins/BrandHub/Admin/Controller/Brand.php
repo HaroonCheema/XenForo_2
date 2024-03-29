@@ -9,6 +9,10 @@ use XF\Mvc\ParameterBag;
 
 class Brand extends AbstractController
 {
+//        protected function preDispatchController($action, ParameterBag $params)
+//	{
+//		$this->assertAdminPermission('brandhub');
+//	}
 
         
        public function actionIndex()
@@ -17,12 +21,21 @@ class Brand extends AbstractController
             $perPage = 20;
 
             $brands = $this->Finder('XenBulletins\BrandHub:Brand');
+             
+            $filter = $this->filter('_xfFilter', [
+                    'text' => 'str',
+                    'prefix' => 'bool'
+            ]);
+            
+            if (strlen($filter['text']))
+            {
+                $brands->where('brand_title', 'LIKE', $brands->escapeLike($filter['text'], $filter['prefix'] ? '?%' : '%?%'));
+            }
             
             $total = $brands->total();
+            
             $this->assertValidPage($page, $perPage, $total, 'bh_brand');
             $brands->limitByPage($page, $perPage);
-            
-            
             
 
             $viewParams = [
@@ -36,7 +49,81 @@ class Brand extends AbstractController
 
             return $this->view('XenBulletins\BrandHub:Brand', 'bh_brands', $viewParams);
        }
+       
+       
+        public function actionQuickDelete()
+        {
+            $this->assertPostOnly();
 
+            $brandIds = $this->filter('brand_ids', 'array-uint');
+            
+            if (empty($brandIds))
+            {
+                    return $this->redirect($this->buildLink('bh_brand'));
+            }
+
+            $brands = $this->Finder('XenBulletins\BrandHub:Brand')->where('brand_id',$brandIds)->fetch();
+
+
+            if ($this->isPost() && !$this->filter('quickdelete', 'bool'))
+            {
+                // deleting these brands
+                foreach($brands as $brand)
+                {   
+                    $brand->delete();
+                }
+
+                return $this->redirect($this->buildLink('bh_brand'));
+            }
+            else
+            {
+
+                $viewParams = [
+                    
+                    'brands' => $brands
+                ];
+
+                return $this->view('XenBulletins\BrandHub:Brand', 'bh_brands_quick_delete_editor', $viewParams);
+            }
+
+        }
+
+//        public function actionQuickSet()
+//        {
+//                $this->assertPostOnly();            
+//
+//                $brandIds = $this->filter('brand_ids', 'array-uint');
+//                if (empty($brandIds))
+//                {
+//                        return $this->redirect($this->buildLink('bh_brand'));
+//                }
+//
+//                if($this->filter('quickdelete', 'bool'))
+//                {
+//                    return $this->rerouteController(__CLASS__, 'quick-delete');
+//                }
+//
+//
+//                if ($this->isPost() && !$this->filter('quickset', 'bool'))
+//                {
+//                    $this->brandQuickSetProcess()->run();
+//
+//                    return $this->redirect($this->buildLink('bh_item'));
+//                }
+//                else
+//                {
+//
+//                    $brands = $this->Finder('XenBulletins\BrandHub:Brand')->where('brand_id',$brandIds)->fetch();
+//
+//                    $viewParams = [
+//
+//                            'brands' => $brands
+//                    ];
+//
+//                    return $this->view('XenBulletins\BrandHub:Brand', 'bh_brand_quickset_editor', $viewParams);
+//                }
+//        }
+       
 
 
 	   	public function brandAddEdit($brand)

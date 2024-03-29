@@ -23,13 +23,12 @@ class Item extends Entity implements LinkableInterface{
     public function getBreadcrumbs($includeSelf = true)
 	{
 
-         
           $breadcrumbs = $this->Brand ? $this->Brand->getBreadcrumbs() : [];
 
 		if ($includeSelf)
 		{
 			$breadcrumbs[] = [
-				'href' => $this->app()->router()->buildLink('bh_brands/item', $this),
+				'href' => $this->app()->router()->buildLink(\XF::options()->bh_main_route.'/item', $this),
 				'value' =>$this->item_title
 			];
 		}
@@ -38,17 +37,17 @@ class Item extends Entity implements LinkableInterface{
 	}
         
         
-           public function getContentUrl(bool $canonical = false, array $extraParams = [], $hash = null)
+        public function getContentUrl(bool $canonical = false, array $extraParams = [], $hash = null)
 	{
           
-		$route = $canonical ? 'canonical:bh_brands/item' : 'bh_brands/item';
+		$route = $canonical ? 'canonical:'.\XF::options()->bh_main_route.'/item' : \XF::options()->bh_main_route.'/item';
                 
 		return $this->app()->router('public')->buildLink($route, $this, $extraParams, $hash);
 	}
 
 	public function getContentPublicRoute()
 	{
-		return 'bh_brands/item';
+		return \XF::options()->bh_main_route.'/item';
 	}
 
 	public function getContentTitle(string $context = '')
@@ -212,13 +211,46 @@ class Item extends Entity implements LinkableInterface{
         
 
         
-         public function getThumbnailUrl()
+        public function getThumbnailUrl()
 	{
              $attachmentData = $this->finder('XF:Attachment')->where('content_id', $this->item_id)->where('content_type', 'bh_item')->fetchOne();
 
-		return $attachmentData->Data ? $attachmentData->Data->getThumbnailUrl() : '';
+             return $attachmentData ? $attachmentData->getThumbnailUrl() : '';
+             
+//		return $attachmentData && isset($attachmentData->Data) ? $attachmentData->Data->getThumbnailUrl() : '';
 	}
         
+        
+        protected function _postDelete()
+        {
+
+            $ItemDescription = $this->Description;   
+
+            if($ItemDescription)
+            {
+                $ItemDescription->delete();
+            }
+
+            
+            $ratingRepo = \XF::Repository('XenBulletins\BrandHub:ItemRating');
+            $itemReviews = $ratingRepo->findReviewsInItem($this)->fetch();
+            
+            foreach($itemReviews as $itemReview)
+            {
+                $itemReview->delete();
+            }
+            
+
+            $itemOwnerPages = $this->finder('XenBulletins\BrandHub:OwnerPage')->where('item_id', $this->item_id)->fetch();
+            
+            foreach($itemOwnerPages as $itemOwnerPage)
+            {
+                $itemOwnerPage->delete();
+            }
+
+            $attachRepo = $this->repository('XF:Attachment');
+            $attachRepo->fastDeleteContentAttachments('bh_item', $this->item_id);
+        }
         
         
       
@@ -247,6 +279,7 @@ class Item extends Entity implements LinkableInterface{
             ],
             'discussion_count' => ['type' => self::UINT, 'default' => 0],
             'view_count' => ['type' => self::UINT, 'default' => 0],
+            'owner_count' => ['type' => self::UINT, 'default' => 0],
             'rating_count' => ['type' => self::UINT, 'default' => 0],
             'rating_sum' => ['type' => self::UINT, 'default' => 0],
             'rating_avg' => ['type' => self::FLOAT, 'default' => 0],
@@ -258,6 +291,7 @@ class Item extends Entity implements LinkableInterface{
             'reactions' => ['type' => self::JSON_ARRAY, 'default' => []],
             'user_id' => ['type' => self::UINT, 'required' => true, ],
             'create_date' => ['type' => self::UINT, 'default' => \XF::$time, 'api' => true],
+            'brand_title' => ['type' => self::STR, 'maxLength' => 100, 'required' => true]
             
         ];
            $structure->getters = [
@@ -331,6 +365,8 @@ class Item extends Entity implements LinkableInterface{
 //		],
               
         ];
+          
+        $structure->defaultWith = ['Brand'];
           	
           
          static::addBookmarkableStructureElements($structure);

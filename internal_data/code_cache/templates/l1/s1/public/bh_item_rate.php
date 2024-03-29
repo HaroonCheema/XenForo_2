@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 1303ac61e3e38b2f8fa9f9a2898e1db4
+// FROM HASH: 43b44fe909c837669437567d07921809
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -9,6 +9,13 @@ return array(
 
 ';
 	$__templater->breadcrumbs($__templater->method($__vars['item'], 'getBreadcrumbs', array()));
+	$__finalCompiled .= '
+
+';
+	$__templater->includeJs(array(
+		'src' => 'xf/thread.js',
+		'min' => '1',
+	));
 	$__finalCompiled .= '
 
 ';
@@ -35,18 +42,19 @@ return array(
 					';
 	}
 	$__finalCompiled .= $__templater->form('
+	
 	<div class="block-container">
 		<div class="block-body">
 			' . $__compilerTemp1 . '
 			
 			' . $__templater->callMacro('rating_macros', 'rating', array(
-		'currentRating' => $__vars['item']['ItemRatings'][$__vars['xf']['visitor']['user_id']]['rating'],
+		'currentRating' => $__vars['existingRating']['rating'],
 	), $__vars) . '
 			
 		
 				' . $__templater->formEditorRow(array(
 		'name' => 'message',
-		'value' => $__vars['item']['ItemRatings'][$__vars['xf']['visitor']['user_id']]['message'],
+		'value' => $__vars['existingRating']['message'],
 		'data-min-height' => '100',
 		'data-xf-init' => 'min-length',
 		'data-min-length' => $__vars['xf']['options']['bh_MinimumReviewLength'],
@@ -62,6 +70,13 @@ return array(
 					' . $__compilerTemp3 . '
 				',
 	)) . '
+			
+			' . $__templater->formRow('
+				' . $__templater->callMacro('helper_attach_upload', 'upload_block', array(
+		'attachmentData' => $__vars['attachmentData'],
+	), $__vars) . '
+			', array(
+	)) . '
 
 		</div>
 		' . $__templater->formSubmitRow(array(
@@ -71,9 +86,11 @@ return array(
 	)) . '
 	</div>
 ', array(
-		'action' => $__templater->func('link', array('bh_brands/item/rate', $__vars['item'], ), false),
+		'action' => $__templater->func('link', array('bh-item/rate', $__vars['item'], ), false),
 		'class' => 'block',
 		'ajax' => 'true',
+		'data-xf-init' => 'attachment-manager thread-edit-form',
+		'data-item-selector' => '.js-itemReview-' . $__vars['item']['item_id'] . ($__vars['existingRating'] ? ('-' . $__vars['existingRating']->{'item_rating_id'}) : ('-' . $__vars['xf']['visitor']['user_id'])),
 	));
 	return $__finalCompiled;
 }

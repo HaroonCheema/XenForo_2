@@ -251,6 +251,7 @@ return array (
   'style_prop.overlayMaskBlur' => 'Overlay mask blur amount',
   'style_prop.overlayMaskColor' => 'Overlay mask color',
   'style_prop.overlayTopMargin' => 'Overlay top margin',
+  'style_prop.ownerPagePostCommentToggle' => 'Enable OwnerPage post comment input toggle',
   'style_prop.paddingLarge' => 'Large padding',
   'style_prop.paddingLargest' => 'Largest padding',
   'style_prop.paddingMedium' => 'Medium padding',

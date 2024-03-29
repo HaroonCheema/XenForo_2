@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 3ceb641223ac93db102b70c3a674b9c0
+// FROM HASH: 08df2d50cd6985e78cc986945eb7bed6
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -19,20 +19,14 @@ return array(
 	}
 	$__finalCompiled .= '
 
+' . '
+
 ';
-	if ($__templater->method($__vars['Page'], 'isUpdate', array())) {
-		$__templater->pageParams['pageAction'] = $__templater->preEscaped('
-	' . $__templater->button('', array(
-			'href' => $__templater->func('link', array('bh_item/ownerpage/delete', $__vars['Page'], ), false),
-			'icon' => 'delete',
-			'overlay' => 'true',
-		), '', array(
-		)) . '
-');
-	}
+	$__templater->includeJs(array(
+		'src' => 'xf/thread.js',
+		'min' => '1',
+	));
 	$__finalCompiled .= '
-
-
 ';
 	$__templater->includeJs(array(
 		'prod' => 'xf/attachment_manager-compiled.js',
@@ -53,31 +47,32 @@ return array(
 		
 		<div class="js-inlineNewPostFields">
 			
+		' . $__templater->formTextBoxRow(array(
+		'name' => 'title',
+		'value' => $__vars['Page']['title'],
+		'maxlength' => $__templater->func('max_length', array($__vars['Page'], 'title', ), false),
+		'autofocus' => 'true',
+	), array(
+		'label' => 'Title',
+	)) . '
+			
 		' . $__templater->formEditorRow(array(
 		'name' => 'about',
 		'value' => $__vars['Page']['Detail']['about'],
 	), array(
 		'label' => 'About',
 	)) . '
-			
-		' . $__templater->formEditorRow(array(
-		'name' => 'attachment',
-		'value' => $__vars['Page']['Detail']['attachment'],
-	), array(
-		'label' => 'Attachment',
-	)) . '
 		
-		' . $__templater->formEditorRow(array(
-		'name' => 'customizations',
-		'value' => $__vars['Page']['Detail']['customizations'],
-	), array(
-		'label' => 'Customization',
-	)) . '
-		
-			
-	
+		' . '
 			
 		</div>
+			
+			' . $__templater->formRow('
+				' . $__templater->callMacro('helper_attach_upload', 'upload_block', array(
+		'attachmentData' => $__vars['attachmentData'],
+	), $__vars) . '
+			', array(
+	)) . '
 	</div>
 		' . $__templater->formSubmitRow(array(
 		'sticky' => 'true',
@@ -88,9 +83,10 @@ return array(
 	</div>
 
 ', array(
-		'action' => $__templater->func('link', array('bh_item/ownerpage/save', $__vars['Page'], ), false),
+		'action' => $__templater->func('link', array('owners/save', $__vars['Page'], ), false),
 		'ajax' => 'true',
-		'data-xf-init' => 'attachment-manager',
+		'data-xf-init' => 'attachment-manager thread-edit-form',
+		'data-item-selector' => '.js-itemPage-' . $__vars['item']['item_id'] . ($__templater->method($__vars['Page'], 'isUpdate', array()) ? ('-' . $__vars['Page']->{'page_id'}) : ('-' . $__vars['xf']['visitor']['user_id'])),
 	));
 	return $__finalCompiled;
 }

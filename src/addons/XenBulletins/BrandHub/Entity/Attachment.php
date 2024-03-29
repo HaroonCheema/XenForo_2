@@ -8,7 +8,7 @@ class Attachment extends XFCP_Attachment {
 
     public function canView(&$error = null) {
         
-   if ($this->content_type == 'bh_item' || $this->content_type == 'bh_ownerpage' ) {
+   if ($this->content_type == 'bh_item' || $this->content_type == 'bh_ownerpage' || $this->content_type == 'bh_review' ) {
             return TRUE;
         }
         return parent::canView($error);
@@ -21,7 +21,18 @@ class Attachment extends XFCP_Attachment {
         $structure->columns['user_id'] =  ['type' => self::UINT, 'default' => 0];
          $structure->columns['item_main_photo'] =  ['type' => self::UINT, 'default' => 0];
         $structure->columns['page_main_photo'] =  ['type' => self::UINT, 'default' => 0];
+        
+        
+        
+        $structure->relations['Item'] = [   
+                                            'entity' => 'XenBulletins\BrandHub:Item',
+                                            'type' => self::TO_ONE,
+                                            'conditions' => [
+                                                    ['item_id', '=', '$content_id']
+                                            ],
+                                            'primary' => true
+                                        ];
 
         return $structure;
-    }
+    }  
 }

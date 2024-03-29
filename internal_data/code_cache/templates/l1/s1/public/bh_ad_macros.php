@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: bee2430a59561c6982b0d88188153c3a
+// FROM HASH: 06c0a94f313fc18e1450c4f770e032d2
 return array(
 'macros' => array('sideBar_brand' => array(
 'code' => function($__templater, array $__vars, $__extensions = null)
@@ -11,7 +11,7 @@ return array(
 		<div class="block">
 			<div class="block-container">
 				<div class="sideBar_ad">
-					[ad placeholder]
+					' . $__templater->includeTemplate('bh_ad_brandList_sidebar', $__vars) . '
 				</div>
 			</div>
 		</div>
@@ -31,7 +31,7 @@ return array(
 		<div class="block">
 			<div class="block-container">
 				<div class="sideBar_ad">
-					[ad placeholder]
+					' . $__templater->includeTemplate('bh_ad_itemList_sidebar', $__vars) . '
 				</div>
 			</div>
 		</div>
@@ -51,7 +51,7 @@ return array(
 		<div class="block">
 			<div class="block-container">
 				<div class="sideBar_ad">
-					[ad placeholder]
+					' . $__templater->includeTemplate('bh_ad_itemView_sidebar', $__vars) . '
 				</div>
 			</div>
 		</div>
@@ -71,7 +71,7 @@ return array(
 		<div class="block">
 			<div class="block-container">
 				<div class="sideBar_ad">
-					[ad placeholder]
+					' . $__templater->includeTemplate('bh_ad_ownerPage_sidebar', $__vars) . '
 				</div>
 			</div>
 		</div>
@@ -89,7 +89,7 @@ return array(
 	<div class="block">
 		<div class="block-container">
 			<div class="center_ad">
-				[ad placeholder]
+				' . $__templater->includeTemplate('bh_ad_userReviw_above', $__vars) . '
 			</div>
 		</div>
 	</div>
@@ -105,7 +105,7 @@ return array(
 	<div class="block">
 		<div class="block-container">
 			<div class="center_ad">
-				[ad placeholder]
+				' . $__templater->includeTemplate('bh_ad_userReviw_below', $__vars) . '
 			</div>
 		</div>
 	</div>

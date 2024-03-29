@@ -4,20 +4,20 @@ namespace XenBulletins\BrandHub;
 
 class Helper {
 
-    public static function updateItemDiscussionCount($itemId, $count = 'plus') {
+    public static function updateItemDiscussionCount($itemId, $action = 'plus', $count = 1) {
         
         $item = \XF::finder('XenBulletins\BrandHub:Item')->where('item_id', $itemId)->fetchOne();
 //        var_dump($itemId);exit;
         if ($item) {
             $brand = $item->Brand;
 
-            if ($count == 'plus') {
-                $item->discussion_count += 1;
-                $brand->discussion_count += 1;
+            if ($action == 'plus') {
+                $item->discussion_count += $count;
+                $brand->discussion_count += $count;
             }
-            if ($count == 'minus') {
-                $item->discussion_count -= 1;
-                $brand->discussion_count -= 1;
+            if ($action == 'minus') {
+                $item->discussion_count -= $count;
+                $brand->discussion_count -= $count;
             }
 
             $item->save();
@@ -177,6 +177,50 @@ class Helper {
             $ownerPage->save();
         }
     
+    }
+    
+    
+    public static function updateAddonOptions()
+    {
+        $app = \XF::app();
+        
+        $addonMainRoute = $app->em()->findOne('XF:Route', ['route_prefix' => 'bh-brands', 'sub_name' => '' , 'addon_id' => 'XenBulletins/BrandHub', 'route_type' => 'public']);
+                
+        if($addonMainRoute)
+        {
+            $mainRouteId = $addonMainRoute->route_id;
+            $mainRoutePrefix = $addonMainRoute->route_prefix;
+
+            \XF::repository('XF:Option')->updateOptions(['bh_main_route' => $mainRoutePrefix,'bh_main_route_id' => $mainRouteId]);
+        }
+    }
+    
+    
+    // update OwnerPage Count of item and as well as brand
+    public static function updateOwnerCount(\XenBulletins\BrandHub\Entity\Item $item, $count = 'added')
+    {
+//        $app = \XF::app();
+//
+//        $Item = \XF::finder('XenBulletins\BrandHub:Item')->where('item_id', $itemId)->fetchOne();
+//        var_dump($itemId);exit;
+        
+
+        $brand = $item->Brand;
+
+        if ($count == 'added') 
+        {
+            $item->owner_count += 1;
+            $brand->owner_count += 1;
+        }
+        if ($count == 'removed') 
+        {
+            $item->owner_count -= 1;
+            $brand->owner_count -= 1;
+        }
+
+        $item->save();
+        $brand->save();
+        
     }
 
 }

@@ -49,6 +49,7 @@ class Thread extends XFCP_Thread
     {
         $structure = parent::getStructure($structure);
         $structure->columns['item_id'] =  ['type' => self::UINT, 'default' => 0];
+        $structure->columns['thread_description'] =  ['type' => self::STR, 'default' => ''];
 
         return $structure;
     }

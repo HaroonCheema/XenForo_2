@@ -60,11 +60,11 @@ class Item extends Repository {
         
             if($page)
             {
-                $finder = $this->findMediaForAlbum($content_id, $limits, $Item_Attachment->content_type, $page);
+                $finder = $this->findMediaForAlbum($content_id, $Item_Attachment->content_type, $limits, $page);
             }
             else
             {
-		$finder = $this->findMediaForAlbum($content_id, $limits, $Item_Attachment->content_type);
+		$finder = $this->findMediaForAlbum($content_id, $Item_Attachment->content_type, $limits);
             }
                 
                 $finder->whereOr([
@@ -81,7 +81,7 @@ class Item extends Repository {
 		return $finder->total();
 	}
         
-        public function findMediaForAlbum($content_id, array $limits = [],$content_type, $page=null)
+        public function findMediaForAlbum($content_id,$content_type, array $limits = [], $page=null)
 	{
        
 		$finder = $this->findMediaForList($limits);
@@ -121,6 +121,31 @@ class Item extends Repository {
         
  
         
+        
+        
+        
+        public function logItemView(\XenBulletins\BrandHub\Entity\Item $item)
+	{
+		$this->db()->query("
+			INSERT INTO bh_item_view
+				(item_id, total)
+			VALUES
+				(? , 1)
+			ON DUPLICATE KEY UPDATE
+				total = total + 1
+		", $item->item_id);
+	}
+
+	public function batchUpdateItemViews()
+	{
+		$db = $this->db();
+		$db->query("
+			UPDATE bh_item AS i
+			INNER JOIN bh_item_view AS iv ON (i.item_id = iv.item_id)
+			SET i.view_count = i.view_count + iv.total
+		");
+		$db->emptyTable('bh_item_view');
+	}
 
         
         

@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 52a5339dff7c52777b1f4caeb0f4faa8
+// FROM HASH: 5297fc520bdf2c3e869a2286f5c694f1
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -47,6 +47,7 @@ return array(
 				$__compilerTemp2 .= '
 						';
 				$__compilerTemp3 = array(array(
+					'href' => $__templater->func('link', array($__vars['xf']['options']['bh_main_route'] . '/item', $__vars['sub']['Item'], ), false),
 					'_type' => 'cell',
 					'html' => $__templater->escape($__vars['sub']['Item']['item_title']),
 				)
@@ -67,10 +68,10 @@ return array(
 				));
 				if ($__vars['user']['user_id'] == $__vars['xf']['visitor']['user_id']) {
 					$__compilerTemp3[] = array(
-						'href' => $__templater->func('link', array('bh_brands/item/unsub', $__vars['sub'], ), false),
+						'href' => $__templater->func('link', array('bh-item/unsub', $__vars['sub']['Item'], ), false),
 						'overlay' => 'true',
 						'_type' => 'action',
-						'html' => 'UnSubcribe',
+						'html' => 'Unsubscribe',
 					);
 				}
 				$__compilerTemp2 .= $__templater->dataRow(array(

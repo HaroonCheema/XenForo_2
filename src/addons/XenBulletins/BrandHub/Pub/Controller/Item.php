@@ -19,49 +19,92 @@ class Item extends AbstractController
         
     }
     
+    
+    protected function fetchAttachment($itemId, $mainPhoto = false)
+    {
+//        $attachRepo = $this->repository('XF:Attachment');
+        
+        $finder = $this->finder('XF:Attachment')
+            ->where('content_id', $itemId)
+            ->where('content_type', 'bh_item');
+            
+
+        if ($mainPhoto) 
+        {
+            $finder->where('item_main_photo', 1);
+        }
+
+        return $finder->order('attach_date', 'DESC')->fetchOne();
+    } 
+    
    
     
         public function actionIndex(ParameterBag $params) {
         
         
         $item = $this->finder('XenBulletins\BrandHub:Item')->where('item_id', $params->item_id)->with(['Description','Category','Attachment'])->fetchOne();
-        $itemPages = $this->finder('XenBulletins\BrandHub:OwnerPage')->where('item_id', $params->item_id)->fetch(10);
-  
-        $item->view_count += 1;
-        $item->save();
         
-        $brand = $item->Brand;
-        $brand->view_count += 1;
-        $brand->save();
- 
-        
-
-        $attachmentData = $this->finder('XF:Attachment')->where('content_id', $item->item_id)->where('content_type', 'bh_item')->where('item_main_photo', 1)->order('attach_date','Desc')->fetchOne();
- 
-        if(!$attachmentData){
-            
-          $attachmentData = $this->finder('XF:Attachment')->where('content_id', $item->item_id)->where('content_type', 'bh_item')->order('attach_date','Desc')->fetchOne();
-  
+        if (!$item)
+        {
+                throw $this->exception($this->notFound(\XF::phrase('bh_requested_item_not_found')));
         }
         
+        
+        $defaultOrderAndDir = explode(',' , $this->options()->bh_ownerPageDefaultOrder);
+                        
+        $defaultOrder = $defaultOrderAndDir[0];
+        $defaultDir =   $defaultOrderAndDir[1];
+        
+        $itemPages = $this->finder('XenBulletins\BrandHub:OwnerPage')->where('item_id', $params->item_id)->order($defaultOrder, $defaultDir)->fetch(10);
+        
+        $userItemPage = $this->finder('XenBulletins\BrandHub:OwnerPage')->where('item_id', $params->item_id)->where('user_id', \XF::visitor()->user_id)->fetchOne();
+              
+        
+        //----------------- view log ----------------------
+        $isPrefetchRequest = $this->request->isPrefetch();
+
+        if (!$isPrefetchRequest)
+        {
+            $itemRepo = $this->repository('XenBulletins\BrandHub:Item');
+            $brandRepo = $this->repository('XenBulletins\BrandHub:Brand');
+
+            // ToDo: these following two queries takes some time, take action no these to reduce load time
+            $itemRepo->logItemView($item);
+            $brandRepo->logBrandView($item->Brand);
+        }
+        
+        
+        //------------------------------------- item Attachments -------------------------------------
+ 
         $attachment_id = $this->filter('attachment_id', 'STR');
+        $filmStripPlugin = $this->plugin('XenBulletins\BrandHub:FilmStrip');
         
-
-        $attachmentItem = "";
         
-        $filmStripPluginlist = "";
-
-         $filmStripPlugin = $this->plugin('XenBulletins\BrandHub:FilmStrip');
-
-         if ($attachment_id) {
-
+        if ($attachment_id) 
+        {
             $attachmentItem = $this->assertViewableAttachmentItem($attachment_id);
-            $filmStripPluginlist = $filmStripPlugin->getFilmStripParamsForView($attachmentItem);
-            
-        } elseif ( $attachmentData) {
-
-            $filmStripPluginlist = $filmStripPlugin->getFilmStripParamsForView($attachmentData);
+        } 
+        else 
+        {
+            $mainPhotoAttachment = $this->fetchAttachment($item->item_id, true);  // Fetch the main photo attachment data
+            //
+            // If no main photo is found, fetch latest attachment
+            if (!$mainPhotoAttachment) 
+            {
+                $mainPhotoAttachment = $this->fetchAttachment($item->item_id);
+            }
+        
+            $attachmentItem = $mainPhotoAttachment;
         }
+        
+        
+        if($attachmentItem)
+        {
+            $filmStripPluginlist = $filmStripPlugin->getFilmStripParamsForView($attachmentItem);
+        }
+        
+        //----------------------------------------------------------------------------------------------
+        
         
         
         $discussions = $this->finder('XF:Thread')->where('item_id', $params->item_id)->where('discussion_state','visible')->order('thread_id','DESC')->fetch(\xf::options()->bh_discussions_on_item);
@@ -69,18 +112,53 @@ class Item extends AbstractController
         $alreadySub = $this->finder('XenBulletins\BrandHub:ItemSub')->where('item_id',$params->item_id)->where('user_id',\XF::visitor()->user_id)->fetchOne();
         
         
-        
-  
+        // ------------- rating and reviews ------------------------------
+        $visitorId = \Xf::visitor()->user_id;
+
         $itemReviews = $this->em()->getEmptyCollection();
 	
-        $recentReviewsMax = $this->options()->bh_RecentReviewsCount;
-        if ($recentReviewsMax)
-        {
-                $ratingRepo = $this->repository('XenBulletins\BrandHub:ItemRating');
-                $itemReviews = $ratingRepo->findReviewsInItem($item)->fetch($recentReviewsMax);
+//        $recentReviewsMax = $this->options()->bh_RecentReviewsCount;
+//        if ($recentReviewsMax)
+//        {
+//                $ratingRepo = $this->repository('XenBulletins\BrandHub:ItemRating');
+//                $itemReviews = $ratingRepo->findReviewsInItem($item)->where('user_id', '!=', $visitorId)->fetch($recentReviewsMax);
+//        }
+        
+        
+        $page = max(1, $this->filterPage());
+        $perPage = $this->options()->bh_ReviewsPerPage;
+         
+        
 
+        $ratingRepo = $this->repository('XenBulletins\BrandHub:ItemRating');
+        $itemReviews = $ratingRepo->findReviewsInItem($item)->with('User')->where('user_id', '!=', $visitorId);
+
+        $total = $itemReviews->total();             
+        $this->assertValidPage($page, $perPage, $total, \XF::options()->bh_main_route.'/item/reviews');
+        $itemReviews = $itemReviews->limitByPage($page, $perPage);
+        
+        
+        // --------------- filter ----------------------
+        $filters = $this->getFilterInput();
+
+        if($filters)
+            $itemReviews->order($filters['order'], $filters['direction']);
+        else
+        {
+            $defaultOrderAndDir = explode(',' , $this->options()->bh_reviewsDefaultOrder);
+
+            $defaultOrder = $defaultOrderAndDir[0];
+            $defaultDir =   $defaultOrderAndDir[1];
+
+            $itemReviews->order($defaultOrder, $defaultDir);
         }
+        //--------------------------------------------
+        
+        $itemReviews = $itemReviews->fetch();
+        
+        $visitorReview = $ratingRepo->findReviewsInItem($item)->with('User')->where('user_id', $visitorId)->fetchOne();
 		
+        
         
 //        $itemRatings = $this->finder('XenBulletins\BrandHub:ItemRating')->where('item_id', $params->item_id)->fetch()->groupBy('rating');
 //         krsort($itemRatings);
@@ -101,22 +179,30 @@ class Item extends AbstractController
              }
         }
         
-
+ 
+        $itemPosition = $this->getRankRecord($item,$item->Category->category_id);
                 
-                $itemPosition = $this->getRankRecord($item,$item->Category->category_id);
        
      
         $viewParams = [
             'filmStripParams' => $filmStripPluginlist,
-            'mainItem' => $attachment_id?$attachmentItem:$attachmentData,
+            'mainItem' => $attachmentItem,
             'item' => $item,
+            
             'itemReviews' => $itemReviews,
             'itemRatings' => $itemRatings,
+            'page' => $page,
+            'perPage' => $perPage,
+            'total' => $total,
+            'filters' => $filters,
+            
             'discussions' => $discussions,
-             'itemPages'=>$itemPages,
+            'itemPages'=>$itemPages,
+            'userItemPage' => $userItemPage,
             'ownerPageTotal' => count($itemPages),
             'alreadySub'=>$alreadySub,
             'itemPosition' => $itemPosition,
+            'visitorReview' => $visitorReview
         ];
         return $this->view('XenBulletins\BrandHub:Brand', 'bh_item_detail', $viewParams);
     }
@@ -156,6 +242,8 @@ class Item extends AbstractController
         public function actionReviews(ParameterBag $params)
 	{
 
+//            echo '<<pre>';
+//            var_dump($params);exit;
 		$item = $this->assertViewableItem($params->item_id);
 
 
@@ -165,11 +253,44 @@ class Item extends AbstractController
 		$ratingRepo = $this->repository('XenBulletins\BrandHub:ItemRating');
 		$itemReviews = $ratingRepo->findReviewsInItem($item);
                 
+                // --------- Quick filter ---------------
+                $filter = $this->filter('_xfFilter', [
+                        'text' => 'str',
+                        'prefix' => 'bool'
+                ]);
+
+                if (strlen($filter['text']))
+                {
+                    $itemReviews->where('message', 'LIKE', $itemReviews->escapeLike($filter['text'], $filter['prefix'] ? '?%' : '%?%'));
+                }
+                // ---------------------------------
+            
+                
                 $total = $itemReviews->total();             
-		$this->assertValidPage($page, $perPage, $total, 'bh_brands/item/reviews');
+		$this->assertValidPage($page, $perPage, $total, \XF::options()->bh_main_route.'/item/reviews');
 		$itemReviews->limitByPage($page, $perPage);
                 
+                // --------------- filter ----------------------
+                $filters = $this->getFilterInput();
+            
+                if($filters)
+                    $itemReviews->order($filters['order'], $filters['direction']);
+                else
+                {
+                    $defaultOrderAndDir = explode(',' , $this->options()->bh_reviewsDefaultOrder);
+                        
+                    $defaultOrder = $defaultOrderAndDir[0];
+                    $defaultDir =   $defaultOrderAndDir[1];
+
+                    $itemReviews->order($defaultOrder, $defaultDir);
+                }
+                //--------------------------------------------
+                
 		$itemReviews = $itemReviews->fetch();
+                
+                
+//                echo '<pre>';
+//                var_dump($itemReviews);exit;
 
 		/** @var \XF\Repository\UserAlert $userAlertRepo */
 //		$userAlertRepo = $this->repository('XF:UserAlert');
@@ -181,7 +302,8 @@ class Item extends AbstractController
 
 			'page' => $page,
 			'perPage' => $perPage,
-			'total' => $total
+			'total' => $total,
+                        'filters' => $filters
 		];
 		return $this->view('XenBulletins\BrandHub:Item\Reviews', 'bh_item_reviews', $viewParams);
 	}
@@ -218,6 +340,7 @@ class Item extends AbstractController
 		}
 
 		$existingRating = $item->ItemRatings[$visitorUserId];
+                
 		if ($existingRating && !$existingRating->canUpdate($error))
 		{
 			return $this->noPermission($error);
@@ -232,16 +355,61 @@ class Item extends AbstractController
 			{
 				return $this->error($errors);
 			}
+                        
+                        $hash = $this->filter('attachment_hash', 'str');
+                        
+                        if($existingRating)
+                        {
+                            $sql = "Update xf_attachment set content_id = 0, temp_hash = '$hash' where content_id='$existingRating->item_rating_id' and content_type = 'bh_review'";
+                            \XF::db()->query($sql);
+                        }
 
 			$rating = $rater->save();
+//                                        echo 'dd';exit;
+                        $inserter = $this->service('XF:Attachment\Preparer');
+                        $associated = $inserter->associateAttachmentsWithContent($hash, 'bh_review', $rating->item_rating_id);
 
-			return $this->redirect($this->buildLink('bh_brands/item/#reviews',$item));
+                        
+                        $itemReview = $this->finder('XenBulletins\BrandHub:ItemRating')->where('item_id',$params->item_id)->where('user_id',$visitorUserId)->fetchOne();
+                    
+                        //--------
+                        
+                         $viewParams = [
+                            'item' => $item,
+                            'itemReview' => $itemReview,
+//                            'userItemPage' => $userItemPage
+                        ];
+                         
+//                        $this->setResponseType('json');
+                         
+//                        $reply = $this->view('XenBulletins\BrandHub:ItemReview', '', $viewParams);
+//                        $reply->setJsonParam('message', \XF::phrase('your_changes_have_been_saved'));
+//                        return $reply;
+                        
+                        
+                        $reply = $this->view('XenBulletins\BrandHub:Item', 'bh_list_review', $viewParams);
+                        $reply->setJsonParam('message', \XF::phrase('your_changes_have_been_saved'));
+                        return $reply;
+
+//                        return $this->view('XenBulletins\BrandHub:Item', 'bh_quick_review_content', $viewParams);
+
+                        //--------
+//                        $dynamicRedirect = $this->getDynamicRedirect();
+                        
+
+//                        return $this->redirect($this->getDynamicRedirect().'#reviews');
+//			return $this->redirect($this->buildLink(\XF::options()->bh_main_route.'/item/#reviews',$item));
 		}
 		else
 		{
+                    
+                    $attachmentRepo = $this->repository('XF:Attachment');
+                    $attachmentData = $attachmentRepo->getEditorData('bh_review',$existingRating);
+                    
 			$viewParams = [
 				'item' => $item,
-				'existingRating' => $existingRating
+				'existingRating' => $existingRating,
+                                'attachmentData' => $attachmentData
 			];
 			return $this->view('XenBulletins\BrandHub:Item\Rate', 'bh_item_rate', $viewParams);
 		}
@@ -249,9 +417,8 @@ class Item extends AbstractController
         
         
         
-          public  function actionItemSub(ParameterBag $params){
+        public  function actionItemSub(ParameterBag $params){
           
-             
           $item = $this->finder('XenBulletins\BrandHub:Item')->where('item_id', $params->item_id)->fetchOne();
  
              $visitor = \XF::visitor();
@@ -264,7 +431,7 @@ class Item extends AbstractController
             $itemSub->item_id = $params->item_id;
             $itemSub->save();
             
-           return $this->redirect($this->buildLink('bh_brands/item',$item));
+           return $this->redirect($this->buildLink(\XF::options()->bh_main_route.'/item',$item));
         
         
         
@@ -272,15 +439,13 @@ class Item extends AbstractController
     }
     
     
-     public function getRankRecord($item,$category_id) {
-
+    public function getRankRecord($item,$category_id) 
+    {
         $ItemPosition = [];
 
                  
         $ItemPosition['categoryItemDiscussionPosition'] = $this->categoryItemDiscussionPosition($item,$category_id);
         $ItemPosition['overallItemDiscussionPosition'] = $this->overallItemDiscussionPosition($item);
-
-
 
         $ItemPosition['categoryItemViewPosition'] = $this->categoryItemViewPosition($item,$category_id);
 
@@ -292,141 +457,109 @@ class Item extends AbstractController
         $ItemPosition['overallItemReviewPosition'] = $this->overallItemReviewPosition($item);
 
 
-         $ItemPosition['totalcategoryItems'] = $this->totalcategoryItems($category_id);
-         $ItemPosition['totalItems'] =$this->totalItems();
-   
+        $ItemPosition['totalcategoryItems'] = $this->totalcategoryItems($category_id);
+        $ItemPosition['totalItems'] = $this->totalItems();
+         
+        $ItemPosition['itemOwnerPageRanking'] = $this->getItemOwnerPageRanking($item);
 
     
         return $ItemPosition;
     }
     
-    
-    public  function totalcategoryItems($category_id){
-          
-        $sql = "Select *, rank() over (order by discussion_count desc) as position  from bh_item  where category_id='$category_id';";
-  
-        $db = \XF::db();
-        $result=$db->query($sql)->fetchAll();
+    public function getItemOwnerPageRanking($item)
+    {
+        $sql = 'Select item_id, rank() over (order by owner_count desc) as position from bh_item';
         
-        $categoryTotal=count($result);
-        
-        return $categoryTotal;
-        
+        return $this->itemRankPosition($sql,$item);
     }
     
-    public  function totalItems(){
+    
+    public  function totalcategoryItems($category_id)
+    {     
+        $sql = "Select COUNT(*) as total from bh_item  where category_id='$category_id';";
         
-        
-        $sql = "Select *, rank() over (order by discussion_count desc) as position from bh_item;";
+        $db = \XF::db();
+        $totalItems = $db->fetchOne($sql);
+
+        return $totalItems;
+    }
+    
+    public  function totalItems()
+    {
+        $sql = "Select COUNT(*) as total from bh_item;";
       
         $db = \XF::db();
-        $result=$db->query($sql)->fetchAll();
-        
-       
-        $total = count($result);
-         
-        return $total;
-        
+        $totalItems = $db->fetchOne($sql);
+
+        return $totalItems;
     }
 
+    public function categoryItemDiscussionPosition($item,$category_id)
+    {    
+        $sql = "Select item_id, rank() over (order by discussion_count desc) as position  from bh_item  where category_id='$category_id';";
+        
+        return $this->itemRankPosition($sql,$item); 
+    }
+    
+    public function overallItemDiscussionPosition($item)
+    {    
+        $sql = "Select item_id, rank() over (order by discussion_count desc) as position from bh_item;";
+        
+        return $this->itemRankPosition($sql,$item);
+    }
+    
+    public function categoryItemViewPosition($item,$category_id)
+    {    
+        $sql = "Select item_id, rank() over (order by view_count desc) as position  from bh_item  where category_id='$category_id';";
+        
+        return $this->itemRankPosition($sql,$item);
+    }
+    
+    public function overallItemViewPosition($item)
+    {
+        $sql = "Select item_id, rank() over (order by view_count desc) as position from bh_item;";
+        
+        return $this->itemRankPosition($sql,$item);
+    }
+    
+    public  function categoryItemReviewPosition($item,$category_id)
+    {    
+        $sql = "Select item_id, rank() over (order by rating_avg desc) as position  from bh_item  where category_id='$category_id';";
+        
+        return $this->itemRankPosition($sql,$item);
+    }
+  
+    public  function overallItemReviewPosition($item)
+    {    
+        $sql = "Select item_id, rank() over (order by rating_avg desc) as position from bh_item;";
 
-
-    public function categoryItemDiscussionPosition($item,$category_id){
-        
-        $sql = "Select *, rank() over (order by discussion_count desc) as position  from bh_item  where category_id='$category_id';";
-  
-        $db = \XF::db();
-        $result=$db->query($sql)->fetchAll();
-        
-        $position=$this->itemRankPosition($result,$item);
-        
-       
-        
-        
-     
-        return $position;
-        
-    }
-    public function overallItemDiscussionPosition($item){
-        
-        $sql = "Select *, rank() over (order by discussion_count desc) as position from bh_item;";
-      
-        $db = \XF::db();
-        $result=$db->query($sql)->fetchAll();
-        
-        $position=$this->itemRankPosition($result,$item);
-    
-        return $position;
-    }
-    
-    public function categoryItemViewPosition($item,$category_id){
-        
-        $sql = "Select *, rank() over (order by view_count desc) as position  from bh_item  where category_id='$category_id';";
-  
-        $db = \XF::db();
-        $result=$db->query($sql)->fetchAll();
-        
-        $position=$this->itemRankPosition($result,$item);
-        
-        return $position;
-        
-    }
-    
-    public function overallItemViewPosition($item){
-       
-        $sql = "Select *, rank() over (order by view_count desc) as position from bh_item;";
-      
-        $db = \XF::db();
-        $result=$db->query($sql)->fetchAll();
-        $position=$this->itemRankPosition($result,$item);
-        
-         return $position;
-    }
-    
-    public  function categoryItemReviewPosition($item,$category_id){
-        
-         $sql = "Select *, rank() over (order by rating_avg desc) as position  from bh_item  where category_id='$category_id';";
-  
-        $db = \XF::db();
-        $result=$db->query($sql)->fetchAll();
-        
-        $position=$this->itemRankPosition($result,$item);
-        
-        return $position;
-    }
-  
-    public  function overallItemReviewPosition($item){
-        
-        $sql = "Select *, rank() over (order by rating_avg desc) as position from bh_item;";
-      
-        $db = \XF::db();
-        $result=$db->query($sql)->fetchAll();
-        $position=$this->itemRankPosition($result,$item);
-        return $position;
-        
+        return $this->itemRankPosition($sql,$item);
     }
    
-    
-  
-
-//    
-    public function itemRankPosition($records, $item) {
-        
-
      
-        foreach ($records as $record) {
-
-
-
-          
-
-            if($item->item_id == $record['item_id']) {
-
-               return $record['position'];
-            
-            }
+    public function itemRankPosition($sql, $item) 
+    {
+        
+        $db = \XF::db();
+        $result = $db->fetchPairs($sql);
+        
+        if(array_key_exists($item->item_id, $result))
+        {
+            return $result[$item->item_id];
+        }      
+        else
+        {
+            return 0;
         }
-
+                 
+//        foreach ($records as $record) {
+//
+//            if($item->item_id == $record['item_id']) {
+//
+//               return $record['position'];
+//            
+//            }
+//        }
       
     }
     
@@ -460,6 +593,10 @@ class Item extends AbstractController
 
         $jumpFrom = $this->finder('XF:Attachment')->where('attachment_id', $jumpFromId)->fetchOne();
 
+        if(!$jumpFrom)
+        {
+            throw $this->exception($this->notFound(\XF::phrase('bh_requested_item_not_found')));
+        }
 
         $filmStripPlugin = $this->plugin('XenBulletins\BrandHub:FilmStrip');
 
@@ -489,8 +626,54 @@ class Item extends AbstractController
 
         return $this->view('XenBulletins\BrandHub:Item', 'bh_item_description_edit', $viewParams);
     }
+    
+    public function actionQuickDelete(ParameterBag $params)
+    {
+        $this->assertPostOnly();
+        
+        if (!$params->item_id)
+        {  
+            return $this->redirect($this->getDynamicRedirect());
+        }
+
+        $threadIds = $this->filter('thread_ids', 'array-uint');
+        
+        if (empty($threadIds))
+        {   
+            return $this->redirect($this->getDynamicRedirect());
+        }
+        
+        $discussions = $this->finder('XF:Thread')->where('thread_id',$threadIds)->fetch();
+
+        if ($this->isPost() && !$this->filter('quickdelete', 'bool'))
+        {
+            // unassign (remove) items from threads
+            $db = \XF::db();
+            $threadIdsQuoted = $db->quote($threadIds);
+            
+            $db->update('xf_thread', ['item_id' => 0], 'thread_id IN ('. $threadIdsQuoted . ')');
+            \XenBulletins\BrandHub\Helper::updateItemDiscussionCount($params->item_id,'minus', count($threadIds)); 
+
+            return $this->redirect($this->getDynamicRedirect());
+        }
+        else
+        {
+            $item = $this->assertItemExists($params->item_id);
+            
+            $viewParams = [
+                
+                'item' => $item,
+                'discussions' => $discussions
+            ];
+
+            return $this->view('XenBulletins\BrandHub:Item', 'bh_discussions_quick_remove_editor', $viewParams);
+        }
+
+    }
+        
 
     public function actionEdit(ParameterBag $params) {
+
         $visitor = \XF::visitor();
         if(!$visitor->hasPermission('bh_brand_hub', 'bh_can_edit_itemDescript'))
         {
@@ -506,7 +689,7 @@ class Item extends AbstractController
     protected function saveDescription(\XenBulletins\BrandHub\Entity\Item $item) {
         $message = $this->plugin('XF:Editor')->fromInput('description');
         
-           if (strcmp($message, $item->Description->description)) {
+           if ($item->Description && strcmp($message, $item->Description->description)) {
 
                
                 $detail = " Description";
@@ -535,7 +718,7 @@ class Item extends AbstractController
                 
                 foreach ($requests as $request) {
 
-                    $link = $this->app->router('public')->buildLink('bh_brands/item', $request->Item);
+                    $link = $this->app->router('public')->buildLink(\XF::options()->bh_main_route.'/item', $request->Item);
                   
  
                     \XenBulletins\BrandHub\Helper::updateItemNotificiation($request->Item->item_title, $link, $detail, $request->User);
@@ -573,7 +756,7 @@ class Item extends AbstractController
             $attachment->save();
         }
 
-        return $this->redirect($this->buildLink('bh_brands/item', $item));
+        return $this->redirect($this->buildLink(\XF::options()->bh_main_route.'/item', $item));
     }
     
     
@@ -666,7 +849,7 @@ class Item extends AbstractController
                 }
             }
         
-        return $this->redirect($this->buildLink('bh_brands/item', $item));
+        return $this->redirect($this->buildLink(\XF::options()->bh_main_route.'/item', $item));
         
     }
     
@@ -679,7 +862,7 @@ class Item extends AbstractController
                 
                 foreach ($requests as $request) {
 
-                    $link = $this->app->router('public')->buildLink('bh_brands/item', $request->Item);
+                    $link = $this->app->router('public')->buildLink(\XF::options()->bh_main_route.'/item', $request->Item);
                   
  
                     \XenBulletins\BrandHub\Helper::updateItemNotificiation($request->Item->item_title, $link, $detail, $request->User);
@@ -700,7 +883,7 @@ class Item extends AbstractController
 
             foreach ($requests as $request) {
 
-                $link = $this->app->router('public')->buildLink('bh_item/ownerpage/page', $request->Page);
+                $link = $this->app->router('public')->buildLink('owners', $request->Page);
               
                 \XenBulletins\BrandHub\Helper::updatePageNotificiation($itemPage->Item->item_title, $link, $detail, $request->User);
             }
@@ -762,7 +945,7 @@ class Item extends AbstractController
          $attachment->save();
            
          }
-         return $this->redirect($this->buildLink('bh_brands/item', $item));
+         return $this->redirect($this->buildLink(\XF::options()->bh_main_route.'/item', $item));
            
        }
        
@@ -782,7 +965,7 @@ class Item extends AbstractController
 
 //                var_dump($bookmarkPlugin);exit;
 		return $bookmarkPlugin->actionBookmark(
-			$item, $this->buildLink('bh_brands/item/bookmark', $item)
+			$item, $this->buildLink('bh-item/bookmark', $item)
 		);
 	}
         
@@ -795,7 +978,7 @@ class Item extends AbstractController
 		$item = $this->assertViewableItem($params->item_id);
 
 		$reactionPlugin = $this->plugin('XF:Reaction');
-            return	 $reactionPlugin->actionReactSimple($item, 'bh_brands/item');
+            return	 $reactionPlugin->actionReactSimple($item, 'bh-item');
                  
 	}
         
@@ -815,7 +998,7 @@ class Item extends AbstractController
 		$reactionPlugin = $this->plugin('XF:Reaction');
 		return $reactionPlugin->actionReactions(
 			$item,
-			'bh_brands/item/reactions',
+			'bh-item/reactions',
 			$title, $breadcrumbs
 		);
 	}
@@ -851,10 +1034,91 @@ class Item extends AbstractController
                   $itemUnSub->delete();
               }
 
-
-               return $this->redirect($this->buildLink('bh_brands/item',$item));
+              return $this->redirect($this->getDynamicRedirect());
+              
+//               return $this->redirect($this->buildLink(\XF::options()->bh_main_route.'/item',$item));
         
     }
+    
+    
+    //***************************** Reviews Filters ****************************************************
+        
+        
+        public function actionReviewsFilters(ParameterBag $params)
+	{
+		$filters = $this->getFilterInput();
+                
+                if ($params->item_id)
+                {
+                    $item = $this->assertViewableItem($params->item_id);
+                }
+                else
+                    $item = null;
+
+		
+		$viewParams = [
+			'filters' => $filters,
+                        'content' => $item,
+                        'route' => 'bh-item/reviews',
+		];
+		return $this->view('XenBulletins\BrandHub:Filters', 'bh_reviews_filters', $viewParams);
+	}
+        
+        
+        
+        public function getFilterInput($brand=false): array
+	{
+		$filters = [];
+
+		$input = $this->filter([
+			'order' => 'str',
+			'direction' => 'str'
+		]);
+
+//echo '<pre>';
+//var_dump($input);exit;
+		$sorts = $this->getAvailableSorts();
+
+		if ($input['order'] && isset($sorts[$input['order']]))
+		{
+			if (!in_array($input['direction'], ['asc', 'desc']))
+			{
+				$input['direction'] = 'desc';
+			}
+
+                       
+                        $defaultOrderAndDir = explode(',' , $this->options()->bh_reviewsDefaultOrder);
+                        
+                        $defaultOrder = $defaultOrderAndDir[0];
+			$defaultDir =   $defaultOrderAndDir[1];
+
+			if ($input['order'] != $defaultOrder || $input['direction'] != $defaultDir)
+			{
+				$filters['order'] = $input['order'];
+				$filters['direction'] = $input['direction'];
+			}
+		}
+                
+                
+//echo '<pre>';
+//var_dump($filters);exit;
+		return $filters;
+	}
+        
+              
+        public function getAvailableSorts(): array
+	{
+		// maps [name of sort] => field in/relative to itemRating entity
+		return [
+			'rating' => 'rating',
+                        'rating_date' => 'rating_date',
+                        'reaction_score' => 'reaction_score',
+                    
+                        'page_id' => 'page_id',
+                        'view_count' => 'view_count',
+                        'discussion_count' => 'discussion_count',
+		];
+	}
         
         
 

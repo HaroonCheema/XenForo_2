@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 1351446a8f9b11a821ce407f371a08a9
+// FROM HASH: 1cbcbbd0a7e50f7ace79ee23a7484f55
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -55,7 +55,7 @@ return array(
 	)) . '
 	</div>
 ', array(
-		'action' => $__templater->func('link', array('bh_brands/save', $__vars['brand'], ), false),
+		'action' => $__templater->func('link', array($__vars['xf']['options']['bh_main_route'] . '/save', $__vars['brand'], ), false),
 		'ajax' => 'true',
 		'class' => 'block',
 	));

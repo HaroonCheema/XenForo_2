@@ -7,9 +7,35 @@ namespace XenBulletins\BrandHub\Entity;
 use XF\Mvc\Entity\Structure;
 use XF\Mvc\Entity\Entity;
 use XF\Util\Arr;
+use XF\Entity\ReactionTrait;
 
 class ItemRating extends Entity {
     
+     use ReactionTrait;
+    
+     
+    public function canReact(&$error = null): bool
+    {
+        $visitor = \XF::visitor();
+        if (!$visitor->user_id)
+        {
+                return false;
+        }
+
+        if ($this->rating_state != 'visible')
+        {
+                return false;
+        }
+
+        if ($this->user_id == $visitor->user_id)
+        {
+                $error = \XF::phraseDeferred('reacting_to_your_own_content_is_considered_cheating');
+                return false;
+        }
+
+        return $visitor->hasPermission('bh_brand_hub','bh_reactToReviews');
+
+    }
     
     public function canView(&$error = null)
 	{
@@ -66,14 +92,15 @@ class ItemRating extends Entity {
 			return false;
 		}
 
-		if ($this->rating_state != 'visible' || !$this->is_review)
+		if ($this->rating_state != 'visible')
 		{
-			return true;
+			$error = \XF::phraseDeferred('bh_cannot_update_review_while_your_previous_review_exists_in_deleted_state');
+			return false;
 		}
 
 //		if ($this->author_response)
 //		{
-//			$error = \XF::phraseDeferred('xfrm_cannot_update_rating_once_author_response');
+//			$error = \XF::phraseDeferred('bh_cannot_update_rating_once_author_response');
 //			return false;
 //		}
 
@@ -188,6 +215,28 @@ class ItemRating extends Entity {
 
 		return true;
 	}
+        
+        public function getAttachmentConstraints() 
+        {
+
+                $options = $this->app()->options();
+                
+                $extensions = Arr::stringToArray($options->bh_ImageExtensions);
+
+                return [
+                    'extensions' => $extensions
+                ];
+        }
+        
+        protected function _preDelete() {
+           
+        }
+        
+        protected function _postDelete() 
+        {
+            $attachRepo = $this->repository('XF:Attachment');
+            $attachRepo->fastDeleteContentAttachments('bh_review', $this->item_rating_id);
+        }
 
     
     
@@ -196,7 +245,7 @@ class ItemRating extends Entity {
         $structure->table = 'bh_item_rating';
         $structure->shortName = 'XenBulletins\BrandHub:ItemRating';
         $structure->primaryKey = 'item_rating_id';
-        $structure->contentType = 'item_rating';
+        $structure->contentType = 'bh_review';
         $structure->columns = [
             'item_rating_id' => ['type' => self::UINT, 'autoIncrement' => true],
             'item_id' => ['type' => self::UINT, 'required' => true],
@@ -207,12 +256,20 @@ class ItemRating extends Entity {
             'is_review' => ['type' => self::BOOL, 'default' => false],
             'count_rating' => ['type' => self::BOOL, 'default' => TRUE],
             'rating_state' => ['type' => self::STR, 'default' => 'visible', 'allowedValues' => ['visible', 'deleted'] ],
+            'position' => ['type' => self::UINT, 'forced' => true],
         ];
 //           $structure->getters = [
 //            'allowed_types' => true,
 //            'field_cache' => true,
 //            'custom_fields' => true,
 //            'custom_fields_list' => true
+//        ];
+        
+        
+        
+        
+//        $structure->behaviors = [
+//			'XF:Reactable' => ['stateField' => 'rating_state'],
 //        ];
            
            
@@ -240,7 +297,7 @@ class ItemRating extends Entity {
 					['content_id', '=', '$item_rating_id']
 				],
 				'primary' => true
-			]
+			],
 //              
 //              'Brand' => [
 //                            'entity' => 'XenBulletins\BrandHub:Brand',
@@ -258,16 +315,20 @@ class ItemRating extends Entity {
 //                            'primary' => true
 //                    ],
 //              
-//               'Attachment' => [
-//                'entity' => 'XF:Attachment',
-//                'type' => self::TO_ONE,
-//                'conditions' => [
-//                    ['content_type', '=', 'bh_item'],
-//                    ['content_id', '=', '$item_id']
-//                ]
-//            ],
-//              
+               'Attachment' => [
+                'entity' => 'XF:Attachment',
+                'type' => self::TO_MANY,
+                'conditions' => [
+                    ['content_type', '=', 'bh_review'],
+                    ['content_id', '=', '$item_rating_id']
+                ],
+                   'with' => 'Data',
+                'order' => 'attach_date'
+            ]
+              
         ];
+          
+        static::addReactableStructureElements($structure);
            
         return $structure;
              

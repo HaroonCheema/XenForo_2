@@ -196,7 +196,7 @@ class FilmStrip extends AbstractPlugin
 		{
                    
         
-			$finder = $itemRepo->findMediaForAlbum($Item_Attachment->content_id, $limits,$Item_Attachment->content_type ,$page);
+			$finder = $itemRepo->findMediaForAlbum($Item_Attachment->content_id,$Item_Attachment->content_type, $limits ,$page);
 		}
 		
 

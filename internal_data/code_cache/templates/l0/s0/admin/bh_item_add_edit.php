@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: d64d19e21f841f969392d2089d3cc547
+// FROM HASH: 0d7fbd05e5029ea0f3482a6908ee98e3
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -50,7 +50,7 @@ return array(
 	if ($__templater->isTraversable($__vars['brands'])) {
 		foreach ($__vars['brands'] AS $__vars['brand']) {
 			$__compilerTemp1[] = array(
-				'value' => $__vars['brand']['brand_id'],
+				'value' => $__vars['brand']['brand_id'] . ',' . $__vars['brand']['brand_title'],
 				'label' => $__templater->escape($__vars['brand']['brand_title']),
 				'_type' => 'option',
 			);
@@ -89,7 +89,7 @@ return array(
 
 			' . $__templater->formSelectRow(array(
 		'name' => 'brand_id',
-		'value' => $__vars['item']['brand_id'],
+		'value' => $__vars['item']['brand_id'] . ',' . $__vars['item']['brand_title'],
 		'required' => 'true',
 	), $__compilerTemp1, array(
 		'label' => 'Make',
