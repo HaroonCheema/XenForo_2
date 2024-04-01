@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: f40cc9a96e360c18997c0126bdcf95a0
+// FROM HASH: 0a1b986800362c5fbd4b7007fa18034b
 return array(
 'macros' => array('item' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -237,7 +237,7 @@ return array(
 {
 	$__finalCompiled = '';
 		$__finalCompiled .= '
-		<div class="structItem-cell structItem-cell--main" data-xf-init="touch-proxy">
+		<div class="structItem-cell structItem-cell--main" data-xf-init="touch-proxy" style="padding-top: 6px !important;">
 			';
 	$__compilerTemp1 = '';
 	$__compilerTemp1 .= '

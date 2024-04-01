@@ -6,8 +6,9 @@
 <xf:if is="$forum And in_array($thread.thread_id,$xf.options.fs_welcome_banner_applicable_threads|split)">
 
 	<div class="thread-cover">
+		<a href="{{ link('threads' . (($thread.isUnread() AND !$forceRead) ? '/unread' : ''), $thread) }}">
 		<img src="{{ $thread.getThumbnailExit() ? $thread.getThumbnailPath() : base_url('styles/FS/ThreadThumbnail/no_image.png',true) }}" style="width:100%;" />
-
+		</a>
 
 		<div class="structItem-title-cover-perifix">
 			<xf:set var="$canPreview" value="{{ $thread.canPreview() }}" />
@@ -21,7 +22,7 @@
 
 		</div>
 	</div>
-	<div class="date-thread">
+	<div class="date-thread" style="margin-top: 12px;">
 		<div class="time-thread">
 			<xf:date time="{$thread.post_date}" />	
 		</div>
@@ -40,9 +41,9 @@
     <find><![CDATA[/<a href="{{ link\('threads' \. \(\(\$thread\.isUnread\(\) AND !\$forceRead\) \? '\/unread' : ''\), \$thread\) }}" class="" data-tp-primary="on" data-xf-init="{{ \$canPreview \? 'preview-tooltip' : '' }}" data-preview-url="{{ \$canPreview \? link\('threads\/preview', \$thread\) : '' }}">.*?<\/a>/is]]></find>
     <replace><![CDATA[<xf:if is="$forum And in_array($thread.thread_id,$xf.options.fs_welcome_banner_applicable_threads|split)">
 	<xf:if is="$thread.thumbnail_title">
-		<a href="{{ link('threads' . (($thread.isUnread() AND !$forceRead) ? '/unread' : ''), $thread) }}" class="" data-tp-primary="on" data-xf-init="{{ $canPreview ? 'preview-tooltip' : '' }}" data-preview-url="{{ $canPreview ? link('threads/preview', $thread) : '' }}">{{ strlen($thread.thumbnail_title) > 40 ? snippet($thread.thumbnail_title, 40, {'stripBbCode': true}) : $thread.thumbnail_title}}</a>
+		<a href="{{ link('threads' . (($thread.isUnread() AND !$forceRead) ? '/unread' : ''), $thread) }}" class="" data-tp-primary="on" data-xf-init="{{ $canPreview ? 'preview-tooltip' : '' }}" data-preview-url="{{ $canPreview ? link('threads/preview', $thread) : '' }}" style="font-family: 'Apple System', sans-serif; font-size: 15px; font-weight: 600;">{{ strlen($thread.thumbnail_title) > 40 ? snippet($thread.thumbnail_title, 40, {'stripBbCode': true}) : $thread.thumbnail_title}}</a>
 		<xf:else />
-		<a href="{{ link('threads' . (($thread.isUnread() AND !$forceRead) ? '/unread' : ''), $thread) }}" class="" data-tp-primary="on" data-xf-init="{{ $canPreview ? 'preview-tooltip' : '' }}" data-preview-url="{{ $canPreview ? link('threads/preview', $thread) : '' }}">{{ strlen($thread.title) > 40 ? snippet($thread.title, 40, {'stripBbCode': true}) : $thread.title}}</a>
+		<a href="{{ link('threads' . (($thread.isUnread() AND !$forceRead) ? '/unread' : ''), $thread) }}" class="" data-tp-primary="on" data-xf-init="{{ $canPreview ? 'preview-tooltip' : '' }}" data-preview-url="{{ $canPreview ? link('threads/preview', $thread) : '' }}" style="font-family: 'Apple System', sans-serif; font-size: 15px; font-weight: 600;">{{ strlen($thread.title) > 40 ? snippet($thread.title, 40, {'stripBbCode': true}) : $thread.title}}</a>
 	</xf:if>
 	<xf:else />
 	$0

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <templates>
-  <template type="public" title="welcome_banner_thread_list" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[<style>
+  <template type="public" title="welcome_banner_thread_list" version_id="1010100" version_string="1.1.1 Alpha"><![CDATA[<style>
 	.structItem:nth-child(even) {
 		background-color: transparent !important;
 	}
@@ -12,15 +12,14 @@
 	.block-container {
 		background: #1d1d1d;
 	}
-
 </style>
 
-<div class="" style="margin-bottom: 20px;">
+<div class="" style="padding-top: 8px; margin-bottom: 20px;">
 	<div class="block-body">
 		<div class="structItemContainer">
-			<p>
+			<h3 class="node-title" style="padding-left: 12.5px; padding-bottom: 4px; color: #9a9a9a; font-size: 13px; font-weight: 600;">
 				{{ phrase('editorial') }}
-			</p>
+			</h3>
 			<div class="structItemContainer-group js-threadList thread-grid" style="padding: 8px;">
 				<xf:if is="$threads is not empty">
 					<xf:foreach loop="$threads" value="$thread">
@@ -34,7 +33,7 @@
 		</div>
 	</div>
 </div>]]></template>
-  <template type="public" title="welcome_banner_thread_list_macros" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[<xf:macro name="item"
+  <template type="public" title="welcome_banner_thread_list_macros" version_id="1010100" version_string="1.1.1 Alpha"><![CDATA[<xf:macro name="item"
 	arg-thread="!"
 	arg-forum=""
 	arg-forceRead="{{ false }}"
@@ -66,7 +65,7 @@
 	</xf:extension>
 
 	<xf:extension name="main_cell">
-		<div class="structItem-cell structItem-cell--main" data-xf-init="touch-proxy">
+		<div class="structItem-cell structItem-cell--main" data-xf-init="touch-proxy" style="padding-top: 6px !important;">
 			<xf:if contentcheck="true">
 				<ul class="structItem-statuses">
 				<xf:contentcheck>
@@ -111,6 +110,19 @@
 					</xf:extension>
 
 					<xf:extension name="before_status_watch"></xf:extension>
+					<xf:if is="{$showWatched} AND {$xf.visitor.user_id}">
+						<xf:if is="{$thread.Watch.{$xf.visitor.user_id}}">
+							<li>
+								<i class="structItem-status structItem-status--watched" aria-hidden="true" title="{{ phrase('thread_watched')|for_attr }}"></i>
+								<span class="u-srOnly">{{ phrase('thread_watched') }}</span>
+							</li>
+							<xf:elseif is="!$forum AND {$thread.Forum.Watch.{$xf.visitor.user_id}}" />
+							<li>
+								<i class="structItem-status structItem-status--watched" aria-hidden="true" title="{{ phrase('forum_watched')|for_attr }}"></i>
+								<span class="u-srOnly">{{ phrase('forum_watched') }}</span>
+							</li>
+						</xf:if>
+					</xf:if>
 
 					<xf:extension name="before_status_type"></xf:extension>
 					<xf:if is="$thread.discussion_type == 'redirect'">

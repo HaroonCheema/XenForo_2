@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 987496e4e76fb52a6dbe45d06d63aaf4
+// FROM HASH: ab37fa99f3aa4215ac82aa438081abc6
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -18,10 +18,10 @@ return array(
 	}
 </style>
 
-<div class="" style="padding-top: 8px; margin-bottom: 7px;">
+<div class="" style="padding-top: 8px; margin-bottom: 20px;">
 	<div class="block-body">
 		<div class="structItemContainer">
-			<h3 class="node-title" style="padding-left: 12.5px; padding-bottom: 4px;">
+			<h3 class="node-title" style="padding-left: 12.5px; padding-bottom: 4px; color: #9a9a9a; font-size: 13px; font-weight: 600;">
 				' . 'EDITORIAL' . '
 			</h3>
 			<div class="structItemContainer-group js-threadList thread-grid" style="padding: 8px;">

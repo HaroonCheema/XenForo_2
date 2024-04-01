@@ -2,11 +2,11 @@
     "public/welcome_banner_thread_list.html": {
         "version_id": 1010100,
         "version_string": "1.1.1 Alpha",
-        "hash": "987496e4e76fb52a6dbe45d06d63aaf4"
+        "hash": "ab37fa99f3aa4215ac82aa438081abc6"
     },
     "public/welcome_banner_thread_list_macros.html": {
         "version_id": 1010100,
         "version_string": "1.1.1 Alpha",
-        "hash": "f40cc9a96e360c18997c0126bdcf95a0"
+        "hash": "0a1b986800362c5fbd4b7007fa18034b"
     }
 }
