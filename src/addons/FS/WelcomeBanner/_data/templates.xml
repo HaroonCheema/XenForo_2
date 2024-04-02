@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <templates>
-  <template type="public" title="welcome_banner_thread_list" version_id="1010100" version_string="1.1.1 Alpha"><![CDATA[<style>
+  <template type="public" title="welcome_banner_thread_list" version_id="1010200" version_string="1.1.2 Alpha"><![CDATA[<style>
 	.structItem:nth-child(even) {
 		background-color: transparent !important;
 	}
 
-	.structItem:nth-child(even):hover {
-		background-color: #272727 !important;
+	.structItem--thread:hover {
+		background-color: transparent;
 	}
 
 	.block-container {
@@ -17,10 +17,10 @@
 <div class="" style="padding-top: 8px; margin-bottom: 20px;">
 	<div class="block-body">
 		<div class="structItemContainer">
-			<h3 class="node-title" style="padding-left: 12.5px; padding-bottom: 4px; color: #9a9a9a; font-size: 13px; font-weight: 600;">
+			<h3 class="node-title" style="padding-bottom: 4px; color: #9a9a9a; font-size: 13px; font-weight: 600;">
 				{{ phrase('editorial') }}
 			</h3>
-			<div class="structItemContainer-group js-threadList thread-grid" style="padding: 8px;">
+			<div class="structItemContainer-group js-threadList thread-grid" style="padding: 8px 0px;">
 				<xf:if is="$threads is not empty">
 					<xf:foreach loop="$threads" value="$thread">
 						<xf:macro name="{{ $templateOverrides.thread_list_macro ?: 'welcome_banner_thread_list_macros::item' }}"
@@ -33,7 +33,7 @@
 		</div>
 	</div>
 </div>]]></template>
-  <template type="public" title="welcome_banner_thread_list_macros" version_id="1010100" version_string="1.1.1 Alpha"><![CDATA[<xf:macro name="item"
+  <template type="public" title="welcome_banner_thread_list_macros" version_id="1010200" version_string="1.1.2 Alpha"><![CDATA[<xf:macro name="item"
 	arg-thread="!"
 	arg-forum=""
 	arg-forceRead="{{ false }}"
@@ -65,7 +65,7 @@
 	</xf:extension>
 
 	<xf:extension name="main_cell">
-		<div class="structItem-cell structItem-cell--main" data-xf-init="touch-proxy" style="padding-top: 6px !important;">
+		<div class="structItem-cell structItem-cell--main" data-xf-init="touch-proxy" style="padding-top: 3px !important;">
 			<xf:if contentcheck="true">
 				<ul class="structItem-statuses">
 				<xf:contentcheck>

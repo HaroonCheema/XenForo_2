@@ -579,6 +579,16 @@ return array(
 	if (strlen(trim($__compilerTemp1)) > 0) {
 		$__finalCompiled .= '
 		<div class="actionBar-set actionBar-set--external">
+
+';
+		if ($__templater->method($__vars['thread'], 'canViewAttachments', array()) AND ($__templater->func('count', array($__vars['post']['Attachments'], ), false) > 0)) {
+			$__finalCompiled .= '
+	<a href="' . $__templater->func('link', array('posts/export-attachments', $__vars['post'], ), true) . '"
+	   class="actionBar-action actionBar-action--download"
+	   data-xf-click="overlay"><i class="far fa-download"></i> ' . 'Download' . '</a>
+';
+		}
+		$__finalCompiled .= '
 		' . $__compilerTemp1 . '
 		</div>
 	';
