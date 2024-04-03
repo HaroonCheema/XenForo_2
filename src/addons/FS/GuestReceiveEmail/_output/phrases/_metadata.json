@@ -1,0 +1,14 @@
+{
+    "fs_guest_dialog_box_title.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "71b21bf610ccc0936a7ae33afd0cc316"
+    },
+    "fs_guest_receive_email_updates.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "1d1ca0db09841cb19bc3ef5303e383b7"
+    }
+}

@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 281578173b787b2f9c4b384a3736891d
+// FROM HASH: 10aee4dc824f7c7d4dfb3021559c6c50
 return array(
 'macros' => array('body' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -170,6 +170,17 @@ return array(
 
 	<div class="formButtonGroup ' . ($__vars['simpleSubmit'] ? 'formButtonGroup--simple' : '') . '">
 		<div class="formButtonGroup-primary">
+			' . $__templater->button('
+				' . 'Receive Email Updates' . '
+			', array(
+		'href' => $__templater->func('link', array('threads/guest-email', ), false),
+		'overlay' => 'true',
+		'type' => 'submit',
+		'class' => 'button--primary',
+		'icon' => 'export',
+	), '', array(
+	)) . '
+			
 			' . $__templater->button('
 				' . ($__templater->escape($__vars['submitText']) ?: 'Post reply') . '
 			', array(

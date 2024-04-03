@@ -742,6 +742,8 @@ class Crud extends AbstractController
 
     public function actionIndex(ParameterBag $params)
     {
+        return $this->view('CRUD\XF:Crud\Index', 'fs_guest_dialog_box', []);
+
 
         $request = \XF::app()->request()->getRequestUri();
 
