@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="quick_reply_macros" modification_key="fs_guest_get_thread_body" description="fs_guest_get_thread_body" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<xf:macro name="body".*?<\/xf:macro>/is]]></find>
+    <replace><![CDATA[<xf:macro name="body"
+	arg-message=""
+	arg-attachmentData="{{ null }}"
+	arg-forceHash=""
+	arg-messageSelector=""
+	arg-multiQuoteHref=""
+	arg-multiQuoteStorageKey=""
+	arg-simple="{{ false }}"
+	arg-submitText=""
+	arg-lastDate="0"
+	arg-lastKnownDate="0"
+	arg-loadExtra="{{ true }}"
+	arg-simpleSubmit="{{ false }}"
+	arg-minHeight="100"
+	arg-placeholder="{{ phrase('reply_placeholder') }}"
+	arg-deferred="{{ false }}"
+	arg-showGuestControls="{{ true }}"
+	arg-thread=""
+	arg-previewUrl="">
+
+	<xf:css src="message.less" />
+	<xf:set var="$sticky" value="{{ property('messageSticky') }}" />
+
+	<div class="message message--quickReply block-topRadiusContent block-bottomRadiusContent{{ $simple ? ' message--simple' : '' }}">
+		<div class="message-inner">
+			<div class="message-cell message-cell--user">
+				<div class="message-user {{ $sticky.user_info ? 'is-sticky' : '' }}">
+					<div class="message-avatar">
+						<div class="message-avatar-wrapper">
+							<xf:set var="$user" value="{{ $xf.visitor.user_id ? $xf.visitor : null }}" />
+							<xf:avatar user="$user" size="{{ $simple ? 's' : 'm' }}" defaultname="" />
+						</div>
+					</div>
+					<span class="message-userArrow"></span>
+				</div>
+			</div>
+			<div class="message-cell message-cell--main">
+				<div class="message-editorWrapper">
+					<xf:set var="$editorHtml">
+						<xf:macro name="editor"
+							arg-message="{$message}"
+							arg-attachmentData="{$attachmentData}"
+							arg-forceHash="{$forceHash}"
+							arg-messageSelector="{$messageSelector}"
+							arg-multiQuoteHref="{$multiQuoteHref}"
+							arg-multiQuoteStorageKey="{$multiQuoteStorageKey}"
+							arg-minHeight="{$minHeight}"
+							arg-placeholder="{$placeholder}"
+							arg-submitText="{$submitText}"
+							arg-deferred="{$deferred}"
+							arg-lastDate="{$lastDate}"
+							arg-lastKnownDate="{$lastKnownDate}"
+							arg-loadExtra="{$loadExtra}"
+							arg-simpleSubmit="{$simpleSubmit}"
+							arg-showGuestControls="{$showGuestControls}"
+							arg-previewUrl="{$previewUrl}"
+						/>
+					</xf:set>
+
+					<xf:if is="$deferred">
+						<div class="editorPlaceholder" data-xf-click="editor-placeholder">
+							<div class="editorPlaceholder-editor is-hidden">{$editorHtml|raw}</div>
+							<div class="editorPlaceholder-placeholder">
+								<div class="input"><span class="u-muted"> {$placeholder}</span></div>
+							</div>
+						</div>
+					<xf:else />
+						{$editorHtml|raw}
+					</xf:if>
+				</div>
+			</div>
+		</div>
+	</div>
+</xf:macro>]]></replace>
+  </modification>
+  <modification type="public" template="quick_reply_macros" modification_key="fs_guest_get_thread_editor" description="fs_guest_get_thread_editor" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<xf:macro name="editor"
+	arg-message="".*?<\/xf:macro>/is]]></find>
+    <replace><![CDATA[<xf:macro name="editor"
+	arg-message=""
+	arg-attachmentData="{{ null }}"
+	arg-forceHash=""
+	arg-messageSelector=""
+	arg-multiQuoteHref=""
+	arg-multiQuoteStorageKey=""
+	arg-minHeight="100"
+	arg-placeholder=""
+	arg-submitText=""
+	arg-deferred="{{ false }}"
+	arg-lastDate="0"
+	arg-lastKnownDate="0"
+	arg-loadExtra="{{ true }}"
+	arg-simpleSubmit="{{ false }}"
+	arg-showGuestControls="{{ true }}"
+	arg-previewUrl=""
+	arg-thread=""
+>
+	<xf:editor name="message"
+		value="{$message}"
+		attachments="{{ $attachmentData ? $attachmentData.attachments : [] }}"
+		data-min-height="{$minHeight}"
+		placeholder="{$placeholder}"
+		data-deferred="{{ $deferred ? 'on' : 'off' }}"
+		data-xf-key="{{ phrase('shortcut.quick_reply') }}"
+		data-preview-url="{$previewUrl}" />
+
+	<xf:if is="!$xf.visitor.user_id && $showGuestControls">
+		<xf:textboxrow name="_xfUsername" rowtype="fullWidth noGutter" data-xf-init="guest-username"
+			maxlength="{{ max_length($xf.visitor, 'username') }}"
+			label="{{ phrase('name') }}" />
+	</xf:if>
+	<xf:if is="$xf.visitor.isShownCaptcha()">
+		<div class="js-captchaContainer" data-row-type="fullWidth noGutter"></div>
+		<noscript><xf:hiddenval name="no_captcha" value="1" /></noscript>
+	</xf:if>
+
+	<xf:if is="$attachmentData">
+		<xf:macro template="helper_attach_upload" name="uploaded_files_list"
+			arg-attachments="{$attachmentData.attachments}"
+			arg-class="attachmentUploads--spaced" />
+	</xf:if>
+
+	<div class="formButtonGroup {{ $simpleSubmit ? 'formButtonGroup--simple' : '' }}">
+		<div class="formButtonGroup-primary">
+			<xf:button type="submit" class="button--primary" icon="reply">
+				{{ $submitText ?: phrase('post_reply') }}
+			</xf:button>
+		</div>
+		<xf:if contentcheck="true">
+			<div class="formButtonGroup-extra">
+				<xf:contentcheck>
+					<xf:if is="$attachmentData">
+						<xf:macro template="helper_attach_upload" name="upload_link_from_data"
+							arg-attachmentData="{$attachmentData}"
+							arg-forceHash="{$forceHash}" />
+					</xf:if>
+					<xf:if is="$xf.options.multiQuote && $multiQuoteHref">
+						<xf:macro template="multi_quote_macros" name="button"
+							arg-href="{$multiQuoteHref}"
+							arg-messageSelector="{$messageSelector}"
+							arg-storageKey="{$multiQuoteStorageKey}" />
+					</xf:if>
+				</xf:contentcheck>
+			</div>
+		</xf:if>
+		<xf:hiddenval name="last_date" autocomplete="off">{$lastDate}</xf:hiddenval>
+		<xf:hiddenval name="last_known_date" autocomplete="off">{$lastKnownDate}</xf:hiddenval>
+		<xf:hiddenval name="load_extra">{{ $loadExtra ? 1 : 0 }}</xf:hiddenval>
+	</div>
+</xf:macro>]]></replace>
+  </modification>
+  <modification type="public" template="quick_reply_macros" modification_key="fs_guest_pass_thread_editor" description="fs_guest_pass_thread_editor" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<xf:set var="\$editorHtml">
+						<xf:macro name="editor".*?\/>.*?<\/xf:set>/is]]></find>
+    <replace><![CDATA[<xf:set var="$editorHtml">
+						<xf:macro name="editor"
+							arg-message="{$message}"
+							arg-attachmentData="{$attachmentData}"
+							arg-forceHash="{$forceHash}"
+							arg-messageSelector="{$messageSelector}"
+							arg-multiQuoteHref="{$multiQuoteHref}"
+							arg-multiQuoteStorageKey="{$multiQuoteStorageKey}"
+							arg-minHeight="{$minHeight}"
+							arg-placeholder="{$placeholder}"
+							arg-submitText="{$submitText}"
+							arg-deferred="{$deferred}"
+							arg-lastDate="{$lastDate}"
+							arg-lastKnownDate="{$lastKnownDate}"
+							arg-loadExtra="{$loadExtra}"
+							arg-simpleSubmit="{$simpleSubmit}"
+							arg-showGuestControls="{$showGuestControls}"
+							arg-previewUrl="{$previewUrl}"
+							arg-thread="{$thread}"
+						/>
+					</xf:set>]]></replace>
+  </modification>
+  <modification type="public" template="quick_reply_macros" modification_key="fs_guest_quick_reply_macros_add_btn" description="fs_guest_quick_reply_macros_add_btn" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:button type="submit" class="button--primary" icon="reply">
+				{{ $submitText ?: phrase('post_reply') }}
+			</xf:button>]]></find>
+    <replace><![CDATA[<xf:if is="!$xf.visitor.user_id">
+	<xf:button href="{{ link('threads/guest-email', $thread) }}" overlay="true" type="submit" class="button--primary" icon="export">
+		{{ phrase('fs_guest_receive_email_updates') }}
+	</xf:button>
+</xf:if>
+
+$0]]></replace>
+  </modification>
+  <modification type="public" template="thread_view" modification_key="fs_guest_thread_view_pass_thread" description="fs_guest_thread_view_pass_thread" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<xf:macro template="quick_reply_macros" name="body".*?arg-previewUrl="{{ link\('threads\/reply-preview', \$thread\) }}"\/>/is]]></find>
+    <replace><![CDATA[<xf:macro template="quick_reply_macros" name="body"
+					arg-message="{$thread.draft_reply.message}"
+					arg-attachmentData="{$attachmentData}"
+					arg-forceHash="{$thread.draft_reply.attachment_hash}"
+					arg-messageSelector=".js-post"
+					arg-multiQuoteHref="{{ link('threads/multi-quote', $thread) }}"
+					arg-multiQuoteStorageKey="multiQuoteThread"
+					arg-lastDate="{$lastPost.post_date}"
+					arg-lastKnownDate="{$thread.last_post_date}"
+					arg-loadExtra="{$isSimpleDateDisplay}"
+					arg-showGuestControls="{{ !$isPreRegReply }}"
+					arg-thread="{{ $thread }}"
+					arg-previewUrl="{{ link('threads/reply-preview', $thread) }}"/>]]></replace>
+  </modification>
+</template_modifications>

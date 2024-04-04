@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="email" title="fs_guest_watched_thread_reply" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<mail:subject>
+	{{ phrase('reply_to_watched_thread_x', {
+		'title': prefix('thread', $thread, 'escaped') . $thread.title
+	}) }}
+</mail:subject>
+
+{{ phrase('watched_thread_reply_email_html', {
+	'receiver': $receiver,
+	'replier': username_link_email($post.User, $post.username),
+	'board': '<a href="' . link('canonical:index') . '">' . $xf.options.boardTitle . '</a>'
+}) }}
+
+<h2><a href="{{ link('canonical:posts', $post) }}">{{ prefix('thread', $thread, 'escaped') }}{$thread.title}</a></h2>
+
+<xf:if is="$xf.options.emailWatchedThreadIncludeMessage">
+	<div class="message">{{ bb_code_type('emailHtml', $post.message, 'post', $post) }}</div>
+</xf:if>
+
+<xf:macro template="thread_forum_macros" name="go_thread_bar" arg-thread="{$thread}" arg-watchType="threads" />
+
+<xf:macro template="thread_forum_macros" name="watched_thread_footer" arg-thread="{$thread}" />]]></template>
+  <template type="public" title="fs_guest_dialog_box" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('fs_guest_dialog_box_title') }}</xf:title>
+
+<xf:form action="{{ link('threads/guest-email', $thread) }}" ajax="true" class="block">
+
+	<div class="block-container">
+		
+		<div class="block-body">
+			<xf:textboxrow name="email" type="email" autocomplete="email" required="required"
+						   maxlength="{{ max_length($xf.visitor, 'email') }}"
+						   label="{{ phrase('email') }}"
+						   hint="{{ phrase('required') }}" />
+		</div>
+		
+		<xf:submitrow>
+			<xf:html>
+				<xf:button type="submit" class="button--primary" icon="save">
+					{{ phrase('Submit') }}
+				</xf:button>
+			</xf:html>
+		</xf:submitrow>
+		
+	</div>
+
+</xf:form>]]></template>
+</templates>

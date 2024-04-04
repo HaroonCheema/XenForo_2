@@ -13,8 +13,9 @@ class GuestEmail extends Entity
         $structure->table = 'fs_guest_email_details';
         $structure->shortName = 'FS\GuestReceiveEmail:GuestEmail';
         $structure->contentType = 'fs_guest_email_details';
-        $structure->primaryKey = 'thread_id';
+        $structure->primaryKey = 'id';
         $structure->columns = [
+            'id' => ['type' => self::UINT, 'autoIncrement' => true],
             'thread_id' => ['type' => self::UINT, 'required' => true],
             'email' => ['type' => self::STR, 'maxLength' => 120],
         ];

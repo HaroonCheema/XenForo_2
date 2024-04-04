@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 9cc514c0caa7f7c4bd7eb746ee918eb0
+// FROM HASH: 16310a6a69120e8ca25af88b3d941a37
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -41,7 +41,7 @@ return array(
 	</div>
 
 ', array(
-		'action' => $__templater->func('link', array('threads/guest-email', ), false),
+		'action' => $__templater->func('link', array('threads/guest-email', $__vars['thread'], ), false),
 		'ajax' => 'true',
 		'class' => 'block',
 	));

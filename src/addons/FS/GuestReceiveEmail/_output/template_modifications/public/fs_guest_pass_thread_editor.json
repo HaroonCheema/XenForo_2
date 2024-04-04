@@ -1,0 +1,9 @@
+{
+    "template": "quick_reply_macros",
+    "description": "fs_guest_pass_thread_editor",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/<xf:set var=\"\\$editorHtml\">\n\t\t\t\t\t\t<xf:macro name=\"editor\".*?\\/>.*?<\\/xf:set>/is",
+    "replace": "<xf:set var=\"$editorHtml\">\n\t\t\t\t\t\t<xf:macro name=\"editor\"\n\t\t\t\t\t\t\targ-message=\"{$message}\"\n\t\t\t\t\t\t\targ-attachmentData=\"{$attachmentData}\"\n\t\t\t\t\t\t\targ-forceHash=\"{$forceHash}\"\n\t\t\t\t\t\t\targ-messageSelector=\"{$messageSelector}\"\n\t\t\t\t\t\t\targ-multiQuoteHref=\"{$multiQuoteHref}\"\n\t\t\t\t\t\t\targ-multiQuoteStorageKey=\"{$multiQuoteStorageKey}\"\n\t\t\t\t\t\t\targ-minHeight=\"{$minHeight}\"\n\t\t\t\t\t\t\targ-placeholder=\"{$placeholder}\"\n\t\t\t\t\t\t\targ-submitText=\"{$submitText}\"\n\t\t\t\t\t\t\targ-deferred=\"{$deferred}\"\n\t\t\t\t\t\t\targ-lastDate=\"{$lastDate}\"\n\t\t\t\t\t\t\targ-lastKnownDate=\"{$lastKnownDate}\"\n\t\t\t\t\t\t\targ-loadExtra=\"{$loadExtra}\"\n\t\t\t\t\t\t\targ-simpleSubmit=\"{$simpleSubmit}\"\n\t\t\t\t\t\t\targ-showGuestControls=\"{$showGuestControls}\"\n\t\t\t\t\t\t\targ-previewUrl=\"{$previewUrl}\"\n\t\t\t\t\t\t\targ-thread=\"{$thread}\"\n\t\t\t\t\t\t/>\n\t\t\t\t\t</xf:set>"
+}

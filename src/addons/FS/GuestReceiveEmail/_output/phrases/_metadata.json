@@ -5,6 +5,12 @@
         "version_string": "1.0.0 Alpha",
         "hash": "71b21bf610ccc0936a7ae33afd0cc316"
     },
+    "fs_guest_email_already_exist.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "7916b758f0017adf50d436d8a05a7cd1"
+    },
     "fs_guest_receive_email_updates.txt": {
         "global_cache": false,
         "version_id": 1000010,

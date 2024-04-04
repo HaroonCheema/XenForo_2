@@ -1,7 +1,12 @@
 {
+    "email/fs_guest_watched_thread_reply.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "e5806989f6b0c5dbc6ec22259c41c93a"
+    },
     "public/fs_guest_dialog_box.html": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
-        "hash": "9cc514c0caa7f7c4bd7eb746ee918eb0"
+        "hash": "16310a6a69120e8ca25af88b3d941a37"
     }
 }

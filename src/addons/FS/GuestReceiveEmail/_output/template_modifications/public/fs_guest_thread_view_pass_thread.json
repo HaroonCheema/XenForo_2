@@ -1,0 +1,9 @@
+{
+    "template": "thread_view",
+    "description": "fs_guest_thread_view_pass_thread",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/<xf:macro template=\"quick_reply_macros\" name=\"body\".*?arg-previewUrl=\"{{ link\\('threads\\/reply-preview', \\$thread\\) }}\"\\/>/is",
+    "replace": "<xf:macro template=\"quick_reply_macros\" name=\"body\"\n\t\t\t\t\targ-message=\"{$thread.draft_reply.message}\"\n\t\t\t\t\targ-attachmentData=\"{$attachmentData}\"\n\t\t\t\t\targ-forceHash=\"{$thread.draft_reply.attachment_hash}\"\n\t\t\t\t\targ-messageSelector=\".js-post\"\n\t\t\t\t\targ-multiQuoteHref=\"{{ link('threads/multi-quote', $thread) }}\"\n\t\t\t\t\targ-multiQuoteStorageKey=\"multiQuoteThread\"\n\t\t\t\t\targ-lastDate=\"{$lastPost.post_date}\"\n\t\t\t\t\targ-lastKnownDate=\"{$thread.last_post_date}\"\n\t\t\t\t\targ-loadExtra=\"{$isSimpleDateDisplay}\"\n\t\t\t\t\targ-showGuestControls=\"{{ !$isPreRegReply }}\"\n\t\t\t\t\targ-thread=\"{{ $thread }}\"\n\t\t\t\t\targ-previewUrl=\"{{ link('threads/reply-preview', $thread) }}\"/>"
+}
