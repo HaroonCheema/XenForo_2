@@ -20,18 +20,20 @@ class Thread extends XFCP_Thread
             throw $this->exception($this->notFound(\XF::phrase('requested_thread_not_found')));
         }
 
-        if ($this->isPost()) {
-            $input = $this->filter([
-                'email' => 'str',
-            ]);
+        $emailValidator = $this->app->validator('Email');
 
-            $existEmail = $this->finder('FS\GuestReceiveEmail:GuestEmail')->where('thread_id', $params['thread_id'])->where('email', $input['email'])->fetchOne();
+        $email = $this->filter('email', 'str');
+        $email = $emailValidator->coerceValue($email);
+
+        if ($this->isPost() && $emailValidator->isValid($email)) {
+
+            $existEmail = $this->finder('FS\GuestReceiveEmail:GuestEmail')->where('thread_id', $params['thread_id'])->where('email', $email)->fetchOne();
 
             if (!$existEmail) {
                 $insert = $this->em()->create('FS\GuestReceiveEmail:GuestEmail');
 
                 $insert->thread_id = $params['thread_id'];
-                $insert->email = $input['email'];
+                $insert->email = $email;
                 $insert->save();
 
                 return $this->redirect($this->buildLink('threads', $thread));
