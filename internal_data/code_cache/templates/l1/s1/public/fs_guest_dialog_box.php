@@ -4,7 +4,7 @@ return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
 	$__finalCompiled = '';
-	$__templater->pageParams['pageTitle'] = $__templater->preEscaped('Guest Feature Sponsored by D Mark Performance (with the link included).');
+	$__templater->pageParams['pageTitle'] = $__templater->preEscaped('Guest Feature Sponsored by D Mark Performance');
 	$__finalCompiled .= '
 
 ' . $__templater->form('
