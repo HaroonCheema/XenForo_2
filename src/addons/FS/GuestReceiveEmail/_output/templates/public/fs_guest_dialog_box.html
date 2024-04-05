@@ -3,14 +3,16 @@
 <xf:form action="{{ link('threads/guest-email', $thread) }}" ajax="true" class="block">
 
 	<div class="block-container">
-		
+
 		<div class="block-body">
 			<xf:textboxrow name="email" type="email" autocomplete="email" required="required"
 						   maxlength="{{ max_length($xf.visitor, 'email') }}"
 						   label="{{ phrase('email') }}"
 						   hint="{{ phrase('required') }}" />
+
+			<xf:captcharow label="{{ phrase('verification') }}" hint="{{ phrase('required') }}" />
 		</div>
-		
+
 		<xf:submitrow>
 			<xf:html>
 				<xf:button type="submit" class="button--primary" icon="save">
@@ -18,7 +20,7 @@
 				</xf:button>
 			</xf:html>
 		</xf:submitrow>
-		
+
 	</div>
 
 </xf:form>

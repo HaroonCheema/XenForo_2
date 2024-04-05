@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 16310a6a69120e8ca25af88b3d941a37
+// FROM HASH: 1201dabb6caf38242da3554089d03e95
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -10,7 +10,7 @@ return array(
 ' . $__templater->form('
 
 	<div class="block-container">
-		
+
 		<div class="block-body">
 			' . $__templater->formTextBoxRow(array(
 		'name' => 'email',
@@ -22,8 +22,13 @@ return array(
 		'label' => 'Email',
 		'hint' => 'Required',
 	)) . '
+
+			' . $__templater->formRowIfContent($__templater->func('captcha', array(false, false)), array(
+		'label' => 'Verification',
+		'hint' => 'Required',
+	)) . '
 		</div>
-		
+
 		' . $__templater->formSubmitRow(array(
 	), array(
 		'html' => '
@@ -37,7 +42,7 @@ return array(
 	)) . '
 			',
 	)) . '
-		
+
 	</div>
 
 ', array(

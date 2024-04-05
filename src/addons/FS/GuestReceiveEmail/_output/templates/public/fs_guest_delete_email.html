@@ -1,0 +1,17 @@
+<xf:title>{{ phrase('confirm_action') }}</xf:title>
+
+<xf:form action="{{ link('threads/guest-remove-email', $thread) }}" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:inforow rowtype="confirm">
+				{{ phrase('please_confirm_that_you_want_to_delete_following:') }}
+				<strong>
+					{{ $email ? '<em class="u-dimmed">' . $email . '</em> ' : '' }}
+				</strong>
+			</xf:inforow>
+		</div>
+		<xf:submitrow submit="{{ phrase('button.delete') }}"
+					  rowtype="simple" icon="delete" />
+	</div>
+	<xf:redirect />
+</xf:form>

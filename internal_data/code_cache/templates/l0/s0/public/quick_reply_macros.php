@@ -176,16 +176,35 @@ return array(
 			';
 	if (!$__vars['xf']['visitor']['user_id']) {
 		$__finalCompiled .= '
-	' . $__templater->button('
-		' . 'Receive Email Updates' . '
-	', array(
-			'href' => $__templater->func('link', array('threads/guest-email', $__vars['thread'], ), false),
-			'overlay' => 'true',
-			'type' => 'submit',
-			'class' => 'button--primary',
-			'icon' => 'export',
-		), '', array(
-		)) . '
+	';
+		if ($__templater->method($__vars['thread'], 'getGuestEmailExist', array())) {
+			$__finalCompiled .= '
+		' . $__templater->button('
+			' . 'Delete email' . '
+		', array(
+				'href' => $__templater->func('link', array('threads/guest-remove-email', $__vars['thread'], ), false),
+				'overlay' => 'true',
+				'type' => 'submit',
+				'class' => 'button--primary',
+				'icon' => 'delete',
+			), '', array(
+			)) . '
+		';
+		} else {
+			$__finalCompiled .= '
+		' . $__templater->button('
+			' . 'Receive Email Updates' . '
+		', array(
+				'href' => $__templater->func('link', array('threads/guest-email', $__vars['thread'], ), false),
+				'overlay' => 'true',
+				'type' => 'submit',
+				'class' => 'button--primary',
+				'icon' => 'export',
+			), '', array(
+			)) . '
+	';
+		}
+		$__finalCompiled .= '
 ';
 	}
 	$__finalCompiled .= '

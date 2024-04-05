@@ -16,8 +16,9 @@ class GuestEmail extends Entity
         $structure->primaryKey = 'id';
         $structure->columns = [
             'id' => ['type' => self::UINT, 'autoIncrement' => true],
+            'guest_id' => ['type' => self::STR, 'maxLength' => 120, 'required' => true],
             'thread_id' => ['type' => self::UINT, 'required' => true],
-            'email' => ['type' => self::STR, 'maxLength' => 120],
+            'email' => ['type' => self::STR, 'maxLength' => 120, 'required' => true],
         ];
 
         $structure->relations = [];

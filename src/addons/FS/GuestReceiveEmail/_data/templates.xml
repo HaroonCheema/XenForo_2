@@ -21,19 +21,38 @@
 <xf:macro template="thread_forum_macros" name="go_thread_bar" arg-thread="{$thread}" arg-watchType="threads" />
 
 <xf:macro template="thread_forum_macros" name="watched_thread_footer" arg-thread="{$thread}" />]]></template>
+  <template type="public" title="fs_guest_delete_email" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('confirm_action') }}</xf:title>
+
+<xf:form action="{{ link('threads/guest-remove-email', $thread) }}" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:inforow rowtype="confirm">
+				{{ phrase('please_confirm_that_you_want_to_delete_following:') }}
+				<strong>
+					{{ $email ? '<em class="u-dimmed">' . $email . '</em> ' : '' }}
+				</strong>
+			</xf:inforow>
+		</div>
+		<xf:submitrow submit="{{ phrase('button.delete') }}"
+					  rowtype="simple" icon="delete" />
+	</div>
+	<xf:redirect />
+</xf:form>]]></template>
   <template type="public" title="fs_guest_dialog_box" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('fs_guest_dialog_box_title') }}</xf:title>
 
 <xf:form action="{{ link('threads/guest-email', $thread) }}" ajax="true" class="block">
 
 	<div class="block-container">
-		
+
 		<div class="block-body">
 			<xf:textboxrow name="email" type="email" autocomplete="email" required="required"
 						   maxlength="{{ max_length($xf.visitor, 'email') }}"
 						   label="{{ phrase('email') }}"
 						   hint="{{ phrase('required') }}" />
+
+			<xf:captcharow label="{{ phrase('verification') }}" hint="{{ phrase('required') }}" />
 		</div>
-		
+
 		<xf:submitrow>
 			<xf:html>
 				<xf:button type="submit" class="button--primary" icon="save">
@@ -41,7 +60,7 @@
 				</xf:button>
 			</xf:html>
 		</xf:submitrow>
-		
+
 	</div>
 
 </xf:form>]]></template>

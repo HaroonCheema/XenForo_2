@@ -15,6 +15,7 @@ class MySql
         $tables['fs_guest_email_details'] = function (Create $table) {
             /** @var Create|Alter $table */
             $table->addColumn('id', 'int')->autoIncrement();
+            $table->addColumn('guest_id', 'varchar', 120);
             $table->addColumn('thread_id', 'int');
             $table->addColumn('email', 'varchar', 120);
             $table->addPrimaryKey('id');

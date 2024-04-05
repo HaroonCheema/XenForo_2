@@ -4,9 +4,14 @@
         "version_string": "1.0.0 Alpha",
         "hash": "e5806989f6b0c5dbc6ec22259c41c93a"
     },
+    "public/fs_guest_delete_email.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "dce3fd715e44e724d5cba5e906f3362c"
+    },
     "public/fs_guest_dialog_box.html": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
-        "hash": "16310a6a69120e8ca25af88b3d941a37"
+        "hash": "1201dabb6caf38242da3554089d03e95"
     }
 }

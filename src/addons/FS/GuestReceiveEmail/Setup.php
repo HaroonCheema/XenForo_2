@@ -27,6 +27,19 @@ class Setup extends AbstractSetup
 		}
 	}
 
+	public function upgrade1000100Step1(array $stepParams)
+	{
+		$sm = $this->schemaManager();
+
+		foreach (array_keys($this->getTables()) as $tableName) {
+			$sm->dropTable($tableName);
+		}
+
+		foreach ($this->getTables() as $tableName => $callback) {
+			$sm->createTable($tableName, $callback);
+		}
+	}
+
 	public function uninstallStep1()
 	{
 		$sm = $this->schemaManager();

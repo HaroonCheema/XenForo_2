@@ -11,10 +11,28 @@
         "version_string": "1.0.0 Alpha",
         "hash": "7916b758f0017adf50d436d8a05a7cd1"
     },
+    "fs_guest_email_not_found.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "138e1780d527887359844406f96ba234"
+    },
+    "fs_guest_id_not_found.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "8dea8886f1d7cb4d9f5f09953ec90c51"
+    },
     "fs_guest_receive_email_updates.txt": {
         "global_cache": false,
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
         "hash": "1d1ca0db09841cb19bc3ef5303e383b7"
+    },
+    "fs_guest_remove_email.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "f461728c3d2d8f6ebd2d81a70240f637"
     }
 }
