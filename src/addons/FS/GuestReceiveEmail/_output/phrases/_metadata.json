@@ -23,6 +23,12 @@
         "version_string": "1.0.0 Alpha",
         "hash": "8dea8886f1d7cb4d9f5f09953ec90c51"
     },
+    "fs_guest_no_permission.txt": {
+        "global_cache": false,
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "7485ff48de3bfd18131118821b8a3d87"
+    },
     "fs_guest_receive_email_updates.txt": {
         "global_cache": false,
         "version_id": 1000010,

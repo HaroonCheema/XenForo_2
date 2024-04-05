@@ -4,6 +4,7 @@
   <phrase title="fs_guest_email_already_exist" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Email already exist...!]]></phrase>
   <phrase title="fs_guest_email_not_found" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Email not found...!]]></phrase>
   <phrase title="fs_guest_id_not_found" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Guest id not found...!]]></phrase>
+  <phrase title="fs_guest_no_permission" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Action not allowed...!]]></phrase>
   <phrase title="fs_guest_receive_email_updates" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Receive Email Updates]]></phrase>
   <phrase title="fs_guest_remove_email" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Delete email]]></phrase>
 </phrases>

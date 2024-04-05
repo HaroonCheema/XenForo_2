@@ -30,6 +30,14 @@ class Thread extends XFCP_Thread
             throw $this->exception($this->notFound(\XF::phrase('requested_thread_not_found')));
         }
 
+        $guestId =  $this->request->getCookie('fs_guest_unique_id');
+
+        $alreadyExist = $this->finder('FS\GuestReceiveEmail:GuestEmail')->where('thread_id', $thread->thread_id)->where('guest_id', $guestId)->fetchOne();
+
+        if ($alreadyExist) {
+            throw $this->exception($this->notFound(\XF::phrase('fs_guest_no_permission')));
+        }
+
         $emailValidator = $this->app->validator('Email');
 
         $email = $this->filter('email', 'str');
