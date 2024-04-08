@@ -1,0 +1,11 @@
+{
+    "route_type": "admin",
+    "route_prefix": "batch",
+    "sub_name": "",
+    "format": ":int<batch_id>/:page",
+    "build_class": "",
+    "build_method": "",
+    "controller": "FS\\UserGroupBatch:Batch",
+    "context": "fs_usergroup_batch_add",
+    "action_prefix": ""
+}

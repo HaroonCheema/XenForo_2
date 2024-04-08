@@ -1,0 +1,12 @@
+{
+    "admin/fs_usergroup_batch_add_edit.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "0332edfd1b83a23727b4d460b802372f"
+    },
+    "admin/fs_usergroup_batch_index.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "8ff70b77abaef08028bca84db5f88073"
+    }
+}

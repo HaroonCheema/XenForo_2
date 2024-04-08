@@ -1,0 +1,79 @@
+<xf:title>
+	<xf:if is="$data.batch_id"> {{phrase('fs_usergroup_edit_batch') }} : {$data.title} <xf:breadcrumb href="#">{{
+		phrase('fs_usergroup_edit_batch') }}</xf:breadcrumb> <xf:else />{{
+		phrase('fs_usergroup_add_batch') }}
+		<xf:breadcrumb href="#">{{ phrase('fs_usergroup_add_batch') }}</xf:breadcrumb> </xf:if>
+</xf:title>
+<xf:form
+		 action="{{ link('batch/save', $data) }}"
+		 ajax="true"
+		 class="block"
+		 data-force-flash-message="true"
+		 >
+	<div class="block-container">
+		<div class="block-body">
+			<xf:textboxrow name="title" value="{$data.title}"
+						   label="{{ phrase('title') }}" 
+						   hint="{{ phrase('required') }}"
+						   required="required"
+						   />
+
+			<xf:textarearow name="desc" value="{$data.desc}" rows="2" autosize="true"
+							label="{{ phrase('description') }}"/>
+
+			<xf:textboxrow name="img_path" value="{$data.img_path}"
+						   label="{{ phrase('fs_usergroup_batch_img_path') }}" 
+						   hint="{{ phrase('required') }}"
+						   required="required"
+						   />
+
+			<xf:numberboxrow
+							 name="type_repeat"
+							 value="{$data.type_repeat}"
+							 min="0"
+							 label="{{ phrase('fs_usergroup_batch_num_of_type') }}"
+							 autosize="true"
+							 row="5"
+							 />
+
+			<xf:numberboxrow
+							 name="mini_post"
+							 value="{$data.mini_post}"
+							 min="0"
+							 label="{{ phrase('fs_usergroup_batch_mini_post') }}"
+							 autosize="true"
+							 row="5"
+							 />
+
+			<ul class="inputList">
+				<li>
+					<xf:if is="$autoForumManager.forum_manage_id">
+						<xf:selectrow name="usergroup_ids[]"
+									  label="{{ phrase('fs_usergroup_batch_ids') }}"
+									  hint="{{ phrase('required') }}"
+									  required="required"
+									  >
+							<xf:foreach loop="$forums" value="$forum">
+								<xf:option value="{$forum.value}" disabled="{$forum.disabled}"
+										   selected="{{$autoForumManager.node_id == $forum.value }}"
+										   >{$forum.label}</xf:option>
+							</xf:foreach>
+						</xf:selectrow>
+						<xf:else/>
+						<xf:selectrow name="usergroup_ids[]" multiple="multiple" size="5"
+									  label="{{ phrase('fs_usergroup_batch_ids') }}"
+									  hint="{{ phrase('required') }}"
+									  required="required"
+									  >
+							<xf:foreach loop="$userGroups" value="$userGroup">
+								<xf:option value="{$userGroup.user_group_id}" selected="{{in_array($userGroup.user_group_id, $data.usergroup_ids)}}">{$userGroup.title}</xf:option>
+							</xf:foreach>
+						</xf:selectrow>
+					</xf:if>
+				</li>
+			</ul>
+
+		</div>
+		<xf:submitrow submit="" icon="save" />
+	</div>
+</xf:form>

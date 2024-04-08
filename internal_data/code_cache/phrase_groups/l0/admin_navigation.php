@@ -126,6 +126,8 @@ return array (
   'admin_navigation.fs_Crud' => '[FS] CRUD',
   'admin_navigation.fs_media_tag' => 'Media Tag',
   'admin_navigation.fs_media_tag_setting' => 'Media Tag Setting',
+  'admin_navigation.fs_usergroup_batch' => '[FS] Batch',
+  'admin_navigation.fs_usergroup_batch_add' => 'Add Batch',
   'admin_navigation.groupsAndPermissions' => 'Groups &amp; permissions',
   'admin_navigation.help' => 'Help',
   'admin_navigation.helpPages' => 'Help pages',

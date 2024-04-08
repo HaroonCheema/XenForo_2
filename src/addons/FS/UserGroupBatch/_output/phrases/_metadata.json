@@ -1,0 +1,62 @@
+{
+    "admin_navigation.fs_usergroup_batch.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "cf41c79ac39081850d162f5339c2e52c"
+    },
+    "admin_navigation.fs_usergroup_batch_add.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "1e1ba218e825b1201a75660267664449"
+    },
+    "fs_usergroup_add_batch.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "1e1ba218e825b1201a75660267664449"
+    },
+    "fs_usergroup_batch.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "cf41c79ac39081850d162f5339c2e52c"
+    },
+    "fs_usergroup_batch_ids.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "981bedee66ca7c5426c521568ed10d45"
+    },
+    "fs_usergroup_batch_img_path.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "c3e6a5b10ad0fce6081947a90d6761b0"
+    },
+    "fs_usergroup_batch_mini_post.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "02319356322a1f201c73dfeb5f459700"
+    },
+    "fs_usergroup_batch_num_of_type.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "5a864619caaf9c410664175c89059521"
+    },
+    "fs_usergroup_batch_type_repeat.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "9201c239e6dd077c9549cfb559181161"
+    },
+    "fs_usergroup_edit_batch.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "0a0dc1f076997895d1e94e8710dc4349"
+    }
+}

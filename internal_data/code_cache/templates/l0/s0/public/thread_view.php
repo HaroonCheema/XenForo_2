@@ -931,7 +931,6 @@ return array(
 			'lastKnownDate' => $__vars['thread']['last_post_date'],
 			'loadExtra' => $__vars['isSimpleDateDisplay'],
 			'showGuestControls' => (!$__vars['isPreRegReply']),
-			'thread' => $__vars['thread'],
 			'previewUrl' => $__templater->func('link', array('threads/reply-preview', $__vars['thread'], ), false),
 		), $__vars) . '
 			</div>

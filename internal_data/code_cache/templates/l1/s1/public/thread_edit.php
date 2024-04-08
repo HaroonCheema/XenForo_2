@@ -87,7 +87,6 @@ return array(
 	), array(
 		'label' => 'Title',
 	)) . '
-' . $__templater->includeTemplate('bh_assign_Item_to_thread', $__vars) . '
 
 			' . $__compilerTemp1 . '
 

@@ -420,45 +420,6 @@ return array(
 	$__finalCompiled .= '
 
 ' . $__templater->renderExtension('above_node_list', $__vars, $__extensions) . '
-';
-	if (!$__templater->test($__vars['items'], 'empty', array()) AND (!$__vars['xf']['options']['hide_forum_items'])) {
-		$__finalCompiled .= '
-	';
-		$__templater->includeCss('bh_brandHub_list.less');
-		$__finalCompiled .= '
-<br>
-<div class="block-container">
-	<div class="block-body">
-			
-			<div class="brandHub">	
-				<div>
-					<h4> ' . 'Popular items' . '
-						
-						<a href="' . $__templater->func('link', array($__vars['xf']['options']['bh_main_route'], $__vars['brand'], ), true) . '" class="bh_a" data-name="' . $__templater->escape($__vars['brand']['brand_title']) . '"> (view all)</a>
-					</h4>
-				</div>
-					<ul class="grid-list">
-						';
-		if ($__templater->isTraversable($__vars['items'])) {
-			foreach ($__vars['items'] AS $__vars['item']) {
-				$__finalCompiled .= '
-							<li class="bh_item">
-								<a href="' . $__templater->func('link', array($__vars['xf']['options']['bh_main_route'] . '/item', $__vars['item'], ), true) . '" class="bh_a" data-name="' . $__templater->escape($__vars['item']['item_title']) . '">' . $__templater->escape($__vars['item']['item_title']) . ' (' . $__templater->escape($__vars['item']['discussion_count']) . ')</a>
-							</li>
-						';
-			}
-		}
-		$__finalCompiled .= '
-					</ul>	
-				</div>
-	
-	</div>
-</div>
-	<br>
-';
-	}
-	$__finalCompiled .= '
-
 
 ';
 	if ($__vars['nodeTree']) {

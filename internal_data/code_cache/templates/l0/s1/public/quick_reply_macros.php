@@ -19,7 +19,6 @@ return array(
 		'placeholder' => 'Write your reply...',
 		'deferred' => false,
 		'showGuestControls' => true,
-		'thread' => '',
 		'previewUrl' => '',
 	); },
 'code' => function($__templater, array $__vars, $__extensions = null)
@@ -72,7 +71,6 @@ return array(
 		'simpleSubmit' => $__vars['simpleSubmit'],
 		'showGuestControls' => $__vars['showGuestControls'],
 		'previewUrl' => $__vars['previewUrl'],
-		'thread' => $__vars['thread'],
 	), $__vars) . '
 					');
 	$__finalCompiled .= '
@@ -119,7 +117,6 @@ return array(
 		'simpleSubmit' => false,
 		'showGuestControls' => true,
 		'previewUrl' => '',
-		'thread' => '',
 	); },
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -173,43 +170,7 @@ return array(
 
 	<div class="formButtonGroup ' . ($__vars['simpleSubmit'] ? 'formButtonGroup--simple' : '') . '">
 		<div class="formButtonGroup-primary">
-			';
-	if (!$__vars['xf']['visitor']['user_id']) {
-		$__finalCompiled .= '
-	';
-		if ($__templater->method($__vars['thread'], 'getGuestEmailExist', array())) {
-			$__finalCompiled .= '
-		' . $__templater->button('
-			' . 'Delete email' . '
-		', array(
-				'href' => $__templater->func('link', array('threads/guest-remove-email', $__vars['thread'], ), false),
-				'overlay' => 'true',
-				'type' => 'submit',
-				'class' => 'button--primary',
-				'icon' => 'delete',
-			), '', array(
-			)) . '
-		';
-		} else {
-			$__finalCompiled .= '
-		' . $__templater->button('
-			' . 'Receive Email Updates' . '
-		', array(
-				'href' => $__templater->func('link', array('threads/guest-email', $__vars['thread'], ), false),
-				'overlay' => 'true',
-				'type' => 'submit',
-				'class' => 'button--primary',
-				'icon' => 'export',
-			), '', array(
-			)) . '
-	';
-		}
-		$__finalCompiled .= '
-';
-	}
-	$__finalCompiled .= '
-
-' . $__templater->button('
+			' . $__templater->button('
 				' . ($__templater->escape($__vars['submitText']) ?: 'Post reply') . '
 			', array(
 		'type' => 'submit',
