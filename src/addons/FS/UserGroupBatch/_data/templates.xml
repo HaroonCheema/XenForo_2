@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="admin" title="fs_usergroup_batch_add_edit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>
+	<xf:if is="$data.batch_id"> {{phrase('fs_usergroup_edit_batch') }} : {$data.title} <xf:breadcrumb href="#">{{
+		phrase('fs_usergroup_edit_batch') }}</xf:breadcrumb> <xf:else />{{
+		phrase('fs_usergroup_add_batch') }}
+		<xf:breadcrumb href="#">{{ phrase('fs_usergroup_add_batch') }}</xf:breadcrumb> </xf:if>
+</xf:title>
+<xf:form
+		 action="{{ link('batch/save', $data) }}"
+		 ajax="true"
+		 class="block"
+		 data-force-flash-message="true"
+		 >
+	<div class="block-container">
+		<div class="block-body">
+			<xf:textboxrow name="title" value="{$data.title}"
+						   label="{{ phrase('title') }}" 
+						   hint="{{ phrase('required') }}"
+						   required="required"
+						   />
+
+			<xf:textarearow name="desc" value="{$data.desc}" rows="2" autosize="true"
+							label="{{ phrase('description') }}"/>
+
+			<xf:textboxrow name="img_path" value="{$data.img_path}"
+						   label="{{ phrase('fs_usergroup_batch_img_path') }}" 
+						   hint="{{ phrase('required') }}"
+						   required="required"
+						   />
+
+			<xf:numberboxrow
+							 name="type_repeat"
+							 value="{$data.type_repeat}"
+							 min="0"
+							 label="{{ phrase('fs_usergroup_batch_num_of_type') }}"
+							 autosize="true"
+							 row="5"
+							 />
+
+			<xf:numberboxrow
+							 name="mini_post"
+							 value="{$data.mini_post}"
+							 min="0"
+							 label="{{ phrase('fs_usergroup_batch_mini_post') }}"
+							 autosize="true"
+							 row="5"
+							 />
+
+			<ul class="inputList">
+				<li>
+					<xf:if is="$autoForumManager.forum_manage_id">
+						<xf:selectrow name="usergroup_ids[]"
+									  label="{{ phrase('fs_usergroup_batch_ids') }}"
+									  hint="{{ phrase('required') }}"
+									  required="required"
+									  >
+							<xf:foreach loop="$forums" value="$forum">
+								<xf:option value="{$forum.value}" disabled="{$forum.disabled}"
+										   selected="{{$autoForumManager.node_id == $forum.value }}"
+										   >{$forum.label}</xf:option>
+							</xf:foreach>
+						</xf:selectrow>
+						<xf:else/>
+						<xf:selectrow name="usergroup_ids[]" multiple="multiple" size="5"
+									  label="{{ phrase('fs_usergroup_batch_ids') }}"
+									  hint="{{ phrase('required') }}"
+									  required="required"
+									  >
+							<xf:foreach loop="$userGroups" value="$userGroup">
+								<xf:option value="{$userGroup.user_group_id}" selected="{{in_array($userGroup.user_group_id, $data.usergroup_ids)}}">{$userGroup.title}</xf:option>
+							</xf:foreach>
+						</xf:selectrow>
+					</xf:if>
+				</li>
+			</ul>
+
+		</div>
+		<xf:submitrow submit="" icon="save" />
+	</div>
+</xf:form>]]></template>
+  <template type="admin" title="fs_usergroup_batch_index" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('fs_usergroup_batch') }}</xf:title>
+
+<xf:pageaction>
+	<xf:button href="{{ link('batch/add') }}" icon="add">{{ phrase('fs_usergroup_add_batch') }}</xf:button>
+</xf:pageaction>
+<xf:form action="{{ link($prefix . '/toggle') }}" class="block" ajax="true">
+	<div class="block-outer">
+		<xf:macro
+				  template="filter_macros"
+				  name="quick_filter"
+				  arg-key="batch"
+				  arg-class="block-outer-opposite"
+				  />
+	</div>
+
+	<div class="block-container">
+
+		<xf:if is="$data is not empty">
+			<div class="block-body">
+				<xf:datalist data-xf-init="responsive-data-list">
+
+					<xf:macro
+							  name="table_list"
+							  arg-data="{$data}"
+							  />
+
+
+				</xf:datalist>
+				<div class="block-footer">
+					<span class="block-footer-counter"
+						  >{{ display_totals($totalReturn, $total) }}</span
+						>
+				</div>
+
+			</div>
+			<xf:else />
+			<div class="block-body block-row">{{ phrase('no_items_have_been_created_yet') }}</div>
+
+		</xf:if>
+
+	</div>
+
+
+	<xf:pagenav
+				page="{$page}"
+				perpage="{$perPage}"
+				total="{$total}"
+				link="batch"
+				wrapperclass="block"
+				/>
+</xf:form>
+<xf:macro
+		  name="table_list"
+		  arg-data="!"
+		  >
+	<xf:datarow rowtype="header">
+		<xf:cell> {{ phrase('title') }} </xf:cell>
+		<xf:cell> {{ phrase('fs_usergroup_batch_img_path') }} </xf:cell>
+		<xf:cell> {{ phrase('fs_usergroup_batch_type_repeat') }} </xf:cell>
+		<xf:cell> {{ phrase('fs_usergroup_batch_mini_post') }} </xf:cell>
+		<xf:cell class="dataList-cell--min"></xf:cell>
+		<xf:cell class="dataList-cell--min"></xf:cell>
+	</xf:datarow>
+	<xf:foreach loop="{$data}" value="$value">
+		<xf:datarow>
+
+			<xf:cell> {$value.title} </xf:cell>
+			<xf:cell> {$value.img_path} </xf:cell>
+			<xf:cell> {$value.type_repeat} </xf:cell>
+			<xf:cell> {$value.mini_post} </xf:cell>
+
+			<xf:action href="{{ link('batch/edit', $value) }}" >{{ phrase('edit') }}</xf:action>
+			<xf:delete
+					   href="{{ link('batch/delete', $value) }}"
+					   overlay="true"
+					   />
+		</xf:datarow>
+	</xf:foreach>
+</xf:macro>]]></template>
+</templates>

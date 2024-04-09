@@ -10,7 +10,6 @@ return array (
   'widget_def_desc.dbtech_credits_wallet' => 'Displays a block containing the available currencies for the current user.',
   'widget_def_desc.find_member' => 'Adds an auto complete block to the page which allows you to find a member\'s profile by their username.',
   'widget_def_desc.forum_statistics' => 'Displays a block which that shows the forum\'s current statistics on things like total discussions, message and member count.',
-  'widget_def_desc.highestRatedInCategory' => '',
   'widget_def_desc.html' => 'Widget that lets you add custom HTML. This widget supports XenForo template syntax.',
   'widget_def_desc.member_stat' => 'Displays the list of users from the specified member stat cache.',
   'widget_def_desc.members_online' => 'Displays a summary of the number of online users, guests and robots, plus a summary of online members and people you follow.',

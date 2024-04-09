@@ -11,7 +11,6 @@ return array (
   'option_group.auction' => '[FS] Auction',
   'option_group.awedo_post_areas' => 'Post Areas',
   'option_group.basicBoard' => 'Basic options',
-  'option_group.bh_brand_hub' => '[XB] Brand Hub',
   'option_group.boardActive' => 'Board active',
   'option_group.bot_option' => '[XC] Thread GPT Bot',
   'option_group.censoringOptions' => 'Censoring',

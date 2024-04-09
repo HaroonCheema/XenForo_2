@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="post_macros" modification_key="fs_usergroup_batch_post_macros" description="fs_usergroup_batch_post_macros" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:macro template="message_macros" name="user_info" arg-user="{$post.User}"
+							arg-fallbackName="{$post.username}"/>]]></find>
+    <replace><![CDATA[$0
+
+<xf:if is="$thread.getBatchLists() is not empty">
+	<xf:foreach loop="$thread.getBatchLists()" value="$batch">
+		<xf:if is="$thread.UserPost.post_count >= $batch.mini_post">
+			<xf:if is="$thread.getBatchDetails($batch)">
+				<br/>
+				<xf:foreach loop="$thread.getBatchDetails($batch)" value="$i">
+					<img src="{{ base_url($batch.img_path,true) }}" alt="Batch Image" class="bbImage" loading="lazy" />
+				</xf:foreach>
+			</xf:if>
+		</xf:if>
+
+	</xf:foreach>
+</xf:if>]]></replace>
+  </modification>
+</template_modifications>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="admin_navigation.fs_usergroup_batch" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Batch]]></phrase>
+  <phrase title="admin_navigation.fs_usergroup_batch_add" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add Batch]]></phrase>
+  <phrase title="fs_usergroup_add_batch" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add Batch]]></phrase>
+  <phrase title="fs_usergroup_batch" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Batch]]></phrase>
+  <phrase title="fs_usergroup_batch_ids" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Select Usergroups]]></phrase>
+  <phrase title="fs_usergroup_batch_img_path" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Image Path]]></phrase>
+  <phrase title="fs_usergroup_batch_mini_post" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Minimum Posts]]></phrase>
+  <phrase title="fs_usergroup_batch_num_of_type" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Number Of Type Repeat]]></phrase>
+  <phrase title="fs_usergroup_batch_type_repeat" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Num type repeat]]></phrase>
+  <phrase title="fs_usergroup_edit_batch" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Edit Batch]]></phrase>
+</phrases>

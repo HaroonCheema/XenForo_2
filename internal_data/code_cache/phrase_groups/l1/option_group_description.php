@@ -11,7 +11,6 @@ return array (
   'option_group_description.auction' => '[FS] Auction Plugin',
   'option_group_description.awedo_post_areas' => '',
   'option_group_description.basicBoard' => '',
-  'option_group_description.bh_brand_hub' => '',
   'option_group_description.boardActive' => 'Turn your board on and off here.',
   'option_group_description.bot_option' => '',
   'option_group_description.censoringOptions' => 'User-generated text will be subject to the censorship rules you define here.',

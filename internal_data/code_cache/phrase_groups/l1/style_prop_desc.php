@@ -252,7 +252,6 @@ return array (
   'style_prop_desc.overlayMaskBlur' => 'When an overlay is displayed, the page content will be blurred by the amount specified here. This can help draw focus to the overlay content.',
   'style_prop_desc.overlayMaskColor' => 'When an overlay is shown, the page behind is masked by the color defined here. Use RGBA transparency to allow the page to show through',
   'style_prop_desc.overlayTopMargin' => 'This defines the distance between the top of the viewport and the top of the overlay',
-  'style_prop_desc.ownerPagePostCommentToggle' => 'If enabled, the input for a owner-page post comment will only be displayed after the toggle is clicked.',
   'style_prop_desc.paddingLarge' => '',
   'style_prop_desc.paddingLargest' => '',
   'style_prop_desc.paddingMedium' => '',

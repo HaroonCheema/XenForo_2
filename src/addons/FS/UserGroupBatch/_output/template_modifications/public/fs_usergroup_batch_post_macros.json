@@ -1,0 +1,9 @@
+{
+    "template": "post_macros",
+    "description": "fs_usergroup_batch_post_macros",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:macro template=\"message_macros\" name=\"user_info\" arg-user=\"{$post.User}\"\n\t\t\t\t\t\t\targ-fallbackName=\"{$post.username}\"/>",
+    "replace": "$0\n\n<xf:if is=\"$thread.getBatchLists() is not empty\">\n\t<xf:foreach loop=\"$thread.getBatchLists()\" value=\"$batch\">\n\t\t<xf:if is=\"$thread.UserPost.post_count >= $batch.mini_post\">\n\t\t\t<xf:if is=\"$thread.getBatchDetails($batch)\">\n\t\t\t\t<br/>\n\t\t\t\t<xf:foreach loop=\"$thread.getBatchDetails($batch)\" value=\"$i\">\n\t\t\t\t\t<img src=\"{{ base_url($batch.img_path,true) }}\" alt=\"Batch Image\" class=\"bbImage\" loading=\"lazy\" />\n\t\t\t\t</xf:foreach>\n\t\t\t</xf:if>\n\t\t</xf:if>\n\n\t</xf:foreach>\n</xf:if>"
+}

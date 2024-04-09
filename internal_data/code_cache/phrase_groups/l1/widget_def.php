@@ -10,7 +10,6 @@ return array (
   'widget_def.dbtech_credits_wallet' => 'DragonByte Credits: Wallet',
   'widget_def.find_member' => 'Find member',
   'widget_def.forum_statistics' => 'Forum statistics',
-  'widget_def.highestRatedInCategory' => 'Highest rated Item in Category',
   'widget_def.html' => 'HTML',
   'widget_def.member_stat' => 'Member stat',
   'widget_def.members_online' => 'Members online',

@@ -2,7 +2,6 @@
 return array (
   'cron_entry.activitySummaryEmail' => 'Send activity summary email',
   'cron_entry.awedoPostAreasCacheUpdate' => 'Post Areas (Update Cache)',
-  'cron_entry.bh_views' => 'BrandHub: Update view counters',
   'cron_entry.bsspScheduledPosting' => 'Scheduled content posting',
   'cron_entry.cleanUpDaily' => 'Daily clean up',
   'cron_entry.cleanUpHourly' => 'Hourly clean up',

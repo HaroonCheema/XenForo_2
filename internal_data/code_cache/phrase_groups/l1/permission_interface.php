@@ -1,8 +1,5 @@
 <?php
 return array (
-  'permission_interface.OwnerPagePostModeratorPermissions' => 'OwnerPage post moderator permissions',
-  'permission_interface.OwnerPagePostPermissions' => 'OwnerPage post permissions',
-  'permission_interface.bh_brand_hub' => '[XB] Brand-Hub',
   'permission_interface.bookmarkPermissions' => 'Bookmark permissions',
   'permission_interface.bot_option' => 'Thread GPT Bot',
   'permission_interface.conversationModeratorPermissions' => 'Conversation moderator permissions',

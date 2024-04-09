@@ -1,33 +1,25 @@
 <?php
-// FROM HASH: 6ddb0f4f49cb050508c0081c9533c2c1
+// FROM HASH: 6c111a1d5433c4cb7b8cc2e0498ba569
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
 	$__finalCompiled = '';
 	$__finalCompiled .= '<div class="block-container">
 	<div class="block-body">
-		<div class="structItemContainer">
-			<div class="structItemContainer-group js-threadList thread-grid">
-				';
-	if (!$__templater->test($__vars['threads'], 'empty', array())) {
-		$__finalCompiled .= '
-					';
-		if ($__templater->isTraversable($__vars['threads'])) {
-			foreach ($__vars['threads'] AS $__vars['thread']) {
-				$__finalCompiled .= '
-						' . $__templater->callMacro(null, ($__vars['templateOverrides']['thread_list_macro'] ?: 'welcome_banner_thread_list_macros::item'), $__templater->combineMacroArgumentAttributes(null, array(
-					'thread' => $__vars['thread'],
-					'forum' => $__vars['thread']['Forum'],
-				)), $__vars) . '
-					';
-			}
+		<h2>
+			hello
+		</h2>
+		';
+	$__compilerTemp1 = 1;
+	if ($__templater->isTraversable($__compilerTemp1)) {
+		foreach ($__compilerTemp1 AS $__vars['val']) {
+			$__finalCompiled .= '
+			<!-- Output the current number -->
+			<div>' . $__templater->escape($__vars['val']) . '</div>
+		';
 		}
-		$__finalCompiled .= '
-				';
 	}
 	$__finalCompiled .= '
-			</div>
-		</div>
 	</div>
 </div>';
 	return $__finalCompiled;
