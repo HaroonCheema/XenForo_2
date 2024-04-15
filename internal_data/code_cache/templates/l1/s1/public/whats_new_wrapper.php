@@ -24,6 +24,13 @@ return array(
 	$__finalCompiled .= '
 ' . '
 ';
+	if ($__templater->method($__vars['xf']['visitor'], 'hasOption', array('hasDbEcommerce', )) AND $__templater->method($__vars['xf']['visitor'], 'canViewDbtechEcommerceProducts', array())) {
+		$__finalCompiled .= '
+	<a class="' . $__templater->escape($__vars['baseClass']) . ' ' . (($__vars['pageSelected'] == 'new_dbtech_ecommerce_product') ? $__templater->escape($__vars['selectedClass']) : '') . '" href="' . $__templater->func('link', array('whats-new/ecommerce-products', ), true) . '" rel="nofollow">' . 'New products' . '</a>
+';
+	}
+	$__finalCompiled .= '
+';
 	if ($__templater->method($__vars['xf']['visitor'], 'canViewResources', array())) {
 		$__finalCompiled .= '
 	<a class="' . $__templater->escape($__vars['baseClass']) . ' ' . (($__vars['pageSelected'] == 'new_resource') ? $__templater->escape($__vars['selectedClass']) : '') . '" href="' . $__templater->func('link', array('whats-new/resources', ), true) . '" rel="nofollow">' . 'New resources' . '</a>

@@ -43,6 +43,28 @@ return array(
 	$__finalCompiled = '';
 	$__finalCompiled .= '
 	' . $__templater->func('core_js') . '
+	';
+	if ($__vars['app'] == 'public') {
+		$__finalCompiled .= '
+	';
+		$__templater->includeJs(array(
+			'src' => 'DBTech/eCommerce/cart.js',
+			'min' => '1',
+			'addon' => 'DBTech/eCommerce',
+		));
+		$__finalCompiled .= '
+		';
+		$__templater->inlineJs('
+			jQuery.extend(true, DBTecheCommerce.config, {
+				cartCounts: {
+					dbtech_ecommerce_cart_items: \'' . ($__templater->func('callable', array($__vars['xf']['visitor'], 'getDbtechEcommerceCartItems', ), false) ? $__templater->func('number', array($__templater->method($__vars['xf']['visitor'], 'getDbtechEcommerceCartItems', array()), ), false) : 0) . '\'
+				}
+			});
+		');
+		$__finalCompiled .= '
+	';
+	}
+	$__finalCompiled .= '
 	<!--XF:JS-->
 	<script>
 		jQuery.extend(true, XF.config, {
@@ -85,7 +107,7 @@ return array(
 			visitorCounts: {
 				conversations_unread: \'' . $__templater->filter($__vars['xf']['visitor']['conversations_unread'], array(array('number', array()),), true) . '\',
 				alerts_unviewed: \'' . $__templater->filter($__vars['xf']['visitor']['alerts_unviewed'], array(array('number', array()),), true) . '\',
-				total_unread: \'' . $__templater->filter($__vars['xf']['visitor']['conversations_unread'] + $__vars['xf']['visitor']['alerts_unviewed'], array(array('number', array()),), true) . '\',
+				total_unread: \'' . $__templater->filter(($__vars['xf']['visitor']['conversations_unread'] + $__vars['xf']['visitor']['alerts_unviewed']) + ($__templater->func('callable', array($__vars['xf']['visitor'], 'getDbtechEcommerceCartItems', ), false) ? $__templater->method($__vars['xf']['visitor'], 'getDbtechEcommerceCartItems', array()) : 0), array(array('number', array()),), true) . '\',
 				title_count: ' . ($__templater->func('in_array', array($__vars['xf']['options']['displayVisitorCount'], array('title_count', 'title_and_icon', ), ), false) ? 'true' : 'false') . ',
 				icon_indicator: ' . ($__templater->func('in_array', array($__vars['xf']['options']['displayVisitorCount'], array('icon_indicator', 'title_and_icon', ), ), false) ? 'true' : 'false') . '
 			},

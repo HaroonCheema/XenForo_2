@@ -100,6 +100,130 @@ return function($__templater, $__selectedNav, array $__vars)
 		}
 	}
 
+	if (($__templater->method($__vars['xf']['visitor'], 'hasOption', array('hasDbEcommerce', )) AND $__templater->method($__vars['xf']['visitor'], 'canViewDbtechEcommerceProducts', array()))) {
+		$__navTemp = [
+		'title' => \XF::phrase('nav.dbtechEcommerce'),
+		'href' => $__templater->func('link', array('dbtech-ecommerce', ), false),
+		'attributes' => [],
+	];
+		if ($__navTemp) {
+			$__tree['dbtechEcommerce'] = $__navTemp;
+			$__flat['dbtechEcommerce'] =& $__tree['dbtechEcommerce'];
+			if (empty($__tree['dbtechEcommerce']['children'])) { $__tree['dbtechEcommerce']['children'] = []; }
+
+			if ($__vars['xf']['options']['dbtechEcommerceEnableRate']) {
+				$__navTemp = [
+		'title' => \XF::phrase('nav.dbtechEcommerceLatestReviews'),
+		'href' => $__templater->func('link', array('dbtech-ecommerce/latest-reviews', ), false),
+		'attributes' => [],
+	];
+				if ($__navTemp) {
+					$__tree['dbtechEcommerce']['children']['dbtechEcommerceLatestReviews'] = $__navTemp;
+					$__flat['dbtechEcommerceLatestReviews'] =& $__tree['dbtechEcommerce']['children']['dbtechEcommerceLatestReviews'];
+				}
+			}
+
+			if ($__vars['xf']['visitor']['user_id']) {
+				$__navTemp = [
+		'title' => \XF::phrase('nav.dbtechEcommerceYourAccount'),
+		'href' => $__templater->func('link', array('dbtech-ecommerce/account', $__vars['xf']['visitor'], ), false),
+		'attributes' => [],
+	];
+				if ($__navTemp) {
+					$__tree['dbtechEcommerce']['children']['dbtechEcommerceYourAccount'] = $__navTemp;
+					$__flat['dbtechEcommerceYourAccount'] =& $__tree['dbtechEcommerce']['children']['dbtechEcommerceYourAccount'];
+				}
+			}
+
+			if ($__vars['xf']['visitor']['user_id']) {
+				$__navTemp = [
+		'title' => \XF::phrase('nav.dbtechEcommerceYourPurchasedLicenses'),
+		'href' => $__templater->func('link', array('dbtech-ecommerce/licenses', $__vars['xf']['visitor'], ), false),
+		'attributes' => [],
+	];
+				if ($__navTemp) {
+					$__tree['dbtechEcommerce']['children']['dbtechEcommerceYourPurchasedLicenses'] = $__navTemp;
+					$__flat['dbtechEcommerceYourPurchasedLicenses'] =& $__tree['dbtechEcommerce']['children']['dbtechEcommerceYourPurchasedLicenses'];
+				}
+			}
+
+			if ($__vars['xf']['visitor']['user_id']) {
+				$__navTemp = [
+		'title' => \XF::phrase('nav.dbtechEcommerceYourAddresses'),
+		'href' => $__templater->func('link', array('dbtech-ecommerce/account/address-book', $__vars['xf']['visitor'], ), false),
+		'attributes' => [],
+	];
+				if ($__navTemp) {
+					$__tree['dbtechEcommerce']['children']['dbtechEcommerceYourAddresses'] = $__navTemp;
+					$__flat['dbtechEcommerceYourAddresses'] =& $__tree['dbtechEcommerce']['children']['dbtechEcommerceYourAddresses'];
+				}
+			}
+
+			if (($__vars['xf']['visitor']['user_id'] AND $__templater->method($__vars['xf']['visitor'], 'canAddDbtechEcommerceProduct', array()))) {
+				$__navTemp = [
+		'title' => \XF::phrase('nav.dbtechEcommerceYourCreatedProducts'),
+		'href' => $__templater->func('link', array('dbtech-ecommerce/authors', $__vars['xf']['visitor'], ), false),
+		'attributes' => [],
+	];
+				if ($__navTemp) {
+					$__tree['dbtechEcommerce']['children']['dbtechEcommerceYourCreatedProducts'] = $__navTemp;
+					$__flat['dbtechEcommerceYourCreatedProducts'] =& $__tree['dbtechEcommerce']['children']['dbtechEcommerceYourCreatedProducts'];
+				}
+			}
+
+			if ($__vars['xf']['visitor']['user_id']) {
+				$__navTemp = [
+		'title' => \XF::phrase('nav.dbtechEcommerceWatched'),
+		'href' => '',
+		'attributes' => [],
+	];
+				if ($__navTemp) {
+					$__tree['dbtechEcommerce']['children']['dbtechEcommerceWatched'] = $__navTemp;
+					$__flat['dbtechEcommerceWatched'] =& $__tree['dbtechEcommerce']['children']['dbtechEcommerceWatched'];
+					if (empty($__tree['dbtechEcommerce']['children']['dbtechEcommerceWatched']['children'])) { $__tree['dbtechEcommerce']['children']['dbtechEcommerceWatched']['children'] = []; }
+
+					if ($__vars['xf']['visitor']['user_id']) {
+						$__navTemp = [
+		'title' => \XF::phrase('nav.dbtechEcommerceWatchedProducts'),
+		'href' => $__templater->func('link', array('watched/ecommerce-products', ), false),
+		'attributes' => [],
+	];
+						if ($__navTemp) {
+							$__tree['dbtechEcommerce']['children']['dbtechEcommerceWatched']['children']['dbtechEcommerceWatchedProducts'] = $__navTemp;
+							$__flat['dbtechEcommerceWatchedProducts'] =& $__tree['dbtechEcommerce']['children']['dbtechEcommerceWatched']['children']['dbtechEcommerceWatchedProducts'];
+						}
+					}
+
+					if ($__vars['xf']['visitor']['user_id']) {
+						$__navTemp = [
+		'title' => \XF::phrase('nav.dbtechEcommerceWatchedCategories'),
+		'href' => $__templater->func('link', array('watched/ecommerce-categories', ), false),
+		'attributes' => [],
+	];
+						if ($__navTemp) {
+							$__tree['dbtechEcommerce']['children']['dbtechEcommerceWatched']['children']['dbtechEcommerceWatchedCategories'] = $__navTemp;
+							$__flat['dbtechEcommerceWatchedCategories'] =& $__tree['dbtechEcommerce']['children']['dbtechEcommerceWatched']['children']['dbtechEcommerceWatchedCategories'];
+						}
+					}
+
+				}
+			}
+
+			if ($__templater->method($__vars['xf']['visitor'], 'canSearch', array())) {
+				$__navTemp = [
+		'title' => \XF::phrase('nav.dbtechEcommerceSearchProducts'),
+		'href' => $__templater->func('link', array('search', null, array('type' => 'dbtech_ecommerce_product', ), ), false),
+		'attributes' => [],
+	];
+				if ($__navTemp) {
+					$__tree['dbtechEcommerce']['children']['dbtechEcommerceSearchProducts'] = $__navTemp;
+					$__flat['dbtechEcommerceSearchProducts'] =& $__tree['dbtechEcommerce']['children']['dbtechEcommerceSearchProducts'];
+				}
+			}
+
+		}
+	}
+
 	$__navTemp = [
 		'title' => \XF::phrase('nav.forums'),
 		'href' => $__templater->func('link', array('forums', ), false),
@@ -295,6 +419,20 @@ return function($__templater, $__selectedNav, array $__vars)
 			if ($__navTemp) {
 				$__tree['whatsNew']['children']['xfmgWhatsNewMediaComments'] = $__navTemp;
 				$__flat['xfmgWhatsNewMediaComments'] =& $__tree['whatsNew']['children']['xfmgWhatsNewMediaComments'];
+			}
+		}
+
+		if ($__templater->method($__vars['xf']['visitor'], 'canViewDbtechEcommerceProducts', array())) {
+			$__navTemp = [
+		'title' => \XF::phrase('nav.dbtEcomNewProducts'),
+		'href' => $__templater->func('link', array('whats-new/ecommerce-products', ), false),
+		'attributes' => [
+			'rel' => 'nofollow',
+		],
+	];
+			if ($__navTemp) {
+				$__tree['whatsNew']['children']['dbtEcomNewProducts'] = $__navTemp;
+				$__flat['dbtEcomNewProducts'] =& $__tree['whatsNew']['children']['dbtEcomNewProducts'];
 			}
 		}
 

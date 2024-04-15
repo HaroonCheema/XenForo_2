@@ -79,51 +79,96 @@ return array(
 								<dl class="pairs pairs--columns">
 									<dt>';
 									$__compilerTemp4 = '';
-									if ($__vars['intermediate']['type'] == 'system') {
+									if ($__vars['intermediate']['type'] == 'ecommerce-category-system') {
 										$__compilerTemp4 .= '
-											';
+										';
 										if ($__vars['intermediate']['contentId']) {
 											$__compilerTemp4 .= '
+											' . $__templater->escape($__vars['intermediate']['contentTitle']) . ' - ' . 'Category-wide' . '
+										';
+										} else {
+											$__compilerTemp4 .= '
+											' . 'Category-wide' . '
+										';
+										}
+										$__compilerTemp4 .= '
+									';
+									} else if ($__vars['intermediate']['type'] == 'ecommerce-category-group') {
+										$__compilerTemp4 .= '
+										';
+										if ($__vars['intermediate']['contentId']) {
+											$__compilerTemp4 .= '
+											' . $__templater->escape($__vars['intermediate']['contentTitle']) . ' - ' . 'Parent category' . '
+										';
+										} else {
+											$__compilerTemp4 .= '
+											' . $__templater->escape($__vars['userGroupTitles'][$__vars['intermediate']['typeId']]) . '
+										';
+										}
+										$__compilerTemp4 .= '
+									';
+									} else if ($__vars['intermediate']['type'] == 'ecommerce-category-user') {
+										$__compilerTemp4 .= '
+										';
+										if ($__vars['intermediate']['contentId']) {
+											$__compilerTemp4 .= '
+											' . $__templater->escape($__vars['intermediate']['contentTitle']) . ' - ' . 'User value (parent category)' . '
+										';
+										} else {
+											$__compilerTemp4 .= '
+											' . 'User value (parent category)' . '
+										';
+										}
+										$__compilerTemp4 .= '
+									';
+									}
+									$__compilerTemp5 = '';
+									if ($__vars['intermediate']['type'] == 'system') {
+										$__compilerTemp5 .= '
+											';
+										if ($__vars['intermediate']['contentId']) {
+											$__compilerTemp5 .= '
 												' . $__templater->escape($__vars['intermediate']['contentTitle']) . ' - ' . 'Content-wide' . '
 											';
 										} else {
-											$__compilerTemp4 .= '
+											$__compilerTemp5 .= '
 												' . 'Global value' . '
 											';
 										}
-										$__compilerTemp4 .= '
+										$__compilerTemp5 .= '
 										';
 									} else if ($__vars['intermediate']['type'] == 'group') {
-										$__compilerTemp4 .= '
+										$__compilerTemp5 .= '
 											';
 										if ($__vars['intermediate']['contentId']) {
-											$__compilerTemp4 .= '
+											$__compilerTemp5 .= '
 												' . $__templater->escape($__vars['intermediate']['contentTitle']) . ' - ' . $__templater->escape($__vars['userGroupTitles'][$__vars['intermediate']['typeId']]) . '
 											';
 										} else {
-											$__compilerTemp4 .= '
+											$__compilerTemp5 .= '
 												' . $__templater->escape($__vars['userGroupTitles'][$__vars['intermediate']['typeId']]) . '
 											';
 										}
-										$__compilerTemp4 .= '
+										$__compilerTemp5 .= '
 										';
 									} else if ($__vars['intermediate']['type'] == 'user') {
-										$__compilerTemp4 .= '
+										$__compilerTemp5 .= '
 											';
 										if ($__vars['intermediate']['contentId']) {
-											$__compilerTemp4 .= '
+											$__compilerTemp5 .= '
 												' . $__templater->escape($__vars['intermediate']['contentTitle']) . ' - ' . 'User value' . '
 											';
 										} else {
-											$__compilerTemp4 .= '
+											$__compilerTemp5 .= '
 												' . 'User value' . '
 											';
 										}
-										$__compilerTemp4 .= '
+										$__compilerTemp5 .= '
 										';
 									}
 									$__compilerTemp3 .= trim('
 										' . $__compilerTemp4 . '
+									' . $__compilerTemp5 . '
 									') . '</dt>
 									<dd>
 										';
@@ -169,12 +214,12 @@ return array(
 							';
 								}
 							}
-							$__compilerTemp5 = '';
+							$__compilerTemp6 = '';
 							if ($__vars['permAnalysis']['dependChange']) {
-								$__compilerTemp5 .= '
+								$__compilerTemp6 .= '
 								';
 								$__vars['parentPermission'] = $__vars['permissionsGroupedType'][$__vars['permission']['permission_group_id']][$__vars['permAnalysis']['dependChange']['by']];
-								$__compilerTemp5 .= '
+								$__compilerTemp6 .= '
 								<div>
 									' . $__templater->fontAwesome('fa-exclamation-triangle', array(
 									'class' => 'u-accentText',
@@ -189,7 +234,7 @@ return array(
 
 						<div class="toggleTarget">
 							' . $__compilerTemp3 . '
-							' . $__compilerTemp5 . '
+							' . $__compilerTemp6 . '
 						</div>
 					', array(
 								'label' => $__templater->escape($__vars['permission']['title']),
@@ -273,12 +318,12 @@ return array(
 				$__finalCompiled .= '
 				<li class="' . (($__vars['contentType'] == $__vars['_contentType']) ? 'is-active' : '') . '" role="tabpanel" id="analyze-' . $__templater->escape($__vars['_contentType']) . '">
 					';
-				$__compilerTemp6 = array(array(
+				$__compilerTemp7 = array(array(
 					'value' => '0',
 					'label' => '&nbsp;',
 					'_type' => 'option',
 				));
-				$__compilerTemp6 = $__templater->mergeChoiceOptions($__compilerTemp6, $__vars['_contentPermission']['content']);
+				$__compilerTemp7 = $__templater->mergeChoiceOptions($__compilerTemp7, $__vars['_contentPermission']['content']);
 				$__finalCompiled .= $__templater->form('
 						<div class="block-body">
 							' . $__templater->formTextBoxRow(array(
@@ -292,7 +337,7 @@ return array(
 							' . $__templater->formSelectRow(array(
 					'name' => 'content_id',
 					'value' => (($__vars['contentType'] == $__vars['_contentType']) ? $__vars['contentId'] : 0),
-				), $__compilerTemp6, array(
+				), $__compilerTemp7, array(
 					'label' => 'Content',
 				)) . '
 						</div>

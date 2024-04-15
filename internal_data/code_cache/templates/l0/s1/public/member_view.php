@@ -339,6 +339,27 @@ return array(
 	}
 	$__finalCompiled .= '
 
+';
+	if ($__templater->method($__vars['xf']['visitor'], 'hasOption', array('hasDbEcommerce', )) AND ($__templater->method($__vars['xf']['visitor'], 'canViewDbtechEcommerceProducts', array()) AND $__vars['user']['dbtech_ecommerce_product_count'])) {
+		$__finalCompiled .= '
+	<a href="' . $__templater->func('link', array('dbtech-ecommerce/authors', $__vars['user'], ), true) . '"
+	   class="tabs-tab"
+	   id="dbtech_ecommerce_products"
+	   role="tab">' . 'Products' . '</a>
+';
+	}
+	$__finalCompiled .= '
+';
+	if ($__templater->method($__vars['xf']['visitor'], 'canViewDbtechEcommerceLicenses', array()) AND $__vars['user']['dbtech_ecommerce_license_count']) {
+		$__finalCompiled .= '
+	<a href="' . $__templater->func('link', array('dbtech-ecommerce/licenses', $__vars['user'], ), true) . '"
+	   class="tabs-tab"
+	   id="dbtech_ecommerce_licenses"
+	   role="tab">' . 'Licenses' . '</a>
+';
+	}
+	$__finalCompiled .= '
+
 				<a href="' . $__templater->func('link', array('members/about', $__vars['user'], ), true) . '"
 					class="tabs-tab"
 					id="about"
@@ -496,6 +517,25 @@ return array(
 	if ($__templater->method($__vars['xf']['visitor'], 'canViewResources', array()) AND $__vars['user']['xfrm_resource_count']) {
 		$__finalCompiled .= '
 	<li data-href="' . $__templater->func('link', array('resources/authors', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="resources">
+		<div class="blockMessage">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
+	</li>
+';
+	}
+	$__finalCompiled .= '
+
+';
+	if ($__templater->method($__vars['xf']['visitor'], 'hasOption', array('hasDbEcommerce', )) AND ($__templater->method($__vars['xf']['visitor'], 'canViewDbtechEcommerceProducts', array()) AND $__vars['user']['dbtech_ecommerce_product_count'])) {
+		$__finalCompiled .= '
+	<li data-href="' . $__templater->func('link', array('dbtech-ecommerce/authors', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="dbtech_ecommerce_products">
+		<div class="blockMessage">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
+	</li>
+';
+	}
+	$__finalCompiled .= '
+';
+	if ($__templater->method($__vars['xf']['visitor'], 'canViewDbtechEcommerceLicenses', array()) AND $__vars['user']['dbtech_ecommerce_license_count']) {
+		$__finalCompiled .= '
+	<li data-href="' . $__templater->func('link', array('dbtech-ecommerce/licenses', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="dbtech_ecommerce_licenses">
 		<div class="blockMessage">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
 	</li>
 ';
