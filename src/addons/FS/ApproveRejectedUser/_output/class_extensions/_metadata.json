@@ -2,6 +2,9 @@
     "XF-ApprovalQueue-User_FS-ApproveRejectedUser-XF-ApprovalQueue-User.json": {
         "hash": "3e4c702cc761df6fdf351c11ec366ef6"
     },
+    "XF-Pub-Controller-ApprovalQueue_FS-ApproveRejectedUser-XF-Pub-Controller-ApprovalQueue.json": {
+        "hash": "0a29b58dc95677e4500b80a8108478e2"
+    },
     "XF-Repository-ApprovalQueue_FS-ApproveRejectedUser-XF-Repository-ApprovalQueue.json": {
         "hash": "73ad25b811fa0e1cafe18dae9a6779d1"
     }

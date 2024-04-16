@@ -1,4 +1,10 @@
 {
+    "public/fs_rejected_user_approval_queue.json": {
+        "hash": "9448f9d94b8d88184b6b5cf1c9552ea0"
+    },
+    "public/fs_rejected_user_approval_queue_filters_add_user.json": {
+        "hash": "123600e54d1c8b1b2421d6b511de7150"
+    },
     "public/fs_rejected_user_approval_queue_macros.json": {
         "hash": "6f58354c1ddfe26d1a4698f761440a93"
     }

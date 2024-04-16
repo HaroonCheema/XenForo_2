@@ -18,6 +18,7 @@ return array(
 			);
 		}
 	}
+	$__vars['user'] = ($__vars['filters']['content_id'] ? $__templater->method($__vars['xf']['app']['em'], 'find', array('Xf:User', $__vars['filters']['content_id'], )) : '');
 	$__finalCompiled .= $__templater->form('
 	' . '
 	<div class="menu-row menu-row--separated">
@@ -30,6 +31,22 @@ return array(
 	), $__compilerTemp1) . '
 		</div>
 	</div>
+
+' . '
+<div class="menu-row menu-row--separated">
+	<label for="ctrl_content_type">' . 'Username:' . '</label>
+	<div class="u-inputSpacer">
+
+		' . '' . '
+
+		' . $__templater->formTextBox(array(
+		'name' => 'username',
+		'ac' => 'single',
+		'value' => ($__vars['user'] ? $__vars['user']['username'] : ''),
+		'maxlength' => $__templater->func('max_length', array($__vars['xf']['visitor'], 'username', ), false),
+	)) . '
+	</div>
+</div>
 	
 	' . '
 	<div class="menu-row menu-row--separated">

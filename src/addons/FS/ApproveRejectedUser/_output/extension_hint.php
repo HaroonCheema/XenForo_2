@@ -8,6 +8,11 @@ namespace FS\ApproveRejectedUser\XF\ApprovalQueue
 	class XFCP_User extends \XF\ApprovalQueue\User {}
 }
 
+namespace FS\ApproveRejectedUser\XF\Pub\Controller
+{
+	class XFCP_ApprovalQueue extends \XF\Pub\Controller\ApprovalQueue {}
+}
+
 namespace FS\ApproveRejectedUser\XF\Repository
 {
 	class XFCP_ApprovalQueue extends \XF\Repository\ApprovalQueue {}

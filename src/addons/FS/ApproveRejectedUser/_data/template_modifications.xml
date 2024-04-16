@@ -1,5 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <template_modifications>
+  <modification type="public" template="approval_queue" modification_key="fs_rejected_user_approval_queue" description="fs_rejected_user_approval_queue" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<xf:if is="\$filters\.order AND {\$sortOrders\.{\$filters\.order}}">.*?<\/xf:if>.*?<\/xf:if>/si]]></find>
+    <replace><![CDATA[$0
+
+<xf:if is="$filters.content_id">
+	<xf:set var="$user" value="{{ $xf.app.em.find('Xf:User', $filters.content_id) }}" />
+
+	<li><a href="{{ link('approval-queue', null, $filters|replace({'content_id': null})) }}"
+		   class="filterBar-filterToggle" data-xf-init="tooltip" title="{{ phrase('remove_this_filter')|for_attr }}">
+		<span class="filterBar-filterToggle-label">{{ phrase('username:') }}</span>
+		{{  $user.username }}
+		</a></li>
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="approval_queue_filters" modification_key="fs_rejected_user_approval_queue_filters_add_user" description="fs_rejected_user_approval_queue_filters_add_user" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<!--[XF:above_content_type]-->
+	<div class="menu-row menu-row--separated">
+		<label for="ctrl_content_type">{{ phrase('content_type:') }}</label>
+		<div class="u-inputSpacer">
+			<xf:select name="content_type" value="{$filters.content_type}" id="ctrl_content_type">
+				<xf:option value="">{{ phrase('(any)') }}</xf:option>
+				<xf:foreach loop="$contentTypes" value="$contentType">
+					<xf:option value="{$contentType}">{$xf.app.getContentTypePhrase($contentType)}</xf:option>
+				</xf:foreach>
+			</xf:select>
+		</div>
+	</div>]]></find>
+    <replace><![CDATA[$0
+
+<!--[XF:above_user_name]-->
+<div class="menu-row menu-row--separated">
+	<label for="ctrl_content_type">{{ phrase('Username:') }}</label>
+	<div class="u-inputSpacer">
+
+		<xf:set var="$user" value="{{ $filters.content_id ? $xf.app.em.find('Xf:User', $filters.content_id) : '' }}" />
+
+		<xf:textbox name="username" ac="single" value="{{ $user? $user.username : '' }}" maxlength="{{ max_length($xf.visitor, 'username') }}" />
+	</div>
+</div>]]></replace>
+  </modification>
   <modification type="public" template="approval_queue_macros" modification_key="fs_rejected_user_approval_queue_macros" description="fs_rejected_user_approval_queue_macros" execution_order="10" enabled="1" action="str_replace">
     <find><![CDATA[{$typePhraseHtml|raw}]]></find>
     <replace><![CDATA[{{$user.user_state == 'rejected'? phrase('fs_rejected_user') : $typePhraseHtml|raw}}]]></replace>

@@ -1,0 +1,9 @@
+{
+    "template": "approval_queue",
+    "description": "fs_rejected_user_approval_queue",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/<xf:if is=\"\\$filters\\.order AND {\\$sortOrders\\.{\\$filters\\.order}}\">.*?<\\/xf:if>.*?<\\/xf:if>/si",
+    "replace": "$0\n\n<xf:if is=\"$filters.content_id\">\n\t<xf:set var=\"$user\" value=\"{{ $xf.app.em.find('Xf:User', $filters.content_id) }}\" />\n\n\t<li><a href=\"{{ link('approval-queue', null, $filters|replace({'content_id': null})) }}\"\n\t\t   class=\"filterBar-filterToggle\" data-xf-init=\"tooltip\" title=\"{{ phrase('remove_this_filter')|for_attr }}\">\n\t\t<span class=\"filterBar-filterToggle-label\">{{ phrase('username:') }}</span>\n\t\t{{  $user.username }}\n\t\t</a></li>\n</xf:if>"
+}

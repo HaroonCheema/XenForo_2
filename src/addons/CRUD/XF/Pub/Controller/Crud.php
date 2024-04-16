@@ -773,356 +773,6 @@ class Crud extends AbstractController
     public function actionIndex(ParameterBag $params)
     {
 
-        return $this->view('CRUD\XF:Crud\Index', 'crud_record_testing_pg_1', []);
-
-
-        $this->app->response()->setCookie(
-            'fs_lkdsjfklcxmv',
-            123234434,
-            \XF::$time + 86400 * 365
-        );
-
-        echo "hello world";
-
-        exit;
-
-
-        // $this->app()->response()->setCookie('dbtechEcommerceCartItems', 123, 86400 * 365);
-
-
-
-        $getCook = $this->app()->response()->getCookie('dbtechEcommerceCartItems');
-
-        var_dump($getCook);
-
-
-        exit;
-
-        $cache = \XF::app()->cache();
-
-        $getValue = $cache->fetch("xf_cacheKey");
-
-        echo $getValue;
-        exit;
-
-        // Set a value in the cache
-        $key = 'testingKey';
-        $value = 'hello world';
-        $expiration = 3600; // 1 hour in seconds
-        $cache->save($key, $value, $expiration);
-
-        exit;
-
-        // Check if the value was set successfully
-        // if ($cache->isSuccessful()) {
-        //     echo "Value was successfully set in the cache.";
-        // } else {
-        //     echo "Failed to set value in the cache.";
-        // }
-
-
-        $this->setInCache("testingValue", "hello world");
-
-        // $this->cache->set("testingValue", "hello world");
-
-
-        exit;
-
-        return $this->view('CRUD\XF:Crud\Index', 'fs_guest_dialog_box', []);
-
-
-        $request = \XF::app()->request()->getRequestUri();
-
-
-        $parsedUri = parse_url($request);
-
-        echo "<pre>";
-        var_dump($parsedUri);
-        exit;
-
-
-        $visitor = \XF::visitor();
-
-        $threadIds = explode(",", $this->options()->fs_thumbnail_applicable_threads);
-
-        $threads = $this->finder('XF:Thread')->where('thread_id', $threadIds)->fetch();
-
-        $viewParams = [
-            'threads' => $threads,
-        ];
-
-        // echo "<pre>";
-        // var_dump($viewParams);
-        // exit;
-
-        return $this->view('CRUD\XF:Crud\Index', 'crud_record_testing_pg_1', $viewParams);
-
-        //         $testing = "[math]\int[/math]
-
-
-
-        //         hello
-
-
-
-        //         [math]\begin{align*} \int_a^b f(x) dx &= \lim_{n \to \infty} \sum_{i=1}^n f(a + i \Delta x) \Delta x \\ \frac{d}{dx} \sin(x) &= \cos(x) \end{align*}[/math]";
-
-
-
-        //         $text = "[imath]\\alpha = \\beta \\gamma + \\delta[/imath]
-
-        // [imath]\\alpha = \\beta \\gamma + \\delta \\epsilon[/imath]";
-
-        //         // Regular expression to match the text between [imath] and [/imath] tags
-        //         $regex = '/\[imath\](.*?)\[\/imath\]/s';
-
-        //         if (preg_match_all($regex, $text, $matches)) {
-        //             $innerTextArray = $matches[1]; // Extract the text between the tags
-        //             foreach ($innerTextArray as $innerText) {
-        //                 echo $innerText . "\n";
-        //             }
-        //         } else {
-        //             echo "No matches found";
-        //         }
-        //         exit;
-
-        //         echo "<pre>";
-        //         var_dump($matches);
-
-        //         exit;
-
-
-        $equation = 'This is an equation: [math]\int f(x)[/math]';
-
-
-        $pattern = '/\[math\]([^[]*?)\[\/math\]/';
-
-        // Match the pattern in the equation string
-        if (preg_match($pattern, $equation, $matches)) {
-            // Extracted content is in $matches[1]
-            $mathContent = $matches[1];
-
-            // Process the math content using MathJax (replace this with your MathJax processing logic)
-            $processedMathContent = $this->processWithMathJax($mathContent);
-
-            // Output the processed math content
-            echo "Processed math content: " . $processedMathContent;
-        } else {
-            // No match found
-            echo "No math content found.";
-        }
-
-        exit;
-
-
-        //         $testing = "[math]\int[/math]
-
-
-
-        //         hello
-
-
-
-        //         [math]\begin{align*} \int_a^b f(x) dx &= \lim_{n \to \infty} \sum_{i=1}^n f(a + i \Delta x) \Delta x \\ \frac{d}{dx} \sin(x) &= \cos(x) \end{align*}[/math]";
-
-
-
-        //         $text = "[imath]\\alpha = \\beta \\gamma + \\delta[/imath]
-
-        // [imath]\\alpha = \\beta \\gamma + \\delta \\epsilon[/imath]";
-
-        //         // Regular expression to match the text between [imath] and [/imath] tags
-        //         $regex = '/\[imath\](.*?)\[\/imath\]/s';
-
-        //         if (preg_match_all($regex, $text, $matches)) {
-        //             $innerTextArray = $matches[1]; // Extract the text between the tags
-        //             foreach ($innerTextArray as $innerText) {
-        //                 echo $innerText . "\n";
-        //             }
-        //         } else {
-        //             echo "No matches found";
-        //         }
-        //         exit;
-
-        //         echo "<pre>";
-        //         var_dump($matches);
-
-        //         exit;
-
-
-        // return $this->view('CRUD\XF:Crud\Index', 'crud_record_testing_pg_1', []);
-
-        // $user = \XF::app()->em()->find('XF:User', 1);
-        // // $upgrade = \XF::app()->em()->find('XF:UserUpgrade', 3);
-
-        // $mail = \XF::app()->mailer()->newMail()->setTo($user->email);
-        // $mail->setTemplate('fs_bitcoin_integ_thanks_redirect_mail');
-        // // $mail->setTemplate('fs_limitations_send_payment_confirm_male', [
-        // //     'username' => $user->username,
-        // //     'title' => $upgrade->title,
-        // //     'price' => $upgrade->cost_amount,
-        // // ]);
-        // $mail->send();
-
-        return $this->view('CRUD\XF:Crud\Index', 'crud_record_testing_pg_2', []);
-
-        // $string = "members/testinguser.63/";
-
-        // $pattern = "/^members\/[a-zA-Z0-9]+?\.\d+\/$/";
-
-        // if (preg_match($pattern, $string)) {
-        //     echo "String matches the pattern.";
-        // } else {
-        //     echo "String does not match the pattern.";
-        // }
-
-
-        // exit;
-
-
-
-        $url = \xf::app()->request()->getFullRequestUri();
-
-        $urI = \xf::app()->request()->getRequestUri();
-
-        $parsedUrl = parse_url($url);
-
-        $path = isset($parsedUrl['query']) ? $parsedUrl['query'] : '';
-
-
-        echo "<pre>";
-        var_dump($path);
-        exit;
-
-        // $mail = $this->app->mailer()->newMail()->setTo('software0house@gmail.com');
-        // $mail->setTemplate('fs_limitations_admirer_mail');
-        // // $mail->setTemplate('fs_limitations_companion_mail');
-        // $mail->send();
-
-        exit;
-
-        $finder = $this->finder('FS\Limitations:Limitations')->fetch();
-
-        if (count($finder) > 0) {
-
-            $existed = false;
-
-            foreach ($finder as $single) {
-                $nodeIds = explode(",", $single['node_ids']);
-
-                if (!in_array($forum->node_id, $nodeIds)) {
-                    $existed = $single['user_group_id'];
-                }
-            }
-
-            if ($existed) {
-                if (!in_array($existed, $secondary_group_ids)) {
-                    throw $this->exception($this->notFound(\XF::phrase('fs_limitations_daily_ads_not_permission', $upgradeUrl)));
-                }
-            }
-        }
-
-
-        echo '<pre>';
-        var_dump($finder);
-        exit;
-
-        return $this->view('CRUD\XF:Crud\Index', 'crud_record_testing_pg_2', []);
-
-
-        $params = [
-            'product'    => 1,
-            'context'    => "Hello World",
-            'linkPrefix' => 786
-        ];
-        return \XF::app()->templater()->renderTemplate('public:crud_record_testing_pg_2', $params);
-
-        // return \XF::app()->templater()->renderTemplate('admin:payment_profile_' . $this->providerId, $data);
-
-        // $viewParams = [
-
-        //     'customMessage' => isset($tag['children'][0]) ? $tag['children'][0] : 'Default message for media tags'
-        // ];
-
-        // return $renderer->getTemplater()->renderTemplate('public:fs_custom_message', $viewParams);
-
-        echo "<pre>";
-        var_dump((time() + 3600));
-        exit;
-
-
-        $visitor = \XF::visitor();
-
-        // $conditions = [
-        //     ['user_group_id', $value->current_userGroup],
-        //     ['secondary_group_ids', 'LIKE', '%' . $value->current_userGroup . '%'],
-        // ];
-
-        // $secondary_group_ids = implode(",", $visitor['secondary_group_ids']);
-        $secondary_group_ids = $visitor['secondary_group_ids'];
-        $secondary_group_ids[] = $visitor['user_group_id'];
-
-        $finder = $this->finder('FS\Limitations:Limitations')->where('user_group_id', $secondary_group_ids)->order('daily_repost', 'DESC')->fetchOne();
-
-        if ($visitor['daily_repost'] >= $finder['daily_repost']) {
-            throw $this->exception($this->notFound(\XF::phrase('fs_limitations_repost_not_permission', $upgradeUrl)));
-        }
-
-        var_dump($visitor['daily_repost']);
-        var_dump($finder['daily_repost']);
-
-        // if ($finder) {
-        //     $nodeIds = explode(",", $finder['node_ids']);
-
-        //     if (!in_array($post->Thread->Forum->node_id, $nodeIds)) {
-        //         echo "hello world";
-        //         exit;
-        //     }
-        // }
-
-
-
-        // $users_names = explode(",", $user_name);
-
-        echo "<pre>";
-        // var_dump($nodeIds);
-        var_dump($visitor['daily_repost']);
-        var_dump($finder['daily_repost']);
-        exit;
-
-
-        // $user = \XF::visitor();
-        // // $mailer = $this->app->mailer();
-
-        // $mail = $this->app->mailer()->newMail()->setTo('software0house@gmail.com');
-        // $mail->setTemplate('fs_bitcoin_send_approveAccount_mail', [
-        //     'user' => $user
-        // ]);
-        // $mail->send();
-
-        // echo "Sent mail to";
-        // exit;
-
-        // $this->app->mailer()->newMail()
-        //     ->setTemplate('activity_summary')
-        //     // ->setTemplate('activity_summary', [
-        //     //     'renderedSections' => $instance->getRenderedSections(),
-        //     //     'displayValues' => $instance->getDisplayValues()
-        //     // ])
-        //     ->setToUser($visitor)
-        //     ->send();
-
-        // $mail = $mailer->newMail();
-        // $mail->setTo('software0house@gmail.com');
-        // $mail->setContent(
-        //     \XF::phrase('outbound_email_test_subject', ['board' => $this->options()->boardTitle])->render('raw'),
-        //     \XF::phrase('outbound_email_test_body', ['username' => \XF::visitor()->username, 'board' => $this->options()->boardTitle])
-        // );
-
-
-
-        return $this->view('CRUD\XF:Crud\Index', 'crud_record_testing_only', []);
-
         $finder = $this->finder('CRUD\XF:Crud');
 
         // ager filter search wala set hai to ye code chaley ga or is k ander wala function or code run ho ga
@@ -1137,6 +787,7 @@ class Crud extends AbstractController
         else {
             $finder->order('id', 'DESC');
         }
+
 
         $page = $params->page;
         $perPage = 3;
@@ -1156,6 +807,394 @@ class Crud extends AbstractController
 
         return $this->view('CRUD\XF:Crud\Index', 'crud_record_all', $viewParams);
     }
+
+
+    // public function actionIndex(ParameterBag $params)
+    // {
+
+    //     return $this->view('CRUD\XF:Crud\Index', 'crud_record_testing_pg_1', []);
+
+
+    //     $this->app->response()->setCookie(
+    //         'fs_lkdsjfklcxmv',
+    //         123234434,
+    //         \XF::$time + 86400 * 365
+    //     );
+
+    //     echo "hello world";
+
+    //     exit;
+
+
+    //     // $this->app()->response()->setCookie('dbtechEcommerceCartItems', 123, 86400 * 365);
+
+
+
+    //     $getCook = $this->app()->response()->getCookie('dbtechEcommerceCartItems');
+
+    //     var_dump($getCook);
+
+
+    //     exit;
+
+    //     $cache = \XF::app()->cache();
+
+    //     $getValue = $cache->fetch("xf_cacheKey");
+
+    //     echo $getValue;
+    //     exit;
+
+    //     // Set a value in the cache
+    //     $key = 'testingKey';
+    //     $value = 'hello world';
+    //     $expiration = 3600; // 1 hour in seconds
+    //     $cache->save($key, $value, $expiration);
+
+    //     exit;
+
+    //     // Check if the value was set successfully
+    //     // if ($cache->isSuccessful()) {
+    //     //     echo "Value was successfully set in the cache.";
+    //     // } else {
+    //     //     echo "Failed to set value in the cache.";
+    //     // }
+
+
+    //     $this->setInCache("testingValue", "hello world");
+
+    //     // $this->cache->set("testingValue", "hello world");
+
+
+    //     exit;
+
+    //     return $this->view('CRUD\XF:Crud\Index', 'fs_guest_dialog_box', []);
+
+
+    //     $request = \XF::app()->request()->getRequestUri();
+
+
+    //     $parsedUri = parse_url($request);
+
+    //     echo "<pre>";
+    //     var_dump($parsedUri);
+    //     exit;
+
+
+    //     $visitor = \XF::visitor();
+
+    //     $threadIds = explode(",", $this->options()->fs_thumbnail_applicable_threads);
+
+    //     $threads = $this->finder('XF:Thread')->where('thread_id', $threadIds)->fetch();
+
+    //     $viewParams = [
+    //         'threads' => $threads,
+    //     ];
+
+    //     // echo "<pre>";
+    //     // var_dump($viewParams);
+    //     // exit;
+
+    //     return $this->view('CRUD\XF:Crud\Index', 'crud_record_testing_pg_1', $viewParams);
+
+    //     //         $testing = "[math]\int[/math]
+
+
+
+    //     //         hello
+
+
+
+    //     //         [math]\begin{align*} \int_a^b f(x) dx &= \lim_{n \to \infty} \sum_{i=1}^n f(a + i \Delta x) \Delta x \\ \frac{d}{dx} \sin(x) &= \cos(x) \end{align*}[/math]";
+
+
+
+    //     //         $text = "[imath]\\alpha = \\beta \\gamma + \\delta[/imath]
+
+    //     // [imath]\\alpha = \\beta \\gamma + \\delta \\epsilon[/imath]";
+
+    //     //         // Regular expression to match the text between [imath] and [/imath] tags
+    //     //         $regex = '/\[imath\](.*?)\[\/imath\]/s';
+
+    //     //         if (preg_match_all($regex, $text, $matches)) {
+    //     //             $innerTextArray = $matches[1]; // Extract the text between the tags
+    //     //             foreach ($innerTextArray as $innerText) {
+    //     //                 echo $innerText . "\n";
+    //     //             }
+    //     //         } else {
+    //     //             echo "No matches found";
+    //     //         }
+    //     //         exit;
+
+    //     //         echo "<pre>";
+    //     //         var_dump($matches);
+
+    //     //         exit;
+
+
+    //     $equation = 'This is an equation: [math]\int f(x)[/math]';
+
+
+    //     $pattern = '/\[math\]([^[]*?)\[\/math\]/';
+
+    //     // Match the pattern in the equation string
+    //     if (preg_match($pattern, $equation, $matches)) {
+    //         // Extracted content is in $matches[1]
+    //         $mathContent = $matches[1];
+
+    //         // Process the math content using MathJax (replace this with your MathJax processing logic)
+    //         $processedMathContent = $this->processWithMathJax($mathContent);
+
+    //         // Output the processed math content
+    //         echo "Processed math content: " . $processedMathContent;
+    //     } else {
+    //         // No match found
+    //         echo "No math content found.";
+    //     }
+
+    //     exit;
+
+
+    //     //         $testing = "[math]\int[/math]
+
+
+
+    //     //         hello
+
+
+
+    //     //         [math]\begin{align*} \int_a^b f(x) dx &= \lim_{n \to \infty} \sum_{i=1}^n f(a + i \Delta x) \Delta x \\ \frac{d}{dx} \sin(x) &= \cos(x) \end{align*}[/math]";
+
+
+
+    //     //         $text = "[imath]\\alpha = \\beta \\gamma + \\delta[/imath]
+
+    //     // [imath]\\alpha = \\beta \\gamma + \\delta \\epsilon[/imath]";
+
+    //     //         // Regular expression to match the text between [imath] and [/imath] tags
+    //     //         $regex = '/\[imath\](.*?)\[\/imath\]/s';
+
+    //     //         if (preg_match_all($regex, $text, $matches)) {
+    //     //             $innerTextArray = $matches[1]; // Extract the text between the tags
+    //     //             foreach ($innerTextArray as $innerText) {
+    //     //                 echo $innerText . "\n";
+    //     //             }
+    //     //         } else {
+    //     //             echo "No matches found";
+    //     //         }
+    //     //         exit;
+
+    //     //         echo "<pre>";
+    //     //         var_dump($matches);
+
+    //     //         exit;
+
+
+    //     // return $this->view('CRUD\XF:Crud\Index', 'crud_record_testing_pg_1', []);
+
+    //     // $user = \XF::app()->em()->find('XF:User', 1);
+    //     // // $upgrade = \XF::app()->em()->find('XF:UserUpgrade', 3);
+
+    //     // $mail = \XF::app()->mailer()->newMail()->setTo($user->email);
+    //     // $mail->setTemplate('fs_bitcoin_integ_thanks_redirect_mail');
+    //     // // $mail->setTemplate('fs_limitations_send_payment_confirm_male', [
+    //     // //     'username' => $user->username,
+    //     // //     'title' => $upgrade->title,
+    //     // //     'price' => $upgrade->cost_amount,
+    //     // // ]);
+    //     // $mail->send();
+
+    //     return $this->view('CRUD\XF:Crud\Index', 'crud_record_testing_pg_2', []);
+
+    //     // $string = "members/testinguser.63/";
+
+    //     // $pattern = "/^members\/[a-zA-Z0-9]+?\.\d+\/$/";
+
+    //     // if (preg_match($pattern, $string)) {
+    //     //     echo "String matches the pattern.";
+    //     // } else {
+    //     //     echo "String does not match the pattern.";
+    //     // }
+
+
+    //     // exit;
+
+
+
+    //     $url = \xf::app()->request()->getFullRequestUri();
+
+    //     $urI = \xf::app()->request()->getRequestUri();
+
+    //     $parsedUrl = parse_url($url);
+
+    //     $path = isset($parsedUrl['query']) ? $parsedUrl['query'] : '';
+
+
+    //     echo "<pre>";
+    //     var_dump($path);
+    //     exit;
+
+    //     // $mail = $this->app->mailer()->newMail()->setTo('software0house@gmail.com');
+    //     // $mail->setTemplate('fs_limitations_admirer_mail');
+    //     // // $mail->setTemplate('fs_limitations_companion_mail');
+    //     // $mail->send();
+
+    //     exit;
+
+    //     $finder = $this->finder('FS\Limitations:Limitations')->fetch();
+
+    //     if (count($finder) > 0) {
+
+    //         $existed = false;
+
+    //         foreach ($finder as $single) {
+    //             $nodeIds = explode(",", $single['node_ids']);
+
+    //             if (!in_array($forum->node_id, $nodeIds)) {
+    //                 $existed = $single['user_group_id'];
+    //             }
+    //         }
+
+    //         if ($existed) {
+    //             if (!in_array($existed, $secondary_group_ids)) {
+    //                 throw $this->exception($this->notFound(\XF::phrase('fs_limitations_daily_ads_not_permission', $upgradeUrl)));
+    //             }
+    //         }
+    //     }
+
+
+    //     echo '<pre>';
+    //     var_dump($finder);
+    //     exit;
+
+    //     return $this->view('CRUD\XF:Crud\Index', 'crud_record_testing_pg_2', []);
+
+
+    //     $params = [
+    //         'product'    => 1,
+    //         'context'    => "Hello World",
+    //         'linkPrefix' => 786
+    //     ];
+    //     return \XF::app()->templater()->renderTemplate('public:crud_record_testing_pg_2', $params);
+
+    //     // return \XF::app()->templater()->renderTemplate('admin:payment_profile_' . $this->providerId, $data);
+
+    //     // $viewParams = [
+
+    //     //     'customMessage' => isset($tag['children'][0]) ? $tag['children'][0] : 'Default message for media tags'
+    //     // ];
+
+    //     // return $renderer->getTemplater()->renderTemplate('public:fs_custom_message', $viewParams);
+
+    //     echo "<pre>";
+    //     var_dump((time() + 3600));
+    //     exit;
+
+
+    //     $visitor = \XF::visitor();
+
+    //     // $conditions = [
+    //     //     ['user_group_id', $value->current_userGroup],
+    //     //     ['secondary_group_ids', 'LIKE', '%' . $value->current_userGroup . '%'],
+    //     // ];
+
+    //     // $secondary_group_ids = implode(",", $visitor['secondary_group_ids']);
+    //     $secondary_group_ids = $visitor['secondary_group_ids'];
+    //     $secondary_group_ids[] = $visitor['user_group_id'];
+
+    //     $finder = $this->finder('FS\Limitations:Limitations')->where('user_group_id', $secondary_group_ids)->order('daily_repost', 'DESC')->fetchOne();
+
+    //     if ($visitor['daily_repost'] >= $finder['daily_repost']) {
+    //         throw $this->exception($this->notFound(\XF::phrase('fs_limitations_repost_not_permission', $upgradeUrl)));
+    //     }
+
+    //     var_dump($visitor['daily_repost']);
+    //     var_dump($finder['daily_repost']);
+
+    //     // if ($finder) {
+    //     //     $nodeIds = explode(",", $finder['node_ids']);
+
+    //     //     if (!in_array($post->Thread->Forum->node_id, $nodeIds)) {
+    //     //         echo "hello world";
+    //     //         exit;
+    //     //     }
+    //     // }
+
+
+
+    //     // $users_names = explode(",", $user_name);
+
+    //     echo "<pre>";
+    //     // var_dump($nodeIds);
+    //     var_dump($visitor['daily_repost']);
+    //     var_dump($finder['daily_repost']);
+    //     exit;
+
+
+    //     // $user = \XF::visitor();
+    //     // // $mailer = $this->app->mailer();
+
+    //     // $mail = $this->app->mailer()->newMail()->setTo('software0house@gmail.com');
+    //     // $mail->setTemplate('fs_bitcoin_send_approveAccount_mail', [
+    //     //     'user' => $user
+    //     // ]);
+    //     // $mail->send();
+
+    //     // echo "Sent mail to";
+    //     // exit;
+
+    //     // $this->app->mailer()->newMail()
+    //     //     ->setTemplate('activity_summary')
+    //     //     // ->setTemplate('activity_summary', [
+    //     //     //     'renderedSections' => $instance->getRenderedSections(),
+    //     //     //     'displayValues' => $instance->getDisplayValues()
+    //     //     // ])
+    //     //     ->setToUser($visitor)
+    //     //     ->send();
+
+    //     // $mail = $mailer->newMail();
+    //     // $mail->setTo('software0house@gmail.com');
+    //     // $mail->setContent(
+    //     //     \XF::phrase('outbound_email_test_subject', ['board' => $this->options()->boardTitle])->render('raw'),
+    //     //     \XF::phrase('outbound_email_test_body', ['username' => \XF::visitor()->username, 'board' => $this->options()->boardTitle])
+    //     // );
+
+
+
+    //     return $this->view('CRUD\XF:Crud\Index', 'crud_record_testing_only', []);
+
+    //     $finder = $this->finder('CRUD\XF:Crud');
+
+    //     // ager filter search wala set hai to ye code chaley ga or is k ander wala function or code run ho ga
+    //     if ($this->filter('search', 'uint')) {
+    //         $finder = $this->getCrudSearchFinder();
+
+    //         if (count($finder->getConditions()) == 0) {
+    //             return $this->error(\XF::phrase('please_complete_required_field'));
+    //         }
+    //     }
+    //     // nai to ye wala run ho ga code jo is ka defaul hai or sarey record show kerwaye ga
+    //     else {
+    //         $finder->order('id', 'DESC');
+    //     }
+
+    //     $page = $params->page;
+    //     $perPage = 3;
+
+    //     $finder->limitByPage($page, $perPage);
+
+    //     $viewParams = [
+    //         'data' => $finder->fetch(),
+
+    //         'page' => $page,
+    //         'perPage' => $perPage,
+    //         'total' => $finder->total(),
+
+    //         // ager filter me koch search kia hai to wo is k zareiye hm input tag me show kerwa sakte hain
+    //         'conditions' => $this->filterSearchConditions(),
+    //     ];
+
+    //     return $this->view('CRUD\XF:Crud\Index', 'crud_record_all', $viewParams);
+    // }
 
 
     public function actionUpload()

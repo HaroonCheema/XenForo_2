@@ -1,0 +1,9 @@
+{
+    "template": "approval_queue_filters",
+    "description": "fs_rejected_user_approval_queue_filters_add_user",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<!--[XF:above_content_type]-->\n\t<div class=\"menu-row menu-row--separated\">\n\t\t<label for=\"ctrl_content_type\">{{ phrase('content_type:') }}</label>\n\t\t<div class=\"u-inputSpacer\">\n\t\t\t<xf:select name=\"content_type\" value=\"{$filters.content_type}\" id=\"ctrl_content_type\">\n\t\t\t\t<xf:option value=\"\">{{ phrase('(any)') }}</xf:option>\n\t\t\t\t<xf:foreach loop=\"$contentTypes\" value=\"$contentType\">\n\t\t\t\t\t<xf:option value=\"{$contentType}\">{$xf.app.getContentTypePhrase($contentType)}</xf:option>\n\t\t\t\t</xf:foreach>\n\t\t\t</xf:select>\n\t\t</div>\n\t</div>",
+    "replace": "$0\n\n<!--[XF:above_user_name]-->\n<div class=\"menu-row menu-row--separated\">\n\t<label for=\"ctrl_content_type\">{{ phrase('Username:') }}</label>\n\t<div class=\"u-inputSpacer\">\n\n\t\t<xf:set var=\"$user\" value=\"{{ $filters.content_id ? $xf.app.em.find('Xf:User', $filters.content_id) : '' }}\" />\n\n\t\t<xf:textbox name=\"username\" ac=\"single\" value=\"{{ $user? $user.username : '' }}\" maxlength=\"{{ max_length($xf.visitor, 'username') }}\" />\n\t</div>\n</div>"
+}
