@@ -323,6 +323,7 @@ This option requires that the specified account is a catch-all account or suppor
   'option_explain.fs_mts_customMsgbackGroundColor' => 'Enter the colour name or colour code for custom message Background',
   'option_explain.fs_qa_routeFilterId' => 'Enter the ID of RouteFilter which you yave create for QuestionsAnswers forum',
   'option_explain.fs_questionAnswerForum' => 'Select the Question Forum on which Question&Answers search functionality will work.',
+  'option_explain.fs_rejected_user_mod_ids' => 'Enter the ids Comma separated like 1,2,3,4,5,6,......',
   'option_explain.fs_saleforums_allow' => 'Select Forums To apply Sale Item',
   'option_explain.fs_scheduled_ban_user_timezone' => 'According to this Time Zone User will be banned.',
   'option_explain.fs_show_icon' => '',

@@ -1,0 +1,32 @@
+{
+    "fs_rejected_user.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d19587fb4a3d1d5a18f47d07e482a7d7"
+    },
+    "option.fs_rejected_user_mod_ids.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "b17e4e5bd47d58cb4052b7ac4b6af74c"
+    },
+    "option_explain.fs_rejected_user_mod_ids.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "105fa0154a129240a06c57ec0f488c58"
+    },
+    "option_group.fs_rejected_user.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "8ac6fa8c97055e00f08a278216b60801"
+    },
+    "option_group_description.fs_rejected_user.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    }
+}

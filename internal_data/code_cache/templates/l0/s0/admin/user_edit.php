@@ -798,27 +798,6 @@ return array(
 		'label' => '
 							' . 'Receive email when a new conversation message is received',
 		'_type' => 'option',
-	),
-	array(
-		'name' => 'option[dbtech_ecommerce_email_on_sale]',
-		'selected' => $__vars['user']['Option']['dbtech_ecommerce_email_on_sale'],
-		'label' => '
-							' . 'Receive emails for product sales',
-		'_type' => 'option',
-	),
-	array(
-		'name' => 'option[dbtech_ecommerce_order_email_reminder]',
-		'selected' => $__vars['user']['Option']['dbtech_ecommerce_order_email_reminder'],
-		'label' => '
-							' . 'Receive order reminder emails',
-		'_type' => 'option',
-	),
-	array(
-		'name' => 'option[dbtech_ecommerce_license_expiry_email_reminder]',
-		'selected' => $__vars['user']['Option']['dbtech_ecommerce_license_expiry_email_reminder'],
-		'label' => '
-							' . 'Receive license expiry reminder emails',
-		'_type' => 'option',
 	)), array(
 	)) . '
 

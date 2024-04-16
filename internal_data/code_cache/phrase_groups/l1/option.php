@@ -269,6 +269,7 @@ return array (
   'option.fs_mts_customMsgbackGroundColor' => 'Custom message Background Color',
   'option.fs_qa_routeFilterId' => 'Route Filter ID',
   'option.fs_questionAnswerForum' => 'Applicable Forum',
+  'option.fs_rejected_user_mod_ids' => 'Moderator Ids',
   'option.fs_saleforums_allow' => 'Included Forums',
   'option.fs_scheduled_ban_user_timezone' => 'Timezones',
   'option.fs_show_icon' => 'Show Icon',

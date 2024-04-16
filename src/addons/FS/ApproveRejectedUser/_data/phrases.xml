@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="fs_rejected_user" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Rejected User]]></phrase>
+  <phrase title="option.fs_rejected_user_mod_ids" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Moderator Ids]]></phrase>
+  <phrase title="option_explain.fs_rejected_user_mod_ids" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter the ids Comma separated like 1,2,3,4,5,6,......]]></phrase>
+  <phrase title="option_group.fs_rejected_user" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Approve Rejected User]]></phrase>
+  <phrase title="option_group_description.fs_rejected_user" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+</phrases>

@@ -1,0 +1,6 @@
+{
+    "from_class": "XF\\Repository\\ApprovalQueue",
+    "to_class": "FS\\ApproveRejectedUser\\XF\\Repository\\ApprovalQueue",
+    "execute_order": 10,
+    "active": true
+}

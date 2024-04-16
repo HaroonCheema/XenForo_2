@@ -95,21 +95,9 @@ return array(
 			));
 			if ($__templater->isTraversable($__vars['displayTypes'])) {
 				foreach ($__vars['displayTypes'] AS $__vars['displayType']) {
-					$__compilerTemp4 = '';
-					if ($__vars['displayType'] == 'dbt_ecom_income') {
-						$__compilerTemp4 .= '
-								' . $__templater->filter($__vars['stat']['averages'][$__vars['displayType']], array(array('currency', array($__vars['xf']['options']['dbtechEcommerceCurrency'], )),), true) . '
-							';
-					} else {
-						$__compilerTemp4 .= '
-								' . $__templater->filter($__vars['stat']['averages'][$__vars['displayType']], array(array('number', array((($__vars['grouping'] == 'daily') ? 0 : 2), )),), true) . '
-							';
-					}
 					$__compilerTemp3[] = array(
 						'_type' => 'cell',
-						'html' => '
-							' . $__compilerTemp4 . '
-						',
+						'html' => $__templater->filter($__vars['stat']['averages'][$__vars['displayType']], array(array('number', array((($__vars['grouping'] == 'daily') ? 0 : 2), )),), true),
 					);
 				}
 			}
@@ -132,34 +120,34 @@ return array(
 </div>
 
 ';
-	$__compilerTemp5 = array(array(
+	$__compilerTemp4 = array(array(
 		'value' => '-1',
 		'label' => 'Date presets' . $__vars['xf']['language']['label_separator'],
 		'_type' => 'option',
 	));
-	$__compilerTemp5[] = array(
+	$__compilerTemp4[] = array(
 		'_type' => 'optgroup',
 		'options' => array(),
 	);
-	end($__compilerTemp5); $__compilerTemp6 = key($__compilerTemp5);
-	$__compilerTemp5[$__compilerTemp6]['options'] = $__templater->mergeChoiceOptions($__compilerTemp5[$__compilerTemp6]['options'], $__vars['datePresets']);
-	$__compilerTemp5[$__compilerTemp6]['options'][] = array(
+	end($__compilerTemp4); $__compilerTemp5 = key($__compilerTemp4);
+	$__compilerTemp4[$__compilerTemp5]['options'] = $__templater->mergeChoiceOptions($__compilerTemp4[$__compilerTemp5]['options'], $__vars['datePresets']);
+	$__compilerTemp4[$__compilerTemp5]['options'][] = array(
 		'value' => '1995-01-01',
 		'label' => 'All time',
 		'_type' => 'option',
 	);
-	$__compilerTemp7 = array();
-	$__compilerTemp8 = $__templater->func('array_keys', array($__vars['statsTypeOptions'], ), false);
-	if ($__templater->isTraversable($__compilerTemp8)) {
-		foreach ($__compilerTemp8 AS $__vars['contentType']) {
-			$__compilerTemp7[] = array(
+	$__compilerTemp6 = array();
+	$__compilerTemp7 = $__templater->func('array_keys', array($__vars['statsTypeOptions'], ), false);
+	if ($__templater->isTraversable($__compilerTemp7)) {
+		foreach ($__compilerTemp7 AS $__vars['contentType']) {
+			$__compilerTemp6[] = array(
 				'listclass' => 'listColumns',
 				'label' => $__vars['contentTypePhrases'][$__vars['contentType']],
 				'_type' => 'optgroup',
 				'options' => array(),
 			);
-			end($__compilerTemp7); $__compilerTemp9 = key($__compilerTemp7);
-			$__compilerTemp7[$__compilerTemp9]['options'] = $__templater->mergeChoiceOptions($__compilerTemp7[$__compilerTemp9]['options'], $__vars['statsTypeOptions'][$__vars['contentType']]);
+			end($__compilerTemp6); $__compilerTemp8 = key($__compilerTemp6);
+			$__compilerTemp6[$__compilerTemp8]['options'] = $__templater->mergeChoiceOptions($__compilerTemp6[$__compilerTemp8]['options'], $__vars['statsTypeOptions'][$__vars['contentType']]);
 		}
 	}
 	$__finalCompiled .= $__templater->form('
@@ -180,7 +168,7 @@ return array(
 					' . $__templater->formSelect(array(
 		'name' => 'date_preset',
 		'class' => 'js-presetChange input--autoSize',
-	), $__compilerTemp5) . '
+	), $__compilerTemp4) . '
 				</div>
 			', array(
 		'label' => 'Date range',
@@ -211,7 +199,7 @@ return array(
 			' . $__templater->formCheckBoxRow(array(
 		'name' => 'display_types',
 		'value' => $__vars['displayTypes'],
-	), $__compilerTemp7, array(
+	), $__compilerTemp6, array(
 		'label' => 'Display statistics',
 	)) . '
 		</div>

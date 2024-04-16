@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="approval_queue_macros" modification_key="fs_rejected_user_approval_queue_macros" description="fs_rejected_user_approval_queue_macros" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[{$typePhraseHtml|raw}]]></find>
+    <replace><![CDATA[{{$user.user_state == 'rejected'? phrase('fs_rejected_user') : $typePhraseHtml|raw}}]]></replace>
+  </modification>
+</template_modifications>

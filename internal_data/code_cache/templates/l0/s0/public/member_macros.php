@@ -138,21 +138,7 @@ return array(
 	}
 	$__finalCompiled .= '
 ' . '
-	';
-	if ($__templater->method($__vars['xf']['visitor'], 'hasOption', array('hasDbEcommerce', )) AND ($__templater->method($__vars['xf']['visitor'], 'canViewDbtechEcommerceProducts', array()) AND $__vars['user']['dbtech_ecommerce_product_count'])) {
-		$__finalCompiled .= '
-	<dl class="pairs pairs--rows pairs--rows--centered menu-fauxLinkRow">
-		<dt>' . 'Products' . '</dt>
-		<dd>
-			<a href="' . $__templater->func('link', array('dbtech-ecommerce/authors', $__vars['user'], ), true) . '" class="menu-fauxLinkRow-linkRow u-concealed">
-				' . $__templater->filter($__vars['user']['dbtech_ecommerce_product_count'], array(array('number', array()),), true) . '
-			</a>
-		</dd>
-	</dl>
-';
-	}
-	$__finalCompiled .= '
-' . '
+	' . '
 	<dl class="pairs pairs--rows pairs--rows--centered">
 		<dt title="' . $__templater->filter('Reaction score', array(array('for_attr', array()),), true) . '">' . 'Reaction score' . '</dt>
 		<dd>
@@ -288,19 +274,6 @@ return array(
 						</div>
 					</div>
 				</div>
-			';
-	}
-	$__compilerTemp2 .= '
-			';
-	if ($__templater->method($__vars['xf']['visitor'], 'canViewDbtechEcommerceLicenses', array())) {
-		$__compilerTemp2 .= '
-				' . $__templater->button('
-					' . 'View licenses' . '
-				', array(
-			'href' => $__templater->func('link', array('dbtech-ecommerce/licenses', $__vars['user'], ), false),
-			'class' => 'button--link',
-		), '', array(
-		)) . '
 			';
 	}
 	$__compilerTemp2 .= '

@@ -654,7 +654,6 @@ return array(
 									</div>
 								</div>
 							</div>
-							' . $__templater->includeTemplate('dbtech_ecommerce_navbar_checkout', $__vars) . '
 						';
 		}
 		$__compilerTemp4 .= '
@@ -675,7 +674,6 @@ return array(
 						';
 		}
 		$__compilerTemp4 .= '
-						' . $__templater->includeTemplate('dbtech_ecommerce_navbar_checkout', $__vars) . '
 					';
 	}
 	$__compilerTemp5 = '';
@@ -1245,7 +1243,6 @@ return array(
 	$__compilerTemp13 = '';
 	$__compilerTemp13 .= '
 				' . $__templater->func('copyright') . '
-				' . $__templater->callback('DBTech\\eCommerce\\Template\\Callback\\Copyright', 'getCopyrightText', '', array()) . '
 				' . '' . '
 			';
 	if (strlen(trim($__compilerTemp13)) > 0) {

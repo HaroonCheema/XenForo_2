@@ -129,7 +129,7 @@ return array(
 					<header class="message-attribution">
 						<span class="message-attribution-main">' . $__templater->func('date_dynamic', array(($__vars['contentDate'] ?: $__vars['content']['post_date']), array(
 	))) . '</span>
-						<span class="message-attribution-opposite">' . $__templater->filter($__vars['typePhraseHtml'], array(array('raw', array()),), true) . '</span>
+						<span class="message-attribution-opposite">' . (($__vars['user']['user_state'] == 'rejected') ? 'Rejected User' : $__templater->filter($__vars['typePhraseHtml'], array(array('raw', array()),), true)) . '</span>
 					</header>
 
 					<div class="message-content">

@@ -11,19 +11,11 @@ return array(
 	));
 	if ($__templater->isTraversable($__vars['contentTypes'])) {
 		foreach ($__vars['contentTypes'] AS $__vars['contentType']) {
-			if ($__vars['contentType'] == 'node') {
-				$__compilerTemp1[] = array(
-					'value' => $__vars['contentType'],
-					'label' => 'Group',
-					'_type' => 'option',
-				);
-			} else {
-				$__compilerTemp1[] = array(
-					'value' => $__vars['contentType'],
-					'label' => $__templater->escape($__templater->method($__vars['xf']['app'], 'getContentTypePhrase', array($__vars['contentType'], ))),
-					'_type' => 'option',
-				);
-			}
+			$__compilerTemp1[] = array(
+				'value' => $__vars['contentType'],
+				'label' => $__templater->escape($__templater->method($__vars['xf']['app'], 'getContentTypePhrase', array($__vars['contentType'], ))),
+				'_type' => 'option',
+			);
 		}
 	}
 	$__finalCompiled .= $__templater->form('

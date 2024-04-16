@@ -644,7 +644,6 @@ return array(
 			<hr class="formRowSep" />
 
 			' . '
-			' . $__templater->includeTemplate('dbtech_ecommerce_user_criteria', $__vars) . '
 
 			' . $__templater->formCheckBoxRow(array(
 	), $__compilerTemp6, array(
@@ -1026,9 +1025,6 @@ return array(
 	)) . '
 
 <hr class="formRowSep" />
-			' . $__templater->includeTemplate('dbtech_ecommerce_helper_criteria_page', $__vars) . '
-
-			<hr class="formRowSep" />
 
 			' . $__templater->formCheckBoxRow(array(
 	), array(array(

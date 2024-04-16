@@ -1,0 +1,9 @@
+{
+    "template": "approval_queue_macros",
+    "description": "fs_rejected_user_approval_queue_macros",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "{$typePhraseHtml|raw}",
+    "replace": "{{$user.user_state == 'rejected'? phrase('fs_rejected_user') : $typePhraseHtml|raw}}"
+}

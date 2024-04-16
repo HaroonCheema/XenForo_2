@@ -77,16 +77,6 @@ return array(
 ';
 	}
 	$__finalCompiled .= '
-';
-	if ($__templater->method($__vars['xf']['visitor'], 'hasOption', array('hasDbEcommerce', )) AND ($__templater->method($__vars['xf']['visitor'], 'canViewDbtechEcommerceProducts', array()) AND $__vars['user']['dbtech_ecommerce_product_count'])) {
-		$__finalCompiled .= '
-	<li><dl class="pairs pairs--inline">
-		<dt>' . 'Products' . '</dt>
-		<dd>' . $__templater->filter($__vars['user']['dbtech_ecommerce_product_count'], array(array('number', array()),), true) . '</dd>
-	</dl></li>
-';
-	}
-	$__finalCompiled .= '
 					';
 	if ($__vars['user']['question_solution_count']) {
 		$__finalCompiled .= '
