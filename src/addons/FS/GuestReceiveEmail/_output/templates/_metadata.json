@@ -10,8 +10,8 @@
         "hash": "dce3fd715e44e724d5cba5e906f3362c"
     },
     "public/fs_guest_dialog_box.html": {
-        "version_id": 1000010,
-        "version_string": "1.0.0 Alpha",
-        "hash": "1201dabb6caf38242da3554089d03e95"
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "63044a9ce60b984e6cbc659881b0517c"
     }
 }

@@ -1,10 +1,10 @@
 <?php
-// FROM HASH: 1201dabb6caf38242da3554089d03e95
+// FROM HASH: 63044a9ce60b984e6cbc659881b0517c
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
 	$__finalCompiled = '';
-	$__templater->pageParams['pageTitle'] = $__templater->preEscaped('Guest Feature Sponsored by D Mark Performance');
+	$__templater->pageParams['pageTitle'] = $__templater->preEscaped('Guest Email');
 	$__finalCompiled .= '
 
 ' . $__templater->form('
@@ -32,6 +32,11 @@ return array(
 		' . $__templater->formSubmitRow(array(
 	), array(
 		'html' => '
+				' . $__templater->formInfoRow('
+					' . 'Guest Feature Sponsored by <a href="https://www.dmarkperformance.com/" target="_blank"><b>D Mark Performance</b></a>.' . '
+				', array(
+	)) . '
+
 				' . $__templater->button('
 					' . 'Submit' . '
 				', array(

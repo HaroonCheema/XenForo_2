@@ -1,9 +1,9 @@
 {
     "fs_guest_dialog_box_title.txt": {
         "global_cache": false,
-        "version_id": 1000010,
-        "version_string": "1.0.0 Alpha",
-        "hash": "8c1bc018da25cfed6468050af0a4a15d"
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "13bcb418e2f80676cb5c95b340098ab4"
     },
     "fs_guest_email_already_exist.txt": {
         "global_cache": false,
@@ -40,5 +40,11 @@
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
         "hash": "f461728c3d2d8f6ebd2d81a70240f637"
+    },
+    "fs_guest_user_email.txt": {
+        "global_cache": false,
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "1823266d39cbb85457b7376799103d45"
     }
 }

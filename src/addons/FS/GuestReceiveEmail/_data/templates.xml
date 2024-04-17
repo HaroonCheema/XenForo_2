@@ -38,7 +38,7 @@
 	</div>
 	<xf:redirect />
 </xf:form>]]></template>
-  <template type="public" title="fs_guest_dialog_box" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('fs_guest_dialog_box_title') }}</xf:title>
+  <template type="public" title="fs_guest_dialog_box" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[<xf:title>{{ phrase('fs_guest_user_email') }}</xf:title>
 
 <xf:form action="{{ link('threads/guest-email', $thread) }}" ajax="true" class="block">
 
@@ -55,6 +55,10 @@
 
 		<xf:submitrow>
 			<xf:html>
+				<xf:inforow>
+					{{ phrase('fs_guest_dialog_box_title') }}
+				</xf:inforow>
+
 				<xf:button type="submit" class="button--primary" icon="save">
 					{{ phrase('Submit') }}
 				</xf:button>

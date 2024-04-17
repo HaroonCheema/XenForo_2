@@ -1,4 +1,4 @@
-<xf:title>{{ phrase('fs_guest_dialog_box_title') }}</xf:title>
+<xf:title>{{ phrase('fs_guest_user_email') }}</xf:title>
 
 <xf:form action="{{ link('threads/guest-email', $thread) }}" ajax="true" class="block">
 
@@ -15,6 +15,10 @@
 
 		<xf:submitrow>
 			<xf:html>
+				<xf:inforow>
+					{{ phrase('fs_guest_dialog_box_title') }}
+				</xf:inforow>
+
 				<xf:button type="submit" class="button--primary" icon="save">
 					{{ phrase('Submit') }}
 				</xf:button>
