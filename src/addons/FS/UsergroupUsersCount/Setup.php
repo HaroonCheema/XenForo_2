@@ -24,12 +24,6 @@ class Setup extends AbstractSetup
 		});
 	}
 
-	public function postInstall(array &$stateChanges)
-	{
-		$updateCounts = \xf::app()->service('FS\UsergroupUsersCount:UsersCount');
-		$updateCounts->countAllUsers();
-	}
-
 	public function uninstallStep1()
 	{
 		$this->schemaManager()->alterTable('xf_user_group', function (Alter $table) {

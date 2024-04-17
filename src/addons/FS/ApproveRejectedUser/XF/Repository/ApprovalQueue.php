@@ -5,8 +5,11 @@ namespace FS\ApproveRejectedUser\XF\Repository;
 class ApprovalQueue extends XFCP_ApprovalQueue
 {
 
-    public function findUnapprovedContent($withRejected = false)
+public $withRejected=false;
+
+    public function findUnapprovedContent()
     {
+
         $visitor = \XF::visitor();
 
         $modIds = \XF::options()->fs_rejected_user_mod_ids;
@@ -14,7 +17,7 @@ class ApprovalQueue extends XFCP_ApprovalQueue
         $array = explode(',', $modIds);
 
         // Check if $visitor exists in the array
-        if ($withRejected && in_array($visitor->user_id, $array)) {
+        if ($this->withRejected && in_array($visitor->user_id, $array)) {
             return parent::findUnapprovedContent();
         }
 

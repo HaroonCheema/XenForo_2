@@ -26,8 +26,8 @@ class ApprovalQueue extends XFCP_ApprovalQueue
     public function actionIndex()
     {
         $approvalQueueRepo = $this->getApprovalQueueRepo();
-
-        $unapprovedFinder = $approvalQueueRepo->findUnapprovedContent(true);  // just pass true for find unapproved content with Rejected User records    
+$approvalQueueRepo->withRejected=true;
+        $unapprovedFinder = $approvalQueueRepo->findUnapprovedContent();  // just pass true for find unapproved content with Rejected User records    
 
         $filters = $this->getQueueFilterInput();
         $this->applyQueueFilters($unapprovedFinder, $filters);
