@@ -5,45 +5,89 @@ namespace FS\ApproveRejectedUser\XF\Pub\Controller;
 class ApprovalQueue extends XFCP_ApprovalQueue
 {
 
-    protected function getQueueFilterInput()
+    // public function actionIndex()
+    // {
+    //     $parent = parent::actionIndex();
+
+    //     $isEmail = $this->filter('isEmail', 'bool');
+
+    //     if ($isEmail && $parent instanceof \XF\Mvc\Reply\View) {
+    //         $filters = $parent->getParam('filters');
+
+    //         $filters['isEmail'] = $isEmail;
+
+    //         $parent->setParam('filters', $filters);
+    //     }
+
+    //     return $parent;
+    // }
+
+
+    public function actionIndex()
     {
-        $filters = [];
+        $approvalQueueRepo = $this->getApprovalQueueRepo();
 
-        $input = $this->filter([
-            'content_type' => 'str',
-            'order' => 'str',
-            'direction' => 'str',
-            'content_id' => 'uint',
-            'username' => 'str',
-        ]);
+        $unapprovedFinder = $approvalQueueRepo->findUnapprovedContent(true);  // just pass true for find unapproved content with Rejected User records    
 
+        $filters = $this->getQueueFilterInput();
+        $this->applyQueueFilters($unapprovedFinder, $filters);
 
-        if ($input['content_type']) {
-            $filters['content_type'] = $input['content_type'];
+        /** @var \XF\Entity\ApprovalQueue[]|\XF\Mvc\Entity\ArrayCollection $unapprovedItems */
+        $unapprovedItems = $unapprovedFinder->fetch();
+
+        if ($unapprovedItems->count() != $this->app->unapprovedCounts['total']) {
+            $approvalQueueRepo->rebuildUnapprovedCounts();
         }
 
+        $approvalQueueRepo->addContentToUnapprovedItems($unapprovedItems);
+        $approvalQueueRepo->cleanUpInvalidRecords($unapprovedItems);
+        $unapprovedItems = $approvalQueueRepo->filterViewableUnapprovedItems($unapprovedItems);
 
+        // ------ add isEmail in filters for condition on frontend -------
+        $isEmail = $this->filter('isEmail', 'bool');
+        if ($isEmail) {
+            $filters['isEmail'] = $isEmail;
+        }
+        //----------------------------------------------------------------
+
+        $viewParams = [
+            'filters' => $filters,
+            'unapprovedItems' => $unapprovedItems->slice(0, 50),
+        ];
+        return $this->view('XF:ApprovalQueue\Listing', 'approval_queue', $viewParams);
+    }
+
+    protected function getQueueFilterInput()
+    {
+        $filters = parent::getQueueFilterInput();
+
+        $input = $this->filter([
+            'content_id' => 'uint',
+            'username' => 'str',
+            'isEmail' => 'bool',
+        ]);
+
+        $isEmail = $input['isEmail'];
+
+        if ($isEmail) {
+            $filters['isEmail'] = $isEmail;
+        }
+
+        $nameOrEmail = $input['username'];
 
         if ($input['content_id']) {
             $filters['content_id'] = $input['content_id'];
-        } else if ($input['username']) {
-            $user = $this->em()->findOne('XF:User', ['username' => $input['username']]);
+        } else if ($nameOrEmail) {
+
+            $userRepo = $this->repository("XF:User");
+            $user =  $userRepo->getUserByNameOrEmail($nameOrEmail);
+
             if ($user) {
                 $filters['content_id'] = $user->user_id;
             }
-        }
 
-
-        $sorts = $this->getAvailableQueueSorts();
-
-        if ($input['order'] && isset($sorts[$input['order']])) {
-            if (!in_array($input['direction'], ['asc', 'desc'])) {
-                $input['direction'] = 'asc';
-            }
-
-            if ($input['order'] != 'content_date' || $input['direction'] != 'asc') {
-                $filters['order'] = $input['order'];
-                $filters['direction'] = $input['direction'];
+            if (strpos($nameOrEmail, '@')) {
+                $filters['isEmail'] = true;
             }
         }
 
@@ -53,20 +97,10 @@ class ApprovalQueue extends XFCP_ApprovalQueue
 
     protected function applyQueueFilters(\XF\Mvc\Entity\Finder $finder, array $filters)
     {
-        if (!empty($filters['content_type'])) {
-            $finder->where('content_type', $filters['content_type']);
-        }
-
-
         if (!empty($filters['content_id'])) {
             $finder->where('content_id', $filters['content_id']);
         }
 
-        $sorts = $this->getAvailableQueueSorts();
-
-        if (!empty($filters['order']) && isset($sorts[$filters['order']])) {
-            $finder->order($sorts[$filters['order']], $filters['direction']);
-        }
-        // else the default order has already been applied
+        return parent::applyQueueFilters($finder, $filters);
     }
 }

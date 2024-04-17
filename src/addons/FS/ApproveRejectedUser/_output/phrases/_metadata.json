@@ -28,5 +28,11 @@
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
         "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "username_or_email.txt": {
+        "global_cache": false,
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "1c315fe64c02f0dc4a605373f68d911b"
     }
 }

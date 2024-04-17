@@ -31,10 +31,10 @@ return array(
 	), $__compilerTemp1) . '
 		</div>
 	</div>
-
-' . '
+	
+	' . '
 <div class="menu-row menu-row--separated">
-	<label for="ctrl_content_type">' . 'Username:' . '</label>
+	<label for="ctrl_content_type">' . 'Username or Email' . $__vars['xf']['language']['label_separator'] . '</label>
 	<div class="u-inputSpacer">
 
 		' . '' . '
@@ -42,13 +42,12 @@ return array(
 		' . $__templater->formTextBox(array(
 		'name' => 'username',
 		'ac' => 'single',
-		'value' => ($__vars['user'] ? $__vars['user']['username'] : ''),
+		'value' => ($__vars['user'] ? ($__vars['filters']['isEmail'] ? $__vars['user']['email'] : $__vars['user']['username']) : ''),
 		'maxlength' => $__templater->func('max_length', array($__vars['xf']['visitor'], 'username', ), false),
 	)) . '
 	</div>
 </div>
-	
-	' . '
+' . '
 	<div class="menu-row menu-row--separated">
 		' . 'Sort direction' . $__vars['xf']['language']['label_separator'] . '
 		<div class="inputGroup u-inputSpacer">

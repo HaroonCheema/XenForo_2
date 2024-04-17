@@ -45,11 +45,9 @@ class ApprovalQueue extends Repository
 	{
 		$handlers = [];
 
-		foreach (\XF::app()->getContentTypeField('approval_queue_handler_class') AS $contentType => $handlerClass)
-		{
+		foreach (\XF::app()->getContentTypeField('approval_queue_handler_class') as $contentType => $handlerClass) {
 			$handler = $this->getApprovalQueueHandler($contentType, $throw);
-			if ($handler)
-			{
+			if ($handler) {
 				$handlers[$contentType] = $handler;
 			}
 		}
@@ -64,25 +62,20 @@ class ApprovalQueue extends Repository
 	 */
 	public function getApprovalQueueHandler($type, $throw = false)
 	{
-		if (isset($this->handlerCache[$type]))
-		{
+		if (isset($this->handlerCache[$type])) {
 			return $this->handlerCache[$type];
 		}
 
 		$handlerClass = \XF::app()->getContentTypeFieldValue($type, 'approval_queue_handler_class');
-		if (!$handlerClass)
-		{
-			if ($throw)
-			{
+		if (!$handlerClass) {
+			if ($throw) {
 				throw new \InvalidArgumentException("No approval queue handler for '$type'");
 			}
 			return null;
 		}
 
-		if (!class_exists($handlerClass))
-		{
-			if ($throw)
-			{
+		if (!class_exists($handlerClass)) {
+			if ($throw) {
 				throw new \InvalidArgumentException("Approval queue handler for '$type' does not exist: $handlerClass");
 			}
 			return null;
@@ -101,11 +94,9 @@ class ApprovalQueue extends Repository
 	 */
 	public function filterViewableUnapprovedItems($unapprovedItems)
 	{
-		return $unapprovedItems->filter(function(\XF\Entity\ApprovalQueue $unapprovedItem)
-		{
+		return $unapprovedItems->filter(function (\XF\Entity\ApprovalQueue $unapprovedItem) {
 			$handler = $this->getApprovalQueueHandler($unapprovedItem->content_type);
-			if (!$handler)
-			{
+			if (!$handler) {
 				return false;
 			}
 
@@ -120,34 +111,28 @@ class ApprovalQueue extends Repository
 	public function addContentToUnapprovedItems($unapprovedItems)
 	{
 		$contentMap = [];
-		foreach ($unapprovedItems AS $key => $unapprovedItem)
-		{
+		foreach ($unapprovedItems as $key => $unapprovedItem) {
 			$contentType = $unapprovedItem->content_type;
-			if (!isset($contentMap[$contentType]))
-			{
+			if (!isset($contentMap[$contentType])) {
 				$contentMap[$contentType] = [];
 			}
 			$contentMap[$contentType][$key] = $unapprovedItem->content_id;
 		}
 
-		foreach ($contentMap AS $contentType => $contentIds)
-		{
+		foreach ($contentMap as $contentType => $contentIds) {
 			$handler = $this->getApprovalQueueHandler($contentType);
-			if (!$handler)
-			{
+			if (!$handler) {
 				continue;
 			}
 
 			$data = $handler->getContent($contentIds);
-			foreach ($contentIds AS $key => $contentId)
-			{
+			foreach ($contentIds as $key => $contentId) {
 				$content = $data[$contentId] ?? null;
 				$unapprovedItems[$key]->setContent($content);
 			}
 
 			$spamDetails = $handler->getSpamDetails($contentIds);
-			foreach ($contentIds AS $key => $contentId)
-			{
+			foreach ($contentIds as $key => $contentId) {
 				$spamLogDetail = $spamDetails[$contentId] ?? null;
 				$unapprovedItems[$key]->setSpamDetails($spamLogDetail);
 			}
@@ -159,10 +144,8 @@ class ApprovalQueue extends Repository
 	 */
 	public function cleanUpInvalidRecords($unapprovedItems)
 	{
-		foreach ($unapprovedItems AS $item)
-		{
-			if ($item->isInvalid())
-			{
+		foreach ($unapprovedItems as $item) {
+			if ($item->isInvalid()) {
 				$item->delete(false);
 			}
 		}
@@ -172,24 +155,19 @@ class ApprovalQueue extends Repository
 	{
 		$newQueue = [];
 
-		foreach ($queue AS $contentType => $actions)
-		{
+		foreach ($queue as $contentType => $actions) {
 			$handler = $this->getApprovalQueueHandler($contentType);
-			if (!$handler)
-			{
+			if (!$handler) {
 				continue;
 			}
 
-			foreach ($actions AS $contentId => $action)
-			{
-				if (!$action)
-				{
+			foreach ($actions as $contentId => $action) {
+				if (!$action) {
 					continue;
 				}
 
 				$content = $handler->getContent($contentId);
-				if (!$content || !$handler->canView($content))
-				{
+				if (!$content || !$handler->canView($content)) {
 					continue;
 				}
 
@@ -206,6 +184,8 @@ class ApprovalQueue extends Repository
 			'total' => $this->db()->fetchOne('SELECT COUNT(*) FROM xf_approval_queue'),
 			'lastModified' => time()
 		];
+
+		// where content_type != "fs_rejected_user"
 
 		\XF::registry()->set('unapprovedCounts', $cache);
 		return $cache;

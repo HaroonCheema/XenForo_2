@@ -5,4 +5,5 @@
   <phrase title="option_explain.fs_rejected_user_mod_ids" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter the ids Comma separated like 1,2,3,4,5,6,......]]></phrase>
   <phrase title="option_group.fs_rejected_user" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Approve Rejected User]]></phrase>
   <phrase title="option_group_description.fs_rejected_user" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="username_or_email" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Username or Email]]></phrase>
 </phrases>
