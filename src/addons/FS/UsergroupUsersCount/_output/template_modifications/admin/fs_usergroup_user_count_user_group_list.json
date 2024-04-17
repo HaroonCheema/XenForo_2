@@ -1,0 +1,9 @@
+{
+    "template": "user_group_list",
+    "description": "fs_usergroup_user_count_user_group_list",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/<xf:main hash=\"{\\$userGroup\\.user_group_id}\".*?hint=\"{\\$userGroup\\.user_title}\" \\/>/is",
+    "replace": "$0\n\n<xf:cell>{{$userGroup.primary_users_count?: '-'}}</xf:cell>\n<xf:cell>{{$userGroup.secondary_users_count?: '-'}}</xf:cell>"
+}

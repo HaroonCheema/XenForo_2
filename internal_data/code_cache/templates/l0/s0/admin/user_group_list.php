@@ -34,6 +34,14 @@ return array(
 				'html' => '',
 			),
 			array(
+				'_type' => 'cell',
+				'html' => ($__templater->escape($__vars['userGroup']['primary_users_count']) ?: '-'),
+			),
+			array(
+				'_type' => 'cell',
+				'html' => ($__templater->escape($__vars['userGroup']['secondary_users_count']) ?: '-'),
+			),
+			array(
 				'href' => $__templater->func('link', array('user-groups/delete', $__vars['userGroup'], ), false),
 				'_type' => 'delete',
 				'html' => '',

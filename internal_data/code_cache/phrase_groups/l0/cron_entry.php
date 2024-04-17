@@ -25,6 +25,7 @@ return array (
   'cron_entry.forumStatistics' => 'Rebuild forum statistics',
   'cron_entry.fsAutoForumManager' => '[FS] Auto Forum Manager',
   'cron_entry.fsHideUsernames' => '[FS] Hide Usernames',
+  'cron_entry.fsUsergroupUsersCount' => '[FS] Usergroup Users Count',
   'cron_entry.fs_resetDailyDiscussLimit' => 'Reset Daily Discussion Post Limit',
   'cron_entry.fs_resetDailyDownloadSize' => 'Reset Daily download size limit of all Users.',
   'cron_entry.fs_resetUserDailyAds' => 'Reset User Daily Ads and  Repost Limit',
