@@ -4,5 +4,23 @@
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
         "hash": "53b5799b73883c16ec0b3f5dcb5f3aa0"
+    },
+    "fs_usergroups_count_primary.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "074de7e7c226d5c60f8af14c20725352"
+    },
+    "fs_usergroups_count_secondary.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "0c7d6cf19426e01dcfa32434828ed266"
+    },
+    "fs_usergroups_count_title.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "b78a3223503896721cca1303f776159b"
     }
 }

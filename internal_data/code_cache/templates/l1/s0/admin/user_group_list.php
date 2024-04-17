@@ -59,6 +59,26 @@ return array(
 	<div class="block-container">
 		<div class="block-body">
 			' . $__templater->dataList('
+
+' . $__templater->dataRow(array(
+		'rowtype' => 'header',
+	), array(array(
+		'_type' => 'cell',
+		'html' => ' ' . 'Title' . ' ',
+	),
+	array(
+		'_type' => 'cell',
+		'html' => ' ' . 'Primary' . ' ',
+	),
+	array(
+		'_type' => 'cell',
+		'html' => ' ' . 'Secondary' . ' ',
+	),
+	array(
+		'class' => 'dataList-cell--min',
+		'_type' => 'cell',
+		'html' => '',
+	))) . '
 				' . $__compilerTemp1 . '
 			', array(
 	)) . '

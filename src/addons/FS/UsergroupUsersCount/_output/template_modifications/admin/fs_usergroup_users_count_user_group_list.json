@@ -1,0 +1,9 @@
+{
+    "template": "user_group_list",
+    "description": "fs_usergroup_users_count_user_group_list",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:datalist>",
+    "replace": "$0\n\n<xf:datarow rowtype=\"header\">\n\t<xf:cell> {{ phrase('fs_usergroups_count_title') }} </xf:cell>\n\t<xf:cell> {{ phrase('fs_usergroups_count_primary') }} </xf:cell>\n\t<xf:cell> {{ phrase('fs_usergroups_count_secondary') }} </xf:cell>\n\t<xf:cell class=\"dataList-cell--min\"></xf:cell>\n</xf:datarow>"
+}

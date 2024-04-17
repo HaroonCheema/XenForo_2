@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <phrases>
   <phrase title="cron_entry.fsUsergroupUsersCount" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Usergroup Users Count]]></phrase>
+  <phrase title="fs_usergroups_count_primary" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Primary]]></phrase>
+  <phrase title="fs_usergroups_count_secondary" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Secondary]]></phrase>
+  <phrase title="fs_usergroups_count_title" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Title]]></phrase>
 </phrases>

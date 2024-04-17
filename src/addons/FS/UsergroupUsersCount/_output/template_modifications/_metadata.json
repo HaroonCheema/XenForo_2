@@ -1,5 +1,8 @@
 {
     "admin/fs_usergroup_user_count_user_group_list.json": {
         "hash": "a1f26c4a80687ddc51adf6bd91b363cd"
+    },
+    "admin/fs_usergroup_users_count_user_group_list.json": {
+        "hash": "6144aebc625a78d9584ae59dc375ff52"
     }
 }
