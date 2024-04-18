@@ -1,0 +1,12 @@
+{
+    "admin/fs_info_text_add_edit.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "b3e1e710f0ec9e2f4dfe2402a13b2112"
+    },
+    "admin/fs_info_text_index.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "6a626c3788936b76ec01b9894e818557"
+    }
+}

@@ -1,0 +1,80 @@
+{
+    "admin_navigation.fsInfoText.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "a458be0f08b7e4ff3c0f633c100176c0"
+    },
+    "admin_navigation.fs_info_text.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "4919143b065133758167364e01c20233"
+    },
+    "custom_bb_code_desc.fsinfotext.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "3acc0d232cb503a33f64e885cd260414"
+    },
+    "custom_bb_code_example.fsinfotext.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "custom_bb_code_output.fsinfotext.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "custom_bb_code_title.fsinfotext.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "4919143b065133758167364e01c20233"
+    },
+    "fs_info_text_add_new.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "de9ced9bf5e9829de4a93ad8c9d7a170"
+    },
+    "fs_info_text_edit.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "7dce122004969d56ae2e0245cb754d35"
+    },
+    "fs_info_text_link.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "7b023deeeab25f98357b350254dad1a9"
+    },
+    "fs_info_text_link_list.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "97e7c9a7d06eac006a28bf05467fcc8b"
+    },
+    "fs_info_text_title.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "4919143b065133758167364e01c20233"
+    },
+    "fs_info_text_word.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "7c63a09e09d15daf67a52b2529a6e6fa"
+    },
+    "fs_info_text_word_list.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "07a094a210794e74a0e5e1a1457a92ee"
+    }
+}

@@ -1,0 +1,39 @@
+<xf:title>
+	<xf:if is="$data.id"> {{phrase('fs_info_text_edit') }} : {$data.word} <xf:breadcrumb href="#">{{
+		phrase('fs_info_text_edit') }}</xf:breadcrumb> <xf:else />{{
+		phrase('fs_info_text_add_new') }}
+		<xf:breadcrumb href="#">{{ phrase('fs_info_text_add_new') }}</xf:breadcrumb> </xf:if>
+</xf:title>
+<xf:form
+		 action="{{ link('info-text/save', $data) }}"
+		 ajax="true"
+		 class="block"
+		 data-force-flash-message="true"
+		 >
+	<div class="block-container">
+		<div class="block-body">
+			<xf:textboxrow
+						   name="word"
+						   value="{$data.word}"
+						   label="{{phrase('fs_info_text_word') }}"
+						   hint="{{phrase('required') }}"
+						   autosize="true"
+						   row="5"
+						   required="required"
+						   minlength="4"
+						   />
+
+			<xf:textboxrow
+						   name="link"
+						   value="{$data.link}"
+						   label="{{phrase('fs_info_text_link') }}"
+						   autosize="true"
+						   hint="{{phrase('required') }}"
+						   row="5"
+						   required="required"
+						   minlength="10"
+						   />
+		</div>
+		<xf:submitrow submit="" icon="save" />
+	</div>
+</xf:form>

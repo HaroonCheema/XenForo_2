@@ -8,6 +8,7 @@ return array (
   'custom_bb_code_title.fs_custom_msg' => '[FS] Media Tags Custom message',
   'custom_bb_code_title.fs_word_highlight' => 'Highlight in red',
   'custom_bb_code_title.fsbunny' => 'Bunny BBCode',
+  'custom_bb_code_title.fsinfotext' => '[FS] Info Text',
   'custom_bb_code_title.gallery' => 'Gallery embed',
   'custom_bb_code_title.genre' => 'TMDb genre',
   'custom_bb_code_title.group' => 'Embed groups',

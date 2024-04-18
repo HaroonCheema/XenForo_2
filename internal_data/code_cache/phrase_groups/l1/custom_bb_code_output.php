@@ -8,6 +8,7 @@ return array (
   'custom_bb_code_output.fs_custom_msg' => '',
   'custom_bb_code_output.fs_word_highlight' => '',
   'custom_bb_code_output.fsbunny' => '',
+  'custom_bb_code_output.fsinfotext' => '',
   'custom_bb_code_output.gallery' => '',
   'custom_bb_code_output.genre' => '',
   'custom_bb_code_output.group' => 'The information of group would appear here.',

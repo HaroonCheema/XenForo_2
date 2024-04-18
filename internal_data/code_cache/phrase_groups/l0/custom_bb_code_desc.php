@@ -8,6 +8,7 @@ return array (
   'custom_bb_code_desc.fs_custom_msg' => 'Add custom message for media tags',
   'custom_bb_code_desc.fs_word_highlight' => 'Highlight block words in red using bbcode',
   'custom_bb_code_desc.fsbunny' => '',
+  'custom_bb_code_desc.fsinfotext' => 'Find word and attach Link.',
   'custom_bb_code_desc.gallery' => 'BB code for displaying gallery media items and albums.',
   'custom_bb_code_desc.genre' => 'For formatting old XF1 TMDb movie threads',
   'custom_bb_code_desc.group' => 'Display specific group information.',

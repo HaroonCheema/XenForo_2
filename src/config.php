@@ -17,4 +17,4 @@ $config['enableLivePayments'] = false;
 
 $config['debug'] = true;
 
-$config['development']['defaultAddOn'] = 'FS/UsergroupUsersCount';
+$config['development']['defaultAddOn'] = 'FS/InfoText';
