@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="admin_navigation.fsInfoText" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Insert]]></phrase>
+  <phrase title="admin_navigation.fs_info_text" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Info Text]]></phrase>
+  <phrase title="custom_bb_code_desc.fsinfotext" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Find word and attach Link.]]></phrase>
+  <phrase title="custom_bb_code_example.fsinfotext" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="custom_bb_code_output.fsinfotext" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="custom_bb_code_title.fsinfotext" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Info Text]]></phrase>
+  <phrase title="fs_info_text_add_new" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add New]]></phrase>
+  <phrase title="fs_info_text_edit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Edit]]></phrase>
+  <phrase title="fs_info_text_link" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter Link]]></phrase>
+  <phrase title="fs_info_text_link_list" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Link]]></phrase>
+  <phrase title="fs_info_text_title" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Info Text]]></phrase>
+  <phrase title="fs_info_text_word" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter Word]]></phrase>
+  <phrase title="fs_info_text_word_list" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Word]]></phrase>
+</phrases>

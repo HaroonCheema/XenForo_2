@@ -1,0 +1,9 @@
+{
+    "template": "post_macros",
+    "description": "fs_text_info_post_macros",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "{{ bb_code($post.message, 'post', $post) }}",
+    "replace": "{{ bb_code($post.getAttachTextInfo(), 'post', $post) }}"
+}
