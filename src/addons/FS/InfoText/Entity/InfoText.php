@@ -18,6 +18,7 @@ class InfoText extends Entity
             'id' => ['type' => self::UINT, 'autoIncrement' => true],
             'word' => ['type' => self::STR, 'maxLength' => 50, 'required' => true],
             'link' =>  ['type' => self::STR, 'required' => true],
+            'agency' =>  ['type' => self::STR, 'required' => true],
         ];
 
         $structure->relations = [];

@@ -551,7 +551,18 @@ return array(
 
 			<div class="contentRow-minor contentRow-minor--hideLinks">
 				<ul class="listInline listInline--bullet">
-					<li>' . 'Latest: ' . $__templater->escape($__vars['thread']['last_post_cache']['username']) . '' . '</li>
+					';
+	if ($__templater->method($__vars['xf']['visitor'], 'hasPermission', array('fs_user_names', 'hide', ))) {
+		$__finalCompiled .= '
+
+	<li>' . 'Latest: ' . $__templater->escape($__vars['thread']['User']['username']) . '' . '</li>
+';
+	} else {
+		$__finalCompiled .= '
+	<li>' . 'Latest: ' . $__templater->escape($__vars['thread']['last_post_cache']['username']) . '' . '</li>
+';
+	}
+	$__finalCompiled .= '
 					<li>' . $__templater->func('date_dynamic', array($__vars['thread']['last_post_date'], array(
 	))) . '</li>
 				</ul>

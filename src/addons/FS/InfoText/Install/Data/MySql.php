@@ -16,6 +16,8 @@ class MySql
             $table->addColumn('id', 'int')->autoIncrement();
             $table->addColumn('word', 'varchar', 50);
             $table->addColumn('link', 'text');
+            $table->addColumn('agency', 'text');
+
             $table->addPrimaryKey('id');
         };
 

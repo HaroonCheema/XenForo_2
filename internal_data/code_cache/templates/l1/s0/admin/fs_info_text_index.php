@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 6a626c3788936b76ec01b9894e818557
+// FROM HASH: 94d7bf08e9de1a0d4fcb4956750f17a2
 return array(
 'macros' => array('table_list' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -14,6 +14,10 @@ return array(
 	), array(array(
 		'_type' => 'cell',
 		'html' => ' ' . 'Word' . ' ',
+	),
+	array(
+		'_type' => 'cell',
+		'html' => ' ' . 'Agency' . ' ',
 	),
 	array(
 		'_type' => 'cell',
@@ -37,6 +41,10 @@ return array(
 			), array(array(
 				'_type' => 'cell',
 				'html' => ' ' . $__templater->escape($__vars['value']['word']) . ' ',
+			),
+			array(
+				'_type' => 'cell',
+				'html' => ' ' . $__templater->escape($__vars['value']['agency']) . ' ',
 			),
 			array(
 				'_type' => 'cell',

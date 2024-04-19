@@ -418,7 +418,7 @@ return array(
 			';
 	} else {
 		$__finalCompiled .= '
-				' . $__templater->func('bb_code', array($__templater->method($__vars['post'], 'getAttachTextInfo', array()), 'post', $__vars['post'], ), true) . '
+				' . $__templater->func('bb_code', array($__vars['post']['message'], 'post', $__vars['post'], ), true) . '
 			';
 	}
 	$__finalCompiled .= '

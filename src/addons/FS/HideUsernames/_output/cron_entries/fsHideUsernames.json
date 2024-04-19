@@ -1,0 +1,17 @@
+{
+    "cron_class": "FS\\HideUsernames\\Cron\\HideUsernamesCron",
+    "cron_method": "randomNamese",
+    "run_rules": {
+        "day_type": "dow",
+        "dow": [
+            0
+        ],
+        "hours": [
+            0
+        ],
+        "minutes": [
+            0
+        ]
+    },
+    "active": true
+}

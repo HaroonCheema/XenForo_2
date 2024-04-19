@@ -5,11 +5,10 @@ namespace FS\HideUsernames\Cron;
 class HideUsernamesCron
 {
     public static function randomNamese()
-    {
-        $app = \xf::app();
+    {      
+        $app = \XF::app();
+        $jobID = "random_usernames";
 
-        $service = $app->service('FS\HideUsernames:HideUserNames');
-
-        $service->genrateRandomNames();
+        $app->jobManager()->enqueueUnique($jobID, 'FS\HideUsernames:RandomUsername', [], false);
     }
 }

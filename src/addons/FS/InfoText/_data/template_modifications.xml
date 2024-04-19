@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <template_modifications>
-  <modification type="public" template="post_macros" modification_key="fs_text_info_post_macros" description="fs_text_info_post_macros" execution_order="10" enabled="1" action="str_replace">
-    <find><![CDATA[{{ bb_code($post.message, 'post', $post) }}]]></find>
-    <replace><![CDATA[{{ bb_code($post.getAttachTextInfo(), 'post', $post) }}]]></replace>
+  <modification type="public" template="extra.less" modification_key="fs_info_text_a_tag_css" description="fs_info_text_a_tag_css" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/$/]]></find>
+    <replace><![CDATA[.infoTextAnchorTag{
+	font-size: smaller;
+}]]></replace>
   </modification>
 </template_modifications>

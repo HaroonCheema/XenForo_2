@@ -1,0 +1,9 @@
+{
+    "template": "extra.less",
+    "description": "fs_info_text_a_tag_css",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/$/",
+    "replace": ".infoTextAnchorTag{\n\tfont-size: smaller;\n}"
+}

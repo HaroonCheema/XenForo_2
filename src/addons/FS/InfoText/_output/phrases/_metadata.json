@@ -41,6 +41,18 @@
         "version_string": "1.0.0 Alpha",
         "hash": "de9ced9bf5e9829de4a93ad8c9d7a170"
     },
+    "fs_info_text_agency.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "912545dba3c9b51ec0cf39599da444e8"
+    },
+    "fs_info_text_agency_list.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "75ec3e55a77288b4a132f7528619817b"
+    },
     "fs_info_text_edit.txt": {
         "global_cache": false,
         "version_id": 1000010,

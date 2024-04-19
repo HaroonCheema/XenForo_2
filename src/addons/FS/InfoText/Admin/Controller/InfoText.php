@@ -81,9 +81,10 @@ class InfoText extends AbstractController
         $input = $this->filter([
             'word' => 'str',
             'link' => 'str',
+            'agency' => 'str',
         ]);
 
-        if ($input['word'] == '' || $input['link'] == '') {
+        if ($input['word'] == '' || $input['link'] == '' || $input['agency'] == '') {
             throw $this->exception($this->error(\XF::phraseDeferred('please_complete_required_fields')));
         }
 

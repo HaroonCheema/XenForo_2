@@ -55,6 +55,7 @@
 		  >
 	<xf:datarow rowtype="header">
 		<xf:cell> {{ phrase('fs_info_text_word_list') }} </xf:cell>
+		<xf:cell> {{ phrase('fs_info_text_agency_list') }} </xf:cell>
 		<xf:cell> {{ phrase('fs_info_text_link_list') }} </xf:cell>
 		<xf:cell class="dataList-cell--min"></xf:cell>
 		<xf:cell class="dataList-cell--min"></xf:cell>
@@ -63,6 +64,7 @@
 		<xf:datarow>
 
 			<xf:cell> {$value.word} </xf:cell>
+			<xf:cell> {$value.agency} </xf:cell>
 			<xf:cell> {$value.link} </xf:cell>
 
 			<xf:action href="{{ link('info-text/edit', $value) }}" >{{ phrase('edit') }}</xf:action>
