@@ -10,8 +10,7 @@ class Purchase extends AbstractController
 	{
 		$purchasable = $this->assertPurchasableExists($params->purchasable_type_id);
 
-		if (!$purchasable->isActive())
-		{
+		if (!$purchasable->isActive()) {
 			throw $this->exception($this->error(\XF::phrase('items_of_this_type_cannot_be_purchased_at_moment')));
 		}
 
@@ -19,13 +18,12 @@ class Purchase extends AbstractController
 		$purchasableHandler = $purchasable->handler;
 
 		$purchase = $purchasableHandler->getPurchaseFromRequest($this->request, \XF::visitor(), $error);
-		if (!$purchase)
-		{
+		if (!$purchase) {
 			throw $this->exception($this->error($error));
 		}
 
 		$purchaseRequest = $this->repository('XF:Purchase')->insertPurchaseRequest($purchase);
-		
+
 		$providerHandler = $purchase->paymentProfile->getPaymentHandler();
 		return $providerHandler->initiatePayment($this, $purchaseRequest, $purchase);
 	}
@@ -33,15 +31,13 @@ class Purchase extends AbstractController
 	public function actionProcess()
 	{
 		$purchaseRequest = $this->em()->findOne('XF:PurchaseRequest', $this->filter(['request_key' => 'str']), 'User');
-		if (!$purchaseRequest)
-		{
+		if (!$purchaseRequest) {
 			throw $this->exception($this->error(\XF::phrase('invalid_purchase_request')));
 		}
 
 		/** @var \XF\Entity\PaymentProfile $paymentProfile */
 		$paymentProfile = $this->em()->find('XF:PaymentProfile', $purchaseRequest->payment_profile_id);
-		if (!$paymentProfile)
-		{
+		if (!$paymentProfile) {
 			throw $this->exception($this->error(\XF::phrase('purchase_request_contains_invalid_payment_profile')));
 		}
 
@@ -51,15 +47,16 @@ class Purchase extends AbstractController
 		$purchasableHandler = $purchasable->handler;
 
 		$purchase = $purchasableHandler->getPurchaseFromExtraData($purchaseRequest->extra_data, $paymentProfile, \XF::visitor(), $error);
-		if (!$purchase)
-		{
+
+		if (!$purchase) {
 			throw $this->exception($this->error($error));
 		}
 
 		$providerHandler = $paymentProfile->Provider->handler;
 		$result = $providerHandler->processPayment($this, $purchaseRequest, $paymentProfile, $purchase);
-		if (!$result)
-		{
+
+
+		if (!$result) {
 			return $this->redirect($purchase->returnUrl);
 		}
 
@@ -69,15 +66,13 @@ class Purchase extends AbstractController
 	public function actionCancelRecurring(ParameterBag $params)
 	{
 		$purchaseRequest = $this->em()->findOne('XF:PurchaseRequest', $this->filter(['request_key' => 'str']), 'User');
-		if (!$purchaseRequest)
-		{
+		if (!$purchaseRequest) {
 			throw $this->exception($this->error(\XF::phrase('invalid_purchase_request')));
 		}
 
 		/** @var \XF\Entity\PaymentProfile $paymentProfile */
 		$paymentProfile = $this->em()->find('XF:PaymentProfile', $purchaseRequest->payment_profile_id);
-		if (!$paymentProfile)
-		{
+		if (!$paymentProfile) {
 			throw $this->exception($this->error(\XF::phrase('purchase_request_contains_invalid_payment_profile')));
 		}
 
@@ -89,12 +84,9 @@ class Purchase extends AbstractController
 
 		$providerHandler = $paymentProfile->Provider->handler;
 
-		if ($this->isPost())
-		{
+		if ($this->isPost()) {
 			return $providerHandler->processCancellation($this, $purchaseRequest, $paymentProfile);
-		}
-		else
-		{
+		} else {
 			$viewParams = [
 				'purchaseRequest' => $purchaseRequest,
 				'paymentProfile' => $paymentProfile,

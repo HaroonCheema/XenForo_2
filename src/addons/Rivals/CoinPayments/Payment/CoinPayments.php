@@ -93,6 +93,7 @@ class CoinPayments extends \XF\Payment\AbstractProvider
 			throw $controller->exception($controller->error($error));
 		}
 
+
 		$viewParams = [
 			'purchaseRequest' => $purchaseRequest,
 			'paymentProfile' => $paymentProfile,
@@ -105,7 +106,7 @@ class CoinPayments extends \XF\Payment\AbstractProvider
 			'address' => $data->result->address,
 			'amount' => $data->result->amount,
 			'transactionId' => $data->result->txn_id,
-			'tagId' => $data->result->dest_tag ? $data->result->dest_tag : \XF::phrase('none'),
+			'tagId' => isset($data->result->dest_tag) ? $data->result->dest_tag : \XF::phrase('none'),
 		];
 
 		return $controller->view(null, 'payment_initiate_coinpayments', $viewParams);
@@ -133,6 +134,9 @@ class CoinPayments extends \XF\Payment\AbstractProvider
 			throw $controller->exception($controller->error($error));
 		}
 
+
+		var_dump($purchase->returnUrl);
+		exit;
 		try {
 			$keys = ['public_key' => $paymentProfile->options['public_key'], 'private_key' => $paymentProfile->options['private_key']];
 			$response = $this->call($keys, 'get_tx_info', [
@@ -143,6 +147,9 @@ class CoinPayments extends \XF\Payment\AbstractProvider
 			if (empty($response)) {
 				throw $controller->exception($controller->error(\XF::phrase('coinpayments_error_no_response')));
 			}
+
+
+
 
 			$data = $response;
 
@@ -166,7 +173,7 @@ class CoinPayments extends \XF\Payment\AbstractProvider
 			}
 
 			// success
-			if ($data->result->status == 1) {
+			if ($data->result->status == 100) {
 				$state = new CallbackState();
 				$state->transaction_id = $request->filter($request->get('transaction_id'), 'str');
 				$state->paymentResult = CallbackState::PAYMENT_RECEIVED;
@@ -187,6 +194,8 @@ class CoinPayments extends \XF\Payment\AbstractProvider
 
 			throw $controller->exception($controller->error(\XF::phrase('something_went_wrong_please_try_again')));
 		}
+
+
 
 		return $controller->redirect($purchase->returnUrl);
 	}
