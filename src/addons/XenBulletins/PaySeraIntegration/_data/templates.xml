@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="admin" title="payment_profile_paysera" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:textboxrow name="options[project_id]" value="{$profile.options.project_id}" required="true"
+	label="{{ phrase('paysera_project_id') }}"
+	hint="{{ phrase('required') }}">
+
+	<xf:explain>
+		{{ phrase('paysera_project_id_explain') }}
+	</xf:explain>
+</xf:textboxrow>
+
+<xf:textboxrow name="options[project_password]" value="{$profile.options.project_password}" required="true" autosize="true"
+	label="{{ phrase('paysera_project_password') }}"
+	explain="{{ phrase('paysera_project_password_explain') }}"
+	hint="{{ phrase('required') }}" />
+
+<xf:checkboxrow>
+	<xf:option name="options[test_payment]" selected="$profile.options.test_payment"
+		label="{{ phrase('test_payment') }}"
+		hint="{{ phrase('test_payment_hint') }}" />
+</xf:checkboxrow>
+
+<xf:hiddenval name="options[legacy]" value="{{ $profile.options.legacy ? 1 : 0 }}" />]]></template>
+</templates>

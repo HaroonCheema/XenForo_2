@@ -1,0 +1,8 @@
+{
+    "src/addons/Rivals/CoinPayments/addon.json": "98e9461aa3fa78d7f9222c1183073ccee1693629166dc2a1163a15dce3eea0a9",
+    "src/addons/Rivals/CoinPayments/logo.png": "4d12993ad0b4a1d5a0f78b093113dcfed37a6f7cb62a3848c077725f62bdcfb3",
+    "src/addons/Rivals/CoinPayments/Payment/CoinPayments.php": "e49e7be0bb0d6bb6fdf4625cffe9faea336718c1f5e68d3a5b480cdb195377ba",
+    "src/addons/Rivals/CoinPayments/Setup.php": "096108df8bfd411f6074cd65f765bb79330d433df0c27b5b317fffc638416de8",
+    "src/addons/Rivals/CoinPayments/_data/phrases.xml": "a877ae4d4e696101bb100d5aa5e3fb7409331207bf2172843fe290f7052cd79c",
+    "src/addons/Rivals/CoinPayments/_data/templates.xml": "d61e274b958ceb6f34a323bfdc9d3f99a784fe7b7111d9c5f9432e33eff105f7"
+}

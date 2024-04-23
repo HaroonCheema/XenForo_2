@@ -1,0 +1,14 @@
+{
+    "legacy_addon_id": "",
+    "title": "CoinPayments",
+    "description": "Add CoinPayments as a payment method for user upgrades.",
+    "version_id": 100001,
+    "version_string": "1.0.1",
+    "dev": "Rivals",
+    "dev_url": "",
+    "faq_url": "",
+    "support_url": "",
+    "extra_urls": [],
+    "require": [],
+    "icon": "logo.png"
+}

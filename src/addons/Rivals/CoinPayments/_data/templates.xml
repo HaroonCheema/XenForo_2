@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="public" title="payment_initiate_coinpayments" version_id="100001" version_string="1.0.1"><![CDATA[<xf:css src="payment_initiate.less" />
+<xf:js src="xf/payment.js" min="1" />
+
+<xf:title>{{ phrase('coinpayments_payment_details', {'currency': $paymentProfile.options.currency_exit}) }}</xf:title>
+
+<div class="blocks">
+	<xf:form action="{{ link('purchase/process', null, {'request_key': $purchaseRequest.request_key, 'transaction_id': $transactionId}) }}" class="block block--paymentInitiate" data-xf-init="coinpayments-payment-form" data-publishable-key="{$publishableKey}">
+		<div class="block-container">
+			<div class="block-body">
+				<xf:formrow controlid="qrcode-element" rowtype="input">
+					<img class="qrcode-img" style="margin-left: auto; margin-right: auto; display: block;" src="{{ $qrcodeUrl }}"/>
+					<div class="formRow-explain coinpayments-payment-informations" style="text-align:center;">({{ phrase('coinpayments_payment_informations', {'address': $address, 'confirmations': $confirmations, 'transactionId': $transactionId, 'tagId': $tagId}) }})</div>
+					<div class="formRow-explain">{{ phrase('coinpayments_payments_processed_securely_by_x', {'link': 'https://www.coinpayments.net', 'provider': 'CoinPayments', 'transactionId': $transactionId}) }}</div>
+				</xf:formrow>
+
+				<hr class="formRowSep" />
+
+				<xf:formrow label="{{ phrase('coinpayments_pay_x', {'cost': $amount, 'currency_exit': $paymentProfile.options.currency_exit}) }}" rowtype="button"> 
+					 
+					<xf:button icon="preview">
+						<a target="_blank" href="{{ $statusUrl }}">{{ phrase('coinpayments_pay_informations', {'cost': $amount}) }}</a>
+					</xf:button>
+					<xf:button type="submit" icon="save">
+						{{ phrase('coinpayments_validate_payment') }}
+					</xf:button>
+				</xf:formrow>
+			</div>
+		</div>
+	</xf:form>
+</div>]]></template>
+  <template type="admin" title="payment_profile_coinpayments" version_id="100000" version_string="1.0.0"><![CDATA[<xf:textboxrow name="options[currency_entry]" value="{$profile.options.currency_entry}" type="text"
+	label="{{ phrase('coinpayments_currency_entry_label') }}"
+	hint="{{ phrase('required') }}">
+
+	<xf:explain>
+		{{ phrase('coinpayments_currency_entry_explain') }}
+	</xf:explain>
+</xf:textboxrow>
+
+<xf:textboxrow name="options[amount]" value="{$profile.options.amount}" type="text"
+	label="{{ phrase('coinpayments_amount_label') }}"
+	hint="{{ phrase('required') }}">
+
+	<xf:explain>
+		{{ phrase('coinpayments_amount_explain') }}
+	</xf:explain>
+</xf:textboxrow>
+
+<xf:textboxrow name="options[currency_exit]" value="{$profile.options.currency_exit}" type="text"
+	label="{{ phrase('coinpayments_currency_exit_label') }}"
+	hint="{{ phrase('required') }}">
+
+	<xf:explain>
+		{{ phrase('coinpayments_currency_exit_explain') }}
+	</xf:explain>
+</xf:textboxrow>
+
+<xf:textboxrow name="options[public_key]" value="{$profile.options.public_key}" type="text"
+	label="{{ phrase('coinpayments_public_key_label') }}"
+	hint="{{ phrase('required') }}">
+
+	<xf:explain>
+		{{ phrase('coinpayments_key_explain') }}
+	</xf:explain>
+</xf:textboxrow>
+
+<xf:textboxrow name="options[private_key]" value="{$profile.options.private_key}" type="text"
+	label="{{ phrase('coinpayments_private_key_label') }}"
+	hint="{{ phrase('required') }}">
+
+	<xf:explain>
+		{{ phrase('coinpayments_key_explain') }}
+	</xf:explain>
+</xf:textboxrow>]]></template>
+</templates>

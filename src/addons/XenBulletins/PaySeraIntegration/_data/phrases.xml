@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="payment_was_not_successful" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Payment was not successful.]]></phrase>
+  <phrase title="paysera_project_id" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Project ID]]></phrase>
+  <phrase title="paysera_project_id_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[To get your project-id, Create a project in your PaySera account then go to Project settings -> General project settings]]></phrase>
+  <phrase title="paysera_project_password" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Project Password]]></phrase>
+  <phrase title="paysera_project_password_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[To get your project password, Create a project in your PaySera account then go to Project settings -> General project settings]]></phrase>
+  <phrase title="recurring_with_paysera_not_allowed" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Recurring with PaySera not allowed.]]></phrase>
+  <phrase title="requested_user_upgrade_not_found" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Requested UserUpgrade not found.]]></phrase>
+  <phrase title="test_payment" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Test Payment]]></phrase>
+  <phrase title="test_payment_hint" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[To make test payments, it is necessary to activate the mode for a particular project by logging in and selecting: "Projects and Activities" -> "My projects" -> "Project settings" -> "Payment collection service settings" -> "Allow test payments" (check).]]></phrase>
+  <phrase title="wrong_payment_amount" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Wrong payment amount]]></phrase>
+  <phrase title="you_must_provide_paysera_project_id_to_set_up_this_payment" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You must provide paysera Project ID to set up this payment profile.]]></phrase>
+  <phrase title="you_must_provide_paysera_project_password_to_set_up_this_payment" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You must provide paysera Project Password to set up this payment profile.]]></phrase>
+</phrases>

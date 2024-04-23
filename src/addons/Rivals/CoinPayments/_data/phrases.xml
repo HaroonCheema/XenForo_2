@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="coinpayments_amount_explain" version_id="100000" version_string="1.0.0"><![CDATA[Amount of the original currency that will be converted into the outdoing currency.]]></phrase>
+  <phrase title="coinpayments_amount_label" version_id="100000" version_string="1.0.0"><![CDATA[Amount]]></phrase>
+  <phrase title="coinpayments_currency_entry_explain" version_id="100000" version_string="1.0.0"><![CDATA[Currency that will be used to calculate the price in the outgoing currency.]]></phrase>
+  <phrase title="coinpayments_currency_entry_label" version_id="100000" version_string="1.0.0"><![CDATA[Original Currency]]></phrase>
+  <phrase title="coinpayments_currency_exit_explain" version_id="100000" version_string="1.0.0"><![CDATA[Currency that will be returned to your wallet on CoinPayments.]]></phrase>
+  <phrase title="coinpayments_currency_exit_label" version_id="100000" version_string="1.0.0"><![CDATA[Outgoing Currency]]></phrase>
+  <phrase title="coinpayments_error_from_cointpayments" version_id="100000" version_string="1.0.0"><![CDATA[Error from CointPayments :]]></phrase>
+  <phrase title="coinpayments_error_no_response" version_id="100000" version_string="1.0.0"><![CDATA[No response from CoinPayments. Please try again later. ]]></phrase>
+  <phrase title="coinpayments_error_occured" version_id="100000" version_string="1.0.0"><![CDATA[We were unable to retrieve a valid transaction, please try again or contact an administrator with your transaction number.]]></phrase>
+  <phrase title="coinpayments_error_occured_invalid_payment" version_id="100000" version_string="1.0.0"><![CDATA[We were unable to retrieve a valid transaction, please try again or contact an administrator with your transaction number (<b>{transactionId}</b>).]]></phrase>
+  <phrase title="coinpayments_error_too_many_requests" version_id="100001" version_string="1.0.1"><![CDATA[You have carried out too many tests in a given time, please try again later.]]></phrase>
+  <phrase title="coinpayments_error_transaction_canceled" version_id="100000" version_string="1.0.0"><![CDATA[I'm sorry, but this transaction was cancelled. ]]></phrase>
+  <phrase title="coinpayments_error_transaction_pending" version_id="100000" version_string="1.0.0"><![CDATA[Sorry, payment for this transaction is in progress. Please pay the amount and refresh this page.]]></phrase>
+  <phrase title="coinpayments_error_transaction_security" version_id="100000" version_string="1.0.0"><![CDATA[Sorry, but you don't have permission to pay for this transaction.]]></phrase>
+  <phrase title="coinpayments_key_explain" version_id="100001" version_string="1.0.1"><![CDATA[You can obtain a key via this link : <u><a href="https://www.coinpayments.net/acct-api-keys">https://www.coinpayments.net/acct-api-keys</a></u>]]></phrase>
+  <phrase title="coinpayments_pay_informations" version_id="100000" version_string="1.0.0"><![CDATA[Payment informations]]></phrase>
+  <phrase title="coinpayments_pay_with_website" version_id="100000" version_string="1.0.0"><![CDATA[Pay on CoinPayments ]]></phrase>
+  <phrase title="coinpayments_pay_x" version_id="100000" version_string="1.0.0"><![CDATA[Pay {cost} ({currency_exit}) ]]></phrase>
+  <phrase title="coinpayments_payment_details" version_id="100000" version_string="1.0.0"><![CDATA[Payment with {currency}]]></phrase>
+  <phrase title="coinpayments_payment_informations" version_id="100001" version_string="1.0.1"><![CDATA[<i>{address}</i> - {confirmations} confirmations - Transaction number : <i>{transactionId}</i> - Tag : {tagId}]]></phrase>
+  <phrase title="coinpayments_payments_processed_securely_by_x" version_id="100000" version_string="1.0.0"><![CDATA[Payments are processed securely by <a href="{link}" target="_blank">{provider}</a>. ]]></phrase>
+  <phrase title="coinpayments_private_key_label" version_id="100000" version_string="1.0.0"><![CDATA[Private Key]]></phrase>
+  <phrase title="coinpayments_public_key_label" version_id="100000" version_string="1.0.0"><![CDATA[Public Key]]></phrase>
+  <phrase title="coinpayments_validate_payment" version_id="100000" version_string="1.0.0"><![CDATA[Validate payment ]]></phrase>
+  <phrase title="coinpayments_you_must_provide_amount" version_id="100000" version_string="1.0.0"><![CDATA[You must provide a amount.]]></phrase>
+  <phrase title="coinpayments_you_must_provide_currency_entry" version_id="100000" version_string="1.0.0"><![CDATA[You must provide a Original Currency.]]></phrase>
+  <phrase title="coinpayments_you_must_provide_currency_exit" version_id="100000" version_string="1.0.0"><![CDATA[You must provide a Outgoing Currency.]]></phrase>
+  <phrase title="coinpayments_you_must_provide_private_key" version_id="100000" version_string="1.0.0"><![CDATA[You must provide a Private API Key.]]></phrase>
+  <phrase title="coinpayments_you_must_provide_public_key" version_id="100000" version_string="1.0.0"><![CDATA[You must provide a Public API Key.]]></phrase>
+</phrases>
