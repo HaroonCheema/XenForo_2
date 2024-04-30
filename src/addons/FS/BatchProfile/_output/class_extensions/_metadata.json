@@ -1,0 +1,14 @@
+{
+    "FS-UserGroupBatch-Admin-Controller-Batch_FS-BatchProfile-Admin-Controller-Batch.json": {
+        "hash": "8967b6ab97a7e55fff6b700e8b142f52"
+    },
+    "FS-UserGroupBatch-Entity-Batch_FS-BatchProfile-Entity-Batch.json": {
+        "hash": "41d767160a31dd3cab014ab5d9bef3b7"
+    },
+    "XF-Entity-Thread_FS-BatchProfile-XF-Entity-Thread.json": {
+        "hash": "1518ca544de71f59a8dbfcb02ef36f89"
+    },
+    "XF-Entity-User_FS-BatchProfile-XF-Entity-User.json": {
+        "hash": "2dfaea1308ae9871da93b5833aaab150"
+    }
+}

@@ -1,0 +1,14 @@
+{
+    "fs_allow_batch_in_profile.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "ffcd3763d5aea8532ba68bad278b1160"
+    },
+    "fs_allow_batch_in_thread.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "4afc1d81a793587b0823c9c4f76dd3d0"
+    }
+}

@@ -1,0 +1,6 @@
+{
+    "from_class": "FS\\UserGroupBatch\\Admin\\Controller\\Batch",
+    "to_class": "FS\\BatchProfile\\Admin\\Controller\\Batch",
+    "execute_order": 10,
+    "active": true
+}

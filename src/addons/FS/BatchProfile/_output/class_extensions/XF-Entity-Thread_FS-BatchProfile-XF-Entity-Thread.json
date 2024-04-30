@@ -1,0 +1,6 @@
+{
+    "from_class": "XF\\Entity\\Thread",
+    "to_class": "FS\\BatchProfile\\XF\\Entity\\Thread",
+    "execute_order": 11,
+    "active": true
+}

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class_extensions>
+  <extension from_class="FS\UserGroupBatch\Admin\Controller\Batch" to_class="FS\BatchProfile\Admin\Controller\Batch" execute_order="10" active="1"/>
+  <extension from_class="FS\UserGroupBatch\Entity\Batch" to_class="FS\BatchProfile\Entity\Batch" execute_order="10" active="1"/>
+  <extension from_class="XF\Entity\Thread" to_class="FS\BatchProfile\XF\Entity\Thread" execute_order="11" active="1"/>
+  <extension from_class="XF\Entity\User" to_class="FS\BatchProfile\XF\Entity\User" execute_order="10" active="1"/>
+</class_extensions>

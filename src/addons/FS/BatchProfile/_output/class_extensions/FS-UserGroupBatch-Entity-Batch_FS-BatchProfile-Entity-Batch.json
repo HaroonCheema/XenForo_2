@@ -1,0 +1,6 @@
+{
+    "from_class": "FS\\UserGroupBatch\\Entity\\Batch",
+    "to_class": "FS\\BatchProfile\\Entity\\Batch",
+    "execute_order": 10,
+    "active": true
+}

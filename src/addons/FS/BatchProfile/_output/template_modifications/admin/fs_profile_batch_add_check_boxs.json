@@ -1,0 +1,9 @@
+{
+    "template": "fs_usergroup_batch_add_edit",
+    "description": "fs_profile_batch_add_check_boxs",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "</ul>",
+    "replace": "$0\n\n<xf:checkboxrow>\n\t<xf:option name=\"allow_thread\" value=\"1\" selected=\"$data.allow_thread\">\n\t\t{{ phrase('fs_allow_batch_in_thread') }}\n\t</xf:option>\n</xf:checkboxrow>\n\n<xf:checkboxrow>\n\t<xf:option name=\"allow_profile\" value=\"1\" selected=\"$data.allow_profile\">\n\t\t{{ phrase('fs_allow_batch_in_profile') }}\n\t</xf:option>\n</xf:checkboxrow>"
+}

@@ -1,0 +1,9 @@
+{
+    "template": "member_view",
+    "description": "fs_batch_profile_member_view",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/<div class=\"memberHeader-content\">.*?<\\/div>.*?<\\/div>.*?<\\/div>.*?<\\/div>/is",
+    "replace": "$0\n\n<xf:if is=\"$user.getBatchLists() is not empty\">\n\t<div class=\"gallery\">\n\t\t<xf:foreach loop=\"$user.getBatchLists()\" value=\"$batch\">\n\t\t\t<xf:if is=\"$user.isMemberOf($batch.usergroup_ids)\">\n\t\t\t\t<div class=\"image-wrapper\">\n\t\t\t\t\t<img src=\"{{ base_url($batch.img_path,true) }}\" alt=\"{$batch.title}\" class=\"bbImage\" loading=\"lazy\" />\n\t\t\t\t</div>\n\t\t\t</xf:if>\n\t\t</xf:foreach>\n\t</div>\n</xf:if>\n\n<xf:css src=\"fs_batch_profile.less\" />"
+}

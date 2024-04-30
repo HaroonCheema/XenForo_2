@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="public" title="fs_batch_profile.less" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[.gallery {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between; /* Adjust alignment as needed */
+}
+
+.image-wrapper {
+	flex: 0 0 calc(33.33% - 10px); /* Adjust width and margin as needed */
+	margin: 10px 20px;
+}
+
+.image-wrapper img {
+	width: 100%;
+	height: auto;
+}
+
+@media (max-width: 768px) {
+	.image-wrapper {
+		flex: 0 0 calc(50% - 10px); /* Adjust width and margin for small screens */
+		margin: 10px 20px;
+
+	}
+}
+
+@media (max-width: 359px)
+{
+
+}
+
+@media (max-width: 376px)
+{
+	.image-wrapper {
+		flex: 0 0 100%; /* Adjust width and margin for small screens */
+		padding: 0px 15px;
+		margin: 10px 0px;
+
+	}
+}
+
+@media (max-width: 415px)
+{
+	.image-wrapper {
+		flex: 0 0 100%; /* Adjust width and margin for small screens */
+		padding: 0px 15px;
+		margin: 10px 0px;
+
+	}
+}
+
+@media (max-width: 768px)
+{
+
+}
+
+
+@media (max-width: 800px)
+{
+
+}
+
+
+@media (max-width: 900px)
+{
+
+}]]></template>
+</templates>
