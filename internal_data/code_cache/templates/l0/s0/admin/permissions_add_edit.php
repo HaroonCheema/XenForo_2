@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 212093987ff12ae58e9fb03bd7bf1146
+// FROM HASH: f502411836fb6ad02477e59e1408b187
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -29,10 +29,8 @@ return array(
 		'name' => 'usergroup_ids[]',
 		'multiple' => 'multiple',
 		'size' => '5',
-		'required' => 'required',
 	), $__compilerTemp1, array(
 		'label' => 'Applicable Usergroups',
-		'hint' => 'Required',
 	)) . '
 				</li>
 			</ul>

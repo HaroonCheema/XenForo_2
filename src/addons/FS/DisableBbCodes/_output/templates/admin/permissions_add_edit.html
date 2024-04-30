@@ -8,8 +8,6 @@
 				<li>
 					<xf:selectrow name="usergroup_ids[]" multiple="multiple" size="5"
 								  label="{{ phrase('fs_disable_bbcode_usergroup_ids') }}"
-								  hint="{{ phrase('required') }}"
-								  required="required"
 								  >
 						<xf:foreach loop="$userGroups" value="$userGroup">
 							<xf:option value="{$userGroup.user_group_id}" selected="{{in_array($userGroup.user_group_id, $bbCode.usergroup_ids)}}">{$userGroup.title}</xf:option>
