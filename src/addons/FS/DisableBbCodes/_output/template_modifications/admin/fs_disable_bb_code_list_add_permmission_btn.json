@@ -1,0 +1,9 @@
+{
+    "template": "bb_code_list",
+    "description": "fs_disable_bb_code_list_add_permmission_btn",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:if is=\"!$exportView\">",
+    "replace": "<xf:action\n\t\t   href=\"{{ link('bb-codes/permissions', $bbCode) }}\">\n\t{{ phrase('permissions') }}\n</xf:action>\n\n$0"
+}

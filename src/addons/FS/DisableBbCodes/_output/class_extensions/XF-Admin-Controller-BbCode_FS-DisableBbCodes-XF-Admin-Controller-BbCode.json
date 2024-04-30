@@ -1,0 +1,6 @@
+{
+    "from_class": "XF\\Admin\\Controller\\BbCode",
+    "to_class": "FS\\DisableBbCodes\\XF\\Admin\\Controller\\BbCode",
+    "execute_order": 10,
+    "active": true
+}

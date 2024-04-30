@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="fs_disable_bb_codes_phrase" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[(you can't use this code)]]></phrase>
+  <phrase title="fs_disable_bbcode_usergroup_ids" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Applicable Usergroups]]></phrase>
+</phrases>

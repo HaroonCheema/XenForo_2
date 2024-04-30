@@ -1,0 +1,14 @@
+{
+    "fs_disable_bb_codes_phrase.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "c3c850fbe991fa4d96924462cc67fc1a"
+    },
+    "fs_disable_bbcode_usergroup_ids.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "e1876acb81e3642fa0abbb21a8ad4027"
+    }
+}

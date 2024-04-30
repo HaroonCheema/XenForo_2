@@ -1,0 +1,11 @@
+{
+    "XF-Admin-Controller-BbCode_FS-DisableBbCodes-XF-Admin-Controller-BbCode.json": {
+        "hash": "02065107292e8fae011bfa7bdd486632"
+    },
+    "XF-Entity-BbCode_FS-DisableBbCodes-XF-Entity-BbCode.json": {
+        "hash": "dcb1ceafeb43b3173a1b85faec9bede6"
+    },
+    "XF-Pub-Controller-Thread_FS-DisableBbCodes-XF-Pub-Controller-Thread.json": {
+        "hash": "8c1d49f73f0f0a61a08305a953dbd6e5"
+    }
+}

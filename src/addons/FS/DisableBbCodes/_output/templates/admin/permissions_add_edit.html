@@ -1,0 +1,24 @@
+<xf:title>{{ phrase('permissions:') }} [{$bbCode.bb_code_id}]</xf:title>
+
+<xf:form action="{{ link('bb-codes/permissions-save', $bbCode) }}" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+
+			<ul class="inputList">
+				<li>
+					<xf:selectrow name="usergroup_ids[]" multiple="multiple" size="5"
+								  label="{{ phrase('fs_disable_bbcode_usergroup_ids') }}"
+								  hint="{{ phrase('required') }}"
+								  required="required"
+								  >
+						<xf:foreach loop="$userGroups" value="$userGroup">
+							<xf:option value="{$userGroup.user_group_id}" selected="{{in_array($userGroup.user_group_id, $bbCode.usergroup_ids)}}">{$userGroup.title}</xf:option>
+						</xf:foreach>
+					</xf:selectrow>
+				</li>
+			</ul>
+
+		</div>
+		<xf:submitrow icon="save" />
+	</div>
+</xf:form>
