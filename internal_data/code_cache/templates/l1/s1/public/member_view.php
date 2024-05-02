@@ -264,7 +264,6 @@ return array(
 					';
 	}
 	$__finalCompiled .= '
-				</div>
 
 ';
 	if (!$__templater->test($__templater->method($__vars['user'], 'getBatchLists', array()), 'empty', array())) {
@@ -296,6 +295,7 @@ return array(
 ';
 	$__templater->includeCss('fs_batch_profile.less');
 	$__finalCompiled .= '
+				</div>
 
 			</div>
 		</div>
