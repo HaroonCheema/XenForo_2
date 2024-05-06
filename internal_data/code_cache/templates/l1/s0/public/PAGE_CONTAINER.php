@@ -466,7 +466,14 @@ return array(
 							';
 	}
 	$__compilerTemp2 .= '
-							' . '
+							';
+	if ($__vars['xf']['visitor']['is_moderator'] OR $__vars['xf']['visitor']['is_admin']) {
+		$__compilerTemp2 .= '
+	<a href="' . $__templater->func('link', array('ip-search', ), true) . '" class="menu-linkRow">' . 'IP Search' . '</a>
+';
+	}
+	$__compilerTemp2 .= '
+' . '
 							';
 	if (strlen(trim($__compilerTemp2)) > 0) {
 		$__compilerTemp1 .= '

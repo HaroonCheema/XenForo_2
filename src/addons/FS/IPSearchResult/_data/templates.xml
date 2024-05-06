@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="public" title="fs_member_ip_list" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[<xf:title>{{ phrase('ip_addresses_logged_for_x', {'name': $user.username}) }}</xf:title>
+
+<div class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:datalist data-xf-init="responsive-data-list">
+				<xf:datarow rowtype="header">
+					<xf:cell>{{ phrase('ip') }}</xf:cell>
+					<xf:cell>{{ phrase('total') }}</xf:cell>
+					<xf:cell>{{ phrase('earliest') }}</xf:cell>
+					<xf:cell>{{ phrase('latest') }}</xf:cell>
+					<xf:cell>&nbsp;</xf:cell>
+				</xf:datarow>
+				<xf:foreach loop="$ips" value="$ip">
+					
+					<xf:set var="$userCount" value="count($ip.users)" />
+					
+					<xf:datarow rowclass="dataList-row--noHover">
+						<xf:cell href="{{ link('misc/ip-info', null, {'ip': $ip.ip|ip}) }}" target="_blank">{$ip.ip|ip}</xf:cell>
+						<xf:cell>{$ip.total|number}</xf:cell>
+						<xf:cell><xf:date time="{$ip.first_date}" /></xf:cell>
+						<xf:cell><xf:date time="{$ip.last_date}" /></xf:cell>
+						
+						<xf:cell>
+							<xf:if is="$ip.users is not empty">
+								<ul class="listInline listInline--comma">
+									<xf:foreach loop="$ip.users" value="$user">
+										<xf:trim>
+											<li>
+												<xf:username user="$user" rich="true" href="{{ link('members', $user) }}" />
+											</li>
+										</xf:trim>
+									</xf:foreach>
+								</ul>
+							<xf:else />
+								{{ phrase('none') }}
+							</xf:if>
+						</xf:cell>
+						
+							
+					</xf:datarow>
+				</xf:foreach>
+			</xf:datalist>
+		</div>
+	</div>
+</div>]]></template>
+  <template type="public" title="ip_search" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('ip_search') }}</xf:title>
+
+
+<div class="block">
+	<div class="block-container">
+		<h2 class="block-tabHeader tabs" data-xf-init="tabs" role="tablist">
+			<a class="tabs-tab is-active" role="tab" tabindex="0" aria-controls="user-search">{{ phrase('find_ip_addresses_for_user') }}</a>
+			<a class="tabs-tab" role="tab" tabindex="0" aria-controls="ip-search">{{ phrase('find_users_by_ip_address') }}</a>
+		</h2>
+
+		<ul class="tabPanes">
+			<li class="is-active" role="tabpanel" id="user-search">
+				<xf:form action="{{ link('ip-search/user-ips') }}">
+					<div class="block-body">
+						<xf:formrow label="{{ phrase('user_name') }}">
+							
+							<ul class="inputList">
+								<li><xf:textbox name="username" ac="single" maxlength="{{ max_length($xf.visitor, 'username') }}" /></li>
+
+								<xf:comment>
+								<li><xf:checkbox standalone="true">
+									<xf:option name="criteria[username][exact_match]">
+										{{ phrase('exact_match') }}
+									</xf:option>
+								</xf:checkbox></li>
+								</xf:comment>
+							</ul>
+						</xf:formrow>
+
+						<hr class="formRowSep" />
+
+					</div>
+					<xf:submitrow sticky="true" icon="search" />
+				</xf:form>
+			</li>
+			
+			<li role="tabpanel" id="ip-search">
+				<xf:form action="{{ link('members/ip-users') }}">
+					<div class="block-body">
+						<xf:textboxrow name="ip"
+							label="{{ phrase('ip_address') }}"
+							explain="{{ phrase('ip_search_explain') }}" />
+					</div>
+					<xf:submitrow icon="search" />
+				</xf:form>
+			</li>
+		</ul>
+	</div>
+</div>]]></template>
+</templates>

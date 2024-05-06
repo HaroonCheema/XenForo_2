@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="find_ip_addresses_for_user" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Find IP addresses for user]]></phrase>
+  <phrase title="find_users_by_ip_address" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Find Users by IP address]]></phrase>
+  <phrase title="ip_search" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[IP Search]]></phrase>
+</phrases>

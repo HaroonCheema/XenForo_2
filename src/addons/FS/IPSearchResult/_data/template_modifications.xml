@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="PAGE_CONTAINER" modification_key="fs_ipSearch_in_mod_tool" description="Add link  'IP Search' in moderation tool list" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<!--[XF:mod_tools_menu:bottom]-->]]></find>
+    <replace><![CDATA[<xf:if is="$xf.visitor.is_moderator || $xf.visitor.is_admin">
+	<a href="{{ link('ip-search') }}" class="menu-linkRow">{{ phrase('ip_search') }}</a>
+</xf:if>
+$0]]></replace>
+  </modification>
+</template_modifications>
