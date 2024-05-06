@@ -1,4 +1,14 @@
 {
+    "admin/fs_dis_permissions_add_edit.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "77f8772cacc1c749d6cff017f79179ed"
+    },
+    "admin/fs_disable_bb_code_index.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "3c23e2ff79d9768e1271c0db52bab9d2"
+    },
     "admin/permissions_add_edit.html": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",

@@ -1,0 +1,10 @@
+{
+    "parent_navigation_id": "fs_Disable_Bb_Codes",
+    "display_order": 1,
+    "link": "dis-bb-codes",
+    "icon": "",
+    "admin_permission_id": "",
+    "debug_only": false,
+    "development_only": false,
+    "hide_no_children": false
+}

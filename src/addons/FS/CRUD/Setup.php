@@ -18,6 +18,8 @@ class Setup extends AbstractSetup
 	use StepRunnerUpgradeTrait;
 	use StepRunnerUninstallTrait;
 
+	// ################################ INSTALLATION ######################
+
 	public function installstep1()
 	{
 		$sm = $this->schemaManager();
@@ -26,6 +28,8 @@ class Setup extends AbstractSetup
 			$sm->createTable($tableName, $callback);
 		}
 	}
+
+	// ############################### UNINSTALL ###########################
 
 	public function uninstallStep1()
 	{

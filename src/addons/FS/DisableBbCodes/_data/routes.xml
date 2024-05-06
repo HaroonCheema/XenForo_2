@@ -1,2 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<routes/>
+<routes>
+  <route route_type="admin" route_prefix="dis-bb-codes" format=":int&lt;id&gt;/:page" controller="FS\DisableBbCodes:DisableBbCodes" context="fsDisableBbCodes"/>
+</routes>

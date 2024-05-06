@@ -1,2 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<admin_navigation/>
+<admin_navigation>
+  <admin_navigation_entry navigation_id="fsDisableBbCodes" parent_navigation_id="fs_Disable_Bb_Codes" display_order="1" link="dis-bb-codes" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="fs_Disable_Bb_Codes" display_order="1" icon="fa-file-code" debug_only="0" development_only="0" hide_no_children="0"/>
+</admin_navigation>

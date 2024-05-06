@@ -1,4 +1,22 @@
 {
+    "admin_navigation.fsDisableBbCodes.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "52e0a02e43d0de17865d12d327cae526"
+    },
+    "admin_navigation.fs_Disable_Bb_Codes.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "18e528c68c6eeacfcaac61e1eff4a2c6"
+    },
+    "fs_disable_bb_codes_built_in.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "52e0a02e43d0de17865d12d327cae526"
+    },
     "fs_disable_bb_codes_phrase.txt": {
         "global_cache": false,
         "version_id": 1000010,

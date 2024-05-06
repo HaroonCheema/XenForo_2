@@ -14,46 +14,55 @@ class Thread extends XFCP_Thread
         if ($parent instanceof \XF\Mvc\Reply\View) {
 
             $customBbCodes = $this->finder('XF:BbCode')->where("usergroup_ids", "!=", '')->fetch();
+            $builtInBbCodes = $this->finder('FS\DisableBbCodes:DisableBbCodes')->where("usergroup_ids", "!=", '')->fetch();
 
             if (count($customBbCodes) > 0) {
 
-                $visitor = \XF::visitor();
+                $this->disabledBbCodes($parent->getParam('posts'), $customBbCodes);
+            }
 
-                $posts = $parent->getParam('posts');
+            if (count($builtInBbCodes) > 0) {
 
-                foreach ($customBbCodes as $bbCode) {
-
-                    if ($visitor->isMemberOf($bbCode->usergroup_ids)) {
-
-                        foreach ($posts as $post) {
-                            $message = $post->message;
-
-                            $replacementString = \XF::phrase('fs_disable_bb_codes_phrase');
-
-                            $pattern = '/\[(\w+)[^\]]*\].*?\[\/\1\]/';
-
-                            preg_match_all($pattern, $message, $matches);
-
-                            $tags = array_unique($matches[1]);
-
-                            $tag = $bbCode->bb_code_id;
-
-                            if (in_array($tag, $tags)) {
-                                $patternWithoutTag = '/\[' . preg_quote($tag, '/') . '[^\]]*\].*?\[\/' . preg_quote($tag, '/') . '\]/';
-
-                                $patternWithTag = '/\[' . $tag . '=[^\]]*\].*?\[\/' . $tag . '\]/';
-
-                                $message = preg_replace($patternWithoutTag, $replacementString, $message);
-                                $message = preg_replace($patternWithTag, $replacementString, $message);
-
-                                $post->message = $message;
-                            }
-                        }
-                    }
-                }
+                $this->disabledBbCodes($parent->getParam('posts'), $builtInBbCodes);
             }
         }
 
         return $parent;
+    }
+
+    protected function disabledBbCodes($posts, $disBbCodes)
+    {
+        $visitor = \XF::visitor();
+
+        foreach ($disBbCodes as $bbCode) {
+
+            if ($visitor->isMemberOf($bbCode->usergroup_ids)) {
+
+                foreach ($posts as $post) {
+                    $message = $post->message;
+
+                    $replacementString = \XF::phrase('fs_disable_bb_codes_phrase');
+
+                    $pattern = '/\[(\w+)[^\]]*\].*?\[\/\1\]/';
+
+                    preg_match_all($pattern, $message, $matches);
+
+                    $tags = array_unique($matches[1]);
+
+                    $tag = $bbCode->bb_code_id;
+
+                    if (in_array($tag, $tags)) {
+                        $patternWithoutTag = '/\[' . preg_quote($tag, '/') . '[^\]]*\].*?\[\/' . preg_quote($tag, '/') . '\]/';
+
+                        $patternWithTag = '/\[' . $tag . '=[^\]]*\].*?\[\/' . $tag . '\]/';
+
+                        $message = preg_replace($patternWithoutTag, $replacementString, $message);
+                        $message = preg_replace($patternWithTag, $replacementString, $message);
+
+                        $post->message = $message;
+                    }
+                }
+            }
+        }
     }
 }

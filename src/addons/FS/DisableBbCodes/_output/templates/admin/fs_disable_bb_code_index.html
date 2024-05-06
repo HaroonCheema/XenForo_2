@@ -1,0 +1,67 @@
+<xf:title>{{ phrase('fs_disable_bb_codes_built_in') }}</xf:title>
+
+<xf:form action="{{ link($prefix . '/toggle') }}" class="block" ajax="true">
+	<div class="block-outer">
+		<xf:macro
+				  template="filter_macros"
+				  name="quick_filter"
+				  arg-key="dis-bb-codes"
+				  arg-class="block-outer-opposite"
+				  />
+	</div>
+
+	<div class="block-container">
+
+		<xf:if is="$data is not empty">
+			<div class="block-body">
+				<xf:datalist data-xf-init="responsive-data-list">
+
+					<xf:macro
+							  name="table_list"
+							  arg-data="{$data}"
+							  />
+
+				</xf:datalist>
+				<div class="block-footer">
+					<span class="block-footer-counter"
+						  >{{ display_totals($totalReturn, $total) }}</span
+						>
+				</div>
+
+			</div>
+			<xf:else />
+			<div class="block-body block-row">{{ phrase('no_items_have_been_created_yet') }}</div>
+
+		</xf:if>
+
+	</div>
+
+	<xf:pagenav
+				page="{$page}"
+				perpage="{$perPage}"
+				total="{$total}"
+				link="dis-bb-codes"
+				wrapperclass="block"
+				/>
+</xf:form>
+<xf:macro
+		  name="table_list"
+		  arg-data="!"
+		  >
+	<xf:datalist>
+		<xf:foreach loop="{$data}" value="$value">
+			<xf:datarow>
+
+				<xf:main href="{{ link('dis-bb-codes/permissions', $value) }}">
+					<xf:label>{$value.bb_code_id}</xf:label>
+					<xf:hint>[{$value.bb_code_id}]</xf:hint>
+				</xf:main>
+
+				<xf:action
+						   href="{{ link('dis-bb-codes/permissions', $value) }}">
+					{{ phrase('permissions') }}
+				</xf:action>
+			</xf:datarow>
+		</xf:foreach>
+	</xf:datalist>
+</xf:macro>

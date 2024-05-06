@@ -1,0 +1,11 @@
+{
+    "route_type": "admin",
+    "route_prefix": "dis-bb-codes",
+    "sub_name": "",
+    "format": ":int<id>/:page",
+    "build_class": "",
+    "build_method": "",
+    "controller": "FS\\DisableBbCodes:DisableBbCodes",
+    "context": "fsDisableBbCodes",
+    "action_prefix": ""
+}

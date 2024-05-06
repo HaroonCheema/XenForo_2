@@ -1,5 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
 <templates>
+  <template type="admin" title="fs_dis_permissions_add_edit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('permissions:') }} [{$bbCode.bb_code_id}]</xf:title>
+
+<xf:form action="{{ link('dis-bb-codes/permissions-save', $bbCode) }}" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+
+			<ul class="inputList">
+				<li>
+					<xf:selectrow name="usergroup_ids[]" multiple="multiple" size="5"
+								  label="{{ phrase('fs_disable_bbcode_usergroup_ids') }}"
+								  >
+						<xf:foreach loop="$userGroups" value="$userGroup">
+							<xf:option value="{$userGroup.user_group_id}" selected="{{in_array($userGroup.user_group_id, $bbCode.usergroup_ids)}}">{$userGroup.title}</xf:option>
+						</xf:foreach>
+					</xf:selectrow>
+				</li>
+			</ul>
+
+		</div>
+		<xf:submitrow icon="save" />
+	</div>
+</xf:form>]]></template>
+  <template type="admin" title="fs_disable_bb_code_index" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('fs_disable_bb_codes_built_in') }}</xf:title>
+
+<xf:form action="{{ link($prefix . '/toggle') }}" class="block" ajax="true">
+	<div class="block-outer">
+		<xf:macro
+				  template="filter_macros"
+				  name="quick_filter"
+				  arg-key="dis-bb-codes"
+				  arg-class="block-outer-opposite"
+				  />
+	</div>
+
+	<div class="block-container">
+
+		<xf:if is="$data is not empty">
+			<div class="block-body">
+				<xf:datalist data-xf-init="responsive-data-list">
+
+					<xf:macro
+							  name="table_list"
+							  arg-data="{$data}"
+							  />
+
+				</xf:datalist>
+				<div class="block-footer">
+					<span class="block-footer-counter"
+						  >{{ display_totals($totalReturn, $total) }}</span
+						>
+				</div>
+
+			</div>
+			<xf:else />
+			<div class="block-body block-row">{{ phrase('no_items_have_been_created_yet') }}</div>
+
+		</xf:if>
+
+	</div>
+
+	<xf:pagenav
+				page="{$page}"
+				perpage="{$perPage}"
+				total="{$total}"
+				link="dis-bb-codes"
+				wrapperclass="block"
+				/>
+</xf:form>
+<xf:macro
+		  name="table_list"
+		  arg-data="!"
+		  >
+	<xf:datalist>
+		<xf:foreach loop="{$data}" value="$value">
+			<xf:datarow>
+
+				<xf:main href="{{ link('dis-bb-codes/permissions', $value) }}">
+					<xf:label>{$value.bb_code_id}</xf:label>
+					<xf:hint>[{$value.bb_code_id}]</xf:hint>
+				</xf:main>
+
+				<xf:action
+						   href="{{ link('dis-bb-codes/permissions', $value) }}">
+					{{ phrase('permissions') }}
+				</xf:action>
+			</xf:datarow>
+		</xf:foreach>
+	</xf:datalist>
+</xf:macro>]]></template>
   <template type="admin" title="permissions_add_edit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('permissions:') }} [{$bbCode.bb_code_id}]</xf:title>
 
 <xf:form action="{{ link('bb-codes/permissions-save', $bbCode) }}" ajax="true" class="block">
