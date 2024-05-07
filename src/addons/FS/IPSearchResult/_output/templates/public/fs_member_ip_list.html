@@ -1,0 +1,57 @@
+<xf:title>{{ phrase('ip_addresses_logged_for_x', {'name': $user.username}) }}</xf:title>
+
+<style>
+
+	.dataList-mainRow > .u-dt{
+		font-weight: 400;
+	}	
+
+	.dataList-mainRow > .ip{
+		font-weight: 400;
+	}
+
+</style>
+
+<div class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:datalist data-xf-init="responsive-data-list">
+				<xf:datarow rowtype="header">
+					<xf:cell>{{ phrase('ip') }}</xf:cell>
+					<xf:cell>{{ phrase('total') }}</xf:cell>
+					<xf:cell>{{ phrase('earliest') }}</xf:cell>
+					<xf:cell>{{ phrase('latest') }}</xf:cell>
+					<xf:cell>&nbsp;</xf:cell>
+				</xf:datarow>
+				<xf:foreach loop="$ips" value="$ip">
+
+					<xf:set var="$userCount" value="count($ip.users)" />
+
+					<xf:datarow rowclass="dataList-row--noHover">
+						<xf:main><xf:label><spam class="ip">{$ip.ip|ip}</spam> <a href="{{ link('misc/ip-info', null, {'ip': $ip.ip|ip}) }}" rel="external" target="_blank">{{ phrase('fs_ip_addresses_click_here') }}</a></xf:label></xf:main>
+						<xf:cell>{$ip.total|number}</xf:cell>
+						<xf:main><xf:label><xf:date time="{$ip.first_date}" /></xf:label></xf:main>
+						<xf:main><xf:label><xf:date time="{$ip.last_date}" /></xf:label></xf:main>
+
+						<xf:cell>
+							<xf:if is="$ip.users is not empty">
+								<ul class="listInline listInline--comma">
+									<xf:foreach loop="$ip.users" value="$user">
+										<xf:trim>
+											<li>
+												<xf:username user="$user" rich="true" href="{{ link('members/user-ip', $user) }}" />
+											</li>
+										</xf:trim>
+									</xf:foreach>
+								</ul>
+								<xf:else />
+								{{ phrase('none') }}
+							</xf:if>
+						</xf:cell>
+
+					</xf:datarow>
+				</xf:foreach>
+			</xf:datalist>
+		</div>
+	</div>
+</div>

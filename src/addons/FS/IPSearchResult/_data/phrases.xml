@@ -2,5 +2,6 @@
 <phrases>
   <phrase title="find_ip_addresses_for_user" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Find IP addresses for user]]></phrase>
   <phrase title="find_users_by_ip_address" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Find Users by IP address]]></phrase>
+  <phrase title="fs_ip_addresses_click_here" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[click here]]></phrase>
   <phrase title="ip_search" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[IP Search]]></phrase>
 </phrases>

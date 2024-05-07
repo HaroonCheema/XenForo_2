@@ -51,12 +51,12 @@ return array(
 				'_type' => 'cell',
 				'html' => '
 							' . $__templater->func('avatar', array($__vars['user'], 's', false, array(
-				'href' => $__templater->func('link', array('members', $__vars['user'], ), false),
+				'href' => $__templater->func('link', array('members/user-ip', $__vars['user'], ), false),
 			))) . '
 						',
 			),
 			array(
-				'href' => $__templater->func('link', array('members', $__vars['user'], ), false),
+				'href' => $__templater->func('link', array('members/user-ip', $__vars['user'], ), false),
 				'label' => $__templater->func('username_link', array($__vars['user'], true, array(
 				'notooltip' => 'true',
 				'href' => '',

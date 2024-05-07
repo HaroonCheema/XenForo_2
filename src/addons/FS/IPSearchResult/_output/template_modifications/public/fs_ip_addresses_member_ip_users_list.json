@@ -1,0 +1,9 @@
+{
+    "template": "member_ip_users_list",
+    "description": "fs_ip_addresses_member_ip_users_list",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "{{ link('members', $user) }}",
+    "replace": "{{ link('members/user-ip', $user) }}"
+}

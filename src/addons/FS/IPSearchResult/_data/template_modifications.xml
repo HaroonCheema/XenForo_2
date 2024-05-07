@@ -7,4 +7,8 @@
 </xf:if>
 $0]]></replace>
   </modification>
+  <modification type="public" template="member_ip_users_list" modification_key="fs_ip_addresses_member_ip_users_list" description="fs_ip_addresses_member_ip_users_list" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[{{ link('members', $user) }}]]></find>
+    <replace><![CDATA[{{ link('members/user-ip', $user) }}]]></replace>
+  </modification>
 </template_modifications>
