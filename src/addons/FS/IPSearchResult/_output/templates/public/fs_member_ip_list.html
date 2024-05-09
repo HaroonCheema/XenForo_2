@@ -18,6 +18,7 @@
 			<xf:datalist data-xf-init="responsive-data-list">
 				<xf:datarow rowtype="header">
 					<xf:cell>{{ phrase('ip') }}</xf:cell>
+					<xf:cell>&nbsp;</xf:cell>
 					<xf:cell>{{ phrase('total') }}</xf:cell>
 					<xf:cell>{{ phrase('earliest') }}</xf:cell>
 					<xf:cell>{{ phrase('latest') }}</xf:cell>
@@ -28,7 +29,8 @@
 					<xf:set var="$userCount" value="count($ip.users)" />
 
 					<xf:datarow rowclass="dataList-row--noHover">
-						<xf:main><xf:label><spam class="ip">{$ip.ip|ip}</spam> <a href="{{ link('misc/ip-info', null, {'ip': $ip.ip|ip}) }}" rel="external" target="_blank">{{ phrase('fs_ip_addresses_click_here') }}</a></xf:label></xf:main>
+						<xf:main><xf:label title="{$ip.ip|ip}"><spam class="ip" title="{$ip.ip|ip}">{$ip.ip|ip}</spam></xf:label></xf:main>
+						<xf:main><xf:label><a href="{{ link('misc/ip-info', null, {'ip': $ip.ip|ip}) }}" rel="external" target="_blank">{{ phrase('fs_ip_addresses_click_here') }}</a></xf:label></xf:main>
 						<xf:cell>{$ip.total|number}</xf:cell>
 						<xf:main><xf:label><xf:date time="{$ip.first_date}" /></xf:label></xf:main>
 						<xf:main><xf:label><xf:date time="{$ip.last_date}" /></xf:label></xf:main>

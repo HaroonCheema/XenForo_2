@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 049e4d99bb3b723aa1e3dbae299b479a
+// FROM HASH: f06b258d7dd77d375316f7369507eab5
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -62,7 +62,12 @@ return array(
 			$__compilerTemp1 .= $__templater->dataRow(array(
 				'rowclass' => 'dataList-row--noHover',
 			), array(array(
-				'label' => '<spam class="ip">' . $__templater->filter($__vars['ip']['ip'], array(array('ip', array()),), true) . '</spam> <a href="' . $__templater->func('link', array('misc/ip-info', null, array('ip' => $__templater->filter($__vars['ip']['ip'], array(array('ip', array()),), false), ), ), true) . '" rel="external" target="_blank">' . 'click here' . '</a>',
+				'label' => '<spam class="ip" title="' . $__templater->filter($__vars['ip']['ip'], array(array('ip', array()),), true) . '">' . $__templater->filter($__vars['ip']['ip'], array(array('ip', array()),), true) . '</spam>',
+				'_type' => 'main',
+				'html' => '',
+			),
+			array(
+				'label' => '<a href="' . $__templater->func('link', array('misc/ip-info', null, array('ip' => $__templater->filter($__vars['ip']['ip'], array(array('ip', array()),), false), ), ), true) . '" rel="external" target="_blank">' . 'ip details' . '</a>',
 				'_type' => 'main',
 				'html' => '',
 			),
@@ -97,6 +102,10 @@ return array(
 	), array(array(
 		'_type' => 'cell',
 		'html' => 'IP',
+	),
+	array(
+		'_type' => 'cell',
+		'html' => '&nbsp;',
 	),
 	array(
 		'_type' => 'cell',
