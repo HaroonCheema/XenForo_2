@@ -106,7 +106,7 @@ class OwnerPage extends AbstractController {
         }
 
         return $finder->order('attach_date', 'DESC')->fetchOne();
-    }    
+    }   
     
     
     
@@ -152,14 +152,19 @@ class OwnerPage extends AbstractController {
             $filmStripPluginlist = $filmStripPlugin->getFilmStripParamsForView($attachmentItem, $ownerPage);
         }
         
-        //------------------------------------------------------------------------------------------------------
+         //------------------------------------------  Item's Discussions (tagged threads) ----------------------------------------------------
         
         
+//        $discussions = $this->finder('XF:Thread')->where('item_id', $ownerPage->item_id)->where('user_id', $ownerPage->user_id)->where('discussion_state','visible')->order('thread_id','DESC')->fetch(\xf::options()->bh_discussions_on_item);
+
+       
         
-
-
-        $discussions = $this->finder('XF:Thread')->where('item_id', $ownerPage->item_id)->where('user_id', $ownerPage->user_id)->where('discussion_state','visible')->order('thread_id','DESC')->fetch(\xf::options()->bh_discussions_on_item);
-
+        $limit = $this->options()->bh_discussions_on_item;
+        
+        $discussions = $this->getOwnerPageThreads($ownerPage, $limit);
+        $mod = '';
+        
+        
         $alreadySub = $this->finder('XenBulletins\BrandHub:PageSub')->where('page_id', $params->page_id)->where('user_id', \XF::visitor()->user_id)->fetchOne();
 
         $pageRanking=$this->getRankRecord($ownerPage);
@@ -264,7 +269,10 @@ class OwnerPage extends AbstractController {
             'mainItem' => $attachmentItem,
             'ownerPage' => $ownerPage,
             'item' => $item,
+            
             'discussions' => $discussions,
+            'activeModType' => $mod,
+            
             'alreadySub' => $alreadySub,
             'pageRanking' => $pageRanking,
             'itemReview' => $itemReview,
@@ -688,16 +696,68 @@ class OwnerPage extends AbstractController {
     }
     
     
+    
+    protected function getOwnerPageThreads(\XenBulletins\BrandHub\Entity\OwnerPage $page , $limit= 0)
+    {
+        $discussions = [];
+        
+        $item = $page->Item;
+        $stringTags = $item->tags;    // get tag ids that are saved as string in item and then get tagged threads
+        
+        if($stringTags)
+        {   
+            /** @var \XF\Repository\Tag $tagRepo */
+            $tagRepo = $this->repository('XF:Tag');
+
+            $tags = $tagRepo->splitTagList($stringTags);
+
+            if ($tags)
+            {
+                $validTags = $tagRepo->getTags($tags, $notFound);
+
+                if($validTags)
+                {
+                    $tagIds = array_keys($validTags);
+
+                    $tagResults = $tagRepo->getTagsThreadSearchResults($tagIds, $limit, $page->user_id);
+
+                    $resultSet = $tagRepo->getTagResultSet($tagResults)->limitToViewableResults();
+
+                    if ($resultSet->countResults())
+                    {            
+                        $discussions = $tagRepo->wrapResultsForRender($resultSet);
+                    }
+                }
+            }            
+        }
+        
+        return $discussions;
+    }
+    
+    
     public  function actionPageThreads(ParameterBag $params){
         
-        $page = $this->finder('XenBulletins\BrandHub:OwnerPage')->where('page_id', $params->page_id)->fetchOne();
+        
+//        $page = $this->finder('XenBulletins\BrandHub:OwnerPage')->where('page_id', $params->page_id)->fetchOne();
 
-        $threads = $this->finder('XF:Thread')->where('item_id', $page->item_id)->where('user_id', $page->user_id)->where('discussion_state','visible')->order('thread_id','DESC')->fetch();
-        $item = $this->finder('XenBulletins\BrandHub:Item')->where('item_id', $page->item_id)->fetchOne();
+//        $threads = $this->finder('XF:Thread')->where('item_id', $page->item_id)->where('user_id', $page->user_id)->where('discussion_state','visible')->order('thread_id','DESC')->fetch();
+//        $item = $this->finder('XenBulletins\BrandHub:Item')->where('item_id', $page->item_id)->fetchOne();
+        
+        
+        $ownerPage = $this->assertOwnerPageExists($params->page_id);
+        
+        $item = $ownerPage->Item;
+        
+        $discussions = $this->getOwnerPageThreads($ownerPage);
+        $mod = '';
+        
+        
         $viewParams = [
-            'threads' => $threads,
-            'page'=> $page,
-            'item' => $item
+            'ownerPage'=> $ownerPage,
+            'item' => $item,
+                
+            'discussions' => $discussions,
+            'activeModType' => $mod,
         
         ];
         

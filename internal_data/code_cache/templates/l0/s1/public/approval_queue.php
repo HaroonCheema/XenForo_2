@@ -58,21 +58,6 @@ return array(
 							';
 	}
 	$__compilerTemp1 .= '
-';
-	if ($__vars['filters']['content_id']) {
-		$__compilerTemp1 .= '
-	';
-		$__vars['user'] = $__templater->method($__vars['xf']['app']['em'], 'find', array('Xf:User', $__vars['filters']['content_id'], ));
-		$__compilerTemp1 .= '
-
-	<li><a href="' . $__templater->func('link', array('approval-queue', null, $__templater->filter($__vars['filters'], array(array('replace', array(array('content_id' => null, ), )),), false), ), true) . '"
-		   class="filterBar-filterToggle" data-xf-init="tooltip" title="' . $__templater->filter('Remove this filter', array(array('for_attr', array()),), true) . '">
-		<span class="filterBar-filterToggle-label">' . 'Username or Email' . $__vars['xf']['language']['label_separator'] . '</span>
-		' . ($__vars['filters']['isEmail'] ? $__templater->escape($__vars['user']['email']) : $__templater->escape($__vars['user']['username'])) . '
-		</a></li>
-';
-	}
-	$__compilerTemp1 .= '
 						';
 	if (strlen(trim($__compilerTemp1)) > 0) {
 		$__finalCompiled .= '

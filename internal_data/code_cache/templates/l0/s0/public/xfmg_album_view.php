@@ -304,7 +304,13 @@ return array(
 	), $__vars) . '
 
 ';
-	$__templater->breadcrumbs($__templater->method($__vars['album'], 'getBreadcrumbs', array(false, )));
+	if ($__templater->test($__vars['tlgNoBreadcrumbs'], 'empty', array())) {
+		$__finalCompiled .= '
+	';
+		$__templater->breadcrumbs($__templater->method($__vars['album'], 'getBreadcrumbs', array(false, )));
+		$__finalCompiled .= '
+';
+	}
 	$__finalCompiled .= '
 
 ';
@@ -434,6 +440,20 @@ return array(
 	}
 	$__compilerTemp5 .= '
 								';
+	if ($__templater->method($__vars['album'], 'canAddMedia', array()) AND !$__templater->test($__vars['socialGroups_showAddMediaButton'], 'empty', array())) {
+		$__compilerTemp5 .= '
+	' . $__templater->button('
+		' . 'Add media' . '
+	', array(
+			'href' => $__templater->func('link', array('media/albums/add', $__vars['album'], ), false),
+			'class' => 'button--cta',
+			'icon' => 'add',
+		), '', array(
+		)) . '
+';
+	}
+	$__compilerTemp5 .= '
+';
 	if ($__templater->method($__vars['album'], 'canUndelete', array()) AND ($__vars['album']['album_state'] == 'deleted')) {
 		$__compilerTemp5 .= '
 									' . $__templater->button('

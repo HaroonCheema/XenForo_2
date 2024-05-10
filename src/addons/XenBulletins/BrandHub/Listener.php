@@ -59,4 +59,29 @@ class Listener {
         }
     }
     
+    
+   
+    
+     /**
+     * @param Templater $templater
+     * @param $type
+     * @param $template
+     * @param array $params
+     */
+    public static function templaterTemplatePreRender_search_result_thread(\XF\Template\Templater $templater, &$type, &$template, array &$params)
+    {   
+        $controller = $params['xf']['reply']['controller'];
+        
+        
+        if( $controller == "XenBulletins\BrandHub\Pub\Controller\Item" ||
+            $controller == "XenBulletins\BrandHub\Pub\Controller\OwnerPage" ||
+            $controller == "XenBulletins\BrandHub:Item" ||
+            $controller == "XenBulletins\BrandHub:OwnerPage"
+        )
+        {
+            $template = 'bh_search_result_thread';
+        }
+    }
+   
+    
 }

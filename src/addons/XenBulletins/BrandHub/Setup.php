@@ -21,8 +21,6 @@ class Setup extends AbstractSetup {
 //    {
 //        $sm = $this->schemaManager();
 //
-//        
-//
 //    }
    
     
@@ -305,6 +303,19 @@ public function upgrade1020000Step1() {
             $table->addPrimaryKey('item_id');
         });
     }
+    
+    
+    
+    public function upgrade3040000Step1() 
+    {
+            $sm = $this->schemaManager();
+
+            $sm->alterTable('bh_item', function(Alter $table)
+            {
+                    $table->addColumn('tags', 'mediumtext');
+            });
+    }
+	
    
    
 }

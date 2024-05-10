@@ -3,4 +3,5 @@
   <listener event_id="addon_post_install" execute_order="10" callback_class="XenBulletins\BrandHub\Listener" callback_method="addonPostInstall" active="1"/>
   <listener event_id="addon_post_upgrade" execute_order="10" callback_class="XenBulletins\BrandHub\Listener" callback_method="addonPostUpgrade" active="1"/>
   <listener event_id="app_setup" execute_order="10" callback_class="XenBulletins\BrandHub\Listener" callback_method="appSetup" active="1"/>
+  <listener event_id="templater_template_pre_render" execute_order="10" callback_class="XenBulletins\BrandHub\Listener" callback_method="templaterTemplatePreRender_search_result_thread" active="1" hint="public:search_result_thread"/>
 </code_event_listeners>

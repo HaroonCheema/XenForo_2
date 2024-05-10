@@ -10,36 +10,148 @@ class Thread extends XFCP_Thread
 
     protected function _postSave()
     {
+            $app = \XF::app();
 
+            $stringTags = $app->request->filter('tags', 'str'); 
+            
+        //-----if isInsert ---------
+            if($stringTags && $this->isInsert())
+            {
+                $items = $this->getItemsOfTags($stringTags);   // get items against tags
+
+                foreach($items as $item)
+                {
+                    $itemId = $item->item_id;
+                    $this->itemsNewThreadNotification($itemId);
+
+                    \XenBulletins\BrandHub\Helper::updateItemDiscussionCount($itemId); 
+                    \XenBulletins\BrandHub\Helper::updateOwnerPageDiscussionCount($itemId, $this->user_id,'plus');
+                }
+            }
+            
+            
+            
+        //-----if isUpdate ---------
+            
+            
             $visibilityChange = $this->isStateChanged('discussion_state', 'visible');
             
-             $itemId = $this->item_id;
-            if ($this->isUpdate() && $itemId)
+            if ($this->isUpdate())
             {
-         
-                    if ($visibilityChange == 'enter')
-                    {                  
-                            \XenBulletins\BrandHub\Helper::updateItemDiscussionCount($itemId,'plus');
-                            \XenBulletins\BrandHub\Helper::updateOwnerPageDiscussionCount($itemId, $this->user_id,'plus');
+                // get tags titles
+                $tags = $this->getTagsTitle();
+                
+                if($tags)
+                {
+                    $items = $this->getItemsOfTags($tags);   // get items against tags
+                
+                    foreach($items as $item)
+                    {
+                        $itemId = $item->item_id;
+
+                        if ($visibilityChange == 'enter')
+                        {                  
+                                \XenBulletins\BrandHub\Helper::updateItemDiscussionCount($itemId,'plus');
+                                \XenBulletins\BrandHub\Helper::updateOwnerPageDiscussionCount($itemId, $this->user_id,'plus');
+                        }
+                        else if ($visibilityChange == 'leave')
+                        {                 
+                                \XenBulletins\BrandHub\Helper::updateItemDiscussionCount($itemId,'minus');
+                                \XenBulletins\BrandHub\Helper::updateOwnerPageDiscussionCount($itemId, $this->user_id,'minus');
+                        }
                     }
-                    else if ($visibilityChange == 'leave')
-                    {                 
-                            \XenBulletins\BrandHub\Helper::updateItemDiscussionCount($itemId,'minus');
-                            \XenBulletins\BrandHub\Helper::updateOwnerPageDiscussionCount($itemId, $this->user_id,'minus');
-                    }              
+                }
+               
             }
             
             return parent::_postSave();
     }
-                
+    
+    
+    protected function getTagsTitle()
+    {
+        // get tags titles
+        $tags = [];
+        foreach($this->tags as $tag)
+        {
+            $tags[] = $tag["tag"];
+        }
+        
+        return $tags;
+    }
+
+   
+
+    protected function itemsNewThreadNotification($itemId)
+    {
+        $app = \XF::app();
+        
+        $thread = $this;
+        
+        $results = $app->finder('XenBulletins\BrandHub:ItemSub')->where('item_id', $itemId)->with(['User', 'Item'])->fetch();
+               
+        $detail="new thread".$thread->title;
+
+        foreach ($results as $result)     
+        {
+            $link = $app->router('public')->buildLink('threads', $thread);
+
+            \XenBulletins\BrandHub\Helper::updateItemNotificiation($result->Item->item_title, $link, $detail, $result->User);
+        }
+    }
+    
+    
+    
+    
+    protected function getItemsOfTags($tags)
+    {
+        $app = \XF::app();
+       
+        $thread = $this;
+
+        $itemFinder = $app->finder('XenBulletins\BrandHub:Item'); 
+
+        if (is_string($tags))
+        {
+            $tags = explode(',', $tags);
+        }
+
+
+        $conditions = [];
+        foreach($tags as $tag)
+        {  
+            $quotedtag = $itemFinder->quote(trim($tag));
+            $conditions[] = ['tags', 'LIKE', $itemFinder->escapeLike($tag, '%?%')];
+        } 
+        
+//        if(!$conditions)
+//        {
+//            return null;
+//        }
+
+        $items = $itemFinder->whereOr($conditions)->fetch();
+        
+        return $items;
+    }
+
+
     
     protected function _postDelete()
     {
-        $itemId = $this->item_id;
-        if($itemId && ($this->discussion_state != 'deleted'))
+        // get tags titles
+        $tags = $this->getTagsTitle();
+                
+        if($tags && ($this->discussion_state != 'deleted'))
         {                   
-            \XenBulletins\BrandHub\Helper::updateItemDiscussionCount($itemId,'minus');
-            \XenBulletins\BrandHub\Helper::updateOwnerPageDiscussionCount($itemId, $this->user_id,'minus');
+             $items = $this->getItemsOfTags($tags);   // get items against tags
+             
+            foreach($items as $item)
+            {
+                $itemId = $item->item_id;
+             
+                \XenBulletins\BrandHub\Helper::updateItemDiscussionCount($itemId,'minus');
+                \XenBulletins\BrandHub\Helper::updateOwnerPageDiscussionCount($itemId, $this->user_id,'minus');
+            }
         }
         
         return parent::_postDelete();

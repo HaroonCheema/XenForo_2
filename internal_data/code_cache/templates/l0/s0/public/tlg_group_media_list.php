@@ -109,11 +109,11 @@ return array(
             ';
 	} else if (!$__templater->test($__vars['filters'], 'empty', array())) {
 		$__finalCompiled .= '
-                <div class="block-row">' . 'xfmg_there_no_albums_matching_your_filters' . '</div>
+                <div class="block-row">' . 'There are no albums matching your filters.' . '</div>
             ';
 	} else {
 		$__finalCompiled .= '
-                <div class="block-row">' . 'xfmg_no_albums_have_been_added_yet' . '</div>
+                <div class="block-row">' . 'No albums have been added yet.' . '</div>
             ';
 	}
 	$__finalCompiled .= '

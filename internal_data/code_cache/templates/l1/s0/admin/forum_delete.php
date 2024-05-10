@@ -12,7 +12,7 @@ return array(
 		<div class="block-body">
 			' . $__templater->formInfoRow('
 				' . 'Please confirm that you want to delete the following forum and all discussions within it' . $__vars['xf']['language']['label_separator'] . '
-				<strong><a href="' . $__templater->func('link', array('forums/edit', $__vars['node'], ), true) . '">' . $__templater->escape($__vars['node']['title']) . '</a></strong>
+				<strong><a href="' . $__templater->func('link', array((($__vars['node']['node_type_id'] == 'tl_groups_Forum') ? 'groups/forums/' : 'forums/') . 'edit', $__vars['node'], ), true) . '">' . $__templater->escape($__vars['node']['title']) . '</a></strong>
 			', array(
 		'rowtype' => 'confirm',
 	)) . '
@@ -30,7 +30,7 @@ return array(
 	</div>
 	' . $__templater->func('redirect_input', array(null, null, true)) . '
 ', array(
-		'action' => $__templater->func('link', array('forums/delete', $__vars['node'], ), false),
+		'action' => $__templater->func('link', array((($__vars['node']['node_type_id'] == 'tl_groups_Forum') ? 'groups/forums/' : 'forums/') . 'delete', $__vars['node'], ), false),
 		'ajax' => 'true',
 		'class' => 'block',
 	));

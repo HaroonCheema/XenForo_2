@@ -1,15 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <template_modifications>
-  <modification type="public" template="forum_post_thread" modification_key="add_items_dropdown" description="Add items dropDown in post thread template" execution_order="10" enabled="1" action="str_replace">
-    <find><![CDATA[<!--[XF:after_title]-->]]></find>
-    <replace><![CDATA[$0
-<xf:include template="bh_assign_Item_to_thread" />
-
-
-
-
-
-]]></replace>
+  <modification type="public" template="forum_post_thread_chooser" modification_key="bh_pass_itemIdInLink" description="Pass item_id as param In post thread url" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[link('forums/post-thread', $node)]]></find>
+    <replace><![CDATA[$__globals.item ? link('forums/post-thread', $node, {'item_id': $__globals.item.item_id}) : $0]]></replace>
   </modification>
   <modification type="public" template="forum_view" modification_key="item_lists" description="brand item lists" execution_order="10" enabled="1" action="str_replace">
     <find><![CDATA[<xf:extension name="above_node_list"></xf:extension>]]></find>
@@ -75,10 +68,5 @@
 	</li>
 </xf:if>
 ]]></replace>
-  </modification>
-  <modification type="public" template="thread_edit" modification_key="items_dropdown_in_thread_edit" description="Add items Drop-down in thread-edit template" execution_order="10" enabled="1" action="str_replace">
-    <find><![CDATA[help-href="{{ link('forums/prefix-help', $forum) }}"/>]]></find>
-    <replace><![CDATA[$0
-<xf:include template="bh_assign_Item_to_thread" />]]></replace>
   </modification>
 </template_modifications>

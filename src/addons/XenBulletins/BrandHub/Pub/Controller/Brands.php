@@ -5,6 +5,7 @@ namespace XenBulletins\BrandHub\Pub\Controller;
 use XF\Pub\Controller\AbstractController;
 use XenBulletins\BrandHub\Entity;
 use XF\Mvc\ParameterBag;
+use XF\Mvc\Entity\AbstractCollection;
 
 
 class Brands extends AbstractController
@@ -213,6 +214,7 @@ class Brands extends AbstractController
                 return $this->assertRecordExists('XenBulletins\BrandHub:Brand', $id, $with, $phraseKey);
         }
         
+
         
 //***************************** Filters ****************************************************
         

@@ -11,11 +11,11 @@ class Thread extends XFCP_Thread
 	{
             $actions = parent::getPossibleActions();
             
-             $visitor = \XF::visitor();
-            if($visitor->hasPermission('bh_brand_hub', 'bh_can_assignThreadsToHub'))
-            {
-                $actions['link_to_brand_hub'] = $this->getActionHandler('XenBulletins\BrandHub:Thread\AssignItem');
-            }
+//             $visitor = \XF::visitor();
+//            if($visitor->hasPermission('bh_brand_hub', 'bh_can_assignThreadsToHub'))
+//            {
+//                $actions['link_to_brand_hub'] = $this->getActionHandler('XenBulletins\BrandHub:Thread\AssignItem');
+//            }
             return $actions;
 	}
 

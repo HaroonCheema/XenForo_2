@@ -106,6 +106,11 @@ class ItemRating extends Entity {
 
 		return true;
 	}
+        
+        public function canViewAttachments(&$error = null)
+	{
+		return \XF::visitor()->hasPermission('bh_brand_hub', 'viewReviewAttachment');
+	}
 
 	public function canUndelete(&$error = null)
 	{

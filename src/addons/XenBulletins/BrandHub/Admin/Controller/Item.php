@@ -230,6 +230,51 @@ class Item extends AbstractController {
 
     protected function itemSaveProcess(\XenBulletins\BrandHub\Entity\Item $item) {
         $form = $this->formAction();
+        
+//        $nodeIds = $item->Brand->node_ids;
+//        
+//        if($nodeIds)
+//        {
+//            $forum = $this->em()->find('XF:Forum',$nodeIds[0]);
+//            
+//            /** @var \XF\Service\Tag\Changer $tagger */
+////            $tagger = $this->service('XF:Tag\Changer', 'thread', $forum);
+//            
+//            
+//             $tagger = $this->service('XF:Tag\Changer', 'bh_item', $item);
+//            
+//            
+//            
+////            var_dump($this->filter('tags', 'str'));exit;
+//            echo 'ddd';exit;
+//            $tagger->setEditableTags($this->filter('tags', 'str'));
+//            if ($tagger->hasErrors())
+//            {
+//                    return $this->error($tagger->getErrors());
+//            }
+//
+//            $tagger->save();
+//            
+//   
+//        }
+//        
+//        var_dump($forum);exit;
+        
+
+
+//        if ($this->isPost())
+//        {
+//                $tagger->setEditableTags($this->filter('tags', 'str'));
+//                if ($tagger->hasErrors())
+//                {
+//                        return $this->error($tagger->getErrors());
+//                }
+//
+//                $tagger->save();
+//        }
+                        
+                        
+                        
 
          $input = $this->filter([
             'item_title' => 'STR',
@@ -238,6 +283,7 @@ class Item extends AbstractController {
             'make' => 'STR',
             'model' => 'STR',
             'user_id'=>'STR',
+            'tags'=>'STR',
         ]);
          
          if(isset($input['brand_id']))

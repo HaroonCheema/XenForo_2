@@ -12,15 +12,21 @@ class Item extends Entity implements LinkableInterface{
     
     
     use BookmarkTrait,ReactionTrait;
+    
+    
+        protected function canEditTags()
+        {
+            return true;
+        }
 
 
-    protected function canBookmarkContent(&$error = null)
+        protected function canBookmarkContent(&$error = null)
 	{
 
 		return $this->isVisible();
 	}
     
-    public function getBreadcrumbs($includeSelf = true)
+        public function getBreadcrumbs($includeSelf = true)
 	{
 
           $breadcrumbs = $this->Brand ? $this->Brand->getBreadcrumbs() : [];
@@ -89,6 +95,7 @@ class Item extends Entity implements LinkableInterface{
 //
 //		return $visitor->hasNodePermission($this->Thread->node_id, 'react');
 	}
+        
         
       
        public function getAttachmentConstraints() {
@@ -291,7 +298,8 @@ class Item extends Entity implements LinkableInterface{
             'reactions' => ['type' => self::JSON_ARRAY, 'default' => []],
             'user_id' => ['type' => self::UINT, 'required' => true, ],
             'create_date' => ['type' => self::UINT, 'default' => \XF::$time, 'api' => true],
-            'brand_title' => ['type' => self::STR, 'maxLength' => 100, 'required' => true]
+            'brand_title' => ['type' => self::STR, 'maxLength' => 100, 'required' => true],
+            'tags' =>['type' => self::STR, 'default' => ''],
             
         ];
            $structure->getters = [

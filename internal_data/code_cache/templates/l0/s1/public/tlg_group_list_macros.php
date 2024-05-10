@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: a47b160fb1b283a2415fb16e5bdc72c1
+// FROM HASH: 88ff76a9ec65b5111d58a73b5299a1d0
 return array(
 'macros' => array('group_list_block' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -266,7 +266,19 @@ return array(
 	$__compilerTemp1 = '';
 	if ($__vars['showInlineMod']) {
 		$__compilerTemp1 .= '
-             
+                <span class="groupCover--inlineMod">
+                    ' . $__templater->formCheckBox(array(
+			'standalone' => 'true',
+		), array(array(
+			'name' => 'ids[]',
+			'value' => $__vars['group']['group_id'],
+			'data-xf-init' => 'tooltip',
+			'title' => $__templater->filter('Select for moderation', array(array('for_attr', array()),), false),
+			'hiddenLabel' => 'true',
+			'class' => 'js-inlineModToggle',
+			'_type' => 'option',
+		))) . '
+                </span>
             ';
 	}
 	$__compilerTemp2 = '';

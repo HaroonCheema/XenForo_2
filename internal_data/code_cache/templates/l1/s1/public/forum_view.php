@@ -477,6 +477,10 @@ return array(
 					';
 	}
 	$__compilerTemp2 .= '
+' . $__templater->callMacro('tlg_forum_view', 'forum_mod_actions', array(
+		'forum' => $__vars['forum'],
+		'group' => $__vars['group'],
+	), $__vars) . '
 					';
 	if ($__vars['xf']['visitor']['user_id']) {
 		$__compilerTemp2 .= '

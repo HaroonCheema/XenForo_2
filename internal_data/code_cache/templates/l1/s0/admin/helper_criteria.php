@@ -498,48 +498,6 @@ return array(
 		'_type' => 'option',
 	),
 	array(
-		'name' => 'user_criteria[resource_count][rule]',
-		'value' => 'resource_count',
-		'selected' => $__vars['criteria']['resource_count'],
-		'label' => 'User has submitted at least X resources' . $__vars['xf']['language']['label_separator'],
-		'_dependent' => array($__templater->formNumberBox(array(
-		'name' => 'user_criteria[resource_count][data][resources]',
-		'value' => $__vars['criteria']['resource_count']['resources'],
-		'size' => '5',
-		'min' => '0',
-		'step' => '1',
-	))),
-		'_type' => 'option',
-	),
-	array(
-		'name' => 'user_criteria[xfmg_media_count][rule]',
-		'value' => 'xfmg_media_count',
-		'selected' => $__vars['criteria']['xfmg_media_count'],
-		'label' => 'User has added at least X media items' . $__vars['xf']['language']['label_separator'],
-		'_dependent' => array($__templater->formNumberBox(array(
-		'name' => 'user_criteria[xfmg_media_count][data][media_items]',
-		'value' => $__vars['criteria']['xfmg_media_count']['media_items'],
-		'size' => '5',
-		'min' => '0',
-		'step' => '1',
-	))),
-		'_type' => 'option',
-	),
-	array(
-		'name' => 'user_criteria[xfmg_album_count][rule]',
-		'value' => 'xfmg_album_count',
-		'selected' => $__vars['criteria']['xfmg_album_count'],
-		'label' => 'User has created at least X albums' . $__vars['xf']['language']['label_separator'],
-		'_dependent' => array($__templater->formNumberBox(array(
-		'name' => 'user_criteria[xfmg_album_count][data][albums]',
-		'value' => $__vars['criteria']['xfmg_album_count']['albums'],
-		'size' => '5',
-		'min' => '0',
-		'step' => '1',
-	))),
-		'_type' => 'option',
-	),
-	array(
 		'name' => 'user_criteria[questions_solved_min][rule]',
 		'value' => 'questions_solved_min',
 		'selected' => $__vars['criteria']['questions_solved_min'],
@@ -644,6 +602,10 @@ return array(
 			<hr class="formRowSep" />
 
 			' . '
+' . $__templater->callMacro('tlg_helper_criteria_macros', 'user_criteria', array(
+		'criteria' => $__vars['criteria'],
+		'data' => $__vars['data'],
+	), $__vars) . '
 
 			' . $__templater->formCheckBoxRow(array(
 	), $__compilerTemp6, array(
@@ -794,30 +756,10 @@ return array(
 		}
 	}
 	$__compilerTemp8 = array();
-	if ($__templater->isTraversable($__vars['data']['xfrmCategories'])) {
-		foreach ($__vars['data']['xfrmCategories'] AS $__vars['option']) {
+	$__compilerTemp9 = $__templater->method($__vars['data']['styleTree'], 'getFlattened', array(0, ));
+	if ($__templater->isTraversable($__compilerTemp9)) {
+		foreach ($__compilerTemp9 AS $__vars['treeEntry']) {
 			$__compilerTemp8[] = array(
-				'value' => $__vars['option']['value'],
-				'label' => $__templater->escape($__vars['option']['label']),
-				'_type' => 'option',
-			);
-		}
-	}
-	$__compilerTemp9 = array();
-	if ($__templater->isTraversable($__vars['data']['xfmgCategories'])) {
-		foreach ($__vars['data']['xfmgCategories'] AS $__vars['option']) {
-			$__compilerTemp9[] = array(
-				'value' => $__vars['option']['value'],
-				'label' => $__templater->escape($__vars['option']['label']),
-				'_type' => 'option',
-			);
-		}
-	}
-	$__compilerTemp10 = array();
-	$__compilerTemp11 = $__templater->method($__vars['data']['styleTree'], 'getFlattened', array(0, ));
-	if ($__templater->isTraversable($__compilerTemp11)) {
-		foreach ($__compilerTemp11 AS $__vars['treeEntry']) {
-			$__compilerTemp10[] = array(
 				'value' => $__vars['treeEntry']['record']['style_id'],
 				'label' => $__templater->func('repeat', array('--', $__vars['treeEntry']['depth'], ), true) . ' ' . $__templater->escape($__vars['treeEntry']['record']['title']),
 				'_type' => 'option',
@@ -977,54 +919,6 @@ return array(
 			<hr class="formRowSep" />
 
 			' . '
-			' . $__templater->formCheckBoxRow(array(
-	), array(array(
-		'name' => 'page_criteria[xfrm_categories][rule]',
-		'value' => 'xfrm_categories',
-		'selected' => $__vars['criteria']['xfrm_categories'],
-		'label' => 'Page is within resource categories' . $__vars['xf']['language']['label_separator'],
-		'_dependent' => array($__templater->formSelect(array(
-		'name' => 'page_criteria[xfrm_categories][data][resource_category_ids]',
-		'multiple' => 'true',
-		'value' => $__vars['criteria']['xfrm_categories']['resource_category_ids'],
-	), $__compilerTemp8), $__templater->formCheckBox(array(
-	), array(array(
-		'name' => 'page_criteria[xfrm_categories][data][category_only]',
-		'value' => '1',
-		'selected' => $__vars['criteria']['xfrm_categories']['category_only'],
-		'label' => 'Only display within selected categories (rather than including child categories)',
-		'_type' => 'option',
-	)))),
-		'_type' => 'option',
-	)), array(
-		'label' => 'Resource categories',
-	)) . '
-
-<hr class="formRowSep" />
-			' . $__templater->formCheckBoxRow(array(
-	), array(array(
-		'name' => 'page_criteria[xfmg_categories][rule]',
-		'value' => 'xfmg_categories',
-		'selected' => $__vars['criteria']['xfmg_categories'],
-		'label' => 'Page is within media categories' . $__vars['xf']['language']['label_separator'],
-		'_dependent' => array($__templater->formSelect(array(
-		'name' => 'page_criteria[xfmg_categories][data][category_ids]',
-		'multiple' => 'true',
-		'value' => $__vars['criteria']['xfmg_categories']['category_ids'],
-	), $__compilerTemp9), $__templater->formCheckBox(array(
-	), array(array(
-		'name' => 'page_criteria[xfmg_categories][data][category_only]',
-		'value' => '1',
-		'selected' => $__vars['criteria']['xfmg_categories']['category_only'],
-		'label' => 'Only display within selected categories (rather than including child categories)',
-		'_type' => 'option',
-	)))),
-		'_type' => 'option',
-	)), array(
-		'label' => 'Media categories',
-	)) . '
-
-<hr class="formRowSep" />
 
 			' . $__templater->formCheckBoxRow(array(
 	), array(array(
@@ -1035,7 +929,7 @@ return array(
 		'_dependent' => array($__templater->formSelect(array(
 		'name' => 'page_criteria[style][data][style_id]',
 		'value' => $__vars['criteria']['style']['style_id'],
-	), $__compilerTemp10)),
+	), $__compilerTemp8)),
 		'_type' => 'option',
 	),
 	array(

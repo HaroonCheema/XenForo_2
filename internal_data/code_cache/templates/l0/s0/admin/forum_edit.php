@@ -25,7 +25,7 @@ return array(
 		if ($__vars['canChangeForumType']) {
 			$__compilerTemp1 .= '
 			' . $__templater->button('Change type', array(
-				'href' => $__templater->func('link', array('forums/change-type', $__vars['node'], ), false),
+				'href' => $__templater->func('link', array((($__vars['node']['node_type_id'] == 'tl_groups_Forum') ? 'groups/forums/' : 'forums/') . 'change-type', $__vars['node'], ), false),
 				'overlay' => 'true',
 			), '', array(
 			)) . '
@@ -35,7 +35,7 @@ return array(
 	<div class="buttonGroup">
 		' . $__compilerTemp1 . '
 		' . $__templater->button('', array(
-			'href' => $__templater->func('link', array('forums/delete', $__vars['node'], ), false),
+			'href' => (($__vars['node']['node_type_id'] == 'tl_groups_Forum') ? $__templater->func('link', array('group-forums/delete', $__vars['node'], ), false) : $__templater->func('link', array((($__vars['node']['node_type_id'] == 'tl_groups_Forum') ? 'groups/forums/' : 'forums/') . 'delete', $__vars['node'], ), false)),
 			'icon' => 'delete',
 			'overlay' => 'true',
 		), '', array(
@@ -553,7 +553,7 @@ return array(
 	)) . '
 	</div>
 ', array(
-		'action' => $__templater->func('link', array('forums/save', $__vars['node'], ), false),
+		'action' => $__templater->func('link', array((($__vars['node']['node_type_id'] == 'tl_groups_Forum') ? 'groups/forums/' : 'forums/') . 'save', $__vars['node'], ), false),
 		'ajax' => 'true',
 		'class' => 'block',
 	));

@@ -264,37 +264,6 @@ return array(
 					';
 	}
 	$__finalCompiled .= '
-
-';
-	if (!$__templater->test($__templater->method($__vars['user'], 'getBatchLists', array()), 'empty', array())) {
-		$__finalCompiled .= '
-	<div class="gallery">
-		';
-		$__compilerTemp12 = $__templater->method($__vars['user'], 'getBatchLists', array());
-		if ($__templater->isTraversable($__compilerTemp12)) {
-			foreach ($__compilerTemp12 AS $__vars['batch']) {
-				$__finalCompiled .= '
-			';
-				if ($__templater->method($__vars['user'], 'isMemberOf', array($__vars['batch']['usergroup_ids'], ))) {
-					$__finalCompiled .= '
-				<div class="image-wrapper">
-					<img src="' . $__templater->func('base_url', array($__vars['batch']['img_path'], true, ), true) . '" alt="' . $__templater->escape($__vars['batch']['title']) . '" class="bbImage" loading="lazy" />
-				</div>
-			';
-				}
-				$__finalCompiled .= '
-		';
-			}
-		}
-		$__finalCompiled .= '
-	</div>
-';
-	}
-	$__finalCompiled .= '
-
-';
-	$__templater->includeCss('fs_batch_profile.less');
-	$__finalCompiled .= '
 				</div>
 
 			</div>
@@ -336,36 +305,12 @@ return array(
 					role="tab">' . 'Postings' . '</a>
 
 				' . '
-
 ';
-	if ($__templater->method($__vars['xf']['visitor'], 'canViewMedia', array()) AND $__vars['user']['xfmg_media_count']) {
+	if ($__templater->method($__vars['user'], 'canTLGViewGroups', array())) {
 		$__finalCompiled .= '
-	<a href="' . $__templater->func('link', array('media/users', $__vars['user'], ), true) . '"
-	   class="tabs-tab"
-	   id="xfmgMedia"
-	   role="tab">' . 'Media' . '</a>
-';
-	}
-	$__finalCompiled .= '
-
-';
-	if ($__templater->method($__vars['xf']['visitor'], 'canViewMedia', array()) AND $__vars['user']['xfmg_album_count']) {
-		$__finalCompiled .= '
-	<a href="' . $__templater->func('link', array('media/albums/users', $__vars['user'], ), true) . '"
-	   class="tabs-tab"
-	   id="xfmgAlbums"
-	   role="tab">' . 'Albums' . '</a>
-';
-	}
-	$__finalCompiled .= '
-
-';
-	if ($__templater->method($__vars['xf']['visitor'], 'canViewResources', array()) AND $__vars['user']['xfrm_resource_count']) {
-		$__finalCompiled .= '
-	<a href="' . $__templater->func('link', array('resources/authors', $__vars['user'], ), true) . '"
-	   class="tabs-tab"
-	   id="resources"
-	   role="tab">' . 'Resources' . '</a>
+	' . $__templater->callMacro('tlg_group_macros', 'member_view_tabs_heading', array(
+			'user' => $__vars['user'],
+		), $__vars) . '
 ';
 	}
 	$__finalCompiled .= '
@@ -502,33 +447,12 @@ return array(
 	</li>
 
 	' . '
-
 ';
-	if ($__templater->method($__vars['xf']['visitor'], 'canViewMedia', array()) AND $__vars['user']['xfmg_media_count']) {
+	if ($__templater->method($__vars['user'], 'canTLGViewGroups', array())) {
 		$__finalCompiled .= '
-	<li data-href="' . $__templater->func('link', array('media/users', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="xfmgMedia">
-		<div class="blockMessage">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
-	</li>
-';
-	}
-	$__finalCompiled .= '
-
-';
-	if ($__templater->method($__vars['xf']['visitor'], 'canViewMedia', array()) AND $__vars['user']['xfmg_album_count']) {
-		$__finalCompiled .= '
-	<li data-href="' . $__templater->func('link', array('media/albums/users', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="xfmgAlbums">
-		<div class="blockMessage">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
-	</li>
-';
-	}
-	$__finalCompiled .= '
-
-';
-	if ($__templater->method($__vars['xf']['visitor'], 'canViewResources', array()) AND $__vars['user']['xfrm_resource_count']) {
-		$__finalCompiled .= '
-	<li data-href="' . $__templater->func('link', array('resources/authors', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="resources">
-		<div class="blockMessage">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
-	</li>
+	' . $__templater->callMacro('tlg_group_macros', 'member_view_tabs_content', array(
+			'user' => $__vars['user'],
+		), $__vars) . '
 ';
 	}
 	$__finalCompiled .= '

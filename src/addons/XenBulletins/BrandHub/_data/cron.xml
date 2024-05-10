@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <cron>
+  <entry entry_id="bh_updateBrandDiscussionC" cron_class="XenBulletins\BrandHub\Cron\UpdateCounts" cron_method="updateBrandsDiscussionCount" active="1"><![CDATA[{"day_type":"dom","dom":[-1],"hours":[0,2],"minutes":[0]}]]></entry>
+  <entry entry_id="bh_updateItemDiscussionCo" cron_class="XenBulletins\BrandHub\Cron\UpdateCounts" cron_method="updateItemsDiscussionCount" active="1"><![CDATA[{"day_type":"dom","dom":[-1],"hours":[0],"minutes":[0]}]]></entry>
+  <entry entry_id="bh_updateOwnerPageDisCoun" cron_class="XenBulletins\BrandHub\Cron\UpdateCounts" cron_method="updateOwnerPageDiscussionCount" active="1"><![CDATA[{"day_type":"dom","dom":[-1],"hours":[0],"minutes":[0]}]]></entry>
   <entry entry_id="bh_views" cron_class="XenBulletins\BrandHub\Cron\Views" cron_method="runViewUpdate" active="1"><![CDATA[{"day_type":"dom","dom":[-1],"hours":[0],"minutes":[30]}]]></entry>
 </cron>

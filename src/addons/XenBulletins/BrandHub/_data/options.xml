@@ -36,6 +36,13 @@ rating_avg={{ phrase('bh_rating_avg') }}
 review_count={{ phrase('bh_reviews') }}</edit_format_params>
     <relation group_id="bh_brand_hub" display_order="2"/>
   </option>
+  <option option_id="bh_defaultSortOrderOfDiscussions" edit_format="template" data_type="array">
+    <default_value>{"order":"post_date","direction":"desc"}</default_value>
+    <edit_format_params>bh_option_template_defaultSortOrder_of_taggedThreads</edit_format_params>
+    <sub_options>order
+direction</sub_options>
+    <relation group_id="bh_brand_hub" display_order="10"/>
+  </option>
   <option option_id="bh_default_tab" edit_format="select" data_type="string">
     <default_value>view_count</default_value>
     <edit_format_params>all = All 
@@ -49,6 +56,12 @@ owner_count = Most Owners</edit_format_params>
     <default_value>9</default_value>
     <relation group_id="bh_brand_hub" display_order="9"/>
   </option>
+  <option option_id="bh_displayExcerpt" edit_format="radio" data_type="boolean">
+    <default_value>1</default_value>
+    <edit_format_params>1={{ phrase('yes') }}
+0={{ phrase('no') }}</edit_format_params>
+    <relation group_id="bh_brand_hub" display_order="11"/>
+  </option>
   <option option_id="bh_dropdownItemListDefaultOrder" edit_format="select" data_type="string">
     <default_value>item_title</default_value>
     <edit_format_params>item_id={{ phrase('bh_item_id') }}
@@ -59,9 +72,14 @@ rating_avg={{ phrase('bh_rating_avg') }}
 review_count={{ phrase('bh_reviews') }}</edit_format_params>
     <relation group_id="bh_brand_hub" display_order="2"/>
   </option>
+  <option option_id="bh_excerptLength" edit_format="spinbox" data_type="unsigned_integer">
+    <default_value>300</default_value>
+    <edit_format_params>min=5</edit_format_params>
+    <relation group_id="bh_brand_hub" display_order="11"/>
+  </option>
   <option option_id="bh_highest_rated_items" edit_format="spinbox" data_type="integer">
     <default_value>4</default_value>
-    <relation group_id="bh_brand_hub" display_order="10"/>
+    <relation group_id="bh_brand_hub" display_order="20"/>
   </option>
   <option option_id="bh_itemListDefaultOrder" edit_format="select" data_type="string">
     <default_value>item_id</default_value>
@@ -79,11 +97,11 @@ review_count={{ phrase('bh_reviews') }}</edit_format_params>
   </option>
   <option option_id="bh_main_route" edit_format="textbox" data_type="string">
     <default_value>bh-brands</default_value>
-    <relation group_id="bh_brand_hub" display_order="11"/>
+    <relation group_id="bh_brand_hub" display_order="21"/>
   </option>
   <option option_id="bh_main_route_id" edit_format="textbox" data_type="integer">
     <default_value>0</default_value>
-    <relation group_id="bh_brand_hub" display_order="12"/>
+    <relation group_id="bh_brand_hub" display_order="22"/>
   </option>
   <option option_id="bh_makesPerPage" edit_format="spinbox" data_type="integer">
     <default_value>20</default_value>

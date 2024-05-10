@@ -153,6 +153,9 @@
   <phrase title="bh_select_item_desc" version_id="3000700" version_string="3.0.7 Alpha"><![CDATA[Select Item (you can find Item quickly by typing the name of the item)]]></phrase>
   <phrase title="bh_side_bar_item" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Side Bar ]]></phrase>
   <phrase title="bh_specifications" version_id="1000400" version_string="1.0.4 Alpha"><![CDATA[Specifications]]></phrase>
+  <phrase title="bh_start_a_discussion_about_x_item" version_id="3040000" version_string="3.4.0 Alpha"><![CDATA[Start a discussion about {itemTitle} here
+
+]]></phrase>
   <phrase title="bh_subscribe" version_id="3000100" version_string="3.0.1 Alpha"><![CDATA[Subscribe]]></phrase>
   <phrase title="bh_subscribe_x_item" version_id="1000400" version_string="1.0.4 Alpha"><![CDATA[Subscribe to the {brandTitle} {itemTitle}]]></phrase>
   <phrase title="bh_subscribed" version_id="1000800" version_string="1.0.8 Alpha"><![CDATA[You have Subscribed {itemTitle}]]></phrase>
@@ -180,6 +183,9 @@
   <phrase title="bh_you_sure_you_want_to_assign_item_x_threads" version_id="1000800" version_string="1.0.8 Alpha"><![CDATA[Are you sure you want to assign the Item specified below to the {count} selected threads?]]></phrase>
   <phrase title="bh_your_review_must_be_at_least_x_characters" version_id="1010300" version_string="1.1.3 Alpha"><![CDATA[Your review must be at least {min} characters.]]></phrase>
   <phrase title="bh_your_x_item_reviews" version_id="3000700" version_string="3.0.7 Alpha"><![CDATA[Your {brandTitle} {itemTitle} review]]></phrase>
+  <phrase title="cron_entry.bh_updateBrandDiscussionC" version_id="3040000" version_string="3.4.0 Alpha"><![CDATA[Update brand discussion count]]></phrase>
+  <phrase title="cron_entry.bh_updateItemDiscussionCo" version_id="3040000" version_string="3.4.0 Alpha"><![CDATA[Update item discussion count]]></phrase>
+  <phrase title="cron_entry.bh_updateOwnerPageDisCoun" version_id="3040000" version_string="3.4.0 Alpha"><![CDATA[Update OwnerPage Discussion Count]]></phrase>
   <phrase title="cron_entry.bh_views" version_id="3020000" version_string="3.2.0 Alpha"><![CDATA[BrandHub: Update view counters]]></phrase>
   <phrase title="data_are_added_to" version_id="1000700" version_string="1.0.7 Alpha"><![CDATA[Item <a href="{link}">{title}</a> {detail}  updated check it ]]></phrase>
   <phrase title="data_are_added_to_page" version_id="1000700" version_string="1.0.7 Alpha"><![CDATA[Item <a href="{link}">{title}</a> Onwer Page {detail}  updated check it ]]></phrase>
@@ -198,15 +204,19 @@
   <phrase title="nav.bh_recent_photos" version_id="3000400" version_string="3.0.4 Alpha"><![CDATA[Recent photos]]></phrase>
   <phrase title="nav.bh_recent_reviews" version_id="3000400" version_string="3.0.4 Alpha"><![CDATA[Recent reviews]]></phrase>
   <phrase title="nav.fs_a" version_id="3000100" version_string="3.0.1 Alpha"><![CDATA[Test A]]></phrase>
+  <phrase title="no_discussions_tagged" version_id="3040000" version_string="3.4.0 Alpha"><![CDATA[No discussions tagged.]]></phrase>
   <phrase title="option.bh_ImageExtensions" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Allowed image extensions]]></phrase>
   <phrase title="option.bh_MinimumReviewLength" version_id="1000700" version_string="1.0.7 Alpha"><![CDATA[Minimum review length]]></phrase>
   <phrase title="option.bh_RecentReviewsCount" version_id="1000700" version_string="1.0.7 Alpha"><![CDATA[Recent reviews count]]></phrase>
   <phrase title="option.bh_ReviewRequired" version_id="1000700" version_string="1.0.7 Alpha"><![CDATA[Review Required]]></phrase>
   <phrase title="option.bh_ReviewsPerPage" version_id="1000800" version_string="1.0.8 Alpha"><![CDATA[Reviews per page]]></phrase>
   <phrase title="option.bh_brandListDefaultOrder" version_id="3000500" version_string="3.0.5 Alpha"><![CDATA[Default Sort Order (Brands)]]></phrase>
+  <phrase title="option.bh_defaultSortOrderOfDiscussions" version_id="3040000" version_string="3.4.0 Alpha"><![CDATA[Default sort order of tagged threads]]></phrase>
   <phrase title="option.bh_default_tab" version_id="3000100" version_string="3.0.1 Alpha"><![CDATA[Default Tab]]></phrase>
-  <phrase title="option.bh_discussions_on_item" version_id="1000800" version_string="1.0.8 Alpha"><![CDATA[Discussions display on Item]]></phrase>
+  <phrase title="option.bh_discussions_on_item" version_id="3040000" version_string="3.4.0 Alpha"><![CDATA[Number of Discussions display on Item]]></phrase>
+  <phrase title="option.bh_displayExcerpt" version_id="3040000" version_string="3.4.0 Alpha"><![CDATA[Display Excerpt]]></phrase>
   <phrase title="option.bh_dropdownItemListDefaultOrder" version_id="3000700" version_string="3.0.7 Alpha"><![CDATA[Default Sort Order (drop-down Items List)]]></phrase>
+  <phrase title="option.bh_excerptLength" version_id="3040000" version_string="3.4.0 Alpha"><![CDATA[Excerpt length in characters]]></phrase>
   <phrase title="option.bh_highest_rated_items" version_id="1000800" version_string="1.0.8 Alpha"><![CDATA[Highest Rated items in Widget]]></phrase>
   <phrase title="option.bh_itemListDefaultOrder" version_id="3000500" version_string="3.0.5 Alpha"><![CDATA[Default Sort Order (Items)]]></phrase>
   <phrase title="option.bh_itemsPerPage" version_id="3000500" version_string="3.0.5 Alpha"><![CDATA[Items Per Page]]></phrase>
@@ -223,9 +233,12 @@
   <phrase title="option_explain.bh_ReviewRequired" version_id="1000700" version_string="1.0.7 Alpha"><![CDATA[If enabled, users must submit a review when rating a item.]]></phrase>
   <phrase title="option_explain.bh_ReviewsPerPage" version_id="1000800" version_string="1.0.8 Alpha"><![CDATA[Number of reviews show on per page]]></phrase>
   <phrase title="option_explain.bh_brandListDefaultOrder" version_id="3000500" version_string="3.0.5 Alpha"><![CDATA[Select the default sort order for brand list (list will be sorted by this column)]]></phrase>
+  <phrase title="option_explain.bh_defaultSortOrderOfDiscussions" version_id="3040000" version_string="3.4.0 Alpha"><![CDATA[Default sort order of discussions (tagged threads) on item page.]]></phrase>
   <phrase title="option_explain.bh_default_tab" version_id="3000100" version_string="3.0.1 Alpha"><![CDATA[Select the default tab for brand list (list will be sorted by this tab)]]></phrase>
-  <phrase title="option_explain.bh_discussions_on_item" version_id="1000800" version_string="1.0.8 Alpha"><![CDATA[Number of discussions to show on item page]]></phrase>
+  <phrase title="option_explain.bh_discussions_on_item" version_id="3040000" version_string="3.4.0 Alpha"><![CDATA[Number of discussions (tagged threads) to display on item page.]]></phrase>
+  <phrase title="option_explain.bh_displayExcerpt" version_id="3040000" version_string="3.4.0 Alpha"><![CDATA[Display Excerpt message of discussions (tagged threads) on item page]]></phrase>
   <phrase title="option_explain.bh_dropdownItemListDefaultOrder" version_id="3000700" version_string="3.0.7 Alpha"><![CDATA[Select the default sort order for 'select menu dropdown' item list When assigning thread to item (list will be sorted by this column)]]></phrase>
+  <phrase title="option_explain.bh_excerptLength" version_id="3040000" version_string="3.4.0 Alpha"><![CDATA[The maximum number of characters of discussion (tagged threads) content to display on item page. (0 will disable content from being display on item page).]]></phrase>
   <phrase title="option_explain.bh_highest_rated_items" version_id="1000800" version_string="1.0.8 Alpha"><![CDATA[Number of items show in Highest Rated Category widget]]></phrase>
   <phrase title="option_explain.bh_itemListDefaultOrder" version_id="3000500" version_string="3.0.5 Alpha"><![CDATA[Select the default sort order for item list (list will be sorted by this column)]]></phrase>
   <phrase title="option_explain.bh_itemsPerPage" version_id="3000500" version_string="3.0.5 Alpha"><![CDATA[]]></phrase>

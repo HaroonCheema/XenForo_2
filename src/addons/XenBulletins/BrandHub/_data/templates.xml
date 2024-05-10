@@ -1145,7 +1145,7 @@ a.file-insertLink,
 		});
 	</xf:js>
 </xf:macro>]]></template>
-  <template type="admin" title="bh_item_add_edit" version_id="3000700" version_string="3.0.7 Alpha"><![CDATA[<xf:if is="$item.isInsert()">
+  <template type="admin" title="bh_item_add_edit" version_id="3040000" version_string="3.4.0 Alpha"><![CDATA[<xf:if is="$item.isInsert()">
 	<xf:title>{{ phrase('bh_add_item') }}</xf:title>
 <xf:else />
 	<xf:title>{{ phrase('bh_edit_item:') }} {$item.item_title}</xf:title>
@@ -1188,10 +1188,27 @@ a.file-insertLink,
 				label="{{ phrase('bh_description') }}" />
 		
 			
-	<xf:formrow>
-		<xf:macro template="helper_attachment_item" name="upload_block"
-	    arg-attachmentData="{$attachmentData}" />
+			<xf:formrow>
+				<xf:macro template="helper_attachment_item" name="upload_block"
+						  arg-attachmentData="{$attachmentData}" />
 			</xf:formrow>
+			
+			
+			<hr class="formRowSep" />
+			<xf:tokeninputrow name="tags" value="{{ $item.tags }}"
+							  href="{{ link_type('public','misc/tag-auto-complete') }}"
+							  min-length="{$xf.options.tagLength.min}"
+							  max-length="{$xf.options.tagLength.max}"
+							  max-tokens="{$xf.options.maxContentTags}"
+							  label="{{ phrase('tags') }}">
+
+				<xf:explain>
+					{{ phrase('multiple_tags_may_be_separated_by_commas') }}
+					<xf:if is="$forum.min_tags">
+						{{ phrase('this_content_must_have_at_least_x_tags', {'min': $forum.min_tags}) }}
+					</xf:if>
+				</xf:explain>
+			</xf:tokeninputrow>
 			
 		
 			<xf:macro template="item_custom_fields_macros" name="custom_fields_edit"
@@ -1421,6 +1438,24 @@ a.file-insertLink,
 	</div>
 
 </xf:form>]]></template>
+  <template type="admin" title="bh_option_template_defaultSortOrder_of_taggedThreads" version_id="3040000" version_string="3.4.0 Alpha"><![CDATA[<xf:formrow rowtype="input"
+			label="{$option.title}"
+			hint="{$hintHtml}"
+			explain="{$explainHtml}"
+			html="{$listedHtml}">
+	<div class="inputPair">
+		<xf:select name="{$inputName}[order]" value="{$option.option_value.order}" class="input--inline">
+			<xf:option value="view_count">{{ phrase('views') }}</xf:option>
+			<xf:option value="reply_count">{{ phrase('replies') }}</xf:option>
+			<xf:option value="post_date">{{ phrase('post_date') }}</xf:option>
+		</xf:select>
+		<xf:select name="{$inputName}[direction]" value="{$option.option_value.direction}"
+				   class="input--inline">
+			<xf:option value="asc" label="{{ phrase('ascending') }}" />
+			<xf:option value="desc" label="{{ phrase('descending') }}" />
+		</xf:select>
+	</div>
+</xf:formrow>]]></template>
   <template type="admin" title="bh_rebuild_reviews" version_id="3000400" version_string="3.0.4 Alpha"><![CDATA[<xf:title>{{ phrase('bh_rebuild_review_stats') }}</xf:title>
 
 <xf:if is="!$success">
@@ -2558,12 +2593,12 @@ a.file-insertLink,
 		});
 	});
 </xf:js>]]></template>
-  <template type="public" title="bh_brandHub_list.less" version_id="3010000" version_string="3.1.0 Alpha"><![CDATA[@media screen and (max-width: 642px) {
+  <template type="public" title="bh_brandHub_list.less" version_id="3030000" version_string="3.3.0 Alpha"><![CDATA[@media screen and (max-width: 642px) {
 
 	 .borderpage{
 	
 		height:140px;
-		width: 100px;
+		width: 105px;
      }
 
 	.fas{
@@ -2595,8 +2630,8 @@ a.file-insertLink,
 	}
 	
 	.pageimage{
-		width:110px;
-		height:70px;
+		width: inherit;
+    	height: 105px;
 	}
 	
 		
@@ -4415,7 +4450,7 @@ a.file-insertLink,
 		<xf:submitrow sticky="true" icon="save" />
 	</div>
 </xf:form>]]></template>
-  <template type="public" title="bh_item_detail" version_id="3020000" version_string="3.2.0 Alpha"><![CDATA[<xf:css src="bh_brandHub_list.less" />
+  <template type="public" title="bh_item_detail" version_id="3040000" version_string="3.4.0 Alpha"><![CDATA[<xf:css src="bh_brandHub_list.less" />
 
 <xf:title class="bh-title">{{$item.Brand.brand_title}} {{ $item.item_title }}</xf:title>
 <xf:h1>
@@ -4632,47 +4667,51 @@ a.file-insertLink,
 <div class='clearfix'></div>
 
 
+
+	<div class="block-container">
+		<ol class="block-body">
+			<xf:foreach loop="$results" value="$result">
+				{{ $result.render({'mod': $activeModType})|raw }}
+			</xf:foreach>
+		</ol>
+	</div>
+
+
 <div class="block" id="discussion">
 				<div class="block-container">
 					<div class="block-header">
 						<h3 class="block-minorHeader">{{ phrase('bh_x_item_descussion', {'brandTitle': $item.Brand.brand_title, 'itemTitle': $item.item_title}) }}</h3>
 						<div class="p-description">{{ phrase('bh_here_are_the_most_recent_x_item_topics_from_our_community', {'brandTitle': $item.Brand.brand_title, 'itemTitle': $item.item_title}) }}</div>
+						
+						<div style="float:right;">
+							<xf:button href="{{ link('bh-item/post-thread-chooser', $item) }}" class="button--cta" icon="write" overlay="true">
+								{{ phrase('bh_start_a_discussion_about_x_item',{'itemTitle': $item.item_title}) }}
+							</xf:button>
+						</div>
 					</div>
 							<div class="block-body block-row block-row--separated">
 								<div class="block-body">
 									
 										
 										<xf:if is="$discussions is not empty">
-											<xf:form action="{{ link('bh-item/quick-delete', $item) }}" ajax="true"
-
-												data-xf-init="select-plus"
-												data-sp-checkbox=".dataList-cell--toggle input:checkbox"
-												data-sp-container=".dataList-row"
-												data-sp-control=".dataList-cell a">
-												
-											<xf:datalist data-xf-init="responsive-data-list">
-													
+											<ol class="block-body">
 												<xf:foreach loop="$discussions" value="$discussion">
-													<xf:macro  template="bh_brand_hub_macros" name="itemDiscussion" arg-discussion="{$discussion}"/>
+													{{ $discussion.render({'mod': $activeModType})|raw }}
 												</xf:foreach>
-				
-											</xf:datalist>
-												<xf:if is="$xf.visitor.hasPermission('bh_brand_hub','bh_canEditDiscussionDesc')">
-													<div class="block-footer block-footer--split">
-														<xf:if is="$item.discussion_count > $xf.options.bh_discussions_on_item ">
-															<span class="block-footer-counter"><a href="{{ link('bh-item/itemthreads', $item) }}" target="_blank">{{phrase('bh_view_all_x_item_topics', {'brandTitle': $item.Brand.brand_title, 'itemTitle': $item.item_title})}}&nbsp;&nbsp;<i class="fal fa-greater-than"></i></a></span>
-														<xf:else />
-															<span class="block-footer-counter"></span>
-														</xf:if>
-														
-														<span class="block-footer-select"><xf:checkbox standalone="true"><xf:option check-all=".dataList" label="{{ phrase('select_all') }}" /></xf:checkbox></span>
-														<span class="block-footer-controls"><xf:button type="submit" name="quickdelete" value="1" icon="delete" /></span>
-													</div>
-												</xf:if>
-											</xf:form>
+											</ol>
 										<xf:else />
-											<div class="blockMessage">{{ phrase('no_results_found') }}</div>
+											<div class="blockMessage">{{ phrase('no_discussions_tagged') }}</div>
 										</xf:if>
+									
+									
+									<div class="block-footer block-footer--split">
+										<xf:if is="$item.discussion_count > $xf.options.bh_discussions_on_item">
+											<span class="block-footer-counter"><a href="{{ link('bh-item/itemthreads', $item) }}" target="_blank">{{phrase('bh_view_all_x_item_topics', {'brandTitle': $item.Brand.brand_title, 'itemTitle': $item.item_title})}}&nbsp;&nbsp;<i class="fal fa-greater-than"></i></a></span>
+										<xf:else />
+											<span class="block-footer-counter"></span>
+										</xf:if>
+									</div>
+									
 
 
 								</div>
@@ -5285,7 +5324,7 @@ a.file-insertLink,
 		<xf:submitrow submit="{{ phrase('submit_rating') }}" icon="rate" />
 	</div>
 </xf:form>]]></template>
-  <template type="public" title="bh_item_review_macros" version_id="3020000" version_string="3.2.0 Alpha"><![CDATA[<xf:macro name="review_simple" arg-review="!" arg-item="" arg-route="bh-item/review">
+  <template type="public" title="bh_item_review_macros" version_id="3030000" version_string="3.3.0 Alpha"><![CDATA[<xf:macro name="review_simple" arg-review="!" arg-item="" arg-route="bh-item/review">
 	<xf:css src="message.less" />
 	<xf:css src="bh_item_attachment_list.less" />
 	
@@ -5320,7 +5359,17 @@ a.file-insertLink,
 			<div class="contentRow-lesser">{{ bb_code($review.message, 'message', $review) }}</div>
 	
 			<xf:if is="$review.Attachment is not empty">
+				
 				<xf:macro name="reviewAttachments" arg-review="{$review}" />
+				
+				
+				<xf:comment>
+					<xf:macro template="message_macros" name="attachments"
+						arg-attachments="{$review.Attachment}"
+						arg-message="{$review}"
+						arg-canView="{{ $review.canViewAttachments() }}" />
+				</xf:comment>
+			
 			</xf:if>
 			
 			
@@ -6501,7 +6550,7 @@ a.file-insertLink,
   <template type="public" title="bh_owner_page_post_new_owner_page_post_comments" version_id="3000900" version_string="3.0.9 Alpha"><![CDATA[<xf:foreach loop="$profilePostComments" value="$profilePostComment">
 	<xf:macro template="bh_owner_page_post_macros" name="comment" arg-profilePost="{$profilePost}" arg-comment="{$profilePostComment}" />
 </xf:foreach>]]></template>
-  <template type="public" title="bh_page_detail" version_id="3010000" version_string="3.1.0 Alpha"><![CDATA[<xf:if is="$ownerPage.title">
+  <template type="public" title="bh_page_detail" version_id="3040000" version_string="3.4.0 Alpha"><![CDATA[<xf:if is="$ownerPage.title">
 	<xf:title class="bh-title">{{ $ownerPage.title }}</xf:title><br>
 <xf:else />
 	<xf:title class="bh-title">{{ phrase('bh_ownerPage_title', {'brandTitle': $item.Brand.brand_title, 'itemTitle': $item.item_title, 'username':$ownerPage.User.username}) }}</xf:title><br>
@@ -6621,39 +6670,28 @@ a.file-insertLink,
 		</div>
 		<div class="block-body block-row block-row--separated">
 			<div class="block-body">
-
+				
+				
 				<xf:if is="$discussions is not empty">
-					<xf:form action="{{ link('bh-item/quick-delete', $item) }}" ajax="true"
-
-							 data-xf-init="select-plus"
-							 data-sp-checkbox=".dataList-cell--toggle input:checkbox"
-							 data-sp-container=".dataList-row"
-							 data-sp-control=".dataList-cell a">
-
-						<xf:datalist data-xf-init="responsive-data-list">
-
-							<xf:foreach loop="$discussions" value="$discussion">
-								<xf:macro  template="bh_brand_hub_macros" name="itemDiscussion" arg-discussion="{$discussion}"/>
-							</xf:foreach>
-
-						</xf:datalist>
-
-						<xf:if is="$xf.visitor.hasPermission('bh_brand_hub','bh_canEditDiscussionDesc')">
-							<div class="block-footer block-footer--split">
-								<xf:if is="$ownerPage.discussion_count > $xf.options.bh_discussions_on_item ">
-									<span class="block-footer-counter"><a href="{{ link('owners/pagethreads', $ownerPage) }}" target="_blank">{{phrase('bh_view_more_threads', {'brandTitle': $item.Brand.brand_title, 'itemTitle': $item.item_title})}}&nbsp;&nbsp;<i class="fal fa-greater-than"></i></a></span>
-									<xf:else />
-									<span class="block-footer-counter"></span>
-								</xf:if>
-
-								<span class="block-footer-select"><xf:checkbox standalone="true"><xf:option check-all=".dataList" label="{{ phrase('select_all') }}" /></xf:checkbox></span>
-								<span class="block-footer-controls"><xf:button type="submit" name="quickdelete" value="1" icon="delete" /></span>
-							</div>
-						</xf:if>
-					</xf:form>
-				<xf:else />
-					<div class="blockMessage">{{ phrase('no_results_found') }}</div>
+					<ol class="block-body">
+						<xf:foreach loop="$discussions" value="$discussion">
+							{{ $discussion.render({'mod': $activeModType})|raw }}
+						</xf:foreach>
+					</ol>
+					<xf:else />
+					<div class="blockMessage">{{ phrase('no_discussions_tagged') }}</div>
 				</xf:if>
+				
+				
+				
+				<div class="block-footer block-footer--split">
+					<xf:if is="$ownerPage.discussion_count > $xf.options.bh_discussions_on_item ">
+						<span class="block-footer-counter"><a href="{{ link('owners/pagethreads', $ownerPage) }}" target="_blank">{{phrase('bh_view_more_threads', {'brandTitle': $item.Brand.brand_title, 'itemTitle': $item.item_title})}}&nbsp;&nbsp;<i class="fal fa-greater-than"></i></a></span>
+					<xf:else />
+						<span class="block-footer-counter"></span>
+					</xf:if>
+				</div>
+				
 
 
 			</div>
@@ -7071,6 +7109,50 @@ a.file-insertLink,
 	</div>
 	<xf:hiddenval name="apply">1</xf:hiddenval>
 </xf:form>]]></template>
+  <template type="public" title="bh_search_result_thread" version_id="3040000" version_string="3.4.0 Alpha"><![CDATA[<li class="block-row block-row--separated {{ $thread.isIgnored() ? 'is-ignored' : '' }} js-inlineModContainer" data-author="{{ $thread.User.username ?: $thread.username }}">
+	<div class="contentRow {{ !$thread.isVisible() ? 'is-deleted' : '' }}">
+		<span class="contentRow-figure">
+			<xf:avatar user="{$thread.User}" size="s" defaultname="{$thread.username}" />
+		</span>
+		<div class="contentRow-main">
+			<h3 class="contentRow-title">
+				<a href="{{ link('threads', $thread) }}">{{ prefix('thread', $thread) . highlight($thread.title, $options.term) }}</a>
+			</h3>
+
+			<xf:if is="$xf.options.bh_displayExcerpt">
+				<div class="contentRow-snippet">{{ snippet($thread.FirstPost.message, $xf.options.bh_excerptLength, {'term': $options.term, 'stripQuote': true}) }}</div>
+			</xf:if>
+			
+
+			<div class="contentRow-minor contentRow-minor--hideLinks">
+				<ul class="listInline listInline--bullet">
+					<xf:if is="$options.mod == 'thread' && $thread.canUseInlineModeration()">
+						<li><xf:checkbox standalone="true">
+							<xf:option value="{$thread.thread_id}" class="js-inlineModToggle"
+								data-xf-init="tooltip"
+								title="{{ phrase('select_for_moderation') }}" />
+						</xf:checkbox></li>
+					</xf:if>
+					<li><xf:username user="{$thread.User}" defaultname="{$thread.username}" /></li>
+					<li>{{ phrase('thread') }}</li>
+					<li><xf:date time="{$thread.post_date}" /></li>
+
+					<xf:if is="$xf.options.enableTagging AND ($thread.canEditTags() OR $thread.tags)">
+						<li>
+							<xf:macro template="tag_macros" name="list"
+								arg-tags="{$thread.tags}"
+								arg-tagList="tagList--thread-{$thread.thread_id}"
+								arg-editLink="{{ $thread.canEditTags() ? link('threads/tags', $thread) : '' }}" />
+						</li>
+					</xf:if>
+					
+					<li>{{ phrase('replies:') }} {$thread.reply_count|number}</li>
+					<li>{{ phrase('forum:') }} <a href="{{ link('forums', $thread.Forum) }}">{$thread.Forum.title}</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</li>]]></template>
   <template type="public" title="bh_select2.less" version_id="3000700" version_string="3.0.7 Alpha"><![CDATA[.select2-container{box-sizing:border-box;display:inline-block;margin:0;position:relative;vertical-align:middle}.select2-container .select2-selection--single{box-sizing:border-box;cursor:pointer;display:block;height:28px;user-select:none;-webkit-user-select:none}.select2-container .select2-selection--single .select2-selection__rendered{display:block;padding-left:8px;padding-right:20px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.select2-container .select2-selection--single .select2-selection__clear{background-color:transparent;border:none;font-size:1em}.select2-container[dir="rtl"] .select2-selection--single .select2-selection__rendered{padding-right:8px;padding-left:20px}.select2-container .select2-selection--multiple{box-sizing:border-box;cursor:pointer;display:block;min-height:32px;user-select:none;-webkit-user-select:none}.select2-container .select2-selection--multiple .select2-selection__rendered{display:inline;list-style:none;padding:0}.select2-container .select2-selection--multiple .select2-selection__clear{background-color:transparent;border:none;font-size:1em}.select2-container .select2-search--inline .select2-search__field{box-sizing:border-box;border:none;font-size:100%;margin-top:5px;margin-left:5px;padding:0;max-width:100%;resize:none;height:18px;vertical-align:bottom;font-family:sans-serif;overflow:hidden;word-break:keep-all}.select2-container .select2-search--inline .select2-search__field::-webkit-search-cancel-button{-webkit-appearance:none}.select2-dropdown{background-color:white;border:1px solid #aaa;border-radius:4px;box-sizing:border-box;display:block;position:absolute;left:-100000px;width:100%;z-index:1051}.select2-results{display:block}.select2-results__options{list-style:none;margin:0;padding:0}.select2-results__option{padding:6px;user-select:none;-webkit-user-select:none}.select2-results__option--selectable{cursor:pointer}.select2-container--open .select2-dropdown{left:0}.select2-container--open .select2-dropdown--above{border-bottom:none;border-bottom-left-radius:0;border-bottom-right-radius:0}.select2-container--open .select2-dropdown--below{border-top:none;border-top-left-radius:0;border-top-right-radius:0}.select2-search--dropdown{display:block;padding:4px}.select2-search--dropdown .select2-search__field{padding:4px;width:100%;box-sizing:border-box}.select2-search--dropdown .select2-search__field::-webkit-search-cancel-button{-webkit-appearance:none}.select2-search--dropdown.select2-search--hide{display:none}.select2-close-mask{border:0;margin:0;padding:0;display:block;position:fixed;left:0;top:0;min-height:100%;min-width:100%;height:auto;width:auto;opacity:0;z-index:99;background-color:#fff;filter:alpha(opacity=0)}.select2-hidden-accessible{border:0 !important;clip:rect(0 0 0 0) !important;-webkit-clip-path:inset(50%) !important;clip-path:inset(50%) !important;height:1px !important;overflow:hidden !important;padding:0 !important;position:absolute !important;width:1px !important;white-space:nowrap !important}.select2-container--default .select2-selection--single{background-color:#fff;border:1px solid #aaa;border-radius:4px}.select2-container--default .select2-selection--single .select2-selection__rendered{color:#444;line-height:28px}.select2-container--default .select2-selection--single .select2-selection__clear{cursor:pointer;float:right;font-weight:bold;height:26px;margin-right:20px;padding-right:0px}.select2-container--default .select2-selection--single .select2-selection__placeholder{color:#999}.select2-container--default .select2-selection--single .select2-selection__arrow{height:26px;position:absolute;top:1px;right:1px;width:20px}.select2-container--default .select2-selection--single .select2-selection__arrow b{border-color:#888 transparent transparent transparent;border-style:solid;border-width:5px 4px 0 4px;height:0;left:50%;margin-left:-4px;margin-top:-2px;position:absolute;top:50%;width:0}.select2-container--default[dir="rtl"] .select2-selection--single .select2-selection__clear{float:left}.select2-container--default[dir="rtl"] .select2-selection--single .select2-selection__arrow{left:1px;right:auto}.select2-container--default.select2-container--disabled .select2-selection--single{background-color:#eee;cursor:default}.select2-container--default.select2-container--disabled .select2-selection--single .select2-selection__clear{display:none}.select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b{border-color:transparent transparent #888 transparent;border-width:0 4px 5px 4px}.select2-container--default .select2-selection--multiple{background-color:white;border:1px solid #aaa;border-radius:4px;cursor:text;padding-bottom:5px;padding-right:5px;position:relative}.select2-container--default .select2-selection--multiple.select2-selection--clearable{padding-right:25px}.select2-container--default .select2-selection--multiple .select2-selection__clear{cursor:pointer;font-weight:bold;height:20px;margin-right:10px;margin-top:5px;position:absolute;right:0;padding:1px}.select2-container--default .select2-selection--multiple .select2-selection__choice{background-color:#e4e4e4;border:1px solid #aaa;border-radius:4px;box-sizing:border-box;display:inline-block;margin-left:5px;margin-top:5px;padding:0;padding-left:20px;position:relative;max-width:100%;overflow:hidden;text-overflow:ellipsis;vertical-align:bottom;white-space:nowrap}.select2-container--default .select2-selection--multiple .select2-selection__choice__display{cursor:default;padding-left:2px;padding-right:5px}.select2-container--default .select2-selection--multiple .select2-selection__choice__remove{background-color:transparent;border:none;border-right:1px solid #aaa;border-top-left-radius:4px;border-bottom-left-radius:4px;color:#999;cursor:pointer;font-size:1em;font-weight:bold;padding:0 4px;position:absolute;left:0;top:0}.select2-container--default .select2-selection--multiple .select2-selection__choice__remove:hover,.select2-container--default .select2-selection--multiple .select2-selection__choice__remove:focus{background-color:#f1f1f1;color:#333;outline:none}.select2-container--default[dir="rtl"] .select2-selection--multiple .select2-selection__choice{margin-left:5px;margin-right:auto}.select2-container--default[dir="rtl"] .select2-selection--multiple .select2-selection__choice__display{padding-left:5px;padding-right:2px}.select2-container--default[dir="rtl"] .select2-selection--multiple .select2-selection__choice__remove{border-left:1px solid #aaa;border-right:none;border-top-left-radius:0;border-bottom-left-radius:0;border-top-right-radius:4px;border-bottom-right-radius:4px}.select2-container--default[dir="rtl"] .select2-selection--multiple .select2-selection__clear{float:left;margin-left:10px;margin-right:auto}.select2-container--default.select2-container--focus .select2-selection--multiple{border:solid black 1px;outline:0}.select2-container--default.select2-container--disabled .select2-selection--multiple{background-color:#eee;cursor:default}.select2-container--default.select2-container--disabled .select2-selection__choice__remove{display:none}.select2-container--default.select2-container--open.select2-container--above .select2-selection--single,.select2-container--default.select2-container--open.select2-container--above .select2-selection--multiple{border-top-left-radius:0;border-top-right-radius:0}.select2-container--default.select2-container--open.select2-container--below .select2-selection--single,.select2-container--default.select2-container--open.select2-container--below .select2-selection--multiple{border-bottom-left-radius:0;border-bottom-right-radius:0}.select2-container--default .select2-search--dropdown .select2-search__field{border:1px solid #aaa}.select2-container--default .select2-search--inline .select2-search__field{background:transparent;border:none;outline:0;box-shadow:none;-webkit-appearance:textfield}.select2-container--default .select2-results>.select2-results__options{max-height:200px;overflow-y:auto}.select2-container--default .select2-results__option .select2-results__option{padding-left:1em}.select2-container--default .select2-results__option .select2-results__option .select2-results__group{padding-left:0}.select2-container--default .select2-results__option .select2-results__option .select2-results__option{margin-left:-1em;padding-left:2em}.select2-container--default .select2-results__option .select2-results__option .select2-results__option .select2-results__option{margin-left:-2em;padding-left:3em}.select2-container--default .select2-results__option .select2-results__option .select2-results__option .select2-results__option .select2-results__option{margin-left:-3em;padding-left:4em}.select2-container--default .select2-results__option .select2-results__option .select2-results__option .select2-results__option .select2-results__option .select2-results__option{margin-left:-4em;padding-left:5em}.select2-container--default .select2-results__option .select2-results__option .select2-results__option .select2-results__option .select2-results__option .select2-results__option .select2-results__option{margin-left:-5em;padding-left:6em}.select2-container--default .select2-results__option--group{padding:0}.select2-container--default .select2-results__option--disabled{color:#999}.select2-container--default .select2-results__option--selected{background-color:#ddd}.select2-container--default .select2-results__option--highlighted.select2-results__option--selectable{background-color:#5897fb;color:white}.select2-container--default .select2-results__group{cursor:default;display:block;padding:6px}.select2-container--classic .select2-selection--single{background-color:#f7f7f7;border:1px solid #aaa;border-radius:4px;outline:0;background-image:-webkit-linear-gradient(top, #fff 50%, #eee 100%);background-image:-o-linear-gradient(top, #fff 50%, #eee 100%);background-image:linear-gradient(to bottom, #fff 50%, #eee 100%);background-repeat:repeat-x;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF', endColorstr='#FFEEEEEE', GradientType=0)}.select2-container--classic .select2-selection--single:focus{border:1px solid #5897fb}.select2-container--classic .select2-selection--single .select2-selection__rendered{color:#444;line-height:28px}.select2-container--classic .select2-selection--single .select2-selection__clear{cursor:pointer;float:right;font-weight:bold;height:26px;margin-right:20px}.select2-container--classic .select2-selection--single .select2-selection__placeholder{color:#999}.select2-container--classic .select2-selection--single .select2-selection__arrow{background-color:#ddd;border:none;border-left:1px solid #aaa;border-top-right-radius:4px;border-bottom-right-radius:4px;height:26px;position:absolute;top:1px;right:1px;width:20px;background-image:-webkit-linear-gradient(top, #eee 50%, #ccc 100%);background-image:-o-linear-gradient(top, #eee 50%, #ccc 100%);background-image:linear-gradient(to bottom, #eee 50%, #ccc 100%);background-repeat:repeat-x;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFEEEEEE', endColorstr='#FFCCCCCC', GradientType=0)}.select2-container--classic .select2-selection--single .select2-selection__arrow b{border-color:#888 transparent transparent transparent;border-style:solid;border-width:5px 4px 0 4px;height:0;left:50%;margin-left:-4px;margin-top:-2px;position:absolute;top:50%;width:0}.select2-container--classic[dir="rtl"] .select2-selection--single .select2-selection__clear{float:left}.select2-container--classic[dir="rtl"] .select2-selection--single .select2-selection__arrow{border:none;border-right:1px solid #aaa;border-radius:0;border-top-left-radius:4px;border-bottom-left-radius:4px;left:1px;right:auto}.select2-container--classic.select2-container--open .select2-selection--single{border:1px solid #5897fb}.select2-container--classic.select2-container--open .select2-selection--single .select2-selection__arrow{background:transparent;border:none}.select2-container--classic.select2-container--open .select2-selection--single .select2-selection__arrow b{border-color:transparent transparent #888 transparent;border-width:0 4px 5px 4px}.select2-container--classic.select2-container--open.select2-container--above .select2-selection--single{border-top:none;border-top-left-radius:0;border-top-right-radius:0;background-image:-webkit-linear-gradient(top, #fff 0%, #eee 50%);background-image:-o-linear-gradient(top, #fff 0%, #eee 50%);background-image:linear-gradient(to bottom, #fff 0%, #eee 50%);background-repeat:repeat-x;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF', endColorstr='#FFEEEEEE', GradientType=0)}.select2-container--classic.select2-container--open.select2-container--below .select2-selection--single{border-bottom:none;border-bottom-left-radius:0;border-bottom-right-radius:0;background-image:-webkit-linear-gradient(top, #eee 50%, #fff 100%);background-image:-o-linear-gradient(top, #eee 50%, #fff 100%);background-image:linear-gradient(to bottom, #eee 50%, #fff 100%);background-repeat:repeat-x;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFEEEEEE', endColorstr='#FFFFFFFF', GradientType=0)}.select2-container--classic .select2-selection--multiple{background-color:white;border:1px solid #aaa;border-radius:4px;cursor:text;outline:0;padding-bottom:5px;padding-right:5px}.select2-container--classic .select2-selection--multiple:focus{border:1px solid #5897fb}.select2-container--classic .select2-selection--multiple .select2-selection__clear{display:none}.select2-container--classic .select2-selection--multiple .select2-selection__choice{background-color:#e4e4e4;border:1px solid #aaa;border-radius:4px;display:inline-block;margin-left:5px;margin-top:5px;padding:0}.select2-container--classic .select2-selection--multiple .select2-selection__choice__display{cursor:default;padding-left:2px;padding-right:5px}.select2-container--classic .select2-selection--multiple .select2-selection__choice__remove{background-color:transparent;border:none;border-top-left-radius:4px;border-bottom-left-radius:4px;color:#888;cursor:pointer;font-size:1em;font-weight:bold;padding:0 4px}.select2-container--classic .select2-selection--multiple .select2-selection__choice__remove:hover{color:#555;outline:none}.select2-container--classic[dir="rtl"] .select2-selection--multiple .select2-selection__choice{margin-left:5px;margin-right:auto}.select2-container--classic[dir="rtl"] .select2-selection--multiple .select2-selection__choice__display{padding-left:5px;padding-right:2px}.select2-container--classic[dir="rtl"] .select2-selection--multiple .select2-selection__choice__remove{border-top-left-radius:0;border-bottom-left-radius:0;border-top-right-radius:4px;border-bottom-right-radius:4px}.select2-container--classic.select2-container--open .select2-selection--multiple{border:1px solid #5897fb}.select2-container--classic.select2-container--open.select2-container--above .select2-selection--multiple{border-top:none;border-top-left-radius:0;border-top-right-radius:0}.select2-container--classic.select2-container--open.select2-container--below .select2-selection--multiple{border-bottom:none;border-bottom-left-radius:0;border-bottom-right-radius:0}.select2-container--classic .select2-search--dropdown .select2-search__field{border:1px solid #aaa;outline:0}.select2-container--classic .select2-search--inline .select2-search__field{outline:0;box-shadow:none}.select2-container--classic .select2-dropdown{background-color:#fff;border:1px solid transparent}.select2-container--classic .select2-dropdown--above{border-bottom:none}.select2-container--classic .select2-dropdown--below{border-top:none}.select2-container--classic .select2-results>.select2-results__options{max-height:200px;overflow-y:auto}.select2-container--classic .select2-results__option--group{padding:0}.select2-container--classic .select2-results__option--disabled{color:grey}.select2-container--classic .select2-results__option--highlighted.select2-results__option--selectable{background-color:#3875d7;color:#fff}.select2-container--classic .select2-results__group{cursor:default;display:block;padding:6px}.select2-container--classic.select2-container--open .select2-dropdown{border-color:#5897fb}]]></template>
   <template type="public" title="bh_tab_item_sub" version_id="3000500" version_string="3.0.5 Alpha"><![CDATA[<div class="block">
 	<div class="block-container">
@@ -8419,7 +8501,7 @@ a.file-insertLink,
 		arg-deselectable="{{ $definition.isRequired($editMode) ? 'false' : 'true' }}"
 		arg-row="{{ false }}" />
 </xf:macro>]]></template>
-  <template type="public" title="item_thread_lists" version_id="3000100" version_string="3.0.1 Alpha"><![CDATA[<xf:title></xf:title>
+  <template type="public" title="item_thread_lists" version_id="3040000" version_string="3.4.0 Alpha"><![CDATA[<xf:title></xf:title>
 <div class="block">
 		<div class="block-container">
 			<div class="block-body">
@@ -8427,89 +8509,43 @@ a.file-insertLink,
 						<h3 class="block-minorHeader">{{ phrase('bh_x_item_descussion', {'brandTitle': $item.Brand.brand_title, 'itemTitle': $item.item_title}) }}</h3>
 						<div class="p-description">{{ phrase('bh_here_are_the_most_recent_x_item_topics_from_our_community', {'brandTitle': $item.Brand.brand_title, 'itemTitle': $item.item_title}) }}</div>
 					</div>
-					<div class="structItemContainer-group js-threadList">
-						<xf:if is="$threads is not empty">
-								<xf:form action="{{ link('bh-item/quick-delete', $item) }}" ajax="true"
-
-												data-xf-init="select-plus"
-												data-sp-checkbox=".dataList-cell--toggle input:checkbox"
-												data-sp-container=".dataList-row"
-												data-sp-control=".dataList-cell a">
-									
-
-								<xf:datalist data-xf-init="responsive-data-list">
-									<xf:foreach loop="$threads" value="$thread">
-										<xf:datarow>
-											<xf:if is="$xf.visitor.hasPermission('bh_brand_hub','bh_canEditDiscussionDesc')">
-												<xf:toggle name="thread_ids[]" value="{$thread.thread_id}" />
-											</xf:if>
-											<xf:cell>
-												<xf:macro template ="bh_thread_list_macros" name="item"
-														  arg-thread="{$thread}" />
-											</xf:cell>
-										</xf:datarow>
-									</xf:foreach>
-								</xf:datalist>
-								<xf:if is="$xf.visitor.hasPermission('bh_brand_hub','bh_canEditDiscussionDesc')">
-									<div class="block-footer block-footer--split">
-										<span class="block-footer-counter"></span>
-										<span class="block-footer-select"><xf:checkbox standalone="true"><xf:option check-all=".dataList" label="{{ phrase('select_all') }}" /></xf:checkbox></span>
-										<span class="block-footer-controls"><xf:button type="submit" name="quickdelete" value="1" icon="delete" /></span>
-									</div>
-								</xf:if>
-							</xf:form>
-						</xf:if>
-					</div>
+						<div class="block-body block-row block-row--separated">
+								<div class="block-body">
+										<xf:if is="$discussions is not empty">
+											<ol class="block-body">
+												<xf:foreach loop="$discussions" value="$discussion">
+													{{ $discussion.render({'mod': $activeModType})|raw }}
+												</xf:foreach>
+											</ol>
+										<xf:else />
+											<div class="blockMessage">{{ phrase('no_discussions_tagged') }}</div>
+										</xf:if>
+								</div>
+							</div>			
 			</div>
 		</div>
 </div>]]></template>
-  <template type="public" title="ownerPage_thread_lists" version_id="3000100" version_string="3.0.1 Alpha"><![CDATA[<xf:title></xf:title>
+  <template type="public" title="ownerPage_thread_lists" version_id="3040000" version_string="3.4.0 Alpha"><![CDATA[<xf:title></xf:title>
 <div class="block">
 		<div class="block-container">
 			<div class="block-body">
 					<div class="block-header">
-						<h3 class="block-minorHeader">{{ phrase('bh_my_x_page_topics', {'brandTitle': $item.Brand.brand_title, 'itemTitle': $item.item_title}) }}</h3>
+						<h3 class="block-minorHeader">{{ phrase('bh_my_x_page_topics', {'brandTitle': $item.Brand.brand_title, 'itemTitle': $item.item_title, 'username':$ownerPage.User.username}) }}</h3>
 						<div class="p-description">{{ phrase('bh_here_are_the_most_recent_x_item_topics_from_our_community', {'brandTitle': $item.Brand.brand_title, 'itemTitle': $item.item_title}) }}</div>
 					</div>
-					<div class="structItemContainer-group js-threadList">
-												<xf:if is="$threads is not empty">
-														<xf:form action="{{ link('bh-item/quick-delete', $item) }}" ajax="true"
-
-															data-xf-init="select-plus"
-															data-sp-checkbox=".dataList-cell--toggle input:checkbox"
-															data-sp-container=".dataList-row"
-															data-sp-control=".dataList-cell a">
-												
-														<xf:datalist data-xf-init="responsive-data-list">
-															
-															<xf:foreach loop="$threads" value="$thread">
-																<xf:datarow>
-																<xf:if is="$xf.visitor.hasPermission('bh_brand_hub','bh_canEditDiscussionDesc')">
-																	<xf:toggle name="thread_ids[]" value="{$thread.thread_id}" />
-																</xf:if>
-																<xf:cell>
-																	<xf:macro template ="bh_thread_list_macros" name="item"
-																		arg-thread="{$thread}" />
-																</xf:cell>
-																</xf:datarow>
-															</xf:foreach>
-														</xf:datalist>
-															
-															
-														<xf:if is="$xf.visitor.hasPermission('bh_brand_hub','bh_canEditDiscussionDesc')">
-															<div class="block-footer block-footer--split">
-																<span class="block-footer-counter"></span>
-																<span class="block-footer-select"><xf:checkbox standalone="true"><xf:option check-all=".dataList" label="{{ phrase('select_all') }}" /></xf:checkbox></span>
-																<span class="block-footer-controls"><xf:button type="submit" name="quickdelete" value="1" icon="delete" /></span>
-															</div>
-														</xf:if>	
-															
-													</xf:form>
-												<xf:else />
-													<div class="blockMessage">{{ phrase('no_results_found') }}</div>
-												</xf:if>
-						
-					</div>
+					<div class="block-body block-row block-row--separated">
+						<div class="block-body">
+							<xf:if is="$discussions is not empty">
+								<ol class="block-body">
+									<xf:foreach loop="$discussions" value="$discussion">
+										{{ $discussion.render({'mod': $activeModType})|raw }}
+									</xf:foreach>
+								</ol>
+								<xf:else />
+								<div class="blockMessage">{{ phrase('no_discussions_tagged') }}</div>
+							</xf:if>
+						</div>
+					</div>			
 			</div>
 		</div>
 </div>]]></template>

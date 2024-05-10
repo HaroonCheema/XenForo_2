@@ -145,6 +145,13 @@ return array(
 		}
 		$__compilerTemp1 .= '
 					';
+		if ($__vars['xf']['options']['tl_groups_enableBadge']) {
+			$__compilerTemp1 .= '
+	' . $__templater->callback('Truonglv\\Groups\\Callback', 'renderBadge', $__templater->escape($__vars['user']['tlg_badge_group_id']), array()) . '
+';
+		}
+		$__compilerTemp1 .= '
+';
 		if ($__vars['extras']['custom_fields']) {
 			$__compilerTemp1 .= '
 						' . $__templater->callMacro('custom_fields_macros', 'custom_fields_values', array(

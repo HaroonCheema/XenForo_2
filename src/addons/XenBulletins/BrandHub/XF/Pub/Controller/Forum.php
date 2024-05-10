@@ -7,57 +7,116 @@ use XF\Mvc\ParameterBag;
 class Forum extends XFCP_Forum {
 
 
-    protected function finalizeThreadCreate(\XF\Service\Thread\Creator $creator) {
-        $createThreds = parent::finalizeThreadCreate($creator);
+//    protected function finalizeThreadCreate(\XF\Service\Thread\Creator $creator) {
+//        $createThreds = parent::finalizeThreadCreate($creator);
+//
+//        $itemId = $this->filter('item_id', 'uint');
+//        
+//        $thread = $creator->getThread();
+//        $thread->item_id = $itemId;
+//        
+//        $thread->save();
+//        
+//        if($itemId){
+//           
+//               $requests = $this->finder('XenBulletins\BrandHub:ItemSub')->where('item_id', $itemId)->with(['User', 'Item'])->fetch();
+//               
+//                $detail="new thread".$thread->title;
+//
+//                 foreach ($requests as $request) {
+//
+//                    $link = $this->app->router('public')->buildLink('threads', $thread);
+//                  
+//                    \XenBulletins\BrandHub\Helper::updateItemNotificiation($request->Item->item_title, $link, $detail, $request->User);
+//                }
+//            
+//        }
+//        
+//        \XenBulletins\BrandHub\Helper::updateItemDiscussionCount($itemId); 
+//        \XenBulletins\BrandHub\Helper::updateOwnerPageDiscussionCount($itemId, $thread->user_id,'plus');
+//
+//        return $createThreds;
+//    }
 
+    
+    
+//    protected function finalizeThreadCreate(\XF\Service\Thread\Creator $creator) {
+//    
+//        $parent = parent::finalizeThreadCreate($creator);
+//        
+//        $stringTags = $this->filter('tags', 'str');
+//        
+//        if($stringTags)
+//        {
+//            $thread = $creator->getThread();
+//            
+//            $itemFinder = $this->finder('XenBulletins\BrandHub:Item'); 
+//            
+//            $tags = explode(',', $stringTags);
+//           
+//            $conditions = [];
+//            foreach($tags as $tag)
+//            {  
+//                $quotedtag = $itemFinder->quote(trim($tag));
+//                $conditions[] = ['tags', 'LIKE', $itemFinder->escapeLike($tag, '%?%')];
+//            } 
+//            
+//            $items = $itemFinder->whereOr($conditions)->fetch();
+//            
+//            foreach($items as $item)
+//            {
+//                $itemId = $item->item_id;
+//                $this->itemsNewThreadNotification($itemId, $thread);
+//                
+//                \XenBulletins\BrandHub\Helper::updateItemDiscussionCount($itemId); 
+//                \XenBulletins\BrandHub\Helper::updateOwnerPageDiscussionCount($itemId, $thread->user_id,'plus');
+//            }
+//             
+//        }
+//
+//       return $parent;
+//    }
+    
+    
+//    protected function itemsNewThreadNotification($itemId, $thread)
+//    {
+//        $results = $this->finder('XenBulletins\BrandHub:ItemSub')->where('item_id', $itemId)->with(['User', 'Item'])->fetch();
+//               
+//        $detail="new thread".$thread->title;
+//
+//        foreach ($results as $result)     
+//        {
+//            $link = $this->app->router('public')->buildLink('threads', $thread);
+//
+//            \XenBulletins\BrandHub\Helper::updateItemNotificiation($result->Item->item_title, $link, $detail, $result->User);
+//        }
+//    }
+
+
+
+
+
+
+    public function actionPostThread(ParameterBag $params) 
+    {
+ 
+        $parent = parent::actionPostThread($params);
+        
         $itemId = $this->filter('item_id', 'uint');
         
-        $thread = $creator->getThread();
-        $thread->item_id = $itemId;
-        
-        $thread->save();
-        
-        if($itemId){
-           
-               $requests = $this->finder('XenBulletins\BrandHub:ItemSub')->where('item_id', $itemId)->with(['User', 'Item'])->fetch();
-               
-                $detail="new thread".$thread->title;
-
-                 foreach ($requests as $request) {
-
-                    $link = $this->app->router('public')->buildLink('threads', $thread);
-                  
-                    \XenBulletins\BrandHub\Helper::updateItemNotificiation($request->Item->item_title, $link, $detail, $request->User);
-                }
-            
-        }
-        
-        \XenBulletins\BrandHub\Helper::updateItemDiscussionCount($itemId); 
-        \XenBulletins\BrandHub\Helper::updateOwnerPageDiscussionCount($itemId, $thread->user_id,'plus');
-
-        return $createThreds;
-    }
-
-    public function actionPostThread(ParameterBag $params) {
- 
-        $postThread = parent::actionPostThread($params);
-        if ($postThread instanceof \XF\Mvc\Reply\View) 
+        if ($parent instanceof \XF\Mvc\Reply\View && $itemId) 
         {
+            $item = $this->em()->find('XenBulletins\BrandHub:Item', $itemId);
             
-            $forum = $this->finder('XF:Forum')->where('node_id',$params->node_id)->fetchOne();
-            if($forum && $forum->brand_id)
+            if($item)
             {
-//     
-                $defaultOrder = $this->options()->bh_dropdownItemListDefaultOrder ?: 'item_title';
-                $defaultDir =   'DESC';
-                        
-                $items = $this->Finder('XenBulletins\BrandHub:Item')->where('brand_id', $forum->brand_id)->order($defaultOrder,$defaultDir)->fetch();
-                $postThread->setParam('items', $items);
-            }     
-            
+                $parent->setParam('tags', $item->tags);
+//                $parent->setParam('item', $item);
+            }
         }
         
-        return $postThread;
+        
+        return $parent;
     }
     
      public function actionForum(ParameterBag $params) {
@@ -75,17 +134,17 @@ class Forum extends XFCP_Forum {
             $brand = $this->finder('XenBulletins\BrandHub:Brand')->where('brand_id', $brand_id)->fetchOne();
 
 
-             $items = $this->finder('XenBulletins\BrandHub:Item')->where('brand_id', $brand_id)->fetch();
- 
-             $itemCount=count($items);
+            $itemFinder = $this->finder('XenBulletins\BrandHub:Item')->where('brand_id', $brand_id);
+            
+            $total = $itemFinder->total();
        
-            $items = $this->finder('XenBulletins\BrandHub:Item')->where('brand_id', $brand_id)->order('discussion_count','DESC')->fetch($limit_items);
+            $items = $itemFinder->order('discussion_count','DESC')->fetch($limit_items);
             
             if (count($items) > 0) {
 
                 $forum->setParam('items', $items);
                 $forum->setParam('brand', $brand);
-                $forum->setParam('itemCount', $itemCount);
+                $forum->setParam('itemCount', $total);
             }
         }
         

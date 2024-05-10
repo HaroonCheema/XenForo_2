@@ -35,11 +35,49 @@ class Item extends AbstractController
         }
 
         return $finder->order('attach_date', 'DESC')->fetchOne();
-    } 
+    }
     
-   
+    protected function getItemThreads(\XenBulletins\BrandHub\Entity\Item $item , $limit= 0)
+    {
+        $discussions = [];
+        
+        $stringTags = $item->tags;  // get tag ids that are saved as string in item and then get tagged threads
+        
+        if($stringTags)
+        {   
+            /** @var \XF\Repository\Tag $tagRepo */
+            $tagRepo = $this->repository('XF:Tag');
+
+            $tags = $tagRepo->splitTagList($stringTags);
+
+            if ($tags)
+            {
+                $validTags = $tagRepo->getTags($tags, $notFound);
+
+                if($validTags)
+                {
+                    $tagIds = array_keys($validTags);
+                    
+                    $tagResults = $tagRepo->getTagsThreadSearchResults($tagIds, $limit);
+
+                    $resultSet = $tagRepo->getTagResultSet($tagResults)->limitToViewableResults();
+
+                    if ($resultSet->countResults())
+                    {            
+                        $discussions = $tagRepo->wrapResultsForRender($resultSet);
+                    }
+                }
+            }            
+        }
+        
+        return $discussions;
+    }
+
     
-        public function actionIndex(ParameterBag $params) {
+
+
+
+    public function actionIndex(ParameterBag $params) {
         
         
         $item = $this->finder('XenBulletins\BrandHub:Item')->where('item_id', $params->item_id)->with(['Description','Category','Attachment'])->fetchOne();
@@ -79,6 +117,9 @@ class Item extends AbstractController
         $attachment_id = $this->filter('attachment_id', 'STR');
         $filmStripPlugin = $this->plugin('XenBulletins\BrandHub:FilmStrip');
         
+        $attachmentItem = "";
+        $filmStripPluginlist = "";
+        
         
         if ($attachment_id) 
         {
@@ -103,12 +144,20 @@ class Item extends AbstractController
             $filmStripPluginlist = $filmStripPlugin->getFilmStripParamsForView($attachmentItem);
         }
         
+        //------------------------------------------  Item's Discussions (tagged threads) ----------------------------------------------------
+        
+        
+//        $discussions = $this->finder('XF:Thread')->where('item_id', $params->item_id)->where('discussion_state','visible')->order('thread_id','DESC')->fetch(\xf::options()->bh_discussions_on_item);
+        
+
+        $limit = $this->options()->bh_discussions_on_item;
+
+        $discussions = $this->getItemThreads($item, $limit);   // get tagged threads
+        
+        $mod = '';
+        
+        
         //----------------------------------------------------------------------------------------------
-        
-        
-        
-        $discussions = $this->finder('XF:Thread')->where('item_id', $params->item_id)->where('discussion_state','visible')->order('thread_id','DESC')->fetch(\xf::options()->bh_discussions_on_item);
-        
         $alreadySub = $this->finder('XenBulletins\BrandHub:ItemSub')->where('item_id',$params->item_id)->where('user_id',\XF::visitor()->user_id)->fetchOne();
         
         
@@ -156,7 +205,7 @@ class Item extends AbstractController
         
         $itemReviews = $itemReviews->fetch();
         
-        $visitorReview = $ratingRepo->findReviewsInItem($item)->with('User')->where('user_id', $visitorId)->fetchOne();
+        $visitorReview = $ratingRepo->findReviewsInItem($item)->where('user_id', $visitorId)->fetchOne();
 		
         
         
@@ -197,6 +246,8 @@ class Item extends AbstractController
             'filters' => $filters,
             
             'discussions' => $discussions,
+            'activeModType' => $mod,
+            
             'itemPages'=>$itemPages,
             'userItemPage' => $userItemPage,
             'ownerPageTotal' => count($itemPages),
@@ -226,9 +277,9 @@ class Item extends AbstractController
         
         
         
-        protected function assertViewableItem($itemId)
+        protected function assertViewableItem($itemId, $with = [])
 	{
-		$item = $this->em()->find('XenBulletins\BrandHub:Item', $itemId);
+		$item = $this->em()->find('XenBulletins\BrandHub:Item', $itemId, $with);
 
 		if (!$item)
 		{
@@ -564,16 +615,23 @@ class Item extends AbstractController
     }
     
     
-      public  function actionitemThreads(ParameterBag $params){
+    public  function actionitemThreads(ParameterBag $params)
+    {
+           
+//       $threads = $this->finder('XF:Thread')->where('item_id', $params->item_id)->where('discussion_state','visible')->order('thread_id','DESC')->fetch();
         
+//        $item = $this->finder('XenBulletins\BrandHub:Item')->where('item_id', $params->item_id)->fetchOne();
         
-       $threads = $this->finder('XF:Thread')->where('item_id', $params->item_id)->where('discussion_state','visible')->order('thread_id','DESC')->fetch();
+        $item = $this->assertViewableItem($params->item_id);
         
-        $item = $this->finder('XenBulletins\BrandHub:Item')->where('item_id', $params->item_id)->fetchOne();
+        $discussions = $this->getItemThreads($item);
+        
+        $mod = '';
         
         $viewParams = [
-            'threads' => $threads,
             'item'=> $item,
+            'discussions' => $discussions,
+            'activeModType' => $mod,
         
         ];
         
@@ -1041,6 +1099,116 @@ class Item extends AbstractController
     }
     
     
+    
+    //******************************* Start A Discussion (Thread) ********************************************
+        
+    protected function getNodeRepo()
+    {
+        return $this->repository('XF:Node');
+    }
+        
+    protected function getParentNodeIds($nodeIds)
+    {
+        $db = \XF::db();    
+        
+        $queryResults = $db->fetchPairs('
+			SELECT node_id,parent_node_id
+			FROM xf_node
+			WHERE node_id IN (' . $db->quote($nodeIds) . ')
+                        AND parent_node_id != 0
+			ORDER BY node_id
+		');
+        
+        
+        $parentNodeIds = array_values($queryResults);
+        
+        return $parentNodeIds;
+    }
+    
+    
+    public function actionPostThreadChooser(ParameterBag $params)
+    {
+        
+        if (!$params->item_id)
+        {
+                return $this->noPermission();
+        }
+        
+        $item = $this->assertViewableItem($params->item_id, ['Brand']);
+        $brand = $item->Brand;
+
+
+
+        $visitor = \XF::visitor();
+        if (!$visitor->canCreateThread($error) && !$visitor->canCreateThreadPreReg()) 
+        {
+            return $this->noPermission($error);
+        }
+
+        $this->assertCanonicalUrl($this->buildLink('forums/post-thread'));
+
+        //  get the parent node ids of node and then merge these with nodeIds to make proper nodetree
+        $parentNodeIds = $this->getParentNodeIds($brand->node_ids);
+        
+        $nodeIds = array_merge($brand->node_ids, $parentNodeIds);
+        
+        
+
+        $nodeRepo = $this->getNodeRepo();
+        
+        $nodes = $nodeRepo->getItemsNodeList(null, $nodeIds);
+        
+        $canCreateThread = false;
+        foreach ($nodes as $nodeId => $node) 
+        {
+            if ($node->node_type_id != 'Forum') 
+            {
+                continue;
+            }
+
+            /** @var \XF\Entity\Forum $forum */
+            $forum = $node->Data;
+            if ($forum->canCreateThread() || $forum->canCreateThreadPreReg()) 
+            {
+                $canCreateThread = true;
+                break;
+            }
+        }
+
+        if (!$canCreateThread) 
+        {
+            return $this->noPermission();
+        }
+
+        $nodeTree = $nodeRepo->createNodeTree($nodes);
+
+        $nodeTree = $nodeTree->filter(null, function ($id, \XF\Entity\Node $node, $depth, $children, \XF\Tree $tree) 
+        {
+            if ($children) 
+            {
+                return true;
+            }
+
+            if ($node->node_type_id == 'Forum' && ($node->Data->canCreateThread() || $node->Data->canCreateThreadPreReg())) 
+            {
+                return true;
+            }
+            
+            return false;
+        });
+                
+
+        $nodeExtras = $nodeRepo->getNodeListExtras($nodeTree);
+
+        $viewParams = [
+            'item' => $item,
+            'nodeTree' => $nodeTree,
+            'nodeExtras' => $nodeExtras
+        ];
+        return $this->view('XenBulletins\BrandHub:Item\PostThreadChooser', 'forum_post_thread_chooser', $viewParams);
+    }
+    
+    
     //***************************** Reviews Filters ****************************************************
         
         
@@ -1119,6 +1287,10 @@ class Item extends AbstractController
                         'discussion_count' => 'discussion_count',
 		];
 	}
+        
+        
+        
+
         
         
 
