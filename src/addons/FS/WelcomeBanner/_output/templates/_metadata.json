@@ -1,7 +1,7 @@
 {
     "public/welcome_banner_thread_list.html": {
-        "version_id": 1010200,
-        "version_string": "1.1.2 Alpha",
+        "version_id": 1010400,
+        "version_string": "1.1.4 Alpha",
         "hash": "1f2db8c003c128e750f69833a81d0a1a"
     },
     "public/welcome_banner_thread_list_macros.html": {

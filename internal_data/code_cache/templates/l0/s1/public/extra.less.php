@@ -4,9 +4,7 @@ return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
 	$__finalCompiled = '';
-	$__finalCompiled .= '.infoTextAnchorTag{
-	font-size: smaller;
-}';
+	$__finalCompiled .= '';
 	return $__finalCompiled;
 }
 );

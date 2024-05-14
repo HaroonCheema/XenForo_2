@@ -204,7 +204,7 @@ return array(
 				' . $__templater->callMacro(null, 'crumb', array(
 			'position' => $__vars['position'],
 			'href' => $__vars['rootBreadcrumb']['href'],
-			'value' => $__vars['xf']['options']['bh_breadCrumSlug'],
+			'value' => $__vars['rootBreadcrumb']['title'],
 		), $__vars) . '
 			';
 	}

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <templates>
-  <template type="public" title="welcome_banner_thread_list" version_id="1010200" version_string="1.1.2 Alpha"><![CDATA[<style>
+  <template type="public" title="welcome_banner_thread_list" version_id="1010400" version_string="1.1.4 Alpha"><![CDATA[<style>
 	.structItem:nth-child(even) {
 		background-color: transparent !important;
 	}

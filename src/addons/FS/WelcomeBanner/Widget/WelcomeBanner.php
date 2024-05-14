@@ -8,12 +8,14 @@ class WelcomeBanner extends AbstractWidget
 {
     public function render()
     {
-        $threadIds = explode(",", \XF::app()->options()->fs_welcome_banner_applicable_threads);
+        $optionThreadIds = \XF::app()->options()->fs_welcome_banner_applicable_threads;
+        $threadIds = explode(",", $optionThreadIds);
 
-        $threads = $this->finder('XF:Thread')->where('thread_id', $threadIds)->fetch();
+        $threadFinder = $this->finder('XF:Thread')->where('thread_id', $threadIds);
+        $threadFinder = $threadFinder->order($threadFinder->expression('FIELD(thread_id,' . $optionThreadIds . ')'))->fetch();
 
         $viewParams = [
-            'threads' => $threads,
+            'threads' => $threadFinder,
         ];
 
         return $this->renderer('welcome_banner_thread_list', $viewParams);
