@@ -3,6 +3,7 @@ return array (
   'style_prop_group.avatar' => 'Avatars',
   'style_prop_group.basic' => 'Basic options',
   'style_prop_group.bbCode' => 'BB code elements',
+  'style_prop_group.bh_brand_hub' => '[XB] Brand-Hub',
   'style_prop_group.block' => 'Blocks',
   'style_prop_group.borderSpacing' => 'Borders and spacing',
   'style_prop_group.button' => 'Buttons',
@@ -35,7 +36,6 @@ return array (
   'style_prop_group.snog_tv' => '[OzzModz] TMDb TV Thread Starter',
   'style_prop_group.tab' => 'Tabs',
   'style_prop_group.thuserimprovements_trophies' => '[TH] User Improvements: Trophies',
-  'style_prop_group.tl_Groups' => '[tl] Social Groups',
   'style_prop_group.tooltip' => 'Tooltips',
   'style_prop_group.xfmgAppearance' => 'XFMG: Appearance',
 );

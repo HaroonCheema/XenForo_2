@@ -1,21 +1,28 @@
 <xf:css src="bh_brandHub_list.less" />
-<xf:title class="bh-title">{{$item.Brand.brand_title}} {{ $item.item_title }} </xf:title>	
-<div>{{ $item.Category.category_title }} </div>
-<div class="title-rating">
-<xf:macro template="rating_macros" name="stars" arg-rating="{$item.rating_avg}" arg-class="ratingStars--smaller" /> ({{$item.rating_count}})
 
-</div>
+<xf:title class="bh-title">{{$item.Brand.brand_title}} {{ $item.item_title }} Resource Page</xf:title>
+<xf:description>Information, reviews, photos, discussion topics, owner pages, and specifications about the {{$item.Brand.brand_title}} {{ $item.item_title }}.</xf:description>
+
+<xf:h1>
+	{{$item.Brand.brand_title}} {{ $item.item_title }} <span class="item-rating"><xf:macro template="rating_macros" name="stars" arg-rating="{$item.rating_avg}" arg-class="ratingStars--smaller" />({{$item.rating_count}})</span>
+</xf:h1>
+<div>{{ $item.Category.category_title }} </div>
 
 
 <xf:breadcrumb source="$item.getBreadcrumbs(false)" />
 
 <xf:pageaction>
+	
 	<xf:if is="$xf.visitor.hasPermission('bh_brand_hub', 'bh_canUploadPhotos')">
-	<xf:button href="{{ link('bh_brands/item/uploadphoto', $item) }}" class="button--cta"  overlay="true">{{ phrase('bh_upload_photos', {'itemTitle': $item.item_title}) }}</xf:button>
-
+		<xf:button href="{{ link('bh-item/uploadphoto', $item) }}" class="button--cta"  overlay="true">{{ phrase('bh_upload_photos', {'itemTitle': $item.item_title}) }}</xf:button>
 	</xf:if>
+	
 	<xf:if is="$xf.visitor.hasPermission('bh_brand_hub', 'bh_canSetItemMainPhoto')">
- 		<xf:button href="{{ link('bh_brands/item/mainphoto', $item) }}" class="" overlay="true">{{ phrase('bh_main_photo') }}</xf:button>
+ 		<xf:button href="{{ link('bh-item/mainphoto', $item) }}" class="" overlay="true">{{ phrase('bh_main_photo') }}</xf:button>
+	</xf:if>
+	
+	<xf:if is="$xf.visitor.is_admin">
+		<xf:button href="{{ link_type('admin', 'bh_item/edit', $item) }}" class="" target="_blank">{{ phrase('bh_edit_this_item') }}</xf:button>
 	</xf:if>
 </xf:pageaction>
 
@@ -23,7 +30,7 @@
 	
 	<br>
 	<div style="float:right;">
-		<xf:macro name="navigation" arg-pageSelected="{$pageSelected}"  arg-route="bh_brands/item"  arg-alreadySub="{$alreadySub}" 
+		<xf:macro name="navigation" arg-pageSelected="{$pageSelected}"  arg-route="{$xf.options.bh_main_route}/item"  arg-alreadySub="{$alreadySub}" 
 		  arg-item="{$item}" />
 	</div>	
 		
@@ -37,7 +44,7 @@
 	
 	<xf:if is="{$filmStripParams.prevItem}">
 		
-	<a href="{{ link('bh_brands/item',$item,{'attachment_id':$filmStripParams.prevItem.attachment_id}) }}" class="media-button media-button--prev" data-xf-key="ArrowLeft"><i class="media-button-icon"></i></a>	
+	<a href="{{ link({$xf.options.bh_main_route}.'/item',$item,{'attachment_id':$filmStripParams.prevItem.attachment_id}) }}" class="media-button media-button--prev" data-xf-key="ArrowLeft"><i class="media-button-icon"></i></a>	
 	
 		</xf:if>
 
@@ -51,7 +58,7 @@
 	
 
 	<xf:if is="$filmStripParams.nextItem">
-		<a href="{{ link('bh_brands/item',$item,{'attachment_id':$filmStripParams.nextItem.attachment_id}) }}" class="media-button media-button--next" data-xf-key="ArrowRight"><i class="media-button-icon"></i></a>
+		<a href="{{ link({$xf.options.bh_main_route}.'/item',$item,{'attachment_id':$filmStripParams.nextItem.attachment_id}) }}" class="media-button media-button--next" data-xf-key="ArrowRight"><i class="media-button-icon"></i></a>
 	
 	</xf:if>
 		
@@ -138,6 +145,15 @@
 												<xf:cell >#{{$itemPosition.overallItemDiscussionPosition}} discussed of {{$itemPosition.totalItems}} items overall</xf:cell>
 										</xf:datarow>	
 								</xf:if>
+									
+									
+								<xf:if is="$itemPosition.itemOwnerPageRanking">
+										<xf:datarow>
+												<xf:cell >#{{$itemPosition.itemOwnerPageRanking}} Ranking of Most-OwnerPages in {{$itemPosition.totalItems}} items overall</xf:cell>
+										</xf:datarow>	
+								</xf:if>
+									
+									
 								
 								
 									
@@ -160,8 +176,10 @@
 		{{ bb_code($item.Description.description, 'description', $item.Description) }}
 		<br>
 		<xf:if is="$xf.visitor.hasPermission('bh_brand_hub','bh_can_edit_itemDescript')">
-			<a href="{{ link('bh_brands/item/edit', $item) }}" data-xf-click="overlay">{{ phrase('edit') }}</a>
+			<a href="{{ link('bh-item/edit', $item) }}" data-xf-click="overlay">{{ phrase('edit') }}</a>
 		</xf:if>
+		
+		
 		<xf:if is="$xf.visitor.hasPermission('bh_brand_hub', 'react') && $xf.visitor.user_id">
 			<xf:extension name="footer">
 				<xf:macro name="item_reaction_footer" arg-item="{$item}"  />
@@ -201,35 +219,61 @@
 <div class="block" id="discussion">
 				<div class="block-container">
 					<div class="block-header">
-						<h3 class="block-minorHeader">{{ phrase('bh_x_item_descussion', {'brandTitle': $item.Brand.brand_title, 'itemTitle': $item.item_title}) }}</h3>
+						<h3 class="block-minorHeader">{{ phrase('bh_x_item_descussion', {'brandTitle': $item.Brand.brand_title, 'itemTitle': $item.item_title}) }} ({{$item.discussion_count}})</h3>
 						<div class="p-description">{{ phrase('bh_here_are_the_most_recent_x_item_topics_from_our_community', {'brandTitle': $item.Brand.brand_title, 'itemTitle': $item.item_title}) }}</div>
+						
+						<div style="float:right;">
+							<xf:button href="{{ link('bh-item/post-thread-chooser', $item) }}" class="button--cta" icon="write" overlay="true">
+								{{ phrase('bh_start_a_discussion_about_x_item',{'brandTitle': $item.Brand.brand_title, 'itemTitle': $item.item_title}) }}
+							</xf:button>
+						</div>
 					</div>
 							<div class="block-body block-row block-row--separated">
 								<div class="block-body">
-									<xf:datalist data-xf-init="responsive-data-list">
+									
 										
 										<xf:if is="$discussions is not empty">
-											<xf:foreach loop="$discussions" value="$discussion">
-											<xf:if is="$discussion.isUnread()">
-												<xf:datarow>
-													<xf:cell style="font-weight:700;" href="{{ link('threads', $discussion) }}" target="_blank"><i class="fal fa-greater-than"></i>&nbsp;&nbsp;{{ prefix('thread', $discussion) }}{{ $discussion.title }}</xf:cell>
-												</xf:datarow>
-												<xf:else />
-													<xf:datarow>
-													<xf:cell href="{{ link('threads', $discussion) }}" target="_blank"><i class="fal fa-greater-than"></i>&nbsp;&nbsp;{{ $discussion.title }}</xf:cell>
-												</xf:datarow>
-												</xf:if>
-											</xf:foreach>
-											<xf:if is="$item.discussion_count > $xf.options.bh_discussions_on_item ">
-													<xf:datarow>
-														<xf:cell href="{{ link('bh_brands/item/itemthreads', $item) }}" target="_blank"><i class="fal fa-greater-than"></i>&nbsp;&nbsp;{{phrase('bh_view_all_x_item_topics', {'brandTitle': $item.Brand.brand_title, 'itemTitle': $item.item_title})}}</xf:cell>
-													</xf:datarow>
-												</xf:if>
+											<ol class="block-body">
+												<xf:foreach loop="$discussions" value="$discussion">
+													{{ $discussion.render({'mod': $activeModType})|raw }}
+												</xf:foreach>
+											</ol>
 										<xf:else />
-											<div class="blockMessage">{{ phrase('no_results_found') }}</div>
+											<div class="blockMessage">{{ phrase('no_discussions_tagged') }}</div>
 										</xf:if>
+									
+									
+									<div class="block-footer block-footer--split">
+										<xf:if is="$item.discussion_count > $xf.options.bh_discussions_on_item">
+											<span class="block-footer-counter"><a href="{{ link('bh-item/itemthreads', $item) }}" target="_blank">{{phrase('bh_view_all_x_item_topics', {'brandTitle': $item.Brand.brand_title, 'itemTitle': $item.item_title})}}&nbsp;&nbsp;<i class="fal fa-greater-than"></i> </a>
+												
 
-									</xf:datalist>
+												<dl class="tagList">
+	
+													<dd>
+														<span class="js-tagList">
+															<xf:if is="$tags">
+																<xf:foreach loop="$tags" value="$tag">
+																	<a href="{{ link('tags', $tag) }}" class="tagItem tagItem--tag_{$tag.tag_url}" dir="auto">
+																		{{ $tag.tag }}
+																	</a>
+																</xf:foreach>
+																<xf:else />
+																{{ phrase('none') }}
+															</xf:if>
+														</span>
+													</dd>
+												</dl>
+
+											</span>
+											
+										<xf:else />
+											<span class="block-footer-counter"></span>
+										</xf:if>
+									</div>
+									
+
+
 								</div>
 							</div>			
 				</div>
@@ -303,7 +347,7 @@
 		</xf:if>
 
 		<div class="reactionsBar js-reactionsList {{ $item.reactions ? 'is-active' : '' }}">
-					<xf:reactions content="{$item}" link="bh_brands/item/reactions" />
+					<xf:reactions content="{$item}" link="bh-item/reactions" />
 		</div>
 
 		<div class="js-historyTarget message-historyTarget toggleTarget" data-href="trigger-href"></div>
@@ -315,7 +359,7 @@
 	<xf:if contentcheck="true">
 		<div class="actionBar-set actionBar-set--external">
 		<xf:contentcheck>
-			<xf:react content="{$item}" link="bh_brands/item/react" list=".js-reactionsList" />
+			<xf:react content="{$item}" link="bh-item/react" list=".js-reactionsList" />
 		</xf:contentcheck>
 		</div>
 	</xf:if>

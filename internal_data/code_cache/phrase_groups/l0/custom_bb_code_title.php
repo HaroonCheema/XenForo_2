@@ -11,7 +11,6 @@ return array (
   'custom_bb_code_title.fsinfotext' => '[FS] Info Text',
   'custom_bb_code_title.gallery' => 'Gallery embed',
   'custom_bb_code_title.genre' => 'TMDb genre',
-  'custom_bb_code_title.group' => 'Embed groups',
   'custom_bb_code_title.imath' => 'Inline math',
   'custom_bb_code_title.locked' => 'Hide Content and show preview with image',
   'custom_bb_code_title.math' => 'Block math',

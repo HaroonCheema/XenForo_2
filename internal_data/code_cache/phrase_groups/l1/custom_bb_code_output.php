@@ -11,7 +11,6 @@ return array (
   'custom_bb_code_output.fsinfotext' => '',
   'custom_bb_code_output.gallery' => '',
   'custom_bb_code_output.genre' => '',
-  'custom_bb_code_output.group' => 'The information of group would appear here.',
   'custom_bb_code_output.imath' => '',
   'custom_bb_code_output.locked' => '',
   'custom_bb_code_output.math' => '',

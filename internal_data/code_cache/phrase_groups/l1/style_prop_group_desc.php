@@ -3,6 +3,7 @@ return array (
   'style_prop_group_desc.avatar' => 'Avatars are graphical representations of users. Some users may upload their own images, while others will use the default letter-based imagery. Styling for both of these types is controlled here.',
   'style_prop_group_desc.basic' => 'Defines the location of various commonly-used assets etc.',
   'style_prop_group_desc.bbCode' => 'This section contains properties and options relating to BB codes used to style messages and other user-generated content.',
+  'style_prop_group_desc.bh_brand_hub' => 'Elements for the special page on BrandHub are styled here.',
   'style_prop_group_desc.block' => 'Most content within XenForo is presented within a structure of \'blocks\', which wrap content in a collection of HTML boxes, allowing very flexible styling. Settings controlling those boxes are located here.',
   'style_prop_group_desc.borderSpacing' => 'Settings controlling the thickness and color of structural borders, as well as global settings for element spacing and padding.',
   'style_prop_group_desc.button' => 'Various text-button types are in use within XenForo but all share common styling properties, which are located here.',
@@ -35,7 +36,6 @@ return array (
   'style_prop_group_desc.snog_tv' => '',
   'style_prop_group_desc.tab' => 'Standalone tabs - those that are not part of the main page navigation, are controlled here.',
   'style_prop_group_desc.thuserimprovements_trophies' => 'Styling related to trophies and the trophy showcase.',
-  'style_prop_group_desc.tl_Groups' => '',
   'style_prop_group_desc.tooltip' => 'Tooltips are (usually) small hints that appear when the mouse pointer hovers over page elements that may require additional information to convey their purpose or content.',
   'style_prop_group_desc.xfmgAppearance' => 'A number of properties to control the appearance of XenForo Media Gallery',
 );

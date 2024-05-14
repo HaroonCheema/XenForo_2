@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <template_modifications>
+  <modification type="public" template="PAGE_CONTAINER" modification_key="bh_xen_PAGE_CONTAINER" description="bh_xen_PAGE_CONTAINER" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[$rootBreadcrumb.title]]></find>
+    <replace><![CDATA[$xf.options.bh_breadCrumSlug]]></replace>
+  </modification>
   <modification type="public" template="forum_post_thread_chooser" modification_key="bh_pass_itemIdInLink" description="Pass item_id as param In post thread url" execution_order="10" enabled="1" action="str_replace">
     <find><![CDATA[link('forums/post-thread', $node)]]></find>
     <replace><![CDATA[$__globals.item ? link('forums/post-thread', $node, {'item_id': $__globals.item.item_id}) : $0]]></replace>

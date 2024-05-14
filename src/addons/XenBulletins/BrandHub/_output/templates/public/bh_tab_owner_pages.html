@@ -1,0 +1,70 @@
+<xf:title class="bh-title">{{ $item.Brand.brand_title }} {{ $item.item_title }}</xf:title>
+<xf:css src="bh_brandHub_list.less" />
+<div class="block">
+	<div class="block-container">
+		<div class="block-header">
+			<h3 class="block-minorHeader">{{ phrase('bh_x_item_owner_pages', {'brandTitle': $item.Brand.brand_title, 'itemTitle': $item.item_title}) }}</h3>
+			<div class="p-description">{{ phrase('bh_view_owner_pages_to_see_photos_customizations', {'brandTitle': $item.Brand.brand_title, 'itemTitle': $item.item_title}) }}</div>
+		</div>
+		<div class="block-body block-row block-row--separated">
+			<div class="block-body">
+
+			<div class="block-body">
+				<xf:if is="$ownerPages is not empty">
+						<div class="brandHub">		
+							<ul class="grid-list">
+								<xf:foreach loop="$ownerPages" value="$ownerPage">
+								<li class="bh_item">
+									<div class="borderpage">
+
+										<xf:set var="$pageThumbnailUrl" value="{$ownerPage.getthumbnailurl()}" />
+
+												<a href="{{ link('owners', $ownerPage) }}" class="bh_a" >
+													<xf:if is="$pageThumbnailUrl">
+														<img src="{{ $pageThumbnailUrl }}"  />	
+													<xf:else />
+														<i class="fas fa-image fa-6x" ></i>
+													</xf:if>	<br>
+
+													<xf:comment>
+													<strong>{$ownerPage.User.username} in {{$ownerPage.Item.item_title}} </strong>
+													</xf:comment>
+													
+													<strong>{{ $ownerPage.title ?: phrase('bh_ownerPage_title', {'brandTitle': $ownerPage.Item.Brand.brand_title, 'itemTitle': $ownerPage.Item.item_title, 'username':$ownerPage.User.username}) }}</strong></a>
+												</a>
+									</div>
+
+									</li>
+								</xf:foreach>
+							</ul>	
+						</div>
+				<xf:else />
+					<div class="blockMessage">{{ phrase('no_results_found') }}</div>
+				</xf:if>
+		
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<xf:comment>
+<xf:title class="bh-title">{{ $item.Brand.brand_title }} {{ $item.item_title }}</xf:title>
+<xf:css src="bh_brandHub_list.less" />
+<div class="block">
+	<div class="block-container">
+		<div class="block-header">
+			<h3 class="block-minorHeader">{{ phrase('bh_x_item_owner_pages', {'brandTitle': $item.Brand.brand_title, 'itemTitle': $item.item_title}) }}</h3>
+			<div class="p-description">{{ phrase('bh_view_owner_pages_to_see_photos_customizations', {'brandTitle': $item.Brand.brand_title, 'itemTitle': $item.item_title}) }}</div>
+		</div>
+		<div class="block-row block-row--separated">
+				<div class="block-body">
+					<xf:macro template="bh_item_owner_page_all" name="owner_pages" arg-item="{$ownerPages.first().Item}" arg-itemPages="{$ownerPages}" />
+				</div>
+		</div>
+	</div>
+</div>
+</xf:comment>

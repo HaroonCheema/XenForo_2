@@ -2593,14 +2593,18 @@ a.file-insertLink,
 		});
 	});
 </xf:js>]]></template>
-  <template type="public" title="bh_brandHub_list.less" version_id="3030000" version_string="3.3.0 Alpha"><![CDATA[@media screen and (max-width: 642px) {
+  <template type="public" title="bh_brandHub_list.less" version_id="3050100" version_string="3.5.1 Alpha"><![CDATA[@media screen and (max-width: 642px) {
 
 	 .borderpage{
-	
+		margin: 5px;
 		height:140px;
 		width: 105px;
      }
 
+	 .bh_item{
+		padding: 0px;
+     }
+	
 	.fas{
 			font-size: 5em;
 		}	
@@ -2614,8 +2618,9 @@ a.file-insertLink,
 	.grid-page-item {
 		
  	display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 0px 9px;
+    grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: 220px;
+	grid-gap: 0px 0px;
     padding: 0px 0px;
 		
      }
@@ -2624,16 +2629,26 @@ a.file-insertLink,
 		
 	display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 0px 9px;
+    grid-gap: 0px 0px;
     padding: 0px 0px;
 		
 	}
 	
 	.pageimage{
+		object-fit: cover;
 		width: inherit;
     	height: 105px;
 	}
 	
+		[data-template="bh_item_detail"] .itemList-item
+	{
+		object-fit: cover;
+		margin: 5px;
+		min-width: 100px; 
+		max-width: 100px;
+		min-height: 100px;
+		max-height: 100px;
+	}
 		
 	}
 
@@ -2641,15 +2656,15 @@ a.file-insertLink,
  
    .borderpage{
 	
-	height: 150px;
-    width: 150px;
+	height: 250px;
+    width: 250px;
 	   
     }
 	.grid-page-item {
 		
  	display: grid;
     grid-template-columns: repeat(6, 1fr);
-    grid-gap: 0px 9px;
+    grid-gap: 0px 10px;
     padding: 0px 0px;
 		
      }
@@ -2658,14 +2673,15 @@ a.file-insertLink,
 		
 	display: grid;
     grid-template-columns: repeat(7, 1fr);
-    grid-gap: 0px 9px;
+    grid-gap: 0px 10px;
     padding: 0px 0px;
 		
 	}
 	
 	.pageimage{
-		width:110px;
-		height:60px;
+		object-fit: cover;
+		width:250px;
+		height:250px;
 	}
 	
 			
@@ -2683,14 +2699,13 @@ a.file-insertLink,
 	border-left:2 solid blue !important;
 }
 .brandHub {
-    font-size: 13px;
-	padding: 10px 20px;
+    font-size: 16px;
+	padding: ;
 }
 
 .bh_item {
     width: 100%;
     /* font-family: CoreSans,Arial,sans-serif; */
-    letter-spacing: .5px;
     padding: 12px 0 10px!important;
 	line-height: 18px;
 	list-style: none;
@@ -2804,10 +2819,8 @@ a.file-insertLink,
 
 .borderpage{
 	
-	border: 2px solid orange;
-    padding: 14px;
+    margin: 10px;
     text-align: center;
-    border-radius: 5px;
 
 }
 
@@ -2996,10 +3009,10 @@ a.file-insertLink,
 	[data-template="bh_page_detail"] .itemList--strip .itemList-item
 	{
 		margin: 10px;
-		 min-width: 120px; 
+		 min-width: 180px; 
 		/* min-height: 100px; */
-		max-height: 100px;
-		max-width: 120px;	
+		max-height: 180px;
+		max-width: 180px;	
 	}
 }
 
@@ -3034,6 +3047,11 @@ a.file-insertLink,
 		width:90%;
 		margin:6%;
 	}
+	
+}
+[data-template="bh_item_detail"] .p-description
+{
+	display:none;
 }]]></template>
   <template type="public" title="bh_brand_description_edit" version_id="1020700" version_string="1.2.7 Alpha"><![CDATA[<xf:if is="$brand.isInsert()">
 	<xf:title>{{ phrase('bh_add_brand') }}</xf:title>
@@ -4450,14 +4468,15 @@ a.file-insertLink,
 		<xf:submitrow sticky="true" icon="save" />
 	</div>
 </xf:form>]]></template>
-  <template type="public" title="bh_item_detail" version_id="3040000" version_string="3.4.0 Alpha"><![CDATA[<xf:css src="bh_brandHub_list.less" />
+  <template type="public" title="bh_item_detail" version_id="3050100" version_string="3.5.1 Alpha"><![CDATA[<xf:css src="bh_brandHub_list.less" />
 
-<xf:title class="bh-title">{{$item.Brand.brand_title}} {{ $item.item_title }}</xf:title>
+<xf:title class="bh-title">{{$item.Brand.brand_title}} {{ $item.item_title }} Resource Page</xf:title>
+<xf:description>Information, reviews, photos, discussion topics, owner pages, and specifications about the {{$item.Brand.brand_title}} {{ $item.item_title }}.</xf:description>
+
 <xf:h1>
 	{{$item.Brand.brand_title}} {{ $item.item_title }} <span class="item-rating"><xf:macro template="rating_macros" name="stars" arg-rating="{$item.rating_avg}" arg-class="ratingStars--smaller" />({{$item.rating_count}})</span>
 </xf:h1>
 <div>{{ $item.Category.category_title }} </div>
-
 
 
 <xf:breadcrumb source="$item.getBreadcrumbs(false)" />
@@ -4667,25 +4686,15 @@ a.file-insertLink,
 <div class='clearfix'></div>
 
 
-
-	<div class="block-container">
-		<ol class="block-body">
-			<xf:foreach loop="$results" value="$result">
-				{{ $result.render({'mod': $activeModType})|raw }}
-			</xf:foreach>
-		</ol>
-	</div>
-
-
 <div class="block" id="discussion">
 				<div class="block-container">
 					<div class="block-header">
-						<h3 class="block-minorHeader">{{ phrase('bh_x_item_descussion', {'brandTitle': $item.Brand.brand_title, 'itemTitle': $item.item_title}) }}</h3>
+						<h3 class="block-minorHeader">{{ phrase('bh_x_item_descussion', {'brandTitle': $item.Brand.brand_title, 'itemTitle': $item.item_title}) }} ({{$item.discussion_count}})</h3>
 						<div class="p-description">{{ phrase('bh_here_are_the_most_recent_x_item_topics_from_our_community', {'brandTitle': $item.Brand.brand_title, 'itemTitle': $item.item_title}) }}</div>
 						
 						<div style="float:right;">
 							<xf:button href="{{ link('bh-item/post-thread-chooser', $item) }}" class="button--cta" icon="write" overlay="true">
-								{{ phrase('bh_start_a_discussion_about_x_item',{'itemTitle': $item.item_title}) }}
+								{{ phrase('bh_start_a_discussion_about_x_item',{'brandTitle': $item.Brand.brand_title, 'itemTitle': $item.item_title}) }}
 							</xf:button>
 						</div>
 					</div>
@@ -4706,7 +4715,28 @@ a.file-insertLink,
 									
 									<div class="block-footer block-footer--split">
 										<xf:if is="$item.discussion_count > $xf.options.bh_discussions_on_item">
-											<span class="block-footer-counter"><a href="{{ link('bh-item/itemthreads', $item) }}" target="_blank">{{phrase('bh_view_all_x_item_topics', {'brandTitle': $item.Brand.brand_title, 'itemTitle': $item.item_title})}}&nbsp;&nbsp;<i class="fal fa-greater-than"></i></a></span>
+											<span class="block-footer-counter"><a href="{{ link('bh-item/itemthreads', $item) }}" target="_blank">{{phrase('bh_view_all_x_item_topics', {'brandTitle': $item.Brand.brand_title, 'itemTitle': $item.item_title})}}&nbsp;&nbsp;<i class="fal fa-greater-than"></i> </a>
+												
+
+												<dl class="tagList">
+	
+													<dd>
+														<span class="js-tagList">
+															<xf:if is="$tags">
+																<xf:foreach loop="$tags" value="$tag">
+																	<a href="{{ link('tags', $tag) }}" class="tagItem tagItem--tag_{$tag.tag_url}" dir="auto">
+																		{{ $tag.tag }}
+																	</a>
+																</xf:foreach>
+																<xf:else />
+																{{ phrase('none') }}
+															</xf:if>
+														</span>
+													</dd>
+												</dl>
+
+											</span>
+											
 										<xf:else />
 											<span class="block-footer-counter"></span>
 										</xf:if>
@@ -4724,7 +4754,6 @@ a.file-insertLink,
 
 <xf:macro  template="bh_ad_macros" name="center_itemdetail1" />
 	<div class='clearfix'></div>
-
 
 <xf:include template="bh_user_reviews" />
 	<div class='clearfix'></div>
@@ -7197,7 +7226,7 @@ a.file-insertLink,
 		</div>
 	</div>
 </div>]]></template>
-  <template type="public" title="bh_tab_owner_pages" version_id="3020000" version_string="3.2.0 Alpha"><![CDATA[<xf:title class="bh-title">{{ $item.Brand.brand_title }} {{ $item.item_title }}</xf:title>
+  <template type="public" title="bh_tab_owner_pages" version_id="3050100" version_string="3.5.1 Alpha"><![CDATA[<xf:title class="bh-title">{{ $item.Brand.brand_title }} {{ $item.item_title }}</xf:title>
 <xf:css src="bh_brandHub_list.less" />
 <div class="block">
 	<div class="block-container">
@@ -7223,7 +7252,7 @@ a.file-insertLink,
 														<img src="{{ $pageThumbnailUrl }}"  />	
 													<xf:else />
 														<i class="fas fa-image fa-6x" ></i>
-													</xf:if>	
+													</xf:if>	<br>
 
 													<xf:comment>
 													<strong>{$ownerPage.User.username} in {{$ownerPage.Item.item_title}} </strong>

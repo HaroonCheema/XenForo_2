@@ -36,6 +36,10 @@ rating_avg={{ phrase('bh_rating_avg') }}
 review_count={{ phrase('bh_reviews') }}</edit_format_params>
     <relation group_id="bh_brand_hub" display_order="2"/>
   </option>
+  <option option_id="bh_breadCrumSlug" edit_format="textbox" data_type="string">
+    <default_value>Database</default_value>
+    <relation group_id="bh_brand_hub" display_order="1"/>
+  </option>
   <option option_id="bh_defaultSortOrderOfDiscussions" edit_format="template" data_type="array">
     <default_value>{"order":"post_date","direction":"desc"}</default_value>
     <edit_format_params>bh_option_template_defaultSortOrder_of_taggedThreads</edit_format_params>

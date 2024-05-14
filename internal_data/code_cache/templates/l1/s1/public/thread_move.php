@@ -16,30 +16,17 @@ return array(
 
 ';
 	$__compilerTemp1 = array();
-	if ($__vars['tlgNodes']) {
-		if ($__templater->isTraversable($__vars['tlgNodes'])) {
-			foreach ($__vars['tlgNodes'] AS $__vars['_node']) {
-				$__compilerTemp1[] = array(
-					'value' => $__vars['_node']['node_id'],
-					'disabled' => (($__vars['_node']['node_type_id'] == 'Forum') ? '' : 'disabled'),
-					'label' => $__templater->escape($__vars['_node']['title']),
-					'_type' => 'option',
-				);
-			}
-		}
-	} else {
-		$__compilerTemp2 = $__templater->method($__vars['nodeTree'], 'getFlattened', array(0, ));
-		if ($__templater->isTraversable($__compilerTemp2)) {
-			foreach ($__compilerTemp2 AS $__vars['treeEntry']) {
-				$__compilerTemp1[] = array(
-					'value' => $__vars['treeEntry']['record']['node_id'],
-					'disabled' => (($__vars['treeEntry']['record']['node_type_id'] != 'Forum') ? 'disabled' : ''),
-					'label' => '
+	$__compilerTemp2 = $__templater->method($__vars['nodeTree'], 'getFlattened', array(0, ));
+	if ($__templater->isTraversable($__compilerTemp2)) {
+		foreach ($__compilerTemp2 AS $__vars['treeEntry']) {
+			$__compilerTemp1[] = array(
+				'value' => $__vars['treeEntry']['record']['node_id'],
+				'disabled' => (($__vars['treeEntry']['record']['node_type_id'] != 'Forum') ? 'disabled' : ''),
+				'label' => '
 						' . $__templater->func('repeat_raw', array('&nbsp; ', $__vars['treeEntry']['depth'], ), true) . ' ' . $__templater->escape($__vars['treeEntry']['record']['title']) . '
 					',
-					'_type' => 'option',
-				);
-			}
+				'_type' => 'option',
+			);
 		}
 	}
 	$__compilerTemp3 = '';

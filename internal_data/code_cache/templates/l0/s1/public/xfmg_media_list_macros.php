@@ -183,20 +183,7 @@ return array(
 {
 	$__finalCompiled = '';
 	$__finalCompiled .= '
-	<div class="itemList-item js-inlineModContainer' . ($__templater->method($__vars['mediaItem'], 'isIgnored', array()) ? ' is-ignored' : '') . '" data-author=';
-	$__vars['remainTotal'] = $__templater->preEscaped($__templater->escape($__templater->method($__templater->method($__vars['xf']['app'], 'data', array('Truonglv\\Groups:Album', )), 'getRemainTotal', array())));
-	$__finalCompiled .= '
-';
-	if (!$__templater->test($__vars['remainTotal'], 'empty', array())) {
-		$__finalCompiled .= '
-	"' . ($__templater->escape($__vars['mediaItem']['User']['username']) ?: $__templater->escape($__vars['mediaItem']['username'])) . '" data-remain-total="' . $__templater->escape($__vars['remainTotal']) . '"
-';
-	} else {
-		$__finalCompiled .= '
-	"' . ($__templater->escape($__vars['mediaItem']['User']['username']) ?: $__templater->escape($__vars['mediaItem']['username'])) . '"
-';
-	}
-	$__finalCompiled .= '>
+	<div class="itemList-item js-inlineModContainer' . ($__templater->method($__vars['mediaItem'], 'isIgnored', array()) ? ' is-ignored' : '') . '" data-author="' . ($__templater->escape($__vars['mediaItem']['User']['username']) ?: $__templater->escape($__vars['mediaItem']['username'])) . '">
 		';
 	if ($__vars['allowInlineMod']) {
 		$__finalCompiled .= '

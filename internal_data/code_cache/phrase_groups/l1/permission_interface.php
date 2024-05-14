@@ -1,5 +1,8 @@
 <?php
 return array (
+  'permission_interface.OwnerPagePostModeratorPermissions' => 'OwnerPage post moderator permissions',
+  'permission_interface.OwnerPagePostPermissions' => 'OwnerPage post permissions',
+  'permission_interface.bh_brand_hub' => '[XB] Brand-Hub',
   'permission_interface.bookmarkPermissions' => 'Bookmark permissions',
   'permission_interface.bot_option' => 'Thread GPT Bot',
   'permission_interface.conversationModeratorPermissions' => 'Conversation moderator permissions',
@@ -41,8 +44,6 @@ return array (
   'permission_interface.siropuChatModerator' => 'Chat moderator permissions',
   'permission_interface.siropuChatUser' => 'Chat user permissions',
   'permission_interface.snog_movies' => '[OzzModz] TMDb Movie Thread Starter',
-  'permission_interface.tl_groups_general' => '[tl] Social Groups: General Permissions',
-  'permission_interface.tl_groups_moderator' => '[tl] Social Groups: Moderator Permissions',
   'permission_interface.trader' => 'Trader',
   'permission_interface.tvthreads_interface' => '[OzzModz] TMDb TV Thread Starter',
   'permission_interface.xc_thread_article' => '[FS] Thread Change Article',

@@ -45,6 +45,7 @@ return array(
 	';
 	}
 	$__templater->pageParams['pageAction'] = $__templater->preEscaped('
+' . $__templater->includeTemplate('fs_discussion_post_limits_info', $__vars) . '
 	' . $__compilerTemp1 . '
 	' . $__compilerTemp2 . '
 ');

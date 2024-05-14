@@ -72,15 +72,6 @@ return array(
 			'key' => 'nodes',
 			'class' => 'block-outer-opposite',
 		), $__vars) . '
-';
-		if ($__vars['tlgNodeListTabs']) {
-			$__finalCompiled .= '
-	' . $__templater->callMacro(null, 'tlg_group_node_macros::node_list_tabs', array(
-				'selected' => $__vars['tlgSelectedTab'],
-			), $__vars) . '
-';
-		}
-		$__finalCompiled .= '
 		</div>
 		<div class="block-container">
 			<div class="block-body">
@@ -95,23 +86,10 @@ return array(
 				$__compilerTemp1 .= '
 						';
 				$__compilerTemp3 = '';
-				if ($__vars['tlgNodeTypeHints'][$__vars['node']['node_id']]) {
+				if (($__vars['node']['node_type_id'] == 'Forum') AND ($__vars['node']['Data']['TypeHandler'] AND ($__vars['node']['Data']['forum_type_id'] != 'discussion'))) {
 					$__compilerTemp3 .= '
-	<span class="dataList-hint" dir="auto">' . $__templater->escape($__vars['tlgNodeTypeHints'][$__vars['node']['node_id']]) . '</span>
-';
-				} else {
-					$__compilerTemp3 .= '
-	<span class="dataList-hint" dir="auto">
-												' . $__templater->escape($__vars['node']['NodeType']['title']) . '
-												';
-					if (($__vars['node']['node_type_id'] == 'Forum') AND ($__vars['node']['Data']['TypeHandler'] AND ($__vars['node']['Data']['forum_type_id'] != 'discussion'))) {
-						$__compilerTemp3 .= '
 													(' . $__templater->escape($__templater->method($__vars['node']['Data']['TypeHandler'], 'getTypeTitle', array())) . ')
 												';
-					}
-					$__compilerTemp3 .= '
-											</span>
-';
 				}
 				$__compilerTemp4 = array(array(
 					'class' => 'dataList-cell--min',
@@ -131,7 +109,10 @@ return array(
 									<div class="u-depth' . $__templater->escape($__vars['treeEntry']['depth']) . '">
 										<div class="dataList-mainRow">
 											' . $__templater->escape($__vars['node']['title']) . '
-											' . $__compilerTemp3 . '
+											<span class="dataList-hint" dir="auto">
+												' . $__templater->escape($__vars['node']['NodeType']['title']) . '
+												' . $__compilerTemp3 . '
+											</span>
 										</div>
 									</div>
 								</a>

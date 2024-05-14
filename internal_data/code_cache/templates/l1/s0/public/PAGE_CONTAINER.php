@@ -204,7 +204,7 @@ return array(
 				' . $__templater->callMacro(null, 'crumb', array(
 			'position' => $__vars['position'],
 			'href' => $__vars['rootBreadcrumb']['href'],
-			'value' => $__vars['rootBreadcrumb']['title'],
+			'value' => $__vars['xf']['options']['bh_breadCrumSlug'],
 		), $__vars) . '
 			';
 	}
@@ -466,14 +466,7 @@ return array(
 							';
 	}
 	$__compilerTemp2 .= '
-							';
-	if ($__vars['xf']['visitor']['is_moderator'] OR $__vars['xf']['visitor']['is_admin']) {
-		$__compilerTemp2 .= '
-	<a href="' . $__templater->func('link', array('ip-search', ), true) . '" class="menu-linkRow">' . 'IP Search' . '</a>
-';
-	}
-	$__compilerTemp2 .= '
-' . '
+							' . '
 							';
 	if (strlen(trim($__compilerTemp2)) > 0) {
 		$__compilerTemp1 .= '

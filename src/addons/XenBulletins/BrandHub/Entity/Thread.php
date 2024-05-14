@@ -10,150 +10,139 @@ class Thread extends XFCP_Thread
 
     protected function _postSave()
     {
-            $app = \XF::app();
+        $app = \XF::app();
 
-            $stringTags = $app->request->filter('tags', 'str'); 
-            
+        $stringTags = $app->request->filter('tags', 'str');
+
         //-----if isInsert ---------
-            if($stringTags && $this->isInsert())
-            {
-                $items = $this->getItemsOfTags($stringTags);   // get items against tags
+        if ($stringTags && $this->isInsert()) {
+            $items = $this->getItemsOfTags($stringTags);   // get items against tags
 
-                foreach($items as $item)
-                {
-                    $itemId = $item->item_id;
+            foreach ($items as $item) {
+                $itemId = $item->item_id;
+
+                if (isset($this->tags)) {
+
                     $this->itemsNewThreadNotification($itemId);
-
-                    \XenBulletins\BrandHub\Helper::updateItemDiscussionCount($itemId); 
-                    \XenBulletins\BrandHub\Helper::updateOwnerPageDiscussionCount($itemId, $this->user_id,'plus');
                 }
-            }
-            
-            
-            
-        //-----if isUpdate ---------
-            
-            
-            $visibilityChange = $this->isStateChanged('discussion_state', 'visible');
-            
-            if ($this->isUpdate())
-            {
-                // get tags titles
-                $tags = $this->getTagsTitle();
-                
-                if($tags)
-                {
-                    $items = $this->getItemsOfTags($tags);   // get items against tags
-                
-                    foreach($items as $item)
-                    {
-                        $itemId = $item->item_id;
 
-                        if ($visibilityChange == 'enter')
-                        {                  
-                                \XenBulletins\BrandHub\Helper::updateItemDiscussionCount($itemId,'plus');
-                                \XenBulletins\BrandHub\Helper::updateOwnerPageDiscussionCount($itemId, $this->user_id,'plus');
-                        }
-                        else if ($visibilityChange == 'leave')
-                        {                 
-                                \XenBulletins\BrandHub\Helper::updateItemDiscussionCount($itemId,'minus');
-                                \XenBulletins\BrandHub\Helper::updateOwnerPageDiscussionCount($itemId, $this->user_id,'minus');
-                        }
+                \XenBulletins\BrandHub\Helper::updateItemDiscussionCount($itemId);
+                \XenBulletins\BrandHub\Helper::updateOwnerPageDiscussionCount($itemId, $this->user_id, 'plus');
+            }
+        }
+
+
+
+        //-----if isUpdate ---------
+
+
+        $visibilityChange = $this->isStateChanged('discussion_state', 'visible');
+
+        if ($this->isUpdate()) {
+            // get tags titles
+            $tags = $this->getTagsTitle();
+
+            if ($tags) {
+                $items = $this->getItemsOfTags($tags);   // get items against tags
+
+                foreach ($items as $item) {
+                    $itemId = $item->item_id;
+
+                    if ($visibilityChange == 'enter') {
+                        \XenBulletins\BrandHub\Helper::updateItemDiscussionCount($itemId, 'plus');
+                        \XenBulletins\BrandHub\Helper::updateOwnerPageDiscussionCount($itemId, $this->user_id, 'plus');
+                    } else if ($visibilityChange == 'leave') {
+                        \XenBulletins\BrandHub\Helper::updateItemDiscussionCount($itemId, 'minus');
+                        \XenBulletins\BrandHub\Helper::updateOwnerPageDiscussionCount($itemId, $this->user_id, 'minus');
                     }
                 }
-               
             }
-            
-            return parent::_postSave();
+        }
+
+        return parent::_postSave();
     }
-    
-    
+
+
     protected function getTagsTitle()
     {
         // get tags titles
         $tags = [];
-        foreach($this->tags as $tag)
-        {
+        foreach ($this->tags as $tag) {
             $tags[] = $tag["tag"];
         }
-        
+
         return $tags;
     }
 
-   
+
 
     protected function itemsNewThreadNotification($itemId)
     {
         $app = \XF::app();
-        
-        $thread = $this;
-        
-        $results = $app->finder('XenBulletins\BrandHub:ItemSub')->where('item_id', $itemId)->with(['User', 'Item'])->fetch();
-               
-        $detail="new thread".$thread->title;
 
-        foreach ($results as $result)     
-        {
+        $thread = $this;
+
+        $results = $app->finder('XenBulletins\BrandHub:ItemSub')->where('item_id', $itemId)->with(['User', 'Item'])->fetch();
+
+        $detail = "new thread" . $thread->title;
+
+        foreach ($results as $result) {
             $link = $app->router('public')->buildLink('threads', $thread);
 
             \XenBulletins\BrandHub\Helper::updateItemNotificiation($result->Item->item_title, $link, $detail, $result->User);
         }
     }
-    
-    
-    
-    
+
+
+
+
     protected function getItemsOfTags($tags)
     {
         $app = \XF::app();
-       
+
         $thread = $this;
 
-        $itemFinder = $app->finder('XenBulletins\BrandHub:Item'); 
+        $itemFinder = $app->finder('XenBulletins\BrandHub:Item');
 
-        if (is_string($tags))
-        {
+        if (is_string($tags)) {
             $tags = explode(',', $tags);
         }
 
 
         $conditions = [];
-        foreach($tags as $tag)
-        {  
+        foreach ($tags as $tag) {
             $quotedtag = $itemFinder->quote(trim($tag));
-            $conditions[] = ['tags', 'LIKE', $itemFinder->escapeLike($tag, '%?%')];
-        } 
-        
-//        if(!$conditions)
-//        {
-//            return null;
-//        }
+            $conditions[] = ['tags', 'LIKE', $itemFinder->escapeLike($tag, '%?')];
+        }
+
+        //        if(!$conditions)
+        //        {
+        //            return null;
+        //        }
 
         $items = $itemFinder->whereOr($conditions)->fetch();
-        
+
         return $items;
     }
 
 
-    
+
     protected function _postDelete()
     {
         // get tags titles
         $tags = $this->getTagsTitle();
-                
-        if($tags && ($this->discussion_state != 'deleted'))
-        {                   
-             $items = $this->getItemsOfTags($tags);   // get items against tags
-             
-            foreach($items as $item)
-            {
+
+        if ($tags && ($this->discussion_state != 'deleted')) {
+            $items = $this->getItemsOfTags($tags);   // get items against tags
+
+            foreach ($items as $item) {
                 $itemId = $item->item_id;
-             
-                \XenBulletins\BrandHub\Helper::updateItemDiscussionCount($itemId,'minus');
-                \XenBulletins\BrandHub\Helper::updateOwnerPageDiscussionCount($itemId, $this->user_id,'minus');
+
+                \XenBulletins\BrandHub\Helper::updateItemDiscussionCount($itemId, 'minus');
+                \XenBulletins\BrandHub\Helper::updateOwnerPageDiscussionCount($itemId, $this->user_id, 'minus');
             }
         }
-        
+
         return parent::_postDelete();
     }
 
@@ -165,6 +154,4 @@ class Thread extends XFCP_Thread
 
         return $structure;
     }
-    
-    
 }

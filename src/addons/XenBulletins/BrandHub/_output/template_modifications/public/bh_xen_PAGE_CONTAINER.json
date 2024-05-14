@@ -1,0 +1,9 @@
+{
+    "template": "PAGE_CONTAINER",
+    "description": "bh_xen_PAGE_CONTAINER",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "$rootBreadcrumb.title",
+    "replace": "$xf.options.bh_breadCrumSlug"
+}

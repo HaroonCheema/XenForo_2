@@ -46,13 +46,7 @@ return array(
 	$__finalCompiled .= '
 
 ';
-	if ($__templater->test($__vars['tlgNoBreadcrumbs'], 'empty', array())) {
-		$__finalCompiled .= '
-';
-		$__templater->breadcrumbs($__templater->method($__vars['mediaItem'], 'getBreadcrumbs', array(false, )));
-		$__finalCompiled .= '
-';
-	}
+	$__templater->breadcrumbs($__templater->method($__vars['mediaItem'], 'getBreadcrumbs', array(false, )));
 	$__finalCompiled .= '
 
 ' . $__templater->callMacro('xfmg_media_view_macros', 'media_status', array(

@@ -211,6 +211,7 @@
   <phrase title="option.bh_ReviewRequired" version_id="1000700" version_string="1.0.7 Alpha"><![CDATA[Review Required]]></phrase>
   <phrase title="option.bh_ReviewsPerPage" version_id="1000800" version_string="1.0.8 Alpha"><![CDATA[Reviews per page]]></phrase>
   <phrase title="option.bh_brandListDefaultOrder" version_id="3000500" version_string="3.0.5 Alpha"><![CDATA[Default Sort Order (Brands)]]></phrase>
+  <phrase title="option.bh_breadCrumSlug" version_id="3050100" version_string="3.5.1 Alpha"><![CDATA[Breadcrum Slug]]></phrase>
   <phrase title="option.bh_defaultSortOrderOfDiscussions" version_id="3040000" version_string="3.4.0 Alpha"><![CDATA[Default sort order of tagged threads]]></phrase>
   <phrase title="option.bh_default_tab" version_id="3000100" version_string="3.0.1 Alpha"><![CDATA[Default Tab]]></phrase>
   <phrase title="option.bh_discussions_on_item" version_id="3040000" version_string="3.4.0 Alpha"><![CDATA[Number of Discussions display on Item]]></phrase>
@@ -233,6 +234,7 @@
   <phrase title="option_explain.bh_ReviewRequired" version_id="1000700" version_string="1.0.7 Alpha"><![CDATA[If enabled, users must submit a review when rating a item.]]></phrase>
   <phrase title="option_explain.bh_ReviewsPerPage" version_id="1000800" version_string="1.0.8 Alpha"><![CDATA[Number of reviews show on per page]]></phrase>
   <phrase title="option_explain.bh_brandListDefaultOrder" version_id="3000500" version_string="3.0.5 Alpha"><![CDATA[Select the default sort order for brand list (list will be sorted by this column)]]></phrase>
+  <phrase title="option_explain.bh_breadCrumSlug" version_id="3050100" version_string="3.5.1 Alpha"><![CDATA[Root breadcrumb to replace with a slug (e.g Forums to Datebase)]]></phrase>
   <phrase title="option_explain.bh_defaultSortOrderOfDiscussions" version_id="3040000" version_string="3.4.0 Alpha"><![CDATA[Default sort order of discussions (tagged threads) on item page.]]></phrase>
   <phrase title="option_explain.bh_default_tab" version_id="3000100" version_string="3.0.1 Alpha"><![CDATA[Select the default tab for brand list (list will be sorted by this tab)]]></phrase>
   <phrase title="option_explain.bh_discussions_on_item" version_id="3040000" version_string="3.4.0 Alpha"><![CDATA[Number of discussions (tagged threads) to display on item page.]]></phrase>

@@ -11,7 +11,6 @@ return array (
   'custom_bb_code_example.fsinfotext' => '',
   'custom_bb_code_example.gallery' => '[GALLERY=media, X]Gallery BB Code[/GALLERY]',
   'custom_bb_code_example.genre' => '',
-  'custom_bb_code_example.group' => '[GROUP]123[/GROUP]',
   'custom_bb_code_example.imath' => '',
   'custom_bb_code_example.locked' => '[locked=15] some content [/locked]',
   'custom_bb_code_example.math' => '',

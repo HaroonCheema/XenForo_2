@@ -11,7 +11,6 @@ return array (
   'custom_bb_code_desc.fsinfotext' => 'Find word and attach Link.',
   'custom_bb_code_desc.gallery' => 'BB code for displaying gallery media items and albums.',
   'custom_bb_code_desc.genre' => 'For formatting old XF1 TMDb movie threads',
-  'custom_bb_code_desc.group' => 'Display specific group information.',
   'custom_bb_code_desc.imath' => '',
   'custom_bb_code_desc.locked' => 'first image if exist else default image will be show on preview',
   'custom_bb_code_desc.math' => '',
