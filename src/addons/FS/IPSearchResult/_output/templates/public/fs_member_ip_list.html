@@ -1,17 +1,5 @@
 <xf:title>{{ phrase('ip_addresses_logged_for_x', {'name': $user.username}) }}</xf:title>
 
-<style>
-
-	.dataList-mainRow > .u-dt{
-		font-weight: 400;
-	}	
-
-	.dataList-mainRow > .ip{
-		font-weight: 400;
-	}
-
-</style>
-
 <div class="block">
 	<div class="block-container">
 		<div class="block-body">
@@ -29,11 +17,11 @@
 					<xf:set var="$userCount" value="count($ip.users)" />
 
 					<xf:datarow rowclass="dataList-row--noHover">
-						<xf:main><xf:label title="{$ip.ip|ip}"><spam class="ip" title="{$ip.ip|ip}">{$ip.ip|ip}</spam></xf:label></xf:main>
-						<xf:main><xf:label><a href="{{ link('misc/ip-info', null, {'ip': $ip.ip|ip}) }}" rel="external" target="_blank">{{ phrase('fs_ip_addresses_click_here') }}</a></xf:label></xf:main>
+						<xf:cell>{$ip.ip|ip}</xf:cell>
+						<xf:cell class="dataList-cell--min"><a href="{{ link('misc/ip-info', null, {'ip': $ip.ip|ip}) }}" rel="external" target="_blank">{{ phrase('fs_ip_addresses_click_here') }}</a></xf:cell>
 						<xf:cell>{$ip.total|number}</xf:cell>
-						<xf:main><xf:label><xf:date time="{$ip.first_date}" /></xf:label></xf:main>
-						<xf:main><xf:label><xf:date time="{$ip.last_date}" /></xf:label></xf:main>
+						<xf:cell><xf:date time="{$ip.first_date}" /></xf:cell>
+						<xf:cell><xf:date time="{$ip.last_date}" /></xf:cell>
 
 						<xf:cell>
 							<xf:if is="$ip.users is not empty">

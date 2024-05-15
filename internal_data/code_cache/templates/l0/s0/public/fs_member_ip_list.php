@@ -1,23 +1,11 @@
 <?php
-// FROM HASH: f06b258d7dd77d375316f7369507eab5
+// FROM HASH: aedd9f6ac7b34dd6f1b64115e1c49b1b
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
 	$__finalCompiled = '';
 	$__templater->pageParams['pageTitle'] = $__templater->preEscaped('IP addresses logged for ' . $__templater->escape($__vars['user']['username']) . '');
 	$__finalCompiled .= '
-
-<style>
-
-	.dataList-mainRow > .u-dt{
-		font-weight: 400;
-	}	
-
-	.dataList-mainRow > .ip{
-		font-weight: 400;
-	}
-
-</style>
 
 <div class="block">
 	<div class="block-container">
@@ -62,30 +50,27 @@ return array(
 			$__compilerTemp1 .= $__templater->dataRow(array(
 				'rowclass' => 'dataList-row--noHover',
 			), array(array(
-				'label' => '<spam class="ip" title="' . $__templater->filter($__vars['ip']['ip'], array(array('ip', array()),), true) . '">' . $__templater->filter($__vars['ip']['ip'], array(array('ip', array()),), true) . '</spam>',
-				'_type' => 'main',
-				'html' => '',
+				'_type' => 'cell',
+				'html' => $__templater->filter($__vars['ip']['ip'], array(array('ip', array()),), true),
 			),
 			array(
-				'label' => '<a href="' . $__templater->func('link', array('misc/ip-info', null, array('ip' => $__templater->filter($__vars['ip']['ip'], array(array('ip', array()),), false), ), ), true) . '" rel="external" target="_blank">' . 'ip details' . '</a>',
-				'_type' => 'main',
-				'html' => '',
+				'class' => 'dataList-cell--min',
+				'_type' => 'cell',
+				'html' => '<a href="' . $__templater->func('link', array('misc/ip-info', null, array('ip' => $__templater->filter($__vars['ip']['ip'], array(array('ip', array()),), false), ), ), true) . '" rel="external" target="_blank">' . 'ip details' . '</a>',
 			),
 			array(
 				'_type' => 'cell',
 				'html' => $__templater->filter($__vars['ip']['total'], array(array('number', array()),), true),
 			),
 			array(
-				'label' => $__templater->func('date_dynamic', array($__vars['ip']['first_date'], array(
+				'_type' => 'cell',
+				'html' => $__templater->func('date_dynamic', array($__vars['ip']['first_date'], array(
 			))),
-				'_type' => 'main',
-				'html' => '',
 			),
 			array(
-				'label' => $__templater->func('date_dynamic', array($__vars['ip']['last_date'], array(
+				'_type' => 'cell',
+				'html' => $__templater->func('date_dynamic', array($__vars['ip']['last_date'], array(
 			))),
-				'_type' => 'main',
-				'html' => '',
 			),
 			array(
 				'_type' => 'cell',
