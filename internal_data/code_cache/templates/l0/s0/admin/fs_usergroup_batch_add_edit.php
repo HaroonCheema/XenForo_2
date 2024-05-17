@@ -127,6 +127,30 @@ return array(
 				</li>
 			</ul>
 
+' . $__templater->formCheckBoxRow(array(
+	), array(array(
+		'name' => 'allow_thread',
+		'value' => '1',
+		'selected' => $__vars['data']['allow_thread'],
+		'label' => '
+		' . 'Allow in thread' . '
+	',
+		'_type' => 'option',
+	)), array(
+	)) . '
+
+' . $__templater->formCheckBoxRow(array(
+	), array(array(
+		'name' => 'allow_profile',
+		'value' => '1',
+		'selected' => $__vars['data']['allow_profile'],
+		'label' => '
+		' . 'Allow in profile' . '
+	',
+		'_type' => 'option',
+	)), array(
+	)) . '
+
 		</div>
 		' . $__templater->formSubmitRow(array(
 		'submit' => '',

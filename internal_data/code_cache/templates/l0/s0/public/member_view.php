@@ -264,6 +264,37 @@ return array(
 					';
 	}
 	$__finalCompiled .= '
+
+';
+	if (!$__templater->test($__templater->method($__vars['user'], 'getBatchLists', array()), 'empty', array())) {
+		$__finalCompiled .= '
+	<div class="gallery">
+		';
+		$__compilerTemp12 = $__templater->method($__vars['user'], 'getBatchLists', array());
+		if ($__templater->isTraversable($__compilerTemp12)) {
+			foreach ($__compilerTemp12 AS $__vars['batch']) {
+				$__finalCompiled .= '
+			';
+				if ($__templater->method($__vars['user'], 'isMemberOf', array($__vars['batch']['usergroup_ids'], ))) {
+					$__finalCompiled .= '
+				<div class="image-wrapper">
+					<img src="' . $__templater->func('base_url', array($__vars['batch']['img_path'], true, ), true) . '" alt="' . $__templater->escape($__vars['batch']['title']) . '" class="bbImage" loading="lazy" />
+				</div>
+			';
+				}
+				$__finalCompiled .= '
+		';
+			}
+		}
+		$__finalCompiled .= '
+	</div>
+';
+	}
+	$__finalCompiled .= '
+
+';
+	$__templater->includeCss('fs_batch_profile.less');
+	$__finalCompiled .= '
 				</div>
 
 			</div>
