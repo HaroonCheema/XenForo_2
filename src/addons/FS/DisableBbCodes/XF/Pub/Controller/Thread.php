@@ -34,9 +34,15 @@ class Thread extends XFCP_Thread
     {
         $visitor = \XF::visitor();
 
+        $visitorGroupIds = $visitor->secondary_group_ids;
+
+        $visitorGroupIds[] = $visitor->user_group_id;
+
         foreach ($disBbCodes as $bbCode) {
 
-            if ($visitor->isMemberOf($bbCode->usergroup_ids)) {
+            $difGroupsIds = array_diff($visitorGroupIds, $bbCode->usergroup_ids);
+
+            if (count($difGroupsIds) < 1) {
 
                 foreach ($posts as $post) {
                     $message = $post->message;
