@@ -773,17 +773,6 @@ class Crud extends AbstractController
     public function actionIndex(ParameterBag $params)
     {
 
-        $array1 = [1, 2, 3, 4, 5, 6, 7];
-        $array2 = [2, 4, 6, 9];
-
-        // Use array_diff to get the difference
-        $result = array_diff($array1, $array2);
-
-        echo "<pre>";
-
-        var_dump($result);
-        exit;
-
         $finder = $this->finder('CRUD\XF:Crud');
 
         // ager filter search wala set hai to ye code chaley ga or is k ander wala function or code run ho ga
