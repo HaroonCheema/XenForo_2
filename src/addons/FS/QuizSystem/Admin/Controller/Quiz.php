@@ -136,7 +136,6 @@ class Quiz extends AbstractController
         if ($start_date <= time()) {
             return $this->message(\XF::phrase('fs_date_expired'));
         }
-        $service->saveQuiz($input, $questions);
 
         if (!$params->quiz_id) {
 
@@ -146,6 +145,8 @@ class Quiz extends AbstractController
             \XF::db()->query('update fs_quiz_category set quiz_count = quiz_count - 1 where category_id =' . $existQuiz['category_id']);
             \XF::db()->query('update fs_quiz_category set quiz_count = quiz_count + 1 where category_id =' . $input['quiz_category']);
         }
+
+        $service->saveQuiz($input, $questions);
 
         return $this->redirect($this->buildLink('quiz'));
     }

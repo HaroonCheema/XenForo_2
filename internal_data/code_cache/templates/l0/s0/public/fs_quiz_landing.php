@@ -43,7 +43,7 @@ return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
 	$__finalCompiled = '';
-	$__templater->pageParams['pageTitle'] = $__templater->preEscaped('fs_quiz');
+	$__templater->pageParams['pageTitle'] = $__templater->preEscaped('Quiz');
 	$__templater->pageParams['pageNumber'] = $__vars['page'];
 	$__finalCompiled .= '
 <script>
