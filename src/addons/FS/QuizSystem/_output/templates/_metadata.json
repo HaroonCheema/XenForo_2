@@ -1,0 +1,17 @@
+{
+    "admin/fs_quiz_edit.html": {
+        "version_id": 1020010,
+        "version_string": "1.2.0 Alpha",
+        "hash": "f1c1c8f91bdd8d1d8a31be44655cd26b"
+    },
+    "public/fs_quiz_category_list_macros.html": {
+        "version_id": 1020010,
+        "version_string": "1.2.0 Alpha",
+        "hash": "17e5b203259b5889863bd5e087dddf6a"
+    },
+    "public/fs_quiz_landing.html": {
+        "version_id": 1020010,
+        "version_string": "1.2.0 Alpha",
+        "hash": "2ca8500a9328d40ab54f8d1f31f26927"
+    }
+}

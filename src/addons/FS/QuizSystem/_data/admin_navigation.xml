@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<admin_navigation>
+  <admin_navigation_entry navigation_id="fs_quiz" parent_navigation_id="quiz_system" display_order="2" link="quiz" icon="fs_quiz" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="fs_quiz_categories" parent_navigation_id="quiz_system" display_order="1" link="quiz-categories" icon="fs_quiz_categories" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="fs_quiz_question" parent_navigation_id="quiz_system" display_order="2" link="quiz-qsn" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="quiz_system" display_order="1" icon="fa-newspaper" debug_only="0" development_only="0" hide_no_children="0"/>
+</admin_navigation>

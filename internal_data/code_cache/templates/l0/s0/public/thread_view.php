@@ -273,7 +273,17 @@ return array(
 		';
 	$__compilerTemp1 = '';
 	$__compilerTemp1 .= '
-					' . $__templater->renderExtension('thread_action_buttons', $__vars, $__extensions) . '
+					';
+	if (($__vars['xf']['visitor']['user_id'] != 0) AND (($__vars['thread']['escrow_id'] != 0) AND ($__vars['thread']['node_id'] == $__vars['xf']['options']['fs_escrow_applicable_forum']))) {
+		$__compilerTemp1 .= '
+	' . $__templater->includeTemplate('fs_escrow_thread_overview_box', $__vars) . '
+';
+	} else {
+		$__compilerTemp1 .= '
+	' . $__templater->renderExtension('thread_action_buttons', $__vars, $__extensions) . '
+';
+	}
+	$__compilerTemp1 .= '
 				';
 	if (strlen(trim($__compilerTemp1)) > 0) {
 		$__finalCompiled .= '
@@ -571,6 +581,62 @@ return array(
 ';
 	$__templater->pageParams['pageH1'] = $__templater->preEscaped($__templater->func('prefix', array('thread', $__vars['thread'], ), true) . $__templater->escape($__vars['thread']['title']));
 	$__finalCompiled .= '
+';
+	if (($__vars['xf']['visitor']['user_id'] != 0) AND (($__vars['thread']['escrow_id'] != 0) AND ($__vars['thread']['node_id'] == $__vars['xf']['options']['fs_escrow_applicable_forum']))) {
+		$__finalCompiled .= '
+
+	';
+		$__compilerTemp1 = '';
+		if ((($__vars['thread']['Escrow']['to_user'] == $__vars['xf']['visitor']['user_id']) OR ($__vars['thread']['Escrow']['user_id'] == $__vars['xf']['visitor']['user_id'])) AND ($__vars['thread']['Escrow']['escrow_status'] == 0)) {
+			$__compilerTemp1 .= '
+			' . $__templater->button('Cancel', array(
+				'href' => $__templater->func('link', array('escrow/cancel', $__vars['thread']['Escrow'], ), false),
+				'class' => 'button--cta',
+				'icon' => 'cancel',
+				'overlay' => 'true',
+			), '', array(
+			)) . '
+		';
+		}
+		$__compilerTemp2 = '';
+		if (($__vars['thread']['Escrow']['user_id'] == $__vars['xf']['visitor']['user_id']) AND ($__vars['thread']['Escrow']['escrow_status'] == 1)) {
+			$__compilerTemp2 .= '
+			' . $__templater->button('Release Payment', array(
+				'href' => $__templater->func('link', array('escrow/payments', $__vars['thread']['Escrow'], ), false),
+				'class' => '',
+				'icon' => 'payment',
+				'overlay' => 'true',
+			), '', array(
+			)) . '
+		';
+		}
+		$__compilerTemp3 = '';
+		if (($__vars['thread']['Escrow']['to_user'] == $__vars['xf']['visitor']['user_id']) AND ($__vars['thread']['Escrow']['escrow_status'] == 0)) {
+			$__compilerTemp3 .= '
+			' . $__templater->button('Approve', array(
+				'href' => $__templater->func('link', array('escrow/approve', $__vars['thread']['Escrow'], ), false),
+				'class' => '',
+				'icon' => 'approve',
+				'overlay' => 'true',
+			), '', array(
+			)) . '
+		';
+		}
+		$__templater->pageParams['pageAction'] = $__templater->preEscaped('
+		' . $__compilerTemp1 . '
+		
+		' . $__compilerTemp2 . '
+		
+		' . $__compilerTemp3 . '
+
+			
+			
+		');
+		$__finalCompiled .= '
+';
+	}
+	$__finalCompiled .= '
+	
 
 ';
 	if (!$__templater->method($__vars['thread'], 'isSearchEngineIndexable', array())) {
@@ -583,9 +649,9 @@ return array(
 	$__finalCompiled .= '
 
 ';
-	$__compilerTemp1 = '';
+	$__compilerTemp4 = '';
 	if ($__vars['xf']['options']['enableTagging'] AND ($__templater->method($__vars['thread'], 'canEditTags', array()) OR $__vars['thread']['tags'])) {
-		$__compilerTemp1 .= '
+		$__compilerTemp4 .= '
 			<li>
 				' . $__templater->callMacro('tag_macros', 'list', array(
 			'tags' => $__vars['thread']['tags'],
@@ -617,7 +683,7 @@ return array(
 			<a href="' . $__templater->func('link', array('threads', $__vars['thread'], ), true) . '" class="u-concealed">' . $__templater->func('date_dynamic', array($__vars['thread']['post_date'], array(
 	))) . '</a>
 		</li>
-		' . $__compilerTemp1 . '
+		' . $__compilerTemp4 . '
 	</ul>
 ');
 	$__templater->pageParams['pageDescriptionMeta'] = false;
@@ -655,12 +721,12 @@ return array(
 	if ($__vars['thread']['prefix_id']) {
 		$__finalCompiled .= '
 	';
-		$__compilerTemp2 = '';
-		$__compilerTemp2 .= $__templater->func('prefix_description', array('thread', $__vars['thread']['prefix_id'], ), true);
-		if (strlen(trim($__compilerTemp2)) > 0) {
+		$__compilerTemp5 = '';
+		$__compilerTemp5 .= $__templater->func('prefix_description', array('thread', $__vars['thread']['prefix_id'], ), true);
+		if (strlen(trim($__compilerTemp5)) > 0) {
 			$__finalCompiled .= '
 		<div class="blockMessage blockMessage--alt blockMessage--small blockMessage--close">
-			' . $__compilerTemp2 . '
+			' . $__compilerTemp5 . '
 		</div>
 	';
 		}
@@ -834,8 +900,8 @@ return array(
 	</div>
 
 	';
-	$__compilerTemp3 = '';
-	$__compilerTemp3 .= '
+	$__compilerTemp6 = '';
+	$__compilerTemp6 .= '
 				' . $__templater->func('page_nav', array(array(
 		'page' => $__vars['page'],
 		'total' => $__vars['totalPosts'],
@@ -852,18 +918,18 @@ return array(
 	))) . '
 				';
 	if ((!$__templater->method($__vars['thread'], 'canReply', array())) AND ((!$__templater->method($__vars['thread'], 'canReplyPreReg', array())) AND (($__vars['thread']['discussion_state'] == 'visible') AND $__vars['thread']['discussion_open']))) {
-		$__compilerTemp3 .= '
+		$__compilerTemp6 .= '
 					<div class="block-outer-opposite">
 						';
 		if ($__vars['xf']['visitor']['user_id']) {
-			$__compilerTemp3 .= '
+			$__compilerTemp6 .= '
 							<span class="button button--wrap is-disabled">
 								' . 'You have insufficient privileges to reply here.' . '
 								<!-- this is not interactive so shouldn\'t be a button element -->
 							</span>
 						';
 		} else {
-			$__compilerTemp3 .= '
+			$__compilerTemp6 .= '
 							' . $__templater->button('
 								' . 'You must log in or register to reply here.' . '
 							', array(
@@ -874,16 +940,16 @@ return array(
 			)) . '
 						';
 		}
-		$__compilerTemp3 .= '
+		$__compilerTemp6 .= '
 					</div>
 				';
 	}
-	$__compilerTemp3 .= '
+	$__compilerTemp6 .= '
 			';
-	if (strlen(trim($__compilerTemp3)) > 0) {
+	if (strlen(trim($__compilerTemp6)) > 0) {
 		$__finalCompiled .= '
 		<div class="block-outer block-outer--after">
-			' . $__compilerTemp3 . '
+			' . $__compilerTemp6 . '
 		</div>
 	';
 	}

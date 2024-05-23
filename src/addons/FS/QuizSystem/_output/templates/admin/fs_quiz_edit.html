@@ -1,0 +1,67 @@
+<xf:if is="$quiz != null">
+	<xf:title>{{ phrase('edit_quiz:') }}</xf:title>
+<xf:else />
+	<xf:title>{{ phrase('add_quiz:') }}</xf:title>
+</xf:if>
+
+<xf:form action="{{ link('quiz/save' , {$quiz}) }}" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:foreach loop="$categories" value="$category">
+				</xf:foreach>
+			<xf:selectrow name="quiz_category" value="$categories" label="{{ phrase('fs_quiz_categories') }}">
+				<xf:foreach loop="$categories" value="$category">
+					<xf:option value="{$category.category_id}" selected="$category.category_id == $quiz.category_id">{$category.title}</xf:option>
+				</xf:foreach>
+			</xf:selectrow>
+			<xf:textarearow name="quiz_name" 
+					label="{{ phrase('fs_quiz_name') }}"
+					value="{{ $quiz? $quiz.quiz_name : '' }}"
+					placeholder="{{ phrase('fs_quiz_name') }}"
+					dir="ltr" />
+			<xf:textarearow name="quiz_des" 
+					label="{{ phrase('fs_quiz_des') }}"
+					value="{{ $quiz? $quiz.quiz_des : '' }}"
+					placeholder="{{ phrase('fs_quiz_des') }}"
+					dir="ltr" />
+				<xf:tokeninputrow name="quiz_questions" value="{{ $pre_qsn }}" href="{{ link('quiz/find') }}"
+					label="{{ phrase('fs_quiz_qsn') }}"
+					min-length="1"
+					max-tokens="{{ (count($question) > 0) ? count($question)+1 : null }}"
+					explain="{{ $quiz ? 'The questions being display are dummy add them again.' : '' }}" />
+	
+			<xf:formrow label="{{ phrase('fs_quiz_state') }}">
+				<xf:radio  name="quiz_state" value="{{ $quiz.quiz_state }}">
+					<xf:option label= "Open" class="mycheckbox" name="quiz_state" value="open"></xf:option>
+					<xf:option label= "Closed" class="mycheckbox" name="quiz_state" value="closed"></xf:option>
+				</xf:radio>
+			</xf:formrow>
+			<xf:formrow label="{{ phrase('fs_quiz_start') }}">
+				 <xf:textbox type="time" name="start_time" value="{{ $st_time }}" style="width: 28%;"/><br>
+				<xf:dateinput
+					name="quiz_start_date"
+					value="{{ $st_date }}"
+					required="true"
+					autocomplete="off"
+				/>
+			</xf:formrow>
+			<xf:formrow label="{{ phrase('fs_quiz_end') }}">
+				 <xf:textbox type="time" name="end_time" value="{{$end_time}}" style="width: 28%;"/><br>
+				<xf:dateinput
+						name="quiz_end_date"
+						value="{{ $end_date }}"
+						required="true"
+						autocomplete="off"
+					/>
+			</xf:formrow>
+			<xf:numberboxrow label="{{ phrase('fs_time_per_qsn') }}" name="qsn_time" min="60" explain="{{ phrase('qsn_time') }}" value="{{ $quiz.time_per_question }}"/>
+			
+			<xf:checkboxrow label="{{ phrase('fs_quiz_user_group') }}" name="user_groups[]" value="{{ $quiz.user_group }}">
+					<xf:foreach loop="$userGroups" value="$userGroup">
+						<xf:option value="{$userGroup.user_group_id}">{$userGroup.title}</xf:option>
+					</xf:foreach>
+			</xf:checkboxrow>
+		</div>
+		<xf:submitrow sticky="true" icon="save" />
+	</div>
+</xf:form>

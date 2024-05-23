@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<code_event_listeners>
+  <listener event_id="templater_template_pre_render" execute_order="10" callback_class="FS\PrivateBbcode\EventListener" callback_method="templaterTemplatePreRender" active="1" hint="public:editor" description="Remove private bbcode tag icon from editor (if User has no perssion to use it)"/>
+</code_event_listeners>

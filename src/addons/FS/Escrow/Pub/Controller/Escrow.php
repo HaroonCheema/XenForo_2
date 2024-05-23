@@ -45,8 +45,8 @@ class Escrow extends AbstractController
 
         $file = \XF::app()->applyExternalDataUrl('Barcode/' . $fileName, true);
         // Displaying the stored QR code from directory
-        echo "<center><img src='" . $file . "'></center>";
-        exit;
+        // echo "<center><img src='" . $file . "'></center>";
+        // exit;
         $visitor = \XF::visitor();
         $rules[] = [
             'message' => \XF::phrase('fs_escrow_rules'),

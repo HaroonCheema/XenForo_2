@@ -434,6 +434,23 @@ return array(
 		data-lb-caption-desc="' . ($__vars['post']['User'] ? $__templater->escape($__vars['post']['User']['username']) : $__templater->escape($__vars['post']['username'])) . ' &middot; ' . $__templater->func('date_time', array($__vars['post']['post_date'], ), true) . '">
 
 		';
+	if ($__vars['thread']['Forum']['node_id'] == $__vars['xf']['options']['fs_auction_applicable_forum']) {
+		$__finalCompiled .= '
+		<div class="message-fields message-fields--after">
+				<dl class="pairs pairs--columns pairs--fixedSmall pairs--customField" data-field="threadCustomField">
+					<dt>' . 'AUCTION ENDS ON' . '</dt>
+					<dd>
+						' . $__templater->escape($__templater->method($__vars['thread'], 'getFormatedTime12', array())) . '
+				
+					</dd>
+				</dl>
+			
+			</div>
+		';
+	}
+	$__finalCompiled .= '
+
+';
 	if ($__templater->method($__vars['post'], 'isFirstPost', array())) {
 		$__finalCompiled .= '
 			' . $__templater->callMacro('custom_fields_macros', 'custom_fields_view', array(
@@ -469,6 +486,23 @@ return array(
 		</article>
 
 		';
+	if ($__vars['thread']['Forum']['node_id'] == $__vars['xf']['options']['fs_auction_applicable_forum']) {
+		$__finalCompiled .= '
+		<div class="message-fields message-fields--after">
+				<dl class="pairs pairs--columns pairs--fixedSmall pairs--customField" data-field="threadCustomField">
+					<dt>' . 'AUCTION ENDS ON' . '</dt>
+					<dd>
+						' . $__templater->escape($__templater->method($__vars['thread'], 'getFormatedTime12', array())) . '
+				
+					</dd>
+				</dl>
+			
+			</div>
+		';
+	}
+	$__finalCompiled .= '
+
+';
 	if ($__templater->method($__vars['post'], 'isFirstPost', array())) {
 		$__finalCompiled .= '
 			' . $__templater->callMacro('custom_fields_macros', 'custom_fields_view', array(
@@ -659,17 +693,23 @@ return array(
 	$__compilerTemp2 .= '
 
 			';
-	$__vars['hasActionBarMenu'] = false;
-	$__compilerTemp2 .= '
+	if ($__vars['thread']['node_id'] == $__vars['xf']['options']['fs_escrow_applicable_forum']) {
+		$__compilerTemp2 .= '
+	';
+		if ($__templater->method($__vars['post'], 'isFirstPost', array()) AND ($__vars['thread']['user_id'] == $__vars['xf']['visitor']['user_id'])) {
+			$__compilerTemp2 .= '
+		';
+			$__vars['hasActionBarMenu'] = false;
+			$__compilerTemp2 .= '
 			';
-	if ($__templater->method($__vars['post'], 'canEdit', array())) {
-		$__compilerTemp2 .= '
+			if ($__templater->method($__vars['post'], 'canEdit', array())) {
+				$__compilerTemp2 .= '
 				';
-		$__templater->includeJs(array(
-			'src' => 'xf/message.js',
-			'min' => '1',
-		));
-		$__compilerTemp2 .= '
+				$__templater->includeJs(array(
+					'src' => 'xf/message.js',
+					'min' => '1',
+				));
+				$__compilerTemp2 .= '
 				<a href="' . $__templater->func('link', array('posts/edit', $__vars['post'], ), true) . '"
 					class="actionBar-action actionBar-action--edit actionBar-action--menuItem"
 					data-xf-click="quick-edit"
@@ -677,9 +717,42 @@ return array(
 					data-menu-closer="true">' . 'Edit' . '</a>
 
 				';
-		$__vars['hasActionBarMenu'] = true;
+				$__vars['hasActionBarMenu'] = true;
+				$__compilerTemp2 .= '
+			';
+			}
+			$__compilerTemp2 .= '
+	';
+		}
+		$__compilerTemp2 .= '
+	';
+	} else {
+		$__compilerTemp2 .= '
+	';
+		$__vars['hasActionBarMenu'] = false;
 		$__compilerTemp2 .= '
 			';
+		if ($__templater->method($__vars['post'], 'canEdit', array())) {
+			$__compilerTemp2 .= '
+				';
+			$__templater->includeJs(array(
+				'src' => 'xf/message.js',
+				'min' => '1',
+			));
+			$__compilerTemp2 .= '
+				<a href="' . $__templater->func('link', array('posts/edit', $__vars['post'], ), true) . '"
+					class="actionBar-action actionBar-action--edit actionBar-action--menuItem"
+					data-xf-click="quick-edit"
+					data-editor-target="#js-post-' . $__templater->escape($__vars['post']['post_id']) . ' .js-quickEditTarget"
+					data-menu-closer="true">' . 'Edit' . '</a>
+
+				';
+			$__vars['hasActionBarMenu'] = true;
+			$__compilerTemp2 .= '
+			';
+		}
+		$__compilerTemp2 .= '
+';
 	}
 	$__compilerTemp2 .= '
 			';

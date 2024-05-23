@@ -30,7 +30,7 @@ return array(
 			)) . '
 	', array(
 				'rowtype' => 'input',
-				'label' => 'Answer',
+				'label' => 'answer',
 				'hint' => 'Required',
 			)) . '
 		

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="editor_base.less" modification_key="fs_pb_inhence_private_img_size" description="increase private bbcode icon img size" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/.*/si]]></find>
+    <replace><![CDATA[$0
+.fr-command.fr-btn#xfCustom_private-1
+{
+    img
+	{
+    	width: @btn-font-size + 26px;
+    }
+}]]></replace>
+  </modification>
+</template_modifications>

@@ -103,41 +103,7 @@ return array(
 	';
 	}
 	$__finalCompiled .= '
-	';
-	if ($__templater->method($__vars['xf']['visitor'], 'canViewMedia', array())) {
-		$__finalCompiled .= '
-	';
-		if ($__vars['user']['xfmg_media_count']) {
-			$__finalCompiled .= '
-		<dl class="pairs pairs--rows pairs--rows--centered menu-fauxLinkRow">
-			<dt>' . 'Media' . '</dt>
-			<dd>
-				<a href="' . $__templater->func('link', array('media/users', $__vars['user'], ), true) . '" class="menu-fauxLinkRow-linkRow u-concealed">
-					' . $__templater->filter($__vars['user']['xfmg_media_count'], array(array('number', array()),), true) . '
-				</a>
-			</dd>
-		</dl>
-	';
-		}
-		$__finalCompiled .= '
-';
-	}
-	$__finalCompiled .= '
-';
-	if ($__templater->method($__vars['xf']['visitor'], 'canViewResources', array()) AND $__vars['user']['xfrm_resource_count']) {
-		$__finalCompiled .= '
-	<dl class="pairs pairs--rows pairs--rows--centered menu-fauxLinkRow">
-		<dt>' . 'Resources' . '</dt>
-		<dd>
-			<a href="' . $__templater->func('link', array('resources/authors', $__vars['user'], ), true) . '" class="menu-fauxLinkRow-linkRow u-concealed">
-				' . $__templater->filter($__vars['user']['xfrm_resource_count'], array(array('number', array()),), true) . '
-			</a>
-		</dd>
-	</dl>
-';
-	}
-	$__finalCompiled .= '
-' . '
+	' . '
 	' . '
 	<dl class="pairs pairs--rows pairs--rows--centered">
 		<dt title="' . $__templater->filter('Reaction score', array(array('for_attr', array()),), true) . '">' . 'Reaction score' . '</dt>
@@ -161,6 +127,18 @@ return array(
 	}
 	$__finalCompiled .= '
 	' . '
+';
+	if (($__vars['user']['user_id'] == $__vars['xf']['visitor']['user_id']) OR $__vars['xf']['visitor']['is_admin']) {
+		$__finalCompiled .= '
+	<dl class="pairs pairs--rows pairs--rows--centered menu-fauxLinkRow">
+		<dt>' . 'Amount' . '</dt>
+		<dd>
+			' . '$' . $__templater->escape($__vars['user']['deposit_amount']) . '
+		</dd>
+	</dl>
+';
+	}
+	$__finalCompiled .= '
 	';
 	if ($__templater->method($__vars['xf']['visitor'], 'canViewWarnings', array()) AND $__vars['user']['warning_points']) {
 		$__finalCompiled .= '

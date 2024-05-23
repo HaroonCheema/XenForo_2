@@ -67,7 +67,7 @@ return array(
 			)) . '
 	', array(
 				'rowtype' => 'input',
-				'label' => 'Answer' . ' ' . $__templater->escape($__vars['i']),
+				'label' => 'answer' . ' ' . $__templater->escape($__vars['i']),
 				'hint' => 'Required',
 			)) . '
 	 

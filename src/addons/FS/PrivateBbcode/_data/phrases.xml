@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="custom_bb_code_desc.private" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="custom_bb_code_example.private" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[PRIVATE] Some text [/PRIVATE]]]></phrase>
+  <phrase title="custom_bb_code_output.private" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="custom_bb_code_title.private" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[PRIVATE BBCode]]></phrase>
+  <phrase title="fs_private_bbcode_caption" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Private]]></phrase>
+  <phrase title="fs_private_bbcode_tag_no_permission" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You do not have permission to use the BB-code [PRIVATE].]]></phrase>
+  <phrase title="fs_private_content_text" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<b> ** Premium Content ** </b>]]></phrase>
+  <phrase title="permission.fsPrivateBbcode_usePrivateTag" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Can use Private BBCode tag]]></phrase>
+  <phrase title="permission.fsPrivateBbcode_viewPrivateContent" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Can view Private content]]></phrase>
+  <phrase title="permission_interface.fsPrivateBbcode" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Private-BBCode]]></phrase>
+</phrases>

@@ -1,0 +1,758 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="admin" title="correct_answer" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:js src="xf/sort.js, vendor/dragula/dragula.js"/>
+<xf:css src="public:dragula.less"/>
+<xf:form action="{{ link($prefix . '/save', $field) }}" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			
+			<xf:textarearow name="question" 
+					label="{{ phrase('fs_question') }}"
+					explain="{{ phrase('fs_question_explain') }}"
+					dir="ltr" />
+			
+
+			
+		</div>
+
+			<h3 class="block-formSectionHeader">
+				<span class="collapseTrigger collapseTrigger--block" data-xf-click="toggle" data-target="< :up:next">
+					<span class="block-formSectionHeader-aligner">{{ phrase('options_for_choice_fields') }}</span>
+				</span>
+			</h3>
+			<div class="block-body block-body--collapsible">
+				<xf:formrow rowtype="input"
+					label="{{ phrase('possible_choices') }}"
+					explain="{{ phrase('value_represents_internal_value_for_choice_text_is_displayed') }}">
+
+					<div class="inputGroup-container" data-xf-init="list-sorter" data-drag-handle=".dragHandle">
+						<xf:foreach loop="$field.field_choices" key="$choice" value="$text">
+							<div class="inputGroup">
+								<span class="inputGroup-text dragHandle"
+									aria-label="{{ phrase('drag_handle')|for_attr }}"></span>
+								<xf:textbox name="field_choice[]" value="{$choice}"
+									placeholder="{{ phrase('value_a_z_0_9_and_only') }}"
+									size="24" maxlength="25"
+									dir="ltr" />
+								<span class="inputGroup-splitter"></span>
+								<xf:textbox name="field_choice_text[]" value="{$text}"
+									placeholder="{{ phrase('text') }}" size="24" />
+							</div>
+						</xf:foreach>
+						<div class="inputGroup is-undraggable js-blockDragafter" data-xf-init="field-adder"
+							data-remove-class="is-undraggable js-blockDragafter">
+							<span class="inputGroup-text dragHandle"
+								aria-label="{{ phrase('drag_handle')|for_attr }}"></span>
+							<xf:textbox name="field_choice[]"
+								placeholder="{{ phrase('value_a_z_0_9_and_only') }}"
+								size="24" maxlength="25" data-i="0"
+								dir="ltr" />
+							
+							<span class="inputGroup-splitter"></span>
+							<xf:textbox name="field_choice_text[]"
+								placeholder="{{ phrase('text') }}"
+								size="24" data-i="0" />
+							<xf:radio>
+								<xf:option>
+								</xf:option>
+							</xf:radio>
+						</div>
+					</div>
+				</xf:formrow>
+			</div>
+		
+
+			</div>
+	
+
+		
+		
+
+		<xf:submitrow sticky="true" icon="save" />
+	</div>
+</xf:form>]]></template>
+  <template type="admin" title="delete_qsn_macros" version_id="1020010" version_string="1.2.0 Alpha"><![CDATA[<xf:macro name="delete" global="true"
+	arg-object="!"
+	arg-idKey="question_id"
+> 
+	<xf:set var="$question" value="{$object}"></xf:set>
+	<xf:form action="{{ link('quiz-qsn/delete', $question) }}" ajax="true" class="block">
+		<div class="block-container">
+			<div class="block-body">
+				<xf:inforow rowtype="confirm">
+					<xf:if is="!$question.question_id">
+						{{ phrase('please_confirm_that_you_want_to_revert_the_following:') }}
+					<xf:else />
+						{{ phrase('please_confirm_that_you_want_to_delete_following:') }}
+					</xf:if>
+					<strong>
+						<h2>
+							{$object.question_title}
+						</h2>
+					</strong>
+				</xf:inforow>
+			</div>
+			<xf:submitrow submit="{{ !$question.question_id ? phrase('revert') : phrase('button.delete') }}"
+				rowtype="simple" icon="{{ $question.question_id ? 'delete' : '' }}" />
+		</div>
+		<xf:redirect />
+	</xf:form>
+
+
+</xf:macro>]]></template>
+  <template type="admin" title="delete_quiz_macros" version_id="1020010" version_string="1.2.0 Alpha"><![CDATA[<xf:macro name="delete" global="true"
+	arg-object="!"
+	arg-idKey="quiz_id"
+> 
+	<xf:set var="$quiz" value="{$object}"></xf:set>
+	<xf:form action="{{ link('quiz/delete', $quiz) }}" ajax="true" class="block">
+		<div class="block-container">
+			<div class="block-body">
+				<xf:inforow rowtype="confirm">
+					<xf:if is="!$quiz.quiz_id">
+						{{ phrase('please_confirm_that_you_want_to_revert_the_following:') }}
+					<xf:else />
+						{{ phrase('please_confirm_that_you_want_to_delete_following:') }}
+					</xf:if>
+					<strong>
+						<h2>
+							{$quiz.quiz_name}
+						</h2>
+					</strong>
+				</xf:inforow>
+			</div>
+			<xf:submitrow submit="{{ !$quiz.quiz_id ? phrase('revert') : phrase('button.delete') }}"
+				rowtype="simple" icon="{{ $quiz.quiz_id ? 'delete' : '' }}" />
+		</div>
+		<xf:redirect />
+	</xf:form>
+
+
+</xf:macro>]]></template>
+  <template type="admin" title="fs_delete_qsn" version_id="1020010" version_string="1.2.0 Alpha"><![CDATA[<xf:title>{{ phrase('confirm_action') }}</xf:title>
+
+<xf:macro template="delete_qsn_macros" name="delete"
+	arg-object="{$question}"
+	arg-idKey="question_id"
+/>]]></template>
+  <template type="admin" title="fs_delete_quiz" version_id="1020010" version_string="1.2.0 Alpha"><![CDATA[<xf:title>{{ phrase('confirm_action') }}</xf:title>
+
+<xf:macro template="delete_quiz_macros" name="delete"
+	arg-object="{$quiz}"
+	arg-idKey="quiz_id"
+/>]]></template>
+  <template type="admin" title="fs_edit_quiz_category" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:if is="$category.isInsert()">
+	<xf:title>{{ phrase('fs_add_category') }}</xf:title>
+<xf:else />
+	<xf:title>{{ phrase('fs_edit_category:') }} {$category.title}</xf:title>
+</xf:if>
+
+<xf:pageaction if="$category.category_id">
+	<xf:button href="{{ link('quiz-categories/delete', $category) }}"
+		icon="delete"
+		data-xf-click="overlay" />
+</xf:pageaction>
+
+<xf:form action="{{ link('quiz-categories/save', $category) }}" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:textboxrow name="title" value="{$category.title}"
+				label="{{ phrase('title') }}" />
+
+			<xf:textarearow name="description" value="{$category.description}" rows="2" autosize="true"
+				label="{{ phrase('description') }}"
+				hint="{{ phrase('you_may_use_html') }}" />
+
+			<xf:macro template="category_tree_macros" name="parent_category_select_row"
+				arg-category="{$category}"
+				arg-categoryTree="{$categoryTree}" />
+
+			<xf:macro template="display_order_macros" name="row"
+					  arg-value="{$category.display_order}" />
+			
+			<xf:submitrow sticky="true" icon="save" />
+		</div>
+	</div>
+</xf:form>]]></template>
+  <template type="admin" title="fs_questions_list" version_id="1020010" version_string="1.2.0 Alpha"><![CDATA[<xf:title>Questions</xf:title>
+
+<xf:macro template="qsn_tree_macros" name="page_action"
+	arg-linkPrefix="quiz-qsn" />
+
+<xf:macro template="qsn_tree_macros" name="qsn_list"
+	arg-qsnTree="{$question}"
+	arg-filterKey="fs_questions_list"
+	arg-linkPrefix="quiz-qsn"
+	arg-idKey="question_id"
+/>]]></template>
+  <template type="admin" title="fs_quiz_category_delete" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('confirm_action') }}</xf:title>
+
+<xf:macro template="category_tree_macros" name="category_delete_form"
+		  arg-linkPrefix="quiz-categories"
+		  arg-category="{$category}" />]]></template>
+  <template type="admin" title="fs_quiz_category_list" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('fs_quiz_categories') }}</xf:title>
+
+<xf:macro template="category_tree_macros" name="page_action"
+	arg-linkPrefix="quiz-categories" />
+
+<xf:macro template="category_tree_macros" name="category_list"
+	arg-categoryTree="{$categoryTree}"
+	arg-filterKey="quiz-categories"
+	arg-linkPrefix="quiz-categories"
+	arg-idKey="category_id"
+/>]]></template>
+  <template type="admin" title="fs_quiz_category_sort" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('sort_categories') }}</xf:title>
+
+<xf:macro template="category_tree_macros" name="sortable_form"
+	arg-categoryTree="{$categoryTree}"
+	arg-linkPrefix="quiz-categories" />]]></template>
+  <template type="admin" title="fs_quiz_edit" version_id="1020010" version_string="1.2.0 Alpha"><![CDATA[<xf:if is="$quiz != null">
+	<xf:title>{{ phrase('edit_quiz:') }}</xf:title>
+<xf:else />
+	<xf:title>{{ phrase('add_quiz:') }}</xf:title>
+</xf:if>
+
+<xf:form action="{{ link('quiz/save' , {$quiz}) }}" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:foreach loop="$categories" value="$category">
+				<xf:if is="$category.category_id == $quiz.category_id" >
+					<xf:set var="$cat" value="{$category.title}" />
+				</xf:if>
+				</xf:foreach>
+			<xf:selectrow name="quiz_category" value="$categories" label="{{ phrase('fs_quiz_categories') }}">
+				<xf:if is="$quiz">
+					<xf:option value="{$quiz.category_id}">{{ $cat ? $cat : 'None' }}</xf:option>
+				</xf:if>
+				<xf:foreach loop="$categories" value="$category">
+					<xf:option value="{$category.category_id}">{$category.title}</xf:option>
+				</xf:foreach>
+			</xf:selectrow>
+			<xf:textarearow name="quiz_name" 
+					label="{{ phrase('fs_quiz_name') }}"
+					placeholder="{{ $quiz? $quiz.quiz_name : phrase('fs_quiz_name') }}"
+					dir="ltr" />
+			<xf:textarearow name="quiz_des" 
+					label="{{ phrase('fs_quiz_des') }}"
+					placeholder="{{ $quiz? $quiz.quiz_des : phrase('fs_quiz_des') }}"
+					dir="ltr" />
+				<xf:tokeninputrow name="quiz_questions" value="{{ $pre_qsn }}" href="{{ link('quiz/find') }}"
+					label="{{ phrase('fs_quiz_qsn') }}"
+					min-length="1"
+					max-tokens="{{ (count($question) > 0) ? count($question)+1 : null }}"
+					explain="{{ $quiz ? 'The questions being display are dummy add them again.' : '' }}" />
+	
+			<xf:formrow label="{{ phrase('fs_quiz_state') }}">
+				<xf:radio  name="quiz_state" value="{{ $quiz.quiz_state }}">
+					<xf:option label= "Open" class="mycheckbox" name="quiz_state" value="open"></xf:option>
+					<xf:option label= "Closed" class="mycheckbox" name="quiz_state" value="closed"></xf:option>
+				</xf:radio>
+			</xf:formrow>
+			<xf:formrow label="{{ phrase('fs_quiz_start') }}">
+				 <xf:textbox type="time" name="start_time" value="{{ $st_time }}" style="width: 28%;"/><br>
+				<xf:dateinput
+					name="quiz_start_date"
+					value="{{ $st_date }}"
+					required="true"
+					autocomplete="off"
+				/>
+			</xf:formrow>
+			<xf:formrow label="{{ phrase('fs_quiz_end') }}">
+				 <xf:textbox type="time" name="end_time" value="{{$end_time}}" style="width: 28%;"/><br>
+				<xf:dateinput
+						name="quiz_end_date"
+						value="{{ $end_date }}"
+						required="true"
+						autocomplete="off"
+					/>
+			</xf:formrow>
+			<xf:numberboxrow label="{{ phrase('fs_time_per_qsn') }}" name="qsn_time" min="60" explain="{{ phrase('qsn_time') }}" value="{{ $quiz.time_per_question }}"/>
+			
+			<xf:checkboxrow label="{{ phrase('fs_quiz_user_group') }}" name="user_groups[]" value="{{ $quiz.user_group }}">
+					<xf:foreach loop="$userGroups" value="$userGroup">
+						<xf:option value="{$userGroup.user_group_id}">{$userGroup.title}</xf:option>
+					</xf:foreach>
+			</xf:checkboxrow>
+		</div>
+		<xf:submitrow sticky="true" icon="save" />
+	</div>
+</xf:form>]]></template>
+  <template type="admin" title="fs_quiz_edit_questions" version_id="1020010" version_string="1.2.0 Alpha"><![CDATA[<xf:if is="$question != null">
+	<xf:title>{{ phrase('edit_question') }}</xf:title>
+<xf:else />
+	<xf:title>{{ phrase('add_question:') }}</xf:title>
+</xf:if>
+
+<xf:form action="{{ link('quiz-qsn/save' , {$question}) }}" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			
+			<xf:textarearow name="question_title" 
+					label="{{ phrase('fs_question') }}"
+					explain="{{ phrase('fs_question_explain') }}"
+					placeholder="{$question.question_title}"
+					dir="ltr" />
+			
+
+		<xf:radiorow label="{{phrase('answer_formate_type')}}" name="question_type">
+			
+			<xf:option  value="textbox" selected="{{ $question.question_type == 'textbox' ? $question.question_type : '' }}" label="{{phrase('fs_single_line_textbox')}}" data-hide="true">
+					<xf:dependent>
+
+						<xf:formrow rowtype="input"
+							label="{{ phrase('fs_correct_answer') }}"
+							explain="{{ phrase('fs_correct_answer_single_line_textbox_explain') }}">
+
+						<xf:textbox name="question_correct_answer"
+										label="{{ phrase('fs_correct_answer_explain') }}"
+										value="{$question.question_correct_answer}"
+										size="24" />
+						</xf:formrow>
+
+					</xf:dependent>
+				</xf:option>
+			
+			<xf:option  value="radio" selected="{{ $question.question_type == 'radio' ? $question.question_type : '' }}" label="{{phrase('fs_single_selection_radio')}}" data-hide="true">
+				<xf:dependent>
+						<div class="inputGroup-container">
+							<xf:if is="$question.question_type == 'radio'">
+								<xf:foreach loop="$field.field_choices" key="$choice" value="$text">
+									<div class="inputGroup">
+											<xf:form>
+												<xf:textbox name="options-radio[]"
+													value="{{ phrase('fs_choice') }}"
+													size="12" maxlength="25" data-i="0"
+													dir="ltr" style="margin-right:10px;"/>
+											    <xf:radio  name="correct-radio[]">
+												   <xf:option label= "Correct" class="myRadio" name="correct-radio[]" selected="{{ $select == $choice ? $select : '' }}"></xf:option>
+												</xf:radio>
+										</xf:form>
+									</div><br>
+								</xf:foreach>
+							</xf:if>
+						
+							<input type="hidden" name="radio-key" id="radio-key" value="0" />
+							<div class="radio-selection-button">
+								 <xf:button class="add-radio">Add choice</xf:button>
+								 <xf:button class="remove-radio">Remove Choice</xf:button>
+							</div><br>
+							<div class="radio-selection">
+							
+									<div class="clone-radio-selection" style="display:flex;margin-top: 10px;">
+										
+												<xf:textbox name="options-radio[]"
+													placeholder="{{ phrase('fs_choice') }}"
+													size="12" maxlength="25" data-i="0"
+													dir="ltr" style="margin-right:10px;"/>
+											    <xf:radio  name="correct-radio[]">
+												   <xf:option label= "Correct" class="myRadio" name="correct-radio[]" value="0"></xf:option>
+												</xf:radio>
+											
+											
+								  </div>
+							</div>
+						</div>
+						
+					
+					
+					
+					
+					</xf:dependent>
+				</xf:option>
+			
+			
+			<xf:option  value="checkbox" selected="{{ $question.question_type == 'checkbox' ? $question.question_type : '' }}" label="{{phrase('fs_selection_multiple')}}" data-hide="true">
+			
+				<xf:dependent>
+				
+						<div class="inputGroup-container">
+								<xf:if is="$question">
+									<xf:foreach loop="$field.field_choices" key="$choice" value="$text">
+										<div class="inputGroup">
+
+											  <xf:form>
+													<xf:textbox name="optionsssscheckbox[]"
+														placeholder="{{ phrase('fs_choice') }}"
+														size="12" maxlength="25" data-i="0"
+														dir="ltr" style="margin-right:10px;"/>
+													<xf:checkbox  name="correctss-checkbox[]" >
+													   <xf:option label= "Correct" class="mycheckbox" name="ss-checkbox[]" value="0"></xf:option>
+													</xf:checkbox>
+												</xf:form>
+
+										</div>
+									</xf:foreach>
+								</xf:if>
+
+							<input type="hidden" name="checkbox-key" id="checkbox-key" value="0" />
+							
+							<div class="check-selection-button">
+								 <xf:button class="add-checkbox">Add choice</xf:button>
+								 <xf:button class="remove-checkbox">Remove Choice</xf:button>
+							</div><br>
+							
+							<div class="checkbox-selection">
+							
+									<div class="clone-checkbox-selection" style="display:flex;margin-top: 10px;">
+										
+										  
+												<xf:textbox name="options-checkbox[]"
+													placeholder="{{ phrase('fs_choice') }}"
+													size="12" maxlength="25" data-i="0"
+													dir="ltr" style="margin-right:10px;"/>
+											    <xf:checkbox  name="correct-checkbox[]" >
+												   <xf:option label= "Correct" class="mycheckbox" name="correct-checkbox[]" value="0"></xf:option>
+												</xf:checkbox>
+											
+											
+								  </div>
+							</div>
+						</div>
+					
+				</xf:dependent>
+			</xf:option>
+			
+			
+		</xf:radiorow>
+		
+		
+		</div>
+		<xf:submitrow sticky="true" icon="save" />
+	</div>
+</xf:form>
+ <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<script>
+$(document).ready(function() {
+  // Clone the first cloneable radio element
+  var initialClone = $('.clone-radio-selection').first().clone();
+  var initialCheckboxClone = $('.clone-checkbox-selection').first().clone();
+
+  $('.add-radio').on('click', function() {
+
+	var newClone = initialClone.clone();
+	 var radioInClone = newClone.find('.myRadio');
+
+	 var currentValue = parseFloat($('#radio-key').val());
+    
+	
+	 var modifiedValue = currentValue + 1;
+
+     $('#radio-key').val(modifiedValue);
+    
+	 radioInClone.val(modifiedValue);
+
+    $('.radio-selection').append(newClone);
+	  
+  });
+
+
+  $('.remove-radio').on('click', function() {
+
+	  var allClones = $('.clone-radio-selection');
+	  var currentValue = parseFloat($('#radio-key').val());
+    
+	  var modifiedValue = currentValue - 1;
+
+       $('#radio-key').val(modifiedValue);
+	   
+	  var numberOfClones = allClones.length;
+	  
+	  if (numberOfClones > 1) {
+    		$('.clone-radio-selection').last().remove();
+	  }
+  });
+	// Clone the first cloneable checkbox element
+	
+ 
+  $('.add-checkbox').on('click', function() {
+
+	  
+	 var newClone = initialCheckboxClone.clone();
+	 var checkboxInClone = newClone.find('.mycheckbox');
+
+	  var currentValueCheckbox = parseFloat($('#checkbox-key').val());
+	  var modifiedValue = currentValueCheckbox + 1;
+
+     $('#checkbox-key').val(modifiedValue);
+    
+	 checkboxInClone.val(modifiedValue);
+
+    $('.checkbox-selection').append(newClone);
+	  
+  });
+
+
+  $('.remove-checkbox').on('click', function() {
+
+	  var allCheckboxClones = $('.clone-checkbox-selection');
+	  var currentValue = parseFloat($('#checkbox-key').val());
+    
+	  var modifiedValue = currentValue - 1;
+
+       $('#checkbox-key').val(modifiedValue);
+	   
+	  var numberOfClones = allCheckboxClones.length;
+	  
+	  if (numberOfClones > 1) {
+    		$('.clone-checkbox-selection').last().remove();
+	  }
+  });
+});
+</script>]]></template>
+  <template type="admin" title="fs_quiz_list" version_id="1020010" version_string="1.2.0 Alpha"><![CDATA[<xf:title>{{ phrase('quiz_list') }}</xf:title>
+
+<xf:macro template="quiz_tree_macros" name="page_action"
+	arg-linkPrefix="quiz" />
+
+<xf:macro template="quiz_tree_macros" name="quiz_list"
+	arg-quizTree="{$quiz}"
+	arg-filterKey="quiz"
+	arg-linkPrefix="quiz"
+	arg-idKey="quiz_id"
+/>]]></template>
+  <template type="admin" title="qsn_tree_macros" version_id="1020010" version_string="1.2.0 Alpha"><![CDATA[<xf:macro name="page_action" arg-linkPrefix="!">
+	<xf:pageaction>
+		<div class="buttonGroup">
+			<xf:button href="{{ link($linkPrefix . '/addEdit') }}" icon="add">{{ phrase('add_qsn') }}</xf:button>
+		</div>
+	</xf:pageaction>
+</xf:macro>
+
+<xf:comment><!--
+	Note that this is a global macro, so scope is inherited into it. The expectation is that this macro will generally
+	be close to the only thing in a template so this makes the macro work similarly to an include.
+--></xf:comment>
+<xf:macro name="qsn_list" global="true"
+	arg-qsnTree="!"
+	arg-filterKey="!"
+	arg-linkPrefix="!"
+	arg-idKey="question_id"
+	>
+
+	<xf:if is="$qsnTree.count() > 0">
+		<div class="block">
+			<div class="block-outer">
+				<xf:macro template="filter_macros" name="quick_filter" arg-key="{$filterKey}" arg-class="block-outer-opposite" />
+			</div>
+			<div class="block-container">
+				<div class="block-body">
+					<xf:datalist>
+						<xf:foreach loop="$qsnTree" value="$treeEntry">
+							<xf:set var="$question" value="{$treeEntry}" />
+							<xf:datarow>
+								<xf:cell class="dataList-cell--link dataList-cell--main" hash="{$question.{$idKey}}">
+									<a href="{{ link('quiz-qsn/addEdit', $question) }}">
+										<div class="u-depth{$question}">
+											<div class="dataList-mainRow">{$treeEntry.question_title}</div>
+										</div>
+									</a>
+								</xf:cell>
+								<xf:if is="$question != null">
+									<xf:action
+										class="{{ {$question.question_type} ? 'dataList-cell--highlighted' : '' }}"
+										href="{{ link($linkPrefix . '/addEdit', $question) }}">
+										{$treeEntry.question_type}
+									</xf:action>
+								</xf:if>
+								<xf:delete href="{{ link($linkPrefix . '/confirm', $question) }}" />
+							</xf:datarow>
+						</xf:foreach>
+					</xf:datalist>
+				</div>
+			</div>
+		</div>
+	<xf:else />
+		<div class="blockMessage">{{ phrase('no_items_have_been_created_yet') }}</div>
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="sortable_form" arg-categoryTree="!" arg-linkPrefix="!">
+	<xf:macro template="public:nestable_macros" name="setup" />
+
+	<xf:form action="{{ link($linkPrefix . 'quiz-question/sort') }}" class="block" ajax="true">
+		<div class="block-container">
+			<div class="block-body">
+				<div class="nestable-container" data-xf-init="nestable">
+					<xf:macro name="sortable_list" arg-children="{$quizTree}" />
+					<xf:hiddenval name="categories" value="" />
+				</div>
+			</div>
+			<xf:submitrow icon="save" rowtype="simple" />
+		</div>
+	</xf:form>
+</xf:macro>
+
+<xf:macro name="sortable_list" arg-children="!">
+	<ol class="nestable-list">
+		<xf:foreach loop="$children" key="$id" value="$child">
+			<xf:macro name="sortable_list_entry" arg-child="{$child}" arg-children="{$child.children}" />
+		</xf:foreach>
+	</ol>
+</xf:macro>
+
+<xf:macro name="sortable_list_entry" arg-child="!" arg-children="!">
+	<li class="nestable-item" data-id="{$child.id}">
+		<div class="nestable-handle" aria-label="{{ phrase('drag_handle')|for_attr }}"><xf:fa icon="fa-bars" /></div>
+		<div class="nestable-content">{$child.record.title}</div>
+		<xf:if is="$child.children is not empty">
+			<xf:macro name="sortable_list" arg-children="{$child.children}" />
+		</xf:if>
+	</li>
+</xf:macro>
+
+<xf:macro name="parent_category_select_row"
+	arg-category="!"
+	arg-categoryTree="!"
+	arg-idKey="category_id"
+	arg-parentIdKey="parent_category_id">
+
+	<xf:selectrow name="{$parentIdKey}" value="{$category.{$parentIdKey}}"
+		label="{{ phrase('parent_category') }}">
+
+		<xf:option value="0">{{ phrase('(none)') }}</xf:option>
+		<xf:foreach loop="$categoryTree.getFlattened(0)" value="$treeEntry">
+			<xf:option value="{$treeEntry.{$idKey}}">{{ repeat('--', $treeEntry.depth) }} {$treeEntry.record.title}</xf:option>
+		</xf:foreach>
+	</xf:selectrow>
+</xf:macro>
+
+<xf:macro name="qsn_delete_form" arg-linkPrefix="!" arg-category="!">
+	<xf:form action="{{ link($linkPrefix . '/delete', $qsnTree) }}" class="block" ajax="true">
+
+		<div class="block-container">
+			<div class="block-body">
+				<xf:inforow rowtype="confirm">
+					{{ phrase('please_confirm_that_you_want_to_delete_following:') }}
+					<strong><a href="{{ link($linkPrefix . '/edit', $category) }}">{$qsnTree.question_title}</a></strong>
+				</xf:inforow>
+			</div>
+			<xf:submitrow rowtype="{{ !$qsnTree ? 'simple' : '' }}" icon="delete" />
+		</div>
+		<xf:redirect />
+
+	</xf:form>
+</xf:macro>]]></template>
+  <template type="admin" title="quiz_tree_macros" version_id="1020010" version_string="1.2.0 Alpha"><![CDATA[<xf:macro name="page_action" arg-linkPrefix="!">
+	<xf:pageaction>
+		<div class="buttonGroup">
+			<xf:button href="{{ link($linkPrefix . '/addEdit') }}" icon="add">{{ phrase('add_quiz') }}</xf:button>
+		</div>
+	</xf:pageaction>
+</xf:macro>
+
+<xf:comment><!--
+	Note that this is a global macro, so scope is inherited into it. The expectation is that this macro will generally
+	be close to the only thing in a template so this makes the macro work similarly to an include.
+--></xf:comment>
+<xf:macro name="quiz_list" global="true"
+	arg-quizTree="!"
+	arg-filterKey="!"
+	arg-linkPrefix="!"
+	arg-idKey="quiz_id"
+	>
+
+	<xf:if is="$quizTree.count() > 0">
+		<div class="block">
+			<div class="block-outer">
+				<xf:macro template="filter_macros" name="quick_filter" arg-key="{$filterKey}" arg-class="block-outer-opposite" />
+			</div>
+			<div class="block-container">
+				<div class="block-body">
+					<xf:datalist>
+						<xf:foreach loop="$quizTree" value="$treeEntry">
+							<xf:set var="$quiz" value="{$treeEntry}" />
+							<xf:datarow>
+								<xf:cell class="dataList-cell--link dataList-cell--main" hash="{$question.{$idKey}}">
+									<a href="{{ link('quiz/addEdit', $quiz) }}">
+										<div class="u-depth{$quiz}">
+											<div class="dataList-mainRow">{$treeEntry.quiz_name}</div>
+										</div>
+									</a>
+								</xf:cell>
+								<xf:if is="$quiz == null">
+									<xf:action
+										class="{{ {$quiz.question_type} ? 'dataList-cell--highlighted' : '' }}"
+										href="{{ link($linkPrefix . '/addEdit', $question) }}">
+										{$treeEntry.question_type}
+									</xf:action>
+								</xf:if>
+								<xf:delete href="{{ link($linkPrefix . '/confirm', $quiz) }}" />
+							</xf:datarow>
+						</xf:foreach>
+					</xf:datalist>
+				</div>
+			</div>
+		</div>
+	<xf:else />
+		<div class="blockMessage">{{ phrase('no_items_have_been_created_yet') }}</div>
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="sortable_form" arg-categoryTree="!" arg-linkPrefix="!">
+	<xf:macro template="public:nestable_macros" name="setup" />
+
+	<xf:form action="{{ link($linkPrefix . 'quiz-question/sort') }}" class="block" ajax="true">
+		<div class="block-container">
+			<div class="block-body">
+				<div class="nestable-container" data-xf-init="nestable">
+					<xf:macro name="sortable_list" arg-children="{$quizTree}" />
+					<xf:hiddenval name="categories" value="" />
+				</div>
+			</div>
+			<xf:submitrow icon="save" rowtype="simple" />
+		</div>
+	</xf:form>
+</xf:macro>
+
+<xf:macro name="sortable_list" arg-children="!">
+	<ol class="nestable-list">
+		<xf:foreach loop="$children" key="$id" value="$child">
+			<xf:macro name="sortable_list_entry" arg-child="{$child}" arg-children="{$child.children}" />
+		</xf:foreach>
+	</ol>
+</xf:macro>
+
+<xf:macro name="sortable_list_entry" arg-child="!" arg-children="!">
+	<li class="nestable-item" data-id="{$child.id}">
+		<div class="nestable-handle" aria-label="{{ phrase('drag_handle')|for_attr }}"><xf:fa icon="fa-bars" /></div>
+		<div class="nestable-content">{$child.record.title}</div>
+		<xf:if is="$child.children is not empty">
+			<xf:macro name="sortable_list" arg-children="{$child.children}" />
+		</xf:if>
+	</li>
+</xf:macro>
+
+<xf:macro name="parent_category_select_row"
+	arg-category="!"
+	arg-categoryTree="!"
+	arg-idKey="category_id"
+	arg-parentIdKey="parent_category_id">
+
+	<xf:selectrow name="{$parentIdKey}" value="{$category.{$parentIdKey}}"
+		label="{{ phrase('parent_category') }}">
+
+		<xf:option value="0">{{ phrase('(none)') }}</xf:option>
+		<xf:foreach loop="$categoryTree.getFlattened(0)" value="$treeEntry">
+			<xf:option value="{$treeEntry.{$idKey}}">{{ repeat('--', $treeEntry.depth) }} {$treeEntry.record.title}</xf:option>
+		</xf:foreach>
+	</xf:selectrow>
+</xf:macro>
+
+<xf:macro name="qsn_delete_form" arg-linkPrefix="!" arg-category="!">
+	<xf:form action="{{ link($linkPrefix . '/delete', $qsnTree) }}" class="block" ajax="true">
+
+		<div class="block-container">
+			<div class="block-body">
+				<xf:inforow rowtype="confirm">
+					{{ phrase('please_confirm_that_you_want_to_delete_following:') }}
+					<strong><a href="{{ link($linkPrefix . '/edit', $category) }}">{$qsnTree.question_title}</a></strong>
+				</xf:inforow>
+			</div>
+			<xf:submitrow rowtype="{{ !$qsnTree ? 'simple' : '' }}" icon="delete" />
+		</div>
+		<xf:redirect />
+
+	</xf:form>
+</xf:macro>]]></template>
+</templates>
