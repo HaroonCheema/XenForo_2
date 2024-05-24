@@ -1,11 +1,11 @@
 {
-    "route_type": "public",
+    "route_type": "admin",
     "route_prefix": "quiz",
     "sub_name": "",
-    "format": ":int<category_id,quiz_name>/:int<quiz_id>/:page",
+    "format": ":int<quiz_id>",
     "build_class": "",
     "build_method": "",
-    "controller": "FS\\QuizSystem:QuizSystem",
+    "controller": "FS\\QuizSystem:Quiz",
     "context": "fs_quiz",
     "action_prefix": ""
 }

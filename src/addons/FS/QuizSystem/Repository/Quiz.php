@@ -13,16 +13,18 @@ class Quiz extends Repository
     public function displayAllQuiz()
     {
         $finder = $this->finder('FS\QuizSystem:Quiz');
+
+        $finder->order('quiz_id', 'DESC');
+
         return $finder;
     }
     public function displaySingleQuiz($id)
     {
-        $visitor = \XF::visitor();
         $finder = $this->em->find('FS\QuizSystem:Quiz', $id);
         return $finder;
     }
     public function addQuiz()
-    { 
+    {
         $add = $this->em->create('FS\QuizSystem:Quiz');
         return $add;
     }

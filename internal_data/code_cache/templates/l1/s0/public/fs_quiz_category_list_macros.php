@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 17e5b203259b5889863bd5e087dddf6a
+// FROM HASH: 5c91f9d609167f34dfcc4bf3673f5150
 return array(
 'macros' => array('simple_category_list' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -71,7 +71,7 @@ return array(
 			';
 	}
 	$__finalCompiled .= '
-			<a href="' . $__templater->func('link', array('auction', $__vars['category'], ), true) . '" class="categoryList-link' . ($__vars['isSelected'] ? ' is-selected' : '') . '">
+			<a href="' . $__templater->func('link', array('quiz', $__vars['category'], ), true) . '" class="categoryList-link' . ($__vars['isSelected'] ? ' is-selected' : '') . '">
 				' . $__templater->escape($__vars['category']['title']) . '
 			</a>
 			<span class="categoryList-label">

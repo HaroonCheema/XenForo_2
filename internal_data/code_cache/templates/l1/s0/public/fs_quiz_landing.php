@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 2ca8500a9328d40ab54f8d1f31f26927
+// FROM HASH: 777c2276bef620379ebf176c51aa94b4
 return array(
 'macros' => array('search_menu' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -24,7 +24,7 @@ return array(
         class="menu menu--wide"
         data-menu="menu"
         aria-hidden="true"
-        data-href="' . $__templater->func('link', array('auction/refine-search', null, $__vars['conditions'], ), true) . '"
+        data-href="' . $__templater->func('link', array('quiz/refine-search', null, $__vars['conditions'], ), true) . '"
         data-load-target=".js-filterMenuBody"
       >
         <div class="menu-content">
@@ -46,6 +46,7 @@ return array(
 	$__templater->pageParams['pageTitle'] = $__templater->preEscaped('Quiz');
 	$__templater->pageParams['pageNumber'] = $__vars['page'];
 	$__finalCompiled .= '
+
 <script>
   // For All Auctions
   function DateTimeConverter(unixdatetime) {
@@ -64,12 +65,12 @@ return array(
         day: "numeric",
       }
     );
-
+ 
     var humanDate = new Date(tempHumanDate);
     var year = humanDate.getFullYear();
     var month = (humanDate.getMonth() + 1).toString().padStart(2, "0");
     var date = humanDate.getDate();
-
+ 
     var fulldate = year + "-" + month + "-" + date + " " + wStart_time + ":00";
 
     // FormatingDateEspecialyForIOS
@@ -99,25 +100,26 @@ return array(
       var now = new Date().getTime();
       // Find the distance between now and the count down date
       var timeDistance = countDownDate - now;
-      document.getElementById("days-auction-" + auc_id).innerHTML =
+      document.getElementById("days-quiz-" + auc_id).innerHTML =
         Math.floor(timeDistance / (1000 * 60 * 60 * 24)) + " D";
-      document.getElementById("hours-auction-" + auc_id).innerHTML =
+      document.getElementById("hours-quiz-" + auc_id).innerHTML =
         Math.floor((timeDistance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)) +
         " H";
-      document.getElementById("minutes-auction-" + auc_id).innerHTML =
+      document.getElementById("minutes-quiz-" + auc_id).innerHTML =
         Math.floor((timeDistance % (1000 * 60 * 60)) / (1000 * 60)) + " M";
-      document.getElementById("seconds-auction-" + auc_id).innerHTML =
+      document.getElementById("seconds-quiz-" + auc_id).innerHTML =
         Math.floor((timeDistance % (1000 * 60)) / 1000) + " S";
 
       // If the count down is over, write some text
       if (timeDistance < 0) {
         clearInterval(counter);
-        document.getElementById("auction-counter-" + auc_id).style.display =
+        document.getElementById("quiz-counter-" + auc_id).style.display =
           "none";
       }
     }, 1000);
   }
 </script>
+
 
 ';
 	$__templater->setPageParam('searchConstraints', array('Auctions' => array('search_type' => 'fs_auction_auctions', ), ));
@@ -139,7 +141,7 @@ return array(
 <div
   class="block"
   data-xf-init="' . ($__vars['canInlineMod'] ? 'inline-mod' : '') . '"
-  data-type="fs_auction_auctions"
+  data-type="fs_quiz_list"
   data-href="' . $__templater->func('link', array('inline-mod', ), true) . '"
 >
   <div class="block-outer">
@@ -147,7 +149,7 @@ return array(
       ' . $__templater->func('page_nav', array(array(
 		'page' => $__vars['page'],
 		'total' => $__vars['total'],
-		'link' => 'auction',
+		'link' => 'quiz',
 		'params' => $__vars['filters'],
 		'wrapperclass' => 'block-outer-main',
 		'perPage' => $__vars['perPage'],
@@ -162,98 +164,38 @@ return array(
 
     <!--Listing View--->
     <div class="block-body">
-      ';
-	if ($__vars['xf']['visitor']['layout_type'] == '0') {
-		$__finalCompiled .= '
         ';
-		if (!$__templater->test($__vars['listings'], 'empty', array())) {
-			$__finalCompiled .= '
+	if (!$__templater->test($__vars['listings'], 'empty', array())) {
+		$__finalCompiled .= '
           <div class="structItemContainer">
             ';
-			if ($__templater->isTraversable($__vars['listings'])) {
-				foreach ($__vars['listings'] AS $__vars['listing']) {
-					$__finalCompiled .= '
-              ' . $__templater->callMacro('fs_auction_listing_list_macros', 'listing', array(
-						'listing' => $__vars['listing'],
-					), $__vars) . '
+		if ($__templater->isTraversable($__vars['listings'])) {
+			foreach ($__vars['listings'] AS $__vars['listing']) {
+				$__finalCompiled .= '
+              ' . $__templater->callMacro('fs_quiz_list_macros', 'listing', array(
+					'listing' => $__vars['listing'],
+				), $__vars) . '
             ';
-				}
 			}
-			$__finalCompiled .= '
-          </div>
-          ';
-		} else if ($__vars['filters']) {
-			$__finalCompiled .= '
-          <div class="block-row">
-            ' . 'There are currently no auctions that match your filters.' . '
-          </div>
-          ';
-		} else {
-			$__finalCompiled .= '
-          <div class="block-row">
-            ' . 'No auctions have been created yet.' . '
-          </div>
-        ';
 		}
 		$__finalCompiled .= '
-        ';
-	} else if ($__vars['xf']['visitor']['layout_type'] == '1') {
-		$__finalCompiled .= '
-        ';
-		if (!$__templater->test($__vars['featuredListings'], 'empty', array())) {
-			$__finalCompiled .= '
-          <div class="structItemContainer">
-            ';
-			if ($__templater->isTraversable($__vars['featuredListings'])) {
-				foreach ($__vars['featuredListings'] AS $__vars['listing']) {
-					$__finalCompiled .= '
-              ' . $__templater->callMacro('fs_auction_listing_list_macros', 'listing_grid', array(
-						'listing' => $__vars['listing'],
-					), $__vars) . '
-            ';
-				}
-			}
-			$__finalCompiled .= '
-          </div>
-        ';
-		}
-		$__finalCompiled .= '
-
-        <!--Grid View-->
-        ';
-		if (!$__templater->test($__vars['listings'], 'empty', array()) AND false) {
-			$__finalCompiled .= '
-          <div class="structItemContainer">
-            ';
-			if ($__templater->isTraversable($__vars['listings'])) {
-				foreach ($__vars['listings'] AS $__vars['listing']) {
-					$__finalCompiled .= '
-              ' . $__templater->callMacro('fs_auction_listing_list_macros', 'listing_grid', array(
-						'listing' => $__vars['listing'],
-					), $__vars) . '
-            ';
-				}
-			}
-			$__finalCompiled .= '
           </div>
           ';
-		} else if ($__vars['filters']) {
-			$__finalCompiled .= '
+	} else if ($__vars['filters']) {
+		$__finalCompiled .= '
           <div class="block-row">
-            ' . 'There are currently no auctions that match your filters.' . '
+            ' . 'There are currently no quiz that match your filters.' . '
           </div>
           ';
-		} else {
-			$__finalCompiled .= '
+	} else {
+		$__finalCompiled .= '
           <div class="block-row">
-            ' . 'No auctions have been created yet.' . '
+            ' . 'No quiz have been created yet.' . '
           </div>
         ';
-		}
-		$__finalCompiled .= '
-      ';
 	}
 	$__finalCompiled .= '
+        
       <div class="block-footer">
         <span class="block-footer-counter"
           >' . $__templater->func('display_totals', array($__vars['totalReturn'], $__vars['total'], ), true) . '</span
@@ -266,7 +208,7 @@ return array(
     ' . $__templater->func('page_nav', array(array(
 		'page' => $__vars['page'],
 		'total' => $__vars['total'],
-		'link' => 'auction',
+		'link' => 'quiz',
 		'params' => $__vars['filters'],
 		'wrapperclass' => 'block-outer-main',
 		'perPage' => $__vars['perPage'],

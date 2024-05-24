@@ -1,0 +1,123 @@
+<xf:macro name="listing"
+		  arg-listing="!"
+		  arg-category="{{ null }}"
+		  arg-showWatched="{{ true }}"
+		  arg-allowInlineMod="{{ true }}"
+		  arg-chooseName=""
+		  arg-extraInfo="">
+	<xf:css src="structured_list.less" />
+	<xf:css src="fs_quiz_list_view.less" />
+
+	<div class="structItem structItem--listing js-inlineModContainer " id="quiz-{{$listing.quiz_id}}" data-author="">
+
+		<img src ="{{ base_url('styles/FS/AuctionPlugin/no_image.png',true) }}" style="display: none;" onload="timmerCounter({{$listing.quiz_id}},{{$listing.quiz_end_date}})">
+
+		<div class="structItem-cell structItem-cell--main" data-xf-init="touch-proxy">
+
+			<div class="structItem-title">
+
+				<a href="{{ link('quiz/view-quiz', $listing) }}" class="" data-tp-primary="on">{$listing.quiz_name}</a>
+
+			</div>
+			<div class="structItem-minor">
+
+				<ul class="structItem-parts">
+					<li class="structItem-startDate">
+						<xf:date time="{$listing.created_at}" /> 
+
+					</li>
+
+					<li>{{ snippet($listing.Category.title, 50, {'stripBbCode': true}) }}</li>
+
+				</ul>
+			</div>
+
+
+
+			<div class="auction-category">{{ snippet($listing.quiz_des, 100, {'stripBbCode': true}) }}</div>
+
+
+		</div>
+		
+		<div class="structItem-cell structItem-cell--listingMeta">
+
+			<dl class="pairs pairs--justified structItem-minor structItem-metaItem structItem-metaItem--questionCount">
+				<dt>{{ phrase('fs_quiz_total_questions') }}</dt>
+				<dd>
+					{{count($listing.quiz_questions)}}
+				</dd>
+			</dl>
+			
+			<dl class="pairs pairs--justified structItem-minor structItem-metaItem structItem-metaItem--questionDuration">
+				<dt >{{ phrase('fs_quiz_time_per_que') }}</dt>
+				<dd>
+					{$listing.time_per_question} {{ phrase('fs_quiz_sec') }}
+				</dd>
+			</dl>
+
+			<dl class="pairs pairs--justified structItem-minor structItem-metaItem structItem-metaItem--questionDuration">
+				<dt >{{ phrase('fs_quiz_quiz_duration') }}</dt>
+				<dd>
+					{$listing.getQuizDuration()}
+					<xf:comment>
+						{{$listing.Thread.getFormatedTime12()}}
+					</xf:comment>
+
+				</dd>
+			</dl>
+			
+		</div>
+		
+		<div class="structItem-cell structItem-cell--listingMeta">
+
+			<dl class="pairs pairs--justified structItem-minor structItem-metaItem structItem-metaItem--starting">
+				<dt>{{ phrase('fs_quiz_start_date') }}</dt>
+				<dd>
+					<xf:date time="{$listing.quiz_start_date}" />
+				</dd>
+			</dl>
+
+			<dl class="pairs pairs--justified structItem-minor structItem-metaItem structItem-metaItem--expiration">
+				<dt >{{ phrase('fs_quiz_end_date') }}</dt>
+				<dd>
+					<xf:date time="{$listing.quiz_end_date}" />
+					<xf:comment>
+						{{$listing.Thread.getFormatedTime12()}}
+					</xf:comment>
+
+				</dd>
+			</dl>
+			<dl class="pairs pairs--justified structItem-minor structItem-metaItem structItem-metaItem--type">
+				<dt id="counter-before">
+
+				</dt>
+				<dd>	<xf:if is="$listing.quiz_end_date < $xf.time">
+					<li>
+						<span class="label label--red label--smallest">{{ phrase('fs_quiz_expired') }}</span>
+					</li>
+					<xf:else />
+					<li>
+						<div id="quiz-counter-{{$listing.quiz_id}}">
+
+							<span class="label  label--blue label--counter" id="days-quiz-{{$listing.quiz_id}}">
+								{{phrase('fs_quiz_DD')}}
+							</span>
+							<span class="label  label--blue label--counter" id="hours-quiz-{{$listing.quiz_id}}">
+								{{phrase('fs_quiz_HH')}}
+							</span>
+							<span class="label  label--blue label--counter" id="minutes-quiz-{{$listing.quiz_id}}">
+								{{phrase('fs_quiz_MM')}}
+							</span>
+							<span class="label  label--blue label--counter" id="seconds-quiz-{{$listing.quiz_id}}">
+								{{phrase('fs_quiz_SS')}}
+							</span>
+						</div>
+
+					</li>
+					</xf:if> </dd>
+			</dl>
+
+
+		</div>
+	</div>
+</xf:macro>

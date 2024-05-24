@@ -28,19 +28,39 @@
   <phrase title="fs_possible_multiple_anwers_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Copy the multiple answers from choices]]></phrase>
   <phrase title="fs_question" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Question]]></phrase>
   <phrase title="fs_question_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Type the Question and the selection the  choice below.]]></phrase>
+  <phrase title="fs_quiz" version_id="1020010" version_string="1.2.0 Alpha"><![CDATA[Quiz]]></phrase>
+  <phrase title="fs_quiz_DD" version_id="1020010" version_string="1.2.0 Alpha"><![CDATA[00 D]]></phrase>
+  <phrase title="fs_quiz_HH" version_id="1020010" version_string="1.2.0 Alpha"><![CDATA[00 H]]></phrase>
+  <phrase title="fs_quiz_MM" version_id="1020010" version_string="1.2.0 Alpha"><![CDATA[00 M]]></phrase>
+  <phrase title="fs_quiz_SS" version_id="1020010" version_string="1.2.0 Alpha"><![CDATA[00 S]]></phrase>
+  <phrase title="fs_quiz_active" version_id="1020010" version_string="1.2.0 Alpha"><![CDATA[Active]]></phrase>
+  <phrase title="fs_quiz_cat" version_id="1020010" version_string="1.2.0 Alpha"><![CDATA[By Category]]></phrase>
   <phrase title="fs_quiz_categories" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Quiz Categories]]></phrase>
   <phrase title="fs_quiz_des" version_id="1020010" version_string="1.2.0 Alpha"><![CDATA[Quiz Description]]></phrase>
   <phrase title="fs_quiz_end" version_id="1020010" version_string="1.2.0 Alpha"><![CDATA[Quiz End Date & Time]]></phrase>
+  <phrase title="fs_quiz_end_date" version_id="1020010" version_string="1.2.0 Alpha"><![CDATA[End Date]]></phrase>
+  <phrase title="fs_quiz_expire" version_id="1020010" version_string="1.2.0 Alpha"><![CDATA[Expired]]></phrase>
+  <phrase title="fs_quiz_expired" version_id="1020010" version_string="1.2.0 Alpha"><![CDATA[Expired]]></phrase>
   <phrase title="fs_quiz_name" version_id="1020010" version_string="1.2.0 Alpha"><![CDATA[Quiz Name]]></phrase>
+  <phrase title="fs_quiz_no_quiz_have_been_created_yet" version_id="1020010" version_string="1.2.0 Alpha"><![CDATA[No quiz have been created yet.]]></phrase>
+  <phrase title="fs_quiz_please_complete_required_field" version_id="1020010" version_string="1.2.0 Alpha"><![CDATA[Please input atleast one field.]]></phrase>
   <phrase title="fs_quiz_qsn" version_id="1020010" version_string="1.2.0 Alpha"><![CDATA[Quiz Questions]]></phrase>
+  <phrase title="fs_quiz_quiz_duration" version_id="1020010" version_string="1.2.0 Alpha"><![CDATA[Quiz Duration]]></phrase>
+  <phrase title="fs_quiz_sec" version_id="1020010" version_string="1.2.0 Alpha"><![CDATA[Seconds]]></phrase>
   <phrase title="fs_quiz_start" version_id="1020010" version_string="1.2.0 Alpha"><![CDATA[Quiz Start Date & Time]]></phrase>
+  <phrase title="fs_quiz_start_date" version_id="1020010" version_string="1.2.0 Alpha"><![CDATA[Start Date]]></phrase>
   <phrase title="fs_quiz_state" version_id="1020010" version_string="1.2.0 Alpha"><![CDATA[Quiz State]]></phrase>
+  <phrase title="fs_quiz_status" version_id="1020010" version_string="1.2.0 Alpha"><![CDATA[Quiz Status]]></phrase>
+  <phrase title="fs_quiz_there_no_matching_your_filters" version_id="1020010" version_string="1.2.0 Alpha"><![CDATA[There are currently no quiz that match your filters.]]></phrase>
+  <phrase title="fs_quiz_time_per_que" version_id="1020010" version_string="1.2.0 Alpha"><![CDATA[Time Per Question]]></phrase>
+  <phrase title="fs_quiz_total_questions" version_id="1020010" version_string="1.2.0 Alpha"><![CDATA[Questions]]></phrase>
   <phrase title="fs_quiz_user_group" version_id="1020010" version_string="1.2.0 Alpha"><![CDATA[Allowed Users]]></phrase>
   <phrase title="fs_selection_multiple" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Multiple-Selection Checkbox]]></phrase>
   <phrase title="fs_single_line_textbox" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Single-Line Text Box]]></phrase>
   <phrase title="fs_single_selection_radio" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Single-Selection Radio]]></phrase>
   <phrase title="fs_time_error" version_id="1020010" version_string="1.2.0 Alpha"><![CDATA[Increase the Quiz Timing.]]></phrase>
   <phrase title="fs_time_per_qsn" version_id="1020010" version_string="1.2.0 Alpha"><![CDATA[Question Time]]></phrase>
+  <phrase title="nav.fs_quiz" version_id="1020010" version_string="1.2.0 Alpha"><![CDATA[Quiz]]></phrase>
   <phrase title="qsn_time" version_id="1020010" version_string="1.2.0 Alpha"><![CDATA[in Seconds]]></phrase>
   <phrase title="quiz_list" version_id="1020010" version_string="1.2.0 Alpha"><![CDATA[Quiz List]]></phrase>
   <phrase title="success_message" version_id="1020010" version_string="1.2.0 Alpha"><![CDATA[Success]]></phrase>

@@ -5,6 +5,114 @@
         "version_string": "1.2.0 Alpha",
         "hash": "ab458f4b361834dd802e4f40d31b5ebc"
     },
+    "fs_quiz_DD.txt": {
+        "global_cache": false,
+        "version_id": 1020010,
+        "version_string": "1.2.0 Alpha",
+        "hash": "2e996f58c68a22791ad6a84ef0dba8bc"
+    },
+    "fs_quiz_HH.txt": {
+        "global_cache": false,
+        "version_id": 1020010,
+        "version_string": "1.2.0 Alpha",
+        "hash": "82c2ae8adfa619caabdd5ca295ae5258"
+    },
+    "fs_quiz_MM.txt": {
+        "global_cache": false,
+        "version_id": 1020010,
+        "version_string": "1.2.0 Alpha",
+        "hash": "0aa4894d41f1d568f93085b9b08422c5"
+    },
+    "fs_quiz_SS.txt": {
+        "global_cache": false,
+        "version_id": 1020010,
+        "version_string": "1.2.0 Alpha",
+        "hash": "4f5e8399380f7d8ebacfcd28ebf30d86"
+    },
+    "fs_quiz_active.txt": {
+        "global_cache": false,
+        "version_id": 1020010,
+        "version_string": "1.2.0 Alpha",
+        "hash": "4d3d769b812b6faa6b76e1a8abaece2d"
+    },
+    "fs_quiz_cat.txt": {
+        "global_cache": false,
+        "version_id": 1020010,
+        "version_string": "1.2.0 Alpha",
+        "hash": "152005a931e35a7e8023a27772a8d56f"
+    },
+    "fs_quiz_end_date.txt": {
+        "global_cache": false,
+        "version_id": 1020010,
+        "version_string": "1.2.0 Alpha",
+        "hash": "3c1429dca1ae285353b112dfacae5fe5"
+    },
+    "fs_quiz_expire.txt": {
+        "global_cache": false,
+        "version_id": 1020010,
+        "version_string": "1.2.0 Alpha",
+        "hash": "24fe48030f7d3097d5882535b04c3fa8"
+    },
+    "fs_quiz_expired.txt": {
+        "global_cache": false,
+        "version_id": 1020010,
+        "version_string": "1.2.0 Alpha",
+        "hash": "24fe48030f7d3097d5882535b04c3fa8"
+    },
+    "fs_quiz_no_quiz_have_been_created_yet.txt": {
+        "global_cache": false,
+        "version_id": 1020010,
+        "version_string": "1.2.0 Alpha",
+        "hash": "d1b89fde982502b5eacb10bb98fa3a15"
+    },
+    "fs_quiz_please_complete_required_field.txt": {
+        "global_cache": false,
+        "version_id": 1020010,
+        "version_string": "1.2.0 Alpha",
+        "hash": "82bdc864f3c191803e5d3595bea610ec"
+    },
+    "fs_quiz_quiz_duration.txt": {
+        "global_cache": false,
+        "version_id": 1020010,
+        "version_string": "1.2.0 Alpha",
+        "hash": "dbb7da9bab3346310fb1146918ade7b4"
+    },
+    "fs_quiz_sec.txt": {
+        "global_cache": false,
+        "version_id": 1020010,
+        "version_string": "1.2.0 Alpha",
+        "hash": "8f19a8c7566af54ea8981029730e5465"
+    },
+    "fs_quiz_start_date.txt": {
+        "global_cache": false,
+        "version_id": 1020010,
+        "version_string": "1.2.0 Alpha",
+        "hash": "db3794c7d704611ce61c9d8cc09cd806"
+    },
+    "fs_quiz_status.txt": {
+        "global_cache": false,
+        "version_id": 1020010,
+        "version_string": "1.2.0 Alpha",
+        "hash": "c8410b77eca68a6b58fc2f3a1b44d917"
+    },
+    "fs_quiz_there_no_matching_your_filters.txt": {
+        "global_cache": false,
+        "version_id": 1020010,
+        "version_string": "1.2.0 Alpha",
+        "hash": "734d3858f18d34d88696a9010c2f34ec"
+    },
+    "fs_quiz_time_per_que.txt": {
+        "global_cache": false,
+        "version_id": 1020010,
+        "version_string": "1.2.0 Alpha",
+        "hash": "ed31fd5c8643cc0a660aac147efceffd"
+    },
+    "fs_quiz_total_questions.txt": {
+        "global_cache": false,
+        "version_id": 1020010,
+        "version_string": "1.2.0 Alpha",
+        "hash": "6ce3bdc39e544725038e0e87b771db1e"
+    },
     "nav.fs_quiz.txt": {
         "global_cache": false,
         "version_id": 1020010,

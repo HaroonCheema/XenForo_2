@@ -27,42 +27,40 @@ class Setup extends AbstractSetup
 			$sm->createTable($tableName, $callback);
 		}
 
-		
+
 
 		$this->insertDefaultData();
 	}
 	public function installStep2()
 	{
-		$this->schemaManager()->createTable('fs_quiz', function(Create $table)
-		{
-			$table->addColumn('quiz_id','int')->autoIncrement();
-			$table->addColumn('quiz_name','varchar',100);
-			$table->addColumn('quiz_des','varchar',1000);
-			$table->addColumn('quiz_state','varchar', 100);
+		$this->schemaManager()->createTable('fs_quiz', function (Create $table) {
+			$table->addColumn('quiz_id', 'int')->autoIncrement();
+			$table->addColumn('quiz_name', 'varchar', 100);
+			$table->addColumn('quiz_des', 'varchar', 1000);
+			$table->addColumn('quiz_state', 'varchar', 100);
 			$table->addColumn('quiz_end_date', 'int', 20);
 			$table->addColumn('quiz_start_date', 'int', 20);
 			$table->addColumn('category_id', 'int', 20)->setDefault(0);
 			$table->addColumn('time_per_question', 'int', 100)->setDefault(0);
-			$table->addColumn('user_group', 'json');
-			$table->addColumn('created_at', 'int', 20)->setDefault(null);
-			$table->addColumn('updated_at', 'int', 20)->setDefault(null);
-			$table->addColumn('quiz_questions', 'json');
+			$table->addColumn('user_group', 'blob')->nullable(true);
+			$table->addColumn('created_at', 'int')->setDefault(0);
+			$table->addColumn('updated_at', 'int')->setDefault(0);
+			$table->addColumn('quiz_questions', 'blob')->nullable(true);
 			$table->addKey('category_id', 'category_id');
 			$table->addPrimaryKey('quiz_id');
 		});
 	}
 	public function installStep3()
 	{
-		$this->schemaManager()->createTable('fs_quiz_question', function(Create $table)
-		{
-			$table->addColumn('question_id','int')->autoIncrement();
-			$table->addColumn('question_type','varchar', 100);
+		$this->schemaManager()->createTable('fs_quiz_question', function (Create $table) {
+			$table->addColumn('question_id', 'int')->autoIncrement();
+			$table->addColumn('question_type', 'varchar', 100);
 			$table->addColumn('question_title', 'varchar', 100);
 			$table->addColumn('question_correct_answer', 'varchar', 1000)->setDefault('');
-			$table->addColumn('created_at', 'int', 20)->setDefault(null);
-			$table->addColumn('updated_at', 'int', 20)->setDefault(null);
-			$table->addColumn('options', 'json')->setDefault(null);
-			$table->addColumn('correct', 'json')->setDefault(null);
+			$table->addColumn('created_at', 'int')->setDefault(0);
+			$table->addColumn('updated_at', 'int')->setDefault(0);
+			$table->addColumn('options', 'blob')->nullable(true);
+			$table->addColumn('correct', 'blob')->nullable(true);
 			$table->addPrimaryKey('question_id');
 		});
 	}
@@ -73,11 +71,9 @@ class Setup extends AbstractSetup
 		foreach (array_keys($this->getTables()) as $tableName) {
 			$sm->dropTable($tableName);
 		}
-
-		
 	}
 
-	
+
 	public function insertDefaultData()
 	{
 		if (!$this->addOn->isInstalled()) {
@@ -102,5 +98,4 @@ class Setup extends AbstractSetup
 		$data = new MySql();
 		return $data->getData();
 	}
-
 }

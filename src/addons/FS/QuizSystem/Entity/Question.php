@@ -22,8 +22,8 @@ class Question extends \XF\Mvc\Entity\Entity {
             'question_correct_answer' => ['type' => self::STR, 'maxLength' => 1000, 'default' => ''],
             'options' => ['type' => self::JSON_ARRAY, 'default' => []],
             'correct' => ['type' => self::JSON_ARRAY, 'default' => []],
-            'created_at' => ['type' => self::UINT, 'default' => 0],
-            'updated_at' => ['type' => self::UINT, 'default' => 0],
+            'created_at' => ['type' => self::UINT, 'default' => \XF::$time],
+            'updated_at' => ['type' => self::UINT, 'default' => \XF::$time],
         ];
         $structure->relations = [
         ];

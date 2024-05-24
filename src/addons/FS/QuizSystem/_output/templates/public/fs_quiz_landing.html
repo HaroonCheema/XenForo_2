@@ -1,4 +1,5 @@
 <xf:title page="{$page}">{{ phrase('fs_quiz') }}</xf:title>
+
 <script>
   // For All Auctions
   function DateTimeConverter(unixdatetime) {
@@ -17,12 +18,12 @@
         day: "numeric",
       }
     );
-
+ 
     var humanDate = new Date(tempHumanDate);
     var year = humanDate.getFullYear();
     var month = (humanDate.getMonth() + 1).toString().padStart(2, "0");
     var date = humanDate.getDate();
-
+ 
     var fulldate = year + "-" + month + "-" + date + " " + wStart_time + ":00";
 
     // FormatingDateEspecialyForIOS
@@ -52,25 +53,26 @@
       var now = new Date().getTime();
       // Find the distance between now and the count down date
       var timeDistance = countDownDate - now;
-      document.getElementById("days-auction-" + auc_id).innerHTML =
+      document.getElementById("days-quiz-" + auc_id).innerHTML =
         Math.floor(timeDistance / (1000 * 60 * 60 * 24)) + " D";
-      document.getElementById("hours-auction-" + auc_id).innerHTML =
+      document.getElementById("hours-quiz-" + auc_id).innerHTML =
         Math.floor((timeDistance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)) +
         " H";
-      document.getElementById("minutes-auction-" + auc_id).innerHTML =
+      document.getElementById("minutes-quiz-" + auc_id).innerHTML =
         Math.floor((timeDistance % (1000 * 60 * 60)) / (1000 * 60)) + " M";
-      document.getElementById("seconds-auction-" + auc_id).innerHTML =
+      document.getElementById("seconds-quiz-" + auc_id).innerHTML =
         Math.floor((timeDistance % (1000 * 60)) / 1000) + " S";
 
       // If the count down is over, write some text
       if (timeDistance < 0) {
         clearInterval(counter);
-        document.getElementById("auction-counter-" + auc_id).style.display =
+        document.getElementById("quiz-counter-" + auc_id).style.display =
           "none";
       }
     }, 1000);
   }
 </script>
+
 
 <xf:page
   option="searchConstraints"
@@ -86,7 +88,7 @@
 <div
   class="block"
   data-xf-init="{{ $canInlineMod ? 'inline-mod' : '' }}"
-  data-type="fs_auction_auctions"
+  data-type="fs_quiz_list"
   data-href="{{ link('inline-mod') }}"
 >
   <div class="block-outer">
@@ -95,7 +97,7 @@
         page="{$page}"
         perpage="{$perPage}"
         total="{$total}"
-        link="auction"
+        link="quiz"
         params="{$filters}"
         wrapperclass="block-outer-main"
       />
@@ -107,12 +109,11 @@
 
     <!--Listing View--->
     <div class="block-body">
-      <xf:if is="$xf.visitor.layout_type == '0'">
         <xf:if is="$listings is not empty">
           <div class="structItemContainer">
             <xf:foreach loop="$listings" value="$listing">
               <xf:macro
-                template="fs_auction_listing_list_macros"
+                template="fs_quiz_list_macros"
                 name="listing"
                 arg-listing="{$listing}"
               />
@@ -120,47 +121,14 @@
           </div>
           <xf:elseif is="$filters" />
           <div class="block-row">
-            {{ phrase('fs_auction_there_no_auction_matching_your_filters') }}
+            {{ phrase('fs_quiz_there_no_matching_your_filters') }}
           </div>
           <xf:else />
           <div class="block-row">
-            {{ phrase('fs_auction_no_auctions_have_been_created_yet') }}
+            {{ phrase('fs_quiz_no_quiz_have_been_created_yet') }}
           </div>
         </xf:if>
-        <xf:elseif is="$xf.visitor.layout_type == '1'" />
-        <xf:if is="$featuredListings is not empty">
-          <div class="structItemContainer">
-            <xf:foreach loop="$featuredListings" value="$listing">
-              <xf:macro
-                template="fs_auction_listing_list_macros"
-                name="listing_grid"
-                arg-listing="{$listing}"
-              />
-            </xf:foreach>
-          </div>
-        </xf:if>
-
-        <!--Grid View-->
-        <xf:if is="$listings is not empty AND false">
-          <div class="structItemContainer">
-            <xf:foreach loop="$listings" value="$listing">
-              <xf:macro
-                template="fs_auction_listing_list_macros"
-                name="listing_grid"
-                arg-listing="{$listing}"
-              />
-            </xf:foreach>
-          </div>
-          <xf:elseif is="$filters" />
-          <div class="block-row">
-            {{ phrase('fs_auction_there_no_auction_matching_your_filters') }}
-          </div>
-          <xf:else />
-          <div class="block-row">
-            {{ phrase('fs_auction_no_auctions_have_been_created_yet') }}
-          </div>
-        </xf:if>
-      </xf:if>
+        
       <div class="block-footer">
         <span class="block-footer-counter"
           >{{ display_totals($totalReturn, $total) }}</span
@@ -174,7 +142,7 @@
       page="{$page}"
       perpage="{$perPage}"
       total="{$total}"
-      link="auction"
+      link="quiz"
       params="{$filters}"
       wrapperclass="block-outer-main"
     />
@@ -210,7 +178,7 @@
         class="menu menu--wide"
         data-menu="menu"
         aria-hidden="true"
-        data-href="{{ link('auction/refine-search', null, $conditions)}}"
+        data-href="{{ link('quiz/refine-search', null, $conditions)}}"
         data-load-target=".js-filterMenuBody"
       >
         <div class="menu-content">

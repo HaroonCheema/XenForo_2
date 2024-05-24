@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <routes>
-  <route route_type="admin" route_prefix="quiz" format=":int&lt;quiz_id&gt;" controller="FS\QuizSystem:Quiz" context="quiz"/>
+  <route route_type="admin" route_prefix="quiz" format=":int&lt;quiz_id&gt;" controller="FS\QuizSystem:Quiz" context="fs_quiz"/>
   <route route_type="admin" route_prefix="quiz-categories" format=":int&lt;category_id&gt;" controller="FS\QuizSystem:Category" context="fs_quiz_categories"/>
   <route route_type="admin" route_prefix="quiz-qsn" format=":int&lt;question_id&gt;" controller="FS\QuizSystem:Question" context="fs_quiz_question"/>
+  <route route_type="public" route_prefix="quiz" format=":int&lt;category_id,quiz_name&gt;/:int&lt;quiz_id&gt;/:page" controller="FS\QuizSystem:QuizSystem" context="fs_quiz"/>
 </routes>

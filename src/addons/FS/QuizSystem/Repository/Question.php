@@ -13,6 +13,8 @@ class Question extends Repository
     public function displayQuestions()
     {
         $finder = $this->finder('FS\QuizSystem:Question');
+        $finder->order('question_id', 'DESC');
+        
         return $finder;
     }
     public function displaySingleQuestion($id)
@@ -22,7 +24,7 @@ class Question extends Repository
         return $finder;
     }
     public function addQuestion()
-    { 
+    {
         $add = $this->em->create('FS\QuizSystem:Question');
         return $add;
     }

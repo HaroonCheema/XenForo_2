@@ -216,25 +216,21 @@
 	<div class="block-container">
 		<div class="block-body">
 			<xf:foreach loop="$categories" value="$category">
-				<xf:if is="$category.category_id == $quiz.category_id" >
-					<xf:set var="$cat" value="{$category.title}" />
-				</xf:if>
 				</xf:foreach>
 			<xf:selectrow name="quiz_category" value="$categories" label="{{ phrase('fs_quiz_categories') }}">
-				<xf:if is="$quiz">
-					<xf:option value="{$quiz.category_id}">{{ $cat ? $cat : 'None' }}</xf:option>
-				</xf:if>
 				<xf:foreach loop="$categories" value="$category">
-					<xf:option value="{$category.category_id}">{$category.title}</xf:option>
+					<xf:option value="{$category.category_id}" selected="$category.category_id == $quiz.category_id">{$category.title}</xf:option>
 				</xf:foreach>
 			</xf:selectrow>
 			<xf:textarearow name="quiz_name" 
 					label="{{ phrase('fs_quiz_name') }}"
-					placeholder="{{ $quiz? $quiz.quiz_name : phrase('fs_quiz_name') }}"
+					value="{{ $quiz? $quiz.quiz_name : '' }}"
+					placeholder="{{ phrase('fs_quiz_name') }}"
 					dir="ltr" />
 			<xf:textarearow name="quiz_des" 
 					label="{{ phrase('fs_quiz_des') }}"
-					placeholder="{{ $quiz? $quiz.quiz_des : phrase('fs_quiz_des') }}"
+					value="{{ $quiz? $quiz.quiz_des : '' }}"
+					placeholder="{{ phrase('fs_quiz_des') }}"
 					dir="ltr" />
 				<xf:tokeninputrow name="quiz_questions" value="{{ $pre_qsn }}" href="{{ link('quiz/find') }}"
 					label="{{ phrase('fs_quiz_qsn') }}"
@@ -755,4 +751,688 @@ $(document).ready(function() {
 
 	</xf:form>
 </xf:macro>]]></template>
+  <template type="public" title="fs_quiz_category_list_macros" version_id="1020010" version_string="1.2.0 Alpha"><![CDATA[<xf:macro name="simple_category_list"
+	arg-selected="0"
+	arg-pathToSelected="{{ [] }}"
+	arg-children="!"
+	arg-isActive="{{ false }}"
+>
+	<ol class="categoryList toggleTarget{{ $isActive ? ' is-active' : '' }}">
+
+		<xf:foreach loop="$children" key="$id" value="$child">
+			<xf:macro name="simple_category_list_item"
+				arg-selected="{$selected}"
+				arg-pathToSelected="{$pathToSelected}"
+				arg-category="{$child.record}"
+				arg-children="{$child}"
+			/>
+		
+		</xf:foreach>
+	</ol>
+</xf:macro>
+
+<xf:macro name="simple_category_list_item"
+	arg-selected="!"
+	arg-pathToSelected="{{ [] }}"
+	arg-category="!"
+	arg-children="!"
+>
+	<xf:set var="$isSelected" value="{{ $category.category_id == $selected }}" />
+	<xf:set var="$hasPathToSelected" value="{$pathToSelected.{$category.category_id}}" />
+	<xf:set var="$isActive" value="{{ $isSelected OR $hasPathToSelected AND $children is not empty }}" />
+
+	<li class="categoryList-item">
+		<div class="categoryList-itemRow">
+			<xf:if is="$children is not empty">
+				<a class="categoryList-toggler{{ $isActive ? ' is-active' : '' }}"
+					data-xf-click="toggle" data-target="< :up :next"
+					role="button" tabindex="0" aria-label="{{ phrase('toggle_expanded') }}"
+				></a>
+			<xf:else />
+				<span class="categoryList-togglerSpacer"></span>
+			</xf:if>
+			<a href="{{ link('quiz', $category) }}" class="categoryList-link{{ $isSelected ? ' is-selected' : '' }}">
+				{$category.title}
+			</a>
+			<span class="categoryList-label">
+				<span class="label label--subtle label--smallest">{$category.quiz_count}</span>
+			</span>
+		</div>
+		<xf:if is="$children">
+		
+			<xf:macro name="simple_category_list"
+				arg-selected="{$selected}"
+				arg-pathToSelected="{$pathToSelected}"
+				arg-children="{$children}"
+				arg-isActive="{$isActive}"
+			/>
+		</xf:if>
+	</li>
+</xf:macro>
+
+<xf:macro name="simple_list_block" arg-categoryTree="!" arg-selected="{{ 0 }}">
+	<div class="block">
+		<div class="block-container">
+			<h3 class="block-header">{{ phrase('categories') }}</h3>
+			<div class="block-body">
+				<xf:if is="$categoryTree.count()">
+					<xf:macro name="simple_category_list"
+						arg-children="{$categoryTree}"
+						arg-isActive="{{ true }}"
+						arg-selected="{$selected}"
+						arg-pathToSelected="{{ $selected ? $categoryTree.getPathTo($selected) : [] }}" />
+				<xf:else />
+					<div class="block-row">{{ phrase('n_a') }}</div>
+				</xf:if>
+				
+			</div>
+		</div>
+	</div>
+</xf:macro>]]></template>
+  <template type="public" title="fs_quiz_landing" version_id="1020010" version_string="1.2.0 Alpha"><![CDATA[<xf:title page="{$page}">{{ phrase('fs_quiz') }}</xf:title>
+
+<script>
+  // For All Auctions
+  function DateTimeConverter(unixdatetime) {
+    var wStart_time = new Date(unixdatetime * 1000).toLocaleString("en-US", {
+      hour12: false,
+      //  timeZone: 'America/New_York',
+      // timeZone:'Europe/London',
+      timeStyle: "long",
+    });
+    var tempHumanDate = new Date(unixdatetime * 1000).toLocaleDateString(
+      "en-US",
+      {
+        timeZone: "America/New_York",
+        year: "numeric",
+        month: "numeric",
+        day: "numeric",
+      }
+    );
+ 
+    var humanDate = new Date(tempHumanDate);
+    var year = humanDate.getFullYear();
+    var month = (humanDate.getMonth() + 1).toString().padStart(2, "0");
+    var date = humanDate.getDate();
+ 
+    var fulldate = year + "-" + month + "-" + date + " " + wStart_time + ":00";
+
+    // FormatingDateEspecialyForIOS
+    var tempCountTimmer = fulldate.split(/[- :]/);
+    // Apply each element to the Date function
+    var tempDateObject = new Date(
+      tempCountTimmer[0],
+      tempCountTimmer[1] - 1,
+      tempCountTimmer[2],
+      tempCountTimmer[3],
+      tempCountTimmer[4],
+      tempCountTimmer[5]
+    );
+    var CountDownDateTime = new Date(tempDateObject).getTime();
+
+    return CountDownDateTime;
+  }
+
+  function timmerCounter(auction_id, start_datetime) {
+    let auc_id = auction_id;
+
+    let humanDateTime = DateTimeConverter(start_datetime);
+
+    var countDownDate = new Date(humanDateTime).getTime();
+    var counter = setInterval(function () {
+      // Get today's date and time
+      var now = new Date().getTime();
+      // Find the distance between now and the count down date
+      var timeDistance = countDownDate - now;
+      document.getElementById("days-quiz-" + auc_id).innerHTML =
+        Math.floor(timeDistance / (1000 * 60 * 60 * 24)) + " D";
+      document.getElementById("hours-quiz-" + auc_id).innerHTML =
+        Math.floor((timeDistance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)) +
+        " H";
+      document.getElementById("minutes-quiz-" + auc_id).innerHTML =
+        Math.floor((timeDistance % (1000 * 60 * 60)) / (1000 * 60)) + " M";
+      document.getElementById("seconds-quiz-" + auc_id).innerHTML =
+        Math.floor((timeDistance % (1000 * 60)) / 1000) + " S";
+
+      // If the count down is over, write some text
+      if (timeDistance < 0) {
+        clearInterval(counter);
+        document.getElementById("quiz-counter-" + auc_id).style.display =
+          "none";
+      }
+    }, 1000);
+  }
+</script>
+
+
+<xf:page
+  option="searchConstraints"
+  value="{{ {
+	phrase('fs_auction_auctions'): {'search_type': 'fs_auction_auctions'}
+} }}"
+/>
+
+<xf:if is="$canInlineMod">
+  <xf:js src="xf/inline_mod.js" min="1" />
+</xf:if>
+
+<div
+  class="block"
+  data-xf-init="{{ $canInlineMod ? 'inline-mod' : '' }}"
+  data-type="fs_quiz_list"
+  data-href="{{ link('inline-mod') }}"
+>
+  <div class="block-outer">
+    <xf:trim>
+      <xf:pagenav
+        page="{$page}"
+        perpage="{$perPage}"
+        total="{$total}"
+        link="quiz"
+        params="{$filters}"
+        wrapperclass="block-outer-main"
+      />
+
+    </xf:trim>
+  </div>
+  <div class="block-container">
+    <xf:macro name="search_menu" arg-conditions="{$conditions}" />
+
+    <!--Listing View--->
+    <div class="block-body">
+        <xf:if is="$listings is not empty">
+          <div class="structItemContainer">
+            <xf:foreach loop="$listings" value="$listing">
+              <xf:macro
+                template="fs_quiz_list_macros"
+                name="listing"
+                arg-listing="{$listing}"
+              />
+            </xf:foreach>
+          </div>
+          <xf:elseif is="$filters" />
+          <div class="block-row">
+            {{ phrase('fs_quiz_there_no_matching_your_filters') }}
+          </div>
+          <xf:else />
+          <div class="block-row">
+            {{ phrase('fs_quiz_no_quiz_have_been_created_yet') }}
+          </div>
+        </xf:if>
+        
+      <div class="block-footer">
+        <span class="block-footer-counter"
+          >{{ display_totals($totalReturn, $total) }}</span
+        >
+      </div>
+    </div>
+  </div>
+
+  <div class="block-outer block-outer--after">
+    <xf:pagenav
+      page="{$page}"
+      perpage="{$perPage}"
+      total="{$total}"
+      link="quiz"
+      params="{$filters}"
+      wrapperclass="block-outer-main"
+    />
+    <xf:showignored wrapperclass="block-outer-opposite" />
+  </div>
+</div>
+
+<xf:page option="sideNavTitle">{{ phrase('categories') }}</xf:page>
+
+<xf:sidenav>
+  <xf:macro
+    template="fs_quiz_category_list_macros"
+    name="simple_list_block"
+    arg-categoryTree="{$categoryTree}"
+  />
+</xf:sidenav>
+
+<!-- Filter Bar Macro Start -->
+
+<xf:macro name="search_menu" arg-conditions="!">
+  <div class="block-filterBar">
+    <div class="filterBar">
+      <a
+        class="filterBar-menuTrigger"
+        data-xf-click="menu"
+        role="button"
+        tabindex="0"
+        aria-expanded="false"
+        aria-haspopup="true"
+        >{{ phrase('filters') }}</a
+      >
+      <div
+        class="menu menu--wide"
+        data-menu="menu"
+        aria-hidden="true"
+        data-href="{{ link('quiz/refine-search', null, $conditions)}}"
+        data-load-target=".js-filterMenuBody"
+      >
+        <div class="menu-content">
+          <h4 class="menu-header">{{ phrase('show_only:') }}</h4>
+          <div class="js-filterMenuBody">
+            <div class="menu-row">{{ phrase('loading...') }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</xf:macro>]]></template>
+  <template type="public" title="fs_quiz_list_macros" version_id="1020010" version_string="1.2.0 Alpha"><![CDATA[<xf:macro name="listing"
+		  arg-listing="!"
+		  arg-category="{{ null }}"
+		  arg-showWatched="{{ true }}"
+		  arg-allowInlineMod="{{ true }}"
+		  arg-chooseName=""
+		  arg-extraInfo="">
+	<xf:css src="structured_list.less" />
+	<xf:css src="fs_quiz_list_view.less" />
+
+	<div class="structItem structItem--listing js-inlineModContainer " id="quiz-{{$listing.quiz_id}}" data-author="">
+
+		<img src ="{{ base_url('styles/FS/AuctionPlugin/no_image.png',true) }}" style="display: none;" onload="timmerCounter({{$listing.quiz_id}},{{$listing.quiz_end_date}})">
+
+		<div class="structItem-cell structItem-cell--main" data-xf-init="touch-proxy">
+
+			<div class="structItem-title">
+
+				<a href="{{ link('quiz/view-quiz', $listing) }}" class="" data-tp-primary="on">{$listing.quiz_name}</a>
+
+			</div>
+			<div class="structItem-minor">
+
+				<ul class="structItem-parts">
+					<li class="structItem-startDate">
+						<xf:date time="{$listing.created_at}" /> 
+
+					</li>
+
+					<li>{{ snippet($listing.Category.title, 50, {'stripBbCode': true}) }}</li>
+
+				</ul>
+			</div>
+
+
+
+			<div class="auction-category">{{ snippet($listing.quiz_des, 100, {'stripBbCode': true}) }}</div>
+
+
+		</div>
+		
+		<div class="structItem-cell structItem-cell--listingMeta">
+
+			<dl class="pairs pairs--justified structItem-minor structItem-metaItem structItem-metaItem--questionCount">
+				<dt>{{ phrase('fs_quiz_total_questions') }}</dt>
+				<dd>
+					{{count($listing.quiz_questions)}}
+				</dd>
+			</dl>
+			
+			<dl class="pairs pairs--justified structItem-minor structItem-metaItem structItem-metaItem--questionDuration">
+				<dt >{{ phrase('fs_quiz_time_per_que') }}</dt>
+				<dd>
+					{$listing.time_per_question} {{ phrase('fs_quiz_sec') }}
+				</dd>
+			</dl>
+
+			<dl class="pairs pairs--justified structItem-minor structItem-metaItem structItem-metaItem--questionDuration">
+				<dt >{{ phrase('fs_quiz_quiz_duration') }}</dt>
+				<dd>
+					{$listing.getQuizDuration()}
+					<xf:comment>
+						{{$listing.Thread.getFormatedTime12()}}
+					</xf:comment>
+
+				</dd>
+			</dl>
+			
+		</div>
+		
+		<div class="structItem-cell structItem-cell--listingMeta">
+
+			<dl class="pairs pairs--justified structItem-minor structItem-metaItem structItem-metaItem--starting">
+				<dt>{{ phrase('fs_quiz_start_date') }}</dt>
+				<dd>
+					<xf:date time="{$listing.quiz_start_date}" />
+				</dd>
+			</dl>
+
+			<dl class="pairs pairs--justified structItem-minor structItem-metaItem structItem-metaItem--expiration">
+				<dt >{{ phrase('fs_quiz_end_date') }}</dt>
+				<dd>
+					<xf:date time="{$listing.quiz_end_date}" />
+					<xf:comment>
+						{{$listing.Thread.getFormatedTime12()}}
+					</xf:comment>
+
+				</dd>
+			</dl>
+			<dl class="pairs pairs--justified structItem-minor structItem-metaItem structItem-metaItem--type">
+				<dt id="counter-before">
+
+				</dt>
+				<dd>	<xf:if is="$listing.quiz_end_date < $xf.time">
+					<li>
+						<span class="label label--red label--smallest">{{ phrase('fs_quiz_expired') }}</span>
+					</li>
+					<xf:else />
+					<li>
+						<div id="quiz-counter-{{$listing.quiz_id}}">
+
+							<span class="label  label--blue label--counter" id="days-quiz-{{$listing.quiz_id}}">
+								{{phrase('fs_quiz_DD')}}
+							</span>
+							<span class="label  label--blue label--counter" id="hours-quiz-{{$listing.quiz_id}}">
+								{{phrase('fs_quiz_HH')}}
+							</span>
+							<span class="label  label--blue label--counter" id="minutes-quiz-{{$listing.quiz_id}}">
+								{{phrase('fs_quiz_MM')}}
+							</span>
+							<span class="label  label--blue label--counter" id="seconds-quiz-{{$listing.quiz_id}}">
+								{{phrase('fs_quiz_SS')}}
+							</span>
+						</div>
+
+					</li>
+					</xf:if> </dd>
+			</dl>
+
+
+		</div>
+	</div>
+</xf:macro>]]></template>
+  <template type="public" title="fs_quiz_list_view.less" version_id="1020010" version_string="1.2.0 Alpha"><![CDATA[// ############################ Auction List View ######################
+
+.structItem-cell.structItem-cell--listingMeta
+{
+	width: 250px;
+}
+.label--counter{
+	font-size:13px;
+}
+.auction-category{
+	font-size: 12px;
+    color: #8c8c8c;
+}
+#counter-before:after{
+	content:none;
+}
+.structItem-metaItem--ratingf
+{
+	font-size: @xf-fontSizeSmall;
+}
+.label--counter-single{
+	font-size:25px;
+}
+@media (max-width: @xf-responsiveWide)
+{
+	.structItem-cell.structItem-cell--listingMeta
+	{
+		width: 190px;
+		font-size: @xf-fontSizeSmaller;
+	}
+}
+
+@media (max-width: @xf-responsiveMedium)
+{
+	.structItem-cell.structItem-cell--listingMeta
+	{
+		display: block;
+		width: auto;
+		float: left;
+		padding-top: 0;
+		padding-left: 0;
+		padding-right: 0;
+		color: @xf-textColorMuted;
+
+		.pairs
+		{
+			display: inline;
+
+			&:before,
+			&:after
+			{
+				display: none;
+			}
+
+			> dt,
+			> dd
+			{
+				display: inline;
+				float: none;
+				margin: 0;
+			}
+		}
+
+		.structItem-metaItem
+		{
+			display: inline;
+		}
+
+		.ratingStarsRow
+		{
+			display: inline;
+
+			.ratingStarsRow-text
+			{
+				display: none;
+			}
+		}
+
+		.structItem-metaItem--lastUpdate > dt
+		{
+			display: none;
+		}
+
+		.structItem-metaItem + .structItem-metaItem:before
+		{
+			display: inline;
+			content: "\20\00B7\20";
+			color: @xf-textColorMuted;
+		}
+	}
+}
+
+// #################################### Auction LISTING BODY / VIEW ########################
+
+.listingBody
+{
+	display: flex;
+}
+
+.listingBody-main
+{
+	flex: 1;
+	min-width: 0;
+	padding: @xf-blockPaddingV @xf-blockPaddingH;
+}
+
+.listingBody-sidebar
+{
+	flex: 0 0 auto;
+	width: 250px;
+	.xf-contentAltBase();
+	border-left: @xf-borderSize solid @xf-borderColor;
+	padding: @xf-blockPaddingV @xf-blockPaddingH;
+	font-size: @xf-fontSizeSmall;
+
+	> :first-child
+	{
+		margin-top: 0;
+	}
+
+	> :last-child
+	{
+		margin-bottom: 0;
+	}
+}
+
+.listingBody-fields
+{
+	&.listingBody-fields--before
+	{
+		margin-bottom: @xf-paddingLarge;
+		padding-bottom: @xf-paddingMedium;
+		border-bottom: @xf-borderSize solid @xf-borderColorLight;
+	}
+
+	&.listingBody-fields--after
+	{
+		margin-top: @xf-paddingLarge;
+		padding-top: @xf-paddingMedium;
+		border-top: @xf-borderSize solid @xf-borderColorLight;
+	}
+}
+
+.listingBody-attachments
+{
+	margin: .5em 0;
+}
+
+.listingBody .actionBar-set
+{
+	margin-top: @xf-messagePadding;
+	font-size: @xf-fontSizeSmall;
+}
+
+.listingSidebarGroup
+{
+	margin-bottom: @xf-elementSpacer;
+
+	&.listingSidebarGroup--buttons
+	{
+		> .button
+		{
+			display: block;
+			margin: 5px 0;
+
+			&:first-child
+			{
+				margin-top: 0;
+			}
+
+			&:last-child
+			{
+				margin-bottom: 0;
+			}
+		}
+	}
+}
+
+.listingSidebarGroup-title
+{
+	margin: 0;
+	padding: 0;
+
+	font-size: @xf-fontSizeLarge;
+	font-weight: @xf-fontWeightNormal;
+	color: @xf-textColorFeature;
+	padding-bottom: @xf-paddingMedium;
+
+	.m-hiddenLinks();
+}
+
+.listingSidebarList
+{
+	.m-listPlain();
+
+	> li
+	{
+		padding: @xf-paddingSmall 0;
+
+		&:first-child
+		{
+			padding-top: 0;
+		}
+
+		&:last-child
+		{
+			padding-bottom: 0;
+		}
+	}
+}
+
+@media (max-width: @xf-responsiveWide)
+{
+	.listingBody
+	{
+		display: block;
+	}
+
+	.listingBody-sidebar
+	{
+		width: auto;
+		border-left: none;
+		border-top: @xf-borderSize solid @xf-borderColor;
+	}
+
+	.listingSidebarGroup
+	{
+		max-width: 600px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+
+.structItem-cell.structItem-cell--icon.structItem-cell--iconExpanded.structItem-cell--iconListingCoverImage
+{
+	width: 110px;
+}
+
+.structItem-cell.structItem-cell--icon.structItem-cell--iconExpanded.structItem-cell--iconListingCoverImageGrid
+{
+	min-width: 300px !important;
+}
+
+.structItem-cell--iconListingCoverImage .structItem-iconContainer .avatar
+{
+	width: 96px;
+	height: 96px;
+	font-size: 57.6px;
+	border-radius:0;
+}]]></template>
+  <template type="public" title="fs_quiz_search_filter" version_id="1020010" version_string="1.2.0 Alpha"><![CDATA[<xf:form action="{{ link('quiz') }}">
+
+	<div class="menu-row menu-row--separated">
+		{{ phrase('fs_quiz_status:') }}
+		<div class="u-inputSpacer">
+			<xf:select name="fs_quiz_status" value="{$conditions.fs_quiz_status}">
+				<xf:option value="all" selected="true" label="{{ phrase('all') }}" />
+				<xf:option value="1" label="{{ phrase('fs_quiz_active') }}" />
+				<xf:option value="0" label="{{ phrase('fs_quiz_expire') }}" />
+			</xf:select>
+		</div>
+	</div>
+
+	<div class="menu-row menu-row--separated">
+		{{ phrase('fs_quiz_cat:') }}
+		<div class="u-inputSpacer">
+			<xf:select name="fs_quiz_cat" value="{$conditions.fs_quiz_cat}">
+				<xf:option value="0" selected="true">{{ phrase('none') }}</xf:option>
+
+				<xf:foreach loop="$categories" value="$cat">
+					<xf:option
+							   value="{$cat.category_id}"
+							   >{$cat.title}</xf:option
+						>
+				</xf:foreach>
+			</xf:select>
+		</div>
+	</div>
+
+	<div class="menu-footer">
+		<span class="menu-footer-controls">
+			<xf:button type="submit" class="button--primary"
+					   >{{ phrase('filter') }}</xf:button
+				>
+		</span>
+	</div>
+
+	<xf:hiddenval name="search">1</xf:hiddenval>
+</xf:form>]]></template>
 </templates>
