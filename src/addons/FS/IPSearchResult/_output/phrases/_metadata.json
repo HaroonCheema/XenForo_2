@@ -4,5 +4,17 @@
         "version_id": 1000400,
         "version_string": "1.0.4 Alpha",
         "hash": "f4cf2970d80a7d087efe24beb1fbf4ca"
+    },
+    "permission.fs_IPSearchResult_canUseSearch.txt": {
+        "global_cache": false,
+        "version_id": 1000400,
+        "version_string": "1.0.4 Alpha",
+        "hash": "b5184393113bc8225e636587a86ba9a1"
+    },
+    "permission_interface.fs_IPSearchResult.txt": {
+        "global_cache": false,
+        "version_id": 1000400,
+        "version_string": "1.0.4 Alpha",
+        "hash": "0b74e0ed55624acf4c34ca31e2006ed1"
     }
 }

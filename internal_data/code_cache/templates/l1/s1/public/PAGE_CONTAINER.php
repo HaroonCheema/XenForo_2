@@ -467,7 +467,7 @@ return array(
 	}
 	$__compilerTemp2 .= '
 							';
-	if ($__vars['xf']['visitor']['is_moderator'] OR $__vars['xf']['visitor']['is_admin']) {
+	if ($__templater->method($__vars['xf']['visitor'], 'hasPermission', array('fs_IPSearchResult', 'canUseSearch', ))) {
 		$__compilerTemp2 .= '
 	<a href="' . $__templater->func('link', array('ip-search', ), true) . '" class="menu-linkRow">' . 'IP Search' . '</a>
 ';

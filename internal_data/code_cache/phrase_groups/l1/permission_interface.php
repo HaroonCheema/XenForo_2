@@ -15,6 +15,7 @@ return array (
   'permission_interface.formThreadModeration' => 'Form Thread Moderation',
   'permission_interface.forumModeratorPermissions' => 'Forum moderator permissions',
   'permission_interface.forumPermissions' => 'Forum permissions',
+  'permission_interface.fs_IPSearchResult' => '[FS] Ip Search Result',
   'permission_interface.fs_Thread_Thumbnail_perms' => '[FS] Thread Thumbnail',
   'permission_interface.fs_attachment' => '[FS] Like See Attachment',
   'permission_interface.fs_auction_permissions' => 'FS Auction Plugin Permissions',

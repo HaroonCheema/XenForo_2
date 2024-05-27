@@ -3,5 +3,10 @@
         "version_id": 1000400,
         "version_string": "1.0.4 Alpha",
         "hash": "aedd9f6ac7b34dd6f1b64115e1c49b1b"
+    },
+    "public/ip_search.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "ae8a9f58903d1ecc377a02f45e24c6b7"
     }
 }

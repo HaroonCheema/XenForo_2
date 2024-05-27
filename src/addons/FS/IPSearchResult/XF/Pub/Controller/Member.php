@@ -7,11 +7,15 @@ use XF\Mvc\Reply\View;
 
 class Member extends XFCP_Member
 {
-    public function actionUserIp(ParameterBag $params)
+	public function actionUserIp(ParameterBag $params)
 	{
 		$user = $this->assertViewableUser($params->user_id, [], true);
 
 		if (!\XF::visitor()->canViewIps()) {
+			return $this->noPermission();
+		}
+
+		if (!\XF::visitor()->hasPermission('fs_IPSearchResult', 'canUseSearch')) {
 			return $this->noPermission();
 		}
 

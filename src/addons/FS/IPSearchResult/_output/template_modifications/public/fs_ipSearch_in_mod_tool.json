@@ -1,0 +1,9 @@
+{
+    "template": "PAGE_CONTAINER",
+    "description": "Add link  'IP Search' in moderation tool list",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<!--[XF:mod_tools_menu:bottom]-->",
+    "replace": "<xf:if is=\"{{ $xf.visitor.hasPermission('fs_IPSearchResult', 'canUseSearch') }}\">\n\t<a href=\"{{ link('ip-search') }}\" class=\"menu-linkRow\">{{ phrase('ip_search') }}</a>\n</xf:if>\n$0"
+}

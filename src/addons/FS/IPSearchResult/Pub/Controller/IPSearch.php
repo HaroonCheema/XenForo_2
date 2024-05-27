@@ -7,34 +7,43 @@ use XF\Pub\Controller\AbstractController;
 
 class IPSearch extends AbstractController
 {
-    
+
 	protected function preDispatchController($action, ParameterBag $params)
 	{
 		$visitor = \XF::visitor();
 
-		if ($visitor->is_moderator || $visitor->is_admin)
-		{
+		if ($visitor->is_moderator || $visitor->is_admin) {
 			return true;
 		}
-                
-                throw $this->exception($this->noPermission());
+
+		throw $this->exception($this->noPermission());
 	}
-        
-        
-        public function actionIndex()
+
+
+	public function actionIndex()
 	{
-		return $this->view('FS\IPSearchResult:IPSearch', 'ip_search', $viewParams=[]);
-        }
-        
-        
-        public function actionUserIps()
+
+		if (!\XF::visitor()->hasPermission('fs_IPSearchResult', 'canUseSearch')) {
+			return $this->noPermission();
+		}
+
+
+		return $this->view('FS\IPSearchResult:IPSearch', 'ip_search', $viewParams = []);
+	}
+
+
+	public function actionUserIps()
 	{
-                $username = ltrim($this->filter('username', 'str', ['no-trim']));
-                
+		if (!\XF::visitor()->hasPermission('fs_IPSearchResult', 'canUseSearch')) {
+			return $this->noPermission();
+		}
+
+
+		$username = ltrim($this->filter('username', 'str', ['no-trim']));
+
 		$user = $this->findUserByName($username, []);
-                
-		if (!\XF::visitor()->canViewIps())
-		{
+
+		if (!\XF::visitor()->canViewIps()) {
 			return $this->noPermission();
 		}
 
@@ -42,17 +51,15 @@ class IPSearch extends AbstractController
 		$ipRepo = $this->repository('XF:Ip');
 
 		$ips = $ipRepo->getIpsByUser($user);
-		if (!$ips)
-		{
+		if (!$ips) {
 			return $this->message(\XF::phrase('no_ip_logs_for_requested_user'));
 		}
-                
-                
-                foreach($ips as $key => $ip)
-                {   
-                    $ips[$key]['users'] = $this->em()->getRepository('XF:Ip')->getJustUsersByIp($ip['ip']);  // get ip users
-                }
-               
+
+
+		foreach ($ips as $key => $ip) {
+			$ips[$key]['users'] = $this->em()->getRepository('XF:Ip')->getJustUsersByIp($ip['ip']);  // get ip users
+		}
+
 
 		$viewParams = [
 			'user' => $user,
@@ -60,19 +67,17 @@ class IPSearch extends AbstractController
 		];
 		return $this->view('XF:Member\UserIps', 'fs_member_ip_list', $viewParams);
 	}
-        
-        
-        
-        protected function findUserByName($username, array $extraWith = [])
+
+
+
+	protected function findUserByName($username, array $extraWith = [])
 	{
 		/** @var \XF\Entity\User $user */
-                $user = $this->em()->findOne('XF:User', ['username' => $username], $extraWith);
-		if (!$user)
-		{
+		$user = $this->em()->findOne('XF:User', ['username' => $username], $extraWith);
+		if (!$user) {
 			throw $this->exception($this->notFound(\XF::phrase('requested_user_not_found')));
 		}
 
 		return $user;
 	}
-
 }

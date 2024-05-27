@@ -1,0 +1,49 @@
+<xf:title>{{ phrase('ip_search') }}</xf:title>
+
+
+<div class="block">
+	<div class="block-container">
+		<h2 class="block-tabHeader tabs" data-xf-init="tabs" role="tablist">
+			<a class="tabs-tab is-active" role="tab" tabindex="0" aria-controls="user-search">{{ phrase('find_ip_addresses_for_user') }}</a>
+			<a class="tabs-tab" role="tab" tabindex="0" aria-controls="ip-search">{{ phrase('find_users_by_ip_address') }}</a>
+		</h2>
+
+		<ul class="tabPanes">
+			<li class="is-active" role="tabpanel" id="user-search">
+				<xf:form action="{{ link('ip-search/user-ips') }}">
+					<div class="block-body">
+						<xf:formrow label="{{ phrase('user_name') }}">
+							
+							<ul class="inputList">
+								<li><xf:textbox name="username" ac="single" maxlength="{{ max_length($xf.visitor, 'username') }}" /></li>
+
+								<xf:comment>
+								<li><xf:checkbox standalone="true">
+									<xf:option name="criteria[username][exact_match]">
+										{{ phrase('exact_match') }}
+									</xf:option>
+								</xf:checkbox></li>
+								</xf:comment>
+							</ul>
+						</xf:formrow>
+
+						<hr class="formRowSep" />
+
+					</div>
+					<xf:submitrow sticky="true" icon="search" />
+				</xf:form>
+			</li>
+			
+			<li role="tabpanel" id="ip-search">
+				<xf:form action="{{ link('members/ip-users') }}">
+					<div class="block-body">
+						<xf:textboxrow name="ip"
+							label="{{ phrase('ip_address') }}"
+							explain="{{ phrase('ip_search_explain') }}" />
+					</div>
+					<xf:submitrow icon="search" />
+				</xf:form>
+			</li>
+		</ul>
+	</div>
+</div>

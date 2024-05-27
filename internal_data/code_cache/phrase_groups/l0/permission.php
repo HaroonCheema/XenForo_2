@@ -130,6 +130,7 @@ return array (
   'permission.forum_viewScheduled' => 'View scheduled publications',
   'permission.forum_votePoll' => 'Vote on polls',
   'permission.forum_warn' => 'Give warnings on posts',
+  'permission.fs_IPSearchResult_canUseSearch' => 'Can Use Ip Search',
   'permission.fs_attachment_needlike' => '[FS] Need Like to See Attachment ?',
   'permission.fs_auction_permissions_add' => 'Add auction listing',
   'permission.fs_bunny_allow' => 'Can Upload Video',
