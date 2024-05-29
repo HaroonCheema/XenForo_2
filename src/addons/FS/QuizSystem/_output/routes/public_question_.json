@@ -1,0 +1,11 @@
+{
+    "route_type": "public",
+    "route_prefix": "question",
+    "sub_name": "",
+    "format": ":int<question_id>/:page",
+    "build_class": "",
+    "build_method": "",
+    "controller": "FS\\QuizSystem:Question",
+    "context": "fs_quiz",
+    "action_prefix": ""
+}

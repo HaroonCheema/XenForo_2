@@ -31,6 +31,7 @@ class Quiz extends \XF\Mvc\Entity\Entity
             'time_per_question' => ['type' => self::UINT, 'default' => 0],
             'user_group' => ['type' => self::JSON_ARRAY, 'default' => []],
             'quiz_questions' => ['type' => self::JSON_ARRAY, 'default' => []],
+            'question_ids' => ['type' => self::JSON_ARRAY, 'default' => []],
             'created_at' => ['type' => self::UINT, 'default' => \XF::$time],
             'updated_at' => ['type' => self::UINT, 'default' => \XF::$time],
         ];

@@ -103,6 +103,7 @@ class Quiz extends AbstractController
         ]);
         $quiz_qsn = $input['quiz_questions'];
         $questions = [];
+        $questionsIds = [];
         $finder = $this->finder('FS\QuizSystem:Question');
         $elements = [];
         $elements = explode(', ', $quiz_qsn);
@@ -110,6 +111,7 @@ class Quiz extends AbstractController
             $qsn = $this->em()->findOne('FS\QuizSystem:Question', ['question_title' => $elements[$i]]);
             if ($qsn != null) {
                 array_push($questions, $qsn->question_title);
+                array_push($questionsIds, $qsn->question_id);
             } else {
                 return $this->message($elements[$i] . " Not Found, Add Valid Question");
             }
@@ -146,7 +148,7 @@ class Quiz extends AbstractController
             \XF::db()->query('update fs_quiz_category set quiz_count = quiz_count + 1 where category_id =' . $input['quiz_category']);
         }
 
-        $service->saveQuiz($input, $questions);
+        $service->saveQuiz($input, $questions, $questionsIds);
 
         return $this->redirect($this->buildLink('quiz'));
     }

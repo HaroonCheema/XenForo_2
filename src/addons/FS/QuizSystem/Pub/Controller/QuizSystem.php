@@ -56,6 +56,91 @@ class QuizSystem extends AbstractController
         return $this->view('FS\QuizSystem:QuizSystem', 'fs_quiz_landing', $viewParams);
     }
 
+    public function actionQuizConfirm(ParameterBag $params)
+    {
+        /** @var \FS\QuizSystem\Entity\Quiz $quizExist */
+        $quizExist = $this->assertDataExists($params->quiz_id);
+
+        if (!$quizExist) {
+            return $this->noPermission();
+        }
+
+        $viewParams = [
+            'quiz' => $quizExist,
+        ];
+
+        return $this->view('FS\QuizSystem:QuizSystem', 'fs_quiz_confirm', $viewParams);
+    }
+
+    public function actionQuizStart(ParameterBag $params)
+    {
+        /** @var \FS\QuizSystem\Entity\Quiz $quizExist */
+        $quizExist = $this->assertDataExists($params->quiz_id);
+
+        if (!$quizExist) {
+            return $this->noPermission();
+        }
+
+        $firstQuestionId = $quizExist['question_ids'][0];
+
+        $firstQuestion = $this->em()->find('FS\QuizSystem:Question', $firstQuestionId);
+
+        $template = 'fs_quiz_question_answer';
+
+        if ($firstQuestion->question_type == 'radio' || $firstQuestion->question_type == 'checkbox') {
+            $template = 'fs_quiz_question_radio';
+        }
+
+        $viewParams = [
+            'quizId' => $params->quiz_id,
+            'question' => $firstQuestion,
+            'quesNo' => 1,
+            'totalQuestions' => count($quizExist->question_ids),
+            'finish' => count($quizExist->question_ids) == 1 ? true : false,
+        ];
+
+        return $this->view('FS\QuizSystem:Question', $template, $viewParams);
+    }
+
+    public function actionCheckResult(ParameterBag $params)
+    {
+
+        /** @var \FS\QuizSystem\Entity\Quiz $quizExist */
+        $quizExist = $this->assertDataExists($params->quiz_id);
+
+        if (!$quizExist) {
+            return $this->noPermission();
+        }
+
+        $visitor = \XF::visitor();
+
+        $finder = $this->finder('FS\QuizSystem:QuestionAnswer')->where('user_id', $visitor->user_id)->where('quiz_id', $quizExist->quiz_id)->fetch();
+
+        if (!$finder) {
+            return $this->noPermission();
+        }
+
+        $correctAnswers = 0;
+        $wrongAnswers = 0;
+
+        foreach ($finder as $key => $value) {
+            if ($value->correct) {
+                $correctAnswers += 1;
+            } else {
+                $wrongAnswers += 1;
+            }
+        }
+
+        $viewParams = [
+            'quiz' => $quizExist,
+            'correctAnswers' => $correctAnswers,
+            'wrongAnswers' => $wrongAnswers,
+            'attemptQuestion' => count($finder),
+        ];
+
+        return $this->view('FS\QuizSystem:Question', 'fs_quiz_check_result', $viewParams);
+    }
+
     protected function getSearchFinder($finder)
     {
         $conditions = $this->filterSearchConditions();
@@ -107,5 +192,17 @@ class QuizSystem extends AbstractController
             $categories = $this->findCategoryList()->fetch();
         }
         return new \XF\Tree($categories, 'parent_category_id', $rootId);
+    }
+
+    /**
+     * @param string $id
+     * @param array|string|null $with
+     * @param null|string $phraseKey
+     *
+     * @return \FS\QuizSystem\Entity\Quiz
+     */
+    protected function assertDataExists($id, array $extraWith = [], $phraseKey = null)
+    {
+        return $this->assertRecordExists('FS\QuizSystem:Quiz', $id, $extraWith, $phraseKey);
     }
 }

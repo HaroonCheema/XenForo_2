@@ -1,0 +1,28 @@
+<xf:title>{{ phrase('fs_quiz_question_no', {'quesNo': $quesNo, 'totalQuestions': $totalQuestions}) }}</xf:title>
+
+<xf:form action="{{ link('question/next', $question) }}" class="block">
+
+	<div class="block-container">
+		<div class="block-body">
+
+			<xf:formrow label="{{ phrase('fs_quiz_question_title') }}">
+				{$question.question_title}
+			</xf:formrow>
+
+			<xf:radiorow name="answer" label="{{ phrase('fs_quiz_question_answer_select') }}" explain="{{ phrase('fs_quiz_question_answer_select_explain') }}">
+
+				<xf:foreach loop="$question.options" key="$key" value="$val">
+					<xf:option value="{$key}" label="{{ $val }}" selected="{{ $key == 0}}"/>
+				</xf:foreach>
+			</xf:radiorow>
+
+		</div>
+
+		<xf:if is="$finish">
+			<xf:submitrow submit="{{ phrase('fs_quiz_finish') }}" icon="confirm" sticky="true" rowtype="simple"/>
+			<xf:else />
+			<xf:submitrow submit="{{ phrase('next') }}" icon="confirm" sticky="true" rowtype="simple"/>
+		</xf:if>
+	</div>
+	<xf:hiddenval name="id">{{ $quizId }}</xf:hiddenval>
+</xf:form>

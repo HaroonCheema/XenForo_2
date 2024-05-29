@@ -1,0 +1,35 @@
+<xf:title>{{ phrase('fs_quiz_result') }}</xf:title>
+
+<div class="block-container">
+	<div class="block-body">
+
+		<xf:formrow	label="{{ phrase('fs_quiz_start_title') }}">
+			{$quiz.quiz_name}
+		</xf:formrow>
+
+		<xf:formrow label="{{ phrase('fs_quiz_start_desc') }}">
+			{$quiz.quiz_des}
+		</xf:formrow>
+
+		<xf:formrow label="{{ phrase('fs_quiz_total_questions') }}">
+			{{count($quiz.quiz_questions)}}
+		</xf:formrow>
+
+		<xf:formrow label="{{ phrase('fs_quiz_attempt_questions') }}">
+			{$attemptQuestion}
+		</xf:formrow>
+
+		<xf:formrow label="{{ phrase('fs_quiz_correct_answer') }}">
+			{$correctAnswers}
+		</xf:formrow>
+
+		<xf:formrow label="{{ phrase('fs_quiz_wrong_answers') }}">
+			{$wrongAnswers}
+		</xf:formrow>
+
+		<center><xf:formrow>
+			<xf:button href="{{ link('quiz/more-details', $quiz) }}" icon="cancel">{{ phrase('fs_quiz_check_result') }}</xf:button>
+			</xf:formrow></center>
+
+	</div>
+</div>

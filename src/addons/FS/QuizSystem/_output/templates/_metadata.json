@@ -1,28 +1,53 @@
 {
     "admin/fs_quiz_edit.html": {
-        "version_id": 1020010,
-        "version_string": "1.2.0 Alpha",
+        "version_id": 1020100,
+        "version_string": "1.2.1 Alpha",
         "hash": "f1c1c8f91bdd8d1d8a31be44655cd26b"
+    },
+    "admin/fs_quiz_edit_questions.html": {
+        "version_id": 1020100,
+        "version_string": "1.2.1 Alpha",
+        "hash": "7a8fdf969ff7f3bf6bc3283471a957cc"
     },
     "public/fs_quiz_category_list_macros.html": {
         "version_id": 1020010,
         "version_string": "1.2.0 Alpha",
         "hash": "5c91f9d609167f34dfcc4bf3673f5150"
     },
+    "public/fs_quiz_check_result.html": {
+        "version_id": 1020100,
+        "version_string": "1.2.1 Alpha",
+        "hash": "ddd9048440b2ddd62437235931214dbd"
+    },
+    "public/fs_quiz_confirm.html": {
+        "version_id": 1020100,
+        "version_string": "1.2.1 Alpha",
+        "hash": "3c86cd2abda983df41530b73bea80ff1"
+    },
     "public/fs_quiz_landing.html": {
-        "version_id": 1020010,
-        "version_string": "1.2.0 Alpha",
-        "hash": "777c2276bef620379ebf176c51aa94b4"
+        "version_id": 1020100,
+        "version_string": "1.2.1 Alpha",
+        "hash": "254230b6567943191ce258f3d91313f2"
     },
     "public/fs_quiz_list_macros.html": {
-        "version_id": 1020010,
-        "version_string": "1.2.0 Alpha",
-        "hash": "637c880255d3886335b41ff48a336166"
+        "version_id": 1020100,
+        "version_string": "1.2.1 Alpha",
+        "hash": "2a5ef5c25ba3ec0f5b99c0ef7b974283"
     },
     "public/fs_quiz_list_view.less": {
         "version_id": 1020010,
         "version_string": "1.2.0 Alpha",
         "hash": "9cfb8388f1d6ab9c87523bb874f66d9e"
+    },
+    "public/fs_quiz_question_answer.html": {
+        "version_id": 1020100,
+        "version_string": "1.2.1 Alpha",
+        "hash": "be3d01b75d0f3860f5ac330796ffb895"
+    },
+    "public/fs_quiz_question_radio.html": {
+        "version_id": 1020100,
+        "version_string": "1.2.1 Alpha",
+        "hash": "35f2f4e41a87e3496f68b242aa1a0042"
     },
     "public/fs_quiz_search_filter.html": {
         "version_id": 1020010,

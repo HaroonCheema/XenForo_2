@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 637c880255d3886335b41ff48a336166
+// FROM HASH: 2a5ef5c25ba3ec0f5b99c0ef7b974283
 return array(
 'macros' => array('listing' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -29,7 +29,7 @@ return array(
 
 			<div class="structItem-title">
 
-				<a href="' . $__templater->func('link', array('quiz/view-quiz', $__vars['listing'], ), true) . '" class="" data-tp-primary="on">' . $__templater->escape($__vars['listing']['quiz_name']) . '</a>
+				<a href="' . $__templater->func('link', array('quiz/quiz-confirm', $__vars['listing'], ), true) . '" class="" data-tp-primary="on">' . $__templater->escape($__vars['listing']['quiz_name']) . '</a>
 
 			</div>
 			<div class="structItem-minor">

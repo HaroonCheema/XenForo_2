@@ -1,0 +1,223 @@
+<xf:if is="$question != null">
+	<xf:title>{{ phrase('edit_question') }}</xf:title>
+<xf:else />
+	<xf:title>{{ phrase('add_question:') }}</xf:title>
+</xf:if>
+
+<xf:form action="{{ link('quiz-qsn/save' , {$question}) }}" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			
+			<xf:textarearow name="question_title" 
+					label="{{ phrase('fs_question') }}"
+					explain="{{ phrase('fs_question_explain') }}"
+					value="{$question.question_title}"
+					dir="ltr" />
+			
+
+		<xf:radiorow label="{{phrase('answer_formate_type')}}" name="question_type">
+			
+			<xf:option  value="textbox" selected="{{ $question.question_type == 'textbox' ? $question.question_type : '' }}" label="{{phrase('fs_single_line_textbox')}}" data-hide="true">
+					<xf:dependent>
+
+						<xf:formrow rowtype="input"
+							label="{{ phrase('fs_correct_answer') }}"
+							explain="{{ phrase('fs_correct_answer_single_line_textbox_explain') }}">
+
+						<xf:textbox name="question_correct_answer"
+										label="{{ phrase('fs_correct_answer_explain') }}"
+										value="{$question.question_correct_answer}"
+										size="24" />
+						</xf:formrow>
+
+					</xf:dependent>
+				</xf:option>
+			
+			<xf:option  value="radio" selected="{{ $question.question_type == 'radio' ? $question.question_type : '' }}" label="{{phrase('fs_single_selection_radio')}}" data-hide="true">
+				<xf:dependent>
+						<div class="inputGroup-container">
+							<xf:if is="$question.question_type == 'radio'">
+								<xf:foreach loop="$field.field_choices" key="$choice" value="$text">
+									<div class="inputGroup">
+											<xf:form>
+												<xf:textbox name="options-radio[]"
+													value="{{ phrase('fs_choice') }}"
+													size="12" maxlength="25" data-i="0"
+													dir="ltr" style="margin-right:10px;"/>
+											    <xf:radio  name="correct-radio[]">
+												   <xf:option label= "Correct" class="myRadio" name="correct-radio[]" selected="{{ $select == $choice ? $select : '' }}"></xf:option>
+												</xf:radio>
+										</xf:form>
+									</div><br>
+								</xf:foreach>
+							</xf:if>
+						
+							<input type="hidden" name="radio-key" id="radio-key" value="0" />
+							<div class="radio-selection-button">
+								 <xf:button class="add-radio">Add choice</xf:button>
+								 <xf:button class="remove-radio">Remove Choice</xf:button>
+							</div><br>
+							<div class="radio-selection">
+							
+									<div class="clone-radio-selection" style="display:flex;margin-top: 10px;">
+										
+												<xf:textbox name="options-radio[]"
+													placeholder="{{ phrase('fs_choice') }}"
+													size="12" maxlength="25" data-i="0"
+													dir="ltr" style="margin-right:10px;"/>
+											    <xf:radio  name="correct-radio[]">
+												   <xf:option label= "Correct" class="myRadio" name="correct-radio[]" value="0"></xf:option>
+												</xf:radio>
+											
+											
+								  </div>
+							</div>
+						</div>
+						
+					
+					
+					
+					
+					</xf:dependent>
+				</xf:option>
+			
+			
+			<xf:option  value="checkbox" selected="{{ $question.question_type == 'checkbox' ? $question.question_type : '' }}" label="{{phrase('fs_selection_multiple')}}" data-hide="true">
+			
+				<xf:dependent>
+				
+						<div class="inputGroup-container">
+								<xf:if is="$question">
+									<xf:foreach loop="$field.field_choices" key="$choice" value="$text">
+										<div class="inputGroup">
+
+											  <xf:form>
+													<xf:textbox name="optionsssscheckbox[]"
+														placeholder="{{ phrase('fs_choice') }}"
+														size="12" maxlength="25" data-i="0"
+														dir="ltr" style="margin-right:10px;"/>
+													<xf:checkbox  name="correctss-checkbox[]" >
+													   <xf:option label= "Correct" class="mycheckbox" name="ss-checkbox[]" value="0"></xf:option>
+													</xf:checkbox>
+												</xf:form>
+
+										</div>
+									</xf:foreach>
+								</xf:if>
+
+							<input type="hidden" name="checkbox-key" id="checkbox-key" value="0" />
+							
+							<div class="check-selection-button">
+								 <xf:button class="add-checkbox">Add choice</xf:button>
+								 <xf:button class="remove-checkbox">Remove Choice</xf:button>
+							</div><br>
+							
+							<div class="checkbox-selection">
+							
+									<div class="clone-checkbox-selection" style="display:flex;margin-top: 10px;">
+										
+										  
+												<xf:textbox name="options-checkbox[]"
+													placeholder="{{ phrase('fs_choice') }}"
+													size="12" maxlength="25" data-i="0"
+													dir="ltr" style="margin-right:10px;"/>
+											    <xf:checkbox  name="correct-checkbox[]" >
+												   <xf:option label= "Correct" class="mycheckbox" name="correct-checkbox[]" value="0"></xf:option>
+												</xf:checkbox>
+											
+											
+								  </div>
+							</div>
+						</div>
+					
+				</xf:dependent>
+			</xf:option>
+			
+			
+		</xf:radiorow>
+		
+		
+		</div>
+		<xf:submitrow sticky="true" icon="save" />
+	</div>
+</xf:form>
+ <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<script>
+$(document).ready(function() {
+  // Clone the first cloneable radio element
+  var initialClone = $('.clone-radio-selection').first().clone();
+  var initialCheckboxClone = $('.clone-checkbox-selection').first().clone();
+
+  $('.add-radio').on('click', function() {
+
+	var newClone = initialClone.clone();
+	 var radioInClone = newClone.find('.myRadio');
+
+	 var currentValue = parseFloat($('#radio-key').val());
+    
+	
+	 var modifiedValue = currentValue + 1;
+
+     $('#radio-key').val(modifiedValue);
+    
+	 radioInClone.val(modifiedValue);
+
+    $('.radio-selection').append(newClone);
+	  
+  });
+
+
+  $('.remove-radio').on('click', function() {
+
+	  var allClones = $('.clone-radio-selection');
+	  var currentValue = parseFloat($('#radio-key').val());
+    
+	  var modifiedValue = currentValue - 1;
+
+       $('#radio-key').val(modifiedValue);
+	   
+	  var numberOfClones = allClones.length;
+	  
+	  if (numberOfClones > 1) {
+    		$('.clone-radio-selection').last().remove();
+	  }
+  });
+	// Clone the first cloneable checkbox element
+	
+ 
+  $('.add-checkbox').on('click', function() {
+
+	  
+	 var newClone = initialCheckboxClone.clone();
+	 var checkboxInClone = newClone.find('.mycheckbox');
+
+	  var currentValueCheckbox = parseFloat($('#checkbox-key').val());
+	  var modifiedValue = currentValueCheckbox + 1;
+
+     $('#checkbox-key').val(modifiedValue);
+    
+	 checkboxInClone.val(modifiedValue);
+
+    $('.checkbox-selection').append(newClone);
+	  
+  });
+
+
+  $('.remove-checkbox').on('click', function() {
+
+	  var allCheckboxClones = $('.clone-checkbox-selection');
+	  var currentValue = parseFloat($('#checkbox-key').val());
+    
+	  var modifiedValue = currentValue - 1;
+
+       $('#checkbox-key').val(modifiedValue);
+	   
+	  var numberOfClones = allCheckboxClones.length;
+	  
+	  if (numberOfClones > 1) {
+    		$('.clone-checkbox-selection').last().remove();
+	  }
+  });
+});
+</script>

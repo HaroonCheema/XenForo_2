@@ -1,0 +1,38 @@
+<xf:title>{{ phrase('fs_quiz_confirm_start') }}</xf:title>
+
+<xf:form action="{{ link('quiz/quiz-start', $quiz) }}"
+		 class="block">
+
+	<div class="block-container">
+		<div class="block-body">
+
+			<xf:formrow	label="{{ phrase('fs_quiz_start_title') }}">
+				{$quiz.quiz_name}
+			</xf:formrow>
+
+			<xf:formrow label="{{ phrase('fs_quiz_start_desc') }}">
+				{$quiz.quiz_des}
+			</xf:formrow>
+
+			<xf:formrow label="{{ phrase('fs_quiz_total_questions') }}">
+				{{count($quiz.quiz_questions)}}
+			</xf:formrow>
+
+			<xf:formrow label="{{ phrase('fs_quiz_time_per_que') }}">
+				{$quiz.time_per_question} {{ phrase('fs_quiz_sec') }}
+			</xf:formrow>
+
+			<xf:formrow label="{{ phrase('fs_quiz_quiz_duration') }}">
+				{$quiz.getQuizDuration()}
+			</xf:formrow>
+
+		</div>
+
+		<xf:submitrow submit="{{ phrase('fs_quiz_start_btn') }}" icon="confirm" sticky="true" rowtype="simple">
+			<xf:html>
+				<xf:button href="{{ link('quiz') }}" icon="cancel">{{ phrase('cancel') }}</xf:button>
+				<xf:button href="{{ link('quiz/check-result', $quiz) }}" icon="cancel">{{ phrase('fs_quiz_check_result') }}</xf:button>
+			</xf:html>
+		</xf:submitrow>
+	</div>
+</xf:form>

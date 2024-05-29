@@ -27,10 +27,9 @@ class Setup extends AbstractSetup
 			$sm->createTable($tableName, $callback);
 		}
 
-
-
 		$this->insertDefaultData();
 	}
+
 	public function installStep2()
 	{
 		$this->schemaManager()->createTable('fs_quiz', function (Create $table) {
@@ -46,10 +45,35 @@ class Setup extends AbstractSetup
 			$table->addColumn('created_at', 'int')->setDefault(0);
 			$table->addColumn('updated_at', 'int')->setDefault(0);
 			$table->addColumn('quiz_questions', 'blob')->nullable(true);
+			$table->addColumn('question_ids', 'blob')->nullable(true);
 			$table->addKey('category_id', 'category_id');
 			$table->addPrimaryKey('quiz_id');
 		});
 	}
+
+	public function upgrade1020200Step1(array $stepParams)
+	{
+		$this->alterTable('fs_quiz', function (\XF\Db\Schema\Alter $table) {
+
+			$table->addColumn('question_ids', 'blob')->nullable(true);
+		});
+
+		$this->schemaManager()->createTable('fs_quiz_question_answers', function (Create $table) {
+
+			$table->addColumn('id', 'int')->autoIncrement();
+
+			$table->addColumn('question_id', 'int')->setDefault(0);
+			$table->addColumn('quiz_id', 'int')->setDefault(0);
+			$table->addColumn('user_id', 'int')->setDefault(0);
+			$table->addColumn('at_index', 'int')->setDefault(0);
+			$table->addColumn('created_at', 'int')->setDefault(0);
+			$table->addColumn('correct', 'bool')->setDefault(1);
+			$table->addColumn('answer', 'varchar', 1000)->setDefault('');
+
+			$table->addPrimaryKey('id');
+		});
+	}
+
 	public function installStep3()
 	{
 		$this->schemaManager()->createTable('fs_quiz_question', function (Create $table) {
@@ -64,6 +88,25 @@ class Setup extends AbstractSetup
 			$table->addPrimaryKey('question_id');
 		});
 	}
+
+	public function installStep4()
+	{
+		$this->schemaManager()->createTable('fs_quiz_question_answers', function (Create $table) {
+
+			$table->addColumn('id', 'int')->autoIncrement();
+
+			$table->addColumn('question_id', 'int')->setDefault(0);
+			$table->addColumn('quiz_id', 'int')->setDefault(0);
+			$table->addColumn('user_id', 'int')->setDefault(0);
+			$table->addColumn('at_index', 'int')->setDefault(0);
+			$table->addColumn('created_at', 'int')->setDefault(0);
+			$table->addColumn('correct', 'bool')->setDefault(1);
+			$table->addColumn('answer', 'varchar', 1000)->setDefault('');
+
+			$table->addPrimaryKey('id');
+		});
+	}
+
 	public function uninstallStep1()
 	{
 		$sm = $this->schemaManager();
@@ -72,7 +115,6 @@ class Setup extends AbstractSetup
 			$sm->dropTable($tableName);
 		}
 	}
-
 
 	public function insertDefaultData()
 	{

@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 39c77833cb7f9d672662368871ce1b21
+// FROM HASH: 7a8fdf969ff7f3bf6bc3283471a957cc
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -100,7 +100,7 @@ return array(
 			
 			' . $__templater->formTextAreaRow(array(
 		'name' => 'question_title',
-		'placeholder' => $__vars['question']['question_title'],
+		'value' => $__vars['question']['question_title'],
 		'dir' => 'ltr',
 	), array(
 		'label' => 'Question',
