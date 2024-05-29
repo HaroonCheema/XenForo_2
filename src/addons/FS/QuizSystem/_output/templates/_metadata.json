@@ -17,12 +17,12 @@
     "public/fs_quiz_check_result.html": {
         "version_id": 1020100,
         "version_string": "1.2.1 Alpha",
-        "hash": "ddd9048440b2ddd62437235931214dbd"
+        "hash": "d0d7e80c55bc42e7417f7ab3ae652e68"
     },
     "public/fs_quiz_confirm.html": {
         "version_id": 1020100,
         "version_string": "1.2.1 Alpha",
-        "hash": "3c86cd2abda983df41530b73bea80ff1"
+        "hash": "7a695b81fa1b65fdf30656821c2e3a34"
     },
     "public/fs_quiz_landing.html": {
         "version_id": 1020100,
@@ -48,6 +48,11 @@
         "version_id": 1020100,
         "version_string": "1.2.1 Alpha",
         "hash": "35f2f4e41a87e3496f68b242aa1a0042"
+    },
+    "public/fs_quiz_result_more_details.html": {
+        "version_id": 1020100,
+        "version_string": "1.2.1 Alpha",
+        "hash": "4c6368d4a5374dce6745e34918107e57"
     },
     "public/fs_quiz_search_filter.html": {
         "version_id": 1020010,

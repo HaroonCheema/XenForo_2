@@ -1,10 +1,10 @@
 <?php
-// FROM HASH: ddd9048440b2ddd62437235931214dbd
+// FROM HASH: d0d7e80c55bc42e7417f7ab3ae652e68
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
 	$__finalCompiled = '';
-	$__templater->pageParams['pageTitle'] = $__templater->preEscaped('fs_quiz_result');
+	$__templater->pageParams['pageTitle'] = $__templater->preEscaped('Quiz Result');
 	$__finalCompiled .= '
 
 <div class="block-container">
@@ -25,30 +25,35 @@ return array(
 		' . $__templater->formRow('
 			' . $__templater->func('count', array($__vars['quiz']['quiz_questions'], ), true) . '
 		', array(
-		'label' => 'Questions',
+		'label' => 'Total Questions',
 	)) . '
 
 		' . $__templater->formRow('
 			' . $__templater->escape($__vars['attemptQuestion']) . '
 		', array(
-		'label' => 'fs_quiz_attempt_questions',
+		'label' => 'Attempt Questions',
 	)) . '
 
 		' . $__templater->formRow('
 			' . $__templater->escape($__vars['correctAnswers']) . '
 		', array(
-		'label' => 'fs_quiz_correct_answer',
+		'label' => 'Correct Answers',
 	)) . '
 
 		' . $__templater->formRow('
 			' . $__templater->escape($__vars['wrongAnswers']) . '
 		', array(
-		'label' => 'fs_quiz_wrong_answers',
+		'label' => 'Wrong Answers',
 	)) . '
 
 		<center>' . $__templater->formRow('
-			' . $__templater->button('fs_quiz_check_result', array(
+			' . $__templater->button('More Details', array(
 		'href' => $__templater->func('link', array('quiz/more-details', $__vars['quiz'], ), false),
+		'icon' => 'cancel',
+	), '', array(
+	)) . '
+			' . $__templater->button('Back', array(
+		'href' => $__templater->func('link', array('quiz/quiz-confirm', $__vars['quiz'], ), false),
 		'icon' => 'cancel',
 	), '', array(
 	)) . '

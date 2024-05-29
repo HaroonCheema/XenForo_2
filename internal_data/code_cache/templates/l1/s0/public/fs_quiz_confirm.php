@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 3c86cd2abda983df41530b73bea80ff1
+// FROM HASH: 7a695b81fa1b65fdf30656821c2e3a34
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -51,13 +51,13 @@ return array(
 	), array(
 		'rowtype' => 'simple',
 		'html' => '
-				' . $__templater->button('Cancel', array(
-		'href' => $__templater->func('link', array('quiz', ), false),
+				' . $__templater->button('Check Result', array(
+		'href' => $__templater->func('link', array('quiz/check-result', $__vars['quiz'], ), false),
 		'icon' => 'cancel',
 	), '', array(
 	)) . '
-				' . $__templater->button('fs_quiz_check_result', array(
-		'href' => $__templater->func('link', array('quiz/check-result', $__vars['quiz'], ), false),
+				' . $__templater->button('Back', array(
+		'href' => $__templater->func('link', array('quiz', ), false),
 		'icon' => 'cancel',
 	), '', array(
 	)) . '

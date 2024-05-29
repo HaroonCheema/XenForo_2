@@ -30,8 +30,8 @@
 
 		<xf:submitrow submit="{{ phrase('fs_quiz_start_btn') }}" icon="confirm" sticky="true" rowtype="simple">
 			<xf:html>
-				<xf:button href="{{ link('quiz') }}" icon="cancel">{{ phrase('cancel') }}</xf:button>
 				<xf:button href="{{ link('quiz/check-result', $quiz) }}" icon="cancel">{{ phrase('fs_quiz_check_result') }}</xf:button>
+				<xf:button href="{{ link('quiz') }}" icon="cancel">{{ phrase('back') }}</xf:button>
 			</xf:html>
 		</xf:submitrow>
 	</div>

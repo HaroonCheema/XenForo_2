@@ -11,7 +11,7 @@
 			{$quiz.quiz_des}
 		</xf:formrow>
 
-		<xf:formrow label="{{ phrase('fs_quiz_total_questions') }}">
+		<xf:formrow label="{{ phrase('fs_quiz_total_question') }}">
 			{{count($quiz.quiz_questions)}}
 		</xf:formrow>
 
@@ -28,7 +28,8 @@
 		</xf:formrow>
 
 		<center><xf:formrow>
-			<xf:button href="{{ link('quiz/more-details', $quiz) }}" icon="cancel">{{ phrase('fs_quiz_check_result') }}</xf:button>
+			<xf:button href="{{ link('quiz/more-details', $quiz) }}" icon="cancel">{{ phrase('fs_quiz_more_detail_btn') }}</xf:button>
+			<xf:button href="{{ link('quiz/quiz-confirm', $quiz) }}" icon="cancel">{{ phrase('back') }}</xf:button>
 			</xf:formrow></center>
 
 	</div>

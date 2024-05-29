@@ -1,0 +1,50 @@
+<xf:title>{{ phrase('fs_quiz_more_details_result') }} {$quiz.quiz_name}</xf:title>
+
+<div class="block-container">
+	<div class="block-body">
+
+		<xf:foreach loop="$questions" value="$question" i="$i">
+			<center><xf:formrow><h3>
+				{{ phrase('fs_quiz_question_numb', {'questionNumber': $i}) }}
+				</h3></xf:formrow></center>
+			<xf:formrow	label="{{ phrase('fs_quiz_more_detail_question') }}">
+				{$question.Question.question_title}
+			</xf:formrow>
+
+			<xf:if is="$question.Question.question_type == 'textbox'">
+
+				<xf:formrow label="{{ phrase('fs_quiz_more_detail_answer') }}">
+					{$question.Question.question_correct_answer}
+				</xf:formrow>
+
+				<xf:else />
+				
+				<xf:radiorow name="" label="{{ phrase('fs_quiz_more_detail_answer') }}">
+
+				<xf:foreach loop="$question.Question.options" key="$key" value="$val">
+					<xf:option value="{$key}" label="{{ $val }}" selected="{{ $key == $question.at_index}}"/>
+				</xf:foreach>
+			</xf:radiorow>
+				
+				
+
+
+			</xf:if>
+
+			<xf:formrow label="{{ phrase('fs_quiz_more_detail_your_ans') }}">
+				<xf:textbox name="" value="{$question.answer}" readOnly="readOnly"/>
+			</xf:formrow>
+
+			<xf:formrow label="{{ phrase('fs_quiz_more_detail_correct') }}">
+				{{$question.correct ? "Yes" : "No"}}
+			</xf:formrow>
+
+
+		</xf:foreach>
+
+		<center><xf:formrow>
+			<xf:button href="{{ link('quiz') }}" icon="cancel">{{ phrase('back') }}</xf:button>
+			</xf:formrow></center>
+
+	</div>
+</div>

@@ -41,17 +41,35 @@
         "version_string": "1.2.1 Alpha",
         "hash": "45a5dad99e860ad2198c682f3387b823"
     },
+    "fs_quiz_attempt_questions.txt": {
+        "global_cache": false,
+        "version_id": 1020100,
+        "version_string": "1.2.1 Alpha",
+        "hash": "6048b32e6dfce943762fd5ecd01bf4aa"
+    },
     "fs_quiz_cat.txt": {
         "global_cache": false,
         "version_id": 1020010,
         "version_string": "1.2.0 Alpha",
         "hash": "152005a931e35a7e8023a27772a8d56f"
     },
+    "fs_quiz_check_result.txt": {
+        "global_cache": false,
+        "version_id": 1020100,
+        "version_string": "1.2.1 Alpha",
+        "hash": "7ced221013ddddb6bd4556a0168276cc"
+    },
     "fs_quiz_confirm_start.txt": {
         "global_cache": false,
         "version_id": 1020100,
         "version_string": "1.2.1 Alpha",
         "hash": "bfab93262903d9ef1867bd678ac18d97"
+    },
+    "fs_quiz_correct_answer.txt": {
+        "global_cache": false,
+        "version_id": 1020100,
+        "version_string": "1.2.1 Alpha",
+        "hash": "ccc86676e6a8357c3141fbdeac650a70"
     },
     "fs_quiz_end_date.txt": {
         "global_cache": false,
@@ -76,6 +94,42 @@
         "version_id": 1020100,
         "version_string": "1.2.1 Alpha",
         "hash": "a20ddccbb6f808ec42cd66323e6c6061"
+    },
+    "fs_quiz_more_detail_answer.txt": {
+        "global_cache": false,
+        "version_id": 1020100,
+        "version_string": "1.2.1 Alpha",
+        "hash": "edc19a1af02ee4c2081d1c4ef4ec9a2e"
+    },
+    "fs_quiz_more_detail_btn.txt": {
+        "global_cache": false,
+        "version_id": 1020100,
+        "version_string": "1.2.1 Alpha",
+        "hash": "58b5eb88c7c79201506292ee930aec19"
+    },
+    "fs_quiz_more_detail_correct.txt": {
+        "global_cache": false,
+        "version_id": 1020100,
+        "version_string": "1.2.1 Alpha",
+        "hash": "e1ef976bef62120be9563279a9734c73"
+    },
+    "fs_quiz_more_detail_question.txt": {
+        "global_cache": false,
+        "version_id": 1020100,
+        "version_string": "1.2.1 Alpha",
+        "hash": "926214d0c1e67cd96ae3b1935e11ed6c"
+    },
+    "fs_quiz_more_detail_your_ans.txt": {
+        "global_cache": false,
+        "version_id": 1020100,
+        "version_string": "1.2.1 Alpha",
+        "hash": "72fe997d42d4bbfd1e4a26b9189079a9"
+    },
+    "fs_quiz_more_details_result.txt": {
+        "global_cache": false,
+        "version_id": 1020100,
+        "version_string": "1.2.1 Alpha",
+        "hash": "b92aa28ea682694581fa472d5e1ff059"
     },
     "fs_quiz_no_quiz_have_been_created_yet.txt": {
         "global_cache": false,
@@ -113,6 +167,12 @@
         "version_string": "1.2.1 Alpha",
         "hash": "b573f7983be2ad6cef7f30ae0d881455"
     },
+    "fs_quiz_question_numb.txt": {
+        "global_cache": false,
+        "version_id": 1020100,
+        "version_string": "1.2.1 Alpha",
+        "hash": "bfe5a255f784eaf9781ea964047e697d"
+    },
     "fs_quiz_question_title.txt": {
         "global_cache": false,
         "version_id": 1020100,
@@ -124,6 +184,12 @@
         "version_id": 1020010,
         "version_string": "1.2.0 Alpha",
         "hash": "dbb7da9bab3346310fb1146918ade7b4"
+    },
+    "fs_quiz_result.txt": {
+        "global_cache": false,
+        "version_id": 1020100,
+        "version_string": "1.2.1 Alpha",
+        "hash": "1fa0aa7be5b3735b095678868b4e4897"
     },
     "fs_quiz_sec.txt": {
         "global_cache": false,
@@ -173,11 +239,23 @@
         "version_string": "1.2.0 Alpha",
         "hash": "ed31fd5c8643cc0a660aac147efceffd"
     },
+    "fs_quiz_total_question.txt": {
+        "global_cache": false,
+        "version_id": 1020100,
+        "version_string": "1.2.1 Alpha",
+        "hash": "473d2b75572820bf9917384f39c88c77"
+    },
     "fs_quiz_total_questions.txt": {
         "global_cache": false,
         "version_id": 1020010,
         "version_string": "1.2.0 Alpha",
         "hash": "6ce3bdc39e544725038e0e87b771db1e"
+    },
+    "fs_quiz_wrong_answers.txt": {
+        "global_cache": false,
+        "version_id": 1020100,
+        "version_string": "1.2.1 Alpha",
+        "hash": "e4de79bc3552825b027775063e646936"
     },
     "nav.fs_quiz.txt": {
         "global_cache": false,

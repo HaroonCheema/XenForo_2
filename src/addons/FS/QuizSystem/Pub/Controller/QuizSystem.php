@@ -114,6 +114,10 @@ class QuizSystem extends AbstractController
 
         $visitor = \XF::visitor();
 
+        if (!$visitor) {
+            return $this->noPermission();
+        }
+
         $finder = $this->finder('FS\QuizSystem:QuestionAnswer')->where('user_id', $visitor->user_id)->where('quiz_id', $quizExist->quiz_id)->fetch();
 
         if (!$finder) {
@@ -139,6 +143,35 @@ class QuizSystem extends AbstractController
         ];
 
         return $this->view('FS\QuizSystem:Question', 'fs_quiz_check_result', $viewParams);
+    }
+
+    public function actionMoreDetails(ParameterBag $params)
+    {
+        /** @var \FS\QuizSystem\Entity\Quiz $quizExist */
+        $quizExist = $this->assertDataExists($params->quiz_id);
+
+        if (!$quizExist) {
+            return $this->noPermission();
+        }
+
+        $visitor = \XF::visitor();
+
+        if (!$visitor) {
+            return $this->noPermission();
+        }
+
+        $questions = $this->finder('FS\QuizSystem:QuestionAnswer')->where('user_id', $visitor->user_id)->where('quiz_id', $quizExist->quiz_id)->fetch();
+
+        if (!$questions) {
+            return $this->noPermission();
+        }
+
+        $viewParams = [
+            'quiz' => $quizExist,
+            'questions' => $questions,
+        ];
+
+        return $this->view('FS\QuizSystem:Question', 'fs_quiz_result_more_details', $viewParams);
     }
 
     protected function getSearchFinder($finder)
