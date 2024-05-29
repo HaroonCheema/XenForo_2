@@ -351,6 +351,17 @@ return array(
 
 				' . '
 
+';
+	if ($__templater->method($__vars['xf']['visitor'], 'canViewResources', array()) AND $__vars['user']['xfrm_resource_count']) {
+		$__finalCompiled .= '
+	<a href="' . $__templater->func('link', array('resources/authors', $__vars['user'], ), true) . '"
+	   class="tabs-tab"
+	   id="resources"
+	   role="tab">' . 'Resources' . '</a>
+';
+	}
+	$__finalCompiled .= '
+
 				<a href="' . $__templater->func('link', array('members/about', $__vars['user'], ), true) . '"
 					class="tabs-tab"
 					id="about"
@@ -501,6 +512,16 @@ return array(
 	</li>
 
 	' . '
+
+';
+	if ($__templater->method($__vars['xf']['visitor'], 'canViewResources', array()) AND $__vars['user']['xfrm_resource_count']) {
+		$__finalCompiled .= '
+	<li data-href="' . $__templater->func('link', array('resources/authors', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="resources">
+		<div class="blockMessage">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
+	</li>
+';
+	}
+	$__finalCompiled .= '
 
 	<li data-href="' . $__templater->func('link', array('members/about', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="about">
 		<div class="blockMessage">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>

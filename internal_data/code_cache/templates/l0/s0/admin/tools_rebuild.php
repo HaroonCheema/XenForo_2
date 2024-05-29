@@ -385,7 +385,6 @@ return array(
 	), $__vars) . '
 
 ' . '
-' . $__templater->includeTemplate('xfmg_tools_rebuild', $__vars) . '
 ' . $__templater->includeTemplate('xfrm_tools_rebuild', $__vars) . '
 
 ';
