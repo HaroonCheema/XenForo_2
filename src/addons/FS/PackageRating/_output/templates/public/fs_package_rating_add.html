@@ -1,0 +1,53 @@
+<xf:title>{{ phrase('fs_package_rating_add_title') }}</xf:title>
+
+<xf:form action="{{ link('package-rating') }}" class="block" ajax="true" novalidate="false">
+	<div class="block-container">
+		<div class="block-body">
+
+			<xf:selectrow
+						  name="userUpId"
+						  label="{{ phrase('fs_package_rating_select') }}"
+						  hint="{{ phrase('required') }}"
+						  required="required"
+						  >
+				<xf:option value="0">{{ phrase('none') }}</xf:option>
+
+				<xf:foreach loop="$userUpgrades" key="$key" value="$upgrade">
+					<xf:option
+							   value="{$upgrade.user_upgrade_id}"
+							   selected="{{$upgradeUserGroup.current_userGroup== $key }}"
+							   >{$upgrade.title}</xf:option
+						>
+				</xf:foreach>
+			</xf:selectrow>
+
+			<xf:macro template="rating_macros" name="rating" />
+
+			<xf:textarearow name="message" rows="2" autosize="true"
+							data-xf-init="min-length"
+							data-allow-empty="false"
+							data-toggle-target="#js-resourceReviewLength"
+							label="{{ phrase('review') }}">
+
+				<xf:explain>
+					{{ phrase('fs_rating_explain_why_youre_giving_this_rating') }}
+				</xf:explain>
+
+				<xf:hint>{{ phrase('required') }}</xf:hint>
+			</xf:textarearow>
+
+			<xf:uploadrow name="image" accept=".gif,.jpeg,.jpg,.jpe,.png"
+						  label="{{ phrase('fs_rating_add_image') }}"
+						  explain="{{ phrase('fs_rating_upload_image') }}"></xf:uploadrow>
+			<xf:if is="$category.isImage()">
+				<xf:formrow>
+					<xf:inforow rowtype="confirm">
+						<img src="{$category.getImgUrl(true)}" style="width:80px;height:60px" >
+					</xf:inforow>
+				</xf:formrow>
+			</xf:if>
+
+		</div>
+		<xf:submitrow submit="{{ phrase('submit_rating') }}" icon="rate" />
+	</div>
+</xf:form>

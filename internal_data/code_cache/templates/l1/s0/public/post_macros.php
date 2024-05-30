@@ -429,7 +429,23 @@ return array(
 	$__finalCompiled = '';
 	$__finalCompiled .= '
 
-	<div class="message-userContent lbContainer js-lbContainer ' . ($__templater->method($__vars['post'], 'isIgnored', array()) ? 'is-ignored' : '') . '"
+	';
+	if ($__vars['post']['User']['ScheduleBan']['ban_date'] AND (!$__vars['post']['User']['is_banned'])) {
+		$__finalCompiled .= '
+	' . $__templater->callMacro('fs_sch_user_ban_macros', 'banInfoBeforeBan', array(
+			'banDate' => $__vars['post']['User']['ScheduleBan'],
+		), $__vars) . '
+';
+	}
+	$__finalCompiled .= '
+';
+	if ($__vars['post']['User']['is_banned']) {
+		$__finalCompiled .= '
+	' . $__templater->callMacro('fs_sch_user_ban_macros', 'messageInfo', array(), $__vars) . '
+';
+	}
+	$__finalCompiled .= '
+<div class="message-userContent lbContainer js-lbContainer ' . ($__templater->method($__vars['post'], 'isIgnored', array()) ? 'is-ignored' : '') . '"
 		data-lb-id="post-' . $__templater->escape($__vars['post']['post_id']) . '"
 		data-lb-caption-desc="' . ($__vars['post']['User'] ? $__templater->escape($__vars['post']['User']['username']) : $__templater->escape($__vars['post']['username'])) . ' &middot; ' . $__templater->func('date_time', array($__vars['post']['post_date'], ), true) . '">
 

@@ -94,10 +94,26 @@ return array(
 
 	<div class="node node--id' . $__templater->escape($__vars['node']['node_id']) . ' node--depth' . $__templater->escape($__vars['depth']) . ' node--forum ' . ($__vars['extras']['hasNew'] ? 'node--unread' : 'node--read') . '">
 		<div class="node-body">
-			<span class="node-icon" aria-hidden="true">
-				' . $__templater->fontAwesome(($__templater->escape($__templater->method($__vars['node']['Data']['TypeHandler'], 'getTypeIconClass', array())) ?: 'fa-comments'), array(
-	)) . '
-			</span>
+			';
+	if ($__templater->method($__vars['node'], 'getIcon', array())) {
+		$__finalCompiled .= '
+	<div class="node-icon--custom read" 
+		 style="background-image: url(' . $__templater->func('base_url', array($__templater->method($__vars['node'], 'getIcon', array()), ), true) . ');
+				width: ' . $__templater->escape($__vars['xf']['options']['Fs_NodeIcon_nodeDimensions']['width']) . 'px;
+				height: ' . $__templater->escape($__vars['xf']['options']['Fs_NodeIcon_nodeDimensions']['height']) . 'px;">
+	</div>
+';
+	} else {
+		$__finalCompiled .= '
+	<span class="node-icon" aria-hidden="true"
+		  style="width: ' . $__templater->escape($__vars['xf']['options']['Fs_NodeIcon_nodeDimensions']['width']) . 'px;
+				 height: ' . $__templater->escape($__vars['xf']['options']['Fs_NodeIcon_nodeDimensions']['height']) . 'px;">
+		' . $__templater->fontAwesome(($__templater->escape($__templater->method($__vars['node']['Data']['TypeHandler'], 'getTypeIconClass', array())) ?: 'fa-comments'), array(
+		)) . '
+	</span>
+';
+	}
+	$__finalCompiled .= '
 			<div class="node-main js-nodeMain">
 				';
 	if ($__vars['chooseName']) {

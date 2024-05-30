@@ -343,6 +343,7 @@ This option requires that the specified account is a catch-all account or suppor
   'option_explain.fs_hcwp_userGroups' => 'The content will be hidden for users belonging to these UserGroups',
   'option_explain.fs_mts_customMsgColor' => 'Enter the colour name or colour code for Custom message',
   'option_explain.fs_mts_customMsgbackGroundColor' => 'Enter the colour name or colour code for custom message Background',
+  'option_explain.fs_pkg_rat_applicable_userGroups' => 'Enter the Applicable User Upgrade Ids Comma separated like 1,2,3,4.',
   'option_explain.fs_qa_routeFilterId' => 'Enter the ID of RouteFilter which you yave create for QuestionsAnswers forum',
   'option_explain.fs_questionAnswerForum' => 'Select the Question Forum on which Question&Answers search functionality will work.',
   'option_explain.fs_rejected_user_mod_ids' => 'Enter the ids Comma separated like 1,2,3,4,5,6,......',

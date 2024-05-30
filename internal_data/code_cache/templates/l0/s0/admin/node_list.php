@@ -86,18 +86,30 @@ return array(
 				$__compilerTemp1 .= '
 						';
 				$__compilerTemp3 = '';
-				if (($__vars['node']['node_type_id'] == 'Forum') AND ($__vars['node']['Data']['TypeHandler'] AND ($__vars['node']['Data']['forum_type_id'] != 'discussion'))) {
+				if ($__templater->method($__vars['node'], 'getIcon', array())) {
 					$__compilerTemp3 .= '
+	<div class="nodeIcon--custom"
+		 style="background-image: url(' . $__templater->func('base_url', array($__templater->method($__vars['node'], 'getIcon', array()), ), true) . ')">
+	</div>
+';
+				} else {
+					$__compilerTemp3 .= '
+	' . $__templater->callMacro(null, 'node_icon', array(
+						'node' => $__vars['node'],
+					), $__vars) . '
+';
+				}
+				$__compilerTemp4 = '';
+				if (($__vars['node']['node_type_id'] == 'Forum') AND ($__vars['node']['Data']['TypeHandler'] AND ($__vars['node']['Data']['forum_type_id'] != 'discussion'))) {
+					$__compilerTemp4 .= '
 													(' . $__templater->escape($__templater->method($__vars['node']['Data']['TypeHandler'], 'getTypeTitle', array())) . ')
 												';
 				}
-				$__compilerTemp4 = array(array(
+				$__compilerTemp5 = array(array(
 					'class' => 'dataList-cell--min',
 					'_type' => 'cell',
 					'html' => '
-								' . $__templater->callMacro(null, 'node_icon', array(
-					'node' => $__vars['node'],
-				), $__vars) . '
+								' . $__compilerTemp3 . '
 							',
 				)
 ,array(
@@ -111,7 +123,7 @@ return array(
 											' . $__templater->escape($__vars['node']['title']) . '
 											<span class="dataList-hint" dir="auto">
 												' . $__templater->escape($__vars['node']['NodeType']['title']) . '
-												' . $__compilerTemp3 . '
+												' . $__compilerTemp4 . '
 											</span>
 										</div>
 									</div>
@@ -127,15 +139,15 @@ return array(
 							',
 				));
 				if ($__vars['moderators'][$__vars['node']['node_id']]) {
-					$__compilerTemp5 = '';
+					$__compilerTemp6 = '';
 					if ($__templater->isTraversable($__vars['moderators'][$__vars['node']['node_id']])) {
 						foreach ($__vars['moderators'][$__vars['node']['node_id']] AS $__vars['moderator']) {
-							$__compilerTemp5 .= '
+							$__compilerTemp6 .= '
 												<a href="' . $__templater->func('link', array('moderators/content/edit', $__vars['moderator'], ), true) . '" class="menu-linkRow">' . $__templater->escape($__vars['moderator']['User']['username']) . '</a>
 											';
 						}
 					}
-					$__compilerTemp4[] = array(
+					$__compilerTemp5[] = array(
 						'class' => 'dataList-cell--action u-hideMedium',
 						'label' => 'Moderators (' . $__templater->func('count', array($__vars['moderators'][$__vars['node']['node_id']], ), false) . ')',
 						'_type' => 'popup',
@@ -144,7 +156,7 @@ return array(
 									<div class="menu" data-menu="menu" aria-hidden="true">
 										<div class="menu-content">
 											<h3 class="menu-header">' . 'Moderators' . '</h3>
-											' . $__compilerTemp5 . '
+											' . $__compilerTemp6 . '
 											<hr class="menu-separator" />
 											<a href="' . $__templater->func('link', array('moderators/add', null, array('type' => 'node', 'type_id' => array('node' => $__vars['node']['node_id'], ), ), ), true) . '" class="menu-linkRow">' . 'Add moderator' . '</a>
 										</div>
@@ -152,14 +164,14 @@ return array(
 								',
 					);
 				} else {
-					$__compilerTemp4[] = array(
+					$__compilerTemp5[] = array(
 						'href' => $__templater->func('link', array('moderators/add', null, array('type' => 'node', 'type_id' => array('node' => $__vars['node']['node_id'], ), ), ), false),
 						'class' => 'u-hideMedium',
 						'_type' => 'action',
 						'html' => 'Add moderator',
 					);
 				}
-				$__compilerTemp4[] = array(
+				$__compilerTemp5[] = array(
 					'class' => 'dataList-cell--action u-hideMedium',
 					'label' => 'Add' . $__vars['xf']['language']['ellipsis'],
 					'_type' => 'popup',
@@ -174,13 +186,13 @@ return array(
 								</div>
 							',
 				);
-				$__compilerTemp4[] = array(
+				$__compilerTemp5[] = array(
 					'href' => $__templater->func('link', array('nodes/delete', $__vars['node'], ), false),
 					'_type' => 'delete',
 					'html' => '',
 				);
 				$__compilerTemp1 .= $__templater->dataRow(array(
-				), $__compilerTemp4) . '
+				), $__compilerTemp5) . '
 					';
 			}
 		}

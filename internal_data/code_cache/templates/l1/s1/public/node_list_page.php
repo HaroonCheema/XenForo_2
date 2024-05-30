@@ -91,7 +91,25 @@ return array(
 	$__finalCompiled .= '
 	<div class="node node--id' . $__templater->escape($__vars['node']['node_id']) . ' node--depth' . $__templater->escape($__vars['depth']) . ' node--page">
 		<div class="node-body">
-			<span class="node-icon" aria-hidden="true"><i></i></span>
+			';
+	if ($__templater->method($__vars['node'], 'getIcon', array())) {
+		$__finalCompiled .= '
+	<div class="node-icon--custom" 
+		 style="background-image: url(' . $__templater->func('base_url', array($__templater->method($__vars['node'], 'getIcon', array()), ), true) . ');
+				width: ' . $__templater->escape($__vars['xf']['options']['Fs_NodeIcon_nodeDimensions']['width']) . 'px;
+				height: ' . $__templater->escape($__vars['xf']['options']['Fs_NodeIcon_nodeDimensions']['height']) . 'px;">
+	</div>
+';
+	} else {
+		$__finalCompiled .= '
+	<span class="node-icon" aria-hidden="true"
+		  style="width: ' . $__templater->escape($__vars['xf']['options']['Fs_NodeIcon_nodeDimensions']['width']) . 'px;
+				 height: ' . $__templater->escape($__vars['xf']['options']['Fs_NodeIcon_nodeDimensions']['height']) . 'px;">
+		<i></i>
+	</span>
+';
+	}
+	$__finalCompiled .= '
 			<div class="node-main js-nodeMain">
 				';
 	$__vars['descriptionDisplay'] = $__templater->func('property', array('nodeListDescriptionDisplay', ), false);

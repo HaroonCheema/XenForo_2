@@ -47,19 +47,62 @@ return array(
 
 ';
 	$__compilerTemp2 = '';
-	if ($__vars['typeConfigTemplate']) {
+	if ($__templater->method($__vars['xf']['visitor'], 'canEditIcon', array())) {
 		$__compilerTemp2 .= '
+	' . $__templater->formUploadRow(array(
+			'name' => 'upload',
+			'accept' => '.gif,.jpeg,.jpg,.jpe,.png',
+		), array(
+			'label' => 'Icon',
+			'explain' => 'It is recommended that you use an image that is at least ' . $__templater->escape($__vars['xf']['options']['Fs_NodeIcon_nodeDimensions']['width']) . 'x' . $__templater->escape($__vars['xf']['options']['Fs_NodeIcon_nodeDimensions']['height']) . ' pixels.',
+		)) . '
+';
+	}
+	$__compilerTemp3 = '';
+	if (!$__templater->method($__vars['forum'], 'isInsert', array())) {
+		$__compilerTemp3 .= '
+	';
+		if ($__templater->method($__vars['node'], 'getIcon', array())) {
+			$__compilerTemp3 .= '
+		' . $__templater->formRow('
+			<img src="' . $__templater->func('base_url', array($__templater->method($__vars['node'], 'getIcon', array()), ), true) . '" />
+			<br/>
+			' . $__templater->button('', array(
+				'href' => $__templater->func('link', array('forums/delete-icon', $__vars['node'], ), false),
+				'icon' => 'delete',
+				'overlay' => 'true',
+			), '', array(
+			)) . '
+		', array(
+				'label' => 'Custom node icon',
+			)) . '
+	';
+		} else {
+			$__compilerTemp3 .= '
+		' . $__templater->formRow('
+			' . 'No icon' . '
+		', array(
+				'label' => 'Custom node icon',
+			)) . '
+	';
+		}
+		$__compilerTemp3 .= '
+';
+	}
+	$__compilerTemp4 = '';
+	if ($__vars['typeConfigTemplate']) {
+		$__compilerTemp4 .= '
 				' . $__templater->includeTemplate($__vars['typeConfigTemplate'], $__vars) . '
 			';
 	}
-	$__compilerTemp3 = '';
+	$__compilerTemp5 = '';
 	if (!$__templater->test($__vars['availableFields'], 'empty', array())) {
-		$__compilerTemp3 .= '
+		$__compilerTemp5 .= '
 				';
-		$__compilerTemp4 = array();
+		$__compilerTemp6 = array();
 		if ($__templater->isTraversable($__vars['availableFields'])) {
 			foreach ($__vars['availableFields'] AS $__vars['fieldId'] => $__vars['field']) {
-				$__compilerTemp4[] = array(
+				$__compilerTemp6[] = array(
 					'value' => $__vars['fieldId'],
 					'label' => $__templater->escape($__vars['field']['title']),
 					'labelclass' => ($__vars['field']['required'] ? 'u-appendAsterisk' : ''),
@@ -67,11 +110,11 @@ return array(
 				);
 			}
 		}
-		$__compilerTemp3 .= $__templater->formCheckBoxRow(array(
+		$__compilerTemp5 .= $__templater->formCheckBoxRow(array(
 			'name' => 'available_fields',
 			'value' => $__vars['forum']['field_cache'],
 			'listclass' => 'field listColumns',
-		), $__compilerTemp4, array(
+		), $__compilerTemp6, array(
 			'label' => 'Available fields',
 			'explain' => '* Starred fields are required for new content when selected. Other fields are optional.',
 			'hint' => '
@@ -86,7 +129,7 @@ return array(
 		)) . '
 			';
 	} else {
-		$__compilerTemp3 .= '
+		$__compilerTemp5 .= '
 				' . $__templater->formRow('
 					' . $__templater->filter('None', array(array('parens', array()),), true) . '
 					<a href="' . $__templater->func('link', array('custom-thread-fields/add', ), true) . '" target="_blank">' . 'Add field' . '</a>
@@ -95,26 +138,26 @@ return array(
 		)) . '
 			';
 	}
-	$__compilerTemp5 = '';
+	$__compilerTemp7 = '';
 	if (!$__templater->test($__vars['prefixesGrouped'], 'empty', array())) {
-		$__compilerTemp5 .= '
+		$__compilerTemp7 .= '
 
 				';
-		$__compilerTemp6 = array();
+		$__compilerTemp8 = array();
 		if ($__templater->isTraversable($__vars['prefixGroups'])) {
 			foreach ($__vars['prefixGroups'] AS $__vars['prefixGroupId'] => $__vars['prefixGroup']) {
 				if ($__vars['prefixesGrouped'][$__vars['prefixGroupId']]) {
-					$__compilerTemp6[] = array(
+					$__compilerTemp8[] = array(
 						'check-all' => 'true',
 						'listclass' => 'listColumns',
 						'label' => ($__vars['prefixGroupId'] ? $__vars['prefixGroup']['title'] : 'Ungrouped'),
 						'_type' => 'optgroup',
 						'options' => array(),
 					);
-					end($__compilerTemp6); $__compilerTemp7 = key($__compilerTemp6);
+					end($__compilerTemp8); $__compilerTemp9 = key($__compilerTemp8);
 					if ($__templater->isTraversable($__vars['prefixesGrouped'][$__vars['prefixGroupId']])) {
 						foreach ($__vars['prefixesGrouped'][$__vars['prefixGroupId']] AS $__vars['prefixId'] => $__vars['prefix']) {
-							$__compilerTemp6[$__compilerTemp7]['options'][] = array(
+							$__compilerTemp8[$__compilerTemp9]['options'][] = array(
 								'value' => $__vars['prefixId'],
 								'selected' => $__vars['forum']['prefix_cache'][$__vars['prefixId']],
 								'label' => '<span class="label ' . $__templater->escape($__vars['prefix']['css_class']) . '">' . $__templater->escape($__vars['prefix']['title']) . '</span>',
@@ -125,12 +168,12 @@ return array(
 				}
 			}
 		}
-		$__compilerTemp5 .= $__templater->formCheckBoxRow(array(
+		$__compilerTemp7 .= $__templater->formCheckBoxRow(array(
 			'name' => 'available_prefixes',
 			'listclass' => 'prefix',
 			'data-xf-init' => 'checkbox-select-disabler',
 			'data-select' => '.js-availablePrefixSelect',
-		), $__compilerTemp6, array(
+		), $__compilerTemp8, array(
 			'rowtype' => 'explainOffset',
 			'label' => 'Available prefixes',
 			'explain' => 'Select all prefixes that should be available for use within this forum',
@@ -146,7 +189,7 @@ return array(
 		)) . '
 
 				';
-		$__compilerTemp8 = array(array(
+		$__compilerTemp10 = array(array(
 			'value' => '-1',
 			'label' => 'None',
 			'_type' => 'option',
@@ -154,15 +197,15 @@ return array(
 		if ($__templater->isTraversable($__vars['prefixGroups'])) {
 			foreach ($__vars['prefixGroups'] AS $__vars['prefixGroupId'] => $__vars['prefixGroup']) {
 				if (($__templater->func('count', array($__vars['prefixesGrouped'][$__vars['prefixGroupId']], ), false) > 0)) {
-					$__compilerTemp8[] = array(
+					$__compilerTemp10[] = array(
 						'label' => (($__vars['prefixGroupId'] > 0) ? $__vars['prefixGroup']['title'] : 'Ungrouped'),
 						'_type' => 'optgroup',
 						'options' => array(),
 					);
-					end($__compilerTemp8); $__compilerTemp9 = key($__compilerTemp8);
+					end($__compilerTemp10); $__compilerTemp11 = key($__compilerTemp10);
 					if ($__templater->isTraversable($__vars['prefixesGrouped'][$__vars['prefixGroupId']])) {
 						foreach ($__vars['prefixesGrouped'][$__vars['prefixGroupId']] AS $__vars['prefixId'] => $__vars['prefix']) {
-							$__compilerTemp8[$__compilerTemp9]['options'][] = array(
+							$__compilerTemp10[$__compilerTemp11]['options'][] = array(
 								'value' => $__vars['prefixId'],
 								'disabled' => (!$__templater->func('in_array', array($__vars['prefixId'], $__vars['forum']['prefix_cache'], ), false)),
 								'label' => $__templater->escape($__vars['prefix']['title']),
@@ -173,11 +216,11 @@ return array(
 				}
 			}
 		}
-		$__compilerTemp5 .= $__templater->formSelectRow(array(
+		$__compilerTemp7 .= $__templater->formSelectRow(array(
 			'name' => 'default_prefix_id',
 			'value' => $__vars['forum']['default_prefix_id'],
 			'class' => 'js-availablePrefixSelect',
-		), $__compilerTemp8, array(
+		), $__compilerTemp10, array(
 			'label' => 'Default thread prefix',
 			'explain' => 'You may specify a thread prefix to be automatically selected when visitors create new threads in this forum. The selected prefix <b>must</b> also be selected in the \'Available prefixes\' list above.',
 		)) . '
@@ -195,7 +238,7 @@ return array(
 
 			';
 	} else {
-		$__compilerTemp5 .= '
+		$__compilerTemp7 .= '
 				' . $__templater->formRow('
 					' . $__templater->filter('None', array(array('parens', array()),), true) . ' <a href="' . $__templater->func('link', array('thread-prefixes/add', ), true) . '" target="_blank">' . 'Add prefix' . '</a>
 				', array(
@@ -208,37 +251,37 @@ return array(
 		)) . '
 			';
 	}
-	$__compilerTemp10 = array();
+	$__compilerTemp12 = array();
 	if ($__templater->isTraversable($__vars['sortOptions'])) {
 		foreach ($__vars['sortOptions'] AS $__vars['sortKey'] => $__vars['null']) {
-			$__compilerTemp10[] = array(
+			$__compilerTemp12[] = array(
 				'value' => $__vars['sortKey'],
 				'label' => $__templater->func('phrase_dynamic', array('forum_sort.' . $__vars['sortKey'], ), true),
 				'_type' => 'option',
 			);
 		}
 	}
-	$__compilerTemp11 = '';
+	$__compilerTemp13 = '';
 	if (!$__templater->test($__vars['availablePrompts'], 'empty', array())) {
-		$__compilerTemp11 .= '
+		$__compilerTemp13 .= '
 				<hr class="formRowSep" />
 
 				';
-		$__compilerTemp12 = array();
+		$__compilerTemp14 = array();
 		if ($__templater->isTraversable($__vars['promptGroups'])) {
 			foreach ($__vars['promptGroups'] AS $__vars['promptGroupId'] => $__vars['promptGroup']) {
 				if ($__vars['promptsGrouped'][$__vars['promptGroupId']]) {
-					$__compilerTemp12[] = array(
+					$__compilerTemp14[] = array(
 						'check-all' => 'true',
 						'listclass' => '_listColumns',
 						'label' => ($__vars['promptGroupId'] ? $__vars['promptGroup']['title'] : 'Ungrouped'),
 						'_type' => 'optgroup',
 						'options' => array(),
 					);
-					end($__compilerTemp12); $__compilerTemp13 = key($__compilerTemp12);
+					end($__compilerTemp14); $__compilerTemp15 = key($__compilerTemp14);
 					if ($__templater->isTraversable($__vars['promptsGrouped'][$__vars['promptGroupId']])) {
 						foreach ($__vars['promptsGrouped'][$__vars['promptGroupId']] AS $__vars['promptId'] => $__vars['prompt']) {
-							$__compilerTemp12[$__compilerTemp13]['options'][] = array(
+							$__compilerTemp14[$__compilerTemp15]['options'][] = array(
 								'value' => $__vars['promptId'],
 								'selected' => $__vars['forum']['prompt_cache'][$__vars['promptId']],
 								'label' => $__templater->escape($__vars['prompt']['title']),
@@ -249,10 +292,10 @@ return array(
 				}
 			}
 		}
-		$__compilerTemp11 .= $__templater->formCheckBoxRow(array(
+		$__compilerTemp13 .= $__templater->formCheckBoxRow(array(
 			'name' => 'available_prompts',
 			'listclass' => 'prompt',
-		), $__compilerTemp12, array(
+		), $__compilerTemp14, array(
 			'rowtype' => 'explainOffset',
 			'label' => 'Available prompts',
 			'explain' => 'Users will be prompted to post a new thread in this forum using one of the prompts selected here. The prompt appears in the thread title input box, before a title is entered. If no prompts are selected, the default prompt phrase (<a href="' . $__templater->func('link', array('phrases/edit-by-name', array(), array('title' => 'thread_prompt.default', ), ), true) . '"><code>thread_prompt.default</code></a>) is used.',
@@ -279,6 +322,10 @@ return array(
 		'node' => $__vars['node'],
 	), $__vars) . '
 
+' . $__compilerTemp2 . '
+
+' . $__compilerTemp3 . '
+
 			<hr class="formRowSep" />
 			' . $__templater->callMacro('node_edit_macros', 'node_name', array(
 		'node' => $__vars['node'],
@@ -297,15 +344,15 @@ return array(
 		'label' => 'Forum type',
 		'explain' => $__templater->escape($__vars['forumTypeDesc']),
 	)) . '
-			' . $__compilerTemp2 . '
+			' . $__compilerTemp4 . '
 			' . $__templater->formHiddenVal('forum_type_id', $__vars['forumTypeId'], array(
 	)) . '
 
 			<hr class="formRowSep" />
-			' . $__compilerTemp3 . '
+			' . $__compilerTemp5 . '
 
 			<hr class="formRowSep" />
-			' . $__compilerTemp5 . '
+			' . $__compilerTemp7 . '
 
 		</div>
 
@@ -470,7 +517,7 @@ return array(
 		'name' => 'default_sort_order',
 		'value' => $__vars['forum']['default_sort_order'],
 		'class' => 'input--inline',
-	), $__compilerTemp10) . '
+	), $__compilerTemp12) . '
 					' . $__templater->formSelect(array(
 		'name' => 'default_sort_direction',
 		'value' => $__vars['forum']['default_sort_direction'],
@@ -543,7 +590,7 @@ return array(
 		'styleTree' => $__vars['styleTree'],
 	), $__vars) . '
 
-			' . $__compilerTemp11 . '
+			' . $__compilerTemp13 . '
 		</div>
 
 		' . $__templater->formSubmitRow(array(

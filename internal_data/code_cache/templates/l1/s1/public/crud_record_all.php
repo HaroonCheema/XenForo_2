@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 52e9b5e0428441600d4112da85ee8820
+// FROM HASH: e467c90dfe4952b49e506d66fc8048d3
 return array(
 'macros' => array('search_menu' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -115,6 +115,13 @@ return array(
 	' . $__templater->button('Add Record', array(
 		'href' => $__templater->func('link', array('crud/add', ), false),
 		'icon' => 'add',
+	), '', array(
+	)) . '
+	
+	' . $__templater->button('Rating', array(
+		'href' => $__templater->func('link', array('package-rating', ), false),
+		'icon' => 'rate',
+		'overlay' => 'true',
 	), '', array(
 	)) . '
 	' . $__templater->func('csrf_input') . '

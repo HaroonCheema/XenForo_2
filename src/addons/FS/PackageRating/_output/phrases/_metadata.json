@@ -1,0 +1,62 @@
+{
+    "fs_package_rating.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "dda9c06f33071c9b6fc237ee164109d8"
+    },
+    "fs_package_rating_add_title.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "503a12f931f6cb5ef78355503741d09c"
+    },
+    "fs_package_rating_select.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "e3163d797ce8e88701e26552462e8148"
+    },
+    "fs_rating_add_image.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "1f98842c354dc496970446bce14f4c50"
+    },
+    "fs_rating_explain_why_youre_giving_this_rating.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "255b108f4f3ac0d76825bb9dd9a62961"
+    },
+    "fs_rating_upload_image.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "1f4e4b02c30203679acade375f22cc27"
+    },
+    "option.fs_pkg_rat_applicable_userGroups.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "687d73240a573400024b768c82259ffc"
+    },
+    "option_explain.fs_pkg_rat_applicable_userGroups.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "b1d11a89a3effdf6de1f6ae05be05792"
+    },
+    "option_group.fs_package_rating.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "7d24c4fc26710946154b9e44ecb3b2ec"
+    },
+    "option_group_description.fs_package_rating.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "route_type": "public",
+    "route_prefix": "package-rating",
+    "sub_name": "",
+    "format": ":int<rating_id>/:page",
+    "build_class": "",
+    "build_method": "",
+    "controller": "FS\\PackageRating:PackageRating",
+    "context": "createCrud",
+    "action_prefix": ""
+}

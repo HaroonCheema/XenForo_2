@@ -34,6 +34,7 @@ You may set a user into \'discouraged\' mode by editing their user profile, or d
   'option_group_description.fs_forum_groups' => '[FS] Forum Groups',
   'option_group_description.fs_hcwp' => '',
   'option_group_description.fs_hide_usernames' => '',
+  'option_group_description.fs_package_rating' => '',
   'option_group_description.fs_post_schdueling' => '',
   'option_group_description.fs_question_answers' => '',
   'option_group_description.fs_rejected_user' => '',

@@ -40,7 +40,7 @@ return array(
 	';
 	}
 	$__finalCompiled .= '
-	';
+			';
 	if ($__templater->method($__vars['user'], 'canBan', array())) {
 		$__finalCompiled .= '
 		<a href="' . $__templater->func('link', array('members/ban', $__vars['user'], ), true) . '" class="menu-linkRow" data-xf-click="overlay">
@@ -57,6 +57,21 @@ return array(
 		$__finalCompiled .= '
 		</a>
 	';
+	}
+	$__finalCompiled .= '
+			';
+	if ((!$__vars['user']['is_banned']) AND ((!$__vars['user']['is_moderator']) AND (!$__vars['user']['is_admin']))) {
+		$__finalCompiled .= '
+';
+		if ($__vars['xf']['visitor']['is_moderator'] OR $__vars['xf']['visitor']['is_admin']) {
+			$__finalCompiled .= '
+		<a href="' . $__templater->func('link', array('scheduleBanUser/add', $__vars['user'], ), true) . '" class="menu-linkRow" data-xf-click="overlay">
+				' . 'Schedule Ban User' . '
+		</a>
+	';
+		}
+		$__finalCompiled .= '
+';
 	}
 	$__finalCompiled .= '
 	';

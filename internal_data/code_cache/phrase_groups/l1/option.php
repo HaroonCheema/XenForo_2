@@ -289,6 +289,7 @@ return array (
   'option.fs_hcwp_userGroups' => 'Hide Content from users',
   'option.fs_mts_customMsgColor' => 'Custom message Text Color',
   'option.fs_mts_customMsgbackGroundColor' => 'Custom message Background Color',
+  'option.fs_pkg_rat_applicable_userGroups' => 'Applicable User Upgrade Ids',
   'option.fs_qa_routeFilterId' => 'Route Filter ID',
   'option.fs_questionAnswerForum' => 'Applicable Forum',
   'option.fs_rejected_user_mod_ids' => 'Moderator Ids',
