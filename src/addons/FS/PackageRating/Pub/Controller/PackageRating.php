@@ -37,6 +37,8 @@ class PackageRating extends AbstractController
             $insert->rating = $input['rating'];
             $insert->message = $input['message'];
 
+
+
             $insert->save();
 
             $this->saveImage($insert);
@@ -76,7 +78,10 @@ class PackageRating extends AbstractController
             'userUpId' => 'uint',
         ]);
 
-        if ($input['rating'] < 1 || $input['rating'] > 5 || !strlen($input['message']) || $input['userUpId'] == 0) {
+        $uploads['image'] = $this->request->getFile('image', false, false);
+
+
+        if ($input['rating'] < 1 || $input['rating'] > 5 || !strlen($input['message']) || $input['userUpId'] == 0 || !$uploads['image']) {
             throw $this->exception($this->error(\XF::phraseDeferred('please_complete_required_fields')));
         }
 

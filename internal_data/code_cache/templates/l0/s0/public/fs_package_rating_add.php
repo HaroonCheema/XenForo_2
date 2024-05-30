@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: c0ef500ef856220d8b5bba1dfa440310
+// FROM HASH: 3c52d91455f9e9ce17a9c02559df0baa
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -68,8 +68,10 @@ return array(
 			' . $__templater->formUploadRow(array(
 		'name' => 'image',
 		'accept' => '.gif,.jpeg,.jpg,.jpe,.png',
+		'data-required' => 'true',
 	), array(
 		'label' => 'Upload Image',
+		'hint' => 'Required',
 		'explain' => 'Upload any image...!',
 	)) . '
 			' . $__compilerTemp2 . '

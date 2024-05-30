@@ -38,7 +38,8 @@
 
 			<xf:uploadrow name="image" accept=".gif,.jpeg,.jpg,.jpe,.png"
 						  label="{{ phrase('fs_rating_add_image') }}"
-						  explain="{{ phrase('fs_rating_upload_image') }}"></xf:uploadrow>
+						  hint="{{ phrase('required') }}"
+						  explain="{{ phrase('fs_rating_upload_image') }}" data-required="true"></xf:uploadrow>
 			<xf:if is="$category.isImage()">
 				<xf:formrow>
 					<xf:inforow rowtype="confirm">
