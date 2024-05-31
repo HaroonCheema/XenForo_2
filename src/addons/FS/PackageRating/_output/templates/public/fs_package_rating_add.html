@@ -1,6 +1,6 @@
 <xf:title>{{ phrase('fs_package_rating_add_title') }}</xf:title>
 
-<xf:form action="{{ link('package-rating') }}" class="block" ajax="true" novalidate="false">
+<xf:form action="{{ link('package-rating/add') }}" class="block" ajax="true" novalidate="false">
 	<div class="block-container">
 		<div class="block-body">
 
@@ -40,13 +40,6 @@
 						  label="{{ phrase('fs_rating_add_image') }}"
 						  hint="{{ phrase('required') }}"
 						  explain="{{ phrase('fs_rating_upload_image') }}" data-required="true"></xf:uploadrow>
-			<xf:if is="$category.isImage()">
-				<xf:formrow>
-					<xf:inforow rowtype="confirm">
-						<img src="{$category.getImgUrl(true)}" style="width:80px;height:60px" >
-					</xf:inforow>
-				</xf:formrow>
-			</xf:if>
 
 		</div>
 		<xf:submitrow submit="{{ phrase('submit_rating') }}" icon="rate" />

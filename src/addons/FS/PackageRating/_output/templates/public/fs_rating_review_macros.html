@@ -1,0 +1,73 @@
+<xf:macro name="review"
+		  arg-review="!"
+		  arg-showResource="{{ false }}">
+
+	<xf:css src="message.less" />
+	<xf:js src="xf/comment.js" min="1" />
+
+	<div class="message message--simple">
+		<span class="u-anchorTarget" id="resource-review-{$review.rating_id}"></span>
+		<div class="message-inner">
+			<span class="message-cell message-cell--user">
+				<xf:macro template="message_macros" name="user_info_simple"
+						  arg-user="{$review.User}"
+						  arg-fallbackName="{{ phrase('deleted_member') }}" />
+			</span>
+			<div class="message-cell message-cell--main">
+				<div class="message-content js-messageContent">
+					<div class="message-attribution message-attribution--plain">
+
+						<h3 class="node-title">
+							<a href="{{ link('account/upgrades', $review.Upgrade.user_upgrade_id) }}">{$review.Upgrade.title}</a>
+
+							<xf:if is="$review.isImage()">
+								<img src="{$review.getImgUrl(true)}" style="width:80px; height:80px; float: right;" >
+							</xf:if>
+						</h3>
+
+						<ul class="listInline listInline--bullet">
+							<li class="message-attribution-user">
+								<xf:username user="{$review.User}" defaultname="{{ phrase('deleted_member') }}" />
+							</li>
+							<li>
+								<xf:macro template="rating_macros" name="stars"
+										  arg-rating="{$review.rating}"
+										  arg-class="ratingStars--smaller" />
+							</li>
+							<li><a href="{{ link('resources/review', $review) }}" class="u-concealed"><xf:date time="$review.rating_date" /></a></li>
+						</ul>
+					</div>
+
+					<div class="message-body">
+						{{ structured_text($review.message) }}
+					</div>
+				</div>
+
+				<xf:if is="{{$xf.visitor.is_admin OR ($xf.visitor.user_id == $review.user_id)}}"> 
+					<xf:if contentcheck="true">
+						<div class="message-actionBar actionBar">
+							<xf:contentcheck>
+
+								<xf:if contentcheck="true">
+									<div class="actionBar-set actionBar-set--internal">
+										<xf:contentcheck>
+
+											<a href="{{ link('package-rating/delete', $review) }}"
+											   class="actionBar-action actionBar-action--delete actionBar-action--menuItem"
+											   data-xf-click="overlay">
+												{{ phrase('delete') }}
+											</a>
+
+										</xf:contentcheck>
+									</div>
+								</xf:if>
+							</xf:contentcheck>
+						</div>
+					</xf:if>
+				</xf:if>
+
+			</div>
+
+		</div>
+	</div>
+</xf:macro>

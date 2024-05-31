@@ -790,7 +790,7 @@ class Crud extends AbstractController
 
 
         $page = $params->page;
-        $perPage = 3;
+        $perPage = 1;
 
         $finder->limitByPage($page, $perPage);
 
@@ -1306,7 +1306,7 @@ class Crud extends AbstractController
 
     public function actionAdd()
     {
-        return $this->view('CRUD\XF:Crud\Index', 'crud_record_testing_pg_2', []);
+        // return $this->view('CRUD\XF:Crud\Index', 'crud_record_testing_pg_2', []);
 
         $crud = $this->em()->create('CRUD\XF:Crud');
         return $this->crudAddEdit($crud);

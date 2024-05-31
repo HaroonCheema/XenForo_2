@@ -1,0 +1,21 @@
+<div class="block"{{ widget_data($widget) }}>
+	<div class="block-container">
+		<h3 class="block-minorHeader">
+			<a href="{{ link('package-rating/') }}" rel="nofollow">{{ phrase('fs_rating_latest_reviews') }}</a>
+		</h3>
+		<ul class="block-body">
+			<xf:if is="$reviews is not empty">
+				<xf:foreach loop="$reviews" value="$review">
+					<li class="block-row">
+						<xf:macro template="fs_rating_reviews_all_list_widget_macro" name="review"
+								  arg-review="{$review}" />
+					</li>
+				</xf:foreach>
+				<xf:else />
+				<li class="block-row block-row--minor">
+					{{ phrase('no_results_found') }}
+				</li>
+			</xf:if>
+		</ul>
+	</div>
+</div>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<routes>
+  <route route_type="public" route_prefix="package-rating" format=":int&lt;rating_id&gt;/:page" controller="FS\PackageRating:PackageRating"/>
+</routes>

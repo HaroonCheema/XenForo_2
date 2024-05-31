@@ -1,0 +1,38 @@
+<xf:macro name="review"
+		  arg-review="!"
+		  arg-showResource="{{ false }}">
+
+	<xf:css src="message.less" />
+	<xf:js src="xf/comment.js" min="1" />
+
+	<div class="contentRow">
+
+		<div class="contentRow-figure">
+			<xf:avatar user="$review.User" size="xxs" defaultname="{$review.User.username}" />
+		</div>
+
+		<div class="contentRow-main contentRow-main--close">
+
+			<a href="{{ link('account/upgrades', $review) }}">{$review.Upgrade.title}</a>
+
+			<div>
+				<xf:macro template="rating_macros" name="stars"
+						  arg-rating="{$review.rating}"
+						  arg-class="ratingStars--smaller" />
+			</div>
+
+			<div class="contentRow-minor contentRow-minor--hideLinks">
+				<ul class="listInline listInline--bullet">
+					<li>{$review.User.username}</li>
+					<li><xf:date time="{$review.rating_date}" /></li>
+				</ul>
+			</div>
+
+			<div class="contentRow-minor contentRow-minor--hideLinks">
+				{$review.message}
+			</div>
+
+		</div>
+	</div>
+
+</xf:macro>

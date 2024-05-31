@@ -29,6 +29,18 @@
         "version_string": "1.0.0 Alpha",
         "hash": "255b108f4f3ac0d76825bb9dd9a62961"
     },
+    "fs_rating_latest_reviews.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "08f89a2f533c9e1c37d6539a805e41b4"
+    },
+    "fs_rating_reviews.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "34e80a799d144cfe4af46815e103f017"
+    },
     "fs_rating_upload_image.txt": {
         "global_cache": false,
         "version_id": 1000010,
@@ -58,5 +70,17 @@
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
         "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "widget_def.fsPackageRating.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "79a20c7e5ee1258bec9d82610f25a90a"
+    },
+    "widget_def_desc.fsPackageRating.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "79a20c7e5ee1258bec9d82610f25a90a"
     }
 }

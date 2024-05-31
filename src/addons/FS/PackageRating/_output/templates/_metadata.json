@@ -2,6 +2,26 @@
     "public/fs_package_rating_add.html": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
-        "hash": "3c52d91455f9e9ce17a9c02559df0baa"
+        "hash": "138cc79beb9d2cff64ff72a13c674189"
+    },
+    "public/fs_rating_review_macros.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "3f643b7871232948923881884e61aa15"
+    },
+    "public/fs_rating_reviews_all.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "f8b869a6a54b3f8c373765f835f2345d"
+    },
+    "public/fs_rating_reviews_all_list_widget.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "69c3e9a1081f9474ff07b8727959990e"
+    },
+    "public/fs_rating_reviews_all_list_widget_macro.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "fcc67d127f5ed656e8093c5eb2253e65"
     }
 }

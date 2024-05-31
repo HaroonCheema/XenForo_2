@@ -1,0 +1,44 @@
+<xf:title>{{ phrase('fs_rating_reviews') }}</xf:title>
+
+<xf:comment>
+<xf:pageaction>
+	<xf:button href="{{ link('package-rating/add') }}" icon="rate" overlay="true"
+			   >{{ phrase('fs_package_rating') }}</xf:button
+		>
+</xf:pageaction>
+</xf:comment>
+
+<div class="block">
+
+	<div class="block-container">
+		<div class="block-body">
+			<xf:if is="$reviews is not empty">
+				<xf:foreach loop="$reviews" value="$review">
+					<xf:macro template="fs_rating_review_macros" name="review"
+							  arg-review="{$review}"/>
+				</xf:foreach>
+				<div class="block-footer">
+					<span class="block-footer-counter"
+						  >{{ display_totals($totalReturn, $total) }}</span
+						>
+				</div>
+				<xf:else />
+				<div class="blockMessage">
+					{{ phrase('no_items_have_been_created_yet') }}
+				</div>
+			</xf:if>
+
+
+
+		</div>
+
+	</div>
+	<xf:pagenav
+				page="{$page}"
+				perpage="{$perPage}"
+				total="{$total}"
+				link="package-rating"
+				wrapperclass="block"
+				/>
+
+</div>

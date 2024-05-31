@@ -7,7 +7,30 @@ use XF\Pub\Controller\AbstractController;
 
 class PackageRating extends AbstractController
 {
-    public function actionIndex()
+
+    public function actionIndex(ParameterBag $params)
+    {
+        $finder = $this->finder('FS\PackageRating:PackageRating');
+
+        $finder->order('rating_id', 'DESC');
+
+        $page = $params->page;
+        $perPage = 15;
+
+        $finder->limitByPage($page, $perPage);
+
+        $viewParams = [
+            'reviews' => $finder->fetch(),
+            'page' => $page,
+            'perPage' => $perPage,
+            'total' => $finder->total(),
+            'totalReturn' => count($finder->fetch()),
+        ];
+
+        return $this->view('FS\PackageRating:PackageRating\Index', 'fs_rating_reviews_all', $viewParams);
+    }
+
+    public function actionAdd()
     {
         $visitor = \XF::visitor();
 
@@ -43,14 +66,14 @@ class PackageRating extends AbstractController
 
             $this->saveImage($insert);
 
-            return $this->redirect($this->buildLink('crud'));
+            return $this->redirect($this->buildLink('package-rating'));
         }
 
         $viewParams = [
             "userUpgrades" => count($userUpgrades) ? $userUpgrades : '',
         ];
 
-        return $this->view('FS\PackageRating:PackageRating\Index', 'fs_package_rating_add', $viewParams);
+        return $this->view('FS\PackageRating:PackageRating\Add', 'fs_package_rating_add', $viewParams);
     }
 
     protected function saveImage($rating)
@@ -86,5 +109,36 @@ class PackageRating extends AbstractController
         }
 
         return $input;
+    }
+
+    public function actionDelete(ParameterBag $params)
+    {
+        $replyExists = $this->assertDataExists($params->rating_id);
+
+        if (!(\XF::visitor()->is_admin || \XF::visitor()->user_id == $replyExists->user_id)) {
+            return $this->noPermission();
+        }
+
+        /** @var \XF\ControllerPlugin\Delete $plugin */
+        $plugin = $this->plugin('XF:Delete');
+        return $plugin->actionDelete(
+            $replyExists,
+            $this->buildLink('package-rating/delete', $replyExists),
+            null,
+            $this->buildLink('package-rating'),
+            "{$replyExists->Upgrade->title}"
+        );
+    }
+
+    /**
+     * @param string $id
+     * @param array|string|null $with
+     * @param null|string $phraseKey
+     *
+     * @return \FS\PackageRating\Entity\PackageRating
+     */
+    protected function assertDataExists($id, array $extraWith = [], $phraseKey = null)
+    {
+        return $this->assertRecordExists('FS\PackageRating:PackageRating', $id, $extraWith, $phraseKey);
     }
 }

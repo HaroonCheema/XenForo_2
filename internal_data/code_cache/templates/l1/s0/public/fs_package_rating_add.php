@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 3c52d91455f9e9ce17a9c02559df0baa
+// FROM HASH: 138cc79beb9d2cff64ff72a13c674189
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -22,19 +22,6 @@ return array(
 				'_type' => 'option',
 			);
 		}
-	}
-	$__compilerTemp2 = '';
-	if ($__templater->method($__vars['category'], 'isImage', array())) {
-		$__compilerTemp2 .= '
-				' . $__templater->formRow('
-					' . $__templater->formInfoRow('
-						<img src="' . $__templater->escape($__templater->method($__vars['category'], 'getImgUrl', array(true, ))) . '" style="width:80px;height:60px" >
-					', array(
-			'rowtype' => 'confirm',
-		)) . '
-				', array(
-		)) . '
-			';
 	}
 	$__finalCompiled .= $__templater->form('
 	<div class="block-container">
@@ -74,7 +61,6 @@ return array(
 		'hint' => 'Required',
 		'explain' => 'Upload any image...!',
 	)) . '
-			' . $__compilerTemp2 . '
 
 		</div>
 		' . $__templater->formSubmitRow(array(
@@ -84,7 +70,7 @@ return array(
 	)) . '
 	</div>
 ', array(
-		'action' => $__templater->func('link', array('package-rating', ), false),
+		'action' => $__templater->func('link', array('package-rating/add', ), false),
 		'class' => 'block',
 		'ajax' => 'true',
 		'novalidate' => 'false',

@@ -14,6 +14,8 @@ return array (
   'widget.forum_overview_new_posts' => '',
   'widget.forum_overview_new_profile_posts' => '',
   'widget.forum_overview_share_page' => '',
+  'widget.fsPackageRating' => 'FS Package Rating',
+  'widget.fsPackageRatings' => '',
   'widget.fs_question_answer_count_wid' => 'Question Answer Counts',
   'widget.latest_followed_profile_posts' => 'Latest profile posts by followers',
   'widget.latest_posts' => 'Latest posts',
