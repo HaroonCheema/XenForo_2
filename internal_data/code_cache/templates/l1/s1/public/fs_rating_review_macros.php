@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 20cd52ae91639e11a44fa3a6394244e0
+// FROM HASH: 1ca5a842a2070d05461632bb5fdcdc5f
 return array(
 'macros' => array('review' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -65,7 +65,7 @@ return array(
 		'class' => 'ratingStars--smaller',
 	), $__vars) . '
 						</li>
-						<li><a href="' . $__templater->func('link', array('resources/review', $__vars['review'], ), true) . '" class="u-concealed">' . $__templater->func('date_dynamic', array($__vars['review']['rating_date'], array(
+						<li><a href="#" class="u-concealed">' . $__templater->func('date_dynamic', array($__vars['review']['rating_date'], array(
 	))) . '</a></li>
 					</ul>
 

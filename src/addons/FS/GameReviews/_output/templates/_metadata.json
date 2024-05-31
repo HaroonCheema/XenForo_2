@@ -1,0 +1,37 @@
+{
+    "admin/fs_game_add_edit.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "448d09abe70b6c43622028dd00b0e315"
+    },
+    "admin/fs_game_index.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "2642a8f202a6df142e28a980449e0321"
+    },
+    "public/fs_game_rating_add.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "f17c26471f0fb348709b53984fb8651e"
+    },
+    "public/fs_game_rating_review_macros.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "ec1642c920651dfb4482f5a55a9e8a08"
+    },
+    "public/fs_game_rating_reviews_all.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "8cc58e2343b87f0785d80c971524345d"
+    },
+    "public/fs_game_reviews_all_list_widget.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "623cb310488dfc6bad698eff687edc3c"
+    },
+    "public/fs_game_reviews_all_list_widget_macro.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "6b0c4942fd67aa0f689e6fb9992dc836"
+    }
+}

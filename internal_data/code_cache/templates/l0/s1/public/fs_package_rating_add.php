@@ -4,7 +4,7 @@ return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
 	$__finalCompiled = '';
-	$__templater->pageParams['pageTitle'] = $__templater->preEscaped('Ratting');
+	$__templater->pageParams['pageTitle'] = $__templater->preEscaped('Rating');
 	$__finalCompiled .= '
 
 ';

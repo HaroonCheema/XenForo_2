@@ -1,0 +1,11 @@
+{
+    "route_type": "public",
+    "route_prefix": "game-rating",
+    "sub_name": "",
+    "format": ":int<review_id>/:page",
+    "build_class": "",
+    "build_method": "",
+    "controller": "FS\\GameReviews:GameReviews",
+    "context": "fsGameReviews",
+    "action_prefix": ""
+}

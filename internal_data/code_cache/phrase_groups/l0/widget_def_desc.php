@@ -10,6 +10,7 @@ return array (
   'widget_def_desc.dbtech_credits_wallet' => 'Displays a block containing the available currencies for the current user.',
   'widget_def_desc.find_member' => 'Adds an auto complete block to the page which allows you to find a member\'s profile by their username.',
   'widget_def_desc.forum_statistics' => 'Displays a block which that shows the forum\'s current statistics on things like total discussions, message and member count.',
+  'widget_def_desc.fsGameRating' => '[FS] Game Reviews',
   'widget_def_desc.fsPackageRating' => 'User Upgrade Ratings',
   'widget_def_desc.highestRatedInCategory' => '',
   'widget_def_desc.html' => 'Widget that lets you add custom HTML. This widget supports XenForo template syntax.',

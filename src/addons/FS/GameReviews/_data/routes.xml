@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<routes>
+  <route route_type="admin" route_prefix="game" format=":int&lt;game_id&gt;/:page" controller="FS\GameReviews:Game" context="fsGame"/>
+  <route route_type="public" route_prefix="game-rating" format=":int&lt;review_id&gt;/:page" controller="FS\GameReviews:GameReviews" context="fsGameReviews"/>
+</routes>

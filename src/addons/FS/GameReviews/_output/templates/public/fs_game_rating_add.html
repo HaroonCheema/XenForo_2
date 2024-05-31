@@ -1,0 +1,44 @@
+<xf:title>{{ phrase('fs_game_rating_add_title') }}</xf:title>
+
+<xf:form action="{{ link('game-rating/add') }}" class="block" ajax="true" novalidate="false">
+	<div class="block-container">
+		<div class="block-body">
+
+			<xf:selectrow
+						  name="game_id"
+						  label="{{ phrase('fs_game_rating_select') }}"
+						  hint="{{ phrase('required') }}"
+						  required="required"
+						  >
+				<xf:option value="0">{{ phrase('none') }}</xf:option>
+					<xf:foreach loop="$games" key="$key" value="$game">
+						<xf:option
+								   value="{$game.game_id}"
+								   >{$game.title}</xf:option
+							>
+					</xf:foreach>
+			</xf:selectrow>
+
+			<xf:macro template="rating_macros" name="rating" />
+
+			<xf:textarearow name="message" rows="2" autosize="true"
+							data-xf-init="min-length"
+							data-allow-empty="false"
+							data-toggle-target="#js-resourceReviewLength"
+							label="{{ phrase('review') }}">
+
+				<xf:explain>
+					{{ phrase('fs_game_rating_explain_why_youre_giving_this_rating') }}
+				</xf:explain>
+
+				<xf:hint>{{ phrase('required') }}</xf:hint>
+			</xf:textarearow>
+
+			<xf:uploadrow name="image" accept=".gif,.jpeg,.jpg,.jpe,.png"
+						  label="{{ phrase('fs_game_rating_add_image') }}"
+						  explain="{{ phrase('fs_game_rating_upload_image') }}" data-required="true"></xf:uploadrow>
+
+		</div>
+		<xf:submitrow submit="{{ phrase('submit_rating') }}" icon="rate" />
+	</div>
+</xf:form>

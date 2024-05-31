@@ -39,6 +39,7 @@ return array (
   'nav.forumGroupsAddSubForum' => 'Add Sub Forum',
   'nav.forumList' => 'Forum list',
   'nav.forums' => 'Forums',
+  'nav.fsGameReviews' => 'Game Reviews',
   'nav.fsWebsiteRanking' => 'Website Ranking',
   'nav.fs_a' => 'Test A',
   'nav.fs_auction_category' => 'Auction',

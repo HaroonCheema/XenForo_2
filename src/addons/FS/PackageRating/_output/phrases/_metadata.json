@@ -7,9 +7,9 @@
     },
     "fs_package_rating_add_title.txt": {
         "global_cache": false,
-        "version_id": 1000010,
-        "version_string": "1.0.0 Alpha",
-        "hash": "503a12f931f6cb5ef78355503741d09c"
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "dda9c06f33071c9b6fc237ee164109d8"
     },
     "fs_package_rating_select.txt": {
         "global_cache": false,

@@ -1,0 +1,81 @@
+<xf:macro name="review"
+		  arg-review="!"
+		  arg-showResource="{{ false }}">
+
+	<xf:css src="message.less" />
+	<xf:js src="xf/comment.js" min="1" />
+
+	<div class="message message--simple">
+		<span class="u-anchorTarget" id="resource-review-{$review.review_id}"></span>
+		<div class="message-inner">
+
+			<div class="message-cell message-cell--main">
+				<div class="message-content js-messageContent">
+					<div class="message-attribution message-attribution--plain" style="padding-bottom: 10px; border-bottom: 1px solid #e7e7e7;">
+
+						<ul class="listInline listInline--bullet">
+							<li>
+								<xf:avatar user="$review.User" size="xs" defaultname="{$review.User.username}" itemprop="image" />
+							</li>
+
+							<li class="message-attribution-user">
+								<xf:username user="{$review.User}" defaultname="{{ phrase('deleted_member') }}" />
+
+							</li>
+						</ul>
+
+						<ul class="listInline listInline--bullet">
+							<li>
+								<xf:if is="$review.isImage()">
+									<img src="{$review.getImgUrl(true)}" style="width:80px; height:80px; float: right;" >
+								</xf:if>
+							</li>
+						</ul>
+					</div>
+
+					<ul class="listInline listInline--bullet" style="display: flex; justify-content: space-between; margin: 10px 0px 10px 0px;">
+						<li>
+							<xf:macro template="rating_macros" name="stars"
+									  arg-rating="{$review.rating}"
+									  arg-class="ratingStars--smaller" />
+						</li>
+						<li><a href="#" class="u-concealed"><xf:date time="$review.rating_date" /></a></li>
+					</ul>
+
+					<span class="" style="font-size: 1.17em; font-weight: bold;">
+						{$review.Game.title}
+					</span>
+
+					<div class="message-body">
+						{{ structured_text($review.message) }}
+					</div>
+				</div>
+
+				<xf:if is="{{$xf.visitor.is_admin OR ($xf.visitor.user_id == $review.user_id)}}"> 
+					<xf:if contentcheck="true">
+						<div class="message-actionBar actionBar" style="border-top: 1px solid #e7e7e7; margin-top: 10px; padding-top: 10px;">
+							<xf:contentcheck>
+
+								<xf:if contentcheck="true">
+									<div class="actionBar-set actionBar-set--internal">
+										<xf:contentcheck>
+
+											<a href="{{ link('game-rating/delete', $review) }}"
+											   class="actionBar-action actionBar-action--delete actionBar-action--menuItem"
+											   data-xf-click="overlay">
+												{{ phrase('delete') }}
+											</a>
+
+										</xf:contentcheck>
+									</div>
+								</xf:if>
+							</xf:contentcheck>
+						</div>
+					</xf:if>
+				</xf:if>
+
+			</div>
+
+		</div>
+	</div>
+</xf:macro>

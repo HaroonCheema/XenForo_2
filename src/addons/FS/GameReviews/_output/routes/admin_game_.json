@@ -1,0 +1,11 @@
+{
+    "route_type": "admin",
+    "route_prefix": "game",
+    "sub_name": "",
+    "format": ":int<game_id>/:page",
+    "build_class": "",
+    "build_method": "",
+    "controller": "FS\\GameReviews:Game",
+    "context": "fsGame",
+    "action_prefix": ""
+}

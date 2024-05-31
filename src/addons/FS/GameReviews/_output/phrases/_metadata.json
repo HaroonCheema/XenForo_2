@@ -1,0 +1,98 @@
+{
+    "admin_navigation.fsGame.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "ec211f7c20af43e742bf2570c3cb84f9"
+    },
+    "admin_navigation.fs_game.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d59a33e76d21c8b68dc23efbc1ea10b7"
+    },
+    "fs_game.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d59a33e76d21c8b68dc23efbc1ea10b7"
+    },
+    "fs_game_edit.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "e4fc0d375f5e43ec935091f24f065643"
+    },
+    "fs_game_new.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "df3545cb3d603040ad071c5de6ac4787"
+    },
+    "fs_game_rating.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "ac0468491a6a95605c64a2c035d89dfd"
+    },
+    "fs_game_rating_add_image.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "1f98842c354dc496970446bce14f4c50"
+    },
+    "fs_game_rating_add_title.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "dda9c06f33071c9b6fc237ee164109d8"
+    },
+    "fs_game_rating_explain_why_youre_giving_this_rating.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "255b108f4f3ac0d76825bb9dd9a62961"
+    },
+    "fs_game_rating_latest_reviews.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "7b288732a93c8555f8f5774b7bec7566"
+    },
+    "fs_game_rating_select.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "ef19c54ed6c8df0aebd755aeb52c21a6"
+    },
+    "fs_game_rating_upload_image.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "1f4e4b02c30203679acade375f22cc27"
+    },
+    "fs_gaming_rating_reviews.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "34e80a799d144cfe4af46815e103f017"
+    },
+    "nav.fsGameReviews.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "8816c7e4d8f035f14a943bbb0cf7ef5c"
+    },
+    "widget_def.fsGameRating.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "41ba2ffeb215c3f7354cde100b8a0a46"
+    },
+    "widget_def_desc.fsGameRating.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "41ba2ffeb215c3f7354cde100b8a0a46"
+    }
+}

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="admin_navigation.fsGame" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add]]></phrase>
+  <phrase title="admin_navigation.fs_game" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Game]]></phrase>
+  <phrase title="fs_game" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Game]]></phrase>
+  <phrase title="fs_game_edit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Edit Game]]></phrase>
+  <phrase title="fs_game_new" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add Game]]></phrase>
+  <phrase title="fs_game_rating" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Leave Rating]]></phrase>
+  <phrase title="fs_game_rating_add_image" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Upload Image]]></phrase>
+  <phrase title="fs_game_rating_add_title" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Rating]]></phrase>
+  <phrase title="fs_game_rating_explain_why_youre_giving_this_rating" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Explain why you're giving this rating.]]></phrase>
+  <phrase title="fs_game_rating_latest_reviews" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Latest Game Reviews]]></phrase>
+  <phrase title="fs_game_rating_select" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Select Game]]></phrase>
+  <phrase title="fs_game_rating_upload_image" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Upload any image...!]]></phrase>
+  <phrase title="fs_gaming_rating_reviews" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Reviews]]></phrase>
+  <phrase title="nav.fsGameReviews" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Game Reviews]]></phrase>
+  <phrase title="widget_def.fsGameRating" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Game Reviews]]></phrase>
+  <phrase title="widget_def_desc.fsGameRating" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Game Reviews]]></phrase>
+</phrases>

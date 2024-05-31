@@ -14,6 +14,7 @@ return array (
   'widget.forum_overview_new_posts' => '',
   'widget.forum_overview_new_profile_posts' => '',
   'widget.forum_overview_share_page' => '',
+  'widget.fsGameReviews' => '',
   'widget.fsPackageRating' => 'FS Package Rating',
   'widget.fsPackageRatings' => '',
   'widget.fs_question_answer_count_wid' => 'Question Answer Counts',

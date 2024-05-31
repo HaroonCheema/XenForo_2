@@ -1,0 +1,35 @@
+<xf:title>
+	<xf:if is="$data.game_id"> {{phrase('fs_game_edit') }} : {$data.title} <xf:breadcrumb href="#">{{
+		phrase('fs_game_edit') }}</xf:breadcrumb> <xf:else />{{
+		phrase('fs_game_new') }}
+		<xf:breadcrumb href="#">{{ phrase('fs_game_new') }}</xf:breadcrumb> </xf:if>
+</xf:title>
+<xf:form
+		 action="{{ link('game/save', $data) }}"
+		 ajax="true"
+		 class="block"
+		 data-force-flash-message="true"
+		 >
+	<div class="block-container">
+		<div class="block-body">
+			<xf:textboxrow
+						   name="title"
+						   value="{$data.title}"
+						   label="{{ phrase('title') }}"
+						   hint="required"
+						   autosize="true"
+						   row="5"
+						   />
+
+			<xf:textboxrow
+						   name="description"
+						   value="{$data.description}"
+						   label="{{ phrase('description') }}"
+						   autosize="true"
+						   row="5"
+						   />
+
+		</div>
+		<xf:submitrow submit="" icon="save" />
+	</div>
+</xf:form>

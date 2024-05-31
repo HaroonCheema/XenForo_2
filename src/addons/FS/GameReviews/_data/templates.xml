@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="admin" title="fs_game_add_edit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>
+	<xf:if is="$data.game_id"> {{phrase('fs_game_edit') }} : {$data.title} <xf:breadcrumb href="#">{{
+		phrase('fs_game_edit') }}</xf:breadcrumb> <xf:else />{{
+		phrase('fs_game_new') }}
+		<xf:breadcrumb href="#">{{ phrase('fs_game_new') }}</xf:breadcrumb> </xf:if>
+</xf:title>
+<xf:form
+		 action="{{ link('game/save', $data) }}"
+		 ajax="true"
+		 class="block"
+		 data-force-flash-message="true"
+		 >
+	<div class="block-container">
+		<div class="block-body">
+			<xf:textboxrow
+						   name="title"
+						   value="{$data.title}"
+						   label="{{ phrase('title') }}"
+						   hint="required"
+						   autosize="true"
+						   row="5"
+						   />
+
+			<xf:textboxrow
+						   name="description"
+						   value="{$data.description}"
+						   label="{{ phrase('description') }}"
+						   autosize="true"
+						   row="5"
+						   />
+
+		</div>
+		<xf:submitrow submit="" icon="save" />
+	</div>
+</xf:form>]]></template>
+  <template type="admin" title="fs_game_index" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('fs_game') }}</xf:title>
+
+<xf:pageaction>
+	<xf:button href="{{ link('game/add') }}" icon="add">{{ phrase('fs_game_new') }}</xf:button>
+</xf:pageaction>
+<xf:form action="{{ link($prefix . '/toggle') }}" class="block" ajax="true">
+	<div class="block-outer">
+		<xf:macro
+				  template="filter_macros"
+				  name="quick_filter"
+				  arg-key="game"
+				  arg-class="block-outer-opposite"
+				  />
+	</div>
+
+	<div class="block-container">
+
+		<xf:if is="$data is not empty">
+			<div class="block-body">
+				<xf:datalist data-xf-init="responsive-data-list">
+
+					<xf:macro
+							  name="table_list"
+							  arg-data="{$data}"
+							  />
+
+
+				</xf:datalist>
+				<div class="block-footer">
+					<span class="block-footer-counter"
+						  >{{ display_totals($totalReturn, $total) }}</span
+						>
+				</div>
+
+			</div>
+			<xf:else />
+			<div class="block-body block-row">{{ phrase('no_items_have_been_created_yet') }}</div>
+
+		</xf:if>
+
+	</div>
+
+
+	<xf:pagenav
+				page="{$page}"
+				perpage="{$perPage}"
+				total="{$total}"
+				link="game"
+				wrapperclass="block"
+				/>
+</xf:form>
+<xf:macro
+		  name="table_list"
+		  arg-data="!"
+		  >
+	<xf:datarow rowtype="header">
+		<xf:cell> {{ phrase('title') }} </xf:cell>
+		<xf:cell> {{ phrase('description') }} </xf:cell>
+		<xf:cell class="dataList-cell--min"></xf:cell>
+		<xf:cell class="dataList-cell--min"></xf:cell>
+	</xf:datarow>
+	<xf:foreach loop="{$data}" value="$value">
+		<xf:datarow>
+
+			<xf:cell> {$value.title} </xf:cell>
+			<xf:cell> {$value.description} </xf:cell>
+
+			<xf:action href="{{ link('game/edit', $value) }}" >{{ phrase('edit') }}</xf:action>
+			<xf:delete
+					   href="{{ link('game/delete', $value) }}"
+					   overlay="true"
+					   />
+		</xf:datarow>
+	</xf:foreach>
+</xf:macro>]]></template>
+  <template type="public" title="fs_game_rating_add" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('fs_game_rating_add_title') }}</xf:title>
+
+<xf:form action="{{ link('game-rating/add') }}" class="block" ajax="true" novalidate="false">
+	<div class="block-container">
+		<div class="block-body">
+
+			<xf:selectrow
+						  name="game_id"
+						  label="{{ phrase('fs_game_rating_select') }}"
+						  hint="{{ phrase('required') }}"
+						  required="required"
+						  >
+				<xf:option value="0">{{ phrase('none') }}</xf:option>
+					<xf:foreach loop="$games" key="$key" value="$game">
+						<xf:option
+								   value="{$game.game_id}"
+								   >{$game.title}</xf:option
+							>
+					</xf:foreach>
+			</xf:selectrow>
+
+			<xf:macro template="rating_macros" name="rating" />
+
+			<xf:textarearow name="message" rows="2" autosize="true"
+							data-xf-init="min-length"
+							data-allow-empty="false"
+							data-toggle-target="#js-resourceReviewLength"
+							label="{{ phrase('review') }}">
+
+				<xf:explain>
+					{{ phrase('fs_game_rating_explain_why_youre_giving_this_rating') }}
+				</xf:explain>
+
+				<xf:hint>{{ phrase('required') }}</xf:hint>
+			</xf:textarearow>
+
+			<xf:uploadrow name="image" accept=".gif,.jpeg,.jpg,.jpe,.png"
+						  label="{{ phrase('fs_game_rating_add_image') }}"
+						  explain="{{ phrase('fs_game_rating_upload_image') }}" data-required="true"></xf:uploadrow>
+
+		</div>
+		<xf:submitrow submit="{{ phrase('submit_rating') }}" icon="rate" />
+	</div>
+</xf:form>]]></template>
+  <template type="public" title="fs_game_rating_review_macros" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:macro name="review"
+		  arg-review="!"
+		  arg-showResource="{{ false }}">
+
+	<xf:css src="message.less" />
+	<xf:js src="xf/comment.js" min="1" />
+
+	<div class="message message--simple">
+		<span class="u-anchorTarget" id="resource-review-{$review.review_id}"></span>
+		<div class="message-inner">
+
+			<div class="message-cell message-cell--main">
+				<div class="message-content js-messageContent">
+					<div class="message-attribution message-attribution--plain" style="padding-bottom: 10px; border-bottom: 1px solid #e7e7e7;">
+
+						<ul class="listInline listInline--bullet">
+							<li>
+								<xf:avatar user="$review.User" size="xs" defaultname="{$review.User.username}" itemprop="image" />
+							</li>
+
+							<li class="message-attribution-user">
+								<xf:username user="{$review.User}" defaultname="{{ phrase('deleted_member') }}" />
+
+							</li>
+						</ul>
+
+						<ul class="listInline listInline--bullet">
+							<li>
+								<xf:if is="$review.isImage()">
+									<img src="{$review.getImgUrl(true)}" style="width:80px; height:80px; float: right;" >
+								</xf:if>
+							</li>
+						</ul>
+					</div>
+
+					<ul class="listInline listInline--bullet" style="display: flex; justify-content: space-between; margin: 10px 0px 10px 0px;">
+						<li>
+							<xf:macro template="rating_macros" name="stars"
+									  arg-rating="{$review.rating}"
+									  arg-class="ratingStars--smaller" />
+						</li>
+						<li><a href="#" class="u-concealed"><xf:date time="$review.rating_date" /></a></li>
+					</ul>
+
+					<span class="" style="font-size: 1.17em; font-weight: bold;">
+						{$review.Game.title}
+					</span>
+
+					<div class="message-body">
+						{{ structured_text($review.message) }}
+					</div>
+				</div>
+
+				<xf:if is="{{$xf.visitor.is_admin OR ($xf.visitor.user_id == $review.user_id)}}"> 
+					<xf:if contentcheck="true">
+						<div class="message-actionBar actionBar" style="border-top: 1px solid #e7e7e7; margin-top: 10px; padding-top: 10px;">
+							<xf:contentcheck>
+
+								<xf:if contentcheck="true">
+									<div class="actionBar-set actionBar-set--internal">
+										<xf:contentcheck>
+
+											<a href="{{ link('game-rating/delete', $review) }}"
+											   class="actionBar-action actionBar-action--delete actionBar-action--menuItem"
+											   data-xf-click="overlay">
+												{{ phrase('delete') }}
+											</a>
+
+										</xf:contentcheck>
+									</div>
+								</xf:if>
+							</xf:contentcheck>
+						</div>
+					</xf:if>
+				</xf:if>
+
+			</div>
+
+		</div>
+	</div>
+</xf:macro>]]></template>
+  <template type="public" title="fs_game_rating_reviews_all" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('fs_gaming_rating_reviews') }}</xf:title>
+
+<xf:pageaction>
+	<xf:button href="{{ link('game-rating/add') }}" icon="rate" overlay="true"
+			   >{{ phrase('fs_game_rating') }}</xf:button
+		>
+</xf:pageaction>
+
+<div class="block">
+
+	<div class="block-container">
+		<div class="block-body">
+			<xf:if is="$reviews is not empty">
+				<xf:foreach loop="$reviews" value="$review">
+					<xf:macro template="fs_game_rating_review_macros" name="review"
+							  arg-review="{$review}"/>
+				</xf:foreach>
+				<div class="block-footer">
+					<span class="block-footer-counter"
+						  >{{ display_totals($totalReturn, $total) }}</span
+						>
+				</div>
+				<xf:else />
+				<div class="blockMessage">
+					{{ phrase('no_items_have_been_created_yet') }}
+				</div>
+			</xf:if>
+		</div>
+
+	</div>
+	<xf:pagenav
+				page="{$page}"
+				perpage="{$perPage}"
+				total="{$total}"
+				link="game-rating"
+				wrapperclass="block"
+				/>
+
+</div>]]></template>
+  <template type="public" title="fs_game_reviews_all_list_widget" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<div class="block"{{ widget_data($widget) }}>
+	<div class="block-container">
+		<h3 class="block-minorHeader">
+			<a href="{{ link('game-rating/') }}" rel="nofollow">{{ phrase('fs_game_rating_latest_reviews') }}</a>
+		</h3>
+		<ul class="block-body">
+			<xf:if is="$reviews is not empty">
+				<xf:foreach loop="$reviews" value="$review">
+					<li class="block-row">
+						<xf:macro template="fs_game_reviews_all_list_widget_macro" name="review"
+								  arg-review="{$review}" />
+					</li>
+				</xf:foreach>
+				<xf:else />
+				<li class="block-row block-row--minor">
+					{{ phrase('no_results_found') }}
+				</li>
+			</xf:if>
+		</ul>
+	</div>
+</div>]]></template>
+  <template type="public" title="fs_game_reviews_all_list_widget_macro" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:macro name="review"
+		  arg-review="!"
+		  arg-showResource="{{ false }}">
+
+	<xf:css src="message.less" />
+	<xf:js src="xf/comment.js" min="1" />
+
+	<div class="contentRow">
+
+		<div class="contentRow-figure">
+			<xf:avatar user="$review.User" size="xxs" defaultname="{$review.User.username}" />
+		</div>
+
+		<div class="contentRow-main contentRow-main--close">
+
+			<a href="{{ link('game-rating', $review) }}">{$review.Game.title}</a>
+
+			<div>
+				<xf:macro template="rating_macros" name="stars"
+						  arg-rating="{$review.rating}"
+						  arg-class="ratingStars--smaller" />
+			</div>
+
+			<div class="contentRow-minor contentRow-minor--hideLinks">
+				<ul class="listInline listInline--bullet">
+					<li>{$review.User.username}</li>
+					<li><xf:date time="{$review.rating_date}" /></li>
+				</ul>
+			</div>
+
+			<div class="contentRow-minor contentRow-minor--hideLinks">
+				{$review.message}
+			</div>
+
+		</div>
+	</div>
+
+</xf:macro>]]></template>
+</templates>
