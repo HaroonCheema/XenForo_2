@@ -118,7 +118,7 @@ return array(
 	), '', array(
 	)) . '
 	
-	' . $__templater->button('Rating', array(
+	' . $__templater->button('Leave Rating', array(
 		'href' => $__templater->func('link', array('package-rating', ), false),
 		'icon' => 'rate',
 		'overlay' => 'true',

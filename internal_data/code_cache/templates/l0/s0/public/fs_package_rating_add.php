@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 138cc79beb9d2cff64ff72a13c674189
+// FROM HASH: be7f06c0078ad03a65e21a9cd68e5e81
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -58,7 +58,6 @@ return array(
 		'data-required' => 'true',
 	), array(
 		'label' => 'Upload Image',
-		'hint' => 'Required',
 		'explain' => 'Upload any image...!',
 	)) . '
 

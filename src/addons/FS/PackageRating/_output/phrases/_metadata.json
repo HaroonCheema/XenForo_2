@@ -1,9 +1,9 @@
 {
     "fs_package_rating.txt": {
         "global_cache": false,
-        "version_id": 1000010,
-        "version_string": "1.0.0 Alpha",
-        "hash": "dda9c06f33071c9b6fc237ee164109d8"
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "ac0468491a6a95605c64a2c035d89dfd"
     },
     "fs_package_rating_add_title.txt": {
         "global_cache": false,
@@ -31,14 +31,14 @@
     },
     "fs_rating_latest_reviews.txt": {
         "global_cache": false,
-        "version_id": 1000010,
-        "version_string": "1.0.0 Alpha",
-        "hash": "08f89a2f533c9e1c37d6539a805e41b4"
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "8788a24d33f7e0ec60bb80d0778cdb2e"
     },
     "fs_rating_reviews.txt": {
         "global_cache": false,
-        "version_id": 1000010,
-        "version_string": "1.0.0 Alpha",
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
         "hash": "34e80a799d144cfe4af46815e103f017"
     },
     "fs_rating_upload_image.txt": {

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <phrases>
-  <phrase title="fs_package_rating" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Rating]]></phrase>
+  <phrase title="fs_package_rating" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Leave Rating]]></phrase>
   <phrase title="fs_package_rating_add_title" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Ratting]]></phrase>
   <phrase title="fs_package_rating_select" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Select Package]]></phrase>
   <phrase title="fs_rating_add_image" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Upload Image]]></phrase>
   <phrase title="fs_rating_explain_why_youre_giving_this_rating" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Explain why you're giving this rating.]]></phrase>
-  <phrase title="fs_rating_latest_reviews" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Latest Reviews]]></phrase>
-  <phrase title="fs_rating_reviews" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Reviews]]></phrase>
+  <phrase title="fs_rating_latest_reviews" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Latest Package Reviews]]></phrase>
+  <phrase title="fs_rating_reviews" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Reviews]]></phrase>
   <phrase title="fs_rating_upload_image" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Upload any image...!]]></phrase>
   <phrase title="option.fs_pkg_rat_applicable_userGroups" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Applicable User Upgrade Ids]]></phrase>
   <phrase title="option_explain.fs_pkg_rat_applicable_userGroups" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter the Applicable User Upgrade Ids Comma separated like 1,2,3,4.]]></phrase>

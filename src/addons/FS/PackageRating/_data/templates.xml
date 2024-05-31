@@ -40,7 +40,6 @@
 
 			<xf:uploadrow name="image" accept=".gif,.jpeg,.jpg,.jpe,.png"
 						  label="{{ phrase('fs_rating_add_image') }}"
-						  hint="{{ phrase('required') }}"
 						  explain="{{ phrase('fs_rating_upload_image') }}" data-required="true"></xf:uploadrow>
 
 		</div>
@@ -57,35 +56,43 @@
 	<div class="message message--simple">
 		<span class="u-anchorTarget" id="resource-review-{$review.rating_id}"></span>
 		<div class="message-inner">
-			<span class="message-cell message-cell--user">
-				<xf:macro template="message_macros" name="user_info_simple"
-						  arg-user="{$review.User}"
-						  arg-fallbackName="{{ phrase('deleted_member') }}" />
-			</span>
+
 			<div class="message-cell message-cell--main">
 				<div class="message-content js-messageContent">
-					<div class="message-attribution message-attribution--plain">
-
-						<h3 class="node-title">
-							<a href="{{ link('account/upgrades', $review.Upgrade.user_upgrade_id) }}">{$review.Upgrade.title}</a>
-
-							<xf:if is="$review.isImage()">
-								<img src="{$review.getImgUrl(true)}" style="width:80px; height:80px; float: right;" >
-							</xf:if>
-						</h3>
+					<div class="message-attribution message-attribution--plain" style="padding-bottom: 10px; border-bottom: 1px solid #e7e7e7;">
 
 						<ul class="listInline listInline--bullet">
+							<li>
+								<xf:avatar user="$review.User" size="xs" defaultname="{$review.User.username}" itemprop="image" />
+							</li>
+
 							<li class="message-attribution-user">
 								<xf:username user="{$review.User}" defaultname="{{ phrase('deleted_member') }}" />
+
 							</li>
+						</ul>
+
+						<ul class="listInline listInline--bullet">
 							<li>
-								<xf:macro template="rating_macros" name="stars"
-										  arg-rating="{$review.rating}"
-										  arg-class="ratingStars--smaller" />
+								<xf:if is="$review.isImage()">
+									<img src="{$review.getImgUrl(true)}" style="width:80px; height:80px; float: right;" >
+								</xf:if>
 							</li>
-							<li><a href="{{ link('resources/review', $review) }}" class="u-concealed"><xf:date time="$review.rating_date" /></a></li>
 						</ul>
 					</div>
+
+					<ul class="listInline listInline--bullet" style="display: flex; justify-content: space-between; margin: 10px 0px 10px 0px;">
+						<li>
+							<xf:macro template="rating_macros" name="stars"
+									  arg-rating="{$review.rating}"
+									  arg-class="ratingStars--smaller" />
+						</li>
+						<li><a href="{{ link('resources/review', $review) }}" class="u-concealed"><xf:date time="$review.rating_date" /></a></li>
+					</ul>
+
+					<span class="" style="font-size: 1.17em; font-weight: bold;">
+						<a href="{{ link('account/upgrades', $review.Upgrade.user_upgrade_id) }}">{$review.Upgrade.title}</a>
+					</span>
 
 					<div class="message-body">
 						{{ structured_text($review.message) }}
@@ -94,7 +101,7 @@
 
 				<xf:if is="{{$xf.visitor.is_admin OR ($xf.visitor.user_id == $review.user_id)}}"> 
 					<xf:if contentcheck="true">
-						<div class="message-actionBar actionBar">
+						<div class="message-actionBar actionBar" style="border-top: 1px solid #e7e7e7; margin-top: 10px; padding-top: 10px;">
 							<xf:contentcheck>
 
 								<xf:if contentcheck="true">

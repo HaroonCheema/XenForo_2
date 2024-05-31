@@ -7,7 +7,7 @@ return array(
 	$__finalCompiled .= '<div class="block"' . $__templater->func('widget_data', array($__vars['widget'], ), true) . '>
 	<div class="block-container">
 		<h3 class="block-minorHeader">
-			<a href="' . $__templater->func('link', array('package-rating/', ), true) . '" rel="nofollow">' . 'Latest Reviews' . '</a>
+			<a href="' . $__templater->func('link', array('package-rating/', ), true) . '" rel="nofollow">' . 'Latest Package Reviews' . '</a>
 		</h3>
 		<ul class="block-body">
 			';

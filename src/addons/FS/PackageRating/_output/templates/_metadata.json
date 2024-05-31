@@ -2,12 +2,12 @@
     "public/fs_package_rating_add.html": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
-        "hash": "138cc79beb9d2cff64ff72a13c674189"
+        "hash": "be7f06c0078ad03a65e21a9cd68e5e81"
     },
     "public/fs_rating_review_macros.html": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
-        "hash": "3f643b7871232948923881884e61aa15"
+        "hash": "20cd52ae91639e11a44fa3a6394244e0"
     },
     "public/fs_rating_reviews_all.html": {
         "version_id": 1000010,
