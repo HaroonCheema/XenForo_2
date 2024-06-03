@@ -29,7 +29,7 @@
 			</div>
 
 			<div class="contentRow-minor contentRow-minor--hideLinks">
-				{$review.message}
+				{{ strlen($review.message) > 70 ? snippet($review.message, 70, {'stripBbCode': true}) : $review.message}}
 			</div>
 
 		</div>

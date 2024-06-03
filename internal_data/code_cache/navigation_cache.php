@@ -96,6 +96,18 @@ return function($__templater, $__selectedNav, array $__vars)
 	if ($__navTemp) {
 		$__tree['fsGameReviews'] = $__navTemp;
 		$__flat['fsGameReviews'] =& $__tree['fsGameReviews'];
+		if (empty($__tree['fsGameReviews']['children'])) { $__tree['fsGameReviews']['children'] = []; }
+
+		$__navTemp = [
+		'title' => \XF::phrase('nav.fsPackageReview'),
+		'href' => $__templater->func('link', array('package-rating/', ), false),
+		'attributes' => [],
+	];
+		if ($__navTemp) {
+			$__tree['fsGameReviews']['children']['fsPackageReview'] = $__navTemp;
+			$__flat['fsPackageReview'] =& $__tree['fsGameReviews']['children']['fsPackageReview'];
+		}
+
 	}
 
 	if ($__vars['xf']['homePageUrl']) {

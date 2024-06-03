@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: fcc67d127f5ed656e8093c5eb2253e65
+// FROM HASH: 57b091720c3d20f1dce0543b11d82855
 return array(
 'macros' => array('review' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -49,7 +49,7 @@ return array(
 			</div>
 
 			<div class="contentRow-minor contentRow-minor--hideLinks">
-				' . $__templater->escape($__vars['review']['message']) . '
+				' . (($__templater->func('strlen', array($__vars['review']['message'], ), false) > 70) ? $__templater->func('snippet', array($__vars['review']['message'], 70, array('stripBbCode' => true, ), ), true) : $__templater->escape($__vars['review']['message'])) . '
 			</div>
 
 		</div>

@@ -83,6 +83,12 @@
         "version_string": "1.0.0 Alpha",
         "hash": "8816c7e4d8f035f14a943bbb0cf7ef5c"
     },
+    "nav.fsPackageReview.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "6554900629b442d6e9ba5f54c5cb04c1"
+    },
     "widget_def.fsGameRating.txt": {
         "global_cache": false,
         "version_id": 1000010,

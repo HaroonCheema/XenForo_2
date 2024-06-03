@@ -6,6 +6,6 @@
     "build_class": "",
     "build_method": "",
     "controller": "FS\\PackageRating:PackageRating",
-    "context": "",
+    "context": "fsGameReviews",
     "action_prefix": ""
 }

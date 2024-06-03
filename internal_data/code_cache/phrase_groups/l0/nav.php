@@ -40,6 +40,7 @@ return array (
   'nav.forumList' => 'Forum list',
   'nav.forums' => 'Forums',
   'nav.fsGameReviews' => 'Game Reviews',
+  'nav.fsPackageReview' => 'Package Reviews',
   'nav.fsWebsiteRanking' => 'Website Ranking',
   'nav.fs_a' => 'Test A',
   'nav.fs_auction_category' => 'Auction',
