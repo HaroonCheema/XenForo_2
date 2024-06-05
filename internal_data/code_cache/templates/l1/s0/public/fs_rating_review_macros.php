@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 1ca5a842a2070d05461632bb5fdcdc5f
+// FROM HASH: 290c01f2a07f583770039f2ab5936615
 return array(
 'macros' => array('review' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -88,6 +88,26 @@ return array(
 								';
 		$__compilerTemp2 = '';
 		$__compilerTemp2 .= '
+											<a class="actionBar-action actionBar-action--reply js-replyTrigger-' . $__templater->escape($__vars['review']['rating_id']) . '"
+											   data-xf-click="toggle"
+											   data-target=".js-commentsTarget-' . $__templater->escape($__vars['review']['rating_id']) . '"
+											   role="button"
+											   tabindex="0">
+												' . 'Reply' . '
+											</a>
+										';
+		if (strlen(trim($__compilerTemp2)) > 0) {
+			$__compilerTemp1 .= '
+									<div class="actionBar-set actionBar-set--external">
+										' . $__compilerTemp2 . '
+									</div>
+								';
+		}
+		$__compilerTemp1 .= '
+
+								';
+		$__compilerTemp3 = '';
+		$__compilerTemp3 .= '
 
 											<a href="' . $__templater->func('link', array('package-rating/delete', $__vars['review'], ), true) . '"
 											   class="actionBar-action actionBar-action--delete actionBar-action--menuItem"
@@ -96,10 +116,10 @@ return array(
 											</a>
 
 										';
-		if (strlen(trim($__compilerTemp2)) > 0) {
+		if (strlen(trim($__compilerTemp3)) > 0) {
 			$__compilerTemp1 .= '
 									<div class="actionBar-set actionBar-set--internal">
-										' . $__compilerTemp2 . '
+										' . $__compilerTemp3 . '
 									</div>
 								';
 		}
@@ -109,7 +129,100 @@ return array(
 			$__finalCompiled .= '
 						<div class="message-actionBar actionBar" style="border-top: 1px solid #e7e7e7; margin-top: 10px; padding-top: 10px;">
 							' . $__compilerTemp1 . '
+
+
+
 						</div>
+
+						';
+			$__compilerTemp4 = '';
+			$__compilerTemp4 .= '
+
+									';
+			if ($__vars['review']['author_response']) {
+				$__compilerTemp4 .= '
+										' . $__templater->callMacro(null, 'author_reply_row', array(
+					'review' => $__vars['review'],
+				), $__vars) . '
+										';
+			} else if ($__templater->method($__vars['review'], 'canReply', array())) {
+				$__compilerTemp4 .= '
+										<div class="js-replyNewMessageContainer"></div>
+									';
+			}
+			$__compilerTemp4 .= '
+
+									';
+			if ($__templater->method($__vars['review'], 'canReply', array())) {
+				$__compilerTemp4 .= '
+										';
+				$__templater->includeJs(array(
+					'src' => 'xf/message.js',
+					'min' => '1',
+				));
+				$__compilerTemp4 .= '
+										<div class="message-responseRow js-commentsTarget-' . $__templater->escape($__vars['review']['rating_id']) . ' toggleTarget">
+											';
+				$__compilerTemp5 = '';
+				if ($__vars['xf']['visitor']['is_admin']) {
+					$__compilerTemp5 .= '
+															<div class="u-muted" style="margin-bottom: 6px">
+																' . 'Your reply will be attributed to ' . ($__vars['review']['User'] ? $__templater->escape($__vars['review']['User']['username']) : $__templater->escape($__vars['review']['User']['username'])) . ' publicly.' . '
+															</div>
+														';
+				}
+				$__compilerTemp4 .= $__templater->form('
+
+												<div class="comment-inner">
+													<span class="comment-avatar">
+														' . $__templater->func('avatar', array($__vars['review']['User'], 'xxs', false, array(
+				))) . '
+													</span>
+													<div class="comment-main">
+														' . $__templater->formTextArea(array(
+					'name' => 'message',
+					'rows' => '1',
+					'autosize' => 'true',
+					'maxlength' => '',
+					'data-toggle-autofocus' => '1',
+					'class' => 'comment-input js-editor',
+				)) . '
+
+														' . $__compilerTemp5 . '
+
+														<div>
+															' . $__templater->button('Post reply', array(
+					'type' => 'submit',
+					'class' => 'button--primary button--small',
+					'icon' => 'reply',
+				), '', array(
+				)) . '
+														</div>
+													</div>
+												</div>
+											', array(
+					'action' => $__templater->func('link', array('package-rating/reply', $__vars['review'], ), false),
+					'ajax' => 'true',
+					'class' => 'comment',
+					'data-xf-init' => 'quick-reply',
+					'data-message-container' => '< .js-messageResponses | .js-replyNewMessageContainer',
+					'data-submit-hide' => '.js-commentsTarget-' . $__vars['review']['rating_id'] . ', .js-replyTrigger-' . $__vars['review']['rating_id'],
+				)) . '
+										</div>
+									';
+			}
+			$__compilerTemp4 .= '
+
+								';
+			if (strlen(trim($__compilerTemp4)) > 0) {
+				$__finalCompiled .= '
+							<div class="message-responses js-messageResponses">
+								' . $__compilerTemp4 . '
+							</div>
+						';
+			}
+			$__finalCompiled .= '
+
 					';
 		}
 		$__finalCompiled .= '
@@ -124,11 +237,72 @@ return array(
 ';
 	return $__finalCompiled;
 }
+),
+'author_reply_row' => array(
+'arguments' => function($__templater, array $__vars) { return array(
+		'review' => '!',
+	); },
+'code' => function($__templater, array $__vars, $__extensions = null)
+{
+	$__finalCompiled = '';
+	$__finalCompiled .= '
+	<div class="message-responseRow">
+		<div class="comment">
+			<div class="comment-inner">
+				<span class="comment-avatar">
+					' . $__templater->func('avatar', array($__vars['review']['User'], 'xxs', false, array(
+		'defaultname' => $__vars['review']['User']['username'],
+	))) . '
+				</span>
+				<div class="comment-main">
+					<div class="comment-content">
+						<div class="comment-contentWrapper">
+							' . $__templater->func('username_link', array($__vars['review']['User'], true, array(
+		'defaultname' => $__vars['review']['User']['username'],
+		'class' => 'comment-user',
+	))) . '
+							<div class="comment-body">' . $__templater->func('structured_text', array($__vars['review']['author_response'], ), true) . '</div>
+							';
+	if ($__templater->method($__vars['resource'], 'canViewTeamMembers', array()) AND ($__vars['review']['author_response_team_user_id'] AND ($__vars['review']['author_response_team_user_id'] != $__vars['resource']['user_id']))) {
+		$__finalCompiled .= '
+								<div class="comment-note">(' . 'Response by' . $__vars['xf']['language']['label_separator'] . ' ' . $__templater->func('username_link', array($__vars['review']['AuthorResponseTeamUser'], false, array(
+			'defaultname' => $__vars['review']['author_response_team_username'],
+		))) . ')</div>
+							';
+	}
+	$__finalCompiled .= '
+						</div>
+					</div>
+
+					<div class="comment-actionBar actionBar">
+						<div class="actionBar-set actionBar-set--internal">
+							';
+	if ($__vars['review']['user_id']) {
+		$__finalCompiled .= '
+								<a href="' . $__templater->func('link', array('package-rating/reply-delete', $__vars['review'], ), true) . '"
+								   class="actionBar-action actionBar-action--delete actionBar-action--menuItem"
+								   data-xf-click="overlay">
+									' . 'Delete' . '
+								</a>
+							';
+	}
+	$__finalCompiled .= '
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+';
+	return $__finalCompiled;
+}
 )),
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
 	$__finalCompiled = '';
+	$__finalCompiled .= '
 
+';
 	return $__finalCompiled;
 }
 );

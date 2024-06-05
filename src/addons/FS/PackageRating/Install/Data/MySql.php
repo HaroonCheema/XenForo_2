@@ -17,6 +17,7 @@ class MySql
             $table->addColumn('rating', 'tinyint');
             $table->addColumn('rating_date', 'int');
             $table->addColumn('message', 'mediumtext');
+            $table->addColumn('author_response', 'mediumtext');
             $table->addColumn('user_upgrade_id', 'int');
             $table->addPrimaryKey('rating_id');
         };

@@ -57,6 +57,20 @@
 							<xf:contentcheck>
 
 								<xf:if contentcheck="true">
+									<div class="actionBar-set actionBar-set--external">
+										<xf:contentcheck>
+											<a class="actionBar-action actionBar-action--reply js-replyTrigger-{$review.rating_id}"
+											   data-xf-click="toggle"
+											   data-target=".js-commentsTarget-{$review.rating_id}"
+											   role="button"
+											   tabindex="0">
+												{{ phrase('reply') }}
+											</a>
+										</xf:contentcheck>
+									</div>
+								</xf:if>
+
+								<xf:if contentcheck="true">
 									<div class="actionBar-set actionBar-set--internal">
 										<xf:contentcheck>
 
@@ -70,12 +84,98 @@
 									</div>
 								</xf:if>
 							</xf:contentcheck>
+
+
+
 						</div>
+
+						<xf:if contentcheck="true">
+							<div class="message-responses js-messageResponses">
+								<xf:contentcheck>
+
+									<xf:if is="$review.author_response">
+										<xf:macro name="author_reply_row" arg-review="{$review}"/>
+										<xf:elseif is="$review.canReply()" />
+										<div class="js-replyNewMessageContainer"></div>
+									</xf:if>
+
+									<xf:if is="$review.canReply()">
+										<xf:js src="xf/message.js" min="1" />
+										<div class="message-responseRow js-commentsTarget-{$review.rating_id} toggleTarget">
+											<xf:form action="{{ link('package-rating/reply', $review) }}" ajax="true" class="comment"
+													 data-xf-init="quick-reply"
+													 data-message-container="< .js-messageResponses | .js-replyNewMessageContainer"
+													 data-submit-hide=".js-commentsTarget-{$review.rating_id}, .js-replyTrigger-{$review.rating_id}">
+
+												<div class="comment-inner">
+													<span class="comment-avatar">
+														<xf:avatar user="{$review.User}" size="xxs" />
+													</span>
+													<div class="comment-main">
+														<xf:textarea name="message" rows="1" autosize="true"
+																	 maxlength=""
+																	 data-toggle-autofocus="1"
+																	 class="comment-input js-editor" />
+
+														<xf:if is="$xf.visitor.is_admin">
+															<div class="u-muted" style="margin-bottom: 6px">
+																{{ phrase('xfrm_your_reply_will_be_attributed_to_x_publicly', {'user': $review.User ? $review.User.username : $review.User.username}) }}
+															</div>
+														</xf:if>
+
+														<div>
+															<xf:button type="submit" class="button--primary button--small" icon="reply">{{ phrase('post_reply') }}</xf:button>
+														</div>
+													</div>
+												</div>
+											</xf:form>
+										</div>
+									</xf:if>
+
+								</xf:contentcheck>
+							</div>
+						</xf:if>
+
 					</xf:if>
 				</xf:if>
 
 			</div>
 
+		</div>
+	</div>
+</xf:macro>
+
+<xf:macro name="author_reply_row" arg-review="!">
+	<div class="message-responseRow">
+		<div class="comment">
+			<div class="comment-inner">
+				<span class="comment-avatar">
+					<xf:avatar user="$review.User" size="xxs" defaultname="{$review.User.username}" />
+				</span>
+				<div class="comment-main">
+					<div class="comment-content">
+						<div class="comment-contentWrapper">
+							<xf:username user="$review.User" rich="true" defaultname="{$review.User.username}" class="comment-user" />
+							<div class="comment-body">{{ structured_text($review.author_response) }}</div>
+							<xf:if is="$resource.canViewTeamMembers() AND $review.author_response_team_user_id AND $review.author_response_team_user_id != $resource.user_id">
+								<div class="comment-note">({{ phrase('xfrm_response_by:') }} <xf:username user="$review.AuthorResponseTeamUser" defaultname="{$review.author_response_team_username}" />)</div>
+							</xf:if>
+						</div>
+					</div>
+
+					<div class="comment-actionBar actionBar">
+						<div class="actionBar-set actionBar-set--internal">
+							<xf:if is="$review.user_id">
+								<a href="{{ link('package-rating/reply-delete', $review) }}"
+								   class="actionBar-action actionBar-action--delete actionBar-action--menuItem"
+								   data-xf-click="overlay">
+									{{ phrase('delete') }}
+								</a>
+							</xf:if>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </xf:macro>

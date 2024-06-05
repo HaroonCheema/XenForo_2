@@ -7,6 +7,11 @@ use XF\Mvc\Entity\Structure;
 
 class PackageRating extends Entity
 {
+    public function canReply(&$error = null)
+    {
+
+        return true;
+    }
 
     public static function getStructure(Structure $structure)
     {
@@ -22,6 +27,7 @@ class PackageRating extends Entity
             'rating' => ['type' => self::UINT, 'required' => true, 'min' => 1, 'max' => 5],
             'rating_date' => ['type' => self::UINT, 'default' => \XF::$time],
             'message' => ['type' => self::STR, 'default' => ''],
+            'author_response' => ['type' => self::STR, 'default' => ''],
         ];
 
         $structure->relations = [

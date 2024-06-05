@@ -30,6 +30,27 @@ class PackageRating extends AbstractController
         return $this->view('FS\PackageRating:PackageRating\Index', 'fs_rating_reviews_all', $viewParams);
     }
 
+    public function actionReply(ParameterBag $params)
+    {
+        $replyExists = $this->assertDataExists($params->rating_id);
+
+        if (!\XF::visitor()->is_admin) {
+            return $this->noPermission();
+        }
+
+        $message = $this->filter('message', 'str');
+
+        if (!empty($message)) {
+            $replyExists->fastUpdate('author_response', $message);
+        }
+
+        // echo "<pre>";
+        // var_dump($message);
+        // exit;
+
+        return $this->redirect($this->buildLink('package-rating'));
+    }
+
     public function actionAdd()
     {
         $visitor = \XF::visitor();
@@ -113,6 +134,25 @@ class PackageRating extends AbstractController
         $replyExists = $this->assertDataExists($params->rating_id);
 
         if (!(\XF::visitor()->is_admin || \XF::visitor()->user_id == $replyExists->user_id)) {
+            return $this->noPermission();
+        }
+
+        /** @var \XF\ControllerPlugin\Delete $plugin */
+        $plugin = $this->plugin('XF:Delete');
+        return $plugin->actionDelete(
+            $replyExists,
+            $this->buildLink('package-rating/delete', $replyExists),
+            null,
+            $this->buildLink('package-rating'),
+            "{$replyExists->Upgrade->title}"
+        );
+    }
+
+    public function actionReplyDelete(ParameterBag $params)
+    {
+        $replyExists = $this->assertDataExists($params->rating_id);
+
+        if (!\XF::visitor()->is_admin) {
             return $this->noPermission();
         }
 
