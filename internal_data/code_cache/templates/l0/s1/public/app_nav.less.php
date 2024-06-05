@@ -522,7 +522,7 @@ return array(
 	{
 		display: none;
 	}
-}';
+}' . $__templater->includeTemplate('dbtech_credits_app_nav.less', $__vars);
 	return $__finalCompiled;
 }
 );

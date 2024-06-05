@@ -1,0 +1,17 @@
+{
+    "admin/fs_generate_link_index.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "8427c6ccee4611ae426c9a33497d4c7b"
+    },
+    "admin/fs_navigation_add_edit.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "b6e77c0c7c0f27ec22517fab4d6d2c5d"
+    },
+    "admin/fs_navigation_delete.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "0c14604266afa8276b1398a0fc4c9f3d"
+    }
+}

@@ -1,0 +1,6 @@
+{
+    "from_class": "XF\\Admin\\Controller\\Navigation",
+    "to_class": "FS\\GenerateLink\\XF\\Admin\\Controller\\Navigation",
+    "execute_order": 10,
+    "active": true
+}

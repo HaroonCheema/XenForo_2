@@ -1,0 +1,60 @@
+<xf:if is="$navigation.isInsert()">
+	<xf:title>{{ phrase('add_navigation') }}</xf:title>
+	<xf:else />
+	<xf:title>{{ phrase('edit_navigation:') }} {$navigation.title}</xf:title>
+</xf:if>
+
+<xf:form action="{{ link('navigation/forums-save', $navigation) }}" class="block" ajax="true">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:textboxrow name="navigation_id" value="{$navigation.navigation_id}" readonly="{{ !$navigation.canEdit() }}"
+						   maxlength="{{ max_length($navigation, 'navigation_id') }}"
+						   label="{{ phrase('navigation_id') }}"
+						   dir="ltr" />
+
+			<xf:textboxrow name="title" value="{{ $navigation.exists() ? $navigation.MasterTitle.phrase_text : '' }}"
+						   readonly="{{ !$navigation.canEdit() }}"
+						   label="{{ phrase('title') }}" />
+
+			<xf:textboxrow name="config[basic][link]" value="{$navigation.type_config.link}" code="true"
+						   label="{{ phrase('link') }}" />
+
+			<hr class="formRowSep" />	
+
+			<ul class="inputList">
+				<li>
+
+					<xf:selectrow name="forum_ids[]" multiple="multiple" size="7"
+								  label="{{ phrase('fs_generate_link_select_forums_input') }}"
+								  hint="{{ phrase('required') }}"
+								  required="required"
+								  >
+						<xf:foreach loop="$forums" value="$forum">
+							<xf:option value="{$forum.value}" disabled="{$forum.disabled}" selected="{{ in_array($forum.value, $navigation.forum_ids) }}">{$forum.label}</xf:option>
+						</xf:foreach>
+					</xf:selectrow>
+
+				</li>
+			</ul>
+
+			<hr class="formRowSep" />
+
+			<xf:checkboxrow>
+				<xf:option name="enabled" selected="{$navigation.enabled}">{{ phrase('enabled') }}</xf:option>
+			</xf:checkboxrow>
+
+			<xf:macro template="display_order_macros" name="row"
+					  arg-value="{$navigation.display_order}" />
+
+			<xf:hiddenval name="addon_id" value="FS/GenerateLink"/>
+			<xf:hiddenval name="parent_navigation_id" value=""/>
+			<xf:hiddenval name="navigation_type_id" value="basic"/>
+			<xf:hiddenval name="config[basic][display_condition]" value=""/>
+			<xf:hiddenval name="config[basic][extra_attr_names][]" value=""/>
+			<xf:hiddenval name="config[basic][extra_attr_values][]" value=""/>
+
+		</div>
+
+		<xf:submitrow sticky="true" icon="save" />
+	</div>
+</xf:form>

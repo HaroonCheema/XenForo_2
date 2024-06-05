@@ -1,0 +1,27 @@
+<xf:title>{{ phrase('confirm_action') }}</xf:title>
+
+<xf:form action="{{ link('navigation/delete-nav', $navigation) }}" class="block" ajax="true">
+
+	<div class="block-container">
+		<div class="block-body">
+			<xf:inforow rowtype="confirm">
+				{{ phrase('please_confirm_that_you_want_to_delete_following:') }}
+				<strong><a href="{{ link('navigation/edit-forums', $navigation) }}">{$navigation.title}</a></strong>
+			</xf:inforow>
+
+			<xf:if is="$hasChildren">
+				<xf:inforow>
+					<p class="block-rowMessage block-rowMessage--warning block-rowMessage--iconic">
+						<strong>{{ phrase('note:') }}</strong>
+						{{ phrase('deleting_parent_also_deletes_children') }}
+					</p>
+				</xf:inforow>
+			</xf:if>
+		</div>
+
+		<xf:submitrow rowtype="simple" icon="delete" />
+	</div>
+
+	<xf:redirect />
+
+</xf:form>

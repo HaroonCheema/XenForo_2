@@ -1,0 +1,6 @@
+{
+    "from_class": "XF\\Entity\\Navigation",
+    "to_class": "FS\\GenerateLink\\XF\\Entity\\Navigation",
+    "execute_order": 10,
+    "active": true
+}

@@ -110,6 +110,16 @@ return function($__templater, $__selectedNav, array $__vars)
 
 	}
 
+	$__navTemp = [
+		'title' => \XF::phrase('nav.fsPackageReview123'),
+		'href' => $__templater->func('link', array('search/member', null, array('user_id' => $__vars['xf']['visitor']['user_id'], ), ), false),
+		'attributes' => [],
+	];
+	if ($__navTemp) {
+		$__tree['fsPackageReview123'] = $__navTemp;
+		$__flat['fsPackageReview123'] =& $__tree['fsPackageReview123'];
+	}
+
 	if ($__vars['xf']['homePageUrl']) {
 		$__navTemp = [
 		'title' => \XF::phrase('nav.home'),
@@ -600,6 +610,30 @@ return function($__templater, $__selectedNav, array $__vars)
 			$__flat['addRecord'] =& $__tree['createCrud']['children']['addRecord'];
 		}
 
+	}
+
+	if ($__templater->method($__vars['xf']['visitor'], 'canViewDbtechCredits', array())) {
+		$__navTemp = [
+		'title' => \XF::phrase('nav.dbtechCredits'),
+		'href' => $__templater->func('link', array('dbtech-credits', ), false),
+		'attributes' => [],
+	];
+		if ($__navTemp) {
+			$__tree['dbtechCredits'] = $__navTemp;
+			$__flat['dbtechCredits'] =& $__tree['dbtechCredits'];
+			if (empty($__tree['dbtechCredits']['children'])) { $__tree['dbtechCredits']['children'] = []; }
+
+			$__navTemp = [
+		'title' => \XF::phrase('nav.dbtechCreditsTransactions'),
+		'href' => $__templater->func('link', array('dbtech-credits', ), false),
+		'attributes' => [],
+	];
+			if ($__navTemp) {
+				$__tree['dbtechCredits']['children']['dbtechCreditsTransactions'] = $__navTemp;
+				$__flat['dbtechCreditsTransactions'] =& $__tree['dbtechCredits']['children']['dbtechCreditsTransactions'];
+			}
+
+		}
 	}
 
 

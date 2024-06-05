@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="admin" title="fs_generate_link_index" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('fs_generate_link') }}</xf:title>
+
+<xf:pageaction>
+	<xf:button href="{{ link('navigation/add-forums') }}" icon="add">{{ phrase('fs_generate_link_btn') }}</xf:button>
+</xf:pageaction>
+<xf:form action="{{ link($prefix . '/toggle') }}" class="block" ajax="true">
+	<div class="block-outer">
+		<xf:macro
+				  template="filter_macros"
+				  name="quick_filter"
+				  arg-key="gen-link"
+				  arg-class="block-outer-opposite"
+				  />
+	</div>
+
+	<div class="block-container">
+
+		<xf:if is="$data is not empty">
+			<div class="block-body">
+				<xf:datalist data-xf-init="responsive-data-list">
+
+					<xf:macro
+							  name="table_list"
+							  arg-data="{$data}"
+							  />
+
+
+				</xf:datalist>
+				<div class="block-footer">
+					<span class="block-footer-counter"
+						  >{{ display_totals($totalReturn, $total) }}</span
+						>
+				</div>
+
+			</div>
+			<xf:else />
+			<div class="block-body block-row">{{ phrase('no_items_have_been_created_yet') }}</div>
+
+		</xf:if>
+
+	</div>
+
+
+	<xf:pagenav
+				page="{$page}"
+				perpage="{$perPage}"
+				total="{$total}"
+				link="gen-link"
+				wrapperclass="block"
+				/>
+</xf:form>
+<xf:macro
+		  name="table_list"
+		  arg-data="!"
+		  >
+	<xf:datarow rowtype="header">
+		<xf:cell> {{ phrase('fs_generate_link_title') }} </xf:cell>
+		<xf:cell class="dataList-cell--min"></xf:cell>
+	</xf:datarow>
+	<xf:foreach loop="{$data}" value="$value">
+		<xf:datarow>
+			<xf:main href="{{ link('navigation/edit-forums', $value) }}" label="{$value.title}" />
+
+			<xf:delete
+					   href="{{ link('navigation/delete-nav', $value) }}"
+					   overlay="true"
+					   />
+		</xf:datarow>
+	</xf:foreach>
+</xf:macro>]]></template>
+  <template type="admin" title="fs_navigation_add_edit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:if is="$navigation.isInsert()">
+	<xf:title>{{ phrase('add_navigation') }}</xf:title>
+	<xf:else />
+	<xf:title>{{ phrase('edit_navigation:') }} {$navigation.title}</xf:title>
+</xf:if>
+
+<xf:form action="{{ link('navigation/forums-save', $navigation) }}" class="block" ajax="true">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:textboxrow name="navigation_id" value="{$navigation.navigation_id}" readonly="{{ !$navigation.canEdit() }}"
+						   maxlength="{{ max_length($navigation, 'navigation_id') }}"
+						   label="{{ phrase('navigation_id') }}"
+						   dir="ltr" />
+
+			<xf:textboxrow name="title" value="{{ $navigation.exists() ? $navigation.MasterTitle.phrase_text : '' }}"
+						   readonly="{{ !$navigation.canEdit() }}"
+						   label="{{ phrase('title') }}" />
+
+			<xf:textboxrow name="config[basic][link]" value="{$navigation.type_config.link}" code="true"
+						   label="{{ phrase('link') }}" />
+
+			<hr class="formRowSep" />	
+
+			<ul class="inputList">
+				<li>
+
+					<xf:selectrow name="forum_ids[]" multiple="multiple" size="7"
+								  label="{{ phrase('fs_generate_link_select_forums_input') }}"
+								  hint="{{ phrase('required') }}"
+								  required="required"
+								  >
+						<xf:foreach loop="$forums" value="$forum">
+							<xf:option value="{$forum.value}" disabled="{$forum.disabled}" selected="{{ in_array($forum.value, $navigation.forum_ids) }}">{$forum.label}</xf:option>
+						</xf:foreach>
+					</xf:selectrow>
+
+				</li>
+			</ul>
+
+			<hr class="formRowSep" />
+
+			<xf:checkboxrow>
+				<xf:option name="enabled" selected="{$navigation.enabled}">{{ phrase('enabled') }}</xf:option>
+			</xf:checkboxrow>
+
+			<xf:macro template="display_order_macros" name="row"
+					  arg-value="{$navigation.display_order}" />
+
+			<xf:hiddenval name="addon_id" value="FS/GenerateLink"/>
+			<xf:hiddenval name="parent_navigation_id" value=""/>
+			<xf:hiddenval name="navigation_type_id" value="basic"/>
+			<xf:hiddenval name="config[basic][display_condition]" value=""/>
+			<xf:hiddenval name="config[basic][extra_attr_names][]" value=""/>
+			<xf:hiddenval name="config[basic][extra_attr_values][]" value=""/>
+
+		</div>
+
+		<xf:submitrow sticky="true" icon="save" />
+	</div>
+</xf:form>]]></template>
+  <template type="admin" title="fs_navigation_delete" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('confirm_action') }}</xf:title>
+
+<xf:form action="{{ link('navigation/delete-nav', $navigation) }}" class="block" ajax="true">
+
+	<div class="block-container">
+		<div class="block-body">
+			<xf:inforow rowtype="confirm">
+				{{ phrase('please_confirm_that_you_want_to_delete_following:') }}
+				<strong><a href="{{ link('navigation/edit-forums', $navigation) }}">{$navigation.title}</a></strong>
+			</xf:inforow>
+
+			<xf:if is="$hasChildren">
+				<xf:inforow>
+					<p class="block-rowMessage block-rowMessage--warning block-rowMessage--iconic">
+						<strong>{{ phrase('note:') }}</strong>
+						{{ phrase('deleting_parent_also_deletes_children') }}
+					</p>
+				</xf:inforow>
+			</xf:if>
+		</div>
+
+		<xf:submitrow rowtype="simple" icon="delete" />
+	</div>
+
+	<xf:redirect />
+
+</xf:form>]]></template>
+</templates>

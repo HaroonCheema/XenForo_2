@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="admin_navigation.fsGenerateLink" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add]]></phrase>
+  <phrase title="admin_navigation.fs_generate_link" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Generate Link]]></phrase>
+  <phrase title="fs_generate_link" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Generate Link]]></phrase>
+  <phrase title="fs_generate_link_btn" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add New]]></phrase>
+  <phrase title="fs_generate_link_edit_record" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Edit]]></phrase>
+  <phrase title="fs_generate_link_input" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Link]]></phrase>
+  <phrase title="fs_generate_link_link" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Link]]></phrase>
+  <phrase title="fs_generate_link_new_record" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add New Link]]></phrase>
+  <phrase title="fs_generate_link_place" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter link here...!]]></phrase>
+  <phrase title="fs_generate_link_select_forums_input" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Select Forums]]></phrase>
+  <phrase title="fs_generate_link_select_forums_place" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter title here...!]]></phrase>
+  <phrase title="fs_generate_link_title" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Title]]></phrase>
+  <phrase title="fs_generate_link_title_input" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Title]]></phrase>
+  <phrase title="fs_generate_link_title_place" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter title here...!]]></phrase>
+  <phrase title="nav.fsPackageReview123" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Testing Nav Link]]></phrase>
+</phrases>

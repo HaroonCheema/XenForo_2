@@ -1,0 +1,11 @@
+{
+    "route_type": "admin",
+    "route_prefix": "gen-link",
+    "sub_name": "",
+    "format": ":int<id>/:page",
+    "build_class": "",
+    "build_method": "",
+    "controller": "FS\\GenerateLink:GenerateLink",
+    "context": "fsGenerateLink",
+    "action_prefix": ""
+}

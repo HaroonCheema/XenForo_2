@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class_extensions>
+  <extension from_class="XF\Admin\Controller\Navigation" to_class="FS\GenerateLink\XF\Admin\Controller\Navigation" execute_order="10" active="1"/>
+  <extension from_class="XF\Entity\Navigation" to_class="FS\GenerateLink\XF\Entity\Navigation" execute_order="10" active="1"/>
+  <extension from_class="XF\Pub\Controller\Search" to_class="FS\GenerateLink\XF\Pub\Controller\Search" execute_order="10" active="1"/>
+</class_extensions>
