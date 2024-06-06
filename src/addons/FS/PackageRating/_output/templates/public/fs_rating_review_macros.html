@@ -157,9 +157,6 @@
 						<div class="comment-contentWrapper">
 							<xf:username user="$review.User" rich="true" defaultname="{$review.User.username}" class="comment-user" />
 							<div class="comment-body">{{ structured_text($review.author_response) }}</div>
-							<xf:if is="$resource.canViewTeamMembers() AND $review.author_response_team_user_id AND $review.author_response_team_user_id != $resource.user_id">
-								<div class="comment-note">({{ phrase('xfrm_response_by:') }} <xf:username user="$review.AuthorResponseTeamUser" defaultname="{$review.author_response_team_username}" />)</div>
-							</xf:if>
 						</div>
 					</div>
 

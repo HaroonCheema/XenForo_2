@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 290c01f2a07f583770039f2ab5936615
+// FROM HASH: 3917d2d5b912801d53d55e323a3cbc0c
 return array(
 'macros' => array('review' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -262,15 +262,6 @@ return array(
 		'class' => 'comment-user',
 	))) . '
 							<div class="comment-body">' . $__templater->func('structured_text', array($__vars['review']['author_response'], ), true) . '</div>
-							';
-	if ($__templater->method($__vars['resource'], 'canViewTeamMembers', array()) AND ($__vars['review']['author_response_team_user_id'] AND ($__vars['review']['author_response_team_user_id'] != $__vars['resource']['user_id']))) {
-		$__finalCompiled .= '
-								<div class="comment-note">(' . 'Response by' . $__vars['xf']['language']['label_separator'] . ' ' . $__templater->func('username_link', array($__vars['review']['AuthorResponseTeamUser'], false, array(
-			'defaultname' => $__vars['review']['author_response_team_username'],
-		))) . ')</div>
-							';
-	}
-	$__finalCompiled .= '
 						</div>
 					</div>
 

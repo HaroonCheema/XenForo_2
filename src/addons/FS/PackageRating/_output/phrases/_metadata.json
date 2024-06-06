@@ -1,4 +1,10 @@
 {
+    "fs_delete_review__response.txt": {
+        "global_cache": false,
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "6b0f92a342b2485b6a68bec66f53b43b"
+    },
     "fs_package_rating.txt": {
         "global_cache": false,
         "version_id": 1000100,
@@ -46,6 +52,12 @@
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
         "hash": "1f4e4b02c30203679acade375f22cc27"
+    },
+    "fs_you_sure_you_want_to_delete_this_review_response.txt": {
+        "global_cache": false,
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "0799b3acd7845cc14e02ed0468c6c2e3"
     },
     "option.fs_pkg_rat_applicable_userGroups.txt": {
         "global_cache": false,

@@ -7,7 +7,7 @@
     "public/fs_rating_review_macros.html": {
         "version_id": 1000100,
         "version_string": "1.0.1 Alpha",
-        "hash": "290c01f2a07f583770039f2ab5936615"
+        "hash": "3917d2d5b912801d53d55e323a3cbc0c"
     },
     "public/fs_rating_reviews_all.html": {
         "version_id": 1000010,
@@ -23,5 +23,10 @@
         "version_id": 1000100,
         "version_string": "1.0.1 Alpha",
         "hash": "57b091720c3d20f1dce0543b11d82855"
+    },
+    "public/fs_review_reply_delete.html": {
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "30bb3ec0c493129e112ab22c3b846d53"
     }
 }

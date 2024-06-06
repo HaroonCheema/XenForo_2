@@ -1,0 +1,13 @@
+<xf:title>{{ phrase('fs_delete_review__response') }}</xf:title>
+
+<xf:form action="{{ link('package-rating/reply-delete', $review) }}" class="block" ajax="true">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:inforow rowtype="confirm">
+				{{ phrase('fs_you_sure_you_want_to_delete_this_review_response') }}
+			</xf:inforow>
+		</div>
+		<xf:submitrow icon="delete" rowtype="simple" />
+	</div>
+	<xf:redirect />
+</xf:form>

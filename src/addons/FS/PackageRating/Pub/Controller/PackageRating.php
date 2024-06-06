@@ -44,10 +44,6 @@ class PackageRating extends AbstractController
             $replyExists->fastUpdate('author_response', $message);
         }
 
-        // echo "<pre>";
-        // var_dump($message);
-        // exit;
-
         return $this->redirect($this->buildLink('package-rating'));
     }
 
@@ -150,21 +146,24 @@ class PackageRating extends AbstractController
 
     public function actionReplyDelete(ParameterBag $params)
     {
-        $replyExists = $this->assertDataExists($params->rating_id);
+        $review = $this->assertDataExists($params->rating_id);
 
-        if (!\XF::visitor()->is_admin) {
+        if (!(\XF::visitor()->is_admin || $review)) {
             return $this->noPermission();
         }
 
-        /** @var \XF\ControllerPlugin\Delete $plugin */
-        $plugin = $this->plugin('XF:Delete');
-        return $plugin->actionDelete(
-            $replyExists,
-            $this->buildLink('package-rating/delete', $replyExists),
-            null,
-            $this->buildLink('package-rating'),
-            "{$replyExists->Upgrade->title}"
-        );
+        if ($this->isPost()) {
+            $review->fastUpdate('author_response', '');
+
+            return $this->redirect(
+                $this->getDynamicRedirect($this->buildLink('package-rating', $review), false)
+            );
+        } else {
+            $viewParams = [
+                'review' => $review,
+            ];
+            return $this->view('FS\PackageRating:PackageRating\ReplyDelete', 'fs_review_reply_delete', $viewParams);
+        }
     }
 
     /**
