@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="public" title="fs_user_upgrade_active_convert" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('fs_subscription_move_title') }}</xf:title>
+
+<xf:form action="{{ link('purchase', $upgrade, {'user_upgrade_id': $upgrade.user_upgrade_id}) }}" class="block" ajax="true">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:inforow rowtype="confirm">
+				{{ phrase('fs_you_sure_you_want_to_convert_upgrade_from_to', {'fromUpgradeTitle': $activeUpgrade.Upgrade.title,'toUpgradeTitle': $upgrade.title}) }}
+			</xf:inforow>
+		</div>
+		<xf:submitrow icon="save" rowtype="simple" />
+		<xf:hiddenval name="convert" value="true" />
+	</div>
+	<xf:redirect />
+</xf:form>]]></template>
+  <template type="public" title="fs_user_upgrade_active_downgrade" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('confirm_action') }}</xf:title>
+
+<xf:form action="{{ link('account/downgrade', null, {'user_upgrade_record_id': $activeUpgrade.user_upgrade_record_id}) }}"
+	ajax="true" data-force-flash-message="on" class="block">
+
+	<div class="block-container">
+		<div class="block-body">
+			<xf:inforow rowtype="confirm">
+				{{ phrase('please_confirm_that_you_want_to_downgrade_following_user:') }}
+				<strong>
+					{$activeUpgrade.User.username}
+					<span role="presentation" aria-hidden="true">&middot;</span>
+					{$activeUpgrade.Upgrade.title}
+				</strong>
+			</xf:inforow>
+		</div>
+		<xf:submitrow submit="{{ phrase('downgrade') }}" rowtype="simple" />
+	</div>
+</xf:form>]]></template>
+</templates>

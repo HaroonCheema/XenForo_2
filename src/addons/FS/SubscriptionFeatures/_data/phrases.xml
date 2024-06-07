@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="fs_cancel_subscription" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Cancel Subscription]]></phrase>
+  <phrase title="fs_repurchase_not_permission" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[At a time one subscription can be bought...!]]></phrase>
+  <phrase title="fs_subscription_move_title" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Convert Upgrade]]></phrase>
+  <phrase title="fs_you_sure_you_want_to_convert_upgrade_from_to" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Are you sure to convert upgrade from <b>{fromUpgradeTitle}</b> to <b>{toUpgradeTitle}</b>?]]></phrase>
+  <phrase title="option.fs_subscrip_applicable_userGroups" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Applicable Upgrade Ids]]></phrase>
+  <phrase title="option_explain.fs_subscrip_applicable_userGroups" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter the Applicable User Upgrade Ids Comma separated like 1,2,3,4.]]></phrase>
+  <phrase title="option_group.fs_subscription_features" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Mountain Subscription Features]]></phrase>
+  <phrase title="option_group_description.fs_subscription_features" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+</phrases>

@@ -37,6 +37,16 @@ class Purchase extends XFCP_Purchase
 
         $userId = $user['user_id'];
 
+        $request = $this->app->request();
+
+        $userUpgraseIdGet = $request->get('user_upgrade_id');
+
+        // $alreadyExist = $this->finder('XF:UserUpgradeActive')->where('user_id', $userId)->where('user_upgrade_id', $userUpgraseIdGet)->fetchOne();
+
+        // if ($alreadyExist) {
+        //     return parent::actionIndex($params);
+        // }
+
         if (!$userId) {
             return $this->error(\XF::phrase('requested_user_not_found'));
         }
@@ -48,10 +58,6 @@ class Purchase extends XFCP_Purchase
         }
 
         $activeUpgradeMember = $this->finder('XF:UserUpgradeActive')->where('user_id', $userId)->where('user_upgrade_id', $ids)->fetchOne();
-
-        $request = $this->app->request();
-
-        $userUpgraseIdGet = $request->get('user_upgrade_id');
 
         $upgrade = $this->assertUpgradeExists($userUpgraseIdGet);
 
@@ -86,6 +92,30 @@ class Purchase extends XFCP_Purchase
                 }
 
                 return $this->redirect($this->buildLink('account/upgrades'));
+            } else {
+
+                $purchasable = $this->assertPurchasableExists($params->purchasable_type_id);
+
+                if (!$purchasable->isActive()) {
+                    throw $this->exception($this->error(\XF::phrase('items_of_this_type_cannot_be_purchased_at_moment')));
+                }
+
+                /** @var \XF\Purchasable\AbstractPurchasable $purchasableHandler */
+                $purchasableHandler = $purchasable->handler;
+
+                $purchase = $purchasableHandler->getPurchaseFromRequest($this->request, \XF::visitor(), $error);
+                if (!$purchase) {
+                    throw $this->exception($this->error($error));
+                }
+
+                $diffAmmount = $currentCostAmount - $prevCostAmount;
+
+                $purchase['cost'] = $diffAmmount;
+
+                $purchaseRequest = $this->repository('XF:Purchase')->insertPurchaseRequest($purchase);
+
+                $providerHandler = $purchase->paymentProfile->getPaymentHandler();
+                return $providerHandler->initiatePayment($this, $purchaseRequest, $purchase);
             }
         }
 
