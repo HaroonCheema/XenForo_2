@@ -1,0 +1,12 @@
+{
+    "public/fs_user_upgrade_active_convert.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "b6c420fe667136d02d78a8e112f1b477"
+    },
+    "public/fs_user_upgrade_active_downgrade.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "bee2bdccb72a5e2b59539a413a39db8e"
+    }
+}

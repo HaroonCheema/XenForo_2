@@ -36,6 +36,7 @@ return array (
   'option_group.fs_post_schdueling' => '[FS] Post schedule',
   'option_group.fs_question_answers' => '[FS] Question-Answers',
   'option_group.fs_rejected_user' => '[FS] Approve Rejected User',
+  'option_group.fs_subscription_features' => '[FS] Mountain Subscription Features',
   'option_group.fs_thread_rules' => '[FS] Threads Rules',
   'option_group.fs_thread_thumbnail' => '[FS] Thread Thumbnail',
   'option_group.fs_translator' => '[FS] Translator',

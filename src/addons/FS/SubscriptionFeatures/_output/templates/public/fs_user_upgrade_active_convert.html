@@ -1,0 +1,14 @@
+<xf:title>{{ phrase('fs_subscription_move_title') }}</xf:title>
+
+<xf:form action="{{ link('purchase', $upgrade, {'user_upgrade_id': $upgrade.user_upgrade_id}) }}" class="block" ajax="true">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:inforow rowtype="confirm">
+				{{ phrase('fs_you_sure_you_want_to_convert_upgrade_from_to', {'fromUpgradeTitle': $activeUpgrade.Upgrade.title,'toUpgradeTitle': $upgrade.title}) }}
+			</xf:inforow>
+		</div>
+		<xf:submitrow icon="save" rowtype="simple" />
+		<xf:hiddenval name="convert" value="true" />
+	</div>
+	<xf:redirect />
+</xf:form>

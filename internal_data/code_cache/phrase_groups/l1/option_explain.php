@@ -350,6 +350,7 @@ This option requires that the specified account is a catch-all account or suppor
   'option_explain.fs_saleforums_allow' => 'Select Forums To apply Sale Item',
   'option_explain.fs_scheduled_ban_user_timezone' => 'According to this Time Zone User will be banned.',
   'option_explain.fs_show_icon' => '',
+  'option_explain.fs_subscrip_applicable_userGroups' => 'Enter the Applicable User Upgrade Ids Comma separated like 1,2,3,4.',
   'option_explain.fs_thread_rules' => '',
   'option_explain.fs_thumbnail_applicable_forums' => 'List the forum ids that are allowed to be display thumbnail to all. Use , (comma) between ids.
 Example: 1,2,3,4,..',

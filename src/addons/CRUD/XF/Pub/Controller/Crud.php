@@ -772,6 +772,16 @@ class Crud extends AbstractController
 
     public function actionIndex(ParameterBag $params)
     {
+        $upgradeRepo = $this->repository('XF:UserUpgrade');
+        list($available, $purchased) = $upgradeRepo->getFilteredUserUpgradesForList();
+
+        if (!$available && !$purchased) {
+            return $this->message(\XF::phrase('no_account_upgrades_can_be_purchased_at_this_time'));
+        }
+
+        if (\XF::visitor()->user_state != 'valid') {
+            return $this->error(\XF::phrase('account_upgrades_cannot_be_purchased_account_unconfirmed'));
+        }
 
         $finder = $this->finder('CRUD\XF:Crud');
 
@@ -788,6 +798,9 @@ class Crud extends AbstractController
             $finder->order('id', 'DESC');
         }
 
+        // echo "<pre>";
+        // var_dump($purchased);
+        // exit;
 
         $page = $params->page;
         $perPage = 1;
@@ -800,6 +813,9 @@ class Crud extends AbstractController
             'page' => $page,
             'perPage' => $perPage,
             'total' => $finder->total(),
+
+            'purchased' => $purchased,
+            'available' => $available,
 
             // ager filter me koch search kia hai to wo is k zareiye hm input tag me show kerwa sakte hain
             'conditions' => $this->filterSearchConditions(),

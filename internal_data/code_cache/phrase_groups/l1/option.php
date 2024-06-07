@@ -296,6 +296,7 @@ return array (
   'option.fs_saleforums_allow' => 'Included Forums',
   'option.fs_scheduled_ban_user_timezone' => 'Timezones',
   'option.fs_show_icon' => 'Show Icon',
+  'option.fs_subscrip_applicable_userGroups' => 'Applicable Upgrade Ids',
   'option.fs_thread_rules' => 'Thread Rules',
   'option.fs_thumbnail_applicable_forums' => 'Applicable Forums',
   'option.fs_unhide_user_ids' => 'User ids',

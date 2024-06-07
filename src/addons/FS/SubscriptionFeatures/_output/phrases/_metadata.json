@@ -1,0 +1,50 @@
+{
+    "fs_cancel_subscription.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "a41be9fecd7f14494f6fefe384ee2e32"
+    },
+    "fs_repurchase_not_permission.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "dfb1f8efe0e26ac135265e7f6318b27a"
+    },
+    "fs_subscription_move_title.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "19300fabc5e9a0c8d0ca9a82644fb25d"
+    },
+    "fs_you_sure_you_want_to_convert_upgrade_from_to.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "8b3396741ece099106960aa64ef22a56"
+    },
+    "option.fs_subscrip_applicable_userGroups.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "0696774ea2181c471c838308d7c9eff3"
+    },
+    "option_explain.fs_subscrip_applicable_userGroups.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "b1d11a89a3effdf6de1f6ae05be05792"
+    },
+    "option_group.fs_subscription_features.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "4d45c4ed10fc3662586a1eda50c44c63"
+    },
+    "option_group_description.fs_subscription_features.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    }
+}
