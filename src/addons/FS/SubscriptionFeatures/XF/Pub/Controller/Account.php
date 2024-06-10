@@ -7,25 +7,25 @@ use XF\Mvc\ParameterBag;
 class Account extends XFCP_Account
 {
 
-    public function actionUpgrades()
-    {
-        $parent = parent::actionUpgrades();
+    // public function actionUpgrades()
+    // {
+    //     $parent = parent::actionUpgrades();
 
-        if ($parent instanceof \XF\Mvc\Reply\View) {
-            list($available, $purchased) = $this->getFilteredUserUpgradesForList();
+    //     if ($parent instanceof \XF\Mvc\Reply\View) {
+    //         list($available, $purchased) = $this->getFilteredUserUpgradesForList();
 
-            if (!$available && !$purchased) {
-                return $this->message(\XF::phrase('no_account_upgrades_can_be_purchased_at_this_time'));
-            }
+    //         if (!$available && !$purchased) {
+    //             return $this->message(\XF::phrase('no_account_upgrades_can_be_purchased_at_this_time'));
+    //         }
 
-            $parent->setParams([
-                'purchased' => $purchased,
-                'available' => $available,
-            ]);
-        }
+    //         $parent->setParams([
+    //             'purchased' => $purchased,
+    //             'available' => $available,
+    //         ]);
+    //     }
 
-        return $parent;
-    }
+    //     return $parent;
+    // }
 
     public function actionDowngrade()
     {

@@ -23,21 +23,16 @@ class Stripe extends AbstractProvider
 
 	public function verifyConfig(array &$options, &$errors = [])
 	{
-		if (\XF::config('enableLivePayments'))
-		{
+		if (\XF::config('enableLivePayments')) {
 			$keyName = 'live_secret_key';
-		}
-		else
-		{
+		} else {
 			$keyName = 'test_secret_key';
 		}
 
 		$secretKey = $options[$keyName];
 
-		if ($secretKey)
-		{
-			try
-			{
+		if ($secretKey) {
+			try {
 				\Stripe\Stripe::setAppInfo(
 					'XenForo',
 					\XF::$version,
@@ -47,9 +42,7 @@ class Stripe extends AbstractProvider
 				\Stripe\Stripe::setApiVersion($this->stripeVersion);
 
 				$stripeAccount = \Stripe\Account::retrieve();
-			}
-			catch (\Exception $e)
-			{
+			} catch (\Exception $e) {
 				$errors[] = \XF::phrase('cannot_verify_that_your_key_x_is_valid', ['keyName' => $keyName]);
 				return false;
 			}
@@ -62,12 +55,9 @@ class Stripe extends AbstractProvider
 
 	protected function getStripeKey(PaymentProfile $paymentProfile, $type = 'secret')
 	{
-		if (\XF::config('enableLivePayments'))
-		{
+		if (\XF::config('enableLivePayments')) {
 			$key = $paymentProfile->options['live_' . $type . '_key'];
-		}
-		else
-		{
+		} else {
 			$key = $paymentProfile->options['test_' . $type . '_key'];
 		}
 
@@ -99,17 +89,14 @@ class Stripe extends AbstractProvider
 
 		$email = null;
 
-		if ($purchaseRequest->User)
-		{
+		if ($purchaseRequest->User) {
 			$email = $purchaseRequest->User->email;
-			if (!$email || !$validator->isValid($email))
-			{
+			if (!$email || !$validator->isValid($email)) {
 				$email = null;
 			}
 		}
 
-		if (!$email)
-		{
+		if (!$email) {
 			$email = 'invalid@example.com';
 		}
 
@@ -139,7 +126,8 @@ class Stripe extends AbstractProvider
 		$cleanBoardTitle = str_replace(["'", '"', '*', '<', '>'], '', \XF::app()->options()->boardTitle);
 
 		return \XF::app()->stringFormatter()->wholeWordTrim(
-			$cleanBoardTitle, 22
+			$cleanBoardTitle,
+			22
 		);
 	}
 
@@ -171,37 +159,30 @@ class Stripe extends AbstractProvider
 			'purchaseRequestId' => $purchaseRequest->purchase_request_id
 		];
 
-		if ($purchase->recurring)
-		{
+		if ($purchase->recurring) {
 			$product = $this->createStripeProduct($purchase->paymentProfile, $purchase, $error);
-			if (!$product)
-			{
+			if (!$product) {
 				$errorPhrase = \XF::phrase('error_occurred_while_creating_stripe_product:');
 				throw $controller->exception($controller->error("$errorPhrase $error"));
 			}
 
 			$plan = $this->createStripePlan($product, $purchase->paymentProfile, $purchase, $error);
-			if (!$plan)
-			{
+			if (!$plan) {
 				$errorPhrase = \XF::phrase('error_occurred_while_creating_stripe_plan:');
 				throw $controller->exception($controller->error("$errorPhrase $error"));
 			}
 
 			$customer = $this->getStripeCustomer($purchaseRequest, $purchase->paymentProfile, $purchase, $error);
-			if (!$customer)
-			{
+			if (!$customer) {
 				$errorPhrase = \XF::phrase('error_occurred_while_creating_stripe_customer:');
 				throw $controller->exception($controller->error("$errorPhrase $error"));
 			}
 
 			$sessionPaymentInfo['customerId'] = $customer->id;
 			$sessionPaymentInfo['planId'] = $plan->id;
-		}
-		else
-		{
+		} else {
 			$paymentIntent = $this->createPaymentIntent($purchaseRequest, $purchase, $error);
-			if (!$paymentIntent)
-			{
+			if (!$paymentIntent) {
 				throw $controller->exception($controller->error($error));
 			}
 
@@ -217,18 +198,46 @@ class Stripe extends AbstractProvider
 		return $controller->view('XF:Purchase\StripeInitiate', 'payment_initiate_stripe', $viewParams);
 	}
 
+	// public function UpdatePaymentSubscription(PaymentProfile $paymentProfile, $subscriptionId, $newAmount)
+	// {
+	// 	$this->setupStripe($paymentProfile);
+
+	// 	/** @var \Stripe\Subscription $subscription */
+	// 	$subscription = \Stripe\Subscription::retrieve(
+	// 		$subscriptionId
+	// 	);
+
+	// 	$new_price = \Stripe\Price::create([
+	// 		'unit_amount' => $newAmount, // Amount in cents
+	// 		'currency' => $subscription->items->data[0]->price->currency,
+	// 		'recurring' => ['interval' => $subscription->items->data[0]->price->recurring->interval],
+	// 		'product' => $subscription->items->data[0]->price->product, // Replace with your product ID
+	// 	]);
+
+	// 	$subscriptionItemId = $subscription->items->data[0]->id;
+
+	// 	$updatedSubscription = \Stripe\Subscription::update($subscriptionId, [
+	// 		'items' => [
+	// 			[
+	// 				'id' => $subscriptionItemId,
+	// 				'price' => $new_price->id,
+	// 			],
+	// 		],
+	// 	]);
+
+	// 	return $updatedSubscription;
+	// }
+
 	public function processPayment(Controller $controller, PurchaseRequest $purchaseRequest, PaymentProfile $paymentProfile, Purchase $purchase)
 	{
-		if (!$purchase->recurring)
-		{
+		if (!$purchase->recurring) {
 			// payment already made via JS for non-recurring
 			return null;
 		}
 
 		// we need to make sure that the previously stored details relate to this request
 		$sessionPaymentInfo = $controller->session()->stripePaymentInfo;
-		if (!$sessionPaymentInfo || $sessionPaymentInfo['purchaseRequestId'] !== $purchaseRequest->purchase_request_id)
-		{
+		if (!$sessionPaymentInfo || $sessionPaymentInfo['purchaseRequestId'] !== $purchaseRequest->purchase_request_id) {
 			throw $controller->exception(
 				$controller->error(\XF::phrase('unexpected_error_occurred'))
 			);
@@ -236,8 +245,7 @@ class Stripe extends AbstractProvider
 
 		// the stripe JS sets this up
 		$paymentMethodId = $controller->filter('payment_method_id', 'str');
-		if (!$paymentMethodId)
-		{
+		if (!$paymentMethodId) {
 			throw $controller->exception(
 				$controller->error(\XF::phrase('unexpected_error_occurred'))
 			);
@@ -246,46 +254,36 @@ class Stripe extends AbstractProvider
 		$this->setupStripe($paymentProfile);
 
 		// attach the payment method to this customer
-		try
-		{
+		try {
 			$paymentMethod = \Stripe\PaymentMethod::retrieve($paymentMethodId);
 			$paymentMethod->attach(['customer' => $sessionPaymentInfo['customerId']]);
-		}
-		catch (\Stripe\Exception\ExceptionInterface $e)
-		{
+		} catch (\Stripe\Exception\ExceptionInterface $e) {
 			$error = $e->getMessage();
 			$errorPhrase = \XF::phrase('error_occurred_while_creating_stripe_subscription:');
 			throw $controller->exception($controller->error("$errorPhrase $error"));
 		}
 
-		if (!empty($sessionPaymentInfo['subscriptionId']))
-		{
+		if (!empty($sessionPaymentInfo['subscriptionId'])) {
 			// we've already created the subscription, so this represents the case where we are going
 			// through 3D secure or if the payment method fails
 			$subscriptionId = $sessionPaymentInfo['subscriptionId'];
 
-			try
-			{
+			try {
 				/** @var \Stripe\Subscription $subscription */
 				$subscription = \Stripe\Subscription::retrieve([
 					'id' => $subscriptionId,
 					'expand' => ['latest_invoice.payment_intent']
 				]);
-			}
-			catch (\Stripe\Exception\ExceptionInterface $e)
-			{
+			} catch (\Stripe\Exception\ExceptionInterface $e) {
 				$error = $e->getMessage();
 				$errorPhrase = \XF::phrase('error_occurred_while_creating_stripe_subscription:');
 				throw $controller->exception($controller->error("$errorPhrase $error"));
 			}
-		}
-		else
-		{
+		} else {
 			// This is the first attempt to create/charge the subscription. Stripe will auto-charge
 			// the subscription and we'll handle this via a webhook.
 
-			try
-			{
+			try {
 				/** @var \Stripe\Subscription $subscription */
 				$subscription = \Stripe\Subscription::create([
 					'customer' => $sessionPaymentInfo['customerId'],
@@ -296,9 +294,7 @@ class Stripe extends AbstractProvider
 					'metadata' => $this->getTransactionMetadata($purchase),
 					'expand' => ['latest_invoice.payment_intent']
 				]);
-			}
-			catch (\Stripe\Exception\ExceptionInterface $e)
-			{
+			} catch (\Stripe\Exception\ExceptionInterface $e) {
 				$error = $e->getMessage();
 				$errorPhrase = \XF::phrase('error_occurred_while_creating_stripe_subscription:');
 				throw $controller->exception($controller->error("$errorPhrase $error"));
@@ -314,8 +310,7 @@ class Stripe extends AbstractProvider
 		$paymentStatus = $latestInvoice->payment_intent->status;
 		$piSecret = $latestInvoice->payment_intent->client_secret;
 
-		if ($paymentStatus !== 'succeeded')
-		{
+		if ($paymentStatus !== 'succeeded') {
 			// payment hasn't succeeded to log extra details into the session and trigger an error for the user
 			$sessionPaymentInfo['subscriptionId'] = $subscriptionId;
 			$sessionPaymentInfo['latestInvoiceId'] = $latestInvoiceId;
@@ -349,15 +344,13 @@ class Stripe extends AbstractProvider
 		$metadata = $this->getCustomerMetadata($purchaseRequest);
 
 		$cacheId = "$paymentProfile->payment_profile_id-$metadata[email]";
-		if (isset($this->customerCache[$cacheId]))
-		{
+		if (isset($this->customerCache[$cacheId])) {
 			return $this->customerCache[$cacheId];
 		}
 
 		$customer = null;
 
-		try
-		{
+		try {
 			$customers = \Stripe\Customer::all([
 				'limit' => 1,
 				'email' => $metadata['email']
@@ -365,22 +358,18 @@ class Stripe extends AbstractProvider
 
 			/** @var \Stripe\Customer $customer */
 			$customer = reset($customers->data);
+		} catch (\Stripe\Exception\ExceptionInterface $e) {
 		}
-		catch (\Stripe\Exception\ExceptionInterface $e) {}
 
-		if (!$customer)
-		{
-			try
-			{
+		if (!$customer) {
+			try {
 				/** @var \Stripe\Customer $customer */
 				$customer = \Stripe\Customer::create([
 					'description' => $metadata['username'],
 					'email' => $metadata['email'],
 					'metadata' => $this->getCustomerMetadata($purchaseRequest)
 				]);
-			}
-			catch (\Stripe\Exception\ExceptionInterface $e)
-			{
+			} catch (\Stripe\Exception\ExceptionInterface $e) {
 				// failed to create
 				$error = $e->getMessage();
 				return false;
@@ -408,17 +397,16 @@ class Stripe extends AbstractProvider
 			$purchase,
 			$error
 		);
-		if (!$customer)
-		{
+		if (!$customer) {
 			return false;
 		}
 
-		try
-		{
+		try {
 			// note: this object must be updated if the amount changes
 			$paymentIntent = \Stripe\PaymentIntent::create([
 				'amount' => $this->getStripeFormattedCost(
-					$purchaseRequest, $purchase
+					$purchaseRequest,
+					$purchase
 				),
 				'currency' => $purchase->currency,
 				'customer' => $customer->id,
@@ -430,9 +418,7 @@ class Stripe extends AbstractProvider
 				'metadata' => $this->getChargeMetadata($purchaseRequest),
 				'setup_future_usage' => $purchase->recurring ? 'off_session' : null
 			]);
-		}
-		catch (\Stripe\Exception\ExceptionInterface $e)
-		{
+		} catch (\Stripe\Exception\ExceptionInterface $e) {
 			// failed to create
 			$error = $e->getMessage();
 			return false;
@@ -446,16 +432,12 @@ class Stripe extends AbstractProvider
 		$this->setupStripe($paymentProfile);
 		$productId = $this->getStripeProductAndPlanId($purchase);
 
-		try
-		{
+		try {
 			/** @var \Stripe\Product $product */
 			$product = \Stripe\Product::retrieve($productId);
-		}
-		catch (\Stripe\Exception\ExceptionInterface $e)
-		{
+		} catch (\Stripe\Exception\ExceptionInterface $e) {
 			// likely means no existing product, so lets create it
-			try
-			{
+			try {
 				/** @var \Stripe\Product $product */
 				$product = \Stripe\Product::create([
 					'id' => $productId,
@@ -464,9 +446,7 @@ class Stripe extends AbstractProvider
 					'metadata' => $this->getTransactionMetadata($purchase),
 					'statement_descriptor' => $this->getStatementDescriptor()
 				]);
-			}
-			catch (\Stripe\Exception\ExceptionInterface $e)
-			{
+			} catch (\Stripe\Exception\ExceptionInterface $e) {
 				// failed to retrieve, failed to create
 				$error = $e->getMessage();
 				return false;
@@ -482,17 +462,12 @@ class Stripe extends AbstractProvider
 		$planId = $this->getStripeProductAndPlanId($purchase);
 		$expectedAmount = $this->prepareCost($purchase->cost, $purchase->currency);
 
-		$findOrCreatePlan = function($planId, $expectedAmount, &$error) use ($purchase, $product)
-		{
-			try
-			{
+		$findOrCreatePlan = function ($planId, $expectedAmount, &$error) use ($purchase, $product) {
+			try {
 				$plan = \Stripe\Plan::retrieve($planId);
-			}
-			catch (\Stripe\Exception\ExceptionInterface $e)
-			{
+			} catch (\Stripe\Exception\ExceptionInterface $e) {
 				// likely means no existing plan, so lets create it
-				try
-				{
+				try {
 					$plan = \Stripe\Plan::create([
 						'id' => $planId,
 						'currency' => $purchase->currency,
@@ -503,9 +478,7 @@ class Stripe extends AbstractProvider
 						'product' => $product->id,
 						'metadata' => $this->getTransactionMetadata($purchase)
 					]);
-				}
-				catch (\Stripe\Exception\ExceptionInterface $e)
-				{
+				} catch (\Stripe\Exception\ExceptionInterface $e) {
 					// failed to retrieve, failed to create
 					$error = $e->getMessage();
 					return false;
@@ -517,20 +490,17 @@ class Stripe extends AbstractProvider
 		};
 
 		$plan = $findOrCreatePlan($planId, $expectedAmount, $error);
-		if (!$plan)
-		{
+		if (!$plan) {
 			// got an error when creating the plan so don't try anything
 			return false;
 		}
 
-		if ($plan->amount !== $expectedAmount)
-		{
+		if ($plan->amount !== $expectedAmount) {
 			// base plan is likely triggering the off-by-one cost bug so we need to make a new one
 			$planId .= '_' . $expectedAmount;
 
 			$plan = $findOrCreatePlan($planId, $expectedAmount, $error);
-			if (!$plan)
-			{
+			if (!$plan) {
 				return false;
 			}
 		}
@@ -545,8 +515,7 @@ class Stripe extends AbstractProvider
 
 	public function processCancellation(Controller $controller, PurchaseRequest $purchaseRequest, PaymentProfile $paymentProfile)
 	{
-		if (!$purchaseRequest->provider_metadata || strpos($purchaseRequest->provider_metadata, 'sub_') !== 0)
-		{
+		if (!$purchaseRequest->provider_metadata || strpos($purchaseRequest->provider_metadata, 'sub_') !== 0) {
 			$logFinder = \XF::finder('XF:PaymentProviderLog')
 				->where('purchase_request_key', $purchaseRequest->request_key)
 				->where('provider_id', $this->providerId)
@@ -555,42 +524,33 @@ class Stripe extends AbstractProvider
 			$logs = $logFinder->fetch();
 
 			$subscriberId = null;
-			foreach ($logs AS $log)
-			{
-				if ($log->subscriber_id && strpos($log->subscriber_id, 'sub_') === 0)
-				{
+			foreach ($logs as $log) {
+				if ($log->subscriber_id && strpos($log->subscriber_id, 'sub_') === 0) {
 					$subscriberId = $log->subscriber_id;
 					break;
 				}
 			}
 
-			if (!$subscriberId)
-			{
+			if (!$subscriberId) {
 				return $controller->error(\XF::phrase('could_not_find_subscriber_id_for_this_purchase_request'));
 			}
-		}
-		else
-		{
+		} else {
 			$subscriberId = $purchaseRequest->provider_metadata;
 		}
 
 		$this->setupStripe($paymentProfile);
 
-		try
-		{
+		try {
 			/** @var \Stripe\Subscription $subscription */
 			$subscription = \Stripe\Subscription::retrieve($subscriberId);
 			$cancelledSubscription = $subscription->cancel();
 
-			if ($cancelledSubscription->status != 'canceled')
-			{
+			if ($cancelledSubscription->status != 'canceled') {
 				throw $controller->exception($controller->error(
 					\XF::phrase('this_subscription_cannot_be_cancelled_maybe_already_cancelled')
 				));
 			}
-		}
-		catch (\Stripe\Exception\ExceptionInterface $e)
-		{
+		} catch (\Stripe\Exception\ExceptionInterface $e) {
 			throw $controller->exception($controller->error(
 				\XF::phrase('this_subscription_cannot_be_cancelled_maybe_already_cancelled')
 			));
@@ -623,25 +583,20 @@ class Stripe extends AbstractProvider
 		$state->eventType = $filtered['type'];
 		$state->event = $event['object'] ?? [];
 
-		if (isset($state->event['metadata']['request_key']))
-		{
+		if (isset($state->event['metadata']['request_key'])) {
 			$state->requestKey = $state->event['metadata']['request_key'];
-		}
-		else if (isset($state->event['subscription'])
+		} else if (
+			isset($state->event['subscription'])
 			&& is_string($state->event['subscription'])
 			&& strpos($state->event['subscription'], 'sub_') === 0
-		)
-		{
+		) {
 			$subscriberId = $state->event['subscription'];
 
 			$purchaseRequest = \XF::em()->findOne('XF:PurchaseRequest', ['provider_metadata' => $subscriberId]);
 
-			if ($purchaseRequest)
-			{
+			if ($purchaseRequest) {
 				$state->purchaseRequest = $purchaseRequest; // sets requestKey too
-			}
-			else
-			{
+			} else {
 				// generally for legacy recurring payments where the metadata doesn't contain the subscriber ID
 
 				$logFinder = \XF::finder('XF:PaymentProviderLog')
@@ -652,10 +607,8 @@ class Stripe extends AbstractProvider
 				$logs = $logFinder->fetch();
 
 				$subscriberId = null;
-				foreach ($logs AS $log)
-				{
-					if ($log->purchase_request_key)
-					{
+				foreach ($logs as $log) {
+					if ($log->purchase_request_key) {
 						$state->requestKey = $log->purchase_request_key; // sets purchaseRequest too
 						break;
 					}
@@ -663,28 +616,19 @@ class Stripe extends AbstractProvider
 			}
 
 			$state->subscriberId = $subscriberId;
-		}
-		else if (isset($state->event['object']) && ($state->event['object'] == 'review' || $state->event['object'] == 'dispute'))
-		{
+		} else if (isset($state->event['object']) && ($state->event['object'] == 'review' || $state->event['object'] == 'dispute')) {
 			// reviews/disputes don't have a metadata object, but set the payment intent or charge id
-			if (!empty($state->event['payment_intent']))
-			{
+			if (!empty($state->event['payment_intent'])) {
 				$providerMetadata = $state->event['payment_intent'];
-			}
-			else if (!empty($state->event['charge']))
-			{
+			} else if (!empty($state->event['charge'])) {
 				$providerMetadata = $state->event['charge'];
-			}
-			else
-			{
+			} else {
 				return $state;
 			}
 
 			$purchaseRequest = \XF::em()->findOne('XF:PurchaseRequest', ['provider_metadata' => $providerMetadata]);
 			$state->purchaseRequest = $purchaseRequest; // sets request key too
-		}
-		else if (isset($state->event['object']) && $state->event['object'] == 'charge')
-		{
+		} else if (isset($state->event['object']) && $state->event['object'] == 'charge') {
 			// generally for legacy one off payments where the charge object metadata doesn't contain the request key
 			$chargeId = $state->event['id'];
 
@@ -704,13 +648,11 @@ class Stripe extends AbstractProvider
 	{
 		$paymentProfile = $state->getPaymentProfile();
 
-		if (empty($paymentProfile->options['signing_secret']))
-		{
+		if (empty($paymentProfile->options['signing_secret'])) {
 			return true; // not enabled so pass
 		}
 
-		if (empty($state->signature))
-		{
+		if (empty($state->signature)) {
 			return false; // enabled but signature missing so fail
 		}
 
@@ -718,17 +660,12 @@ class Stripe extends AbstractProvider
 		$payload = $state->inputRaw;
 		$signature = $state->signature;
 
-		try
-		{
+		try {
 			$this->setupStripe($paymentProfile);
 			$verifiedEvent = \Stripe\Webhook::constructEvent($payload, $signature, $secret);
-		}
-		catch (\Stripe\Exception\UnexpectedValueException $e)
-		{
+		} catch (\Stripe\Exception\UnexpectedValueException $e) {
 			return false;
-		}
-		catch (\Stripe\Exception\SignatureVerificationException $e)
-		{
+		} catch (\Stripe\Exception\SignatureVerificationException $e) {
 			return false;
 		}
 
@@ -753,13 +690,11 @@ class Stripe extends AbstractProvider
 	{
 		$eventType = $state->eventType;
 
-		if (!in_array($eventType, $this->getActionableEvents()))
-		{
+		if (!in_array($eventType, $this->getActionableEvents())) {
 			return true;
 		}
 
-		if ($eventType === 'invoice.payment_succeeded' && (array_key_exists('charge', $state->event) && $state->event['charge'] === null))
-		{
+		if ($eventType === 'invoice.payment_succeeded' && (array_key_exists('charge', $state->event) && $state->event['charge'] === null)) {
 			// no charge associated so we already charged in a separate transaction
 			// this is likely the initial invoice payment so we can skip this.
 			return true;
@@ -770,22 +705,19 @@ class Stripe extends AbstractProvider
 
 	public function validateCallback(CallbackState $state)
 	{
-		if ($this->isEventSkippable($state))
-		{
+		if ($this->isEventSkippable($state)) {
 			// Stripe sends a lot of webhooks, we shouldn't log them.
 			// They are viewable verbosely in the Stripe Dashboard.
 			$state->httpCode = 200;
 			return false;
 		}
 
-		if (!$this->validateExpectedValues($state))
-		{
+		if (!$this->validateExpectedValues($state)) {
 			if (
 				!empty($state->eventType)
 				&& $state->eventType === 'charge.succeeded'
 				&& !empty($state->event['invoice'])
-			)
-			{
+			) {
 				// if there's an invoice, that would indicate a recurring subscription and we generally
 				// listen for the invoice payment event
 				$state->httpCode = 200;
@@ -794,15 +726,13 @@ class Stripe extends AbstractProvider
 
 			$state->logType = 'error';
 			$state->logMessage = 'Event data received from Stripe does not contain the expected values.';
-			if (!$state->requestKey)
-			{
+			if (!$state->requestKey) {
 				$state->httpCode = 200; // Not likely to recover from this error so send a successful response.
 			}
 			return false;
 		}
 
-		if (!$this->verifyWebhookSignature($state))
-		{
+		if (!$this->verifyWebhookSignature($state)) {
 			$state->logType = 'error';
 			$state->logMessage = 'Webhook received from Stripe could not be verified as being valid.';
 			$state->httpCode = 400;
@@ -822,8 +752,7 @@ class Stripe extends AbstractProvider
 
 		$amountPaid = null;
 
-		switch ($state->eventType)
-		{
+		switch ($state->eventType) {
 			case 'charge.succeeded':
 				$amountPaid = $state->event['amount'];
 				break;
@@ -832,15 +761,13 @@ class Stripe extends AbstractProvider
 				break;
 		}
 
-		if ($amountPaid !== null)
-		{
+		if ($amountPaid !== null) {
 			$costValidated = (
 				$amountPaid === $cost
 				&& strtoupper($state->event['currency']) === $currency
 			);
 
-			if (!$costValidated && $state->eventType == 'invoice.payment_succeeded')
-			{
+			if (!$costValidated && $state->eventType == 'invoice.payment_succeeded') {
 				// due to previous approach in prepareCost, the cost could have gone through
 				// to Stripe with a 1 cent (or equivalent) lower value than expected, so allow that,
 				// provided Stripe is telling us that they've paid what's due
@@ -851,8 +778,7 @@ class Stripe extends AbstractProvider
 				);
 			}
 
-			if (!$costValidated)
-			{
+			if (!$costValidated) {
 				$state->logType = 'error';
 				$state->logMessage = 'Invalid cost amount';
 				return false;
@@ -866,15 +792,11 @@ class Stripe extends AbstractProvider
 
 	public function getPaymentResult(CallbackState $state)
 	{
-		switch ($state->eventType)
-		{
+		switch ($state->eventType) {
 			case 'charge.succeeded':
-				if ($state->event['outcome']['type'] == 'authorized')
-				{
+				if ($state->event['outcome']['type'] == 'authorized') {
 					$state->paymentResult = CallbackState::PAYMENT_RECEIVED;
-				}
-				else
-				{
+				} else {
 					$state->logType = 'info';
 					$state->logMessage = 'Charge succeeded but not authorized, it may require review in the Stripe Dashboard.';
 				}
@@ -886,16 +808,15 @@ class Stripe extends AbstractProvider
 
 				$purchaseRequest = $state->purchaseRequest;
 
-				if ($purchaseRequest
+				if (
+					$purchaseRequest
 					&& $purchaseRequest->provider_metadata
 					&& strpos($purchaseRequest->provider_metadata, 'sub_') === 0
 					&& !empty($state->event['payment_method'])
-				)
-				{
+				) {
 					$this->setupStripe($state->paymentProfile);
 
-					try
-					{
+					try {
 						/** @var \Stripe\Subscription $subscription */
 						$subscription = \Stripe\Subscription::retrieve(
 							$purchaseRequest->provider_metadata
@@ -909,8 +830,8 @@ class Stripe extends AbstractProvider
 						\Stripe\Subscription::update($subscription->id, [
 							'default_payment_method' => $paymentMethod->id
 						]);
+					} catch (\Stripe\Exception\ExceptionInterface $e) {
 					}
-					catch (\Stripe\Exception\ExceptionInterface $e) {}
 				}
 
 				break;
@@ -920,12 +841,9 @@ class Stripe extends AbstractProvider
 				break;
 
 			case 'review.closed':
-				if ($state->event['reason'] == 'approved')
-				{
+				if ($state->event['reason'] == 'approved') {
 					$state->paymentResult = CallbackState::PAYMENT_RECEIVED;
-				}
-				else
-				{
+				} else {
 					$state->logType = 'info';
 					$state->logMessage = 'Previous payment review now closed, but not approved.';
 				}
@@ -994,8 +912,7 @@ class Stripe extends AbstractProvider
 	 */
 	protected function prepareCost($cost, $currency)
 	{
-		if (!in_array($currency, $this->zeroDecimalCurrencies))
-		{
+		if (!in_array($currency, $this->zeroDecimalCurrencies)) {
 			$cost *= 100;
 		}
 		return intval(strval($cost));
