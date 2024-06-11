@@ -59,9 +59,16 @@ class Purchase extends XFCP_Purchase
 
         $activeUpgradeMember = $this->finder('XF:UserUpgradeActive')->where('user_id', $userId)->where('user_upgrade_id', $ids)->fetchOne();
 
+
+
         $upgrade = $this->assertUpgradeExists($userUpgraseIdGet);
 
         if ($activeUpgradeMember && $upgrade && in_array($userUpgraseIdGet, $ids)) {
+
+            if ($activeUpgradeMember['user_upgrade_id'] == $upgrade['user_upgrade_id']) {
+                return parent::actionIndex($params);
+            }
+
             $prevCostAmount = $activeUpgradeMember['extra']['cost_amount'];
             $currentCostAmount = $upgrade['cost_amount'];
 
