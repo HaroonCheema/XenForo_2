@@ -1,0 +1,6 @@
+{
+    "from_class": "XF\\Admin\\Controller\\UserUpgrade",
+    "to_class": "FS\\SubscriptionFeatures\\XF\\Admin\\Controller\\UserUpgrade",
+    "execute_order": 10,
+    "active": true
+}

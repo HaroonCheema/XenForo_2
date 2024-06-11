@@ -19,23 +19,25 @@ class Stripe extends XFCP_Stripe
             $subscriptionId
         );
 
-        $new_price = \Stripe\Price::create([
-            'unit_amount' => $newAmount, // Amount in cents
-            'currency' => $subscription->items->data[0]->price->currency,
-            'recurring' => ['interval' => $subscription->items->data[0]->price->recurring->interval],
-            'product' => $subscription->items->data[0]->price->product, // Replace with your product ID
-        ]);
+        if (!empty($subscription->items)) {
+            $new_price = \Stripe\Price::create([
+                'unit_amount' => $newAmount, // Amount in cents
+                'currency' => $subscription->items->data[0]->price->currency,
+                'recurring' => ['interval' => $subscription->items->data[0]->price->recurring->interval],
+                'product' => $subscription->items->data[0]->price->product, // Replace with your product ID
+            ]);
 
-        $subscriptionItemId = $subscription->items->data[0]->id;
+            $subscriptionItemId = $subscription->items->data[0]->id;
 
-        $updatedSubscription = \Stripe\Subscription::update($subscriptionId, [
-            'items' => [
-                [
-                    'id' => $subscriptionItemId,
-                    'price' => $new_price->id,
+            $updatedSubscription = \Stripe\Subscription::update($subscriptionId, [
+                'items' => [
+                    [
+                        'id' => $subscriptionItemId,
+                        'price' => $new_price->id,
+                    ],
                 ],
-            ],
-        ]);
+            ]);
+        }
 
         return $updatedSubscription;
     }

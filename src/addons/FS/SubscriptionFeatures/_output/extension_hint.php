@@ -3,6 +3,11 @@
 // ################## THIS IS A GENERATED FILE ##################
 // DO NOT EDIT DIRECTLY. EDIT THE CLASS EXTENSIONS IN THE CONTROL PANEL.
 
+namespace FS\SubscriptionFeatures\XF\Admin\Controller
+{
+	class XFCP_UserUpgrade extends \XF\Admin\Controller\UserUpgrade {}
+}
+
 namespace FS\SubscriptionFeatures\XF\Payment
 {
 	class XFCP_Stripe extends \XF\Payment\Stripe {}

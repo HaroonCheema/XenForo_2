@@ -198,36 +198,6 @@ class Stripe extends AbstractProvider
 		return $controller->view('XF:Purchase\StripeInitiate', 'payment_initiate_stripe', $viewParams);
 	}
 
-	// public function UpdatePaymentSubscription(PaymentProfile $paymentProfile, $subscriptionId, $newAmount)
-	// {
-	// 	$this->setupStripe($paymentProfile);
-
-	// 	/** @var \Stripe\Subscription $subscription */
-	// 	$subscription = \Stripe\Subscription::retrieve(
-	// 		$subscriptionId
-	// 	);
-
-	// 	$new_price = \Stripe\Price::create([
-	// 		'unit_amount' => $newAmount, // Amount in cents
-	// 		'currency' => $subscription->items->data[0]->price->currency,
-	// 		'recurring' => ['interval' => $subscription->items->data[0]->price->recurring->interval],
-	// 		'product' => $subscription->items->data[0]->price->product, // Replace with your product ID
-	// 	]);
-
-	// 	$subscriptionItemId = $subscription->items->data[0]->id;
-
-	// 	$updatedSubscription = \Stripe\Subscription::update($subscriptionId, [
-	// 		'items' => [
-	// 			[
-	// 				'id' => $subscriptionItemId,
-	// 				'price' => $new_price->id,
-	// 			],
-	// 		],
-	// 	]);
-
-	// 	return $updatedSubscription;
-	// }
-
 	public function processPayment(Controller $controller, PurchaseRequest $purchaseRequest, PaymentProfile $paymentProfile, Purchase $purchase)
 	{
 		if (!$purchase->recurring) {

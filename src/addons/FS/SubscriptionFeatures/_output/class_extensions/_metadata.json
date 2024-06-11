@@ -1,4 +1,7 @@
 {
+    "XF-Admin-Controller-UserUpgrade_FS-SubscriptionFeatures-XF-Admin-Controller-UserUpgrade.json": {
+        "hash": "26eee0453f327636f44df9a440b8089b"
+    },
     "XF-Payment-Stripe_FS-SubscriptionFeatures-XF-Payment-Stripe.json": {
         "hash": "104ce36a8faac23fe264259e24ccad59"
     },
