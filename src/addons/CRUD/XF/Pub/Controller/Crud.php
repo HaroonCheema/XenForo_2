@@ -772,8 +772,39 @@ class Crud extends AbstractController
         return $this->cacheIdPrefix . $key;
     }
 
+    protected function generateRandomString($length = 10)
+    {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
+    }
+
     public function actionIndex(ParameterBag $params)
     {
+        // Old file name
+        $fileName = "1000_f_93860043_alqx2pxpwduqnwmg0kvfcal8f0mcuwfv";
+
+        $fileName = "ggssx-bg-blur.png";
+        // $fileName = "street-fighter.jpg";
+        // $fileName = "test3.jpeg";
+
+        // Get the file extension
+        $fileExtension = pathinfo($fileName, PATHINFO_EXTENSION);
+
+        // Generate a new 10-character alphanumeric string
+        $newFileName = $this->generateRandomString(10);
+
+        // Replace the old file name with the new one
+        $fileName = $newFileName . '.' . $fileExtension;
+
+        echo "Original filename: $fileName\n";
+        echo "New random filename: $newFileName\n";
+
+        exit;
         $upgradeRepo = $this->repository('XF:UserUpgrade');
         list($available, $purchased) = $upgradeRepo->getFilteredUserUpgradesForList();
 

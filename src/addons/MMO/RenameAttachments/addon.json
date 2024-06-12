@@ -1,0 +1,19 @@
+{
+    "legacy_addon_id": "XPRenameAttachments",
+    "title": "[MMO] Rename Attachments",
+    "description": "The add-on allows you to add a prefix to attachments.",
+    "version_id": 2010370,
+    "version_string": "2.1.3",
+    "dev": "kick | Captain",
+    "dev_url": "https://mmo-dev.info",
+    "faq_url": "https://mmo-zone.info",
+    "support_url": "https://mmo-dev.info",
+    "extra_urls": [],
+    "require": {
+        "XF": [
+            2010070,
+            "XenForo 2.1.0+"
+        ]
+    },
+    "icon": "fa-image"
+}

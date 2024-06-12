@@ -47,6 +47,7 @@ return array (
   'option_group.logging' => 'Logging options',
   'option_group.mediaEmbedding' => 'Media embedding',
   'option_group.messageOptions' => 'Messages',
+  'option_group.mraRenameAttachments' => '[MMO] Rename Attachments',
   'option_group.newsfeed' => 'News feed',
   'option_group.nick97traktIntegration' => '[nick97] Trakt Integration',
   'option_group.nodeList' => 'Node & forum list',

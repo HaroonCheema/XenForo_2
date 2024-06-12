@@ -376,6 +376,28 @@ return function($__templater, $__selectedNav, array $__vars)
 		}
 	}
 
+	$__navTemp = [
+		'title' => \XF::phrase('nav.createCrud'),
+		'href' => $__templater->func('link', array('crud', ), false),
+		'attributes' => [],
+	];
+	if ($__navTemp) {
+		$__tree['createCrud'] = $__navTemp;
+		$__flat['createCrud'] =& $__tree['createCrud'];
+		if (empty($__tree['createCrud']['children'])) { $__tree['createCrud']['children'] = []; }
+
+		$__navTemp = [
+		'title' => \XF::phrase('nav.addRecord'),
+		'href' => $__templater->func('link', array('crud/add', ), false),
+		'attributes' => [],
+	];
+		if ($__navTemp) {
+			$__tree['createCrud']['children']['addRecord'] = $__navTemp;
+			$__flat['addRecord'] =& $__tree['createCrud']['children']['addRecord'];
+		}
+
+	}
+
 
 
 	return [

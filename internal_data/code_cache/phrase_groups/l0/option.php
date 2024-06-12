@@ -359,6 +359,8 @@ return array (
   'option.messageMaxMedia' => 'Maximum media embeds per message',
   'option.messagesPerPage' => 'Messages per page',
   'option.moderatorLogLength' => 'Moderator log length',
+  'option.mraDownloadFileName' => 'Attachment Name',
+  'option.mraRenameAttachmentType' => 'Rename Attachment Type',
   'option.multiQuote' => 'Enable multi-quote',
   'option.newsFeedMaxItems' => 'News feed items to fetch with each request',
   'option.newsFeedMessageSnippetLength' => 'News feed message snippet maximum length',

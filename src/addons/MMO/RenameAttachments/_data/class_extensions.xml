@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class_extensions>
+  <extension from_class="XF\Pub\View\Attachment\View" to_class="MMO\RenameAttachments\XF\Pub\View\Attachment\View" execute_order="10000" active="1"/>
+</class_extensions>

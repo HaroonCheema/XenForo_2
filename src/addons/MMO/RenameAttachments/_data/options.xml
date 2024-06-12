@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<options>
+  <option option_id="mraDownloadFileName" edit_format="textbox" data_type="string">
+    <default_value></default_value>
+    <relation group_id="attachments" display_order="10001"/>
+    <relation group_id="mraRenameAttachments" display_order="20"/>
+  </option>
+  <option option_id="mraRenameAttachmentType" edit_format="radio" data_type="string">
+    <default_value>prefix</default_value>
+    <edit_format_params>prefix={{ phrase('prefix') }}
+postfix={{ phrase('mra_postfix') }}</edit_format_params>
+    <relation group_id="attachments" display_order="10000"/>
+    <relation group_id="mraRenameAttachments" display_order="10"/>
+  </option>
+</options>

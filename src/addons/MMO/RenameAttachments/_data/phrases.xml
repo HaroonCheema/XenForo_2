@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="mra_postfix" version_id="2010270" version_string="2.1.2"><![CDATA[Postfix]]></phrase>
+  <phrase title="option.mraDownloadFileName" version_id="2010270" version_string="2.1.2"><![CDATA[Attachment Name]]></phrase>
+  <phrase title="option.mraRenameAttachmentType" version_id="2010270" version_string="2.1.2"><![CDATA[Rename Attachment Type]]></phrase>
+  <phrase title="option_explain.mraDownloadFileName" version_id="2010270" version_string="2.1.2"><![CDATA[The string will be added download filename]]></phrase>
+  <phrase title="option_explain.mraRenameAttachmentType" version_id="2010270" version_string="2.1.2"><![CDATA[Choose type, how to rename attachment add prefix or postfix]]></phrase>
+  <phrase title="option_group.mraRenameAttachments" version_id="2010170" version_string="2.1.1"><![CDATA[[MMO] Rename Attachments]]></phrase>
+  <phrase title="option_group_description.mraRenameAttachments" version_id="2010170" version_string="2.1.1"><![CDATA[]]></phrase>
+</phrases>
