@@ -59,8 +59,6 @@ class Purchase extends XFCP_Purchase
 
         $activeUpgradeMember = $this->finder('XF:UserUpgradeActive')->where('user_id', $userId)->where('user_upgrade_id', $ids)->fetchOne();
 
-
-
         $upgrade = $this->assertUpgradeExists($userUpgraseIdGet);
 
         if ($activeUpgradeMember && $upgrade && in_array($userUpgraseIdGet, $ids)) {
@@ -69,7 +67,9 @@ class Purchase extends XFCP_Purchase
                 return parent::actionIndex($params);
             }
 
-            $prevCostAmount = $activeUpgradeMember['extra']['cost_amount'];
+            $preVActiveUpgrade = $this->assertUpgradeExists($activeUpgradeMember['user_upgrade_id']);
+
+            $prevCostAmount = $preVActiveUpgrade['cost_amount'];
             $currentCostAmount = $upgrade['cost_amount'];
 
             $endDate = isset($activeUpgradeMember['end_date']) ? $activeUpgradeMember['end_date'] : 0;

@@ -450,23 +450,6 @@ return array(
 		data-lb-caption-desc="' . ($__vars['post']['User'] ? $__templater->escape($__vars['post']['User']['username']) : $__templater->escape($__vars['post']['username'])) . ' &middot; ' . $__templater->func('date_time', array($__vars['post']['post_date'], ), true) . '">
 
 		';
-	if ($__vars['thread']['Forum']['node_id'] == $__vars['xf']['options']['fs_auction_applicable_forum']) {
-		$__finalCompiled .= '
-		<div class="message-fields message-fields--after">
-				<dl class="pairs pairs--columns pairs--fixedSmall pairs--customField" data-field="threadCustomField">
-					<dt>' . 'AUCTION ENDS ON' . '</dt>
-					<dd>
-						' . $__templater->escape($__templater->method($__vars['thread'], 'getFormatedTime12', array())) . '
-				
-					</dd>
-				</dl>
-			
-			</div>
-		';
-	}
-	$__finalCompiled .= '
-
-';
 	if ($__templater->method($__vars['post'], 'isFirstPost', array())) {
 		$__finalCompiled .= '
 			' . $__templater->callMacro('custom_fields_macros', 'custom_fields_view', array(
@@ -502,23 +485,6 @@ return array(
 		</article>
 
 		';
-	if ($__vars['thread']['Forum']['node_id'] == $__vars['xf']['options']['fs_auction_applicable_forum']) {
-		$__finalCompiled .= '
-		<div class="message-fields message-fields--after">
-				<dl class="pairs pairs--columns pairs--fixedSmall pairs--customField" data-field="threadCustomField">
-					<dt>' . 'AUCTION ENDS ON' . '</dt>
-					<dd>
-						' . $__templater->escape($__templater->method($__vars['thread'], 'getFormatedTime12', array())) . '
-				
-					</dd>
-				</dl>
-			
-			</div>
-		';
-	}
-	$__finalCompiled .= '
-
-';
 	if ($__templater->method($__vars['post'], 'isFirstPost', array())) {
 		$__finalCompiled .= '
 			' . $__templater->callMacro('custom_fields_macros', 'custom_fields_view', array(

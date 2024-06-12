@@ -65,8 +65,8 @@ return array(
 							';
 				$__vars['category'] = $__vars['treeEntry']['record'];
 				$__compilerTemp1 .= '
-							' . $__templater->dataRow(array(
-				), array(array(
+							';
+				$__compilerTemp3 = array(array(
 					'class' => 'dataList-cell--link dataList-cell--main',
 					'hash' => $__vars['category'][$__vars['idKey']],
 					'_type' => 'cell',
@@ -77,8 +77,18 @@ return array(
 										</div>
 									</a>
 								',
-				),
-				array(
+				));
+				if ($__vars['permissionContentType']) {
+					$__compilerTemp3[] = array(
+						'class' => ($__vars['customPermissions'][$__vars['category'][$__vars['idKey']]] ? 'dataList-cell--highlighted' : ''),
+						'href' => $__templater->func('link', array($__vars['linkPrefix'] . '/permissions', $__vars['category'], ), false),
+						'_type' => 'action',
+						'html' => '
+										' . 'Permissions' . '
+									',
+					);
+				}
+				$__compilerTemp3[] = array(
 					'class' => 'dataList-cell--action u-hideMedium',
 					'label' => 'Add' . $__vars['xf']['language']['ellipsis'],
 					'_type' => 'popup',
@@ -92,12 +102,14 @@ return array(
 										</div>
 									</div>
 								',
-				),
-				array(
+				);
+				$__compilerTemp3[] = array(
 					'href' => $__templater->func('link', array($__vars['linkPrefix'] . '/delete', $__vars['category'], ), false),
 					'_type' => 'delete',
 					'html' => '',
-				))) . '
+				);
+				$__compilerTemp1 .= $__templater->dataRow(array(
+				), $__compilerTemp3) . '
 						';
 			}
 		}

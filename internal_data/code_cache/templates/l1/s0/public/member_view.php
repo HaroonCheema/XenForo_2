@@ -77,20 +77,6 @@ return array(
 	}
 	$__compilerTemp4 .= '
 											';
-	if ($__vars['user']['user_id'] == $__vars['xf']['visitor']['user_id']) {
-		$__compilerTemp4 .= '
-	' . $__templater->button('
-		' . 'Deposit' . '
-	', array(
-			'href' => $__templater->func('link', array('escrow/deposit', ), false),
-			'class' => 'button--link',
-			'data-xf-click' => 'overlay',
-		), '', array(
-		)) . '
-';
-	}
-	$__compilerTemp4 .= '
-';
 	if (($__vars['user']['user_id'] == $__vars['xf']['visitor']['user_id']) AND $__templater->method($__vars['xf']['visitor'], 'canUploadProfileBanner', array())) {
 		$__compilerTemp4 .= '
 												' . $__templater->button('
@@ -278,37 +264,6 @@ return array(
 					';
 	}
 	$__finalCompiled .= '
-
-';
-	if (!$__templater->test($__templater->method($__vars['user'], 'getBatchLists', array()), 'empty', array())) {
-		$__finalCompiled .= '
-	<div class="gallery">
-		';
-		$__compilerTemp12 = $__templater->method($__vars['user'], 'getBatchLists', array());
-		if ($__templater->isTraversable($__compilerTemp12)) {
-			foreach ($__compilerTemp12 AS $__vars['batch']) {
-				$__finalCompiled .= '
-			';
-				if ($__templater->method($__vars['user'], 'isMemberOf', array($__vars['batch']['usergroup_ids'], ))) {
-					$__finalCompiled .= '
-				<div class="image-wrapper">
-					<img src="' . $__templater->func('base_url', array($__vars['batch']['img_path'], true, ), true) . '" alt="' . $__templater->escape($__vars['batch']['title']) . '" class="bbImage" loading="lazy" />
-				</div>
-			';
-				}
-				$__finalCompiled .= '
-		';
-			}
-		}
-		$__finalCompiled .= '
-	</div>
-';
-	}
-	$__finalCompiled .= '
-
-';
-	$__templater->includeCss('fs_batch_profile.less');
-	$__finalCompiled .= '
 				</div>
 
 			</div>
@@ -351,17 +306,6 @@ return array(
 
 				' . '
 
-';
-	if ($__templater->method($__vars['xf']['visitor'], 'canViewResources', array()) AND $__vars['user']['xfrm_resource_count']) {
-		$__finalCompiled .= '
-	<a href="' . $__templater->func('link', array('resources/authors', $__vars['user'], ), true) . '"
-	   class="tabs-tab"
-	   id="resources"
-	   role="tab">' . 'Resources' . '</a>
-';
-	}
-	$__finalCompiled .= '
-
 				<a href="' . $__templater->func('link', array('members/about', $__vars['user'], ), true) . '"
 					class="tabs-tab"
 					id="about"
@@ -378,24 +322,6 @@ return array(
 	}
 	$__finalCompiled .= '
 				' . '
-';
-	if (($__vars['user']['user_id'] == $__vars['xf']['visitor']['user_id']) OR $__vars['xf']['visitor']['is_admin']) {
-		$__finalCompiled .= '
-	<a href="' . $__templater->func('link', array('members/my-escrow', $__vars['user'], ), true) . '"
-	   class="tabs-tab" id="my-escrow" role="tab">
-		' . 'My Escrows' . '
-	</a>
-	<a href="' . $__templater->func('link', array('members/mentioned-escrow', $__vars['user'], ), true) . '"
-	   class="tabs-tab" id="mentioned-escrow" role="tab">
-		' . 'Mentioned Escrow' . '
-	</a>
-	<a href="' . $__templater->func('link', array('members/logs', $__vars['user'], ), true) . '"
-	   class="tabs-tab" id="escrow-logs" role="tab">
-		' . 'Escrow Logs' . '
-	</a>
-';
-	}
-	$__finalCompiled .= '
 			</span>
 		</h2>
 	</div>
@@ -405,24 +331,6 @@ return array(
 		'user' => $__vars['user'],
 	), $__vars) . '
 
-';
-	if ($__vars['user']['is_banned']) {
-		$__finalCompiled .= '
-	' . $__templater->callMacro('fs_sch_user_ban_macros', 'banInfo', array(
-			'user' => $__vars['user'],
-		), $__vars) . '
-';
-	}
-	$__finalCompiled .= '
-';
-	if ($__vars['user']['ScheduleBan']['ban_date'] AND (!$__vars['user']['is_banned'])) {
-		$__finalCompiled .= '
-	' . $__templater->callMacro('fs_sch_user_ban_macros', 'banInfoBeforeBanProfile', array(
-			'user' => $__vars['user'],
-		), $__vars) . '
-';
-	}
-	$__finalCompiled .= '
 <ul class="tabPanes js-memberTabPanes">
 	' . '
 	';
@@ -531,16 +439,6 @@ return array(
 
 	' . '
 
-';
-	if ($__templater->method($__vars['xf']['visitor'], 'canViewResources', array()) AND $__vars['user']['xfrm_resource_count']) {
-		$__finalCompiled .= '
-	<li data-href="' . $__templater->func('link', array('resources/authors', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="resources">
-		<div class="blockMessage">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
-	</li>
-';
-	}
-	$__finalCompiled .= '
-
 	<li data-href="' . $__templater->func('link', array('members/about', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="about">
 		<div class="blockMessage">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
 	</li>
@@ -555,21 +453,6 @@ return array(
 	}
 	$__finalCompiled .= '
 	' . '
-';
-	if (($__vars['user']['user_id'] == $__vars['xf']['visitor']['user_id']) OR $__vars['xf']['visitor']['is_admin']) {
-		$__finalCompiled .= '
-<li data-href="' . $__templater->func('link', array('members/my-escrow', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="my-escrow">
-		<div class="blockMessage">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
-</li>
-<li data-href="' . $__templater->func('link', array('members/mentioned-escrow', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="mentioned-escrow">
-		<div class="blockMessage">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
-</li>
-<li data-href="' . $__templater->func('link', array('members/logs', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="escrow-logs">
-		<div class="blockMessage">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
-</li>
-	';
-	}
-	$__finalCompiled .= '
 </ul>
 
 ';

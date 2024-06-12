@@ -32,8 +32,7 @@ return array(
 				</div>
 
 				<div class="contentRow-minor">
-					' . $__templater->includeTemplate('dbtech_credits_member_dropdown', $__vars) . '
-				' . '
+					' . '
 					<dl class="pairs pairs--justified fauxBlockLink">
 						<dt>' . 'Messages' . '</dt>
 						<dd>
@@ -52,20 +51,6 @@ return array(
 						</dd>
 					</dl>
 					' . '
-';
-	if (true) {
-		$__finalCompiled .= '
-						<dl class="pairs pairs--justified fauxBlockLink">
-							<dt>' . 'Amount' . '</dt>
-							<dd>
-								<a href="' . $__templater->func('link', array('escrow/logs', ), true) . '" data-xf-click="overlay" class="fauxBlockLink-linkRow u-concealed">
-									' . '$' . $__templater->filter($__vars['xf']['visitor']['deposit_amount'], array(array('float', array()),), true) . '
-								</a>
-							</dd>
-						</dl>
-					';
-	}
-	$__finalCompiled .= '
 					';
 	if ($__vars['xf']['options']['enableTrophies']) {
 		$__finalCompiled .= '
@@ -209,7 +194,6 @@ return array(
 		' . $__compilerTemp5 . '
 		<li><a href="' . $__templater->func('link', array('account/following', ), true) . '" class="menu-linkRow">' . 'Following' . '</a></li>
 		<li><a href="' . $__templater->func('link', array('account/ignored', ), true) . '" class="menu-linkRow">' . 'Ignoring' . '</a></li>
-<li><a href="' . $__templater->func('link', array('escrow/deposit', ), true) . '" class="menu-linkRow" data-xf-click="overlay">' . 'Deposit' . '</a></li>
 		' . '
 	</ul>
 
