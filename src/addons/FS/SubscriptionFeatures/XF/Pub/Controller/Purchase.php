@@ -72,9 +72,20 @@ class Purchase extends XFCP_Purchase
             $prevCostAmount = $preVActiveUpgrade['cost_amount'];
             $currentCostAmount = $upgrade['cost_amount'];
 
-            $one_month_later_timestamp = strtotime('+1 month', \XF::$time);
+            $length_amount = $upgrade['length_amount'];
+            $length_unit = $upgrade['length_unit'];
+            $future_timestamp = '';
 
-            $endDate = isset($activeUpgradeMember['end_date']) ? $activeUpgradeMember['end_date'] : 0;
+            if ($upgrade['length_unit']) {
+
+                $current_timestamp = time();
+
+                $interval = "+$length_amount $length_unit";
+
+                $future_timestamp = strtotime($interval, $current_timestamp);
+            }
+
+            $endDate = $upgrade['length_unit'] ? $future_timestamp : 0;
 
             if ($prevCostAmount >= $currentCostAmount) {
 
