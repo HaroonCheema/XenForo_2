@@ -4,4 +4,5 @@
   <extension from_class="XF\Payment\Stripe" to_class="FS\SubscriptionFeatures\XF\Payment\Stripe" execute_order="10" active="1"/>
   <extension from_class="XF\Pub\Controller\Account" to_class="FS\SubscriptionFeatures\XF\Pub\Controller\Account" execute_order="11" active="1"/>
   <extension from_class="XF\Pub\Controller\Purchase" to_class="FS\SubscriptionFeatures\XF\Pub\Controller\Purchase" execute_order="10" active="1"/>
+  <extension from_class="XF\Purchasable\UserUpgrade" to_class="FS\SubscriptionFeatures\XF\Purchasable\UserUpgrade" execute_order="10" active="1"/>
 </class_extensions>

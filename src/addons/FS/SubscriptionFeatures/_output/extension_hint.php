@@ -18,3 +18,8 @@ namespace FS\SubscriptionFeatures\XF\Pub\Controller
 	class XFCP_Account extends \XF\Pub\Controller\Account {}
 	class XFCP_Purchase extends \XF\Pub\Controller\Purchase {}
 }
+
+namespace FS\SubscriptionFeatures\XF\Purchasable
+{
+	class XFCP_UserUpgrade extends \XF\Purchasable\UserUpgrade {}
+}
