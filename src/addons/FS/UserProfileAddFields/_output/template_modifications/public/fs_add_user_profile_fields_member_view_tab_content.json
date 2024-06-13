@@ -1,0 +1,9 @@
+{
+    "template": "member_view",
+    "description": "fs_add_user_profile_fields_member_view_tab_content",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<!--[XF:tabs:end]-->",
+    "replace": "$0\n<xf:if is=\"$user.user_id OR $xf.visitor.is_admin\">\n\t<a href=\"{{ link('members/sotd', $user) }}\"\n\t   class=\"tabs-tab\" id=\"sotd\" role=\"tab\">\n\t\t{{ phrase('fs_profile_fields') }}\n\t</a>\n</xf:if>"
+}

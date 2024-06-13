@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="fs_profile_fields" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Sotd]]></phrase>
+  <phrase title="fs_profile_fileds_review_count" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Review Count]]></phrase>
+  <phrase title="fs_profile_fileds_sotd" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Sotd]]></phrase>
+  <phrase title="fs_profile_fileds_sotd_date" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Sotd Date]]></phrase>
+  <phrase title="fs_profile_fileds_sotd_hide" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Sotd Hide]]></phrase>
+  <phrase title="fs_profile_fileds_sotd_img" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Sotd Image]]></phrase>
+  <phrase title="fs_profile_fileds_sotd_link" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Sotd Link]]></phrase>
+  <phrase title="fs_profile_fileds_sotd_streak" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Sotd Streak]]></phrase>
+  <phrase title="fs_profile_fileds_wardrobe_hide" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Wardrobe Hide]]></phrase>
+  <phrase title="fs_profile_fileds_wardrobe_icon" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Wardrobe Icon]]></phrase>
+</phrases>

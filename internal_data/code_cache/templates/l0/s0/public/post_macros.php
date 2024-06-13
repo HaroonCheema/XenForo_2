@@ -26,46 +26,6 @@ return array(
 		'user' => $__vars['post']['User'],
 		'fallbackName' => $__vars['post']['username'],
 	), $__vars) . '
-
-';
-	if (!$__templater->test($__templater->method($__vars['thread'], 'getBatchLists', array()), 'empty', array())) {
-		$__finalCompiled .= '
-	';
-		$__compilerTemp1 = $__templater->method($__vars['thread'], 'getBatchLists', array());
-		if ($__templater->isTraversable($__compilerTemp1)) {
-			foreach ($__compilerTemp1 AS $__vars['batch']) {
-				$__finalCompiled .= '
-		';
-				if ($__vars['thread']['UserPost']['post_count'] >= $__vars['batch']['mini_post']) {
-					$__finalCompiled .= '
-			';
-					if ($__templater->method($__vars['thread'], 'getBatchDetails', array($__vars['batch'], ))) {
-						$__finalCompiled .= '
-				<br/>
-				';
-						$__compilerTemp2 = $__templater->method($__vars['thread'], 'getBatchDetails', array($__vars['batch'], ));
-						if ($__templater->isTraversable($__compilerTemp2)) {
-							foreach ($__compilerTemp2 AS $__vars['i']) {
-								$__finalCompiled .= '
-					<img src="' . $__templater->func('base_url', array($__vars['batch']['img_path'], true, ), true) . '" alt="Batch Image" class="bbImage" loading="lazy" />
-				';
-							}
-						}
-						$__finalCompiled .= '
-			';
-					}
-					$__finalCompiled .= '
-		';
-				}
-				$__finalCompiled .= '
-
-	';
-			}
-		}
-		$__finalCompiled .= '
-';
-	}
-	$__finalCompiled .= '
 					</div>
 				';
 	return $__finalCompiled;
@@ -429,23 +389,7 @@ return array(
 	$__finalCompiled = '';
 	$__finalCompiled .= '
 
-	';
-	if ($__vars['post']['User']['ScheduleBan']['ban_date'] AND (!$__vars['post']['User']['is_banned'])) {
-		$__finalCompiled .= '
-	' . $__templater->callMacro('fs_sch_user_ban_macros', 'banInfoBeforeBan', array(
-			'banDate' => $__vars['post']['User']['ScheduleBan'],
-		), $__vars) . '
-';
-	}
-	$__finalCompiled .= '
-';
-	if ($__vars['post']['User']['is_banned']) {
-		$__finalCompiled .= '
-	' . $__templater->callMacro('fs_sch_user_ban_macros', 'messageInfo', array(), $__vars) . '
-';
-	}
-	$__finalCompiled .= '
-<div class="message-userContent lbContainer js-lbContainer ' . ($__templater->method($__vars['post'], 'isIgnored', array()) ? 'is-ignored' : '') . '"
+	<div class="message-userContent lbContainer js-lbContainer ' . ($__templater->method($__vars['post'], 'isIgnored', array()) ? 'is-ignored' : '') . '"
 		data-lb-id="post-' . $__templater->escape($__vars['post']['post_id']) . '"
 		data-lb-caption-desc="' . ($__vars['post']['User'] ? $__templater->escape($__vars['post']['User']['username']) : $__templater->escape($__vars['post']['username'])) . ' &middot; ' . $__templater->func('date_time', array($__vars['post']['post_date'], ), true) . '">
 

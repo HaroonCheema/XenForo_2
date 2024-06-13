@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="public" title="fs_UserProfileAddFields_sotd" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:form action="{{ link('quiz/quiz-start', $quiz) }}"
+		 class="block">
+
+	<div class="block-container">
+		<div class="block-body">
+
+			<xf:formrow	label="{{ phrase('fs_profile_fileds_sotd') }}">
+				{$user.Profile.sotd}
+			</xf:formrow>
+
+			<xf:formrow	label="{{ phrase('fs_profile_fileds_sotd_img') }}">
+				{$user.Profile.sotd_img}
+			</xf:formrow>
+
+			<xf:formrow	label="{{ phrase('fs_profile_fileds_sotd_link') }}">
+				{$user.Profile.sotd_link}
+			</xf:formrow>
+
+			<xf:formrow	label="{{ phrase('fs_profile_fileds_sotd_date') }}">
+				<xf:date time="{$user.Profile.sotd_date}" /> 
+			</xf:formrow>
+
+			<xf:formrow	label="{{ phrase('fs_profile_fileds_sotd_hide') }}">
+				{$user.Profile.sotd_hide}
+			</xf:formrow>
+
+			<xf:formrow	label="{{ phrase('fs_profile_fileds_sotd_streak') }}">
+				{$user.Profile.sotd_streak}
+			</xf:formrow>
+
+			<xf:formrow	label="{{ phrase('fs_profile_fileds_review_count') }}">
+				{$user.Profile.review_count}
+			</xf:formrow>
+
+			<xf:formrow	label="{{ phrase('fs_profile_fileds_wardrobe_icon') }}">
+				{$user.Profile.wardrobe_icon}
+			</xf:formrow>
+
+			<xf:formrow	label="{{ phrase('fs_profile_fileds_wardrobe_hide') }}">
+				{$user.Profile.wardrobe_hide}
+			</xf:formrow>
+
+		</div>
+	</div>
+</xf:form>]]></template>
+</templates>

@@ -314,6 +314,38 @@ return function($__templater, $__selectedNav, array $__vars)
 
 	}
 
+	$__navTemp = [
+		'title' => \XF::phrase('nav.fs_escrow'),
+		'href' => $__templater->func('link', array('escrow', ), false),
+		'attributes' => [],
+	];
+	if ($__navTemp) {
+		$__tree['fs_escrow'] = $__navTemp;
+		$__flat['fs_escrow'] =& $__tree['fs_escrow'];
+		if (empty($__tree['fs_escrow']['children'])) { $__tree['fs_escrow']['children'] = []; }
+
+		$__navTemp = [
+		'title' => \XF::phrase('nav.fs_escrow_add'),
+		'href' => $__templater->func('link', array('escrow/add', ), false),
+		'attributes' => [],
+	];
+		if ($__navTemp) {
+			$__tree['fs_escrow']['children']['fs_escrow_add'] = $__navTemp;
+			$__flat['fs_escrow_add'] =& $__tree['fs_escrow']['children']['fs_escrow_add'];
+		}
+
+	}
+
+	$__navTemp = [
+		'title' => \XF::phrase('nav.fs_quiz'),
+		'href' => $__templater->func('link', array('quiz', ), false),
+		'attributes' => [],
+	];
+	if ($__navTemp) {
+		$__tree['fs_quiz'] = $__navTemp;
+		$__flat['fs_quiz'] =& $__tree['fs_quiz'];
+	}
+
 	if ($__templater->method($__vars['xf']['visitor'], 'canViewMemberList', array())) {
 		$__navTemp = [
 		'title' => \XF::phrase('nav.members'),

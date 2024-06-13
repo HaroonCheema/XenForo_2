@@ -40,7 +40,7 @@ return array(
 	';
 	}
 	$__finalCompiled .= '
-			';
+	';
 	if ($__templater->method($__vars['user'], 'canBan', array())) {
 		$__finalCompiled .= '
 		<a href="' . $__templater->func('link', array('members/ban', $__vars['user'], ), true) . '" class="menu-linkRow" data-xf-click="overlay">
@@ -57,21 +57,6 @@ return array(
 		$__finalCompiled .= '
 		</a>
 	';
-	}
-	$__finalCompiled .= '
-			';
-	if ((!$__vars['user']['is_banned']) AND ((!$__vars['user']['is_moderator']) AND (!$__vars['user']['is_admin']))) {
-		$__finalCompiled .= '
-';
-		if ($__vars['xf']['visitor']['is_moderator'] OR $__vars['xf']['visitor']['is_admin']) {
-			$__finalCompiled .= '
-		<a href="' . $__templater->func('link', array('scheduleBanUser/add', $__vars['user'], ), true) . '" class="menu-linkRow" data-xf-click="overlay">
-				' . 'Schedule Ban User' . '
-		</a>
-	';
-		}
-		$__finalCompiled .= '
-';
 	}
 	$__finalCompiled .= '
 	';
@@ -118,21 +103,7 @@ return array(
 	';
 	}
 	$__finalCompiled .= '
-	';
-	if ($__templater->method($__vars['xf']['visitor'], 'canViewResources', array()) AND $__vars['user']['xfrm_resource_count']) {
-		$__finalCompiled .= '
-	<dl class="pairs pairs--rows pairs--rows--centered menu-fauxLinkRow">
-		<dt>' . 'Resources' . '</dt>
-		<dd>
-			<a href="' . $__templater->func('link', array('resources/authors', $__vars['user'], ), true) . '" class="menu-fauxLinkRow-linkRow u-concealed">
-				' . $__templater->filter($__vars['user']['xfrm_resource_count'], array(array('number', array()),), true) . '
-			</a>
-		</dd>
-	</dl>
-';
-	}
-	$__finalCompiled .= '
-' . '
+	' . '
 	' . '
 	<dl class="pairs pairs--rows pairs--rows--centered">
 		<dt title="' . $__templater->filter('Reaction score', array(array('for_attr', array()),), true) . '">' . 'Reaction score' . '</dt>
@@ -155,7 +126,6 @@ return array(
 	';
 	}
 	$__finalCompiled .= '
-	' . $__templater->includeTemplate('dbtech_credits_member_stats', $__vars) . '
 	' . '
 ';
 	if (($__vars['user']['user_id'] == $__vars['xf']['visitor']['user_id']) OR $__vars['xf']['visitor']['is_admin']) {

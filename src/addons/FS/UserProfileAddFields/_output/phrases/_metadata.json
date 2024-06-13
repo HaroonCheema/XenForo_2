@@ -1,0 +1,62 @@
+{
+    "fs_profile_fields.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "6900a5a6e73fbaa401406d9744a435a5"
+    },
+    "fs_profile_fileds_review_count.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "3ee31f471d3c2122793d35ce2cf3d2a4"
+    },
+    "fs_profile_fileds_sotd.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "6900a5a6e73fbaa401406d9744a435a5"
+    },
+    "fs_profile_fileds_sotd_date.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "1a1f0a1b8c6a142161bf7b1bfa3e229f"
+    },
+    "fs_profile_fileds_sotd_hide.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "526d57a3ec60103961fdea5b2f1f3370"
+    },
+    "fs_profile_fileds_sotd_img.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "f581aa975db35a248c5876e251152d50"
+    },
+    "fs_profile_fileds_sotd_link.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "4f461f0d978ff695ae10020731ce5e9d"
+    },
+    "fs_profile_fileds_sotd_streak.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "cd7beeadf25f48e2570d64783d96810e"
+    },
+    "fs_profile_fileds_wardrobe_hide.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "ca95ae315f706312b6b8d86762d9b7e1"
+    },
+    "fs_profile_fileds_wardrobe_icon.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "5114658e4845bb7ccc0e71bb2718e579"
+    }
+}
