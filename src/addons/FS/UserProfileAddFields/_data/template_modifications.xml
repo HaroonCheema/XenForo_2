@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <template_modifications>
-  <modification type="public" template="member_view" modification_key="fs_add_user_profile_field_member_view_tab_content" description="fs_add_user_profile_field_member_view_tab_content" execution_order="10" enabled="1" action="str_replace">
-    <find><![CDATA[<!--[XF:tab_panes:end]-->]]></find>
-    <replace><![CDATA[$0
-
-<xf:if is="$user.user_id OR $xf.visitor.is_admin">
-	<li data-href="{{ link('members/sotd', $user) }}" role="tabpanel" aria-labelledby="sotd">
-		<div class="blockMessage">{{ phrase('loading...') }}</div>
-	</li>
-</xf:if>]]></replace>
-  </modification>
-  <modification type="public" template="member_view" modification_key="fs_add_user_profile_fields_member_view_tab_content" description="fs_add_user_profile_fields_member_view_tab_content" execution_order="10" enabled="1" action="str_replace">
+  <modification type="admin" template="user_edit" modification_key="fs_add_user_edit_fields_member_view_tab_content" description="fs_add_user_edit_fields_member_view_tab_content" execution_order="10" enabled="1" action="str_replace">
     <find><![CDATA[<!--[XF:tabs:end]-->]]></find>
-    <replace><![CDATA[$0
-<xf:if is="$user.user_id OR $xf.visitor.is_admin">
-	<a href="{{ link('members/sotd', $user) }}"
-	   class="tabs-tab" id="sotd" role="tab">
-		{{ phrase('fs_profile_fields') }}
-	</a>
-</xf:if>]]></replace>
+    <replace><![CDATA[<a class="tabs-tab" role="tab" tabindex="0"
+   id="sotd"
+   aria-controls="sotd"
+   href="{{ link('users/sotd', $user) }}#sotd">{{ phrase('fs_profile_fields') }}</a>
+
+$0]]></replace>
+  </modification>
+  <modification type="admin" template="user_edit" modification_key="fs_add_user_edits_field_member_view_tab_content" description="fs_add_user_edits_field_member_view_tab_content" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<!--[XF:tab_panes:end]-->]]></find>
+    <replace><![CDATA[<xf:if is="$user.user_id">
+	<li data-href="{{ link('users/sotd', $user) }}" role="tabpanel" aria-labelledby="sotd">
+		<div class="block-body block-row">{{ phrase('loading...') }}</div>
+	</li>
+</xf:if>
+
+$0]]></replace>
   </modification>
 </template_modifications>

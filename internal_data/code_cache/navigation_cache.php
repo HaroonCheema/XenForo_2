@@ -430,6 +430,30 @@ return function($__templater, $__selectedNav, array $__vars)
 
 	}
 
+	if ($__templater->method($__vars['xf']['visitor'], 'canViewDbtechCredits', array())) {
+		$__navTemp = [
+		'title' => \XF::phrase('nav.dbtechCredits'),
+		'href' => $__templater->func('link', array('dbtech-credits', ), false),
+		'attributes' => [],
+	];
+		if ($__navTemp) {
+			$__tree['dbtechCredits'] = $__navTemp;
+			$__flat['dbtechCredits'] =& $__tree['dbtechCredits'];
+			if (empty($__tree['dbtechCredits']['children'])) { $__tree['dbtechCredits']['children'] = []; }
+
+			$__navTemp = [
+		'title' => \XF::phrase('nav.dbtechCreditsTransactions'),
+		'href' => $__templater->func('link', array('dbtech-credits', ), false),
+		'attributes' => [],
+	];
+			if ($__navTemp) {
+				$__tree['dbtechCredits']['children']['dbtechCreditsTransactions'] = $__navTemp;
+				$__flat['dbtechCreditsTransactions'] =& $__tree['dbtechCredits']['children']['dbtechCreditsTransactions'];
+			}
+
+		}
+	}
+
 
 
 	return [

@@ -1,8 +1,8 @@
 {
+    "XF-Admin-Controller-User_FS-UserProfileAddFields-XF-Admin-Controller-User.json": {
+        "hash": "db98ee50f9d68bf401f5d216f13082a9"
+    },
     "XF-Entity-UserProfile_FS-UserProfileAddFields-XF-Entity-UserProfile.json": {
         "hash": "06f1f558f607b50f65f4511af313f592"
-    },
-    "XF-Pub-Controller-Member_FS-UserProfileAddFields-XF-Pub-Controller-Member.json": {
-        "hash": "f7bb75f3b9f2cdb65add56a9f79fa038"
     }
 }

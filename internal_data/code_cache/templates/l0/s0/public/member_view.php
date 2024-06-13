@@ -337,16 +337,6 @@ return array(
 	$__finalCompiled .= '
 				' . '
 ';
-	if ($__vars['user']['user_id'] OR $__vars['xf']['visitor']['is_admin']) {
-		$__finalCompiled .= '
-	<a href="' . $__templater->func('link', array('members/sotd', $__vars['user'], ), true) . '"
-	   class="tabs-tab" id="sotd" role="tab">
-		' . 'Sotd' . '
-	</a>
-';
-	}
-	$__finalCompiled .= '
-';
 	if (($__vars['user']['user_id'] == $__vars['xf']['visitor']['user_id']) OR $__vars['xf']['visitor']['is_admin']) {
 		$__finalCompiled .= '
 	<a href="' . $__templater->func('link', array('members/my-escrow', $__vars['user'], ), true) . '"
@@ -495,16 +485,6 @@ return array(
 	}
 	$__finalCompiled .= '
 	' . '
-
-';
-	if ($__vars['user']['user_id'] OR $__vars['xf']['visitor']['is_admin']) {
-		$__finalCompiled .= '
-	<li data-href="' . $__templater->func('link', array('members/sotd', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="sotd">
-		<div class="blockMessage">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
-	</li>
-';
-	}
-	$__finalCompiled .= '
 ';
 	if (($__vars['user']['user_id'] == $__vars['xf']['visitor']['user_id']) OR $__vars['xf']['visitor']['is_admin']) {
 		$__finalCompiled .= '

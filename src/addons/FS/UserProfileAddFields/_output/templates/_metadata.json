@@ -1,7 +1,7 @@
 {
-    "public/fs_UserProfileAddFields_sotd.html": {
-        "version_id": 1000010,
-        "version_string": "1.0.0 Alpha",
+    "admin/fs_UserProfileAddFields_sotd.html": {
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
         "hash": "7da439a78bb72f04c5950b254abefa95"
     }
 }

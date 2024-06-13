@@ -126,6 +126,7 @@ return array(
 	';
 	}
 	$__finalCompiled .= '
+	' . $__templater->includeTemplate('dbtech_credits_member_stats', $__vars) . '
 	' . '
 ';
 	if (($__vars['user']['user_id'] == $__vars['xf']['visitor']['user_id']) OR $__vars['xf']['visitor']['is_admin']) {

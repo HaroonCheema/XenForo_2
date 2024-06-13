@@ -1,0 +1,9 @@
+{
+    "template": "user_edit",
+    "description": "fs_add_user_edits_field_member_view_tab_content",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<!--[XF:tab_panes:end]-->",
+    "replace": "<xf:if is=\"$user.user_id\">\n\t<li data-href=\"{{ link('users/sotd', $user) }}\" role=\"tabpanel\" aria-labelledby=\"sotd\">\n\t\t<div class=\"block-body block-row\">{{ phrase('loading...') }}</div>\n\t</li>\n</xf:if>\n\n$0"
+}

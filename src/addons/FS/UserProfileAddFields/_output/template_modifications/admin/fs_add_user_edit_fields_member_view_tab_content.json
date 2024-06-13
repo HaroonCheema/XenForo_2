@@ -1,0 +1,9 @@
+{
+    "template": "user_edit",
+    "description": "fs_add_user_edit_fields_member_view_tab_content",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<!--[XF:tabs:end]-->",
+    "replace": "<a class=\"tabs-tab\" role=\"tab\" tabindex=\"0\"\n   id=\"sotd\"\n   aria-controls=\"sotd\"\n   href=\"{{ link('users/sotd', $user) }}#sotd\">{{ phrase('fs_profile_fields') }}</a>\n\n$0"
+}

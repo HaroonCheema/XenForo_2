@@ -1,9 +1,0 @@
-{
-    "template": "member_view",
-    "description": "fs_add_user_profile_field_member_view_tab_content",
-    "execution_order": 10,
-    "enabled": true,
-    "action": "str_replace",
-    "find": "<!--[XF:tab_panes:end]-->",
-    "replace": "$0\n\n<xf:if is=\"$user.user_id OR $xf.visitor.is_admin\">\n\t<li data-href=\"{{ link('members/sotd', $user) }}\" role=\"tabpanel\" aria-labelledby=\"sotd\">\n\t\t<div class=\"blockMessage\">{{ phrase('loading...') }}</div>\n\t</li>\n</xf:if>"
-}
