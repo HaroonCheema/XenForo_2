@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <templates>
-  <template type="public" title="fs_user_upgrade_active_convert" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('fs_subscription_move_title') }}</xf:title>
+  <template type="public" title="fs_user_upgrade_active_convert" version_id="1000300" version_string="1.0.3 Alpha"><![CDATA[<xf:title>{{ phrase('fs_subscription_move_title') }}</xf:title>
 
 <xf:form action="{{ link('purchase', $upgrade, {'user_upgrade_id': $upgrade.user_upgrade_id}) }}" class="block" ajax="true">
 	<div class="block-container">

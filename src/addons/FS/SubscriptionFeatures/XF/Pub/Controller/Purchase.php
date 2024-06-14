@@ -41,6 +41,10 @@ class Purchase extends XFCP_Purchase
 
         $userUpgraseIdGet = $request->get('user_upgrade_id');
 
+        if ($this->filter('gift', 'int')) {
+            return parent::actionIndex($params);
+        }
+
         // $alreadyExist = $this->finder('XF:UserUpgradeActive')->where('user_id', $userId)->where('user_upgrade_id', $userUpgraseIdGet)->fetchOne();
 
         // if ($alreadyExist) {

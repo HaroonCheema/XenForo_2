@@ -28,6 +28,7 @@ class PackageRating extends Entity
             'rating_date' => ['type' => self::UINT, 'default' => \XF::$time],
             'message' => ['type' => self::STR, 'default' => ''],
             'author_response' => ['type' => self::STR, 'default' => ''],
+            'author_id' => ['type' => self::UINT, 'default' => 0],
         ];
 
         $structure->relations = [
@@ -42,6 +43,13 @@ class PackageRating extends Entity
                 'entity' => 'XF:UserUpgrade',
                 'type' => self::TO_ONE,
                 'conditions' => 'user_upgrade_id',
+                'primary' => true
+            ],
+
+            'Author' => [
+                'entity' => 'XF:User',
+                'type' => self::TO_ONE,
+                'conditions' => ['user_id', '=', '$author_id'],
                 'primary' => true
             ],
         ];

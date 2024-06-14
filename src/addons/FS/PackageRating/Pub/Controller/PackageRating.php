@@ -42,6 +42,7 @@ class PackageRating extends AbstractController
 
         if (!empty($message)) {
             $replyExists->fastUpdate('author_response', $message);
+            $replyExists->fastUpdate('author_id', \XF::visitor()->user_id);
         }
 
         return $this->redirect($this->buildLink('package-rating'));
@@ -154,6 +155,7 @@ class PackageRating extends AbstractController
 
         if ($this->isPost()) {
             $review->fastUpdate('author_response', '');
+            $review->fastUpdate('author_id', 0);
 
             return $this->redirect(
                 $this->getDynamicRedirect($this->buildLink('package-rating', $review), false)
