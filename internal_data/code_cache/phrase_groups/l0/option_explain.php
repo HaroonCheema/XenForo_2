@@ -4,6 +4,11 @@ return array (
   'option_explain.CMTV_Math_customMathDelimiters' => 'The value in this field is parsed inside PHP so write only strict JSON data!',
   'option_explain.CMTV_Math_ignoredClasses' => '',
   'option_explain.CMTV_Math_macros' => '',
+  'option_explain.DC_LinkProxy_AutoRedirection' => 'You can disable automatic redirection if you want your visitor to click "Continue" on the redirection page to visit the page, instead of automatically being redirected.',
+  'option_explain.DC_LinkProxy_AutoRedirection__time' => 'Enter default auto redirection time in seconds.',
+  'option_explain.DC_LinkProxy_DomainWhiteList' => 'Enter the domain names/hostnames that you do not want to anonymize/redirect. <b>Only one domain per line.</b><br/>
+If you want to white list an entire domain including its sub-domains, <b>only add domain.com.</b><br/>
+If you want to white list a domain\'s sub-domains and not the top level one, <b>add .domain.com.</b>',
   'option_explain.Fs_NodeIcon_nodeDimensions' => '',
   'option_explain.TvThreads_aggregateCredits' => 'If checked, cast & crew data for TV shows will be fetched all the entire cast & crew for all episodes belonging to a TV show.</br>
 This can be a large amount of data and will affect performance.',
@@ -341,6 +346,8 @@ This option requires that the specified account is a catch-all account or suppor
   'option_explain.fs_forums' => '',
   'option_explain.fs_hcwp_btnUrl' => 'Provide the link for button of hidden content widget',
   'option_explain.fs_hcwp_userGroups' => 'The content will be hidden for users belonging to these UserGroups',
+  'option_explain.fs_link_group_apply_settings' => 'If a user has multiple groups tell either the time of group with high-style priority is applied or with low priority.',
+  'option_explain.fs_link_html_position' => '',
   'option_explain.fs_mts_customMsgColor' => 'Enter the colour name or colour code for Custom message',
   'option_explain.fs_mts_customMsgbackGroundColor' => 'Enter the colour name or colour code for custom message Background',
   'option_explain.fs_pkg_rat_applicable_userGroups' => 'Enter the Applicable User Upgrade Ids Comma separated like 1,2,3,4.',

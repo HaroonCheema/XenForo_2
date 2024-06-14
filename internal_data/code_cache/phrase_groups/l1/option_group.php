@@ -1,6 +1,7 @@
 <?php
 return array (
   'option_group.CMTV_Math' => 'Math options',
+  'option_group.DC_LinkProxy' => 'D.C Style - Link Proxy',
   'option_group.Fs_NodeIcon' => '[FS] Node Icon',
   'option_group.TvThreads' => '[OzzModz] TMDb TV Thread Starter',
   'option_group.acp' => 'Admin control panel',

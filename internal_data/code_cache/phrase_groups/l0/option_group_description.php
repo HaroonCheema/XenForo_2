@@ -1,6 +1,7 @@
 <?php
 return array (
   'option_group_description.CMTV_Math' => 'How and where to render math on your forum.',
+  'option_group_description.DC_LinkProxy' => '',
   'option_group_description.Fs_NodeIcon' => '',
   'option_group_description.TvThreads' => 'Options for the TMDb TV thread starter add-on',
   'option_group_description.acp' => 'Contains various options relating to the admin control panel itself.',

@@ -146,6 +146,8 @@ return array (
   'admin_navigation.importData' => 'Import data',
   'admin_navigation.languages' => 'Languages',
   'admin_navigation.languagesAndPhrases' => 'Languages &amp; phrases',
+  'admin_navigation.lind_proxy' => 'Link Proxy',
+  'admin_navigation.lind_proxy_list' => 'List',
   'admin_navigation.linkProxyLog' => 'Link proxy log',
   'admin_navigation.listAddOns' => 'Add-ons',
   'admin_navigation.listAllUsers' => 'List all users',
