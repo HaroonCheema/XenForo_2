@@ -25,6 +25,7 @@ return array (
   'permission.bookmark_create' => 'Create bookmark',
   'permission.bookmark_view' => 'View own bookmarks',
   'permission.bot_gpt_thread_bot_gpt_article' => 'Allow to use Thread GPT Article ?',
+  'permission.bypassPasswordGroup_bypassPassword' => 'Bypass Password',
   'permission.conversation_alwaysInvite' => 'Always invite participants to conversations',
   'permission.conversation_editAnyMessage' => 'Edit any message',
   'permission.conversation_editOwnMessage' => 'Edit own messages',

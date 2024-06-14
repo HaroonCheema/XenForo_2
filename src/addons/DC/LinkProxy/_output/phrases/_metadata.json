@@ -1,0 +1,50 @@
+{
+    "dc_link_proxy_enter_password.txt": {
+        "global_cache": false,
+        "version_id": 1020600,
+        "version_string": "1.2.6",
+        "hash": "dc647eb65e6711e155375218212b3964"
+    },
+    "dc_link_proxy_enter_password_place.txt": {
+        "global_cache": false,
+        "version_id": 1020600,
+        "version_string": "1.2.6",
+        "hash": "4a8f20ae45515d579924aeb21dc166a6"
+    },
+    "dc_link_proxy_password.txt": {
+        "global_cache": false,
+        "version_id": 1020600,
+        "version_string": "1.2.6",
+        "hash": "75c02c670016b57ff16085708c523c8f"
+    },
+    "dc_link_proxy_password_not_matching.txt": {
+        "global_cache": false,
+        "version_id": 1020600,
+        "version_string": "1.2.6",
+        "hash": "f0d5bba1100965e5e55f58cdfd1e768e"
+    },
+    "option.dc_link_proxy_global_password.txt": {
+        "global_cache": false,
+        "version_id": 1020600,
+        "version_string": "1.2.6",
+        "hash": "d408013bc7ac4b6d6ca3255dca6e3345"
+    },
+    "option_explain.dc_link_proxy_global_password.txt": {
+        "global_cache": false,
+        "version_id": 1020600,
+        "version_string": "1.2.6",
+        "hash": "7c60882ec305432a88d4db44c62f0cd5"
+    },
+    "permission.bypassPasswordGroup_bypassPassword.txt": {
+        "global_cache": false,
+        "version_id": 1020600,
+        "version_string": "1.2.6",
+        "hash": "7953c928175f54255b0e4654137f9450"
+    },
+    "permission_interface.dcLinkProxy.txt": {
+        "global_cache": false,
+        "version_id": 1020600,
+        "version_string": "1.2.6",
+        "hash": "c6e332347056d06d5af5ae21217be665"
+    }
+}

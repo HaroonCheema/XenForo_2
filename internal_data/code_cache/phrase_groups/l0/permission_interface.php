@@ -12,6 +12,7 @@ return array (
   'permission_interface.dbtechEcommerce' => 'DragonByte eCommerce permissions',
   'permission_interface.dbtechEcommerceAdmin' => 'DragonByte eCommerce admin permissions',
   'permission_interface.dbtechEcommerceModerator' => 'DragonByte eCommerce moderator permissions',
+  'permission_interface.dcLinkProxy' => 'D.C Style - Link Proxy',
   'permission_interface.formThreadModeration' => 'Form Thread Moderation',
   'permission_interface.forumModeratorPermissions' => 'Forum moderator permissions',
   'permission_interface.forumPermissions' => 'Forum permissions',

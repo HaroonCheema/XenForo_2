@@ -263,7 +263,7 @@
 	0% { opacity: 1; }
 	100% { opacity: 0.5; }
 }]]></template>
-  <template type="public" title="DC_LinkProxy_Redirecting" version_id="1010400" version_string="1.1.4"><![CDATA[<xf:css src="DC_LinkProxy.less" />
+  <template type="public" title="DC_LinkProxy_Redirecting" version_id="1020600" version_string="1.2.6"><![CDATA[<xf:css src="DC_LinkProxy.less" />
 <xf:css>
 	.count {
 		-webkit-animation: fadeout .5s calc({$redirect_time} + 1) 1 linear;
@@ -326,4 +326,20 @@
 		
 	</div>
 </div>]]></template>
+  <template type="public" title="DC_LinkProxy_password" version_id="1020600" version_string="1.2.6"><![CDATA[<xf:title>{{ phrase('dc_link_proxy_password') }}</xf:title>
+
+<xf:include template="dc_link_proxy_password_instrunctions"/>
+
+<xf:form action="{{ link('redirect/match-password', null, {'to': $to}) }}" class="block">
+
+	<div class="block-container">
+		<div class="block-body">
+			<xf:formrow rowtype="input"	label="{{ phrase('dc_link_proxy_enter_password') }}" hint="{{ phrase('required') }}">
+				<xf:textbox name="password" placeholder="{{ phrase('dc_link_proxy_enter_password_place') }}" required="required"/>
+			</xf:formrow>
+		</div>
+		<xf:submitrow icon="submit" sticky="true" rowtype="simple"/>
+	</div>
+</xf:form>]]></template>
+  <template type="public" title="dc_link_proxy_password_instrunctions" version_id="1020600" version_string="1.2.6"><![CDATA[]]></template>
 </templates>

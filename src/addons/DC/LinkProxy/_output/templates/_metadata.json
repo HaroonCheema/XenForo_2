@@ -1,0 +1,17 @@
+{
+    "public/DC_LinkProxy_Redirecting.html": {
+        "version_id": 1020600,
+        "version_string": "1.2.6",
+        "hash": "d8947653b5b1aab758f08de94c3fb605"
+    },
+    "public/DC_LinkProxy_password.html": {
+        "version_id": 1020600,
+        "version_string": "1.2.6",
+        "hash": "6d6ce2e52e2d04fd708ba16e759ab885"
+    },
+    "public/dc_link_proxy_password_instrunctions.html": {
+        "version_id": 1020600,
+        "version_string": "1.2.6",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    }
+}
