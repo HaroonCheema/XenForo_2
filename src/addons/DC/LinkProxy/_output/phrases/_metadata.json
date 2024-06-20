@@ -23,11 +23,59 @@
         "version_string": "1.2.6",
         "hash": "f0d5bba1100965e5e55f58cdfd1e768e"
     },
+    "option.DC_LinkProxy_link_replace_text.txt": {
+        "global_cache": false,
+        "version_id": 1020700,
+        "version_string": "1.2.7",
+        "hash": "df7e0871da018c896f61203f161c5627"
+    },
+    "option.DC_LinkProxy_pass_expire_time.txt": {
+        "global_cache": false,
+        "version_id": 1020700,
+        "version_string": "1.2.7",
+        "hash": "1436b188f368b6fc5439a2db733f7dbb"
+    },
+    "option.DC_LinkProxy_pass_length.txt": {
+        "global_cache": false,
+        "version_id": 1020700,
+        "version_string": "1.2.7",
+        "hash": "234886780364fe112fa5493b79145913"
+    },
+    "option.DC_LinkProxy_pass_reset_time.txt": {
+        "global_cache": false,
+        "version_id": 1020700,
+        "version_string": "1.2.7",
+        "hash": "9bd9312ef6dfa55301fc0d43110b3f79"
+    },
     "option.dc_link_proxy_global_password.txt": {
         "global_cache": false,
         "version_id": 1020600,
         "version_string": "1.2.6",
         "hash": "d408013bc7ac4b6d6ca3255dca6e3345"
+    },
+    "option_explain.DC_LinkProxy_link_replace_text.txt": {
+        "global_cache": false,
+        "version_id": 1020700,
+        "version_string": "1.2.7",
+        "hash": "c594783d5995572c7e69fc855b3b18dc"
+    },
+    "option_explain.DC_LinkProxy_pass_expire_time.txt": {
+        "global_cache": false,
+        "version_id": 1020700,
+        "version_string": "1.2.7",
+        "hash": "c51d8916169a1821e541ec6feecd1668"
+    },
+    "option_explain.DC_LinkProxy_pass_length.txt": {
+        "global_cache": false,
+        "version_id": 1020700,
+        "version_string": "1.2.7",
+        "hash": "f7350775a7daeda075ba9d0bcdc97896"
+    },
+    "option_explain.DC_LinkProxy_pass_reset_time.txt": {
+        "global_cache": false,
+        "version_id": 1020700,
+        "version_string": "1.2.7",
+        "hash": "5e6741fcbd32e8ebdb938107f058de34"
     },
     "option_explain.dc_link_proxy_global_password.txt": {
         "global_cache": false,

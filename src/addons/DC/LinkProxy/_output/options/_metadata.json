@@ -1,4 +1,16 @@
 {
+    "DC_LinkProxy_link_replace_text.json": {
+        "hash": "6fbdba90ddb8e460b5dd3e55210bcc5e"
+    },
+    "DC_LinkProxy_pass_expire_time.json": {
+        "hash": "61603e4b663629c24a447c9d19df99a5"
+    },
+    "DC_LinkProxy_pass_length.json": {
+        "hash": "14b3e81fa787b9330621393a666dc42c"
+    },
+    "DC_LinkProxy_pass_reset_time.json": {
+        "hash": "f74397523634fc3b9e0d3bed39b6e32e"
+    },
     "dc_link_proxy_global_password.json": {
         "hash": "4993749eabbdbf72b16d9941eb4f1c50"
     }

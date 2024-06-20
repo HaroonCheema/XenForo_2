@@ -16,7 +16,7 @@ class Redirect extends \XF\Pub\Controller\AbstractController
 
         $adminPassword = $options->dc_link_proxy_global_password;
 
-        if ($visitor['user_id'] && !$visitor->hasPermission('bypassPasswordGroup', 'bypassPassword') && !empty($adminPassword)) {
+        if (!$visitor->hasPermission('bypassPasswordGroup', 'bypassPassword') && !empty($adminPassword)) {
 
             $to = isset($_GET['to']) ? $_GET['to'] : '';
 

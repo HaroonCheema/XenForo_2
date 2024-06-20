@@ -9,6 +9,10 @@ return array (
   'option_explain.DC_LinkProxy_DomainWhiteList' => 'Enter the domain names/hostnames that you do not want to anonymize/redirect. <b>Only one domain per line.</b><br/>
 If you want to white list an entire domain including its sub-domains, <b>only add domain.com.</b><br/>
 If you want to white list a domain\'s sub-domains and not the top level one, <b>add .domain.com.</b>',
+  'option_explain.DC_LinkProxy_link_replace_text' => 'Enter any text which you want to use as the place of link',
+  'option_explain.DC_LinkProxy_pass_expire_time' => 'Enter Password expire time in seconds.',
+  'option_explain.DC_LinkProxy_pass_length' => 'Enter alphanumeric password length',
+  'option_explain.DC_LinkProxy_pass_reset_time' => 'Enter Password reset time in seconds.',
   'option_explain.Fs_NodeIcon_nodeDimensions' => '',
   'option_explain.TvThreads_aggregateCredits' => 'If checked, cast & crew data for TV shows will be fetched all the entire cast & crew for all episodes belonging to a TV show.</br>
 This can be a large amount of data and will affect performance.',
