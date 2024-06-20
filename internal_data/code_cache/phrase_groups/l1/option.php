@@ -208,7 +208,6 @@ return array (
   'option.dbtech_credits_navbar' => 'Navbar tab',
   'option.dbtech_credits_size_words' => 'Size multipliers',
   'option.dbtech_credits_transactions' => 'Transactions per page',
-  'option.dc_link_proxy_global_password' => 'Global Password',
   'option.defaultEmailAddress' => 'Default email address',
   'option.defaultEmailStyleId' => 'Default email style',
   'option.defaultLanguageId' => 'Default language',

@@ -71,12 +71,6 @@
         "version_string": "1.2.7",
         "hash": "9bd9312ef6dfa55301fc0d43110b3f79"
     },
-    "option.dc_link_proxy_global_password.txt": {
-        "global_cache": false,
-        "version_id": 1020600,
-        "version_string": "1.2.6",
-        "hash": "d408013bc7ac4b6d6ca3255dca6e3345"
-    },
     "option_explain.DC_LinkProxy_link_replace_text.txt": {
         "global_cache": false,
         "version_id": 1020700,
@@ -100,12 +94,6 @@
         "version_id": 1020700,
         "version_string": "1.2.7",
         "hash": "5e6741fcbd32e8ebdb938107f058de34"
-    },
-    "option_explain.dc_link_proxy_global_password.txt": {
-        "global_cache": false,
-        "version_id": 1020600,
-        "version_string": "1.2.6",
-        "hash": "7c60882ec305432a88d4db44c62f0cd5"
     },
     "permission.bypassPasswordGroup_bypassPassword.txt": {
         "global_cache": false,
