@@ -18,14 +18,13 @@ class LinkProxy extends AbstractController
         $perPage = 30;
         $finder->limitByPage($page, $perPage);
         $viewpParams = [
-            'lists'=> $finder->fetch(),
-            'page'=> $page,
-            'perPage'=> $perPage,
-            'total'=> $finder->total(),
+            'lists' => $finder->fetch(),
+            'page' => $page,
+            'perPage' => $perPage,
+            'total' => $finder->total(),
 
         ];
         return $this->view('DC\LinkProxy', 'link_proxy_list', $viewpParams);
-
     }
 
     public function actionAdd(ParameterBag $params)
@@ -33,14 +32,14 @@ class LinkProxy extends AbstractController
         $userGroupRepo =  \xf::app()->Repository('XF:UserGroup');
         $userGroup = $userGroupRepo->getUserGroupTitlePairs();
         $viewpParams = [
-        'userGroup'=>$userGroup,
+            'userGroup' => $userGroup,
         ];
         return $this->view('DC\LinkProxy', 'link_proxy_add_settings', $viewpParams);
     }
 
     public function actionEdit(ParameterBag $params)
     {
-        if (!$params['list_id']){
+        if (!$params['list_id']) {
             throw $this->exception(
                 $this->error(\XF::phrase("link_param_issue"))
             );
@@ -49,8 +48,8 @@ class LinkProxy extends AbstractController
         $userGroup = $userGroupRepo->getUserGroupTitlePairs();
         $link = $this->finder('DC\LinkProxy:LinkProxyList')->where('list_id', $params['list_id'])->fetchOne();
         $viewpParams = [
-        'userGroup'=>$userGroup,
-        'list'=>$link,
+            'userGroup' => $userGroup,
+            'list' => $link,
 
         ];
         return $this->view('DC\LinkProxy', 'link_proxy_add_settings', $viewpParams);
@@ -64,30 +63,28 @@ class LinkProxy extends AbstractController
     {
         $input = $this->filterInput();
         $finder = $this->finder('DC\LinkProxy:LinkProxyList');
-        
+
         $existed_record = $finder->where('user_group_id',  $input['user_group_id'])->fetchOne();
-        
-        if ($existed_record){
+
+        if ($existed_record) {
             $record = $existed_record;
-        }else{
+        } else {
             $record = $this->em()->create('DC\LinkProxy:LinkProxyList');
         }
         $record->bulkSet([
-            'user_group_id'=> $input['user_group_id'],
-            'redirect_time'=> $input['redirect_time'],
-            'link_redirect_html'=> $input['link_redirect_html'],
+            'user_group_id' => $input['user_group_id'],
+            'redirect_time' => $input['redirect_time'],
+            'link_redirect_html' => $input['link_redirect_html'],
         ]);
         $record->save();
 
-        $viewpParams = [
-       
-        ];
+        $viewpParams = [];
         return $this->redirect(
             $this->buildLink('link-proxy/')
         );
         return $this->view('DC\LinkProxy', 'link_proxy_add_settings', $viewpParams);
     }
-    
+
 
     protected function filterInput()
     {
@@ -98,7 +95,7 @@ class LinkProxy extends AbstractController
             'link_id' => 'str'
 
         ]);
-        if ($filters['user_group_id'] == '' || $filters['redirect_time'] == '' || $filters['redirect_time'] < 0){
+        if ($filters['user_group_id'] == '' || $filters['redirect_time'] == '' || $filters['redirect_time'] < 0) {
             throw $this->exception(
                 $this->error(\XF::phrase("link_fill_all_fields"))
             );
@@ -106,17 +103,34 @@ class LinkProxy extends AbstractController
         return $filters;
     }
 
-    public function actionDelete( $params)
+    public function actionTfaPass()
     {
-        if (!$params['list_id']){
+        $finder = $this->finder('FS\CRUD:Crud')->order('id', 'DESC');
+
+        $finder = \XF::finder('DC\LinkProxy:TFAuth')->where('expired_at', '>', time());
+
+        $viewParams = [
+            'data' => $finder->fetch(),
+
+            'total' => $finder->total(),
+
+            'totalReturn' => count($finder->fetch()),
+        ];
+
+        return $this->view('DC\LinkProxy:LinkProxy\TfaPass', 'dc_link_proxy_show_tfa_pass', $viewParams);
+    }
+
+    public function actionDelete($params)
+    {
+        if (!$params['list_id']) {
             throw $this->exception(
                 $this->error(\XF::phrase("link_param_issue"))
             );
         }
-        
+
         $replyExists = $this->assertDataExists($params->list_id);
-        
-     
+
+
         /* @var \XF\ControllerPlugin\Delete $plugin */
         $plugin = $this->plugin('XF:Delete');
         return $plugin->actionDelete(
@@ -124,7 +138,7 @@ class LinkProxy extends AbstractController
             $this->buildLink('link-proxy/delete', $replyExists),
             null,
             $this->buildLink('link-proxy'),
-            \XF::phrase('fs_link_sure_delete',['title'=> $replyExists->UserGroup->title]),
+            \XF::phrase('fs_link_sure_delete', ['title' => $replyExists->UserGroup->title]),
         );
     }
 
@@ -132,5 +146,4 @@ class LinkProxy extends AbstractController
     {
         return $this->assertRecordExists('DC\LinkProxy:LinkProxyList', $id, $extraWith, $phraseKey);
     }
-  
 }

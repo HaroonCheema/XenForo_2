@@ -19,6 +19,7 @@ return array (
   'cron_entry.dbtechEcommerceIncome' => 'DragonByte eCommerce: Record daily income statistics',
   'cron_entry.dbtech_credits' => 'DragonByte Tech: Credits - Geolocation',
   'cron_entry.dbtecheCommerceGeoIp' => 'DragonByte eCommerce: Update GeoIP database',
+  'cron_entry.dcLinkProxyResetPassword' => 'D.C Style - Link Proxy Reset Password',
   'cron_entry.deleteExpiredBans' => 'Delete expired bans',
   'cron_entry.downgradeExpired' => 'Downgrade expired user upgrades',
   'cron_entry.emailBounce' => 'Process email bounces',

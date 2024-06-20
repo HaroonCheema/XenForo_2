@@ -12,11 +12,7 @@ class Redirect extends \XF\Pub\Controller\AbstractController
 
         $visitor = \XF::visitor();
 
-        $options = $this->app()->options();
-
-        $adminPassword = $options->dc_link_proxy_global_password;
-
-        if (!$visitor->hasPermission('bypassPasswordGroup', 'bypassPassword') && !empty($adminPassword)) {
+        if (!$visitor->hasPermission('bypassPasswordGroup', 'bypassPassword')) {
 
             $to = isset($_GET['to']) ? $_GET['to'] : '';
 
@@ -65,8 +61,6 @@ class Redirect extends \XF\Pub\Controller\AbstractController
             }
         }
 
-
-
         $redirect_time = $user_link_setting ? $user_link_setting->redirect_time : $this->app()->options()->DC_LinkProxy_AutoRedirection__time;
         $html = $user_link_setting ? $user_link_setting->link_redirect_html : '';
 
@@ -91,16 +85,17 @@ class Redirect extends \XF\Pub\Controller\AbstractController
 
         $encodedUrl = isset($_GET['to']) ? $_GET['to'] : '';
 
-        $options = $this->app()->options();
-
         $password = $input['password'];
-        $adminPassword = $options->dc_link_proxy_global_password;
 
-        if ($password != $adminPassword) {
+        $getPassword = \XF::finder('DC\LinkProxy:TFAuth')->where('auth_password', $password)->where('expired_at', '>', time())->fetchOne();
+
+        if (!isset($getPassword->id)) {
             throw $this->exception($this->notFound(\XF::phrase('dc_link_proxy_password_not_matching')));
         }
 
-        $encodedUrl = isset($_GET['to']) ? $_GET['to'] : '';
+        if ($password != $getPassword->auth_password) {
+            throw $this->exception($this->notFound(\XF::phrase('dc_link_proxy_password_not_matching')));
+        }
 
         if (!$encodedUrl) return $this->error(\XF::phrase('DC_LinkProxy_url_not_valid'));
         $visitor = \XF::visitor();

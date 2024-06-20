@@ -1,4 +1,16 @@
 {
+    "admin_navigation.dc_link_proxy_tfa_auth.txt": {
+        "global_cache": false,
+        "version_id": 1020700,
+        "version_string": "1.2.7",
+        "hash": "5c3e7e9e81d3ee4a8ff7f389fe540c5e"
+    },
+    "cron_entry.dcLinkProxyResetPassword.txt": {
+        "global_cache": false,
+        "version_id": 1020700,
+        "version_string": "1.2.7",
+        "hash": "668f7369eae4189e09e2f7dab8f60bb0"
+    },
     "dc_link_proxy_enter_password.txt": {
         "global_cache": false,
         "version_id": 1020600,
@@ -22,6 +34,18 @@
         "version_id": 1020600,
         "version_string": "1.2.6",
         "hash": "f0d5bba1100965e5e55f58cdfd1e768e"
+    },
+    "dc_link_proxy_tfa_auth_pass.txt": {
+        "global_cache": false,
+        "version_id": 1020700,
+        "version_string": "1.2.7",
+        "hash": "8546fc20a770ffbe7cfb0a3a71d1ae47"
+    },
+    "dc_link_proxy_tfa_pass.txt": {
+        "global_cache": false,
+        "version_id": 1020700,
+        "version_string": "1.2.7",
+        "hash": "dc647eb65e6711e155375218212b3964"
     },
     "option.DC_LinkProxy_link_replace_text.txt": {
         "global_cache": false,

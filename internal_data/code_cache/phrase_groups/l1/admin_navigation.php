@@ -93,6 +93,7 @@ return array (
   'admin_navigation.dbtechEcomStoreCreditLog' => 'Store credit log',
   'admin_navigation.dbtechEcomTransactions' => 'Transaction log',
   'admin_navigation.dbtechEcommerce' => 'DragonByte eCommerce',
+  'admin_navigation.dc_link_proxy_tfa_auth' => '2FA Passwords',
   'admin_navigation.devNavigation' => 'Navigation',
   'admin_navigation.devPermissions' => 'Permissions',
   'admin_navigation.development' => 'Development',
