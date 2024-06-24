@@ -35,7 +35,7 @@ return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
 	$__finalCompiled = '';
-	$__templater->pageParams['pageTitle'] = $__templater->preEscaped('2FA Active Passwords');
+	$__templater->pageParams['pageTitle'] = $__templater->preEscaped('Link Proxy Active Passwords');
 	$__finalCompiled .= '
 
 ';

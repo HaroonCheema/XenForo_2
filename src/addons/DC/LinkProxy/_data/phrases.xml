@@ -10,12 +10,14 @@
   <phrase title="admin_navigation.dc_link_proxy_tfa_auth" version_id="1020700" version_string="1.2.7"><![CDATA[2FA Passwords]]></phrase>
   <phrase title="admin_navigation.lind_proxy" version_id="1010300" version_string="1.1.3"><![CDATA[Link Proxy]]></phrase>
   <phrase title="admin_navigation.lind_proxy_list" version_id="1010300" version_string="1.1.3"><![CDATA[List]]></phrase>
+  <phrase title="code_copied_to_clipboard" version_id="1020700" version_string="1.2.7"><![CDATA[Code copied to clipboard]]></phrase>
   <phrase title="cron_entry.dcLinkProxyResetPassword" version_id="1020700" version_string="1.2.7"><![CDATA[D.C Style - Link Proxy Reset Password]]></phrase>
+  <phrase title="dc_explain_iframe_use" version_id="1020700" version_string="1.2.7"><![CDATA[To embed this page in WordPress or anywhere, click the Copy button to copy the following code and paste it on any web-page where you want to display it.]]></phrase>
   <phrase title="dc_link_proxy_enter_password" version_id="1020600" version_string="1.2.6"><![CDATA[Password]]></phrase>
   <phrase title="dc_link_proxy_enter_password_place" version_id="1020600" version_string="1.2.6"><![CDATA[Enter password here...!]]></phrase>
   <phrase title="dc_link_proxy_password" version_id="1020600" version_string="1.2.6"><![CDATA[Password Match]]></phrase>
   <phrase title="dc_link_proxy_password_not_matching" version_id="1020600" version_string="1.2.6"><![CDATA[Incorrect password. Please try again.]]></phrase>
-  <phrase title="dc_link_proxy_tfa_auth_pass" version_id="1020700" version_string="1.2.7"><![CDATA[2FA Active Passwords]]></phrase>
+  <phrase title="dc_link_proxy_tfa_auth_pass" version_id="1020700" version_string="1.2.7"><![CDATA[Link Proxy Active Passwords]]></phrase>
   <phrase title="dc_link_proxy_tfa_pass" version_id="1020700" version_string="1.2.7"><![CDATA[Password]]></phrase>
   <phrase title="fs_Link_delete" version_id="1010300" version_string="1.1.3"><![CDATA[Delete]]></phrase>
   <phrase title="fs_link_edit" version_id="1010300" version_string="1.1.3"><![CDATA[Edit]]></phrase>
@@ -34,7 +36,7 @@
   <phrase title="option.DC_LinkProxy_AutoRedirection" version_id="1000000" version_string="1.0.0"><![CDATA[Enable automatic redirection]]></phrase>
   <phrase title="option.DC_LinkProxy_AutoRedirection__time" version_id="1010300" version_string="1.1.3"><![CDATA[Default Auto redirection time]]></phrase>
   <phrase title="option.DC_LinkProxy_DomainWhiteList" version_id="1000000" version_string="1.0.0"><![CDATA[Domain White List]]></phrase>
-  <phrase title="option.DC_LinkProxy_link_replace_text" version_id="1020700" version_string="1.2.7"><![CDATA[Link replace text]]></phrase>
+  <phrase title="option.DC_LinkProxy_link_replace_text" version_id="1020700" version_string="1.2.7"><![CDATA[Alternate Text for Links]]></phrase>
   <phrase title="option.DC_LinkProxy_pass_expire_time" version_id="1020700" version_string="1.2.7"><![CDATA[Password expire time]]></phrase>
   <phrase title="option.DC_LinkProxy_pass_length" version_id="1020700" version_string="1.2.7"><![CDATA[Password length]]></phrase>
   <phrase title="option.DC_LinkProxy_pass_reset_time" version_id="1020700" version_string="1.2.7"><![CDATA[Password reset time]]></phrase>
@@ -45,9 +47,9 @@
   <phrase title="option_explain.DC_LinkProxy_DomainWhiteList" version_id="1000000" version_string="1.0.0"><![CDATA[Enter the domain names/hostnames that you do not want to anonymize/redirect. <b>Only one domain per line.</b><br/>
 If you want to white list an entire domain including its sub-domains, <b>only add domain.com.</b><br/>
 If you want to white list a domain's sub-domains and not the top level one, <b>add .domain.com.</b>]]></phrase>
-  <phrase title="option_explain.DC_LinkProxy_link_replace_text" version_id="1020700" version_string="1.2.7"><![CDATA[Enter any text which you want to use as the place of link]]></phrase>
+  <phrase title="option_explain.DC_LinkProxy_link_replace_text" version_id="1020700" version_string="1.2.7"><![CDATA[Enter any text which you want to use as title of the link]]></phrase>
   <phrase title="option_explain.DC_LinkProxy_pass_expire_time" version_id="1020700" version_string="1.2.7"><![CDATA[Enter Password expire time in seconds.]]></phrase>
-  <phrase title="option_explain.DC_LinkProxy_pass_length" version_id="1020700" version_string="1.2.7"><![CDATA[Enter alphanumeric password length]]></phrase>
+  <phrase title="option_explain.DC_LinkProxy_pass_length" version_id="1020700" version_string="1.2.7"><![CDATA[Enter password length]]></phrase>
   <phrase title="option_explain.DC_LinkProxy_pass_reset_time" version_id="1020700" version_string="1.2.7"><![CDATA[Enter Password reset time in seconds.]]></phrase>
   <phrase title="option_explain.fs_link_group_apply_settings" version_id="1010400" version_string="1.1.4"><![CDATA[If a user has multiple groups tell either the time of group with high-style priority is applied or with low priority.]]></phrase>
   <phrase title="option_explain.fs_link_html_position" version_id="1010300" version_string="1.1.3"><![CDATA[]]></phrase>

@@ -4,48 +4,101 @@ namespace DC\LinkProxy\Cron;
 
 class TFAuth
 {
+//    public static function resetPassword()
+//    {
+//        $options = \XF::options();
+//
+//        $checkResetPassword = \XF::finder('DC\LinkProxy:TFAuth')->order('id', 'DESC')->fetchOne();
+//
+//        if (isset($checkResetPassword->id)) {
+//
+//            $resetTime = $checkResetPassword->created_at + intval($options->DC_LinkProxy_pass_reset_time);
+//            if ($resetTime < time()) {
+//                $tfaPassword = self::generateTfaPassword(intval($options->DC_LinkProxy_pass_length));
+//
+//                $insertPassword = \XF::em()->create('DC\LinkProxy:TFAuth');
+//
+//                $insertPassword->expired_at = time() + intval($options->DC_LinkProxy_pass_expire_time);
+//                $insertPassword->auth_password = $tfaPassword;
+//
+//                $insertPassword->save();
+//            }
+//        } else {
+//            $tfaPassword = self::generateTfaPassword(intval($options->DC_LinkProxy_pass_length));
+//
+//            $insertPassword = \XF::em()->create('DC\LinkProxy:TFAuth');
+//
+//            $insertPassword->expired_at = time() + intval($options->DC_LinkProxy_pass_expire_time);
+//            $insertPassword->auth_password = $tfaPassword;
+//
+//            $insertPassword->save();
+//        }
+//
+//        $deleteExpiredPasswords = \XF::finder('DC\LinkProxy:TFAuth')->where('expired_at', '<', time())->fetch();
+//
+//        if (count($deleteExpiredPasswords)) {
+//            foreach ($deleteExpiredPasswords as $value) {
+//                $value->delete();
+//            }
+//        }
+//    }
+    
+    
     public static function resetPassword()
     {
         $options = \XF::options();
+        $currentTime = time();
 
-        $checkResetPassword = \XF::finder('DC\LinkProxy:TFAuth')->order('id', 'DESC')->fetchOne();
+        $passwordResetTime = intval($options->DC_LinkProxy_pass_reset_time);
+        $passwordExpaireTime = intval($options->DC_LinkProxy_pass_expire_time);
+        $passwordLength = intval($options->DC_LinkProxy_pass_length);
+        
+        
+        self::deleteExpirePasswords();                                                 // Delete expired passwords
 
-        if (isset($checkResetPassword->id)) {
+        // Check if there are any existing passwords
+        $existingPassword = \XF::finder('DC\LinkProxy:TFAuth')
+            ->order('id', 'DESC')
+            ->fetchOne();
+        
+        $tfaPassword = self::generateTfaPassword($passwordLength);                     // Generate new TFA password
 
-            $resetTime = $checkResetPassword->created_at + intval($options->DC_LinkProxy_pass_reset_time);
-            if ($resetTime < time()) {
-                $tfaPassword = self::generateTfaPassword(intval($options->DC_LinkProxy_pass_length));
-
-                $insertPassword = \XF::em()->create('DC\LinkProxy:TFAuth');
-
-                $insertPassword->expired_at = time() + intval($options->DC_LinkProxy_pass_expire_time);
-                $insertPassword->auth_password = $tfaPassword;
-
-                $insertPassword->save();
-            }
-        } else {
-            $tfaPassword = self::generateTfaPassword(intval($options->DC_LinkProxy_pass_length));
-
-            $insertPassword = \XF::em()->create('DC\LinkProxy:TFAuth');
-
-            $insertPassword->expired_at = time() + intval($options->DC_LinkProxy_pass_expire_time);
-            $insertPassword->auth_password = $tfaPassword;
-
-            $insertPassword->save();
+        if (!$existingPassword)                                                 
+        {
+            // Create a new TFAuth entity
+            $newTFAuth = \XF::em()->create('DC\LinkProxy:TFAuth');
+            $newTFAuth->expired_at = $currentTime + $passwordExpaireTime;
+            $newTFAuth->auth_password = $tfaPassword;
+            $newTFAuth->save();
         }
-
-        $deleteExpiredPasswords = \XF::finder('DC\LinkProxy:TFAuth')->where('expired_at', '<', time())->fetch();
-
-        if (count($deleteExpiredPasswords)) {
-            foreach ($deleteExpiredPasswords as $value) {
-                $value->delete();
-            }
+        elseif ($existingPassword->created_at + $passwordResetTime < $currentTime)   // reset password (update the $existing record )
+        {
+            $existingPassword->created_at = $currentTime;
+            $existingPassword->expired_at = $currentTime + $passwordExpaireTime;
+            $existingPassword->auth_password = $tfaPassword;
+            $existingPassword->save();    
         }
+          
     }
+    
+    public static function deleteExpirePasswords()   // Delete expired passwords
+    {
+        $currentTime = time();
+        
+        $expiredPasswords = \XF::finder('DC\LinkProxy:TFAuth')
+            ->where('expired_at', '<', $currentTime)
+            ->fetch();
+
+        foreach ($expiredPasswords as $expiredPassword) 
+        {
+            $expiredPassword->delete();
+        } 
+    }
+
 
     public static function generateTfaPassword($length = 10)
     {
-        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $characters = '0123456789';
         $charactersLength = strlen($characters);
         $randomString = '';
         for ($i = 0; $i < $length; $i++) {

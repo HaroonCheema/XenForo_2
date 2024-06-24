@@ -9,7 +9,6 @@ class Redirect extends \XF\Pub\Controller\AbstractController
 {
     public function actionIndex()
     {
-
         $visitor = \XF::visitor();
 
         if (!$visitor->hasPermission('bypassPasswordGroup', 'bypassPassword')) {
@@ -28,7 +27,7 @@ class Redirect extends \XF\Pub\Controller\AbstractController
         if (!$encodedUrl) return $this->error(\XF::phrase('DC_LinkProxy_url_not_valid'));
         $visitor = \XF::visitor();
         $urlDecoded = base64_decode($encodedUrl);
-
+        
         if (filter_var($urlDecoded, FILTER_VALIDATE_URL) === FALSE) {
             return $this->error(\XF::phrase('DC_LinkProxy_url_not_valid'));
         }

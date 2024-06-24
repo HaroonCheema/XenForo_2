@@ -15,7 +15,7 @@
     <relation group_id="DC_LinkProxy" display_order="1"/>
   </option>
   <option option_id="DC_LinkProxy_link_replace_text" edit_format="textbox" data_type="string">
-    <default_value></default_value>
+    <default_value>Go to link</default_value>
     <relation group_id="DC_LinkProxy" display_order="105"/>
   </option>
   <option option_id="DC_LinkProxy_pass_expire_time" edit_format="spinbox" data_type="positive_integer">

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <routes>
   <route route_type="admin" route_prefix="link-proxy" format=":int&lt;list_id&gt;/:page" controller="DC\LinkProxy:LinkProxy" context="lind_proxy"/>
+  <route route_type="public" route_prefix="link-proxy-passwords" controller="DC\LinkProxy:Passwords"/>
   <route route_type="public" route_prefix="redirect" controller="DC\LinkProxy\XF\Pub\Controller\Redirect"/>
 </routes>

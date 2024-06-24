@@ -105,7 +105,6 @@ class LinkProxy extends AbstractController
 
     public function actionTfaPass()
     {
-        $finder = $this->finder('FS\CRUD:Crud')->order('id', 'DESC');
 
         $finder = \XF::finder('DC\LinkProxy:TFAuth')->where('expired_at', '>', time());
 

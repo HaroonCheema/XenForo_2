@@ -2,34 +2,43 @@
 <templates>
   <template type="admin" title="dc_link_proxy_show_tfa_pass" version_id="1020700" version_string="1.2.7"><![CDATA[<xf:title>{{ phrase('dc_link_proxy_tfa_auth_pass') }}</xf:title>
 
-<xf:form action="{{ link($prefix . '/toggle') }}" class="block" ajax="true">
+<div class="block-container">
+	<xf:if is="$data is not empty">
+		<div class="block-body">
+			<xf:datalist data-xf-init="responsive-data-list">
 
-	<div class="block-container">
+				<xf:macro
+						  name="table_list"
+						  arg-data="{$data}"
+						  />
 
-		<xf:if is="$data is not empty">
-			<div class="block-body">
-				<xf:datalist data-xf-init="responsive-data-list">
-
-					<xf:macro
-							  name="table_list"
-							  arg-data="{$data}"
-							  />
-
-				</xf:datalist>
-				<div class="block-footer">
-					<span class="block-footer-counter"
-						  >{{ display_totals($totalReturn, $total) }}</span
-						>
-				</div>
-
+			</xf:datalist>
+			<div class="block-footer">
+				<span class="block-footer-counter"
+					  >{{ display_totals($totalReturn, $total) }}</span
+					>
 			</div>
-			<xf:else />
-			<div class="block-body block-row">{{ phrase('no_items_have_been_created_yet') }}</div>
 
-		</xf:if>
+		</div>
+		<xf:else />
+		<div class="block-body block-row">{{ phrase('no_items_have_been_created_yet') }}</div>
 
+	</xf:if>
+</div>
+
+<div class="block-body block-row"></div>
+
+<div class="block-container">
+	<div class="block-body">
+		<div class="blockMessage blockMessage--important blockMessage--iconic">
+			{{ phrase('dc_explain_iframe_use') }}
+			<div style="margin: 1em 0; text-align: center">
+				<xf:macro name="copy_emmbed_code" />
+			</div>
+		</div>
 	</div>
-</xf:form>
+</div>
+
 <xf:macro
 		  name="table_list"
 		  arg-data="!"
@@ -39,10 +48,30 @@
 	</xf:datarow>
 	<xf:foreach loop="{$data}" value="$value">
 		<xf:datarow>
-
 			<xf:cell> {$value.auth_password} </xf:cell>
 		</xf:datarow>
 	</xf:foreach>
+</xf:macro>
+
+
+<xf:macro name="copy_emmbed_code">
+	<code class="js-copyTarget">
+		 &lt;iframe src="{{ link_type('public', 'canonical:link-proxy-passwords') }}" style="border:none; width:100%; height:350px;" title="Proxy-link passwords page"&gt;&lt;/iframe&gt;
+	</code>
+	<xf:button icon="copy"
+		data-xf-init="copy-to-clipboard"
+		data-copy-target=".js-copyTarget"
+		data-success="{{ phrase('code_copied_to_clipboard') }}"
+		class="button--link is-hidden" />
+</xf:macro>
+
+<xf:macro name="copy_password" arg-password="!">
+	<span class="js-passwordCopyTarget">{$password}</span>
+	<xf:button icon="copy"
+		data-xf-init="copy-to-clipboard"
+		data-copy-target=".js-passwordCopyTarget"
+		data-success="{{ phrase('password_copied_to_clipboard') }}"
+		class="button--link is-hidden" />
 </xf:macro>]]></template>
   <template type="admin" title="link_proxy_add_settings" version_id="1010400" version_string="1.1.4"><![CDATA[<xf:title>{{ phrase('link_proxy_title') }}</xf:title>
 
@@ -174,6 +203,140 @@
 		</xf:datarow>
 	</xf:foreach>
 </xf:macro>]]></template>
+  <template type="public" title="DC_CUSTOM_PAGE_CONTAINER" version_id="1020700" version_string="1.2.7"><![CDATA[<!DOCTYPE html>
+<html id="XF" lang="{$xf.language.language_code}" dir="{$xf.language.text_direction}"
+	data-app="public"
+	data-template="{$template}"
+	data-container-key="{$containerKey}"
+	data-content-key="{$contentKey}"
+	data-logged-in="{{ $xf.visitor.user_id ? 'true' : 'false' }}"
+	data-cookie-prefix="{$xf.cookie.prefix}"
+	data-csrf="{{ csrf_token()|escape('js') }}"
+	class="has-no-js {{ $template ? 'template-' . $template : '' }}"
+	{{ $xf.runJobs ? ' data-run-jobs=""' : '' }}>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+	<xf:set var="$siteName" value="{$xf.options.boardTitle}" />
+	<xf:set var="$h1"><xf:h1 fallback="{$siteName}" /></xf:set>
+	<xf:set var="$description"><xf:description /></xf:set>
+
+
+	<title><xf:title formatter="%s | %s" fallback="{$xf.options.boardTitle}" page="{$pageNumber}" /></title>
+
+	
+		<xf:comment>
+	<xf:if is="$xf.reply.template == 'bh_item_detail'">
+		<title>Forum List Custom Title</title>
+	<xf:else />
+		<title><xf:title formatter="%s | %s" fallback="{$xf.options.boardTitle}" page="{$pageNumber}" /></title>
+	</xf:if>
+			</xf:comment>
+
+	<link rel="manifest" href="{{ base_url('webmanifest.php') }}">
+	<xf:if is="property('metaThemeColor')">
+		<meta name="theme-color" content="{{ parse_less_color(property('metaThemeColor')) }}" />
+	</xf:if>
+
+	<meta name="apple-mobile-web-app-title" content="{{ $xf.options.boardShortTitle ?: $xf.options.boardTitle }}">
+	<xf:if is="property('publicIconUrl')">
+		<link rel="apple-touch-icon" href="{{ base_url(property('publicIconUrl', true)) }}">
+	<xf:elseif is="property('publicMetadataLogoUrl')" />
+		<link rel="apple-touch-icon" href="{{ base_url(property('publicMetadataLogoUrl')) }}" />
+	</xf:if>
+
+	<xf:foreach loop="$head" value="$headTag">
+		{$headTag}
+	</xf:foreach>
+
+	<xf:if is="!$head.meta_site_name && $siteName is not empty">
+		<xf:macro template="metadata_macros" name="site_name" arg-siteName="{$siteName}" arg-output="{{ true }}" />
+	</xf:if>
+	<xf:if is="!$head.meta_type">
+		<xf:macro template="metadata_macros" name="type" arg-type="website" arg-output="{{ true }}" />
+	</xf:if>
+	<xf:if is="!$head.meta_title">
+		<xf:macro template="metadata_macros" name="title" arg-title="{{ page_title() ?: $siteName }}" arg-output="{{ true }}" />
+	</xf:if>
+	<xf:if is="!$head.meta_description && $description is not empty && $pageDescriptionMeta">
+		<xf:macro template="metadata_macros" name="description" arg-description="{$description}" arg-output="{{ true }}" />
+	</xf:if>
+	<xf:if is="!$head.meta_share_url">
+		<xf:macro template="metadata_macros" name="share_url" arg-shareUrl="{$xf.fullUri}" arg-output="{{ true }}" />
+	</xf:if>
+	<xf:if is="!$head.meta_image_url && property('publicMetadataLogoUrl')">
+		<xf:macro template="metadata_macros" name="image_url"
+			arg-imageUrl="{{ base_url(property('publicMetadataLogoUrl'), true) }}"
+			arg-output="{{ true }}" />
+	</xf:if>
+
+	<xf:macro template="helper_js_global" name="head" arg-app="public" />
+
+	<xf:if is="property('publicFaviconUrl')">
+		<link rel="icon" type="image/png" href="{{ base_url(property('publicFaviconUrl'), true) }}" sizes="32x32" />
+	</xf:if>
+	<xf:include template="google_analytics" />
+</head>
+	
+	
+	
+	
+	
+<body data-template="{$template}">
+<div class="p-pageWrapper" id="top">
+<div class="p-body">
+	<div class="p-body-inner">
+		<!--XF:EXTRA_OUTPUT-->
+
+
+		<xf:macro template="browser_warning_macros" name="javascript" />
+		<xf:macro template="browser_warning_macros" name="browser" />
+
+		<xf:if is="$headerHtml is not empty">
+			<div class="p-body-header">
+				{$headerHtml|raw}
+			</div>
+		<xf:elseif contentcheck="true" />
+			<div class="p-body-header">
+			<xf:contentcheck>
+				<xf:if contentcheck="true">
+					<div class="p-title {{ $noH1 ? 'p-title--noH1' : '' }}">
+					<xf:contentcheck>
+						<xf:if is="!$noH1">
+							<h1 class="p-title-value">{$h1}</h1>
+						</xf:if>
+						<xf:if contentcheck="true">
+							<div class="p-title-pageAction"><xf:contentcheck><xf:pageaction /></xf:contentcheck></div>
+						</xf:if>
+					</xf:contentcheck>
+					</div>
+				</xf:if>
+
+				<xf:if is="$description is not empty">
+					<div class="p-description">{$description}</div>
+				</xf:if>
+			</xf:contentcheck>
+			</div>
+		</xf:if>
+
+		<div class="p-body-main">
+			<div class="p-body-content">
+				<div class="p-body-pageContent">{$content|raw}</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+</div> <!-- closing p-pageWrapper -->
+	
+	
+
+
+
+</body>
+</html>]]></template>
   <template type="public" title="DC_LinkProxy.js" version_id="1010400" version_string="1.1.4"><![CDATA[<xf:js>
 	$(document).ready(function() {
 		var n = $('#DC_LinkProxy_AutoRedirection__timer').html() - 1;
@@ -386,4 +549,39 @@
 	</div>
 </xf:form>]]></template>
   <template type="public" title="dc_link_proxy_password_instrunctions" version_id="1020600" version_string="1.2.6"><![CDATA[]]></template>
+  <template type="public" title="dc_link_proxy_passwords" version_id="1020700" version_string="1.2.7"><![CDATA[<xf:title>{{ phrase('dc_link_proxy_tfa_auth_pass') }}</xf:title>
+
+<xf:page option="template">DC_CUSTOM_PAGE_CONTAINER</xf:page>
+
+<div class="block-container">
+	<xf:if is="$passwords is not empty">
+		<div class="block-body">
+			<xf:datalist data-xf-init="responsive-data-list">
+				<xf:datarow rowtype="header">
+					<xf:cell> {{ phrase('dc_link_proxy_tfa_pass') }} </xf:cell>
+				</xf:datarow>
+				<xf:foreach loop="$passwords" value="$value">
+					<xf:datarow>
+						<xf:cell> {$value.auth_password} </xf:cell>
+					</xf:datarow>
+				</xf:foreach>
+			</xf:datalist>
+
+			<div class="block-footer">
+				<span class="block-footer-counter">{{ display_totals($passwords, $total) }}</span>
+			</div>
+		</div>
+		<xf:else />
+		<div class="block-body block-row">{{ phrase('no_items_have_been_created_yet') }}</div>
+	</xf:if>
+</div>
+
+<xf:macro name="copy_password" arg-password="!">
+	<span class="js-passwordCopyTarget">{$password}</span>
+	<xf:button icon="copy"
+		data-xf-init="copy-to-clipboard"
+		data-copy-target=".js-passwordCopyTarget"
+		data-success="{{ phrase('password_copied_to_clipboard') }}"
+		class="button--link is-hidden" />
+</xf:macro>]]></template>
 </templates>

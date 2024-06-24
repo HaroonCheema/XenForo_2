@@ -7,7 +7,7 @@ return array (
   'option.DC_LinkProxy_AutoRedirection' => 'Enable automatic redirection',
   'option.DC_LinkProxy_AutoRedirection__time' => 'Default Auto redirection time',
   'option.DC_LinkProxy_DomainWhiteList' => 'Domain White List',
-  'option.DC_LinkProxy_link_replace_text' => 'Link replace text',
+  'option.DC_LinkProxy_link_replace_text' => 'Alternate Text for Links',
   'option.DC_LinkProxy_pass_expire_time' => 'Password expire time',
   'option.DC_LinkProxy_pass_length' => 'Password length',
   'option.DC_LinkProxy_pass_reset_time' => 'Password reset time',
