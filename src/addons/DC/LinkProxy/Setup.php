@@ -21,12 +21,33 @@ class Setup extends AbstractSetup
         $this->createTabeForLinks();
     }
 
+    /**
+     * @param array $stateChanges
+     *
+     * @throws \Exception
+     * @throws \XF\PrintableException
+     */
+    public function postInstall(array &$stateChanges)
+    {
+        /** @var \XF\Mvc\Router $router */
+        $router = $this->app->container('router.public');
+
+        $link = $router->buildLink('canonical:link-proxy-passwords');
+
+        $embedLink = \XF::em()->create('DC\LinkProxy:EmbedLink');
+
+        $embedLink->embed_link = $link;
+
+        $embedLink->save();
+    }
+
 
     public function uninstallStep1()
     {
         $sm = $this->schemaManager();
         $sm->dropTable('fs_link_Proxy_list');
         $sm->dropTable('fs_link_Proxy_tfa_auth');
+        $sm->dropTable('fs_link_Proxy_embed_link');
     }
 
     protected function createTabeForLinks()
@@ -46,15 +67,19 @@ class Setup extends AbstractSetup
             $table->addColumn('expired_at', 'int');
             $table->addPrimaryKey('id');
         });
+
+        $this->createTable('fs_link_Proxy_embed_link', function (\XF\Db\Schema\Create $table) {
+            $table->addColumn('id', 'int')->autoIncrement();
+            $table->addColumn('embed_link', 'mediumtext');
+            $table->addPrimaryKey('id');
+        });
     }
 
-    public function upgrade1020800Step1()
+    public function upgrade1020900Step1()
     {
-        $this->createTable('fs_link_Proxy_tfa_auth', function (\XF\Db\Schema\Create $table) {
+        $this->createTable('fs_link_Proxy_embed_link', function (\XF\Db\Schema\Create $table) {
             $table->addColumn('id', 'int')->autoIncrement();
-            $table->addColumn('auth_password', 'mediumtext');
-            $table->addColumn('created_at', 'int');
-            $table->addColumn('expired_at', 'int');
+            $table->addColumn('embed_link', 'mediumtext');
             $table->addPrimaryKey('id');
         });
     }
@@ -63,16 +88,18 @@ class Setup extends AbstractSetup
      * @param $previousVersion
      * @param array $stateChanges
      */
-    protected function postUpgrade1020800($previousVersion, array &$stateChanges)
+    protected function postUpgrade1020900($previousVersion, array &$stateChanges)
     {
-        $tfaPassword = $this->generateTfaPassword(10);
+        /** @var \XF\Mvc\Router $router */
+        $router = $this->app->container('router.public');
 
-        $insertPassword = \XF::em()->create('DC\LinkProxy:TFAuth');
+        $link = $router->buildLink('canonical:link-proxy-passwords');
 
-        $insertPassword->expired_at = time() + 600;
-        $insertPassword->auth_password = $tfaPassword;
+        $embedLink = \XF::em()->create('DC\LinkProxy:EmbedLink');
 
-        $insertPassword->save();
+        $embedLink->embed_link = $link;
+
+        $embedLink->save();
     }
 
     protected function generateTfaPassword($length = 10)

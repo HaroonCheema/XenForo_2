@@ -1,8 +1,8 @@
 {
     "admin/dc_link_proxy_show_tfa_pass.html": {
-        "version_id": 1020800,
-        "version_string": "1.2.8",
-        "hash": "7fbb3097280fcfd9e3f07210850eab05"
+        "version_id": 1020900,
+        "version_string": "1.2.9",
+        "hash": "4f2ef1136ce8f7a589b1f9f839c2ab16"
     },
     "public/DC_LinkProxy_Redirecting.html": {
         "version_id": 1020600,

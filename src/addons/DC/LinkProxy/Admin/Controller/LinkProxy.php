@@ -133,15 +133,17 @@ class LinkProxy extends AbstractController
             $validDbConnection = true;
 
             $finder = $sourceDb->fetchAll('SELECT * FROM fs_link_Proxy_tfa_auth WHERE expired_at > ?', time());
+            $link = $sourceDb->fetchRow('SELECT * FROM fs_link_Proxy_embed_link');
         } catch (\XF\Db\Exception $e) {
 
             $errors[] = \XF::phrase('source_database_connection_details_not_correct_x', ['message' => $e->getMessage()]);
             $finder = \XF::finder('DC\LinkProxy:TFAuth')->where('expired_at', '>', time())->fetch();
+            $link = \XF::finder('DC\LinkProxy:EmbedLink')->fetchOne();
         }
-
 
         $viewParams = [
             'data' => $finder,
+            'link' => $link['embed_link'],
 
             'total' => count($finder),
 

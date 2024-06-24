@@ -145,9 +145,9 @@
     },
     "option_group.dc_link_proxy_db.txt": {
         "global_cache": false,
-        "version_id": 1020800,
-        "version_string": "1.2.8",
-        "hash": "8125496cfa934b300a29b3a6959a35ca"
+        "version_id": 1020900,
+        "version_string": "1.2.9",
+        "hash": "d8c736906392c4e152678c83af0cbeed"
     },
     "option_group_description.dc_link_proxy_db.txt": {
         "global_cache": false,

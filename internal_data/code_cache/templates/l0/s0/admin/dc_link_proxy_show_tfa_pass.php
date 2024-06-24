@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 7fbb3097280fcfd9e3f07210850eab05
+// FROM HASH: 4f2ef1136ce8f7a589b1f9f839c2ab16
 return array(
 'macros' => array('table_list' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -28,6 +28,29 @@ return array(
 		}
 	}
 	$__finalCompiled .= '
+';
+	return $__finalCompiled;
+}
+),
+'copy_emmbed_code' => array(
+'arguments' => function($__templater, array $__vars) { return array(
+		'link' => '!',
+	); },
+'code' => function($__templater, array $__vars, $__extensions = null)
+{
+	$__finalCompiled = '';
+	$__finalCompiled .= '
+	<code class="js-copyTarget">
+		&lt;iframe src="' . $__templater->escape($__vars['link']) . '" style="border:none; width:100%; height:350px;" title="Proxy-link passwords page"&gt;&lt;/iframe&gt;
+	</code>
+	' . $__templater->button('', array(
+		'icon' => 'copy',
+		'data-xf-init' => 'copy-to-clipboard',
+		'data-copy-target' => '.js-copyTarget',
+		'data-success' => 'Code copied to clipboard',
+		'class' => 'button--link is-hidden',
+	), '', array(
+	)) . '
 ';
 	return $__finalCompiled;
 }
@@ -73,11 +96,28 @@ return array(
 		' . $__compilerTemp1 . '
 
 	</div>
+
+	<div class="block-body block-row"></div>
+
+	<div class="block-container">
+		<div class="block-body">
+			<div class="blockMessage blockMessage--important blockMessage--iconic">
+				' . 'To embed this page in WordPress or anywhere, click the Copy button to copy the following code and paste it on any web-page where you want to display it.' . '
+				<div style="margin: 1em 0; text-align: center">
+					' . $__templater->callMacro(null, 'copy_emmbed_code', array(
+		'link' => $__vars['link'],
+	), $__vars) . '
+				</div>
+			</div>
+		</div>
+	</div>
 ', array(
 		'action' => $__templater->func('link', array($__vars['prefix'] . '/toggle', ), false),
 		'class' => 'block',
 		'ajax' => 'true',
 	)) . '
+' . '
+
 ';
 	return $__finalCompiled;
 }

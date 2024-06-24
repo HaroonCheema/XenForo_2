@@ -27,6 +27,19 @@
 		</xf:if>
 
 	</div>
+
+	<div class="block-body block-row"></div>
+
+	<div class="block-container">
+		<div class="block-body">
+			<div class="blockMessage blockMessage--important blockMessage--iconic">
+				{{ phrase('dc_explain_iframe_use') }}
+				<div style="margin: 1em 0; text-align: center">
+					<xf:macro name="copy_emmbed_code" arg-link="{$link}"/>
+				</div>
+			</div>
+		</div>
+	</div>
 </xf:form>
 <xf:macro
 		  name="table_list"
@@ -41,4 +54,15 @@
 			<xf:cell> {$value.auth_password} </xf:cell>
 		</xf:datarow>
 	</xf:foreach>
+</xf:macro>
+
+<xf:macro name="copy_emmbed_code" arg-link="!">
+	<code class="js-copyTarget">
+		&lt;iframe src="{{$link}}" style="border:none; width:100%; height:350px;" title="Proxy-link passwords page"&gt;&lt;/iframe&gt;
+	</code>
+	<xf:button icon="copy"
+			   data-xf-init="copy-to-clipboard"
+			   data-copy-target=".js-copyTarget"
+			   data-success="{{ phrase('code_copied_to_clipboard') }}"
+			   class="button--link is-hidden" />
 </xf:macro>
