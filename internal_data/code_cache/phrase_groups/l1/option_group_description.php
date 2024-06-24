@@ -20,6 +20,7 @@ return array (
   'option_group_description.closeThread' => 'Fs close thread options',
   'option_group_description.dbtechEcommerce' => 'Settings pertaining to DragonByte eCommerce.',
   'option_group_description.dbtech_credits' => 'Settings pertaining to DragonByte Credits.',
+  'option_group_description.dc_link_proxy_db' => '',
   'option_group_description.debug' => 'These options are intended to be directly manipulated solely by the XenForo developers.',
   'option_group_description.discourager' => 'The \'Discourager\' is a system that aims to make the browsing experience of \'discouraged\' users as frustrating as possible, with the goal of having them give up and leave.<br />
 <br />

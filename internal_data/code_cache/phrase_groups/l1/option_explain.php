@@ -9,6 +9,10 @@ return array (
   'option_explain.DC_LinkProxy_DomainWhiteList' => 'Enter the domain names/hostnames that you do not want to anonymize/redirect. <b>Only one domain per line.</b><br/>
 If you want to white list an entire domain including its sub-domains, <b>only add domain.com.</b><br/>
 If you want to white list a domain\'s sub-domains and not the top level one, <b>add .domain.com.</b>',
+  'option_explain.DC_LinkProxy_db_host' => 'Enter your database host here...!',
+  'option_explain.DC_LinkProxy_db_name' => 'Enter your database name here...!',
+  'option_explain.DC_LinkProxy_db_password' => 'Enter your database password here...!',
+  'option_explain.DC_LinkProxy_db_username' => 'Enter your database username here...!',
   'option_explain.DC_LinkProxy_link_replace_text' => 'Enter any text which you want to use as title of the link',
   'option_explain.DC_LinkProxy_pass_expire_time' => 'Enter Password expire time in seconds.',
   'option_explain.DC_LinkProxy_pass_length' => 'Enter password length',

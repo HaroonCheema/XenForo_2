@@ -14,6 +14,22 @@
     <edit_format_params>rows=5</edit_format_params>
     <relation group_id="DC_LinkProxy" display_order="1"/>
   </option>
+  <option option_id="DC_LinkProxy_db_host" edit_format="textbox" data_type="string">
+    <default_value></default_value>
+    <relation group_id="dc_link_proxy_db" display_order="1"/>
+  </option>
+  <option option_id="DC_LinkProxy_db_name" edit_format="textbox" data_type="string">
+    <default_value></default_value>
+    <relation group_id="dc_link_proxy_db" display_order="2"/>
+  </option>
+  <option option_id="DC_LinkProxy_db_password" edit_format="textbox" data_type="string">
+    <default_value></default_value>
+    <relation group_id="dc_link_proxy_db" display_order="4"/>
+  </option>
+  <option option_id="DC_LinkProxy_db_username" edit_format="textbox" data_type="string">
+    <default_value></default_value>
+    <relation group_id="dc_link_proxy_db" display_order="3"/>
+  </option>
   <option option_id="DC_LinkProxy_link_replace_text" edit_format="textbox" data_type="string">
     <default_value>Go to link</default_value>
     <relation group_id="DC_LinkProxy" display_order="105"/>

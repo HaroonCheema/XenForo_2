@@ -20,6 +20,7 @@ return array (
   'option_group.closeThread' => '[FS] Close Thread',
   'option_group.dbtechEcommerce' => 'DragonByte Tech: eCommerce',
   'option_group.dbtech_credits' => 'DragonByte Tech: Credits',
+  'option_group.dc_link_proxy_db' => 'D.C Link Proxy - Third Party DataBase',
   'option_group.debug' => 'Debug options',
   'option_group.discourager' => 'User discouragement and discipline',
   'option_group.discussionOptions' => 'Threads,  discussions and conversations',

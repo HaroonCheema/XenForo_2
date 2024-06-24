@@ -1,14 +1,14 @@
 {
-    "legacy_addon_id": "",
-    "title": "D.C Style - Link Proxy for XF2",
-    "description": "Encode external urls in posts and add a redirection page to your forum.",
-    "version_id": 1020800,
-    "version_string": "1.2.8",
-    "dev": "D.C Style",
-    "dev_url": "https://fb.com/DumpPenguin",
-    "faq_url": "",
-    "support_url": "https://dcstyle.info",
-    "extra_urls": [],
-    "require": [],
-    "icon": "logo.png"
+  "legacy_addon_id": "",
+  "title": "D.C Style - Link Proxy for XF2",
+  "description": "Encode external urls in posts and add a redirection page to your forum.",
+  "version_id": 1020900,
+  "version_string": "1.2.9",
+  "dev": "D.C Style",
+  "dev_url": "https://fb.com/DumpPenguin",
+  "faq_url": "",
+  "support_url": "https://dcstyle.info",
+  "extra_urls": [],
+  "require": [],
+  "icon": "logo.png"
 }

@@ -1,4 +1,16 @@
 {
+    "DC_LinkProxy_db_host.json": {
+        "hash": "9faead693a915af4a310b6cf1e4c4da2"
+    },
+    "DC_LinkProxy_db_name.json": {
+        "hash": "c597ced693c6f2958858382a0c9d31fc"
+    },
+    "DC_LinkProxy_db_password.json": {
+        "hash": "f06c764d236ee1858f0a2ec3e1a6345a"
+    },
+    "DC_LinkProxy_db_username.json": {
+        "hash": "3a976874cc4d2e9f5493743a985f9473"
+    },
     "DC_LinkProxy_link_replace_text.json": {
         "hash": "6fbdba90ddb8e460b5dd3e55210bcc5e"
     },

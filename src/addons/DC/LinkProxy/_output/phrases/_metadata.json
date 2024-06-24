@@ -47,6 +47,30 @@
         "version_string": "1.2.7",
         "hash": "dc647eb65e6711e155375218212b3964"
     },
+    "option.DC_LinkProxy_db_host.txt": {
+        "global_cache": false,
+        "version_id": 1020800,
+        "version_string": "1.2.8",
+        "hash": "c2ca16d048ec66e04bca283eab048ec2"
+    },
+    "option.DC_LinkProxy_db_name.txt": {
+        "global_cache": false,
+        "version_id": 1020800,
+        "version_string": "1.2.8",
+        "hash": "af10d89d7d4f998a5fdf315cb6668545"
+    },
+    "option.DC_LinkProxy_db_password.txt": {
+        "global_cache": false,
+        "version_id": 1020800,
+        "version_string": "1.2.8",
+        "hash": "dc647eb65e6711e155375218212b3964"
+    },
+    "option.DC_LinkProxy_db_username.txt": {
+        "global_cache": false,
+        "version_id": 1020800,
+        "version_string": "1.2.8",
+        "hash": "f6039d44b29456b20f8f373155ae4973"
+    },
     "option.DC_LinkProxy_link_replace_text.txt": {
         "global_cache": false,
         "version_id": 1020700,
@@ -71,6 +95,30 @@
         "version_string": "1.2.7",
         "hash": "9bd9312ef6dfa55301fc0d43110b3f79"
     },
+    "option_explain.DC_LinkProxy_db_host.txt": {
+        "global_cache": false,
+        "version_id": 1020800,
+        "version_string": "1.2.8",
+        "hash": "6718b2ef854f63d6f4893fd06ed61530"
+    },
+    "option_explain.DC_LinkProxy_db_name.txt": {
+        "global_cache": false,
+        "version_id": 1020800,
+        "version_string": "1.2.8",
+        "hash": "89f0f4b872691c216f00e15863395e5a"
+    },
+    "option_explain.DC_LinkProxy_db_password.txt": {
+        "global_cache": false,
+        "version_id": 1020800,
+        "version_string": "1.2.8",
+        "hash": "dfcd5cc3304ac39c862fe19e7328f2bd"
+    },
+    "option_explain.DC_LinkProxy_db_username.txt": {
+        "global_cache": false,
+        "version_id": 1020800,
+        "version_string": "1.2.8",
+        "hash": "604f5a4a1122e41434f9cd82fe51714d"
+    },
     "option_explain.DC_LinkProxy_link_replace_text.txt": {
         "global_cache": false,
         "version_id": 1020700,
@@ -94,6 +142,18 @@
         "version_id": 1020700,
         "version_string": "1.2.7",
         "hash": "5e6741fcbd32e8ebdb938107f058de34"
+    },
+    "option_group.dc_link_proxy_db.txt": {
+        "global_cache": false,
+        "version_id": 1020800,
+        "version_string": "1.2.8",
+        "hash": "8125496cfa934b300a29b3a6959a35ca"
+    },
+    "option_group_description.dc_link_proxy_db.txt": {
+        "global_cache": false,
+        "version_id": 1020800,
+        "version_string": "1.2.8",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
     },
     "permission.bypassPasswordGroup_bypassPassword.txt": {
         "global_cache": false,

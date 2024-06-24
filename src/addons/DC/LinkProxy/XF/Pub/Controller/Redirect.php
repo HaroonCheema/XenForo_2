@@ -27,7 +27,7 @@ class Redirect extends \XF\Pub\Controller\AbstractController
         if (!$encodedUrl) return $this->error(\XF::phrase('DC_LinkProxy_url_not_valid'));
         $visitor = \XF::visitor();
         $urlDecoded = base64_decode($encodedUrl);
-        
+
         if (filter_var($urlDecoded, FILTER_VALIDATE_URL) === FALSE) {
             return $this->error(\XF::phrase('DC_LinkProxy_url_not_valid'));
         }
@@ -86,13 +86,45 @@ class Redirect extends \XF\Pub\Controller\AbstractController
 
         $password = $input['password'];
 
-        $getPassword = \XF::finder('DC\LinkProxy:TFAuth')->where('auth_password', $password)->where('expired_at', '>', time())->fetchOne();
+        $options = $this->options();
 
-        if (!isset($getPassword->id)) {
+        $host = $options->DC_LinkProxy_db_host;
+        $dbname = $options->DC_LinkProxy_db_name;
+        $username = $options->DC_LinkProxy_db_username;
+        $dbPassword = $options->DC_LinkProxy_db_password;
+
+        $errors = array();
+
+        $config = [
+            'host' => $host,
+            'dbname' => $dbname,
+            'username' => $username,
+            'password' => $dbPassword,
+            'port' => 3306,
+            'charset' => 'utf8mb4',
+            'tablePrefix' => '',
+        ];
+
+        try {
+            $sourceDb = new \XF\Db\Mysqli\Adapter($config, false);
+            $sourceDb->getConnection();
+
+            // $sourceDb->isConnected();
+
+            $validDbConnection = true;
+
+            $getPassword = $sourceDb->fetchRow('SELECT * FROM fs_link_Proxy_tfa_auth WHERE auth_password = ? AND expired_at > ?', [$password, time()]);
+        } catch (\XF\Db\Exception $e) {
+
+            $errors[] = \XF::phrase('source_database_connection_details_not_correct_x', ['message' => $e->getMessage()]);
+            $getPassword = \XF::finder('DC\LinkProxy:TFAuth')->where('auth_password', $password)->where('expired_at', '>', time())->fetchOne();
+        }
+
+        if (!isset($getPassword['id'])) {
             throw $this->exception($this->notFound(\XF::phrase('dc_link_proxy_password_not_matching')));
         }
 
-        if ($password != $getPassword->auth_password) {
+        if ($password != $getPassword['auth_password']) {
             throw $this->exception($this->notFound(\XF::phrase('dc_link_proxy_password_not_matching')));
         }
 

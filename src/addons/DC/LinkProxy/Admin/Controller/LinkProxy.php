@@ -105,15 +105,47 @@ class LinkProxy extends AbstractController
 
     public function actionTfaPass()
     {
+        $options = $this->options();
 
-        $finder = \XF::finder('DC\LinkProxy:TFAuth')->where('expired_at', '>', time());
+        $host = $options->DC_LinkProxy_db_host;
+        $dbname = $options->DC_LinkProxy_db_name;
+        $username = $options->DC_LinkProxy_db_username;
+        $dbPassword = $options->DC_LinkProxy_db_password;
+
+        $errors = array();
+
+        $config = [
+            'host' => $host,
+            'dbname' => $dbname,
+            'username' => $username,
+            'password' => $dbPassword,
+            'port' => 3306,
+            'charset' => 'utf8mb4',
+            'tablePrefix' => '',
+        ];
+
+        try {
+            $sourceDb = new \XF\Db\Mysqli\Adapter($config, false);
+            $sourceDb->getConnection();
+
+            // $sourceDb->isConnected();
+
+            $validDbConnection = true;
+
+            $finder = $sourceDb->fetchAll('SELECT * FROM fs_link_Proxy_tfa_auth WHERE expired_at > ?', time());
+        } catch (\XF\Db\Exception $e) {
+
+            $errors[] = \XF::phrase('source_database_connection_details_not_correct_x', ['message' => $e->getMessage()]);
+            $finder = \XF::finder('DC\LinkProxy:TFAuth')->where('expired_at', '>', time())->fetch();
+        }
+
 
         $viewParams = [
-            'data' => $finder->fetch(),
+            'data' => $finder,
 
-            'total' => $finder->total(),
+            'total' => count($finder),
 
-            'totalReturn' => count($finder->fetch()),
+            'totalReturn' => count($finder),
         ];
 
         return $this->view('DC\LinkProxy:LinkProxy\TfaPass', 'dc_link_proxy_show_tfa_pass', $viewParams);
