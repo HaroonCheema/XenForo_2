@@ -172,6 +172,9 @@ return array(
 	$__compilerTemp1 = '';
 	$__compilerTemp1 .= '
 			' . '
+' . $__templater->callMacro('nf_gift_controls', 'user_control', array(
+		'user' => $__vars['user'],
+	), $__vars) . '
 			';
 	if ($__templater->method($__vars['xf']['visitor'], 'canFollowUser', array($__vars['user'], ))) {
 		$__compilerTemp1 .= '

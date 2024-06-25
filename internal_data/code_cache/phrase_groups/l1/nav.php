@@ -75,6 +75,7 @@ return array (
   'nav.siropuChatArchive' => 'Archive',
   'nav.siropuChatSanctions' => 'Sanctions',
   'nav.siropuChatTopChatters' => 'Top chatters',
+  'nav.thMonetize_accountUpgrades' => 'Account upgrades',
   'nav.tournament_pub' => 'Tournaments',
   'nav.unansweredThreads' => 'Unanswered threads',
   'nav.upgradeAccount' => 'Upgrade',

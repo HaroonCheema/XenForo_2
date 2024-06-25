@@ -20,6 +20,7 @@ return array (
   'widget_def.new_profile_posts' => 'New profile posts',
   'widget_def.new_threads' => 'New threads',
   'widget_def.newest_members' => 'Newest members',
+  'widget_def.nfRecentGiftUpgrades' => 'Gifted posts',
   'widget_def.online_statistics' => 'Online statistics',
   'widget_def.php_callback' => 'PHP callback',
   'widget_def.questionAnswerStatistics' => 'Question Answers Statistics',

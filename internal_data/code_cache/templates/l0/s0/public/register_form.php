@@ -125,6 +125,7 @@ Before your content can be posted, please take a few moments to register a free 
 		<div class="block-body">
 
 			' . '
+			' . $__templater->includeTemplate('thmonetize_register_form_above_username', $__vars) . '
 			' . $__templater->formTextBoxRow(array(
 		'name' => 'username',
 		'value' => '',

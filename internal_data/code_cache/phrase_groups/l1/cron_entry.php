@@ -56,6 +56,8 @@ return array (
   'cron_entry.snogTvWatchProvider' => '[OzzModz] TMDb TV Thread Starter: Update watch provider data',
   'cron_entry.snog_movies_changes' => '[OzzModz] TMDb Movie Thread Starter: Check for Movie changes',
   'cron_entry.snog_tv_changes' => '[OzzModz] TMDb TV Thread Starter: Check for TV changes',
+  'cron_entry.thmonetize_cleanUpDaily' => '[TH] Monetize: Daily clean up',
+  'cron_entry.thmonetize_communication' => '[TH] Monetize: Send communication',
   'cron_entry.thui_profileviewcounters' => '[TH] User Improvements: Update profile view counters',
   'cron_entry.trophy' => 'Update user trophies',
   'cron_entry.updatePostCounter' => 'FS Post Counter (Update)',

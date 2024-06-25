@@ -20,6 +20,7 @@ return array (
   'widget_def_desc.new_profile_posts' => 'Displays a block containing a list of X recent profile posts.',
   'widget_def_desc.new_threads' => 'Displays a block containing a list of X threads which have most recently been created.',
   'widget_def_desc.newest_members' => 'A block containing a heap of avatars of users who have recently registered.',
+  'widget_def_desc.nfRecentGiftUpgrades' => 'List of recent gifted posts',
   'widget_def_desc.online_statistics' => 'Displays a block of statistics with a break down of the current visitors on the forum and whether they are registered, guests, or robots.',
   'widget_def_desc.php_callback' => 'Allows you to render the contents of a widget using a PHP callback. The callback should return the \\XF\\Widget\\WidgetRenderer object, set up with the template name and params necessary to render the widget.',
   'widget_def_desc.questionAnswerStatistics' => 'Displays the total count of questions and answers.',

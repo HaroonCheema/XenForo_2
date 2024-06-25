@@ -993,6 +993,8 @@ return array(
 	<div class="p-body-inner">
 		<!--XF:EXTRA_OUTPUT-->
 
+		' . $__templater->includeTemplate('thmonetize_page_container_extra_output', $__vars) . '
+
 		';
 	if ($__vars['notices']['block']) {
 		$__finalCompiled .= '
@@ -1215,6 +1217,13 @@ return array(
 			<div class="p-footer-row-opposite">
 				<ul class="p-footer-linkList">
 					';
+	if ($__vars['xf']['options']['thmonetize_enableSponsorsDirectory']) {
+		$__finalCompiled .= '
+						<li><a href="' . $__templater->func('link', array('thmonetize-sponsors', ), true) . '">' . 'Sponsors' . '</a></li>
+					';
+	}
+	$__finalCompiled .= '
+					';
 	if ($__templater->method($__vars['xf']['visitor'], 'canUseContactForm', array())) {
 		$__finalCompiled .= '
 						';
@@ -1270,7 +1279,12 @@ return array(
 	$__compilerTemp14 = '';
 	$__compilerTemp14 .= '
 				' . $__templater->func('copyright') . '
-				' . '' . '
+				' . '';
+	if (!$__vars['thBrandingDisplayed']) {
+		$__vars['thBrandingDisplayed'] = '1';
+		$__compilerTemp14 .= '<span class="thBranding"> | <a href="https://www.themehouse.com/?utm_source=localhost&utm_medium=xf2product&utm_campaign=product_branding" class="u-concealed" target="_BLANK" nofollow="nofollow">Add-ons by ThemeHouse</a></span>';
+	}
+	$__compilerTemp14 .= '
 			';
 	if (strlen(trim($__compilerTemp14)) > 0) {
 		$__finalCompiled .= '

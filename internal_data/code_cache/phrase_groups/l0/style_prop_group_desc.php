@@ -35,6 +35,7 @@ return array (
   'style_prop_group_desc.snog_movies' => '',
   'style_prop_group_desc.snog_tv' => '',
   'style_prop_group_desc.tab' => 'Standalone tabs - those that are not part of the main page navigation, are controlled here.',
+  'style_prop_group_desc.thmonetizeUserUpgrades' => 'Styling for user upgrades and upgrade pages.',
   'style_prop_group_desc.thuserimprovements_trophies' => 'Styling related to trophies and the trophy showcase.',
   'style_prop_group_desc.tooltip' => 'Tooltips are (usually) small hints that appear when the mouse pointer hovers over page elements that may require additional information to convey their purpose or content.',
   'style_prop_group_desc.xfmgAppearance' => 'A number of properties to control the appearance of XenForo Media Gallery',

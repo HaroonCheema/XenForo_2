@@ -21,6 +21,15 @@ class UserUpgrade extends XFCP_UserUpgrade
 
         $purchaser = $state->getPurchaser();
 
+        $userUpgrade = \XF::em()->find(
+            'XF:UserUpgrade',
+            $userUpgradeId,
+            'Active|' . $purchaser->user_id
+        );
+
+        /** @var \XF\Service\User\Upgrade $upgradeService */
+        $upgradeService = \XF::app()->service('XF:User\Upgrade', $userUpgrade, $purchaser);
+
         $options = \XF::options();
 
         $ids = explode(',', $options->fs_subscrip_applicable_userGroups);
@@ -28,18 +37,25 @@ class UserUpgrade extends XFCP_UserUpgrade
         if ($ids) {
 
             if (in_array($userUpgradeId, $ids)) {
-                $newIds = array_diff($ids, array($userUpgradeId));
 
-                $activeUpgrades = \XF::finder('XF:UserUpgradeActive')->where('user_upgrade_id', $newIds)->where('user_id', $purchaser->user_id)
-                    ->fetch();
+                $upgradeService->setPurchaseRequestKey($state->requestKey);
+                $activeUser = $upgradeService->getUser();
 
-                if (count($activeUpgrades)) {
-                    foreach ($activeUpgrades as $value) {
+                if ($purchaser->user_id == $activeUser->user_id) {
 
-                        /** @var \XF\Service\User\Downgrade $downgradeService */
-                        $downgradeService = \XF::service('XF:User\Downgrade', $value->Upgrade, $value->User);
-                        $downgradeService->setSendAlert(false);
-                        $downgradeService->downgrade();
+                    $newIds = array_diff($ids, array($userUpgradeId));
+
+                    $activeUpgrades = \XF::finder('XF:UserUpgradeActive')->where('user_upgrade_id', $newIds)->where('user_id', $purchaser->user_id)
+                        ->fetch();
+
+                    if (count($activeUpgrades)) {
+                        foreach ($activeUpgrades as $value) {
+
+                            /** @var \XF\Service\User\Downgrade $downgradeService */
+                            $downgradeService = \XF::service('XF:User\Downgrade', $value->Upgrade, $value->User);
+                            $downgradeService->setSendAlert(false);
+                            $downgradeService->downgrade();
+                        }
                     }
                 }
             }

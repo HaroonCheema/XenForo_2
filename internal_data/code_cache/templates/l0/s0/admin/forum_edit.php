@@ -591,6 +591,10 @@ return array(
 	), $__vars) . '
 
 			' . $__compilerTemp13 . '
+		' . $__templater->callMacro('thmonetize_node_edit_macros', 'sponsor', array(
+		'node' => $__vars['node'],
+		'sponsors' => $__vars['availableSponsors'],
+	), $__vars) . '
 		</div>
 
 		' . $__templater->formSubmitRow(array(

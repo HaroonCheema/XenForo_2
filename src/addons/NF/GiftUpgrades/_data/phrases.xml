@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="nfGiftUpgrades_cacheTime" version_id="2030370" version_string="2.3.3"><![CDATA[Cache Time]]></phrase>
+  <phrase title="nfGiftUpgrades_cacheTime_explain" version_id="2030370" version_string="2.3.3"><![CDATA[The time in seconds to cache the recent gifted post list. Set to 0 to disable]]></phrase>
+  <phrase title="nfGiftUpgrades_limit_explain" version_id="2030370" version_string="2.3.3"><![CDATA[Gifted content age limit (in days). Use 0 for no limit.]]></phrase>
+  <phrase title="nfGiftUpgrades_skipLockedThreads" version_id="2030370" version_string="2.3.3"><![CDATA[Exclude locked threads]]></phrase>
+  <phrase title="nfGiftUpgrades_skipPrefixes" version_id="2030370" version_string="2.3.3"><![CDATA[Exclude Thread Prefixes]]></phrase>
+  <phrase title="nfGiftUpgrades_skipPrefixes_explain" version_id="2030370" version_string="2.3.3"><![CDATA[Excludes posts from threads with a given set of prefixes]]></phrase>
+  <phrase title="nfGiftUpgrades_skipWarnedPosts" version_id="2030370" version_string="2.3.3"><![CDATA[Exclude warned posts]]></phrase>
+  <phrase title="nfGiftUpgrades_snippetLength" version_id="2030370" version_string="2.3.3"><![CDATA[Snippet Length]]></phrase>
+  <phrase title="nfGiftUpgrades_snippetLength_explain" version_id="2030370" version_string="2.3.3"><![CDATA[When showing gifted posts show the first X characters, 0 to disable displaying snippets]]></phrase>
+  <phrase title="nf_alert_post_upgrade_gifted" version_id="2030370" version_string="2.3.3"><![CDATA[{name} gifted your post in the thread {title}.]]></phrase>
+  <phrase title="nf_alert_post_upgrade_gifted_anon" version_id="2030370" version_string="2.3.3"><![CDATA[Someone gifted your post in the thread {title}.]]></phrase>
+  <phrase title="nf_alert_profile_post_comment_upgrade_gifted" version_id="2030370" version_string="2.3.3"><![CDATA[{name} gifted your <a {post_attributes}>comment</a> on {profile}'s profile.]]></phrase>
+  <phrase title="nf_alert_profile_post_comment_upgrade_gifted_anon" version_id="2030370" version_string="2.3.3"><![CDATA[Somebody gifted your <a {post_attributes}>comment</a> on {profile}'s profile.]]></phrase>
+  <phrase title="nf_alert_profile_post_upgrade_gifted" version_id="2030370" version_string="2.3.3"><![CDATA[{name} gifted your <a {status_attributes}>status</a>.]]></phrase>
+  <phrase title="nf_alert_profile_post_upgrade_gifted_anon" version_id="2030370" version_string="2.3.3"><![CDATA[Somebody gifted <a {status_attributes}>your status</a>.]]></phrase>
+  <phrase title="nf_alert_profile_post_upgrade_gifted_other" version_id="2030370" version_string="2.3.3"><![CDATA[{name} gifted <a {post_attributes}>your post</a> on {profile}'s profile.]]></phrase>
+  <phrase title="nf_alert_profile_post_upgrade_gifted_other_anon" version_id="2030370" version_string="2.3.3"><![CDATA[Somebody gifted <a {post_attributes}>your post</a> on {profile}'s profile.]]></phrase>
+  <phrase title="nf_alert_user_upgrade_gifted" version_id="2030370" version_string="2.3.3"><![CDATA[{name} gifted you an <a href="{link}">account upgrade</a>.]]></phrase>
+  <phrase title="nf_alert_user_upgrade_gifted_anon" version_id="2030370" version_string="2.3.3"><![CDATA[Someone gifted you an <a href="{link}" class="PopupItemLink">account upgrade</a>.]]></phrase>
+  <phrase title="nf_gift_upgrade_to_x" version_id="2030370" version_string="2.3.3"><![CDATA[Gift upgrade to {name}]]></phrase>
+  <phrase title="nf_gift_upgrade_warned_content" version_id="2040270" version_string="2.4.2"><![CDATA[This content has a warning attached, and will not display that it has received a gift upgrade.<br/><br/>
+The user will still receive the selected upgrade.]]></phrase>
+  <phrase title="nf_gifted_once" version_id="2030370" version_string="2.3.3"><![CDATA[Gifted once]]></phrase>
+  <phrase title="nf_gifted_x_times" version_id="2030370" version_string="2.3.3"><![CDATA[Gifted {count} times]]></phrase>
+  <phrase title="nf_giftupgrades_can_be_gifted" version_id="2030370" version_string="2.3.3"><![CDATA[Can be gifted]]></phrase>
+  <phrase title="nf_giftupgrades_continue_gifting" version_id="2030370" version_string="2.3.3"><![CDATA[Continue gifting]]></phrase>
+  <phrase title="nf_giftupgrades_email_address_desc" version_id="2030370" version_string="2.3.3"><![CDATA[Your email address is only required so we can send you a receipt for this gift. It will not be used for any other purpose.]]></phrase>
+  <phrase title="nf_giftupgrades_from" version_id="2030370" version_string="2.3.3"><![CDATA[from]]></phrase>
+  <phrase title="nf_giftupgrades_from_guest" version_id="2030370" version_string="2.3.3"><![CDATA[from a Guest]]></phrase>
+  <phrase title="nf_giftupgrades_from_upper" version_id="2030370" version_string="2.3.3"><![CDATA[From]]></phrase>
+  <phrase title="nf_giftupgrades_gift" version_id="2030370" version_string="2.3.3"><![CDATA[Gift]]></phrase>
+  <phrase title="nf_giftupgrades_gift_for_free" version_id="2030370" version_string="2.3.3"><![CDATA[Gift for free]]></phrase>
+  <phrase title="nf_giftupgrades_gift_for_free_explain" version_id="2030370" version_string="2.3.3"><![CDATA[Checking this will bestow this upgrade upon the user but won't charge them or you for it.]]></phrase>
+  <phrase title="nf_giftupgrades_gift_to" version_id="2030370" version_string="2.3.3"><![CDATA[Gift to]]></phrase>
+  <phrase title="nf_giftupgrades_gift_upgrade" version_id="2030370" version_string="2.3.3"><![CDATA[Gift Upgrade]]></phrase>
+  <phrase title="nf_giftupgrades_gift_upgrades" version_id="2030370" version_string="2.3.3"><![CDATA[Gift Upgrades]]></phrase>
+  <phrase title="nf_giftupgrades_gift_x_to_a_user" version_id="2030370" version_string="2.3.3"><![CDATA[Gift {upgrade} to a user]]></phrase>
+  <phrase title="nf_giftupgrades_gift_x_to_y_user" version_id="2030370" version_string="2.3.3"><![CDATA[Gift {upgrade} to {username}]]></phrase>
+  <phrase title="nf_giftupgrades_line_item" version_id="2040270" version_string="2.4.2"><![CDATA[{account_upgrade}: {title} (For {giftToUsername} from {payUsername})]]></phrase>
+  <phrase title="nf_giftupgrades_payment_processor" version_id="2030370" version_string="2.3.3"><![CDATA[Payment Processor]]></phrase>
+  <phrase title="nf_giftupgrades_paypal" version_id="2030370" version_string="2.3.3"><![CDATA[PayPal]]></phrase>
+  <phrase title="nf_giftupgrades_requested_user_upgrade_not_found" version_id="2030370" version_string="2.3.3"><![CDATA[The requested user upgrade could not be found.]]></phrase>
+  <phrase title="nf_giftupgrades_search_gifts_only" version_id="2050003" version_string="2.5.0 SB"><![CDATA[Search gifted content only]]></phrase>
+  <phrase title="nf_giftupgrades_send_gift_anonymously" version_id="2030370" version_string="2.3.3"><![CDATA[Send gift anonymously]]></phrase>
+  <phrase title="nf_giftupgrades_send_gift_anonymously_explain" version_id="2030370" version_string="2.3.3"><![CDATA[Checking this option will not reveal your identity to the user you are gifting.]]></phrase>
+  <phrase title="nf_giftupgrades_user_has_given_at_least_x_gifts" version_id="2030370" version_string="2.3.3"><![CDATA[User has given at least X gifts]]></phrase>
+  <phrase title="nf_giftupgrades_user_has_received_at_least_x_gifts" version_id="2030370" version_string="2.3.3"><![CDATA[User has received at least X gifts]]></phrase>
+  <phrase title="nf_giftupgrades_username_field_cannot_be_blank" version_id="2030370" version_string="2.3.3"><![CDATA[The username field cannot be left blank.]]></phrase>
+  <phrase title="nf_giftupgrades_you_cannot_gift_banned_users" version_id="2030370" version_string="2.3.3"><![CDATA[You cannot gift banned users.]]></phrase>
+  <phrase title="nf_giftupgrades_you_cannot_gift_yourself" version_id="2030370" version_string="2.3.3"><![CDATA[You cannot gift yourself.]]></phrase>
+  <phrase title="nf_giftupgradess_in_gift_categories" version_id="2050003" version_string="2.5.0 SB"><![CDATA[In gift categories…]]></phrase>
+  <phrase title="nf_members_who_gifted_this_content" version_id="2030370" version_string="2.3.3"><![CDATA[Members who gifted this content]]></phrase>
+  <phrase title="nf_no_one_has_gifted_this_content_yet" version_id="2030370" version_string="2.3.3"><![CDATA[No one has gifted this content yet, or all gifters are anonymous.]]></phrase>
+  <phrase title="nf_recent_gifted_posts" version_id="2030370" version_string="2.3.3"><![CDATA[Recent Gifted Posts]]></phrase>
+  <phrase title="nf_some_gifters_may_be_anonymous" version_id="2030370" version_string="2.3.3"><![CDATA[Some gifters may be anonymous.]]></phrase>
+  <phrase title="nf_you_selected_an_invalid_payment_processor" version_id="2030370" version_string="2.3.3"><![CDATA[You selected an invalid payment processor.]]></phrase>
+  <phrase title="option.nfAllowGiftingOnWarnedContent" version_id="2040270" version_string="2.4.2"><![CDATA[Allow gifting on warned content]]></phrase>
+  <phrase title="option.nfDisplayGiftingOnWarnedContent" version_id="2040270" version_string="2.4.2"><![CDATA[Displaying gifting on warned content]]></phrase>
+  <phrase title="option_explain.nfAllowGiftingOnWarnedContent" version_id="2040270" version_string="2.4.2"><![CDATA[]]></phrase>
+  <phrase title="option_explain.nfDisplayGiftingOnWarnedContent" version_id="2040270" version_string="2.4.2"><![CDATA[]]></phrase>
+  <phrase title="option_group.nfGiftUpgrades" version_id="2040270" version_string="2.4.2"><![CDATA[NixFifty: Gift Upgrades]]></phrase>
+  <phrase title="option_group_description.nfGiftUpgrades" version_id="2040270" version_string="2.4.2"><![CDATA[Options that control the Gift Upgrade add-on.]]></phrase>
+  <phrase title="permission.forum_nf_gift" version_id="2030370" version_string="2.3.3"><![CDATA[Gift posts]]></phrase>
+  <phrase title="permission.general_giftUpgradesForFree" version_id="2030370" version_string="2.3.3"><![CDATA[Gift upgrades for free]]></phrase>
+  <phrase title="permission.general_nf_gift" version_id="2030370" version_string="2.3.3"><![CDATA[Gift users]]></phrase>
+  <phrase title="permission.nfCalendar_nf_gift" version_id="2030370" version_string="2.3.3"><![CDATA[Gift events]]></phrase>
+  <phrase title="permission.profilePost_nf_gift" version_id="2030370" version_string="2.3.3"><![CDATA[Gift profile posts]]></phrase>
+  <phrase title="permission.xa_ams_nf_gift" version_id="2030370" version_string="2.3.3"><![CDATA[Gift articles]]></phrase>
+  <phrase title="permission.xengallery_nf_gift" version_id="2030370" version_string="2.3.3"><![CDATA[Gift media]]></phrase>
+  <phrase title="style_prop.nf_gifted" version_id="2030370" version_string="2.3.3"><![CDATA[Gifted content]]></phrase>
+  <phrase title="style_prop_desc.nf_gifted" version_id="2030370" version_string="2.3.3"><![CDATA[The values specified here will be applied to items that have been gifted.]]></phrase>
+  <phrase title="svSearchConstraint.gift_categories" version_id="2050003" version_string="2.5.0 SB"><![CDATA[For {category} category]]></phrase>
+  <phrase title="svSearchConstraint.gifts_only" version_id="2050003" version_string="2.5.0 SB"><![CDATA[Search gifts]]></phrase>
+  <phrase title="widget_def.nfRecentGiftUpgrades" version_id="2030370" version_string="2.3.3"><![CDATA[Gifted posts]]></phrase>
+  <phrase title="widget_def_desc.nfRecentGiftUpgrades" version_id="2030370" version_string="2.3.3"><![CDATA[List of recent gifted posts]]></phrase>
+</phrases>

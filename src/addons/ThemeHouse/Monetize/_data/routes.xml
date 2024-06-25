@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<routes>
+  <route route_type="admin" route_prefix="logs" sub_name="thmonetize" format="thmonetize/:int&lt;message_log_id&gt;/" controller="XF:Log" context="thMonetize_messageLog" action_prefix="Thmonetize"/>
+  <route route_type="admin" route_prefix="thmonetize" controller="ThemeHouse\Monetize:Monetize" context="thMonetize"/>
+  <route route_type="admin" route_prefix="thmonetize-affiliate-links" format=":int&lt;affiliate_link_id,title&gt;/" controller="ThemeHouse\Monetize:AffiliateLink" context="thMonetize_affiliateLinks"/>
+  <route route_type="admin" route_prefix="thmonetize-communications" format=":int&lt;communication_id,title&gt;/" controller="ThemeHouse\Monetize:Communication" context="thMonetize_communication"/>
+  <route route_type="admin" route_prefix="thmonetize-coupons" format=":int&lt;coupon_id,title&gt;/" controller="ThemeHouse\Monetize:Coupon" context="thMonetize_coupons"/>
+  <route route_type="admin" route_prefix="thmonetize-keywords" format=":int&lt;keyword_id,title&gt;/" controller="ThemeHouse\Monetize:Keyword" context="thMonetize_keywords"/>
+  <route route_type="admin" route_prefix="thmonetize-sponsors" format=":int&lt;th_sponsor_id,title&gt;/" controller="ThemeHouse\Monetize:Sponsor" context="thMonetize_sponsors"/>
+  <route route_type="admin" route_prefix="thmonetize-upgrade-pages" format=":int&lt;upgrade_page_id,title&gt;/" controller="ThemeHouse\Monetize:UpgradePage" context="thMonetize_upgradePages"/>
+  <route route_type="api" route_prefix="thmonetize-sponsors" controller="ThemeHouse\Monetize:Sponsors"/>
+  <route route_type="public" route_prefix="account" sub_name="upgrades" format="upgrades/:int&lt;upgrade_page_id&gt;" controller="XF:Account" action_prefix="Upgrades"/>
+  <route route_type="public" route_prefix="thmonetize-affiliate-links" controller="ThemeHouse\Monetize:AffiliateLink"/>
+  <route route_type="public" route_prefix="thmonetize-free-account" controller="ThemeHouse\Monetize:FreeAccount"/>
+  <route route_type="public" route_prefix="thmonetize-sponsors" controller="ThemeHouse\Monetize:Sponsor"/>
+</routes>

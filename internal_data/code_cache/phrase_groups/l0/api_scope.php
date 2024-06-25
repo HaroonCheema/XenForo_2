@@ -43,6 +43,7 @@ return array (
   'api_scope.resource_rating_write' => 'Covers creating, updating and soft-deleting resource ratings/reviews.',
   'api_scope.resource_read' => 'Covers viewing resources and their content.',
   'api_scope.resource_write' => 'Covers creating, updating and soft-deleting resources and their content.',
+  'api_scope.th_monetize_sponsors_read' => 'Read Monetize sponsors',
   'api_scope.thread_delete_hard' => 'Covers hard-deleting threads and posts.',
   'api_scope.thread_read' => 'Covers reading thread and post information.',
   'api_scope.thread_write' => 'Covers creating, updating and soft-deleting threads and posts.',

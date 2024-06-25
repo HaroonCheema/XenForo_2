@@ -35,6 +35,7 @@ return array (
   'style_prop_group.snog_movies' => '[OzzModz] TMDb Movie Thread Starter',
   'style_prop_group.snog_tv' => '[OzzModz] TMDb TV Thread Starter',
   'style_prop_group.tab' => 'Tabs',
+  'style_prop_group.thmonetizeUserUpgrades' => '[TH] Monetize: User upgrades',
   'style_prop_group.thuserimprovements_trophies' => '[TH] User Improvements: Trophies',
   'style_prop_group.tooltip' => 'Tooltips',
   'style_prop_group.xfmgAppearance' => 'XFMG: Appearance',

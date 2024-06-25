@@ -62,6 +62,18 @@ return function($__templater, $__selectedNav, array $__vars)
 			}
 		}
 
+		if (($__vars['xf']['app']['userUpgradeCount'] AND ($__vars['xf']['visitor']['user_id'] OR $__vars['xf']['options']['thmonetize_allowGuestsToViewUserUpgrades']))) {
+			$__navTemp = [
+		'title' => \XF::phrase('nav.thMonetize_accountUpgrades'),
+		'href' => $__templater->func('link', array('account/upgrades', ), false),
+		'attributes' => [],
+	];
+			if ($__navTemp) {
+				$__tree['_default']['children']['thMonetize_accountUpgrades'] = $__navTemp;
+				$__flat['thMonetize_accountUpgrades'] =& $__tree['_default']['children']['thMonetize_accountUpgrades'];
+			}
+		}
+
 		if ($__vars['xf']['visitor']['user_id']) {
 			$__navTemp = [
 		'title' => \XF::phrase('nav.defaultLogOut'),
@@ -337,6 +349,16 @@ return function($__templater, $__selectedNav, array $__vars)
 	}
 
 	$__navTemp = [
+		'title' => \XF::phrase('nav.fs_quiz'),
+		'href' => $__templater->func('link', array('quiz', ), false),
+		'attributes' => [],
+	];
+	if ($__navTemp) {
+		$__tree['fs_quiz'] = $__navTemp;
+		$__flat['fs_quiz'] =& $__tree['fs_quiz'];
+	}
+
+	$__navTemp = [
 		'title' => \XF::phrase('nav.fs_escrow'),
 		'href' => $__templater->func('link', array('escrow', ), false),
 		'attributes' => [],
@@ -356,16 +378,6 @@ return function($__templater, $__selectedNav, array $__vars)
 			$__flat['fs_escrow_add'] =& $__tree['fs_escrow']['children']['fs_escrow_add'];
 		}
 
-	}
-
-	$__navTemp = [
-		'title' => \XF::phrase('nav.fs_quiz'),
-		'href' => $__templater->func('link', array('quiz', ), false),
-		'attributes' => [],
-	];
-	if ($__navTemp) {
-		$__tree['fs_quiz'] = $__navTemp;
-		$__flat['fs_quiz'] =& $__tree['fs_quiz'];
 	}
 
 	if ($__templater->method($__vars['xf']['visitor'], 'canViewMemberList', array())) {
@@ -430,28 +442,6 @@ return function($__templater, $__selectedNav, array $__vars)
 		}
 	}
 
-	$__navTemp = [
-		'title' => \XF::phrase('nav.createCrud'),
-		'href' => $__templater->func('link', array('crud', ), false),
-		'attributes' => [],
-	];
-	if ($__navTemp) {
-		$__tree['createCrud'] = $__navTemp;
-		$__flat['createCrud'] =& $__tree['createCrud'];
-		if (empty($__tree['createCrud']['children'])) { $__tree['createCrud']['children'] = []; }
-
-		$__navTemp = [
-		'title' => \XF::phrase('nav.addRecord'),
-		'href' => $__templater->func('link', array('crud/add', ), false),
-		'attributes' => [],
-	];
-		if ($__navTemp) {
-			$__tree['createCrud']['children']['addRecord'] = $__navTemp;
-			$__flat['addRecord'] =& $__tree['createCrud']['children']['addRecord'];
-		}
-
-	}
-
 	if ($__templater->method($__vars['xf']['visitor'], 'canViewDbtechCredits', array())) {
 		$__navTemp = [
 		'title' => \XF::phrase('nav.dbtechCredits'),
@@ -474,6 +464,28 @@ return function($__templater, $__selectedNav, array $__vars)
 			}
 
 		}
+	}
+
+	$__navTemp = [
+		'title' => \XF::phrase('nav.createCrud'),
+		'href' => $__templater->func('link', array('crud', ), false),
+		'attributes' => [],
+	];
+	if ($__navTemp) {
+		$__tree['createCrud'] = $__navTemp;
+		$__flat['createCrud'] =& $__tree['createCrud'];
+		if (empty($__tree['createCrud']['children'])) { $__tree['createCrud']['children'] = []; }
+
+		$__navTemp = [
+		'title' => \XF::phrase('nav.addRecord'),
+		'href' => $__templater->func('link', array('crud/add', ), false),
+		'attributes' => [],
+	];
+		if ($__navTemp) {
+			$__tree['createCrud']['children']['addRecord'] = $__navTemp;
+			$__flat['addRecord'] =& $__tree['createCrud']['children']['addRecord'];
+		}
+
 	}
 
 

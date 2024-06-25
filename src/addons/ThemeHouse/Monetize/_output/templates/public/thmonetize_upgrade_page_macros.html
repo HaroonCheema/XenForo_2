@@ -1,0 +1,172 @@
+<xf:macro name="upgrade_option" arg-upgrade="!" arg-profiles="!" arg-featured="" arg-redirect="" arg-coupon="">
+	<xf:css src="thmonetize_upgrade_page.less" />
+	<xf:css src="thmonetize_user_upgrade_cache.less" />
+	<div class="thmonetize_UpgradeOption {{$featured ? 'thmonetize_UpgradeOption--featured' : ''}}">
+		<div class="block-container thmonetize_upgrade thmonetize_upgrade--{$upgrade.user_upgrade_id}{{ $upgrade.thmonetize_style_properties.color ? ' thmonetize_upgrade--hasColor' : '' }}">
+			<div class="block-header thmonetize_upgradeHeader{{ $upgrade.thmonetize_style_properties.shape ? ' thmonetize_upgradeHeader--shape thmonetize_upgradeHeader--' . $upgrade.thmonetize_style_properties.shape : '' }}">
+				<h2 class="thmonetize_upgradeTitle">{$upgrade.title}</h2>
+				<div class="thmonetize_upgradeHeader__price">
+					<span class="thmonetize_upgradeHeader__priceRow">
+						<xf:if is="$xf.language.currency_format === '{symbol}{value}' || $xf.language.currency_format === '{symbol} {value}'">
+							<span class="thmonetize_upgrade__currency">{$upgrade.thmonetize_cost_currency_symbol}</span>
+						</xf:if>
+						<span class="thmonetize_upgrade__price">{$upgrade.thmonetize_cost_amount_formatted}</span>
+						<xf:if is="!($xf.language.currency_format === '{symbol}{value}' || $xf.language.currency_format === '{symbol} {value}')">
+							<span class="thmonetize_upgrade__currency">{$upgrade.thmonetize_cost_currency_symbol}</span>
+						</xf:if>
+						<xf:if contentcheck="true">
+							<span class="thmonetize_upgrade__occurrence">/<xf:contentcheck>{$upgrade.thmonetize_length_phrase_short}</xf:contentcheck></span>
+						</xf:if>
+					</span>
+					<span class="thmonetize_upgrade__length">{$upgrade.thmonetize_length_phrase_long}</span>
+				</div>
+				<div class="thmonetize_purchase">
+					<xf:if is="!$upgrade.canPurchase()">
+						<xf:set var="$active" value="{$upgrade.Active.{$xf.visitor.user_id}}" />
+						<xf:if is="$upgrade.length_unit && $upgrade.recurring && $active.PurchaseRequest">
+							<xf:set var="$provider" value="{$active.PurchaseRequest.PaymentProfile.Provider}" />
+							{{ $provider.renderCancellation($active)|raw }}
+						</xf:if>
+						<xf:else />
+						<xf:form action="{{ link('purchase', $upgrade, {'user_upgrade_id': $upgrade.user_upgrade_id}) }}" ajax="true" data-xf-init="payment-provider-container">
+							<xf:hiddenval name="_xfRedirect">{$redirect}</xf:hiddenval>
+							<xf:if is="{{ count($upgrade.payment_profile_ids) > 1 }}">
+								<xf:select name="payment_profile_id">
+									<xf:option>{{ phrase('(choose_payment_method)') }}</xf:option>
+									<xf:foreach loop="$upgrade.payment_profile_ids" value="$profileId">
+										<xf:option value="{$profileId}">{$profiles.{$profileId}}</xf:option>
+									</xf:foreach>
+								</xf:select>
+
+								<span class="inputGroup-splitter"></span>
+								<xf:else />
+								<xf:hiddenval name="payment_profile_id">{$upgrade.payment_profile_ids|first}</xf:hiddenval>
+							</xf:if>
+
+							<xf:if is="$upgrade.cost_amount == 0 && !$xf.options.thmonetize_requireUserUpgradeOnRegistration">
+								<a href="{{ link('account') }}" class="button button--fullWidth">{{ phrase('thmonetize_free_account') }}</a>
+							<xf:elseif is="$coupon" />
+								<xf:button type="submit" button="{{ phrase('thmonetize_purchase_with_coupon_x', {'coupon': $coupon.code}) }}" icon="purchase" class="button--cta button--fullWidth" />
+							<xf:else />
+								<xf:button type="submit" icon="purchase" class="button--cta button--fullWidth" />
+							</xf:if>
+							<xf:if is="is_addon_active('NF/GiftUpgrades')">
+								<xf:if is="{{ $upgrade.canGift() }}">
+									<xf:if is="{{ $upgrade.canPurchase() }}"><span class="inputGroup-splitter"></span></xf:if>
+									<xf:button class="button--cta button--fullWidth" type="submit" name="gift" value="1" icon="nfgift">{{ phrase('nf_giftupgrades_gift') }}</xf:button>
+								</xf:if>
+							</xf:if>
+						</xf:form>
+					</xf:if>
+				</div>
+			</div>
+			<div class="block-body">
+				<xf:if is="$upgrade.description">
+					<div class="block-row">
+						<span>{$upgrade.description|raw}</span>
+					</div>
+				</xf:if>
+				<div class="block-row">
+					<xf:macro name="features" arg-features="{$upgrade.thmonetize_features}" arg-upgrade="{$upgrade}" arg-styleProperties="{$upgrade.thmonetize_style_properties}" />
+				</div>
+			</div>
+		</div>
+	</div>
+</xf:macro>
+
+<xf:macro name="upgrade_options" arg-upgradePage="!" arg-upgrades="!" arg-profiles="!" arg-showFree="{{ false }}" arg-filter="" arg-showFilters="" arg-redirect="" arg-coupons="" arg-coupon="">
+	<xf:css src="thmonetize_upgrade_page.less" />
+
+	<xf:if is="$xf.options.thmonetize_allowFreeUpgrade && $showFree && $xf.visitor.user_id && $xf.visitor.user_state == 'thmonetize_upgrade'">
+		<div class="block u-clearFix">	
+			<div class="u-pullRight">
+				<a class="button button--primary" href="{{ link('thmonetize-free-account') }}" data-xf-click="overlay">{{ phrase('thmonetize_skip_step') }}</a>
+			</div>
+		</div>
+	</xf:if>
+	
+	<div class="block u-clearFix block--monetizeOptions">
+		<div class="buttonGroup u-pullRight">
+			<xf:if is="$showFilters">
+				<a href="{{ link('account/upgrades', $upgradePage, { 'filter': 'monthly' }) }}" class="button {{ $filter != 'monthly' ? 'button--alt' : '' }}">{{ phrase('thmonetize_monthly') }}</a>
+				<a href="{{ link('account/upgrades', $upgradePage, { 'filter': 'annual' }) }}" class="button {{ $filter != 'annual' ? 'button--alt' : '' }}">{{ phrase('thmonetize_annual') }}</a>
+				<a href="{{ link('account/upgrades', $upgradePage, { 'filter': 'all' }) }}" class="button {{ $filter != 'all' ? 'button--alt' : '' }}">{{ phrase('thmonetize_all') }}</a>
+			</xf:if>
+		</div>
+		<span class="thmonetize_UpgradePageLinks-more">
+			<xf:if is="$xf.options.thmonetize_allowFreeUpgrade && $showFree && $xf.visitor.user_id && $xf.visitor.user_state == 'thmonetize_upgrade'">
+				<a class="button button--primary" href="{{ link('thmonetize-free-account') }}" data-xf-click="overlay">{{ phrase('thmonetize_free_account') }}</a>
+			</xf:if>
+			<xf:if is="$upgradePage.accounts_page_link">
+				<a class="button" href="{{ link('account/upgrades', null, { 'show_all': 1 }) }}">{{ phrase('thmonetize_more...') }}</a>
+			</xf:if>
+		</span>
+	</div>
+
+	<xf:macro name="coupon_form" arg-coupons="{$coupons}" arg-coupon="{$coupon}" />
+
+	<div class="block thmonetize_UpgradeOptionsList">
+		<xf:foreach loop="$upgrades" value="$userUpgrade">
+			<xf:macro name="upgrade_option" arg-upgrade="{$userUpgrade}" arg-profiles="{$profiles}" arg-featured="{$upgradePage.Relations.{$userUpgrade.user_upgrade_id}.featured}" arg-redirect="{$redirect}" arg-coupon="{$coupon}" />
+		</xf:foreach>
+	</div>
+
+	<xf:if contentcheck="true">
+		<div class="thmonetize_UpgradePageLinks">
+			<xf:contentcheck>
+				<xf:foreach loop="$upgradePage.UpgradePageLinks" value="{$upgradePageLink}">
+					<a class="button button--primary" href="{{ link('account/upgrades', null, { 'upgrade_page_id': $upgradePageLink.upgrade_page_id }) }}">{$upgradePageLink.title}</a>
+				</xf:foreach>
+			</xf:contentcheck>
+		</div>
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="features" arg-features="!" arg-upgrade="!" arg-styleProperties="!">
+	<xf:css src="thmonetize_upgrade_page.less" />
+	<xf:foreach loop="$features" value="$feature" key="$key">
+		<div class="user-upgrade-feature {{ $feature.description ? 'has-description' : '' }}" data-xf-click="toggle" data-target=".user-upgrade-description-{{$upgrade->user_upgrade_id}}-{{$key}}">
+			<xf:if is="$styleProperties.icon">
+				<i class="fa {$styleProperties.icon} fa-{$styleProperties.icon}"></i>
+				<xf:elseif is="$styleProperties.shape" />
+				<i class="fa fa-{$styleProperties.shape}"></i>
+				<xf:else />
+				<i class="fa fa-check-circle"></i>
+			</xf:if>
+			<span>{$feature.text}</span>
+			<xf:if is="$feature.description">
+				<i class="user-upgrade-toggle-open fa fa-chevron-down"></i>
+				<i class="user-upgrade-toggle-close fa fa-chevron-up"></i>
+			</xf:if>
+		</div>
+		<xf:if is="$feature.description">
+			<div class="block-row user-upgrade-description user-upgrade-description-{{$upgrade->user_upgrade_id}}-{{$key}}">
+				<span>{$feature.description}</span>
+			</div>
+		</xf:if>
+	</xf:foreach>
+</xf:macro>
+
+<xf:macro name="coupon_form" arg-coupons="" arg-coupon="">
+	<xf:if is="$coupons is not empty || $xf.options.thmonetize_force_show_coupon_form">
+		<xf:form action="{{ link('account/upgrade-coupon') }}" class="block" ajax="true" data-force-flash-message="true">
+			<div class="block-container">
+				<h2 class="block-header">{{ phrase('thmonetize_redeem_coupon') }}</h2>
+
+				<div class="block-body">
+					<xf:textboxrow name="coupon" label="{{ phrase('thmonetize_coupon_code') }}" />
+					
+					<xf:if is="$coupon">
+						<xf:formrow label="{{ phrase('thmonetize_redeemed_coupon') }}" explain="{{ phrase('thmonetize_redeemed_coupon_explain') }}">
+							<strong>{{ $coupon.code }} - {{ $coupon.title }}</strong>
+							&nbsp;
+							<xf:button type="submit" class="button--alt button--small" name="remove" value="1">Remove</xf:button>
+						</xf:formrow>
+					</xf:if>
+				</div>
+
+				<xf:submitrow submit="{{ phrase('thmonetize_redeem') }}" />
+			</div>
+		</xf:form>
+	</xf:if>
+</xf:macro>

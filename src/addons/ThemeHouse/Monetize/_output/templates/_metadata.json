@@ -1,0 +1,12 @@
+{
+    "public/thmonetize_upgrade_page_macros.html": {
+        "version_id": 1010791,
+        "version_string": "1.1.7 Patch Level 1",
+        "hash": "c60ac2221047c919e5ea7461486e055a"
+    },
+    "public/thmonetize_upgrade_page_view.html": {
+        "version_id": 1010791,
+        "version_string": "1.1.7 Patch Level 1",
+        "hash": "18f828711599956b14cb9ea6964b9f8e"
+    }
+}

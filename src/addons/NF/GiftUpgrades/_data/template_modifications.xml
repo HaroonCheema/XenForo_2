@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="account_upgrades" modification_key="nixfifty_giftUpgrades_giftUpgrade" description="Adds a gift button to available upgrades." execution_order="9" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:button type="submit" icon="purchase" />]]></find>
+    <replace><![CDATA[<xf:if is="{{ $upgrade.canPurchase() }}">$0</xf:if>
+<xf:if is="{{ $upgrade.canGift() }}">
+	<xf:if is="{{ $upgrade.canPurchase() }}"><span class="inputGroup-splitter"></span></xf:if>
+	<xf:button type="submit" name="gift" value="1" icon="nfgift">{{ phrase('nf_giftupgrades_gift') }}</xf:button>
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="account_upgrades" modification_key="nixfifty_giftUpgrades_giftUpgrade2" description="Adds a gift button to existing upgrades." execution_order="8" enabled="1" action="preg_replace">
+    <find><![CDATA[#(<xf:foreach loop="\$purchased.*?phrase\('expires_never.*?)([\t ]*</xf:formrow>)#si]]></find>
+    <replace><![CDATA[$1<xf:include template="account_upgrades_gift_existing" />
+$2]]></replace>
+  </modification>
+  <modification type="public" template="core_button.less" modification_key="nf_giftupgrades_core_button" description="Add a gift icon to buttons." execution_order="6583" enabled="1" action="preg_replace">
+    <find><![CDATA[#[\t ]*&--purchase#]]></find>
+    <replace><![CDATA[&--nfgift	    { .m-buttonIcon(@fa-var-gift, .8em); }
+$0]]></replace>
+  </modification>
+  <modification type="admin" template="helper_criteria" modification_key="GiftUpgradesHelperCriteriaUserContent" description="Adds additional criteria to user criteria form." execution_order="6583" enabled="1" action="str_replace">
+    <find><![CDATA[<!--[XF:user:content_after_trophies]-->]]></find>
+    <replace><![CDATA[$0
+
+<xf:option name="user_criteria[giftupgrades_gift_received_count][rule]" value="giftupgrades_gift_received_count" selected="{$criteria.giftupgrades_gift_received_count}"
+					label="{{ phrase('nf_giftupgrades_user_has_received_at_least_x_gifts:') }}">
+					<xf:numberbox name="user_criteria[giftupgrades_gift_received_count][data][count]" value="{$criteria.giftupgrades_gift_received_count.count}"
+						size="5" min="0" step="1" />
+</xf:option>
+
+<xf:option name="user_criteria[giftupgrades_gift_given_count][rule]" value="giftupgrades_gift_given_count" selected="{$criteria.giftupgrades_gift_given_count}"
+					label="{{ phrase('nf_giftupgrades_user_has_given_at_least_x_gifts:') }}">
+					<xf:numberbox name="user_criteria[giftupgrades_gift_given_count][data][count]" value="{$criteria.giftupgrades_gift_given_count.count}"
+						size="5" min="0" step="1" />
+</xf:option>]]></replace>
+  </modification>
+  <modification type="public" template="member_macros" modification_key="nf_giftupgrades_macros_member_action_buttons" description="Adds gift controls to member action buttons macro" execution_order="6583" enabled="1" action="str_replace">
+    <find><![CDATA[<!--[XF:action_group_1:start]-->]]></find>
+    <replace><![CDATA[$0
+<xf:macro template="nf_gift_controls" 
+		  name="user_control" 
+		  arg-user="{$user}"
+/>]]></replace>
+  </modification>
+  <modification type="public" template="nf_calendar_event_view" modification_key="nf_calendar_event_view_controls1" description="Adds gift controls to NixFifty's Calendar events." execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[#(<div class="actionBar-set actionBar-set--external.*?)([\t ]*<xf:react)#si]]></find>
+    <replace><![CDATA[$1
+<xf:macro template="nf_gift_controls" 
+		  name="item"
+		  arg-content="{$event}"
+		  />
+$2]]></replace>
+  </modification>
+  <modification type="public" template="nf_calendar_event_view" modification_key="nf_calendar_event_view_css" description="Adds gifted class to events." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<div class="eventBody]]></find>
+    <replace><![CDATA[$0 {{ ($event.hasOption('nfGift') && $event.GiftCount) ? 'nf-gifted' : '' }}]]></replace>
+  </modification>
+  <modification type="public" template="post_macros" modification_key="nf_giftupgrades_message_class" description="Adds gifted class to post messages" execution_order="6583" enabled="1" action="str_replace">
+    <find><![CDATA[{{ $post.isUnread() ? ' is-unread' : '' }}]]></find>
+    <replace><![CDATA[$0 {{ ($post.hasOption('nfGift') && $post.GiftCount) ? 'nf-gifted' : '' }}]]></replace>
+  </modification>
+  <modification type="public" template="post_macros" modification_key="nf_giftupgrades_message_css" description="Adds gift CSS requirement to messages" execution_order="6583" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:css src="message.less" />]]></find>
+    <replace><![CDATA[$0
+<xf:css src="nf_giftupgrades.less" />]]></replace>
+  </modification>
+  <modification type="public" template="post_macros" modification_key="nf_giftupgrades_post_macros_controls" description="Adds gift controls to posts" execution_order="6583" enabled="1" action="preg_replace">
+    <find><![CDATA[#([\t ]*<xf:if is="\$thread.canReply)#sU]]></find>
+    <replace><![CDATA[<xf:macro template="nf_gift_controls" 
+		  name="item"
+		  arg-content="{$post}"
+		  />
+$0]]></replace>
+  </modification>
+  <modification type="public" template="profile_post_macros" modification_key="nf_giftupgrades_profile_post_macros1" description="Adds gifted class to profile post messages" execution_order="6587" enabled="1" action="str_replace">
+    <find><![CDATA[{{ $profilePost.isIgnored() ? ' is-ignored' : '' }}]]></find>
+    <replace><![CDATA[$0 {{ ($profilePost.hasOption('nfGift') && $profilePost.GiftCount) ? 'nf-gifted' : '' }}]]></replace>
+  </modification>
+  <modification type="public" template="profile_post_macros" modification_key="nf_giftupgrades_profile_post_macros2" description="Adds gifted class to profile post comment messages" execution_order="6586" enabled="1" action="str_replace">
+    <find><![CDATA[{{ $comment.isIgnored() ? ' is-ignored' : '' }}]]></find>
+    <replace><![CDATA[$0  {{ ($comment.hasOption('nfGift') && $comment.GiftCount) ? 'nf-gifted' : '' }}]]></replace>
+  </modification>
+  <modification type="public" template="profile_post_macros" modification_key="nf_giftupgrades_profile_post_macros_controls" description="Adds gift controls to profile posts" execution_order="6584" enabled="1" action="preg_replace">
+    <find><![CDATA[#(<div class="actionBar-set actionBar-set--external.*?)([\t ]*<xf:if is="\$profilePost.canComment)#si]]></find>
+    <replace><![CDATA[$1
+<xf:macro template="nf_gift_controls" 
+		  name="item"
+		  arg-content="{$profilePost}"
+		  />
+$2]]></replace>
+  </modification>
+  <modification type="public" template="profile_post_macros" modification_key="nf_giftupgrades_profile_post_macros_controls2" description="Adds gift controls to profile post comments" execution_order="6583" enabled="1" action="preg_replace">
+    <find><![CDATA[#(<footer class="comment-footer">.*?<div class="actionBar-set actionBar-set--external">.*?\$comment.*?)([\t ]*</xf:contentcheck>)#si]]></find>
+    <replace><![CDATA[$1
+<xf:macro template="nf_gift_controls" 
+		  name="item"
+		  arg-content="{$comment}"
+		  />
+$2]]></replace>
+  </modification>
+  <modification type="public" template="profile_post_macros" modification_key="nf_giftupgrades_profile_post_macros_css" description="Adds gift CSS requirement to profile posts &amp; profile post comments" execution_order="6585" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:css src="message.less" />]]></find>
+    <replace><![CDATA[$0
+<xf:css src="nf_giftupgrades.less" />]]></replace>
+  </modification>
+  <modification type="public" template="search_form_macros" modification_key="nf_giftupgrades_search_form_macros" description="Add option to show only gifted content" execution_order="11" enabled="1" action="preg_replace">
+    <find><![CDATA[#(<xf:macro name="keywords".*?canTitleLimit.*?</xf:if>)(.*?\s*<\/xf:macro>)#s]]></find>
+    <replace><![CDATA[$1
+<xf:macro name="nf_giftupgrades_search_form_macros::search_gifted_content" />
+$2]]></replace>
+  </modification>
+  <modification type="public" template="siropu_chat_conversation_message_row" modification_key="nf_giftupgrades_siropu_chat_conversation_message_r" description="Add gift icon to chat conversation messages." execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[#(<xf:if is="\$message\.canQuote\(\)">.*?<\/xf:if>)#s]]></find>
+    <replace><![CDATA[<xf:include template="nf_giftupgrades_siropu_chat_conversation_message_row" />
+$0]]></replace>
+  </modification>
+  <modification type="public" template="siropu_chat_room_message_row" modification_key="nf_giftupgrades_siropu_chat_room_message_row" description="Add gift icon to chat room messages." execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[#(<xf:if is="\$message\.canQuote\(\)">.*?<\/xf:if>)#s]]></find>
+    <replace><![CDATA[<xf:include template="nf_giftupgrades_siropu_chat_room_message_row" />
+$0]]></replace>
+  </modification>
+  <modification type="admin" template="user_extra" modification_key="nixfifty_giftUpgrades_giftedBy" description="Displays giftee information if the upgrade was gifted." execution_order="6583" enabled="1" action="preg_replace">
+    <find><![CDATA[#(<xf:datarow rowclass="dataList-row--noHover">.*<xf:cell>{\$upgrade\.Upgrade\.title})(<\/xf:cell>)#s]]></find>
+    <replace><![CDATA[<xf:set var="{$_upgrade}" value="{$upgrade}" />
+$1 <xf:include template="nixfifty_giftupgrades_giftedby_label" /> $2]]></replace>
+  </modification>
+  <modification type="admin" template="user_upgrade_active_list" modification_key="nf_giftupgrades_user_upgrade_active_list" description="Displays giftee information if the upgrade was gifted." execution_order="6583" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:username user="{$activeUpgrade.User}" defaultname="{{ phrase('unknown_user') }}" href="{{ link('users/edit', $activeUpgrade.User) }}" />]]></find>
+    <replace><![CDATA[<xf:set var="{$_upgrade}" value="{$activeUpgrade}" />
+$0 <xf:include template="nixfifty_giftupgrades_giftedby_label" />]]></replace>
+  </modification>
+  <modification type="admin" template="user_upgrade_edit" modification_key="nixfifty_giftUpgrades_canBeGifted" description="Adds a checkbox to set whether an upgrade is eligible for gifting." execution_order="6583" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:option name="can_purchase" selected="$upgrade.can_purchase">{{ phrase('can_be_purchased') }}</xf:option>]]></find>
+    <replace><![CDATA[$0
+<xf:option name="can_gift" selected="$upgrade.can_gift">{{ phrase('nf_giftupgrades_can_be_gifted') }}</xf:option>]]></replace>
+  </modification>
+  <modification type="admin" template="user_upgrade_expired_list" modification_key="nf_giftupgrades_user_upgrade_expired_list" description="Displays giftee information if the upgrade was gifted." execution_order="6583" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:username user="{$expiredUpgrade.User}" defaultname="{{ phrase('unknown_user') }}" href="{{ link('users/edit', $expiredUpgrade.User) }}" />]]></find>
+    <replace><![CDATA[<xf:set var="{$_upgrade}" value="{$expiredUpgrade}" />
+$0 <xf:include template="nixfifty_giftupgrades_giftedby_label" />]]></replace>
+  </modification>
+  <modification type="admin" template="user_upgrade_list" modification_key="nf_giftupgrades_user_upgrade_list" description="Displays giftee information if the upgrade was gifted." execution_order="6583" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:username user="{$upgrade.User}" defaultname="{{ phrase('unknown_user') }}" href="{{ link('users/edit', $upgrade.User) }}" />]]></find>
+    <replace><![CDATA[<xf:set var="{$_upgrade}" value="{$upgrade}" />
+$0 <xf:include template="nixfifty_giftupgrades_giftedby_label" />]]></replace>
+  </modification>
+  <modification type="public" template="xa_ams_article_view" modification_key="xa_ams_article_view_1" description="Adds gifted class to articles." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<div class="articleBody]]></find>
+    <replace><![CDATA[$0 {{ ($article.hasOption('nfGift') && $article.GiftCount) ? 'nf-gifted' : '' }}]]></replace>
+  </modification>
+  <modification type="public" template="xa_ams_article_view" modification_key="xa_ams_article_view_2" description="Adds gift controls to Bob's AMS articles." execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[#(<div class="actionBar-set actionBar-set--external.*?)([\t ]*<xf:react)#si]]></find>
+    <replace><![CDATA[$1
+<xf:macro template="nf_gift_controls" 
+		  name="item"
+		  arg-content="{$article}"
+		  />
+$2]]></replace>
+  </modification>
+</template_modifications>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<content_type_fields>
+  <field content_type="ams_article" field_name="nf_gift_handler_class">NF\GiftUpgrades\Gift\XAArticleItem</field>
+  <field content_type="nf_calendar_event" field_name="nf_gift_handler_class">NF\GiftUpgrades\Gift\NFEvent</field>
+  <field content_type="nixfifty_gift_upgrade" field_name="stats_handler_class">NF\GiftUpgrades\Stats\GiftUpgrade</field>
+  <field content_type="post" field_name="nf_gift_handler_class">NF\GiftUpgrades\Gift\Post</field>
+  <field content_type="profile_post" field_name="nf_gift_handler_class">NF\GiftUpgrades\Gift\ProfilePost</field>
+  <field content_type="profile_post_comment" field_name="nf_gift_handler_class">NF\GiftUpgrades\Gift\ProfilePostComment</field>
+  <field content_type="user" field_name="nf_gift_handler_class">NF\GiftUpgrades\Gift\User</field>
+</content_type_fields>

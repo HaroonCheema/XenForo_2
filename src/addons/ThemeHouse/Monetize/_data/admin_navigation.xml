@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<admin_navigation>
+  <admin_navigation_entry navigation_id="thMonetize" display_order="14000" link="monetize" icon="fa-credit-card" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="thMonetize_affLinksKeywords_group" parent_navigation_id="thMonetize" display_order="100" icon="fa-link" debug_only="0" development_only="0" hide_no_children="1"/>
+  <admin_navigation_entry navigation_id="thMonetize_affiliateLinks" parent_navigation_id="thMonetize_affLinksKeywords_group" display_order="1" link="thmonetize-affiliate-links" admin_permission_id="thMonetize_affiliateLinks" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="thMonetize_communication" parent_navigation_id="thMonetize" display_order="400" link="thmonetize-communications" icon="fa-bullhorn" admin_permission_id="thMonetize_communication" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="thMonetize_coupons" parent_navigation_id="thMonetize_userUpgrades_group" display_order="20" link="thmonetize-coupons" admin_permission_id="thMonetize_coupons" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="thMonetize_keywords" parent_navigation_id="thMonetize_affLinksKeywords_group" display_order="10" link="thmonetize-keywords" admin_permission_id="thMonetize_keywords" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="thMonetize_logsCommunication" parent_navigation_id="logsMisc" display_order="55" link="logs/thmonetize" icon="fa-bullhorn" admin_permission_id="viewLogs" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="thMonetize_nodes" parent_navigation_id="thMonetize_sponsors_group" display_order="10" link="nodes" admin_permission_id="node" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="thMonetize_options" parent_navigation_id="thMonetize" display_order="1" link="thmonetize/options" admin_permission_id="option" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="thMonetize_sponsors" parent_navigation_id="thMonetize_sponsors_group" display_order="1" link="thmonetize-sponsors" admin_permission_id="thMonetize_sponsors" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="thMonetize_sponsors_group" parent_navigation_id="thMonetize" display_order="300" icon="fa-credit-card" debug_only="0" development_only="0" hide_no_children="1"/>
+  <admin_navigation_entry navigation_id="thMonetize_upgradePages" parent_navigation_id="thMonetize_userUpgrades_group" display_order="1" link="thmonetize-upgrade-pages" admin_permission_id="thMonetize_upgradePages" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="thMonetize_userUpgrades" parent_navigation_id="thMonetize_userUpgrades_group" display_order="10" link="user-upgrades" admin_permission_id="userUpgrade" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="thMonetize_userUpgrades_group" parent_navigation_id="thMonetize" display_order="200" icon="fa-level-up" debug_only="0" development_only="0" hide_no_children="0"/>
+</admin_navigation>

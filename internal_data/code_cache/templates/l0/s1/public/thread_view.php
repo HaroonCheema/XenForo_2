@@ -708,6 +708,21 @@ return array(
 
 ' . $__templater->renderExtension('content_top', $__vars, $__extensions) . '
 ' . '
+';
+	$__vars['maxPosts'] = $__templater->method($__vars['xf']['visitor'], 'hasNodePermission', array($__vars['thread']['node_id'], 'thMonetize_maxPosts', ));
+	$__finalCompiled .= '
+';
+	$__vars['lastPost'] = $__templater->filter($__vars['posts'], array(array('last', array()),), false);
+	$__finalCompiled .= '
+';
+	if ($__vars['xf']['options']['thmonetize_linkToUpgradesIfContentRestricted'] AND (($__vars['maxPosts'] > 0) AND ($__vars['lastPost']['position'] >= $__vars['maxPosts']))) {
+		$__finalCompiled .= '
+	<div class="blockMessage blockMessage--error blockMessage--iconic">
+		' . 'An <a href="' . $__templater->func('link', array('account/upgrades', ), true) . '">account upgrade</a> is required to view more posts.' . '
+	</div>
+';
+	}
+	$__finalCompiled .= '
 
 ';
 	if ($__vars['pendingApproval']) {

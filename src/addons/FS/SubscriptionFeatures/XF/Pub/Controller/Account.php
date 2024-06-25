@@ -12,7 +12,9 @@ class Account extends XFCP_Account
         $parent = parent::actionUpgrades();
 
         if ($parent instanceof \XF\Mvc\Reply\View) {
-            list($available, $purchased) = $this->getFilteredUserUpgradesForList();
+            $upgradeRepo = $this->repository('XF:UserUpgrade');
+            list($available, $purchased) = $upgradeRepo->getFilteredUserUpgradesForList();
+            // list($available, $purchased) = $this->getFilteredUserUpgradesForList();
 
             if (!$available && !$purchased) {
                 return $this->message(\XF::phrase('no_account_upgrades_can_be_purchased_at_this_time'));
@@ -56,48 +58,48 @@ class Account extends XFCP_Account
         }
     }
 
-    protected function findUserUpgradesForList()
-    {
-        $options = \XF::options();
+    // protected function findUserUpgradesForList()
+    // {
+    //     $options = \XF::options();
 
-        $ids = explode(',', $options->fs_subscrip_applicable_userGroups);
+    //     $ids = explode(',', $options->fs_subscrip_applicable_userGroups);
 
-        return $this->finder('XF:UserUpgrade')->where('user_upgrade_id', $ids)
-            ->setDefaultOrder('display_order');
-    }
+    //     return $this->finder('XF:UserUpgrade')->where('user_upgrade_id', $ids)
+    //         ->setDefaultOrder('display_order');
+    // }
 
-    protected function getFilteredUserUpgradesForList()
-    {
-        $visitor = \XF::visitor();
+    // protected function getFilteredUserUpgradesForList()
+    // {
+    //     $visitor = \XF::visitor();
 
-        $finder = $this->findUserUpgradesForList()
-            ->with(
-                'Active|'
-                    . $visitor->user_id
-                    . '.PurchaseRequest'
-            );
+    //     $finder = $this->findUserUpgradesForList()
+    //         ->with(
+    //             'Active|'
+    //                 . $visitor->user_id
+    //                 . '.PurchaseRequest'
+    //         );
 
-        $purchased = [];
-        $upgrades = $finder->fetch();
+    //     $purchased = [];
+    //     $upgrades = $finder->fetch();
 
-        if ($visitor->user_id && $upgrades->count()) {
-            /** @var \XF\Entity\UserUpgrade $upgrade */
-            foreach ($upgrades as $upgradeId => $upgrade) {
-                if (isset($upgrade->Active[$visitor->user_id])) {
-                    // purchased
-                    $purchased[$upgradeId] = $upgrade;
-                    unset($upgrades[$upgradeId]); // can't buy again
+    //     if ($visitor->user_id && $upgrades->count()) {
+    //         /** @var \XF\Entity\UserUpgrade $upgrade */
+    //         foreach ($upgrades as $upgradeId => $upgrade) {
+    //             if (isset($upgrade->Active[$visitor->user_id])) {
+    //                 // purchased
+    //                 $purchased[$upgradeId] = $upgrade;
+    //                 unset($upgrades[$upgradeId]); // can't buy again
 
-                    // remove any upgrades disabled by this
-                    foreach ($upgrade['disabled_upgrade_ids'] as $disabledId) {
-                        unset($upgrades[$disabledId]);
-                    }
-                } else if (!$upgrade->canPurchase()) {
-                    unset($upgrades[$upgradeId]);
-                }
-            }
-        }
+    //                 // remove any upgrades disabled by this
+    //                 foreach ($upgrade['disabled_upgrade_ids'] as $disabledId) {
+    //                     unset($upgrades[$disabledId]);
+    //                 }
+    //             } else if (!$upgrade->canPurchase()) {
+    //                 unset($upgrades[$upgradeId]);
+    //             }
+    //         }
+    //     }
 
-        return [$upgrades, $purchased];
-    }
+    //     return [$upgrades, $purchased];
+    // }
 }

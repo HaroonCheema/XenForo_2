@@ -294,6 +294,12 @@ return array(
 		'_type' => 'option',
 	),
 	array(
+		'value' => 'thmonetize_upgrade',
+		'selected' => $__templater->func('in_array', array('thmonetize_upgrade', $__vars['criteria']['user_state'], ), false),
+		'label' => 'Awaiting user upgrade purchase',
+		'_type' => 'option',
+	),
+	array(
 		'value' => 'email_confirm',
 		'selected' => $__templater->func('in_array', array('email_confirm', $__vars['criteria']['user_state'], ), false),
 		'label' => 'Awaiting email confirmation',

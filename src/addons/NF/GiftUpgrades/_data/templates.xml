@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="admin" title="nixfifty_giftupgrades_giftedby_label" version_id="2030370" version_string="2.3.3"><![CDATA[<xf:if is="{$_upgrade.is_gift}">
+	({{ phrase('nf_giftupgrades_from:') }}
+	<xf:if is="$_upgrade.PurchaseRequest.extra_data.payUser">
+		<xf:username user="{$_upgrade.PurchaseRequest.extra_data.payUser}"
+			defaultname="{{ phrase('guest') }}"
+			href="{{ link('users/edit', $_upgrade.PurchaseRequest.extra_data.payUser) }}" />{{ $_upgrade.PurchaseRequest.extra_data.is_anonymous ? '*' : '' }})
+	<xf:else />
+		<xf:username user="{$_upgrade.PayUser}" defaultname="{{ phrase('guest') }}" href="{{ link('users/edit', $_upgrade.PayUser) }}" />)
+	</xf:if>
+</xf:if>]]></template>
+  <template type="admin" title="widget_def_options_nfRecentGiftUpgrades" version_id="2040270" version_string="2.4.2"><![CDATA[<hr class="formRowSep" />
+
+<xf:numberboxrow name="options[limit]" value="{$options.limit}" min="1" step="1"
+	label="{{ phrase('maximum_entries') }}" />
+
+<xf:numberboxrow name="options[dateLimit]" 
+				 value="{$options.dateLimit}"
+				 label="{{ phrase('date_limit') }}"
+				 explain="{{ phrase('nfGiftUpgrades_limit_explain') }}"
+				 units="{{ phrase('units_days') }}"
+				 min="0" />
+
+<xf:numberboxrow name="options[cacheTime]" 
+				 value="{$options.cacheTime}" 
+				 min="0" step="1"
+				 label="{{ phrase('nfGiftUpgrades_cacheTime') }}"
+				 explain="{{ phrase('nfGiftUpgrades_cacheTime_explain') }}"
+				 units="{{ phrase('units_seconds') }}"
+				 />
+
+<xf:numberboxrow name="options[snippetLength]" 
+				 value="{$options.snippetLength}" 
+				 min="1" step="1"
+				 label="{{ phrase('nfGiftUpgrades_snippetLength') }}" 
+				 explain="{{ phrase('nfGiftUpgrades_snippetLength_explain') }}"
+				 units="{{ phrase('characters') }}"
+				 />
+
+<xf:checkboxrow label="" >
+	<xf:option value="1" name="options[skipLockedThreads]" checked="{$options.skipLockedThreads}"
+			   label="{{ phrase('nfGiftUpgrades_skipLockedThreads') }}" />
+</xf:checkboxrow>
+
+<xf:checkboxrow label="" >
+	<xf:option value="1" name="options[skipWarnedPosts]" checked="{$options.skipWarnedPosts}"
+			   label="{{ phrase('nfGiftUpgrades_skipWarnedPosts') }}" />
+</xf:checkboxrow>
+
+<xf:comment>
+<xf:radiorow name="options[style]" value="{{ $options.style ?: 'simple' }}"
+	label="{{ phrase('display_style') }}">
+
+	<xf:option value="simple"
+		label="{{ phrase('simple') }}"
+		hint="{{ phrase('widget_display_simple_explain') }}" />
+	<xf:option value="full"
+		label="{{ phrase('full') }}"
+		hint="{{ phrase('new_posts_display_style_full_explain') }}" />
+</xf:radiorow>
+</xf:comment>
+
+<xf:selectrow name="options[skipPrefixes][]" value="{{ $options.skipPrefixes ?: '' }}" multiple="multiple" size="7"
+	label="{{ phrase('nfGiftUpgrades_skipPrefixes') }}"
+	explain="{{ phrase('nfGiftUpgrades_skipPrefixes_explain') }}">
+
+	<xf:option value="">{{ phrase('none') }}</xf:option>
+	<xf:foreach loop="$prefixList" key="$prefixId" value="$title">
+		<xf:option value="{$prefixId}">
+			{$title}
+		</xf:option>
+	</xf:foreach>
+</xf:selectrow>
+
+<xf:selectrow name="options[node_ids][]" value="{{ $options.node_ids ?: '' }}" multiple="multiple" size="7"
+	label="{{ phrase('forum_limit') }}"
+	explain="{{ phrase('only_include_threads_in_selected_forums') }}">
+
+	<xf:option value="0">{{ phrase('all_forums') }}</xf:option>
+	<xf:foreach loop="$nodeTree.getFlattened(0)" value="$treeEntry">
+		<xf:option value="{$treeEntry.record.node_id}" disabled="{{ $treeEntry.record.node_type_id != 'Forum' }}">
+			{{ repeat('&nbsp;&nbsp;', $treeEntry.depth)|raw }} {$treeEntry.record.title}
+		</xf:option>
+	</xf:foreach>
+</xf:selectrow>]]></template>
+  <template type="public" title="account_upgrades_gift_existing" version_id="2030370" version_string="2.3.3"><![CDATA[<xf:if is="{{ $upgrade.canGift() }}">
+	<xf:form action="{{ link('purchase', $upgrade, {'user_upgrade_id': $upgrade.user_upgrade_id}) }}" ajax="true" data-xf-init="payment-provider-container">
+		<div class="inputGroup">
+			<xf:if is="{{ count($upgrade.payment_profile_ids) > 1 }}">
+				<xf:select name="payment_profile_id">
+					<xf:option>{{ phrase('(choose_payment_method)') }}</xf:option>
+					<xf:foreach loop="$upgrade.payment_profile_ids" value="$profileId">
+						<xf:option value="{$profileId}">{$profiles.{$profileId}}</xf:option>
+					</xf:foreach>
+				</xf:select>
+
+				<span class="inputGroup-splitter"></span>
+
+				<xf:button type="submit" name="gift" value="1" icon="nfgift">{{ phrase('nf_giftupgrades_gift') }}</xf:button>
+			<xf:else />
+				<xf:button type="submit" name="gift" value="1" icon="nfgift">{{ phrase('nf_giftupgrades_gift') }}</xf:button>
+
+				<xf:hiddenval name="payment_profile_id">{$upgrade.payment_profile_ids|first}</xf:hiddenval>
+			</xf:if>
+		</div>
+	</xf:form>
+</xf:if>]]></template>
+  <template type="public" title="alert_post_upgrade_gifted" version_id="2030370" version_string="2.3.3"><![CDATA[{{ phrase('nf_alert_post_upgrade_gifted', {
+	'name': username_link($user, false, {'defaultname': $alert.username}),
+	'title': '<a href="' . link('threads', $content.Thread) . '" class="fauxBlockLink-blockLink">' . prefix('thread', $content.Thread) . $content.Thread.title . '</a>'
+}) }}]]></template>
+  <template type="public" title="alert_post_upgrade_gifted_anon" version_id="2030370" version_string="2.3.3"><![CDATA[{{ phrase('nf_alert_post_upgrade_gifted_anon', {
+	'title': '<a href="' . link('threads', $content.Thread) . '" class="fauxBlockLink-blockLink">' . prefix('thread', $content.Thread) . $content.Thread.title . '</a>'
+}) }}]]></template>
+  <template type="public" title="alert_profile_post_comment_upgrade_gifted" version_id="2030370" version_string="2.3.3"><![CDATA[{{ phrase('nf_alert_profile_post_comment_upgrade_gifted', {
+	'name': username_link($user, false, {'defaultname': $alert.username}),
+	'post_attributes': 'href="' . link('profile-posts/comments', $content) . '" class="fauxBlockLink-blockLink"',
+	'profile': $content.ProfilePost.ProfileUser.username
+}) }}]]></template>
+  <template type="public" title="alert_profile_post_comment_upgrade_gifted_anon" version_id="2030370" version_string="2.3.3"><![CDATA[{{ phrase('nf_alert_profile_post_comment_upgrade_gifted_anon', {
+	'post_attributes': 'href="' . link('profile-posts/comments', $content) . '" class="fauxBlockLink-blockLink"',
+	'profile': $content.ProfilePost.ProfileUser.username
+}) }}]]></template>
+  <template type="public" title="alert_profile_post_upgrade_gifted" version_id="2030370" version_string="2.3.3"><![CDATA[<xf:if is="$visitor.user_id === $content.profile_user_id">
+	{{ phrase('nf_alert_profile_post_upgrade_gifted', {
+		'name': username_link($user, false, {'defaultname': $alert.username}),
+		'status_attributes': 'href="' . link('profile-posts/comments', $content) . '" class="fauxBlockLink-blockLink"'
+	}) }}
+<xf:else />
+	{{ phrase('nf_alert_profile_post_upgrade_gifted_other', {
+		'name': username_link($user, false, {'defaultname': $alert.username}),
+		'post_attributes': 'href="' . link('profile-posts/comments', $content) . '" class="fauxBlockLink-blockLink"',
+		'poster': $content.profile_username
+	}) }}
+</xf:if>]]></template>
+  <template type="public" title="alert_profile_post_upgrade_gifted_anon" version_id="2030370" version_string="2.3.3"><![CDATA[<xf:if is="$visitor.user_id == $content.profile_user_id">
+	{{ phrase('nf_alert_profile_post_upgrade_gifted_anon', {
+		'status_attributes': 'href="' . link('profile-posts/comments', $content) . '" class="fauxBlockLink-blockLink"'
+	}) }}
+<xf:else />
+	{{ phrase('nf_alert_profile_post_upgrade_gifted_other_anon', {
+		'post_attributes': 'href="' . link('profile-posts/comments', $content) . '" class="fauxBlockLink-blockLink"',
+		'poster': $content.profile_username
+	}) }}
+</xf:if>]]></template>
+  <template type="public" title="alert_user_upgrade_gifted" version_id="2030370" version_string="2.3.3"><![CDATA[{{ phrase('nf_alert_user_upgrade_gifted', {
+	'name': username_link($user, false, {'defaultname': $alert.username}),
+	'link': link('account/upgrades')})
+}}]]></template>
+  <template type="public" title="alert_user_upgrade_gifted_anon" version_id="2030370" version_string="2.3.3"><![CDATA[{{ phrase('nf_alert_user_upgrade_gifted_anon', {
+	'link': link('account/upgrades')})
+}}]]></template>
+  <template type="public" title="nf_content_gift" version_id="2040270" version_string="2.4.2"><![CDATA[<xf:title>{{ phrase('nf_gift_upgrade_to_x', {'name': $user.username}) }}</xf:title>
+
+<xf:breadcrumb source="{$breadcrumbs}" />
+
+<xf:form action="{{ link('purchase', {'purchasable_type_id': 'user_upgrade'}) }}" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:if is="$isWarnedContent && !$xf.options.nfDisplayGiftingOnWarnedContent">
+				<div class="block-rowMessage block-rowMessage--warning">
+					{{ phrase('nf_gift_upgrade_warned_content') }}
+				</div>
+			</xf:if>
+			<xf:if is="$upgrades.count() === 1">
+				<xf:set var="$upgrade" value="{{ $upgrades.first() }}" />
+				<xf:formrow label="{{ phrase('upgrade') }}">					
+					<xf:if is="$upgrade.cost_amount == '0.00' && is_addon_active('SV/UserEssentials')">
+						{$upgrade.title} 
+						<xf:include template="sv_ue_account_upgrades_cost_input" />
+					<xf:else />
+						{$upgrade.title} ({{ $upgrade.getGiftCostPhrase() }})
+					</xf:if>
+					<xf:if is="{{ count($upgrade.payment_profile_ids) > 1 }}">
+						<xf:select name="payment_profile_id">
+							<xf:option>{{ phrase('(choose_payment_method)') }}</xf:option>
+							<xf:foreach loop="$upgrade.payment_profile_ids" value="$profileId">
+								<xf:option value="{$profileId}">{$profiles.{$profileId}}</xf:option>
+							</xf:foreach>
+						</xf:select>
+						<xf:else />
+						<xf:hiddenval name="payment_profile_id">{$upgrade.payment_profile_ids|first}</xf:hiddenval>
+					</xf:if>
+					<xf:hiddenval name="user_upgrade_id">{{ $upgrades.first().user_upgrade_id }}</xf:hiddenval>
+				</xf:formrow>
+			<xf:else />
+				<xf:radiorow label="{{ phrase('upgrade') }}" name="user_upgrade_id">
+					<xf:foreach loop="$upgrades" value="$upgrade">
+						<xf:option value="{$upgrade.user_upgrade_id}" label="{$upgrade.title} ({{ $upgrade.getGiftCostPhrase() }})" selected="{{ $upgrade.user_upgrade_id === $selectedUpgradeId }}" data-hide="True">
+							<xf:dependent>
+								<xf:if is="$upgrade.cost_amount == '0.00' && is_addon_active('SV/UserEssentials')">
+									<xf:include template="sv_ue_account_upgrades_cost_input" />
+								</xf:if>
+								<xf:if is="{{ count($upgrade.payment_profile_ids) > 1 }}">
+									<xf:select name="payment_profile_id">
+										<xf:option>{{ phrase('(choose_payment_method)') }}</xf:option>
+										<xf:foreach loop="$upgrade.payment_profile_ids" value="$profileId">
+											<xf:option value="{$profileId}">{$profiles.{$profileId}}</xf:option>
+										</xf:foreach>
+									</xf:select>
+								<xf:else />
+									<xf:hiddenval name="payment_profile_id">{$upgrade.payment_profile_ids|first}</xf:hiddenval>
+								</xf:if>								
+							</xf:dependent>
+						</xf:option>
+					</xf:foreach>
+				</xf:radiorow>
+			</xf:if>
+
+			<xf:checkboxrow>
+					<xf:option name="anonymous" label="{{ phrase('nf_giftupgrades_send_gift_anonymously') }}"
+						hint="{{ phrase('nf_giftupgrades_send_gift_anonymously_explain') }}" />
+					<xf:if is="$xf.visitor.canGiftForFree()">
+						<xf:option name="gift_for_free" label="{{ phrase('nf_giftupgrades_gift_for_free') }}"
+							hint="{{ phrase('nf_giftupgrades_gift_for_free_explain') }}" />
+					</xf:if>
+			</xf:checkboxrow>
+			
+			<xf:hiddenval name="confirmed">1</xf:hiddenval>
+			<xf:hiddenval name="gift">1</xf:hiddenval>
+			<xf:hiddenval name="username">{$user.username}</xf:hiddenval>
+			<xf:hiddenval name="gift_to_user_id">{$user.user_id}</xf:hiddenval>
+			<xf:hiddenval name="content_id">{{ $content.getEntityId() }}</xf:hiddenval>
+			<xf:hiddenval name="content_type">{{ $content.getEntityContentType() }}</xf:hiddenval>
+		</div>
+
+		<xf:submitrow submit="{{ phrase('continue...') }}" />
+	</div>
+</xf:form>]]></template>
+  <template type="public" title="nf_content_gifts" version_id="2030370" version_string="2.3.3"><![CDATA[<xf:title>{{ phrase('nf_members_who_gifted_this_content') }}</xf:title>
+<xf:head option="metaNoindex"><meta name="robots" content="noindex" /></xf:head>
+
+<xf:breadcrumb source="{{ $handler.getBreadCrumbs($entity) }}" />
+
+<div class="block">
+	<div class="block-container">
+		<ol class="block-body">
+			<xf:foreach loop="$gifts" value="$gift">
+				<li class="block-row block-row--separated">
+					<xf:set var="$extraTemplate">
+						{{ date_time($gift.gift_date) }}
+					</xf:set>
+					<xf:macro
+							template="member_list_macros"
+							name="item"
+							arg-user="{$gift.User}"
+							arg-extraData="{$extraTemplate}"
+					/>
+				</li>
+			</xf:foreach>
+		</ol>
+
+		<div class="block-outer block-outer--after">
+			<span class="note">{{ phrase('nf_some_gifters_may_be_anonymous') }}</span>
+			<xf:if is="{$hasMore}">
+				<a class="button OverlayCloser OverlayTrigger" href="{$moreLink}">{{ phrase('more...') }}</a>
+			</xf:if>
+		</div>
+	</div>
+</div>]]></template>
+  <template type="public" title="nf_gift_controls" version_id="2040270" version_string="2.4.2"><![CDATA[<xf:macro name="item" arg-content="!">
+	<xf:if is="$content.hasOption('nfGift')">
+		<xf:if contentcheck="true">
+			<span class="item">
+				<xf:contentcheck>
+					<xf:if is="$content.canGiftTo()">
+						<a href="{{ link($content.giftRoute, $content) }}" class="actionBar-action actionBar-action--gift" data-xf-click="overlay">{{ phrase('nf_giftupgrades_gift') }}</a>
+
+						<xf:if is="$content->canViewGiftsList() && $content.GiftCount">
+							(<a href="{{ link($content.giftsRoute, $content) }}" data-xf-click="overlay">{{ $content.GiftCount == 1 ? phrase('nf_gifted_once') : phrase('nf_gifted_x_times', {'count':$content.GiftCount}) }}</a>)
+						</xf:if>
+					<xf:elseif is="$content->canViewGiftsList() && $content.GiftCount" />
+						<a href="{{ link($content.giftsRoute, $content) }}" class="actionBar-action actionBar-action--gift" data-xf-click="overlay">{{ $content.GiftCount == 1 ? phrase('nf_gifted_once') : phrase('nf_gifted_x_times', {'count':$content.GiftCount}) }}</a>
+					</xf:if>
+				</xf:contentcheck>
+			</span>
+		</xf:if>
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="user_control" arg-user="!">
+	<xf:if is="callable($user, 'canGiftTo') && $user.canGiftTo()">
+		<xf:button href="{{ link('members/gift', $user) }}" class="button--link"  data-xf-click="overlay">{{ phrase('nf_giftupgrades_gift') }}</xf:button>
+	</xf:if>
+</xf:macro>]]></template>
+  <template type="public" title="nf_giftupgrades.less" version_id="2030370" version_string="2.3.3"><![CDATA[article.message.nf-gifted
+{
+  .xf-nf_gifted();
+}]]></template>
+  <template type="public" title="nf_giftupgrades_account_upgrades_gift" version_id="2040070" version_string="2.4.0"><![CDATA[<xf:title>{{ phrase('nf_giftupgrades_gift_x_to_a_user', {'upgrade': $upgrade.title}) }}</xf:title>
+
+<xf:form action="{{ link('purchase', $upgrade, {'user_upgrade_id': $upgrade.user_upgrade_id}) }}" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:formrow label="{{ phrase('upgrade') }}">{$upgrade.title} ({{ $upgrade.getGiftCostPhrase() }})</xf:formrow>
+
+			<xf:textboxrow name="username" ac="single" autocomplete="off" required="true"
+						   maxlength="{{ max_length($xf.visitor, 'username') }}"
+						   placeholder="{{ phrase('name...') }}"
+						   autofocus="on" label="{{ phrase('nf_giftupgrades_gift_to') }}"/>
+
+			<xf:checkboxrow>
+					<xf:option name="anonymous" label="{{ phrase('nf_giftupgrades_send_gift_anonymously') }}"
+						hint="{{ phrase('nf_giftupgrades_send_gift_anonymously_explain') }}" />
+					<xf:if is="$xf.visitor.canGiftForFree()">
+						<xf:option name="gift_for_free" label="{{ phrase('nf_giftupgrades_gift_for_free') }}"
+							hint="{{ phrase('nf_giftupgrades_gift_for_free_explain') }}" />
+					</xf:if>
+			</xf:checkboxrow>
+			
+			<xf:hiddenval name="confirmed">1</xf:hiddenval>
+			<xf:hiddenval name="payment_profile_id">{$profileId}</xf:hiddenval>
+			<xf:hiddenval name="gift">1</xf:hiddenval>
+			<xf:hiddenval name="cost_amount">{$upgrade.cost_amount}</xf:hiddenval>
+			<xf:if is="{$coupon}"><xf:hiddenval name="coupon">{$coupon}</xf:hiddenval></xf:if>
+		</div>
+		
+		<xf:submitrow submit="{{ phrase('continue...') }}" />
+	</div>
+</xf:form>]]></template>
+  <template type="public" title="nf_giftupgrades_search_form_macros" version_id="2050003" version_string="2.5.0 SB"><![CDATA[<xf:macro name="search_gifted_content" globals="1">
+	<xf:if is="$__globals.nfSupportsGifts">
+		<xf:set var="$showGiftCategoriesBlock" value="{{ $__globals.nfGiftCategories is not empty }}" />
+		<li>
+			<xf:checkbox standalone="true">
+				<xf:option name="c[gifts_only]"
+						   selected="{$input.c.gifts_only}"
+						   label="{{ phrase('nf_giftupgrades_search_gifts_only') }}"
+						   data-xf-init="{{ $showGiftCategoriesBlock ? 'disabler' : '' }}"
+						   data-container="{{ $showGiftCategoriesBlock ? '.js-nfGiftLimitedInputs' : '' }}"
+						   data-hide="true" />
+			</xf:checkbox>
+		</li>
+
+		<xf:if is="$showGiftCategoriesBlock">
+			<li class="js-nfGiftLimitedInputs">
+				<xf:checkbox standalone="true">
+					<xf:option name="c[in_gift_categories]"
+							   selected="{$input.c.in_gift_categories}"
+							   label="{{ phrase('nf_giftupgradess_in_gift_categories...') }}"
+							   data-xf-init="disabler"
+							   data-container=".js-giftCategoriesContainer"
+							   data-hide="true" />
+				</xf:checkbox>
+			</li>
+
+			<li class="js-giftCategoriesContainer">
+				<xf:select name="c[gift_categories]" multiple="multiple" value="{$input.c.gift_categories}">
+					<xf:foreach loop="$__globals.nfGiftCategories" value="$giftCategory">
+						<xf:option value="{$giftCategory.gift_category_id}">{$giftCategory.title}</xf:option>
+					</xf:foreach>
+				</xf:select>
+			</li>
+		</xf:if>
+		
+	</xf:if>
+</xf:macro>]]></template>
+  <template type="public" title="nf_giftupgrades_siropu_chat_conversation_message_row" version_id="2040270" version_string="2.4.2"><![CDATA[<xf:if is="callable($message.User, 'canGiftTo') && $message.User.canGiftTo()">
+	<a href="{{ link('members/gift', $message.User) }}" title="{{ phrase('nf_giftupgrades_gift')|for_attr }}" data-xf-click="overlay"><xf:fa icon="fa-gift" /> <span>{{ phrase('nf_giftupgrades_gift') }}</span></a>
+</xf:if>]]></template>
+  <template type="public" title="nf_giftupgrades_siropu_chat_room_message_row" version_id="2040270" version_string="2.4.2"><![CDATA[<xf:if is="callable($message.User, 'canGiftTo') && $message.User.canGiftTo()">
+	<a href="{{ link('members/gift', $message.User) }}" title="{{ phrase('nf_giftupgrades_gift')|for_attr }}" data-xf-click="overlay"><xf:fa icon="fa-gift" /> <span>{{ phrase('nf_giftupgrades_gift') }}</span></a>
+</xf:if>]]></template>
+  <template type="public" title="nf_member_view_gift_controls" version_id="2030370" version_string="2.3.3"><![CDATA[<xen:if is="{$canGift}">
+	<li><a href="{xen:link members/gift, $user}" class="OverlayTrigger">{xen:phrase nf_giftupgrades_gift}</a></li>
+</xen:if>]]></template>
+  <template type="public" title="svGiftUpgrades_widget_gifted_posts" version_id="2030370" version_string="2.3.3"><![CDATA[<xf:if is="$posts is not empty">
+	<div class="block"{{ widget_data($widget) }}>		
+		<div class="block-container">
+			<xf:if is="$style == 'full'">
+				<h3 class="block-header">				
+					<xf:if is="{$link}" >
+						<a href="{$link}" rel="nofollow">{$title}</a>
+					<xf:else />
+						<span>{$title}</span>
+					</xf:if>
+				</h3>
+				<div class="block-body">
+					<div class="structItemContainer">
+						<xf:foreach loop="$posts" value="$post">
+							<xf:macro name="item_post"
+									  arg-post="{$post}"
+									  arg-snippetLength="{$snippetLength}"
+									  />
+						</xf:foreach>
+					</div>
+				</div>
+				<xf:if is="$hasMore && $link">
+					<div class="block-footer">
+						<span class="block-footer-controls">
+							<xf:button href="{$link}" rel="nofollow">{{ phrase('view_more...') }}</xf:button>
+						</span>
+					</div>
+				</xf:if>
+			<xf:else />
+				<h3 class="block-minorHeader">
+					<xf:if is="{$link}" >
+						<a href="{$link}" rel="nofollow">{$title}</a>
+					<xf:else />
+						<span>{$title}</span>
+					</xf:if>
+				</h3>
+				<ul class="block-body">
+					<xf:foreach loop="$posts" value="$post">
+						<li class="block-row">
+							<xf:macro name="item_post_simple"
+									  arg-post="{$post}" 
+									  arg-snippetLength="{$snippetLength}"
+									  />
+						</li>
+					</xf:foreach>
+				</ul>
+			</xf:if>
+		</div>
+	</div>
+</xf:if>
+
+
+<xf:macro name="item_post"
+		  arg-post="!"
+		  arg-snippetLength="!"
+		  >
+	<xf:macro name="item_post_simple"
+			  arg-post="{$post}"
+			  arg-snippetLength="{$snippetLength}"
+			  />
+</xf:macro>
+
+<xf:macro name="item_post_simple"
+		  arg-post="!"
+		  arg-snippetLength="!"
+		  >
+	<xf:css src="message.less" />
+	<div class="contentRow {{ $post.isIgnored() ? ' is-ignored' : '' }}{{ $post.isUnread() ? ' is-unread' : '' }}" data-author="{{ $post.User.username ?: $post.username }}" data-content="post-{$post.post_id}">
+		<div class="contentRow-main">
+			<h3 class="contentRow-title">
+				<a href="{{ link('threads/post', $post.Thread, {'post_id': $post.post_id}) }}">{{ prefix('thread', $post.Thread) }}{$post.Thread.title}</a>
+			</h3>
+			<xf:if is="$snippetLength > 0">
+				<div class="contentRow-snippet">{{ snippet($post.message, $snippetLength, {'stripQuote': true}) }}</div>
+			</xf:if>
+			<div class="contentRow-minor contentRow-minor--smaller contentRow-minor--hideLinks">
+				<ul class="listInline listInline--bullet">
+					<li>{{ phrase('posted_by:') }} <xf:username user="{$post.User}" defaultname="{$post.username}" class="u-concealed" /></li>
+					<li><xf:date time="{$post.post_date}" /></li>
+				</ul>				
+			</div>
+			<div class="contentRow-minor contentRow-minor--smaller contentRow-minor--hideLinks">
+				<ul class="listInline listInline--bullet">
+					<li>{{ phrase('forum:') }} <a href="{{ link('forums', $post.Thread.Forum) }}">{$post.Thread.Forum.title}</a></li>
+				</ul>				
+			</div>
+		</div>
+	</div>
+</xf:macro>]]></template>
+</templates>

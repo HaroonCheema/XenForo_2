@@ -43,6 +43,7 @@ return array(
 			foreach ($__vars['activeUpgrades'] AS $__vars['activeUpgrade']) {
 				$__compilerTemp1 .= '
 						';
+				$__vars['_upgrade'] = $__vars['activeUpgrade'];
 				$__vars['paymentProfile'] = $__vars['activeUpgrade']['PurchaseRequest']['PaymentProfile'];
 				$__compilerTemp2 = '';
 				if ($__vars['paymentProfile']) {
@@ -59,10 +60,11 @@ return array(
 				), array(array(
 					'_type' => 'cell',
 					'html' => '
-								' . $__templater->func('username_link', array($__vars['activeUpgrade']['User'], false, array(
+								' . '' . '
+' . $__templater->func('username_link', array($__vars['activeUpgrade']['User'], false, array(
 					'defaultname' => 'Unknown user',
 					'href' => $__templater->func('link', array('users/edit', $__vars['activeUpgrade']['User'], ), false),
-				))) . '
+				))) . ' ' . $__templater->includeTemplate('nixfifty_giftupgrades_giftedby_label', $__vars) . '
 							',
 				),
 				array(
