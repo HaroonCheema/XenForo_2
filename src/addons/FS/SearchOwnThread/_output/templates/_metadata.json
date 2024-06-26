@@ -1,0 +1,17 @@
+{
+    "admin/fs_search_form_add.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "7bc82582c20caad68f72926f6c1c9f9f"
+    },
+    "admin/fs_search_form_post.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "c426cded63be3f4506a556f3eac5e8ec"
+    },
+    "admin/fs_search_own_thread_index.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d5407519b34d592250b6be5cadaf698d"
+    }
+}

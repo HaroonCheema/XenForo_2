@@ -1,0 +1,75 @@
+<xf:title>{{ phrase('fs_search_own_thread_title') }}</xf:title>
+
+<xf:pageaction>
+	<xf:button href="{{ link('search-own-thread/add') }}" icon="add">{{ phrase('fs_search_own_thread_add_btn') }}</xf:button>
+</xf:pageaction>
+<xf:form action="{{ link($prefix . '/toggle') }}" class="block" ajax="true">
+	<div class="block-outer">
+		<xf:macro
+				  template="filter_macros"
+				  name="quick_filter"
+				  arg-key="search-own-thread"
+				  arg-class="block-outer-opposite"
+				  />
+	</div>
+
+	<div class="block-container">
+
+		<xf:if is="$data is not empty">
+			<div class="block-body">
+				<xf:datalist data-xf-init="responsive-data-list">
+
+					<xf:macro
+							  name="table_list"
+							  arg-data="{$data}"
+							  />
+
+
+				</xf:datalist>
+				<div class="block-footer">
+					<span class="block-footer-counter"
+						  >{{ display_totals($totalReturn, $total) }}</span
+						>
+				</div>
+
+			</div>
+			<xf:else />
+			<div class="block-body block-row">{{ phrase('no_items_have_been_created_yet') }}</div>
+
+		</xf:if>
+
+	</div>
+
+
+	<xf:pagenav
+				page="{$page}"
+				perpage="{$perPage}"
+				total="{$total}"
+				link="search-own-thread"
+				wrapperclass="block"
+				/>
+</xf:form>
+<xf:macro
+		  name="table_list"
+		  arg-data="!"
+		  >
+	<xf:datarow rowtype="header">
+		<xf:cell> {{ phrase('title') }} </xf:cell>
+		<xf:cell> {{ phrase('link') }} </xf:cell>
+		<xf:cell class="dataList-cell--min"></xf:cell>
+		<xf:cell class="dataList-cell--min"></xf:cell>
+	</xf:datarow>
+	<xf:foreach loop="{$data}" value="$value">
+		<xf:datarow>
+
+			<xf:cell> {$value.title} </xf:cell>
+			<xf:cell> {{ link_type('public', 'canonical:search-own-thread', $value) }} </xf:cell>
+			
+			<xf:action href="{{ link('search-own-thread/edit', $value) }}" >{{ phrase('edit') }}</xf:action>
+			<xf:delete
+					   href="{{ link('search-own-thread/delete', $value) }}"
+					   overlay="true"
+					   />
+		</xf:datarow>
+	</xf:foreach>
+</xf:macro>

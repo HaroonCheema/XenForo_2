@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="admin" title="fs_search_form_add" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('search') }}</xf:title>
+
+<xf:form action="{{ link('search-own-thread/save', $data) }}" class="block" ajax="true">
+	<div class="block-container">
+
+		<div class="block-body">
+			<xf:include template="fs_search_form_post" />
+		</div>
+
+		<xf:submitrow icon="search" sticky="true" />
+	</div>
+</xf:form>]]></template>
+  <template type="admin" title="fs_search_form_post" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('fs_search_own_thread_title') }}</xf:title>
+
+<xf:textboxrow name="title" value="{$data.title}" hint="{{ phrase('required')}}" required="required" label="{{ phrase('title') }}" />
+<xf:textarearow name="description" value="{$data.description}" autosize="true"
+				label="{{ phrase('description') }}" />
+
+<hr class="formRowSep" />
+<xf:textboxrow name="url_portion" value="{$data.url_portion}"
+			   label="{{ phrase('url_portion') }}"
+			   hint="{{ phrase('optional')}}"
+			   dir="ltr" />
+
+<xf:numberboxrow name="display_order" value="{$data.display_order}" min="1" step="1"
+				 label="{{ phrase('display_order') }}"
+				 hint="{$hint}"
+				 explain="{{ phrase('position_of_this_item_relative_to_other_nodes_with_same_parent') }}"
+				 readonly="{{ $readOnly ? 'readonly' : '' }}" />
+<hr class="formRowSep" />
+
+<xf:dateinputrow name="newer_than" value="{$data.newer_than}"
+				 label="{{ phrase('newer_than') }}" />
+
+<xf:dateinputrow name="older_than" value="{$data.older_than}"
+				 label="{{ phrase('older_than') }}" />
+
+<xf:numberboxrow name="min_reply_count" value="{$data.min_reply_count|default(0)}" min="0"
+				 label="{{ phrase('minimum_number_of_replies') }}" />
+
+<xf:if is="$prefixesGrouped is not empty">
+	<xf:selectrow name="prefixes[]" size="7" multiple="true" value="{$data.prefixes|default([0])}"
+				  label="{{ phrase('prefixes') }}">
+
+		<xf:option value="">{{ phrase('(any)') }}</xf:option>
+		<xf:foreach loop="$prefixGroups" key="$groupId" value="$prefixGroup" if="{{ count($prefixesGrouped.{$groupId}) > 0 }}">
+			<xf:optgroup label="{{ prefix_group('thread', $groupId) }}">
+				<xf:foreach loop="{$prefixesGrouped.{$groupId}}" key="$prefixId" value="$prefix">
+					<xf:option value="{$prefixId}">{{ prefix_title('thread', $prefixId) }}</xf:option>
+				</xf:foreach>
+			</xf:optgroup>
+		</xf:foreach>
+	</xf:selectrow>
+</xf:if>
+
+<xf:formrow rowtype="input" hint="{{ phrase('required')}}"
+			label="{{ phrase('search_in_forums') }}">
+
+	<ul class="inputList">
+		<li><xf:select name="nodes[]" size="7" multiple="multiple" value="{$data.nodes|default([0])}" required="required">
+			<xf:option value="">{{ phrase('all_forums') }}</xf:option>
+			<xf:foreach loop="$nodeTree.getFlattened(0)" value="$treeEntry">
+				<xf:option value="{$treeEntry.record.node_id}">{{ repeat('&nbsp;&nbsp;', $treeEntry.depth)|raw }} {$treeEntry.record.title}</xf:option>
+			</xf:foreach>
+			</xf:select></li>
+	</ul>
+</xf:formrow>
+
+<xf:radiorow name="order" hint="{{ phrase('required')}}" required="required" value="{$data.order|default($isRelevanceSupported ? 'relevance' : 'date')}"
+			 label="{{ phrase('order_by') }}">
+
+	<xf:option value="date">{{ phrase('date') }}</xf:option>
+	<xf:option value="replies">{{ phrase('most_replies') }}</xf:option>
+</xf:radiorow>]]></template>
+  <template type="admin" title="fs_search_own_thread_index" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('fs_search_own_thread_title') }}</xf:title>
+
+<xf:pageaction>
+	<xf:button href="{{ link('search-own-thread/add') }}" icon="add">{{ phrase('fs_search_own_thread_add_btn') }}</xf:button>
+</xf:pageaction>
+<xf:form action="{{ link($prefix . '/toggle') }}" class="block" ajax="true">
+	<div class="block-outer">
+		<xf:macro
+				  template="filter_macros"
+				  name="quick_filter"
+				  arg-key="search-own-thread"
+				  arg-class="block-outer-opposite"
+				  />
+	</div>
+
+	<div class="block-container">
+
+		<xf:if is="$data is not empty">
+			<div class="block-body">
+				<xf:datalist data-xf-init="responsive-data-list">
+
+					<xf:macro
+							  name="table_list"
+							  arg-data="{$data}"
+							  />
+
+
+				</xf:datalist>
+				<div class="block-footer">
+					<span class="block-footer-counter"
+						  >{{ display_totals($totalReturn, $total) }}</span
+						>
+				</div>
+
+			</div>
+			<xf:else />
+			<div class="block-body block-row">{{ phrase('no_items_have_been_created_yet') }}</div>
+
+		</xf:if>
+
+	</div>
+
+
+	<xf:pagenav
+				page="{$page}"
+				perpage="{$perPage}"
+				total="{$total}"
+				link="search-own-thread"
+				wrapperclass="block"
+				/>
+</xf:form>
+<xf:macro
+		  name="table_list"
+		  arg-data="!"
+		  >
+	<xf:datarow rowtype="header">
+		<xf:cell> {{ phrase('title') }} </xf:cell>
+		<xf:cell> {{ phrase('link') }} </xf:cell>
+		<xf:cell class="dataList-cell--min"></xf:cell>
+		<xf:cell class="dataList-cell--min"></xf:cell>
+	</xf:datarow>
+	<xf:foreach loop="{$data}" value="$value">
+		<xf:datarow>
+
+			<xf:cell> {$value.title} </xf:cell>
+			<xf:cell> {{ link_type('public', 'canonical:search-own-thread', $value) }} </xf:cell>
+			
+			<xf:action href="{{ link('search-own-thread/edit', $value) }}" >{{ phrase('edit') }}</xf:action>
+			<xf:delete
+					   href="{{ link('search-own-thread/delete', $value) }}"
+					   overlay="true"
+					   />
+		</xf:datarow>
+	</xf:foreach>
+</xf:macro>]]></template>
+</templates>

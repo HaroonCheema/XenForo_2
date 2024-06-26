@@ -122,6 +122,16 @@ return function($__templater, $__selectedNav, array $__vars)
 
 	}
 
+	$__navTemp = [
+		'title' => \XF::phrase('nav.fsPackageReview123'),
+		'href' => $__templater->func('link', array('search/member', null, array('user_id' => $__vars['xf']['visitor']['user_id'], ), ), false),
+		'attributes' => [],
+	];
+	if ($__navTemp) {
+		$__tree['fsPackageReview123'] = $__navTemp;
+		$__flat['fsPackageReview123'] =& $__tree['fsPackageReview123'];
+	}
+
 	if ($__vars['xf']['homePageUrl']) {
 		$__navTemp = [
 		'title' => \XF::phrase('nav.home'),

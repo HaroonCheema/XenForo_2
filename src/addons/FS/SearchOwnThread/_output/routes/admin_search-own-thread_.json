@@ -1,0 +1,11 @@
+{
+    "route_type": "admin",
+    "route_prefix": "search-own-thread",
+    "sub_name": "",
+    "format": ":int<id>/:page",
+    "build_class": "",
+    "build_method": "",
+    "controller": "FS\\SearchOwnThread:SearchOwnThread",
+    "context": "fs_search_own_thread",
+    "action_prefix": ""
+}

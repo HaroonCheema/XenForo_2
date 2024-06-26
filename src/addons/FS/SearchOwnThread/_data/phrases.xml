@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="admin_navigation.fs_search_own_thread" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add]]></phrase>
+  <phrase title="admin_navigation.search_own_thread" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Search Own Thread]]></phrase>
+  <phrase title="fs_search_own_thread_add_btn" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add]]></phrase>
+  <phrase title="fs_search_own_thread_title" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Search Own Thread]]></phrase>
+</phrases>

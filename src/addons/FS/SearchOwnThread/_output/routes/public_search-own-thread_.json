@@ -1,0 +1,11 @@
+{
+    "route_type": "public",
+    "route_prefix": "search-own-thread",
+    "sub_name": "",
+    "format": ":int<id>/:page",
+    "build_class": "",
+    "build_method": "",
+    "controller": "FS\\SearchOwnThread:SearchOwnThread",
+    "context": "",
+    "action_prefix": ""
+}

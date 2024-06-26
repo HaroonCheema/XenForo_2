@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<admin_navigation>
+  <admin_navigation_entry navigation_id="fs_search_own_thread" parent_navigation_id="search_own_thread" display_order="1" link="search-own-thread" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="search_own_thread" display_order="1" icon="fa-search" debug_only="0" development_only="0" hide_no_children="0"/>
+</admin_navigation>

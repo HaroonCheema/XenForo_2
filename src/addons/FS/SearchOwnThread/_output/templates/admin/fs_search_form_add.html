@@ -1,0 +1,12 @@
+<xf:title>{{ phrase('search') }}</xf:title>
+
+<xf:form action="{{ link('search-own-thread/save', $data) }}" class="block" ajax="true">
+	<div class="block-container">
+
+		<div class="block-body">
+			<xf:include template="fs_search_form_post" />
+		</div>
+
+		<xf:submitrow icon="search" sticky="true" />
+	</div>
+</xf:form>

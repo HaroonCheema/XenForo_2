@@ -17,4 +17,4 @@ $config['enableLivePayments'] = false;
 
 $config['debug'] = true;
 
-$config['development']['defaultAddOn'] = 'DC/LinkProxy';
+$config['development']['defaultAddOn'] = 'FS/SearchOwnThread';

@@ -1,0 +1,62 @@
+<xf:title>{{ phrase('fs_search_own_thread_title') }}</xf:title>
+
+<xf:textboxrow name="title" value="{$data.title}" hint="{{ phrase('required')}}" required="required" label="{{ phrase('title') }}" />
+<xf:textarearow name="description" value="{$data.description}" autosize="true"
+				label="{{ phrase('description') }}" />
+
+<hr class="formRowSep" />
+<xf:textboxrow name="url_portion" value="{$data.url_portion}"
+			   label="{{ phrase('url_portion') }}"
+			   hint="{{ phrase('optional')}}"
+			   dir="ltr" />
+
+<xf:numberboxrow name="display_order" value="{$data.display_order}" min="1" step="1"
+				 label="{{ phrase('display_order') }}"
+				 hint="{$hint}"
+				 explain="{{ phrase('position_of_this_item_relative_to_other_nodes_with_same_parent') }}"
+				 readonly="{{ $readOnly ? 'readonly' : '' }}" />
+<hr class="formRowSep" />
+
+<xf:dateinputrow name="newer_than" value="{$data.newer_than}"
+				 label="{{ phrase('newer_than') }}" />
+
+<xf:dateinputrow name="older_than" value="{$data.older_than}"
+				 label="{{ phrase('older_than') }}" />
+
+<xf:numberboxrow name="min_reply_count" value="{$data.min_reply_count|default(0)}" min="0"
+				 label="{{ phrase('minimum_number_of_replies') }}" />
+
+<xf:if is="$prefixesGrouped is not empty">
+	<xf:selectrow name="prefixes[]" size="7" multiple="true" value="{$data.prefixes|default([0])}"
+				  label="{{ phrase('prefixes') }}">
+
+		<xf:option value="">{{ phrase('(any)') }}</xf:option>
+		<xf:foreach loop="$prefixGroups" key="$groupId" value="$prefixGroup" if="{{ count($prefixesGrouped.{$groupId}) > 0 }}">
+			<xf:optgroup label="{{ prefix_group('thread', $groupId) }}">
+				<xf:foreach loop="{$prefixesGrouped.{$groupId}}" key="$prefixId" value="$prefix">
+					<xf:option value="{$prefixId}">{{ prefix_title('thread', $prefixId) }}</xf:option>
+				</xf:foreach>
+			</xf:optgroup>
+		</xf:foreach>
+	</xf:selectrow>
+</xf:if>
+
+<xf:formrow rowtype="input" hint="{{ phrase('required')}}"
+			label="{{ phrase('search_in_forums') }}">
+
+	<ul class="inputList">
+		<li><xf:select name="nodes[]" size="7" multiple="multiple" value="{$data.nodes|default([0])}" required="required">
+			<xf:option value="">{{ phrase('all_forums') }}</xf:option>
+			<xf:foreach loop="$nodeTree.getFlattened(0)" value="$treeEntry">
+				<xf:option value="{$treeEntry.record.node_id}">{{ repeat('&nbsp;&nbsp;', $treeEntry.depth)|raw }} {$treeEntry.record.title}</xf:option>
+			</xf:foreach>
+			</xf:select></li>
+	</ul>
+</xf:formrow>
+
+<xf:radiorow name="order" hint="{{ phrase('required')}}" required="required" value="{$data.order|default($isRelevanceSupported ? 'relevance' : 'date')}"
+			 label="{{ phrase('order_by') }}">
+
+	<xf:option value="date">{{ phrase('date') }}</xf:option>
+	<xf:option value="replies">{{ phrase('most_replies') }}</xf:option>
+</xf:radiorow>
