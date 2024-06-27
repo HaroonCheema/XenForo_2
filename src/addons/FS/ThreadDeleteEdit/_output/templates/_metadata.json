@@ -1,0 +1,17 @@
+{
+    "public/fs_thread_delete_edit_add.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "c5e5280b8cd68ee9c4f89bd2c449bed0"
+    },
+    "public/fs_thread_post_delete.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "1250d03f7a8ffce642ec1fa780b18187"
+    },
+    "public/fs_thread_post_edit.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "f7763f982b23fdae3ac9b86c60688427"
+    }
+}

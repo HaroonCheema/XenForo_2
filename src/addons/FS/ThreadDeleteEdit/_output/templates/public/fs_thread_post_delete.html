@@ -1,0 +1,17 @@
+<xf:title>{{ phrase('delete_post') }}</xf:title>
+
+<xf:breadcrumb source="$thread.getBreadcrumbs()" />
+
+<xf:form action="{{ link('posts/delete-post', $post) }}" class="block" ajax="true">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:macro template="helper_action" name="delete_type" arg-canHardDelete="{$post.canDelete('hard')}" />
+
+			<xf:if is="$post.canSendModeratorActionAlert()">
+				<xf:macro template="helper_action" name="author_alert" />
+			</xf:if>
+		</div>
+		<xf:submitrow icon="delete" sticky="true" />
+	</div>
+	<xf:redirect />
+</xf:form>

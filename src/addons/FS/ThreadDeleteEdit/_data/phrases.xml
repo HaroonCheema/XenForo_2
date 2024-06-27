@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="fs_thread_delete_edit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Delete Edit Threads]]></phrase>
+  <phrase title="fs_thread_delete_edit_title" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Thread Delete Edit Users]]></phrase>
+  <phrase title="fs_thread_delete_edit_usernames" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Usernames]]></phrase>
+</phrases>

@@ -764,6 +764,42 @@ return array(
 	}
 	$__compilerTemp2 .= '
 			';
+	if ($__templater->method($__vars['post'], 'canEditPost', array())) {
+		$__compilerTemp2 .= '
+	';
+		$__templater->includeJs(array(
+			'src' => 'xf/message.js',
+			'min' => '1',
+		));
+		$__compilerTemp2 .= '
+	<a href="' . $__templater->func('link', array('posts/edit-post', $__vars['post'], ), true) . '"
+	   class="actionBar-action actionBar-action--edits actionBar-action--menuItem"
+	   data-xf-click="quick-edit"
+	   data-editor-target="#js-post-' . $__templater->escape($__vars['post']['post_id']) . ' .js-quickEditTarget"
+	   data-menu-closer="true">' . 'Edit' . '</a>
+
+	';
+		$__vars['hasActionBarMenu'] = true;
+		$__compilerTemp2 .= '
+';
+	}
+	$__compilerTemp2 .= '
+
+';
+	if ($__templater->method($__vars['post'], 'canDeletePost', array())) {
+		$__compilerTemp2 .= '
+	<a href="' . $__templater->func('link', array('posts/delete-post', $__vars['post'], ), true) . '"
+	   class="actionBar-action actionBar-action--deletes actionBar-action--menuItem"
+	   data-xf-click="overlay">' . 'Delete' . '</a>
+
+	';
+		$__vars['hasActionBarMenu'] = true;
+		$__compilerTemp2 .= '
+';
+	}
+	$__compilerTemp2 .= '
+
+';
 	if (($__vars['post']['message_state'] == 'deleted') AND $__templater->method($__vars['post'], 'canUndelete', array())) {
 		$__compilerTemp2 .= '
 				<a href="' . $__templater->func('link', array('posts/undelete', $__vars['post'], ), true) . '"

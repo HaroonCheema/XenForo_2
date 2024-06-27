@@ -1,0 +1,13 @@
+<xf:title>{{ phrase('fs_thread_delete_edit_title') }}</xf:title>
+
+<xf:form action="{{ link('threads/delete-edit', $thread) }}" class="block" ajax="true">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:textboxrow name="users" value="{$thread.users}" ac="true" hint="{{ phrase('required') }}" required="required"
+						   label="{{ phrase('fs_thread_delete_edit_usernames') }}"
+						   explain="{{ phrase('separate_names_with_comma') }}" />
+		</div>
+
+		<xf:submitrow icon="save" sticky="true" />
+	</div>
+</xf:form>

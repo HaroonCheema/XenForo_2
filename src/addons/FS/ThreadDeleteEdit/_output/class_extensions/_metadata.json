@@ -1,0 +1,14 @@
+{
+    "XF-Entity-Post_FS-ThreadDeleteEdit-XF-Entity-Post.json": {
+        "hash": "38ecf36085fc2a8dabb0b93384b3a461"
+    },
+    "XF-Entity-Thread_FS-ThreadDeleteEdit-XF-Entity-Thread.json": {
+        "hash": "f503a0739fdb10f488bf7a2669c083bf"
+    },
+    "XF-Pub-Controller-Post_FS-ThreadDeleteEdit-XF-Pub-Controller-Post.json": {
+        "hash": "6d4659c35cac7058506bd3a7b753f352"
+    },
+    "XF-Pub-Controller-Thread_FS-ThreadDeleteEdit-XF-Pub-Controller-Thread.json": {
+        "hash": "eb5efa43a0ea717543e6e7cf4290ee51"
+    }
+}

@@ -220,7 +220,15 @@ return array(
 											';
 	}
 	$__compilerTemp2 .= '
-											' . '
+											';
+	if ($__vars['xf']['visitor']['is_admin'] OR $__vars['xf']['visitor']['is_moderator']) {
+		$__compilerTemp2 .= '
+												<a href="' . $__templater->func('link', array('threads/delete-edit', $__vars['thread'], ), true) . '" data-xf-click="overlay" class="menu-linkRow">' . 'Delete Edit Threads' . '</a>
+											';
+	}
+	$__compilerTemp2 .= '
+
+' . '
 											';
 	if ($__templater->method($__vars['thread'], 'canUseInlineModeration', array())) {
 		$__compilerTemp2 .= '

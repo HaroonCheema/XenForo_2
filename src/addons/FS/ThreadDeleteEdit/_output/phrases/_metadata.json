@@ -1,0 +1,20 @@
+{
+    "fs_thread_delete_edit.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "64cccd1e0063ea44ad2a3fcd542c2868"
+    },
+    "fs_thread_delete_edit_title.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "a9beb2cc5b79feb83898d961718448c0"
+    },
+    "fs_thread_delete_edit_usernames.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "5365e5ca486b5bd5c1f3cfde52c10a19"
+    }
+}

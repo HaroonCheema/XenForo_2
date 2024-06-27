@@ -1,0 +1,9 @@
+{
+    "template": "thread_view",
+    "description": "fs_thread_delete_edit_thread_view",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<!--[XF:thread_tools_menu:before_footer]-->",
+    "replace": "<xf:if is=\"$xf.visitor.is_admin || $xf.visitor.is_moderator\">\n\t\t\t\t\t\t\t\t\t\t\t\t<a href=\"{{ link('threads/delete-edit', $thread) }}\" data-xf-click=\"overlay\" class=\"menu-linkRow\">{{ phrase('fs_thread_delete_edit') }}</a>\n\t\t\t\t\t\t\t\t\t\t\t</xf:if>\n\n$0"
+}
