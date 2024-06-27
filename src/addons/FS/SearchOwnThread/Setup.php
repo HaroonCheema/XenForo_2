@@ -21,11 +21,6 @@ class Setup extends AbstractSetup
 	{
 		$sm = $this->schemaManager();
 
-		// $this->alterTable('fs_user_upgrade_rating', function (\XF\Db\Schema\Alter $table) {
-		// 	// $table->addColumn('author_response', 'mediumtext');
-		// 	$table->addColumn('author_id', 'int');
-		// });
-
 		foreach ($this->getTables() as $tableName => $callback) {
 			$sm->createTable($tableName, $callback);
 		}

@@ -29,39 +29,6 @@ class SearchOwnThread extends AbstractController
         return $this->view('FS\SearchOwnThread:SearchOwnThread\Index', 'fs_search_own_thread_index', $viewParams);
     }
 
-    // public function actionAdd1()
-    // {
-    //     $input = $this->convertShortSearchInputNames();
-
-    //     $searcher = $this->app->search();
-    //     $type = $input['search_type'] ?: $this->filter('type', 'str');
-
-    //     $viewParams = [
-    //         'tabs' => $searcher->getSearchTypeTabs(),
-    //         'type' => $type,
-    //         'isRelevanceSupported' => $searcher->isRelevanceSupported(),
-    //         'input' => $input
-    //     ];
-
-    //     $typeHandler = null;
-    //     if ($type && $searcher->isValidContentType($type)) {
-    //         $typeHandler = $searcher->handler($type);
-    //         if (!$typeHandler->getSearchFormTab()) {
-    //             $typeHandler = null;
-    //         }
-    //     }
-
-    //     if ($typeHandler) {
-    //         if ($sectionContext = $typeHandler->getSectionContext()) {
-    //             $this->setSectionContext($sectionContext);
-    //         }
-
-    //         $viewParams = array_merge($viewParams, $typeHandler->getSearchFormData());
-    //     }
-
-    //     return $this->view('XF:Search\Form', 'fs_search_form_add', $viewParams);
-    // }
-
     public function actionAdd()
     {
         $emptyData = $this->em()->create('FS\SearchOwnThread:SearchOwnThread');
@@ -78,7 +45,6 @@ class SearchOwnThread extends AbstractController
 
     public function actionAddEdit(\FS\SearchOwnThread\Entity\SearchOwnThread $data)
     {
-
         $input = $this->convertShortSearchInputNames();
 
         $searcher = $this->app->search();
@@ -113,7 +79,6 @@ class SearchOwnThread extends AbstractController
 
     protected function convertShortSearchInputNames()
     {
-
         $input = $this->filter([
             't' => 'str',
             'q' => 'str',
@@ -133,6 +98,8 @@ class SearchOwnThread extends AbstractController
 
     public function actionSave(ParameterBag $params)
     {
+        $this->assertPostOnly();
+
         if ($params->id) {
             $dataEditAdd = $this->assertDataExists($params->id);
         } else {
@@ -141,7 +108,47 @@ class SearchOwnThread extends AbstractController
 
         $this->dataSaveProcess($dataEditAdd)->run();
 
+        if ($dataEditAdd->id && !empty($dataEditAdd->url_portion)) {
+
+            $findRoute = 'search-own-thread/' . $dataEditAdd->id . '/';
+
+            $routeFilter = $this->finder('XF:RouteFilter')->where('find_route', $findRoute)->where('prefix', 'search-own-thread')->fetchOne();
+
+            if (!$routeFilter) {
+                $routeFilter = $this->em()->create('XF:RouteFilter');
+            }
+
+            $this->routeFilterSaveProcess($routeFilter, $dataEditAdd)->run();
+        } elseif ($dataEditAdd->id && empty($dataEditAdd->url_portion)) {
+            $findRoute = 'search-own-thread/' . $dataEditAdd->id . '/';
+
+            $routeFilter = $this->finder('XF:RouteFilter')->where('find_route', $findRoute)->where('prefix', 'search-own-thread')->fetchOne();
+
+            if ($routeFilter) {
+                $routeFilter->delete();
+            }
+        }
+
         return $this->redirect($this->buildLink('search-own-thread'));
+    }
+
+    protected function routeFilterSaveProcess(\XF\Entity\RouteFilter $routeFilter, $dataEditAdd)
+    {
+        $form = $this->formAction();
+
+        $findRoute = 'search-own-thread/' . $dataEditAdd->id . '/';
+        $replaceRoute = 'search-own-thread/' . $dataEditAdd->id . '/' . $dataEditAdd->url_portion;
+
+        $input = [
+            'find_route' => $findRoute,
+            'replace_route' => $replaceRoute,
+            'url_to_route_only' => '',
+            'enabled' => 'true'
+        ];
+
+        $form->basicEntitySave($routeFilter, $input);
+
+        return $form;
     }
 
     protected function dataSaveProcess(\FS\SearchOwnThread\Entity\SearchOwnThread $data)
@@ -182,6 +189,25 @@ class SearchOwnThread extends AbstractController
 
         /** @var \XF\ControllerPlugin\Delete $plugin */
         $plugin = $this->plugin('XF:Delete');
+
+        if ($this->isPost()) {
+
+            $replyExists->delete();
+
+            if ($replyExists->id && !empty($replyExists->url_portion)) {
+
+                $findRoute = 'search-own-thread/' . $replyExists->id . '/';
+
+                $routeFilter = $this->finder('XF:RouteFilter')->where('find_route', $findRoute)->where('prefix', 'search-own-thread')->fetchOne();
+
+                if ($routeFilter) {
+                    $routeFilter->delete();
+                }
+            }
+
+            return $this->redirect($this->buildLink('search-own-thread'));
+        }
+
         return $plugin->actionDelete(
             $replyExists,
             $this->buildLink('search-own-thread/delete', $replyExists),
