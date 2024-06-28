@@ -8,13 +8,7 @@ return array(
 	$__finalCompiled .= '
 
 ';
-	if (!$__vars['removeAccountWrapper']) {
-		$__finalCompiled .= '
-	';
-		$__templater->wrapTemplate('account_wrapper', $__vars);
-		$__finalCompiled .= '
-';
-	}
+	$__templater->wrapTemplate('account_wrapper', $__vars);
 	$__finalCompiled .= '
 
 ';
@@ -28,12 +22,7 @@ return array(
 	$__compilerTemp1 = '';
 	$__compilerTemp1 .= '
 
-		' . $__templater->callMacro('thmonetize_upgrade_page_macros', 'coupon_form', array(
-		'coupons' => $__vars['coupons'],
-		'coupon' => $__vars['coupon'],
-	), $__vars) . '
-
-';
+		';
 	if (!$__templater->test($__vars['available'], 'empty', array())) {
 		$__compilerTemp1 .= '
 			<div class="block">
@@ -69,89 +58,19 @@ return array(
 
 										<span class="inputGroup-splitter"></span>
 
-										';
-					if ($__templater->method($__vars['upgrade'], 'canPurchase', array())) {
-						if ($__vars['coupon']) {
-							$__compilerTemp2 .= '
-	' . $__templater->button('', array(
-								'type' => 'submit',
-								'button' => 'Purchase with ' . $__vars['coupon']['code'] . '',
-								'icon' => 'purchase',
-							), '', array(
-							)) . '
-';
-						} else {
-							$__compilerTemp2 .= '
-	' . $__templater->button('', array(
-								'type' => 'submit',
-								'icon' => 'purchase',
-							), '', array(
-							)) . '
-';
-						}
-					}
-					$__compilerTemp2 .= '
-';
-					if ($__templater->method($__vars['upgrade'], 'canGift', array())) {
-						$__compilerTemp2 .= '
-	';
-						if ($__templater->method($__vars['upgrade'], 'canPurchase', array())) {
-							$__compilerTemp2 .= '<span class="inputGroup-splitter"></span>';
-						}
-						$__compilerTemp2 .= '
-	' . $__templater->button('Gift', array(
-							'type' => 'submit',
-							'name' => 'gift',
-							'value' => '1',
-							'icon' => 'nfgift',
-						), '', array(
-						)) . '
-';
-					}
-					$__compilerTemp2 .= '
+										' . $__templater->button('', array(
+						'type' => 'submit',
+						'icon' => 'purchase',
+					), '', array(
+					)) . '
 									';
 				} else {
 					$__compilerTemp2 .= '
-										';
-					if ($__templater->method($__vars['upgrade'], 'canPurchase', array())) {
-						if ($__vars['coupon']) {
-							$__compilerTemp2 .= '
-	' . $__templater->button('', array(
-								'type' => 'submit',
-								'button' => 'Purchase with ' . $__vars['coupon']['code'] . '',
-								'icon' => 'purchase',
-							), '', array(
-							)) . '
-';
-						} else {
-							$__compilerTemp2 .= '
-	' . $__templater->button('', array(
-								'type' => 'submit',
-								'icon' => 'purchase',
-							), '', array(
-							)) . '
-';
-						}
-					}
-					$__compilerTemp2 .= '
-';
-					if ($__templater->method($__vars['upgrade'], 'canGift', array())) {
-						$__compilerTemp2 .= '
-	';
-						if ($__templater->method($__vars['upgrade'], 'canPurchase', array())) {
-							$__compilerTemp2 .= '<span class="inputGroup-splitter"></span>';
-						}
-						$__compilerTemp2 .= '
-	' . $__templater->button('Gift', array(
-							'type' => 'submit',
-							'name' => 'gift',
-							'value' => '1',
-							'icon' => 'nfgift',
-						), '', array(
-						)) . '
-';
-					}
-					$__compilerTemp2 .= '
+										' . $__templater->button('', array(
+						'type' => 'submit',
+						'icon' => 'purchase',
+					), '', array(
+					)) . '
 
 										' . $__templater->formHiddenVal('payment_profile_id', $__templater->filter($__vars['upgrade']['payment_profile_ids'], array(array('first', array()),), false), array(
 					)) . '
@@ -180,22 +99,6 @@ return array(
 			}
 		}
 		$__compilerTemp1 .= '
-					';
-		if ($__vars['xf']['options']['thmonetize_allowFreeUpgrade'] AND ($__vars['xf']['visitor']['user_id'] AND ($__vars['xf']['visitor']['user_state'] == 'thmonetize_upgrade'))) {
-			$__compilerTemp1 .= '
-						' . $__templater->form('
-							' . $__templater->formSubmitRow(array(
-				'submit' => 'Free account',
-			), array(
-			)) . '
-						', array(
-				'overlay' => 'true',
-				'action' => $__templater->func('link', array('thmonetize-free-account', ), false),
-			)) . '
-					';
-		}
-		$__compilerTemp1 .= '
-
 					</div>
 				</div>
 			</div>
@@ -215,7 +118,7 @@ return array(
 		if ($__templater->isTraversable($__vars['purchased'])) {
 			foreach ($__vars['purchased'] AS $__vars['upgrade']) {
 				$__compilerTemp1 .= '
-						<li class="thmonetize_upgrade thmonetize_upgrade--' . $__templater->escape($__vars['upgrade']['user_upgrade_id']) . ($__vars['upgrade']['thmonetize_style_properties']['color'] ? ' thmonetize_upgrade--hasColor' : '') . ($__vars['upgrade']['thmonetize_style_properties']['shape'] ? (' thmonetize_upgrade--hasShape thmonetize_upgrade--' . $__templater->escape($__vars['upgrade']['thmonetize_style_properties']['shape'])) : '') . '">
+						<li>
 							<div>
 								';
 				$__vars['active'] = $__vars['upgrade']['Active'][$__vars['xf']['visitor']['user_id']];
@@ -246,7 +149,6 @@ return array(
 									' . $__compilerTemp4 . '
 
 									' . $__compilerTemp5 . '
-' . $__templater->includeTemplate('account_upgrades_gift_existing', $__vars) . '
 								', array(
 					'label' => $__templater->escape($__vars['upgrade']['title']),
 					'hint' => $__templater->escape($__vars['upgrade']['cost_phrase']),

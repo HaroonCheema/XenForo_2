@@ -576,11 +576,6 @@ return array(
 		'_type' => 'option',
 	),
 	array(
-		'value' => 'thmonetize_upgrade',
-		'label' => 'Awaiting user upgrade purchase',
-		'_type' => 'option',
-	),
-	array(
 		'value' => 'email_confirm',
 		'label' => 'Awaiting email confirmation',
 		'_type' => 'option',

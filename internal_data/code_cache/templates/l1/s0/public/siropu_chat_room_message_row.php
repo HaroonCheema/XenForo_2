@@ -69,8 +69,7 @@ return array(
 					';
 	}
 	$__compilerTemp1 .= '
-					' . $__templater->includeTemplate('nf_giftupgrades_siropu_chat_room_message_row', $__vars) . '
-';
+					';
 	if ($__templater->method($__vars['message'], 'canQuote', array())) {
 		$__compilerTemp1 .= '
 						<a href="' . $__templater->func('link', array('chat/message/quote', $__vars['message'], ), true) . '" title="' . $__templater->filter('Quote', array(array('for_attr', array()),), true) . '" data-xf-click="siropu-chat-quote">' . $__templater->fontAwesome('fa-quote-right', array(

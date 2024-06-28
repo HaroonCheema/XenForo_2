@@ -18,7 +18,6 @@ return array(
 		foreach ($__vars['upgrades'] AS $__vars['upgrade']) {
 			$__compilerTemp1 .= '
 			';
-			$__vars['_upgrade'] = $__vars['upgrade'];
 			$__vars['paymentProfile'] = $__vars['upgrade']['PurchaseRequest']['PaymentProfile'];
 			$__compilerTemp2 = '';
 			if ($__vars['paymentProfile']) {
@@ -33,11 +32,10 @@ return array(
 			$__compilerTemp3 = array(array(
 				'_type' => 'cell',
 				'html' => '
-					' . '' . '
-' . $__templater->func('username_link', array($__vars['upgrade']['User'], false, array(
+					' . $__templater->func('username_link', array($__vars['upgrade']['User'], false, array(
 				'defaultname' => 'Unknown user',
 				'href' => $__templater->func('link', array('users/edit', $__vars['upgrade']['User'], ), false),
-			))) . ' ' . $__templater->includeTemplate('nixfifty_giftupgrades_giftedby_label', $__vars) . '
+			))) . '
 				',
 			)
 ,array(
@@ -172,9 +170,6 @@ return array(
 										<a href="' . $__templater->func('link', array('user-upgrades/active', $__vars['upgrade'], ), true) . '" class="menu-linkRow">' . 'View users' . '</a>
 										<a href="' . $__templater->func('link', array('user-upgrades/expired', $__vars['upgrade'], ), true) . '" class="menu-linkRow">' . 'View expired upgrades' . '</a>
 										<a href="' . $__templater->func('link', array('user-upgrades/manual', $__vars['upgrade'], ), true) . '" class="menu-linkRow">' . 'Manually upgrade user' . '</a>
-										' . $__templater->callMacro('thmonetize_user_upgrade_list_macros', 'actions_bottom', array(
-					'upgrade' => $__vars['upgrade'],
-				), $__vars) . '
 									</div>
 								</div>
 							',

@@ -160,22 +160,15 @@ return array(
 {
 	$__finalCompiled = '';
 	$__finalCompiled .= '
-	';
-	if (($__vars['post']['thmonetize_max_posts'] <= 0) OR ($__vars['post']['position'] < $__vars['post']['thmonetize_max_posts'])) {
-		$__finalCompiled .= '
-
 
 	';
-		$__templater->includeCss('message.less');
-		$__finalCompiled .= '
-';
-		$__templater->includeCss('nf_giftupgrades.less');
-		$__finalCompiled .= '
+	$__templater->includeCss('message.less');
+	$__finalCompiled .= '
 
 	' . $__templater->renderExtension('before', $__vars, $__extensions) . '
 
 	' . '
-	<article class="message ' . $__templater->escape($__templater->renderExtension('extra_classes', $__vars, $__extensions)) . ' js-post js-inlineModContainer ' . ($__templater->method($__vars['post'], 'isIgnored', array()) ? 'is-ignored' : '') . ' ' . ($__templater->method($__vars['post'], 'isUnread', array()) ? ' is-unread' : '') . ' ' . (($__templater->method($__vars['post'], 'hasOption', array('nfGift', )) AND $__vars['post']['GiftCount']) ? 'nf-gifted' : '') . '"
+	<article class="message ' . $__templater->escape($__templater->renderExtension('extra_classes', $__vars, $__extensions)) . ' js-post js-inlineModContainer ' . ($__templater->method($__vars['post'], 'isIgnored', array()) ? 'is-ignored' : '') . ' ' . ($__templater->method($__vars['post'], 'isUnread', array()) ? ' is-unread' : '') . '"
 		data-author="' . ($__templater->escape($__vars['post']['User']['username']) ?: $__templater->escape($__vars['post']['username'])) . '"
 		data-content="post-' . $__templater->escape($__vars['post']['post_id']) . '"
 		id="js-post-' . $__templater->escape($__vars['post']['post_id']) . '">
@@ -187,21 +180,8 @@ return array(
 
 	' . $__templater->renderExtension('after', $__vars, $__extensions) . '
 	' . $__templater->callAdsMacro('post_below_container', array(
-			'post' => $__vars['post'],
-		), $__vars) . '
-
-	';
-	} else {
-		$__finalCompiled .= '
-	';
-		$__templater->includeCss('message.less');
-		$__finalCompiled .= '
-';
-		$__templater->includeCss('nf_giftupgrades.less');
-		$__finalCompiled .= '
-	';
-	}
-	$__finalCompiled .= '
+		'post' => $__vars['post'],
+	), $__vars) . '
 ';
 	return $__finalCompiled;
 }
@@ -438,38 +418,7 @@ return array(
 			';
 	} else {
 		$__finalCompiled .= '
-				';
-		if ($__templater->method($__vars['xf']['visitor'], 'hasNodePermission', array($__vars['post']['Thread']['node_id'], 'thMonetize_viewPost', ))) {
-			$__finalCompiled .= '
-								';
-			if ($__vars['post']['thmonetize_post_snippet_length'] > 0) {
-				$__finalCompiled .= '
-								' . $__templater->func('snippet', array($__vars['post']['message'], $__vars['post']['thmonetize_post_snippet_length'], array('stripBbCode' => true, ), ), true) . '
-								';
-				if ($__vars['xf']['options']['thmonetize_linkToUpgradesIfContentRestricted']) {
-					$__finalCompiled .= '
-									<div class="messageNotice messageNotice--warning">
-										' . 'An <a href="' . $__templater->func('link', array('account/upgrades', ), true) . '">account upgrade</a> is required to view more of this post.' . '
-									</div>
-								';
-				}
-				$__finalCompiled .= '
-								';
-			} else {
-				$__finalCompiled .= '
-								' . $__templater->func('bb_code', array($__vars['post']['message'], 'post', $__vars['post'], ), true) . '
-								';
-			}
-			$__finalCompiled .= '
-								';
-		} else if ($__vars['xf']['options']['thmonetize_linkToUpgradesIfContentRestricted']) {
-			$__finalCompiled .= '
-									<div class="messageNotice messageNotice--warning">
-										' . 'An <a href="' . $__templater->func('link', array('account/upgrades', ), true) . '">account upgrade</a> is required to view this post.' . '
-									</div>
-								';
-		}
-		$__finalCompiled .= '
+				' . $__templater->func('bb_code', array($__vars['post']['message'], 'post', $__vars['post'], ), true) . '
 			';
 	}
 	$__finalCompiled .= '
@@ -599,9 +548,6 @@ return array(
 		'list' => '< .js-post | .js-reactionsList',
 	))) . '
 
-' . $__templater->callMacro('nf_gift_controls', 'item', array(
-		'content' => $__vars['post'],
-	), $__vars) . '
 			';
 	if ($__templater->method($__vars['thread'], 'canReply', array()) OR $__templater->method($__vars['thread'], 'canReplyPreReg', array())) {
 		$__compilerTemp1 .= '
@@ -906,10 +852,7 @@ return array(
 	';
 	$__templater->includeCss('message.less');
 	$__finalCompiled .= '
-';
-	$__templater->includeCss('nf_giftupgrades.less');
-	$__finalCompiled .= '
-	<div class="message message--deleted message--post' . ($__templater->method($__vars['post'], 'isIgnored', array()) ? ' is-ignored' : '') . ($__templater->method($__vars['post'], 'isUnread', array()) ? ' is-unread' : '') . ' ' . (($__templater->method($__vars['post'], 'hasOption', array('nfGift', )) AND $__vars['post']['GiftCount']) ? 'nf-gifted' : '') . ' js-post js-inlineModContainer"
+	<div class="message message--deleted message--post' . ($__templater->method($__vars['post'], 'isIgnored', array()) ? ' is-ignored' : '') . ($__templater->method($__vars['post'], 'isUnread', array()) ? ' is-unread' : '') . ' js-post js-inlineModContainer"
 		data-author="' . ($__templater->escape($__vars['post']['User']['username']) ?: $__templater->escape($__vars['post']['username'])) . '"
 		data-content="post-' . $__templater->escape($__vars['post']['post_id']) . '">
 

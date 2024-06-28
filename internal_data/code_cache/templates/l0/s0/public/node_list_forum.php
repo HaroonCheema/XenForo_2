@@ -115,9 +115,6 @@ return array(
 	}
 	$__finalCompiled .= '
 			<div class="node-main js-nodeMain">
-				' . $__templater->callMacro('thmonetize_node_list_macros', 'sponsor_image', array(
-		'node' => $__vars['node'],
-	), $__vars) . '
 				';
 	if ($__vars['chooseName']) {
 		$__finalCompiled .= '
@@ -283,9 +280,6 @@ return array(
 	$__finalCompiled .= '
 			</div>
 		</div>
-		' . $__templater->callMacro('thmonetize_node_list_macros', 'sponsor_below', array(
-		'node' => $__vars['node'],
-	), $__vars) . '
 	</div>
 
 	';

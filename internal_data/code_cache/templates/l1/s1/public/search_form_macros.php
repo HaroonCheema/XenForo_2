@@ -40,8 +40,6 @@ return array(
 								' . 'Search titles only' . '
 
 								' . $__compilerTemp2 . '
-' . $__templater->callMacro(null, 'nf_giftupgrades_search_form_macros::search_gifted_content', array(), $__vars) . '
-
 							',
 			'_type' => 'option',
 		))) . '

@@ -41,6 +41,29 @@ class UserUpgrade extends XFCP_UserUpgrade
                 $upgradeService->setPurchaseRequestKey($state->requestKey);
                 $activeUser = $upgradeService->getUser();
 
+                if ($purchaseRequest->purchase_request_id && $userUpgrade->user_upgrade_id) {
+                    if ($purchaseRequest->provider_id == "stripe" && $purchaseRequest->purchasable_type_id == "user_upgrade" && $purchaseRequest->provider_metadata != "NULL" && $purchaseRequest->cost_amount != $userUpgrade->cost_amount) {
+
+                        $providerId = $purchaseRequest->provider_id;
+
+                        $finder = \XF::finder('XF:PaymentProfile');
+                        $paymentProfile = $finder
+                            ->where('provider_id', $providerId)
+                            ->fetchOne();
+
+                        /** @var \XF\Entity\PaymentProvider $provider */
+                        $provider = \XF::em()->find('XF:PaymentProvider', $providerId);
+
+                        $handler = $provider->handler;
+
+                        $subscriptionId = $purchaseRequest['provider_metadata'];
+
+                        $newAmount = intval(round($userUpgrade->cost_amount * 100));
+
+                        $handler->updatePaymentSubscription($paymentProfile, $subscriptionId, $newAmount);
+                    }
+                }
+
                 if ($purchaser->user_id == $activeUser->user_id) {
 
                     $newIds = array_diff($ids, array($userUpgradeId));

@@ -467,9 +467,6 @@ return array(
 			<hr class="formRowSep" />
 
 			' . '
-			' . $__templater->callMacro('thmonetize_helper_criteria', 'after_groups', array(
-		'criteria' => $__vars['criteria'],
-	), $__vars) . '
 
 			' . $__templater->formCheckBoxRow(array(
 	), array(array(
@@ -565,34 +562,6 @@ return array(
 		'_dependent' => array($__templater->formNumberBox(array(
 		'name' => 'user_criteria[trophy_points][data][points]',
 		'value' => $__vars['criteria']['trophy_points']['points'],
-		'size' => '5',
-		'min' => '0',
-		'step' => '1',
-	))),
-		'_type' => 'option',
-	),
-	array(
-		'name' => 'user_criteria[giftupgrades_gift_received_count][rule]',
-		'value' => 'giftupgrades_gift_received_count',
-		'selected' => $__vars['criteria']['giftupgrades_gift_received_count'],
-		'label' => 'User has received at least X gifts' . $__vars['xf']['language']['label_separator'],
-		'_dependent' => array($__templater->formNumberBox(array(
-		'name' => 'user_criteria[giftupgrades_gift_received_count][data][count]',
-		'value' => $__vars['criteria']['giftupgrades_gift_received_count']['count'],
-		'size' => '5',
-		'min' => '0',
-		'step' => '1',
-	))),
-		'_type' => 'option',
-	),
-	array(
-		'name' => 'user_criteria[giftupgrades_gift_given_count][rule]',
-		'value' => 'giftupgrades_gift_given_count',
-		'selected' => $__vars['criteria']['giftupgrades_gift_given_count'],
-		'label' => 'User has given at least X gifts' . $__vars['xf']['language']['label_separator'],
-		'_dependent' => array($__templater->formNumberBox(array(
-		'name' => 'user_criteria[giftupgrades_gift_given_count][data][count]',
-		'value' => $__vars['criteria']['giftupgrades_gift_given_count']['count'],
 		'size' => '5',
 		'min' => '0',
 		'step' => '1',

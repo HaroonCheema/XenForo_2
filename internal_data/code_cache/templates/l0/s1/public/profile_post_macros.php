@@ -52,9 +52,6 @@ return array(
 	';
 	$__templater->includeCss('message.less');
 	$__finalCompiled .= '
-';
-	$__templater->includeCss('nf_giftupgrades.less');
-	$__finalCompiled .= '
 	';
 	$__templater->includeJs(array(
 		'src' => 'xf/comment.js',
@@ -161,10 +158,6 @@ return array(
 		'list' => '< .message | .js-reactionsList',
 	))) . '
 
-
-' . $__templater->callMacro('nf_gift_controls', 'item', array(
-		'content' => $__vars['profilePost'],
-	), $__vars) . '
 									';
 	if ($__templater->method($__vars['profilePost'], 'canComment', array()) AND $__templater->func('property', array('profilePostCommentToggle', ), false)) {
 		$__compilerTemp1 .= '
@@ -459,10 +452,7 @@ return array(
 	';
 	$__templater->includeCss('message.less');
 	$__finalCompiled .= '
-';
-	$__templater->includeCss('nf_giftupgrades.less');
-	$__finalCompiled .= '
-	<div class="message message--simple' . ($__templater->method($__vars['profilePost'], 'isIgnored', array()) ? ' is-ignored' : '') . ' ' . (($__templater->method($__vars['profilePost'], 'hasOption', array('nfGift', )) AND $__vars['profilePost']['GiftCount']) ? 'nf-gifted' : '') . ' js-inlineModContainer"
+	<div class="message message--simple' . ($__templater->method($__vars['profilePost'], 'isIgnored', array()) ? ' is-ignored' : '') . ' js-inlineModContainer"
 		data-author="' . ($__templater->escape($__vars['profilePost']['User']['username']) ?: $__templater->escape($__vars['profilePost']['username'])) . '"
 		data-content="profile-post-' . $__templater->escape($__vars['profilePost']['profile_post_id']) . '">
 
@@ -821,10 +811,6 @@ return array(
 		'link' => 'profile-posts/comments/react',
 		'list' => '< .comment | .js-commentReactionsList',
 	))) . '
-
-' . $__templater->callMacro('nf_gift_controls', 'item', array(
-		'content' => $__vars['comment'],
-	), $__vars) . '
 									';
 	if (strlen(trim($__compilerTemp1)) > 0) {
 		$__finalCompiled .= '
@@ -865,7 +851,7 @@ return array(
 	$__finalCompiled .= '
 
 	<div class="message-responseRow">
-		<div class="comment' . ($__templater->method($__vars['comment'], 'isIgnored', array()) ? ' is-ignored' : '') . '  ' . (($__templater->method($__vars['comment'], 'hasOption', array('nfGift', )) AND $__vars['comment']['GiftCount']) ? 'nf-gifted' : '') . '"
+		<div class="comment' . ($__templater->method($__vars['comment'], 'isIgnored', array()) ? ' is-ignored' : '') . '"
 			data-author="' . $__templater->escape($__vars['comment']['User']['username']) . '"
 			data-content="profile-post-comment-' . $__templater->escape($__vars['comment']['profile_post_comment_id']) . '">
 

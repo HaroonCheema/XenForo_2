@@ -62,18 +62,6 @@ return function($__templater, $__selectedNav, array $__vars)
 			}
 		}
 
-		if (($__vars['xf']['app']['userUpgradeCount'] AND ($__vars['xf']['visitor']['user_id'] OR $__vars['xf']['options']['thmonetize_allowGuestsToViewUserUpgrades']))) {
-			$__navTemp = [
-		'title' => \XF::phrase('nav.thMonetize_accountUpgrades'),
-		'href' => $__templater->func('link', array('account/upgrades', ), false),
-		'attributes' => [],
-	];
-			if ($__navTemp) {
-				$__tree['_default']['children']['thMonetize_accountUpgrades'] = $__navTemp;
-				$__flat['thMonetize_accountUpgrades'] =& $__tree['_default']['children']['thMonetize_accountUpgrades'];
-			}
-		}
-
 		if ($__vars['xf']['visitor']['user_id']) {
 			$__navTemp = [
 		'title' => \XF::phrase('nav.defaultLogOut'),

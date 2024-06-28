@@ -6,28 +6,6 @@ use XF\Mvc\ParameterBag;
 
 class Purchase extends XFCP_Purchase
 {
-    // public function actionIndex(ParameterBag $params)
-    // {
-    //     $userId = \XF::visitor()->user_id;
-
-    //     if (!$userId) {
-    //         return $this->noPermission();
-    //     }
-
-    //     $finder = \XF::finder('XF:UserUpgradeActive');
-    //     $activeUpgradeGroup = $finder
-    //         ->where('user_id', $userId)
-    //         ->fetchOne();
-
-    //         // user_upgrade_id
-
-    //     if ($activeUpgradeGroup) {
-    //         throw $this->exception($this->notFound(\XF::phrase('fs_repurchase_not_permission')));
-    //     }
-
-    //     return parent::actionIndex($params);
-    // }
-
     public function actionIndex(ParameterBag $params)
     {
 

@@ -61,16 +61,7 @@ return array(
 	}
 	$__finalCompiled .= $__templater->form('
 	<div class="block-container">
-		
-		<h2 class="block-tabHeader tabs hScroller" data-xf-init="tabs h-scroller" role="tablist">
-            <span class="hScroller-scroll">
-                <a class="tabs-tab is-active" role="tab" aria-controls="user-upgrade-options">' . 'Upgrade options' . '</a>
-                ' . $__templater->callMacro('helper_criteria', 'user_tabs', array(), $__vars) . '
-            </span>
-        </h2>
-		
-		<ul class="tabPanes block-body">
-            <li class="is-active" role="tabpanel" id="user-upgrade-options">
+		<div class="block-body">
 			' . $__templater->formTextBoxRow(array(
 		'name' => 'title',
 		'value' => $__vars['upgrade']['title'],
@@ -112,9 +103,6 @@ return array(
 		'rowtype' => 'input',
 		'label' => 'Cost',
 	)) . '
-			' . $__templater->callMacro('thmonetize_user_upgrade_edit_macros', 'after_cost', array(
-		'upgrade' => $__vars['upgrade'],
-	), $__vars) . '
 
 			' . $__templater->formRadioRow(array(
 		'name' => 'length_type',
@@ -199,32 +187,12 @@ return array(
 		'selected' => $__vars['upgrade']['can_purchase'],
 		'label' => 'Can be purchased',
 		'_type' => 'option',
-	),
-	array(
-		'name' => 'can_gift',
-		'selected' => $__vars['upgrade']['can_gift'],
-		'label' => 'Can be gifted',
-		'_type' => 'option',
 	)), array(
 	)) . '
-			' . $__templater->callMacro('thmonetize_user_upgrade_edit_macros', 'after_can_purchase', array(
-		'upgrade' => $__vars['upgrade'],
-	), $__vars) . '
-			' . $__templater->callMacro('thmonetize_user_upgrade_edit_macros', 'form_bottom', array(
-		'upgrade' => $__vars['upgrade'],
-		'upgradePageRelations' => $__vars['upgradePageRelations'],
-		'upgradePages' => $__vars['upgradePages'],
-	), $__vars) . '
-		</li>
-			
-' . $__templater->callMacro('helper_criteria', 'user_panes', array(
-		'criteria' => $__templater->method($__vars['userCriteria'], 'getCriteriaForTemplate', array()),
-		'data' => $__templater->method($__vars['userCriteria'], 'getExtraTemplateData', array()),
-	), $__vars) . '
-</ul>
-
-' . $__templater->formSubmitRow(array(
+		</div>
+		' . $__templater->formSubmitRow(array(
 		'icon' => 'save',
+		'sticky' => 'true',
 	), array(
 	)) . '
 	</div>
