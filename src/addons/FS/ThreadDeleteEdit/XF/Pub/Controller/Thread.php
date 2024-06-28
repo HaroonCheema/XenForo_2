@@ -11,7 +11,7 @@ class Thread extends XFCP_Thread
     {
         $visitor = \XF::visitor();
 
-        if (!($visitor->is_admin && $visitor->is_moderator)) {
+        if (!($visitor->is_admin || $visitor->is_moderator)) {
             return $this->noPermission();
         }
 
