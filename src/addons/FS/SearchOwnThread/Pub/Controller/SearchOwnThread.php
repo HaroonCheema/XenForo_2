@@ -72,6 +72,14 @@ class SearchOwnThread extends AbstractController
             return $this->error($error);
         }
 
+        $content = "thread";
+
+        $typeHandler = $searcher->handler($content);
+        $query->forTypeHandlerBasic($typeHandler);
+        // this applies the type limits that make sense
+
+        $constraints['content'] = $content;
+
         return $this->runSearch($query, $constraints);
     }
 
