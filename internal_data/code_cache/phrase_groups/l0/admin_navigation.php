@@ -34,6 +34,8 @@ return array (
   'admin_navigation.bh_item' => 'Items',
   'admin_navigation.bh_rebuild_review_stats' => 'Rebuild Review Stats',
   'admin_navigation.brand_hub' => 'Brand Hub',
+  'admin_navigation.bsRtc' => 'Chat',
+  'admin_navigation.bsRtcRooms' => 'Rooms',
   'admin_navigation.checksAndTests' => 'Checks and tests',
   'admin_navigation.classExtensions' => 'Class extensions',
   'admin_navigation.codeEventListeners' => 'Code event listeners',

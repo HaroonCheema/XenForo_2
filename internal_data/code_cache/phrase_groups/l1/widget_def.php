@@ -1,5 +1,6 @@
 <?php
 return array (
+  'widget_def.RealTimeChat' => 'Real Time Chat',
   'widget_def.WelcomeBanner' => 'Welcome Banner',
   'widget_def.birthdays' => 'Today\'s birthdays',
   'widget_def.dbt_ecom_latest_reviews' => 'DragonByte eCommerce: Latest reviews',
@@ -24,6 +25,7 @@ return array (
   'widget_def.online_statistics' => 'Online statistics',
   'widget_def.php_callback' => 'PHP callback',
   'widget_def.questionAnswerStatistics' => 'Question Answers Statistics',
+  'widget_def.real_time_chat' => 'Real-Time Chat',
   'widget_def.search_forum' => 'Search forum',
   'widget_def.share_page' => 'Share this page',
   'widget_def.siropu_chat' => 'Chat',

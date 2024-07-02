@@ -1,0 +1,1 @@
+!function(){"use strict";var t;t=window.jQuery,XF.PageNavSubmit=XF.Element.newHandler({options:{},init(){this.$target.on("click","a",(e=>{e.preventDefault();const a=t(e.currentTarget);XF.ajax("post",a.attr("href"),{})}))}}),XF.Element.register("page-nav-submit","XF.PageNavSubmit")}();

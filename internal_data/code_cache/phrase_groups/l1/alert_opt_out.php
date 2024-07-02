@@ -1,5 +1,9 @@
 <?php
 return array (
+  'alert_opt_out.chat_message_mention' => 'Mentions you in a chat message',
+  'alert_opt_out.chat_message_private_message' => 'Sends you private message in chat',
+  'alert_opt_out.chat_message_quote' => 'Quotes you in a chat message',
+  'alert_opt_out.chat_message_reaction' => 'Reacts to your chat message',
   'alert_opt_out.conversation_message_reaction' => 'Reacts to your message in a conversation',
   'alert_opt_out.dbtech_credits_txn_adjust' => 'You trigger the Adjust event',
   'alert_opt_out.dbtech_credits_txn_avatar' => 'You trigger the Upload Avatar event',

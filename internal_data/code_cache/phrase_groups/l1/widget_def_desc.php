@@ -24,6 +24,7 @@ return array (
   'widget_def_desc.online_statistics' => 'Displays a block of statistics with a break down of the current visitors on the forum and whether they are registered, guests, or robots.',
   'widget_def_desc.php_callback' => 'Allows you to render the contents of a widget using a PHP callback. The callback should return the \\XF\\Widget\\WidgetRenderer object, set up with the template name and params necessary to render the widget.',
   'widget_def_desc.questionAnswerStatistics' => 'Displays the total count of questions and answers.',
+  'widget_def_desc.real_time_chat' => '',
   'widget_def_desc.search_forum' => 'Displays a block containing a list of X threads from a search forum.',
   'widget_def_desc.share_page' => 'Adds a set of sharing buttons into a block to allow the current page to be shared across social media.',
   'widget_def_desc.siropu_chat' => 'Displays Chat by Siropu.',

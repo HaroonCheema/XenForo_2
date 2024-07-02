@@ -1,5 +1,6 @@
 <?php
 return array (
+  'option_group_description.BSRealTimeChatOptions' => '',
   'option_group_description.CMTV_Math' => 'How and where to render math on your forum.',
   'option_group_description.DC_LinkProxy' => '',
   'option_group_description.Fs_NodeIcon' => '',
@@ -15,6 +16,7 @@ return array (
   'option_group_description.bh_brand_hub' => '',
   'option_group_description.boardActive' => 'Turn your board on and off here.',
   'option_group_description.bot_option' => '',
+  'option_group_description.bsXFWebSockets' => '',
   'option_group_description.censoringOptions' => 'User-generated text will be subject to the censorship rules you define here.',
   'option_group_description.checkAttachment' => 'For check attachments exist or not.',
   'option_group_description.closeThread' => 'Fs close thread options',
@@ -83,6 +85,7 @@ It is possible to filter the news feed down to just users you follow, or a singl
   'option_group_description.usersAndRegistration' => '',
   'option_group_description.xb_stop_human_span' => '',
   'option_group_description.xc_threadsaleitem' => '',
+  'option_group_description.xenforoMessenger' => '',
   'option_group_description.xfmg' => 'Options that control the media gallery add-on.',
   'option_group_description.xfrm' => 'Options that control the resource manager add-on.',
 );

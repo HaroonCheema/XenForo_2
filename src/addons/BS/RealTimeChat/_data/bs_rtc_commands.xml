@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bs_rtc_commands>
+  <bs_rtc_command command_id="clear" command_class="BS\RealTimeChat\ChatCommand\Clear" command_regex="/^\/clear$/i" active="1"/>
+  <bs_rtc_command command_id="clear_user_messages" command_class="BS\RealTimeChat\ChatCommand\ClearUser" command_regex="/^\/clear\s\[user=([0-9]*)]@.*\[\/user]$/iu" active="1"/>
+  <bs_rtc_command command_id="pm" command_class="BS\RealTimeChat\ChatCommand\Pm" command_regex="/^\/pm\s\[user=([0-9]*)]@.*\[\/user]/iu" active="1"/>
+  <bs_rtc_command command_id="to" command_class="BS\RealTimeChat\ChatCommand\To" command_regex="/^\/to\s\[user=([0-9]*)]@.*\[\/user]/iu" active="1"/>
+</bs_rtc_commands>

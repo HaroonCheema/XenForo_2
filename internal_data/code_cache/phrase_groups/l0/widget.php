@@ -26,6 +26,7 @@ return array (
   'widget.member_wrapper_newest_members' => '',
   'widget.nfGiftUpgrades_recent_gifted_posts' => '',
   'widget.online_list_online_statistics' => '',
+  'widget.real_time_chat' => '',
   'widget.siropu_chat' => '',
   'widget.siropu_chat_rooms' => '',
   'widget.siropu_chat_top_chatters' => '',

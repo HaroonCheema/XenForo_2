@@ -1,5 +1,6 @@
 <?php
 return array (
+  'option_group.BSRealTimeChatOptions' => '[021] Real-Time Chat',
   'option_group.CMTV_Math' => 'Math options',
   'option_group.DC_LinkProxy' => 'D.C Style - Link Proxy',
   'option_group.Fs_NodeIcon' => '[FS] Node Icon',
@@ -15,6 +16,7 @@ return array (
   'option_group.bh_brand_hub' => '[XB] Brand Hub',
   'option_group.boardActive' => 'Board active',
   'option_group.bot_option' => '[XC] Thread GPT Bot',
+  'option_group.bsXFWebSockets' => '[021] XenForo WebSockets',
   'option_group.censoringOptions' => 'Censoring',
   'option_group.checkAttachment' => '[FS] Check Attachment',
   'option_group.closeThread' => '[FS] Close Thread',
@@ -79,6 +81,7 @@ return array (
   'option_group.usersAndRegistration' => 'User registration',
   'option_group.xb_stop_human_span' => '[XB] Stop Human Spam',
   'option_group.xc_threadsaleitem' => '[FS] Thread Sale Item',
+  'option_group.xenforoMessenger' => '[021] XenForo Messenger',
   'option_group.xfmg' => 'XenForo Media Gallery',
   'option_group.xfrm' => 'XenForo Resource Manager',
 );

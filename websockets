@@ -1,0 +1,342 @@
+#!/bin/bash
+
+ALLOWED_SCRIPT_COMMANDS=("start", "start-docker", "install-soketi", "install-supervisor", "install-systemd-service", "install-supervisor-service", "pull-docker-image", )
+COMMAND=$1
+# check is os is mac os
+IS_MAC_OS=$(uname -a | grep Darwin)
+
+# Check if the first argument is in the list of allowable values
+if [[ "${ALLOWED_SCRIPT_COMMANDS[*]}" != *"$COMMAND"* ]]; then
+  echo "Invalid command: $1. Available commands: ${ALLOWED_SCRIPT_COMMANDS[@]}."
+  exit 1
+fi
+
+if [ "$COMMAND" == "start" ]; then
+  # Set NVM_DIR if not specified
+  if [ -z "$NVM_DIR" ]; then
+    export NVM_DIR=~/.nvm
+  fi
+
+  # Source nvm if it exists
+  if [ -f "$NVM_DIR/nvm.sh" ]; then
+    source "$NVM_DIR/nvm.sh"
+  fi
+
+  # Use one of LTS versions of node if nvm is installed
+  if command -v nvm >/dev/null 2>&1; then
+    echo "Switching to LTS version of Node.js."
+
+    # Check if any of the Node.js versions 14, 16, or 18 are installed
+    if nvm ls 14 >/dev/null 2>&1 || nvm ls 16 >/dev/null 2>&1 || nvm ls 18 >/dev/null 2>&1; then
+      # Select the latest version of Node.js 14, 16, or 18 and set it as the default
+      nvm use $(nvm ls 14 16 18 --no-colors sort -rV | head -n 1 | awk '{print $1}') >/dev/null 2>&1
+
+      echo "Node.js $(node -v) has been set as the default."
+    fi
+  else
+    echo "Nvm is not installed. Using the system Node.js version."
+  fi
+
+  # Check is Node.js is 14, 16, or 18
+  if [[ "$(node -v)" != v14.* && "$(node -v)" != v16.* && "$(node -v)" != v18.* ]]; then
+    echo "Error: Node.js version 14, 16, or 18 is required. You are using $(node -v)."
+    exit 1
+  fi
+
+  soketi start --config src/soketi.config.json
+  exit 0
+fi
+
+if [ "$COMMAND" == "start-docker" ]; then
+  # Check is docker is installed
+  if ! [ -x "$(command -v docker)" ]; then
+    echo 'Error: docker is not installed.' >&2
+    exit 1
+  fi
+
+  # Check is jq installed
+  # If not, try to install it
+  if ! [ -x "$(command -v jq)" ]; then
+    echo 'jq is not installed. Trying to install it.'
+    if [ -x "$(command -v apt)" ]; then
+      apt install jq
+    elif [ -x "$(command -v yum)" ]; then
+      yum install jq
+    elif [ -x "$(command -v brew)" ]; then
+      brew install jq
+    else
+      echo 'Error: jq is not installed. Try to install it manually: https://stedolan.github.io/jq/download/' >&2
+      exit 1
+    fi
+  fi
+
+  declare -A env_map=(
+      ['SOKETI_DEBUG']='debug'
+      ['SOKETI_PORT']='port'
+      ['SOKETI_DEFAULT_APP_ID']='"appManager.array.apps"[0].id'
+      ['SOKETI_DEFAULT_APP_KEY']='"appManager.array.apps"[0].key'
+      ['SOKETI_DEFAULT_APP_SECRET']='"appManager.array.apps"[0].secret'
+  )
+
+  config="src/soketi.config.json"
+
+  # Loop through the env-map and parse the values from the JSON file
+  args=""
+  for key in "${!env_map[@]}"; do
+      value=$(jq -r ".${env_map[$key]}" "$config")
+      args+=" -e $key=$value"
+
+      # if key is port then add -p $value:$value
+      if [ "$key" == "SOKETI_PORT" ]; then
+        args+=" -p $value:$value"
+      fi
+  done
+
+  # Run the Docker container with the parsed arguments
+  docker run$args quay.io/soketi/soketi:1.5.0-16-debian
+
+  exit 0
+fi
+
+if [ "$COMMAND" == "install-soketi" ]; then
+  if ! [ -x "$(command -v npm)" ]; then
+    echo 'Error: npm is not installed.' >&2
+    exit 1
+  fi
+
+  if ! [ -x "$(command -v node)" ]; then
+    echo 'Error: node is not installed.' >&2
+    exit 1
+  fi
+
+  # Get the path to the soketi binary
+  SOKETI_PATH=$(which soketi)
+  # Check if soketi is installed
+  if [ -n "$SOKETI_PATH" ]; then
+    echo 'Soketi is already installed.'
+    exit 0
+  fi
+
+  # Install soketi
+  npm install -g @soketi/soketi
+
+  # Get the path to the soketi binary
+  SOKETI_PATH=$(which soketi)
+  # Check if soketi is installed
+  if [ -z "$SOKETI_PATH" ]; then
+    echo 'Error: soketi is not installed. Try manual installation: https://docs.soketi.app/getting-started/installation/cli-installation' >&2
+    exit 1
+  fi
+
+  echo 'Soketi is installed successfully.'
+  exit 0
+fi
+
+if [ "$COMMAND" == "install-supervisor" ]; then
+  if ! [ -x "$(command -v pip)" ]; then
+    echo 'Error: pip is not installed.' >&2
+    exit 1
+  fi
+
+  # Check is supervisor installed
+  if [ -x "$(command -v supervisorctl)" ]; then
+    echo 'Supervisor is already installed.'
+    exit 0
+  fi
+
+  # Install supervisor
+  pip install supervisor
+
+  # Check is supervisor installed
+  if ! [ -x "$(command -v supervisorctl)" ]; then
+    echo 'Error: supervisor is not installed. Try manual installation: http://supervisord.org/installing.html' >&2
+    exit 1
+  fi
+
+  echo 'Supervisor is installed successfully.'
+
+  # Prompt the user for confirmation
+  read -p "Do you want to create supervisor config file? (Y/n) " confirmation
+
+  # Convert the confirmation to lowercase
+  confirmation="${confirmation,,}"
+
+  # Check the confirmation value
+  if [[ "$confirmation" =~ ^(yes|y)$ ]]; then
+    bash websockets supervisor-service
+  else
+    echo "Okay, have a nice day :)"
+  fi
+
+  exit 0
+fi
+
+if [ "$COMMAND" == "install-systemd-service" ]; then
+  if ! [ -x "$(command -v systemctl)" ]; then
+    echo 'Error: systemctl is not installed.' >&2
+    exit 1
+  fi
+
+  DOMAIN=$2
+  RUN_IN_DOCKER=false
+
+  if [ "$3" == "--docker" ]; then
+    RUN_IN_DOCKER=true
+  fi
+
+  if [ -z "$DOMAIN" ]; then
+    echo 'Domain argument is required.' >&2
+    exit 1
+  fi
+
+  # Define the service name
+  SERVICE_NAME="soketi.$DOMAIN"
+
+  # Define the service file name
+  SERVICE_FILE="/etc/systemd/system/${SERVICE_NAME}.service"
+
+  # Define the working directory for the service
+  WORKING_DIRECTORY=$(pwd)
+
+  # Define the command to start the service
+  START_COMMAND="/bin/bash websockets start"
+
+  if [ "$RUN_IN_DOCKER" == true ]; then
+    START_COMMAND="/bin/bash websockets start-docker"
+  fi
+
+  # Create the service file
+  CONFIG_CONTENT=$(cat <<-EOL
+[Unit]
+Description=Websockets server for ${DOMAIN}
+
+[Service]
+WorkingDirectory=${WORKING_DIRECTORY}
+ExecStart=${START_COMMAND}
+Restart=always
+User=${USER}
+Group=${USER}
+
+[Install]
+WantedBy=multi-user.target
+EOL)
+
+  cat <<< "${CONFIG_CONTENT}" > $SERVICE_FILE
+
+  # Reload the systemd configuration
+  systemctl daemon-reload
+
+  # Enable the service to start on boot
+  systemctl enable ${SERVICE_NAME}
+
+  # Start the service
+  systemctl start ${SERVICE_NAME}
+
+  # Check the status of the service
+  systemctl status ${SERVICE_NAME}
+fi
+
+if [ "$COMMAND" == "install-supervisor-service" ]; then
+  if ! [ -x "$(command -v supervisorctl)" ]; then
+    echo 'Error: supervisorctl is not installed.' >&2
+    exit 1
+  fi
+
+  DOMAIN=$2
+  RUN_IN_DOCKER=false
+
+  if [ "$3" == "--docker" ]; then
+    RUN_IN_DOCKER=true
+  fi
+
+  if [ -z "$DOMAIN" ]; then
+    echo 'Domain argument is required.' >&2
+    exit 1
+  fi
+
+  # Define the service name
+  SERVICE_NAME="soketi.$DOMAIN"
+
+  # Define the working directory for the service
+  WORKING_DIRECTORY=$(pwd)
+
+  # Define the command to start the service
+  START_COMMAND="/bin/bash websockets start"
+
+  if [ "$RUN_IN_DOCKER" == true ]; then
+    START_COMMAND="/bin/bash websockets start-docker"
+  fi
+
+  # Define the log path prefix
+  LOG_PATH_PREFIX="/var/log/supervisor/${SERVICE_NAME}"
+
+  if [ "$IS_MAC_OS" ]; then
+    LOG_PATH_PREFIX="/usr/local${LOG_PATH_PREFIX}"
+  fi
+
+  # Generate the config content
+  CONFIG_CONTENT=$(cat <<-EOL
+[program:${SERVICE_NAME}]
+command=${START_COMMAND}
+directory=${WORKING_DIRECTORY}
+numprocs=1
+autostart=true
+autorestart=true
+user=${USER}
+stderr_logfile=${LOG_PATH_PREFIX}.err.log
+stdout_logfile=${LOG_PATH_PREFIX}.out.log
+environment=NODE_ENV="production",PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+stopasgroup=true
+killasgroup=true
+numprocs=1
+redirect_stderr=true
+stopwaitsecs=60
+stopsignal=sigint
+minfds=10240
+EOL)
+
+  # Define possible supervisor config file paths
+  SUPERVISOR_CONFIG_PATHS=(
+    "/etc/supervisor/conf.d"
+    "/etc/supervisor.d"
+    "/usr/local/etc/supervisor.d"
+  )
+
+  # Find the supervisor config directory
+  for SUPERVISOR_CONFIG_PATH in "${SUPERVISOR_CONFIG_PATHS[@]}"
+  do
+    if [ -d "$SUPERVISOR_CONFIG_PATH" ]; then
+      break
+    fi
+  done
+
+  # Check is supervisor directory is exists
+  # If not exists, then just return the config content
+  if [ ! -d "$SUPERVISOR_CONFIG_PATH" ]; then
+    echo 'Error: supervisor directory is not exists.' >&2
+    printf "Here is your supervisor config:\n\n"
+    echo "${CONFIG_CONTENT}"
+    exit 1
+  fi
+
+  # Define the service file name
+  SERVICE_FILE="${SUPERVISOR_CONFIG_PATH}/${SERVICE_NAME}.ini"
+
+  cat <<< "${CONFIG_CONTENT}" > $SERVICE_FILE
+
+  # Reload the supervisord configuration
+  supervisorctl reload
+
+  # Check the status of the service
+  supervisorctl status ${SERVICE_NAME}
+fi
+
+if [ "$COMMAND" == "pull-docker-image" ]; then
+  # require docker installed
+  if ! [ -x "$(command -v docker)" ]; then
+    echo 'Error: docker is not installed.' >&2
+    exit 1
+  fi
+
+  docker pull quay.io/soketi/soketi:1.5.0-16-debian
+fi

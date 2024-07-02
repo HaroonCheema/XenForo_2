@@ -1,5 +1,8 @@
 <?php
 return array (
+  'mod_log.chat_message_attachment_deleted' => 'Chat message attachment deleted',
+  'mod_log.chat_message_delete' => 'Chat message deleted',
+  'mod_log.chat_message_edit' => 'Chat message edited',
   'mod_log.dbtech_ecommerce_license_approve' => 'License approved',
   'mod_log.dbtech_ecommerce_license_delete_hard' => 'License permanently deleted',
   'mod_log.dbtech_ecommerce_license_delete_soft' => 'License removed from view (reason: {reason})',
@@ -75,6 +78,9 @@ return array (
   'mod_log.resource_version_delete_hard' => 'Resource version permanently deleted',
   'mod_log.resource_version_delete_soft' => 'Resource version removed from public view (reason: {reason})',
   'mod_log.resource_version_edit' => 'Resource version edited',
+  'mod_log.rtc_room_delete' => 'Chat room deleted',
+  'mod_log.rtc_room_edit' => 'Chat room edited',
+  'mod_log.rtc_room_wallpaper_changed' => 'Changed wallpaper in chat room',
   'mod_log.thread_approve' => 'Thread approved',
   'mod_log.thread_custom_fields_edit' => 'Thread custom fields edited',
   'mod_log.thread_delete_hard' => 'Thread permanently deleted',

@@ -1,0 +1,31 @@
+{
+    "legacy_addon_id": "",
+    "title": "[021] Real-Time Chat",
+    "description": "Chat with instant messaging.",
+    "version_id": 3000270,
+    "version_string": "3.0.2",
+    "dev": "021",
+    "dev_url": "https://devsell.io",
+    "faq_url": "https://devsell.io/chat-ui-kit/overview/real-time-chat.html",
+    "support_url": "https://github.com/021-projects/real-time-chat/issues",
+    "extra_urls": [],
+    "require": {
+        "BS/XFWebSockets": [
+            2000070,
+            "[021] XenForo WebSockets 2.0.0+"
+        ],
+        "BS/QuillEditor": [
+            1000070,
+            "[021] Quill Editor 1.0.0+"
+        ],
+        "XF": [
+            2020070,
+            "XenForo 2.2.0+"
+        ],
+        "php": [
+            "7.4.0",
+            "PHP 7.4.0+"
+        ]
+    },
+    "icon": "icon.png"
+}

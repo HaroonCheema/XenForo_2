@@ -1,0 +1,31 @@
+{
+    "legacy_addon_id": "",
+    "title": "[021] XenForo Messenger",
+    "description": "Replaces outdated XenForo conversations with a modern messenger.",
+    "version_id": 20000070,
+    "version_string": "2.0.0",
+    "dev": "021",
+    "dev_url": "https://devsell.io",
+    "faq_url": "https://devsell.io/chat-ui-kit/overview/xf-messenger.html",
+    "support_url": "https://github.com/021-projects/xenforo-messenger/issues",
+    "extra_urls": [],
+    "require": {
+        "BS/XFWebSockets": [
+            2000070,
+            "[021] XenForo WebSockets 2.0.0+"
+        ],
+        "BS/QuillEditor": [
+            1000070,
+            "[021] Quill Editor 1.0.0+"
+        ],
+        "XF": [
+            2020070,
+            "XenForo 2.2.0+"
+        ],
+        "php": [
+            "7.4.0",
+            "PHP 7.4.0+"
+        ]
+    },
+    "icon": "icon.png"
+}
