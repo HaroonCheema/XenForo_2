@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<code_event_listeners>
+  <listener event_id="templater_template_pre_render" execute_order="10" callback_class="FS\ReviewSystem\Listener" callback_method="forum_post_thread_TemplatePreRender" active="1" hint="public:forum_post_thread" description="replace forum_post_thread template with rs_forum_post_thread when posting review"/>
+  <listener event_id="templater_template_pre_render" execute_order="10" callback_class="FS\ReviewSystem\Listener" callback_method="thread_edit_TemplatePreRender" active="1" hint="public:thread_edit" description="Replace template public: thread_edit with rs_thread_edit when edit review thread"/>
+</code_event_listeners>

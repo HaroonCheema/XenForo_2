@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 6f526345fb55ff46ebf0e5d6b1b967ed
+// FROM HASH: aed2e3a3637afecad9882efd8f705fbc
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -163,6 +163,24 @@ Before your content can be posted, please take a few moments to register a free 
 	), array(
 		'label' => 'Password',
 		'hint' => 'Required',
+	)) . '
+			
+			' . $__templater->formRadioRow(array(
+		'name' => 'gender',
+		'required' => 'required',
+		'value' => ($__templater->method($__vars['regForm'], 'getFieldName', array('password', )) ? 'male' : 'female'),
+	), array(array(
+		'value' => 'male',
+		'label' => 'fs_female_age_veri_male',
+		'_type' => 'option',
+	),
+	array(
+		'value' => 'female',
+		'label' => 'fs_female_age_veri_female',
+		'_type' => 'option',
+	)), array(
+		'hint' => 'Required',
+		'label' => 'fs_female_age_veri_gender',
 	)) . '
 
 			' . $__templater->callMacro('register_macros', 'dob_row', array(), $__vars) . '

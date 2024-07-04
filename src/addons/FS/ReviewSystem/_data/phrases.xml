@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="custom_bb_code_desc.ros" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="custom_bb_code_example.ros" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[ROS] content [/ROS]]]></phrase>
+  <phrase title="custom_bb_code_output.ros" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="custom_bb_code_title.ros" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[ROS BBCode]]></phrase>
+  <phrase title="fs_edit_review" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Edit Review]]></phrase>
+  <phrase title="fs_rs_new_encounter_report" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[New Encounter Report]]></phrase>
+  <phrase title="fs_rs_ros_hidden_content_text" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<b> ** Premium Content **</b>]]></phrase>
+  <phrase title="i_could_not_tell" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[I Couldn't tell]]></phrase>
+  <phrase title="option.rs_applicable_forums" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Applicable forums]]></phrase>
+  <phrase title="option.rs_hide_button_userGroups" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Hide Button from users]]></phrase>
+  <phrase title="option.rs_view_ros_content_userGroups" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[View Ros content users]]></phrase>
+  <phrase title="option_explain.rs_applicable_forums" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Select the forums on which Review-system will be work.]]></phrase>
+  <phrase title="option_explain.rs_hide_button_userGroups" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[The "New Encounter Report" Button will be hidden for users belonging to these UserGroups]]></phrase>
+  <phrase title="option_explain.rs_view_ros_content_userGroups" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[User-groups that can view Rest of Story Content.
+(The Rest of Story Content will be display only for users belonging to these User-Groups)]]></phrase>
+  <phrase title="option_group.fs_review_system" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Review-System]]></phrase>
+  <phrase title="option_group_description.fs_review_system" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="review__explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Please describe the provides's physical description in detail.]]></phrase>
+  <phrase title="review_activities" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Activities]]></phrase>
+  <phrase title="review_age" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Age]]></phrase>
+  <phrase title="review_contact_info" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Contact Info]]></phrase>
+  <phrase title="review_date" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Date]]></phrase>
+  <phrase title="review_fee" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Fee]]></phrase>
+  <phrase title="review_fee_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Provider's advertised rate. whether it be a special or regular rate]]></phrase>
+  <phrase title="review_general_area" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[General Area]]></phrase>
+  <phrase title="review_general_area_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Please use general area only.]]></phrase>
+  <phrase title="review_hair_length_and_color" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Hair Length and Color]]></phrase>
+  <phrase title="review_name" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Name]]></phrase>
+  <phrase title="review_physical_description" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Physical Description]]></phrase>
+  <phrase title="review_recommendation" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Recommendation]]></phrase>
+  <phrase title="review_session_length" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Session Length]]></phrase>
+  <phrase title="review_smoking_status" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Smoking Status]]></phrase>
+  <phrase title="review_website_url" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[URL / Website]]></phrase>
+  <phrase title="rs_post_review" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Post Review]]></phrase>
+  <phrase title="rs_review_title" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Review title]]></phrase>
+  <phrase title="rs_ros" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[The Rest of the Story (ROS)]]></phrase>
+</phrases>

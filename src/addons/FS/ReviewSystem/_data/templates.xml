@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="public" title="fs_rs_review_thread_fields" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:dateinputrow name="review_date" value="{{ $thread.review_date > 0 ? date($thread.review_date, 'm/d/Y') : '' }}"
+				 label="{{ phrase('date') }}"
+				 data-year-range="1" />
+	
+<xf:textboxrow name="review_name" value="{$thread.review_name}"
+			   maxlength="{{ max_length($thread, 'review_name') }}"
+			   label="{{ phrase('review_name') }}"
+			   required="true" />
+	
+		<xf:textarearow name="review_contact_info" value="{$thread.review_contact_info}"
+			maxlength="{{ max_length($thread, 'review_contact_info') }}"
+			autosize="true"
+			rows="5"
+			class="field_review_contact_info" 
+			label="{{ phrase('review_contact_info') }}" />
+
+		<xf:textboxrow name="review_website_url" value="{$thread.review_website_url}"
+				   maxlength="{{ max_length($thread, 'review_website_url') }}"
+				   label="{{ phrase('review_website_url') }}" />
+
+		<xf:textarearow name="review_general_area" value="{$thread.review_general_area}"
+			maxlength="{{ max_length($thread, 'review_general_area') }}"
+			autosize="true"
+			rows="5"
+			class="field_review_general_area"
+			hint="{{ phrase('review_general_area_explain') }}"
+			label="{{ phrase('review_general_area') }}" />
+
+		<xf:textarearow name="review_activities" value="{$thread.review_activities}"
+				maxlength="{{ max_length($thread, 'review_activities') }}"
+				autosize="true"
+				rows="5"
+				class="field_review_review_activities" 
+				label="{{ phrase('review_activities') }}" />
+
+<xf:textboxrow name="review_session_length" value="{$thread.review_session_length}"
+			   maxlength="{{ max_length($thread, 'review_session_length') }}"
+			   hint="{{ phrase('required') }}"
+			   label="{{ phrase('review_session_length') }}"
+			   required="true" />
+
+<xf:textboxrow name="review_fee" value="{$thread.review_fee}"
+			   maxlength="{{ max_length($thread, 'review_fee') }}"
+			   hint="{{ phrase('required') }}"
+			   label="{{ phrase('review_fee') }}"
+			   hit="{{ phrase('review_fee_explain') }}"
+			   required="true"/>
+
+		<xf:textarearow name="review_hair_length_and_color" value="{$thread.review_hair_length_and_color}"
+				maxlength="{{ max_length($thread, 'review_hair_length_and_color') }}"
+				autosize="true"
+				rows="3"
+				label="{{ phrase('review_hair_length_and_color') }}" />
+
+		<xf:numberboxrow name="review_age"
+					 value="{$thread.review_age}"
+					 min="1"
+					 label="{{ phrase('review_age') }}"
+					hint="{{ phrase('required') }}"
+					 required="true" />
+
+
+	<xf:selectrow name="review_smoking_status" 
+			value="{$thread.review_smoking_status}"
+			label="{{ phrase('review_smoking_status') }}">
+		<xf:option value="">{{ phrase('i_could_not_tell') }}</xf:option>
+		<xf:option value="yes">{{ phrase('yes') }}</xf:option>
+		<xf:option value="no">{{ phrase('no') }}</xf:option>
+	</xf:selectrow>
+
+	<xf:textarearow rowclass="formRow--noColon" name="review_physical_description" value="{$thread.review_physical_description}"
+				maxlength="{{ max_length($thread, 'review_physical_description') }}"
+				autosize="true"
+				rows="5"
+				hint="{{ phrase('review_physical_description_explain') }}"
+				label="{{ phrase('review_physical_description') }}" />
+
+	<xf:radiorow name="review_recommendation"
+		 value="{$thread.review_recommendation}"
+		role="radiogroup" aria-labelledby="{$refId}"
+		label="{{ phrase('review_recommendation') }}"
+		listclass="listColumns">
+		<xf:option value="0">{{ phrase('no') }}</xf:option>
+		<xf:option value="1">{{ phrase('yes') }}</xf:option>
+	</xf:radiorow>
+
+	<xf:hiddenval name="is_review">1</xf:hiddenval>
+
+
+<xf:comment>
+hint="{{ $xf.options.registrationSetup.requireLocation ? phrase('required') : '' }}"
+	explain="{{ phrase('once_your_birthday_has_been_entered_it_cannot_be_changed') }}">
+	
+	placeholder="{{ phrase('xa_ams_optional_update_message') }}"
+	 <xf:textarearow label="{{ phrase('z61_classifieds_additional_information') }}" name="feedback" autosize="true" />
+	
+	<xf:textboxrow name="profile[location]" value="{$xf.visitor.Profile.location_}"
+					maxlength="{{ max_length($xf.visitor.Profile, 'location') }}"
+					hint="{{ $xf.options.registrationSetup.requireLocation ? phrase('required') : '' }}"
+					label="{{ phrase('location') }}" />
+</xf:comment>]]></template>
+  <template type="public" title="rs_forum_post_thread" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('rs_post_review') }}</xf:title>
+
+<xf:head option="metaNoindex"><meta name="robots" content="noindex" /></xf:head>
+
+<xf:breadcrumb source="$forum.getBreadcrumbs()" />
+
+<xf:form action="{{ link('forums/post-thread', $forum) }}" ajax="true" class="block" data-xf-init="attachment-manager"
+	draft="{{ link('forums/draft', $forum) }}">
+
+	<div class="block-container">
+		<div class="block-body">
+
+			<xf:set var="$titleFinalHtml"><!--[XF:title_final_html]--></xf:set>
+
+			<xf:prefixinputrow
+				label="{{ phrase('title') }}"
+				prefixes="{$prefixes}"
+				type="thread"
+				rows="1"
+				prefix-value="{{ $forum.draft_thread.prefix_id ?: ($thread.prefix_id ?: $forum.default_prefix_id) }}"
+				textbox-value="{{ $title ?: $thread.title ?: $forum.draft_thread.title }}"
+				textbox-class="input--title"
+				placeholder="{{ phrase('rs_review_title') }}"
+				rowtype="fullWidth noLabel"
+				autofocus="autofocus"
+				maxlength="{{ max_length('XF:Thread', 'title') }}"
+				help-href="{{ link('forums/prefix-help', $forum) }}"
+				finalhtml="{$titleFinalHtml}" />
+
+			<!--[XF:after_title]-->
+			
+			<xf:if is="$isReview">
+					<xf:include template="fs_rs_review_thread_fields" />
+			</xf:if>
+
+
+			<xf:macro name="type_chooser"
+				arg-thread="{$thread}"
+				arg-forum="{$forum}"
+				arg-creatableThreadTypes="{$creatableThreadTypes}"
+				arg-defaultThreadType="{$defaultThreadType}" />
+
+			<div class="js-inlineNewPostFields">
+				<xf:editorrow name="message"
+					value="{{ $post.message ?: $forum.draft_thread.message }}"
+					attachments="{{ $attachmentData ? $attachmentData.attachments : [] }}"
+					rowtype="fullWidth noLabel mergePrev"
+					label="{{ phrase('rs_ros') }}"
+					placeholder="{{ phrase('rs_ros') }}"
+					data-preview-url="{{ link('forums/thread-preview', $forum) }}" />
+
+				<xf:formrow rowtype="fullWidth noLabel mergePrev noTopPadding">
+					<xf:comment>
+					<xf:if is="$attachmentData">
+						<xf:macro template="helper_attach_upload" name="upload_block"
+							arg-attachmentData="{$attachmentData}"
+							arg-forceHash="{$forum.draft_thread.attachment_hash}" />
+					</xf:if>
+					</xf:comment>
+
+					<xf:if is="$xf.options.multiQuote">
+						<xf:macro template="multi_quote_macros" name="button"
+							arg-href="{{ link('threads/multi-quote', $thread) }}"
+							arg-messageSelector=".js-post"
+							arg-storageKey="multiQuoteThread" />
+					</xf:if>
+				</xf:formrow>
+
+				<xf:macro name="type_fields"
+					arg-thread="{$thread}"
+					arg-forum="{$forum}"
+					arg-creatableThreadTypes="{$creatableThreadTypes}"
+					arg-defaultThreadType="{$defaultThreadType}"
+					arg-draftOverride="{$typeDataDraftOverride}"
+					arg-subContext="full" />
+
+				<xf:if contentcheck="true">
+					<hr class="formRowSep" />
+					<xf:contentcheck>
+						<xf:macro template="custom_fields_macros" name="custom_fields_edit"
+							arg-type="threads"
+							arg-set="{$thread.custom_fields}"
+							arg-editMode="{{ $thread.getFieldEditMode(true) }}"
+							arg-onlyInclude="{$forum.field_cache}"
+							arg-requiredOnly="{{ $inlineMode ? true : false }}" />
+					</xf:contentcheck>
+				</xf:if>
+
+				<xf:if is="$canEditTags">
+					<hr class="formRowSep" />
+					<xf:tokeninputrow name="tags" value="{{ $thread.tags ? $thread.tags|join(', ') : $forum.draft_thread.tags ?: $tags }}"
+						href="{{ link('misc/tag-auto-complete') }}"
+						min-length="{$xf.options.tagLength.min}"
+						max-length="{$xf.options.tagLength.max}"
+						max-tokens="{$xf.options.maxContentTags}"
+						label="{{ phrase('tags') }}">
+
+						<xf:explain>
+							{{ phrase('multiple_tags_may_be_separated_by_commas') }}
+							<xf:if is="$forum.min_tags">
+								{{ phrase('this_content_must_have_at_least_x_tags', {'min': $forum.min_tags}) }}
+							</xf:if>
+						</xf:explain>
+					</xf:tokeninputrow>
+				</xf:if>
+
+				<hr class="formRowSep" />
+				<xf:if is="!$xf.visitor.user_id AND !$forum.canCreateThreadPreReg()">
+					<xf:textboxrow name="_xfUsername" data-xf-init="guest-username"
+						maxlength="{{ max_length($xf.visitor, 'username') }}"
+						label="{{ phrase('name') }}" />
+				<xf:elseif is="$xf.visitor.user_id" />
+					<xf:macro template="helper_thread_options" name="watch_input" arg-thread="{$thread}" />
+					<xf:macro template="helper_thread_options" name="thread_status" arg-thread="{$thread}" />
+				</xf:if>
+
+				<xf:captcharow label="{{ phrase('verification') }}" />
+			</div>
+		</div>
+
+		<xf:submitrow submit="{{ phrase('rs_post_review') }}" icon="write" sticky="true" />
+	</div>
+</xf:form>
+
+<xf:macro name="type_chooser"
+	arg-thread="!"
+	arg-forum="!"
+	arg-creatableThreadTypes="!"
+	arg-defaultThreadType="!"
+	arg-rowType="fullWidth noLabel noTopPadding noBottomPadding mergeNext mergePrev">
+
+	<xf:if is="count($creatableThreadTypes) > 1">
+		<xf:css src="input_extended.less" />
+		<xf:formrow rowtype="{$rowType}">
+			<div class="hScroller inputTypesScroller" data-xf-init="h-scroller">
+				<div class="hScroller-scroll">
+					<ul class="inputTypes" role="radiogroup" aria-label="{{ phrase('thread_type')|for_attr }}">
+						<xf:foreach loop="$creatableThreadTypes" key="$threadTypeId" value="$threadType">
+							<li role="none">
+								<label class="inputTypes-type">
+									<input type="radio" name="discussion_type" value="{$threadTypeId}"
+										class="inputTypes-input"
+										data-xf-init="disabler"
+										data-hide="true"
+										data-optional="true"
+										data-autofocus="false"
+										data-container=".js-threadTypeData[data-type-id='{$threadTypeId}']"
+										{{ $threadTypeId == $defaultThreadType ? 'checked="checked"' : '' }}
+									/>
+									<span class="inputTypes-display inputTypes-display--type_{$threadTypeId}">
+										<span class="inputTypes-icon" aria-hidden="true">
+											<xf:set var="$typeIcon" value="{{ $threadType.getTypeIconClass() }}" />
+											<xf:if is="$typeIcon">
+												<xf:fa icon="{$typeIcon}" />
+											<xf:else />
+												<i class="inputTypes-defaultIcon"></i>
+											</xf:if>
+										</span>
+										<span class="inputTypes-title">{{ $threadType.getTypeTitle() }}</span>
+									</span>
+								</label>
+							</li>
+						</xf:foreach>
+					</ul>
+				</div>
+			</div>
+		</xf:formrow>
+	<xf:else />
+		<xf:hiddenval name="discussion_type" value="{$defaultThreadType}" />
+	</xf:if>
+
+</xf:macro>
+
+<xf:macro name="type_fields"
+	arg-thread="!"
+	arg-forum="!"
+	arg-creatableThreadTypes="!"
+	arg-defaultThreadType="!"
+	arg-subContext="!"
+	arg-extraOptions="{{ [] }}"
+	arg-draftOverride="{{ null }}"
+	arg-formRowSepVariant="">
+
+	<xf:if contentcheck="true">
+		<ul class="listPlain">
+		<xf:contentcheck>
+			<xf:foreach loop="$creatableThreadTypes" key="$threadTypeId" value="$threadType">
+				<xf:if contentcheck="true">
+					<li class="js-threadTypeData" data-type-id="{$threadTypeId}" style="{{ $threadTypeId != $defaultThreadType ? 'display:none;' : ''}}">
+						<hr class="formRowSep {$formRowSepVariant}" />
+						<xf:contentcheck>
+							{{ $threadType.renderExtraDataEdit(
+								$thread,
+								'create',
+								$subContext,
+								{
+									'draft': $subContext == 'quick' ? null : $forum->draft_thread,
+									'draftOverride': $draftOverride
+								} + $extraOptions
+							)|raw }}
+						</xf:contentcheck>
+					</li>
+				</xf:if>
+			</xf:foreach>
+		</xf:contentcheck>
+		</ul>
+	</xf:if>
+
+</xf:macro>]]></template>
+  <template type="public" title="rs_ros_content" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:if is="$canViewRosContent">
+	{$content}
+<xf:else />
+	{{ phrase('fs_rs_ros_hidden_content_text') }}
+</xf:if>]]></template>
+  <template type="public" title="rs_thread_edit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('fs_edit_review') }}</xf:title>
+
+<xf:js src="xf/thread.js" min="1" />
+
+<xf:breadcrumb source="$thread.getBreadcrumbs()" />
+
+<xf:form action="{{ link('threads/edit', $thread) }}"
+	class="block"
+	ajax="true"
+	data-xf-init="thread-edit-form"
+	data-item-selector=".js-threadListItem-{$thread.thread_id}">
+
+	<div class="block-container">
+		<div class="block-body">
+			<xf:prefixinputrow
+				label="{{ phrase('title') }}"
+				prefixes="{{ $thread.isPrefixEditable() ? $prefixes : [] }}"
+				type="thread"
+				prefix-value="{$thread.prefix_id}"
+				textbox-value="{$thread.title}"
+				placeholder="{{ phrase('title...') }}"
+				autofocus="autofocus"
+				maxlength="{{ max_length($thread, 'title') }}"
+				help-href="{{ link('forums/prefix-help', $forum) }}"/>
+			
+			<xf:if is="$thread.is_review">
+					<xf:include template="fs_rs_review_thread_fields" />
+			</xf:if>
+
+			<xf:if contentcheck="true">
+				<hr class="formRowSep" />
+				<xf:contentcheck>
+					{{ $thread.TypeHandler.renderExtraDataEdit(
+						$thread,
+						'edit',
+						'thread'
+					)|raw }}
+				</xf:contentcheck>
+			</xf:if>
+
+			<xf:if contentcheck="true">
+				<hr class="formRowSep" />
+				<xf:contentcheck>
+					<xf:macro template="custom_fields_macros" name="custom_fields_edit"
+						arg-type="threads"
+						arg-set="{$thread.custom_fields}"
+						arg-editMode="{{ $thread.getFieldEditMode() }}"
+						arg-onlyInclude="{$forum.field_cache}" />
+				</xf:contentcheck>
+				<hr class="formRowSep" />
+			</xf:if>
+
+			<xf:macro template="helper_thread_options" name="thread_status" arg-thread="{$thread}" />
+		</div>
+
+		<xf:submitrow icon="save" sticky="true">
+			<xf:html>
+				<xf:if is="$thread.canDelete()">
+					<xf:button href="{{ link('threads/delete', $thread) }}" icon="delete" overlay="true">{{ phrase('delete...') }}</xf:button>
+				</xf:if>
+			</xf:html>
+		</xf:submitrow>
+	</div>
+
+	<xf:if is="$noInlineMod">
+		<xf:hiddenval name="_xfNoInlineMod">1</xf:hiddenval>
+	</xf:if>
+	<xf:if is="$forumName">
+		<xf:hiddenval name="_xfForumName">1</xf:hiddenval>
+	</xf:if>
+</xf:form>]]></template>
+</templates>

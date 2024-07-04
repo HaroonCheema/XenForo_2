@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="forum_view" modification_key="fs_rs_add_encounter_button" description="Add button &quot;New Encounter Report&quot; based on fourm and userGroup permissions" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[</xf:pageaction>]]></find>
+    <replace><![CDATA[	<xf:if is="$canPostReview">
+		<xf:button href="{{ link('forums/post-thread', $forum,{'review': 1}) }}" class="button--cta" icon="write" rel="nofollow">
+			{{ phrase('fs_rs_new_encounter_report') }}
+		</xf:button>
+	</xf:if>
+$0]]></replace>
+  </modification>
+</template_modifications>
