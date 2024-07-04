@@ -1,0 +1,44 @@
+{
+    "fs_female_age_veri_female.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "b719ce180ec7bd9641fece2f920f4817"
+    },
+    "fs_female_age_veri_gender.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "019ec3132cdf8ee0f2e2a75cf5d3e459"
+    },
+    "fs_female_age_veri_male.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "63889cfb9d3cbe05d1bd2be5cc9953fd"
+    },
+    "option.fsFemaleAgeVerificationGroup.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "1d0bb7012c2a49e673d9d5f249f51f59"
+    },
+    "option_explain.fsFemaleAgeVerificationGroup.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "option_group.fs_age_verification.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "36ae18c6c96191380a22b8e13767e50f"
+    },
+    "option_group_description.fs_age_verification.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    }
+}

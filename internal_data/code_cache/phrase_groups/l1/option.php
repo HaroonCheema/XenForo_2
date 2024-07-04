@@ -267,6 +267,7 @@ return array (
   'option.fsAlternativeFlags' => 'Alternative flags',
   'option.fsAutoSwitch' => 'Auto switch to browser language',
   'option.fsDefaultLanguage' => 'Default Language',
+  'option.fsFemaleAgeVerificationGroup' => 'Select Female Age Verify Group',
   'option.fsFlagStyle' => 'Flag style',
   'option.fsFloat' => 'Float',
   'option.fsNativeLanguage' => 'Native language names',

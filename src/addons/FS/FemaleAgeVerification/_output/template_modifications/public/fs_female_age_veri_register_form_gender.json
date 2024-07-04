@@ -1,0 +1,9 @@
+{
+    "template": "register_form",
+    "description": "fs_female_age_veri_register_form_gender",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:macro template=\"register_macros\" name=\"dob_row\" />",
+    "replace": "<xf:radiorow name=\"gender\" hint=\"{{ phrase('required')}}\" required=\"required\" value=\"male\"\n\t\t\t label=\"{{ phrase('fs_female_age_veri_gender') }}\">\n\n\t<xf:option value=\"male\">{{ phrase('fs_female_age_veri_male') }}</xf:option>\n\t<xf:option value=\"female\">{{ phrase('fs_female_age_veri_female') }}</xf:option>\n</xf:radiorow>\n\n$0"
+}
