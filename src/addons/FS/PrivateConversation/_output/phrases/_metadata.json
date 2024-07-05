@@ -1,0 +1,98 @@
+{
+    "fsPrivateConversation_private_message.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "066ad4de37f3f2082dd54ad561bd5078"
+    },
+    "fsPrivateConversation_start_conversation.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "f81c1598f383abbaf5838461b12da510"
+    },
+    "fsPrivateconversation_conversation_limit.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "18c299660f89521ac59000efe232bba8"
+    },
+    "fsPrivateconversation_in_regards_to_post.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "7026f7d71b6372d0e5fb1b44a53c7f8e"
+    },
+    "option.fsPrivateConversationExcludeForums.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "49e87a871d6db01300af78a810914ea1"
+    },
+    "option.fsPrivateConversationExcludeUserGroups.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "eb0915eb791dce0b3a1045a0e9973aac"
+    },
+    "option.fsPrivateConversationExcludeUsernames.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "c872826e06c61da340c3ddd104586201"
+    },
+    "option.fsPrivateConversationNewConversationMaximum.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "14697d545908883c28fa4c3f04b9ad99"
+    },
+    "option.fsPrivateConversationQuoteMessage.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "3f0f8dec9de5e7500413465bfb78f565"
+    },
+    "option_explain.fsPrivateConversationExcludeForums.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "b59fea20473e243db810e2eb1e793978"
+    },
+    "option_explain.fsPrivateConversationExcludeUserGroups.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "893c9223a3c77d68a370433e72c4c3c2"
+    },
+    "option_explain.fsPrivateConversationExcludeUsernames.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "e3e27d2bb0e99f4e2a57a16cbf0dc95c"
+    },
+    "option_explain.fsPrivateConversationNewConversationMaximum.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "e5ad03888ee83af08d9019568c517dbd"
+    },
+    "option_explain.fsPrivateConversationQuoteMessage.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "273b539d427c897bd4d9729613da6974"
+    },
+    "option_group.fs_private_conversation.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "def967265a17ac0b291f48622b4a8520"
+    },
+    "option_group_description.fs_private_conversation.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "c7b52ae5f4a196e15f787ad0f60aa3dc"
+    }
+}

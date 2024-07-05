@@ -1,0 +1,1 @@
+Maximum number of new conversations member are allowed to create in a 24 hour period. Default value is 10.

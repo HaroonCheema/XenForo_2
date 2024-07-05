@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="option.startConversationExcludeForums" version_id="15" version_string="1.5"><![CDATA[Exclude forums]]></phrase>
+  <phrase title="option.startConversationExcludeUserGroups" version_id="13" version_string="1.3"><![CDATA[Exclude user groups]]></phrase>
+  <phrase title="option.startConversationExcludeUsernames" version_id="13" version_string="1.3"><![CDATA[Exclude usernames]]></phrase>
+  <phrase title="option.startConversationNewConversationMaximum" version_id="13" version_string="1.3"><![CDATA[New conversation maximum]]></phrase>
+  <phrase title="option.startConversationQuoteMessage" version_id="10" version_string="1.0"><![CDATA[Quote message]]></phrase>
+  <phrase title="option_explain.startConversationExcludeForums" version_id="15" version_string="1.5"><![CDATA[Select forums to exclude.]]></phrase>
+  <phrase title="option_explain.startConversationExcludeUserGroups" version_id="13" version_string="1.3"><![CDATA[User groups to exclude from New conversation maximum.]]></phrase>
+  <phrase title="option_explain.startConversationExcludeUsernames" version_id="13" version_string="1.3"><![CDATA[Usernames to excluded from New conversation maximum.]]></phrase>
+  <phrase title="option_explain.startConversationNewConversationMaximum" version_id="16" version_string="1.6"><![CDATA[Maximum number of new conversations member are allowed to create in a 24 hour period. Default value is 10.]]></phrase>
+  <phrase title="option_explain.startConversationQuoteMessage" version_id="10" version_string="1.0"><![CDATA[Select to quote the post in conversation. If unchecked, a link to the post will be used.]]></phrase>
+  <phrase title="option_group.startConversation" version_id="10" version_string="1.0"><![CDATA[Start conversation]]></phrase>
+  <phrase title="option_group_description.startConversation" version_id="10" version_string="1.0"><![CDATA[Option here control the Start conversation add-on.]]></phrase>
+  <phrase title="startConversation_start_conversation" version_id="10" version_string="1.0"><![CDATA[Start conversation]]></phrase>
+  <phrase title="startconversation_conversation_limit" version_id="13" version_string="1.3"><![CDATA[You have reached the maximum number of new conversations allowed to be created in a 24 hour period.]]></phrase>
+  <phrase title="startconversation_in_regards_to_post" version_id="10" version_string="1.0"><![CDATA[In regards to post]]></phrase>
+</phrases>

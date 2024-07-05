@@ -1,0 +1,9 @@
+{
+    "template": "post_macros",
+    "description": "fs_private_conversation_post_macros",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:if is=\"$hasActionBarMenu\">",
+    "replace": "<xf:if is=\"!in_array($thread.node_id, $xf.options.fsPrivateConversationExcludeForums)\">\n\t<xf:if is=\"$post.User AND $xf.visitor.canStartConversationWith($post.User)\">\n\t\t<xf:set var=\"$hasActionBarMenu\" value=\"{{ true }}\" />\n\t\t<a href=\"{{ link('conversations/start-conversation', '', {'to': $post.username, 'title': $post.Thread.title, 'post_id': $post.post_id}) }}\" class=\"actionBar-action actionBar-action--fsStartConversation\">{{ phrase('fsPrivateConversation_start_conversation') }}</a>\n\t\t<xf:set var=\"$hasActionBarMenu\" value=\"{{ true }}\" />\n\t\t<a href=\"{{ link('conversations/start-conversation', '', {'to': $post.username, 'title': $post.Thread.title, 'post_id': $post.post_id}) }}\" class=\"actionBar-action actionBar-action--fsPrivateMessage\">{{ phrase('fsPrivateConversation_private_message') }}</a>\n\t</xf:if>\n</xf:if>\n\n<style>\n\n\t.actionBar-action.actionBar-action--fsPrivateMessage {\n\t\tdisplay: none;\n\t}\n\n\t@media (max-width: 480px) {\n\t\t.actionBar-action.actionBar-action--fsStartConversation {\n\t\t\tdisplay: none !important;\n\t\t}\n\n\t\t.actionBar-action.actionBar-action--fsPrivateMessage {\n\t\t\tdisplay: inline-block !important;\n\t\t}\n\t}\n\n</style>\n$0"
+}

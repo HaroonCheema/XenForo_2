@@ -1,0 +1,1 @@
+Usernames to excluded from New conversation maximum.

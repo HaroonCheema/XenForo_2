@@ -808,6 +808,44 @@ return array(
 	$__compilerTemp2 .= '
 
 			';
+	if (!$__templater->func('in_array', array($__vars['thread']['node_id'], $__vars['xf']['options']['fsPrivateConversationExcludeForums'], ), false)) {
+		$__compilerTemp2 .= '
+	';
+		if ($__vars['post']['User'] AND $__templater->method($__vars['xf']['visitor'], 'canStartConversationWith', array($__vars['post']['User'], ))) {
+			$__compilerTemp2 .= '
+		';
+			$__vars['hasActionBarMenu'] = true;
+			$__compilerTemp2 .= '
+		<a href="' . $__templater->func('link', array('conversations/start-conversation', '', array('to' => $__vars['post']['username'], 'title' => $__vars['post']['Thread']['title'], 'post_id' => $__vars['post']['post_id'], ), ), true) . '" class="actionBar-action actionBar-action--fsStartConversation">' . 'Start conversation' . '</a>
+		';
+			$__vars['hasActionBarMenu'] = true;
+			$__compilerTemp2 .= '
+		<a href="' . $__templater->func('link', array('conversations/start-conversation', '', array('to' => $__vars['post']['username'], 'title' => $__vars['post']['Thread']['title'], 'post_id' => $__vars['post']['post_id'], ), ), true) . '" class="actionBar-action actionBar-action--fsPrivateMessage">' . 'Private Message' . '</a>
+	';
+		}
+		$__compilerTemp2 .= '
+';
+	}
+	$__compilerTemp2 .= '
+
+<style>
+
+	.actionBar-action.actionBar-action--fsPrivateMessage {
+		display: none;
+	}
+
+	@media (max-width: 480px) {
+		.actionBar-action.actionBar-action--fsStartConversation {
+			display: none !important;
+		}
+
+		.actionBar-action.actionBar-action--fsPrivateMessage {
+			display: inline-block !important;
+		}
+	}
+
+</style>
+';
 	if ($__vars['hasActionBarMenu']) {
 		$__compilerTemp2 .= '
 				<a class="actionBar-action actionBar-action--menuTrigger"

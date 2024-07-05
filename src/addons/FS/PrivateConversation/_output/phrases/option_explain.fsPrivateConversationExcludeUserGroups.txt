@@ -1,0 +1,1 @@
+User groups to exclude from New conversation maximum.

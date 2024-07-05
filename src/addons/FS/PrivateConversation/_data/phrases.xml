@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="fsPrivateConversation_private_message" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Private Message]]></phrase>
+  <phrase title="fsPrivateConversation_start_conversation" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Start conversation]]></phrase>
+  <phrase title="fsPrivateconversation_conversation_limit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You have reached the maximum number of new conversations allowed to be created in a 24 hour period.]]></phrase>
+  <phrase title="fsPrivateconversation_in_regards_to_post" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[In regards to post]]></phrase>
+  <phrase title="option.fsPrivateConversationExcludeForums" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Exclude forums]]></phrase>
+  <phrase title="option.fsPrivateConversationExcludeUserGroups" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Exclude user groups]]></phrase>
+  <phrase title="option.fsPrivateConversationExcludeUsernames" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Exclude usernames]]></phrase>
+  <phrase title="option.fsPrivateConversationNewConversationMaximum" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[New conversation maximum]]></phrase>
+  <phrase title="option.fsPrivateConversationQuoteMessage" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Quote message]]></phrase>
+  <phrase title="option_explain.fsPrivateConversationExcludeForums" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Select forums to exclude.]]></phrase>
+  <phrase title="option_explain.fsPrivateConversationExcludeUserGroups" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[User groups to exclude from New conversation maximum.]]></phrase>
+  <phrase title="option_explain.fsPrivateConversationExcludeUsernames" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Usernames to excluded from New conversation maximum.]]></phrase>
+  <phrase title="option_explain.fsPrivateConversationNewConversationMaximum" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Maximum number of new conversations member are allowed to create in a 24 hour period. Default value is 10.]]></phrase>
+  <phrase title="option_explain.fsPrivateConversationQuoteMessage" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Select to quote the post in conversation. If unchecked, a link to the post will be used.]]></phrase>
+  <phrase title="option_group.fs_private_conversation" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Private Coversation]]></phrase>
+  <phrase title="option_group_description.fs_private_conversation" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Option here control the Private Coversation add-on.]]></phrase>
+</phrases>

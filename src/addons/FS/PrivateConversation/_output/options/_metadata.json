@@ -1,0 +1,17 @@
+{
+    "fsPrivateConversationExcludeForums.json": {
+        "hash": "c1a92a676f21fdfa26b5ec433b278941"
+    },
+    "fsPrivateConversationExcludeUserGroups.json": {
+        "hash": "f156f31ae81d8d4f280c64886d4c2d40"
+    },
+    "fsPrivateConversationExcludeUsernames.json": {
+        "hash": "4bdc1a3d5c50e24400ba3ec8375fb20d"
+    },
+    "fsPrivateConversationNewConversationMaximum.json": {
+        "hash": "3aaa6ccb58fb38e5452c1a48d5783b5a"
+    },
+    "fsPrivateConversationQuoteMessage.json": {
+        "hash": "75ff27d5fa5d531d38cbb9be7928d764"
+    }
+}

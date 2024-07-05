@@ -1,0 +1,1 @@
+Select to quote the post in conversation. If unchecked, a link to the post will be used.
