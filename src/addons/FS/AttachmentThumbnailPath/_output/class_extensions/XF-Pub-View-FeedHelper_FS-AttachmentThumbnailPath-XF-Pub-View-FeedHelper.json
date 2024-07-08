@@ -1,0 +1,6 @@
+{
+    "from_class": "XF\\Pub\\View\\FeedHelper",
+    "to_class": "FS\\AttachmentThumbnailPath\\XF\\Pub\\View\\FeedHelper",
+    "execute_order": 10,
+    "active": true
+}

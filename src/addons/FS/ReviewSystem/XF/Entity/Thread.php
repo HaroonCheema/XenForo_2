@@ -85,26 +85,26 @@ class Thread extends XFCP_Thread
     
     
 
-    public static function getStructure(Structure $structure)
-    {
-        $structure = parent::getStructure($structure);
+    // public static function getStructure(Structure $structure)
+    // {
+    //     $structure = parent::getStructure($structure);
                 
-        $structure->columns['is_review'] = ['type' => self::UINT, 'default' => 0];
-        $structure->columns['review_date'] = ['type' => self::UINT, 'required' => true, 'default' => \XF::$time];
-        $structure->columns['review_name'] = ['type' => self::STR, 'maxLength' => 50, 'default' => ''];
-        $structure->columns['review_contact_info'] = ['type' => self::STR, 'default' => ''];
-        $structure->columns['review_website_url'] = ['type' => self::STR, 'maxLength' => 150, 'default' => ''];
-        $structure->columns['review_general_area'] = ['type' => self::STR, 'default' => ''];
-        $structure->columns['review_activities'] = ['type' => self::STR, 'default' => ''];
-        $structure->columns['review_session_length'] = ['type' => self::STR, 'maxLength' => 255, 'default' => ''];
-        $structure->columns['review_fee'] = ['type' => self::STR, 'maxLength' => 150, 'default' => ''];
-        $structure->columns['review_hair_length_and_color'] = ['type' => self::STR, 'default' => ''];
-        $structure->columns['review_age'] = ['type' => self::UINT, 'default' => 0];
-        $structure->columns['review_smoking_status'] = ['type' => self::STR, 'default' => '', 'allowedValues' => ['','yes','no'] ];
-        $structure->columns['review_physical_description'] = ['type' => self::STR, 'default' => ''];
-        $structure->columns['review_recommendation'] = ['type' => self::BOOL, 'default' => false];
+    //     $structure->columns['is_review'] = ['type' => self::UINT, 'default' => 0];
+    //     $structure->columns['review_date'] = ['type' => self::UINT, 'required' => true, 'default' => \XF::$time];
+    //     $structure->columns['review_name'] = ['type' => self::STR, 'maxLength' => 50, 'default' => ''];
+    //     $structure->columns['review_contact_info'] = ['type' => self::STR, 'default' => ''];
+    //     $structure->columns['review_website_url'] = ['type' => self::STR, 'maxLength' => 150, 'default' => ''];
+    //     $structure->columns['review_general_area'] = ['type' => self::STR, 'default' => ''];
+    //     $structure->columns['review_activities'] = ['type' => self::STR, 'default' => ''];
+    //     $structure->columns['review_session_length'] = ['type' => self::STR, 'maxLength' => 255, 'default' => ''];
+    //     $structure->columns['review_fee'] = ['type' => self::STR, 'maxLength' => 150, 'default' => ''];
+    //     $structure->columns['review_hair_length_and_color'] = ['type' => self::STR, 'default' => ''];
+    //     $structure->columns['review_age'] = ['type' => self::UINT, 'default' => 0];
+    //     $structure->columns['review_smoking_status'] = ['type' => self::STR, 'default' => '', 'allowedValues' => ['','yes','no'] ];
+    //     $structure->columns['review_physical_description'] = ['type' => self::STR, 'default' => ''];
+    //     $structure->columns['review_recommendation'] = ['type' => self::BOOL, 'default' => false];
 
-        return $structure;
-    }
+    //     return $structure;
+    // }
 
 }
