@@ -17,4 +17,4 @@ $config['enableLivePayments'] = false;
 
 $config['debug'] = true;
 
-$config['development']['defaultAddOn'] = 'FS/PrivateConversation';
+$config['development']['defaultAddOn'] = 'FS/FemaleAgeVerification';
