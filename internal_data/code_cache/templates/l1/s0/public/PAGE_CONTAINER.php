@@ -472,7 +472,14 @@ return array(
 							';
 	}
 	$__compilerTemp2 .= '
-							' . '
+							';
+	if ($__templater->method($__vars['xf']['visitor'], 'hasPermission', array('fs_IPSearchResult', 'canUseSearch', ))) {
+		$__compilerTemp2 .= '
+	<a href="' . $__templater->func('link', array('ip-search', ), true) . '" class="menu-linkRow">' . 'IP Search' . '</a>
+';
+	}
+	$__compilerTemp2 .= '
+' . '
 							';
 	if (strlen(trim($__compilerTemp2)) > 0) {
 		$__compilerTemp1 .= '

@@ -6,6 +6,15 @@ use XF\Mvc\ParameterBag;
 
 class Register extends XFCP_Register
 {
+    public function actionIndex()
+    {
+        if (!$this->filter('accept', 'bool')) {
+            return $this->view('XF:Register\Form', 'fs_female_age_verfication_terms_conditions', []);
+        }
+
+        return parent::actionIndex();
+    }
+
     public function actionRegister()
     {
         if (!$this->filter(['gender' => 'str'])) {
