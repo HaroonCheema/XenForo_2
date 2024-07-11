@@ -1,0 +1,9 @@
+{
+    "template": "user_batch_update_confirm",
+    "description": "fs_batch_user_batch_update_confirm",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "is=\"!$userIds\"",
+    "replace": "is=\"count($criteria.userIds) || !$userIds\""
+}

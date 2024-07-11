@@ -18,7 +18,7 @@ return array(
 ' . $__templater->form('
 	<div class="block-container">
 		<div class="block-body">
-			' . $__templater->includeTemplate('helper_user_search_criteria', $__vars) . '
+			' . $__templater->includeTemplate('fs_batch_helper_user_search_criteria', $__vars) . '
 		</div>
 		' . $__templater->formSubmitRow(array(
 		'submit' => 'Proceed' . $__vars['xf']['language']['ellipsis'],

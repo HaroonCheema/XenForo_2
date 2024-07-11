@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="admin" title="fs_batch_helper_user_search_criteria" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:if is="!$noSpecificUser">
+	<xf:formrow label="{{ phrase('user_name') }}">
+		<ul class="inputList">
+			<li><xf:textbox name="criteria[username][name]"
+							value="{{ is_array($criteria.username) ? $criteria.username.name : $criteria.username }}"
+							readonly="{$readOnly}"
+							label="{{ phrase('user_name') }}" /></li>
+
+			<li><xf:checkbox standalone="true" readonly="{$readOnly}">
+				<xf:option name="criteria[username][exact_match]"
+						   selected="{{ is_array($criteria.username) AND $criteria.username.exact_match }}">
+					{{ phrase('exact_match') }}
+				</xf:option>
+				</xf:checkbox></li>
+		</ul>
+	</xf:formrow>
+
+	<xf:textboxrow name="criteria[email]" value="{$criteria.email}"
+				   label="{{ phrase('email') }}" />
+
+	<xf:textboxrow name="criteria[ip]"
+				   label="{{ phrase('ip_address') }}"
+				   explain="{{ phrase('ip_search_explain') }}" />
+</xf:if>
+
+<hr class="formRowSep" />
+
+<xf:if is="!{$readOnly}">
+	<xf:selectrow name="criteria[user_group_id]" value="{$criteria.user_group_id}"
+				  label="{{ phrase('primary_user_group') }}">
+
+		<xf:option>{{ phrase('(any)') }}</xf:option>
+		<xf:foreach loop="$userGroups" value="$userGroup">
+			<xf:option value="{$userGroup.user_group_id}">{$userGroup.title}</xf:option>
+		</xf:foreach>
+	</xf:selectrow>
+	<xf:else />
+	<xf:formrow label="{{ phrase('primary_user_group') }}">
+
+		<xf:if is="{$userGroups.{$criteria_user_group_id}.title}">
+			{$userGroups.{$criteria_user_group_id}.title}
+			<xf:else />
+			{{ phrase('(any)') }}
+		</xf:if>
+	</xf:formrow>
+	<xf:hiddenval name="criteria[user_group_id]">{$criteria.user_group_id}</xf:hiddenval>
+</xf:if>
+
+<xf:radiorow name="criteria[no_secondary_group_ids]" value="{$criteria.no_secondary_group_ids}" readonly="{$readOnly}"
+			 label="{{ phrase('secondary_user_groups') }}">
+
+	<xf:option value="1">{{ phrase('member_of_no_secondary_groups') }}</xf:option>
+	<xf:option value="0" label="{{ phrase('member_of_any_of_these_secondary_groups') }}">
+		<xf:checkbox name="criteria[secondary_group_ids]" value="{$criteria.secondary_group_ids}" listclass="listColumns" readonly="{$readOnly}">
+			<xf:foreach loop="$userGroups" value="$userGroup">
+				<xf:option value="{$userGroup.user_group_id}">{$userGroup.title}</xf:option>
+			</xf:foreach>
+		</xf:checkbox>
+	</xf:option>
+</xf:radiorow>
+
+<xf:checkboxrow name="criteria[not_secondary_group_ids]" value="{$criteria.not_secondary_group_ids}" listclass="listColumns" readonly="{$readOnly}"
+				label="{{ phrase('not_in_secondary_groups') }}">
+
+	<xf:foreach loop="$userGroups" value="$userGroup">
+		<xf:option value="{$userGroup.user_group_id}">{$userGroup.title}</xf:option>
+	</xf:foreach>
+</xf:checkboxrow>
+
+<hr class="formRowSep" />
+
+<xf:formrow rowtype="input"
+			label="{{ phrase('registered_between') }}">
+
+	<div class="inputGroup">
+		<xf:dateinput name="criteria[register_date][start]" value="{$criteria.register_date.start}" size="15" readonly="{$readOnly}" />
+		<span class="inputGroup-text">-</span>
+		<xf:dateinput name="criteria[register_date][end]" value="{$criteria.register_date.end}" size="15" readonly="{$readOnly}" />
+	</div>
+</xf:formrow>
+
+<xf:formrow rowtype="input"
+			label="{{ phrase('last_visited_between') }}"
+			explain="{{ phrase('visits_in_last_hour_may_not_be_considered') }}">
+
+	<div class="inputGroup">
+		<xf:dateinput name="criteria[last_activity][start]" value="{$criteria.last_activity.start}" size="15" readonly="{$readOnly}" />
+		<span class="inputGroup-text">-</span>
+		<xf:dateinput name="criteria[last_activity][end]" value="{$criteria.last_activity.end}" size="15" readonly="{$readOnly}" />
+	</div>
+</xf:formrow>
+
+<xf:formrow rowtype="input"
+			label="{{ phrase('message_count_between') }}"
+			explain="{{ phrase('use_negative_one_specify_no_max') }}">
+
+	<div class="inputGroup">
+		<xf:numberbox name="criteria[message_count][start]" value="{$criteria.message_count.start}" min="0" readonly="{$readOnly}" />
+		<span class="inputGroup-text">-</span>
+		<xf:numberbox name="criteria[message_count][end]" value="{$criteria.message_count.end}" min="-1" readonly="{$readOnly}" />
+	</div>
+</xf:formrow>
+
+<xf:formrow rowtype="input"
+			label="{{ phrase('questions_solved_between') }}"
+			explain="{{ phrase('use_negative_one_specify_no_max') }}">
+
+	<div class="inputGroup">
+		<xf:numberbox name="criteria[question_solution_count][start]" value="{$criteria.question_solution_count.start}" min="0" readonly="{$readOnly}" />
+		<span class="inputGroup-text">-</span>
+		<xf:numberbox name="criteria[question_solution_count][end]" value="{$criteria.question_solution_count.end}" min="-1" readonly="{$readOnly}" />
+	</div>
+</xf:formrow>
+
+<xf:formrow rowtype="input"
+			label="{{ phrase('trophy_points_between') }}"
+			explain="{{ phrase('use_negative_one_specify_no_max') }}">
+
+	<div class="inputGroup">
+		<xf:numberbox name="criteria[trophy_points][start]" value="{$criteria.trophy_points.start}" min="0" readonly="{$readOnly}" />
+		<span class="inputGroup-text">-</span>
+		<xf:numberbox name="criteria[trophy_points][end]" value="{$criteria.trophy_points.end}" min="-1" readonly="{$readOnly}" />
+	</div>
+</xf:formrow>
+
+<xf:formrow rowtype="input"
+			label="{{ phrase('reaction_score_between') }}">
+	<div class="inputGroup">
+		<xf:numberbox name="criteria[reaction_score][start]" value="{$criteria.reaction_score.start}"
+					  readonly="{$readOnly}"/>
+		<span class="inputGroup-text">-</span>
+		<xf:numberbox name="criteria[reaction_score][end]" value="{$criteria.reaction_score.end}"
+					  readonly="{$readOnly}"/>
+	</div>
+</xf:formrow>
+
+<hr class="formRowSep" />
+
+<xf:checkboxrow name="criteria[user_state]" readonly="{$readOnly}"
+				label="{{ phrase('user_state') }}">
+
+	<xf:option value="valid" selected="in_array('valid', $criteria.user_state)">{{ phrase('valid') }}</xf:option>
+	<xf:option value="email_confirm" selected="in_array('email_confirm', $criteria.user_state)">{{ phrase('awaiting_email_confirmation') }}</xf:option>
+	<xf:option value="email_confirm_edit" selected="in_array('email_confirm_edit', $criteria.user_state)">{{ phrase('awaiting_email_confirmation_from_edit') }}</xf:option>
+	<xf:option value="email_bounce" selected="in_array('email_bounce', $criteria.user_state)">{{ phrase('email_invalid_bounced') }}</xf:option>
+	<xf:option value="moderated" selected="in_array('moderated', $criteria.user_state)">{{ phrase('awaiting_moderation') }}</xf:option>
+	<xf:option value="rejected" selected="in_array('rejected', $criteria.user_state)">{{ phrase('rejected') }}</xf:option>
+	<xf:option value="disabled" selected="in_array('disabled', $criteria.user_state)">{{ phrase('disabled') }}</xf:option>
+</xf:checkboxrow>
+
+<xf:checkboxrow name="criteria[security_lock]" readonly="{$readOnly}"
+				label="{{ phrase('security_lock') }}">
+
+	<xf:option value="none" selected="in_array('none', $criteria.security_lock)">{{ phrase('none') }}</xf:option>
+	<xf:option value="change" selected="in_array('change', $criteria.security_lock)">{{ phrase('locked:') }} {{ phrase('user_must_change_password') }}</xf:option>
+	<xf:option value="reset" selected="in_array('reset', $criteria.security_lock)">{{ phrase('locked:') }} {{ phrase('user_must_reset_password') }}</xf:option>
+</xf:checkboxrow>
+
+<xf:checkboxrow name="criteria[is_banned]" readonly="{$readOnly}"
+				label="{{ phrase('banned_state') }}">
+
+	<xf:option value="0" selected="in_array(0, $criteria.is_banned)">{{ phrase('not_banned') }}</xf:option>
+	<xf:option value="1" selected="in_array(1, $criteria.is_banned)">{{ phrase('banned') }}</xf:option>
+</xf:checkboxrow>
+
+<xf:checkboxrow name="criteria[Option][is_discouraged]" readonly="{$readOnly}"
+				label="{{ phrase('discouragement_state') }}">
+
+	<xf:option value="0" selected="in_array(0, $criteria.Option.is_discouraged)">{{ phrase('not_discouraged') }}</xf:option>
+	<xf:option value="1" selected="in_array(1, $criteria.Option.is_discouraged)">{{ phrase('discouraged') }}</xf:option>
+</xf:checkboxrow>
+
+<xf:checkboxrow name="criteria[is_staff]" readonly="{$readOnly}"
+				label="{{ phrase('staff_state') }}">
+
+	<xf:option value="0" selected="in_array(0, $criteria.is_staff)">{{ phrase('not_staff_member') }}</xf:option>
+	<xf:option value="1" selected="in_array(1, $criteria.is_staff)">{{ phrase('staff_member') }}</xf:option>
+</xf:checkboxrow>
+
+<xf:checkboxrow name="criteria[activity_summary]" readonly="{$readOnly}"
+				label="{{ phrase('activity_summary_email') }}">
+
+	<xf:option value="0" selected="in_array(0, $criteria.activity_summary)">{{ phrase('activity_summary_email_disabled') }}</xf:option>
+	<xf:option value="1" selected="in_array(1, $criteria.activity_summary)">{{ phrase('activity_summary_email_enabled') }}</xf:option>
+</xf:checkboxrow>
+
+<xf:if contentcheck="true">
+	<hr class="formRowSep" />
+	<xf:contentcheck>
+		<xf:foreach loop="$xf.app.em.getRepository('XF:UserField').getDisplayGroups()" key="$fieldGroup" value="$phrase">
+			<xf:set var="$customFields" value="{$xf.app.getCustomFields('users', $fieldGroup)}" />
+			<xf:if contentcheck="true">
+				<xf:contentcheck>
+					<xf:foreach loop="$customFields" key="$fieldId" value="$fieldDefinition">
+						<xf:set var="$choices" value="{$fieldDefinition.field_choices}" />
+						<xf:set var="$fieldName" value="criteria[user_field]{{ ($choices && $fieldDefinition.type_group != 'multiple') ? '[exact]' : '' }}[{$fieldId}]" />
+						<xf:formrow rowtype="{{ $choices ? '' : 'input' }}"
+									label="{$fieldDefinition.title}">
+
+							<xf:if is="!{$choices}">
+								<xf:textbox name="{$fieldName}" value="{$criteria.user_field.{$fieldId}}" readonly="{$readOnly}" />
+								<xf:else />
+
+								<xf:checkbox name="{$fieldName}" value="{{ $fieldDefinition.type_group != 'multiple' ? $criteria.user_field.exact.{$fieldId} : $criteria.user_field.{$fieldId} }}" listclass="listColumns" readonly="{$readOnly}">
+									<xf:foreach loop="$choices" key="$val" value="$choice">
+										<xf:option value="{{ $fieldDefinition.type_group == 'multiple' ? 's:' . strlen($val) . ':"' . $val . '"' : $val }}" label="{$choice}" />
+									</xf:foreach>
+								</xf:checkbox>
+
+							</xf:if>
+
+						</xf:formrow>
+					</xf:foreach>
+				</xf:contentcheck>
+			</xf:if>
+		</xf:foreach>
+	</xf:contentcheck>
+</xf:if>]]></template>
+</templates>

@@ -9,7 +9,7 @@ return array(
 
 ';
 	$__compilerTemp1 = '';
-	if (!$__vars['userIds']) {
+	if ($__templater->func('count', array($__vars['criteria']['userIds'], ), false) OR (!$__vars['userIds'])) {
 		$__compilerTemp1 .= '
 					<span role="presentation" aria-hidden="true">&middot;</span>
 					<a href="' . $__templater->func('link', array('users/list', null, array('criteria' => $__vars['criteria'], 'all' => true, ), ), true) . '">' . 'View or filter matches' . '</a>

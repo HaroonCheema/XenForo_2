@@ -1,0 +1,9 @@
+{
+    "template": "user_batch_update",
+    "description": "fs_batch_user_batch_update",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "helper_user_search_criteria",
+    "replace": "fs_batch_helper_user_search_criteria"
+}
