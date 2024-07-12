@@ -41,6 +41,8 @@ class UpgradeCostAmount extends AbstractJob
                     $newAmount = intval(round($newCostAmount * 100));
 
                     $handler->updatePaymentSubscription($paymentProfile, $subscriptionId, $newAmount);
+
+                    $value->fastUpdate('cost_amount', $newCostAmount);
                 }
             }
         }

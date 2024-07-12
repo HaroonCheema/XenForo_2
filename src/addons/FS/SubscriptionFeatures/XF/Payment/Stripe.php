@@ -37,6 +37,19 @@ class Stripe extends XFCP_Stripe
                     ],
                 ],
             ]);
+
+            $upcomingInvoice = \Stripe\Invoice::upcoming(['customer' => $subscription["customer"]]);
+
+            foreach ($upcomingInvoice['lines']['data'] as $invoice) {
+
+                if (substr($invoice["description"], 0, strlen("Unused time on")) === "Unused time on" || substr($invoice["description"], 0, strlen("Remaining time on")) === "Remaining time on") {
+                    $invoiceItem = \Stripe\InvoiceItem::retrieve($invoice["id"]);
+
+                    if (count($invoiceItem)) {
+                        $invoiceItem->delete();
+                    }
+                }
+            }
         }
 
         return $updatedSubscription;

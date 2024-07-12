@@ -61,6 +61,8 @@ class UserUpgrade extends XFCP_UserUpgrade
                         $newAmount = intval(round($userUpgrade->cost_amount * 100));
 
                         $handler->updatePaymentSubscription($paymentProfile, $subscriptionId, $newAmount);
+
+                        $purchaseRequest->fastUpdate('cost_amount', $userUpgrade->cost_amount);
                     }
                 }
 

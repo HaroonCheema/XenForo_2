@@ -785,16 +785,41 @@ class Crud extends AbstractController
 
     public function actionIndex(ParameterBag $params)
     {
+        $providerId = "stripe";
+
+        $finder = \XF::finder('XF:PaymentProfile');
+        $paymentProfile = $finder
+            ->where('provider_id', $providerId)
+            ->fetchOne();
+
+        /** @var \XF\Entity\PaymentProvider $provider */
+        $provider = \XF::em()->find('XF:PaymentProvider', $providerId);
+
+        $handler = $provider->handler;
+
+        // $subscriptionId = "sub_1PQ5nvJcXHnOgcMNePpH0PB7";
+        $subscriptionId = "sub_1PQ5nvJcXHnOgcMNePpH0PB7";
+
+        $cost_amount = 26.99;
+
+        $newAmount = intval(round($cost_amount * 100));
+
+        $handler->updatePaymentSubscription($paymentProfile, $subscriptionId, $newAmount);
+
+        echo "<pre>";
+        var_dump("Hello world");
+        exit;
 
         // Variables to specify the length and unit of time
-$length = 4;
-$unit = 'month';
+        $length = 4;
+        $unit = 'month';
 
-// Create a dynamic interval string
-$interval = "+$length $unit";
+        // Create a dynamic interval string
+        $interval = "+$length $unit";
 
-echo "<pre>";
-var_dump($interval);exit;
+        echo "<pre>";
+        var_dump($interval);
+        exit;
 
         // Old file name
         $fileName = "1000_f_93860043_alqx2pxpwduqnwmg0kvfcal8f0mcuwfv";
