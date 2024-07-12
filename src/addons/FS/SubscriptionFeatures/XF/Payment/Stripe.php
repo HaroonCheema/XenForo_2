@@ -9,7 +9,6 @@ use XF\Purchasable\Purchase;
 
 class Stripe extends XFCP_Stripe
 {
-
     public function updatePaymentSubscription(PaymentProfile $paymentProfile, $subscriptionId, $newAmount)
     {
         $this->setupStripe($paymentProfile);
@@ -18,6 +17,8 @@ class Stripe extends XFCP_Stripe
         $subscription = \Stripe\Subscription::retrieve(
             $subscriptionId
         );
+
+        // change the active subscription amount
 
         if (!empty($subscription->items)) {
             $new_price = \Stripe\Price::create([
@@ -38,7 +39,11 @@ class Stripe extends XFCP_Stripe
                 ],
             ]);
 
-            $upcomingInvoice = \Stripe\Invoice::upcoming(['customer' => $subscription["customer"]]);
+            // delete the subscription Upcoming and Remaining items
+
+            $customerId = $subscription["customer"];
+
+            $upcomingInvoice = \Stripe\Invoice::upcoming(['customer' => $customerId]);
 
             foreach ($upcomingInvoice['lines']['data'] as $invoice) {
 
@@ -47,6 +52,30 @@ class Stripe extends XFCP_Stripe
 
                     if (count($invoiceItem)) {
                         $invoiceItem->delete();
+                    }
+                }
+            }
+
+            // change the amount of metadata
+
+            $customer = \Stripe\Customer::retrieve($customerId);
+
+            foreach ($customer["subscriptions"]["data"] as $subscription) {
+
+                if ($subscription->id == $subscriptionId) {
+                    $existingMetadata = $subscription->metadata->toArray();
+
+                    if (isset($existingMetadata['cost'])) {
+                        unset($existingMetadata['cost']);
+
+                        $existingMetadata['cost'] = $newAmount / 100;
+
+                        \Stripe\Subscription::update(
+                            $subscription->id,
+                            [
+                                'metadata' => $existingMetadata,
+                            ]
+                        );
                     }
                 }
             }
