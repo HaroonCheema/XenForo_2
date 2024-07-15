@@ -11,7 +11,7 @@ return array(
 	$__finalCompiled .= '
 
 ';
-	$__templater->pageParams['pageTitle'] = $__templater->preEscaped('Terms and Conditions');
+	$__templater->pageParams['pageTitle'] = $__templater->preEscaped('Rules');
 	$__finalCompiled .= '
 
 ';
@@ -32,7 +32,23 @@ return array(
 	<div class="block-container">
 		<div class="block-body" style="overflow: auto; height: 500px;">
 			' . $__templater->formInfoRow('
-			' . 'Terms and Condition text...!' . '
+			' . '<p>In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is available.</p>
+
+<p>In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is available.</p>
+
+<p>In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is available.</p>
+
+<p>In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is available.</p>
+
+<p>In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is available.</p>
+
+<p>In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is available.</p>
+
+<p>In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is available.</p>
+
+<p>In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is available.</p>
+
+<p>In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is available.</p>' . '
 			', array(
 	)) . '
 			' . $__templater->formCheckBoxRow(array(
@@ -40,7 +56,7 @@ return array(
 	), array(array(
 		'name' => 'accept',
 		'required' => 'required',
-		'label' => 'I agree to the terms and privacy policy.',
+		'label' => '<b>I have read, and agree to rules.</b>',
 		'_type' => 'option',
 	)), array(
 	)) . '
