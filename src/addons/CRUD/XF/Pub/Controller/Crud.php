@@ -785,26 +785,27 @@ class Crud extends AbstractController
 
     public function actionIndex(ParameterBag $params)
     {
-        // $providerId = "stripe";
+        $providerId = "stripe";
 
-        // $finder = \XF::finder('XF:PaymentProfile');
-        // $paymentProfile = $finder
-        //     ->where('provider_id', $providerId)
-        //     ->fetchOne();
+        $finder = \XF::finder('XF:PaymentProfile');
+        $paymentProfile = $finder
+            ->where('provider_id', $providerId)
+            ->fetchOne();
 
-        // /** @var \XF\Entity\PaymentProvider $provider */
-        // $provider = \XF::em()->find('XF:PaymentProvider', $providerId);
+        /** @var \XF\Entity\PaymentProvider $provider */
+        $provider = \XF::em()->find('XF:PaymentProvider', $providerId);
 
-        // $handler = $provider->handler;
+        $handler = $provider->handler;
 
-        // // $subscriptionId = "sub_1PQ5nvJcXHnOgcMNePpH0PB7";
         // $subscriptionId = "sub_1PQ5nvJcXHnOgcMNePpH0PB7";
+        // $subscriptionId = "sub_1PQ5nvJcXHnOgcMNePpH0PB7";
+        $subscriptionId = "sub_1PfJFfJcXHnOgcMNPz9DBdLo";
 
-        // $cost_amount = 24.99;
+        $cost_amount = 24.99;
 
-        // $newAmount = intval(round($cost_amount * 100));
+        $newAmount = intval(round($cost_amount * 100));
 
-        // $handler->updatePaymentSubscription($paymentProfile, $subscriptionId, $newAmount);
+        $handler->cancelDublicatedPaymentSubscription($paymentProfile, $subscriptionId, $newAmount);
 
         echo "<pre>";
         var_dump("Hello world");

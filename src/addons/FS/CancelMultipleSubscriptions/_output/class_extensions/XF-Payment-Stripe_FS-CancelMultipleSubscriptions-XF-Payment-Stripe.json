@@ -1,0 +1,6 @@
+{
+    "from_class": "XF\\Payment\\Stripe",
+    "to_class": "FS\\CancelMultipleSubscriptions\\XF\\Payment\\Stripe",
+    "execute_order": 10,
+    "active": true
+}

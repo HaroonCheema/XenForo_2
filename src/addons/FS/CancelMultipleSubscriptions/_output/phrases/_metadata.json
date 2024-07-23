@@ -1,0 +1,8 @@
+{
+    "cron_entry.fs_cancel_subscriptions.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "16ac643e9271509148612da811bde550"
+    }
+}

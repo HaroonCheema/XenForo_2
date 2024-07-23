@@ -1,0 +1,8 @@
+{
+    "XF-Entity-PurchaseRequest_FS-CancelMultipleSubscriptions-XF-Entity-PurchaseRequest.json": {
+        "hash": "a89e880a8fcf10fe632519b53f909516"
+    },
+    "XF-Payment-Stripe_FS-CancelMultipleSubscriptions-XF-Payment-Stripe.json": {
+        "hash": "48bf77baada802a89cb0a5852c47db06"
+    }
+}

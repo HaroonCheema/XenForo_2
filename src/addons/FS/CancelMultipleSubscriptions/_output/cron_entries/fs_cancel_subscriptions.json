@@ -1,0 +1,17 @@
+{
+    "cron_class": "FS\\CancelMultipleSubscriptions\\Cron\\CancelSubscription",
+    "cron_method": "cancelSupscriptionUnPaid",
+    "run_rules": {
+        "day_type": "dom",
+        "dom": [
+            -1
+        ],
+        "hours": [
+            -1
+        ],
+        "minutes": [
+            -1
+        ]
+    },
+    "active": false
+}
