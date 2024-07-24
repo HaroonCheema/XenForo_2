@@ -12,4 +12,12 @@ class CancelSubscription
         $app->jobManager()->enqueueUnique($jobID, 'FS\CancelMultipleSubscriptions:CancelSubscription', [], false);
         // $app->jobManager()->runUnique($jobID, 120);
     }
+
+    public static function cancelSupscriptionMultiples()
+    {
+        $app = \XF::app();
+        $jobID = 'cancel_stripe_multiple_subscriptions_' . time();
+
+        $app->jobManager()->enqueueUnique($jobID, 'FS\CancelMultipleSubscriptions:CancelMultipleSubscription', [], false);
+    }
 }

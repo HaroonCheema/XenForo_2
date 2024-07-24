@@ -1,6 +1,6 @@
 {
     "cron_class": "FS\\CancelMultipleSubscriptions\\Cron\\CancelSubscription",
-    "cron_method": "cancelSupscriptionUnPaid",
+    "cron_method": "cancelSupscriptionMultiples",
     "run_rules": {
         "day_type": "dom",
         "dom": [

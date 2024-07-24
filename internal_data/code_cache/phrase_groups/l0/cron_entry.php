@@ -29,6 +29,7 @@ return array (
   'cron_entry.fileCheck' => 'Perform file health check',
   'cron_entry.forumStatistics' => 'Rebuild forum statistics',
   'cron_entry.fsAutoForumManager' => '[FS] Auto Forum Manager',
+  'cron_entry.fsCancelMultiSubscription' => '[FS] Cancel Stripe Subscriptions (Multiples)',
   'cron_entry.fsHideUsernames' => '[FS] Hide Usernames',
   'cron_entry.fsUsergroupUsersCount' => '[FS] Usergroup Users Count',
   'cron_entry.fs_cancel_subscriptions' => '[FS] Cancel Stripe Subscriptions (Unpaid)',

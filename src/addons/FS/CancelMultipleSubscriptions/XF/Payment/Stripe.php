@@ -35,6 +35,8 @@ class Stripe extends XFCP_Stripe
 
                     return true;
                 }
+            } elseif ($subscription->status == 'canceled') {
+                return true;
             }
 
             return false;
@@ -43,11 +45,16 @@ class Stripe extends XFCP_Stripe
         return true;
     }
 
-    public function cancelDublicatedPaymentSubscription(PaymentProfile $paymentProfile, $subscriptionId, $newAmount)
+    public function cancelMultiplesPaymentSubscription(PaymentProfile $paymentProfile, $subscriptionId)
     {
         $this->setupStripe($paymentProfile);
 
-        $customerId = "cus_QGd2PZGvQSJ383";
+        /** @var \Stripe\Subscription $subscription */
+        $subscription = \Stripe\Subscription::retrieve(
+            $subscriptionId
+        );
+
+        $customerId = $subscription["customer"];
 
         $subscriptions = \Stripe\Subscription::all(['customer' => $customerId]);
 
