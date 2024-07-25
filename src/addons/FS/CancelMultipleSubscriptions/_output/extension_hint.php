@@ -12,3 +12,8 @@ namespace FS\CancelMultipleSubscriptions\XF\Payment
 {
 	class XFCP_Stripe extends \XF\Payment\Stripe {}
 }
+
+namespace FS\CancelMultipleSubscriptions\XF\Pub\Controller
+{
+	class XFCP_Purchase extends \XF\Pub\Controller\Purchase {}
+}

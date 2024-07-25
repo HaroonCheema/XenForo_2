@@ -300,6 +300,8 @@ return array (
   'option.fs_bitcoin_six_month_widget_uid' => 'Six Months Premium widget uid',
   'option.fs_bitcoin_vip_companion' => 'VIP Companion group id',
   'option.fs_bitcoin_vip_companion_widget_uid' => 'VIP Companion widget uid',
+  'option.fs_cancel_multiple_subscriptions_mintues' => 'User group timeout',
+  'option.fs_cancel_multiple_subscriptions_userGroup' => 'Select user group',
   'option.fs_color' => 'Select The Colour',
   'option.fs_enable_image' => 'Display Image',
   'option.fs_escrow_admin_Id' => 'Escrow Percentage Holder Id',

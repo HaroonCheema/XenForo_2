@@ -1,0 +1,13 @@
+{
+    "edit_format": "spinbox",
+    "edit_format_params": "min=1\nunits={{ phrase('units_minutes') }}",
+    "data_type": "positive_integer",
+    "sub_options": [],
+    "validation_class": "",
+    "validation_method": "",
+    "advanced": false,
+    "default_value": "30",
+    "relations": {
+        "fs_cancel_multiple_subscriptions": 1
+    }
+}

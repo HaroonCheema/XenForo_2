@@ -36,6 +36,7 @@ You may set a user into \'discouraged\' mode by editing their user profile, or d
   'option_group_description.fs_assign_group' => '[FS] Assign Group',
   'option_group_description.fs_bitcoin_integ' => '[FS] Bitcoin Integration',
   'option_group_description.fs_bunny_integration' => 'bunny.net Api Integration',
+  'option_group_description.fs_cancel_multiple_subscriptions' => '',
   'option_group_description.fs_forum_groups' => '[FS] Forum Groups',
   'option_group_description.fs_hcwp' => '',
   'option_group_description.fs_hide_usernames' => '',

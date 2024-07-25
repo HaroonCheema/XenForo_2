@@ -4,5 +4,8 @@
     },
     "XF-Payment-Stripe_FS-CancelMultipleSubscriptions-XF-Payment-Stripe.json": {
         "hash": "48bf77baada802a89cb0a5852c47db06"
+    },
+    "XF-Pub-Controller-Purchase_FS-CancelMultipleSubscriptions-XF-Pub-Controller-Purchase.json": {
+        "hash": "f71757afac19406072ba745c440cb017"
     }
 }

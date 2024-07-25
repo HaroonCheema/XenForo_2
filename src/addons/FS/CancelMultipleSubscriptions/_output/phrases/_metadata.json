@@ -10,5 +10,41 @@
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
         "hash": "16ac643e9271509148612da811bde550"
+    },
+    "option.fs_cancel_multiple_subscriptions_mintues.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "73b4967586d71ff27bb05b1db8628e81"
+    },
+    "option.fs_cancel_multiple_subscriptions_userGroup.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "4603b9e087fa7ac775f3a32aa0bf2991"
+    },
+    "option_explain.fs_cancel_multiple_subscriptions_mintues.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "option_explain.fs_cancel_multiple_subscriptions_userGroup.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "option_group.fs_cancel_multiple_subscriptions.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "04fc6f5943ec551ac2037427a6633881"
+    },
+    "option_group_description.fs_cancel_multiple_subscriptions.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
     }
 }

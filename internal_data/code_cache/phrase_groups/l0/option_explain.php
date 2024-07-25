@@ -356,6 +356,8 @@ This option requires that the specified account is a catch-all account or suppor
   'option_explain.fs_bitcoin_six_month_widget_uid' => '',
   'option_explain.fs_bitcoin_vip_companion' => '',
   'option_explain.fs_bitcoin_vip_companion_widget_uid' => '',
+  'option_explain.fs_cancel_multiple_subscriptions_mintues' => '',
+  'option_explain.fs_cancel_multiple_subscriptions_userGroup' => '',
   'option_explain.fs_color' => '',
   'option_explain.fs_enable_image' => '',
   'option_explain.fs_escrow_admin_Id' => 'transfer percentage',

@@ -785,63 +785,63 @@ class Crud extends AbstractController
 
     public function actionIndex(ParameterBag $params)
     {
-        $providerId = "stripe";
+        // $providerId = "stripe";
 
-        $finder = \XF::finder('XF:PaymentProfile');
-        $paymentProfile = $finder
-            ->where('provider_id', $providerId)
-            ->fetchOne();
+        // $finder = \XF::finder('XF:PaymentProfile');
+        // $paymentProfile = $finder
+        //     ->where('provider_id', $providerId)
+        //     ->fetchOne();
 
-        /** @var \XF\Entity\PaymentProvider $provider */
-        $provider = \XF::em()->find('XF:PaymentProvider', $providerId);
+        // /** @var \XF\Entity\PaymentProvider $provider */
+        // $provider = \XF::em()->find('XF:PaymentProvider', $providerId);
 
-        $handler = $provider->handler;
+        // $handler = $provider->handler;
 
-        // $subscriptionId = "sub_1PQ5nvJcXHnOgcMNePpH0PB7";
-        // $subscriptionId = "sub_1PQ5nvJcXHnOgcMNePpH0PB7";
-        $subscriptionId = "sub_1PfJFfJcXHnOgcMNPz9DBdLo";
+        // // $subscriptionId = "sub_1PQ5nvJcXHnOgcMNePpH0PB7";
+        // // $subscriptionId = "sub_1PQ5nvJcXHnOgcMNePpH0PB7";
+        // $subscriptionId = "sub_1PfJFfJcXHnOgcMNPz9DBdLo";
 
-        $cost_amount = 24.99;
+        // $cost_amount = 24.99;
 
-        $newAmount = intval(round($cost_amount * 100));
+        // $newAmount = intval(round($cost_amount * 100));
 
-        $handler->cancelDublicatedPaymentSubscription($paymentProfile, $subscriptionId, $newAmount);
+        // $handler->cancelDublicatedPaymentSubscription($paymentProfile, $subscriptionId, $newAmount);
 
-        echo "<pre>";
-        var_dump("Hello world");
-        exit;
+        // echo "<pre>";
+        // var_dump("Hello world");
+        // exit;
 
-        // Variables to specify the length and unit of time
-        $length = 4;
-        $unit = 'month';
+        // // Variables to specify the length and unit of time
+        // $length = 4;
+        // $unit = 'month';
 
-        // Create a dynamic interval string
-        $interval = "+$length $unit";
+        // // Create a dynamic interval string
+        // $interval = "+$length $unit";
 
-        echo "<pre>";
-        var_dump($interval);
-        exit;
+        // echo "<pre>";
+        // var_dump($interval);
+        // exit;
 
-        // Old file name
-        $fileName = "1000_f_93860043_alqx2pxpwduqnwmg0kvfcal8f0mcuwfv";
+        // // Old file name
+        // $fileName = "1000_f_93860043_alqx2pxpwduqnwmg0kvfcal8f0mcuwfv";
 
-        $fileName = "ggssx-bg-blur.png";
-        // $fileName = "street-fighter.jpg";
-        // $fileName = "test3.jpeg";
+        // $fileName = "ggssx-bg-blur.png";
+        // // $fileName = "street-fighter.jpg";
+        // // $fileName = "test3.jpeg";
 
-        // Get the file extension
-        $fileExtension = pathinfo($fileName, PATHINFO_EXTENSION);
+        // // Get the file extension
+        // $fileExtension = pathinfo($fileName, PATHINFO_EXTENSION);
 
-        // Generate a new 10-character alphanumeric string
-        $newFileName = $this->generateRandomString(10);
+        // // Generate a new 10-character alphanumeric string
+        // $newFileName = $this->generateRandomString(10);
 
-        // Replace the old file name with the new one
-        $fileName = $newFileName . '.' . $fileExtension;
+        // // Replace the old file name with the new one
+        // $fileName = $newFileName . '.' . $fileExtension;
 
-        echo "Original filename: $fileName\n";
-        echo "New random filename: $newFileName\n";
+        // echo "Original filename: $fileName\n";
+        // echo "New random filename: $newFileName\n";
 
-        exit;
+        // exit;
         $upgradeRepo = $this->repository('XF:UserUpgrade');
         list($available, $purchased) = $upgradeRepo->getFilteredUserUpgradesForList();
 
