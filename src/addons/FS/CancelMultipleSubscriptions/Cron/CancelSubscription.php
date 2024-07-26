@@ -20,4 +20,12 @@ class CancelSubscription
 
         $app->jobManager()->enqueueUnique($jobID, 'FS\CancelMultipleSubscriptions:CancelMultipleSubscription', [], false);
     }
+
+    public static function removeTempUsergroups()
+    {
+        $app = \XF::app();
+        $jobID = 'subscriptions_remove_usergroups_' . time();
+
+        $app->jobManager()->enqueueUnique($jobID, 'FS\CancelMultipleSubscriptions:RemoveUsergroups', [], false);
+    }
 }

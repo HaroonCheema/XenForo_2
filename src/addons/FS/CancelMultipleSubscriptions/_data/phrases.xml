@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="cron_entry.fsCancelMultiSubscription" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Cancel Stripe Subscriptions (Multiples)]]></phrase>
+  <phrase title="cron_entry.fsSubscriptionRemoveGroup" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Stripe Subscriptions (Unsigned Usergroup)]]></phrase>
+  <phrase title="cron_entry.fs_cancel_subscriptions" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Cancel Stripe Subscriptions (Unpaid)]]></phrase>
+  <phrase title="option.fs_cancel_multiple_subscriptions_mintues" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[User group timeout]]></phrase>
+  <phrase title="option.fs_cancel_multiple_subscriptions_userGroup" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Select user group]]></phrase>
+  <phrase title="option_explain.fs_cancel_multiple_subscriptions_mintues" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_explain.fs_cancel_multiple_subscriptions_userGroup" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_group.fs_cancel_multiple_subscriptions" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Cancel Multiple Subscriptions]]></phrase>
+  <phrase title="option_group_description.fs_cancel_multiple_subscriptions" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+</phrases>

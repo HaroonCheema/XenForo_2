@@ -31,6 +31,7 @@ return array (
   'cron_entry.fsAutoForumManager' => '[FS] Auto Forum Manager',
   'cron_entry.fsCancelMultiSubscription' => '[FS] Cancel Stripe Subscriptions (Multiples)',
   'cron_entry.fsHideUsernames' => '[FS] Hide Usernames',
+  'cron_entry.fsSubscriptionRemoveGroup' => '[FS] Stripe Subscriptions (Unsigned Usergroup)',
   'cron_entry.fsUsergroupUsersCount' => '[FS] Usergroup Users Count',
   'cron_entry.fs_cancel_subscriptions' => '[FS] Cancel Stripe Subscriptions (Unpaid)',
   'cron_entry.fs_resetDailyDiscussLimit' => 'Reset Daily Discussion Post Limit',

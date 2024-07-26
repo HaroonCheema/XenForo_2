@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class_extensions>
+  <extension from_class="XF\Entity\PurchaseRequest" to_class="FS\CancelMultipleSubscriptions\XF\Entity\PurchaseRequest" execute_order="10" active="1"/>
+  <extension from_class="XF\Payment\Stripe" to_class="FS\CancelMultipleSubscriptions\XF\Payment\Stripe" execute_order="10" active="1"/>
+  <extension from_class="XF\Pub\Controller\Purchase" to_class="FS\CancelMultipleSubscriptions\XF\Pub\Controller\Purchase" execute_order="10" active="1"/>
+</class_extensions>

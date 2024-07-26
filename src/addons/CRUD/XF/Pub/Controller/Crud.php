@@ -785,6 +785,35 @@ class Crud extends AbstractController
 
     public function actionIndex(ParameterBag $params)
     {
+        $visitor = \XF::visitor();
+
+        $secondaryGroupIds = $visitor['secondary_group_ids'];
+        $removeGroup = 10;
+
+        // $tempGroup = $this->em()->create('FS\CancelMultipleSubscriptions:SubscriptionUserGroups');
+
+        // $tempGroup->user_id = $visitor['user_id'];
+        // $tempGroup->user_group_id = 10;
+        // $tempGroup->end_at = time() + (30 * 60);
+        // $tempGroup->save();
+
+        // $newVal = 10;
+
+        // array_push($secondaryGroupIds, $newVal);
+
+
+        // $secondaryGroupIds = array_diff($secondaryGroupIds, [$removeGroup]);
+
+        // Re-index the array if necessary
+        // $secondaryGroupIds = array_values($secondaryGroupIds);
+
+        // $visitor->fastUpdate('secondary_group_ids', $secondaryGroupIds);
+
+
+        echo "<pre>";
+        var_dump($secondaryGroupIds);
+        exit;
+
         // $providerId = "stripe";
 
         // $finder = \XF::finder('XF:PaymentProfile');

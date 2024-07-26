@@ -2,6 +2,9 @@
     "fsCancelMultiSubscription.json": {
         "hash": "2bd63e2becf53e5e99c093d55327d820"
     },
+    "fsSubscriptionRemoveGroup.json": {
+        "hash": "5383a2ca851a3b63edd5eadf0cfbf2de"
+    },
     "fs_cancel_subscriptions.json": {
         "hash": "ff49071e4fc34829e9ab6e9d618b7652"
     }
