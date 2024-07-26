@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <cron>
-  <entry entry_id="fsCancelMultiSubscription" cron_class="FS\CancelMultipleSubscriptions\Cron\CancelSubscription" cron_method="cancelSupscriptionMultiples" active="1"><![CDATA[{"day_type":"dom","dom":[-1],"hours":[0],"minutes":[0]}]]></entry>
+  <entry entry_id="fsCancelMultiSubscription" cron_class="FS\CancelMultipleSubscriptions\Cron\CancelSubscription" cron_method="cancelSupscriptionMultiples" active="1"><![CDATA[{"day_type":"dom","dom":[-1],"hours":[-1],"minutes":[0]}]]></entry>
   <entry entry_id="fsSubscriptionRemoveGroup" cron_class="FS\CancelMultipleSubscriptions\Cron\CancelSubscription" cron_method="removeTempUsergroups" active="1"><![CDATA[{"day_type":"dom","dom":[-1],"hours":[-1],"minutes":[-1]}]]></entry>
-  <entry entry_id="fs_cancel_subscriptions" cron_class="FS\CancelMultipleSubscriptions\Cron\CancelSubscription" cron_method="cancelSupscriptionUnPaid" active="1"><![CDATA[{"day_type":"dom","dom":[-1],"hours":[0],"minutes":[0]}]]></entry>
+  <entry entry_id="fs_cancel_subscriptions" cron_class="FS\CancelMultipleSubscriptions\Cron\CancelSubscription" cron_method="cancelSupscriptionUnPaid" active="1"><![CDATA[{"day_type":"dom","dom":[-1],"hours":[-1],"minutes":[0]}]]></entry>
 </cron>

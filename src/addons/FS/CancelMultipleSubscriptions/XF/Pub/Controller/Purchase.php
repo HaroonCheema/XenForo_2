@@ -20,12 +20,17 @@ class Purchase extends XFCP_Purchase
         if ($providerId == "stripe" && $purchasableTypeId == "user_upgrade" && $visitor['user_id'] && $userGroupId) {
             $minutes = intval($options->fs_cancel_multiple_subscriptions_mintues);
 
-            $tempGroup = $this->em()->create('FS\CancelMultipleSubscriptions:SubscriptionUserGroups');
+            $finder = \XF::finder('FS\CancelMultipleSubscriptions:SubscriptionUserGroups')->where('user_id', $visitor['user_id'])->where('user_group_id', $userGroupId)->where('end_at', '>', time())->fetchOne();
 
-            $tempGroup->user_id = $visitor['user_id'];
-            $tempGroup->user_group_id = $userGroupId;
-            $tempGroup->end_at = time() + ($minutes * 60);
-            $tempGroup->save();
+            if (!$finder) {
+                $tempGroup = $this->em()->create('FS\CancelMultipleSubscriptions:SubscriptionUserGroups');
+
+                $tempGroup->user_id = $visitor['user_id'];
+                $tempGroup->user_group_id = $userGroupId;
+                $tempGroup->end_at = time() + ($minutes * 60);
+                $tempGroup->save();
+            }
+
 
             if (!in_array($userGroupId, $visitor['secondary_group_ids'])) {
                 $secondaryGroupIds = $visitor['secondary_group_ids'];

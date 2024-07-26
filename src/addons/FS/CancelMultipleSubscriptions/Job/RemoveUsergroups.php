@@ -35,6 +35,8 @@ class RemoveUsergroups extends AbstractJob
                 }
             }
         }
+
+        return $this->complete();
     }
 
     public function getStatusMessage()
