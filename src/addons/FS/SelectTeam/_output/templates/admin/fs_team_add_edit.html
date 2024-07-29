@@ -1,0 +1,31 @@
+<xf:title>
+	<xf:if is="$data.id"> {{phrase('fs_team_edit_record') }} : {$data.title} <xf:breadcrumb href="#">{{
+		phrase('fs_team_edit_record') }}</xf:breadcrumb> <xf:else />{{
+		phrase('fs_team_new_record') }}
+		<xf:breadcrumb href="#">{{phrase('fs_team_new_record') }}</xf:breadcrumb> </xf:if>
+</xf:title>
+<xf:form
+		 action="{{ link('team/save', $data) }}"
+		 ajax="true"
+		 class="block"
+		 data-force-flash-message="true"
+		 >
+	<div class="block-container">
+		<div class="block-body">
+			<xf:textboxrow
+						   name="title"
+						   value="{$data.title}"
+						   label="{{phrase('fs_team_title') }}"
+						   hint="{{phrase('required')}}"
+						   autosize="true"
+						   required="required"
+						   row="5"
+						   />
+
+			<xf:uploadrow name="image" accept=".jpeg,.jpg,.jpe,.png"
+						  label="{{ phrase('fs_team_image') }}" hint="{{phrase('required')}}" required="required"
+						  explain="{{ phrase('fs_team_image_placeholder') }}" />
+		</div>
+		<xf:submitrow submit="" icon="save" />
+	</div>
+</xf:form>

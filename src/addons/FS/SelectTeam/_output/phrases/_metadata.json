@@ -1,0 +1,56 @@
+{
+    "admin_navigation.fsSelectTeam.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "ec211f7c20af43e742bf2570c3cb84f9"
+    },
+    "admin_navigation.fs_select_team.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "1e04d5f0e03787f4afdf99aafba1dd2e"
+    },
+    "fs_team.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "1e04d5f0e03787f4afdf99aafba1dd2e"
+    },
+    "fs_team_add_btn.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "6d984493e0eee7db19a090afdd85d18f"
+    },
+    "fs_team_edit_record.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "02c3d88c68288350ace8cb58a6fc3a9b"
+    },
+    "fs_team_image.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "be53a0541a6d36f6ecb879fa2c584b08"
+    },
+    "fs_team_image_placeholder.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "9bf9f478f0d1662110f6e8d982a9e9dc"
+    },
+    "fs_team_new_record.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "6d984493e0eee7db19a090afdd85d18f"
+    },
+    "fs_team_title.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "b78a3223503896721cca1303f776159b"
+    }
+}
