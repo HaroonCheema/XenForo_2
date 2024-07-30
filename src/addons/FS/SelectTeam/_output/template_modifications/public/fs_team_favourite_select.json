@@ -1,0 +1,9 @@
+{
+    "template": "account_visitor_menu",
+    "description": "Select your favourite team from here",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<li><a href=\"{{ link('account/ignored') }}\" class=\"menu-linkRow\">{{ phrase('ignoring') }}</a></li>",
+    "replace": "$0\n<li><a href=\"{{ link('team/') }}\" class=\"menu-linkRow\" data-xf-click=\"overlay\">{{ phrase('fs_select_your_favourite_team') }}</a></li>"
+}

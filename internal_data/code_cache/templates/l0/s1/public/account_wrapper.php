@@ -65,6 +65,10 @@ return array(
 				<a class="blockLink ' . (($__vars['pageSelected'] == 'privacy') ? 'is-selected' : '') . '" href="' . $__templater->func('link', array('account/privacy', ), true) . '">
 					' . 'Privacy' . '
 				</a>
+<a class="blockLink ' . (($__vars['pageSelected'] == 'team/') ? 'is-selected' : '') . '" href="' . $__templater->func('link', array('team/', ), true) . '">
+					' . 'Favourite Team' . '
+</a>
+
 <a class="blockLink ' . (($__vars['pageSelected'] == 'escrow/deposit') ? 'is-selected' : '') . '" href="' . $__templater->func('link', array('escrow/deposit', ), true) . '">
 					' . 'Deposit' . '
 </a>

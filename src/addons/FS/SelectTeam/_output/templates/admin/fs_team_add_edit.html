@@ -23,8 +23,14 @@
 						   />
 
 			<xf:uploadrow name="image" accept=".jpeg,.jpg,.jpe,.png"
-						  label="{{ phrase('fs_team_image') }}" hint="{{phrase('required')}}" required="required"
+						  label="{{ phrase('fs_team_image') }}" hint="{{$data.id ? '' : phrase('required')}}" required="{{$data.id ? '' : 'required'}}"
 						  explain="{{ phrase('fs_team_image_placeholder') }}" />
+
+			<xf:if is="{$data.getImgUrl()} && $data.id">
+				<xf:formrow label="{{ phrase('fs_select_team_image') }}">
+					<img src="{{ base_url($data.getImgUrl()) }}" />
+				</xf:formrow>
+			</xf:if>
 		</div>
 		<xf:submitrow submit="" icon="save" />
 	</div>

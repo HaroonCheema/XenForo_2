@@ -1,0 +1,14 @@
+{
+    "public/add_favourite_team_in_account_wrapper.json": {
+        "hash": "1d434f6b41becd596a095bf88ba62281"
+    },
+    "public/fs_team_favourite_select.json": {
+        "hash": "df57e9d4a84219aa5ec0f4208afc7012"
+    },
+    "public/fs_team_image_on_mobile.json": {
+        "hash": "96ace1fa28dcfbeb319892224fd32214"
+    },
+    "public/fs_team_select_add_images.json": {
+        "hash": "5a15a4a785025fb25835a368189e26db"
+    }
+}

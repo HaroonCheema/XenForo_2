@@ -70,7 +70,7 @@ class Team extends AbstractController
 
     protected function dataSaveProcess(\FS\SelectTeam\Entity\Team $data)
     {
-        $input = $this->filterInputs();
+        $input = $this->filterInputs($data);
 
         $form = $this->formAction();
         $form->basicEntitySave($data, $input);
@@ -95,7 +95,7 @@ class Team extends AbstractController
         }
     }
 
-    protected function filterInputs()
+    protected function filterInputs($data)
     {
         $input = $this->filter([
             'title' => 'str',
@@ -105,7 +105,30 @@ class Team extends AbstractController
             throw $this->exception($this->error(\XF::phraseDeferred('please_complete_required_fields')));
         }
 
+        if (empty($data)) {
+            $uploads['image'] = $this->request->getFile('image', false, false);
+
+            if (empty($uploads['image'])) {
+                throw $this->exception($this->error(\XF::phraseDeferred('please_complete_required_fields')));
+            }
+        }
+
         return $input;
+    }
+
+    public function actionDelete1(ParameterBag $params)
+    {
+        $replyExists = $this->assertDataExists($params->id);
+
+        /** @var \XF\ControllerPlugin\Delete $plugin */
+        $plugin = $this->plugin('XF:Delete');
+        return $plugin->actionDelete(
+            $replyExists,
+            $this->buildLink('team/delete', $replyExists),
+            null,
+            $this->buildLink('team'),
+            "{$replyExists->title}"
+        );
     }
 
     public function actionDelete(ParameterBag $params)
@@ -114,6 +137,21 @@ class Team extends AbstractController
 
         /** @var \XF\ControllerPlugin\Delete $plugin */
         $plugin = $this->plugin('XF:Delete');
+
+        if ($this->isPost()) {
+            $fs = $this->app()->fs();
+
+            $replyExists->delete();
+
+            $ImgPath = $replyExists->getAbstractedCustomImgPath();
+
+            if ($fs->has($ImgPath)) {
+                $fs->delete($ImgPath);
+            }
+
+            return $this->redirect($this->buildLink('team'));
+        }
+
         return $plugin->actionDelete(
             $replyExists,
             $this->buildLink('team/delete', $replyExists),

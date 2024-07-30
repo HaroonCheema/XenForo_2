@@ -1,0 +1,1 @@
+You can select your {count_teams} favourite teams.

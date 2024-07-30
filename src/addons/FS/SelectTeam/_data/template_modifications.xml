@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="account_visitor_menu" modification_key="fs_team_favourite_select" description="Select your favourite team from here" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<li><a href="{{ link('account/ignored') }}" class="menu-linkRow">{{ phrase('ignoring') }}</a></li>]]></find>
+    <replace><![CDATA[$0
+<li><a href="{{ link('team/') }}" class="menu-linkRow" data-xf-click="overlay">{{ phrase('fs_select_your_favourite_team') }}</a></li>]]></replace>
+  </modification>
+  <modification type="public" template="account_wrapper" modification_key="add_favourite_team_in_account_wrapper" description="add_favourite_team_in_account_wrapper" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<a class="blockLink {{ \$pageSelected == 'privacy' \? 'is-selected' : '' }}" href="{{ link\('account\/privacy'\) }}">.*?<\/a>/is]]></find>
+    <replace><![CDATA[$0
+<a class="blockLink {{ \$pageSelected == 'team/' ? 'is-selected' : '' }}" href="{{ link('team/') }}">
+					{{ phrase('fs_select_your_favourite_team') }}
+</a>
+]]></replace>
+  </modification>
+  <modification type="public" template="message_macros" modification_key="fs_team_image_on_mobile" description="fs_team_image_on_mobile" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:set var="$extras" value="{{ property('messageUserElements') }}" />]]></find>
+    <replace><![CDATA[<xf:if is="count($user.team_ids)">
+	<xf:foreach loop="$user.team_ids" value="$id">
+		<xf:set var="$urlImg" value="{{ $user.getImageUrl($id) }}" />
+		<xf:if is="$urlImg">
+			<img src="{{ base_url($urlImg) }}" alt="Batch Image" class="bbImage fsTeamImageMob" loading="lazy" style="width: {$xf.options.fs_team_mobile_dimensions.width}px; height: {$xf.options.fs_team_mobile_dimensions.height}px;" />
+		</xf:if>
+	</xf:foreach>
+</xf:if>
+
+<style>
+	@media (min-width: 650px) {
+		.fsTeamImageMob {
+			display: none;
+		}
+	}
+</style>
+
+$0]]></replace>
+  </modification>
+  <modification type="public" template="post_macros" modification_key="fs_team_select_add_images" description="fs_team_select_add_images" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:macro template="message_macros" name="user_info" arg-user="{$post.User}"
+							arg-fallbackName="{$post.username}"/>]]></find>
+    <replace><![CDATA[$0
+
+<xf:if is="count($post.User.team_ids)">
+	<xf:foreach loop="$post.User.team_ids" value="$id">
+		<xf:set var="$urlImg" value="{{ $post.User.getImageUrl($id) }}" />
+		<xf:if is="$urlImg">
+			<img src="{{ base_url($urlImg) }}" alt="Batch Image" class="bbImage fsTeamImage" loading="lazy" />
+		</xf:if>
+	</xf:foreach>
+</xf:if>
+
+<style>
+	@media (max-width: 650px) {
+		.fsTeamImage {
+			display: none;
+		}
+	}
+</style>]]></replace>
+  </modification>
+</template_modifications>

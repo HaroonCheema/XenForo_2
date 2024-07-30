@@ -47,6 +47,39 @@ return array(
 	if ($__vars['user']['user_id']) {
 		$__finalCompiled .= '
 			';
+		if ($__templater->func('count', array($__vars['user']['team_ids'], ), false)) {
+			$__finalCompiled .= '
+	';
+			if ($__templater->isTraversable($__vars['user']['team_ids'])) {
+				foreach ($__vars['user']['team_ids'] AS $__vars['id']) {
+					$__finalCompiled .= '
+		';
+					$__vars['urlImg'] = $__templater->method($__vars['user'], 'getImageUrl', array($__vars['id'], ));
+					$__finalCompiled .= '
+		';
+					if ($__vars['urlImg']) {
+						$__finalCompiled .= '
+			<img src="' . $__templater->func('base_url', array($__vars['urlImg'], ), true) . '" alt="Batch Image" class="bbImage fsTeamImageMob" loading="lazy" style="width: ' . $__templater->escape($__vars['xf']['options']['fs_team_mobile_dimensions']['width']) . 'px; height: ' . $__templater->escape($__vars['xf']['options']['fs_team_mobile_dimensions']['height']) . 'px;" />
+		';
+					}
+					$__finalCompiled .= '
+	';
+				}
+			}
+			$__finalCompiled .= '
+';
+		}
+		$__finalCompiled .= '
+
+<style>
+	@media (min-width: 650px) {
+		.fsTeamImageMob {
+			display: none;
+		}
+	}
+</style>
+
+';
 		$__vars['extras'] = $__templater->func('property', array('messageUserElements', ), false);
 		$__finalCompiled .= '
 			';

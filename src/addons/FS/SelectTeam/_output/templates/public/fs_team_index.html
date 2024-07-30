@@ -1,0 +1,27 @@
+<xf:title> {{ phrase('fs_select_your_favourite_team') }} </xf:title>
+
+<xf:wrap template="account_wrapper" />
+
+<xf:form
+		 action="{{ link('team/save') }}"
+		 ajax="true"
+		 class="block"
+		 data-force-flash-message="true"
+		 >
+	<div class="block-container">
+		<div class="block-body">
+			<xf:formrow rowtype="input" hint="{{ phrase('required')}}"
+						label="{{ phrase('fs_teams_title') }}" explain="{{ phrase('fs_teams_title_placeholder', {'count_teams': $xf.options.fs_teams_total}) }}">
+
+				<ul class="inputList">
+					<li><xf:select name="team_ids[]" size="7" multiple="multiple" value="{$xf.visitor.team_ids|default([0])}" required="required">
+						<xf:foreach loop="$data" value="$val">
+							<xf:option value="{$val.id}">{$val.title}</xf:option>
+						</xf:foreach>
+						</xf:select></li>
+				</ul>
+			</xf:formrow>
+		</div>
+		<xf:submitrow submit="" icon="save" />
+	</div>
+</xf:form>

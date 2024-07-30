@@ -26,6 +26,79 @@ return array(
 		'user' => $__vars['post']['User'],
 		'fallbackName' => $__vars['post']['username'],
 	), $__vars) . '
+
+';
+	if (!$__templater->test($__templater->method($__vars['thread'], 'getBatchLists', array()), 'empty', array())) {
+		$__finalCompiled .= '
+	';
+		$__compilerTemp1 = $__templater->method($__vars['thread'], 'getBatchLists', array());
+		if ($__templater->isTraversable($__compilerTemp1)) {
+			foreach ($__compilerTemp1 AS $__vars['batch']) {
+				$__finalCompiled .= '
+		';
+				if ($__vars['thread']['UserPost']['post_count'] >= $__vars['batch']['mini_post']) {
+					$__finalCompiled .= '
+			';
+					if ($__templater->method($__vars['thread'], 'getBatchDetails', array($__vars['batch'], ))) {
+						$__finalCompiled .= '
+				<br/>
+				';
+						$__compilerTemp2 = $__templater->method($__vars['thread'], 'getBatchDetails', array($__vars['batch'], ));
+						if ($__templater->isTraversable($__compilerTemp2)) {
+							foreach ($__compilerTemp2 AS $__vars['i']) {
+								$__finalCompiled .= '
+					<img src="' . $__templater->func('base_url', array($__vars['batch']['img_path'], true, ), true) . '" alt="Batch Image" class="bbImage" loading="lazy" />
+				';
+							}
+						}
+						$__finalCompiled .= '
+			';
+					}
+					$__finalCompiled .= '
+		';
+				}
+				$__finalCompiled .= '
+
+	';
+			}
+		}
+		$__finalCompiled .= '
+';
+	}
+	$__finalCompiled .= '
+
+';
+	if ($__templater->func('count', array($__vars['post']['User']['team_ids'], ), false)) {
+		$__finalCompiled .= '
+	';
+		if ($__templater->isTraversable($__vars['post']['User']['team_ids'])) {
+			foreach ($__vars['post']['User']['team_ids'] AS $__vars['id']) {
+				$__finalCompiled .= '
+		';
+				$__vars['urlImg'] = $__templater->method($__vars['post']['User'], 'getImageUrl', array($__vars['id'], ));
+				$__finalCompiled .= '
+		';
+				if ($__vars['urlImg']) {
+					$__finalCompiled .= '
+			<img src="' . $__templater->func('base_url', array($__vars['urlImg'], ), true) . '" alt="Batch Image" class="bbImage fsTeamImage" loading="lazy" />
+		';
+				}
+				$__finalCompiled .= '
+	';
+			}
+		}
+		$__finalCompiled .= '
+';
+	}
+	$__finalCompiled .= '
+
+<style>
+	@media (max-width: 650px) {
+		.fsTeamImage {
+			display: none;
+		}
+	}
+</style>
 					</div>
 				';
 	return $__finalCompiled;

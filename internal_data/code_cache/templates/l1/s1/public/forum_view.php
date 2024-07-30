@@ -517,6 +517,20 @@ return array(
 				';
 	if (strlen(trim($__compilerTemp2)) > 0) {
 		$__compilerTemp1 .= '
+
+';
+		if ($__templater->func('in_array', array($__vars['forum']['node_id'], $__vars['xf']['options']['fs_forums'], ), false)) {
+			$__compilerTemp1 .= '
+    <div class="blockMessage ' . $__templater->escape($__vars['xf']['options']['fs_color']) . ' ';
+			if ($__vars['xf']['options']['fs_show_icon'] == 1) {
+				$__compilerTemp1 .= 'blockMessage--iconic';
+			}
+			$__compilerTemp1 .= '">
+        ' . $__templater->filter($__vars['xf']['options']['fs_thread_rules'], array(array('raw', array()),), true) . '
+    </div>
+';
+		}
+		$__compilerTemp1 .= '
 			<div class="block-outer-opposite">
 				<div class="buttonGroup">
 				' . $__compilerTemp2 . '

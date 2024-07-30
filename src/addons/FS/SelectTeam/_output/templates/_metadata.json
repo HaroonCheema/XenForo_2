@@ -2,11 +2,16 @@
     "admin/fs_team_add_edit.html": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
-        "hash": "cc51b1123f7cd3ce4dcffa95e390ebe3"
+        "hash": "53c74cf5f6dec3d83f77cba0f3a146db"
     },
     "admin/fs_team_index.html": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
         "hash": "048358d2e88801aa0e686c5df0046363"
+    },
+    "public/fs_team_index.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "b943cb5d4646a6c2c1fb9779cb4d4dcd"
     }
 }

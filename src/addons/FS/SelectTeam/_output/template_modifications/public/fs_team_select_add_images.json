@@ -1,0 +1,9 @@
+{
+    "template": "post_macros",
+    "description": "fs_team_select_add_images",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:macro template=\"message_macros\" name=\"user_info\" arg-user=\"{$post.User}\"\n\t\t\t\t\t\t\targ-fallbackName=\"{$post.username}\"/>",
+    "replace": "$0\n\n<xf:if is=\"count($post.User.team_ids)\">\n\t<xf:foreach loop=\"$post.User.team_ids\" value=\"$id\">\n\t\t<xf:set var=\"$urlImg\" value=\"{{ $post.User.getImageUrl($id) }}\" />\n\t\t<xf:if is=\"$urlImg\">\n\t\t\t<img src=\"{{ base_url($urlImg) }}\" alt=\"Batch Image\" class=\"bbImage fsTeamImage\" loading=\"lazy\" />\n\t\t</xf:if>\n\t</xf:foreach>\n</xf:if>\n\n<style>\n\t@media (max-width: 650px) {\n\t\t.fsTeamImage {\n\t\t\tdisplay: none;\n\t\t}\n\t}\n</style>"
+}

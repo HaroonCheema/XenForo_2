@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: cc51b1123f7cd3ce4dcffa95e390ebe3
+// FROM HASH: 53c74cf5f6dec3d83f77cba0f3a146db
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -21,7 +21,18 @@ return array(
 	' . $__compilerTemp1 . '
 ');
 	$__finalCompiled .= '
-' . $__templater->form('
+';
+	$__compilerTemp2 = '';
+	if ($__templater->method($__vars['data'], 'getImgUrl', array()) AND $__vars['data']['id']) {
+		$__compilerTemp2 .= '
+				' . $__templater->formRow('
+					<img src="' . $__templater->func('base_url', array($__templater->method($__vars['data'], 'getImgUrl', array()), ), true) . '" />
+				', array(
+			'label' => 'Team Icon',
+		)) . '
+			';
+	}
+	$__finalCompiled .= $__templater->form('
 	<div class="block-container">
 		<div class="block-body">
 			' . $__templater->formTextBoxRow(array(
@@ -38,12 +49,14 @@ return array(
 			' . $__templater->formUploadRow(array(
 		'name' => 'image',
 		'accept' => '.jpeg,.jpg,.jpe,.png',
-		'required' => 'required',
+		'required' => ($__vars['data']['id'] ? '' : 'required'),
 	), array(
-		'label' => 'Image',
-		'hint' => 'Required',
-		'explain' => 'Add image here...!',
+		'label' => 'Icon',
+		'hint' => ($__vars['data']['id'] ? '' : 'Required'),
+		'explain' => 'Add icon here...!',
 	)) . '
+
+			' . $__compilerTemp2 . '
 		</div>
 		' . $__templater->formSubmitRow(array(
 		'submit' => '',

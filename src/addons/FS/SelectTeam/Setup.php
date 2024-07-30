@@ -27,6 +27,10 @@ class Setup extends AbstractSetup
 		foreach ($this->getTables() as $tableName => $callback) {
 			$sm->createTable($tableName, $callback);
 		}
+
+		$this->alterTable('xf_user', function (\XF\Db\Schema\Alter $table) {
+			$table->addColumn('team_ids', 'varbinary', 255);
+		});
 	}
 
 	// ############################### UNINSTALL ###########################
@@ -38,6 +42,10 @@ class Setup extends AbstractSetup
 		foreach (array_keys($this->getTables()) as $tableName) {
 			$sm->dropTable($tableName);
 		}
+
+		$this->schemaManager()->alterTable('xf_user', function (\XF\Db\Schema\Alter $table) {
+			$table->dropColumns(['team_ids']);
+		});
 	}
 
 	protected function getTables()

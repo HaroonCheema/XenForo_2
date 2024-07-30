@@ -1,0 +1,9 @@
+{
+    "template": "message_macros",
+    "description": "Add postbit information",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:if is=\"$extras.custom_fields\">",
+    "replace": "<xf:include template=\"dbtech_credits_postbit\" />\n\t$0"
+}

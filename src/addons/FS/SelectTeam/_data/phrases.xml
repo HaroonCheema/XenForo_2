@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="admin_navigation.fsSelectTeam" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add]]></phrase>
+  <phrase title="admin_navigation.fs_select_team" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Create Team]]></phrase>
+  <phrase title="fs_select_team_image" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Team Icon]]></phrase>
+  <phrase title="fs_select_your_favourite_team" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Favourite Team]]></phrase>
+  <phrase title="fs_team" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Create Team]]></phrase>
+  <phrase title="fs_team_add_btn" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add Team]]></phrase>
+  <phrase title="fs_team_edit_record" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Edit Team]]></phrase>
+  <phrase title="fs_team_image" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Icon]]></phrase>
+  <phrase title="fs_team_image_placeholder" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add icon here...!]]></phrase>
+  <phrase title="fs_team_new_record" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add Team]]></phrase>
+  <phrase title="fs_team_title" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Title]]></phrase>
+  <phrase title="fs_teams_title" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Teams]]></phrase>
+  <phrase title="fs_teams_title_placeholder" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You can select your {count_teams} favourite teams.]]></phrase>
+  <phrase title="fs_teams_you_can_select" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You can only select maximum '{count_teams}' teams.]]></phrase>
+  <phrase title="option.fs_team_mobile_dimensions" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Team icon dimensions]]></phrase>
+  <phrase title="option.fs_teams_total" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Team Allowed]]></phrase>
+  <phrase title="option_explain.fs_team_mobile_dimensions" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_explain.fs_teams_total" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Total number of teams user can select...!]]></phrase>
+  <phrase title="option_group.fs_team_select" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Select Your Teams]]></phrase>
+  <phrase title="option_group_description.fs_team_select" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+</phrases>

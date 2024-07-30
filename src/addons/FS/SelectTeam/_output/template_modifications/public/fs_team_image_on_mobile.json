@@ -1,0 +1,9 @@
+{
+    "template": "message_macros",
+    "description": "fs_team_image_on_mobile",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:set var=\"$extras\" value=\"{{ property('messageUserElements') }}\" />",
+    "replace": "<xf:if is=\"count($user.team_ids)\">\n\t<xf:foreach loop=\"$user.team_ids\" value=\"$id\">\n\t\t<xf:set var=\"$urlImg\" value=\"{{ $user.getImageUrl($id) }}\" />\n\t\t<xf:if is=\"$urlImg\">\n\t\t\t<img src=\"{{ base_url($urlImg) }}\" alt=\"Batch Image\" class=\"bbImage fsTeamImageMob\" loading=\"lazy\" style=\"width: {$xf.options.fs_team_mobile_dimensions.width}px; height: {$xf.options.fs_team_mobile_dimensions.height}px;\" />\n\t\t</xf:if>\n\t</xf:foreach>\n</xf:if>\n\n<style>\n\t@media (min-width: 650px) {\n\t\t.fsTeamImageMob {\n\t\t\tdisplay: none;\n\t\t}\n\t}\n</style>\n\n$0"
+}

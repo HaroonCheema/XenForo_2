@@ -1,0 +1,9 @@
+{
+    "template": "account_wrapper",
+    "description": "add_favourite_team_in_account_wrapper",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/<a class=\"blockLink {{ \\$pageSelected == 'privacy' \\? 'is-selected' : '' }}\" href=\"{{ link\\('account\\/privacy'\\) }}\">.*?<\\/a>/is",
+    "replace": "$0\n<a class=\"blockLink {{ \\$pageSelected == 'team/' ? 'is-selected' : '' }}\" href=\"{{ link('team/') }}\">\n\t\t\t\t\t{{ phrase('fs_select_your_favourite_team') }}\n</a>\n"
+}
