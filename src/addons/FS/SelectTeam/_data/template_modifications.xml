@@ -40,20 +40,35 @@ $0]]></replace>
     <replace><![CDATA[$0
 
 <xf:if is="count($post.User.team_ids)">
-	<xf:foreach loop="$post.User.team_ids" value="$id">
-		<xf:set var="$urlImg" value="{{ $post.User.getImageUrl($id) }}" />
-		<xf:if is="$urlImg">
-			<img src="{{ base_url($urlImg) }}" alt="Batch Image" class="bbImage fsTeamImage" loading="lazy" />
-		</xf:if>
-	</xf:foreach>
+	<div class="containerDesk">
+		<xf:foreach loop="$post.User.team_ids" value="$id">
+			<xf:set var="$urlImg" value="{{ $post.User.getImageUrl($id) }}" />
+			<xf:if is="$urlImg">
+				<div class="responsive-div">
+					<img src="{{ base_url($urlImg) }}" alt="Batch Image" class="bbImage fsTeamImage" loading="lazy" />
+				</div>
+			</xf:if>
+		</xf:foreach>
+	</div>
 </xf:if>
 
 <style>
+	.containerDesk {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+	.responsive-div {
+		flex: 1 1 30%; /* Flex item takes 30% of the container's width */
+		box-sizing: border-box;
+	}
+
 	@media (max-width: 650px) {
 		.fsTeamImage {
 			display: none;
 		}
 	}
+
 </style>]]></replace>
   </modification>
 </template_modifications>

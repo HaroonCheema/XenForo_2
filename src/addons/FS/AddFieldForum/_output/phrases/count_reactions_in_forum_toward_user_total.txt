@@ -1,0 +1,1 @@
+Count reactions posted in this forum toward user total

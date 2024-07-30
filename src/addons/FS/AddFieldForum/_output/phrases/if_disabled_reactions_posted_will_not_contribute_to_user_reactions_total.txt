@@ -1,0 +1,1 @@
+If disabled, reactions posted (directly) in this forum will not contribute towards the posting user's total reactions count. In addition, if this forum supports question threads, solutions will not contribute to a user's overall solution count

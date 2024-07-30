@@ -392,6 +392,13 @@ return array(
 		'_type' => 'option',
 	),
 	array(
+		'name' => 'count_reactions',
+		'selected' => $__vars['forum']['count_messages'],
+		'label' => 'Count reactions posted in this forum toward user total',
+		'hint' => 'If disabled, reactions posted (directly) in this forum will not contribute towards the posting user\'s total reactions count. In addition, if this forum supports question threads, solutions will not contribute to a user\'s overall solution count',
+		'_type' => 'option',
+	),
+	array(
 		'name' => 'find_new',
 		'selected' => $__vars['forum']['find_new'],
 		'label' => 'Include threads from this forum when users click "New posts"',

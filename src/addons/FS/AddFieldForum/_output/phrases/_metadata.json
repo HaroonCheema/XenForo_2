@@ -1,0 +1,14 @@
+{
+    "count_reactions_in_forum_toward_user_total.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "ba54a341514202868f51470130f89674"
+    },
+    "if_disabled_reactions_posted_will_not_contribute_to_user_reactions_total.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "5908a35806d64247de4a08cc438765b7"
+    }
+}

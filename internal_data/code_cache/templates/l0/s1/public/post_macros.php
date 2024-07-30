@@ -70,34 +70,49 @@ return array(
 ';
 	if ($__templater->func('count', array($__vars['post']['User']['team_ids'], ), false)) {
 		$__finalCompiled .= '
-	';
+	<div class="containerDesk">
+		';
 		if ($__templater->isTraversable($__vars['post']['User']['team_ids'])) {
 			foreach ($__vars['post']['User']['team_ids'] AS $__vars['id']) {
 				$__finalCompiled .= '
-		';
+			';
 				$__vars['urlImg'] = $__templater->method($__vars['post']['User'], 'getImageUrl', array($__vars['id'], ));
 				$__finalCompiled .= '
-		';
+			';
 				if ($__vars['urlImg']) {
 					$__finalCompiled .= '
-			<img src="' . $__templater->func('base_url', array($__vars['urlImg'], ), true) . '" alt="Batch Image" class="bbImage fsTeamImage" loading="lazy" />
-		';
+				<div class="responsive-div">
+					<img src="' . $__templater->func('base_url', array($__vars['urlImg'], ), true) . '" alt="Batch Image" class="bbImage fsTeamImage" loading="lazy" />
+				</div>
+			';
 				}
 				$__finalCompiled .= '
-	';
+		';
 			}
 		}
 		$__finalCompiled .= '
+	</div>
 ';
 	}
 	$__finalCompiled .= '
 
 <style>
+	.containerDesk {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+	.responsive-div {
+		flex: 1 1 30%; /* Flex item takes 30% of the container\'s width */
+		box-sizing: border-box;
+	}
+
 	@media (max-width: 650px) {
 		.fsTeamImage {
 			display: none;
 		}
 	}
+
 </style>
 					</div>
 				';
