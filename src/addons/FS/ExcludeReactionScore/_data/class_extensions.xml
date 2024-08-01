@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class_extensions>
+  <extension from_class="XF\Admin\Controller\Forum" to_class="FS\ExcludeReactionScore\XF\Admin\Controller\Forum" execute_order="10" active="1"/>
+  <extension from_class="XF\Entity\Forum" to_class="FS\ExcludeReactionScore\XF\Entity\Forum" execute_order="10" active="1"/>
+  <extension from_class="XF\Reaction\Post" to_class="FS\ExcludeReactionScore\XF\Reaction\Post" execute_order="10" active="1"/>
+</class_extensions>

@@ -393,9 +393,9 @@ return array(
 	),
 	array(
 		'name' => 'count_reactions',
-		'selected' => $__vars['forum']['count_messages'],
-		'label' => 'Count reactions posted in this forum toward user total',
-		'hint' => 'If disabled, reactions posted (directly) in this forum will not contribute towards the posting user\'s total reactions count. In addition, if this forum supports question threads, solutions will not contribute to a user\'s overall solution count',
+		'selected' => $__vars['forum']['count_reactions'],
+		'label' => 'Count reactions in this forum toward user\'s total reaction score',
+		'hint' => 'If disabled, reactions (directly) in this forum will not contribute towards the user\'s total Reaction score.',
 		'_type' => 'option',
 	),
 	array(

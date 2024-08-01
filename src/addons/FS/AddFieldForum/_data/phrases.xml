@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="count_reactions_in_forum_toward_user_total" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Count reactions posted in this forum toward user total]]></phrase>
+  <phrase title="if_disabled_reactions_posted_will_not_contribute_to_user_reactions_total" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[If disabled, reactions posted (directly) in this forum will not contribute towards the posting user's total reactions count. In addition, if this forum supports question threads, solutions will not contribute to a user's overall solution count]]></phrase>
+</phrases>

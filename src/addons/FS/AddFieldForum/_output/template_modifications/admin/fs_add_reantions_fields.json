@@ -5,5 +5,5 @@
     "enabled": true,
     "action": "str_replace",
     "find": "<xf:option name=\"count_messages\" selected=\"$forum.count_messages\"\n\t\t\t\t\tlabel=\"{{ phrase('count_messages_in_forum_toward_user_total') }}\"\n\t\t\t\t\thint=\"{{ phrase('if_disabled_messages_posted_will_not_contribute_to_user_message_total') }}\" />",
-    "replace": "$0\n\n<xf:option name=\"count_reactions\" selected=\"$forum.count_messages\"\n\t\t   label=\"{{ phrase('count_reactions_in_forum_toward_user_total') }}\"\n\t\t   hint=\"{{ phrase('if_disabled_reactions_posted_will_not_contribute_to_user_reactions_total') }}\" />"
+    "replace": "$0\n\n<xf:option name=\"count_reactions\" selected=\"$forum.count_reactions\"\n\t\t   label=\"{{ phrase('count_reactions_in_forum_toward_user_total') }}\"\n\t\t   hint=\"{{ phrase('if_disabled_reactions_posted_will_not_contribute_to_user_reactions_total') }}\" />"
 }

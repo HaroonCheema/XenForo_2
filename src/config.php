@@ -2,8 +2,10 @@
 
 $config['db']['host'] = 'localhost';
 $config['db']['port'] = '3306';
-$config['db']['username'] = 'root';
-$config['db']['password'] = 'Admin123';
+// $config['db']['username'] = 'root';
+$config['db']['username'] = 'admin';
+// $config['db']['password'] = 'Admin123';
+$config['db']['password'] = 'admin123';
 $config['db']['dbname'] = 'xenforo';
 $config['enableAddOnArchiveInstaller'] = true;
 
