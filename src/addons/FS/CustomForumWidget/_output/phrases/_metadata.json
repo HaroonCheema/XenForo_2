@@ -1,0 +1,62 @@
+{
+    "fs_custom_display_newest_thread.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "41705ada26b14720e42dfcd75e190ee6"
+    },
+    "fs_custom_display_order.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "662d335c75f953ef24fce08d319910c2"
+    },
+    "fs_custom_display_random_thread.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "bb4c90328ba11107df2be5b2f499af35"
+    },
+    "fs_custom_display_random_thread_explain.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d360bdd5386739c01d3995c63ed33152"
+    },
+    "option.fsCustomThreadFieldIds.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "25ea97ca0f840f1d0dc20fdcd2e7a878"
+    },
+    "option_explain.fsCustomThreadFieldIds.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "993808fe78029fbcdb0a13e378dc06af"
+    },
+    "option_group.fs_custom_forum_widget.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "500af9c7ce0c6f83b73502e667ddbd67"
+    },
+    "option_group_description.fs_custom_forum_widget.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "widget_def.custom_forum_widget.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "500af9c7ce0c6f83b73502e667ddbd67"
+    },
+    "widget_def_desc.custom_forum_widget.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "500af9c7ce0c6f83b73502e667ddbd67"
+    }
+}

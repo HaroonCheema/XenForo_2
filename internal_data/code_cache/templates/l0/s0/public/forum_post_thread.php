@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 7aed49b4d5fa7e7100d5dcd00267c96a
+// FROM HASH: 9029f525cf3d0fdf36a0484fbadd063c
 return array(
 'macros' => array('type_chooser' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -250,6 +250,8 @@ return array(
 	$__compilerTemp5 = '';
 	$__compilerTemp6 = '';
 	$__compilerTemp6 .= '
+						
+						' . $__templater->func('dump', array($__vars['inlineMode'], ), true) . '
 						' . $__templater->callMacro('custom_fields_macros', 'custom_fields_edit', array(
 		'type' => 'threads',
 		'set' => $__vars['thread']['custom_fields'],

@@ -1,0 +1,33 @@
+<hr class="formRowSep" />
+
+<xf:numberboxrow name="options[limit]" value="{$options.limit}" min="1"
+				 label="{{ phrase('maximum_entries') }}" />
+
+<xf:numberboxrow name="options[dateLimit]" 
+				 value="{$options.dateLimit}"
+				 label="{{ phrase('date_limit') }}"
+				 explain="{{ phrase('nfGiftUpgrades_limit_explain') }}"
+				 units="{{ phrase('units_days') }}"
+				 min="0" />
+
+<xf:radiorow name="options[order]" value="{{ $options.order ?: 'newest' }}"
+			 label="{{ phrase('fs_custom_display_order') }}">
+
+	<xf:option value="newest"
+			   label="{{ phrase('fs_custom_display_newest_thread') }}" />
+	<xf:option value="random"
+			   label="{{ phrase('fs_custom_display_random_thread') }}"
+			   hint="{{ phrase('fs_custom_display_random_thread_explain') }}" />
+</xf:radiorow>
+
+<xf:selectrow name="options[node_ids][]" value="{{ $options.node_ids ?: '' }}" multiple="multiple" size="7"
+			  label="{{ phrase('forum_limit') }}"
+			  explain="{{ phrase('only_include_threads_in_selected_forums') }}">
+
+	<xf:option value="">{{ phrase('all_forums') }}</xf:option>
+	<xf:foreach loop="$nodeTree.getFlattened(0)" value="$treeEntry">
+		<xf:option value="{$treeEntry.record.node_id}" disabled="{{ $treeEntry.record.node_type_id != 'Forum' }}">
+			{{ repeat('&nbsp;&nbsp;', $treeEntry.depth)|raw }} {$treeEntry.record.title}
+		</xf:option>
+	</xf:foreach>
+</xf:selectrow>

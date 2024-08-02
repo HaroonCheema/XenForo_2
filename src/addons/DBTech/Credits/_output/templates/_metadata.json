@@ -3,5 +3,10 @@
         "version_id": 905080070,
         "version_string": "5.8.0",
         "hash": "302496eacf7bdf05d69648cd0a2204d8"
+    },
+    "public/dbtech_credits_widget_richest.html": {
+        "version_id": 905080070,
+        "version_string": "5.8.0",
+        "hash": "4e4508c0405951eff35995046390830a"
     }
 }

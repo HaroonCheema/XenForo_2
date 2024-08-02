@@ -3,6 +3,7 @@ return array (
   'widget_def.RealTimeChat' => 'Real Time Chat',
   'widget_def.WelcomeBanner' => 'Welcome Banner',
   'widget_def.birthdays' => 'Today\'s birthdays',
+  'widget_def.custom_forum_widget' => '[FS] Custom Forum Widget',
   'widget_def.dbt_ecom_latest_reviews' => 'DragonByte eCommerce: Latest reviews',
   'widget_def.dbt_ecom_new_products' => 'DragonByte eCommerce: New Products',
   'widget_def.dbt_ecom_rnd_products' => 'DragonByte eCommerce: Random Products',

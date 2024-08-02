@@ -17,6 +17,7 @@ return array (
   'widget.fsGameReviews' => '',
   'widget.fsPackageRating' => 'FS Package Rating',
   'widget.fsPackageRatings' => '',
+  'widget.fs_custom_forum_widget' => '[FS] Custom Forum Widget',
   'widget.fs_question_answer_count_wid' => 'Question Answer Counts',
   'widget.latest_followed_profile_posts' => 'Latest profile posts by followers',
   'widget.latest_posts' => 'Latest posts',

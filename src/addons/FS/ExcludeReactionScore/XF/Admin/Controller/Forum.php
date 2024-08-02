@@ -14,35 +14,16 @@ class Forum extends XFCP_Forum
             'count_reactions' => 'bool',
         ]);
 
+        $app = \xf::app();
+
         if ($data['count_reactions'] != $forumInput['count_reactions']) {
 
-            $threadFinder = \xf::finder('XF:Thread')->where('node_id', $data['node_id']);
+            $setVal = $forumInput['count_reactions'] ? 1 : 0;
 
-            $threadIds = $threadFinder->pluckfrom('thread_id')->fetch()->toArray();
-
-            if (count($threadIds)) {
-                $postFinder = \xf::finder('XF:Post')->where('thread_id', $threadIds);
-
-                $postIds = $postFinder->pluckfrom('post_id')->fetch()->toArray();
-
-                if (count($postIds)) {
-
-                    $postIdsStr = implode(", ", $postIds);
-
-                    $setVal = $forumInput['count_reactions'] ? 1 : 0;
-
-                    $db = \xf::db();
-
-                    $db->update(
-                        'xf_reaction_content',
-                        ['is_counted' => $setVal],
-                        "content_id IN ({$postIdsStr})"
-                    );
-
-                    \xf::app()->jobManager()->enqueueUnique('reactionChange' . time(), 'XF:ReactionScore');
-                }
-            }
+            $app->jobManager()->enqueueUnique('forum_reaction_' . $data['node_id'], 'FS\ExcludeReactionScore:Reaction', ['node_id' => $data['node_id'], 'count_reactions' => $setVal], false);
         }
+
+        $data->fastUpdate('count_reactions', $forumInput['count_reactions']);
 
         return parent::saveTypeData($form, $node, $data);
     }

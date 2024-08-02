@@ -2,6 +2,7 @@
 
 namespace FS\ExcludeReactionScore\XF\Entity;
 
+use XF\Mvc\Entity\Entity;
 use XF\Mvc\Entity\Structure;
 
 class Forum extends XFCP_Forum

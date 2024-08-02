@@ -1,0 +1,18 @@
+<xf:if is="$currencies is not empty">
+	<div class="block"{{ widget_data($widget) }}>
+		<div class="block-container">
+			<h3 class="block-minorHeader">
+				{$title}
+			</h3>
+			<div class="block-body">
+				<xf:foreach loop="$currencies" value="$currency">
+					<xf:macro name="dbtech_credits_currency_macros::richest"
+							  arg-currency="{$currency}"
+							  arg-limit="{$options.limit}"
+							  arg-showAmounts="{$options.showAmounts}"
+					/>
+				</xf:foreach>
+			</div>
+		</div>
+	</div>
+</xf:if>
