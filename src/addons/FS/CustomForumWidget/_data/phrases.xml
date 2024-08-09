@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="fs_clicks_count_x" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Clicks: {clicks}]]></phrase>
+  <phrase title="fs_custom_display_newest_thread" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Newest threads]]></phrase>
+  <phrase title="fs_custom_display_order" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Display order]]></phrase>
+  <phrase title="fs_custom_display_random_thread" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Random threads]]></phrase>
+  <phrase title="fs_custom_display_random_thread_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[From all threads that meet set criteria]]></phrase>
+  <phrase title="fs_date_limit_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter date in days here...!]]></phrase>
+  <phrase title="fs_view_count_x" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Views: {views}]]></phrase>
+  <phrase title="option.fsCustomThreadFieldIds" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Custom thread fields Ids]]></phrase>
+  <phrase title="option.fs_custom_select_forums" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Select Applicable Forums]]></phrase>
+  <phrase title="option_explain.fsCustomThreadFieldIds" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter the Applicable Custom thread fields Ids Comma separated like 1,2,3,4.]]></phrase>
+  <phrase title="option_explain.fs_custom_select_forums" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You can select multiple applicable forums from here...!]]></phrase>
+  <phrase title="option_group.fs_custom_forum_widget" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Custom Forum Widget]]></phrase>
+  <phrase title="option_group_description.fs_custom_forum_widget" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="payment_clear_need_to_wait_for_account_upgradation" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You have Already buy this account Upgrade Need to Wait for account Upgradation.]]></phrase>
+  <phrase title="widget_def.custom_forum_widget" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Custom Forum Widget]]></phrase>
+  <phrase title="widget_def_desc.custom_forum_widget" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Custom Forum Widget]]></phrase>
+</phrases>

@@ -683,6 +683,7 @@ return array(
 									</div>
 								</div>
 							</div>
+							' . $__templater->includeTemplate('dbtech_ecommerce_navbar_checkout', $__vars) . '
 							' . $__templater->callMacro('dbtech_credits_navbar_macro', 'navbar', array(
 				'section' => 'end',
 				'nav' => $__vars['navTree']['dbtechCredits'],
@@ -707,6 +708,7 @@ return array(
 						';
 		}
 		$__compilerTemp5 .= '
+						' . $__templater->includeTemplate('dbtech_ecommerce_navbar_checkout', $__vars) . '
 					';
 	}
 	$__compilerTemp6 = '';
@@ -867,6 +869,7 @@ return array(
 						<i aria-hidden="true"></i>
 						<span class="p-navgroup-linkText">' . 'What\'s new' . '</span>
 					</a>
+' . $__templater->includeTemplate('altf_filter_icon_search', $__vars) . '
 
 					' . $__compilerTemp6 . '
 				</div>
@@ -938,6 +941,7 @@ return array(
 	}
 	$__finalCompiled .= '
 
+' . $__templater->includeTemplate('altf_filter_mobile', $__vars) . '
 <div class="offCanvasMenu offCanvasMenu--nav js-headerOffCanvasMenu" data-menu="menu" aria-hidden="true" data-ocm-builder="navigation">
 	<div class="offCanvasMenu-backdrop" data-menu-close="true"></div>
 	<div class="offCanvasMenu-content">
@@ -1277,6 +1281,8 @@ return array(
 	$__compilerTemp14 = '';
 	$__compilerTemp14 .= '
 				' . $__templater->func('copyright') . '
+				' . $__templater->callback('DBTech\\eCommerce\\Template\\Callback\\Copyright', 'getCopyrightText', '', array()) . '
+' . $__templater->filter($__vars['ThreadFilterCopyright'], array(array('raw', array()),), true) . '
 				' . '' . '
 			';
 	if (strlen(trim($__compilerTemp14)) > 0) {

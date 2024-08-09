@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class_extensions>
+  <extension from_class="XFES\Search\Source\Elasticsearch" to_class="AL\ThreadFilter\XFES\Search\Source\Elasticsearch" execute_order="10" active="1"/>
+  <extension from_class="XFES\Service\Optimizer" to_class="AL\ThreadFilter\XFES\Service\Optimizer" execute_order="10" active="1"/>
+  <extension from_class="XF\Admin\Controller\Category" to_class="AL\ThreadFilter\XF\Admin\Controller\Category" execute_order="10" active="1"/>
+  <extension from_class="XF\Admin\Controller\Forum" to_class="AL\ThreadFilter\XF\Admin\Controller\Forum" execute_order="10" active="1"/>
+  <extension from_class="XF\Admin\Controller\ThreadField" to_class="AL\ThreadFilter\XF\Admin\Controller\ThreadField" execute_order="10" active="1"/>
+  <extension from_class="XF\Behavior\CustomFieldsHolder" to_class="AL\ThreadFilter\XF\Behavior\CustomFieldsHolder" execute_order="10" active="1"/>
+  <extension from_class="XF\CustomField\Definition" to_class="AL\ThreadFilter\XF\CustomField\Definition" execute_order="10" active="1"/>
+  <extension from_class="XF\Entity\Forum" to_class="AL\ThreadFilter\XF\Entity\Forum" execute_order="10" active="1"/>
+  <extension from_class="XF\Entity\Node" to_class="AL\ThreadFilter\XF\Entity\Node" execute_order="10" active="1"/>
+  <extension from_class="XF\Entity\Option" to_class="AL\ThreadFilter\XF\Entity\Option" execute_order="10" active="1"/>
+  <extension from_class="XF\Entity\Thread" to_class="AL\ThreadFilter\XF\Entity\Thread" execute_order="10" active="1"/>
+  <extension from_class="XF\Entity\ThreadField" to_class="AL\ThreadFilter\XF\Entity\ThreadField" execute_order="10" active="1"/>
+  <extension from_class="XF\Entity\User" to_class="AL\ThreadFilter\XF\Entity\User" execute_order="10" active="1"/>
+  <extension from_class="XF\Entity\WidgetDefinition" to_class="AL\ThreadFilter\XF\Entity\WidgetDefinition" execute_order="10" active="1"/>
+  <extension from_class="XF\Pub\Controller\Forum" to_class="AL\ThreadFilter\XF\Pub\Controller\Forum" execute_order="10" active="1"/>
+  <extension from_class="XF\Pub\Controller\Search" to_class="AL\ThreadFilter\XF\Pub\Controller\Search" execute_order="10" active="1"/>
+  <extension from_class="XF\Repository\ThreadField" to_class="AL\ThreadFilter\XF\Repository\ThreadField" execute_order="10" active="1"/>
+  <extension from_class="XF\Search\Data\Post" to_class="AL\ThreadFilter\XF\Search\Data\Post" execute_order="10" active="1"/>
+  <extension from_class="XF\Search\Search" to_class="AL\ThreadFilter\XF\Search\Search" execute_order="10" active="1"/>
+  <extension from_class="XF\Search\Source\MySqlFt" to_class="AL\ThreadFilter\XF\Search\Source\MySqlFt" execute_order="10" active="1"/>
+  <extension from_class="XF\Service\Node\RebuildNestedSet" to_class="AL\ThreadFilter\XF\Service\Node\RebuildNestedSet" execute_order="10" active="1"/>
+  <extension from_class="XF\Template\Templater" to_class="AL\ThreadFilter\XF\Template\Templater" execute_order="10" active="1"/>
+</class_extensions>

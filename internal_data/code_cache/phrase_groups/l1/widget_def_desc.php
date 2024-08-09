@@ -1,6 +1,7 @@
 <?php
 return array (
   'widget_def_desc.WelcomeBanner' => 'Welcome Banner Threads',
+  'widget_def_desc.altf_filter_widget' => 'A widget to allow filtering the current forum by custom fields',
   'widget_def_desc.birthdays' => 'A block containing a heap of avatars of users whose birthday is today.',
   'widget_def_desc.custom_forum_widget' => '[FS] Custom Forum Widget',
   'widget_def_desc.dbt_ecom_latest_reviews' => 'Displays the latest product reviews.',

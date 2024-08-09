@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 77e6f7e529b6a1d50d4315f44077da19
+// FROM HASH: c591c90a5a808d247eae9de66b8a1c90
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -21,7 +21,7 @@ return array(
 		'min' => '0',
 	), array(
 		'label' => 'Date limit',
-		'explain' => 'Gifted content age limit (in days). Use 0 for no limit.',
+		'explain' => 'Enter date in days here...!',
 	)) . '
 
 ' . $__templater->formRadioRow(array(
@@ -68,7 +68,17 @@ return array(
 	), $__compilerTemp1, array(
 		'label' => 'Forum limit',
 		'explain' => 'Only include threads in the selected forums.',
-	));
+	)) . '
+
+<hr class="formRowSep" />
+
+' . $__templater->callMacro('custom_fields_macros', 'custom_fields_edit', array(
+		'type' => 'threads',
+		'set' => $__vars['thread']['custom_fields'],
+		'onlyInclude' => $__vars['onlyInclude'],
+		'options' => $__vars['options'],
+		'requiredOnly' => 'false',
+	), $__vars);
 	return $__finalCompiled;
 }
 );

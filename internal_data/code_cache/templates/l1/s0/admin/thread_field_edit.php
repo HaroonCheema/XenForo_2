@@ -11,6 +11,9 @@ return array(
 		'supportsGroupEditable' => true,
 	), $__vars) . '
 	');
+	$__compilerTemp1['extraTheadFilterChoiceOptions'] = $__templater->preEscaped('
+	' . $__templater->includeTemplate('altf_thread_field_choice_options', $__vars) . '
+');
 	$__compilerTemp2 = array(array(
 		'value' => '',
 		'selected' => !$__vars['nodeIds'],
@@ -29,6 +32,7 @@ return array(
 		}
 	}
 	$__compilerTemp1['displayOptions'] = $__templater->preEscaped('
+	' . $__templater->includeTemplate('altf_thread_field_display_options', $__vars) . '
 		' . $__templater->formSelectRow(array(
 		'name' => 'node_ids[]',
 		'value' => $__vars['nodeIds'],

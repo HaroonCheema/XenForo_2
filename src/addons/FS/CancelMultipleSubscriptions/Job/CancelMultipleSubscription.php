@@ -33,6 +33,8 @@ class CancelMultipleSubscription extends AbstractRebuildJob
 
         $purchaseRequest = $this->app->finder('XF:PurchaseRequest')->where('purchase_request_id', $id)->where('provider_id', $providerId)->where('purchasable_type_id', "user_upgrade")->where("provider_metadata", "!=", Null)->where("is_canceled", "!=", 1)->fetchOne();
 
+
+
         if (isset($purchaseRequest['purchase_request_id']) && $purchaseRequest['provider_metadata'] != Null) {
 
             $finder = \XF::finder('XF:PaymentProfile');

@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="PAGE_CONTAINER" modification_key="altf_license_message" description="License message if applicable" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:copyright />]]></find>
+    <replace><![CDATA[<xf:copyright />
+{{ $ThreadFilterCopyright|raw }}]]></replace>
+  </modification>
+  <modification type="public" template="PAGE_CONTAINER" modification_key="altf_off_canvas_filter" description="Off-canvas filter for mobile devices" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<div class="offCanvasMenu offCanvasMenu--nav js-headerOffCanvasMenu" data-menu="menu" aria-hidden="true" data-ocm-builder="navigation">]]></find>
+    <replace><![CDATA[<xf:include template="altf_filter_mobile" />
+<div class="offCanvasMenu offCanvasMenu--nav js-headerOffCanvasMenu" data-menu="menu" aria-hidden="true" data-ocm-builder="navigation">]]></replace>
+  </modification>
+  <modification type="public" template="PAGE_CONTAINER" modification_key="altf_off_canvas_filter_icon" description="Filter icon for off-canvas menu next to search icon" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[#<div class="p\-navgroup p\-discovery.*?</a>#s]]></find>
+    <replace><![CDATA[$0
+<xf:include template="altf_filter_icon_search" />]]></replace>
+  </modification>
+  <modification type="admin" template="base_custom_field_edit" modification_key="altf_option_field_extra_options" description="Adds an extra options variable allowing to add additional data for choice fields" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[#possible_choices.*?</xf:formrow>#s]]></find>
+    <replace><![CDATA[$0
+{$extraTheadFilterChoiceOptions|raw}]]></replace>
+  </modification>
+  <modification type="admin" template="category_edit" modification_key="altf_filter_location_category" description="Add filter location options to the category" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:macro template="node_edit_macros" name="style" arg-node="{$node}" arg-styleTree="{$styleTree}" />]]></find>
+    <replace><![CDATA[<xf:macro template="node_edit_macros" name="style" arg-node="{$node}" arg-styleTree="{$styleTree}" />
+<xf:include template="altf_filter_location" />]]></replace>
+  </modification>
+  <modification type="admin" template="forum_edit" modification_key="altf_filter_location" description="Add filter location options to the forum" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:if is="$prefixesGrouped is not empty">]]></find>
+    <replace><![CDATA[<xf:include template="altf_filter_location" />
+<xf:if is="$prefixesGrouped is not empty">]]></replace>
+  </modification>
+  <modification type="public" template="forum_filters" modification_key="altf_clear_button" description="Add clear button" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[#(<div class="menu-footer">)(.*?)(</div>)#s]]></find>
+    <replace><![CDATA[$1
+<xf:include template="altf_clear_button" />
+$3]]></replace>
+  </modification>
+  <modification type="public" template="forum_filters" modification_key="altf_disable_default_filter_fields" description="Optionally disable some default filter fields" execution_order="1" enabled="1" action="preg_replace">
+    <find><![CDATA[#(<\!\-\-\[XF:above_prefixes\]\-\->)(.*)(<\!\-\-\[XF\:above_started_by\]\-\->)(.*)(<\!\-\-\[XF\:above_last_updated\]\-\->)(.*)(<\!\-\-\[XF\:above_allowed_thread_types\]\-\->)(.*)(<\!\-\-\[XF\:above_sort_by\]\-\->)(.*)(<div class="menu\-footer">)#s]]></find>
+    <replace><![CDATA[$1
+<xf:if is="$xf.options.altf_custom_field_location == 'above_prefixes'">
+    <xf:include template="altf_thread_filter_popup_form" />
+</xf:if>
+<xf:if is="$xf.options.altf_additional_filters_location == 'above_prefixes'">
+    <xf:include template="altf_additional_filter_elements" />
+</xf:if>
+<xf:if is="!$xf.options.altf_disable_default_filter_field.prefix">
+    $2
+</xf:if>
+$3
+<xf:if is="$xf.options.altf_custom_field_location == 'above_started_by'">
+    <xf:include template="altf_thread_filter_popup_form" />
+</xf:if>
+<xf:if is="$xf.options.altf_additional_filters_location == 'above_started_by'">
+    <xf:include template="altf_additional_filter_elements" />
+</xf:if>
+<xf:if is="!$xf.options.altf_disable_default_filter_field.startedBy">
+    $4
+</xf:if>
+$5
+<xf:if is="$xf.options.altf_custom_field_location == 'above_last_updated'">
+    <xf:include template="altf_thread_filter_popup_form" />
+</xf:if>
+<xf:if is="$xf.options.altf_additional_filters_location == 'above_last_updated'">
+    <xf:include template="altf_additional_filter_elements" />
+</xf:if>
+<xf:if is="!$xf.options.altf_disable_default_filter_field.lastedUpdated">
+    $6
+</xf:if>
+$7
+<xf:if is="!$xf.options.altf_disable_default_filter_field.threadType">
+    $8
+</xf:if>
+$9
+<xf:if is="$xf.options.altf_custom_field_location == 'above_sort_by'">
+    <xf:include template="altf_thread_filter_popup_form" />
+</xf:if>
+<xf:if is="$xf.options.altf_additional_filters_location == 'above_sort_by'">
+    <xf:include template="altf_additional_filter_elements" />
+</xf:if>
+<xf:if is="!$xf.options.altf_disable_default_filter_field.sortBy">
+    $10
+</xf:if>
+<xf:if is="$xf.options.altf_additional_filters_location == 'below_sort_by'">
+    <xf:include template="altf_additional_filter_elements" />
+</xf:if>
+<xf:if is="$xf.options.altf_custom_field_location == 'below_sort_by'">
+    <xf:include template="altf_thread_filter_popup_form" />
+</xf:if>
+$11]]></replace>
+  </modification>
+  <modification type="public" template="forum_filters" modification_key="altf_multi_prefix" description="Search for multiple prefixes if enabled" execution_order="5" enabled="1" action="preg_replace">
+    <find><![CDATA[#<!\-\-\[XF:above_prefixes\]\-\->(.*?</xf:if>)#s]]></find>
+    <replace><![CDATA[<!--[XF:above_prefixes]-->
+	<xf:if is="{$xf.options.altf_multi_prefix_search} !== 'disabled'">
+	<xf:if is="$prefixes is not empty">
+		<div class="menu-row menu-row--separated">
+			{{ phrase('prefixes:') }}
+			<div class="u-inputSpacer">
+				<xf:macro template="prefix_macros" name="select"
+					arg-prefixes="{$prefixes}"
+					arg-type="thread"
+					arg-selected="{{ $filterSet.__prefix_ids ?: [] }}"
+					arg-multiple="{{ true }}"
+					arg-name="thread_fields[__prefix_ids]"
+					arg-noneLabel="{{ phrase('(any)') }}"
+				/>
+			</div>
+		</div>
+	</xf:if>
+	<xf:else />
+		$1
+	</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="forum_filters" modification_key="altf_sort_options" description="Adds custom field sorting options after default options" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[#(<xf:select name="order".*?)(</xf:select>)#s]]></find>
+    <replace><![CDATA[$1	<xf:foreach loop="$sortableFields" key="$fieldId" value="$field">
+	<xf:option value="{$filter_name}_{$fieldId}">{$field.title}</xf:option>
+</xf:foreach>
+			$2]]></replace>
+  </modification>
+  <modification type="public" template="forum_filters" modification_key="altf_total_count_indicator" description="Adds total count indicator next to the Filter button" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<div class="menu-footer">]]></find>
+    <replace><![CDATA[<div class="menu-row menu-row--separated">
+	<xf:if is="$xf.options.altf_total_count_indicator">
+		<xf:include template="altf_total_count_indicator" />
+	</xf:if>
+</div>
+$0]]></replace>
+  </modification>
+  <modification type="public" template="forum_view" modification_key="altf_above_thread_list_filter_container" description="Adding thread filter above thread list" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[#<div[^>]+data-type="thread".*?>#]]></find>
+    <replace><![CDATA[<xf:include template="altf_above_thread_filter_container"/>
+$0]]></replace>
+  </modification>
+  <modification type="public" template="forum_view" modification_key="altf_add_sort_options_to_array" description="XenForo 2.1.x - Adds custom field sort options to the array with sorting options" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[#<xf:set var="\$sortOrders".*?/>#s]]></find>
+    <replace><![CDATA[$0
+<xf:set var="$additionalSortOptions" value="{{ $additionalSortOptions ? $additionalSortOptions : $__globals.additionalSortOptions }}" />
+	<xf:set var="$sortOrders" value="{{ $sortOrders + (is_array($additionalSortOptions) ? $additionalSortOptions : []) }}"/>]]></replace>
+  </modification>
+  <modification type="public" template="forum_view" modification_key="altf_forum_view_active_filter_tools" description="Active filter JS configuration and Clear all link" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[#(<ul class="filterBar\-filters">)(.*?)(</ul>)#s]]></find>
+    <replace><![CDATA[$1
+						<xf:include template="altf_auto_reload_configurator" />
+						$2
+						<xf:include template="altf_clear_active_filters" />
+						$3]]></replace>
+  </modification>
+  <modification type="public" template="forum_view" modification_key="altf_forum_view_active_filters" description="Active custom field filters" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:if is="$filters.order]]></find>
+    <replace><![CDATA[<xf:include template="altf_forum_view_active_filters" />
+		$0]]></replace>
+  </modification>
+  <modification type="public" template="forum_view" modification_key="altf_hide_filter_popup" description="Hides filter popup if filter location is not popup" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[#<a class="filterBar\-menuTrigger".*?loading.*?</div>.*?</div>.*?</div>.*?</div>#s]]></find>
+    <replace><![CDATA[<xf:if is="$filter_location==='popup'">
+				$0
+				<xf:else />
+					<xf:css src="altf_active_filter.less"/>
+					<span class="filterButtonPlaceholder ThreadFilter">.</span>
+				</xf:if>
+				<xf:include template="altf_filter_icon_replace_filter" />]]></replace>
+  </modification>
+  <modification type="public" template="search_form_post" modification_key="altf_thread_filter_in_search" description="Adds thread filter controls in search pages" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:macro template="search_form_macros" name="order"]]></find>
+    <replace><![CDATA[<xf:include template="altf_search_form" />
+<xf:macro template="search_form_macros" name="order"]]></replace>
+  </modification>
+  <modification type="public" template="search_result_thread" modification_key="altf_search_result_include_fields" description="Includes custom field values in search results based on forum configuration" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<div class="contentRow-minor contentRow-minor--hideLinks">
+]]></find>
+    <replace><![CDATA[<xf:include template="altf_thread_field_search_list">
+	<xf:set var="$columnList" value="{$thread.Forum.display_fields.search.metadata}" />
+	<xf:set var="$fieldData" value="{$thread.custom_fields}" />
+</xf:include>
+$0]]></replace>
+  </modification>
+  <modification type="public" template="search_result_thread" modification_key="altf_search_result_metadata" description="Thread fields shown as prefix in front of the title" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[prefix('thread', $thread) .]]></find>
+    <replace><![CDATA[prefix('thread', $thread) }}<xf:trim>
+<xf:include template="altf_list_prefix">
+	<xf:set var="$columnList" value="{$thread.Forum.display_fields.forum_view.prefix}" />
+	<xf:set var="$fieldData" value="{$thread.custom_fields}" />
+</xf:include>
+</xf:trim> {{]]></replace>
+  </modification>
+  <modification type="admin" template="thread_field_edit" modification_key="altf_thread_field_display_options" description="Additional display options for thread fields" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:set var="$displayOptions">]]></find>
+    <replace><![CDATA[<xf:set var="$extraTheadFilterChoiceOptions">
+	<xf:include template="altf_thread_field_choice_options" />
+</xf:set>
+<xf:set var="$displayOptions">
+	<xf:include template="altf_thread_field_display_options" />]]></replace>
+  </modification>
+  <modification type="public" template="thread_list_macros" modification_key="altf_thread_field_columns" description="Adds thread fields as additional columns in thread view" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<div class="structItem-cell structItem-cell--meta"]]></find>
+    <replace><![CDATA[<xf:include template="altf_thread_field_column_list">
+	<xf:set var="$columnList" value="{$thread.Forum.display_fields.forum_view.column}" />
+	<xf:set var="$fieldData" value="{$thread.custom_fields}" />
+</xf:include>
+$0]]></replace>
+  </modification>
+  <modification type="public" template="thread_list_macros" modification_key="altf_thread_field_metadata" description="Thread fields shown as metadata under thread title" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[#(<div class="structItem-title".*?)(<div class="structItem-minor">)#s]]></find>
+    <replace><![CDATA[$1
+			<xf:include template="altf_list_metadata">
+				<xf:set var="$columnList" value="{$thread.Forum.display_fields.forum_view.metadata}" />
+				<xf:set var="$fieldData" value="{$thread.custom_fields}" />
+			</xf:include>
+			$2]]></replace>
+  </modification>
+  <modification type="public" template="thread_list_macros" modification_key="altf_title_prefix" description="Adds custom fields as prefix" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[#(<div class="structItem-title".*?<a.*?)(<a)#s]]></find>
+    <replace><![CDATA[$1
+				<xf:include template="altf_list_prefix">
+					<xf:set var="$columnList" value="{$thread.Forum.display_fields.forum_view.prefix}" />
+					<xf:set var="$fieldData" value="{$thread.custom_fields}" />
+				</xf:include>
+				$2]]></replace>
+  </modification>
+  <modification type="admin" template="tools_rebuild" modification_key="altf_rebuild_thread_field" description="Rebuild thread fields" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<!--[XF:after_thread]-->]]></find>
+    <replace><![CDATA[<!--[XF:after_thread]-->
+<xf:include template="altf_rebuild_thread_fields" />]]></replace>
+  </modification>
+</template_modifications>

@@ -53,6 +53,7 @@ return array(
 		'node' => $__vars['node'],
 		'styleTree' => $__vars['styleTree'],
 	), $__vars) . '
+' . $__templater->includeTemplate('altf_filter_location', $__vars) . '
 		</div>
 		' . $__templater->formSubmitRow(array(
 		'sticky' => 'true',

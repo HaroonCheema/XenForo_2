@@ -1,12 +1,17 @@
 {
+    "admin/custom_fields_macros.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "81ac998ecd3ee0a83a8ec077b9fac24e"
+    },
     "admin/widget_def_options_custom_forum_widget.html": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
-        "hash": "77e6f7e529b6a1d50d4315f44077da19"
+        "hash": "c591c90a5a808d247eae9de66b8a1c90"
     },
     "public/widget_custom_forum_widget.html": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
-        "hash": "623cb310488dfc6bad698eff687edc3c"
+        "hash": "713573b520bafd9e80f428f780ebc33b"
     }
 }

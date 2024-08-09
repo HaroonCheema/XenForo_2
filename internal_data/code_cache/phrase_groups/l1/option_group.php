@@ -8,6 +8,8 @@ return array (
   'option_group.acp' => 'Admin control panel',
   'option_group.addCategoryImage' => '[FS] Add Category Image',
   'option_group.alerts' => 'User alerts and notifications',
+  'option_group.alff_main' => 'Filter Framework by AddonsLab',
+  'option_group.altf_main' => 'Thread Filter by AddonsLab',
   'option_group.appearance' => 'Appearance',
   'option_group.attachments' => 'Attachments',
   'option_group.auction' => '[FS] Auction',

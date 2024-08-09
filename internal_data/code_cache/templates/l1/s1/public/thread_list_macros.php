@@ -273,45 +273,57 @@ return array(
 				';
 	}
 	$__finalCompiled .= '
+				
+				';
+	$__compilerTemp2 = $__vars;
+	$__compilerTemp2['columnList'] = $__vars['thread']['Forum']['display_fields']['forum_view']['prefix'];
+	$__compilerTemp2['fieldData'] = $__vars['thread']['custom_fields'];
+	$__finalCompiled .= $__templater->includeTemplate('altf_list_prefix', $__compilerTemp2) . '
 				<a href="' . $__templater->func('link', array('threads' . (($__templater->method($__vars['thread'], 'isUnread', array()) AND (!$__vars['forceRead'])) ? '/unread' : ''), $__vars['thread'], ), true) . '" class="" data-tp-primary="on" data-xf-init="' . ($__vars['canPreview'] ? 'preview-tooltip' : '') . '" data-preview-url="' . ($__vars['canPreview'] ? $__templater->func('link', array('threads/preview', $__vars['thread'], ), true) : '') . '">' . $__templater->escape($__vars['thread']['title']) . '</a>
 			</div>
 
+			
+			';
+	$__compilerTemp3 = $__vars;
+	$__compilerTemp3['columnList'] = $__vars['thread']['Forum']['display_fields']['forum_view']['metadata'];
+	$__compilerTemp3['fieldData'] = $__vars['thread']['custom_fields'];
+	$__finalCompiled .= $__templater->includeTemplate('altf_list_metadata', $__compilerTemp3) . '
 			<div class="structItem-minor">
 				';
-	$__compilerTemp2 = '';
-	$__compilerTemp2 .= '
+	$__compilerTemp4 = '';
+	$__compilerTemp4 .= '
 						';
 	if (($__templater->func('property', array('reactionSummaryOnLists', ), false) == 'minor_opposite') AND $__vars['thread']['first_post_reactions']) {
-		$__compilerTemp2 .= '
+		$__compilerTemp4 .= '
 							<li>' . $__templater->func('reactions_summary', array($__vars['thread']['first_post_reactions'])) . '</li>
 						';
 	}
-	$__compilerTemp2 .= '
+	$__compilerTemp4 .= '
 						';
 	if ($__vars['extraInfo']) {
-		$__compilerTemp2 .= '
+		$__compilerTemp4 .= '
 							<li>' . $__templater->escape($__vars['extraInfo']) . '</li>
 						';
 	} else if ($__vars['allowEdit'] AND ($__templater->method($__vars['thread'], 'canEdit', array()) AND $__templater->method($__vars['thread'], 'canUseInlineModeration', array()))) {
-		$__compilerTemp2 .= '
+		$__compilerTemp4 .= '
 							';
 		if ((!$__vars['allowInlineMod']) OR (!$__vars['forum'])) {
-			$__compilerTemp2 .= '
+			$__compilerTemp4 .= '
 								';
 			$__vars['editParams'] = array('_xfNoInlineMod' => ((!$__vars['allowInlineMod']) ? 1 : null), '_xfForumName' => ((!$__vars['forum']) ? 1 : 0), );
-			$__compilerTemp2 .= '
+			$__compilerTemp4 .= '
 							';
 		} else {
-			$__compilerTemp2 .= '
+			$__compilerTemp4 .= '
 								';
 			$__vars['editParams'] = array();
-			$__compilerTemp2 .= '
+			$__compilerTemp4 .= '
 							';
 		}
-		$__compilerTemp2 .= '
+		$__compilerTemp4 .= '
 							';
 		if ($__vars['thread']['discussion_type'] != 'redirect') {
-			$__compilerTemp2 .= '
+			$__compilerTemp4 .= '
 								<li class="structItem-extraInfoMinor">
 									<a href="' . $__templater->func('link', array('threads/edit', $__vars['thread'], ), true) . '" data-xf-click="overlay" data-cache="false" data-href="' . $__templater->func('link', array('threads/edit', $__vars['thread'], $__vars['editParams'], ), true) . '">
 										' . 'Edit' . '
@@ -319,13 +331,13 @@ return array(
 								</li>
 							';
 		}
-		$__compilerTemp2 .= '
+		$__compilerTemp4 .= '
 						';
 	}
-	$__compilerTemp2 .= '
+	$__compilerTemp4 .= '
 						';
 	if ($__vars['chooseName']) {
-		$__compilerTemp2 .= '
+		$__compilerTemp4 .= '
 							<li>' . $__templater->formCheckBox(array(
 			'standalone' => 'true',
 		), array(array(
@@ -336,7 +348,7 @@ return array(
 		))) . '</li>
 						';
 	} else if ($__vars['allowInlineMod'] AND $__templater->method($__vars['thread'], 'canUseInlineModeration', array())) {
-		$__compilerTemp2 .= '
+		$__compilerTemp4 .= '
 							<li>' . $__templater->formCheckBox(array(
 			'standalone' => 'true',
 		), array(array(
@@ -350,12 +362,12 @@ return array(
 		))) . '</li>
 						';
 	}
-	$__compilerTemp2 .= '
+	$__compilerTemp4 .= '
 					';
-	if (strlen(trim($__compilerTemp2)) > 0) {
+	if (strlen(trim($__compilerTemp4)) > 0) {
 		$__finalCompiled .= '
 					<ul class="structItem-extraInfo">
-					' . $__compilerTemp2 . '
+					' . $__compilerTemp4 . '
 					</ul>
 				';
 	}
@@ -396,9 +408,9 @@ return array(
 			$__finalCompiled .= '
 						<span class="structItem-pageJump">
 						';
-			$__compilerTemp3 = $__templater->func('last_pages', array($__vars['thread']['reply_count'] + 1, $__vars['xf']['options']['messagesPerPage'], $__vars['xf']['options']['lastPageLinks'], ), false);
-			if ($__templater->isTraversable($__compilerTemp3)) {
-				foreach ($__compilerTemp3 AS $__vars['p']) {
+			$__compilerTemp5 = $__templater->func('last_pages', array($__vars['thread']['reply_count'] + 1, $__vars['xf']['options']['messagesPerPage'], $__vars['xf']['options']['lastPageLinks'], ), false);
+			if ($__templater->isTraversable($__compilerTemp5)) {
+				foreach ($__compilerTemp5 AS $__vars['p']) {
 					$__finalCompiled .= '
 							<a href="' . $__templater->func('link', array('threads', $__vars['thread'], array('page' => $__vars['p'], ), ), true) . '">' . $__templater->escape($__vars['p']) . '</a>
 						';
@@ -421,7 +433,12 @@ return array(
 {
 	$__finalCompiled = '';
 		$__finalCompiled .= '
-		<div class="structItem-cell structItem-cell--meta" title="' . $__templater->filter('First message reaction score' . $__vars['xf']['language']['label_separator'], array(array('for_attr', array()),), true) . ' ' . $__templater->filter($__vars['thread']['first_post_reaction_score'], array(array('number', array()),), true) . '">
+		';
+	$__compilerTemp1 = $__vars;
+	$__compilerTemp1['columnList'] = $__vars['thread']['Forum']['display_fields']['forum_view']['column'];
+	$__compilerTemp1['fieldData'] = $__vars['thread']['custom_fields'];
+	$__finalCompiled .= $__templater->includeTemplate('altf_thread_field_column_list', $__compilerTemp1) . '
+<div class="structItem-cell structItem-cell--meta" title="' . $__templater->filter('First message reaction score' . $__vars['xf']['language']['label_separator'], array(array('for_attr', array()),), true) . ' ' . $__templater->filter($__vars['thread']['first_post_reaction_score'], array(array('number', array()),), true) . '">
 			<dl class="pairs pairs--justified">
 				<dt>' . 'Replies' . '</dt>
 				<dd>' . (($__vars['thread']['discussion_type'] == 'redirect') ? '&ndash;' : $__templater->filter($__vars['thread']['reply_count'], array(array('number_short', array()),), true)) . '</dd>

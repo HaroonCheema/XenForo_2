@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<routes>
+  <route route_type="api" route_prefix="integration-tests" sub_name="al-thread-filter/" format="al-thread-filter/" controller="AL\ThreadFilter:IntegrationTest" context="thread-filter"/>
+</routes>

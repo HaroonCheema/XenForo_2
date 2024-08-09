@@ -1,21 +1,51 @@
-<div class="block"{{ widget_data($widget) }}>
-	<div class="block-container">
-		<h3 class="block-minorHeader">
-			<a href="{{ link('game-rating/') }}" rel="nofollow">{{ phrase('fs_game_rating_latest_reviews') }}</a>
-		</h3>
-		<ul class="block-body">
-			<xf:if is="$reviews is not empty">
-				<xf:foreach loop="$reviews" value="$review">
-					<li class="block-row">
-						<xf:macro template="fs_game_reviews_all_list_widget_macro" name="review"
-								  arg-review="{$review}" />
+<xf:if is="$threads is not empty">
+	<div class="block"{{ widget_data($widget) }}>
+		<div class="block-container">
+			<h3 class="block-minorHeader">
+				<a href="{$link}" rel="nofollow">{$title}</a>
+			</h3>
+			<ul class="block-body">
+				<xf:if is="$threads is not empty">
+					<xf:foreach loop="$threads" value="$thread">
+						<li class="block-row">
+							<div class="contentRow">
+								<div class="contentRow-figure">
+									<xf:avatar user="$thread.LastPoster" size="xxs" defaultname="{$thread.last_post_username}" />
+								</div>
+								<div class="contentRow-main contentRow-main--close">
+									<xf:if is="$thread.isUnread()">
+										<a href="{{ link('threads/unread', $thread) }}">{{ prefix('thread', $thread) }}{$thread.title}</a>
+										<xf:else />
+										<a href="{{ link('threads/post', $thread, {'post_id': $thread.last_post_id,'isClicked': 2}) }}">{{ prefix('thread', $thread) }}{$thread.title}</a>
+									</xf:if>
+
+									<div class="contentRow-minor contentRow-minor--hideLinks">
+										<ul class="listInline listInline--bullet">
+											<li>{{ phrase('latest_x', {'name': $thread.last_post_cache.username}) }}</li>
+											<li><xf:date time="{$thread.last_post_date}" /></li>
+										</ul>
+
+									</div>
+									<div class="contentRow-minor contentRow-minor--hideLinks">
+										<a href="{{ link('forums', $thread.Forum) }}">{$thread.Forum.title}</a>
+									</div>
+
+									<div class="contentRow-minor contentRow-minor--hideLinks">
+										<ul class="listInline listInline--bullet">
+											<li>{{ phrase('fs_clicks_count_x', {'clicks': $thread.click_count}) }}</li>
+											<li>{{ phrase('fs_view_count_x', {'views': $thread.view_count}) }}</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</li>
+					</xf:foreach>
+					<xf:else />
+					<li class="block-row block-row--minor">
+						{{ phrase('no_results_found') }}
 					</li>
-				</xf:foreach>
-				<xf:else />
-				<li class="block-row block-row--minor">
-					{{ phrase('no_results_found') }}
-				</li>
-			</xf:if>
-		</ul>
+				</xf:if>
+			</ul>
+		</div>
 	</div>
-</div>
+</xf:if>

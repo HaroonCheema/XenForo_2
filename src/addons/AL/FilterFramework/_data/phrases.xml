@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="option.alff_tag_match_mode" version_id="1010071" version_string="1.1.0"><![CDATA[Tag Match Mode]]></phrase>
+  <phrase title="option_explain.alff_tag_match_mode" version_id="1010071" version_string="1.1.0"><![CDATA[Match all or any tag if multiple tags are used in the filter.]]></phrase>
+  <phrase title="option_group.alff_main" version_id="1010071" version_string="1.1.0"><![CDATA[Filter Framework by AddonsLab]]></phrase>
+  <phrase title="option_group_description.alff_main" version_id="1010071" version_string="1.1.0"><![CDATA[Core settings for the Filter Framework by AddonsLab that apply to any other filter add-on installed.]]></phrase>
+</phrases>

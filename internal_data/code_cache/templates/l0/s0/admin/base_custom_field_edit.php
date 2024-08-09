@@ -359,6 +359,7 @@ return array(
 			'label' => 'Possible choices',
 			'explain' => 'The value represents the internal value for the choice. The text field is shown when the field is displayed. You should not change the value field if any users have selected that choice; if you do, users will lose their selection.',
 		)) . '
+' . $__templater->filter($__vars['extraTheadFilterChoiceOptions'], array(array('raw', array()),), true) . '
 			</div>
 		';
 	}

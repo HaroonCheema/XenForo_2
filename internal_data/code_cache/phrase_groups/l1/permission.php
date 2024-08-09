@@ -155,6 +155,7 @@ return array (
   'permission.forum_undelete' => 'Undelete threads / posts',
   'permission.forum_uploadAttachment' => 'Upload attachments to posts',
   'permission.forum_uploadVideo' => 'Upload video/audio to posts',
+  'permission.forum_useCustomFieldFilter' => 'Can use custom field filters',
   'permission.forum_viewAttachment' => 'View attachments to posts',
   'permission.forum_viewContent' => 'View thread content',
   'permission.forum_viewDeleted' => 'View deleted threads / posts',

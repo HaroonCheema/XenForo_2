@@ -8,6 +8,8 @@ return array (
   'option_group_description.acp' => 'Contains various options relating to the admin control panel itself.',
   'option_group_description.addCategoryImage' => '',
   'option_group_description.alerts' => 'When events happen that affect individual users, they are alerted via this system. If you are using a supported device, alerts can be sent directly to the device as a push notification. As large volumes of alerts are generated, they are periodically pruned from the database.',
+  'option_group_description.alff_main' => 'Core settings for the Filter Framework by AddonsLab that apply to any other filter add-on installed.',
+  'option_group_description.altf_main' => 'Performance-optimized thread filter and search based on custom fields',
   'option_group_description.appearance' => 'These options control how your site appears to your visitors.',
   'option_group_description.attachments' => 'Attachments are files that are uploaded to the board along with messages.',
   'option_group_description.auction' => '[FS] Auction Plugin',

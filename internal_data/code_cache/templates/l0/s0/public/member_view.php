@@ -320,6 +320,49 @@ return array(
 
 				' . '
 
+';
+	if ($__templater->method($__vars['xf']['visitor'], 'canViewMedia', array()) AND $__vars['user']['xfmg_media_count']) {
+		$__finalCompiled .= '
+	<a href="' . $__templater->func('link', array('media/users', $__vars['user'], ), true) . '"
+	   class="tabs-tab"
+	   id="xfmgMedia"
+	   role="tab">' . 'Media' . '</a>
+';
+	}
+	$__finalCompiled .= '
+
+';
+	if ($__templater->method($__vars['xf']['visitor'], 'canViewMedia', array()) AND $__vars['user']['xfmg_album_count']) {
+		$__finalCompiled .= '
+	<a href="' . $__templater->func('link', array('media/albums/users', $__vars['user'], ), true) . '"
+	   class="tabs-tab"
+	   id="xfmgAlbums"
+	   role="tab">' . 'Albums' . '</a>
+';
+	}
+	$__finalCompiled .= '
+
+';
+	if ($__templater->method($__vars['xf']['visitor'], 'hasOption', array('hasDbEcommerce', )) AND ($__templater->method($__vars['xf']['visitor'], 'canViewDbtechEcommerceProducts', array()) AND $__vars['user']['dbtech_ecommerce_product_count'])) {
+		$__finalCompiled .= '
+	<a href="' . $__templater->func('link', array('dbtech-ecommerce/authors', $__vars['user'], ), true) . '"
+	   class="tabs-tab"
+	   id="dbtech_ecommerce_products"
+	   role="tab">' . 'Products' . '</a>
+';
+	}
+	$__finalCompiled .= '
+';
+	if ($__templater->method($__vars['xf']['visitor'], 'canViewDbtechEcommerceLicenses', array()) AND $__vars['user']['dbtech_ecommerce_license_count']) {
+		$__finalCompiled .= '
+	<a href="' . $__templater->func('link', array('dbtech-ecommerce/licenses', $__vars['user'], ), true) . '"
+	   class="tabs-tab"
+	   id="dbtech_ecommerce_licenses"
+	   role="tab">' . 'Licenses' . '</a>
+';
+	}
+	$__finalCompiled .= '
+
 				<a href="' . $__templater->func('link', array('members/about', $__vars['user'], ), true) . '"
 					class="tabs-tab"
 					id="about"
@@ -470,6 +513,45 @@ return array(
 	</li>
 
 	' . '
+
+';
+	if ($__templater->method($__vars['xf']['visitor'], 'canViewMedia', array()) AND $__vars['user']['xfmg_media_count']) {
+		$__finalCompiled .= '
+	<li data-href="' . $__templater->func('link', array('media/users', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="xfmgMedia">
+		<div class="blockMessage">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
+	</li>
+';
+	}
+	$__finalCompiled .= '
+
+';
+	if ($__templater->method($__vars['xf']['visitor'], 'canViewMedia', array()) AND $__vars['user']['xfmg_album_count']) {
+		$__finalCompiled .= '
+	<li data-href="' . $__templater->func('link', array('media/albums/users', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="xfmgAlbums">
+		<div class="blockMessage">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
+	</li>
+';
+	}
+	$__finalCompiled .= '
+
+';
+	if ($__templater->method($__vars['xf']['visitor'], 'hasOption', array('hasDbEcommerce', )) AND ($__templater->method($__vars['xf']['visitor'], 'canViewDbtechEcommerceProducts', array()) AND $__vars['user']['dbtech_ecommerce_product_count'])) {
+		$__finalCompiled .= '
+	<li data-href="' . $__templater->func('link', array('dbtech-ecommerce/authors', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="dbtech_ecommerce_products">
+		<div class="blockMessage">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
+	</li>
+';
+	}
+	$__finalCompiled .= '
+';
+	if ($__templater->method($__vars['xf']['visitor'], 'canViewDbtechEcommerceLicenses', array()) AND $__vars['user']['dbtech_ecommerce_license_count']) {
+		$__finalCompiled .= '
+	<li data-href="' . $__templater->func('link', array('dbtech-ecommerce/licenses', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="dbtech_ecommerce_licenses">
+		<div class="blockMessage">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
+	</li>
+';
+	}
+	$__finalCompiled .= '
 
 	<li data-href="' . $__templater->func('link', array('members/about', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="about">
 		<div class="blockMessage">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>

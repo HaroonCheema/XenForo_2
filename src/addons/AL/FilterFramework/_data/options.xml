@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<options>
+  <option option_id="alff_tag_match_mode" edit_format="radio" data_type="string">
+    <default_value>all</default_value>
+    <edit_format_params>all={{ phrase('all') }}
+any={{ phrase('any') }}</edit_format_params>
+    <relation group_id="alff_main" display_order="10"/>
+  </option>
+</options>

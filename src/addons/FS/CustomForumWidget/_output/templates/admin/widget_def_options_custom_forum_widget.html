@@ -6,7 +6,7 @@
 <xf:numberboxrow name="options[dateLimit]" 
 				 value="{$options.dateLimit}"
 				 label="{{ phrase('date_limit') }}"
-				 explain="{{ phrase('nfGiftUpgrades_limit_explain') }}"
+				 explain="{{ phrase('fs_date_limit_explain') }}"
 				 units="{{ phrase('units_days') }}"
 				 min="0" />
 
@@ -31,3 +31,12 @@
 		</xf:option>
 	</xf:foreach>
 </xf:selectrow>
+
+<hr class="formRowSep" />
+
+<xf:macro template="custom_fields_macros" name="custom_fields_edit"
+		  arg-type="threads"
+		  arg-set="{$thread.custom_fields}"
+		  arg-onlyInclude="{$onlyInclude}"
+		  arg-options="{$options}"
+		  arg-requiredOnly="false" />

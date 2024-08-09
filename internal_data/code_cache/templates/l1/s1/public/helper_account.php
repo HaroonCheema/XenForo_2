@@ -85,6 +85,24 @@ return array(
 			'_type' => 'option',
 		);
 	}
+	$__compilerTemp1[] = array(
+		'name' => 'option[dbtech_ecommerce_email_on_sale]',
+		'checked' => $__vars['xf']['visitor']['Option']['dbtech_ecommerce_email_on_sale'],
+		'label' => 'Receive emails for product sales',
+		'_type' => 'option',
+	);
+	$__compilerTemp1[] = array(
+		'name' => 'option[dbtech_ecommerce_order_email_reminder]',
+		'checked' => $__vars['xf']['visitor']['Option']['dbtech_ecommerce_order_email_reminder'],
+		'label' => 'Receive order reminder emails',
+		'_type' => 'option',
+	);
+	$__compilerTemp1[] = array(
+		'name' => 'option[dbtech_ecommerce_license_expiry_email_reminder]',
+		'checked' => $__vars['xf']['visitor']['Option']['dbtech_ecommerce_license_expiry_email_reminder'],
+		'label' => 'Receive license expiry reminder emails',
+		'_type' => 'option',
+	);
 	if ($__vars['showConversationOption']) {
 		$__compilerTemp1[] = array(
 			'name' => 'option[email_on_conversation]',

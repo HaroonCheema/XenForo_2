@@ -1,4 +1,10 @@
 {
+    "fs_clicks_count_x.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "daf74e065821023fe9007a5d2ea0e369"
+    },
     "fs_custom_display_newest_thread.txt": {
         "global_cache": false,
         "version_id": 1000010,
@@ -23,17 +29,41 @@
         "version_string": "1.0.0 Alpha",
         "hash": "d360bdd5386739c01d3995c63ed33152"
     },
+    "fs_date_limit_explain.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "fe1c2806f0f555888046ac6645a540b1"
+    },
+    "fs_view_count_x.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "9d61511aa08543e83f9c7a6a377b91d4"
+    },
     "option.fsCustomThreadFieldIds.txt": {
         "global_cache": false,
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
         "hash": "25ea97ca0f840f1d0dc20fdcd2e7a878"
     },
+    "option.fs_custom_select_forums.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "36d24ea9da26de946f3ab7bd9cd354b4"
+    },
     "option_explain.fsCustomThreadFieldIds.txt": {
         "global_cache": false,
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
         "hash": "993808fe78029fbcdb0a13e378dc06af"
+    },
+    "option_explain.fs_custom_select_forums.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "7c2ccc1310978d25bf0db011b1c9b3bd"
     },
     "option_group.fs_custom_forum_widget.txt": {
         "global_cache": false,
@@ -46,6 +76,12 @@
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
         "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "payment_clear_need_to_wait_for_account_upgradation.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "fe91d03d4ad88d315f62cd9b047ecc52"
     },
     "widget_def.custom_forum_widget.txt": {
         "global_cache": false,

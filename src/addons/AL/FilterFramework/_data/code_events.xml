@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<code_events>
+  <event event_id="filter_framework_format_field_for_display"><![CDATA[<p>Called when a field is being formatted for display in the framework.</p>
+
+<p>Callback signature:</p>
+<blockquote><code><em>\AL\FilterFramework\ContentTypeProviderInterface</em> $contentTypeProvider, <em>\XF\CustomField\Definition</em> $field, $value, &$formattedValue</code></blockquote>
+
+<p>Arguments:</p>
+<ol>
+	<li><code><em>\AL\FilterFramework\ContentTypeProviderInterface</em> $contentTypeProvider</code> - An object representing the content type provider from an add-on.</li>
+	<li><code><em>\XF\CustomField\Definition</em> $field</code> - Field definition.</li>
+	<li><code>$value</code> - The original value of the field.</li>
+	<li><code>&amp;$formattedValue</code> - A reference to the value that will be displayed. Set to any non-null value to skip default processing.</li>
+</ol>]]></event>
+</code_events>

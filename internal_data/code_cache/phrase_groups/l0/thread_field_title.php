@@ -9,4 +9,11 @@ return array (
   'thread_field_title.shipping_term' => 'SHIPPING TERMS',
   'thread_field_title.ships_via' => 'SHIPS VIA',
   'thread_field_title.starting_bid' => 'starting_bid',
+  'thread_field_title.testing_check' => 'Check boxes',
+  'thread_field_title.testing_field_id' => 'Testing Thread Fiels',
+  'thread_field_title.testing_multi' => 'Multi-line text box',
+  'thread_field_title.testing_multiple' => 'Multiple-choice drop down',
+  'thread_field_title.testing_radio' => 'Radio buttons',
+  'thread_field_title.testing_rich' => 'Rich text box',
+  'thread_field_title.testing_star' => 'Star rating',
 );

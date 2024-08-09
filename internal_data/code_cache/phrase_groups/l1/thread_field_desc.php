@@ -22,4 +22,11 @@ return array (
   'thread_field_desc.shipping_term' => 'Chose your shipping terms.',
   'thread_field_desc.ships_via' => 'Choose the shipping service you will use.',
   'thread_field_desc.starting_bid' => 'auction_bid_explain',
+  'thread_field_desc.testing_check' => 'Check boxes',
+  'thread_field_desc.testing_field_id' => 'Testing Thread Fiels',
+  'thread_field_desc.testing_multi' => 'Multi-line text box',
+  'thread_field_desc.testing_multiple' => 'Multiple-choice drop down',
+  'thread_field_desc.testing_radio' => 'Radio buttons',
+  'thread_field_desc.testing_rich' => 'Rich text box',
+  'thread_field_desc.testing_star' => 'Star rating',
 );

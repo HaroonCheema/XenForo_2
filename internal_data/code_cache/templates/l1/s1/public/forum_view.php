@@ -44,13 +44,20 @@ return array(
 	if (strlen(trim($__compilerTemp1)) > 0) {
 		$__finalCompiled .= '
 						<ul class="filterBar-filters">
+						' . $__templater->includeTemplate('altf_auto_reload_configurator', $__vars) . '
+						
 						' . $__compilerTemp1 . '
+						
+						' . $__templater->includeTemplate('altf_clear_active_filters', $__vars) . '
 						</ul>
 					';
 	}
 	$__finalCompiled .= '
 					
-					<a class="filterBar-menuTrigger" data-xf-click="menu" role="button" tabindex="0" aria-expanded="false" aria-haspopup="true">' . 'Filters' . '</a>
+					';
+	if ($__vars['filter_location'] === 'popup') {
+		$__finalCompiled .= '
+				<a class="filterBar-menuTrigger" data-xf-click="menu" role="button" tabindex="0" aria-expanded="false" aria-haspopup="true">' . 'Filters' . '</a>
 					<div class="menu menu--wide" data-menu="menu" aria-hidden="true"
 						data-href="' . $__templater->func('link', array('forums/filters', $__vars['forum'], $__vars['filters'], ), true) . '"
 						data-load-target=".js-filterMenuBody">
@@ -61,6 +68,17 @@ return array(
 							</div>
 						</div>
 					</div>
+				';
+	} else {
+		$__finalCompiled .= '
+					';
+		$__templater->includeCss('altf_active_filter.less');
+		$__finalCompiled .= '
+					<span class="filterButtonPlaceholder ThreadFilter">.</span>
+				';
+	}
+	$__finalCompiled .= '
+				' . $__templater->includeTemplate('altf_filter_icon_replace_filter', $__vars) . '
 				</div>
 			</div>
 		';
@@ -280,6 +298,7 @@ return array(
 {
 	$__finalCompiled = '';
 		$__finalCompiled .= '
+		' . $__templater->includeTemplate('altf_forum_view_active_filters', $__vars) . '
 		';
 	if ($__vars['filters']['order']) {
 		$__finalCompiled .= '
@@ -464,6 +483,7 @@ return array(
 	), $__vars) . '
 
 ' . '
+' . $__templater->includeTemplate('altf_above_thread_filter_container', $__vars) . '
 <div class="block ' . $__templater->escape($__templater->renderExtension('thread_list_block_classes', $__vars, $__extensions)) . '" data-xf-init="' . ($__vars['canInlineMod'] ? 'inline-mod' : '') . '" data-type="thread" data-href="' . $__templater->func('link', array('inline-mod', ), true) . '">
 	
 	<div class="block-outer">';

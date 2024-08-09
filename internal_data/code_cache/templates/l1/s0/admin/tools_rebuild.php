@@ -119,6 +119,7 @@ return array(
 		'job' => 'XF:Thread',
 	), $__vars) . '
 ' . '
+' . $__templater->includeTemplate('altf_rebuild_thread_fields', $__vars) . '
 
 ' . $__templater->callMacro(null, 'rebuild_job', array(
 		'header' => 'Rebuild forums',
@@ -385,6 +386,8 @@ return array(
 	), $__vars) . '
 
 ' . '
+' . $__templater->includeTemplate('xfmg_tools_rebuild', $__vars) . '
+' . $__templater->includeTemplate('dbtech_ecommerce_tools_rebuild', $__vars) . '
 ' . $__templater->includeTemplate('dbtech_credits_tools_rebuild', $__vars) . '
 
 ';

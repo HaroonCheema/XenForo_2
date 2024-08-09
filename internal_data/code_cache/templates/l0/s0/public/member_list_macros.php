@@ -42,11 +42,37 @@ return array(
 					</dl></li>
 					' . '
 ';
-	if ($__templater->method($__vars['xf']['visitor'], 'canViewResources', array()) AND $__vars['user']['xfrm_resource_count']) {
+	if ($__templater->method($__vars['xf']['visitor'], 'canViewMedia', array())) {
+		$__finalCompiled .= '
+	';
+		if ($__vars['user']['xfmg_media_count']) {
+			$__finalCompiled .= '
+		<li><dl class="pairs pairs--inline">
+			<dt>' . 'Media' . '</dt>
+			<dd>' . $__templater->filter($__vars['user']['xfmg_media_count'], array(array('number', array()),), true) . '</dd>
+		</dl></li>
+	';
+		}
+		$__finalCompiled .= '
+	';
+		if ($__vars['user']['xfmg_album_count']) {
+			$__finalCompiled .= '
+		<li><dl class="pairs pairs--inline">
+			<dt>' . 'Albums' . '</dt>
+			<dd>' . $__templater->filter($__vars['user']['xfmg_album_count'], array(array('number', array()),), true) . '</dd>
+		</dl></li>
+	';
+		}
+		$__finalCompiled .= '
+';
+	}
+	$__finalCompiled .= '
+';
+	if ($__templater->method($__vars['xf']['visitor'], 'hasOption', array('hasDbEcommerce', )) AND ($__templater->method($__vars['xf']['visitor'], 'canViewDbtechEcommerceProducts', array()) AND $__vars['user']['dbtech_ecommerce_product_count'])) {
 		$__finalCompiled .= '
 	<li><dl class="pairs pairs--inline">
-		<dt>' . 'Resources' . '</dt>
-		<dd>' . $__templater->filter($__vars['user']['xfrm_resource_count'], array(array('number', array()),), true) . '</dd>
+		<dt>' . 'Products' . '</dt>
+		<dd>' . $__templater->filter($__vars['user']['dbtech_ecommerce_product_count'], array(array('number', array()),), true) . '</dd>
 	</dl></li>
 ';
 	}

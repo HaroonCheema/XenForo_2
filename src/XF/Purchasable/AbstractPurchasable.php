@@ -18,7 +18,7 @@ abstract class AbstractPurchasable
 	/**
 	 * Prepares all the data required to create the Purchase object.
 	 *
-	 * @param \XF\Http\Request $request
+	 * @param \XF\Http\Request $requestz
 	 * @param \XF\Entity\User $purchaser
 	 * @param null $error
 	 *

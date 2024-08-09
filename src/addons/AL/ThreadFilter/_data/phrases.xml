@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="altf_above_last_updated" version_id="1060170" version_string="1.6.1"><![CDATA[Before "Last Updated"]]></phrase>
+  <phrase title="altf_above_prefixes" version_id="1060170" version_string="1.6.1"><![CDATA[Before "Prefixes"]]></phrase>
+  <phrase title="altf_above_sort_by" version_id="1060170" version_string="1.6.1"><![CDATA[Before "Sort By"]]></phrase>
+  <phrase title="altf_above_started_by" version_id="1060170" version_string="1.6.1"><![CDATA[Before "Started By"]]></phrase>
+  <phrase title="altf_above_thread_list" version_id="1010173" version_string="1.1.1"><![CDATA[Above thread list]]></phrase>
+  <phrase title="altf_additional_filters" version_id="1000071" version_string="1.0.0"><![CDATA[Additional Filters]]></phrase>
+  <phrase title="altf_address_or_zip_code" version_id="2050071" version_string="2.5.0"><![CDATA[From address or ZIP Code]]></phrase>
+  <phrase title="altf_all_fields" version_id="2050070" version_string="2.5.0"><![CDATA[All fields]]></phrase>
+  <phrase title="altf_allow_filter" version_id="1000071" version_string="1.0.0"><![CDATA[Allow Filter]]></phrase>
+  <phrase title="altf_allow_filter_explain" version_id="1000071" version_string="1.0.0"><![CDATA[If enable, the users will be able to filter thread lists by the value of this field, and the filter will be shown in the Filters popup on thread list page.]]></phrase>
+  <phrase title="altf_allow_search" version_id="1000071" version_string="1.0.0"><![CDATA[Allow Search]]></phrase>
+  <phrase title="altf_allow_search_explain" version_id="1000071" version_string="1.0.0"><![CDATA[If enabled, the filter will be shown in Thread Search page. Only fields available in the forum being searched will be shown.]]></phrase>
+  <phrase title="altf_allow_sorting" version_id="1040172" version_string="1.4.1"><![CDATA[Allow Sorting]]></phrase>
+  <phrase title="altf_allow_sorting_explain" version_id="1040172" version_string="1.4.1"><![CDATA[If enabled, the field will be available in Thread Sorting options.]]></phrase>
+  <phrase title="altf_as_a_metadata" version_id="1030370" version_string="1.3.3"><![CDATA[As metadata (under the title)]]></phrase>
+  <phrase title="altf_as_a_prefix" version_id="1030370" version_string="1.3.3"><![CDATA[As a prefix]]></phrase>
+  <phrase title="altf_as_a_separate_column" version_id="1030370" version_string="1.3.3"><![CDATA[As a separate column]]></phrase>
+  <phrase title="altf_below_sort_by" version_id="1060170" version_string="1.6.1"><![CDATA[After "Sort By"]]></phrase>
+  <phrase title="altf_choice_label" version_id="3000001" version_string="3.0.0"><![CDATA[{choice} <span class="label label--subtle">{count}</span>]]></phrase>
+  <phrase title="altf_choice_label_select" version_id="3000001" version_string="3.0.0"><![CDATA[{choice} ({count})]]></phrase>
+  <phrase title="altf_clear_all" version_id="2020170" version_string="2.2.1"><![CDATA[Clear all]]></phrase>
+  <phrase title="altf_default_match_type" version_id="1090571" version_string="1.9.5"><![CDATA[Default match type]]></phrase>
+  <phrase title="altf_default_match_type_explain" version_id="1090571" version_string="1.9.5"><![CDATA[For fields with multiple-choice options, users will get an additional selection field to choose, if they want to find results matching ALL their choices or ANY of the choices. This option controls which value should be selected by default for this field. Users can still change it in the filter form.]]></phrase>
+  <phrase title="altf_distance" version_id="2050071" version_string="2.5.0"><![CDATA[Distance]]></phrase>
+  <phrase title="altf_do_not_filter" version_id="1000071" version_string="1.0.0"><![CDATA[Do not allow filtering]]></phrase>
+  <phrase title="altf_do_now_allow_searching" version_id="1000071" version_string="1.0.0"><![CDATA[Do not allow searching by this field]]></phrase>
+  <phrase title="altf_equal_to_x" version_id="1000071" version_string="1.0.0"><![CDATA[{x}]]></phrase>
+  <phrase title="altf_equal_to_x_date" version_id="1000071" version_string="1.0.0"><![CDATA[at {x}]]></phrase>
+  <phrase title="altf_fade" version_id="3000001" version_string="3.0.0"><![CDATA[Fade]]></phrase>
+  <phrase title="altf_field_columns" version_id="1030072" version_string="1.3.0"><![CDATA[Show in Thread List]]></phrase>
+  <phrase title="altf_field_columns_explain" version_id="1030370" version_string="1.3.3"><![CDATA[The fields selected will be shown in the locations chosen.]]></phrase>
+  <phrase title="altf_field_operator_is_undefined" version_id="1000071" version_string="1.0.0"><![CDATA[Field operator is not defined]]></phrase>
+  <phrase title="altf_filter_location" version_id="1000073" version_string="1.0.0"><![CDATA[Filter Location]]></phrase>
+  <phrase title="altf_filter_location_explain" version_id="1000073" version_string="1.0.0"><![CDATA[Choose Inherit to use the location configured board-wide in Thread Filter setting or the location setup for any parent node.]]></phrase>
+  <phrase title="altf_from" version_id="1000071" version_string="1.0.0"><![CDATA[From...]]></phrase>
+  <phrase title="altf_hide" version_id="3000001" version_string="3.0.0"><![CDATA[Hide]]></phrase>
+  <phrase title="altf_in_filter_popup" version_id="1000071" version_string="1.0.0"><![CDATA[Show in Filters popup]]></phrase>
+  <phrase title="altf_in_forum_view" version_id="1030370" version_string="1.3.3"><![CDATA[In forum view]]></phrase>
+  <phrase title="altf_in_search_results" version_id="1030370" version_string="1.3.3"><![CDATA[In search results]]></phrase>
+  <phrase title="altf_in_separate_form_above" version_id="1000071" version_string="1.0.0"><![CDATA[In a separate form above thread list]]></phrase>
+  <phrase title="altf_in_separate_form_below" version_id="1000071" version_string="1.0.0"><![CDATA[In a separate form below thread list]]></phrase>
+  <phrase title="altf_inherit" version_id="1000073" version_string="1.0.0"><![CDATA[Inherit]]></phrase>
+  <phrase title="altf_items_found" version_id="3000001" version_string="3.0.0"><![CDATA[Threads found]]></phrase>
+  <phrase title="altf_km" version_id="3020270" version_string="3.2.2"><![CDATA[Kilometers]]></phrase>
+  <phrase title="altf_less_than_x" version_id="1000071" version_string="1.0.0"><![CDATA[< {x}]]></phrase>
+  <phrase title="altf_less_than_x_date" version_id="1000071" version_string="1.0.0"><![CDATA[before {x}]]></phrase>
+  <phrase title="altf_locked_status" version_id="2050171" version_string="2.5.1"><![CDATA[Discussion status]]></phrase>
+  <phrase title="altf_locked_unlocked_status" version_id="2050171" version_string="2.5.1"><![CDATA[Locked/Unlocked Status]]></phrase>
+  <phrase title="altf_match_text" version_id="1000071" version_string="1.0.0"><![CDATA[{string}]]></phrase>
+  <phrase title="altf_mile" version_id="3020270" version_string="3.2.2"><![CDATA[Miles]]></phrase>
+  <phrase title="altf_more_than_x" version_id="1000071" version_string="1.0.0"><![CDATA[> {x}]]></phrase>
+  <phrase title="altf_more_than_x_date" version_id="1000071" version_string="1.0.0"><![CDATA[after {x}]]></phrase>
+  <phrase title="altf_next_to_search_icon" version_id="1090271" version_string="1.9.2"><![CDATA[Next to the search icon]]></phrase>
+  <phrase title="altf_popup_default" version_id="1000073" version_string="1.0.0"><![CDATA[Popup (XenForo Default)]]></phrase>
+  <phrase title="altf_rebuild_thread_fields" version_id="1000071" version_string="1.0.0"><![CDATA[Rebuild Thread Fields]]></phrase>
+  <phrase title="altf_remove_all_filters" version_id="2020170" version_string="2.2.1"><![CDATA[Remove all filters]]></phrase>
+  <phrase title="altf_replace_filter_link" version_id="1090271" version_string="1.9.2"><![CDATA[Replace Filters link above thread list]]></phrase>
+  <phrase title="altf_results_matching_all_options" version_id="1090571" version_string="1.9.5"><![CDATA[Match all options]]></phrase>
+  <phrase title="altf_results_matching_any_option" version_id="1090571" version_string="1.9.5"><![CDATA[Match any option]]></phrase>
+  <phrase title="altf_search_icon" version_id="1090271" version_string="1.9.2"><![CDATA[Next to the search icon]]></phrase>
+  <phrase title="altf_search_title_and_message" version_id="1070370" version_string="1.7.3"><![CDATA[Search title and message]]></phrase>
+  <phrase title="altf_shared_fields_only" version_id="2050070" version_string="2.5.0"><![CDATA[Shared fields only]]></phrase>
+  <phrase title="altf_show_filter_as" version_id="1000071" version_string="1.0.0"><![CDATA[Show in filter form as]]></phrase>
+  <phrase title="altf_show_filter_as_explain" version_id="1000071" version_string="1.0.0"><![CDATA[Choose what kind of form element should be used to allow users to filter/search threads by this field. ]]></phrase>
+  <phrase title="altf_show_in_search" version_id="1000071" version_string="1.0.0"><![CDATA[Search page filter]]></phrase>
+  <phrase title="altf_show_in_search_explain" version_id="1000071" version_string="1.0.0"><![CDATA[If enabled, the filter will be shown in Thread Search page if searching a forum where the field is available.]]></phrase>
+  <phrase title="altf_show_normally" version_id="3000001" version_string="3.0.0"><![CDATA[Show normally]]></phrase>
+  <phrase title="altf_show_on_advanced_search_page" version_id="1000071" version_string="1.0.0"><![CDATA[Show on advanced search page]]></phrase>
+  <phrase title="altf_sidebar" version_id="1000073" version_string="1.0.0"><![CDATA[Sidebar]]></phrase>
+  <phrase title="altf_thread_field" version_id="3010170" version_string="3.1.1"><![CDATA[Thread field]]></phrase>
+  <phrase title="altf_thread_field_cache" version_id="1000071" version_string="1.0.0"><![CDATA[Thread field cache]]></phrase>
+  <phrase title="altf_thread_fields" version_id="1100172" version_string="1.10.1"><![CDATA[Custom thread fields]]></phrase>
+  <phrase title="altf_thread_filter_options" version_id="1000071" version_string="1.0.0"><![CDATA[Thread Filter options]]></phrase>
+  <phrase title="altf_thread_type" version_id="3070171" version_string="3.7.1 PL1"><![CDATA[Thread type (XenForo 2.2+)]]></phrase>
+  <phrase title="altf_to" version_id="1000071" version_string="1.0.0"><![CDATA[To...]]></phrase>
+  <phrase title="altf_value_between_x_y" version_id="1000071" version_string="1.0.0"><![CDATA[between {x} and {y}]]></phrase>
+  <phrase title="altf_value_between_x_y_date" version_id="1000071" version_string="1.0.0"><![CDATA[between {x} and {y}]]></phrase>
+  <phrase title="altf_within_distance_unit" version_id="3000001" version_string="3.0.0"><![CDATA[within {distance} {unit} from {address}]]></phrase>
+  <phrase title="cron_entry.altf_hourly_cron" version_id="1000071" version_string="1.0.0"><![CDATA[Thread Filter - Hourly Cron]]></phrase>
+  <phrase title="option.altf_additional_filters" version_id="2050171" version_string="2.5.1"><![CDATA[Additional filters]]></phrase>
+  <phrase title="option.altf_additional_filters_location" version_id="2050171" version_string="2.5.1"><![CDATA[Additional filters location]]></phrase>
+  <phrase title="option.altf_auto_collapse" version_id="1100172" version_string="1.10.1"><![CDATA[Collapse Filter Form]]></phrase>
+  <phrase title="option.altf_auto_hide_if_empty" version_id="3000001" version_string="3.0.0"><![CDATA[Empty filters]]></phrase>
+  <phrase title="option.altf_auto_reload" version_id="1050070" version_string="1.5.0"><![CDATA[Auto Reload]]></phrase>
+  <phrase title="option.altf_cache_ttl" version_id="2050070" version_string="2.5.0"><![CDATA[Cache TTL (seconds)]]></phrase>
+  <phrase title="option.altf_color_similarity_index" version_id="1000073" version_string="1.0.0"><![CDATA[Color Difference Index]]></phrase>
+  <phrase title="option.altf_custom_field_location" version_id="1060170" version_string="1.6.1"><![CDATA[Custom Fields in Filters]]></phrase>
+  <phrase title="option.altf_default_distance_unit" version_id="2050071" version_string="2.5.0"><![CDATA[Default distance unit]]></phrase>
+  <phrase title="option.altf_disable_default_filter_field" version_id="2050171" version_string="2.5.1"><![CDATA[Disable default filter fields]]></phrase>
+  <phrase title="option.altf_faceted_search" version_id="3000001" version_string="3.0.0"><![CDATA[Enable faceted search]]></phrase>
+  <phrase title="option.altf_filter_icon_location" version_id="1090271" version_string="1.9.2"><![CDATA[Filter Icon Location]]></phrase>
+  <phrase title="option.altf_filter_location" version_id="1000073" version_string="1.0.0"><![CDATA[Filter Location]]></phrase>
+  <phrase title="option.altf_filterable_lists" version_id="2010072" version_string="2.1.0"><![CDATA[Enable filterable drop down lists]]></phrase>
+  <phrase title="option.altf_hide_distance_unit" version_id="3040670" version_string="3.4.6"><![CDATA[Hide distance unit]]></phrase>
+  <phrase title="option.altf_keyword_search" version_id="1070370" version_string="1.7.3"><![CDATA[Keyword Search]]></phrase>
+  <phrase title="option.altf_license_key" version_id="1000071" version_string="1.0.0"><![CDATA[License Key]]></phrase>
+  <phrase title="option.altf_max_limit" version_id="1080010" version_string="1.8.0"><![CDATA[Maximum result count]]></phrase>
+  <phrase title="option.altf_multi_category_field_mode" version_id="2050070" version_string="2.5.0"><![CDATA[Multiple category search mode]]></phrase>
+  <phrase title="option.altf_multi_prefix_search" version_id="2050070" version_string="2.5.0"><![CDATA[Multiple Prefix Search]]></phrase>
+  <phrase title="option.altf_number_formatting_exclusion_list" version_id="3000570" version_string="3.0.5"><![CDATA[Number Formatting Exclusion List]]></phrase>
+  <phrase title="option.altf_off_canvas_filter" version_id="1080171" version_string="1.8.1"><![CDATA[Off-Canvas Menu for Mobile]]></phrase>
+  <phrase title="option.altf_tag_search" version_id="1070370" version_string="1.7.3"><![CDATA[Tag Search]]></phrase>
+  <phrase title="option.altf_total_count_indicator" version_id="3000001" version_string="3.0.0"><![CDATA[Total count indicator]]></phrase>
+  <phrase title="option_explain.altf_additional_filters" version_id="2050171" version_string="2.5.1"><![CDATA[Optional non-custom field filters can be added to the filter form.]]></phrase>
+  <phrase title="option_explain.altf_additional_filters_location" version_id="2050171" version_string="2.5.1"><![CDATA[Insert the additional filters enabled above in the following spot in the filter form.]]></phrase>
+  <phrase title="option_explain.altf_auto_collapse" version_id="1100172" version_string="1.10.1"><![CDATA[If enabled, the filter form above thread list will be collapsed on page load. Does not affect the forms in other locations.]]></phrase>
+  <phrase title="option_explain.altf_auto_hide_if_empty" version_id="3000001" version_string="3.0.0"><![CDATA[If faceted search is enabled, it is possible to hide or fade out the custom fields or their individual options which don't match any results.]]></phrase>
+  <phrase title="option_explain.altf_auto_reload" version_id="1050070" version_string="1.5.0"><![CDATA[If enabled, list of threads will be automatically reloaded with each change of filter form.]]></phrase>
+  <phrase title="option_explain.altf_cache_ttl" version_id="2050070" version_string="2.5.0"><![CDATA[The number of seconds to cache the search results. The cache is invalidated whenever a new entry matching the search result is created or an entry is updated, so this setting usually should not be changed unless instructed otherwise. Set to 0 to disable the cache.]]></phrase>
+  <phrase title="option_explain.altf_color_similarity_index" version_id="1000073" version_string="1.0.0"><![CDATA[The index controls color search similarity algorithm. Index of 0 means exact color match, index of 1 is the minimum detectable change for human eye. The difference between white and black is about 440.]]></phrase>
+  <phrase title="option_explain.altf_custom_field_location" version_id="1060170" version_string="1.6.1"><![CDATA[Choose where to put the custom fields in Filters form.]]></phrase>
+  <phrase title="option_explain.altf_default_distance_unit" version_id="2050071" version_string="2.5.0"><![CDATA[The default unit used in location-related form elements. Applies only if <b>[AL] Location field</b> add-on is installed.]]></phrase>
+  <phrase title="option_explain.altf_disable_default_filter_field" version_id="2010171" version_string="2.1.1"><![CDATA[]]></phrase>
+  <phrase title="option_explain.altf_faceted_search" version_id="3040070" version_string="3.4.0"><![CDATA[If enabled, selection-type custom fields will show the number of items matching the option, dynamically updating the number of items available each time filters change. Not supported if filter form is shown in the popup.]]></phrase>
+  <phrase title="option_explain.altf_filter_icon_location" version_id="1090271" version_string="1.9.2"><![CDATA[When off-canvas menu is enabled, an icon will be added using which users can open the menu.]]></phrase>
+  <phrase title="option_explain.altf_filter_location" version_id="1000073" version_string="1.0.0"><![CDATA[Sets the default setting for filter location for all forums. The setting can be modified for each forum separately.]]></phrase>
+  <phrase title="option_explain.altf_filterable_lists" version_id="2010072" version_string="2.1.0"><![CDATA[If enabled, the custom fields of "Multiple-choice drop down" and "Drop down selection" will allow filtering the list by keywords. Useful for larger lists but may be not optimal on mobile devices.]]></phrase>
+  <phrase title="option_explain.altf_hide_distance_unit" version_id="3040670" version_string="3.4.6"><![CDATA[If checked, the distance unit will not be shown to users in the forms.]]></phrase>
+  <phrase title="option_explain.altf_keyword_search" version_id="1070370" version_string="1.7.3"><![CDATA[If enabled, users will be able to search thread title and message for keywords along with filtering the threads by custom fields in the same form. Uses XenForo search engine to execute the search.]]></phrase>
+  <phrase title="option_explain.altf_license_key" version_id="1000071" version_string="1.0.0"><![CDATA[The license key you got from us when purchasing the product. Please check Licensing Details page in your Services if you don't have your license key.]]></phrase>
+  <phrase title="option_explain.altf_max_limit" version_id="1090471" version_string="1.9.4"><![CDATA[The maximum number of threads included in the search results. Bigger limits may have performance impact on large boards. Default value is 10000. Put 0 for unlimited.]]></phrase>
+  <phrase title="option_explain.altf_multi_category_field_mode" version_id="2050070" version_string="2.5.0"><![CDATA[The setting defines, if the form on the Advanced search page should show the custom fields which are common by all forums (shared), or all custom fields that are available in all forums being searched]]></phrase>
+  <phrase title="option_explain.altf_multi_prefix_search" version_id="2050070" version_string="2.5.0"><![CDATA[If enabled, users will be able to filter the threads based on multiple prefixes.]]></phrase>
+  <phrase title="option_explain.altf_number_formatting_exclusion_list" version_id="3010070" version_string="3.1.0"><![CDATA[Custom fields, which should not be formatted as a number (e.g. a numeric field representing years). List custom field IDs separated by a comma.]]></phrase>
+  <phrase title="option_explain.altf_off_canvas_filter" version_id="2050071" version_string="2.5.0"><![CDATA[If enabled, mobile views will have a filter icon next to the search icon or replacing the default Filters link clicking which will open an off-canvas menu with the filter form. All other forms (above thread list, sidebar, popup) will automatically disappear in the mobile view.]]></phrase>
+  <phrase title="option_explain.altf_tag_search" version_id="1070370" version_string="1.7.3"><![CDATA[If enabled, users will be able to filter the threads based on tags along with filtering the threads by custom fields. XenForo search engine is used to execute the search.]]></phrase>
+  <phrase title="option_explain.altf_total_count_indicator" version_id="3000001" version_string="3.0.0"><![CDATA[If enabled, the filter form will show the total number of items matching with each change of the form.]]></phrase>
+  <phrase title="option_group.altf_main" version_id="1000071" version_string="1.0.0"><![CDATA[Thread Filter by AddonsLab]]></phrase>
+  <phrase title="option_group_description.altf_main" version_id="1000071" version_string="1.0.0"><![CDATA[Performance-optimized thread filter and search based on custom fields]]></phrase>
+  <phrase title="permission.forum_useCustomFieldFilter" version_id="3060070" version_string="3.6.0"><![CDATA[Can use custom field filters]]></phrase>
+  <phrase title="widget_def.altf_filter_widget" version_id="1000073" version_string="1.0.0"><![CDATA[Thread Filter Widget]]></phrase>
+  <phrase title="widget_def_desc.altf_filter_widget" version_id="1000073" version_string="1.0.0"><![CDATA[A widget to allow filtering the current forum by custom fields]]></phrase>
+</phrases>

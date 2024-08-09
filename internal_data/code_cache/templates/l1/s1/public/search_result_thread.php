@@ -13,12 +13,23 @@ return array(
 		</span>
 		<div class="contentRow-main">
 			<h3 class="contentRow-title">
-				<a href="' . $__templater->func('link', array('threads', $__vars['thread'], ), true) . '">' . ($__templater->func('prefix', array('thread', $__vars['thread'], ), true) . $__templater->func('highlight', array($__vars['thread']['title'], $__vars['options']['term'], ), true)) . '</a>
+				<a href="' . $__templater->func('link', array('threads', $__vars['thread'], ), true) . '">' . $__templater->func('prefix', array('thread', $__vars['thread'], ), true);
+	$__compilerTemp1 = $__vars;
+	$__compilerTemp1['columnList'] = $__vars['thread']['Forum']['display_fields']['forum_view']['prefix'];
+	$__compilerTemp1['fieldData'] = $__vars['thread']['custom_fields'];
+	$__finalCompiled .= trim('
+' . $__templater->includeTemplate('altf_list_prefix', $__compilerTemp1) . '
+') . ' ' . $__templater->func('highlight', array($__vars['thread']['title'], $__vars['options']['term'], ), true) . '</a>
 			</h3>
 
 			<div class="contentRow-snippet">' . $__templater->func('snippet', array($__vars['thread']['FirstPost']['message'], 300, array('term' => $__vars['options']['term'], 'stripQuote' => true, ), ), true) . '</div>
 
-			<div class="contentRow-minor contentRow-minor--hideLinks">
+			';
+	$__compilerTemp2 = $__vars;
+	$__compilerTemp2['columnList'] = $__vars['thread']['Forum']['display_fields']['search']['metadata'];
+	$__compilerTemp2['fieldData'] = $__vars['thread']['custom_fields'];
+	$__finalCompiled .= $__templater->includeTemplate('altf_thread_field_search_list', $__compilerTemp2) . '
+<div class="contentRow-minor contentRow-minor--hideLinks">
 				<ul class="listInline listInline--bullet">
 					';
 	if (($__vars['options']['mod'] == 'thread') AND $__templater->method($__vars['thread'], 'canUseInlineModeration', array())) {

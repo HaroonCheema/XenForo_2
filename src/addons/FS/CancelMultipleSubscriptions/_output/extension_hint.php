@@ -17,3 +17,8 @@ namespace FS\CancelMultipleSubscriptions\XF\Pub\Controller
 {
 	class XFCP_Purchase extends \XF\Pub\Controller\Purchase {}
 }
+
+namespace FS\CancelMultipleSubscriptions\XF\Purchasable
+{
+	class XFCP_UserUpgrade extends \XF\Purchasable\UserUpgrade {}
+}

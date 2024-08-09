@@ -106,6 +106,7 @@ return array(
 		'label' => 'Search in forums',
 	)) . '
 
+' . $__templater->includeTemplate('altf_search_form', $__vars) . '
 ' . $__templater->callMacro('search_form_macros', 'order', array(
 		'isRelevanceSupported' => $__vars['isRelevanceSupported'],
 		'options' => array('replies' => 'Most replies', ),

@@ -352,7 +352,8 @@ return array(
 			' . $__compilerTemp5 . '
 
 			<hr class="formRowSep" />
-			' . $__compilerTemp7 . '
+			' . $__templater->includeTemplate('altf_filter_location', $__vars) . '
+' . $__compilerTemp7 . '
 
 		</div>
 
