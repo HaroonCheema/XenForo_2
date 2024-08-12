@@ -56,7 +56,6 @@
 		<xf:dateinput name="options[{$definition.field_id}]" value="{{ $options.{$definition.field_id} ?: '' }}"
 					  data-field="{$definition.field_id}"
 					  maxlength="{{ $definition.max_length ? $definition.max_length : '' }}"
-					  required="{{ $definition.isRequired($editMode) ? 'required' : '' }}"
 					  class="field_{$definition.field_id}" />
 
 		<xf:elseif is="$definition.match_type == 'color'" />
@@ -91,10 +90,9 @@
 					  maxlength="{{ $definition.max_length ? $definition.max_length : '' }}"
 					  pattern="{$pattern}"
 					  default=""
-					  min="{$min}"
+					  min="0"
 					  max="{$max}"
 					  step="{$step}"
-					  required="{{ $definition.isRequired($editMode) ? 'required' : '' }}"
 					  class="field_{$definition.field_id}" />
 
 		<xf:else />
@@ -120,10 +118,9 @@
 					maxlength="{{ $definition.max_length ? $definition.max_length : '' }}"
 					pattern="{$pattern}"
 					title="{$title}"
-					min="{$min}"
+					min="0"
 					max="{$max}"
 					step="{$step}"
-					required="{{ $definition.isRequired($editMode) ? 'required' : '' }}"
 					class="field_{$definition.field_id}" />
 	</xf:if>
 </xf:macro>
@@ -133,7 +130,6 @@
 	<xf:textarea name="options[{$definition.field_id}]" value="{{ $options.{$definition.field_id} ?: '' }}"
 				 maxlength="{{ $definition.max_length ? $definition.max_length : '' }}"
 				 autosize="true"
-				 required="{{ $definition.isRequired($editMode) ? 'required' : '' }}"
 				 class="field_{$definition.field_id}" />
 </xf:macro>
 
@@ -166,7 +162,7 @@
 			<xf:option value="">{{ phrase('no_selection') }}</xf:option>
 		</xf:if>
 		<xf:foreach loop="$definition.field_choices" key="$value" value="$label">
-			<xf:option value="{$value}" required="{{ $definition.isRequired($editMode) ? 'required' : '' }}">{$label}</xf:option>
+			<xf:option value="{$value}">{$label}</xf:option>
 		</xf:foreach>
 	</xf:radio>
 </xf:macro>
@@ -174,7 +170,6 @@
 <xf:macro name="custom_fields_edit_checkbox" arg-options="!" arg-set="!" arg-definition="!" arg-editMode="!" arg-namePrefix="custom_fields">
 
 	<xf:checkbox name="options[{$definition.field_id}]" value="{{ $options.{$definition.field_id} ?: '' }}"
-				 required="{{ $definition.isRequired($editMode) ? 'required' : '' }}"
 				 listclass="field_{$definition.field_id} listColumns">
 		<xf:options source="$definition.field_choices" />
 	</xf:checkbox>

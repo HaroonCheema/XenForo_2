@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 81ac998ecd3ee0a83a8ec077b9fac24e
+// FROM HASH: c65516907e0795c7e35b5c44a06b5f41
 return array(
 'macros' => array('custom_fields_edit' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -112,7 +112,6 @@ return array(
 			'value' => ($__vars['options'][$__vars['definition']['field_id']] ?: ''),
 			'data-field' => $__vars['definition']['field_id'],
 			'maxlength' => ($__vars['definition']['max_length'] ? $__vars['definition']['max_length'] : ''),
-			'required' => ($__templater->method($__vars['definition'], 'isRequired', array($__vars['editMode'], )) ? 'required' : ''),
 			'class' => 'field_' . $__vars['definition']['field_id'],
 		)) . '
 
@@ -183,10 +182,9 @@ return array(
 			'maxlength' => ($__vars['definition']['max_length'] ? $__vars['definition']['max_length'] : ''),
 			'pattern' => $__vars['pattern'],
 			'default' => '',
-			'min' => $__vars['min'],
+			'min' => '0',
 			'max' => $__vars['max'],
 			'step' => $__vars['step'],
-			'required' => ($__templater->method($__vars['definition'], 'isRequired', array($__vars['editMode'], )) ? 'required' : ''),
 			'class' => 'field_' . $__vars['definition']['field_id'],
 		)) . '
 
@@ -235,10 +233,9 @@ return array(
 			'maxlength' => ($__vars['definition']['max_length'] ? $__vars['definition']['max_length'] : ''),
 			'pattern' => $__vars['pattern'],
 			'title' => $__vars['title'],
-			'min' => $__vars['min'],
+			'min' => '0',
 			'max' => $__vars['max'],
 			'step' => $__vars['step'],
-			'required' => ($__templater->method($__vars['definition'], 'isRequired', array($__vars['editMode'], )) ? 'required' : ''),
 			'class' => 'field_' . $__vars['definition']['field_id'],
 		)) . '
 	';
@@ -266,7 +263,6 @@ return array(
 		'value' => ($__vars['options'][$__vars['definition']['field_id']] ?: ''),
 		'maxlength' => ($__vars['definition']['max_length'] ? $__vars['definition']['max_length'] : ''),
 		'autosize' => 'true',
-		'required' => ($__templater->method($__vars['definition'], 'isRequired', array($__vars['editMode'], )) ? 'required' : ''),
 		'class' => 'field_' . $__vars['definition']['field_id'],
 	)) . '
 ';
@@ -353,7 +349,6 @@ return array(
 		foreach ($__vars['definition']['field_choices'] AS $__vars['value'] => $__vars['label']) {
 			$__compilerTemp1[] = array(
 				'value' => $__vars['value'],
-				'required' => ($__templater->method($__vars['definition'], 'isRequired', array($__vars['editMode'], )) ? 'required' : ''),
 				'label' => $__templater->escape($__vars['label']),
 				'_type' => 'option',
 			);
@@ -387,7 +382,6 @@ return array(
 	$__finalCompiled .= $__templater->formCheckBox(array(
 		'name' => 'options[' . $__vars['definition']['field_id'] . ']',
 		'value' => ($__vars['options'][$__vars['definition']['field_id']] ?: ''),
-		'required' => ($__templater->method($__vars['definition'], 'isRequired', array($__vars['editMode'], )) ? 'required' : ''),
 		'listclass' => 'field_' . $__vars['definition']['field_id'] . ' listColumns',
 	), $__compilerTemp1) . '
 ';

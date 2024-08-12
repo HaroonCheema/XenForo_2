@@ -2,16 +2,26 @@
     "admin/custom_fields_macros.html": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
-        "hash": "81ac998ecd3ee0a83a8ec077b9fac24e"
+        "hash": "c65516907e0795c7e35b5c44a06b5f41"
     },
     "admin/widget_def_options_custom_forum_widget.html": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
-        "hash": "c591c90a5a808d247eae9de66b8a1c90"
+        "hash": "5627a6f3cc91abc591726eec224850f3"
+    },
+    "public/fs_lightslider.less": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "f82d913dcd8262cca1274ec8d68381b8"
+    },
+    "public/fs_xfmg_media_list.less": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "1c1de892fc3caff9743cdc427ff77ae2"
     },
     "public/widget_custom_forum_widget.html": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
-        "hash": "713573b520bafd9e80f428f780ebc33b"
+        "hash": "c1dc8958a9c4e8de9a00063209ede7cc"
     }
 }

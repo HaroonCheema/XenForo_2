@@ -1,4 +1,40 @@
 <xf:if is="$threads is not empty">
+	<xf:css src="fs_xfmg_media_list.less" />
+	<xf:css src="fs_lightslider.less" />
+
+	<xf:js src="vendor/lightslider/lightslider.js" min="1" />
+	<xf:js src="CustomWidget/slider.js" min="1" />
+
+	<div class="block" {{ widget_data($widget) }}>
+		<div class="block-container">
+			<h3 class="block-minorHeader">
+				<a href="{$link}" rel="nofollow">{{ $title }}</a>
+			</h3>
+			<div class="block-body block-row">
+				<div class="itemList itemList--slider"
+					 data-xf-init="item-slider"
+					 data-xf-item-slider="{$options.slider|json}">
+
+					<xf:foreach loop="$threads" value="$thread">
+						<div class="itemList-item itemList-item--slider">
+							<a href="{{ link('threads', $thread) }}">
+								<span class="xfmgThumbnail xfmgThumbnail--image xfmgThumbnail--fluid">
+									<img class='xfmgThumbnail-image' src="{{ count($thread.FirstPost.Attachments) ? link('full:attachments', $thread.FirstPost.Attachments.first()) : base_url('styles/FS/CustomWidgetImage/no_image.png',true) }}" alt='{$thread.title}' />
+									<span class='xfmgThumbnail-icon'></span>
+								</span>
+							</a>
+							
+							
+						</div>
+					</xf:foreach>
+				</div>
+			</div>
+		</div>
+	</div>
+</xf:if>
+
+
+<xf:if is="$threads123 is not empty">
 	<div class="block"{{ widget_data($widget) }}>
 		<div class="block-container">
 			<h3 class="block-minorHeader">

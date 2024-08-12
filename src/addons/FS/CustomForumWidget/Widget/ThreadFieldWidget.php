@@ -18,6 +18,15 @@ class ThreadFieldWidget extends AbstractWidget
         'dateLimit' => 90,
         'order' => 'newest',
         'node_ids' => [],
+        'slider' => [
+            'item' => 6,
+            'itemWide' => 4,
+            'itemMedium' => 3,
+            'itemNarrow' => 2,
+            'auto' => false,
+            'loop' => false,
+            // 'pager' => false
+        ]
     ];
 
     protected function getDefaultTemplateParams($context)
@@ -136,6 +145,56 @@ class ThreadFieldWidget extends AbstractWidget
         return $this->renderer('widget_custom_forum_widget', $viewParams);
     }
 
+    // public function render()
+    // {
+    //     $categoryRepo = $this->repository('XFMG:Category');
+
+    //     $categoryIds = [1];
+
+    //     // echo "<pre>";
+    //     // var_dump($categoryIds);
+    //     // exit;
+
+    //     if ($categoryIds && !in_array(0, $categoryIds)) {
+    //         $categoryList = $categoryRepo
+    //             ->findCategoryList(null, 'Permissions|' . \XF::visitor()->permission_combination_id)
+    //             ->where('category_id', $categoryIds)
+    //             ->fetch()
+    //             ->filterViewable();
+    //     } else {
+    //         $categoryList = $categoryRepo->getViewableCategories();
+    //     }
+
+    //     $viewableCategories = $categoryList->filter(function ($category) {
+    //         return ($category->category_type == 'media' || $category->category_type == 'album');
+    //     });
+    //     $categoryIds = $viewableCategories->keys();
+
+    //     /** @var \XFMG\Repository\Media $mediaRepo */
+    //     $mediaRepo = $this->repository('XFMG:Media');
+    //     $mediaList = $mediaRepo->findMediaForWidget($categoryIds, $this->options['include_personal_albums'])
+    //         ->limit($this->options['limit'] * 10);
+
+    //     $title = \XF::phrase('xfmg_latest_media');
+
+
+    //     $mediaList->orderByDate();
+
+
+    //     $mediaItems = $mediaList->fetch()->filterViewable();
+
+    //     $router = $this->app->router('public');
+    //     $link = $router->buildLink('whats-new/media', null, ['skip' => 1]);
+
+    //     $viewParams = [
+    //         'threads' => $mediaItems->slice(0, $this->options['limit']),
+    //         'title' => $this->getTitle() ?: $title,
+    //         'link' => $link
+    //     ];
+
+    //     return $this->renderer('widget_custom_forum_widget', $viewParams);
+    // }
+
     public function verifyOptions(\XF\Http\Request $request, array &$options, &$error = null)
     {
         $options = $request->filter([
@@ -143,6 +202,15 @@ class ThreadFieldWidget extends AbstractWidget
             'dateLimit' => 'uint',
             'node_ids' => 'array-uint',
             'order' => 'str',
+            'slider' => [
+                'item' => 'uint',
+                'itemWide' => 'uint',
+                'itemMedium' => 'uint',
+                'itemNarrow' => 'uint',
+                'auto' => 'bool',
+                'loop' => 'bool',
+                // 'pager' => 'bool'
+            ]
         ]);
 
         $customFieldIdOptions = \XF::options()->fsCustomThreadFieldIds;
