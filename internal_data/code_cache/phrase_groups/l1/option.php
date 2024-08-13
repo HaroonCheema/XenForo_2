@@ -329,7 +329,7 @@ return array (
   'option.fs_cancel_multiple_subscriptions_mintues' => 'User group timeout',
   'option.fs_cancel_multiple_subscriptions_userGroup' => 'Select user group',
   'option.fs_color' => 'Select The Colour',
-  'option.fs_custom_select_forums' => 'Select Applicable Forums',
+  'option.fs_custom_thread_image_dimensions' => 'Thread image dimensions',
   'option.fs_enable_image' => 'Display Image',
   'option.fs_escrow_admin_Id' => 'Escrow Percentage Holder Id',
   'option.fs_escrow_admin_percentage' => 'Admin Percentage',

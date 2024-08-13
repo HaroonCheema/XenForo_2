@@ -1,16 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <phrases>
+  <phrase title="fs_auto_play" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Auto-play]]></phrase>
+  <phrase title="fs_auto_play_hint" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Slider will automatically play slides.]]></phrase>
   <phrase title="fs_clicks_count_x" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Clicks: {clicks}]]></phrase>
   <phrase title="fs_custom_display_newest_thread" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Newest threads]]></phrase>
   <phrase title="fs_custom_display_order" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Display order]]></phrase>
   <phrase title="fs_custom_display_random_thread" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Random threads]]></phrase>
   <phrase title="fs_custom_display_random_thread_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[From all threads that meet set criteria]]></phrase>
   <phrase title="fs_date_limit_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter date in days here...!]]></phrase>
+  <phrase title="fs_enable_responsive_slides" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enable responsive slides]]></phrase>
+  <phrase title="fs_enable_responsive_slides_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[The maximum number of slides displayed at a time can be flexible depending on viewport size. If checked, leave fields blank or 0 to not change the value for a particular breakpoint.]]></phrase>
+  <phrase title="fs_loop_slides" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Loop slides]]></phrase>
+  <phrase title="fs_loop_slides_hint" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Allow slider to loop back to the beginning when the end is reached.]]></phrase>
+  <phrase title="fs_maximum_slides" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Maximum slides]]></phrase>
+  <phrase title="fs_maximum_slides_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[This is the maximum number of slides that will be shown at a time.]]></phrase>
+  <phrase title="fs_medium" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Medium]]></phrase>
+  <phrase title="fs_narrow" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Narrow]]></phrase>
   <phrase title="fs_view_count_x" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Views: {views}]]></phrase>
+  <phrase title="fs_wide" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Wide]]></phrase>
   <phrase title="option.fsCustomThreadFieldIds" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Custom thread fields Ids]]></phrase>
-  <phrase title="option.fs_custom_select_forums" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Select Applicable Forums]]></phrase>
+  <phrase title="option.fs_custom_thread_image_dimensions" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Thread image dimensions]]></phrase>
   <phrase title="option_explain.fsCustomThreadFieldIds" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter the Applicable Custom thread fields Ids Comma separated like 1,2,3,4.]]></phrase>
-  <phrase title="option_explain.fs_custom_select_forums" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You can select multiple applicable forums from here...!]]></phrase>
+  <phrase title="option_explain.fs_custom_thread_image_dimensions" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
   <phrase title="option_group.fs_custom_forum_widget" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Custom Forum Widget]]></phrase>
   <phrase title="option_group_description.fs_custom_forum_widget" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
   <phrase title="payment_clear_need_to_wait_for_account_upgradation" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You have Already buy this account Upgrade Need to Wait for account Upgradation.]]></phrase>

@@ -34,13 +34,13 @@ class ThreadFieldWidget extends AbstractWidget
         $params = parent::getDefaultTemplateParams($context);
         if ($context == 'options') {
 
-            $applicableForumIds = \XF::options()->fs_custom_select_forums;
+            // $applicableForumIds = \XF::options()->fs_custom_select_forums;
 
-            $nodeList = $this->finder('XF:Node')->where("node_id", $applicableForumIds)->order('lft');
+            // $nodeList = \XF::finder('XF:Node')->where("node_id", $applicableForumIds)->order('lft')->fetch();
 
             $nodeRepo = $this->app->repository('XF:Node');
-            // $params['nodeTree'] = $nodeRepo->createNodeTree($nodeRepo->getFullNodeList());
-            $params['nodeTree'] = $nodeRepo->createNodeTree($nodeList->fetch());
+            $params['nodeTree'] = $nodeRepo->createNodeTree($nodeRepo->getFullNodeList());
+            // $params['nodeTree'] = $nodeRepo->createNodeTree($nodeList);
 
             $thread = $this->em()->create('XF:Thread');
 
@@ -144,56 +144,6 @@ class ThreadFieldWidget extends AbstractWidget
 
         return $this->renderer('widget_custom_forum_widget', $viewParams);
     }
-
-    // public function render()
-    // {
-    //     $categoryRepo = $this->repository('XFMG:Category');
-
-    //     $categoryIds = [1];
-
-    //     // echo "<pre>";
-    //     // var_dump($categoryIds);
-    //     // exit;
-
-    //     if ($categoryIds && !in_array(0, $categoryIds)) {
-    //         $categoryList = $categoryRepo
-    //             ->findCategoryList(null, 'Permissions|' . \XF::visitor()->permission_combination_id)
-    //             ->where('category_id', $categoryIds)
-    //             ->fetch()
-    //             ->filterViewable();
-    //     } else {
-    //         $categoryList = $categoryRepo->getViewableCategories();
-    //     }
-
-    //     $viewableCategories = $categoryList->filter(function ($category) {
-    //         return ($category->category_type == 'media' || $category->category_type == 'album');
-    //     });
-    //     $categoryIds = $viewableCategories->keys();
-
-    //     /** @var \XFMG\Repository\Media $mediaRepo */
-    //     $mediaRepo = $this->repository('XFMG:Media');
-    //     $mediaList = $mediaRepo->findMediaForWidget($categoryIds, $this->options['include_personal_albums'])
-    //         ->limit($this->options['limit'] * 10);
-
-    //     $title = \XF::phrase('xfmg_latest_media');
-
-
-    //     $mediaList->orderByDate();
-
-
-    //     $mediaItems = $mediaList->fetch()->filterViewable();
-
-    //     $router = $this->app->router('public');
-    //     $link = $router->buildLink('whats-new/media', null, ['skip' => 1]);
-
-    //     $viewParams = [
-    //         'threads' => $mediaItems->slice(0, $this->options['limit']),
-    //         'title' => $this->getTitle() ?: $title,
-    //         'link' => $link
-    //     ];
-
-    //     return $this->renderer('widget_custom_forum_widget', $viewParams);
-    // }
 
     public function verifyOptions(\XF\Http\Request $request, array &$options, &$error = null)
     {

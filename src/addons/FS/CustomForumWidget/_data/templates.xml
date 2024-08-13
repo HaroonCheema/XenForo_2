@@ -58,7 +58,6 @@
 		<xf:dateinput name="options[{$definition.field_id}]" value="{{ $options.{$definition.field_id} ?: '' }}"
 					  data-field="{$definition.field_id}"
 					  maxlength="{{ $definition.max_length ? $definition.max_length : '' }}"
-					  required="{{ $definition.isRequired($editMode) ? 'required' : '' }}"
 					  class="field_{$definition.field_id}" />
 
 		<xf:elseif is="$definition.match_type == 'color'" />
@@ -93,10 +92,9 @@
 					  maxlength="{{ $definition.max_length ? $definition.max_length : '' }}"
 					  pattern="{$pattern}"
 					  default=""
-					  min="{$min}"
+					  min="0"
 					  max="{$max}"
 					  step="{$step}"
-					  required="{{ $definition.isRequired($editMode) ? 'required' : '' }}"
 					  class="field_{$definition.field_id}" />
 
 		<xf:else />
@@ -122,10 +120,9 @@
 					maxlength="{{ $definition.max_length ? $definition.max_length : '' }}"
 					pattern="{$pattern}"
 					title="{$title}"
-					min="{$min}"
+					min="0"
 					max="{$max}"
 					step="{$step}"
-					required="{{ $definition.isRequired($editMode) ? 'required' : '' }}"
 					class="field_{$definition.field_id}" />
 	</xf:if>
 </xf:macro>
@@ -135,7 +132,6 @@
 	<xf:textarea name="options[{$definition.field_id}]" value="{{ $options.{$definition.field_id} ?: '' }}"
 				 maxlength="{{ $definition.max_length ? $definition.max_length : '' }}"
 				 autosize="true"
-				 required="{{ $definition.isRequired($editMode) ? 'required' : '' }}"
 				 class="field_{$definition.field_id}" />
 </xf:macro>
 
@@ -168,7 +164,7 @@
 			<xf:option value="">{{ phrase('no_selection') }}</xf:option>
 		</xf:if>
 		<xf:foreach loop="$definition.field_choices" key="$value" value="$label">
-			<xf:option value="{$value}" required="{{ $definition.isRequired($editMode) ? 'required' : '' }}">{$label}</xf:option>
+			<xf:option value="{$value}">{$label}</xf:option>
 		</xf:foreach>
 	</xf:radio>
 </xf:macro>
@@ -176,7 +172,6 @@
 <xf:macro name="custom_fields_edit_checkbox" arg-options="!" arg-set="!" arg-definition="!" arg-editMode="!" arg-namePrefix="custom_fields">
 
 	<xf:checkbox name="options[{$definition.field_id}]" value="{{ $options.{$definition.field_id} ?: '' }}"
-				 required="{{ $definition.isRequired($editMode) ? 'required' : '' }}"
 				 listclass="field_{$definition.field_id} listColumns">
 		<xf:options source="$definition.field_choices" />
 	</xf:checkbox>
@@ -238,60 +233,687 @@
 
 <hr class="formRowSep" />
 
+<xf:numberboxrow name="options[slider][item]" value="{$options.slider.item}" min="1"
+				 label="{{ phrase('fs_maximum_slides') }}"
+				 explain="{{ phrase('fs_maximum_slides_explain') }}" />
+
+<xf:checkboxrow>
+	<xf:option data-hide="true" selected="$options.slider.itemWide OR $options.slider.itemMedium OR $options.slider.itemNarrow">
+		<xf:label>{{ phrase('fs_enable_responsive_slides') }}</xf:label>
+		<xf:dependent>
+			<dl class="inputLabelPair">
+				<dt><label for="ctrl_wide">{{ phrase('fs_maximum_slides') }} {{ phrase('(fs_wide)') }}</label></dt>
+				<dd><xf:numberbox name="options[slider][itemWide]" id="ctrl_wide" value="{$options.slider.itemWide}" min="0" required="{{ false }}" /></dd>
+			</dl>
+			<dl class="inputLabelPair">
+				<dt><label for="ctrl_medium">{{ phrase('fs_maximum_slides') }} {{ phrase('(fs_medium)') }}</label></dt>
+				<dd><xf:numberbox name="options[slider][itemMedium]" id="ctrl_medium" value="{$options.slider.itemMedium}" min="0" required="{{ false }}" /></dd>
+			</dl>
+			<dl class="inputLabelPair">
+				<dt><label for="ctrl_narrow">{{ phrase('fs_maximum_slides') }} {{ phrase('(fs_narrow)') }}</label></dt>
+				<dd><xf:numberbox name="options[slider][itemNarrow]" id="ctrl_narrow" value="{$options.slider.itemNarrow}" min="0" required="{{ false }}" /></dd>
+			</dl>
+		</xf:dependent>
+		<xf:afterhint>{{ phrase('fs_enable_responsive_slides_explain') }}</xf:afterhint>
+	</xf:option>
+</xf:checkboxrow>
+
+<xf:checkboxrow>
+	<xf:option name="options[slider][auto]"
+			   selected="{$options.slider.auto}"
+			   hint="{{ phrase('fs_auto_play_hint') }}">
+		{{ phrase('fs_auto_play') }}
+	</xf:option>
+
+	<xf:option name="options[slider][loop]"
+			   selected="{$options.slider.loop}"
+			   hint="{{ phrase('fs_loop_slides_hint') }}">
+		{{ phrase('fs_loop_slides') }}
+	</xf:option>
+
+</xf:checkboxrow>
+
+<hr class="formRowSep" />
+
 <xf:macro template="custom_fields_macros" name="custom_fields_edit"
 		  arg-type="threads"
 		  arg-set="{$thread.custom_fields}"
 		  arg-onlyInclude="{$onlyInclude}"
 		  arg-options="{$options}"
 		  arg-requiredOnly="false" />]]></template>
+  <template type="public" title="fs_custom_widget_list.less" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[.itemList-itemTypeIcon
+{
+	&.itemList-itemTypeIcon--image
+	{
+		&::after
+		{
+			.m-faContent(@fa-var-image);
+		}
+
+		display: none;
+	}
+
+	&.itemList-itemTypeIcon--embed
+	{
+		.m-faBase('Brands');
+		&::after
+		{
+			.m-faContent(@fa-var-youtube);
+		}
+	}
+
+	&.itemList-itemTypeIcon--video
+	{
+		&::after
+		{
+			.m-faContent(@fa-var-video);
+		}
+	}
+
+	&.itemList-itemTypeIcon--audio
+	{
+		&::after
+		{
+			.m-faContent(@fa-var-music);
+		}
+	}
+
+	&.itemList-itemTypeIcon--embed
+	{
+		&--applemusic
+		{
+			.m-faBase('Brands');
+			&::after { .m-faContent(@fa-var-apple); }
+		}
+
+		&--facebook
+		{
+			.m-faBase('Brands');
+			&::after { .m-faContent(@fa-var-facebook); }
+		}
+
+		&--flickr
+		{
+			.m-faBase('Brands');
+			&::after { .m-faContent(@fa-var-flickr); }
+		}
+
+		&--instagram
+		{
+			.m-faBase('Brands');
+			&::after { .m-faContent(@fa-var-instagram); }
+		}
+
+		&--pinterest
+		{
+			.m-faBase('Brands');
+			&::after { .m-faContent(@fa-var-pinterest-square); }
+		}
+
+		&--reddit
+		{
+			.m-faBase('Brands');
+			&::after { .m-faContent(@fa-var-reddit-alien); }
+		}
+
+		&--soundcloud
+		{
+			.m-faBase('Brands');
+			&::after { .m-faContent(@fa-var-soundcloud); }
+		}
+
+		&--spotify
+		{
+			.m-faBase('Brands');
+			&::after { .m-faContent(@fa-var-spotify); }
+		}
+
+		&--tumblr
+		{
+			.m-faBase('Brands');
+			&::after { .m-faContent(@fa-var-tumblr-square); }
+		}
+
+		&--twitch
+		{
+			.m-faBase('Brands');
+			&::after { .m-faContent(@fa-var-twitch); }
+		}
+
+		&--twitter
+		{
+			.m-faBase('Brands');
+			&::after { .m-faContent(@fa-var-twitter); }
+		}
+
+		&--vimeo
+		{
+			.m-faBase('Brands');
+			&::after { .m-faContent(@fa-var-vimeo); }
+		}
+
+		&--youtube
+		{
+			.m-faBase('Brands');
+			&::after { .m-faContent(@fa-var-youtube); }
+		}
+	}
+}
+
+{{ include('xfmg_item_list.less') }}]]></template>
+  <template type="public" title="fs_lightslider.less" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[// NOTE: there are custom XF overrides at the bottom
+
+/*! lightslider - v1.1.6 - 2016-10-25
+* https://github.com/sachinchoolur/lightslider
+* Copyright (c) 2016 Sachin N; Licensed MIT */
+/** /!!! core css Should not edit !!!/**/
+
+.lSSlideOuter {
+    overflow: hidden;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none
+}
+.lightSlider:before, .lightSlider:after {
+    content: " ";
+    display: table;
+}
+.lightSlider {
+    overflow: hidden;
+    margin: 0;
+}
+.lSSlideWrapper {
+    max-width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+.lSSlideWrapper > .lightSlider:after {
+    clear: both;
+}
+.lSSlideWrapper .lSSlide {
+    -webkit-transform: translate(0px, 0px);
+    -ms-transform: translate(0px, 0px);
+    transform: translate(0px, 0px);
+    -webkit-transition: all 1s;
+    -webkit-transition-property: -webkit-transform,height;
+    -moz-transition-property: -moz-transform,height;
+    transition-property: transform,height;
+    -webkit-transition-duration: inherit !important;
+    transition-duration: inherit !important;
+    -webkit-transition-timing-function: inherit !important;
+    transition-timing-function: inherit !important;
+}
+.lSSlideWrapper .lSFade {
+    position: relative;
+}
+.lSSlideWrapper .lSFade > * {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    z-index: 9;
+    margin-right: 0;
+    width: 100%;
+}
+.lSSlideWrapper.usingCss .lSFade > * {
+    opacity: 0;
+    -webkit-transition-delay: 0s;
+    transition-delay: 0s;
+    -webkit-transition-duration: inherit !important;
+    transition-duration: inherit !important;
+    -webkit-transition-property: opacity;
+    transition-property: opacity;
+    -webkit-transition-timing-function: inherit !important;
+    transition-timing-function: inherit !important;
+}
+.lSSlideWrapper .lSFade > *.active {
+    z-index: 10;
+}
+.lSSlideWrapper.usingCss .lSFade > *.active {
+    opacity: 1;
+}
+/** /!!! End of core css Should not edit !!!/**/
+
+/* Pager */
+.lSSlideOuter .lSPager.lSpg {
+    margin: 10px 0 0;
+    padding: 0;
+    text-align: center;
+}
+.lSSlideOuter .lSPager.lSpg > li {
+    cursor: pointer;
+    display: inline-block;
+    padding: 0 5px;
+}
+.lSSlideOuter .lSPager.lSpg > li a {
+    background-color: #222222;
+    border-radius: 30px;
+    display: inline-block;
+    height: 8px;
+    overflow: hidden;
+    text-indent: -999em;
+    width: 8px;
+    position: relative;
+    z-index: 99;
+    -webkit-transition: all 0.5s linear 0s;
+    transition: all 0.5s linear 0s;
+}
+.lSSlideOuter .lSPager.lSpg > li:hover a, .lSSlideOuter .lSPager.lSpg > li.active a {
+    background-color: #428bca;
+}
+.lSSlideOuter .media {
+    opacity: 0.8;
+}
+.lSSlideOuter .media.active {
+    opacity: 1;
+}
+/* End of pager */
+
+/** Gallery */
+.lSSlideOuter .lSPager.lSGallery {
+    list-style: none outside none;
+    padding-left: 0;
+    margin: 0;
+    overflow: hidden;
+    transform: translate3d(0px, 0px, 0px);
+    -moz-transform: translate3d(0px, 0px, 0px);
+    -ms-transform: translate3d(0px, 0px, 0px);
+    -webkit-transform: translate3d(0px, 0px, 0px);
+    -o-transform: translate3d(0px, 0px, 0px);
+    -webkit-transition-property: -webkit-transform;
+    -moz-transition-property: -moz-transform;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.lSSlideOuter .lSPager.lSGallery li {
+    overflow: hidden;
+    -webkit-transition: border-radius 0.12s linear 0s 0.35s linear 0s;
+    transition: border-radius 0.12s linear 0s 0.35s linear 0s;
+}
+.lSSlideOuter .lSPager.lSGallery li.active, .lSSlideOuter .lSPager.lSGallery li:hover {
+    border-radius: 5px;
+}
+.lSSlideOuter .lSPager.lSGallery img {
+    display: block;
+    height: auto;
+    max-width: 100%;
+}
+.lSSlideOuter .lSPager.lSGallery:before, .lSSlideOuter .lSPager.lSGallery:after {
+    content: " ";
+    display: table;
+}
+.lSSlideOuter .lSPager.lSGallery:after {
+    clear: both;
+}
+/* End of Gallery*/
+
+/* slider actions */
+.lSAction > a {
+    width: 32px;
+    display: block;
+    top: 50%;
+    height: 32px;
+    background-image: url('../img/controls.png');
+    cursor: pointer;
+    position: absolute;
+    z-index: 99;
+    margin-top: -16px;
+    opacity: 0.5;
+    -webkit-transition: opacity 0.35s linear 0s;
+    transition: opacity 0.35s linear 0s;
+}
+.lSAction > a:hover {
+    opacity: 1;
+}
+.lSAction > .lSPrev {
+    background-position: 0 0;
+    left: 10px;
+}
+.lSAction > .lSNext {
+    background-position: -32px 0;
+    right: 10px;
+}
+.lSAction > a.disabled {
+    pointer-events: none;
+}
+.cS-hidden {
+    height: 1px;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    overflow: hidden;
+}
+
+
+/* vertical */
+.lSSlideOuter.vertical {
+    position: relative;
+}
+.lSSlideOuter.vertical.noPager {
+    padding-right: 0px !important;
+}
+.lSSlideOuter.vertical .lSGallery {
+    position: absolute !important;
+    right: 0;
+    top: 0;
+}
+.lSSlideOuter.vertical .lightSlider > * {
+    width: 100% !important;
+    max-width: none !important;
+}
+
+/* vertical controlls */
+.lSSlideOuter.vertical .lSAction > a {
+    left: 50%;
+    margin-left: -14px;
+    margin-top: 0;
+}
+.lSSlideOuter.vertical .lSAction > .lSNext {
+    background-position: 31px -31px;
+    bottom: 10px;
+    top: auto;
+}
+.lSSlideOuter.vertical .lSAction > .lSPrev {
+    background-position: 0 -31px;
+    bottom: auto;
+    top: 10px;
+}
+/* vertical */
+
+
+/* Rtl */
+.lSSlideOuter.lSrtl {
+    direction: rtl;
+}
+.lSSlideOuter .lightSlider, .lSSlideOuter .lSPager {
+    padding-left: 0;
+    list-style: none outside none;
+}
+.lSSlideOuter.lSrtl .lightSlider, .lSSlideOuter.lSrtl .lSPager {
+    padding-right: 0;
+}
+.lSSlideOuter .lightSlider > *,  .lSSlideOuter .lSGallery li {
+    float: left;
+}
+.lSSlideOuter.lSrtl .lightSlider > *,  .lSSlideOuter.lSrtl .lSGallery li {
+    float: right !important;
+}
+/* Rtl */
+
+@-webkit-keyframes rightEnd {
+    0% {
+        left: 0;
+    }
+
+    50% {
+        left: -15px;
+    }
+
+    100% {
+        left: 0;
+    }
+}
+@keyframes rightEnd {
+    0% {
+        left: 0;
+    }
+
+    50% {
+        left: -15px;
+    }
+
+    100% {
+        left: 0;
+    }
+}
+@-webkit-keyframes topEnd {
+    0% {
+        top: 0;
+    }
+
+    50% {
+        top: -15px;
+    }
+
+    100% {
+        top: 0;
+    }
+}
+@keyframes topEnd {
+    0% {
+        top: 0;
+    }
+
+    50% {
+        top: -15px;
+    }
+
+    100% {
+        top: 0;
+    }
+}
+@-webkit-keyframes leftEnd {
+    0% {
+        left: 0;
+    }
+
+    50% {
+        left: 15px;
+    }
+
+    100% {
+        left: 0;
+    }
+}
+@keyframes leftEnd {
+    0% {
+        left: 0;
+    }
+
+    50% {
+        left: 15px;
+    }
+
+    100% {
+        left: 0;
+    }
+}
+@-webkit-keyframes bottomEnd {
+    0% {
+        bottom: 0;
+    }
+
+    50% {
+        bottom: -15px;
+    }
+
+    100% {
+        bottom: 0;
+    }
+}
+@keyframes bottomEnd {
+    0% {
+        bottom: 0;
+    }
+
+    50% {
+        bottom: -15px;
+    }
+
+    100% {
+        bottom: 0;
+    }
+}
+.lSSlideOuter .rightEnd {
+    -webkit-animation: rightEnd 0.3s;
+    animation: rightEnd 0.3s;
+    position: relative;
+}
+.lSSlideOuter .leftEnd {
+    -webkit-animation: leftEnd 0.3s;
+    animation: leftEnd 0.3s;
+    position: relative;
+}
+.lSSlideOuter.vertical .rightEnd {
+    -webkit-animation: topEnd 0.3s;
+    animation: topEnd 0.3s;
+    position: relative;
+}
+.lSSlideOuter.vertical .leftEnd {
+    -webkit-animation: bottomEnd 0.3s;
+    animation: bottomEnd 0.3s;
+    position: relative;
+}
+.lSSlideOuter.lSrtl .rightEnd {
+    -webkit-animation: leftEnd 0.3s;
+    animation: leftEnd 0.3s;
+    position: relative;
+}
+.lSSlideOuter.lSrtl .leftEnd {
+    -webkit-animation: rightEnd 0.3s;
+    animation: rightEnd 0.3s;
+    position: relative;
+}
+/*/  GRab cursor */
+.lightSlider.lsGrab > * {
+  cursor: -webkit-grab;
+  cursor: -moz-grab;
+  cursor: -o-grab;
+  cursor: -ms-grab;
+  cursor: grab;
+}
+.lightSlider.lsGrabbing > * {
+  cursor: move;
+  cursor: -webkit-grabbing;
+  cursor: -moz-grabbing;
+  cursor: -o-grabbing;
+  cursor: -ms-grabbing;
+  cursor: grabbing;
+}
+
+
+
+
+
+
+// XENFORO EXTENSIONS AND OVERRIDES
+
+.lSSlideOuter .lSPager.lSpg
+{
+    line-height: 1;
+}
+
+.lSSlideOuter .lSPager.lSpg > li
+{
+    height: 20px;
+    line-height: 20px;
+}
+
+.lSSlideOuter .lSPager.lSpg > li a
+{
+    position: relative;
+    top: -2px;
+    background-color: @xf-textColor;
+    opacity: .3;
+}
+
+.lSSlideOuter .lSPager.lSpg > li:hover a,
+.lSSlideOuter .lSPager.lSpg > li.active a
+{
+    background-color: @xf-linkColor;
+    opacity: 1;
+}
+
+@actionIconColor: white;
+@actionBorderColor: black;
+@actionBorderWidth: 0.75px;
+
+.lSAction > a
+{
+    background-image: none;
+    text-decoration: none;
+    line-height: 32px;
+    font-size: 2em;
+
+    color: @actionIconColor;
+    opacity: 0.6;
+
+    &.lSNext
+    {
+        text-align: right;
+    }
+
+    &.lSPrev
+    {
+        text-align: left;
+    }
+
+    &:after
+    {
+        .m-faBase();
+        .m-faContent(@fa-var-chevron-right, .63em);
+        .m-textOutline();
+    }
+}
+
+.lSAction > a.lSNext:after
+{
+ 	.m-faContent(@fa-var-chevron-right, .63em, ltr);
+    .m-faContent(@fa-var-chevron-left, .63em, rtl);
+}
+.lSAction > a.lSPrev:after
+{
+    .m-faContent(@fa-var-chevron-left, .63em, ltr);
+	.m-faContent(@fa-var-chevron-right, .63em, rtl);
+}]]></template>
   <template type="public" title="widget_custom_forum_widget" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:if is="$threads is not empty">
-	<div class="block"{{ widget_data($widget) }}>
+	<xf:css src="fs_custom_widget_list.less" />
+	<xf:css src="fs_lightslider.less" />
+
+	<xf:js src="vendor/lightslider/lightslider.js" min="1" />
+	<xf:js src="CustomWidget/slider.js" min="1" />
+
+	<div class="block" {{ widget_data($widget) }}>
 		<div class="block-container">
 			<h3 class="block-minorHeader">
-				<a href="{$link}" rel="nofollow">{$title}</a>
+				<a href="{$link}" rel="nofollow">{{ $title }}</a>
 			</h3>
-			<ul class="block-body">
-				<xf:if is="$threads is not empty">
+			<div class="block-body block-row">
+				<div class="itemList itemList--slider"
+					 data-xf-init="item-slider"
+					 data-xf-item-slider="{$options.slider|json}">
+
 					<xf:foreach loop="$threads" value="$thread">
-						<li class="block-row">
-							<div class="contentRow">
-								<div class="contentRow-figure">
-									<xf:avatar user="$thread.LastPoster" size="xxs" defaultname="{$thread.last_post_username}" />
-								</div>
-								<div class="contentRow-main contentRow-main--close">
-									<xf:if is="$thread.isUnread()">
-										<a href="{{ link('threads/unread', $thread) }}">{{ prefix('thread', $thread) }}{$thread.title}</a>
-										<xf:else />
-										<a href="{{ link('threads/post', $thread, {'post_id': $thread.last_post_id,'isClicked': 2}) }}">{{ prefix('thread', $thread) }}{$thread.title}</a>
-									</xf:if>
+						<div class="itemList-item itemList-item--slider">
+							<a href="{{ link('threads/post', $thread, {'post_id': $thread.last_post_id,'isClicked': 2}) }}">
+								<span class="xfmgThumbnail xfmgThumbnail--image xfmgThumbnail--fluid">
+									<img class='xfmgThumbnail-image' src="{{ count($thread.FirstPost.Attachments) ? link('full:attachments', $thread.FirstPost.Attachments.first()) : base_url('styles/FS/CustomWidgetImage/no_image.png',true) }}" alt='{$thread.title}' style="width: {$xf.options.fs_custom_thread_image_dimensions.width}px; height: {$xf.options.fs_custom_thread_image_dimensions.height}px;"/>
+									<span class='xfmgThumbnail-icon'></span>
+								</span>
+							</a>
 
-									<div class="contentRow-minor contentRow-minor--hideLinks">
-										<ul class="listInline listInline--bullet">
-											<li>{{ phrase('latest_x', {'name': $thread.last_post_cache.username}) }}</li>
-											<li><xf:date time="{$thread.last_post_date}" /></li>
-										</ul>
+							<xf:if is="$thread.isUnread()">
+								<a href="{{ link('threads/unread', $thread, {'post_id': $thread.last_post_id,'isClicked': 2}) }}">{{ prefix('thread', $thread) }}{$thread.title}</a>
+								<xf:else />
+								<a href="{{ link('threads/post', $thread, {'post_id': $thread.last_post_id,'isClicked': 2}) }}">{{ prefix('thread', $thread) }}{$thread.title}</a>
+							</xf:if>
 
-									</div>
-									<div class="contentRow-minor contentRow-minor--hideLinks">
-										<a href="{{ link('forums', $thread.Forum) }}">{$thread.Forum.title}</a>
-									</div>
-
-									<div class="contentRow-minor contentRow-minor--hideLinks">
-										<ul class="listInline listInline--bullet">
-											<li>{{ phrase('fs_clicks_count_x', {'clicks': $thread.click_count}) }}</li>
-											<li>{{ phrase('fs_view_count_x', {'views': $thread.view_count}) }}</li>
-										</ul>
-									</div>
-								</div>
+							<div class="contentRow-minor contentRow-minor--hideLinks">
+								<ul class="listInline listInline--bullet">
+									<li>{{ phrase('fs_clicks_count_x', {'clicks': $thread.click_count}) }}</li>
+									<li>{{ phrase('fs_view_count_x', {'views': $thread.view_count}) }}</li>
+								</ul>
 							</div>
-						</li>
+
+						</div>
 					</xf:foreach>
-					<xf:else />
-					<li class="block-row block-row--minor">
-						{{ phrase('no_results_found') }}
-					</li>
-				</xf:if>
-			</ul>
+				</div>
+			</div>
 		</div>
 	</div>
 </xf:if>]]></template>

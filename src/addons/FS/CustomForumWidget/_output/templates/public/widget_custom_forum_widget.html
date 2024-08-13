@@ -1,5 +1,5 @@
 <xf:if is="$threads is not empty">
-	<xf:css src="fs_xfmg_media_list.less" />
+	<xf:css src="fs_custom_widget_list.less" />
 	<xf:css src="fs_lightslider.less" />
 
 	<xf:js src="vendor/lightslider/lightslider.js" min="1" />
@@ -17,71 +17,30 @@
 
 					<xf:foreach loop="$threads" value="$thread">
 						<div class="itemList-item itemList-item--slider">
-							<a href="{{ link('threads', $thread) }}">
+							<a href="{{ link('threads/post', $thread, {'post_id': $thread.last_post_id,'isClicked': 2}) }}">
 								<span class="xfmgThumbnail xfmgThumbnail--image xfmgThumbnail--fluid">
-									<img class='xfmgThumbnail-image' src="{{ count($thread.FirstPost.Attachments) ? link('full:attachments', $thread.FirstPost.Attachments.first()) : base_url('styles/FS/CustomWidgetImage/no_image.png',true) }}" alt='{$thread.title}' />
+									<img class='xfmgThumbnail-image' src="{{ count($thread.FirstPost.Attachments) ? link('full:attachments', $thread.FirstPost.Attachments.first()) : base_url('styles/FS/CustomWidgetImage/no_image.png',true) }}" alt='{$thread.title}' style="width: {$xf.options.fs_custom_thread_image_dimensions.width}px; height: {$xf.options.fs_custom_thread_image_dimensions.height}px;"/>
 									<span class='xfmgThumbnail-icon'></span>
 								</span>
 							</a>
-							
-							
+
+							<xf:if is="$thread.isUnread()">
+								<a href="{{ link('threads/unread', $thread, {'post_id': $thread.last_post_id,'isClicked': 2}) }}">{{ prefix('thread', $thread) }}{$thread.title}</a>
+								<xf:else />
+								<a href="{{ link('threads/post', $thread, {'post_id': $thread.last_post_id,'isClicked': 2}) }}">{{ prefix('thread', $thread) }}{$thread.title}</a>
+							</xf:if>
+
+							<div class="contentRow-minor contentRow-minor--hideLinks">
+								<ul class="listInline listInline--bullet">
+									<li>{{ phrase('fs_clicks_count_x', {'clicks': $thread.click_count}) }}</li>
+									<li>{{ phrase('fs_view_count_x', {'views': $thread.view_count}) }}</li>
+								</ul>
+							</div>
+
 						</div>
 					</xf:foreach>
 				</div>
 			</div>
-		</div>
-	</div>
-</xf:if>
-
-
-<xf:if is="$threads123 is not empty">
-	<div class="block"{{ widget_data($widget) }}>
-		<div class="block-container">
-			<h3 class="block-minorHeader">
-				<a href="{$link}" rel="nofollow">{$title}</a>
-			</h3>
-			<ul class="block-body">
-				<xf:if is="$threads is not empty">
-					<xf:foreach loop="$threads" value="$thread">
-						<li class="block-row">
-							<div class="contentRow">
-								<div class="contentRow-figure">
-									<xf:avatar user="$thread.LastPoster" size="xxs" defaultname="{$thread.last_post_username}" />
-								</div>
-								<div class="contentRow-main contentRow-main--close">
-									<xf:if is="$thread.isUnread()">
-										<a href="{{ link('threads/unread', $thread) }}">{{ prefix('thread', $thread) }}{$thread.title}</a>
-										<xf:else />
-										<a href="{{ link('threads/post', $thread, {'post_id': $thread.last_post_id,'isClicked': 2}) }}">{{ prefix('thread', $thread) }}{$thread.title}</a>
-									</xf:if>
-
-									<div class="contentRow-minor contentRow-minor--hideLinks">
-										<ul class="listInline listInline--bullet">
-											<li>{{ phrase('latest_x', {'name': $thread.last_post_cache.username}) }}</li>
-											<li><xf:date time="{$thread.last_post_date}" /></li>
-										</ul>
-
-									</div>
-									<div class="contentRow-minor contentRow-minor--hideLinks">
-										<a href="{{ link('forums', $thread.Forum) }}">{$thread.Forum.title}</a>
-									</div>
-
-									<div class="contentRow-minor contentRow-minor--hideLinks">
-										<ul class="listInline listInline--bullet">
-											<li>{{ phrase('fs_clicks_count_x', {'clicks': $thread.click_count}) }}</li>
-											<li>{{ phrase('fs_view_count_x', {'views': $thread.view_count}) }}</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</li>
-					</xf:foreach>
-					<xf:else />
-					<li class="block-row block-row--minor">
-						{{ phrase('no_results_found') }}
-					</li>
-				</xf:if>
-			</ul>
 		</div>
 	</div>
 </xf:if>

@@ -1,14 +1,15 @@
 {
-    "edit_format": "callback",
-    "edit_format_params": "XF\\Option\\Forum::renderSelectMultiple",
+    "edit_format": "template",
+    "edit_format_params": "option_template_attachmentMaxDimensions",
     "data_type": "array",
     "sub_options": [
-        "*"
+        "width",
+        "height"
     ],
     "validation_class": "",
     "validation_method": "",
     "advanced": false,
-    "default_value": "[]",
+    "default_value": "{\"width\":\"200\",\"height\":\"200\"}",
     "relations": {
         "fs_custom_forum_widget": 2
     }

@@ -385,7 +385,7 @@ This option requires that the specified account is a catch-all account or suppor
   'option_explain.fs_cancel_multiple_subscriptions_mintues' => '',
   'option_explain.fs_cancel_multiple_subscriptions_userGroup' => '',
   'option_explain.fs_color' => '',
-  'option_explain.fs_custom_select_forums' => 'You can select multiple applicable forums from here...!',
+  'option_explain.fs_custom_thread_image_dimensions' => '',
   'option_explain.fs_enable_image' => '',
   'option_explain.fs_escrow_admin_Id' => 'transfer percentage',
   'option_explain.fs_escrow_admin_percentage' => 'Admin Percentage',

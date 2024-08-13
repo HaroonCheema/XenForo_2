@@ -7,21 +7,21 @@
     "admin/widget_def_options_custom_forum_widget.html": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
-        "hash": "5627a6f3cc91abc591726eec224850f3"
+        "hash": "00a2b0bdbdc6c97c83ee19e7447b7987"
+    },
+    "public/fs_custom_widget_list.less": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "1c1de892fc3caff9743cdc427ff77ae2"
     },
     "public/fs_lightslider.less": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
         "hash": "f82d913dcd8262cca1274ec8d68381b8"
     },
-    "public/fs_xfmg_media_list.less": {
-        "version_id": 1000010,
-        "version_string": "1.0.0 Alpha",
-        "hash": "1c1de892fc3caff9743cdc427ff77ae2"
-    },
     "public/widget_custom_forum_widget.html": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
-        "hash": "c1dc8958a9c4e8de9a00063209ede7cc"
+        "hash": "91b1e365c9c730cb045f8679822f6a52"
     }
 }

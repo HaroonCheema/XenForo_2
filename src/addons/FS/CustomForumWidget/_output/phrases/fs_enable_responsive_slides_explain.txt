@@ -1,0 +1,1 @@
+The maximum number of slides displayed at a time can be flexible depending on viewport size. If checked, leave fields blank or 0 to not change the value for a particular breakpoint.

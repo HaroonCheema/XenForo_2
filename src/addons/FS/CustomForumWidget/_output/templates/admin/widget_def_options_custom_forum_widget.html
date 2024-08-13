@@ -35,50 +35,43 @@
 <hr class="formRowSep" />
 
 <xf:numberboxrow name="options[slider][item]" value="{$options.slider.item}" min="1"
-				 label="{{ phrase('xfmg_maximum_slides') }}"
-				 explain="{{ phrase('xfmg_maximum_slides_explain') }}" />
+				 label="{{ phrase('fs_maximum_slides') }}"
+				 explain="{{ phrase('fs_maximum_slides_explain') }}" />
 
 <xf:checkboxrow>
 	<xf:option data-hide="true" selected="$options.slider.itemWide OR $options.slider.itemMedium OR $options.slider.itemNarrow">
-		<xf:label>{{ phrase('xfmg_enable_responsive_slides') }}</xf:label>
+		<xf:label>{{ phrase('fs_enable_responsive_slides') }}</xf:label>
 		<xf:dependent>
 			<dl class="inputLabelPair">
-				<dt><label for="ctrl_wide">{{ phrase('xfmg_maximum_slides') }} {{ phrase('(xfmg_wide)') }}</label></dt>
+				<dt><label for="ctrl_wide">{{ phrase('fs_maximum_slides') }} {{ phrase('(fs_wide)') }}</label></dt>
 				<dd><xf:numberbox name="options[slider][itemWide]" id="ctrl_wide" value="{$options.slider.itemWide}" min="0" required="{{ false }}" /></dd>
 			</dl>
 			<dl class="inputLabelPair">
-				<dt><label for="ctrl_medium">{{ phrase('xfmg_maximum_slides') }} {{ phrase('(xfmg_medium)') }}</label></dt>
+				<dt><label for="ctrl_medium">{{ phrase('fs_maximum_slides') }} {{ phrase('(fs_medium)') }}</label></dt>
 				<dd><xf:numberbox name="options[slider][itemMedium]" id="ctrl_medium" value="{$options.slider.itemMedium}" min="0" required="{{ false }}" /></dd>
 			</dl>
 			<dl class="inputLabelPair">
-				<dt><label for="ctrl_narrow">{{ phrase('xfmg_maximum_slides') }} {{ phrase('(xfmg_narrow)') }}</label></dt>
+				<dt><label for="ctrl_narrow">{{ phrase('fs_maximum_slides') }} {{ phrase('(fs_narrow)') }}</label></dt>
 				<dd><xf:numberbox name="options[slider][itemNarrow]" id="ctrl_narrow" value="{$options.slider.itemNarrow}" min="0" required="{{ false }}" /></dd>
 			</dl>
 		</xf:dependent>
-		<xf:afterhint>{{ phrase('xfmg_enable_responsive_slides_explain') }}</xf:afterhint>
+		<xf:afterhint>{{ phrase('fs_enable_responsive_slides_explain') }}</xf:afterhint>
 	</xf:option>
 </xf:checkboxrow>
 
 <xf:checkboxrow>
 	<xf:option name="options[slider][auto]"
 			   selected="{$options.slider.auto}"
-			   hint="{{ phrase('xfmg_auto_play_hint') }}">
-		{{ phrase('xfmg_auto_play') }}
+			   hint="{{ phrase('fs_auto_play_hint') }}">
+		{{ phrase('fs_auto_play') }}
 	</xf:option>
 
 	<xf:option name="options[slider][loop]"
 			   selected="{$options.slider.loop}"
-			   hint="{{ phrase('xfmg_loop_slides_hint') }}">
-		{{ phrase('xfmg_loop_slides') }}
+			   hint="{{ phrase('fs_loop_slides_hint') }}">
+		{{ phrase('fs_loop_slides') }}
 	</xf:option>
 
-	<xf:comment>
-		<xf:option name="options[slider][pager]"
-				   selected="{$options.slider.pager}"
-				   hint="{{ phrase('xfmg_display_pager_hint') }}">
-			{{ phrase('xfmg_display_pager') }}
-		</xf:option>
-	</xf:comment>
 </xf:checkboxrow>
 
 <hr class="formRowSep" />
