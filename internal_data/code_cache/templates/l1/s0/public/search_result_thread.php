@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: c7e153e446ce7fa2a6676dbf26e7f12f
+// FROM HASH: adec05ca7ced18a86e5a05068a1712b0
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -21,8 +21,10 @@ return array(
 ' . $__templater->includeTemplate('altf_list_prefix', $__compilerTemp1) . '
 ') . ' ' . $__templater->func('highlight', array($__vars['thread']['title'], $__vars['options']['term'], ), true) . '</a>
 			</h3>
+			
+			' . $__templater->func('dump', array($__vars['options']['term'], ), true) . '
 
-			<div class="contentRow-snippet">' . $__templater->func('snippet', array($__vars['thread']['FirstPost']['message'], 300, array('term' => $__vars['options']['term'], 'stripQuote' => true, ), ), true) . '</div>
+			<div class="contentRow-snippet">' . $__templater->func('bb_code_snippet', array($__vars['thread']['FirstPost']['message'], 'post', $__vars['thread']['FirstPost'], 300, ), true) . '</div>
 
 			';
 	$__compilerTemp2 = $__vars;
