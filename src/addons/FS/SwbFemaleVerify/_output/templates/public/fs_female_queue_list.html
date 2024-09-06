@@ -1,0 +1,189 @@
+<xf:title>{{ phrase('fs_female_verify_queue_list') }}</xf:title>
+
+<xf:page option="section" value="fs_female_queue" />
+
+<xf:css src="fs_female_queue_list.less" />
+<xf:js prod="FS/WalletResources/withdrawal_queue.min.js" dev="FS/WalletResources/withdrawal_queue.js" addon="FS/SwbFemaleVerify" />
+
+<div class="blocks">
+	<xf:if is="$items is not empty">
+		<xf:set var="$previousWithdraw" value="{{ $items|first }}" />
+
+		<xf:foreach loop="$items" value="$item">
+			<div class="block withdrawalQueue">
+				<xf:macro name="withdraw_form" arg-item="{$item}"
+						  arg-previousWithdraw="{$previousWithdraw}"
+						  arg-redirect="{$redirect}"
+						  arg-page="{$page}" />
+			</div>
+
+			<xf:set var="$previousWithdraw" value="{$item}" />
+		</xf:foreach>
+
+		<div class="block-outer block-outer--after">
+			<xf:pagenav	page="{$page}" perpage="{$perPage}" total="{$total}" link="wallet/queue" params="{$conditions}"
+						wrapperclass="block-outer-main" />
+		</div>
+
+		<xf:else />
+
+		<div class="block">
+			<div class="block-container">
+				<div class="block-body">
+					<div class="formInfoRow">
+						{{ phrase('no_results_found') }}
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</xf:if>
+</div>
+
+
+<xf:macro name="withdraw_form" arg-item="!" arg-previousWithdraw="!" arg-redirect="/" arg-page="0">
+
+	<xf:form class="block-container withdrawalQueue-item" action="{{ link('female-verify/queue/save', $item) }}" ajax="true">
+		<span class="u-anchorTarget" id="withdraw-{$item.id}"></span>
+
+		<div class="block-body">
+
+			<div class="message">
+				<xf:css src="message.less" />
+				<div class="message-inner">
+					<div class="message-cell message-cell--user">
+
+						<xf:extension name="user_wrapper">
+							<section itemscope itemtype="https://schema.org/Person" class="message-user">
+								<xf:extension name="user_avatar">
+									<div class="message-avatar">
+										<div class="message-avatar-wrapper">
+											<xf:avatar user="$item.User" size="m" itemprop="image" />
+										</div>
+									</div>
+								</xf:extension>
+
+								<div class="message-userDetails">
+									<xf:extension name="user_name">
+										<h4 class="message-name"><xf:username user="$item.User" rich="true" itemprop="name" /></h4>
+									</xf:extension>
+								</div>
+
+								<span class="message-userArrow"></span>
+							</section>
+						</xf:extension>
+
+					</div>
+
+					<div class="message-cell message-cell--main">
+						<div class="message-expandWrapper js-expandWatch">
+							<div class="message-expandContent js-expandContent">
+								<div class="message-main">
+
+									<header class="message-attribution">
+										<xf:extension name="attributes">
+											<ul class="message-attribution-main listInline">
+												<xf:extension name="attributes_main">
+													<li><xf:date time="{$item.create_date}" /></li>
+												</xf:extension>
+											</ul>
+											<ul class="message-attribution-opposite message-attribution-opposite--list">
+												<xf:extension name="attributes_opposite">
+													<li>
+														<a href="{{ link('item/queue', null, {'page': $page}) . '#withdraw-' . $item.id }}" rel="nofollow">
+															#{{ $item.id|number }}
+														</a>
+													</li>
+												</xf:extension>
+											</ul>
+										</xf:extension>
+									</header>
+
+									<div class="message-content">
+
+										<div class="message-userContent">
+											<div class="message-body">
+
+												<div class="pairWrapper pairWrapper--spaced">
+
+													<xf:extension name="data_start"></xf:extension>
+
+													<xf:extension name="data_payment_system">
+														<dl class="pairs pairs--columns pairs--fluidHuge">
+															<dt>{{ phrase('fs_female_gov_image') }}</dt>
+															<dd><img src="{$item.getImgUrl(true, 'govImage')}" style="width:80px; height:80px; float: right;"></dd>
+														</dl>
+													</xf:extension>
+
+													<xf:extension name="data_wallet">
+														<dl class="pairs pairs--columns pairs--fluidHuge">
+															<dt>{{ phrase('fs_female_selfi_image') }}</dt>
+															<dd>
+																<img src="{$item.getImgUrl(true, 'selfiImage')}" style="width:80px; height:80px; float: right;">
+															</dd>
+														</dl>
+
+													</xf:extension>
+
+													<xf:extension name="data_sum">
+														<dl class="pairs pairs--columns pairs--fluidHuge">
+															<dt>{{ phrase('fs_female_blank_paper_image') }}</dt>
+															<dd>
+																<img src="{$item.getImgUrl(true, 'paperImage')}" style="width:80px; height:80px; float: right;">
+															</dd>
+														</dl>
+													</xf:extension>
+
+													<xf:extension name="data_end"></xf:extension>
+
+												</div>
+
+
+											</div>
+										</div>
+
+									</div>
+
+								</div>
+							</div>
+							<div class="message-expandLink js-expandLink"><a>{{ phrase('click_to_expand') }}</a></div>
+						</div>
+					</div>
+
+					<div class="message-cell message-cell--extra">
+						<xf:extension name="actions">
+
+							<xf:radio name="female_state">
+								<!--[XF:above_withdraw_state_actions]-->
+								<xf:option value="pending" checked="{{ $item.female_state == 'pending' ? 'checked' : ''}}" data-xf-click="pb-wq-withdraw-control">
+									{{ phrase('pending') }}
+								</xf:option>
+								<xf:option value="sent" checked="{{ $item.female_state == 'sent' ? 'checked' : ''}}" data-xf-click="pb-wq-withdraw-control">
+									{{ phrase('fs_female_verify_approve') }}
+								</xf:option>
+								<xf:option value="rejected" checked="{{ $item.female_state == 'rejected' ? 'checked' : ''}}" data-xf-click="pb-wq-withdraw-control">
+									<xf:label>{{ phrase('fs_female_verify_reject') }}</xf:label>
+									<xf:textbox name="reason"
+												maxlength="{{ max_length($item, 'reject_reason') }}"
+												placeholder="{{ phrase('optional') }}" />
+									<xf:html>
+										<div class="formRow-explain">{{ phrase('this_will_be_shown_to_user_if_provided') }}</div>
+									</xf:html>
+								</xf:option>
+								<!--[XF:bellow_withdraw_state_actions]-->
+							</xf:radio>
+
+						</xf:extension>
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+
+		<xf:submitrow rowtype="simple" icon="save" />
+
+		<xf:redirect url="{$redirect}#withdraw-{$previousWithdraw.id}" />
+	</xf:form>
+
+</xf:macro>

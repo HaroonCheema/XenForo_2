@@ -334,6 +334,7 @@ return array (
   'option.fs_escrow_admin_Id' => 'Escrow Percentage Holder Id',
   'option.fs_escrow_admin_percentage' => 'Admin Percentage',
   'option.fs_escrow_applicable_forum' => 'Forum Id',
+  'option.fs_female_verification_images_size' => 'Image size',
   'option.fs_forum_gorups_per_row' => 'Groups display on per row',
   'option.fs_forum_groups_applicable_forum' => 'Parent Forum Id',
   'option.fs_forum_groups_approval' => 'Allow without admin Approvel',

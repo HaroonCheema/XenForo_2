@@ -19,4 +19,4 @@ $config['enableLivePayments'] = false;
 
 $config['debug'] = true;
 
-$config['development']['defaultAddOn'] = 'FS/CustomForumWidget';
+$config['development']['defaultAddOn'] = 'FS/SwbFemaleVerify';

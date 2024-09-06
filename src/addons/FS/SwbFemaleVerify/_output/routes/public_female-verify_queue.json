@@ -1,0 +1,11 @@
+{
+    "route_type": "public",
+    "route_prefix": "female-verify",
+    "sub_name": "queue",
+    "format": "queue/:int<id>",
+    "build_class": "",
+    "build_method": "",
+    "controller": "FS\\SwbFemaleVerify:Queue",
+    "context": "",
+    "action_prefix": ""
+}

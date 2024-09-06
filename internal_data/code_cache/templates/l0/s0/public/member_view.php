@@ -224,6 +224,12 @@ return array(
 								' . $__templater->func('username_link', array($__vars['user'], true, array(
 		'href' => '',
 	))) . '
+
+' . $__templater->button('Get Verified', array(
+		'href' => $__templater->func('link', array('female-verify/add', ), false),
+		'icon' => 'confirm',
+	), '', array(
+	)) . '
 							</span>
 							' . $__compilerTemp6 . '
 						</h1>

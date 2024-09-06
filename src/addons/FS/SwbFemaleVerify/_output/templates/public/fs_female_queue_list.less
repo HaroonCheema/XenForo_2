@@ -1,0 +1,26 @@
+.withdrawalQueue
+{
+	.block-container.withdrawalQueue-item--sent
+	{
+		.message,
+		.message-cell--user,
+		.message-cell--extra
+		{
+			background: @xf-inlineModHighlightColor;
+		}
+
+		.message .message-userArrow:after
+		{
+			border-right-color: @xf-inlineModHighlightColor;
+		}
+	}
+
+	.block-container.withdrawalQueue-item--rejected
+	{
+		.message-cell--user,
+		.message-cell--main
+		{
+			opacity: 0.25;
+		}
+	}
+}

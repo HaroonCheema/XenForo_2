@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<routes>
+  <route route_type="public" route_prefix="female-verify" format=":int&lt;id&gt;/:page" controller="FS\SwbFemaleVerify:FemaleVerification"/>
+  <route route_type="public" route_prefix="female-verify" sub_name="queue" format="queue/:int&lt;id&gt;" controller="FS\SwbFemaleVerify:Queue"/>
+</routes>

@@ -1,0 +1,29 @@
+<xf:title>{{ phrase('fs_female_verification_title') }}</xf:title>
+
+<xf:form action="{{ link('female-verify/add') }}" class="block" ajax="true" novalidate="false">
+	<div class="block-container">
+		<div class="block-body">
+
+			<xf:inforow rowtype="confirm">
+				{{ phrase('fs_female_verify_please_submit_the_necessary', {'size': $xf.options.fs_female_verification_images_size}) }}
+			</xf:inforow>
+
+			<xf:uploadrow name="govImage" accept=".gif,.jpeg,.jpg,.jpe,.png"
+						  label="{{ phrase('fs_female_verify_add_gov_image') }}"
+						  hint="{{ phrase('required') }}"
+						  explain="{{ phrase('fs_female_verify_explain_gov_image') }}" data-required="true"></xf:uploadrow>
+
+			<xf:uploadrow name="selfiImage" accept=".gif,.jpeg,.jpg,.jpe,.png"
+						  label="{{ phrase('fs_female_verify_add_selfi_image') }}"
+						  hint="{{ phrase('required') }}"
+						  explain="{{ phrase('fs_female_verify_explain_selfi_image') }}" data-required="true"></xf:uploadrow>
+
+			<xf:uploadrow name="paperImage" accept=".gif,.jpeg,.jpg,.jpe,.png"
+						  label="{{ phrase('fs_female_verify_add_paper_image') }}"
+						  hint="{{ phrase('required') }}"
+						  explain="{{ phrase('fs_female_verify_explain_paper_image') }}" data-required="true"></xf:uploadrow>
+
+		</div>
+		<xf:submitrow submit="{{ phrase('fs_submit_verification_images') }}" icon="upload" />
+	</div>
+</xf:form>

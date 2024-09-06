@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="fs_female_blank_paper_image" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Blank paper image]]></phrase>
+  <phrase title="fs_female_get_verified" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Get Verified]]></phrase>
+  <phrase title="fs_female_gov_image" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Identity image]]></phrase>
+  <phrase title="fs_female_selfi_image" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Selfi image]]></phrase>
+  <phrase title="fs_female_verification_image_size" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[MB]]></phrase>
+  <phrase title="fs_female_verification_title" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Get Verified]]></phrase>
+  <phrase title="fs_female_verification_uploaded_image_file_is_too_big" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Uploaded image file is too big (<b>{megabytes} MB</b>). Maximum allowed size is <b>{fileSizeInMb}MB</b>.]]></phrase>
+  <phrase title="fs_female_verify_add_gov_image" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Upload your identity]]></phrase>
+  <phrase title="fs_female_verify_add_paper_image" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Upload a paper]]></phrase>
+  <phrase title="fs_female_verify_add_selfi_image" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Upload a current selfie]]></phrase>
+  <phrase title="fs_female_verify_approve" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Approve]]></phrase>
+  <phrase title="fs_female_verify_explain_gov_image" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[upload gov or stayed ID ex: drivers license or passport.]]></phrase>
+  <phrase title="fs_female_verify_explain_paper_image" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Upload blank peace of paper 📄 with today date written and username.]]></phrase>
+  <phrase title="fs_female_verify_explain_selfi_image" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Upload selfi holding ID face has to match.]]></phrase>
+  <phrase title="fs_female_verify_please_submit_the_necessary" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Please submit the necessary documents to get verified. The documents are securely stored and are never shown publicly. You will receive an alert regrading your verification status once staff reviews your data. <b>The total size for all images cannot exceed {size}MB.If the size is larger than this you will receive an error message.</b>]]></phrase>
+  <phrase title="fs_female_verify_queue_list" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Female pendings]]></phrase>
+  <phrase title="fs_female_verify_reject" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Reject]]></phrase>
+  <phrase title="fs_pending_females" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Female pendings]]></phrase>
+  <phrase title="fs_submit_verification_images" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Submit verification]]></phrase>
+  <phrase title="option.fs_female_verification_images_size" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Image size]]></phrase>
+  <phrase title="option_explain.fs_female_verification_images_size" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_group.fs_female_verification_group" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Female Verification]]></phrase>
+  <phrase title="option_group_description.fs_female_verification_group" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+</phrases>

@@ -791,27 +791,27 @@ class Crud extends AbstractController
         // var_dump($text);
         // exit;
 
-        $visitor = \XF::visitor();
+        // $visitor = \XF::visitor();
 
-        $db = \XF::db();
+        // $db = \XF::db();
 
-        // $sql = 'select sum(post_count) as answerCount from xf_thread_user_post where thread_id IN (' . $allQuestionThreadIds . ') AND user_id = ' . $user->user_id;
-        $sql = "SELECT * FROM xf_thread WHERE JSON_UNQUOTE(JSON_EXTRACT(custom_fields, '$.timezone')) = 'value1'";
+        // // $sql = 'select sum(post_count) as answerCount from xf_thread_user_post where thread_id IN (' . $allQuestionThreadIds . ') AND user_id = ' . $user->user_id;
+        // $sql = "SELECT * FROM xf_thread WHERE JSON_UNQUOTE(JSON_EXTRACT(custom_fields, '$.timezone')) = 'value1'";
 
-        $postCount = $db->query($sql)->fetchAll();
+        // $postCount = $db->query($sql)->fetchAll();
 
-        //         $qry = "SELECT * FROM xf_thread
-        // WHERE JSON_UNQUOTE(JSON_EXTRACT(custom_fields, '$.timezone')) = 'value1'
-        //   AND JSON_UNQUOTE(JSON_EXTRACT(custom_fields, '$.ships_via')) = '0'";
-        //         // $db->query($qry);
+        // //         $qry = "SELECT * FROM xf_thread
+        // // WHERE JSON_UNQUOTE(JSON_EXTRACT(custom_fields, '$.timezone')) = 'value1'
+        // //   AND JSON_UNQUOTE(JSON_EXTRACT(custom_fields, '$.ships_via')) = '0'";
+        // //         // $db->query($qry);
 
-        echo "<pre>";
-        var_dump($postCount);
-        // var_dump($db->query($qry)->fetch());
-        exit;
+        // echo "<pre>";
+        // var_dump($postCount);
+        // // var_dump($db->query($qry)->fetch());
+        // exit;
 
-        $secondaryGroupIds = $visitor['secondary_group_ids'];
-        $removeGroup = 10;
+        // $secondaryGroupIds = $visitor['secondary_group_ids'];
+        // $removeGroup = 10;
 
         // $tempGroup = $this->em()->create('FS\CancelMultipleSubscriptions:SubscriptionUserGroups');
 
@@ -833,9 +833,9 @@ class Crud extends AbstractController
         // $visitor->fastUpdate('secondary_group_ids', $secondaryGroupIds);
 
 
-        echo "<pre>";
-        var_dump($secondaryGroupIds);
-        exit;
+        // echo "<pre>";
+        // var_dump($secondaryGroupIds);
+        // exit;
 
         // $providerId = "stripe";
 

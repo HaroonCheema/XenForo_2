@@ -1,0 +1,17 @@
+{
+    "public/fs_female_queue_list.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "5d307747594fbaed3fb53e00e5c60d8d"
+    },
+    "public/fs_female_queue_list.less": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "ab683a49d0661ced193f8c4355ed920e"
+    },
+    "public/fs_female_verification_add.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "f18e62ad8022745be47b5fc787ec9eb2"
+    }
+}

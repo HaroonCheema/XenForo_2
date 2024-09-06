@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<options>
+  <option option_id="fs_female_verification_images_size" edit_format="spinbox" data_type="positive_integer">
+    <default_value>8</default_value>
+    <edit_format_params>min=1
+units={{ phrase('fs_female_verification_image_size') }}</edit_format_params>
+    <relation group_id="fs_female_verification_group" display_order="1"/>
+  </option>
+</options>

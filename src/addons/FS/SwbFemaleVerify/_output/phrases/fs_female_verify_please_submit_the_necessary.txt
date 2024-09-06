@@ -1,0 +1,1 @@
+Please submit the necessary documents to get verified. The documents are securely stored and are never shown publicly. You will receive an alert regrading your verification status once staff reviews your data. <b>The total size for all images cannot exceed {size}MB.If the size is larger than this you will receive an error message.</b>

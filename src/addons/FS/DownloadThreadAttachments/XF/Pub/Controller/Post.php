@@ -75,7 +75,7 @@ class Post extends XFCP_Post
                     'sizeOfAttachments'  => $templater->filterFileSize($templater, $sizeOfAttachments, $escape),
                 ];
 
-                throw $this->exception($this->notFound(\XF::phrase('fs_dta_requested_file_size_is_larger_then_your_daily_remaining_download_size', $params)));
+                throw $this->exception($this->notFound(\XF::phrase('fs_ dta_requested_file_size_is_larger_then_your_daily_remaining_download_size', $params)));
             }
         }
 
