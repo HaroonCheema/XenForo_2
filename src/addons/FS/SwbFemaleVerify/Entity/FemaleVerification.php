@@ -9,6 +9,11 @@ use FS\SwbFemaleVerify\Addon;
 
 class FemaleVerification extends Entity
 {
+    public function canView(&$error = null)
+    {
+        $visitor = \XF::visitor();
+        return $visitor->user_id == $this->user_id;
+    }
 
     public static function getStructure(Structure $structure)
     {
@@ -31,6 +36,17 @@ class FemaleVerification extends Entity
                 'default' => 'pending',
                 'api' => true
             ],
+            'verify_type' => [
+                'type' => self::STR,
+                'allowedValues' => [
+                    'images',
+                    'boxes',
+                ],
+                'default' => 'images',
+                'api' => true
+            ],
+            'boxOne' => ['type' => self::STR, 'default' => ''],
+            'boxTwo' => ['type' => self::STR, 'default' => ''],
             'reject_reason' => ['type' => self::STR, 'default' => '', 'maxLength' => 255, 'api' => true],
             'create_date' => ['type' => self::UINT, 'default' => \XF::$time, 'api' => true],
         ];

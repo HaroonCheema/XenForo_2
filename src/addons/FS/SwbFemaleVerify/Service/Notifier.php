@@ -1,11 +1,11 @@
 <?php
 
 
-namespace FS\WalletResources\Service;
+namespace FS\SwbFemaleVerify\Service;
 
 
-use FS\WalletResources\Addon;
-use FS\WalletResources\Entity\Withdraw as WithdrawEntity;
+use FS\SwbFemaleVerify\Addon;
+use FS\SwbFemaleVerify\Entity\FemaleVerification as FemaleVerification;
 use XF;
 use XF\App;
 use XF\Entity\User;
@@ -14,39 +14,39 @@ use XF\Service\AbstractNotifier;
 class Notifier extends AbstractNotifier
 {
 	/**
-	 * @var WithdrawEntity
+	 * @var FemaleVerification
 	 */
-	protected $withdraw;
+	protected $female;
 
-	public function __construct(App $app, WithdrawEntity $withdraw)
+	public function __construct(App $app, FemaleVerification $female)
 	{
 		parent::__construct($app);
 
-		$this->withdraw = $withdraw;
+		$this->female = $female;
 	}
 
 	public static function createForJob(array $extraData)
 	{
-		$withdraw = XF::app()->find(Addon::shortName('Withdraw'), $extraData['withdrawId']);
-		if (!$withdraw) {
+		$female = XF::app()->find(Addon::shortName('FemaleVerification'), $extraData['femaleId']);
+		if (!$female) {
 			return null;
 		}
 
-		return XF::service(Addon::shortName('Withdraw\Notifier'), $withdraw);
+		return XF::service(Addon::shortName('Notifier'), $female);
 	}
 
 	protected function getExtraJobData()
 	{
 		return [
-			'withdrawId' => $this->withdraw->getEntityId(),
+			'femaleId' => $this->female->getEntityId(),
 		];
 	}
 
 	protected function loadNotifiers()
 	{
 		return [
-			'reject' => $this->app->notifier(Addon::shortName('Withdraw\Reject'), $this->withdraw),
-			'complete' => $this->app->notifier(Addon::shortName('Withdraw\Complete'), $this->withdraw)
+			'reject' => $this->app->notifier(Addon::shortName('Reject'), $this->female),
+			'complete' => $this->app->notifier(Addon::shortName('Complete'), $this->female)
 		];
 	}
 
@@ -57,7 +57,7 @@ class Notifier extends AbstractNotifier
 		return XF::asVisitor(
 			$user,
 			function () {
-				return $this->withdraw->canView();
+				return $this->female->canView();
 			}
 		);
 	}

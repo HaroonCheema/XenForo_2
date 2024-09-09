@@ -47,20 +47,20 @@ class Editor extends \XF\Service\AbstractService
 
 	protected function onApprove()
 	{
-		// /** @var Notifier $notifier */
-		// $notifier = $this->service(Addon::shortName('Notifier'), $this->female);
-		// $notifier->addNotification('complete', $this->female->user_id, true, false);
-		// $notifier->notify();
+		/** @var Notifier $notifier */
+		$notifier = $this->service(Addon::shortName('Notifier'), $this->female);
+		$notifier->addNotification('complete', $this->female->user_id, true, false);
+		$notifier->notify();
 	}
 
 	protected function onReject()
 	{
 		$female = $this->female;
 
-		// /** @var Notifier $notifier */
-		// $notifier = $this->service(Addon::shortName('Notifier'), $this->female);
-		// $notifier->addNotification('reject', $this->female->user_id, true, false);
-		// $notifier->notify();
+		/** @var Notifier $notifier */
+		$notifier = $this->service(Addon::shortName('Notifier'), $this->female);
+		$notifier->addNotification('reject', $this->female->user_id, true, false);
+		$notifier->notify();
 	}
 
 	protected function _validate()
@@ -85,8 +85,10 @@ class Editor extends \XF\Service\AbstractService
 
 		if ($female->isStateChanged('female_state', 'rejected') == 'enter') {
 			$this->onReject();
+			$female->User->fastupdate('identity_status', 'rejected');
 		} elseif ($female->isStateChanged('female_state', 'sent') == 'enter') {
 			$this->onApprove();
+			$female->User->fastupdate('identity_status', 'sent');
 		}
 
 		$female->save(true, false);

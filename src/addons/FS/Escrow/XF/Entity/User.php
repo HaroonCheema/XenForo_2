@@ -11,7 +11,8 @@ class User extends XFCP_User
     {
         $structure = parent::getStructure($structure);
 
-        $structure->columns['deposit_amount'] =  ['type' => self::FLOAT, 'required' => true];
+        // $structure->columns['deposit_amount'] =  ['type' => self::FLOAT, 'required' => true];
+        $structure->columns['deposit_amount'] =  ['type' => self::FLOAT, 'default' => 0];
 
         return $structure;
     }

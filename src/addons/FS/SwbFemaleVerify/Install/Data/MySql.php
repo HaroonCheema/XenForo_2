@@ -16,6 +16,9 @@ class MySql
             $table->addColumn('user_id', 'int');
 
             $table->addColumn('female_state', 'enum')->values(['pending', 'rejected', 'sent'])->setDefault('pending');
+            $table->addColumn('verify_type', 'enum')->values(['images', 'boxes'])->setDefault('images');
+            $table->addColumn('boxOne', 'text');
+            $table->addColumn('boxTwo', 'text');
             $table->addColumn('reject_reason', 'varchar', 255)->setDefault('');
             $table->addColumn('create_date', 'int')->setDefault(0);
 

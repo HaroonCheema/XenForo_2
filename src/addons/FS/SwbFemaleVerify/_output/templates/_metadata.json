@@ -1,8 +1,18 @@
 {
+    "public/alert_fs_swb_female_verify_complete.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "90481bdeb115f9bb97dd9e4ed7d4644d"
+    },
+    "public/alert_fs_swb_female_verify_reject.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "cd7434c68ffe11fc4d331e89c2bb1a5f"
+    },
     "public/fs_female_queue_list.html": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
-        "hash": "5d307747594fbaed3fb53e00e5c60d8d"
+        "hash": "3a378e4ddba0b0e08b518e86c8369b97"
     },
     "public/fs_female_queue_list.less": {
         "version_id": 1000010,
@@ -12,6 +22,6 @@
     "public/fs_female_verification_add.html": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
-        "hash": "f18e62ad8022745be47b5fc787ec9eb2"
+        "hash": "21236240ccd7c2be43e9e1df9720fd16"
     }
 }

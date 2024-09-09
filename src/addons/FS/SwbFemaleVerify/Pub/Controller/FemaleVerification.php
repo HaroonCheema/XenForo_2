@@ -11,14 +11,21 @@ class FemaleVerification extends AbstractController
 	{
 		$visitor = \XF::visitor();
 
-		if (!$visitor->user_id) {
+		// if (!$visitor->user_id || $visitor->identity_status == 'queue' || $visitor->identity_status == 'sent') {
 
-			return $this->noPermission();
-		}
+		// 	return $this->noPermission();
+		// }
 
 		if ($this->isPost()) {
 
-			$input = $this->filterInputs();
+			$verifyType = $this->filter('female_identity_type', 'str');
+
+			if ($verifyType == 'images') {
+				$this->filterInputsImages();
+			} elseif ($verifyType == 'boxes') {
+				$input = $this->filterInputs();
+			}
+
 
 			$insert = $this->finder('FS\SwbFemaleVerify:FemaleVerification')->where('user_id', $visitor['user_id'])->fetchOne();
 
@@ -28,10 +35,24 @@ class FemaleVerification extends AbstractController
 			}
 
 			$insert->female_state = "pending";
+			$insert->verify_type = $verifyType;
+
+
+			if ($verifyType == 'boxes') {
+
+				$insert->boxOne = $input['boxOne'];
+				$insert->boxTwo = $input['boxTwo'];
+			}
 
 			$insert->save();
 
-			$this->saveImage($insert);
+
+			if ($verifyType == 'images') {
+
+				$this->saveImage($insert);
+			}
+
+			$visitor->fastupdate('identity_status', 'queue');
 
 			return $this->redirect($this->buildLink('members', $visitor));
 		}
@@ -88,7 +109,7 @@ class FemaleVerification extends AbstractController
 		}
 	}
 
-	protected function filterInputs()
+	protected function filterInputsImages()
 	{
 
 		$govImage = $this->request->getFile('govImage', false, false);
@@ -100,5 +121,21 @@ class FemaleVerification extends AbstractController
 		}
 
 		return true;
+	}
+
+	protected function filterInputs()
+	{
+
+		$input = $this->filter([
+			'female_identity_type' => 'str',
+			'boxOne' => 'str',
+			'boxTwo' => 'str',
+		]);
+
+		if ($input['female_identity_type'] == '' || $input['boxOne'] == '' || $input['boxTwo'] == '') {
+			throw $this->exception($this->error(\XF::phraseDeferred('please_complete_required_fields')));
+		}
+
+		return $input;
 	}
 }

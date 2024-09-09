@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: f18e62ad8022745be47b5fc787ec9eb2
+// FROM HASH: 21236240ccd7c2be43e9e1df9720fd16
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -17,7 +17,31 @@ return array(
 		'rowtype' => 'confirm',
 	)) . '
 
-			' . $__templater->formUploadRow(array(
+			' . $__templater->formRadioRow(array(
+		'name' => 'female_identity_type',
+	), array(array(
+		'value' => 'images',
+		'selected' => true,
+		'label' => 'Upload images',
+		'data-xf-init' => 'disabler',
+		'data-container' => '.identity-images',
+		'data-hide' => 'yes',
+		'_type' => 'option',
+	),
+	array(
+		'value' => 'boxes',
+		'label' => 'P411',
+		'data-xf-init' => 'disabler',
+		'data-container' => '.identity-boxes',
+		'data-hide' => 'yes',
+		'_type' => 'option',
+	)), array(
+		'label' => 'Verification type',
+	)) . '
+
+			<div class="identity-images">
+
+				' . $__templater->formUploadRow(array(
 		'name' => 'govImage',
 		'accept' => '.gif,.jpeg,.jpg,.jpe,.png',
 		'data-required' => 'true',
@@ -27,7 +51,7 @@ return array(
 		'explain' => 'upload gov or stayed ID ex: drivers license or passport.',
 	)) . '
 
-			' . $__templater->formUploadRow(array(
+				' . $__templater->formUploadRow(array(
 		'name' => 'selfiImage',
 		'accept' => '.gif,.jpeg,.jpg,.jpe,.png',
 		'data-required' => 'true',
@@ -37,7 +61,7 @@ return array(
 		'explain' => 'Upload selfi holding ID face has to match.',
 	)) . '
 
-			' . $__templater->formUploadRow(array(
+				' . $__templater->formUploadRow(array(
 		'name' => 'paperImage',
 		'accept' => '.gif,.jpeg,.jpg,.jpe,.png',
 		'data-required' => 'true',
@@ -47,11 +71,46 @@ return array(
 		'explain' => 'Upload blank peace of paper 📄 with today date written and username.',
 	)) . '
 
-		</div>
-		' . $__templater->formSubmitRow(array(
-		'submit' => 'Submit verification',
-		'icon' => 'upload',
+			</div>
+
+			<div class="identity-boxes">
+
+				' . $__templater->formTextBoxRow(array(
+		'name' => 'boxOne',
+		'required' => 'required',
 	), array(
+		'hint' => 'Required',
+		'explain' => 'Enter your name, phone or email here...!',
+		'label' => 'Name, phone or email',
+	)) . '
+
+				' . $__templater->formTextBoxRow(array(
+		'name' => 'boxTwo',
+		'required' => 'required',
+	), array(
+		'hint' => 'Required',
+		'explain' => 'Enter your handle or website name here...!',
+		'label' => 'Handle or site name',
+	)) . '
+
+			</div>
+
+		</div>
+		
+		' . $__templater->formSubmitRow(array(
+		'sticky' => 'true',
+		'icon' => 'upload',
+		'submit' => 'Submit verification',
+	), array(
+		'html' => '
+				' . $__templater->button('Cancel', array(
+		'href' => $__templater->func('link', array('members', $__vars['xf']['visitor'], ), false),
+		'icon' => 'cancel',
+		'name' => 'exit',
+	), '', array(
+	)) . '
+				<input type="hidden" name="_page" value="' . $__templater->escape($__vars['_page']) . '" />
+			',
 	)) . '
 	</div>
 ', array(

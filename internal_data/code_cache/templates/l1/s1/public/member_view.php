@@ -151,8 +151,18 @@ return array(
 						';
 	}
 	$__compilerTemp6 = '';
-	if ($__templater->method($__vars['user'], 'hasViewableUsernameHistory', array())) {
+	if (($__vars['user']['user_id'] == $__vars['xf']['visitor']['user_id']) AND (($__vars['user']['identity_status'] == 'pending') OR ($__vars['user']['identity_status'] == 'rejected'))) {
 		$__compilerTemp6 .= '
+	' . $__templater->button('Get Verified', array(
+			'href' => $__templater->func('link', array('female-verify/add', ), false),
+			'icon' => 'confirm',
+		), '', array(
+		)) . '	
+';
+	}
+	$__compilerTemp7 = '';
+	if ($__templater->method($__vars['user'], 'hasViewableUsernameHistory', array())) {
+		$__compilerTemp7 .= '
 								<a class="memberHeader-nameChangeIndicator"
 									data-xf-click="menu"
 									data-xf-init="tooltip"
@@ -177,27 +187,27 @@ return array(
 								</div>
 							';
 	}
-	$__compilerTemp7 = '';
 	$__compilerTemp8 = '';
-	$__compilerTemp8 .= $__templater->func('user_banners', array($__vars['user'], array(
+	$__compilerTemp9 = '';
+	$__compilerTemp9 .= $__templater->func('user_banners', array($__vars['user'], array(
 	)));
-	if (strlen(trim($__compilerTemp8)) > 0) {
-		$__compilerTemp7 .= '
+	if (strlen(trim($__compilerTemp9)) > 0) {
+		$__compilerTemp8 .= '
 							<div class="memberHeader-banners">
-								' . $__compilerTemp8 . '
+								' . $__compilerTemp9 . '
 							</div>
 						';
 	}
-	$__compilerTemp9 = '';
 	$__compilerTemp10 = '';
-	$__compilerTemp10 .= $__templater->func('user_activity', array($__vars['user']));
-	if (strlen(trim($__compilerTemp10)) > 0) {
-		$__compilerTemp9 .= '
+	$__compilerTemp11 = '';
+	$__compilerTemp11 .= $__templater->func('user_activity', array($__vars['user']));
+	if (strlen(trim($__compilerTemp11)) > 0) {
+		$__compilerTemp10 .= '
 								<div class="memberHeader-blurb">
 									<dl class="pairs pairs--inline">
 										<dt>' . 'Last seen' . '</dt>
 										<dd dir="auto">
-											' . $__compilerTemp10 . '
+											' . $__compilerTemp11 . '
 										</dd>
 									</dl>
 								</div>
@@ -225,16 +235,12 @@ return array(
 		'href' => '',
 	))) . '
 
-' . $__templater->button('Get Verified', array(
-		'href' => $__templater->func('link', array('female-verify/add', ), false),
-		'icon' => 'confirm',
-	), '', array(
-	)) . '
+' . $__compilerTemp6 . '
 							</span>
-							' . $__compilerTemp6 . '
+							' . $__compilerTemp7 . '
 						</h1>
 
-						' . $__compilerTemp7 . '
+						' . $__compilerTemp8 . '
 
 						<div class="memberHeader-blurbContainer">
 							' . $__templater->func('user_blurb', array($__vars['user'], array(
@@ -250,7 +256,7 @@ return array(
 								</dl>
 							</div>
 
-							' . $__compilerTemp9 . '
+							' . $__compilerTemp10 . '
 						</div>
 					</div>
 					</div>
@@ -267,19 +273,19 @@ return array(
 					</div>
 
 					';
-	$__compilerTemp11 = '';
-	$__compilerTemp11 .= '
+	$__compilerTemp12 = '';
+	$__compilerTemp12 .= '
 								' . $__templater->callMacro('member_macros', 'member_action_buttons', array(
 		'user' => $__vars['user'],
 		'context' => 'profile',
 	), $__vars) . '
 							';
-	if (strlen(trim($__compilerTemp11)) > 0) {
+	if (strlen(trim($__compilerTemp12)) > 0) {
 		$__finalCompiled .= '
 						<hr class="memberHeader-separator" />
 
 						<div class="memberHeader-buttons">
-							' . $__compilerTemp11 . '
+							' . $__compilerTemp12 . '
 						</div>
 					';
 	}

@@ -3,21 +3,18 @@
 <xf:page option="section" value="fs_female_queue" />
 
 <xf:css src="fs_female_queue_list.less" />
-<xf:js prod="FS/WalletResources/withdrawal_queue.min.js" dev="FS/WalletResources/withdrawal_queue.js" addon="FS/SwbFemaleVerify" />
+<xf:js prod="FS/SwbFemaleVerify/female_queue.min.js" dev="FS/SwbFemaleVerify/female_queue.js" addon="FS/SwbFemaleVerify" />
 
 <div class="blocks">
 	<xf:if is="$items is not empty">
-		<xf:set var="$previousWithdraw" value="{{ $items|first }}" />
 
 		<xf:foreach loop="$items" value="$item">
 			<div class="block withdrawalQueue">
-				<xf:macro name="withdraw_form" arg-item="{$item}"
-						  arg-previousWithdraw="{$previousWithdraw}"
+				<xf:macro name="identity_images" arg-item="{$item}"
 						  arg-redirect="{$redirect}"
 						  arg-page="{$page}" />
 			</div>
 
-			<xf:set var="$previousWithdraw" value="{$item}" />
 		</xf:foreach>
 
 		<div class="block-outer block-outer--after">
@@ -41,7 +38,7 @@
 </div>
 
 
-<xf:macro name="withdraw_form" arg-item="!" arg-previousWithdraw="!" arg-redirect="/" arg-page="0">
+<xf:macro name="identity_images" arg-item="!" arg-redirect="/" arg-page="0">
 
 	<xf:form class="block-container withdrawalQueue-item" action="{{ link('female-verify/queue/save', $item) }}" ajax="true">
 		<span class="u-anchorTarget" id="withdraw-{$item.id}"></span>
@@ -99,50 +96,100 @@
 										</xf:extension>
 									</header>
 
-									<div class="message-content">
+									<xf:if is="$item.verify_type == 'images'">
 
-										<div class="message-userContent">
-											<div class="message-body">
+										<div class="message-content">
 
-												<div class="pairWrapper pairWrapper--spaced">
+											<div class="message-userContent">
+												<div class="message-body">
 
-													<xf:extension name="data_start"></xf:extension>
+													<div class="pairWrapper pairWrapper--spaced">
 
-													<xf:extension name="data_payment_system">
-														<dl class="pairs pairs--columns pairs--fluidHuge">
-															<dt>{{ phrase('fs_female_gov_image') }}</dt>
-															<dd><img src="{$item.getImgUrl(true, 'govImage')}" style="width:80px; height:80px; float: right;"></dd>
-														</dl>
-													</xf:extension>
+														<xf:extension name="data_start"></xf:extension>
 
-													<xf:extension name="data_wallet">
-														<dl class="pairs pairs--columns pairs--fluidHuge">
-															<dt>{{ phrase('fs_female_selfi_image') }}</dt>
-															<dd>
-																<img src="{$item.getImgUrl(true, 'selfiImage')}" style="width:80px; height:80px; float: right;">
-															</dd>
-														</dl>
+														<xf:extension name="data_payment_system">
+															<dl class="pairs pairs--columns pairs--fluidHuge">
+																<dt>{{ phrase('fs_female_gov_image') }}</dt>
+																<dd>
+																	<a href="{$item.getImgUrl(true, 'govImage')}" rel="external" target="_blank">
+																		<img src="{$item.getImgUrl(true, 'govImage')}" style="width: {$xf.options.fs_female_verification_images_pixels.width}px; height: {$xf.options.fs_female_verification_images_pixels.height}px; float: right;"/>
+																	</a>
+																</dd>
+															</dl>
+														</xf:extension>
 
-													</xf:extension>
+														<xf:extension name="data_wallet">
+															<dl class="pairs pairs--columns pairs--fluidHuge">
+																<dt>{{ phrase('fs_female_selfi_image') }}</dt>
+																<dd>
+																	<a href="{$item.getImgUrl(true, 'selfiImage')}" rel="external" target="_blank">
+																		<img src="{$item.getImgUrl(true, 'selfiImage')}" style="width: {$xf.options.fs_female_verification_images_pixels.width}px; height: {$xf.options.fs_female_verification_images_pixels.height}px; float: right;"/>
+																	</a>
+																</dd>
+															</dl>
 
-													<xf:extension name="data_sum">
-														<dl class="pairs pairs--columns pairs--fluidHuge">
-															<dt>{{ phrase('fs_female_blank_paper_image') }}</dt>
-															<dd>
-																<img src="{$item.getImgUrl(true, 'paperImage')}" style="width:80px; height:80px; float: right;">
-															</dd>
-														</dl>
-													</xf:extension>
+														</xf:extension>
 
-													<xf:extension name="data_end"></xf:extension>
+														<xf:extension name="data_sum">
+															<dl class="pairs pairs--columns pairs--fluidHuge">
+																<dt>{{ phrase('fs_female_blank_paper_image') }}</dt>
+																<dd>
+																	<a href="{$item.getImgUrl(true, 'paperImage')}" rel="external" target="_blank">
+																		<img src="{$item.getImgUrl(true, 'paperImage')}" style="width: {$xf.options.fs_female_verification_images_pixels.width}px; height: {$xf.options.fs_female_verification_images_pixels.height}px; float: right;"/>
+																	</a>
+																</dd>
+															</dl>
+														</xf:extension>
+
+														<xf:extension name="data_end"></xf:extension>
+
+													</div>
+
 
 												</div>
-
-
 											</div>
-										</div>
 
-									</div>
+										</div>
+										<xf:else/>
+
+										<div class="message-content">
+
+											<div class="message-userContent">
+												<div class="message-body">
+
+													<div class="pairWrapper pairWrapper--spaced">
+
+														<xf:extension name="data_starts"></xf:extension>
+
+														<xf:extension name="data_box_one">
+															<dl class="pairs pairs--columns pairs--fluidHuge">
+																<dt>{{ phrase('fs_female_box_one_title') }}</dt>
+																<dd>
+																	{$item.boxOne}
+																</dd>
+															</dl>
+														</xf:extension>
+
+														<xf:extension name="data_box_two">
+															<dl class="pairs pairs--columns pairs--fluidHuge">
+																<dt>{{ phrase('fs_female_box_two_title') }}</dt>
+																<dd>
+																	{$item.boxTwo}
+																</dd>
+															</dl>
+
+														</xf:extension>
+
+														<xf:extension name="data_ends"></xf:extension>
+
+													</div>
+
+
+												</div>
+											</div>
+
+										</div>
+									</xf:if>
 
 								</div>
 							</div>
@@ -154,7 +201,6 @@
 						<xf:extension name="actions">
 
 							<xf:radio name="female_state">
-								<!--[XF:above_withdraw_state_actions]-->
 								<xf:option value="pending" checked="{{ $item.female_state == 'pending' ? 'checked' : ''}}" data-xf-click="pb-wq-withdraw-control">
 									{{ phrase('pending') }}
 								</xf:option>
@@ -170,7 +216,6 @@
 										<div class="formRow-explain">{{ phrase('this_will_be_shown_to_user_if_provided') }}</div>
 									</xf:html>
 								</xf:option>
-								<!--[XF:bellow_withdraw_state_actions]-->
 							</xf:radio>
 
 						</xf:extension>
@@ -183,7 +228,6 @@
 
 		<xf:submitrow rowtype="simple" icon="save" />
 
-		<xf:redirect url="{$redirect}#withdraw-{$previousWithdraw.id}" />
 	</xf:form>
 
 </xf:macro>
