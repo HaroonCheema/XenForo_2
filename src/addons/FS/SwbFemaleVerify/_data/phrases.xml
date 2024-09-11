@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <phrases>
   <phrase title="fs_female_blank_paper_image" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Blank paper image]]></phrase>
+  <phrase title="fs_female_boxOne_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter your name, phone or email here...!]]></phrase>
+  <phrase title="fs_female_boxOne_title" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Name, phone or email]]></phrase>
+  <phrase title="fs_female_boxTwo_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter your handle or website name here...!]]></phrase>
+  <phrase title="fs_female_boxTwo_title" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Handle or site name]]></phrase>
+  <phrase title="fs_female_box_one_title" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Name, phone or email]]></phrase>
+  <phrase title="fs_female_box_two_title" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Hadle or site]]></phrase>
   <phrase title="fs_female_get_verified" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Get Verified]]></phrase>
   <phrase title="fs_female_gov_image" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Identity image]]></phrase>
+  <phrase title="fs_female_identity_was_completed" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Your request about verification created at {create_date} was completed.]]></phrase>
+  <phrase title="fs_female_identity_was_rejected_with_reason_x" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Your request about Verification was rejected. Reason: {reason}]]></phrase>
   <phrase title="fs_female_selfi_image" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Selfi image]]></phrase>
+  <phrase title="fs_female_submit_information" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[P411]]></phrase>
+  <phrase title="fs_female_upload_images" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Upload images]]></phrase>
   <phrase title="fs_female_verification_image_size" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[MB]]></phrase>
   <phrase title="fs_female_verification_title" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Get Verified]]></phrase>
+  <phrase title="fs_female_verification_type" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Verification type]]></phrase>
   <phrase title="fs_female_verification_uploaded_image_file_is_too_big" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Uploaded image file is too big (<b>{megabytes} MB</b>). Maximum allowed size is <b>{fileSizeInMb}MB</b>.]]></phrase>
   <phrase title="fs_female_verify_add_gov_image" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Upload your identity]]></phrase>
   <phrase title="fs_female_verify_add_paper_image" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Upload a paper]]></phrase>
@@ -19,7 +30,9 @@
   <phrase title="fs_female_verify_reject" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Reject]]></phrase>
   <phrase title="fs_pending_females" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Female pendings]]></phrase>
   <phrase title="fs_submit_verification_images" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Submit verification]]></phrase>
+  <phrase title="option.fs_female_verification_images_pixels" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Approval images dimensions]]></phrase>
   <phrase title="option.fs_female_verification_images_size" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Image size]]></phrase>
+  <phrase title="option_explain.fs_female_verification_images_pixels" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
   <phrase title="option_explain.fs_female_verification_images_size" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
   <phrase title="option_group.fs_female_verification_group" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Female Verification]]></phrase>
   <phrase title="option_group_description.fs_female_verification_group" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>

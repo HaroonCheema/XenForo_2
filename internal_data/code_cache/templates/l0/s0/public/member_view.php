@@ -151,7 +151,7 @@ return array(
 						';
 	}
 	$__compilerTemp6 = '';
-	if (($__vars['user']['user_id'] == $__vars['xf']['visitor']['user_id']) AND (($__vars['user']['identity_status'] == 'pending') OR ($__vars['user']['identity_status'] == 'rejected'))) {
+	if (($__vars['user']['user_id'] == $__vars['xf']['visitor']['user_id']) AND (($__vars['user']->{'account_type'} == 2) AND (($__vars['user']['identity_status'] == 'pending') OR ($__vars['user']['identity_status'] == 'rejected')))) {
 		$__compilerTemp6 .= '
 	' . $__templater->button('Get Verified', array(
 			'href' => $__templater->func('link', array('female-verify/add', ), false),

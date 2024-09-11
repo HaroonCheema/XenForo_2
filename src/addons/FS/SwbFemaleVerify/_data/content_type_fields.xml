@@ -1,2 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<content_type_fields/>
+<content_type_fields>
+  <field content_type="fs_swb_female_verify" field_name="alert_handler_class">FS\SwbFemaleVerify\Alert\Female</field>
+  <field content_type="fs_swb_female_verify" field_name="entity">FS\SwbFemaleVerify:FemaleVerification</field>
+</content_type_fields>

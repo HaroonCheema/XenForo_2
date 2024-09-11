@@ -5,5 +5,5 @@
     "enabled": true,
     "action": "str_replace",
     "find": "<xf:username user=\"{$user}\" rich=\"true\" href=\"\" />",
-    "replace": "$0\n\n<xf:if is=\"$user.user_id == $xf.visitor.user_id && ($user.identity_status == 'pending' || $user.identity_status == 'rejected')\">\n\t<xf:button href=\"{{ link('female-verify/add') }}\" icon=\"confirm\"\n\t\t\t   >{{ phrase('fs_female_get_verified') }}</xf:button>\t\n</xf:if>"
+    "replace": "$0\n\n<xf:if is=\"$user.user_id == $xf.visitor.user_id && $user->account_type == 2 && ($user.identity_status == 'pending' || $user.identity_status == 'rejected')\">\n\t<xf:button href=\"{{ link('female-verify/add') }}\" icon=\"confirm\"\n\t\t\t   >{{ phrase('fs_female_get_verified') }}</xf:button>\t\n</xf:if>"
 }

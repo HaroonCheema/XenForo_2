@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <options>
+  <option option_id="fs_female_verification_images_pixels" edit_format="template" data_type="array">
+    <default_value>{"width":"48","height":"48"}</default_value>
+    <edit_format_params>option_template_attachmentMaxDimensions</edit_format_params>
+    <sub_options>width
+height</sub_options>
+    <relation group_id="fs_female_verification_group" display_order="1"/>
+  </option>
   <option option_id="fs_female_verification_images_size" edit_format="spinbox" data_type="positive_integer">
     <default_value>8</default_value>
     <edit_format_params>min=1

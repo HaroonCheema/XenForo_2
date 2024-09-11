@@ -16,7 +16,9 @@ $0]]></replace>
     <find><![CDATA[<xf:username user="{$user}" rich="true" href="" />]]></find>
     <replace><![CDATA[$0
 
-<xf:button href="{{ link('female-verify/add') }}" icon="confirm"
-		   >{{ phrase('fs_female_get_verified') }}</xf:button>]]></replace>
+<xf:if is="$user.user_id == $xf.visitor.user_id && $user->account_type == 2 && ($user.identity_status == 'pending' || $user.identity_status == 'rejected')">
+	<xf:button href="{{ link('female-verify/add') }}" icon="confirm"
+			   >{{ phrase('fs_female_get_verified') }}</xf:button>	
+</xf:if>]]></replace>
   </modification>
 </template_modifications>
