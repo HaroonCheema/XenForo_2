@@ -19,4 +19,4 @@ $config['enableLivePayments'] = false;
 
 $config['debug'] = true;
 
-$config['development']['defaultAddOn'] = 'FS/OyunGamePoints';
+$config['development']['defaultAddOn'] = 'FS/LayeredPostersChanges';
