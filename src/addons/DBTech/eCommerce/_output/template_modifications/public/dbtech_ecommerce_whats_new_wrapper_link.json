@@ -1,0 +1,9 @@
+{
+    "template": "whats_new_wrapper",
+    "description": "Add the \"new products\" link to what's new pages.",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<!--[XF:links:after_thread]-->",
+    "replace": "$0\n<xf:if is=\"$xf.visitor.hasOption('hasDbEcommerce') && $xf.visitor.canViewDbtechEcommerceProducts()\">\n\t<a class=\"{$baseClass} {{ $pageSelected == 'new_dbtech_ecommerce_product' ? {$selectedClass} : '' }}\" href=\"{{ link('whats-new/ecommerce-products') }}\" rel=\"nofollow\">{{ phrase('dbtech_ecommerce_new_products') }}</a>\n</xf:if>"
+}

@@ -1,2 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<phrases/>
+<phrases>
+  <phrase title="fs_please_upload_at_least_one_attachment" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[At least one attachment required...!]]></phrase>
+</phrases>
