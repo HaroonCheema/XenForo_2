@@ -17,20 +17,9 @@ class Preparer extends XFCP_Preparer
         $attachmentData = $attachmentRepo->getEditorData('post', $this->post->Thread->Forum, $attachemntHash);
 
         if (!count($attachmentData["attachments"])) {
-            return parent::setMessage($message, $format = true, $checkValidity = true);
+            throw new \XF\PrintableException(\XF::phrase('fs_please_upload_at_least_one_attachment'));
         }
 
-        $preparer = $this->getMessagePreparer($format);
-
-        $preparer->setConstraint('allowEmpty', true);
-
-        $this->post->message = $preparer->prepare($message, $checkValidity);
-        $this->post->embed_metadata = $preparer->getEmbedMetadata();
-
-        $this->quotedPosts = $preparer->getQuotesKeyed('post');
-
-        $this->mentionedUsers = $preparer->getMentionedUsers();
-
-        return $preparer->pushEntityErrorIfInvalid($this->post);
+        return parent::setMessage($message, $format = true, $checkValidity = true);
     }
 }
