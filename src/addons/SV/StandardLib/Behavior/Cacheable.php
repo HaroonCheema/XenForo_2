@@ -3,9 +3,11 @@
 namespace SV\StandardLib\Behavior;
 
 use XF\Mvc\Entity\Behavior;
+use function is_callable;
 
 class Cacheable extends Behavior
 {
+    /** @noinspection PhpMissingParentCallCommonInspection */
     protected function getDefaultConfig(): array
     {
         return [
@@ -15,38 +17,42 @@ class Cacheable extends Behavior
         ];
     }
 
-    public function postSave()
+    public function postSave(): void
 	{
+        parent::postSave();
+
         if ($this->shouldRebuild())
         {
             $this->rebuildCache();
         }
 	}
 
-	public function postDelete()
+	public function postDelete(): void
 	{
+        parent::postDelete();
+
         $this->rebuildCache();
 	}
 
     protected function shouldRebuild(): bool
     {
         $func = $this->config['shouldRebuildCallable'];
-        if ($func !== null && \is_callable($func))
+        if ($func !== null && is_callable($func))
         {
             return $func($this->entity);
         }
 
         return true;
     }
-	
-	public function rebuildCache()
+
+	public function rebuildCache(): void
 	{
         $class = $this->config['repository'];
         $func = $this->config['rebuildCacheFuncName'];
 
-        $repo = $this->repository($class);
+        $repo = \SV\StandardLib\Helper::repository($class);
         $callable = [$repo, $func];
-        if (\is_callable($callable))
+        if (is_callable($callable))
         {
             $callable();
         }

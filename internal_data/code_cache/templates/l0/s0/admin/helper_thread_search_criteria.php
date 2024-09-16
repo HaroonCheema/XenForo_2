@@ -494,6 +494,8 @@ return array(
 	' . $__compilerTemp5 . '
 ';
 	}
+	$__finalCompiled .= '
+' . $__templater->includeTemplate('tagess_helper_thread_search_criteria', $__vars);
 	return $__finalCompiled;
 }
 );

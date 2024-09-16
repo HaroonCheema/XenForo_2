@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="admin" title="multiprefix_thread_batch_update_confirm" version_id="2090600" version_string="2.9.6"><![CDATA[<hr class="formRowSep" />
+
+<xf:macro template="public:sv_multiprefix_prefix_macros" name="row"
+		  arg-prefixes="{$prefixes.prefixesGrouped}"
+		  arg-label="{{ phrase('svMultiPrefix_add_prefixes') }}"
+		  arg-name="actions[add_prefixes]"
+		  arg-multiple="{{ true }}"
+          arg-includeAny="{{ false }}"
+		  arg-includeNone="{{ false }}"		  
+		  arg-type="thread" />
+
+<xf:macro template="public:sv_multiprefix_prefix_macros" name="row"
+		  arg-prefixes="{$prefixes.prefixesGrouped}"
+		  arg-label="{{ phrase('svMultiPrefix_remove_prefixes') }}"
+		  arg-name="actions[remove_prefixes]"
+		  arg-multiple="{{ true }}"
+          arg-includeAny="{{ false }}"
+		  arg-includeNone="{{ false }}"
+		  arg-type="thread" />]]></template>
+  <template type="public" title="forum_post_quick_thread_multiprefix" version_id="2090600" version_string="2.9.6"><![CDATA[<xf:set var="$prefixes" value="{{ $forum.getUsablePrefixes() }}" />
+<xf:if is="$prefixes">
+	<xf:formrow rowtype="input fullWidth noLabel noGutter">
+		<xf:js src="xf/prefix_menu.js" min="1" />
+		<xf:macro template="public:prefix_macros" name="select"
+				  arg-type="thread"
+				  arg-prefixes="{{ $prefixes }}"
+				  arg-selected="{{ $forum.sv_default_prefix_ids }}"
+				  arg-name="prefix_id[]"
+				  arg-contentParent="{$forum}"
+				  />
+	</xf:formrow>
+</xf:if>]]></template>
+  <template type="public" title="svMultiPrefix_node_list_forum_subtitle2.less" version_id="2090600" version_string="2.9.6"><![CDATA[@media (min-width: @xf-responsiveMedium)
+{
+	.node-extra .node-extra-icon--prefix when (ispixel(@xf-fontSizeSmall) = true)
+	{
+		@fontSizeInPx: @xf-fontSizeSmall;
+		margin-bottom: max(0, @avatar-s - @fontSizeInPx * 3);
+	}
+
+	.node-extra .node-extra-icon--prefix when (ispixel(@xf-fontSizeSmall) = false)
+	{
+		@emInPx: 16px;
+		@fontSizeInPx: unit(unit(@xf-fontSizeSmall) * @emInPx, px);
+		margin-bottom: max(0, @avatar-s - @fontSizeInPx * 3);
+	}
+}]]></template>
+  <template type="public" title="svMultiPrefix_thread_list_macros_below_thread_info.less" version_id="2090600" version_string="2.9.6"><![CDATA[.structItem
+{
+	&.structItem--thread
+	{
+		.structItem-prefixes
+		{
+			padding: @xf-paddingSmall 0px;
+		}
+	}
+}]]></template>
+  <template type="public" title="sv_multiprefix_dbtech_ecommerce_category_prefixes" version_id="2090600" version_string="2.9.6"><![CDATA[<div class="prefixContainer">
+	<xf:macro template="sv_multiprefix_prefix_macros" name="select"
+			  arg-name="na"
+			  arg-prefixes="{$prefixes}"
+			  arg-includeAny="{$includeAny}"
+			  arg-includeNone="{$includeNone}"
+			  arg-contentParent="{$category}"
+			  arg-type="dbtechEcommerceProduct" />
+</div>]]></template>
+  <template type="public" title="sv_multiprefix_dbtech_shop_category_prefixes" version_id="2090600" version_string="2.9.6"><![CDATA[<div class="prefixContainer">
+	<xf:macro template="sv_multiprefix_prefix_macros" name="select"
+			  arg-name="na"
+			  arg-prefixes="{$prefixes}"
+			  arg-includeAny="{$includeAny}"
+			  arg-includeNone="{$includeNone}"
+			  arg-contentParent="{$category}"
+			  arg-type="dbtechShopItem" />
+</div>]]></template>
+  <template type="public" title="sv_multiprefix_filter" version_id="2090600" version_string="2.9.6"><![CDATA[<xf:foreach loop="$filters.prefix_id" value="$prefixId">
+	<xf:set var="$newFilters" value="{$filters}" />
+	<xf:set var="$newFilters.prefix_id" value="{$newFilters.prefix_id|replaceValue($prefixId, null)}" />
+
+	<li><a href="{{ link($baseLinkPath, $container, $newFilters) }}"
+		   class="filterBar-filterToggle" data-xf-init="tooltip" title="{{ phrase('remove_this_filter')|for_attr }}">
+		<span class="filterBar-filterToggle-label">{{ phrase('prefix:') }}</span>
+		{{ $prefixId ? prefix_title($prefixType, $prefixId) : phrase('(none)') }}</a></li>
+</xf:foreach>]]></template>
+  <template type="public" title="sv_multiprefix_forum_prefixes" version_id="2090600" version_string="2.9.6"><![CDATA[<div class="prefixContainer">
+	<xf:macro template="sv_multiprefix_prefix_macros" name="select"
+			  arg-name="na"
+			  arg-prefixes="{$prefixes}"
+			  arg-includeAny="{$includeAny}"
+			  arg-includeNone="{$includeNone}"
+			  arg-contentParent="{$forum}"
+			  arg-type="thread"
+			  arg-forumPrefixesLimit="{$force_limit_prefix}" />
+</div>]]></template>
+  <template type="public" title="sv_multiprefix_prefix_input" version_id="2090600" version_string="2.9.6"><![CDATA[<xf:set var="$textbox">
+    <xf:if is="$rows">
+		<textarea rows="{$rows}" name="{$textboxName}"
+                  data-xf-init="textarea-handler {$xfInit}" data-single-line="true"
+                  class="input js-titleInput {$textboxClass}"
+                  autocomplete="off"
+                  {$attrsHtml|raw}>{$textboxValue}</textarea>
+	<xf:else/>
+        <input type="text" name="{$textboxName}"
+               data-xf-init="{$xfInit}"
+               class="input js-titleInput {$textboxClass}"
+               value="{$textboxValue}"
+               autocomplete="off"
+               {$attrsHtml|raw}/>
+    </xf:if>
+</xf:set>
+<xf:set var="$selectbox">
+	<xf:macro template="sv_multiprefix_prefix_macros" name="select"
+			  arg-name="{$prefixName}"
+			  arg-multiple="{{ true }}"
+			  arg-includeNone="{{ false }}"
+			  arg-includeAny="{{ false }}"
+			  arg-prefixes="{$prefixes}"
+			  arg-selected="{$prefixValue}"
+			  arg-type="{$prefixType}"
+			  arg-class="js-prefixSelect u-noJsOnly"
+			  arg-contentParent="{$prefixContentParent}"
+			  arg-content="{$prefixContent}"
+			  arg-listenTo="{$listenTo}"
+			  arg-href="{$href}" />
+</xf:set>
+
+<xf:if is="$prefixes || $href">
+	<xf:if is="{$excludeRow} !== 'prefix'">
+		<div class="prefixContainer">
+			{$selectbox|raw}
+		</div>
+	</xf:if>
+
+	<xf:if is="{$excludeRow} !== 'title'">
+		<div class="inputGroup">
+			{$textbox|raw}
+		</div>
+	</xf:if>
+<xf:else/>
+    <xf:if is="{$excludeRow} !== 'title'">
+		{$textbox|raw}
+	</xf:if>
+</xf:if>]]></template>
+  <template type="public" title="sv_multiprefix_prefix_input.less" version_id="2090600" version_string="2.9.6"><![CDATA[@_input-textColor: xf-default(@xf-input--color, @xf-textColor);
+
+.select2-search--dropdown .select2-search__field,
+.structItemContainer .select2-search__field,
+{
+	font-size: @xf-fontSizeNormal;
+}
+
+.structItemContainer
+{
+	.input.prefix--title
+	{
+		.select2-selection__choice
+		{
+			padding-bottom: 4px !important;
+		}
+	}
+}
+
+.js-filterMenuBody
+{
+	.select2 .select2-selection ul > li.select2-selection__choice
+	{
+		font-size: inherit;
+		margin-top: 3px;
+	}
+
+	.select2 .select2-selection ul
+	{
+		margin-bottom: 3px;
+	}
+
+	.select2-results__option .label
+	{
+		font-size:inherit;
+	}
+}
+
+.select2 .select2-selection__choice .label
+{
+	position: relative;
+	top: -2px;
+}
+
+.input.prefix--title
+{
+	.select2-selection__choice
+	{
+		padding-top: 2px !important;
+	}
+
+	.select2-search__field
+	{
+		.m-placeholder({color: fade(@_input-textColor, 40%); });
+		margin-bottom: -4px;
+
+		&:focus,
+		&.is-focused
+		{
+			outline: 0;
+			.xf-inputFocus();
+			.m-placeholder({color: fade(@_input-textColor, 50%); });
+		}
+	}
+}
+
+select[id^=js-SVMultiPrefixUniqueId]
+{
+	+.select2 // this is the actual container
+	{
+		.select2-selection--single
+		{
+			padding: 5px;
+
+			.select2-selection__rendered
+			{
+				margin: 0;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+			}
+		}
+	}
+}
+
+ul[id^=select2-js-SVMultiPrefixUniqueId][id$=-results]
+{
+	overflow-x: auto;
+	max-height: 31.250em;
+
+	@media (max-width: @xf-responsiveMedium)
+	{
+		max-height: 25.000em;
+	}
+
+	@media (max-width: @xf-responsiveNarrow)
+	{
+		max-height: 15.625em;
+	}
+
+	.select2-results__options
+	{
+		overflow: visible;
+		max-height: none;
+		-webkit-overflow-scrolling: auto;
+	}
+
+	ul.select2-results__options--nested
+	{
+		max-width: 100% !important;
+		box-shadow: none !important;
+		li.select2-results__option > span
+		{
+			padding:0;
+		}
+	}
+
+	li.select2-results__option
+	{
+		&[aria-selected="true"]
+		{
+			.label
+			{
+				.xf-chip();
+			}
+		}
+	}
+}
+
+.select2-dropdown--forceHide
+{
+	> .select2-search
+	{
+		display: none;
+	}
+}
+
+.prefixContainer + .inputGroup
+{
+	margin-top: 1em;
+}]]></template>
+  <template type="public" title="sv_multiprefix_prefix_macros" version_id="2110000" version_string="2.11.0"><![CDATA[<xf:macro name="setup">
+	<xf:js src="sv/multiprefix/prefix_menu.js" addon="SV/MultiPrefix" min="1" />
+	<xf:js prod="vendor/select2/select2.full.min.js" dev="vendor/select2/select2.full.js" />
+	<xf:css src="prefix_menu.less" />
+	<xf:css src="select2.less" />
+	<xf:css src="sv_multiprefix_prefix_input.less" />
+
+
+	<script class="js-extraPhrases" type="application/json">
+		{
+			"s2_error_loading": "{{ phrase('s2_error_loading')|escape('js') }}",
+			"s2_input_too_long": "{{ phrase('s2_input_too_long')|escape('js') }}",
+			"s2_input_too_short": "{{ phrase('s2_input_too_short')|escape('js') }}",
+			"s2_loading_more": "{{ phrase('s2_loading_more')|escape('js') }}",
+			"s2_maximum_selected": "{{ phrase('s2_maximum_selected')|escape('js') }}",
+			"s2_no_results": "{{ phrase('s2_no_results')|escape('js') }}",
+			"s2_searching": "{{ phrase('s2_searching')|escape('js') }}",
+			"sv_prefix_placeholder": "{{ phrase('prefix...')|escape('js') }}",
+			"sv_multiprefix_none": "{{ phrase('(no_prefix)')|escape('js') }}"
+		}
+	</script>
+</xf:macro>
+
+<xf:macro name="select"
+		  arg-prefixes="!"
+		  arg-type="!"
+		  arg-label="{{ phrase('prefix') }}"
+		  arg-explain=""
+		  arg-selected=""
+		  arg-name="prefix_id"
+		  arg-anyLabel="{{ phrase('(any)') }}"
+		  arg-noneLabel="{{ phrase('(no_prefix)') }}"
+		  arg-multiple="{{ false }}"
+		  arg-includeAny="{{ false }}"
+		  arg-includeNone="{{ null }}"
+		  arg-class=""
+		  arg-href=""
+		  arg-listenTo=""
+		  arg-minTokens="{{ 0 }}"
+		  arg-maxTokens="{{ 0 }}"
+		  arg-forumPrefixesLimit="{{ 0 }}"
+		  arg-contentParent="{{ false }}"
+		  arg-content="{{ false }}">
+	<xf:macro template="sv_multiprefix_prefix_macros" name="setup" />
+
+	<script type="text/template">
+        <xf:mustache name="#rich_prefix">
+            <span class="{{ mustache('css_class') }}"
+               data-prefix-id="{{ mustache('prefix_id') }}"
+               data-prefix-class="{{ mustache('css_class') }}"
+               role="option">{{ mustache('title') }}</span>
+        </xf:mustache>
+    </script>
+
+	<xf:if is="{$contentParent}">
+		<xf:set var="$min_tokens" value="{$contentParent.sv_min_prefixes}" />
+		<xf:set var="$max_tokens" value="{$contentParent.sv_max_prefixes}" />
+	<xf:else />
+		<xf:set var="$min_tokens" value="{$minTokens}" />
+		<xf:set var="$max_tokens" value="{$maxTokens}" />
+	</xf:if>
+
+	<xf:if is="{$forumPrefixesLimit} > 0">
+		<xf:set var="$max_tokens" value="{$forumPrefixesLimit}" />
+	</xf:if>
+
+	<xf:select name="{$name}" value="{$selected}" multiple="{$multiple}" class="{$class}" placeholder="{{ phrase('prefix') }}"
+			   data-xf-init="{{ ($href AND $listenTo) ? 'sv-multi-prefix-loader' : '' }} sv-multi-prefix-menu"
+			   data-href="{$href}"
+			   data-listen-to="{$listenTo}"
+			   data-min-tokens="{$min_tokens}"
+			   data-max-tokens="{$max_tokens}">
+
+		<xf:if is="$includeAny">
+			<xf:option value="-1">{$anyLabel}</xf:option>
+		</xf:if>
+		<xf:if is="$includeNone">
+			<xf:option value="0">{$noneLabel}</xf:option>
+		</xf:if>
+
+		<xf:foreach loop="array_keys($prefixes)" value="$groupId">
+			<xf:if is="$groupId > 0">
+				<xf:optgroup label="{{ prefix_group($type, $groupId) }}">
+					<xf:foreach loop="{$prefixes.{$groupId}}" key="$prefixId" value="$prefix">
+						<xf:option value="{$prefixId}" label="{{ prefix_title($type, $prefixId) }}" data-prefix-class="{$prefix.css_class}" />
+					</xf:foreach>
+				</xf:optgroup>
+			<xf:else />
+				<xf:foreach loop="{$prefixes.{$groupId}}" key="$prefixId" value="$prefix">
+					<xf:option value="{$prefixId}" label="{{ prefix_title($type, $prefixId) }}" data-prefix-class="{$prefix.css_class}" />
+				</xf:foreach>
+			</xf:if>
+		</xf:foreach>
+	</xf:select>
+</xf:macro>
+
+<xf:macro name="row"
+		  arg-prefixes="!"
+		  arg-type="!"
+		  arg-label="{{ phrase('prefix') }}"
+		  arg-explain=""
+		  arg-selected=""
+		  arg-name="prefix_id"
+		  arg-anyLabel="{{ phrase('(any)') }}"
+		  arg-noneLabel="{{ phrase('(no_prefix)') }}"
+		  arg-multiple="{{ false }}"
+		  arg-includeAny="{{ false }}"
+		  arg-includeNone="{{ null }}"
+		  arg-class="">
+	<xf:macro template="sv_multiprefix_prefix_macros" name="setup" />
+
+    <xf:formrow rowtype="input" label="{$label}">
+        <xf:macro name="select"
+				  arg-prefixes="{$prefixes}"
+				  arg-type="{$type}"
+				  arg-label="{$label}"
+				  arg-explain="{$explain}"
+				  arg-selected="{$selected}"
+				  arg-name="{$name}"
+				  arg-anyLabel="{$anyLabel}"
+				  arg-noneLabel="{$noneLabel}"
+				  arg-multiple="{$multiple}"
+				  arg-includeAny="{$includeAny}"
+				  arg-includeNone="{$includeNone}"
+				  arg-class="{$class}" />
+        <xf:if is="$explain">
+            <div class="formRow-explain">{$explain|raw}</div>
+        </xf:if>
+    </xf:formrow>
+</xf:macro>
+
+<xf:macro name="render_prefix_filters"
+		  arg-filters="!"
+		  arg-prefixes="!"
+		  arg-contentType="!"
+		  arg-entity="!"
+		  arg-container="!"
+		  arg-route="!"
+		  ><xf:trim>
+	<xf:comment>Used by prefix_filters() function to a list of prefixes which can add to a container's filter</xf:comment>
+	<xf:set var="$appending"><xf:trim><xf:macro name="render_separator" arg-entity="{$entity}" arg-format="html" /></xf:trim></xf:set>
+	<xf:foreach loop="$prefixes" key="$prefixId" value="$prefixCss" i="$i" count="$count"><xf:trim>
+<xf:if is="$i > 1">{$appending|raw}</xf:if></xf:trim><xf:trim>
+		<xf:set var="$linkParams" value="{$filters}" />
+		<xf:set var="$removeFilter" value="{{ in_array($prefixId, $linkParams.prefix_id, true) }}" />
+		<xf:set var="$linkParams.prefix_id" value="{{ $removeFilter 
+											  ? $linkParams.prefix_id|replaceValue($prefixId, null) 
+											  : $linkParams.prefix_id|addValue($prefixId) 
+											  }}" />
+	</xf:trim><xf:trim><a href="{{ link($route, $container, $linkParams) }}" class="labelLink" data-xf-init="tooltip" title="{{ ($removeFilter
+		  ? phrase('svStandardLib_remove_from_filters')
+		  : phrase('svStandardLib_add_to_filters')
+		)|for_attr }}"  rel="nofollow"><span class="{$prefixCss|for_attr}" dir="auto">{{ prefix_title($contentType, $prefixId) }}</span></a>
+</xf:trim></xf:foreach>
+</xf:trim></xf:macro>
+
+<xf:macro name="render_separator"
+		  arg-entity="!"
+		  arg-format="!"
+		  >
+	<span class="label-append">&nbsp;</span>
+</xf:macro>
+
+<xf:macro name="render_prefix_html"
+		  arg-prefixes="!"
+		  arg-contentType="!"
+		  arg-entity="!"
+		  arg-withLink="{{ false }}"
+		  arg-linkType=""
+		  arg-suffixPad="{{ false }}"
+		  ><xf:trim>
+	<xf:comment>Used by fnPrefix() function to a list of prefixes in a HTML context, with links</xf:comment>
+	<xf:if is="$appending === null">
+		<xf:set var="$appending"><xf:trim><xf:macro name="render_separator" arg-entity="{$entity}" arg-format="html" /></xf:trim></xf:set>
+	</xf:if>
+	<xf:foreach loop="$prefixes" key="$prefixId" value="$prefixCss" i="$i" count="$count"><xf:trim>
+<xf:if is="$i > 1">{$appending|raw}</xf:if></xf:trim><xf:trim>
+		<xf:set var="$prefixHtml"><span class="{$prefixCss|for_attr}" dir="auto">{{ prefix_title($contentType, $prefixId) }}</span></xf:set>
+		<xf:if is="$withLink">
+			<a href="{{ $entity.getSvPrefixFilterLink($prefixId, $linkType)|for_attr }}" class="labelLink" rel="nofollow">{$prefixHtml}</a>
+		<xf:else />
+			{$prefixHtml}
+		</xf:if>
+</xf:trim></xf:foreach><xf:if is="$suffixPad">{$appending|raw}</xf:if>
+</xf:trim></xf:macro>
+
+
+<xf:macro name="prefix_description"
+		  arg-content="!"
+		  arg-contentType="!"
+		  >
+	<xf:if is="$content.sv_prefix_ids is not empty">
+		<xf:foreach loop="$content.sv_prefix_ids" value="$prefixId">
+			<xf:if contentcheck="true">
+				<div class="blockMessage blockMessage--alt blockMessage--small blockMessage--close prefix-description prefix{$prefixId}">
+					<xf:contentcheck>{{ prefix_description($contentType, $prefixId) }}</xf:contentcheck>
+				</div>
+			</xf:if>
+		</xf:foreach>
+	</xf:if>
+</xf:macro>]]></template>
+  <template type="public" title="sv_multiprefix_xc_project_manager_category_prefixes" version_id="2090600" version_string="2.9.6"><![CDATA[<div class="prefixContainer">
+	<xf:macro template="sv_multiprefix_prefix_macros" name="select"
+              arg-name="na"
+              arg-prefixes="{$prefixes}"
+              arg-contentParent="{$category}"
+              arg-includeAny="{$includeAny}"
+              arg-includeNone="{$includeNone}"
+              arg-type="xcpm_project" />
+</div>]]></template>
+  <template type="public" title="sv_multiprefix_xfrm_category_prefixes" version_id="2090600" version_string="2.9.6"><![CDATA[<div class="prefixContainer">
+	<xf:macro template="sv_multiprefix_prefix_macros" name="select"
+			  arg-name="na"
+			  arg-prefixes="{$prefixes}"
+			  arg-includeAny="{$includeAny}"
+			  arg-includeNone="{$includeNone}"
+			  arg-contentParent="{$category}"
+			  arg-type="resource" />
+</div>]]></template>
+</templates>

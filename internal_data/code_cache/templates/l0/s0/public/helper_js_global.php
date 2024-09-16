@@ -186,6 +186,22 @@ return array(
 
 			push_enable_notification_title: "' . $__templater->filter('Push notifications enabled successfully at ' . $__vars['xf']['options']['boardTitle'] . '', array(array('escape', array('js', )),), true) . '",
 			push_enable_notification_body: "' . $__templater->filter('Thank you for enabling push notifications!', array(array('escape', array('js', )),), true) . '"
+		,
+			"svStandardLib_time.day": "' . $__templater->filter('{count} day', array(array('escape', array('json', )),), true) . '",
+			"svStandardLib_time.days": "' . $__templater->filter('{count} days', array(array('escape', array('json', )),), true) . '",
+			"svStandardLib_time.hour": "' . $__templater->filter('{count} hour', array(array('escape', array('json', )),), true) . '",
+			"svStandardLib_time.hours": "' . $__templater->filter('{count} hours', array(array('escape', array('json', )),), true) . '",
+			"svStandardLib_time.minute": "' . $__templater->filter('{count} minutes', array(array('escape', array('json', )),), true) . '",
+			"svStandardLib_time.minutes": "' . $__templater->filter('{count} minutes', array(array('escape', array('json', )),), true) . '",
+			"svStandardLib_time.month": "' . $__templater->filter('{count} month', array(array('escape', array('json', )),), true) . '",
+			"svStandardLib_time.months": "' . $__templater->filter('{count} months', array(array('escape', array('json', )),), true) . '",
+			"svStandardLib_time.second": "' . $__templater->filter('{count} second', array(array('escape', array('json', )),), true) . '",
+			"svStandardLib_time.seconds": "' . $__templater->filter('{count} seconds', array(array('escape', array('json', )),), true) . '",
+			"svStandardLib_time.week": "' . $__templater->filter('time.week', array(array('escape', array('json', )),), true) . '",
+			"svStandardLib_time.weeks": "' . $__templater->filter('{count} weeks', array(array('escape', array('json', )),), true) . '",
+			"svStandardLib_time.year": "' . $__templater->filter('{count} year', array(array('escape', array('json', )),), true) . '",
+			"svStandardLib_time.years": "' . $__templater->filter('{count} years', array(array('escape', array('json', )),), true) . '"
+
 		});
 	</script>
 

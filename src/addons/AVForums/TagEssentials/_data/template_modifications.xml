@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="admin" template="feed_edit" modification_key="avForumsTagEss_feed_edit_default_tags" description="Add default tags per prefix" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:prefixinputrow]]></find>
+    <replace><![CDATA[<xf:include template="avForumsTagEss_feed_edit_default_tags" />
+			$0]]></replace>
+  </modification>
+  <modification type="admin" template="forum_edit" modification_key="avForumsTagEss_forum_edit_default_tags" description="Add default tags per forum" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:radiorow name="allowed_watch_notifications"]]></find>
+    <replace><![CDATA[<xf:include template="avForumsTagEss_forum_edit_default_tags" />
+			$0]]></replace>
+  </modification>
+  <modification type="public" template="forum_post_quick_thread" modification_key="avForumsTagEss_forum_post_quick_thread_suggest" description="Inject title/prefix suggestion for post thread" execution_order="15" enabled="1" action="preg_replace">
+    <find><![CDATA[#(<xf:form action.*?data-xf-init=")(.*?)(\$forum\.min_tags)(.*?<xf:tokeninputrow name="tags")(.*)(</xf:form>)#si]]></find>
+    <replace><![CDATA[$1 {{ $xf.options.tagessSuggestTags ? 'tagess-suggest-from-title' : '' }} tagess-suggest-from-prefix $2 ($3 || $xf.options.tagessSuggestTags || $thread.tags || $forum.isForumPrefixesTagged()) $4
+value="{{ $thread.tags ? $thread.tags|join(', ') : $forum.draft_thread.tags }}"
+$5
+<xf:include template="avForumsTagEss_forum_post_thread_tag_suggestion_js" />
+<xf:hiddenval name="nodeId">{$forum.node_id}</xf:hiddenval>
+$6]]></replace>
+  </modification>
+  <modification type="public" template="forum_post_thread" modification_key="avForumsTagEss_forum_post_thread_suggest" description="Inject title/prefix suggestion for post thread" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[#(<xf:form action.*?data-xf-init=")(.*)(</xf:form>)#si]]></find>
+    <replace><![CDATA[$1 {{ $xf.options.tagessSuggestTags ? 'tagess-suggest-from-title' : '' }} tagess-suggest-from-prefix $2
+<xf:include template="avForumsTagEss_forum_post_thread_tag_suggestion_js" />
+<xf:hiddenval name="nodeId">{$forum.node_id}</xf:hiddenval>
+$3]]></replace>
+  </modification>
+  <modification type="admin" template="helper_thread_search_criteria" modification_key="tagess_helper_thread_search_criteria" description="Thread search criteria" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[#$#]]></find>
+    <replace><![CDATA[$0
+<xf:include template="tagess_helper_thread_search_criteria" />]]></replace>
+  </modification>
+  <modification type="admin" template="tag_edit" modification_key="avForumsTagEss_tag_edit" description="Add addition &quot;Allowed nodes, Category and Synonyms&quot; options" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[#<xf:checkboxrow>.*?<\/xf:checkboxrow>#si]]></find>
+    <replace><![CDATA[<xf:include template="avForumsTagEss_tag_edit" />
+
+			$0]]></replace>
+  </modification>
+  <modification type="admin" template="tag_edit" modification_key="avForumsTagEss_tag_edit_pageaction" description="Add &quot;Parent tag&quot; and &quot;Blacklist&quot; button in page actions" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:pageaction if="$tag.isUpdate()">]]></find>
+    <replace><![CDATA[$0
+<xf:include template="avForumsTagEss_tag_edit_pageaction" />]]></replace>
+  </modification>
+  <modification type="admin" template="tag_list" modification_key="avForumsTagEss_tag_list_add_blacklist" description="Add &quot;Wiki&quot; and &quot;Blacklist&quot; action in tag list" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:delete href="{{ link('tags/delete', $tag) }}" />]]></find>
+    <replace><![CDATA[<xf:action href="{{ link('tags/wiki', $tag) }}" class="dataList-cell--iconic" overlay="true" data-xf-init="tooltip" title="{{ phrase('avForumsTagEss_wiki') }}">	
+	<i class="{{$xf.versionId > 2010000 ? 'fab fa-wikipedia-w' : 'fa fa-wikipedia-w'}} dataList-wiki" aria-hidden="true"></i>
+</xf:action>
+<xf:action href="{{ link('tags/blacklist', null, {'existing_tag_id': $tag.tag_id}) }}" class="dataList-cell--iconic" overlay="true" data-xf-init="tooltip" title="{{ phrase('avForumsTagEss_blacklist') }}">
+	<i class="fa fa-ban dataList-blackList" aria-hidden="true"></i>
+</xf:action>
+$0]]></replace>
+  </modification>
+  <modification type="admin" template="tag_list" modification_key="avForumsTagEss_tag_list_add_checkbox_cell" description="Add empty header cell" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:cell>{{ phrase('tag') }}</xf:cell>]]></find>
+    <replace><![CDATA[<xf:cell class="dataList-cell--min"><xf:checkbox standalone="true"><xf:option check-all=".dataList"  data-xf-init="tooltip" title="{{ phrase('select_all') }}" /></xf:checkbox></xf:cell>
+$0]]></replace>
+  </modification>
+  <modification type="admin" template="tag_list" modification_key="avForumsTagEss_tag_list_checkbox" description="Make individual tag selectable" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:cell href="{{ link('tags/edit', $tag) }}">{$tag.tag}</xf:cell>]]></find>
+    <replace><![CDATA[<xf:toggle name="selected_tags[]" value="{$tag.tag_id}" />
+$0]]></replace>
+  </modification>
+  <modification type="admin" template="tag_list" modification_key="avForumsTagEss_tag_list_css" description="Add less file to tag list" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:form action="{{ link('tags') }}" class="block">]]></find>
+    <replace><![CDATA[<xf:css src="avForumsTagEss_tag_list.less" />
+
+$0]]></replace>
+  </modification>
+  <modification type="admin" template="tag_list" modification_key="avForumsTagEss_tag_list_extend_cell_limit" description="Extend cell limit for tag list" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:cell>{{ phrase('last_used') }}</xf:cell>]]></find>
+    <replace><![CDATA[$0
+<xf:cell class="dataList-cell--min">&nbsp;</xf:cell>
+<xf:cell class="dataList-cell--min">&nbsp;</xf:cell>]]></replace>
+  </modification>
+  <modification type="admin" template="tag_list" modification_key="avForumsTagEss_tag_list_footer_controls" description="Add &quot;Delete&quot; and &quot;Blacklist&quot; controls for mass selection" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[			<div class="block-footer">
+				<span class="block-footer-counter">{{ display_totals($tags, $total) }}</span>
+			</div>]]></find>
+    <replace><![CDATA[<xf:include template="avForumsTagEss_tag_list_footer" />]]></replace>
+  </modification>
+  <modification type="admin" template="tag_list" modification_key="avForumsTagEss_tag_list_synonym_of" description="Add 'Synonym of ' column" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:cell>{{ phrase('total') }}</xf:cell>]]></find>
+    <replace><![CDATA[<xf:cell>{{ phrase('avForumsTagEss_synonym_of') }}</xf:cell>
+$0]]></replace>
+  </modification>
+  <modification type="admin" template="tag_list" modification_key="avForumsTagEss_tag_list_synonym_of_value" description="Add 'Synonym of ' row" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:cell href="{{ link('tags/edit', $tag) }}">{$tag.use_count|number}</xf:cell>]]></find>
+    <replace><![CDATA[<xf:if is="$tag.SynonymOf">
+	<xf:cell href="{{ link('tags/edit', $tag) }}">{$tag.SynonymOf.ParentTag.tag}</xf:cell>
+<xf:else />
+	<xf:cell href="{{ link('tags/edit', $tag) }}">{{ phrase('n_a') }}</xf:cell>
+</xf:if>
+$0]]></replace>
+  </modification>
+  <modification type="public" template="tag_macros" modification_key="avForumsTagEss_tag_macros" description="Inject tag preview into tag lists" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[#(<xf:macro name="list".*?)(class="tagItem)#si]]></find>
+    <replace><![CDATA[$1 data-xf-init="preview-tooltip" data-preview-url="{{ link('tags/preview', $tag) }}" $2]]></replace>
+  </modification>
+  <modification type="public" template="tag_search" modification_key="avForumsTagEss_tag_search_grouped_tags" description="Group tags cloud" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[#$#si]]></find>
+    <replace><![CDATA[$0
+<xf:include template="avForumsTagEss_tag_search_grouped_tags" />]]></replace>
+  </modification>
+  <modification type="public" template="tag_view" modification_key="avForumsTagEss_tag_view_tabs" description="Add &quot;Recent contents&quot;, &quot;View information&quot; and &quot;Top users&quot; tab" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<div class="block" data-xf-init="{{ $activeModType ? 'inline-mod' : '' }}" data-type="{$activeModType}" data-href="{{ link('inline-mod') }}">]]></find>
+    <replace><![CDATA[<xf:macro template="avForumsTagEss_macros" name="tag_view_header" arg-tag="{{ $tag }}" arg-activePage="recentContent" />
+$0]]></replace>
+  </modification>
+  <modification type="admin" template="thread_batch_update_confirm" modification_key="tagess_thread_batch_update_confirm" description="Option to add/remove a tag from threads" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[#<xf:if is="\$prefixes.prefixesGrouped.*?<hr class="formRowSep" />#si]]></find>
+    <replace><![CDATA[$0
+<xf:include template="tagess_thread_batch_update_confirm" />]]></replace>
+  </modification>
+  <modification type="public" template="thread_list_macros" modification_key="tagess_thread_list_macros" description="Adds tags under the title on the thread list" execution_order="15" enabled="1" action="preg_replace">
+    <find><![CDATA[#(<span class="structItem-pageJump">.*?</span>\s*</xf:if>)#si]]></find>
+    <replace><![CDATA[$0
+<ul class="structItem-parts">
+<xf:include template="avForumsTagEss_thread_list_macros" />
+</ul>]]></replace>
+  </modification>
+  <modification type="admin" template="thread_prefix_edit" modification_key="avForumsTagEss_thread_prefix_edit_default_tags" description="Add default tags per prefix" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[</xf:set>]]></find>
+    <replace><![CDATA[<xf:include template="avForumsTagEss_thread_prefix_edit_default_tags" />
+	</xf:set>]]></replace>
+  </modification>
+  <modification type="public" template="thread_view" modification_key="avForumsTagEss_thread_view_grouped_tags" description="Allow tags to have preview which contain synonyms, wiki and some useful links" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[#(<xf:if is="\$xf\.options\.enableTagging.*?)(\s*<li>.*?<\/li>.*?)(\s*<\/xf:if>)#si]]></find>
+    <replace><![CDATA[$1
+<xf:if is="$xf.options.tagess_categoriesEnabledThread">
+	<xf:include template="avForumsTagEss_thread_view_grouped_tags" />
+<xf:else />
+$2
+</xf:if>
+$3]]></replace>
+  </modification>
+  <modification type="admin" template="tools_rebuild" modification_key="avForumsTagEss_tools_rebuild" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<!--[XF:after_permissions]-->]]></find>
+    <replace><![CDATA[$0
+<xf:include template="tools_rebuild_tagess_wiki" />
+<xf:include template="tools_rebuild_tagess_prune" />]]></replace>
+  </modification>
+</template_modifications>

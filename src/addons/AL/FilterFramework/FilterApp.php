@@ -4,7 +4,7 @@
 * @author AddonsLab
 * @license https://addonslab.com/
 * @link https://addonslab.com/
-* @version 1.2.1
+* @version 1.0.0
 This software is furnished under a license and may be used and copied
 only  in  accordance  with  the  terms  of such  license and with the
 inclusion of the above copyright notice.  This software  or any other
@@ -24,6 +24,7 @@ of the license.
 namespace AL\FilterFramework;
 
 use AddonsLab\Core\App;
+use AddonsLab\Core\XF2;
 use AddonsLab\Core\Xf2\AppTrait;
 use AL\FilterFramework\Repository\Logger;
 use AL\FilterFramework\Service\ActiveFilterHelper;
@@ -36,7 +37,6 @@ use AL\FilterFramework\Service\ExtendedAttributeSearcher;
 use AL\FilterFramework\Service\FacetedSearchProvider;
 use AL\FilterFramework\Service\FieldIndexer;
 use AL\FilterFramework\Service\FieldSaver;
-use AL\FilterFramework\Service\FieldSorter;
 use AL\FilterFramework\Service\GeoLocator;
 use AL\FilterFramework\Service\InputTransformer;
 use AL\FilterFramework\Service\MySqlSource;
@@ -54,15 +54,6 @@ class FilterApp extends App
     public static function getTypeProvider()
     {
         return \XF::service('AL\FilterFramework:TypeProvider');
-    }
-
-    /**
-     * @param ContentTypeProviderInterface $contentTypeProvider
-     * @return \XF\Service\AbstractService|FieldSorter
-     */
-    public static function getFieldSorter(\AL\FilterFramework\ContentTypeProviderInterface $contentTypeProvider)
-    {
-        return \XF::service('AL\FilterFramework:FieldSorter', $contentTypeProvider);
     }
 
     /**

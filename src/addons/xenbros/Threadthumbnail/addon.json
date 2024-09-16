@@ -1,0 +1,14 @@
+{
+    "legacy_addon_id": "",
+    "title": "[Xenbros] Auto Thread Thumbnail",
+    "description": "This Addon add thumbnail to thread From first image of attachement",
+    "version_id": 2304,
+    "version_string": "2.3.4",
+    "dev": "Xenbros - Hemant",
+    "dev_url": "https://xenforo.com/community/members/hemant_bhardwaj.94479/",
+    "faq_url": "https://xenforo.com/community/members/hemant_bhardwaj.94479/",
+    "support_url": "https://xenforo.com/community/members/hemant_bhardwaj.94479/",
+    "extra_urls": [],
+    "require": [],
+    "icon": "fa-image"
+}

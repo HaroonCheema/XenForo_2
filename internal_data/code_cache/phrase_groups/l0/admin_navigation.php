@@ -1,5 +1,6 @@
 <?php
 return array (
+  'admin_navigation.BRATR_styleRating' => 'Rating Styles',
   'admin_navigation.activitySummary' => 'Activity summary',
   'admin_navigation.activitySummaryDefinitions' => 'Activity summary definitions',
   'admin_navigation.addOns' => 'Add-ons',
@@ -164,6 +165,7 @@ return array (
   'admin_navigation.logsMisc' => 'Miscellaneous',
   'admin_navigation.logsSpam' => 'Spam',
   'admin_navigation.logsUser' => 'Users',
+  'admin_navigation.manageTags' => 'Manage tags',
   'admin_navigation.memberStats' => 'Member statistics',
   'admin_navigation.messageUsers' => 'Message users',
   'admin_navigation.moderatorLog' => 'Moderator log',
@@ -212,6 +214,8 @@ return array (
   'admin_navigation.styleProperties' => 'Style properties',
   'admin_navigation.styles' => 'Styles',
   'admin_navigation.stylesAndTemplates' => 'Styles &amp; templates',
+  'admin_navigation.tagess_blacklistedtags' => 'Blacklisted tags',
+  'admin_navigation.tagess_categories' => 'Tag categories',
   'admin_navigation.tags' => 'Tags',
   'admin_navigation.templateModifications' => 'Template modifications',
   'admin_navigation.templates' => 'Templates',

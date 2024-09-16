@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="PAGE_CONTAINER" modification_key="BRATR_PAGE_CONTAINER" description="add management ratings" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<!--[XF:mod_tools_menu:bottom]-->]]></find>
+    <replace><![CDATA[<xf:if is="$xf.visitor.is_moderator">
+	<a href="{{ link('bratr-ratings/management') }}" class="menu-linkRow">{{ phrase('BRATR_management_rating') }}</a>
+</xf:if>
+$0]]></replace>
+  </modification>
+  <modification type="public" template="account_visitor_menu" modification_key="BRATR_account_visitor_menu" description="add link to my ratings" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<!--[XF:content_links:bottom]-->]]></find>
+    <replace><![CDATA[<li><a href="{{ link('account/bratr-my-ratings') }}" class="menu-linkRow">{{ phrase('BRATR_my_ratings') }}</a></li>
+$0]]></replace>
+  </modification>
+  <modification type="public" template="account_wrapper" modification_key="BRATR_account_wrapper" description="add link to my ratings" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<!--[XF:profile_links:bottom]-->]]></find>
+    <replace><![CDATA[<a class="blockLink {{ $pageSelected == 'bratr-my-ratings' ? 'is-selected' : '' }}" href="{{ link('account/bratr-my-ratings') }}">
+	{{ phrase('BRATR_my_ratings') }}
+</a>
+$0]]></replace>
+  </modification>
+  <modification type="public" template="forum_filters" modification_key="BRATR_forum_filters" description="add thread ratings filters" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/(?<=xf:select name="order").*(?=<\/xf:select>)/isU]]></find>
+    <replace><![CDATA[$0
+<xf:option value="rating">{{ phrase('rating') }}</xf:option>]]></replace>
+  </modification>
+  <modification type="public" template="member_list_macros" modification_key="BRATR_member_list_macros" description="add default avatar by  name" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[xf:avatar]]></find>
+    <replace><![CDATA[$0 defaultname="{$user.username}"]]></replace>
+  </modification>
+  <modification type="public" template="member_macros" modification_key="BRATR_member_macros_received_rating" description="add received ratings" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<!--[XF:stat_pairs:below_trophies]-->]]></find>
+    <replace><![CDATA[<xf:macro template="BRATR_rating_macros" name="receive_rating_count" arg-user="{$user}"/>
+$0]]></replace>
+  </modification>
+  <modification type="public" template="member_view" modification_key="BRATR_member_view" description="add receive ratings tab" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<!--[XF:tabs:end]-->]]></find>
+    <replace><![CDATA[<xf:if is="$user.user_id == $xf.visitor.user_id && $user.bratr_ratings">
+	<a href="{{ link('members/bratr-my-ratings', $user) }}"
+	   rel="nofollow"
+	   class="tabs-tab"
+	   id="bratr-ratings"
+	   role="tab">{{ phrase('BRATR_my_ratings') }}</a>
+<xf:elseif is="$user.bratr_receive_ratings" />
+	<a href="{{ link('members/bratr-ratings', $user) }}"
+	   rel="nofollow"
+	   class="tabs-tab"
+	   id="bratr-ratings"
+	   role="tab">{{ phrase('BRATR_receive_ratings') }}</a>
+</xf:if>
+$0]]></replace>
+  </modification>
+  <modification type="public" template="member_view" modification_key="BRATR_member_view_tab_panel" description="add receive ratings tab panel" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<!--[XF:tab_panes:end]-->]]></find>
+    <replace><![CDATA[<xf:if is="$user.user_id == $xf.visitor.user_id && $user.bratr_ratings">
+	<li data-href="{{ link('members/bratr-my-ratings', $user) }}" role="tabpanel" aria-labelledby="bratr-ratings">
+		<div class="blockMessage">{{ phrase('loading...') }}</div>
+	</li>
+<xf:elseif is="$user.bratr_receive_ratings" />
+	<li data-href="{{ link('members/bratr-ratings', $user) }}" role="tabpanel" aria-labelledby="bratr-ratings">
+		<div class="blockMessage">{{ phrase('loading...') }}</div>
+	</li>
+</xf:if>
+$0]]></replace>
+  </modification>
+  <modification type="public" template="post_macros" modification_key="BRATR_post_macros" description="show rating stars in post" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<\w+ [^<>]*message-attribution-opposite[^<>]*>/]]></find>
+    <replace><![CDATA[$0
+<xf:if is="$post.bratr_star">
+	<xf:macro template="BRATR_rating_macros" name="stars"
+			arg-rating="{$post.bratr_star}" />
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="search_result_post" modification_key="BRATR_search_result_post_show_rating_stars" description="Show rating stars" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[</h3>]]></find>
+    <replace><![CDATA[<xf:if is="{$post.Thread.canDisplayThreadRating()}">
+	<xf:macro template="BRATR_rating_macros" name="stars_text"
+		arg-rating="{$post.Thread.brivium_rating_avg}"
+		arg-count="{$post.Thread.brivium_rating_count}"
+		arg-rowClass="block-outer-opposite"/>
+</xf:if>
+$0]]></replace>
+  </modification>
+  <modification type="public" template="search_result_thread" modification_key="BRATR_search_result_thread_show_rating_stars" description="Show rating stars" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[</h3>]]></find>
+    <replace><![CDATA[<xf:if is="{$thread.canDisplayThreadRating()}">
+	<xf:macro template="BRATR_rating_macros" name="stars_text"
+		arg-rating="{$thread.brivium_rating_avg}"
+		arg-count="{$thread.brivium_rating_count}"
+		arg-rowClass="block-outer-opposite"/>
+</xf:if>
+$0]]></replace>
+  </modification>
+  <modification type="public" template="thread_list_macros" modification_key="BRATR_thread_list_macros" description="Show thread rating reviews in thread list item" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[</div>
+		<div class="structItem-cell structItem-cell--latest">]]></find>
+    <replace><![CDATA[<xf:if is="{$xf.options.BRATR_displayReviews}">
+	<dl class="pairs pairs--justified structItem-minor">
+		<dt>{{ phrase('BRATR_reviews') }}</dt>
+		<dd>{{ $thread.discussion_type == 'redirect' ? '&ndash;' : number($thread.brivium_review_count) }}</dd>
+	</dl>
+</xf:if>
+$0]]></replace>
+  </modification>
+  <modification type="public" template="thread_list_macros" modification_key="BRATR_thread_list_macros_view_rating_stars" description="Display rating stars" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:if is="{$extraInfo}">]]></find>
+    <replace><![CDATA[<xf:if is="{$thread.canDisplayThreadRating()}">
+	<xf:set var="$voteContent">
+		<xf:if is="$thread.canViewUserRated()">
+			<div data-href="{{ link('threads/br-user-rated', $thread)|for_attr }}" data-xf-click="overlay" data-xf-init="tooltip" title="{{ phrase('BRATR_members_who_rated_this_thread')|for_attr }}">{{ $thread.brivium_rating_count == 1 ? phrase('BRATR_1_vote') : phrase('BRATR_x_votes_plural', {'count': $thread.brivium_rating_count|number}) }}</div>
+		<xf:else />
+			{{ $thread.brivium_rating_count == 1 ? phrase('BRATR_1_vote') : phrase('BRATR_x_votes_plural', {'count': $thread.brivium_rating_count|number}) }}
+		</xf:if>
+	</xf:set>
+	<li>
+		<xf:macro template="BRATR_rating_macros" name="stars_text"
+		  arg-rating="{$thread.brivium_rating_avg}"
+		  arg-count="{$thread.brivium_rating_count}"
+		  arg-text="{$voteContent}"/>
+	</li>
+</xf:if>
+$0]]></replace>
+  </modification>
+  <modification type="public" template="thread_view" modification_key="BRATR_thread_view" description="Google ratings, show rating stars and page action leave rating" execution_order="7" enabled="1" action="str_replace">
+    <find><![CDATA[</xf:page>]]></find>
+    <replace><![CDATA[<xf:if is="$thread.canDisplayThreadRating()">
+	<xf:macro template="BRATR_rating_macros" name="google_review_json" arg-thread="{$thread}" />
+</xf:if>
+$0
+
+<xf:pageaction>
+	<xf:macro template="BRATR_rating_macros" name="thread_view_rating"
+			arg-thread="{$thread}" />
+</xf:pageaction>]]></replace>
+  </modification>
+  <modification type="public" template="thread_view" modification_key="BRATR_thread_view_above_messages" description="Add thread rating above messages" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:ad position="thread_view_above_messages" arg-thread="{$thread}" />]]></find>
+    <replace><![CDATA[$0
+<xf:if is="!$xf.options.BRATR_mergeButtonAndDisplay && ($xf.options.BRATR_displayRatingForm == 1 || $xf.options.BRATR_displayRatingForm == 3)" >
+	<xf:macro template="BRATR_rating_macros" name="thread_view_rating"
+			  arg-thread="{$thread}"
+			  arg-ratingType="thread_view_above_messages"
+			  arg-rowLabel="{{ phrase('BRATR_rate_this_thread') }}"
+			  arg-ratingHref="{{ link('threads/br-rated', $thread) }}" />
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="thread_view" modification_key="BRATR_thread_view_add_reset_rating" description="add reset rating in thread tools" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<!--[XF:thread_tools_menu:before_footer]-->]]></find>
+    <replace><![CDATA[<xf:if is="$thread.canResetRating()">
+	<a href="{{ link('threads/br-reset-rating', $thread) }}" data-xf-click="overlay" class="menu-linkRow">{{ phrase('BRATR_reset_rating') }}</a>
+</xf:if>
+$0]]></replace>
+  </modification>
+  <modification type="public" template="thread_view" modification_key="BRATR_thread_view_below_messages" description="Add thread rating below messages" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:ad position="thread_view_below_messages" arg-thread="{$thread}" />]]></find>
+    <replace><![CDATA[$0
+<xf:if is="!$xf.options.BRATR_mergeButtonAndDisplay && ($xf.options.BRATR_displayRatingForm == 2 || $xf.options.BRATR_displayRatingForm == 3)" >
+	<xf:macro template="BRATR_rating_macros" name="thread_view_rating"
+			  arg-thread="{$thread}"
+			  arg-ratingType="thread_view_below_messages"
+			  arg-rowLabel="{{ phrase('BRATR_rate_this_thread') }}"
+			  arg-ratingHref="{{ link('threads/br-rated', $thread) }}" />
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="thread_view" modification_key="BRATR_thread_view_reviews_tab" description="add discussion reviews tab" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<!--[XF:content_top]-->]]></find>
+    <replace><![CDATA[<xf:if is="!$resource && $thread.isDisplayReviewTab()">
+	<div class="tabs tabs--standalone">
+		<div class="hScroller" data-xf-init="h-scroller">
+			<span class="hScroller-scroll">
+				<a class="tabs-tab {{ !$selected ? 'is-active' : '' }}" href="{{ link('threads', $thread) }}">{{ phrase('BRATR_discussion') }}</a>
+				<a class="tabs-tab {{ $selected == 'br-reviews' ? 'is-active' : '' }}" href="{{ link('threads/br-reviews', $thread) }}">{{ phrase('BRATR_discussion_reviews_x', {'reviewCount': {$thread.brivium_review_counter|number}}) }}</a>
+			</span>
+		</div>
+	</div>
+</xf:if>
+$0]]></replace>
+  </modification>
+  <modification type="admin" template="tools_rebuild" modification_key="BRATR_tools_rebuild" description="add rebuil thread ratings" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<!--[XF:rebuild_bottom]-->]]></find>
+    <replace><![CDATA[<xf:macro template="tools_rebuild" name="rebuild_job"
+	arg-header="Brivium - {{ phrase('BRATR_rebuild_thread_ratings') }}"
+	arg-job="Brivium\AdvancedThreadRating:ThreadRating" />
+<!--[Brivium\AdvancedThreadRating:ThreadRatingBottom]-->
+$0]]></replace>
+  </modification>
+  <modification type="public" template="whats_new_wrapper" modification_key="BRATR_whats_new_wrapper_tabs" description="add new thread ratings tab" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<!--[XF:links:end]-->]]></find>
+    <replace><![CDATA[<a class="{$baseClass} {{ $pageSelected == 'bratr-new-ratings' ? {$selectedClass} : '' }}" href="{{ link('whats-new/thread-ratings') }}" rel="nofollow">{{ phrase('BRATR_new_thread_ratings') }}</a>
+$0]]></replace>
+  </modification>
+  <modification type="public" template="xfrm_resource_wrapper_macros" modification_key="BRATR_xfrm_resource_wrapper_macros" description="add discussion reviews tab" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[{{ phrase('xfrm_discussion') }}</a>]]></find>
+    <replace><![CDATA[$0
+<xf:if is="$resource.Discussion.isDisplayReviewTab()">
+	<a class="tabs-tab {{ $selected == 'br-reviews' ? 'is-active' : '' }}" href="{{ link('threads/br-reviews', $resource.Discussion) }}">{{ phrase('BRATR_discussion_reviews_x', {'reviewCount': {$resource.Discussion.brivium_review_counter|number}}) }}</a>
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="xfrm_resource_wrapper_macros" modification_key="bratr_xfrm_resource_wrapper_macros" description="Add page action in resource header" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:if is="$resource.isDownloadable()">]]></find>
+    <replace><![CDATA[<xf:if contentcheck="true">
+	<div class="p-title-pageAction"><xf:contentcheck><xf:pageaction /></xf:contentcheck></div>
+</xf:if>
+$0]]></replace>
+  </modification>
+  <modification type="public" template="xfrm_thread_insert" modification_key="BRATR_xfrm_thread_insert" description="add tab selected" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[arg-selected="discussion"]]></find>
+    <replace><![CDATA[arg-selected="{{ $selected ? $selected : 'discussion' }}"]]></replace>
+  </modification>
+</template_modifications>

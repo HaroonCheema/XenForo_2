@@ -26,6 +26,10 @@ return array(
 	}
 	$__finalCompiled .= '
 
+' . $__templater->callMacro('avForumsTagEss_macros', 'tag_view_header', array(
+		'tag' => $__vars['tag'],
+		'activePage' => 'recentContent',
+	), $__vars) . '
 <div class="block" data-xf-init="' . ($__vars['activeModType'] ? 'inline-mod' : '') . '" data-type="' . $__templater->escape($__vars['activeModType']) . '" data-href="' . $__templater->func('link', array('inline-mod', ), true) . '">
 	';
 	if ($__vars['modTypes']) {

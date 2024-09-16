@@ -85,6 +85,8 @@ return array(
 	</div>
 ';
 	}
+	$__finalCompiled .= '
+' . $__templater->includeTemplate('avForumsTagEss_tag_search_grouped_tags', $__vars);
 	return $__finalCompiled;
 }
 );

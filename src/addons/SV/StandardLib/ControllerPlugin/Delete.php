@@ -2,7 +2,15 @@
 
 namespace SV\StandardLib\ControllerPlugin;
 
+use SV\StandardLib\Helper;
 use XF\ControllerPlugin\AbstractPlugin;
+use XF\ControllerPlugin\InlineMod as InlineModPlugin;
+use XF\Entity\Phrase;
+use XF\Mvc\Entity\Entity;
+use XF\Mvc\Reply\AbstractReply;
+use function assert;
+use function is_callable;
+use function method_exists;
 
 /**
  * Class Delete
@@ -12,24 +20,23 @@ use XF\ControllerPlugin\AbstractPlugin;
 class Delete extends AbstractPlugin
 {
 	/**
-	 * @param \XF\Mvc\Entity\Entity $entity
+	 * @param Entity $entity
 	 * @param string $stateKey
 	 * @param string $deleterService
 	 * @param string $contentType
 	 * @param string $deleteLink
 	 * @param string $editLink
 	 * @param string $redirectLink
-	 * @param \XF\Entity\Phrase|string $title
+	 * @param Phrase|string $title
 	 * @param bool $canHardDelete
 	 * @param bool $includeAuthorAlert
 	 * @param string|null $templateName
 	 * @param array $params
 	 *
-	 * @return \XF\Mvc\Reply\AbstractReply
-     * @noinspection PhpMissingParamTypeInspection
+	 * @return AbstractReply
      */
 	public function actionDeleteWithState(
-		\XF\Mvc\Entity\Entity $entity,
+		Entity $entity,
 		string $stateKey,
 		string $deleterService,
 		string $contentType,
@@ -39,11 +46,11 @@ class Delete extends AbstractPlugin
 		$title,
 		bool $canHardDelete = false,
 		bool $includeAuthorAlert = true,
-		string $templateName = null,
+		?string $templateName = null,
 		array $params = []
-	): \XF\Mvc\Reply\AbstractReply
+	): AbstractReply
     {
-        if (!\is_callable([$entity, 'canDelete']) || !\is_callable([$entity, 'canUndelete']))
+        if (!is_callable([$entity, 'canDelete']) || !is_callable([$entity, 'canUndelete']))
         {
             throw new \LogicException('Either canDelete or canUndelete is not callable on ' . \get_class($entity));
         }
@@ -58,14 +65,14 @@ class Delete extends AbstractPlugin
 			$id = $entity->getIdentifierValues();
 			if (!$id || count($id) != 1)
 			{
-				throw new \InvalidArgumentException("Entity does not have an ID or does not have a simple key");
+				throw new \InvalidArgumentException('Entity does not have an ID or does not have a simple key');
 			}
 			$entityId = intval(reset($id));
-			
+
 			if ($entity->{$stateKey} == 'deleted')
 			{
 				$linkHash = $this->buildLinkHash($entityId);
-				
+
 				$type = $this->filter('hard_delete', 'uint');
 				switch ($type)
 				{
@@ -79,18 +86,19 @@ class Delete extends AbstractPlugin
                         }
 
 						$reason = $this->filter('reason', 'str');
-						
-						$deleter = $this->service($deleterService, $entity);
+
+						$deleter = \SV\StandardLib\Helper::service($deleterService, $entity);
 						if ($includeAuthorAlert && $this->filter('author_alert', 'bool'))
 						{
+                            assert(method_exists($deleter, 'setSendAlert'));
 							$deleter->setSendAlert(true, $this->filter('author_alert_reason', 'str'));
 						}
+                        assert(method_exists($deleter, 'delete'));
 						$deleter->delete('hard', $reason);
-						
-						/** @var \XF\ControllerPlugin\InlineMod $inlineModPlugin */
-						$inlineModPlugin = $this->plugin('XF:InlineMod');
+
+						$inlineModPlugin = Helper::plugin($this, InlineModPlugin::class);
 						$inlineModPlugin->clearIdFromCookie($contentType, $entityId);
-						
+
 						return $this->redirect($redirectLink);
 
 					case 2:
@@ -99,15 +107,16 @@ class Delete extends AbstractPlugin
                             return $this->noPermission();
                         }
 
-						$deleter = $this->service($deleterService, $entity);
+						$deleter = \SV\StandardLib\Helper::service($deleterService, $entity);
 						if ($includeAuthorAlert && $this->filter('author_alert', 'bool'))
 						{
+                            assert(method_exists($deleter, 'setSendAlert'));
 							$deleter->setSendAlert(true, $this->filter('author_alert_reason', 'str'));
 						}
 
-                        /** @noinspection PhpUndefinedMethodInspection */
+                        assert(method_exists($deleter, 'unDelete'));
                         $deleter->unDelete();
-						
+
 						return $this->redirect($redirectLink . $linkHash);
 				}
 			}
@@ -120,24 +129,25 @@ class Delete extends AbstractPlugin
                 {
                     return $this->noPermission($error);
                 }
-				
-				$deleter = $this->service($deleterService, $entity);
+
+				$deleter = \SV\StandardLib\Helper::service($deleterService, $entity);
 				if ($includeAuthorAlert && $this->filter('author_alert', 'bool'))
 				{
+                    assert(method_exists($deleter, 'setSendAlert'));
 					$deleter->setSendAlert(true, $this->filter('author_alert_reason', 'str'));
 				}
+                assert(method_exists($deleter, 'delete'));
 				$deleter->delete($type, $reason);
-				
-				/** @var \XF\ControllerPlugin\InlineMod $inlineModPlugin */
-				$inlineModPlugin = $this->plugin('XF:InlineMod');
+
+				$inlineModPlugin = Helper::plugin($this, InlineModPlugin::class);
 				$inlineModPlugin->clearIdFromCookie($contentType, $entityId);
-				
+
 				return $this->redirect($redirectLink);
 			}
 		}
-		
+
 		$templateName = $templateName ?: 'public:svStandardLib_delete_state';
-		
+
 		$viewParams = [
 				'entity'             => $entity,
 				'stateKey'           => $stateKey,

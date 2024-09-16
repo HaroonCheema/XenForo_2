@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style_properties>
+  <style_property property_name="svMultiPrefixSubTitlePrefixUnderThreadInfo" group_name="nodeList" title="Sub-title prefix under thread info" description="If checked and &quot;Move thread prefixes location&quot; is set to &quot;Sub-title&quot;, prefixes will be shown below the thread info." property_type="value" value_type="boolean" display_order="910">
+    <value>0</value>
+  </style_property>
+  <style_property property_name="svMultiPrefixSubtitle" group_name="nodeList" title="Move thread prefixes location" description="Instead of thread prefixes being inline to the title, push the prefixes under the title or to the far-right of the" property_type="value" value_type="radio" display_order="900">
+    <value_parameters>={{ phrase('svMultiPrefix_prefix_location_prefix') }}
+subtitle={{ phrase('svMultiPrefix_prefix_location_subtitle') }}
+suffix={{ phrase('svMultiPrefix_prefix_location_suffix') }}</value_parameters>
+    <value>""</value>
+  </style_property>
+</style_properties>

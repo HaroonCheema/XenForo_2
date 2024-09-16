@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<routes>
+  <route route_type="admin" route_prefix="bratr-style-rating" format=":int&lt;style_rating_id&gt;/" controller="Brivium\AdvancedThreadRating:StyleRating" context="BRATR_styleRating"/>
+  <route route_type="public" route_prefix="bratr-ratings" format=":int&lt;thread_rating_id,username&gt;/:page" controller="Brivium\AdvancedThreadRating:Rating" context="forums"/>
+  <route route_type="public" route_prefix="whats-new" sub_name="thread-ratings" format="thread-ratings/:int&lt;find_new_id&gt;/:page" controller="Brivium\AdvancedThreadRating:WhatsNewRating" context="forum"/>
+</routes>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<widget_definitions>
+  <widget_definition definition_id="BRATR_newRatings" definition_class="Brivium\AdvancedThreadRating\Widget\NewRatings"/>
+</widget_definitions>

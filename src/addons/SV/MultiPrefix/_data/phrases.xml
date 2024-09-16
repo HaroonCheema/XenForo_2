@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="option.svBlockRemovePrefixWithNoPerm" version_id="2090600" version_string="2.9.6"><![CDATA[Block removing prefixes a user does not have access to add]]></phrase>
+  <phrase title="option.svClickablePrefixes" version_id="2090600" version_string="2.9.6"><![CDATA[Prefixes are always clickable]]></phrase>
+  <phrase title="option.svMultiPrefixMultipleFilter" version_id="2090600" version_string="2.9.6"><![CDATA[Multiple prefixes filter type]]></phrase>
+  <phrase title="option.svMultiprefixSortDisplay" version_id="2090600" version_string="2.9.6"><![CDATA[Sort prefixes on display]]></phrase>
+  <phrase title="option.svStripPrefixOnContainerChange" version_id="2090600" version_string="2.9.6"><![CDATA[When moving content that has multiple prefixes, strip unusable prefixes rather than block moving]]></phrase>
+  <phrase title="option_explain.svBlockRemovePrefixWithNoPerm" version_id="2090600" version_string="2.9.6"><![CDATA[If enabled, when a user does not have access to add a prefix, they will not be permitted to remove it.]]></phrase>
+  <phrase title="option_explain.svClickablePrefixes" version_id="2090600" version_string="2.9.6"><![CDATA[Force prefixes to be clickable even when they normally wouldn't be]]></phrase>
+  <phrase title="option_explain.svMultiPrefixMultipleFilter" version_id="2090600" version_string="2.9.6"><![CDATA[When multiple prefixes are selected, AND or OR them together.]]></phrase>
+  <phrase title="option_explain.svMultiprefixSortDisplay" version_id="2090600" version_string="2.9.6"><![CDATA[Prefixes are sorted when applying, but displayed as is. Enabling this enables sorting even when displaying]]></phrase>
+  <phrase title="option_explain.svStripPrefixOnContainerChange" version_id="2090600" version_string="2.9.6"><![CDATA[]]></phrase>
+  <phrase title="option_group.svMultiPrefix" version_id="2090600" version_string="2.9.6"><![CDATA[Multi Prefix options]]></phrase>
+  <phrase title="option_group_description.svMultiPrefix" version_id="2090600" version_string="2.9.6"><![CDATA[Global multi-prefix options]]></phrase>
+  <phrase title="style_prop.svMultiPrefixSubTitlePrefixUnderThreadInfo" version_id="2090600" version_string="2.9.6"><![CDATA[Sub-title prefix under thread info]]></phrase>
+  <phrase title="style_prop.svMultiPrefixSubtitle" version_id="2090600" version_string="2.9.6"><![CDATA[Move thread prefixes location]]></phrase>
+  <phrase title="style_prop_desc.svMultiPrefixSubTitlePrefixUnderThreadInfo" version_id="2090600" version_string="2.9.6"><![CDATA[If checked and "Move thread prefixes location" is set to "Sub-title", prefixes will be shown below the thread info.]]></phrase>
+  <phrase title="style_prop_desc.svMultiPrefixSubtitle" version_id="2090600" version_string="2.9.6"><![CDATA[Instead of thread prefixes being inline to the title, push the prefixes under the title or to the far-right of the]]></phrase>
+  <phrase title="svMultiPrefix_add_prefixes" version_id="2090600" version_string="2.9.6"><![CDATA[Add prefixes]]></phrase>
+  <phrase title="svMultiPrefix_add_this_filter" version_id="2090600" version_string="2.9.6"><![CDATA[Add this prefix to the filters]]></phrase>
+  <phrase title="svMultiPrefix_filter_and" version_id="2090600" version_string="2.9.6"><![CDATA[and]]></phrase>
+  <phrase title="svMultiPrefix_filter_or" version_id="2090600" version_string="2.9.6"><![CDATA[or]]></phrase>
+  <phrase title="svMultiPrefix_prefix_location_prefix" version_id="2090600" version_string="2.9.6"><![CDATA[Prefix]]></phrase>
+  <phrase title="svMultiPrefix_prefix_location_subtitle" version_id="2090600" version_string="2.9.6"><![CDATA[Sub-title]]></phrase>
+  <phrase title="svMultiPrefix_prefix_location_suffix" version_id="2090600" version_string="2.9.6"><![CDATA[Right-aligned suffix]]></phrase>
+  <phrase title="svMultiPrefix_remove_prefixes" version_id="2090600" version_string="2.9.6"><![CDATA[Remove Prefixes]]></phrase>
+  <phrase title="svMultiPrefix_remove_this_filter" version_id="2090600" version_string="2.9.6"><![CDATA[Remove this prefix from filters]]></phrase>
+  <phrase title="svMultiPrefix_under_thread_info" version_id="2090600" version_string="2.9.6"><![CDATA[Under thread info]]></phrase>
+  <phrase title="sv_multiprefix_max_prefixes" version_id="2090600" version_string="2.9.6"><![CDATA[Maximum prefixes]]></phrase>
+  <phrase title="sv_multiprefix_maximum_prefixes_for_this_forum_x_has_been_exceeded" version_id="2090600" version_string="2.9.6"><![CDATA[The maximum number of prefixes for this forum ({max}) has been exceeded.]]></phrase>
+  <phrase title="sv_multiprefix_maximum_prefixes_for_this_item_category_x_has_been_exceeded" version_id="2090600" version_string="2.9.6"><![CDATA[The maximum number of prefixes for this item category ({max}) has been exceeded.]]></phrase>
+  <phrase title="sv_multiprefix_maximum_prefixes_for_this_product_category_x_has_been_exceeded" version_id="2090600" version_string="2.9.6"><![CDATA[The maximum number of prefixes for this product category ({max}) has been exceeded.]]></phrase>
+  <phrase title="sv_multiprefix_maximum_prefixes_for_this_resource_category_x_has_been_exceeded" version_id="2090600" version_string="2.9.6"><![CDATA[The maximum number of prefixes for this resource category ({max}) has been exceeded.]]></phrase>
+  <phrase title="sv_multiprefix_maximum_prefixes_requirement_for_one_more_items_has_been_exceeded" version_id="2090600" version_string="2.9.6"><![CDATA[Maxium prefixes requirement for one or more items has been exceeded.]]></phrase>
+  <phrase title="sv_multiprefix_maximum_prefixes_requirement_for_one_more_products_has_been_exceeded" version_id="2090600" version_string="2.9.6"><![CDATA[Maxium prefixes requirement for one or more products has been exceeded.]]></phrase>
+  <phrase title="sv_multiprefix_maximum_prefixes_requirement_for_one_more_projects_has_been_exceeded" version_id="2090600" version_string="2.9.6"><![CDATA[Maxium prefixes requirement for one or more projects has been exceeded.]]></phrase>
+  <phrase title="sv_multiprefix_maximum_prefixes_requirement_for_one_more_resources_has_been_exceeded" version_id="2090600" version_string="2.9.6"><![CDATA[Maxium prefixes requirement for one or more resources has been exceeded.]]></phrase>
+  <phrase title="sv_multiprefix_maximum_prefixes_requirement_for_one_more_threads_has_been_exceeded" version_id="2090600" version_string="2.9.6"><![CDATA[Maxium prefixes requirement for one or more threads has been exceeded.]]></phrase>
+  <phrase title="sv_multiprefix_min_prefixes" version_id="2090600" version_string="2.9.6"><![CDATA[Minimum prefixes]]></phrase>
+  <phrase title="sv_multiprefix_minimum_or_maximum_prefixes_requirement_for_one_more_items_has_not_been_met_excee" version_id="2090600" version_string="2.9.6"><![CDATA[Minimum or maximum prefixes requirement for one or more items has not been met or exceeded.]]></phrase>
+  <phrase title="sv_multiprefix_minimum_or_maximum_prefixes_requirement_for_one_more_products_has_not_been_met_excee" version_id="2090600" version_string="2.9.6"><![CDATA[Minimum or maximum prefixes requirement for one or more products has not been met or exceeded.]]></phrase>
+  <phrase title="sv_multiprefix_minimum_or_maximum_prefixes_requirement_for_one_more_projects_has_not_been_met_excee" version_id="2090600" version_string="2.9.6"><![CDATA[Minimum or maximum prefixes requirement for one or more projects has not been met or exceeded.]]></phrase>
+  <phrase title="sv_multiprefix_minimum_or_maximum_prefixes_requirement_for_one_more_resources_has_not_been_met_excee" version_id="2090600" version_string="2.9.6"><![CDATA[Minimum or maximum prefixes requirement for one or more resources has not been met or exceeded.]]></phrase>
+  <phrase title="sv_multiprefix_minimum_or_maximum_prefixes_requirement_for_one_more_threads_has_not_been_met_exceede" version_id="2090600" version_string="2.9.6"><![CDATA[Minimum or maximum prefixes requirement for one or more threads has not been met or exceeded.]]></phrase>
+  <phrase title="sv_multiprefix_minimum_prefixes_requirement_for_one_more_items_has_not_been_met" version_id="2090600" version_string="2.9.6"><![CDATA[Minimum prefixes requirement for one or more items has not been met.]]></phrase>
+  <phrase title="sv_multiprefix_minimum_prefixes_requirement_for_one_more_products_has_not_been_met" version_id="2090600" version_string="2.9.6"><![CDATA[Minimum prefixes requirement for one or more products has not been met.]]></phrase>
+  <phrase title="sv_multiprefix_minimum_prefixes_requirement_for_one_more_projects_has_not_been_met" version_id="2090600" version_string="2.9.6"><![CDATA[Minimum prefixes requirement for one or more projects has not been met.]]></phrase>
+  <phrase title="sv_multiprefix_minimum_prefixes_requirement_for_one_more_resources_has_not_been_met" version_id="2090600" version_string="2.9.6"><![CDATA[Minimum prefixes requirement for one or more resources has not been met.]]></phrase>
+  <phrase title="sv_multiprefix_minimum_prefixes_requirement_for_one_more_threads_has_not_been_met" version_id="2090600" version_string="2.9.6"><![CDATA[Minium prefixes requirement for one or more threads has not been met.]]></phrase>
+  <phrase title="sv_multiprefix_minimum_prefixes_requirement_for_this_forum_x_has_not_been_met" version_id="2090600" version_string="2.9.6"><![CDATA[The minimum number of prefixes requirement for this forum ({max}) has not been met.]]></phrase>
+  <phrase title="sv_multiprefix_minimum_prefixes_requirement_for_this_resource_category_x_has_not_been_met" version_id="2090600" version_string="2.9.6"><![CDATA[The minimum number of prefixes requirement for this resource category ({max}) has not been met.]]></phrase>
+  <phrase title="sv_multiprefix_minimum_prefixes_requirement_for_this_xcpm_project_category_x_has_not_been_met" version_id="2090600" version_string="2.9.6"><![CDATA[The minimum number of prefixes requirement for this project category ({max}) has not been met.]]></phrase>
+  <phrase title="sv_multiprefix_prefix_added_by_moderator_cannot_be_removed" version_id="2090600" version_string="2.9.6"><![CDATA[Prefix ({prefixes}) added by moderator cannot be removed.]]></phrase>
+  <phrase title="sv_multiprefix_prefixes_added_by_moderator_cannot_be_removed" version_id="2090600" version_string="2.9.6"><![CDATA[Prefixes ({prefixes}) added by moderator cannot be removed.]]></phrase>
+  <phrase title="sv_multiprefix_selected_prefix_cannot_be_used_selected_forum" version_id="2090600" version_string="2.9.6"><![CDATA[Selected prefix {prefixes} cannot be used in selected forum]]></phrase>
+  <phrase title="sv_multiprefix_selected_prefix_cannot_be_used_selected_item_category" version_id="2090600" version_string="2.9.6"><![CDATA[Selected prefix {prefixes} cannot be used in selected item category]]></phrase>
+  <phrase title="sv_multiprefix_selected_prefix_cannot_be_used_selected_product_category" version_id="2090600" version_string="2.9.6"><![CDATA[Selected prefix {prefixes} cannot be used in selected product category]]></phrase>
+  <phrase title="sv_multiprefix_selected_prefix_cannot_be_used_selected_resource_category" version_id="2090600" version_string="2.9.6"><![CDATA[Selected prefix {prefixes} cannot be used in selected resource category]]></phrase>
+  <phrase title="sv_multiprefix_selected_prefixes_cannot_be_used_selected_forum" version_id="2090600" version_string="2.9.6"><![CDATA[Selected prefixes {prefixes} cannot be used in selected forum]]></phrase>
+  <phrase title="sv_multiprefix_selected_prefixes_cannot_be_used_selected_item_category" version_id="2090600" version_string="2.9.6"><![CDATA[Selected prefixes {prefixes} cannot be used in selected item category]]></phrase>
+  <phrase title="sv_multiprefix_selected_prefixes_cannot_be_used_selected_product_category" version_id="2090600" version_string="2.9.6"><![CDATA[Selected prefixes {prefixes} cannot be used in selected product category]]></phrase>
+  <phrase title="sv_multiprefix_selected_prefixes_cannot_be_used_selected_resource_category" version_id="2090600" version_string="2.9.6"><![CDATA[Selected prefixes {prefixes} cannot be used in selected resource category]]></phrase>
+  <phrase title="sv_multiprefix_x_prefixes" version_id="2090600" version_string="2.9.6"><![CDATA[{count} prefixes]]></phrase>
+  <phrase title="sv_multiprefix_you_do_not_have_permission_to_use_x_prefix_in_selected_forum" version_id="2090600" version_string="2.9.6"><![CDATA[You do not have permission to use {prefixes} prefix in selected forum.]]></phrase>
+  <phrase title="sv_multiprefix_you_do_not_have_permission_to_use_x_prefix_in_selected_item_category" version_id="2090600" version_string="2.9.6"><![CDATA[You do not have permission to use {prefixes} prefix in selected item category.]]></phrase>
+  <phrase title="sv_multiprefix_you_do_not_have_permission_to_use_x_prefix_in_selected_product_category" version_id="2090600" version_string="2.9.6"><![CDATA[You do not have permission to use {prefixes} prefix in selected product category.]]></phrase>
+  <phrase title="sv_multiprefix_you_do_not_have_permission_to_use_x_prefix_in_selected_resource_category" version_id="2090600" version_string="2.9.6"><![CDATA[You do not have permission to use {prefixes} prefix in selected resource category.]]></phrase>
+  <phrase title="sv_multiprefix_you_do_not_have_permission_to_use_x_prefixes_in_selected_forum" version_id="2090600" version_string="2.9.6"><![CDATA[You do not have permission to use {prefixes} prefixes in selected forum.]]></phrase>
+  <phrase title="sv_multiprefix_you_do_not_have_permission_to_use_x_prefixes_in_selected_item_category" version_id="2090600" version_string="2.9.6"><![CDATA[You do not have permission to use {prefixes} prefixes in selected item category.]]></phrase>
+  <phrase title="sv_multiprefix_you_do_not_have_permission_to_use_x_prefixes_in_selected_product_category" version_id="2090600" version_string="2.9.6"><![CDATA[You do not have permission to use {prefixes} prefixes in selected product category.]]></phrase>
+  <phrase title="sv_multiprefix_you_do_not_have_permission_to_use_x_prefixes_in_selected_resource_category" version_id="2090600" version_string="2.9.6"><![CDATA[You do not have permission to use {prefixes} prefixes in selected resource category.]]></phrase>
+</phrases>

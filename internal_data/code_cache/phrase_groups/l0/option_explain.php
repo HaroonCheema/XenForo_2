@@ -1,6 +1,17 @@
 <?php
 return array (
   'option_explain.AwedoTceSpecialChars' => 'Each of the characters will be removed from the content before it is checked for banned words. Note: Blanks will be ignored.',
+  'option_explain.BRARS_postToThread' => 'If enabled, the reviews also get posted directly into the thread.<br>
+You can use {message} to get content review message.',
+  'option_explain.BRATR_disableResources' => '',
+  'option_explain.BRATR_displayRatingForm' => '',
+  'option_explain.BRATR_displayReviews' => '',
+  'option_explain.BRATR_emailConfirmation' => 'If enabled, the guest must confirm by email to rating thread.',
+  'option_explain.BRATR_fontAwesome' => 'You can set a color of the icon in <a href="admin.php?style-properties/197/view" target="_blank">here</a>',
+  'option_explain.BRATR_iconRating' => '',
+  'option_explain.BRATR_mergeButtonAndDisplay' => 'If enabled, the button rating will be merged with display rating of the thread.',
+  'option_explain.BRATR_onlyAddon' => '',
+  'option_explain.BRATR_perPage' => 'This box controls the maximum number of rating that will be shown on a page.',
   'option_explain.CMTV_Math_customMathDelimiters' => 'The value in this field is parsed inside PHP so write only strict JSON data!',
   'option_explain.CMTV_Math_ignoredClasses' => '',
   'option_explain.CMTV_Math_macros' => '',
@@ -79,7 +90,6 @@ Note: Users can decide to opt-in/opt-out of receiving the activity summary email
   'option_explain.alertExpiryDays' => 'User alerts will disappear from the alerts list this many days after being viewed. Unviewed alerts will automatically expire after 30 days.',
   'option_explain.alertsPerPage' => 'Controls how many alerts are shown on each page of users\' full alert list.',
   'option_explain.alertsPopupExpiryDays' => 'The alert popup will show all unviewed alerts, plus any viewed alerts that were viewed within the time frame (in days) before now. Note that the total amount shown in this popup is limited to no more than 25.',
-  'option_explain.alff_tag_match_mode' => 'Match all or any tag if multiple tags are used in the filter.',
   'option_explain.allowGuestRte' => 'If a text editor is shown to guests, this controls whether they will be given the option to use the formatting controls provided by the rich text editor. Disabling this can increase performance for guests if you allow guest posting or use the "write before registering" feature.',
   'option_explain.allowVideoUploads' => 'Use this option to globally enable or disable video/audio uploads. If enabled, you must give specific users/groups the relevant permissions to upload video/audio.<br />
 <br />
@@ -339,6 +349,7 @@ By default, we will always serve the graphics from the preferred CDN, though if 
   'option_explain.enableVerp' => 'If enabled, sent emails will include the recipient email address in the bounce/unsubscribe address field. This enables more accurate and more secure automated email handling. If using automated bounce/unsubscribe processing, enabling this option is strongly recommended.<br />
 <br />
 This option requires that the specified account is a catch-all account or supports a "+" as a wildcard separator (such as in Gmail). For example, if this option is enabled with a bounce address of bounce@example.com, the email might be returned to bounce+123abc+user=domain.com@example.com.',
+  'option_explain.enable_first_image_url' => '',
   'option_explain.extraCaptchaKeys' => 'This option can\'t be edited manually. It is edited only via the "captcha" option.',
   'option_explain.facebookLike' => 'If this feature is enabled, a Facebook button will be displayed on various pages including the thread view page, allowing Facebook users to share it with their Facebook friends.',
   'option_explain.floodCheckLength' => 'Users will have to wait this many seconds between posting messages. Users with the permission "Can bypass flood check" will be exempt from this option.',
@@ -392,6 +403,7 @@ This option requires that the specified account is a catch-all account or suppor
   'option_explain.fs_escrow_applicable_forum' => '',
   'option_explain.fs_female_verification_images_pixels' => '',
   'option_explain.fs_female_verification_images_size' => '',
+  'option_explain.fs_filter_node' => '',
   'option_explain.fs_forum_gorups_per_row' => 'how many groups display on per "Row" you can set from here..!',
   'option_explain.fs_forum_groups_applicable_forum' => 'Forum Id',
   'option_explain.fs_forum_groups_approval' => 'Allow withdrawal without admin apprvel.',
@@ -430,6 +442,7 @@ Example: 1,2,3,4,..',
   'option_explain.guestTimeZone' => 'All dates and times will be displayed to guests in this time zone.',
   'option_explain.headerImageDimensions' => 'Default 1920 × 460 px',
   'option_explain.hide_forum_items' => 'Hide items block on forum-view page',
+  'option_explain.hideuser_avtar' => '',
   'option_explain.homePageUrl' => 'This is the URL to your home page, outside of the board. If this is left blank, \'Home\' will not appear in the navigation.',
   'option_explain.hou_attachment_exclude_extension' => 'One file extension per line',
   'option_explain.hou_attachment_exclude_forum' => '',
@@ -501,6 +514,7 @@ Example: 1,2,3,4,..',
   'option_explain.nfDisplayGiftingOnWarnedContent' => '',
   'option_explain.nick97_trakt_api_key' => 'Enter your Trakt API key',
   'option_explain.nick97_watch_list_trakt_api_key' => 'Enter your Trakt API key',
+  'option_explain.node_id_for_thumb' => 'where you want to show thumbnail',
   'option_explain.node_ids' => 'Select the forums on which quick reply box will be removed.',
   'option_explain.oEmbedCacheRefresh' => 'If a value greater than 0 is entered, oEmbed data cached by the system will be refreshed after this many days have passed. If a value of 0 is entered, oEmbed data will only be updated when the cache entry expires.',
   'option_explain.oEmbedCacheTTL' => 'Enter the number of days for which fetched oEmbed data should be retained, before they are removed from your system. If the oEmbed data is re-requested after this time, it will automatically be fetched again. Use 0 to retain oEmbed data indefinitely.',
@@ -511,6 +525,9 @@ Example: 1,2,3,4,..',
   'option_explain.pinterestShare' => 'This button will let your users pin your content to any Pinterest board.',
   'option_explain.pollMaximumResponses' => 'This will limit the number of choices that can be given as responses to a poll.',
   'option_explain.preRegAction' => 'If enabled, guests will be able to write supported content but asked to register before it is submitted and publicly viewable. In most circumstances, the permissions should be inherited from the group or groups that a newly registered user would be placed into. By default, this is the "Registered" group.',
+  'option_explain.prefix_group_1' => '',
+  'option_explain.prefix_group_2' => '',
+  'option_explain.prefix_group_3' => '',
   'option_explain.preventDiscouragedRegistration' => 'You may prevent any visitors browsing from <a href="{link}">discouraged IP addresses</a> from registering new accounts. They will be informed that registration is currently disabled.',
   'option_explain.privacyPolicyForceWhitelist' => 'If you decide to <a href="admin.php?force-agreement/privacy-policy" target="_blank">Force privacy policy agreement</a> then the routes listed here will bypass being redirected to the force agreement page. The route path is the section of the URL to a page after your main forum directory URL, such as forums/ or pages/page-name/. Do not reference a route filter here.',
   'option_explain.privacyPolicyLastUpdate' => 'The Unix time stamp of the last privacy policy update.',
@@ -675,10 +692,49 @@ More details about the difference in models can be found at <a href="https://pla
   'option_explain.startConversationNewConversationMaximum' => 'Maximum number of new conversations member are allowed to create in a 24 hour period. Default value is 10.',
   'option_explain.startConversationQuoteMessage' => 'Select to quote the post in conversation. If unchecked, a link to the post will be used.',
   'option_explain.stopForumSpam' => '',
+  'option_explain.svBlockRemovePrefixWithNoPerm' => 'If enabled, when a user does not have access to add a prefix, they will not be permitted to remove it.',
+  'option_explain.svClickablePrefixes' => 'Force prefixes to be clickable even when they normally wouldn\'t be',
+  'option_explain.svLogLessFunc' => '',
+  'option_explain.svMultiPrefixMultipleFilter' => 'When multiple prefixes are selected, AND or OR them together.',
+  'option_explain.svMultiprefixSortDisplay' => 'Prefixes are sorted when applying, but displayed as is. Enabling this enables sorting even when displaying',
+  'option_explain.svStripPrefixOnContainerChange' => '',
   'option_explain.tagCloud' => 'If enabled, a tag cloud showing the most popular tags will be shown on the tag search page.',
   'option_explain.tagCloudMinUses' => 'Tags will not be shown in the tag cloud unless they have been used at least this many times.',
   'option_explain.tagLength' => 'This controls the minimum and maximum length of tags. Use 0 to disable a limit. Tags may never be longer than 100 characters. These limits only apply when a tag is created. Existing tags may always be used.',
   'option_explain.tagValidation' => '',
+  'option_explain.tagessAltMediaWikiApiLink' => 'Supports the replacable: {language}<br/>
+<br/>
+If no default then uses: \'https://{language}.wikipedia.org/w/api.php\'.<br/>
+<br/>
+For custom instances see; <a href="https://www.mediawiki.org/wiki/Manual:Configuration_settings">mediawiki configuration settings</a>',
+  'option_explain.tagessAltMediaWikiEmbedLink' => 'Supports the replacable: {language}<br/>
+<br/>
+If no default then uses: \'https://{language}.wikipedia.org/wiki\'',
+  'option_explain.tagessPullFromWikipedia' => 'If enabled, any new tag will automatically attempt to pull a description from Wikipedia.com.',
+  'option_explain.tagessSuggestTags' => 'On creating a thread, suggest tags from the thread title',
+  'option_explain.tagessSynonymRewrite' => '',
+  'option_explain.tagessTagsOnThreadList' => 'Display the thread\'s tags underneath the thread title on the forum view (thread list).',
+  'option_explain.tagessWikiDebug' => 'Sends a copy of the MediaWiki response the xenforo error log for troubleshooting purposes.',
+  'option_explain.tagessWikipediaLanguageCode' => 'The language code for the api you want to use for pulling default information. For example, the bold part of this link is the english version: http://<strong>en</strong>.wikipedia.com',
+  'option_explain.tagess_blockNumberTags' => 'Block any tag that returns true for is_numeric() or is_float(). These will not trigger an error message, just silently be removed from the list of tags. Only effects new content.',
+  'option_explain.tagess_categoriesEnabled' => 'When enabled, two extra queries will be required on the thread view but tags will be broken down into the categories you decide.',
+  'option_explain.tagess_categoriesEnabledThread' => 'Would you like to show the categories separate on the thread view? If disabled there won\'t be any additional queries but the category id will also not be able to be used for styling purposes.',
+  'option_explain.tagess_disambiguation_exclude' => 'Skips Wikipedia\'s disambiguation pages on exact matches',
+  'option_explain.tagess_includeNodeParentTags' => 'For the forum default tags feature, if this is enabled, then it will look at the node hierarchy and include all the default tags from each parent.',
+  'option_explain.tagess_navWatchTags' => 'When checked, the watched tags navigation link will be visible.',
+  'option_explain.tagess_suggeststopwords' => 'Skip looking for tags which start with these words',
+  'option_explain.tagess_suggeststopwords_state' => 'Finding the suggested tags can be server intensive.<br/><br/> If you are experiencing slowness when tag suggestions are being found, try excluding tags which contain the stop words in the list below.
+
+<div class="baseHtml explain">
+<ul>
+<li>The ‘First word only’ option excludes possible tags where the first word of the tag is in the list.</li>
+<li>The ‘All words’ option examines all the words in each possible tag and excludes tags which contain any of the words in the list.</li>
+</ul>
+</div>',
+  'option_explain.tagess_suggestwordcountlimit' => 'Tags are suggested based off sentence fragments by words, the larger the fragments, the more processing required to look up tags.',
+  'option_explain.tagess_topUsers' => 'Do you want to display the top users of a tag?',
+  'option_explain.tagess_wikidescriptiononpage' => 'Display the wiki description above the recent content when viewing the tag rather than in a new tab.',
+  'option_explain.taggess_fuzzywikisearch' => 'When an exact title look up fails, attempt to use <a href="https://www.mediawiki.org/wiki/API%3aSearch">Search</a> to find the article by title instead, excluding any disambiguation pages.',
   'option_explain.templateHistoryLength' => 'The number of days to maintain template edit history records. Use 0 to never remove history.',
   'option_explain.termsLastUpdate' => 'The Unix time stamp of the last terms and rules update.',
   'option_explain.thmonetize_alertLogLength' => 'The number of days that alert log records will be kept for. Use 0 to keep the records permanently.',
@@ -714,7 +770,11 @@ More details about the difference in models can be found at <a href="https://pla
   'option_explain.thmonetize_suggestUpgradeOnNoPermissionErrorGuests' => 'If "Suggest user upgrades on no permission error" is enabled, set whether the upgrade page will show for guests as well as logged in users',
   'option_explain.thmonetize_suggestUpgradeOnNoPermissionErrorRoutes' => 'Routes that will show a message for the user to upgrade. Rotes can be entered as a regex or with * for wildcard matching (e.g. lessons/*)',
   'option_explain.thread_creater_user' => '',
+  'option_explain.thread_grid_layout_lessv2' => 'where you want to show the Grid',
+  'option_explain.thumb_size_hemant' => 'it\'s required if the  image size needs to increase according to your theme',
   'option_explain.thumbnailImageDimensions' => 'Default 100 × 100 px',
+  'option_explain.thumbnail_width' => 'It\'s work better only if you using thumbnail addon only : leave it blank if want default
+Example :  80px if you using grid addon add 100% or leave it blank',
   'option_explain.thuserimprovements_member_tooltip_showcase' => 'Enables the trophy showcase in the member tooltip.',
   'option_explain.tmdbthreads_addgroups' => 'Select the user groups that will be able to manually update exisiting threads that DO NOT contain TMDb information.',
   'option_explain.tmdbthreads_apikey' => '',
@@ -789,6 +849,8 @@ Use the textbox above to specify a format. <b>{title}</b> will be replaced with 
   'option_explain.watchAlertActiveOnly' => 'If enabled, watched content alerts and emails will only be sent to users that have visited within the specified number of days. This can improve performance on large or very active installations.',
   'option_explain.webShare' => 'On supported devices, this button will open the browser\'s web share prompt, allowing users to share the current page to other applications.',
   'option_explain.whatsAppShare' => 'If a user clicks this button WhatsApp will open a list of users with whom to share the current page URL and title.',
+  'option_explain.xb_th_default_image' => '',
+  'option_explain.xb_th_xenbros_activation' => '',
   'option_explain.xfmEnableCrosspage' => 'If this option is enabled, users will be notified of a new message instantly on all pages.',
   'option_explain.xfmEnablePopup' => 'If enabled, users will be able to open the messenger popup on any page without having to go to the messenger page.',
   'option_explain.xfmEnableSound' => '',

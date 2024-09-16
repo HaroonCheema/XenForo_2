@@ -1,5 +1,6 @@
 <?php
 return array (
+  'nav.BRATR_newThreadRatings' => 'New Thread Ratings',
   'nav._default' => 'Default (no selected tab)',
   'nav.addRecord' => 'Add',
   'nav.auctionAddListing' => 'Add Auction',
@@ -62,6 +63,7 @@ return array (
   'nav.fs_quiz' => 'Quiz',
   'nav.home' => 'Home',
   'nav.latestActivity' => 'Latest activity',
+  'nav.latestTherads' => 'Latest Update',
   'nav.markForumsRead' => 'Mark forums read',
   'nav.members' => 'Members',
   'nav.newMedia' => 'New media',
@@ -83,6 +85,7 @@ return array (
   'nav.upgradeCompanion' => 'Upgrade Companion',
   'nav.watched' => 'Watched',
   'nav.watchedForums' => 'Watched forums',
+  'nav.watchedTags' => 'Watched tags',
   'nav.watchedThreads' => 'Watched threads',
   'nav.whatsNew' => 'What\'s new',
   'nav.whatsNewNewsFeed' => 'Your news feed',

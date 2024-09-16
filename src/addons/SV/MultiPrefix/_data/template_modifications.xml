@@ -1,0 +1,550 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="admin" template="dbtech_ecommerce_category_edit" modification_key="sv_multiprefix_dbtech_ecommerce_category_edit" execution_order="6281" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:checkboxrow name="require_prefix" value="{$category.require_prefix}">
+					<xf:option value="1"
+						label="{{ phrase('require_users_to_select_prefix') }}"
+						hint="{{ phrase('dbtech_ecommerce_if_selected_users_required_select_prefix_when_creating_editing') }}" />
+				</xf:checkboxrow>]]></find>
+    <replace><![CDATA[<xf:numberboxrow label="{{ phrase('sv_multiprefix_min_prefixes') }}" name="sv_multiprefix_min_prefixes" value="{$category.sv_min_prefixes}" />
+				<xf:numberboxrow label="{{ phrase('sv_multiprefix_max_prefixes') }}" name="sv_multiprefix_max_prefixes" value="{$category.sv_max_prefixes}" />]]></replace>
+  </modification>
+  <modification type="admin" template="dbtech_ecommerce_category_edit" modification_key="sv_multiprefix_dbtech_ecommerce_category_edit2" execution_order="6281" enabled="1" action="str_replace">
+    <find><![CDATA[arg-href="{{ link('forums/prefixes') }}"]]></find>
+    <replace><![CDATA[arg-href="{{ link('forums/prefixes', '', {'force_limit_prefix': 1}) }}"]]></replace>
+  </modification>
+  <modification type="public" template="dbtech_ecommerce_filters" modification_key="sv_multiprefix_dbtech_ecommerce_filters" description="Enable multi prefixes in filtering dropdown" execution_order="6281" enabled="1" action="str_replace">
+    <find><![CDATA[arg-type="dbtechEcommerceProduct"]]></find>
+    <replace><![CDATA[$0
+					arg-multiple="{{ true }}"]]></replace>
+  </modification>
+  <modification type="public" template="dbtech_ecommerce_overview_macros" modification_key="sv_multiprefix_ecommerce_list_filter_bar" description="Add multiprefix filters" execution_order="6281" enabled="1" action="preg_replace">
+    <find><![CDATA[#(<xf:if is="\$filters.prefix_id">)(.*?prefix_title.*?)(\s*</xf:if>)#si]]></find>
+    <replace><![CDATA[$1
+<xf:include template="sv_multiprefix_filter">
+	<xf:set var="$prefixType" value="dbtechEcommerceProduct" />
+	<xf:set var="$baseLinkPath" value="{$baseLinkPath}" />
+	<xf:set var="$container" value="{$category}" />
+</xf:include>
+$3]]></replace>
+  </modification>
+  <modification type="public" template="dbtech_ecommerce_product_edit_macros" modification_key="sv_multiprefix_dbtech_ecommerce_product_edit_macro" description="Render multiple prefixes in product title" execution_order="6281" enabled="1" action="str_replace">
+    <find><![CDATA[prefix-value="{$product.prefix_id}"]]></find>
+    <replace><![CDATA[$0
+		multi-prefix-value="{{ $product.sv_prefix_ids }}" multi-prefix-content-parent="{{ $product.Category }}" multi-prefix-content="{{ $product }}" full-row="{{ true }}"]]></replace>
+  </modification>
+  <modification type="public" template="dbtech_ecommerce_product_list_macros" modification_key="sv_multiprefix_dbtech_ecommerce_product_list_macro" description="css tagging of prefixed items" execution_order="6281" enabled="1" action="str_replace">
+    <find><![CDATA[{{ $product.prefix_id ? 'is-prefix' . $product.prefix_id : '' }}]]></find>
+    <replace><![CDATA[{{ $product.sv_prefix_ids ? 'is-prefix' . $product.sv_prefix_ids|join(' is-prefix') : '' }}]]></replace>
+  </modification>
+  <modification type="public" template="dbtech_ecommerce_product_list_macros" modification_key="sv_multiprefix_ecommerce_product_list_macros2" description="UI for filtering by multiple prefixes" execution_order="6281" enabled="1" action="preg_replace">
+    <find><![CDATA[#<a href="{{ link\(('dbtech\-ecommerce'|'dbtech\-ecommerce/categories'), (\$category|null), {'prefix_id'.*?>{{ prefix.*? }}</a>#si]]></find>
+    <replace><![CDATA[{{ prefix_filters('dbtechEcommerceProduct', $1, $2, $product, $__globals.filters) }}]]></replace>
+  </modification>
+  <modification type="public" template="dbtech_ecommerce_product_move" modification_key="sv_multiprefix_dbtech_ecommerce_product_move" description="Enable multi prefixes when moving a product" execution_order="6281" enabled="1" action="str_replace">
+    <find><![CDATA[prefix-value="{$product.prefix_id}"]]></find>
+    <replace><![CDATA[$0
+				multi-prefix-value="{{ $product.sv_prefix_ids }}" multi-prefix-content-parent="{{ $product.Category }}" multi-prefix-content="{{ $product }}" full-row="{{ true }}"]]></replace>
+  </modification>
+  <modification type="public" template="dbtech_ecommerce_product_view" modification_key="dbtech_ecommerce_product_vie_multiprefix_clickable" description="Make prefixes clickable" execution_order="6281" enabled="1" action="str_replace">
+    <find><![CDATA[{{ prefix('dbtechEcommerceProduct', $product) }}]]></find>
+    <replace><![CDATA[{{ prefix('dbtechEcommerceProduct', $product, 'html-clicky') }}]]></replace>
+  </modification>
+  <modification type="admin" template="dbtech_shop_category_edit" modification_key="sv_multiprefix_dbtech_shop_category_edit" execution_order="6281" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:checkboxrow name="require_prefix" value="{$category.require_prefix}">
+					<xf:option value="1"
+						label="{{ phrase('require_users_to_select_prefix') }}"
+						hint="{{ phrase('dbtech_shop_if_selected_users_required_select_prefix_when_creating_editing') }}" />
+				</xf:checkboxrow>]]></find>
+    <replace><![CDATA[<xf:numberboxrow label="{{ phrase('sv_multiprefix_min_prefixes') }}" name="sv_multiprefix_min_prefixes" value="{$category.sv_min_prefixes}" />
+				<xf:numberboxrow label="{{ phrase('sv_multiprefix_max_prefixes') }}" name="sv_multiprefix_max_prefixes" value="{$category.sv_max_prefixes}" />]]></replace>
+  </modification>
+  <modification type="admin" template="dbtech_shop_category_edit" modification_key="sv_multiprefix_dbtech_shop_category_edit2" execution_order="6281" enabled="1" action="str_replace">
+    <find><![CDATA[arg-href="{{ link('forums/prefixes') }}"]]></find>
+    <replace><![CDATA[arg-href="{{ link('forums/prefixes', '', {'force_limit_prefix': 1}) }}"]]></replace>
+  </modification>
+  <modification type="public" template="dbtech_shop_filters" modification_key="sv_multiprefix_dbtech_shop_filters" description="Enable multi prefixes in filtering dropdown" execution_order="6281" enabled="1" action="str_replace">
+    <find><![CDATA[arg-type="dbtechShopItem"]]></find>
+    <replace><![CDATA[$0
+					arg-multiple="{{ true }}"]]></replace>
+  </modification>
+  <modification type="public" template="dbtech_shop_item_edit_macros" modification_key="sv_multiprefix_dbtech_shop_product_edit_macro" description="Render multiple prefixes in item title" execution_order="6281" enabled="1" action="str_replace">
+    <find><![CDATA[prefix-value="{$item.prefix_id}"]]></find>
+    <replace><![CDATA[$0
+		multi-prefix-value="{{ $item.sv_prefix_ids }}" multi-prefix-content-parent="{{ $item.Category }}" multi-prefix-content="{{ $item }}" full-row="{{ true }}"]]></replace>
+  </modification>
+  <modification type="public" template="dbtech_shop_item_list_macros" modification_key="sv_multiprefix_dbtech_shop_product_list_macro" description="css tagging of prefixed items" execution_order="6281" enabled="1" action="str_replace">
+    <find><![CDATA[{{ $item.prefix_id ? 'is-prefix' . $item.prefix_id : '' }}]]></find>
+    <replace><![CDATA[{{ $item.sv_prefix_ids ? 'is-prefix' . $item.sv_prefix_ids|join(' is-prefix') : '' }}]]></replace>
+  </modification>
+  <modification type="public" template="dbtech_shop_item_list_macros" modification_key="sv_multiprefix_shop_product_list_macros2" description="UI for filtering by multiple prefixes" execution_order="6281" enabled="1" action="preg_replace">
+    <find><![CDATA[#<a href="{{ link\('dbtech\-shop/categories', \$category, {'prefix_id'.*?>{{ prefix.*? }}</a>#si]]></find>
+    <replace><![CDATA[{{ prefix_filters('dbtechShopItem', 'dbtech-shop/categories', $category, $item, $__globals.filters) }}]]></replace>
+  </modification>
+  <modification type="public" template="dbtech_shop_item_move" modification_key="sv_multiprefix_dbtech_shop_product_move" description="Enable multi prefixes when moving a item" execution_order="6281" enabled="1" action="str_replace">
+    <find><![CDATA[prefix-value="{$item.prefix_id}"]]></find>
+    <replace><![CDATA[$0
+				multi-prefix-value="{{ $item.sv_prefix_ids }}" multi-prefix-content-parent="{{ $item.Category }}" multi-prefix-content="{{ $item }}" full-row="{{ true }}"]]></replace>
+  </modification>
+  <modification type="public" template="dbtech_shop_overview_macros" modification_key="sv_multiprefix_shop_list_filter_bar" description="Add multiprefix filters" execution_order="6281" enabled="1" action="preg_replace">
+    <find><![CDATA[#(<xf:if is="\$filters.prefix_id">)(.*?prefix_title.*?)(\s*</xf:if>)#si]]></find>
+    <replace><![CDATA[$1
+<xf:include template="sv_multiprefix_filter">
+	<xf:set var="$prefixType" value="dbtechShopItem" />
+	<xf:set var="$baseLinkPath" value="{$baseLinkPath}" />
+	<xf:set var="$container" value="{$category}" />
+</xf:include>
+$3]]></replace>
+  </modification>
+  <modification type="admin" template="feed_edit" modification_key="sv_multiprefix_feed_edit" execution_order="6281" enabled="1" action="str_replace">
+    <find><![CDATA[listen-to="#js-nodeList"]]></find>
+    <replace><![CDATA[$0
+				multi-prefix-value="{{ $feed.sv_prefix_ids }}" full-row="{{ true }}"]]></replace>
+  </modification>
+  <modification type="admin" template="forum_edit" modification_key="sv_multiprefix_forum_edit" execution_order="6281" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:checkboxrow name="require_prefix" value="{$forum.require_prefix}">
+					<xf:option value="1"
+						label="{{ phrase('require_users_to_select_prefix') }}"
+						hint="{{ phrase('if_selected_users_required_select_prefix_for_thread') }}" />
+				</xf:checkboxrow>]]></find>
+    <replace><![CDATA[<xf:numberboxrow label="{{ phrase('sv_multiprefix_min_prefixes') }}" name="sv_multiprefix_min_prefixes" value="{$forum.sv_min_prefixes}" />
+<xf:numberboxrow label="{{ phrase('sv_multiprefix_max_prefixes') }}" name="sv_multiprefix_max_prefixes" value="{$forum.sv_max_prefixes}" />]]></replace>
+  </modification>
+  <modification type="admin" template="forum_edit" modification_key="sv_multiprefix_forum_edit2" execution_order="6281" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:selectrow name="default_prefix_id" value="{$forum.default_prefix_id}"]]></find>
+    <replace><![CDATA[<xf:selectrow name="sv_default_prefix_ids" value="{$forum.sv_default_prefix_ids}" multiple="true"]]></replace>
+  </modification>
+  <modification type="public" template="forum_filters" modification_key="sv_multiprefix_forum_filters" description="Enable multi prefixes in filtering dropdown" execution_order="6281" enabled="1" action="str_replace">
+    <find><![CDATA[arg-type="thread"]]></find>
+    <replace><![CDATA[$0
+arg-multiple="{{ true }}"]]></replace>
+  </modification>
+  <modification type="public" template="forum_post_quick_thread" modification_key="svMultiPrefix_forum_post_quick_thread" description="Add prefixes to quick-thread form" execution_order="6281" enabled="1" action="preg_replace">
+    <find><![CDATA[#[<\s]<div class="js-quickThreadFields.*?<\/xf:if>#si]]></find>
+    <replace><![CDATA[$0
+
+		<xf:include template="forum_post_quick_thread_multiprefix" />]]></replace>
+  </modification>
+  <modification type="public" template="forum_post_thread" modification_key="sv_multiprefix_forum_post_thread" description="Enable multi prefixes when posting a thread" execution_order="6281" enabled="1" action="str_replace">
+    <find><![CDATA[prefix-value="{{ $forum.draft_thread.prefix_id ?: ($thread.prefix_id ?: $forum.default_prefix_id) }}"]]></find>
+    <replace><![CDATA[$0
+				multi-prefix-value="{{ $forum.draft_thread.sv_prefix_ids ?: ($thread.sv_prefix_ids ?: $forum.sv_default_prefix_ids) }}" multi-prefix-content-parent="{{ $forum }}"]]></replace>
+  </modification>
+  <modification type="public" template="forum_view" modification_key="sv_multiprefix_forum_view" description="Add multiprefix filters" execution_order="6281" enabled="1" action="preg_replace">
+    <find><![CDATA[#(<xf:if is="\$filters.prefix_id">)(.*?prefix_title.*?)(\s*</xf:if>)#si]]></find>
+    <replace><![CDATA[$1
+<xf:include template="sv_multiprefix_filter">
+	<xf:set var="$prefixType" value="thread" />
+	<xf:set var="$baseLinkPath" value="forums" />
+	<xf:set var="$container" value="{$forum}" />
+</xf:include>
+$3]]></replace>
+  </modification>
+  <modification type="public" template="inline_mod_post_copy" modification_key="sv_multiprefix_inline_mod_post_copy" description="Enable multi prefixes when moving via mod-tools" execution_order="6281" enabled="1" action="str_replace">
+    <find><![CDATA[prefix-value="{$first.Thread.prefix_id}"]]></find>
+    <replace><![CDATA[$0
+multi-prefix-value="{$first.Thread.sv_prefix_ids}"]]></replace>
+  </modification>
+  <modification type="public" template="inline_mod_post_move" modification_key="sv_multiprefix_inline_mod_post_move" description="Enable multi prefixes when moving via mod-tools" execution_order="6281" enabled="1" action="str_replace">
+    <find><![CDATA[prefix-value="{$first.Thread.prefix_id}"
+]]></find>
+    <replace><![CDATA[$0
+multi-prefix-value="{$first.Thread.sv_prefix_ids}"]]></replace>
+  </modification>
+  <modification type="public" template="inline_mod_resource_move" modification_key="sv_multiprefix_inline_mod_resource_move" description="Enable multi prefixes when moving via mod-tools" execution_order="6281" enabled="1" action="str_replace">
+    <find><![CDATA[arg-prefixes="{$prefixes}"]]></find>
+    <replace><![CDATA[$0
+							arg-multiple="{{ true }}" arg-selected="{$selectedPrefix}" arg-minTokens="{$allowedMinPrefixes}" arg-maxTokens="{$allowedMaxPrefixes}"]]></replace>
+  </modification>
+  <modification type="public" template="inline_mod_thread_move" modification_key="sv_multiprefix_inline_mod_thread_move" description="Enable multi prefixes when moving via mod-tools" execution_order="6281" enabled="1" action="str_replace">
+    <find><![CDATA[arg-prefixes="{$prefixes}"]]></find>
+    <replace><![CDATA[$0
+arg-multiple="{{ true }}" arg-selected="{$selectedPrefix}" arg-minTokens="{$allowedMinPrefixes}" arg-maxTokens="{$allowedMaxPrefixes}"]]></replace>
+  </modification>
+  <modification type="public" template="node_list_category" modification_key="svMultiPrefix_node_list_category_custom_field_hook" description="Hook-point for custom field for thread prefix styling - for category" execution_order="6280" enabled="1" action="preg_replace">
+    <find><![CDATA[#[\t ]*<div class="node-extra[" ]#si]]></find>
+    <replace><![CDATA[<xf:set var="$svMultiPrefixSubtitle" value="{{ $svMultiPrefixSubtitle === null ? property('svMultiPrefixSubtitle') : $svMultiPrefixSubtitle }}" />
+$0]]></replace>
+  </modification>
+  <modification type="public" template="node_list_category" modification_key="svMultiPrefix_node_list_category_subtitle1" description="Disable thread prefix on non-prefix &amp; move to suffix (part 10) - for category" execution_order="6281" enabled="1" action="preg_replace">
+    <find><![CDATA[#\{\{\s*(prefix\('thread',\s*\$extras\.LastThread\))(.*?)\s*</a>#si]]></find>
+    <replace><![CDATA[{{ ( $svMultiPrefixSubtitle == '' ? $1 : '')$2{{ ( $svMultiPrefixSubtitle === 'suffix' ? $1 : '') }}</a>]]></replace>
+  </modification>
+  <modification type="public" template="node_list_category" modification_key="svMultiPrefix_node_list_category_subtitle2" description="Move Thread prefix to sub-title (part 11) - for category" execution_order="6282" enabled="1" action="preg_replace">
+    <find><![CDATA[#([\t ]*<div class="node-extra-icon)(.*?<div class="node-extra-row.*?prefix.*?</div>)(.*?<div class="node-extra-row.*?last_post_date.*?</div>)#si]]></find>
+    <replace><![CDATA[<xf:if is="$svMultiPrefixSubtitle === 'subtitle'">
+	<xf:set var="$isSubTitle" value="{{ true }}" />
+	<xf:set var="$isSubTitle2" value="{{ property('svMultiPrefixSubTitlePrefixUnderThreadInfo') }}" />	
+	<xf:set var="$svPrefixHtml"><xf:trim><xf:if contentcheck="true">
+		<xf:css src="svMultiPrefix_node_list_forum_subtitle2.less" />
+
+		<div class="node-extra-row node-extra-row--svPrefixes">
+			<xf:contentcheck>
+				{{ prefix('thread', $extras.LastThread) }}
+			</xf:contentcheck>
+		</div>
+	</xf:if>
+</xf:trim></xf:set>
+	<xf:if is="!strlen($svPrefixHtml)"><xf:set var="$isSubTitle" value="{{ false }}"/></xf:if>
+<xf:else />
+	<xf:set var="$isSubTitle" value="{{ false }}" />
+</xf:if>
+$1{{ $isSubTitle ? ' node-extra-icon--prefix' : ''}}$2
+<xf:if is="$isSubTitle && !$isSubTitle2">{$svPrefixHtml|raw}</xf:if>
+$3
+<xf:if is="$isSubTitle && $isSubTitle2">{$svPrefixHtml|raw}</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="node_list_forum" modification_key="svMultiPrefix_node_list_forum_custom_field_hook" description="Hook-point for custom field for thread prefix styling - for forum" execution_order="6280" enabled="1" action="preg_replace">
+    <find><![CDATA[#[\t ]*<div class="node-extra[" ]#si]]></find>
+    <replace><![CDATA[<xf:set var="$svMultiPrefixSubtitle" value="{{ $svMultiPrefixSubtitle === null ? property('svMultiPrefixSubtitle') : $svMultiPrefixSubtitle }}" />
+$0]]></replace>
+  </modification>
+  <modification type="public" template="node_list_forum" modification_key="svMultiPrefix_node_list_forum_subtitle1" description="Disable thread prefix on non-prefix &amp; move to suffix (part 10) - for forum" execution_order="6281" enabled="1" action="preg_replace">
+    <find><![CDATA[#\{\{\s*(prefix\('thread',\s*\$extras\.LastThread\))(.*?)\s*</a>#si]]></find>
+    <replace><![CDATA[{{ ( $svMultiPrefixSubtitle == '' ? $1 : '')$2{{ ( $svMultiPrefixSubtitle === 'suffix' ? $1 : '') }}</a>]]></replace>
+  </modification>
+  <modification type="public" template="node_list_forum" modification_key="svMultiPrefix_node_list_forum_subtitle2" description="Move Thread prefix to sub-title (part 11) - for forum" execution_order="6282" enabled="1" action="preg_replace">
+    <find><![CDATA[#([\t ]*<div class="node-extra-icon)(.*?<div class="node-extra-row.*?prefix.*?</div>)(.*?<div class="node-extra-row.*?last_post_date.*?</div>)#si]]></find>
+    <replace><![CDATA[<xf:if is="$svMultiPrefixSubtitle === 'subtitle'">
+	<xf:set var="$isSubTitle" value="{{ true }}" />
+	<xf:set var="$isSubTitle2" value="{{ property('svMultiPrefixSubTitlePrefixUnderThreadInfo') }}" />	
+	<xf:set var="$svPrefixHtml"><xf:trim><xf:if contentcheck="true">
+		<xf:css src="svMultiPrefix_node_list_forum_subtitle2.less" />
+
+		<div class="node-extra-row node-extra-row--svPrefixes">
+			<xf:contentcheck>
+				{{ prefix('thread', $extras.LastThread) }}
+			</xf:contentcheck>
+		</div>
+	</xf:if>
+</xf:trim></xf:set>
+	<xf:if is="!strlen($svPrefixHtml)"><xf:set var="$isSubTitle" value="{{ false }}"/></xf:if>
+<xf:else />
+	<xf:set var="$isSubTitle" value="{{ false }}" />
+</xf:if>
+$1{{ $isSubTitle ? ' node-extra-icon--prefix' : ''}}$2
+<xf:if is="$isSubTitle && !$isSubTitle2">{$svPrefixHtml|raw}</xf:if>
+$3
+<xf:if is="$isSubTitle && $isSubTitle2">{$svPrefixHtml|raw}</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="node_list_search_forum" modification_key="svMultiPrefix_node_list_search_forum_custom_field" description="Hook-point for custom field for thread prefix styling - for search forum" execution_order="6280" enabled="1" action="preg_replace">
+    <find><![CDATA[#[\t ]*<div class="node-extra[" ]#si]]></find>
+    <replace><![CDATA[<xf:set var="$svMultiPrefixSubtitle" value="{{ $svMultiPrefixSubtitle === null ? property('svMultiPrefixSubtitle') : $svMultiPrefixSubtitle }}" />
+$0]]></replace>
+  </modification>
+  <modification type="public" template="node_list_search_forum" modification_key="svMultiPrefix_node_list_search_forum_subtitle1" description="Disable thread prefix on non-prefix &amp; move to suffix (part 10) - for search forum" execution_order="6281" enabled="1" action="preg_replace">
+    <find><![CDATA[#\{\{\s*(prefix\('thread',\s*\$extras\.LastThread\))(.*?)\s*</a>#si]]></find>
+    <replace><![CDATA[{{ ( $svMultiPrefixSubtitle == '' ? $1 : '')$2{{ ( $svMultiPrefixSubtitle === 'suffix' ? $1 : '') }}</a>]]></replace>
+  </modification>
+  <modification type="public" template="node_list_search_forum" modification_key="svMultiPrefix_node_list_search_forum_subtitle2" description="Move Thread prefix to sub-title (part 11) - for search forum" execution_order="6282" enabled="1" action="preg_replace">
+    <find><![CDATA[#([\t ]*<div class="node-extra-icon)(.*?<div class="node-extra-row.*?prefix.*?</div>)(.*?<div class="node-extra-row.*?last_post_date.*?</div>)#si]]></find>
+    <replace><![CDATA[<xf:if is="$svMultiPrefixSubtitle === 'subtitle'">
+	<xf:set var="$isSubTitle" value="{{ true }}" />
+	<xf:set var="$isSubTitle2" value="{{ property('svMultiPrefixSubTitlePrefixUnderThreadInfo') }}" />	
+	<xf:set var="$svPrefixHtml"><xf:trim><xf:if contentcheck="true">
+		<xf:css src="svMultiPrefix_node_list_forum_subtitle2.less" />
+
+		<div class="node-extra-row node-extra-row--svPrefixes">
+			<xf:contentcheck>
+				{{ prefix('thread', $extras.LastThread) }}
+			</xf:contentcheck>
+		</div>
+	</xf:if>
+</xf:trim></xf:set>
+	<xf:if is="!strlen($svPrefixHtml)"><xf:set var="$isSubTitle" value="{{ false }}"/></xf:if>
+<xf:else />
+	<xf:set var="$isSubTitle" value="{{ false }}" />
+</xf:if>
+$1{{ $isSubTitle ? ' node-extra-icon--prefix' : ''}}$2
+<xf:if is="$isSubTitle && !$isSubTitle2">{$svPrefixHtml|raw}</xf:if>
+$3
+<xf:if is="$isSubTitle && $isSubTitle2">{$svPrefixHtml|raw}</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="post_edit" modification_key="sv_multiprefix_post_edit" description="Enable multi prefixes when editing the first post of a thread" execution_order="6281" enabled="1" action="str_replace">
+    <find><![CDATA[prefix-value="{$thread.prefix_id}"]]></find>
+    <replace><![CDATA[$0
+					multi-prefix-value="{{ $thread.sv_prefix_ids }}" multi-prefix-content-parent="{{ $thread.Forum }}" multi-prefix-content="{{ $thread }}"]]></replace>
+  </modification>
+  <modification type="public" template="prefix_input" modification_key="sv_multiprefix_prefix_input_select" description="Enable multi prefixes in prefix input" execution_order="6281" enabled="1" action="preg_replace">
+    <find><![CDATA[/(<xf:macro template="prefix_macros" name="select"(?:.*))\/>/sUi]]></find>
+    <replace><![CDATA[$1arg-multiple="{{ $prefixMultiple }}" />]]></replace>
+  </modification>
+  <modification type="public" template="search_result_post" modification_key="svMultiPrefix_search_result_post_hook" description="Hook-point for custom field for thread prefix styling" execution_order="6281" enabled="1" action="preg_replace">
+    <find><![CDATA[#<li.*?block-row.*?<div.*?contentRow#si]]></find>
+    <replace><![CDATA[<xf:set var="$svMultiPrefixSubtitle" value="{{ $svMultiPrefixSubtitle === null ? property('svMultiPrefixSubtitle') : $svMultiPrefixSubtitle }}" />
+$0]]></replace>
+  </modification>
+  <modification type="public" template="search_result_post" modification_key="svMultiPrefix_search_result_post_subtitle1" description="Disable thread prefix on non-prefix &amp; move to suffix (part 6)" execution_order="6281" enabled="1" action="preg_replace">
+    <find><![CDATA[#\{\{\s*(prefix\('thread',\s*\$post\.Thread\))(.*?)\s*\}\}#si]]></find>
+    <replace><![CDATA[{{ ( $svMultiPrefixSubtitle == '' ? $1 : '')$2 . ( $svMultiPrefixSubtitle === 'suffix' ? $1 : '') }}]]></replace>
+  </modification>
+  <modification type="public" template="search_result_post" modification_key="svMultiPrefix_search_result_post_subtitle2" description="Move Thread prefix to sub-title (part 7)" execution_order="6281" enabled="1" action="preg_replace">
+    <find><![CDATA[#<h3 class="contentRow-title.*?</h3>#si]]></find>
+    <replace><![CDATA[$0
+<xf:if is="$svMultiPrefixSubtitle === 'subtitle'"><xf:if contentcheck="true">
+	<div class="contentRow-minor">
+		<xf:contentcheck>{{ prefix('thread', $post.Thread) }}</xf:contentcheck>
+	</div>
+</xf:if></xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="search_result_thread" modification_key="svMultiPrefix_search_result_thread_hook" description="Hook-point for custom field for thread prefix styling" execution_order="6280" enabled="1" action="preg_replace">
+    <find><![CDATA[#<li.*?block-row.*?<div.*?contentRow#si]]></find>
+    <replace><![CDATA[<xf:set var="$svMultiPrefixSubtitle" value="{{ $svMultiPrefixSubtitle === null ? property('svMultiPrefixSubtitle') : $svMultiPrefixSubtitle }}" />
+$0]]></replace>
+  </modification>
+  <modification type="public" template="search_result_thread" modification_key="svMultiPrefix_search_result_thread_subtitle1" description="Disable thread prefix on non-prefix &amp; move to suffix (part 8)" execution_order="6281" enabled="1" action="preg_replace">
+    <find><![CDATA[#\{\{\s*(prefix\('thread',\s*\$thread\))(.*?)\s*\}\}#si]]></find>
+    <replace><![CDATA[{{ ( $svMultiPrefixSubtitle == '' ? $1 : '')$2 . ( $svMultiPrefixSubtitle === 'suffix' ? $1 : '') }}]]></replace>
+  </modification>
+  <modification type="public" template="search_result_thread" modification_key="svMultiPrefix_search_result_thread_subtitle2" description="Move Thread prefix to sub-title (part 9)" execution_order="6281" enabled="1" action="preg_replace">
+    <find><![CDATA[#<h3 class="contentRow-title.*?</h3>#si]]></find>
+    <replace><![CDATA[$0
+<xf:if is="$svMultiPrefixSubtitle === 'subtitle'"><xf:if contentcheck="true">
+	<div class="contentRow-minor">
+		<xf:contentcheck>{{ prefix('thread', $thread) }}</xf:contentcheck>
+	</div>
+</xf:if></xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="svGiftUpgrades_widget_gifted_posts" modification_key="svGiftUpgrades_widget_gifted_posts_hook" description="Hook-point for custom field for thread prefix styling" execution_order="6281" enabled="1" action="preg_replace">
+    <find><![CDATA[#[\t ]*<div\s*class="contentRow[" ]#si]]></find>
+    <replace><![CDATA[<xf:set var="$svMultiPrefixSubtitle" value="{{ $svMultiPrefixSubtitle === null ? property('svMultiPrefixSubtitle') : $svMultiPrefixSubtitle }}" />
+$0]]></replace>
+  </modification>
+  <modification type="public" template="svGiftUpgrades_widget_gifted_posts" modification_key="svGiftUpgrades_widget_gifted_posts_subtitle1" description="Disable thread prefix on non-prefix &amp; move to suffix (part 12)" execution_order="6281" enabled="1" action="preg_replace">
+    <find><![CDATA[#\{\{\s*(prefix\('thread',\s*\$post\.Thread\))(.*?)</a>#si]]></find>
+    <replace><![CDATA[{{ ( $svMultiPrefixSubtitle == '' ? $1 : '')$2{{ ( $svMultiPrefixSubtitle === 'suffix' ? $1 : '') }}</a>]]></replace>
+  </modification>
+  <modification type="public" template="svGiftUpgrades_widget_gifted_posts" modification_key="svGiftUpgrades_widget_gifted_posts_subtitle2" description="Move Thread prefix to sub-title (part 13)" execution_order="6282" enabled="1" action="preg_replace">
+    <find><![CDATA[#<h3 class="contentRow-title.*?</h3>#si]]></find>
+    <replace><![CDATA[$0
+<xf:if is="$svMultiPrefixSubtitle === 'subtitle'"><xf:if contentcheck="true">
+	<div class="contentRow-minor">
+		<xf:contentcheck>{{ prefix('thread', $post.Thread) }}</xf:contentcheck>
+	</div>
+</xf:if></xf:if>]]></replace>
+  </modification>
+  <modification type="admin" template="thread_batch_update_confirm" modification_key="sv_multiprefix_thread_batch_update_confirm_adddel" description="Add/delete prefixes without overwriting them entirely" execution_order="6281" enabled="1" action="preg_replace">
+    <find><![CDATA[#[\t ]*<xf:if is="\$prefixes\.prefixesGrouped#si]]></find>
+    <replace><![CDATA[<xf:include template="multiprefix_thread_batch_update_confirm" />
+$0]]></replace>
+  </modification>
+  <modification type="public" template="thread_edit" modification_key="sv_multiprefix_thread_edit" description="Enable multi prefixes when editing a thread" execution_order="6281" enabled="1" action="str_replace">
+    <find><![CDATA[prefix-value="{$thread.prefix_id}"]]></find>
+    <replace><![CDATA[$0
+multi-prefix-value="{{ $thread.sv_prefix_ids }}" multi-prefix-content-parent="{{ $thread.Forum }}" multi-prefix-content="{{ $thread }}" full-row="{{ true }}"]]></replace>
+  </modification>
+  <modification type="public" template="thread_list_macros" modification_key="svMultiPrefix_thread_list_macros_below_thread_info" description="Move prefix under thread info" execution_order="6281" enabled="1" action="preg_replace">
+    <find><![CDATA[#(<div class="structItem-title.*?)(<xf:if is="\$thread\.prefix_id.*?)(">)(.*?)(</xf:if>\s*<a.*?<div class="structItem-minor.*?<ul class="structItem-extraInfo.*?<\/div>)(.*?<\/div>.*?<div class="structItem-cell)#si]]></find>
+    <replace><![CDATA[$1$2$3$4$5
+
+<xf:if is="$svMultiPrefixSubtitle === 'subtitle' AND property('svMultiPrefixSubTitlePrefixUnderThreadInfo')"><xf:if contentcheck="true">
+	<xf:css src="svMultiPrefix_thread_list_macros_below_thread_info.less" />
+	
+	<span class="structItem-prefixes">
+		<xf:contentcheck>$4</xf:contentcheck>
+	</span>
+</xf:if></xf:if>
+
+$6]]></replace>
+  </modification>
+  <modification type="public" template="thread_list_macros" modification_key="svMultiPrefix_thread_list_macros_custom_field_hook" description="Hook-point for custom field for thread prefix styling" execution_order="6281" enabled="1" action="preg_replace">
+    <find><![CDATA[#(<xf:macro name=".*?)([\t ]*<div)#si]]></find>
+    <replace><![CDATA[$1
+<xf:set var="$svMultiPrefixSubtitle" value="{{ $svMultiPrefixSubtitle === null ? property('svMultiPrefixSubtitle') : $svMultiPrefixSubtitle }}" />
+$2]]></replace>
+  </modification>
+  <modification type="public" template="thread_list_macros" modification_key="svMultiPrefix_thread_list_macros_subtitle1" description="Move Thread prefix to suffix (part 1)" execution_order="62820" enabled="1" action="preg_replace">
+    <find><![CDATA[#(<div class="structItem-title.*?)(<xf:if is="\$thread\.prefix_id.*?)(">)(.*?)(</xf:if>\s*<a.*?<ul class="structItem-extraInfo.*?<xf:contentcheck>)#si]]></find>
+    <replace><![CDATA[$1$2$3$4$5
+$2 && $svMultiPrefixSubtitle === 'suffix' $3<xf:if contentcheck="true">
+<li>
+	<xf:contentcheck>$4</xf:contentcheck>
+</li>
+</xf:if></xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="thread_list_macros" modification_key="svMultiPrefix_thread_list_macros_subtitle2" description="Move Thread prefix to sub-title (part 2)" execution_order="62821" enabled="1" action="preg_replace">
+    <find><![CDATA[#(<div class="structItem-title.*?)(<xf:if is="\$thread\.prefix_id.*?)(">)(.*?)(</xf:if>\s*<a.*?<ul class="structItem-parts.*?">)#si]]></find>
+    <replace><![CDATA[$1$2$3$4$5
+$2 && $svMultiPrefixSubtitle === 'subtitle' AND !property('svMultiPrefixSubTitlePrefixUnderThreadInfo') $3<xf:if contentcheck="true">
+<li class="structItem-prefixes">
+	<xf:contentcheck>$4</xf:contentcheck>
+</li>
+</xf:if></xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="thread_list_macros" modification_key="svMultiPrefix_thread_list_macros_subtitle3" description="Disable thread prefix on suffix/sub-title (part 3)" execution_order="62829" enabled="1" action="preg_replace">
+    <find><![CDATA[#<div\s+class="structItem-title.*?<xf:if\s+is="\$thread\.prefix_id#si]]></find>
+    <replace><![CDATA[$0 && $svMultiPrefixSubtitle == '']]></replace>
+  </modification>
+  <modification type="public" template="thread_list_macros" modification_key="svMultiPrefix_thread_list_macros_subtitle4" description="Disable thread prefix on non-prefix &amp; move to suffix (part 4)" execution_order="63820" enabled="1" action="preg_replace">
+    <find><![CDATA[#(prefix\('thread', \$thread\))(.*?)({\$thread.title\})#si]]></find>
+    <replace><![CDATA[( $svMultiPrefixSubtitle == '' ? $1 : '')$2$3{{ ( $svMultiPrefixSubtitle === 'suffix' ? $1 : '') }}]]></replace>
+  </modification>
+  <modification type="public" template="thread_list_macros" modification_key="svMultiPrefix_thread_list_macros_subtitle5" description="Move Thread prefix to sub-title (part 5, new item list)" execution_order="63821" enabled="1" action="preg_replace">
+    <find><![CDATA[#(<div class="contentRow-main contentRow-main--close.*?<a.*?)([\t ]*<div class="contentRow-minor contentRow-minor--hideLinks">)#si]]></find>
+    <replace><![CDATA[$1
+<xf:if is="$svMultiPrefixSubtitle === 'subtitle'"><xf:if contentcheck="true">
+	<div class="contentRow-minor contentRow-minor--hideLinks">
+		<xf:contentcheck>{{ prefix('thread', $thread) }}</xf:contentcheck>
+	</div>
+</xf:if></xf:if>
+$2]]></replace>
+  </modification>
+  <modification type="public" template="thread_list_macros" modification_key="sv_multiprefix_thread_list_macros_class" description="css tagging of prefixed items" execution_order="6281" enabled="1" action="str_replace">
+    <find><![CDATA[{{ $thread.prefix_id ? ' is-prefix' . $thread.prefix_id : '' }}]]></find>
+    <replace><![CDATA[{{ $thread.sv_prefix_ids ? ' is-prefix' . ($thread.sv_prefix_ids|join(' is-prefix')) : '' }}]]></replace>
+  </modification>
+  <modification type="public" template="thread_list_macros" modification_key="sv_multiprefix_thread_list_macros_clickable2" description="Make prefixes clickable" execution_order="6201" enabled="1" action="str_replace">
+    <find><![CDATA[prefix('thread', $thread, 'html']]></find>
+    <replace><![CDATA[prefix('thread', $thread, 'html-clicky']]></replace>
+  </modification>
+  <modification type="public" template="thread_list_macros" modification_key="sv_multiprefix_thread_list_macros_clickable_prefix" description="Make prefixes clickable" execution_order="6200" enabled="1" action="preg_replace">
+    <find><![CDATA[#(<xf:if is="\$thread.prefix_id">\s*<xf:if is="\$forum)(">.*?)#si]]></find>
+    <replace><![CDATA[$1 || $__globals.filterRoute == 'watched/threads' || $xf.options.svClickablePrefixes $2]]></replace>
+  </modification>
+  <modification type="public" template="thread_list_macros" modification_key="sv_multiprefix_thread_list_macros_prefixes" description="UI for filtering by multiple prefixes" execution_order="6279" enabled="1" action="preg_replace">
+    <find><![CDATA[#<a href="{{ link\('forums', \$forum, {'prefix_id'.*?>{{ prefix.*? }}</a>#si]]></find>
+    <replace><![CDATA[{{ prefix_filters('thread', ($__globals.filterRoute ?: 'forums'), ($__globals.filterContainer === null ? ($forum ?: $thread.Forum) : $__globals.filterContainer), $thread, $__globals.filters) }}]]></replace>
+  </modification>
+  <modification type="public" template="thread_list_macros" modification_key="sv_multiprefix_thread_list_macros_quick_thread" description="Disable inline quick thread prefixes" execution_order="6281" enabled="1" action="preg_replace">
+    <find><![CDATA[#(^<xf:macro name="quick_thread".*?<xf:prefixinput.*?prefixes="{)(.*?)(")#sim]]></find>
+    <replace><![CDATA[$1{ [] }}$3]]></replace>
+  </modification>
+  <modification type="public" template="thread_move" modification_key="sv_multiprefix_thread_move" description="Enable multi prefixes when moving a thread" execution_order="6281" enabled="1" action="str_replace">
+    <find><![CDATA[prefix-value="{$thread.prefix_id}"]]></find>
+    <replace><![CDATA[$0
+				multi-prefix-value="{{ $thread.sv_prefix_ids }}" multi-prefix-content-parent="{{ $thread.Forum }}" multi-prefix-content="{{ $thread }}" full-row="{{ true }}"]]></replace>
+  </modification>
+  <modification type="public" template="thread_view" modification_key="svMultiPrefix_thread_view" description="Disable thread prefix on non-prefix &amp; move to suffix (part 13)" execution_order="6280" enabled="1" action="preg_replace">
+    <find><![CDATA[#(<xf:h1>)(.*?{{ prefix\('thread', \$thread[^\)]*\) }})(.*?\{\$thread\.title\}.*?)(</xf:h1>)(.*?)([\t ]*<xf:if is="\$xf\.options\.enableTagging)#si]]></find>
+    <replace><![CDATA[$1<xf:if is="$svMultiPrefixSubtitle == ''">$2</xf:if>$3<xf:if is="$svMultiPrefixSubtitle === 'suffix'">$2</xf:if>$4$5
+<xf:if is="$svMultiPrefixSubtitle == 'subtitle'"><xf:if contentcheck="true">
+<li><xf:contentcheck>$2</xf:contentcheck></li>
+</xf:if></xf:if>
+$6]]></replace>
+  </modification>
+  <modification type="public" template="thread_view" modification_key="svMultiPrefix_thread_view_description" description="Make prefix-description work with multiple prefixes" execution_order="6283" enabled="1" action="preg_replace">
+    <find><![CDATA[#<xf:if is="\$thread.prefix_id">.*prefix_description.*?</xf:if>\s*</xf:if>#si]]></find>
+    <replace><![CDATA[<xf:macro name="sv_multiprefix_prefix_macros::prefix_description"
+		  arg-content="{$thread}"
+		  arg-contentType="thread"
+		  />]]></replace>
+  </modification>
+  <modification type="public" template="thread_view" modification_key="svMultiPrefix_thread_view_hook" description="Hook-point for custom field for thread prefix styling" execution_order="6280" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:h1>]]></find>
+    <replace><![CDATA[<xf:set var="$svMultiPrefixSubtitle" value="{{ $svMultiPrefixSubtitle === null ? property('svMultiPrefixSubtitle') : $svMultiPrefixSubtitle }}" />
+$0]]></replace>
+  </modification>
+  <modification type="public" template="thread_view" modification_key="thread_view_multiprefix_clickable" description="Make prefixes clickable" execution_order="6282" enabled="1" action="str_replace">
+    <find><![CDATA[prefix('thread', $thread)]]></find>
+    <replace><![CDATA[prefix('thread', $thread, 'html-clicky')]]></replace>
+  </modification>
+  <modification type="admin" template="xc_project_manager_category_edit_macros" modification_key="sv_multiprefix_xc_projectmanager_category_edit_mac" execution_order="7090" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:if is="$task">
+			<xf:checkboxrow name="require_task_prefix" value="{$category.require_task_prefix}">
+				<xf:option value="1"
+					label="{{ phrase('require_users_to_select_prefix') }}"
+					hint="{{ phrase('xc_project_manager_if_selected_users_required_select_prefix_when_task_creating_editing') }}" />
+			</xf:checkboxrow>
+		<xf:else />
+			<xf:checkboxrow name="require_project_prefix" value="{$category.require_project_prefix}">
+				<xf:option value="1"
+					label="{{ phrase('require_users_to_select_prefix') }}"
+					hint="{{ phrase('xc_project_manager_if_selected_users_required_select_prefix_when_creating_editing') }}" />
+			</xf:checkboxrow>
+		</xf:if>]]></find>
+    <replace><![CDATA[<xf:if is="$task">
+	<xf:numberboxrow label="{{ phrase('sv_multiprefix_min_prefixes') }}" name="sv_min_task_prefixes" value="{$category.sv_min_task_prefixes}" />
+	<xf:numberboxrow label="{{ phrase('sv_multiprefix_max_prefixes') }}" name="sv_max_task_prefixes" value="{$category.sv_max_task_prefixes}" />
+<xf:else />
+<xf:numberboxrow label="{{ phrase('sv_multiprefix_min_prefixes') }}" name="sv_min_project_prefixes" value="{$category.sv_min_project_prefixes}" />
+	<xf:numberboxrow label="{{ phrase('sv_multiprefix_max_prefixes') }}" name="sv_max_project_prefixes" value="{$category.sv_max_project_prefixes}" />
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="xc_project_manager_filters" modification_key="sv_multiprefix_xc_projectmanager_filters" description="Enable multi prefixes in filtering dropdown" execution_order="8281" enabled="1" action="str_replace">
+    <find><![CDATA[arg-type="xcpm_project"]]></find>
+    <replace><![CDATA[$0
+arg-multiple="{{ true }}"]]></replace>
+  </modification>
+  <modification type="public" template="xc_project_manager_overview_macros" modification_key="sv_multiprefix_projectmanager_list_filter_bar" description="Add multiprefix filters" execution_order="8281" enabled="1" action="preg_replace">
+    <find><![CDATA[#(<xf:if is="\$filters.prefix_id">)(.*?prefix_title.*?)(\s*</xf:if>)#si]]></find>
+    <replace><![CDATA[$1
+<xf:include template="sv_multiprefix_filter">
+	<xf:set var="$prefixType" value="xcpm_project" />
+	<xf:set var="$baseLinkPath" value="{$baseLinkPath}" />
+	<xf:set var="$container" value="{$category}" />
+</xf:include>
+$3]]></replace>
+  </modification>
+  <modification type="public" template="xc_project_manager_project_edit_macros" modification_key="sv_multiprefix_xc_projectmanager_project_edit_mac" description="Render multiple prefixes in project title" execution_order="8281" enabled="1" action="str_replace">
+    <find><![CDATA[prefix-value="{$project.prefix_id}"]]></find>
+    <replace><![CDATA[$0
+multi-prefix-value="{{ $project.sv_prefix_ids }}" multi-prefix-content-parent="{{ $project.Category }}" multi-prefix-content="{{ $project }}" full-row="{{ true }}"]]></replace>
+  </modification>
+  <modification type="public" template="xc_project_manager_project_list_macros" modification_key="sv_multiprefix_projectmanager_project_list_macro_2" description="UI for filtering by multiple prefixes" execution_order="8281" enabled="1" action="preg_replace">
+    <find><![CDATA[#<a href="{{ link\('projects/categories', \$category, {'prefix_id'.*?>{{ prefix.*? }}</a>#si]]></find>
+    <replace><![CDATA[{{ prefix_filters('xcpm_project', 'projects/categories', $category, $project, $__globals.filters) }}]]></replace>
+  </modification>
+  <modification type="public" template="xc_project_manager_project_list_macros" modification_key="sv_multiprefix_projectmanager_project_list_macros" description="css tagging of prefixed items" execution_order="8281" enabled="1" action="str_replace">
+    <find><![CDATA[{{ $project.prefix_id ? 'is-prefix' . $project.prefix_id : '' }}]]></find>
+    <replace><![CDATA[{{ $project.sv_prefix_ids ? 'is-prefix' . $project.sv_prefix_ids|join(' is-prefix') : '' }}]]></replace>
+  </modification>
+  <modification type="public" template="xc_project_manager_project_task_edit_macros" modification_key="sv_multiprefix_xc_projectmanager_task_edit_mac" description="Render multiple prefixes in project task title" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[prefix-value="{$projectTask.prefix_id}"]]></find>
+    <replace><![CDATA[$0
+multi-prefix-value="{{ $projectTask.sv_prefix_ids }}" multi-prefix-content-parent="{{ $projectTask.Project.Category }}" multi-prefix-content="{{ $projectTask }}" full-row="{{ true }}"]]></replace>
+  </modification>
+  <modification type="public" template="xc_project_manager_project_task_macros" modification_key="sv_multiprefix_projectmanager_task_clickable" description="Make prefixes clickable" execution_order="8281" enabled="1" action="str_replace">
+    <find><![CDATA[prefix('xcpm_project_task', $task)]]></find>
+    <replace><![CDATA[prefix('xcpm_project_task', $task, 'html-clicky')]]></replace>
+  </modification>
+  <modification type="public" template="xc_project_manager_project_wrapper_macros" modification_key="sv_multiprefix_projectmanager_clickable" description="Make prefixes clickable" execution_order="8281" enabled="1" action="str_replace">
+    <find><![CDATA[prefix('xcpm_project', $project)]]></find>
+    <replace><![CDATA[prefix('xcpm_project', $project, 'html-clicky')]]></replace>
+  </modification>
+  <modification type="admin" template="xfrm_category_edit" modification_key="svMultiPrefix_xfrm_category_edit_b" description="Explicitly pass multiple argument" execution_order="6281" enabled="1" action="preg_replace">
+    <find><![CDATA[#(<xf:macro template="public:prefix_macros" name="select".*?)( \/>)#si]]></find>
+    <replace><![CDATA[$1 arg-multiple="{{ true }}"$2]]></replace>
+  </modification>
+  <modification type="admin" template="xfrm_category_edit" modification_key="sv_multiprefix_xfrm_category_edit" execution_order="6281" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:checkboxrow name="require_prefix" value="{$category.require_prefix}">
+					<xf:option value="1"
+						label="{{ phrase('require_users_to_select_prefix') }}"
+						hint="{{ phrase('xfrm_if_selected_users_required_select_prefix_when_creating_editing') }}" />
+				</xf:checkboxrow>]]></find>
+    <replace><![CDATA[<xf:numberboxrow label="{{ phrase('sv_multiprefix_min_prefixes') }}" name="sv_multiprefix_min_prefixes" value="{$category.sv_min_prefixes}" />
+<xf:numberboxrow label="{{ phrase('sv_multiprefix_max_prefixes') }}" name="sv_multiprefix_max_prefixes" value="{$category.sv_max_prefixes}" />]]></replace>
+  </modification>
+  <modification type="public" template="xfrm_filters" modification_key="sv_multiprefix_xfrm_filters" description="Enable multi prefixes in filtering dropdown" execution_order="6281" enabled="1" action="str_replace">
+    <find><![CDATA[arg-type="resource"]]></find>
+    <replace><![CDATA[$0
+arg-multiple="{{ true }}"]]></replace>
+  </modification>
+  <modification type="public" template="xfrm_overview_macros" modification_key="sv_multiprefix_list_filter_bar" description="Add multiprefix filters" execution_order="6281" enabled="1" action="preg_replace">
+    <find><![CDATA[#(<xf:if is="\$filters.prefix_id">)(.*?prefix_title.*?)(\s*</xf:if>)#si]]></find>
+    <replace><![CDATA[$1
+<xf:include template="sv_multiprefix_filter">
+	<xf:set var="$prefixType" value="resource" />
+	<xf:set var="$baseLinkPath" value="{$baseLinkPath}" />
+	<xf:set var="$container" value="{$category}" />
+</xf:include>
+$3]]></replace>
+  </modification>
+  <modification type="public" template="xfrm_resource_edit_macros" modification_key="sv_multiprefix_xfrm_resource_edit_macros" description="Render multiple prefixes in resource title" execution_order="6281" enabled="1" action="str_replace">
+    <find><![CDATA[prefix-value="{$resource.prefix_id}"]]></find>
+    <replace><![CDATA[$0
+multi-prefix-value="{{ $resource.sv_prefix_ids }}" multi-prefix-content-parent="{{ $resource.Category }}" multi-prefix-content="{{ $resource }}" full-row="{{ true }}"]]></replace>
+  </modification>
+  <modification type="public" template="xfrm_resource_list_macros" modification_key="sv_multiprefix_xfrm_resource_list_macros" description="css tagging of prefixed items" execution_order="6281" enabled="1" action="str_replace">
+    <find><![CDATA[{{ $resource.prefix_id ? 'is-prefix' . $resource.prefix_id : '' }}]]></find>
+    <replace><![CDATA[{{ $resource.sv_prefix_ids ? 'is-prefix' . $resource.sv_prefix_ids|join(' is-prefix') : '' }}]]></replace>
+  </modification>
+  <modification type="public" template="xfrm_resource_list_macros" modification_key="sv_multiprefix_xfrm_resource_list_macros_prefixes" description="UI for filtering by multiple prefixes" execution_order="6281" enabled="1" action="preg_replace">
+    <find><![CDATA[#<a href="{{ link\('resources/categories', \$category, {'prefix_id'.*?>{{ prefix.*? }}</a>#si]]></find>
+    <replace><![CDATA[{{ prefix_filters('resource', 'resources/categories', $category, $resource, $__globals.filters) }}]]></replace>
+  </modification>
+  <modification type="public" template="xfrm_resource_move" modification_key="sv_multiprefix_xfrm_resource_move" description="Enable multi prefixes when moving a resource" execution_order="6281" enabled="1" action="str_replace">
+    <find><![CDATA[prefix-value="{$resource.prefix_id}"]]></find>
+    <replace><![CDATA[$0
+				multi-prefix-value="{{ $resource.sv_prefix_ids }}" multi-prefix-content-parent="{{ $resource.Category }}" multi-prefix-content="{{ $resource }}" full-row="{{ true }}"]]></replace>
+  </modification>
+</template_modifications>

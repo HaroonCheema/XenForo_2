@@ -442,6 +442,8 @@ return array (
   'style_prop.successBg' => 'Success message background',
   'style_prop.successColor' => 'Success message text color',
   'style_prop.successFeatureColor' => 'Success message feature color',
+  'style_prop.svMultiPrefixSubTitlePrefixUnderThreadInfo' => 'Sub-title prefix under thread info',
+  'style_prop.svMultiPrefixSubtitle' => 'Move thread prefixes location',
   'style_prop.textColor' => 'Text color',
   'style_prop.textColorAccentContent' => 'Accented content text color',
   'style_prop.textColorAttention' => 'Attention-grabbing text color',

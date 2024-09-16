@@ -139,7 +139,7 @@ return array(
 		if ($__templater->isTraversable($__vars['tags'])) {
 			foreach ($__vars['tags'] AS $__vars['tag']) {
 				$__finalCompiled .= '
-						<a href="' . $__templater->func('link', array('tags', $__vars['tag'], ), true) . '" class="tagItem tagItem--tag_' . $__templater->escape($__vars['tag']['tag_url']) . '" dir="auto">
+						<a href="' . $__templater->func('link', array('tags', $__vars['tag'], ), true) . '"  data-xf-init="preview-tooltip" data-preview-url="' . $__templater->func('link', array('tags/preview', $__vars['tag'], ), true) . '" class="tagItem tagItem--tag_' . $__templater->escape($__vars['tag']['tag_url']) . '" dir="auto">
 							' . ($__vars['highlightTerm'] ? $__templater->func('highlight', array($__vars['tag']['tag'], $__vars['highlightTerm'], ), true) : $__templater->escape($__vars['tag']['tag'])) . '
 						</a>
 					';

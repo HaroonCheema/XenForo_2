@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<admin_navigation>
+  <admin_navigation_entry navigation_id="manageTags" parent_navigation_id="tags" display_order="1" link="tags" admin_permission_id="tags" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="tagess_blacklistedtags" parent_navigation_id="tags" display_order="1000" link="tags/blacklisted" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="tagess_categories" parent_navigation_id="tags" display_order="1000" link="tags/categories" debug_only="0" development_only="0" hide_no_children="0"/>
+</admin_navigation>

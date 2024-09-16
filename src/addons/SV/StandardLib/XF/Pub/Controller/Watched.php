@@ -3,10 +3,11 @@
 namespace SV\StandardLib\XF\Pub\Controller;
 
 use SV\StandardLib\ControllerPlugin\Filter as FilterPlugin;
+use SV\StandardLib\Helper;
 use XF\Mvc\Reply\View;
 
 /**
- * Extends \XF\Pub\Controller\Watched
+ * @Extends \XF\Pub\Controller\Watched
  */
 class Watched extends XFCP_Watched
 {
@@ -29,7 +30,7 @@ class Watched extends XFCP_Watched
     {
         if ($this->svFilterPlugin === null)
         {
-            $this->svFilterPlugin = $this->plugin('SV\StandardLib:Filter');
+            $this->svFilterPlugin = Helper::plugin($this, FilterPlugin::class);
         }
 
         return $this->svFilterPlugin;

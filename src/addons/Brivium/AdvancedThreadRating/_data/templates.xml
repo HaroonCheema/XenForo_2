@@ -1,0 +1,2949 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="admin" title="BRATR_bootstrap.css" version_id="2000000" version_string="2.0.0"><![CDATA[/*!
+ * Bootstrap v3.3.7 (http://getbootstrap.com)
+ * Copyright 2011-2016 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+button {
+  overflow: visible;
+}
+button,
+select {
+  text-transform: none;
+}
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  cursor: pointer;
+}
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+input {
+  line-height: normal;
+}
+input[type="checkbox"],
+input[type="radio"] {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+input[type="search"] {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  -webkit-appearance: textfield;
+}
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+fieldset {
+  padding: .35em .625em .75em;
+  margin: 0 2px;
+  border: 1px solid #c0c0c0;
+}
+legend {
+  padding: 0;
+  border: 0;
+}
+textarea {
+  overflow: auto;
+}
+optgroup {
+  font-weight: bold;
+}
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+td,
+th {
+  padding: 0;
+}
+/*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */
+@font-face {
+  font-family: 'Glyphicons Halflings';
+
+  src: url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/fonts/glyphicons-halflings-regular.eot');
+  src: url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/fonts/glyphicons-halflings-regular.woff') format('woff'), url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}
+.glyphicon {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+.glyphicon-arrow-left:before {
+  content: "\e091";
+}
+.glyphicon-arrow-right:before {
+  content: "\e092";
+}
+.text-center {
+  text-align: center;
+}
+.text-justify {
+  text-align: justify;
+}
+table {
+  background-color: transparent;
+}
+caption {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  color: #777;
+  text-align: left;
+}
+th {
+  text-align: left;
+}
+.table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 20px;
+}
+.table > thead > tr > th,
+.table > tbody > tr > th,
+.table > tfoot > tr > th,
+.table > thead > tr > td,
+.table > tbody > tr > td,
+.table > tfoot > tr > td {
+  padding: 8px;
+  line-height: 1.42857143;
+  vertical-align: top;
+  border-top: 1px solid #ddd;
+}
+.table > thead > tr > th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #ddd;
+}
+.table > caption + thead > tr:first-child > th,
+.table > colgroup + thead > tr:first-child > th,
+.table > thead:first-child > tr:first-child > th,
+.table > caption + thead > tr:first-child > td,
+.table > colgroup + thead > tr:first-child > td,
+.table > thead:first-child > tr:first-child > td {
+  border-top: 0;
+}
+.table > tbody + tbody {
+  border-top: 2px solid #ddd;
+}
+.table .table {
+  background-color: #fff;
+}
+.table-condensed > thead > tr > th,
+.table-condensed > tbody > tr > th,
+.table-condensed > tfoot > tr > th,
+.table-condensed > thead > tr > td,
+.table-condensed > tbody > tr > td,
+.table-condensed > tfoot > tr > td {
+  padding: 5px;
+}
+.table-bordered {
+  border: 1px solid #ddd;
+}
+.table-bordered > thead > tr > th,
+.table-bordered > tbody > tr > th,
+.table-bordered > tfoot > tr > th,
+.table-bordered > thead > tr > td,
+.table-bordered > tbody > tr > td,
+.table-bordered > tfoot > tr > td {
+  border: 1px solid #ddd;
+}
+.table-bordered > thead > tr > th,
+.table-bordered > thead > tr > td {
+  border-bottom-width: 2px;
+}
+.table-striped > tbody > tr:nth-of-type(odd) {
+  background-color: #f9f9f9;
+}
+.table-hover > tbody > tr:hover {
+  background-color: #f5f5f5;
+}
+table col[class*="col-"] {
+  position: static;
+  display: table-column;
+  float: none;
+}
+table td[class*="col-"],
+table th[class*="col-"] {
+  position: static;
+  display: table-cell;
+  float: none;
+}
+.table > thead > tr > td.active,
+.table > tbody > tr > td.active,
+.table > tfoot > tr > td.active,
+.table > thead > tr > th.active,
+.table > tbody > tr > th.active,
+.table > tfoot > tr > th.active,
+.table > thead > tr.active > td,
+.table > tbody > tr.active > td,
+.table > tfoot > tr.active > td,
+.table > thead > tr.active > th,
+.table > tbody > tr.active > th,
+.table > tfoot > tr.active > th {
+  background-color: #f5f5f5;
+}
+.table-hover > tbody > tr > td.active:hover,
+.table-hover > tbody > tr > th.active:hover,
+.table-hover > tbody > tr.active:hover > td,
+.table-hover > tbody > tr:hover > .active,
+.table-hover > tbody > tr.active:hover > th {
+  background-color: #e8e8e8;
+}
+.table > thead > tr > td.success,
+.table > tbody > tr > td.success,
+.table > tfoot > tr > td.success,
+.table > thead > tr > th.success,
+.table > tbody > tr > th.success,
+.table > tfoot > tr > th.success,
+.table > thead > tr.success > td,
+.table > tbody > tr.success > td,
+.table > tfoot > tr.success > td,
+.table > thead > tr.success > th,
+.table > tbody > tr.success > th,
+.table > tfoot > tr.success > th {
+  background-color: #dff0d8;
+}
+.table-hover > tbody > tr > td.success:hover,
+.table-hover > tbody > tr > th.success:hover,
+.table-hover > tbody > tr.success:hover > td,
+.table-hover > tbody > tr:hover > .success,
+.table-hover > tbody > tr.success:hover > th {
+  background-color: #d0e9c6;
+}
+.table > thead > tr > td.info,
+.table > tbody > tr > td.info,
+.table > tfoot > tr > td.info,
+.table > thead > tr > th.info,
+.table > tbody > tr > th.info,
+.table > tfoot > tr > th.info,
+.table > thead > tr.info > td,
+.table > tbody > tr.info > td,
+.table > tfoot > tr.info > td,
+.table > thead > tr.info > th,
+.table > tbody > tr.info > th,
+.table > tfoot > tr.info > th {
+  background-color: #d9edf7;
+}
+.table-hover > tbody > tr > td.info:hover,
+.table-hover > tbody > tr > th.info:hover,
+.table-hover > tbody > tr.info:hover > td,
+.table-hover > tbody > tr:hover > .info,
+.table-hover > tbody > tr.info:hover > th {
+  background-color: #c4e3f3;
+}
+.table > thead > tr > td.warning,
+.table > tbody > tr > td.warning,
+.table > tfoot > tr > td.warning,
+.table > thead > tr > th.warning,
+.table > tbody > tr > th.warning,
+.table > tfoot > tr > th.warning,
+.table > thead > tr.warning > td,
+.table > tbody > tr.warning > td,
+.table > tfoot > tr.warning > td,
+.table > thead > tr.warning > th,
+.table > tbody > tr.warning > th,
+.table > tfoot > tr.warning > th {
+  background-color: #fcf8e3;
+}
+.table-hover > tbody > tr > td.warning:hover,
+.table-hover > tbody > tr > th.warning:hover,
+.table-hover > tbody > tr.warning:hover > td,
+.table-hover > tbody > tr:hover > .warning,
+.table-hover > tbody > tr.warning:hover > th {
+  background-color: #faf2cc;
+}
+.table > thead > tr > td.danger,
+.table > tbody > tr > td.danger,
+.table > tfoot > tr > td.danger,
+.table > thead > tr > th.danger,
+.table > tbody > tr > th.danger,
+.table > tfoot > tr > th.danger,
+.table > thead > tr.danger > td,
+.table > tbody > tr.danger > td,
+.table > tfoot > tr.danger > td,
+.table > thead > tr.danger > th,
+.table > tbody > tr.danger > th,
+.table > tfoot > tr.danger > th {
+  background-color: #f2dede;
+}
+.table-hover > tbody > tr > td.danger:hover,
+.table-hover > tbody > tr > th.danger:hover,
+.table-hover > tbody > tr.danger:hover > td,
+.table-hover > tbody > tr:hover > .danger,
+.table-hover > tbody > tr.danger:hover > th {
+  background-color: #ebcccc;
+}
+.table-responsive {
+  min-height: .01%;
+  overflow-x: auto;
+}
+@media screen and (max-width: 767px) {
+  .table-responsive {
+    width: 100%;
+    margin-bottom: 15px;
+    overflow-y: hidden;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    border: 1px solid #ddd;
+  }
+  .table-responsive > .table {
+    margin-bottom: 0;
+  }
+  .table-responsive > .table > thead > tr > th,
+  .table-responsive > .table > tbody > tr > th,
+  .table-responsive > .table > tfoot > tr > th,
+  .table-responsive > .table > thead > tr > td,
+  .table-responsive > .table > tbody > tr > td,
+  .table-responsive > .table > tfoot > tr > td {
+    white-space: nowrap;
+  }
+  .table-responsive > .table-bordered {
+    border: 0;
+  }
+  .table-responsive > .table-bordered > thead > tr > th:first-child,
+  .table-responsive > .table-bordered > tbody > tr > th:first-child,
+  .table-responsive > .table-bordered > tfoot > tr > th:first-child,
+  .table-responsive > .table-bordered > thead > tr > td:first-child,
+  .table-responsive > .table-bordered > tbody > tr > td:first-child,
+  .table-responsive > .table-bordered > tfoot > tr > td:first-child {
+    border-left: 0;
+  }
+  .table-responsive > .table-bordered > thead > tr > th:last-child,
+  .table-responsive > .table-bordered > tbody > tr > th:last-child,
+  .table-responsive > .table-bordered > tfoot > tr > th:last-child,
+  .table-responsive > .table-bordered > thead > tr > td:last-child,
+  .table-responsive > .table-bordered > tbody > tr > td:last-child,
+  .table-responsive > .table-bordered > tfoot > tr > td:last-child {
+    border-right: 0;
+  }
+  .table-responsive > .table-bordered > tbody > tr:last-child > th,
+  .table-responsive > .table-bordered > tfoot > tr:last-child > th,
+  .table-responsive > .table-bordered > tbody > tr:last-child > td,
+  .table-responsive > .table-bordered > tfoot > tr:last-child > td {
+    border-bottom: 0;
+  }
+}
+fieldset {
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+legend {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin-bottom: 20px;
+  font-size: 21px;
+  line-height: inherit;
+  color: #333;
+  border: 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+input[type="search"] {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+input[type="radio"],
+input[type="checkbox"] {
+  margin: 4px 0 0;
+  margin-top: 1px \9;
+  line-height: normal;
+}
+input[type="file"] {
+  display: block;
+}
+input[type="range"] {
+  display: block;
+  width: 100%;
+}
+select[multiple],
+select[size] {
+  height: auto;
+}
+input[type="file"]:focus,
+input[type="radio"]:focus,
+input[type="checkbox"]:focus {
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+output {
+  display: block;
+  padding-top: 7px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+}
+.form-control {
+  display: block;
+  width: 100%;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+.form-control:focus {
+  border-color: #66afe9;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+}
+.form-control::-moz-placeholder {
+  color: #999;
+  opacity: 1;
+}
+.form-control:-ms-input-placeholder {
+  color: #999;
+}
+.form-control::-webkit-input-placeholder {
+  color: #999;
+}
+.form-control::-ms-expand {
+  background-color: transparent;
+  border: 0;
+}
+.form-control[disabled],
+.form-control[readonly],
+fieldset[disabled] .form-control {
+  background-color: #eee;
+  opacity: 1;
+}
+.form-control[disabled],
+fieldset[disabled] .form-control {
+  cursor: not-allowed;
+}
+textarea.form-control {
+  height: auto;
+}
+input[type="search"] {
+  -webkit-appearance: none;
+}
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  input[type="date"].form-control,
+  input[type="time"].form-control,
+  input[type="datetime-local"].form-control,
+  input[type="month"].form-control {
+    line-height: 34px;
+  }
+  input[type="date"].input-sm,
+  input[type="time"].input-sm,
+  input[type="datetime-local"].input-sm,
+  input[type="month"].input-sm,
+  .input-group-sm input[type="date"],
+  .input-group-sm input[type="time"],
+  .input-group-sm input[type="datetime-local"],
+  .input-group-sm input[type="month"] {
+    line-height: 30px;
+  }
+  input[type="date"].input-lg,
+  input[type="time"].input-lg,
+  input[type="datetime-local"].input-lg,
+  input[type="month"].input-lg,
+  .input-group-lg input[type="date"],
+  .input-group-lg input[type="time"],
+  .input-group-lg input[type="datetime-local"],
+  .input-group-lg input[type="month"] {
+    line-height: 46px;
+  }
+}
+.form-group {
+  margin-bottom: 15px;
+}
+.btn {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus,
+.btn.focus,
+.btn:active.focus,
+.btn.active.focus {
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+.btn:hover,
+.btn:focus,
+.btn.focus {
+  color: #333;
+  text-decoration: none;
+}
+.btn:active,
+.btn.active {
+  background-image: none;
+  outline: 0;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+}
+.btn.disabled,
+.btn[disabled],
+fieldset[disabled] .btn {
+  cursor: not-allowed;
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  opacity: .65;
+}
+a.btn.disabled,
+fieldset[disabled] a.btn {
+  pointer-events: none;
+}
+.btn-default {
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+}
+.btn-default:focus,
+.btn-default.focus {
+  color: #333;
+  background-color: #e6e6e6;
+  border-color: #8c8c8c;
+}
+.btn-default:hover {
+  color: #333;
+  background-color: #e6e6e6;
+  border-color: #adadad;
+}
+.btn-default:active,
+.btn-default.active,
+.open > .dropdown-toggle.btn-default {
+  color: #333;
+  background-color: #e6e6e6;
+  border-color: #adadad;
+}
+.btn-default:active:hover,
+.btn-default.active:hover,
+.open > .dropdown-toggle.btn-default:hover,
+.btn-default:active:focus,
+.btn-default.active:focus,
+.open > .dropdown-toggle.btn-default:focus,
+.btn-default:active.focus,
+.btn-default.active.focus,
+.open > .dropdown-toggle.btn-default.focus {
+  color: #333;
+  background-color: #d4d4d4;
+  border-color: #8c8c8c;
+}
+.btn-default:active,
+.btn-default.active,
+.open > .dropdown-toggle.btn-default {
+  background-image: none;
+}
+.btn-default.disabled:hover,
+.btn-default[disabled]:hover,
+fieldset[disabled] .btn-default:hover,
+.btn-default.disabled:focus,
+.btn-default[disabled]:focus,
+fieldset[disabled] .btn-default:focus,
+.btn-default.disabled.focus,
+.btn-default[disabled].focus,
+fieldset[disabled] .btn-default.focus {
+  background-color: #fff;
+  border-color: #ccc;
+}
+.btn-default .badge {
+  color: #fff;
+  background-color: #333;
+}
+.btn-primary {
+  color: #fff;
+  background-color: #337ab7;
+  border-color: #2e6da4;
+}
+.btn-primary:focus,
+.btn-primary.focus {
+  color: #fff;
+  background-color: #286090;
+  border-color: #122b40;
+}
+.btn-primary:hover {
+  color: #fff;
+  background-color: #286090;
+  border-color: #204d74;
+}
+.btn-primary:active,
+.btn-primary.active,
+.open > .dropdown-toggle.btn-primary {
+  color: #fff;
+  background-color: #286090;
+  border-color: #204d74;
+}
+.btn-primary:active:hover,
+.btn-primary.active:hover,
+.open > .dropdown-toggle.btn-primary:hover,
+.btn-primary:active:focus,
+.btn-primary.active:focus,
+.open > .dropdown-toggle.btn-primary:focus,
+.btn-primary:active.focus,
+.btn-primary.active.focus,
+.open > .dropdown-toggle.btn-primary.focus {
+  color: #fff;
+  background-color: #204d74;
+  border-color: #122b40;
+}
+.btn-primary:active,
+.btn-primary.active,
+.open > .dropdown-toggle.btn-primary {
+  background-image: none;
+}
+.btn-primary.disabled:hover,
+.btn-primary[disabled]:hover,
+fieldset[disabled] .btn-primary:hover,
+.btn-primary.disabled:focus,
+.btn-primary[disabled]:focus,
+fieldset[disabled] .btn-primary:focus,
+.btn-primary.disabled.focus,
+.btn-primary[disabled].focus,
+fieldset[disabled] .btn-primary.focus {
+  background-color: #337ab7;
+  border-color: #2e6da4;
+}
+.btn-primary .badge {
+  color: #337ab7;
+  background-color: #fff;
+}
+.btn-success {
+  color: #fff;
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+}
+.btn-success:focus,
+.btn-success.focus {
+  color: #fff;
+  background-color: #449d44;
+  border-color: #255625;
+}
+.btn-success:hover {
+  color: #fff;
+  background-color: #449d44;
+  border-color: #398439;
+}
+.btn-success:active,
+.btn-success.active,
+.open > .dropdown-toggle.btn-success {
+  color: #fff;
+  background-color: #449d44;
+  border-color: #398439;
+}
+.btn-success:active:hover,
+.btn-success.active:hover,
+.open > .dropdown-toggle.btn-success:hover,
+.btn-success:active:focus,
+.btn-success.active:focus,
+.open > .dropdown-toggle.btn-success:focus,
+.btn-success:active.focus,
+.btn-success.active.focus,
+.open > .dropdown-toggle.btn-success.focus {
+  color: #fff;
+  background-color: #398439;
+  border-color: #255625;
+}
+.btn-success:active,
+.btn-success.active,
+.open > .dropdown-toggle.btn-success {
+  background-image: none;
+}
+.btn-success.disabled:hover,
+.btn-success[disabled]:hover,
+fieldset[disabled] .btn-success:hover,
+.btn-success.disabled:focus,
+.btn-success[disabled]:focus,
+fieldset[disabled] .btn-success:focus,
+.btn-success.disabled.focus,
+.btn-success[disabled].focus,
+fieldset[disabled] .btn-success.focus {
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+}
+.btn-success .badge {
+  color: #5cb85c;
+  background-color: #fff;
+}
+.btn-info {
+  color: #fff;
+  background-color: #5bc0de;
+  border-color: #46b8da;
+}
+.btn-info:focus,
+.btn-info.focus {
+  color: #fff;
+  background-color: #31b0d5;
+  border-color: #1b6d85;
+}
+.btn-info:hover {
+  color: #fff;
+  background-color: #31b0d5;
+  border-color: #269abc;
+}
+.btn-info:active,
+.btn-info.active,
+.open > .dropdown-toggle.btn-info {
+  color: #fff;
+  background-color: #31b0d5;
+  border-color: #269abc;
+}
+.btn-info:active:hover,
+.btn-info.active:hover,
+.open > .dropdown-toggle.btn-info:hover,
+.btn-info:active:focus,
+.btn-info.active:focus,
+.open > .dropdown-toggle.btn-info:focus,
+.btn-info:active.focus,
+.btn-info.active.focus,
+.open > .dropdown-toggle.btn-info.focus {
+  color: #fff;
+  background-color: #269abc;
+  border-color: #1b6d85;
+}
+.btn-info:active,
+.btn-info.active,
+.open > .dropdown-toggle.btn-info {
+  background-image: none;
+}
+.btn-info.disabled:hover,
+.btn-info[disabled]:hover,
+fieldset[disabled] .btn-info:hover,
+.btn-info.disabled:focus,
+.btn-info[disabled]:focus,
+fieldset[disabled] .btn-info:focus,
+.btn-info.disabled.focus,
+.btn-info[disabled].focus,
+fieldset[disabled] .btn-info.focus {
+  background-color: #5bc0de;
+  border-color: #46b8da;
+}
+.btn-info .badge {
+  color: #5bc0de;
+  background-color: #fff;
+}
+.btn-warning {
+  color: #fff;
+  background-color: #f0ad4e;
+  border-color: #eea236;
+}
+.btn-warning:focus,
+.btn-warning.focus {
+  color: #fff;
+  background-color: #ec971f;
+  border-color: #985f0d;
+}
+.btn-warning:hover {
+  color: #fff;
+  background-color: #ec971f;
+  border-color: #d58512;
+}
+.btn-warning:active,
+.btn-warning.active,
+.open > .dropdown-toggle.btn-warning {
+  color: #fff;
+  background-color: #ec971f;
+  border-color: #d58512;
+}
+.btn-warning:active:hover,
+.btn-warning.active:hover,
+.open > .dropdown-toggle.btn-warning:hover,
+.btn-warning:active:focus,
+.btn-warning.active:focus,
+.open > .dropdown-toggle.btn-warning:focus,
+.btn-warning:active.focus,
+.btn-warning.active.focus,
+.open > .dropdown-toggle.btn-warning.focus {
+  color: #fff;
+  background-color: #d58512;
+  border-color: #985f0d;
+}
+.btn-warning:active,
+.btn-warning.active,
+.open > .dropdown-toggle.btn-warning {
+  background-image: none;
+}
+.btn-warning.disabled:hover,
+.btn-warning[disabled]:hover,
+fieldset[disabled] .btn-warning:hover,
+.btn-warning.disabled:focus,
+.btn-warning[disabled]:focus,
+fieldset[disabled] .btn-warning:focus,
+.btn-warning.disabled.focus,
+.btn-warning[disabled].focus,
+fieldset[disabled] .btn-warning.focus {
+  background-color: #f0ad4e;
+  border-color: #eea236;
+}
+.btn-warning .badge {
+  color: #f0ad4e;
+  background-color: #fff;
+}
+.btn-danger {
+  color: #fff;
+  background-color: #d9534f;
+  border-color: #d43f3a;
+}
+.btn-danger:focus,
+.btn-danger.focus {
+  color: #fff;
+  background-color: #c9302c;
+  border-color: #761c19;
+}
+.btn-danger:hover {
+  color: #fff;
+  background-color: #c9302c;
+  border-color: #ac2925;
+}
+.btn-danger:active,
+.btn-danger.active,
+.open > .dropdown-toggle.btn-danger {
+  color: #fff;
+  background-color: #c9302c;
+  border-color: #ac2925;
+}
+.btn-danger:active:hover,
+.btn-danger.active:hover,
+.open > .dropdown-toggle.btn-danger:hover,
+.btn-danger:active:focus,
+.btn-danger.active:focus,
+.open > .dropdown-toggle.btn-danger:focus,
+.btn-danger:active.focus,
+.btn-danger.active.focus,
+.open > .dropdown-toggle.btn-danger.focus {
+  color: #fff;
+  background-color: #ac2925;
+  border-color: #761c19;
+}
+.btn-danger:active,
+.btn-danger.active,
+.open > .dropdown-toggle.btn-danger {
+  background-image: none;
+}
+.btn-danger.disabled:hover,
+.btn-danger[disabled]:hover,
+fieldset[disabled] .btn-danger:hover,
+.btn-danger.disabled:focus,
+.btn-danger[disabled]:focus,
+fieldset[disabled] .btn-danger:focus,
+.btn-danger.disabled.focus,
+.btn-danger[disabled].focus,
+fieldset[disabled] .btn-danger.focus {
+  background-color: #d9534f;
+  border-color: #d43f3a;
+}
+.btn-danger .badge {
+  color: #d9534f;
+  background-color: #fff;
+}
+.btn-link {
+  font-weight: normal;
+  color: #337ab7;
+  border-radius: 0;
+}
+.btn-link,
+.btn-link:active,
+.btn-link.active,
+.btn-link[disabled],
+fieldset[disabled] .btn-link {
+  background-color: transparent;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.btn-link,
+.btn-link:hover,
+.btn-link:focus,
+.btn-link:active {
+  border-color: transparent;
+}
+.btn-link:hover,
+.btn-link:focus {
+  color: #23527c;
+  text-decoration: underline;
+  background-color: transparent;
+}
+.btn-link[disabled]:hover,
+fieldset[disabled] .btn-link:hover,
+.btn-link[disabled]:focus,
+fieldset[disabled] .btn-link:focus {
+  color: #777;
+  text-decoration: none;
+}
+.btn-lg,
+.btn-group-lg > .btn {
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.3333333;
+  border-radius: 6px;
+}
+.btn-sm,
+.btn-group-sm > .btn {
+  padding: 5px 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+}
+.btn-xs,
+.btn-group-xs > .btn {
+  padding: 1px 5px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+}
+.btn-block {
+  display: block;
+  width: 100%;
+}
+.btn-block + .btn-block {
+  margin-top: 5px;
+}
+input[type="submit"].btn-block,
+input[type="reset"].btn-block,
+input[type="button"].btn-block {
+  width: 100%;
+}
+.fade {
+  opacity: 0;
+  -webkit-transition: opacity .15s linear;
+  -o-transition: opacity .15s linear;
+  transition: opacity .15s linear;
+}
+.fade.in {
+  opacity: 1;
+}
+.collapse {
+  display: none;
+}
+.collapse.in {
+  display: block;
+}
+tr.collapse.in {
+  display: table-row;
+}
+tbody.collapse.in {
+  display: table-row-group;
+}
+.collapsing {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  -webkit-transition-timing-function: ease;
+  -o-transition-timing-function: ease;
+  transition-timing-function: ease;
+  -webkit-transition-duration: .35s;
+  -o-transition-duration: .35s;
+  transition-duration: .35s;
+  -webkit-transition-property: height, visibility;
+  -o-transition-property: height, visibility;
+  transition-property: height, visibility;
+}
+.caret {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 2px;
+  vertical-align: middle;
+  border-top: 4px dashed;
+  border-top: 4px solid \9;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+}
+.dropup,
+.dropdown {
+  position: relative;
+}
+.dropdown-toggle:focus {
+  outline: 0;
+}
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  float: left;
+  min-width: 160px;
+  padding: 5px 0;
+  margin: 2px 0 0;
+  font-size: 14px;
+  text-align: left;
+  list-style: none;
+  background-color: #fff;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, .15);
+  border-radius: 4px;
+  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+}
+.dropdown-menu.pull-right {
+  right: 0;
+  left: auto;
+}
+.dropdown-menu .divider {
+  height: 1px;
+  margin: 9px 0;
+  overflow: hidden;
+  background-color: #e5e5e5;
+}
+.dropdown-menu > li > a {
+  display: block;
+  padding: 3px 20px;
+  clear: both;
+  font-weight: normal;
+  line-height: 1.42857143;
+  color: #333;
+  white-space: nowrap;
+}
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+  color: #262626;
+  text-decoration: none;
+  background-color: #f5f5f5;
+}
+.dropdown-menu > .active > a,
+.dropdown-menu > .active > a:hover,
+.dropdown-menu > .active > a:focus {
+  color: #fff;
+  text-decoration: none;
+  background-color: #337ab7;
+  outline: 0;
+}
+.dropdown-menu > .disabled > a,
+.dropdown-menu > .disabled > a:hover,
+.dropdown-menu > .disabled > a:focus {
+  color: #777;
+}
+.dropdown-menu > .disabled > a:hover,
+.dropdown-menu > .disabled > a:focus {
+  text-decoration: none;
+  cursor: not-allowed;
+  background-color: transparent;
+  background-image: none;
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+.open > .dropdown-menu {
+  display: block;
+}
+.open > a {
+  outline: 0;
+}
+.dropdown-menu-right {
+  right: 0;
+  left: auto;
+}
+.dropdown-menu-left {
+  right: auto;
+  left: 0;
+}
+.dropdown-header {
+  display: block;
+  padding: 3px 20px;
+  font-size: 12px;
+  line-height: 1.42857143;
+  color: #777;
+  white-space: nowrap;
+}
+.dropdown-backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 990;
+}
+.pull-right > .dropdown-menu {
+  right: 0;
+  left: auto;
+}
+.popover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1060;
+  display: none;
+  max-width: 276px;
+  padding: 1px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1.42857143;
+  text-align: left;
+  text-align: start;
+  text-decoration: none;
+  text-shadow: none;
+  text-transform: none;
+  letter-spacing: normal;
+  word-break: normal;
+  word-spacing: normal;
+  word-wrap: normal;
+  white-space: normal;
+  background-color: #fff;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, .2);
+  border-radius: 6px;
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+
+  line-break: auto;
+}
+.popover.top {
+  margin-top: -10px;
+}
+.popover.right {
+  margin-left: 10px;
+}
+.popover.bottom {
+  margin-top: 10px;
+}
+.popover.left {
+  margin-left: -10px;
+}
+.popover-title {
+  padding: 8px 14px;
+  margin: 0;
+  font-size: 14px;
+  background-color: #f7f7f7;
+  border-bottom: 1px solid #ebebeb;
+  border-radius: 5px 5px 0 0;
+}
+.popover-content {
+  padding: 9px 14px;
+}
+.popover > .arrow,
+.popover > .arrow:after {
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+}
+.popover > .arrow {
+  border-width: 11px;
+}
+.popover > .arrow:after {
+  content: "";
+  border-width: 10px;
+}
+.popover.top > .arrow {
+  bottom: -11px;
+  left: 50%;
+  margin-left: -11px;
+  border-top-color: #999;
+  border-top-color: rgba(0, 0, 0, .25);
+  border-bottom-width: 0;
+}
+.popover.top > .arrow:after {
+  bottom: 1px;
+  margin-left: -10px;
+  content: " ";
+  border-top-color: #fff;
+  border-bottom-width: 0;
+}
+.popover.right > .arrow {
+  top: 50%;
+  left: -11px;
+  margin-top: -11px;
+  border-right-color: #999;
+  border-right-color: rgba(0, 0, 0, .25);
+  border-left-width: 0;
+}
+.popover.right > .arrow:after {
+  bottom: -10px;
+  left: 1px;
+  content: " ";
+  border-right-color: #fff;
+  border-left-width: 0;
+}
+.popover.bottom > .arrow {
+  top: -11px;
+  left: 50%;
+  margin-left: -11px;
+  border-top-width: 0;
+  border-bottom-color: #999;
+  border-bottom-color: rgba(0, 0, 0, .25);
+}
+.popover.bottom > .arrow:after {
+  top: 1px;
+  margin-left: -10px;
+  content: " ";
+  border-top-width: 0;
+  border-bottom-color: #fff;
+}
+.popover.left > .arrow {
+  top: 50%;
+  right: -11px;
+  margin-top: -11px;
+  border-right-width: 0;
+  border-left-color: #999;
+  border-left-color: rgba(0, 0, 0, .25);
+}
+.popover.left > .arrow:after {
+  right: 1px;
+  bottom: -10px;
+  content: " ";
+  border-right-width: 0;
+  border-left-color: #fff;
+}]]></template>
+  <template type="admin" title="BRATR_icon_rating_option_bootstrap_iconpicker.less" version_id="2020071" version_string="2.2.0"><![CDATA[/*!========================================================================
+* File: bootstrap-iconpicker.min.css v1.10.0 by @victor-valencia
+* https://victor-valencia.github.com/bootstrap-iconpicker
+* ========================================================================
+* Copyright 2013-2017 Victor Valencia Rico.
+* Licensed under MIT license.
+* https://github.com/victor-valencia/bootstrap-iconpicker/blob/master/LICENSE
+* ========================================================================
+*/
+
+.iconpicker .caret {
+    margin-left: 10px !important
+}
+
+.iconpicker {
+    min-width: 60px
+}
+
+.iconpicker input.search-control {
+    margin-bottom: 6px;
+    margin-top: 6px
+}
+
+div.iconpicker.left .table-icons {
+    margin-right: auto
+}
+
+div.iconpicker.center .table-icons {
+    margin-left: auto;
+    margin-right: auto
+}
+
+div.iconpicker.right .table-icons {
+    margin-left: auto
+}
+
+.table-icons .btn {
+    min-height: 30px;
+    min-width: 35px;
+    text-align: center;
+    padding: 0;
+    margin: 2px
+}
+
+.table-icons td {
+    min-width: 39px
+}
+
+.popover {
+    max-width: inherit !important
+}
+
+.iconpicker-popover {
+    z-index: 1050 !important
+}
+
+.iconpicker-popover .search-control {
+    margin-bottom: 6px;
+    margin-top: 6px
+}]]></template>
+  <template type="admin" title="BRATR_icon_rating_option_template" version_id="2000000" version_string="2.0.0"><![CDATA[<xf:css src="BRATR_icon_rating_option_template.less" />
+
+<xf:formrow rowtype="input"
+	label="{$option.title}"
+	hint="{$hintHtml}"
+	explain="{$explainHtml}"
+	html="{$listedHtml}">
+
+	<div class="inputGroup">
+		<xf:select name="{$inputName}" value="{$option.option_value}" class="BriviumSelectIconRating input--autoSize">
+			<xf:optgroup label="{{ phrase('BRATR_use_rating_style') }}">
+				<xf:option value="">{{ phrase('BRATR_xenforo_default') }}</xf:option>
+				<xf:option value="style-rating">{{ phrase('BRATR_style_rating') }}</xf:option>
+				<xf:option value="font-awesome">{{ phrase('BRATR_font_awesome_icon') }}</xf:option>
+			</xf:optgroup>
+
+			<xf:optgroup label="{{ phrase('BRATR_hearts_style') }}">
+				<xf:option value="heart-blue">{{ phrase('BRATR_blue_hearts') }}</xf:option>
+				<xf:option value="heart-green">{{ phrase('BRATR_green_hearts') }}</xf:option>
+				<xf:option value="heart-red">{{ phrase('BRATR_red_hearts') }}</xf:option>
+				<xf:option value="heart-yellow">{{ phrase('BRATR_yellow_hearts') }}</xf:option>
+			</xf:optgroup>	
+
+			<xf:optgroup label="{{ phrase('BRATR_circle_stars_style') }}">
+				<xf:option value="circle-star-blue">{{ phrase('BRATR_blue_circle_stars') }}</xf:option>
+				<xf:option value="circle-star-green">{{ phrase('BRATR_green_circle_stars') }}</xf:option>
+				<xf:option value="circle-star-red">{{ phrase('BRATR_red_circle_stars') }}</xf:option>
+				<xf:option value="circle-star-yellow">{{ phrase('BRATR_yellow_circle_stars') }}</xf:option>
+			</xf:optgroup>
+
+			<xf:optgroup label="{{ phrase('BRATR_paws_style') }}">
+				<xf:option value="paw-blue">{{ phrase('BRATR_blue_paws') }}</xf:option>
+				<xf:option value="paw-green">{{ phrase('BRATR_green_paws') }}</xf:option>
+				<xf:option value="paw-red">{{ phrase('BRATR_red_paws') }}</xf:option>
+				<xf:option value="paw-yellow">{{ phrase('BRATR_yellow_paws') }}</xf:option>
+			</xf:optgroup>
+
+			<xf:optgroup label="{{ phrase('BRATR_stars_style') }}">
+
+				<xf:option value="star-blue">{{ phrase('BRATR_blue_stars') }}</xf:option>
+				<xf:option value="star-green">{{ phrase('BRATR_green_stars') }}</xf:option>
+				<xf:option value="star-red">{{ phrase('BRATR_red_stars') }}</xf:option>
+				<xf:option value="star-yellow">{{ phrase('BRATR_yellow_stars') }}</xf:option>
+			</xf:optgroup>
+
+			<xf:optgroup label="{{ phrase('BRATR_ticks_style') }}">
+				<xf:option value="tick-blue">{{ phrase('BRATR_blue_ticks') }}</xf:option>
+				<xf:option value="tick-green">{{ phrase('BRATR_green_ticks') }}</xf:option>
+				<xf:option value="tick-red">{{ phrase('BRATR_red_ticks') }}</xf:option>
+				<xf:option value="tick-yellow">{{ phrase('BRATR_yellow_ticks') }}</xf:option>
+			</xf:optgroup>
+
+			<xf:optgroup label="{{ phrase('BRATR_drops_style') }}">
+				<xf:option value="drop-blue">{{ phrase('BRATR_blue_drops') }}</xf:option>
+				<xf:option value="drop-green">{{ phrase('BRATR_green_drops') }}</xf:option>
+				<xf:option value="drop-red">{{ phrase('BRATR_red_drops') }}</xf:option>
+				<xf:option value="drop-yellow">{{ phrase('BRATR_yellow_drops') }}</xf:option>
+			</xf:optgroup>
+
+			<xf:optgroup label="{{ phrase('BRATR_arrows_style') }}">
+				<xf:option value="arrow-blue">{{ phrase('BRATR_blue_arrows') }}</xf:option>
+				<xf:option value="arrow-green">{{ phrase('BRATR_green_arrows') }}</xf:option>
+				<xf:option value="arrow-red">{{ phrase('BRATR_red_arrows') }}</xf:option>
+				<xf:option value="arrow-yellow">{{ phrase('BRATR_yellow_arrows') }}</xf:option>
+			</xf:optgroup>
+
+		</xf:select>
+
+		<div class="iconRating"><div class="{$preparedOption.option_value}"></div></div>
+	</div>
+</xf:formrow>
+
+<xf:js>
+	//<script>
+		$(function()
+		{
+			$('.BriviumSelectIconRating').change(function(e)
+			{
+				var $divIconRating = $('.iconRating'),
+					$class = $(this).val();
+				$divIconRating.find('div').attr('class','');
+				$divIconRating.find('div').addClass($class );
+			});
+            $('.BriviumSelectIconRating').trigger('change');
+		});
+	//</script>
+</xf:js>]]></template>
+  <template type="admin" title="BRATR_icon_rating_option_template.less" version_id="2000000" version_string="2.0.0"><![CDATA[.heart-blue, .heart-green, .heart-red, .heart-yellow, .circle-star-blue,
+.circle-star-green, .circle-star-red, .circle-star-yellow, .paw-blue, .paw-green,
+.paw-orange, .paw-red, .paw-yellow, .star-blue, .star-green,
+.star-orange, .star-red, .star-yellow, .tick-blue, .tick-green,
+.tick-orange, .tick-red, .tick-yellow, .drop-blue, .drop-green,
+.drop-red, .drop-yellow, .arrow-blue, .arrow-green, .arrow-orange,
+.arrow-red, .arrow-yellow
+{
+	background: url('styles/brivium/AdvancedThreadRating/rating.png') no-repeat; overflow: hidden; text-indent: -9999px; text-align: left;
+}
+.heart-blue { background-position: -0px -0px; width: 82px; height: 18px; }
+.heart-green { background-position: -0px -18px; width: 82px; height: 18px; }
+.heart-red { background-position: -0px -36px; width: 82px; height: 18px; }
+.heart-yellow { background-position: -0px -54px; width: 82px; height: 18px; }
+.circle-star-blue { background-position: -0px -72px; width: 76px; height: 22px; }
+.circle-star-green { background-position: -0px -94px; width: 76px; height: 22px; }
+.circle-star-red { background-position: -0px -116px; width: 76px; height: 22px; }
+.circle-star-yellow { background-position: -0px -138px; width: 76px; height: 22px; }
+.paw-blue { background-position: -0px -160px; width: 75px; height: 27px; }
+.paw-green { background-position: -0px -187px; width: 75px; height: 27px; }
+.paw-orange { background-position: -0px -214px; width: 75px; height: 27px; }
+.paw-red { background-position: -0px -241px; width: 75px; height: 27px; }
+.paw-yellow { background-position: -0px -268px; width: 75px; height: 27px; }
+.star-blue { background-position: -0px -295px; width: 75px; height: 25px; }
+.star-green { background-position: -0px -320px; width: 75px; height: 25px; }
+.star-orange { background-position: -0px -345px; width: 75px; height: 25px; }
+.star-red { background-position: -0px -370px; width: 75px; height: 25px; }
+.star-yellow { background-position: -0px -395px; width: 75px; height: 25px; }
+.tick-blue { background-position: -0px -420px; width: 75px; height: 24px; }
+.tick-green { background-position: -0px -444px; width: 75px; height: 24px; }
+.tick-orange { background-position: -0px -468px; width: 75px; height: 24px; }
+.tick-red { background-position: -0px -492px; width: 75px; height: 24px; }
+.tick-yellow { background-position: -0px -516px; width: 75px; height: 24px; }
+.drop-blue { background-position: -0px -540px; width: 67px; height: 23px; }
+.drop-green { background-position: -0px -563px; width: 67px; height: 23px; }
+.drop-red { background-position: -0px -586px; width: 67px; height: 23px; }
+.drop-yellow { background-position: -0px -609px; width: 67px; height: 23px; }
+.arrow-blue { background-position: -0px -632px; width: 66px; height: 24px; }
+.arrow-green { background-position: -0px -656px; width: 66px; height: 24px; }
+.arrow-orange { background-position: -0px -680px; width: 66px; height: 24px; }
+.arrow-red { background-position: -0px -704px; width: 66px; height: 24px; }
+.arrow-yellow { background-position: -0px -728px; width: 66px; height: 24px; }
+.iconRating { margin: auto 0; padding-left: 20px;}]]></template>
+  <template type="admin" title="BRATR_option_template_font_awesome" version_id="2020071" version_string="2.2.0"><![CDATA[<xf:css src="BRATR_icon_rating_option_bootstrap_iconpicker.less" />
+<xf:css src="BRATR_option_template_font_awesome.less" />
+<xf:css src="BRATR_bootstrap.css" />
+
+<xf:js src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" />
+<xf:js src="brivium/AdvancedThreadRating/vendor/Iconpicker/bootstrap-iconpicker.bundle.min.js" />
+<xf:js src="brivium/AdvancedThreadRating/icon-picker.js" min="1" />
+
+<xf:formrow rowtype="input"
+	label="{$option.title}"
+	hint="{$hintHtml}"
+	explain="{$explainHtml}"
+	html="{$listedHtml}">
+	<div>
+		<xf:macro name="fontawesome"
+			arg-label="{{ phrase('BRATR_full_icon') }}"
+			arg-prefix="{$inputName}[fullIcon]"
+			arg-groupClass="br-full"
+			arg-values="{{ $option.option_value.fullIcon }}"
+			arg-defaultValues="{{ {'class': 'fas fa-star', 'content': '\f005'} }}" />
+
+		<xf:macro name="fontawesome"
+			arg-label="{{ phrase('BRATR_half_icon') }}"
+			arg-prefix="{$inputName}[halfIcon]"
+			arg-groupClass="br-half"
+			arg-values="{$option.option_value.halfIcon}"
+			arg-defaultValues="{{ {'class': 'fas fa-star-half-alt', 'content': '\f5c0'} }}" />
+
+		<xf:macro name="fontawesome"
+			arg-label="{{ phrase('BRATR_disable_icon') }}"
+			arg-prefix="{$inputName}[disableIcon]"
+			arg-groupClass="br-empty"
+			arg-values="{$option.option_value.disableIcon}"
+			arg-defaultValues="{{ {'class': 'far fa-star', 'content': '\f005'} }}" />
+	</div>
+</xf:formrow>
+
+<xf:macro name="fontawesome"
+	arg-label="!"
+	arg-prefix="!"
+	arg-groupClass=""
+	arg-values="{{ [] }}"
+	arg-defaultValues="{{ [] }}"
+>
+	<dl class="inputLabelPair briviumFontAwesome {$groupClass}">
+		<dt><label>{$label|raw}</label></dt>
+		<dd>
+			<button class="btn btn-default"
+				data-xf-init="brivium-icon-picker"
+				data-config="{{ {'icon': ($values.class ? $values.class : $defaultValues.class)}|json }}"></button>
+			<input type="hidden" class="icon" name="{$prefix}[class]" value="{{ $values.class ? $values.class : $defaultValues.class }}" />
+			<input type="hidden" class="content" name="{$prefix}[content]" value="{{ $values.content ? $values.content : $defaultValues.content }}" />
+			<input type="hidden" class="fontFamily" name="{$prefix}[fontFamily]" value="{{ $values.fontFamily ? $values.fontFamily : $defaultValues.fontFamily }}" />
+		</dd>
+	</dl>
+</xf:macro>]]></template>
+  <template type="admin" title="BRATR_option_template_font_awesome.less" version_id="2020071" version_string="2.2.0"><![CDATA[.briviumFontAwesome
+{
+	&.inputLabelPair > dt
+	{
+		width: 25%;
+	}
+	.btn .fa
+	{
+		min-width: 30px;
+	}
+	&.br-full button > i,
+	&.br-half button > i
+	{
+		color: @xf-starFullColor;
+	}
+	&.br-empty button > i
+	{
+		color: @xf-starEmptyColor;
+	}
+}]]></template>
+  <template type="admin" title="BRATR_style_rating_delete" version_id="2000000" version_string="2.0.0"><![CDATA[<xf:title>{{ phrase('confirm_action') }}</xf:title>
+
+<xf:form action="{{ link('bratr-style-rating/delete', $styleRating) }}" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:inforow rowtype="confirm">
+				{{ phrase('please_confirm_that_you_want_to_delete_following:') }}
+				<strong><a href="{{ link('bratr-style-rating/edit', $styleRating) }}">{$styleRating.getIconHtml()|raw}</a></strong>
+			</xf:inforow>
+		</div>
+		<xf:submitrow rowtype="simple" icon="delete" />
+	</div>
+</xf:form>]]></template>
+  <template type="admin" title="BRATR_style_rating_edit" version_id="2000000" version_string="2.0.0"><![CDATA[<xf:if is="$styleRating.isInsert()">
+	<xf:title>{{ phrase('BRATR_add_new_style_rating') }}</xf:title>
+<xf:else />
+	<xf:title>{{ phrase('BRATR_edit_style_rating:') }}</xf:title>
+</xf:if>
+
+<xf:pageaction if="$styleRating.isUpdate()">
+	<xf:button href="{{ link('bratr-style-rating/delete', $styleRating) }}" icon="delete" overlay="true" />
+</xf:pageaction>
+
+<xf:form action="{{ link('bratr-style-rating/save', $styleRating) }}" ajax="true" class="block" upload="true">
+	<div class="block-container">
+		<div class="block-body">
+
+			<xf:if is="$styleRating.isUpdate()">
+				<xf:formrow label="{{ phrase('BRATR_current_style_rating') }}">
+					{$styleRating.getIconHtml()|raw}
+				</xf:formrow>
+			</xf:if>
+
+			<xf:uploadrow name="upload" accept="image/*"
+					label="{{ phrase('BRATR_upload_style_rating_image') }}" />
+
+			<xf:formrow
+				rowtype="input"
+				label="{{ phrase('BRATR_icon_dimensions') }}"
+				explain="{{ phrase('BRATR_the_dimensions_of_icon_in_images') }}">
+
+				<div class="inputGroup inputGroup--numbers">
+					<xf:numberbox name="icon_width" min="0" value="{$styleRating.icon_width}" placeholder="{{ phrase('BRATR_icon_width') }}" />
+					<span class="inputGroup-text">x</span>
+					<xf:numberbox name="icon_height" min="0" value="{$styleRating.icon_height}" placeholder="{{ phrase('BRATR_icon_height') }}" />
+					<span class="inputGroup-text">{{ phrase('units_pixels') }}</span>
+				</div>
+			</xf:formrow>
+
+			<xf:numberboxrow 
+				label="{{ phrase('BRATR_icon_spacing') }}"
+				name="icon_second_position" min="0" value="{$styleRating.icon_second_position}" placeholder="{{ phrase('BRATR_position_of_icon_half') }}" />
+
+		</div>
+		<xf:submitrow icon="save" class="js-submitButton" data-ajax-redirect="{{ $styleRating.isInsert() ? '1' : '0' }}">
+			<xf:html>
+				<xf:button type="submit" name="exit" icon="save" accesskey="e">{{ phrase('save_and_exit') }}</xf:button>
+				<xf:if is="$styleRating.isUpdate()">
+					<xf:button href="{{ link('bratr-style-rating/delete', $styleRating) }}" overlay="true" icon="delete" />
+				</xf:if>
+			</xf:html>
+		</xf:submitrow>
+	</div>
+</xf:form>]]></template>
+  <template type="admin" title="BRATR_style_rating_list" version_id="2000090" version_string="2.0.0"><![CDATA[<xf:title>{{ phrase('BRATR_style_rating') }}</xf:title>
+
+<xf:pageaction>
+	<xf:button href="{{ link('bratr-style-rating/add') }}" icon="add">{{ phrase('BRATR_add_new_style_rating') }}</xf:button>
+</xf:pageaction>
+
+<style>
+.dataList-mainRow{
+	max-height: inherit;
+}
+</style>
+<xf:form action="{{ link('bratr-style-rating/toggle') }}" class="block" ajax="true">
+	<div class="block-outer">
+		<xf:macro template="filter_macros" name="quick_filter" arg-key="styleRatings" arg-class="block-outer-opposite" />
+	</div>
+	<div class="block-container">
+		<div class="block-body">
+			<xf:datalist>
+				<xf:datarow>
+					<xf:main hash="0" href="javascript:"
+						label="{{ phrase('BRATR_user_xenforo_default') }}" />
+					<xf:toggle name="status"
+						type="radio"
+						value="0"
+						selected="{$defaultStyle}"
+						class="dataList-cell--separated"
+						submit="true" />
+				</xf:datarow>
+
+				<xf:foreach loop="$styleRatings" value="$styleRating">
+					<xf:datarow>
+						<xf:main hash="{$styleRating.style_rating_id}" href="{{ link('bratr-style-rating/edit', $styleRating) }}"
+							label="{$styleRating.getIconHtml()|raw}" />
+
+						<xf:toggle name="status"
+							type="radio"
+							value="{$styleRating.style_rating_id}"
+							selected="{$styleRating.status}"
+							class="dataList-cell--separated"
+							submit="true" />
+						<xf:delete href="{{ link('bratr-style-rating/delete', $styleRating) }}" />
+					</xf:datarow>
+				</xf:foreach>
+			</xf:datalist>
+		</div>
+		<div class="block-footer">
+			<span class="block-footer-counter">{{ display_totals($styleRatings) }}</span>
+		</div>
+	</div>
+</xf:form>]]></template>
+  <template type="admin" title="widget_def_options_BRATR_newRatings" version_id="2000000" version_string="2.0.0"><![CDATA[<hr class="formRowSep" />
+<xf:numberboxrow name="options[limit]" value="{$options.limit}" min="1"
+	label="{{ phrase('maximum_entries') }}" />]]></template>
+  <template type="email" title="BRATR_confirmation_thread_rating" version_id="2000013" version_string="2.0.0"><![CDATA[<mail:subject>
+	{{ phrase('BRATR_confirmation_rated_thread_x', {
+		'title': prefix('thread', $thread, 'escaped') . $thread.title
+	}) }}
+</mail:subject>
+
+{{ phrase('BRATR_confirmation_rated_thread_email_html', {
+	'username': $rating.username,
+	'thread': '<a href="'.link('canonical:threads', $thread).'">'.prefix('thread', $thread, 'escaped') . $thread.title .'</a>',
+	'confirmLink': link('canonical:bratr-ratings/confirm', $rating, {'c': $rating.encode}),
+	'board': '<a href="' . link('canonical:index') . '">' . $xf.options.boardTitle . '</a>'
+}) }}
+
+<div class="message">{{ bb_code_type('emailHtml', $rating.message, 'bratr-review', $rating) }}</div>
+
+<xf:macro template="thread_forum_macros" name="go_thread_bar" arg-thread="{$thread}" arg-watchType="threads" />
+<xf:macro template="thread_forum_macros" name="watched_thread_footer" arg-thread="{$thread}" />]]></template>
+  <template type="public" title="BRATR_font_awesome_stars.less" version_id="2020071" version_string="2.2.0"><![CDATA[.ratingStars{{ $xf.options.BRATR_onlyAddon ? '.bratr-rating' : '' }}
+{
+	.ratingStars-star
+	{
+		&.ratingStars-star--full
+		{
+			&:before
+			{
+				content: '{$xf.options.BRATR_fontAwesome.fullIcon.content}' !important;
+				font-family: '{$xf.options.BRATR_fontAwesome.fullIcon.fontFamily}' !important;
+			}
+		}
+		&:before
+		{
+			content: '{$xf.options.BRATR_fontAwesome.disableIcon.content}' !important;
+			font-family: '{$xf.options.BRATR_fontAwesome.disableIcon.fontFamily}' !important;
+		}
+
+		&.ratingStars-star--half
+		{
+			&:after
+			{
+				display: none !important;
+			}
+			&:before
+			{
+				content: '{$xf.options.BRATR_fontAwesome.halfIcon.content}' !important;
+				font-family: '{$xf.options.BRATR_fontAwesome.halfIcon.fontFamily}' !important;
+				color: @xf-starFullColor;
+			}
+		}
+	}
+}
+
+.br-theme-fontawesome-stars 
+{
+	.br-widget{{ $xf.options.BRATR_onlyAddon ? '.bratr-rating' : '' }}  
+	{
+		a:after 
+		{
+			content: '{$xf.options.BRATR_fontAwesome.disableIcon.content}' !important;
+			font-family: '{$xf.options.BRATR_fontAwesome.disableIcon.fontFamily}' !important;
+		}
+
+		a.br-active:after,
+		a.br-selected:after 
+		{
+			content: '{$xf.options.BRATR_fontAwesome.fullIcon.content}' !important;
+			font-family: '{$xf.options.BRATR_fontAwesome.fullIcon.fontFamily}' !important;
+		}
+		a.br-fractional
+		{
+			&:after
+			{
+				display: none !important;
+			}
+			&:before
+			{
+				content: '{$xf.options.BRATR_fontAwesome.halfIcon.content}' !important;
+				font-family: '{$xf.options.BRATR_fontAwesome.halfIcon.fontFamily}' !important;
+				color: @xf-starFullColor !important;
+			}
+		}
+	}
+}]]></template>
+  <template type="public" title="BRATR_management_ratings" version_id="2000092" version_string="2.0.0"><![CDATA[<xf:title>{{ phrase('BRATR_management_rating') }}</xf:title>
+
+<xf:form action="{{ link('bratr-ratings/management') }}" class="block" ajax="true">
+	<div class="block-outer">
+		<div class="filterBlock">
+			<ul class="listInline">
+
+				<li>
+					<xf:textbox name="username" value="{$linkFilters.username}" ac="single"
+						class="input filterBlock-input"
+						placeholder="{{ phrase('user_name') }}" />
+				</li>
+				<li>
+					<div class="inputGroup inputGroup--auto inputGroup--inline">
+						<xf:dateinput name="start" value="{{ $linkFilters.start ? date($linkFilters.start, 'Y-m-d') : '' }}"
+							class="filterBlock-input filterBlock-input--small" />
+						<span class="inputGroup-text">-</span>
+						<xf:dateinput name="end" value="{{ $linkFilters.end ? date($linkFilters.end, 'Y-m-d') : '' }}"
+							class="filterBlock-input filterBlock-input--small" />
+						<span class="inputGroup-splitter"></span>
+					</div>
+				</li>
+				<li>
+					<xf:select name="date_preset" class="js-presetChange filterBlock-input">
+						<xf:option label="{{ phrase('date_presets:') }}" value="-1" />
+						<xf:optgroup>
+							<xf:options source="{$datePresets}" />
+							<xf:option value="1995-01-01">{{ phrase('all_time') }}</xf:option>
+						</xf:optgroup>
+					</xf:select>
+				</li>
+				<li>
+					<xf:button type="submit" class="button--small">{{ phrase('go') }}</xf:button>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="block-container">
+		<xf:if is="$ratings is not empty">
+			<xf:macro template="BRATR_rating_macros" name="review_list"
+				  arg-reviews="{$ratings}"
+				  arg-isManagement="{{ true }}" />
+		<xf:else />
+			<div class="block-body block-row">{{ phrase('no_results_found') }}</div>
+		</xf:if>
+	</div>
+
+	<xf:showignored wrapperclass="block-outer-opposite block-outer block-outer--after" />
+	<xf:pagenav page="{$page}" perpage="{$perPage}" total="{$total}"
+		link="bratr-ratings/management" params="{$linkFilters}"
+		wrapperclass="block-outer block-outer--after" />
+
+</xf:form>
+
+<xf:js>
+	$(function()
+	{
+		$('.js-presetChange').change(function(e)
+		{
+			var $ctrl = $(this),
+			value = $ctrl.val(),
+			$form = $ctrl.closest('form');
+
+			if (value == -1)
+			{
+				return;
+			}
+
+			$form.find($ctrl.data('start') || 'input[name=start]').val(value);
+			$form.find($ctrl.data('end') || 'input[name=end]').val('');
+			$form.submit();
+		});
+	});
+</xf:js>]]></template>
+  <template type="public" title="BRATR_member_my_ratings" version_id="2000270" version_string="2.2.0"><![CDATA[<xf:title>{{ phrase('BRATR_my_ratings') }}</xf:title>
+
+<xf:head option="metaNoindex"><meta name="robots" content="noindex" /></xf:head>
+<div class="block-container brivium-receive-ratings">
+	<xf:if is="$ratings is not empty">
+		<ol class="block-body js-briviumReceiveRatings">
+			<xf:foreach loop="$ratings" value="$rating">
+				<li class="block-row block-row--separated{{ $xf.visitor.isIgnoring($rating.user_id) ? ' is-ignored' : '' }}">
+					<xf:macro template="BRATR_rating_macros" name="review"
+							  arg-review="{$rating}"
+							  arg-user="{$rating.getUser()}"
+							  arg-thread="{$rating.Thread}" />
+				</li>
+			</xf:foreach>
+		</ol>
+
+		<div class="block-outer block-outer--after">
+			<xf:showignored wrapperclass="block-outer-opposite block-footer" />
+		</div>
+		<xf:if is="$loadMore">
+			<div class="block-footer js-briviumLoadMore">
+				<span class="block-footer-controls"><xf:button href="{{ link('members/bratr-my-ratings', $user, {'page': $page+1}) }}"
+				   data-xf-click="inserter"
+				   data-append=".js-briviumReceiveRatings"
+				   data-replace=".js-briviumLoadMore">
+					{{ phrase('BRATR_load_more') }}
+				</xf:button></span>
+			</div>
+		</xf:if>
+	<xf:else />
+		<div class="block-body block-row">{{ phrase('no_results_found') }}</div>
+	</xf:if>
+</div>]]></template>
+  <template type="public" title="BRATR_my_ratings" version_id="2000092" version_string="2.0.0"><![CDATA[<xf:title>{{ phrase('BRATR_my_ratings') }}</xf:title>
+
+<xf:wrap template="account_wrapper" />
+
+<xf:form action="{{ link('account/bratr-my-ratings') }}" class="block" ajax="true">
+	<div class="block-outer">
+		<div class="filterBlock">
+			<ul class="listInline">
+				<li>
+					<div class="inputGroup inputGroup--auto inputGroup--inline">
+						<xf:dateinput name="start" value="{{ $linkFilters.start ? date($linkFilters.start, 'Y-m-d') : '' }}"
+							class="filterBlock-input filterBlock-input--small" />
+						<span class="inputGroup-text">-</span>
+						<xf:dateinput name="end" value="{{ $linkFilters.end ? date($linkFilters.end, 'Y-m-d') : '' }}"
+							class="filterBlock-input filterBlock-input--small" />
+						<span class="inputGroup-splitter"></span>
+					</div>
+				</li>
+				<li>
+					<xf:select name="date_preset" class="js-presetChange filterBlock-input">
+						<xf:option label="{{ phrase('date_presets:') }}" value="-1" />
+						<xf:optgroup>
+							<xf:options source="{$datePresets}" />
+							<xf:option value="1995-01-01">{{ phrase('all_time') }}</xf:option>
+						</xf:optgroup>
+					</xf:select>
+				</li>
+				<li>
+					<xf:button type="submit" class="button--small">{{ phrase('go') }}</xf:button>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="block-container">
+		<xf:if is="$ratings is not empty">
+			<xf:macro template="BRATR_rating_macros" name="review_list"
+				arg-reviews="{$ratings}"/>
+		<xf:else />
+			<div class="block-body block-row">{{ phrase('no_results_found') }}</div>
+		</xf:if>
+	</div>
+	<xf:pagenav page="{$page}" perpage="{$perPage}" total="{$total}"
+		link="account/bratr-my-ratings" params="{$linkFilters}"
+		wrapperclass="block-outer block-outer--after" />
+</xf:form>
+
+<xf:js>
+	$(function()
+	{
+		$('.js-presetChange').change(function(e)
+		{
+			var $ctrl = $(this),
+			value = $ctrl.val(),
+			$form = $ctrl.closest('form');
+
+			if (value == -1)
+			{
+				return;
+			}
+
+			$form.find($ctrl.data('start') || 'input[name=start]').val(value);
+			$form.find($ctrl.data('end') || 'input[name=end]').val('');
+			$form.submit();
+		});
+	});
+</xf:js>]]></template>
+  <template type="public" title="BRATR_new_thread_ratings" version_id="2000000" version_string="2.0.0"><![CDATA[<xf:if is="$ratings is not empty">
+	<div class="block"{{ widget_data($widget) }}>
+		<div class="block-container">
+			<h3 class="block-minorHeader">
+				<a href="{$link}" rel="nofollow">{$title}</a>
+			</h3>
+			<div class="block-body js-replyNewMessageContainer">
+				<xf:foreach loop="$ratings" value="$rating">
+					<hr class="formRowSep" />
+					<div class="block-row">
+						<xf:macro template="BRATR_rating_macros" name="item_new_ratings"
+							arg-rating="{$rating}"
+							arg-user="{$rating.getUser()}" />
+					</div>
+				</xf:foreach>
+			</div>
+			<xf:if is="$hasMore">
+				<div class="block-footer">
+					<span class="block-footer-controls">
+						<xf:button href="{$link}" rel="nofollow">{{ phrase('view_more...') }}</xf:button>
+					</span>
+				</div>
+			</xf:if>
+		</div>
+	</div>
+</xf:if>]]></template>
+  <template type="public" title="BRATR_option_style_rating_stars.less" version_id="2000092" version_string="2.0.0"><![CDATA[.ratingStars{{ $xf.options.BRATR_onlyAddon ? '.bratr-rating' : '' }}{
+	.ratingStars-star{
+		.br-option-style-fn({$xf.options.BRATR_iconRating}, width);
+		.br-option-style-fn({$xf.options.BRATR_iconRating}, height);
+		background: transparent url('styles/brivium/AdvancedThreadRating/{$xf.options.BRATR_iconRating}.png') no-repeat;
+		.br-option-style-fn({$xf.options.BRATR_iconRating}, empty-position);
+		font-size: 0px;
+
+		&.ratingStars-star--full{
+			background-position: 0px;
+		}
+
+		&.ratingStars-star--half{
+			.br-option-style-fn({$xf.options.BRATR_iconRating}, half-position);
+		}
+	}
+}
+
+.br-theme-fontawesome-stars{
+	.br-widget{{ $xf.options.BRATR_onlyAddon ? '.bratr-rating' : '' }}{
+		.br-option-style-fn({$xf.options.BRATR_iconRating}, height);
+
+		a{
+			.br-option-style-fn({$xf.options.BRATR_iconRating}, width);
+			.br-option-style-fn({$xf.options.BRATR_iconRating}, height);
+			background: transparent url('styles/brivium/AdvancedThreadRating/{$xf.options.BRATR_iconRating}.png') no-repeat;
+			.br-option-style-fn({$xf.options.BRATR_iconRating}, empty-position);
+			display: inline-block;
+			font-size: 0px;
+		}
+
+		a:after{
+		display: none !important;
+		}
+
+		a.br-active,
+		a.br-selected {
+			background-position: 0px;
+		}
+		a.br-fractional{
+			.br-option-style-fn({$xf.options.BRATR_iconRating}, half-position);
+			
+			&:before{
+				display: none !important;
+			}
+		}
+	}
+}
+
+.br-option-style-fn(@icon, @type){
+  & when (@type = width){
+    & when(@icon = heart-blue),
+		(@icon = heart-green),
+		(@icon = heart-red),
+		(@icon = heart-yellow),
+
+		(@icon = circle-star-blue),
+		(@icon = circle-star-green),
+		(@icon = circle-star-red),
+		(@icon = circle-star-yellow),
+
+		(@icon = arrow-blue),
+		(@icon = arrow-green),
+		(@icon = arrow-red),
+		(@icon = arrow-yellow)
+	{
+		width: 22px;
+    }
+    & when(@icon = paw-blue),
+		(@icon = paw-green),
+		(@icon = paw-red),
+		(@icon = paw-yellow),
+
+		(@icon = star-blue),
+		(@icon = star-green),
+		(@icon = star-red),
+		(@icon = star-yellow),
+
+		(@icon = tick-blue),
+		(@icon = tick-green),
+		(@icon = tick-red),
+		(@icon = tick-yellow)
+	{
+		width: 25px;
+    }
+    & when(@icon = drop-blue),
+		(@icon = drop-green),
+		(@icon = drop-red),
+		(@icon = drop-yellow)
+	{
+		width: 16px;
+    }
+  }
+
+  & when (@type = height){
+    & when(@icon = heart-blue),
+		(@icon = heart-green),
+		(@icon = heart-red),
+		(@icon = heart-yellow),
+
+		(@icon = circle-star-blue),
+		(@icon = circle-star-green),
+		(@icon = circle-star-red),
+		(@icon = circle-star-yellow),
+
+		(@icon = tick-blue),
+		(@icon = tick-green),
+		(@icon = tick-red),
+		(@icon = tick-yellow),
+
+	  	(@icon = drop-blue),
+		(@icon = drop-green),
+		(@icon = drop-red),
+		(@icon = drop-yellow)
+	{
+		height: 22px;
+    }
+    & when(@icon = star-blue),
+		(@icon = star-green),
+		(@icon = star-red),
+		(@icon = star-yellow)
+	{
+		height: 23px;
+    }
+    & when(@icon = paw-blue),
+		(@icon = paw-green),
+		(@icon = paw-red),
+		(@icon = paw-yellow),
+		(@icon = arrow-blue),
+		(@icon = arrow-green),
+		(@icon = arrow-red),
+		(@icon = arrow-yellow)
+	{
+		height: 25px;
+    }
+  }
+
+  & when (@type = half-position){
+    & when(@icon = heart-blue),
+		(@icon = heart-green),
+		(@icon = heart-red),
+		(@icon = heart-yellow)
+	{
+		background-position: -30px;
+    }
+    & when(@icon = circle-star-blue),
+		(@icon = circle-star-green),
+		(@icon = circle-star-red),
+		(@icon = circle-star-yellow)
+	{
+		background-position: -28px;
+    }
+    & when(@icon = paw-blue),
+		(@icon = paw-green),
+		(@icon = paw-red),
+		(@icon = paw-yellow),
+
+		(@icon = star-blue),
+		(@icon = star-green),
+		(@icon = star-red),
+		(@icon = star-yellow),
+
+		(@icon = tick-blue),
+		(@icon = tick-green),
+		(@icon = tick-red),
+		(@icon = tick-yellow)
+	{
+		background-position: -25px;
+    }
+    & when(@icon = drop-blue),
+		(@icon = drop-green),
+		(@icon = drop-red),
+		(@icon = drop-yellow)
+	{
+		background-position: -24px;
+    }
+    & when(@icon = arrow-blue),
+		(@icon = arrow-green),
+		(@icon = arrow-red),
+		(@icon = arrow-yellow)
+	{
+		background-position: -22px;
+    }
+  }
+
+  & when (@type = empty-position){
+    & when(@icon = heart-blue),
+		(@icon = heart-green),
+		(@icon = heart-red),
+		(@icon = heart-yellow)
+	{
+		background-position: -61px;
+    }
+    & when(@icon = circle-star-blue),
+		(@icon = circle-star-green),
+		(@icon = circle-star-red),
+		(@icon = circle-star-yellow)
+	{
+		background-position: -54px;
+    }
+    & when(@icon = paw-blue),
+		(@icon = paw-green),
+		(@icon = paw-red),
+		(@icon = paw-yellow),
+		(@icon = star-blue),
+		(@icon = star-green),
+		(@icon = star-red),
+		(@icon = star-yellow),
+		(@icon = tick-blue),
+		(@icon = tick-green),
+		(@icon = tick-red),
+		(@icon = tick-yellow)
+	{
+		background-position: -50px;
+    }
+    & when(@icon = drop-blue),
+		(@icon = drop-green),
+		(@icon = drop-red),
+		(@icon = drop-yellow)
+	{
+		background-position: -53px;
+    }
+    & when(@icon = arrow-blue),
+		(@icon = arrow-green),
+		(@icon = arrow-red),
+		(@icon = arrow-yellow)
+	{
+		background-position: -44px;
+    }
+  }
+}]]></template>
+  <template type="public" title="BRATR_rating_delete" version_id="2000012" version_string="2.0.0"><![CDATA[<xf:title>{{ prefix('thread', $thread, 'escaped') }}{$thread.title} - {{ phrase('BRATR_delete_thread_rating') }}</xf:title>
+<xf:h1>{{ prefix('thread', $thread) }}{$thread.title} - {{ phrase('BRATR_delete_thread_rating') }}</xf:h1>
+
+<xf:breadcrumb source="$thread.getBreadcrumbs()" />
+
+<xf:form action="{{ link('bratr-ratings/delete', $rating) }}" class="block" ajax="true">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:formrow rowtype="noLabel">
+				<xf:avatar user="$user" size="s" notooltip="true" defaultname="$user.username"/>
+				<xf:username user="$user" rich="true" notooltip="true" />
+				<xf:macro template="BRATR_rating_macros" name="stars"
+					arg-rating="{$rating.rating}" />
+			</xf:formrow>
+			<xf:macro template="helper_action" name="delete_type" arg-canHardDelete="{$rating.canDelete('hard')}" />
+		</div>
+		<xf:submitrow icon="delete" sticky="true" />
+	</div>
+	<xf:redirect />
+</xf:form>]]></template>
+  <template type="public" title="BRATR_rating_edit" version_id="2000012" version_string="2.0.0"><![CDATA[<xf:title>{{ prefix('thread', $thread, 'escaped') }}{$thread.title} - {{ phrase('BRATR_edit_thread_rating') }}</xf:title>
+
+<xf:breadcrumb source="$thread.getBreadcrumbs()" />
+
+<xf:form action="{{ link('bratr-ratings/edit', $rating) }}" class="block" ajax="true">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:macro template="BRATR_rating_macros" name="rating"
+				arg-currentRating="{$rating.rating}" />
+
+			<xf:editorrow name="message" data-min-height="100"
+				value="{$rating.message}"
+				label="{{ phrase('message') }}"
+				hint="{{ $thread.isMessageRequired() ? phrase('required') : '' }}"
+				explain="{{ phrase('BRATR_explain_why_youre_giving_this_rating') }}" />
+		</div>
+		<xf:submitrow submit="{{ phrase('submit_rating') }}" icon="rate" />
+	</div>
+	<xf:redirect />
+</xf:form>]]></template>
+  <template type="public" title="BRATR_rating_macros" version_id="2010171" version_string="2.1.1"><![CDATA[<xf:macro name="google_review_json" arg-thread="!">
+	<script type="application/ld+json">
+	{
+	  "@context": "http://schema.org/",
+	  "@type": "Book",
+	  "name": "{{ prefix('thread', $thread, 'escaped')|escape('json') }}{$thread.title|escape('json')}",
+	  "description": "{{ snippet($thread.FirstPost.message, 0, {'stripBbCode': true})|escape('json') }}",
+	  "aggregateRating": {
+		"@type": "AggregateRating",
+		"ratingValue": "{$thread.brivium_rating_avg}",
+		"bestRating": "5",
+		"ratingCount": "{$thread.brivium_rating_count}"
+	  }
+	}
+	</script>
+</xf:macro>
+
+<xf:macro name="stars" arg-rating="!" arg-class="">
+	<xf:macro template="rating_macros" name="stars"
+			arg-rating="{$rating}"
+			arg-class="bratr-rating {$class}" />
+</xf:macro>
+
+<xf:macro name="stars_text" arg-rating="!" arg-count="{{ null }}" arg-text="{{ null }}" arg-rowClass="" arg-starsClass="">
+	<span class="ratingStarsRow {$rowClass}">
+		<xf:macro template="BRATR_rating_macros" name="stars"
+			arg-rating="{$rating}"
+			arg-class="{$starsClass}" />
+		<span class="ratingStarsRow-text">
+			<xf:if is="$text is not empty">{$text}<xf:else />{{ $count == 1 ? phrase('BRATR_1_vote') : phrase('BRATR_x_votes_plural', {'count': $count|number}) }}</xf:if>
+		</span>
+	</span>
+</xf:macro>
+
+<xf:macro name="thread_view_rating"
+	arg-thread="!"
+	arg-ratingType="pageaction" 
+  	arg-row="{{ true }}"
+	arg-rowLabel="{{ phrase('rating') }}"
+	arg-rowHint=""
+	arg-rowExplain=""
+	arg-name="rating" >
+
+	<xf:set var="$voteContent">
+		<xf:if is="$thread.canViewUserRated()">
+			<div data-href="{{ link('threads/br-user-rated', $thread)|for_attr }}" data-xf-click="overlay" data-xf-init="tooltip" title="{{ phrase('BRATR_members_who_rated_this_thread')|for_attr }}">{{ $thread.brivium_rating_count == 1 ? phrase('BRATR_1_vote') : phrase('BRATR_x_votes_plural', {'count': $thread.brivium_rating_count|number}) }}</div>
+		<xf:else />
+			{{ $thread.brivium_rating_count == 1 ? phrase('BRATR_1_vote') : phrase('BRATR_x_votes_plural', {'count': $thread.brivium_rating_count|number}) }}
+		</xf:if>
+	</xf:set>
+
+	<xf:if is="$ratingType == 'pageaction'">
+		<xf:if is="$thread.canRating() && $xf.options.BRATR_mergeButtonAndDisplay">
+			<xf:macro template="BRATR_rating_macros" name="rating"
+				arg-row="{{ false }}"
+				arg-currentRating="{$thread.brivium_rating_avg}"
+				arg-ratingHref="{{ link('threads/br-rate', $thread) }}"
+				arg-voteContent="{$voteContent}"/>
+		<xf:elseif is="$thread.canDisplayThreadRating()" />
+			<xf:macro template="BRATR_rating_macros" name="stars_text"
+				arg-rating="{$thread.brivium_rating_avg}"
+				arg-count="{$thread.brivium_rating_count}"
+				arg-text="{$voteContent}" />
+		</xf:if>
+	<xf:elseif is="$thread.canRating() && (!$thread.canDisplayThreadRating() || !$xf.options.BRATR_mergeButtonAndDisplay)" />
+		<xf:macro template="BRATR_rating_macros" name="rating"
+			arg-row="{$row}"
+			arg-ratingHref="{{ link('threads/br-rate', $thread) }}" 
+			arg-rowLabel="{$rowLabel}"
+			arg-rowHint="{$rowHint}"
+			arg-rowExplain="{$rowExplain}"
+			arg-name="{$name}" />
+	</xf:if>
+</xf:macro>
+	
+
+<xf:macro name="rating"
+	arg-row="{{ true }}"
+	arg-rowType="{$rowType}"
+	arg-rowLabel="{{ phrase('rating') }}"
+	arg-rowHint=""
+	arg-rowExplain=""
+	arg-name="rating"
+	arg-currentRating="0"
+	arg-ratingHref=""
+	arg-readOnly="false"
+	arg-deselectable="false"
+	arg-showSelected="true"
+	arg-voteContent="{{ null }}"
+	arg-voteClass="{{ null }}"
+	arg-range="{{ {
+		1: phrase('terrible'),
+		2: phrase('poor'),
+		3: phrase('average'),
+		4: phrase('good'),
+		5: phrase('excellent')
+	} }}">
+
+	<xf:macro template="rating_macros" name="setup" />
+
+	<xf:set var="$inner">
+		<xf:select name="{$name}"
+			class="br-select"
+			data-xf-init="rating"
+			data-initial-rating="{$currentRating}"
+			data-rating-href="{$ratingHref}"
+			data-readonly="{$readOnly}"
+			data-deselectable="{$deselectable}"
+			data-show-selected="{$showSelected}"
+			data-widget-class="bratr-rating"
+			data-vote-content="{{ trim($voteContent) }}"
+			data-vote-class="{$voteClass}">
+			<xf:if is="$deselectable">
+				<xf:option value="" />
+			</xf:if>
+			<xf:foreach loop="$range" key="$value" value="$label">
+				<xf:option value="{$value}">{$label}</xf:option>
+			</xf:foreach>
+		</xf:select>
+	</xf:set>
+
+	<xf:if is="$row">
+		<xf:formrow class="u-jsOnly" rowclass="bratr-row-rating"rowtype="{$rowType}"
+			label="{$rowLabel}"
+			hint="{$rowHint|raw}"
+			explain="{$rowExplain|raw}">
+			{$inner|raw}
+		</xf:formrow>
+	<xf:else />
+		{$inner|raw}
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="review_list" arg-reviews="!" arg-listClass="" arg-isManagement="{{ false }}" arg-linkThread="{{ true }}">
+	<ol class="block-body {$listClass}">
+		<xf:foreach loop="$reviews" value="$review">
+			<li class="block-row block-row--separated{{ $xf.visitor.isIgnoring($review.user_id) ? ' is-ignored' : '' }}" data-author="{{ $review.getUser().username|for_attr }}">
+				<xf:macro template="BRATR_rating_macros" name="review"
+					arg-review="{$review}"
+					arg-user="{$review.getUser($isManagement)}"
+					arg-thread="{$review.Thread}"
+					arg-linkThread="{$linkThread}"/>
+			</li>
+		</xf:foreach>
+	</ol>
+</xf:macro>
+
+<xf:macro name="review" arg-review="!" arg-user="!" arg-thread="!" arg-linkThread="{{ true }}">
+	<xf:css src="message.less" />
+	<xf:css src="structured_list.less" />
+	<xf:if is="{$review.isDelete()}">
+		<xf:macro template="BRATR_rating_macros" name="review_delete"
+			arg-review="{$review}"
+			arg-user="{$user}"
+			arg-thread="{$thread}" />
+	<xf:else />
+		<xf:macro template="BRATR_rating_macros" name="review_public"
+			arg-review="{$review}"
+			arg-user="{$user}"
+			arg-thread="{$thread}"
+			arg-linkThread="{$linkThread}" />
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="review_public" arg-review="!" arg-user="!" arg-thread="!" arg-linkThread="{{ true }}">
+	<div class="message message--post message--review js-review"
+		data-author="{{ $review.User.username ?: $review.username }}"
+		data-content="review-{$review.thread_rating_id}">
+		
+		<span class="u-anchorTarget" id="review-{$review.thread_rating_id}"></span>
+		
+		<div class="contentRow">
+			<div class="contentRow-figure">
+				<xf:avatar user="$user" size="s" notooltip="true" defaultname="{$user.username}"/>
+			</div>
+			<div class="contentRow-main">
+				<div class="contentRow-extra">
+					<xf:macro template="BRATR_rating_macros" name="stars"
+						arg-rating="{$review.rating}" />
+				</div>
+				<h3 class="contentRow-header"><xf:username user="$user" rich="true" notooltip="true" /></h3>
+				
+				<div class="contentRow-lesser" dir="auto">
+					<article class="message-body">
+						{{ bb_code($review.message, 'bratr-review', $review) }}
+					</article>
+				</div>
+
+				<xf:if is="{$linkThread}">
+					<dl class="pairs pairs--inline structItem-minor">
+						<dt>{{ phrase('thread') }}</dt>
+						<dd><a href="{{ link('threads', $thread) }}">{{ prefix('thread', $thread) }} {$thread.title}</a></dd>
+					</dl>
+				</xf:if>
+
+				<footer class="message-footer">
+					<xf:if contentcheck="true">
+						<div class="message-actionBar actionBar">
+							<xf:contentcheck>
+								<xf:if contentcheck="true">
+									<div class="actionBar-set actionBar-set--external">
+									<xf:contentcheck>
+										<xf:if is="$review.canLike()">
+											<a href="{{ link('bratr-ratings/like', $review) }}" class="actionBar-action actionBar-action--like" data-xf-click="like" data-like-list="< .js-review | .js-likeList"><xf:if is="$review.isLiked()">{{ phrase('unlike') }}<xf:else />{{ phrase('like') }}</xf:if></a>
+										</xf:if>
+									</xf:contentcheck>
+									</div>
+								</xf:if>
+
+								<xf:if contentcheck="true">
+									<div class="actionBar-set actionBar-set--internal">
+									<xf:contentcheck>
+										<span class="contentRow-muted"><xf:date time="{$review.rating_date}" /></span>
+										
+										<xf:if is="$review.canReport()">
+											<a href="{{ link('bratr-ratings/report', $review) }}"
+												class="actionBar-action actionBar-action--report"
+												data-xf-click="overlay">{{ phrase('report') }}</a>
+										</xf:if>
+
+										<xf:set var="$hasActionBarMenu" value="{{ false }}" />
+										<xf:if is="$review.canEdit()">
+											<a href="{{ link('bratr-ratings/edit', $review) }}"
+												class="actionBar-action actionBar-action--edit actionBar-action--menuItem"
+												data-xf-click="overlay">{{ phrase('edit') }}</a>
+
+											<xf:set var="$hasActionBarMenu" value="{{ true }}" />
+										</xf:if>
+
+										<xf:if is="$review.canUndelete()">
+											<a href="{{ link('bratr-ratings/un-delete', $review) }}"
+												class="actionBar-action actionBar-action--delete actionBar-action--menuItem"
+												data-xf-click="overlay" data-follow-redirects="on">{{ phrase('undelete') }}</a>
+
+											<xf:set var="$hasActionBarMenu" value="{{ true }}" />
+										<xf:elseif is="$review.canDelete('soft')" />
+											<a href="{{ link('bratr-ratings/delete', $review) }}"
+												class="actionBar-action actionBar-action--delete actionBar-action--menuItem"
+												data-xf-click="overlay">{{ phrase('delete') }}</a>
+
+											<xf:set var="$hasActionBarMenu" value="{{ true }}" />
+										</xf:if>
+
+										<xf:if is="$review.canWarn()">
+
+											<a href="{{ link('bratr-ratings/warn', $review) }}"
+												class="actionBar-action actionBar-action--warn actionBar-action--menuItem">{{ phrase('warn') }}</a>
+
+											<xf:set var="$hasActionBarMenu" value="{{ true }}" />
+										<xf:elseif is="$review.warning_id && $xf.visitor.canViewWarnings()" />
+											<a href="{{ link('warnings', {'warning_id': $review.warning_id}) }}"
+												class="actionBar-action actionBar-action--warn actionBar-action--menuItem"
+												data-xf-click="overlay">{{ phrase('view_warning') }}</a>
+											<xf:set var="$hasActionBarMenu" value="{{ true }}" />
+										</xf:if>
+
+										<xf:if is="$review.canConfirm()">
+											<a href="{{ link('bratr-ratings/confirm', $review) }}"
+												class="actionBar-action actionBar-action--delete actionBar-action--menuItem"
+												data-xf-click="overlay" data-follow-redirects="on">{{ phrase('BRATR_confirmation') }}</a>
+
+											<xf:set var="$hasActionBarMenu" value="{{ true }}" />
+										</xf:if>
+
+										<xf:if is="$hasActionBarMenu">
+											<a class="actionBar-action actionBar-action--menuTrigger"
+												data-xf-click="menu"
+												title="{{ phrase('more_options')|for_attr }}"
+												role="button"
+												tabindex="0"
+												aria-expanded="false"
+												aria-haspopup="true">&#8226;&#8226;&#8226;</a>
+
+											<div class="menu" data-menu="menu" aria-hidden="true" data-menu-builder="actionBar">
+												<div class="menu-content">
+													<h4 class="menu-header">{{ phrase('more_options') }}</h4>
+													<div class="js-menuBuilderTarget"></div>
+												</div>
+											</div>
+										</xf:if>
+									</xf:contentcheck>
+									</div>
+								</xf:if>
+							</xf:contentcheck>
+						</div>
+					</xf:if>
+
+					<div class="likesBar js-likeList {{ $review.likes ? 'is-active' : '' }}">
+						<xf:likes content="{$review}" url="{{ link('bratr-ratings/likes', $review) }}" />
+					</div>
+				</footer>
+			</div>
+		</div>
+	</div>
+</xf:macro>
+
+<xf:macro name="review_delete" arg-review="!" arg-user="!" arg-thread="!">
+	<div class="message message--deleted message--review js-review"
+		data-author="{{ $review.User.username ?: $review.username }}"
+		data-content="review-{$review.thread_rating_id}">
+
+		<span class="u-anchorTarget" id="review-{$review.thread_rating_id}"></span>
+
+		<div class="contentRow">
+			<div class="contentRow-figure">
+				<xf:avatar user="$user" size="s" notooltip="true" defaultname="{$user.username}"/>
+			</div>
+			<div class="contentRow-main">
+				<div class="contentRow-extra">
+					<xf:macro template="BRATR_rating_macros" name="stars"
+						arg-rating="{$review.rating}" />
+				</div>
+				<h3 class="contentRow-header"><xf:username user="$user" rich="true" notooltip="true" /></h3>
+				<div class="messageNotice messageNotice--deleted">
+					<xf:macro template="deletion_macros" name="notice" arg-log="{$review.DeletionLog}" />
+
+					<a href="{{ link('bratr-ratings/show', $review) }}" class="u-jsOnly" data-xf-click="inserter" data-replace="[data-content=review-{$review.thread_rating_id}]">{{ phrase('show...') }}</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</xf:macro>
+
+<xf:macro name="item_new_ratings"
+	arg-rating="!"
+	arg-user="!"
+	arg-limitHeight="{{ false }}">
+
+	<div class="contentRow">
+		<div class="contentRow-figure">
+			<xf:avatar user="$user" size="xxs" defaultname="{$user.username}" />
+		</div>
+		<div class="contentRow-main contentRow-main--close">
+			<div class="contentRow-lesser">
+				<xf:username user="$user" rich="true" defaultname="{$user.username}" />
+			</div>
+			
+			<div class="contentRow-lesser">
+				<xf:macro template="BRATR_rating_macros" name="stars"
+					arg-rating="{$rating.rating}" />
+			</div>
+
+			<xf:if is="$limitHeight">
+				<div class="contentRow-faderContainer">
+					<div class="contentRow-faderContent">
+						{{ structured_text($rating.message) }}
+					</div>
+					<div class="contentRow-fader"></div>
+				</div>
+			<xf:else />
+				{{ structured_text($rating.message) }}
+			</xf:if>
+
+			<div class="contentRow-minor">
+				<a href="{{ link('bratr-ratings', $rating) }}" rel="nofollow" class="u-concealed"><xf:date time="{$rating.rating_date}" /></a>
+				<a href="{{ link('bratr-ratings/show', $rating) }}" rel="nofollow" class="contentRow-extra" data-xf-click="overlay" data-xf-init="tooltip" title="{{ phrase('interact')|for_attr }}">&#8226;&#8226;&#8226;</a>
+			</div>
+		</div>
+	</div>
+</xf:macro>
+
+<xf:macro name="receive_rating_count" arg-user="!">
+	<dl class="pairs pairs--rows pairs--rows--centered">
+		<dt title="{{ phrase('BRATR_ratings_received')|for_attr }}">{{ phrase('BRATR_ratings_received') }}</dt>
+		<dd>
+			{{ $user.bratr_receive_rating_count|number }}
+		</dd>
+	</dl>
+</xf:macro>]]></template>
+  <template type="public" title="BRATR_rating_show" version_id="2000092" version_string="2.0.0"><![CDATA[<div class="block" data-type="review">
+	<div class="block-container">
+		<div class="block-body block-row block-row--separated">
+			<xf:macro template="BRATR_rating_macros" name="review_public"
+				arg-review="{$rating}"
+				arg-user="{$user}"
+				arg-thread="{$thread}" />
+		</div>
+	</div>
+</div>]]></template>
+  <template type="public" title="BRATR_rating_stars.less" version_id="2000000" version_string="2.0.0"><![CDATA[.ratingStarsRow-text {
+	display: inline-block;
+    margin-left: 5px;
+	[data-xf-click="overlay"]{
+		.xf-link();
+	}
+	&:hover{
+		[data-xf-click="overlay"]{
+			.xf-linkHover();
+		}
+	}
+}
+.br-theme-fontawesome-stars {
+	.br-widget{{ $xf.options.BRATR_onlyAddon ? '.bratr-rating' : '' }} {
+		a.br-fractional{
+		    position: relative;
+
+		    &:before{
+				.m-faBase();
+				.m-faContent(@fa-var-star, .93em);
+				color: @xf-starEmptyColor;
+			}
+
+			&:after{
+				position: absolute;
+				left: 0;
+				.m-faBase();
+				.m-faContent(@fa-var-star-half, .93em);
+				color: @xf-starFullColor;
+
+				& when(@rtl){
+					.m-transform(scaleX(-1));
+				}
+			}
+		}
+		.bratr-vote-content{
+            display: inline-block !important;
+            margin-left: 5px;
+			[data-xf-click="overlay"]{
+				.xf-link();
+			}
+			&:hover{
+				[data-xf-click="overlay"]{
+					.xf-linkHover();
+				}
+			}
+		}
+	}
+}]]></template>
+  <template type="public" title="BRATR_receive_ratings" version_id="2000092" version_string="2.0.0"><![CDATA[<xf:title>{{ phrase('BRATR_receive_ratings') }}</xf:title>
+
+<xf:head option="metaNoindex"><meta name="robots" content="noindex" /></xf:head>
+<div class="block-container brivium-receive-ratings">
+	<xf:if is="$ratings is not empty">
+		<ol class="block-body js-briviumReceiveRatings">
+			<xf:foreach loop="$ratings" value="$rating">
+				<li class="block-row block-row--separated{{ $xf.visitor.isIgnoring($rating.user_id) ? ' is-ignored' : '' }}">
+					<xf:macro template="BRATR_rating_macros" name="review"
+							  arg-review="{$rating}"
+							  arg-user="{$rating.getUser()}"
+							  arg-thread="{$rating.Thread}" />
+				</li>
+			</xf:foreach>
+		</ol>
+
+		<div class="block-outer block-outer--after">
+			<xf:showignored wrapperclass="block-outer-opposite block-footer" />
+		</div>
+		<xf:if is="$loadMore">
+			<div class="block-footer js-briviumLoadMore">
+				<span class="block-footer-controls"><xf:button href="{{ link('members/bratr-ratings', $user, {'page': $page+1}) }}"
+				   data-xf-click="inserter"
+				   data-append=".js-briviumReceiveRatings"
+				   data-replace=".js-briviumLoadMore">
+					{{ phrase('BRATR_load_more') }}
+				</xf:button></span>
+			</div>
+		</xf:if>
+	<xf:else />
+		<div class="block-body block-row">{{ phrase('no_results_found') }}</div>
+	</xf:if>
+</div>]]></template>
+  <template type="public" title="BRATR_style_rating_stars.less" version_id="2000000" version_string="2.0.0"><![CDATA[.ratingStars{{ $xf.options.BRATR_onlyAddon ? '.bratr-rating' : '' }}{
+	.ratingStars-star{
+		width: {$xf.options.BRATR_styleRating.width}px;
+		height: {$xf.options.BRATR_styleRating.height}px;
+		background: transparent url({{ base_url($xf.options.BRATR_styleRating.url) }}) no-repeat {$xf.options.BRATR_styleRating.background_posission_x}px;
+		font-size: 0px;
+		&.ratingStars-star--full{
+			background-position: 0px;
+		}
+
+		&.ratingStars-star--half{
+			background-position: {$xf.options.BRATR_styleRating.background_position}px;
+		}
+	}
+}
+
+.br-theme-fontawesome-stars{
+	.br-widget{{ $xf.options.BRATR_onlyAddon ? '.bratr-rating' : '' }} {
+		height: {$xf.options.BRATR_styleRating.height}px;
+		a {
+			width: {$xf.options.BRATR_styleRating.width}px;
+			height: {$xf.options.BRATR_styleRating.height}px;
+			background: transparent url({{ base_url($xf.options.BRATR_styleRating.url) }}) no-repeat {$xf.options.BRATR_styleRating.background_posission_x}px;
+			display: inline-block;
+			font-size: 0px;
+		}
+
+		a:after{
+			display: none !important;
+		}
+
+		a.br-active,
+		a.br-selected {
+			background-position: 0;
+		}
+
+		a.br-fractional{
+			background-position: {$xf.options.BRATR_styleRating.background_position}px;
+			&:before{
+				display: none !important;
+			}
+		}
+	}
+}]]></template>
+  <template type="public" title="BRATR_thread_rate" version_id="2000000" version_string="2.0.0"><![CDATA[<xf:title>prefix('thread', $thread, 'escaped') }}{$thread.title} - {{ phrase('BRATR_rate_this_thread') }}</xf:title>
+<xf:h1>{{ prefix('thread', $thread) }}{$thread.title} - {{ phrase('BRATR_rate_this_thread') }}</xf:h1>
+
+<xf:breadcrumb source="$thread.Forum.getBreadcrumbs()" />
+
+<xf:form action="{{ link('threads/br-rate', $thread) }}" class="block" ajax="true">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:if is="!$xf.visitor.user_id">
+				<xf:textboxrow name="username" autofocus="autofocus" maxlength="{{ max_length($xf.visitor, 'username') }}"
+					label="{{ phrase('your_name') }}" />
+
+				<xf:textboxrow name="email" maxlength="{{ max_length($xf.visitor, 'email') }}" type="email"
+					label="{{ phrase('your_email_address') }}" />
+
+				<xf:captcharow label="{{ phrase('verification') }}" />
+				<hr class="formRowSep" />
+			</xf:if>
+
+			<xf:macro template="BRATR_rating_macros" name="rating"
+				arg-currentRating="{$rating.rating}" />
+
+			<xf:editorrow name="message" data-min-height="100"
+					label="{{ phrase('message') }}"
+					hint="{{ $thread.isMessageRequired() ? phrase('required') : '' }}"
+					explain="{{ phrase('BRATR_explain_why_youre_giving_this_rating') }}" />
+
+
+			<xf:if is="$xf.visitor.user_id && $thread.canSendAnonymous()">
+				<xf:checkboxrow>
+					<xf:option name="is_anonymous" selected="$rating.is_anonymous">
+						<xf:label>{{ phrase('BRATR_submit_review_anonymously') }}</xf:label>
+						<xf:hint>{{ phrase('BRATR_if_selected_thread_creator_not_see_review_author') }}</xf:hint>
+					</xf:option>
+				</xf:checkboxrow>
+			</xf:if>
+		</div>
+		<xf:submitrow submit="{{ phrase('submit_rating') }}" icon="rate" />
+	</div>
+	<xf:redirect />
+</xf:form>]]></template>
+  <template type="public" title="BRATR_thread_reset_rating" version_id="2000012" version_string="2.0.0"><![CDATA[<xf:title>{{ phrase('BRATR_reset_rating_of_thread') }} - {{ prefix('thread', $thread, 'escaped') }}{$thread.title}</xf:title>
+
+<xf:breadcrumb source="$thread.getBreadcrumbs()" />
+
+<xf:form action="{{ link('threads/br-reset-rating', $thread) }}" class="block" ajax="true">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:formrow rowtype="noLabel">
+				{{ phrase('BRATR_you_sure_you_want_to_reset_rating_of_this_thread', {
+					'threadTitle': '<strong>' .prefix('thread', $thread) . $thread.title . '</strong>'
+				}) }}
+			</xf:formrow>
+
+			<xf:textboxrow label="{{ phrase('BRATR_reason_reset_rating') }}"name="reason" placeholder="{{ phrase('reason') }}" />
+		</div>
+		<xf:submitrow icon="refresh" />
+	</div>
+	<xf:redirect />
+</xf:form>]]></template>
+  <template type="public" title="BRATR_thread_reviews" version_id="2000092" version_string="2.0.0"><![CDATA[<xf:title>{{ prefix('thread', $thread, 'escaped') }}{$thread.title}</xf:title>
+<xf:h1>{{ prefix('thread', $thread, 'escaped') }}{$thread.title}</xf:h1>
+
+<xf:breadcrumb source="$thread.Forum.getBreadcrumbs()" />
+
+<xf:if is="!$resource">
+	<div class="tabs tabs--standalone">
+		<div class="hScroller" data-xf-init="h-scroller">
+			<span class="hScroller-scroll">
+				<a class="tabs-tab {{ !$selected ? 'is-active' : '' }}" href="{{ link('threads', $thread) }}">{{ phrase('BRATR_discussion') }}</a>
+				<a class="tabs-tab {{ $selected == 'br-reviews' ? 'is-active' : '' }}" href="{{ link('threads/br-reviews', $thread) }}">{{ phrase('BRATR_discussion_reviews_x', {'reviewCount': {$thread.brivium_review_counter|number}}) }}</a>
+			</span>
+		</div>
+	</div>
+<xf:else />
+	<xf:include template="xfrm_thread_insert" />
+</xf:if>
+
+<div class="block">
+	<div class="block-container">
+		<xf:macro template="BRATR_rating_macros" name="review_list"
+		  arg-reviews="{$ratings}"
+		  arg-linkThread="{{ false }}" />
+
+		<div class="block-footer">
+			<span class="block-footer-counter">{{ display_totals($ratings, $total) }}</span>
+		</div>
+	</div>
+	<xf:showignored wrapperclass="block-outer-opposite block-outer block-outer--after" />
+	<xf:pagenav page="{$page}" perpage="{$perPage}" total="{$total}"
+		link="threads/br-reviews" data="{$thread}"
+		wrapperclass="block-outer block-outer--after" />	
+</div>]]></template>
+  <template type="public" title="BRATR_user_rated_thread" version_id="2000092" version_string="2.0.0"><![CDATA[<xf:title>{{ phrase('BRATR_user_rated_thread') }} - {{ prefix('thread', $thread, 'escaped') }}{$thread.title}</xf:title>
+
+<xf:breadcrumb source="$thread.getBreadcrumbs()" />
+
+<div class="block">
+	<div class="block-container">
+		<ol class="block-body js-briviumReceiveRatings">
+			<xf:foreach loop="$ratings" value="$rating">
+				<li class="block-row block-row--separated{{ $xf.visitor.isIgnoring($rating.user_id) ? ' is-ignored' : '' }}" data-author="{{ $rating.getUser().username|for_attr }}">
+					<xf:set var="$ratingStarHtml">
+						<xf:macro template="BRATR_rating_macros" name="stars"
+							arg-rating="{$rating.rating}" />
+					</xf:set>
+					<xf:macro template="member_list_macros" name="item"
+						arg-user="{$rating.getUser()}"
+						arg-extraData="{$ratingStarHtml|raw}" />
+				</li>
+			</xf:foreach>
+		</ol>
+
+		<div class="block-footer">
+			<span class="block-footer-counter">{{ display_totals($ratings, $total) }}</span>
+		</div>
+		
+		<xf:if is="$loadMore">
+			<div class="block-outer-opposite js-briviumLoadMore">
+				<span class="block-footer-controls"><xf:button href="{{ link('threads/br-user-rated', $thread, {'page': $page+1}) }}"
+				   data-xf-click="inserter"
+				   data-append=".js-briviumReceiveRatings"
+				   data-replace=".js-briviumLoadMore">
+					{{ phrase('BRATR_load_more') }}
+				</xf:button></span>
+			</div>
+		</xf:if>
+	</div>
+	<xf:showignored wrapperclass="block-outer-opposite block-outer block-outer--after" />
+</div>]]></template>
+  <template type="public" title="BRATR_whats_new_thread_ratings" version_id="2000092" version_string="2.0.0"><![CDATA[<xf:title page="{$page}">{{ phrase('BRATR_new_thread_ratings') }}</xf:title>
+
+<xf:wrap template="whats_new_wrapper">
+	<xf:set var="$pageSelected">bratr-new-ratings</xf:set>
+</xf:wrap>
+
+<div class="block" data-type="profile_post">
+	<div class="block-container">
+		<xf:if is="$xf.visitor.user_id">
+			<div class="block-filterBar">
+				<div class="filterBar">
+					<xf:if contentcheck="true">
+						<ul class="filterBar-filters">
+							<xf:contentcheck>
+								<!--[XF:filters:top]-->
+								<xf:if is="$findNew.filters.followed">
+									<li><a href="{{ link('whats-new/thread-ratings', $findNew, {'remove': 'followed'}) }}"
+										class="filterBar-filterToggle" data-xf-init="tooltip" title="{{ phrase('remove_this_filter')|for_attr }}">
+										<span class="filterBar-filterToggle-label">{{ phrase('show_only') }}</span>
+										{{ phrase('filter_followed_members') }}</a></li>
+								</xf:if>
+								<!--[XF:filters:bottom]-->
+							</xf:contentcheck>
+						</ul>
+					</xf:if>
+
+					<a class="filterBar-menuTrigger" data-xf-click="menu" role="button" tabindex="0" aria-expanded="false" aria-haspopup="true">{{ phrase('filters') }}</a>
+					<div class="menu" data-menu="menu" aria-hidden="true">
+						<div class="menu-content">
+							<h4 class="menu-header">{{ phrase('show_only:') }}</h4>
+							<xf:form action="{{ link('whats-new/thread-ratings') }}">
+								<div class="menu-row">
+									<xf:checkbox>
+										<xf:option name="followed" selected="{$findNew.filters.followed}"
+											label="{{ phrase('members_you_follow') }}" />
+									</xf:checkbox>
+								</div>
+
+								<xf:macro template="filter_macros" name="find_new_filter_footer" />
+							</xf:form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</xf:if>
+
+		<xf:if is="$findNew.result_count">
+			<xf:macro template="BRATR_rating_macros" name="review_list" arg-reviews="{$ratings}"/>
+		<xf:else />
+			<div class="block-row">{{ phrase('no_results_found') }}</div>
+		</xf:if>
+	</div>
+
+	<xf:if is="$findNew.result_count">
+		<xf:showignored wrapperclass="block-outer-opposite block-outer block-outer--after" />
+		<xf:pagenav page="{$page}" perpage="{$perPage}" total="{$findNew.result_count}"
+			link="whats-new/thread-ratings" data="{$findNew}"
+			wrapperclass="block-outer block-outer--after" />
+	</xf:if>
+</div>]]></template>
+  <template type="public" title="alert_brivium_thread_rating_insert" version_id="2000012" version_string="2.0.0"><![CDATA[{{ phrase('BRATR_x_rated_thread_y', {
+	'name': username_link($user, false, {'defaultname': $alert.username}),
+	'title': '<a href="' . link('bratr-ratings', $content) . '" class="fauxBlockLink-blockLink">' . prefix('thread', $content.Thread) . $content.Thread.title . '</a>'
+}) }}]]></template>
+  <template type="public" title="alert_brivium_thread_rating_like" version_id="2000012" version_string="2.0.0"><![CDATA[{{ phrase('BRATR_x_liked_your_rating_in_the_thread_y', {
+	'name': username_link($user, false, {'defaultname': $alert.username}),
+	'title': '<a href="' . link('bratr-ratings', $content) . '" class="fauxBlockLink-blockLink">' . prefix('thread', $content.Thread) . $content.Thread.title . '</a>'
+}) }}]]></template>
+  <template type="public" title="like_item_brivium_thread_rating" version_id="2000013" version_string="2.0.0"><![CDATA[<xf:macro name="like_snippet" arg-liker="!" arg-rating="!" arg-date="!" arg-fallbackName="{{ phrase('unknown_member') }}">
+	<div class="contentRow-title">
+		<xf:if is="$rating.user_id == $xf.visitor.user_id">
+			{{ phrase('BRATR_x_liked_your_rated_in_the_thread_y', {
+				'name': username_link($liker, false, {'defaultname': $fallbackName}),
+				'title': '<a href="' . link('bratr-ratings', $rating) . '">' . prefix('thread', $rating.Thread) . $rating.Thread.title . '</a>'
+			}) }}
+		<xf:else />
+			{{ phrase('BRATR_x_liked_ys_rated_in_the_thread_z', {
+				'name': username_link($liker, false, {'defaultname': $fallbackName}),
+				'ratingerParams': 'href="' . link('bratr-ratings', $rating) . '"',
+				'ratinger': $rating.username,
+				'title': '<a href="' . link('bratr-ratings', $rating) . '">' . prefix('thread', $rating.Thread) . $rating.Thread.title . '</a>'
+			}) }}
+		</xf:if>
+	</div>
+
+	<div class="contentRow-snippet">{{
+		snippet($rating.message, $xf.options.newsFeedMessageSnippetLength, {'stripQuote': true})
+	}}</div>
+
+	<div class="contentRow-minor"><xf:date time="{$date}" /></div>
+</xf:macro>
+
+<xf:macro name="like_snippet" arg-liker="{$like.Liker}" arg-rating="{$content}" arg-date="{$like.like_date}" arg-fallbackName="{$content.getUser().username}"/>]]></template>
+  <template type="public" title="news_feed_item_brivium_thread_rating_insert" version_id="2000012" version_string="2.0.0"><![CDATA[<div class="contentRow-title">
+	{{ phrase('BRATR_x_rated_to_the_thread_y', {
+		'username': username_link($user, false, {'defaultname': $newsFeed.username}),
+		'threadTitle': '<a href="' . link('bratr-ratings', $content) . '">' . prefix('thread', $content.Thread) . $content.Thread.title . '</a>'
+	}) }}
+	
+	<xf:macro template="BRATR_rating_macros" name="stars"
+			arg-rating="{$content.rating}"
+			arg-class="block-outer-opposite"/>
+</div>
+
+<div class="contentRow-snippet">{{ snippet($content.message, $xf.options.newsFeedMessageSnippetLength, {'stripQuote': true}) }}</div>
+<div class="contentRow-minor"><xf:date time="{$newsFeed.event_date}" /></div>]]></template>
+  <template type="public" title="news_feed_item_brivium_thread_rating_like" version_id="2000000" version_string="2.0.0"><![CDATA[<div class="contentRow-title">
+	<xf:if is="$content.user_id == $xf.visitor.user_id">
+		{{ phrase('BRATR_x_liked_your_rated_in_the_thread_y', {
+		'name': username_link($user, false, {'defaultname': $user.username}),
+		'title': '<a href="' . link('bratr-ratings', $content) . '">' . prefix('thread', $content.Thread) . $content.Thread.title . '</a>'
+		}) }}
+		<xf:else />
+		{{ phrase('BRATR_x_liked_ys_rated_in_the_thread_z', {
+		'name': username_link($user, false, {'defaultname': $user.username}),
+		'ratedParams': 'href="' . link('posts', $content) . '"',
+		'userRated': $content.username,
+		'title': '<a href="' . link('bratr-ratings', $content) . '">' . prefix('thread', $content.Thread) . $content.Thread.title . '</a>'
+		}) }}
+	</xf:if>
+
+	<xf:macro template="BRATR_rating_macros" name="stars"
+		arg-rating="{$content.rating}"
+		arg-class="block-outer-opposite"/>
+</div>
+
+<div class="contentRow-snippet">{{
+	snippet($content.message, $xf.options.newsFeedMessageSnippetLength, {'stripQuote': true})
+}}</div>]]></template>
+  <template type="public" title="report_content_brivium_thread_rating" version_id="2000000" version_string="2.0.0"><![CDATA[<div class="block-row block-row--separated">
+	{{ bb_code($report.content_info.message, 'rating', $content ?: $report.getUser()) }}
+</div>
+<div class="block-row block-row--separated block-row--minor">
+	<dl class="pairs pairs--inline">
+		<dt>{{ phrase('forum') }}</dt>
+		<dd><a href="{{ link('forums', $report.content_info) }}">{$report.content_info.node_title}</a></dd>
+	</dl>
+</div>]]></template>
+</templates>

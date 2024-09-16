@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<permissions>
+  <permission permission_group_id="forum" permission_id="BRATR_canLikeRating" permission_type="flag" interface_group_id="BR_AdvancedThreadRating" display_order="170"/>
+  <permission permission_group_id="forum" permission_id="BRATR_canReportRating" permission_type="flag" interface_group_id="BR_AdvancedThreadRating" display_order="180"/>
+  <permission permission_group_id="forum" permission_id="BRATR_canResetThread" permission_type="flag" interface_group_id="BR_ModeratorThreadRating" display_order="50"/>
+  <permission permission_group_id="forum" permission_id="BRATR_displayReviewTab" permission_type="flag" interface_group_id="BR_AdvancedThreadRating" display_order="110"/>
+  <permission permission_group_id="forum" permission_id="BRATR_displayThread" permission_type="flag" interface_group_id="BR_AdvancedThreadRating" display_order="10"/>
+  <permission permission_group_id="forum" permission_id="BRATR_editOwnRated" permission_type="flag" interface_group_id="BR_AdvancedThreadRating" display_order="40"/>
+  <permission permission_group_id="forum" permission_id="BRATR_editRated" permission_type="flag" interface_group_id="BR_ModeratorThreadRating" display_order="20"/>
+  <permission permission_group_id="forum" permission_id="BRATR_hardDeleteAnyRated" permission_type="flag" interface_group_id="BR_ModeratorThreadRating" display_order="40"/>
+  <permission permission_group_id="forum" permission_id="BRATR_limitRating" permission_type="integer" interface_group_id="BR_AdvancedThreadRating" display_order="160"/>
+  <permission permission_group_id="forum" permission_id="BRATR_manageRated" permission_type="flag" interface_group_id="BR_ModeratorThreadRating" display_order="10"/>
+  <permission permission_group_id="forum" permission_id="BRATR_mustReplied" permission_type="flag" interface_group_id="BR_AdvancedThreadRating" display_order="150"/>
+  <permission permission_group_id="forum" permission_id="BRATR_rateOwnThread" permission_type="flag" interface_group_id="BR_AdvancedThreadRating" display_order="30"/>
+  <permission permission_group_id="forum" permission_id="BRATR_rateThread" permission_type="flag" interface_group_id="BR_AdvancedThreadRating" display_order="20"/>
+  <permission permission_group_id="forum" permission_id="BRATR_ratingInReview" permission_type="flag" interface_group_id="BR_AdvancedThreadRating" display_order="120"/>
+  <permission permission_group_id="forum" permission_id="BRATR_reviewMinchar" permission_type="integer" interface_group_id="BR_AdvancedThreadRating" display_order="90"/>
+  <permission permission_group_id="forum" permission_id="BRATR_sendAnonymous" permission_type="flag" interface_group_id="BR_AdvancedThreadRating" display_order="80"/>
+  <permission permission_group_id="forum" permission_id="BRATR_softDeleteAnyRated" permission_type="flag" interface_group_id="BR_ModeratorThreadRating" display_order="30"/>
+  <permission permission_group_id="forum" permission_id="BRATR_softDeleteOwnRated" permission_type="flag" interface_group_id="BR_AdvancedThreadRating" display_order="50"/>
+  <permission permission_group_id="forum" permission_id="BRATR_textReviewRequired" permission_type="flag" interface_group_id="BR_AdvancedThreadRating" display_order="70"/>
+  <permission permission_group_id="forum" permission_id="BRATR_threadReviewForm" permission_type="flag" interface_group_id="BR_AdvancedThreadRating" display_order="100"/>
+  <permission permission_group_id="forum" permission_id="BRATR_timeRatingEdit" permission_type="integer" interface_group_id="BR_AdvancedThreadRating" display_order="60"/>
+  <permission permission_group_id="forum" permission_id="BRATR_viewRateInThread" permission_type="flag" interface_group_id="BR_AdvancedThreadRating" display_order="140"/>
+  <permission permission_group_id="forum" permission_id="BRATR_warn" permission_type="flag" interface_group_id="BR_AdvancedThreadRating" display_order="130"/>
+</permissions>

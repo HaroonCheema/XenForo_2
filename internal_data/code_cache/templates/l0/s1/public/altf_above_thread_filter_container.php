@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 6194ec87cf779245d99c49386a34b4df
+// FROM HASH: beacca24f45d24418959ca2b2871dcc6
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -51,6 +51,8 @@ return array(
     </div>
 ';
 	}
+	$__finalCompiled .= '
+';
 	return $__finalCompiled;
 }
 );

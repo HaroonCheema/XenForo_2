@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="BRATR_1_vote" version_id="2000000" version_string="2.0.0"><![CDATA[1 Vote]]></phrase>
+  <phrase title="BRATR_add_new_style_rating" version_id="2000000" version_string="2.0.0"><![CDATA[Add New Style Rating]]></phrase>
+  <phrase title="BRATR_arrows_style" version_id="2000000" version_string="2.0.0"><![CDATA[Arrows Style]]></phrase>
+  <phrase title="BRATR_blue_arrows" version_id="2000000" version_string="2.0.0"><![CDATA[Blue arrows]]></phrase>
+  <phrase title="BRATR_blue_circle_stars" version_id="2000000" version_string="2.0.0"><![CDATA[Blue circle stars]]></phrase>
+  <phrase title="BRATR_blue_drops" version_id="2000000" version_string="2.0.0"><![CDATA[Blue drops]]></phrase>
+  <phrase title="BRATR_blue_hearts" version_id="2000000" version_string="2.0.0"><![CDATA[Blue hearts]]></phrase>
+  <phrase title="BRATR_blue_paws" version_id="2000000" version_string="2.0.0"><![CDATA[Blue paws]]></phrase>
+  <phrase title="BRATR_blue_stars" version_id="2000000" version_string="2.0.0"><![CDATA[Blue stars]]></phrase>
+  <phrase title="BRATR_blue_ticks" version_id="2000000" version_string="2.0.0"><![CDATA[Blue ticks]]></phrase>
+  <phrase title="BRATR_circle_stars_style" version_id="2000000" version_string="2.0.0"><![CDATA[Circle Stars Style]]></phrase>
+  <phrase title="BRATR_confirmation" version_id="2000000" version_string="2.0.0"><![CDATA[Confirmation]]></phrase>
+  <phrase title="BRATR_confirmation_code_wrong" version_id="2000000" version_string="2.0.0"><![CDATA[Confirmation code wrong.]]></phrase>
+  <phrase title="BRATR_confirmation_rated_thread_email_html" version_id="2000073" version_string="2.0.0"><![CDATA[Dear {username},<br/><br/>
+You rated thread '{thread}', you need to confirm by click on the following link below:<br/>
+<a href="{confirmLink}" target="_blank">{confirmLink}</a>
+<br/><br/>
+We apologize for any inconvenience caused. Thanks for your cooperation in advance.<br/>
+{board}]]></phrase>
+  <phrase title="BRATR_confirmation_rated_thread_x" version_id="2000000" version_string="2.0.0"><![CDATA[Confirmation to rated thread {title}]]></phrase>
+  <phrase title="BRATR_current_style_rating" version_id="2000000" version_string="2.0.0"><![CDATA[Rating Style Preview]]></phrase>
+  <phrase title="BRATR_delete_thread_rating" version_id="2000000" version_string="2.0.0"><![CDATA[Delete Thread Rating]]></phrase>
+  <phrase title="BRATR_disable_icon" version_id="2000000" version_string="2.0.0"><![CDATA[Disabled Icon]]></phrase>
+  <phrase title="BRATR_discussion" version_id="2000000" version_string="2.0.0"><![CDATA[Discussion]]></phrase>
+  <phrase title="BRATR_discussion_reviews_x" version_id="2000000" version_string="2.0.0"><![CDATA[Discussion Reviews ({reviewCount})]]></phrase>
+  <phrase title="BRATR_drops_style" version_id="2000000" version_string="2.0.0"><![CDATA[Drops Style]]></phrase>
+  <phrase title="BRATR_edit_style_rating" version_id="2000000" version_string="2.0.0"><![CDATA[Edit Rating Style]]></phrase>
+  <phrase title="BRATR_edit_thread_rating" version_id="2000000" version_string="2.0.0"><![CDATA[Edit Thread Rating]]></phrase>
+  <phrase title="BRATR_email_is_already_registered" version_id="2000000" version_string="2.0.0"><![CDATA[Email is already registered.]]></phrase>
+  <phrase title="BRATR_explain_why_youre_giving_this_rating" version_id="2000000" version_string="2.0.0"><![CDATA[Explain why you're giving this rating. Reviews which are not constructive may be removed without notice.]]></phrase>
+  <phrase title="BRATR_font_awesome_icon" version_id="2000000" version_string="2.0.0"><![CDATA[Font Awesome Icon]]></phrase>
+  <phrase title="BRATR_full_icon" version_id="2000000" version_string="2.0.0"><![CDATA[Full Icon]]></phrase>
+  <phrase title="BRATR_green_arrows" version_id="2000000" version_string="2.0.0"><![CDATA[Green arrows]]></phrase>
+  <phrase title="BRATR_green_circle_stars" version_id="2000000" version_string="2.0.0"><![CDATA[Green circle stars]]></phrase>
+  <phrase title="BRATR_green_drops" version_id="2000000" version_string="2.0.0"><![CDATA[Green drops]]></phrase>
+  <phrase title="BRATR_green_hearts" version_id="2000000" version_string="2.0.0"><![CDATA[Green hearts]]></phrase>
+  <phrase title="BRATR_green_paws" version_id="2000000" version_string="2.0.0"><![CDATA[Green paws]]></phrase>
+  <phrase title="BRATR_green_stars" version_id="2000000" version_string="2.0.0"><![CDATA[Green stars]]></phrase>
+  <phrase title="BRATR_green_ticks" version_id="2000000" version_string="2.0.0"><![CDATA[Green ticks]]></phrase>
+  <phrase title="BRATR_half_icon" version_id="2000000" version_string="2.0.0"><![CDATA[Half Icon]]></phrase>
+  <phrase title="BRATR_hearts_style" version_id="2000000" version_string="2.0.0"><![CDATA[Hearts Style]]></phrase>
+  <phrase title="BRATR_icon_dimensions" version_id="2000000" version_string="2.0.0"><![CDATA[Dimensions]]></phrase>
+  <phrase title="BRATR_icon_height" version_id="2000000" version_string="2.0.0"><![CDATA[Icon Height]]></phrase>
+  <phrase title="BRATR_icon_spacing" version_id="2000000" version_string="2.0.0"><![CDATA[Spacing]]></phrase>
+  <phrase title="BRATR_icon_width" version_id="2000000" version_string="2.0.0"><![CDATA[Icon width]]></phrase>
+  <phrase title="BRATR_if_selected_thread_creator_not_see_review_author" version_id="2000000" version_string="2.0.0"><![CDATA[If you tick this box, the only author of the thread or moderators can see who ratings.]]></phrase>
+  <phrase title="BRATR_load_more" version_id="2000000" version_string="2.0.0"><![CDATA[Load More]]></phrase>
+  <phrase title="BRATR_management_rating" version_id="2000000" version_string="2.0.0"><![CDATA[Management ratings]]></phrase>
+  <phrase title="BRATR_members_who_rated_this_thread" version_id="2000000" version_string="2.0.0"><![CDATA[Members who rated this thread]]></phrase>
+  <phrase title="BRATR_my_ratings" version_id="2000000" version_string="2.0.0"><![CDATA[My Ratings]]></phrase>
+  <phrase title="BRATR_new_thread_ratings" version_id="2000000" version_string="2.0.0"><![CDATA[New Thread Ratings]]></phrase>
+  <phrase title="BRATR_paws_style" version_id="2000000" version_string="2.0.0"><![CDATA[Paws Style]]></phrase>
+  <phrase title="BRATR_please_enter_message_with_more_than_x_characters" version_id="2000000" version_string="2.0.0"><![CDATA[Please enter the review with more than {count} characters]]></phrase>
+  <phrase title="BRATR_please_provide_review_with_your_rating" version_id="2000073" version_string="2.0.0"><![CDATA[Please provide a review of your rating.]]></phrase>
+  <phrase title="BRATR_please_upload_style_rating_image" version_id="2000000" version_string="2.0.0"><![CDATA[Please upload style rating image]]></phrase>
+  <phrase title="BRATR_position_of_icon_half" version_id="2000000" version_string="2.0.0"><![CDATA[Position of icon half]]></phrase>
+  <phrase title="BRATR_rate_this_thread" version_id="2000000" version_string="2.0.0"><![CDATA[Rate this thread]]></phrase>
+  <phrase title="BRATR_rated_in_thread_x" version_id="2000012" version_string="2.0.0"><![CDATA[rated in thread {title}]]></phrase>
+  <phrase title="BRATR_rating_in_thread_x" version_id="2000000" version_string="2.0.0"><![CDATA[Rating in thread {title}]]></phrase>
+  <phrase title="BRATR_ratings_received" version_id="2000000" version_string="2.0.0"><![CDATA[Ratings Received]]></phrase>
+  <phrase title="BRATR_reason_reset_rating" version_id="2000012" version_string="2.0.0"><![CDATA[Reason reset rating]]></phrase>
+  <phrase title="BRATR_rebuild_thread_ratings" version_id="2000012" version_string="2.0.0"><![CDATA[Rebuild Thread Ratings]]></phrase>
+  <phrase title="BRATR_receive_ratings" version_id="2000000" version_string="2.0.0"><![CDATA[Receive Ratings]]></phrase>
+  <phrase title="BRATR_red_arrows" version_id="2000000" version_string="2.0.0"><![CDATA[Red arrows]]></phrase>
+  <phrase title="BRATR_red_circle_stars" version_id="2000000" version_string="2.0.0"><![CDATA[Red circle stars]]></phrase>
+  <phrase title="BRATR_red_drops" version_id="2000000" version_string="2.0.0"><![CDATA[Red drops]]></phrase>
+  <phrase title="BRATR_red_hearts" version_id="2000000" version_string="2.0.0"><![CDATA[Red hearts]]></phrase>
+  <phrase title="BRATR_red_paws" version_id="2000000" version_string="2.0.0"><![CDATA[Red paws]]></phrase>
+  <phrase title="BRATR_red_stars" version_id="2000000" version_string="2.0.0"><![CDATA[Red stars]]></phrase>
+  <phrase title="BRATR_red_ticks" version_id="2000000" version_string="2.0.0"><![CDATA[Red ticks]]></phrase>
+  <phrase title="BRATR_requested_rating_not_found" version_id="2000000" version_string="2.0.0"><![CDATA[Requested rating not found]]></phrase>
+  <phrase title="BRATR_reset_rating" version_id="2000000" version_string="2.0.0"><![CDATA[Reset Rating]]></phrase>
+  <phrase title="BRATR_reset_rating_of_thread" version_id="2000000" version_string="2.0.0"><![CDATA[Reset rating of thread]]></phrase>
+  <phrase title="BRATR_reset_thread_rating" version_id="2000012" version_string="2.0.0"><![CDATA[Reset Thread Rating]]></phrase>
+  <phrase title="BRATR_reviews" version_id="2000000" version_string="2.0.0"><![CDATA[Reviews]]></phrase>
+  <phrase title="BRATR_stars_style" version_id="2000000" version_string="2.0.0"><![CDATA[Stars Style]]></phrase>
+  <phrase title="BRATR_style_rating" version_id="2000000" version_string="2.0.0"><![CDATA[Rating Styles]]></phrase>
+  <phrase title="BRATR_submit_review_anonymously" version_id="2000000" version_string="2.0.0"><![CDATA[Submit a review as an anonymously]]></phrase>
+  <phrase title="BRATR_the_dimensions_of_icon_in_images" version_id="2000000" version_string="2.0.0"><![CDATA[The dimensions of the rating icon.]]></phrase>
+  <phrase title="BRATR_the_time_limit_to_edit_this_rating_has_expired_at_x" version_id="2000000" version_string="2.0.0"><![CDATA[The time limit to edit this rating has expired at {timeExpired}]]></phrase>
+  <phrase title="BRATR_this_rating_had_been_confirmation" version_id="2000000" version_string="2.0.0"><![CDATA[This rating had been confirmation.]]></phrase>
+  <phrase title="BRATR_ticks_style" version_id="2000000" version_string="2.0.0"><![CDATA[Ticks Style]]></phrase>
+  <phrase title="BRATR_to_the_bottom_of_thread" version_id="2000000" version_string="2.0.0"><![CDATA[To the bottom of thread]]></phrase>
+  <phrase title="BRATR_to_the_top_and_bottom_of_thread" version_id="2000000" version_string="2.0.0"><![CDATA[To the top and bottom of thread]]></phrase>
+  <phrase title="BRATR_to_the_top_of_thread" version_id="2000000" version_string="2.0.0"><![CDATA[To the top of thread]]></phrase>
+  <phrase title="BRATR_upload_style_rating_image" version_id="2000000" version_string="2.0.0"><![CDATA[Upload Rating Style Image]]></phrase>
+  <phrase title="BRATR_use_rating_style" version_id="2000000" version_string="2.0.0"><![CDATA[Use Rating Style]]></phrase>
+  <phrase title="BRATR_user_rated_thread" version_id="2000000" version_string="2.0.0"><![CDATA[User rated thread]]></phrase>
+  <phrase title="BRATR_user_xenforo_default" version_id="2000000" version_string="2.0.0"><![CDATA[User Xenforo Default]]></phrase>
+  <phrase title="BRATR_x_liked_your_rated_in_the_thread_y" version_id="2000000" version_string="2.0.0"><![CDATA[{name} liked your rated in the thread {title}]]></phrase>
+  <phrase title="BRATR_x_liked_your_rating_in_the_thread_y" version_id="2000000" version_string="2.0.0"><![CDATA[{name} liked your rating in the thread {title}]]></phrase>
+  <phrase title="BRATR_x_liked_ys_rated_in_the_thread_z" version_id="2000000" version_string="2.0.0"><![CDATA[{name} liked <a {ratedParams}>{userRated}'s rated </a> in the thread {title}.]]></phrase>
+  <phrase title="BRATR_x_rated_thread_y" version_id="2000000" version_string="2.0.0"><![CDATA[{name} rated thread {title}]]></phrase>
+  <phrase title="BRATR_x_rated_to_the_thread_y" version_id="2000000" version_string="2.0.0"><![CDATA[{username} rated to the thread {threadTitle}]]></phrase>
+  <phrase title="BRATR_x_votes_plural" version_id="2000000" version_string="2.0.0"><![CDATA[{count} Votes]]></phrase>
+  <phrase title="BRATR_xenforo_default" version_id="2000000" version_string="2.0.0"><![CDATA[Xenforo Default]]></phrase>
+  <phrase title="BRATR_yellow_arrows" version_id="2000000" version_string="2.0.0"><![CDATA[Yellow arrows]]></phrase>
+  <phrase title="BRATR_yellow_circle_stars" version_id="2000000" version_string="2.0.0"><![CDATA[Yellow circle stars]]></phrase>
+  <phrase title="BRATR_yellow_drops" version_id="2000000" version_string="2.0.0"><![CDATA[Yellow drops]]></phrase>
+  <phrase title="BRATR_yellow_hearts" version_id="2000000" version_string="2.0.0"><![CDATA[Yellow hearts]]></phrase>
+  <phrase title="BRATR_yellow_paws" version_id="2000000" version_string="2.0.0"><![CDATA[Yellow paws]]></phrase>
+  <phrase title="BRATR_yellow_stars" version_id="2000000" version_string="2.0.0"><![CDATA[Yellow stars]]></phrase>
+  <phrase title="BRATR_yellow_ticks" version_id="2000000" version_string="2.0.0"><![CDATA[Yellow ticks]]></phrase>
+  <phrase title="BRATR_you_have_already_rated_this_thread" version_id="2000000" version_string="2.0.0"><![CDATA[You have already rated this thread]]></phrase>
+  <phrase title="BRATR_you_must_confirm_by_email_to_rated_this_thread" version_id="2000092" version_string="2.0.0"><![CDATA[You must confirm by email to rated this thread. Confirmation was sent to {email}.]]></phrase>
+  <phrase title="BRATR_you_must_replied_to_rating" version_id="2000000" version_string="2.0.0"><![CDATA[You must reply for rating.]]></phrase>
+  <phrase title="BRATR_you_sure_you_want_to_reset_rating_of_this_thread" version_id="2000000" version_string="2.0.0"><![CDATA[You sure you want to reset rating of this thread: {threadTitle}]]></phrase>
+  <phrase title="admin_navigation.BRATR_styleRating" version_id="2000000" version_string="2.0.0"><![CDATA[Rating Styles]]></phrase>
+  <phrase title="alert_opt_out.brivium_thread_rating_insert" version_id="2000012" version_string="2.0.0"><![CDATA[rated to a watched thread]]></phrase>
+  <phrase title="alert_opt_out.brivium_thread_rating_like" version_id="2000012" version_string="2.0.0"><![CDATA[Likes your rated]]></phrase>
+  <phrase title="mod_log.thread_reset_rating" version_id="2000013" version_string="2.0.0"><![CDATA[Thread Reset Rating (reason: {reason})]]></phrase>
+  <phrase title="nav.BRATR_newThreadRatings" version_id="2000000" version_string="2.0.0"><![CDATA[New Thread Ratings]]></phrase>
+  <phrase title="option.BRARS_postToThread" version_id="2000000" version_string="2.0.0"><![CDATA[Enabled/Disabled post to thread]]></phrase>
+  <phrase title="option.BRATR_disableResources" version_id="2000000" version_string="2.0.0"><![CDATA[Disable Rating Resource Threads]]></phrase>
+  <phrase title="option.BRATR_displayRatingForm" version_id="2000000" version_string="2.0.0"><![CDATA[Display Rating Form]]></phrase>
+  <phrase title="option.BRATR_displayReviews" version_id="2000000" version_string="2.0.0"><![CDATA[Display Reviews In Thread List]]></phrase>
+  <phrase title="option.BRATR_emailConfirmation" version_id="2000000" version_string="2.0.0"><![CDATA[Email Confirmation]]></phrase>
+  <phrase title="option.BRATR_fontAwesome" version_id="2000000" version_string="2.0.0"><![CDATA[Font Awesome Rating]]></phrase>
+  <phrase title="option.BRATR_iconRating" version_id="2000000" version_string="2.0.0"><![CDATA[Icon Rating]]></phrase>
+  <phrase title="option.BRATR_mergeButtonAndDisplay" version_id="2000000" version_string="2.0.0"><![CDATA[Rating form and rating results in one place]]></phrase>
+  <phrase title="option.BRATR_onlyAddon" version_id="2000000" version_string="2.0.0"><![CDATA[The rating style only works for this addon.]]></phrase>
+  <phrase title="option.BRATR_perPage" version_id="2000000" version_string="2.0.0"><![CDATA[Rating Per Page]]></phrase>
+  <phrase title="option_explain.BRARS_postToThread" version_id="2000000" version_string="2.0.0"><![CDATA[If enabled, the reviews also get posted directly into the thread.<br>
+You can use {message} to get content review message.]]></phrase>
+  <phrase title="option_explain.BRATR_disableResources" version_id="2000000" version_string="2.0.0"><![CDATA[]]></phrase>
+  <phrase title="option_explain.BRATR_displayRatingForm" version_id="2000000" version_string="2.0.0"><![CDATA[]]></phrase>
+  <phrase title="option_explain.BRATR_displayReviews" version_id="2000000" version_string="2.0.0"><![CDATA[]]></phrase>
+  <phrase title="option_explain.BRATR_emailConfirmation" version_id="2000000" version_string="2.0.0"><![CDATA[If enabled, the guest must confirm by email to rating thread.]]></phrase>
+  <phrase title="option_explain.BRATR_fontAwesome" version_id="2000000" version_string="2.0.0"><![CDATA[You can set a color of the icon in <a href="admin.php?style-properties/197/view" target="_blank">here</a>]]></phrase>
+  <phrase title="option_explain.BRATR_iconRating" version_id="2000000" version_string="2.0.0"><![CDATA[]]></phrase>
+  <phrase title="option_explain.BRATR_mergeButtonAndDisplay" version_id="2000000" version_string="2.0.0"><![CDATA[If enabled, the button rating will be merged with display rating of the thread.]]></phrase>
+  <phrase title="option_explain.BRATR_onlyAddon" version_id="2000000" version_string="2.0.0"><![CDATA[]]></phrase>
+  <phrase title="option_explain.BRATR_perPage" version_id="2000000" version_string="2.0.0"><![CDATA[This box controls the maximum number of rating that will be shown on a page.]]></phrase>
+  <phrase title="option_group.BR_AdvancedThreadRating" version_id="2000000" version_string="2.0.0"><![CDATA[Brivium - Advanced Thread Rating]]></phrase>
+  <phrase title="option_group_description.BR_AdvancedThreadRating" version_id="2000000" version_string="2.0.0"><![CDATA[]]></phrase>
+  <phrase title="permission.forum_BRATR_canLikeRating" version_id="2000000" version_string="2.0.0"><![CDATA[Can Like Rating/Review]]></phrase>
+  <phrase title="permission.forum_BRATR_canReportRating" version_id="2000000" version_string="2.0.0"><![CDATA[Can Report Rating/Review]]></phrase>
+  <phrase title="permission.forum_BRATR_canResetThread" version_id="2000000" version_string="2.0.0"><![CDATA[Can Reset Rating Of Thread]]></phrase>
+  <phrase title="permission.forum_BRATR_displayReviewTab" version_id="2000000" version_string="2.0.0"><![CDATA[Display Review Tab]]></phrase>
+  <phrase title="permission.forum_BRATR_displayThread" version_id="2000000" version_string="2.0.0"><![CDATA[Display Thread Rating]]></phrase>
+  <phrase title="permission.forum_BRATR_editOwnRated" version_id="2000000" version_string="2.0.0"><![CDATA[Edit Own Rated]]></phrase>
+  <phrase title="permission.forum_BRATR_editRated" version_id="2000000" version_string="2.0.0"><![CDATA[Edit Any Rated]]></phrase>
+  <phrase title="permission.forum_BRATR_hardDeleteAnyRated" version_id="2000000" version_string="2.0.0"><![CDATA[Hard Delete Any Rating.]]></phrase>
+  <phrase title="permission.forum_BRATR_limitRating" version_id="2000000" version_string="2.0.0"><![CDATA[The maximum of number for a user rated to a thread (minimum is one)]]></phrase>
+  <phrase title="permission.forum_BRATR_manageRated" version_id="2000000" version_string="2.0.0"><![CDATA[Manage Rating]]></phrase>
+  <phrase title="permission.forum_BRATR_mustReplied" version_id="2000081" version_string="2.0.0"><![CDATA[Require reply before rating thread (disabled for guest)]]></phrase>
+  <phrase title="permission.forum_BRATR_rateOwnThread" version_id="2000000" version_string="2.0.0"><![CDATA[Rate Own Thread]]></phrase>
+  <phrase title="permission.forum_BRATR_rateThread" version_id="2000000" version_string="2.0.0"><![CDATA[Rated Thread]]></phrase>
+  <phrase title="permission.forum_BRATR_ratingInReview" version_id="2000000" version_string="2.0.0"><![CDATA[Display rating in review tab]]></phrase>
+  <phrase title="permission.forum_BRATR_reviewMinchar" version_id="2000000" version_string="2.0.0"><![CDATA[Minimum number of characters allowed in review (minimum is 1)]]></phrase>
+  <phrase title="permission.forum_BRATR_sendAnonymous" version_id="2000000" version_string="2.0.0"><![CDATA[Can send anonymous to review]]></phrase>
+  <phrase title="permission.forum_BRATR_softDeleteAnyRated" version_id="2000000" version_string="2.0.0"><![CDATA[Soft Delete Any Rating]]></phrase>
+  <phrase title="permission.forum_BRATR_softDeleteOwnRated" version_id="2000000" version_string="2.0.0"><![CDATA[Soft Delete Own Rated]]></phrase>
+  <phrase title="permission.forum_BRATR_textReviewRequired" version_id="2000000" version_string="2.0.0"><![CDATA[Review Text Required]]></phrase>
+  <phrase title="permission.forum_BRATR_threadReviewForm" version_id="2000000" version_string="2.0.0"><![CDATA[Thread Review (The review form will be displayed)]]></phrase>
+  <phrase title="permission.forum_BRATR_timeRatingEdit" version_id="2000000" version_string="2.0.0"><![CDATA[Time limit on editing/deleting own rating( minute)]]></phrase>
+  <phrase title="permission.forum_BRATR_viewRateInThread" version_id="2000000" version_string="2.0.0"><![CDATA[View Who Rated In Thread]]></phrase>
+  <phrase title="permission.forum_BRATR_warn" version_id="2000000" version_string="2.0.0"><![CDATA[Give warnings on Reviews]]></phrase>
+  <phrase title="permission_interface.BR_AdvancedThreadRating" version_id="2000000" version_string="2.0.0"><![CDATA[Brivium - Advanced Thread Rating]]></phrase>
+  <phrase title="permission_interface.BR_ModeratorThreadRating" version_id="2000000" version_string="2.0.0"><![CDATA[Brivium - Moderator Advanced Thread Rating]]></phrase>
+  <phrase title="widget_def.BRATR_newRatings" version_id="2000000" version_string="2.0.0"><![CDATA[Brivium - New Thread Ratings]]></phrase>
+  <phrase title="widget_def_desc.BRATR_newRatings" version_id="2000000" version_string="2.0.0"><![CDATA[Displays the new thread ratings]]></phrase>
+</phrases>

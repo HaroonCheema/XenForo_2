@@ -443,6 +443,8 @@ return array (
   'style_prop_desc.successBg' => '',
   'style_prop_desc.successColor' => '',
   'style_prop_desc.successFeatureColor' => '',
+  'style_prop_desc.svMultiPrefixSubTitlePrefixUnderThreadInfo' => 'If checked and "Move thread prefixes location" is set to "Sub-title", prefixes will be shown below the thread info.',
+  'style_prop_desc.svMultiPrefixSubtitle' => 'Instead of thread prefixes being inline to the title, push the prefixes under the title or to the far-right of the',
   'style_prop_desc.textColor' => 'Unless otherwise specified, text will be this color',
   'style_prop_desc.textColorAccentContent' => '',
   'style_prop_desc.textColorAttention' => '',

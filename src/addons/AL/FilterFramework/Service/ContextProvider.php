@@ -4,7 +4,7 @@
 * @author AddonsLab
 * @license https://addonslab.com/
 * @link https://addonslab.com/
-* @version 1.2.1
+* @version 1.0.0
 This software is furnished under a license and may be used and copied
 only  in  accordance  with  the  terms  of such  license and with the
 inclusion of the above copyright notice.  This software  or any other
@@ -388,13 +388,13 @@ class ContextProvider extends AbstractService
         {
             if ($fields === null)
             {
-                $fields = $this->contentTypeProvider->getFieldCacheForCategory($category);
+                $fields = (array)$category->field_cache;
             }
             else
             {
                 if ($this->contentTypeProvider->getMultiCategorySearchModeSetting() === 'all')
                 {
-                    $fields += $this->contentTypeProvider->getFieldCacheForCategory($category);
+                    $fields += (array)$category->field_cache;
                 }
                 else
                 {

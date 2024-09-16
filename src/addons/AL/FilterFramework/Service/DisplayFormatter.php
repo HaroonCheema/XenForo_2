@@ -4,7 +4,7 @@
 * @author AddonsLab
 * @license https://addonslab.com/
 * @link https://addonslab.com/
-* @version 1.2.1
+* @version 1.0.0
 This software is furnished under a license and may be used and copied
 only  in  accordance  with  the  terms  of such  license and with the
 inclusion of the above copyright notice.  This software  or any other
@@ -37,7 +37,7 @@ class DisplayFormatter extends AbstractService
     protected $contentTypeProvider;
 
     public function __construct(
-        \XF\App                      $app,
+        \XF\App $app,
         ContentTypeProviderInterface $contentTypeProvider
     )
     {
@@ -91,7 +91,7 @@ class DisplayFormatter extends AbstractService
                     'color' => $colorConverter->getContrastColor($filterData[$fieldId]),
                 ];
             }
-            elseif ($typeProvider->isLocationField($fieldDefinition))
+            else if ($typeProvider->isLocationField($fieldDefinition))
             {
                 /** @var Configuration $configuration */
                 $configuration = $fieldDefinition->getLocationConfiguration();
@@ -109,7 +109,7 @@ class DisplayFormatter extends AbstractService
                 $templateParams['config'] = $configuration;
                 $templateParams['data'] = $fieldDefinition->getLocationData($filterData[$fieldId], false);
             }
-            elseif ($typeProvider->isInteger($fieldDefinition) || $typeProvider->isFloat($fieldDefinition))
+            else if ($typeProvider->isInteger($fieldDefinition) || $typeProvider->isFloat($fieldDefinition))
             {
                 $filterValue = $typeProvider->getIndexTableValue($fieldDefinition, $filterData);
                 if ($filterValue === false)
@@ -158,7 +158,7 @@ class DisplayFormatter extends AbstractService
                     $phrase .= $postfix;
                 }
             }
-            elseif ($typeProvider->isFreeText($fieldDefinition))
+            else if ($typeProvider->isFreeText($fieldDefinition))
             {
                 if (empty($filterData[$fieldId]))
                 {
@@ -172,7 +172,7 @@ class DisplayFormatter extends AbstractService
                     'string' => htmlspecialchars($string)
                 ];
             }
-            elseif ($typeProvider->isSingleOption($fieldDefinition) || $typeProvider->isMultipleOption($fieldDefinition))
+            else if ($typeProvider->isSingleOption($fieldDefinition) || $typeProvider->isMultipleOption($fieldDefinition))
             {
                 if (empty($filterData[$fieldId]))
                 {
@@ -234,24 +234,16 @@ class DisplayFormatter extends AbstractService
     {
         $typeProvider = FilterApp::getTypeProvider();
 
-        if ($field->display_template)
+        if($field->display_template)
         {
             $field->display_template = strip_tags($field->display_template);
-        }
-
-        $formattedValue = null;
-        \XF::app()->fire('filter_framework_format_field_for_display', [$this->contentTypeProvider, $field, $value, &$formattedValue]);
-
-        if ($formattedValue !== null)
-        {
-            return $formattedValue;
         }
 
         if ($typeProvider->isDateField($field))
         {
             $value = \XF::language()->date($value);
         }
-        elseif ($typeProvider->isInteger($field) || $typeProvider->isFloat($field))
+        else if ($typeProvider->isInteger($field) || $typeProvider->isFloat($field))
         {
             $exclusionList = $this->contentTypeProvider->getNumberFormattingExclusionListSetting();
             $exclusionList = $exclusionList ? array_map('trim', explode(',', $exclusionList)) : [];
@@ -264,13 +256,13 @@ class DisplayFormatter extends AbstractService
             $value = $field->getFormattedValue($value);
 
         }
-        elseif ($typeProvider->isFreeText($field))
+        else if ($typeProvider->isFreeText($field))
         {
             $formatter = new \XF\Str\Formatter();
             $value = $formatter->wholeWordTrim($value, 20);
             $value = $field->getFormattedValue($value);
         }
-        elseif (
+        else if (
             $typeProvider->isSingleOption($field)
             || $typeProvider->isMultipleOption($field)
         )

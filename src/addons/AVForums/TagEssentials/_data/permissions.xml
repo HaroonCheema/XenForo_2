@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<permissions>
+  <permission permission_group_id="general" permission_id="tagessCanViewTagUsers" permission_type="flag" interface_group_id="generalPermissions" display_order="50003"/>
+  <permission permission_group_id="general" permission_id="tagess_edit_category" permission_type="flag" interface_group_id="generalPermissions" display_order="50001"/>
+  <permission permission_group_id="general" permission_id="tagess_edit_wiki" permission_type="flag" interface_group_id="generalPermissions" display_order="50002"/>
+  <permission permission_group_id="general" permission_id="tagess_watch_tag" permission_type="flag" interface_group_id="generalPermissions" display_order="50000"/>
+</permissions>

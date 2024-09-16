@@ -4,7 +4,7 @@
 * @author AddonsLab
 * @license https://addonslab.com/
 * @link https://addonslab.com/
-* @version 3.9.2
+* @version 3.8.0
 This software is furnished under a license and may be used and copied
 only  in  accordance  with  the  terms  of such  license and with the
 inclusion of the above copyright notice.  This software  or any other

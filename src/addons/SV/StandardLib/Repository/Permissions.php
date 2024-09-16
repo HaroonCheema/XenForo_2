@@ -3,6 +3,8 @@
 namespace SV\StandardLib\Repository;
 
 use SV\StandardLib\Permissions\PermissionCache;
+use XF\Entity\PermissionCacheContent;
+use XF\Entity\PermissionCombination;
 use XF\Entity\User;
 use XF\Mvc\Entity\Repository;
 use function array_key_exists;
@@ -17,7 +19,7 @@ class Permissions extends Repository
      */
     public function cacheGlobalPermissions(array $permissionCombinationIds)
     {
-        $db = $this->db();
+        $db = \XF::db();
 
         $cachedPerms = PermissionCache::getCachedGlobalPermissions();
         $uncachedCombinations = [];
@@ -44,7 +46,7 @@ class Permissions extends Repository
 
         foreach ($permissions as $permissionCombination)
         {
-            \XF\Entity\PermissionCombination::instantiateProxied($permissionCombination);
+            PermissionCombination::instantiateProxied($permissionCombination);
         }
     }
 
@@ -56,7 +58,7 @@ class Permissions extends Repository
      */
     public function cachePermissions(string $contentType, string $permissionGroup, array $permissionMap)
     {
-        $db = $this->db();
+        $db = \XF::db();
 
         $allCachedPermissions = PermissionCache::getCachedContentPermissions();
         $conditions = [];
@@ -94,11 +96,11 @@ class Permissions extends Repository
 
         foreach ($permissions as $permissionCombination)
         {
-            \XF\Entity\PermissionCacheContent::instantiateProxied($permissionCombination);
+            PermissionCacheContent::instantiateProxied($permissionCombination);
         }
     }
 
-    public function getPerContentPermissions(string $contentType, User $user = null): array
+    public function getPerContentPermissions(string $contentType, ?User $user = null): array
     {
         $user = $user ?? \XF::visitor();
         $permissionCombinationId = $user->permission_combination_id;
@@ -113,12 +115,12 @@ class Permissions extends Repository
      * @deprecated Replacement is getPerContentPermissions
      * @noinspection PhpUnusedParameterInspection
      */
-    public function getContentPermissions(string $contentType, string $NotUseArg, User $user = null): array
+    public function getContentPermissions(string $contentType, string $NotUseArg, ?User $user = null): array
     {
         return $this->getPerContentPermissions($contentType, $user);
     }
 
-    public function getGlobalPermissions(User $user = null): array
+    public function getGlobalPermissions(?User $user = null): array
     {
         $user = $user ?? \XF::visitor();
         $permissionCombinationId = $user->permission_combination_id;

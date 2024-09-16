@@ -160,7 +160,10 @@ return array(
 	';
 	}
 	$__finalCompiled .= '
-	' . $__templater->includeTemplate('dbtech_credits_member_stats', $__vars) . '
+	' . $__templater->callMacro('BRATR_rating_macros', 'receive_rating_count', array(
+		'user' => $__vars['user'],
+	), $__vars) . '
+' . $__templater->includeTemplate('dbtech_credits_member_stats', $__vars) . '
 	' . '
 ';
 	if (($__vars['user']['user_id'] == $__vars['xf']['visitor']['user_id']) OR $__vars['xf']['visitor']['is_admin']) {

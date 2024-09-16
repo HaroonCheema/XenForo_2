@@ -10,6 +10,7 @@ return array(
 		'nodeIds' => $__vars['nodeIds'],
 		'nodeTree' => $__vars['nodeTree'],
 	), $__vars) . '
+	' . $__templater->includeTemplate('avForumsTagEss_thread_prefix_edit_default_tags', $__vars) . '
 	');
 	$__finalCompiled .= $__templater->includeTemplate('base_prefix_edit', $__compilerTemp1);
 	return $__finalCompiled;

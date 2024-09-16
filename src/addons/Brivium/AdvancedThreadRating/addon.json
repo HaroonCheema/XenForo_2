@@ -1,0 +1,14 @@
+{
+    "legacy_addon_id": "BR_AdvancedThreadRating",
+    "title": "Brivium - Advanced Thread Rating",
+    "description": "This add-on allows users to evaluate a thread inside the forum/site.",
+    "version_id": 2020071,
+    "version_string": "2.2.0",
+    "dev": "Brivium",
+    "dev_url": "http://brivium.com/",
+    "faq_url": "http://brivium.com/faqs",
+    "support_url": "http://brivium.com/support-tickets/list",
+    "extra_urls": [],
+    "require": [],
+    "icon": "fas fa-star-half-alt"
+}

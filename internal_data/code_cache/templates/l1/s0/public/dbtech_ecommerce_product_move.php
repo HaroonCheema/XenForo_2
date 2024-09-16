@@ -37,6 +37,10 @@ return array(
 			' . $__templater->formPrefixInputRow($__vars['prefixes'], array(
 		'type' => 'dbtechEcommerceProduct',
 		'prefix-value' => $__vars['product']['prefix_id'],
+		'multi-prefix-value' => $__vars['product']['sv_prefix_ids'],
+		'multi-prefix-content-parent' => $__vars['product']['Category'],
+		'multi-prefix-content' => $__vars['product'],
+		'full-row' => true,
 		'textbox-value' => $__vars['product']['title'],
 		'href' => $__templater->func('link', array('dbtech-ecommerce/prefixes', ), false),
 		'listen-to' => '< .js-prefixListenContainer | .js-categoryList',

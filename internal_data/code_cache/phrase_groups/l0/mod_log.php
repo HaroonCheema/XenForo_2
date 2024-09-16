@@ -104,6 +104,7 @@ return array (
   'mod_log.thread_prefix' => 'Thread prefix edited from \'{old}\'',
   'mod_log.thread_reply_ban' => '{name} banned from replying to thread (reason: {reason})',
   'mod_log.thread_reply_ban_delete' => '{name}\'s thread reply ban removed',
+  'mod_log.thread_reset_rating' => 'Thread Reset Rating (reason: {reason})',
   'mod_log.thread_stick' => 'Thread stuck',
   'mod_log.thread_title' => 'Thread title edited from \'{old}\'',
   'mod_log.thread_unapprove' => 'Thread unapproved',

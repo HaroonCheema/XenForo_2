@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="admin_navigation.manageTags" version_id="2000000" version_string="2.0.0"><![CDATA[Manage tags]]></phrase>
+  <phrase title="admin_navigation.tagess_blacklistedtags" version_id="2000001" version_string="2.0.0"><![CDATA[Blacklisted tags]]></phrase>
+  <phrase title="admin_navigation.tagess_categories" version_id="2000001" version_string="2.0.0"><![CDATA[Tag categories]]></phrase>
+  <phrase title="admin_navigation_tagess_blacklistedtags" version_id="120" version_string="1.2.0"><![CDATA[Blacklisted Tags]]></phrase>
+  <phrase title="admin_navigation_tagess_categories" version_id="169" version_string="1.7.0 (RC2)"><![CDATA[Categories]]></phrase>
+  <phrase title="avForumsPrefixEss_add_tags" version_id="2000006" version_string="2.0.0 Alpha 5"><![CDATA[Tags to add]]></phrase>
+  <phrase title="avForumsPrefixEss_remove_tags" version_id="2000006" version_string="2.0.0 Alpha 5"><![CDATA[Tags to remove]]></phrase>
+  <phrase title="avForumsTagEss_add_category" version_id="2000002" version_string="2.0.0"><![CDATA[Add category]]></phrase>
+  <phrase title="avForumsTagEss_add_tag_to_blacklist" version_id="2000001" version_string="2.0.0"><![CDATA[Add tag to blacklist]]></phrase>
+  <phrase title="avForumsTagEss_alert" version_id="2000019" version_string="2.0.0"><![CDATA[Alert]]></phrase>
+  <phrase title="avForumsTagEss_blacklist" version_id="2000001" version_string="2.0.0"><![CDATA[Blacklist]]></phrase>
+  <phrase title="avForumsTagEss_blacklist_tag" version_id="2000001" version_string="2.0.0"><![CDATA[Blacklist tag]]></phrase>
+  <phrase title="avForumsTagEss_blacklisted_tags" version_id="2000001" version_string="2.0.0"><![CDATA[Blacklisted tags]]></phrase>
+  <phrase title="avForumsTagEss_canonical_tag" version_id="2000001" version_string="2.0.0"><![CDATA[Canonical tag]]></phrase>
+  <phrase title="avForumsTagEss_category" version_id="2000001" version_string="2.0.0"><![CDATA[Tag category]]></phrase>
+  <phrase title="avForumsTagEss_category_identifier" version_id="2000002" version_string="2.0.0"><![CDATA[Category Id]]></phrase>
+  <phrase title="avForumsTagEss_category_identifier_explain" version_id="2000002" version_string="2.0.0"><![CDATA[This is used as the css class name for displaying tags in this category.]]></phrase>
+  <phrase title="avForumsTagEss_default_tags" version_id="2000001" version_string="2.0.0"><![CDATA[Default tags]]></phrase>
+  <phrase title="avForumsTagEss_disable_alert_notification" version_id="2000005" version_string="2.0.0 Alpha 4"><![CDATA[Disable alert notifications]]></phrase>
+  <phrase title="avForumsTagEss_edit_category" version_id="2000005" version_string="2.0.0 Alpha 4"><![CDATA[Edit category]]></phrase>
+  <phrase title="avForumsTagEss_edit_tag" version_id="2000001" version_string="2.0.0"><![CDATA[Edit tag]]></phrase>
+  <phrase title="avForumsTagEss_edit_wiki" version_id="2000001" version_string="2.0.0"><![CDATA[Edit Wiki]]></phrase>
+  <phrase title="avForumsTagEss_enable_alert_notification" version_id="2000005" version_string="2.0.0 Alpha 4"><![CDATA[Enable alert notifications]]></phrase>
+  <phrase title="avForumsTagEss_limit" version_id="2000005" version_string="2.0.0 Alpha 4"><![CDATA[Limit]]></phrase>
+  <phrase title="avForumsTagEss_limit_how_many_tags_will_be_shown_for_tags_cloud_widget" version_id="2000005" version_string="2.0.0 Alpha 4"><![CDATA[how many tags will be shown for the tags cloud widget]]></phrase>
+  <phrase title="avForumsTagEss_new_content_with_watched_tag" version_id="2000500" version_string="2.0.5"><![CDATA[{name} tagged a {content_type} {title} with {tag}]]></phrase>
+  <phrase title="avForumsTagEss_no_blacklisted_tags_found" version_id="2000002" version_string="2.0.0"><![CDATA[No blacklisted tags found]]></phrase>
+  <phrase title="avForumsTagEss_no_tag_categories_found" version_id="2000002" version_string="2.0.0"><![CDATA[No tag categories found]]></phrase>
+  <phrase title="avForumsTagEss_no_wikipedia_entry_exists" version_id="2000001" version_string="2.0.0"><![CDATA[No Wikipedia entry exists for this tag]]></phrase>
+  <phrase title="avForumsTagEss_parent_tag" version_id="2000001" version_string="2.0.0"><![CDATA[Parent tag]]></phrase>
+  <phrase title="avForumsTagEss_please_confirm_that_you_want_to_blacklist_following_tag" version_id="2000001" version_string="2.0.0"><![CDATA[Please confirm that you want to blacklist the following tag:]]></phrase>
+  <phrase title="avForumsTagEss_please_enter_valid_tag" version_id="2000001" version_string="2.0.0"><![CDATA[Tag {tag} is invalid, please enter a valid tag name ]]></phrase>
+  <phrase title="avForumsTagEss_recent_contents" version_id="2000001" version_string="2.0.0"><![CDATA[Recent contents]]></phrase>
+  <phrase title="avForumsTagEss_regex" version_id="2000001" version_string="2.0.0"><![CDATA[Regex]]></phrase>
+  <phrase title="avForumsTagEss_regex_blacklist" version_id="2000001" version_string="2.0.0"><![CDATA[Use regex (regular expressions) instead of direct text match]]></phrase>
+  <phrase title="avForumsTagEss_regex_blacklist_explain" version_id="2000001" version_string="2.0.0"><![CDATA[Blacklist via regex using <a href="http://www.php.net/manual/en/reference.pcre.pattern.syntax.php">php regex syntax</a><br/>
+Note: use a full expression, including delimiters and switches.]]></phrase>
+  <phrase title="avForumsTagEss_requested_tag_category_not_found" version_id="2000001" version_string="2.0.0"><![CDATA[The requested tag category could not be found.]]></phrase>
+  <phrase title="avForumsTagEss_restrict_to_forum" version_id="2000019" version_string="2.0.0"><![CDATA[Restrict addition of tag to threads in these forums]]></phrase>
+  <phrase title="avForumsTagEss_some_tags_not_valid_please_change_x" version_id="2000000" version_string="2.0.0"><![CDATA[Some tags were not valid because they are too short, too long, numeric, float, or contain disallowed text. Please change the following tags: {tags}]]></phrase>
+  <phrase title="avForumsTagEss_stop_watching_tags" version_id="2000005" version_string="2.0.0 Alpha 4"><![CDATA[Stop watching tags]]></phrase>
+  <phrase title="avForumsTagEss_synonym_of" version_id="2000001" version_string="2.0.0"><![CDATA[Synonym of]]></phrase>
+  <phrase title="avForumsTagEss_synonym_of_x" version_id="2000001" version_string="2.0.0"><![CDATA[Synonym of '{tag}']]></phrase>
+  <phrase title="avForumsTagEss_synonyms" version_id="2000001" version_string="2.0.0"><![CDATA[Synonyms]]></phrase>
+  <phrase title="avForumsTagEss_tag_added_to_blacklist_successfully" version_id="2000001" version_string="2.0.0"><![CDATA[Tag added to blacklist successfully]]></phrase>
+  <phrase title="avForumsTagEss_tag_cannot_be_a_synonym_of_itself" version_id="2000001" version_string="2.0.0"><![CDATA[A tag {tag} cannot be a synonym of itself]]></phrase>
+  <phrase title="avForumsTagEss_tag_categories" version_id="2000002" version_string="2.0.0"><![CDATA[Tag Categories]]></phrase>
+  <phrase title="avForumsTagEss_tag_category" version_id="2000000" version_string="2.0.0"><![CDATA[Tag category]]></phrase>
+  <phrase title="avForumsTagEss_tag_is_already_blacklisted" version_id="2000001" version_string="2.0.0"><![CDATA[This tag is already blacklisted.]]></phrase>
+  <phrase title="avForumsTagEss_tag_is_blacklisted" version_id="2000005" version_string="2.0.0 Alpha 4"><![CDATA[This tag '{tag}' is blacklisted.]]></phrase>
+  <phrase title="avForumsTagEss_tagline" version_id="2000001" version_string="2.0.0"><![CDATA[Tagline]]></phrase>
+  <phrase title="avForumsTagEss_tags_are_blacklisted" version_id="2000005" version_string="2.0.0 Alpha 4"><![CDATA[Some tags are blacklisted. Please change the following tags: {tags}]]></phrase>
+  <phrase title="avForumsTagEss_there_no_tags_to_display" version_id="2000005" version_string="2.0.0 Alpha 4"><![CDATA[There are no tags to display]]></phrase>
+  <phrase title="avForumsTagEss_top_users" version_id="2000001" version_string="2.0.0"><![CDATA[Top users]]></phrase>
+  <phrase title="avForumsTagEss_unwatch_tag" version_id="2000001" version_string="2.0.0"><![CDATA[Unwatch tag]]></phrase>
+  <phrase title="avForumsTagEss_view_information" version_id="2000001" version_string="2.0.0"><![CDATA[View information]]></phrase>
+  <phrase title="avForumsTagEss_view_more_on_wikipedia" version_id="2000001" version_string="2.0.0"><![CDATA[View More On Wikipedia.org]]></phrase>
+  <phrase title="avForumsTagEss_watch_tag" version_id="2000001" version_string="2.0.0"><![CDATA[Watch tag]]></phrase>
+  <phrase title="avForumsTagEss_watch_this_tag" version_id="2000001" version_string="2.0.0"><![CDATA[Watch this tag]]></phrase>
+  <phrase title="avForumsTagEss_watched_tag_email_html_footer" version_id="2000001" version_string="2.0.0"><![CDATA[<p class="minorText">Please do not reply to this message. You must visit the forum to reply.</p>
+
+<p class="minorText">This message was sent to you because you opted to watch the tag {tag} at {board} with email notification of new replies. You will not receive any further emails about this thread until you have read the new messages.</p>
+
+<p class="minorText">If you no longer wish to receive these emails, you may <a href="{disable_this_link}">disable emails from this tag</a> or <a href="{disable_all_link}">disable all emails</a>.</p>]]></phrase>
+  <phrase title="avForumsTagEss_watched_tag_new_content_email_html" version_id="2000005" version_string="2.0.0 Alpha 4"><![CDATA[<p>{replier} tagged new content with the tag {tag} you are watching at {board}.</p>]]></phrase>
+  <phrase title="avForumsTagEss_watched_tags" version_id="2000005" version_string="2.0.0 Alpha 4"><![CDATA[Watched tags]]></phrase>
+  <phrase title="avForumsTagEss_wiki" version_id="2000000" version_string="2.0.0"><![CDATA[Wiki]]></phrase>
+  <phrase title="avForumsTagEss_wiki_changes_saved_successfully" version_id="2000001" version_string="2.0.0"><![CDATA[Wiki changes has been saved successfully]]></phrase>
+  <phrase title="avForumsTagEss_wiki_description" version_id="2000000" version_string="2.0.0"><![CDATA[Description]]></phrase>
+  <phrase title="avForumsTagEss_wiki_info_for_x" version_id="2000001" version_string="2.0.0"><![CDATA[Wiki Information For {tag}]]></phrase>
+  <phrase title="avForumsTagEss_you_not_watching_any_tags" version_id="2000005" version_string="2.0.0 Alpha 4"><![CDATA[You are not watching any tags]]></phrase>
+  <phrase title="avForumsTagEss_you_sure_you_want_to_unwatch_this_tag" version_id="2000001" version_string="2.0.0"><![CDATA[Are you sure you want to unwatch this tag?]]></phrase>
+  <phrase title="avForums_please_confirm_that_you_want_to_delete_following_blacklisted_tag" version_id="2010400" version_string="2.1.4"><![CDATA[Please confirm that you want to delete the following blacklisted tag]]></phrase>
+  <phrase title="avForumstagEss_manage_watched_tags" version_id="2000005" version_string="2.0.0 Alpha 4"><![CDATA[Manage watched tags]]></phrase>
+  <phrase title="blacklist_selected_tags" version_id="1080009" version_string="1.8.0rc9"><![CDATA[Blacklist selected tags]]></phrase>
+  <phrase title="delete_selected_tags" version_id="1080009" version_string="1.8.0rc9"><![CDATA[Delete Selected Tags]]></phrase>
+  <phrase title="nav.watchedTags" version_id="2000000" version_string="2.0.0"><![CDATA[Watched tags]]></phrase>
+  <phrase title="option.tagessAltMediaWikiApiLink" version_id="2000000" version_string="2.0.0"><![CDATA[Alternative Media Wiki API Link]]></phrase>
+  <phrase title="option.tagessAltMediaWikiEmbedLink" version_id="2000000" version_string="2.0.0"><![CDATA[Alternative Media Wiki Embed Link]]></phrase>
+  <phrase title="option.tagessPullFromWikipedia" version_id="2000000" version_string="2.0.0"><![CDATA[Description by default]]></phrase>
+  <phrase title="option.tagessSuggestTags" version_id="2000000" version_string="2.0.0"><![CDATA[Suggest Tags from thread title]]></phrase>
+  <phrase title="option.tagessSynonymRewrite" version_id="2000001" version_string="2.0.0"><![CDATA[On making a tag a synonym, rewrite all content to use the parent tag]]></phrase>
+  <phrase title="option.tagessTagsOnThreadList" version_id="2000000" version_string="2.0.0"><![CDATA[Thread List: Tags Visible]]></phrase>
+  <phrase title="option.tagessWikiDebug" version_id="2000000" version_string="2.0.0"><![CDATA[Log Wikipedia responses as errors]]></phrase>
+  <phrase title="option.tagessWikipediaLanguageCode" version_id="2000000" version_string="2.0.0"><![CDATA[Wikipedia Language Code]]></phrase>
+  <phrase title="option.tagess_blockNumberTags" version_id="2000000" version_string="2.0.0"><![CDATA[Block Numeric Tags]]></phrase>
+  <phrase title="option.tagess_categoriesEnabled" version_id="2000000" version_string="2.0.0"><![CDATA[Tag Categories Enabled]]></phrase>
+  <phrase title="option.tagess_categoriesEnabledThread" version_id="2000000" version_string="2.0.0"><![CDATA[Categories Separated: Thread View]]></phrase>
+  <phrase title="option.tagess_disambiguation_exclude" version_id="2000000" version_string="2.0.0"><![CDATA[Exclude disambiguation pages]]></phrase>
+  <phrase title="option.tagess_includeNodeParentTags" version_id="2000000" version_string="2.0.0"><![CDATA[Include Parent Node Tags]]></phrase>
+  <phrase title="option.tagess_navWatchTags" version_id="2000000" version_string="2.0.0"><![CDATA[Display Watched Tags Nav Link]]></phrase>
+  <phrase title="option.tagess_suggeststopwords" version_id="2000000" version_string="2.0.0"><![CDATA[Suggest Tags Stop Words]]></phrase>
+  <phrase title="option.tagess_suggeststopwords_state" version_id="2000000" version_string="2.0.0"><![CDATA[Suggest "stop words" usage]]></phrase>
+  <phrase title="option.tagess_suggestwordcountlimit" version_id="2000000" version_string="2.0.0"><![CDATA[Suggest Tags from title wordcount limit]]></phrase>
+  <phrase title="option.tagess_topUsers" version_id="2000000" version_string="2.0.0"><![CDATA[Display Top Users]]></phrase>
+  <phrase title="option.tagess_wikidescriptiononpage" version_id="2000000" version_string="2.0.0"><![CDATA[Display Wiki On Tag View]]></phrase>
+  <phrase title="option.taggess_fuzzywikisearch" version_id="2000000" version_string="2.0.0"><![CDATA[Fuzzy wikipedia search]]></phrase>
+  <phrase title="option_explain.tagessAltMediaWikiApiLink" version_id="2000000" version_string="2.0.0"><![CDATA[Supports the replacable: {language}<br/>
+<br/>
+If no default then uses: 'https://{language}.wikipedia.org/w/api.php'.<br/>
+<br/>
+For custom instances see; <a href="https://www.mediawiki.org/wiki/Manual:Configuration_settings">mediawiki configuration settings</a>]]></phrase>
+  <phrase title="option_explain.tagessAltMediaWikiEmbedLink" version_id="2000000" version_string="2.0.0"><![CDATA[Supports the replacable: {language}<br/>
+<br/>
+If no default then uses: 'https://{language}.wikipedia.org/wiki']]></phrase>
+  <phrase title="option_explain.tagessPullFromWikipedia" version_id="2000000" version_string="2.0.0"><![CDATA[If enabled, any new tag will automatically attempt to pull a description from Wikipedia.com.]]></phrase>
+  <phrase title="option_explain.tagessSuggestTags" version_id="2000000" version_string="2.0.0"><![CDATA[On creating a thread, suggest tags from the thread title]]></phrase>
+  <phrase title="option_explain.tagessSynonymRewrite" version_id="2000001" version_string="2.0.0"><![CDATA[]]></phrase>
+  <phrase title="option_explain.tagessTagsOnThreadList" version_id="2000000" version_string="2.0.0"><![CDATA[Display the thread's tags underneath the thread title on the forum view (thread list).]]></phrase>
+  <phrase title="option_explain.tagessWikiDebug" version_id="2000000" version_string="2.0.0"><![CDATA[Sends a copy of the MediaWiki response the xenforo error log for troubleshooting purposes.]]></phrase>
+  <phrase title="option_explain.tagessWikipediaLanguageCode" version_id="2000000" version_string="2.0.0"><![CDATA[The language code for the api you want to use for pulling default information. For example, the bold part of this link is the english version: http://<strong>en</strong>.wikipedia.com]]></phrase>
+  <phrase title="option_explain.tagess_blockNumberTags" version_id="2000000" version_string="2.0.0"><![CDATA[Block any tag that returns true for is_numeric() or is_float(). These will not trigger an error message, just silently be removed from the list of tags. Only effects new content.]]></phrase>
+  <phrase title="option_explain.tagess_categoriesEnabled" version_id="2000000" version_string="2.0.0"><![CDATA[When enabled, two extra queries will be required on the thread view but tags will be broken down into the categories you decide.]]></phrase>
+  <phrase title="option_explain.tagess_categoriesEnabledThread" version_id="2000000" version_string="2.0.0"><![CDATA[Would you like to show the categories separate on the thread view? If disabled there won't be any additional queries but the category id will also not be able to be used for styling purposes.]]></phrase>
+  <phrase title="option_explain.tagess_disambiguation_exclude" version_id="2000000" version_string="2.0.0"><![CDATA[Skips Wikipedia's disambiguation pages on exact matches]]></phrase>
+  <phrase title="option_explain.tagess_includeNodeParentTags" version_id="2000000" version_string="2.0.0"><![CDATA[For the forum default tags feature, if this is enabled, then it will look at the node hierarchy and include all the default tags from each parent.]]></phrase>
+  <phrase title="option_explain.tagess_navWatchTags" version_id="2000000" version_string="2.0.0"><![CDATA[When checked, the watched tags navigation link will be visible.]]></phrase>
+  <phrase title="option_explain.tagess_suggeststopwords" version_id="2000000" version_string="2.0.0"><![CDATA[Skip looking for tags which start with these words]]></phrase>
+  <phrase title="option_explain.tagess_suggeststopwords_state" version_id="2000000" version_string="2.0.0"><![CDATA[Finding the suggested tags can be server intensive.<br/><br/> If you are experiencing slowness when tag suggestions are being found, try excluding tags which contain the stop words in the list below.
+
+<div class="baseHtml explain">
+<ul>
+<li>The ‘First word only’ option excludes possible tags where the first word of the tag is in the list.</li>
+<li>The ‘All words’ option examines all the words in each possible tag and excludes tags which contain any of the words in the list.</li>
+</ul>
+</div>]]></phrase>
+  <phrase title="option_explain.tagess_suggestwordcountlimit" version_id="2000000" version_string="2.0.0"><![CDATA[Tags are suggested based off sentence fragments by words, the larger the fragments, the more processing required to look up tags.]]></phrase>
+  <phrase title="option_explain.tagess_topUsers" version_id="2000000" version_string="2.0.0"><![CDATA[Do you want to display the top users of a tag?]]></phrase>
+  <phrase title="option_explain.tagess_wikidescriptiononpage" version_id="2000000" version_string="2.0.0"><![CDATA[Display the wiki description above the recent content when viewing the tag rather than in a new tab.]]></phrase>
+  <phrase title="option_explain.taggess_fuzzywikisearch" version_id="2000000" version_string="2.0.0"><![CDATA[When an exact title look up fails, attempt to use <a href="https://www.mediawiki.org/wiki/API%3aSearch">Search</a> to find the article by title instead, excluding any disambiguation pages.]]></phrase>
+  <phrase title="option_group.tagess" version_id="2000000" version_string="2.0.0"><![CDATA[Tag Essentials]]></phrase>
+  <phrase title="option_group_description.tagess" version_id="2000000" version_string="2.0.0"><![CDATA[Options for the Tag Essentials add-on.]]></phrase>
+  <phrase title="permission.general_tagessCanViewTagUsers" version_id="2000000" version_string="2.0.0"><![CDATA[TagEss - View Tag Users]]></phrase>
+  <phrase title="permission.general_tagess_edit_category" version_id="2000000" version_string="2.0.0"><![CDATA[TagEss - Can Edit Category]]></phrase>
+  <phrase title="permission.general_tagess_edit_wiki" version_id="2000000" version_string="2.0.0"><![CDATA[TagEss - Can Edit Wiki]]></phrase>
+  <phrase title="permission.general_tagess_watch_tag" version_id="2000000" version_string="2.0.0"><![CDATA[TagEss - Can Watch tag]]></phrase>
+  <phrase title="prune_low_usage_tags" version_id="1081200" version_string="1.8.12"><![CDATA[Prune low usage tags]]></phrase>
+  <phrase title="rebuild_wiki_tags" version_id="1080009" version_string="1.8.0rc9"><![CDATA[Rebuild Empty Wiki Tags]]></phrase>
+  <phrase title="tagEss_auto_tag_from_title" version_id="2010400" version_string="2.1.4"><![CDATA[Auto-tag threads]]></phrase>
+  <phrase title="tagEss_auto_tag_from_title_explain" version_id="2010400" version_string="2.1.4"><![CDATA[Applies tags which match fragments of the thread title]]></phrase>
+  <phrase title="tagess_delete_permanent" version_id="2000019" version_string="2.0.0"><![CDATA[Delete permanent tags]]></phrase>
+  <phrase title="tagess_delete_synonyms" version_id="2000019" version_string="2.0.0"><![CDATA[Delete tags with synonyms]]></phrase>
+  <phrase title="tagess_prune_count" version_id="2000019" version_string="2.0.0"><![CDATA[Remove tags with this usage count and fewer]]></phrase>
+  <phrase title="taggess_all_words" version_id="1080008" version_string="1.8.0rc8"><![CDATA[All words]]></phrase>
+  <phrase title="taggess_disabled" version_id="1080008" version_string="1.8.0rc8"><![CDATA[Disabled]]></phrase>
+  <phrase title="taggess_firstword_only" version_id="1080008" version_string="1.8.0rc8"><![CDATA[First word only]]></phrase>
+  <phrase title="widget_def.tags_cloud" version_id="2000005" version_string="2.0.0 Alpha 4"><![CDATA[Tag Essentials: Tags cloud]]></phrase>
+  <phrase title="widget_def_desc.tags_cloud" version_id="2000001" version_string="2.0.0"><![CDATA[Displays a block containing tags cloud.]]></phrase>
+  <phrase title="x_created_resource_y_with_watched_tag" version_id="92" version_string="Beta 3"><![CDATA[{name} tagged resource {title} with a tag you're watching.]]></phrase>
+</phrases>

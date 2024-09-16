@@ -52,8 +52,8 @@ return array(
 				' . $__templater->callMacro('prefix_macros', 'select', array(
 				'prefixes' => $__vars['prefixes'],
 				'type' => 'thread',
-				'selected' => ($__vars['filterSet']['__prefix_ids'] ?: array()),
 				'multiple' => true,
+				'selected' => ($__vars['filterSet']['__prefix_ids'] ?: array()),
 				'name' => 'thread_fields[__prefix_ids]',
 				'noneLabel' => $__vars['xf']['language']['parenthesis_open'] . 'Any' . $__vars['xf']['language']['parenthesis_close'],
 			), $__vars) . '
@@ -94,6 +94,7 @@ return array(
 				' . $__templater->callMacro('prefix_macros', 'select', array(
 				'prefixes' => $__vars['prefixes'],
 				'type' => 'thread',
+				'multiple' => true,
 				'selected' => ($__vars['filters']['prefix_id'] ? $__vars['filters']['prefix_id'] : 0),
 				'name' => 'prefix_id',
 				'noneLabel' => $__vars['xf']['language']['parenthesis_open'] . 'Any' . $__vars['xf']['language']['parenthesis_close'],
@@ -301,6 +302,11 @@ return array(
 				);
 			}
 		}
+		$__compilerTemp15[] = array(
+			'value' => 'rating',
+			'label' => 'Rating',
+			'_type' => 'option',
+		);
 		if ($__templater->isTraversable($__vars['sortableFields'])) {
 			foreach ($__vars['sortableFields'] AS $__vars['fieldId'] => $__vars['field']) {
 				$__compilerTemp15[] = array(

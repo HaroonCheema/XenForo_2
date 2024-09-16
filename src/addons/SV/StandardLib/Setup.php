@@ -6,6 +6,7 @@ use XF\AddOn\AbstractSetup;
 use XF\AddOn\StepRunnerInstallTrait;
 use XF\AddOn\StepRunnerUninstallTrait;
 use XF\AddOn\StepRunnerUpgradeTrait;
+use XF\Entity\Phrase;
 
 class Setup extends AbstractSetup
 {
@@ -21,12 +22,12 @@ class Setup extends AbstractSetup
 
     public function uninstallStep1()// : void
     {
-        /** @var \XF\Entity\Phrase[] $phrases */
-        $phrases = \XF::finder('XF:Phrase')
-                      ->where('language_id', '=', 0)
-                      ->where('addon_id', '=', 'SV/StandardLib')
-                      ->where('title', 'like', 'time.%')
-                      ->fetch();
+        /** @var Phrase[] $phrases */
+        $phrases = Helper::finder(\XF\Finder\Phrase::class)
+                         ->where('language_id', '=', 0)
+                         ->where('addon_id', '=', 'SV/StandardLib')
+                         ->where('title', 'like', 'time.%')
+                         ->fetch();
         foreach ($phrases as $phrase)
         {
             $phrase->addon_id = '';
@@ -43,17 +44,20 @@ class Setup extends AbstractSetup
     {
         parent::postInstall($stateChanges);
         Helper::repo()->rebuildAddOnVersionCache();
+        Helper::repo()->clearShimCache();
     }
 
     public function postUpgrade($previousVersion, array &$stateChanges)// : void
     {
         parent::postUpgrade($previousVersion, $stateChanges);
         Helper::repo()->rebuildAddOnVersionCache();
+        Helper::repo()->clearShimCache();
     }
 
     public function postRebuild()// : void
     {
         parent::postRebuild();
         Helper::repo()->rebuildAddOnVersionCache();
+        Helper::repo()->clearShimCache();
     }
 }

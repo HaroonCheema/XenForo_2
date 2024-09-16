@@ -378,7 +378,26 @@ return array(
 				';
 	}
 	$__finalCompiled .= '
-				' . '
+				';
+	if (($__vars['user']['user_id'] == $__vars['xf']['visitor']['user_id']) AND $__vars['user']['bratr_ratings']) {
+		$__finalCompiled .= '
+	<a href="' . $__templater->func('link', array('members/bratr-my-ratings', $__vars['user'], ), true) . '"
+	   rel="nofollow"
+	   class="tabs-tab"
+	   id="bratr-ratings"
+	   role="tab">' . 'My Ratings' . '</a>
+';
+	} else if ($__vars['user']['bratr_receive_ratings']) {
+		$__finalCompiled .= '
+	<a href="' . $__templater->func('link', array('members/bratr-ratings', $__vars['user'], ), true) . '"
+	   rel="nofollow"
+	   class="tabs-tab"
+	   id="bratr-ratings"
+	   role="tab">' . 'Receive Ratings' . '</a>
+';
+	}
+	$__finalCompiled .= '
+' . '
 ';
 	if (($__vars['user']['user_id'] == $__vars['xf']['visitor']['user_id']) OR $__vars['xf']['visitor']['is_admin']) {
 		$__finalCompiled .= '
@@ -566,7 +585,22 @@ return array(
 	';
 	}
 	$__finalCompiled .= '
-	' . '
+	';
+	if (($__vars['user']['user_id'] == $__vars['xf']['visitor']['user_id']) AND $__vars['user']['bratr_ratings']) {
+		$__finalCompiled .= '
+	<li data-href="' . $__templater->func('link', array('members/bratr-my-ratings', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="bratr-ratings">
+		<div class="blockMessage">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
+	</li>
+';
+	} else if ($__vars['user']['bratr_receive_ratings']) {
+		$__finalCompiled .= '
+	<li data-href="' . $__templater->func('link', array('members/bratr-ratings', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="bratr-ratings">
+		<div class="blockMessage">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
+	</li>
+';
+	}
+	$__finalCompiled .= '
+' . '
 ';
 	if (($__vars['user']['user_id'] == $__vars['xf']['visitor']['user_id']) OR $__vars['xf']['visitor']['is_admin']) {
 		$__finalCompiled .= '

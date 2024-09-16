@@ -4,7 +4,7 @@
 * @author AddonsLab
 * @license https://addonslab.com/
 * @link https://addonslab.com/
-* @version 3.9.2
+* @version 3.8.0
 This software is furnished under a license and may be used and copied
 only  in  accordance  with  the  terms  of such  license and with the
 inclusion of the above copyright notice.  This software  or any other
@@ -24,7 +24,7 @@ of the license.
 namespace AL\ThreadFilter;
 
 use AddonsLab\Core\Xf2\AppTrait;
-use AL\FilterFramework\AbstractContentTypeProvider;
+use AL\FilterFramework\ContentTypeProviderInterface;
 use AL\FilterFramework\FilterApp;
 use AL\FilterFramework\Service\ElasticSource;
 use AL\FilterFramework\Service\FacetedSearchProvider;
@@ -38,7 +38,7 @@ class App extends \AddonsLab\Core\App
     use AppTrait;
 
     /**
-     * @return AbstractContentTypeProvider
+     * @return ContentTypeProviderInterface
      * @testable
      */
     public static function getContentTypeProvider()
@@ -54,7 +54,7 @@ class App extends \AddonsLab\Core\App
     {
         return FilterApp::getCachedSearchProvider(static::getContentTypeProvider());
     }
-
+    
     /**
      * @return \AL\FilterFramework\Service\DisplayFormatter
      * @testable

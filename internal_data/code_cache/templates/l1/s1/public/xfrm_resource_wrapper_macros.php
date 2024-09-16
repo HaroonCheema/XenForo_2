@@ -42,15 +42,23 @@ return array(
 						';
 	}
 	$__compilerTemp4 = '';
-	if ($__templater->method($__vars['resource'], 'isDownloadable', array())) {
+	$__compilerTemp5 = '';
+	$__compilerTemp5 .= (isset($__templater->pageParams['pageAction']) ? $__templater->pageParams['pageAction'] : '');
+	if (strlen(trim($__compilerTemp5)) > 0) {
 		$__compilerTemp4 .= '
+	<div class="p-title-pageAction">' . $__compilerTemp5 . '</div>
+';
+	}
+	$__compilerTemp6 = '';
+	if ($__templater->method($__vars['resource'], 'isDownloadable', array())) {
+		$__compilerTemp6 .= '
 						<div class="p-title-pageAction">
 							';
 		if ($__templater->method($__vars['resource'], 'canDownload', array())) {
-			$__compilerTemp4 .= '
+			$__compilerTemp6 .= '
 								';
 			if ($__templater->method($__vars['resource'], 'isExternalDownload', array())) {
-				$__compilerTemp4 .= '
+				$__compilerTemp6 .= '
 									' . $__templater->button('Go to download', array(
 					'href' => $__templater->func('link', array('resources/download', $__vars['resource'], ), false),
 					'target' => '_blank',
@@ -63,7 +71,7 @@ return array(
 				)) . '
 								';
 			} else {
-				$__compilerTemp4 .= '
+				$__compilerTemp6 .= '
 									' . $__templater->button('Download', array(
 					'href' => $__templater->func('link', array('resources/download', $__vars['resource'], ), false),
 					'target' => '_blank',
@@ -74,22 +82,22 @@ return array(
 				)) . '
 								';
 			}
-			$__compilerTemp4 .= '
+			$__compilerTemp6 .= '
 							';
 		} else {
-			$__compilerTemp4 .= '
+			$__compilerTemp6 .= '
 								<span class="button button--wrap is-disabled">' . 'No permission to download' . '</span>
 							';
 		}
-		$__compilerTemp4 .= '
+		$__compilerTemp6 .= '
 						</div>
 					';
 	} else if ($__templater->method($__vars['resource'], 'isExternalPurchasable', array())) {
-		$__compilerTemp4 .= '
+		$__compilerTemp6 .= '
 						<div class="p-title-pageAction">
 							';
 		if ($__templater->method($__vars['resource'], 'canDownload', array())) {
-			$__compilerTemp4 .= '
+			$__compilerTemp6 .= '
 								' . $__templater->button('
 									' . 'Buy for ' . $__templater->filter($__vars['resource']['price'], array(array('currency', array($__vars['resource']['currency'], )),), true) . '' . '
 								', array(
@@ -102,25 +110,25 @@ return array(
 			)) . '
 							';
 		} else {
-			$__compilerTemp4 .= '
+			$__compilerTemp6 .= '
 								<span class="button button--wrap is-disabled">' . 'No permission to buy (' . $__templater->filter($__vars['resource']['price'], array(array('currency', array($__vars['resource']['currency'], )),), true) . ')' . '</span>
 							';
 		}
-		$__compilerTemp4 .= '
+		$__compilerTemp6 .= '
 						</div>
 					';
 	}
-	$__compilerTemp5 = '';
+	$__compilerTemp7 = '';
 	if ($__vars['showMeta']) {
-		$__compilerTemp5 .= '
+		$__compilerTemp7 .= '
 					<div class="p-description">
 						';
 		if ($__vars['metaHtml'] !== null) {
-			$__compilerTemp5 .= '
+			$__compilerTemp7 .= '
 							' . $__templater->filter($__vars['metaHtml'], array(array('raw', array()),), true) . '
 						';
 		} else {
-			$__compilerTemp5 .= '
+			$__compilerTemp7 .= '
 							<ul class="listInline listInline--bullet">
 								<li>
 									' . $__templater->fontAwesome('fa-user', array(
@@ -144,7 +152,7 @@ return array(
 								</li>
 								';
 			if ($__vars['xf']['options']['enableTagging'] AND ($__templater->method($__vars['resource'], 'canEditTags', array()) OR $__vars['resource']['tags'])) {
-				$__compilerTemp5 .= '
+				$__compilerTemp7 .= '
 									<li>
 
 										' . $__templater->callMacro('tag_macros', 'list', array(
@@ -155,25 +163,25 @@ return array(
 									</li>
 								';
 			}
-			$__compilerTemp5 .= '
+			$__compilerTemp7 .= '
 								';
 			if ($__vars['resource']['Featured']) {
-				$__compilerTemp5 .= '
+				$__compilerTemp7 .= '
 									<li><span class="label label--accent">' . 'Featured' . '</span></li>
 								';
 			}
-			$__compilerTemp5 .= '
+			$__compilerTemp7 .= '
 								';
 			if ($__templater->method($__vars['resource'], 'isNonOwnerTeamMember', array())) {
-				$__compilerTemp5 .= '
+				$__compilerTemp7 .= '
 									<li><span class="label label--accent">' . 'Team member' . '</span></li>
 								';
 			}
-			$__compilerTemp5 .= '
+			$__compilerTemp7 .= '
 							</ul>
 						';
 		}
-		$__compilerTemp5 .= '
+		$__compilerTemp7 .= '
 					</div>
 				';
 	}
@@ -189,8 +197,9 @@ return array(
 						' . $__compilerTemp3 . '
 					</h1>
 					' . $__compilerTemp4 . '
+' . $__compilerTemp6 . '
 				</div>
-				' . $__compilerTemp5 . '
+				' . $__compilerTemp7 . '
 			</div>
 		</div>
 	');
@@ -295,6 +304,13 @@ return array(
 	if ($__templater->method($__vars['resource'], 'hasViewableDiscussion', array())) {
 		$__compilerTemp1 .= '
 							<a class="tabs-tab ' . (($__vars['selected'] == 'discussion') ? 'is-active' : '') . '" href="' . $__templater->func('link', array('threads', $__vars['resource']['Discussion'], ), true) . '">' . 'Discussion' . '</a>
+';
+		if ($__templater->method($__vars['resource']['Discussion'], 'isDisplayReviewTab', array())) {
+			$__compilerTemp1 .= '
+	<a class="tabs-tab ' . (($__vars['selected'] == 'br-reviews') ? 'is-active' : '') . '" href="' . $__templater->func('link', array('threads/br-reviews', $__vars['resource']['Discussion'], ), true) . '">' . 'Discussion Reviews (' . $__templater->filter($__vars['resource']['Discussion']['brivium_review_counter'], array(array('number', array()),), true) . ')' . '</a>
+';
+		}
+		$__compilerTemp1 .= '
 						';
 	}
 	$__compilerTemp1 .= '

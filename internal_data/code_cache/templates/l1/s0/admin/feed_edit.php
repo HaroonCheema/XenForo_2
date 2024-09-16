@@ -176,6 +176,7 @@ return array(
 				',
 	)) . '
 
+			' . $__templater->includeTemplate('avForumsTagEss_feed_edit_default_tags', $__vars) . '
 			' . $__templater->formPrefixInputRow($__vars['prefixes'], array(
 		'textbox-name' => 'title_template',
 		'textbox-value' => $__vars['feed']['title_template'],
@@ -184,6 +185,8 @@ return array(
 		'type' => 'thread',
 		'href' => $__templater->func('link', array('forums/prefixes', ), false),
 		'listen-to' => '#js-nodeList',
+		'multi-prefix-value' => $__vars['feed']['sv_prefix_ids'],
+		'full-row' => true,
 	), array(
 		'label' => 'Title template',
 		'hint' => 'Optional',

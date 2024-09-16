@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <content_type_fields>
   <field content_type="thread_field" field_name="entity">AL\ThreadFilter:ThreadFieldIndex</field>
-  <field content_type="thread_field" field_name="phrase">altf_thread_field</field>
   <field content_type="thread_field" field_name="search_handler_class">AL\ThreadFilter\Search\Data\ThreadFieldIndex</field>
 </content_type_fields>

@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 75772d8638b2558302ea8b9fb21bc575
+// FROM HASH: df255635931ddd8ded84419ce36aedd8
 return array(
 'macros' => array('filter_element' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -108,7 +108,6 @@ return array(
     ';
 	$__compilerTemp1 = array(array(
 		'value' => '',
-		'label' => $__vars['xf']['language']['parenthesis_open'] . 'Any' . $__vars['xf']['language']['parenthesis_close'],
 		'_type' => 'option',
 	));
 	$__compilerTemp2 = $__templater->method($__templater->method($__vars['definition'], 'getFacetData', array()), 'getChoices', array($__vars['definition'], $__vars['set'], false, ));

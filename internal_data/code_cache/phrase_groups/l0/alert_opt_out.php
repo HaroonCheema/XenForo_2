@@ -1,5 +1,7 @@
 <?php
 return array (
+  'alert_opt_out.brivium_thread_rating_insert' => 'rated to a watched thread',
+  'alert_opt_out.brivium_thread_rating_like' => 'Likes your rated',
   'alert_opt_out.chat_message_mention' => 'Mentions you in a chat message',
   'alert_opt_out.chat_message_private_message' => 'Sends you private message in chat',
   'alert_opt_out.chat_message_quote' => 'Quotes you in a chat message',

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="option.thread_grid_layout_lessv2" version_id="20000" version_string="2.0.0"><![CDATA[Select Node]]></phrase>
+  <phrase title="option_explain.thread_grid_layout_lessv2" version_id="20000" version_string="2.0.0"><![CDATA[where you want to show the Grid]]></phrase>
+  <phrase title="option_group.thread_grid_layoutv2_less" version_id="20000" version_string="2.0.0"><![CDATA[[Xenbros] Thread Grid]]></phrase>
+  <phrase title="option_group_description.thread_grid_layoutv2_less" version_id="20000" version_string="2.0.0"><![CDATA[]]></phrase>
+</phrases>

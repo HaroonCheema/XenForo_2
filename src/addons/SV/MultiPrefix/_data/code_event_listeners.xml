@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<code_event_listeners>
+  <listener event_id="addon_post_install" execute_order="6281" callback_class="SV\MultiPrefix\InstallerListener" callback_method="addonPostInstall" active="1"/>
+  <listener event_id="addon_post_rebuild" execute_order="6281" callback_class="SV\MultiPrefix\InstallerListener" callback_method="addonPostRebuild" active="1"/>
+  <listener event_id="templater_macro_pre_render" execute_order="6281" callback_class="SV\MultiPrefix\Listener" callback_method="templateMacroPreRender_prefix_macros_row" active="1" hint="public:prefix_macros:row"/>
+  <listener event_id="templater_macro_pre_render" execute_order="6281" callback_class="SV\MultiPrefix\Listener" callback_method="templateMacroPreRender_prefix_macros_select" active="1" hint="public:prefix_macros:select"/>
+  <listener event_id="templater_template_pre_render" execute_order="6281" callback_class="\SV\MultiPrefix\Listener" callback_method="prefixInputTemplatePreRender" active="1" hint="public:prefix_input" description="public:prefix_input"/>
+  <listener event_id="templater_template_pre_render" execute_order="6281" callback_class="\SV\MultiPrefix\Listener" callback_method="templaterTemplatePreRender_dbtech_ecommerce_category_prefixes" active="1" hint="public:dbtech_ecommerce_category_prefixes" description="public:dbtech_ecommerce_category_prefixes"/>
+  <listener event_id="templater_template_pre_render" execute_order="6281" callback_class="\SV\MultiPrefix\Listener" callback_method="templaterTemplatePreRender_dbtech_shop_category_prefixes" active="1" hint="public:dbtech_shop_category_prefixes" description="public:dbtech_shop_category_prefixes"/>
+  <listener event_id="templater_template_pre_render" execute_order="6281" callback_class="\SV\MultiPrefix\Listener" callback_method="templaterTemplatePreRender_forum_prefixes" active="1" hint="public:forum_prefixes"/>
+  <listener event_id="templater_template_pre_render" execute_order="8281" callback_class="\SV\MultiPrefix\Listener" callback_method="templaterTemplatePreRender_xc_projectmanager_category_prefixes" active="1" hint="public:xc_project_manager_category_prefixes" description="public:xc_project_manager_category_prefixes"/>
+  <listener event_id="templater_template_pre_render" execute_order="6281" callback_class="\SV\MultiPrefix\Listener" callback_method="templaterTemplatePreRender_xfrm_category_prefixes" active="1" hint="public:xfrm_category_prefixes"/>
+</code_event_listeners>

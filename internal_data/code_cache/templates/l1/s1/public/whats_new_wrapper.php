@@ -53,7 +53,8 @@ return array(
 	';
 	}
 	$__finalCompiled .= '
-	' . '
+	<a class="' . $__templater->escape($__vars['baseClass']) . ' ' . (($__vars['pageSelected'] == 'bratr-new-ratings') ? $__templater->escape($__vars['selectedClass']) : '') . '" href="' . $__templater->func('link', array('whats-new/thread-ratings', ), true) . '" rel="nofollow">' . 'New Thread Ratings' . '</a>
+' . '
 ';
 	return $__finalCompiled;
 }

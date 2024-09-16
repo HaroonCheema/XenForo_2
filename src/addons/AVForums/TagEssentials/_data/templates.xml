@@ -1,0 +1,922 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="admin" title="avForumsTagEss_blacklist" version_id="2000001" version_string="2.0.0"><![CDATA[<xf:if is="$tag.exists()">
+	<xf:title>{{ phrase('confirm_action') }}</xf:title>
+<xf:else />
+	<xf:title>{{ phrase('avForumsTagEss_add_tag_to_blacklist') }}</xf:title>
+</xf:if>
+
+<xf:form action="{{ link('tags/blacklist', null, {'existing_tag_id': $tag ? $tag.tag_id : 0}) }}" class="block" ajax="true">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:if is="$tag && $tag.exists()">
+				<xf:inforow rowtype="confirm">
+					{{ phrase('avForumsTagEss_please_confirm_that_you_want_to_blacklist_following_tag:') }}
+					<strong><a href="{{ link('tags/edit', $tag) }}">{$tagName}</a></strong>
+				</xf:inforow>
+			</xf:if>
+			<xf:textboxrow name="new_tag" label="{{ phrase('tag') }}" value="{{ $tagName }}" />
+			<xf:checkboxrow>
+				<xf:option name="isRegex" label="{{ phrase('avForumsTagEss_regex_blacklist') }}" value="1" selected="{$isRegex}" hint="{{ phrase('avForumsTagEss_regex_blacklist_explain') }}"/>
+			</xf:checkboxrow>
+		</div>
+
+		<xf:submitrow rowtype="simple">
+			<xf:html>
+				<xf:button type="submit" name="test_gravatar" class="button--primary" value="1">
+					<i class="fa fa-ban" aria-hidden="true"></i> {{ phrase('avForumsTagEss_blacklist') }}
+				</xf:button>
+			</xf:html>
+		</xf:submitrow>
+	</div>
+</xf:form>]]></template>
+  <template type="admin" title="avForumsTagEss_blacklist_delete" version_id="2000001" version_string="2.0.0"><![CDATA[<xf:title>{{ phrase('confirm_action') }}</xf:title>
+
+<xf:form action="{{ link('tags/delete-blacklist', null, {'blacklist_id': $blacklist.blacklist_id}) }}" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:inforow rowtype="confirm">
+				{{ phrase('avForums_please_confirm_that_you_want_to_delete_following_blacklisted_tag:') }}
+				<strong>{$blacklist.tag}</strong>
+			</xf:inforow>
+		</div>
+		<xf:submitrow rowtype="simple" icon="delete" />
+	</div>
+</xf:form>]]></template>
+  <template type="admin" title="avForumsTagEss_blacklisted_tags" version_id="2010400" version_string="2.1.4"><![CDATA[<xf:title>{{ phrase('avForumsTagEss_blacklisted_tags') }}</xf:title>
+
+<xf:pageaction>
+	<xf:button href="{{ link('tags/blacklist') }}" icon="add">{{ phrase('avForumsTagEss_blacklist_tag') }}</xf:button>
+</xf:pageaction>
+
+<xf:form action="{{ link('tags/blacklisted') }}" class="block">
+	<div class="block-outer">
+		<span class="filterBlock">
+			<xf:textbox name="containing" value="{$filters.containing}" placeholder="{{ phrase('tag_contains...') }}"
+				class="input--inline filterBlock-input" />
+			<span>
+				<span class="filterBlock-label">{{ phrase('ordered_by:') }}</span>
+				<xf:select name="order" value="{{ $filters.order ? $filters.order : 'tag' }}" class="input--inline filterBlock-input">
+					<xf:option value="tag">{{ phrase('tag') }}</xf:option>
+				</xf:select>
+			</span>
+			<xf:button type="submit">{{ phrase('go') }}</xf:button>
+		</span>
+	</div>
+	
+	<div class="block-container">
+		<xf:if is="$blacklistedTags is not empty">
+			<div class="block-body">
+				<xf:datalist data-xf-init="responsive-data-list">
+					<xf:datarow rowtype="header">
+						<xf:cell class="dataList-cell--min"><xf:checkbox standalone="true"><xf:option data-match="input:checkbox[name='selected_tags[]']" check-all="< .block-container"  data-xf-init="tooltip" title="{{ phrase('select_all') }}" /></xf:checkbox></xf:cell>
+						<xf:cell class="dataList-cell--min">{{ phrase('avForumsTagEss_regex') }}</xf:cell>
+						<xf:cell>{{ phrase('tag') }}</xf:cell>
+						<xf:cell class="dataList-cell--min">{{ phrase('user') }}</xf:cell>
+						<xf:cell class="dataList-cell--min">&nbsp;</xf:cell>
+					</xf:datarow>
+					
+					<xf:foreach loop="$blacklistedTags" value="$blacklistedTag">
+						<xf:datarow>
+							<xf:toggle name="selected_tags[]" value="{$blacklistedTag.blacklist_id}" />
+							<xf:cell>
+								<xf:checkbox standalone="true">
+								<xf:option value="1" selected="{$blacklistedTag.regex}" readonly="true" disabled="true"/>
+								</xf:checkbox>
+							</xf:cell>
+							<xf:cell>{$blacklistedTag.tag}</xf:cell>
+							<xf:cell>{$blacklistedTag.User.username}</xf:cell>
+							<xf:delete href="{{ link('tags/delete-blacklist', null, {'blacklist_id': $blacklistedTag.blacklist_id}) }}" />
+						</xf:datarow>
+					</xf:foreach>
+				</xf:datalist>
+			</div>
+
+			<div class="block-footer block-footer--split">
+				<span class="block-footer-counter">{{ display_totals($blacklistedTags, $total) }}</span>
+
+				<span class="block-footer-select">
+					<xf:checkbox standalone="true">
+						<xf:option data-match="input:checkbox[name='selected_tags[]']" check-all="< .block-container" label="{{ phrase('select_all') }}" />
+					</xf:checkbox>
+				</span>
+
+				<span class="block-footer-controls">
+					<xf:select name="state" class="input--inline" style="font-family: 'Font Awesome 5 Pro','FontAwesome';">
+						<xf:option>{{ phrase('with_selected...') }}</xf:option>
+						<!--[XF:action_menu:top]-->
+						<xf:option value="delete">&#xf1f8; {{ phrase('delete') }}</xf:option>
+						<!--[XF:action_menu:bottom]-->
+					</xf:select>
+					<xf:button type="submit">{{ phrase('go') }}</xf:button>
+				</span>
+			</div>
+		<xf:else />
+			<div class="block-body block-row">{{ phrase('avForumsTagEss_no_blacklisted_tags_found') }}</div>
+		</xf:if>
+	</div>
+	
+	<xf:pagenav page="{$page}" perpage="{$perPage}" total="{$total}"
+				link="tags/blacklisted" params="{$filters}"
+				wrapperclass="block-outer block-outer--after" />
+</xf:form>]]></template>
+  <template type="admin" title="avForumsTagEss_category_delete" version_id="2000500" version_string="2.0.5"><![CDATA[<xf:title>{{ phrase('confirm_action') }}</xf:title>
+
+<xf:form action="{{ link('tags/delete-category', null, {'category_id': $tagCategory.category_id}) }}" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:inforow rowtype="confirm">
+				{{ phrase('please_confirm_that_you_want_to_delete_following:') }}
+				<strong><a href="{{ link('tags/edit-category', null, {'category_id': $tagCategory.category_id}) }}">[{$tagCategory.title}]</a></strong>
+			</xf:inforow>
+		</div>
+		<xf:submitrow rowtype="simple" icon="delete" />
+	</div>
+</xf:form>]]></template>
+  <template type="admin" title="avForumsTagEss_category_edit" version_id="2000002" version_string="2.0.0"><![CDATA[<xf:if is="$tagCategory.isInsert()">
+	<xf:title>{{ phrase('avForumsTagEss_add_category') }}</xf:title>
+<xf:else />
+	<xf:title>{{ phrase('avForumsTagEss_edit_category:') }} {$tagCategory.title}</xf:title>
+</xf:if>
+
+<xf:pageaction if="$tagCategory.isUpdate()">
+	<xf:button href="{{ link('tags/delete-category', null, {'existing_category_id': $tagCategory.category_id}) }}" icon="delete" overlay="true" />
+</xf:pageaction>
+
+<xf:form action="{{ link('tags/save-category', null, {'existing_category_id': $tagCategory.category_id}) }}" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:textboxrow name="category_id" value="{$tagCategory.category_id}" label="{{ phrase('avForumsTagEss_category_identifier') }}"  />
+			<xf:textboxrow name="title" value="{$tagCategory.title}" label="{{ phrase('title') }}" />
+		</div>
+
+		<xf:submitrow sticky="true" icon="save" />
+	</div>
+</xf:form>]]></template>
+  <template type="admin" title="avForumsTagEss_category_list" version_id="2000000" version_string="2.0.0"><![CDATA[<xf:title>{{ phrase('avForumsTagEss_tag_categories') }}</xf:title>
+
+<xf:pageaction>
+	<xf:button href="{{ link('tags/add-category') }}" icon="add">{{ phrase('avForumsTagEss_add_category') }}</xf:button>
+</xf:pageaction>
+
+<xf:form action="{{ link('tags/categories') }}" class="block" ajax="true">
+	<div class="block-container">
+		<xf:if is="$tagCategories is not empty">
+			<div class="block-body">
+				<xf:datalist data-xf-init="responsive-data-list">
+					<xf:datarow rowtype="header">
+						<xf:cell>{{ phrase('avForumsTagEss_category_identifier') }}</xf:cell>
+						<xf:cell>{{ phrase('title') }}</xf:cell>
+						<xf:cell class="dataList-cell--min">&nbsp;</xf:cell>
+					</xf:datarow>
+					
+					<xf:foreach loop="$tagCategories" key="$tagCategoryId" value="$tagCategoryTitle">
+						<xf:datarow>
+							<xf:cell href="{{ link('tags/edit-category', null, {'category_id': $tagCategoryId}) }}">{$tagCategoryId}</xf:cell>
+							<xf:cell href="{{ link('tags/edit-category', null, {'category_id': $tagCategoryId}) }}">{$tagCategoryTitle}</xf:cell>
+							<xf:delete href="{{ link('tags/delete-category', null, {'category_id': $tagCategoryId}) }}" />
+						</xf:datarow>
+					</xf:foreach>
+				</xf:datalist>
+			</div>
+			
+			<div class="block-footer">
+				<span class="block-footer-counter">{{ display_totals($tagCategories, $total) }}</span>
+			</div>
+		<xf:else />
+			<div class="block-body block-row">{{ phrase('avForumsTagEss_no_tag_categories_found') }}</div>
+		</xf:if>
+	</div>
+</xf:form>]]></template>
+  <template type="admin" title="avForumsTagEss_feed_edit_default_tags" version_id="2000011" version_string="2.0.0 Beta 1"><![CDATA[<xf:tokeninputrow name="tagess_tags"
+				  value="{$feed.DefaultTags|pluck('tag')|join(', ')}"
+				  href="{{ link_type('public', 'misc/tag-auto-complete') }}"
+				  label="{{ phrase('avForumsTagEss_default_tags') }}"
+				  explain="{{ phrase('multiple_tags_may_be_separated_by_commas') }}" />]]></template>
+  <template type="admin" title="avForumsTagEss_forum_edit_default_tags" version_id="2000011" version_string="2.0.0 Beta 1"><![CDATA[<xf:tokeninputrow name="tagess_tags"
+				  value="{$forum.DefaultTags|pluck('tag')|join(', ')}"
+				  href="{{ link_type('public', 'misc/tag-auto-complete') }}"
+				  label="{{ phrase('avForumsTagEss_default_tags') }}"
+				  explain="{{ phrase('multiple_tags_may_be_separated_by_commas') }}" />]]></template>
+  <template type="admin" title="avForumsTagEss_tag_edit" version_id="2010300" version_string="2.1.3"><![CDATA[<xf:selectrow name="tagess_category_id" value="{$tag.tagess_category_id}" label="{{ phrase('avForumsTagEss_category') }}">
+	<xf:option>{{ phrase('(none)') }}</xf:option>
+	<xf:options source="{$categories}" />
+</xf:selectrow>
+
+<xf:checkboxrow name="apply_node_ids">
+	<xf:option label="{{ phrase('avForumsTagEss_restrict_to_forum:') }}" checked="{{$tag.allowed_node_ids ? '1' : '' }}">
+		<xf:dependent>
+			<xf:macro template="forum_selection_macros" name="select_forums"
+				arg-nodeIds="{$tag.allowed_node_ids}"
+				arg-nodeTree="{$nodeTree}"
+				arg-selectName="allowed_node_ids"
+				arg-withRow="0" />
+		</xf:dependent>
+	</xf:option>
+</xf:checkboxrow>
+
+<xf:if is="$tag.SynonymOf">
+	<xf:formrow label="{{phrase('avForumsTagEss_canonical_tag')}}">
+		<a href="{{ link('tags/edit', $tag.SynonymOf.ParentTag) }}">{$tag.SynonymOf.ParentTag.tag}</a>
+	</xf:formrow>
+<xf:else />	
+	<xf:tokeninputrow name="synonyms"
+					  value="{{ $tag.SynonymsForInput }}"
+					  href="{{ link_type('public', 'misc/synonym-auto-complete', null, {'tag': $tag.tag_id}) }}"
+					  label="{{ phrase('avForumsTagEss_synonyms') }}"
+					  explain="{{ phrase('multiple_tags_may_be_separated_by_commas') }}" />
+</xf:if>]]></template>
+  <template type="admin" title="avForumsTagEss_tag_edit_pageaction" version_id="2000001" version_string="2.0.0"><![CDATA[<xf:if is="$tag.SynonymOf">
+	<xf:button href="{{ link('tags/edit', $tag.SynonymOf.ParentTag) }}"><i class="fa fa-caret-square-o-left" aria-hidden="true"></i> {{ phrase('avForumsTagEss_synonym_of_x', {'tag': $tag.SynonymOf.ParentTag.tag}) }}</xf:button>
+</xf:if>
+
+<xf:button href="{{ link('tags/blacklist', null, {'existing_tag_id': $tag.tag_id}) }}"><i class="fa fa-ban" aria-hidden="true"></i> {{ phrase('avForumsTagEss_blacklist') }}</xf:button>]]></template>
+  <template type="admin" title="avForumsTagEss_tag_list.less" version_id="2000000" version_string="2.0.0"><![CDATA[@controlColor: xf-default(@xf-buttonPrimary--background-color, @xf-paletteColor4);
+@controlColor--hover: xf-intensify(@controlColor, 25%);
+
+
+
+.dataList-cell--iconic
+{
+	.dataList-blackList,
+	.dataList-wiki
+	{
+		&:before
+		{
+			color: @controlColor;
+		}
+	}
+
+	&:hover
+	{
+		.dataList-blackList,
+		.dataList-wiki
+		{
+			&:before
+			{
+				color: @controlColor--hover;
+			}
+		}
+	}
+}]]></template>
+  <template type="admin" title="avForumsTagEss_tag_list_footer" version_id="2010400" version_string="2.1.4"><![CDATA[<div class="block-footer block-footer--split">
+	<span class="block-footer-counter">{{ display_totals($tags, $total) }}</span>
+	
+	<span class="block-footer-select">
+		<xf:checkbox standalone="true">
+			<xf:option check-all="< .block-container" label="{{ phrase('select_all') }}" />
+		</xf:checkbox>
+	</span>
+	
+	<span class="block-footer-controls">
+		<xf:select name="state" class="input--inline" style="font-family: 'Font Awesome 5 Pro','FontAwesome';">
+			<xf:option>{{ phrase('with_selected...') }}</xf:option>
+			<!--[XF:action_menu:top]-->
+			<xf:option value="blacklist_tags">&#xf05e; {{ phrase('avForumsTagEss_blacklist') }}</xf:option>
+			<xf:option value="delete">&#xf1f8; {{ phrase('delete') }}</xf:option>
+			<!--[XF:action_menu:bottom]-->
+		</xf:select>
+		<xf:button type="submit">{{ phrase('go') }}</xf:button>
+	</span>
+</div>]]></template>
+  <template type="admin" title="avForumsTagEss_thread_prefix_edit_default_tags" version_id="2000011" version_string="2.0.0 Beta 1"><![CDATA[<xf:tokeninputrow name="tagess_tags"
+				  value="{$prefix.DefaultTags|pluck('tag')|join(', ')}"
+				  href="{{ link_type('public', 'misc/tag-auto-complete') }}"
+				  label="{{ phrase('avForumsTagEss_default_tags') }}"
+				  explain="{{ phrase('multiple_tags_may_be_separated_by_commas') }}" />]]></template>
+  <template type="admin" title="avForumsTagEss_wiki" version_id="2000001" version_string="2.0.0"><![CDATA[<xf:title>{{ phrase('avForumsTagEss_edit_wiki:') }} {$tag.tag}</xf:title>
+
+<xf:form action="{{ link('tags/wiki', $tag) }}" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:textboxrow name="tagess_wiki_tagline" value="{$tag.tagess_wiki_tagline}" maxlength="{{ max_length($tag, 'tagess_wiki_tagline') }}"
+				label="{{ phrase('avForumsTagEss_tagline') }}"
+				dir="ltr" />
+
+			<xf:editorrow name="tagess_wiki_description" value="{$tag.tagess_wiki_description}"
+				rowtype=""
+				label="{{ phrase('avForumsTagEss_wiki_description') }}" />
+		</div>
+
+		<xf:submitrow sticky="true" icon="save" />
+	</div>
+	<xf:redirect />
+</xf:form>]]></template>
+  <template type="admin" title="tagess_helper_thread_search_criteria" version_id="2000000" version_string="2.0.0"><![CDATA[<hr class="formRowSep" />
+
+<xf:tokeninputrow name="criteria[tags]" value="{$criteria.tags}"
+				  href="{{ link_type('public', 'misc/tag-auto-complete') }}"
+				  min-length="{$xf.options.tagLength.min}"
+				  max-length="{$xf.options.tagLength.max}"
+				  max-tokens="{$xf.options.maxContentTags}"
+				  label="{{ phrase('search_tags') }}">
+
+	<xf:explain>
+		{{ phrase('multiple_tags_may_be_separated_by_commas') }}
+	</xf:explain>
+</xf:tokeninputrow>]]></template>
+  <template type="admin" title="tagess_thread_batch_update_confirm" version_id="2010400" version_string="2.1.4"><![CDATA[<xf:checkboxrow
+				explain="{{ phrase('tagEss_auto_tag_from_title_explain') }}">
+	<xf:option name="actions[auto_tag_from_title]"
+			   label="{{ phrase('tagEss_auto_tag_from_title') }}">
+	</xf:option>
+</xf:checkboxrow>
+
+<xf:tokeninputrow name="actions[add_tags]"
+    href="{{ link_type('public', 'misc/tag-auto-complete') }}"
+    min-length="{$xf.options.tagLength.min}"
+    max-length="{$xf.options.tagLength.max}"
+    max-tokens="{$xf.options.maxContentTags}"
+    label="{{ phrase('avForumsPrefixEss_add_tags') }}">
+
+    <xf:explain>
+        {{ phrase('multiple_tags_may_be_separated_by_commas') }}
+    </xf:explain>
+</xf:tokeninputrow>
+
+<xf:tokeninputrow name="actions[remove_tags]"
+    href="{{ link_type('public', 'misc/tag-auto-complete') }}"
+    min-length="{$xf.options.tagLength.min}"
+    max-length="{$xf.options.tagLength.max}"
+    max-tokens="{$xf.options.maxContentTags}"
+    label="{{ phrase('avForumsPrefixEss_remove_tags') }}">
+
+    <xf:explain>
+        {{ phrase('multiple_tags_may_be_separated_by_commas') }}
+    </xf:explain>
+</xf:tokeninputrow>
+
+<hr class="formRowSep" />]]></template>
+  <template type="admin" title="tools_rebuild_tagess_prune" version_id="2000019" version_string="2.0.0"><![CDATA[<xf:set var="$pruneTagsRebuildBody">
+	<xf:numberboxrow name="options[min_usage]" value="1" step="1" min="0" size="20" inputclass="number" label="{{ phrase('tagess_prune_count') }}" />
+	<xf:checkboxrow>
+		<xf:option name="options[delete_permanent]" value="1" label="{{ phrase('tagess_delete_permanent') }}" />
+	</xf:checkboxrow>
+	<xf:checkboxrow>
+		<xf:option name="options[delete_synonyms]" value="1"  label="{{ phrase('tagess_delete_synonyms') }}" />
+	</xf:checkboxrow>
+</xf:set>
+
+<xf:macro template="tools_rebuild" name="rebuild_job"
+		  arg-header="{{ phrase('prune_low_usage_tags') }}"
+		  arg-body="{$pruneTagsRebuildBody}"
+		  arg-job="AVForums\TagEssentials:TagPrune" />
+<!--[XF:avForums/TagEssentials:after_prune_tags]-->]]></template>
+  <template type="admin" title="tools_rebuild_tagess_wiki" version_id="2000019" version_string="2.0.0"><![CDATA[<xf:macro template="tools_rebuild" name="rebuild_job"
+		  arg-header="{{ phrase('rebuild_wiki_tags') }}"
+		  arg-job="AVForums\TagEssentials:WikiFixup" />
+<!--[XF:avForums/TagEssentials:after_wiki_rebuild]-->]]></template>
+  <template type="admin" title="widget_def_options_tags_cloud" version_id="2000019" version_string="2.0.0"><![CDATA[<xf:selectrow name="options[category_ids]" value="{$options.category_ids}" label="{{ phrase('avForumsTagEss_category') }}" multiple="multiple" size="7">
+	<xf:option>{{ phrase('(none)') }}</xf:option>
+	<xf:options source="{$tagCategories}" />
+</xf:selectrow>
+
+<xf:numberboxrow name="options[limit]" value="{$option.limit}"
+			min="25" step="10"
+			label="{{ phrase('avForumsTagEss_limit') }}"
+			explain="{{ phrase('avForumsTagEss_limit_how_many_tags_will_be_shown_for_tags_cloud_widget') }}" />]]></template>
+  <template type="email" title="avForumsTagEss_watched_tag_thread" version_id="2000005" version_string="2.0.0 Alpha 4"><![CDATA[<mail:subject>
+	{{ phrase('avForumsTagEss_new_content_with_watched_tag', {
+		'title': prefix('thread', $content, 'escaped') . $content.title
+	}) }}
+</mail:subject>
+
+{{ phrase('avForumsTagEss_watched_tag_new_content_email_html', {
+	'receiver': $receiver.username,
+	'replier': username_link_email($tagContent.AddUser, $tagContent.AddUser.username),
+	'tag': $tag,
+	'board': '<a href="' . link('canonical:index') . '">' . $xf.options.boardTitle . '</a>'
+}) }}
+
+<h2>{{ prefix('thread', $content, 'escaped') }}{$content.title}</h2>
+
+<xf:macro template="avForums_content_macros" name="go_content_bar" arg-content="{$content}" arg-watchType="{{ $tagContent.content_type }}" />
+
+<xf:macro template="avForums_content_macros" name="watched_tag_footer" arg-tag="{$tag}" />]]></template>
+  <template type="email" title="avForums_content_macros" version_id="2000005" version_string="2.0.0 Alpha 4"><![CDATA[<xf:macro name="go_content_bar" arg-content="!" arg-contentType="!">
+	<table cellpadding="10" cellspacing="0" border="0" width="100%" class="linkBar">
+	<tr>
+		<td>
+			<xf:if is="$contentType == 'threads'">
+				<a href="{{ link('canonical:threads', $content) }}" class="button">{{ phrase('view_this_thread') }}</a>
+			</xf:if>
+		</td>
+		<td align="{{ $xf.isRtl ? 'left' : 'right' }}">
+			<a href="{{ link('canonical:watched/tags') }}" class="buttonFake">{{ phrase('avForumsTagEss_watched_tags') }}</a>
+		</td>
+	</tr>
+	</table>
+</xf:macro>
+
+<xf:macro name="watched_tag_footer" arg-tag="!">
+	{{ phrase('avForumsTagEss_watched_tag_email_html_footer', {
+		'tag': '<a href="' . link('canonical:tags', $tag) . '">' . $tag.tag . '</a>',
+		'board': $xf.options.boardTitle,
+		'disable_this_link': link('canonical:email-stop/content', $xf.toUser, {'t': 'tag', 'id': $tag.tag_id}),
+		'disable_all_link': link('canonical:email-stop/all', $xf.toUser)
+	}) }}
+</xf:macro>]]></template>
+  <template type="public" title="alert_thread_new_tagged_content" version_id="2000500" version_string="2.0.5"><![CDATA[{{ phrase('avForumsTagEss_new_content_with_watched_tag', {
+	'content_type': $contentTypePhrase,
+	'name': username_link($user, false, {'defaultname': $alert.username}),
+    'tag': $extra.tag,
+	'title': '<a href="' . $contentLink . '" class="fauxBlockLink-blockLink">' . $contentTitle . '</a>'
+}) }}]]></template>
+  <template type="public" title="alert_thread_tagged_content" version_id="2000500" version_string="2.0.5"><![CDATA[{{ phrase('avForumsTagEss_new_content_with_watched_tag', {
+	'content_type': $alert.content_type,
+	'name': username_link($user, false, {'defaultname': $alert.username}),
+	'title': '<a href="' . $alert.extra_data.link . '" class="fauxBlockLink-blockLink">' . $alert.extra_data.title . '</a>'
+}) }}]]></template>
+  <template type="public" title="avForumsTagEss_forum_post_thread_tag_suggestion_js" version_id="2000011" version_string="2.0.0 Beta 1"><![CDATA[<xf:if is="$xf.options.tagessSuggestTags">
+<xf:js src="avforums/tagess/tag_suggestion_from_title.js" addon="AVForums/TagEssentials" min="1" />
+</xf:if>
+<xf:js src="avforums/tagess/tag_suggestion_from_prefix.js" addon="AVForums/TagEssentials" min="1" />]]></template>
+  <template type="public" title="avForumsTagEss_macros" version_id="2000100" version_string="2.0.1"><![CDATA[<xf:macro name="tag_view_header" arg-activePage="!" arg-tag="!">
+	<xf:if is="$tag.tagess_wiki_tagline">
+		<xf:description meta="false">
+			{$tag.tagess_wiki_tagline}
+		</xf:description>
+	</xf:if>
+
+	<xf:macro name="tag_view_pageaction" arg-tag="{{ $tag }}" />
+
+	<xf:macro name="tab_view_wiki_above_tabs" arg-tag="{{ $tag }}" />
+
+	<xf:macro name="tag_view_synonyms" arg-tag="{{ $tag }}" />
+
+	<xf:macro name="tag_view_tabs" arg-activePage="{{ $activePage }}" arg-tag="{{ $tag }}" />
+</xf:macro>
+
+<xf:macro name="tag_view_synonyms" arg-tag="!">
+	<xf:if is="$tag.Synonyms is not empty">
+		<xf:css src="avForumsTagEss_macros_tag_view_synonyms.less" />
+
+		<ul class="listInline listInline--bullet listInline--synonyms">
+			<li>
+				<i class="fa fa-tags" aria-hidden="true" title="{{ phrase('avForumsTagEss_synonyms')|for_attr }}"></i>
+				<span class="u-srOnly">{{ phrase('avForumsTagEss_synonyms') }}</span>
+
+				<xf:foreach loop="$tag.Synonyms" value="$synonym">
+					<a href="{{ link('tags', $synonym.Tag) }}" class="tagItem" dir="auto">{$synonym.Tag.tag}</a>
+				</xf:foreach>
+			</li>
+		</ul>
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="tab_view_wiki_above_tabs" arg-tag="!">
+	<xf:css src="avForumsTagEss_macros_tab_view_wiki_above_tabs.less" />
+
+	<xf:if is="$xf.options.tagess_wikidescriptiononpage && $tag.tagess_wiki_description">
+		<div class="tag-view tag-view--wiki-container">{{ bb_code($tag.tagess_wiki_description, 'tag_wiki', $tag) }}</div>
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="tag_view_tabs" arg-activePage="!" arg-tag="!">
+	<div class="tabs tabs--standalone">
+		<div class="hScroller" data-xf-init="h-scroller">
+			<span class="hScroller-scroll">
+				<a class="tabs-tab {{ $activePage === 'recentContent' ? 'is-active' : '' }}" href="{{ link('tags', $tag) }}">{{ phrase('avForumsTagEss_recent_contents') }}</a>
+
+				<xf:if is="!$xf.options.tagess_wikidescriptiononpage && $tag.tagess_wiki_description">
+					<a class="tabs-tab {{ $activePage === 'viewInformation' ? 'is-active' : '' }}" href="{{ link('tags/wiki', $tag) }}">{{ phrase('avForumsTagEss_view_information') }}</a>
+				</xf:if>
+
+				<xf:if is="$xf.options.tagess_topUsers">
+					<a class="tabs-tab {{ $activePage === 'topUsers' ? 'is-active' : '' }}" href="{{ link('tags/top-users', $tag) }}">{{ phrase('avForumsTagEss_top_users') }}</a>
+				</xf:if>
+			</span>
+		</div>
+	</div>
+</xf:macro>
+
+<xf:macro name="tag_view_pageaction" arg-tag="!">
+	<xf:pageaction>
+		<xf:if is="$tag.canWatch()">
+			<xf:button href="{{ link('tags/watch', $tag) }}" class="button--cta" overlay="true" icon="preview">
+				{{ phrase('avForumsTagEss_watch_tag') }}
+			</xf:button>
+		</xf:if>
+
+		<xf:if is="$tag.canEdit()">
+			<xf:button href="{{ link('tags/edit', $tag) }}" class="button--cta" icon="write">
+				{{ phrase('avForumsTagEss_edit_tag') }}
+			</xf:button>
+		</xf:if>
+	</xf:pageaction>
+</xf:macro>
+
+<xf:macro name="item"
+	arg-watchedTag="!"
+	arg-forum=""
+	arg-forceRead="{{ false }}"
+	arg-showWatched="{{ true }}"
+	arg-allowInlineMod="{{ true }}"
+	arg-chooseName=""
+	arg-extraInfo=""
+	arg-allowEdit="{{ true }}">
+
+	<xf:css src="structured_list.less" />
+
+	<div class="structItem structItem--thread js-tagListItem-{$watchedTag.Tag.tag_url}">
+		<div class="structItem-cell structItem-cell--main" data-xf-init="touch-proxy">
+			<div class="structItem-title">
+				<a href="{{ link('tags', $watchedTag.Tag) }}">{$watchedTag.Tag.tag}</a>
+			</div>
+
+			<div class="structItem-minor">
+				<ul class="structItem-extraInfo">
+					<xf:if is="$watchedTag.send_alert">
+						<li>{{ phrase('avForumsTagEss_alert') }}</li>
+					</xf:if>
+
+					<xf:if is="$watchedTag.send_email">
+						<li>{{ phrase('email') }}</li>
+					</xf:if>
+
+					<li>
+						<xf:checkbox standalone="true">
+							<xf:option name="tag_ids[]" value="{$watchedTag.Tag.tag_id}" class="js-chooseItem" />
+						</xf:checkbox>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="structItem-cell structItem-cell--latest">
+			<a href="{{ link('threads/latest', $thread) }}" rel="nofollow"><xf:date time="{$watchedTag.Tag.last_use_date}" class="structItem-latestDate" /></a>
+		</div>
+	</div>
+</xf:macro>]]></template>
+  <template type="public" title="avForumsTagEss_macros_tab_view_wiki_above_tabs.less" version_id="2000001" version_string="2.0.0"><![CDATA[@_notice-darkBg: rgb(20, 20, 20);
+@_notice-lightBg: #fefefe;
+@_notice-floatingFade: 80%;
+@_notice-imageSize: 48px;
+@_notice-padding: @xf-paddingLarge;
+
+.tag-view
+{
+	&.tag-view--wiki-container
+	{
+		.m-clearFix();
+		position: relative;
+		.xf-blockBorder();
+		.xf-contentHighlightBase();
+		
+		font-size: @xf-fontSizeNormal;
+		border-radius: @xf-blockBorderRadius;
+		
+		margin-bottom: ((@xf-elementSpacer) / 2);
+		padding: @_notice-padding;
+	}
+}]]></template>
+  <template type="public" title="avForumsTagEss_macros_tag_view_synonyms.less" version_id="2000001" version_string="2.0.0"><![CDATA[.listInline--synonyms
+{
+	margin: 5px 0px;
+	padding: 0;
+	font-size: @xf-fontSizeSmall;
+	color: @xf-textColorMuted;
+}]]></template>
+  <template type="public" title="avForumsTagEss_tag_cloud" version_id="2000001" version_string="2.0.0"><![CDATA[<xf:if is="$tagCloud is not empty">
+	<xf:css src="tag.less" />
+
+	<div class="block" {{ widget_data($widget) }}>
+		<div class="block-container">
+			<h3 class="block-minorHeader">{{ $title ?: phrase('avForumsTagEss_tags_cloud') }}</h3>
+			<div class="block-body block-row tagCloud">
+				<xf:foreach loop="$tagCloud" value="$cloudEntry">
+					<xf:if is="$forum">
+						<a href="{{ link('forums', $forum, {'tags': $cloudEntry.tag.tag}) }}" class="tagCloud-tag tagCloud-tagLevel{$cloudEntry.level}">{$cloudEntry.tag.tag}</a>
+					<xf:else />
+						<a href="{{ link('tags', $cloudEntry.tag) }}" class="tagCloud-tag tagCloud-tagLevel{$cloudEntry.level}">{$cloudEntry.tag.tag}</a>
+					</xf:if>
+				</xf:foreach>
+			</div>
+		</div>
+	</div>
+</xf:if>]]></template>
+  <template type="public" title="avForumsTagEss_tag_edit" version_id="2000001" version_string="2.0.0"><![CDATA[<xf:title>{{ phrase('edit_tag:') }} {$tag.tag}</xf:title>
+
+<xf:form action="{{ link('tags/save', $tag) }}" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:if is="$tag.canEditWiki()">
+				<xf:textboxrow name="tagess_wiki_tagline" value="{$tag.tagess_wiki_tagline}" maxlength="{{ max_length($tag, 'tagess_wiki_tagline') }}"
+					label="{{ phrase('avForumsTagEss_tagline') }}"
+					dir="ltr" />
+				
+				<xf:editorrow name="tagess_wiki_description" value="{$tag.tagess_wiki_description}"
+					rowtype=""
+					label="{{ phrase('avForumsTagEss_wiki_description') }}" />
+			</xf:if>
+			
+			<xf:if is="$tag.canEditCategory()">
+				<xf:selectrow name="tagess_category_id" value="{$tag.tagess_category_id}" label="{{ phrase('avForumsTagEss_category') }}">
+					<xf:option>{{ phrase('(none)') }}</xf:option>
+					<xf:options source="{$categories}" />
+				</xf:selectrow>
+			</xf:if>
+		</div>
+
+		<xf:submitrow sticky="true" icon="save" />
+	</div>
+</xf:form>]]></template>
+  <template type="public" title="avForumsTagEss_tag_preview" version_id="2020000" version_string="2.2.0"><![CDATA[<xf:css src="message.less" />
+<xf:css src="avForumsTagEss_tag_preview.less" />
+
+<div class="tagSynonyms">
+	<i class="fa fa-tags" aria-hidden="true" title="{{ phrase('avForumsTagEss_synonyms')|for_attr }}"></i>
+	<span class="u-srOnly">{{ phrase('avForumsTagEss_synonyms') }}</span>
+
+	<xf:macro name="tag_item" arg-tag="{{ $tag }}" />
+
+	<xf:if is="$tag.SynonymOf.ParentTag">
+		<xf:macro name="tag_item" arg-tag="{{ $tag.SynonymOf.ParentTag }}" />
+	</xf:if>
+
+	<xf:if is="$tag.Synonyms is not empty">
+		<xf:foreach loop="$tag.Synonyms" value="$synonym">
+			<xf:macro name="tag_item" arg-tag="{{ $synonym.Tag }}" />
+		</xf:foreach>
+	</xf:if>
+</div>
+
+<xf:if is="$tag.SynonymOf && $tag.SynonymOf.ParentTag">
+	<div class="tagWiki">
+		{{ phrase('avForumsTagEss_synonym_of_x', {'tag': $tag.SynonymOf.ParentTag.tag}) }}
+	</div>
+<xf:elseif is="$tag.tagess_wiki_description" />
+	<xf:macro name="tag_wiki" arg-tag="{{ $tag }}" arg-wikiBody="{{ $tag.tagess_wiki_description }}" />
+<xf:elseif is="$tag.tagess_wiki_tagline" />
+	<xf:macro name="tag_wiki" arg-tag="{{ $tag }}" arg-wikiBody="{{ $tag.tagess_wiki_tagline }}" />
+</xf:if>
+
+<xf:if is="!$tag.SynonymOf.ParentTag">
+	<div class="tagAdditionalLinks">
+		<xf:button href="{{ link('tags', $tag) }}" class="button--link">{{ phrase('avForumsTagEss_recent_contents') }}</xf:button>
+
+		<xf:if is="($tag.tagess_wiki_description || $tag.tagess_wiki_tagline)">
+			<xf:button href="{{ link('tags/wiki', $tag) }}" class="button--link">{{ phrase('avForumsTagEss_view_information') }}</xf:button>
+		</xf:if>
+
+		<xf:if is="$xf.options.tagess_topUsers">
+			<xf:button href="{{ link('tags/top-users', $tag) }}" class="button--link">{{ phrase('avForumsTagEss_top_users') }}</xf:button>
+		</xf:if>
+	</div>
+</xf:if>
+
+<xf:macro name="tag_item" arg-tag="!">
+	<a href="{{ link('tags', $tag) }}" class="tagItem" dir="auto">{$tag.tag}</a>
+</xf:macro>
+
+<xf:macro name="tag_wiki" arg-tag="!" arg-wikiBody="!">
+	<xf:css src="bb_code.less" />
+	<div class="tagWiki">
+		<article class="message-body">
+			<xf:ad position="tag_wiki_above_content" arg-tag="{$tag}" />
+			<div class="bbCodeBlock bbCodeBlock--expandable bbCodeBlock--tagWiki">
+				<div class="bbCodeBlock-content">
+					<div class="bbCodeBlock-expandContent">
+						{{ bb_code($wikiBody, 'tag_wiki', $tag) }}
+					</div>
+					<div class="bbCodeBlock-expandLink"><a>{{ phrase('click_to_expand') }}</a></div>
+				</div>
+			</div>
+			<xf:ad position="tag_wiki_below_content" arg-tag="{$tag}" />
+		</article>
+	</div>
+</xf:macro>]]></template>
+  <template type="public" title="avForumsTagEss_tag_preview.less" version_id="2000000" version_string="2.0.0"><![CDATA[.tagSynonyms,
+.tagWiki
+{
+	border-bottom: @xf-borderSize solid @xf-borderColorLight;
+	padding-bottom: @xf-blockPaddingV;
+}
+
+.tagAdditionalLinks
+{
+	padding-top: @xf-blockPaddingV;
+}]]></template>
+  <template type="public" title="avForumsTagEss_tag_search_grouped_tags" version_id="2000000" version_string="2.0.0"><![CDATA[<xf:if is="$tagCloudGrouped">
+	<xf:foreach loop="$tagCloudGrouped" value="$tagCloudGroup">
+		<div class="block">
+			<div class="block-container">
+				<h3 class="block-header">{{ $tagCloudGroup.title ?: phrase('popular_tags') }}</h3>
+				<div class="block-body block-row tagCloud">
+					<xf:foreach loop="$tagCloudGroup.tags" value="$tagGroup">
+						<a href="{{ link('tags', $tagGroup.tag) }}" data-xf-init="preview-tooltip" data-preview-url="{{ link('tags/preview', $tagGroup.tag) }}" class="tagCloud-tag tagCloud-tagLevel{$tagGroup.level}">{$tagGroup.tag.tag}</a>
+					</xf:foreach>
+				</div>
+			</div>
+		</div>
+	</xf:foreach>
+</xf:if>]]></template>
+  <template type="public" title="avForumsTagEss_tag_watch" version_id="2000001" version_string="2.0.0"><![CDATA[<xf:if is="$isWatched">
+	<xf:title>{{ phrase('avForumsTagEss_unwatch_tag') }}</xf:title>
+<xf:else />
+	<xf:title>{{ phrase('avForumsTagEss_watch_tag') }}</xf:title>
+</xf:if>
+
+<xf:breadcrumb source="$tag.getBreadcrumbs(true)" />
+
+<xf:form action="{{ link('tags/watch', $tag) }}" class="block" ajax="true">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:if is="$isWatched">
+				<xf:inforow rowtype="confirm">
+					{{ phrase('avForumsTagEss_you_sure_you_want_to_unwatch_this_tag') }}
+				</xf:inforow>
+
+				<xf:hiddenval name="stop">1</xf:hiddenval>
+			<xf:else />
+				<xf:radiorow name="email_subscribe"
+					value="{{ $xf.visitor.Option.interaction_watch_state == 'watch_email' ? 1 : 0}}"
+					rowtype="noColon"
+					label="{{ phrase('avForumsTagEss_watch_this_tag...') }}">
+
+					<xf:option value="1">{{ phrase('and_receive_email_notifications') }}</xf:option>
+					<xf:option value="0">{{ phrase('without_receiving_email_notifications') }}</xf:option>
+				</xf:radiorow>
+			</xf:if>
+		</div>
+		<xf:if is="$isWatched">
+			<xf:submitrow submit="{{ phrase('unwatch') }}" rowtype="simple" />
+		<xf:else />
+			<xf:submitrow submit="{{ phrase('watch') }}" />
+		</xf:if>
+	</div>
+</xf:form>]]></template>
+  <template type="public" title="avForumsTagEss_thread_list_macros" version_id="2000016" version_string="2.0.0 Beta 4"><![CDATA[<xf:if is="$xf.options.tagessTagsOnThreadList">
+	<xf:set var="$hideEditLink" value="{{ true }}" />
+	<xf:include template="avForumsTagEss_thread_view_grouped_tags" />
+</xf:if>]]></template>
+  <template type="public" title="avForumsTagEss_thread_view_grouped_tags" version_id="2000016" version_string="2.0.0 Beta 4"><![CDATA[<xf:if is="$xf.options.enableTagging AND ($thread.canEditTags() OR $thread.tags)">
+	<xf:css src="avForumsTagEss_thread_view_grouped_tags.less" />
+
+	<xf:if is="$thread.GroupedTags">
+		<xf:foreach loop="$thread.GroupedTags" key="$categoryId" value="$groupedTagsData">
+			<li class="groupedTags">
+				<xf:if is="$groupedTagsData.title">
+					<i class="fa fa-tags" aria-hidden="true" title="{{ $groupedTagsData.title|for_attr }}"></i>
+					<span class="u-concealed hiddenCategoryTitle">{{ $groupedTagsData.title }}</span>
+				<xf:else />
+					<i class="fa fa-tags" aria-hidden="true" title="{{ phrase('tags')|for_attr }}"></i>
+					<span class="u-concealed"></span>
+				</xf:if>
+
+				<xf:foreach loop="$groupedTagsData.tags" value="$groupedTag">
+					<a href="{{ link('tags', $groupedTag) }}" data-xf-init="preview-tooltip" data-preview-url="{{ link('tags/preview', $groupedTag) }}" class="tagItem" dir="auto">{$groupedTag.tag}</a>
+				</xf:foreach>
+			</li>
+		</xf:foreach>
+	</xf:if>
+	
+	<xf:if is="$thread.canEditTags() && !$hideEditLink">
+		<li>
+			<a href="{{ link('threads/tags', $thread) }}" class="u-concealed" data-xf-click="overlay"
+			   data-xf-init="tooltip" title="{{ phrase('edit_tags')|for_attr }}">
+				<i class="fa fa-pencil" aria-hidden="true"></i>
+				<span class="u-srOnly">{{ phrase('edit') }}</span>
+			</a>
+		</li>
+	</xf:if>
+</xf:if>]]></template>
+  <template type="public" title="avForumsTagEss_thread_view_grouped_tags.less" version_id="2000000" version_string="2.0.0"><![CDATA[.groupedTags
+{
+	.u-concealed.hiddenCategoryTitle
+	{
+		&:after
+		{
+			content: ":";
+		}
+	}
+}]]></template>
+  <template type="public" title="avForumsTagEss_top_users" version_id="2000000" version_string="2.0.0"><![CDATA[<xf:title>{$tag.tag}</xf:title>
+
+<xf:macro template="avForumsTagEss_macros" name="tag_view_header" arg-tag="{{ $tag }}" arg-activePage="topUsers" />
+
+<xf:form action="{{ link('tags/wiki', $tag) }}" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:foreach loop="$topUsers" key="$userId" value="$user">
+				<li class="block-row block-row--separated">
+					<xf:macro template="member_list_macros" name="item" arg-user="{$user}" arg-extraData="{{ $extraDataRef.{$userId} }}" arg-extraDataBig="{{ true }}" />
+				</li>
+			</xf:foreach>
+		</div>
+	</div>
+	<xf:redirect />
+</xf:form>]]></template>
+  <template type="public" title="avForumsTagEss_watched_tags_list" version_id="2000000" version_string="2.0.0"><![CDATA[<xf:title page="{$page}">{{ phrase('avForumsTagEss_watched_tags') }}</xf:title>
+
+<xf:if is="$watchedTags is not empty">
+	<xf:form action="{{ link('watched/tags/update') }}" ajax="true" class="block" autocomplete="off">
+		<div class="block-outer">
+			<xf:pagenav
+				page="{$page}" perpage="{$perPage}" total="{$total}"
+				link="watched/tags"
+				wrapperclass="block-outer-main" />
+			<div class="block-outer-opposite">
+				<xf:button class="button--link menuTrigger" data-xf-click="menu" aria-expanded="false" aria-haspopup="true">{{ phrase('avForumstagEss_manage_watched_tags') }}</xf:button>
+				<div class="menu" data-menu="menu" aria-hidden="true">
+					<div class="menu-content">
+						<h3 class="menu-header">{{ phrase('avForumstagEss_manage_watched_tags') }}</h3>
+						<!--[AVForums/TagEssentials:manage_menu:top]-->
+						<a href="{{ link('watched/tags/manage', null, {'state': 'watch_no_alert'}) }}" data-xf-click="overlay" class="menu-linkRow">{{ phrase('avForumsTagEss_disable_alert_notification') }}</a>
+						<a href="{{ link('watched/tags/manage', null, {'state': 'watch_no_email'}) }}" data-xf-click="overlay" class="menu-linkRow">{{ phrase('disable_email_notification') }}</a>
+						<a href="{{ link('watched/tags/manage', null, {'state': 'delete'}) }}" data-xf-click="overlay" class="menu-linkRow">{{ phrase('avForumsTagEss_stop_watching_tags') }}</a>
+						<!--[AVForums/TagEssentials:manage_menu:bottom]-->
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="block-container">
+			<div class="block-body">
+				<div class="structItemContainer">
+					<xf:foreach loop="$watchedTags" value="$watchedTag">
+						<xf:set var="$extra" value="{{ {$thread.Watch.{$xf.visitor.user_id}.email_subscribe} ? phrase('email') : '' }}" />
+						<xf:macro template="avForumsTagEss_macros" name="item"
+							arg-watchedTag="{{ $watchedTag }}"
+							arg-chooseName="thread_ids"
+							arg-showWatched="{{ false }}"
+							arg-extraInfo="{$extra}"
+							arg-allowEdit="{{ false }}" />
+					</xf:foreach>
+				</div>
+			</div>
+			<div class="block-footer block-footer--split">
+				<span class="block-footer-counter"></span>
+				<span class="block-footer-select"><xf:checkbox standalone="true"><xf:option check-all="< .block-container" label="{{ phrase('select_all') }}" /></xf:checkbox></span>
+				<span class="block-footer-controls">
+						<xf:select name="state" class="input--inline">
+						<xf:option>{{ phrase('with_selected...') }}</xf:option>
+						<!--[XF:action_menu:top]-->
+							<xf:option value="watch_alert">{{ phrase('avForumsTagEss_enable_alert_notification') }}</xf:option>
+							<xf:option value="watch_no_alert">{{ phrase('avForumsTagEss_disable_alert_notification') }}</xf:option>
+							
+							<xf:option value="watch_email">{{ phrase('enable_email_notification') }}</xf:option>
+							<xf:option value="watch_no_email">{{ phrase('disable_email_notification') }}</xf:option>
+							
+							<xf:option value="delete">{{ phrase('stop_watching') }}</xf:option>
+						<!--[XF:action_menu:bottom]-->
+					</xf:select>
+					<xf:button type="submit">{{ phrase('go') }}</xf:button>
+				</span>
+			</div>
+		</div>
+
+		<xf:pagenav link="watched/tags" page="{$page}" perpage="{$perPage}" total="{$total}"
+			wrapperclass="block-outer block-outer--after" />
+
+		<xf:showignored wrapperclass="block-outer block-outer-opposite block-outer--after" />
+	</xf:form>
+<xf:else />
+	<div class="blockMessage">
+		<xf:if is="$page > 1">
+			{{ phrase('avForumsTagEss_there_no_tags_to_display') }}
+		<xf:else />
+			<p>{{ phrase('avForumsTagEss_you_not_watching_any_tags') }}</p>
+		</xf:if>
+	</div>
+</xf:if>]]></template>
+  <template type="public" title="avForumsTagEss_watched_tags_manage" version_id="2000000" version_string="2.0.0"><![CDATA[<xf:title>{{ phrase('avForumsTagEss_manage_watched_tags') }}</xf:title>
+
+<xf:form action="{{ link('watched/tags/manage', null, {'state': $state}) }}" class="block" ajax="true">
+	<div class="block-container">
+		<div class="block-row">
+			<xf:inforow rowtype="confirm">
+				<xf:if is="$state == 'delete'">
+					{{ phrase('avForumsTagEss_you_sure_you_want_to_stop_watching_all_tags') }}
+				<xf:else />
+					{{ phrase('avForumsTagEss_you_sure_you_want_to_update_notification_settings_for_all_tags') }}
+				</xf:if>
+			</xf:inforow>
+		</div>
+		<xf:submitrow submit="{{ phrase('proceed') }}" icon="notificationsOff" rowtype="simple" />
+	</div>
+</xf:form>]]></template>
+  <template type="public" title="avForumsTagEss_wiki" version_id="2000001" version_string="2.0.0"><![CDATA[<xf:title>{$tag.tag}</xf:title>
+
+<xf:macro template="avForumsTagEss_macros" name="tag_view_header" arg-tag="{{ $tag }}" arg-activePage="viewInformation" />
+
+<xf:form action="{{ link('tags/wiki', $tag) }}" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:if is="$tag.tagess_wiki_tagline">
+				<xf:formrow label="{{ phrase('avForumsTagEss_tagline') }}">
+					{$tag.tagess_wiki_tagline}
+				</xf:formrow>
+			</xf:if>
+			
+			<xf:formrow label="{{ phrase('avForumsTagEss_wiki_description') }}">
+				<xf:if is="$tag.tagess_wiki_description">
+					{{ bb_code($tag.tagess_wiki_description, 'tag_wiki', $tag) }}
+				<xf:else />
+					{{ phrase('avForumsTagEss_no_wikipedia_entry_exists') }}
+				</xf:if>
+			</xf:formrow>
+		</div>
+	</div>
+	<xf:redirect />
+</xf:form>]]></template>
+</templates>

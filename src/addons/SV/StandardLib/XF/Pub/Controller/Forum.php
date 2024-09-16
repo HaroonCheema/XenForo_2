@@ -3,18 +3,20 @@
 namespace SV\StandardLib\XF\Pub\Controller;
 
 use SV\StandardLib\ControllerPlugin\Filter as FilterPlugin;
+use SV\StandardLib\Helper;
 use XF\Mvc\ParameterBag;
+use XF\Mvc\Reply\AbstractReply;
 use XF\Mvc\Reply\View;
 
 /**
- * Extends \XF\Pub\Controller\Forum
+ * @Extends \XF\Pub\Controller\Forum
  */
 class Forum extends XFCP_Forum
 {
     /**
      * @param ParameterBag $params
      *
-     * @return \XF\Mvc\Reply\AbstractReply
+     * @return AbstractReply
      */
     public function actionForum(ParameterBag $params)
     {
@@ -36,7 +38,7 @@ class Forum extends XFCP_Forum
     {
         if ($this->svFilterPlugin === null)
         {
-            $this->svFilterPlugin = $this->plugin('SV\StandardLib:Filter');
+            $this->svFilterPlugin = Helper::plugin($this, FilterPlugin::class);
         }
 
         return $this->svFilterPlugin;

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <template_modifications>
-  <modification type="public" template="PAGE_CONTAINER" modification_key="altf_license_message" description="License message if applicable" execution_order="10" enabled="1" action="str_replace">
+  <modification type="public" template="PAGE_CONTAINER" modification_key="altf_license_message" description="License message if applicable" execution_order="10" enabled="0" action="str_replace">
     <find><![CDATA[<xf:copyright />]]></find>
     <replace><![CDATA[<xf:copyright />
 {{ $ThreadFilterCopyright|raw }}]]></replace>

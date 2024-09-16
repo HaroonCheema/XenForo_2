@@ -2,6 +2,10 @@
 
 namespace SV\StandardLib;
 
+use SV\StandardLib\Repository\Permissions as PermissionsRepo;
+use XF\ControllerPlugin\AbstractPlugin;
+use XF\Mvc\Controller;
+use XF\Mvc\Entity\AbstractCollection;
 use XF\Mvc\Entity\Entity;
 use XF\Mvc\Entity\Finder;
 use XF\Mvc\Entity\Repository;
@@ -20,18 +24,12 @@ class Helper
 
     public static function repo(): \SV\StandardLib\Repository\Helper
     {
-        /** @var \SV\StandardLib\Repository\Helper $repo */
-        $repo = \XF::repository('SV\StandardLib:Helper');
-
-        return $repo;
+        return self::repository(\SV\StandardLib\Repository\Helper::class);
     }
 
-    public static function perms(): \SV\StandardLib\Repository\Permissions
+    public static function perms(): PermissionsRepo
     {
-        /** @var \SV\StandardLib\Repository\Permissions $repo */
-        $repo = \XF::repository('SV\StandardLib:Permissions');
-
-        return $repo;
+        return self::repository(PermissionsRepo::class);
     }
 
     /**
@@ -59,12 +57,7 @@ class Helper
         return $obj;
     }
 
-    /**
-     * @param string|null $entityName
-     * @return Structure|null
-     * @noinspection PhpMissingParamTypeInspection
-     */
-    public static function getEntityStructure($entityName)
+    public static function getEntityStructure(?string $entityName): ?Structure
     {
         if ($entityName === null || $entityName === '')
         {
@@ -112,6 +105,27 @@ class Helper
     }
 
     /**
+     * @template T of Entity
+     * @param class-string<T> $identifier
+     * @param array $values Values for the columns in the entity, in source encoded form
+     * @param array $relations
+     * @param int $options Bit field of the \XF\Mvc\Entity\Manager::INSTANTIATE_* options
+     * @return T
+     */
+    public static function instantiateEntity(string $identifier, array $values = [], array $relations = [], int $options = 0)
+    {
+        // XF2.2 entity cache key is on the short name, not the class name. So map to the expected thing
+        if (\XF::$versionId < 2030000 && strpos($identifier, ':') === false)
+        {
+            $identifier = str_replace('\\Entity\\', ':', $identifier);
+        }
+
+        /** @var T $e */
+        $e = \XF::em()->instantiateEntity($identifier, $values, $relations, $options);
+        return $e;
+    }
+
+    /**
      * @template T of Finder
      * @param class-string<T> $identifier
      * @return T
@@ -152,9 +166,9 @@ class Helper
 
     /**
      * @template T of Entity
-     * @param class-string<T> $identifier
-     * @param int|string      $id
-     * @param array           $with
+     * @param class-string<T>              $identifier
+     * @param int|string|array<int|string> $id
+     * @param array<string>                $with
      * @return T|null
      */
     public static function find(string $identifier, $id, array $with = [])
@@ -174,10 +188,58 @@ class Helper
     /**
      * @template T of Entity
      * @param class-string<T> $identifier
-     * @param int             $id
+     * @param array           $where
+     * @param array<string>   $with
      * @return T|null
      */
-    public static function findCached(string $identifier, int $id)
+    public static function findOne(string $identifier, array $where, array $with = [])
+    {
+        // XF2.2 entity cache key is on the short name, not the class name. So map to the expected thing
+        if (\XF::$versionId < 2030000 && strpos($identifier, ':') === false)
+        {
+            $identifier = str_replace('\\Entity\\', ':', $identifier);
+        }
+
+        /** @var T|null $entity */
+        $entity = \XF::em()->findOne($identifier, $where, $with);
+
+        return $entity;
+    }
+
+    /**
+     * @template T of Entity
+     * @param class-string<T> $identifier
+     * @param array           $ids
+     * @param array<string>   $with
+     * @return AbstractCollection<T>|T[]
+     * @noinspection PhpReturnDocTypeMismatchInspection
+     */
+    public static function findByIds(string $identifier, array $ids, array $with = [])
+    {
+        if (count($ids) === 0)
+        {
+            return \XF::em()->getEmptyCollection();
+        }
+
+        // XF2.2 entity cache key is on the short name, not the class name. So map to the expected thing
+        if (\XF::$versionId < 2030000 && strpos($identifier, ':') === false)
+        {
+            $identifier = str_replace('\\Entity\\', ':', $identifier);
+        }
+
+        /** @var AbstractCollection<T> $collection */
+        $collection = \XF::em()->findByIds($identifier, $ids, $with);
+
+        return $collection;
+    }
+
+    /**
+     * @template T of Entity
+     * @param class-string<T> $identifier
+     * @param int|string|array<int|string> $id
+     * @return T|null
+     */
+    public static function findCached(string $identifier, $id)
     {
         // XF2.2 entity cache key is on the short name, not the class name. So map to the expected thing
         if (\XF::$versionId < 2030000 && strpos($identifier, ':') === false)
@@ -206,5 +268,18 @@ class Helper
         $service = \XF::service($identifier, ...$arguments);
 
         return $service;
+    }
+
+    /**
+     * @template T of AbstractPlugin
+     * @param Controller|AbstractPlugin $controller
+     * @param class-string<T> $class
+     * @return T
+     */
+    public static function plugin($controller, string $class)
+    {
+        /** @var AbstractPlugin $plugin */
+        $plugin = $controller->plugin($class);
+        return $plugin;
     }
 }

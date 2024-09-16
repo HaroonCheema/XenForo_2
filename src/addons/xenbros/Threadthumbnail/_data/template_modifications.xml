@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="custom_fields_macros" modification_key="hide_thumbnail_from_forum" description="hide_thumbnail_from_forum" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:if is="$fieldDefinition.hasValue({$set.{$fieldDefinition.field_id}})">]]></find>
+    <replace><![CDATA[<xf:if is="$fieldDefinition.hasValue({$set.{$fieldDefinition.field_id}}) && $fieldDefinition.display_order != 0">]]></replace>
+  </modification>
+  <modification type="admin" template="node_edit_macros" modification_key="add_thread_thubmanil_option" description="Add Thread Thubmanil Option" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:checkboxrow>
+		<xf:option name="node[display_in_list]" selected="$node.display_in_list"
+			label="{{ phrase('display_in_node_list') }}"
+			hint="{{ phrase('if_unselected_users_will_not_see_this_node_in_list') }}" />
+	</xf:checkboxrow>]]></find>
+    <replace><![CDATA[$0
+<xf:if is="$node.node_type_id == 'Forum'">
+	<xf:radiorow name="node[node_attachment_thumb]" value="{$node.node_attachment_thumb}"
+		label="Thumbnail Attachment Quality"
+		hint="{{phrase('optional')}}">
+		<xf:option value="full" label="Full attachment image URL" />
+		<xf:option value="small" label="Default Xenforo generate thumbnail url"/>
+		<xf:explain><div>{{phrase('xb_th_default_thumbnail_option_admin')}}</div></xf:explain>
+	</xf:radiorow>
+	<xf:textboxrow name="node[node_thread_thumbnail_height]" value="{$node.node_thread_thumbnail_height}"
+		label="Thumbnail Height"
+		hint="{{phrase('optional')}}"
+		dir="ltr">
+		<xf:explain><div>{{phrase('xb_th_increase_height_admin')}}</div></xf:explain>
+	</xf:textboxrow>
+<xf:textboxrow name="node[node_thread_thumbnail_width]" value="{$node.node_thread_thumbnail_width}"
+		label="Thumbnail Width"
+		hint="{{phrase('optional')}}"
+		dir="ltr">
+		<xf:explain><div>{{phrase('xb_th_increase_width_admin')}}</div></xf:explain>
+	</xf:textboxrow>
+<xf:textboxrow name="node[node_default_thread_thumbnail_image]" value="{$node.node_default_thread_thumbnail_image}"
+		label="Default thumbnail url"
+		hint="{{phrase('optional')}}"
+		dir="ltr">
+		<xf:explain><div>{{phrase('xb_th_default_thumbnail_admin')}}</div></xf:explain>
+	</xf:textboxrow>
+<xf:textboxrow name="node[node_custom_image_feild]" value="{$node.node_custom_image_feild}"
+		label="Default Custom Feild ID"
+		hint="{{phrase('optional')}}"
+		dir="ltr">
+		<xf:explain><div>{{phrase('custom_feild_')}}</div></xf:explain>
+	</xf:textboxrow>
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="search_result_thread" modification_key="add_thumbnail_search_resule" description="Add thumbnail in search result" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<span class="contentRow-figure">
+			<xf:avatar user="{$thread.User}" size="s" defaultname="{$thread.username}" />
+		</span>]]></find>
+    <replace><![CDATA[<xf:if is="in_array($thread.node_id, $xf.options.node_id_for_thumb)" >
+		<span class="contentRow-figure">
+		<a href="{{ link('threads', $thread) }}"> 
+				<img src="{$thread.getfirstPostImgUrl()}" class="avatar avatar--s" style="object-fit: cover;">
+		</a>
+	</span>
+<xf:else/>
+	$0
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="thread_list_macros" modification_key="add_thread_thumbnial_in_thread" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<div class="contentRow-figure">
+			<xf:avatar user="$thread.User" size="xxs" defaultname="{$thread.username}" />
+		</div>]]></find>
+    <replace><![CDATA[<div class="contentRow-figure">
+		<xf:if is="in_array($thread.node_id, $xf.options.node_id_for_thumb)" >
+			<a href="{{ link('threads', $thread) }}"> 
+				<img src="{$thread.getfirstPostImgUrl()}" class="avatar avatar--xxs" style="object-fit: cover;">
+				</a>
+		</xf:if>
+		</div>]]></replace>
+  </modification>
+  <modification type="public" template="thread_list_macros" modification_key="latest_threaD_widget_thumbnail_add" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<div class="contentRow-figure">
+			<xf:avatar user="$thread.LastPoster" size="xxs" defaultname="{$thread.last_post_username}" />
+		</div>]]></find>
+    <replace><![CDATA[<xf:if is="in_array($thread.node_id, $xf.options.node_id_for_thumb)" >
+<div class="contentRow-figure">
+			<a href="{{ link('threads', $thread) }}"> 
+				<img src="{$thread.getfirstPostImgUrl()}" class="avatar avatar--xxs" style="object-fit: cover;">
+				</a>
+		</div>
+<xf:else/>
+	$0
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="thread_list_macros" modification_key="nodeicon" description="add image as node icon" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<div class="structItem-cell structItem-cell--icon">
+			<div class="structItem-iconContainer">
+				<xf:avatar user="$thread.User" size="s" defaultname="{$thread.username}" />
+				<xf:if is="$thread.getUserPostCount()">
+					<xf:avatar user="$xf.visitor" size="s"
+						href=""
+						class="avatar--separated structItem-secondaryIcon"
+						tabindex="0"
+						data-xf-init="tooltip"
+						data-trigger="auto"
+						title="{{ phrase('you_have_posted_x_messages_in_this_thread', {'count': $thread.getUserPostCount() }) }}" />
+				</xf:if>
+			</div>
+		</div>]]></find>
+    <replace><![CDATA[<xf:if is="in_array($thread.node_id, $xf.options.node_id_for_thumb)" >
+	<xf:if is="$xf.reply.template == 'forum_view' OR $xf.reply.template == 'tag_view'">
+		<div class="structItem-cell structItem-cell--icon" style="width: {{ $thread.Forum.Node.node_thread_thumbnail_width ? $thread.Forum.Node.node_thread_thumbnail_width : $xf.options.thumbnail_width }}; height: {{ $thread.Forum.Node.node_thread_thumbnail_height ? $thread.Forum.Node.node_thread_thumbnail_height : $xf.options.thumb_size_hemant }};">
+	<xf:else/>
+		<div class="structItem-cell structItem-cell--icon">
+	</xf:if>
+			<div class="structItem-iconContainer">
+				<a href="{{ link('threads', $thread) }}"> 
+				<xf:if is="$xf.reply.template == 'forum_view' OR $xf.reply.template == 'tag_view'">
+						<img src="{$thread.getfirstPostImgUrl()}" style="width: {{ $thread.Forum.Node.node_thread_thumbnail_width ? $thread.Forum.Node.node_thread_thumbnail_width : $xf.options.thumbnail_width }} ; height: {{ $thread.Forum.Node.node_thread_thumbnail_height ? $thread.Forum.Node.node_thread_thumbnail_height : $xf.options.thumb_size_hemant }}; object-fit: cover;">
+				<xf:else/>
+						<img src="{$thread.getfirstPostImgUrl()}" class="avatar avatar--square" style="object-fit: cover;">
+				</xf:if>
+				</a>
+				<xf:if is="!$xf.options.hideuser_avtar">
+				<xf:if is="$thread.getUserPostCount()">
+					<xf:avatar user="$xf.visitor" size="s"
+						href=""
+						class="avatar--separated structItem-secondaryIcon"
+						tabindex="0"
+						data-xf-init="tooltip"
+						data-trigger="auto"
+						title="{{ phrase('you_have_posted_x_messages_in_this_thread', {'count': $thread.getUserPostCount() }) }}" />
+				</xf:if>
+				</xf:if>
+			</div>
+</div>
+<xf:else/>
+	$0
+</xf:if>]]></replace>
+  </modification>
+</template_modifications>

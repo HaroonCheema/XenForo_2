@@ -57,6 +57,10 @@ return array(
 						' . $__templater->callMacro('prefix_macros', 'select', array(
 		'type' => 'resource',
 		'prefixes' => $__vars['prefixes'],
+		'multiple' => true,
+		'selected' => $__vars['selectedPrefix'],
+		'minTokens' => $__vars['allowedMinPrefixes'],
+		'maxTokens' => $__vars['allowedMaxPrefixes'],
 		'href' => $__templater->func('link', array('resources/prefixes', ), false),
 		'listenTo' => '< .js-prefixListenContainer | .js-categoryList',
 	), $__vars) . '

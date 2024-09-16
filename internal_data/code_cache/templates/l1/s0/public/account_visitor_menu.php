@@ -192,7 +192,8 @@ return array(
 		' . $__compilerTemp2 . '
 		<li><a href="' . $__templater->func('link', array('search/member', null, array('user_id' => $__vars['xf']['visitor']['user_id'], ), ), true) . '" class="menu-linkRow">' . 'Your content' . '</a></li>
 		<li><a href="' . $__templater->func('link', array('account/reactions', ), true) . '" class="menu-linkRow">' . 'Reactions received' . '</a></li>
-		' . '
+		<li><a href="' . $__templater->func('link', array('account/bratr-my-ratings', ), true) . '" class="menu-linkRow">' . 'My Ratings' . '</a></li>
+' . '
 	</ul>
 
 	' . '

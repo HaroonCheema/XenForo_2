@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="thread_list_macros" modification_key="fs_nodeicon" description="add image as node icon" execution_order="9" enabled="1" action="str_replace">
+    <find><![CDATA[<div class="structItem-cell structItem-cell--icon">
+			<div class="structItem-iconContainer">
+				<xf:avatar user="$thread.User" size="s" defaultname="{$thread.username}" />
+				<xf:if is="$thread.getUserPostCount()">
+					<xf:avatar user="$xf.visitor" size="s"
+						href=""
+						class="avatar--separated structItem-secondaryIcon"
+						tabindex="0"
+						data-xf-init="tooltip"
+						data-trigger="auto"
+						title="{{ phrase('you_have_posted_x_messages_in_this_thread', {'count': $thread.getUserPostCount() }) }}" />
+				</xf:if>
+			</div>
+		</div>]]></find>
+    <replace><![CDATA[<xf:if is="in_array($thread.node_id, $xf.options.node_id_for_thumb)" >
+	<xf:if is="$xf.reply.template == 'forum_view'OR $xf.reply.template == 'forum_view_latest_content' OR $xf.reply.template == 'tag_view'">
+		
+		<div class="structItem-cell structItem-cell--icon" style="width: {{ $thread.Forum.Node.node_thread_thumbnail_width ? $thread.Forum.Node.node_thread_thumbnail_width : $xf.options.thumbnail_width }}; height: {{ $thread.Forum.Node.node_thread_thumbnail_height ? $thread.Forum.Node.node_thread_thumbnail_height : $xf.options.thumb_size_hemant }};">
+	<xf:else/>
+		<div class="structItem-cell structItem-cell--icon">
+	</xf:if>
+			<div class="structItem-iconContainer">
+				<a href="{{ link('threads', $thread) }}"> 
+				<xf:if is="$xf.reply.template == 'forum_view'OR $xf.reply.template == 'forum_view_latest_content' OR $xf.reply.template == 'tag_view'">
+						<img src="{$thread.getfirstPostImgUrl()}" style="width: {{ $thread.Forum.Node.node_thread_thumbnail_width ? $thread.Forum.Node.node_thread_thumbnail_width : $xf.options.thumbnail_width }} ; height: {{ $thread.Forum.Node.node_thread_thumbnail_height ? $thread.Forum.Node.node_thread_thumbnail_height : $xf.options.thumb_size_hemant }}; object-fit: cover;">
+				<xf:else/>
+						<img src="{$thread.getfirstPostImgUrl()}" class="avatar avatar--square" style="object-fit: cover;">
+				</xf:if>
+				</a>
+				<xf:if is="!$xf.options.hideuser_avtar">
+				<xf:if is="$thread.getUserPostCount()">
+					<xf:avatar user="$xf.visitor" size="s"
+						href=""
+						class="avatar--separated structItem-secondaryIcon"
+						tabindex="0"
+						data-xf-init="tooltip"
+						data-trigger="auto"
+						title="{{ phrase('you_have_posted_x_messages_in_this_thread', {'count': $thread.getUserPostCount() }) }}" />
+				</xf:if>
+				</xf:if>
+			</div>
+</div>
+<xf:else/>
+	$0
+</xf:if>]]></replace>
+  </modification>
+</template_modifications>

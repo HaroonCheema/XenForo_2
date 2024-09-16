@@ -110,6 +110,65 @@ return array(
 	)), array(
 	)) . '
 ';
+	if ($__vars['node']['node_type_id'] == 'Forum') {
+		$__finalCompiled .= '
+	' . $__templater->formRadioRow(array(
+			'name' => 'node[node_attachment_thumb]',
+			'value' => $__vars['node']['node_attachment_thumb'],
+		), array(array(
+			'value' => 'full',
+			'label' => 'Full attachment image URL',
+			'_type' => 'option',
+		),
+		array(
+			'value' => 'small',
+			'label' => 'Default Xenforo generate thumbnail url',
+			'_type' => 'option',
+		)), array(
+			'label' => 'Thumbnail Attachment Quality',
+			'hint' => 'Optional',
+			'explain' => '<div>' . 'This option allow you to set the attachment size quality in between full thread thumbnail image URL or XF default generated attachment icon - -  generated URL is make your page load faster but has small size' . '</div>',
+		)) . '
+	' . $__templater->formTextBoxRow(array(
+			'name' => 'node[node_thread_thumbnail_height]',
+			'value' => $__vars['node']['node_thread_thumbnail_height'],
+			'dir' => 'ltr',
+		), array(
+			'label' => 'Thumbnail Height',
+			'hint' => 'Optional',
+			'explain' => '<div>' . 'if the image height need to increase according to your post style for this forum you can increase here value format EX - 300px' . '</div>',
+		)) . '
+' . $__templater->formTextBoxRow(array(
+			'name' => 'node[node_thread_thumbnail_width]',
+			'value' => $__vars['node']['node_thread_thumbnail_width'],
+			'dir' => 'ltr',
+		), array(
+			'label' => 'Thumbnail Width',
+			'hint' => 'Optional',
+			'explain' => '<div>' . 'if the image width need to increase according to your post style for this forum you can increase here value format EX - 500px' . '</div>',
+		)) . '
+' . $__templater->formTextBoxRow(array(
+			'name' => 'node[node_default_thread_thumbnail_image]',
+			'value' => $__vars['node']['node_default_thread_thumbnail_image'],
+			'dir' => 'ltr',
+		), array(
+			'label' => 'Default thumbnail url',
+			'hint' => 'Optional',
+			'explain' => '<div>' . 'Default thumbnail URL if there is not thumbnail in the thread' . '</div>',
+		)) . '
+' . $__templater->formTextBoxRow(array(
+			'name' => 'node[node_custom_image_feild]',
+			'value' => $__vars['node']['node_custom_image_feild'],
+			'dir' => 'ltr',
+		), array(
+			'label' => 'Default Custom Feild ID',
+			'hint' => 'Optional',
+			'explain' => '<div>' . 'custom_feild_' . '</div>',
+		)) . '
+';
+	}
+	$__finalCompiled .= '
+';
 	return $__finalCompiled;
 }
 ),

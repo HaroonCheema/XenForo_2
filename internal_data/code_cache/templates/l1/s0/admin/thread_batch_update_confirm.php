@@ -99,9 +99,11 @@ return array(
 		'explain' => 'The thread type will only be changed if it is valid for the forum the thread is in or is being moved to.',
 	)) . '
 
+' . $__templater->includeTemplate('multiprefix_thread_batch_update_confirm', $__vars) . '
 			' . $__compilerTemp5 . '
 
 			<hr class="formRowSep" />
+' . $__templater->includeTemplate('tagess_thread_batch_update_confirm', $__vars) . '
 
 			' . $__templater->formCheckBoxRow(array(
 	), array(array(

@@ -1,5 +1,6 @@
 <?php
 return array (
+  'widget_def_desc.BRATR_newRatings' => 'Displays the new thread ratings',
   'widget_def_desc.WelcomeBanner' => 'Welcome Banner Threads',
   'widget_def_desc.altf_filter_widget' => 'A widget to allow filtering the current forum by custom fields',
   'widget_def_desc.birthdays' => 'A block containing a heap of avatars of users whose birthday is today.',
@@ -37,6 +38,7 @@ return array (
   'widget_def_desc.snog_movies_slider' => '',
   'widget_def_desc.snog_tv_poster_slider' => '',
   'widget_def_desc.snog_tv_slider' => '',
+  'widget_def_desc.tags_cloud' => 'Displays a block containing tags cloud.',
   'widget_def_desc.template_syntax' => 'Widget that creates an associated template which will allow you to display XF template syntax and HTML.',
   'widget_def_desc.thread_poll' => 'Displays the specified poll in a widget.',
   'widget_def_desc.thui_progress_bar' => 'Displays visitors progress to the next user title.',

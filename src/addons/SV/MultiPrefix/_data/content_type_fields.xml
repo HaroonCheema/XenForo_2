@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<content_type_fields>
+  <field content_type="thread" field_name="sv_multiprefix_handler_class">SV\MultiPrefix:Thread</field>
+</content_type_fields>

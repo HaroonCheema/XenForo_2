@@ -18,6 +18,9 @@ return array(
 				' . $__templater->formPrefixInputRow(($__templater->method($__vars['thread'], 'isPrefixEditable', array()) ? $__vars['prefixes'] : array()), array(
 			'type' => 'thread',
 			'prefix-value' => $__vars['thread']['prefix_id'],
+			'multi-prefix-value' => $__vars['thread']['sv_prefix_ids'],
+			'multi-prefix-content-parent' => $__vars['thread']['Forum'],
+			'multi-prefix-content' => $__vars['thread'],
 			'textbox-value' => $__vars['thread']['title'],
 			'placeholder' => 'Title' . $__vars['xf']['language']['ellipsis'],
 			'maxlength' => $__templater->func('max_length', array($__vars['thread'], 'title', ), false),

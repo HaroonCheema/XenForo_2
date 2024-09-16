@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<widget_definitions>
+  <widget_definition definition_id="tags_cloud" definition_class="AVForums\TagEssentials\Widget\TagCloud"/>
+</widget_definitions>

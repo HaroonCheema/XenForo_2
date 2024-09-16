@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="option.enable_first_image_url" version_id="2100" version_string="2.1.0"><![CDATA[Enable first image url]]></phrase>
+  <phrase title="option.hideuser_avtar" version_id="2100" version_string="2.1.0"><![CDATA[Show User Avatar]]></phrase>
+  <phrase title="option.node_id_for_thumb" version_id="2100" version_string="2.1.0"><![CDATA[Select Thumbnail Node]]></phrase>
+  <phrase title="option.thumb_size_hemant" version_id="2302" version_string="2.3.2"><![CDATA[Thumbnail Height]]></phrase>
+  <phrase title="option.thumbnail_width" version_id="2302" version_string="2.3.2"><![CDATA[Thumbnail Width]]></phrase>
+  <phrase title="option.xb_th_default_image" version_id="2100" version_string="2.1.0"><![CDATA[Default Thread thumbnail]]></phrase>
+  <phrase title="option.xb_th_xenbros_activation" version_id="2200" version_string="1.1.0"><![CDATA[Activate Addon]]></phrase>
+  <phrase title="option_explain.enable_first_image_url" version_id="2100" version_string="2.1.0"><![CDATA[]]></phrase>
+  <phrase title="option_explain.hideuser_avtar" version_id="2100" version_string="2.1.0"><![CDATA[]]></phrase>
+  <phrase title="option_explain.node_id_for_thumb" version_id="2100" version_string="2.1.0"><![CDATA[where you want to show thumbnail]]></phrase>
+  <phrase title="option_explain.thumb_size_hemant" version_id="2302" version_string="2.3.2"><![CDATA[it's required if the  image size needs to increase according to your theme]]></phrase>
+  <phrase title="option_explain.thumbnail_width" version_id="2302" version_string="2.3.2"><![CDATA[It's work better only if you using thumbnail addon only : leave it blank if want default
+Example :  80px if you using grid addon add 100% or leave it blank]]></phrase>
+  <phrase title="option_explain.xb_th_default_image" version_id="2100" version_string="2.1.0"><![CDATA[]]></phrase>
+  <phrase title="option_explain.xb_th_xenbros_activation" version_id="2200" version_string="1.1.0"><![CDATA[]]></phrase>
+  <phrase title="option_group.hematthumb" version_id="2100" version_string="2.1.0"><![CDATA[[Xenbros]Thread Thumbnail]]></phrase>
+  <phrase title="option_group_description.hematthumb" version_id="2100" version_string="2.1.0"><![CDATA[]]></phrase>
+  <phrase title="xb_th_default_thumbnail_admin" version_id="2220" version_string="2.2.2"><![CDATA[Default thumbnail URL if there is not thumbnail in the thread]]></phrase>
+  <phrase title="xb_th_default_thumbnail_option_admin" version_id="2220" version_string="2.2.2"><![CDATA[This option allow you to set the attachment size quality in between full thread thumbnail image URL or XF default generated attachment icon - -  generated URL is make your page load faster but has small size]]></phrase>
+  <phrase title="xb_th_increase_height_admin" version_id="2220" version_string="2.2.2"><![CDATA[if the image height need to increase according to your post style for this forum you can increase here value format EX - 300px]]></phrase>
+  <phrase title="xb_th_increase_width_admin" version_id="2220" version_string="2.2.2"><![CDATA[if the image width need to increase according to your post style for this forum you can increase here value format EX - 500px]]></phrase>
+</phrases>

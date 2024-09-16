@@ -677,7 +677,7 @@ form.filterFormElement {
     }
 }
 ]]></template>
-  <template type="public" title="altf_thread_field_form_element" version_id="3090072" version_string="3.9.0 PL2"><![CDATA[<xf:macro name="filter_element" arg-set="!" arg-definition="!" arg-editMode="!" arg-namePrefix="!">
+  <template type="public" title="altf_thread_field_form_element" version_id="3040670" version_string="3.4.6"><![CDATA[<xf:macro name="filter_element" arg-set="!" arg-definition="!" arg-editMode="!" arg-namePrefix="!">
     <xf:comment>Select2 loading is moved to a top-level macro</xf:comment>
     <xf:if is="in_array($definition.field_type, ['textbox', 'textarea', 'bbcode'])">
         <xf:macro name="altf_custom_fields_edit_textbox" arg-set="{$set}" arg-definition="{$definition}" arg-editMode="{$editMode}" arg-namePrefix="{$namePrefix}"/>
@@ -692,7 +692,7 @@ form.filterFormElement {
         <xf:elseif is="in_array($definition.field_type, ['location'])"/>
         <xf:macro name="altf_custom_fields_edit_location" arg-set="{$set}" arg-definition="{$definition}" arg-editMode="{$editMode}" arg-namePrefix="{$namePrefix}"/>
 
-        <xf:comment>Multiselect should load from this template as well</xf:comment>
+        <xf:comment>Multiselect should load from this template as welll</xf:comment>
         <xf:elseif is="in_array($definition.FieldData.filter_template, ['checkbox', 'select', 'radio', 'multiselect'])"/>
         <xf:macro name="custom_fields_edit_{$definition.FieldData.filter_template}" arg-set="{$set}" arg-definition="{$definition}" arg-editMode="{$editMode}" arg-namePrefix="{$namePrefix}"/>
 
@@ -718,7 +718,7 @@ form.filterFormElement {
                multiple="{$multi}"
                size="{{$multi && $xf.options.altf_filterable_lists ? 1 : 0}}"
                class="field_{$definition.field_id}">
-        <xf:option value="">{{ phrase('(any)') }}</xf:option>
+        <xf:option value=""/>
         <xf:foreach loop="$definition.getFacetData().getChoices($definition, $set, false)" key="$key" value="$option">
             <xf:option value="{$key}"
                        labelclass="{$definition.getFacetData().getChoiceClass($definition, $key)}"
@@ -907,7 +907,7 @@ form.filterFormElement {
         </ul>
     </div>
 </xf:if>]]></template>
-  <template type="public" title="altf_thread_filter_form_macros" version_id="3090270" version_string="3.9.2"><![CDATA[<xf:macro name="select2_setup">
+  <template type="public" title="altf_thread_filter_form_macros" version_id="3050670" version_string="3.5.6"><![CDATA[<xf:macro name="select2_setup">
     <xf:comment>A dedicated macro just for loading select2 dependencies</xf:comment>
     <xf:css src="select2.less"/>
     <xf:css src="altf_select2.less"/>
@@ -948,7 +948,7 @@ form.filterFormElement {
          data-filterable-list-api="{{ link('forums/load-selection-options') }}"
     ></div>
     <xf:if is="{$xf.options.altf_keyword_search} !== 'disabled'">
-        <div class="menu-row menu-row--separated menu-row--keywords">
+        <div class="menu-row menu-row--separated">
             <label for="ctrl_started_by">{{ phrase('keywords:') }}</label>
             <div class="u-inputSpacer">
                 <xf:textbox name="thread_fields[__keywords]" value="{{ $set.__keywords }}"/>
@@ -970,7 +970,7 @@ form.filterFormElement {
         </div>
     </xf:if>
     <xf:foreach loop="$fields" key="$fieldId" value="$fieldDefinition">
-        <div class="menu-row menu-row--separated customFieldContainer customFieldContainer--id-{$fieldDefinition.field_id} customFieldContainer--{$fieldDefinition.field_type} {$fieldDefinition.getFacetData().getContainerClass($fieldDefinition)} threadFieldContainer filterTemplate--{$fieldDefinition.FieldData.filter_template} {{ $xf.options.altf_filterable_lists ? 'customFieldContainer--hasFilterableList' : '' }}">
+        <div class="menu-row menu-row--separated customFieldContainer customFieldContainer--{$fieldDefinition.field_type} {$fieldDefinition.getFacetData().getContainerClass($fieldDefinition)} threadFieldContainer filterTemplate--{$fieldDefinition.FieldData.filter_template} {{ $xf.options.altf_filterable_lists ? 'customFieldContainer--hasFilterableList' : '' }}">
             {$fieldDefinition.title}:
             <div class="inputGroup u-inputSpacer">
                 <xf:macro template="altf_thread_field_form_element" name="filter_element" arg-set="{$set}"

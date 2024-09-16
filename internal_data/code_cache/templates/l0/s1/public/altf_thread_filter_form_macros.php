@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: a66c27a5ec2eff48bc8b8c69c59c102f
+// FROM HASH: 805b6cdcdf7535a15f15babcee2a0510
 return array(
 'macros' => array('select2_setup' => array(
 'code' => function($__templater, array $__vars, $__extensions = null)
@@ -104,7 +104,7 @@ return array(
     ';
 	if ($__vars['xf']['options']['altf_keyword_search'] !== 'disabled') {
 		$__finalCompiled .= '
-        <div class="menu-row menu-row--separated menu-row--keywords">
+        <div class="menu-row menu-row--separated">
             <label for="ctrl_started_by">' . 'Keywords' . $__vars['xf']['language']['label_separator'] . '</label>
             <div class="u-inputSpacer">
                 ' . $__templater->formTextBox(array(
@@ -139,7 +139,7 @@ return array(
 	if ($__templater->isTraversable($__vars['fields'])) {
 		foreach ($__vars['fields'] AS $__vars['fieldId'] => $__vars['fieldDefinition']) {
 			$__finalCompiled .= '
-        <div class="menu-row menu-row--separated customFieldContainer customFieldContainer--id-' . $__templater->escape($__vars['fieldDefinition']['field_id']) . ' customFieldContainer--' . $__templater->escape($__vars['fieldDefinition']['field_type']) . ' ' . $__templater->escape($__templater->method($__templater->method($__vars['fieldDefinition'], 'getFacetData', array()), 'getContainerClass', array($__vars['fieldDefinition'], ))) . ' threadFieldContainer filterTemplate--' . $__templater->escape($__vars['fieldDefinition']['FieldData']['filter_template']) . ' ' . ($__vars['xf']['options']['altf_filterable_lists'] ? 'customFieldContainer--hasFilterableList' : '') . '">
+        <div class="menu-row menu-row--separated customFieldContainer customFieldContainer--' . $__templater->escape($__vars['fieldDefinition']['field_type']) . ' ' . $__templater->escape($__templater->method($__templater->method($__vars['fieldDefinition'], 'getFacetData', array()), 'getContainerClass', array($__vars['fieldDefinition'], ))) . ' threadFieldContainer filterTemplate--' . $__templater->escape($__vars['fieldDefinition']['FieldData']['filter_template']) . ' ' . ($__vars['xf']['options']['altf_filterable_lists'] ? 'customFieldContainer--hasFilterableList' : '') . '">
             ' . $__templater->escape($__vars['fieldDefinition']['title']) . ':
             <div class="inputGroup u-inputSpacer">
                 ' . $__templater->callMacro('altf_thread_field_form_element', 'filter_element', array(
@@ -192,6 +192,7 @@ return array(
 
 ' . '
 
+' . '
 ';
 	return $__finalCompiled;
 }

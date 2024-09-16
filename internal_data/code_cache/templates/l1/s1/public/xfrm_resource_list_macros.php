@@ -23,7 +23,7 @@ return array(
 	$__templater->includeCss('xfrm.less');
 	$__finalCompiled .= '
 
-	<div class="structItem structItem--resource ' . ($__vars['resource']['prefix_id'] ? ('is-prefix' . $__templater->escape($__vars['resource']['prefix_id'])) : '') . ' ' . ($__templater->method($__vars['resource'], 'isIgnored', array()) ? 'is-ignored' : '') . (($__vars['resource']['resource_state'] == 'moderated') ? 'is-moderated' : '') . (($__vars['resource']['resource_state'] == 'deleted') ? 'is-deleted' : '') . ' js-inlineModContainer js-resourceListItem-' . $__templater->escape($__vars['resource']['resource_id']) . '" data-author="' . ($__templater->escape($__vars['resource']['User']['username']) ?: $__templater->escape($__vars['resource']['username'])) . '">
+	<div class="structItem structItem--resource ' . ($__vars['resource']['sv_prefix_ids'] ? ('is-prefix' . $__templater->filter($__vars['resource']['sv_prefix_ids'], array(array('join', array(' is-prefix', )),), true)) : '') . ' ' . ($__templater->method($__vars['resource'], 'isIgnored', array()) ? 'is-ignored' : '') . (($__vars['resource']['resource_state'] == 'moderated') ? 'is-moderated' : '') . (($__vars['resource']['resource_state'] == 'deleted') ? 'is-deleted' : '') . ' js-inlineModContainer js-resourceListItem-' . $__templater->escape($__vars['resource']['resource_id']) . '" data-author="' . ($__templater->escape($__vars['resource']['User']['username']) ?: $__templater->escape($__vars['resource']['username'])) . '">
 		<div class="structItem-cell structItem-cell--icon structItem-cell--iconExpanded">
 			<div class="structItem-iconContainer">
 				';
@@ -129,7 +129,7 @@ return array(
 					';
 		if ($__vars['category']) {
 			$__finalCompiled .= '
-						<a href="' . $__templater->func('link', array('resources/categories', $__vars['category'], array('prefix_id' => $__vars['resource']['prefix_id'], ), ), true) . '" class="labelLink" rel="nofollow">' . $__templater->func('prefix', array('resource', $__vars['resource'], 'html', '', ), true) . '</a>
+						' . $__templater->func('prefix_filters', array('resource', 'resources/categories', $__vars['category'], $__vars['resource'], $__vars['__globals']['filters'], ), true) . '
 					';
 		} else {
 			$__finalCompiled .= '

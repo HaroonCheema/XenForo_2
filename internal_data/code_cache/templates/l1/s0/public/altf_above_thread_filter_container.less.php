@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 14dee782d4efdbfa83187eb78736dfe4
+// FROM HASH: f8860f9537c6c3128fdd6b67f23e8eb7
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -22,7 +22,8 @@ return array(
       background: inherit !important;
     }
   }
-}';
+}
+';
 	return $__finalCompiled;
 }
 );

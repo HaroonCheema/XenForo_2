@@ -73,7 +73,7 @@
   <phrase title="altf_thread_field_cache" version_id="1000071" version_string="1.0.0"><![CDATA[Thread field cache]]></phrase>
   <phrase title="altf_thread_fields" version_id="1100172" version_string="1.10.1"><![CDATA[Custom thread fields]]></phrase>
   <phrase title="altf_thread_filter_options" version_id="1000071" version_string="1.0.0"><![CDATA[Thread Filter options]]></phrase>
-  <phrase title="altf_thread_type" version_id="3070171" version_string="3.7.1 PL1"><![CDATA[Thread type (XenForo 2.2+)]]></phrase>
+  <phrase title="altf_thread_type" version_id="3080070" version_string="3.8.0"><![CDATA[Thread type (XenForo 2.2+)]]></phrase>
   <phrase title="altf_to" version_id="1000071" version_string="1.0.0"><![CDATA[To...]]></phrase>
   <phrase title="altf_value_between_x_y" version_id="1000071" version_string="1.0.0"><![CDATA[between {x} and {y}]]></phrase>
   <phrase title="altf_value_between_x_y_date" version_id="1000071" version_string="1.0.0"><![CDATA[between {x} and {y}]]></phrase>

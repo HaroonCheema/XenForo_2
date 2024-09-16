@@ -360,6 +360,15 @@ return array(
 		</ul>
 
 		<ul class="message-attribution-opposite message-attribution-opposite--list ' . $__templater->escape($__vars['oppositeClass']) . '">
+';
+	if ($__vars['post']['bratr_star']) {
+		$__finalCompiled .= '
+	' . $__templater->callMacro('BRATR_rating_macros', 'stars', array(
+			'rating' => $__vars['post']['bratr_star'],
+		), $__vars) . '
+';
+	}
+	$__finalCompiled .= '
 			';
 	if ($__templater->method($__vars['post'], 'isUnread', array())) {
 		$__finalCompiled .= '

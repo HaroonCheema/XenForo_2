@@ -263,6 +263,8 @@ return array(
 		'class' => 'block',
 	)) . '
 ' . '
+' . $__templater->includeTemplate('tools_rebuild_tagess_wiki', $__vars) . '
+' . $__templater->includeTemplate('tools_rebuild_tagess_prune', $__vars) . '
 
 ';
 	$__vars['postMdBody'] = $__templater->preEscaped('
@@ -385,6 +387,11 @@ return array(
 		'job' => 'XF:Gravatar',
 	), $__vars) . '
 
+' . $__templater->callMacro('tools_rebuild', 'rebuild_job', array(
+		'header' => 'Brivium - ' . 'Rebuild Thread Ratings',
+		'job' => 'Brivium\\AdvancedThreadRating:ThreadRating',
+	), $__vars) . '
+<!--[Brivium\\AdvancedThreadRating:ThreadRatingBottom]-->
 ' . '
 ' . $__templater->includeTemplate('xfmg_tools_rebuild', $__vars) . '
 ' . $__templater->includeTemplate('dbtech_ecommerce_tools_rebuild', $__vars) . '

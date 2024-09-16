@@ -14,6 +14,7 @@ return array(
 	<div class="contentRow">
 		<div class="contentRow-figure">
 			' . $__templater->func('avatar', array($__vars['user'], 's', false, array(
+		'defaultname' => $__vars['user']['username'],
 		'notooltip' => 'true',
 	))) . '
 		</div>

@@ -485,6 +485,13 @@ return array(
 	}
 	$__compilerTemp2 .= '
 							';
+	if ($__vars['xf']['visitor']['is_moderator']) {
+		$__compilerTemp2 .= '
+	<a href="' . $__templater->func('link', array('bratr-ratings/management', ), true) . '" class="menu-linkRow">' . 'Management ratings' . '</a>
+';
+	}
+	$__compilerTemp2 .= '
+';
 	if ($__templater->method($__vars['xf']['visitor'], 'hasPermission', array('fs_IPSearchResult', 'canUseSearch', ))) {
 		$__compilerTemp2 .= '
 	<a href="' . $__templater->func('link', array('ip-search', ), true) . '" class="menu-linkRow">' . 'IP Search' . '</a>
@@ -1294,7 +1301,6 @@ return array(
 	$__compilerTemp14 .= '
 				' . $__templater->func('copyright') . '
 				' . $__templater->callback('DBTech\\eCommerce\\Template\\Callback\\Copyright', 'getCopyrightText', '', array()) . '
-' . $__templater->filter($__vars['ThreadFilterCopyright'], array(array('raw', array()),), true) . '
 				' . '' . '
 			';
 	if (strlen(trim($__compilerTemp14)) > 0) {

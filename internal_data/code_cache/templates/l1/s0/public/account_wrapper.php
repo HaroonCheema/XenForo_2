@@ -50,7 +50,10 @@ return array(
 					' . 'Reactions received' . '
 				</a>
 				' . $__compilerTemp1 . '
-				' . '
+				<a class="blockLink ' . (($__vars['pageSelected'] == 'bratr-my-ratings') ? 'is-selected' : '') . '" href="' . $__templater->func('link', array('account/bratr-my-ratings', ), true) . '">
+	' . 'My Ratings' . '
+</a>
+' . '
 			</div>
 
 			<h3 class="block-minorHeader">' . 'Settings' . '</h3>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<content_type_fields>
+  <field content_type="tagess_tag_wiki" field_name="edit_history_handler_class">AVForums\TagEssentials\EditHistory\TagWiki</field>
+</content_type_fields>

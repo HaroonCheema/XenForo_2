@@ -2,14 +2,24 @@
 
 namespace SV\StandardLib\Repository;
 
+use SV\InstallerAppHelper\InstallAppBootstrap;
 use XF\Container;
+use XF\Entity\AddOn;
+use XF\Entity\User as UserEntity;
+use XF\Mvc\Entity\Entity;
 use XF\Mvc\Entity\Repository;
+use XF\Util\File as FileUtil;
+use function assert;
+use function class_alias;
 use function in_array;
 use function is_numeric;
 use function is_string;
+use function md5;
 use function preg_replace;
 use function str_replace;
 use function strpos;
+use function strrpos;
+use function substr;
 use function version_compare;
 
 class Helper extends Repository
@@ -41,8 +51,8 @@ class Helper extends Repository
 
         if (is_string($targetVersion))
         {
-            $addOnEntity = \XF::em()->findCached('XF:AddOn', $addonId);
-            if ($addOnEntity instanceof \XF\Entity\AddOn)
+            $addOnEntity = \SV\StandardLib\Helper::findCached(\XF\Entity\AddOn::class, $addonId);
+            if ($addOnEntity instanceof AddOn)
             {
                 // unlike \XF::isAddOnActive, the add-on must not be in a processing state
                 $installedVersionId = $addOnEntity->is_processing ? null : $addOnEntity->version_string;
@@ -51,13 +61,13 @@ class Helper extends Repository
             {
                 $addons = $this->getAddonVersions();
                 $installedVersionId = $addons[$addonId] ?? null;
-                if ($installedVersionId === null)
-                {
-                    return false;
-                }
+            }
+            if ($installedVersionId === null)
+            {
+                return false;
             }
 
-            if ($targetVersion === $installedVersionId && in_array($operator, ['=', '<=', '<='], true))
+            if ($targetVersion === $installedVersionId && in_array($operator, ['=', '<=', '>='], true))
             {
                 return true;
             }
@@ -69,10 +79,10 @@ class Helper extends Repository
 
         if (\XF::$versionId < 2020000)
         {
-            return $this->isAddOnActiveForXF21($addonId, $targetVersion, $operator);
+            return (bool)$this->isAddOnActiveForXF21($addonId, $targetVersion, $operator);
         }
 
-        return \XF::isAddOnActive($addonId, $targetVersion, $operator);
+        return (bool)\XF::isAddOnActive($addonId, $targetVersion, $operator);
     }
 
     /**
@@ -81,17 +91,17 @@ class Helper extends Repository
      * @param string $addOnId
      * @param int|null    $versionId
      * @param string $operator
-     * @return bool|mixed
+     * @return bool|int
      */
-    protected function isAddOnActiveForXF21(string $addOnId, int $versionId = null, string $operator = '>=')
+    protected function isAddOnActiveForXF21(string $addOnId, ?int $versionId = null, string $operator = '>=')
     {
         $addOns = \XF::app()->container('addon.cache');
-        if (!isset($addOns[$addOnId]))
+        $activeVersionId = $addOns[$addOnId] ?? null;
+        if ($activeVersionId === null)
         {
             return false;
         }
-
-        $activeVersionId = $addOns[$addOnId];
+        /** @var int $activeVersionId */
         if ($versionId === null)
         {
             return $activeVersionId;
@@ -119,39 +129,37 @@ class Helper extends Repository
     protected function getAddonVersions(): array
     {
         /** @var callable(Container, string): array $func */
-        $func = $this->app()->fromRegistry('addon.versionCache', function (Container $c, string $key) {
+        $func = \XF::app()->fromRegistry('addon.versionCache', function (Container $c, string $key) {
             return $this->rebuildAddOnVersionCache();
         });
 
-        return $func($this->app()->container(), 'addon.versionCache');
+        return $func(\XF::app()->container(), 'addon.versionCache');
     }
 
     public function rebuildAddOnVersionCache(): array
     {
         // unlike \XF::isAddOnActive, the add-on must not be in a processing state
-        $data = $this->db()->fetchPairs('
+        $data = \XF::db()->fetchPairs('
             SELECT addon_id, version_string
             FROM xf_addon
             WHERE `active` = 1 AND is_processing = 0
         ');
-        $this->app()->registry()->set('addon.versionCache', $data);
+        \XF::app()->registry()->set('addon.versionCache', $data);
         $this->markAsCriticalAddon();
         return $data;
     }
 
-    protected function markAsCriticalAddon()//: void
+    protected function markAsCriticalAddon(): void
     {
         if ($this->hasDesiredAddOnVersion('SV/InstallerAppHelper', null))
         {
-            /** @noinspection PhpUndefinedClassInspection */
-            /** @noinspection PhpUndefinedNamespaceInspection */
-            \SV\InstallerAppHelper\InstallAppBootstrap::markAddonCritical('SV/StandardLib');
+            InstallAppBootstrap::markAddonCritical('SV/StandardLib');
         }
     }
 
-    public function resetAddOnVersionCache()//: void
+    public function resetAddOnVersionCache(): void
     {
-        $this->app()->registry()->delete('addon.versionCache');
+        \XF::app()->registry()->delete('addon.versionCache');
     }
 
     /** @noinspection PhpUnnecessaryLocalVariableInspection */
@@ -320,19 +328,19 @@ class Helper extends Repository
     }
 
     /**
-     * @param mixed|\XF\Mvc\Entity\Entity|null $entity
-     * @param string                           $relationOrGetter
-     * @param string                           $backupColumn
-     * @return \XF\Entity\User|null
+     * @param mixed|Entity|null $entity
+     * @param string            $relationOrGetter
+     * @param string            $backupColumn
+     * @return UserEntity|null
      */
-    public function getUserEntity($entity, string $relationOrGetter = 'User', string $backupColumn = 'user_id')
+    public function getUserEntity($entity, string $relationOrGetter = 'User', string $backupColumn = 'user_id'): ?UserEntity
     {
-        if (!($entity instanceof \XF\Mvc\Entity\Entity))
+        if (!($entity instanceof Entity))
         {
             return null;
         }
 
-        if ($entity instanceof \XF\Entity\User)
+        if ($entity instanceof UserEntity)
         {
             return $entity;
         }
@@ -340,7 +348,7 @@ class Helper extends Repository
         if ($entity->isValidGetter($relationOrGetter) || $entity->isValidRelation($relationOrGetter))
         {
             $user = $entity->get($relationOrGetter);
-            if ($user instanceof \XF\Entity\User)
+            if ($user instanceof UserEntity)
             {
                 return $user;
             }
@@ -348,8 +356,8 @@ class Helper extends Repository
 
         if ($entity->isValidColumn($backupColumn) || $entity->isValidGetter($backupColumn))
         {
-            /** @var \XF\Entity\User $user */
-            $user = \XF::app()->find('XF:User', $entity->get($backupColumn));
+            /** @var UserEntity|null $user */
+            $user = \SV\StandardLib\Helper::find(UserEntity::class, $entity->get($backupColumn));
 
             return $user;
         }
@@ -357,29 +365,133 @@ class Helper extends Repository
         return null;
     }
 
-    public function aliasClass(string $destClass, string $srcClass)
+    /**
+     * @param string $destClass
+     * @param class-string $srcClass
+     * @return void
+     */
+    public function aliasClass(string $destClass, string $srcClass): void
     {
-        \class_alias($srcClass, $destClass);
-
-        $nsEnd = \strrpos($srcClass, '\\');
-        if ($nsEnd)
+        if (\XF::$versionId < 2021300)
         {
-            $srcAlias = \substr($srcClass, 0, $nsEnd) . '\\XFCP_' . \substr($srcClass, $nsEnd + 1);
+            $this->aliasClassSimple($destClass, $srcClass);
+
+            return;
+        }
+
+        if ($destClass[0] !== '\\')
+        {
+            $destClass = '\\'.$destClass;
+        }
+        if ($srcClass[0] !== '\\')
+        {
+            $srcClass = '\\'.$srcClass;
+        }
+        $file = '/svShim/'.md5($destClass.'-'.$srcClass).'.php';
+        $stubFile = FileUtil::getCodeCachePath() . $file;
+
+        // include returns false if the file doesn't exist, so don't bother with file_exists/is_readable checks
+        $result = false;
+        try
+        {
+            $result = @include($stubFile);
+        }
+        catch (\Throwable $e)
+        {
+            $this->logException($e);
+        }
+        if ($result === true)
+        {
+            return;
+        }
+
+        $php = $this->buildShimStubFile($srcClass, $destClass);
+
+        FileUtil::writeToAbstractedPath('code-cache:/'.$file, $php);
+
+        try
+        {
+            @include($stubFile);
+        }
+        catch (\Throwable $e)
+        {
+            $this->logException($e);
+        }
+    }
+
+    protected function buildShimStubFile(string $srcClass, string $destClass): string
+    {
+        assert($srcClass !== '' && $srcClass[0] === '\\');
+        assert($destClass !== '' && $destClass[0] === '\\');
+        $nsEnd = strrpos($srcClass, '\\');
+        $srcAlias = substr($srcClass, 1, $nsEnd) . 'XFCP_' . substr($srcClass, $nsEnd + 1);
+
+        $nsEnd = strrpos($destClass, '\\');
+        $namespace = substr($destClass, 1, $nsEnd - 1);
+        $class = substr($destClass, $nsEnd + 1);
+        $destAlias = $namespace. '\\XFCP_' . $class;
+
+        return <<<EOL
+<?php
+namespace $namespace;
+class $class extends $srcClass {}
+class_alias('$destAlias', '$srcAlias', false);
+return true;
+EOL;
+    }
+
+    public function clearShimCache(): void
+    {
+        try
+        {
+            FileUtil::deleteAbstractedDirectory('code-cache://svShim');
+        }
+        catch (\Throwable $e)
+        {
+            $this->logException($e);
+        }
+    }
+
+    protected function logException($e): void
+    {
+        // Suppress error reporting, as it is likely to be a transient issue during add-on install/upgrade that can be safely ignored
+        if (\XF::$developmentMode)
+        {
+            \XF::logException($e, false, 'Suppressed:');
+        }
+    }
+
+    /**
+     * XF2.2.13+ implements \XF\Extension::inverseExtensionMap, which simplifies resolveExtendedClassToRoot significantly
+     * However this is incompatible with class_alias for the top-level class extension
+     *
+     * @param string $destClass
+     * @param string $srcClass
+     * @return void
+     */
+    public function aliasClassSimple(string $destClass, string $srcClass): void
+    {
+        class_alias($srcClass, $destClass);
+
+        $nsEnd = strrpos($srcClass, '\\');
+        if ($nsEnd !== false)
+        {
+            $srcAlias = substr($srcClass, 0, $nsEnd) . '\\XFCP_' . substr($srcClass, $nsEnd + 1);
         }
         else
         {
             $srcAlias = "XFCP_$srcClass";
         }
-        $nsEnd = \strrpos($destClass, '\\');
-        if ($nsEnd)
+        $nsEnd = strrpos($destClass, '\\');
+        if ($nsEnd !== false)
         {
-            $destAlias = \substr($destClass, 0, $nsEnd) . '\\XFCP_' . \substr($destClass, $nsEnd + 1);
+            $destAlias = substr($destClass, 0, $nsEnd) . '\\XFCP_' . substr($destClass, $nsEnd + 1);
         }
         else
         {
             $destAlias = "XFCP_$destClass";
         }
 
-        \class_alias($destAlias, $srcAlias, false);
+        class_alias($destAlias, $srcAlias, false);
     }
 }

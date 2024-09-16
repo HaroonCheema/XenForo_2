@@ -2,6 +2,12 @@
 <phrases>
   <phrase title="option.svLogLessFunc" version_id="1110001" version_string="1.11.0"><![CDATA[Standard Lib: Log parse_less_func debug info]]></phrase>
   <phrase title="option_explain.svLogLessFunc" version_id="1110001" version_string="1.11.0"><![CDATA[]]></phrase>
+  <phrase title="svChoices.addItemText" version_id="2001210006" version_string="1.21.0 RC6"><![CDATA[Press Enter to add <b>{value}</b>]]></phrase>
+  <phrase title="svChoices.customAddItemText" version_id="2001210006" version_string="1.21.0 RC6"><![CDATA[Only values matching specific conditions can be added]]></phrase>
+  <phrase title="svChoices.itemSelectText" version_id="2001210012" version_string="1.21.0 RC12"><![CDATA[]]></phrase>
+  <phrase title="svChoices.maxItemText" version_id="2001210006" version_string="1.21.0 RC6"><![CDATA[Only {maxItemCount} values can be added]]></phrase>
+  <phrase title="svChoices.removeItemLabel" version_id="2001210006" version_string="1.21.0 RC6"><![CDATA[Remove item: {value}]]></phrase>
+  <phrase title="svChoices.uniqueItemText" version_id="2001210006" version_string="1.21.0 RC6"><![CDATA[Only unique values can be added]]></phrase>
   <phrase title="svStandardLib_add_to_filters" version_id="1070300" version_string="1.7.3"><![CDATA[Add to filters]]></phrase>
   <phrase title="svStandardLib_at" version_id="1020101" version_string="1.2.1"><![CDATA[at]]></phrase>
   <phrase title="svStandardLib_compiled_template_code" version_id="1040100" version_string="1.4.1"><![CDATA[Compiled template code]]></phrase>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation>
+  <navigation_entry navigation_id="BRATR_newThreadRatings" parent_navigation_id="whatsNew" display_order="900" navigation_type_id="basic" enabled="1"><![CDATA[{"link":"{{ link('whats-new\/thread-ratings') }}","display_condition":"","extra_attributes":{"rel":"nofollow"}}]]></navigation_entry>
+</navigation>

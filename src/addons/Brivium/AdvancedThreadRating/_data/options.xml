@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<options>
+  <option option_id="BRARS_postToThread" edit_format="onofftextbox" data_type="array">
+    <default_value>{"enabled":"","content":""}</default_value>
+    <edit_format_params>onoff=enabled
+value=content
+type=textarea
+rows=5
+default={message}</edit_format_params>
+    <sub_options>enabled
+content</sub_options>
+    <relation group_id="BR_AdvancedThreadRating" display_order="200"/>
+  </option>
+  <option option_id="BRATR_disableResources" edit_format="onoff" data_type="boolean">
+    <default_value>0</default_value>
+    <relation group_id="BR_AdvancedThreadRating" display_order="420"/>
+  </option>
+  <option option_id="BRATR_displayRatingForm" edit_format="radio" data_type="unsigned_integer">
+    <default_value>3</default_value>
+    <edit_format_params>1={{ phrase('BRATR_to_the_top_of_thread') }}
+2={{ phrase('BRATR_to_the_bottom_of_thread') }}
+3={{ phrase('BRATR_to_the_top_and_bottom_of_thread') }}</edit_format_params>
+    <relation group_id="BR_AdvancedThreadRating" display_order="310"/>
+  </option>
+  <option option_id="BRATR_displayReviews" edit_format="onoff" data_type="boolean">
+    <default_value>1</default_value>
+    <relation group_id="BR_AdvancedThreadRating" display_order="430"/>
+  </option>
+  <option option_id="BRATR_emailConfirmation" edit_format="onoff" data_type="boolean">
+    <default_value>1</default_value>
+    <relation group_id="BR_AdvancedThreadRating" display_order="400"/>
+  </option>
+  <option option_id="BRATR_fontAwesome" edit_format="template" data_type="array" validation_class="XF\Option\Style" validation_method="triggerStyleUpdate">
+    <default_value>{"fullIcon":{"class":"fa-star","content":"\\f005"},"halfIcon":{"class":"fa-star-half-empty","content":"\\f123"},"disableIcon":{"class":"fa-star","content":"\\f005"}}</default_value>
+    <edit_format_params>BRATR_option_template_font_awesome</edit_format_params>
+    <sub_options>fullIcon
+halfIcon
+disableIcon</sub_options>
+    <relation group_id="BR_AdvancedThreadRating" display_order="110"/>
+  </option>
+  <option option_id="BRATR_iconRating" edit_format="template" data_type="string" validation_class="XF\Option\Style" validation_method="triggerStyleUpdate">
+    <default_value></default_value>
+    <edit_format_params>BRATR_icon_rating_option_template</edit_format_params>
+    <relation group_id="BR_AdvancedThreadRating" display_order="105"/>
+  </option>
+  <option option_id="BRATR_mergeButtonAndDisplay" edit_format="onoff" data_type="boolean">
+    <default_value>0</default_value>
+    <relation group_id="BR_AdvancedThreadRating" display_order="300"/>
+  </option>
+  <option option_id="BRATR_onlyAddon" edit_format="onoff" data_type="boolean">
+    <default_value>1</default_value>
+    <relation group_id="BR_AdvancedThreadRating" display_order="100"/>
+  </option>
+  <option option_id="BRATR_perPage" edit_format="spinbox" data_type="unsigned_integer">
+    <default_value>20</default_value>
+    <edit_format_params>min=1</edit_format_params>
+    <relation group_id="BR_AdvancedThreadRating" display_order="10"/>
+  </option>
+</options>

@@ -22,6 +22,7 @@ return array(
 ';
 	if ($__templater->method($__vars['tag'], 'isUpdate', array())) {
 		$__templater->pageParams['pageAction'] = $__templater->preEscaped('
+' . $__templater->includeTemplate('avForumsTagEss_tag_edit_pageaction', $__vars) . '
 	' . $__templater->button('', array(
 			'href' => $__templater->func('link', array('tags/delete', $__vars['tag'], ), false),
 			'icon' => 'delete',
@@ -52,6 +53,8 @@ return array(
 		'label' => 'URL version',
 		'explain' => 'This will be used to uniquely identify this tag in a URL. It may only contain a-z, 0-9, - and _. Leave this blank to automatically generate it.',
 	)) . '
+
+			' . $__templater->includeTemplate('avForumsTagEss_tag_edit', $__vars) . '
 
 			' . $__templater->formCheckBoxRow(array(
 	), array(array(

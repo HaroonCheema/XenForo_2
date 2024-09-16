@@ -1,5 +1,6 @@
 <?php
 return array (
+  'widget_def.BRATR_newRatings' => 'Brivium - New Thread Ratings',
   'widget_def.RealTimeChat' => 'Real Time Chat',
   'widget_def.WelcomeBanner' => 'Welcome Banner',
   'widget_def.altf_filter_widget' => 'Thread Filter Widget',
@@ -38,6 +39,7 @@ return array (
   'widget_def.snog_movies_slider' => '[OzzModz] TMDb Movie Thread Starter: Detailed carousel',
   'widget_def.snog_tv_poster_slider' => '[OzzModz] TMDb TV Thread Starter: Poster Slider',
   'widget_def.snog_tv_slider' => '[OzzModz] TMDb TV Thread Starter: Detailed carousel',
+  'widget_def.tags_cloud' => 'Tag Essentials: Tags cloud',
   'widget_def.template_syntax' => 'Template syntax',
   'widget_def.thread_poll' => 'Thread poll',
   'widget_def.thui_progress_bar' => '[TH] User Improvements: Progress to next level',

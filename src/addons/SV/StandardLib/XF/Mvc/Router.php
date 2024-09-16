@@ -7,7 +7,7 @@ use XF\Mvc\RouteBuiltLink;
 use function is_string;
 
 /**
- * Extends \XF\Mvc\Router
+ * @Extends \XF\Mvc\Router
  */
 class Router extends XFCP_Router
 {
@@ -16,7 +16,7 @@ class Router extends XFCP_Router
         parent::__construct($linkFormatter, $routes);
 
         /** @var LinkBuilder $repo */
-        $repo = \XF::app()->repository('SV\StandardLib:LinkBuilder');
+        $repo = \SV\StandardLib\Helper::repository(\SV\StandardLib\Repository\LinkBuilder::class);
         $repo->hookRouteBuilder($this);
     }
 
@@ -26,7 +26,7 @@ class Router extends XFCP_Router
      * @param string $action
      * @param mixed  $data
      * @param array  $parameters
-     * @return \XF\Mvc\RouteBuiltLink|string|null
+     * @return RouteBuiltLink|string|null
      */
     protected function buildRouteUrl($prefix, array $route, $action, $data = null, array &$parameters = [])
     {

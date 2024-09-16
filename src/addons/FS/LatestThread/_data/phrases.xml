@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="exclude_tags" version_id="1" version_string="1"><![CDATA[Exclude Tags]]></phrase>
+  <phrase title="latest_content" version_id="1" version_string="1"><![CDATA[Latest Update]]></phrase>
+  <phrase title="nav.latestTherads" version_id="1" version_string="1"><![CDATA[Latest Update]]></phrase>
+  <phrase title="option.fs_filter_node" version_id="1" version_string="1"><![CDATA[Select Node]]></phrase>
+  <phrase title="option.prefix_group_1" version_id="1" version_string="1"><![CDATA[Prefix group 1]]></phrase>
+  <phrase title="option.prefix_group_2" version_id="1" version_string="1"><![CDATA[Prefix group 2]]></phrase>
+  <phrase title="option.prefix_group_3" version_id="1" version_string="1"><![CDATA[Prefix group 3]]></phrase>
+  <phrase title="option_explain.fs_filter_node" version_id="1" version_string="1"><![CDATA[]]></phrase>
+  <phrase title="option_explain.prefix_group_1" version_id="1" version_string="1"><![CDATA[]]></phrase>
+  <phrase title="option_explain.prefix_group_2" version_id="1" version_string="1"><![CDATA[]]></phrase>
+  <phrase title="option_explain.prefix_group_3" version_id="1" version_string="1"><![CDATA[]]></phrase>
+  <phrase title="option_group.fs_latest_thread" version_id="1" version_string="1"><![CDATA[[FS] Latest Thread]]></phrase>
+  <phrase title="option_group_description.fs_latest_thread" version_id="1" version_string="1"><![CDATA[]]></phrase>
+</phrases>

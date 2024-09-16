@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<options>
+  <option option_id="tagessAltMediaWikiApiLink" edit_format="textbox" data_type="string" advanced="0">
+    <default_value></default_value>
+    <relation group_id="tagess" display_order="1304"/>
+  </option>
+  <option option_id="tagessAltMediaWikiEmbedLink" edit_format="textbox" data_type="string" advanced="0">
+    <default_value></default_value>
+    <relation group_id="tagess" display_order="1305"/>
+  </option>
+  <option option_id="tagessPullFromWikipedia" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="tagess" display_order="1301"/>
+  </option>
+  <option option_id="tagessSuggestTags" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="tagess" display_order="1110"/>
+  </option>
+  <option option_id="tagessSynonymRewrite" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="tagess" display_order="1110"/>
+  </option>
+  <option option_id="tagessTagsOnThreadList" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="tagess" display_order="1101"/>
+  </option>
+  <option option_id="tagessWikiDebug" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>0</default_value>
+    <relation group_id="tagess" display_order="1306"/>
+  </option>
+  <option option_id="tagessWikipediaLanguageCode" edit_format="textbox" data_type="string" advanced="0">
+    <default_value>en</default_value>
+    <relation group_id="tagess" display_order="1303"/>
+  </option>
+  <option option_id="tagess_blockNumberTags" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="tagess" display_order="1000"/>
+  </option>
+  <option option_id="tagess_categoriesEnabled" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="tagess" display_order="1400"/>
+  </option>
+  <option option_id="tagess_categoriesEnabledThread" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>0</default_value>
+    <relation group_id="tagess" display_order="1401"/>
+  </option>
+  <option option_id="tagess_disambiguation_exclude" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="tagess" display_order="1310"/>
+  </option>
+  <option option_id="tagess_includeNodeParentTags" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="tagess" display_order="1"/>
+  </option>
+  <option option_id="tagess_navWatchTags" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="tagess" display_order="1200"/>
+  </option>
+  <option option_id="tagess_suggeststopwords" edit_format="textbox" data_type="string" advanced="0">
+    <default_value>a
+about
+an
+are
+as
+at
+be
+by
+com
+de
+en
+for
+from
+how
+i
+in
+is
+it
+la
+of
+on
+or
+that
+the
+this
+to
+was
+what
+when
+where
+who
+will
+with
+und
+the
+www</default_value>
+    <edit_format_params>rows=30</edit_format_params>
+    <relation group_id="tagess" display_order="1530"/>
+  </option>
+  <option option_id="tagess_suggeststopwords_state" edit_format="select" data_type="string" advanced="0">
+    <default_value>disable</default_value>
+    <edit_format_params>disable={{ phrase('taggess_disabled') }}
+firstword={{ phrase('taggess_firstword_only') }}
+allwords={{ phrase('taggess_all_words') }}</edit_format_params>
+    <relation group_id="tagess" display_order="1520"/>
+  </option>
+  <option option_id="tagess_suggestwordcountlimit" edit_format="spinbox" data_type="integer" advanced="0">
+    <default_value>3</default_value>
+    <edit_format_params>min=0</edit_format_params>
+    <relation group_id="tagess" display_order="1510"/>
+  </option>
+  <option option_id="tagess_topUsers" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="tagess" display_order="2"/>
+  </option>
+  <option option_id="tagess_wikidescriptiononpage" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>0</default_value>
+    <relation group_id="tagess" display_order="1300"/>
+  </option>
+  <option option_id="taggess_fuzzywikisearch" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="tagess" display_order="1320"/>
+  </option>
+</options>

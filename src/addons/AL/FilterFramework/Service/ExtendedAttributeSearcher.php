@@ -4,7 +4,7 @@
 * @author AddonsLab
 * @license https://addonslab.com/
 * @link https://addonslab.com/
-* @version 1.2.1
+* @version 1.0.0
 This software is furnished under a license and may be used and copied
 only  in  accordance  with  the  terms  of such  license and with the
 inclusion of the above copyright notice.  This software  or any other
@@ -83,17 +83,10 @@ class ExtendedAttributeSearcher extends AbstractService
             $tags = $tagRepo->splitTagList($metadata['__tags']);
             $validTags = $tagRepo->getTags($tags, $notFound);
             $tagIds = array_keys($validTags);
-            $forceSearch = \XF::options()->alff_tag_match_mode === 'all' && $notFound;
-            if ($forceSearch)
-            {
-                // Invalid tags should trigger no results being shown
-                $tagIds[] = PHP_INT_MAX;
-            }
             if ($tagIds)
             {
-
                 $logger->info('Found Tag IDs ' . implode(', ', $tagIds));
-                $query->withTags($tagIds, \XF::options()->alff_tag_match_mode);
+                $query->withTags($tagIds);
                 $constraints['tag'] = implode(' ', $tagIds);
             }
         }

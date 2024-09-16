@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<content_type_fields>
+  <field content_type="brivium_thread_rating" field_name="alert_handler_class">Brivium\AdvancedThreadRating\Alert\Thread\Rating</field>
+  <field content_type="brivium_thread_rating" field_name="entity">Brivium\AdvancedThreadRating:Rating</field>
+  <field content_type="brivium_thread_rating" field_name="find_new_handler_class">Brivium\AdvancedThreadRating\FindNew\RatingItem</field>
+  <field content_type="brivium_thread_rating" field_name="like_handler_class">Brivium\AdvancedThreadRating\Like\Thread\Rating</field>
+  <field content_type="brivium_thread_rating" field_name="news_feed_handler_class">Brivium\AdvancedThreadRating\NewsFeed\Thread\Rating</field>
+  <field content_type="brivium_thread_rating" field_name="report_handler_class">Brivium\AdvancedThreadRating\Report\Thread\Rating</field>
+  <field content_type="brivium_thread_rating" field_name="warning_handler_class">Brivium\AdvancedThreadRating\Warning\Thread\Rating</field>
+</content_type_fields>

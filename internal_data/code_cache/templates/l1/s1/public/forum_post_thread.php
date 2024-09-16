@@ -175,6 +175,8 @@ return array(
 	' . $__templater->formPrefixInputRow($__vars['prefixes'], array(
 			'type' => 'thread',
 			'prefix-value' => ($__vars['forum']['draft_thread']['prefix_id'] ?: ($__vars['thread']['prefix_id'] ?: $__vars['forum']['default_prefix_id'])),
+			'multi-prefix-value' => ($__vars['forum']['draft_thread']['sv_prefix_ids'] ?: ($__vars['thread']['sv_prefix_ids'] ?: $__vars['forum']['sv_default_prefix_ids'])),
+			'multi-prefix-content-parent' => $__vars['forum'],
 			'textbox-value' => (($__vars['title'] ?: $__vars['thread']['title']) ?: $__vars['forum']['draft_thread']['title']),
 			'textbox-class' => 'input--title',
 			'placeholder' => 'Escrow title',
@@ -193,6 +195,8 @@ return array(
 			'type' => 'thread',
 			'rows' => '1',
 			'prefix-value' => ($__vars['forum']['draft_thread']['prefix_id'] ?: ($__vars['thread']['prefix_id'] ?: $__vars['forum']['default_prefix_id'])),
+			'multi-prefix-value' => ($__vars['forum']['draft_thread']['sv_prefix_ids'] ?: ($__vars['thread']['sv_prefix_ids'] ?: $__vars['forum']['sv_default_prefix_ids'])),
+			'multi-prefix-content-parent' => $__vars['forum'],
 			'textbox-value' => (($__vars['title'] ?: $__vars['thread']['title']) ?: $__vars['forum']['draft_thread']['title']),
 			'textbox-class' => 'input--title',
 			'placeholder' => $__vars['forum']['thread_prompt'],
@@ -408,11 +412,15 @@ return array(
 
 		' . $__compilerTemp10 . '
 	</div>
+
+' . $__templater->includeTemplate('avForumsTagEss_forum_post_thread_tag_suggestion_js', $__vars) . '
+' . $__templater->formHiddenVal('nodeId', $__vars['forum']['node_id'], array(
+	)) . '
 ', array(
 		'action' => $__templater->func('link', array('forums/post-thread', $__vars['forum'], ), false),
 		'ajax' => 'true',
 		'class' => 'block',
-		'data-xf-init' => 'attachment-manager',
+		'data-xf-init' => ' ' . ($__vars['xf']['options']['tagessSuggestTags'] ? 'tagess-suggest-from-title' : '') . ' tagess-suggest-from-prefix attachment-manager',
 		'draft' => (($__vars['forum']['node_id'] == $__vars['xf']['options']['fs_escrow_applicable_forum']) ? '' : $__templater->func('link', array('forums/draft', $__vars['forum'], ), false)),
 	)) . '
 

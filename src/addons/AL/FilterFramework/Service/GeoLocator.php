@@ -4,7 +4,7 @@
 * @author AddonsLab
 * @license https://addonslab.com/
 * @link https://addonslab.com/
-* @version 1.2.1
+* @version 1.0.0
 This software is furnished under a license and may be used and copied
 only  in  accordance  with  the  terms  of such  license and with the
 inclusion of the above copyright notice.  This software  or any other
@@ -28,7 +28,7 @@ use XF\Service\AbstractService;
 
 class GeoLocator extends AbstractService
 {
-    public function getAddressCoordinates($address, $country_code = '', $place_id = '', &$error = null)
+    public function getAddressCoordinates($address, $country_code, $place_id = '')
     {
         /** @var GeoCoder $service */
         $service = $this->service('AL\LocationField:GeoCoder');
@@ -42,20 +42,11 @@ class GeoLocator extends AbstractService
             }
         }
 
-        $info = $service->getAddressInformation($address, $country_code ? ['country:' . $country_code] : []);
+        $info = $service->getAddressInformation($address, ['country:' . $country_code]);
 
-        if ($info['is_okay'])
-        {
-            if ($info['results'])
-            {
-                return $this->_getInfoFromResult($info['results'][0]);
-            }
-
-            // Empty results
-            return null;
+        if($info['is_okay'] && $info['results']) {
+            return $this->_getInfoFromResult($info['results'][0]);
         }
-
-        $error = $info['exception']->message;
 
         return null;
     }

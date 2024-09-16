@@ -62,27 +62,37 @@ return array(
 
 ';
 	$__compilerTemp2 = '';
-	if ($__vars['hasHistory']) {
+	if (1 OR ($__vars['svModificationCount'] > 0)) {
 		$__compilerTemp2 .= '
+	' . $__templater->formRow('
+		<a href="' . $__templater->func('link', array('templates/view-modifications', $__vars['template'], array('style_id' => $__vars['style']['style_id'], ), ), true) . '" target="_blank">' . 'View ' . $__templater->filter($__vars['svModificationCount'], array(array('number', array()),), true) . ' template modifications' . '</a>
+	', array(
+			'rowtype' => 'fullWidth',
+		)) . '
+';
+	}
+	$__compilerTemp3 = '';
+	if ($__vars['hasHistory']) {
+		$__compilerTemp3 .= '
 						<div class="js-historyTarget toggleTarget" data-href="trigger-href"></div>
 					';
 	}
-	$__compilerTemp3 = '';
+	$__compilerTemp4 = '';
 	if (!$__vars['style']['style_id']) {
-		$__compilerTemp3 .= '
+		$__compilerTemp4 .= '
 				' . $__templater->callMacro('addon_macros', 'addon_edit', array(
 			'addOnId' => $__vars['template']['addon_id'],
 		), $__vars) . '
 			';
 	} else {
-		$__compilerTemp3 .= '
+		$__compilerTemp4 .= '
 				' . $__templater->formHiddenVal('addon_id', $__vars['template']['addon_id'], array(
 		)) . '
 			';
 	}
-	$__compilerTemp4 = '';
+	$__compilerTemp5 = '';
 	if ($__vars['hasHistory']) {
-		$__compilerTemp4 .= '
+		$__compilerTemp5 .= '
 					' . $__templater->button('View history', array(
 			'href' => $__templater->func('link', array('templates/history', $__vars['template'], ), false),
 			'class' => 'blockLink',
@@ -129,6 +139,7 @@ return array(
 		'hint' => 'Must be unique',
 	)) . '
 
+' . $__compilerTemp2 . '
 			' . $__templater->formCodeEditorRow(array(
 		'name' => 'template',
 		'value' => $__vars['template']['template'],
@@ -141,11 +152,11 @@ return array(
 		'label' => 'Template',
 		'explain' => 'You may use XenForo template syntax here.',
 		'finalhtml' => '
-					' . $__compilerTemp2 . '
+					' . $__compilerTemp3 . '
 				',
 	)) . '
 
-			' . $__compilerTemp3 . '
+			' . $__compilerTemp4 . '
 		</div>
 
 		' . $__templater->formSubmitRow(array(
@@ -160,7 +171,7 @@ return array(
 		'icon' => 'save',
 	), '', array(
 	)) . '
-				' . $__compilerTemp4 . '
+				' . $__compilerTemp5 . '
 			',
 	)) . '
 	</div>

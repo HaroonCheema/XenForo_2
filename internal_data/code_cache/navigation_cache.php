@@ -363,6 +363,18 @@ return function($__templater, $__selectedNav, array $__vars)
 					}
 				}
 
+				if ($__templater->method($__vars['xf']['visitor'], 'canWatchTag', array())) {
+					$__navTemp = [
+		'title' => \XF::phrase('nav.watchedTags'),
+		'href' => $__templater->func('link', array('watched/tags', ), false),
+		'attributes' => [],
+	];
+					if ($__navTemp) {
+						$__tree['forums']['children']['watched']['children']['watchedTags'] = $__navTemp;
+						$__flat['watchedTags'] =& $__tree['forums']['children']['watched']['children']['watchedTags'];
+					}
+				}
+
 			}
 		}
 
@@ -392,6 +404,16 @@ return function($__templater, $__selectedNav, array $__vars)
 			}
 		}
 
+	}
+
+	$__navTemp = [
+		'title' => \XF::phrase('nav.latestTherads'),
+		'href' => $__templater->func('link', array('latest-contents', ), false),
+		'attributes' => [],
+	];
+	if ($__navTemp) {
+		$__tree['latestTherads'] = $__navTemp;
+		$__flat['latestTherads'] =& $__tree['latestTherads'];
 	}
 
 	$__navTemp = [
@@ -500,6 +522,18 @@ return function($__templater, $__selectedNav, array $__vars)
 			}
 		}
 
+		$__navTemp = [
+		'title' => \XF::phrase('nav.BRATR_newThreadRatings'),
+		'href' => $__templater->func('link', array('whats-new/thread-ratings', ), false),
+		'attributes' => [
+			'rel' => 'nofollow',
+		],
+	];
+		if ($__navTemp) {
+			$__tree['whatsNew']['children']['BRATR_newThreadRatings'] = $__navTemp;
+			$__flat['BRATR_newThreadRatings'] =& $__tree['whatsNew']['children']['BRATR_newThreadRatings'];
+		}
+
 	}
 
 	$__navTemp = [
@@ -510,6 +544,28 @@ return function($__templater, $__selectedNav, array $__vars)
 	if ($__navTemp) {
 		$__tree['fs_quiz'] = $__navTemp;
 		$__flat['fs_quiz'] =& $__tree['fs_quiz'];
+	}
+
+	$__navTemp = [
+		'title' => \XF::phrase('nav.fs_escrow'),
+		'href' => $__templater->func('link', array('escrow', ), false),
+		'attributes' => [],
+	];
+	if ($__navTemp) {
+		$__tree['fs_escrow'] = $__navTemp;
+		$__flat['fs_escrow'] =& $__tree['fs_escrow'];
+		if (empty($__tree['fs_escrow']['children'])) { $__tree['fs_escrow']['children'] = []; }
+
+		$__navTemp = [
+		'title' => \XF::phrase('nav.fs_escrow_add'),
+		'href' => $__templater->func('link', array('escrow/add', ), false),
+		'attributes' => [],
+	];
+		if ($__navTemp) {
+			$__tree['fs_escrow']['children']['fs_escrow_add'] = $__navTemp;
+			$__flat['fs_escrow_add'] =& $__tree['fs_escrow']['children']['fs_escrow_add'];
+		}
+
 	}
 
 	if ($__templater->method($__vars['xf']['visitor'], 'canViewMedia', array())) {
@@ -676,28 +732,6 @@ return function($__templater, $__selectedNav, array $__vars)
 			}
 
 		}
-	}
-
-	$__navTemp = [
-		'title' => \XF::phrase('nav.fs_escrow'),
-		'href' => $__templater->func('link', array('escrow', ), false),
-		'attributes' => [],
-	];
-	if ($__navTemp) {
-		$__tree['fs_escrow'] = $__navTemp;
-		$__flat['fs_escrow'] =& $__tree['fs_escrow'];
-		if (empty($__tree['fs_escrow']['children'])) { $__tree['fs_escrow']['children'] = []; }
-
-		$__navTemp = [
-		'title' => \XF::phrase('nav.fs_escrow_add'),
-		'href' => $__templater->func('link', array('escrow/add', ), false),
-		'attributes' => [],
-	];
-		if ($__navTemp) {
-			$__tree['fs_escrow']['children']['fs_escrow_add'] = $__navTemp;
-			$__flat['fs_escrow_add'] =& $__tree['fs_escrow']['children']['fs_escrow_add'];
-		}
-
 	}
 
 	if ($__templater->method($__vars['xf']['visitor'], 'canViewMemberList', array())) {

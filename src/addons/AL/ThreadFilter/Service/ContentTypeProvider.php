@@ -4,7 +4,7 @@
 * @author AddonsLab
 * @license https://addonslab.com/
 * @link https://addonslab.com/
-* @version 3.9.2
+* @version 3.8.0
 This software is furnished under a license and may be used and copied
 only  in  accordance  with  the  terms  of such  license and with the
 inclusion of the above copyright notice.  This software  or any other
@@ -23,7 +23,7 @@ of the license.
 
 namespace AL\ThreadFilter\Service;
 
-use AL\FilterFramework\AbstractContentTypeProvider;
+use AL\FilterFramework\ContentTypeProviderInterface;
 use AL\FilterFramework\Entity\BaseFieldIndexEntity;
 use AL\FilterFramework\FilterApp;
 use AL\ThreadFilter\App;
@@ -40,7 +40,7 @@ use XF\Search\MetadataStructure;
 use XF\Search\Query\Query;
 use XF\Service\AbstractService;
 
-class ContentTypeProvider extends AbstractContentTypeProvider
+class ContentTypeProvider extends AbstractService implements ContentTypeProviderInterface
 {
     public function getContentEntityName()
     {
@@ -187,7 +187,7 @@ class ContentTypeProvider extends AbstractContentTypeProvider
 
     public function getItemBatch($start, $batch)
     {
-        $db = \XF::app()->db();
+        $db = $this->app->db();
 
         return $db->fetchAllColumn($db->limit('
 				SELECT thread.thread_id
@@ -289,7 +289,6 @@ class ContentTypeProvider extends AbstractContentTypeProvider
 
     public function getFieldCacheFromViewParams(array $params)
     {
-
         if (isset($params['forum']))
         {
             return (array)$params['forum']->field_cache;

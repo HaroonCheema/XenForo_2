@@ -4,19 +4,41 @@ namespace SV\StandardLib;
 
 use SV\StandardLib\Db\AlterColumnUnwrapper;
 use SV\StandardLib\Db\AlterTableUnwrapper;
-use SV\StandardLib\Helper;
+use XF\AddOn\AddOn;
+use XF\Admin\App;
+use XF\Db\AbstractAdapter;
 use XF\Db\Schema\AbstractDdl;
 use XF\Db\Schema\Alter;
 use XF\Db\Schema\Column as DbColumnSchema;
 use XF\Db\Schema\Create;
+use XF\Db\SchemaManager;
+use XF\Entity\Option;
+use XF\Entity\Phrase as PhraseEntity;
+use XF\Entity\StyleProperty;
+use XF\Finder\Phrase as PhraseFinder;
+use XF\PreEscaped;
+use XF\PrintableException;
+use XFES\Elasticsearch\Exception;
+use XFES\Listener;
+use XFES\Service\Configurer;
+use XFES\Service\Optimizer;
+use function count;
+use function explode;
+use function file_exists;
+use function is_array;
+use function phpversion;
+use function strlen;
+use function strpos;
+use function version_compare;
+use function sprintf;
 
 /**
  * @version 1.10.0
  *
- * @property \XF\AddOn\AddOn addOn
+ * @property AddOn addOn
  *
- * @method \XF\Db\AbstractAdapter db()
- * @method \XF\Db\SchemaManager schemaManager()
+ * @method AbstractAdapter db()
+ * @method SchemaManager schemaManager()
  */
 trait InstallerHelper
 {
@@ -42,19 +64,17 @@ trait InstallerHelper
      * @param string $title
      * @param string $value
      * @param bool   $deOwn
-     * @throws \XF\PrintableException
+     * @throws PrintableException
      */
-    protected function addDefaultPhrase(string $title, string $value, bool $deOwn = true)
+    protected function addDefaultPhrase(string $title, string $value, bool $deOwn = true): void
     {
-        /** @var \XF\Entity\Phrase $phrase */
-        $phrase = \XF::app()->finder('XF:Phrase')
-                     ->where('title', '=', $title)
-                     ->where('language_id', '=', 0)
-                     ->fetchOne();
-        if (!$phrase)
+        $phrase = Helper::finder(PhraseFinder::class)
+                        ->where('title', '=', $title)
+                        ->where('language_id', '=', 0)
+                        ->fetchOne();
+        if ($phrase === null)
         {
-            /** @var \XF\Entity\Phrase $phrase */
-            $phrase = \XF::em()->create('XF:Phrase');
+            $phrase = Helper::createEntity(PhraseEntity::class);
             $phrase->language_id = 0;
             $phrase->title = $title;
             $phrase->phrase_text = $value;
@@ -75,7 +95,7 @@ trait InstallerHelper
      * @param int[]  $userGroups
      * @throws \XF\Db\Exception
      */
-    protected function applyGlobalPermissionByGroup(string $groupId, string $permissionId, array $userGroups)
+    protected function applyGlobalPermissionByGroup(string $groupId, string $permissionId, array $userGroups): void
     {
         foreach($userGroups as $userGroupId)
         {
@@ -89,7 +109,7 @@ trait InstallerHelper
      * @param int    $userGroupId
      * @throws \XF\Db\Exception
      */
-    public function applyGlobalPermissionForGroup(string $applyGroupId, string $applyPermissionId, int $userGroupId)
+    public function applyGlobalPermissionForGroup(string $applyGroupId, string $applyPermissionId, int $userGroupId): void
     {
         $this->db()->query(
             "INSERT IGNORE INTO xf_permission_entry (user_group_id, user_id, permission_group_id, permission_id, permission_value, permission_value_int) VALUES
@@ -106,7 +126,7 @@ trait InstallerHelper
      *
      * @throws \XF\Db\Exception
      */
-    public function applyGlobalPermissionIntForGroup(string $applyGroupId, string $applyPermissionId, int $applyValue, int $userGroupId)
+    public function applyGlobalPermissionIntForGroup(string $applyGroupId, string $applyPermissionId, int $applyValue, int $userGroupId): void
     {
         $this->db()->query(
             "INSERT IGNORE INTO xf_permission_entry (user_group_id, user_id, permission_group_id, permission_id, permission_value, permission_value_int) VALUES
@@ -115,16 +135,11 @@ trait InstallerHelper
         );
     }
 
-    protected function applyRegistrationDefaults(array $newRegistrationDefaults)
+    protected function applyRegistrationDefaults(array $newRegistrationDefaults): void
     {
-        /** @var \XF\Entity\Option $option */
-        $option = \XF::app()->finder('XF:Option')
-                            ->where('option_id', '=', 'registrationDefaults')
-                            ->fetchOne();
-
-        if (!$option)
+        $option = Helper::find(Option::class, 'registrationDefaults');
+        if ($option === null)
         {
-            // Option: Mr. XenForo I don't feel so good
             throw new \LogicException("XenForo installation is damaged. Expected option 'registrationDefaults' to exist.");
         }
 
@@ -149,7 +164,7 @@ trait InstallerHelper
      *
      * @throws \XF\Db\Exception
      */
-    protected function renamePermission(string $oldGroupId, string $oldPermissionId, string $newGroupId, string $newPermissionId)
+    protected function renamePermission(string $oldGroupId, string $oldPermissionId, string $newGroupId, string $newPermissionId): void
     {
         $this->db()->query('
             UPDATE IGNORE xf_permission_entry
@@ -174,13 +189,11 @@ trait InstallerHelper
         ', [$oldGroupId, $oldPermissionId]);
     }
 
-    protected function renameOption(string $old, string $new, bool $takeOwnership = false)
+    protected function renameOption(string $old, string $new, bool $takeOwnership = false): void
     {
-        /** @var \XF\Entity\Option $optionOld */
-        $optionOld = \XF::finder('XF:Option')->whereId($old)->fetchOne();
-        /** @var \XF\Entity\Option $optionNew */
-        $optionNew = \XF::finder('XF:Option')->whereId($new)->fetchOne();
-        if ($optionOld && !$optionNew)
+        $optionOld = Helper::find(Option::class, $old);
+        $optionNew = Helper::find(Option::class, $new);
+        if ($optionOld !== null && $optionNew === null)
         {
             $optionOld->option_id = $new;
             if ($takeOwnership)
@@ -193,7 +206,7 @@ trait InstallerHelper
             }
             $optionOld->saveIfChanged();
         }
-        else if ($takeOwnership && $optionOld && $optionNew)
+        else if ($takeOwnership && $optionOld !== null && $optionNew !== null)
         {
             $optionNew->option_value = $optionOld->option_value;
             $optionNew->addon_id = $this->addOn->getAddOnId();
@@ -206,7 +219,7 @@ trait InstallerHelper
         }
     }
 
-    protected function renamePhrases(array $map, bool $deOwn = false, bool $replace = true)
+    protected function renamePhrases(array $map, bool $deOwn = false, bool $replace = true): void
     {
         $db = $this->db();
 
@@ -226,8 +239,8 @@ trait InstallerHelper
             if ($results)
             {
                 $em = \XF::em();
-                /** @var \XF\Entity\Phrase[] $phrases */
-                $phrases = \XF::em()->findByIds('XF:Phrase', \array_keys($results));
+                /** @var PhraseEntity[] $phrases */
+                $phrases = Helper::findByIds(PhraseEntity::class, \array_keys($results));
                 foreach ($results AS $phraseId => $oldTitle)
                 {
                     if (isset($phrases[$phraseId]))
@@ -237,9 +250,9 @@ trait InstallerHelper
 
                         $db->beginTransaction();
 
-                        /** @var \XF\Entity\Phrase $newPhrase */
+                        /** @var PhraseEntity $newPhrase */
                         $newPhrase = $replace
-                            ? $em->getFinder('XF:Phrase', false)
+                            ? \SV\StandardLib\Helper::finder(\XF\Finder\Phrase::class, false)
                                  ->where('title', '=', $newTitle)
                                  ->fetchOne()
                             : null;
@@ -284,9 +297,9 @@ trait InstallerHelper
 
     /**
      * @param string[] $map
-     * @throws \XF\PrintableException
+     * @throws PrintableException
      */
-    protected function deletePhrases(array $map)
+    protected function deletePhrases(array $map): void
     {
         $titles = [];
         foreach($map as $titlePattern)
@@ -294,9 +307,8 @@ trait InstallerHelper
             $titles[] = ['title', 'LIKE', $titlePattern];
         }
 
-        /** @var \XF\Finder\Phrase $phraseFinder */
-        $phraseFinder = \XF::finder('XF:Phrase');
-        /** @var \XF\Entity\Phrase[] $phrases */
+        $phraseFinder = Helper::finder(PhraseFinder::class);
+        /** @var PhraseEntity[] $phrases */
         $phrases = $phraseFinder
             ->where('language_id', 0)
             ->whereOr($titles)
@@ -308,12 +320,12 @@ trait InstallerHelper
         }
     }
 
-    protected function renameStyleProperty(string $old, string $new)
+    protected function renameStyleProperty(string $old, string $new): void
     {
-        /** @var \XF\Entity\StyleProperty $optionOld */
-        $optionOld = \XF::finder('XF:StyleProperty')->where('property_name', '=', $old)->fetchOne();
-        $optionNew = \XF::finder('XF:StyleProperty')->where('property_name', '=', $new)->fetchOne();
-        if ($optionOld && !$optionNew)
+        /** @var StyleProperty $optionOld */
+        $optionOld = Helper::finder(\XF\Finder\StyleProperty::class)->where('property_name', '=', $old)->fetchOne();
+        $optionNew = Helper::finder(\XF\Finder\StyleProperty::class)->where('property_name', '=', $new)->fetchOne();
+        if ($optionOld !== null && $optionNew === null)
         {
             if ($optionOld->hasBehavior('XF:DevOutputWritable'))
             {
@@ -324,7 +336,7 @@ trait InstallerHelper
         }
     }
 
-    protected function migrateTable(string $old, string $new, bool $dropOldIfNewExists = false)
+    protected function migrateTable(string $old, string $new, bool $dropOldIfNewExists = false): void
     {
         $sm = $this->schemaManager();
         if ($sm->tableExists($old))
@@ -348,7 +360,7 @@ trait InstallerHelper
      * @param string[]          $oldNames
      * @return DbColumnSchema
      */
-    protected function addOrChangeColumn(AbstractDdl $table, string $name, string $type = null, $length = null, array $oldNames = []) : DbColumnSchema
+    protected function addOrChangeColumn(AbstractDdl $table, string $name, ?string $type = null, $length = null, array $oldNames = []) : DbColumnSchema
     {
         if ($table instanceof Create)
         {
@@ -414,7 +426,7 @@ trait InstallerHelper
      *
      * @return void
      */
-    protected function reverseTableAlter(Alter $alter, Alter $table)
+    protected function reverseTableAlter(Alter $alter, Alter $table): void
     {
         $addIndexes = AlterTableUnwrapper::getAddIndexes($alter);
         $addColumns = AlterTableUnwrapper::getAddColumns($alter);
@@ -472,23 +484,23 @@ trait InstallerHelper
         return $tables;
     }
 
-    protected function checkComposer(array &$errors)
+    protected function checkComposer(array &$errors): void
     {
         $json = $this->addOn->getJson();
         $composerPath = $json['composer_autoload'] ?? '';
-        if (\strlen($composerPath))
+        if (strlen($composerPath) === 0)
         {
             $vendorDirectory = $this->addOn->getAddOnDirectory() . \XF::$DS . $composerPath;
-            if (!\file_exists($vendorDirectory))
+            if (!file_exists($vendorDirectory))
             {
-                $errors[] = "Composer vendor folder does not exist";
+                $errors[] = 'Composer vendor folder does not exist';
             }
         }
     }
 
     protected function isCliRecommendedCheck(int $minAddonVersion, int $maxThreads, int $maxPosts, int $maxUsers) : bool
     {
-        $totals = \XF::app()->db()->fetchOne("
+        $totals = \XF::db()->fetchOne("
 			SELECT data_value
 			FROM xf_data_registry
 			WHERE data_key IN ('boardTotals', 'forumStatistics')
@@ -534,7 +546,7 @@ trait InstallerHelper
 
     public function isCliRecommended(array &$warnings, int $minAddonVersion = 0, int $maxThreads = 0, int $maxPosts = 500000, int $maxUsers = 50000) : bool
     {
-        if (\XF::app() instanceof \XF\Admin\App && $this->isCliRecommendedCheck($minAddonVersion, $maxThreads, $maxPosts, $maxUsers))
+        if (\XF::app() instanceof App && $this->isCliRecommendedCheck($minAddonVersion, $maxThreads, $maxPosts, $maxUsers))
         {
             $existing = $this->addOn->getInstalledAddOn();
             if ($existing)
@@ -554,7 +566,7 @@ trait InstallerHelper
 			that will force you to reload the page.';
             }
 
-            $warnings[] = new \XF\PreEscaped($html);
+            $warnings[] = new PreEscaped($html);
 
             return true;
         }
@@ -586,7 +598,7 @@ trait InstallerHelper
      * @param string[] $errors
      * @param string[] $warnings
      */
-    protected function checkSoftRequires(array &$errors, array &$warnings)
+    protected function checkSoftRequires(array &$errors, array &$warnings): void
     {
         $json = $this->addOn->getJson();
         if (empty($json['require-soft']))
@@ -597,12 +609,12 @@ trait InstallerHelper
         $addOns = \XF::app()->container('addon.cache');
         foreach ((array)$json['require-soft'] as $productKey => $requirement)
         {
-            if (!\is_array($requirement))
+            if (!is_array($requirement))
             {
                 continue;
             }
-            list($version, $product) = $requirement;
-            $errorType = \count($requirement) >= 3 ? $requirement[2] : null;
+            [$version, $product] = $requirement;
+            $errorType = count($requirement) >= 3 ? $requirement[2] : null;
 
             // advisory
             if ($errorType === null)
@@ -613,27 +625,27 @@ trait InstallerHelper
             $enabled = false;
             $versionValid = false;
 
-            if (\strpos($productKey, 'php-ext') === 0)
+            if (strpos($productKey, 'php-ext') === 0)
             {
-                $parts = \explode('/', $productKey, 2);
+                $parts = explode('/', $productKey, 2);
                 if (isset($parts[1]))
                 {
-                    $enabled = \phpversion($parts[1]) !== false;
-                    $versionValid = ($version === '*') || (\version_compare(\phpversion($parts[1]), $version, 'ge'));
+                    $enabled = phpversion($parts[1]) !== false;
+                    $versionValid = ($version === '*') || (version_compare(phpversion($parts[1]), $version, 'ge'));
                 }
             }
-            else if (\strpos($productKey, 'php') === 0)
+            else if (strpos($productKey, 'php') === 0)
             {
                 $enabled = true;
-                $versionValid = \version_compare(\phpversion(), $version, 'ge');
+                $versionValid = version_compare(phpversion(), $version, 'ge');
             }
-            else if (\strpos($productKey, 'mysql') === 0)
+            else if (strpos($productKey, 'mysql') === 0)
             {
                 $mySqlVersion = \XF::db()->getServerVersion();
                 if ($mySqlVersion)
                 {
                     $enabled = true;
-                    $versionValid = \version_compare(\strtolower($mySqlVersion), $version, 'ge');
+                    $versionValid = version_compare(\strtolower($mySqlVersion), $version, 'ge');
                 }
             }
             else
@@ -649,11 +661,11 @@ trait InstallerHelper
 
             if (!$versionValid)
             {
-                $reason = \count($requirement) >= 4 ? (' ' . $requirement[3]) : '';
+                $reason = count($requirement) >= 4 ? (' ' . $requirement[3]) : '';
 
                 if ($errorType)
                 {
-                    $errors[] = new \XF\PreEscaped(\sprintf(
+                    $errors[] = new PreEscaped(sprintf(
                         '%s requires %s.%s',
                         $json['title'],
                         $product,
@@ -662,7 +674,7 @@ trait InstallerHelper
                 }
                 else
                 {
-                    $warnings[] = new \XF\PreEscaped(\sprintf(
+                    $warnings[] = new PreEscaped(sprintf(
                         '%s recommends %s.%s',
                         $json['title'],
                         $product,
@@ -673,12 +685,15 @@ trait InstallerHelper
         }
     }
 
-    protected function checkElasticSearchOptimizableState()
+    protected function checkElasticSearchOptimizableState(): void
     {
-        $es = \XFES\Listener::getElasticsearchApi();
+        if (!Helper::isAddOnActive('XFES')) {
+            return;
+        }
 
-        /** @var \XFES\Service\Configurer $configurer */
-        $configurer = \XF::service('XFES:Configurer', $es);
+        $es = Listener::getElasticsearchApi();
+
+        $configurer = Helper::service(Configurer::class, $es);
         $testError = null;
         $isOptimizable = false;
 
@@ -692,8 +707,7 @@ trait InstallerHelper
                 {
                     if ($es->indexExists())
                     {
-                        /** @var \XFES\Service\Optimizer $optimizer */
-                        $optimizer = \XF::service('XFES:Optimizer', $es);
+                        $optimizer = Helper::service(Optimizer::class, $es);
                         $isOptimizable = $optimizer->isOptimizable();
                     }
                     else
@@ -702,7 +716,7 @@ trait InstallerHelper
                     }
                 }
             }
-            catch (\XFES\Elasticsearch\Exception $e) {}
+            catch (Exception $e) {}
         }
 
         if ($isOptimizable)
@@ -727,12 +741,12 @@ trait InstallerHelper
     public function isPermissionInUse(string $permissionGroupId, string $permissionId): bool
     {
         return (bool)\XF::db()->fetchOne(
-            "
+            '
                 SELECT
                     EXISTS(SELECT * FROM xf_permission WHERE permission_group_id = ? AND permission_id = ?)
                     OR EXISTS(SELECT * FROM xf_permission_entry WHERE permission_group_id = ? AND permission_id = ?)
                     OR EXISTS(SELECT * FROM xf_permission_entry_content WHERE permission_group_id = ? AND permission_id = ?)
-            ",
+            ',
             [
                 $permissionGroupId,
                 $permissionId,

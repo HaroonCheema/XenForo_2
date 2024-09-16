@@ -60,7 +60,7 @@ return array(
 		foreach ($__compilerTemp1 AS $__vars['fieldId'] => $__vars['fieldDefinition']) {
 			$__finalCompiled .= '
 		';
-			if ($__templater->method($__vars['fieldDefinition'], 'hasValue', array($__vars['set'][$__vars['fieldDefinition']['field_id']], ))) {
+			if ($__templater->method($__vars['fieldDefinition'], 'hasValue', array($__vars['set'][$__vars['fieldDefinition']['field_id']], )) AND ($__vars['fieldDefinition']['display_order'] != 0)) {
 				$__finalCompiled .= '
 			';
 				$__vars['fieldValue'] = $__templater->preEscaped($__templater->callMacro(null, 'custom_field_value', array(

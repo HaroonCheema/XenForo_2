@@ -17,7 +17,7 @@ return array(
 		';
 	}
 	$__compilerTemp2 = '';
-	if ($__vars['canEditTags'] AND $__vars['forum']['min_tags']) {
+	if ($__vars['canEditTags'] AND ((($__vars['forum']['min_tags'] OR $__vars['xf']['options']['tagessSuggestTags']) OR $__vars['thread']['tags']) OR $__templater->method($__vars['forum'], 'isForumPrefixesTagged', array()))) {
 		$__compilerTemp2 .= '
 			<hr class="formRowSep" />
 			';
@@ -29,6 +29,7 @@ return array(
 		}
 		$__compilerTemp2 .= $__templater->formTokenInputRow(array(
 			'name' => 'tags',
+			'value' => ($__vars['thread']['tags'] ? $__templater->filter($__vars['thread']['tags'], array(array('join', array(', ', )),), false) : $__vars['forum']['draft_thread']['tags']),
 			'href' => $__templater->func('link', array('misc/tag-auto-complete', ), false),
 			'min-length' => $__vars['xf']['options']['tagLength']['min'],
 			'max-length' => $__vars['xf']['options']['tagLength']['max'],
@@ -106,9 +107,11 @@ return array(
 	}
 	$__finalCompiled .= $__templater->form('
 
-	<div class="js-quickThreadFields" data-xf-init="attachment-manager">
+	<div class="js-quickThreadFields" data-xf-init=" ' . ($__vars['xf']['options']['tagessSuggestTags'] ? 'tagess-suggest-from-title' : '') . ' tagess-suggest-from-prefix attachment-manager">
 
 		' . $__compilerTemp1 . '
+
+		' . $__templater->includeTemplate('forum_post_quick_thread_multiprefix', $__vars) . '
 
 		' . $__templater->callMacro(null, 'forum_post_thread::type_chooser', array(
 		'thread' => $__vars['thread'],
@@ -195,6 +198,10 @@ return array(
 			' . $__compilerTemp6 . '
 		</div>
 	</div>
+
+' . $__templater->includeTemplate('avForumsTagEss_forum_post_thread_tag_suggestion_js', $__vars) . '
+' . $__templater->formHiddenVal('nodeId', $__vars['forum']['node_id'], array(
+	)) . '
 ', array(
 		'action' => $__templater->func('link', array('forums/post-thread', $__vars['forum'], ), false),
 		'draft' => $__templater->func('link', array('forums/draft', $__vars['forum'], ), false),

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <template_modifications>
   <modification type="public" template="helper_js_global" modification_key="svStandardLib_helper_js_global" description="Add time related phrases required relative time handler" execution_order="7915" enabled="1" action="preg_replace">
-    <find><![CDATA[#(^[\s]*jQuery\.extend\(XF\.phrases, {.*?)(}\);$)#sim]]></find>
+    <find><![CDATA[#(^[\s]*(?:jQuery\.extend|XF\.extendObject)\(XF\.phrases, {.*?)(}\);$)#sim]]></find>
     <replace><![CDATA[$1,
 			"svStandardLib_time.day": "{{ phrase('time.day')|escape('json') }}",
 			"svStandardLib_time.days": "{{ phrase('time.days')|escape('json') }}",

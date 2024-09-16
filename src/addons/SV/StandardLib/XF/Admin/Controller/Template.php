@@ -2,6 +2,7 @@
 
 namespace SV\StandardLib\XF\Admin\Controller;
 
+use SV\StandardLib\Helper;
 use XF\Diff;
 use XF\Entity\TemplateModification;
 use XF\Mvc\Entity\ArrayCollection;
@@ -12,7 +13,12 @@ use XF\Entity\Template as TemplateEntity;
 use XF\Repository\TemplateModification as TemplateModificationRepo;
 use XF\Mvc\Reply\Exception as ExceptionReply;
 use XF\Template\Compiler\Exception as TemplateCompilerException;
+use function in_array;
+use function is_numeric;
 
+/**
+ * @extends \XF\Admin\Controller\Template
+ */
 class Template extends XFCP_Template
 {
     public function actionEdit(ParameterBag $params)
@@ -71,24 +77,23 @@ class Template extends XFCP_Template
                 return $mod->enabled;
             }
 
-            return \in_array($mod->modification_id, $activeModIds, true);
+            return in_array($mod->modification_id, $activeModIds, true);
         });
         $filtered = $filtered->toArray();
 
-        /** @var TemplateModificationRepo $templateModRepo */
-        $templateModRepo = $this->repository('XF:TemplateModification');
+        $templateModRepo = Helper::repository(TemplateModificationRepo::class);
         $templateStr = $templateModRepo->applyTemplateModifications(
             $template->template,
             $filtered,
             $statuses
         );
 
-        $statuses = \array_map(function ($status)
+        $statuses = array_map(function ($status)
         {
-            if (\is_numeric($status))
+            if (is_numeric($status))
             {
                 return \XF::phrase('svStandardLib_match_count_x', [
-                    'count' => $this->app()->language()->numberFormat($status)
+                    'count' => \XF::app()->language()->numberFormat($status)
                 ]);
             }
             return $status;
@@ -123,7 +128,7 @@ class Template extends XFCP_Template
 
                 try
                 {
-                    $viewParams['compiledTemplate'] = $this->app()->templateCompiler()->compile($templateStr);
+                    $viewParams['compiledTemplate'] = \XF::app()->templateCompiler()->compile($templateStr);
                 }
                 /** @noinspection PhpRedundantCatchClauseInspection */
                 catch (TemplateCompilerException $exception)
@@ -143,9 +148,14 @@ class Template extends XFCP_Template
         );
     }
 
-    protected function getTemplateModificationFinderForSvStandardLib(string $type, string $template) : Finder
+    /**
+     * @param string $type
+     * @param string $template
+     * @return \XF\Finder\TemplateModification|Finder
+     */
+    protected function getTemplateModificationFinderForSvStandardLib(string $type, string $template)
     {
-        return $this->finder('XF:TemplateModification')
+        return Helper::finder(\XF\Finder\TemplateModification::class)
             ->where('type', $type)
             ->where('template', $template)
             ->whereAddOnActive()

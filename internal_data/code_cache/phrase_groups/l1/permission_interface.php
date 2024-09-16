@@ -1,5 +1,7 @@
 <?php
 return array (
+  'permission_interface.BR_AdvancedThreadRating' => 'Brivium - Advanced Thread Rating',
+  'permission_interface.BR_ModeratorThreadRating' => 'Brivium - Moderator Advanced Thread Rating',
   'permission_interface.OwnerPagePostModeratorPermissions' => 'OwnerPage post moderator permissions',
   'permission_interface.OwnerPagePostPermissions' => 'OwnerPage post permissions',
   'permission_interface.bh_brand_hub' => '[XB] Brand-Hub',

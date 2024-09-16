@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="public" title="forum_filters_latest" version_id="1" version_string="1"><![CDATA[<xf:js src="vendor/select2/select2.full.min.js" />
+<xf:js>
+$(document).ready(function() {
+    $('.js-example-basic-single').select2({
+    containerCssClass: "input" 
+});
+});
+</xf:js>
+
+    <xf:css src="select2.less"/>
+    <xf:css src="altf_select2.less"/>
+    <xf:js prod="xf/token_input-compiled.js" dev="vendor/select2/select2.full.min.js, xf/token_input.js"/>
+
+    <xf:js>
+        jQuery.extend(XF.phrases, {
+        s2_error_loading: "{{ phrase('s2_error_loading')|escape('js') }}",
+        s2_input_too_long: "{{ phrase('s2_input_too_long')|escape('js') }}",
+        s2_input_too_short: "{{ phrase('s2_input_too_short')|escape('js') }}",
+        s2_loading_more: "{{ phrase('s2_loading_more')|escape('js') }}",
+        s2_maximum_selected: "{{ phrase('s2_maximum_selected')|escape('js') }}",
+        s2_no_results: "{{ phrase('s2_no_results')|escape('js') }}",
+        s2_searching: "{{ phrase('s2_searching')|escape('js') }}"
+        });
+    </xf:js>
+<xf:form action="{{ link('forums/filters', $forum) }}">
+	<xf:extension name="start"></xf:extension>
+	
+	
+		<div class="menu-row menu-row--separated">
+			{{ phrase('nodes:') }}
+			<div class="u-inputSpacer">
+	<xf:select name="thread_fields[__node_ids]"  value="{{ $filterSet.__node_ids ?: [] }}" multiple="{{ true }}" class="input js-example-basic-single"
+		
+		title="{{ phrase('nodes') }}">
+		
+
+					<xf:foreach loop="{$forums}" key="$nodeId" value="$node">
+						<xf:option value="{$nodeId}"
+							label="{{ $node.title }}" />
+					</xf:foreach>
+				
+		
+	</xf:select>
+			</div>
+	</div>
+	
+		
+		
+	
+	
+	
+	
+	
+	<!--[XF:above_prefixes]-->
+	
+
+
+	<xf:extension name="before_started_by"></xf:extension>
+
+	<!--[XF:above_started_by]-->
+
+	<xf:extension name="before_date_limit"></xf:extension>
+
+	<!--[XF:above_last_updated]-->
+	<div class="menu-row menu-row--separated">
+		<label for="ctrl_last_updated">{{ phrase('last_updated:') }}</label>
+		<div class="u-inputSpacer">
+			<xf:if is="$filters.no_date_limit">
+				<xf:set var="$lastDays" value="" />
+			<xf:else />
+				<xf:set var="$lastDays" value="{{ $filters.last_days ?: $forum.list_date_limit_days }}" />
+			</xf:if>
+			<xf:select name="last_days" value="{$lastDays}" id="ctrl_last_updated">
+				<xf:option value="-1">{{ phrase('any_time') }}</xf:option>
+				<xf:option value="7">{{ phrase('x_days', {'days': '7'}) }}</xf:option>
+				<xf:option value="14">{{ phrase('x_days', {'days': '14'}) }}</xf:option>
+				<xf:option value="30">{{ phrase('x_days', {'days': '30'}) }}</xf:option>
+				<xf:option value="60">{{ phrase('x_months', {'months': '2'}) }}</xf:option>
+				<xf:option value="90">{{ phrase('x_months', {'months': '3'}) }}</xf:option>
+				<xf:option value="182">{{ phrase('x_months', {'months': '6'}) }}</xf:option>
+				<xf:option value="365">{{ phrase('1_year') }}</xf:option>
+			</xf:select>
+		</div>
+	</div>
+
+
+
+	<!--[XF:above_sort_by]-->
+	<div class="menu-row menu-row--separated">
+		{{ phrase('sort_by:') }}
+		<div class="inputGroup u-inputSpacer">
+			<span class="u-srOnly" id="ctrl_sort_by">{{ phrase('sort_order') }}</span>
+			<xf:select name="order" value="{{ $filters.order ?: $forum.default_sort_order }}" aria-labelledby="ctrl_sort_by">
+				<xf:foreach loop="$sortOptions" key="$sortKey" value="$null">
+					<xf:option value="{$sortKey}">{{ phrase_dynamic('forum_sort.' . $sortKey) }}</xf:option>
+				</xf:foreach>
+			</xf:select>
+			<span class="inputGroup-splitter"></span>
+			<span class="u-srOnly" id="ctrl_sort_direction">{{ phrase('sort_direction') }}</span>
+			<xf:select name="direction" value="{{ $filters.direction ?: $forum.default_sort_direction }}" aria-labelledby="ctrl_sort_direction">
+				<xf:option value="desc">{{ phrase('descending') }}</xf:option>
+				<xf:option value="asc">{{ phrase('ascending') }}</xf:option>
+			</xf:select>
+		</div>
+		
+		
+		
+	</div>
+	
+	    <div class="menu-row menu-row--separated">
+            <label for="ctrl_started_by">{{ phrase('keywords:') }}</label>
+            <div class="u-inputSpacer">
+                <xf:textbox name="thread_fields[__keywords]" value="{{ $set.__keywords }}"/>
+            </div>
+        </div>
+	
+	 <div class="menu-row menu-row--separated">
+            <label for="ctrl_started_by">{{ phrase('tags:') }}</label>
+            <div class="u-inputSpacer">
+                <xf:tokeninput name="thread_fields[__tags]" value="{{ $set.__tags}}"
+                               href="{{ link('misc/tag-auto-complete') }}"
+                               min-length="{$xf.options.tagLength.min}"
+                               max-length="{$xf.options.tagLength.max}"
+                               max-tokens="{$xf.options.maxContentTags}"
+                >
+                </xf:tokeninput>
+            </div>
+        </div>
+	
+	
+	 <div class="menu-row menu-row--separated">
+            <label for="ctrl_started_by">{{ phrase('exclude_tags:') }}</label>
+            <div class="u-inputSpacer">
+                <xf:tokeninput name="thread_fields[__extags]" value="{{ $set.__tags}}"
+                               href="{{ link('misc/tag-auto-complete') }}"
+                               min-length="{$xf.options.tagLength.min}"
+                               max-length="{$xf.options.tagLength.max}"
+                               max-tokens="{$xf.options.maxContentTags}"
+                >
+                </xf:tokeninput>
+            </div>
+        </div>
+	
+	
+	
+	
+	
+	
+		<div class="menu-row menu-row--separated">
+			{{ phrase('prefix:') }}
+			<div class="u-inputSpacer">
+	<xf:select name="thread_fields[__prefix_ids1]"  value="{{ $filterSet.__prefix_ids1 ?: [] }}" multiple="{{ true }}" class="input js-example-basic-single"
+		
+		title="{{ phrase('prefix') }}">
+		
+
+					<xf:foreach loop="{{$prefixGroup1}}" key="$prefixId" value="$prefix">
+						<xf:option value="{$prefixId}"
+							label="{{ prefix_title('thread', $prefixId) }}"
+							data-prefix-class="{$prefix.css_class}"
+							data-has-help="{$prefix.has_usage_help}" />
+					</xf:foreach>
+				
+		
+	</xf:select>
+			</div>
+	</div>
+	
+	<div class="menu-row menu-row--separated">
+			{{ phrase('prefix:') }}
+			<div class="u-inputSpacer">
+	<xf:select name="thread_fields[__prefix_ids2]"  value="{{ $filterSet.__prefix_ids2 ?: [] }}" multiple="{{ true }}" class="input js-example-basic-single"
+		
+		title="{{ phrase('prefix') }}">
+		
+
+					<xf:foreach loop="{{$prefixGroup2}}" key="$prefixId" value="$prefix">
+						<xf:option value="{$prefixId}"
+							label="{{ prefix_title('thread', $prefixId) }}"
+							data-prefix-class="{$prefix.css_class}"
+							data-has-help="{$prefix.has_usage_help}" />
+					</xf:foreach>
+				
+		
+	</xf:select>
+			</div>
+	</div>
+	<div class="menu-row menu-row--separated">
+			{{ phrase('prefix:') }}
+			<div class="u-inputSpacer">
+	<xf:select name="thread_fields[__prefix_ids3]"  value="{{ $filterSet.__prefix_ids3 ?: [] }}" multiple="{{ true }}" class="input js-example-basic-single"
+		
+		title="{{ phrase('prefix') }}">
+		
+
+					<xf:foreach loop="{{$prefixGroup3}}" key="$prefixId" value="$prefix">
+						<xf:option value="{$prefixId}"
+							label="{{ prefix_title('thread', $prefixId) }}"
+							data-prefix-class="{$prefix.css_class}"
+							data-has-help="{$prefix.has_usage_help}" />
+					</xf:foreach>
+				
+		
+	</xf:select>
+			</div>
+	</div>
+	
+	
+	
+	<xf:extension name="end"></xf:extension>
+
+	<div class="menu-footer">
+		<span class="menu-footer-controls">
+			<xf:button type="submit" class="button--primary">{{ phrase('filter') }}</xf:button>
+		</span>
+	</div>
+	<xf:hiddenval name="apply">1</xf:hiddenval>
+</xf:form>]]></template>
+  <template type="public" title="forum_view_latest_content" version_id="1" version_string="1"><![CDATA[<xf:title page="{$page}">{{phrase('latest_content')}}</xf:title>
+
+
+<xf:css src="structured_list.less" />
+
+<xf:css src="forum_view_latest_content.less" />
+
+
+
+
+
+
+
+<div class="block " data-xf-init="{{ $canInlineMod ? 'inline-mod' : '' }}" data-type="thread" data-href="{{ link('inline-mod') }}">
+
+
+
+	<div class="block-container">
+
+	
+
+
+		<div class="block-body">
+			<xf:extension name="thread_list">
+				<div class="structItemContainer">
+					
+
+					<xf:if is="$threads is not empty">
+					
+
+						<div class="structItemContainer-group js-threadList">
+							<xf:if is="$threads is not empty">
+								<xf:foreach loop="$threads" value="$thread">
+									<xf:macro name="{{ $templateOverrides.thread_list_macro ?: 'thread_list_macros::item' }}"
+										arg-thread="{$thread}"
+						
+										args="{$templateOverrides.thread_list_macro_args}"  />
+								</xf:foreach>
+								<xf:if is="$showDateLimitDisabler">
+									<xf:macro name="date_limit_disabler" arg-forum="{$forum}" arg-page="{$page}" arg-filters="{$filters}" />
+								</xf:if>
+							</xf:if>
+						</div>
+		
+		
+					</xf:if>
+				</div>
+			</xf:extension>
+		</div>
+	</div>
+
+	<div class="block-outer block-outer--after">
+		<xf:pagenav
+			page="{$page}" perpage="{$perPage}" total="{$total}"
+			link="forums" data="{$forum}" params="{$filters}"
+			wrapperclass="block-outer-main" />
+
+	</div>
+</div>
+<xf:sidebar key="conversationInfo">
+	<div class="block">
+		  <div class="block-container">
+		  <xf:include template="forum_filters_latest" />
+		</div>
+	</div>
+</xf:sidebar>
+
+
+<xf:widgetpos id="forum_view_sidebar" context-forum="{$forum}" position="sidebar" />]]></template>
+  <template type="public" title="forum_view_latest_content.less" version_id="1" version_string="1"><![CDATA[@resource-grid-gap: 10px;
+@resource-grid-width: 250px;
+@resource-grid-thumb: 108px;
+@supports(display: grid) {
+    body[data-template="forum_view_latest_content"] {
+        .structItemContainer-group,
+        .structItemContainer-group--sticky {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(@resource-grid-width, 1fr));
+            grid-gap: @resource-grid-gap;
+            padding: @resource-grid-gap;
+            background-color: @xf-contentAltBg;
+        }
+        .structItem--thread {
+            display: grid;
+            grid-template-areas: 'icon icon' 'main main' 'meta latest' 'iconEnd iconEnd';
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.28);
+            border-radius: 5px;
+            position: relative;
+            .structItem-cell--icon {
+                grid-area: icon;
+                width: 100%;
+                padding: 0px 0px 10px 0px;
+                border-radius: 5px 5px 0px 0px;
+            }
+            .structItem-cell--main {
+                grid-area: main;
+                margin-top: 5px;
+            }
+            .structItem-cell--meta {
+                grid-area: meta;
+                width: 100%;
+                position: absolute;
+                width: 70px;
+                font-size: 13px;
+                color: #8c8c8c !important;
+            }
+            .structItem-cell--latest {
+                grid-area: latest;
+                width: 100%;
+                font-size: 13px;
+                white-space: nowrap;
+            }
+            .structItem-cell--iconEnd {
+                padding: 0px 0px 0px 5px !important;
+                height: 38px;
+            }
+        }
+        .structItem-cell--meta .pairs--justified dd {
+            float: left;
+        }
+        .structItem-iconContainer .structItem-secondaryIcon {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            font-size: 12px;
+            bottom: -20px;
+            border: 3px solid #fefefe;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .structItem-cell--meta .pairs--justified:first-child dd:before {
+            font-family: 'Font Awesome 5 Pro';
+            content: "\f3e5\20";
+            padding-right: 5px;
+        }
+        .structItem-cell--meta .pairs--justified:last-child dd:before {
+            font-family: 'Font Awesome 5 Pro';
+            content: "\f06e  :";
+            padding-right: 5px;
+        }
+        .structItem-cell--meta .pairs--justified:last-child dt {
+            font-size: 0px;
+        }
+        .structItem-cell--meta .pairs--justified:first-child dt {
+            font-size: 0px;
+        }
+        @media (max-width: 650px) {
+            .js-threadList {
+                padding: 0px !important;
+            }
+            .structItem--thread .structItem-cell--main {
+                   padding-left: 10px !important;
+    				padding-right: 10px;
+            }
+            .structItem--thread {
+                border-radius: 0px !important;
+            }
+            .structItem-cell.structItem-cell--latest:before {
+                display: none;
+            }
+			.structItem-cell--meta{
+				padding-left: 10px !important;
+    			padding-right: 10px;
+			}
+			.structItem-cell--latest{
+				 padding-right: 10px;
+			}
+			.structItem-cell.structItem-cell--iconEnd, .structItem-cell.structItem-cell--meta .structItem-minor, .structItem-cell.structItem-cell--latest .structItem-minor{
+				display:block;
+			}
+			.structItem-cell.structItem-cell--latest{				
+    		padding-bottom: 10px;
+			}
+        }
+    }
+}]]></template>
+</templates>

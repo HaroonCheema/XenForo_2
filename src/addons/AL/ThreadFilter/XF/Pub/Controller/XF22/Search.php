@@ -4,7 +4,7 @@
 * @author AddonsLab
 * @license https://addonslab.com/
 * @link https://addonslab.com/
-* @version 3.9.2
+* @version 3.8.0
 This software is furnished under a license and may be used and copied
 only  in  accordance  with  the  terms  of such  license and with the
 inclusion of the above copyright notice.  This software  or any other
@@ -26,7 +26,6 @@ namespace AL\ThreadFilter\XF\Pub\Controller\XF22;
 use AL\ThreadFilter\App;
 use AL\ThreadFilter\XF\Pub\Controller\SearchControllerTrait;
 use AL\ThreadFilter\XF\Pub\Controller\XFCP_Search;
-use XF\Mvc\ParameterBag;
 
 class  Search extends XFCP_Search
 {
@@ -40,7 +39,7 @@ class  Search extends XFCP_Search
             $query->inTypes(array_keys(\XF::app()->getContentTypePhrases(false, 'search_handler_class')));
         }
 
-        $types = array_diff($query->getTypes(), [App::getContentTypeProvider()->getIndexContentType()]);
+        $types=array_diff($query->getTypes(), [App::getContentTypeProvider()->getIndexContentType()]);
         $query->inTypes(array_values($types)); // resetting the keys as it would generate wrong elastic search query
 
         return parent::runSearch($query, $constraints, $allowCached);
