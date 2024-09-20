@@ -9,14 +9,16 @@ class Tag extends AbstractController
 {
 	protected function preDispatchController($action, ParameterBag $params)
 	{
-		if (!$this->options()->enableTagging) {
+		if (!$this->options()->enableTagging)
+		{
 			throw $this->exception($this->noPermission());
 		}
 	}
 
 	public function actionIndex(ParameterBag $params)
 	{
-		if ($params->tag_url) {
+		if ($params->tag_url)
+		{
 			return $this->rerouteController('XF:Tag', 'Tag', $params);
 		}
 
@@ -24,37 +26,36 @@ class Tag extends AbstractController
 
 		$tagList = $this->filter('tags', 'str');
 
-		if ($this->isPost()) {
-
-
-
+		if ($this->isPost())
+		{
 			$tags = $tagRepo->splitTagList($tagList);
 
-			// echo "<pre>";
-			// var_dump($tags);
-			// exit;
-
-
-			if (!$tags) {
+			if (!$tags)
+			{
 				return $this->error(\XF::phrase('please_enter_single_tag'));
-			} else if (count($tags) == 1) {
+			}
+			else if (count($tags) == 1)
+			{
 				$tag = $this->finder('XF:Tag')->where('tag', $tags[0])->fetchOne();
-				if ($tag) {
+				if ($tag)
+				{
 					return $this->redirect($this->buildLink('tags', $tag), '');
-				} else {
+				}
+				else
+				{
 					return $this->error(\XF::phrase('following_tags_not_found_x', ['tags' => $tagList]));
 				}
-			} else {
-				if (!\XF::visitor()->canSearch()) {
+			}
+			else
+			{
+				if (!\XF::visitor()->canSearch())
+				{
 					return $this->error(\XF::phrase('please_enter_single_tag'));
 				}
 
-
-
 				$validTags = $tagRepo->getTags($tags, $notFound);
-
-
-				if ($notFound) {
+				if ($notFound)
+				{
 					return $this->error(\XF::phrase(
 						'following_tags_not_found_x',
 						['tags' => implode(', ', $notFound)]
@@ -65,11 +66,7 @@ class Tag extends AbstractController
 				$query = $searcher->getQuery();
 
 				$tagIds = array_keys($validTags);
-
-
 				$query->withTags($tagIds);
-
-
 				$constraints = [
 					'tag' => implode(' ', $tagIds)
 				];
@@ -78,22 +75,26 @@ class Tag extends AbstractController
 				$searchRepo = $this->repository('XF:Search');
 				$search = $searchRepo->runSearch($query, $constraints);
 
-				echo "<pre>";
-				var_dump($tagIds);
-				exit;
-
-				if ($search) {
+				if ($search)
+				{
 					return $this->redirect($this->buildLink('search', $search), '');
-				} else {
+				}
+				else
+				{
 					return $this->message(\XF::phrase('no_results_found'));
 				}
 			}
-		} else {
+		}
+		else
+		{
 			$cloudOption = $this->options()->tagCloud;
-			if ($cloudOption['enabled']) {
+			if ($cloudOption['enabled'])
+			{
 				$cloudEntries = $tagRepo->getTagsForCloud($cloudOption['count'], $this->options()->tagCloudMinUses);
 				$tagCloud = $tagRepo->getTagCloud($cloudEntries);
-			} else {
+			}
+			else
+			{
 				$tagCloud = [];
 			}
 
@@ -109,12 +110,16 @@ class Tag extends AbstractController
 
 	public function actionTag(ParameterBag $params)
 	{
-		if ($params->tag_url) {
+		if ($params->tag_url)
+		{
 			$tag = $this->finder('XF:Tag')->where('tag_url', $params->tag_url)->fetchOne();
-		} else {
+		}
+		else
+		{
 			$tag = null;
 		}
-		if (!$tag) {
+		if (!$tag)
+		{
 			return $this->error(\XF::phrase('requested_tag_not_found'), 404);
 		}
 
@@ -124,26 +129,35 @@ class Tag extends AbstractController
 		$tagRepo = $this->getTagRepo();
 
 		$cache = $tagRepo->getTagResultCache($tag->tag_id);
-		if ($cache->requiresRefetch()) {
+		if ($cache->requiresRefetch())
+		{
 			$limit = $this->options()->maximumSearchResults;
 			$tagResults = $tagRepo->getTagSearchResults($tag->tag_id, $limit);
 			$resultSet = $tagRepo->getTagResultSet($tagResults)->limitToViewableResults();
 
-			if (!$resultSet->countResults()) {
+			if (!$resultSet->countResults())
+			{
 				return $this->message(\XF::phrase('no_results_found'));
 			}
 
 			$cache->results = $resultSet->getResults();
 
-			if ($resultSet->countResults() > $perPage) {
-				try {
+			if ($resultSet->countResults() > $perPage)
+			{
+				try
+				{
 					$cache->save();
-				} catch (\XF\Db\DuplicateKeyException $e) {
+				}
+				catch (\XF\Db\DuplicateKeyException $e)
+				{
+
 				}
 			}
 
 			$resultSet->sliceResultsToPage($page, $perPage, false); // already limited to viewable
-		} else {
+		}
+		else
+		{
 			$resultSet = $tagRepo->getTagResultSet($cache->results);
 			$resultSet->sliceResultsToPage($page, $perPage);
 		}
@@ -157,19 +171,23 @@ class Tag extends AbstractController
 		$resultsWrapped = $tagRepo->wrapResultsForRender($resultSet, $resultOptions);
 
 		$modTypes = [];
-		foreach ($resultsWrapped as $wrapper) {
+		foreach ($resultsWrapped AS $wrapper)
+		{
 			$handler = $wrapper->getHandler();
 			$entity = $wrapper->getResult();
-			if ($handler->canUseInlineModeration($entity)) {
+			if ($handler->canUseInlineModeration($entity))
+			{
 				$type = $handler->getContentType();
-				if (!isset($modTypes[$type])) {
+				if (!isset($modTypes[$type]))
+				{
 					$modTypes[$type] = $this->app->getContentTypePhrase($type);
 				}
 			}
 		}
 
 		$mod = $this->filter('mod', 'str');
-		if ($mod && !isset($modTypes[$mod])) {
+		if ($mod && !isset($modTypes[$mod]))
+		{
 			$mod = '';
 		}
 

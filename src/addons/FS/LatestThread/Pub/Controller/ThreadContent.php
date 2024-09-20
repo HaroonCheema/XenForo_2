@@ -201,17 +201,19 @@ class ThreadContent extends AbstractController
 			$tags = explode(", ", $conditions['tags']);
 			// $tag = '"tag":"' . $conditions['tags'] . '"';
 
-            $threadFinder->hasTag($tags);
+			$threadFinder->hasTag($tags);
 
 			// $threadFinder->where('tags', 'LIKE', $threadFinder->escapeLike($tag, '%?%'));
 		}
+
+		// pendings
 
 		// if (isset($conditions['extags']) && $conditions['extags'] != '') {
 		// 	// $exTags = '"tag":"' . $conditions['extags'] . '"';
 
 		// 	$exTags = explode(", ", $conditions['extags']);
 
-        //     $threadFinder->hasTag($exTags);
+		//     $threadFinder->hasTag($exTags);
 
 		// 	// $threadFinder->where('tags', 'not like', $threadFinder->escapeLike($exTags, '%?%'));
 		// }

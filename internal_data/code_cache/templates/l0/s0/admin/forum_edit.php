@@ -217,26 +217,23 @@ return array(
 			}
 		}
 		$__compilerTemp7 .= $__templater->formSelectRow(array(
-			'name' => 'sv_default_prefix_ids',
-			'value' => $__vars['forum']['sv_default_prefix_ids'],
-			'multiple' => 'true',
+			'name' => 'default_prefix_id',
+			'value' => $__vars['forum']['default_prefix_id'],
 			'class' => 'js-availablePrefixSelect',
 		), $__compilerTemp10, array(
 			'label' => 'Default thread prefix',
 			'explain' => 'You may specify a thread prefix to be automatically selected when visitors create new threads in this forum. The selected prefix <b>must</b> also be selected in the \'Available prefixes\' list above.',
 		)) . '
 
-				' . $__templater->formNumberBoxRow(array(
-			'name' => 'sv_multiprefix_min_prefixes',
-			'value' => $__vars['forum']['sv_min_prefixes'],
-		), array(
-			'label' => 'Minimum prefixes',
-		)) . '
-' . $__templater->formNumberBoxRow(array(
-			'name' => 'sv_multiprefix_max_prefixes',
-			'value' => $__vars['forum']['sv_max_prefixes'],
-		), array(
-			'label' => 'Maximum prefixes',
+				' . $__templater->formCheckBoxRow(array(
+			'name' => 'require_prefix',
+			'value' => $__vars['forum']['require_prefix'],
+		), array(array(
+			'value' => '1',
+			'label' => 'Require users to select a prefix',
+			'hint' => 'If selected, users will be required to select a prefix when creating a thread or updating its title. This will not be enforced for moderators or when moving a thread.',
+			'_type' => 'option',
+		)), array(
 		)) . '
 
 			';

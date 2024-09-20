@@ -15,16 +15,14 @@ class ResourceItem extends AbstractController
 		/** @var \XFRM\XF\Entity\User $visitor */
 		$visitor = \XF::visitor();
 
-		if (!$visitor->canViewResources($error))
-		{
+		if (!$visitor->canViewResources($error)) {
 			throw $this->exception($this->noPermission($error));
 		}
 	}
 
 	public function actionIndex(ParameterBag $params)
 	{
-		if ($params->resource_id)
-		{
+		if ($params->resource_id) {
 			return $this->rerouteController(__CLASS__, 'view', $params);
 		}
 
@@ -43,7 +41,8 @@ class ResourceItem extends AbstractController
 
 		$viewParams = $categoryParams + $listParams;
 
-		return $this->view('XFRM:Overview', 'xfrm_overview', $viewParams);
+		return $this->view('XFRM:Overview', 'fs_xfrm_overview', $viewParams);
+		// return $this->view('XFRM:Overview', 'xfrm_overview', $viewParams);
 	}
 
 	public function actionFilters()
@@ -94,8 +93,7 @@ class ResourceItem extends AbstractController
 	{
 		/** @var \XFRM\XF\Entity\User $visitor */
 		$visitor = \XF::visitor();
-		if (!$visitor->canAddResource($error))
-		{
+		if (!$visitor->canAddResource($error)) {
 			return $this->noPermission($error);
 		}
 
@@ -106,30 +104,24 @@ class ResourceItem extends AbstractController
 		$categories = $categoryRepo->getViewableCategories();
 		$canAdd = false;
 
-		foreach ($categories AS $category)
-		{
+		foreach ($categories as $category) {
 			/** @var \XFRM\Entity\Category $category */
-			if ($category->canAddResource())
-			{
+			if ($category->canAddResource()) {
 				$canAdd = true;
 				break;
 			}
 		}
 
-		if (!$canAdd)
-		{
+		if (!$canAdd) {
 			return $this->noPermission();
 		}
 
 		$categoryTree = $categoryRepo->createCategoryTree($categories);
-		$categoryTree = $categoryTree->filter(null, function($id, \XFRM\Entity\Category $category, $depth, $children)
-		{
-			if ($children)
-			{
+		$categoryTree = $categoryTree->filter(null, function ($id, \XFRM\Entity\Category $category, $depth, $children) {
+			if ($children) {
 				return true;
 			}
-			if ($category->canAddResource())
-			{
+			if ($category->canAddResource()) {
 				return true;
 			}
 
@@ -155,11 +147,9 @@ class ResourceItem extends AbstractController
 
 		$latestUpdates = $this->em()->getEmptyCollection();
 
-		if ($resource->real_update_count)
-		{
+		if ($resource->real_update_count) {
 			$recentUpdatesMax = $this->options()->xfrmRecentUpdatesCount;
-			if ($recentUpdatesMax)
-			{
+			if ($recentUpdatesMax) {
 				/** @var \XFRM\Repository\ResourceUpdate $updateRepo */
 				$updateRepo = $this->repository('XFRM:ResourceUpdate');
 				$latestUpdates = $updateRepo->findUpdatesInResource($resource)->fetch($recentUpdatesMax);
@@ -168,48 +158,38 @@ class ResourceItem extends AbstractController
 
 		$latestReviews = $this->em()->getEmptyCollection();
 
-		if ($resource->real_review_count)
-		{
+		if ($resource->real_review_count) {
 			$recentReviewsMax = $this->options()->xfrmRecentReviewsCount;
-			if ($recentReviewsMax)
-			{
+			if ($recentReviewsMax) {
 				/** @var \XFRM\Repository\ResourceRating $ratingRepo */
 				$ratingRepo = $this->repository('XFRM:ResourceRating');
 				$latestReviews = $ratingRepo->findReviewsInResource($resource)->with('full')->fetch($recentReviewsMax);
 			}
 		}
 
-		if ($resource->canViewTeamMembers())
-		{
+		if ($resource->canViewTeamMembers()) {
 			$teamMembers = $resource->TeamMembers;
-		}
-		else
-		{
+		} else {
 			$teamMembers = $this->em()->getEmptyCollection();
 		}
 
-		if ($this->options()->xfrmAuthorOtherResourcesCount && $resource->User)
-		{
+		if ($this->options()->xfrmAuthorOtherResourcesCount && $resource->User) {
 			$authorOthers = $this->getResourceRepo()
 				->findOtherResourcesByAuthor($resource)
 				->fetch($this->options()->xfrmAuthorOtherResourcesCount);
 			$authorOthers = $authorOthers->filterViewable();
-		}
-		else
-		{
+		} else {
 			$authorOthers = $this->em()->getEmptyCollection();
 		}
 
 		$trimmedDescription = null;
 
-		if (!$resource->canViewFullDescription())
-		{
+		if (!$resource->canViewFullDescription()) {
 			$snippet = $this->app->stringFormatter()->wholeWordTrim(
 				$resource->Description->message,
 				$this->options()->xfrmFilelessViewFull['length']
 			);
-			if (strlen($snippet) < strlen($resource->Description->message))
-			{
+			if (strlen($snippet) < strlen($resource->Description->message)) {
 				// just cleaning BB code, so not passing the content
 				$trimmedDescription = $this->app->bbCode()->render($snippet, 'bbCodeClean', 'resource_update', null);
 			}
@@ -243,8 +223,7 @@ class ResourceItem extends AbstractController
 	{
 		$extraWith = ['Featured'];
 		$userId = \XF::visitor()->user_id;
-		if ($userId)
-		{
+		if ($userId) {
 			$extraWith[] = 'Watch|' . $userId;
 			$extraWith[] = 'CurrentVersion.Downloads|' . $userId;
 			$extraWith[] = 'Description.Reactions|' . $userId;
@@ -256,8 +235,7 @@ class ResourceItem extends AbstractController
 	public function actionExtra(ParameterBag $params)
 	{
 		$resource = $this->assertViewableResource($params->resource_id);
-		if (!$resource->hasExtraInfoTab())
-		{
+		if (!$resource->hasExtraInfoTab()) {
 			return $this->redirect($this->buildLink('resources', $resource));
 		}
 
@@ -275,8 +253,7 @@ class ResourceItem extends AbstractController
 		$fieldId = $this->filter('field', 'str');
 		$tabFields = $resource->getExtraFieldTabs();
 
-		if (!isset($tabFields[$fieldId]))
-		{
+		if (!isset($tabFields[$fieldId])) {
 			return $this->redirect($this->buildLink('resources', $resource));
 		}
 
@@ -310,8 +287,7 @@ class ResourceItem extends AbstractController
 		$updateFinder = $updateRepo->findUpdatesInResource($resource)->with('full');
 
 		$total = $resource->real_update_count;
-		if (!$total)
-		{
+		if (!$total) {
 			return $this->redirect($this->buildLink('resources', $resource));
 		}
 
@@ -338,8 +314,7 @@ class ResourceItem extends AbstractController
 
 	public function actionReviews(ParameterBag $params)
 	{
-		if (!$params->resource_id)
-		{
+		if (!$params->resource_id) {
 			return $this->redirectPermanently($this->buildLink('resources/latest-reviews'));
 		}
 
@@ -348,16 +323,13 @@ class ResourceItem extends AbstractController
 		$resource = $this->assertViewableResource($params->resource_id, $this->getResourceViewExtraWith());
 
 		$reviewId = $this->filter('resource_rating_id', 'uint');
-		if ($reviewId)
-		{
+		if ($reviewId) {
 			/** @var \XFRM\Entity\ResourceRating|null $review */
 			$review = $this->em()->find('XFRM:ResourceRating', $reviewId);
-			if (!$review || $review->resource_id != $resource->resource_id || !$review->is_review)
-			{
+			if (!$review || $review->resource_id != $resource->resource_id || !$review->is_review) {
 				return $this->noPermission();
 			}
-			if (!$review->canView($error))
-			{
+			if (!$review->canView($error)) {
 				return $this->noPermission($error);
 			}
 
@@ -374,16 +346,12 @@ class ResourceItem extends AbstractController
 		$filters = $this->getReviewFilterInput();
 		$this->applyReviewFilters($reviewFinder, $filters);
 
-		if (!$filters)
-		{
+		if (!$filters) {
 			$total = $resource->real_review_count;
-			if (!$total)
-			{
+			if (!$total) {
 				return $this->redirect($this->buildLink('resources', $resource));
 			}
-		}
-		else
-		{
+		} else {
 			$total = $reviewFinder->total();
 		}
 
@@ -418,8 +386,7 @@ class ResourceItem extends AbstractController
 		\XFRM\Entity\ResourceItem $resource,
 		array $filters,
 		string $effectiveOrder
-	): array
-	{
+	): array {
 		$tabs = [
 			'latest' => [
 				'selected' => ($effectiveOrder == 'rating_date'),
@@ -447,14 +414,11 @@ class ResourceItem extends AbstractController
 		$defaultOrder = 'rating_date';
 		$defaultDirection = 'desc';
 
-		foreach ($tabs AS $tabId => &$tab)
-		{
-			if (isset($tab['filters']['order']) && $tab['filters']['order'] == $defaultOrder)
-			{
+		foreach ($tabs as $tabId => &$tab) {
+			if (isset($tab['filters']['order']) && $tab['filters']['order'] == $defaultOrder) {
 				$tab['filters']['order'] = null;
 			}
-			if (isset($tab['filters']['direction']) && $tab['filters']['direction'] == $defaultDirection)
-			{
+			if (isset($tab['filters']['direction']) && $tab['filters']['direction'] == $defaultDirection) {
 				$tab['filters']['direction'] = null;
 			}
 		}
@@ -468,8 +432,7 @@ class ResourceItem extends AbstractController
 
 		$filters = $this->getReviewFilterInput();
 
-		if ($this->filter('apply', 'bool'))
-		{
+		if ($this->filter('apply', 'bool')) {
 			return $this->redirect($this->buildLink('resources/reviews', $resource, $filters));
 		}
 
@@ -490,22 +453,18 @@ class ResourceItem extends AbstractController
 			'direction' => 'str'
 		]);
 
-		if ($input['rating'] >= 1 && $input['rating'] <= 5)
-		{
+		if ($input['rating'] >= 1 && $input['rating'] <= 5) {
 			$filters['rating'] = $input['rating'];
 		}
 
 		$sorts = $this->getAvailableReviewSorts();
 
-		if ($input['order'] && isset($sorts[$input['order']]))
-		{
-			if (!in_array($input['direction'], ['asc', 'desc']))
-			{
+		if ($input['order'] && isset($sorts[$input['order']])) {
+			if (!in_array($input['direction'], ['asc', 'desc'])) {
 				$input['direction'] = 'desc';
 			}
 
-			if ($input['order'] != 'rating_date' || $input['direction'] != 'desc')
-			{
+			if ($input['order'] != 'rating_date' || $input['direction'] != 'desc') {
 				$filters['order'] = $input['order'];
 				$filters['direction'] = $input['direction'];
 			}
@@ -526,15 +485,13 @@ class ResourceItem extends AbstractController
 
 	protected function applyReviewFilters(\XFRM\Finder\ResourceRating $reviewFinder, array $filters)
 	{
-		if (!empty($filters['rating']))
-		{
+		if (!empty($filters['rating'])) {
 			$reviewFinder->where('rating', $filters['rating']);
 		}
 
 		$sorts = $this->getAvailableReviewSorts();
 
-		if (!empty($filters['order']) && isset($sorts[$filters['order']]))
-		{
+		if (!empty($filters['order']) && isset($sorts[$filters['order']])) {
 			$reviewFinder->order($sorts[$filters['order']], $filters['direction']);
 		}
 	}
@@ -543,8 +500,7 @@ class ResourceItem extends AbstractController
 	{
 		$resource = $this->assertViewableResource($params->resource_id, $this->getResourceViewExtraWith());
 
-		if (!$resource->isVersioned())
-		{
+		if (!$resource->isVersioned()) {
 			return $this->redirect($this->buildLink('resources', $resource));
 		}
 
@@ -558,15 +514,12 @@ class ResourceItem extends AbstractController
 
 		$hasDelete = false;
 		$hasDownload = false;
-		foreach ($versions AS $version)
-		{
+		foreach ($versions as $version) {
 			/** @var \XFRM\Entity\ResourceVersion $version */
-			if ($version->canDelete())
-			{
+			if ($version->canDelete()) {
 				$hasDelete = true;
 			}
-			if ($version->isDownloadable())
-			{
+			if ($version->isDownloadable()) {
 				$hasDownload = true;
 			}
 		}
@@ -586,8 +539,7 @@ class ResourceItem extends AbstractController
 		$version = $resource->CurrentVersion;
 
 		$error = null;
-		if (!$version || !$version->canDownload($error))
-		{
+		if (!$version || !$version->canDownload($error)) {
 			return $this->noPermission($error);
 		}
 
@@ -617,35 +569,27 @@ class ResourceItem extends AbstractController
 		$rater->setCustomFields($customFields);
 
 		$hasCustomFieldValues = false;
-		foreach ($rater->getRating()->custom_fields AS $field => $value)
-		{
-			if (is_array($value))
-			{
-				if (count($value) > 0)
-				{
+		foreach ($rater->getRating()->custom_fields as $field => $value) {
+			if (is_array($value)) {
+				if (count($value) > 0) {
 					$hasCustomFieldValues = true;
 				}
-			}
-			else if (trim(strval($value)) !== '')
-			{
+			} else if (trim(strval($value)) !== '') {
 				$hasCustomFieldValues = true;
 			}
 		}
 
-		if ($hasCustomFieldValues && !strlen($input['message']))
-		{
+		if ($hasCustomFieldValues && !strlen($input['message'])) {
 			$input['message'] = \XF::phrase('xfrm_no_review_provided')->render();
 		}
 
 		$rater->setRating($input['rating'], $input['message']);
 
-		if ($this->options()->xfrmAllowAnonReview && $input['is_anonymous'])
-		{
+		if ($this->options()->xfrmAllowAnonReview && $input['is_anonymous']) {
 			$rater->setIsAnonymous();
 		}
 
-		if ($resource->canRatePreReg())
-		{
+		if ($resource->canRatePreReg()) {
 			$rater->setIsPreRegAction(true);
 		}
 
@@ -664,41 +608,32 @@ class ResourceItem extends AbstractController
 
 		$isPreRegRate = $resource->canRatePreReg();
 
-		if (!$resource->canRate(true, $error) && !$isPreRegRate)
-		{
+		if (!$resource->canRate(true, $error) && !$isPreRegRate) {
 			return $this->noPermission($error);
 		}
 
-		if (!$isPreRegRate)
-		{
+		if (!$isPreRegRate) {
 			/** @var \XFRM\Entity\ResourceRating|null $existingRating */
 			$existingRating = $resource->CurrentVersion->Ratings[$visitorUserId];
-			if ($existingRating && !$existingRating->canUpdate($error))
-			{
+			if ($existingRating && !$existingRating->canUpdate($error)) {
 				return $this->noPermission($error);
 			}
-		}
-		else
-		{
+		} else {
 			$existingRating = null;
 		}
 
-		if ($this->isPost())
-		{
+		if ($this->isPost()) {
 			$rater = $this->setupResourceRate($resource);
 
-			if (!$isPreRegRate)
-			{
+			if (!$isPreRegRate) {
 				$rater->checkForSpam();
 			}
 
-			if (!$rater->validate($errors))
-			{
+			if (!$rater->validate($errors)) {
 				return $this->error($errors);
 			}
 
-			if ($isPreRegRate)
-			{
+			if ($isPreRegRate) {
 				/** @var \XF\ControllerPlugin\PreRegAction $preRegPlugin */
 				$preRegPlugin = $this->plugin('XF:PreRegAction');
 				return $preRegPlugin->actionPreRegAction(
@@ -714,9 +649,7 @@ class ResourceItem extends AbstractController
 				$rating->is_review ? 'resources/reviews' : 'resources',
 				$resource
 			));
-		}
-		else
-		{
+		} else {
 			/** @var \XFRM\Entity\ResourceRating $rating */
 			$rating = $this->em()->create('XFRM:ResourceRating');
 
@@ -752,34 +685,26 @@ class ResourceItem extends AbstractController
 		/** @var \XFRM\Service\ResourceItem\CreateVersionUpdate $creator */
 		$creator = $this->service('XFRM:ResourceItem\CreateVersionUpdate', $resource);
 
-		if ($this->filter('new_version', 'bool') && $resource->hasUpdatableVersionData())
-		{
+		if ($this->filter('new_version', 'bool') && $resource->hasUpdatableVersionData()) {
 			$versionCreator = $creator->getVersionCreator();
 
 			$versionCreator->setVersionString($this->filter('version_string', 'str'), true);
 
-			if ($resource->isDownloadable())
-			{
+			if ($resource->isDownloadable()) {
 				$category = $resource->Category;
 
-				if ($this->filter('version_type', 'str') == 'local')
-				{
-					if ($category->allow_local || $resource->getResourceTypeDetailed() == 'download_local')
-					{
+				if ($this->filter('version_type', 'str') == 'local') {
+					if ($category->allow_local || $resource->getResourceTypeDetailed() == 'download_local') {
 						$versionCreator->setAttachmentHash($this->filter('version_attachment_hash', 'str'));
 					}
-				}
-				else
-				{
-					if ($category->allow_external || $resource->getResourceTypeDetailed() == 'download_external')
-					{
+				} else {
+					if ($category->allow_external || $resource->getResourceTypeDetailed() == 'download_external') {
 						$versionCreator->setDownloadUrl($this->filter('external_download_url', 'str'));
 					}
 				}
 			}
 
-			if ($resource->isExternalPurchasable())
-			{
+			if ($resource->isExternalPurchasable()) {
 				$purchaseFields = $this->filter([
 					'price' => 'num',
 					'currency' => 'str',
@@ -789,8 +714,7 @@ class ResourceItem extends AbstractController
 			}
 		}
 
-		if ($this->filter('new_update', 'bool'))
-		{
+		if ($this->filter('new_update', 'bool')) {
 			$updateCreator = $creator->getUpdateCreator();
 
 			$message = $this->plugin('XF:Editor')->fromInput('update_message');
@@ -799,8 +723,7 @@ class ResourceItem extends AbstractController
 
 			/** @var \XFRM\Entity\Category $category */
 			$category = $resource->Category;
-			if ($category->canUploadAndManageUpdateImages())
-			{
+			if ($category->canUploadAndManageUpdateImages()) {
 				$updateCreator->setAttachmentHash($this->filter('attachment_hash', 'str'));
 			}
 		}
@@ -818,13 +741,11 @@ class ResourceItem extends AbstractController
 	public function actionLeaveTeam(ParameterBag $params): AbstractReply
 	{
 		$resource = $this->assertViewableResource($params->resource_id);
-		if (!$resource->canLeaveTeam($error))
-		{
+		if (!$resource->canLeaveTeam($error)) {
 			return $this->noPermission($error);
 		}
 
-		if ($this->isPost())
-		{
+		if ($this->isPost()) {
 			/** @var \XFRM\Service\ResourceItem\TeamManager $teamManager */
 			$teamManager = $this->service(
 				'XFRM:ResourceItem\TeamManager',
@@ -832,8 +753,7 @@ class ResourceItem extends AbstractController
 			);
 			$teamManager->leaveTeam(\XF::visitor());
 
-			if (!$teamManager->validate($errors))
-			{
+			if (!$teamManager->validate($errors)) {
 				return $this->error($errors);
 			}
 
@@ -858,13 +778,11 @@ class ResourceItem extends AbstractController
 	public function actionManageTeam(ParameterBag $params): AbstractReply
 	{
 		$resource = $this->assertViewableResource($params->resource_id);
-		if (!$resource->canManageTeamMembers($error))
-		{
+		if (!$resource->canManageTeamMembers($error)) {
 			return $this->noPermission($error);
 		}
 
-		if ($this->isPost())
-		{
+		if ($this->isPost()) {
 			$input = $this->filter([
 				'add_members' => 'str',
 				'remove_members' => 'array-uint'
@@ -876,18 +794,15 @@ class ResourceItem extends AbstractController
 				$resource
 			);
 
-			if ($resource->canAddTeamMembers())
-			{
+			if ($resource->canAddTeamMembers()) {
 				$teamManager->addMembers($input['add_members']);
 			}
 
-			if ($resource->canRemoveTeamMembers())
-			{
+			if ($resource->canRemoveTeamMembers()) {
 				$teamManager->removeMembers($input['remove_members']);
 			}
 
-			if (!$teamManager->validate($errors))
-			{
+			if (!$teamManager->validate($errors)) {
 				return $this->error($errors);
 			}
 
@@ -916,48 +831,37 @@ class ResourceItem extends AbstractController
 	public function actionPostUpdate(ParameterBag $params)
 	{
 		$resource = $this->assertViewableResource($params->resource_id);
-		if (!$resource->canReleaseUpdate($error))
-		{
+		if (!$resource->canReleaseUpdate($error)) {
 			return $this->noPermission($error);
 		}
 
 		$category = $resource->Category;
 
-		if ($this->isPost())
-		{
+		if ($this->isPost()) {
 			$updater = $this->setupResourcePostUpdate($resource);
 			$updater->checkForSpam();
 
-			if (!$updater->validate($errors))
-			{
+			if (!$updater->validate($errors)) {
 				return $this->error($errors);
 			}
 
 			$updater->save();
 			$this->finalizeResourcePostUpdate($updater);
 
-			if ($updater->hasUpdateCreator())
-			{
+			if ($updater->hasUpdateCreator()) {
 				return $this->redirect($this->buildLink('resources/updates', $resource));
-			}
-			else
-			{
+			} else {
 				return $this->redirect($this->buildLink('resources', $resource));
 			}
-		}
-		else
-		{
+		} else {
 			/** @var \XF\Repository\Attachment $attachmentRepo */
 			$attachmentRepo = $this->repository('XF:Attachment');
 
 			$draft = $resource->draft_update;
 
-			if ($category && $category->canUploadAndManageUpdateImages())
-			{
+			if ($category && $category->canUploadAndManageUpdateImages()) {
 				$updateAttachData = $attachmentRepo->getEditorData('resource_update', $resource, $draft->attachment_hash);
-			}
-			else
-			{
+			} else {
 				$updateAttachData = null;
 			}
 
@@ -978,8 +882,7 @@ class ResourceItem extends AbstractController
 		$this->assertDraftsEnabled();
 
 		$resource = $this->assertViewableResource($params->resource_id);
-		if (!$resource->canReleaseUpdate($error))
-		{
+		if (!$resource->canReleaseUpdate($error)) {
 			return $this->noPermission($error);
 		}
 
@@ -996,8 +899,7 @@ class ResourceItem extends AbstractController
 	public function actionPostUpdatePreview(ParameterBag $params)
 	{
 		$resource = $this->assertViewableResource($params->resource_id);
-		if (!$resource->canReleaseUpdate($error))
-		{
+		if (!$resource->canReleaseUpdate($error)) {
 			return $this->noPermission($error);
 		}
 
@@ -1008,16 +910,14 @@ class ResourceItem extends AbstractController
 		$updateCreator->setMessage($message);
 		$updateCreator->setTitle($this->filter('update_title', 'str'));
 
-		if (!$updateCreator->validate($errors))
-		{
+		if (!$updateCreator->validate($errors)) {
 			return $this->error($errors);
 		}
 
 		$attachments = [];
 		$tempHash = $this->filter('attachment_hash', 'str');
 
-		if ($resource->Category->canUploadAndManageUpdateImages())
-		{
+		if ($resource->Category->canUploadAndManageUpdateImages()) {
 			/** @var \XF\Repository\Attachment $attachmentRepo */
 			$attachmentRepo = $this->repository('XF:Attachment');
 			$attachmentData = $attachmentRepo->getEditorData('resource_update', $resource, $tempHash);
@@ -1027,7 +927,11 @@ class ResourceItem extends AbstractController
 		$update = $updateCreator->getUpdate();
 
 		return $this->plugin('XF:BbCodePreview')->actionPreview(
-			$update->message, 'resource_update', $resource->User, $attachments, $resource->canViewUpdateImages()
+			$update->message,
+			'resource_update',
+			$resource->User,
+			$attachments,
+			$resource->canViewUpdateImages()
 		);
 	}
 
@@ -1042,8 +946,7 @@ class ResourceItem extends AbstractController
 		$editor = $this->service('XFRM:ResourceItem\Edit', $resource);
 
 		$prefixId = $this->filter('prefix_id', 'uint');
-		if ($prefixId != $resource->prefix_id && !$resource->Category->isPrefixUsable($prefixId))
-		{
+		if ($prefixId != $resource->prefix_id && !$resource->Category->isPrefixUsable($prefixId)) {
 			$prefixId = 0; // not usable, just blank it out
 		}
 		$editor->setPrefix($prefixId);
@@ -1060,8 +963,7 @@ class ResourceItem extends AbstractController
 		]);
 		$resource->bulkSet($basicFields);
 
-		if ($resource->isExternalPurchasable())
-		{
+		if ($resource->isExternalPurchasable()) {
 			$purchaseFields = $this->filter([
 				'price' => 'num',
 				'currency' => 'str',
@@ -1072,28 +974,23 @@ class ResourceItem extends AbstractController
 				$purchaseFields['currency'],
 				$purchaseFields['external_purchase_url']
 			);
-		}
-		else if ($resource->isExternalDownload())
-		{
+		} else if ($resource->isExternalDownload()) {
 			$editor->setExternalDownloadUrl($this->filter('external_download_url', 'str'));
 		}
 
 		$currentVersion = $resource->CurrentVersion;
-		if ($currentVersion && $currentVersion->canEditVersionString())
-		{
+		if ($currentVersion && $currentVersion->canEditVersionString()) {
 			$editor->setVersionString($this->filter('version_string', 'str'));
 		}
 
 		$descriptionEditor = $editor->getDescriptionEditor();
 		$descriptionEditor->setMessage($this->plugin('XF:Editor')->fromInput('description'));
 
-		if ($resource->Category->canUploadAndManageUpdateImages())
-		{
+		if ($resource->Category->canUploadAndManageUpdateImages()) {
 			$descriptionEditor->setAttachmentHash($this->filter('attachment_hash', 'str'));
 		}
 
-		if ($this->filter('author_alert', 'bool') && $resource->canSendModeratorActionAlert())
-		{
+		if ($this->filter('author_alert', 'bool') && $resource->canSendModeratorActionAlert()) {
 			$editor->setSendAlert(true, $this->filter('author_alert_reason', 'str'));
 		}
 
@@ -1103,20 +1000,17 @@ class ResourceItem extends AbstractController
 	public function actionEdit(ParameterBag $params)
 	{
 		$resource = $this->assertViewableResource($params->resource_id);
-		if (!$resource->canEdit($error))
-		{
+		if (!$resource->canEdit($error)) {
 			return $this->noPermission($error);
 		}
 
 		$category = $resource->Category;
 
-		if ($this->isPost())
-		{
+		if ($this->isPost()) {
 			$editor = $this->setupResourceEdit($resource);
 			$editor->checkForSpam();
 
-			if (!$editor->validate($errors))
-			{
+			if (!$editor->validate($errors)) {
 				return $this->error($errors);
 			}
 
@@ -1124,16 +1018,12 @@ class ResourceItem extends AbstractController
 
 			$iconError = null;
 
-			if ($resource->canEditIcon())
-			{
-				try
-				{
+			if ($resource->canEditIcon()) {
+				try {
 					/** @var \XFRM\ControllerPlugin\ResourceIcon $plugin */
 					$plugin = $this->plugin('XFRM:ResourceIcon');
 					$plugin->actionUpload($resource);
-				}
-				catch (\XF\Mvc\Reply\Exception $e)
-				{
+				} catch (\XF\Mvc\Reply\Exception $e) {
 					$iconError = true;
 				}
 			}
@@ -1141,17 +1031,12 @@ class ResourceItem extends AbstractController
 			return $this->redirect($this->buildLink('resources', $resource, [
 				'icon_error' => $iconError
 			]));
-		}
-		else
-		{
-			if ($category && $category->canUploadAndManageUpdateImages())
-			{
+		} else {
+			if ($category && $category->canUploadAndManageUpdateImages()) {
 				/** @var \XF\Repository\Attachment $attachmentRepo */
 				$attachmentRepo = $this->repository('XF:Attachment');
 				$attachmentData = $attachmentRepo->getEditorData('resource_update', $resource->Description);
-			}
-			else
-			{
+			} else {
 				$attachmentData = null;
 			}
 
@@ -1170,15 +1055,13 @@ class ResourceItem extends AbstractController
 		$this->assertPostOnly();
 
 		$resource = $this->assertViewableResource($params->resource_id);
-		if (!$resource->canEdit($error))
-		{
+		if (!$resource->canEdit($error)) {
 			return $this->noPermission($error);
 		}
 
 		$editor = $this->setupResourceEdit($resource);
 
-		if (!$editor->validate($errors))
-		{
+		if (!$editor->validate($errors)) {
 			return $this->error($errors);
 		}
 
@@ -1188,8 +1071,7 @@ class ResourceItem extends AbstractController
 		$tempHash = $this->filter('attachment_hash', 'str');
 
 		$category = $resource->Category;
-		if ($category && $category->canUploadAndManageUpdateImages())
-		{
+		if ($category && $category->canUploadAndManageUpdateImages()) {
 			/** @var \XF\Repository\Attachment $attachmentRepo */
 			$attachmentRepo = $this->repository('XF:Attachment');
 			$attachmentData = $attachmentRepo->getEditorData('resource_update', $description, $tempHash);
@@ -1197,26 +1079,26 @@ class ResourceItem extends AbstractController
 		}
 
 		return $this->plugin('XF:BbCodePreview')->actionPreview(
-			$description->message, 'resource_update', $resource->User, $attachments, $resource->canViewUpdateImages()
+			$description->message,
+			'resource_update',
+			$resource->User,
+			$attachments,
+			$resource->canViewUpdateImages()
 		);
 	}
 
 	public function actionEditIcon(ParameterBag $params)
 	{
 		$resource = $this->assertViewableResource($params->resource_id);
-		if (!$resource->canEditIcon($error))
-		{
+		if (!$resource->canEditIcon($error)) {
 			return $this->noPermission($error);
 		}
 
-		if ($this->isPost())
-		{
+		if ($this->isPost()) {
 			$this->plugin('XFRM:ResourceIcon')->actionUpload($resource);
 
 			return $this->redirect($this->buildLink('resources', $resource));
-		}
-		else
-		{
+		} else {
 			$viewParams = [
 				'resource' => $resource,
 				'category' => $resource->Category
@@ -1240,11 +1122,9 @@ class ResourceItem extends AbstractController
 
 		$category = $resource->Category;
 
-		switch ($this->filter('resource_type', 'str'))
-		{
+		switch ($this->filter('resource_type', 'str')) {
 			case 'download_local':
-				if ($category->allow_local)
-				{
+				if ($category->allow_local) {
 					$typeChanger->setLocalDownload(
 						$this->filter('version_attachment_hash', 'str')
 					);
@@ -1252,15 +1132,13 @@ class ResourceItem extends AbstractController
 				break;
 
 			case 'download_external':
-				if ($category->allow_external)
-				{
+				if ($category->allow_external) {
 					$typeChanger->setExternalDownload($this->filter('external_download_url', 'str'));
 				}
 				break;
 
 			case 'external_purchase':
-				if ($category->allow_commercial_external)
-				{
+				if ($category->allow_commercial_external) {
 					$purchaseInput = $this->filter([
 						'price' => 'str',
 						'currency' => 'str',
@@ -1268,14 +1146,15 @@ class ResourceItem extends AbstractController
 					]);
 
 					$typeChanger->setExternalPurchasable(
-						$purchaseInput['price'], $purchaseInput['currency'], $purchaseInput['external_purchase_url']
+						$purchaseInput['price'],
+						$purchaseInput['currency'],
+						$purchaseInput['external_purchase_url']
 					);
 				}
 				break;
 
 			case 'fileless':
-				if ($category->allow_fileless)
-				{
+				if ($category->allow_fileless) {
 					$typeChanger->setFileless();
 				}
 				break;
@@ -1287,26 +1166,21 @@ class ResourceItem extends AbstractController
 	public function actionChangeType(ParameterBag $params)
 	{
 		$resource = $this->assertViewableResource($params->resource_id);
-		if (!$resource->canChangeResourceType($error))
-		{
+		if (!$resource->canChangeResourceType($error)) {
 			return $this->noPermission($error);
 		}
 
-		if ($this->isPost())
-		{
+		if ($this->isPost()) {
 			$typeChanger = $this->setupResourceChangeType($resource);
 
-			if (!$typeChanger->validate($errors))
-			{
+			if (!$typeChanger->validate($errors)) {
 				return $this->error($errors);
 			}
 
 			$typeChanger->save();
 
 			return $this->redirect($this->buildLink('resources', $resource));
-		}
-		else
-		{
+		} else {
 			/** @var \XF\Repository\Attachment $attachmentRepo */
 			$attachmentRepo = $this->repository('XF:Attachment');
 			$versionAttachData = $attachmentRepo->getEditorData('resource_version', $resource);
@@ -1338,23 +1212,19 @@ class ResourceItem extends AbstractController
 		/** @var \XFRM\Service\ResourceItem\Move $mover */
 		$mover = $this->service('XFRM:ResourceItem\Move', $resource);
 
-		if ($options['author_alert'])
-		{
+		if ($options['author_alert']) {
 			$mover->setSendAlert(true, $options['author_alert_reason']);
 		}
 
-		if ($options['notify_watchers'])
-		{
+		if ($options['notify_watchers']) {
 			$mover->setNotifyWatchers();
 		}
 
-		if ($options['prefix_id'] !== null)
-		{
+		if ($options['prefix_id'] !== null) {
 			$mover->setPrefix($options['prefix_id']);
 		}
 
-		$mover->addExtraSetup(function($resource, $category)
-		{
+		$mover->addExtraSetup(function ($resource, $category) {
 			$resource->title = $this->filter('title', 'str');
 		});
 
@@ -1364,30 +1234,25 @@ class ResourceItem extends AbstractController
 	public function actionMove(ParameterBag $params)
 	{
 		$resource = $this->assertViewableResource($params->resource_id);
-		if (!$resource->canMove($error))
-		{
+		if (!$resource->canMove($error)) {
 			return $this->noPermission($error);
 		}
 
 		$category = $resource->Category;
 
-		if ($this->isPost())
-		{
+		if ($this->isPost()) {
 			$targetCategoryId = $this->filter('target_category_id', 'uint');
 
 			/** @var \XFRM\Entity\Category $targetCategory */
 			$targetCategory = $this->app()->em()->find('XFRM:Category', $targetCategoryId);
-			if (!$targetCategory || !$targetCategory->canView())
-			{
+			if (!$targetCategory || !$targetCategory->canView()) {
 				return $this->error(\XF::phrase('requested_category_not_found'));
 			}
 
 			$this->setupResourceMove($resource, $targetCategory)->move($targetCategory);
 
 			return $this->redirect($this->buildLink('resources', $resource));
-		}
-		else
-		{
+		} else {
 			$categoryRepo = $this->getCategoryRepo();
 			$categories = $categoryRepo->getViewableCategories();
 
@@ -1404,40 +1269,32 @@ class ResourceItem extends AbstractController
 	public function actionTags(ParameterBag $params)
 	{
 		$resource = $this->assertViewableResource($params->resource_id);
-		if (!$resource->canEditTags($error))
-		{
+		if (!$resource->canEditTags($error)) {
 			return $this->noPermission($error);
 		}
 
 		/** @var \XF\Service\Tag\Changer $tagger */
 		$tagger = $this->service('XF:Tag\Changer', 'resource', $resource);
 
-		if ($this->isPost())
-		{
+		if ($this->isPost()) {
 			$tagger->setEditableTags($this->filter('tags', 'str'));
-			if ($tagger->hasErrors())
-			{
+			if ($tagger->hasErrors()) {
 				return $this->error($tagger->getErrors());
 			}
 
 			$tagger->save();
 
-			if ($this->filter('_xfInlineEdit', 'bool'))
-			{
+			if ($this->filter('_xfInlineEdit', 'bool')) {
 				$viewParams = [
 					'resource' => $resource
 				];
 				$reply = $this->view('XFRM:ResourceItem\TagsInline', 'xfrm_resource_tags_list', $viewParams);
 				$reply->setJsonParam('message', \XF::phrase('your_changes_have_been_saved'));
 				return $reply;
-			}
-			else
-			{
+			} else {
 				return $this->redirect($this->buildLink('resources', $resource));
 			}
-		}
-		else
-		{
+		} else {
 			$grouped = $tagger->getExistingTagsByEditability();
 
 			$viewParams = [
@@ -1453,22 +1310,17 @@ class ResourceItem extends AbstractController
 	public function actionWatch(ParameterBag $params)
 	{
 		$resource = $this->assertViewableResource($params->resource_id);
-		if (!$resource->canWatch($error))
-		{
+		if (!$resource->canWatch($error)) {
 			return $this->noPermission($error);
 		}
 
 		$visitor = \XF::visitor();
 
-		if ($this->isPost())
-		{
-			if ($this->filter('stop', 'bool'))
-			{
+		if ($this->isPost()) {
+			if ($this->filter('stop', 'bool')) {
 				$action = 'delete';
 				$config = [];
-			}
-			else
-			{
+			} else {
 				$action = 'watch';
 				$config = [
 					'email_subscribe' => $this->filter('email_subscribe', 'bool')
@@ -1482,9 +1334,7 @@ class ResourceItem extends AbstractController
 			$redirect = $this->redirect($this->buildLink('resources', $resource));
 			$redirect->setJsonParam('switchKey', $action == 'delete' ? 'watch' : 'unwatch');
 			return $redirect;
-		}
-		else
-		{
+		} else {
 			$viewParams = [
 				'resource' => $resource,
 				'isWatched' => !empty($resource->Watch[$visitor->user_id]),
@@ -1497,33 +1347,27 @@ class ResourceItem extends AbstractController
 	public function actionReassign(ParameterBag $params)
 	{
 		$resource = $this->assertViewableResource($params->resource_id);
-		if (!$resource->canReassign($error))
-		{
+		if (!$resource->canReassign($error)) {
 			return $this->noPermission($error);
 		}
 
-		if ($this->isPost())
-		{
+		if ($this->isPost()) {
 			$user = $this->em()->findOne('XF:User', ['username' => $this->filter('username', 'str')]);
-			if (!$user)
-			{
+			if (!$user) {
 				return $this->error(\XF::phrase('requested_user_not_found'));
 			}
 
 			/** @var \XFRM\Service\ResourceItem\Reassign $reassigner */
 			$reassigner = $this->service('XFRM:ResourceItem\Reassign', $resource);
 
-			if ($this->filter('alert', 'bool'))
-			{
+			if ($this->filter('alert', 'bool')) {
 				$reassigner->setSendAlert(true, $this->filter('alert_reason', 'str'));
 			}
 
 			$reassigner->reassignTo($user);
 
 			return $this->redirect($this->buildLink('resources', $resource));
-		}
-		else
-		{
+		} else {
 			$viewParams = [
 				'resource' => $resource,
 				'category' => $resource->Category
@@ -1535,35 +1379,27 @@ class ResourceItem extends AbstractController
 	public function actionChangeThread(ParameterBag $params)
 	{
 		$resource = $this->assertViewableResource($params->resource_id);
-		if (!$resource->canChangeDiscussionThread($error))
-		{
+		if (!$resource->canChangeDiscussionThread($error)) {
 			return $this->noPermission($error);
 		}
 
-		if ($this->isPost())
-		{
+		if ($this->isPost()) {
 			/** @var \XFRM\Service\ResourceItem\ChangeDiscussion $changer */
 			$changer = $this->service('XFRM:ResourceItem\ChangeDiscussion', $resource);
 
 			$threadAction = $this->filter('thread_action', 'str');
-			if ($threadAction == 'disconnect')
-			{
+			if ($threadAction == 'disconnect') {
 				$changer->disconnectDiscussion();
-			}
-			else
-			{
+			} else {
 				$threadUrl = $this->filter('thread_url', 'str');
 
-				if (!$changer->changeThreadByUrl($threadUrl, true, $error))
-				{
+				if (!$changer->changeThreadByUrl($threadUrl, true, $error)) {
 					return $this->error($error);
 				}
 			}
 
 			return $this->redirect($this->buildLink('resources', $resource));
-		}
-		else
-		{
+		} else {
 			$viewParams = [
 				'resource' => $resource,
 				'category' => $resource->Category
@@ -1577,22 +1413,18 @@ class ResourceItem extends AbstractController
 		$this->assertPostOnly();
 
 		$resource = $this->assertViewableResource($params->resource_id);
-		if (!$resource->canFeatureUnfeature($error))
-		{
+		if (!$resource->canFeatureUnfeature($error)) {
 			return $this->error($error);
 		}
 
 		/** @var \XFRM\Service\ResourceItem\Feature $featurer */
 		$featurer = $this->service('XFRM:ResourceItem\Feature', $resource);
 
-		if ($resource->Featured)
-		{
+		if ($resource->Featured) {
 			$featurer->unfeature();
 			$featured = false;
 			$text = \XF::phrase('xfrm_resource_quick_feature');
-		}
-		else
-		{
+		} else {
 			$featurer->feature();
 			$featured = true;
 			$text = \XF::phrase('xfrm_resource_quick_unfeature');
@@ -1614,38 +1446,34 @@ class ResourceItem extends AbstractController
 		$bookmarkPlugin = $this->plugin('XF:Bookmark');
 
 		return $bookmarkPlugin->actionBookmark(
-			$resource, $this->buildLink('resources/bookmark', $resource)
+			$resource,
+			$this->buildLink('resources/bookmark', $resource)
 		);
 	}
 
 	public function actionDelete(ParameterBag $params)
 	{
 		$resource = $this->assertViewableResource($params->resource_id);
-		if (!$resource->canDelete('soft', $error))
-		{
+		if (!$resource->canDelete('soft', $error)) {
 			return $this->noPermission($error);
 		}
 
-		if ($this->isPost())
-		{
+		if ($this->isPost()) {
 			$type = $this->filter('hard_delete', 'bool') ? 'hard' : 'soft';
 			$reason = $this->filter('reason', 'str');
 
-			if (!$resource->canDelete($type, $error))
-			{
+			if (!$resource->canDelete($type, $error)) {
 				return $this->noPermission($error);
 			}
 
 			/** @var \XFRM\Service\ResourceItem\Delete $deleter */
 			$deleter = $this->service('XFRM:ResourceItem\Delete', $resource);
 
-			if ($this->filter('author_alert', 'bool'))
-			{
+			if ($this->filter('author_alert', 'bool')) {
 				$deleter->setSendAlert(true, $this->filter('author_alert_reason', 'str'));
 			}
 
-			if ($resource->canSetPublicDeleteReason())
-			{
+			if ($resource->canSetPublicDeleteReason()) {
 				$deleter->setPostDeleteReason($this->filter('public_delete_reason', 'str'));
 			}
 
@@ -1654,9 +1482,7 @@ class ResourceItem extends AbstractController
 			$this->plugin('XF:InlineMod')->clearIdFromCookie('resource', $resource->resource_id);
 
 			return $this->redirect($this->buildLink('resources/categories', $resource->Category));
-		}
-		else
-		{
+		} else {
 			$viewParams = [
 				'resource' => $resource,
 				'category' => $resource->Category
@@ -1683,22 +1509,18 @@ class ResourceItem extends AbstractController
 	public function actionApprove(ParameterBag $params)
 	{
 		$resource = $this->assertViewableResource($params->resource_id);
-		if (!$resource->canApproveUnapprove($error))
-		{
+		if (!$resource->canApproveUnapprove($error)) {
 			return $this->noPermission($error);
 		}
 
-		if ($this->isPost())
-		{
+		if ($this->isPost()) {
 			/** @var \XFRM\Service\ResourceItem\Approve $approver */
 			$approver = \XF::service('XFRM:ResourceItem\Approve', $resource);
 			$approver->setNotifyRunTime(1); // may be a lot happening
 			$approver->approve();
 
 			return $this->redirect($this->buildLink('resources', $resource));
-		}
-		else
-		{
+		} else {
 			$viewParams = [
 				'resource' => $resource,
 				'category' => $resource->Category
@@ -1714,12 +1536,10 @@ class ResourceItem extends AbstractController
 		$updateId = $this->filter('update', 'uint');
 		/** @var \XFRM\Entity\ResourceUpdate|null $update */
 		$update = $this->em()->find('XFRM:ResourceUpdate', $updateId);
-		if (!$update || $update->resource_id != $resource->resource_id)
-		{
+		if (!$update || $update->resource_id != $resource->resource_id) {
 			return $this->noPermission();
 		}
-		if (!$update->canView($error))
-		{
+		if (!$update->canView($error)) {
 			return $this->noPermission($error);
 		}
 
@@ -1733,16 +1553,16 @@ class ResourceItem extends AbstractController
 		$categoryId = $this->filter('val', 'uint');
 
 		/** @var \XFRM\Entity\Category $category */
-		$category = $this->em()->find('XFRM:Category', $categoryId,
+		$category = $this->em()->find(
+			'XFRM:Category',
+			$categoryId,
 			'Permissions|' . \XF::visitor()->permission_combination_id
 		);
-		if (!$category)
-		{
+		if (!$category) {
 			return $this->notFound(\XF::phrase('requested_category_not_found'));
 		}
 
-		if (!$category->canView($error))
-		{
+		if (!$category->canView($error)) {
 			return $this->noPermission($error);
 		}
 
@@ -1776,20 +1596,17 @@ class ResourceItem extends AbstractController
 		$extraWith[] = 'Discussion.Forum.Node';
 		$extraWith[] = 'Discussion.Forum.Node.Permissions|' . $visitor->permission_combination_id;
 
-		if ($visitor->canTriggerPreRegAction())
-		{
+		if ($visitor->canTriggerPreRegAction()) {
 			$extraWith[] = 'Category.Permissions|' . \XF::options()->preRegAction['permissionCombinationId'];
 		}
 
 		/** @var \XFRM\Entity\ResourceItem $resource */
 		$resource = $this->em()->find('XFRM:ResourceItem', $resourceId, $extraWith);
-		if (!$resource)
-		{
+		if (!$resource) {
 			throw $this->exception($this->notFound(\XF::phrase('xfrm_requested_resource_not_found')));
 		}
 
-		if (!$resource->canView($error))
-		{
+		if (!$resource->canView($error)) {
 			throw $this->exception($this->noPermission($error));
 		}
 
@@ -1817,9 +1634,10 @@ class ResourceItem extends AbstractController
 	public static function getActivityDetails(array $activities)
 	{
 		return self::getActivityDetailsForContent(
-			$activities, \XF::phrase('xfrm_viewing_resource'), 'resource_id',
-			function(array $ids)
-			{
+			$activities,
+			\XF::phrase('xfrm_viewing_resource'),
+			'resource_id',
+			function (array $ids) {
 				$resources = \XF::em()->findByIds(
 					'XFRM:ResourceItem',
 					$ids,
@@ -1829,8 +1647,7 @@ class ResourceItem extends AbstractController
 				$router = \XF::app()->router('public');
 				$data = [];
 
-				foreach ($resources->filterViewable() AS $id => $resource)
-				{
+				foreach ($resources->filterViewable() as $id => $resource) {
 					$data[$id] = [
 						'title' => $resource->title,
 						'url' => $router->buildLink('resources', $resource)

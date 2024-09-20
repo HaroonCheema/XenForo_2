@@ -1,0 +1,50 @@
+<xf:form action="{{ link($category ? 'resources/categories/filters' : 'resources/filters', $category) }}">
+
+	<div class="menu-row menu-row--separated">
+		<div class="inputGroup u-inputSpacer">
+
+			<!--[XF:above_type]-->
+			<xf:select name="type" value="{$filters.type}">
+				<xf:option value="">{{ phrase('any') }}</xf:option>
+				<xf:option value="free">{{ phrase('xfrm_free') }}</xf:option>
+				<xf:option value="paid">{{ phrase('xfrm_paid') }}</xf:option>
+			</xf:select>
+			<span class="inputGroup-splitter"></span>
+
+			<!--[XF:above_prefixes]-->
+			<xf:if is="$prefixesGrouped is not empty">
+				<xf:macro template="prefix_macros" name="select"
+						  arg-prefixes="{$prefixesGrouped}"
+						  arg-type="resource"
+						  arg-selected="{{ $filters.prefix_id ?: 0 }}"
+						  arg-name="prefix_id"
+						  arg-noneLabel="{{ phrase('(any)') }}"
+						  />
+			</xf:if>
+			<span class="inputGroup-splitter"></span>
+
+			<!--[XF:above_created_by]-->
+			<xf:textbox name="creator" value="{{ $creatorFilter ? $creatorFilter.username : '' }}" ac="single" />
+			<span class="inputGroup-splitter"></span>
+
+			<!--[XF:above_sort_by]-->
+			<xf:select name="order" value="{{ $filters.order ?: $xf.options.xfrmListDefaultOrder }}">
+				<xf:option value="last_update">{{ phrase('xfrm_last_update') }}</xf:option>
+				<xf:option value="resource_date">{{ phrase('xfrm_submission_date') }}</xf:option>
+				<xf:option value="rating_weighted">{{ phrase('rating') }}</xf:option>
+				<xf:option value="download_count">{{ phrase('xfrm_downloads') }}</xf:option>
+				<xf:option value="title">{{ phrase('title') }}</xf:option>
+			</xf:select>
+			<span class="inputGroup-splitter"></span>
+
+			<xf:select name="direction" value="{{ $filters.direction ?: 'desc' }}">
+				<xf:option value="desc">{{ phrase('descending') }}</xf:option>
+				<xf:option value="asc">{{ phrase('ascending') }}</xf:option>
+			</xf:select>
+
+			<xf:button type="submit" class="button--primary">{{ phrase('filter') }}</xf:button>
+		</div>
+	</div>
+
+	<xf:hiddenval name="apply">1</xf:hiddenval>
+</xf:form>

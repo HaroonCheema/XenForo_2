@@ -1,0 +1,22 @@
+{
+    "public/fs_rm_list_macros.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "45c18ab7ab4e2c205a2dac648ca61e78"
+    },
+    "public/fs_rm_style_grid_css.less": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "e498e6f58bd08f1d2053fa60e6298f04"
+    },
+    "public/fs_xfrm_filters.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d270471ccaeb5e88dee24c4a24b9e747"
+    },
+    "public/fs_xfrm_overview.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "5d9ae10c6881907d77363751d57ab08f"
+    }
+}

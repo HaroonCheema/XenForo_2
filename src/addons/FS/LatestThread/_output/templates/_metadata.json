@@ -9,9 +9,14 @@
         "version_string": "1",
         "hash": "bb075d4527c4b3db3ef26f7b76289cf6"
     },
+    "public/forum_view_latest_content.less": {
+        "version_id": 1,
+        "version_string": "1",
+        "hash": "cd124c2a8732fe1bcccff518c9bcd2d8"
+    },
     "public/fs_latest_thread_list_macros.html": {
         "version_id": 1,
         "version_string": "1",
-        "hash": "0648e75c6ca9a45d3ac07f95be0b1936"
+        "hash": "1b7692cc4da606fde5f823a9bc0cde41"
     }
 }

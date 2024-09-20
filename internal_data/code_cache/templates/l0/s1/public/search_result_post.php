@@ -4,9 +4,7 @@ return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
 	$__finalCompiled = '';
-	$__vars['svMultiPrefixSubtitle'] = (($__vars['svMultiPrefixSubtitle'] === null) ? $__templater->func('property', array('svMultiPrefixSubtitle', ), false) : $__vars['svMultiPrefixSubtitle']);
-	$__finalCompiled .= '
-<li class="block-row block-row--separated ' . ($__templater->method($__vars['post'], 'isIgnored', array()) ? 'is-ignored' : '') . ' js-inlineModContainer" data-author="' . ($__templater->escape($__vars['post']['User']['username']) ?: $__templater->escape($__vars['post']['username'])) . '">
+	$__finalCompiled .= '<li class="block-row block-row--separated ' . ($__templater->method($__vars['post'], 'isIgnored', array()) ? 'is-ignored' : '') . ' js-inlineModContainer" data-author="' . ($__templater->escape($__vars['post']['User']['username']) ?: $__templater->escape($__vars['post']['username'])) . '">
 	<div class="contentRow ' . ((!$__templater->method($__vars['post'], 'isVisible', array())) ? 'is-deleted' : '') . '">
 		<span class="contentRow-figure">
 			' . $__templater->func('avatar', array($__vars['post']['User'], 's', false, array(
@@ -15,7 +13,7 @@ return array(
 		</span>
 		<div class="contentRow-main">
 			<h3 class="contentRow-title">
-				<a href="' . $__templater->func('link', array('threads/post', $__vars['post']['Thread'], array('post_id' => $__vars['post']['post_id'], ), ), true) . '">' . (((($__vars['svMultiPrefixSubtitle'] == '') ? $__templater->func('prefix', array('thread', $__vars['post']['Thread'], ), true) : '') . $__templater->func('highlight', array($__vars['post']['Thread']['title'], $__vars['options']['term'], ), true)) . (($__vars['svMultiPrefixSubtitle'] === 'suffix') ? $__templater->func('prefix', array('thread', $__vars['post']['Thread'], ), true) : '')) . '</a>
+				<a href="' . $__templater->func('link', array('threads/post', $__vars['post']['Thread'], array('post_id' => $__vars['post']['post_id'], ), ), true) . '">' . ($__templater->func('prefix', array('thread', $__vars['post']['Thread'], ), true) . $__templater->func('highlight', array($__vars['post']['Thread']['title'], $__vars['options']['term'], ), true)) . '</a>
 			';
 	if ($__templater->method($__vars['post']['Thread'], 'canDisplayThreadRating', array())) {
 		$__finalCompiled .= '
@@ -28,19 +26,6 @@ return array(
 	}
 	$__finalCompiled .= '
 </h3>
-';
-	if ($__vars['svMultiPrefixSubtitle'] === 'subtitle') {
-		$__compilerTemp1 = '';
-		$__compilerTemp1 .= $__templater->func('prefix', array('thread', $__vars['post']['Thread'], ), true);
-		if (strlen(trim($__compilerTemp1)) > 0) {
-			$__finalCompiled .= '
-	<div class="contentRow-minor">
-		' . $__compilerTemp1 . '
-	</div>
-';
-		}
-	}
-	$__finalCompiled .= '
 
 			<div class="contentRow-snippet">' . $__templater->func('snippet', array($__vars['post']['message'], 300, array('term' => $__vars['options']['term'], 'stripQuote' => true, ), ), true) . '</div>
 

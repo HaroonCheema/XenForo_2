@@ -1,0 +1,1 @@
+it's required if the  image size needs to increase according to your theme

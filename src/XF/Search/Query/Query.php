@@ -124,14 +124,17 @@ class Query
 	public function byUserIds(array $userIds)
 	{
 		$idsFiltered = [];
-		foreach ($userIds as $id) {
+		foreach ($userIds AS $id)
+		{
 			$id = intval($id);
-			if ($id > 0) {
+			if ($id > 0)
+			{
 				$idsFiltered[] = $id;
 			}
 		}
 
-		if (!$idsFiltered) {
+		if (!$idsFiltered)
+		{
 			throw new \InvalidArgumentException("No valid users to limit search to");
 		}
 
@@ -150,7 +153,8 @@ class Query
 		$min = intval($min);
 		$max = intval($max);
 
-		if ($max > $min) {
+		if ($max > $min)
+		{
 			throw new \InvalidArgumentException("Max date must be greater than min");
 		}
 
@@ -186,27 +190,28 @@ class Query
 
 	public function withTags($tags, $match = 'all')
 	{
-		if (!is_array($tags)) {
+		if (!is_array($tags))
+		{
 			$tags = [$tags];
 		}
 		$tags = array_map('intval', $tags);
 		$tags = array_unique($tags);
-		if ($tags) {
+		if ($tags)
+		{
 			$this->withMetadata('tag', $tags, $match);
 		}
-
-		// echo "<pre>";
-		// var_dump($this->withMetadata('tag', $tags, $match));
-		// exit;
 
 		return $this;
 	}
 
 	public function withMetadata($name, $value = null, $match = 'any')
 	{
-		if ($name instanceof MetadataConstraint) {
+		if ($name instanceof MetadataConstraint)
+		{
 			$this->metadataConstraints[] = $name;
-		} else {
+		}
+		else
+		{
 			$this->metadataConstraints[] = new MetadataConstraint($name, $value, $match);
 		}
 
@@ -229,7 +234,8 @@ class Query
 	 */
 	public function withPermissionConstraints(array $contentTypes, array $constraints)
 	{
-		if ($contentTypes && $constraints) {
+		if ($contentTypes && $constraints)
+		{
 			$this->permissionConstraints[implode('-', $contentTypes)] = [
 				'types' => $contentTypes,
 				'constraints' => $constraints
@@ -266,9 +272,11 @@ class Query
 
 	public function withGroupedResults()
 	{
-		if ($this->handler) {
+		if ($this->handler)
+		{
 			$type = $this->handler->getGroupByType();
-			if ($type) {
+			if ($type)
+			{
 				$this->groupByType = $type;
 			}
 		}
@@ -281,13 +289,16 @@ class Query
 
 	public function orderedBy($order)
 	{
-		if (is_string($order)) {
+		if (is_string($order))
+		{
 			$this->orderName = $order;
 		}
 
-		if (is_string($order) && $this->handler) {
+		if (is_string($order) && $this->handler)
+		{
 			$newOrder = $this->handler->getTypeOrder($order);
-			if ($newOrder) {
+			if ($newOrder)
+			{
 				$order = $newOrder;
 			}
 		}

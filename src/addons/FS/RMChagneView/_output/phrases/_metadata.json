@@ -1,0 +1,50 @@
+{
+    "option.fs_rm_bg_img.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "f50e78c4ee59a3f6da3487799180b1b1"
+    },
+    "option.fs_rm_bg_size.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "0291f3771db38cfa516344d0fc9f98fa"
+    },
+    "option.fs_rm_bg_width.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "4aab577c6f7a6df62645efeb24772dcf"
+    },
+    "option_explain.fs_rm_bg_img.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "option_explain.fs_rm_bg_size.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "9d6539ce636c13b0ea933bf42b800f52"
+    },
+    "option_explain.fs_rm_bg_width.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "9d6539ce636c13b0ea933bf42b800f52"
+    },
+    "option_group.fs_rm_change_view.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "63a482c69a09d6bc3e48388debc6abda"
+    },
+    "option_group_description.fs_rm_change_view.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    }
+}

@@ -28,10 +28,6 @@ class Search extends Entity
 {
 	public function setupFromQuery(\XF\Search\Query\KeywordQuery $query, array $constraints = [])
 	{
-		echo "<pre>";
-		var_dump($query->getUniqueQueryHash());
-		exit;
-
 		$this->search_type = $query->getHandlerType() ?: '';
 		$this->search_query = $query->getKeywords();
 		$this->search_constraints = $constraints;
@@ -43,7 +39,8 @@ class Search extends Entity
 
 	protected function verifySearchResults(&$results)
 	{
-		if (!is_array($results)) {
+		if (!is_array($results))
+		{
 			$results = [];
 		}
 
@@ -53,15 +50,18 @@ class Search extends Entity
 
 	protected function verifySearchConstraints(&$constraints)
 	{
-		if (!is_array($constraints)) {
+		if (!is_array($constraints))
+		{
 			$constraints = [];
 			return true;
 		}
 
 		ksort($constraints);
 
-		foreach ($constraints as $key => $value) {
-			if ($value === [] || $value === '' || $value === null) {
+		foreach ($constraints AS $key => $value)
+		{
+			if ($value === [] || $value === '' || $value === null)
+			{
 				unset($constraints[$key]);
 			}
 		}
@@ -71,12 +71,14 @@ class Search extends Entity
 
 	protected function verifyWarnings(&$warnings)
 	{
-		if (!is_array($warnings)) {
+		if (!is_array($warnings))
+		{
 			$warnings = [];
 			return true;
 		}
 
-		foreach ($warnings as &$warning) {
+		foreach ($warnings AS &$warning)
+		{
 			$warning = strval($warning);
 		}
 
@@ -103,7 +105,8 @@ class Search extends Entity
 			'search_date' => ['type' => self::UINT, 'default' => \XF::$time],
 			'query_hash' => ['type' => self::STR, 'maxLength' => 32, 'default' => '']
 		];
-		$structure->getters = [];
+		$structure->getters = [
+		];
 		$structure->relations = [
 			'User' => [
 				'entity' => 'XF:User',

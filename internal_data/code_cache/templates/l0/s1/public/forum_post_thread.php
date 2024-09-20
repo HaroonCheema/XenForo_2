@@ -175,8 +175,6 @@ return array(
 	' . $__templater->formPrefixInputRow($__vars['prefixes'], array(
 			'type' => 'thread',
 			'prefix-value' => ($__vars['forum']['draft_thread']['prefix_id'] ?: ($__vars['thread']['prefix_id'] ?: $__vars['forum']['default_prefix_id'])),
-			'multi-prefix-value' => ($__vars['forum']['draft_thread']['sv_prefix_ids'] ?: ($__vars['thread']['sv_prefix_ids'] ?: $__vars['forum']['sv_default_prefix_ids'])),
-			'multi-prefix-content-parent' => $__vars['forum'],
 			'textbox-value' => (($__vars['title'] ?: $__vars['thread']['title']) ?: $__vars['forum']['draft_thread']['title']),
 			'textbox-class' => 'input--title',
 			'placeholder' => 'Escrow title',

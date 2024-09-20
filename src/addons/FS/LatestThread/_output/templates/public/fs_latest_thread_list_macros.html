@@ -188,7 +188,7 @@
 
 					<div class="structItem-title">
 						<xf:set var="$canPreview" value="{{ $thread.canPreview() }}" />
-
+ 
 						<a href="{{ link('threads' . (($thread.isUnread() AND !$forceRead) ? '/unread' : ''), $thread) }}" class="" data-tp-primary="on" data-xf-init="{{ $canPreview ? 'preview-tooltip' : '' }}" data-preview-url="{{ $canPreview ? link('threads/preview', $thread) : '' }}">{$thread.title}</a>
 					</div>
 
