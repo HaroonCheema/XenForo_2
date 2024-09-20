@@ -1,0 +1,17 @@
+{
+    "public/forum_filters_latest.html": {
+        "version_id": 1,
+        "version_string": "1",
+        "hash": "2f3ae4fe222fdbf1d2f16b5abb07c9ef"
+    },
+    "public/forum_view_latest_content.html": {
+        "version_id": 1,
+        "version_string": "1",
+        "hash": "bb075d4527c4b3db3ef26f7b76289cf6"
+    },
+    "public/fs_latest_thread_list_macros.html": {
+        "version_id": 1,
+        "version_string": "1",
+        "hash": "0648e75c6ca9a45d3ac07f95be0b1936"
+    }
+}

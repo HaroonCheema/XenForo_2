@@ -1,0 +1,12 @@
+{
+    "public/altf_thread_filter_form_macros.html": {
+        "version_id": 3080070,
+        "version_string": "3.8.0",
+        "hash": "99241ff181b8cf951d2e411a6deb13b1"
+    },
+    "public/altf_thread_filter_popup_form.html": {
+        "version_id": 3020270,
+        "version_string": "3.2.2",
+        "hash": "df146e0a6f701ba9ce8717f4e351480a"
+    }
+}

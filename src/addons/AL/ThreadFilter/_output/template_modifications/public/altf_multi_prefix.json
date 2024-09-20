@@ -1,0 +1,9 @@
+{
+    "template": "forum_filters",
+    "description": "Search for multiple prefixes if enabled",
+    "execution_order": 5,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "#<!\\-\\-\\[XF:above_prefixes\\]\\-\\->(.*?</xf:if>)#s",
+    "replace": "<!--[XF:above_prefixes]-->\n\t<xf:if is=\"{$xf.options.altf_multi_prefix_search} !== 'disabled'\">\n\t<xf:if is=\"$prefixes is not empty\">\n\t\t<div class=\"menu-row menu-row--separated\">\n\t\t\t{{ phrase('prefixes:') }}\n\t\t\t<div class=\"u-inputSpacer\">\n\t\t\t\t<xf:macro template=\"prefix_macros\" name=\"select\"\n\t\t\t\t\targ-prefixes=\"{$prefixes}\"\n\t\t\t\t\targ-type=\"thread\"\n\t\t\t\t\targ-selected=\"{{ $filterSet.__prefix_ids ?: [] }}\"\n\t\t\t\t\targ-multiple=\"{{ true }}\"\n\t\t\t\t\targ-name=\"thread_fields[__prefix_ids]\"\n\t\t\t\t\targ-noneLabel=\"{{ phrase('(any)') }}\"\n\t\t\t\t/>\n\t\t\t</div>\n\t\t</div>\n\t</xf:if>\n\t<xf:else />\n\t\t$1\n\t</xf:if>"
+}

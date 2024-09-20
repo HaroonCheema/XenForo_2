@@ -602,19 +602,31 @@ return array(
 		$__compilerTemp1 .= $__templater->func('prefix', array('thread', $__vars['thread'], 'html-clicky', ), true);
 	}
 	$__compilerTemp2 = '';
-	if ($__vars['svMultiPrefixSubtitle'] === 'suffix') {
-		$__compilerTemp2 .= $__templater->func('prefix', array('thread', $__vars['thread'], 'html-clicky', ), true);
+	if ($__vars['xf']['options']['fs_latest_thread_custom_field_ver'] AND $__vars['thread']['custom_fields'][$__vars['xf']['options']['fs_latest_thread_custom_field_ver']]) {
+		$__compilerTemp2 .= '
+	<spam>[' . $__templater->escape($__vars['thread']['custom_fields'][$__vars['xf']['options']['fs_latest_thread_custom_field_ver']]) . ']</spam>
+	';
 	}
-	$__templater->pageParams['pageH1'] = $__templater->preEscaped($__compilerTemp1 . $__templater->escape($__vars['thread']['title']) . $__compilerTemp2);
+	$__compilerTemp3 = '';
+	if ($__vars['xf']['options']['fs_latest_thread_custom_field_game'] AND $__vars['thread']['custom_fields'][$__vars['xf']['options']['fs_latest_thread_custom_field_game']]) {
+		$__compilerTemp3 .= '
+	<spam>[' . $__templater->escape($__vars['thread']['custom_fields'][$__vars['xf']['options']['fs_latest_thread_custom_field_game']]) . ']</spam>
+	';
+	}
+	$__compilerTemp4 = '';
+	if ($__vars['svMultiPrefixSubtitle'] === 'suffix') {
+		$__compilerTemp4 .= $__templater->func('prefix', array('thread', $__vars['thread'], 'html-clicky', ), true);
+	}
+	$__templater->pageParams['pageH1'] = $__templater->preEscaped($__compilerTemp1 . $__templater->escape($__vars['thread']['title']) . $__compilerTemp2 . $__compilerTemp3 . $__compilerTemp4);
 	$__finalCompiled .= '
 ';
 	if (($__vars['xf']['visitor']['user_id'] != 0) AND (($__vars['thread']['escrow_id'] != 0) AND ($__vars['thread']['node_id'] == $__vars['xf']['options']['fs_escrow_applicable_forum']))) {
 		$__finalCompiled .= '
 
 	';
-		$__compilerTemp3 = '';
+		$__compilerTemp5 = '';
 		if ((($__vars['thread']['Escrow']['to_user'] == $__vars['xf']['visitor']['user_id']) OR ($__vars['thread']['Escrow']['user_id'] == $__vars['xf']['visitor']['user_id'])) AND ($__vars['thread']['Escrow']['escrow_status'] == 0)) {
-			$__compilerTemp3 .= '
+			$__compilerTemp5 .= '
 			' . $__templater->button('Cancel', array(
 				'href' => $__templater->func('link', array('escrow/cancel', $__vars['thread']['Escrow'], ), false),
 				'class' => 'button--cta',
@@ -624,9 +636,9 @@ return array(
 			)) . '
 		';
 		}
-		$__compilerTemp4 = '';
+		$__compilerTemp6 = '';
 		if (($__vars['thread']['Escrow']['user_id'] == $__vars['xf']['visitor']['user_id']) AND ($__vars['thread']['Escrow']['escrow_status'] == 1)) {
-			$__compilerTemp4 .= '
+			$__compilerTemp6 .= '
 			' . $__templater->button('Release Payment', array(
 				'href' => $__templater->func('link', array('escrow/payments', $__vars['thread']['Escrow'], ), false),
 				'class' => '',
@@ -636,9 +648,9 @@ return array(
 			)) . '
 		';
 		}
-		$__compilerTemp5 = '';
+		$__compilerTemp7 = '';
 		if (($__vars['thread']['Escrow']['to_user'] == $__vars['xf']['visitor']['user_id']) AND ($__vars['thread']['Escrow']['escrow_status'] == 0)) {
-			$__compilerTemp5 .= '
+			$__compilerTemp7 .= '
 			' . $__templater->button('Approve', array(
 				'href' => $__templater->func('link', array('escrow/approve', $__vars['thread']['Escrow'], ), false),
 				'class' => '',
@@ -649,11 +661,11 @@ return array(
 		';
 		}
 		$__templater->pageParams['pageAction'] = $__templater->preEscaped('
-		' . $__compilerTemp3 . '
-		
-		' . $__compilerTemp4 . '
-		
 		' . $__compilerTemp5 . '
+		
+		' . $__compilerTemp6 . '
+		
+		' . $__compilerTemp7 . '
 
 			
 			
@@ -675,26 +687,26 @@ return array(
 	$__finalCompiled .= '
 
 ';
-	$__compilerTemp6 = '';
+	$__compilerTemp8 = '';
 	if ($__vars['svMultiPrefixSubtitle'] == 'subtitle') {
-		$__compilerTemp7 = '';
-		$__compilerTemp7 .= $__templater->func('prefix', array('thread', $__vars['thread'], 'html-clicky', ), true);
-		if (strlen(trim($__compilerTemp7)) > 0) {
-			$__compilerTemp6 .= '
-<li>' . $__compilerTemp7 . '</li>
+		$__compilerTemp9 = '';
+		$__compilerTemp9 .= $__templater->func('prefix', array('thread', $__vars['thread'], 'html-clicky', ), true);
+		if (strlen(trim($__compilerTemp9)) > 0) {
+			$__compilerTemp8 .= '
+<li>' . $__compilerTemp9 . '</li>
 ';
 		}
 	}
-	$__compilerTemp8 = '';
+	$__compilerTemp10 = '';
 	if ($__vars['xf']['options']['enableTagging'] AND ($__templater->method($__vars['thread'], 'canEditTags', array()) OR $__vars['thread']['tags'])) {
-		$__compilerTemp8 .= '
+		$__compilerTemp10 .= '
 ';
 		if ($__vars['xf']['options']['tagess_categoriesEnabledThread']) {
-			$__compilerTemp8 .= '
+			$__compilerTemp10 .= '
 	' . $__templater->includeTemplate('avForumsTagEss_thread_view_grouped_tags', $__vars) . '
 ';
 		} else {
-			$__compilerTemp8 .= '
+			$__compilerTemp10 .= '
 
 			<li>
 				' . $__templater->callMacro('tag_macros', 'list', array(
@@ -705,7 +717,7 @@ return array(
 			</li>
 ';
 		}
-		$__compilerTemp8 .= '
+		$__compilerTemp10 .= '
 
 		';
 	}
@@ -732,8 +744,8 @@ return array(
 	))) . '</a>
 		</li>
 
-' . $__compilerTemp6 . '
-		' . $__compilerTemp8 . '
+' . $__compilerTemp8 . '
+		' . $__compilerTemp10 . '
 	</ul>
 ');
 	$__templater->pageParams['pageDescriptionMeta'] = false;
@@ -750,9 +762,9 @@ return array(
 	), $__vars) . '
 
 ';
-	$__compilerTemp9 = '';
+	$__compilerTemp11 = '';
 	if ($__templater->method($__vars['thread'], 'canDisplayThreadRating', array())) {
-		$__compilerTemp9 .= '
+		$__compilerTemp11 .= '
 	' . $__templater->callMacro('BRATR_rating_macros', 'google_review_json', array(
 			'thread' => $__vars['thread'],
 		), $__vars) . '
@@ -761,7 +773,7 @@ return array(
 	$__templater->setPageParam('ldJsonHtml', '
 	' . '' . '
 	' . $__templater->renderExtension('structured_data', $__vars, $__extensions) . '
-' . $__compilerTemp9 . '
+' . $__compilerTemp11 . '
 ');
 	$__finalCompiled .= '
 
@@ -980,8 +992,8 @@ return array(
 	</div>
 
 	';
-	$__compilerTemp10 = '';
-	$__compilerTemp10 .= '
+	$__compilerTemp12 = '';
+	$__compilerTemp12 .= '
 				' . $__templater->func('page_nav', array(array(
 		'page' => $__vars['page'],
 		'total' => $__vars['totalPosts'],
@@ -998,18 +1010,18 @@ return array(
 	))) . '
 				';
 	if ((!$__templater->method($__vars['thread'], 'canReply', array())) AND ((!$__templater->method($__vars['thread'], 'canReplyPreReg', array())) AND (($__vars['thread']['discussion_state'] == 'visible') AND $__vars['thread']['discussion_open']))) {
-		$__compilerTemp10 .= '
+		$__compilerTemp12 .= '
 					<div class="block-outer-opposite">
 						';
 		if ($__vars['xf']['visitor']['user_id']) {
-			$__compilerTemp10 .= '
+			$__compilerTemp12 .= '
 							<span class="button button--wrap is-disabled">
 								' . 'You have insufficient privileges to reply here.' . '
 								<!-- this is not interactive so shouldn\'t be a button element -->
 							</span>
 						';
 		} else {
-			$__compilerTemp10 .= '
+			$__compilerTemp12 .= '
 							' . $__templater->button('
 								' . 'You must log in or register to reply here.' . '
 							', array(
@@ -1020,16 +1032,16 @@ return array(
 			)) . '
 						';
 		}
-		$__compilerTemp10 .= '
+		$__compilerTemp12 .= '
 					</div>
 				';
 	}
-	$__compilerTemp10 .= '
+	$__compilerTemp12 .= '
 			';
-	if (strlen(trim($__compilerTemp10)) > 0) {
+	if (strlen(trim($__compilerTemp12)) > 0) {
 		$__finalCompiled .= '
 		<div class="block-outer block-outer--after">
-			' . $__compilerTemp10 . '
+			' . $__compilerTemp12 . '
 		</div>
 	';
 	}

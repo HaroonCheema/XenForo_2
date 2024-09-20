@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @noinspection PhpMissingReturnTypeInspection
  */
@@ -24,15 +25,13 @@ class Templater extends XFCP_Templater
         $hasFromCallable = \is_callable('\Closure::fromCallable');
 
         $callable = [$this, 'fnSvPrefixFilters'];
-        if ($hasFromCallable)
-        {
+        if ($hasFromCallable) {
             $callable = \Closure::fromCallable($callable);
         }
         $this->addFunction('prefix_filters', $callable);
 
         $callable = [$this, 'fnSvPrefix'];
-        if ($hasFromCallable)
-        {
+        if ($hasFromCallable) {
             $callable = \Closure::fromCallable($callable);
         }
         $this->addFunction('prefix', $callable);
@@ -54,39 +53,32 @@ class Templater extends XFCP_Templater
     {
         $prefixIds = $content->sv_prefix_ids ?? null;
 
-        if (\count($prefixIds) === 0)
-        {
+        if (\count($prefixIds) === 0) {
             return '';
         }
-        if ($filters === null)
-        {
+        if ($filters === null) {
             $filters = [];
         }
-        if (!isset($filters['prefix_id']))
-        {
+        if (!isset($filters['prefix_id'])) {
             $filters['prefix_id'] = [];
         }
-        if (!\is_array($filters['prefix_id']))
-        {
+        if (!\is_array($filters['prefix_id'])) {
             $filters['prefix_id'] = [$filters['prefix_id']];
         }
 
         $prefixCache = $this->app->container('prefixes.' . $contentType);
         $prefixesToRender = [];
-        foreach ($prefixIds as $prefixId)
-        {
+        foreach ($prefixIds as $prefixId) {
             $prefixId = (int)$prefixId;
             $prefixCss = $prefixCache[$prefixId] ?? null;
-            if ($prefixCss === null)
-            {
+            if ($prefixCss === null) {
                 continue;
             }
             $prefixesToRender[$prefixId] = $prefixCss;
         }
 
         $escape = false;
-        if (\count($prefixesToRender) === 0)
-        {
+        if (\count($prefixesToRender) === 0) {
             return '';
         }
 
@@ -115,15 +107,12 @@ class Templater extends XFCP_Templater
         $controlId = $this->assignFormControlId($controlOptions);
         $controlHtml = '';
 
-        if (isset($controlOptions['full-row']) && $controlOptions['full-row'] === true && !empty($prefixes))
-        {
+        if (isset($controlOptions['full-row']) && $controlOptions['full-row'] === true && !empty($prefixes)) {
             $controlHtmlTitleExcluded = $this->formPrefixInput($prefixes, \array_merge($controlOptions, ['exclude' => 'title']));
             $controlHtmlPrefixExcluded = $this->formPrefixInput($prefixes, \array_merge($controlOptions, ['exclude' => 'prefix']));
             $controlHtml .= $this->formRow($controlHtmlTitleExcluded, \array_merge($rowOptions, ['label' => \XF::phrase('prefixes')]), $controlId);
             $controlHtml .= $this->formRow($controlHtmlPrefixExcluded, $rowOptions, $controlId);
-        }
-        else
-        {
+        } else {
             $controlHtml .= $this->formPrefixInput($prefixes, $controlOptions);
             $controlHtml = $this->formRow($controlHtml, $rowOptions, $controlId);
         }
@@ -152,12 +141,9 @@ class Templater extends XFCP_Templater
         Listener::$listenTo = $controlOptions['listen-to'] ?: null;
         Listener::$listenToHref = $controlOptions['href'] ?: null;
 
-        try
-        {
+        try {
             return parent::formPrefixInput($prefixes, $controlOptions);
-        }
-        finally
-        {
+        } finally {
             Listener::$prefixIds = $oldPrefixIds;
             Listener::$prefixContentParent = $oldPrefixContentParent;
             Listener::$prefixContent = $oldPrefixContent;
@@ -180,56 +166,62 @@ class Templater extends XFCP_Templater
      */
     public function fnSvPrefix($templater, &$escape, $contentType, $prefixId, $format = 'html', $append = null, $appendTrailing = null)
     {
-        if (!$prefixId)
-        {
+        if (!$prefixId) {
             return '';
         }
 
-        if (!is_array($prefixId) && (!($prefixId instanceof Entity) || !isset($prefixId->sv_prefix_ids)))
-        {
+        $prefixStatus = $append;
+        $append = '';
+
+        if (!is_array($prefixId) && (!($prefixId instanceof Entity) || !isset($prefixId->sv_prefix_ids))) {
             return $this->fnPrefix($templater, $escape, $contentType, $prefixId, $format, $append);
         }
 
         $content = $prefixId;
-        if (!is_array($prefixId))
-        {
+        if (!is_array($prefixId)) {
             $prefixIds = $content->sv_prefix_ids ?? [];
-        }
-        else
-        {
+        } else {
             $prefixIds = $prefixId;
         }
 
-        if (\count($prefixIds) === 0)
-        {
+        $options = \XF::options();
+
+        $statusGroup = $options->prefix_group_3;
+
+        if ($prefixId->sv_prefix_ids && $statusGroup) {
+            if ($prefixStatus == "noStatus") {
+                $prefixIds = \XF::finder('XF:ThreadPrefix')->whereId($prefixId->sv_prefix_ids)->where('prefix_group_id', '!=', $statusGroup)->pluckFrom('prefix_id')->fetch()->toArray();
+            } elseif ($prefixStatus == "isStatus") {
+                $prefixIds = \XF::finder('XF:ThreadPrefix')->whereId($prefixId->sv_prefix_ids)->where('prefix_group_id', $statusGroup)->pluckFrom('prefix_id')->fetch()->toArray();
+            }
+        }
+
+        if (\count($prefixIds) === 0) {
             return '';
         }
         $prefixCache = $this->app->container('prefixes.' . $contentType);
+
         $prefixesToRender = [];
-        foreach ($prefixIds as $prefixId)
-        {
+        foreach ($prefixIds as $prefixId) {
             $prefixId = (int)$prefixId;
             $prefixCss = $prefixCache[$prefixId] ?? null;
-            if ($prefixCss === null)
-            {
+            if ($prefixCss === null) {
                 continue;
             }
             $prefixesToRender[$prefixId] = $prefixCss;
         }
 
         $escape = false;
-        if (\count($prefixesToRender) === 0)
-        {
+        if (\count($prefixesToRender) === 0) {
             return '';
         }
 
-        switch ($format)
-        {
+        switch ($format) {
             case 'html-clicky':
             case 'html':
                 $linkPrefixFilter = (\XF::options()->svClickablePrefixes ?? false)
-                                    && ($format === 'html-clicky')
-                                    && \is_callable([$content, 'getSvPrefixFilterLink']);
+                    && ($format === 'html-clicky')
+                    && \is_callable([$content, 'getSvPrefixFilterLink']);
                 $viewParams = [
                     'prefixes'    => $prefixesToRender,
                     'contentType' => $contentType,
@@ -242,8 +234,7 @@ class Templater extends XFCP_Templater
                 return $this->renderMacro('public:sv_multiprefix_prefix_macros', 'render_prefix_html', $viewParams);
             case 'plain':
             default:
-                if ($append === null)
-                {
+                if ($append === null) {
                     $append = ' - ';
                 }
                 break;
@@ -253,22 +244,17 @@ class Templater extends XFCP_Templater
         $output = [];
         $func = \XF::$versionId >= 2010370 ? 'func' : 'fn';
 
-        foreach ($prefixesToRender as $prefixId => $prefixCss)
-        {
+        foreach ($prefixesToRender as $prefixId => $prefixCss) {
             $phraseTitle = $this->$func('prefix_title', [$contentType, $prefixId], false);
-            if ($phraseTitle instanceof Phrase)
-            {
+            if ($phraseTitle instanceof Phrase) {
                 $output[] = $phraseTitle->render($context);
-            }
-            else
-            {
+            } else {
                 $output[] = $context === 'raw' ? $phraseTitle : \XF::escapeString($phraseTitle, $context);
             }
         }
 
         $escape = false;
-        if (\count($output) === 0)
-        {
+        if (\count($output) === 0) {
             return '';
         }
 

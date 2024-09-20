@@ -410,6 +410,8 @@ This option requires that the specified account is a catch-all account or suppor
   'option_explain.fs_forums' => '',
   'option_explain.fs_hcwp_btnUrl' => 'Provide the link for button of hidden content widget',
   'option_explain.fs_hcwp_userGroups' => 'The content will be hidden for users belonging to these UserGroups',
+  'option_explain.fs_latest_thread_custom_field_game' => 'Enter the Applicable Custom thread fields game title Id.',
+  'option_explain.fs_latest_thread_custom_field_ver' => 'Enter the Applicable Custom thread fields version Id.',
   'option_explain.fs_link_group_apply_settings' => 'If a user has multiple groups tell either the time of group with high-style priority is applied or with low priority.',
   'option_explain.fs_link_html_position' => '',
   'option_explain.fs_mts_customMsgColor' => 'Enter the colour name or colour code for Custom message',

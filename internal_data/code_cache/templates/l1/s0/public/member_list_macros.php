@@ -43,6 +43,16 @@ return array(
 					</dl></li>
 					' . '
 ';
+	if ($__templater->method($__vars['xf']['visitor'], 'canViewResources', array()) AND $__vars['user']['xfrm_resource_count']) {
+		$__finalCompiled .= '
+	<li><dl class="pairs pairs--inline">
+		<dt>' . 'Resources' . '</dt>
+		<dd>' . $__templater->filter($__vars['user']['xfrm_resource_count'], array(array('number', array()),), true) . '</dd>
+	</dl></li>
+';
+	}
+	$__finalCompiled .= '
+';
 	if ($__templater->method($__vars['xf']['visitor'], 'canViewMedia', array())) {
 		$__finalCompiled .= '
 	';

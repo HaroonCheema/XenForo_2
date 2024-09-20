@@ -1,0 +1,201 @@
+<xf:macro name="setup">
+	<xf:js src="sv/multiprefix/prefix_menu.js" addon="SV/MultiPrefix" min="1" />
+	<xf:js prod="vendor/select2/select2.full.min.js" dev="vendor/select2/select2.full.js" />
+	<xf:css src="prefix_menu.less" />
+	<xf:css src="select2.less" />
+	<xf:css src="sv_multiprefix_prefix_input.less" />
+
+
+	<script class="js-extraPhrases" type="application/json">
+		{
+			"s2_error_loading": "{{ phrase('s2_error_loading')|escape('js') }}",
+			"s2_input_too_long": "{{ phrase('s2_input_too_long')|escape('js') }}",
+			"s2_input_too_short": "{{ phrase('s2_input_too_short')|escape('js') }}",
+			"s2_loading_more": "{{ phrase('s2_loading_more')|escape('js') }}",
+			"s2_maximum_selected": "{{ phrase('s2_maximum_selected')|escape('js') }}",
+			"s2_no_results": "{{ phrase('s2_no_results')|escape('js') }}",
+			"s2_searching": "{{ phrase('s2_searching')|escape('js') }}",
+			"sv_prefix_placeholder": "{{ phrase('prefix...')|escape('js') }}",
+			"sv_multiprefix_none": "{{ phrase('(no_prefix)')|escape('js') }}"
+		}
+	</script>
+</xf:macro>
+
+<xf:macro name="select"
+		  arg-prefixes="!"
+		  arg-type="!"
+		  arg-label="{{ phrase('prefix') }}"
+		  arg-explain=""
+		  arg-selected=""
+		  arg-name="prefix_id"
+		  arg-anyLabel="{{ phrase('(any)') }}"
+		  arg-noneLabel="{{ phrase('(no_prefix)') }}"
+		  arg-multiple="{{ false }}"
+		  arg-includeAny="{{ false }}"
+		  arg-includeNone="{{ null }}"
+		  arg-class=""
+		  arg-href=""
+		  arg-listenTo=""
+		  arg-minTokens="{{ 0 }}"
+		  arg-maxTokens="{{ 0 }}"
+		  arg-forumPrefixesLimit="{{ 0 }}"
+		  arg-contentParent="{{ false }}"
+		  arg-content="{{ false }}">
+	<xf:macro template="sv_multiprefix_prefix_macros" name="setup" />
+
+	<script type="text/template">
+        <xf:mustache name="#rich_prefix">
+            <span class="{{ mustache('css_class') }}"
+               data-prefix-id="{{ mustache('prefix_id') }}"
+               data-prefix-class="{{ mustache('css_class') }}"
+               role="option">{{ mustache('title') }}</span>
+        </xf:mustache>
+    </script>
+
+	<xf:if is="{$contentParent}">
+		<xf:set var="$min_tokens" value="{$contentParent.sv_min_prefixes}" />
+		<xf:set var="$max_tokens" value="{$contentParent.sv_max_prefixes}" />
+	<xf:else />
+		<xf:set var="$min_tokens" value="{$minTokens}" />
+		<xf:set var="$max_tokens" value="{$maxTokens}" />
+	</xf:if>
+
+	<xf:if is="{$forumPrefixesLimit} > 0">
+		<xf:set var="$max_tokens" value="{$forumPrefixesLimit}" />
+	</xf:if>
+
+	<xf:select name="{$name}" value="{$selected}" multiple="{$multiple}" class="{$class}" placeholder="{{ phrase('prefix') }}"
+			   data-xf-init="{{ ($href AND $listenTo) ? 'sv-multi-prefix-loader' : '' }} sv-multi-prefix-menu"
+			   data-href="{$href}"
+			   data-listen-to="{$listenTo}"
+			   data-min-tokens="{$min_tokens}"
+			   data-max-tokens="{$max_tokens}">
+
+		<xf:if is="$includeAny">
+			<xf:option value="-1">{$anyLabel}</xf:option>
+		</xf:if>
+		<xf:if is="$includeNone">
+			<xf:option value="0">{$noneLabel}</xf:option>
+		</xf:if>
+
+		<xf:foreach loop="array_keys($prefixes)" value="$groupId">
+			<xf:if is="$groupId > 0">
+				<xf:optgroup label="{{ prefix_group($type, $groupId) }}">
+					<xf:foreach loop="{$prefixes.{$groupId}}" key="$prefixId" value="$prefix">
+						<xf:option value="{$prefixId}" label="{{ prefix_title($type, $prefixId) }}" data-prefix-class="{$prefix.css_class}" />
+					</xf:foreach>
+				</xf:optgroup>
+			<xf:else />
+				<xf:foreach loop="{$prefixes.{$groupId}}" key="$prefixId" value="$prefix">
+					<xf:option value="{$prefixId}" label="{{ prefix_title($type, $prefixId) }}" data-prefix-class="{$prefix.css_class}" />
+				</xf:foreach>
+			</xf:if>
+		</xf:foreach>
+	</xf:select>
+</xf:macro>
+
+<xf:macro name="row"
+		  arg-prefixes="!"
+		  arg-type="!"
+		  arg-label="{{ phrase('prefix') }}"
+		  arg-explain=""
+		  arg-selected=""
+		  arg-name="prefix_id"
+		  arg-anyLabel="{{ phrase('(any)') }}"
+		  arg-noneLabel="{{ phrase('(no_prefix)') }}"
+		  arg-multiple="{{ false }}"
+		  arg-includeAny="{{ false }}"
+		  arg-includeNone="{{ null }}"
+		  arg-class="">
+	<xf:macro template="sv_multiprefix_prefix_macros" name="setup" />
+
+    <xf:formrow rowtype="input" label="{$label}">
+        <xf:macro name="select"
+				  arg-prefixes="{$prefixes}"
+				  arg-type="{$type}"
+				  arg-label="{$label}"
+				  arg-explain="{$explain}"
+				  arg-selected="{$selected}"
+				  arg-name="{$name}"
+				  arg-anyLabel="{$anyLabel}"
+				  arg-noneLabel="{$noneLabel}"
+				  arg-multiple="{$multiple}"
+				  arg-includeAny="{$includeAny}"
+				  arg-includeNone="{$includeNone}"
+				  arg-class="{$class}" />
+        <xf:if is="$explain">
+            <div class="formRow-explain">{$explain|raw}</div>
+        </xf:if>
+    </xf:formrow>
+</xf:macro>
+
+<xf:macro name="render_prefix_filters"
+		  arg-filters="!"
+		  arg-prefixes="!"
+		  arg-contentType="!"
+		  arg-entity="!"
+		  arg-container="!"
+		  arg-route="!"
+		  ><xf:trim>
+	<xf:comment>Used by prefix_filters() function to a list of prefixes which can add to a container's filter</xf:comment>
+	<xf:set var="$appending"><xf:trim><xf:macro name="render_separator" arg-entity="{$entity}" arg-format="html" /></xf:trim></xf:set>
+	<xf:foreach loop="$prefixes" key="$prefixId" value="$prefixCss" i="$i" count="$count"><xf:trim>
+<xf:if is="$i > 1">{$appending|raw}</xf:if></xf:trim><xf:trim>
+		<xf:set var="$linkParams" value="{$filters}" />
+		<xf:set var="$removeFilter" value="{{ in_array($prefixId, $linkParams.prefix_id, true) }}" />
+		<xf:set var="$linkParams.prefix_id" value="{{ $removeFilter 
+											  ? $linkParams.prefix_id|replaceValue($prefixId, null) 
+											  : $linkParams.prefix_id|addValue($prefixId) 
+											  }}" />
+	</xf:trim><xf:trim><a href="{{ link($route, $container, $linkParams) }}" class="labelLink" data-xf-init="tooltip" title="{{ ($removeFilter
+		  ? phrase('svStandardLib_remove_from_filters')
+		  : phrase('svStandardLib_add_to_filters')
+		)|for_attr }}"  rel="nofollow"><span class="{$prefixCss|for_attr}" dir="auto">{{ prefix_title($contentType, $prefixId) }}</span></a>
+</xf:trim></xf:foreach>
+</xf:trim></xf:macro>
+
+<xf:macro name="render_separator"
+		  arg-entity="!"
+		  arg-format="!"
+		  >
+	<span class="label-append">&nbsp;</span>
+</xf:macro>
+
+<xf:macro name="render_prefix_html"
+		  arg-prefixes="!"
+		  arg-contentType="!"
+		  arg-entity="!"
+		  arg-withLink="{{ false }}"
+		  arg-linkType=""
+		  arg-suffixPad="{{ false }}"
+		  ><xf:trim>
+	<xf:comment>Used by fnPrefix() function to a list of prefixes in a HTML context, with links</xf:comment>
+	<xf:if is="$appending === null">
+		<xf:set var="$appending"><xf:trim><xf:macro name="render_separator" arg-entity="{$entity}" arg-format="html" /></xf:trim></xf:set>
+	</xf:if>
+	<xf:foreach loop="$prefixes" key="$prefixId" value="$prefixCss" i="$i" count="$count"><xf:trim>
+<xf:if is="$i > 1">{$appending|raw}</xf:if></xf:trim><xf:trim>
+		<xf:set var="$prefixHtml"><span class="{$prefixCss|for_attr}" dir="auto">{{ prefix_title($contentType, $prefixId) }}</span></xf:set>
+		<xf:if is="$withLink">
+			<a href="{{ $entity.getSvPrefixFilterLink($prefixId, $linkType)|for_attr }}" class="labelLink" rel="nofollow">{$prefixHtml}</a>
+		<xf:else />
+			{$prefixHtml}
+		</xf:if>
+</xf:trim></xf:foreach><xf:if is="$suffixPad">{$appending|raw}</xf:if>
+</xf:trim></xf:macro>
+
+
+<xf:macro name="prefix_description"
+		  arg-content="!"
+		  arg-contentType="!"
+		  >
+	<xf:if is="$content.sv_prefix_ids is not empty">
+		<xf:foreach loop="$content.sv_prefix_ids" value="$prefixId">
+			<xf:if contentcheck="true">
+				<div class="blockMessage blockMessage--alt blockMessage--small blockMessage--close prefix-description prefix{$prefixId}">
+					<xf:contentcheck>{{ prefix_description($contentType, $prefixId) }}</xf:contentcheck>
+				</div>
+			</xf:if>
+		</xf:foreach>
+	</xf:if>
+</xf:macro>

@@ -1,17 +1,17 @@
 <?php
-// FROM HASH: 001ae26920b30c36809ea0f499c145cb
+// FROM HASH: bb075d4527c4b3db3ef26f7b76289cf6
 return array(
 'extensions' => array('thread_list' => function($__templater, array $__vars, $__extensions = null)
 {
 	$__finalCompiled = '';
 		$__finalCompiled .= '
 				<div class="structItemContainer">
-					
+
 
 					';
 	if (!$__templater->test($__vars['threads'], 'empty', array())) {
 		$__finalCompiled .= '
-					
+
 
 						<div class="structItemContainer-group js-threadList">
 							';
@@ -21,7 +21,7 @@ return array(
 			if ($__templater->isTraversable($__vars['threads'])) {
 				foreach ($__vars['threads'] AS $__vars['thread']) {
 					$__finalCompiled .= '
-									' . $__templater->callMacro(null, ($__vars['templateOverrides']['thread_list_macro'] ?: 'thread_list_macros::item'), $__templater->combineMacroArgumentAttributes($__vars['templateOverrides']['thread_list_macro_args'], array(
+									' . $__templater->callMacro(null, ($__vars['templateOverrides']['thread_list_macro'] ?: 'fs_latest_thread_list_macros::item'), $__templater->combineMacroArgumentAttributes($__vars['templateOverrides']['thread_list_macro_args'], array(
 						'thread' => $__vars['thread'],
 					)), $__vars) . '
 								';
@@ -43,8 +43,10 @@ return array(
 		}
 		$__finalCompiled .= '
 						</div>
-		
-		
+						';
+	} else {
+		$__finalCompiled .= '
+						<div class="block-body block-row">' . 'No results found.' . '</div>
 					';
 	}
 	$__finalCompiled .= '
@@ -80,7 +82,7 @@ return array(
 
 	<div class="block-container">
 
-	
+
 
 
 		<div class="block-body">
@@ -104,8 +106,8 @@ return array(
 ';
 	$__templater->modifySidebarHtml('conversationInfo', '
 	<div class="block">
-		  <div class="block-container">
-		  ' . $__templater->includeTemplate('forum_filters_latest', $__vars) . '
+		<div class="block-container">
+			' . $__templater->includeTemplate('forum_filters_latest', $__vars) . '
 		</div>
 	</div>
 ', 'replace');

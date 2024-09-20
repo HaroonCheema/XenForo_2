@@ -18,6 +18,7 @@ return array (
 	<li>This excludes answering direct questions regarding the item, payment, and shipping terms.</li>
 		<li>Failure to abide by these rules can result in the loss of using the Auctions and Classifieds.</li>
 </ol>',
+  'thread_field_desc.gameTitle' => '',
   'thread_field_desc.payment_methods' => 'Chose which forms of payment you accept.',
   'thread_field_desc.shipping_term' => 'Chose your shipping terms.',
   'thread_field_desc.ships_via' => 'Choose the shipping service you will use.',
@@ -29,4 +30,5 @@ return array (
   'thread_field_desc.testing_radio' => 'Radio buttons',
   'thread_field_desc.testing_rich' => 'Rich text box',
   'thread_field_desc.testing_star' => 'Star rating',
+  'thread_field_desc.version' => '',
 );

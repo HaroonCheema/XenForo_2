@@ -1,0 +1,9 @@
+{
+    "template": "forum_filters",
+    "description": "Enable multi prefixes in filtering dropdown",
+    "execution_order": 6281,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "arg-type=\"thread\"",
+    "replace": "$0\narg-multiple=\"{{ true }}\""
+}

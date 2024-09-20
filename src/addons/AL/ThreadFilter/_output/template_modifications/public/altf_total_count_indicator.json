@@ -1,0 +1,9 @@
+{
+    "template": "forum_filters",
+    "description": "Adds total count indicator next to the Filter button",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<div class=\"menu-footer\">",
+    "replace": "<div class=\"menu-row menu-row--separated\">\n\t<xf:if is=\"$xf.options.altf_total_count_indicator\">\n\t\t<xf:include template=\"altf_total_count_indicator\" />\n\t</xf:if>\n</div>\n$0"
+}

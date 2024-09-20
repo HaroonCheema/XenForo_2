@@ -1,0 +1,17 @@
+{
+    "public/altf_clear_button.json": {
+        "hash": "c377aeb4f1c5012d83e67504ff4ed366"
+    },
+    "public/altf_disable_default_filter_fields.json": {
+        "hash": "14a70cb0f87a7b07a609ff4eff779624"
+    },
+    "public/altf_multi_prefix.json": {
+        "hash": "3a97866a64c27528f52e277d35743db7"
+    },
+    "public/altf_sort_options.json": {
+        "hash": "cb4d7ac2856728eff593bd5d0b338f48"
+    },
+    "public/altf_total_count_indicator.json": {
+        "hash": "ef206df2b3d6f36cb7f344286cfec961"
+    }
+}

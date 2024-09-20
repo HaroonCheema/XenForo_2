@@ -1,0 +1,32 @@
+{
+    "option.fs_latest_thread_custom_field_game.txt": {
+        "global_cache": false,
+        "version_id": 1,
+        "version_string": "1",
+        "hash": "95772ebb32e685c2e4cc06aec855c80f"
+    },
+    "option.fs_latest_thread_custom_field_ver.txt": {
+        "global_cache": false,
+        "version_id": 1,
+        "version_string": "1",
+        "hash": "98d6c7d9dd770a791611e98c96a19350"
+    },
+    "option.prefix_group_3.txt": {
+        "global_cache": false,
+        "version_id": 1,
+        "version_string": "1",
+        "hash": "4262e45ab24958c88c7c43ac2688e54d"
+    },
+    "option_explain.fs_latest_thread_custom_field_game.txt": {
+        "global_cache": false,
+        "version_id": 1,
+        "version_string": "1",
+        "hash": "d91a760a2d7454b58cd16c801c9438f0"
+    },
+    "option_explain.fs_latest_thread_custom_field_ver.txt": {
+        "global_cache": false,
+        "version_id": 1,
+        "version_string": "1",
+        "hash": "e5d298cd54991e6749cd802ba0b4c1af"
+    }
+}

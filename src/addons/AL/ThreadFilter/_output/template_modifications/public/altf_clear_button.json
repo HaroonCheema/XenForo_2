@@ -1,0 +1,9 @@
+{
+    "template": "forum_filters",
+    "description": "Add clear button",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "#(<div class=\"menu-footer\">)(.*?)(</div>)#s",
+    "replace": "$1\n<xf:include template=\"altf_clear_button\" />\n$3"
+}

@@ -1,0 +1,69 @@
+<xf:title page="{$page}">{{phrase('latest_content')}}</xf:title>
+
+
+<xf:css src="structured_list.less" />
+
+<xf:css src="forum_view_latest_content.less" />
+
+
+
+
+
+
+
+<div class="block " data-xf-init="{{ $canInlineMod ? 'inline-mod' : '' }}" data-type="thread" data-href="{{ link('inline-mod') }}">
+
+
+
+	<div class="block-container">
+
+
+
+
+		<div class="block-body">
+			<xf:extension name="thread_list">
+				<div class="structItemContainer">
+
+
+					<xf:if is="$threads is not empty">
+
+
+						<div class="structItemContainer-group js-threadList">
+							<xf:if is="$threads is not empty">
+								<xf:foreach loop="$threads" value="$thread">
+									<xf:macro name="{{ $templateOverrides.thread_list_macro ?: 'fs_latest_thread_list_macros::item' }}"
+											  arg-thread="{$thread}"
+
+											  args="{$templateOverrides.thread_list_macro_args}"  />
+								</xf:foreach>
+								<xf:if is="$showDateLimitDisabler">
+									<xf:macro name="date_limit_disabler" arg-forum="{$forum}" arg-page="{$page}" arg-filters="{$filters}" />
+								</xf:if>
+							</xf:if>
+						</div>
+						<xf:else />
+						<div class="block-body block-row">{{ phrase('no_results_found') }}</div>
+					</xf:if>
+				</div>
+			</xf:extension>
+		</div>
+	</div>
+
+	<div class="block-outer block-outer--after">
+		<xf:pagenav
+					page="{$page}" perpage="{$perPage}" total="{$total}"
+					link="forums" data="{$forum}" params="{$filters}"
+					wrapperclass="block-outer-main" />
+
+	</div>
+</div>
+<xf:sidebar key="conversationInfo">
+	<div class="block">
+		<div class="block-container">
+			<xf:include template="forum_filters_latest" />
+		</div>
+	</div>
+</xf:sidebar>
+
+
+<xf:widgetpos id="forum_view_sidebar" context-forum="{$forum}" position="sidebar" />

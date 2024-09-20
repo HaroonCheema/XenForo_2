@@ -1,0 +1,9 @@
+{
+    "template": "forum_filters",
+    "description": "add thread ratings filters",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/(?<=xf:select name=\"order\").*(?=<\\/xf:select>)/isU",
+    "replace": "$0\n<xf:option value=\"rating\">{{ phrase('rating') }}</xf:option>"
+}

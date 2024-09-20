@@ -1,0 +1,9 @@
+{
+    "template": "forum_filters",
+    "description": "Adds custom field sorting options after default options",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "#(<xf:select name=\"order\".*?)(</xf:select>)#s",
+    "replace": "$1\t<xf:foreach loop=\"$sortableFields\" key=\"$fieldId\" value=\"$field\">\n\t<xf:option value=\"{$filter_name}_{$fieldId}\">{$field.title}</xf:option>\n</xf:foreach>\n\t\t\t$2"
+}

@@ -480,6 +480,20 @@ return function($__templater, $__selectedNav, array $__vars)
 			}
 		}
 
+		if ($__templater->method($__vars['xf']['visitor'], 'canViewResources', array())) {
+			$__navTemp = [
+		'title' => \XF::phrase('nav.xfrmNewResources'),
+		'href' => $__templater->func('link', array('whats-new/resources', ), false),
+		'attributes' => [
+			'rel' => 'nofollow',
+		],
+	];
+			if ($__navTemp) {
+				$__tree['whatsNew']['children']['xfrmNewResources'] = $__navTemp;
+				$__flat['xfrmNewResources'] =& $__tree['whatsNew']['children']['xfrmNewResources'];
+			}
+		}
+
 		if ($__templater->method($__vars['xf']['visitor'], 'canViewProfilePosts', array())) {
 			$__navTemp = [
 		'title' => \XF::phrase('nav.whatsNewProfilePosts'),
@@ -728,6 +742,116 @@ return function($__templater, $__selectedNav, array $__vars)
 				if ($__navTemp) {
 					$__tree['xfmg']['children']['xfmgMarkViewed'] = $__navTemp;
 					$__flat['xfmgMarkViewed'] =& $__tree['xfmg']['children']['xfmgMarkViewed'];
+				}
+			}
+
+		}
+	}
+
+	$__navTemp = [
+		'title' => \XF::phrase('nav.fs_auction_category'),
+		'href' => $__templater->func('link', array('auction', ), false),
+		'attributes' => [],
+	];
+	if ($__navTemp) {
+		$__tree['fs_auction_category'] = $__navTemp;
+		$__flat['fs_auction_category'] =& $__tree['fs_auction_category'];
+		if (empty($__tree['fs_auction_category']['children'])) { $__tree['fs_auction_category']['children'] = []; }
+
+		$__navTemp = [
+		'title' => \XF::phrase('nav.auctionAddListing'),
+		'href' => $__templater->func('link', array('auction/add', ), false),
+		'attributes' => [
+			'data-xf-click' => 'overlay',
+		],
+	];
+		if ($__navTemp) {
+			$__tree['fs_auction_category']['children']['auctionAddListing'] = $__navTemp;
+			$__flat['auctionAddListing'] =& $__tree['fs_auction_category']['children']['auctionAddListing'];
+		}
+
+	}
+
+	if ($__templater->method($__vars['xf']['visitor'], 'canViewResources', array())) {
+		$__navTemp = [
+		'title' => \XF::phrase('nav.xfrm'),
+		'href' => $__templater->func('link', array('resources', ), false),
+		'attributes' => [],
+	];
+		if ($__navTemp) {
+			$__tree['xfrm'] = $__navTemp;
+			$__flat['xfrm'] =& $__tree['xfrm'];
+			if (empty($__tree['xfrm']['children'])) { $__tree['xfrm']['children'] = []; }
+
+			$__navTemp = [
+		'title' => \XF::phrase('nav.xfrmLatestReviews'),
+		'href' => $__templater->func('link', array('resources/latest-reviews', ), false),
+		'attributes' => [],
+	];
+			if ($__navTemp) {
+				$__tree['xfrm']['children']['xfrmLatestReviews'] = $__navTemp;
+				$__flat['xfrmLatestReviews'] =& $__tree['xfrm']['children']['xfrmLatestReviews'];
+			}
+
+			if ($__vars['xf']['visitor']['user_id']) {
+				$__navTemp = [
+		'title' => \XF::phrase('nav.xfrmYourResources'),
+		'href' => $__templater->func('link', array('resources/authors', $__vars['xf']['visitor'], ), false),
+		'attributes' => [],
+	];
+				if ($__navTemp) {
+					$__tree['xfrm']['children']['xfrmYourResources'] = $__navTemp;
+					$__flat['xfrmYourResources'] =& $__tree['xfrm']['children']['xfrmYourResources'];
+				}
+			}
+
+			if ($__vars['xf']['visitor']['user_id']) {
+				$__navTemp = [
+		'title' => \XF::phrase('nav.xfrmWatched'),
+		'href' => $__templater->func('link', array('watched/resources', ), false),
+		'attributes' => [],
+	];
+				if ($__navTemp) {
+					$__tree['xfrm']['children']['xfrmWatched'] = $__navTemp;
+					$__flat['xfrmWatched'] =& $__tree['xfrm']['children']['xfrmWatched'];
+					if (empty($__tree['xfrm']['children']['xfrmWatched']['children'])) { $__tree['xfrm']['children']['xfrmWatched']['children'] = []; }
+
+					if ($__vars['xf']['visitor']['user_id']) {
+						$__navTemp = [
+		'title' => \XF::phrase('nav.xfrmWatchedResources'),
+		'href' => $__templater->func('link', array('watched/resources', ), false),
+		'attributes' => [],
+	];
+						if ($__navTemp) {
+							$__tree['xfrm']['children']['xfrmWatched']['children']['xfrmWatchedResources'] = $__navTemp;
+							$__flat['xfrmWatchedResources'] =& $__tree['xfrm']['children']['xfrmWatched']['children']['xfrmWatchedResources'];
+						}
+					}
+
+					if ($__vars['xf']['visitor']['user_id']) {
+						$__navTemp = [
+		'title' => \XF::phrase('nav.xfrmWatchedCategories'),
+		'href' => $__templater->func('link', array('watched/resource-categories', ), false),
+		'attributes' => [],
+	];
+						if ($__navTemp) {
+							$__tree['xfrm']['children']['xfrmWatched']['children']['xfrmWatchedCategories'] = $__navTemp;
+							$__flat['xfrmWatchedCategories'] =& $__tree['xfrm']['children']['xfrmWatched']['children']['xfrmWatchedCategories'];
+						}
+					}
+
+				}
+			}
+
+			if ($__templater->method($__vars['xf']['visitor'], 'canSearch', array())) {
+				$__navTemp = [
+		'title' => \XF::phrase('nav.xfrmSearchResources'),
+		'href' => $__templater->func('link', array('search', null, array('type' => 'resource', ), ), false),
+		'attributes' => [],
+	];
+				if ($__navTemp) {
+					$__tree['xfrm']['children']['xfrmSearchResources'] = $__navTemp;
+					$__flat['xfrmSearchResources'] =& $__tree['xfrm']['children']['xfrmSearchResources'];
 				}
 			}
 

@@ -1,0 +1,31 @@
+<xf:if is="$xf.options.enableTagging AND ($thread.canEditTags() OR $thread.tags)">
+	<xf:css src="avForumsTagEss_thread_view_grouped_tags.less" />
+
+	<xf:if is="$thread.GroupedTags">
+		<xf:foreach loop="$thread.GroupedTags" key="$categoryId" value="$groupedTagsData">
+			<li class="groupedTags">
+				<xf:if is="$groupedTagsData.title">
+					<i class="fa fa-tags" aria-hidden="true" title="{{ $groupedTagsData.title|for_attr }}"></i>
+					<span class="u-concealed hiddenCategoryTitle">{{ $groupedTagsData.title }}</span>
+				<xf:else />
+					<i class="fa fa-tags" aria-hidden="true" title="{{ phrase('tags')|for_attr }}"></i>
+					<span class="u-concealed"></span>
+				</xf:if>
+
+				<xf:foreach loop="$groupedTagsData.tags" value="$groupedTag">
+					<a href="{{ link('tags', $groupedTag) }}" data-xf-init="preview-tooltip" data-preview-url="{{ link('tags/preview', $groupedTag) }}" class="tagItem" dir="auto">{$groupedTag.tag}</a>
+				</xf:foreach>
+			</li>
+		</xf:foreach>
+	</xf:if>
+	
+	<xf:if is="$thread.canEditTags() && !$hideEditLink">
+		<li>
+			<a href="{{ link('threads/tags', $thread) }}" class="u-concealed" data-xf-click="overlay"
+			   data-xf-init="tooltip" title="{{ phrase('edit_tags')|for_attr }}">
+				<i class="fa fa-pencil" aria-hidden="true"></i>
+				<span class="u-srOnly">{{ phrase('edit') }}</span>
+			</a>
+		</li>
+	</xf:if>
+</xf:if>

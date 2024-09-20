@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 805b6cdcdf7535a15f15babcee2a0510
+// FROM HASH: 99241ff181b8cf951d2e411a6deb13b1
 return array(
 'macros' => array('select2_setup' => array(
 'code' => function($__templater, array $__vars, $__extensions = null)
@@ -192,7 +192,6 @@ return array(
 
 ' . '
 
-' . '
 ';
 	return $__finalCompiled;
 }

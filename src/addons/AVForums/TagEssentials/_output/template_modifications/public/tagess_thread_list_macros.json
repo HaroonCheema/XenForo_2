@@ -1,0 +1,9 @@
+{
+    "template": "thread_list_macros",
+    "description": "Adds tags under the title on the thread list",
+    "execution_order": 15,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "#(<span class=\"structItem-pageJump\">.*?</span>\\s*</xf:if>)#si",
+    "replace": "$0\n<ul class=\"structItem-parts\">\n<xf:include template=\"avForumsTagEss_thread_list_macros\" />\n</ul>"
+}

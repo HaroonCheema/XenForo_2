@@ -1,0 +1,9 @@
+{
+    "template": "thread_view",
+    "description": "fs_latest_threat_title_v_game_title",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:h1>{{ prefix('thread', $thread) }}{$thread.title}</xf:h1>",
+    "replace": "<xf:h1>{{ prefix('thread', $thread) }}{$thread.title}<xf:if is=\"$xf.options.fs_latest_thread_custom_field_ver And {$thread.custom_fields.{$xf.options.fs_latest_thread_custom_field_ver}}\">\n\t<spam>[{$thread.custom_fields.{$xf.options.fs_latest_thread_custom_field_ver}}]</spam>\n\t</xf:if><xf:if is=\"$xf.options.fs_latest_thread_custom_field_game And {$thread.custom_fields.{$xf.options.fs_latest_thread_custom_field_game}}\">\n\t<spam>[{$thread.custom_fields.{$xf.options.fs_latest_thread_custom_field_game}}]</spam>\n\t</xf:if></xf:h1>"
+}

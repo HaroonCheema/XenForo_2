@@ -28,12 +28,9 @@ class Thread extends Repository
 			->where('discussion_type', '!=', 'redirect')
 			->with(['Forum', 'User', 'FirstPost']);
 
-		if ($forum)
-		{
+		if ($forum) {
 			$finder->where('node_id', $forum->node_id);
-		}
-		else
-		{
+		} else {
 			$finder->where('Forum.find_new', 1)
 				->where('last_post_date', '>', $this->getReadMarkingCutOff());
 		}
@@ -59,8 +56,7 @@ class Thread extends Repository
 			->where('discussion_state', 'visible')
 			->setDefaultOrder('last_post_date', 'DESC');
 
-		if ($unreadOnly)
-		{
+		if ($unreadOnly) {
 			$finder->unreadOnly($userId);
 		}
 
@@ -135,8 +131,7 @@ class Thread extends Repository
 
 		$userId = $userId ?: \XF::visitor()->user_id;
 
-		if (!$userId)
-		{
+		if (!$userId) {
 			return $threadFinder;
 		}
 
@@ -155,23 +150,18 @@ class Thread extends Repository
 			->with('api')
 			->where('discussion_type', '!=', 'redirect');
 
-		if ($forum)
-		{
+		if ($forum) {
 			$limits = [];
-			if (\XF::isApiBypassingPermissions())
-			{
+			if (\XF::isApiBypassingPermissions()) {
 				$limits['visibility'] = false;
 			}
 
 			$threadFinder->inForum($forum, $limits);
-		}
-		else
-		{
+		} else {
 			$threadFinder->where('Forum.find_new', 1)
 				->setDefaultOrder('last_post_date', 'DESC');
 
-			if (\XF::isApiCheckingPermissions())
-			{
+			if (\XF::isApiCheckingPermissions()) {
 				$forums = $this->repository('XF:Forum')->getViewableForums();
 				$threadFinder->where('node_id', $forums->keys())
 					->where('discussion_state', 'visible');
@@ -206,25 +196,21 @@ class Thread extends Repository
 
 	public function markThreadReadByUser(\XF\Entity\Thread $thread, \XF\Entity\User $user, $newRead = null)
 	{
-		if (!$user->user_id)
-		{
+		if (!$user->user_id) {
 			return false;
 		}
 
-		if ($newRead === null)
-		{
+		if ($newRead === null) {
 			$newRead = max(\XF::$time, $thread->last_post_date);
 		}
 
 		$cutOff = $this->getReadMarkingCutOff();
-		if ($newRead <= $cutOff)
-		{
+		if ($newRead <= $cutOff) {
 			return false;
 		}
 
 		$readDate = $thread->getUserReadDate($user);
-		if ($newRead <= $readDate)
-		{
+		if ($newRead <= $readDate) {
 			return false;
 		}
 
@@ -234,14 +220,12 @@ class Thread extends Repository
 			'thread_read_date' => $newRead
 		], false, 'thread_read_date = VALUES(thread_read_date)');
 
-		if ($newRead < $thread->last_post_date)
-		{
+		if ($newRead < $thread->last_post_date) {
 			// thread no fully viewed
 			return false;
 		}
 
-		if ($thread->Forum && !$this->countUnreadThreadsInForumForUser($thread->Forum, $user))
-		{
+		if ($thread->Forum && !$this->countUnreadThreadsInForumForUser($thread->Forum, $user)) {
 			/** @var \XF\Repository\Forum $forumRepo */
 			$forumRepo = $this->repository('XF:Forum');
 			$forumRepo->markForumReadByUser($thread->Forum, $user->user_id);
@@ -258,8 +242,7 @@ class Thread extends Repository
 
 	public function pruneThreadReadLogs($cutOff = null)
 	{
-		if ($cutOff === null)
-		{
+		if ($cutOff === null) {
 			$cutOff = $this->getReadMarkingCutOff();
 		}
 
@@ -269,8 +252,7 @@ class Thread extends Repository
 	public function countUnreadThreadsInForumForUser(\XF\Entity\Forum $forum, \XF\Entity\User $user)
 	{
 		$userId = $user->user_id;
-		if (!$userId)
-		{
+		if (!$userId) {
 			return 0;
 		}
 
@@ -337,8 +319,7 @@ class Thread extends Repository
 
 	public function sendModeratorActionAlert(\XF\Entity\Thread $thread, $action, $reason = '', array $extra = [])
 	{
-		if (!$thread->user_id || !$thread->User)
-		{
+		if (!$thread->user_id || !$thread->User) {
 			return false;
 		}
 
@@ -353,9 +334,12 @@ class Thread extends Repository
 		$alertRepo = $this->repository('XF:UserAlert');
 		$alertRepo->alert(
 			$thread->User,
-			0, '',
-			'user', $thread->user_id,
-			"thread_{$action}", $extra
+			0,
+			'',
+			'user',
+			$thread->user_id,
+			"thread_{$action}",
+			$extra
 		);
 
 		return true;
@@ -374,22 +358,19 @@ class Thread extends Repository
 		$routeMatch = $this->app()->router($type)->routeToController($routePath);
 		$params = $routeMatch->getParameterBag();
 
-		if (!$params->thread_id)
-		{
+		if (!$params->thread_id) {
 			$error = \XF::phrase('no_thread_id_could_be_found_from_that_url');
 			return null;
 		}
 
 		/** @var \XF\Entity\Thread $thread */
 		$thread = $this->app()->find('XF:Thread', $params->thread_id);
-		if (!$thread)
-		{
+		if (!$thread) {
 			$error = \XF::phrase('no_thread_could_be_found_with_id_x', ['thread_id' => $params->thread_id]);
 			return null;
 		}
 
-		if ($thread->discussion_type == 'redirect')
-		{
+		if ($thread->discussion_type == 'redirect') {
 			$error = \XF::phrase('please_provide_url_of_non_redirect_thread');
 			return null;
 		}
@@ -418,8 +399,7 @@ class Thread extends Repository
 			'first_post_reaction_score' => 'first_post_reaction_score'
 		];
 
-		if ($forAdminConfig)
-		{
+		if ($forAdminConfig) {
 			unset($options['view_count'], $options['first_post_reaction_score']);
 		}
 
