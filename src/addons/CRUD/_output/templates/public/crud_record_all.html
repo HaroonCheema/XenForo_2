@@ -13,6 +13,54 @@
 	<xf:csrf/>
 </xf:pageaction>
 
+<style>
+        /* Styling the image slider container */
+        .slider-container {
+            width: 100%;
+            max-width: 600px; /* Adjust the max width */
+            overflow: hidden; /* Hide overflow */
+            position: relative; /* Position relative for child elements */
+            margin: 5px auto; /* Center the slider */
+        }
+
+        /* Image container with images in a row */
+        .slider {
+            display: flex; /* Flexbox for horizontal layout */
+            transition: transform 0.5s ease-in-out; /* Smooth transition */
+        }
+
+        /* Individual images inside the slider */
+        .slider img {
+            width: 100%; /* Full width of container */
+            flex-shrink: 0; /* Prevents images from shrinking */
+            height: 300px; /* Set a fixed height */
+            object-fit: cover; /* Cover without stretching */
+        }
+
+        /* Hide all images initially */
+        .slider img {
+            display: none;
+        }
+
+        /* Show the first image by default */
+        .slider img.active {
+            display: block; /* Display the active image */
+        }
+
+        /* Numbering on top of images */
+        .slide-number {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+    </style>
+
 <xf:if is="$purchased is not empty">
 	<div class="block">
 		<div class="block-container">
@@ -62,6 +110,25 @@
 				  />
 	</div>
 	<div class="block-container">
+
+		<div class="slider-container" id="slider-container">
+        <!-- Numbering Display -->
+        <div class="slide-number" id="slide-number">1/8</div>
+        <div class="slider" id="slider">
+            <img src="https://via.placeholder.com/600x300/ff7f7f/333333?text=Slide+1" alt="Slide 1" class="active">
+            <img src="https://via.placeholder.com/600x300/7f7fff/333333?text=Slide+2" alt="Slide 2">
+            <img src="https://via.placeholder.com/600x300/7fff7f/333333?text=Slide+3" alt="Slide 3">
+            <img src="https://via.placeholder.com/600x300/ff7fff/333333?text=Slide+4" alt="Slide 4">
+            <img src="https://via.placeholder.com/600x300/ffff7f/333333?text=Slide+5" alt="Slide 5">
+            <img src="https://via.placeholder.com/600x300/ff7f7f/333333?text=Slide+6" alt="Slide 6">
+            <img src="https://via.placeholder.com/600x300/33ff33/333333?text=Slide+7" alt="Slide 7">
+            <img src="https://via.placeholder.com/600x300/3333ff/333333?text=Slide+8" alt="Slide 8">
+            <img src="https://via.placeholder.com/600x300/ff7f7f/333333?text=Slide+6" alt="Slide 6">
+            <img src="https://via.placeholder.com/600x300/33ff33/333333?text=Slide+7" alt="Slide 7">
+            <img src="https://via.placeholder.com/600x300/3333ff/333333?text=Slide+8" alt="Slide 8">
+            <!-- Add more images as needed -->
+        </div>
+    </div>
 		<!-- filter macro -->
 
 		<xf:macro name="search_menu" arg-conditions="{$conditions}" />
@@ -154,5 +221,53 @@
 		</xf:datarow>
 	</xf:foreach>
 </xf:macro>
+
+<script>
+        const slider = document.getElementById('slider');
+        const images = slider.getElementsByTagName('img');
+        const imageCount = images.length;
+        let currentIndex = 0;
+
+        // Get slide number display element
+        const slideNumber = document.getElementById('slide-number');
+
+        // Function to change slide and update slide number
+        function changeSlide(index) {
+            // Remove active class from all images
+            for (let img of images) {
+                img.classList.remove('active');
+            }
+            // Add active class to the current image
+            images[index].classList.add('active');
+
+            // Update the slide number display
+            slideNumber.textContent = `${index + 1}/${imageCount}`;
+        }
+
+        // Set up hover functionality
+        const sliderContainer = document.getElementById('slider-container');
+        
+        // Change slide on hover
+        sliderContainer.addEventListener('mouseenter', function() {
+            currentIndex = 0; // Reset to the first image
+            changeSlide(currentIndex); // Show the first image immediately
+
+            const intervalId = setInterval(() => {
+                currentIndex++;
+                if (currentIndex >= imageCount) {
+                    currentIndex = 0; // Reset to the first slide
+                }
+                changeSlide(currentIndex);
+            }, 3000); // Change slide every 3 seconds
+
+            // Clear interval on mouse leave
+            sliderContainer.addEventListener('mouseleave', function() {
+                clearInterval(intervalId);
+                // Optionally, you can reset to the first image on mouse leave
+                changeSlide(0); // Reset to the first image if desired
+            }, { once: true }); // Ensure this is called only once
+        });
+
+    </script>
 
 <!-- Record Table List End -->

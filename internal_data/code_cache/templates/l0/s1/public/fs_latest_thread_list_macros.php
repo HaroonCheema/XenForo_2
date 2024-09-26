@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: bdd1976dc657823ec043c0740be357e9
+// FROM HASH: 2d67cbb4ddaf4210352f6b99db866ef4
 return array(
 'macros' => array('item' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -36,7 +36,7 @@ return array(
 								';
 		if ((($__vars['xf']['reply']['template'] == 'forum_view') OR ($__vars['xf']['reply']['template'] == 'forum_view_latest_content')) OR ($__vars['xf']['reply']['template'] == 'tag_view')) {
 			$__finalCompiled .= '
-									<img src="' . $__templater->escape($__templater->method($__vars['thread'], 'getfirstPostImgUrl', array())) . '" style="width: ' . ($__vars['thread']['Forum']['Node']['node_thread_thumbnail_width'] ? $__templater->escape($__vars['thread']['Forum']['Node']['node_thread_thumbnail_width']) : $__templater->escape($__vars['xf']['options']['thumbnail_width'])) . ' ; height: ' . ($__vars['thread']['Forum']['Node']['node_thread_thumbnail_height'] ? $__templater->escape($__vars['thread']['Forum']['Node']['node_thread_thumbnail_height']) : $__templater->escape($__vars['xf']['options']['thumb_size_hemant'])) . '; object-fit: cover; border-bottom: solid 2px #ec5555;">
+									<img src="' . $__templater->escape($__templater->method($__vars['thread'], 'getfirstPostImgUrl', array())) . '" style="width: ' . ($__vars['thread']['Forum']['Node']['node_thread_thumbnail_width'] ? $__templater->escape($__vars['thread']['Forum']['Node']['node_thread_thumbnail_width']) : $__templater->escape($__vars['xf']['options']['thumbnail_width'])) . ' ; height: ' . ($__vars['thread']['Forum']['Node']['node_thread_thumbnail_height'] ? $__templater->escape($__vars['thread']['Forum']['Node']['node_thread_thumbnail_height']) : $__templater->escape($__vars['xf']['options']['thumb_size_hemant'])) . '; object-fit: cover; border-bottom: solid 2px #fa7d24">
 									';
 		} else {
 			$__finalCompiled .= '
@@ -302,7 +302,6 @@ return array(
 {
 	$__finalCompiled = '';
 		$__finalCompiled .= '
-
 				<div class="structItem-cell structItem-cell--main" data-xf-init="touch-proxy">
 
 					';
@@ -323,7 +322,7 @@ return array(
 						';
 	$__vars['canPreview'] = $__templater->method($__vars['thread'], 'canPreview', array());
 	$__finalCompiled .= '
-
+ 
 						<a href="' . $__templater->func('link', array('threads' . (($__templater->method($__vars['thread'], 'isUnread', array()) AND (!$__vars['forceRead'])) ? '/unread' : ''), $__vars['thread'], ), true) . '" class="" data-tp-primary="on" data-xf-init="' . ($__vars['canPreview'] ? 'preview-tooltip' : '') . '" data-preview-url="' . ($__vars['canPreview'] ? $__templater->func('link', array('threads/preview', $__vars['thread'], ), true) : '') . '">' . $__templater->func('snippet', array($__vars['thread']['title'], 25, array('stripBbCode' => true, ), ), true) . '</a>
 					</div>
 
@@ -449,25 +448,6 @@ return array(
 								</li>
 							</ul>
 
-							';
-		if (($__vars['thread']['discussion_type'] != 'redirect') AND (($__vars['thread']['reply_count'] >= $__vars['xf']['options']['messagesPerPage']) AND $__vars['xf']['options']['lastPageLinks'])) {
-			$__finalCompiled .= '
-								<span class="structItem-pageJump">
-									';
-			$__compilerTemp3 = $__templater->func('last_pages', array($__vars['thread']['reply_count'] + 1, $__vars['xf']['options']['messagesPerPage'], $__vars['xf']['options']['lastPageLinks'], ), false);
-			if ($__templater->isTraversable($__compilerTemp3)) {
-				foreach ($__compilerTemp3 AS $__vars['p']) {
-					$__finalCompiled .= '
-										<a href="' . $__templater->func('link', array('threads', $__vars['thread'], array('page' => $__vars['p'], ), ), true) . '">' . $__templater->escape($__vars['p']) . '</a>
-									';
-				}
-			}
-			$__finalCompiled .= '
-								</span>
-							';
-		}
-		$__finalCompiled .= '
-
 						';
 	}
 	$__finalCompiled .= '
@@ -567,6 +547,13 @@ return array(
 	<style>
 		.hiddenDiv {
 			display: none;
+			position: absolute; /* Positioned absolutely to avoid affecting layout */
+			left: 0;
+			width: 100%;  /* Make it as wide as the parent div */
+			background-color: #17202f; /* Slight transparent overlay */
+			padding: 10px;
+			z-index: 10;  /* Place it above the parent div */
+			border-radius: 5px;
 		}
 
 		.onHoverDisp:hover .hiddenDiv {
@@ -580,10 +567,19 @@ return array(
 			justify-content: space-between; /* Pushes the divs to opposite sides */
 			margin: 0px 7px;
 		}
+		
+		.onHoverDisp {
+			transition: transform 0.15s ease-in-out;
+		}
+		.onHoverDisp:hover {
+			transform: scale(1.03);  /* Zoom in */
+			z-index: 100;
+		}
 	</style>
 
 	<div class="structItem structItem--thread' . ($__vars['thread']['prefix_id'] ? (' is-prefix' . $__templater->escape($__vars['thread']['prefix_id'])) : '') . ($__templater->method($__vars['thread'], 'isIgnored', array()) ? ' is-ignored' : '') . (($__templater->method($__vars['thread'], 'isUnread', array()) AND (!$__vars['forceRead'])) ? ' is-unread' : '') . (($__vars['thread']['discussion_state'] == 'moderated') ? ' is-moderated' : '') . (($__vars['thread']['discussion_state'] == 'deleted') ? ' is-deleted' : '') . ' js-inlineModContainer js-threadListItem-' . $__templater->escape($__vars['thread']['thread_id']) . ' onHoverDisp" data-author="' . ($__templater->escape($__vars['thread']['User']['username']) ?: $__templater->escape($__vars['thread']['username'])) . '">
 
+		' . $__templater->func('dump', array($__templater->func('count', array($__vars['thread']['FirstPost']['Attachments'], ), false), ), true) . '
 		' . $__templater->renderExtension('icon_cell', $__vars, $__extensions) . '
 
 			' . $__templater->renderExtension('main_cell', $__vars, $__extensions) . '

@@ -11,7 +11,7 @@ use XF\Mvc\Entity\Structure;
  * @property int node_id
  * @property string title
  * @property int reply_count
- * @property int view_count
+ * @property int view_count 
  * @property int user_id
  * @property string username
  * @property int post_date

@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: b621bc1141be88d2a10415c99a1a0341
+// FROM HASH: 426ea89559d91425ccfdf0ce408b4684
 return array(
 'extensions' => array('above_node_list' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -655,13 +655,7 @@ return array(
 
 ' . '
 
-' . '
-
 ';
-	$__templater->modifySidebarHtml('_xfWidgetSidebarB898bbebe37627c50dfd2c6529a0554a', $__templater->renderWidget('forum_overview_members_online', array(), array()), 'replace');
-	$__finalCompiled .= '
-';
-	$__templater->modifySidebarHtml('_xfWidgetSidebarA831c979fb72a52de00df348fad8445f', $__templater->renderWidget('fs_question_answer_count_wid', array(), array()), 'replace');
 	return $__finalCompiled;
 }
 );

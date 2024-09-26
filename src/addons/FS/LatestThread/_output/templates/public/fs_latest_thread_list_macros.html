@@ -13,6 +13,13 @@
 	<style>
 		.hiddenDiv {
 			display: none;
+			position: absolute; /* Positioned absolutely to avoid affecting layout */
+			left: 0;
+			width: 100%;  /* Make it as wide as the parent div */
+			background-color: #17202f; /* Slight transparent overlay */
+			padding: 10px;
+			z-index: 10;  /* Place it above the parent div */
+			border-radius: 5px;
 		}
 
 		.onHoverDisp:hover .hiddenDiv {
@@ -26,10 +33,19 @@
 			justify-content: space-between; /* Pushes the divs to opposite sides */
 			margin: 0px 7px;
 		}
+		
+		.onHoverDisp {
+			transition: transform 0.15s ease-in-out;
+		}
+		.onHoverDisp:hover {
+			transform: scale(1.03);  /* Zoom in */
+			z-index: 100;
+		}
 	</style>
 
 	<div class="structItem structItem--thread{{ $thread.prefix_id ? ' is-prefix' . $thread.prefix_id : '' }}{{ $thread.isIgnored() ? ' is-ignored' : '' }}{{ ($thread.isUnread() AND !$forceRead) ? ' is-unread' : '' }}{{ $thread.discussion_state == 'moderated' ? ' is-moderated' : '' }}{{ $thread.discussion_state == 'deleted' ? ' is-deleted' : '' }} js-inlineModContainer js-threadListItem-{$thread.thread_id} onHoverDisp" data-author="{{ $thread.User.username ?: $thread.username }}">
 
+		{{dump(count($thread.FirstPost.Attachments))}}
 		<xf:extension name="icon_cell">
 			<xf:if is="in_array($thread.node_id, $xf.options.node_id_for_thumb)" >
 				<xf:if is="$xf.reply.template == 'forum_view'OR $xf.reply.template == 'forum_view_latest_content' OR $xf.reply.template == 'tag_view'">
@@ -41,7 +57,7 @@
 						<div class="structItem-iconContainer">
 							<a href="{{ link('threads', $thread) }}"> 
 								<xf:if is="$xf.reply.template == 'forum_view'OR $xf.reply.template == 'forum_view_latest_content' OR $xf.reply.template == 'tag_view'">
-									<img src="{$thread.getfirstPostImgUrl()}" style="width: {{ $thread.Forum.Node.node_thread_thumbnail_width ? $thread.Forum.Node.node_thread_thumbnail_width : $xf.options.thumbnail_width }} ; height: {{ $thread.Forum.Node.node_thread_thumbnail_height ? $thread.Forum.Node.node_thread_thumbnail_height : $xf.options.thumb_size_hemant }}; object-fit: cover; border-bottom: solid 2px #ec5555;">
+									<img src="{$thread.getfirstPostImgUrl()}" style="width: {{ $thread.Forum.Node.node_thread_thumbnail_width ? $thread.Forum.Node.node_thread_thumbnail_width : $xf.options.thumbnail_width }} ; height: {{ $thread.Forum.Node.node_thread_thumbnail_height ? $thread.Forum.Node.node_thread_thumbnail_height : $xf.options.thumb_size_hemant }}; object-fit: cover; border-bottom: solid 2px #fa7d24">
 									<xf:else/>
 									<img src="{$thread.getfirstPostImgUrl()}" class="avatar avatar--square" style="object-fit: cover;">
 								</xf:if>
@@ -83,7 +99,6 @@
 				</xf:extension>
 
 			<xf:extension name="main_cell">
-
 				<div class="structItem-cell structItem-cell--main" data-xf-init="touch-proxy">
 
 					<xf:if contentcheck="true">
@@ -180,7 +195,7 @@
 
 					<div class="structItem-title" style="margin-top: 12px;">
 						<xf:set var="$canPreview" value="{{ $thread.canPreview() }}" />
-
+ 
 						<a href="{{ link('threads' . (($thread.isUnread() AND !$forceRead) ? '/unread' : ''), $thread) }}" class="" data-tp-primary="on" data-xf-init="{{ $canPreview ? 'preview-tooltip' : '' }}" data-preview-url="{{ $canPreview ? link('threads/preview', $thread) : '' }}">{{ snippet($thread.title, 25, {'stripBbCode': true}) }}</a>
 					</div>
 
@@ -249,14 +264,6 @@
 									<xf:fa icon="fas fa-star" /> {$thread.vote_count}
 								</li>
 							</ul>
-
-							<xf:if is="$thread.discussion_type != 'redirect' && $thread.reply_count >= $xf.options.messagesPerPage && $xf.options.lastPageLinks">
-								<span class="structItem-pageJump">
-									<xf:foreach loop="{{ last_pages($thread.reply_count + 1, $xf.options.messagesPerPage, $xf.options.lastPageLinks) }}" value="$p">
-										<a href="{{ link('threads', $thread, {'page': $p}) }}">{$p}</a>
-									</xf:foreach>
-								</span>
-							</xf:if>
 
 						</xf:if>
 					</div>
