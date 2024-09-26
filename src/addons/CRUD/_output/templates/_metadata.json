@@ -14,6 +14,11 @@
         "version_string": "1.0.0 Alpha",
         "hash": "21e3ef205f1be3c2fcc28233c6cfc512"
     },
+    "public/crud_record_search_filter.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "80b8fba01458bec2dc8e0a3fea497f83"
+    },
     "public/crud_record_testing_only.html": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",

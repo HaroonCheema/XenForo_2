@@ -1,0 +1,9 @@
+{
+    "template": "PAGE_CONTAINER",
+    "description": "QuestionsAnswers nav is Selected",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<ul class=\"p-nav-list js-offCanvasNavSource\">",
+    "replace": "$0\n<xf:if is=\"{{$xf.reply.containerKey == 'node-'.$xf.options.fs_questionAnswerForum || $xf.app.request.getRoutePath() == 'esperto/'}}\">\n\t<xf:set var=\"$pageSection\" value=\"fs_questionAnswer_nav\" />\n</xf:if>"
+}

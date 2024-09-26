@@ -29,6 +29,7 @@ return array (
   'permission_interface.fs_bunny_integration' => '[FS] Bunny Integration',
   'permission_interface.fs_forum_group_permission' => 'FS Forum Group Permission',
   'permission_interface.fs_hide_usernames' => '[FS] Hide Usernames',
+  'permission_interface.fs_latest_thread' => '[FS] Latest Update',
   'permission_interface.fs_limitations' => '[FS] Limitations',
   'permission_interface.fs_thread_replies_abrove' => 'Thread Post Approve',
   'permission_interface.fs_threadsaleitem' => '[FS] ThreadSaleItem',

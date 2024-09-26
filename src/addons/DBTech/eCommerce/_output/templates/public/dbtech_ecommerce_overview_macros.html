@@ -1,0 +1,84 @@
+<xf:macro name="list_filter_bar" arg-filters="!" arg-baseLinkPath="!" arg-category="{{ null }}" arg-ownerFilter="{{ null }}" arg-platformFilter="{{ null }}" arg-productFieldFilter="{{ null }}">
+	<xf:set var="$sortOrders" value="{{ {
+		'last_update': phrase('dbtech_ecommerce_last_update'),
+		'creation_date': phrase('dbtech_ecommerce_creation_date'),
+		'rating_weighted': phrase('rating'),
+		'download_count': phrase('dbtech_ecommerce_downloads'),
+		'title': phrase('title'),
+		'random': phrase('dbtech_ecommerce_random')
+	} }}" />
+
+	<div class="block-filterBar">
+		<div class="filterBar">
+			<xf:if contentcheck="true">
+				<ul class="filterBar-filters">
+					<xf:contentcheck>
+						<xf:if is="$filters.type">
+							<xf:if is="$filters.type == 'on_sale'">
+								<li><a href="{{ link($baseLinkPath, $category, $filters|replace('type', null)) }}"
+									   class="filterBar-filterToggle" data-xf-init="tooltip" title="{{ phrase('remove_this_filter')|for_attr }}">
+									<span class="filterBar-filterToggle-label">{{ phrase('dbtech_ecommerce_on_sale') }}</span></a></li>
+							<xf:else />
+								<li><a href="{{ link($baseLinkPath, $category, $filters|replace('type', null)) }}"
+									   class="filterBar-filterToggle" data-xf-init="tooltip" title="{{ phrase('remove_this_filter')|for_attr }}">
+									<span class="filterBar-filterToggle-label">{{ phrase('price:') }}</span>
+									<xf:if is="$filters.type == 'free'">{{ phrase('dbtech_ecommerce_free') }}<xf:else />{{ phrase('dbtech_ecommerce_paid') }}</xf:if></a></li>
+							</xf:if>
+						</xf:if>
+						<xf:if is="$filters.prefix_id">
+							<li><a href="{{ link($baseLinkPath, $category, $filters|replace('prefix_id', null)) }}"
+								class="filterBar-filterToggle" data-xf-init="tooltip" title="{{ phrase('remove_this_filter')|for_attr }}">
+								<span class="filterBar-filterToggle-label">{{ phrase('prefix:') }}</span>
+								{{ prefix_title('dbtechEcommerceProduct', $filters.prefix_id) }}</a></li>
+						</xf:if>
+						<xf:if is="$filters.platform AND $platformFilter">
+							<li><a href="{{ link($baseLinkPath, $category, $filters|replace('platform', null)) }}"
+								   class="filterBar-filterToggle" data-xf-init="tooltip" title="{{ phrase('remove_this_filter')|for_attr }}">
+								<span class="filterBar-filterToggle-label">{{ phrase('dbtech_ecommerce_platform:') }}</span>
+								{$platformFilter}</a></li>
+						</xf:if>
+						<xf:if is="$filters.owner_id AND $ownerFilter">
+							<li><a href="{{ link($baseLinkPath, $category, $filters|replace('owner_id', null)) }}"
+								   class="filterBar-filterToggle" data-xf-init="tooltip" title="{{ phrase('remove_this_filter')|for_attr }}">
+								<span class="filterBar-filterToggle-label">{{ phrase('dbtech_ecommerce_product_owner:') }}</span>
+								{$ownerFilter.username}</a></li>
+						</xf:if>
+						<xf:if is="$filters.product_fields AND $productFieldFilter">
+							<xf:foreach loop="$productFieldFilter" key="$fieldId" value="$field">
+								<li><a href="{{ link($baseLinkPath, $category, $filters|replace('product_fields', $filters.product_fields|replace($fieldId, null))) }}"
+									   class="filterBar-filterToggle" data-xf-init="tooltip" title="{{ phrase('remove_this_filter')|for_attr }}">
+									<span class="filterBar-filterToggle-label">{$field.title}:</span>
+
+									<xf:macro template="custom_fields_macros" name="custom_field_value"
+											  arg-definition="{$field.definition}"
+											  arg-value="{$field.value}" />
+								</a></li>
+							</xf:foreach>
+						</xf:if>
+						<xf:if is="$filters.order AND {$sortOrders.{$filters.order}}">
+							<li><a href="{{ link($baseLinkPath, $category, $filters|replace({'order': null, 'direction': null})) }}"
+								class="filterBar-filterToggle" data-xf-init="tooltip" title="{{ phrase('return_to_default_order')|for_attr }}">
+								<span class="filterBar-filterToggle-label">{{ phrase('sort_by:') }}</span>
+								{$sortOrders.{$filters.order}}
+								<i class="fa {{ $filters.direction == 'asc' ? 'fa-angle-up' : 'fa-angle-down' }}" aria-hidden="true"></i>
+								<span class="u-srOnly"><xf:if is="$filters.direction == 'asc'">{{ phrase('ascending') }}<xf:else />{{ phrase('descending') }}</xf:if></span>
+							</a></li>
+						</xf:if>
+					</xf:contentcheck>
+				</ul>
+			</xf:if>
+
+			<a class="filterBar-menuTrigger" data-xf-click="menu" role="button" tabindex="0" aria-expanded="false" aria-haspopup="true">{{ phrase('filters') }}</a>
+			<div class="menu menu--wide" data-menu="menu" aria-hidden="true"
+				data-href="{{ link($baseLinkPath . '/filters', $category, $filters) }}"
+				data-load-target=".js-filterMenuBody">
+				<div class="menu-content">
+					<h4 class="menu-header">{{ phrase('show_only:') }}</h4>
+					<div class="js-filterMenuBody">
+						<div class="menu-row">{{ phrase('loading...') }}</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</xf:macro>

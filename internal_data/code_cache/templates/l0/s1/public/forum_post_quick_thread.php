@@ -111,6 +111,8 @@ return array(
 
 		' . $__compilerTemp1 . '
 
+		' . $__templater->includeTemplate('forum_post_quick_thread_multiprefix', $__vars) . '
+
 		' . $__templater->callMacro(null, 'forum_post_thread::type_chooser', array(
 		'thread' => $__vars['thread'],
 		'forum' => $__vars['forum'],

@@ -1,2 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<permissions/>
+<permissions>
+  <permission permission_group_id="fs_latest_thread" permission_id="can_check_lts_cnt" permission_type="flag" interface_group_id="fs_latest_thread" display_order="1"/>
+</permissions>

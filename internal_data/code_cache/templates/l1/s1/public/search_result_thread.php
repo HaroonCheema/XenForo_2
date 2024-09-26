@@ -4,7 +4,9 @@ return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
 	$__finalCompiled = '';
-	$__finalCompiled .= '<li class="block-row block-row--separated ' . ($__templater->method($__vars['thread'], 'isIgnored', array()) ? 'is-ignored' : '') . ' js-inlineModContainer" data-author="' . ($__templater->escape($__vars['thread']['User']['username']) ?: $__templater->escape($__vars['thread']['username'])) . '">
+	$__vars['svMultiPrefixSubtitle'] = (($__vars['svMultiPrefixSubtitle'] === null) ? $__templater->func('property', array('svMultiPrefixSubtitle', ), false) : $__vars['svMultiPrefixSubtitle']);
+	$__finalCompiled .= '
+<li class="block-row block-row--separated ' . ($__templater->method($__vars['thread'], 'isIgnored', array()) ? 'is-ignored' : '') . ' js-inlineModContainer" data-author="' . ($__templater->escape($__vars['thread']['User']['username']) ?: $__templater->escape($__vars['thread']['username'])) . '">
 	<div class="contentRow ' . ((!$__templater->method($__vars['thread'], 'isVisible', array())) ? 'is-deleted' : '') . '">
 		';
 	if ($__templater->func('in_array', array($__vars['thread']['node_id'], $__vars['xf']['options']['node_id_for_thumb'], ), false)) {
@@ -27,7 +29,7 @@ return array(
 	$__finalCompiled .= '
 		<div class="contentRow-main">
 			<h3 class="contentRow-title">
-				<a href="' . $__templater->func('link', array('threads', $__vars['thread'], ), true) . '">' . $__templater->func('prefix', array('thread', $__vars['thread'], ), true);
+				<a href="' . $__templater->func('link', array('threads', $__vars['thread'], ), true) . '">' . ((($__vars['svMultiPrefixSubtitle'] == '') ? $__templater->func('prefix', array('thread', $__vars['thread'], ), true) : '') . (($__vars['svMultiPrefixSubtitle'] === 'suffix') ? $__templater->func('prefix', array('thread', $__vars['thread'], ), true) : ''));
 	$__compilerTemp1 = $__vars;
 	$__compilerTemp1['columnList'] = $__vars['thread']['Forum']['display_fields']['forum_view']['prefix'];
 	$__compilerTemp1['fieldData'] = $__vars['thread']['custom_fields'];
@@ -46,16 +48,29 @@ return array(
 	}
 	$__finalCompiled .= '
 </h3>
+';
+	if ($__vars['svMultiPrefixSubtitle'] === 'subtitle') {
+		$__compilerTemp2 = '';
+		$__compilerTemp2 .= $__templater->func('prefix', array('thread', $__vars['thread'], ), true);
+		if (strlen(trim($__compilerTemp2)) > 0) {
+			$__finalCompiled .= '
+	<div class="contentRow-minor">
+		' . $__compilerTemp2 . '
+	</div>
+';
+		}
+	}
+	$__finalCompiled .= '
 			
 			' . $__templater->func('dump', array($__vars['options']['term'], ), true) . '
 
 			<div class="contentRow-snippet">' . $__templater->func('bb_code_snippet', array($__vars['thread']['FirstPost']['message'], 'post', $__vars['thread']['FirstPost'], 300, ), true) . '</div>
 
 			';
-	$__compilerTemp2 = $__vars;
-	$__compilerTemp2['columnList'] = $__vars['thread']['Forum']['display_fields']['search']['metadata'];
-	$__compilerTemp2['fieldData'] = $__vars['thread']['custom_fields'];
-	$__finalCompiled .= $__templater->includeTemplate('altf_thread_field_search_list', $__compilerTemp2) . '
+	$__compilerTemp3 = $__vars;
+	$__compilerTemp3['columnList'] = $__vars['thread']['Forum']['display_fields']['search']['metadata'];
+	$__compilerTemp3['fieldData'] = $__vars['thread']['custom_fields'];
+	$__finalCompiled .= $__templater->includeTemplate('altf_thread_field_search_list', $__compilerTemp3) . '
 <div class="contentRow-minor contentRow-minor--hideLinks">
 				<ul class="listInline listInline--bullet">
 					';

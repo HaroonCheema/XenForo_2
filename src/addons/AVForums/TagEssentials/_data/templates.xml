@@ -749,7 +749,7 @@
 	<xf:set var="$hideEditLink" value="{{ true }}" />
 	<xf:include template="avForumsTagEss_thread_view_grouped_tags" />
 </xf:if>]]></template>
-  <template type="public" title="avForumsTagEss_thread_view_grouped_tags" version_id="2000016" version_string="2.0.0 Beta 4"><![CDATA[<xf:if is="$xf.options.enableTagging AND ($thread.canEditTags() OR $thread.tags)">
+  <template type="public" title="avForumsTagEss_thread_view_grouped_tags" version_id="2030100" version_string="2.3.1"><![CDATA[<xf:if is="$xf.options.enableTagging AND ($thread.canEditTags() OR $thread.tags)">
 	<xf:css src="avForumsTagEss_thread_view_grouped_tags.less" />
 
 	<xf:if is="$thread.GroupedTags">

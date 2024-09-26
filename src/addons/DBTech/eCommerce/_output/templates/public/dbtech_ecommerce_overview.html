@@ -1,0 +1,138 @@
+<xf:title page="{$page}">{{ phrase('dbtech_ecommerce_store') }}</xf:title>
+
+<xf:macro template="metadata_macros" name="canonical_url"
+	arg-canonicalUrl="{{ link('canonical:dbtech-ecommerce', null, {'page': $page}) }}" />
+
+<xf:page option="searchConstraints" value="{{ {
+	phrase('dbtech_ecommerce_products'): {'search_type': 'dbtech_ecommerce_product'}
+} }}" />
+
+<xf:pageaction if="$xf.visitor.canAddDbtechEcommerceProduct()">
+	<xf:button class="menuTrigger" data-xf-click="menu" aria-expanded="false" aria-haspopup="true">{{ phrase('manage...') }}</xf:button>
+	<div class="menu" data-menu="menu" aria-hidden="true">
+		<div class="menu-content">
+			<h3 class="menu-header">{{ phrase('dbtech_ecommerce_add_product') }}</h3>
+
+			<xf:foreach loop="$xf.app.em.getRepository('DBTech\eCommerce:Product').getProductTypeHandlers()" key="$productType" value="$handler">
+				<a href="{{ link('dbtech-ecommerce/add', null, {'product_type': $productType}) }}" data-xf-click="overlay" class="menu-linkRow">{$handler.getProductTypePhrase()}</a>
+			</xf:foreach>
+		</div>
+	</div>
+</xf:pageaction>
+
+<xf:if is="$canInlineMod">
+	<xf:js src="xf/inline_mod.js" min="1" />
+</xf:if>
+
+<xf:if is="property('dbtechEcommerceEnableInfiniteScroll') && $page == 1 && $total > $perPage">
+	<xf:set var="$infiniteScroll" value="{{ true }}" />
+
+	<xf:js prod="DBTech/eCommerce/product_list-compiled.js" dev="DBTech/eCommerce/vendor/metafizzy/infinite-scroll/infinite-scroll.pkgd.js, DBTech/eCommerce/product_list.js" addon="DBTech/eCommerce" />
+
+	<xf:css src="dbtech_ecommerce_infinite_scroll.less" />
+</xf:if>
+
+<div class="block" data-xf-init="{{ $canInlineMod ? 'inline-mod' : '' }}" data-type="dbtech_ecommerce_product" data-href="{{ link('inline-mod') }}">
+	<div class="block-outer"><xf:trim>
+
+		<xf:if contentcheck="true">
+			<div class="block-outer-opposite">
+				<div class="buttonGroup">
+				<xf:contentcheck>
+					<xf:if is="$canInlineMod">
+						<xf:macro template="inline_mod_macros" name="button" />
+					</xf:if>
+				</xf:contentcheck>
+				</div>
+			</div>
+		</xf:if>
+
+	</xf:trim></div>
+
+	<div class="block-container">
+		<xf:macro template="dbtech_ecommerce_overview_macros" name="list_filter_bar"
+				  arg-filters="{$filters}"
+				  arg-baseLinkPath="dbtech-ecommerce"
+				  arg-ownerFilter="{$ownerFilter}"
+				  arg-platformFilter="{$platformFilter}"
+				  arg-productFieldFilter="{$productFieldFilter}" />
+
+		<div class="block-body">
+			<xf:if is="$products is not empty">
+				<xf:if is="property('dbtechEcommerceProductListStyle') == 'grid'">
+					<xf:css src="dbtech_ecommerce_product_grid.less" />
+
+					<div class="productList-grid"
+						 data-xf-init="{{ $infiniteScroll ? 'dbtech-ecommerce-infinite-scroll' : '' }}"
+						 data-infinite-scroll-click="{{ property('dbtechEcommerceInfiniteScrollClick') }}"
+						 data-infinite-scroll-after="{{ property('dbtechEcommerceInfiniteScrollAfter') }}"
+						 data-infinite-scroll-history="{{ property('dbtechEcommerceInfiniteScrollHistory') }}"
+					>
+						<xf:foreach loop="$products" value="$product">
+							<xf:macro template="dbtech_ecommerce_product_list_macros" name="product_grid"
+									  arg-filters="{$filters}"
+									  arg-baseLinkPath="dbtech-ecommerce"
+									  arg-product="{$product}"
+									  arg-showOwner="{{ property('dbtechEcommerceShowOwnerOverview') ? true : false }}"
+									  arg-allowInlineMod="{$canInlineMod}"
+							/>
+						</xf:foreach>
+					</div>
+				<xf:else />
+					<div class="structItemContainer"
+						 data-xf-init="{{ $infiniteScroll ? 'dbtech-ecommerce-infinite-scroll' : '' }}"
+						 data-infinite-scroll-click="{{ property('dbtechEcommerceInfiniteScrollClick') }}"
+						 data-infinite-scroll-after="{{ property('dbtechEcommerceInfiniteScrollAfter') }}"
+						 data-infinite-scroll-history="{{ property('dbtechEcommerceInfiniteScrollHistory') }}"
+					>
+						<xf:foreach loop="$products" value="$product">
+							<xf:macro template="dbtech_ecommerce_product_list_macros" name="product"
+									  arg-filters="{$filters}"
+									  arg-baseLinkPath="dbtech-ecommerce"
+									  arg-product="{$product}"
+									  arg-showOwner="{{ property('dbtechEcommerceShowOwnerOverview') ? true : false }}"
+									  arg-allowInlineMod="{$canInlineMod}"
+							/>
+						</xf:foreach>
+					</div>
+				</xf:if>
+			<xf:elseif is="$filters" />
+				<div class="block-row">{{ phrase('dbtech_ecommerce_there_no_products_matching_your_filters') }}</div>
+			<xf:else />
+				<div class="block-row">{{ phrase('dbtech_ecommerce_no_products_have_been_created_yet') }}</div>
+			</xf:if>
+		</div>
+	</div>
+
+	<xf:if is="$infiniteScroll">
+		<div class="block-row product-status">
+			<div class="product-ellipsis infinite-scroll-request">
+				<span class="product-ellipsis--dot"></span>
+				<span class="product-ellipsis--dot"></span>
+				<span class="product-ellipsis--dot"></span>
+				<span class="product-ellipsis--dot"></span>
+			</div>
+		</div>
+
+		<div class="block-row product-loader">
+			<xf:button class="product-button button--cta">{{ phrase('dbtech_ecommerce_load_more...') }}</xf:button>
+		</div>
+	</xf:if>
+
+	<div class="block-outer block-outer--after block-outer--pagination">
+		<xf:pagenav
+			page="{$page}" perpage="{$perPage}" total="{$total}"
+			link="dbtech-ecommerce" params="{$filters}"
+			wrapperclass="block-outer-main" />
+		<xf:showignored wrapperclass="block-outer-opposite" />
+	</div>
+</div>
+
+<xf:page option="sideNavTitle">{{ phrase('categories') }}</xf:page>
+<xf:sidenav>
+	<xf:macro template="dbtech_ecommerce_category_list_macros" name="simple_list_block"
+		arg-categoryTree="{$categoryTree}"
+		arg-categoryExtras="{$categoryExtras}" />
+</xf:sidenav>
+
+<xf:widgetpos id="dbtech_ecommerce_overview_sidenav" position="sidenav" />

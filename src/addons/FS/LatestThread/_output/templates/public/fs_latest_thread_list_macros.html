@@ -20,8 +20,11 @@
 		}
 
 		.containers {
+			position: relative;
+			top: -12px;
 			display: flex;
 			justify-content: space-between; /* Pushes the divs to opposite sides */
+			margin: 0px 7px;
 		}
 	</style>
 
@@ -38,22 +41,27 @@
 						<div class="structItem-iconContainer">
 							<a href="{{ link('threads', $thread) }}"> 
 								<xf:if is="$xf.reply.template == 'forum_view'OR $xf.reply.template == 'forum_view_latest_content' OR $xf.reply.template == 'tag_view'">
-									<img src="{$thread.getfirstPostImgUrl()}" style="width: {{ $thread.Forum.Node.node_thread_thumbnail_width ? $thread.Forum.Node.node_thread_thumbnail_width : $xf.options.thumbnail_width }} ; height: {{ $thread.Forum.Node.node_thread_thumbnail_height ? $thread.Forum.Node.node_thread_thumbnail_height : $xf.options.thumb_size_hemant }}; object-fit: cover;">
+									<img src="{$thread.getfirstPostImgUrl()}" style="width: {{ $thread.Forum.Node.node_thread_thumbnail_width ? $thread.Forum.Node.node_thread_thumbnail_width : $xf.options.thumbnail_width }} ; height: {{ $thread.Forum.Node.node_thread_thumbnail_height ? $thread.Forum.Node.node_thread_thumbnail_height : $xf.options.thumb_size_hemant }}; object-fit: cover; border-bottom: solid 2px #ec5555;">
 									<xf:else/>
 									<img src="{$thread.getfirstPostImgUrl()}" class="avatar avatar--square" style="object-fit: cover;">
 								</xf:if>
 							</a>
-							<xf:if is="!$xf.options.hideuser_avtar">
-								<xf:if is="$thread.getUserPostCount()">
-									<xf:avatar user="$xf.visitor" size="s"
-											   href=""
-											   class="avatar--separated structItem-secondaryIcon"
-											   tabindex="0"
-											   data-xf-init="tooltip"
-											   data-trigger="auto"
-											   title="{{ phrase('you_have_posted_x_messages_in_this_thread', {'count': $thread.getUserPostCount() }) }}" />
-								</xf:if>
-							</xf:if>
+							<spam class="containers">
+								<spam class="leftDiv">
+									<xf:if is="$thread.prefix_id">
+										{{ prefix('thread', $thread, 'html', 'noStatus') }}
+									</xf:if>
+								</spam>
+								<spam class="rightDiv">
+									<xf:if is="$thread.prefix_id">
+										{{ prefix('thread', $thread, 'html', 'isStatus') }} 
+
+										<xf:if is="$xf.options.fs_latest_thread_custom_field_ver">
+											<spam style="background-color: #3f4043; padding: 0px 6px;">{$thread.custom_fields.{$xf.options.fs_latest_thread_custom_field_ver}}</spam>
+										</xf:if>
+									</xf:if>
+								</spam>
+							</spam>
 						</div>
 					</div>
 					<xf:else/>
@@ -75,24 +83,8 @@
 				</xf:extension>
 
 			<xf:extension name="main_cell">
+
 				<div class="structItem-cell structItem-cell--main" data-xf-init="touch-proxy">
-
-					<spam class="containers">
-						<spam class="leftDiv">
-							<xf:if is="$thread.prefix_id">
-								{{ prefix('thread', $thread, 'html', 'noStatus') }}
-							</xf:if>
-						</spam>
-						<spam class="rightDiv">
-							<xf:if is="$thread.prefix_id">
-								{{ prefix('thread', $thread, 'html', 'isStatus') }} 
-
-								<xf:if is="$xf.options.fs_latest_thread_custom_field_ver">
-									<spam>{$thread.custom_fields.{$xf.options.fs_latest_thread_custom_field_ver}}</spam>
-								</xf:if>
-							</xf:if>
-						</spam>
-					</spam>
 
 					<xf:if contentcheck="true">
 						<ul class="structItem-statuses">
@@ -186,10 +178,10 @@
 						</ul>
 					</xf:if>
 
-					<div class="structItem-title">
+					<div class="structItem-title" style="margin-top: 12px;">
 						<xf:set var="$canPreview" value="{{ $thread.canPreview() }}" />
- 
-						<a href="{{ link('threads' . (($thread.isUnread() AND !$forceRead) ? '/unread' : ''), $thread) }}" class="" data-tp-primary="on" data-xf-init="{{ $canPreview ? 'preview-tooltip' : '' }}" data-preview-url="{{ $canPreview ? link('threads/preview', $thread) : '' }}">{$thread.title}</a>
+
+						<a href="{{ link('threads' . (($thread.isUnread() AND !$forceRead) ? '/unread' : ''), $thread) }}" class="" data-tp-primary="on" data-xf-init="{{ $canPreview ? 'preview-tooltip' : '' }}" data-preview-url="{{ $canPreview ? link('threads/preview', $thread) : '' }}">{{ snippet($thread.title, 25, {'stripBbCode': true}) }}</a>
 					</div>
 
 					<div class="structItem-minor">
@@ -242,11 +234,20 @@
 							<xf:macro template="deletion_macros" name="notice" arg-log="{$thread.DeletionLog}" />
 							<xf:else />
 							<ul class="structItem-parts">
-								<li><xf:username user="$thread.User" defaultname="{$thread.username}" /></li>
-								<li class="structItem-startDate"><a href="{{ link('threads', $thread) }}" rel="nofollow"><xf:date time="{$thread.post_date}" /></a></li>
-								<xf:if is="!$forum">
-									<li><a href="{{ link('forums', $thread.Forum) }}">{$thread.Forum.title}</a></li>
-								</xf:if>
+								<li class="structItem-startDate">
+									<xf:fa icon="fas fa-clock" title="{{ phrase('start_date')|for_attr }}" />
+									<span class="u-srOnly">{{ phrase('start_date') }}</span>
+									<a href="{{ link('threads', $thread) }}" rel="nofollow">{$thread.getTimeStampThread()}</a>
+								</li>
+								<li>
+									<xf:fa icon="fas fa-thumbs-up" /> {$thread.first_post_reaction_score}
+								</li>
+								<li>
+									<xf:fa icon="fas fa-eye" /> {$thread.getViewCountKM()}
+								</li>
+								<li>
+									<xf:fa icon="fas fa-star" /> {$thread.vote_count}
+								</li>
 							</ul>
 
 							<xf:if is="$thread.discussion_type != 'redirect' && $thread.reply_count >= $xf.options.messagesPerPage && $xf.options.lastPageLinks">

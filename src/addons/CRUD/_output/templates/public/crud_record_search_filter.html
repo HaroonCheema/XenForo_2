@@ -1,0 +1,49 @@
+<xf:form action="{{ link('crud') }}">
+  <div class="menu-row">
+    {{ phrase('name_contains:') }}
+    <div class="u-inputSpacer">
+      <xf:textbox
+        name="name"
+        type="search"
+        value="{$conditions.name}"
+        placeholder="what u want to find in Name?"
+        dir="ltr"
+      />
+    </div>
+  </div>
+
+  <div class="menu-row">
+    {{ phrase('class_contains:') }}
+    <div class="u-inputSpacer">
+      <xf:textbox
+        name="rClass"
+        type="search"
+        value="{$conditions.rClass}"
+        placeholder="what u want to find in Class?"
+        dir="ltr"
+      />
+    </div>
+  </div>
+
+  <div class="menu-row">
+    {{ phrase('rollNo_contains:') }}
+    <div class="u-inputSpacer">
+      <xf:textbox
+        name="rollNo"
+        type="search"
+        value="{$conditions.rollNo}"
+        placeholder="what u want to find in Roll No?"
+        dir="ltr"
+      />
+    </div>
+  </div>
+
+  <div class="menu-footer">
+    <span class="menu-footer-controls">
+      <xf:button type="submit" class="button--primary"
+        >{{ phrase('filter') }}</xf:button
+      >
+    </span>
+  </div>
+  <xf:hiddenval name="search">1</xf:hiddenval>
+</xf:form>

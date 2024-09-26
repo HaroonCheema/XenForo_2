@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: cd124c2a8732fe1bcccff518c9bcd2d8
+// FROM HASH: ee0b7988b732daed8cc1b909b5871857
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -23,6 +23,7 @@ return array(
             box-shadow: 0 1px 4px rgba(0, 0, 0, 0.28);
             border-radius: 5px;
             position: relative;
+			height: fit-content;
             .structItem-cell--icon {
                 grid-area: icon;
                 width: 100%;

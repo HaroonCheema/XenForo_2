@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 1b7692cc4da606fde5f823a9bc0cde41
+// FROM HASH: bdd1976dc657823ec043c0740be357e9
 return array(
 'macros' => array('item' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -36,7 +36,7 @@ return array(
 								';
 		if ((($__vars['xf']['reply']['template'] == 'forum_view') OR ($__vars['xf']['reply']['template'] == 'forum_view_latest_content')) OR ($__vars['xf']['reply']['template'] == 'tag_view')) {
 			$__finalCompiled .= '
-									<img src="' . $__templater->escape($__templater->method($__vars['thread'], 'getfirstPostImgUrl', array())) . '" style="width: ' . ($__vars['thread']['Forum']['Node']['node_thread_thumbnail_width'] ? $__templater->escape($__vars['thread']['Forum']['Node']['node_thread_thumbnail_width']) : $__templater->escape($__vars['xf']['options']['thumbnail_width'])) . ' ; height: ' . ($__vars['thread']['Forum']['Node']['node_thread_thumbnail_height'] ? $__templater->escape($__vars['thread']['Forum']['Node']['node_thread_thumbnail_height']) : $__templater->escape($__vars['xf']['options']['thumb_size_hemant'])) . '; object-fit: cover;">
+									<img src="' . $__templater->escape($__templater->method($__vars['thread'], 'getfirstPostImgUrl', array())) . '" style="width: ' . ($__vars['thread']['Forum']['Node']['node_thread_thumbnail_width'] ? $__templater->escape($__vars['thread']['Forum']['Node']['node_thread_thumbnail_width']) : $__templater->escape($__vars['xf']['options']['thumbnail_width'])) . ' ; height: ' . ($__vars['thread']['Forum']['Node']['node_thread_thumbnail_height'] ? $__templater->escape($__vars['thread']['Forum']['Node']['node_thread_thumbnail_height']) : $__templater->escape($__vars['xf']['options']['thumb_size_hemant'])) . '; object-fit: cover; border-bottom: solid 2px #ec5555;">
 									';
 		} else {
 			$__finalCompiled .= '
@@ -45,26 +45,34 @@ return array(
 		}
 		$__finalCompiled .= '
 							</a>
-							';
-		if (!$__vars['xf']['options']['hideuser_avtar']) {
+							<spam class="containers">
+								<spam class="leftDiv">
+									';
+		if ($__vars['thread']['prefix_id']) {
 			$__finalCompiled .= '
-								';
-			if ($__templater->method($__vars['thread'], 'getUserPostCount', array())) {
-				$__finalCompiled .= '
-									' . $__templater->func('avatar', array($__vars['xf']['visitor'], 's', false, array(
-					'href' => '',
-					'class' => 'avatar--separated structItem-secondaryIcon',
-					'tabindex' => '0',
-					'data-xf-init' => 'tooltip',
-					'data-trigger' => 'auto',
-					'title' => 'You have posted ' . $__templater->method($__vars['thread'], 'getUserPostCount', array()) . ' message(s) in this thread',
-				))) . '
-								';
-			}
-			$__finalCompiled .= '
-							';
+										' . $__templater->func('prefix', array('thread', $__vars['thread'], 'html', 'noStatus', ), true) . '
+									';
 		}
 		$__finalCompiled .= '
+								</spam>
+								<spam class="rightDiv">
+									';
+		if ($__vars['thread']['prefix_id']) {
+			$__finalCompiled .= '
+										' . $__templater->func('prefix', array('thread', $__vars['thread'], 'html', 'isStatus', ), true) . ' 
+
+										';
+			if ($__vars['xf']['options']['fs_latest_thread_custom_field_ver']) {
+				$__finalCompiled .= '
+											<spam style="background-color: #3f4043; padding: 0px 6px;">' . $__templater->escape($__vars['thread']['custom_fields'][$__vars['xf']['options']['fs_latest_thread_custom_field_ver']]) . '</spam>
+										';
+			}
+			$__finalCompiled .= '
+									';
+		}
+		$__finalCompiled .= '
+								</spam>
+							</spam>
 						</div>
 					</div>
 					';
@@ -294,36 +302,8 @@ return array(
 {
 	$__finalCompiled = '';
 		$__finalCompiled .= '
+
 				<div class="structItem-cell structItem-cell--main" data-xf-init="touch-proxy">
-
-					<spam class="containers">
-						<spam class="leftDiv">
-							';
-	if ($__vars['thread']['prefix_id']) {
-		$__finalCompiled .= '
-								' . $__templater->func('prefix', array('thread', $__vars['thread'], 'html', 'noStatus', ), true) . '
-							';
-	}
-	$__finalCompiled .= '
-						</spam>
-						<spam class="rightDiv">
-							';
-	if ($__vars['thread']['prefix_id']) {
-		$__finalCompiled .= '
-								' . $__templater->func('prefix', array('thread', $__vars['thread'], 'html', 'isStatus', ), true) . ' 
-
-								';
-		if ($__vars['xf']['options']['fs_latest_thread_custom_field_ver']) {
-			$__finalCompiled .= '
-									<spam>' . $__templater->escape($__vars['thread']['custom_fields'][$__vars['xf']['options']['fs_latest_thread_custom_field_ver']]) . '</spam>
-								';
-		}
-		$__finalCompiled .= '
-							';
-	}
-	$__finalCompiled .= '
-						</spam>
-					</spam>
 
 					';
 	$__compilerTemp1 = '';
@@ -339,12 +319,12 @@ return array(
 	}
 	$__finalCompiled .= '
 
-					<div class="structItem-title">
+					<div class="structItem-title" style="margin-top: 12px;">
 						';
 	$__vars['canPreview'] = $__templater->method($__vars['thread'], 'canPreview', array());
 	$__finalCompiled .= '
- 
-						<a href="' . $__templater->func('link', array('threads' . (($__templater->method($__vars['thread'], 'isUnread', array()) AND (!$__vars['forceRead'])) ? '/unread' : ''), $__vars['thread'], ), true) . '" class="" data-tp-primary="on" data-xf-init="' . ($__vars['canPreview'] ? 'preview-tooltip' : '') . '" data-preview-url="' . ($__vars['canPreview'] ? $__templater->func('link', array('threads/preview', $__vars['thread'], ), true) : '') . '">' . $__templater->escape($__vars['thread']['title']) . '</a>
+
+						<a href="' . $__templater->func('link', array('threads' . (($__templater->method($__vars['thread'], 'isUnread', array()) AND (!$__vars['forceRead'])) ? '/unread' : ''), $__vars['thread'], ), true) . '" class="" data-tp-primary="on" data-xf-init="' . ($__vars['canPreview'] ? 'preview-tooltip' : '') . '" data-preview-url="' . ($__vars['canPreview'] ? $__templater->func('link', array('threads/preview', $__vars['thread'], ), true) : '') . '">' . $__templater->func('snippet', array($__vars['thread']['title'], 25, array('stripBbCode' => true, ), ), true) . '</a>
 					</div>
 
 					<div class="structItem-minor">
@@ -448,18 +428,25 @@ return array(
 	} else {
 		$__finalCompiled .= '
 							<ul class="structItem-parts">
-								<li>' . $__templater->func('username_link', array($__vars['thread']['User'], false, array(
-			'defaultname' => $__vars['thread']['username'],
-		))) . '</li>
-								<li class="structItem-startDate"><a href="' . $__templater->func('link', array('threads', $__vars['thread'], ), true) . '" rel="nofollow">' . $__templater->func('date_dynamic', array($__vars['thread']['post_date'], array(
-		))) . '</a></li>
-								';
-		if (!$__vars['forum']) {
-			$__finalCompiled .= '
-									<li><a href="' . $__templater->func('link', array('forums', $__vars['thread']['Forum'], ), true) . '">' . $__templater->escape($__vars['thread']['Forum']['title']) . '</a></li>
-								';
-		}
-		$__finalCompiled .= '
+								<li class="structItem-startDate">
+									' . $__templater->fontAwesome('fas fa-clock', array(
+			'title' => $__templater->filter('Start date', array(array('for_attr', array()),), false),
+		)) . '
+									<span class="u-srOnly">' . 'Start date' . '</span>
+									<a href="' . $__templater->func('link', array('threads', $__vars['thread'], ), true) . '" rel="nofollow">' . $__templater->escape($__templater->method($__vars['thread'], 'getTimeStampThread', array())) . '</a>
+								</li>
+								<li>
+									' . $__templater->fontAwesome('fas fa-thumbs-up', array(
+		)) . ' ' . $__templater->escape($__vars['thread']['first_post_reaction_score']) . '
+								</li>
+								<li>
+									' . $__templater->fontAwesome('fas fa-eye', array(
+		)) . ' ' . $__templater->escape($__templater->method($__vars['thread'], 'getViewCountKM', array())) . '
+								</li>
+								<li>
+									' . $__templater->fontAwesome('fas fa-star', array(
+		)) . ' ' . $__templater->escape($__vars['thread']['vote_count']) . '
+								</li>
 							</ul>
 
 							';
@@ -587,8 +574,11 @@ return array(
 		}
 
 		.containers {
+			position: relative;
+			top: -12px;
 			display: flex;
 			justify-content: space-between; /* Pushes the divs to opposite sides */
+			margin: 0px 7px;
 		}
 	</style>
 

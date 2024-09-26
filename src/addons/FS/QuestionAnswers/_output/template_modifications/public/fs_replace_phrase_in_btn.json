@@ -1,0 +1,9 @@
+{
+    "template": "forum_view",
+    "description": "Replace Phrase 'Post Thread' with 'Submit your question' ( in Button ) just on Question Forum",
+    "execution_order": 7,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "{{ phrase('post_thread') }}",
+    "replace": "<xf:if is=\"{{$xf.reply.containerKey == 'node-'.$xf.options.fs_questionAnswerForum || $xf.app.request.getRoutePath() == 'esperto/'}}\">\n\t{{ phrase('fs_submit_your_question') }}\n<xf:else />\n\t$0\n</xf:if>"
+}

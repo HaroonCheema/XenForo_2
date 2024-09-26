@@ -1,0 +1,98 @@
+<xf:form action="{{ link($category ? 'dbtech-ecommerce/categories/filters' : 'dbtech-ecommerce/filters', $category) }}">
+	<!--[eCommerce:above_type]-->
+	<div class="menu-row menu-row--separated">
+		{{ phrase('type:') }}
+		<div class="u-inputSpacer">
+			<xf:select name="type" value="{$filters.type}">
+				<xf:option value="">{{ phrase('any') }}</xf:option>
+				<xf:option value="free">{{ phrase('dbtech_ecommerce_free') }}</xf:option>
+				<xf:option value="paid">{{ phrase('dbtech_ecommerce_paid') }}</xf:option>
+				<xf:option value="on_sale">{{ phrase('dbtech_ecommerce_on_sale') }}</xf:option>
+			</xf:select>
+		</div>
+	</div>
+
+	<!--[eCommerce:above_prefixes]-->
+	<xf:if is="$prefixesGrouped is not empty">
+		<div class="menu-row menu-row--separated">
+			{{ phrase('prefix:') }}
+			<div class="u-inputSpacer">
+				<xf:macro template="prefix_macros" name="select"
+					arg-prefixes="{$prefixesGrouped}"
+					arg-type="dbtechEcommerceProduct"
+					arg-selected="{{ $filters.prefix_id ?: 0 }}"
+					arg-name="prefix_id"
+					arg-noneLabel="{{ phrase('(any)') }}"
+				/>
+			</div>
+		</div>
+	</xf:if>
+
+	<!--[eCommerce:above_platform]-->
+	<xf:if is="$platformFilter is not empty">
+		<div class="menu-row menu-row--separated">
+			{{ phrase('dbtech_ecommerce_platform:') }}
+			<div class="u-inputSpacer">
+				<xf:select name="platform" value="{$filters.platform}">
+					<xf:option value="">{{ phrase('any') }}</xf:option>
+
+					<xf:foreach loop="$platformFilter" key="$platformId" value="$platform">
+						<xf:option value="{$platformId}" label="{$platform}" />
+					</xf:foreach>
+
+				</xf:select>
+			</div>
+		</div>
+	</xf:if>
+
+	<!--[eCommerce:above_product_owner]-->
+	<div class="menu-row menu-row--separated">
+		{{ phrase('dbtech_ecommerce_product_owner:') }}
+		<div class="u-inputSpacer">
+			<xf:textbox name="owner" value="{{ $ownerFilter ? $ownerFilter.username : '' }}" ac="single" />
+		</div>
+	</div>
+
+	<!--[eCommerce:above_custom_fields]-->
+	<xf:foreach loop="$xf.app.getCustomFieldsForEdit('dbtechEcommerceProducts', {$set}, 'user', {{ null }}, {$onlyInclude})" key="$fieldId" value="$fieldDefinition">
+		<div class="menu-row menu-row--separated">
+			{$fieldDefinition.title}:
+			<div class="u-inputSpacer">
+				<xf:macro template="custom_fields_macros" name="custom_fields_edit_{$fieldDefinition.field_type}"
+						  arg-set="{$set}"
+						  arg-definition="{$fieldDefinition}"
+						  arg-editMode="user"
+						  arg-namePrefix="product_fields" />
+			</div>
+		</div>
+	</xf:foreach>
+
+	<!--[eCommerce:above_sort_by]-->
+	<div class="menu-row menu-row--separated">
+		{{ phrase('sort_by:') }}
+		<div class="inputGroup u-inputSpacer">
+			<xf:select name="order" value="{{ $filters.order ?: $xf.options.dbtechEcommerceListDefaultOrder }}">
+				<xf:option value="last_update">{{ phrase('dbtech_ecommerce_last_update') }}</xf:option>
+				<xf:option value="creation_date">{{ phrase('dbtech_ecommerce_creation_date') }}</xf:option>
+				<xf:if is="$xf.options.dbtechEcommerceEnableRate">
+					<xf:option value="rating_weighted">{{ phrase('rating') }}</xf:option>
+				</xf:if>
+				<xf:option value="download_count">{{ phrase('dbtech_ecommerce_downloads') }}</xf:option>
+				<xf:option value="title">{{ phrase('title') }}</xf:option>
+				<xf:option value="random">{{ phrase('dbtech_ecommerce_random') }}</xf:option>
+			</xf:select>
+			<span class="inputGroup-splitter"></span>
+			<xf:select name="direction" value="{{ $filters.direction ?: 'desc' }}">
+				<xf:option value="desc">{{ phrase('descending') }}</xf:option>
+				<xf:option value="asc">{{ phrase('ascending') }}</xf:option>
+			</xf:select>
+		</div>
+	</div>
+
+	<div class="menu-footer">
+		<span class="menu-footer-controls">
+			<xf:button type="submit" class="button--primary">{{ phrase('filter') }}</xf:button>
+		</span>
+	</div>
+	<xf:hiddenval name="apply">1</xf:hiddenval>
+</xf:form>

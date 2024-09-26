@@ -1,0 +1,17 @@
+{
+    "public/dbtech_ecommerce_filters.html": {
+        "version_id": 3010071,
+        "version_string": "3.1.0.1",
+        "hash": "265b78b26e5980cabf2e35dca8838c64"
+    },
+    "public/dbtech_ecommerce_overview.html": {
+        "version_id": 3010071,
+        "version_string": "3.1.0.1",
+        "hash": "c0d6397051b6496a92ac1c7c05704005"
+    },
+    "public/dbtech_ecommerce_overview_macros.html": {
+        "version_id": 2020032,
+        "version_string": "2.2.0 Beta 2",
+        "hash": "a31a05b7cb6e918b69f72731ab956e30"
+    }
+}

@@ -1,0 +1,9 @@
+{
+    "template": "whats_new_wrapper",
+    "description": "Add New Answers Tab",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<!--[XF:links:after_thread]-->",
+    "replace": "$0\n<a class=\"{$baseClass} {{ $pageSelected == 'fs_answers' ? {$selectedClass} : '' }}\" href=\"{{ link('whats-new/answers') }}\" rel=\"nofollow\">{{ phrase('fs_new_answers') }}</a>"
+}

@@ -13,8 +13,8 @@
 	<div class="structItem structItem--thread{{ $resource.prefix_id ? 'is-prefix' . $resource.prefix_id : '' }} {{ $resource.isIgnored() ? 'is-ignored' : '' }}{{ $resource.resource_state == 'moderated' ? 'is-moderated' : '' }}{{ $resource.resource_state == 'deleted' ? 'is-deleted' : '' }} js-inlineModContainer js-resourceListItem-{$resource.resource_id}" data-author="{{ $resource.User.username ?: $resource.username }}">
 
 		<xf:extension name="icon_cell">
-			<xf:if is="in_array($thread.node_id, $xf.options.node_id_for_thumb)" >
-				<xf:if is="$xf.reply.template == 'forum_view'OR $xf.reply.template == 'forum_view_latest_content' OR $xf.reply.template == 'tag_view'">
+			<xf:if is="true" >
+				<xf:if is="$xf.reply.template == 'fs_xfrm_overview'OR $xf.reply.template == 'forum_view_latest_content' OR $xf.reply.template == 'fs_rm_list_macros'">
 
 					<div class="structItem-cell structItem-cell--icon" style="width: {{ $thread.Forum.Node.node_thread_thumbnail_width ? $thread.Forum.Node.node_thread_thumbnail_width : $xf.options.thumbnail_width }}; height: {{ $thread.Forum.Node.node_thread_thumbnail_height ? $thread.Forum.Node.node_thread_thumbnail_height : $xf.options.thumb_size_hemant }};">
 						<xf:else/>
@@ -22,7 +22,7 @@
 							</xf:if>
 						<div class="structItem-iconContainer">
 							<a href="{{ link('threads', $thread) }}"> 
-								<xf:if is="$xf.reply.template == 'forum_view'OR $xf.reply.template == 'fs_xfrm_overview' OR $xf.reply.template == 'tag_view'">
+								<xf:if is="$xf.reply.template == 'fs_xfrm_overview'OR $xf.reply.template == 'forum_view_latest_content' OR $xf.reply.template == 'fs_rm_list_macros'">
 									<img src="{$thread.getfirstPostImgUrl()}" style="width: {{ $thread.Forum.Node.node_thread_thumbnail_width ? $thread.Forum.Node.node_thread_thumbnail_width : $xf.options.thumbnail_width }} ; height: {{ $thread.Forum.Node.node_thread_thumbnail_height ? $thread.Forum.Node.node_thread_thumbnail_height : $xf.options.thumb_size_hemant }}; object-fit: cover;">
 									<xf:else/>
 									<img src="{$thread.getfirstPostImgUrl()}" class="avatar avatar--square" style="object-fit: cover;">

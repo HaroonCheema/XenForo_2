@@ -188,7 +188,7 @@ class Templater extends XFCP_Templater
 
         $statusGroup = $options->prefix_group_3;
 
-        if ($prefixId->sv_prefix_ids && $statusGroup) {
+        if ($prefixId->sv_prefix_ids && $statusGroup && $prefixStatus) {
             if ($prefixStatus == "noStatus") {
                 $prefixIds = \XF::finder('XF:ThreadPrefix')->whereId($prefixId->sv_prefix_ids)->where('prefix_group_id', '!=', $statusGroup)->pluckFrom('prefix_id')->fetch()->toArray();
             } elseif ($prefixStatus == "isStatus") {
@@ -263,4 +263,107 @@ class Templater extends XFCP_Templater
 
         return \join($append, $output) . $appendTrailing;
     }
+
+
+
+    // public function fnSvPrefix($templater, &$escape, $contentType, $prefixId, $format = 'html', $append = null, $appendTrailing = null)
+    // {
+    //     if (!$prefixId)
+    //     {
+    //         return '';
+    //     }
+
+    //     if (!is_array($prefixId) && (!($prefixId instanceof Entity) || !isset($prefixId->sv_prefix_ids)))
+    //     {
+    //         return $this->fnPrefix($templater, $escape, $contentType, $prefixId, $format, $append);
+    //     }
+
+    //     $content = $prefixId;
+    //     if (!is_array($prefixId))
+    //     {
+    //         $prefixIds = $content->sv_prefix_ids ?? [];
+    //     }
+    //     else
+    //     {
+    //         $prefixIds = $prefixId;
+    //     }
+
+    //     if (count($prefixIds) === 0)
+    //     {
+    //         return '';
+    //     }
+    //     $prefixCache = $this->app->container('prefixes.' . $contentType);
+    //     $prefixesToRender = [];
+    //     foreach ($prefixIds as $prefixId)
+    //     {
+    //         $prefixId = (int)$prefixId;
+    //         $prefixCss = $prefixCache[$prefixId] ?? null;
+    //         if ($prefixCss === null)
+    //         {
+    //             continue;
+    //         }
+    //         $prefixesToRender[$prefixId] = $prefixCss;
+    //     }
+
+    //     $escape = false;
+    //     if (count($prefixesToRender) === 0)
+    //     {
+    //         return '';
+    //     }
+
+    //     switch ($format)
+    //     {
+    //         case 'html-clicky':
+    //         case 'html':
+    //             $linkPrefixFilter = (\XF::options()->svClickablePrefixes ?? false)
+    //                                 && ($format === 'html-clicky')
+    //                                 && is_callable([$content, 'getSvPrefixFilterLink']);
+    //             $viewParams = [
+    //                 'prefixes'    => $prefixesToRender,
+    //                 'contentType' => $contentType,
+    //                 'entity'      => $content,
+    //                 'withLink'    => $linkPrefixFilter,
+    //                 'linkType'    => '',
+    //                 'suffixPad'   => $appendTrailing !== '',
+    //             ];
+
+    //             return $this->renderMacro('public:sv_multiprefix_prefix_macros', 'render_prefix_html', $viewParams);
+    //         case 'plain':
+    //         default:
+    //             if ($append === null)
+    //             {
+    //                 $append = ' - ';
+    //             }
+    //             break;
+    //     }
+
+    //     $context = $format === 'plain' ? 'raw' : 'html';
+    //     $output = [];
+    //     $func = \XF::$versionId >= 2010370 ? 'func' : 'fn';
+
+    //     foreach ($prefixesToRender as $prefixId => $prefixCss)
+    //     {
+    //         $phraseTitle = $this->$func('prefix_title', [$contentType, $prefixId], false);
+    //         if ($phraseTitle instanceof Phrase)
+    //         {
+    //             $output[] = $phraseTitle->render($context);
+    //         }
+    //         else
+    //         {
+    //             $output[] = $context === 'raw' ? $phraseTitle : \XF::escapeString($phraseTitle, $context);
+    //         }
+    //     }
+
+    //     $escape = false;
+    //     if (count($output) === 0)
+    //     {
+    //         return '';
+    //     }
+
+    //     $append = $append ?: '';
+    //     $appendTrailing = $appendTrailing === null ? $append : $appendTrailing;
+
+    //     return \join($append, $output) . $appendTrailing;
+    // }
+
 }

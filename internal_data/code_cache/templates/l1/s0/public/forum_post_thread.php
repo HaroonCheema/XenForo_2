@@ -152,7 +152,19 @@ return array(
 	} else {
 		$__finalCompiled .= '
 	';
-		$__templater->pageParams['pageTitle'] = $__templater->preEscaped('Post thread');
+		if ((($__vars['xf']['reply']['containerKey'] == ('node-' . $__vars['xf']['options']['fs_questionAnswerForum'])) OR ($__templater->method($__vars['xf']['app']['request'], 'getRoutePath', array()) == 'esperto/'))) {
+			$__finalCompiled .= '
+	';
+			$__templater->pageParams['pageTitle'] = $__templater->preEscaped('Submit your question');
+			$__finalCompiled .= '
+';
+		} else {
+			$__finalCompiled .= '
+	';
+			$__templater->pageParams['pageTitle'] = $__templater->preEscaped('Post thread');
+			$__finalCompiled .= '
+';
+		}
 		$__finalCompiled .= '
 ';
 	}
@@ -175,6 +187,8 @@ return array(
 	' . $__templater->formPrefixInputRow($__vars['prefixes'], array(
 			'type' => 'thread',
 			'prefix-value' => ($__vars['forum']['draft_thread']['prefix_id'] ?: ($__vars['thread']['prefix_id'] ?: $__vars['forum']['default_prefix_id'])),
+			'multi-prefix-value' => ($__vars['forum']['draft_thread']['sv_prefix_ids'] ?: ($__vars['thread']['sv_prefix_ids'] ?: $__vars['forum']['sv_default_prefix_ids'])),
+			'multi-prefix-content-parent' => $__vars['forum'],
 			'textbox-value' => (($__vars['title'] ?: $__vars['thread']['title']) ?: $__vars['forum']['draft_thread']['title']),
 			'textbox-class' => 'input--title',
 			'placeholder' => 'Escrow title',
@@ -346,9 +360,19 @@ return array(
 					' . $__templater->callMacro('helper_thread_options', 'watch_input', array(
 				'thread' => $__vars['thread'],
 			), $__vars) . '
-					' . $__templater->callMacro('helper_thread_options', 'thread_status', array(
-				'thread' => $__vars['thread'],
-			), $__vars) . '
+					';
+			if ((($__vars['xf']['reply']['containerKey'] == ('node-' . $__vars['xf']['options']['fs_questionAnswerForum'])) OR ($__templater->method($__vars['xf']['app']['request'], 'getRoutePath', array()) == 'esperto/'))) {
+				$__compilerTemp10 .= '
+ 
+';
+			} else {
+				$__compilerTemp10 .= '
+	' . $__templater->callMacro('helper_thread_options', 'thread_status', array(
+					'thread' => $__vars['thread'],
+				), $__vars) . '
+';
+			}
+			$__compilerTemp10 .= '
 				';
 		}
 		$__compilerTemp10 .= '	

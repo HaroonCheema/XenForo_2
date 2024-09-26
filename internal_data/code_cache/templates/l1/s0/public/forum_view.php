@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 426ea89559d91425ccfdf0ce408b4684
+// FROM HASH: b621bc1141be88d2a10415c99a1a0341
 return array(
 'extensions' => array('above_node_list' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -233,10 +233,13 @@ return array(
 		';
 	if ($__vars['filters']['prefix_id']) {
 		$__finalCompiled .= '
-			<li><a href="' . $__templater->func('link', array('forums', $__vars['forum'], $__templater->filter($__vars['filters'], array(array('replace', array('prefix_id', null, )),), false), ), true) . '"
-				class="filterBar-filterToggle" data-xf-init="tooltip" title="' . $__templater->filter('Remove this filter', array(array('for_attr', array()),), true) . '">
-				<span class="filterBar-filterToggle-label">' . 'Prefix' . $__vars['xf']['language']['label_separator'] . '</span>
-				' . $__templater->func('prefix_title', array('thread', $__vars['filters']['prefix_id'], ), true) . '</a></li>
+';
+		$__compilerTemp1 = $__vars;
+		$__compilerTemp1['prefixType'] = 'thread';
+		$__compilerTemp1['baseLinkPath'] = 'forums';
+		$__compilerTemp1['container'] = $__vars['forum'];
+		$__finalCompiled .= $__templater->includeTemplate('sv_multiprefix_filter', $__compilerTemp1) . '
+
 		';
 	}
 	$__finalCompiled .= '
@@ -383,9 +386,19 @@ return array(
 
 ';
 	if ($__templater->method($__vars['forum'], 'canCreateThread', array()) OR $__templater->method($__vars['forum'], 'canCreateThreadPreReg', array())) {
+		$__compilerTemp1 = '';
+		if ((($__vars['xf']['reply']['containerKey'] == ('node-' . $__vars['xf']['options']['fs_questionAnswerForum'])) OR ($__templater->method($__vars['xf']['app']['request'], 'getRoutePath', array()) == 'esperto/'))) {
+			$__compilerTemp1 .= '
+	' . 'Submit your question' . '
+';
+		} else {
+			$__compilerTemp1 .= '
+	' . 'Post thread' . '
+';
+		}
 		$__templater->pageParams['pageAction'] = $__templater->preEscaped('
 	' . $__templater->button('
-		' . 'Post thread' . '
+		' . $__compilerTemp1 . '
 	', array(
 			'href' => $__templater->func('link', array('forums/post-thread', $__vars['forum'], ), false),
 			'class' => 'button--cta',
@@ -487,19 +500,19 @@ return array(
 <div class="block ' . $__templater->escape($__templater->renderExtension('thread_list_block_classes', $__vars, $__extensions)) . '" data-xf-init="' . ($__vars['canInlineMod'] ? 'inline-mod' : '') . '" data-type="thread" data-href="' . $__templater->func('link', array('inline-mod', ), true) . '">
 	
 	<div class="block-outer">';
-	$__compilerTemp1 = '';
 	$__compilerTemp2 = '';
-	$__compilerTemp2 .= '
+	$__compilerTemp3 = '';
+	$__compilerTemp3 .= '
 					';
 	if ($__vars['canInlineMod']) {
-		$__compilerTemp2 .= '
+		$__compilerTemp3 .= '
 						' . $__templater->callMacro('inline_mod_macros', 'button', array(), $__vars) . '
 					';
 	}
-	$__compilerTemp2 .= '
+	$__compilerTemp3 .= '
 					';
 	if ($__vars['xf']['visitor']['user_id']) {
-		$__compilerTemp2 .= '
+		$__compilerTemp3 .= '
 						' . $__templater->button('
 							' . 'Mark read' . '
 						', array(
@@ -510,19 +523,19 @@ return array(
 		)) . '
 					';
 	}
-	$__compilerTemp2 .= '
+	$__compilerTemp3 .= '
 					';
 	if ($__templater->method($__vars['forum'], 'canWatch', array())) {
-		$__compilerTemp2 .= '
+		$__compilerTemp3 .= '
 						';
-		$__compilerTemp3 = '';
+		$__compilerTemp4 = '';
 		if ($__vars['forum']['Watch'][$__vars['xf']['visitor']['user_id']]) {
-			$__compilerTemp3 .= 'Unwatch';
+			$__compilerTemp4 .= 'Unwatch';
 		} else {
-			$__compilerTemp3 .= 'Watch';
+			$__compilerTemp4 .= 'Watch';
 		}
-		$__compilerTemp2 .= $__templater->button('
-							' . $__compilerTemp3 . '
+		$__compilerTemp3 .= $__templater->button('
+							' . $__compilerTemp4 . '
 						', array(
 			'href' => $__templater->func('link', array('forums/watch', $__vars['forum'], ), false),
 			'class' => 'button--link',
@@ -533,27 +546,27 @@ return array(
 		)) . '
 					';
 	}
-	$__compilerTemp2 .= '
+	$__compilerTemp3 .= '
 				';
-	if (strlen(trim($__compilerTemp2)) > 0) {
-		$__compilerTemp1 .= '
+	if (strlen(trim($__compilerTemp3)) > 0) {
+		$__compilerTemp2 .= '
 
 ';
 		if ($__templater->func('in_array', array($__vars['forum']['node_id'], $__vars['xf']['options']['fs_forums'], ), false)) {
-			$__compilerTemp1 .= '
+			$__compilerTemp2 .= '
     <div class="blockMessage ' . $__templater->escape($__vars['xf']['options']['fs_color']) . ' ';
 			if ($__vars['xf']['options']['fs_show_icon'] == 1) {
-				$__compilerTemp1 .= 'blockMessage--iconic';
+				$__compilerTemp2 .= 'blockMessage--iconic';
 			}
-			$__compilerTemp1 .= '">
+			$__compilerTemp2 .= '">
         ' . $__templater->filter($__vars['xf']['options']['fs_thread_rules'], array(array('raw', array()),), true) . '
     </div>
 ';
 		}
-		$__compilerTemp1 .= '
+		$__compilerTemp2 .= '
 			<div class="block-outer-opposite">
 				<div class="buttonGroup">
-				' . $__compilerTemp2 . '
+				' . $__compilerTemp3 . '
 				</div>
 			</div>
 		';
@@ -568,7 +581,7 @@ return array(
 		'wrapperclass' => 'block-outer-main',
 		'perPage' => $__vars['perPage'],
 	))) . '
-		' . $__compilerTemp1 . '
+		' . $__compilerTemp2 . '
 	') . '</div>
 
 	<div class="block-container">
@@ -642,7 +655,13 @@ return array(
 
 ' . '
 
+' . '
+
 ';
+	$__templater->modifySidebarHtml('_xfWidgetSidebarB898bbebe37627c50dfd2c6529a0554a', $__templater->renderWidget('forum_overview_members_online', array(), array()), 'replace');
+	$__finalCompiled .= '
+';
+	$__templater->modifySidebarHtml('_xfWidgetSidebarA831c979fb72a52de00df348fad8445f', $__templater->renderWidget('fs_question_answer_count_wid', array(), array()), 'replace');
 	return $__finalCompiled;
 }
 );

@@ -111,15 +111,17 @@ return array(
 					',
 		)) . '
 
-				' . $__templater->formCheckBoxRow(array(
-			'name' => 'require_prefix',
-			'value' => $__vars['category']['require_prefix'],
-		), array(array(
-			'value' => '1',
-			'label' => 'Require users to select a prefix',
-			'hint' => 'If selected, users will be required to select a prefix when creating or editing a resource. This will not be enforced for moderators.',
-			'_type' => 'option',
-		)), array(
+				' . $__templater->formNumberBoxRow(array(
+			'name' => 'sv_multiprefix_min_prefixes',
+			'value' => $__vars['category']['sv_min_prefixes'],
+		), array(
+			'label' => 'Minimum prefixes',
+		)) . '
+' . $__templater->formNumberBoxRow(array(
+			'name' => 'sv_multiprefix_max_prefixes',
+			'value' => $__vars['category']['sv_max_prefixes'],
+		), array(
+			'label' => 'Maximum prefixes',
 		)) . '
 
 			';
@@ -260,6 +262,7 @@ return array(
 		'name' => 'thread_prefix_id',
 		'href' => $__templater->func('link', array('forums/prefixes', ), false),
 		'listenTo' => '#js-rmThreadNodeList',
+		'multiple' => true,
 	), $__vars) . '
 			', array(
 		'label' => 'Automatically created thread prefix',

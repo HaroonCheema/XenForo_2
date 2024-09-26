@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 45c18ab7ab4e2c205a2dac648ca61e78
+// FROM HASH: dfd551137392bbbcdab038ca1785c304
 return array(
 'macros' => array('resource' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -16,10 +16,10 @@ return array(
 	$__finalCompiled = '';
 		$__finalCompiled .= '
 			';
-	if ($__templater->func('in_array', array($__vars['thread']['node_id'], $__vars['xf']['options']['node_id_for_thumb'], ), false)) {
+	if (true) {
 		$__finalCompiled .= '
 				';
-		if ((($__vars['xf']['reply']['template'] == 'forum_view') OR ($__vars['xf']['reply']['template'] == 'forum_view_latest_content')) OR ($__vars['xf']['reply']['template'] == 'tag_view')) {
+		if ((($__vars['xf']['reply']['template'] == 'fs_xfrm_overview') OR ($__vars['xf']['reply']['template'] == 'forum_view_latest_content')) OR ($__vars['xf']['reply']['template'] == 'fs_rm_list_macros')) {
 			$__finalCompiled .= '
 
 					<div class="structItem-cell structItem-cell--icon" style="width: ' . ($__vars['thread']['Forum']['Node']['node_thread_thumbnail_width'] ? $__templater->escape($__vars['thread']['Forum']['Node']['node_thread_thumbnail_width']) : $__templater->escape($__vars['xf']['options']['thumbnail_width'])) . '; height: ' . ($__vars['thread']['Forum']['Node']['node_thread_thumbnail_height'] ? $__templater->escape($__vars['thread']['Forum']['Node']['node_thread_thumbnail_height']) : $__templater->escape($__vars['xf']['options']['thumb_size_hemant'])) . ';">
@@ -33,7 +33,7 @@ return array(
 						<div class="structItem-iconContainer">
 							<a href="' . $__templater->func('link', array('threads', $__vars['thread'], ), true) . '"> 
 								';
-		if ((($__vars['xf']['reply']['template'] == 'forum_view') OR ($__vars['xf']['reply']['template'] == 'fs_xfrm_overview')) OR ($__vars['xf']['reply']['template'] == 'tag_view')) {
+		if ((($__vars['xf']['reply']['template'] == 'fs_xfrm_overview') OR ($__vars['xf']['reply']['template'] == 'forum_view_latest_content')) OR ($__vars['xf']['reply']['template'] == 'fs_rm_list_macros')) {
 			$__finalCompiled .= '
 									<img src="' . $__templater->escape($__templater->method($__vars['thread'], 'getfirstPostImgUrl', array())) . '" style="width: ' . ($__vars['thread']['Forum']['Node']['node_thread_thumbnail_width'] ? $__templater->escape($__vars['thread']['Forum']['Node']['node_thread_thumbnail_width']) : $__templater->escape($__vars['xf']['options']['thumbnail_width'])) . ' ; height: ' . ($__vars['thread']['Forum']['Node']['node_thread_thumbnail_height'] ? $__templater->escape($__vars['thread']['Forum']['Node']['node_thread_thumbnail_height']) : $__templater->escape($__vars['xf']['options']['thumb_size_hemant'])) . '; object-fit: cover;">
 									';

@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: f96e545a8738de14b853f85d0de123c4
+// FROM HASH: 80b8fba01458bec2dc8e0a3fea497f83
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -57,8 +57,7 @@ return array(
 	)) . '
 ', array(
 		'action' => $__templater->func('link', array('crud', ), false),
-	)) . '
-';
+	));
 	return $__finalCompiled;
 }
 );

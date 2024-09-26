@@ -2,6 +2,9 @@
     "public/fs_add_QeA_count.json": {
         "hash": "1a4f3161066ae1baa62be11d1c78925e"
     },
+    "public/fs_answer_tab.json": {
+        "hash": "4b10f2ed17ba90e617576ea89408c057"
+    },
     "public/fs_find_all_QeA.json": {
         "hash": "1a3fb7370bee530aaedb1ea84c826d5d"
     },
@@ -13,6 +16,9 @@
     },
     "public/fs_question_answers_hide_selected_lists.json": {
         "hash": "7c2d5038ae01d5ea54c29a62978b408a"
+    },
+    "public/fs_question_answers_nav_selected.json": {
+        "hash": "82aaded9a97c5c3b56bfad378dd8b5c9"
     },
     "public/fs_question_answers_only_admin_can_reply.json": {
         "hash": "49e651a4253d51d52bbf70efb8634979"
@@ -26,7 +32,22 @@
     "public/fs_question_answthread_vieers_only_admin_can_rpl.json": {
         "hash": "11cb8623f2d75e7e12ac5c454788fc5d"
     },
+    "public/fs_question_tab.json": {
+        "hash": "d2fdf208504866e1c5ec74cf77de2c94"
+    },
+    "public/fs_remove_qa_forum.json": {
+        "hash": "fe8316f121c3787e3b6cf6377d566787"
+    },
+    "public/fs_replace_phrase.json": {
+        "hash": "03272354234777b5d1a1cd617ac5815d"
+    },
+    "public/fs_replace_phrase_in_btn.json": {
+        "hash": "7573ea89983916eef1417d327d661ddd"
+    },
     "public/show_yes_only_to_admin.json": {
         "hash": "1fa7d46cc0135ea13a77bcff0f41cff2"
+    },
+    "public/xf_q_and_a_option_in_search.json": {
+        "hash": "3d0089ea2586c43f9a2670b041c97231"
     }
 }

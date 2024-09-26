@@ -1,0 +1,9 @@
+{
+    "template": "whats_new_wrapper",
+    "description": "Add New Question Tab",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<!--[XF:links:after_thread]-->",
+    "replace": "$0\n<a class=\"{$baseClass} {{ $pageSelected == 'fs_questions' ? {$selectedClass} : '' }}\" href=\"{{ link('whats-new/questions') }}\" rel=\"nofollow\">{{ phrase('fs_new_questions') }}</a>"
+}

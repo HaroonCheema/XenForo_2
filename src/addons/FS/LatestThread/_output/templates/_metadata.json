@@ -2,21 +2,21 @@
     "public/forum_filters_latest.html": {
         "version_id": 1,
         "version_string": "1",
-        "hash": "2f3ae4fe222fdbf1d2f16b5abb07c9ef"
+        "hash": "0a5c8e2e93d75d2742331ff283ecb148"
     },
     "public/forum_view_latest_content.html": {
-        "version_id": 1,
-        "version_string": "1",
-        "hash": "bb075d4527c4b3db3ef26f7b76289cf6"
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d9fa68e5c9debde5b32e9dc787a67b39"
     },
     "public/forum_view_latest_content.less": {
-        "version_id": 1,
-        "version_string": "1",
-        "hash": "cd124c2a8732fe1bcccff518c9bcd2d8"
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "ee0b7988b732daed8cc1b909b5871857"
     },
     "public/fs_latest_thread_list_macros.html": {
-        "version_id": 1,
-        "version_string": "1",
-        "hash": "1b7692cc4da606fde5f823a9bc0cde41"
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "bdd1976dc657823ec043c0740be357e9"
     }
 }

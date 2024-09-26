@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <options>
-  <option option_id="svBlockRemovePrefixWithNoPerm" edit_format="onoff" data_type="boolean" advanced="0">
+  <option option_id="svBlockRemovePrefixWithNoPerm" edit_format="onoff" data_type="boolean">
     <default_value>1</default_value>
     <relation group_id="svMultiPrefix" display_order="10"/>
   </option>
-  <option option_id="svClickablePrefixes" edit_format="onoff" data_type="boolean" advanced="0">
+  <option option_id="svClickablePrefixes" edit_format="onoff" data_type="boolean">
     <default_value>1</default_value>
     <relation group_id="svMultiPrefix" display_order="30"/>
   </option>
-  <option option_id="svMultiPrefixMultipleFilter" edit_format="radio" data_type="string" advanced="0">
+  <option option_id="svMultiPrefixMultipleFilter" edit_format="radio" data_type="string">
     <default_value>and</default_value>
     <edit_format_params>and={{ phrase('svMultiPrefix_filter_and') }}
 or={{ phrase('svMultiPrefix_filter_or') }}</edit_format_params>
     <relation group_id="svMultiPrefix" display_order="50"/>
   </option>
-  <option option_id="svMultiprefixSortDisplay" edit_format="onoff" data_type="boolean" advanced="0">
+  <option option_id="svMultiprefixSortDisplay" edit_format="onoff" data_type="boolean">
     <default_value>0</default_value>
     <relation group_id="svMultiPrefix" display_order="20"/>
   </option>
-  <option option_id="svStripPrefixOnContainerChange" edit_format="onoff" data_type="boolean" advanced="0">
+  <option option_id="svStripPrefixOnContainerChange" edit_format="onoff" data_type="boolean">
     <default_value>1</default_value>
     <relation group_id="svMultiPrefix" display_order="40"/>
   </option>

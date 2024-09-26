@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: bb075d4527c4b3db3ef26f7b76289cf6
+// FROM HASH: d9fa68e5c9debde5b32e9dc787a67b39
 return array(
 'extensions' => array('thread_list' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -94,9 +94,9 @@ return array(
 		' . $__templater->func('page_nav', array(array(
 		'page' => $__vars['page'],
 		'total' => $__vars['total'],
-		'link' => 'forums',
+		'link' => 'latest-contents',
 		'data' => $__vars['forum'],
-		'params' => $__vars['filters'],
+		'params' => $__vars['conditions'],
 		'wrapperclass' => 'block-outer-main',
 		'perPage' => $__vars['perPage'],
 	))) . '

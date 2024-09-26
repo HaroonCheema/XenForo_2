@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 2f3ae4fe222fdbf1d2f16b5abb07c9ef
+// FROM HASH: 0a5c8e2e93d75d2742331ff283ecb148
 return array(
 'extensions' => array('start' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -325,7 +325,7 @@ return array(
 		</div>
 	</div>
 	<div class="menu-row menu-row--separated">
-		' . 'Prefix' . $__vars['xf']['language']['label_separator'] . '
+		' . 'Prefix(status)' . $__vars['xf']['language']['label_separator'] . '
 		<div class="u-inputSpacer">
 			' . $__templater->formSelect(array(
 		'name' => 'prefix_ids3',
@@ -353,7 +353,7 @@ return array(
 	' . $__templater->formHiddenVal('apply', '1', array(
 	)) . '
 ', array(
-		'action' => $__templater->func('link', array('latest-contents', $__vars['forum'], ), false),
+		'action' => $__templater->func('link', array('latest-contents/filters', $__vars['forum'], ), false),
 	));
 	return $__finalCompiled;
 }

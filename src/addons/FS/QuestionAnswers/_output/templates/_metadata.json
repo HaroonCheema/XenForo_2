@@ -3,5 +3,10 @@
         "version_id": 1000700,
         "version_string": "1.0.7",
         "hash": "4f8140932d38c985f375c38b873d035e"
+    },
+    "public/qa_thread_list_macros.html": {
+        "version_id": 1000900,
+        "version_string": "1.0.9",
+        "hash": "6a95e0b9d1336af6e15696711a284324"
     }
 }

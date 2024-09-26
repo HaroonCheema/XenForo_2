@@ -47,4 +47,12 @@
 	$0
 </xf:if>]]></replace>
   </modification>
+  <modification type="public" template="thread_view" modification_key="fs_latest_threat_title_v_game_title" description="fs_latest_threat_title_v_game_title" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:h1>{{ prefix('thread', $thread) }}{$thread.title}</xf:h1>]]></find>
+    <replace><![CDATA[<xf:h1>{{ prefix('thread', $thread) }}{$thread.title}<xf:if is="$xf.options.fs_latest_thread_custom_field_ver And {$thread.custom_fields.{$xf.options.fs_latest_thread_custom_field_ver}}">
+	<spam>[{$thread.custom_fields.{$xf.options.fs_latest_thread_custom_field_ver}}]</spam>
+	</xf:if><xf:if is="$xf.options.fs_latest_thread_custom_field_game And {$thread.custom_fields.{$xf.options.fs_latest_thread_custom_field_game}}">
+	<spam>[{$thread.custom_fields.{$xf.options.fs_latest_thread_custom_field_game}}]</spam>
+	</xf:if></xf:h1>]]></replace>
+  </modification>
 </template_modifications>

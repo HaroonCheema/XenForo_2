@@ -9,6 +9,13 @@ use XF\Pub\Controller\AbstractController;
 
 class ThreadContent extends AbstractController
 {
+	protected function preDispatchController($action, ParameterBag $params)
+	{
+		if (!\xf::visitor()->hasPermission('fs_latest_thread', 'can_check_lts_cnt')) {
+			throw $this->exception($this->notFound(\XF::phrase('do_not_have_permission')));
+		}
+	}
+
 	protected function getForumFilterInput(\XF\Entity\Forum $forum)
 	{
 		$filters = [];
@@ -84,13 +91,14 @@ class ThreadContent extends AbstractController
 		$forum = $forums->first();
 
 		$page = $this->filterPage();
-		$perPage = $this->options()->discussionsPerPage;
+		$perPage = intval($this->options()->fs_latest_thread_per_page);
+
 		$threadFinder = $this->findThreadsWithLatestPosts();
 
-		if ($this->filter('apply', 'uint')) {
-			$threadFinder = $this->getSearchFinder($threadFinder);
+		$conditions = $this->filterSearchConditions();
 
-			$threadFinder->order('view_count', 'DESC');
+		if (isset($conditions['apply']) && $conditions['apply']) {
+			$threadFinder = $this->getSearchFinder($threadFinder);
 
 			if (count($threadFinder->getConditions()) == 0) {
 				return $this->error(\XF::phrase('please_complete_required_field'));
@@ -98,14 +106,12 @@ class ThreadContent extends AbstractController
 		} else {
 			$threadFinder
 				->where('node_id', $forums->keys())
-				->limitByPage($page, $perPage)
 				->order('last_post_date', 'DESC');
 		}
 
-		// $threadFinder
-		// 	->where('discussion_state', 'visible')
-		// 	->where('node_id', $forums->keys())
-		// 	->limitByPage($page, $perPage);
+		$threadFinder
+			->limitByPage($page, $perPage);
+
 
 		$total = $threadFinder->total();
 		$threads = $threadFinder->fetch()->filterViewable();
@@ -144,6 +150,19 @@ class ThreadContent extends AbstractController
 		return $this->view('XF:FindThreads\List', 'forum_view_latest_content', $viewParams);
 	}
 
+	public function actionFilters(ParameterBag $params)
+	{
+		$filters = $this->filterSearchConditions();
+
+		if ($this->filter('apply', 'bool')) {
+			return $this->redirect($this->buildLink(
+				'latest-contents',
+				[],
+				$filters
+			));
+		}
+	}
+
 	/**
 	 * @return \XF\Finder\Thread
 	 */
@@ -167,16 +186,12 @@ class ThreadContent extends AbstractController
 	{
 		$conditions = $this->filterSearchConditions();
 
-
-
-		// echo "<pre>";
-		// var_dump($array = explode(", ", $string););
-		// exit;
-
-
-
 		if (isset($conditions['thread_fields']['node_ids'])) {
 			$threadFinder->where('node_id', $conditions['thread_fields']['node_ids']);
+		} else {
+			$filterNodes = \XF::Options()->fs_filter_node;
+
+			$threadFinder->where('node_id', $filterNodes);
 		}
 
 		if ($conditions['last_days'] > 0 && $conditions['last_days']) {
@@ -208,15 +223,15 @@ class ThreadContent extends AbstractController
 
 		// pendings
 
-		// if (isset($conditions['extags']) && $conditions['extags'] != '') {
-		// 	// $exTags = '"tag":"' . $conditions['extags'] . '"';
+		if (isset($conditions['extags']) && $conditions['extags'] != '') {
+			// $exTags = '"tag":"' . $conditions['extags'] . '"';
 
-		// 	$exTags = explode(", ", $conditions['extags']);
+			$exTags = explode(", ", $conditions['extags']);
 
-		//     $threadFinder->hasTag($exTags);
+			$threadFinder->hasNotTag($exTags);
 
-		// 	// $threadFinder->where('tags', 'not like', $threadFinder->escapeLike($exTags, '%?%'));
-		// }
+			// $threadFinder->where('tags', 'not like', $threadFinder->escapeLike($exTags, '%?%'));
+		}
 
 		if ((isset($conditions['prefix_ids1']) &&  count($conditions['prefix_ids1'])) || (isset($conditions['prefix_ids2']) &&  count($conditions['prefix_ids2'])) || (isset($conditions['prefix_ids3']) &&  count($conditions['prefix_ids3']))) {
 
@@ -241,7 +256,7 @@ class ThreadContent extends AbstractController
 
 	protected function filterSearchConditions()
 	{
-		return $this->filter([
+		$filters = $this->filter([
 			'thread_fields' => 'array',
 			'last_days' => 'int',
 			'order' => 'str',
@@ -252,7 +267,14 @@ class ThreadContent extends AbstractController
 			'prefix_ids1' => 'array',
 			'prefix_ids2' => 'array',
 			'prefix_ids3' => 'array',
+			// 'apply' => 'true',
 		]);
+
+		if ($this->filter('apply', 'uint')) {
+			$filters['apply'] = true;
+		}
+
+		return $filters;
 	}
 
 	protected function getThreadRepo()

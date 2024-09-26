@@ -1,0 +1,9 @@
+{
+    "template": "PAGE_CONTAINER",
+    "description": "Add QuestionAnswers option in dropdown on search form",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:option value=\"\">{{ phrase('everywhere') }}</xf:option>",
+    "replace": "$0\n<xf:if is=\"$xf.options.fs_questionAnswerForum\">\n<xf:set var=\"$questionForumIds\" value=\"{{$xf.options.fs_questionAnswerForum}}\" />\n<xf:set var=\"$qusetionAnswer\">{\"search_type\":\"questionAnswer\",\"c\":{\"nodes\":[{$questionForumIds}]}}</xf:set>\n<xf:option value=\"{$qusetionAnswer}\">{{ phrase('fs_question_answers') }}</xf:option>\n</xf:if>"
+}
