@@ -367,6 +367,7 @@ return array (
   'option.fs_rm_bg_img' => 'Category background image url',
   'option.fs_rm_bg_size' => 'Category background image height',
   'option.fs_rm_bg_width' => 'Category background image width',
+  'option.fs_rm_m_bg_img' => 'Resource background image url',
   'option.fs_saleforums_allow' => 'Included Forums',
   'option.fs_scheduled_ban_user_timezone' => 'Timezones',
   'option.fs_show_icon' => 'Show Icon',

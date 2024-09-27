@@ -18,6 +18,8 @@ return array (
   'widget.fsPackageRating' => 'FS Package Rating',
   'widget.fsPackageRating1231232' => '',
   'widget.fsPackageRatings' => '',
+  'widget.fs_custom_forum_widget' => 'Custom Forum Widget',
+  'widget.fs_media_slider_testing' => 'Testing Media Slider',
   'widget.fs_question_answer_count_wid' => 'Question Answer Counts',
   'widget.latest_followed_profile_posts' => 'Latest profile posts by followers',
   'widget.latest_posts' => 'Latest posts',

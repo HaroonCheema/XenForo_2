@@ -424,6 +424,7 @@ This option requires that the specified account is a catch-all account or suppor
   'option_explain.fs_rm_bg_img' => '',
   'option_explain.fs_rm_bg_size' => 'it\'s required if the  image size needs to increase according to your theme',
   'option_explain.fs_rm_bg_width' => 'it\'s required if the  image size needs to increase according to your theme',
+  'option_explain.fs_rm_m_bg_img' => '',
   'option_explain.fs_saleforums_allow' => 'Select Forums To apply Sale Item',
   'option_explain.fs_scheduled_ban_user_timezone' => 'According to this Time Zone User will be banned.',
   'option_explain.fs_show_icon' => '',

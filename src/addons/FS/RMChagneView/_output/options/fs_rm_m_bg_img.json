@@ -6,7 +6,7 @@
     "validation_class": "",
     "validation_method": "",
     "advanced": false,
-    "default_value": "https://cdn.vectorstock.com/i/500p/96/52/light-blue-background-abstract-pastel-vector-23059652.jpg",
+    "default_value": "https://getuikit.com/v2/docs/images/placeholder_600x400.svg",
     "relations": {
         "fs_rm_change_view": 1
     }

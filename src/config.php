@@ -19,6 +19,5 @@ $config['enableLivePayments'] = false;
 
 $config['debug'] = true;
 
-$config['development']['defaultAddOn'] = 'FS/LatestThread';
+$config['development']['defaultAddOn'] = 'FS/RMChagneView';
 $config['development']['enabled'] = true;
-
