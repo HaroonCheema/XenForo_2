@@ -1,0 +1,140 @@
+<xf:title page="{$page}">{$category.title}</xf:title>
+<xf:description>{$category.description|raw}</xf:description>
+
+<xf:css src="structured_list.less" />
+<xf:css src="fs_rm_cat_style_grid_css.less" />
+
+<style>
+
+	.containerRm {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-around;
+	}
+
+	.responsive-div {
+		background-size: cover;
+		background-position: center;
+		margin: 10px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		color: white;
+		font-size: 20px;
+		text-align: center;
+		background-color: rgba(0, 0, 0, 0.5); /* Fallback color if image doesn't load */
+	}
+
+	@media (max-width: 768px) {
+		.responsive-div {
+			width: 100% !important; /* Full width on small screens */
+		}
+	}
+
+</style>
+
+
+<xf:macro template="metadata_macros" name="canonical_url"
+		  arg-canonicalUrl="{{ link('canonical:resources/categories', $category, {'page': $page > 1 ? $page : null}) }}" />
+
+<xf:breadcrumb source="$category.getBreadcrumbs(false)" />
+
+<xf:macro template="xfrm_resource_page_macros" name="resource_page_options"
+		  arg-category="{$category}" />
+
+<xf:pageaction if="$category.canAddResource()">
+	<xf:button href="{{ link('resources/categories/add', $category) }}" class="button--cta" icon="write">{{ phrase('xfrm_add_resource') }}</xf:button>
+</xf:pageaction>
+
+<xf:if is="$pendingApproval">
+	<div class="blockMessage blockMessage--important">{{ phrase('content_submitted_displayed_pending_approval') }}</div>
+</xf:if>
+
+<xf:if is="$iconError">
+	<div class="blockMessage blockMessage--error">{{ phrase('xfrm_new_icon_could_not_be_applied_try_later') }}</div>
+</xf:if>
+
+<xf:widgetpos id="xfrm_category_above_resources" context-category="{$category}" />
+
+<xf:if is="$canInlineMod">
+	<xf:js src="xf/inline_mod.js" min="1" />
+</xf:if>
+
+<div class="block" data-xf-init="{{ $canInlineMod ? 'inline-mod' : '' }}" data-type="resource" data-href="{{ link('inline-mod') }}">
+	<div class="block-outer"><xf:trim>
+
+		<xf:pagenav page="{$page}" perpage="{$perPage}" total="{$total}"
+					link="resources/categories" data="{$category}" params="{$filters}"
+					wrapperclass="block-outer-main" />
+
+		<xf:if contentcheck="true">
+			<div class="block-outer-opposite">
+				<div class="buttonGroup">
+					<xf:contentcheck>
+						<xf:if is="$canInlineMod">
+							<xf:macro template="inline_mod_macros" name="button" />
+						</xf:if>
+						<xf:if is="$category.canWatch()">
+							<xf:button href="{{ link('resources/categories/watch', $category) }}" class="button--link"
+									   data-xf-click="switch-overlay"
+									   data-sk-watch="{{ phrase('watch') }}"
+									   data-sk-unwatch="{{ phrase('unwatch') }}">
+								<xf:if is="{$category.Watch.{$xf.visitor.user_id}}">{{ phrase('unwatch') }}<xf:else />{{ phrase('watch') }}</xf:if>
+							</xf:button>
+						</xf:if>
+					</xf:contentcheck>
+				</div>
+			</div>
+		</xf:if>
+
+		</xf:trim></div>
+
+	<div class="block-container">
+
+		<div class="block-body">
+			<xf:if is="$resources is not empty">
+				<div class="structItemContainer">
+
+					<div class="structItemContainer-group js-threadList thread-grid">
+						<xf:foreach loop="$resources" value="$resource">
+							<xf:macro template="fs_rm_list_macros" name="resource"
+									  arg-resource="{$resource}"
+									  arg-category="{$category}" />
+						</xf:foreach>
+					</div>
+
+				</div>
+				<xf:elseif is="$filters" />
+				<div class="block-row">{{ phrase('xfrm_there_no_resources_matching_your_filters') }}</div>
+				<xf:else />
+				<div class="block-row">{{ phrase('xfrm_no_resources_have_been_created_yet') }}</div>
+			</xf:if>
+		</div>
+		<xf:comment>
+			<div class="block-body">
+				<xf:if is="$resources is not empty">
+					<div class="structItemContainer">
+						<xf:foreach loop="$resources" value="$resource">
+							<xf:macro template="xfrm_resource_list_macros" name="resource"
+									  arg-resource="{$resource}"
+									  arg-category="{$category}" />
+						</xf:foreach>
+					</div>
+					<xf:elseif is="$filters" />
+					<div class="block-row">{{ phrase('xfrm_there_no_resources_matching_your_filters') }}</div>
+					<xf:else />
+					<div class="block-row">{{ phrase('xfrm_no_resources_have_been_created_yet') }}</div>
+				</xf:if>
+			</div>
+		</xf:comment>
+	</div>
+
+
+	<div class="block-outer block-outer--after">
+		<xf:pagenav
+					page="{$page}" perpage="{$perPage}" total="{$total}"
+					link="resources/categories" data="{$category}" params="{$filters}"
+					wrapperclass="block-outer-main" />
+		<xf:showignored wrapperclass="block-outer-opposite" />
+	</div>
+</div>

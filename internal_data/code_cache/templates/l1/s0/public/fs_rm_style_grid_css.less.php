@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: e498e6f58bd08f1d2053fa60e6298f04
+// FROM HASH: 7a289cd76e7704f9a56862a1145b0cba
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -8,7 +8,7 @@ return array(
 @resource-grid-width: 250px;
 @resource-grid-thumb: 108px;
 @supports(display: grid) {
-    body[data-template="fs_xfrm_overview"] {
+    body[data-template="xfrm_overview"] {
         .structItemContainer-group,
         .structItemContainer-group--sticky {
             display: grid;

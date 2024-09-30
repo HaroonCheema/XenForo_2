@@ -1,13 +1,33 @@
 {
+    "public/fs_rm_cat_style_grid_css.less": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "2a40797e0396a2d72859fc6146755e7c"
+    },
     "public/fs_rm_list_macros.html": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
-        "hash": "7f6cfb0d5b7e6c6b13dcd79fc77ad615"
+        "hash": "7e89eed90e642811b0b0f0f6ff1723ff"
+    },
+    "public/fs_rm_resource_list.less": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "1c1de892fc3caff9743cdc427ff77ae2"
+    },
+    "public/fs_rm_resource_list_slider.less": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "808f2db704e707402ac6ed98e9669edb"
     },
     "public/fs_rm_style_grid_css.less": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
-        "hash": "e498e6f58bd08f1d2053fa60e6298f04"
+        "hash": "7a289cd76e7704f9a56862a1145b0cba"
+    },
+    "public/fs_rm_xfrm_category_view.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "3c622849ea901a7be99448fc6c116e7a"
     },
     "public/fs_xfrm_filters.html": {
         "version_id": 1000010,
@@ -17,6 +37,6 @@
     "public/fs_xfrm_overview.html": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
-        "hash": "a8a1be40501ad54bc5c4f9c73f8b783d"
+        "hash": "cf9d5a3f87da7fcafeb5cbacf27b0a11"
     }
 }

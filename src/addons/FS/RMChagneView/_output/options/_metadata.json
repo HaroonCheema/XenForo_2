@@ -10,5 +10,14 @@
     },
     "fs_rm_m_bg_img.json": {
         "hash": "b6825c02e40bcdc376e11aebcf59d222"
+    },
+    "fs_rm_resource_height_pixcels.json": {
+        "hash": "17374bec608ce79c5d53808df5ea42d4"
+    },
+    "fs_rm_resource_width_percen.json": {
+        "hash": "7725e066dff87b26e05a3b5dc6f68a3b"
+    },
+    "fs_rm_resoureces_per_page.json": {
+        "hash": "a2fb345029df7395cc2d13b7d2150efa"
     }
 }

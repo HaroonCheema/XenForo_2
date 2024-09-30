@@ -17,11 +17,11 @@
     "public/fs_lightslider.less": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
-        "hash": "f82d913dcd8262cca1274ec8d68381b8"
+        "hash": "808f2db704e707402ac6ed98e9669edb"
     },
     "public/widget_custom_forum_widget.html": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
-        "hash": "91b1e365c9c730cb045f8679822f6a52"
+        "hash": "dca3896b0dbd434d806fc4f526572b23"
     }
 }

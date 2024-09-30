@@ -5,6 +5,8 @@
 	<xf:js src="vendor/lightslider/lightslider.js" min="1" />
 	<xf:js src="CustomWidget/slider.js" min="1" />
 
+	{{dump($options.slider|json)}}
+
 	<div class="block" {{ widget_data($widget) }}>
 		<div class="block-container">
 			<h3 class="block-minorHeader">

@@ -1,0 +1,9 @@
+{
+    "template": "xfrm_overview",
+    "description": "fs_rm_replace_temp",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/<xf:title page=\"{\\$page}\">{{ phrase\\('xfrm_resources'\\) }}<\\/xf:title>.*?<xf:widgetpos id=\"xfrm_overview_sidenav\" position=\"sidenav\" \\/>/is",
+    "replace": "<xf:include template=\"fs_xfrm_overview\" />"
+}

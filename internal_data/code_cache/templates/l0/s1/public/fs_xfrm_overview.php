@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: a8a1be40501ad54bc5c4f9c73f8b783d
+// FROM HASH: cf9d5a3f87da7fcafeb5cbacf27b0a11
 return array(
 'macros' => array('simple_list_block' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -77,6 +77,26 @@ return array(
 
 ';
 	$__templater->includeCss('structured_list.less');
+	$__finalCompiled .= '
+
+';
+	$__templater->includeCss('fs_rm_resource_list.less');
+	$__finalCompiled .= '
+';
+	$__templater->includeCss('fs_rm_resource_list_slider.less');
+	$__finalCompiled .= '
+
+';
+	$__templater->includeJs(array(
+		'src' => 'vendor/lightslider/lightslider.js',
+		'min' => '1',
+	));
+	$__finalCompiled .= '
+';
+	$__templater->includeJs(array(
+		'src' => 'RMChagneView/slider.js',
+		'min' => '1',
+	));
 	$__finalCompiled .= '
 
 ';
@@ -186,41 +206,30 @@ return array(
 
 	<div class="block-container">
 
-		<div class="block-body">
-			';
-	if (!$__templater->test($__vars['resources'], 'empty', array())) {
-		$__finalCompiled .= '
-				<div class="structItemContainer">
+		<div class="block-body block-row">
+			<div class="itemList itemList--slider"
+				 data-xf-init="item-slider"
+				 data-xf-item-slider=\'{"item":' . $__templater->escape($__vars['xf']['options']['fs_rm_resoureces_per_page']) . ',"itemWide":3,"itemMedium":2,"itemNarrow":1,"auto":false,"loop":true}\'>
 
-					<div class="structItemContainer-group js-threadList thread-grid">
-						';
-		if ($__templater->isTraversable($__vars['resources'])) {
-			foreach ($__vars['resources'] AS $__vars['resource']) {
-				$__finalCompiled .= '
-							' . $__templater->callMacro('fs_rm_list_macros', 'resource', array(
-					'filterPrefix' => true,
-					'resource' => $__vars['resource'],
-				), $__vars) . '
-						';
-			}
-		}
-		$__finalCompiled .= '
+				';
+	if ($__templater->isTraversable($__vars['resources'])) {
+		foreach ($__vars['resources'] AS $__vars['resource']) {
+			$__finalCompiled .= '
+					<div class="itemList-item itemList-item--slider">
+						' . $__templater->callMacro('fs_rm_list_macros', 'resource', array(
+				'filterPrefix' => true,
+				'resource' => $__vars['resource'],
+			), $__vars) . '
 					</div>
-
-
-				</div>
 				';
-	} else if ($__vars['filters']) {
-		$__finalCompiled .= '
-				<div class="block-row">' . 'There are no resources matching your filters.' . '</div>
-				';
-	} else {
-		$__finalCompiled .= '
-				<div class="block-row">' . 'No resources have been created yet.' . '</div>
-			';
+		}
 	}
 	$__finalCompiled .= '
+
+			</div>
 		</div>
+
+		' . '
 	</div>
 
 	<div class="block-outer block-outer--after">

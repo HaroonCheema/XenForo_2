@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 7f6cfb0d5b7e6c6b13dcd79fc77ad615
+// FROM HASH: 7e89eed90e642811b0b0f0f6ff1723ff
 return array(
 'macros' => array('resource' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -15,55 +15,62 @@ return array(
 {
 	$__finalCompiled = '';
 		$__finalCompiled .= '
-			';
-	if (true) {
-		$__finalCompiled .= '
-				';
-		if ((($__vars['xf']['reply']['template'] == 'fs_xfrm_overview') OR ($__vars['xf']['reply']['template'] == 'forum_view_latest_content')) OR ($__vars['xf']['reply']['template'] == 'fs_rm_list_macros')) {
-			$__finalCompiled .= '
 
-					<div class="structItem-cell structItem-cell--icon" style="width: ' . ($__vars['thread']['Forum']['Node']['node_thread_thumbnail_width'] ? $__templater->escape($__vars['thread']['Forum']['Node']['node_thread_thumbnail_width']) : $__templater->escape($__vars['xf']['options']['thumbnail_width'])) . '; height: ' . ($__vars['thread']['Forum']['Node']['node_thread_thumbnail_height'] ? $__templater->escape($__vars['thread']['Forum']['Node']['node_thread_thumbnail_height']) : $__templater->escape($__vars['xf']['options']['thumb_size_hemant'])) . ';">
-						';
-		}
-		$__finalCompiled .= '
+			<div class="structItem-cell structItem-cell--icon" style="width: ' . ($__vars['thread']['Forum']['Node']['node_thread_thumbnail_width'] ? $__templater->escape($__vars['thread']['Forum']['Node']['node_thread_thumbnail_width']) : $__templater->escape($__vars['xf']['options']['thumbnail_width'])) . '; height: ' . ($__vars['thread']['Forum']['Node']['node_thread_thumbnail_height'] ? $__templater->escape($__vars['thread']['Forum']['Node']['node_thread_thumbnail_height']) : $__templater->escape($__vars['xf']['options']['thumb_size_hemant'])) . ';">
 
-					<div class="structItem-iconContainer">
-						<a href="' . $__templater->func('link', array('threads', $__vars['thread'], ), true) . '"> 
+				<div class="structItem-iconContainer">
+					';
+	if ($__templater->func('count', array($__vars['resource']['Description']['Attachments'], ), false) == 1) {
+		$__finalCompiled .= '
+						<a href="' . $__templater->func('link', array('resources', $__vars['resource'], ), true) . '" class="" data-tp-primary="on">
+
 							';
-		if ((($__vars['xf']['reply']['template'] == 'fs_xfrm_overview') OR ($__vars['xf']['reply']['template'] == 'forum_view_latest_content')) OR ($__vars['xf']['reply']['template'] == 'fs_rm_list_macros')) {
-			$__finalCompiled .= '
-								';
-			if ($__templater->func('count', array($__vars['resource']['Description']['Attachments'], ), false) == 1) {
-				$__finalCompiled .= '
-									';
-				$__vars['i'] = 0;
-				if ($__templater->isTraversable($__vars['resource']['Description']['Attachments'])) {
-					foreach ($__vars['resource']['Description']['Attachments'] AS $__vars['attachment']) {
-						if ($__vars['attachment']['has_thumbnail']) {
-							$__vars['i']++;
-							$__finalCompiled .= '
-										<img src="' . $__templater->escape($__vars['attachment']['thumbnail_url']) . '" alt="' . $__templater->escape($__vars['attachment']['filename']) . '" style="width: ' . ($__vars['thread']['Forum']['Node']['node_thread_thumbnail_width'] ? $__templater->escape($__vars['thread']['Forum']['Node']['node_thread_thumbnail_width']) : $__templater->escape($__vars['xf']['options']['thumbnail_width'])) . ' ; height: ' . ($__vars['thread']['Forum']['Node']['node_thread_thumbnail_height'] ? $__templater->escape($__vars['thread']['Forum']['Node']['node_thread_thumbnail_height']) : $__templater->escape($__vars['xf']['options']['thumb_size_hemant'])) . '; object-fit: cover; border-bottom: solid 2px #fa7d24" loading="lazy">
-									';
-						}
-					}
+		$__vars['i'] = 0;
+		if ($__templater->isTraversable($__vars['resource']['Description']['Attachments'])) {
+			foreach ($__vars['resource']['Description']['Attachments'] AS $__vars['attachment']) {
+				if ($__vars['attachment']['has_thumbnail']) {
+					$__vars['i']++;
+					$__finalCompiled .= '
+								<img src="' . $__templater->escape($__vars['attachment']['thumbnail_url']) . '" alt="' . $__templater->escape($__vars['attachment']['filename']) . '" style="width: ' . $__templater->escape($__vars['xf']['options']['fs_rm_resource_width_percen']) . '%; height: ' . $__templater->escape($__vars['xf']['options']['fs_rm_resource_height_pixcels']) . 'px; object-fit: cover; border-bottom: solid 2px #fa7d24" loading="lazy">
+							';
 				}
-				$__finalCompiled .= '
-									';
-			} else {
-				$__finalCompiled .= '
-									<img src="' . $__templater->escape($__vars['xf']['options']['fs_rm_m_bg_img']) . '" alt="' . $__templater->escape($__vars['attachment']['filename']) . '" style="width: ' . ($__vars['thread']['Forum']['Node']['node_thread_thumbnail_width'] ? $__templater->escape($__vars['thread']['Forum']['Node']['node_thread_thumbnail_width']) : $__templater->escape($__vars['xf']['options']['thumbnail_width'])) . ' ; height: ' . ($__vars['thread']['Forum']['Node']['node_thread_thumbnail_height'] ? $__templater->escape($__vars['thread']['Forum']['Node']['node_thread_thumbnail_height']) : $__templater->escape($__vars['xf']['options']['thumb_size_hemant'])) . '; object-fit: cover; border-bottom: solid 2px #fa7d24" loading="lazy">
-								';
 			}
-			$__finalCompiled .= '
-							';
 		}
 		$__finalCompiled .= '
 						</a>
-					</div>
-					</div>
-			';
+						';
+	} else if ($__templater->func('count', array($__vars['resource']['Description']['Attachments'], ), false) > 1) {
+		$__finalCompiled .= '
+						<div class="slider-container">
+							<div class="slider">
+								';
+		$__vars['i'] = 0;
+		if ($__templater->isTraversable($__vars['resource']['Description']['Attachments'])) {
+			foreach ($__vars['resource']['Description']['Attachments'] AS $__vars['attachment']) {
+				if ($__vars['attachment']['has_thumbnail']) {
+					$__vars['i']++;
+					$__finalCompiled .= '
+									<img src="' . $__templater->escape($__vars['attachment']['thumbnail_url']) . '" class="' . (($__vars['i'] == 1) ? 'active' : ' ') . '" alt="' . $__templater->escape($__vars['attachment']['filename']) . '" style="width: ' . $__templater->escape($__vars['xf']['options']['fs_rm_resource_width_percen']) . '%; height: ' . $__templater->escape($__vars['xf']['options']['fs_rm_resource_height_pixcels']) . 'px; object-fit: cover; border-bottom: solid 2px #fa7d24" loading="lazy">
+								';
+				}
+			}
+		}
+		$__finalCompiled .= '
+							</div>
+							<button class="nav-button left">&lt;</button>
+							<button class="nav-button right">&gt;</button>
+						</div>
+						';
+	} else {
+		$__finalCompiled .= '
+						<a href="' . $__templater->func('link', array('resources', $__vars['resource'], ), true) . '" class="" data-tp-primary="on">
+							<img src="' . $__templater->escape($__vars['xf']['options']['fs_rm_m_bg_img']) . '" alt="' . $__templater->escape($__vars['attachment']['filename']) . '" style="width: ' . $__templater->escape($__vars['xf']['options']['fs_rm_resource_width_percen']) . '%; height: ' . $__templater->escape($__vars['xf']['options']['fs_rm_resource_height_pixcels']) . 'px; object-fit: cover; border-bottom: solid 2px #fa7d24" loading="lazy">
+						</a>
+					';
 	}
 	$__finalCompiled .= '
+				</div>
+			</div>
 		';
 	return $__finalCompiled;
 },
@@ -209,6 +216,58 @@ return array(
 	$__finalCompiled = '';
 	$__finalCompiled .= '
 
+	<style>
+		.slider-container {
+			width: 100%;
+			max-width: 600px;
+			overflow: hidden;
+			position: relative;
+			margin: 0px auto;
+		}
+
+		.slider {
+			display: flex;
+			transition: transform 0.5s ease-in-out;
+		}
+
+		.slider img {
+			width: 100%;
+			flex-shrink: 0;
+			height: 300px;
+			object-fit: cover;
+			display: none;
+		}
+
+		.slider img.active {
+			display: block;
+		}
+
+		/* Left and right navigation buttons */
+		.nav-button {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			background-color: #fff;
+			color: #575f6d;
+			border: none;
+			cursor: pointer;
+			font-size: 18px;
+			z-index: 10;
+		}
+
+		.nav-button.left {
+			left: 0px;
+			border-radius: 0 10px 10px 0;
+			padding: 2px 10px 2px 15px;
+		}
+
+		.nav-button.right {
+			right: 0px;
+			border-radius: 10px 0 0 10px;
+			padding: 2px 15px 2px 10px;
+		}
+	</style>
+
 	';
 	$__templater->includeCss('structured_list.less');
 	$__finalCompiled .= '
@@ -220,6 +279,55 @@ return array(
 		' . $__templater->renderExtension('main_cell', $__vars, $__extensions) . '
 
 	</div>
+
+	<script>
+		// Function to initialize sliders
+		function initializeSliders() {
+			const sliders = document.querySelectorAll(\'.slider-container\');
+
+			sliders.forEach((sliderContainer) => {
+				const slider = sliderContainer.querySelector(\'.slider\');
+				const images = slider.getElementsByTagName(\'img\');
+				const imageCount = images.length;
+				let currentIndex = 0;
+
+				const leftButton = sliderContainer.querySelector(\'.nav-button.left\');
+				const rightButton = sliderContainer.querySelector(\'.nav-button.right\');
+
+				function changeSlide(index) {
+					for (let img of images) {
+						img.classList.remove(\'active\');
+					}
+					images[index].classList.add(\'active\');
+				}
+
+				// Left button click event
+				leftButton.addEventListener(\'click\', () => {
+					currentIndex--;
+					if (currentIndex < 0) {
+						currentIndex = imageCount - 1;
+					}
+					changeSlide(currentIndex);
+				});
+
+				// Right button click event
+				rightButton.addEventListener(\'click\', () => {
+					currentIndex++;
+					if (currentIndex >= imageCount) {
+						currentIndex = 0;
+					}
+					changeSlide(currentIndex);
+				});
+
+				// Initialize first slide
+				changeSlide(currentIndex);
+			});
+		}
+
+		// Initialize all sliders on the page
+		window.onload = initializeSliders;
+	</script>
+
 ';
 	return $__finalCompiled;
 }

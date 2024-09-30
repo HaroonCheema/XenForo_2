@@ -23,6 +23,24 @@
         "version_string": "1.0.0 Alpha",
         "hash": "74a1d187a1a5aed3b2a8ea62989567bb"
     },
+    "option.fs_rm_resource_height_pixcels.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "b8385ffd34c835c7d350f5d20339e1ac"
+    },
+    "option.fs_rm_resource_width_percen.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "12e681f7d97ae39c46c2d6c92223a933"
+    },
+    "option.fs_rm_resoureces_per_page.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "b5883cacce89455adc04f407d1ce02f3"
+    },
     "option_explain.fs_rm_bg_img.txt": {
         "global_cache": false,
         "version_id": 1000010,
@@ -42,6 +60,24 @@
         "hash": "9d6539ce636c13b0ea933bf42b800f52"
     },
     "option_explain.fs_rm_m_bg_img.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "option_explain.fs_rm_resource_height_pixcels.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "option_explain.fs_rm_resource_width_percen.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "option_explain.fs_rm_resoureces_per_page.txt": {
         "global_cache": false,
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",

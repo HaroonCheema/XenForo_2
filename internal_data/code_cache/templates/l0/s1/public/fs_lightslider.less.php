@@ -1,17 +1,10 @@
 <?php
-// FROM HASH: f82d913dcd8262cca1274ec8d68381b8
+// FROM HASH: 808f2db704e707402ac6ed98e9669edb
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
 	$__finalCompiled = '';
-	$__finalCompiled .= '// NOTE: there are custom XF overrides at the bottom
-
-/*! lightslider - v1.1.6 - 2016-10-25
-* https://github.com/sachinchoolur/lightslider
-* Copyright (c) 2016 Sachin N; Licensed MIT */
-/** /!!! core css Should not edit !!!/**/
-
-.lSSlideOuter {
+	$__finalCompiled .= '.lSSlideOuter {
     overflow: hidden;
     -webkit-touch-callout: none;
     -webkit-user-select: none;

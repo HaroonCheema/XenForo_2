@@ -41,8 +41,7 @@ class ResourceItem extends AbstractController
 
 		$viewParams = $categoryParams + $listParams;
 
-		return $this->view('XFRM:Overview', 'fs_xfrm_overview', $viewParams);
-		// return $this->view('XFRM:Overview', 'xfrm_overview', $viewParams);
+		return $this->view('XFRM:Overview', 'xfrm_overview', $viewParams);
 	}
 
 	public function actionFilters()

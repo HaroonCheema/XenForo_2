@@ -1,0 +1,9 @@
+{
+    "template": "xfrm_category_view",
+    "description": "fs_rm_xfrm_category_view_replace_temp",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/<xf:title page=\"{\\$page}\">{\\$category\\.title}<\\/xf:title>.*?<xf:widgetpos id=\"xfrm_category_sidenav\" position=\"sidenav\" context-category=\"{\\$category}\" \\/>/is",
+    "replace": "<xf:include template=\"fs_rm_xfrm_category_view\" />"
+}
