@@ -19,9 +19,7 @@
 									<xf:foreach loop="$resources" value="$resource">
 										<xf:macro template="fs_rm_list_macros" name="resource"
 												  arg-filterPrefix="{{ true }}"
-												  arg-resource="{$resource}"
-
-												  args="{$templateOverrides.thread_list_macro_args}"  />
+												  arg-resource="{$resource}" />
 									</xf:foreach>
 									<xf:if is="$showDateLimitDisabler">
 										<xf:macro name="date_limit_disabler" arg-forum="{$forum}" arg-page="{$page}" arg-filters="{$filters}" />

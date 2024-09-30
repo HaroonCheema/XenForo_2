@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 7910ab3b1d0036568ebeeed330f776a7
+// FROM HASH: a8a1be40501ad54bc5c4f9c73f8b783d
 return array(
 'macros' => array('simple_list_block' => array(
 'arguments' => function($__templater, array $__vars) { return array(
