@@ -185,8 +185,6 @@ return array(
 		'type' => 'thread',
 		'href' => $__templater->func('link', array('forums/prefixes', ), false),
 		'listen-to' => '#js-nodeList',
-		'multi-prefix-value' => $__vars['feed']['sv_prefix_ids'],
-		'full-row' => true,
 	), array(
 		'label' => 'Title template',
 		'hint' => 'Optional',

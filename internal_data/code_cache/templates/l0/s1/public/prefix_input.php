@@ -145,7 +145,6 @@ return array(
 		'type' => $__vars['prefixType'],
 		'class' => 'js-prefixSelect u-noJsOnly',
 		'helpHref' => $__vars['helpHref'],
-		'multiple' => $__vars['prefixMultiple'],
 	), $__vars) . '
 ');
 	$__finalCompiled .= '

@@ -37,10 +37,6 @@ return array(
 			' . $__templater->formPrefixInputRow($__vars['prefixes'], array(
 		'type' => 'resource',
 		'prefix-value' => $__vars['resource']['prefix_id'],
-		'multi-prefix-value' => $__vars['resource']['sv_prefix_ids'],
-		'multi-prefix-content-parent' => $__vars['resource']['Category'],
-		'multi-prefix-content' => $__vars['resource'],
-		'full-row' => true,
 		'textbox-value' => $__vars['resource']['title'],
 		'href' => $__templater->func('link', array('resources/prefixes', ), false),
 		'listen-to' => '< .js-prefixListenContainer | .js-categoryList',

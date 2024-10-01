@@ -13,10 +13,6 @@ return array(
 	' . $__templater->formPrefixInputRow($__vars['prefixes'], array(
 		'type' => 'resource',
 		'prefix-value' => $__vars['resource']['prefix_id'],
-		'multi-prefix-value' => $__vars['resource']['sv_prefix_ids'],
-		'multi-prefix-content-parent' => $__vars['resource']['Category'],
-		'multi-prefix-content' => $__vars['resource'],
-		'full-row' => true,
 		'textbox-value' => $__vars['resource']['title_'],
 		'maxlength' => $__templater->func('max_length', array($__vars['resource'], 'title', ), false),
 		'placeholder' => 'Title' . $__vars['xf']['language']['ellipsis'],

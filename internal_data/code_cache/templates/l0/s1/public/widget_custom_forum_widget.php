@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: dca3896b0dbd434d806fc4f526572b23
+// FROM HASH: 91b1e365c9c730cb045f8679822f6a52
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -25,8 +25,6 @@ return array(
 			'min' => '1',
 		));
 		$__finalCompiled .= '
-
-	' . $__templater->func('dump', array($__templater->filter($__vars['options']['slider'], array(array('json', array()),), false), ), true) . '
 
 	<div class="block" ' . $__templater->func('widget_data', array($__vars['widget'], ), true) . '>
 		<div class="block-container">

@@ -370,16 +370,16 @@ return array(
 	$__vars['canPreview'] = $__templater->method($__vars['thread'], 'canPreview', array());
 	$__finalCompiled .= '
 				';
-	if ($__vars['thread']['prefix_id'] AND ($__vars['svMultiPrefixSubtitle'] == '')) {
+	if ($__vars['thread']['prefix_id']) {
 		$__finalCompiled .= '
 					';
-		if (($__vars['forum'] OR ($__vars['__globals']['filterRoute'] == 'watched/threads')) OR $__vars['xf']['options']['svClickablePrefixes']) {
+		if ($__vars['forum']) {
 			$__finalCompiled .= '
-						' . $__templater->func('prefix_filters', array('thread', ($__vars['__globals']['filterRoute'] ?: 'forums'), (($__vars['__globals']['filterContainer'] === null) ? ($__vars['forum'] ?: $__vars['thread']['Forum']) : $__vars['__globals']['filterContainer']), $__vars['thread'], $__vars['__globals']['filters'], ), true) . '
+						<a href="' . $__templater->func('link', array('forums', $__vars['forum'], array('prefix_id' => $__vars['thread']['prefix_id'], ), ), true) . '" class="labelLink" rel="nofollow">' . $__templater->func('prefix', array('thread', $__vars['thread'], 'html', '', ), true) . '</a>
 					';
 		} else {
 			$__finalCompiled .= '
-						' . $__templater->func('prefix', array('thread', $__vars['thread'], 'html-clicky', '', ), true) . '
+						' . $__templater->func('prefix', array('thread', $__vars['thread'], 'html', '', ), true) . '
 					';
 		}
 		$__finalCompiled .= '
@@ -703,11 +703,7 @@ return array(
 	}
 	$__finalCompiled .= '
 
-
-';
-	$__vars['svMultiPrefixSubtitle'] = (($__vars['svMultiPrefixSubtitle'] === null) ? $__templater->func('property', array('svMultiPrefixSubtitle', ), false) : $__vars['svMultiPrefixSubtitle']);
-	$__finalCompiled .= '
-	<div class="structItem structItem--thread' . ($__vars['thread']['sv_prefix_ids'] ? (' is-prefix' . $__templater->filter($__vars['thread']['sv_prefix_ids'], array(array('join', array(' is-prefix', )),), true)) : '') . ($__templater->method($__vars['thread'], 'isIgnored', array()) ? ' is-ignored' : '') . (($__templater->method($__vars['thread'], 'isUnread', array()) AND (!$__vars['forceRead'])) ? ' is-unread' : '') . (($__vars['thread']['discussion_state'] == 'moderated') ? ' is-moderated' : '') . (($__vars['thread']['discussion_state'] == 'deleted') ? ' is-deleted' : '') . ' js-inlineModContainer js-threadListItem-' . $__templater->escape($__vars['thread']['thread_id']) . '" data-author="' . ($__templater->escape($__vars['thread']['User']['username']) ?: $__templater->escape($__vars['thread']['username'])) . '">
+	<div class="structItem structItem--thread' . ($__vars['thread']['prefix_id'] ? (' is-prefix' . $__templater->escape($__vars['thread']['prefix_id'])) : '') . ($__templater->method($__vars['thread'], 'isIgnored', array()) ? ' is-ignored' : '') . (($__templater->method($__vars['thread'], 'isUnread', array()) AND (!$__vars['forceRead'])) ? ' is-unread' : '') . (($__vars['thread']['discussion_state'] == 'moderated') ? ' is-moderated' : '') . (($__vars['thread']['discussion_state'] == 'deleted') ? ' is-deleted' : '') . ' js-inlineModContainer js-threadListItem-' . $__templater->escape($__vars['thread']['thread_id']) . '" data-author="' . ($__templater->escape($__vars['thread']['User']['username']) ?: $__templater->escape($__vars['thread']['username'])) . '">
 		
 	' . $__templater->renderExtension('icon_cell', $__vars, $__extensions) . '
 
@@ -731,10 +727,6 @@ return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
 	$__finalCompiled = '';
-	$__finalCompiled .= '
-
-';
-	$__vars['svMultiPrefixSubtitle'] = (($__vars['svMultiPrefixSubtitle'] === null) ? $__templater->func('property', array('svMultiPrefixSubtitle', ), false) : $__vars['svMultiPrefixSubtitle']);
 	$__finalCompiled .= '
 	<div class="contentRow">
 		';
@@ -760,29 +752,15 @@ return array(
 			';
 	if ($__templater->method($__vars['thread'], 'isUnread', array())) {
 		$__finalCompiled .= '
-				<a href="' . $__templater->func('link', array('threads/unread', $__vars['thread'], ), true) . '">' . (($__vars['svMultiPrefixSubtitle'] == '') ? $__templater->func('prefix', array('thread', $__vars['thread'], ), true) : '') . $__templater->escape($__vars['thread']['title']) . (($__vars['svMultiPrefixSubtitle'] === 'suffix') ? $__templater->func('prefix', array('thread', $__vars['thread'], ), true) : '') . '</a>
+				<a href="' . $__templater->func('link', array('threads/unread', $__vars['thread'], ), true) . '">' . $__templater->func('prefix', array('thread', $__vars['thread'], ), true) . $__templater->escape($__vars['thread']['title']) . '</a>
 			';
 	} else {
 		$__finalCompiled .= '
-				<a href="' . $__templater->func('link', array('threads/post', $__vars['thread'], array('post_id' => $__vars['thread']['last_post_id'], ), ), true) . '">' . (($__vars['svMultiPrefixSubtitle'] == '') ? $__templater->func('prefix', array('thread', $__vars['thread'], ), true) : '') . $__templater->escape($__vars['thread']['title']) . (($__vars['svMultiPrefixSubtitle'] === 'suffix') ? $__templater->func('prefix', array('thread', $__vars['thread'], ), true) : '') . '</a>
+				<a href="' . $__templater->func('link', array('threads/post', $__vars['thread'], array('post_id' => $__vars['thread']['last_post_id'], ), ), true) . '">' . $__templater->func('prefix', array('thread', $__vars['thread'], ), true) . $__templater->escape($__vars['thread']['title']) . '</a>
 			';
 	}
 	$__finalCompiled .= '
 
-
-';
-	if ($__vars['svMultiPrefixSubtitle'] === 'subtitle') {
-		$__compilerTemp1 = '';
-		$__compilerTemp1 .= $__templater->func('prefix', array('thread', $__vars['thread'], ), true);
-		if (strlen(trim($__compilerTemp1)) > 0) {
-			$__finalCompiled .= '
-	<div class="contentRow-minor contentRow-minor--hideLinks">
-		' . $__compilerTemp1 . '
-	</div>
-';
-		}
-	}
-	$__finalCompiled .= '
 			<div class="contentRow-minor contentRow-minor--hideLinks">
 				<ul class="listInline listInline--bullet">
 					<li>' . 'Latest: ' . $__templater->escape($__vars['thread']['last_post_cache']['username']) . '' . '</li>
@@ -807,10 +785,6 @@ return array(
 {
 	$__finalCompiled = '';
 	$__finalCompiled .= '
-
-';
-	$__vars['svMultiPrefixSubtitle'] = (($__vars['svMultiPrefixSubtitle'] === null) ? $__templater->func('property', array('svMultiPrefixSubtitle', ), false) : $__vars['svMultiPrefixSubtitle']);
-	$__finalCompiled .= '
 	<div class="contentRow">
 		<div class="contentRow-figure">
 		';
@@ -824,22 +798,8 @@ return array(
 	$__finalCompiled .= '
 		</div>
 		<div class="contentRow-main contentRow-main--close">
-			<a href="' . $__templater->func('link', array('threads', $__vars['thread'], ), true) . '">' . (($__vars['svMultiPrefixSubtitle'] == '') ? $__templater->func('prefix', array('thread', $__vars['thread'], ), true) : '') . $__templater->escape($__vars['thread']['title']) . (($__vars['svMultiPrefixSubtitle'] === 'suffix') ? $__templater->func('prefix', array('thread', $__vars['thread'], ), true) : '') . '</a>
+			<a href="' . $__templater->func('link', array('threads', $__vars['thread'], ), true) . '">' . $__templater->func('prefix', array('thread', $__vars['thread'], ), true) . $__templater->escape($__vars['thread']['title']) . '</a>
 
-
-';
-	if ($__vars['svMultiPrefixSubtitle'] === 'subtitle') {
-		$__compilerTemp1 = '';
-		$__compilerTemp1 .= $__templater->func('prefix', array('thread', $__vars['thread'], ), true);
-		if (strlen(trim($__compilerTemp1)) > 0) {
-			$__finalCompiled .= '
-	<div class="contentRow-minor contentRow-minor--hideLinks">
-		' . $__compilerTemp1 . '
-	</div>
-';
-		}
-	}
-	$__finalCompiled .= '
 			<div class="contentRow-minor contentRow-minor--hideLinks">
 				<ul class="listInline listInline--bullet">
 					<li>' . 'Started by ' . $__templater->escape($__vars['thread']['username']) . '' . '</li>
@@ -869,10 +829,6 @@ return array(
 {
 	$__finalCompiled = '';
 		$__finalCompiled .= '
-
-';
-	$__vars['svMultiPrefixSubtitle'] = (($__vars['svMultiPrefixSubtitle'] === null) ? $__templater->func('property', array('svMultiPrefixSubtitle', ), false) : $__vars['svMultiPrefixSubtitle']);
-	$__finalCompiled .= '
 			<div class="structItem-cell structItem-cell--icon">
 				<div class="structItem-iconContainer">
 					' . $__templater->func('avatar', array($__vars['xf']['visitor'], 's', false, array(
@@ -890,7 +846,7 @@ return array(
 
 				' . $__templater->formRow('
 
-					' . $__templater->formPrefixInput(array(), array(
+					' . $__templater->formPrefixInput($__vars['prefixes'], array(
 		'maxlength' => $__templater->func('max_length', array('XF:Thread', 'title', ), false),
 		'placeholder' => $__vars['forum']['thread_prompt'],
 		'title' => 'Post a new thread in this forum',

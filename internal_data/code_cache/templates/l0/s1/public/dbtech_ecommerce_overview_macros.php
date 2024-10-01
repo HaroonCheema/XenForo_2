@@ -54,13 +54,10 @@ return array(
 						';
 	if ($__vars['filters']['prefix_id']) {
 		$__compilerTemp1 .= '
-';
-		$__compilerTemp2 = $__vars;
-		$__compilerTemp2['prefixType'] = 'dbtechEcommerceProduct';
-		$__compilerTemp2['baseLinkPath'] = $__vars['baseLinkPath'];
-		$__compilerTemp2['container'] = $__vars['category'];
-		$__compilerTemp1 .= $__templater->includeTemplate('sv_multiprefix_filter', $__compilerTemp2) . '
-
+							<li><a href="' . $__templater->func('link', array($__vars['baseLinkPath'], $__vars['category'], $__templater->filter($__vars['filters'], array(array('replace', array('prefix_id', null, )),), false), ), true) . '"
+								class="filterBar-filterToggle" data-xf-init="tooltip" title="' . $__templater->filter('Remove this filter', array(array('for_attr', array()),), true) . '">
+								<span class="filterBar-filterToggle-label">' . 'Prefix' . $__vars['xf']['language']['label_separator'] . '</span>
+								' . $__templater->func('prefix_title', array('dbtechEcommerceProduct', $__vars['filters']['prefix_id'], ), true) . '</a></li>
 						';
 	}
 	$__compilerTemp1 .= '
