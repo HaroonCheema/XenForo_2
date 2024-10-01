@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<options>
+  <option option_id="fs_rm_bg_img" edit_format="textbox" data_type="string">
+    <default_value>https://cdn.vectorstock.com/i/500p/96/52/light-blue-background-abstract-pastel-vector-23059652.jpg</default_value>
+    <relation group_id="fs_rm_change_view" display_order="1"/>
+  </option>
+  <option option_id="fs_rm_bg_size" edit_format="textbox" data_type="string">
+    <default_value>150px</default_value>
+    <relation group_id="fs_rm_change_view" display_order="1"/>
+  </option>
+  <option option_id="fs_rm_bg_width" edit_format="textbox" data_type="string">
+    <default_value>22%</default_value>
+    <relation group_id="fs_rm_change_view" display_order="1"/>
+  </option>
+  <option option_id="fs_rm_m_bg_img" edit_format="textbox" data_type="string">
+    <default_value>https://getuikit.com/v2/docs/images/placeholder_600x400.svg</default_value>
+    <relation group_id="fs_rm_change_view" display_order="1"/>
+  </option>
+  <option option_id="fs_rm_resource_height_pixcels" edit_format="spinbox" data_type="positive_integer">
+    <default_value>150</default_value>
+    <edit_format_params>min=100
+max=200
+units={{ phrase('units_pixels') }}</edit_format_params>
+    <relation group_id="fs_rm_change_view" display_order="3"/>
+  </option>
+  <option option_id="fs_rm_resource_width_percen" edit_format="spinbox" data_type="positive_integer">
+    <default_value>100</default_value>
+    <edit_format_params>min=50
+max=100
+units=%</edit_format_params>
+    <relation group_id="fs_rm_change_view" display_order="2"/>
+  </option>
+  <option option_id="fs_rm_resoureces_per_page" edit_format="spinbox" data_type="positive_integer">
+    <default_value>4</default_value>
+    <edit_format_params>min=4</edit_format_params>
+    <relation group_id="fs_rm_change_view" display_order="1"/>
+  </option>
+</options>

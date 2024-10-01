@@ -23,6 +23,12 @@
         "version_string": "1.0.0 Alpha",
         "hash": "cc35c2065afaf479d2afea1c7cb5bd89"
     },
+    "fs_rm_search_resource.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "773569e0b6611c97dcd04b2d0ed97d01"
+    },
     "option.fs_rm_bg_img.txt": {
         "global_cache": false,
         "version_id": 1000010,

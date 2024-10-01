@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: bf6315f324ecb5dd34d872c331c742fd
+// FROM HASH: 67104836648fa42324bb1c50e82dfe8d
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -127,7 +127,6 @@ return array(
 	if ($__templater->isTraversable($__vars['results'])) {
 		foreach ($__vars['results'] AS $__vars['result']) {
 			$__finalCompiled .= '
-				' . $__templater->func('dump', array('hello', ), true) . '
 				' . $__templater->filter($__templater->method($__vars['result'], 'render', array(array('mod' => $__vars['activeModType'], ), )), array(array('raw', array()),), true) . '
 			';
 		}

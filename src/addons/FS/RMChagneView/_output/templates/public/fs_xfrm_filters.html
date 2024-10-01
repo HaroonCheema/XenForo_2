@@ -1,50 +1,82 @@
-<xf:form action="{{ link($category ? 'resources/categories/filters' : 'resources/filters', $category) }}">
-
+<xf:form action="{{ link('search/search') }}" class="block" ajax="true">
 	<div class="menu-row menu-row--separated">
 		<div class="inputGroup u-inputSpacer">
 
-			<!--[XF:above_type]-->
-			<xf:select name="type" value="{$filters.type}">
-				<xf:option value="">{{ phrase('any') }}</xf:option>
-				<xf:option value="free">{{ phrase('xfrm_free') }}</xf:option>
-				<xf:option value="paid">{{ phrase('xfrm_paid') }}</xf:option>
-			</xf:select>
+			<xf:set var="$controlId">{{ unique_id() }}</xf:set>
+
+			<xf:textbox type="search" placeholder="{{ phrase('fs_rm_search_resource') }}" name="keywords" value="{$input.keywords}" autofocus="autofocus" id="{$controlId}" />
 			<span class="inputGroup-splitter"></span>
 
-			<!--[XF:above_prefixes]-->
-			<xf:if is="$prefixesGrouped is not empty">
-				<xf:macro template="prefix_macros" name="select"
-						  arg-prefixes="{$prefixesGrouped}"
-						  arg-type="resource"
-						  arg-selected="{{ $filters.prefix_id ?: 0 }}"
-						  arg-name="prefix_id"
-						  arg-noneLabel="{{ phrase('(any)') }}"
-						  />
-			</xf:if>
-			<span class="inputGroup-splitter"></span>
-
-			<!--[XF:above_created_by]-->
-			<xf:textbox name="creator" value="{{ $creatorFilter ? $creatorFilter.username : '' }}" ac="single" />
-			<span class="inputGroup-splitter"></span>
-
-			<!--[XF:above_sort_by]-->
-			<xf:select name="order" value="{{ $filters.order ?: $xf.options.xfrmListDefaultOrder }}">
-				<xf:option value="last_update">{{ phrase('xfrm_last_update') }}</xf:option>
-				<xf:option value="resource_date">{{ phrase('xfrm_submission_date') }}</xf:option>
-				<xf:option value="rating_weighted">{{ phrase('rating') }}</xf:option>
-				<xf:option value="download_count">{{ phrase('xfrm_downloads') }}</xf:option>
-				<xf:option value="title">{{ phrase('title') }}</xf:option>
-			</xf:select>
-			<span class="inputGroup-splitter"></span>
-
-			<xf:select name="direction" value="{{ $filters.direction ?: 'desc' }}">
-				<xf:option value="desc">{{ phrase('descending') }}</xf:option>
-				<xf:option value="asc">{{ phrase('ascending') }}</xf:option>
+			<xf:set var="$categoriesControlId" value="{{ unique_id() }}" />
+			<xf:select name="c[categories][]" value="{$input.c.categories|default([0])}" id="{$categoriesControlId}">
+				<xf:option value="">{{ phrase('all_categories') }}</xf:option>
+				<xf:foreach loop="$categoryTree.getFlattened(0)" value="$treeEntry">
+					<xf:option value="{$treeEntry.record.resource_category_id}">{{ repeat('&nbsp;&nbsp;', $treeEntry.depth)|raw }} {$treeEntry.record.title}</xf:option>
+				</xf:foreach>
 			</xf:select>
 
-			<xf:button type="submit" class="button--primary">{{ phrase('filter') }}</xf:button>
+			<span class="inputGroup-splitter"></span>
+
+
+			<xf:button type="submit" class="button--primary">{{ phrase('search') }}</xf:button>
 		</div>
 	</div>
 
-	<xf:hiddenval name="apply">1</xf:hiddenval>
+
+	<xf:hiddenval name="search_type" value="resource"/>
+	<xf:hiddenval name="c[child_categories]" value="true"/>
+	<xf:hiddenval name="c[title_only]" value=""/>
 </xf:form>
+
+<xf:comment>
+	<xf:form action="{{ link($category ? 'resources/categories/filters' : 'resources/filters', $category) }}">
+
+		<div class="menu-row menu-row--separated">
+			<div class="inputGroup u-inputSpacer">
+
+				<!--[XF:above_type]-->
+				<xf:select name="type" value="{$filters.type}">
+					<xf:option value="">{{ phrase('any') }}</xf:option>
+					<xf:option value="free">{{ phrase('xfrm_free') }}</xf:option>
+					<xf:option value="paid">{{ phrase('xfrm_paid') }}</xf:option>
+				</xf:select>
+				<span class="inputGroup-splitter"></span>
+
+				<!--[XF:above_prefixes]-->
+				<xf:if is="$prefixesGrouped is not empty">
+					<xf:macro template="prefix_macros" name="select"
+							  arg-prefixes="{$prefixesGrouped}"
+							  arg-type="resource"
+							  arg-selected="{{ $filters.prefix_id ?: 0 }}"
+							  arg-name="prefix_id"
+							  arg-noneLabel="{{ phrase('(any)') }}"
+							  />
+				</xf:if>
+				<span class="inputGroup-splitter"></span>
+
+				<!--[XF:above_created_by]-->
+				<xf:textbox name="creator" value="{{ $creatorFilter ? $creatorFilter.username : '' }}" ac="single" />
+				<span class="inputGroup-splitter"></span>
+
+				<!--[XF:above_sort_by]-->
+				<xf:select name="order" value="{{ $filters.order ?: $xf.options.xfrmListDefaultOrder }}">
+					<xf:option value="last_update">{{ phrase('xfrm_last_update') }}</xf:option>
+					<xf:option value="resource_date">{{ phrase('xfrm_submission_date') }}</xf:option>
+					<xf:option value="rating_weighted">{{ phrase('rating') }}</xf:option>
+					<xf:option value="download_count">{{ phrase('xfrm_downloads') }}</xf:option>
+					<xf:option value="title">{{ phrase('title') }}</xf:option>
+				</xf:select>
+				<span class="inputGroup-splitter"></span>
+
+				<xf:select name="direction" value="{{ $filters.direction ?: 'desc' }}">
+					<xf:option value="desc">{{ phrase('descending') }}</xf:option>
+					<xf:option value="asc">{{ phrase('ascending') }}</xf:option>
+				</xf:select>
+
+				<xf:button type="submit" class="button--primary">{{ phrase('filter') }}</xf:button>
+			</div>
+		</div>
+
+		<xf:hiddenval name="apply">1</xf:hiddenval>
+	</xf:form>
+</xf:comment>

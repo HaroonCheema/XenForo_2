@@ -1,0 +1,1547 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="admin" title="fs_rm_cat_delete_image" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('fs_rm_please_confirm_delete_image') }}</xf:title>
+
+<xf:form action="{{ link('resource-manager/categories/delete-image', $category) }}" class="block" ajax="true">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:inforow rowtype="confirm">
+				{{ phrase('please_confirm_that_you_want_to_delete_following:') }}
+				
+				<xf:formrow rowtype="fullWidth noLabel">
+					<img src="{{ base_url($category.getCatImage()) }}" style="width: 175px;"/>
+				</xf:formrow>
+			</xf:inforow>
+			<xf:submitrow rowtype="simple" icon="delete" />
+		</div>
+	</div>
+</xf:form>]]></template>
+  <template type="public" title="fs_rm_cat_style_grid_css.less" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[@resource-grid-gap: 10px;
+@resource-grid-width: 250px;
+@resource-grid-thumb: 108px;
+@supports(display: grid) {
+    body[data-template="xfrm_category_view"] {
+        .structItemContainer-group,
+        .structItemContainer-group--sticky {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(@resource-grid-width, 1fr));
+            grid-gap: @resource-grid-gap;
+            padding: @resource-grid-gap;
+            background-color: @xf-contentAltBg;
+        }
+        .structItem--thread {
+            display: grid;
+            grid-template-areas: 'icon icon' 'main main' 'meta latest' 'iconEnd iconEnd';
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.28);
+            border-radius: 5px;
+            position: relative;
+            .structItem-cell--icon {
+                grid-area: icon;
+                width: 100%;
+                padding: 0px 0px 10px 0px;
+                border-radius: 5px 5px 0px 0px;
+            }
+            .structItem-cell--main {
+                grid-area: main;
+                margin-top: 5px;
+            }
+            .structItem-cell--meta {
+                grid-area: meta;
+                width: 100%;
+                position: absolute;
+                width: 70px;
+                font-size: 13px;
+                color: #8c8c8c !important;
+            }
+            .structItem-cell--latest {
+                grid-area: latest;
+                width: 100%;
+                font-size: 13px;
+                white-space: nowrap;
+            }
+            .structItem-cell--iconEnd {
+                padding: 0px 0px 0px 5px !important;
+                height: 38px;
+            }
+        }
+        .structItem-cell--meta .pairs--justified dd {
+            float: left;
+        }
+        .structItem-iconContainer .structItem-secondaryIcon {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            font-size: 12px;
+            bottom: -20px;
+            border: 3px solid #fefefe;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .structItem-cell--meta .pairs--justified:first-child dd:before {
+            font-family: 'Font Awesome 5 Pro';
+            content: "\f3e5\20";
+            padding-right: 5px;
+        }
+        .structItem-cell--meta .pairs--justified:last-child dd:before {
+            font-family: 'Font Awesome 5 Pro';
+            content: "\f06e  :";
+            padding-right: 5px;
+        }
+        .structItem-cell--meta .pairs--justified:last-child dt {
+            font-size: 0px;
+        }
+        .structItem-cell--meta .pairs--justified:first-child dt {
+            font-size: 0px;
+        }
+        @media (max-width: 650px) {
+            .js-threadList {
+                padding: 0px !important;
+            }
+            .structItem--thread .structItem-cell--main {
+                   padding-left: 10px !important;
+    				padding-right: 10px;
+            }
+            .structItem--thread {
+                border-radius: 0px !important;
+            }
+            .structItem-cell.structItem-cell--latest:before {
+                display: none;
+            }
+			.structItem-cell--meta{
+				padding-left: 10px !important;
+    			padding-right: 10px;
+			}
+			.structItem-cell--latest{
+				 padding-right: 10px;
+			}
+			.structItem-cell.structItem-cell--iconEnd, .structItem-cell.structItem-cell--meta .structItem-minor, .structItem-cell.structItem-cell--latest .structItem-minor{
+				display:block;
+			}
+			.structItem-cell.structItem-cell--latest{				
+    		padding-bottom: 10px;
+			}
+        }
+    }
+}]]></template>
+  <template type="public" title="fs_rm_list_macros" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:macro name="resource"
+		  arg-filterPrefix="{{ false }}"
+		  arg-resource="!"
+		  arg-category="{{ null }}"
+		  arg-showWatched="{{ true }}"
+		  arg-allowInlineMod="{{ true }}"
+		  arg-chooseName=""
+		  arg-extraInfo="">
+
+	<style>
+		.slider-container {
+			width: 100%;
+			max-width: 600px;
+			overflow: hidden;
+			position: relative;
+			margin: 0px auto;
+		}
+
+		.slider {
+			display: flex;
+			transition: transform 0.5s ease-in-out;
+		}
+
+		.slider img {
+			width: 100%;
+			flex-shrink: 0;
+			height: 300px;
+			object-fit: cover;
+			display: none;
+		}
+
+		.slider img.active {
+			display: block;
+		}
+
+		/* Left and right navigation buttons */
+		.nav-button {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			background-color: #fff;
+			color: #575f6d;
+			border: none;
+			cursor: pointer;
+			font-size: 18px;
+			z-index: 10;
+		}
+
+		.nav-button.left {
+			left: 0px;
+			border-radius: 0 10px 10px 0;
+			padding: 2px 10px 2px 15px;
+		}
+
+		.nav-button.right {
+			right: 0px;
+			border-radius: 10px 0 0 10px;
+			padding: 2px 15px 2px 10px;
+		}
+	</style>
+
+	<xf:css src="structured_list.less" />
+
+	<div class="structItem structItem--thread{{ $resource.prefix_id ? 'is-prefix' . $resource.prefix_id : '' }} {{ $resource.isIgnored() ? 'is-ignored' : '' }}{{ $resource.resource_state == 'moderated' ? 'is-moderated' : '' }}{{ $resource.resource_state == 'deleted' ? 'is-deleted' : '' }} js-inlineModContainer js-resourceListItem-{$resource.resource_id}" data-author="{{ $resource.User.username ?: $resource.username }}">
+
+		<xf:extension name="icon_cell">
+
+			<div class="structItem-cell structItem-cell--icon" style="width: {{ $thread.Forum.Node.node_thread_thumbnail_width ? $thread.Forum.Node.node_thread_thumbnail_width : $xf.options.thumbnail_width }}; height: {{ $thread.Forum.Node.node_thread_thumbnail_height ? $thread.Forum.Node.node_thread_thumbnail_height : $xf.options.thumb_size_hemant }};">
+
+				<div class="structItem-iconContainer">
+					<xf:if is="count($resource.Description.Attachments) == 1">
+						<a href="{{ link('resources', $resource) }}" class="" data-tp-primary="on">
+
+							<xf:foreach loop="$resource.Description.Attachments" value="$attachment" i="$i" if="$attachment.has_thumbnail">
+								<img src="{$attachment.thumbnail_url}" alt="{$attachment.filename}" style="width: {$xf.options.fs_rm_resource_width_percen}%; height: {$xf.options.fs_rm_resource_height_pixcels}px; object-fit: cover; border-bottom: solid 2px #fa7d24" loading="lazy">
+							</xf:foreach>
+						</a>
+						<xf:elseif is="count($resource.Description.Attachments) > 1"/>
+						<div class="slider-container">
+							<div class="slider">
+								<xf:foreach loop="$resource.Description.Attachments" value="$attachment" i="$i" if="$attachment.has_thumbnail">
+									<img src="{$attachment.thumbnail_url}" class="{{$i == 1 ? 'active' : ' '}}" alt="{$attachment.filename}" style="width: {$xf.options.fs_rm_resource_width_percen}%; height: {$xf.options.fs_rm_resource_height_pixcels}px; object-fit: cover; border-bottom: solid 2px #fa7d24" loading="lazy">
+								</xf:foreach>
+							</div>
+							<button class="nav-button left">&lt;</button>
+							<button class="nav-button right">&gt;</button>
+						</div>
+						<xf:else/>
+						<a href="{{ link('resources', $resource) }}" class="" data-tp-primary="on">
+							<img src="{$xf.options.fs_rm_m_bg_img}" alt="{$attachment.filename}" style="width: {$xf.options.fs_rm_resource_width_percen}%; height: {$xf.options.fs_rm_resource_height_pixcels}px; object-fit: cover; border-bottom: solid 2px #fa7d24" loading="lazy">
+						</a>
+					</xf:if>
+				</div>
+			</div>
+		</xf:extension>
+
+		<xf:extension name="main_cell">
+			<div class="structItem-cell structItem-cell--main" data-xf-init="touch-proxy">
+
+				<xf:if contentcheck="true">
+					<ul class="structItem-statuses">
+						<xf:contentcheck>
+							<xf:extension name="statuses">
+
+								<xf:if is="{$showWatched} AND {$xf.visitor.user_id}">
+									<xf:if is="{$thread.Watch.{$xf.visitor.user_id}}">
+										<li>
+											<i class="structItem-status structItem-status--watched" aria-hidden="true" title="{{ phrase('thread_watched')|for_attr }}"></i>
+											<span class="u-srOnly">{{ phrase('thread_watched') }}</span>
+										</li>
+									</xf:if>
+								</xf:if>
+
+							</xf:extension>
+						</xf:contentcheck>
+					</ul>
+				</xf:if>
+
+				<div class="structItem-title">
+					<xf:if is="$resource.prefix_id">
+						<xf:if is="$category">
+							<a href="{{ link('resources/categories', $category, {'prefix_id': $resource.prefix_id}) }}" class="labelLink" rel="nofollow">{{ prefix('resource', $resource, 'html', '') }}</a>
+							<xf:else />
+							<xf:if is="$filterPrefix">
+								<a href="{{ link('resources', null, {'prefix_id': $resource.prefix_id}) }}" class="labelLink" rel="nofollow">{{ prefix('resource', $resource, 'html', '') }}</a>
+								<xf:else />
+								{{ prefix('resource', $resource, 'html', '') }}
+							</xf:if>
+						</xf:if>
+					</xf:if>
+					<a href="{{ link('resources', $resource) }}" class="" data-tp-primary="on">{$resource.title}</a>
+					<xf:if is="$resource.isVersioned()">
+						<span class="u-muted">{$resource.CurrentVersion.version_string}</span>
+					</xf:if>
+					<xf:if is="$resource.isExternalPurchasable()">
+						<span class="label label--primary label--smallest">{$resource.price|currency($resource.currency)}</span>
+					</xf:if>
+				</div>
+
+				<div class="structItem-minor">
+					<xf:comment>
+						<xf:if contentcheck="true">
+							<ul class="structItem-extraInfo">
+								<xf:contentcheck>
+									<xf:if is="{$extraInfo}">
+										<li>{$extraInfo}</li>
+									</xf:if>
+									<xf:if is="$chooseName">
+										<li><xf:checkbox standalone="true">
+											<xf:option name="{$chooseName}[]" value="{$resource.resource_id}" class="js-chooseItem" />
+											</xf:checkbox></li>
+										<xf:elseif is="$allowInlineMod AND $resource.canUseInlineModeration()" />
+										<li><xf:checkbox standalone="true"><xf:option value="{$resource.resource_id}"
+																					  class="js-inlineModToggle"
+																					  data-xf-init="tooltip" title="{{ phrase('select_for_moderation') }}" /></xf:checkbox></li>
+									</xf:if>
+								</xf:contentcheck>
+							</ul>
+						</xf:if>
+					</xf:comment>
+
+					<xf:if is="$resource.resource_state == 'deleted'">
+						<xf:macro template="deletion_macros" name="notice" arg-log="{$resource.DeletionLog}" />
+						<xf:else />
+						<ul class="structItem-parts">
+							<li><xf:username user="$resource.User" defaultname="{$resource.username}" /></li>
+							<xf:if is="!$category OR $category.hasChildren()">
+								<li><a href="{{ link('resources/categories', $resource.Category) }}">{$resource.Category.title}</a></li>
+							</xf:if>
+						</ul>
+						<br/>
+						{{ snippet($resource.Description.message, 50, {'stripBbCode': true}) }}
+					</xf:if>
+					<br/>
+					<br/>
+					<div class="structItem-cell--resourceMeta">
+						<div class="structItem-metaItem  structItem-metaItem--rating">
+							<xf:macro template="rating_macros" name="stars_text"
+									  arg-rating="{$resource.rating_avg}"
+									  arg-count="{$resource.rating_count}"
+									  arg-rowClass="ratingStarsRow--justified"
+									  arg-starsClass="ratingStars--larger" />
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</xf:extension>
+
+	</div>
+
+	<script>
+		// Function to initialize sliders
+		function initializeSliders() {
+			const sliders = document.querySelectorAll('.slider-container');
+
+			sliders.forEach((sliderContainer) => {
+				const slider = sliderContainer.querySelector('.slider');
+				const images = slider.getElementsByTagName('img');
+				const imageCount = images.length;
+				let currentIndex = 0;
+
+				const leftButton = sliderContainer.querySelector('.nav-button.left');
+				const rightButton = sliderContainer.querySelector('.nav-button.right');
+
+				function changeSlide(index) {
+					for (let img of images) {
+						img.classList.remove('active');
+					}
+					images[index].classList.add('active');
+				}
+
+				// Left button click event
+				leftButton.addEventListener('click', () => {
+					currentIndex--;
+					if (currentIndex < 0) {
+						currentIndex = imageCount - 1;
+					}
+					changeSlide(currentIndex);
+				});
+
+				// Right button click event
+				rightButton.addEventListener('click', () => {
+					currentIndex++;
+					if (currentIndex >= imageCount) {
+						currentIndex = 0;
+					}
+					changeSlide(currentIndex);
+				});
+
+				// Initialize first slide
+				changeSlide(currentIndex);
+			});
+		}
+
+		// Initialize all sliders on the page
+		window.onload = initializeSliders;
+	</script>
+
+</xf:macro>]]></template>
+  <template type="public" title="fs_rm_resource_list.less" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[.itemList-itemTypeIcon
+{
+	&.itemList-itemTypeIcon--image
+	{
+		&::after
+		{
+			.m-faContent(@fa-var-image);
+		}
+
+		display: none;
+	}
+
+	&.itemList-itemTypeIcon--embed
+	{
+		.m-faBase('Brands');
+		&::after
+		{
+			.m-faContent(@fa-var-youtube);
+		}
+	}
+
+	&.itemList-itemTypeIcon--video
+	{
+		&::after
+		{
+			.m-faContent(@fa-var-video);
+		}
+	}
+
+	&.itemList-itemTypeIcon--audio
+	{
+		&::after
+		{
+			.m-faContent(@fa-var-music);
+		}
+	}
+
+	&.itemList-itemTypeIcon--embed
+	{
+		&--applemusic
+		{
+			.m-faBase('Brands');
+			&::after { .m-faContent(@fa-var-apple); }
+		}
+
+		&--facebook
+		{
+			.m-faBase('Brands');
+			&::after { .m-faContent(@fa-var-facebook); }
+		}
+
+		&--flickr
+		{
+			.m-faBase('Brands');
+			&::after { .m-faContent(@fa-var-flickr); }
+		}
+
+		&--instagram
+		{
+			.m-faBase('Brands');
+			&::after { .m-faContent(@fa-var-instagram); }
+		}
+
+		&--pinterest
+		{
+			.m-faBase('Brands');
+			&::after { .m-faContent(@fa-var-pinterest-square); }
+		}
+
+		&--reddit
+		{
+			.m-faBase('Brands');
+			&::after { .m-faContent(@fa-var-reddit-alien); }
+		}
+
+		&--soundcloud
+		{
+			.m-faBase('Brands');
+			&::after { .m-faContent(@fa-var-soundcloud); }
+		}
+
+		&--spotify
+		{
+			.m-faBase('Brands');
+			&::after { .m-faContent(@fa-var-spotify); }
+		}
+
+		&--tumblr
+		{
+			.m-faBase('Brands');
+			&::after { .m-faContent(@fa-var-tumblr-square); }
+		}
+
+		&--twitch
+		{
+			.m-faBase('Brands');
+			&::after { .m-faContent(@fa-var-twitch); }
+		}
+
+		&--twitter
+		{
+			.m-faBase('Brands');
+			&::after { .m-faContent(@fa-var-twitter); }
+		}
+
+		&--vimeo
+		{
+			.m-faBase('Brands');
+			&::after { .m-faContent(@fa-var-vimeo); }
+		}
+
+		&--youtube
+		{
+			.m-faBase('Brands');
+			&::after { .m-faContent(@fa-var-youtube); }
+		}
+	}
+}
+
+{{ include('xfmg_item_list.less') }}]]></template>
+  <template type="public" title="fs_rm_resource_list_slider.less" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[.lSSlideOuter {
+    overflow: hidden;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none
+}
+.lightSlider:before, .lightSlider:after {
+    content: " ";
+    display: table;
+}
+.lightSlider {
+    overflow: hidden;
+    margin: 0;
+}
+.lSSlideWrapper {
+    max-width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+.lSSlideWrapper > .lightSlider:after {
+    clear: both;
+}
+.lSSlideWrapper .lSSlide {
+    -webkit-transform: translate(0px, 0px);
+    -ms-transform: translate(0px, 0px);
+    transform: translate(0px, 0px);
+    -webkit-transition: all 1s;
+    -webkit-transition-property: -webkit-transform,height;
+    -moz-transition-property: -moz-transform,height;
+    transition-property: transform,height;
+    -webkit-transition-duration: inherit !important;
+    transition-duration: inherit !important;
+    -webkit-transition-timing-function: inherit !important;
+    transition-timing-function: inherit !important;
+}
+.lSSlideWrapper .lSFade {
+    position: relative;
+}
+.lSSlideWrapper .lSFade > * {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    z-index: 9;
+    margin-right: 0;
+    width: 100%;
+}
+.lSSlideWrapper.usingCss .lSFade > * {
+    opacity: 0;
+    -webkit-transition-delay: 0s;
+    transition-delay: 0s;
+    -webkit-transition-duration: inherit !important;
+    transition-duration: inherit !important;
+    -webkit-transition-property: opacity;
+    transition-property: opacity;
+    -webkit-transition-timing-function: inherit !important;
+    transition-timing-function: inherit !important;
+}
+.lSSlideWrapper .lSFade > *.active {
+    z-index: 10;
+}
+.lSSlideWrapper.usingCss .lSFade > *.active {
+    opacity: 1;
+}
+/** /!!! End of core css Should not edit !!!/**/
+
+/* Pager */
+.lSSlideOuter .lSPager.lSpg {
+    margin: 10px 0 0;
+    padding: 0;
+    text-align: center;
+}
+.lSSlideOuter .lSPager.lSpg > li {
+    cursor: pointer;
+    display: inline-block;
+    padding: 0 5px;
+}
+.lSSlideOuter .lSPager.lSpg > li a {
+    background-color: #222222;
+    border-radius: 30px;
+    display: inline-block;
+    height: 8px;
+    overflow: hidden;
+    text-indent: -999em;
+    width: 8px;
+    position: relative;
+    z-index: 99;
+    -webkit-transition: all 0.5s linear 0s;
+    transition: all 0.5s linear 0s;
+}
+.lSSlideOuter .lSPager.lSpg > li:hover a, .lSSlideOuter .lSPager.lSpg > li.active a {
+    background-color: #428bca;
+}
+.lSSlideOuter .media {
+    opacity: 0.8;
+}
+.lSSlideOuter .media.active {
+    opacity: 1;
+}
+/* End of pager */
+
+/** Gallery */
+.lSSlideOuter .lSPager.lSGallery {
+    list-style: none outside none;
+    padding-left: 0;
+    margin: 0;
+    overflow: hidden;
+    transform: translate3d(0px, 0px, 0px);
+    -moz-transform: translate3d(0px, 0px, 0px);
+    -ms-transform: translate3d(0px, 0px, 0px);
+    -webkit-transform: translate3d(0px, 0px, 0px);
+    -o-transform: translate3d(0px, 0px, 0px);
+    -webkit-transition-property: -webkit-transform;
+    -moz-transition-property: -moz-transform;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.lSSlideOuter .lSPager.lSGallery li {
+    overflow: hidden;
+    -webkit-transition: border-radius 0.12s linear 0s 0.35s linear 0s;
+    transition: border-radius 0.12s linear 0s 0.35s linear 0s;
+}
+.lSSlideOuter .lSPager.lSGallery li.active, .lSSlideOuter .lSPager.lSGallery li:hover {
+    border-radius: 5px;
+}
+.lSSlideOuter .lSPager.lSGallery img {
+    display: block;
+    height: auto;
+    max-width: 100%;
+}
+.lSSlideOuter .lSPager.lSGallery:before, .lSSlideOuter .lSPager.lSGallery:after {
+    content: " ";
+    display: table;
+}
+.lSSlideOuter .lSPager.lSGallery:after {
+    clear: both;
+}
+/* End of Gallery*/
+
+/* slider actions */
+.lSAction > a {
+    width: 32px;
+    display: block;
+    top: 50%;
+    height: 32px;
+    background-image: url('../img/controls.png');
+    cursor: pointer;
+    position: absolute;
+    z-index: 99;
+    margin-top: -16px;
+    opacity: 0.5;
+    -webkit-transition: opacity 0.35s linear 0s;
+    transition: opacity 0.35s linear 0s;
+}
+.lSAction > a:hover {
+    opacity: 1;
+}
+.lSAction > .lSPrev {
+    background-position: 0 0;
+    left: 10px;
+}
+.lSAction > .lSNext {
+    background-position: -32px 0;
+    right: 10px;
+}
+.lSAction > a.disabled {
+    pointer-events: none;
+}
+.cS-hidden {
+    height: 1px;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    overflow: hidden;
+}
+
+
+/* vertical */
+.lSSlideOuter.vertical {
+    position: relative;
+}
+.lSSlideOuter.vertical.noPager {
+    padding-right: 0px !important;
+}
+.lSSlideOuter.vertical .lSGallery {
+    position: absolute !important;
+    right: 0;
+    top: 0;
+}
+.lSSlideOuter.vertical .lightSlider > * {
+    width: 100% !important;
+    max-width: none !important;
+}
+
+/* vertical controlls */
+.lSSlideOuter.vertical .lSAction > a {
+    left: 50%;
+    margin-left: -14px;
+    margin-top: 0;
+}
+.lSSlideOuter.vertical .lSAction > .lSNext {
+    background-position: 31px -31px;
+    bottom: 10px;
+    top: auto;
+}
+.lSSlideOuter.vertical .lSAction > .lSPrev {
+    background-position: 0 -31px;
+    bottom: auto;
+    top: 10px;
+}
+/* vertical */
+
+
+/* Rtl */
+.lSSlideOuter.lSrtl {
+    direction: rtl;
+}
+.lSSlideOuter .lightSlider, .lSSlideOuter .lSPager {
+    padding-left: 0;
+    list-style: none outside none;
+}
+.lSSlideOuter.lSrtl .lightSlider, .lSSlideOuter.lSrtl .lSPager {
+    padding-right: 0;
+}
+.lSSlideOuter .lightSlider > *,  .lSSlideOuter .lSGallery li {
+    float: left;
+}
+.lSSlideOuter.lSrtl .lightSlider > *,  .lSSlideOuter.lSrtl .lSGallery li {
+    float: right !important;
+}
+/* Rtl */
+
+@-webkit-keyframes rightEnd {
+    0% {
+        left: 0;
+    }
+
+    50% {
+        left: -15px;
+    }
+
+    100% {
+        left: 0;
+    }
+}
+@keyframes rightEnd {
+    0% {
+        left: 0;
+    }
+
+    50% {
+        left: -15px;
+    }
+
+    100% {
+        left: 0;
+    }
+}
+@-webkit-keyframes topEnd {
+    0% {
+        top: 0;
+    }
+
+    50% {
+        top: -15px;
+    }
+
+    100% {
+        top: 0;
+    }
+}
+@keyframes topEnd {
+    0% {
+        top: 0;
+    }
+
+    50% {
+        top: -15px;
+    }
+
+    100% {
+        top: 0;
+    }
+}
+@-webkit-keyframes leftEnd {
+    0% {
+        left: 0;
+    }
+
+    50% {
+        left: 15px;
+    }
+
+    100% {
+        left: 0;
+    }
+}
+@keyframes leftEnd {
+    0% {
+        left: 0;
+    }
+
+    50% {
+        left: 15px;
+    }
+
+    100% {
+        left: 0;
+    }
+}
+@-webkit-keyframes bottomEnd {
+    0% {
+        bottom: 0;
+    }
+
+    50% {
+        bottom: -15px;
+    }
+
+    100% {
+        bottom: 0;
+    }
+}
+@keyframes bottomEnd {
+    0% {
+        bottom: 0;
+    }
+
+    50% {
+        bottom: -15px;
+    }
+
+    100% {
+        bottom: 0;
+    }
+}
+.lSSlideOuter .rightEnd {
+    -webkit-animation: rightEnd 0.3s;
+    animation: rightEnd 0.3s;
+    position: relative;
+}
+.lSSlideOuter .leftEnd {
+    -webkit-animation: leftEnd 0.3s;
+    animation: leftEnd 0.3s;
+    position: relative;
+}
+.lSSlideOuter.vertical .rightEnd {
+    -webkit-animation: topEnd 0.3s;
+    animation: topEnd 0.3s;
+    position: relative;
+}
+.lSSlideOuter.vertical .leftEnd {
+    -webkit-animation: bottomEnd 0.3s;
+    animation: bottomEnd 0.3s;
+    position: relative;
+}
+.lSSlideOuter.lSrtl .rightEnd {
+    -webkit-animation: leftEnd 0.3s;
+    animation: leftEnd 0.3s;
+    position: relative;
+}
+.lSSlideOuter.lSrtl .leftEnd {
+    -webkit-animation: rightEnd 0.3s;
+    animation: rightEnd 0.3s;
+    position: relative;
+}
+/*/  GRab cursor */
+.lightSlider.lsGrab > * {
+  cursor: -webkit-grab;
+  cursor: -moz-grab;
+  cursor: -o-grab;
+  cursor: -ms-grab;
+  cursor: grab;
+}
+.lightSlider.lsGrabbing > * {
+  cursor: move;
+  cursor: -webkit-grabbing;
+  cursor: -moz-grabbing;
+  cursor: -o-grabbing;
+  cursor: -ms-grabbing;
+  cursor: grabbing;
+}
+
+
+
+
+
+
+// XENFORO EXTENSIONS AND OVERRIDES
+
+.lSSlideOuter .lSPager.lSpg
+{
+    line-height: 1;
+}
+
+.lSSlideOuter .lSPager.lSpg > li
+{
+    height: 20px;
+    line-height: 20px;
+}
+
+.lSSlideOuter .lSPager.lSpg > li a
+{
+    position: relative;
+    top: -2px;
+    background-color: @xf-textColor;
+    opacity: .3;
+}
+
+.lSSlideOuter .lSPager.lSpg > li:hover a,
+.lSSlideOuter .lSPager.lSpg > li.active a
+{
+    background-color: @xf-linkColor;
+    opacity: 1;
+}
+
+@actionIconColor: white;
+@actionBorderColor: black;
+@actionBorderWidth: 0.75px;
+
+.lSAction > a
+{
+    background-image: none;
+    text-decoration: none;
+    line-height: 32px;
+    font-size: 2em;
+
+    color: @actionIconColor;
+    opacity: 0.6;
+
+    &.lSNext
+    {
+        text-align: right;
+    }
+
+    &.lSPrev
+    {
+        text-align: left;
+    }
+
+    &:after
+    {
+        .m-faBase();
+        .m-faContent(@fa-var-chevron-right, .63em);
+        .m-textOutline();
+    }
+}
+
+.lSAction > a.lSNext:after
+{
+ 	.m-faContent(@fa-var-chevron-right, .63em, ltr);
+    .m-faContent(@fa-var-chevron-left, .63em, rtl);
+}
+.lSAction > a.lSPrev:after
+{
+    .m-faContent(@fa-var-chevron-left, .63em, ltr);
+	.m-faContent(@fa-var-chevron-right, .63em, rtl);
+}]]></template>
+  <template type="public" title="fs_rm_style_grid_css.less" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[@resource-grid-gap: 10px;
+@resource-grid-width: 250px;
+@resource-grid-thumb: 108px;
+@supports(display: grid) {
+    body[data-template="xfrm_overview"] {
+        .structItemContainer-group,
+        .structItemContainer-group--sticky {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(@resource-grid-width, 1fr));
+            grid-gap: @resource-grid-gap;
+            padding: @resource-grid-gap;
+            background-color: @xf-contentAltBg;
+        }
+        .structItem--thread {
+            display: grid;
+            grid-template-areas: 'icon icon' 'main main' 'meta latest' 'iconEnd iconEnd';
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.28);
+            border-radius: 5px;
+            position: relative;
+            .structItem-cell--icon {
+                grid-area: icon;
+                width: 100%;
+                padding: 0px 0px 10px 0px;
+                border-radius: 5px 5px 0px 0px;
+            }
+            .structItem-cell--main {
+                grid-area: main;
+                margin-top: 5px;
+            }
+            .structItem-cell--meta {
+                grid-area: meta;
+                width: 100%;
+                position: absolute;
+                width: 70px;
+                font-size: 13px;
+                color: #8c8c8c !important;
+            }
+            .structItem-cell--latest {
+                grid-area: latest;
+                width: 100%;
+                font-size: 13px;
+                white-space: nowrap;
+            }
+            .structItem-cell--iconEnd {
+                padding: 0px 0px 0px 5px !important;
+                height: 38px;
+            }
+        }
+        .structItem-cell--meta .pairs--justified dd {
+            float: left;
+        }
+        .structItem-iconContainer .structItem-secondaryIcon {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            font-size: 12px;
+            bottom: -20px;
+            border: 3px solid #fefefe;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .structItem-cell--meta .pairs--justified:first-child dd:before {
+            font-family: 'Font Awesome 5 Pro';
+            content: "\f3e5\20";
+            padding-right: 5px;
+        }
+        .structItem-cell--meta .pairs--justified:last-child dd:before {
+            font-family: 'Font Awesome 5 Pro';
+            content: "\f06e  :";
+            padding-right: 5px;
+        }
+        .structItem-cell--meta .pairs--justified:last-child dt {
+            font-size: 0px;
+        }
+        .structItem-cell--meta .pairs--justified:first-child dt {
+            font-size: 0px;
+        }
+        @media (max-width: 650px) {
+            .js-threadList {
+                padding: 0px !important;
+            }
+            .structItem--thread .structItem-cell--main {
+                   padding-left: 10px !important;
+    				padding-right: 10px;
+            }
+            .structItem--thread {
+                border-radius: 0px !important;
+            }
+            .structItem-cell.structItem-cell--latest:before {
+                display: none;
+            }
+			.structItem-cell--meta{
+				padding-left: 10px !important;
+    			padding-right: 10px;
+			}
+			.structItem-cell--latest{
+				 padding-right: 10px;
+			}
+			.structItem-cell.structItem-cell--iconEnd, .structItem-cell.structItem-cell--meta .structItem-minor, .structItem-cell.structItem-cell--latest .structItem-minor{
+				display:block;
+			}
+			.structItem-cell.structItem-cell--latest{				
+    		padding-bottom: 10px;
+			}
+        }
+    }
+}]]></template>
+  <template type="public" title="fs_rm_xfrm_category_view" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title page="{$page}">{$category.title}</xf:title>
+<xf:description>{$category.description|raw}</xf:description>
+
+<xf:css src="structured_list.less" />
+<xf:css src="fs_rm_cat_style_grid_css.less" />
+
+<style>
+
+	.containerRm {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-around;
+	}
+
+	.responsive-div {
+		background-size: cover;
+		background-position: center;
+		margin: 10px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		color: white;
+		font-size: 20px;
+		text-align: center;
+		background-color: rgba(0, 0, 0, 0.5); /* Fallback color if image doesn't load */
+	}
+
+	@media (max-width: 768px) {
+		.responsive-div {
+			width: 100% !important; /* Full width on small screens */
+		}
+	}
+
+</style>
+
+<div class="containerRm">
+
+	<xf:macro name="simple_list_block"
+			  arg-categoryTree="{$categoryTree}"
+			  arg-categoryExtras="{$categoryExtras}"
+			  arg-parentCategory="{$category}" />
+
+</div>
+
+
+<xf:macro template="metadata_macros" name="canonical_url"
+		  arg-canonicalUrl="{{ link('canonical:resources/categories', $category, {'page': $page > 1 ? $page : null}) }}" />
+
+<xf:breadcrumb source="$category.getBreadcrumbs(false)" />
+
+<xf:macro template="xfrm_resource_page_macros" name="resource_page_options"
+		  arg-category="{$category}" />
+
+<xf:pageaction if="$category.canAddResource()">
+	<xf:button href="{{ link('resources/categories/add', $category) }}" class="button--cta" icon="write">{{ phrase('xfrm_add_resource') }}</xf:button>
+</xf:pageaction>
+
+<xf:if is="$pendingApproval">
+	<div class="blockMessage blockMessage--important">{{ phrase('content_submitted_displayed_pending_approval') }}</div>
+</xf:if>
+
+<xf:if is="$iconError">
+	<div class="blockMessage blockMessage--error">{{ phrase('xfrm_new_icon_could_not_be_applied_try_later') }}</div>
+</xf:if>
+
+<xf:widgetpos id="xfrm_category_above_resources" context-category="{$category}" />
+
+<xf:if is="$canInlineMod">
+	<xf:js src="xf/inline_mod.js" min="1" />
+</xf:if>
+
+<div class="block" data-xf-init="{{ $canInlineMod ? 'inline-mod' : '' }}" data-type="resource" data-href="{{ link('inline-mod') }}">
+	<div class="block-outer"><xf:trim>
+
+		<xf:pagenav page="{$page}" perpage="{$perPage}" total="{$total}"
+					link="resources/categories" data="{$category}" params="{$filters}"
+					wrapperclass="block-outer-main" />
+
+		<xf:if contentcheck="true">
+			<div class="block-outer-opposite">
+				<div class="buttonGroup">
+					<xf:contentcheck>
+						<xf:if is="$canInlineMod">
+							<xf:macro template="inline_mod_macros" name="button" />
+						</xf:if>
+						<xf:if is="$category.canWatch()">
+							<xf:button href="{{ link('resources/categories/watch', $category) }}" class="button--link"
+									   data-xf-click="switch-overlay"
+									   data-sk-watch="{{ phrase('watch') }}"
+									   data-sk-unwatch="{{ phrase('unwatch') }}">
+								<xf:if is="{$category.Watch.{$xf.visitor.user_id}}">{{ phrase('unwatch') }}<xf:else />{{ phrase('watch') }}</xf:if>
+							</xf:button>
+						</xf:if>
+					</xf:contentcheck>
+				</div>
+			</div>
+		</xf:if>
+
+		</xf:trim></div>
+
+	<div class="block-container">
+
+		<div class="block-body">
+			<xf:if is="$resources is not empty">
+				<div class="structItemContainer">
+
+					<div class="structItemContainer-group js-threadList thread-grid">
+						<xf:foreach loop="$resources" value="$resource">
+							<xf:macro template="fs_rm_list_macros" name="resource"
+									  arg-resource="{$resource}"
+									  arg-category="{$category}" />
+						</xf:foreach>
+					</div>
+
+				</div>
+				<xf:elseif is="$filters" />
+				<div class="block-row">{{ phrase('xfrm_there_no_resources_matching_your_filters') }}</div>
+				<xf:else />
+				<div class="block-row">{{ phrase('xfrm_no_resources_have_been_created_yet') }}</div>
+			</xf:if>
+		</div>
+		<xf:comment>
+			<div class="block-body">
+				<xf:if is="$resources is not empty">
+					<div class="structItemContainer">
+						<xf:foreach loop="$resources" value="$resource">
+							<xf:macro template="xfrm_resource_list_macros" name="resource"
+									  arg-resource="{$resource}"
+									  arg-category="{$category}" />
+						</xf:foreach>
+					</div>
+					<xf:elseif is="$filters" />
+					<div class="block-row">{{ phrase('xfrm_there_no_resources_matching_your_filters') }}</div>
+					<xf:else />
+					<div class="block-row">{{ phrase('xfrm_no_resources_have_been_created_yet') }}</div>
+				</xf:if>
+			</div>
+		</xf:comment>
+	</div>
+
+
+	<div class="block-outer block-outer--after">
+		<xf:pagenav
+					page="{$page}" perpage="{$perPage}" total="{$total}"
+					link="resources/categories" data="{$category}" params="{$filters}"
+					wrapperclass="block-outer-main" />
+		<xf:showignored wrapperclass="block-outer-opposite" />
+	</div>
+</div>
+
+<xf:macro name="simple_list_block" arg-categoryTree="!" arg-parentCategory="!" arg-categoryExtras="!" arg-selected="{{ 0 }}">
+
+	<xf:if is="$categoryTree.count()">
+		<xf:macro name="simple_category_list"
+				  arg-children="{$categoryTree}"
+				  arg-extras="{$categoryExtras}"
+				  arg-parentCategory="{$parentCategory}"
+				  arg-isActive="{{ true }}"
+				  arg-selected="{$selected}"
+				  arg-pathToSelected="{{ $selected ? $categoryTree.getPathTo($selected) : [] }}" />
+		<xf:else />
+		<div class="block-row">{{ phrase('n_a') }}</div>
+	</xf:if>
+
+</xf:macro>
+
+<xf:macro name="simple_category_list"
+		  arg-selected="0"
+		  arg-pathToSelected="{{ [] }}"
+		  arg-parentCategory="!"
+		  arg-children="!"
+		  arg-extras="!"
+		  arg-isActive="{{ false }}"
+		  >
+	<xf:foreach loop="$children" key="$id" value="$child">
+		<xf:macro name="simple_category_list_item"
+				  arg-selected="{$selected}"
+				  arg-pathToSelected="{$pathToSelected}"
+				  arg-parentCategory="{$parentCategory}"
+				  arg-category="{$child.record}"
+				  arg-extras="{$extras.{$id}}"
+				  arg-children="{$child}"
+				  arg-childExtras="{$extras}"
+				  />
+	</xf:foreach>
+	<xf:comment>
+		<xf:foreach loop="$children" key="$id" value="$category">
+			<xf:set var="$isSelected" value="{{ $category.record.resource_category_id == $selected }}" />
+
+			<div class="responsive-div" style="background-image: url({{$category.record.getCatImage() ? $category.record.getCatImage() : $xf.options.fs_rm_bg_img}}); width: {$xf.options.fs_rm_bg_width}; height: {$xf.options.fs_rm_bg_size};">
+				<a href="{{ link('resources/categories', $category.record) }}" class="categoryList-link{{ $isSelected ? ' is-selected' : '' }}">
+					{$category.record.title}
+				</a>
+			</div>
+
+		</xf:foreach>
+	</xf:comment>
+</xf:macro>
+
+<xf:macro name="simple_category_list_item"
+		  arg-selected="!"
+		  arg-pathToSelected="{{ [] }}"
+		  arg-category="!"
+		  arg-parentCategory="!"
+		  arg-extras="!"
+		  arg-children="!"
+		  arg-childExtras="!"
+		  >
+	<xf:set var="$isSelected" value="{{ $category.resource_category_id == $selected }}" />
+	<xf:set var="$hasPathToSelected" value="{$pathToSelected.{$category.resource_category_id}}" />
+	<xf:set var="$isActive" value="{{ $isSelected OR $hasPathToSelected AND $children is not empty }}" />
+
+	<xf:if is="$parentCategory.resource_category_id == $category.parent_category_id">
+		<div class="responsive-div" style="background-image: url({{$category.getCatImage() ? $category.getCatImage() : $xf.options.fs_rm_bg_img}}); width: {$xf.options.fs_rm_bg_width}; height: {$xf.options.fs_rm_bg_size};">
+			<a href="{{ link('resources/categories', $category) }}" class="categoryList-link{{ $isSelected ? ' is-selected' : '' }}">
+				{$category.title}
+			</a>
+		</div>
+	</xf:if>
+
+	<xf:if is="$children is not empty">
+		<xf:macro name="simple_category_list"
+				  arg-selected="{$selected}"
+				  arg-pathToSelected="{$pathToSelected}"
+				  arg-children="{$children}"
+				  arg-parentCategory="{$parentCategory}"
+				  arg-extras="{$childExtras}"
+				  arg-isActive="{$isActive}"
+				  />
+	</xf:if>
+</xf:macro>]]></template>
+  <template type="public" title="fs_xfrm_filters" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:form action="{{ link('search/search') }}" class="block" ajax="true">
+	<div class="menu-row menu-row--separated">
+		<div class="inputGroup u-inputSpacer">
+
+			<xf:set var="$controlId">{{ unique_id() }}</xf:set>
+
+			<xf:textbox type="search" placeholder="{{ phrase('fs_rm_search_resource') }}" name="keywords" value="{$input.keywords}" autofocus="autofocus" id="{$controlId}" />
+			<span class="inputGroup-splitter"></span>
+
+			<xf:set var="$categoriesControlId" value="{{ unique_id() }}" />
+			<xf:select name="c[categories][]" value="{$input.c.categories|default([0])}" id="{$categoriesControlId}">
+				<xf:option value="">{{ phrase('all_categories') }}</xf:option>
+				<xf:foreach loop="$categoryTree.getFlattened(0)" value="$treeEntry">
+					<xf:option value="{$treeEntry.record.resource_category_id}">{{ repeat('&nbsp;&nbsp;', $treeEntry.depth)|raw }} {$treeEntry.record.title}</xf:option>
+				</xf:foreach>
+			</xf:select>
+
+			<span class="inputGroup-splitter"></span>
+
+
+			<xf:button type="submit" class="button--primary">{{ phrase('search') }}</xf:button>
+		</div>
+	</div>
+
+
+	<xf:hiddenval name="search_type" value="resource"/>
+	<xf:hiddenval name="c[child_categories]" value="true"/>
+	<xf:hiddenval name="c[title_only]" value=""/>
+</xf:form>
+
+<xf:comment>
+	<xf:form action="{{ link($category ? 'resources/categories/filters' : 'resources/filters', $category) }}">
+
+		<div class="menu-row menu-row--separated">
+			<div class="inputGroup u-inputSpacer">
+
+				<!--[XF:above_type]-->
+				<xf:select name="type" value="{$filters.type}">
+					<xf:option value="">{{ phrase('any') }}</xf:option>
+					<xf:option value="free">{{ phrase('xfrm_free') }}</xf:option>
+					<xf:option value="paid">{{ phrase('xfrm_paid') }}</xf:option>
+				</xf:select>
+				<span class="inputGroup-splitter"></span>
+
+				<!--[XF:above_prefixes]-->
+				<xf:if is="$prefixesGrouped is not empty">
+					<xf:macro template="prefix_macros" name="select"
+							  arg-prefixes="{$prefixesGrouped}"
+							  arg-type="resource"
+							  arg-selected="{{ $filters.prefix_id ?: 0 }}"
+							  arg-name="prefix_id"
+							  arg-noneLabel="{{ phrase('(any)') }}"
+							  />
+				</xf:if>
+				<span class="inputGroup-splitter"></span>
+
+				<!--[XF:above_created_by]-->
+				<xf:textbox name="creator" value="{{ $creatorFilter ? $creatorFilter.username : '' }}" ac="single" />
+				<span class="inputGroup-splitter"></span>
+
+				<!--[XF:above_sort_by]-->
+				<xf:select name="order" value="{{ $filters.order ?: $xf.options.xfrmListDefaultOrder }}">
+					<xf:option value="last_update">{{ phrase('xfrm_last_update') }}</xf:option>
+					<xf:option value="resource_date">{{ phrase('xfrm_submission_date') }}</xf:option>
+					<xf:option value="rating_weighted">{{ phrase('rating') }}</xf:option>
+					<xf:option value="download_count">{{ phrase('xfrm_downloads') }}</xf:option>
+					<xf:option value="title">{{ phrase('title') }}</xf:option>
+				</xf:select>
+				<span class="inputGroup-splitter"></span>
+
+				<xf:select name="direction" value="{{ $filters.direction ?: 'desc' }}">
+					<xf:option value="desc">{{ phrase('descending') }}</xf:option>
+					<xf:option value="asc">{{ phrase('ascending') }}</xf:option>
+				</xf:select>
+
+				<xf:button type="submit" class="button--primary">{{ phrase('filter') }}</xf:button>
+			</div>
+		</div>
+
+		<xf:hiddenval name="apply">1</xf:hiddenval>
+	</xf:form>
+</xf:comment>]]></template>
+  <template type="public" title="fs_xfrm_overview" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title page="{$page}">{{ phrase('xfrm_resources') }}</xf:title>
+
+<xf:css src="structured_list.less" />
+
+<xf:css src="fs_rm_resource_list.less" />
+<xf:css src="fs_rm_resource_list_slider.less" />
+
+<xf:js src="vendor/lightslider/lightslider.js" min="1" />
+<xf:js src="RMChagneView/slider.js" min="1" />
+
+<xf:css src="fs_rm_style_grid_css.less" />
+
+<xf:title page="{$page}">{{ phrase('xfrm_resources') }}</xf:title>
+
+<xf:include template="fs_xfrm_filters" />
+
+<style>
+
+	.containerRm {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-around;
+	}
+
+	.responsive-div {
+		background-size: cover;
+		background-position: center;
+		margin: 10px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		color: white;
+		font-size: 20px;
+		text-align: center;
+		background-color: rgba(0, 0, 0, 0.5); /* Fallback color if image doesn't load */
+	}
+
+	@media (max-width: 768px) {
+		.responsive-div {
+			width: 100% !important; /* Full width on small screens */
+		}
+	}
+
+</style>
+
+<div class="containerRm">
+
+	<xf:macro name="simple_list_block"
+			  arg-categoryTree="{$categoryTree}"
+			  arg-categoryExtras="{$categoryExtras}" />
+
+</div>
+
+
+
+<xf:macro template="metadata_macros" name="canonical_url"
+		  arg-canonicalUrl="{{ link('canonical:resources', null, {'page': $page > 1 ? $page : null}) }}" />
+
+<xf:page option="searchConstraints" value="{{ {
+										   phrase('xfrm_resources'): {'search_type': 'resource'}
+										   } }}" />
+
+<xf:pageaction if="$xf.visitor.canAddResource()">
+	<xf:button href="{{ link('resources/add') }}" class="button--cta" icon="write" overlay="true">{{ phrase('xfrm_add_resource...') }}</xf:button>
+</xf:pageaction>
+
+<xf:widgetpos id="xfrm_overview_above_resources" />
+
+<xf:if is="$canInlineMod">
+	<xf:js src="xf/inline_mod.js" min="1" />
+</xf:if>
+
+<div class="block" data-xf-init="{{ $canInlineMod ? 'inline-mod' : '' }}" data-type="resource" data-href="{{ link('inline-mod') }}">
+	<div class="block-outer"><xf:trim>
+
+		<xf:pagenav page="{$page}" perpage="{$perPage}" total="{$total}"
+					link="resources" params="{$filters}"
+					wrapperclass="block-outer-main" />
+
+		<xf:comment>
+			<xf:if contentcheck="true">
+				<div class="block-outer-opposite">
+					<div class="buttonGroup">
+						<xf:contentcheck>
+							<xf:if is="$canInlineMod">
+								<xf:macro template="inline_mod_macros" name="button" />
+							</xf:if>
+						</xf:contentcheck>
+					</div>
+				</div>
+			</xf:if>
+		</xf:comment>
+
+		</xf:trim></div>
+
+	<div class="block-container">
+
+		<div class="block-body block-row">
+			<div class="itemList itemList--slider"
+				 data-xf-init="item-slider"
+				 data-xf-item-slider='{"item":{$xf.options.fs_rm_resoureces_per_page},"itemWide":3,"itemMedium":2,"itemNarrow":1,"auto":false,"loop":true}'>
+
+				<xf:foreach loop="$resources" value="$resource">
+					<div class="itemList-item itemList-item--slider">
+						<xf:macro template="fs_rm_list_macros" name="resource"
+								  arg-filterPrefix="{{ true }}"
+								  arg-resource="{$resource}" />
+					</div>
+				</xf:foreach>
+
+			</div>
+		</div>
+
+		<xf:comment>
+			<div class="block-body">
+				<xf:if is="$resources is not empty">
+					<div class="structItemContainer">
+
+						<div class="structItemContainer-group js-threadList thread-grid">
+							<xf:foreach loop="$resources" value="$resource">
+								<xf:macro template="fs_rm_list_macros" name="resource"
+										  arg-filterPrefix="{{ true }}"
+										  arg-resource="{$resource}" />
+							</xf:foreach>
+						</div>
+
+					</div>
+					<xf:elseif is="$filters" />
+					<div class="block-row">{{ phrase('xfrm_there_no_resources_matching_your_filters') }}</div>
+					<xf:else />
+					<div class="block-row">{{ phrase('xfrm_no_resources_have_been_created_yet') }}</div>
+				</xf:if>
+			</div>
+		</xf:comment>
+	</div>
+
+	<div class="block-outer block-outer--after">
+		<xf:pagenav
+					page="{$page}" perpage="{$perPage}" total="{$total}"
+					link="resources" params="{$filters}"
+					wrapperclass="block-outer-main" />
+		<xf:showignored wrapperclass="block-outer-opposite" />
+	</div>
+</div>
+
+<xf:macro name="simple_list_block" arg-categoryTree="!" arg-categoryExtras="!" arg-selected="{{ 0 }}">
+
+	<xf:if is="$categoryTree.count()">
+		<xf:macro name="simple_category_list"
+				  arg-children="{$categoryTree}"
+				  arg-extras="{$categoryExtras}"
+				  arg-isActive="{{ true }}"
+				  arg-selected="{$selected}"
+				  arg-pathToSelected="{{ $selected ? $categoryTree.getPathTo($selected) : [] }}" />
+		<xf:else />
+		<div class="block-row">{{ phrase('n_a') }}</div>
+	</xf:if>
+
+</xf:macro>
+
+<xf:macro name="simple_category_list"
+		  arg-selected="0"
+		  arg-pathToSelected="{{ [] }}"
+		  arg-children="!"
+		  arg-extras="!"
+		  arg-isActive="{{ false }}"
+		  >
+	<xf:foreach loop="$children" key="$id" value="$category">
+		<xf:set var="$isSelected" value="{{ $category.record.resource_category_id == $selected }}" />
+
+		<div class="responsive-div" style="background-image: url({{$category.record.getCatImage() ? $category.record.getCatImage() : $xf.options.fs_rm_bg_img}}); width: {$xf.options.fs_rm_bg_width}; height: {$xf.options.fs_rm_bg_size};">
+			<a href="{{ link('resources/categories', $category.record) }}" class="categoryList-link{{ $isSelected ? ' is-selected' : '' }}">
+				{$category.record.title}
+			</a>
+		</div>
+
+	</xf:foreach>
+</xf:macro>]]></template>
+</templates>

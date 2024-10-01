@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="fs_rm_cat_image" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Image]]></phrase>
+  <phrase title="fs_rm_cat_image_disp" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Uploaded image]]></phrase>
+  <phrase title="fs_rm_no_cat_img" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[No image...!]]></phrase>
+  <phrase title="fs_rm_please_confirm_delete_image" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Delete Image]]></phrase>
+  <phrase title="fs_rm_search_resource" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Search Resource...]]></phrase>
+  <phrase title="option.fs_rm_bg_img" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Category background image url]]></phrase>
+  <phrase title="option.fs_rm_bg_size" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Category background image height]]></phrase>
+  <phrase title="option.fs_rm_bg_width" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Category background image width]]></phrase>
+  <phrase title="option.fs_rm_m_bg_img" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Resource background image url]]></phrase>
+  <phrase title="option.fs_rm_resource_height_pixcels" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Resource image height]]></phrase>
+  <phrase title="option.fs_rm_resource_width_percen" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Resource image width]]></phrase>
+  <phrase title="option.fs_rm_resoureces_per_page" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Resources box]]></phrase>
+  <phrase title="option_explain.fs_rm_bg_img" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_explain.fs_rm_bg_size" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[it's required if the  image size needs to increase according to your theme]]></phrase>
+  <phrase title="option_explain.fs_rm_bg_width" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[it's required if the  image size needs to increase according to your theme]]></phrase>
+  <phrase title="option_explain.fs_rm_m_bg_img" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_explain.fs_rm_resource_height_pixcels" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_explain.fs_rm_resource_width_percen" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_explain.fs_rm_resoureces_per_page" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_group.fs_rm_change_view" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Resource Manager change view]]></phrase>
+  <phrase title="option_group_description.fs_rm_change_view" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+</phrases>
