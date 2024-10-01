@@ -9,39 +9,6 @@
 <xf:js src="RMChagneView/slider.js" min="1" />
 
 <xf:css src="fs_rm_style_grid_css.less" />
-<xf:comment>
-	<div class="block " data-xf-init="inline-mod" data-type="resource" data-href="{{ link('inline-mod') }}">
-
-		<div class="block-container">
-
-			<div class="block-body">
-				<xf:extension name="thread_list">
-					<div class="structItemContainer">
-
-						<xf:if is="$resources is not empty">
-
-							<div class="structItemContainer-group js-threadList">
-								<xf:if is="$resources is not empty">
-									<xf:foreach loop="$resources" value="$resource">
-										<xf:macro template="fs_rm_list_macros" name="resource"
-												  arg-filterPrefix="{{ true }}"
-												  arg-resource="{$resource}" />
-									</xf:foreach>
-									<xf:if is="$showDateLimitDisabler">
-										<xf:macro name="date_limit_disabler" arg-forum="{$forum}" arg-page="{$page}" arg-filters="{$filters}" />
-									</xf:if>
-								</xf:if>
-							</div>
-							<xf:else />
-							<div class="block-body block-row">{{ phrase('no_results_found') }}</div>
-						</xf:if>
-					</div>
-				</xf:extension>
-			</div>
-		</div>
-	</div>
-
-</xf:comment>
 
 <xf:title page="{$page}">{{ phrase('xfrm_resources') }}</xf:title>
 
@@ -201,7 +168,7 @@
 	<xf:foreach loop="$children" key="$id" value="$category">
 		<xf:set var="$isSelected" value="{{ $category.record.resource_category_id == $selected }}" />
 
-		<div class="responsive-div" style="background-image: url({$xf.options.fs_rm_bg_img}); width: {$xf.options.fs_rm_bg_width}; height: {$xf.options.fs_rm_bg_size};">
+		<div class="responsive-div" style="background-image: url({{$category.record.getCatImage() ? $category.record.getCatImage() : $xf.options.fs_rm_bg_img}}); width: {$xf.options.fs_rm_bg_width}; height: {$xf.options.fs_rm_bg_size};">
 			<a href="{{ link('resources/categories', $category.record) }}" class="categoryList-link{{ $isSelected ? ' is-selected' : '' }}">
 				{$category.record.title}
 			</a>

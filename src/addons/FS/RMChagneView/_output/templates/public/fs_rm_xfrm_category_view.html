@@ -33,6 +33,15 @@
 
 </style>
 
+<div class="containerRm">
+
+	<xf:macro name="simple_list_block"
+			  arg-categoryTree="{$categoryTree}"
+			  arg-categoryExtras="{$categoryExtras}"
+			  arg-parentCategory="{$category}" />
+
+</div>
+
 
 <xf:macro template="metadata_macros" name="canonical_url"
 		  arg-canonicalUrl="{{ link('canonical:resources/categories', $category, {'page': $page > 1 ? $page : null}) }}" />
@@ -138,3 +147,85 @@
 		<xf:showignored wrapperclass="block-outer-opposite" />
 	</div>
 </div>
+
+<xf:macro name="simple_list_block" arg-categoryTree="!" arg-parentCategory="!" arg-categoryExtras="!" arg-selected="{{ 0 }}">
+
+	<xf:if is="$categoryTree.count()">
+		<xf:macro name="simple_category_list"
+				  arg-children="{$categoryTree}"
+				  arg-extras="{$categoryExtras}"
+				  arg-parentCategory="{$parentCategory}"
+				  arg-isActive="{{ true }}"
+				  arg-selected="{$selected}"
+				  arg-pathToSelected="{{ $selected ? $categoryTree.getPathTo($selected) : [] }}" />
+		<xf:else />
+		<div class="block-row">{{ phrase('n_a') }}</div>
+	</xf:if>
+
+</xf:macro>
+
+<xf:macro name="simple_category_list"
+		  arg-selected="0"
+		  arg-pathToSelected="{{ [] }}"
+		  arg-parentCategory="!"
+		  arg-children="!"
+		  arg-extras="!"
+		  arg-isActive="{{ false }}"
+		  >
+	<xf:foreach loop="$children" key="$id" value="$child">
+		<xf:macro name="simple_category_list_item"
+				  arg-selected="{$selected}"
+				  arg-pathToSelected="{$pathToSelected}"
+				  arg-parentCategory="{$parentCategory}"
+				  arg-category="{$child.record}"
+				  arg-extras="{$extras.{$id}}"
+				  arg-children="{$child}"
+				  arg-childExtras="{$extras}"
+				  />
+	</xf:foreach>
+	<xf:comment>
+		<xf:foreach loop="$children" key="$id" value="$category">
+			<xf:set var="$isSelected" value="{{ $category.record.resource_category_id == $selected }}" />
+
+			<div class="responsive-div" style="background-image: url({{$category.record.getCatImage() ? $category.record.getCatImage() : $xf.options.fs_rm_bg_img}}); width: {$xf.options.fs_rm_bg_width}; height: {$xf.options.fs_rm_bg_size};">
+				<a href="{{ link('resources/categories', $category.record) }}" class="categoryList-link{{ $isSelected ? ' is-selected' : '' }}">
+					{$category.record.title}
+				</a>
+			</div>
+
+		</xf:foreach>
+	</xf:comment>
+</xf:macro>
+
+<xf:macro name="simple_category_list_item"
+		  arg-selected="!"
+		  arg-pathToSelected="{{ [] }}"
+		  arg-category="!"
+		  arg-parentCategory="!"
+		  arg-extras="!"
+		  arg-children="!"
+		  arg-childExtras="!"
+		  >
+	<xf:set var="$isSelected" value="{{ $category.resource_category_id == $selected }}" />
+	<xf:set var="$hasPathToSelected" value="{$pathToSelected.{$category.resource_category_id}}" />
+	<xf:set var="$isActive" value="{{ $isSelected OR $hasPathToSelected AND $children is not empty }}" />
+
+	<xf:if is="$parentCategory.resource_category_id == $category.parent_category_id">
+		<div class="responsive-div" style="background-image: url({{$category.getCatImage() ? $category.getCatImage() : $xf.options.fs_rm_bg_img}}); width: {$xf.options.fs_rm_bg_width}; height: {$xf.options.fs_rm_bg_size};">
+			<a href="{{ link('resources/categories', $category) }}" class="categoryList-link{{ $isSelected ? ' is-selected' : '' }}">
+				{$category.title}
+			</a>
+		</div>
+	</xf:if>
+
+	<xf:if is="$children is not empty">
+		<xf:macro name="simple_category_list"
+				  arg-selected="{$selected}"
+				  arg-pathToSelected="{$pathToSelected}"
+				  arg-children="{$children}"
+				  arg-parentCategory="{$parentCategory}"
+				  arg-extras="{$childExtras}"
+				  arg-isActive="{$isActive}"
+				  />
+	</xf:if>
+</xf:macro>

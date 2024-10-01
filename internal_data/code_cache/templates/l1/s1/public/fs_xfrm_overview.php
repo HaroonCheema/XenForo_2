@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: cf9d5a3f87da7fcafeb5cbacf27b0a11
+// FROM HASH: 2add8a7f0299a929c6289d4d048fd168
 return array(
 'macros' => array('simple_list_block' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -54,7 +54,7 @@ return array(
 			$__vars['isSelected'] = ($__vars['category']['record']['resource_category_id'] == $__vars['selected']);
 			$__finalCompiled .= '
 
-		<div class="responsive-div" style="background-image: url(' . $__templater->escape($__vars['xf']['options']['fs_rm_bg_img']) . '); width: ' . $__templater->escape($__vars['xf']['options']['fs_rm_bg_width']) . '; height: ' . $__templater->escape($__vars['xf']['options']['fs_rm_bg_size']) . ';">
+		<div class="responsive-div" style="background-image: url(' . ($__templater->method($__vars['category']['record'], 'getCatImage', array()) ? $__templater->escape($__templater->method($__vars['category']['record'], 'getCatImage', array())) : $__templater->escape($__vars['xf']['options']['fs_rm_bg_img'])) . '); width: ' . $__templater->escape($__vars['xf']['options']['fs_rm_bg_width']) . '; height: ' . $__templater->escape($__vars['xf']['options']['fs_rm_bg_size']) . ';">
 			<a href="' . $__templater->func('link', array('resources/categories', $__vars['category']['record'], ), true) . '" class="categoryList-link' . ($__vars['isSelected'] ? ' is-selected' : '') . '">
 				' . $__templater->escape($__vars['category']['record']['title']) . '
 			</a>
@@ -102,7 +102,6 @@ return array(
 ';
 	$__templater->includeCss('fs_rm_style_grid_css.less');
 	$__finalCompiled .= '
-' . '
 
 ';
 	$__templater->pageParams['pageTitle'] = $__templater->preEscaped('Resources');

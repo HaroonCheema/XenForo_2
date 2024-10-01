@@ -1,4 +1,28 @@
 {
+    "fs_rm_cat_image.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "be53a0541a6d36f6ecb879fa2c584b08"
+    },
+    "fs_rm_cat_image_disp.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "266e153900ddd33b9262d5109307c513"
+    },
+    "fs_rm_no_cat_img.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "738f2098faca0306eecc2c8d25660e71"
+    },
+    "fs_rm_please_confirm_delete_image.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "cc35c2065afaf479d2afea1c7cb5bd89"
+    },
     "option.fs_rm_bg_img.txt": {
         "global_cache": false,
         "version_id": 1000010,

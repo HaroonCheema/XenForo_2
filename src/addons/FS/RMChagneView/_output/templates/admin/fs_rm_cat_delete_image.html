@@ -1,0 +1,16 @@
+<xf:title>{{ phrase('fs_rm_please_confirm_delete_image') }}</xf:title>
+
+<xf:form action="{{ link('resource-manager/categories/delete-image', $category) }}" class="block" ajax="true">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:inforow rowtype="confirm">
+				{{ phrase('please_confirm_that_you_want_to_delete_following:') }}
+				
+				<xf:formrow rowtype="fullWidth noLabel">
+					<img src="{{ base_url($category.getCatImage()) }}" style="width: 175px;"/>
+				</xf:formrow>
+			</xf:inforow>
+			<xf:submitrow rowtype="simple" icon="delete" />
+		</div>
+	</div>
+</xf:form>

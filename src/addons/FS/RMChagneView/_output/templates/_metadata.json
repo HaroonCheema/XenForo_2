@@ -1,4 +1,9 @@
 {
+    "admin/fs_rm_cat_delete_image.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "db583031055ba1bfb8cfae2f5cdc0d89"
+    },
     "public/fs_rm_cat_style_grid_css.less": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
@@ -7,7 +12,7 @@
     "public/fs_rm_list_macros.html": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
-        "hash": "7e89eed90e642811b0b0f0f6ff1723ff"
+        "hash": "071cdbf47852172463cf30513a7940dd"
     },
     "public/fs_rm_resource_list.less": {
         "version_id": 1000010,
@@ -27,7 +32,7 @@
     "public/fs_rm_xfrm_category_view.html": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
-        "hash": "3c622849ea901a7be99448fc6c116e7a"
+        "hash": "12ab222966db19b73d817713ea7e5236"
     },
     "public/fs_xfrm_filters.html": {
         "version_id": 1000010,
@@ -37,6 +42,6 @@
     "public/fs_xfrm_overview.html": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
-        "hash": "cf9d5a3f87da7fcafeb5cbacf27b0a11"
+        "hash": "2add8a7f0299a929c6289d4d048fd168"
     }
 }

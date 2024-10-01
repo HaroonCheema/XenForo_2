@@ -1,0 +1,9 @@
+{
+    "template": "xfrm_category_edit",
+    "description": "fs_rm_xfrm_category_edit_upload",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:textarearow name=\"description\" value=\"{$category.description}\" autosize=\"true\"\n\t\t\t\tlabel=\"{{ phrase('description') }}\"\n\t\t\t\texplain=\"{{ phrase('you_may_use_html') }}\" />",
+    "replace": "$0\n\n<xf:uploadrow name=\"upload\" accept=\".jpeg,.jpg,.jpe,.png\"\n\t\t\t  label=\"{{ phrase('fs_rm_cat_image') }}\" />\n\n<xf:if is=\"{$category.getCatImage()}\">\n\t<xf:formrow label=\"{{ phrase('fs_rm_cat_image_disp') }}\">\n\t\t<img src=\"{{ base_url($category.getCatImage()) }}\" style=\"width: 150px;\"/>\n\t\t<br/>\n\t\t<xf:button href=\"{{ link('resource-manager/categories/delete-image', $category) }}\" icon=\"delete\" overlay=\"true\" />\n\t</xf:formrow>\n</xf:if>"
+}
