@@ -520,6 +520,14 @@ return array(
 				';
 	}
 	$__compilerTemp1 .= '
+
+';
+	if ($__vars['xf']['visitor']['is_admin'] OR $__vars['xf']['visitor']['is_moderator']) {
+		$__compilerTemp1 .= '
+	<a href="' . $__templater->func('link', array('banned-users', ), true) . '" class="p-staffBar-link" >' . 'Banned users' . '</a>
+';
+	}
+	$__compilerTemp1 .= '
 			';
 	if (strlen(trim($__compilerTemp1)) > 0) {
 		$__finalCompiled .= '
@@ -636,7 +644,9 @@ return array(
 								</div>
 							</div>
 
-							<a href="' . $__templater->func('link', array('conversations', ), true) . '"
+							';
+			if (!$__vars['xf']['visitor']['is_banned']) {
+				$__compilerTemp6 .= '<a href="' . $__templater->func('link', array('conversations', ), true) . '"
 								class="p-navgroup-link p-navgroup-link--iconic p-navgroup-link--conversations js-badge--conversations badgeContainer' . ($__vars['xf']['visitor']['conversations_unread'] ? ' badgeContainer--highlighted' : '') . '"
 								data-badge="' . $__templater->filter($__vars['xf']['visitor']['conversations_unread'], array(array('number', array()),), true) . '"
 								data-xf-click="menu"
@@ -647,7 +657,9 @@ return array(
 								aria-haspopup="true">
 								<i aria-hidden="true"></i>
 								<span class="p-navgroup-linkText">' . '' . '</span>
-							</a>
+							</a>';
+			}
+			$__compilerTemp6 .= '
 							<div class="menu menu--structural menu--medium" data-menu="menu" aria-hidden="true"
 								data-href="' . $__templater->func('link', array('conversations/popup', ), true) . '"
 								data-nocache="true"
@@ -660,7 +672,11 @@ return array(
 									<div class="menu-footer menu-footer--split">
 										<div class="menu-footer-main">
 											<ul class="listInline listInline--bullet">
-												<li><a href="' . $__templater->func('link', array('conversations', ), true) . '">' . 'Show all' . '</a></li>
+												<li>';
+			if (!$__vars['xf']['visitor']['is_banned']) {
+				$__compilerTemp6 .= '<a href="' . $__templater->func('link', array('conversations', ), true) . '">' . 'Show all' . '</a>';
+			}
+			$__compilerTemp6 .= '</li>
 												';
 			if ($__templater->method($__vars['xf']['visitor'], 'canStartConversation', array())) {
 				$__compilerTemp6 .= '

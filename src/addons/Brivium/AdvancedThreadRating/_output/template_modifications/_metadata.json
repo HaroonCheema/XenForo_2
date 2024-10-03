@@ -1,5 +1,11 @@
 {
     "public/BRATR_forum_filters.json": {
         "hash": "70adc0a3e3676def84cd8560d7fded85"
+    },
+    "public/BRATR_member_view.json": {
+        "hash": "852601b260a0ccde811c4625b7fa5d2b"
+    },
+    "public/BRATR_member_view_tab_panel.json": {
+        "hash": "c4b700a448c03b37faa8868f1fa0a84d"
     }
 }

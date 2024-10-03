@@ -77,20 +77,6 @@ return array(
 	}
 	$__compilerTemp4 .= '
 											';
-	if ($__vars['user']['user_id'] == $__vars['xf']['visitor']['user_id']) {
-		$__compilerTemp4 .= '
-	' . $__templater->button('
-		' . 'Deposit' . '
-	', array(
-			'href' => $__templater->func('link', array('escrow/deposit', ), false),
-			'class' => 'button--link',
-			'data-xf-click' => 'overlay',
-		), '', array(
-		)) . '
-';
-	}
-	$__compilerTemp4 .= '
-';
 	if (($__vars['user']['user_id'] == $__vars['xf']['visitor']['user_id']) AND $__templater->method($__vars['xf']['visitor'], 'canUploadProfileBanner', array())) {
 		$__compilerTemp4 .= '
 												' . $__templater->button('
@@ -287,30 +273,44 @@ return array(
 			data-panes=".js-memberTabPanes"
 			data-state="replace"
 			role="tablist">
-			<span class="hScroller-scroll">
+			';
+	if ($__vars['user']['is_banned'] AND (!$__templater->method($__vars['xf']['visitor'], 'hasPermission', array('fs_ban_watch_profile', 'other_can_check', )))) {
+		$__finalCompiled .= '
+	<span class="hScroller-scroll banUserHideTabs">
+
+		<a href="' . $__templater->func('link', array('members/about', $__vars['user'], ), true) . '"
+		   class="tabs-tab banUserHideTabs"
+		   id="about"
+		   role="tab">' . 'About' . '</a>
+
+	</span>
+	';
+	} else {
+		$__finalCompiled .= '
+	<span class="hScroller-scroll">
 				' . '
 				';
-	if ($__templater->method($__vars['user'], 'canViewPostsOnProfile', array())) {
-		$__finalCompiled .= '
+		if ($__templater->method($__vars['user'], 'canViewPostsOnProfile', array())) {
+			$__finalCompiled .= '
 					<a href="' . $__templater->func('link', array('members', $__vars['user'], ), true) . '"
 						class="tabs-tab is-active"
 						role="tab"
 						aria-controls="profile-posts">' . 'Profile posts' . '</a>
 				';
-	}
-	$__finalCompiled .= '
+		}
+		$__finalCompiled .= '
 
 				';
-	if ($__templater->method($__vars['user'], 'canViewLatestActivity', array())) {
-		$__finalCompiled .= '
+		if ($__templater->method($__vars['user'], 'canViewLatestActivity', array())) {
+			$__finalCompiled .= '
 					<a href="' . $__templater->func('link', array('members/latest-activity', $__vars['user'], ), true) . '"
 						rel="nofollow"
 						class="tabs-tab"
 						id="latest-activity"
 						role="tab">' . 'Latest activity' . '</a>
 				';
-	}
-	$__finalCompiled .= '
+		}
+		$__finalCompiled .= '
 
 				<a href="' . $__templater->func('link', array('members/recent-content', $__vars['user'], ), true) . '"
 					rel="nofollow"
@@ -321,58 +321,58 @@ return array(
 				' . '
 
 ';
-	if ($__templater->method($__vars['xf']['visitor'], 'canViewMedia', array()) AND $__vars['user']['xfmg_media_count']) {
-		$__finalCompiled .= '
+		if ($__templater->method($__vars['xf']['visitor'], 'canViewMedia', array()) AND $__vars['user']['xfmg_media_count']) {
+			$__finalCompiled .= '
 	<a href="' . $__templater->func('link', array('media/users', $__vars['user'], ), true) . '"
 	   class="tabs-tab"
 	   id="xfmgMedia"
 	   role="tab">' . 'Media' . '</a>
 ';
-	}
-	$__finalCompiled .= '
+		}
+		$__finalCompiled .= '
 
 ';
-	if ($__templater->method($__vars['xf']['visitor'], 'canViewMedia', array()) AND $__vars['user']['xfmg_album_count']) {
-		$__finalCompiled .= '
+		if ($__templater->method($__vars['xf']['visitor'], 'canViewMedia', array()) AND $__vars['user']['xfmg_album_count']) {
+			$__finalCompiled .= '
 	<a href="' . $__templater->func('link', array('media/albums/users', $__vars['user'], ), true) . '"
 	   class="tabs-tab"
 	   id="xfmgAlbums"
 	   role="tab">' . 'Albums' . '</a>
 ';
-	}
-	$__finalCompiled .= '
+		}
+		$__finalCompiled .= '
 
 ';
-	if ($__templater->method($__vars['xf']['visitor'], 'canViewResources', array()) AND $__vars['user']['xfrm_resource_count']) {
-		$__finalCompiled .= '
+		if ($__templater->method($__vars['xf']['visitor'], 'canViewResources', array()) AND $__vars['user']['xfrm_resource_count']) {
+			$__finalCompiled .= '
 	<a href="' . $__templater->func('link', array('resources/authors', $__vars['user'], ), true) . '"
 	   class="tabs-tab"
 	   id="resources"
 	   role="tab">' . 'Resources' . '</a>
 ';
-	}
-	$__finalCompiled .= '
+		}
+		$__finalCompiled .= '
 
 ';
-	if ($__templater->method($__vars['xf']['visitor'], 'hasOption', array('hasDbEcommerce', )) AND ($__templater->method($__vars['xf']['visitor'], 'canViewDbtechEcommerceProducts', array()) AND $__vars['user']['dbtech_ecommerce_product_count'])) {
-		$__finalCompiled .= '
+		if ($__templater->method($__vars['xf']['visitor'], 'hasOption', array('hasDbEcommerce', )) AND ($__templater->method($__vars['xf']['visitor'], 'canViewDbtechEcommerceProducts', array()) AND $__vars['user']['dbtech_ecommerce_product_count'])) {
+			$__finalCompiled .= '
 	<a href="' . $__templater->func('link', array('dbtech-ecommerce/authors', $__vars['user'], ), true) . '"
 	   class="tabs-tab"
 	   id="dbtech_ecommerce_products"
 	   role="tab">' . 'Products' . '</a>
 ';
-	}
-	$__finalCompiled .= '
-';
-	if ($__templater->method($__vars['xf']['visitor'], 'canViewDbtechEcommerceLicenses', array()) AND $__vars['user']['dbtech_ecommerce_license_count']) {
+		}
 		$__finalCompiled .= '
+';
+		if ($__templater->method($__vars['xf']['visitor'], 'canViewDbtechEcommerceLicenses', array()) AND $__vars['user']['dbtech_ecommerce_license_count']) {
+			$__finalCompiled .= '
 	<a href="' . $__templater->func('link', array('dbtech-ecommerce/licenses', $__vars['user'], ), true) . '"
 	   class="tabs-tab"
 	   id="dbtech_ecommerce_licenses"
 	   role="tab">' . 'Licenses' . '</a>
 ';
-	}
-	$__finalCompiled .= '
+		}
+		$__finalCompiled .= '
 
 				<a href="' . $__templater->func('link', array('members/about', $__vars['user'], ), true) . '"
 					class="tabs-tab"
@@ -380,54 +380,39 @@ return array(
 					role="tab">' . 'About' . '</a>
 
 				';
-	if ($__templater->method($__vars['xf']['visitor'], 'canViewWarnings', array()) AND $__vars['user']['warning_count']) {
-		$__finalCompiled .= '
+		if ($__templater->method($__vars['xf']['visitor'], 'canViewWarnings', array()) AND $__vars['user']['warning_count']) {
+			$__finalCompiled .= '
 					<a href="' . $__templater->func('link', array('members/warnings', $__vars['user'], ), true) . '"
 						class="tabs-tab"
 						id="warnings"
 						role="tab">' . 'Warnings' . '</a>
 				';
-	}
-	$__finalCompiled .= '
-				';
-	if (($__vars['user']['user_id'] == $__vars['xf']['visitor']['user_id']) AND $__vars['user']['bratr_ratings']) {
+		}
 		$__finalCompiled .= '
+				';
+		if (($__vars['user']['user_id'] == $__vars['xf']['visitor']['user_id']) AND $__vars['user']['bratr_ratings']) {
+			$__finalCompiled .= '
 	<a href="' . $__templater->func('link', array('members/bratr-my-ratings', $__vars['user'], ), true) . '"
 	   rel="nofollow"
 	   class="tabs-tab"
 	   id="bratr-ratings"
 	   role="tab">' . 'My Ratings' . '</a>
 ';
-	} else if ($__vars['user']['bratr_receive_ratings']) {
-		$__finalCompiled .= '
+		} else if ($__vars['user']['bratr_receive_ratings']) {
+			$__finalCompiled .= '
 	<a href="' . $__templater->func('link', array('members/bratr-ratings', $__vars['user'], ), true) . '"
 	   rel="nofollow"
 	   class="tabs-tab"
 	   id="bratr-ratings"
 	   role="tab">' . 'Receive Ratings' . '</a>
 ';
-	}
-	$__finalCompiled .= '
-' . '
-';
-	if (($__vars['user']['user_id'] == $__vars['xf']['visitor']['user_id']) OR $__vars['xf']['visitor']['is_admin']) {
+		}
 		$__finalCompiled .= '
-	<a href="' . $__templater->func('link', array('members/my-escrow', $__vars['user'], ), true) . '"
-	   class="tabs-tab" id="my-escrow" role="tab">
-		' . 'My Escrows' . '
-	</a>
-	<a href="' . $__templater->func('link', array('members/mentioned-escrow', $__vars['user'], ), true) . '"
-	   class="tabs-tab" id="mentioned-escrow" role="tab">
-		' . 'Mentioned Escrow' . '
-	</a>
-	<a href="' . $__templater->func('link', array('members/logs', $__vars['user'], ), true) . '"
-	   class="tabs-tab" id="escrow-logs" role="tab">
-		' . 'Escrow Logs' . '
-	</a>
+' . '
+			</span>
 ';
 	}
 	$__finalCompiled .= '
-			</span>
 		</h2>
 	</div>
 </div>
@@ -436,22 +421,35 @@ return array(
 		'user' => $__vars['user'],
 	), $__vars) . '
 
-<ul class="tabPanes js-memberTabPanes">
+';
+	if ($__vars['user']['is_banned'] AND (!$__templater->method($__vars['xf']['visitor'], 'hasPermission', array('fs_ban_watch_profile', 'other_can_check', )))) {
+		$__finalCompiled .= '
+	<ul class="tabPanes js-memberTabPanes banUserHideTabs">
+
+		<li class="banUserHideTabs" data-href="' . $__templater->func('link', array('members/about', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="about">
+			<div class="blockMessage">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
+		</li>
+
+	</ul>
+	';
+	} else {
+		$__finalCompiled .= '
+	<ul class="tabPanes js-memberTabPanes">
 	' . '
 	';
-	if ($__templater->method($__vars['user'], 'canViewPostsOnProfile', array())) {
-		$__finalCompiled .= '
+		if ($__templater->method($__vars['user'], 'canViewPostsOnProfile', array())) {
+			$__finalCompiled .= '
 		<li class="is-active" role="tabpanel" id="profile-posts">
 			';
-		$__templater->includeJs(array(
-			'src' => 'xf/inline_mod.js',
-			'min' => '1',
-		));
-		$__finalCompiled .= '
+			$__templater->includeJs(array(
+				'src' => 'xf/inline_mod.js',
+				'min' => '1',
+			));
+			$__finalCompiled .= '
 
 			' . $__templater->callMacro('lightbox_macros', 'setup', array(
-			'canViewAttachments' => $__vars['canViewAttachments'],
-		), $__vars) . '
+				'canViewAttachments' => $__vars['canViewAttachments'],
+			), $__vars) . '
 
 			<div class="block block--messages"
 				data-xf-init="lightbox inline-mod"
@@ -461,82 +459,82 @@ return array(
 				<div class="block-container">
 					<div class="block-body js-replyNewMessageContainer">
 						';
-		if ($__templater->method($__vars['user'], 'canPostOnProfile', array())) {
-			$__finalCompiled .= '
+			if ($__templater->method($__vars['user'], 'canPostOnProfile', array())) {
+				$__finalCompiled .= '
 							';
-			$__vars['firstProfilePost'] = $__templater->filter($__vars['profilePosts'], array(array('first', array()),), false);
-			$__finalCompiled .= '
+				$__vars['firstProfilePost'] = $__templater->filter($__vars['profilePosts'], array(array('first', array()),), false);
+				$__finalCompiled .= '
 							' . $__templater->callMacro('profile_post_macros', 'quick_post', array(
-				'user' => $__vars['user'],
-				'lastDate' => ($__vars['firstProfilePost']['post_date'] ?: 0),
-				'containerSelector' => '< .js-replyNewMessageContainer',
-				'attachmentData' => $__vars['attachmentData'],
-			), $__vars) . '
+					'user' => $__vars['user'],
+					'lastDate' => ($__vars['firstProfilePost']['post_date'] ?: 0),
+					'containerSelector' => '< .js-replyNewMessageContainer',
+					'attachmentData' => $__vars['attachmentData'],
+				), $__vars) . '
 						';
-		}
-		$__finalCompiled .= '
-
-						';
-		if (!$__templater->test($__vars['profilePosts'], 'empty', array())) {
-			$__finalCompiled .= '
-							';
-			if ($__templater->isTraversable($__vars['profilePosts'])) {
-				foreach ($__vars['profilePosts'] AS $__vars['profilePost']) {
-					$__finalCompiled .= '
-								' . $__templater->callMacro('profile_post_macros', (($__vars['profilePost']['message_state'] == 'deleted') ? 'profile_post_deleted' : 'profile_post'), array(
-						'attachmentData' => $__vars['profilePostAttachData'][$__vars['profilePost']['profile_post_id']],
-						'profilePost' => $__vars['profilePost'],
-					), $__vars) . '
-							';
-				}
 			}
 			$__finalCompiled .= '
+
 						';
-		} else {
-			$__finalCompiled .= '
+			if (!$__templater->test($__vars['profilePosts'], 'empty', array())) {
+				$__finalCompiled .= '
+							';
+				if ($__templater->isTraversable($__vars['profilePosts'])) {
+					foreach ($__vars['profilePosts'] AS $__vars['profilePost']) {
+						$__finalCompiled .= '
+								' . $__templater->callMacro('profile_post_macros', (($__vars['profilePost']['message_state'] == 'deleted') ? 'profile_post_deleted' : 'profile_post'), array(
+							'attachmentData' => $__vars['profilePostAttachData'][$__vars['profilePost']['profile_post_id']],
+							'profilePost' => $__vars['profilePost'],
+						), $__vars) . '
+							';
+					}
+				}
+				$__finalCompiled .= '
+						';
+			} else {
+				$__finalCompiled .= '
 							<div class="block-row js-replyNoMessages">' . 'There are no messages on ' . $__templater->escape($__vars['user']['username']) . '\'s profile yet.' . '</div>
 						';
-		}
-		$__finalCompiled .= '
+			}
+			$__finalCompiled .= '
 					</div>
 				</div>
 
 				<div class="block-outer block-outer--after">
 					' . $__templater->func('page_nav', array(array(
-			'page' => $__vars['page'],
-			'total' => $__vars['total'],
-			'link' => 'members',
-			'data' => $__vars['user'],
-			'wrapperclass' => 'block-outer-main',
-			'perPage' => $__vars['perPage'],
-		))) . '
+				'page' => $__vars['page'],
+				'total' => $__vars['total'],
+				'link' => 'members',
+				'data' => $__vars['user'],
+				'wrapperclass' => 'block-outer-main',
+				'perPage' => $__vars['perPage'],
+			))) . '
 					<div class="block-outer-opposite">
 						' . $__templater->func('show_ignored', array(array(
-		))) . '
+			))) . '
 						';
-		if ($__vars['canInlineMod']) {
-			$__finalCompiled .= '
+			if ($__vars['canInlineMod']) {
+				$__finalCompiled .= '
 							' . $__templater->callMacro('inline_mod_macros', 'button', array(), $__vars) . '
 						';
-		}
-		$__finalCompiled .= '
+			}
+			$__finalCompiled .= '
 					</div>
 				</div>
 			</div>
 		</li>
 	';
-	}
-	$__finalCompiled .= '
+		}
+		$__finalCompiled .= '
 
 	';
-	if ($__templater->method($__vars['user'], 'canViewLatestActivity', array())) {
-		$__finalCompiled .= '
+		if ($__templater->method($__vars['user'], 'canViewLatestActivity', array())) {
+			$__finalCompiled .= '
 		<li data-href="' . $__templater->func('link', array('members/latest-activity', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="latest-activity">
 			<div class="blockMessage">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
 		</li>
 	';
-	}
-	$__finalCompiled .= '
+		}
+		$__finalCompiled .= '
 
 	<li data-href="' . $__templater->func('link', array('members/recent-content', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="recent-content">
 		<div class="blockMessage">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
@@ -545,99 +543,87 @@ return array(
 	' . '
 
 ';
-	if ($__templater->method($__vars['xf']['visitor'], 'canViewMedia', array()) AND $__vars['user']['xfmg_media_count']) {
-		$__finalCompiled .= '
+		if ($__templater->method($__vars['xf']['visitor'], 'canViewMedia', array()) AND $__vars['user']['xfmg_media_count']) {
+			$__finalCompiled .= '
 	<li data-href="' . $__templater->func('link', array('media/users', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="xfmgMedia">
 		<div class="blockMessage">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
 	</li>
 ';
-	}
-	$__finalCompiled .= '
+		}
+		$__finalCompiled .= '
 
 ';
-	if ($__templater->method($__vars['xf']['visitor'], 'canViewMedia', array()) AND $__vars['user']['xfmg_album_count']) {
-		$__finalCompiled .= '
+		if ($__templater->method($__vars['xf']['visitor'], 'canViewMedia', array()) AND $__vars['user']['xfmg_album_count']) {
+			$__finalCompiled .= '
 	<li data-href="' . $__templater->func('link', array('media/albums/users', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="xfmgAlbums">
 		<div class="blockMessage">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
 	</li>
 ';
-	}
-	$__finalCompiled .= '
+		}
+		$__finalCompiled .= '
 
 ';
-	if ($__templater->method($__vars['xf']['visitor'], 'canViewResources', array()) AND $__vars['user']['xfrm_resource_count']) {
-		$__finalCompiled .= '
+		if ($__templater->method($__vars['xf']['visitor'], 'canViewResources', array()) AND $__vars['user']['xfrm_resource_count']) {
+			$__finalCompiled .= '
 	<li data-href="' . $__templater->func('link', array('resources/authors', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="resources">
 		<div class="blockMessage">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
 	</li>
 ';
-	}
-	$__finalCompiled .= '
+		}
+		$__finalCompiled .= '
 
 ';
-	if ($__templater->method($__vars['xf']['visitor'], 'hasOption', array('hasDbEcommerce', )) AND ($__templater->method($__vars['xf']['visitor'], 'canViewDbtechEcommerceProducts', array()) AND $__vars['user']['dbtech_ecommerce_product_count'])) {
-		$__finalCompiled .= '
+		if ($__templater->method($__vars['xf']['visitor'], 'hasOption', array('hasDbEcommerce', )) AND ($__templater->method($__vars['xf']['visitor'], 'canViewDbtechEcommerceProducts', array()) AND $__vars['user']['dbtech_ecommerce_product_count'])) {
+			$__finalCompiled .= '
 	<li data-href="' . $__templater->func('link', array('dbtech-ecommerce/authors', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="dbtech_ecommerce_products">
 		<div class="blockMessage">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
 	</li>
 ';
-	}
-	$__finalCompiled .= '
-';
-	if ($__templater->method($__vars['xf']['visitor'], 'canViewDbtechEcommerceLicenses', array()) AND $__vars['user']['dbtech_ecommerce_license_count']) {
+		}
 		$__finalCompiled .= '
+';
+		if ($__templater->method($__vars['xf']['visitor'], 'canViewDbtechEcommerceLicenses', array()) AND $__vars['user']['dbtech_ecommerce_license_count']) {
+			$__finalCompiled .= '
 	<li data-href="' . $__templater->func('link', array('dbtech-ecommerce/licenses', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="dbtech_ecommerce_licenses">
 		<div class="blockMessage">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
 	</li>
 ';
-	}
-	$__finalCompiled .= '
+		}
+		$__finalCompiled .= '
 
 	<li data-href="' . $__templater->func('link', array('members/about', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="about">
 		<div class="blockMessage">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
 	</li>
 
 	';
-	if ($__templater->method($__vars['xf']['visitor'], 'canViewWarnings', array()) AND $__vars['user']['warning_count']) {
-		$__finalCompiled .= '
+		if ($__templater->method($__vars['xf']['visitor'], 'canViewWarnings', array()) AND $__vars['user']['warning_count']) {
+			$__finalCompiled .= '
 		<li data-href="' . $__templater->func('link', array('members/warnings', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="warnings">
 			<div class="blockMessage">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
 		</li>
 	';
-	}
-	$__finalCompiled .= '
-	';
-	if (($__vars['user']['user_id'] == $__vars['xf']['visitor']['user_id']) AND $__vars['user']['bratr_ratings']) {
+		}
 		$__finalCompiled .= '
+	';
+		if (($__vars['user']['user_id'] == $__vars['xf']['visitor']['user_id']) AND $__vars['user']['bratr_ratings']) {
+			$__finalCompiled .= '
 	<li data-href="' . $__templater->func('link', array('members/bratr-my-ratings', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="bratr-ratings">
 		<div class="blockMessage">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
 	</li>
 ';
-	} else if ($__vars['user']['bratr_receive_ratings']) {
-		$__finalCompiled .= '
+		} else if ($__vars['user']['bratr_receive_ratings']) {
+			$__finalCompiled .= '
 	<li data-href="' . $__templater->func('link', array('members/bratr-ratings', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="bratr-ratings">
 		<div class="blockMessage">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
 	</li>
 ';
-	}
-	$__finalCompiled .= '
-' . '
-';
-	if (($__vars['user']['user_id'] == $__vars['xf']['visitor']['user_id']) OR $__vars['xf']['visitor']['is_admin']) {
+		}
 		$__finalCompiled .= '
-<li data-href="' . $__templater->func('link', array('members/my-escrow', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="my-escrow">
-		<div class="blockMessage">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
-</li>
-<li data-href="' . $__templater->func('link', array('members/mentioned-escrow', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="mentioned-escrow">
-		<div class="blockMessage">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
-</li>
-<li data-href="' . $__templater->func('link', array('members/logs', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="escrow-logs">
-		<div class="blockMessage">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
-</li>
-	';
+' . '
+</ul>
+';
 	}
 	$__finalCompiled .= '
-</ul>
 
 ';
 	$__templater->modifySidebarHtml('_xfWidgetPositionSidebarfeaef3b7c6b482f185e4871860a95125', $__templater->widgetPosition('member_view_sidebar', array(

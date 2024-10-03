@@ -1,0 +1,9 @@
+{
+    "template": "member_view",
+    "description": "add receive ratings tab panel",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<!--[XF:tab_panes:end]-->",
+    "replace": "<xf:if is=\"$user.user_id == $xf.visitor.user_id && $user.bratr_ratings\">\n\t<li data-href=\"{{ link('members/bratr-my-ratings', $user) }}\" role=\"tabpanel\" aria-labelledby=\"bratr-ratings\">\n\t\t<div class=\"blockMessage\">{{ phrase('loading...') }}</div>\n\t</li>\n<xf:elseif is=\"$user.bratr_receive_ratings\" />\n\t<li data-href=\"{{ link('members/bratr-ratings', $user) }}\" role=\"tabpanel\" aria-labelledby=\"bratr-ratings\">\n\t\t<div class=\"blockMessage\">{{ phrase('loading...') }}</div>\n\t</li>\n</xf:if>\n$0"
+}

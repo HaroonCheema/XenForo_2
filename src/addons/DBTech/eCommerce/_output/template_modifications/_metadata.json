@@ -1,4 +1,10 @@
 {
+    "public/dbtech_ecommerce_member_view_add_tab.json": {
+        "hash": "376a0b02d4beda3212a91beabef75c55"
+    },
+    "public/dbtech_ecommerce_member_view_add_tab_pane.json": {
+        "hash": "dcd2a9d4e8b719bd54d8fb97c018cf15"
+    },
     "public/dbtech_ecommerce_whats_new_wrapper_link.json": {
         "hash": "8d0eea817840f92588d08a430e23c7bd"
     }

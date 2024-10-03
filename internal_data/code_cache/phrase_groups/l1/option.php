@@ -321,6 +321,7 @@ return array (
   'option.fs_auction_bumping_allowed' => 'Allowed Bumping',
   'option.fs_auction_dropDown_list_limit' => 'Bidding Drop Down List Limit',
   'option.fs_auction_per_page' => 'Auctions display on per page',
+  'option.fs_banned_users_applic_forum' => 'Select forum',
   'option.fs_bi_accessKey' => 'AccessKey',
   'option.fs_bi_libraryId' => 'Library ID',
   'option.fs_bitcoin_blockonomics_api_key' => 'Blockonomics API Key',

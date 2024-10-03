@@ -1,0 +1,9 @@
+{
+    "template": "member_view",
+    "description": "Add the \"products\" tab pane.",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<!--[XF:tab_panes:after_recent_content]-->",
+    "replace": "$0\n\n<xf:if is=\"$xf.visitor.hasOption('hasDbEcommerce') && $xf.visitor.canViewDbtechEcommerceProducts() AND $user.dbtech_ecommerce_product_count\">\n\t<li data-href=\"{{ link('dbtech-ecommerce/authors', $user) }}\" role=\"tabpanel\" aria-labelledby=\"dbtech_ecommerce_products\">\n\t\t<div class=\"blockMessage\">{{ phrase('loading...') }}</div>\n\t</li>\n</xf:if>\n<xf:if is=\"$xf.visitor.canViewDbtechEcommerceLicenses() AND $user.dbtech_ecommerce_license_count\">\n\t<li data-href=\"{{ link('dbtech-ecommerce/licenses', $user) }}\" role=\"tabpanel\" aria-labelledby=\"dbtech_ecommerce_licenses\">\n\t\t<div class=\"blockMessage\">{{ phrase('loading...') }}</div>\n\t</li>\n</xf:if>"
+}

@@ -1,0 +1,80 @@
+{
+    "fs_ban_ban_date.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "a55998303071c34d90dc0a04e68cc768"
+    },
+    "fs_ban_banned_users.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "19b630511e7a1d75c9b5d90d990f1951"
+    },
+    "fs_ban_end_date.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "50c3b1830acc1aa0275ab84157bbf39e"
+    },
+    "fs_ban_issued_by.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "5c0250a97c444794334e54e61adf4a88"
+    },
+    "fs_ban_reason.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d73a057c763446fe7222dc6a501e8e1e"
+    },
+    "fs_banned_by.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "00e87dcbfe95481a2af40771a5c40c29"
+    },
+    "option.fs_banned_users_applic_forum.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "7657e3293f31f473a499b8c2d9546779"
+    },
+    "option_explain.fs_banned_users_applic_forum.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "cb15f777c0e0b3e338b93236251129e4"
+    },
+    "option_group.fs_ban_user_change.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "68a03f8a5d08bccd52d448b9b1a264d3"
+    },
+    "option_group_description.fs_ban_user_change.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "permission.fs_ban_watch_profile_all_check.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "4e3945c78df368cff538265197614d12"
+    },
+    "permission.fs_ban_watch_profile_other_can_check.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "7224d7b5978dadaeaeae66698612cfc1"
+    },
+    "permission_interface.fs_ban_watch_profile.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "68a03f8a5d08bccd52d448b9b1a264d3"
+    }
+}

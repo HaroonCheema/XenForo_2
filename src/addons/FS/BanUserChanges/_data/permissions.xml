@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<permissions>
+  <permission permission_group_id="fs_ban_watch_profile" permission_id="all_check" permission_type="flag" interface_group_id="fs_ban_watch_profile" display_order="1"/>
+  <permission permission_group_id="fs_ban_watch_profile" permission_id="other_can_check" permission_type="flag" interface_group_id="fs_ban_watch_profile" display_order="1"/>
+</permissions>

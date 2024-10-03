@@ -1,0 +1,35 @@
+<xf:title>{{ phrase('fs_ban_banned_users') }}</xf:title>
+
+<xf:if is="$userBans is not empty">
+	<div class="block">
+		<div class="block-container">
+			<div class="block-body">
+				<xf:datalist data-xf-init="responsive-data-list">
+					<xf:datarow rowtype="header">
+						<xf:cell>{{ phrase('user_name') }}</xf:cell>
+						<xf:cell>{{ phrase('fs_banned_by') }}</xf:cell>
+						<xf:cell>{{ phrase('end_date') }}</xf:cell>
+						<xf:cell>{{ phrase('reason') }}</xf:cell>
+					</xf:datarow>
+					<xf:foreach loop="$userBans" value="$userBan">
+						<xf:datarow>
+							<xf:cell>{$userBan.User.username}</xf:cell>
+							<xf:cell>{$userBan.BanUser.username}</xf:cell>
+							<xf:cell>{{ $userBan.end_date ? date($userBan.end_date) : phrase('permanent') }}</xf:cell>
+							<xf:cell>{{ $userBan.user_reason ?: phrase('n_a') }}</xf:cell>
+						</xf:datarow>
+					</xf:foreach>
+				</xf:datalist>
+			</div>
+			<div class="block-footer">
+				<span class="block-footer-counter">{{ display_totals($userBans, $total) }}</span>
+			</div>
+		</div>
+
+		<xf:pagenav page="{$page}" perpage="{$perPage}" total="{$total}"
+			link="banned-users"
+			wrapperclass="block-outer block-outer--after" />
+	</div>
+<xf:else />
+	<div class="blockMessage">{{ phrase('there_no_banned_users') }}</div>
+</xf:if>

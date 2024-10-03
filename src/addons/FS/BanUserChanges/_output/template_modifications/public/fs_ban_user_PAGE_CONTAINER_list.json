@@ -1,0 +1,9 @@
+{
+    "template": "PAGE_CONTAINER",
+    "description": "fs_ban_user_PAGE_CONTAINER_list",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:if is=\"$xf.visitor.is_admin\">\n\t\t\t\t\t<a href=\"{{ base_url('admin.php') }}\" class=\"p-staffBar-link\" target=\"_blank\">{{ phrase('admin') }}</a>\n\t\t\t\t</xf:if>",
+    "replace": "$0\n\n<xf:if is=\"$xf.visitor.is_admin || $xf.visitor.is_moderator\">\n\t<a href=\"{{ link('banned-users') }}\" class=\"p-staffBar-link\" >{{ phrase('fs_ban_banned_users') }}</a>\n</xf:if>"
+}

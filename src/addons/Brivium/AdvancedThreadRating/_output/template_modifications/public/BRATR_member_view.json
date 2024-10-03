@@ -1,0 +1,9 @@
+{
+    "template": "member_view",
+    "description": "add receive ratings tab",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<!--[XF:tabs:end]-->",
+    "replace": "<xf:if is=\"$user.user_id == $xf.visitor.user_id && $user.bratr_ratings\">\n\t<a href=\"{{ link('members/bratr-my-ratings', $user) }}\"\n\t   rel=\"nofollow\"\n\t   class=\"tabs-tab\"\n\t   id=\"bratr-ratings\"\n\t   role=\"tab\">{{ phrase('BRATR_my_ratings') }}</a>\n<xf:elseif is=\"$user.bratr_receive_ratings\" />\n\t<a href=\"{{ link('members/bratr-ratings', $user) }}\"\n\t   rel=\"nofollow\"\n\t   class=\"tabs-tab\"\n\t   id=\"bratr-ratings\"\n\t   role=\"tab\">{{ phrase('BRATR_receive_ratings') }}</a>\n</xf:if>\n$0"
+}

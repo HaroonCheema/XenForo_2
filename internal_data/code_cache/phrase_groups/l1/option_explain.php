@@ -378,6 +378,7 @@ This option requires that the specified account is a catch-all account or suppor
   'option_explain.fs_auction_bumping_allowed' => 'how many times user can bump there auction...!',
   'option_explain.fs_auction_dropDown_list_limit' => '',
   'option_explain.fs_auction_per_page' => 'how many auctions display on per page you can set from here..!',
+  'option_explain.fs_banned_users_applic_forum' => 'Select forums to create by default threads.',
   'option_explain.fs_bi_accessKey' => 'Enter AccessKey of bunny Api',
   'option_explain.fs_bi_libraryId' => 'Enter the video libraryId of Bunny.net',
   'option_explain.fs_bitcoin_blockonomics_api_key' => '',

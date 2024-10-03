@@ -1,0 +1,9 @@
+{
+    "template": "member_view",
+    "description": "Add the \"products\" tab.",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<!--[XF:tabs:after_recent_content]-->",
+    "replace": "$0\n\n<xf:if is=\"$xf.visitor.hasOption('hasDbEcommerce') && $xf.visitor.canViewDbtechEcommerceProducts() AND $user.dbtech_ecommerce_product_count\">\n\t<a href=\"{{ link('dbtech-ecommerce/authors', $user) }}\"\n\t   class=\"tabs-tab\"\n\t   id=\"dbtech_ecommerce_products\"\n\t   role=\"tab\">{{ phrase('dbtech_ecommerce_products') }}</a>\n</xf:if>\n<xf:if is=\"$xf.visitor.canViewDbtechEcommerceLicenses() AND $user.dbtech_ecommerce_license_count\">\n\t<a href=\"{{ link('dbtech-ecommerce/licenses', $user) }}\"\n\t   class=\"tabs-tab\"\n\t   id=\"dbtech_ecommerce_licenses\"\n\t   role=\"tab\">{{ phrase('dbtech_ecommerce_licenses') }}</a>\n</xf:if>"
+}

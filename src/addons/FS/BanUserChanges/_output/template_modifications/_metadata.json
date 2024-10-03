@@ -1,0 +1,17 @@
+{
+    "public/fs_ban_member_about_add_details.json": {
+        "hash": "947b520985f98a825359f1628291c571"
+    },
+    "public/fs_ban_user_PAGE_CONTAINER_list.json": {
+        "hash": "600b39b274086ed916f7e16a98755299"
+    },
+    "public/fs_ban_user_hide_all_tab_panes.json": {
+        "hash": "699e9b8989f268a579229568696f27dc"
+    },
+    "public/fs_ban_user_hide_all_tabs.json": {
+        "hash": "c1ed5d9dba8cb3f87e712c4609a77811"
+    },
+    "public/fs_banned_users_hide_conversation_box.json": {
+        "hash": "dc9a495f7bfa85a16c6355000ce14760"
+    }
+}

@@ -190,6 +190,8 @@ return array (
   'permission.fs_IPSearchResult_canUseSearch' => 'Can Use Ip Search',
   'permission.fs_attachment_needlike' => '[FS] Need Like to See Attachment ?',
   'permission.fs_auction_permissions_add' => 'Add auction listing',
+  'permission.fs_ban_watch_profile_all_check' => 'Can check all banned users',
+  'permission.fs_ban_watch_profile_other_can_check' => 'Can check profile',
   'permission.fs_bunny_allow' => 'Can Upload Video',
   'permission.fs_forum_group_permission_add' => 'Add Forum Group',
   'permission.fs_latest_thread_can_check_lts_cnt' => 'Can check latest content',

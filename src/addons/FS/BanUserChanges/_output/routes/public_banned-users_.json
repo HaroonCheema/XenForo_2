@@ -1,0 +1,11 @@
+{
+    "route_type": "public",
+    "route_prefix": "banned-users",
+    "sub_name": "",
+    "format": "",
+    "build_class": "",
+    "build_method": "",
+    "controller": "FS\\BanUserChanges:BannedUsers",
+    "context": "",
+    "action_prefix": ""
+}

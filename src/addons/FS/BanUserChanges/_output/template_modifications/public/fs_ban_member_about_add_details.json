@@ -1,0 +1,9 @@
+{
+    "template": "member_about",
+    "description": "fs_ban_member_about_add_details",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/<div class=\"block\">\n\t<div class=\"block-container\">\n\t\t<div class=\"block-body\">.*?<\\/div>\n\t<\\/div>\n<\\/div>/is",
+    "replace": "<xf:if is=\"$user.is_banned AND !$xf.visitor.hasPermission('fs_ban_watch_profile', 'other_can_check')\">\n\t<div class=\"block\">\n\t\t<div class=\"block-container\">\n\t\t\t<div class=\"block-body\">\n\t\t\t\t<div class=\"block-row block-row--separated\">\n\t\t\t\t\t<dl class=\"pairs pairs--columns pairs--fixedSmall\">\n\t\t\t\t\t\t<dt>{{ phrase('fs_ban_issued_by') }}</dt>\n\t\t\t\t\t\t<dd>\n\t\t\t\t\t\t\t{{$user.Ban.BanUser.username}}\n\t\t\t\t\t\t</dd>\n\n\t\t\t\t\t</dl>\n\t\t\t\t\t<dl class=\"pairs pairs--columns pairs--fixedSmall\">\n\t\t\t\t\t\t<dt>{{ phrase('fs_ban_ban_date') }}</dt>\n\t\t\t\t\t\t<dd>\n\t\t\t\t\t\t\t<xf:date time=\"{$user.Ban.ban_date}\" />\n\t\t\t\t\t\t</dd>\n\n\t\t\t\t\t</dl>\n\t\t\t\t\t<dl class=\"pairs pairs--columns pairs--fixedSmall\">\n\t\t\t\t\t\t<dt>{{ phrase('fs_ban_end_date') }}</dt>\n\t\t\t\t\t\t<dd>\n\t\t\t\t\t\t\t<xf:if is=\"$user.Ban.end_date\">\n\t\t\t\t\t\t\t\t<xf:date time=\"{$user.Ban.end_date}\" />\n\t\t\t\t\t\t\t\t<xf:else/>\n\t\t\t\t\t\t\t\t{{ phrase('permanent') }}\n\t\t\t\t\t\t\t</xf:if>\n\n\t\t\t\t\t\t</dd>\n\n\t\t\t\t\t</dl>\n\t\t\t\t\t<dl class=\"pairs pairs--columns pairs--fixedSmall\">\n\t\t\t\t\t\t<dt>{{ phrase('fs_ban_reason') }}</dt>\n\t\t\t\t\t\t<dd>\n\t\t\t\t\t\t\t{$user.Ban.user_reason}\n\t\t\t\t\t\t</dd>\n\t\t\t\t\t</dl>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<xf:else />\n\t$0\n</xf:if>"
+}

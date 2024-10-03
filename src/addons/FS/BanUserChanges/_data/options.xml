@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<options>
+  <option option_id="fs_banned_users_applic_forum" edit_format="callback" data_type="integer">
+    <default_value>0</default_value>
+    <edit_format_params>\XF\Option\Forum::renderSelect</edit_format_params>
+    <relation group_id="fs_ban_user_change" display_order="1"/>
+  </option>
+</options>
