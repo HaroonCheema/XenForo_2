@@ -3,10 +3,16 @@
         "hash": "947b520985f98a825359f1628291c571"
     },
     "public/fs_ban_user_PAGE_CONTAINER_list.json": {
-        "hash": "600b39b274086ed916f7e16a98755299"
+        "hash": "2690f52edb2d737e8089109f7f65db46"
+    },
+    "public/fs_ban_user_forum_list_for_banned.json": {
+        "hash": "37383b6785244a00a65e3e9c463bd1b7"
+    },
+    "public/fs_ban_user_forum_view_for_banned.json": {
+        "hash": "4619b574d070dc926d4e6433cb0497e7"
     },
     "public/fs_ban_user_hide_all_tab_panes.json": {
-        "hash": "699e9b8989f268a579229568696f27dc"
+        "hash": "e96bcf15ccf6b28ee2f7ac6e30d0f034"
     },
     "public/fs_ban_user_hide_all_tabs.json": {
         "hash": "c1ed5d9dba8cb3f87e712c4609a77811"

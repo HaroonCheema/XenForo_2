@@ -1,4 +1,14 @@
 {
+    "public/fs_ban_forum_list.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "33afd3147462168481779aac464ca9a0"
+    },
+    "public/fs_ban_forum_view.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "41ec171cbedd7fc56cf989f6e382da9a"
+    },
     "public/fs_ban_user_list.html": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",

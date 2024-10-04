@@ -1,0 +1,9 @@
+{
+    "template": "forum_list",
+    "description": "fs_ban_user_forum_list_for_banned",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/<xf:if is=\"\\$xf\\.options\\.forumsDefaultPage != 'forums' OR \\(\\$xf\\.options\\.indexRoute AND \\$xf\\.options\\.indexRoute != 'forums\\/'\\)\">.*?<\\/div>\n\t\t<\\/div>\n\t<\\/xf:if>\n<\\/xf:macro>/is",
+    "replace": "<xf:if is=\"$xf.visitor.is_banned\">\n\t<xf:include template=\"fs_ban_forum_list\" />\n\t<xf:else />\n\t$0\n</xf:if>"
+}

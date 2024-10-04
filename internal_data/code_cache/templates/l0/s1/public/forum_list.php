@@ -191,47 +191,54 @@ return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
 	$__finalCompiled = '';
-	if (($__vars['xf']['options']['forumsDefaultPage'] != 'forums') OR ($__vars['xf']['options']['indexRoute'] AND ($__vars['xf']['options']['indexRoute'] != 'forums/'))) {
+	if ($__vars['xf']['visitor']['is_banned']) {
 		$__finalCompiled .= '
+	' . $__templater->includeTemplate('fs_ban_forum_list', $__vars) . '
 	';
-		$__templater->pageParams['pageTitle'] = $__templater->preEscaped('Forum list');
-		$__finalCompiled .= '
-';
 	} else {
 		$__finalCompiled .= '
 	';
-		$__templater->pageParams['pageH1'] = $__templater->preEscaped($__templater->escape($__vars['xf']['options']['boardTitle']));
-		$__finalCompiled .= '
+		if (($__vars['xf']['options']['forumsDefaultPage'] != 'forums') OR ($__vars['xf']['options']['indexRoute'] AND ($__vars['xf']['options']['indexRoute'] != 'forums/'))) {
+			$__finalCompiled .= '
+	';
+			$__templater->pageParams['pageTitle'] = $__templater->preEscaped('Forum list');
+			$__finalCompiled .= '
 ';
-	}
-	$__finalCompiled .= '
+		} else {
+			$__finalCompiled .= '
+	';
+			$__templater->pageParams['pageH1'] = $__templater->preEscaped($__templater->escape($__vars['xf']['options']['boardTitle']));
+			$__finalCompiled .= '
+';
+		}
+		$__finalCompiled .= '
 
 ' . $__templater->callMacro('metadata_macros', 'metadata', array(
-		'description' => $__vars['xf']['options']['boardDescription'],
-		'canonicalUrl' => $__templater->func('link', array('canonical:' . $__vars['selfRoute'], ), false),
-	), $__vars) . '
+			'description' => $__vars['xf']['options']['boardDescription'],
+			'canonicalUrl' => $__templater->func('link', array('canonical:' . $__vars['selfRoute'], ), false),
+		), $__vars) . '
 
 
 ';
-	$__compilerTemp1 = $__vars;
-	$__compilerTemp1['pageSelected'] = $__templater->preEscaped('forums');
-	$__templater->wrapTemplate('forum_overview_wrapper', $__compilerTemp1);
-	$__finalCompiled .= '
+		$__compilerTemp1 = $__vars;
+		$__compilerTemp1['pageSelected'] = $__templater->preEscaped('forums');
+		$__templater->wrapTemplate('forum_overview_wrapper', $__compilerTemp1);
+		$__finalCompiled .= '
 
 ';
-	$__templater->modifySidebarHtml('_xfWidgetPositionSidebarb0eaf214bfd96ea7ecb2b4bcfd224b64', $__templater->widgetPosition('forum_list_sidebar', array()), 'replace');
-	$__finalCompiled .= '
+		$__templater->modifySidebarHtml('_xfWidgetPositionSidebarb0eaf214bfd96ea7ecb2b4bcfd224b64', $__templater->widgetPosition('forum_list_sidebar', array()), 'replace');
+		$__finalCompiled .= '
 
 ' . $__templater->widgetPosition('forum_list_above_nodes', array()) . '
 ' . $__templater->callMacro(null, 'node_list', array(
-		'children' => $__vars['nodeTree'],
-		'extras' => $__vars['nodeExtras'],
-	), $__vars) . '
+			'children' => $__vars['nodeTree'],
+			'extras' => $__vars['nodeExtras'],
+		), $__vars) . '
 ' . $__templater->widgetPosition('forum_list_below_nodes', array()) . '
 
 ';
-	$__templater->setPageParam('head.' . 'rss_forum', $__templater->preEscaped('<link rel="alternate" type="application/rss+xml" title="' . $__templater->filter('RSS feed for ' . $__vars['xf']['options']['boardTitle'] . '', array(array('for_attr', array()),), true) . '" href="' . $__templater->func('link', array('forums/index.rss', '-', ), true) . '" />'));
-	$__finalCompiled .= '
+		$__templater->setPageParam('head.' . 'rss_forum', $__templater->preEscaped('<link rel="alternate" type="application/rss+xml" title="' . $__templater->filter('RSS feed for ' . $__vars['xf']['options']['boardTitle'] . '', array(array('for_attr', array()),), true) . '" href="' . $__templater->func('link', array('forums/index.rss', '-', ), true) . '" />'));
+		$__finalCompiled .= '
 
 ' . '
 
@@ -241,7 +248,9 @@ return array(
 
 ' . '
 
+' . '
 ';
+	}
 	return $__finalCompiled;
 }
 );

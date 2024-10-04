@@ -4,6 +4,6 @@
     "execution_order": 10,
     "enabled": true,
     "action": "preg_replace",
-    "find": "/<ul class=\"tabPanes js-memberTabPanes\">.*?<\\/ul>/is",
+    "find": "/<ul class=\"tabPanes js-memberTabPanes\">.*?<!--\\[XF:tab_panes:end]-->\n<\\/ul>/is",
     "replace": "<xf:if is=\"$user.is_banned AND !$xf.visitor.hasPermission('fs_ban_watch_profile', 'other_can_check')\">\n\t<ul class=\"tabPanes js-memberTabPanes banUserHideTabs\">\n\n\t\t<li class=\"banUserHideTabs\" data-href=\"{{ link('members/about', $user) }}\" role=\"tabpanel\" aria-labelledby=\"about\">\n\t\t\t<div class=\"blockMessage\">{{ phrase('loading...') }}</div>\n\t\t</li>\n\n\t</ul>\n\t<xf:else />\n\t$0\n</xf:if>"
 }

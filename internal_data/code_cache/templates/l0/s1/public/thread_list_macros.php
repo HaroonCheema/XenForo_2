@@ -20,9 +20,8 @@ return array(
 	if ($__templater->func('in_array', array($__vars['thread']['node_id'], $__vars['xf']['options']['node_id_for_thumb'], ), false)) {
 		$__finalCompiled .= '
 	';
-		if ((($__vars['xf']['reply']['template'] == 'forum_view') OR ($__vars['xf']['reply']['template'] == 'forum_view_latest_content')) OR ($__vars['xf']['reply']['template'] == 'tag_view')) {
+		if (($__vars['xf']['reply']['template'] == 'forum_view') OR ($__vars['xf']['reply']['template'] == 'tag_view')) {
 			$__finalCompiled .= '
-		
 		<div class="structItem-cell structItem-cell--icon" style="width: ' . ($__vars['thread']['Forum']['Node']['node_thread_thumbnail_width'] ? $__templater->escape($__vars['thread']['Forum']['Node']['node_thread_thumbnail_width']) : $__templater->escape($__vars['xf']['options']['thumbnail_width'])) . '; height: ' . ($__vars['thread']['Forum']['Node']['node_thread_thumbnail_height'] ? $__templater->escape($__vars['thread']['Forum']['Node']['node_thread_thumbnail_height']) : $__templater->escape($__vars['xf']['options']['thumb_size_hemant'])) . ';">
 	';
 		} else {
@@ -34,7 +33,7 @@ return array(
 			<div class="structItem-iconContainer">
 				<a href="' . $__templater->func('link', array('threads', $__vars['thread'], ), true) . '"> 
 				';
-		if ((($__vars['xf']['reply']['template'] == 'forum_view') OR ($__vars['xf']['reply']['template'] == 'forum_view_latest_content')) OR ($__vars['xf']['reply']['template'] == 'tag_view')) {
+		if (($__vars['xf']['reply']['template'] == 'forum_view') OR ($__vars['xf']['reply']['template'] == 'tag_view')) {
 			$__finalCompiled .= '
 						<img src="' . $__templater->escape($__templater->method($__vars['thread'], 'getfirstPostImgUrl', array())) . '" style="width: ' . ($__vars['thread']['Forum']['Node']['node_thread_thumbnail_width'] ? $__templater->escape($__vars['thread']['Forum']['Node']['node_thread_thumbnail_width']) : $__templater->escape($__vars['xf']['options']['thumbnail_width'])) . ' ; height: ' . ($__vars['thread']['Forum']['Node']['node_thread_thumbnail_height'] ? $__templater->escape($__vars['thread']['Forum']['Node']['node_thread_thumbnail_height']) : $__templater->escape($__vars['xf']['options']['thumb_size_hemant'])) . '; object-fit: cover;">
 				';
@@ -70,83 +69,27 @@ return array(
 ';
 	} else {
 		$__finalCompiled .= '
-	';
-		if ($__templater->func('in_array', array($__vars['thread']['node_id'], $__vars['xf']['options']['node_id_for_thumb'], ), false)) {
-			$__finalCompiled .= '
-	';
-			if (($__vars['xf']['reply']['template'] == 'forum_view') OR ($__vars['xf']['reply']['template'] == 'tag_view')) {
-				$__finalCompiled .= '
-		<div class="structItem-cell structItem-cell--icon" style="width: ' . ($__vars['thread']['Forum']['Node']['node_thread_thumbnail_width'] ? $__templater->escape($__vars['thread']['Forum']['Node']['node_thread_thumbnail_width']) : $__templater->escape($__vars['xf']['options']['thumbnail_width'])) . '; height: ' . ($__vars['thread']['Forum']['Node']['node_thread_thumbnail_height'] ? $__templater->escape($__vars['thread']['Forum']['Node']['node_thread_thumbnail_height']) : $__templater->escape($__vars['xf']['options']['thumb_size_hemant'])) . ';">
-	';
-			} else {
-				$__finalCompiled .= '
-		<div class="structItem-cell structItem-cell--icon">
-	';
-			}
-			$__finalCompiled .= '
-			<div class="structItem-iconContainer">
-				<a href="' . $__templater->func('link', array('threads', $__vars['thread'], ), true) . '"> 
-				';
-			if (($__vars['xf']['reply']['template'] == 'forum_view') OR ($__vars['xf']['reply']['template'] == 'tag_view')) {
-				$__finalCompiled .= '
-						<img src="' . $__templater->escape($__templater->method($__vars['thread'], 'getfirstPostImgUrl', array())) . '" style="width: ' . ($__vars['thread']['Forum']['Node']['node_thread_thumbnail_width'] ? $__templater->escape($__vars['thread']['Forum']['Node']['node_thread_thumbnail_width']) : $__templater->escape($__vars['xf']['options']['thumbnail_width'])) . ' ; height: ' . ($__vars['thread']['Forum']['Node']['node_thread_thumbnail_height'] ? $__templater->escape($__vars['thread']['Forum']['Node']['node_thread_thumbnail_height']) : $__templater->escape($__vars['xf']['options']['thumb_size_hemant'])) . '; object-fit: cover;">
-				';
-			} else {
-				$__finalCompiled .= '
-						<img src="' . $__templater->escape($__templater->method($__vars['thread'], 'getfirstPostImgUrl', array())) . '" class="avatar avatar--square" style="object-fit: cover;">
-				';
-			}
-			$__finalCompiled .= '
-				</a>
-				';
-			if (!$__vars['xf']['options']['hideuser_avtar']) {
-				$__finalCompiled .= '
-				';
-				if ($__templater->method($__vars['thread'], 'getUserPostCount', array())) {
-					$__finalCompiled .= '
-					' . $__templater->func('avatar', array($__vars['xf']['visitor'], 's', false, array(
-						'href' => '',
-						'class' => 'avatar--separated structItem-secondaryIcon',
-						'tabindex' => '0',
-						'data-xf-init' => 'tooltip',
-						'data-trigger' => 'auto',
-						'title' => 'You have posted ' . $__templater->method($__vars['thread'], 'getUserPostCount', array()) . ' message(s) in this thread',
-					))) . '
-				';
-				}
-				$__finalCompiled .= '
-				';
-			}
-			$__finalCompiled .= '
-			</div>
-</div>
-';
-		} else {
-			$__finalCompiled .= '
 	<div class="structItem-cell structItem-cell--icon">
 			<div class="structItem-iconContainer">
 				' . $__templater->func('avatar', array($__vars['thread']['User'], 's', false, array(
-				'defaultname' => $__vars['thread']['username'],
+			'defaultname' => $__vars['thread']['username'],
+		))) . '
+				';
+		if ($__templater->method($__vars['thread'], 'getUserPostCount', array())) {
+			$__finalCompiled .= '
+					' . $__templater->func('avatar', array($__vars['xf']['visitor'], 's', false, array(
+				'href' => '',
+				'class' => 'avatar--separated structItem-secondaryIcon',
+				'tabindex' => '0',
+				'data-xf-init' => 'tooltip',
+				'data-trigger' => 'auto',
+				'title' => 'You have posted ' . $__templater->method($__vars['thread'], 'getUserPostCount', array()) . ' message(s) in this thread',
 			))) . '
 				';
-			if ($__templater->method($__vars['thread'], 'getUserPostCount', array())) {
-				$__finalCompiled .= '
-					' . $__templater->func('avatar', array($__vars['xf']['visitor'], 's', false, array(
-					'href' => '',
-					'class' => 'avatar--separated structItem-secondaryIcon',
-					'tabindex' => '0',
-					'data-xf-init' => 'tooltip',
-					'data-trigger' => 'auto',
-					'title' => 'You have posted ' . $__templater->method($__vars['thread'], 'getUserPostCount', array()) . ' message(s) in this thread',
-				))) . '
-				';
-			}
-			$__finalCompiled .= '
-			</div>
-		</div>
-';
 		}
 		$__finalCompiled .= '
+			</div>
+		</div>
 ';
 	}
 	$__finalCompiled .= '

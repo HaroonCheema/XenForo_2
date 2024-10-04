@@ -594,28 +594,16 @@ return array(
 	$__templater->pageParams['pageNumber'] = $__vars['page'];
 	$__finalCompiled .= '
 ';
-	$__compilerTemp1 = '';
-	if ($__vars['xf']['options']['fs_latest_thread_custom_field_ver'] AND $__vars['thread']['custom_fields'][$__vars['xf']['options']['fs_latest_thread_custom_field_ver']]) {
-		$__compilerTemp1 .= '
-	<spam>[' . $__templater->escape($__vars['thread']['custom_fields'][$__vars['xf']['options']['fs_latest_thread_custom_field_ver']]) . ']</spam>
-	';
-	}
-	$__compilerTemp2 = '';
-	if ($__vars['xf']['options']['fs_latest_thread_custom_field_game'] AND $__vars['thread']['custom_fields'][$__vars['xf']['options']['fs_latest_thread_custom_field_game']]) {
-		$__compilerTemp2 .= '
-	<spam>[' . $__templater->escape($__vars['thread']['custom_fields'][$__vars['xf']['options']['fs_latest_thread_custom_field_game']]) . ']</spam>
-	';
-	}
-	$__templater->pageParams['pageH1'] = $__templater->preEscaped($__templater->func('prefix', array('thread', $__vars['thread'], ), true) . $__templater->escape($__vars['thread']['title']) . $__compilerTemp1 . $__compilerTemp2);
+	$__templater->pageParams['pageH1'] = $__templater->preEscaped($__templater->func('prefix', array('thread', $__vars['thread'], ), true) . $__templater->escape($__vars['thread']['title']));
 	$__finalCompiled .= '
 ';
 	if (($__vars['xf']['visitor']['user_id'] != 0) AND (($__vars['thread']['escrow_id'] != 0) AND ($__vars['thread']['node_id'] == $__vars['xf']['options']['fs_escrow_applicable_forum']))) {
 		$__finalCompiled .= '
 
 	';
-		$__compilerTemp3 = '';
+		$__compilerTemp1 = '';
 		if ((($__vars['thread']['Escrow']['to_user'] == $__vars['xf']['visitor']['user_id']) OR ($__vars['thread']['Escrow']['user_id'] == $__vars['xf']['visitor']['user_id'])) AND ($__vars['thread']['Escrow']['escrow_status'] == 0)) {
-			$__compilerTemp3 .= '
+			$__compilerTemp1 .= '
 			' . $__templater->button('Cancel', array(
 				'href' => $__templater->func('link', array('escrow/cancel', $__vars['thread']['Escrow'], ), false),
 				'class' => 'button--cta',
@@ -625,9 +613,9 @@ return array(
 			)) . '
 		';
 		}
-		$__compilerTemp4 = '';
+		$__compilerTemp2 = '';
 		if (($__vars['thread']['Escrow']['user_id'] == $__vars['xf']['visitor']['user_id']) AND ($__vars['thread']['Escrow']['escrow_status'] == 1)) {
-			$__compilerTemp4 .= '
+			$__compilerTemp2 .= '
 			' . $__templater->button('Release Payment', array(
 				'href' => $__templater->func('link', array('escrow/payments', $__vars['thread']['Escrow'], ), false),
 				'class' => '',
@@ -637,9 +625,9 @@ return array(
 			)) . '
 		';
 		}
-		$__compilerTemp5 = '';
+		$__compilerTemp3 = '';
 		if (($__vars['thread']['Escrow']['to_user'] == $__vars['xf']['visitor']['user_id']) AND ($__vars['thread']['Escrow']['escrow_status'] == 0)) {
-			$__compilerTemp5 .= '
+			$__compilerTemp3 .= '
 			' . $__templater->button('Approve', array(
 				'href' => $__templater->func('link', array('escrow/approve', $__vars['thread']['Escrow'], ), false),
 				'class' => '',
@@ -650,11 +638,11 @@ return array(
 		';
 		}
 		$__templater->pageParams['pageAction'] = $__templater->preEscaped('
+		' . $__compilerTemp1 . '
+		
+		' . $__compilerTemp2 . '
+		
 		' . $__compilerTemp3 . '
-		
-		' . $__compilerTemp4 . '
-		
-		' . $__compilerTemp5 . '
 
 			
 			
@@ -676,16 +664,16 @@ return array(
 	$__finalCompiled .= '
 
 ';
-	$__compilerTemp6 = '';
+	$__compilerTemp4 = '';
 	if ($__vars['xf']['options']['enableTagging'] AND ($__templater->method($__vars['thread'], 'canEditTags', array()) OR $__vars['thread']['tags'])) {
-		$__compilerTemp6 .= '
+		$__compilerTemp4 .= '
 ';
 		if ($__vars['xf']['options']['tagess_categoriesEnabledThread']) {
-			$__compilerTemp6 .= '
+			$__compilerTemp4 .= '
 	' . $__templater->includeTemplate('avForumsTagEss_thread_view_grouped_tags', $__vars) . '
 ';
 		} else {
-			$__compilerTemp6 .= '
+			$__compilerTemp4 .= '
 
 			<li>
 				' . $__templater->callMacro('tag_macros', 'list', array(
@@ -696,7 +684,7 @@ return array(
 			</li>
 ';
 		}
-		$__compilerTemp6 .= '
+		$__compilerTemp4 .= '
 
 		';
 	}
@@ -722,7 +710,7 @@ return array(
 			<a href="' . $__templater->func('link', array('threads', $__vars['thread'], ), true) . '" class="u-concealed">' . $__templater->func('date_dynamic', array($__vars['thread']['post_date'], array(
 	))) . '</a>
 		</li>
-		' . $__compilerTemp6 . '
+		' . $__compilerTemp4 . '
 	</ul>
 ');
 	$__templater->pageParams['pageDescriptionMeta'] = false;
@@ -739,9 +727,9 @@ return array(
 	), $__vars) . '
 
 ';
-	$__compilerTemp7 = '';
+	$__compilerTemp5 = '';
 	if ($__templater->method($__vars['thread'], 'canDisplayThreadRating', array())) {
-		$__compilerTemp7 .= '
+		$__compilerTemp5 .= '
 	' . $__templater->callMacro('BRATR_rating_macros', 'google_review_json', array(
 			'thread' => $__vars['thread'],
 		), $__vars) . '
@@ -750,7 +738,7 @@ return array(
 	$__templater->setPageParam('ldJsonHtml', '
 	' . '' . '
 	' . $__templater->renderExtension('structured_data', $__vars, $__extensions) . '
-' . $__compilerTemp7 . '
+' . $__compilerTemp5 . '
 ');
 	$__finalCompiled .= '
 
@@ -791,12 +779,12 @@ return array(
 	if ($__vars['thread']['prefix_id']) {
 		$__finalCompiled .= '
 	';
-		$__compilerTemp8 = '';
-		$__compilerTemp8 .= $__templater->func('prefix_description', array('thread', $__vars['thread']['prefix_id'], ), true);
-		if (strlen(trim($__compilerTemp8)) > 0) {
+		$__compilerTemp6 = '';
+		$__compilerTemp6 .= $__templater->func('prefix_description', array('thread', $__vars['thread']['prefix_id'], ), true);
+		if (strlen(trim($__compilerTemp6)) > 0) {
 			$__finalCompiled .= '
 		<div class="blockMessage blockMessage--alt blockMessage--small blockMessage--close">
-			' . $__compilerTemp8 . '
+			' . $__compilerTemp6 . '
 		</div>
 	';
 		}
@@ -982,8 +970,8 @@ return array(
 	</div>
 
 	';
-	$__compilerTemp9 = '';
-	$__compilerTemp9 .= '
+	$__compilerTemp7 = '';
+	$__compilerTemp7 .= '
 				' . $__templater->func('page_nav', array(array(
 		'page' => $__vars['page'],
 		'total' => $__vars['totalPosts'],
@@ -1000,18 +988,18 @@ return array(
 	))) . '
 				';
 	if ((!$__templater->method($__vars['thread'], 'canReply', array())) AND ((!$__templater->method($__vars['thread'], 'canReplyPreReg', array())) AND (($__vars['thread']['discussion_state'] == 'visible') AND $__vars['thread']['discussion_open']))) {
-		$__compilerTemp9 .= '
+		$__compilerTemp7 .= '
 					<div class="block-outer-opposite">
 						';
 		if ($__vars['xf']['visitor']['user_id']) {
-			$__compilerTemp9 .= '
+			$__compilerTemp7 .= '
 							<span class="button button--wrap is-disabled">
 								' . 'You have insufficient privileges to reply here.' . '
 								<!-- this is not interactive so shouldn\'t be a button element -->
 							</span>
 						';
 		} else {
-			$__compilerTemp9 .= '
+			$__compilerTemp7 .= '
 							' . $__templater->button('
 								' . 'You must log in or register to reply here.' . '
 							', array(
@@ -1022,16 +1010,16 @@ return array(
 			)) . '
 						';
 		}
-		$__compilerTemp9 .= '
+		$__compilerTemp7 .= '
 					</div>
 				';
 	}
-	$__compilerTemp9 .= '
+	$__compilerTemp7 .= '
 			';
-	if (strlen(trim($__compilerTemp9)) > 0) {
+	if (strlen(trim($__compilerTemp7)) > 0) {
 		$__finalCompiled .= '
 		<div class="block-outer block-outer--after">
-			' . $__compilerTemp9 . '
+			' . $__compilerTemp7 . '
 		</div>
 	';
 	}
@@ -1074,12 +1062,12 @@ return array(
 			'src' => 'xf/message.js',
 			'min' => '1',
 		));
-		$__compilerTemp10 = '';
+		$__compilerTemp8 = '';
 		if ((($__vars['xf']['reply']['containerKey'] == ('node-' . $__vars['xf']['options']['fs_questionAnswerForum'])) OR ($__templater->method($__vars['xf']['app']['request'], 'getRoutePath', array()) == 'esperto/'))) {
-			$__compilerTemp10 .= '
+			$__compilerTemp8 .= '
 	';
 			if ($__vars['xf']['visitor']['is_admin']) {
-				$__compilerTemp10 .= '
+				$__compilerTemp8 .= '
 ' . $__templater->callMacro('quick_reply_macros', 'body', array(
 					'message' => $__vars['thread']['draft_reply']['message'],
 					'attachmentData' => $__vars['attachmentData'],
@@ -1095,10 +1083,10 @@ return array(
 				), $__vars) . '
 ';
 			}
-			$__compilerTemp10 .= '
+			$__compilerTemp8 .= '
 ';
 		} else {
-			$__compilerTemp10 .= '
+			$__compilerTemp8 .= '
 	' . $__templater->callMacro('quick_reply_macros', 'body', array(
 				'message' => $__vars['thread']['draft_reply']['message'],
 				'attachmentData' => $__vars['attachmentData'],
@@ -1120,7 +1108,7 @@ return array(
 
 		<div class="block-container">
 			<div class="block-body">
-				' . $__compilerTemp10 . '
+				' . $__compilerTemp8 . '
 			</div>
 		</div>
 	', array(
