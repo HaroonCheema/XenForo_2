@@ -3,6 +3,11 @@
 // ################## THIS IS A GENERATED FILE ##################
 // DO NOT EDIT DIRECTLY. EDIT THE CLASS EXTENSIONS IN THE CONTROL PANEL.
 
+namespace FS\BanUserChanges\XF\Admin\Controller
+{
+	class XFCP_Banning extends \XF\Admin\Controller\Banning {}
+}
+
 namespace FS\BanUserChanges\XF\Entity
 {
 	class XFCP_UserBan extends \XF\Entity\UserBan {}
