@@ -1,4 +1,10 @@
 {
+    "fs_ban_appeal.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "ec0683e20cce8a8489c0376dcbe1be33"
+    },
     "fs_ban_ban_date.txt": {
         "global_cache": false,
         "version_id": 1000010,

@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: b04df74ca6f8c2823cd222595e21e6c7
+// FROM HASH: 1d7175a4c9ffbd7554f00538dd3f8bb2
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -34,6 +34,17 @@ return array(
 				array(
 					'_type' => 'cell',
 					'html' => ($__templater->escape($__vars['userBan']['user_reason']) ?: 'N/A'),
+				),
+				array(
+					'_type' => 'cell',
+					'html' => ' <a href="' . $__templater->func('link', array('members/ban', $__vars['userBan']['User'], ), true) . '" data-xf-click="overlay">' . 'Edit ban' . '</a>',
+				),
+				array(
+					'href' => $__templater->func('link', array('threads', $__vars['userBan']['Thread'], ), false),
+					'ajex' => 'true',
+					'data-xf-click' => 'overlay',
+					'_type' => 'action',
+					'html' => 'Appeal',
 				))) . '
 					';
 			}
@@ -56,6 +67,14 @@ return array(
 		array(
 			'_type' => 'cell',
 			'html' => 'Reason',
+		),
+		array(
+			'_type' => 'cell',
+			'html' => '&nbsp;',
+		),
+		array(
+			'_type' => 'cell',
+			'html' => '&nbsp;',
 		))) . '
 					' . $__compilerTemp1 . '
 				', array(
@@ -75,7 +94,7 @@ return array(
 			'perPage' => $__vars['perPage'],
 		))) . '
 	</div>
-';
+	';
 	} else {
 		$__finalCompiled .= '
 	<div class="blockMessage">' . 'There are no banned users.' . '</div>

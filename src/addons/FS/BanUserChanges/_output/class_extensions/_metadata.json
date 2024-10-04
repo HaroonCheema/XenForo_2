@@ -1,4 +1,7 @@
 {
+    "XF-Entity-UserBan_FS-BanUserChanges-XF-Entity-UserBan.json": {
+        "hash": "bf0d3e528b30da1cbc06690d6a584a3c"
+    },
     "XF-Pub-Controller-Forum_FS-BanUserChanges-XF-Pub-Controller-Forum.json": {
         "hash": "a989be06121fdb78d94d3c1a22d3eff8"
     },
@@ -10,8 +13,5 @@
     },
     "XF-Pub-Controller-Thread_FS-BanUserChanges-XF-Pub-Controller-Thread.json": {
         "hash": "d778b1d9f2472a8b2146acad7e388c73"
-    },
-    "XF-Service-Thread-Creator_FS-BanUserChanges-XF-Service-Thread-Creator.json": {
-        "hash": "4901d8f1537b75561c3f8c4c85b2d846"
     }
 }

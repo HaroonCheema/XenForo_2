@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <phrases>
+  <phrase title="fs_ban_appeal" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Appeal]]></phrase>
   <phrase title="fs_ban_ban_date" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<b>Ban date</b>]]></phrase>
   <phrase title="fs_ban_banned_users" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Banned users]]></phrase>
   <phrase title="fs_ban_end_date" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<b>End date</b>]]></phrase>

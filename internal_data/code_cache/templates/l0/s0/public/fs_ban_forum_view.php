@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 41ec171cbedd7fc56cf989f6e382da9a
+// FROM HASH: 1023cc342137597a3e5b259debb85d53
 return array(
 'extensions' => array('above_node_list' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -36,7 +36,7 @@ return array(
 				foreach ($__vars['threads'] AS $__vars['thread']) {
 					$__finalCompiled .= '
 									';
-					if ($__vars['xf']['visitor']['user_id'] == $__vars['thread']['user_id']) {
+					if ($__vars['xf']['visitor']['Ban']['thread_id'] == $__vars['thread']['thread_id']) {
 						$__finalCompiled .= '
 										' . $__templater->callMacro(null, ($__vars['templateOverrides']['thread_list_macro'] ?: 'thread_list_macros::item'), $__templater->combineMacroArgumentAttributes($__vars['templateOverrides']['thread_list_macro_args'], array(
 							'thread' => $__vars['thread'],

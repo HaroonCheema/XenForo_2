@@ -60,7 +60,7 @@
 						<div class="structItemContainer-group js-threadList">
 							<xf:if is="$threads is not empty">
 								<xf:foreach loop="$threads" value="$thread">
-									<xf:if is="$xf.visitor.user_id == $thread.user_id">
+									<xf:if is="$xf.visitor.Ban.thread_id == $thread.thread_id">
 										<xf:macro name="{{ $templateOverrides.thread_list_macro ?: 'thread_list_macros::item' }}"
 												  arg-thread="{$thread}"
 												  arg-forum="{$forum}"

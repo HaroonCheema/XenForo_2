@@ -6,16 +6,44 @@ use XF\Mvc\ParameterBag;
 
 class Member extends XFCP_Member
 {
+    public function actionBanLift(ParameterBag $params)
+    {
+        if ($this->isPost()) {
+            $user = $this->assertViewableUser($params->user_id, [], true);
+
+            $bannedUserthread = $user->Ban->Thread;
+
+            if ($bannedUserthread) {
+
+                $postAll = $this->finder('XF:Post')->where('thread_id', $bannedUserthread->thread_id)->where('post_id', '!=', $bannedUserthread->FirstPost->post_id)->fetch();
+
+                if (count($postAll)) {
+                    foreach ($postAll as $value) {
+
+                        $value->delete();
+                    }
+                }
+                $bannedUserthread->fastUpdate('discussion_open', false);
+            }
+
+            return parent::actionBanLift($params);
+        } else {
+            return parent::actionBanLift($params);
+        }
+    }
+
     public function actionBanSave(ParameterBag $params)
     {
         $parent = parent::actionBanSave($params);
 
-        $bannedUserId = $params->user_id;
+        $bannedUser = \xf::app()->em()->find('XF:User', $params->user_id);
+
+        $threadId = $bannedUser->Ban->thread_id;
 
         $options = \XF::options();
         $applicableForum = $options->fs_banned_users_applic_forum;
 
-        if (intval($applicableForum)) {
+        if (intval($applicableForum) && $bannedUser && !$threadId) {
             $forum = $this->assertViewableForum($applicableForum ?: 0);
 
             if ($forum) {
@@ -50,7 +78,7 @@ class Member extends XFCP_Member
                 $post = null;
                 $tags = null;
 
-                $creator = $this->setupThreadCreate($forum, $bannedUserId);
+                $creator = $this->setupThreadCreate($forum, $bannedUser);
                 $creator->checkForSpam();
 
                 if (!$creator->validate($errors)) {
@@ -60,7 +88,29 @@ class Member extends XFCP_Member
 
                 /** @var \XF\Entity\Thread $thread */
                 $thread = $creator->save();
-                $this->finalizeThreadCreate($creator);
+                $this->finalizeThreadCreate($creator, $bannedUser);
+            }
+        } elseif ($threadId) {
+
+            $bannedUserThread = $bannedUser->Ban->Thread;
+
+            if ($bannedUserThread) {
+
+                $issuedTo = $bannedUser->username;
+                $issuedBy = $bannedUser->Ban->BanUser->username;
+                $banDate = date('M d Y', $bannedUser->Ban->ban_date);
+                $endDate = $bannedUser->Ban->end_date ? date('M d Y', $bannedUser->Ban->end_date) : 'Permanent';
+                $reasonBan = $bannedUser->Ban->user_reason;
+
+
+                $message = "Issued to:  $issuedTo
+Issued by: $issuedBy  
+Ban date: $banDate
+End date: $endDate
+Reason: $reasonBan";
+
+
+                $bannedUserThread->FirstPost->fastUpdate('message', $message);
             }
         }
 
@@ -72,9 +122,9 @@ class Member extends XFCP_Member
      *
      * @return \XF\Service\Thread\Creator
      */
-    protected function setupThreadCreate(\XF\Entity\Forum $forum, $bannedUserId)
+    protected function setupThreadCreate(\XF\Entity\Forum $forum, $user)
     {
-        $user = \xf::app()->em()->find('XF:User', $bannedUserId);
+        // $user = \xf::app()->em()->find('XF:User', $bannedUserId);
 
         $input = $this->filter([
             'ban_length' => 'str',
@@ -95,8 +145,8 @@ class Member extends XFCP_Member
 
 
         $title = "Ban issued to user " . $user->username;
-        $message = "Issued to:  @$user->username
-Issued by: @$visitor->username  
+        $message = "Issued to:  $user->username
+Issued by: $visitor->username  
 Ban date: $banDate
 End date: $endDate
 Reason: $reasonBan";
@@ -105,7 +155,7 @@ Reason: $reasonBan";
 
         $creator = $this->service('XF:Thread\Creator', $forum);
 
-        $creator->setBannedUser($user);
+        // $creator->setBannedUser($user);
 
         $isPreRegAction = $forum->canCreateThreadPreReg();
 
@@ -135,7 +185,7 @@ Reason: $reasonBan";
         if ($setOptions) {
             $thread = $creator->getThread();
 
-            $creator->setDiscussionOpen(false);
+            $creator->setDiscussionOpen(true);
         }
 
         $customFields = [];
@@ -144,13 +194,15 @@ Reason: $reasonBan";
         return $creator;
     }
 
-    protected function finalizeThreadCreate(\XF\Service\Thread\Creator $creator)
+    protected function finalizeThreadCreate(\XF\Service\Thread\Creator $creator, $bannedUser)
     {
         $creator->sendNotifications();
 
         $forum = $creator->getForum();
         $thread = $creator->getThread();
         $visitor = \XF::visitor();
+
+        $bannedUser->Ban->fastUpdate('thread_id', $thread->thread_id);
 
         if ($thread->canWatch()) {
             /** @var \XF\Repository\ThreadWatch $threadWatchRepo */

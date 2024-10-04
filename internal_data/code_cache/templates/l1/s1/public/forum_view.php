@@ -130,15 +130,63 @@ return array(
 		if (!$__templater->test($__vars['threads'], 'empty', array())) {
 			$__finalCompiled .= '
 								';
-			if ($__templater->isTraversable($__vars['threads'])) {
-				foreach ($__vars['threads'] AS $__vars['thread']) {
+			if ($__vars['xf']['options']['fs_banned_users_applic_forum'] == $__vars['forum']['node_id']) {
+				$__finalCompiled .= '
+	';
+				if ($__templater->method($__vars['xf']['visitor'], 'hasPermission', array('fs_ban_watch_profile', 'all_check', ))) {
 					$__finalCompiled .= '
-									' . $__templater->callMacro(null, ($__vars['templateOverrides']['thread_list_macro'] ?: 'thread_list_macros::item'), $__templater->combineMacroArgumentAttributes($__vars['templateOverrides']['thread_list_macro_args'], array(
-						'thread' => $__vars['thread'],
-						'forum' => $__vars['forum'],
-					)), $__vars) . '
-								';
+		';
+					if ($__templater->isTraversable($__vars['threads'])) {
+						foreach ($__vars['threads'] AS $__vars['thread']) {
+							$__finalCompiled .= '
+			' . $__templater->callMacro(null, ($__vars['templateOverrides']['thread_list_macro'] ?: 'thread_list_macros::item'), $__templater->combineMacroArgumentAttributes($__vars['templateOverrides']['thread_list_macro_args'], array(
+								'thread' => $__vars['thread'],
+								'forum' => $__vars['forum'],
+							)), $__vars) . '
+		';
+						}
+					}
+					$__finalCompiled .= '
+		';
+				} else {
+					$__finalCompiled .= '
+		';
+					if ($__templater->isTraversable($__vars['threads'])) {
+						foreach ($__vars['threads'] AS $__vars['thread']) {
+							$__finalCompiled .= '
+			';
+							if ($__vars['xf']['visitor']['user_id'] == $__vars['thread']['user_id']) {
+								$__finalCompiled .= '
+				' . $__templater->callMacro(null, ($__vars['templateOverrides']['thread_list_macro'] ?: 'thread_list_macros::item'), $__templater->combineMacroArgumentAttributes($__vars['templateOverrides']['thread_list_macro_args'], array(
+									'thread' => $__vars['thread'],
+									'forum' => $__vars['forum'],
+								)), $__vars) . '
+			';
+							}
+							$__finalCompiled .= '
+		';
+						}
+					}
+					$__finalCompiled .= '
+	';
 				}
+				$__finalCompiled .= '
+	';
+			} else {
+				$__finalCompiled .= '
+	';
+				if ($__templater->isTraversable($__vars['threads'])) {
+					foreach ($__vars['threads'] AS $__vars['thread']) {
+						$__finalCompiled .= '
+		' . $__templater->callMacro(null, ($__vars['templateOverrides']['thread_list_macro'] ?: 'thread_list_macros::item'), $__templater->combineMacroArgumentAttributes($__vars['templateOverrides']['thread_list_macro_args'], array(
+							'thread' => $__vars['thread'],
+							'forum' => $__vars['forum'],
+						)), $__vars) . '
+	';
+					}
+				}
+				$__finalCompiled .= '
+';
 			}
 			$__finalCompiled .= '
 								';

@@ -23,6 +23,35 @@
 	$0
 </xf:if>]]></replace>
   </modification>
+  <modification type="public" template="forum_view" modification_key="fs_ban_forum_view_thread_limits" description="fs_ban_forum_view_thread_limits" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<xf:foreach loop="\$threads" value="\$thread">.*?<\/xf:foreach>/is]]></find>
+    <replace><![CDATA[<xf:if is="$xf.options.fs_banned_users_applic_forum == $forum.node_id">
+	<xf:if is="{{ $xf.visitor.hasPermission('fs_ban_watch_profile', 'all_check') }}">
+		<xf:foreach loop="$threads" value="$thread">
+			<xf:macro name="{{ $templateOverrides.thread_list_macro ?: 'thread_list_macros::item' }}"
+					  arg-thread="{$thread}"
+					  arg-forum="{$forum}"
+					  args="{$templateOverrides.thread_list_macro_args}"  />
+		</xf:foreach>
+		<xf:else />
+		<xf:foreach loop="$threads" value="$thread">
+			<xf:if is="$xf.visitor.user_id == $thread.user_id">
+				<xf:macro name="{{ $templateOverrides.thread_list_macro ?: 'thread_list_macros::item' }}"
+						  arg-thread="{$thread}"
+						  arg-forum="{$forum}"
+						  args="{$templateOverrides.thread_list_macro_args}"  />
+			</xf:if>
+		</xf:foreach>
+	</xf:if>
+	<xf:else />
+	<xf:foreach loop="$threads" value="$thread">
+		<xf:macro name="{{ $templateOverrides.thread_list_macro ?: 'thread_list_macros::item' }}"
+				  arg-thread="{$thread}"
+				  arg-forum="{$forum}"
+				  args="{$templateOverrides.thread_list_macro_args}"  />
+	</xf:foreach>
+</xf:if>]]></replace>
+  </modification>
   <modification type="public" template="forum_view" modification_key="fs_ban_user_forum_view_for_banned" description="fs_ban_user_forum_view_for_banned" execution_order="10" enabled="1" action="preg_replace">
     <find><![CDATA[/<xf:title page="{\$page}">{\$forum\.Node\.title}<\/xf:title>.*?<\/a>
 		<\/div>

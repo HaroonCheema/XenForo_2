@@ -1,0 +1,9 @@
+{
+    "template": "forum_view",
+    "description": "fs_ban_forum_view_thread_limits",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/<xf:foreach loop=\"\\$threads\" value=\"\\$thread\">.*?<\\/xf:foreach>/is",
+    "replace": "<xf:if is=\"$xf.options.fs_banned_users_applic_forum == $forum.node_id\">\n\t<xf:if is=\"{{ $xf.visitor.hasPermission('fs_ban_watch_profile', 'all_check') }}\">\n\t\t<xf:foreach loop=\"$threads\" value=\"$thread\">\n\t\t\t<xf:macro name=\"{{ $templateOverrides.thread_list_macro ?: 'thread_list_macros::item' }}\"\n\t\t\t\t\t  arg-thread=\"{$thread}\"\n\t\t\t\t\t  arg-forum=\"{$forum}\"\n\t\t\t\t\t  args=\"{$templateOverrides.thread_list_macro_args}\"  />\n\t\t</xf:foreach>\n\t\t<xf:else />\n\t\t<xf:foreach loop=\"$threads\" value=\"$thread\">\n\t\t\t<xf:if is=\"$xf.visitor.user_id == $thread.user_id\">\n\t\t\t\t<xf:macro name=\"{{ $templateOverrides.thread_list_macro ?: 'thread_list_macros::item' }}\"\n\t\t\t\t\t\t  arg-thread=\"{$thread}\"\n\t\t\t\t\t\t  arg-forum=\"{$forum}\"\n\t\t\t\t\t\t  args=\"{$templateOverrides.thread_list_macro_args}\"  />\n\t\t\t</xf:if>\n\t\t</xf:foreach>\n\t</xf:if>\n\t<xf:else />\n\t<xf:foreach loop=\"$threads\" value=\"$thread\">\n\t\t<xf:macro name=\"{{ $templateOverrides.thread_list_macro ?: 'thread_list_macros::item' }}\"\n\t\t\t\t  arg-thread=\"{$thread}\"\n\t\t\t\t  arg-forum=\"{$forum}\"\n\t\t\t\t  args=\"{$templateOverrides.thread_list_macro_args}\"  />\n\t</xf:foreach>\n</xf:if>"
+}

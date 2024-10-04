@@ -477,14 +477,6 @@ return array(
 				</li>
 			';
 	}
-	$__compilerTemp27 = '';
-	if ($__vars['user']['user_id']) {
-		$__compilerTemp27 .= '
-	<li data-href="' . $__templater->func('link', array('users/sotd', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="sotd">
-		<div class="block-body block-row">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
-	</li>
-';
-	}
 	$__finalCompiled .= $__templater->form('
 		' . $__compilerTemp7 . '
 
@@ -496,12 +488,7 @@ return array(
 					aria-controls="user-details"
 					href="' . $__templater->func('link', array('users/edit', $__vars['user'], ), true) . '#user-details">' . 'User details' . '</a>
 				' . $__compilerTemp8 . '
-				<a class="tabs-tab" role="tab" tabindex="0"
-   id="sotd"
-   aria-controls="sotd"
-   href="' . $__templater->func('link', array('users/sotd', $__vars['user'], ), true) . '#sotd">' . 'Sotd' . '</a>
-
-' . $__templater->includeTemplate('dbtech_credits_user_edit_tab', $__vars) . '
+				' . $__templater->includeTemplate('dbtech_credits_user_edit_tab', $__vars) . '
 				' . '
 			</span>
 		</h2>
@@ -985,9 +972,7 @@ return array(
 			' . $__compilerTemp25 . '
 
 			' . $__compilerTemp26 . '
-			' . $__compilerTemp27 . '
-
-' . $__templater->includeTemplate('dbtech_credits_user_edit_pane', $__vars) . '
+			' . $__templater->includeTemplate('dbtech_credits_user_edit_pane', $__vars) . '
 			' . '
 		</ul>
 	', array(

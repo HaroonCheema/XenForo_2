@@ -6,25 +6,11 @@ return array(
 	$__finalCompiled = '';
 	$__finalCompiled .= '<li class="block-row block-row--separated ' . ($__templater->method($__vars['thread'], 'isIgnored', array()) ? 'is-ignored' : '') . ' js-inlineModContainer" data-author="' . ($__templater->escape($__vars['thread']['User']['username']) ?: $__templater->escape($__vars['thread']['username'])) . '">
 	<div class="contentRow ' . ((!$__templater->method($__vars['thread'], 'isVisible', array())) ? 'is-deleted' : '') . '">
-		';
-	if ($__templater->func('in_array', array($__vars['thread']['node_id'], $__vars['xf']['options']['node_id_for_thumb'], ), false)) {
-		$__finalCompiled .= '
 		<span class="contentRow-figure">
-		<a href="' . $__templater->func('link', array('threads', $__vars['thread'], ), true) . '"> 
-				<img src="' . $__templater->escape($__templater->method($__vars['thread'], 'getfirstPostImgUrl', array())) . '" class="avatar avatar--s" style="object-fit: cover;">
-		</a>
-	</span>
-';
-	} else {
-		$__finalCompiled .= '
-	<span class="contentRow-figure">
 			' . $__templater->func('avatar', array($__vars['thread']['User'], 's', false, array(
-			'defaultname' => $__vars['thread']['username'],
-		))) . '
+		'defaultname' => $__vars['thread']['username'],
+	))) . '
 		</span>
-';
-	}
-	$__finalCompiled .= '
 		<div class="contentRow-main">
 			<h3 class="contentRow-title">
 				<a href="' . $__templater->func('link', array('threads', $__vars['thread'], ), true) . '">' . $__templater->func('prefix', array('thread', $__vars['thread'], ), true);

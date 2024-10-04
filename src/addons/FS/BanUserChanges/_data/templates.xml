@@ -152,7 +152,7 @@
 						<div class="structItemContainer-group js-threadList">
 							<xf:if is="$threads is not empty">
 								<xf:foreach loop="$threads" value="$thread">
-									<xf:if is="$xf.visitor.user_id == $thread.user_id">
+									<xf:if is="$xf.visitor.Ban.thread_id == $thread.thread_id">
 										<xf:macro name="{{ $templateOverrides.thread_list_macro ?: 'thread_list_macros::item' }}"
 												  arg-thread="{$thread}"
 												  arg-forum="{$forum}"
@@ -284,6 +284,8 @@
 						<xf:cell>{{ phrase('fs_banned_by') }}</xf:cell>
 						<xf:cell>{{ phrase('end_date') }}</xf:cell>
 						<xf:cell>{{ phrase('reason') }}</xf:cell>
+						<xf:cell>&nbsp;</xf:cell>
+						<xf:cell>&nbsp;</xf:cell>
 					</xf:datarow>
 					<xf:foreach loop="$userBans" value="$userBan">
 						<xf:datarow>
@@ -291,6 +293,8 @@
 							<xf:cell>{$userBan.BanUser.username}</xf:cell>
 							<xf:cell>{{ $userBan.end_date ? date($userBan.end_date) : phrase('permanent') }}</xf:cell>
 							<xf:cell>{{ $userBan.user_reason ?: phrase('n_a') }}</xf:cell>
+							<xf:cell> <a href="{{ link('members/ban', $userBan.User) }}" data-xf-click="overlay">{{ phrase('edit_ban') }}</a></xf:cell>
+							<xf:action href="{{ link('threads', $userBan.Thread) }}" ajex="true" data-xf-click="overlay">{{ phrase('fs_ban_appeal') }}</xf:action>
 						</xf:datarow>
 					</xf:foreach>
 				</xf:datalist>
@@ -301,10 +305,10 @@
 		</div>
 
 		<xf:pagenav page="{$page}" perpage="{$perPage}" total="{$total}"
-			link="banned-users"
-			wrapperclass="block-outer block-outer--after" />
+					link="banned-users"
+					wrapperclass="block-outer block-outer--after" />
 	</div>
-<xf:else />
+	<xf:else />
 	<div class="blockMessage">{{ phrase('there_no_banned_users') }}</div>
 </xf:if>]]></template>
 </templates>
