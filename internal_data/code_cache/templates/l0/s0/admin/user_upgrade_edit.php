@@ -59,20 +59,6 @@ return array(
 		)) . '
 			';
 	}
-	$__compilerTemp5 = '';
-	if ($__vars['xf']['options']['fh_razorpayKeyId'] AND $__vars['xf']['options']['fh_razorpayKeySecret']) {
-		$__compilerTemp5 .= '
-	' . $__templater->formCheckBoxRow(array(
-		), array(array(
-			'name' => 'fh_paid_registrations_razorpay',
-			'selected' => $__vars['upgrade']['fh_paid_registrations_razorpay'],
-			'label' => 'Paid Registrations with Razorpay',
-			'_type' => 'option',
-		)), array(
-			'explain' => 'If check then this package will be show on Paid Registration with a Button \'Join Now with Razorpay\'.',
-		)) . '
-';
-	}
 	$__finalCompiled .= $__templater->form('
 	<div class="block-container">
 		<div class="block-body">
@@ -195,15 +181,14 @@ return array(
 
 			' . $__compilerTemp3 . '
 
-				' . $__templater->formCheckBoxRow(array(
+			' . $__templater->formCheckBoxRow(array(
 	), array(array(
 		'name' => 'can_purchase',
 		'selected' => $__vars['upgrade']['can_purchase'],
 		'label' => 'Can be purchased',
 		'_type' => 'option',
 	)), array(
-	)) . '	
-' . $__compilerTemp5 . '
+	)) . '
 		</div>
 		' . $__templater->formSubmitRow(array(
 		'icon' => 'save',
