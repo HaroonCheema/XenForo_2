@@ -13,6 +13,8 @@ class Setup extends AbstractSetup
 	use StepRunnerUpgradeTrait;
 	use StepRunnerUninstallTrait;
 
+	// ################################ INSTALLATION ######################
+
 	public function installstep1()
 	{
 		$sm = $this->schemaManager();
@@ -22,6 +24,18 @@ class Setup extends AbstractSetup
 			$table->addColumn('thread_id', 'int')->setDefault(0);
 		});
 	}
+
+	// ############################### UPGRADE ###########################
+
+	public function upgrade1000100Step1(array $stepParams)
+	{
+		$this->alterTable('xf_user_ban', function (\XF\Db\Schema\Alter $table) {
+
+			$table->addColumn('thread_id', 'int')->setDefault(0);
+		});
+	}
+
+	// ############################### UNINSTALL ###########################
 
 	public function uninstallStep1()
 	{
