@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="admin" title="payment_profile_razorpay" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:textboxrow name="options[live_key_id]" value="{$profile.options.live_key_id}"
+	label="{{ phrase('razorpay_live_key_id') }}" />
+
+<xf:textboxrow name="options[live_key_secret]" value="{$profile.options.live_key_secret}"
+	label="{{ phrase('razorpay_live_key_secret') }}"
+	explain="{{ phrase('razorpay_live_keys_explain') }}" />
+
+<hr class="formRowSep" />
+
+<xf:textboxrow name="options[test_key_id]" value="{$profile.options.test_key_id}"
+	label="{{ phrase('razorpay_test_key_id') }}"/>
+
+<xf:textboxrow name="options[test_key_secret]" value="{$profile.options.test_key_secret}"
+	label="{{ phrase('razorpay_test_key_secret') }}"
+	explain="{{ phrase('razorpay_test_keys_explain') }}" />]]></template>
+  <template type="public" title="fh_paid_registrations" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('paidregistrations_choose_account_type') }}</xf:title>
+
+<xf:css src="andy_paid_registrations.less" />
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<xf:foreach loop="$results" value="$result" i="$i">
+	
+	<xf:comment>
+		<xf:if is="$i == 1">
+			<span class="block paid-registrations-block">
+				<div class="block-container paid-registrations-block-container">
+					<h2 class="block-header">{{ phrase('paidregistrations_free') }}</h2>
+					<div class="block-body block-row paid-registrations-block-body">
+						<div class="paid-registrations-circle-free">
+							{{ phrase('paidregistrations_free') }}
+						</div>
+						<div class="paid-registrations-join-now">
+							<xf:button 
+									   href="{{ link('register') }}" 
+									   class="button--link"
+									   >{{ phrase('paidregistrations_join_now') }}</xf:button>
+						</div>
+						<div class="paid-registrations-description">
+							{$xf.options.paidRegistrationsFreeDescription|raw}
+						</div>
+					</div>
+				</div>
+			</span>
+		</xf:if>
+	</xf:comment>
+	
+	<span class="block paid-registrations-block">
+		<div class="block-container paid-registrations-block-container">
+			<h2 class="block-header">{$result.title}</h2>
+			<div class="block-body block-row paid-registrations-block-body">
+				<xf:if is="$i == 1 OR $i == 4">
+					<div class="paid-registrations-circle-1">
+						{$result.cost_phrase} 
+					</div>
+				</xf:if>
+				<xf:if is="$i == 2 OR $i == 5">
+					<div class="paid-registrations-circle-2">
+						{$result.cost_phrase} 
+					</div>
+				</xf:if>
+				<xf:if is="$i == 3 OR $i == 6">
+					<div class="paid-registrations-circle-3">
+						{$result.cost_phrase}
+					</div>
+				</xf:if>
+				<div class="paid-registrations-join-now">
+					
+					<xf:if is="$result.andy_paid_registrations_stripe">
+						<xf:button href="{{ $result.andy_paid_registrations_stripe }}" class="button--link" target="_blank">
+							{{ phrase('paidregistrations_join_now') }}
+						</xf:button>
+					</xf:if>
+
+
+					
+					<xf:if is="$result.fh_paid_registrations_razorpay">
+						<xf:button class="button--link" id="rzp-button-{$i}">{{ phrase('paidregistrations_join_now') }}</xf:button>
+
+						<script>					
+							document.getElementById('rzp-button-{$i}').onclick = function(e){
+
+								XF.ajax('GET', XF.canonicalizeUrl('index.php?paidregistrations/create-order'), {userUpgradeId: {$result.user_upgrade_id}}, function (res) {
+									var razorpayOptions =	res.razorpayOptions;
+
+									var rzp1 = new Razorpay(razorpayOptions);
+									rzp1.open();
+								});
+
+								e.preventDefault();
+							}
+						</script>
+					</xf:if>
+
+				</div>
+				<div class="paid-registrations-description">
+					{$result.description|raw}
+				</div>
+			</div>
+		</div>
+	</span>
+</xf:foreach>]]></template>
+  <template type="public" title="fh_paid_registrations_admin" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('paidregistrations_paid_registrations_admin') }}</xf:title>
+
+<xf:css src="andy_paid_registrations.less" />
+
+{{ phrase('paidregistrations_limit:') }} {$limit}
+
+<br /><br />
+
+
+<xf:foreach loop="$razorpayPaidRegistrations" value="$result">
+	<div class="block">
+		<div class="block-container">
+			<div class="block-body block-row paid-registrations-block-body">
+				{{ phrase('paidregistrations_paid_registrations_id:') }} {$result.paid_registrations_id} &nbsp; (Razorpay)<br />
+				{{ phrase('paidregistrations_user_upgrade_id:') }} {$result.user_upgrade_id}<br />
+				{{ phrase('fh_razorpay_order_id:') }} {$result.razorpay_order_id}<br />
+				{{ phrase('fh_razorpay_payment_id:') }} {$result.razorpay_payment_id}<br />
+				{{ phrase('fh_razorpay_signature:') }} {$result.razorpay_signature}<br />
+				{{ phrase('date:') }} <xf:date time="{$result.date}" /><br />
+				{{ phrase('paidregistrations_user_upgrade_record_id:') }} {$result.user_upgrade_record_id}<br /><br />
+				
+				<xf:if is="$result.razorpay_payment_id">
+					<a href="https://dashboard.razorpay.com/app/payments/{$result.razorpay_payment_id}?init_page=Payments" target="_blank">{{ phrase('fh_paidregistrations_view_in_razorpay_dashboard') }}</a>
+				</xf:if>
+				
+			</div>
+		</div>
+	</div>											
+</xf:foreach>
+
+
+
+<xf:foreach loop="$results" value="$result">
+	<div class="block">
+		<div class="block-container">
+			<div class="block-body block-row paid-registrations-block-body">
+				{{ phrase('paidregistrations_paid_registrations_id:') }} {$result.paid_registrations_id}<br />
+				{{ phrase('paidregistrations_user_upgrade_id:') }} {$result.user_upgrade_id}<br />
+				{{ phrase('paidregistrations_checkout_session_id:') }} {$result.checkout_session_id}<br />
+				{{ phrase('paidregistrations_payment_intent:') }} {$result.payment_intent}<br />
+				{{ phrase('paidregistrations_subscription:') }} {$result.subscription}<br />
+				{{ phrase('date:') }} <xf:date time="{$result.dateline}" /><br />
+				{{ phrase('paidregistrations_user_upgrade_record_id:') }} {$result.user_upgrade_record_id}<br /><br />
+				
+				<xf:if is="$result.payment_intent">
+					<a href="https://dashboard.stripe.com/payments/{$result.payment_intent}" target="_blank">{{ phrase('paidregistrations_view_in_stripe_dashboard') }}</a>
+				</xf:if>
+				
+				<xf:if is="$result.subscription">
+					<a href="https://dashboard.stripe.com/subscriptions/{$result.subscription}" target="_blank">{{ phrase('paidregistrations_view_in_stripe_dashboard') }}</a>
+				</xf:if>
+				
+			</div>
+		</div>
+	</div>											
+</xf:foreach>
+
+<xf:if is="!$results && !$razorpayPaidRegistrations">
+	<div class="block">
+		<div class="block-container">
+			<div class="block-body block-row">
+				{{ phrase('no_results_found') }}
+			</div>
+		</div>
+	</div>	
+</xf:if>]]></template>
+  <template type="public" title="fh_paid_registrations_confirm" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('paidregistrations_payment_complete') }}</xf:title>
+
+<xf:css src="andy_paid_registrations.less" />
+
+<div class="block">
+	<div class="block-container">
+		<div class="block-body block-row paid-registrations-block-body">
+			<div class="blockMessage blockMessage--success blockMessage--iconic">
+				<xf:inforow rowtype="confirm">{{ phrase('paidregistrations_payment_complete') }}</xf:inforow>
+			</div>
+			{{ phrase('paidregistrations_thank_you_for_your_purchase') }}
+			<br /><br />
+			<xf:button href="{{ link('register') }}" class="button--link">{{ phrase('register') }}</xf:button>
+		</div>
+	</div>
+</div>]]></template>
+  <template type="public" title="fh_registration_not_allowed" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('fh_registration_without_payment') }}</xf:title>
+
+<xf:css src="andy_paid_registrations.less" />
+
+<div class="block">
+	<div class="block-container">
+		<div class="block-body block-row paid-registrations-block-body">
+			<div class="blockMessage blockMessage--important blockMessage--iconic">
+				<xf:inforow rowtype="confirm">{{ phrase('fh_registration_without_payment') }}</xf:inforow>
+			</div>
+			{{ phrase('fh_registration_with_out_payment_is_not_allowed') }}
+			<br /><br />
+			<xf:button href="{{ link('paidregistrations') }}" class="button--link">{{ phrase('register') }}</xf:button>
+		</div>
+	</div>
+</div>]]></template>
+</templates>

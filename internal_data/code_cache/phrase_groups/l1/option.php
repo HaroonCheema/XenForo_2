@@ -295,6 +295,8 @@ return array (
   'option.enable_first_image_url' => 'Enable first image url',
   'option.extraCaptchaKeys' => 'Extra CAPTCHA keys',
   'option.facebookLike' => 'Enable Facebook share button',
+  'option.fh_razorpayKeyId' => 'Key ID',
+  'option.fh_razorpayKeySecret' => 'Key Secret',
   'option.floodCheckLength' => 'Minimum time between messages',
   'option.floodCheckLengthDiscussion' => 'Minimum time between discussions',
   'option.forum_items_display' => 'Items display on forum',

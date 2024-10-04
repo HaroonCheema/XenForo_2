@@ -352,6 +352,8 @@ This option requires that the specified account is a catch-all account or suppor
   'option_explain.enable_first_image_url' => '',
   'option_explain.extraCaptchaKeys' => 'This option can\'t be edited manually. It is edited only via the "captcha" option.',
   'option_explain.facebookLike' => 'If this feature is enabled, a Facebook button will be displayed on various pages including the thread view page, allowing Facebook users to share it with their Facebook friends.',
+  'option_explain.fh_razorpayKeyId' => 'Enter the Razorpay Key ID (if provided Key id and Secret id  of Test  mode then payment will be perform in test mode If live then live )',
+  'option_explain.fh_razorpayKeySecret' => 'Enter the Razorpay Key Secret (if provided Key id and Secret id of Test mode then payment will be perform in test mode If live then live )',
   'option_explain.floodCheckLength' => 'Users will have to wait this many seconds between posting messages. Users with the permission "Can bypass flood check" will be exempt from this option.',
   'option_explain.floodCheckLengthDiscussion' => 'Users will have to wait this many seconds between posting new discussions (threads, conversations etc.). If this option is set to 0, the value for \'minimum time between messages\' will be used.',
   'option_explain.forum_items_display' => 'Number of items display in items-Block on forum',

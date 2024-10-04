@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<options>
+  <option option_id="fh_razorpayKeyId" edit_format="textbox" data_type="string">
+    <default_value></default_value>
+    <relation group_id="fh_razorpay_integration" display_order="1"/>
+  </option>
+  <option option_id="fh_razorpayKeySecret" edit_format="textbox" data_type="string">
+    <default_value></default_value>
+    <relation group_id="fh_razorpay_integration" display_order="2"/>
+  </option>
+</options>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="fh_action_available_via_razorpay_callback_only" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Action available via Razorpay callback only]]></phrase>
+  <phrase title="fh_join_now_with_razorpay" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[JOIN NOW with Razorpay]]></phrase>
+  <phrase title="fh_paid_registrations_razorpay_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[If check then this package will be show on Paid Registration with a Button 'Join Now with Razorpay'.]]></phrase>
+  <phrase title="fh_paid_registrations_with_razorpay" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Paid Registrations with Razorpay]]></phrase>
+  <phrase title="fh_paidregistrations_view_in_razorpay_dashboard" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[View in Razorpay Dashboard]]></phrase>
+  <phrase title="fh_razorpayPaidRegis_record_not_found" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Razorpay Paid Registration record not found. The provided Payment-id is incorrect or User already register against it. ]]></phrase>
+  <phrase title="fh_razorpay_key_id_and_key_secret_must_be_provide_in_option_to_perform_payment_with_razorpay" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Razorpay 'Key Id' and 'Key Secret' must be provide in Options to perform payments with Razorpay]]></phrase>
+  <phrase title="fh_razorpay_order_id" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Razorpay Order ID]]></phrase>
+  <phrase title="fh_razorpay_payment_id" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Razorpay Payment ID]]></phrase>
+  <phrase title="fh_razorpay_signature" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Razorpay Signature]]></phrase>
+  <phrase title="fh_registration_with_out_payment_is_not_allowed" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Registration with out payment is not allowed. To registration, please click the button below.]]></phrase>
+  <phrase title="fh_registration_without_payment" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Registration Without Payment]]></phrase>
+  <phrase title="option.fh_razorpayKeyId" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Key ID]]></phrase>
+  <phrase title="option.fh_razorpayKeySecret" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Key Secret]]></phrase>
+  <phrase title="option_explain.fh_razorpayKeyId" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter the Razorpay Key ID (if provided Key id and Secret id  of Test  mode then payment will be perform in test mode If live then live )]]></phrase>
+  <phrase title="option_explain.fh_razorpayKeySecret" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter the Razorpay Key Secret (if provided Key id and Secret id of Test mode then payment will be perform in test mode If live then live )]]></phrase>
+  <phrase title="option_group.fh_razorpay_integration" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Razorpay-Integration]]></phrase>
+  <phrase title="option_group_description.fh_razorpay_integration" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+</phrases>

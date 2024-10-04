@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class_extensions>
+  <extension from_class="Andy\PaidRegistrations\Pub\Controller\PaidRegistrations" to_class="FH\RazorpayIntegration\Andy\PaidRegistrations\Pub\Controller\PaidRegistrations" execute_order="10" active="1"/>
+  <extension from_class="XF\Admin\Controller\UserUpgrade" to_class="FH\RazorpayIntegration\XF\Admin\Controller\UserUpgrade" execute_order="11" active="1"/>
+  <extension from_class="XF\Entity\User" to_class="FH\RazorpayIntegration\XF\Entity\User" execute_order="10" active="1"/>
+  <extension from_class="XF\Entity\UserUpgrade" to_class="FH\RazorpayIntegration\XF\Entity\UserUpgrade" execute_order="10" active="1"/>
+  <extension from_class="XF\Pub\Controller\Register" to_class="FH\RazorpayIntegration\XF\Pub\Controller\Register" execute_order="11" active="1"/>
+</class_extensions>

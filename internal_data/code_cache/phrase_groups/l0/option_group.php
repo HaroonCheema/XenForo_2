@@ -29,6 +29,7 @@ return array (
   'option_group.discourager' => 'User discouragement and discipline',
   'option_group.discussionOptions' => 'Threads,  discussions and conversations',
   'option_group.emailOptions' => 'Email options',
+  'option_group.fh_razorpay_integration' => '[FS] Razorpay-Integration',
   'option_group.form_thread_moderation' => '[FS] Form Thread Moderation',
   'option_group.fsEscrow' => '[FS] Escrow',
   'option_group.fs_MediaTagSetting' => '[FS] Media-Tag-Setting',
