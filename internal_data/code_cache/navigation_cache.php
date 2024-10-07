@@ -500,6 +500,16 @@ return function($__templater, $__selectedNav, array $__vars)
 	}
 
 	$__navTemp = [
+		'title' => \XF::phrase('nav.latestTherads'),
+		'href' => $__templater->func('link', array('latest-contents', ), false),
+		'attributes' => [],
+	];
+	if ($__navTemp) {
+		$__tree['latestTherads'] = $__navTemp;
+		$__flat['latestTherads'] =& $__tree['latestTherads'];
+	}
+
+	$__navTemp = [
 		'title' => \XF::phrase('nav.whatsNew'),
 		'href' => $__templater->func('link', array('whats-new', ), false),
 		'attributes' => [],
