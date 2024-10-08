@@ -4,8 +4,6 @@
 namespace FS\BanUserChanges\Pub\Controller;
 
 
-use FS\SwbFemaleVerify\Entity\FemaleVerification;
-use FS\SwbFemaleVerify\Addon;
 use XF;
 use XF\Mvc\Entity\Entity;
 use XF\Mvc\Entity\Repository;

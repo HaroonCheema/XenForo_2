@@ -221,16 +221,22 @@ class ThreadContent extends AbstractController
 			// $threadFinder->where('tags', 'LIKE', $threadFinder->escapeLike($tag, '%?%'));
 		}
 
-		// pendings
-
 		if (isset($conditions['extags']) && $conditions['extags'] != '') {
-			// $exTags = '"tag":"' . $conditions['extags'] . '"';
-
 			$exTags = explode(", ", $conditions['extags']);
 
-			$threadFinder->hasNotTag($exTags);
+			$excludeTagsthreadFinder = $this->findThreadsWithLatestPosts();
 
-			// $threadFinder->where('tags', 'not like', $threadFinder->escapeLike($exTags, '%?%'));
+			$filterNodes = \XF::Options()->fs_filter_node;
+
+			$excludeTagsthreadFinder->where('node_id', $filterNodes);
+
+			$excludeTagsthreadFinder->hasTag($exTags);
+
+			$threadIds = $excludeTagsthreadFinder->pluckfrom('thread_id')->fetch()->toArray();
+
+			if (count($threadIds)) {
+				$threadFinder->where('thread_id', '!=', $threadIds);
+			}
 		}
 
 		if ((isset($conditions['prefix_ids1']) &&  count($conditions['prefix_ids1'])) || (isset($conditions['prefix_ids2']) &&  count($conditions['prefix_ids2'])) || (isset($conditions['prefix_ids3']) &&  count($conditions['prefix_ids3']))) {

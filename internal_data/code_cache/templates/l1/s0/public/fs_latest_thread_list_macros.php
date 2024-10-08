@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 6e6210195edba21510447c774ecda211
+// FROM HASH: a02cfe23d4bfdec0c8160f6e6973a96d
 return array(
 'macros' => array('item' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -41,7 +41,7 @@ return array(
 					if ($__vars['attachment']['has_thumbnail']) {
 						$__vars['i']++;
 						$__finalCompiled .= '
-											<img src="' . $__templater->escape($__vars['attachment']['thumbnail_url']) . '" class="' . (($__vars['i'] == 1) ? 'active' : ' ') . '" alt="' . $__templater->escape($__vars['attachment']['filename']) . '" style="width: ' . ($__vars['thread']['Forum']['Node']['node_thread_thumbnail_width'] ? $__templater->escape($__vars['thread']['Forum']['Node']['node_thread_thumbnail_width']) : $__templater->escape($__vars['xf']['options']['thumbnail_width'])) . ' ; height: ' . ($__vars['thread']['Forum']['Node']['node_thread_thumbnail_height'] ? $__templater->escape($__vars['thread']['Forum']['Node']['node_thread_thumbnail_height']) : $__templater->escape($__vars['xf']['options']['thumb_size_hemant'])) . '; object-fit: cover; border-bottom: solid 2px #fa7d24" loading="lazy">
+											<img src="' . $__templater->escape($__vars['attachment']['thumbnail_url']) . '?' . ($__vars['xf']['time'] + $__vars['i']) . '" class="' . (($__vars['i'] == 1) ? 'active' : ' ') . '" alt="' . $__templater->escape($__vars['attachment']['filename']) . '" style="width: ' . ($__vars['thread']['Forum']['Node']['node_thread_thumbnail_width'] ? $__templater->escape($__vars['thread']['Forum']['Node']['node_thread_thumbnail_width']) : $__templater->escape($__vars['xf']['options']['thumbnail_width'])) . ' ; height: ' . ($__vars['thread']['Forum']['Node']['node_thread_thumbnail_height'] ? $__templater->escape($__vars['thread']['Forum']['Node']['node_thread_thumbnail_height']) : $__templater->escape($__vars['xf']['options']['thumb_size_hemant'])) . '; object-fit: cover; border-bottom: solid 2px #fa7d24" loading="lazy">
 										';
 					}
 				}
@@ -507,12 +507,12 @@ return array(
 	<style>
 		.hiddenDiv {
 			display: none;
-			position: absolute; /* Positioned absolutely to avoid affecting layout */
+			position: absolute; 
 			left: 0;
-			width: 100%;  /* Make it as wide as the parent div */
-			background-color: #17202f; /* Slight transparent overlay */
+			width: 100%;  
+			background-color: #17202f;
 			padding: 10px;
-			z-index: 10;  /* Place it above the parent div */
+			z-index: 10; 
 			border-radius: 5px;
 		}
 
@@ -534,9 +534,9 @@ return array(
 
 		.containers {
 			position: relative;
-			top: -12px;
+			top: -14px;
 			display: flex;
-			justify-content: space-between; /* Pushes the divs to opposite sides */
+			justify-content: space-between;
 			margin: 0px 7px;
 		}
 
@@ -544,49 +544,43 @@ return array(
 			transition: transform 0.15s ease-in-out;
 		}
 		.onHoverDisp:hover {
-			transform: scale(1.03);  /* Zoom in */
+			transform: scale(1.03);  
 			z-index: 100;
 		}	
 
-		/* Styling the image slider container */
 		.slider-container {
 			width: 100%;
-			max-width: 600px; /* Adjust the max width */
-			overflow: hidden; /* Hide overflow */
-			position: relative; /* Position relative for child elements */
-			margin: 5px auto; /* Center the slider */
+			max-width: 600px;
+			overflow: hidden; 
+			position: relative; 
+			margin: 5px auto; 
 		}
 
-		/* Image container with images in a row */
 		.slider {
-			display: flex; /* Flexbox for horizontal layout */
-			transition: transform 0.5s ease-in-out; /* Smooth transition */
+			display: flex;
+			transition: transform 0.5s ease-in-out; 
 		}
 
-		/* Individual images inside the slider */
 		.slider img {
-			width: 100%; /* Full width of container */
-			flex-shrink: 0; /* Prevents images from shrinking */
-			height: 300px; /* Set a fixed height */
-			object-fit: cover; /* Cover without stretching */
+			width: 100%; 
+			flex-shrink: 0; 
+			height: 300px; 
+			object-fit: cover; 
 		}
 
-		/* Hide all images initially */
 		.slider img {
-			display: none;
+			display: none !important;
 		}
 
-		/* Show the first image by default */
 		.slider img.active {
-			display: block; /* Display the active image */
+			display: block !important; 
 		}
 
-		/* Numbering on top of images */
 		.slide-number {
 			position: absolute;
 			top: 3px;
 			left: 7px;
-			background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+			background: rgba(0, 0, 0, 0.5); 
 			color: white;
 			padding: 3px 5px;
 			border-radius: 3px;
