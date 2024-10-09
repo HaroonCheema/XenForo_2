@@ -1,32 +1,72 @@
 <xf:title page="{$page}">{{phrase('latest_content')}}</xf:title>
 
-
 <xf:css src="structured_list.less" />
+
+<xf:css src="fs_latest_update_list.less" />
+<xf:css src="fs_latest_update_list_slider.less" />
+
+<xf:js src="vendor/lightslider/lightslider.js" min="1" />
+<xf:js src="FS/LatestUpdateSlider/slider.js" min="1" />
 
 <xf:css src="forum_view_latest_content.less" />
 
+<xf:if is="count($featuredThreads)">
+	<div class="block">
 
+		<div class="block-container">
 
+			<div class="block-body block-row">
+				<div class="itemList itemList--slider"
+					 data-xf-init="item-slider"
+					 data-xf-item-slider='{"item":{$xf.options.fs_latest_update_on_slider},"itemWide":3,"itemMedium":2,"itemNarrow":1,"auto":false,"loop":true}'>
 
+					<xf:foreach loop="$featuredThreads" value="$thread">
+						<div class="itemList-item itemList-item--slider" style="overflow: unset !important; overflow-x: hidden !important;">
+							<xf:macro name="{{ $templateOverrides.thread_list_macro ?: 'fs_latest_thread_list_macros::item' }}"
+									  arg-thread="{$thread}"
 
+									  args="{$templateOverrides.thread_list_macro_args}"  />
+						</div>
+					</xf:foreach>
 
+				</div>
+			</div>
+
+		</div>
+	</div>
+</xf:if>
 
 <div class="block " data-xf-init="{{ $canInlineMod ? 'inline-mod' : '' }}" data-type="thread" data-href="{{ link('inline-mod') }}">
 
+	<div class="block-outer"><xf:trim>
+		<xf:pagenav
+					page="{$page}" perpage="{$perPage}" total="{$total}"
+					link="latest-contents" data="{$forum}" params="{$conditions}"
+					wrapperclass="block-outer-main" />
+		<xf:if contentcheck="true">
+			<div class="block-outer-opposite">
+				<div class="buttonGroup">
+					<xf:contentcheck>
+						<xf:if is="$xf.visitor.user_id">
+							<xf:button href="{{ link('forums/mark-read', $forum, {'date': $xf.time}) }}"
+									   class="button--link" overlay="true">
+								<xf:fa icon="fas fa-cog" />
+							</xf:button>
+						</xf:if>
+					</xf:contentcheck>
+				</div>
+			</div>
+		</xf:if>
+		</xf:trim></div>
 
 
 	<div class="block-container">
-
-
-
 
 		<div class="block-body">
 			<xf:extension name="thread_list">
 				<div class="structItemContainer">
 
-
 					<xf:if is="$threads is not empty">
-
 
 						<div class="structItemContainer-group js-threadList">
 							<xf:if is="$threads is not empty">
@@ -64,6 +104,5 @@
 		</div>
 	</div>
 </xf:sidebar>
-
 
 <xf:widgetpos id="forum_view_sidebar" context-forum="{$forum}" position="sidebar" />

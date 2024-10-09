@@ -357,6 +357,7 @@ return array (
   'option.fs_latest_thread_custom_field_game' => 'Custom thread field id (Game)',
   'option.fs_latest_thread_custom_field_ver' => 'Custom thread field id (Version)',
   'option.fs_latest_thread_per_page' => 'Per page',
+  'option.fs_latest_update_on_slider' => 'Slider threads per page',
   'option.fs_link_group_apply_settings' => 'Group with priority',
   'option.fs_link_html_position' => 'HTML position',
   'option.fs_mts_customMsgColor' => 'Custom message Text Color',

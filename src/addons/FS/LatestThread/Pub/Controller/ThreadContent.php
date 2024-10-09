@@ -142,12 +142,27 @@ class ThreadContent extends AbstractController
 
 			'threads' => $threads->filterViewable(),
 
+			'featuredThreads' => $this->getFeaturedThreads(),
+
 			'canInlineMod' => $canInlineMod,
 			'sortOptions' => $this->getAvailableForumSorts($forum)
 
 
 		];
 		return $this->view('XF:FindThreads\List', 'forum_view_latest_content', $viewParams);
+	}
+
+	protected function getFeaturedThreads()
+	{
+		$filterNodes = \XF::Options()->fs_filter_node;
+
+		return $this->finder('XF:Thread')
+			->where('node_id', $filterNodes)
+			->where('is_featured', true)
+			->where('discussion_state', 'visible')
+			->order('last_post_date', 'DESC')->fetch();
+
+		return $featuredThreads->fetch();
 	}
 
 	public function actionFilters(ParameterBag $params)

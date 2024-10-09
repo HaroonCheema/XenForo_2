@@ -6,6 +6,15 @@ use XF\Mvc\Entity\Structure;
 
 class Thread extends XFCP_Thread
 {
+    public static function getStructure(Structure $structure)
+    {
+        $structure = parent::getStructure($structure);
+
+        $structure->columns['is_featured'] =  ['type' => self::BOOL, 'default' => false];
+
+        return $structure;
+    }
+
     public function getViewCountKM()
     {
         $number = $this->view_count;

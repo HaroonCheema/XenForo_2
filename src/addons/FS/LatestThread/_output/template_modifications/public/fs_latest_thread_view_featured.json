@@ -1,0 +1,9 @@
+{
+    "template": "thread_view",
+    "description": "fs_latest_thread_view_featured",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/<xf:if is=\"\\$canInlineMod\">.*?<\\/xf:if>/is",
+    "replace": "<xf:if is=\"in_array($thread.node_id, $xf.options.fs_filter_node) AND $xf.visitor.hasPermission('fs_latest_thread', 'can_featured_unfea')\" >\n\t<xf:button href=\"{{ link('threads/featured', $thread) }}\" class=\"button--link\" overlay=\"true\">\n\t\t<xf:if is=\"{$thread.is_featured}\">\n\t\t\t{{ phrase('fs_latest_unfeatured') }}\n\t\t\t<xf:else />\n\t\t\t{{ phrase('fs_latest_featured') }}\n\t\t</xf:if>\n\t</xf:button>\n</xf:if>\n\n$0"
+}

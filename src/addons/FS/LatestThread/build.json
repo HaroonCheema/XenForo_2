@@ -1,0 +1,6 @@
+{
+  "additional_files": ["js/FS/LatestUpdateSlider"],
+  "exec": [
+    "echo '{title} version {version_string} ({version_id}) has been built successfully!' > 'src/addons/FS/LatestThread/_build/built.txt'"
+  ]
+}

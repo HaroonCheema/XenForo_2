@@ -1,9 +1,33 @@
 {
+    "fs_featured_thread.txt": {
+        "global_cache": false,
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "0d6968a1a8970d263c33b137c572965c"
+    },
+    "fs_latest_featured.txt": {
+        "global_cache": false,
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "15422d54ec0d47000dc86a9820a5237e"
+    },
+    "fs_latest_unfeatured.txt": {
+        "global_cache": false,
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "e2ffef6ce64962d77d791df9974d392e"
+    },
     "fs_status_prefix.txt": {
         "global_cache": false,
         "version_id": 1,
         "version_string": "1",
         "hash": "4f8305ab134c229cc7ca66ae3382900b"
+    },
+    "fs_unfeatured_thread.txt": {
+        "global_cache": false,
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "62b96bdf9b25c8f50514146f7763511c"
     },
     "option.fs_latest_thread_custom_field_game.txt": {
         "global_cache": false,
@@ -22,6 +46,12 @@
         "version_id": 1,
         "version_string": "1",
         "hash": "4dc23b29ac04ff8a10ee727ebf8f9560"
+    },
+    "option.fs_latest_update_on_slider.txt": {
+        "global_cache": false,
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "e2e24756cdead3acd285969a9e664755"
     },
     "option.prefix_group_3.txt": {
         "global_cache": false,
@@ -47,16 +77,40 @@
         "version_string": "1",
         "hash": "d41d8cd98f00b204e9800998ecf8427e"
     },
+    "option_explain.fs_latest_update_on_slider.txt": {
+        "global_cache": false,
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
     "permission.fs_latest_thread_can_check_lts_cnt.txt": {
         "global_cache": false,
         "version_id": 1,
         "version_string": "1",
         "hash": "1c686a8464a4ac6da8da6313fb2bd1a4"
     },
+    "permission.fs_latest_thread_can_featured_unfea.txt": {
+        "global_cache": false,
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "2d9128153605d125e651a890e3ad188e"
+    },
     "permission_interface.fs_latest_thread.txt": {
         "global_cache": false,
         "version_id": 1,
         "version_string": "1",
         "hash": "a98626122c120d5f6295182e4b335124"
+    },
+    "you_sure_you_want_to_featured_this_thread.txt": {
+        "global_cache": false,
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "1a841a5338c795ae13ab36f016495e08"
+    },
+    "you_sure_you_want_to_unfeatured_this_thread.txt": {
+        "global_cache": false,
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "5eaa900e10591c5efb9d872825aba271"
     }
 }

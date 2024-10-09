@@ -195,6 +195,7 @@ return array (
   'permission.fs_bunny_allow' => 'Can Upload Video',
   'permission.fs_forum_group_permission_add' => 'Add Forum Group',
   'permission.fs_latest_thread_can_check_lts_cnt' => 'Can check latest content',
+  'permission.fs_latest_thread_can_featured_unfea' => 'Can Featured/Unfeatured',
   'permission.fs_limitations_fs_conversationLimit' => 'Conversation Limit',
   'permission.fs_limitations_fs_dailyDiscussiontLimit' => 'Daily Discussion Limit',
   'permission.fs_thread_thumbnail_group_fs_thread_thumbnail' => 'Allow Thread Thumbnail',

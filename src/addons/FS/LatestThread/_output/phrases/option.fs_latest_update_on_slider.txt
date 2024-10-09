@@ -1,0 +1,1 @@
+Slider threads per page

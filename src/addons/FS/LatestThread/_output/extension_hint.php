@@ -7,3 +7,8 @@ namespace FS\LatestThread\XF\Entity
 {
 	class XFCP_Thread extends \XF\Entity\Thread {}
 }
+
+namespace FS\LatestThread\XF\Pub\Controller
+{
+	class XFCP_Thread extends \XF\Pub\Controller\Thread {}
+}
