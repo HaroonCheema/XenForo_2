@@ -1,1 +1,1 @@
-Select forums to create by default threads.
+Select the node where ban appeal threads will be created automatically.

@@ -272,7 +272,7 @@
 		</div>
 	</div>
 </xf:macro>]]></template>
-  <template type="public" title="fs_ban_user_list" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('fs_ban_banned_users') }}</xf:title>
+  <template type="public" title="fs_ban_user_list" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[<xf:title>{{ phrase('fs_ban_banned_users') }}</xf:title>
 
 <xf:if is="$userBans is not empty">
 	<div class="block">
@@ -289,12 +289,14 @@
 					</xf:datarow>
 					<xf:foreach loop="$userBans" value="$userBan">
 						<xf:datarow>
-							<xf:cell>{$userBan.User.username}</xf:cell>
+							<xf:cell href="{{ link('members/', $userBan.User) }}">{$userBan.User.username}</xf:cell>
 							<xf:cell>{$userBan.BanUser.username}</xf:cell>
 							<xf:cell>{{ $userBan.end_date ? date($userBan.end_date) : phrase('permanent') }}</xf:cell>
 							<xf:cell>{{ $userBan.user_reason ?: phrase('n_a') }}</xf:cell>
 							<xf:cell> <a href="{{ link('members/ban', $userBan.User) }}" data-xf-click="overlay">{{ phrase('edit_ban') }}</a></xf:cell>
-							<xf:action href="{{ link('threads', $userBan.Thread) }}" ajex="true" data-xf-click="overlay">{{ phrase('fs_ban_appeal') }}</xf:action>
+							<xf:if is="$userBan.Thread">
+								<xf:action href="{{ link('threads', $userBan.Thread) }}" ajex="true" data-xf-click="overlay">{{ phrase('fs_ban_appeal') }}</xf:action>
+							</xf:if>
 						</xf:datarow>
 					</xf:foreach>
 				</xf:datalist>

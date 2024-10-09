@@ -16,14 +16,14 @@ class BannedUsers extends \XF\Service\AbstractService
 
 		if ($bannedUserthread) {
 
-			$postAll = $this->finder('XF:Post')->where('thread_id', $bannedUserthread->thread_id)->where('post_id', '!=', $bannedUserthread->FirstPost->post_id)->fetch();
+			// $postAll = $this->finder('XF:Post')->where('thread_id', $bannedUserthread->thread_id)->where('post_id', '!=', $bannedUserthread->FirstPost->post_id)->fetch();
 
-			if (count($postAll)) {
-				foreach ($postAll as $value) {
+			// if (count($postAll)) {
+			// 	foreach ($postAll as $value) {
 
-					$value->delete();
-				}
-			}
+			// 		$value->delete();
+			// 	}
+			// }
 			$bannedUserthread->fastUpdate('discussion_open', false);
 		}
 
@@ -100,7 +100,7 @@ class BannedUsers extends \XF\Service\AbstractService
 					$issuedBy = $bannedUser->Ban->BanUser->username;
 					$banDate = date('M d Y', $bannedUser->Ban->ban_date);
 					$endDate = $bannedUser->Ban->end_date ? date('M d Y', $bannedUser->Ban->end_date) : 'Permanent';
-					$reasonBan = $bannedUser->Ban->user_reason;
+					$reasonBan = $bannedUser->Ban->user_reason ?: "N/A";
 
 
 					$message = "Issued to:  $issuedTo
@@ -140,7 +140,7 @@ Reason: $reasonBan";
 
 		$banDate = date('M d Y', time());
 		$endDate = $input['end_date'] ? date('M d Y', $input['end_date']) : 'Permanent';
-		$reasonBan = $input["user_reason"];
+		$reasonBan = $input["user_reason"] ?: "N/A";
 
 
 		$title = "Ban issued to user " . $user->username;

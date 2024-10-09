@@ -10,8 +10,8 @@
         "hash": "1023cc342137597a3e5b259debb85d53"
     },
     "public/fs_ban_user_list.html": {
-        "version_id": 1000010,
-        "version_string": "1.0.0 Alpha",
-        "hash": "1d7175a4c9ffbd7554f00538dd3f8bb2"
+        "version_id": 1000200,
+        "version_string": "1.0.2 Alpha",
+        "hash": "30d70a44c099d88077eeaaa5c318d5cd"
     }
 }

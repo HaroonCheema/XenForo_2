@@ -8,7 +8,7 @@
   <phrase title="fs_ban_reason" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<b>Reason</b>]]></phrase>
   <phrase title="fs_banned_by" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Banned by]]></phrase>
   <phrase title="option.fs_banned_users_applic_forum" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Select forum]]></phrase>
-  <phrase title="option_explain.fs_banned_users_applic_forum" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Select forums to create by default threads.]]></phrase>
+  <phrase title="option_explain.fs_banned_users_applic_forum" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Select the node where ban appeal threads will be created automatically.]]></phrase>
   <phrase title="option_group.fs_ban_user_change" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Ban User Changes]]></phrase>
   <phrase title="option_group_description.fs_ban_user_change" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
   <phrase title="permission.fs_ban_watch_profile_all_check" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Can check all banned users]]></phrase>

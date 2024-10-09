@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 1d7175a4c9ffbd7554f00538dd3f8bb2
+// FROM HASH: 30d70a44c099d88077eeaaa5c318d5cd
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -18,34 +18,39 @@ return array(
 		if ($__templater->isTraversable($__vars['userBans'])) {
 			foreach ($__vars['userBans'] AS $__vars['userBan']) {
 				$__compilerTemp1 .= '
-						' . $__templater->dataRow(array(
-				), array(array(
+						';
+				$__compilerTemp2 = array(array(
+					'href' => $__templater->func('link', array('members/', $__vars['userBan']['User'], ), false),
 					'_type' => 'cell',
 					'html' => $__templater->escape($__vars['userBan']['User']['username']),
-				),
-				array(
+				)
+,array(
 					'_type' => 'cell',
 					'html' => $__templater->escape($__vars['userBan']['BanUser']['username']),
-				),
-				array(
+				)
+,array(
 					'_type' => 'cell',
 					'html' => ($__vars['userBan']['end_date'] ? $__templater->func('date', array($__vars['userBan']['end_date'], ), true) : 'Permanent'),
-				),
-				array(
+				)
+,array(
 					'_type' => 'cell',
 					'html' => ($__templater->escape($__vars['userBan']['user_reason']) ?: 'N/A'),
-				),
-				array(
+				)
+,array(
 					'_type' => 'cell',
 					'html' => ' <a href="' . $__templater->func('link', array('members/ban', $__vars['userBan']['User'], ), true) . '" data-xf-click="overlay">' . 'Edit ban' . '</a>',
-				),
-				array(
-					'href' => $__templater->func('link', array('threads', $__vars['userBan']['Thread'], ), false),
-					'ajex' => 'true',
-					'data-xf-click' => 'overlay',
-					'_type' => 'action',
-					'html' => 'Appeal',
-				))) . '
+				));
+				if ($__vars['userBan']['Thread']) {
+					$__compilerTemp2[] = array(
+						'href' => $__templater->func('link', array('threads', $__vars['userBan']['Thread'], ), false),
+						'ajex' => 'true',
+						'data-xf-click' => 'overlay',
+						'_type' => 'action',
+						'html' => 'Appeal',
+					);
+				}
+				$__compilerTemp1 .= $__templater->dataRow(array(
+				), $__compilerTemp2) . '
 					';
 			}
 		}

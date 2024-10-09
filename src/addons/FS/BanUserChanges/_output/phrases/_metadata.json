@@ -49,9 +49,9 @@
     },
     "option_explain.fs_banned_users_applic_forum.txt": {
         "global_cache": false,
-        "version_id": 1000010,
-        "version_string": "1.0.0 Alpha",
-        "hash": "cb15f777c0e0b3e338b93236251129e4"
+        "version_id": 1000200,
+        "version_string": "1.0.2 Alpha",
+        "hash": "c5bbd35e9125fc7743745399dc94d3ea"
     },
     "option_group.fs_ban_user_change.txt": {
         "global_cache": false,
