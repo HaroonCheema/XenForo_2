@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 0a5c8e2e93d75d2742331ff283ecb148
+// FROM HASH: fc68f4e6c804bb1eeb5b4bcbc5b26ae7
 return array(
 'extensions' => array('start' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -68,6 +68,16 @@ return array(
 	});
 ');
 	$__finalCompiled .= '
+
+<style>
+
+	.sticky-filter {
+		position: -webkit-sticky;
+		position: sticky;
+		top: 70px; 
+	}
+
+</style>
 ';
 	$__compilerTemp1 = array();
 	if ($__templater->isTraversable($__vars['forums'])) {
@@ -143,6 +153,7 @@ return array(
 		}
 	}
 	$__finalCompiled .= $__templater->form('
+
 	' . $__templater->renderExtension('start', $__vars, $__extensions) . '
 
 
@@ -289,7 +300,7 @@ return array(
 		'max-length' => $__vars['xf']['options']['tagLength']['max'],
 		'max-tokens' => $__vars['xf']['options']['maxContentTags'],
 	)) . '
-			
+
 			' . '
 		</div>
 	</div>
@@ -352,6 +363,7 @@ return array(
 	</div>
 	' . $__templater->formHiddenVal('apply', '1', array(
 	)) . '
+
 ', array(
 		'action' => $__templater->func('link', array('latest-contents/filters', $__vars['forum'], ), false),
 	));

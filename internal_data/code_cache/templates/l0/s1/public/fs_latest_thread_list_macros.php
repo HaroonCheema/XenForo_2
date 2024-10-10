@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: a02cfe23d4bfdec0c8160f6e6973a96d
+// FROM HASH: f7f6dd421a789b743539a1d43a0cfea5
 return array(
 'macros' => array('item' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -23,13 +23,13 @@ return array(
 				<div class="structItem-cell structItem-cell--icon" style="width: ' . ($__vars['thread']['Forum']['Node']['node_thread_thumbnail_width'] ? $__templater->escape($__vars['thread']['Forum']['Node']['node_thread_thumbnail_width']) : $__templater->escape($__vars['xf']['options']['thumbnail_width'])) . '; height: ' . ($__vars['thread']['Forum']['Node']['node_thread_thumbnail_height'] ? $__templater->escape($__vars['thread']['Forum']['Node']['node_thread_thumbnail_height']) : $__templater->escape($__vars['xf']['options']['thumb_size_hemant'])) . ';">
 
 					<div class="structItem-iconContainer">
-						<a href="' . $__templater->func('link', array('threads', $__vars['thread'], ), true) . '"> 
+						<a href="' . $__templater->func('link', array('threads', $__vars['thread'], ), true) . '" target="' . (($__vars['xf']['visitor']['new_tab'] == 'yes') ? '_blank' : '_self') . '"> 
 							<img src="' . $__templater->escape($__templater->method($__vars['thread'], 'getfirstPostImgUrl', array())) . '" class="' . (($__templater->func('count', array($__vars['thread']['FirstPost']['Attachments'], ), false) > 1) ? 'hideUpdateImg' : ' ') . '" style="width: ' . ($__vars['thread']['Forum']['Node']['node_thread_thumbnail_width'] ? $__templater->escape($__vars['thread']['Forum']['Node']['node_thread_thumbnail_width']) : $__templater->escape($__vars['xf']['options']['thumbnail_width'])) . ' ; height: ' . ($__vars['thread']['Forum']['Node']['node_thread_thumbnail_height'] ? $__templater->escape($__vars['thread']['Forum']['Node']['node_thread_thumbnail_height']) : $__templater->escape($__vars['xf']['options']['thumb_size_hemant'])) . '; object-fit: cover; border-bottom: solid 2px #fa7d24">
 						</a>
 						';
 		if ($__templater->func('count', array($__vars['thread']['FirstPost']['Attachments'], ), false) > 1) {
 			$__finalCompiled .= '
-							<a href="' . $__templater->func('link', array('threads', $__vars['thread'], ), true) . '"> 
+							<a href="' . $__templater->func('link', array('threads', $__vars['thread'], ), true) . '" target="' . (($__vars['xf']['visitor']['new_tab'] == 'yes') ? '_blank' : '_self') . '"> 
 								<div class="slider-container dispUpdateSlider" id="slider-container">
 									<!-- Numbering Display -->
 									<div class="slide-number" id="slide-number"></div>
@@ -70,7 +70,7 @@ return array(
 									' . $__templater->func('prefix', array('thread', $__vars['thread'], 'html', 'isStatus', ), true) . ' 
 
 									';
-			if ($__vars['xf']['options']['fs_latest_thread_custom_field_ver']) {
+			if ($__vars['xf']['options']['fs_latest_thread_custom_field_ver'] AND ($__vars['xf']['visitor']['version_style'] == 'small')) {
 				$__finalCompiled .= '
 										<spam style="background-color: #3f4043; padding: 0px 6px;">' . $__templater->escape($__vars['thread']['custom_fields'][$__vars['xf']['options']['fs_latest_thread_custom_field_ver']]) . '</spam>
 									';
@@ -308,7 +308,14 @@ return array(
 	$__vars['canPreview'] = $__templater->method($__vars['thread'], 'canPreview', array());
 	$__finalCompiled .= '
 
-					<a href="' . $__templater->func('link', array('threads' . (($__templater->method($__vars['thread'], 'isUnread', array()) AND (!$__vars['forceRead'])) ? '/unread' : ''), $__vars['thread'], ), true) . '" class="" data-tp-primary="on" data-xf-init="' . ($__vars['canPreview'] ? 'preview-tooltip' : '') . '" data-preview-url="' . ($__vars['canPreview'] ? $__templater->func('link', array('threads/preview', $__vars['thread'], ), true) : '') . '">' . $__templater->func('snippet', array($__vars['thread']['title'], 25, array('stripBbCode' => true, ), ), true) . '</a>
+					<a href="' . $__templater->func('link', array('threads' . (($__templater->method($__vars['thread'], 'isUnread', array()) AND (!$__vars['forceRead'])) ? '/unread' : ''), $__vars['thread'], ), true) . '" target="' . (($__vars['xf']['visitor']['new_tab'] == 'yes') ? '_blank' : '_self') . '" class="" data-tp-primary="on" data-xf-init="' . ($__vars['canPreview'] ? 'preview-tooltip' : '') . '" data-preview-url="' . ($__vars['canPreview'] ? $__templater->func('link', array('threads/preview', $__vars['thread'], ), true) : '') . '">' . $__templater->func('snippet', array($__vars['thread']['title'], 25, array('stripBbCode' => true, ), ), true) . '</a>
+					';
+	if ($__vars['xf']['options']['fs_latest_thread_custom_field_ver'] AND ($__vars['xf']['visitor']['version_style'] == 'large')) {
+		$__finalCompiled .= '
+						<spam class="field_game_title">' . $__templater->escape($__vars['thread']['custom_fields'][$__vars['xf']['options']['fs_latest_thread_custom_field_ver']]) . '</spam>
+					';
+	}
+	$__finalCompiled .= '
 				</div>
 
 				<div class="structItem-minor">
@@ -586,6 +593,12 @@ return array(
 			border-radius: 3px;
 			font-size: 10px;
 			font-weight: bold;
+		}
+
+		.field_game_title {
+			color: #9398a0;
+			margin: 0 0 0 5px;
+			white-space: nowrap;
 		}
 	</style>
 

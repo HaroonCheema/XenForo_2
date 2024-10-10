@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 966b2600d0769a56bbe9974f1055d154
+// FROM HASH: 844e9aa679225e9bcb3f89d9d8809c26
 return array(
 'extensions' => array('thread_list' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -189,7 +189,7 @@ return array(
 </div>
 ';
 	$__templater->modifySidebarHtml('conversationInfo', '
-	<div class="block">
+	<div class="block ' . (($__vars['xf']['visitor']['filter_sidebar'] == 'sticky') ? 'sticky-filter' : ' ') . '">
 		<div class="block-container">
 			' . $__templater->includeTemplate('forum_filters_latest', $__vars) . '
 		</div>

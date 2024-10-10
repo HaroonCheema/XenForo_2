@@ -98,7 +98,7 @@
 	</div>
 </div>
 <xf:sidebar key="conversationInfo">
-	<div class="block">
+	<div class="block {{$xf.visitor.filter_sidebar == 'sticky' ? 'sticky-filter' : ' '}}">
 		<div class="block-container">
 			<xf:include template="forum_filters_latest" />
 		</div>
