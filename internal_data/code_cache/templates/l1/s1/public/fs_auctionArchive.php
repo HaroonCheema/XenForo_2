@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: c061d71929559995e4ac18364d79153b
+// FROM HASH: 8c23c41e606f419989fa6bc3b42a7342
 return array(
 'macros' => array('search_menu' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -334,7 +334,6 @@ return array(
 
 <!-- Filter Bar Macro Start -->
 
-' . '
 ';
 	return $__finalCompiled;
 }

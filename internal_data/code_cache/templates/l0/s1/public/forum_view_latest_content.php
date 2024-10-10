@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: c09d93f5737a5124047b6d459a77b39f
+// FROM HASH: 966b2600d0769a56bbe9974f1055d154
 return array(
 'extensions' => array('thread_list' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -135,7 +135,7 @@ return array(
 								' . $__templater->fontAwesome('fas fa-cog', array(
 		)) . '
 							', array(
-			'href' => $__templater->func('link', array('forums/mark-read', $__vars['forum'], array('date' => $__vars['xf']['time'], ), ), false),
+			'href' => $__templater->func('link', array('latest-contents/options', ), false),
 			'class' => 'button--link',
 			'overlay' => 'true',
 		), '', array(

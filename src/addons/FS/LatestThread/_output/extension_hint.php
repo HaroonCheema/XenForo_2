@@ -6,6 +6,7 @@
 namespace FS\LatestThread\XF\Entity
 {
 	class XFCP_Thread extends \XF\Entity\Thread {}
+	class XFCP_User extends \XF\Entity\User {}
 }
 
 namespace FS\LatestThread\XF\Pub\Controller

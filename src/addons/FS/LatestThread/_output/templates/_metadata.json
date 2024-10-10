@@ -7,7 +7,7 @@
     "public/forum_view_latest_content.html": {
         "version_id": 1000100,
         "version_string": "1.0.1 Alpha",
-        "hash": "c09d93f5737a5124047b6d459a77b39f"
+        "hash": "966b2600d0769a56bbe9974f1055d154"
     },
     "public/forum_view_latest_content.less": {
         "version_id": 1000010,
@@ -33,5 +33,10 @@
         "version_id": 1000100,
         "version_string": "1.0.1 Alpha",
         "hash": "808f2db704e707402ac6ed98e9669edb"
+    },
+    "public/fs_latest_update_user_options.html": {
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "88f18aaa524f49f0c809a7deac06334d"
     }
 }

@@ -1,7 +1,5 @@
 <?php
 
-
-
 namespace FS\LatestThread\Pub\Controller;
 
 use XF\Mvc\ParameterBag;
@@ -83,6 +81,7 @@ class ThreadContent extends AbstractController
 	{
 		return $forum->TypeHandler->getThreadListSortOptions($forum);
 	}
+
 	public function actionIndex(ParameterBag $params)
 	{
 		$filterNodes = \XF::Options()->fs_filter_node;
@@ -152,17 +151,28 @@ class ThreadContent extends AbstractController
 		return $this->view('XF:FindThreads\List', 'forum_view_latest_content', $viewParams);
 	}
 
-	protected function getFeaturedThreads()
+	public function actionOptions()
 	{
-		$filterNodes = \XF::Options()->fs_filter_node;
+		$visitor = \XF::visitor();
+		if (!$visitor->user_id) {
+			return $this->noPermission();
+		}
 
-		return $this->finder('XF:Thread')
-			->where('node_id', $filterNodes)
-			->where('is_featured', true)
-			->where('discussion_state', 'visible')
-			->order('last_post_date', 'DESC')->fetch();
+		if ($this->isPost()) {
+			$inputs = $this->userOptionsFilters();
 
-		return $featuredThreads->fetch();
+			$visitor->bulkSet($inputs);
+			$visitor->save();
+
+			$redirect = $this->redirect($this->buildLink('latest-contents/'));
+			return $redirect;
+		} else {
+
+			$viewParams = [
+				'featuredThreads' => $this->getFeaturedThreads(),
+			];
+			return $this->view('FS\LatestThread:Options', 'fs_latest_update_user_options', $viewParams);
+		}
 	}
 
 	public function actionFilters(ParameterBag $params)
@@ -195,6 +205,19 @@ class ThreadContent extends AbstractController
 	public function getReadMarkingCutOff()
 	{
 		return \XF::$time - $this->options()->readMarkingDataLifetime * 86400;
+	}
+
+	protected function getFeaturedThreads()
+	{
+		$filterNodes = \XF::Options()->fs_filter_node;
+
+		return $this->finder('XF:Thread')
+			->where('node_id', $filterNodes)
+			->where('is_featured', true)
+			->where('discussion_state', 'visible')
+			->order('last_post_date', 'DESC')->fetch();
+
+		return $featuredThreads->fetch();
 	}
 
 	protected function getSearchFinder($threadFinder)
@@ -294,6 +317,18 @@ class ThreadContent extends AbstractController
 		if ($this->filter('apply', 'uint')) {
 			$filters['apply'] = true;
 		}
+
+		return $filters;
+	}
+
+	protected function userOptionsFilters()
+	{
+		$filters = $this->filter([
+			'tile_layout' => 'str',
+			'new_tab' => 'str',
+			'filter_sidebar' => 'str',
+			'version_style' => 'str',
+		]);
 
 		return $filters;
 	}

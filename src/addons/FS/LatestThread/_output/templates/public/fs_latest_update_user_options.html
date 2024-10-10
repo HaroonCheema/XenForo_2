@@ -1,0 +1,39 @@
+<xf:title>{{ phrase('fs_latest_options') }} </xf:title>
+
+<xf:form action="{{ link('latest-contents/options') }}" class="block" ajax="true">
+	<div class="block-container">
+		<div class="block-body js-prefixListenContainer">
+
+			<xf:radiorow name="tile_layout" value="{$xf.visitor.tile_layout}"
+						 label="{{ phrase('fs_latest_update_layout') }}">
+
+				<xf:option value="grid"><i class="fas fa-th" ></i></xf:option>
+				<xf:option value="girdLg"><i class="fas fa-th-large" ></i></xf:option>
+				<xf:option value="list"><i class="fas fa-list" ></i></xf:option>
+			</xf:radiorow>
+
+			<xf:radiorow name="new_tab" value="{$xf.visitor.new_tab}"
+						 label="{{ phrase('fs_latest_update_new_tab') }}">
+
+				<xf:option value="yes">{{ phrase('yes') }}</xf:option>
+				<xf:option value="no">{{ phrase('no') }}</xf:option>
+			</xf:radiorow>
+
+			<xf:radiorow name="filter_sidebar" value="{$xf.visitor.filter_sidebar}"
+						 label="{{ phrase('fs_latest_update_filter_sidebar') }}">
+
+				<xf:option value="normal">{{ phrase('fs_latest_update_normal') }}</xf:option>
+				<xf:option value="sticky">{{ phrase('sticky') }}</xf:option>
+			</xf:radiorow>
+
+			<xf:radiorow name="version_style" value="{$xf.visitor.version_style}"
+						 label="{{ phrase('fs_latest_update_version_style') }}">
+
+				<xf:option value="small">{{ phrase('fs_latest_update_small') }}</xf:option>
+				<xf:option value="large">{{ phrase('fs_latest_update_large') }}</xf:option>
+			</xf:radiorow>
+
+		</div>
+		<xf:submitrow icon="save" sticky="true" />
+	</div>
+</xf:form>

@@ -11,11 +11,59 @@
         "version_string": "1.0.1 Alpha",
         "hash": "15422d54ec0d47000dc86a9820a5237e"
     },
+    "fs_latest_options.txt": {
+        "global_cache": false,
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "dae8ace18bdcbcc6ae5aece263e14fe8"
+    },
     "fs_latest_unfeatured.txt": {
         "global_cache": false,
         "version_id": 1000100,
         "version_string": "1.0.1 Alpha",
         "hash": "e2ffef6ce64962d77d791df9974d392e"
+    },
+    "fs_latest_update_filter_sidebar.txt": {
+        "global_cache": false,
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "f562f0909e58fa6ee2769cd2efd7038a"
+    },
+    "fs_latest_update_large.txt": {
+        "global_cache": false,
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "ae6665862544db42f0d56e1aeb418473"
+    },
+    "fs_latest_update_layout.txt": {
+        "global_cache": false,
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "507038fa5d8ec09e2e437b6e07c7ce69"
+    },
+    "fs_latest_update_new_tab.txt": {
+        "global_cache": false,
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "7f442804a3312ed270fc52b5ca3c2986"
+    },
+    "fs_latest_update_normal.txt": {
+        "global_cache": false,
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "960b44c579bc2f6818d2daaf9e4c16f0"
+    },
+    "fs_latest_update_small.txt": {
+        "global_cache": false,
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "0723264bd6ea1edd4add734286d0cd0f"
+    },
+    "fs_latest_update_version_style.txt": {
+        "global_cache": false,
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "93dfce43595550fd221827b88e89a351"
     },
     "fs_status_prefix.txt": {
         "global_cache": false,
