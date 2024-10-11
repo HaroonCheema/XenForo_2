@@ -10,6 +10,12 @@
 
 <xf:css src="forum_view_latest_content.less" />
 
+<style>
+	.gridLarg{
+		grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)) !important;
+	}
+</style>
+
 <xf:if is="count($featuredThreads)">
 	<div class="block">
 
@@ -66,12 +72,12 @@
 			<xf:extension name="thread_list">
 				<div class="structItemContainer">
 
-					<xf:if is="$threads is not empty">
+					<xf:if is="$threads is not empty AND ($xf.visitor.tile_layout == 'grid' OR $xf.visitor.tile_layout == 'girdLg')">
 
-						<div class="structItemContainer-group js-threadList">
+						<div class="structItemContainer-group js-threadList {{$xf.visitor.tile_layout == 'girdLg' ? 'gridLarg' : ' '}}" >
 							<xf:if is="$threads is not empty">
 								<xf:foreach loop="$threads" value="$thread">
-									<xf:macro name="{{ $templateOverrides.thread_list_macro ?: 'fs_latest_thread_list_macros::item' }}"
+									<xf:macro name="fs_latest_thread_list_macros::item"
 											  arg-thread="{$thread}"
 
 											  args="{$templateOverrides.thread_list_macro_args}"  />
@@ -81,6 +87,12 @@
 								</xf:if>
 							</xf:if>
 						</div>
+						<xf:elseif is="$threads is not empty AND ($xf.visitor.tile_layout == 'list')" />
+						<xf:foreach loop="$threads" value="$thread">
+							<xf:macro name="fs_latest_thread_list_macros::list"
+									  arg-thread="{$thread}"
+									  args="{$templateOverrides.thread_list_macro_args}"  />
+						</xf:foreach>
 						<xf:else />
 						<div class="block-body block-row">{{ phrase('no_results_found') }}</div>
 					</xf:if>

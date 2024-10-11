@@ -7,12 +7,17 @@
     "public/forum_view_latest_content.html": {
         "version_id": 1000100,
         "version_string": "1.0.1 Alpha",
-        "hash": "844e9aa679225e9bcb3f89d9d8809c26"
+        "hash": "c25bac585c10be0aea48ce9d49a4c427"
     },
     "public/forum_view_latest_content.less": {
         "version_id": 1000100,
         "version_string": "1.0.1 Alpha",
         "hash": "ee0b7988b732daed8cc1b909b5871857"
+    },
+    "public/forum_view_latest_content_test.html": {
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "e00cfec2bc5708fde888cdfcb49025ae"
     },
     "public/fs_latest_thread_featured.html": {
         "version_id": 1000100,
@@ -22,7 +27,7 @@
     "public/fs_latest_thread_list_macros.html": {
         "version_id": 1000100,
         "version_string": "1.0.1 Alpha",
-        "hash": "f7f6dd421a789b743539a1d43a0cfea5"
+        "hash": "a420f1d5411ca9a3a6feaf6595dcf96e"
     },
     "public/fs_latest_update_list.less": {
         "version_id": 1000100,

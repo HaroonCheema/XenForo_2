@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 844e9aa679225e9bcb3f89d9d8809c26
+// FROM HASH: c25bac585c10be0aea48ce9d49a4c427
 return array(
 'extensions' => array('thread_list' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -8,10 +8,10 @@ return array(
 				<div class="structItemContainer">
 
 					';
-	if (!$__templater->test($__vars['threads'], 'empty', array())) {
+	if (!$__templater->test($__vars['threads'], 'empty', array()) AND (($__vars['xf']['visitor']['tile_layout'] == 'grid') OR ($__vars['xf']['visitor']['tile_layout'] == 'girdLg'))) {
 		$__finalCompiled .= '
 
-						<div class="structItemContainer-group js-threadList">
+						<div class="structItemContainer-group js-threadList ' . (($__vars['xf']['visitor']['tile_layout'] == 'girdLg') ? 'gridLarg' : ' ') . '" >
 							';
 		if (!$__templater->test($__vars['threads'], 'empty', array())) {
 			$__finalCompiled .= '
@@ -19,7 +19,7 @@ return array(
 			if ($__templater->isTraversable($__vars['threads'])) {
 				foreach ($__vars['threads'] AS $__vars['thread']) {
 					$__finalCompiled .= '
-									' . $__templater->callMacro(null, ($__vars['templateOverrides']['thread_list_macro'] ?: 'fs_latest_thread_list_macros::item'), $__templater->combineMacroArgumentAttributes($__vars['templateOverrides']['thread_list_macro_args'], array(
+									' . $__templater->callMacro(null, 'fs_latest_thread_list_macros::item', $__templater->combineMacroArgumentAttributes($__vars['templateOverrides']['thread_list_macro_args'], array(
 						'thread' => $__vars['thread'],
 					)), $__vars) . '
 								';
@@ -41,6 +41,20 @@ return array(
 		}
 		$__finalCompiled .= '
 						</div>
+						';
+	} else if (!$__templater->test($__vars['threads'], 'empty', array()) AND ($__vars['xf']['visitor']['tile_layout'] == 'list')) {
+		$__finalCompiled .= '
+						';
+		if ($__templater->isTraversable($__vars['threads'])) {
+			foreach ($__vars['threads'] AS $__vars['thread']) {
+				$__finalCompiled .= '
+							' . $__templater->callMacro(null, 'fs_latest_thread_list_macros::list', $__templater->combineMacroArgumentAttributes($__vars['templateOverrides']['thread_list_macro_args'], array(
+					'thread' => $__vars['thread'],
+				)), $__vars) . '
+						';
+			}
+		}
+		$__finalCompiled .= '
 						';
 	} else {
 		$__finalCompiled .= '
@@ -86,6 +100,12 @@ return array(
 ';
 	$__templater->includeCss('forum_view_latest_content.less');
 	$__finalCompiled .= '
+
+<style>
+	.gridLarg{
+		grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)) !important;
+	}
+</style>
 
 ';
 	if ($__templater->func('count', array($__vars['featuredThreads'], ), false)) {

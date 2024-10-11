@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="admin" template="forum_edit" modification_key="fs_colour_forum_edit" description="Add two Fields of Colours" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:macro id="node_edit_macros::description" arg-node="{$node}" />
+]]></find>
+    <replace><![CDATA[$0
+<xf:macro template="node_edit_macros" name="color_title" arg-node="{$node}" />
+<xf:macro template="node_edit_macros" name="color_code" arg-node="{$node}" />
+]]></replace>
+  </modification>
+  <modification type="admin" template="node_edit_macros" modification_key="fs_colour_node_edit_macros" description="Add two Fields of Colours" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:macro id="description" arg-node="!">
+	<xf:textarearow name="node[description]" value="{$node.description}" autosize="true"
+		label="{{ phrase('description') }}"
+		hint="{{ phrase('you_may_use_html') }}"
+		explain="{{ phrase('node_description_explain') }}" />
+</xf:macro>
+]]></find>
+    <replace><![CDATA[<xf:macro name="color_title" arg-node="!">
+    <xf:textboxrow name="node[color_title]" value="{$node.color_title}" label="{{ phrase('Colour Title') }}" />
+</xf:macro>
+<xf:macro name="color_code" arg-node="!">
+    <xf:textboxrow name="node[color_code]" value="{$node.color_code}" label="{{ phrase('Colour Code') }}" />
+</xf:macro>
+$0]]></replace>
+  </modification>
+  <modification type="admin" template="node_edit_macros" modification_key="get_original_title_name" description="Display Original Title Name" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:macro id="title" arg-node="!">
+	<xf:textboxrow name="node[title]" value="{$node.title}" label="{{ phrase('title') }}" />
+</xf:macro>]]></find>
+    <replace><![CDATA[<xf:macro id="title" arg-node="!">
+	<xf:textboxrow name="node[title]" value="{$node.original_title}" label="{{ phrase('title') }}" />
+</xf:macro>
+]]></replace>
+  </modification>
+</template_modifications>

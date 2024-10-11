@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="color_one" version_id="1" version_string="1"><![CDATA[First Colour]]></phrase>
+  <phrase title="color_two" version_id="1" version_string="1"><![CDATA[Color Two]]></phrase>
+  <phrase title="new_node_title" version_id="1" version_string="1"><![CDATA[{title}  <span style="color:{code}"> {color_title}</span>]]></phrase>
+</phrases>
