@@ -1,0 +1,19 @@
+{
+    "legacy_addon_id": "",
+    "title": "[TH] Thread Credits",
+    "description": "",
+    "version_id": 1000396,
+    "version_string": "1.0.3 Patch Level 6",
+    "dev": "ThemeHouse",
+    "dev_url": "https://www.themehouse.com",
+    "faq_url": "",
+    "support_url": "https://www.themehouse.com/help",
+    "extra_urls": [],
+    "require": {
+        "XF": [
+            2020010,
+            "XenForo 2.2.0+"
+        ]
+    },
+    "icon": "icon.jpg"
+}

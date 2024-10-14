@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="admin" title="thtc_credit_package_edit" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[<xf:title>
+	<xf:if is="$creditPackage.isInsert()">
+		{{ phrase('thtc_add_credit_package') }}
+		<xf:else />
+		{{ phrase('thtc_edit_credit_package:') }} {$creditPackage.title}
+	</xf:if>
+</xf:title>
+
+<xf:form ajax="1" class="block" action="{{ link('thtc-credit-package/save', $creditPackage) }}">
+	<div class="block-container">
+		<div class="block-body">
+		<xf:textboxrow name="title" value="{$creditPackage.title}" maxlength="{{ max_length($creditPackage, 'title') }}"
+				label="{{ phrase('title') }}" />
+
+			<xf:textarearow name="description" value="{$creditPackage.description}" autosize="true"
+				label="{{ phrase('description') }}"
+				hint="{{ phrase('you_may_use_html') }}" />
+
+			<xf:macro template="display_order_macros" name="row"
+				arg-value="{{ $creditPackage.display_order ?: 1 }}" />
+
+			<xf:formrow rowtype="input"
+				label="{{ phrase('cost') }}">
+
+				<div class="inputGroup">
+					<xf:textbox name="cost_amount" value="{{ $creditPackage.cost_amount ?: 5 }}" style="width: 120px" />
+					<span class="inputGroup-splitter"></span>
+					<xf:macro template="public:currency_macros" name="currency_list"
+						arg-value="{{ $creditPackage.cost_currency ?: 'USD' }}"
+						arg-class="input--autoSize" />
+				</div>
+
+				<div class="formRow-explain">{{ phrase('cost_currency_explain') }}</div>
+			</xf:formrow>
+			
+			<xf:numberboxrow name="credits" label="{{ phrase('thtc_credits') }}" min="1" step="1" value="{$creditPackage.credits}" />
+
+			<xf:radiorow name="length_type" label="{{ phrase('thtc_expire_after') }}">
+				<xf:option value="permanent" selected="$creditPackage.length_unit == ''">{{ phrase('permanent') }}</xf:option>
+				<xf:option value="timed" selected="$creditPackage.length_unit != ''" label="{{ phrase('for_length:') }}">
+					<xf:dependent>
+						<div class="inputGroup">
+							<xf:numberbox name="length_amount" value="{{ $creditPackage.length_amount ?: 1 }}" min="1" />
+							<span class="inputGroup-splitter"></span>
+							<xf:select name="length_unit" value="{{ ($creditPackage.length_unit == 'permanent' OR !$creditPackage.length_amount) ? 'months' : $upgrade.length_unit }}" class="input--inline">
+								<xf:option value="day">{{ phrase('days') }}</xf:option>
+								<xf:option value="month">{{ phrase('months') }}</xf:option>
+								<xf:option value="year">{{ phrase('years') }}</xf:option>
+							</xf:select>
+						</div>
+
+					</xf:dependent>
+				</xf:option>
+			</xf:radiorow>
+
+			<xf:checkboxrow name="payment_profile_ids" value="{$creditPackage.payment_profile_ids}"
+				label="{{ phrase('payment_profile') }}">
+
+				<xf:foreach loop="$profiles" key="$profileId" value="$profile">
+					<xf:option value="{$profileId}" label="{{ $profile.Provider.title !== $profile.title ? $profile.Provider.title . ' - ' . $profile.title : $profile.Provider.title }}" />
+				</xf:foreach>
+			</xf:checkboxrow>
+
+			<xf:checkboxrow name="extra_group_ids" value="{$creditPackage.extra_group_ids}" listclass="listColumns"
+				label="{{ phrase('additional_user_groups') }}"
+				explain="{{ phrase('additional_user_groups_explain') }}">
+				<xf:options source="$userGroups" />
+			</xf:checkboxrow>
+
+			<xf:checkboxrow>
+				<xf:option name="can_purchase" selected="$creditPackage.can_purchase">{{ phrase('can_be_purchased') }}</xf:option>
+			</xf:checkboxrow>
+		</div>
+		
+		<xf:submitrow icon="save" />
+	</div>
+</xf:form>]]></template>
+  <template type="admin" title="thtc_credit_package_list" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[<xf:title>
+	{{ phrase('thtc_credit_packages') }}
+</xf:title>
+
+<xf:pageaction>
+	<xf:button icon="add" href="{{ link('thtc-credit-package/add') }}">
+		{{ phrase('thtc_add_credit_package') }}
+	</xf:button>
+</xf:pageaction>
+
+<xf:if is="$creditPackages is not empty">
+	<xf:form action="{{ link('thtc-credit-package/toggle') }}" class="block" ajax="true">
+		<div class="block-container">
+			<div class="block-body">
+				<xf:datalist>
+					<xf:foreach loop="$creditPackages" value="$creditPackage">
+						<xf:datarow
+								label="{$creditPackage.title}"
+								hint="{$creditPackage.cost_phrase} - {{ phrase('thtc_x_credits', {'credits': $creditPackage.credits}) }}"
+								href="{{ link('thtc-credit-package/edit', $creditPackage) }}"
+								delete="{{ link('thtc-credit-package/delete', $creditPackage) }}">
+
+							<xf:toggle name="can_purchase[{$creditPackage.credit_package_id}]" selected="$creditPackage.can_purchase"
+								class="dataList-cell--separated" submit="true"
+								tooltip="{{ phrase('enable_disable_x', {'title': $upgrade.title}) }}"/>
+
+							<xf:popup class="dataList-cell--action">
+								<div class="menu" data-menu="menu" aria-hidden="true">
+									<div class="menu-content">
+										<h3 class="menu-header">{{ phrase('actions') }}</h3>
+										<a href="{{ link('thtc-credit-package/purchase-log', $creditPackage) }}" class="menu-linkRow">{{ phrase('thtc_purchase_log') }}</a>
+										<a href="{{ link('thtc-credit-package/manual', $creditPackage) }}" class="menu-linkRow">{{ phrase('thtc_manually_give_to_user') }}</a>
+									</div>
+								</div>
+							</xf:popup>
+
+						</xf:datarow>
+					</xf:foreach>
+				</xf:datalist>
+			</div>
+			<div class="block-footer">
+				<span class="block-footer-counter">{{ display_totals($creditPackages) }}</span>
+			</div>
+		</div>
+	</xf:form>
+<xf:else />
+	<div class="blockMessage">{{ phrase('no_items_have_been_created_yet') }}</div>
+</xf:if>]]></template>
+  <template type="admin" title="thtc_credit_package_manual" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[<xf:title>{{ phrase('thtc_manually_give_credit_package_to_user') }}</xf:title>
+
+<xf:form action="{{ link('thtc-credit-package/manual', $creditPackage) }}" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:textboxrow name="username" ac="single"
+				label="{{ phrase('user_name') }}" />
+
+			<xf:formrow label="{{ phrase('thtc_credit_package') }}">{$creditPackage.title}</xf:formrow>
+
+			<xf:radiorow name="end_type"
+				label="{{ phrase('thtc_credits_expire') }}">
+
+				<xf:option value="permanent" selected="!{$endDate}">{{ phrase('never') }}</xf:option>
+				<xf:option value="date" selected="{$endDate}" label="{{ phrase('date:') }}">
+					<xf:dateinput name="end_date" value="{{ $endDate ? date($endDate, 'picker') : date($xf.time, 'picker') }}" />
+				</xf:option>
+			</xf:radiorow>
+		</div>
+		<xf:submitrow icon="save" />
+	</div>
+</xf:form>]]></template>
+  <template type="admin" title="thtc_credit_package_purchase_log" version_id="1000391" version_string="1.0.3 Patch Level 1"><![CDATA[<xf:title>
+	{{ phrase('thtc_credit_package_purchase_log:') }} {$creditPackage.title}
+</xf:title>
+
+<xf:breadcrumb href="{{ link('thtc-credit-package/edit', $creditPackage) }}">{$creditPackage.title}</xf:breadcrumb>
+
+<xf:if is="$purchases is not empty">
+	<div class="block">
+		<div class="block-container">
+			<div class="block-body">
+				<xf:datalist>
+					<xf:foreach loop="$purchases" value="$purchase">
+						<xf:set var="$purchaseRequest" value="{$purchase.PurchaseRequest}" />
+						<xf:datarow>
+							<xf:cell class="dataList-cell--min dataList-cell--image dataList-cell--imageSmall">
+								<xf:avatar user="$purchase.User" size="xs" />
+							</xf:cell>
+							<xf:main href="{{ link('users/edit', $purchase.User) }}">
+								<xf:label><xf:username user="$purchase.User" rich="true" notooltip="true" href="" /></xf:label>
+								<xf:hint>
+									<ul class="listInline listInline--bullet" style="display: inline-block">
+										<li>{{ $purchaseRequest ? ($purchaseRequest.PaymentProfile.title ?: phrase('unknown_payment_profile')) : phrase('thtc_manually_granted') }}</li>
+										<li><xf:date time="{$purchase.purchased_at}" /></li>
+									</ul>
+								</xf:hint>
+							</xf:main>
+						</xf:datarow>
+					</xf:foreach>
+				</xf:datalist>
+			</div>
+			<div class="block-footer">
+				<span class="block-footer-counter">{{ display_totals($purchases, $total) }}</span>
+			</div>
+		</div>
+		<xf:pagenav page="{$page}" perpage="{$perPage}" total="{$total}"
+			link="thtc-credit-package/purchase-log" data="{$creditPackage}" params="{$linkParams}"
+			wrapperclass="block-outer block-outer--after" />
+	</div>
+<xf:else />
+	<div class="blockMessage">{{ phrase('no_entries_have_been_logged') }}</div>
+</xf:if>]]></template>
+  <template type="public" title="alert_user_thtc_purchase" version_id="1000192" version_string="1.0.1 Patch Level 2"><![CDATA[{{ phrase('thtc_you_received_x_credits_for_your_thread_y', {
+	'credits': $extra.credits,
+	'threadTitle': $extra.thread_title,
+	'threadLink': $extra.thread_url
+})}}]]></template>
+  <template type="public" title="thtc_account_credit_package_purchase" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[<xf:title>{{ phrase('thanks_for_your_purchase') }}</xf:title>
+
+<xf:wrap template="account_wrapper" />
+
+<div class="blockMessage">{{ phrase('thtc_thank_you_for_purchasing_this_credit_package') }}</div>]]></template>
+  <template type="public" title="thtc_account_credit_packages" version_id="1000270" version_string="1.0.2"><![CDATA[<xf:title>
+	{{ phrase('thtc_credit_packages') }}
+</xf:title>
+
+<xf:set var="$pageSelected" value="thtc_credit_packages" />
+<xf:wrap template="account_wrapper" />
+
+<div class="blockMessage blockMessage--important blockMessage--iconic">
+	{{ phrase('Your remaining credits:') }} <strong>{$xf.visitor.thtc_credits_cache}</strong>
+</div>
+
+<xf:if is="$available is not empty">
+	<div class="block">
+		<div class="block-container">
+			<h2 class="block-header">{{ phrase('thtc_available_credit_packages') }}</h2>
+
+			<div class="block-body">
+				<xf:foreach loop="$available" value="$creditPackage">
+					<xf:formrow rowtype="button"
+								label="{$creditPackage.title}"
+								hint="{{ phrase('thtc_x_credits', {'credits': $creditPackage.credits}) }} - {$creditPackage.cost_phrase}"
+								explain="{$creditPackage.description|raw}">
+
+						<xf:form action="{{ link('purchase', $creditPackage, {'credit_package_id': $creditPackage.credit_package_id}) }}" ajax="true" data-xf-init="payment-provider-container">
+							<div class="inputGroup">
+								<xf:if is="{{ count($creditPackage.payment_profile_ids) > 1 }}">
+									<xf:select name="payment_profile_id">
+										<xf:option>{{ phrase('(choose_payment_method)') }}</xf:option>
+										<xf:foreach loop="$creditPackage.payment_profile_ids" value="$profileId">
+											<xf:if is="{$profiles.{$profileId}}">
+												<xf:option value="{$profileId}">{$profiles.{$profileId}}</xf:option>
+											</xf:if>
+										</xf:foreach>
+									</xf:select>
+
+									<span class="inputGroup-splitter"></span>
+
+									<xf:button type="submit" icon="purchase" />
+									<xf:else />
+									<xf:button type="submit" icon="purchase" />
+
+									<xf:hiddenval name="payment_profile_id">{$creditPackage.payment_profile_ids|first}</xf:hiddenval>
+								</xf:if>
+							</div>
+							<div class="js-paymentProviderReply-credit_package{$creditPackage.credit_package_id}"></div>
+						</xf:form>
+
+					</xf:formrow>
+				</xf:foreach>
+
+				<xf:if is="$xf.options.thtc_newPostNodeId && $xf.options.thtc_newThreadCreditPackage">
+					<hr class="formRowSep">
+
+					<xf:formrow rowtype="button"
+								label="{{ phrase('thtc_post_a_thread')}}"
+								explain="{{ phrase('thtc_create_a_thread_explain') }}">
+						<xf:button type="submit" href="{{ link('forums/post-thread', {'node_id': $xf.options.thtc_newPostNodeId}) }}" icon="write">
+							{{ phrase('post_thread') }}
+						</xf:button>
+					</xf:formrow>
+				</xf:if>
+			</div>
+		</div>
+	</div>
+</xf:if>
+
+<xf:if is="$purchases is not empty">
+	<div class="block">
+		<div class="block-container">
+			<h2 class="block-header">{{ phrase('thtc_purchased_credit_packages') }}</h2>
+			<div class="block-body">
+				<xf:datalist>
+					<xf:datarow rowtype="subsection">
+						<xf:cell>
+							{{ phrase('thtc_credit_package') }}
+						</xf:cell>
+						<xf:cell>
+							{{ phrase('thtc_purchase_date') }}
+						</xf:cell>
+						<xf:cell>
+							{{ phrase('thtc_remaining_credits') }}
+						</xf:cell>
+						<xf:cell>
+							{{ phrase('thtc_expiration_date') }}
+						</xf:cell>
+					</xf:datarow>
+					<xf:foreach loop="$purchases" value="$purchase">
+						<xf:set var="$purchaseRequest" value="{$purchase.PurchaseRequest}" />
+						<xf:datarow>
+							<xf:cell>{{ $purchase.CreditPackage.title ?: 'N/A' }}</xf:cell>
+							<xf:cell>
+								<xf:date time="{$purchase.purchased_at}" />
+							</xf:cell>
+							<xf:cell>
+								{$purchase.remaining_credits} / {$purchase.total_credits}
+							</xf:cell>
+							<xf:cell>
+								<xf:if is="$purchase.expires_at">
+									<xf:if is="$purchase.expires_at < $xf.time">
+										<xf:date time="{$purchase.expires_at}" />
+										<xf:else />
+										{{ phrase('thtc_expired') }}
+									</xf:if>
+									<xf:else />
+									{{ phrase('never') }}
+								</xf:if>
+							</xf:cell>
+						</xf:datarow>
+					</xf:foreach>
+				</xf:datalist>
+			</div>
+			<div class="block-footer">
+				<span class="block-footer-counter">{{ display_totals($purchases, $total) }}</span>
+			</div>
+		</div>
+		<xf:pagenav page="{$page}" perpage="{$perPage}" total="{$total}"
+					link="account/thtc-credit-packages" params="{$linkParams}"
+					wrapperclass="block-outer block-outer--after" />
+	</div>
+</xf:if>]]></template>
+  <template type="public" title="thtc_thread_pay" version_id="1000012" version_string="1.0.0 Alpha 2"><![CDATA[<xf:title>
+	{{ phrase('thtc_purchase_access_to:') }} {$thread.title}
+</xf:title>
+
+<xf:form class="block" action="{{ link('threads/thtc-pay', $thread, {'page': $page}) }}">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:inforow>
+				{{ phrase('thtc_thread_pay_info_row', {
+				'title': $thread.title,
+				'remaining': $xf.visitor.thtc_credits_cache
+				}) }}
+			</xf:inforow>
+		</div>
+
+		<xf:submitrow icon="purchase" />
+	</div>
+</xf:form>]]></template>
+  <template type="public" title="thtc_thread_paywall" version_id="1000291" version_string="1.0.2 Patch Level 1"><![CDATA[<xf:title>
+	{{ phrase('thtc_gain_access') }}
+</xf:title>
+
+<div class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:formrow>
+				{{ phrase('thtc_you_do_not_have_sufficient_credits_to_view_thread_x', {'title': $thread.title}) }}
+			</xf:formrow>
+
+			<h3 class="block-formSectionHeader">
+				{{ phrase('user_upgrades') }}
+			</h3>
+			<xf:foreach loop="$subscriptions" value="$upgrade">
+				<xf:formrow rowtype="button"
+							label="{$upgrade.title}"
+							hint="{$upgrade.cost_phrase}"
+							explain="{$upgrade.description|raw}">
+
+					<xf:form action="{{ link('purchase', $upgrade, {'user_upgrade_id': $upgrade.user_upgrade_id}) }}" ajax="true" data-xf-init="payment-provider-container">
+						<div class="inputGroup">
+							<xf:if is="{{ count($upgrade.payment_profile_ids) > 1 }}">
+								<xf:select name="payment_profile_id">
+									<xf:option>{{ phrase('(choose_payment_method)') }}</xf:option>
+									<xf:foreach loop="$upgrade.payment_profile_ids" value="$profileId">
+										<xf:if is="{$profiles.{$profileId}}">
+											<xf:option value="{$profileId}">{$profiles.{$profileId}}</xf:option>
+										</xf:if>
+									</xf:foreach>
+								</xf:select>
+
+								<span class="inputGroup-splitter"></span>
+
+								<xf:button type="submit" icon="purchase" />
+								<xf:else />
+								<xf:button type="submit" icon="purchase" />
+
+								<xf:hiddenval name="payment_profile_id">{$upgrade.payment_profile_ids|first}</xf:hiddenval>
+							</xf:if>
+						</div>
+						<div class="js-paymentProviderReply-user_upgrade{$upgrade.user_upgrade_id}"></div>
+					</xf:form>
+
+				</xf:formrow>
+			</xf:foreach>
+
+			<h3 class="block-formSectionHeader">
+				{{ phrase('thtc_credit_packages') }}
+			</h3>
+			<xf:foreach loop="$creditPackages" value="$creditPackage">
+				<xf:formrow rowtype="button"
+							label="{$creditPackage.title}"
+							hint="{{ phrase('thtc_x_credits', {'credits': $creditPackage.credits}) }} - {$creditPackage.cost_phrase}"
+							explain="{$creditPackage.description|raw}">
+
+					<xf:form action="{{ link('purchase', $creditPackage, {'credit_package_id': $creditPackage.credit_package_id}) }}" ajax="true" data-xf-init="payment-provider-container">
+						<div class="inputGroup">
+							<xf:if is="{{ count($creditPackage.payment_profile_ids) > 1 }}">
+								<xf:select name="payment_profile_id">
+									<xf:option>{{ phrase('(choose_payment_method)') }}</xf:option>
+									<xf:foreach loop="$creditPackage.payment_profile_ids" value="$profileId">
+										<xf:if is="{$profiles.{$profileId}}">
+											<xf:option value="{$profileId}">{$profiles.{$profileId}}</xf:option>
+										</xf:if>
+									</xf:foreach>
+								</xf:select>
+
+								<span class="inputGroup-splitter"></span>
+
+								<xf:button type="submit" icon="purchase" />
+								<xf:else />
+								<xf:button type="submit" icon="purchase" />
+
+								<xf:hiddenval name="payment_profile_id">{$creditPackage.payment_profile_ids|first}</xf:hiddenval>
+							</xf:if>
+						</div>
+						<div class="js-paymentProviderReply-credit_package{$creditPackage.credit_package_id}"></div>
+					</xf:form>
+
+				</xf:formrow>
+			</xf:foreach>
+
+			<xf:if is="$xf.options.thtc_newPostNodeId && $xf.options.thtc_newThreadCreditPackage">
+
+				<h3 class="block-formSectionHeader">
+					{{ phrase('thtc_post_a_thread') }}
+				</h3>
+
+				<xf:formrow rowtype="button"
+							label="{{ phrase('thtc_post_a_thread')}}"
+							explain="{{ phrase('thtc_create_a_thread_explain') }}">
+					<xf:button type="submit" href="{{ link('forums/post-thread', {'node_id': $xf.options.thtc_newPostNodeId}) }}" icon="write">
+						{{ phrase('post_thread') }}
+					</xf:button>
+				</xf:formrow>
+			</xf:if>
+		</div>
+	</div>
+</div>]]></template>
+</templates>

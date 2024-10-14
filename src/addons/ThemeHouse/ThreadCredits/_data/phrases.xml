@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="admin_navigation.thtc_credit_package" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Credit packages]]></phrase>
+  <phrase title="cron_entry.thtc_expireCredits" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[[TH] Thread Credits: Expire Credits]]></phrase>
+  <phrase title="option.thtc_newPostNodeId" version_id="1000070" version_string="1.0.0"><![CDATA[New Threads Forum]]></phrase>
+  <phrase title="option.thtc_newThreadCreditPackage" version_id="1000192" version_string="1.0.1 Patch Level 2"><![CDATA[New Thread Credit Package]]></phrase>
+  <phrase title="option.thtc_nodeIds" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Active Forums]]></phrase>
+  <phrase title="option.thtc_payOnce" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Pay once per thread]]></phrase>
+  <phrase title="option_explain.thtc_newPostNodeId" version_id="1000070" version_string="1.0.0"><![CDATA[]]></phrase>
+  <phrase title="option_explain.thtc_newThreadCreditPackage" version_id="1000192" version_string="1.0.1 Patch Level 2"><![CDATA[If defined, users will get the selected credit package granted when creating a new thread in the selected forum.]]></phrase>
+  <phrase title="option_explain.thtc_nodeIds" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[]]></phrase>
+  <phrase title="option_explain.thtc_payOnce" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[If enabled, users need to pay only once per thread, otherwise they need to pay for every single page view.]]></phrase>
+  <phrase title="option_group.ththreadcredits" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[[TH] Thread Credits]]></phrase>
+  <phrase title="option_group_description.ththreadcredits" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Options for the [TH] Thread Credits add-on.]]></phrase>
+  <phrase title="permission.forum_thtc_bypass_credits" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Bypass thread credits prompt]]></phrase>
+  <phrase title="permission_interface.thtc" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[[TH] Thread Credits permissions]]></phrase>
+  <phrase title="thtc_add_credit_package" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Add credit package]]></phrase>
+  <phrase title="thtc_available_credit_packages" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Available credit packages]]></phrase>
+  <phrase title="thtc_buy_credits" version_id="1000012" version_string="1.0.0 Alpha 2"><![CDATA[Buy credits]]></phrase>
+  <phrase title="thtc_create_a_thread_explain" version_id="1000170" version_string="1.0.1"><![CDATA[Submit a thread for review. If it's approved, you'll receive credits in return.]]></phrase>
+  <phrase title="thtc_credit_package" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Credit package]]></phrase>
+  <phrase title="thtc_credit_package_purchase_log" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Purchase log]]></phrase>
+  <phrase title="thtc_credit_packages" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Credit packages]]></phrase>
+  <phrase title="thtc_credits" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Credits]]></phrase>
+  <phrase title="thtc_credits_expire" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Credits expire]]></phrase>
+  <phrase title="thtc_edit_credit_package" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Edit credit package]]></phrase>
+  <phrase title="thtc_expiration_date" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Expiration date]]></phrase>
+  <phrase title="thtc_expire_after" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Expire after]]></phrase>
+  <phrase title="thtc_expired" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Expired]]></phrase>
+  <phrase title="thtc_expiring_credit_purchases" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Expiring credit purchases]]></phrase>
+  <phrase title="thtc_gain_access" version_id="1000291" version_string="1.0.2 Patch Level 1"><![CDATA[Gain access]]></phrase>
+  <phrase title="thtc_manually_give_credit_package_to_user" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Manually give credit package to user]]></phrase>
+  <phrase title="thtc_manually_give_to_user" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Manually give to user]]></phrase>
+  <phrase title="thtc_manually_granted" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Manually granted]]></phrase>
+  <phrase title="thtc_post_a_thread" version_id="1000170" version_string="1.0.1"><![CDATA[Post on the forum]]></phrase>
+  <phrase title="thtc_purchase_access_to" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Purchase access to]]></phrase>
+  <phrase title="thtc_purchase_date" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Purchase date]]></phrase>
+  <phrase title="thtc_purchase_log" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Purchase log]]></phrase>
+  <phrase title="thtc_purchased_credit_packages" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Purchased credit packages]]></phrase>
+  <phrase title="thtc_remaining_credits" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Remaining credits]]></phrase>
+  <phrase title="thtc_revoke" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Expire]]></phrase>
+  <phrase title="thtc_thank_you_for_purchasing_this_credit_package" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Thank you for purchasing this credit package.]]></phrase>
+  <phrase title="thtc_thread_pay_info_row" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[You are about to purchase access to the thread "{title}" for one credit. You currently have {remaining} credits available.]]></phrase>
+  <phrase title="thtc_x_credits" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[{credits} credits]]></phrase>
+  <phrase title="thtc_you_do_not_have_sufficient_credits_to_view_thread_x" version_id="1000291" version_string="1.0.2 Patch Level 1"><![CDATA[You do not have sufficient credits to view '{title}'. You can do one of the following to view this thread:]]></phrase>
+  <phrase title="thtc_you_received_x_credits_for_your_thread_y" version_id="1000192" version_string="1.0.1 Patch Level 2"><![CDATA[You received {credits} credits for your thread <a href="{threadLink}">{threadTitle}</a>.]]></phrase>
+  <phrase title="thtc_your_remaining_credits" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Your remaining credits]]></phrase>
+</phrases>

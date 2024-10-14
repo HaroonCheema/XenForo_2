@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<routes>
+  <route route_type="admin" route_prefix="thtc-credit-package" format=":int&lt;credit_package_id,title&gt;" controller="ThemeHouse\ThreadCredits:CreditPackage" context="thtc_credit_package"/>
+</routes>

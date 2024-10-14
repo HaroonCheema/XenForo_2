@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="PAGE_CONTAINER" modification_key="thtc_page_container_credits" description="Add credits next to visitor menu" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<a href="{{ link('account') }}"]]></find>
+    <replace><![CDATA[<a href="{{ link('account/thtc-credit-packages') }}"
+   data-badge="{$xf.visitor.thtc_credits_cache|number}"
+  class="p-navgroup-link p-navgroup-link--iconic p-navgroup-link--threadCredits badgeContainer badgeContainer--highlighted">
+	<xf:fa icon="fa-coins" />
+	{{ phrase('thtc_credits', {'credits': {$xf.visitor.thtc_credits_cache|number}})}}
+</a>
+$0]]></replace>
+  </modification>
+  <modification type="public" template="account_visitor_menu" modification_key="thtc_account_visitor_menu" description="Add credit packages link to visitor menu" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[#account\/upgrades.*<\/xf:if>#sU]]></find>
+    <replace><![CDATA[$0
+<li>
+	<a href="{{ link('account/thtc-credit-packages') }}" class="menu-linkRow">
+		{{ phrase('thtc_credit_packages') }}
+	</a>
+</li>]]></replace>
+  </modification>
+  <modification type="public" template="account_visitor_menu" modification_key="thtc_account_visitor_menu_credits" description="Add credits to visitor menu" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<!--[XF:stats_pairs:above_messages]-->]]></find>
+    <replace><![CDATA[<dl class="pairs pairs--justified fauxBlockLink">
+	<dt>{{ phrase('thtc_credits') }}</dt>
+	<dd>
+		<a href="{{ link('account/thtc-credit-packages') }}" class="fauxBlockLink-linkRow u-concealed">
+			{$xf.visitor.thtc_credits_cache|number}
+		</a>
+	</dd>
+</dl>
+$0]]></replace>
+  </modification>
+  <modification type="public" template="account_wrapper" modification_key="thtc_account_wrapper" description="Add credit package tab to account wrapper" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[#account\/upgrades.*<\/xf:if>#sU]]></find>
+    <replace><![CDATA[$0
+<a class="blockLink {{ $pageSelected == 'thtc_credit_packages' ? 'is-selected' : '' }}" href="{{ link('account/thtc-credit-packages') }}">
+	{{ phrase('thtc_credit_packages') }}
+</a>]]></replace>
+  </modification>
+  <modification type="admin" template="user_extra" modification_key="thtc_user_extra_credit_packages" description="Add purchased credit package log to user edit" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<h3 class="block-minorHeader">{{ phrase('connected_accounts') }}]]></find>
+    <replace><![CDATA[<h3 class="block-minorHeader">{{ phrase('thtc_credit_packages') }}</h3>
+<div class="block-body">
+	<xf:if is="$thtcCreditPackages is not empty">
+		<xf:datalist data-xf-init="responsive-data-list">
+			<xf:foreach loop="$thtcCreditPackages" value="$purchase">
+				<xf:set var="$purchaseRequest" value="{$purchase.PurchaseRequest}" />
+				<xf:datarow>
+					<xf:main>
+						<xf:label>{$purchase.CreditPackage.title}</xf:label>
+						<xf:hint>
+							<ul class="listInline listInline--bullet" style="display: inline-block">
+								<li>{{ $purchaseRequest ? ($purchaseRequest.PaymentProfile.title ?: phrase('unknown_payment_profile')) : phrase('thtc_manually_granted') }}</li>
+								<li><xf:date time="{$purchase.purchased_at}" /></li>
+							</ul>
+						</xf:hint>
+					</xf:main>
+				</xf:datarow>
+			</xf:foreach>
+		</xf:datalist>
+		<xf:else />
+		<div class="block-row">{{ phrase('none') }}</div>
+	</xf:if>
+</div>
+
+
+$0]]></replace>
+  </modification>
+</template_modifications>
