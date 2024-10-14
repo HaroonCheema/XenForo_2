@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: c25bac585c10be0aea48ce9d49a4c427
+// FROM HASH: 18a7af3e7abf8acbcb4db1a89eefd1fb
 return array(
 'extensions' => array('thread_list' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -123,7 +123,7 @@ return array(
 		if ($__templater->isTraversable($__vars['featuredThreads'])) {
 			foreach ($__vars['featuredThreads'] AS $__vars['thread']) {
 				$__finalCompiled .= '
-						<div class="itemList-item itemList-item--slider" style="overflow: unset !important; overflow-x: hidden !important;">
+						<div class="itemList-item itemList-item--slider" style="overflow: unset !important;">
 							' . $__templater->callMacro(null, ($__vars['templateOverrides']['thread_list_macro'] ?: 'fs_latest_thread_list_macros::item'), $__templater->combineMacroArgumentAttributes($__vars['templateOverrides']['thread_list_macro_args'], array(
 					'thread' => $__vars['thread'],
 				)), $__vars) . '

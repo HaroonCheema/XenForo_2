@@ -801,6 +801,32 @@
 
 	</div>
 
+	<div class="hiddenDivsss" style="background-color: #000;">
+		
+				<hr class="formRowSep" style="    margin: 10px 0px;;"/>
+
+				<xf:if is="$xf.options.fs_latest_thread_custom_field_game">
+					<spam>{$thread.custom_fields.{$xf.options.fs_latest_thread_custom_field_game}}</spam>
+					<br/>
+				</xf:if>
+
+				<ul class="structItem-parts">
+					<xf:if is="$xf.options.enableTagging AND ($thread.canEditTags() OR $thread.tags)">
+						<xf:css src="avForumsTagEss_thread_view_grouped_tags.less" />
+
+						<xf:if is="$thread.GroupedTags">
+							<xf:foreach loop="$thread.GroupedTags" key="$categoryId" value="$groupedTagsData">
+								<li class="groupedTags">
+									<xf:foreach loop="$groupedTagsData.tags" value="$groupedTag">
+										<a href="{{ link('tags', $groupedTag) }}" data-xf-init="preview-tooltip" data-preview-url="{{ link('tags/preview', $groupedTag) }}" class="tagItem" dir="auto">{$groupedTag.tag}</a>
+									</xf:foreach>
+								</li>
+							</xf:foreach>
+						</xf:if>
+					</xf:if>
+				</ul>
+			</div>
+	
 	<script>
 		// Function to initialize sliders
 		function initializeSliders() {

@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: a420f1d5411ca9a3a6feaf6595dcf96e
+// FROM HASH: 754017fc679bab5cab865ff93515617c
 return array(
 'macros' => array('item' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -1260,6 +1260,58 @@ return array(
 
 	</div>
 
+	<div class="hiddenDivsss" style="background-color: #000;">
+		
+				<hr class="formRowSep" style="    margin: 10px 0px;;"/>
+
+				';
+	if ($__vars['xf']['options']['fs_latest_thread_custom_field_game']) {
+		$__finalCompiled .= '
+					<spam>' . $__templater->escape($__vars['thread']['custom_fields'][$__vars['xf']['options']['fs_latest_thread_custom_field_game']]) . '</spam>
+					<br/>
+				';
+	}
+	$__finalCompiled .= '
+
+				<ul class="structItem-parts">
+					';
+	if ($__vars['xf']['options']['enableTagging'] AND ($__templater->method($__vars['thread'], 'canEditTags', array()) OR $__vars['thread']['tags'])) {
+		$__finalCompiled .= '
+						';
+		$__templater->includeCss('avForumsTagEss_thread_view_grouped_tags.less');
+		$__finalCompiled .= '
+
+						';
+		if ($__vars['thread']['GroupedTags']) {
+			$__finalCompiled .= '
+							';
+			if ($__templater->isTraversable($__vars['thread']['GroupedTags'])) {
+				foreach ($__vars['thread']['GroupedTags'] AS $__vars['categoryId'] => $__vars['groupedTagsData']) {
+					$__finalCompiled .= '
+								<li class="groupedTags">
+									';
+					if ($__templater->isTraversable($__vars['groupedTagsData']['tags'])) {
+						foreach ($__vars['groupedTagsData']['tags'] AS $__vars['groupedTag']) {
+							$__finalCompiled .= '
+										<a href="' . $__templater->func('link', array('tags', $__vars['groupedTag'], ), true) . '" data-xf-init="preview-tooltip" data-preview-url="' . $__templater->func('link', array('tags/preview', $__vars['groupedTag'], ), true) . '" class="tagItem" dir="auto">' . $__templater->escape($__vars['groupedTag']['tag']) . '</a>
+									';
+						}
+					}
+					$__finalCompiled .= '
+								</li>
+							';
+				}
+			}
+			$__finalCompiled .= '
+						';
+		}
+		$__finalCompiled .= '
+					';
+	}
+	$__finalCompiled .= '
+				</ul>
+			</div>
+	
 	<script>
 		// Function to initialize sliders
 		function initializeSliders() {

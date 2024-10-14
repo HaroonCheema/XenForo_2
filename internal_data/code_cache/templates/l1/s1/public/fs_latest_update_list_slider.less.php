@@ -1,11 +1,12 @@
 <?php
-// FROM HASH: 808f2db704e707402ac6ed98e9669edb
+// FROM HASH: 529f310105603fd99283ef2876657986
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
 	$__finalCompiled = '';
 	$__finalCompiled .= '.lSSlideOuter {
-    overflow: hidden;
+    overflow-y: unset;
+    overflow-x: clip;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -18,12 +19,12 @@ return array(
     display: table;
 }
 .lightSlider {
-    overflow: hidden;
+    overflow: unset;
     margin: 0;
 }
 .lSSlideWrapper {
     max-width: 100%;
-    overflow: hidden;
+    overflow: unset;
     position: relative;
 }
 .lSSlideWrapper > .lightSlider:after {

@@ -27,7 +27,7 @@
 					 data-xf-item-slider='{"item":{$xf.options.fs_latest_update_on_slider},"itemWide":3,"itemMedium":2,"itemNarrow":1,"auto":false,"loop":true}'>
 
 					<xf:foreach loop="$featuredThreads" value="$thread">
-						<div class="itemList-item itemList-item--slider" style="overflow: unset !important; overflow-x: hidden !important;">
+						<div class="itemList-item itemList-item--slider" style="overflow: unset !important;">
 							<xf:macro name="{{ $templateOverrides.thread_list_macro ?: 'fs_latest_thread_list_macros::item' }}"
 									  arg-thread="{$thread}"
 
