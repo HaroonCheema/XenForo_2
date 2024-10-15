@@ -11,8 +11,18 @@ class Thread extends XFCP_Thread
         $structure = parent::getStructure($structure);
 
         $structure->columns['is_featured'] =  ['type' => self::BOOL, 'default' => false];
+        $structure->columns['latest_rating_avg'] =  ['type' => self::FLOAT, 'default' => 0];
 
         return $structure;
+    }
+
+    protected function _postSave()
+    {
+        if ($this->isUpdate() && $this->isChanged('brivium_rating_sum')) {
+            $this->fastUpdate('latest_rating_avg', $this->brivium_rating_avg);
+        }
+
+        return parent::_postSave();
     }
 
     public function getViewCountKM()
@@ -21,20 +31,15 @@ class Thread extends XFCP_Thread
         $precision = 1;
 
         if ($number >= 1000000000) {
-            // Billions
             $shortened = number_format($number / 1000000000, $precision) . 'B';
         } elseif ($number >= 1000000) {
-            // Millions
             $shortened = number_format($number / 1000000, $precision) . 'M';
         } elseif ($number >= 1000) {
-            // Thousands
             $shortened = number_format($number / 1000, $precision) . 'K';
         } else {
-            // Less than 1000
             $shortened = $number;
         }
 
-        // Remove unnecessary decimal places (e.g., "2.0K" -> "2K")
         $shortened = str_replace('.0', '', $shortened);
 
         return $shortened;
@@ -42,13 +47,10 @@ class Thread extends XFCP_Thread
 
     public function getTimeStampThread()
     {
-        // Get current time
         $now = time();
 
-        // Calculate the difference in seconds
-        $diff = $now - $this->post_date;
+        $diff = $now - $this->last_post_date;
 
-        // Convert the difference into a readable format
         if ($diff < 60) {
             return "just now";
         } elseif ($diff < 3600) {

@@ -1,4 +1,10 @@
 {
+    "cron_entry.fs_latest_update_rating.txt": {
+        "global_cache": false,
+        "version_id": 1000300,
+        "version_string": "1.0.3 Alpha",
+        "hash": "f8e9f9a0fa7385588389c18ecbeb6d04"
+    },
     "fs_featured_thread.txt": {
         "global_cache": false,
         "version_id": 1000100,
@@ -53,6 +59,12 @@
         "version_string": "1.0.1 Alpha",
         "hash": "960b44c579bc2f6818d2daaf9e4c16f0"
     },
+    "fs_latest_update_rating_sort.txt": {
+        "global_cache": false,
+        "version_id": 1000300,
+        "version_string": "1.0.3 Alpha",
+        "hash": "dda9c06f33071c9b6fc237ee164109d8"
+    },
     "fs_latest_update_small.txt": {
         "global_cache": false,
         "version_id": 1000100,
@@ -64,6 +76,12 @@
         "version_id": 1000100,
         "version_string": "1.0.1 Alpha",
         "hash": "93dfce43595550fd221827b88e89a351"
+    },
+    "fs_status_engine.txt": {
+        "global_cache": false,
+        "version_id": 1000300,
+        "version_string": "1.0.3 Alpha",
+        "hash": "da18476f1b922ab429dc8fc3d84a8a75"
     },
     "fs_status_prefix.txt": {
         "global_cache": false,

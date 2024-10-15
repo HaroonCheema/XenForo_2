@@ -1,0 +1,369 @@
+<xf:macro name="google_review_json" arg-thread="!">
+	<script type="application/ld+json">
+	{
+	  "@context": "http://schema.org/",
+	  "@type": "Book",
+	  "name": "{{ prefix('thread', $thread, 'escaped')|escape('json') }}{$thread.title|escape('json')}",
+	  "description": "{{ snippet($thread.FirstPost.message, 0, {'stripBbCode': true})|escape('json') }}",
+	  "aggregateRating": {
+		"@type": "AggregateRating",
+		"ratingValue": "{$thread.brivium_rating_avg}",
+		"bestRating": "5",
+		"ratingCount": "{$thread.brivium_rating_count}"
+	  }
+	}
+	</script>
+</xf:macro>
+
+<xf:macro name="stars" arg-rating="!" arg-class="">
+	<xf:macro template="rating_macros" name="stars"
+			arg-rating="{$rating}"
+			arg-class="bratr-rating {$class}" />
+</xf:macro>
+
+<xf:macro name="stars_text" arg-rating="!" arg-count="{{ null }}" arg-text="{{ null }}" arg-rowClass="" arg-starsClass="">
+	<span class="ratingStarsRow {$rowClass}">
+		<xf:macro template="BRATR_rating_macros" name="stars"
+			arg-rating="{$rating}"
+			arg-class="{$starsClass}" />
+		<span class="ratingStarsRow-text">
+			<xf:if is="$text is not empty">{$text}<xf:else />{{ $count == 1 ? phrase('BRATR_1_vote') : phrase('BRATR_x_votes_plural', {'count': $count|number}) }}</xf:if>
+		</span>
+	</span>
+</xf:macro>
+
+<xf:macro name="thread_view_rating"
+	arg-thread="!"
+	arg-ratingType="pageaction" 
+  	arg-row="{{ true }}"
+	arg-rowLabel="{{ phrase('rating') }}"
+	arg-rowHint=""
+	arg-rowExplain=""
+	arg-name="rating" >
+
+	<xf:set var="$voteContent">
+		<xf:if is="$thread.canViewUserRated()">
+			<div data-href="{{ link('threads/br-user-rated', $thread)|for_attr }}" data-xf-click="overlay" data-xf-init="tooltip" title="{{ phrase('BRATR_members_who_rated_this_thread')|for_attr }}">{{ $thread.brivium_rating_count == 1 ? phrase('BRATR_1_vote') : phrase('BRATR_x_votes_plural', {'count': $thread.brivium_rating_count|number}) }}</div>
+		<xf:else />
+			{{ $thread.brivium_rating_count == 1 ? phrase('BRATR_1_vote') : phrase('BRATR_x_votes_plural', {'count': $thread.brivium_rating_count|number}) }}
+		</xf:if>
+	</xf:set>
+
+	<xf:if is="$ratingType == 'pageaction'">
+		<xf:if is="$thread.canRating() && $xf.options.BRATR_mergeButtonAndDisplay">
+			<xf:macro template="BRATR_rating_macros" name="rating"
+				arg-row="{{ false }}"
+				arg-currentRating="{$thread.brivium_rating_avg}"
+				arg-ratingHref="{{ link('threads/br-rate', $thread) }}"
+				arg-voteContent="{$voteContent}"/>
+		<xf:elseif is="$thread.canDisplayThreadRating()" />
+			<xf:macro template="BRATR_rating_macros" name="stars_text"
+				arg-rating="{$thread.brivium_rating_avg}"
+				arg-count="{$thread.brivium_rating_count}"
+				arg-text="{$voteContent}" />
+		</xf:if>
+	<xf:elseif is="$thread.canRating() && (!$thread.canDisplayThreadRating() || !$xf.options.BRATR_mergeButtonAndDisplay)" />
+		<xf:macro template="BRATR_rating_macros" name="rating"
+			arg-row="{$row}"
+			arg-ratingHref="{{ link('threads/br-rate', $thread) }}" 
+			arg-rowLabel="{$rowLabel}"
+			arg-rowHint="{$rowHint}"
+			arg-rowExplain="{$rowExplain}"
+			arg-name="{$name}" />
+	</xf:if>
+</xf:macro>
+	
+
+<xf:macro name="rating"
+	arg-row="{{ true }}"
+	arg-rowType="{$rowType}"
+	arg-rowLabel="{{ phrase('rating') }}"
+	arg-rowHint=""
+	arg-rowExplain=""
+	arg-name="rating"
+	arg-currentRating="0"
+	arg-ratingHref=""
+	arg-readOnly="false"
+	arg-deselectable="false"
+	arg-showSelected="true"
+	arg-voteContent="{{ null }}"
+	arg-voteClass="{{ null }}"
+	arg-range="{{ {
+		1: phrase('terrible'),
+		2: phrase('poor'),
+		3: phrase('average'),
+		4: phrase('good'),
+		5: phrase('excellent')
+	} }}">
+
+	<xf:macro template="rating_macros" name="setup" />
+
+	<xf:set var="$inner">
+		<xf:select name="{$name}"
+			class="br-select"
+			data-xf-init="rating"
+			data-initial-rating="{$currentRating}"
+			data-rating-href="{$ratingHref}"
+			data-readonly="{$readOnly}"
+			data-deselectable="{$deselectable}"
+			data-show-selected="{$showSelected}"
+			data-widget-class="bratr-rating"
+			data-vote-content="{{ trim($voteContent) }}"
+			data-vote-class="{$voteClass}">
+			<xf:if is="$deselectable">
+				<xf:option value="" />
+			</xf:if>
+			<xf:foreach loop="$range" key="$value" value="$label">
+				<xf:option value="{$value}">{$label}</xf:option>
+			</xf:foreach>
+		</xf:select>
+	</xf:set>
+
+	<xf:if is="$row">
+		<xf:formrow class="u-jsOnly" rowclass="bratr-row-rating"rowtype="{$rowType}"
+			label="{$rowLabel}"
+			hint="{$rowHint|raw}"
+			explain="{$rowExplain|raw}">
+			{$inner|raw}
+		</xf:formrow>
+	<xf:else />
+		{$inner|raw}
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="review_list" arg-reviews="!" arg-listClass="" arg-isManagement="{{ false }}" arg-linkThread="{{ true }}">
+	<ol class="block-body {$listClass}">
+		<xf:foreach loop="$reviews" value="$review">
+			<li class="block-row block-row--separated{{ $xf.visitor.isIgnoring($review.user_id) ? ' is-ignored' : '' }}" data-author="{{ $review.getUser().username|for_attr }}">
+				<xf:macro template="BRATR_rating_macros" name="review"
+					arg-review="{$review}"
+					arg-user="{$review.getUser($isManagement)}"
+					arg-thread="{$review.Thread}"
+					arg-linkThread="{$linkThread}"/>
+			</li>
+		</xf:foreach>
+	</ol>
+</xf:macro>
+
+<xf:macro name="review" arg-review="!" arg-user="!" arg-thread="!" arg-linkThread="{{ true }}">
+	<xf:css src="message.less" />
+	<xf:css src="structured_list.less" />
+	<xf:if is="{$review.isDelete()}">
+		<xf:macro template="BRATR_rating_macros" name="review_delete"
+			arg-review="{$review}"
+			arg-user="{$user}"
+			arg-thread="{$thread}" />
+	<xf:else />
+		<xf:macro template="BRATR_rating_macros" name="review_public"
+			arg-review="{$review}"
+			arg-user="{$user}"
+			arg-thread="{$thread}"
+			arg-linkThread="{$linkThread}" />
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="review_public" arg-review="!" arg-user="!" arg-thread="!" arg-linkThread="{{ true }}">
+	<div class="message message--post message--review js-review"
+		data-author="{{ $review.User.username ?: $review.username }}"
+		data-content="review-{$review.thread_rating_id}">
+		
+		<span class="u-anchorTarget" id="review-{$review.thread_rating_id}"></span>
+		
+		<div class="contentRow">
+			<div class="contentRow-figure">
+				<xf:avatar user="$user" size="s" notooltip="true" defaultname="{$user.username}"/>
+			</div>
+			<div class="contentRow-main">
+				<div class="contentRow-extra">
+					<xf:macro template="BRATR_rating_macros" name="stars"
+						arg-rating="{$review.rating}" />
+				</div>
+				<h3 class="contentRow-header"><xf:username user="$user" rich="true" notooltip="true" /></h3>
+				
+				<div class="contentRow-lesser" dir="auto">
+					<article class="message-body">
+						{{ bb_code($review.message, 'bratr-review', $review) }}
+					</article>
+				</div>
+
+				<xf:if is="{$linkThread}">
+					<dl class="pairs pairs--inline structItem-minor">
+						<dt>{{ phrase('thread') }}</dt>
+						<dd><a href="{{ link('threads', $thread) }}">{{ prefix('thread', $thread) }} {$thread.title}</a></dd>
+					</dl>
+				</xf:if>
+
+				<footer class="message-footer">
+					<xf:if contentcheck="true">
+						<div class="message-actionBar actionBar">
+							<xf:contentcheck>
+								<xf:if contentcheck="true">
+									<div class="actionBar-set actionBar-set--external">
+									<xf:contentcheck>
+										<xf:if is="$review.canLike()">
+											<a href="{{ link('bratr-ratings/like', $review) }}" class="actionBar-action actionBar-action--like" data-xf-click="like" data-like-list="< .js-review | .js-likeList"><xf:if is="$review.isLiked()">{{ phrase('unlike') }}<xf:else />{{ phrase('like') }}</xf:if></a>
+										</xf:if>
+									</xf:contentcheck>
+									</div>
+								</xf:if>
+
+								<xf:if contentcheck="true">
+									<div class="actionBar-set actionBar-set--internal">
+									<xf:contentcheck>
+										<span class="contentRow-muted"><xf:date time="{$review.rating_date}" /></span>
+										
+										<xf:if is="$review.canReport()">
+											<a href="{{ link('bratr-ratings/report', $review) }}"
+												class="actionBar-action actionBar-action--report"
+												data-xf-click="overlay">{{ phrase('report') }}</a>
+										</xf:if>
+
+										<xf:set var="$hasActionBarMenu" value="{{ false }}" />
+										<xf:if is="$review.canEdit()">
+											<a href="{{ link('bratr-ratings/edit', $review) }}"
+												class="actionBar-action actionBar-action--edit actionBar-action--menuItem"
+												data-xf-click="overlay">{{ phrase('edit') }}</a>
+
+											<xf:set var="$hasActionBarMenu" value="{{ true }}" />
+										</xf:if>
+
+										<xf:if is="$review.canUndelete()">
+											<a href="{{ link('bratr-ratings/un-delete', $review) }}"
+												class="actionBar-action actionBar-action--delete actionBar-action--menuItem"
+												data-xf-click="overlay" data-follow-redirects="on">{{ phrase('undelete') }}</a>
+
+											<xf:set var="$hasActionBarMenu" value="{{ true }}" />
+										<xf:elseif is="$review.canDelete('soft')" />
+											<a href="{{ link('bratr-ratings/delete', $review) }}"
+												class="actionBar-action actionBar-action--delete actionBar-action--menuItem"
+												data-xf-click="overlay">{{ phrase('delete') }}</a>
+
+											<xf:set var="$hasActionBarMenu" value="{{ true }}" />
+										</xf:if>
+
+										<xf:if is="$review.canWarn()">
+
+											<a href="{{ link('bratr-ratings/warn', $review) }}"
+												class="actionBar-action actionBar-action--warn actionBar-action--menuItem">{{ phrase('warn') }}</a>
+
+											<xf:set var="$hasActionBarMenu" value="{{ true }}" />
+										<xf:elseif is="$review.warning_id && $xf.visitor.canViewWarnings()" />
+											<a href="{{ link('warnings', {'warning_id': $review.warning_id}) }}"
+												class="actionBar-action actionBar-action--warn actionBar-action--menuItem"
+												data-xf-click="overlay">{{ phrase('view_warning') }}</a>
+											<xf:set var="$hasActionBarMenu" value="{{ true }}" />
+										</xf:if>
+
+										<xf:if is="$review.canConfirm()">
+											<a href="{{ link('bratr-ratings/confirm', $review) }}"
+												class="actionBar-action actionBar-action--delete actionBar-action--menuItem"
+												data-xf-click="overlay" data-follow-redirects="on">{{ phrase('BRATR_confirmation') }}</a>
+
+											<xf:set var="$hasActionBarMenu" value="{{ true }}" />
+										</xf:if>
+
+										<xf:if is="$hasActionBarMenu">
+											<a class="actionBar-action actionBar-action--menuTrigger"
+												data-xf-click="menu"
+												title="{{ phrase('more_options')|for_attr }}"
+												role="button"
+												tabindex="0"
+												aria-expanded="false"
+												aria-haspopup="true">&#8226;&#8226;&#8226;</a>
+
+											<div class="menu" data-menu="menu" aria-hidden="true" data-menu-builder="actionBar">
+												<div class="menu-content">
+													<h4 class="menu-header">{{ phrase('more_options') }}</h4>
+													<div class="js-menuBuilderTarget"></div>
+												</div>
+											</div>
+										</xf:if>
+									</xf:contentcheck>
+									</div>
+								</xf:if>
+							</xf:contentcheck>
+						</div>
+					</xf:if>
+
+					<div class="likesBar js-likeList {{ $review.likes ? 'is-active' : '' }}">
+						<xf:likes content="{$review}" url="{{ link('bratr-ratings/likes', $review) }}" />
+					</div>
+				</footer>
+			</div>
+		</div>
+	</div>
+</xf:macro>
+
+<xf:macro name="review_delete" arg-review="!" arg-user="!" arg-thread="!">
+	<div class="message message--deleted message--review js-review"
+		data-author="{{ $review.User.username ?: $review.username }}"
+		data-content="review-{$review.thread_rating_id}">
+
+		<span class="u-anchorTarget" id="review-{$review.thread_rating_id}"></span>
+
+		<div class="contentRow">
+			<div class="contentRow-figure">
+				<xf:avatar user="$user" size="s" notooltip="true" defaultname="{$user.username}"/>
+			</div>
+			<div class="contentRow-main">
+				<div class="contentRow-extra">
+					<xf:macro template="BRATR_rating_macros" name="stars"
+						arg-rating="{$review.rating}" />
+				</div>
+				<h3 class="contentRow-header"><xf:username user="$user" rich="true" notooltip="true" /></h3>
+				<div class="messageNotice messageNotice--deleted">
+					<xf:macro template="deletion_macros" name="notice" arg-log="{$review.DeletionLog}" />
+
+					<a href="{{ link('bratr-ratings/show', $review) }}" class="u-jsOnly" data-xf-click="inserter" data-replace="[data-content=review-{$review.thread_rating_id}]">{{ phrase('show...') }}</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</xf:macro>
+
+<xf:macro name="item_new_ratings"
+	arg-rating="!"
+	arg-user="!"
+	arg-limitHeight="{{ false }}">
+
+	<div class="contentRow">
+		<div class="contentRow-figure">
+			<xf:avatar user="$user" size="xxs" defaultname="{$user.username}" />
+		</div>
+		<div class="contentRow-main contentRow-main--close">
+			<div class="contentRow-lesser">
+				<xf:username user="$user" rich="true" defaultname="{$user.username}" />
+			</div>
+			
+			<div class="contentRow-lesser">
+				<xf:macro template="BRATR_rating_macros" name="stars"
+					arg-rating="{$rating.rating}" />
+			</div>
+
+			<xf:if is="$limitHeight">
+				<div class="contentRow-faderContainer">
+					<div class="contentRow-faderContent">
+						{{ structured_text($rating.message) }}
+					</div>
+					<div class="contentRow-fader"></div>
+				</div>
+			<xf:else />
+				{{ structured_text($rating.message) }}
+			</xf:if>
+
+			<div class="contentRow-minor">
+				<a href="{{ link('bratr-ratings', $rating) }}" rel="nofollow" class="u-concealed"><xf:date time="{$rating.rating_date}" /></a>
+				<a href="{{ link('bratr-ratings/show', $rating) }}" rel="nofollow" class="contentRow-extra" data-xf-click="overlay" data-xf-init="tooltip" title="{{ phrase('interact')|for_attr }}">&#8226;&#8226;&#8226;</a>
+			</div>
+		</div>
+	</div>
+</xf:macro>
+
+<xf:macro name="receive_rating_count" arg-user="!">
+	<dl class="pairs pairs--rows pairs--rows--centered">
+		<dt title="{{ phrase('BRATR_ratings_received')|for_attr }}">{{ phrase('BRATR_ratings_received') }}</dt>
+		<dd>
+			{{ $user.bratr_receive_rating_count|number }}
+		</dd>
+	</dl>
+</xf:macro>

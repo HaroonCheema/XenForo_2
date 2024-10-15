@@ -30,12 +30,13 @@ class Setup extends AbstractSetup
 		$this->alterTable('xf_thread', function (\XF\Db\Schema\Alter $table) {
 
 			$table->addColumn('is_featured', 'tinyint', 3)->setDefault(0);
+			$table->addColumn('latest_rating_avg', 'decimal', '10,2');
 		});
 	}
 
 	// ############################### UPGRADE ###########################
 
-	public function upgrade1000100Step1(array $stepParams)
+	public function upgrade1000200Step1(array $stepParams)
 	{
 		$this->alterTable('xf_user', function (\XF\Db\Schema\Alter $table) {
 
@@ -51,6 +52,14 @@ class Setup extends AbstractSetup
 		});
 	}
 
+	public function upgrade1000400Step1(array $stepParams)
+	{
+		$this->alterTable('xf_thread', function (\XF\Db\Schema\Alter $table) {
+
+			$table->addColumn('latest_rating_avg', 'decimal', '10,2');
+		});
+	}
+
 	// ############################### UNINSTALL ###########################
 
 	public function uninstallStep1()
@@ -58,7 +67,7 @@ class Setup extends AbstractSetup
 		$sm = $this->schemaManager();
 
 		$this->schemaManager()->alterTable('xf_thread', function (\XF\Db\Schema\Alter $table) {
-			$table->dropColumns(['is_featured']);
+			$table->dropColumns(['is_featured', 'latest_rating_avg']);
 		});
 
 		$this->schemaManager()->alterTable('xf_user', function (\XF\Db\Schema\Alter $table) {

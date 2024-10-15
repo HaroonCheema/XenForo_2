@@ -1,13 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <phrases>
+  <phrase title="cron_entry.fs_latest_update_rating" version_id="1000300" version_string="1.0.3 Alpha"><![CDATA[[FS] Latest Update Rating Avg]]></phrase>
   <phrase title="exclude_tags" version_id="1" version_string="1"><![CDATA[Exclude Tags]]></phrase>
+  <phrase title="fs_featured_thread" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Featured thread]]></phrase>
+  <phrase title="fs_latest_featured" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Featured]]></phrase>
+  <phrase title="fs_latest_options" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Options]]></phrase>
+  <phrase title="fs_latest_unfeatured" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Unfeatured]]></phrase>
+  <phrase title="fs_latest_update_filter_sidebar" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Filter sidebar]]></phrase>
+  <phrase title="fs_latest_update_large" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Large (Title)]]></phrase>
+  <phrase title="fs_latest_update_layout" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Tile layout]]></phrase>
+  <phrase title="fs_latest_update_new_tab" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Open links in new tab]]></phrase>
+  <phrase title="fs_latest_update_normal" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Normal]]></phrase>
+  <phrase title="fs_latest_update_rating_sort" version_id="1000300" version_string="1.0.3 Alpha"><![CDATA[Rating]]></phrase>
+  <phrase title="fs_latest_update_small" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Small (Prefix)]]></phrase>
+  <phrase title="fs_latest_update_version_style" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Version style]]></phrase>
+  <phrase title="fs_status_engine" version_id="1000300" version_string="1.0.3 Alpha"><![CDATA[Prefix(Engine)]]></phrase>
   <phrase title="fs_status_prefix" version_id="1" version_string="1"><![CDATA[Prefix(status)]]></phrase>
+  <phrase title="fs_unfeatured_thread" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Unfeatured thread]]></phrase>
   <phrase title="latest_content" version_id="1" version_string="1"><![CDATA[Latest Update]]></phrase>
   <phrase title="nav.latestTherads" version_id="1" version_string="1"><![CDATA[Latest Update]]></phrase>
   <phrase title="option.fs_filter_node" version_id="1" version_string="1"><![CDATA[Select Node]]></phrase>
   <phrase title="option.fs_latest_thread_custom_field_game" version_id="1" version_string="1"><![CDATA[Custom thread field id (Game)]]></phrase>
   <phrase title="option.fs_latest_thread_custom_field_ver" version_id="1" version_string="1"><![CDATA[Custom thread field id (Version)]]></phrase>
   <phrase title="option.fs_latest_thread_per_page" version_id="1" version_string="1"><![CDATA[Per page]]></phrase>
+  <phrase title="option.fs_latest_update_on_slider" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Slider threads per page]]></phrase>
   <phrase title="option.prefix_group_1" version_id="1" version_string="1"><![CDATA[Prefix group 1]]></phrase>
   <phrase title="option.prefix_group_2" version_id="1" version_string="1"><![CDATA[Prefix group 2]]></phrase>
   <phrase title="option.prefix_group_3" version_id="1" version_string="1"><![CDATA[Prefix group 3 (status)]]></phrase>
@@ -15,11 +31,15 @@
   <phrase title="option_explain.fs_latest_thread_custom_field_game" version_id="1" version_string="1"><![CDATA[Enter the Applicable Custom thread fields game title Id.]]></phrase>
   <phrase title="option_explain.fs_latest_thread_custom_field_ver" version_id="1" version_string="1"><![CDATA[Enter the Applicable Custom thread fields version Id.]]></phrase>
   <phrase title="option_explain.fs_latest_thread_per_page" version_id="1" version_string="1"><![CDATA[]]></phrase>
+  <phrase title="option_explain.fs_latest_update_on_slider" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[]]></phrase>
   <phrase title="option_explain.prefix_group_1" version_id="1" version_string="1"><![CDATA[]]></phrase>
   <phrase title="option_explain.prefix_group_2" version_id="1" version_string="1"><![CDATA[]]></phrase>
   <phrase title="option_explain.prefix_group_3" version_id="1" version_string="1"><![CDATA[]]></phrase>
   <phrase title="option_group.fs_latest_thread" version_id="1" version_string="1"><![CDATA[[FS] Latest Thread]]></phrase>
   <phrase title="option_group_description.fs_latest_thread" version_id="1" version_string="1"><![CDATA[]]></phrase>
   <phrase title="permission.fs_latest_thread_can_check_lts_cnt" version_id="1" version_string="1"><![CDATA[Can check latest content]]></phrase>
+  <phrase title="permission.fs_latest_thread_can_featured_unfea" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Can Featured/Unfeatured]]></phrase>
   <phrase title="permission_interface.fs_latest_thread" version_id="1" version_string="1"><![CDATA[[FS] Latest Update]]></phrase>
+  <phrase title="you_sure_you_want_to_featured_this_thread" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Are you sure you want to featured this thread?]]></phrase>
+  <phrase title="you_sure_you_want_to_unfeatured_this_thread" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Are you sure you want to unfeatured this thread?]]></phrase>
 </phrases>

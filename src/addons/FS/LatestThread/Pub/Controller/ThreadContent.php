@@ -291,6 +291,10 @@ class ThreadContent extends AbstractController
 			$threadFinder->hasPrefixes($prefixFilter);
 		}
 
+		if ($conditions['rating']) {
+			$threadFinder->where('latest_rating_avg', '>=', $conditions['rating']);
+		}
+
 		$direction = $conditions['direction'] == 'asc' ? 'Asc' : 'DESC';
 
 		$threadFinder->order($conditions['order'], $direction);
@@ -311,6 +315,7 @@ class ThreadContent extends AbstractController
 			'prefix_ids1' => 'array',
 			'prefix_ids2' => 'array',
 			'prefix_ids3' => 'array',
+			'rating' => 'uint',
 			// 'apply' => 'true',
 		]);
 

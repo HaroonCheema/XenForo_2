@@ -1,12 +1,12 @@
 {
     "public/forum_filters_latest.html": {
-        "version_id": 1000100,
-        "version_string": "1.0.1 Alpha",
-        "hash": "fc68f4e6c804bb1eeb5b4bcbc5b26ae7"
+        "version_id": 1000300,
+        "version_string": "1.0.3 Alpha",
+        "hash": "cf5b05fa8f7ecfdbbc4307922831e445"
     },
     "public/forum_view_latest_content.html": {
-        "version_id": 1000100,
-        "version_string": "1.0.1 Alpha",
+        "version_id": 1000300,
+        "version_string": "1.0.3 Alpha",
         "hash": "18a7af3e7abf8acbcb4db1a89eefd1fb"
     },
     "public/forum_view_latest_content.less": {
@@ -14,20 +14,15 @@
         "version_string": "1.0.1 Alpha",
         "hash": "ee0b7988b732daed8cc1b909b5871857"
     },
-    "public/forum_view_latest_content_test.html": {
-        "version_id": 1000100,
-        "version_string": "1.0.1 Alpha",
-        "hash": "e00cfec2bc5708fde888cdfcb49025ae"
-    },
     "public/fs_latest_thread_featured.html": {
         "version_id": 1000100,
         "version_string": "1.0.1 Alpha",
         "hash": "ba2d0ac0c2b86f28a1dba560f96747d5"
     },
     "public/fs_latest_thread_list_macros.html": {
-        "version_id": 1000100,
-        "version_string": "1.0.1 Alpha",
-        "hash": "754017fc679bab5cab865ff93515617c"
+        "version_id": 1000300,
+        "version_string": "1.0.3 Alpha",
+        "hash": "fe3f6201fb3465036e0a826eb84a5897"
     },
     "public/fs_latest_update_list.less": {
         "version_id": 1000100,

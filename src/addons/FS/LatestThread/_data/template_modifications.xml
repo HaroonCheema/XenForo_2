@@ -47,6 +47,20 @@
 	$0
 </xf:if>]]></replace>
   </modification>
+  <modification type="public" template="thread_view" modification_key="fs_latest_thread_view_featured" description="fs_latest_thread_view_featured" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<xf:if is="\$canInlineMod">.*?<\/xf:if>/is]]></find>
+    <replace><![CDATA[<xf:if is="in_array($thread.node_id, $xf.options.fs_filter_node) AND $xf.visitor.hasPermission('fs_latest_thread', 'can_featured_unfea')" >
+	<xf:button href="{{ link('threads/featured', $thread) }}" class="button--link" overlay="true">
+		<xf:if is="{$thread.is_featured}">
+			{{ phrase('fs_latest_unfeatured') }}
+			<xf:else />
+			{{ phrase('fs_latest_featured') }}
+		</xf:if>
+	</xf:button>
+</xf:if>
+
+$0]]></replace>
+  </modification>
   <modification type="public" template="thread_view" modification_key="fs_latest_threat_title_v_game_title" description="fs_latest_threat_title_v_game_title" execution_order="10" enabled="1" action="str_replace">
     <find><![CDATA[<xf:h1>{{ prefix('thread', $thread) }}{$thread.title}</xf:h1>]]></find>
     <replace><![CDATA[<xf:h1>{{ prefix('thread', $thread) }}{$thread.title}<xf:if is="$xf.options.fs_latest_thread_custom_field_ver And {$thread.custom_fields.{$xf.options.fs_latest_thread_custom_field_ver}}">

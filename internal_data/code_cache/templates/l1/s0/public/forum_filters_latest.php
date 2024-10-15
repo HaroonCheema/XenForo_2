@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: fc68f4e6c804bb1eeb5b4bcbc5b26ae7
+// FROM HASH: cf5b05fa8f7ecfdbbc4307922831e445
 return array(
 'extensions' => array('start' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -25,6 +25,74 @@ return array(
 	
 	return $__finalCompiled;
 }),
+'macros' => array('rating' => array(
+'arguments' => function($__templater, array $__vars) { return array(
+		'row' => true,
+		'rowType' => $__vars['rowType'],
+		'rowLabel' => 'Rating',
+		'rowHint' => '',
+		'rowExplain' => '',
+		'name' => 'rating',
+		'currentRating' => '0',
+		'ratingHref' => '',
+		'readOnly' => 'false',
+		'deselectable' => 'false',
+		'showSelected' => 'true',
+		'range' => array(1 => 'Terrible', 2 => 'Poor', 3 => 'Average', 4 => 'Good', 5 => 'Excellent', ),
+	); },
+'code' => function($__templater, array $__vars, $__extensions = null)
+{
+	$__finalCompiled = '';
+	$__finalCompiled .= '
+
+	' . $__templater->callMacro('rating_macros', 'setup', array(), $__vars) . '
+
+	';
+	$__compilerTemp1 = array();
+	if ($__vars['deselectable']) {
+		$__compilerTemp1[] = array(
+			'value' => '',
+			'_type' => 'option',
+		);
+	}
+	if ($__templater->isTraversable($__vars['range'])) {
+		foreach ($__vars['range'] AS $__vars['value'] => $__vars['label']) {
+			$__compilerTemp1[] = array(
+				'value' => $__vars['value'],
+				'label' => $__templater->escape($__vars['label']),
+				'_type' => 'option',
+			);
+		}
+	}
+	$__vars['inner'] = $__templater->preEscaped('
+		' . $__templater->formSelect(array(
+		'name' => $__vars['name'],
+		'class' => 'br-select',
+		'data-xf-init' => 'rating',
+		'data-initial-rating' => $__vars['currentRating'],
+		'data-rating-href' => $__vars['ratingHref'],
+		'data-readonly' => $__vars['readOnly'],
+		'data-deselectable' => $__vars['deselectable'],
+		'data-show-selected' => $__vars['showSelected'],
+	), $__compilerTemp1) . '
+	');
+	$__finalCompiled .= '
+
+	';
+	if ($__vars['row']) {
+		$__finalCompiled .= '
+		' . $__templater->filter($__vars['inner'], array(array('raw', array()),), true) . '
+		';
+	} else {
+		$__finalCompiled .= '
+		' . $__templater->filter($__vars['inner'], array(array('raw', array()),), true) . '
+	';
+	}
+	$__finalCompiled .= '
+';
+	return $__finalCompiled;
+}
+)),
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
 	$__finalCompiled = '';
@@ -113,6 +181,11 @@ return array(
 			);
 		}
 	}
+	$__compilerTemp3[] = array(
+		'value' => 'brivium_rating_count',
+		'label' => 'Rating',
+		'_type' => 'option',
+	);
 	$__compilerTemp4 = array();
 	$__compilerTemp5 = $__vars['prefixGroup1'];
 	if ($__templater->isTraversable($__compilerTemp5)) {
@@ -155,7 +228,6 @@ return array(
 	$__finalCompiled .= $__templater->form('
 
 	' . $__templater->renderExtension('start', $__vars, $__extensions) . '
-
 
 	<div class="menu-row menu-row--separated">
 		' . 'Nodes' . $__vars['xf']['language']['label_separator'] . '
@@ -230,8 +302,6 @@ return array(
 		</div>
 	</div>
 
-
-
 	' . '
 	<div class="menu-row menu-row--separated">
 		' . 'Sort by' . $__vars['xf']['language']['label_separator'] . '
@@ -260,8 +330,6 @@ return array(
 	))) . '
 		</div>
 
-
-
 	</div>
 
 	<div class="menu-row menu-row--separated">
@@ -288,7 +356,6 @@ return array(
 		</div>
 	</div>
 
-
 	<div class="menu-row menu-row--separated">
 		<label for="ctrl_started_by">' . 'Exclude Tags' . $__vars['xf']['language']['label_separator'] . '</label>
 		<div class="u-inputSpacer">
@@ -305,11 +372,6 @@ return array(
 		</div>
 	</div>
 
-
-
-
-
-
 	<div class="menu-row menu-row--separated">
 		' . 'Prefix' . $__vars['xf']['language']['label_separator'] . '
 		<div class="u-inputSpacer">
@@ -324,7 +386,7 @@ return array(
 	</div>
 
 	<div class="menu-row menu-row--separated">
-		' . 'Prefix' . $__vars['xf']['language']['label_separator'] . '
+		' . 'Prefix(Engine)' . $__vars['xf']['language']['label_separator'] . '
 		<div class="u-inputSpacer">
 			' . $__templater->formSelect(array(
 		'name' => 'prefix_ids2',
@@ -335,6 +397,7 @@ return array(
 	), $__compilerTemp6) . '
 		</div>
 	</div>
+
 	<div class="menu-row menu-row--separated">
 		' . 'Prefix(status)' . $__vars['xf']['language']['label_separator'] . '
 		<div class="u-inputSpacer">
@@ -348,7 +411,16 @@ return array(
 		</div>
 	</div>
 
+	<div class="menu-row menu-row--separated">
+		' . 'Rating' . $__vars['xf']['language']['label_separator'] . '
+		<div class="u-inputSpacer">
 
+			' . $__templater->callMacro(null, 'rating', array(
+		'currentRating' => ($__vars['conditions']['rating'] ?: 0),
+	), $__vars) . '
+
+		</div>
+	</div>
 
 	' . $__templater->renderExtension('end', $__vars, $__extensions) . '
 
@@ -366,7 +438,9 @@ return array(
 
 ', array(
 		'action' => $__templater->func('link', array('latest-contents/filters', $__vars['forum'], ), false),
-	));
+	)) . '
+
+';
 	return $__finalCompiled;
 }
 );

@@ -1,2 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<cron/>
+<cron>
+  <entry entry_id="fs_latest_update_rating" cron_class="FS\LatestThread\Cron\RatingAvg" cron_method="updateRatingAvg" active="0"><![CDATA[{"day_type":"dom","dom":[-1],"hours":[0],"minutes":[0]}]]></entry>
+</cron>

@@ -36,7 +36,6 @@
 
 	<xf:extension name="start"></xf:extension>
 
-
 	<div class="menu-row menu-row--separated">
 		{{ phrase('nodes:') }}
 		<div class="u-inputSpacer">
@@ -44,12 +43,10 @@
 
 					   title="{{ phrase('nodes') }}">
 
-
 				<xf:foreach loop="{$forums}" key="$nodeId" value="$node">
 					<xf:option value="{$nodeId}"
 							   label="{{ $node.title }}" />
 				</xf:foreach>
-
 
 			</xf:select>
 		</div>
@@ -85,8 +82,6 @@
 		</div>
 	</div>
 
-
-
 	<!--[XF:above_sort_by]-->
 	<div class="menu-row menu-row--separated">
 		{{ phrase('sort_by:') }}
@@ -96,6 +91,7 @@
 				<xf:foreach loop="$sortOptions" key="$sortKey" value="$null">
 					<xf:option value="{$sortKey}">{{ phrase_dynamic('forum_sort.' . $sortKey) }}</xf:option>
 				</xf:foreach>
+				<xf:option value="brivium_rating_count">{{ phrase('fs_latest_update_rating_sort') }}</xf:option>
 			</xf:select>
 			<span class="inputGroup-splitter"></span>
 			<span class="u-srOnly" id="ctrl_sort_direction">{{ phrase('sort_direction') }}</span>
@@ -104,8 +100,6 @@
 				<xf:option value="asc">{{ phrase('ascending') }}</xf:option>
 			</xf:select>
 		</div>
-
-
 
 	</div>
 
@@ -129,7 +123,6 @@
 		</div>
 	</div>
 
-
 	<div class="menu-row menu-row--separated">
 		<label for="ctrl_started_by">{{ phrase('exclude_tags:') }}</label>
 		<div class="u-inputSpacer">
@@ -145,18 +138,12 @@
 		</div>
 	</div>
 
-
-
-
-
-
 	<div class="menu-row menu-row--separated">
 		{{ phrase('prefix:') }}
 		<div class="u-inputSpacer">
 			<xf:select name="prefix_ids1"  value="{{ $conditions.prefix_ids1 ?: [] }}" multiple="{{ true }}" class="input js-example-basic-single"
 
 					   title="{{ phrase('prefix') }}">
-
 
 				<xf:foreach loop="{{$prefixGroup1}}" key="$prefixId" value="$prefix">
 					<xf:option value="{$prefixId}"
@@ -165,18 +152,16 @@
 							   data-has-help="{$prefix.has_usage_help}" />
 				</xf:foreach>
 
-
 			</xf:select>
 		</div>
 	</div>
 
 	<div class="menu-row menu-row--separated">
-		{{ phrase('prefix:') }}
+		{{ phrase('fs_status_engine:') }}
 		<div class="u-inputSpacer">
 			<xf:select name="prefix_ids2"  value="{{ $conditions.prefix_ids2 ?: [] }}" multiple="{{ true }}" class="input js-example-basic-single"
 
 					   title="{{ phrase('prefix') }}">
-
 
 				<xf:foreach loop="{{$prefixGroup2}}" key="$prefixId" value="$prefix">
 					<xf:option value="{$prefixId}"
@@ -185,17 +170,16 @@
 							   data-has-help="{$prefix.has_usage_help}" />
 				</xf:foreach>
 
-
 			</xf:select>
 		</div>
 	</div>
+
 	<div class="menu-row menu-row--separated">
 		{{ phrase('fs_status_prefix:') }}
 		<div class="u-inputSpacer">
 			<xf:select name="prefix_ids3"  value="{{ $conditions.prefix_ids3 ?: [] }}" multiple="{{ true }}" class="input js-example-basic-single"
 
 					   title="{{ phrase('prefix') }}">
-
 
 				<xf:foreach loop="{{$prefixGroup3}}" key="$prefixId" value="$prefix">
 					<xf:option value="{$prefixId}"
@@ -204,12 +188,18 @@
 							   data-has-help="{$prefix.has_usage_help}" />
 				</xf:foreach>
 
-
 			</xf:select>
 		</div>
 	</div>
 
+	<div class="menu-row menu-row--separated">
+		{{ phrase('rating:') }}
+		<div class="u-inputSpacer">
 
+			<xf:macro name="rating" arg-currentRating="{{ $conditions.rating ?: 0 }}"/>
+
+		</div>
+	</div>
 
 	<xf:extension name="end"></xf:extension>
 
@@ -221,3 +211,51 @@
 	<xf:hiddenval name="apply">1</xf:hiddenval>
 
 </xf:form>
+
+<xf:macro name="rating"
+		  arg-row="{{ true }}"
+		  arg-rowType="{$rowType}"
+		  arg-rowLabel="{{ phrase('rating') }}"
+		  arg-rowHint=""
+		  arg-rowExplain=""
+		  arg-name="rating"
+		  arg-currentRating="0"
+		  arg-ratingHref=""
+		  arg-readOnly="false"
+		  arg-deselectable="false"
+		  arg-showSelected="true"
+		  arg-range="{{ {
+					 1: phrase('terrible'),
+					 2: phrase('poor'),
+					 3: phrase('average'),
+					 4: phrase('good'),
+					 5: phrase('excellent')
+					 } }}">
+
+	<xf:macro template="rating_macros" name="setup" />
+
+	<xf:set var="$inner">
+		<xf:select name="{$name}"
+				   class="br-select"
+				   data-xf-init="rating"
+				   data-initial-rating="{$currentRating}"
+				   data-rating-href="{$ratingHref}"
+				   data-readonly="{$readOnly}"
+				   data-deselectable="{$deselectable}"
+				   data-show-selected="{$showSelected}">
+
+			<xf:if is="$deselectable">
+				<xf:option value="" />
+			</xf:if>
+			<xf:foreach loop="$range" key="$value" value="$label">
+				<xf:option value="{$value}">{$label}</xf:option>
+			</xf:foreach>
+		</xf:select>
+	</xf:set>
+
+	<xf:if is="$row">
+		{$inner|raw}
+		<xf:else />
+		{$inner|raw}
+	</xf:if>
+</xf:macro>
