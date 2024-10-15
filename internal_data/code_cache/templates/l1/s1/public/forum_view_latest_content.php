@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 18a7af3e7abf8acbcb4db1a89eefd1fb
+// FROM HASH: 6a9a95a7e06372d730452395c2871283
 return array(
 'extensions' => array('thread_list' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -124,7 +124,7 @@ return array(
 			foreach ($__vars['featuredThreads'] AS $__vars['thread']) {
 				$__finalCompiled .= '
 						<div class="itemList-item itemList-item--slider" style="overflow: unset !important;">
-							' . $__templater->callMacro(null, ($__vars['templateOverrides']['thread_list_macro'] ?: 'fs_latest_thread_list_macros::item'), $__templater->combineMacroArgumentAttributes($__vars['templateOverrides']['thread_list_macro_args'], array(
+							' . $__templater->callMacro(null, 'fs_latest_thread_slider_macros::slider', $__templater->combineMacroArgumentAttributes($__vars['templateOverrides']['thread_list_macro_args'], array(
 					'thread' => $__vars['thread'],
 				)), $__vars) . '
 						</div>

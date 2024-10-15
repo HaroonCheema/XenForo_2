@@ -101,14 +101,14 @@
 		}
 	</style>
 
-	<div class="structItem structItem--thread{{ $thread.prefix_id ? ' is-prefix' . $thread.prefix_id : '' }}{{ $thread.isIgnored() ? ' is-ignored' : '' }}{{ ($thread.isUnread() AND !$forceRead) ? ' is-unread' : '' }}{{ $thread.discussion_state == 'moderated' ? ' is-moderated' : '' }}{{ $thread.discussion_state == 'deleted' ? ' is-deleted' : '' }} js-inlineModContainer js-threadListItem-{$thread.thread_id} onHoverDisp" data-author="{{ $thread.User.username ?: $thread.username }}">
+	<div class="structItem structItem--thread{{ $thread.prefix_id ? ' is-prefix' . $thread.prefix_id : '' }}{{ $thread.isIgnored() ? ' is-ignored' : '' }}{{ ($thread.isUnread() AND !$forceRead) ? ' is-unread' : '' }}{{ $thread.discussion_state == 'moderated' ? ' is-moderated' : '' }}{{ $thread.discussion_state == 'deleted' ? ' is-deleted' : '' }} js-inlineModContainer js-threadListItem-{$thread.thread_id} onHoverDisp" style="position: unset;" data-author="{{ $thread.User.username ?: $thread.username }}">
 
 		<xf:extension name="icon_cell">
 			<xf:if is="in_array($thread.node_id, $xf.options.node_id_for_thumb)" >
 
-				<div class="structItem-cell structItem-cell--icon" style="width: {{ $thread.Forum.Node.node_thread_thumbnail_width ? $thread.Forum.Node.node_thread_thumbnail_width : $xf.options.thumbnail_width }}; height: {{ $thread.Forum.Node.node_thread_thumbnail_height ? $thread.Forum.Node.node_thread_thumbnail_height : $xf.options.thumb_size_hemant }};">
+				<div class="structItem-cell structItem-cell--icon" style="width: {{ $thread.Forum.Node.node_thread_thumbnail_width ? $thread.Forum.Node.node_thread_thumbnail_width : $xf.options.thumbnail_width }}; height: {{ $thread.Forum.Node.node_thread_thumbnail_height ? $thread.Forum.Node.node_thread_thumbnail_height : $xf.options.thumb_size_hemant }}; position: unset;">
 
-					<div class="structItem-iconContainer">
+					<div class="structItem-iconContainer" style="position: unset;">
 						<a href="{{ link('threads', $thread) }}" target="{{$xf.visitor.new_tab == 'yes' ? '_blank' : '_self'}}"> 
 							<img src="{$thread.getfirstPostImgUrl()}" class="{{count($thread.FirstPost.Attachments) > 1 ? 'hideUpdateImg' : ' '}}" style="width: {{ $thread.Forum.Node.node_thread_thumbnail_width ? $thread.Forum.Node.node_thread_thumbnail_width : $xf.options.thumbnail_width }} ; height: {{ $thread.Forum.Node.node_thread_thumbnail_height ? $thread.Forum.Node.node_thread_thumbnail_height : $xf.options.thumb_size_hemant }}; object-fit: cover; border-bottom: solid 2px #fa7d24">
 						</a>
@@ -323,7 +323,7 @@
 				<div class="hiddenDiv" style="margin-bottom: 5px !important;">
 
 
-					<hr class="formRowSep" style="    margin: 10px 0px;;"/>
+					<hr class="formRowSep" style="margin: 10px 0px;"/>
 
 					<xf:if is="$xf.options.fs_latest_thread_custom_field_game">
 						<spam>{$thread.custom_fields.{$xf.options.fs_latest_thread_custom_field_game}}</spam>
@@ -778,7 +778,7 @@
 
 						<div class="hiddenDiv" style="margin-bottom: 5px !important; margin-top: 89px;">
 
-							<hr class="formRowSep" style="    margin: 10px 0px;;"/>
+							<hr class="formRowSep" style="margin: 10px 0px;"/>
 
 							<xf:if is="$xf.options.fs_latest_thread_custom_field_game">
 								<spam>{$thread.custom_fields.{$xf.options.fs_latest_thread_custom_field_game}}</spam>

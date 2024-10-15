@@ -28,7 +28,7 @@
 
 					<xf:foreach loop="$featuredThreads" value="$thread">
 						<div class="itemList-item itemList-item--slider" style="overflow: unset !important;">
-							<xf:macro name="{{ $templateOverrides.thread_list_macro ?: 'fs_latest_thread_list_macros::item' }}"
+							<xf:macro name="fs_latest_thread_slider_macros::slider"
 									  arg-thread="{$thread}"
 
 									  args="{$templateOverrides.thread_list_macro_args}"  />
