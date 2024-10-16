@@ -262,15 +262,9 @@ class ThreadContent extends AbstractController
 		if (isset($conditions['extags']) && $conditions['extags'] != '') {
 			$exTags = explode(", ", $conditions['extags']);
 
-			$excludeTagsthreadFinder = $this->findThreadsWithLatestPosts();
+			$nodeIds = \XF::Options()->fs_filter_node;
 
-			$filterNodes = \XF::Options()->fs_filter_node;
-
-			$excludeTagsthreadFinder->where('node_id', $filterNodes);
-
-			$excludeTagsthreadFinder->hasTag($exTags);
-
-			$threadIds = $excludeTagsthreadFinder->pluckfrom('thread_id')->fetch()->toArray();
+			$threadIds = $this->excludeTags($exTags, $nodeIds);
 
 			if (count($threadIds)) {
 				$threadFinder->where('thread_id', '!=', $threadIds);
@@ -326,6 +320,24 @@ class ThreadContent extends AbstractController
 		}
 
 		return $filters;
+	}
+
+	protected function excludeTags($tags, $nodeIds)
+	{
+		$threadIds = [];
+
+		foreach ($tags as  $tag) {
+			$excludeTagsthreadFinder = $this->findThreadsWithLatestPosts();
+
+			$excludeTagsthreadFinder->where('node_id', $nodeIds);
+
+			$excludeTagsthreadFinder->hasTag($tag);
+
+			$tagThreadIds = $excludeTagsthreadFinder->pluckfrom('thread_id')->fetch()->toArray();
+			$threadIds = array_merge($threadIds, $tagThreadIds);
+		}
+
+		return array_unique($threadIds);
 	}
 
 	protected function userOptionsFilters()

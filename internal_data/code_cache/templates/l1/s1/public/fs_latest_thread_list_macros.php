@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: d861f128c891a865ade58187a7089700
+// FROM HASH: b0a06b536954845412a41624907e265f
 return array(
 'macros' => array('item' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -608,8 +608,6 @@ return array(
 
 		' . $__templater->renderExtension('main_cell', $__vars, $__extensions) . '
 
-		' . '
-
 	</div>
 
 	<script>
@@ -1207,8 +1205,6 @@ return array(
 	$__finalCompiled .= '
 					</div>
 
-					' . '
-
 				</div>
 
 
@@ -1317,196 +1313,11 @@ return array(
 ';
 	return $__finalCompiled;
 }
-),
-'item_new_posts' => array(
-'arguments' => function($__templater, array $__vars) { return array(
-		'thread' => '!',
-	); },
-'code' => function($__templater, array $__vars, $__extensions = null)
-{
-	$__finalCompiled = '';
-	$__finalCompiled .= '
-	<div class="contentRow">
-		<div class="contentRow-figure">
-			' . $__templater->func('avatar', array($__vars['thread']['LastPoster'], 'xxs', false, array(
-		'defaultname' => $__vars['thread']['last_post_username'],
-	))) . '
-		</div>
-		<div class="contentRow-main contentRow-main--close">
-			';
-	if ($__templater->method($__vars['thread'], 'isUnread', array())) {
-		$__finalCompiled .= '
-				<a href="' . $__templater->func('link', array('threads/unread', $__vars['thread'], ), true) . '">' . $__templater->func('prefix', array('thread', $__vars['thread'], ), true) . $__templater->escape($__vars['thread']['title']) . '</a>
-				';
-	} else {
-		$__finalCompiled .= '
-				<a href="' . $__templater->func('link', array('threads/post', $__vars['thread'], array('post_id' => $__vars['thread']['last_post_id'], ), ), true) . '">' . $__templater->func('prefix', array('thread', $__vars['thread'], ), true) . $__templater->escape($__vars['thread']['title']) . '</a>
-			';
-	}
-	$__finalCompiled .= '
-
-			<div class="contentRow-minor contentRow-minor--hideLinks">
-				<ul class="listInline listInline--bullet">
-					<li>' . 'Latest: ' . $__templater->escape($__vars['thread']['last_post_cache']['username']) . '' . '</li>
-					<li>' . $__templater->func('date_dynamic', array($__vars['thread']['last_post_date'], array(
-	))) . '</li>
-				</ul>
-			</div>
-			<div class="contentRow-minor contentRow-minor--hideLinks">
-				<a href="' . $__templater->func('link', array('forums', $__vars['thread']['Forum'], ), true) . '">' . $__templater->escape($__vars['thread']['Forum']['title']) . '</a>
-			</div>
-		</div>
-	</div>
-';
-	return $__finalCompiled;
-}
-),
-'item_new_threads' => array(
-'arguments' => function($__templater, array $__vars) { return array(
-		'thread' => '!',
-	); },
-'code' => function($__templater, array $__vars, $__extensions = null)
-{
-	$__finalCompiled = '';
-	$__finalCompiled .= '
-	<div class="contentRow">
-		<div class="contentRow-figure">
-			' . $__templater->func('avatar', array($__vars['thread']['User'], 'xxs', false, array(
-		'defaultname' => $__vars['thread']['username'],
-	))) . '
-		</div>
-		<div class="contentRow-main contentRow-main--close">
-			<a href="' . $__templater->func('link', array('threads', $__vars['thread'], ), true) . '">' . $__templater->func('prefix', array('thread', $__vars['thread'], ), true) . $__templater->escape($__vars['thread']['title']) . '</a>
-
-			<div class="contentRow-minor contentRow-minor--hideLinks">
-				<ul class="listInline listInline--bullet">
-					<li>' . 'Started by ' . $__templater->escape($__vars['thread']['username']) . '' . '</li>
-					<li>' . $__templater->func('date_dynamic', array($__vars['thread']['post_date'], array(
-	))) . '</li>
-					<li>' . 'Replies' . $__vars['xf']['language']['label_separator'] . ' ' . $__templater->filter($__vars['thread']['reply_count'], array(array('number_short', array()),), true) . '</li>
-				</ul>
-			</div>
-			<div class="contentRow-minor contentRow-minor--hideLinks">
-				<a href="' . $__templater->func('link', array('forums', $__vars['thread']['Forum'], ), true) . '">' . $__templater->escape($__vars['thread']['Forum']['title']) . '</a>
-			</div>
-		</div>
-	</div>
-';
-	return $__finalCompiled;
-}
-),
-'quick_thread' => array(
-'arguments' => function($__templater, array $__vars) { return array(
-		'forum' => '!',
-		'page' => '1',
-		'order' => 'last_post_date',
-		'direction' => 'desc',
-		'prefixes' => array(),
-	); },
-'extensions' => array('icon_cell' => function($__templater, array $__vars, $__extensions = null)
-{
-	$__finalCompiled = '';
-		$__finalCompiled .= '
-				<div class="structItem-cell structItem-cell--icon">
-					<div class="structItem-iconContainer">
-						' . $__templater->func('avatar', array($__vars['xf']['visitor'], 's', false, array(
-	))) . '
-					</div>
-				</div>
-			';
-	return $__finalCompiled;
-},
-'main_cell' => function($__templater, array $__vars, $__extensions = null)
-{
-	$__finalCompiled = '';
-		$__finalCompiled .= '
-				<div class="structItem-cell structItem-cell--newThread js-prefixListenContainer">
-
-					' . $__templater->formRow('
-
-						' . $__templater->formPrefixInput($__vars['prefixes'], array(
-		'maxlength' => $__templater->func('max_length', array('XF:Thread', 'title', ), false),
-		'placeholder' => $__vars['forum']['thread_prompt'],
-		'title' => 'Post a new thread in this forum',
-		'prefix-value' => $__vars['forum']['default_prefix_id'],
-		'type' => 'thread',
-		'data-xf-init' => 'tooltip',
-		'rows' => '1',
-		'help-href' => $__templater->func('link', array('forums/prefix-help', $__vars['forum'], ), false),
-		'help-skip-initial' => true,
-	)) . '
-
-						' . '
-					', array(
-		'rowtype' => 'noGutter noLabel fullWidth noPadding mergeNext',
-		'label' => 'Title',
-	)) . '
-
-					<div class="js-quickThreadFields inserter-container is-hidden"><!--' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '--></div>
-				</div>
-			';
-	return $__finalCompiled;
-}),
-'code' => function($__templater, array $__vars, $__extensions = null)
-{
-	$__finalCompiled = '';
-	$__finalCompiled .= '
-
-	';
-	$__templater->includeCss('structured_list.less');
-	$__finalCompiled .= '
-
-	';
-	if ($__templater->method($__vars['forum'], 'canCreateThread', array()) OR $__templater->method($__vars['forum'], 'canCreateThreadPreReg', array())) {
-		$__finalCompiled .= '
-
-		';
-		$__templater->includeJs(array(
-			'src' => 'xf/thread.js',
-			'min' => '1',
-		));
-		$__finalCompiled .= '
-
-		';
-		$__vars['inlineMode'] = ((($__vars['page'] == 1) AND (($__vars['order'] == 'last_post_date') AND ($__vars['direction'] == 'desc'))) ? true : false);
-		$__finalCompiled .= '
-
-		' . $__templater->form('
-
-			' . $__templater->renderExtension('icon_cell', $__vars, $__extensions) . '
-
-			' . $__templater->renderExtension('main_cell', $__vars, $__extensions) . '
-
-		', array(
-			'action' => $__templater->func('link', array('forums/post-thread', $__vars['forum'], array('inline-mode' => $__vars['inlineMode'], ), ), false),
-			'ajax' => 'true',
-			'class' => 'structItem structItem--quickCreate',
-			'draft' => $__templater->func('link', array('forums/draft', $__vars['forum'], ), false),
-			'data-xf-init' => 'quick-thread',
-			'data-focus-activate' => '.js-titleInput',
-			'data-focus-activate-href' => $__templater->func('link', array('forums/post-thread', $__vars['forum'], array('inline-mode' => true, ), ), false),
-			'data-focus-activate-target' => '.js-quickThreadFields',
-			'data-insert-target' => '.js-threadList',
-			'data-replace-target' => '.js-emptyThreadList',
-		)) . '
-	';
-	}
-	$__finalCompiled .= '
-
-';
-	return $__finalCompiled;
-}
 )),
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
 	$__finalCompiled = '';
 	$__finalCompiled .= '
-
-' . '
-
-' . '
-
-' . '
 
 ';
 	return $__finalCompiled;
