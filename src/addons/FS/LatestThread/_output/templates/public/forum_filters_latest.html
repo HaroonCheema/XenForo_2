@@ -138,23 +138,27 @@
 		</div>
 	</div>
 
-	<div class="menu-row menu-row--separated">
-		{{ phrase('prefix:') }}
-		<div class="u-inputSpacer">
-			<xf:select name="prefix_ids1"  value="{{ $conditions.prefix_ids1 ?: [] }}" multiple="{{ true }}" class="input js-example-basic-single"
+	<xf:comment>
 
-					   title="{{ phrase('prefix') }}">
+		<div class="menu-row menu-row--separated">
+			{{ phrase('prefix:') }}
+			<div class="u-inputSpacer">
+				<xf:select name="prefix_ids1"  value="{{ $conditions.prefix_ids1 ?: [] }}" multiple="{{ true }}" class="input js-example-basic-single"
 
-				<xf:foreach loop="{{$prefixGroup1}}" key="$prefixId" value="$prefix">
-					<xf:option value="{$prefixId}"
-							   label="{{ prefix_title('thread', $prefixId) }}"
-							   data-prefix-class="{$prefix.css_class}"
-							   data-has-help="{$prefix.has_usage_help}" />
-				</xf:foreach>
+						   title="{{ phrase('prefix') }}">
 
-			</xf:select>
+					<xf:foreach loop="{{$prefixGroup1}}" key="$prefixId" value="$prefix">
+						<xf:option value="{$prefixId}"
+								   label="{{ prefix_title('thread', $prefixId) }}"
+								   data-prefix-class="{$prefix.css_class}"
+								   data-has-help="{$prefix.has_usage_help}" />
+					</xf:foreach>
+
+				</xf:select>
+			</div>
 		</div>
-	</div>
+
+	</xf:comment>
 
 	<div class="menu-row menu-row--separated">
 		{{ phrase('fs_status_engine:') }}

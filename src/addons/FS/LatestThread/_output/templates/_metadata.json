@@ -1,8 +1,8 @@
 {
     "public/forum_filters_latest.html": {
-        "version_id": 1000300,
-        "version_string": "1.0.3 Alpha",
-        "hash": "cf5b05fa8f7ecfdbbc4307922831e445"
+        "version_id": 1000600,
+        "version_string": "1.0.6 Alpha",
+        "hash": "94edfab19561be3036b43e442f6afaf2"
     },
     "public/forum_view_latest_content.html": {
         "version_id": 1000500,

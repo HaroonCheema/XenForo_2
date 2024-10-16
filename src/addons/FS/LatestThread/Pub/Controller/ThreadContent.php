@@ -277,13 +277,15 @@ class ThreadContent extends AbstractController
 			}
 		}
 
-		if ((isset($conditions['prefix_ids1']) &&  count($conditions['prefix_ids1'])) || (isset($conditions['prefix_ids2']) &&  count($conditions['prefix_ids2'])) || (isset($conditions['prefix_ids3']) &&  count($conditions['prefix_ids3']))) {
+		// if ((isset($conditions['prefix_ids1']) &&  count($conditions['prefix_ids1'])) || (isset($conditions['prefix_ids2']) &&  count($conditions['prefix_ids2'])) || (isset($conditions['prefix_ids3']) &&  count($conditions['prefix_ids3']))) {
+		if ((isset($conditions['prefix_ids2']) &&  count($conditions['prefix_ids2'])) || (isset($conditions['prefix_ids3']) &&  count($conditions['prefix_ids3']))) {
 
-			$prefixIds1 = isset($conditions['prefix_ids1']) ? $conditions['prefix_ids1'] : [];
+			// $prefixIds1 = isset($conditions['prefix_ids1']) ? $conditions['prefix_ids1'] : [];
 			$prefixIds2 = isset($conditions['prefix_ids2']) ? $conditions['prefix_ids2'] : [];
 			$prefixIds3 = isset($conditions['prefix_ids3']) ? $conditions['prefix_ids3'] : [];
 
-			$mergedArray = array_merge($prefixIds1, $prefixIds2, $prefixIds3);
+			// $mergedArray = array_merge($prefixIds1, $prefixIds2, $prefixIds3);
+			$mergedArray = array_merge($prefixIds2, $prefixIds3);
 
 			$prefixFilter = array_unique($mergedArray);
 
@@ -312,7 +314,7 @@ class ThreadContent extends AbstractController
 			'keywords' => 'str',
 			'tags' => 'str',
 			'extags' => 'str',
-			'prefix_ids1' => 'array',
+			// 'prefix_ids1' => 'array',
 			'prefix_ids2' => 'array',
 			'prefix_ids3' => 'array',
 			'rating' => 'uint',

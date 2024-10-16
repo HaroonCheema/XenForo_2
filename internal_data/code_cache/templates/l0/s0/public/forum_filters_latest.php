@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: cf5b05fa8f7ecfdbbc4307922831e445
+// FROM HASH: 94edfab19561be3036b43e442f6afaf2
 return array(
 'extensions' => array('start' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -187,7 +187,7 @@ return array(
 		'_type' => 'option',
 	);
 	$__compilerTemp4 = array();
-	$__compilerTemp5 = $__vars['prefixGroup1'];
+	$__compilerTemp5 = $__vars['prefixGroup2'];
 	if ($__templater->isTraversable($__compilerTemp5)) {
 		foreach ($__compilerTemp5 AS $__vars['prefixId'] => $__vars['prefix']) {
 			$__compilerTemp4[] = array(
@@ -200,23 +200,10 @@ return array(
 		}
 	}
 	$__compilerTemp6 = array();
-	$__compilerTemp7 = $__vars['prefixGroup2'];
+	$__compilerTemp7 = $__vars['prefixGroup3'];
 	if ($__templater->isTraversable($__compilerTemp7)) {
 		foreach ($__compilerTemp7 AS $__vars['prefixId'] => $__vars['prefix']) {
 			$__compilerTemp6[] = array(
-				'value' => $__vars['prefixId'],
-				'label' => $__templater->func('prefix_title', array('thread', $__vars['prefixId'], ), true),
-				'data-prefix-class' => $__vars['prefix']['css_class'],
-				'data-has-help' => $__vars['prefix']['has_usage_help'],
-				'_type' => 'option',
-			);
-		}
-	}
-	$__compilerTemp8 = array();
-	$__compilerTemp9 = $__vars['prefixGroup3'];
-	if ($__templater->isTraversable($__compilerTemp9)) {
-		foreach ($__compilerTemp9 AS $__vars['prefixId'] => $__vars['prefix']) {
-			$__compilerTemp8[] = array(
 				'value' => $__vars['prefixId'],
 				'label' => $__templater->func('prefix_title', array('thread', $__vars['prefixId'], ), true),
 				'data-prefix-class' => $__vars['prefix']['css_class'],
@@ -372,18 +359,7 @@ return array(
 		</div>
 	</div>
 
-	<div class="menu-row menu-row--separated">
-		' . 'Prefix' . $__vars['xf']['language']['label_separator'] . '
-		<div class="u-inputSpacer">
-			' . $__templater->formSelect(array(
-		'name' => 'prefix_ids1',
-		'value' => ($__vars['conditions']['prefix_ids1'] ?: array()),
-		'multiple' => true,
-		'class' => 'input js-example-basic-single',
-		'title' => 'Prefix',
-	), $__compilerTemp4) . '
-		</div>
-	</div>
+	' . '
 
 	<div class="menu-row menu-row--separated">
 		' . 'Prefix(Engine)' . $__vars['xf']['language']['label_separator'] . '
@@ -394,7 +370,7 @@ return array(
 		'multiple' => true,
 		'class' => 'input js-example-basic-single',
 		'title' => 'Prefix',
-	), $__compilerTemp6) . '
+	), $__compilerTemp4) . '
 		</div>
 	</div>
 
@@ -407,7 +383,7 @@ return array(
 		'multiple' => true,
 		'class' => 'input js-example-basic-single',
 		'title' => 'Prefix',
-	), $__compilerTemp8) . '
+	), $__compilerTemp6) . '
 		</div>
 	</div>
 
