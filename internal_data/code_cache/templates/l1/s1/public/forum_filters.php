@@ -52,8 +52,8 @@ return array(
 				' . $__templater->callMacro('prefix_macros', 'select', array(
 				'prefixes' => $__vars['prefixes'],
 				'type' => 'thread',
-				'multiple' => true,
 				'selected' => ($__vars['filterSet']['__prefix_ids'] ?: array()),
+				'multiple' => true,
 				'name' => 'thread_fields[__prefix_ids]',
 				'noneLabel' => $__vars['xf']['language']['parenthesis_open'] . 'Any' . $__vars['xf']['language']['parenthesis_close'],
 			), $__vars) . '
@@ -94,7 +94,6 @@ return array(
 				' . $__templater->callMacro('prefix_macros', 'select', array(
 				'prefixes' => $__vars['prefixes'],
 				'type' => 'thread',
-				'multiple' => true,
 				'selected' => ($__vars['filters']['prefix_id'] ? $__vars['filters']['prefix_id'] : 0),
 				'name' => 'prefix_id',
 				'noneLabel' => $__vars['xf']['language']['parenthesis_open'] . 'Any' . $__vars['xf']['language']['parenthesis_close'],

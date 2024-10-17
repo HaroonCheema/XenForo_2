@@ -165,6 +165,15 @@ Before your content can be posted, please take a few moments to register a free 
 		'hint' => 'Required',
 	)) . '
 
+' . $__templater->formPasswordBoxRow(array(
+		'name' => 'password_confirm',
+		'autocomplete' => 'new-password',
+		'required' => 'required',
+	), array(
+		'label' => 'Confirm new password',
+		'hint' => 'Required',
+	)) . '
+
 			' . $__templater->formRadioRow(array(
 		'name' => 'gender',
 		'required' => 'required',

@@ -30,27 +30,11 @@ return array(
 	';
 	$__templater->includeCss('message.less');
 	$__finalCompiled .= '
-';
-	$__vars['svMultiPrefixSubtitle'] = (($__vars['svMultiPrefixSubtitle'] === null) ? $__templater->func('property', array('svMultiPrefixSubtitle', ), false) : $__vars['svMultiPrefixSubtitle']);
-	$__finalCompiled .= '
 	<div class="contentRow ' . ($__templater->method($__vars['post'], 'isIgnored', array()) ? ' is-ignored' : '') . ($__templater->method($__vars['post'], 'isUnread', array()) ? ' is-unread' : '') . '" data-author="' . ($__templater->escape($__vars['post']['User']['username']) ?: $__templater->escape($__vars['post']['username'])) . '" data-content="post-' . $__templater->escape($__vars['post']['post_id']) . '">
 		<div class="contentRow-main">
 			<h3 class="contentRow-title">
-				<a href="' . $__templater->func('link', array('threads/post', $__vars['post']['Thread'], array('post_id' => $__vars['post']['post_id'], ), ), true) . '">' . (($__vars['svMultiPrefixSubtitle'] == '') ? $__templater->func('prefix', array('thread', $__vars['post']['Thread'], ), true) : '') . $__templater->escape($__vars['post']['Thread']['title']) . (($__vars['svMultiPrefixSubtitle'] === 'suffix') ? $__templater->func('prefix', array('thread', $__vars['post']['Thread'], ), true) : '') . '</a>
+				<a href="' . $__templater->func('link', array('threads/post', $__vars['post']['Thread'], array('post_id' => $__vars['post']['post_id'], ), ), true) . '">' . $__templater->func('prefix', array('thread', $__vars['post']['Thread'], ), true) . $__templater->escape($__vars['post']['Thread']['title']) . '</a>
 			</h3>
-';
-	if ($__vars['svMultiPrefixSubtitle'] === 'subtitle') {
-		$__compilerTemp1 = '';
-		$__compilerTemp1 .= $__templater->func('prefix', array('thread', $__vars['post']['Thread'], ), true);
-		if (strlen(trim($__compilerTemp1)) > 0) {
-			$__finalCompiled .= '
-	<div class="contentRow-minor">
-		' . $__compilerTemp1 . '
-	</div>
-';
-		}
-	}
-	$__finalCompiled .= '
 			';
 	if ($__vars['snippetLength'] > 0) {
 		$__finalCompiled .= '

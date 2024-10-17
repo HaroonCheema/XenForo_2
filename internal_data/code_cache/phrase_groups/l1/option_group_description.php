@@ -55,6 +55,7 @@ You may set a user into \'discouraged\' mode by editing their user profile, or d
   'option_group_description.fs_subscription_features' => '',
   'option_group_description.fs_team_select' => '',
   'option_group_description.fs_thread_rules' => '',
+  'option_group_description.fs_thread_scoring_system' => '',
   'option_group_description.fs_thread_thumbnail' => '',
   'option_group_description.fs_translator' => '[FS] Translator',
   'option_group_description.fs_web_ranking' => '',

@@ -56,7 +56,6 @@ return array(
 						' . $__templater->formPrefixInput($__vars['prefixes'], array(
 		'type' => 'thread',
 		'prefix-value' => $__vars['first']['Thread']['prefix_id'],
-		'multi-prefix-value' => $__vars['first']['Thread']['sv_prefix_ids'],
 		'textbox-value' => $__vars['first']['Thread']['title'],
 		'autofocus' => 'autofocus',
 		'href' => $__templater->func('link', array('forums/prefixes', ), false),

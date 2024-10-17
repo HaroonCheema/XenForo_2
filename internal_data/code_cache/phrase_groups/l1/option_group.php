@@ -53,6 +53,7 @@ return array (
   'option_group.fs_subscription_features' => '[FS] Mountain Subscription Features',
   'option_group.fs_team_select' => '[FS] Select Your Teams',
   'option_group.fs_thread_rules' => '[FS] Threads Rules',
+  'option_group.fs_thread_scoring_system' => '[FS] Thread Scoring System',
   'option_group.fs_thread_thumbnail' => '[FS] Thread Thumbnail',
   'option_group.fs_translator' => '[FS] Translator',
   'option_group.fs_web_ranking' => '[FS] Website Ranking',
