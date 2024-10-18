@@ -11,11 +11,23 @@
         "version_string": "1.0.0 Alpha",
         "hash": "8cbb0cd2712acbe81d6477f8059033ca"
     },
+    "cron_entry.fs_thread_solution_point.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "32a917e5901dca7a176a7af68f48bc39"
+    },
     "option.fs_post_reply_points.txt": {
         "global_cache": false,
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
         "hash": "ac5aa89de7f9ac9629d77ffcae09ac0c"
+    },
+    "option.fs_reply_reaction_points.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "e3fecd9ec868c8c581c3a4b477f15a62"
     },
     "option.fs_thread_starter_points.txt": {
         "global_cache": false,
@@ -23,17 +35,47 @@
         "version_string": "1.0.0 Alpha",
         "hash": "859e07c09f1628f5f85343fecc3942e3"
     },
+    "option.fs_total_solution_points.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "2a9dbfa4b74c53d7304fc8b79a1874d3"
+    },
+    "option.fs_total_words_points.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "6f15b8d4b7287d60a8ea3d1c5cbadc84"
+    },
     "option_explain.fs_post_reply_points.txt": {
         "global_cache": false,
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
         "hash": "1f1d879eb2aa192b114d044330020e52"
     },
+    "option_explain.fs_reply_reaction_points.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "c99744317a6efb76c62c0b18da8362ac"
+    },
     "option_explain.fs_thread_starter_points.txt": {
         "global_cache": false,
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
         "hash": "18c2bebdf7a391431b84c5c1bd8171c1"
+    },
+    "option_explain.fs_total_solution_points.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "5ae9d72c655bbec41bdbe4f81856080b"
+    },
+    "option_explain.fs_total_words_points.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "a3c11a5bdd1d813b92c192fab42479e3"
     },
     "option_group.fs_thread_scoring_system.txt": {
         "global_cache": false,

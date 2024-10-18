@@ -21,4 +21,12 @@ class ScoringSystem
 
         $app->jobManager()->enqueueUnique($jobID, 'FS\ThreadScoringSystem:ReplyPoints', [], false);
     }
+
+    public static function threadSolutionPoints()
+    {
+        $app = \XF::app();
+        $jobID = "thread_solution_points";
+
+        $app->jobManager()->enqueueUnique($jobID, 'FS\ThreadScoringSystem:SolutionPoints', [], false);
+    }
 }

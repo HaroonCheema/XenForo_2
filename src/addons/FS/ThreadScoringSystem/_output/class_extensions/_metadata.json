@@ -1,4 +1,10 @@
 {
+    "XF-Entity-Post_FS-ThreadScoringSystem-XF-Entity-Post.json": {
+        "hash": "3dcfded7eb6a4ccfbb21f973af15a5de"
+    },
+    "XF-Entity-ThreadQuestion_FS-ThreadScoringSystem-XF-Entity-ThreadQuestion.json": {
+        "hash": "ddec07657e67814127216b7f7dcee4bb"
+    },
     "XF-Entity-Thread_FS-ThreadScoringSystem-XF-Entity-Thread.json": {
         "hash": "68a777d780a7c22e172cd646628760f1"
     }

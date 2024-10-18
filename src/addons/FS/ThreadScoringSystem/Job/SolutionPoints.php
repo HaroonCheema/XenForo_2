@@ -4,12 +4,12 @@ namespace FS\ThreadScoringSystem\Job;
 
 use XF\Job\AbstractRebuildJob;
 
-class ReplyPoints extends AbstractRebuildJob
+class SolutionPoints extends AbstractRebuildJob
 {
     protected $rebuildDefaultData = [
         'steps' => 0,
         'start' => 0,
-        'batch' => 500,
+        'batch' => 1000,
     ];
 
     protected function getNextIds($start, $batch)
@@ -19,7 +19,7 @@ class ReplyPoints extends AbstractRebuildJob
         return $db->fetchAllColumn($db->limit(
             "
 				SELECT thread_id
-				FROM xf_thread
+				FROM xf_thread_question
 				WHERE thread_id > ?
 				ORDER BY thread_id
 			",
@@ -29,18 +29,18 @@ class ReplyPoints extends AbstractRebuildJob
 
     protected function rebuildById($id)
     {
-        /** @var \XF\Entity\Thread $thread */
-        $thread = $this->app->em()->find('XF:Thread', $id);
-        if (!$thread) {
+        /** @var \XF\Entity\ThreadQuestion $threadQuestions */
+        $threadQuestion = $this->app->em()->find('XF:ThreadQuestion', $id);
+        if (!$threadQuestion  || !$threadQuestion->solution_post_id) {
             return;
         }
 
-        $postReply = \XF::service('FS\ThreadScoringSystem:ReplyPoints');
-        $postReply->addEditReplyPoints($thread);
+        $threadQuestionServ = \XF::service('FS\ThreadScoringSystem:ReplyPoints');
+        $threadQuestionServ->addEditSolutionPoints($threadQuestion);
     }
 
     protected function getStatusType()
     {
-        return \XF::phrase('threads');
+        return \XF::phrase('threadsSolution');
     }
 }

@@ -11,8 +11,7 @@ class Thread extends XFCP_Thread
         $structure = parent::getStructure($structure);
 
         $structure->columns['points_collected'] =  ['type' => self::BOOL, 'default' => false];
-        // $structure->columns['latest_rating_avg'] =  ['type' => self::FLOAT, 'default' => 0];
-
+        $structure->columns['latest_rating_avg'] =  ['type' => self::FLOAT, 'default' => 0];
 
         return $structure;
     }
@@ -46,7 +45,7 @@ class Thread extends XFCP_Thread
     {
         $parent = parent::_postDelete();
 
-        $exist = \XF::finder('FS\ThreadScoringSystem:ScoringSystem')->where('points_type', 'thread')->where('thread_id', $this->thread_id)->fetch();
+        $exist = \XF::finder('FS\ThreadScoringSystem:ScoringSystem')->where('thread_id', $this->thread_id)->fetch();
 
         if (count($exist)) {
 

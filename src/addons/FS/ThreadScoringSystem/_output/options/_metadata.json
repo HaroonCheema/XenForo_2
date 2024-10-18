@@ -2,7 +2,16 @@
     "fs_post_reply_points.json": {
         "hash": "d5b1d90d3230dec752169ac4c54a8197"
     },
+    "fs_reply_reaction_points.json": {
+        "hash": "aaac632a643ef4255e480827f23006ff"
+    },
     "fs_thread_starter_points.json": {
         "hash": "7070df4bc9f7976c9ea1122929b91e6f"
+    },
+    "fs_total_solution_points.json": {
+        "hash": "9eb913d32cbe476cb32a9a489cd0b69e"
+    },
+    "fs_total_words_points.json": {
+        "hash": "6d92ea42bf27c3ddd82b533dd87133a3"
     }
 }

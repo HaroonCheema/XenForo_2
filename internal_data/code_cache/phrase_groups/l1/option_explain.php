@@ -424,6 +424,7 @@ This option requires that the specified account is a catch-all account or suppor
   'option_explain.fs_qa_routeFilterId' => 'Enter the ID of RouteFilter which you yave create for QuestionsAnswers forum',
   'option_explain.fs_questionAnswerForum' => 'Select the Question Forum on which Question&Answers search functionality will work.',
   'option_explain.fs_rejected_user_mod_ids' => 'Enter the ids Comma separated like 1,2,3,4,5,6,......',
+  'option_explain.fs_reply_reaction_points' => 'You can adjust total reaction points from here...!',
   'option_explain.fs_rm_bg_img' => '',
   'option_explain.fs_rm_bg_size' => 'it\'s required if the  image size needs to increase according to your theme',
   'option_explain.fs_rm_bg_width' => 'it\'s required if the  image size needs to increase according to your theme',
@@ -441,6 +442,8 @@ This option requires that the specified account is a catch-all account or suppor
   'option_explain.fs_thread_starter_points' => 'You can adjust thread starter or post thread points from here...!',
   'option_explain.fs_thumbnail_applicable_forums' => 'List the forum ids that are allowed to be display thumbnail to all. Use , (comma) between ids.
 Example: 1,2,3,4,..',
+  'option_explain.fs_total_solution_points' => 'You can adjust total solutions points from here...!',
+  'option_explain.fs_total_words_points' => 'You can adjust total words points from here...!',
   'option_explain.fs_unhide_user_ids' => 'List the user ids that are allowed to be display username to all. Use , (comma) between ids.
 Example: 1,2,3,4,..',
   'option_explain.fs_web_ranking_parent_web_id' => '',
