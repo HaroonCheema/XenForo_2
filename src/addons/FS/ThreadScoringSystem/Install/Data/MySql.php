@@ -18,8 +18,9 @@ class MySql
             $table->addColumn('thread_id', 'int');
             $table->addColumn('user_id', 'int');
             $table->addColumn('points_type', 'varchar', 20);
-            $table->addColumn('points', 'int');
-            $table->addColumn('percentage', 'int');
+            $table->addColumn('points', 'decimal', '65,8')->unsigned(false)->setDefault(0);
+            $table->addColumn('percentage', 'decimal', '65,8')->unsigned(false)->setDefault(0);
+
             $table->addPrimaryKey('id');
         };
 

@@ -19,8 +19,8 @@ class ScoringSystem extends Entity
             'thread_id' => ['type' => self::UINT, 'required' => true],
             'user_id' => ['type' => self::UINT, 'required' => true],
             'points_type' => ['type' => self::STR, 'maxLength' => 20, 'required' => true],
-            'points' => ['type' => self::UINT, 'required' => true],
-            'percentage' => ['type' => self::UINT, 'required' => true],
+            'points' => ['type' => self::FLOAT, 'required' => true],
+            'percentage' => ['type' => self::FLOAT, 'required' => true],
         ];
 
         $structure->relations = [

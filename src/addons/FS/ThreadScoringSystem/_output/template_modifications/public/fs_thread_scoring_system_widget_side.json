@@ -1,0 +1,9 @@
+{
+    "template": "thread_view",
+    "description": "fs_thread_scoring_system_widget_side",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:widgetpos id=\"thread_view_sidebar\" context-thread=\"{$thread}\" position=\"sidebar\" />",
+    "replace": "<xf:include template=\"fs_thread_scoring_system_side_widget\" />\n\n$0"
+}

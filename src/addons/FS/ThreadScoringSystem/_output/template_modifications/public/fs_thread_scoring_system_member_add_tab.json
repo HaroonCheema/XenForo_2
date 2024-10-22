@@ -1,0 +1,9 @@
+{
+    "template": "member_view",
+    "description": "fs_thread_scoring_system_member_add_tab",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<!--[XF:tabs:end]-->",
+    "replace": "<xf:if is=\"{{ $xf.visitor.hasPermission('fs_thread_scoring_system', 'can_view') }}\">\n\t<a href=\"{{ link('members/my-points-score', $user) }}\"\n\t   rel=\"nofollow\"\n\t   class=\"tabs-tab\"\n\t   id=\"my-points-score\"\n\t   role=\"tab\">{{ phrase('fs_thread_scoring_point_score') }}</a>\n</xf:if>\n\n$0"
+}

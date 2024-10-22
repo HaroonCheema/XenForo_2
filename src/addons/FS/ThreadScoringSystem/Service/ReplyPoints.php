@@ -47,11 +47,11 @@ class ReplyPoints extends \XF\Service\AbstractService
             }
         }
 
-        if ($usersPostCounts) {
+        if ($totalPost) {
             $this->postReplyPointsAddEdits($thread, $usersPostCounts, $totalPost, $userIds);
         }
 
-        if ($usersWordCounts) {
+        if ($totalWords) {
             $this->postReplyWordsPointsAddEdits($thread, $usersWordCounts, $totalWords, $userIds);
         }
 
@@ -106,9 +106,9 @@ class ReplyPoints extends \XF\Service\AbstractService
 
             $userPosts = $value;
 
-            $percentage = round(($userPosts / $totalPost) * 100);
+            $percentage = ($userPosts / $totalPost) * 100;
 
-            $pointsFromPercentage = round(($percentage / 100) * $totalPoints);
+            $pointsFromPercentage = ($percentage / 100) * $totalPoints;
 
             $userRepyScore = \XF::finder('FS\ThreadScoringSystem:ScoringSystem')->where('user_id', $key)->where('points_type', 'reply')->where('thread_id', $thread->thread_id)->fetchOne();
 
@@ -146,9 +146,9 @@ class ReplyPoints extends \XF\Service\AbstractService
 
             $userWords = $value;
 
-            $percentage = round(($userWords / $totalWords) * 100);
+            $percentage = ($userWords / $totalWords) * 100;
 
-            $pointsFromPercentage = round(($percentage / 100) * $totalPoints);
+            $pointsFromPercentage = ($percentage / 100) * $totalPoints;
 
             $userWordsScore = \XF::finder('FS\ThreadScoringSystem:ScoringSystem')->where('user_id', $key)->where('points_type', 'words')->where('thread_id', $thread->thread_id)->fetchOne();
 
@@ -186,9 +186,9 @@ class ReplyPoints extends \XF\Service\AbstractService
 
             $userReactions = $value;
 
-            $percentage = round(($userReactions / $totalReactions) * 100);
+            $percentage = ($userReactions / $totalReactions) * 100;
 
-            $pointsFromPercentage = round(($percentage / 100) * $totalPoints);
+            $pointsFromPercentage = ($percentage / 100) * $totalPoints;
 
             $userReactionsScore = \XF::finder('FS\ThreadScoringSystem:ScoringSystem')->where('user_id', $key)->where('points_type', 'reactions')->where('thread_id', $thread->thread_id)->fetchOne();
 

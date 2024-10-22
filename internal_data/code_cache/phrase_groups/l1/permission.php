@@ -198,6 +198,7 @@ return array (
   'permission.fs_latest_thread_can_featured_unfea' => 'Can Featured/Unfeatured',
   'permission.fs_limitations_fs_conversationLimit' => 'Conversation Limit',
   'permission.fs_limitations_fs_dailyDiscussiontLimit' => 'Daily Discussion Limit',
+  'permission.fs_thread_scoring_system_can_view' => 'Can view',
   'permission.fs_thread_thumbnail_group_fs_thread_thumbnail' => 'Allow Thread Thumbnail',
   'permission.fs_threadsaleitem_fs_saleitem' => 'Allow to enable Sale Item?',
   'permission.fs_user_names_can_see_usernames' => 'Can see Usernames',

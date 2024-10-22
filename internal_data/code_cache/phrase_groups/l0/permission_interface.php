@@ -33,6 +33,7 @@ return array (
   'permission_interface.fs_latest_thread' => '[FS] Latest Update',
   'permission_interface.fs_limitations' => '[FS] Limitations',
   'permission_interface.fs_thread_replies_abrove' => 'Thread Post Approve',
+  'permission_interface.fs_thread_scoring_system' => '[FS] Thread Scoring System',
   'permission_interface.fs_threadsaleitem' => '[FS] ThreadSaleItem',
   'permission_interface.fs_website_ranking' => '[FS] Website Ranking',
   'permission_interface.generalModeratorPermissions' => 'General moderator permissions',

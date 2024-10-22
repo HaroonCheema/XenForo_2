@@ -1,0 +1,9 @@
+{
+    "template": "member_view",
+    "description": "fs_thread_scoring_system_member_add_panel",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<!--[XF:tab_panes:end]-->",
+    "replace": "<xf:if is=\"{{ $xf.visitor.hasPermission('fs_thread_scoring_system', 'can_view') }}\">\n\t<li data-href=\"{{ link('members/my-points-score', $user) }}\" role=\"tabpanel\" aria-labelledby=\"my-points-score\">\n\t\t<div class=\"blockMessage\">{{ phrase('loading...') }}</div>\n\t</li>\n</xf:if>\n\n$0"
+}

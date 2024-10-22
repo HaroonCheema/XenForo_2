@@ -408,6 +408,18 @@ return array(
 ';
 		}
 		$__finalCompiled .= '
+';
+		if ($__templater->method($__vars['xf']['visitor'], 'hasPermission', array('fs_thread_scoring_system', 'can_view', ))) {
+			$__finalCompiled .= '
+	<a href="' . $__templater->func('link', array('members/my-points-score', $__vars['user'], ), true) . '"
+	   rel="nofollow"
+	   class="tabs-tab"
+	   id="my-points-score"
+	   role="tab">' . 'Points score' . '</a>
+';
+		}
+		$__finalCompiled .= '
+
 ' . '
 			</span>
 ';
@@ -619,6 +631,16 @@ return array(
 ';
 		}
 		$__finalCompiled .= '
+';
+		if ($__templater->method($__vars['xf']['visitor'], 'hasPermission', array('fs_thread_scoring_system', 'can_view', ))) {
+			$__finalCompiled .= '
+	<li data-href="' . $__templater->func('link', array('members/my-points-score', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="my-points-score">
+		<div class="blockMessage">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
+	</li>
+';
+		}
+		$__finalCompiled .= '
+
 ' . '
 </ul>
 ';

@@ -1,0 +1,43 @@
+<xf:sidebar key="conversationInfo">
+
+	<xf:if is="{{ $xf.visitor.hasPermission('fs_thread_scoring_system', 'can_view') }}">
+		<xf:set var="$data" value="{{ $thread->getPointsSums() }}" />
+
+		<xf:if is="count($data.records)">
+
+			<div class="block">
+				<div class="block-container">
+
+					<h3 class="block-minorHeader">{{ phrase('fs_thread_scores') }}</h3>
+					<xf:set var="$replyPhrase" value="{{ phrase('fs_thread_scores') }}" />
+
+					<div class="block-body block-row">
+
+						<dl class="pairs pairs--justified">										
+							<dt>{{ phrase('fs_thread_scores_users') }}</dt>
+							<dd>{{ phrase('fs_thread_scores_users_total_points') }}</dd>
+						</dl>
+
+						<br/>
+
+						<xf:foreach loop="$data.records" value="$value">
+
+							<dl class="pairs pairs--justified">										
+								<dt><xf:username user="$value.User" rich="true" defaultname="{$value.User.username}" itemprop="name" /></dt>
+								<dd data-xf-init="tooltip" title="{{$data.totalCounts.{$value.user_id}.thread ? phrase('fs_thread_scoring_system_thread') . ' ' . $data.totalCounts.{$value.user_id}.thread . ' (' . phrase('points') . ')' : ' '}}
+																  {{$data.totalCounts.{$value.user_id}.reply ? phrase('fs_thread_scoring_system_reply') . ' ' . $data.totalCounts.{$value.user_id}.reply . ' (' . phrase('points') . ')' : ' '}}
+																  {{$data.totalCounts.{$value.user_id}.words ? phrase('fs_thread_scoring_system_words') . ' ' . $data.totalCounts.{$value.user_id}.words . ' (' . phrase('points') . ')' : ' '}}
+																  {{$data.totalCounts.{$value.user_id}.reactions ? phrase('fs_thread_scoring_system_reactions') . ' ' . $data.totalCounts.{$value.user_id}.reactions . ' (' . phrase('points') . ')' : ' '}}
+																  {{$data.totalCounts.{$value.user_id}.solution ? phrase('fs_thread_scoring_system_solution') . ' ' . $data.totalCounts.{$value.user_id}.solution . ' (' . phrase('points') . ')' : ' '}}">{$data.totalCounts.{$value.user_id}.totalPoints}</dd>
+							</dl>
+
+						</xf:foreach>
+
+					</div>
+				</div>
+			</div>
+
+		</xf:if>
+	</xf:if>
+
+</xf:sidebar>

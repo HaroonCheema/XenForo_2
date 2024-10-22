@@ -17,6 +17,60 @@
         "version_string": "1.0.0 Alpha",
         "hash": "32a917e5901dca7a176a7af68f48bc39"
     },
+    "fs_thread_scores.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "f2981c31d0460ad8129bc0db2cf00162"
+    },
+    "fs_thread_scores_users.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "f6039d44b29456b20f8f373155ae4973"
+    },
+    "fs_thread_scores_users_total_points.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "a9b5e6a62c34042742eb1cd78a7b971e"
+    },
+    "fs_thread_scoring_point_score.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d3330f547338456d2ebcb5c94dd18d81"
+    },
+    "fs_thread_scoring_system_reactions.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "6103cf4b0008045f6f6ddbc1580e5b6f"
+    },
+    "fs_thread_scoring_system_reply.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "68b5dfdef525804b90841fed38f98f1b"
+    },
+    "fs_thread_scoring_system_solution.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "0fffa217556fef73b10519608a8ef680"
+    },
+    "fs_thread_scoring_system_thread.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "32212a5c04f30c6a742fc998208981fc"
+    },
+    "fs_thread_scoring_system_words.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "860771776d5323b7a25b7918d273205d"
+    },
     "option.fs_post_reply_points.txt": {
         "global_cache": false,
         "version_id": 1000010,
@@ -88,5 +142,17 @@
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
         "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "permission.fs_thread_scoring_system_can_view.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "0b19e616a6f965a1fee427de877c3fd7"
+    },
+    "permission_interface.fs_thread_scoring_system.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "f8a3b404afc88b2a7a416d39f11e806b"
     }
 }

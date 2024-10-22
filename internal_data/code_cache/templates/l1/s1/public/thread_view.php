@@ -1141,6 +1141,8 @@ return array(
 
 ' . '
 
+' . $__templater->includeTemplate('fs_thread_scoring_system_side_widget', $__vars) . '
+
 ';
 	$__templater->modifySidebarHtml('_xfWidgetPositionSidebarbfab7223b9688edb88e508319a9aacac', $__templater->widgetPosition('thread_view_sidebar', array(
 		'thread' => $__vars['thread'],

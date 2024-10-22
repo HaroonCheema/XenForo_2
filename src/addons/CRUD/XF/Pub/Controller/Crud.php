@@ -421,8 +421,156 @@ class Crud extends AbstractController
     //     return $this->view('CRUD\XF:Crud\Index', 'crud_record_all', $viewParams);
     // }
 
+    /**
+     * @return \XF\Db\AbstractAdapter
+     */
+    public function db()
+    {
+        return \XF::em()->getDb();
+    }
+
     public function actionIndex(ParameterBag $params)
     {
+        $db = $this->db();
+        $db->beginTransaction();
+
+        $db = \XF::db();
+
+
+        $records = $this->finder('FS\ThreadScoringSystem:ScoringSystem')->where('thread_id', 826)->fetch();
+
+        $totalCounts = array();
+        $recordIds = array();
+
+        foreach ($records as  $value) {
+
+            $userId = $value->user_id;
+
+            // $usersPostCounts = array();
+
+            if (isset($totalCounts[$userId]['totalPoints'])) {
+
+                $totalCounts[$userId]['totalPoints'] += $value['points'];
+            } else {
+                $recordIds[] = $value->id;
+
+                $totalCounts[$userId]['totalPoints'] = $value['points'];
+            }
+
+            // if ($value['points_type'] == 'reply') {
+            //     # code...
+            // }
+
+            switch ($value['points_type']) {
+                case 'reply': {
+                        if (isset($totalCounts[$userId]['reply'])) {
+
+                            $totalCounts[$userId]['reply'] += floatval($value['points']);
+                        } else {
+                            // $userIds[] = $userId;
+
+                            $totalCounts[$userId]['reply'] = floatval($value['points']);
+                        }
+                    }
+                    break;
+                case 'words': {
+                        if (isset($totalCounts[$userId]['words'])) {
+
+                            $totalCounts[$userId]['words'] += $value['points'];
+                        } else {
+                            // $userIds[] = $userId;
+
+                            $totalCounts[$userId]['words'] = $value['points'];
+                        }
+                    }
+                    break;
+                case 'reactions': {
+                        if (isset($totalCounts[$userId]['reactions'])) {
+
+                            $totalCounts[$userId]['reactions'] += $value['points'];
+                        } else {
+                            // $userIds[] = $userId;
+
+                            $totalCounts[$userId]['reactions'] = $value['points'];
+                        }
+                    }
+                    break;
+                case 'thread': {
+                        if (isset($totalCounts[$userId]['thread'])) {
+
+                            $totalCounts[$userId]['thread'] += $value['points'];
+                        } else {
+                            // $userIds[] = $userId;
+
+                            $totalCounts[$userId]['thread'] = $value['points'];
+                        }
+                    }
+                    break;
+                    // default:
+                    //     $value = 0;
+            }
+        }
+
+        echo "<pre>";
+        var_dump($recordIds, $totalCounts);
+
+        exit;
+
+        echo "<pre>";
+        var_dump($records);
+        exit;
+
+        // $records =  $db->fetchAll(
+        //     "SELECT thread_id , user_id , SUM(`points`) AS total_sum
+        //     FROM fs_thread_scoring_system
+        //     WHERE thread_id  = ?
+        // ",
+        //     [
+        //         826,
+        //     ]
+        // );
+
+        // $records = $db->fetchAll(
+        //     "
+        // 	SELECT thread_id, user_id, SUM(points) AS total_amount
+        //     FROM fs_thread_scoring_system
+        //     WHERE thread_id  = ?
+        //     GROUP BY user_id
+        // ",
+        //     [
+        //         826,
+        //     ]
+        // );
+
+
+        //         SELECT product, SUM(amount) AS total_amount
+        // FROM sales
+        // GROUP BY product;
+
+
+        // $records = $db->fetchAllColumn('
+        // 		SELECT SUM(points) as total_amount
+        // 		FROM fs_thread_scoring_system
+        // 		GROUP BY user_id
+        // 	');
+
+        // foreach ($records as  $value) {
+
+        //     echo "<pre>";
+        //     var_dump($value->User);
+
+        //     exit;
+        // }
+
+        echo "<pre>";
+        var_dump($finder);
+        exit;
+
+        //         SELECT name, SUM(amount) as total_amount
+        // FROM your_table
+        // GROUP BY name;
+
+
         $finder = $this->finder('CRUD\XF:Crud');
 
         // ager filter search wala set hai to ye code chaley ga or is k ander wala function or code run ho ga
