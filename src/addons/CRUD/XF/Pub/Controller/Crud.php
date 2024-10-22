@@ -431,94 +431,94 @@ class Crud extends AbstractController
 
     public function actionIndex(ParameterBag $params)
     {
-        $db = $this->db();
-        $db->beginTransaction();
+        // $db = $this->db();
+        // $db->beginTransaction();
 
-        $db = \XF::db();
+        // $db = \XF::db();
 
 
-        $records = $this->finder('FS\ThreadScoringSystem:ScoringSystem')->where('thread_id', 826)->fetch();
+        // $records = $this->finder('FS\ThreadScoringSystem:ScoringSystem')->where('thread_id', 826)->fetch();
 
-        $totalCounts = array();
-        $recordIds = array();
+        // $totalCounts = array();
+        // $recordIds = array();
 
-        foreach ($records as  $value) {
+        // foreach ($records as  $value) {
 
-            $userId = $value->user_id;
+        //     $userId = $value->user_id;
 
-            // $usersPostCounts = array();
+        //     // $usersPostCounts = array();
 
-            if (isset($totalCounts[$userId]['totalPoints'])) {
+        //     if (isset($totalCounts[$userId]['totalPoints'])) {
 
-                $totalCounts[$userId]['totalPoints'] += $value['points'];
-            } else {
-                $recordIds[] = $value->id;
+        //         $totalCounts[$userId]['totalPoints'] += $value['points'];
+        //     } else {
+        //         $recordIds[] = $value->id;
 
-                $totalCounts[$userId]['totalPoints'] = $value['points'];
-            }
+        //         $totalCounts[$userId]['totalPoints'] = $value['points'];
+        //     }
 
-            // if ($value['points_type'] == 'reply') {
-            //     # code...
-            // }
+        //     // if ($value['points_type'] == 'reply') {
+        //     //     # code...
+        //     // }
 
-            switch ($value['points_type']) {
-                case 'reply': {
-                        if (isset($totalCounts[$userId]['reply'])) {
+        //     switch ($value['points_type']) {
+        //         case 'reply': {
+        //                 if (isset($totalCounts[$userId]['reply'])) {
 
-                            $totalCounts[$userId]['reply'] += floatval($value['points']);
-                        } else {
-                            // $userIds[] = $userId;
+        //                     $totalCounts[$userId]['reply'] += floatval($value['points']);
+        //                 } else {
+        //                     // $userIds[] = $userId;
 
-                            $totalCounts[$userId]['reply'] = floatval($value['points']);
-                        }
-                    }
-                    break;
-                case 'words': {
-                        if (isset($totalCounts[$userId]['words'])) {
+        //                     $totalCounts[$userId]['reply'] = floatval($value['points']);
+        //                 }
+        //             }
+        //             break;
+        //         case 'words': {
+        //                 if (isset($totalCounts[$userId]['words'])) {
 
-                            $totalCounts[$userId]['words'] += $value['points'];
-                        } else {
-                            // $userIds[] = $userId;
+        //                     $totalCounts[$userId]['words'] += $value['points'];
+        //                 } else {
+        //                     // $userIds[] = $userId;
 
-                            $totalCounts[$userId]['words'] = $value['points'];
-                        }
-                    }
-                    break;
-                case 'reactions': {
-                        if (isset($totalCounts[$userId]['reactions'])) {
+        //                     $totalCounts[$userId]['words'] = $value['points'];
+        //                 }
+        //             }
+        //             break;
+        //         case 'reactions': {
+        //                 if (isset($totalCounts[$userId]['reactions'])) {
 
-                            $totalCounts[$userId]['reactions'] += $value['points'];
-                        } else {
-                            // $userIds[] = $userId;
+        //                     $totalCounts[$userId]['reactions'] += $value['points'];
+        //                 } else {
+        //                     // $userIds[] = $userId;
 
-                            $totalCounts[$userId]['reactions'] = $value['points'];
-                        }
-                    }
-                    break;
-                case 'thread': {
-                        if (isset($totalCounts[$userId]['thread'])) {
+        //                     $totalCounts[$userId]['reactions'] = $value['points'];
+        //                 }
+        //             }
+        //             break;
+        //         case 'thread': {
+        //                 if (isset($totalCounts[$userId]['thread'])) {
 
-                            $totalCounts[$userId]['thread'] += $value['points'];
-                        } else {
-                            // $userIds[] = $userId;
+        //                     $totalCounts[$userId]['thread'] += $value['points'];
+        //                 } else {
+        //                     // $userIds[] = $userId;
 
-                            $totalCounts[$userId]['thread'] = $value['points'];
-                        }
-                    }
-                    break;
-                    // default:
-                    //     $value = 0;
-            }
-        }
+        //                     $totalCounts[$userId]['thread'] = $value['points'];
+        //                 }
+        //             }
+        //             break;
+        //             // default:
+        //             //     $value = 0;
+        //     }
+        // }
 
-        echo "<pre>";
-        var_dump($recordIds, $totalCounts);
+        // echo "<pre>";
+        // var_dump($recordIds, $totalCounts);
 
-        exit;
+        // exit;
 
-        echo "<pre>";
-        var_dump($records);
-        exit;
+        // echo "<pre>";
+        // var_dump($records);
+        // exit;
 
         // $records =  $db->fetchAll(
         //     "SELECT thread_id , user_id , SUM(`points`) AS total_sum
@@ -562,9 +562,9 @@ class Crud extends AbstractController
         //     exit;
         // }
 
-        echo "<pre>";
-        var_dump($finder);
-        exit;
+        // echo "<pre>";
+        // var_dump($finder);
+        // exit;
 
         //         SELECT name, SUM(amount) as total_amount
         // FROM your_table
