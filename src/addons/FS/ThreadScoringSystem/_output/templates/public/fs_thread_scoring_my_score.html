@@ -1,0 +1,42 @@
+<div class="block">
+
+	<div class="block-container">
+
+		<div class="block-body">
+
+			<xf:datalist data-xf-init="responsive-data-list">
+				<xf:if is="$totalCounts is not empty">
+
+					<xf:macro name="record_table_list" arg-totalCounts="{$totalCounts}" />
+
+					<xf:else />
+					<div class="blockMessage">
+						{{ phrase('no_items_have_been_created_yet') }}
+					</div>
+				</xf:if>
+			</xf:datalist>
+		</div>
+
+	</div>
+</div>
+
+<xf:macro name="record_table_list" arg-totalCounts="!">
+	<xf:datarow rowtype="header">
+		<xf:cell> {{ phrase('fs_thread_scoring_system_threads') }} </xf:cell>
+		<xf:cell> {{ phrase('fs_thread_scoring_system_replies') }} </xf:cell>
+		<xf:cell> {{ phrase('fs_thread_scoring_system_word') }} </xf:cell>
+		<xf:cell> {{ phrase('fs_thread_scoring_system_reaction') }} </xf:cell>
+		<xf:cell> {{ phrase('fs_thread_scoring_system_solutions') }} </xf:cell>
+	</xf:datarow>
+
+	<xf:datarow>
+		<xf:foreach loop="{$totalCounts}" value="$val">
+			<xf:cell> {{$val.thread ?: phrase('n_a') }} </xf:cell>
+			<xf:cell> {{$val.reply ?: phrase('n_a') }} </xf:cell>
+			<xf:cell> {{$val.words ?: phrase('n_a') }} </xf:cell>
+			<xf:cell> {{$val.reactions ?: phrase('n_a') }} </xf:cell>
+			<xf:cell> {{$val.solution ?: phrase('n_a') }} </xf:cell>
+		</xf:foreach>
+	</xf:datarow>
+
+</xf:macro>

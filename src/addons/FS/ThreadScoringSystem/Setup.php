@@ -31,10 +31,24 @@ class Setup extends AbstractSetup
 		});
 	}
 
-	// ############################### UPGRADE ###########################
+	// ############################### POST INSTALL ###########################
 
+	public function postInstall(array &$stateChanges)
+	{
+		$app = \XF::app();
 
-	// public function upgrade1000100Step1(array $stepParams) {}
+		$jobID = "thread_starter_points" . time();
+
+		$app->jobManager()->enqueueUnique($jobID, 'FS\ThreadScoringSystem:ThreadStarter', [], false);
+
+		$jobID = "thread_reply_points" . time();
+
+		$app->jobManager()->enqueueUnique($jobID, 'FS\ThreadScoringSystem:ReplyPoints', [], false);
+
+		$jobID = "thread_solution_points" . time();
+
+		$app->jobManager()->enqueueUnique($jobID, 'FS\ThreadScoringSystem:SolutionPoints', [], false);
+	}
 
 	// ############################### UNINSTALL ###########################
 

@@ -1,0 +1,13 @@
+{
+    "edit_format": "radio",
+    "edit_format_params": "desc={{ phrase('fs_thread_desc') }}\nasc={{ phrase('fs_thread_asc') }}",
+    "data_type": "string",
+    "sub_options": [],
+    "validation_class": "",
+    "validation_method": "",
+    "advanced": false,
+    "default_value": "desc",
+    "relations": {
+        "fs_thread_scoring_system": 7
+    }
+}

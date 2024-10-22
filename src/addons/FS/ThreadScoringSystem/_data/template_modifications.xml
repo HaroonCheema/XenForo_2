@@ -1,2 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<template_modifications/>
+<template_modifications>
+  <modification type="public" template="member_view" modification_key="fs_thread_scoring_system_member_add_panel" description="fs_thread_scoring_system_member_add_panel" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<!--[XF:tab_panes:end]-->]]></find>
+    <replace><![CDATA[<xf:if is="{{ $xf.visitor.hasPermission('fs_thread_scoring_system', 'can_view') }}">
+	<li data-href="{{ link('members/my-points-score', $user) }}" role="tabpanel" aria-labelledby="my-points-score">
+		<div class="blockMessage">{{ phrase('loading...') }}</div>
+	</li>
+</xf:if>
+
+$0]]></replace>
+  </modification>
+  <modification type="public" template="member_view" modification_key="fs_thread_scoring_system_member_add_tab" description="fs_thread_scoring_system_member_add_tab" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<!--[XF:tabs:end]-->]]></find>
+    <replace><![CDATA[<xf:if is="{{ $xf.visitor.hasPermission('fs_thread_scoring_system', 'can_view') }}">
+	<a href="{{ link('members/my-points-score', $user) }}"
+	   rel="nofollow"
+	   class="tabs-tab"
+	   id="my-points-score"
+	   role="tab">{{ phrase('fs_thread_scoring_point_score') }}</a>
+</xf:if>
+
+$0]]></replace>
+  </modification>
+  <modification type="public" template="thread_view" modification_key="fs_thread_scoring_system_widget_side" description="fs_thread_scoring_system_widget_side" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:widgetpos id="thread_view_sidebar" context-thread="{$thread}" position="sidebar" />]]></find>
+    <replace><![CDATA[<xf:include template="fs_thread_scoring_system_side_widget" />
+
+$0]]></replace>
+  </modification>
+</template_modifications>

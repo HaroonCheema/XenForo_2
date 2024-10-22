@@ -1,0 +1,1 @@
+You can adjust minimum required points from here for display users in list...!

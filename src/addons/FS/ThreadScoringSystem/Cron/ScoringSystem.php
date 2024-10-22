@@ -7,7 +7,7 @@ class ScoringSystem
     public static function threadStarterPoints()
     {
         $app = \XF::app();
-        $jobID = "thread_starter_points";
+        $jobID = "thread_starter_points" . time();
 
         $app->jobManager()->enqueueUnique($jobID, 'FS\ThreadScoringSystem:ThreadStarter', [], false);
         // $app->jobManager()->enqueueUnique($jobID, 'FS\ThreadScoringSystem:ThreadStarter', [], true);
@@ -17,7 +17,7 @@ class ScoringSystem
     public static function postReplyPoints()
     {
         $app = \XF::app();
-        $jobID = "thread_reply_points";
+        $jobID = "thread_reply_points" . time();
 
         $app->jobManager()->enqueueUnique($jobID, 'FS\ThreadScoringSystem:ReplyPoints', [], false);
     }
@@ -25,7 +25,7 @@ class ScoringSystem
     public static function threadSolutionPoints()
     {
         $app = \XF::app();
-        $jobID = "thread_solution_points";
+        $jobID = "thread_solution_points" . time();
 
         $app->jobManager()->enqueueUnique($jobID, 'FS\ThreadScoringSystem:SolutionPoints', [], false);
     }

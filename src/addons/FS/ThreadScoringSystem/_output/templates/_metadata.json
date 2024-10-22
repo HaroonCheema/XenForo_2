@@ -1,4 +1,9 @@
 {
+    "public/fs_thread_scoring_my_score.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "589c1cf938c70d337ccd26213e38e0f4"
+    },
     "public/fs_thread_scoring_system_side_widget.html": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",

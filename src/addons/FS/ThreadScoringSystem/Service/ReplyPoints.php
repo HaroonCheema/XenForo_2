@@ -215,4 +215,91 @@ class ReplyPoints extends \XF\Service\AbstractService
             }
         }
     }
+
+    public function getAllTypePointsScores($records)
+    {
+
+        $totalCounts = array();
+        $newRecords = array();
+
+        foreach ($records as  $value) {
+
+            $userId = $value->user_id;
+
+            if (isset($totalCounts[$userId]['totalPoints'])) {
+
+                $totalCounts[$userId]['totalPoints'] += $value['points'];
+            } else {
+                $newRecords[] = $value;
+
+                $totalCounts[$userId]['totalPoints'] = $value['points'];
+            }
+
+            switch ($value['points_type']) {
+                case 'reply': {
+                        if (isset($totalCounts[$userId]['reply'])) {
+
+                            $totalCounts[$userId]['reply'] += floatval($value['points']);
+                        } else {
+
+                            $totalCounts[$userId]['reply'] = floatval($value['points']);
+                        }
+                    }
+                    break;
+
+                case 'words': {
+                        if (isset($totalCounts[$userId]['words'])) {
+
+                            $totalCounts[$userId]['words'] += $value['points'];
+                        } else {
+
+                            $totalCounts[$userId]['words'] = $value['points'];
+                        }
+                    }
+                    break;
+
+                case 'reactions': {
+                        if (isset($totalCounts[$userId]['reactions'])) {
+
+                            $totalCounts[$userId]['reactions'] += $value['points'];
+                        } else {
+
+                            $totalCounts[$userId]['reactions'] = $value['points'];
+                        }
+                    }
+                    break;
+
+                case 'thread': {
+                        if (isset($totalCounts[$userId]['thread'])) {
+
+                            $totalCounts[$userId]['thread'] += $value['points'];
+                        } else {
+
+                            $totalCounts[$userId]['thread'] = $value['points'];
+                        }
+                    }
+                    break;
+
+                case 'solution': {
+                        if (isset($totalCounts[$userId]['solution'])) {
+
+                            $totalCounts[$userId]['solution'] += $value['points'];
+                        } else {
+
+                            $totalCounts[$userId]['solution'] = $value['points'];
+                        }
+                    }
+                    break;
+                    // default:
+                    //     $value = 0;
+            }
+        }
+
+        $sumParams = [
+            'totalCounts' => $totalCounts,
+            'records' => $newRecords,
+        ];
+
+        return $sumParams;
+    }
 }

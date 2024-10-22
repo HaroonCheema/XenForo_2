@@ -1,2 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<phrases/>
+<phrases>
+  <phrase title="cron_entry.fs_post_reply_points" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Post reply points]]></phrase>
+  <phrase title="cron_entry.fs_starter_thread_points" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Thread starter points]]></phrase>
+  <phrase title="cron_entry.fs_thread_solution_point" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Thread solution points]]></phrase>
+  <phrase title="fs_thread_asc" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[ASC]]></phrase>
+  <phrase title="fs_thread_desc" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[DESC]]></phrase>
+  <phrase title="fs_thread_scores" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Thread Score :]]></phrase>
+  <phrase title="fs_thread_scores_users" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Username]]></phrase>
+  <phrase title="fs_thread_scores_users_total_points" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Total points]]></phrase>
+  <phrase title="fs_thread_scoring_point_score" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Points score]]></phrase>
+  <phrase title="fs_thread_scoring_system_reaction" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Reactions score]]></phrase>
+  <phrase title="fs_thread_scoring_system_reactions" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Reactions : ]]></phrase>
+  <phrase title="fs_thread_scoring_system_replies" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Reply Score]]></phrase>
+  <phrase title="fs_thread_scoring_system_reply" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Reply : ]]></phrase>
+  <phrase title="fs_thread_scoring_system_solution" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Solution : ]]></phrase>
+  <phrase title="fs_thread_scoring_system_solutions" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Solutions score]]></phrase>
+  <phrase title="fs_thread_scoring_system_thread" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Thread : ]]></phrase>
+  <phrase title="fs_thread_scoring_system_threads" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Thread Score]]></phrase>
+  <phrase title="fs_thread_scoring_system_word" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Words score]]></phrase>
+  <phrase title="fs_thread_scoring_system_words" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Words : ]]></phrase>
+  <phrase title="option.fs_post_reply_points" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Post reply]]></phrase>
+  <phrase title="option.fs_reply_reaction_points" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Reactions]]></phrase>
+  <phrase title="option.fs_thread_scoring_list_order" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[List order by]]></phrase>
+  <phrase title="option.fs_thread_starter_points" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Thread starter]]></phrase>
+  <phrase title="option.fs_total_minimum_req_points" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Minimum required]]></phrase>
+  <phrase title="option.fs_total_solution_points" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Solutions]]></phrase>
+  <phrase title="option.fs_total_words_points" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Words]]></phrase>
+  <phrase title="option_explain.fs_post_reply_points" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You can adjust post reply points from here...!]]></phrase>
+  <phrase title="option_explain.fs_reply_reaction_points" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You can adjust total reaction points from here...!]]></phrase>
+  <phrase title="option_explain.fs_thread_scoring_list_order" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_explain.fs_thread_starter_points" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You can adjust thread starter or post thread points from here...!]]></phrase>
+  <phrase title="option_explain.fs_total_minimum_req_points" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You can adjust minimum required points from here for display users in list...!]]></phrase>
+  <phrase title="option_explain.fs_total_solution_points" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You can adjust total solutions points from here...!]]></phrase>
+  <phrase title="option_explain.fs_total_words_points" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You can adjust total words points from here...!]]></phrase>
+  <phrase title="option_group.fs_thread_scoring_system" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Thread Scoring System]]></phrase>
+  <phrase title="option_group_description.fs_thread_scoring_system" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="permission.fs_thread_scoring_system_can_view" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Can view]]></phrase>
+  <phrase title="permission_interface.fs_thread_scoring_system" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Thread Scoring System]]></phrase>
+</phrases>

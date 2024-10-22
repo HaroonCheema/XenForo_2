@@ -60,87 +60,44 @@ class Thread extends XFCP_Thread
     {
         $records = $this->finder('FS\ThreadScoringSystem:ScoringSystem')->where('thread_id', $this->thread_id)->fetch();
 
-        $totalCounts = array();
-        $newRecords = array();
+        if (count($records)) {
+            $options = \XF::options();
 
-        foreach ($records as  $value) {
+            $allTypePoints = \XF::service('FS\ThreadScoringSystem:ReplyPoints');
 
-            $userId = $value->user_id;
+            $sumParams = $allTypePoints->getAllTypePointsScores($records);
 
-            if (isset($totalCounts[$userId]['totalPoints'])) {
-
-                $totalCounts[$userId]['totalPoints'] += $value['points'];
+            if ($options->fs_thread_scoring_list_order == 'asc') {
+                uasort($sumParams['totalCounts'], function ($a, $b) {
+                    return $a['totalPoints'] <=> $b['totalPoints'];
+                });
             } else {
-                $newRecords[] = $value;
-
-                $totalCounts[$userId]['totalPoints'] = $value['points'];
+                uasort($sumParams['totalCounts'], function ($a, $b) {
+                    return $b['totalPoints'] <=> $a['totalPoints'];
+                });
             }
 
-            switch ($value['points_type']) {
-                case 'reply': {
-                        if (isset($totalCounts[$userId]['reply'])) {
+            $newRecordOrderBy = array();
 
-                            $totalCounts[$userId]['reply'] += floatval($value['points']);
-                        } else {
+            foreach ($sumParams['totalCounts'] as $key => $value) {
 
-                            $totalCounts[$userId]['reply'] = floatval($value['points']);
+                if ($value['totalPoints'] >= $options->fs_total_minimum_req_points) {
+                    foreach ($sumParams['records'] as $value) {
+                        if ($key == $value->user_id) {
+                            $newRecordOrderBy[] = $value;
                         }
                     }
-                    break;
-
-                case 'words': {
-                        if (isset($totalCounts[$userId]['words'])) {
-
-                            $totalCounts[$userId]['words'] += $value['points'];
-                        } else {
-
-                            $totalCounts[$userId]['words'] = $value['points'];
-                        }
-                    }
-                    break;
-
-                case 'reactions': {
-                        if (isset($totalCounts[$userId]['reactions'])) {
-
-                            $totalCounts[$userId]['reactions'] += $value['points'];
-                        } else {
-
-                            $totalCounts[$userId]['reactions'] = $value['points'];
-                        }
-                    }
-                    break;
-
-                case 'thread': {
-                        if (isset($totalCounts[$userId]['thread'])) {
-
-                            $totalCounts[$userId]['thread'] += $value['points'];
-                        } else {
-
-                            $totalCounts[$userId]['thread'] = $value['points'];
-                        }
-                    }
-                    break;
-
-                case 'solution': {
-                        if (isset($totalCounts[$userId]['solution'])) {
-
-                            $totalCounts[$userId]['solution'] += $value['points'];
-                        } else {
-
-                            $totalCounts[$userId]['solution'] = $value['points'];
-                        }
-                    }
-                    break;
-                    // default:
-                    //     $value = 0;
+                }
             }
+
+            $sumOredByParams = [
+                'totalCounts' => $sumParams['totalCounts'],
+                'records' => $newRecordOrderBy,
+            ];
+        } else {
+            $sumOredByParams = array();
         }
 
-        $sumParams = [
-            'totalCounts' => $totalCounts,
-            'records' => $newRecords,
-        ];
-
-        return $sumParams;
+        return $sumOredByParams;
     }
 }

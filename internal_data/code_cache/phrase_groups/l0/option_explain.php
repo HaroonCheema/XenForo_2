@@ -439,9 +439,11 @@ This option requires that the specified account is a catch-all account or suppor
   'option_explain.fs_team_mobile_dimensions' => '',
   'option_explain.fs_teams_total' => 'Total number of teams user can select...!',
   'option_explain.fs_thread_rules' => '',
+  'option_explain.fs_thread_scoring_list_order' => '',
   'option_explain.fs_thread_starter_points' => 'You can adjust thread starter or post thread points from here...!',
   'option_explain.fs_thumbnail_applicable_forums' => 'List the forum ids that are allowed to be display thumbnail to all. Use , (comma) between ids.
 Example: 1,2,3,4,..',
+  'option_explain.fs_total_minimum_req_points' => 'You can adjust minimum required points from here for display users in list...!',
   'option_explain.fs_total_solution_points' => 'You can adjust total solutions points from here...!',
   'option_explain.fs_total_words_points' => 'You can adjust total words points from here...!',
   'option_explain.fs_unhide_user_ids' => 'List the user ids that are allowed to be display username to all. Use , (comma) between ids.
