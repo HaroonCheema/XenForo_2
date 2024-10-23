@@ -2,7 +2,8 @@
 
 namespace FS\ExtendNewPostsWidget\XF\Widget;
 
-class NewPosts extends XFCP_NewPosts {
+class NewPosts extends XFCP_NewPosts
+{
 
     protected $defaultOptions = [
         'limit' => 5,
@@ -13,7 +14,8 @@ class NewPosts extends XFCP_NewPosts {
         'node_limits' => [],
     ];
 
-    protected function getDefaultTemplateParams($context) {
+    protected function getDefaultTemplateParams($context)
+    {
         $params = parent::getDefaultTemplateParams($context);
         if ($context == 'options') {
             $params['limitForums'] = $this->app->finder('XF:Node')->where('node_type_id', 'Forum')->fetch();
@@ -21,7 +23,8 @@ class NewPosts extends XFCP_NewPosts {
         return $params;
     }
 
-    public function render() {
+    public function render()
+    {
         $visitor = \XF::visitor();
 
         $options = $this->options;
@@ -69,95 +72,105 @@ class NewPosts extends XFCP_NewPosts {
 
             $node_limits = $options['node_limits'];
 
+            $isfirst = 1;
+
             foreach ($unique_node_ids as $key => $unique_node_id) {
 
-                $nodelimit = $node_limits[$key];
+                $nodelimit = intval($node_limits[$key]);
 
-                if ($nodelimit == -1 && $limit != 0) {
+                foreach ($unique_node_id as $nesetedkey => $value) {
 
-                    $nodelimit = $limit;
-                }
+                    $unique_node_id = intval($value);
 
-                if ($limit > $nodelimit && $limit != 0) {
+                    if ($nodelimit == -1 && $limit != 0) {
 
-                    $limit = $limit - $nodelimit;
-                } elseif ($limit < $nodelimit && $limit != 0) {
+                        $nodelimit = $limit;
+                    }
 
-                    $nodelimit = $limit;
+                    if ($limit > $nodelimit && $limit != 0) {
 
-                    $limit = 0;
-                } elseif ($nodelimit == $limit && $limit != 0) {
+                        $limit = $limit - $nodelimit;
+                    } elseif ($limit < $nodelimit && $limit != 0) {
 
-                    $nodelimit = $nodelimit;
-                    $limit = $limit - $nodelimit;
-                }
+                        $nodelimit = $limit;
 
-                if ($key == 0 && $loopTerminate) {
+                        $limit = 0;
+                    } elseif ($nodelimit == $limit && $limit != 0) {
 
-                    $firstthreadFinder = $threadFinder;
-                    $firstthreadFinder->with('Forum.Node.Permissions|' . $visitor->permission_combination_id);
+                        $nodelimit = $nodelimit;
+                        $limit = $limit - $nodelimit;
+                    }
 
-                    if ($options['style'] == 'full') {
-                        $firstthreadFinder->with('fullForum');
-                    } else {
-                        $firstthreadFinder
+                    if ($isfirst == 1 && $loopTerminate) {
+
+                        $firstthreadFinder = $threadFinder;
+                        $firstthreadFinder->with('Forum.Node.Permissions|' . $visitor->permission_combination_id);
+
+                        if ($options['style'] == 'full') {
+                            $firstthreadFinder->with('fullForum');
+                        } else {
+                            $firstthreadFinder
                                 ->with('LastPoster')
                                 ->withReadData();
-                    }
+                        }
 
-                    if ($nodelimit < 0) {
+                        if ($nodelimit < 0) {
 
-                        $threads = $firstthreadFinder->where('node_id', $unique_node_id)->fetch();
-                    } else {
+                            $threads = $firstthreadFinder->where('node_id', $unique_node_id)->fetch();
+                        } else {
 
-                        $threads = $firstthreadFinder->where('node_id', $unique_node_id)->fetch($nodelimit);
-                    }
-                } elseif ($loopTerminate) {
+                            $threads = $firstthreadFinder->where('node_id', $unique_node_id)->fetch($nodelimit);
+                        }
 
-                    if ($filter == "latest") {
+                        $isfirst = 0;
+                    } elseif ($loopTerminate) {
 
-                        $threadFinder = $threadRepo->findThreadsWithLatestPosts();
-                    } elseif ($filter == "unread") {
+                        if ($filter == "latest") {
 
-                        $threadFinder = $threadRepo->findThreadsWithUnreadPosts();
-                    } elseif ($filter == "watched") {
+                            $threadFinder = $threadRepo->findThreadsWithLatestPosts();
+                        } elseif ($filter == "unread") {
 
-                        $threadFinder = $threadRepo->findThreadsForWatchedList();
-                    }
+                            $threadFinder = $threadRepo->findThreadsWithUnreadPosts();
+                        } elseif ($filter == "watched") {
 
-                    $threadFinder->with('Forum.Node.Permissions|' . $visitor->permission_combination_id);
+                            $threadFinder = $threadRepo->findThreadsForWatchedList();
+                        }
 
-                    if ($options['style'] == 'full') {
+                        $threadFinder->with('Forum.Node.Permissions|' . $visitor->permission_combination_id);
 
-                        $threadFinder->with('fullForum');
-                    } else {
-                        $threadFinder
+                        if ($options['style'] == 'full') {
+
+                            $threadFinder->with('fullForum');
+                        } else {
+                            $threadFinder
                                 ->with('LastPoster')
                                 ->withReadData();
+                        }
+
+                        if ($nodelimit < 0) {
+
+                            $limitThreads = $threadFinder->where('node_id', $unique_node_id)->fetch();
+                        } else {
+
+                            $limitThreads = $threadFinder->where('node_id', $unique_node_id)->fetch($nodelimit);
+                        }
+
+                        if (count($limitThreads)) {
+
+                            $threads = $threads->merge($limitThreads);
+                        }
                     }
 
-                    if ($nodelimit < 0) {
+                    if ($limit == 0) {
 
-                        $limitThreads = $threadFinder->where('node_id', $unique_node_id)->fetch();
-                    } else {
-
-                        $limitThreads = $threadFinder->where('node_id', $unique_node_id)->fetch($nodelimit);
+                        $loopTerminate = false;
                     }
-
-                    if (count($limitThreads)) {
-
-                        $threads = $threads->merge($limitThreads);
-                    }
-                }
-
-                if ($limit == 0) {
-
-                    $loopTerminate = false;
                 }
             }
 
-            foreach ($threads AS $threadId => $thread) {
-                if (!$thread->canView() || $thread->isIgnored() || $visitor->isIgnoring($thread->last_post_user_id)
+            foreach ($threads as $threadId => $thread) {
+                if (
+                    !$thread->canView() || $thread->isIgnored() || $visitor->isIgnoring($thread->last_post_user_id)
                 ) {
                     unset($threads[$threadId]);
                 }
@@ -179,14 +192,15 @@ class NewPosts extends XFCP_NewPosts {
         return parent::render();
     }
 
-    public function verifyOptions(\XF\Http\Request $request, array &$options, &$error = null) {
+    public function verifyOptions(\XF\Http\Request $request, array &$options, &$error = null)
+    {
 
         $options = $request->filter([
             'limit' => 'uint',
             'style' => 'str',
             'filter' => 'str',
             'node_ids' => 'array-uint',
-            'unique_node_ids' => 'array-int',
+            'unique_node_ids' => 'array',
             'node_limits' => 'array-int',
             'display_limit' => 'array-int',
         ]);

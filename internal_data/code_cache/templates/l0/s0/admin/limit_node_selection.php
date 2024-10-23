@@ -1,56 +1,61 @@
 <?php
-// FROM HASH: 0a1a9accb414c7924b2bff20afd21770
+// FROM HASH: f09f266f43450563b7a626d85002c0d9
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
 	$__finalCompiled = '';
+	$__vars['currentIndex'] = '0';
 	$__compilerTemp1 = '';
 	if ($__templater->func('count', array($__vars['options']['unique_node_ids'], ), false)) {
 		$__compilerTemp1 .= '
-									  ';
+		';
 		$__vars['i'] = 0;
 		if ($__templater->isTraversable($__vars['options']['unique_node_ids'])) {
 			foreach ($__vars['options']['unique_node_ids'] AS $__vars['key'] => $__vars['nodeId']) {
 				$__vars['i']++;
 				$__compilerTemp1 .= '
-										
-										   <div class="clone-limit-selection" style="display:flex;margin-top: 10px;">
 
-											   
-											      <div class="forum-selection" style="width:80%;">
-											      	';
+			<div class="clone-limit-selection" style="display:flex;margin-top: 10px;" data-index="' . $__templater->escape($__vars['i']) . '">
+				<div class="forum-selection" style="width:80%;">
+					';
 				$__compilerTemp2 = array();
 				if ($__templater->isTraversable($__vars['limitForums'])) {
 					foreach ($__vars['limitForums'] AS $__vars['forum']) {
 						$__compilerTemp2[] = array(
 							'value' => $__vars['forum']['node_id'],
 							'label' => '
-																' . $__templater->escape($__vars['forum']['title']) . '
-															',
+								' . $__templater->escape($__vars['forum']['title']) . '
+							',
 							'_type' => 'option',
 						);
 					}
 				}
 				$__compilerTemp1 .= $__templater->formSelect(array(
-					'name' => 'options[unique_node_ids][]',
+					'name' => 'options[unique_node_ids][' . $__vars['i'] . '][]',
 					'value' => $__vars['nodeId'],
+					'multiple' => 'multiple',
+					'size' => '4',
 				), $__compilerTemp2) . '
-														<span style="font-size: 13px;color: #8c8c8c;">' . 'Select node against limit.' . '</span>
-													</div>
-											 	<div  style="width:80%;margin-right:10px;">
-												' . $__templater->formTextBox(array(
-					'name' => 'options[node_limits][]',
-					'value' => ($__vars['options']['node_limits'][$__vars['key']] ? $__vars['options']['node_limits'][$__vars['key']] : -1),
+					<span style="font-size: 13px;color: #8c8c8c;">' . 'Select node against limit.' . '</span>
+				</div>
+				<div style="width:80%;margin-right:10px;">
+					' . $__templater->formTextBox(array(
+					'name' => 'options[node_limits][' . $__vars['i'] . ']',
+					'value' => ($__vars['options']['node_limits'][$__vars['i']] ?: -1),
 					'style' => 'margin-left:10px;',
 				)) . '
-												<span style="font-size: 13px;color: #8c8c8c;margin-left: 10px;">' . 'Empty limit will discard.-1 will be consider unlimit.' . '</span>
-											</div>
-										  </div>
-									  ';
+					<span style="font-size: 13px;color: #8c8c8c;margin-left: 10px;">' . 'Empty limit will discard.-1 will be consider unlimit.' . '</span>
+				</div>
+			</div>
+
+			';
+				$__vars['currentIndex'] = ($__vars['i'] + 1);
+				$__compilerTemp1 .= '
+		';
 			}
 		}
 		$__compilerTemp1 .= '
-									   ';
+	';
 	}
 	$__compilerTemp3 = array(array(
 		'value' => '0',
@@ -62,78 +67,82 @@ return array(
 			$__compilerTemp3[] = array(
 				'value' => $__vars['forum']['node_id'],
 				'label' => '
-																								' . $__templater->escape($__vars['forum']['title']) . '
-																							',
+							' . $__templater->escape($__vars['forum']['title']) . '
+						',
 				'_type' => 'option',
 			);
 		}
 	}
 	$__finalCompiled .= $__templater->formRow('
 	<div class="check-selection-button">
-									 ' . $__templater->button('Add Limit', array(
+		' . $__templater->button('Add Limit', array(
 		'class' => 'add-limit',
 	), '', array(
 	)) . '
-									 ' . $__templater->button('Remove Limit', array(
+		' . $__templater->button('Remove Limit', array(
 		'class' => 'remove-limit',
 	), '', array(
 	)) . '
-								</div><br>
- 								
-								      ' . $__compilerTemp1 . '
-									<div class="limit-selection">
-																		<div class="clone-limit-selection" style="display:flex;margin-top: 10px;">
+	</div><br>
 
-																			   <div class="forum-selection" style="width:80%;">
-																					' . $__templater->formSelect(array(
-		'name' => 'options[unique_node_ids][]',
+	' . '' . '
+
+	' . $__compilerTemp1 . '
+
+	<div class="limit-selection">
+		<div class="clone-limit-selection" style="display:flex;margin-top: 10px;" data-index="' . $__templater->escape($__vars['currentIndex']) . '">
+			<div class="forum-selection" style="width:80%;">
+				' . $__templater->formSelect(array(
+		'name' => 'options[unique_node_ids][' . $__vars['currentIndex'] . '][]',
+		'multiple' => 'multiple',
+		'size' => '4',
 	), $__compilerTemp3) . '
-																						<span style="font-size: 13px;color: #8c8c8c;">' . 'Select node against limit.' . '</span>
-																					</div>
-																			 <div  style="width:80%;margin-right:10px;">
-																				' . $__templater->formTextBox(array(
-		'name' => 'options[node_limits][]',
+				<span style="font-size: 13px;color: #8c8c8c;">' . 'Select node against limit.' . '</span>
+			</div>
+			<div style="width:80%;margin-right:10px;">
+				' . $__templater->formTextBox(array(
+		'name' => 'options[node_limits][' . $__vars['currentIndex'] . ']',
 		'style' => 'margin-left:10px;',
 	)) . '
-																				<span style="font-size: 13px;color: #8c8c8c;margin-left: 10px;">' . 'Empty limit will discard.-1 will be consider unlimit.' . '</span>
-																			</div>
-																		</div>
-									</div>
+				<span style="font-size: 13px;color: #8c8c8c;margin-left: 10px;">' . 'Empty limit will discard.-1 will be consider unlimit.' . '</span>
+			</div>
+		</div>
+	</div>
 ', array(
 		'label' => 'Forum Limit Selection',
 	)) . '
- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 <script>
-$(document).ready(function() {
-  // Clone the first cloneable radio element
-  var initialCheckboxClone = $(\'.clone-limit-selection\').last().clone();
+	$(document).ready(function() {
+		var index = $(\'.clone-limit-selection\').last().data(\'index\') + 1;
 
-// Clone the first cloneable checkbox element
-	
- 
-  $(\'.add-limit\').on(\'click\', function() {
+		var initialCheckboxClone = $(\'.clone-limit-selection\').last().clone();
 
-	  
-	 var newClone = initialCheckboxClone.clone();
-	 $(\'.limit-selection\').append(newClone);
-	  
-  });
+		$(\'.add-limit\').on(\'click\', function() {
+			var newClone = initialCheckboxClone.clone();
 
+			newClone.find(\'select\').attr(\'name\', \'options[unique_node_ids][\' + index + \'][]\');
+			newClone.find(\'input\').attr(\'name\', \'options[node_limits][\' + index + \']\');
 
-  $(\'.remove-limit\').on(\'click\', function() {
+			newClone.attr(\'data-index\', index);
 
-	  var allCheckboxClones = $(\'.clone-limit-selection\');
-	  
-	  var numberOfClones = allCheckboxClones.length;
-	  
-	  if(numberOfClones!=1){
-		
-		  	 $(\'.clone-limit-selection\').last().remove();
-	  }
-	  
-  });
-});
+			$(\'.limit-selection\').append(newClone);
+
+			index++;
+		});
+
+		$(\'.remove-limit\').on(\'click\', function() {
+			var allCheckboxClones = $(\'.clone-limit-selection\');
+			var numberOfClones = allCheckboxClones.length;
+
+			if (numberOfClones > 1) {
+				$(\'.clone-limit-selection\').last().remove();
+				index--;
+			}
+		});
+	});
 </script>';
 	return $__finalCompiled;
 }
