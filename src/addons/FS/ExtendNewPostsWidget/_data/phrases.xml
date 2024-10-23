@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="add_limit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add Limit]]></phrase>
+  <phrase title="empty_will_consider_discard" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Empty limit will discard.-1 will be consider unlimit.]]></phrase>
+  <phrase title="forum_selection_limit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Forum Limit Selection]]></phrase>
+  <phrase title="remove_limit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Remove Limit]]></phrase>
+  <phrase title="select_node_against_limit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Select node against limit.]]></phrase>
+</phrases>

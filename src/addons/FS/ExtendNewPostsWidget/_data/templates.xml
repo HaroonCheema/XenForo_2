@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="admin" title="limit_node_selection" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:formrow label="{{phrase('forum_selection_limit')}}">
+	<div class="check-selection-button">
+									 <xf:button class="add-limit">{{phrase('add_limit')}}</xf:button>
+									 <xf:button class="remove-limit">{{phrase('remove_limit')}}</xf:button>
+								</div><br>
+ 								
+								      <xf:if is="count($options.unique_node_ids)">
+									  <xf:foreach loop="$options.unique_node_ids" key="$key" value="$nodeId" i="$i">
+										
+										   <div class="clone-limit-selection" style="display:flex;margin-top: 10px;">
+
+											   
+											      <div class="forum-selection" style="width:80%;">
+											      	<xf:select name="options[unique_node_ids][]" value="{{$nodeId}}">
+														<xf:foreach loop="$limitForums" value="$forum">
+															<xf:option value="{{$forum.node_id}}" >
+																{{$forum.title}}
+															</xf:option>
+														</xf:foreach>
+													</xf:select>
+														<span style="font-size: 13px;color: #8c8c8c;">{{phrase('select_node_against_limit')}}</span>
+													</div>
+											 	<div  style="width:80%;margin-right:10px;">
+												<xf:textbox  name="options[node_limits][]"  value="{{$options.node_limits.{{$key}} ? $options.node_limits.{{$key}} : -1 }}" style="margin-left:10px;" />
+												<span style="font-size: 13px;color: #8c8c8c;margin-left: 10px;">{{phrase('empty_will_consider_discard')}}</span>
+											</div>
+										  </div>
+									  </xf:foreach>
+									   </xf:if>
+									<div class="limit-selection">
+																		<div class="clone-limit-selection" style="display:flex;margin-top: 10px;">
+
+																			   <div class="forum-selection" style="width:80%;">
+																					<xf:select name="options[unique_node_ids][]" >
+																						<xf:option value="0">None</xf:option>
+																						<xf:foreach loop="$limitForums" value="$forum">
+																							<xf:option value="{{$forum.node_id}}" >
+																								{{$forum.title}}
+																							</xf:option>
+																						</xf:foreach>
+																					</xf:select>
+																						<span style="font-size: 13px;color: #8c8c8c;">{{phrase('select_node_against_limit')}}</span>
+																					</div>
+																			 <div  style="width:80%;margin-right:10px;">
+																				<xf:textbox  name="options[node_limits][]"  style="margin-left:10px;" />
+																				<span style="font-size: 13px;color: #8c8c8c;margin-left: 10px;">{{phrase('empty_will_consider_discard')}}</span>
+																			</div>
+																		</div>
+									</div>
+</xf:formrow>
+ <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<script>
+$(document).ready(function() {
+  // Clone the first cloneable radio element
+  var initialCheckboxClone = $('.clone-limit-selection').last().clone();
+
+// Clone the first cloneable checkbox element
+	
+ 
+  $('.add-limit').on('click', function() {
+
+	  
+	 var newClone = initialCheckboxClone.clone();
+	 $('.limit-selection').append(newClone);
+	  
+  });
+
+
+  $('.remove-limit').on('click', function() {
+
+	  var allCheckboxClones = $('.clone-limit-selection');
+	  
+	  var numberOfClones = allCheckboxClones.length;
+	  
+	  if(numberOfClones!=1){
+		
+		  	 $('.clone-limit-selection').last().remove();
+	  }
+	  
+  });
+});
+</script>]]></template>
+</templates>
