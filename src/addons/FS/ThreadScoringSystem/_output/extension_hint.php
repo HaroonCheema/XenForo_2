@@ -8,6 +8,7 @@ namespace FS\ThreadScoringSystem\XF\Entity
 	class XFCP_Post extends \XF\Entity\Post {}
 	class XFCP_Thread extends \XF\Entity\Thread {}
 	class XFCP_ThreadQuestion extends \XF\Entity\ThreadQuestion {}
+	class XFCP_User extends \XF\Entity\User {}
 }
 
 namespace FS\ThreadScoringSystem\XF\Pub\Controller

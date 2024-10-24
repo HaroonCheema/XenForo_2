@@ -1,0 +1,13 @@
+{
+    "edit_format": "radio",
+    "edit_format_params": "points={{ phrase('points') }}\npercentage=%",
+    "data_type": "string",
+    "sub_options": [],
+    "validation_class": "",
+    "validation_method": "",
+    "advanced": false,
+    "default_value": "points",
+    "relations": {
+        "fs_thread_scoring_system": 8
+    }
+}

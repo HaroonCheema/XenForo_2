@@ -302,4 +302,172 @@ class ReplyPoints extends \XF\Service\AbstractService
 
         return $sumParams;
     }
+
+    public function getAllTypePercentageScores($records)
+    {
+
+        $totalPercentage = array();
+        $newRecords = array();
+
+        foreach ($records as  $value) {
+
+            $userId = $value->user_id;
+
+            if (isset($totalPercentage[$userId]['totalPoints'])) {
+
+                $totalPercentage[$userId]['totalPoints'] += $value['percentage'];
+            } else {
+                $newRecords[] = $value;
+
+                $totalPercentage[$userId]['totalPoints'] = $value['percentage'];
+            }
+
+            switch ($value['points_type']) {
+                case 'reply': {
+                        if (isset($totalPercentage[$userId]['reply'])) {
+
+                            $totalPercentage[$userId]['reply'] += floatval($value['percentage']);
+                        } else {
+
+                            $totalPercentage[$userId]['reply'] = floatval($value['percentage']);
+                        }
+                    }
+                    break;
+
+                case 'words': {
+                        if (isset($totalPercentage[$userId]['words'])) {
+
+                            $totalPercentage[$userId]['words'] += $value['percentage'];
+                        } else {
+
+                            $totalPercentage[$userId]['words'] = $value['percentage'];
+                        }
+                    }
+                    break;
+
+                case 'reactions': {
+                        if (isset($totalPercentage[$userId]['reactions'])) {
+
+                            $totalPercentage[$userId]['reactions'] += $value['percentage'];
+                        } else {
+
+                            $totalPercentage[$userId]['reactions'] = $value['percentage'];
+                        }
+                    }
+                    break;
+
+                case 'thread': {
+                        if (isset($totalPercentage[$userId]['thread'])) {
+
+                            $totalPercentage[$userId]['thread'] += $value['percentage'];
+                        } else {
+
+                            $totalPercentage[$userId]['thread'] = $value['percentage'];
+                        }
+                    }
+                    break;
+
+                case 'solution': {
+                        if (isset($totalPercentage[$userId]['solution'])) {
+
+                            $totalPercentage[$userId]['solution'] += $value['percentage'];
+                        } else {
+
+                            $totalPercentage[$userId]['solution'] = $value['percentage'];
+                        }
+                    }
+                    break;
+            }
+        }
+
+        $sumParams = [
+            'totalPercentage' => $totalPercentage,
+            'records' => $newRecords,
+        ];
+
+        return $sumParams;
+    }
+
+    public function getPointsSums($records)
+    {
+
+        if (count($records)) {
+            $options = \XF::options();
+
+            $sumParams = $this->getAllTypePointsScores($records);
+
+            if ($options->fs_thread_scoring_list_order == 'asc') {
+                uasort($sumParams['totalCounts'], function ($a, $b) {
+                    return $a['totalPoints'] <=> $b['totalPoints'];
+                });
+            } else {
+                uasort($sumParams['totalCounts'], function ($a, $b) {
+                    return $b['totalPoints'] <=> $a['totalPoints'];
+                });
+            }
+
+            $newRecordOrderBy = array();
+
+            foreach ($sumParams['totalCounts'] as $key => $value) {
+
+                if ($value['totalPoints'] >= $options->fs_total_minimum_req_points) {
+                    foreach ($sumParams['records'] as $value) {
+                        if ($key == $value->user_id) {
+                            $newRecordOrderBy[] = $value;
+                        }
+                    }
+                }
+            }
+
+            $sumOredByParams = [
+                'totalCounts' => $sumParams['totalCounts'],
+                'records' => $newRecordOrderBy,
+            ];
+        } else {
+            $sumOredByParams = array();
+        }
+
+        return $sumOredByParams;
+    }
+
+    public function getPercentageSums($records)
+    {
+        if (count($records)) {
+            $options = \XF::options();
+
+            $sumParams = $this->getAllTypePercentageScores($records);
+
+            if ($options->fs_thread_scoring_list_order == 'asc') {
+                uasort($sumParams['totalPercentage'], function ($a, $b) {
+                    return $a['totalPoints'] <=> $b['totalPoints'];
+                });
+            } else {
+                uasort($sumParams['totalPercentage'], function ($a, $b) {
+                    return $b['totalPoints'] <=> $a['totalPoints'];
+                });
+            }
+
+            $newRecordOrderBy = array();
+
+            foreach ($sumParams['totalPercentage'] as $key => $value) {
+
+                if ($value['totalPoints'] >= $options->fs_total_minimum_req_points) {
+                    foreach ($sumParams['records'] as $value) {
+                        if ($key == $value->user_id) {
+                            $newRecordOrderBy[] = $value;
+                        }
+                    }
+                }
+            }
+
+            $sumOredByParams = [
+                'totalPercentage' => $sumParams['totalPercentage'],
+                'records' => $newRecordOrderBy,
+            ];
+        } else {
+            $sumOredByParams = array();
+        }
+
+        return $sumOredByParams;
+    }
 }

@@ -1,12 +1,22 @@
 {
+    "public/fs_thread_scoring_all_score_notable.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "730130757a59609cad20d0dd49e0f17c"
+    },
     "public/fs_thread_scoring_my_score.html": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
         "hash": "589c1cf938c70d337ccd26213e38e0f4"
     },
+    "public/fs_thread_scoring_system_notable_side_widget.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "e33a943c2654c391ab7dc9f8004c00c5"
+    },
     "public/fs_thread_scoring_system_side_widget.html": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
-        "hash": "8a61d6ab9b5eb4cb4817d093470d3703"
+        "hash": "2be47142a91a72debf037c07c0861d9d"
     }
 }

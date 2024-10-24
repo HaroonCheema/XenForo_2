@@ -31,6 +31,8 @@ return array(
 	</div>
 ', 'replace');
 	$__finalCompiled .= '
+' . $__templater->includeTemplate('fs_thread_scoring_system_notable_side_widget', $__vars) . '
+
 ';
 	$__templater->setPageParam('sideNavTitle', 'Members');
 	$__finalCompiled .= '

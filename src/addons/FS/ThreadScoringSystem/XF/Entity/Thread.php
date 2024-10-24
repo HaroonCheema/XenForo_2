@@ -60,43 +60,20 @@ class Thread extends XFCP_Thread
     {
         $records = $this->finder('FS\ThreadScoringSystem:ScoringSystem')->where('thread_id', $this->thread_id)->fetch();
 
-        if (count($records)) {
-            $options = \XF::options();
+        $allTypePoints = \XF::service('FS\ThreadScoringSystem:ReplyPoints');
 
-            $allTypePoints = \XF::service('FS\ThreadScoringSystem:ReplyPoints');
+        $sumOredByParams = $allTypePoints->getPointsSums($records);
 
-            $sumParams = $allTypePoints->getAllTypePointsScores($records);
+        return $sumOredByParams;
+    }
 
-            if ($options->fs_thread_scoring_list_order == 'asc') {
-                uasort($sumParams['totalCounts'], function ($a, $b) {
-                    return $a['totalPoints'] <=> $b['totalPoints'];
-                });
-            } else {
-                uasort($sumParams['totalCounts'], function ($a, $b) {
-                    return $b['totalPoints'] <=> $a['totalPoints'];
-                });
-            }
+    public function getPercentageSums()
+    {
+        $records = $this->finder('FS\ThreadScoringSystem:ScoringSystem')->where('thread_id', $this->thread_id)->fetch();
 
-            $newRecordOrderBy = array();
+        $allTypePoints = \XF::service('FS\ThreadScoringSystem:ReplyPoints');
 
-            foreach ($sumParams['totalCounts'] as $key => $value) {
-
-                if ($value['totalPoints'] >= $options->fs_total_minimum_req_points) {
-                    foreach ($sumParams['records'] as $value) {
-                        if ($key == $value->user_id) {
-                            $newRecordOrderBy[] = $value;
-                        }
-                    }
-                }
-            }
-
-            $sumOredByParams = [
-                'totalCounts' => $sumParams['totalCounts'],
-                'records' => $newRecordOrderBy,
-            ];
-        } else {
-            $sumOredByParams = array();
-        }
+        $sumOredByParams = $allTypePoints->getPercentageSums($records);
 
         return $sumOredByParams;
     }

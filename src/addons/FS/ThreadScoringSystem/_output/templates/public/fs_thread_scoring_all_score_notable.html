@@ -1,0 +1,54 @@
+<xf:title>{{ phrase('fs_thread_scoring_system') }}</xf:title>
+
+<div class="block">
+
+	<div class="block-container">
+		<xf:if is="$totalCounts is not empty">
+
+			<div class="block-body">
+
+				<xf:datalist data-xf-init="responsive-data-list">
+
+					<xf:macro name="record_table_list" arg-totalCounts="{$totalCounts}" arg-records="{$records}" />
+
+				</xf:datalist>
+				<div class="block-footer">
+					<span class="block-footer-counter"
+						  >{{ display_totals(count($totalCounts), count($totalCounts)) }}</span
+						>
+				</div>
+
+			</div>
+			<xf:else />
+			<div class="blockMessage">
+				{{ phrase('no_items_have_been_created_yet') }}
+			</div>
+		</xf:if>
+
+	</div>
+</div>
+
+<xf:macro name="record_table_list" arg-totalCounts="!" arg-records="!">
+	<xf:datarow rowtype="header">
+		<xf:cell> {{ phrase('user') }} </xf:cell>
+		<xf:cell> {{ phrase('fs_thread_scoring_system_threads') }} </xf:cell>
+		<xf:cell> {{ phrase('fs_thread_scoring_system_replies') }} </xf:cell>
+		<xf:cell> {{ phrase('fs_thread_scoring_system_word') }} </xf:cell>
+		<xf:cell> {{ phrase('fs_thread_scoring_system_reaction') }} </xf:cell>
+		<xf:cell> {{ phrase('fs_thread_scoring_system_solutions') }} </xf:cell>
+		<xf:cell> {{ phrase('fs_thread_scoring_system_total_points') }} </xf:cell>
+	</xf:datarow>
+
+	<xf:foreach loop="{$records}" value="$val">
+		<xf:datarow>
+			<xf:cell> <xf:username user="$val.User" rich="true" defaultname="{$val.User.username}" itemprop="name" /> </xf:cell>
+			<xf:cell> {{$totalCounts.{$val.user_id}.thread ?: phrase('n_a') }} </xf:cell>
+			<xf:cell> {{$totalCounts.{$val.user_id}.reply ?: phrase('n_a') }} </xf:cell>
+			<xf:cell> {{$totalCounts.{$val.user_id}.words ?: phrase('n_a') }} </xf:cell>
+			<xf:cell> {{$totalCounts.{$val.user_id}.reactions ?: phrase('n_a') }} </xf:cell>
+			<xf:cell> {{$totalCounts.{$val.user_id}.solution ?: phrase('n_a') }} </xf:cell>
+			<xf:cell> {{$totalCounts.{$val.user_id}.totalPoints ?: phrase('n_a') }} </xf:cell>
+		</xf:datarow>
+	</xf:foreach>
+
+</xf:macro>

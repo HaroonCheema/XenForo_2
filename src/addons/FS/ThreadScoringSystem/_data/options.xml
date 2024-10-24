@@ -12,11 +12,22 @@ units={{ phrase('points') }}</edit_format_params>
 units={{ phrase('points') }}</edit_format_params>
     <relation group_id="fs_thread_scoring_system" display_order="4"/>
   </option>
+  <option option_id="fs_thread_scoring_list_format" edit_format="radio" data_type="string">
+    <default_value>points</default_value>
+    <edit_format_params>points={{ phrase('points') }}
+percentage=%</edit_format_params>
+    <relation group_id="fs_thread_scoring_system" display_order="8"/>
+  </option>
   <option option_id="fs_thread_scoring_list_order" edit_format="radio" data_type="string">
     <default_value>desc</default_value>
     <edit_format_params>desc={{ phrase('fs_thread_desc') }}
 asc={{ phrase('fs_thread_asc') }}</edit_format_params>
     <relation group_id="fs_thread_scoring_system" display_order="7"/>
+  </option>
+  <option option_id="fs_thread_scoring_system_notable_perpage" edit_format="spinbox" data_type="positive_integer">
+    <default_value>5</default_value>
+    <edit_format_params>min=1</edit_format_params>
+    <relation group_id="fs_thread_scoring_system" display_order="9"/>
   </option>
   <option option_id="fs_thread_starter_points" edit_format="spinbox" data_type="positive_integer">
     <default_value>10</default_value>

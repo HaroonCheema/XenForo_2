@@ -1,0 +1,9 @@
+{
+    "template": "member_wrapper",
+    "description": "fs_thread_scoring_system_notable_widget",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:page option=\"sideNavTitle\">{{ phrase('members') }}</xf:page>",
+    "replace": "<xf:include template=\"fs_thread_scoring_system_notable_side_widget\" />\n\n$0"
+}

@@ -179,6 +179,19 @@ return array(
 	), $__vars) . '
 ' . $__templater->includeTemplate('dbtech_credits_member_stats', $__vars) . '
 	' . '
+
+';
+	if ($__templater->method($__vars['xf']['visitor'], 'hasPermission', array('fs_thread_scoring_system', 'can_view', ))) {
+		$__finalCompiled .= '
+	<dl class="pairs pairs--rows pairs--rows--centered menu-fauxLinkRow">
+		<dt>' . 'Total Points' . '</dt>
+		<dd>
+			' . $__templater->escape($__templater->method($__vars['user'], 'getTotalPoints', array())) . '
+		</dd>
+	</dl>
+';
+	}
+	$__finalCompiled .= '
 	<dl class="pairs pairs--rows pairs--rows--centered menu-fauxLinkRow">
 		<dt>' . 'Question Expert' . '</dt>
 		<dd>

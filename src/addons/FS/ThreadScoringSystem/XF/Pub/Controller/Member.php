@@ -6,6 +6,54 @@ use XF\Mvc\ParameterBag;
 
 class Member extends XFCP_Member
 {
+    public function actionIndex(ParameterBag $params)
+    {
+        $parent =  parent::actionIndex($params);
+
+        if (!$params->user_id) {
+
+            // $options = \XF::options();
+
+            $records = $this->finder('FS\ThreadScoringSystem:ScoringSystem')->fetch();
+
+            $allTypePoints = \XF::service('FS\ThreadScoringSystem:ReplyPoints');
+
+            // if ($options->fs_thread_scoring_list_format == 'points') {
+
+            $data = $allTypePoints->getPointsSums($records);
+            // } else {
+            //     $data = $allTypePoints->getPercentageSums($records);
+            // }
+
+            $parent->setParam('data', $data);
+        }
+
+        return $parent;
+    }
+
+    public function actionAllUsersPoints()
+    {
+
+        // $options = \XF::options();
+
+        $records = $this->finder('FS\ThreadScoringSystem:ScoringSystem')->fetch();
+
+        $allTypePoints = \XF::service('FS\ThreadScoringSystem:ReplyPoints');
+
+        // if ($options->fs_thread_scoring_list_format == 'points') {
+
+        $data = $allTypePoints->getPointsSums($records);
+        // } else {
+        //     $data = $allTypePoints->getPercentageSums($records);
+        // }
+
+        $viewParams = [
+            'totalCounts' => $data['totalCounts'],
+            'records' => $data['records'],
+        ];
+
+        return $this->view('FS\ThreadScoringSystem:Member\AllUsersPoints', 'fs_thread_scoring_all_score_notable', $viewParams);
+    }
 
     public function actionMyPointsScore(ParameterBag $params)
     {

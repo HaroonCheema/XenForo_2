@@ -7,8 +7,8 @@
     },
     "fs_answer_count.txt": {
         "global_cache": false,
-        "version_id": 1000700,
-        "version_string": "1.0.7",
+        "version_id": 1000900,
+        "version_string": "1.0.9",
         "hash": "ec57dd7429d24a3ace1e3e347a0ac0c3"
     },
     "fs_question_count.txt": {

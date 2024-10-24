@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <template_modifications>
+  <modification type="public" template="member_macros" modification_key="fs_thread_scoring_system_get_total_points" description="fs_thread_scoring_system_get_total_points" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<!--[XF:stat_pairs:below_trophies]-->]]></find>
+    <replace><![CDATA[$0
+
+<xf:if is="{{ $xf.visitor.hasPermission('fs_thread_scoring_system', 'can_view') }}">
+	<dl class="pairs pairs--rows pairs--rows--centered menu-fauxLinkRow">
+		<dt>{{ phrase('fs_thread_scoring_system_total_points') }}</dt>
+		<dd>
+			{{$user.getTotalPoints() }}
+		</dd>
+	</dl>
+</xf:if>]]></replace>
+  </modification>
   <modification type="public" template="member_view" modification_key="fs_thread_scoring_system_member_add_panel" description="fs_thread_scoring_system_member_add_panel" execution_order="10" enabled="1" action="str_replace">
     <find><![CDATA[<!--[XF:tab_panes:end]-->]]></find>
     <replace><![CDATA[<xf:if is="{{ $xf.visitor.hasPermission('fs_thread_scoring_system', 'can_view') }}">
@@ -19,6 +32,12 @@ $0]]></replace>
 	   id="my-points-score"
 	   role="tab">{{ phrase('fs_thread_scoring_point_score') }}</a>
 </xf:if>
+
+$0]]></replace>
+  </modification>
+  <modification type="public" template="member_wrapper" modification_key="fs_thread_scoring_system_notable_widget" description="fs_thread_scoring_system_notable_widget" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:page option="sideNavTitle">{{ phrase('members') }}</xf:page>]]></find>
+    <replace><![CDATA[<xf:include template="fs_thread_scoring_system_notable_side_widget" />
 
 $0]]></replace>
   </modification>

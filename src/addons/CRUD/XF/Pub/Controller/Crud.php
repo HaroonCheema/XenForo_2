@@ -431,6 +431,10 @@ class Crud extends AbstractController
 
     public function actionIndex(ParameterBag $params)
     {
+
+        
+
+
         // $finder = \XF::finder('XF:Navigation')->where('navigation_id', 'forums')->fetchOne();
 
         // $finder->MasterTitle->bulkSet([
