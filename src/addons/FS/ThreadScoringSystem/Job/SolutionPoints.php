@@ -9,7 +9,7 @@ class SolutionPoints extends AbstractRebuildJob
     protected $rebuildDefaultData = [
         'steps' => 0,
         'start' => 0,
-        'batch' => 1000,
+        'batch' => 500,
     ];
 
     protected function getNextIds($start, $batch)

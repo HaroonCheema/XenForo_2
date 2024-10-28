@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 589c1cf938c70d337ccd26213e38e0f4
+// FROM HASH: e681c5cc3d6090def02df6c29f28b653
 return array(
 'macros' => array('record_table_list' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -38,23 +38,23 @@ return array(
 		foreach ($__vars['totalCounts'] AS $__vars['val']) {
 			$__compilerTemp1[] = array(
 				'_type' => 'cell',
-				'html' => ' ' . ($__templater->escape($__vars['val']['thread']) ?: 'N/A') . ' ',
+				'html' => ' ' . ($__vars['val']['thread'] ? $__templater->func('number', array($__vars['val']['thread'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true) : 'N/A') . ' ',
 			);
 			$__compilerTemp1[] = array(
 				'_type' => 'cell',
-				'html' => ' ' . ($__templater->escape($__vars['val']['reply']) ?: 'N/A') . ' ',
+				'html' => ' ' . ($__vars['val']['reply'] ? $__templater->func('number', array($__vars['val']['reply'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true) : 'N/A') . ' ',
 			);
 			$__compilerTemp1[] = array(
 				'_type' => 'cell',
-				'html' => ' ' . ($__templater->escape($__vars['val']['words']) ?: 'N/A') . ' ',
+				'html' => ' ' . ($__vars['val']['words'] ? $__templater->func('number', array($__vars['val']['words'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true) : 'N/A') . ' ',
 			);
 			$__compilerTemp1[] = array(
 				'_type' => 'cell',
-				'html' => ' ' . ($__templater->escape($__vars['val']['reactions']) ?: 'N/A') . ' ',
+				'html' => ' ' . ($__vars['val']['reactions'] ? $__templater->func('number', array($__vars['val']['reactions'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true) : 'N/A') . ' ',
 			);
 			$__compilerTemp1[] = array(
 				'_type' => 'cell',
-				'html' => ' ' . ($__templater->escape($__vars['val']['solution']) ?: 'N/A') . ' ',
+				'html' => ' ' . ($__vars['val']['solution'] ? $__templater->func('number', array($__vars['val']['solution'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true) : 'N/A') . ' ',
 			);
 		}
 	}

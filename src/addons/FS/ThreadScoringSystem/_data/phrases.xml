@@ -26,6 +26,7 @@
   <phrase title="option.fs_reply_reaction_points" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Reactions]]></phrase>
   <phrase title="option.fs_thread_scoring_list_format" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[List format]]></phrase>
   <phrase title="option.fs_thread_scoring_list_order" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[List order by]]></phrase>
+  <phrase title="option.fs_thread_scoring_system_decimals" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Number of decimals]]></phrase>
   <phrase title="option.fs_thread_scoring_system_notable_perpage" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Notabel list limit]]></phrase>
   <phrase title="option.fs_thread_starter_points" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Thread starter]]></phrase>
   <phrase title="option.fs_total_minimum_req_points" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Minimum required]]></phrase>
@@ -35,6 +36,7 @@
   <phrase title="option_explain.fs_reply_reaction_points" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You can adjust total reaction points from here...!]]></phrase>
   <phrase title="option_explain.fs_thread_scoring_list_format" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
   <phrase title="option_explain.fs_thread_scoring_list_order" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_explain.fs_thread_scoring_system_decimals" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Given limit apply on after dot (.) decimals...!]]></phrase>
   <phrase title="option_explain.fs_thread_scoring_system_notable_perpage" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
   <phrase title="option_explain.fs_thread_starter_points" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You can adjust thread starter or post thread points from here...!]]></phrase>
   <phrase title="option_explain.fs_total_minimum_req_points" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You can adjust minimum required points from here for display users in list...!]]></phrase>

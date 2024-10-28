@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 730130757a59609cad20d0dd49e0f17c
+// FROM HASH: 45f3fb9cded72846abeb4993b9a70e0c
 return array(
 'macros' => array('record_table_list' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -55,27 +55,27 @@ return array(
 			),
 			array(
 				'_type' => 'cell',
-				'html' => ' ' . ($__templater->escape($__vars['totalCounts'][$__vars['val']['user_id']]['thread']) ?: 'N/A') . ' ',
+				'html' => ' ' . ($__vars['totalCounts'][$__vars['val']['user_id']]['thread'] ? $__templater->func('number', array($__vars['totalCounts'][$__vars['val']['user_id']]['thread'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true) : 'N/A') . ' ',
 			),
 			array(
 				'_type' => 'cell',
-				'html' => ' ' . ($__templater->escape($__vars['totalCounts'][$__vars['val']['user_id']]['reply']) ?: 'N/A') . ' ',
+				'html' => ' ' . ($__vars['totalCounts'][$__vars['val']['user_id']]['reply'] ? $__templater->func('number', array($__vars['totalCounts'][$__vars['val']['user_id']]['reply'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true) : 'N/A') . ' ',
 			),
 			array(
 				'_type' => 'cell',
-				'html' => ' ' . ($__templater->escape($__vars['totalCounts'][$__vars['val']['user_id']]['words']) ?: 'N/A') . ' ',
+				'html' => ' ' . ($__vars['totalCounts'][$__vars['val']['user_id']]['words'] ? $__templater->func('number', array($__vars['totalCounts'][$__vars['val']['user_id']]['words'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true) : 'N/A') . ' ',
 			),
 			array(
 				'_type' => 'cell',
-				'html' => ' ' . ($__templater->escape($__vars['totalCounts'][$__vars['val']['user_id']]['reactions']) ?: 'N/A') . ' ',
+				'html' => ' ' . ($__vars['totalCounts'][$__vars['val']['user_id']]['reactions'] ? $__templater->func('number', array($__vars['totalCounts'][$__vars['val']['user_id']]['reactions'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true) : 'N/A') . ' ',
 			),
 			array(
 				'_type' => 'cell',
-				'html' => ' ' . ($__templater->escape($__vars['totalCounts'][$__vars['val']['user_id']]['solution']) ?: 'N/A') . ' ',
+				'html' => ' ' . ($__vars['totalCounts'][$__vars['val']['user_id']]['solution'] ? $__templater->func('number', array($__vars['totalCounts'][$__vars['val']['user_id']]['solution'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true) : 'N/A') . ' ',
 			),
 			array(
 				'_type' => 'cell',
-				'html' => ' ' . ($__templater->escape($__vars['totalCounts'][$__vars['val']['user_id']]['totalPoints']) ?: 'N/A') . ' ',
+				'html' => ' ' . ($__vars['totalCounts'][$__vars['val']['user_id']]['totalPoints'] ? $__templater->func('number', array($__vars['totalCounts'][$__vars['val']['user_id']]['totalPoints'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true) : 'N/A') . ' ',
 			))) . '
 	';
 		}

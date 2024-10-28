@@ -24,6 +24,12 @@ percentage=%</edit_format_params>
 asc={{ phrase('fs_thread_asc') }}</edit_format_params>
     <relation group_id="fs_thread_scoring_system" display_order="7"/>
   </option>
+  <option option_id="fs_thread_scoring_system_decimals" edit_format="spinbox" data_type="positive_integer">
+    <default_value>2</default_value>
+    <edit_format_params>min=1
+max=8</edit_format_params>
+    <relation group_id="fs_thread_scoring_system" display_order="10"/>
+  </option>
   <option option_id="fs_thread_scoring_system_notable_perpage" edit_format="spinbox" data_type="positive_integer">
     <default_value>5</default_value>
     <edit_format_params>min=1</edit_format_params>

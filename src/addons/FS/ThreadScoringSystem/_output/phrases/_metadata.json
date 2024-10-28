@@ -155,6 +155,12 @@
         "version_string": "1.0.0 Alpha",
         "hash": "313ef020a1352253832d556682fb26ba"
     },
+    "option.fs_thread_scoring_system_decimals.txt": {
+        "global_cache": false,
+        "version_id": 1000200,
+        "version_string": "1.0.2 Alpha",
+        "hash": "0a1e355325f75fe4cc3bf08b0f31f1c2"
+    },
     "option.fs_thread_scoring_system_notable_perpage.txt": {
         "global_cache": false,
         "version_id": 1000010,
@@ -208,6 +214,12 @@
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
         "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "option_explain.fs_thread_scoring_system_decimals.txt": {
+        "global_cache": false,
+        "version_id": 1000200,
+        "version_string": "1.0.2 Alpha",
+        "hash": "03c7252f3818744ebdab3ade10de3425"
     },
     "option_explain.fs_thread_scoring_system_notable_perpage.txt": {
         "global_cache": false,

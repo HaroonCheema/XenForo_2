@@ -25,18 +25,18 @@
 							<dl class="pairs pairs--justified">										
 								<dt><xf:username user="$value.User" rich="true" defaultname="{$value.User.username}" itemprop="name" /></dt>
 								<xf:if is="$xf.options.fs_thread_scoring_list_format == 'percentage'">
-									<dd data-xf-init="tooltip" title="{{$data.totalPercentage.{$value.user_id}.thread ? phrase('fs_thread_scoring_system_thread') . ' ' . $data.totalPercentage.{$value.user_id}.thread . ' % ' : ' '}}
-																	  {{$data.totalPercentage.{$value.user_id}.reply ? phrase('fs_thread_scoring_system_reply') . ' ' . $data.totalPercentage.{$value.user_id}.reply . ' % ' : ' '}}
-																	  {{$data.totalPercentage.{$value.user_id}.words ? phrase('fs_thread_scoring_system_words') . ' ' . $data.totalPercentage.{$value.user_id}.words . ' % ' : ' '}}
-																	  {{$data.totalPercentage.{$value.user_id}.reactions ? phrase('fs_thread_scoring_system_reactions') . ' ' . $data.totalPercentage.{$value.user_id}.reactions . ' % ' : ' '}}
-																	  {{$data.totalPercentage.{$value.user_id}.solution ? phrase('fs_thread_scoring_system_solution') . ' ' . $data.totalPercentage.{$value.user_id}.solution . ' % ' : ' '}}">{$data.totalPercentage.{$value.user_id}.totalPoints}</dd>
+									<dd data-xf-init="tooltip" title="{{$data.totalPercentage.{$value.user_id}.thread ? phrase('fs_thread_scoring_system_thread') . ' ' . number($data.totalPercentage.{$value.user_id}.thread, $xf.options.fs_thread_scoring_system_decimals) . ' % ' : ' '}}
+																	  {{$data.totalPercentage.{$value.user_id}.reply ? phrase('fs_thread_scoring_system_reply') . ' ' . number($data.totalPercentage.{$value.user_id}.reply, $xf.options.fs_thread_scoring_system_decimals) . ' % ' : ' '}}
+																	  {{$data.totalPercentage.{$value.user_id}.words ? phrase('fs_thread_scoring_system_words') . ' ' . number($data.totalPercentage.{$value.user_id}.words, $xf.options.fs_thread_scoring_system_decimals) . ' % ' : ' '}}
+																	  {{$data.totalPercentage.{$value.user_id}.reactions ? phrase('fs_thread_scoring_system_reactions') . ' ' . number($data.totalPercentage.{$value.user_id}.reactions, $xf.options.fs_thread_scoring_system_decimals) . ' % ' : ' '}}
+																	  {{$data.totalPercentage.{$value.user_id}.solution ? phrase('fs_thread_scoring_system_solution') . ' ' . number($data.totalPercentage.{$value.user_id}.solution, $xf.options.fs_thread_scoring_system_decimals) . ' % ' : ' '}}">{{number($data.totalPercentage.{$value.user_id}.totalPoints, $xf.options.fs_thread_scoring_system_decimals)}}</dd>
 
 									<xf:else />
-									<dd data-xf-init="tooltip" title="{{$data.totalCounts.{$value.user_id}.thread ? phrase('fs_thread_scoring_system_thread') . ' ' . $data.totalCounts.{$value.user_id}.thread . ' (' . phrase('points') . ')' : ' '}}
-																	  {{$data.totalCounts.{$value.user_id}.reply ? phrase('fs_thread_scoring_system_reply') . ' ' . $data.totalCounts.{$value.user_id}.reply . ' (' . phrase('points') . ')' : ' '}}
-																	  {{$data.totalCounts.{$value.user_id}.words ? phrase('fs_thread_scoring_system_words') . ' ' . $data.totalCounts.{$value.user_id}.words . ' (' . phrase('points') . ')' : ' '}}
-																	  {{$data.totalCounts.{$value.user_id}.reactions ? phrase('fs_thread_scoring_system_reactions') . ' ' . $data.totalCounts.{$value.user_id}.reactions . ' (' . phrase('points') . ')' : ' '}}
-																	  {{$data.totalCounts.{$value.user_id}.solution ? phrase('fs_thread_scoring_system_solution') . ' ' . $data.totalCounts.{$value.user_id}.solution . ' (' . phrase('points') . ')' : ' '}}">{$data.totalCounts.{$value.user_id}.totalPoints}</dd>
+									<dd data-xf-init="tooltip" title="{{$data.totalCounts.{$value.user_id}.thread ? phrase('fs_thread_scoring_system_thread') . ' ' . number($data.totalCounts.{$value.user_id}.thread, $xf.options.fs_thread_scoring_system_decimals) . ' (' . phrase('points') . ')' : ' '}}
+																	  {{$data.totalCounts.{$value.user_id}.reply ? phrase('fs_thread_scoring_system_reply') . ' ' . number($data.totalCounts.{$value.user_id}.reply, $xf.options.fs_thread_scoring_system_decimals) . ' (' . phrase('points') . ')' : ' '}}
+																	  {{$data.totalCounts.{$value.user_id}.words ? phrase('fs_thread_scoring_system_words') . ' ' . number($data.totalCounts.{$value.user_id}.words, $xf.options.fs_thread_scoring_system_decimals) . ' (' . phrase('points') . ')' : ' '}}
+																	  {{$data.totalCounts.{$value.user_id}.reactions ? phrase('fs_thread_scoring_system_reactions') . ' ' . number($data.totalCounts.{$value.user_id}.reactions, $xf.options.fs_thread_scoring_system_decimals) . ' (' . phrase('points') . ')' : ' '}}
+																	  {{$data.totalCounts.{$value.user_id}.solution ? phrase('fs_thread_scoring_system_solution') . ' ' . number($data.totalCounts.{$value.user_id}.solution, $xf.options.fs_thread_scoring_system_decimals) . ' (' . phrase('points') . ')' : ' '}}">{{number($data.totalCounts.{$value.user_id}.totalPoints, $xf.options.fs_thread_scoring_system_decimals)}}</dd>
 
 								</xf:if>
 

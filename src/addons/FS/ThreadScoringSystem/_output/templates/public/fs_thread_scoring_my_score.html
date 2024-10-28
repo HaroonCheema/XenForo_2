@@ -31,11 +31,11 @@
 
 	<xf:datarow>
 		<xf:foreach loop="{$totalCounts}" value="$val">
-			<xf:cell> {{$val.thread ?: phrase('n_a') }} </xf:cell>
-			<xf:cell> {{$val.reply ?: phrase('n_a') }} </xf:cell>
-			<xf:cell> {{$val.words ?: phrase('n_a') }} </xf:cell>
-			<xf:cell> {{$val.reactions ?: phrase('n_a') }} </xf:cell>
-			<xf:cell> {{$val.solution ?: phrase('n_a') }} </xf:cell>
+			<xf:cell> {{$val.thread ? number($val.thread, $xf.options.fs_thread_scoring_system_decimals) : phrase('n_a') }} </xf:cell>
+			<xf:cell> {{$val.reply ? number($val.reply, $xf.options.fs_thread_scoring_system_decimals) : phrase('n_a') }} </xf:cell>
+			<xf:cell> {{$val.words ? number($val.words, $xf.options.fs_thread_scoring_system_decimals) : phrase('n_a') }} </xf:cell>
+			<xf:cell> {{$val.reactions ? number($val.reactions, $xf.options.fs_thread_scoring_system_decimals) : phrase('n_a') }} </xf:cell>
+			<xf:cell> {{$val.solution ? number($val.solution, $xf.options.fs_thread_scoring_system_decimals) : phrase('n_a') }} </xf:cell>
 		</xf:foreach>
 	</xf:datarow>
 

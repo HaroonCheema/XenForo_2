@@ -9,7 +9,7 @@ class ReplyPoints extends AbstractRebuildJob
     protected $rebuildDefaultData = [
         'steps' => 0,
         'start' => 0,
-        'batch' => 500,
+        'batch' => 250,
     ];
 
     protected function getNextIds($start, $batch)

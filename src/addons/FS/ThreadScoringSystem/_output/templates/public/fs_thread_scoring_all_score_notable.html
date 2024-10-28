@@ -42,12 +42,12 @@
 	<xf:foreach loop="{$records}" value="$val">
 		<xf:datarow>
 			<xf:cell> <xf:username user="$val.User" rich="true" defaultname="{$val.User.username}" itemprop="name" /> </xf:cell>
-			<xf:cell> {{$totalCounts.{$val.user_id}.thread ?: phrase('n_a') }} </xf:cell>
-			<xf:cell> {{$totalCounts.{$val.user_id}.reply ?: phrase('n_a') }} </xf:cell>
-			<xf:cell> {{$totalCounts.{$val.user_id}.words ?: phrase('n_a') }} </xf:cell>
-			<xf:cell> {{$totalCounts.{$val.user_id}.reactions ?: phrase('n_a') }} </xf:cell>
-			<xf:cell> {{$totalCounts.{$val.user_id}.solution ?: phrase('n_a') }} </xf:cell>
-			<xf:cell> {{$totalCounts.{$val.user_id}.totalPoints ?: phrase('n_a') }} </xf:cell>
+			<xf:cell> {{$totalCounts.{$val.user_id}.thread ? number($totalCounts.{$val.user_id}.thread, $xf.options.fs_thread_scoring_system_decimals) : phrase('n_a') }} </xf:cell>
+			<xf:cell> {{$totalCounts.{$val.user_id}.reply ? number($totalCounts.{$val.user_id}.reply, $xf.options.fs_thread_scoring_system_decimals) : phrase('n_a') }} </xf:cell>
+			<xf:cell> {{$totalCounts.{$val.user_id}.words ? number($totalCounts.{$val.user_id}.words, $xf.options.fs_thread_scoring_system_decimals) : phrase('n_a') }} </xf:cell>
+			<xf:cell> {{$totalCounts.{$val.user_id}.reactions ? number($totalCounts.{$val.user_id}.reactions, $xf.options.fs_thread_scoring_system_decimals) : phrase('n_a') }} </xf:cell>
+			<xf:cell> {{$totalCounts.{$val.user_id}.solution ? number($totalCounts.{$val.user_id}.solution, $xf.options.fs_thread_scoring_system_decimals) : phrase('n_a') }} </xf:cell>
+			<xf:cell> {{$totalCounts.{$val.user_id}.totalPoints ? number($totalCounts.{$val.user_id}.totalPoints, $xf.options.fs_thread_scoring_system_decimals) : phrase('n_a') }} </xf:cell>
 		</xf:datarow>
 	</xf:foreach>
 
