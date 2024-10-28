@@ -767,6 +767,7 @@ return array (
   'option.usernameValidation' => 'Username validation',
   'option.watchAlertActiveOnly' => 'Only send watched content alerts/emails to users active in last:',
   'option.webShare' => 'Enable web share button',
+  'option.webhook_secret_key' => 'Webhook Secret Token',
   'option.whatsAppShare' => 'Enable WhatsApp share button',
   'option.xb_th_default_image' => 'Default Thread thumbnail',
   'option.xb_th_xenbros_activation' => 'Activate Addon',
@@ -817,4 +818,9 @@ return array (
   'option.xfrmReviewsPerPage' => 'Reviews per page',
   'option.xfrmUpdateMaxLength' => 'Maximum resource update/description length',
   'option.xfrmUpdatesPerPage' => 'Resource updates per page',
+  'option.zoom_access_token' => 'Zoom Access Token',
+  'option.zoom_client_id' => 'Client ID',
+  'option.zoom_client_secret' => 'Client Secret',
+  'option.zoom_credentials_change' => 'Zoom Auth System',
+  'option.zoom_refresh_token' => 'Zoom Refresh Token',
 );

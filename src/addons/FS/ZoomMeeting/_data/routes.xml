@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<routes>
+  <route route_type="admin" route_prefix="meetings" format=":int&lt;meeting_id&gt;" controller="FS\ZoomMeeting:Meeting" context="zoom_meetings"/>
+  <route route_type="admin" route_prefix="zoom-categories" format=":int&lt;category_id&gt;" controller="FS\ZoomMeeting:Category" context="zoom_categories"/>
+  <route route_type="public" route_prefix="meetings" format=":int&lt;category_id,title&gt;/:int&lt;meeting_id&gt;/:page" controller="FS\ZoomMeeting:Meeting" context="zoom_meetings"/>
+</routes>

@@ -115,4 +115,5 @@ return array (
   'nav.xfrmWatchedResources' => 'Watched resources',
   'nav.xfrmYourResources' => 'Your resources',
   'nav.yourThreads' => 'Your threads',
+  'nav.zoom_meetings' => 'Zoom',
 );

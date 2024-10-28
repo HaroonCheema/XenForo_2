@@ -280,4 +280,7 @@ return array (
   'admin_navigation.xfrmFields' => 'Resource fields',
   'admin_navigation.xfrmPrefixes' => 'Resource prefixes',
   'admin_navigation.xfrmReviewFields' => 'Resource review fields',
+  'admin_navigation.zoom' => 'Zoom Meetings',
+  'admin_navigation.zoom_categories' => 'Categories',
+  'admin_navigation.zoom_meetings' => 'Meetings',
 );

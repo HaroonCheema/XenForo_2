@@ -870,6 +870,7 @@ Use the textbox above to specify a format. <b>{title}</b> will be replaced with 
   'option_explain.usernameValidation' => '',
   'option_explain.watchAlertActiveOnly' => 'If enabled, watched content alerts and emails will only be sent to users that have visited within the specified number of days. This can improve performance on large or very active installations.',
   'option_explain.webShare' => 'On supported devices, this button will open the browser\'s web share prompt, allowing users to share the current page to other applications.',
+  'option_explain.webhook_secret_key' => 'Must Required for webhook validate.',
   'option_explain.whatsAppShare' => 'If a user clicks this button WhatsApp will open a list of users with whom to share the current page URL and title.',
   'option_explain.xb_th_default_image' => '',
   'option_explain.xb_th_xenbros_activation' => '',
@@ -920,4 +921,9 @@ Use the textbox above to specify a format. <b>{title}</b> will be replaced with 
   'option_explain.xfrmReviewsPerPage' => '',
   'option_explain.xfrmUpdateMaxLength' => 'The maximum number of characters that can be in a resource update or description. This includes BB code. Setting this value too large or disabling it entirely may cause performance issues and is not recommended.',
   'option_explain.xfrmUpdatesPerPage' => '',
+  'option_explain.zoom_access_token' => 'Do not need to change or insert any thing.',
+  'option_explain.zoom_client_id' => '',
+  'option_explain.zoom_client_secret' => '',
+  'option_explain.zoom_credentials_change' => '',
+  'option_explain.zoom_refresh_token' => 'Do not need to change or insert any thing.',
 );

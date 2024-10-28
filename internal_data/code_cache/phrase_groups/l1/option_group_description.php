@@ -105,4 +105,6 @@ It is possible to filter the news feed down to just users you follow, or a singl
   'option_group_description.xenforoMessenger' => '',
   'option_group_description.xfmg' => 'Options that control the media gallery add-on.',
   'option_group_description.xfrm' => 'Options that control the resource manager add-on.',
+  'option_group_description.zoom_api_credentials' => '',
+  'option_group_description.zoom_meeting' => '',
 );
