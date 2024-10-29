@@ -10,7 +10,9 @@ class Member extends XFCP_Member
     {
         $parent =  parent::actionIndex($params);
 
-        if (!$params->user_id) {
+        $username = $this->filter('username', 'str');
+
+        if (!($params->user_id || $username)) {
 
             // $options = \XF::options();
 

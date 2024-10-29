@@ -395,6 +395,7 @@ return array (
   'option.fs_web_ranking_parent_web_id' => 'Parent Website Id',
   'option.fs_welcome_banner_applicable_threads' => 'Welcome Banner Applicable Threads',
   'option.fs_wr_numOfSites' => 'Number of sites',
+  'option.fs_zoom_credentials_change' => 'Zoom Auth System',
   'option.geoLocationUrl' => 'Location information URL',
   'option.giphy' => 'Enable GIPHY support',
   'option.googleAnalyticsAnonymize' => 'Anonymize IP addresses for Google Analytics',
@@ -822,5 +823,7 @@ return array (
   'option.zoom_client_id' => 'Client ID',
   'option.zoom_client_secret' => 'Client Secret',
   'option.zoom_credentials_change' => 'Zoom Auth System',
+  'option.zoom_meeting_access_token' => 'Zoom Meeting Access Token',
+  'option.zoom_meeting_refresh_token' => 'Zoom Meeting Refresh Token',
   'option.zoom_refresh_token' => 'Zoom Refresh Token',
 );

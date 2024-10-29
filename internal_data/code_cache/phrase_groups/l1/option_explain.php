@@ -455,6 +455,7 @@ Example: 1,2,3,4,..',
   'option_explain.fs_welcome_banner_applicable_threads' => 'List the welcome banner thread ids that are allowed to be display. Use , (comma) between ids.
 Example: 1,2,3,4,..',
   'option_explain.fs_wr_numOfSites' => 'How many Websites will be display in stats list (sits percentage)',
+  'option_explain.fs_zoom_credentials_change' => '',
   'option_explain.geoLocationUrl' => 'The URL specified here will be used to give information (such as a map) about a physical location. The URL must include a <strong>{location}</strong> token.',
   'option_explain.giphy' => 'If enabled, users will be able to search for GIFs while composing messages using the rich-text editor. Powered by <a href="https://giphy.com/" target="_blank">GIPHY</a>.',
   'option_explain.googleAnalyticsAnonymize' => 'If Google Analytics is enabled above and you wish to anonymize IP addresses, you can enable this option.',
@@ -925,5 +926,7 @@ Use the textbox above to specify a format. <b>{title}</b> will be replaced with 
   'option_explain.zoom_client_id' => '',
   'option_explain.zoom_client_secret' => '',
   'option_explain.zoom_credentials_change' => '',
+  'option_explain.zoom_meeting_access_token' => 'Do not need to change or insert any thing.',
+  'option_explain.zoom_meeting_refresh_token' => 'Do not need to change or insert any thing.',
   'option_explain.zoom_refresh_token' => 'Do not need to change or insert any thing.',
 );

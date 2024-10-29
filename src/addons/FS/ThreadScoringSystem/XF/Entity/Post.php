@@ -4,35 +4,35 @@ namespace FS\ThreadScoringSystem\XF\Entity;
 
 class Post extends XFCP_Post
 {
-    protected function _postSave()
-    {
-        $parent = parent::_postSave();
+    // protected function _postSave()
+    // {
+    //     $parent = parent::_postSave();
 
-        $thread = $this->Thread;
+    //     $thread = $this->Thread;
 
-        $postReply = \XF::service('FS\ThreadScoringSystem:ReplyPoints');
-        $postReply->addEditReplyPoints($thread);
+    //     $postReply = \XF::service('FS\ThreadScoringSystem:ReplyPoints');
+    //     $postReply->addEditReplyPoints($thread);
 
-        $threadQuestion = $this->Thread->Question;
+    //     $threadQuestion = $this->Thread->Question;
 
-        if ($threadQuestion && $threadQuestion->solution_post_id) {
+    //     if ($threadQuestion && $threadQuestion->solution_post_id) {
 
-            $threadQuestionServ = \XF::service('FS\ThreadScoringSystem:ReplyPoints');
-            $threadQuestionServ->addEditSolutionPoints($threadQuestion);
-        }
+    //         $threadQuestionServ = \XF::service('FS\ThreadScoringSystem:ReplyPoints');
+    //         $threadQuestionServ->addEditSolutionPoints($threadQuestion);
+    //     }
 
-        return $parent;
-    }
+    //     return $parent;
+    // }
 
-    protected function _postDelete()
-    {
-        $parent = parent::_postDelete();
+    // protected function _postDelete()
+    // {
+    //     $parent = parent::_postDelete();
 
-        $thread = $this->Thread;
+    //     $thread = $this->Thread;
 
-        $postReply = \XF::service('FS\ThreadScoringSystem:ReplyPoints');
-        $postReply->addEditReplyPoints($thread, $this->post_id);
+    //     $postReply = \XF::service('FS\ThreadScoringSystem:ReplyPoints');
+    //     $postReply->addEditReplyPoints($thread, $this->post_id);
 
-        return $parent;
-    }
+    //     return $parent;
+    // }
 }

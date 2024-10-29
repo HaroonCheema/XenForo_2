@@ -18,9 +18,9 @@ return array(
 			<div class="block">
 				<div class="block-container">
 
-					<h3 class="block-minorHeader">' . 'Thread Score :' . '</h3>
+					<h3 class="block-minorHeader">' . 'Thread Score ' . '</h3>
 					';
-			$__vars['replyPhrase'] = 'Thread Score :';
+			$__vars['replyPhrase'] = 'Thread Score ';
 			$__compilerTemp1 .= '
 
 					<div class="block-body block-row">

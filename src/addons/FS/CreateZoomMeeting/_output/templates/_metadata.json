@@ -1,0 +1,12 @@
+{
+    "admin/fs_option_template_zoomadvance.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "abca765b6aeeb7d64fb860c0624b5e44"
+    },
+    "admin/fs_option_zoom_transport_auth.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "cb74559c448bc3d1b796263016d76a0b"
+    }
+}

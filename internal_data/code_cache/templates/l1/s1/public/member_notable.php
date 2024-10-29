@@ -173,6 +173,90 @@ return array(
 				}
 			}
 			$__finalCompiled .= '
+
+';
+			if ($__templater->method($__vars['xf']['visitor'], 'hasPermission', array('fs_thread_scoring_system', 'can_view', ))) {
+				$__finalCompiled .= '
+
+	';
+				if ($__templater->func('count', array($__vars['data']['records'], ), false)) {
+					$__finalCompiled .= '
+
+		';
+					$__compilerTemp3 = '';
+					$__compilerTemp3 .= '
+						';
+					$__vars['isBelow'] = '0';
+					$__compilerTemp3 .= '
+
+						';
+					$__vars['i'] = 0;
+					if ($__templater->isTraversable($__vars['data']['records'])) {
+						foreach ($__vars['data']['records'] AS $__vars['key'] => $__vars['value']) {
+							$__vars['i']++;
+							$__compilerTemp3 .= '
+							';
+							if (($__vars['isBelow'] < $__vars['xf']['options']['fs_thread_scoring_system_notable_perpage']) AND $__vars['value']['User']) {
+								$__compilerTemp3 .= '
+								<li>
+									<div class="contentRow contentRow--alignMiddle">
+										<div class="contentRow-figure">
+											' . $__templater->func('avatar', array($__vars['value']['User'], 'xs', false, array(
+								))) . '
+										</div>
+										<div class="contentRow-main">
+											';
+								if ($__vars['data']['totalCounts'][$__vars['value']['user_id']]['totalPoints']) {
+									$__compilerTemp3 .= '
+												<div class="contentRow-extra contentRow-extra--large" data-xf-init="tooltip" title="' . ($__vars['data']['totalCounts'][$__vars['value']['user_id']]['thread'] ? ((((('Thread : ' . ' ') . $__templater->func('number', array($__vars['data']['totalCounts'][$__vars['value']['user_id']]['thread'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true)) . ' (') . 'Points') . ')') : ' ') . '
+																																	' . ($__vars['data']['totalCounts'][$__vars['value']['user_id']]['reply'] ? ((((('Reply : ' . ' ') . $__templater->func('number', array($__vars['data']['totalCounts'][$__vars['value']['user_id']]['reply'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true)) . ' (') . 'Points') . ')') : ' ') . '
+																																	' . ($__vars['data']['totalCounts'][$__vars['value']['user_id']]['words'] ? ((((('Words : ' . ' ') . $__templater->func('number', array($__vars['data']['totalCounts'][$__vars['value']['user_id']]['words'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true)) . ' (') . 'Points') . ')') : ' ') . '
+																																	' . ($__vars['data']['totalCounts'][$__vars['value']['user_id']]['reactions'] ? ((((('Reactions : ' . ' ') . $__templater->func('number', array($__vars['data']['totalCounts'][$__vars['value']['user_id']]['reactions'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true)) . ' (') . 'Points') . ')') : ' ') . '
+																																	' . ($__vars['data']['totalCounts'][$__vars['value']['user_id']]['solution'] ? ((((('Solution : ' . ' ') . $__templater->func('number', array($__vars['data']['totalCounts'][$__vars['value']['user_id']]['solution'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true)) . ' (') . 'Points') . ')') : ' ') . '">' . $__templater->func('number', array($__vars['data']['totalCounts'][$__vars['value']['user_id']]['totalPoints'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true) . '</div>
+											';
+								}
+								$__compilerTemp3 .= '
+											<h3 class="contentRow-title">' . $__templater->func('username_link', array($__vars['value']['User'], true, array(
+								))) . '</h3>
+										</div>
+									</div>
+								</li>
+								';
+								$__vars['isBelow'] = ($__vars['isBelow'] + 1);
+								$__compilerTemp3 .= '
+
+							';
+							}
+							$__compilerTemp3 .= '
+						';
+						}
+					}
+					$__compilerTemp3 .= '
+					';
+					if (strlen(trim($__compilerTemp3)) > 0) {
+						$__finalCompiled .= '
+			<li class="memberOverviewBlock">
+				<h3 class="block-textHeader">
+					<a href="' . $__templater->func('link', array('members', ), true) . '"
+					   class="memberOverViewBlock-title">' . 'Thread Score ' . '</a>
+				</h3>
+				<ol class="memberOverviewBlock-list">
+					' . $__compilerTemp3 . '
+				</ol>
+				<div class="memberOverviewBlock-seeMore">
+					<a href="' . $__templater->func('link', array('members/all-users-points', ), true) . '">' . 'See more' . $__vars['xf']['language']['ellipsis'] . '</a>
+				</div>
+			</li>
+		';
+					}
+					$__finalCompiled .= '
+	';
+				}
+				$__finalCompiled .= '
+
+';
+			}
+			$__finalCompiled .= '
 					</ol>
 				</div>
 			';

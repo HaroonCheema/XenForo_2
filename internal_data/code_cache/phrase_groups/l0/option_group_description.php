@@ -60,6 +60,7 @@ You may set a user into \'discouraged\' mode by editing their user profile, or d
   'option_group_description.fs_translator' => '[FS] Translator',
   'option_group_description.fs_web_ranking' => '',
   'option_group_description.fs_welcome_banner' => '',
+  'option_group_description.fs_zoom_meeting' => '',
   'option_group_description.hematthumb' => '',
   'option_group_description.hou_attachments' => 'Blocks download of attachments until users have liked.',
   'option_group_description.imageLinkProxy' => 'Controls the system for proxying and logging posted links and images',

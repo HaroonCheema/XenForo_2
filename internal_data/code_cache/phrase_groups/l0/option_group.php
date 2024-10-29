@@ -58,6 +58,7 @@ return array (
   'option_group.fs_translator' => '[FS] Translator',
   'option_group.fs_web_ranking' => '[FS] Website Ranking',
   'option_group.fs_welcome_banner' => '[FS] Welcome Banner',
+  'option_group.fs_zoom_meeting' => '[FS] Zoom Meeting Api Auth',
   'option_group.hematthumb' => '[Xenbros]Thread Thumbnail',
   'option_group.hou_attachments' => '[HoU] Attachments List with Like',
   'option_group.imageLinkProxy' => 'Image and link proxy',

@@ -5,7 +5,7 @@
   <phrase title="cron_entry.fs_thread_solution_point" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Thread solution points]]></phrase>
   <phrase title="fs_thread_asc" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[ASC]]></phrase>
   <phrase title="fs_thread_desc" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[DESC]]></phrase>
-  <phrase title="fs_thread_scores" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Thread Score :]]></phrase>
+  <phrase title="fs_thread_scores" version_id="1000500" version_string="1.0.5 Alpha"><![CDATA[Thread Score ]]></phrase>
   <phrase title="fs_thread_scores_users" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Username]]></phrase>
   <phrase title="fs_thread_scores_users_total_percentage" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Total percentage]]></phrase>
   <phrase title="fs_thread_scores_users_total_points" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Total points]]></phrase>

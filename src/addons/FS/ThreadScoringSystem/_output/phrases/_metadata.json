@@ -31,9 +31,9 @@
     },
     "fs_thread_scores.txt": {
         "global_cache": false,
-        "version_id": 1000010,
-        "version_string": "1.0.0 Alpha",
-        "hash": "f2981c31d0460ad8129bc0db2cf00162"
+        "version_id": 1000500,
+        "version_string": "1.0.5 Alpha",
+        "hash": "e57a1051482897d72267f6dbb2f347fb"
     },
     "fs_thread_scores_users.txt": {
         "global_cache": false,

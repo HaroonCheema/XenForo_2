@@ -2,14 +2,14 @@
     "public/fs_thread_scoring_system_get_total_points.json": {
         "hash": "125a6b28647ddae98e2951e50b1f8963"
     },
+    "public/fs_thread_scoring_system_in_container.json": {
+        "hash": "93e700e00454691b8c71eac244d79514"
+    },
     "public/fs_thread_scoring_system_member_add_panel.json": {
         "hash": "2116d2d0f9dbface829259fe73409820"
     },
     "public/fs_thread_scoring_system_member_add_tab.json": {
         "hash": "a04edd324be6d9b1db91aadb4562e17f"
-    },
-    "public/fs_thread_scoring_system_notable_widget.json": {
-        "hash": "8d9b9077308711531f04622c7608b7e5"
     },
     "public/fs_thread_scoring_system_widget_side.json": {
         "hash": "cefe502cd63f4f1090f6338a37e7b0f3"
