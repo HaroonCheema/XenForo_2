@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="admin" title="fs_option_template_zoomadvance" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:formrow
+	label="{$option.title}"
+	hint="{$hintHtml}"
+	explain="{$explainHtml}"
+	rowclass="{$rowClass}">
+
+	<div>{{ phrase('fs_built_zoom_auth_system') }}</div>
+	<div class="u-inputSpacer">
+		<xf:button href="{{ link('options/zoom-meeting-auth-setup', $option) }}" data-xf-click="overlay">
+			{{ phrase('change') }}
+		</xf:button>
+	</div>
+</xf:formrow>]]></template>
+  <template type="admin" title="fs_option_zoom_transport_auth" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{$option.title}</xf:title>
+
+<xf:form action="{{ link('options/zoom-meeting-auth-setup', $option) }}"  class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:inforow>
+				{{ phrase('zoom_setup_explain:') }}
+				<div><code>{$redirectUri}</code></div>
+			</xf:inforow>
+
+			<xf:textboxrow name="client_id" value="{$xf.options.zoom_meeting_client_id}"
+				label="{{ phrase('client_id') }}"
+				required="required" />
+
+			<xf:textboxrow name="client_secret"
+						   value="{$xf.options.zoom_meeting_client_secret}"
+				label="{{ phrase('client_secret') }}"
+				required="required" />
+
+			<xf:inforow>
+				{{ phrase('continuing_will_redirect_you_to_zoom_to_confirm_account_you_want_to') }}
+			</xf:inforow>
+		</div>
+		<xf:submitrow sticky="true" submit="{{ phrase('continue') }}" />
+	</div>
+</xf:form>]]></template>
+</templates>

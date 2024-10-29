@@ -11,7 +11,7 @@ return array(
 	<div class="block-container">
 		<div class="block-body">
 			' . $__templater->formInfoRow('
-				' . 'You will need to navigate to Zoom <a href="https://marketplace.zoom.us/develop/applications/" target="_blank">App</a> and setup a new project with OAuth 2.0 credentials for a web application., creating an app with get the client id and client secret also set the redirect url.' . $__vars['xf']['language']['label_separator'] . '
+				' . 'zoom_setup_explain:' . '
 				<div><code>' . $__templater->escape($__vars['redirectUri']) . '</code></div>
 			', array(
 	)) . '
@@ -33,7 +33,7 @@ return array(
 	)) . '
 
 			' . $__templater->formInfoRow('
-				' . 'Continuing will redirect you to Zoom to confirm the account you want to connect with.' . '
+				' . 'continuing_will_redirect_you_to_zoom_to_confirm_account_you_want_to' . '
 			', array(
 	)) . '
 		</div>

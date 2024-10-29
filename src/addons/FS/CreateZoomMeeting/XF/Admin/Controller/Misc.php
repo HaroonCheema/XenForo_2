@@ -21,10 +21,10 @@ class Misc extends XFCP_Misc
         $client_id = $connectedAccountRequest['client_id'];
         $client_secret = $connectedAccountRequest['client_secret'];
 
-        $redirectUri = $this->buildLink('canonical:misc/zoom-oauth-setup');
+        $redirectUri = $this->buildLink('canonical:misc/zoom-meeting-oauth-setup');
 
         // Ensure the redirect URI is URL encoded
-        $encodedRedirectUri = "https://forum-solution.com/forum/admin.php?misc/zoom-oauth-setup";
+        $encodedRedirectUri = "https://forum-solution.com/forum/admin.php?misc/zoom-meeting-oauth-setup";
 
         // OAuth token URL
         $url = "https://zoom.us/oauth/token";
@@ -58,7 +58,7 @@ class Misc extends XFCP_Misc
                 $accessToken = $tokenData['access_token'];
                 $refresh_token = $tokenData['refresh_token'];
 
-                $meetingService = $this->service('FS\ZoomMeeting:Meeting');
+                $meetingService = $this->service('FS\CreateZoomMeeting:Meeting');
 
                 $meetingService->saveOption("zoom_meeting_access_token", $accessToken);
                 $meetingService->saveOption("zoom_meeting_refresh_token", $refresh_token);

@@ -492,5 +492,4 @@ return array (
   'permission.xfmg_warnComment' => 'Give warnings on comments',
   'permission.xfmg_watermarkAny' => 'Add/remove watermark from any media items',
   'permission.xfmg_watermarkOwn' => 'Add/remove watermark from own media items',
-  'permission.zoom_meeting_zoom_meeting_view' => 'Can View Zoom Meetings',
 );

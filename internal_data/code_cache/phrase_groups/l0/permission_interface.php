@@ -68,5 +68,4 @@ return array (
   'permission_interface.xfmgNote' => 'XFMG: Note permissions',
   'permission_interface.xfmgNoteModerator' => 'XFMG: Note moderator permissions',
   'permission_interface.xfmgUploadQuotas' => 'XFMG: Upload quotas',
-  'permission_interface.zoom_meeting' => '[FS] Zoom Meeting',
 );

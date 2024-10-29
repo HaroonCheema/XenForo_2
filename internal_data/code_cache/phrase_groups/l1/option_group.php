@@ -58,6 +58,7 @@ return array (
   'option_group.fs_translator' => '[FS] Translator',
   'option_group.fs_web_ranking' => '[FS] Website Ranking',
   'option_group.fs_welcome_banner' => '[FS] Welcome Banner',
+  'option_group.fs_zoom_api_credentials' => '[FS] Zoom Api Credentials',
   'option_group.fs_zoom_meeting' => '[FS] Zoom Meeting Api Auth',
   'option_group.hematthumb' => '[Xenbros]Thread Thumbnail',
   'option_group.hou_attachments' => '[HoU] Attachments List with Like',
@@ -102,6 +103,4 @@ return array (
   'option_group.xenforoMessenger' => '[021] XenForo Messenger',
   'option_group.xfmg' => 'XenForo Media Gallery',
   'option_group.xfrm' => 'XenForo Resource Manager',
-  'option_group.zoom_api_credentials' => 'Zoom Api Credentials',
-  'option_group.zoom_meeting' => '[FS] Zoom Api Auth',
 );

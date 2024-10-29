@@ -801,28 +801,6 @@ return array(
 ';
 	$__templater->breadcrumbs($__templater->method($__vars['forum'], 'getBreadcrumbs', array()));
 	$__finalCompiled .= '
-';
-	if ($__vars['thread']['Meeting']) {
-		$__finalCompiled .= '
-	
-	';
-		$__templater->includeCss('general_zoom_meeting.less');
-		$__finalCompiled .= '
-	';
-		$__templater->includeCss('meeting_overiew.less');
-		$__finalCompiled .= '
-	' . $__templater->callMacro('zoom_meeting_macro', 'header', array(
-			'meeting' => $__vars['thread']['Meeting'],
-		), $__vars) . '
-
-	' . $__templater->callMacro('zoom_meeting_macro', 'tabs', array(
-			'meeting' => $__vars['thread']['Meeting'],
-			'selected' => 'discussion',
-		), $__vars) . '
-
-';
-	}
-	$__finalCompiled .= '
 
 ';
 	if ($__vars['canInlineMod'] OR $__templater->method($__vars['thread'], 'canUseInlineModeration', array())) {
@@ -954,21 +932,11 @@ return array(
 					';
 				} else {
 					$__finalCompiled .= '
-						';
-					if (($__vars['post']['Thread']['Meeting'] AND $__templater->method($__vars['post'], 'isFirstPost', array()))) {
-						$__finalCompiled .= '
-	
-';
-					} else {
-						$__finalCompiled .= '
-' . $__templater->callMacro(null, ($__vars['templateOverrides']['post_macro'] ?: 'post_macros::post'), $__templater->combineMacroArgumentAttributes($__vars['templateOverrides']['post_macro_args'], array(
-							'post' => $__vars['post'],
-							'thread' => $__vars['thread'],
-							'highlightedPosts' => $__vars['highlightedPosts'],
-						)), $__vars) . '
-';
-					}
-					$__finalCompiled .= '
+						' . $__templater->callMacro(null, ($__vars['templateOverrides']['post_macro'] ?: 'post_macros::post'), $__templater->combineMacroArgumentAttributes($__vars['templateOverrides']['post_macro_args'], array(
+						'post' => $__vars['post'],
+						'thread' => $__vars['thread'],
+						'highlightedPosts' => $__vars['highlightedPosts'],
+					)), $__vars) . '
 					';
 				}
 				$__finalCompiled .= '

@@ -29,7 +29,7 @@ class Setup extends AbstractSetup
 		$this->alterTable('xf_thread', function (\XF\Db\Schema\Alter $table) {
 
 			$table->addColumn('meetingId', 'int')->setDefault(0);
-		});
+		}); 
 	}
 
 	public function uninstallStep1()

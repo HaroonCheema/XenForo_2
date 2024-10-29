@@ -1,4 +1,10 @@
 {
+    "option.fs_webhook_secret_key.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "f3e062ea46d5b183ad812c4a4b8d3fa3"
+    },
     "option.fs_zoom_credentials_change.txt": {
         "global_cache": false,
         "version_id": 1000010,
@@ -11,11 +17,29 @@
         "version_string": "1.0.0 Alpha",
         "hash": "fe975b618bf02ca770c9717e4dd896cd"
     },
+    "option.zoom_meeting_client_id.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "76525f0f34b48475e5ca33f71d296f3b"
+    },
+    "option.zoom_meeting_client_secret.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "734082edf44417dd19cc65943aa65c36"
+    },
     "option.zoom_meeting_refresh_token.txt": {
         "global_cache": false,
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
         "hash": "3a77bc3eec90292fa3e640e398500c6c"
+    },
+    "option_explain.fs_webhook_secret_key.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "a8a6984174ded1f2bfe4a743e07abdb6"
     },
     "option_explain.fs_zoom_credentials_change.txt": {
         "global_cache": false,
@@ -29,17 +53,41 @@
         "version_string": "1.0.0 Alpha",
         "hash": "b06afb054c789a554f00ff99549287ec"
     },
+    "option_explain.zoom_meeting_client_id.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "option_explain.zoom_meeting_client_secret.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
     "option_explain.zoom_meeting_refresh_token.txt": {
         "global_cache": false,
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
         "hash": "b06afb054c789a554f00ff99549287ec"
     },
+    "option_group.fs_zoom_api_credentials.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d22675f3d4d42a1726b653084375a882"
+    },
     "option_group.fs_zoom_meeting.txt": {
         "global_cache": false,
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
         "hash": "fe268fc0065cc76ad7fce0d746466ee1"
+    },
+    "option_group_description.fs_zoom_api_credentials.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
     },
     "option_group_description.fs_zoom_meeting.txt": {
         "global_cache": false,

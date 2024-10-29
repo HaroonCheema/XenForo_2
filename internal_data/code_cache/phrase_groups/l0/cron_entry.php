@@ -1,7 +1,6 @@
 <?php
 return array (
   'cron_entry.activitySummaryEmail' => 'Send activity summary email',
-  'cron_entry.alert_meeting_registers' => 'Alert Zoom Meeting Registers Users.',
   'cron_entry.altf_hourly_cron' => 'Thread Filter - Hourly Cron',
   'cron_entry.awedoPostAreasCacheUpdate' => 'Post Areas (Update Cache)',
   'cron_entry.bh_updateBrandDiscussionC' => 'Update brand discussion count',
@@ -82,5 +81,4 @@ return array (
   'cron_entry.xfmgGenerateRandomMedia' => 'XFMG: Generate random media cache',
   'cron_entry.xfmgViews' => 'XFMG: Update view counters',
   'cron_entry.xfrmViews' => 'XFRM: Update view counters',
-  'cron_entry.zoom_meeting_fresh_token' => 'Zoom refresh Token',
 );

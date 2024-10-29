@@ -9,7 +9,7 @@ use XF\Util\Arr;
 
 class Option extends XFCP_Option
 {
-        public function actionZoomMeetingAuthSetup(ParameterBag $params)
+        public function actionzoomMeetingAuthSetup(ParameterBag $params)
         {
                 $option = $this->assertOptionExists($params->option_id);
 
@@ -46,7 +46,7 @@ class Option extends XFCP_Option
                         $zoom_meeting_client_secret->save();
 
                         // $redirectUri="https://99dd-2400-adc7-1123-3200-d9fb-99f5-217b-ac8e.ngrok-free.app/xen226/admin.php?misc/zoom-oauth-setup";
-                        $redirectUri = "http://localhost/xenforo/admin.php?misc/zoom-oauth-setup";
+                        $redirectUri = "http://localhost/xenforo/admin.php?misc/zoom-meeting-oauth-setup";
 
                         $url = "https://zoom.us/oauth/authorize?response_type=code&client_id=" . $input['client_id'] . "&redirect_uri=" . $redirectUri;
 

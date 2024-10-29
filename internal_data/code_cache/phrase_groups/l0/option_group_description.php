@@ -60,6 +60,7 @@ You may set a user into \'discouraged\' mode by editing their user profile, or d
   'option_group_description.fs_translator' => '[FS] Translator',
   'option_group_description.fs_web_ranking' => '',
   'option_group_description.fs_welcome_banner' => '',
+  'option_group_description.fs_zoom_api_credentials' => '',
   'option_group_description.fs_zoom_meeting' => '',
   'option_group_description.hematthumb' => '',
   'option_group_description.hou_attachments' => 'Blocks download of attachments until users have liked.',
@@ -106,6 +107,4 @@ It is possible to filter the news feed down to just users you follow, or a singl
   'option_group_description.xenforoMessenger' => '',
   'option_group_description.xfmg' => 'Options that control the media gallery add-on.',
   'option_group_description.xfrm' => 'Options that control the resource manager add-on.',
-  'option_group_description.zoom_api_credentials' => '',
-  'option_group_description.zoom_meeting' => '',
 );
