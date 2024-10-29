@@ -35,8 +35,21 @@ class ReplyPoints extends AbstractRebuildJob
             return;
         }
 
-        $postReply = \XF::service('FS\ThreadScoringSystem:ReplyPoints');
-        $postReply->addEditReplyPoints($thread);
+        if ($thread->last_cron_run == 0 || $thread->last_thread_update > $thread->last_cron_run) {
+            $postReply = \XF::service('FS\ThreadScoringSystem:ReplyPoints');
+            $postReply->addEditReplyPoints($thread);
+
+            $currentTime = \XF::$time;
+
+            $thread->bulkSet([
+                'last_thread_update' => $currentTime,
+                'last_cron_run' => $currentTime,
+            ]);
+
+            $thread->save();
+        } else {
+            return;
+        }
     }
 
     protected function getStatusType()

@@ -28,6 +28,8 @@ class Setup extends AbstractSetup
 		$this->alterTable('xf_thread', function (\XF\Db\Schema\Alter $table) {
 
 			$table->addColumn('points_collected', 'tinyint', 3)->setDefault(0);
+			$table->addColumn('last_cron_run', 'int')->setDefault(0);
+			$table->addColumn('last_thread_update', 'int')->setDefault(0);
 		});
 	}
 
@@ -50,6 +52,17 @@ class Setup extends AbstractSetup
 	// 	$app->jobManager()->enqueueUnique($jobID, 'FS\ThreadScoringSystem:SolutionPoints', [], false);
 	// }
 
+	// ############################### UPGRADE ###########################
+
+	public function upgrade1000900Step1(array $stepParams)
+	{
+		$this->alterTable('xf_thread', function (\XF\Db\Schema\Alter $table) {
+
+			$table->addColumn('last_cron_run', 'int')->setDefault(0);
+			$table->addColumn('last_thread_update', 'int')->setDefault(0);
+		});
+	}
+
 	// ############################### UNINSTALL ###########################
 
 	public function uninstallStep1()
@@ -61,7 +74,7 @@ class Setup extends AbstractSetup
 		}
 
 		$this->schemaManager()->alterTable('xf_thread', function (\XF\Db\Schema\Alter $table) {
-			$table->dropColumns(['points_collected']);
+			$table->dropColumns(['points_collected','last_cron_run','last_thread_update']);
 		});
 	}
 

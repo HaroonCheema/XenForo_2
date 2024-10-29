@@ -11,47 +11,31 @@ class Thread extends XFCP_Thread
         $structure = parent::getStructure($structure);
 
         $structure->columns['points_collected'] =  ['type' => self::BOOL, 'default' => false];
+        $structure->columns['last_cron_run'] =  ['type' => self::UINT, 'default' => 0];
+        $structure->columns['last_thread_update'] =  ['type' => self::UINT, 'default' => 0];
+        // $structure->columns['latest_rating_avg'] =  ['type' => self::UINT, 'default' => 0];
 
         return $structure;
     }
 
-    // protected function _postSave()
-    // {
-    //     $parent = parent::_postSave();
+    protected function _postSave()
+    {
+        $parent = parent::_postSave();
 
-    //     $exist = \XF::finder('FS\ThreadScoringSystem:ScoringSystem')->where('points_type', 'thread')->where('thread_id', $this->thread_id)->fetchOne();
+        $this->fastUpdate('last_thread_update', \XF::$time);
 
-    //     if (!$exist) {
-    //         $options = \XF::options();
-
-    //         $postThreadPoint = \XF::em()->create('FS\ThreadScoringSystem:ScoringSystem');
-
-    //         $postThreadPoint->thread_id = $this->thread_id;
-    //         $postThreadPoint->user_id = $this->user_id;
-    //         $postThreadPoint->points_type = 'thread';
-    //         $postThreadPoint->points = intval($options->fs_thread_starter_points);
-    //         $postThreadPoint->percentage = 100;
-
-    //         $postThreadPoint->save();
-
-    //         $this->fastUpdate('points_collected', true);
-    //     }
-
-    //     return $parent;
-    // }
+        return $parent;
+    }
 
     protected function _postDelete()
     {
         $parent = parent::_postDelete();
 
-        $exist = \XF::finder('FS\ThreadScoringSystem:ScoringSystem')->where('thread_id', $this->thread_id)->fetch();
+        $app = \XF::app();
+        $jobID = "delete_that_thread_points" . time();
 
-        if (count($exist)) {
+        $app->jobManager()->enqueueUnique($jobID, 'FS\ThreadScoringSystem:ThreadDelete', ['thread_id' => $this->thread_id], false);
 
-            foreach ($exist as  $value) {
-                $value->delete();
-            }
-        }
         return $parent;
     }
 

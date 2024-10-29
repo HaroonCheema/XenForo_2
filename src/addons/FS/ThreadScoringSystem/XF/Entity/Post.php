@@ -4,25 +4,16 @@ namespace FS\ThreadScoringSystem\XF\Entity;
 
 class Post extends XFCP_Post
 {
-    // protected function _postSave()
-    // {
-    //     $parent = parent::_postSave();
+    protected function _postSave()
+    {
+        $parent = parent::_postSave();
 
-    //     $thread = $this->Thread;
+        $thread = $this->Thread;
 
-    //     $postReply = \XF::service('FS\ThreadScoringSystem:ReplyPoints');
-    //     $postReply->addEditReplyPoints($thread);
+        $thread->fastUpdate('last_thread_update', \XF::$time);
 
-    //     $threadQuestion = $this->Thread->Question;
-
-    //     if ($threadQuestion && $threadQuestion->solution_post_id) {
-
-    //         $threadQuestionServ = \XF::service('FS\ThreadScoringSystem:ReplyPoints');
-    //         $threadQuestionServ->addEditSolutionPoints($threadQuestion);
-    //     }
-
-    //     return $parent;
-    // }
+        return $parent;
+    }
 
     // protected function _postDelete()
     // {

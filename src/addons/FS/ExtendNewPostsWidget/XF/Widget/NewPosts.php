@@ -40,7 +40,7 @@ class NewPosts extends XFCP_NewPosts
 
         $router = $this->app->router('public');
 
-        /** @var \XF\Repository\Thread $threadRepo */
+
         $threadRepo = $this->repository('XF:Thread');
 
         switch ($filter) {
@@ -66,6 +66,8 @@ class NewPosts extends XFCP_NewPosts
 
         $loopTerminate = true;
 
+
+
         if (isset($options['unique_node_ids']) && count($options['unique_node_ids']) && $limit) {
 
             $unique_node_ids = $options['unique_node_ids'];
@@ -78,93 +80,91 @@ class NewPosts extends XFCP_NewPosts
 
                 $nodelimit = intval($node_limits[$key]);
 
-                foreach ($unique_node_id as $nesetedkey => $value) {
 
-                    $unique_node_id = intval($value);
+                if ($nodelimit == -1 && $limit != 0) {
 
-                    if ($nodelimit == -1 && $limit != 0) {
+                    $nodelimit = $limit;
+                }
 
-                        $nodelimit = $limit;
+                if ($limit > $nodelimit && $limit != 0) {
+
+                    $limit = $limit - $nodelimit;
+                } elseif ($limit < $nodelimit && $limit != 0) {
+
+                    $nodelimit = $limit;
+
+                    $limit = 0;
+                } elseif ($nodelimit == $limit && $limit != 0) {
+
+                    $nodelimit = $nodelimit;
+                    $limit = $limit - $nodelimit;
+                }
+
+                if ($isfirst == 1 && $loopTerminate) {
+
+                    $firstthreadFinder = $threadFinder;
+                    $firstthreadFinder->with('Forum.Node.Permissions|' . $visitor->permission_combination_id);
+
+                    if ($options['style'] == 'full') {
+                        $firstthreadFinder->with('fullForum');
+                    } else {
+                        $firstthreadFinder
+                            ->with('LastPoster')
+                            ->withReadData();
                     }
 
-                    if ($limit > $nodelimit && $limit != 0) {
 
-                        $limit = $limit - $nodelimit;
-                    } elseif ($limit < $nodelimit && $limit != 0) {
 
-                        $nodelimit = $limit;
+                    if ($nodelimit < 0) {
 
-                        $limit = 0;
-                    } elseif ($nodelimit == $limit && $limit != 0) {
+                        $threads = $firstthreadFinder->where('node_id', $unique_node_id)->fetch();
+                    } else {
 
-                        $nodelimit = $nodelimit;
-                        $limit = $limit - $nodelimit;
+                        $threads = $firstthreadFinder->where('node_id', $unique_node_id)->fetch($nodelimit);
                     }
 
-                    if ($isfirst == 1 && $loopTerminate) {
+                    $isfirst = 0;
+                } elseif ($loopTerminate) {
 
-                        $firstthreadFinder = $threadFinder;
-                        $firstthreadFinder->with('Forum.Node.Permissions|' . $visitor->permission_combination_id);
+                    if ($filter == "latest") {
 
-                        if ($options['style'] == 'full') {
-                            $firstthreadFinder->with('fullForum');
-                        } else {
-                            $firstthreadFinder
-                                ->with('LastPoster')
-                                ->withReadData();
-                        }
+                        $threadFinder = $threadRepo->findThreadsWithLatestPosts();
+                    } elseif ($filter == "unread") {
 
-                        if ($nodelimit < 0) {
+                        $threadFinder = $threadRepo->findThreadsWithUnreadPosts();
+                    } elseif ($filter == "watched") {
 
-                            $threads = $firstthreadFinder->where('node_id', $unique_node_id)->fetch();
-                        } else {
-
-                            $threads = $firstthreadFinder->where('node_id', $unique_node_id)->fetch($nodelimit);
-                        }
-
-                        $isfirst = 0;
-                    } elseif ($loopTerminate) {
-
-                        if ($filter == "latest") {
-
-                            $threadFinder = $threadRepo->findThreadsWithLatestPosts();
-                        } elseif ($filter == "unread") {
-
-                            $threadFinder = $threadRepo->findThreadsWithUnreadPosts();
-                        } elseif ($filter == "watched") {
-
-                            $threadFinder = $threadRepo->findThreadsForWatchedList();
-                        }
-
-                        $threadFinder->with('Forum.Node.Permissions|' . $visitor->permission_combination_id);
-
-                        if ($options['style'] == 'full') {
-
-                            $threadFinder->with('fullForum');
-                        } else {
-                            $threadFinder
-                                ->with('LastPoster')
-                                ->withReadData();
-                        }
-
-                        if ($nodelimit < 0) {
-
-                            $limitThreads = $threadFinder->where('node_id', $unique_node_id)->fetch();
-                        } else {
-
-                            $limitThreads = $threadFinder->where('node_id', $unique_node_id)->fetch($nodelimit);
-                        }
-
-                        if (count($limitThreads)) {
-
-                            $threads = $threads->merge($limitThreads);
-                        }
+                        $threadFinder = $threadRepo->findThreadsForWatchedList();
                     }
 
-                    if ($limit == 0) {
+                    $threadFinder->with('Forum.Node.Permissions|' . $visitor->permission_combination_id);
 
-                        $loopTerminate = false;
+                    if ($options['style'] == 'full') {
+
+                        $threadFinder->with('fullForum');
+                    } else {
+                        $threadFinder
+                            ->with('LastPoster')
+                            ->withReadData();
                     }
+
+                    if ($nodelimit < 0) {
+
+                        $limitThreads = $threadFinder->where('node_id', $unique_node_id)->fetch();
+                    } else {
+
+                        $limitThreads = $threadFinder->where('node_id', $unique_node_id)->fetch($nodelimit);
+                    }
+
+                    if (count($limitThreads)) {
+
+                        $threads = $threads->merge($limitThreads);
+                    }
+                }
+
+                if ($limit == 0) {
+
+                    $loopTerminate = false;
                 }
             }
 
@@ -208,7 +208,6 @@ class NewPosts extends XFCP_NewPosts
         if (count($options['node_limits'])) {
 
             foreach ($options['node_limits'] as $key => $limit) {
-
 
                 if ($limit == 0) {
 
