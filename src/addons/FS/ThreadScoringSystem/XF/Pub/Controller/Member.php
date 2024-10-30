@@ -16,18 +16,19 @@ class Member extends XFCP_Member
 
             // $options = \XF::options();
 
-            $records = $this->finder('FS\ThreadScoringSystem:ScoringSystem')->fetch();
+            $records = $this->finder('FS\ThreadScoringSystem:TotalScoringSystem')->fetch();
 
-            $allTypePoints = \XF::service('FS\ThreadScoringSystem:ReplyPoints');
+            if (!count($records)) {
+                return $parent;
+            }
 
             // if ($options->fs_thread_scoring_list_format == 'points') {
 
-            $data = $allTypePoints->getPointsSums($records);
             // } else {
             //     $data = $allTypePoints->getPercentageSums($records);
             // }
 
-            $parent->setParam('data', $data);
+            $parent->setParam('data', $records);
         }
 
         return $parent;
@@ -36,22 +37,16 @@ class Member extends XFCP_Member
     public function actionAllUsersPoints()
     {
 
-        // $options = \XF::options();
-
-        $records = $this->finder('FS\ThreadScoringSystem:ScoringSystem')->fetch();
-
-        $allTypePoints = \XF::service('FS\ThreadScoringSystem:ReplyPoints');
+        $records = $this->finder('FS\ThreadScoringSystem:TotalScoringSystem')->fetch();
 
         // if ($options->fs_thread_scoring_list_format == 'points') {
 
-        $data = $allTypePoints->getPointsSums($records);
         // } else {
         //     $data = $allTypePoints->getPercentageSums($records);
         // }
 
         $viewParams = [
-            'totalCounts' => $data['totalCounts'],
-            'records' => $data['records'],
+            'data' => count($records) ? $records : [],
         ];
 
         return $this->view('FS\ThreadScoringSystem:Member\AllUsersPoints', 'fs_thread_scoring_all_score_notable', $viewParams);

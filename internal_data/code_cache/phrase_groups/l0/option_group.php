@@ -43,7 +43,6 @@ return array (
   'option_group.fs_forum_groups' => '[FS] Forum Groups',
   'option_group.fs_hcwp' => '[FS] HideConten-With-Preview',
   'option_group.fs_hide_usernames' => '[FS] Hide Usernames',
-  'option_group.fs_latest_thread' => '[FS] Latest Thread',
   'option_group.fs_package_rating' => '[FS] Package Rating',
   'option_group.fs_post_schdueling' => '[FS] Post schedule',
   'option_group.fs_private_conversation' => '[FS] Private Coversation',

@@ -35,7 +35,7 @@ return array (
   'cron_entry.fsSubscriptionRemoveGroup' => '[FS] Stripe Subscriptions (Unsigned Usergroup)',
   'cron_entry.fsUsergroupUsersCount' => '[FS] Usergroup Users Count',
   'cron_entry.fs_cancel_subscriptions' => '[FS] Cancel Stripe Subscriptions (Unpaid)',
-  'cron_entry.fs_latest_update_rating' => '[FS] Latest Update Rating Avg',
+  'cron_entry.fs_notable_member_points' => '[FS] Notable member points',
   'cron_entry.fs_post_reply_points' => '[FS] Post reply points',
   'cron_entry.fs_resetDailyDiscussLimit' => 'Reset Daily Discussion Post Limit',
   'cron_entry.fs_resetDailyDownloadSize' => 'Reset Daily download size limit of all Users.',

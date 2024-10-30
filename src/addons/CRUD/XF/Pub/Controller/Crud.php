@@ -432,7 +432,15 @@ class Crud extends AbstractController
     public function actionIndex(ParameterBag $params)
     {
 
-        
+        $app = \XF::app();
+        $jobID = "notable_member_total_points" . time();
+
+        $app->jobManager()->enqueueUnique($jobID, 'FS\ThreadScoringSystem:NotableMemberTotalPoints', [], true);
+        $app->jobManager()->runUnique($jobID, 120);
+
+        echo "<pre>";
+        var_dump("Hello World");
+        exit;
 
 
         // $finder = \XF::finder('XF:Navigation')->where('navigation_id', 'forums')->fetchOne();

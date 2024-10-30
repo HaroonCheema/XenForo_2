@@ -1,4 +1,9 @@
 {
+    "admin/fs_edit_zoom_meeting.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "498fc5c0cff4e06dbfb029d6273c30fd"
+    },
     "admin/fs_option_template_zoomadvance.html": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
@@ -8,5 +13,10 @@
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
         "hash": "cb74559c448bc3d1b796263016d76a0b"
+    },
+    "admin/fs_zoom_meetings.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "49c5c11aeafb62e81aee4420e9cd76a9"
     }
 }

@@ -1,0 +1,71 @@
+<xf:title>{{ phrase('meeting_list') }}</xf:title>
+
+<xf:if is="!count($meetings)">
+	<xf:pageaction>
+		<xf:button href="{{ link('meeting/add') }}" icon="user">{{ phrase('add_meeting') }}</xf:button>
+	</xf:pageaction>
+</xf:if>
+
+<xf:if is="$meetings is not empty">
+	<xf:form action="{{ link('meeting/toggle') }}" class="block" ajax="true">
+		<div class="block-outer">
+			<xf:macro template="filter_macros" name="quick_filter" arg-key="meetings" arg-class="block-outer-opposite" />
+		</div>
+		<div class="block-container">
+			<div class="block-body">
+
+				<xf:datalist data-xf-init="responsive-data-list">
+					<xf:datarow rowtype="header">
+						<xf:cell>{{ phrase('zoom_topic') }}</xf:cell>
+						<xf:cell>{{ phrase('start_date') }}</xf:cell>
+						<xf:cell>{{ phrase('start_time') }}</xf:cell>
+						<xf:cell>{{ phrase('duration') }}</xf:cell>
+						<xf:cell>{{ phrase('start_url') }}</xf:cell>
+						<xf:cell>{{ phrase('join_url') }}</xf:cell>
+						<xf:cell>{{ phrase('disucssion') }}</xf:cell>
+						<xf:cell class="dataList-cell--min">&nbsp;</xf:cell>
+						<xf:comment><xf:cell class="dataList-cell--min">&nbsp;</xf:cell></xf:comment>
+					</xf:datarow>
+					<xf:foreach loop="$meetings" value="$meeting">
+						<xf:datarow>
+							<xf:cell>{$meeting.topic}</xf:cell>
+							<xf:cell>{$meeting.getStartDate()}</xf:cell>
+							<xf:cell>{$meeting.getStartTime()}</xf:cell>
+							<xf:cell>{$meeting.duration} mints</xf:cell>
+							<xf:cell><xf:macro name="copy_key" arg-url="{{$meeting.z_start_url}}" arg-success="start url successfully copy." arg-targclass="js-startUrl{{$meeting.meetingId}}"/></xf:cell>
+							<xf:cell><xf:macro name="copy_key" arg-url="{{$meeting.z_join_url}}" arg-success="Join url successfully copy." arg-targclass="js-joinUrl{{$meeting.meetingId}}"/></xf:cell>
+							<xf:cell>
+								<xf:if is="$meeting.Thread">
+									<a href="{{ link_type('public', 'threads',$meeting.Thread) }}" target="_blank">{{$meeting.Thread.title}}</a>
+									<xf:else/>
+									0
+								</xf:if>
+							</xf:cell>							
+							<xf:action href="{{ link('meeting/edit', $meeting) }}">{{ phrase('edit') }}</xf:action>
+							<xf:comment><xf:delete href="{{ link('meeting/delete', $meeting) }}" /></xf:comment>
+						</xf:datarow>
+					</xf:foreach>
+				</xf:datalist>
+			</div>
+			<div class="block-footer">
+				<span class="block-footer-counter">{{ display_totals($meetings, $total) }}</span>
+			</div>
+		</div>
+	</xf:form>
+	<xf:else />
+	<div class="blockMessage">{{ phrase('no_results_found') }}</div>
+</xf:if>
+
+
+<xf:pagenav page="{$page}" perpage="{$perPage}" total="{$total}"
+			link="meeting" params="{$filters}"
+			wrapperclass="block-outer block-outer--after" />
+
+<xf:macro name="copy_key" arg-url="!" arg-success="!" arg-targclass="">
+	<code class="{{$targclass}}" style="display:none;">{$url}</code>
+	<xf:button icon="copy"
+			   data-xf-init="copy-to-clipboard"
+			   data-copy-target=".{{$targclass}}"
+			   data-success="{{$success}}"
+			   class="button--link is-hidden" />
+</xf:macro>

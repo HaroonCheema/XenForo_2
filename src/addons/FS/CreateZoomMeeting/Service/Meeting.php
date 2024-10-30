@@ -317,7 +317,7 @@ class Meeting extends \XF\Service\AbstractService
 
                 if ($meeting->alert_duration > $minutLeft) {
 
-                    $registers = $this->finder('FS\ZoomMeeting:Register')->with('User')->where('meeting_id', $meeting->meeting_id)->fetch();
+                    $registers = $this->finder('FS\ZoomMeeting:Register')->with('User')->where('meetingId', $meeting->meetingId)->fetch();
 
                     if (count($registers)) {
 
@@ -373,7 +373,7 @@ class Meeting extends \XF\Service\AbstractService
     public function joinMeeting($username, $email, $participant_uuid, $meetingId)
     {
 
-        $join = $this->finder('FS\ZoomMeeting:Register')->where('participant_uuid', $participant_uuid)->where('meeting_id', $meetingId)->fetchOne();
+        $join = $this->finder('FS\ZoomMeeting:Register')->where('participant_uuid', $participant_uuid)->where('meetingId', $meetingId)->fetchOne();
 
         if ($join) {
 
@@ -386,7 +386,7 @@ class Meeting extends \XF\Service\AbstractService
             $join->username = $username;
             $join->email = $email;
             $join->participant_uuid = $participant_uuid;
-            $join->meeting_id = $meetingId;
+            $join->meetingId = $meetingId;
             $join->save();
         }
     }
@@ -394,7 +394,7 @@ class Meeting extends \XF\Service\AbstractService
     public function leftMeeting($participant_uuid, $meetingId)
     {
 
-        $join = $this->finder('FS\ZoomMeeting:Register')->where('participant_uuid', $participant_uuid)->where('meeting_id', $meetingId)->fetchOne();
+        $join = $this->finder('FS\ZoomMeeting:Register')->where('participant_uuid', $participant_uuid)->where('meetingId', $meetingId)->fetchOne();
 
         if ($join) {
 
@@ -406,7 +406,7 @@ class Meeting extends \XF\Service\AbstractService
     public function endMeeting($meetingId)
     {
 
-        $userRegisters = $this->finder('FS\ZoomMeeting:Register')->where('meeting_id', $meetingId)->fetch();
+        $userRegisters = $this->finder('FS\ZoomMeeting:Register')->where('meetingId', $meetingId)->fetch();
 
         if (count($userRegisters)) {
 

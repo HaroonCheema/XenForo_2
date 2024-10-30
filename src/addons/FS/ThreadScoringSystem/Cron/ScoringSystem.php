@@ -29,4 +29,12 @@ class ScoringSystem
 
         $app->jobManager()->enqueueUnique($jobID, 'FS\ThreadScoringSystem:SolutionPoints', [], false);
     }
+
+    public static function notableMemberTotalPoints()
+    {
+        $app = \XF::app();
+        $jobID = "notable_member_total_points" . time();
+
+        $app->jobManager()->enqueueUnique($jobID, 'FS\ThreadScoringSystem:NotableMemberTotalPoints', [], false);
+    }
 }

@@ -1,2 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<routes/>
+<routes>
+  <route route_type="admin" route_prefix="meeting" format=":int&lt;meetingId&gt;" controller="FS\CreateZoomMeeting:Meeting" context="zoom_meeting"/>
+</routes>

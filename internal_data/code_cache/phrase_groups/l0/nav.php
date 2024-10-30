@@ -63,7 +63,6 @@ return array (
   'nav.fs_quiz' => 'Quiz',
   'nav.home' => 'Home',
   'nav.latestActivity' => 'Latest activity',
-  'nav.latestTherads' => 'Latest Update',
   'nav.markForumsRead' => 'Mark forums read',
   'nav.members' => 'Members',
   'nav.newMedia' => 'New media',

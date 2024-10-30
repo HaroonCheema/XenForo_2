@@ -17,53 +17,7 @@
     <find><![CDATA[/<xf:foreach loop="\$memberStats" key="\$key" value="\$memberStat">.*?<\/xf:foreach>/is]]></find>
     <replace><![CDATA[$0
 
-<xf:if is="{{ $xf.visitor.hasPermission('fs_thread_scoring_system', 'can_view') }}">
-
-	<xf:if is="count($data.records)">
-
-		<xf:if contentcheck="true">
-			<li class="memberOverviewBlock">
-				<h3 class="block-textHeader">
-					<a href="{{ link('members') }}"
-					   class="memberOverViewBlock-title">{{ phrase('fs_thread_scores') }}</a>
-				</h3>
-				<ol class="memberOverviewBlock-list">
-					<xf:contentcheck>
-						<xf:set var="$isBelow" value="0" />
-
-						<xf:foreach loop="$data.records" value="$value" key="$key" i="$i">
-							<xf:if is="$isBelow < $xf.options.fs_thread_scoring_system_notable_perpage && $value.User">
-								<li>
-									<div class="contentRow contentRow--alignMiddle">
-										<div class="contentRow-figure">
-											<xf:avatar user="$value.User" size="xs" />
-										</div>
-										<div class="contentRow-main">
-											<xf:if is="{$data.totalCounts.{$value.user_id}.totalPoints}">
-												<div class="contentRow-extra contentRow-extra--large" data-xf-init="tooltip" title="{{$data.totalCounts.{$value.user_id}.thread ? phrase('fs_thread_scoring_system_thread') . ' ' . number($data.totalCounts.{$value.user_id}.thread, $xf.options.fs_thread_scoring_system_decimals) . ' (' . phrase('points') . ')' : ' '}}
-																																	{{$data.totalCounts.{$value.user_id}.reply ? phrase('fs_thread_scoring_system_reply') . ' ' . number($data.totalCounts.{$value.user_id}.reply, $xf.options.fs_thread_scoring_system_decimals) . ' (' . phrase('points') . ')' : ' '}}
-																																	{{$data.totalCounts.{$value.user_id}.words ? phrase('fs_thread_scoring_system_words') . ' ' . number($data.totalCounts.{$value.user_id}.words, $xf.options.fs_thread_scoring_system_decimals) . ' (' . phrase('points') . ')' : ' '}}
-																																	{{$data.totalCounts.{$value.user_id}.reactions ? phrase('fs_thread_scoring_system_reactions') . ' ' . number($data.totalCounts.{$value.user_id}.reactions, $xf.options.fs_thread_scoring_system_decimals) . ' (' . phrase('points') . ')' : ' '}}
-																																	{{$data.totalCounts.{$value.user_id}.solution ? phrase('fs_thread_scoring_system_solution') . ' ' . number($data.totalCounts.{$value.user_id}.solution, $xf.options.fs_thread_scoring_system_decimals) . ' (' . phrase('points') . ')' : ' '}}">{{number($data.totalCounts.{$value.user_id}.totalPoints, $xf.options.fs_thread_scoring_system_decimals)}}</div>
-											</xf:if>
-											<h3 class="contentRow-title"><xf:username user="$value.User" rich="true" /></h3>
-										</div>
-									</div>
-								</li>
-								<xf:set var="$isBelow" value="{{$isBelow + 1}}" />
-
-							</xf:if>
-						</xf:foreach>
-					</xf:contentcheck>
-				</ol>
-				<div class="memberOverviewBlock-seeMore">
-					<a href="{{ link('members/all-users-points') }}">{{ phrase('see_more...') }}</a>
-				</div>
-			</li>
-		</xf:if>
-	</xf:if>
-
-</xf:if>]]></replace>
+<xf:include template="fs_thread_scoring_system_notable_member" />]]></replace>
   </modification>
   <modification type="public" template="member_view" modification_key="fs_thread_scoring_system_member_add_panel" description="fs_thread_scoring_system_member_add_panel" execution_order="10" enabled="1" action="str_replace">
     <find><![CDATA[<!--[XF:tab_panes:end]-->]]></find>

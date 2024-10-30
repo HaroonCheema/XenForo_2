@@ -54,12 +54,19 @@ class Setup extends AbstractSetup
 
 	// ############################### UPGRADE ###########################
 
-	public function upgrade1000900Step1(array $stepParams)
+	public function upgrade1010100Step1(array $stepParams)
 	{
-		$this->alterTable('xf_thread', function (\XF\Db\Schema\Alter $table) {
+		$this->schemaManager()->createTable('fs_thread_total_scoring_system', function (\XF\Db\Schema\Create $table) {
+			$table->addColumn('id', 'int')->autoIncrement();
+			$table->addColumn('user_id', 'int');
+			$table->addColumn('threads_score', 'decimal', '65,8')->unsigned(false)->setDefault(0);
+			$table->addColumn('reply_score', 'decimal', '65,8')->unsigned(false)->setDefault(0);
+			$table->addColumn('worlds_score', 'decimal', '65,8')->unsigned(false)->setDefault(0);
+			$table->addColumn('reactions_score', 'decimal', '65,8')->unsigned(false)->setDefault(0);
+			$table->addColumn('solutions_score', 'decimal', '65,8')->unsigned(false)->setDefault(0);
+			$table->addColumn('total_score', 'decimal', '65,8')->unsigned(false)->setDefault(0);
 
-			$table->addColumn('last_cron_run', 'int')->setDefault(0);
-			$table->addColumn('last_thread_update', 'int')->setDefault(0);
+			$table->addPrimaryKey('id');
 		});
 	}
 
@@ -74,7 +81,7 @@ class Setup extends AbstractSetup
 		}
 
 		$this->schemaManager()->alterTable('xf_thread', function (\XF\Db\Schema\Alter $table) {
-			$table->dropColumns(['points_collected','last_cron_run','last_thread_update']);
+			$table->dropColumns(['points_collected', 'last_cron_run', 'last_thread_update']);
 		});
 	}
 

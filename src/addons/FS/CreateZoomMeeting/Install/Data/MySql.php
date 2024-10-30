@@ -13,36 +13,9 @@ class MySql
 
         $tables = [];
 
-        // $tables['zoom_category'] = function (Create $table) {
-        //     /** @var Create|Alter $table */
-        //     $table->addColumn('category_id', 'int')->autoIncrement();
-        //     $table->addColumn('title', 'varchar', 100);
-        //     $table->addColumn('description', 'text');
-        //     $table->addColumn('parent_category_id', 'int')->setDefault(0);
-        //     $table->addColumn('display_order', 'int')->setDefault(0);
-        //     $table->addColumn('field_cache', 'mediumblob')->nullable(true);;
-        //     $table->addColumn('lft', 'int')->setDefault(0);
-        //     $table->addColumn('rgt', 'int')->setDefault(0);
-        //     $table->addColumn('depth', 'smallint', 5)->setDefault(0);
-        //     $table->addColumn('breadcrumb_data', 'blob');
-        //     $table->addColumn('meeting_count', 'int')->setDefault(0);
-        //     $table->addColumn('layout_type', 'varchar', 20)->setDefault('list_view');
-        //     $table->addKey(['parent_category_id', 'lft']);
-        //     $table->addKey(['lft', 'rgt']);
-        //     $table->addPrimaryKey('category_id');
-        // };
-
-        // $tables['zoom_category_field'] = function (Create $table) {
-        //     $table->addColumn('category_id', 'int')->unsigned();
-        //     $table->addColumn('field_id', 'varbinary', 25);
-        //     $table->addPrimaryKey(['category_id', 'field_id']);
-        // };
-
-
         $tables['fs_zoom_meeting'] = function (Create $table) {
 
             $table->addColumn('meetingId', 'int')->autoIncrement();
-            // $table->addColumn('category_id', 'int');
             $table->addColumn('user_id', 'int');
             $table->addColumn('topic', 'varchar', 250)->setDefault('');
             $table->addColumn('description', 'mediumtext')->setDefault(null)->comment('Supports BB code');
@@ -77,18 +50,4 @@ class MySql
 
         return $tables;
     }
-
-    // public function getData()
-    // {
-    //     $data = [];
-
-    //     $data['zoom_category'] = "
-    //         INSERT INTO 
-    //             `zoom_category`
-    //             (`category_id`, `title`, `description`, `parent_category_id`, `display_order`, `layout_type`,`lft`, `rgt`, `depth`, `breadcrumb_data`, `meeting_count`)
-    //          VALUES
-    //             (1, 'Example category', 'This is an example Zoom category.', 0, 100, 'grid_view',3, 6, 0, '[]', 0);
-    //     ";
-    //     return $data;
-    // }
 }

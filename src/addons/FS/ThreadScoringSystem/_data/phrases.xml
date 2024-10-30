@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <phrases>
+  <phrase title="cron_entry.fs_notable_member_points" version_id="1000900" version_string="1.0.9 Alpha"><![CDATA[[FS] Notable member points]]></phrase>
   <phrase title="cron_entry.fs_post_reply_points" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Post reply points]]></phrase>
   <phrase title="cron_entry.fs_starter_thread_points" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Thread starter points]]></phrase>
   <phrase title="cron_entry.fs_thread_solution_point" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Thread solution points]]></phrase>

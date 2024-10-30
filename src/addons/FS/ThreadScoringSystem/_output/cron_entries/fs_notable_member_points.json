@@ -1,0 +1,17 @@
+{
+    "cron_class": "FS\\ThreadScoringSystem\\Cron\\ScoringSystem",
+    "cron_method": "notableMemberTotalPoints",
+    "run_rules": {
+        "day_type": "dom",
+        "dom": [
+            -1
+        ],
+        "hours": [
+            -1
+        ],
+        "minutes": [
+            0
+        ]
+    },
+    "active": true
+}

@@ -13,10 +13,10 @@ class Meeting extends AbstractController
     public function preDispatchController($action, ParameterBag $params)
     {
 
-        $zoom_access_token = \xf::options()->zoom_access_token;
-        $zoom_refresh_token = \xf::options()->zoom_refresh_token;
+        $zoom_meeting_access_token = \xf::options()->zoom_meeting_access_token;
+        $zoom_meeting_refresh_token = \xf::options()->zoom_meeting_refresh_token;
 
-        if (!$zoom_access_token || !$zoom_refresh_token) {
+        if (!$zoom_meeting_access_token || !$zoom_meeting_refresh_token) {
 
             throw new \XF\PrintableException("Need To full Zoom Meeting Option Setting");
         }
@@ -25,7 +25,7 @@ class Meeting extends AbstractController
     {
 
 
-        $finder = $this->finder('FS\ZoomMeeting:Meeting');
+        $finder = $this->finder('FS\CreateZoomMeeting:Meeting');
 
 
         $page = $this->filterPage($params->page);
@@ -40,30 +40,26 @@ class Meeting extends AbstractController
 
         ];
 
-        return $this->view('FS\ZoomMeeting:Meeting', 'zoom_meetings', $viewpParams);
+        return $this->view('FS\CreateZoomMeeting:Meeting', 'fs_zoom_meetings', $viewpParams);
     }
 
     public function meetingAddEdit($meeting)
     {
 
-
-        $categories = $this->Finder('FS\ZoomMeeting:Category')->order('category_id', 'DESC')->fetch();
-
         $nodeTree = $this->getNodeTree();
         $viewParams = [
             'meeting' => $meeting,
-            'categories' => $categories,
             'nodeTree' => $nodeTree,
             'userGroups' => $this->getUserGroupRepo()->findUserGroupsForList()->fetch(),
         ];
 
-        return $this->view('FS\ZoomMeeting:Meeting', 'edit_zoom_meeting', $viewParams);
+        return $this->view('FS\CreateZoomMeeting:Meeting', 'fs_edit_zoom_meeting', $viewParams);
     }
 
     public function actionEdit(ParameterBag $params)
     {
 
-        $meeting = $this->assertMeetingExists($params->meeting_id);
+        $meeting = $this->assertMeetingExists($params->meetingId);
 
         return $this->meetingAddEdit($meeting);
     }
@@ -71,19 +67,18 @@ class Meeting extends AbstractController
     public function actionAdd()
     {
 
-        $meeting = $this->em()->create('FS\ZoomMeeting:Meeting');
+        $meeting = $this->em()->create('FS\CreateZoomMeeting:Meeting');
 
         return $this->meetingAddEdit($meeting);
     }
 
-    protected function meetingSaveProcess(\FS\ZoomMeeting\Entity\Meeting $meeting)
+    protected function meetingSaveProcess(\FS\CreateZoomMeeting\Entity\Meeting $meeting)
     {
 
         $form = $this->formAction();
 
         $input = $this->filter([
             'topic' => 'str',
-            'category_id' => 'int',
             'start_date' => 'str',
             'start_time' => 'str',
             'duration' => 'int',
@@ -110,7 +105,7 @@ class Meeting extends AbstractController
         }
 
 
-        $meetingService = $this->service('FS\ZoomMeeting:Meeting');
+        $meetingService = $this->service('FS\CreateZoomMeeting:Meeting');
 
 
 
@@ -132,7 +127,7 @@ class Meeting extends AbstractController
 
         if (!$meeting->z_meeting_id) {
 
-            list($z_meetingId, $z_start_time, $z_start_url, $z_join_url) = $meetingService->createZoomMeeting($topic, $zoomStartTime, $duration, "UTC", \xf::options()->zoom_access_token);
+            list($z_meetingId, $z_start_time, $z_start_url, $z_join_url) = $meetingService->createZoomMeeting($topic, $zoomStartTime, $duration, "UTC", \xf::options()->zoom_meeting_access_token);
 
             $input['z_meeting_id'] = $z_meetingId;
             $input['z_start_time'] = $z_start_time;
@@ -144,7 +139,7 @@ class Meeting extends AbstractController
 
         if ($meeting->z_meeting_id && ($meeting->start_time != $input['start_time'] ||  $meeting->duration != $input['duration'])) {
 
-            list($z_meetingId, $z_start_time, $z_start_url, $z_join_url) = $meetingService->updateZoomMeeting($meeting->z_meeting_id, $topic, $zoomStartTime, $duration, "UTC", \xf::options()->zoom_access_token);
+            list($z_meetingId, $z_start_time, $z_start_url, $z_join_url) = $meetingService->updateZoomMeeting($meeting->z_meeting_id, $topic, $zoomStartTime, $duration, "UTC", \xf::options()->zoom_meeting_access_token);
 
             $input['z_meeting_id'] = $z_meetingId;
             $input['z_start_time'] = $z_start_time;
@@ -194,7 +189,6 @@ class Meeting extends AbstractController
 
         $input = $this->filter([
             'topic' => 'str',
-            'category_id' => 'int',
             'start_date' => 'str',
             'start_time' => 'str',
             'duration' => 'int',
@@ -245,27 +239,27 @@ class Meeting extends AbstractController
     {
 
 
-        if (!\xf::options()->zoom_access_token) {
+        if (!\xf::options()->zoom_meeting_access_token) {
         }
 
         $this->assertPostOnly();
 
-        if ($params->meeting_id) {
-            $meeting = $this->assertMeetingExists($params->meeting_id);
+        if ($params->meetingId) {
+            $meeting = $this->assertMeetingExists($params->meetingId);
         } else {
-            $meeting = $this->em()->create('FS\ZoomMeeting:Meeting');
+            $meeting = $this->em()->create('FS\CreateZoomMeeting:Meeting');
         }
 
 
         $this->meetingSaveProcess($meeting)->run();
 
-        return $this->redirect($this->buildLink('meetings'));
+        return $this->redirect($this->buildLink('meeting'));
     }
 
     public function actionDelete(ParameterBag $params)
     {
 
-        $meeting = $this->assertMeetingExists($params->meeting_id);
+        $meeting = $this->assertMeetingExists($params->meetingId);
 
         /** @var \XF\ControllerPlugin\Delete $plugin */
         $plugin = $this->plugin('XF:Delete');
@@ -273,31 +267,23 @@ class Meeting extends AbstractController
         if ($this->isPost()) {
 
 
-            $meetingService = $this->service('FS\ZoomMeeting:Meeting');
+            $meetingService = $this->service('FS\CreateZoomMeeting:Meeting');
 
-            $meetingService->deleteMeeting($meeting->z_meeting_id, \xf::options()->zoom_access_token);
-
-            $category = $this->Category;
-
-            if ($category->meeting_count) {
-
-                $count = $category->meeting_count - 1;
-                $category->fastUpdate('meeting_count', $count);
-            }
+            $meetingService->deleteMeeting($meeting->z_meeting_id, \xf::options()->zoom_meeting_access_token);
         }
 
         return $plugin->actionDelete(
             $meeting,
-            $this->buildLink('meetings/delete', $meeting),
-            $this->buildLink('meetingse/edit', $meeting),
-            $this->buildLink('meetings'),
+            $this->buildLink('meeting/delete', $meeting),
+            $this->buildLink('meetinge/edit', $meeting),
+            $this->buildLink('meeting'),
             $meeting->topic
         );
     }
 
     protected function assertMeetingExists($id, $with = null, $phraseKey = null)
     {
-        return $this->assertRecordExists('FS\ZoomMeeting:Meeting', $id, $with, $phraseKey);
+        return $this->assertRecordExists('FS\CreateZoomMeeting:Meeting', $id, $with, $phraseKey);
     }
 
     protected function getNodeTree()

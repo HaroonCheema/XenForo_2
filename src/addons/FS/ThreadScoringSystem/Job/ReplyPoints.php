@@ -35,7 +35,7 @@ class ReplyPoints extends AbstractRebuildJob
             return;
         }
 
-        if ($thread->last_cron_run == 0 || $thread->last_thread_update > $thread->last_cron_run) {
+        if ($thread->last_cron_run == 0 || ($thread->last_thread_update > $thread->last_cron_run)) {
             $postReply = \XF::service('FS\ThreadScoringSystem:ReplyPoints');
             $postReply->addEditReplyPoints($thread);
 

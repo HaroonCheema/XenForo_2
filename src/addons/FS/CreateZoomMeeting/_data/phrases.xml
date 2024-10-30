@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <phrases>
+  <phrase title="admin_navigation.zoomMeeting" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Zoom Meeting]]></phrase>
+  <phrase title="admin_navigation.zoom_meeting" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Meeting]]></phrase>
+  <phrase title="option.fs_webhook_secret_key" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Webhook Secret Token]]></phrase>
   <phrase title="option.fs_zoom_credentials_change" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Zoom Auth System]]></phrase>
   <phrase title="option.zoom_meeting_access_token" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Zoom Meeting Access Token]]></phrase>
+  <phrase title="option.zoom_meeting_client_id" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Client ID]]></phrase>
+  <phrase title="option.zoom_meeting_client_secret" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Client Secret]]></phrase>
   <phrase title="option.zoom_meeting_refresh_token" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Zoom Meeting Refresh Token]]></phrase>
+  <phrase title="option_explain.fs_webhook_secret_key" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Must Required for webhook validate.]]></phrase>
   <phrase title="option_explain.fs_zoom_credentials_change" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
   <phrase title="option_explain.zoom_meeting_access_token" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Do not need to change or insert any thing.]]></phrase>
+  <phrase title="option_explain.zoom_meeting_client_id" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_explain.zoom_meeting_client_secret" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
   <phrase title="option_explain.zoom_meeting_refresh_token" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Do not need to change or insert any thing.]]></phrase>
+  <phrase title="option_group.fs_zoom_api_credentials" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Zoom Api Credentials]]></phrase>
   <phrase title="option_group.fs_zoom_meeting" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Zoom Meeting Api Auth]]></phrase>
+  <phrase title="option_group_description.fs_zoom_api_credentials" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
   <phrase title="option_group_description.fs_zoom_meeting" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
 </phrases>

@@ -1,4 +1,10 @@
 {
+    "cron_entry.fs_notable_member_points.txt": {
+        "global_cache": false,
+        "version_id": 1000900,
+        "version_string": "1.0.9 Alpha",
+        "hash": "b69cbb0093456abdcff406e833212eb8"
+    },
     "cron_entry.fs_post_reply_points.txt": {
         "global_cache": false,
         "version_id": 1000010,

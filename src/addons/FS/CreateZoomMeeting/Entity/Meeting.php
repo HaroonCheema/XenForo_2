@@ -13,29 +13,12 @@ class Meeting extends Entity
 
     public function getBreadcrumbs($includeSelf = true)
     {
-        // $breadcrumbs = $this->Category ? $this->Category->getBreadcrumbs() : [];
-        // if ($includeSelf) {
-        //     $breadcrumbs[] = [
-        //         'href' => $this->app()->router()->buildLink('meetings', $this),
-        //         'value' => $this->topic
-        //     ];
-        // }
 
         return [];
     }
 
     public function _postSave()
     {
-
-        // $category = $this->Category;
-
-        // $meetings = $this->finder('FS\CreateZoomMeeting:Meeting')->where('category_id', $category->category_id)->fetch();
-
-        // if (count($meetings)) {
-
-
-        //     $category->fastUpdate('meeting_count', count($meetings));
-        // }
 
         $thread = $this->Thread;
 
@@ -67,7 +50,6 @@ class Meeting extends Entity
         $structure->contentType = 'fs_zoom_meeting';
         $structure->columns = [
             'meetingId' => ['type' => self::UINT, 'autoIncrement' => true],
-            // 'category_id' => ['type' => self::UINT, 'required' => true],
             'user_id' => ['type' => self::UINT, 'required' => true, 'default' => \xf::visitor()->user_id],
             'topic' => ['type' => self::STR, 'maxLength' => 250],
             'description' => ['type' => self::STR, 'default' => null],

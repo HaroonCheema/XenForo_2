@@ -1,4 +1,16 @@
 {
+    "admin_navigation.zoomMeeting.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "e54e9ae913bc4456e1b8e9ebb4eb13ff"
+    },
+    "admin_navigation.zoom_meeting.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "a6e3488cf178a7e7e41d05cccfdc5a80"
+    },
     "option.fs_webhook_secret_key.txt": {
         "global_cache": false,
         "version_id": 1000010,

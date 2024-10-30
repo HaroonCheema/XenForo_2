@@ -1,10 +1,9 @@
 <?php
-// FROM HASH: 45f3fb9cded72846abeb4993b9a70e0c
+// FROM HASH: e970422cb7cfc102e519e576a43ea9af
 return array(
 'macros' => array('record_table_list' => array(
 'arguments' => function($__templater, array $__vars) { return array(
-		'totalCounts' => '!',
-		'records' => '!',
+		'data' => '!',
 	); },
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -42,8 +41,8 @@ return array(
 	))) . '
 
 	';
-	if ($__templater->isTraversable($__vars['records'])) {
-		foreach ($__vars['records'] AS $__vars['val']) {
+	if ($__templater->isTraversable($__vars['data'])) {
+		foreach ($__vars['data'] AS $__vars['val']) {
 			$__finalCompiled .= '
 		' . $__templater->dataRow(array(
 			), array(array(
@@ -55,27 +54,27 @@ return array(
 			),
 			array(
 				'_type' => 'cell',
-				'html' => ' ' . ($__vars['totalCounts'][$__vars['val']['user_id']]['thread'] ? $__templater->func('number', array($__vars['totalCounts'][$__vars['val']['user_id']]['thread'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true) : 'N/A') . ' ',
+				'html' => ' ' . ($__vars['val']['threads_score'] ? $__templater->func('number', array($__vars['val']['threads_score'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true) : 'N/A') . ' ',
 			),
 			array(
 				'_type' => 'cell',
-				'html' => ' ' . ($__vars['totalCounts'][$__vars['val']['user_id']]['reply'] ? $__templater->func('number', array($__vars['totalCounts'][$__vars['val']['user_id']]['reply'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true) : 'N/A') . ' ',
+				'html' => ' ' . ($__vars['val']['reply_score'] ? $__templater->func('number', array($__vars['val']['reply_score'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true) : 'N/A') . ' ',
 			),
 			array(
 				'_type' => 'cell',
-				'html' => ' ' . ($__vars['totalCounts'][$__vars['val']['user_id']]['words'] ? $__templater->func('number', array($__vars['totalCounts'][$__vars['val']['user_id']]['words'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true) : 'N/A') . ' ',
+				'html' => ' ' . ($__vars['val']['worlds_score'] ? $__templater->func('number', array($__vars['val']['worlds_score'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true) : 'N/A') . ' ',
 			),
 			array(
 				'_type' => 'cell',
-				'html' => ' ' . ($__vars['totalCounts'][$__vars['val']['user_id']]['reactions'] ? $__templater->func('number', array($__vars['totalCounts'][$__vars['val']['user_id']]['reactions'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true) : 'N/A') . ' ',
+				'html' => ' ' . ($__vars['val']['reactions_score'] ? $__templater->func('number', array($__vars['val']['reactions_score'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true) : 'N/A') . ' ',
 			),
 			array(
 				'_type' => 'cell',
-				'html' => ' ' . ($__vars['totalCounts'][$__vars['val']['user_id']]['solution'] ? $__templater->func('number', array($__vars['totalCounts'][$__vars['val']['user_id']]['solution'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true) : 'N/A') . ' ',
+				'html' => ' ' . ($__vars['val']['solutions_score'] ? $__templater->func('number', array($__vars['val']['solutions_score'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true) : 'N/A') . ' ',
 			),
 			array(
 				'_type' => 'cell',
-				'html' => ' ' . ($__vars['totalCounts'][$__vars['val']['user_id']]['totalPoints'] ? $__templater->func('number', array($__vars['totalCounts'][$__vars['val']['user_id']]['totalPoints'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true) : 'N/A') . ' ',
+				'html' => ' ' . ($__vars['val']['total_score'] ? $__templater->func('number', array($__vars['val']['total_score'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true) : 'N/A') . ' ',
 			))) . '
 	';
 		}
@@ -96,7 +95,7 @@ return array(
 
 	<div class="block-container">
 		';
-	if (!$__templater->test($__vars['totalCounts'], 'empty', array())) {
+	if (!$__templater->test($__vars['data'], 'empty', array())) {
 		$__finalCompiled .= '
 
 			<div class="block-body">
@@ -104,8 +103,7 @@ return array(
 				' . $__templater->dataList('
 
 					' . $__templater->callMacro(null, 'record_table_list', array(
-			'totalCounts' => $__vars['totalCounts'],
-			'records' => $__vars['records'],
+			'data' => $__vars['data'],
 		), $__vars) . '
 
 				', array(
@@ -113,7 +111,7 @@ return array(
 		)) . '
 				<div class="block-footer">
 					<span class="block-footer-counter"
-						  >' . $__templater->func('display_totals', array($__templater->func('count', array($__vars['totalCounts'], ), false), $__templater->func('count', array($__vars['totalCounts'], ), false), ), true) . '</span
+						  >' . $__templater->func('display_totals', array($__templater->func('count', array($__vars['data'], ), false), $__templater->func('count', array($__vars['data'], ), false), ), true) . '</span
 						>
 				</div>
 

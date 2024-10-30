@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <options>
+  <option option_id="fs_webhook_secret_key" edit_format="textbox" data_type="string">
+    <default_value></default_value>
+    <relation group_id="fs_zoom_api_credentials" display_order="3"/>
+  </option>
   <option option_id="fs_zoom_credentials_change" edit_format="template" data_type="array">
     <default_value>{"zoomauth":"auth"}</default_value>
     <edit_format_params>fs_option_template_zoomadvance</edit_format_params>
@@ -10,6 +14,14 @@
   <option option_id="zoom_meeting_access_token" edit_format="textbox" data_type="string">
     <default_value></default_value>
     <relation group_id="fs_zoom_meeting" display_order="1"/>
+  </option>
+  <option option_id="zoom_meeting_client_id" edit_format="textbox" data_type="string">
+    <default_value></default_value>
+    <relation group_id="fs_zoom_api_credentials" display_order="1"/>
+  </option>
+  <option option_id="zoom_meeting_client_secret" edit_format="textbox" data_type="string">
+    <default_value></default_value>
+    <relation group_id="fs_zoom_api_credentials" display_order="2"/>
   </option>
   <option option_id="zoom_meeting_refresh_token" edit_format="textbox" data_type="string">
     <default_value></default_value>
