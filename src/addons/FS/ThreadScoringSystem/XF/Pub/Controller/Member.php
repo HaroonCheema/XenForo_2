@@ -14,9 +14,11 @@ class Member extends XFCP_Member
 
         if (!($params->user_id || $username)) {
 
-            // $options = \XF::options();
+            $orderBy = \XF::options()->fs_thread_scoring_list_order;
 
-            $records = $this->finder('FS\ThreadScoringSystem:TotalScoringSystem')->fetch();
+            $records = $this->finder('FS\ThreadScoringSystem:TotalScoringSystem')->order('total_score', $orderBy)->fetch();
+
+            // ->order('start_time', 'ASC')
 
             if (!count($records)) {
                 return $parent;
@@ -37,13 +39,9 @@ class Member extends XFCP_Member
     public function actionAllUsersPoints()
     {
 
-        $records = $this->finder('FS\ThreadScoringSystem:TotalScoringSystem')->fetch();
+        $orderBy = \XF::options()->fs_thread_scoring_list_order;
 
-        // if ($options->fs_thread_scoring_list_format == 'points') {
-
-        // } else {
-        //     $data = $allTypePoints->getPercentageSums($records);
-        // }
+        $records = $this->finder('FS\ThreadScoringSystem:TotalScoringSystem')->order('total_score', $orderBy)->fetch();
 
         $viewParams = [
             'data' => count($records) ? $records : [],

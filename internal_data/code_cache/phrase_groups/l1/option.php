@@ -380,6 +380,7 @@ return array (
   'option.fs_thread_scoring_list_format' => 'List format',
   'option.fs_thread_scoring_list_order' => 'List order by',
   'option.fs_thread_scoring_system_decimals' => 'Number of decimals',
+  'option.fs_thread_scoring_system_exc_forms' => 'Exclude forums',
   'option.fs_thread_scoring_system_notable_perpage' => 'Notabel list limit',
   'option.fs_thread_starter_points' => 'Thread starter',
   'option.fs_thumbnail_applicable_forums' => 'Applicable Forums',

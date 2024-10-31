@@ -437,6 +437,7 @@ This option requires that the specified account is a catch-all account or suppor
   'option_explain.fs_thread_scoring_list_format' => '',
   'option_explain.fs_thread_scoring_list_order' => '',
   'option_explain.fs_thread_scoring_system_decimals' => 'Given limit apply on after dot (.) decimals...!',
+  'option_explain.fs_thread_scoring_system_exc_forms' => 'Select forums to exclude.',
   'option_explain.fs_thread_scoring_system_notable_perpage' => '',
   'option_explain.fs_thread_starter_points' => 'You can adjust thread starter or post thread points from here...!',
   'option_explain.fs_thumbnail_applicable_forums' => 'List the forum ids that are allowed to be display thumbnail to all. Use , (comma) between ids.

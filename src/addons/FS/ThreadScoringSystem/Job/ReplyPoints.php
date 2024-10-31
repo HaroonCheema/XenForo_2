@@ -29,8 +29,16 @@ class ReplyPoints extends AbstractRebuildJob
 
     protected function rebuildById($id)
     {
-        /** @var \XF\Entity\Thread $thread */
-        $thread = $this->app->em()->find('XF:Thread', $id);
+        $excludeForumIds = \XF::options()->fs_thread_scoring_system_exc_forms;
+
+        if (count($excludeForumIds)) {
+            /** @var \XF\Entity\Thread $thread */
+            $thread = \XF::finder('XF:Thread')->where('thread_id', $id)->where('node_id', '!=', $excludeForumIds)->fetchOne();
+        } else {
+            /** @var \XF\Entity\Thread $thread */
+            $thread = $this->app->em()->find('XF:Thread', $id);
+        }
+
         if (!$thread) {
             return;
         }

@@ -37,38 +37,15 @@ class Setup extends AbstractSetup
 
 	// public function postInstall(array &$stateChanges)
 	// {
-	// 	$app = \XF::app();
 
-	// 	$jobID = "thread_starter_points" . time();
-
-	// 	$app->jobManager()->enqueueUnique($jobID, 'FS\ThreadScoringSystem:ThreadStarter', [], false);
-
-	// 	$jobID = "thread_reply_points" . time();
-
-	// 	$app->jobManager()->enqueueUnique($jobID, 'FS\ThreadScoringSystem:ReplyPoints', [], false);
-
-	// 	$jobID = "thread_solution_points" . time();
-
-	// 	$app->jobManager()->enqueueUnique($jobID, 'FS\ThreadScoringSystem:SolutionPoints', [], false);
 	// }
 
 	// ############################### UPGRADE ###########################
 
-	public function upgrade1010100Step1(array $stepParams)
-	{
-		$this->schemaManager()->createTable('fs_thread_total_scoring_system', function (\XF\Db\Schema\Create $table) {
-			$table->addColumn('id', 'int')->autoIncrement();
-			$table->addColumn('user_id', 'int');
-			$table->addColumn('threads_score', 'decimal', '65,8')->unsigned(false)->setDefault(0);
-			$table->addColumn('reply_score', 'decimal', '65,8')->unsigned(false)->setDefault(0);
-			$table->addColumn('worlds_score', 'decimal', '65,8')->unsigned(false)->setDefault(0);
-			$table->addColumn('reactions_score', 'decimal', '65,8')->unsigned(false)->setDefault(0);
-			$table->addColumn('solutions_score', 'decimal', '65,8')->unsigned(false)->setDefault(0);
-			$table->addColumn('total_score', 'decimal', '65,8')->unsigned(false)->setDefault(0);
+	// public function upgrade1010100Step1(array $stepParams)
+	// {
 
-			$table->addPrimaryKey('id');
-		});
-	}
+	// }
 
 	// ############################### UNINSTALL ###########################
 
