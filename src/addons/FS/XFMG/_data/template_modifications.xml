@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="xfmg_album_list_macros" modification_key="adding_thumbanil_image" description="it sets path for thumbnail image" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<xf:macro name="album_list_item_type_icon" arg-album="{\$album}" \/>.*?<xf:macro name="album_list_item_thumb" arg-album="{\$album}" \/>/is]]></find>
+    <replace><![CDATA[<xf:macro name="album_list_item_type_icon" arg-album="{$album}" />
+<xf:if is="$album.media_id != 0">
+	<span class='xfmgThumbnail xfmgThumbnail--album xfmgThumbnail--fluid'>
+
+		<img class='xfmgThumbnail-image' src="{{$album.MediaItem.Attachment.getThumbnailUrlFull()}}" alt='Another Album' />
+		<span class='xfmgThumbnail-icon'></span>
+
+	</span>
+	<xf:else />
+	<xf:macro name="album_list_item_thumb" arg-album="{$album}" />
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="xfmg_album_list_macros" modification_key="xfmg_overaly_change" description="it chages the media overlay" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<div class="itemList-itemOverlay">.*?<\/ul>
+				<\/div>
+			<\/div>
+		<\/div>
+	<\/div>/is]]></find>
+    <replace><![CDATA[<div class="itemList-item">
+	<div class="itemInfoRow">
+		<div class="itemInfoRow-main">
+			<h3 class="itemInfoRow-title">
+				<a href="{{ link('media/albums' . ($isChooser ? '/add' : ''), $album) }}">{$album.title}</a>
+			</h3>
+			<div class="itemInfoRow-status" style="color: #2577b1">
+				<ul class="listInline listInline--bullet">
+					<li><xf:fa icon="fa-user" title="{{ phrase('xfmg_album_owner')|for_attr }}" /> <xf:username user="$album.User" defaultname="{$album.username}" /></li>
+					<li><xf:fa icon="fa-clock" title="{{ phrase('xfmg_date_created')|for_attr }}" /> {{ date($album.create_date, 'absolute') }}</li>
+				</ul>
+			</div>
+			<div class="itemInfoRow-status">
+				<ul class="listInline listInline--bullet" style="color: #2577b1">
+					<li><xf:fa icon="fa-th" title="{{ phrase('xfmg_items')|for_attr }}" /> {$album.media_count|number_short}</li>
+					<li><xf:fa icon="fa-thumbs-up" title="{{ phrase('reaction_score')|for_attr }}" /> {$album.reaction_score|number_short}</li>
+					<li><xf:fa icon="fa-comments" title="{{ phrase('xfmg_comments')|for_attr }}" /> {$album.comment_count|number_short}</li>
+					<xf:if is="$album.album_state == 'deleted'">
+						<li>{{ phrase('deleted') }}</li>
+					</xf:if>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+]]></replace>
+  </modification>
+  <modification type="public" template="xfmg_media_view" modification_key="xfmg_set_image" description="it shows the meida view" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<xf:if is="\$mediaItem\.canDelete\(\)">.*?<\/xf:if>/is]]></find>
+    <replace><![CDATA[$0
+<xf:if is="$mediaItem.Album.media_id == 0 || $mediaItem.Album.media_id != $mediaItem.media_id">
+	<a href="{{ link('media/saving-image', $mediaItem) }}"
+	   class="actionBar-action actionBar-action--delete actionBar-action--menuItem"
+	   data-xf-click="overlay">{{ phrase('fs_xfmg_set_image_as_cover') }}</a>
+	<xf:else />
+	<a href="{{ link('media/unset-image', $mediaItem) }}"
+	   class="actionBar-action actionBar-action--delete actionBar-action--menuItem"
+	   data-xf-click="overlay">{{ phrase('fs_xfmg_unset_image_as_cover') }}</a>
+</xf:if>
+]]></replace>
+  </modification>
+</template_modifications>

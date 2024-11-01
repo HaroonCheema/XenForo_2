@@ -1,4 +1,14 @@
 {
+    "admin/fs_thread_option_template_date.html": {
+        "version_id": 1010100,
+        "version_string": "1.1.1 Alpha",
+        "hash": "991a970b8ce28e9e4c259bad2114f486"
+    },
+    "public/fs_thread_scoring_all_score_custom.html": {
+        "version_id": 1010100,
+        "version_string": "1.1.1 Alpha",
+        "hash": "825801829ba1cc30bccf9661db945516"
+    },
     "public/fs_thread_scoring_all_score_notable.html": {
         "version_id": 1000900,
         "version_string": "1.0.9 Alpha",
@@ -18,5 +28,15 @@
         "version_id": 1000200,
         "version_string": "1.0.2 Alpha",
         "hash": "f3d9faabdbe487f74863d354bdd35a2a"
+    },
+    "public/widget_fs_thread_scoring_monthly_score.html": {
+        "version_id": 1010100,
+        "version_string": "1.1.1 Alpha",
+        "hash": "dd38c5ed733ebd0c84e8f8767caf8aeb"
+    },
+    "public/xfmg_unset_image_confirm.html": {
+        "version_id": 1010100,
+        "version_string": "1.1.1 Alpha",
+        "hash": "e60e76ec38eaf7c8b727ca0a8d8035ac"
     }
 }

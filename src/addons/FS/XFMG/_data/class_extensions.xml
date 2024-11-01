@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class_extensions>
+  <extension from_class="XFMG\Entity\Album" to_class="FS\XFMG\Entity\Album" execute_order="10" active="1"/>
+  <extension from_class="XFMG\Pub\Controller\Media" to_class="FS\XFMG\Pub\Controller\Media" execute_order="10" active="1"/>
+</class_extensions>

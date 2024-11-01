@@ -1,12 +1,12 @@
 {
+    "fs_monthly_total_score.json": {
+        "hash": "b5abde03af0749d014866c03ab90a385"
+    },
     "fs_notable_member_points.json": {
         "hash": "25b23b92ecd3c96c7491a67c08f9e2d5"
     },
     "fs_post_reply_points.json": {
         "hash": "d54b43099cce8ed0a4aeaf34b7093d81"
-    },
-    "fs_starter_thread_points.json": {
-        "hash": "066bf497ec3e06bd18b42b3f4b1189c9"
     },
     "fs_thread_solution_point.json": {
         "hash": "63a712644a7f017750e4e9fe84bc1b94"

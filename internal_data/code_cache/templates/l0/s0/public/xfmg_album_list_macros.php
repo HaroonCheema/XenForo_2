@@ -169,9 +169,24 @@ return array(
 			' . $__templater->callMacro(null, 'album_list_item_type_icon', array(
 		'album' => $__vars['album'],
 	), $__vars) . '
-			' . $__templater->callMacro(null, 'album_list_item_thumb', array(
-		'album' => $__vars['album'],
-	), $__vars) . '
+';
+	if ($__vars['album']['media_id'] != 0) {
+		$__finalCompiled .= '
+	<span class=\'xfmgThumbnail xfmgThumbnail--album xfmgThumbnail--fluid\'>
+
+		<img class=\'xfmgThumbnail-image\' src="' . $__templater->escape($__templater->method($__vars['album']['MediaItem']['Attachment'], 'getThumbnailUrlFull', array())) . '" alt=\'Another Album\' />
+		<span class=\'xfmgThumbnail-icon\'></span>
+
+	</span>
+	';
+	} else {
+		$__finalCompiled .= '
+	' . $__templater->callMacro(null, 'album_list_item_thumb', array(
+			'album' => $__vars['album'],
+		), $__vars) . '
+';
+	}
+	$__finalCompiled .= '
 		</a>
 		' . $__templater->callMacro(null, 'album_list_item_overlay', array(
 		'album' => $__vars['album'],
@@ -265,47 +280,48 @@ return array(
 {
 	$__finalCompiled = '';
 	$__finalCompiled .= '
-	<div class="itemList-itemOverlay">
-		<div class="itemInfoRow">
-			<div class="itemInfoRow-main">
-				<h3 class="itemInfoRow-title">
-					<a href="' . $__templater->func('link', array('media/albums' . ($__vars['isChooser'] ? '/add' : ''), $__vars['album'], ), true) . '">' . $__templater->escape($__vars['album']['title']) . '</a>
-				</h3>
-				<div class="itemInfoRow-status">
-					<ul class="listInline listInline--bullet">
-						<li>' . $__templater->fontAwesome('fa-user', array(
+	<div class="itemList-item">
+	<div class="itemInfoRow">
+		<div class="itemInfoRow-main">
+			<h3 class="itemInfoRow-title">
+				<a href="' . $__templater->func('link', array('media/albums' . ($__vars['isChooser'] ? '/add' : ''), $__vars['album'], ), true) . '">' . $__templater->escape($__vars['album']['title']) . '</a>
+			</h3>
+			<div class="itemInfoRow-status" style="color: #2577b1">
+				<ul class="listInline listInline--bullet">
+					<li>' . $__templater->fontAwesome('fa-user', array(
 		'title' => $__templater->filter('Album owner', array(array('for_attr', array()),), false),
 	)) . ' ' . $__templater->func('username_link', array($__vars['album']['User'], false, array(
 		'defaultname' => $__vars['album']['username'],
 	))) . '</li>
-						<li>' . $__templater->fontAwesome('fa-clock', array(
+					<li>' . $__templater->fontAwesome('fa-clock', array(
 		'title' => $__templater->filter('Date created', array(array('for_attr', array()),), false),
 	)) . ' ' . $__templater->func('date', array($__vars['album']['create_date'], 'absolute', ), true) . '</li>
-					</ul>
-				</div>
-				<div class="itemInfoRow-status">
-					<ul class="listInline listInline--bullet">
-						<li>' . $__templater->fontAwesome('fa-th', array(
+				</ul>
+			</div>
+			<div class="itemInfoRow-status">
+				<ul class="listInline listInline--bullet" style="color: #2577b1">
+					<li>' . $__templater->fontAwesome('fa-th', array(
 		'title' => $__templater->filter('Items', array(array('for_attr', array()),), false),
 	)) . ' ' . $__templater->filter($__vars['album']['media_count'], array(array('number_short', array()),), true) . '</li>
-						<li>' . $__templater->fontAwesome('fa-thumbs-up', array(
+					<li>' . $__templater->fontAwesome('fa-thumbs-up', array(
 		'title' => $__templater->filter('Reaction score', array(array('for_attr', array()),), false),
 	)) . ' ' . $__templater->filter($__vars['album']['reaction_score'], array(array('number_short', array()),), true) . '</li>
-						<li>' . $__templater->fontAwesome('fa-comments', array(
+					<li>' . $__templater->fontAwesome('fa-comments', array(
 		'title' => $__templater->filter('Comments', array(array('for_attr', array()),), false),
 	)) . ' ' . $__templater->filter($__vars['album']['comment_count'], array(array('number_short', array()),), true) . '</li>
-						';
+					';
 	if ($__vars['album']['album_state'] == 'deleted') {
 		$__finalCompiled .= '
-							<li>' . 'Deleted' . '</li>
-						';
+						<li>' . 'Deleted' . '</li>
+					';
 	}
 	$__finalCompiled .= '
-					</ul>
-				</div>
+				</ul>
 			</div>
 		</div>
 	</div>
+</div>
+
 ';
 	return $__finalCompiled;
 }

@@ -1,0 +1,9 @@
+{
+    "template": "xfmg_media_view",
+    "description": "it shows the meida view",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/<xf:if is=\"\\$mediaItem\\.canDelete\\(\\)\">.*?<\\/xf:if>/is",
+    "replace": "$0\n<xf:if is=\"$mediaItem.Album.media_id == 0 || $mediaItem.Album.media_id != $mediaItem.media_id\">\n\t<a href=\"{{ link('media/saving-image', $mediaItem) }}\"\n\t   class=\"actionBar-action actionBar-action--delete actionBar-action--menuItem\"\n\t   data-xf-click=\"overlay\">{{ phrase('fs_xfmg_set_image_as_cover') }}</a>\n\t<xf:else />\n\t<a href=\"{{ link('media/unset-image', $mediaItem) }}\"\n\t   class=\"actionBar-action actionBar-action--delete actionBar-action--menuItem\"\n\t   data-xf-click=\"overlay\">{{ phrase('fs_xfmg_unset_image_as_cover') }}</a>\n</xf:if>\n"
+}

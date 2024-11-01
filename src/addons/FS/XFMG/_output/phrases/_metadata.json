@@ -1,0 +1,14 @@
+{
+    "fs_xfmg_set_image_as_cover.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "7d608cbcbdbad63eac5f881e2e8873ab"
+    },
+    "fs_xfmg_unset_image_as_cover.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "8702bd652cac271ab6fa1564cfaffea1"
+    }
+}

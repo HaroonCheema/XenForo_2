@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="public" title="xfmg_set_image_confirm" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('fs_xfmg_confirm_image') }}</xf:title>
+
+<xf:breadcrumb source="$mediaItem.getBreadcrumbs()" />
+
+<xf:form action="{{ link('media/saving-image', $mediaItem) }}" class="block" ajax="true" method="post">
+	<div class="block-container">
+		<div class="formInfoRow formInfoRow--confirm">
+			{{ phrase('fs_xfmg_you_sure_set') }}
+		</div>
+		<xf:submitrow icon="save" />
+	</div>
+</xf:form>]]></template>
+</templates>

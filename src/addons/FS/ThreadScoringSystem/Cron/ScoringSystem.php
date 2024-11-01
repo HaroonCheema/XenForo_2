@@ -4,15 +4,6 @@ namespace FS\ThreadScoringSystem\Cron;
 
 class ScoringSystem
 {
-    public static function threadStarterPoints()
-    {
-        $app = \XF::app();
-        $jobID = "thread_starter_points" . time();
-
-        $app->jobManager()->enqueueUnique($jobID, 'FS\ThreadScoringSystem:ThreadStarter', [], false);
-        // $app->jobManager()->enqueueUnique($jobID, 'FS\ThreadScoringSystem:ThreadStarter', [], true);
-        // $app->jobManager()->runUnique($jobID, 120);
-    }
 
     public static function postReplyPoints()
     {
@@ -24,6 +15,11 @@ class ScoringSystem
 
     public static function threadSolutionPoints()
     {
+        $app = \XF::app();
+        $jobID = "thread_starter_points" . time();
+
+        $app->jobManager()->enqueueUnique($jobID, 'FS\ThreadScoringSystem:ThreadStarter', [], false);
+
         $app = \XF::app();
         $jobID = "thread_solution_points" . time();
 
@@ -40,5 +36,15 @@ class ScoringSystem
         $jobID = "notable_member_total_points" . time();
 
         $app->jobManager()->enqueueUnique($jobID, 'FS\ThreadScoringSystem:NotableMemberTotalPoints', [], false);
+    }
+
+    public static function monthlyTotalUsersPoints()
+    {
+        $app = \XF::app();
+        $jobID = "monthly_total_points" . time();
+
+        $app->jobManager()->enqueueUnique($jobID, 'FS\ThreadScoringSystem:MonthWiseScore', [], false);
+        // $app->jobManager()->enqueueUnique($jobID, 'FS\ThreadScoringSystem:ThreadStarter', [], true);
+        // $app->jobManager()->runUnique($jobID, 120);
     }
 }

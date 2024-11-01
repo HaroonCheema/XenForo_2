@@ -215,6 +215,22 @@ return array(
 									';
 	}
 	$__compilerTemp3 .= '
+';
+	if (($__vars['mediaItem']['Album']['media_id'] == 0) OR ($__vars['mediaItem']['Album']['media_id'] != $__vars['mediaItem']['media_id'])) {
+		$__compilerTemp3 .= '
+	<a href="' . $__templater->func('link', array('media/saving-image', $__vars['mediaItem'], ), true) . '"
+	   class="actionBar-action actionBar-action--delete actionBar-action--menuItem"
+	   data-xf-click="overlay">' . 'Set image as cover' . '</a>
+	';
+	} else {
+		$__compilerTemp3 .= '
+	<a href="' . $__templater->func('link', array('media/unset-image', $__vars['mediaItem'], ), true) . '"
+	   class="actionBar-action actionBar-action--delete actionBar-action--menuItem"
+	   data-xf-click="overlay">' . 'Unset image form cover' . '</a>
+';
+	}
+	$__compilerTemp3 .= '
+
 									';
 	if ($__templater->method($__vars['mediaItem'], 'canCleanSpam', array())) {
 		$__compilerTemp3 .= '

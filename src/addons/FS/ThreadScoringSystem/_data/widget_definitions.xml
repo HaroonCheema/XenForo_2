@@ -1,2 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<widget_definitions/>
+<widget_definitions>
+  <widget_definition definition_id="fs_thread_month_wise_scor" definition_class="FS\ThreadScoringSystem\Widget\MonthWiseScore"/>
+</widget_definitions>

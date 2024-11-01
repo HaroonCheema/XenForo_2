@@ -1,0 +1,9 @@
+{
+    "template": "xfmg_album_list_macros",
+    "description": "it sets path for thumbnail image",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/<xf:macro name=\"album_list_item_type_icon\" arg-album=\"{\\$album}\" \\/>.*?<xf:macro name=\"album_list_item_thumb\" arg-album=\"{\\$album}\" \\/>/is",
+    "replace": "<xf:macro name=\"album_list_item_type_icon\" arg-album=\"{$album}\" />\n<xf:if is=\"$album.media_id != 0\">\n\t<span class='xfmgThumbnail xfmgThumbnail--album xfmgThumbnail--fluid'>\n\n\t\t<img class='xfmgThumbnail-image' src=\"{{$album.MediaItem.Attachment.getThumbnailUrlFull()}}\" alt='Another Album' />\n\t\t<span class='xfmgThumbnail-icon'></span>\n\n\t</span>\n\t<xf:else />\n\t<xf:macro name=\"album_list_item_thumb\" arg-album=\"{$album}\" />\n</xf:if>"
+}

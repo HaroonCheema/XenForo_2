@@ -50,6 +50,20 @@ class Member extends XFCP_Member
         return $this->view('FS\ThreadScoringSystem:Member\AllUsersPoints', 'fs_thread_scoring_all_score_notable', $viewParams);
     }
 
+    public function actionCustomUsersPoints()
+    {
+
+        $orderBy = \XF::options()->fs_thread_scoring_list_order;
+
+        $records = $this->finder('FS\ThreadScoringSystem:TotalScoringCustom')->order('total_score', $orderBy)->fetch();
+
+        $viewParams = [
+            'data' => count($records) ? $records : [],
+        ];
+
+        return $this->view('FS\ThreadScoringSystem:Member\CustomUsersPoints', 'fs_thread_scoring_all_score_custom', $viewParams);
+    }
+
     public function actionMyPointsScore(ParameterBag $params)
     {
         $user = $this->assertViewableUser($params->user_id);
