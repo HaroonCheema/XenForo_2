@@ -88,7 +88,7 @@ return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
 	$__finalCompiled = '';
-	$__templater->pageParams['pageTitle'] = $__templater->preEscaped('Custom Thread Score');
+	$__templater->pageParams['pageTitle'] = $__templater->preEscaped('Users of month');
 	$__finalCompiled .= '
 
 <div class="block">

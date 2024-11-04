@@ -74,7 +74,7 @@ return array(
 				$__finalCompiled .= '
 						<h3 class="block-textHeader">
 							<a href="' . $__templater->func('link', array('members/custom-users-points', ), true) . '"
-							   class="memberOverViewBlock-title">' . 'Custom thread score' . '</a>
+							   class="memberOverViewBlock-title">' . 'Users of month' . '</a>
 						</h3>
 						' . $__compilerTemp1 . '
 						<div class="memberOverviewBlock-seeMore">
