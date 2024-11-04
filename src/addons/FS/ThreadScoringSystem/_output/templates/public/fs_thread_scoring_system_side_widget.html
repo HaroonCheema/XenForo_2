@@ -1,6 +1,6 @@
 <xf:sidebar key="conversationInfo">
 
-	<xf:if is="{{ $xf.visitor.hasPermission('fs_thread_scoring_system', 'can_view') }}">
+	<xf:if is="{{ $xf.visitor.hasPermission('fs_thread_scoring_system', 'can_view') }} && !in_array($thread.Forum.node_id, $xf.options.fs_thread_scoring_system_exc_forms)">
 		<xf:set var="$data" value="{{ $xf.options.fs_thread_scoring_list_format == 'percentage' ? $thread->getPercentageSums() : $thread->getPointsSums() }}" />
 
 		<xf:if is="count($data.records)">

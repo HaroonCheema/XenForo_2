@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: dd38c5ed733ebd0c84e8f8767caf8aeb
+// FROM HASH: c9035e9dd7fe66562868c3669a35d3ac
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -22,9 +22,6 @@ return array(
 					';
 			$__compilerTemp1 = '';
 			$__compilerTemp1 .= '
-							';
-			$__vars['isBelow'] = '0';
-			$__compilerTemp1 .= '
 
 							';
 			$__vars['i'] = 0;
@@ -32,39 +29,29 @@ return array(
 				foreach ($__vars['data'] AS $__vars['key'] => $__vars['value']) {
 					$__vars['i']++;
 					$__compilerTemp1 .= '
-								';
-					if (($__vars['isBelow'] < $__vars['xf']['options']['fs_thread_scoring_system_notable_perpage']) AND $__vars['value']['User']) {
-						$__compilerTemp1 .= '
-									<li style="margin: 5px 0px;">
-										<div class="contentRow contentRow--alignMiddle">
-											<div class="contentRow-figure">
-												' . $__templater->func('avatar', array($__vars['value']['User'], 'xs', false, array(
-						))) . '
-											</div>
-											<div class="contentRow-main">
-												';
-						if ($__vars['value']['total_score']) {
-							$__compilerTemp1 .= '
-													<div class="contentRow-extra contentRow-extra--large" data-xf-init="tooltip" title="' . ($__vars['value']['threads_score'] ? ((((('Thread : ' . ' ') . $__templater->func('number', array($__vars['value']['threads_score'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true)) . ' (') . 'Points') . ')') : ' ') . '
-																																		' . ($__vars['value']['reply_score'] ? ((((('Reply : ' . ' ') . $__templater->func('number', array($__vars['value']['reply_score'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true)) . ' (') . 'Points') . ')') : ' ') . '
-																																		' . ($__vars['value']['worlds_score'] ? ((((('Words : ' . ' ') . $__templater->func('number', array($__vars['value']['worlds_score'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true)) . ' (') . 'Points') . ')') : ' ') . '
-																																		' . ($__vars['value']['reactions_score'] ? ((((('Reactions : ' . ' ') . $__templater->func('number', array($__vars['value']['reactions_score'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true)) . ' (') . 'Points') . ')') : ' ') . '
-																																		' . ($__vars['value']['solutions_score'] ? ((((('Solution : ' . ' ') . $__templater->func('number', array($__vars['value']['solutions_score'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true)) . ' (') . 'Points') . ')') : ' ') . '">' . $__templater->func('number', array($__vars['value']['total_score'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true) . '</div>
-												';
-						}
-						$__compilerTemp1 .= '
-												<h3 class="contentRow-title">' . $__templater->func('username_link', array($__vars['value']['User'], true, array(
-						))) . '</h3>
-											</div>
+								<li style="margin: 5px 0px;">
+									<div class="contentRow contentRow--alignMiddle">
+										<div class="contentRow-figure">
+											' . $__templater->func('avatar', array($__vars['value']['User'], 'xs', false, array(
+					))) . '
 										</div>
-									</li>
-									';
-						$__vars['isBelow'] = ($__vars['isBelow'] + 1);
+										<div class="contentRow-main">
+											';
+					if ($__vars['value']['total_score']) {
 						$__compilerTemp1 .= '
-
-								';
+												<div class="contentRow-extra contentRow-extra--large" data-xf-init="tooltip" title="' . ($__vars['value']['threads_score'] ? ((((('Thread : ' . ' ') . $__templater->func('number', array($__vars['value']['threads_score'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true)) . ' (') . 'Points') . ')') : ' ') . '
+																																	' . ($__vars['value']['reply_score'] ? ((((('Reply : ' . ' ') . $__templater->func('number', array($__vars['value']['reply_score'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true)) . ' (') . 'Points') . ')') : ' ') . '
+																																	' . ($__vars['value']['worlds_score'] ? ((((('Words : ' . ' ') . $__templater->func('number', array($__vars['value']['worlds_score'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true)) . ' (') . 'Points') . ')') : ' ') . '
+																																	' . ($__vars['value']['reactions_score'] ? ((((('Reactions : ' . ' ') . $__templater->func('number', array($__vars['value']['reactions_score'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true)) . ' (') . 'Points') . ')') : ' ') . '
+																																	' . ($__vars['value']['solutions_score'] ? ((((('Solution : ' . ' ') . $__templater->func('number', array($__vars['value']['solutions_score'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true)) . ' (') . 'Points') . ')') : ' ') . '">' . $__templater->func('number', array($__vars['value']['total_score'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true) . '</div>
+											';
 					}
 					$__compilerTemp1 .= '
+											<h3 class="contentRow-title">' . $__templater->func('username_link', array($__vars['value']['User'], true, array(
+					))) . '</h3>
+										</div>
+									</div>
+								</li>
 							';
 				}
 			}

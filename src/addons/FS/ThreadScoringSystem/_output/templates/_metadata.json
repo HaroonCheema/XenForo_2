@@ -20,23 +20,18 @@
         "hash": "e681c5cc3d6090def02df6c29f28b653"
     },
     "public/fs_thread_scoring_system_notable_member.html": {
-        "version_id": 1000900,
-        "version_string": "1.0.9 Alpha",
-        "hash": "a6c7e6605cebb07b7503ca6c680cdf07"
+        "version_id": 1010200,
+        "version_string": "1.1.2 Alpha",
+        "hash": "5cf49975cecdbde15c6fb55e397fabc9"
     },
     "public/fs_thread_scoring_system_side_widget.html": {
-        "version_id": 1000200,
-        "version_string": "1.0.2 Alpha",
-        "hash": "f3d9faabdbe487f74863d354bdd35a2a"
+        "version_id": 1010200,
+        "version_string": "1.1.2 Alpha",
+        "hash": "8f930ec49dae81420c86e96d2f9f01c9"
     },
     "public/widget_fs_thread_scoring_monthly_score.html": {
-        "version_id": 1010100,
-        "version_string": "1.1.1 Alpha",
-        "hash": "dd38c5ed733ebd0c84e8f8767caf8aeb"
-    },
-    "public/xfmg_unset_image_confirm.html": {
-        "version_id": 1010100,
-        "version_string": "1.1.1 Alpha",
-        "hash": "e60e76ec38eaf7c8b727ca0a8d8035ac"
+        "version_id": 1010200,
+        "version_string": "1.1.2 Alpha",
+        "hash": "c9035e9dd7fe66562868c3669a35d3ac"
     }
 }

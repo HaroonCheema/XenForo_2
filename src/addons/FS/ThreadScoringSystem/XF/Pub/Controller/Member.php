@@ -15,10 +15,10 @@ class Member extends XFCP_Member
         if (!($params->user_id || $username)) {
 
             $orderBy = \XF::options()->fs_thread_scoring_list_order;
+            $minimumPoints = \XF::options()->fs_total_users_minimum_points;
+            $listLimit = \XF::options()->fs_thread_scoring_system_notable_perpage;
 
-            $records = $this->finder('FS\ThreadScoringSystem:TotalScoringSystem')->order('total_score', $orderBy)->fetch();
-
-            // ->order('start_time', 'ASC')
+            $records = $this->finder('FS\ThreadScoringSystem:TotalScoringSystem')->where('user_id', '!=', 0)->where('total_score', '>=', $minimumPoints)->limitByPage(1, $listLimit)->order('total_score', $orderBy)->fetch();
 
             if (!count($records)) {
                 return $parent;
@@ -40,8 +40,9 @@ class Member extends XFCP_Member
     {
 
         $orderBy = \XF::options()->fs_thread_scoring_list_order;
+        $minimumPoints = \XF::options()->fs_total_users_minimum_points;
 
-        $records = $this->finder('FS\ThreadScoringSystem:TotalScoringSystem')->order('total_score', $orderBy)->fetch();
+        $records = $this->finder('FS\ThreadScoringSystem:TotalScoringSystem')->where('total_score', '>=', $minimumPoints)->order('total_score', $orderBy)->fetch();
 
         $viewParams = [
             'data' => count($records) ? $records : [],
@@ -54,8 +55,9 @@ class Member extends XFCP_Member
     {
 
         $orderBy = \XF::options()->fs_thread_scoring_list_order;
+        $minimumPoints = \XF::options()->fs_total_users_minimum_points;
 
-        $records = $this->finder('FS\ThreadScoringSystem:TotalScoringCustom')->order('total_score', $orderBy)->fetch();
+        $records = $this->finder('FS\ThreadScoringSystem:TotalScoringCustom')->where('total_score', '>=', $minimumPoints)->order('total_score', $orderBy)->fetch();
 
         $viewParams = [
             'data' => count($records) ? $records : [],

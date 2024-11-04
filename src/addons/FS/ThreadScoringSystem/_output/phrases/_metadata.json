@@ -211,9 +211,9 @@
     },
     "option.fs_thread_scoring_system_notable_perpage.txt": {
         "global_cache": false,
-        "version_id": 1000010,
-        "version_string": "1.0.0 Alpha",
-        "hash": "fd045faeb5f2b3021f116323b718bd11"
+        "version_id": 1010200,
+        "version_string": "1.1.2 Alpha",
+        "hash": "948b93bfc22624790ab20720a4e55f29"
     },
     "option.fs_thread_start_date.txt": {
         "global_cache": false,
@@ -229,15 +229,21 @@
     },
     "option.fs_total_minimum_req_points.txt": {
         "global_cache": false,
-        "version_id": 1000010,
-        "version_string": "1.0.0 Alpha",
-        "hash": "579690da18f587891f72ef117bfa1e11"
+        "version_id": 1010200,
+        "version_string": "1.1.2 Alpha",
+        "hash": "a88900ff52d51287343eb3e84637297a"
     },
     "option.fs_total_solution_points.txt": {
         "global_cache": false,
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
         "hash": "2a9dbfa4b74c53d7304fc8b79a1874d3"
+    },
+    "option.fs_total_users_minimum_points.txt": {
+        "global_cache": false,
+        "version_id": 1010200,
+        "version_string": "1.1.2 Alpha",
+        "hash": "e40934b8726bd9df23a4c0944dbcca7b"
     },
     "option.fs_total_words_points.txt": {
         "global_cache": false,
@@ -316,6 +322,12 @@
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
         "hash": "5ae9d72c655bbec41bdbe4f81856080b"
+    },
+    "option_explain.fs_total_users_minimum_points.txt": {
+        "global_cache": false,
+        "version_id": 1010200,
+        "version_string": "1.1.2 Alpha",
+        "hash": "1676d5b3f0818362dbc529c8cc212784"
     },
     "option_explain.fs_total_words_points.txt": {
         "global_cache": false,

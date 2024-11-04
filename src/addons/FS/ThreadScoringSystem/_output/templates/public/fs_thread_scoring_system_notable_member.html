@@ -5,35 +5,31 @@
 		<xf:if contentcheck="true">
 			<li class="memberOverviewBlock">
 				<h3 class="block-textHeader">
-					<a href="{{ link('members') }}"
+					<a href="{{ link('members/all-users-points') }}"
 					   class="memberOverViewBlock-title">{{ phrase('fs_thread_scores') }}</a>
 				</h3>
 				<ol class="memberOverviewBlock-list">
 					<xf:contentcheck>
-						<xf:set var="$isBelow" value="0" />
 
 						<xf:foreach loop="$data" value="$value" key="$key" i="$i">
-							<xf:if is="$isBelow < $xf.options.fs_thread_scoring_system_notable_perpage && $value.User">
-								<li>
-									<div class="contentRow contentRow--alignMiddle">
-										<div class="contentRow-figure">
-											<xf:avatar user="$value.User" size="xs" />
-										</div>
-										<div class="contentRow-main">
-											<xf:if is="{$value.total_score}">
-												<div class="contentRow-extra contentRow-extra--large" data-xf-init="tooltip" title="{{$value.threads_score ? phrase('fs_thread_scoring_system_thread') . ' ' . number($value.threads_score, $xf.options.fs_thread_scoring_system_decimals) . ' (' . phrase('points') . ')' : ' '}}
-																																	{{$value.reply_score ? phrase('fs_thread_scoring_system_reply') . ' ' . number($value.reply_score, $xf.options.fs_thread_scoring_system_decimals) . ' (' . phrase('points') . ')' : ' '}}
-																																	{{$value.worlds_score ? phrase('fs_thread_scoring_system_words') . ' ' . number($value.worlds_score, $xf.options.fs_thread_scoring_system_decimals) . ' (' . phrase('points') . ')' : ' '}}
-																																	{{$value.reactions_score ? phrase('fs_thread_scoring_system_reactions') . ' ' . number($value.reactions_score, $xf.options.fs_thread_scoring_system_decimals) . ' (' . phrase('points') . ')' : ' '}}
-																																	{{$value.solutions_score ? phrase('fs_thread_scoring_system_solution') . ' ' . number($value.solutions_score, $xf.options.fs_thread_scoring_system_decimals) . ' (' . phrase('points') . ')' : ' '}}">{{number($value.total_score, $xf.options.fs_thread_scoring_system_decimals)}}</div>
-											</xf:if>
-											<h3 class="contentRow-title"><xf:username user="$value.User" rich="true" /></h3>
-										</div>
+							<li>
+								<div class="contentRow contentRow--alignMiddle">
+									<div class="contentRow-figure">
+										<xf:avatar user="$value.User" size="xs" />
 									</div>
-								</li>
-								<xf:set var="$isBelow" value="{{$isBelow + 1}}" />
+									<div class="contentRow-main">
+										<xf:if is="{$value.total_score}">
+											<div class="contentRow-extra contentRow-extra--large" data-xf-init="tooltip" title="{{$value.threads_score ? phrase('fs_thread_scoring_system_thread') . ' ' . number($value.threads_score, $xf.options.fs_thread_scoring_system_decimals) . ' (' . phrase('points') . ')' : ' '}}
+																																{{$value.reply_score ? phrase('fs_thread_scoring_system_reply') . ' ' . number($value.reply_score, $xf.options.fs_thread_scoring_system_decimals) . ' (' . phrase('points') . ')' : ' '}}
+																																{{$value.worlds_score ? phrase('fs_thread_scoring_system_words') . ' ' . number($value.worlds_score, $xf.options.fs_thread_scoring_system_decimals) . ' (' . phrase('points') . ')' : ' '}}
+																																{{$value.reactions_score ? phrase('fs_thread_scoring_system_reactions') . ' ' . number($value.reactions_score, $xf.options.fs_thread_scoring_system_decimals) . ' (' . phrase('points') . ')' : ' '}}
+																																{{$value.solutions_score ? phrase('fs_thread_scoring_system_solution') . ' ' . number($value.solutions_score, $xf.options.fs_thread_scoring_system_decimals) . ' (' . phrase('points') . ')' : ' '}}">{{number($value.total_score, $xf.options.fs_thread_scoring_system_decimals)}}</div>
+										</xf:if>
+										<h3 class="contentRow-title"><xf:username user="$value.User" rich="true" /></h3>
+									</div>
+								</div>
+							</li>
 
-							</xf:if>
 						</xf:foreach>
 					</xf:contentcheck>
 				</ol>

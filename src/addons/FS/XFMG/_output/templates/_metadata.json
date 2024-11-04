@@ -3,5 +3,10 @@
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
         "hash": "c2de3f1c258bd492520d6e646aa78073"
+    },
+    "public/xfmg_unset_image_confirm.html": {
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "e60e76ec38eaf7c8b727ca0a8d8035ac"
     }
 }

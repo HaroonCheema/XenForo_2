@@ -446,6 +446,7 @@ This option requires that the specified account is a catch-all account or suppor
 Example: 1,2,3,4,..',
   'option_explain.fs_total_minimum_req_points' => 'You can adjust minimum required points from here for display users in list...!',
   'option_explain.fs_total_solution_points' => 'You can adjust total solutions points from here...!',
+  'option_explain.fs_total_users_minimum_points' => 'You can adjust all users & users of months and widgets minimum required points from here for display users in list...!',
   'option_explain.fs_total_words_points' => 'You can adjust total words points from here...!',
   'option_explain.fs_unhide_user_ids' => 'List the user ids that are allowed to be display username to all. Use , (comma) between ids.
 Example: 1,2,3,4,..',

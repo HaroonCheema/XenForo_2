@@ -35,6 +35,9 @@
     "fs_total_solution_points.json": {
         "hash": "9eb913d32cbe476cb32a9a489cd0b69e"
     },
+    "fs_total_users_minimum_points.json": {
+        "hash": "ecb763f02a81665ab9953417c0a3e91c"
+    },
     "fs_total_words_points.json": {
         "hash": "6d92ea42bf27c3ddd82b533dd87133a3"
     }

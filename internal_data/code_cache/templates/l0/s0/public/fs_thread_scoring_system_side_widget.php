@@ -1,11 +1,11 @@
 <?php
-// FROM HASH: f3d9faabdbe487f74863d354bdd35a2a
+// FROM HASH: 8f930ec49dae81420c86e96d2f9f01c9
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
 	$__finalCompiled = '';
 	$__compilerTemp1 = '';
-	if ($__templater->method($__vars['xf']['visitor'], 'hasPermission', array('fs_thread_scoring_system', 'can_view', ))) {
+	if ($__templater->method($__vars['xf']['visitor'], 'hasPermission', array('fs_thread_scoring_system', 'can_view', )) AND (!$__templater->func('in_array', array($__vars['thread']['Forum']['node_id'], $__vars['xf']['options']['fs_thread_scoring_system_exc_forms'], ), false))) {
 		$__compilerTemp1 .= '
 		';
 		$__vars['data'] = (($__vars['xf']['options']['fs_thread_scoring_list_format'] == 'percentage') ? $__templater->method($__vars['thread'], 'getPercentageSums', array()) : $__templater->method($__vars['thread'], 'getPointsSums', array()));

@@ -10,8 +10,10 @@ class MonthWiseScore extends AbstractWidget
     {
 
         $orderBy = \XF::options()->fs_thread_scoring_list_order;
+        $minimumPoints = \XF::options()->fs_total_users_minimum_points;
+        $listLimit = \XF::options()->fs_thread_scoring_system_notable_perpage;
 
-        $records = \XF::finder('FS\ThreadScoringSystem:TotalScoringCustom')->order('total_score', $orderBy)->fetch();
+        $records = \XF::finder('FS\ThreadScoringSystem:TotalScoringCustom')->where('user_id', '!=', 0)->where('total_score', '>=', $minimumPoints)->limitByPage(1, $listLimit)->order('total_score', $orderBy)->fetch();
 
         $viewParams = [
             'data' => count($records) ? $records : [],
