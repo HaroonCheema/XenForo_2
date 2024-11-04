@@ -2,66 +2,79 @@
 
 namespace FS\ThreadScoringSystem\Job;
 
-use XF\Job\AbstractRebuildJob;
+use XF\Job\AbstractJob;
+use XF\Mvc\Entity\Finder;
+use XF\Mvc\ParameterBag;
+use XF\Http\Response;
+use RecursiveIteratorIterator;
+use RecursiveDirectoryIterator;
+use XF\Mvc\FormAction;
+use XF\Mvc\View;
 
-class ReplyPoints extends AbstractRebuildJob
+class ReplyPoints extends AbstractJob
 {
-    protected $rebuildDefaultData = [
-        'steps' => 0,
-        'start' => 0,
-        'batch' => 250,
-    ];
 
-    protected function getNextIds($start, $batch)
+    public function run($maxRunTime)
     {
-        $db = $this->app->db();
 
-        return $db->fetchAllColumn($db->limit(
-            "
-				SELECT thread_id
-				FROM xf_thread
-				WHERE thread_id > ?
-				ORDER BY thread_id
-			",
-            $batch
-        ), $start);
-    }
-
-    protected function rebuildById($id)
-    {
         $excludeForumIds = \XF::options()->fs_thread_scoring_system_exc_forms;
 
-        if (count($excludeForumIds)) {
-            /** @var \XF\Entity\Thread $thread */
-            $thread = \XF::finder('XF:Thread')->where('thread_id', $id)->where('node_id', '!=', $excludeForumIds)->fetchOne();
-        } else {
-            /** @var \XF\Entity\Thread $thread */
-            $thread = $this->app->em()->find('XF:Thread', $id);
+        $conditions = [
+            ['last_cron_run', 0],
+            ['last_thread_update', '>', 'last_cron_run'],
+
+        ];
+
+        $pendingthreadsCount = \XF::finder('XF:Thread')->where('node_id', '!=', $excludeForumIds)->whereOr($conditions)->total();
+
+        if ($pendingthreadsCount) {
+
+            $limit = 500;
+
+            $endLimit = round($pendingthreadsCount / $limit) ?: 1;
+
+            for ($i = 0; $i < $endLimit; $i++) {
+                $startFrom = $i + 1;
+                $threads = \XF::finder('XF:Thread')->where('node_id', '!=', $excludeForumIds)->whereOr($conditions)->limitByPage($startFrom, $limit)->fetch();
+
+                if (count($threads)) {
+                    foreach ($threads as $key => $thread) {
+
+                        $postReply = \XF::service('FS\ThreadScoringSystem:ReplyPoints');
+                        $postReply->addEditReplyPoints($thread);
+
+                        $currentTime = \XF::$time;
+
+                        $thread->bulkSet([
+                            'last_thread_update' => $currentTime,
+                            'last_cron_run' => $currentTime,
+                        ]);
+
+                        $thread->save();
+                    }
+                } else {
+                    return $this->complete();
+                }
+            }
         }
 
-        if (!$thread) {
-            return;
-        }
-
-        if ($thread->last_cron_run == 0 || ($thread->last_thread_update > $thread->last_cron_run)) {
-            $postReply = \XF::service('FS\ThreadScoringSystem:ReplyPoints');
-            $postReply->addEditReplyPoints($thread);
-
-            $currentTime = \XF::$time;
-
-            $thread->bulkSet([
-                'last_thread_update' => $currentTime,
-                'last_cron_run' => $currentTime,
-            ]);
-
-            $thread->save();
-        } else {
-            return;
-        }
+        return $this->complete();
     }
 
-    protected function getStatusType()
+    public function writelevel() {}
+
+    public function getStatusMessage()
     {
-        return \XF::phrase('threads');
+        return \XF::phrase('processing_successfully...');
+    }
+
+    public function canCancel()
+    {
+        return false;
+    }
+
+    public function canTriggerByChoice()
+    {
+        return false;
     }
 }

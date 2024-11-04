@@ -94,8 +94,6 @@ class MonthWiseScore extends AbstractJob
                     }
                 }
 
-                // here
-
                 if (isset($userCounts[$key])) {
 
                     foreach ($userCounts[$key] as $userKey => $value) {

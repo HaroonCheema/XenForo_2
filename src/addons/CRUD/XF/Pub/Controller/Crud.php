@@ -633,6 +633,60 @@ class Crud extends AbstractController
     public function actionIndex(ParameterBag $params)
     {
 
+        // $options = \XF::options();
+
+        // $excludeForumIds = \XF::options()->fs_thread_scoring_system_exc_forms;
+
+
+        // $conditions = [
+        //     ['last_cron_run', 0],
+        //     ['last_thread_update', '>', 'last_cron_run'],
+
+        // ];
+
+        // $threads = \XF::finder('XF:Thread')->where('node_id', '!=', $excludeForumIds)->whereOr($conditions)->total();
+
+        // echo "<pre>";
+        // var_dump($threads);
+        // exit;
+
+
+
+
+        // $pendingthreadsCount = \XF::finder('XF:Thread')->where('points_collected', true)->total();
+
+        // if ($pendingthreadsCount) {
+
+        //     $limit = 50;
+
+        //     $endLimit = round($pendingthreadsCount / $limit) ?: 1;
+
+        //     for ($i = 1; $i <= $endLimit; $i++) {
+        //         $threads = \XF::finder('XF:Thread')->where('points_collected', true)->limitByPage($i, $limit)->fetch();
+
+        //         var_dump($i, "ksdjfjkeldfsjewirsdkf;lkseopwrksdl;fkpoeskr");
+
+        //         echo "<pre>";
+        //         foreach ($threads as $key => $thread) {
+        //             var_dump($key);
+        //         }
+        //     }
+        // }
+
+        // $excludeForumIds = \XF::options()->fs_thread_scoring_system_exc_forms;
+
+        // // if (count($excludeForumIds)) {
+        // $pendingthreadsCount = \XF::finder('XF:Thread')->where('points_collected', true)->where('node_id', '!=', $excludeForumIds)->total();
+        // // } else {
+        // //     $pendingthreadsCount = \XF::finder('XF:Thread')->where('points_collected', true)->total();
+        // // }
+
+
+        // echo "<pre>";
+        // var_dump($endLimit, $pendingthreadsCount);
+        // exit;
+
+
         // $app = \XF::app();
         // $jobID = "notable_member_total_points" . time();
 

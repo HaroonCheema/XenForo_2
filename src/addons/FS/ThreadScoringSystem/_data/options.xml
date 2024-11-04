@@ -69,6 +69,12 @@ units={{ phrase('points') }}</edit_format_params>
 units={{ phrase('points') }}</edit_format_params>
     <relation group_id="fs_thread_scoring_system" display_order="5"/>
   </option>
+  <option option_id="fs_total_users_minimum_points" edit_format="spinbox" data_type="positive_integer">
+    <default_value>5</default_value>
+    <edit_format_params>min=1
+units={{ phrase('points') }}</edit_format_params>
+    <relation group_id="fs_thread_scoring_system" display_order="6"/>
+  </option>
   <option option_id="fs_total_words_points" edit_format="spinbox" data_type="positive_integer">
     <default_value>10</default_value>
     <edit_format_params>min=1

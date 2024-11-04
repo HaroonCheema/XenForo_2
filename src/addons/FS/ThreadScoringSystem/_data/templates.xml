@@ -155,42 +155,38 @@
 	</xf:datarow>
 
 </xf:macro>]]></template>
-  <template type="public" title="fs_thread_scoring_system_notable_member" version_id="1000900" version_string="1.0.9 Alpha"><![CDATA[<xf:if is="{{ $xf.visitor.hasPermission('fs_thread_scoring_system', 'can_view') }}">
+  <template type="public" title="fs_thread_scoring_system_notable_member" version_id="1010200" version_string="1.1.2 Alpha"><![CDATA[<xf:if is="{{ $xf.visitor.hasPermission('fs_thread_scoring_system', 'can_view') }}">
 
 	<xf:if is="count($data)">
 
 		<xf:if contentcheck="true">
 			<li class="memberOverviewBlock">
 				<h3 class="block-textHeader">
-					<a href="{{ link('members') }}"
+					<a href="{{ link('members/all-users-points') }}"
 					   class="memberOverViewBlock-title">{{ phrase('fs_thread_scores') }}</a>
 				</h3>
 				<ol class="memberOverviewBlock-list">
 					<xf:contentcheck>
-						<xf:set var="$isBelow" value="0" />
 
 						<xf:foreach loop="$data" value="$value" key="$key" i="$i">
-							<xf:if is="$isBelow < $xf.options.fs_thread_scoring_system_notable_perpage && $value.User">
-								<li>
-									<div class="contentRow contentRow--alignMiddle">
-										<div class="contentRow-figure">
-											<xf:avatar user="$value.User" size="xs" />
-										</div>
-										<div class="contentRow-main">
-											<xf:if is="{$value.total_score}">
-												<div class="contentRow-extra contentRow-extra--large" data-xf-init="tooltip" title="{{$value.threads_score ? phrase('fs_thread_scoring_system_thread') . ' ' . number($value.threads_score, $xf.options.fs_thread_scoring_system_decimals) . ' (' . phrase('points') . ')' : ' '}}
-																																	{{$value.reply_score ? phrase('fs_thread_scoring_system_reply') . ' ' . number($value.reply_score, $xf.options.fs_thread_scoring_system_decimals) . ' (' . phrase('points') . ')' : ' '}}
-																																	{{$value.worlds_score ? phrase('fs_thread_scoring_system_words') . ' ' . number($value.worlds_score, $xf.options.fs_thread_scoring_system_decimals) . ' (' . phrase('points') . ')' : ' '}}
-																																	{{$value.reactions_score ? phrase('fs_thread_scoring_system_reactions') . ' ' . number($value.reactions_score, $xf.options.fs_thread_scoring_system_decimals) . ' (' . phrase('points') . ')' : ' '}}
-																																	{{$value.solutions_score ? phrase('fs_thread_scoring_system_solution') . ' ' . number($value.solutions_score, $xf.options.fs_thread_scoring_system_decimals) . ' (' . phrase('points') . ')' : ' '}}">{{number($value.total_score, $xf.options.fs_thread_scoring_system_decimals)}}</div>
-											</xf:if>
-											<h3 class="contentRow-title"><xf:username user="$value.User" rich="true" /></h3>
-										</div>
+							<li>
+								<div class="contentRow contentRow--alignMiddle">
+									<div class="contentRow-figure">
+										<xf:avatar user="$value.User" size="xs" />
 									</div>
-								</li>
-								<xf:set var="$isBelow" value="{{$isBelow + 1}}" />
+									<div class="contentRow-main">
+										<xf:if is="{$value.total_score}">
+											<div class="contentRow-extra contentRow-extra--large" data-xf-init="tooltip" title="{{$value.threads_score ? phrase('fs_thread_scoring_system_thread') . ' ' . number($value.threads_score, $xf.options.fs_thread_scoring_system_decimals) . ' (' . phrase('points') . ')' : ' '}}
+																																{{$value.reply_score ? phrase('fs_thread_scoring_system_reply') . ' ' . number($value.reply_score, $xf.options.fs_thread_scoring_system_decimals) . ' (' . phrase('points') . ')' : ' '}}
+																																{{$value.worlds_score ? phrase('fs_thread_scoring_system_words') . ' ' . number($value.worlds_score, $xf.options.fs_thread_scoring_system_decimals) . ' (' . phrase('points') . ')' : ' '}}
+																																{{$value.reactions_score ? phrase('fs_thread_scoring_system_reactions') . ' ' . number($value.reactions_score, $xf.options.fs_thread_scoring_system_decimals) . ' (' . phrase('points') . ')' : ' '}}
+																																{{$value.solutions_score ? phrase('fs_thread_scoring_system_solution') . ' ' . number($value.solutions_score, $xf.options.fs_thread_scoring_system_decimals) . ' (' . phrase('points') . ')' : ' '}}">{{number($value.total_score, $xf.options.fs_thread_scoring_system_decimals)}}</div>
+										</xf:if>
+										<h3 class="contentRow-title"><xf:username user="$value.User" rich="true" /></h3>
+									</div>
+								</div>
+							</li>
 
-							</xf:if>
 						</xf:foreach>
 					</xf:contentcheck>
 				</ol>
@@ -202,9 +198,9 @@
 	</xf:if>
 
 </xf:if>]]></template>
-  <template type="public" title="fs_thread_scoring_system_side_widget" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[<xf:sidebar key="conversationInfo">
+  <template type="public" title="fs_thread_scoring_system_side_widget" version_id="1010200" version_string="1.1.2 Alpha"><![CDATA[<xf:sidebar key="conversationInfo">
 
-	<xf:if is="{{ $xf.visitor.hasPermission('fs_thread_scoring_system', 'can_view') }}">
+	<xf:if is="{{ $xf.visitor.hasPermission('fs_thread_scoring_system', 'can_view') }} && !in_array($thread.Forum.node_id, $xf.options.fs_thread_scoring_system_exc_forms)">
 		<xf:set var="$data" value="{{ $xf.options.fs_thread_scoring_list_format == 'percentage' ? $thread->getPercentageSums() : $thread->getPointsSums() }}" />
 
 		<xf:if is="count($data.records)">
@@ -256,7 +252,7 @@
 	</xf:if>
 
 </xf:sidebar>]]></template>
-  <template type="public" title="widget_fs_thread_scoring_monthly_score" version_id="1010100" version_string="1.1.1 Alpha"><![CDATA[<xf:if is="{{ $xf.visitor.hasPermission('fs_thread_scoring_system', 'can_view') }}">
+  <template type="public" title="widget_fs_thread_scoring_monthly_score" version_id="1010200" version_string="1.1.2 Alpha"><![CDATA[<xf:if is="{{ $xf.visitor.hasPermission('fs_thread_scoring_system', 'can_view') }}">
 
 	<xf:if is="count($data)">
 
@@ -272,30 +268,25 @@
 							   class="memberOverViewBlock-title">{{ phrase('fs_thread_scores_custom') }}</a>
 						</h3>
 						<xf:contentcheck>
-							<xf:set var="$isBelow" value="0" />
 
 							<xf:foreach loop="$data" value="$value" key="$key" i="$i">
-								<xf:if is="$isBelow < $xf.options.fs_thread_scoring_system_notable_perpage && $value.User">
-									<li style="margin: 5px 0px;">
-										<div class="contentRow contentRow--alignMiddle">
-											<div class="contentRow-figure">
-												<xf:avatar user="$value.User" size="xs" />
-											</div>
-											<div class="contentRow-main">
-												<xf:if is="{$value.total_score}">
-													<div class="contentRow-extra contentRow-extra--large" data-xf-init="tooltip" title="{{$value.threads_score ? phrase('fs_thread_scoring_system_thread') . ' ' . number($value.threads_score, $xf.options.fs_thread_scoring_system_decimals) . ' (' . phrase('points') . ')' : ' '}}
-																																		{{$value.reply_score ? phrase('fs_thread_scoring_system_reply') . ' ' . number($value.reply_score, $xf.options.fs_thread_scoring_system_decimals) . ' (' . phrase('points') . ')' : ' '}}
-																																		{{$value.worlds_score ? phrase('fs_thread_scoring_system_words') . ' ' . number($value.worlds_score, $xf.options.fs_thread_scoring_system_decimals) . ' (' . phrase('points') . ')' : ' '}}
-																																		{{$value.reactions_score ? phrase('fs_thread_scoring_system_reactions') . ' ' . number($value.reactions_score, $xf.options.fs_thread_scoring_system_decimals) . ' (' . phrase('points') . ')' : ' '}}
-																																		{{$value.solutions_score ? phrase('fs_thread_scoring_system_solution') . ' ' . number($value.solutions_score, $xf.options.fs_thread_scoring_system_decimals) . ' (' . phrase('points') . ')' : ' '}}">{{number($value.total_score, $xf.options.fs_thread_scoring_system_decimals)}}</div>
-												</xf:if>
-												<h3 class="contentRow-title"><xf:username user="$value.User" rich="true" /></h3>
-											</div>
+								<li style="margin: 5px 0px;">
+									<div class="contentRow contentRow--alignMiddle">
+										<div class="contentRow-figure">
+											<xf:avatar user="$value.User" size="xs" />
 										</div>
-									</li>
-									<xf:set var="$isBelow" value="{{$isBelow + 1}}" />
-
-								</xf:if>
+										<div class="contentRow-main">
+											<xf:if is="{$value.total_score}">
+												<div class="contentRow-extra contentRow-extra--large" data-xf-init="tooltip" title="{{$value.threads_score ? phrase('fs_thread_scoring_system_thread') . ' ' . number($value.threads_score, $xf.options.fs_thread_scoring_system_decimals) . ' (' . phrase('points') . ')' : ' '}}
+																																	{{$value.reply_score ? phrase('fs_thread_scoring_system_reply') . ' ' . number($value.reply_score, $xf.options.fs_thread_scoring_system_decimals) . ' (' . phrase('points') . ')' : ' '}}
+																																	{{$value.worlds_score ? phrase('fs_thread_scoring_system_words') . ' ' . number($value.worlds_score, $xf.options.fs_thread_scoring_system_decimals) . ' (' . phrase('points') . ')' : ' '}}
+																																	{{$value.reactions_score ? phrase('fs_thread_scoring_system_reactions') . ' ' . number($value.reactions_score, $xf.options.fs_thread_scoring_system_decimals) . ' (' . phrase('points') . ')' : ' '}}
+																																	{{$value.solutions_score ? phrase('fs_thread_scoring_system_solution') . ' ' . number($value.solutions_score, $xf.options.fs_thread_scoring_system_decimals) . ' (' . phrase('points') . ')' : ' '}}">{{number($value.total_score, $xf.options.fs_thread_scoring_system_decimals)}}</div>
+											</xf:if>
+											<h3 class="contentRow-title"><xf:username user="$value.User" rich="true" /></h3>
+										</div>
+									</div>
+								</li>
 							</xf:foreach>
 						</xf:contentcheck>
 						<div class="memberOverviewBlock-seeMore">
@@ -308,16 +299,4 @@
 	</xf:if>
 
 </xf:if>]]></template>
-  <template type="public" title="xfmg_unset_image_confirm" version_id="1010100" version_string="1.1.1 Alpha"><![CDATA[<xf:title>{{ phrase('fs_xfmg_confirm_image') }}</xf:title>
-
-<xf:breadcrumb source="$mediaItem.getBreadcrumbs()" />
-
-<xf:form action="{{ link('media/unset-image', $mediaItem) }}" class="block" ajax="true" method="post">
-	<div class="block-container">
-		<div class="formInfoRow formInfoRow--confirm">
-			{{ phrase('fs_xfmg_you_sure_unset') }}
-		</div>
-		<xf:submitrow icon="save" />
-	</div>
-</xf:form>]]></template>
 </templates>

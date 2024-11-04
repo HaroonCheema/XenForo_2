@@ -33,12 +33,15 @@ class ExcludeForumsThreadsDelete extends AbstractJob
 
                         $thread = $value->Thread;
 
-                        $thread->bulkSet([
-                            'last_cron_run' => 0,
-                            'points_collected' => false,
-                        ]);
+                        if ($thread) {
+                            $thread->bulkSet([
+                                'last_cron_run' => 0,
+                                'points_collected' => false,
+                            ]);
 
-                        $thread->save();
+                            $thread->save();
+                        }
+
 
                         $value->delete();
                     }
