@@ -134,6 +134,8 @@ class ReplyPoints extends \XF\Service\AbstractService
                 $value->delete();
             }
         }
+
+        return true;
     }
 
     protected function postReplyWordsPointsAddEdits(\XF\Entity\Thread $thread, $usersWordCounts, $totalWords, $userIds)
@@ -174,6 +176,8 @@ class ReplyPoints extends \XF\Service\AbstractService
                 $value->delete();
             }
         }
+
+        return true;
     }
 
     protected function postReplyReactionsPointsAddEdits(\XF\Entity\Thread $thread, $usersReactionCounts, $totalReactions, $userIds)
@@ -214,6 +218,8 @@ class ReplyPoints extends \XF\Service\AbstractService
                 $value->delete();
             }
         }
+
+        return true;
     }
 
     public function getAllTypePointsScores($records)

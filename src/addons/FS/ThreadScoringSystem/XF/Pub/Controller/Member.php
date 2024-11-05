@@ -51,6 +51,204 @@ class Member extends XFCP_Member
         return $this->view('FS\ThreadScoringSystem:Member\AllUsersPoints', 'fs_thread_scoring_all_score_notable', $viewParams);
     }
 
+    public function actionDirectRunJoblksadjoiwesdjf()
+    {
+        $db = \XF::db();
+
+        $excludeForumIds = \XF::options()->fs_thread_scoring_system_exc_forms;
+
+        $totalThreads = \XF::finder('XF:Thread')->total();
+        $totalThreadsPendings = \XF::finder('XF:Thread')->where('points_collected', false)->total();
+
+        $totalRecordInDb = \XF::finder('FS\ThreadScoringSystem:ScoringSystem')->total();
+
+        $totalPosts = \XF::finder('XF:Post')->total();
+
+        $threadsCount = $db->fetchAll('
+            SELECT COUNT(*) AS total_count
+            FROM xf_thread
+            WHERE last_cron_run = 0 OR last_thread_update > last_cron_run          
+            ');
+
+        $pendingthreadsCount = $threadsCount['0']['total_count'];
+
+        $threadIds = $db->fetchAllColumn('
+                SELECT * FROM xf_thread 
+                WHERE last_cron_run = ? 
+                OR last_thread_update > last_cron_run 
+                ', [
+            0,
+        ]);
+
+        $threads = \XF::finder('XF:Thread')->where('thread_id', $threadIds)->where('node_id', '!=', $excludeForumIds)->total();
+
+
+        $allDetails = "\n\nTotal Threads : " . $totalThreads . "\n\nPending Threads For Score (Threads) : " . $totalThreadsPendings . "\n\nExc Threads : " . $threads . "\n\n Total Posts : " . $totalPosts . "\n\n Pending Threads For Scoring (Reply, Words, Reactions) : " . $pendingthreadsCount . "\n\n Total Recods In My Tabel : " . $totalRecordInDb . "\n\n";
+
+        echo "<pre>";
+        var_dump($allDetails);
+        exit;
+    }
+
+    // public function actionDirectRunJob()
+    // {
+
+    //     $totalReplyInMy = $this->finder('FS\ThreadScoringSystem:ScoringSystem')->where('points_type', 'reply')->total();
+
+    //     $options = \XF::options();
+
+    //     $excludeForumIds = \XF::options()->fs_thread_scoring_system_exc_forms;
+
+    //     $totalPostsCount = \XF::finder('XF:Post')->total();
+
+    //     // $conditions = [
+    //     //     ['last_cron_run', 0],
+    //     //     ['last_thread_update', '>', 'last_cron_run'],
+    //     // ];
+
+    //     // $pendingthreadsCount = \XF::finder('XF:Thread')->where('node_id', '!=', $excludeForumIds)->whereOr($conditions)->total();
+
+    //     $db = \XF::db();
+
+    //     $threadsCount = $db->fetchAll('
+    //     SELECT COUNT(*) AS total_count
+    //     FROM xf_thread
+    //     WHERE last_cron_run = 0 OR last_thread_update > last_cron_run          
+    //     ');
+
+    //     $pendingthreadsCount = $threadsCount['0']['total_count'];
+
+    //     echo "<pre>";
+    //     var_dump($totalReplyInMy, $totalPostsCount, $pendingthreadsCount);
+    //     exit;
+
+
+    //     if ($pendingthreadsCount) {
+
+    //         $limit = 5;
+
+    //         $threads = \XF::finder('XF:Thread')->where('node_id', '!=', $excludeForumIds)->whereOr($conditions)->limitByPage(1, $limit)->fetch();
+
+    //         if (count($threads)) {
+    //             foreach ($threads as $key => $thread) {
+
+    //                 $postReply = \XF::service('FS\ThreadScoringSystem:ReplyPoints');
+    //                 $postReply->addEditReplyPoints($thread);
+
+    //                 $currentTime = \XF::$time;
+
+    //                 $thread->bulkSet([
+    //                     'last_thread_update' => $currentTime,
+    //                     'last_cron_run' => $currentTime,
+    //                 ]);
+
+    //                 $thread->save();
+    //             }
+    //         }
+    //     }
+
+    //     echo "<pre>";
+    //     var_dump($totalReplyInMy, $totalPostsCount, $pendingthreadsCount);
+    //     exit;
+
+    //     $limit = 100;
+
+    //     $excludeForumIds = \XF::options()->fs_thread_scoring_system_exc_forms;
+
+    //     $db = \XF::db();
+
+    //     $threadsCount = $db->fetchAll('
+    //     SELECT COUNT(*) AS total_count
+    //     FROM xf_thread
+    //     WHERE last_cron_run = 0 OR last_thread_update > last_cron_run          
+    //     ');
+
+
+    //     $threadIds = $db->fetchAllColumn('
+    //             SELECT * FROM xf_thread 
+    //             WHERE last_cron_run = ? 
+    //             OR last_thread_update > last_cron_run 
+    //             LIMIT ?          
+    //             ', [
+    //         0,
+    //         $limit,
+    //     ]);
+
+    //     $threads = \XF::finder('XF:Thread')->where('thread_id', $threadIds)->fetch();
+
+
+    //     echo "<pre>";
+    //     var_dump($threadsCount['0']['total_count'], $threadIds, $threads);
+    //     exit;
+
+    //     $excludeForumIds = \XF::options()->fs_thread_scoring_system_exc_forms;
+
+    //     $pendingThreadsCount = \XF::finder('XF:Thread')
+    //         ->where('node_id', '!=', $excludeForumIds)
+    //         ->whereOr([
+    //             ['last_cron_run', '=', 0],
+    //             ['last_thread_update', '>', 'last_cron_run']
+    //         ])
+    //         ->total();
+
+    //     $threads = \XF::finder('XF:Thread')
+    //         ->where('node_id', '!=', $excludeForumIds)
+    //         ->whereOr([
+    //             ['last_cron_run', '=', 0],
+    //             ['last_thread_update', '>', 'last_cron_run']
+    //         ])
+    //         ->limitByPage(1, 5)
+    //         ->fetch();
+
+    //     echo "<pre>";
+    //     var_dump($pendingThreadsCount, $threads);
+    //     exit;
+
+
+    //     $totalReplyInMy = $this->finder('FS\ThreadScoringSystem:ScoringSystem')->where('points_type', 'reply')->total();
+
+    //     $options = \XF::options();
+
+    //     $excludeForumIds = \XF::options()->fs_thread_scoring_system_exc_forms;
+
+    //     $totalPostsCount = \XF::finder('XF:Post')->total();
+
+    //     $conditions = [
+    //         ['last_cron_run', 0],
+    //         ['last_thread_update', '>', 'last_cron_run'],
+    //     ];
+
+    //     $pendingthreadsCount = \XF::finder('XF:Thread')->where('node_id', '!=', $excludeForumIds)->whereOr($conditions)->total();
+
+    //     if ($pendingthreadsCount) {
+
+    //         $limit = 5;
+
+    //         $threads = \XF::finder('XF:Thread')->where('node_id', '!=', $excludeForumIds)->whereOr($conditions)->limitByPage(1, $limit)->fetch();
+
+    //         if (count($threads)) {
+    //             foreach ($threads as $key => $thread) {
+
+    //                 $postReply = \XF::service('FS\ThreadScoringSystem:ReplyPoints');
+    //                 $postReply->addEditReplyPoints($thread);
+
+    //                 $currentTime = \XF::$time;
+
+    //                 $thread->bulkSet([
+    //                     'last_thread_update' => $currentTime,
+    //                     'last_cron_run' => $currentTime,
+    //                 ]);
+
+    //                 $thread->save();
+    //             }
+    //         }
+    //     }
+
+    //     echo "<pre>";
+    //     var_dump($totalReplyInMy, $totalPostsCount, $pendingthreadsCount);
+    //     exit;
+    // }
+
     public function actionCustomUsersPoints()
     {
 

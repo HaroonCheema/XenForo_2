@@ -29,8 +29,7 @@ class ThreadStarter extends AbstractJob
             $endLimit = round($pendingthreadsCount / $limit) ?: 1;
 
             for ($i = 0; $i < $endLimit; $i++) {
-                $startFrom = $i + 1;
-                $threads = \XF::finder('XF:Thread')->where('points_collected', false)->where('node_id', '!=', $excludeForumIds)->limitByPage($startFrom, $limit)->fetch();
+                $threads = \XF::finder('XF:Thread')->where('points_collected', false)->where('node_id', '!=', $excludeForumIds)->limitByPage(1, $limit)->fetch();
 
                 if (count($threads)) {
                     foreach ($threads as $key => $thread) {

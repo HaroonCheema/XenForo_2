@@ -19,23 +19,43 @@ class ReplyPoints extends AbstractJob
 
         $excludeForumIds = \XF::options()->fs_thread_scoring_system_exc_forms;
 
-        $conditions = [
-            ['last_cron_run', 0],
-            ['last_thread_update', '>', 'last_cron_run'],
+        // $conditions = [
+        //     ['last_cron_run', 0],
+        //     ['last_thread_update', '>', 'last_cron_run'],
+        // ];
 
-        ];
+        // $pendingthreadsCount = \XF::finder('XF:Thread')->where('node_id', '!=', $excludeForumIds)->whereOr($conditions)->total();
 
-        $pendingthreadsCount = \XF::finder('XF:Thread')->where('node_id', '!=', $excludeForumIds)->whereOr($conditions)->total();
+        $limit = 500;
+
+        $db = \XF::db();
+
+        $threadsCount = $db->fetchAll('
+        SELECT COUNT(*) AS total_count
+        FROM xf_thread
+        WHERE last_cron_run = 0 OR last_thread_update > last_cron_run          
+        ');
+
+        $pendingthreadsCount = $threadsCount['0']['total_count'];
 
         if ($pendingthreadsCount) {
-
-            $limit = 500;
 
             $endLimit = round($pendingthreadsCount / $limit) ?: 1;
 
             for ($i = 0; $i < $endLimit; $i++) {
-                $startFrom = $i + 1;
-                $threads = \XF::finder('XF:Thread')->where('node_id', '!=', $excludeForumIds)->whereOr($conditions)->limitByPage($startFrom, $limit)->fetch();
+
+                $threadIds = $db->fetchAllColumn('
+                SELECT * FROM xf_thread 
+                WHERE last_cron_run = ? 
+                OR last_thread_update > last_cron_run 
+                LIMIT ?          
+                ', [
+                    0,
+                    $limit,
+                ]);
+
+                // $threads = \XF::finder('XF:Thread')->where('thread_id', $threadIds)->where('node_id', '!=', $excludeForumIds)->fetch();
+                $threads = \XF::finder('XF:Thread')->where('thread_id', $threadIds)->where('node_id', '!=', $excludeForumIds)->fetch();
 
                 if (count($threads)) {
                     foreach ($threads as $key => $thread) {
@@ -52,8 +72,6 @@ class ReplyPoints extends AbstractJob
 
                         $thread->save();
                     }
-                } else {
-                    return $this->complete();
                 }
             }
         }
