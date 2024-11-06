@@ -13,47 +13,46 @@ use XF\Mvc\View;
 
 class ThreadStarter extends AbstractJob
 {
+    protected $defaultData = [
+        'limit' => 1000,
+    ];
 
     public function run($maxRunTime)
     {
+        $startTime = microtime(true);
+
         $options = \XF::options();
 
-        $excludeForumIds = \XF::options()->fs_thread_scoring_system_exc_forms;
+        $excludeForumIds = $options->fs_thread_scoring_system_exc_forms;
 
-        $pendingthreadsCount = \XF::finder('XF:Thread')->where('points_collected', false)->where('node_id', '!=', $excludeForumIds)->total();
+        $threads = \XF::finder('XF:Thread')->where('points_collected', false)->where('node_id', '!=', $excludeForumIds)->limitByPage(1, $this->data['limit'])->fetch();
 
-        if ($pendingthreadsCount) {
+        if (!$threads->count()) {
 
-            $limit = 1000;
+            return $this->complete();
+        }
 
-            $endLimit = round($pendingthreadsCount / $limit) ?: 1;
+        foreach ($threads as $key => $thread) {
 
-            for ($i = 0; $i < $endLimit; $i++) {
-                $threads = \XF::finder('XF:Thread')->where('points_collected', false)->where('node_id', '!=', $excludeForumIds)->limitByPage(1, $limit)->fetch();
+            $postThreadPoint = \XF::em()->create('FS\ThreadScoringSystem:ScoringSystem');
 
-                if (count($threads)) {
-                    foreach ($threads as $key => $thread) {
+            $postThreadPoint->thread_id = $thread->thread_id;
+            $postThreadPoint->user_id = $thread->user_id;
+            $postThreadPoint->points_type = 'thread';
+            $postThreadPoint->points = intval($options->fs_thread_starter_points);
+            $postThreadPoint->percentage = 100;
 
-                        $postThreadPoint = \XF::em()->create('FS\ThreadScoringSystem:ScoringSystem');
-
-                        $postThreadPoint->thread_id = $thread->thread_id;
-                        $postThreadPoint->user_id = $thread->user_id;
-                        $postThreadPoint->points_type = 'thread';
-                        $postThreadPoint->points = intval($options->fs_thread_starter_points);
-                        $postThreadPoint->percentage = 100;
-
-                        $postThreadPoint->save();
+            $postThreadPoint->save();
 
 
-                        $thread->fastUpdate('points_collected', true);
-                    }
-                } else {
-                    return $this->complete();
-                }
+            $thread->fastUpdate('points_collected', true);
+
+            if (microtime(true) - $startTime >= $maxRunTime) {
+                break;
             }
         }
 
-        return $this->complete();
+        return $this->resume();
     }
 
     public function writelevel() {}

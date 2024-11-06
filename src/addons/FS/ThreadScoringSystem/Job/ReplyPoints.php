@@ -13,70 +13,57 @@ use XF\Mvc\View;
 
 class ReplyPoints extends AbstractJob
 {
+    protected $defaultData = [
+        'limit' => 1000,
+    ];
 
     public function run($maxRunTime)
     {
+        $startTime = microtime(true);
 
         $excludeForumIds = \XF::options()->fs_thread_scoring_system_exc_forms;
 
-        // $conditions = [
-        //     ['last_cron_run', 0],
-        //     ['last_thread_update', '>', 'last_cron_run'],
-        // ];
-
-        // $pendingthreadsCount = \XF::finder('XF:Thread')->where('node_id', '!=', $excludeForumIds)->whereOr($conditions)->total();
-
-        $limit = 500;
-
         $db = \XF::db();
 
-        $threadsCount = $db->fetchAll('
-        SELECT COUNT(*) AS total_count
-        FROM xf_thread
-        WHERE last_cron_run = 0 OR last_thread_update > last_cron_run          
-        ');
-
-        $pendingthreadsCount = $threadsCount['0']['total_count'];
-
-        if ($pendingthreadsCount) {
-
-            $endLimit = round($pendingthreadsCount / $limit) ?: 1;
-
-            for ($i = 0; $i < $endLimit; $i++) {
-
-                $threadIds = $db->fetchAllColumn('
+        $threadIds = $db->fetchAllColumn('
                 SELECT * FROM xf_thread 
                 WHERE last_cron_run = ? 
                 OR last_thread_update > last_cron_run 
                 LIMIT ?          
                 ', [
-                    0,
-                    $limit,
+            0,
+            $this->data['limit'],
+        ]);
+
+        $threads = \XF::finder('XF:Thread')->where('thread_id', $threadIds)->where('node_id', '!=', $excludeForumIds)->fetch();
+
+        if (!$threads->count()) {
+
+            return $this->complete();
+        }
+
+        if (count($threads)) {
+            foreach ($threads as $key => $thread) {
+
+                $postReply = \XF::service('FS\ThreadScoringSystem:ReplyPoints');
+                $postReply->addEditReplyPoints($thread);
+
+                $currentTime = \XF::$time;
+
+                $thread->bulkSet([
+                    'last_thread_update' => $currentTime,
+                    'last_cron_run' => $currentTime,
                 ]);
 
-                // $threads = \XF::finder('XF:Thread')->where('thread_id', $threadIds)->where('node_id', '!=', $excludeForumIds)->fetch();
-                $threads = \XF::finder('XF:Thread')->where('thread_id', $threadIds)->where('node_id', '!=', $excludeForumIds)->fetch();
+                $thread->save();
 
-                if (count($threads)) {
-                    foreach ($threads as $key => $thread) {
-
-                        $postReply = \XF::service('FS\ThreadScoringSystem:ReplyPoints');
-                        $postReply->addEditReplyPoints($thread);
-
-                        $currentTime = \XF::$time;
-
-                        $thread->bulkSet([
-                            'last_thread_update' => $currentTime,
-                            'last_cron_run' => $currentTime,
-                        ]);
-
-                        $thread->save();
-                    }
+                if (microtime(true) - $startTime >= $maxRunTime) {
+                    break;
                 }
             }
         }
 
-        return $this->complete();
+        return $this->resume();
     }
 
     public function writelevel() {}
