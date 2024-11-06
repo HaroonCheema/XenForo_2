@@ -34,6 +34,7 @@ class MySql
             $table->addColumn('reactions_score', 'decimal', '65,8')->unsigned(false)->setDefault(0);
             $table->addColumn('solutions_score', 'decimal', '65,8')->unsigned(false)->setDefault(0);
             $table->addColumn('total_score', 'decimal', '65,8')->unsigned(false)->setDefault(0);
+            $table->addColumn('is_counted', 'int')->setDefault(0);
 
             $table->addPrimaryKey('id');
         };

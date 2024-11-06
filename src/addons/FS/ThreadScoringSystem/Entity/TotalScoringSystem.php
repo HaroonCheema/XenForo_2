@@ -23,6 +23,7 @@ class TotalScoringSystem extends Entity
             'reactions_score' => ['type' => self::FLOAT, 'default' => 0],
             'solutions_score' => ['type' => self::FLOAT, 'default' => 0],
             'total_score' => ['type' => self::FLOAT, 'default' => 0],
+            'is_counted' => ['type' => self::UINT, 'default' => 0],
         ];
 
         $structure->relations = [

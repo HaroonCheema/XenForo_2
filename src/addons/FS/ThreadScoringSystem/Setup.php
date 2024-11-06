@@ -42,20 +42,11 @@ class Setup extends AbstractSetup
 
 	// ############################### UPGRADE ###########################
 
-	// public function upgrade1010200Step1(array $stepParams)
+	// public function upgrade1010500Step1(array $stepParams)
 	// {
+	// 	$this->alterTable('fs_thread_total_scoring_system', function (\XF\Db\Schema\Alter $table) {
 
-	// 	$this->schemaManager()->createTable('fs_thread_total_scoring_custom', function (\XF\Db\Schema\Create $table) {
-	// 		$table->addColumn('id', 'int')->autoIncrement();
-	// 		$table->addColumn('user_id', 'int');
-	// 		$table->addColumn('threads_score', 'decimal', '65,8')->unsigned(false)->setDefault(0);
-	// 		$table->addColumn('reply_score', 'decimal', '65,8')->unsigned(false)->setDefault(0);
-	// 		$table->addColumn('worlds_score', 'decimal', '65,8')->unsigned(false)->setDefault(0);
-	// 		$table->addColumn('reactions_score', 'decimal', '65,8')->unsigned(false)->setDefault(0);
-	// 		$table->addColumn('solutions_score', 'decimal', '65,8')->unsigned(false)->setDefault(0);
-	// 		$table->addColumn('total_score', 'decimal', '65,8')->unsigned(false)->setDefault(0);
-
-	// 		$table->addPrimaryKey('id');
+	// 		$table->addColumn('is_counted', 'int')->setDefault(0);
 	// 	});
 	// }
 

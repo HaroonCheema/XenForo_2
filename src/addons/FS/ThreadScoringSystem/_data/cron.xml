@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <cron>
   <entry entry_id="fs_monthly_total_score" cron_class="FS\ThreadScoringSystem\Cron\ScoringSystem" cron_method="monthlyTotalUsersPoints" active="1"><![CDATA[{"day_type":"dom","dom":[-1],"hours":[-1],"minutes":[0]}]]></entry>
-  <entry entry_id="fs_notable_member_points" cron_class="FS\ThreadScoringSystem\Cron\ScoringSystem" cron_method="notableMemberTotalPoints" active="1"><![CDATA[{"day_type":"dom","dom":[-1],"hours":[-1],"minutes":[0]}]]></entry>
+  <entry entry_id="fs_notable_member_points" cron_class="FS\ThreadScoringSystem\Cron\ScoringSystem" cron_method="notableMemberTotalPoints" active="1"><![CDATA[{"day_type":"dom","dom":[-1],"hours":[0,4,8,12,16,20],"minutes":[0]}]]></entry>
   <entry entry_id="fs_post_reply_points" cron_class="FS\ThreadScoringSystem\Cron\ScoringSystem" cron_method="postReplyPoints" active="1"><![CDATA[{"day_type":"dom","dom":[-1],"hours":[-1],"minutes":[0]}]]></entry>
   <entry entry_id="fs_thread_solution_point" cron_class="FS\ThreadScoringSystem\Cron\ScoringSystem" cron_method="threadSolutionPoints" active="1"><![CDATA[{"day_type":"dom","dom":[-1],"hours":[-1],"minutes":[0]}]]></entry>
 </cron>
