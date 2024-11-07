@@ -3,13 +3,6 @@
 namespace FS\ThreadScoringSystem\Job;
 
 use XF\Job\AbstractJob;
-use XF\Mvc\Entity\Finder;
-use XF\Mvc\ParameterBag;
-use XF\Http\Response;
-use RecursiveIteratorIterator;
-use RecursiveDirectoryIterator;
-use XF\Mvc\FormAction;
-use XF\Mvc\View;
 
 class MonthWiseScore extends AbstractJob
 {

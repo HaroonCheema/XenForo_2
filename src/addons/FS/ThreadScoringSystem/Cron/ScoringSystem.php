@@ -25,9 +25,9 @@ class ScoringSystem
 
         $app->jobManager()->enqueueUnique($jobID, 'FS\ThreadScoringSystem:SolutionPoints', [], false);
 
-        $jobID = "exclude_forum_threads_delete" . time();
+        // $jobID = "exclude_forum_threads_delete" . time();
 
-        $app->jobManager()->enqueueUnique($jobID, 'FS\ThreadScoringSystem:ExcludeForumsThreadsDelete', [], false);
+        // $app->jobManager()->enqueueUnique($jobID, 'FS\ThreadScoringSystem:ExcludeForumsThreadsDelete', [], false);
     }
 
     public static function notableMemberTotalPoints()

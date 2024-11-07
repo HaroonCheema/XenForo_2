@@ -3,13 +3,6 @@
 namespace FS\ThreadScoringSystem\Job;
 
 use XF\Job\AbstractJob;
-use XF\Mvc\Entity\Finder;
-use XF\Mvc\ParameterBag;
-use XF\Http\Response;
-use RecursiveIteratorIterator;
-use RecursiveDirectoryIterator;
-use XF\Mvc\FormAction;
-use XF\Mvc\View;
 
 class ThreadStarter extends AbstractJob
 {
@@ -23,9 +16,13 @@ class ThreadStarter extends AbstractJob
 
         $options = \XF::options();
 
+        $limit = $this->data['limit'];
+
+        $threadStartPoints = intval($options->fs_thread_starter_points);
+
         $excludeForumIds = $options->fs_thread_scoring_system_exc_forms;
 
-        $threads = \XF::finder('XF:Thread')->where('points_collected', false)->where('node_id', '!=', $excludeForumIds)->limitByPage(1, $this->data['limit'])->fetch();
+        $threads = \XF::finder('XF:Thread')->where('points_collected', false)->where('node_id', '!=', $excludeForumIds)->limitByPage(1, $limit)->fetch();
 
         if (!$threads->count()) {
 
@@ -34,15 +31,22 @@ class ThreadStarter extends AbstractJob
 
         foreach ($threads as $key => $thread) {
 
-            $postThreadPoint = \XF::em()->create('FS\ThreadScoringSystem:ScoringSystem');
+            $threadStarterPoint = \XF::finder('FS\ThreadScoringSystem:ScoringSystem')->where('user_id', $thread->user_id)->where('thread_id', $thread->thread_id)->fetchOne();
 
-            $postThreadPoint->thread_id = $thread->thread_id;
-            $postThreadPoint->user_id = $thread->user_id;
-            $postThreadPoint->points_type = 'thread';
-            $postThreadPoint->points = intval($options->fs_thread_starter_points);
-            $postThreadPoint->percentage = 100;
+            if (!$threadStarterPoint) {
+                $threadStarterPoint = \XF::em()->create('FS\ThreadScoringSystem:ScoringSystem');
+                $threadStarterPoint->total_points = $threadStartPoints;
+                $threadStarterPoint->total_percentage = 100;
+            } else {
+                $threadStarterPoint->total_points += $threadStartPoints;
+                $threadStarterPoint->total_percentage += 100;
+            }
 
-            $postThreadPoint->save();
+            $threadStarterPoint->thread_id = $thread->thread_id;
+            $threadStarterPoint->user_id = $thread->user_id;
+            $threadStarterPoint->thread_points = $threadStartPoints;
+
+            $threadStarterPoint->save();
 
 
             $thread->fastUpdate('points_collected', true);

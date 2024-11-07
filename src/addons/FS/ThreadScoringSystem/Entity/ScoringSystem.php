@@ -18,10 +18,19 @@ class ScoringSystem extends Entity
             'id' => ['type' => self::UINT, 'autoIncrement' => true],
             'thread_id' => ['type' => self::UINT, 'required' => true],
             'user_id' => ['type' => self::UINT, 'required' => true],
-            'points_type' => ['type' => self::STR, 'maxLength' => 20, 'required' => true],
-            'points' => ['type' => self::FLOAT, 'required' => true],
-            'percentage' => ['type' => self::FLOAT, 'required' => true],
+            'thread_points' => ['type' => self::FLOAT, 'default' => 0],
+            'reply_points' => ['type' => self::FLOAT, 'default' => 0],
+            'reply_percentage' => ['type' => self::FLOAT, 'default' => 0],
+            'word_points' => ['type' => self::FLOAT, 'default' => 0],
+            'word_percentage' => ['type' => self::FLOAT, 'default' => 0],
+            'reaction_points' => ['type' => self::FLOAT, 'default' => 0],
+            'reaction_percentage' => ['type' => self::FLOAT, 'default' => 0],
+            'solution_points' => ['type' => self::FLOAT, 'default' => 0],
+            'total_points' => ['type' => self::FLOAT, 'default' => 0],
+            'total_percentage' => ['type' => self::FLOAT, 'default' => 0],
         ];
+
+        // 'coupon_value' => ['type' => self::FLOAT, 'min' => 0, 'default' => 15],
 
         $structure->relations = [
             'User' => [

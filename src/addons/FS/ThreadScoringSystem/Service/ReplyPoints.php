@@ -48,16 +48,16 @@ class ReplyPoints extends \XF\Service\AbstractService
         }
 
         if ($totalPost) {
-            $this->postReplyPointsAddEdits($thread, $usersPostCounts, $totalPost, $userIds);
+            $this->postReplyPointsAddEdits($thread, $usersPostCounts, $totalPost, $userIds, $usersWordCounts, $totalWords, $usersReactionCounts, $totalReactions);
         }
 
-        if ($totalWords) {
-            $this->postReplyWordsPointsAddEdits($thread, $usersWordCounts, $totalWords, $userIds);
-        }
+        // if ($totalWords) {
+        //     $this->postReplyWordsPointsAddEdits($thread, $usersWordCounts, $totalWords, $userIds);
+        // }
 
-        if ($totalReactions) {
-            $this->postReplyReactionsPointsAddEdits($thread, $usersReactionCounts, $totalReactions, $userIds);
-        }
+        // if ($totalReactions) {
+        //     $this->postReplyReactionsPointsAddEdits($thread, $usersReactionCounts, $totalReactions, $userIds);
+        // }
 
         return true;
     }
@@ -96,41 +96,142 @@ class ReplyPoints extends \XF\Service\AbstractService
         return true;
     }
 
-    protected function postReplyPointsAddEdits(\XF\Entity\Thread $thread, $usersPostCounts, $totalPost, $userIds)
+    protected function postReplyPointsAddEdits(\XF\Entity\Thread $thread, $usersPostCounts, $totalPost, $userIds, $usersWordCounts, $totalWords, $usersReactionCounts, $totalReactions)
     {
         $options = \XF::options();
 
-        $totalPoints = intval($options->fs_post_reply_points);
+        $replyTotalPoints = intval($options->fs_post_reply_points);
+        $wordTotalPoints = intval($options->fs_total_words_points);
+        $reactionTotalPoints = intval($options->fs_reply_reaction_points);
+
+        $reactionUserIds = array();
 
         foreach ($usersPostCounts as $key => $value) {
 
-            $userPosts = $value;
+            // $userPosts = $value;
 
-            $percentage = ($userPosts / $totalPost) * 100;
+            // $replyPercentage = ($userPosts / $totalPost) * 100;
 
-            $pointsFromPercentage = ($percentage / 100) * $totalPoints;
+            // $replyPoints = ($replyPercentage / 100) * $replyTotalPoints;
 
-            $userRepyScore = \XF::finder('FS\ThreadScoringSystem:ScoringSystem')->where('user_id', $key)->where('points_type', 'reply')->where('thread_id', $thread->thread_id)->fetchOne();
+            if ($value) {
+                $userPosts = $value;
 
-            if (!$userRepyScore) {
-                $userRepyScore = \XF::em()->create('FS\ThreadScoringSystem:ScoringSystem');
+                $replyPercentage = ($userPosts / $totalPost) * 100;
+
+                $replyPoints = ($replyPercentage / 100) * $replyTotalPoints;
+            } else {
+                $replyPoints = 0;
+                $replyPercentage = 0;
             }
 
-            $userRepyScore->bulkSet([
-                'thread_id' => $thread->thread_id,
-                'user_id' => $key,
-                'points_type' => 'reply',
-                'points' => $pointsFromPercentage,
-                'percentage' => $percentage,
-            ]);
+            if ($totalWords && isset($usersWordCounts[$key])) {
+                $userWords = $usersWordCounts[$key];
 
-            $userRepyScore->save();
+                $wordPercentage = ($userWords / $totalWords) * 100;
+
+                $wordPoints = ($wordPercentage / 100) * $wordTotalPoints;
+            } else {
+                $wordPoints = 0;
+                $wordPercentage = 0;
+            }
+
+            if ($totalReactions && isset($usersReactionCounts[$key])) {
+                $userReaction = $usersReactionCounts[$key];
+
+                $reactionPercentage = ($userReaction / $totalReactions) * 100;
+
+                $reactionPoints = ($reactionPercentage / 100) * $reactionTotalPoints;
+
+                $reactionUserIds[] = $key;
+            } else {
+                $reactionPoints = 0;
+                $reactionPercentage = 0;
+            }
+
+            $totalPoints = $replyPoints + $wordPoints + $reactionPoints;
+            $totalPercentage = $replyPercentage + $wordPercentage + $reactionPercentage;
+
+            // $totalPoints = $replyPoints + $wordPoints;
+            // $totalPercentage = $replyPercentage + $wordPercentage;
+
+            $userExist = \XF::finder('FS\ThreadScoringSystem:ScoringSystem')->where('user_id', $key)->where('thread_id', $thread->thread_id)->fetchOne();
+
+            if (!$userExist) {
+                $userExist = \XF::em()->create('FS\ThreadScoringSystem:ScoringSystem');
+                $userExist->total_points = $totalPoints;
+                $userExist->total_percentage = $totalPercentage;
+            } else {
+                $userExist->total_points += $totalPoints;
+                $userExist->total_percentage += $totalPercentage;
+            }
+
+            $userExist->thread_id = $thread->thread_id;
+            $userExist->user_id = $key;
+            $userExist->reply_points = $replyPoints;
+            $userExist->reply_percentage = $replyPercentage;
+
+            $userExist->word_points = $wordPoints;
+            $userExist->word_percentage = $wordPercentage;
+
+            $userExist->reaction_points = $reactionPoints;
+            $userExist->reaction_percentage = $reactionPercentage;
+
+            // $userExist->bulkSet([
+            //     'thread_id' => $thread->thread_id,
+            //     'user_id' => $key,
+            //     'points' => $pointsFromPercentage,
+            //     'percentage' => $percentage,
+            // ]);
+
+            $userExist->save();
         }
 
-        $otherUsers = \XF::finder('FS\ThreadScoringSystem:ScoringSystem')->where('user_id', '!=', $userIds)->where('points_type', 'reply')->where('thread_id', $thread->thread_id)->fetch();
+        $reactionPendingUserIds = array_diff($userIds, $reactionUserIds);
 
-        if (count($otherUsers)) {
-            foreach ($otherUsers as $value) {
+        if ($totalReactions && count($reactionPendingUserIds)) {
+
+            foreach ($reactionPendingUserIds as $value) {
+
+                if (isset($usersReactionCounts[$value])) {
+                    $userReaction = $usersReactionCounts[$value];
+
+                    $reactionPercentage = ($userReaction / $totalReactions) * 100;
+
+                    $reactionPoints = ($reactionPercentage / 100) * $reactionTotalPoints;
+                } else {
+                    $reactionPoints = 0;
+                    $reactionPercentage = 0;
+                }
+
+                if ($reactionPoints) {
+
+                    $userExist = \XF::finder('FS\ThreadScoringSystem:ScoringSystem')->where('user_id', $value)->where('thread_id', $thread->thread_id)->fetchOne();
+
+                    if (!$userExist) {
+                        $userExist = \XF::em()->create('FS\ThreadScoringSystem:ScoringSystem');
+                        $userExist->total_points = $reactionPoints;
+                        $userExist->total_percentage = $reactionPercentage;
+                    } else {
+                        $userExist->total_points += $reactionPoints;
+                        $userExist->total_percentage += $reactionPercentage;
+                    }
+
+                    $userExist->thread_id = $thread->thread_id;
+                    $userExist->user_id = $value;
+
+                    $userExist->reaction_points = $reactionPoints;
+                    $userExist->reaction_percentage = $reactionPercentage;
+
+                    $userExist->save();
+                }
+            }
+        }
+
+        $prevUsers = \XF::finder('FS\ThreadScoringSystem:ScoringSystem')->where('user_id', '!=', $userIds)->where('thread_id', $thread->thread_id)->fetch();
+
+        if (count($prevUsers)) {
+            foreach ($prevUsers as $value) {
                 $value->delete();
             }
         }
@@ -138,89 +239,89 @@ class ReplyPoints extends \XF\Service\AbstractService
         return true;
     }
 
-    protected function postReplyWordsPointsAddEdits(\XF\Entity\Thread $thread, $usersWordCounts, $totalWords, $userIds)
-    {
-        $options = \XF::options();
+    // protected function postReplyWordsPointsAddEdits(\XF\Entity\Thread $thread, $usersWordCounts, $totalWords, $userIds)
+    // {
+    //     $options = \XF::options();
 
-        $totalPoints = intval($options->fs_total_words_points);
+    //     $totalPoints = intval($options->fs_total_words_points);
 
-        foreach ($usersWordCounts as $key => $value) {
+    //     foreach ($usersWordCounts as $key => $value) {
 
-            $userWords = $value;
+    //         $userWords = $value;
 
-            $percentage = ($userWords / $totalWords) * 100;
+    //         $percentage = ($userWords / $totalWords) * 100;
 
-            $pointsFromPercentage = ($percentage / 100) * $totalPoints;
+    //         $pointsFromPercentage = ($percentage / 100) * $totalPoints;
 
-            $userWordsScore = \XF::finder('FS\ThreadScoringSystem:ScoringSystem')->where('user_id', $key)->where('points_type', 'words')->where('thread_id', $thread->thread_id)->fetchOne();
+    //         $userWordsScore = \XF::finder('FS\ThreadScoringSystem:ScoringSystem')->where('user_id', $key)->where('points_type', 'words')->where('thread_id', $thread->thread_id)->fetchOne();
 
-            if (!$userWordsScore) {
-                $userWordsScore = \XF::em()->create('FS\ThreadScoringSystem:ScoringSystem');
-            }
+    //         if (!$userWordsScore) {
+    //             $userWordsScore = \XF::em()->create('FS\ThreadScoringSystem:ScoringSystem');
+    //         }
 
-            $userWordsScore->bulkSet([
-                'thread_id' => $thread->thread_id,
-                'user_id' => $key,
-                'points_type' => 'words',
-                'points' => $pointsFromPercentage,
-                'percentage' => $percentage,
-            ]);
+    //         $userWordsScore->bulkSet([
+    //             'thread_id' => $thread->thread_id,
+    //             'user_id' => $key,
+    //             'points_type' => 'words',
+    //             'points' => $pointsFromPercentage,
+    //             'percentage' => $percentage,
+    //         ]);
 
-            $userWordsScore->save();
-        }
+    //         $userWordsScore->save();
+    //     }
 
-        $otherUsers = \XF::finder('FS\ThreadScoringSystem:ScoringSystem')->where('user_id', '!=', $userIds)->where('points_type', 'words')->where('thread_id', $thread->thread_id)->fetch();
+    //     $otherUsers = \XF::finder('FS\ThreadScoringSystem:ScoringSystem')->where('user_id', '!=', $userIds)->where('points_type', 'words')->where('thread_id', $thread->thread_id)->fetch();
 
-        if (count($otherUsers)) {
-            foreach ($otherUsers as $value) {
-                $value->delete();
-            }
-        }
+    //     if (count($otherUsers)) {
+    //         foreach ($otherUsers as $value) {
+    //             $value->delete();
+    //         }
+    //     }
 
-        return true;
-    }
+    //     return true;
+    // }
 
-    protected function postReplyReactionsPointsAddEdits(\XF\Entity\Thread $thread, $usersReactionCounts, $totalReactions, $userIds)
-    {
-        $options = \XF::options();
+    // protected function postReplyReactionsPointsAddEdits(\XF\Entity\Thread $thread, $usersReactionCounts, $totalReactions, $userIds)
+    // {
+    //     $options = \XF::options();
 
-        $totalPoints = intval($options->fs_reply_reaction_points);
+    //     $totalPoints = intval($options->fs_reply_reaction_points);
 
-        foreach ($usersReactionCounts as $key => $value) {
+    //     foreach ($usersReactionCounts as $key => $value) {
 
-            $userReactions = $value;
+    //         $userReactions = $value;
 
-            $percentage = ($userReactions / $totalReactions) * 100;
+    //         $percentage = ($userReactions / $totalReactions) * 100;
 
-            $pointsFromPercentage = ($percentage / 100) * $totalPoints;
+    //         $pointsFromPercentage = ($percentage / 100) * $totalPoints;
 
-            $userReactionsScore = \XF::finder('FS\ThreadScoringSystem:ScoringSystem')->where('user_id', $key)->where('points_type', 'reactions')->where('thread_id', $thread->thread_id)->fetchOne();
+    //         $userReactionsScore = \XF::finder('FS\ThreadScoringSystem:ScoringSystem')->where('user_id', $key)->where('points_type', 'reactions')->where('thread_id', $thread->thread_id)->fetchOne();
 
-            if (!$userReactionsScore) {
-                $userReactionsScore = \XF::em()->create('FS\ThreadScoringSystem:ScoringSystem');
-            }
+    //         if (!$userReactionsScore) {
+    //             $userReactionsScore = \XF::em()->create('FS\ThreadScoringSystem:ScoringSystem');
+    //         }
 
-            $userReactionsScore->bulkSet([
-                'thread_id' => $thread->thread_id,
-                'user_id' => $key,
-                'points_type' => 'reactions',
-                'points' => $pointsFromPercentage,
-                'percentage' => $percentage,
-            ]);
+    //         $userReactionsScore->bulkSet([
+    //             'thread_id' => $thread->thread_id,
+    //             'user_id' => $key,
+    //             'points_type' => 'reactions',
+    //             'points' => $pointsFromPercentage,
+    //             'percentage' => $percentage,
+    //         ]);
 
-            $userReactionsScore->save();
-        }
+    //         $userReactionsScore->save();
+    //     }
 
-        $otherUsers = \XF::finder('FS\ThreadScoringSystem:ScoringSystem')->where('user_id', '!=', $userIds)->where('points_type', 'reactions')->where('thread_id', $thread->thread_id)->fetch();
+    //     $otherUsers = \XF::finder('FS\ThreadScoringSystem:ScoringSystem')->where('user_id', '!=', $userIds)->where('points_type', 'reactions')->where('thread_id', $thread->thread_id)->fetch();
 
-        if (count($otherUsers)) {
-            foreach ($otherUsers as $value) {
-                $value->delete();
-            }
-        }
+    //     if (count($otherUsers)) {
+    //         foreach ($otherUsers as $value) {
+    //             $value->delete();
+    //         }
+    //     }
 
-        return true;
-    }
+    //     return true;
+    // }
 
     public function getAllTypePointsScores($records)
     {
