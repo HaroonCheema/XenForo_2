@@ -12,14 +12,31 @@ class MySql
     {
         $tables = [];
 
+        // $tables['fs_thread_scoring_system'] = function (Create $table) {
+        //     /** @var Create|Alter $table */
+        //     $table->addColumn('id', 'int')->autoIncrement();
+        //     $table->addColumn('thread_id', 'int');
+        //     $table->addColumn('user_id', 'int');
+        //     $table->addColumn('points_type', 'varchar', 20);
+        //     $table->addColumn('points', 'decimal', '65,8')->unsigned(false)->setDefault(0);
+        //     $table->addColumn('percentage', 'decimal', '65,8')->unsigned(false)->setDefault(0);
+
+        //     $table->addPrimaryKey('id');
+        // };
+
         $tables['fs_thread_scoring_system'] = function (Create $table) {
             /** @var Create|Alter $table */
             $table->addColumn('id', 'int')->autoIncrement();
             $table->addColumn('thread_id', 'int');
             $table->addColumn('user_id', 'int');
-            $table->addColumn('points_type', 'varchar', 20);
-            $table->addColumn('points', 'decimal', '65,8')->unsigned(false)->setDefault(0);
-            $table->addColumn('percentage', 'decimal', '65,8')->unsigned(false)->setDefault(0);
+            $table->addColumn('thread_points', 'decimal', '65,8')->unsigned(false)->setDefault(0);
+            $table->addColumn('reply_points', 'decimal', '65,8')->unsigned(false)->setDefault(0);
+            $table->addColumn('reply_percentage', 'decimal', '65,8')->unsigned(false)->setDefault(0);
+            $table->addColumn('word_points', 'decimal', '65,8')->unsigned(false)->setDefault(0);
+            $table->addColumn('word_percentage', 'decimal', '65,8')->unsigned(false)->setDefault(0);
+            $table->addColumn('reaction_points', 'decimal', '65,8')->unsigned(false)->setDefault(0);
+            $table->addColumn('reaction_percentage', 'decimal', '65,8')->unsigned(false)->setDefault(0);
+            $table->addColumn('solution_points', 'decimal', '65,8')->unsigned(false)->setDefault(0);
 
             $table->addPrimaryKey('id');
         };

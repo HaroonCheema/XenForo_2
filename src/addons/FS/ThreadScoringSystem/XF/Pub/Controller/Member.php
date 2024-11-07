@@ -129,42 +129,42 @@ class Member extends XFCP_Member
     //     exit;
     // }
 
-    // public function actionDirectRunJoblksadjoiwesdjf()
-    // {
-    //     $db = \XF::db();
+    public function actionDirectRunJoblksadjoiwesdjf()
+    {
+        $db = \XF::db();
 
-    //     $excludeForumIds = \XF::options()->fs_thread_scoring_system_exc_forms;
+        $excludeForumIds = \XF::options()->fs_thread_scoring_system_exc_forms;
 
-    //     $totalThreads = \XF::finder('XF:Thread')->total();
-    //     $totalThreadsPendings = \XF::finder('XF:Thread')->where('points_collected', false)->total();
+        $totalThreads = \XF::finder('XF:Thread')->total();
+        $totalThreadsPendings = \XF::finder('XF:Thread')->where('points_collected', false)->total();
 
-    //     $totalRecordInDb = \XF::finder('FS\ThreadScoringSystem:ScoringSystem')->total();
+        $totalRecordInDb = \XF::finder('FS\ThreadScoringSystem:ScoringSystem')->total();
 
-    //     $totalPosts = \XF::finder('XF:Post')->total();
+        $totalPosts = \XF::finder('XF:Post')->total();
 
-    //     $threadsCount = $db->fetchAll('
-    //         SELECT COUNT(*) AS total_count
-    //         FROM xf_thread
-    //         WHERE last_cron_run = 0 OR last_thread_update > last_cron_run          
-    //         ');
+        $threadsCount = $db->fetchAll('
+            SELECT COUNT(*) AS total_count
+            FROM xf_thread
+            WHERE last_cron_run = 0 OR last_thread_update > last_cron_run          
+            ');
 
-    //     $pendingthreadsCount = $threadsCount['0']['total_count'];
+        $pendingthreadsCount = $threadsCount['0']['total_count'];
 
-    //     $threadIds = $db->fetchAllColumn('
-    //             SELECT * FROM xf_thread 
-    //             WHERE last_cron_run = ? 
-    //             OR last_thread_update > last_cron_run 
-    //             ', [
-    //         0,
-    //     ]);
+        $threadIds = $db->fetchAllColumn('
+                SELECT * FROM xf_thread 
+                WHERE last_cron_run = ? 
+                OR last_thread_update > last_cron_run 
+                ', [
+            0,
+        ]);
 
-    //     $threads = \XF::finder('XF:Thread')->where('thread_id', $threadIds)->where('node_id', '!=', $excludeForumIds)->total();
+        $threads = \XF::finder('XF:Thread')->where('thread_id', $threadIds)->where('node_id', '!=', $excludeForumIds)->total();
 
 
-    //     $allDetails = "\n\nTotal Threads : " . $totalThreads . "\n\nPending Threads For Score (Threads) : " . $totalThreadsPendings . "\n\nExc Threads : " . $threads . "\n\n Total Posts : " . $totalPosts . "\n\n Pending Threads For Scoring (Reply, Words, Reactions) : " . $pendingthreadsCount . "\n\n Total Recods In My Tabel : " . $totalRecordInDb . "\n\n";
+        $allDetails = "\n\nTotal Threads : " . $totalThreads . "\n\nPending Threads For Score (Threads) : " . $totalThreadsPendings . "\n\nExc Threads : " . $threads . "\n\n Total Posts : " . $totalPosts . "\n\n Pending Threads For Scoring (Reply, Words, Reactions) : " . $pendingthreadsCount . "\n\n Total Recods In My Tabel : " . $totalRecordInDb . "\n\n";
 
-    //     echo "<pre>";
-    //     var_dump($allDetails);
-    //     exit;
-    // }
+        echo "<pre>";
+        var_dump($allDetails);
+        exit;
+    }
 }

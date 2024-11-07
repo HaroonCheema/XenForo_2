@@ -18,7 +18,19 @@ class NotableMemberTotalPoints extends AbstractJob
         if ($this->data['offset'] == 1) {
             $db = \XF::db();
 
-            $db->update('fs_thread_total_scoring_system', ['is_counted' => 0], '1=1');
+            $allUsers = \XF::finder('FS\ThreadScoringSystem:TotalScoringSystem')->where('is_counted', 1)->total();
+
+            if ($allUsers) {
+
+                // $limit = $this->data['limit'];
+                $limit = 50000;
+
+                $endIndex = round($allUsers / $limit) ?: 1;
+
+                for ($i = 0; $i < $endIndex; $i++) {
+                    $db->update('fs_thread_total_scoring_system', ['is_counted' => 0], 'is_counted = 1', [], '', '', $limit);
+                }
+            }
         }
 
         $records = $this->app->finder('FS\ThreadScoringSystem:ScoringSystem')->limitByPage($this->data['offset'], $this->data['limit'])->fetch();
@@ -27,7 +39,22 @@ class NotableMemberTotalPoints extends AbstractJob
 
             $db = \XF::db();
 
-            $db->delete('fs_thread_total_scoring_system', 'is_counted = ?', 0);
+            // $limit = $this->data['limit'];
+            $limit = 50000;
+
+            $allUsers = \XF::finder('FS\ThreadScoringSystem:TotalScoringSystem')->where('is_counted', 0)->total();
+
+            if ($allUsers) {
+
+                $endIndex = round($allUsers / $limit) ?: 1;
+
+                for ($i = 0; $i < $endIndex; $i++) {
+
+                    $db->delete('fs_thread_total_scoring_system', 'is_counted = 0', [], '', '', $limit);
+                }
+            }
+
+            // $db->delete('fs_thread_total_scoring_system', 'is_counted = ?', 0);
 
             return $this->complete();
         }
