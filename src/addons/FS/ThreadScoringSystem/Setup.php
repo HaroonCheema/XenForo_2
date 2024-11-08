@@ -31,6 +31,13 @@ class Setup extends AbstractSetup
 			$table->addColumn('last_cron_run', 'int')->setDefault(0);
 			$table->addColumn('last_thread_update', 'int')->setDefault(0);
 		});
+
+		// pending
+
+		$this->alterTable('xf_thread_question', function (\XF\Db\Schema\Alter $table) {
+
+			$table->addColumn('points_collected', 'tinyint', 3)->setDefault(0);
+		});
 	}
 
 	// ############################### POST INSTALL ###########################
@@ -62,6 +69,10 @@ class Setup extends AbstractSetup
 
 		$this->schemaManager()->alterTable('xf_thread', function (\XF\Db\Schema\Alter $table) {
 			$table->dropColumns(['points_collected', 'last_cron_run', 'last_thread_update']);
+		});
+
+		$this->schemaManager()->alterTable('xf_thread_question', function (\XF\Db\Schema\Alter $table) {
+			$table->dropColumns(['points_collected']);
 		});
 	}
 
