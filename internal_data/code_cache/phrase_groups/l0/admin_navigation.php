@@ -137,6 +137,8 @@ return array (
   'admin_navigation.fs_game' => '[FS] Game',
   'admin_navigation.fs_generate_link' => '[FS] Generate Link',
   'admin_navigation.fs_info_text' => '[FS] Info Text',
+  'admin_navigation.fs_logo_slider' => '[FS] Logo Slider',
+  'admin_navigation.fs_logo_slider_add' => 'Add logo',
   'admin_navigation.fs_media_tag' => 'Media Tag',
   'admin_navigation.fs_media_tag_setting' => 'Media Tag Setting',
   'admin_navigation.fs_quiz' => 'Quiz',

@@ -355,6 +355,8 @@ return array (
   'option.fs_hcwp_userGroups' => 'Hide Content from users',
   'option.fs_link_group_apply_settings' => 'Group with priority',
   'option.fs_link_html_position' => 'HTML position',
+  'option.fs_logo_slider_logo_dimensions' => 'Logo dimensions',
+  'option.fs_logo_slider_logos' => 'Logo box',
   'option.fs_mts_customMsgColor' => 'Custom message Text Color',
   'option.fs_mts_customMsgbackGroundColor' => 'Custom message Background Color',
   'option.fs_pkg_rat_applicable_userGroups' => 'Applicable User Upgrade Ids',

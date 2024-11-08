@@ -1,0 +1,11 @@
+{
+    "route_type": "admin",
+    "route_prefix": "logo-slider",
+    "sub_name": "",
+    "format": ":int<id>/:page",
+    "build_class": "",
+    "build_method": "",
+    "controller": "FS\\LogoSlider:Logo",
+    "context": "fs_logo_slider_add",
+    "action_prefix": ""
+}

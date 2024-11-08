@@ -1,0 +1,32 @@
+<xf:if is="$data is not empty">
+	<xf:css src="fs_logo_slider_list.less" />
+	<xf:css src="lightslider.less" />
+
+	<xf:js src="vendor/lightslider/lightslider.js" min="1" />
+	<xf:js src="LogoSlider/slider.js" min="1" />
+
+	<div class="block" {{ widget_data($widget) }}>
+		<div class="block-container">
+			<h3 class="block-minorHeader">
+				<a href="{$link}" rel="nofollow">{{ $title ?: phrase('fs_logo_slider') }}</a>
+			</h3>
+			<div class="block-body block-row">
+				<div class="itemList itemList--slider"
+					 data-xf-init="item-slider"
+					 data-xf-item-slider='{"item":{$xf.options.fs_logo_slider_logos},"itemWide":3,"itemMedium":2,"itemNarrow":1,"auto":true,"loop":true}'>
+					
+					<xf:foreach loop="$data" key="$key" value="$value">
+						<div class="itemList-item itemList-item--slider">
+							<a href="{{ $value.logo_url }}" target="_blank">
+								<span class="xfmgThumbnail xfmgThumbnail--image xfmgThumbnail--fluid">
+									<img class="xfmgThumbnail-image" src="{{ base_url($value.getImgUrl()) }}" alt="xyz{$key}.jpeg" style="width: {$xf.options.fs_logo_slider_logo_dimensions.width}px; height: {$xf.options.fs_logo_slider_logo_dimensions.height}px;">
+									<span class="xfmgThumbnail-icon"></span>
+								</span>
+							</a>
+						</div>
+					</xf:foreach>
+				</div>
+			</div>
+		</div>
+	</div>
+</xf:if>

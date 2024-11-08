@@ -19,5 +19,5 @@ $config['enableLivePayments'] = false;
 
 $config['debug'] = true;
 
-$config['development']['defaultAddOn'] = 'FS/ThreadScoringSystem';
+$config['development']['defaultAddOn'] = 'FS/LogoSlider';
 $config['development']['enabled'] = true;

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="admin_navigation.fs_logo_slider" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Logo Slider]]></phrase>
+  <phrase title="admin_navigation.fs_logo_slider_add" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add logo]]></phrase>
+  <phrase title="fs_logo_slider" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Logo Slider]]></phrase>
+  <phrase title="fs_logo_slider_add" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add logo]]></phrase>
+  <phrase title="fs_logo_slider_add_logo" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add logo]]></phrase>
+  <phrase title="fs_logo_slider_edit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Edit logo]]></phrase>
+  <phrase title="fs_logo_slider_image" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Select logo]]></phrase>
+  <phrase title="fs_logo_slider_image_placeholder" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Select logo from here...!]]></phrase>
+  <phrase title="fs_logo_slider_url" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Logo url]]></phrase>
+  <phrase title="fs_logo_url" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Logo url]]></phrase>
+  <phrase title="fs_select_logo_slider_image" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Selected logo]]></phrase>
+  <phrase title="option.fs_logo_slider_logo_dimensions" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Logo dimensions]]></phrase>
+  <phrase title="option.fs_logo_slider_logos" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Logo box]]></phrase>
+  <phrase title="option_explain.fs_logo_slider_logo_dimensions" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_explain.fs_logo_slider_logos" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_group.fs_logo_slider" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Logo Slider]]></phrase>
+  <phrase title="option_group_description.fs_logo_slider" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="widget_def.fs_logo_slider_widget" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Logo Slider]]></phrase>
+  <phrase title="widget_def_desc.fs_logo_slider_widget" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+</phrases>

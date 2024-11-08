@@ -15,6 +15,7 @@ return array (
   'widget_def_desc.forum_statistics' => 'Displays a block which that shows the forum\'s current statistics on things like total discussions, message and member count.',
   'widget_def_desc.fsGameRating' => '[FS] Game Reviews',
   'widget_def_desc.fsPackageRating' => 'User Upgrade Ratings',
+  'widget_def_desc.fs_logo_slider_widget' => '',
   'widget_def_desc.fs_thread_month_wise_scor' => '',
   'widget_def_desc.highestRatedInCategory' => '',
   'widget_def_desc.html' => 'Widget that lets you add custom HTML. This widget supports XenForo template syntax.',

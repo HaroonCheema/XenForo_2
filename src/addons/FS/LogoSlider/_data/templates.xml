@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="admin" title="fs_logo_slider_add_edit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>
+	<xf:if is="$data.id"> {{phrase('fs_logo_slider_edit') }} <xf:breadcrumb href="#">{{
+		phrase('fs_logo_slider_edit') }}</xf:breadcrumb> <xf:else />{{
+		phrase('fs_logo_slider_add') }}
+		<xf:breadcrumb href="#">{{phrase('fs_logo_slider_add') }}</xf:breadcrumb> </xf:if>
+</xf:title>
+<xf:form
+		 action="{{ link('logo-slider/save', $data) }}"
+		 ajax="true"
+		 class="block"
+		 data-force-flash-message="true"
+		 >
+	<div class="block-container">
+		<div class="block-body">
+			<xf:textboxrow
+						   name="logo_url"
+						   value="{$data.logo_url}"
+						   label="{{phrase('fs_logo_slider_url') }}"
+						   hint="{{phrase('required')}}"
+						   autosize="true"
+						   required="required"
+						   row="5"
+						   />
+
+			<xf:uploadrow name="image" accept=".jpeg,.jpg,.jpe,.png"
+						  label="{{ phrase('fs_logo_slider_image') }}" hint="{{$data.id ? '' : phrase('required')}}" required="{{$data.id ? '' : 'required'}}"
+						  explain="{{ phrase('fs_logo_slider_image_placeholder') }}" />
+
+			<xf:if is="{$data.getImgUrl()} && $data.id">
+				<xf:formrow label="{{ phrase('fs_select_logo_slider_image') }}">
+					<img src="{{ base_url($data.getImgUrl()) }}" />
+				</xf:formrow>
+			</xf:if>
+		</div>
+		<xf:submitrow submit="" icon="save" />
+	</div>
+</xf:form>]]></template>
+  <template type="admin" title="fs_logo_slider_index" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('fs_logo_slider') }}</xf:title>
+
+<xf:pageaction>
+	<xf:button href="{{ link('logo-slider/add') }}" icon="add">{{ phrase('fs_logo_slider_add_logo') }}</xf:button>
+</xf:pageaction>
+<xf:form action="{{ link($prefix . '/toggle') }}" class="block" ajax="true">
+	<div class="block-outer">
+		<xf:macro
+				  template="filter_macros"
+				  name="quick_filter"
+				  arg-key="logo-slider"
+				  arg-class="block-outer-opposite"
+				  />
+	</div>
+
+	<div class="block-container">
+
+		<xf:if is="$data is not empty">
+			<div class="block-body">
+				<xf:datalist data-xf-init="responsive-data-list">
+
+					<xf:macro
+							  name="table_list"
+							  arg-data="{$data}"
+							  />
+
+
+				</xf:datalist>
+				<div class="block-footer">
+					<span class="block-footer-counter"
+						  >{{ display_totals($totalReturn, $total) }}</span
+						>
+				</div>
+
+			</div>
+			<xf:else />
+			<div class="block-body block-row">{{ phrase('no_items_have_been_created_yet') }}</div>
+
+		</xf:if>
+
+	</div>
+
+
+	<xf:pagenav
+				page="{$page}"
+				perpage="{$perPage}"
+				total="{$total}"
+				link="logo-slider"
+				wrapperclass="block"
+				/>
+</xf:form>
+<xf:macro
+		  name="table_list"
+		  arg-data="!"
+		  >
+	<xf:datarow rowtype="header">
+		<xf:cell> {{ phrase('fs_logo_url') }} </xf:cell>
+		<xf:cell class="dataList-cell--min"></xf:cell>
+		<xf:cell class="dataList-cell--min"></xf:cell>
+	</xf:datarow>
+	<xf:foreach loop="{$data}" value="$value">
+		<xf:datarow>
+
+			<xf:cell> {$value.logo_url} </xf:cell>
+
+			<xf:action href="{{ link('logo-slider/edit', $value) }}" >{{ phrase('edit') }}</xf:action>
+			<xf:delete
+					   href="{{ link('logo-slider/delete', $value) }}"
+					   overlay="true"
+					   />
+		</xf:datarow>
+	</xf:foreach>
+</xf:macro>]]></template>
+  <template type="public" title="fs_logo_slider_list.less" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[.itemList-itemTypeIcon
+{
+	&.itemList-itemTypeIcon--image
+	{
+		&::after
+		{
+			.m-faContent(@fa-var-image);
+		}
+
+		display: none;
+	}
+
+	&.itemList-itemTypeIcon--embed
+	{
+		.m-faBase('Brands');
+		&::after
+		{
+			.m-faContent(@fa-var-youtube);
+		}
+	}
+
+	&.itemList-itemTypeIcon--video
+	{
+		&::after
+		{
+			.m-faContent(@fa-var-video);
+		}
+	}
+
+	&.itemList-itemTypeIcon--audio
+	{
+		&::after
+		{
+			.m-faContent(@fa-var-music);
+		}
+	}
+
+	&.itemList-itemTypeIcon--embed
+	{
+		&--applemusic
+		{
+			.m-faBase('Brands');
+			&::after { .m-faContent(@fa-var-apple); }
+		}
+
+		&--facebook
+		{
+			.m-faBase('Brands');
+			&::after { .m-faContent(@fa-var-facebook); }
+		}
+
+		&--flickr
+		{
+			.m-faBase('Brands');
+			&::after { .m-faContent(@fa-var-flickr); }
+		}
+
+		&--instagram
+		{
+			.m-faBase('Brands');
+			&::after { .m-faContent(@fa-var-instagram); }
+		}
+
+		&--pinterest
+		{
+			.m-faBase('Brands');
+			&::after { .m-faContent(@fa-var-pinterest-square); }
+		}
+
+		&--reddit
+		{
+			.m-faBase('Brands');
+			&::after { .m-faContent(@fa-var-reddit-alien); }
+		}
+
+		&--soundcloud
+		{
+			.m-faBase('Brands');
+			&::after { .m-faContent(@fa-var-soundcloud); }
+		}
+
+		&--spotify
+		{
+			.m-faBase('Brands');
+			&::after { .m-faContent(@fa-var-spotify); }
+		}
+
+		&--tumblr
+		{
+			.m-faBase('Brands');
+			&::after { .m-faContent(@fa-var-tumblr-square); }
+		}
+
+		&--twitch
+		{
+			.m-faBase('Brands');
+			&::after { .m-faContent(@fa-var-twitch); }
+		}
+
+		&--twitter
+		{
+			.m-faBase('Brands');
+			&::after { .m-faContent(@fa-var-twitter); }
+		}
+
+		&--vimeo
+		{
+			.m-faBase('Brands');
+			&::after { .m-faContent(@fa-var-vimeo); }
+		}
+
+		&--youtube
+		{
+			.m-faBase('Brands');
+			&::after { .m-faContent(@fa-var-youtube); }
+		}
+	}
+}]]></template>
+  <template type="public" title="fs_widget_logo_slider" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:if is="$data is not empty">
+	<xf:css src="fs_logo_slider_list.less" />
+	<xf:css src="lightslider.less" />
+
+	<xf:js src="vendor/lightslider/lightslider.js" min="1" />
+	<xf:js src="LogoSlider/slider.js" min="1" />
+
+	<div class="block" {{ widget_data($widget) }}>
+		<div class="block-container">
+			<h3 class="block-minorHeader">
+				<a href="{$link}" rel="nofollow">{{ $title ?: phrase('fs_logo_slider') }}</a>
+			</h3>
+			<div class="block-body block-row">
+				<div class="itemList itemList--slider"
+					 data-xf-init="item-slider"
+					 data-xf-item-slider='{"item":{$xf.options.fs_logo_slider_logos},"itemWide":3,"itemMedium":2,"itemNarrow":1,"auto":true,"loop":true}'>
+					
+					<xf:foreach loop="$data" key="$key" value="$value">
+						<div class="itemList-item itemList-item--slider">
+							<a href="{{ $value.logo_url }}" target="_blank">
+								<span class="xfmgThumbnail xfmgThumbnail--image xfmgThumbnail--fluid">
+									<img class="xfmgThumbnail-image" src="{{ base_url($value.getImgUrl()) }}" alt="xyz{$key}.jpeg" style="width: {$xf.options.fs_logo_slider_logo_dimensions.width}px; height: {$xf.options.fs_logo_slider_logo_dimensions.height}px;">
+									<span class="xfmgThumbnail-icon"></span>
+								</span>
+							</a>
+						</div>
+					</xf:foreach>
+				</div>
+			</div>
+		</div>
+	</div>
+</xf:if>]]></template>
+</templates>

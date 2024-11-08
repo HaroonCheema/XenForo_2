@@ -412,6 +412,8 @@ This option requires that the specified account is a catch-all account or suppor
   'option_explain.fs_hcwp_userGroups' => 'The content will be hidden for users belonging to these UserGroups',
   'option_explain.fs_link_group_apply_settings' => 'If a user has multiple groups tell either the time of group with high-style priority is applied or with low priority.',
   'option_explain.fs_link_html_position' => '',
+  'option_explain.fs_logo_slider_logo_dimensions' => '',
+  'option_explain.fs_logo_slider_logos' => '',
   'option_explain.fs_mts_customMsgColor' => 'Enter the colour name or colour code for Custom message',
   'option_explain.fs_mts_customMsgbackGroundColor' => 'Enter the colour name or colour code for custom message Background',
   'option_explain.fs_pkg_rat_applicable_userGroups' => 'Enter the Applicable User Upgrade Ids Comma separated like 1,2,3,4.',

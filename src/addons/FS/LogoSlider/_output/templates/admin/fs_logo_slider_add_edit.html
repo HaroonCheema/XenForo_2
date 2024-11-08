@@ -1,0 +1,37 @@
+<xf:title>
+	<xf:if is="$data.id"> {{phrase('fs_logo_slider_edit') }} <xf:breadcrumb href="#">{{
+		phrase('fs_logo_slider_edit') }}</xf:breadcrumb> <xf:else />{{
+		phrase('fs_logo_slider_add') }}
+		<xf:breadcrumb href="#">{{phrase('fs_logo_slider_add') }}</xf:breadcrumb> </xf:if>
+</xf:title>
+<xf:form
+		 action="{{ link('logo-slider/save', $data) }}"
+		 ajax="true"
+		 class="block"
+		 data-force-flash-message="true"
+		 >
+	<div class="block-container">
+		<div class="block-body">
+			<xf:textboxrow
+						   name="logo_url"
+						   value="{$data.logo_url}"
+						   label="{{phrase('fs_logo_slider_url') }}"
+						   hint="{{phrase('required')}}"
+						   autosize="true"
+						   required="required"
+						   row="5"
+						   />
+
+			<xf:uploadrow name="image" accept=".jpeg,.jpg,.jpe,.png"
+						  label="{{ phrase('fs_logo_slider_image') }}" hint="{{$data.id ? '' : phrase('required')}}" required="{{$data.id ? '' : 'required'}}"
+						  explain="{{ phrase('fs_logo_slider_image_placeholder') }}" />
+
+			<xf:if is="{$data.getImgUrl()} && $data.id">
+				<xf:formrow label="{{ phrase('fs_select_logo_slider_image') }}">
+					<img src="{{ base_url($data.getImgUrl()) }}" />
+				</xf:formrow>
+			</xf:if>
+		</div>
+		<xf:submitrow submit="" icon="save" />
+	</div>
+</xf:form>

@@ -1,0 +1,22 @@
+{
+    "admin/fs_logo_slider_add_edit.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "f1215adfb972c8b07ae9554f182f5b41"
+    },
+    "admin/fs_logo_slider_index.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "e343f898d80b0f76c6cbae13ae1afe43"
+    },
+    "public/fs_logo_slider_list.less": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "432c16756f2123e35028174daf5fc719"
+    },
+    "public/fs_widget_logo_slider.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "69264c86e5b01389189796065a0ef1e0"
+    }
+}

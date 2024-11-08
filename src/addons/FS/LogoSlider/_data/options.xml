@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<options>
+  <option option_id="fs_logo_slider_logo_dimensions" edit_format="template" data_type="array">
+    <default_value>{"width":"145","height":"145"}</default_value>
+    <edit_format_params>option_template_attachmentMaxDimensions</edit_format_params>
+    <sub_options>width
+height</sub_options>
+    <relation group_id="fs_logo_slider" display_order="2"/>
+  </option>
+  <option option_id="fs_logo_slider_logos" edit_format="spinbox" data_type="positive_integer">
+    <default_value>5</default_value>
+    <edit_format_params>min=3</edit_format_params>
+    <relation group_id="fs_logo_slider" display_order="1"/>
+  </option>
+</options>

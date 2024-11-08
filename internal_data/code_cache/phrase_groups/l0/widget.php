@@ -20,6 +20,7 @@ return array (
   'widget.fsPackageRatings' => '',
   'widget.fs_custom_forum_widget' => 'Custom Forum Widget',
   'widget.fs_extend_new_posts' => 'Extends New Posts',
+  'widget.fs_logo_slider' => 'Logo Slider',
   'widget.fs_media_slider_testing' => 'Testing Media Slider',
   'widget.fs_question_answer_count_wid' => 'Question Answer Counts',
   'widget.fs_thread_scoring_system' => 'Thread scoring system',

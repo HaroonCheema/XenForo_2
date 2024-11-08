@@ -16,6 +16,7 @@ return array (
   'widget_def.forum_statistics' => 'Forum statistics',
   'widget_def.fsGameRating' => '[FS] Game Reviews',
   'widget_def.fsPackageRating' => 'User Upgrade Ratings',
+  'widget_def.fs_logo_slider_widget' => '[FS] Logo Slider',
   'widget_def.fs_thread_month_wise_scor' => '[FS] Thread Scoring System',
   'widget_def.highestRatedInCategory' => 'Highest rated Item in Category',
   'widget_def.html' => 'HTML',
