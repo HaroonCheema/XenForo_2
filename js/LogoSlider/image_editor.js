@@ -1,8 +1,8 @@
-var XFMG = window.XFMG || {};
+window.XFMG = window.XFMG || {}
 
-!function($, window, document, _undefined)
+;((window, document) =>
 {
-	"use strict";
+	'use strict'
 
 	XFMG.ImageEditor = XF.Element.newHandler({
 
@@ -17,128 +17,117 @@ var XFMG = window.XFMG || {};
 			rotateRight: '.js-ctrlRotateRight',
 			flipH: '.js-ctrlFlipH',
 			flipV: '.js-ctrlFlipV',
-			clear: '.js-ctrlClear'
+			clear: '.js-ctrlClear',
 		},
 
-		$image: null,
+		image: null,
+		cropper: null,
 
-		init: function()
+		init ()
 		{
-			var self = this,
-				$form = this.$target,
-				$image = $form.find(this.options.image),
-				$cropData = $form.find(this.options.cropData);
+			const form = this.target
+			const image = form.querySelector(this.options.image)
+			const cropData = form.querySelector(this.options.cropData)
 
-			if (!$image.length || !$image.is('img'))
+			if (!image || !image.matches('img'))
 			{
-				console.error('Image editor must contain an img element');
+				console.error('Image editor must contain an img element')
 			}
 
-			this.$image = $image;
+			this.image = image
 
-			$image.cropper({
+			this.cropper = new Cropper(image, {
 				viewMode: 2,
 				autoCrop: false,
-				ready: function()
+				ready: () =>
 				{
-					$form.find(self.options.move + ', ' + self.options.crop).on('click', XF.proxy(self, 'dragMode'));
-					$form.find(self.options.zoomIn + ', ' + self.options.zoomOut).on('click', XF.proxy(self, 'zoom'));
-					$form.find(self.options.rotateLeft + ', ' + self.options.rotateRight).on('click', XF.proxy(self, 'rotate'));
-					$form.find(self.options.flipH + ', ' + self.options.flipV).on('click', XF.proxy(self, 'flip'));
+					XF.on(form.querySelector(`${ this.options.move }`), 'click', XF.proxy(this, 'dragMode'))
+					XF.on(form.querySelector(`${ this.options.crop }`), 'click', XF.proxy(this, 'dragMode'))
 
-					$form.find(self.options.clear).on('click', XF.proxy(self, 'clear'));
+					XF.on(form.querySelector(`${ this.options.zoomIn }`), 'click', XF.proxy(this, 'zoom'))
+					XF.on(form.querySelector(`${ this.options.zoomOut }`), 'click', XF.proxy(this, 'zoom'))
+
+					XF.on(form.querySelector(`${ this.options.rotateLeft }`), 'click', XF.proxy(this, 'rotate'))
+					XF.on(form.querySelector(`${ this.options.rotateRight }`), 'click', XF.proxy(this, 'rotate'))
+
+					XF.on(form.querySelector(`${ this.options.flipH }`), 'click', XF.proxy(this, 'flip'))
+					XF.on(form.querySelector(`${ this.options.flipV }`), 'click', XF.proxy(this, 'flip'))
+
+					XF.on(form.querySelector(this.options.clear), 'click', XF.proxy(this, 'clear'))
 				},
-				crop: function(e)
+				crop: (e) =>
 				{
-					var json = {
-						scaleX: e.scaleX,
-						scaleY: e.scaleY,
-						rotate: e.rotate,
-						x: e.x,
-						y: e.y,
-						width: e.width,
-						height: e.height
-					};
-
-					$cropData.val(JSON.stringify(json));
-				}
-			});
+					// true == rounded values
+					cropData.value = JSON.stringify(this.cropper.getData(true))
+				},
+			})
 		},
 
-		dragMode: function(e)
+		dragMode (e)
 		{
-			var $button = $(e.currentTarget);
+			const button = e.currentTarget
 
-			if ($button.is(this.options.move))
+			if (button.matches(this.options.move))
 			{
-				this.$image.cropper('setDragMode', 'move');
+				this.cropper.setDragMode('move')
 			}
-			else if ($button.is(this.options.crop))
+			else if (button.matches(this.options.crop))
 			{
-				this.$image.cropper('setDragMode', 'crop');
+				this.cropper.setDragMode('crop')
 			}
 		},
 
-		zoom: function(e)
+		zoom (e)
 		{
-			var $button = $(e.currentTarget);
+			const button = e.currentTarget
 
-			if ($button.is(this.options.zoomIn))
+			if (button.matches(this.options.zoomIn))
 			{
-				this.$image.cropper('zoom', 0.1);
+				this.cropper.zoom(0.1)
 			}
-			else if ($button.is(this.options.zoomOut))
+			else if (button.matches(this.options.zoomOut))
 			{
-				this.$image.cropper('zoom', -0.1);
+				this.cropper.zoom(-0.1)
 			}
 		},
 
-		rotate: function(e)
+		rotate: function (e)
 		{
-			var $button = $(e.currentTarget);
+			const button = e.currentTarget
 
-			if ($button.is(this.options.rotateLeft))
+			if (button.matches(this.options.rotateLeft))
 			{
-				this.$image.cropper('rotate', -10);
+				this.cropper.rotate(-10)
 			}
-			else if ($button.is(this.options.rotateRight))
+			else if (button.matches(this.options.rotateRight))
 			{
-				this.$image.cropper('rotate', 10);
+				this.cropper.rotate(10)
 			}
 		},
 
-		flip: function(e)
+		flip (e)
 		{
-			var $button = $(e.currentTarget);
+			const button = e.currentTarget
+			let scale = button.dataset.scale
 
-			var scale = $button.data('scale');
-			if ($button.is(this.options.flipH))
+			if (button.matches(this.options.flipH))
 			{
-				this.$image.cropper('scaleX', scale);
+				this.cropper.scaleX(scale)
 			}
-			else if ($button.is(this.options.flipV))
+			else if (button.matches(this.options.flipV))
 			{
-				this.$image.cropper('scaleY', scale);
-			}
-
-			if (scale === -1)
-			{
-				scale = 1;
-			}
-			else
-			{
-				scale = -1
+				this.cropper.scaleY(scale)
 			}
 
-			$button.data('scale', scale);
+			scale *= -1
+			button.dataset.scale = scale
 		},
 
-		clear: function(e)
+		clear: function (e)
 		{
-			this.$image.cropper('clear');
-		}
-	});
+			this.cropper.clear()
+		},
+	})
 
-	XF.Element.register('image-editor', 'XFMG.ImageEditor');
-}
-(jQuery, window, document);
+	XF.Element.register('image-editor', 'XFMG.ImageEditor')
+})(window, document)

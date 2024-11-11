@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 432c16756f2123e35028174daf5fc719
+// FROM HASH: 12c573ff1005fabdbaa39048ec55f012
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -18,10 +18,9 @@ return array(
 
 	&.itemList-itemTypeIcon--embed
 	{
-		.m-faBase(\'Brands\');
 		&::after
 		{
-			.m-faContent(@fa-var-youtube);
+			.m-faContent(@fa-var-photo-video);
 		}
 	}
 
@@ -121,7 +120,9 @@ return array(
 			&::after { .m-faContent(@fa-var-youtube); }
 		}
 	}
-}';
+}
+
+' . $__templater->includeTemplate('fs_logo_slider_item_list.less', $__vars);
 	return $__finalCompiled;
 }
 );

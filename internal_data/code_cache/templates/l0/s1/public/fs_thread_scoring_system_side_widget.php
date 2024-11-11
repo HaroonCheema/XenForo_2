@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 8f930ec49dae81420c86e96d2f9f01c9
+// FROM HASH: 17a4726eead64acb0355ee49bba0b5cf
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -12,7 +12,7 @@ return array(
 		$__compilerTemp1 .= '
 
 		';
-		if ($__templater->func('count', array($__vars['data']['records'], ), false)) {
+		if ($__templater->func('count', array($__vars['data'], ), false)) {
 			$__compilerTemp1 .= '
 
 			<div class="block">
@@ -21,6 +21,9 @@ return array(
 					<h3 class="block-minorHeader">' . 'Thread Score ' . '</h3>
 					';
 			$__vars['replyPhrase'] = 'Thread Score ';
+			$__compilerTemp1 .= '
+					';
+			$__vars['afterDot'] = $__vars['xf']['options']['fs_thread_scoring_system_decimals'];
 			$__compilerTemp1 .= '
 
 					<div class="block-body block-row">
@@ -33,8 +36,8 @@ return array(
 						<br/>
 
 						';
-			if ($__templater->isTraversable($__vars['data']['records'])) {
-				foreach ($__vars['data']['records'] AS $__vars['value']) {
+			if ($__templater->isTraversable($__vars['data'])) {
+				foreach ($__vars['data'] AS $__vars['value']) {
 					$__compilerTemp1 .= '
 
 							<dl class="pairs pairs--justified">										
@@ -45,20 +48,27 @@ return array(
 								';
 					if ($__vars['xf']['options']['fs_thread_scoring_list_format'] == 'percentage') {
 						$__compilerTemp1 .= '
-									<dd data-xf-init="tooltip" title="' . ($__vars['data']['totalPercentage'][$__vars['value']['user_id']]['thread'] ? ((('Thread : ' . ' ') . $__templater->func('number', array($__vars['data']['totalPercentage'][$__vars['value']['user_id']]['thread'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true)) . ' % ') : ' ') . '
-																	  ' . ($__vars['data']['totalPercentage'][$__vars['value']['user_id']]['reply'] ? ((('Reply : ' . ' ') . $__templater->func('number', array($__vars['data']['totalPercentage'][$__vars['value']['user_id']]['reply'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true)) . ' % ') : ' ') . '
-																	  ' . ($__vars['data']['totalPercentage'][$__vars['value']['user_id']]['words'] ? ((('Words : ' . ' ') . $__templater->func('number', array($__vars['data']['totalPercentage'][$__vars['value']['user_id']]['words'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true)) . ' % ') : ' ') . '
-																	  ' . ($__vars['data']['totalPercentage'][$__vars['value']['user_id']]['reactions'] ? ((('Reactions : ' . ' ') . $__templater->func('number', array($__vars['data']['totalPercentage'][$__vars['value']['user_id']]['reactions'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true)) . ' % ') : ' ') . '
-																	  ' . ($__vars['data']['totalPercentage'][$__vars['value']['user_id']]['solution'] ? ((('Solution : ' . ' ') . $__templater->func('number', array($__vars['data']['totalPercentage'][$__vars['value']['user_id']]['solution'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true)) . ' % ') : ' ') . '">' . $__templater->func('number', array($__vars['data']['totalPercentage'][$__vars['value']['user_id']]['totalPoints'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true) . '</dd>
+									';
+						$__vars['percentageThread'] = (($__vars['value']['thread_points'] != 0) ? 100 : 0);
+						$__compilerTemp1 .= '
+									';
+						$__vars['percentageSolution'] = (($__vars['value']['solution_points'] != 0) ? 100 : 0);
+						$__compilerTemp1 .= '
+
+									<dd data-xf-init="tooltip" title="' . ((('Thread : ' . ' ') . $__templater->func('number', array($__vars['percentageThread'], $__vars['afterDot'], ), true)) . ' % ') . '
+																	  ' . ((('Reply : ' . ' ') . $__templater->func('number', array($__vars['data']['reply_percentage'], $__vars['afterDot'], ), true)) . ' % ') . '
+																	  ' . ((('Words : ' . ' ') . $__templater->func('number', array($__vars['data']['word_percentage'], $__vars['afterDot'], ), true)) . ' % ') . '
+																	  ' . ((('Reactions : ' . ' ') . $__templater->func('number', array($__vars['data']['reaction_percentage'], $__vars['afterDot'], ), true)) . ' % ') . '
+																	  ' . ((('Solution : ' . ' ') . $__templater->func('number', array($__vars['data']['totalPercentage'][$__vars['value']['user_id']]['solution'], $__vars['afterDot'], ), true)) . ' % ') . '">' . $__templater->func('number', array($__vars['value']['total_percentage'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true) . '</dd>
 
 									';
 					} else {
 						$__compilerTemp1 .= '
-									<dd data-xf-init="tooltip" title="' . ($__vars['data']['totalCounts'][$__vars['value']['user_id']]['thread'] ? ((((('Thread : ' . ' ') . $__templater->func('number', array($__vars['data']['totalCounts'][$__vars['value']['user_id']]['thread'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true)) . ' (') . 'Points') . ')') : ' ') . '
-																	  ' . ($__vars['data']['totalCounts'][$__vars['value']['user_id']]['reply'] ? ((((('Reply : ' . ' ') . $__templater->func('number', array($__vars['data']['totalCounts'][$__vars['value']['user_id']]['reply'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true)) . ' (') . 'Points') . ')') : ' ') . '
-																	  ' . ($__vars['data']['totalCounts'][$__vars['value']['user_id']]['words'] ? ((((('Words : ' . ' ') . $__templater->func('number', array($__vars['data']['totalCounts'][$__vars['value']['user_id']]['words'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true)) . ' (') . 'Points') . ')') : ' ') . '
-																	  ' . ($__vars['data']['totalCounts'][$__vars['value']['user_id']]['reactions'] ? ((((('Reactions : ' . ' ') . $__templater->func('number', array($__vars['data']['totalCounts'][$__vars['value']['user_id']]['reactions'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true)) . ' (') . 'Points') . ')') : ' ') . '
-																	  ' . ($__vars['data']['totalCounts'][$__vars['value']['user_id']]['solution'] ? ((((('Solution : ' . ' ') . $__templater->func('number', array($__vars['data']['totalCounts'][$__vars['value']['user_id']]['solution'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true)) . ' (') . 'Points') . ')') : ' ') . '">' . $__templater->func('number', array($__vars['data']['totalCounts'][$__vars['value']['user_id']]['totalPoints'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true) . '</dd>
+									<dd data-xf-init="tooltip" title="' . ((((('Thread : ' . ' ') . $__templater->func('number', array($__vars['value']['thread_points'], $__vars['afterDot'], ), true)) . ' (') . 'Points') . ')') . '
+																	  ' . ((((('Reply : ' . ' ') . $__templater->func('number', array($__vars['value']['reply_points'], $__vars['afterDot'], ), true)) . ' (') . 'Points') . ')') . '
+																	  ' . ((((('Words : ' . ' ') . $__templater->func('number', array($__vars['value']['word_points'], $__vars['afterDot'], ), true)) . ' (') . 'Points') . ')') . '
+																	  ' . ((((('Reactions : ' . ' ') . $__templater->func('number', array($__vars['value']['reaction_points'], $__vars['afterDot'], ), true)) . ' (') . 'Points') . ')') . '
+																	  ' . ((((('Solution : ' . ' ') . $__templater->func('number', array($__vars['value']['solution_points'], $__vars['afterDot'], ), true)) . ' (') . 'Points') . ')') . '">' . $__templater->func('number', array($__vars['value']['total_points'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true) . '</dd>
 
 								';
 					}

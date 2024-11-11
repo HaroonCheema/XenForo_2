@@ -32,8 +32,6 @@ class Setup extends AbstractSetup
 			$table->addColumn('last_thread_update', 'int')->setDefault(0);
 		});
 
-		// pending
-
 		$this->alterTable('xf_thread_question', function (\XF\Db\Schema\Alter $table) {
 
 			$table->addColumn('points_collected', 'tinyint', 3)->setDefault(0);

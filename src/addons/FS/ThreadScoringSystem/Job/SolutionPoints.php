@@ -30,7 +30,7 @@ class SolutionPoints extends AbstractJob
         // $threadQuestionServ->addEditSolutionPoints($threadQuestion);
 
 
-        $threadSolutions = \XF::finder('XF:ThreadQuestion')->where('solution_user_id', '!=', 0)->limitByPage(1, $limit)->fetch();
+        $threadSolutions = \XF::finder('XF:ThreadQuestion')->where('solution_user_id', '!=', 0)->where('points_collected', false)->limitByPage(1, $limit)->fetch();
 
         if (!$threadSolutions->count()) {
 
@@ -54,10 +54,8 @@ class SolutionPoints extends AbstractJob
                 $threadSolutionUser->total_points = $threadSolutionPoints;
                 $threadSolutionUser->total_percentage = 100;
             } else {
-                if (!$threadSolutionUser['solution_points']) {
-                    $threadSolutionUser->total_points += $threadSolutionPoints;
-                    $threadSolutionUser->total_percentage += 100;
-                }
+                $threadSolutionUser->total_points += $threadSolutionPoints;
+                $threadSolutionUser->total_percentage += 100;
             }
 
             $threadSolutionUser->thread_id = $threadId;
@@ -65,6 +63,8 @@ class SolutionPoints extends AbstractJob
             $threadSolutionUser->solution_points = $threadSolutionPoints;
 
             $threadSolutionUser->save();
+
+            $solution->fastUpdate('points_collected', true);
 
             if (microtime(true) - $startTime >= $maxRunTime) {
                 break;

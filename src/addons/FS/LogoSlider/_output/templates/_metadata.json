@@ -9,14 +9,24 @@
         "version_string": "1.0.0 Alpha",
         "hash": "e343f898d80b0f76c6cbae13ae1afe43"
     },
+    "public/fs_logo_slider_carousel.less": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "a64d7c20be792fc44615a512e60c6307"
+    },
+    "public/fs_logo_slider_item_list.less": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "eb43059a633da902d4d7b3a9ecebc870"
+    },
     "public/fs_logo_slider_list.less": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
-        "hash": "432c16756f2123e35028174daf5fc719"
+        "hash": "12c573ff1005fabdbaa39048ec55f012"
     },
     "public/fs_widget_logo_slider.html": {
-        "version_id": 1000010,
-        "version_string": "1.0.0 Alpha",
-        "hash": "69264c86e5b01389189796065a0ef1e0"
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "ed0fdcc2590a13fe194e93fe43f8944c"
     }
 }

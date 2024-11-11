@@ -1,213 +1,217 @@
-var XFMG = window.XFMG || {};
+window.XFMG = window.XFMG || {}
 
-!function($, window, document, _undefined)
+;((window, document) =>
 {
-	"use strict";
+	'use strict'
 
 	XF.Inserter = XF.extend(XF.Inserter, {
 
 		__backup: {
-			'_applyAppend': '__applyAppend'
+			'_applyAppend': '__applyAppend',
 		},
 
-		_applyAppend: function(selectorOld, $old, $new)
+		_applyAppend (selectorOld, oldEl, newEl)
 		{
-			var validSelectors = ['.js-yourMediaList', '.js-yourAlbumsList', '.js-browseMediaList', '.js-browseAlbumsList'];
+			const validSelectors = ['.js-yourMediaList', '.js-yourAlbumsList', '.js-browseMediaList', '.js-browseAlbumsList']
 			if (validSelectors.indexOf(selectorOld) < 0)
 			{
-				this.__applyAppend(selectorOld, $old, $new);
-				return;
+				this.__applyAppend(selectorOld, oldEl, newEl)
+				return
 			}
 
-			var $placeholders = $old.find('.itemList-item--placeholder'),
-				$children = $new.children();
+			const placeholders = Array.from(oldEl.querySelectorAll('.itemList-item--placeholder'))
+			const children = Array.from(newEl.children)
 
-			if (!$placeholders.length)
+			if (!placeholders.length)
 			{
-				this.__applyAppend(selectorOld, $old, $new);
-				return;
+				this.__applyAppend(selectorOld, oldEl, newEl)
+				return
 			}
 
-			$children.addClass('itemList-item--placeholder--temp');
+			children.forEach(child => child.classList.add('itemList-item--placeholder--temp'))
 
-			this.__applyAppend(selectorOld, $old, $new);
+			this.__applyAppend(selectorOld, oldEl, newEl)
 
-			setTimeout(function()
+			setTimeout(() =>
 			{
-				$children.removeClass('itemList-item--placeholder--temp');
-				$placeholders.remove();
+				children.forEach(child => child.classList.remove('itemList-item--placeholder--temp'))
+				placeholders.forEach(placeholder => placeholder.remove())
 
-				XF.layoutChange();
-			}, 10);
-		}
-	});
+				XF.layoutChange()
+			}, 10)
+		},
+	})
 
 	XFMG.editorButton = {
-		init: function()
-		{
-			XFMG.editorButton.initializeDialog();
-			XF.EditorHelpers.dialogs.gallery = new XFMG.EditorDialogGallery('gallery');
+		container: null,
 
-			if ($.FE.COMMANDS.xfCustom_gallery)
+		init ()
+		{
+			XFMG.editorButton.initializeDialog()
+			XF.EditorHelpers.dialogs.gallery = new XFMG.EditorDialogGallery('gallery')
+
+			if (FroalaEditor.COMMANDS.xfCustom_gallery)
 			{
-				$.FE.COMMANDS.xfCustom_gallery.callback = XFMG.editorButton.callback;
+				FroalaEditor.COMMANDS.xfCustom_gallery.callback = XFMG.editorButton.callback
 			}
 		},
 
-		initializeDialog: function()
+		initializeDialog ()
 		{
 			XFMG.EditorDialogGallery = XF.extend(XF.EditorDialog, {
 				cache: false,
-				$container: null,
+				container: null,
 
-				_init: function(overlay)
+				_init (overlay)
 				{
-					var $container = overlay.$container;
-					$container.on('change', '.js-mediaPicker', XF.proxy(this, 'pick'));
-					this.$container = $container;
+					const container = overlay.container
+					XF.onDelegated(container, 'change', '.js-mediaPicker', XF.proxy(this, 'pick'))
+					this.container = container
 
-					$('#xfmg_editor_dialog_form').submit(XF.proxy(this, 'submit'));
+					XF.on(document.querySelector('#xfmg_editor_dialog_form'), 'submit', XF.proxy(this, 'submit'))
 				},
 
-				_afterShow: function(overlay)
+				_afterShow (overlay)
 				{
 					this.tabCounts = {
 						yourMedia: 0,
 						yourAlbums: 0,
 						browseMedia: 0,
-						browseAlbums: 0
-					};
+						browseAlbums: 0,
+					}
 				},
 
-				pick: function(e)
+				pick (e)
 				{
-					var $checkbox = this.$container.find(e.currentTarget),
-						checked = $checkbox.is(':checked'),
-						$item = $checkbox.parent();
+					const checkbox = e.target
+					const checked = checkbox.checked
+					const item = checkbox.parentNode
 
 					if (checked)
 					{
-						this.checked($item);
+						this.checked(item)
 					}
 					else
 					{
-						this.unchecked($item);
+						this.unchecked(item)
 					}
 				},
 
-				checked: function($item, $checkbox)
+				checked (item, checkbox)
 				{
-					$item.addClass('is-selected');
+					item.classList.add('is-selected')
 
-					var $pane = $item.closest('ul > li.is-active'),
-						$tab = this.$container.find($pane.data('tab')),
-						tabType = $tab.attr('id');
+					const pane = item.closest('ul > li.is-active')
+					const tab = this.container.querySelector(pane.dataset.tab)
+					const tabType = tab.getAttribute('id')
 
-					if (!$tab.hasClass('has-selected'))
+					if (!tab.classList.contains('has-selected'))
 					{
-						$tab.addClass('has-selected');
+						tab.classList.add('has-selected')
 					}
 
-					var $valueEl = this.$container.find('.js-embedValue'),
-						value = JSON.parse($valueEl.val()),
-						type = $item.data('type'), id = $item.data('id'),
-						itemId = type + '-' + id;
+					const valueEl = this.container.querySelector('.js-embedValue')
+					const value = JSON.parse(valueEl.value)
+					const type = item.dataset.type
+					const id = item.dataset.id
+					const itemId = type + '-' + id
 
-					if (value.hasOwnProperty(itemId))
+					if (XF.hasOwn(value, itemId))
 					{
-						return;
+						return
 					}
 
-					value[itemId] = 1;
+					value[itemId] = 1
 
-					var $countEl = $tab.find('.js-tabCounter');
+					const countEl = tab.querySelector('.js-tabCounter')
 
-					this.tabCounts[tabType] += 1;
-					$countEl.text(this.tabCounts[tabType]);
+					this.tabCounts[tabType] += 1
+					countEl.textContent = this.tabCounts[tabType]
 
-					$valueEl.val(JSON.stringify(value));
+					valueEl.value = JSON.stringify(value)
 				},
 
-				unchecked: function($item, $checkbox)
+				unchecked (item, checkbox)
 				{
-					$item.removeClass('is-selected');
+					item.classList.remove('is-selected')
 
-					var $pane = $item.closest('ul > li.is-active'),
-						$tab = this.$container.find($pane.data('tab')),
-						tabType = $tab.attr('id');
+					const pane = item.closest('ul > li.is-active')
+					const tab = this.container.querySelector(pane.dataset.tab)
+					const tabType = tab.getAttribute('id')
 
-					var $valueEl = this.$container.find('.js-embedValue'),
-						value = JSON.parse($valueEl.val()),
-						type = $item.data('type'), id = $item.data('id'),
-						itemId = type + '-' + id;
+					const valueEl = this.container.querySelector('.js-embedValue')
+					const value = JSON.parse(valueEl.value)
+					const type = item.dataset.type
+					const id = item.dataset.id
+					const itemId = type + '-' + id
 
-					if (!value.hasOwnProperty(itemId))
+					if (!XF.hasOwn(value, itemId))
 					{
-						return;
+						return
 					}
 
-					delete value[itemId];
+					delete value[itemId]
 
-					var $countEl = $tab.find('.js-tabCounter');
+					const countEl = tab.querySelector('.js-tabCounter')
 
-					this.tabCounts[tabType] -= 1;
+					this.tabCounts[tabType] -= 1
 
 					if (this.tabCounts[tabType])
 					{
-						$countEl.text(this.tabCounts[tabType]);
+						countEl.textContent = this.tabCounts[tabType]
 					}
 					else
 					{
-						$countEl.text(0);
-						$tab.removeClass('has-selected');
+						countEl.textContent = '0'
+						tab.classList.remove('has-selected')
 					}
 
-					$valueEl.val(JSON.stringify(value));
+					valueEl.value = JSON.stringify(value)
 				},
 
-				submit: function(e)
+				submit (e)
 				{
-					e.preventDefault();
+					e.preventDefault()
 
-					var ed = this.ed,
-						overlay = this.overlay,
-						$valueEl = this.$container.find('.js-embedValue'),
-						value = JSON.parse($valueEl.val()),
-						output = '';
+					const ed = this.ed
+					const overlay = this.overlay
+					const valueEl = this.container.querySelector('.js-embedValue')
+					const value = JSON.parse(valueEl.value)
+					let output = ''
 
-					for (var key in value)
+					for (const key in value)
 					{
-						if (!value.hasOwnProperty(key))
+						if (!XF.hasOwn(value, key))
 						{
-							continue;
+							continue
 						}
 
-						var parts = key.split('-'),
-							type = parts[0], id = parts[1];
+						const parts = key.split('-')
+						const type = parts[0]
+						const id = parts[1]
 
-						output += XF.htmlspecialchars('[GALLERY=' + type + ', ' + parseInt(id) + '][/GALLERY]');
-						output += '<p><br></p>';
+						output += XF.htmlspecialchars('[GALLERY=' + type + ', ' + parseInt(id) + '][/GALLERY]')
+						output += '<p><br></p>'
 					}
 
-					ed.selection.restore();
-					ed.html.insert(output);
+					ed.selection.restore()
+					ed.html.insert(output)
 
-					if (typeof XF.EditorHelpers.normalizeAfterInsert === "function")
+					if (typeof XF.EditorHelpers.normalizeAfterInsert === 'function')
 					{
-						XF.EditorHelpers.normalizeAfterInsert(ed);
+						XF.EditorHelpers.normalizeAfterInsert(ed)
 					}
 
-					overlay.hide();
-				}
-			});
+					overlay.hide()
+				},
+			})
 		},
 
-		callback: function()
+		callback ()
 		{
-			XF.EditorHelpers.loadDialog(this, 'gallery');
-		}
-	};
+			XF.EditorHelpers.loadDialog(this, 'gallery')
+		},
+	}
 
-	$(document).on('editor:first-start', XFMG.editorButton.init);
-}
-(jQuery, window, document);
+	XF.on(document, 'editor:first-start', XFMG.editorButton.init)
+})(window, document)

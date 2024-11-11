@@ -80,12 +80,12 @@ class Logo extends AbstractController
 
     protected function saveImage($logo)
     {
-        $uploads['image'] = $this->request->getFile('image', false, false);
+        $uploads = $this->request->getFile('image', false, false);
 
-        if ($uploads['image']) {
+        if ($uploads) {
             $uploadService = $this->service('FS\LogoSlider:Upload', $logo);
 
-            if (!$uploadService->setImageFromUpload($uploads['image'])) {
+            if (!$uploadService->setImageFromUpload($uploads)) {
                 return $this->error($uploadService->getError());
             }
 

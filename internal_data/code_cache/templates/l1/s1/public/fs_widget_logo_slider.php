@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 69264c86e5b01389189796065a0ef1e0
+// FROM HASH: ed0fdcc2590a13fe194e93fe43f8944c
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -10,13 +10,13 @@ return array(
 		$__templater->includeCss('fs_logo_slider_list.less');
 		$__finalCompiled .= '
 	';
-		$__templater->includeCss('lightslider.less');
+		$__templater->includeCss('fs_logo_slider_carousel.less');
 		$__finalCompiled .= '
 
 	';
 		$__templater->includeJs(array(
-			'src' => 'vendor/lightslider/lightslider.js',
-			'min' => '1',
+			'prod' => 'LogoSlider/carousel-compiled.js',
+			'dev' => 'vendor/fancyapps/carousel/carousel.umd.js, vendor/fancyapps/carousel/carousel.autoplay.umd.js',
 		));
 		$__finalCompiled .= '
 	';
@@ -24,6 +24,49 @@ return array(
 			'src' => 'LogoSlider/slider.js',
 			'min' => '1',
 		));
+		$__finalCompiled .= '
+
+	';
+		$__templater->inlineJs('
+		XF.extendObject(XF.phrases, {
+		next_slide: "' . $__templater->filter('next_slide', array(array('escape', array('js', )),), false) . '",
+		previous_slide: "' . $__templater->filter('previous_slide', array(array('escape', array('js', )),), false) . '",
+		go_to_slide_x: "' . $__templater->filter('go_to_slide_x', array(array('escape', array('js', )),), false) . '"
+		});
+	');
+		$__finalCompiled .= '
+
+	';
+		$__templater->inlineCss('
+		[data-widget-key="' . $__vars['widget']['key'] . '"]
+		{
+		--xfmg-slidesPerPage: ' . $__vars['xf']['options']['fs_logo_slider_logos'] . ';
+		}
+
+		@media (max-width: 900px)
+		{
+		[data-widget-key="' . $__vars['widget']['key'] . '"]
+		{
+		--xfmg-slidesPerPage: 4;
+		}
+		}
+
+		@media (max-width: 650px)
+		{
+		[data-widget-key="' . $__vars['widget']['key'] . '"]
+		{
+		--xfmg-slidesPerPage: 3;
+		}
+		}
+
+		@media (max-width: 480px)
+		{
+		[data-widget-key="' . $__vars['widget']['key'] . '"]
+		{
+		--xfmg-slidesPerPage: 2;
+		}
+		}
+	');
 		$__finalCompiled .= '
 
 	<div class="block" ' . $__templater->func('widget_data', array($__vars['widget'], ), true) . '>
@@ -34,18 +77,20 @@ return array(
 			<div class="block-body block-row">
 				<div class="itemList itemList--slider"
 					 data-xf-init="item-slider"
-					 data-xf-item-slider=\'{"item":' . $__templater->escape($__vars['xf']['options']['fs_logo_slider_logos']) . ',"itemWide":3,"itemMedium":2,"itemNarrow":1,"auto":true,"loop":true}\'>
-					
+					 data-xf-item-slider=\'{"item":' . $__templater->escape($__vars['xf']['options']['fs_logo_slider_logos']) . ',"itemWide":4,"itemMedium":3,"itemNarrow":2,"auto":true,"pauseOnHover":true,"loop":true,"pager":false}\'>
+
 					';
 		if ($__templater->isTraversable($__vars['data'])) {
 			foreach ($__vars['data'] AS $__vars['key'] => $__vars['value']) {
 				$__finalCompiled .= '
 						<div class="itemList-item itemList-item--slider">
 							<a href="' . $__templater->escape($__vars['value']['logo_url']) . '" target="_blank">
+
 								<span class="xfmgThumbnail xfmgThumbnail--image xfmgThumbnail--fluid">
-									<img class="xfmgThumbnail-image" src="' . $__templater->func('base_url', array($__templater->method($__vars['value'], 'getImgUrl', array()), ), true) . '" alt="xyz' . $__templater->escape($__vars['key']) . '.jpeg" style="width: ' . $__templater->escape($__vars['xf']['options']['fs_logo_slider_logo_dimensions']['width']) . 'px; height: ' . $__templater->escape($__vars['xf']['options']['fs_logo_slider_logo_dimensions']['height']) . 'px;">
+									<img class="xfmgThumbnail-image" src="' . $__templater->func('base_url', array($__templater->method($__vars['value'], 'getImgUrl', array()), ), true) . '" alt="xyz' . $__templater->escape($__vars['key']) . '.jpeg" loading="lazy" style="width: ' . $__templater->escape($__vars['xf']['options']['fs_logo_slider_logo_dimensions']['width']) . 'px; height: ' . $__templater->escape($__vars['xf']['options']['fs_logo_slider_logo_dimensions']['height']) . 'px;">
 									<span class="xfmgThumbnail-icon"></span>
 								</span>
+
 							</a>
 						</div>
 					';

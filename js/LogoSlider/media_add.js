@@ -1,59 +1,59 @@
-var XFMG = window.XFMG || {};
+window.XFMG = window.XFMG || {}
 
-!function($, window, document, _undefined)
+;((window, document) =>
 {
-	"use strict";
+	'use strict'
 
-	XFMG.attachmentManager = null;
+	XFMG.attachmentManager = null
 
 	XFMG.MediaManager = XF.Element.newHandler({
 
 		// Some option defaults set on the attachment-manager element
 		options: {
 			mediaActionUrl: null,
-			onInsertHandler: '.js-mediaOnInsertHandler'
+			onInsertHandler: '.js-mediaOnInsertHandler',
 		},
 
-		init: function()
+		init ()
 		{
-			XFMG.attachmentManager = XF.Element.applyHandler(this.$target, 'attachment-manager', this.options);
+			XFMG.attachmentManager = XF.Element.applyHandler(this.target, 'attachment-manager', this.options)
 
 			// Merge options from attachment manager
-			this.options = $.extend({}, this.options, XFMG.attachmentManager.options);
+			this.options = XF.extendObject({}, this.options, XFMG.attachmentManager.options)
 
-			var $filesContainer = XFMG.attachmentManager.$filesContainer;
-			$filesContainer.on('click', this.options.actionButton, XF.proxy(this, 'actionButtonClick'));
+			const filesContainer = XFMG.attachmentManager.filesContainer
+			XF.onDelegated(filesContainer, 'click', this.options.actionButton, XF.proxy(this, 'actionButtonClick'))
 		},
 
-		actionButtonClick: function(e)
+		actionButtonClick (e)
 		{
-			e.preventDefault();
+			e.preventDefault()
 
-			var $target = $(e.target);
-			if (!$target.is('button'))
+			let target = e.target
+			if (!target.matches('button'))
 			{
-				$target = $target.closest('button');
+				target = target.closest('button')
 			}
 
-			var	action = $target.attr('data-action'),
-				$row = $target.closest(this.options.fileRow);
+			const action = target.getAttribute('data-action')
+			const row = target.closest(this.options.fileRow)
 
 			switch (action)
 			{
 				case 'delete':
-					this.deleteMediaItem($row);
-					break;
+					this.deleteMediaItem(row)
+					break
 			}
 		},
 
-		deleteMediaItem: function($row)
+		deleteMediaItem (row)
 		{
-			var tempMediaId = $row.data('temp-media-id'),
-				mediaActionUrl = this.options.mediaActionUrl;
+			const tempMediaId = row.dataset.tempMediaId
+			const mediaActionUrl = this.options.mediaActionUrl
 
 			if (!tempMediaId)
 			{
-				return;
+				return
 			}
 
 			if (mediaActionUrl)
@@ -62,111 +62,111 @@ var XFMG = window.XFMG || {};
 					'post',
 					mediaActionUrl,
 					{ delete: tempMediaId },
-					function (data)
+					data =>
 					{
 						if (data.delete)
 						{
-							XFMG.attachmentManager.removeFileRow($row);
+							XFMG.attachmentManager.removeFileRow(row)
 						}
 					},
-					{ skipDefaultSuccess: true }
-				);
+					{ skipDefaultSuccess: true },
+				)
 			}
 			else
 			{
-				XFMG.attachmentManager.removeFileRow($row);
+				XFMG.attachmentManager.removeFileRow(row)
 			}
-		}
-	});
+		},
+	})
 
 	XFMG.LinkChecker = XF.Element.newHandler({
 
 		options: {
 			pasteInput: '.js-pasteInput',
-			pasteError: '.js-pasteError'
+			pasteError: '.js-pasteError',
 		},
 
-		$pasteInput: null,
-
-		$pasteError: null,
+		pasteInput: null,
+		pasteError: null,
 
 		attachmentManager: null,
 
-		init: function()
+		init ()
 		{
-			var $target = this.$target;
+			const target = this.target
 
-			this.attachmentManager = XFMG.attachmentManager;
+			this.attachmentManager = XFMG.attachmentManager
 
-			this.$pasteInput = $target.find(this.options.pasteInput);
-			if (!this.$pasteInput.length)
+			this.pasteInput = target.querySelector(this.options.pasteInput)
+			if (!this.pasteInput)
 			{
-				console.error('No input to monitor for pasted text.');
-				return;
+				console.error('No input to monitor for pasted text.')
+				return
 			}
 
-			this.$pasteError = $target.find(this.options.pasteError);
+			this.pasteError = target.querySelector(this.options.pasteError)
 
-			this.$pasteInput.on('paste', XF.proxy(this, 'paste'));
-			$target.on('ajax-submit:before', XF.proxy(this, 'beforeSubmit'));
-			$target.on('ajax-submit:response', XF.proxy(this, 'complete'));
-			$target.on('ajax-submit:error', XF.proxy(this, 'error'));
+			XF.on(this.pasteInput, 'paste', XF.proxy(this, 'paste'))
+			XF.on(target, 'ajax-submit:before', XF.proxy(this, 'beforeSubmit'))
+			XF.on(target, 'ajax-submit:response', XF.proxy(this, 'complete'))
+			XF.on(target, 'ajax-submit:error', XF.proxy(this, 'error'))
 		},
 
-		paste: function(e)
+		paste (e)
 		{
-			var $pasteError = this.$pasteError,
-				self = this;
+			const pasteError = this.pasteError
 
-			setTimeout(function()
+			setTimeout(() =>
 			{
-				self.$target.submit();
-				$pasteError.removeClassTransitioned('is-active');
-			}, 100);
+				XF.trigger(this.target, 'submit')
+				XF.Transition.removeClassTransitioned(pasteError, 'is-active')
+			}, 100)
 		},
 
-		beforeSubmit: function(e, config)
+		beforeSubmit (e)
 		{
 			if (this.attachmentManager == null)
 			{
-				config.preventSubmit = true;
-				console.error("No attachment manager available on %o.", this.$target);
+				e.preventSubmit = true
+				console.error('No attachment manager available on %o.', this.target)
 			}
 		},
 
-		complete: function(e, data)
+		complete (e)
 		{
+			const { data } = e
+
 			if (data.errors || data.exception)
 			{
-				return;
+				return
 			}
 
-			e.preventDefault();
+			e.preventDefault()
 
-			this.$pasteInput.val('');
+			this.pasteInput.value = ''
 
-			XF.hideOverlays();
+			XF.hideOverlays()
 
-			this.attachmentManager.insertUploadedRow(data.attachment);
+			this.attachmentManager.insertUploadedRow(data.attachment)
 		},
 
-		error: function(e, data)
+		error (e)
 		{
-			var $pasteError = this.$target.find(this.options.pasteError);
+			const { data } = e
+			const pasteError = this.pasteError
 
-			if ($pasteError.length)
+			if (pasteError)
 			{
-				e.preventDefault();
+				e.preventDefault()
 
-				$pasteError.find('div').text(data.errors[0]);
-				$pasteError.addClassTransitioned('is-active');
+				pasteError.querySelector('div').textContent = data.errors[0]
+				XF.Transition.addClassTransitioned(pasteError, 'is-active')
 
-				this.$pasteInput.val('');
+				this.pasteInput.value = ''
 			}
-		}
-	});
+		},
+	})
 
-	XF.Element.register('media-manager', 'XFMG.MediaManager');
-	XF.Element.register('link-checker', 'XFMG.LinkChecker');
-}
-(jQuery, window, document);
+	XF.Element.register('media-manager', 'XFMG.MediaManager')
+	XF.Element.register('link-checker', 'XFMG.LinkChecker')
+})(window, document)

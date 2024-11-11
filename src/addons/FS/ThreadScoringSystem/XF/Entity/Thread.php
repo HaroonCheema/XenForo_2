@@ -41,23 +41,32 @@ class Thread extends XFCP_Thread
 
     public function getPointsSums()
     {
-        $records = $this->finder('FS\ThreadScoringSystem:ScoringSystem')->where('thread_id', $this->thread_id)->fetch();
+        $orderBy = \XF::options()->fs_thread_scoring_list_order;
+        $minimumPoints = \XF::options()->fs_total_minimum_req_points;
 
-        $allTypePoints = \XF::service('FS\ThreadScoringSystem:ReplyPoints');
+        $records = $this->finder('FS\ThreadScoringSystem:ScoringSystem')->where('thread_id', $this->thread_id)->where('total_points', '>=', $minimumPoints)->order('total_points', $orderBy)->fetch();
 
-        $sumOredByParams = $allTypePoints->getPointsSums($records);
-
-        return $sumOredByParams;
+        return count($records) ? $records : [];
     }
 
     public function getPercentageSums()
     {
-        $records = $this->finder('FS\ThreadScoringSystem:ScoringSystem')->where('thread_id', $this->thread_id)->fetch();
+        $orderBy = \XF::options()->fs_thread_scoring_list_order;
+        $minimumPoints = \XF::options()->fs_total_minimum_req_points;
 
-        $allTypePoints = \XF::service('FS\ThreadScoringSystem:ReplyPoints');
+        $records = $this->finder('FS\ThreadScoringSystem:ScoringSystem')->where('thread_id', $this->thread_id)->where('total_points', '>=', $minimumPoints)->order('total_percentage', $orderBy)->fetch();
 
-        $sumOredByParams = $allTypePoints->getPercentageSums($records);
-
-        return $sumOredByParams;
+        return count($records) ? $records : [];
     }
+
+    // public function getPercentageSums()
+    // {
+    //     $records = $this->finder('FS\ThreadScoringSystem:ScoringSystem')->where('thread_id', $this->thread_id)->fetch();
+
+    //     $allTypePoints = \XF::service('FS\ThreadScoringSystem:ReplyPoints');
+
+    //     $sumOredByParams = $allTypePoints->getPercentageSums($records);
+
+    //     return $sumOredByParams;
+    // }
 }

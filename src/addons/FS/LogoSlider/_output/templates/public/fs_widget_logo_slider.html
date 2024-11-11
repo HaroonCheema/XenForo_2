@@ -1,9 +1,48 @@
 <xf:if is="$data is not empty">
 	<xf:css src="fs_logo_slider_list.less" />
-	<xf:css src="lightslider.less" />
+	<xf:css src="fs_logo_slider_carousel.less" />
 
-	<xf:js src="vendor/lightslider/lightslider.js" min="1" />
+	<xf:js prod="LogoSlider/carousel-compiled.js" dev="vendor/fancyapps/carousel/carousel.umd.js, vendor/fancyapps/carousel/carousel.autoplay.umd.js" />
 	<xf:js src="LogoSlider/slider.js" min="1" />
+
+	<xf:js>
+		XF.extendObject(XF.phrases, {
+		next_slide: "{{ phrase('next_slide')|escape('js') }}",
+		previous_slide: "{{ phrase('previous_slide')|escape('js') }}",
+		go_to_slide_x: "{{ phrase('go_to_slide_x')|escape('js') }}"
+		});
+	</xf:js>
+
+	<xf:css>
+		[data-widget-key="{$widget.key}"]
+		{
+		--xfmg-slidesPerPage: {{$xf.options.fs_logo_slider_logos}};
+		}
+
+		@media (max-width: 900px)
+		{
+		[data-widget-key="{$widget.key}"]
+		{
+		--xfmg-slidesPerPage: 4;
+		}
+		}
+
+		@media (max-width: 650px)
+		{
+		[data-widget-key="{$widget.key}"]
+		{
+		--xfmg-slidesPerPage: 3;
+		}
+		}
+
+		@media (max-width: 480px)
+		{
+		[data-widget-key="{$widget.key}"]
+		{
+		--xfmg-slidesPerPage: 2;
+		}
+		}
+	</xf:css>
 
 	<div class="block" {{ widget_data($widget) }}>
 		<div class="block-container">
@@ -13,15 +52,17 @@
 			<div class="block-body block-row">
 				<div class="itemList itemList--slider"
 					 data-xf-init="item-slider"
-					 data-xf-item-slider='{"item":{$xf.options.fs_logo_slider_logos},"itemWide":3,"itemMedium":2,"itemNarrow":1,"auto":true,"loop":true}'>
-					
+					 data-xf-item-slider='{"item":{$xf.options.fs_logo_slider_logos},"itemWide":4,"itemMedium":3,"itemNarrow":2,"auto":true,"pauseOnHover":true,"loop":true,"pager":false}'>
+
 					<xf:foreach loop="$data" key="$key" value="$value">
 						<div class="itemList-item itemList-item--slider">
 							<a href="{{ $value.logo_url }}" target="_blank">
+
 								<span class="xfmgThumbnail xfmgThumbnail--image xfmgThumbnail--fluid">
-									<img class="xfmgThumbnail-image" src="{{ base_url($value.getImgUrl()) }}" alt="xyz{$key}.jpeg" style="width: {$xf.options.fs_logo_slider_logo_dimensions.width}px; height: {$xf.options.fs_logo_slider_logo_dimensions.height}px;">
+									<img class="xfmgThumbnail-image" src="{{ base_url($value.getImgUrl()) }}" alt="xyz{$key}.jpeg" loading="lazy" style="width: {$xf.options.fs_logo_slider_logo_dimensions.width}px; height: {$xf.options.fs_logo_slider_logo_dimensions.height}px;">
 									<span class="xfmgThumbnail-icon"></span>
 								</span>
+
 							</a>
 						</div>
 					</xf:foreach>

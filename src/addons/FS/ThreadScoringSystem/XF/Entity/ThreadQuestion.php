@@ -2,35 +2,57 @@
 
 namespace FS\ThreadScoringSystem\XF\Entity;
 
+use XF\Mvc\Entity\Structure;
+
 class ThreadQuestion extends XFCP_ThreadQuestion
 {
-    // protected function _postSave()
-    // {
-    //     $parent = parent::_postSave();
 
-    //     if ($this->isInsert() && $this->solution_post_id && $this->solution_user_id) {
-    //         $threadQuestionServ = \XF::service('FS\ThreadScoringSystem:ReplyPoints');
-    //         $threadQuestionServ->addEditSolutionPoints($this);
-    //     }
+    public static function getStructure(Structure $structure)
+    {
+        $structure = parent::getStructure($structure);
 
-    //     if ($this->isUpdate() && $this->isChanged('solution_post_id')) {
+        $structure->columns['points_collected'] =  ['type' => self::BOOL, 'default' => false];
 
-    //         if ($this->solution_post_id) {
-    //             $threadQuestionServ = \XF::service('FS\ThreadScoringSystem:ReplyPoints');
-    //             $threadQuestionServ->addEditSolutionPoints($this);
-    //         } else {
-    //             $deleteSolution = \XF::finder('FS\ThreadScoringSystem:ScoringSystem')->where('points_type', 'solution')->where('thread_id', $this->thread_id)->fetch();
+        return $structure;
+    }
 
-    //             if (count($deleteSolution)) {
-    //                 foreach ($deleteSolution as $value) {
-    //                     $value->delete();
-    //                 }
-    //             }
-    //         }
-    //     }
+    protected function _postSave()
+    {
+        $parent = parent::_postSave();
 
-    //     return $parent;
-    // }
+        if ($this->isUpdate() && $this->isChanged('solution_user_id')) {
+
+            if ($this->solution_user_id) {
+                $relaceSolutionPoints = \XF::finder('FS\ThreadScoringSystem:ScoringSystem')->where('solution_points', '!=', 0)->where('thread_id', $this->thread_id)->fetchOne();
+
+                if ($relaceSolutionPoints) {
+                    $relaceSolutionPoints->total_points -= $relaceSolutionPoints->solution_points;
+                    $relaceSolutionPoints->total_percentage -= 100;
+
+                    $relaceSolutionPoints->solution_points = 0;
+
+                    $relaceSolutionPoints->save();
+
+                    $this->fastUpdate('points_collected', false);
+                }
+            } else {
+                $deleteSolution = \XF::finder('FS\ThreadScoringSystem:ScoringSystem')->where('solution_points', '!=', 0)->where('thread_id', $this->thread_id)->fetchOne();
+
+                if ($deleteSolution) {
+                    $deleteSolution->total_points -= $deleteSolution->solution_points;
+                    $deleteSolution->total_percentage -= 100;
+
+                    $deleteSolution->solution_points = 0;
+
+                    $deleteSolution->save();
+
+                    $this->fastUpdate('points_collected', false);
+                }
+            }
+        }
+
+        return $parent;
+    }
 
     protected function _postDelete()
     {
@@ -40,12 +62,17 @@ class ThreadQuestion extends XFCP_ThreadQuestion
 
         if ($threadQuestion->solution_user_id) {
 
-            $deleteSolution = \XF::finder('FS\ThreadScoringSystem:ScoringSystem')->where('points_type', 'solution')->where('thread_id', $threadQuestion->thread_id)->fetch();
+            $deleteSolution = \XF::finder('FS\ThreadScoringSystem:ScoringSystem')->where('user_id', $threadQuestion->solution_user_id)->where('thread_id', $threadQuestion->thread_id)->fetchOne();
 
-            if (count($deleteSolution)) {
-                foreach ($deleteSolution as $value) {
-                    $value->delete();
-                }
+            if ($deleteSolution) {
+
+                $deleteSolution->total_points -= $deleteSolution->solution_points;
+
+                $deleteSolution->solution_points = 0;
+
+                $deleteSolution->save();
+
+                $threadQuestion->fastUpdate('points_collected', false);
             }
         }
 

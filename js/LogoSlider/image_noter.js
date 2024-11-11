@@ -1,154 +1,146 @@
-var XFMG = window.XFMG || {};
+window.XFMG = window.XFMG || {}
 
-!function($, window, document, _undefined)
+;((window, document) =>
 {
-	"use strict";
+	'use strict'
 
 	XFMG.ImageNoter = XF.Element.newHandler({
 
 		options: {
 			image: '.js-mediaImage',
 			toggleId: '#js-noterToggle',
-			editUrl: null
+			editUrl: null,
 		},
 
-		$image: null,
-		$toggle: null,
-		$cropBox: null,
-		$editingNote: null,
+		image: null,
+		cropper: null,
+		toggle: null,
+		cropBox: null,
+		editingNote: null,
 
 		active: false,
 		trigger: null,
 		tooltip: null,
 
-		init: function()
+		init ()
 		{
-			var $container = this.$target,
-				$image = $container.find(this.options.image),
-				$toggle = $(this.options.toggleId);
+			const container = this.target
+			const image = container.querySelector(this.options.image)
+			const toggle = document.querySelector(this.options.toggleId)
 
-			if (!$image.length || !$image.is('img'))
+			if (!image || !image.matches('img'))
 			{
-				console.error('Image noter must contain an img element');
+				console.error('Image noter must contain an img element')
 			}
 
-			this.$image = $image;
+			this.image = image
 
-			if (!$image.prop('complete'))
+			if (!image.complete)
 			{
-				$image.on('load', XF.proxy(this, 'prepareNotes'));
+				XF.on(image, 'load', XF.proxy(this, 'prepareNotes'))
 			}
 			else
 			{
-				this.prepareNotes();
+				this.prepareNotes()
 			}
 
-			$(window).onPassive('resize', XF.proxy(this, 'prepareNotes'));
+			XF.on(window, 'resize', XF.proxy(this, 'prepareNotes'), { passive: true })
 
 			// no toggle == no permission to add notes
-			if ($toggle.length)
+			if (toggle)
 			{
-				this.$toggle = $toggle;
-				$toggle.on('click', XF.proxy(this, 'toggleNewNoteEditor'));
+				this.toggle = toggle
+				XF.on(toggle, 'click', XF.proxy(this, 'toggleNewNoteEditor'))
 			}
 		},
 
-		prepareNotes: function()
+		prepareNotes ()
 		{
-			var self = this,
-				$image = this.$image,
-				width = $image[0].width,
-				naturalWidth = $image[0].naturalWidth,
-				multiplier = (naturalWidth / width),
-				$notes = this.$target.find('.js-mediaNote');
+			const image = this.image
+			const width = image.width
+			const naturalWidth = image.naturalWidth
+			const multiplier = (naturalWidth / width)
+			const notes = Array.from(this.target.querySelectorAll('.js-mediaNote'))
 
-			$notes.each(function()
+			notes.forEach(note =>
 			{
-				var $note = $(this),
-					coords = $note.data('note-data');
+				const coords = JSON.parse(note.dataset.noteData) || {}
 
-				for (var key in coords)
+				for (const key in coords)
 				{
-					if (!coords.hasOwnProperty(key))
+					if (!XF.hasOwn(coords, key))
 					{
-						continue;
+						continue
 					}
 
 					// we need to keep the original values so adjusted values should be suffixed with _
-					coords[key + '_'] = (coords[key] / multiplier);
+					coords[key + '_'] = (coords[key] / multiplier)
 				}
 
 				// adjusted values based on multiplier
-				$note.css({
-					left: coords['tag_x1_'],
-					top: coords['tag_y1_'],
-					width: coords['tag_width_'],
-					height: coords['tag_height_']
-				});
+				note.style.left = `${coords['tag_x1_']}px`
+				note.style.top = `${coords['tag_y1_']}px`
+				note.style.width = `${coords['tag_width_']}px`
+				note.style.height = `${coords['tag_height_']}px`
 
-				if (!$note.data('prepared'))
+				if (!XF.DataStore.get(note, 'prepared'))
 				{
-					self.initNote($note);
+					this.initNote(note)
 				}
-			});
+			})
 		},
 
-		initNote: function($note)
+		initNote (note)
 		{
-			var $element = this.getTooltipElement($note);
+			const element = this.getTooltipElement(note)
 
-			var tooltip = new XF.TooltipElement($element.clone().contents(), {
+			const tooltip = new XF.TooltipElement(element.cloneNode(true).outerHTML, {
 				extraClass: 'tooltip--mediaNote tooltip--mediaNote--plain',
 				noTouch: false,
-				html: true
-			});
+				html: true,
+			})
 
-			var $mediaContainer = this.$target.find('.media-container-image').first(),
-				self = this;
+			const mediaContainer = this.target.querySelector('.media-container-image')
 
-			tooltip.addSetupCallback(function($tooltipEl)
+			tooltip.addSetupCallback(el =>
 			{
-				$tooltipEl.on('mouseenter', function()
+				XF.on(el, 'mouseenter', () => mediaContainer.classList.add('is-tooltip-active'))
+				XF.on(el, 'mouseleave', () => mediaContainer.classList.remove('is-tooltip-active'))
+
+				const edit = el.querySelector('.js-mediaNoteTooltipEdit')
+				if (edit)
 				{
-					$mediaContainer.addClass('is-tooltip-active');
-				});
+					XF.on(edit, 'click', XF.proxy(this, 'editNote', note))
+				}
+			})
 
-				$tooltipEl.on('mouseleave', function()
-				{
-					$mediaContainer.removeClass('is-tooltip-active');
-				});
-
-				$tooltipEl.find('.js-mediaNoteTooltipEdit').on('click', XF.proxy(self, 'editNote', $note));
-			});
-
-			var trigger = new XF.TooltipTrigger($note, tooltip, {
+			const trigger = new XF.TooltipTrigger(note, tooltip, {
 				maintain: true,
-				trigger: 'hover focus click'
-			});
+				trigger: 'hover focus click',
+			})
 
-			trigger.init();
+			trigger.init()
 
-			$note.data('prepared', true);
-			$note.data('tooltip', tooltip);
-			$note.data('trigger', trigger);
-			$note.show();
+			XF.DataStore.set(note, 'prepared', true)
+			XF.DataStore.set(note, 'tooltip', tooltip)
+			XF.DataStore.set(note, 'trigger', trigger)
+			XF.display(note)
 
-			$element.remove();
+			element.remove()
 		},
 
-		getTooltipElement: function($note)
+		getTooltipElement (note)
 		{
-			return XF.findRelativeIf('< .js-mediaContainerImage | .js-mediaNoteTooltip' + $note.data('note-id'), $note);
+			return XF.findRelativeIf('< .js-mediaContainerImage | .js-mediaNoteTooltip' + note.dataset.noteId, note)
 		},
 
-		editNote: function($note)
+		editNote (note)
 		{
-			var coords = $note.data('note-data'),
-				self = this;
+			const coords = JSON.parse(note.dataset.noteData)
 
-			$note.trigger('tooltip:hide');
+			XF.trigger(note, 'tooltip:hide')
 
-			this.$image.cropper({
+			this.cropper = new Cropper(this.image, {
 				viewMode: 2,
 				dragMode: 'none',
 				aspectRatio: 1,
@@ -163,223 +155,226 @@ var XFMG = window.XFMG || {};
 					x: coords['tag_x1'],
 					y: coords['tag_y1'],
 					width: coords['tag_width'],
-					height: coords['tag_height']
+					height: coords['tag_height'],
 				},
-				ready: function()
+				ready: () =>
 				{
-					self.$editingNote = $note;
-					self.$cropBox = self.$target.find('.cropper-crop-box').first();
+					this.editingNote = note
+					this.cropBox = this.target.querySelector('.cropper-crop-box')
 
-					if (!self.tooltip && !self.trigger)
+					if (!this.tooltip && !this.trigger)
 					{
-						self.tooltip = new XF.TooltipElement(XF.proxy(self, 'getEditNoteTooltipContent'), {
+						this.tooltip = new XF.TooltipElement(XF.proxy(this, 'getEditNoteTooltipContent'), {
 							extraClass: 'tooltip--mediaNote',
 							html: true,
-							loadRequired: true
-						});
-						self.trigger = new XF.TooltipTrigger(self.$cropBox, self.tooltip, {
+							loadRequired: true,
+						})
+						this.trigger = new XF.TooltipTrigger(this.cropBox, this.tooltip, {
 							maintain: true,
 							trigger: '',
-							onShow: function(trigger, tooltip)
+							onShow (trigger, tooltip)
 							{
-								var $tooltip = tooltip.$tooltip;
+								const tooltipEl = tooltip.tooltip
+								const textarea = tooltipEl.querySelector('textarea')
 
-								$tooltip.on('tooltip:shown', function()
+								if (textarea)
 								{
-									$tooltip.find('textarea').trigger('autosize');
-								});
-							}
-						});
+									XF.on(tooltipEl, 'tooltip:shown', () => XF.trigger(textarea, 'autosize'))
+								}
+							},
+						})
 
-						self.trigger.init();
-						self.$cropBox.trigger('tooltip:show');
+						this.trigger.init()
+						XF.trigger(this.cropBox, 'tooltip:show')
 
 						// seems to workaround issue where cropend doesn't fire after the first crop
-						self.$image.trigger('cropend');
+						XF.trigger(this.image, 'cropend')
 					}
 				},
 				cropstart: XF.proxy(this, 'editNoteCropstart'),
-				cropend: XF.proxy(this, 'editNoteCropend')
-			});
+				cropend: XF.proxy(this, 'editNoteCropend'),
+			})
 		},
 
-		editNoteCropstart: function(e)
+		editNoteCropstart (e)
 		{
 			if (!this.trigger)
 			{
-				return;
+				return
 			}
 
-			this.$cropBox.trigger('tooltip:hide');
+			XF.trigger(this.cropBox, 'tooltip:hide')
 		},
 
-		editNoteCropend: function(e)
+		editNoteCropend (e)
 		{
-			var self = this;
-
-			this.$cropBox.trigger('tooltip:show');
-			this.tooltip.$tooltip.on('tooltip:shown', function(e)
+			XF.trigger(this.cropBox, 'tooltip:show')
+			XF.on(this.tooltip.tooltip, 'tooltip:shown', e =>
 			{
-				var $tooltip = $(e.target),
-					coords = self.getCoordsFromCropper();
+				const tooltip = e.target
+				const coords = this.getCoordsFromCropper()
 
-				$tooltip.find('.js-noteData').val(JSON.stringify(coords));
-			});
+				tooltip.querySelector('.js-noteData').value = JSON.stringify(coords)
+			})
 		},
 
-		getEditNoteTooltipContent: function(onContent)
+		getEditNoteTooltipContent (onContent)
 		{
-			var self = this,
-				options = {
-					skipDefault: true,
-					skipError: true,
-					global: false
-				};
+			const options = {
+				skipDefault: true,
+				skipError: true,
+				global: false,
+			}
 
 			XF.ajax(
-				'get', this.options.editUrl, { note_id: this.$editingNote.data('note-id') },
-				function(data) { self.editNoteLoaded(data, onContent); },
-				options
-			);
+				'get',
+				this.options.editUrl,
+				{ note_id: this.editingNote.dataset.noteId },
+				data => { this.editNoteLoaded(data, onContent) },
+				options,
+			)
 		},
 
-		editNoteLoaded: function(data, onContent)
+		editNoteLoaded: function (data, onContent)
 		{
 			if (!data.html)
 			{
-				return;
+				return
 			}
 
-			var self = this;
-			XF.setupHtmlInsert(data.html, function($html, container, onComplete)
+			XF.setupHtmlInsert(data.html, (html, container, onComplete) =>
 			{
-				onContent($html);
+				onContent(html)
 
-				var $cancel = $html.find('.js-cancelButton');
-				$cancel.on('click', XF.proxy(self, 'editNoteCancel'));
+				const cancel = html.querySelector('.js-cancelButton')
+				XF.on(cancel, 'click', XF.proxy(this, 'editNoteCancel'))
 
-				$html.on('ajax-submit:response', XF.proxy(self, 'editNoteHandle'));
-			});
+				XF.on(html, 'ajax-submit:response', XF.proxy(this, 'editNoteHandle'))
+			})
 		},
 
-		editNoteCancel: function(message)
+		editNoteCancel (message)
 		{
-			if (this.$cropBox)
+			if (this.cropBox)
 			{
-				this.$cropBox.trigger('tooltip:hide');
-				this.$cropBox = null;
+				XF.trigger(this.cropBox, 'tooltip:hide')
+				this.cropBox = null
 			}
 
 			if (this.tooltip)
 			{
-				this.tooltip.destroy();
-				this.tooltip = null;
-				this.trigger = null;
+				this.tooltip.destroy()
+				this.tooltip = null
+				this.trigger = null
 			}
 
-			this.$image.cropper('destroy');
-			this.$editingNote = null;
+			this.cropper.destroy()
+			this.editingNote = null
 
 			if (typeof message === 'string')
 			{
-				XF.flashMessage(message, 3000);
+				XF.flashMessage(message, 3000)
 			}
 		},
 
-		editNoteHandle: function(e, data)
+		editNoteHandle (e)
 		{
+			const { data } = e
+
 			if (data.errors || data.exception)
 			{
-				return;
+				return
 			}
 
-			e.preventDefault();
+			e.preventDefault()
 
-			var noteTooltip = this.$editingNote.data('tooltip');
-			noteTooltip.destroy();
+			const noteTooltip = XF.DataStore.get(this.editingNote, 'tooltip')
+			noteTooltip.destroy()
 
-			this.$editingNote.remove();
+			this.editingNote.remove()
 
 			if (data.deleted)
 			{
-				this.editNoteCancel(data.message);
+				this.editNoteCancel(data.message)
 			}
 			else
 			{
-				var self = this;
-				XF.setupHtmlInsert(data.html, function($html, container, onComplete)
+				XF.setupHtmlInsert(data.html, (html, container, onComplete) =>
 				{
-					var $imageContainer = self.$target.find('.js-mediaContainerImage');
-					$imageContainer.prepend($html);
-					self.editNoteCancel(data.message);
-					XF.activate($html);
-				});
+					const imageContainer = this.target.querySelector('.js-mediaContainerImage')
+					imageContainer.prepend(html)
+					this.editNoteCancel(data.message)
+					XF.activate(html)
+				})
 
-				setTimeout(function()
-				{
-					self.prepareNotes();
-				}, 500);
+				setTimeout(() => this.prepareNotes(), 500)
 			}
 		},
 
-		toggleNewNoteEditor: function()
+		toggleNewNoteEditor: function ()
 		{
 			if (this.active)
 			{
-				this.disableNewNoteEditor();
+				this.disableNewNoteEditor()
 			}
 			else
 			{
-				this.enableNewNoteEditor();
+				this.enableNewNoteEditor()
 			}
 		},
 
-		disableNewNoteEditor: function(message)
+		disableNewNoteEditor (message)
 		{
 			if (!this.active)
 			{
-				return;
+				return
 			}
 
-			if (this.$cropBox)
+			if (this.cropBox)
 			{
-				this.$cropBox.trigger('tooltip:hide');
+				XF.trigger(this.cropBox, 'tooltip:hide')
 			}
 
 			if (this.tooltip)
 			{
-				this.tooltip.destroy();
-				this.tooltip = null;
-				this.trigger = null;
+				this.tooltip.destroy()
+				this.tooltip = null
+				this.trigger = null
 			}
 
-			this.$image.cropper('destroy');
+			this.cropper.destroy()
 
-			var $toggle = this.$toggle;
+			const toggle = this.toggle
 
-			$toggle.find('.button-text').html(XF.htmlspecialchars($toggle.data('inactive-label')));
-			$toggle.removeClass('button--icon--' + $toggle.data('active-icon'));
-			$toggle.addClass('button--icon--' + $toggle.data('inactive-icon'));
+			toggle.querySelector('.button-text').innerHTML = XF.htmlspecialchars(toggle.dataset.inactiveLabel)
+			toggle.querySelector('i.fa--xf')?.remove()
+			if (toggle.dataset.inactiveIcon)
+			{
+				toggle.prepend(XF.createElementFromString(XF.Icon.getIcon(
+					'default',
+					toggle.dataset.inactiveIcon,
+				)))
+			}
 
 			if (message)
 			{
-				XF.flashMessage(message, 3000);
+				XF.flashMessage(message, 3000)
 			}
 			else
 			{
-				XF.flashMessage($toggle.data('inactive-message'), 3000);
+				XF.flashMessage(toggle.dataset.inactiveMessage, 3000)
 			}
-			this.active = false;
+			this.active = false
 		},
 
-		enableNewNoteEditor: function()
+		enableNewNoteEditor ()
 		{
 			if (this.active)
 			{
-				return;
+				return
 			}
 
-			this.$image.cropper({
+			this.cropper = new Cropper(this.image, {
 				viewMode: 2,
 				dragMode: 'crop',
 				aspectRatio: 1,
@@ -393,143 +388,144 @@ var XFMG = window.XFMG || {};
 				toggleDragModeOnDblclick: false,
 				ready: XF.proxy(this, 'newNoteReady'),
 				cropstart: XF.proxy(this, 'newNoteCropstart'),
-				cropend: XF.proxy(this, 'newNoteCropend')
-			});
+				cropend: XF.proxy(this, 'newNoteCropend'),
+			})
 		},
 
-		newNoteReady: function()
+		newNoteReady ()
 		{
-			var $toggle = this.$toggle;
+			const toggle = this.toggle
 
-			$toggle.find('.button-text').html(XF.htmlspecialchars($toggle.data('active-label')));
-			$toggle.removeClass('button--icon--' + $toggle.data('inactive-icon'));
-			$toggle.addClass('button--icon--' + $toggle.data('active-icon'));
+			toggle.querySelector('.button-text').innerHTML = XF.htmlspecialchars(toggle.dataset.activeLabel)
+			toggle.querySelector('i.fa--xf')?.remove()
+			if (toggle.dataset.activeIcon)
+			{
+				toggle.prepend(XF.createElementFromString(XF.Icon.getIcon(
+					'default',
+					toggle.dataset.activeIcon,
+				)))
+			}
 
-			this.$cropBox = this.$target.find('.cropper-crop-box').first();
+			this.cropBox = this.target.querySelector('.cropper-crop-box')
 
-			XF.flashMessage($toggle.data('active-message'), 3000);
-			this.active = true;
+			XF.flashMessage(toggle.dataset.activeMessage, 3000)
+			this.active = true
 		},
 
-		newNoteCropstart: function(e)
+		newNoteCropstart: function (e)
 		{
 			if (!this.trigger)
 			{
-				return;
+				return
 			}
 
-			this.$cropBox.trigger('tooltip:hide');
+			XF.trigger(this.cropBox, 'tooltip:hide')
 		},
 
-		newNoteCropend: function(e)
+		newNoteCropend: function (e)
 		{
 			if (!this.tooltip && !this.trigger)
 			{
 				this.tooltip = new XF.TooltipElement(XF.proxy(this, 'getNewNoteTooltipContent'), {
 					extraClass: 'tooltip--mediaNote',
 					html: true,
-					loadRequired: true
-				});
-				this.trigger = new XF.TooltipTrigger(this.$cropBox, this.tooltip, {
+					loadRequired: true,
+				})
+				this.trigger = new XF.TooltipTrigger(this.cropBox, this.tooltip, {
 					maintain: true,
-					trigger: ''
-				});
+					trigger: '',
+				})
 
-				this.trigger.init();
+				this.trigger.init()
 			}
 
-			var self = this;
-
-			this.$cropBox.trigger('tooltip:show');
-			this.tooltip.$tooltip.on('tooltip:shown', function(e)
+			XF.trigger(this.cropBox, 'tooltip:show')
+			XF.on(this.tooltip.tooltip, 'tooltip:shown', e =>
 			{
-				var $tooltip = $(e.target),
-					coords = self.getCoordsFromCropper();
+				const tooltip = e.target
+				const coords = this.getCoordsFromCropper()
 
-				$tooltip.find('.js-noteData').val(JSON.stringify(coords));
-			});
+				tooltip.querySelector('.js-noteData').value = JSON.stringify(coords)
+			})
 		},
 
-		getNewNoteTooltipContent: function(onContent)
+		getNewNoteTooltipContent (onContent)
 		{
-			var self = this,
-				options = {
-					skipDefault: true,
-					skipError: true,
-					global: false
-				};
+			const options = {
+				skipDefault: true,
+				skipError: true,
+				global: false,
+			}
 
 			XF.ajax(
-				'get', this.options.editUrl, {},
-				function(data) { self.newNoteLoaded(data, onContent); },
-				options
-			);
+				'get',
+				this.options.editUrl,
+				{},
+				data => { this.newNoteLoaded(data, onContent) },
+				options,
+			)
 		},
 
-		newNoteLoaded: function(data, onContent)
+		newNoteLoaded (data, onContent)
 		{
 			if (!data.html)
 			{
-				return;
+				return
 			}
 
-			var self = this;
-			XF.setupHtmlInsert(data.html, function($html, container, onComplete)
+			XF.setupHtmlInsert(data.html, (html, container, onComplete) =>
 			{
-				onContent($html);
+				onContent(html)
 
-				var $cancel = $html.find('.js-cancelButton');
-				$cancel.on('click', XF.proxy(self, 'newNoteCancel'));
+				const cancel = html.querySelector('.js-cancelButton')
+				XF.on(cancel, 'click', XF.proxy(this, 'newNoteCancel'))
 
-				$html.on('ajax-submit:response', XF.proxy(self, 'newNoteHandle'));
-			});
+				XF.on(html, 'ajax-submit:response', XF.proxy(this, 'newNoteHandle'))
+			})
 		},
 
-		newNoteCancel: function()
+		newNoteCancel ()
 		{
-			this.$cropBox.trigger('tooltip:hide');
-			this.$image.cropper('clear');
+			XF.trigger(this.cropBox, 'tooltip:hide')
+			this.cropper.clear()
 		},
 
-		newNoteHandle: function(e, data)
+		newNoteHandle (e)
 		{
+			const { data } = e
+
 			if (data.errors || data.exception)
 			{
-				return;
+				return
 			}
 
-			e.preventDefault();
+			e.preventDefault()
 
-			var self = this;
-			XF.setupHtmlInsert(data.html, function($html, container, onComplete)
+			XF.setupHtmlInsert(data.html, (html, container, onComplete) =>
 			{
-				var $imageContainer = self.$target.find('.js-mediaContainerImage');
-				$imageContainer.prepend($html);
-				self.disableNewNoteEditor(data.message);
-				XF.activate($html);
-			});
+				const imageContainer = this.target.querySelector('.js-mediaContainerImage')
+				imageContainer.prepend(html)
+				this.disableNewNoteEditor(data.message)
+				XF.activate(html)
+			})
 
-			setTimeout(function()
-			{
-				self.prepareNotes();
-			}, 500);
+			setTimeout(() => this.prepareNotes(), 500)
 		},
 
-		getCoordsFromCropper: function()
+		getCoordsFromCropper: function ()
 		{
-			var $image = this.$image,
-				data = $image.cropper('getData');
+			const image = this.image
+			const data = this.cropper.getData(true)
 
 			// naming mostly for XFMG 1.x backwards compatibility
 			return {
-				tag_x1:	data.x,
+				tag_x1: data.x,
 				tag_y1: data.y,
 				tag_width: data.width,
-				tag_height: data.height
-			};
-		}
-	});
+				tag_height: data.height,
+			}
+		},
+	})
 
-	XF.Element.register('image-noter', 'XFMG.ImageNoter');
-}
-(jQuery, window, document);
+	XF.Element.register('image-noter', 'XFMG.ImageNoter')
+})(window, document)
