@@ -13,7 +13,6 @@ class Thread extends XFCP_Thread
         $structure->columns['points_collected'] =  ['type' => self::BOOL, 'default' => false];
         $structure->columns['last_cron_run'] =  ['type' => self::UINT, 'default' => 0];
         $structure->columns['last_thread_update'] =  ['type' => self::UINT, 'default' => 0];
-        // $structure->columns['latest_rating_avg'] =  ['type' => self::UINT, 'default' => 0];
 
         return $structure;
     }
@@ -54,7 +53,7 @@ class Thread extends XFCP_Thread
         $orderBy = \XF::options()->fs_thread_scoring_list_order;
         $minimumPoints = \XF::options()->fs_total_minimum_req_points;
 
-        $records = $this->finder('FS\ThreadScoringSystem:ScoringSystem')->where('thread_id', $this->thread_id)->where('total_points', '>=', $minimumPoints)->order('total_percentage', $orderBy)->fetch();
+        $records = $this->finder('FS\ThreadScoringSystem:ScoringSystem')->where('thread_id', $this->thread_id)->where('total_percentage', '>=', $minimumPoints)->order('total_percentage', $orderBy)->fetch();
 
         return count($records) ? $records : [];
     }

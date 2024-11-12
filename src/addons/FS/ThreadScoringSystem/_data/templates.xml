@@ -59,7 +59,7 @@
 	</xf:foreach>
 
 </xf:macro>]]></template>
-  <template type="public" title="fs_thread_scoring_all_score_notable" version_id="1000900" version_string="1.0.9 Alpha"><![CDATA[<xf:title>{{ phrase('fs_thread_scoring_system') }}</xf:title>
+  <template type="public" title="fs_thread_scoring_all_score_notable" version_id="1010500" version_string="1.1.5 Alpha"><![CDATA[<xf:title>{{ phrase('fs_thread_scoring_system') }}</xf:title>
 
 <div class="block">
 
@@ -100,29 +100,31 @@
 		<xf:cell> {{ phrase('fs_thread_scoring_system_total_points') }} </xf:cell>
 	</xf:datarow>
 
+	<xf:set var="$afterDot" value="{{ $xf.options.fs_thread_scoring_system_decimals }}" />
+
 	<xf:foreach loop="{$data}" value="$val">
 		<xf:datarow>
-			<xf:cell> <xf:username user="$val.User" rich="true" defaultname="{$val.User.username}" itemprop="name" /> </xf:cell>
-			<xf:cell> {{$val.threads_score ? number($val.threads_score, $xf.options.fs_thread_scoring_system_decimals) : phrase('n_a') }} </xf:cell>
-			<xf:cell> {{$val.reply_score ? number($val.reply_score, $xf.options.fs_thread_scoring_system_decimals) : phrase('n_a') }} </xf:cell>
-			<xf:cell> {{$val.worlds_score ? number($val.worlds_score, $xf.options.fs_thread_scoring_system_decimals) : phrase('n_a') }} </xf:cell>
-			<xf:cell> {{$val.reactions_score ? number($val.reactions_score, $xf.options.fs_thread_scoring_system_decimals) : phrase('n_a') }} </xf:cell>
-			<xf:cell> {{$val.solutions_score ? number($val.solutions_score, $xf.options.fs_thread_scoring_system_decimals) : phrase('n_a') }} </xf:cell>
-			<xf:cell> {{$val.total_score ? number($val.total_score, $xf.options.fs_thread_scoring_system_decimals) : phrase('n_a') }} </xf:cell>
+			<xf:cell> <xf:username user="$val" rich="true" defaultname="{$val.username}" itemprop="name" /> </xf:cell>
+			<xf:cell> {{number($val.threads_score, $afterDot) }} </xf:cell>
+			<xf:cell> {{number($val.reply_score, $afterDot) }} </xf:cell>
+			<xf:cell> {{number($val.worlds_score, $afterDot) }} </xf:cell>
+			<xf:cell> {{number($val.reactions_score, $afterDot) }} </xf:cell>
+			<xf:cell> {{number($val.solutions_score, $afterDot) }} </xf:cell>
+			<xf:cell> {{number($val.total_score, $afterDot) }} </xf:cell>
 		</xf:datarow>
 	</xf:foreach>
 
 </xf:macro>]]></template>
-  <template type="public" title="fs_thread_scoring_my_score" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[<div class="block">
+  <template type="public" title="fs_thread_scoring_my_score" version_id="1010500" version_string="1.1.5 Alpha"><![CDATA[<div class="block">
 
 	<div class="block-container">
 
 		<div class="block-body">
 
 			<xf:datalist data-xf-init="responsive-data-list">
-				<xf:if is="$totalCounts is not empty">
+				<xf:if is="$user is not empty">
 
-					<xf:macro name="record_table_list" arg-totalCounts="{$totalCounts}" />
+					<xf:macro name="record_table_list" arg-user="{$user}" />
 
 					<xf:else />
 					<div class="blockMessage">
@@ -135,7 +137,7 @@
 	</div>
 </div>
 
-<xf:macro name="record_table_list" arg-totalCounts="!">
+<xf:macro name="record_table_list" arg-user="!">
 	<xf:datarow rowtype="header">
 		<xf:cell> {{ phrase('fs_thread_scoring_system_threads') }} </xf:cell>
 		<xf:cell> {{ phrase('fs_thread_scoring_system_replies') }} </xf:cell>
@@ -144,18 +146,18 @@
 		<xf:cell> {{ phrase('fs_thread_scoring_system_solutions') }} </xf:cell>
 	</xf:datarow>
 
+	<xf:set var="$afterDot" value="{{ $xf.options.fs_thread_scoring_system_decimals }}" />
+
 	<xf:datarow>
-		<xf:foreach loop="{$totalCounts}" value="$val">
-			<xf:cell> {{$val.thread ? number($val.thread, $xf.options.fs_thread_scoring_system_decimals) : phrase('n_a') }} </xf:cell>
-			<xf:cell> {{$val.reply ? number($val.reply, $xf.options.fs_thread_scoring_system_decimals) : phrase('n_a') }} </xf:cell>
-			<xf:cell> {{$val.words ? number($val.words, $xf.options.fs_thread_scoring_system_decimals) : phrase('n_a') }} </xf:cell>
-			<xf:cell> {{$val.reactions ? number($val.reactions, $xf.options.fs_thread_scoring_system_decimals) : phrase('n_a') }} </xf:cell>
-			<xf:cell> {{$val.solution ? number($val.solution, $xf.options.fs_thread_scoring_system_decimals) : phrase('n_a') }} </xf:cell>
-		</xf:foreach>
+		<xf:cell> {{ number($user.threads_score, $afterDot) }} </xf:cell>
+		<xf:cell> {{ number($user.reply_score, $afterDot) }} </xf:cell>
+		<xf:cell> {{ number($user.worlds_score, $afterDot) }} </xf:cell>
+		<xf:cell> {{ number($user.reactions_score, $afterDot) }} </xf:cell>
+		<xf:cell> {{ number($user.solutions_score, $afterDot) }} </xf:cell>
 	</xf:datarow>
 
 </xf:macro>]]></template>
-  <template type="public" title="fs_thread_scoring_system_notable_member" version_id="1010200" version_string="1.1.2 Alpha"><![CDATA[<xf:if is="{{ $xf.visitor.hasPermission('fs_thread_scoring_system', 'can_view') }}">
+  <template type="public" title="fs_thread_scoring_system_notable_member" version_id="1010500" version_string="1.1.5 Alpha"><![CDATA[<xf:if is="{{ $xf.visitor.hasPermission('fs_thread_scoring_system', 'can_view') }}">
 
 	<xf:if is="count($data)">
 
@@ -172,7 +174,7 @@
 							<li>
 								<div class="contentRow contentRow--alignMiddle">
 									<div class="contentRow-figure">
-										<xf:avatar user="$value.User" size="xs" />
+										<xf:avatar user="$value" size="xs" />
 									</div>
 									<div class="contentRow-main">
 										<xf:if is="{$value.total_score}">
@@ -182,7 +184,7 @@
 																																{{$value.reactions_score ? phrase('fs_thread_scoring_system_reactions') . ' ' . number($value.reactions_score, $xf.options.fs_thread_scoring_system_decimals) . ' (' . phrase('points') . ')' : ' '}}
 																																{{$value.solutions_score ? phrase('fs_thread_scoring_system_solution') . ' ' . number($value.solutions_score, $xf.options.fs_thread_scoring_system_decimals) . ' (' . phrase('points') . ')' : ' '}}">{{number($value.total_score, $xf.options.fs_thread_scoring_system_decimals)}}</div>
 										</xf:if>
-										<h3 class="contentRow-title"><xf:username user="$value.User" rich="true" /></h3>
+										<h3 class="contentRow-title"><xf:username user="$value" rich="true" /></h3>
 									</div>
 								</div>
 							</li>
@@ -198,18 +200,19 @@
 	</xf:if>
 
 </xf:if>]]></template>
-  <template type="public" title="fs_thread_scoring_system_side_widget" version_id="1010200" version_string="1.1.2 Alpha"><![CDATA[<xf:sidebar key="conversationInfo">
+  <template type="public" title="fs_thread_scoring_system_side_widget" version_id="1010500" version_string="1.1.5 Alpha"><![CDATA[<xf:sidebar key="conversationInfo">
 
 	<xf:if is="{{ $xf.visitor.hasPermission('fs_thread_scoring_system', 'can_view') }} && !in_array($thread.Forum.node_id, $xf.options.fs_thread_scoring_system_exc_forms)">
 		<xf:set var="$data" value="{{ $xf.options.fs_thread_scoring_list_format == 'percentage' ? $thread->getPercentageSums() : $thread->getPointsSums() }}" />
 
-		<xf:if is="count($data.records)">
+		<xf:if is="count($data)">
 
 			<div class="block">
 				<div class="block-container">
 
 					<h3 class="block-minorHeader">{{ phrase('fs_thread_scores') }}</h3>
 					<xf:set var="$replyPhrase" value="{{ phrase('fs_thread_scores') }}" />
+					<xf:set var="$afterDot" value="{{ $xf.options.fs_thread_scoring_system_decimals }}" />
 
 					<div class="block-body block-row">
 
@@ -220,23 +223,26 @@
 
 						<br/>
 
-						<xf:foreach loop="$data.records" value="$value">
+						<xf:foreach loop="$data" value="$value">
 
 							<dl class="pairs pairs--justified">										
 								<dt><xf:username user="$value.User" rich="true" defaultname="{$value.User.username}" itemprop="name" /></dt>
 								<xf:if is="$xf.options.fs_thread_scoring_list_format == 'percentage'">
-									<dd data-xf-init="tooltip" title="{{$data.totalPercentage.{$value.user_id}.thread ? phrase('fs_thread_scoring_system_thread') . ' ' . number($data.totalPercentage.{$value.user_id}.thread, $xf.options.fs_thread_scoring_system_decimals) . ' % ' : ' '}}
-																	  {{$data.totalPercentage.{$value.user_id}.reply ? phrase('fs_thread_scoring_system_reply') . ' ' . number($data.totalPercentage.{$value.user_id}.reply, $xf.options.fs_thread_scoring_system_decimals) . ' % ' : ' '}}
-																	  {{$data.totalPercentage.{$value.user_id}.words ? phrase('fs_thread_scoring_system_words') . ' ' . number($data.totalPercentage.{$value.user_id}.words, $xf.options.fs_thread_scoring_system_decimals) . ' % ' : ' '}}
-																	  {{$data.totalPercentage.{$value.user_id}.reactions ? phrase('fs_thread_scoring_system_reactions') . ' ' . number($data.totalPercentage.{$value.user_id}.reactions, $xf.options.fs_thread_scoring_system_decimals) . ' % ' : ' '}}
-																	  {{$data.totalPercentage.{$value.user_id}.solution ? phrase('fs_thread_scoring_system_solution') . ' ' . number($data.totalPercentage.{$value.user_id}.solution, $xf.options.fs_thread_scoring_system_decimals) . ' % ' : ' '}}">{{number($data.totalPercentage.{$value.user_id}.totalPoints, $xf.options.fs_thread_scoring_system_decimals)}}</dd>
+									<xf:set var="$percentageThread" value="{{ $value.thread_points != 0 ? 100 : 0 }}" />
+									<xf:set var="$percentageSolution" value="{{ $value.solution_points != 0 ? 100 : 0 }}" />
+
+									<dd data-xf-init="tooltip" title="{{phrase('fs_thread_scoring_system_thread') . ' ' . number($percentageThread, $afterDot) . ' % '}}
+																	  {{phrase('fs_thread_scoring_system_reply') . ' ' . number($value.reply_percentage, $afterDot) . ' % '}}
+																	  {{phrase('fs_thread_scoring_system_words') . ' ' . number($value.word_percentage, $afterDot) . ' % '}}
+																	  {{phrase('fs_thread_scoring_system_reactions') . ' ' . number($value.reaction_percentage, $afterDot) . ' % '}}
+																	  {{phrase('fs_thread_scoring_system_solution') . ' ' . number($percentageSolution, $afterDot) . ' % '}}">{{number($value.total_percentage, $xf.options.fs_thread_scoring_system_decimals)}}</dd>
 
 									<xf:else />
-									<dd data-xf-init="tooltip" title="{{$data.totalCounts.{$value.user_id}.thread ? phrase('fs_thread_scoring_system_thread') . ' ' . number($data.totalCounts.{$value.user_id}.thread, $xf.options.fs_thread_scoring_system_decimals) . ' (' . phrase('points') . ')' : ' '}}
-																	  {{$data.totalCounts.{$value.user_id}.reply ? phrase('fs_thread_scoring_system_reply') . ' ' . number($data.totalCounts.{$value.user_id}.reply, $xf.options.fs_thread_scoring_system_decimals) . ' (' . phrase('points') . ')' : ' '}}
-																	  {{$data.totalCounts.{$value.user_id}.words ? phrase('fs_thread_scoring_system_words') . ' ' . number($data.totalCounts.{$value.user_id}.words, $xf.options.fs_thread_scoring_system_decimals) . ' (' . phrase('points') . ')' : ' '}}
-																	  {{$data.totalCounts.{$value.user_id}.reactions ? phrase('fs_thread_scoring_system_reactions') . ' ' . number($data.totalCounts.{$value.user_id}.reactions, $xf.options.fs_thread_scoring_system_decimals) . ' (' . phrase('points') . ')' : ' '}}
-																	  {{$data.totalCounts.{$value.user_id}.solution ? phrase('fs_thread_scoring_system_solution') . ' ' . number($data.totalCounts.{$value.user_id}.solution, $xf.options.fs_thread_scoring_system_decimals) . ' (' . phrase('points') . ')' : ' '}}">{{number($data.totalCounts.{$value.user_id}.totalPoints, $xf.options.fs_thread_scoring_system_decimals)}}</dd>
+									<dd data-xf-init="tooltip" title="{{phrase('fs_thread_scoring_system_thread') . ' ' . number($value.thread_points, $afterDot) . ' (' . phrase('points') . ')'}}
+																	  {{phrase('fs_thread_scoring_system_reply') . ' ' . number($value.reply_points, $afterDot) . ' (' . phrase('points') . ')'}}
+																	  {{phrase('fs_thread_scoring_system_words') . ' ' . number($value.word_points, $afterDot) . ' (' . phrase('points') . ')'}}
+																	  {{phrase('fs_thread_scoring_system_reactions') . ' ' . number($value.reaction_points, $afterDot) . ' (' . phrase('points') . ')'}}
+																	  {{phrase('fs_thread_scoring_system_solution') . ' ' . number($value.solution_points, $afterDot) . ' (' . phrase('points') . ')'}}">{{number($value.total_points, $xf.options.fs_thread_scoring_system_decimals)}}</dd>
 
 								</xf:if>
 

@@ -26,7 +26,7 @@ class ExcludeForumsThreadsDelete extends AbstractJob
 
                         $thread = $value->Thread;
 
-                        if ($thread) {
+                        if (isset($thread)) {
                             $thread->bulkSet([
                                 'last_cron_run' => 0,
                                 'points_collected' => false,
@@ -35,6 +35,19 @@ class ExcludeForumsThreadsDelete extends AbstractJob
                             $thread->save();
                         }
 
+                        $excludeForumUser = $value->User;
+
+                        if (isset($excludeForumUser)) {
+
+                            $excludeForumUser->threads_score -= floatval($value->thread_points);
+                            $excludeForumUser->reply_score -= floatval($value->reply_points);
+                            $excludeForumUser->worlds_score -= floatval($value->word_points);
+                            $excludeForumUser->reactions_score -= floatval($value->reaction_points);
+                            $excludeForumUser->solutions_score -= floatval($value->solution_points);
+                            $excludeForumUser->total_score -= floatval($value->total_points);
+
+                            $excludeForumUser->save();
+                        }
 
                         $value->delete();
                     }

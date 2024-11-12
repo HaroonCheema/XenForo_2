@@ -5,5 +5,5 @@
     "enabled": true,
     "action": "str_replace",
     "find": "<!--[XF:stat_pairs:below_trophies]-->",
-    "replace": "$0\n\n<xf:if is=\"{{ $xf.visitor.hasPermission('fs_thread_scoring_system', 'can_view') }}\">\n\t<dl class=\"pairs pairs--rows pairs--rows--centered menu-fauxLinkRow\">\n\t\t<dt>{{ phrase('fs_thread_scoring_system_total_points') }}</dt>\n\t\t<dd>\n\t\t\t{{$user.getTotalPoints() }}\n\t\t</dd>\n\t</dl>\n</xf:if>"
+    "replace": "$0\n\n<xf:if is=\"{{ $xf.visitor.hasPermission('fs_thread_scoring_system', 'can_view') }}\">\n\t<dl class=\"pairs pairs--rows pairs--rows--centered menu-fauxLinkRow\">\n\t\t<dt>{{ phrase('fs_thread_scoring_system_total_points') }}</dt>\n\t\t<dd>\n\t\t\t{{number($user.total_score, $xf.options.fs_thread_scoring_system_decimals) }}\n\t\t</dd>\n\t</dl>\n</xf:if>"
 }

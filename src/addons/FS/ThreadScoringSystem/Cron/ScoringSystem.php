@@ -11,10 +11,7 @@ class ScoringSystem
         $jobID = "thread_reply_points" . time();
 
         $app->jobManager()->enqueueUnique($jobID, 'FS\ThreadScoringSystem:ReplyPoints', [], false);
-    }
 
-    public static function threadSolutionPoints()
-    {
         $app = \XF::app();
         $jobID = "thread_starter_points" . time();
 
@@ -25,17 +22,9 @@ class ScoringSystem
 
         $app->jobManager()->enqueueUnique($jobID, 'FS\ThreadScoringSystem:SolutionPoints', [], false);
 
-        // $jobID = "exclude_forum_threads_delete" . time();
+        $jobID = "exclude_forum_threads_delete" . time();
 
-        // $app->jobManager()->enqueueUnique($jobID, 'FS\ThreadScoringSystem:ExcludeForumsThreadsDelete', [], false);
-    }
-
-    public static function notableMemberTotalPoints()
-    {
-        $app = \XF::app();
-        $jobID = "notable_member_total_points" . time();
-
-        $app->jobManager()->enqueueUnique($jobID, 'FS\ThreadScoringSystem:NotableMemberTotalPoints', [], false);
+        $app->jobManager()->enqueueUnique($jobID, 'FS\ThreadScoringSystem:ExcludeForumsThreadsDelete', [], false);
     }
 
     public static function monthlyTotalUsersPoints()

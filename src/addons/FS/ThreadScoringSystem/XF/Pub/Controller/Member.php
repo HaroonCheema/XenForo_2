@@ -18,7 +18,7 @@ class Member extends XFCP_Member
             $minimumPoints = \XF::options()->fs_total_users_minimum_points;
             $listLimit = \XF::options()->fs_thread_scoring_system_notable_perpage;
 
-            $records = $this->finder('FS\ThreadScoringSystem:TotalScoringSystem')->where('user_id', '!=', 0)->where('total_score', '>=', $minimumPoints)->limitByPage(1, $listLimit)->order('total_score', $orderBy)->fetch();
+            $records = $this->finder('XF:User')->where('total_score', '>=', $minimumPoints)->limitByPage(1, $listLimit)->order('total_score', $orderBy)->fetch();
 
             if (!count($records)) {
                 return $parent;
@@ -42,7 +42,9 @@ class Member extends XFCP_Member
         $orderBy = \XF::options()->fs_thread_scoring_list_order;
         $minimumPoints = \XF::options()->fs_total_users_minimum_points;
 
-        $records = $this->finder('FS\ThreadScoringSystem:TotalScoringSystem')->where('user_id', '!=', 0)->where('total_score', '>=', $minimumPoints)->order('total_score', $orderBy)->fetch();
+        // $records = $this->finder('FS\ThreadScoringSystem:TotalScoringSystem')->where('user_id', '!=', 0)->where('total_score', '>=', $minimumPoints)->order('total_score', $orderBy)->fetch();
+
+        $records = $this->finder('XF:User')->where('total_score', '>=', $minimumPoints)->order('total_score', $orderBy)->fetch();
 
         $viewParams = [
             'data' => count($records) ? $records : [],
@@ -74,15 +76,9 @@ class Member extends XFCP_Member
             return $this->noPermission();
         }
 
-        $records = $this->finder('FS\ThreadScoringSystem:ScoringSystem')->where('user_id', $user->user_id)->fetch();
-
-        if (count($records)) {
-            $allTypePoints = \XF::service('FS\ThreadScoringSystem:ReplyPoints');
-
-            $viewParams = $allTypePoints->getAllTypePointsScores($records);
-        } else {
-            $viewParams = array();
-        }
+        $viewParams = [
+            'user' => $user,
+        ];
 
         return $this->view('FS\ThreadScoringSystem\XF:Member\MyPointsScore', 'fs_thread_scoring_my_score', $viewParams);
     }

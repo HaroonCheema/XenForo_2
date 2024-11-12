@@ -64,6 +64,15 @@ class SolutionPoints extends AbstractJob
 
             $threadSolutionUser->save();
 
+            $solutionUser = $solution->User;
+
+            if (isset($solutionUser)) {
+                $solutionUser->solutions_score += $threadSolutionPoints;
+                $solutionUser->total_score += $threadSolutionPoints;
+
+                $solutionUser->save();
+            }
+
             $solution->fastUpdate('points_collected', true);
 
             if (microtime(true) - $startTime >= $maxRunTime) {

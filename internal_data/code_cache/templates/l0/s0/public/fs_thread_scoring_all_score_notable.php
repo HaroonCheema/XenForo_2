@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: e970422cb7cfc102e519e576a43ea9af
+// FROM HASH: 8ce05b797afe3c7a25103e61b8ece74e
 return array(
 'macros' => array('record_table_list' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -41,40 +41,44 @@ return array(
 	))) . '
 
 	';
+	$__vars['afterDot'] = $__vars['xf']['options']['fs_thread_scoring_system_decimals'];
+	$__finalCompiled .= '
+
+	';
 	if ($__templater->isTraversable($__vars['data'])) {
 		foreach ($__vars['data'] AS $__vars['val']) {
 			$__finalCompiled .= '
 		' . $__templater->dataRow(array(
 			), array(array(
 				'_type' => 'cell',
-				'html' => ' ' . $__templater->func('username_link', array($__vars['val']['User'], true, array(
-				'defaultname' => $__vars['val']['User']['username'],
+				'html' => ' ' . $__templater->func('username_link', array($__vars['val'], true, array(
+				'defaultname' => $__vars['val']['username'],
 				'itemprop' => 'name',
 			))) . ' ',
 			),
 			array(
 				'_type' => 'cell',
-				'html' => ' ' . ($__vars['val']['threads_score'] ? $__templater->func('number', array($__vars['val']['threads_score'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true) : 'N/A') . ' ',
+				'html' => ' ' . $__templater->func('number', array($__vars['val']['threads_score'], $__vars['afterDot'], ), true) . ' ',
 			),
 			array(
 				'_type' => 'cell',
-				'html' => ' ' . ($__vars['val']['reply_score'] ? $__templater->func('number', array($__vars['val']['reply_score'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true) : 'N/A') . ' ',
+				'html' => ' ' . $__templater->func('number', array($__vars['val']['reply_score'], $__vars['afterDot'], ), true) . ' ',
 			),
 			array(
 				'_type' => 'cell',
-				'html' => ' ' . ($__vars['val']['worlds_score'] ? $__templater->func('number', array($__vars['val']['worlds_score'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true) : 'N/A') . ' ',
+				'html' => ' ' . $__templater->func('number', array($__vars['val']['worlds_score'], $__vars['afterDot'], ), true) . ' ',
 			),
 			array(
 				'_type' => 'cell',
-				'html' => ' ' . ($__vars['val']['reactions_score'] ? $__templater->func('number', array($__vars['val']['reactions_score'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true) : 'N/A') . ' ',
+				'html' => ' ' . $__templater->func('number', array($__vars['val']['reactions_score'], $__vars['afterDot'], ), true) . ' ',
 			),
 			array(
 				'_type' => 'cell',
-				'html' => ' ' . ($__vars['val']['solutions_score'] ? $__templater->func('number', array($__vars['val']['solutions_score'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true) : 'N/A') . ' ',
+				'html' => ' ' . $__templater->func('number', array($__vars['val']['solutions_score'], $__vars['afterDot'], ), true) . ' ',
 			),
 			array(
 				'_type' => 'cell',
-				'html' => ' ' . ($__vars['val']['total_score'] ? $__templater->func('number', array($__vars['val']['total_score'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true) : 'N/A') . ' ',
+				'html' => ' ' . $__templater->func('number', array($__vars['val']['total_score'], $__vars['afterDot'], ), true) . ' ',
 			))) . '
 	';
 		}

@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 5cf49975cecdbde15c6fb55e397fabc9
+// FROM HASH: 307ec9134a3856021530a3ee475636c9
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -24,7 +24,7 @@ return array(
 							<li>
 								<div class="contentRow contentRow--alignMiddle">
 									<div class="contentRow-figure">
-										' . $__templater->func('avatar', array($__vars['value']['User'], 'xs', false, array(
+										' . $__templater->func('avatar', array($__vars['value'], 'xs', false, array(
 					))) . '
 									</div>
 									<div class="contentRow-main">
@@ -39,7 +39,7 @@ return array(
 										';
 					}
 					$__compilerTemp1 .= '
-										<h3 class="contentRow-title">' . $__templater->func('username_link', array($__vars['value']['User'], true, array(
+										<h3 class="contentRow-title">' . $__templater->func('username_link', array($__vars['value'], true, array(
 					))) . '</h3>
 									</div>
 								</div>

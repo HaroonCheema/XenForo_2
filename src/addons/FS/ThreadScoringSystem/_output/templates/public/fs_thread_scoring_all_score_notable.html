@@ -39,15 +39,17 @@
 		<xf:cell> {{ phrase('fs_thread_scoring_system_total_points') }} </xf:cell>
 	</xf:datarow>
 
+	<xf:set var="$afterDot" value="{{ $xf.options.fs_thread_scoring_system_decimals }}" />
+
 	<xf:foreach loop="{$data}" value="$val">
 		<xf:datarow>
-			<xf:cell> <xf:username user="$val.User" rich="true" defaultname="{$val.User.username}" itemprop="name" /> </xf:cell>
-			<xf:cell> {{$val.threads_score ? number($val.threads_score, $xf.options.fs_thread_scoring_system_decimals) : phrase('n_a') }} </xf:cell>
-			<xf:cell> {{$val.reply_score ? number($val.reply_score, $xf.options.fs_thread_scoring_system_decimals) : phrase('n_a') }} </xf:cell>
-			<xf:cell> {{$val.worlds_score ? number($val.worlds_score, $xf.options.fs_thread_scoring_system_decimals) : phrase('n_a') }} </xf:cell>
-			<xf:cell> {{$val.reactions_score ? number($val.reactions_score, $xf.options.fs_thread_scoring_system_decimals) : phrase('n_a') }} </xf:cell>
-			<xf:cell> {{$val.solutions_score ? number($val.solutions_score, $xf.options.fs_thread_scoring_system_decimals) : phrase('n_a') }} </xf:cell>
-			<xf:cell> {{$val.total_score ? number($val.total_score, $xf.options.fs_thread_scoring_system_decimals) : phrase('n_a') }} </xf:cell>
+			<xf:cell> <xf:username user="$val" rich="true" defaultname="{$val.username}" itemprop="name" /> </xf:cell>
+			<xf:cell> {{number($val.threads_score, $afterDot) }} </xf:cell>
+			<xf:cell> {{number($val.reply_score, $afterDot) }} </xf:cell>
+			<xf:cell> {{number($val.worlds_score, $afterDot) }} </xf:cell>
+			<xf:cell> {{number($val.reactions_score, $afterDot) }} </xf:cell>
+			<xf:cell> {{number($val.solutions_score, $afterDot) }} </xf:cell>
+			<xf:cell> {{number($val.total_score, $afterDot) }} </xf:cell>
 		</xf:datarow>
 	</xf:foreach>
 

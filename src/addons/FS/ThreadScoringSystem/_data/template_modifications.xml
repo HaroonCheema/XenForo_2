@@ -8,7 +8,7 @@
 	<dl class="pairs pairs--rows pairs--rows--centered menu-fauxLinkRow">
 		<dt>{{ phrase('fs_thread_scoring_system_total_points') }}</dt>
 		<dd>
-			{{$user.getTotalPoints() }}
+			{{number($user.total_score, $xf.options.fs_thread_scoring_system_decimals) }}
 		</dd>
 	</dl>
 </xf:if>]]></replace>

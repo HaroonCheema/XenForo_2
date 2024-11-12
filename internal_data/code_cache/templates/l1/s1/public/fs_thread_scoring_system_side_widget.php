@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 17a4726eead64acb0355ee49bba0b5cf
+// FROM HASH: 50e94b03982d52f7484f117a3d19bcdc
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -56,10 +56,10 @@ return array(
 						$__compilerTemp1 .= '
 
 									<dd data-xf-init="tooltip" title="' . ((('Thread : ' . ' ') . $__templater->func('number', array($__vars['percentageThread'], $__vars['afterDot'], ), true)) . ' % ') . '
-																	  ' . ((('Reply : ' . ' ') . $__templater->func('number', array($__vars['data']['reply_percentage'], $__vars['afterDot'], ), true)) . ' % ') . '
-																	  ' . ((('Words : ' . ' ') . $__templater->func('number', array($__vars['data']['word_percentage'], $__vars['afterDot'], ), true)) . ' % ') . '
-																	  ' . ((('Reactions : ' . ' ') . $__templater->func('number', array($__vars['data']['reaction_percentage'], $__vars['afterDot'], ), true)) . ' % ') . '
-																	  ' . ((('Solution : ' . ' ') . $__templater->func('number', array($__vars['data']['totalPercentage'][$__vars['value']['user_id']]['solution'], $__vars['afterDot'], ), true)) . ' % ') . '">' . $__templater->func('number', array($__vars['value']['total_percentage'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true) . '</dd>
+																	  ' . ((('Reply : ' . ' ') . $__templater->func('number', array($__vars['value']['reply_percentage'], $__vars['afterDot'], ), true)) . ' % ') . '
+																	  ' . ((('Words : ' . ' ') . $__templater->func('number', array($__vars['value']['word_percentage'], $__vars['afterDot'], ), true)) . ' % ') . '
+																	  ' . ((('Reactions : ' . ' ') . $__templater->func('number', array($__vars['value']['reaction_percentage'], $__vars['afterDot'], ), true)) . ' % ') . '
+																	  ' . ((('Solution : ' . ' ') . $__templater->func('number', array($__vars['percentageSolution'], $__vars['afterDot'], ), true)) . ' % ') . '">' . $__templater->func('number', array($__vars['value']['total_percentage'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true) . '</dd>
 
 									';
 					} else {

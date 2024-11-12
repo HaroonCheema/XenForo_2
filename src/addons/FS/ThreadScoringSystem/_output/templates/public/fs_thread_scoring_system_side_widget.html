@@ -30,10 +30,10 @@
 									<xf:set var="$percentageSolution" value="{{ $value.solution_points != 0 ? 100 : 0 }}" />
 
 									<dd data-xf-init="tooltip" title="{{phrase('fs_thread_scoring_system_thread') . ' ' . number($percentageThread, $afterDot) . ' % '}}
-																	  {{phrase('fs_thread_scoring_system_reply') . ' ' . number($data.reply_percentage, $afterDot) . ' % '}}
-																	  {{phrase('fs_thread_scoring_system_words') . ' ' . number($data.word_percentage, $afterDot) . ' % '}}
-																	  {{phrase('fs_thread_scoring_system_reactions') . ' ' . number($data.reaction_percentage, $afterDot) . ' % '}}
-																	  {{phrase('fs_thread_scoring_system_solution') . ' ' . number($data.totalPercentage.{$value.user_id}.solution, $afterDot) . ' % '}}">{{number($value.total_percentage, $xf.options.fs_thread_scoring_system_decimals)}}</dd>
+																	  {{phrase('fs_thread_scoring_system_reply') . ' ' . number($value.reply_percentage, $afterDot) . ' % '}}
+																	  {{phrase('fs_thread_scoring_system_words') . ' ' . number($value.word_percentage, $afterDot) . ' % '}}
+																	  {{phrase('fs_thread_scoring_system_reactions') . ' ' . number($value.reaction_percentage, $afterDot) . ' % '}}
+																	  {{phrase('fs_thread_scoring_system_solution') . ' ' . number($percentageSolution, $afterDot) . ' % '}}">{{number($value.total_percentage, $xf.options.fs_thread_scoring_system_decimals)}}</dd>
 
 									<xf:else />
 									<dd data-xf-init="tooltip" title="{{phrase('fs_thread_scoring_system_thread') . ' ' . number($value.thread_points, $afterDot) . ' (' . phrase('points') . ')'}}

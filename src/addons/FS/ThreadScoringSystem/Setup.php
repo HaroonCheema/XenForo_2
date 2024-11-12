@@ -36,6 +36,16 @@ class Setup extends AbstractSetup
 
 			$table->addColumn('points_collected', 'tinyint', 3)->setDefault(0);
 		});
+
+		$this->alterTable('xf_user', function (\XF\Db\Schema\Alter $table) {
+
+			$table->addColumn('threads_score', 'decimal', '65,8')->unsigned(false)->setDefault(0);
+			$table->addColumn('reply_score', 'decimal', '65,8')->unsigned(false)->setDefault(0);
+			$table->addColumn('worlds_score', 'decimal', '65,8')->unsigned(false)->setDefault(0);
+			$table->addColumn('reactions_score', 'decimal', '65,8')->unsigned(false)->setDefault(0);
+			$table->addColumn('solutions_score', 'decimal', '65,8')->unsigned(false)->setDefault(0);
+			$table->addColumn('total_score', 'decimal', '65,8')->unsigned(false)->setDefault(0);
+		});
 	}
 
 	// ############################### POST INSTALL ###########################
@@ -71,6 +81,10 @@ class Setup extends AbstractSetup
 
 		$this->schemaManager()->alterTable('xf_thread_question', function (\XF\Db\Schema\Alter $table) {
 			$table->dropColumns(['points_collected']);
+		});
+
+		$this->schemaManager()->alterTable('xf_user', function (\XF\Db\Schema\Alter $table) {
+			$table->dropColumns(['threads_score', 'reply_score', 'worlds_score', 'reactions_score', 'solutions_score', 'total_score']);
 		});
 	}
 

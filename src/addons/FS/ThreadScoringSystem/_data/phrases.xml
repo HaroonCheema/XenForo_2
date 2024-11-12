@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <phrases>
   <phrase title="cron_entry.fs_monthly_total_score" version_id="1010100" version_string="1.1.1 Alpha"><![CDATA[[FS] Threads monthly total points]]></phrase>
-  <phrase title="cron_entry.fs_notable_member_points" version_id="1000900" version_string="1.0.9 Alpha"><![CDATA[[FS] Notable member points]]></phrase>
   <phrase title="cron_entry.fs_post_reply_points" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Post reply points]]></phrase>
-  <phrase title="cron_entry.fs_thread_solution_point" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Thread solution points]]></phrase>
   <phrase title="fs_thread_asc" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[ASC]]></phrase>
   <phrase title="fs_thread_desc" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[DESC]]></phrase>
   <phrase title="fs_thread_scores" version_id="1000500" version_string="1.0.5 Alpha"><![CDATA[Thread Score ]]></phrase>

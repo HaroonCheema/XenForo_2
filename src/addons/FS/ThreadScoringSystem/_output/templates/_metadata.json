@@ -10,24 +10,24 @@
         "hash": "825801829ba1cc30bccf9661db945516"
     },
     "public/fs_thread_scoring_all_score_notable.html": {
-        "version_id": 1000900,
-        "version_string": "1.0.9 Alpha",
-        "hash": "e970422cb7cfc102e519e576a43ea9af"
+        "version_id": 1010500,
+        "version_string": "1.1.5 Alpha",
+        "hash": "8ce05b797afe3c7a25103e61b8ece74e"
     },
     "public/fs_thread_scoring_my_score.html": {
-        "version_id": 1000200,
-        "version_string": "1.0.2 Alpha",
-        "hash": "e681c5cc3d6090def02df6c29f28b653"
+        "version_id": 1010500,
+        "version_string": "1.1.5 Alpha",
+        "hash": "ab39a911b656573ef416310ca0a95712"
     },
     "public/fs_thread_scoring_system_notable_member.html": {
-        "version_id": 1010200,
-        "version_string": "1.1.2 Alpha",
-        "hash": "5cf49975cecdbde15c6fb55e397fabc9"
+        "version_id": 1010500,
+        "version_string": "1.1.5 Alpha",
+        "hash": "307ec9134a3856021530a3ee475636c9"
     },
     "public/fs_thread_scoring_system_side_widget.html": {
         "version_id": 1010500,
         "version_string": "1.1.5 Alpha",
-        "hash": "17a4726eead64acb0355ee49bba0b5cf"
+        "hash": "50e94b03982d52f7484f117a3d19bcdc"
     },
     "public/widget_fs_thread_scoring_monthly_score.html": {
         "version_id": 1010200,

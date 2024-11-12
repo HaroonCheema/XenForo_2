@@ -48,6 +48,16 @@ class ThreadStarter extends AbstractJob
 
             $threadStarterPoint->save();
 
+            $threadUser = $thread->User;
+
+            if (isset($threadUser)) {
+
+                $threadUser->threads_score += $threadStartPoints;
+                $threadUser->total_score += $threadStartPoints;
+
+                $threadUser->save();
+            }
+
 
             $thread->fastUpdate('points_collected', true);
 

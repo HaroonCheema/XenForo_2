@@ -1,9 +1,9 @@
 <?php
-// FROM HASH: e681c5cc3d6090def02df6c29f28b653
+// FROM HASH: ab39a911b656573ef416310ca0a95712
 return array(
 'macros' => array('record_table_list' => array(
 'arguments' => function($__templater, array $__vars) { return array(
-		'totalCounts' => '!',
+		'user' => '!',
 	); },
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -33,33 +33,30 @@ return array(
 	))) . '
 
 	';
-	$__compilerTemp1 = array();
-	if ($__templater->isTraversable($__vars['totalCounts'])) {
-		foreach ($__vars['totalCounts'] AS $__vars['val']) {
-			$__compilerTemp1[] = array(
-				'_type' => 'cell',
-				'html' => ' ' . ($__vars['val']['thread'] ? $__templater->func('number', array($__vars['val']['thread'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true) : 'N/A') . ' ',
-			);
-			$__compilerTemp1[] = array(
-				'_type' => 'cell',
-				'html' => ' ' . ($__vars['val']['reply'] ? $__templater->func('number', array($__vars['val']['reply'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true) : 'N/A') . ' ',
-			);
-			$__compilerTemp1[] = array(
-				'_type' => 'cell',
-				'html' => ' ' . ($__vars['val']['words'] ? $__templater->func('number', array($__vars['val']['words'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true) : 'N/A') . ' ',
-			);
-			$__compilerTemp1[] = array(
-				'_type' => 'cell',
-				'html' => ' ' . ($__vars['val']['reactions'] ? $__templater->func('number', array($__vars['val']['reactions'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true) : 'N/A') . ' ',
-			);
-			$__compilerTemp1[] = array(
-				'_type' => 'cell',
-				'html' => ' ' . ($__vars['val']['solution'] ? $__templater->func('number', array($__vars['val']['solution'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true) : 'N/A') . ' ',
-			);
-		}
-	}
-	$__finalCompiled .= $__templater->dataRow(array(
-	), $__compilerTemp1) . '
+	$__vars['afterDot'] = $__vars['xf']['options']['fs_thread_scoring_system_decimals'];
+	$__finalCompiled .= '
+
+	' . $__templater->dataRow(array(
+	), array(array(
+		'_type' => 'cell',
+		'html' => ' ' . $__templater->func('number', array($__vars['user']['threads_score'], $__vars['afterDot'], ), true) . ' ',
+	),
+	array(
+		'_type' => 'cell',
+		'html' => ' ' . $__templater->func('number', array($__vars['user']['reply_score'], $__vars['afterDot'], ), true) . ' ',
+	),
+	array(
+		'_type' => 'cell',
+		'html' => ' ' . $__templater->func('number', array($__vars['user']['worlds_score'], $__vars['afterDot'], ), true) . ' ',
+	),
+	array(
+		'_type' => 'cell',
+		'html' => ' ' . $__templater->func('number', array($__vars['user']['reactions_score'], $__vars['afterDot'], ), true) . ' ',
+	),
+	array(
+		'_type' => 'cell',
+		'html' => ' ' . $__templater->func('number', array($__vars['user']['solutions_score'], $__vars['afterDot'], ), true) . ' ',
+	))) . '
 
 ';
 	return $__finalCompiled;
@@ -76,11 +73,11 @@ return array(
 
 			';
 	$__compilerTemp1 = '';
-	if (!$__templater->test($__vars['totalCounts'], 'empty', array())) {
+	if (!$__templater->test($__vars['user'], 'empty', array())) {
 		$__compilerTemp1 .= '
 
 					' . $__templater->callMacro(null, 'record_table_list', array(
-			'totalCounts' => $__vars['totalCounts'],
+			'user' => $__vars['user'],
 		), $__vars) . '
 
 					';

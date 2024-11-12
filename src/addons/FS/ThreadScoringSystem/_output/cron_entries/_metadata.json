@@ -2,13 +2,7 @@
     "fs_monthly_total_score.json": {
         "hash": "f83f0bc78957f153d8a275acdd5d45fd"
     },
-    "fs_notable_member_points.json": {
-        "hash": "5072bce8e79074cd4060b5ac90542c9b"
-    },
     "fs_post_reply_points.json": {
         "hash": "303054fd4505d93b8abd185ffa9fd79e"
-    },
-    "fs_thread_solution_point.json": {
-        "hash": "4312c45f8363b744c5683eb4000b82f0"
     }
 }

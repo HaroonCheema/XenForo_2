@@ -186,7 +186,7 @@ return array(
 	<dl class="pairs pairs--rows pairs--rows--centered menu-fauxLinkRow">
 		<dt>' . 'Total Points' . '</dt>
 		<dd>
-			' . $__templater->escape($__templater->method($__vars['user'], 'getTotalPoints', array())) . '
+			' . $__templater->func('number', array($__vars['user']['total_score'], $__vars['xf']['options']['fs_thread_scoring_system_decimals'], ), true) . '
 		</dd>
 	</dl>
 ';

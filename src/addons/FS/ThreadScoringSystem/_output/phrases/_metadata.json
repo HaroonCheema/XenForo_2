@@ -5,23 +5,11 @@
         "version_string": "1.1.1 Alpha",
         "hash": "29a084618df20bbd0c44cee60b2ae319"
     },
-    "cron_entry.fs_notable_member_points.txt": {
-        "global_cache": false,
-        "version_id": 1000900,
-        "version_string": "1.0.9 Alpha",
-        "hash": "b69cbb0093456abdcff406e833212eb8"
-    },
     "cron_entry.fs_post_reply_points.txt": {
         "global_cache": false,
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
         "hash": "2479b0f330656e8a5d614c91765752c5"
-    },
-    "cron_entry.fs_thread_solution_point.txt": {
-        "global_cache": false,
-        "version_id": 1000010,
-        "version_string": "1.0.0 Alpha",
-        "hash": "32a917e5901dca7a176a7af68f48bc39"
     },
     "fs_thread_asc.txt": {
         "global_cache": false,

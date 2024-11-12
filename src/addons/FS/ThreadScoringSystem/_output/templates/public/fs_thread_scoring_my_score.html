@@ -5,9 +5,9 @@
 		<div class="block-body">
 
 			<xf:datalist data-xf-init="responsive-data-list">
-				<xf:if is="$totalCounts is not empty">
+				<xf:if is="$user is not empty">
 
-					<xf:macro name="record_table_list" arg-totalCounts="{$totalCounts}" />
+					<xf:macro name="record_table_list" arg-user="{$user}" />
 
 					<xf:else />
 					<div class="blockMessage">
@@ -20,7 +20,7 @@
 	</div>
 </div>
 
-<xf:macro name="record_table_list" arg-totalCounts="!">
+<xf:macro name="record_table_list" arg-user="!">
 	<xf:datarow rowtype="header">
 		<xf:cell> {{ phrase('fs_thread_scoring_system_threads') }} </xf:cell>
 		<xf:cell> {{ phrase('fs_thread_scoring_system_replies') }} </xf:cell>
@@ -29,14 +29,14 @@
 		<xf:cell> {{ phrase('fs_thread_scoring_system_solutions') }} </xf:cell>
 	</xf:datarow>
 
+	<xf:set var="$afterDot" value="{{ $xf.options.fs_thread_scoring_system_decimals }}" />
+
 	<xf:datarow>
-		<xf:foreach loop="{$totalCounts}" value="$val">
-			<xf:cell> {{$val.thread ? number($val.thread, $xf.options.fs_thread_scoring_system_decimals) : phrase('n_a') }} </xf:cell>
-			<xf:cell> {{$val.reply ? number($val.reply, $xf.options.fs_thread_scoring_system_decimals) : phrase('n_a') }} </xf:cell>
-			<xf:cell> {{$val.words ? number($val.words, $xf.options.fs_thread_scoring_system_decimals) : phrase('n_a') }} </xf:cell>
-			<xf:cell> {{$val.reactions ? number($val.reactions, $xf.options.fs_thread_scoring_system_decimals) : phrase('n_a') }} </xf:cell>
-			<xf:cell> {{$val.solution ? number($val.solution, $xf.options.fs_thread_scoring_system_decimals) : phrase('n_a') }} </xf:cell>
-		</xf:foreach>
+		<xf:cell> {{ number($user.threads_score, $afterDot) }} </xf:cell>
+		<xf:cell> {{ number($user.reply_score, $afterDot) }} </xf:cell>
+		<xf:cell> {{ number($user.worlds_score, $afterDot) }} </xf:cell>
+		<xf:cell> {{ number($user.reactions_score, $afterDot) }} </xf:cell>
+		<xf:cell> {{ number($user.solutions_score, $afterDot) }} </xf:cell>
 	</xf:datarow>
 
 </xf:macro>

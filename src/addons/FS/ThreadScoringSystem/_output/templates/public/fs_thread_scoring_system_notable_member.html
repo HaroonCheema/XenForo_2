@@ -15,7 +15,7 @@
 							<li>
 								<div class="contentRow contentRow--alignMiddle">
 									<div class="contentRow-figure">
-										<xf:avatar user="$value.User" size="xs" />
+										<xf:avatar user="$value" size="xs" />
 									</div>
 									<div class="contentRow-main">
 										<xf:if is="{$value.total_score}">
@@ -25,7 +25,7 @@
 																																{{$value.reactions_score ? phrase('fs_thread_scoring_system_reactions') . ' ' . number($value.reactions_score, $xf.options.fs_thread_scoring_system_decimals) . ' (' . phrase('points') . ')' : ' '}}
 																																{{$value.solutions_score ? phrase('fs_thread_scoring_system_solution') . ' ' . number($value.solutions_score, $xf.options.fs_thread_scoring_system_decimals) . ' (' . phrase('points') . ')' : ' '}}">{{number($value.total_score, $xf.options.fs_thread_scoring_system_decimals)}}</div>
 										</xf:if>
-										<h3 class="contentRow-title"><xf:username user="$value.User" rich="true" /></h3>
+										<h3 class="contentRow-title"><xf:username user="$value" rich="true" /></h3>
 									</div>
 								</div>
 							</li>

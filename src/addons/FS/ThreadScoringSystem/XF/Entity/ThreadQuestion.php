@@ -22,32 +22,29 @@ class ThreadQuestion extends XFCP_ThreadQuestion
 
         if ($this->isUpdate() && $this->isChanged('solution_user_id')) {
 
-            if ($this->solution_user_id) {
-                $relaceSolutionPoints = \XF::finder('FS\ThreadScoringSystem:ScoringSystem')->where('solution_points', '!=', 0)->where('thread_id', $this->thread_id)->fetchOne();
+            $deleteSolution = \XF::finder('FS\ThreadScoringSystem:ScoringSystem')->where('solution_points', '!=', 0)->where('thread_id', $this->thread_id)->fetchOne();
 
-                if ($relaceSolutionPoints) {
-                    $relaceSolutionPoints->total_points -= $relaceSolutionPoints->solution_points;
-                    $relaceSolutionPoints->total_percentage -= 100;
+            if ($deleteSolution) {
 
-                    $relaceSolutionPoints->solution_points = 0;
+                $deleteSolutionUser = $deleteSolution->User;
 
-                    $relaceSolutionPoints->save();
+                if (isset($deleteSolutionUser)) {
+                    $solutionPoints = $deleteSolution->solution_points;
 
-                    $this->fastUpdate('points_collected', false);
+                    $deleteSolutionUser->solutions_score -= $solutionPoints;
+                    $deleteSolutionUser->total_score -= $solutionPoints;
+
+                    $deleteSolutionUser->save();
                 }
-            } else {
-                $deleteSolution = \XF::finder('FS\ThreadScoringSystem:ScoringSystem')->where('solution_points', '!=', 0)->where('thread_id', $this->thread_id)->fetchOne();
 
-                if ($deleteSolution) {
-                    $deleteSolution->total_points -= $deleteSolution->solution_points;
-                    $deleteSolution->total_percentage -= 100;
+                $deleteSolution->total_points -= $deleteSolution->solution_points;
+                $deleteSolution->total_percentage -= 100;
 
-                    $deleteSolution->solution_points = 0;
+                $deleteSolution->solution_points = 0;
 
-                    $deleteSolution->save();
+                $deleteSolution->save();
 
-                    $this->fastUpdate('points_collected', false);
-                }
+                $this->fastUpdate('points_collected', false);
             }
         }
 
@@ -65,6 +62,17 @@ class ThreadQuestion extends XFCP_ThreadQuestion
             $deleteSolution = \XF::finder('FS\ThreadScoringSystem:ScoringSystem')->where('user_id', $threadQuestion->solution_user_id)->where('thread_id', $threadQuestion->thread_id)->fetchOne();
 
             if ($deleteSolution) {
+
+                $deleteSolutionUser = $deleteSolution->User;
+
+                if (isset($deleteSolutionUser)) {
+                    $solutionPoints = $deleteSolution->solution_points;
+
+                    $deleteSolutionUser->solutions_score -= $solutionPoints;
+                    $deleteSolutionUser->total_score -= $solutionPoints;
+
+                    $deleteSolutionUser->save();
+                }
 
                 $deleteSolution->total_points -= $deleteSolution->solution_points;
 

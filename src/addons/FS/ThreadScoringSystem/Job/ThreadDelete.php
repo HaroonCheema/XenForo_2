@@ -17,6 +17,17 @@ class ThreadDelete extends AbstractJob
             if (count($exist)) {
 
                 foreach ($exist as  $value) {
+
+                    $threadDeleteUser = $value->User;
+                    if (isset($threadDeleteUser)) {
+
+                        $threadPoints = $value->thread_points;
+
+                        $threadDeleteUser->threads_score -= $threadPoints;
+                        $threadDeleteUser->total_score -= $threadPoints;
+
+                        $threadDeleteUser->save();
+                    }
                     $value->delete();
                 }
             }
