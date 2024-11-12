@@ -1472,11 +1472,11 @@
 }
 
 {{ include('fs_logo_slider_item_list.less') }}]]></template>
-  <template type="public" title="fs_widget_logo_slider" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[<xf:if is="$data is not empty">
+  <template type="public" title="fs_widget_logo_slider" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[<xf:if is="$data is not empty">
 	<xf:css src="fs_logo_slider_list.less" />
 	<xf:css src="fs_logo_slider_carousel.less" />
 
-	<xf:js prod="LogoSlider/carousel-compiled.js" dev="vendor/fancyapps/carousel/carousel.umd.js, vendor/fancyapps/carousel/carousel.autoplay.umd.js" />
+	<xf:js prod="xf/carousel-compiled.js" dev="vendor/fancyapps/carousel/carousel.umd.js, vendor/fancyapps/carousel/carousel.autoplay.umd.js" />
 	<xf:js src="LogoSlider/slider.js" min="1" />
 
 	<xf:js>

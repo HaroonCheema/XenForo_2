@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: ed0fdcc2590a13fe194e93fe43f8944c
+// FROM HASH: aa6bb3aa01e81f846fe398066e5cade4
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -15,7 +15,7 @@ return array(
 
 	';
 		$__templater->includeJs(array(
-			'prod' => 'LogoSlider/carousel-compiled.js',
+			'prod' => 'xf/carousel-compiled.js',
 			'dev' => 'vendor/fancyapps/carousel/carousel.umd.js, vendor/fancyapps/carousel/carousel.autoplay.umd.js',
 		));
 		$__finalCompiled .= '
