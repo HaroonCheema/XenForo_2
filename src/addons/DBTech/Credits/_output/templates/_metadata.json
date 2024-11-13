@@ -1,4 +1,9 @@
 {
+    "admin/dbtech_credits_tools_rebuild.html": {
+        "version_id": 905070770,
+        "version_string": "5.7.7",
+        "hash": "9e0e5ff9a8ffa18052e749e64b18c3ae"
+    },
     "admin/dbtech_credits_user_edit_tab.html": {
         "version_id": 905080070,
         "version_string": "5.8.0",

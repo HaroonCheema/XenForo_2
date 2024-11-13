@@ -1,0 +1,44 @@
+<xf:set var="$rebuildBody">
+	<xf:selectrow name="options[type]"
+		label="{{ phrase('content_type') }}">
+
+		<xf:option>{{ phrase('(all)') }}</xf:option>
+		<xf:options source="{{ $xf.app.em.getRepository('DBTech\Credits:EventTrigger').getRebuildableEventTriggerPairs() }}" />
+	</xf:selectrow>
+
+	<xf:checkboxrow>
+		<xf:option name="options[truncate]">
+			<xf:label>{{ phrase('dbtech_credits_delete_all_data_before_rebuilding') }}</xf:label>
+			
+			<xf:dependent>
+				<xf:checkbox>
+					<xf:option name="options[reset]">{{ phrase('dbtech_credits_also_reset_all_credits') }}</xf:option>
+				</xf:checkbox>
+			</xf:dependent>
+		</xf:option>
+	</xf:checkboxrow>
+
+	<xf:numberboxrow name="options[batch]" value="500" min="1"
+		label="{{ phrase('items_to_process_per_page') }}" />
+</xf:set>
+<xf:macro template="tools_rebuild" name="rebuild_job"
+	arg-header="DragonByte Credits: {{ phrase('dbtech_credits_rebuild_transactions') }}"
+	arg-body="{$rebuildBody}"
+	arg-job="DBTech\Credits:TransactionRebuild" />
+<!--[XF:after_dbtech_credits_rebuild]-->
+
+
+<xf:set var="$rebuildBody">
+	<xf:inforow>{{ phrase('dbtech_credits_this_will_rebuild_user_balance_based_on_transaction_log') }}</xf:inforow>
+</xf:set>
+<xf:macro template="tools_rebuild" name="rebuild_job"
+		  arg-header="DragonByte Credits: {{ phrase('dbtech_credits_rebuild_balances') }}"
+		  arg-body="{$rebuildBody}"
+		  arg-job="DBTech\Credits:BalanceRebuild" />
+<!--[XF:after_dbtech_credits_rebuild]-->
+
+<xf:if is="$xf.development">
+	<xf:macro template="tools_rebuild" name="rebuild_job"
+			  arg-header="DragonByte Credits: Daily Credits"
+			  arg-job="DBTech\Credits:DailyCredits" />
+</xf:if>
