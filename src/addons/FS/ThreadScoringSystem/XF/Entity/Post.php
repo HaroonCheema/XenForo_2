@@ -14,16 +14,4 @@ class Post extends XFCP_Post
 
         return $parent;
     }
-
-    // protected function _postDelete()
-    // {
-    //     $parent = parent::_postDelete();
-
-    //     $thread = $this->Thread;
-
-    //     $postReply = \XF::service('FS\ThreadScoringSystem:ReplyPoints');
-    //     $postReply->addEditReplyPoints($thread, $this->post_id);
-
-    //     return $parent;
-    // }
 }

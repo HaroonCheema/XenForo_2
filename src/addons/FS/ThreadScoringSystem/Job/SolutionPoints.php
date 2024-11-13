@@ -18,18 +18,6 @@ class SolutionPoints extends AbstractJob
 
         $limit = $this->data['limit'];
 
-        // $threadStartPoints = intval($options->fs_thread_starter_points);
-
-        // /** @var \XF\Entity\ThreadQuestion $threadQuestions */
-        // $threadQuestion = $this->app->em()->find('XF:ThreadQuestion', $id);
-        // if (!$threadQuestion  || !$threadQuestion->solution_post_id) {
-        //     return;
-        // }
-
-        // $threadQuestionServ = \XF::service('FS\ThreadScoringSystem:ReplyPoints');
-        // $threadQuestionServ->addEditSolutionPoints($threadQuestion);
-
-
         $threadSolutions = \XF::finder('XF:ThreadQuestion')->where('solution_user_id', '!=', 0)->where('points_collected', false)->limitByPage(1, $limit)->fetch();
 
         if (!$threadSolutions->count()) {
@@ -38,9 +26,6 @@ class SolutionPoints extends AbstractJob
         }
 
         foreach ($threadSolutions as $key => $solution) {
-
-            // $threadSolutionsServ = \XF::service('FS\ThreadScoringSystem:ReplyPoints');
-            // $threadSolutionsServ->addEditSolutionPoints($solution);
 
             $threadSolutionPoints = intval($options->fs_total_solution_points);
 

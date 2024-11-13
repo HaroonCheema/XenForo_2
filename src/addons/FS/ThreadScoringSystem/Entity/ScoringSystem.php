@@ -30,8 +30,6 @@ class ScoringSystem extends Entity
             'total_percentage' => ['type' => self::FLOAT, 'default' => 0],
         ];
 
-        // 'coupon_value' => ['type' => self::FLOAT, 'min' => 0, 'default' => 15],
-
         $structure->relations = [
             'User' => [
                 'entity' => 'XF:User',

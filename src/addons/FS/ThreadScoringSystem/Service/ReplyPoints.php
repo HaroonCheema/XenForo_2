@@ -6,6 +6,11 @@ class ReplyPoints extends \XF\Service\AbstractService
 {
     public function addEditReplyPoints(\XF\Entity\Thread $thread, $postId = 0)
     {
+
+        if (!$thread->points_collected) {
+            $this->addThreadStarterPoints($thread);
+        }
+
         $posts = \XF::finder('XF:Post')->where('thread_id', $thread->thread_id)->fetch();
 
         $userIds = array();
@@ -52,6 +57,44 @@ class ReplyPoints extends \XF\Service\AbstractService
         if ($totalPost) {
             $this->postReplyPointsAddEdits($thread, $usersPostCounts, $totalPost, $userIds, $usersWordCounts, $totalWords, $usersReactionCounts, $totalReactions, $userIdUsers);
         }
+
+        return true;
+    }
+
+    protected function addThreadStarterPoints(\XF\Entity\Thread $thread)
+    {
+        $options = \XF::options();
+
+        $threadStartPoints = intval($options->fs_thread_starter_points);
+
+        $threadStarterPoint = \XF::finder('FS\ThreadScoringSystem:ScoringSystem')->where('user_id', $thread->user_id)->where('thread_id', $thread->thread_id)->fetchOne();
+
+        if (!$threadStarterPoint) {
+            $threadStarterPoint = \XF::em()->create('FS\ThreadScoringSystem:ScoringSystem');
+            $threadStarterPoint->total_points = $threadStartPoints;
+            $threadStarterPoint->total_percentage = 100;
+        } else {
+            $threadStarterPoint->total_points += $threadStartPoints;
+            $threadStarterPoint->total_percentage += 100;
+        }
+
+        $threadStarterPoint->thread_id = $thread->thread_id;
+        $threadStarterPoint->user_id = $thread->user_id;
+        $threadStarterPoint->thread_points = $threadStartPoints;
+
+        $threadStarterPoint->save();
+
+        $threadUser = $thread->User;
+
+        if (isset($threadUser)) {
+
+            $threadUser->threads_score += $threadStartPoints;
+            $threadUser->total_score += $threadStartPoints;
+
+            $threadUser->save();
+        }
+
+        $thread->fastUpdate('points_collected', true);
 
         return true;
     }
@@ -196,37 +239,38 @@ class ReplyPoints extends \XF\Service\AbstractService
             }
         }
 
-        if ($thread->last_thread_update > $thread->last_cron_run) {
+        // if ($thread->last_thread_update > $thread->last_cron_run) {
 
-            foreach ($userIdUsers as $key => $user) {
-                if ($user) {
+        //     foreach ($userIdUsers as $key => $user) {
+        //         if ($user) {
 
-                    $updateThreadUserTotal =  $db->fetchRow(
-                        "SELECT SUM(`thread_points`) AS threads_score,
-                    SUM(`reply_points`) AS reply_score,
-                    SUM(`word_points`) AS worlds_score,
-                    SUM(`reaction_points`) AS reactions_score,
-                    SUM(`solution_points`) AS solutions_score,
-                    SUM(`total_points`) AS total_score
-                    FROM fs_thread_scoring_system
-                    WHERE user_id  = ?
-                ",
-                        [
-                            $key,
-                        ]
-                    );
+        //             $updateThreadUserTotal =  $db->fetchRow(
+        //                 "SELECT SUM(`thread_points`) AS threads_score,
+        //             SUM(`reply_points`) AS reply_score,
+        //             SUM(`word_points`) AS worlds_score,
+        //             SUM(`reaction_points`) AS reactions_score,
+        //             SUM(`solution_points`) AS solutions_score
+        //             FROM fs_thread_scoring_system
+        //             WHERE user_id  = ?
+        //         ",
+        //                 [
+        //                     $key,
+        //                 ]
+        //             );
 
-                    $user->threads_score = floatval($updateThreadUserTotal['threads_score']);
-                    $user->reply_score = floatval($updateThreadUserTotal['reply_score']);
-                    $user->worlds_score = floatval($updateThreadUserTotal['worlds_score']);
-                    $user->reactions_score = floatval($updateThreadUserTotal['reactions_score']);
-                    $user->solutions_score = floatval($updateThreadUserTotal['solutions_score']);
-                    $user->total_score = floatval($updateThreadUserTotal['total_score']);
+        //             $userTotalScore = floatval($updateThreadUserTotal['threads_score']) + floatval($updateThreadUserTotal['reply_score']) + floatval($updateThreadUserTotal['worlds_score']) + floatval($updateThreadUserTotal['reactions_score']) + floatval($updateThreadUserTotal['solutions_score']);
 
-                    $user->save();
-                }
-            }
-        }
+        //             $user->threads_score = floatval($updateThreadUserTotal['threads_score']);
+        //             $user->reply_score = floatval($updateThreadUserTotal['reply_score']);
+        //             $user->worlds_score = floatval($updateThreadUserTotal['worlds_score']);
+        //             $user->reactions_score = floatval($updateThreadUserTotal['reactions_score']);
+        //             $user->solutions_score = floatval($updateThreadUserTotal['solutions_score']);
+        //             $user->total_score = $userTotalScore;
+
+        //             $user->save();
+        //         }
+        //     }
+        // }
 
         $prevUsers = \XF::finder('FS\ThreadScoringSystem:ScoringSystem')->where('user_id', '!=', $userIds)->where('thread_id', $thread->thread_id)->fetch();
 
@@ -237,260 +281,5 @@ class ReplyPoints extends \XF\Service\AbstractService
         }
 
         return true;
-    }
-
-    public function getAllTypePointsScores($records)
-    {
-
-        $totalCounts = array();
-        $newRecords = array();
-
-        foreach ($records as  $value) {
-
-            $userId = $value->user_id;
-
-            if (isset($totalCounts[$userId]['totalPoints'])) {
-
-                $totalCounts[$userId]['totalPoints'] += $value['points'];
-            } else {
-                $newRecords[] = $value;
-
-                $totalCounts[$userId]['totalPoints'] = $value['points'];
-            }
-
-            switch ($value['points_type']) {
-                case 'reply': {
-                        if (isset($totalCounts[$userId]['reply'])) {
-
-                            $totalCounts[$userId]['reply'] += floatval($value['points']);
-                        } else {
-
-                            $totalCounts[$userId]['reply'] = floatval($value['points']);
-                        }
-                    }
-                    break;
-
-                case 'words': {
-                        if (isset($totalCounts[$userId]['words'])) {
-
-                            $totalCounts[$userId]['words'] += $value['points'];
-                        } else {
-
-                            $totalCounts[$userId]['words'] = $value['points'];
-                        }
-                    }
-                    break;
-
-                case 'reactions': {
-                        if (isset($totalCounts[$userId]['reactions'])) {
-
-                            $totalCounts[$userId]['reactions'] += $value['points'];
-                        } else {
-
-                            $totalCounts[$userId]['reactions'] = $value['points'];
-                        }
-                    }
-                    break;
-
-                case 'thread': {
-                        if (isset($totalCounts[$userId]['thread'])) {
-
-                            $totalCounts[$userId]['thread'] += $value['points'];
-                        } else {
-
-                            $totalCounts[$userId]['thread'] = $value['points'];
-                        }
-                    }
-                    break;
-
-                case 'solution': {
-                        if (isset($totalCounts[$userId]['solution'])) {
-
-                            $totalCounts[$userId]['solution'] += $value['points'];
-                        } else {
-
-                            $totalCounts[$userId]['solution'] = $value['points'];
-                        }
-                    }
-                    break;
-                    // default:
-                    //     $value = 0;
-            }
-        }
-
-        $sumParams = [
-            'totalCounts' => $totalCounts,
-            'records' => $newRecords,
-        ];
-
-        return $sumParams;
-    }
-
-    public function getAllTypePercentageScores($records)
-    {
-
-        $totalPercentage = array();
-        $newRecords = array();
-
-        foreach ($records as  $value) {
-
-            $userId = $value->user_id;
-
-            if (isset($totalPercentage[$userId]['totalPoints'])) {
-
-                $totalPercentage[$userId]['totalPoints'] += $value['percentage'];
-            } else {
-                $newRecords[] = $value;
-
-                $totalPercentage[$userId]['totalPoints'] = $value['percentage'];
-            }
-
-            switch ($value['points_type']) {
-                case 'reply': {
-                        if (isset($totalPercentage[$userId]['reply'])) {
-
-                            $totalPercentage[$userId]['reply'] += floatval($value['percentage']);
-                        } else {
-
-                            $totalPercentage[$userId]['reply'] = floatval($value['percentage']);
-                        }
-                    }
-                    break;
-
-                case 'words': {
-                        if (isset($totalPercentage[$userId]['words'])) {
-
-                            $totalPercentage[$userId]['words'] += $value['percentage'];
-                        } else {
-
-                            $totalPercentage[$userId]['words'] = $value['percentage'];
-                        }
-                    }
-                    break;
-
-                case 'reactions': {
-                        if (isset($totalPercentage[$userId]['reactions'])) {
-
-                            $totalPercentage[$userId]['reactions'] += $value['percentage'];
-                        } else {
-
-                            $totalPercentage[$userId]['reactions'] = $value['percentage'];
-                        }
-                    }
-                    break;
-
-                case 'thread': {
-                        if (isset($totalPercentage[$userId]['thread'])) {
-
-                            $totalPercentage[$userId]['thread'] += $value['percentage'];
-                        } else {
-
-                            $totalPercentage[$userId]['thread'] = $value['percentage'];
-                        }
-                    }
-                    break;
-
-                case 'solution': {
-                        if (isset($totalPercentage[$userId]['solution'])) {
-
-                            $totalPercentage[$userId]['solution'] += $value['percentage'];
-                        } else {
-
-                            $totalPercentage[$userId]['solution'] = $value['percentage'];
-                        }
-                    }
-                    break;
-            }
-        }
-
-        $sumParams = [
-            'totalPercentage' => $totalPercentage,
-            'records' => $newRecords,
-        ];
-
-        return $sumParams;
-    }
-
-    public function getPointsSums($records)
-    {
-
-        if (count($records)) {
-            $options = \XF::options();
-
-            $sumParams = $this->getAllTypePointsScores($records);
-
-            if ($options->fs_thread_scoring_list_order == 'asc') {
-                uasort($sumParams['totalCounts'], function ($a, $b) {
-                    return $a['totalPoints'] <=> $b['totalPoints'];
-                });
-            } else {
-                uasort($sumParams['totalCounts'], function ($a, $b) {
-                    return $b['totalPoints'] <=> $a['totalPoints'];
-                });
-            }
-
-            $newRecordOrderBy = array();
-
-            foreach ($sumParams['totalCounts'] as $key => $value) {
-
-                if ($value['totalPoints'] >= $options->fs_total_minimum_req_points) {
-                    foreach ($sumParams['records'] as $value) {
-                        if ($key == $value->user_id) {
-                            $newRecordOrderBy[] = $value;
-                        }
-                    }
-                }
-            }
-
-            $sumOredByParams = [
-                'totalCounts' => $sumParams['totalCounts'],
-                'records' => $newRecordOrderBy,
-            ];
-        } else {
-            $sumOredByParams = array();
-        }
-
-        return $sumOredByParams;
-    }
-
-    public function getPercentageSums($records)
-    {
-        if (count($records)) {
-            $options = \XF::options();
-
-            $sumParams = $this->getAllTypePercentageScores($records);
-
-            if ($options->fs_thread_scoring_list_order == 'asc') {
-                uasort($sumParams['totalPercentage'], function ($a, $b) {
-                    return $a['totalPoints'] <=> $b['totalPoints'];
-                });
-            } else {
-                uasort($sumParams['totalPercentage'], function ($a, $b) {
-                    return $b['totalPoints'] <=> $a['totalPoints'];
-                });
-            }
-
-            $newRecordOrderBy = array();
-
-            foreach ($sumParams['totalPercentage'] as $key => $value) {
-
-                if ($value['totalPoints'] >= $options->fs_total_minimum_req_points) {
-                    foreach ($sumParams['records'] as $value) {
-                        if ($key == $value->user_id) {
-                            $newRecordOrderBy[] = $value;
-                        }
-                    }
-                }
-            }
-
-            $sumOredByParams = [
-                'totalPercentage' => $sumParams['totalPercentage'],
-                'records' => $newRecordOrderBy,
-            ];
-        } else {
-            $sumOredByParams = array();
-        }
-
-        return $sumOredByParams;
     }
 }

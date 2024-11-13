@@ -57,15 +57,4 @@ class Thread extends XFCP_Thread
 
         return count($records) ? $records : [];
     }
-
-    // public function getPercentageSums()
-    // {
-    //     $records = $this->finder('FS\ThreadScoringSystem:ScoringSystem')->where('thread_id', $this->thread_id)->fetch();
-
-    //     $allTypePoints = \XF::service('FS\ThreadScoringSystem:ReplyPoints');
-
-    //     $sumOredByParams = $allTypePoints->getPercentageSums($records);
-
-    //     return $sumOredByParams;
-    // }
 }

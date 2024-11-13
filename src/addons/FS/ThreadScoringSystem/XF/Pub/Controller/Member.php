@@ -83,47 +83,47 @@ class Member extends XFCP_Member
         return $this->view('FS\ThreadScoringSystem\XF:Member\MyPointsScore', 'fs_thread_scoring_my_score', $viewParams);
     }
 
-    // public function actionTotalPointslskdjflksdjflkjsdflj()
-    // {
+    public function actionTotalPointslskdjflksdjflkjsdflj()
+    {
+        $totalRecords = \XF::finder('XF:Thread')->where('points_collected', false)->total();
 
-    //     $totalRecords = \XF::finder('FS\ThreadScoringSystem:ScoringSystem')->total();
+        if ($totalRecords) {
 
-    //     if ($totalRecords) {
+            $limit = 100;
 
-    //         $limit = 100000;
+            // $endLimit = round($totalRecords / $limit) ?: 1;
+            $endLimit = 10;
 
-    //         $endLimit = round($totalRecords / $limit) ?: 1;
+            for ($i = 0; $i < $endLimit; $i++) {
 
-    //         $records = array();
+                $threads = \XF::finder('XF:Thread')->where('points_collected', false)->limitByPage(1, $limit)->fetch();
 
-    //         for ($i = 0; $i < 10; $i++) {
+                if (!$threads->count()) {
 
-    //             $offset = $i + 1;
-    //             $recordsFinder = \XF::finder('FS\ThreadScoringSystem:ScoringSystem')->limitByPage($offset, $limit)->fetch();
+                    break;
+                }
 
-    //             if (count($recordsFinder)) {
-    //                 $records[] = $recordsFinder;
-    //             }
-    //         }
-    //     }
+                foreach ($threads as $key => $thread) {
 
-    //     // $app = \XF::app();
-    //     // $jobID = "notable_member_total_points" . time();
+                    $postReply = \XF::service('FS\ThreadScoringSystem:ReplyPoints');
+                    $postReply->addEditReplyPoints($thread);
 
-    //     // $app->jobManager()->enqueueUnique($jobID, 'FS\ThreadScoringSystem:NotableMemberTotalPoints', [], true);
-    //     // $app->jobManager()->runUnique($jobID, 120);
+                    $currentTime = \XF::$time;
 
-    //     echo "<pre>";
-    //     var_dump(count($records));
-    //     exit;
+                    $thread->bulkSet([
+                        'last_thread_update' => $currentTime,
+                        'last_cron_run' => $currentTime,
+                    ]);
 
-    //     $perPage = 100000;
-    //     $records = \XF::finder('FS\ThreadScoringSystem:ScoringSystem')->total();
+                    $thread->save();
+                }
+            }
+        }
 
-    //     echo "<pre>";
-    //     var_dump($records);
-    //     exit;
-    // }
+        echo "<pre>";
+        var_dump($totalRecords);
+        exit;
+    }
 
     public function actionDirectRunJoblksadjoiwesdjf()
     {
@@ -136,7 +136,8 @@ class Member extends XFCP_Member
 
         $totalRecordInDb = \XF::finder('FS\ThreadScoringSystem:ScoringSystem')->total();
 
-        $totalPosts = \XF::finder('XF:Post')->total();
+        // $totalPosts = \XF::finder('XF:Post')->total();
+        $totalPosts = 0;
 
         $threadsCount = $db->fetchAll('
             SELECT COUNT(*) AS total_count
@@ -154,8 +155,8 @@ class Member extends XFCP_Member
             0,
         ]);
 
-        $threads = \XF::finder('XF:Thread')->where('thread_id', $threadIds)->where('node_id', '!=', $excludeForumIds)->total();
-
+        // $threads = \XF::finder('XF:Thread')->where('thread_id', $threadIds)->where('node_id', '!=', $excludeForumIds)->total();
+        $threads = 0;
 
         $allDetails = "\n\nTotal Threads : " . $totalThreads . "\n\nPending Threads For Score (Threads) : " . $totalThreadsPendings . "\n\nExc Threads : " . $threads . "\n\n Total Posts : " . $totalPosts . "\n\n Pending Threads For Scoring (Reply, Words, Reactions) : " . $pendingthreadsCount . "\n\n Total Recods In My Tabel : " . $totalRecordInDb . "\n\n";
 

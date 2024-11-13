@@ -8,22 +8,14 @@ class ScoringSystem
     public static function postReplyPoints()
     {
         $app = \XF::app();
-        $jobID = "thread_reply_points" . time();
 
+        $jobID = "thread_reply_points" . time();
         $app->jobManager()->enqueueUnique($jobID, 'FS\ThreadScoringSystem:ReplyPoints', [], false);
 
-        $app = \XF::app();
-        $jobID = "thread_starter_points" . time();
-
-        $app->jobManager()->enqueueUnique($jobID, 'FS\ThreadScoringSystem:ThreadStarter', [], false);
-
-        $app = \XF::app();
         $jobID = "thread_solution_points" . time();
-
         $app->jobManager()->enqueueUnique($jobID, 'FS\ThreadScoringSystem:SolutionPoints', [], false);
 
         $jobID = "exclude_forum_threads_delete" . time();
-
         $app->jobManager()->enqueueUnique($jobID, 'FS\ThreadScoringSystem:ExcludeForumsThreadsDelete', [], false);
     }
 

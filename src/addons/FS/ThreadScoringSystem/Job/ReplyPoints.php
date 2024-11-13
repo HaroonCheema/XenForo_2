@@ -35,24 +35,22 @@ class ReplyPoints extends AbstractJob
             return $this->complete();
         }
 
-        if (count($threads)) {
-            foreach ($threads as $key => $thread) {
+        foreach ($threads as $key => $thread) {
 
-                $postReply = \XF::service('FS\ThreadScoringSystem:ReplyPoints');
-                $postReply->addEditReplyPoints($thread);
+            $postReply = \XF::service('FS\ThreadScoringSystem:ReplyPoints');
+            $postReply->addEditReplyPoints($thread);
 
-                $currentTime = \XF::$time;
+            $currentTime = \XF::$time;
 
-                $thread->bulkSet([
-                    'last_thread_update' => $currentTime,
-                    'last_cron_run' => $currentTime,
-                ]);
+            $thread->bulkSet([
+                'last_thread_update' => $currentTime,
+                'last_cron_run' => $currentTime,
+            ]);
 
-                $thread->save();
+            $thread->save();
 
-                if (microtime(true) - $startTime >= $maxRunTime) {
-                    break;
-                }
+            if (microtime(true) - $startTime >= $maxRunTime) {
+                break;
             }
         }
 
