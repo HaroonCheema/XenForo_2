@@ -11,7 +11,7 @@ class ReplyPoints extends \XF\Service\AbstractService
             $this->addThreadStarterPoints($thread);
         }
 
-        $posts = \XF::finder('XF:Post')->where('thread_id', $thread->thread_id)->fetch();
+        $totalPostsThisThread = \XF::finder('XF:Post')->where('thread_id', $thread->thread_id)->total();
 
         $userIds = array();
         $userIdUsers = array();
@@ -24,32 +24,48 @@ class ReplyPoints extends \XF\Service\AbstractService
         $usersWordCounts = array();
         $usersReactionCounts = array();
 
-        foreach ($posts as  $post) {
-            if (($post->message_state == 'visible') && ($post->post_id != $postId)) {
-                $userId = $post->user_id;
-                $message = $post->message;
-                $reactions = $post->reaction_score;
+        $postsLimit = 10000;
 
-                $wordArray = str_word_count($message, 1);
+        $endLimit = round($totalPostsThisThread / $postsLimit) ?: 1;
+        // $endLimit = 10;
 
-                $wordCount = count($wordArray);
+        for ($i = 0; $i < $endLimit; $i++) {
 
-                $totalPost += 1;
-                $totalWords += $wordCount;
-                $totalReactions += $reactions;
+            $offset = $i + 1;
 
-                if (isset($usersPostCounts[$userId])) {
+            $posts = \XF::finder('XF:Post')->where('thread_id', $thread->thread_id)->limitByPage($offset, $postsLimit)->fetch();
 
-                    $usersPostCounts[$userId] += 1;
-                    $usersWordCounts[$userId] += $wordCount;
-                    $usersReactionCounts[$userId] += $reactions;
-                } else {
-                    $userIds[] = $userId;
-                    $userIdUsers[$userId] = isset($post->User) ? $post->User : [];
+            if (!$posts->count()) {
+                break;
+            }
 
-                    $usersPostCounts[$userId] = 1;
-                    $usersWordCounts[$userId] = $wordCount;
-                    $usersReactionCounts[$userId] = $reactions;
+            foreach ($posts as  $post) {
+                if (($post->message_state == 'visible') && ($post->post_id != $postId)) {
+                    $userId = $post->user_id;
+                    $message = $post->message;
+                    $reactions = $post->reaction_score;
+
+                    $wordArray = str_word_count($message, 1);
+
+                    $wordCount = count($wordArray);
+
+                    $totalPost += 1;
+                    $totalWords += $wordCount;
+                    $totalReactions += $reactions;
+
+                    if (isset($usersPostCounts[$userId])) {
+
+                        $usersPostCounts[$userId] += 1;
+                        $usersWordCounts[$userId] += $wordCount;
+                        $usersReactionCounts[$userId] += $reactions;
+                    } else {
+                        $userIds[] = $userId;
+                        $userIdUsers[$userId] = isset($post->User) ? $post->User : [];
+
+                        $usersPostCounts[$userId] = 1;
+                        $usersWordCounts[$userId] = $wordCount;
+                        $usersReactionCounts[$userId] = $reactions;
+                    }
                 }
             }
         }
