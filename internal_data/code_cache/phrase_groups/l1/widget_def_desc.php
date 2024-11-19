@@ -17,6 +17,7 @@ return array (
   'widget_def_desc.fsPackageRating' => 'User Upgrade Ratings',
   'widget_def_desc.fs_logo_slider_widget' => '',
   'widget_def_desc.fs_thread_month_wise_scor' => '',
+  'widget_def_desc.fs_zoom_member_online' => '',
   'widget_def_desc.highestRatedInCategory' => '',
   'widget_def_desc.html' => 'Widget that lets you add custom HTML. This widget supports XenForo template syntax.',
   'widget_def_desc.member_stat' => 'Displays the list of users from the specified member stat cache.',

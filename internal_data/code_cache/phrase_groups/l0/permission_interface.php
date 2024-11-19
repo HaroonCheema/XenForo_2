@@ -35,6 +35,7 @@ return array (
   'permission_interface.fs_thread_scoring_system' => '[FS] Thread Scoring System',
   'permission_interface.fs_threadsaleitem' => '[FS] ThreadSaleItem',
   'permission_interface.fs_website_ranking' => '[FS] Website Ranking',
+  'permission_interface.fs_zoom_meeting' => '[FS] Zoom Meeting',
   'permission_interface.generalModeratorPermissions' => 'General moderator permissions',
   'permission_interface.generalPermissions' => 'General permissions',
   'permission_interface.hou_attachment' => '[HoU] Attachment List with Like',

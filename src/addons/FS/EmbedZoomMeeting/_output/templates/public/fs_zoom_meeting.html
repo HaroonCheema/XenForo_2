@@ -1,0 +1,57 @@
+<xf:title page="{$page}">{{ phrase('fs_zoom_meetings') }}</xf:title>
+
+<xf:css src="fs_general_zoom_meeting.less" />
+<xf:css src="structured_list.less" />
+
+<xf:if is="$xf.visitor.user_id==$meeting.user_id And $meeting.status != 1">
+	<xf:pageaction>
+		<xf:button href="{{ link('zoom-meeting/start-meeting',$meeting) }}" class="button--cta"  rel="nofollow">
+			{{ phrase('fs_start_meeting') }}
+		</xf:button>
+	</xf:pageaction>
+</xf:if>
+
+<xf:if is="{{$xf.visitor.isMemberOf($meeting.join_usergroup_ids)}} && $meeting.user_id != $xf.visitor.user_id && $meeting.status == 1">
+	<xf:pageaction>
+		<xf:button href="{{ link('zoom-meeting/join-meeting',$meeting) }}" class="button"  rel="nofollow">
+			{{ phrase('fs_join_meeting') }}
+		</xf:button>
+	</xf:pageaction>
+</xf:if>
+
+<div class="block" data-type="zoom-meeting">
+
+	<div class="block-container">
+		<!--Listing View--->
+		<div class="block-body">
+			<xf:if is="$meeting is not empty">
+
+				<div class="structItemContainer">
+					<xf:macro template="fs_zoom_meeting_listing_list_macros" name="listing" arg-meeting="{$meeting}" />  
+				</div>
+
+				<xf:else />
+				<div class="block-row"> {{ phrase('fs_no_meeting_found') }} </div>
+			</xf:if>
+			<xf:if is="$meeting is not empty">
+			<div class="block-footer"> <span class="block-footer-counter">{{ display_totals($total, $total) }}</span
+				>
+			</div>
+			</xf:if>
+		</div>
+	</div>
+
+	<div class="block-outer block-outer--after">
+		<xf:pagenav
+					page="{$page}"
+					perpage="{$perPage}"
+					total="{$total}"
+					link="zoom-meeting"
+					params="{$filters}"
+					wrapperclass="block-outer-main"
+					/>
+		<xf:showignored wrapperclass="block-outer-opposite" />
+	</div>
+</div>
+
+<xf:widgetpos id="zoom_overview_sidnav" position="sidenav" />

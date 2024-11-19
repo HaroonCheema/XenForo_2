@@ -1,0 +1,6 @@
+{
+  "additional_files": ["embed_zoom_callback.php"],
+  "exec": [
+    "echo '{title} version {version_string} ({version_id}) has been built successfully!' > 'src/addons/FS/EmbedZoomMeeting/_build/built.txt'"
+  ]
+}

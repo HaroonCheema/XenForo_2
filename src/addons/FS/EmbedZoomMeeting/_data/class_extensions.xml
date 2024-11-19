@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class_extensions>
+  <extension from_class="XF\Admin\Controller\Misc" to_class="FS\EmbedZoomMeeting\XF\Admin\Controller\Misc" execute_order="10" active="1"/>
+  <extension from_class="XF\Admin\Controller\Option" to_class="FS\EmbedZoomMeeting\XF\Admin\Controller\Option" execute_order="10" active="1"/>
+  <extension from_class="XF\Entity\User" to_class="FS\EmbedZoomMeeting\XF\Entity\User" execute_order="10" active="1"/>
+</class_extensions>

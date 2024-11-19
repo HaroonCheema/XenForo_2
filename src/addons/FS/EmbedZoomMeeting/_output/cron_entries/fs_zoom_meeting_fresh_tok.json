@@ -1,0 +1,22 @@
+{
+    "cron_class": "FS\\EmbedZoomMeeting\\Cron\\Meeting",
+    "cron_method": "refreshToken",
+    "run_rules": {
+        "day_type": "dom",
+        "dom": [
+            -1
+        ],
+        "hours": [
+            -1
+        ],
+        "minutes": [
+            9,
+            19,
+            29,
+            39,
+            49,
+            59
+        ]
+    },
+    "active": true
+}

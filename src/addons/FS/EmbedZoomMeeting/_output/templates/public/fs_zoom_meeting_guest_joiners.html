@@ -1,0 +1,13 @@
+<xf:title>{{$meeting.topic}}</xf:title>
+
+<xf:form action="{{ link('zoom-meeting/join-meeting', $meeting) }}" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:formrow label="{{ phrase('username') }}" explain="{{phrase('fs_username_required_to_join_meeting')}}">
+				<xf:textbox  name="guest_username" required="true"
+				 />
+			</xf:formrow>
+		</div>
+	<xf:submitrow icon="save" rowtype="simple" />
+	</div>
+</xf:form>

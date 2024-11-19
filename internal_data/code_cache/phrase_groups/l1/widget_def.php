@@ -18,6 +18,7 @@ return array (
   'widget_def.fsPackageRating' => 'User Upgrade Ratings',
   'widget_def.fs_logo_slider_widget' => '[FS] Logo Slider',
   'widget_def.fs_thread_month_wise_scor' => '[FS] Thread Scoring System',
+  'widget_def.fs_zoom_member_online' => '[FS] Zoom Members Online',
   'widget_def.highestRatedInCategory' => 'Highest rated Item in Category',
   'widget_def.html' => 'HTML',
   'widget_def.member_stat' => 'Member stat',

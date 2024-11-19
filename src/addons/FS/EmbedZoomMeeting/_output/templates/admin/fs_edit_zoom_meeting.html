@@ -1,0 +1,52 @@
+<xf:if is="$meeting.isInsert()">
+	<xf:title>{{ phrase('fs_add_meeting') }}</xf:title>
+	<xf:else />
+	<xf:title>{{ phrase('fs_edit_meeting:') }} {$meeting.topic}</xf:title>
+</xf:if>
+
+<xf:pageaction if="$meeting.isUpdate()">
+	<xf:button href="{{ link('zoom-meeting/delete', $meeting) }}" icon="delete" overlay="true" />
+</xf:pageaction>
+
+<xf:form action="{{ link('zoom-meeting/save', $meeting) }}"  ajax="true" data-xf-init="attachment-manager" >
+
+	<div class="block-container">
+		<div class="block-body">
+
+			<xf:textboxrow name="topic" value="{$meeting.topic}"  required="true" autofocus="true"
+						   label="{{ phrase('fs_zoom_meeting_topic') }}" />
+
+			<h2 class="block-formSectionHeader"><span class="block-formSectionHeader-aligner">{{phrase('fs_meeting_timing')}}</span></h2>
+			<xf:formrow rowtype="input"
+						label="{{ phrase('fs_start_time') }}">
+				<div class="inputGroup">
+
+					<xf:dateinput name="start_date" class="date start" value="{{$meeting.start_time ? $meeting.start_time : ''}}" required="true"
+								  hint="{{ phrase('required') }}"/>
+
+					<span class="inputGroup-splitter"></span>
+
+					<xf:textbox name="start_time" class="input--date time start" required="true" type="time"
+								value="{{$meeting.start_time ? $meeting.getStartTimeConvert() : ''}}"
+								data-xf-init="time-picker" data-moment="{{$meeting.start_time ? $meeting.getStartTimeConvert() : ''}}" data-format="{{ $xf.language.time_format }}" />
+
+				</div>
+			</xf:formrow>
+
+			<xf:numberboxrow name="duration" value="{{$meeting.duration}}" min="10" 			
+							 label="{{ phrase('fs_duration') }}"  explain="{{phrase('fs_duration_explain')}}"/>
+
+			<h2 class="block-formSectionHeader"><span class="block-formSectionHeader-aligner">{{phrase('fs_join_meeting_validation')}}</span></h2>
+			<xf:selectrow name="join_usergroup_ids[]" multiple="multiple" size="5" value="{{$meeting.join_usergroup_ids}}"
+						  label="{{ phrase('fs_user_groups_allow_join') }}"
+						  explain="{{ phrase('fs_user_groups_allow_join_explain') }}"
+						  >
+				<xf:foreach loop="$userGroups" value="$userGroup">
+					<xf:option value="{$userGroup.user_group_id}">{$userGroup.title}</xf:option>
+				</xf:foreach>
+			</xf:selectrow>
+		</div>
+	</div>
+	<xf:submitrow sticky="true" icon="save" />
+
+</xf:form>

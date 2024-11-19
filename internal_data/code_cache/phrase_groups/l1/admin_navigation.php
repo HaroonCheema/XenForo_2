@@ -148,6 +148,8 @@ return array (
   'admin_navigation.fs_select_team' => '[FS] Create Team',
   'admin_navigation.fs_usergroup_batch' => '[FS] Batch',
   'admin_navigation.fs_usergroup_batch_add' => 'Add Batch',
+  'admin_navigation.fs_zoom' => '[FS] Zoom Meeting',
+  'admin_navigation.fs_zoom_meetings' => 'Meeting',
   'admin_navigation.groupsAndPermissions' => 'Groups &amp; permissions',
   'admin_navigation.help' => 'Help',
   'admin_navigation.helpPages' => 'Help pages',
@@ -282,6 +284,4 @@ return array (
   'admin_navigation.xfrmFields' => 'Resource fields',
   'admin_navigation.xfrmPrefixes' => 'Resource prefixes',
   'admin_navigation.xfrmReviewFields' => 'Resource review fields',
-  'admin_navigation.zoomMeeting' => '[FS] Zoom Meeting',
-  'admin_navigation.zoom_meeting' => 'Meeting',
 );

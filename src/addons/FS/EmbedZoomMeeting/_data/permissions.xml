@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<permissions>
+  <permission permission_group_id="fs_zoom_meeting" permission_id="zoom_meeting_view" permission_type="flag" interface_group_id="fs_zoom_meeting" display_order="1"/>
+</permissions>

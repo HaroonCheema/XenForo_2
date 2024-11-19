@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<admin_navigation>
-  <admin_navigation_entry navigation_id="zoomMeeting" display_order="1" link="meeting" icon="fa-bullhorn" debug_only="0" development_only="0" hide_no_children="0"/>
-  <admin_navigation_entry navigation_id="zoom_meeting" parent_navigation_id="zoomMeeting" display_order="1" link="meeting" debug_only="0" development_only="0" hide_no_children="0"/>
-</admin_navigation>

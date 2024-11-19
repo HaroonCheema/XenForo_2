@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<option_groups>
-  <group group_id="fs_zoom_api_credentials" icon="fa-wrench" display_order="1" debug_only="0"/>
-  <group group_id="fs_zoom_meeting" icon="fa-users" display_order="1" debug_only="0"/>
-</option_groups>

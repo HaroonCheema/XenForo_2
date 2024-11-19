@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="admin_navigation.fs_zoom" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Zoom Meeting]]></phrase>
+  <phrase title="admin_navigation.fs_zoom_meetings" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Meeting]]></phrase>
+  <phrase title="cron_entry.fs_zoom_meeting_fresh_tok" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Zoom refresh Token]]></phrase>
+  <phrase title="fs_add_meeting" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add Meeting]]></phrase>
+  <phrase title="fs_duration" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Duration]]></phrase>
+  <phrase title="fs_duration_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Duration should be count in minutes.]]></phrase>
+  <phrase title="fs_edit_meeting" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Edit]]></phrase>
+  <phrase title="fs_join_meeting" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Join Meeting]]></phrase>
+  <phrase title="fs_join_meeting_validation" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Join Meeting Validation]]></phrase>
+  <phrase title="fs_join_url" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Join Url]]></phrase>
+  <phrase title="fs_left_time" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Left Time]]></phrase>
+  <phrase title="fs_meetimg_date" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Meeting Time]]></phrase>
+  <phrase title="fs_meeting_DD" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[DD]]></phrase>
+  <phrase title="fs_meeting_HH" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[HH]]></phrase>
+  <phrase title="fs_meeting_MM" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[MM]]></phrase>
+  <phrase title="fs_meeting_SS" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[SS]]></phrase>
+  <phrase title="fs_meeting_duration" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Duration]]></phrase>
+  <phrase title="fs_meeting_duration_min" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[{duration} mints]]></phrase>
+  <phrase title="fs_meeting_end" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Meeting End]]></phrase>
+  <phrase title="fs_meeting_join" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Meeting Join]]></phrase>
+  <phrase title="fs_meeting_join_url" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Join Url]]></phrase>
+  <phrase title="fs_meeting_list" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Zoom Meeting]]></phrase>
+  <phrase title="fs_meeting_status" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Status]]></phrase>
+  <phrase title="fs_meeting_timing" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Timing]]></phrase>
+  <phrase title="fs_meeting_zoom_joined" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Users ]]></phrase>
+  <phrase title="fs_need_to_validate_you_have_meeting_on_zoom_portal" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[you did not have meeting on zoom portal.]]></phrase>
+  <phrase title="fs_need_to_wait_wait_for_start_meeting_by_host" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Need to wait for start meeting by host.]]></phrase>
+  <phrase title="fs_no_meeting_found" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[No Meeting Found.]]></phrase>
+  <phrase title="fs_start_date" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Start date]]></phrase>
+  <phrase title="fs_start_meeting" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Start Meeting]]></phrase>
+  <phrase title="fs_start_time" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Start Time]]></phrase>
+  <phrase title="fs_start_url" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Start Url]]></phrase>
+  <phrase title="fs_status_closed" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Closed]]></phrase>
+  <phrase title="fs_status_live" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Live]]></phrase>
+  <phrase title="fs_status_waiting" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Waiting]]></phrase>
+  <phrase title="fs_unique_username_must_required" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Unique username must required its already registered.]]></phrase>
+  <phrase title="fs_user_groups_allow_join" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[UserGroups]]></phrase>
+  <phrase title="fs_user_groups_allow_join_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[User Groups Allow to join meeting.]]></phrase>
+  <phrase title="fs_user_joined" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Users]]></phrase>
+  <phrase title="fs_username_required_to_join_meeting" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Username required to join meeting.]]></phrase>
+  <phrase title="fs_zoom_meeting_topic" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Topic]]></phrase>
+  <phrase title="fs_zoom_meetings" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Zoom Meeting]]></phrase>
+  <phrase title="fs_zoom_topic" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Topic]]></phrase>
+  <phrase title="nav.fs_zoom_meetings" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Zoom Meeting]]></phrase>
+  <phrase title="option.fs_webhook_secret_key" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Webhook Secret Token]]></phrase>
+  <phrase title="option.fs_zoom_access_token" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Zoom Access Token]]></phrase>
+  <phrase title="option.fs_zoom_client_id" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Client ID]]></phrase>
+  <phrase title="option.fs_zoom_client_secret" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Client Secret]]></phrase>
+  <phrase title="option.fs_zoom_credentials_change" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Zoom Auth]]></phrase>
+  <phrase title="option.fs_zoom_refresh_token" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Zoom Refresh Token]]></phrase>
+  <phrase title="option_explain.fs_webhook_secret_key" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Must Required for webhook validate.]]></phrase>
+  <phrase title="option_explain.fs_zoom_access_token" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Do not need to change or insert any thing.]]></phrase>
+  <phrase title="option_explain.fs_zoom_client_id" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_explain.fs_zoom_client_secret" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_explain.fs_zoom_credentials_change" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_explain.fs_zoom_refresh_token" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Do not need to change or insert any thing.]]></phrase>
+  <phrase title="option_group.fs_embed_zoom_credentials" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Embed Zoom Api Credentials]]></phrase>
+  <phrase title="option_group.fs_zoom_meeting" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Zoom Meeting Auth]]></phrase>
+  <phrase title="option_group_description.fs_embed_zoom_credentials" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_group_description.fs_zoom_meeting" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="permission.fs_zoom_meeting_zoom_meeting_view" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Can View Zoom Meeting]]></phrase>
+  <phrase title="permission_interface.fs_zoom_meeting" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Zoom Meeting]]></phrase>
+  <phrase title="widget_def.fs_zoom_member_online" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Zoom Members Online]]></phrase>
+  <phrase title="widget_def_desc.fs_zoom_member_online" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+</phrases>

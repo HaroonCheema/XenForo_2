@@ -1,0 +1,29 @@
+<div class="block" data-widget-section="onlineNow"{{ widget_data($widget) }}>
+	<div class="block-container">
+		<h3 class="block-minorHeader"><a href="{{ link('online') }}">{$title}</a></h3>
+		<div class="block-body">
+			<div class="block-row block-row--minor">
+				<xf:if is="$online is not empty">
+					<ul class="listInline listInline--comma">
+						<xf:foreach loop="$online" value="$val"><xf:trim>
+							<li><xf:if is="$val.User">
+								<xf:username user="$val.User" rich="true" class="{{ !$val.User ? 'username--invisible' : '' }}" />
+								<xf:else />
+								{{$val.username}}
+								</xf:if></li>
+							</xf:trim></xf:foreach>
+					</ul>
+					<xf:else />
+					{{ phrase('no_members_online_now') }}
+				</xf:if>
+			</div>
+		</div>
+		<div class="block-footer">
+			<span class="block-footer-counter">{{ phrase('online_now_x_members_y_guests_z',{
+				'total': number($total),
+				'members': number($members),
+				'guests': number($guests)})
+				}}</span>
+		</div>
+	</div>
+</div>

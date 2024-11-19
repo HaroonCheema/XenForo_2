@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<cron>
-  <entry entry_id="alert_meeting_registers" cron_class="FS\ZoomMeeting\Cron\Meeting" cron_method="alertRegisters" active="1"><![CDATA[{"day_type":"dom","dom":[-1],"hours":[-1],"minutes":[-1]}]]></entry>
-  <entry entry_id="zoom_meeting_fresh_token" cron_class="FS\ZoomMeeting\Cron\Meeting" cron_method="refreshToken" active="1"><![CDATA[{"day_type":"dom","dom":[-1],"hours":[-1],"minutes":[10,20,30,40,50,59]}]]></entry>
-</cron>

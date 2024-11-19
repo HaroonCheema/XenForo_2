@@ -1,0 +1,72 @@
+<xf:macro name="listing" arg-meeting="!" arg-showWatched="{{ true }}" arg-allowInlineMod="{{ true }}" arg-chooseName="" arg-extraInfo="">
+
+	<div class="structItem structItem--resource " id="meeting-{{$meeting.meeting_id}}" data-author="{{ $meeting.User.username ?: '' }}">
+		<div class="structItem-cell structItem-cell--main" data-xf-init="touch-proxy">
+			<div class="structItem-title"> <a href="#" data-tp-primary="on">{$meeting.topic}</a> </div>
+			<div class="structItem-minor">
+				<ul class="structItem-parts">
+					<li>
+						<xf:username user="$meeting.User" defaultname="{$meeting.User.username}" />
+					</li>
+					<li class="structItem-startDate">
+						<xf:date time="{$meeting.start_time}" /> </li>
+				</ul>
+			</div>
+		</div>
+		<div class="block-body block-row block-row--minor structItem-cell structItem-cell--resourceMeta">
+
+			<xf:if is="$meeting.status==1"> 
+				<dl class="pairs pairs--justified">
+					<dt>{{ phrase('fs_meeting_status') }}</dt>
+					<dd  id="meeting-live-{{$meeting.meeting_id}}" class="status_live">{{phrase('fs_status_live')}}</dd>
+				</dl>
+				<dl class="pairs pairs--justified">
+					<dt>{{ phrase('fs_meeting_end') }}</dt>
+					<dd id="meeting-end-{{$meeting.meeting_id}}"><xf:date time="{$meeting.end_time}" /></dd>
+				</dl>
+				<xf:if is="$meeting.getMeetingUserCount()"> 
+					<dl class="pairs pairs--justified">
+						<dt>{{ phrase('fs_user_joined') }}</dt>
+						<dd>{{$meeting.getMeetingUserCount()}}</dd>
+					</dl>
+				</xf:if>
+
+				<xf:elseif is="$meeting.status==0"/>
+				<dl class="pairs pairs--justified">
+					<dt>{{ phrase('fs_meeting_duration') }}</dt> 
+					<dd>
+						{{ phrase('fs_meeting_duration_min', {'duration': $meeting.duration}) }}
+					</dd>
+				</dl>
+				<dl class="pairs pairs--justified">
+					<dt>{{ phrase('fs_meeting_status') }}</dt>
+					<dd  id="meeting-waiting-{{$meeting.meeting_id}}"class="status_waiting">{{phrase('fs_status_waiting')}}</dd>
+				</dl>
+				<xf:include template="fs_zoom_meeting_timer_counter_js" />
+				<dl class="pairs pairs--justified meeting-counter-{{$meeting.meeting_id}}">
+					<dt>{{ phrase('fs_left_time') }}</dt>
+					<dd>
+						<xf:macro template="fs_zoom_meeting_macro" name="leftTime" arg-meeting="{$meeting}" />
+					</dd>
+				</dl>
+				<xf:elseif is="$meeting.status==2"/> 
+				<dl class="pairs pairs--justified">
+					<dt>{{ phrase('fs_meeting_status') }}</dt>
+					<dd class="status_closed" id="meeting-closed-{{$meeting.meeting_id}}">{{phrase('fs_status_closed')}}</dd>
+				</dl>
+				<dl class="pairs pairs--justified">
+					<dt>{{ phrase('fs_meeting_end') }}</dt>
+					<dd><xf:date time="{$meeting.end_time}" /></dd>
+				</dl>
+				<xf:if is="$meeting.getMeetingUserCount()"> 
+					<dl class="pairs pairs--justified">
+						<dt>{{ phrase('fs_user_joined') }}</dt>
+						<dd>{{$meeting.getMeetingUserCount()}}</dd>
+					</dl>
+				</xf:if>
+
+			</xf:if>
+
+		</div>
+	</div>
+</xf:macro>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cron>
+  <entry entry_id="fs_zoom_meeting_fresh_tok" cron_class="FS\EmbedZoomMeeting\Cron\Meeting" cron_method="refreshToken" active="1"><![CDATA[{"day_type":"dom","dom":[-1],"hours":[-1],"minutes":[9,19,29,39,49,59]}]]></entry>
+</cron>

@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: cb74559c448bc3d1b796263016d76a0b
+// FROM HASH: 8def4bef4ad948d5ec07032b02b9c179
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -18,7 +18,7 @@ return array(
 
 			' . $__templater->formTextBoxRow(array(
 		'name' => 'client_id',
-		'value' => $__vars['xf']['options']['zoom_meeting_client_id'],
+		'value' => $__vars['xf']['options']['fs_zoom_client_id'],
 		'required' => 'required',
 	), array(
 		'label' => 'Client ID',
@@ -26,7 +26,7 @@ return array(
 
 			' . $__templater->formTextBoxRow(array(
 		'name' => 'client_secret',
-		'value' => $__vars['xf']['options']['zoom_meeting_client_secret'],
+		'value' => $__vars['xf']['options']['fs_zoom_client_secret'],
 		'required' => 'required',
 	), array(
 		'label' => 'Client secret',

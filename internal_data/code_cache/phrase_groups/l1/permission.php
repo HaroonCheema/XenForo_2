@@ -203,6 +203,7 @@ return array (
   'permission.fs_user_names_hide' => 'Hide Usernames',
   'permission.fs_website_ranking_check' => 'Check Website',
   'permission.fs_website_ranking_perm_check' => 'Check Website Ranking',
+  'permission.fs_zoom_meeting_zoom_meeting_view' => 'Can View Zoom Meeting',
   'permission.general_approveRejectUser' => 'Approve / reject users',
   'permission.general_approveUsernameChange' => 'Approve / reject username change',
   'permission.general_banUser' => 'Ban users',

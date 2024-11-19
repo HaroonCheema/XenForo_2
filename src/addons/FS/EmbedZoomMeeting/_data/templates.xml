@@ -1,0 +1,630 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="admin" title="fs_edit_zoom_meeting" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:if is="$meeting.isInsert()">
+	<xf:title>{{ phrase('fs_add_meeting') }}</xf:title>
+	<xf:else />
+	<xf:title>{{ phrase('fs_edit_meeting:') }} {$meeting.topic}</xf:title>
+</xf:if>
+
+<xf:pageaction if="$meeting.isUpdate()">
+	<xf:button href="{{ link('zoom-meeting/delete', $meeting) }}" icon="delete" overlay="true" />
+</xf:pageaction>
+
+<xf:form action="{{ link('zoom-meeting/save', $meeting) }}"  ajax="true" data-xf-init="attachment-manager" >
+
+	<div class="block-container">
+		<div class="block-body">
+
+			<xf:textboxrow name="topic" value="{$meeting.topic}"  required="true" autofocus="true"
+						   label="{{ phrase('fs_zoom_meeting_topic') }}" />
+
+			<h2 class="block-formSectionHeader"><span class="block-formSectionHeader-aligner">{{phrase('fs_meeting_timing')}}</span></h2>
+			<xf:formrow rowtype="input"
+						label="{{ phrase('fs_start_time') }}">
+				<div class="inputGroup">
+
+					<xf:dateinput name="start_date" class="date start" value="{{$meeting.start_time ? $meeting.start_time : ''}}" required="true"
+								  hint="{{ phrase('required') }}"/>
+
+					<span class="inputGroup-splitter"></span>
+
+					<xf:textbox name="start_time" class="input--date time start" required="true" type="time"
+								value="{{$meeting.start_time ? $meeting.getStartTimeConvert() : ''}}"
+								data-xf-init="time-picker" data-moment="{{$meeting.start_time ? $meeting.getStartTimeConvert() : ''}}" data-format="{{ $xf.language.time_format }}" />
+
+				</div>
+			</xf:formrow>
+
+			<xf:numberboxrow name="duration" value="{{$meeting.duration}}" min="10" 			
+							 label="{{ phrase('fs_duration') }}"  explain="{{phrase('fs_duration_explain')}}"/>
+
+			<h2 class="block-formSectionHeader"><span class="block-formSectionHeader-aligner">{{phrase('fs_join_meeting_validation')}}</span></h2>
+			<xf:selectrow name="join_usergroup_ids[]" multiple="multiple" size="5" value="{{$meeting.join_usergroup_ids}}"
+						  label="{{ phrase('fs_user_groups_allow_join') }}"
+						  explain="{{ phrase('fs_user_groups_allow_join_explain') }}"
+						  >
+				<xf:foreach loop="$userGroups" value="$userGroup">
+					<xf:option value="{$userGroup.user_group_id}">{$userGroup.title}</xf:option>
+				</xf:foreach>
+			</xf:selectrow>
+		</div>
+	</div>
+	<xf:submitrow sticky="true" icon="save" />
+
+</xf:form>]]></template>
+  <template type="admin" title="fs_option_template_zoomadvance" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:formrow
+	label="{$option.title}"
+	hint="{$hintHtml}"
+	explain="{$explainHtml}"
+	rowclass="{$rowClass}">
+
+	<div>{{ phrase('built_zoom_auth_system') }}</div>
+	<div class="u-inputSpacer">
+		<xf:button href="{{ link('options/zoom-meeting-auth-setup', $option) }}" data-xf-click="overlay">
+			{{ phrase('change') }}
+		</xf:button>
+	</div>
+</xf:formrow>]]></template>
+  <template type="admin" title="fs_option_zoom_transport_auth" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{$option.title}</xf:title>
+
+<xf:form action="{{ link('options/zoom-meeting-auth-setup', $option) }}"  class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:inforow>
+				{{ phrase('zoom_setup_explain:') }}
+				<div><code>{$redirectUri}</code></div>
+			</xf:inforow>
+
+			<xf:textboxrow name="client_id" value="{$xf.options.fs_zoom_client_id}"
+						   label="{{ phrase('client_id') }}"
+						   required="required" />
+
+			<xf:textboxrow name="client_secret"
+						   value="{$xf.options.fs_zoom_client_secret}"
+						   label="{{ phrase('client_secret') }}"
+						   required="required" />
+
+			<xf:inforow>
+				{{ phrase('continuing_will_redirect_you_to_zoom_to_confirm_account_you_want_to') }}
+			</xf:inforow>
+		</div>
+		<xf:submitrow sticky="true" submit="{{ phrase('continue') }}" />
+	</div>
+</xf:form>]]></template>
+  <template type="admin" title="fs_zoom_meeting" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('fs_meeting_list') }}</xf:title>
+
+<xf:if is="$meeting is empty">
+	<xf:pageaction>
+		<xf:button href="{{ link('zoom-meeting/add') }}" icon="user">{{ phrase('fs_add_meeting') }}</xf:button>
+	</xf:pageaction>
+</xf:if>
+
+<xf:if is="$meeting is not empty">
+	<xf:form action="{{ link('zoom-meeting/toggle') }}" class="block" ajax="true">
+		<div class="block-container">
+			<div class="block-body">
+
+				<xf:datalist data-xf-init="responsive-data-list">
+					<xf:datarow rowtype="header">
+						<xf:cell>{{ phrase('fs_zoom_topic') }}</xf:cell>
+						<xf:cell>{{ phrase('fs_start_date') }}</xf:cell>
+						<xf:cell>{{ phrase('fs_start_time') }}</xf:cell>
+						<xf:cell>{{ phrase('fs_duration') }}</xf:cell>
+						<xf:comment><xf:cell>{{ phrase('fs_start_url') }}</xf:cell>
+							<xf:cell>{{ phrase('fs_join_url') }}</xf:cell></xf:comment>
+						<xf:cell class="dataList-cell--min">&nbsp;</xf:cell>
+					</xf:datarow>
+
+					<xf:datarow>
+						<xf:cell>{$meeting.topic}</xf:cell>
+						<xf:cell>{$meeting.getStartDate()}</xf:cell>
+						<xf:cell>{$meeting.getStartTime()}</xf:cell>
+						<xf:cell>{$meeting.duration} mints</xf:cell>
+						<xf:comment><xf:cell><xf:macro name="copy_key" arg-url="{{$meeting.z_start_url}}" arg-success="start url successfully copy." arg-targclass="js-startUrl{{$meeting.meeting_id}}"/></xf:cell>
+							<xf:cell><xf:macro name="copy_key" arg-url="{{$meeting.z_join_url}}" arg-success="Join url successfully copy." arg-targclass="js-joinUrl{{$meeting.meeting_id}}"/></xf:cell></xf:comment>
+						<xf:action href="{{ link('zoom-meeting/edit', $meeting) }}">{{ phrase('edit') }}</xf:action>
+					</xf:datarow>
+
+				</xf:datalist>
+			</div>
+		</div>
+	</xf:form>
+	<xf:else />
+	<div class="blockMessage">{{ phrase('no_results_found') }}</div>
+</xf:if>
+
+<xf:macro name="copy_key" arg-url="!" arg-success="!" arg-targclass="">
+	<code class="{{$targclass}}" style="display:none;">{$url}</code>
+	<xf:button icon="copy"
+			   data-xf-init="copy-to-clipboard"
+			   data-copy-target=".{{$targclass}}"
+			   data-success="{{$success}}"
+			   class="button--link is-hidden" />
+</xf:macro>]]></template>
+  <template type="public" title="fs_general_zoom_meeting.less" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[.status_live,.status_waiting,.status_closed{
+	
+	font-weight:600;
+}
+.status_live{
+	color:green;
+}
+.status_waiting{
+	color:blue;
+}
+.status_closed{
+	color:red;
+}
+
+.meeting_start_time{
+	padding-bottom:8px !important;
+}]]></template>
+  <template type="public" title="fs_host_meeting_start" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<style>
+	.p-navSticky{
+		display:none !important;
+	}
+</style>
+<script src="https://source.zoom.us/3.9.0/lib/vendor/react.min.js"></script>
+    <script src="https://source.zoom.us/3.9.0/lib/vendor/react-dom.min.js"></script>
+    <script src="https://source.zoom.us/3.9.0/lib/vendor/redux.min.js"></script>
+    <script src="https://source.zoom.us/3.9.0/lib/vendor/redux-thunk.min.js"></script>
+    <script src="https://source.zoom.us/3.9.0/lib/vendor/lodash.min.js"></script>
+
+    <!-- Zoom SDK -->
+<script src="https://source.zoom.us/zoom-meeting-3.9.0.min.js"></script>
+<div id="zmmtg-root"></div>
+    <div id="meetingSDKElement"></div>
+<script>
+        // Set up Zoom Meeting configuration
+        const sdkKey = "{{$sdkKey}}";
+        const meetingNumber = "{{$meetingNumber}}";
+        const role = "{{$role}}";
+        const userName = "{{$username}}";
+        const userEmail="{{$email}}";
+        const passWord = "{{$passWord}}"; 
+        const leaveUrl = "{{$redirectUrl}}";
+        const signature = "{{$signature}}";
+
+        // Initialize the SDK
+        ZoomMtg.setZoomJSLib("https://source.zoom.us/3.9.0/lib", "/av");
+        ZoomMtg.preLoadWasm();
+        ZoomMtg.prepareWebSDK();
+
+        function startMeeting() {
+            ZoomMtg.init({
+                leaveUrl: leaveUrl,
+                disableCORP: !window.crossOriginIsolated,
+                success: function () {
+                    ZoomMtg.join({
+                        sdkKey: sdkKey,
+                        signature: signature,
+                        meetingNumber: meetingNumber,
+                        userName: userName,
+                        passWord: passWord,
+                        success: function () {
+                            console.log("Joined Zoom meeting successfully");
+                        },
+                        error: function (error) {
+                            console.error("Error joining meeting:", error);
+                        }
+                    });
+                },
+                error: function (error) {
+                    console.error("Error initializing Zoom SDK:", error);
+                }
+            });
+        }
+
+	   document.addEventListener("DOMContentLoaded", startMeeting);
+</script>]]></template>
+  <template type="public" title="fs_join_meeting_start" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<style>
+	.p-navSticky{
+		display:none !important;
+	}
+</style>
+<script src="https://source.zoom.us/3.9.0/lib/vendor/react.min.js"></script>
+    <script src="https://source.zoom.us/3.9.0/lib/vendor/react-dom.min.js"></script>
+    <script src="https://source.zoom.us/3.9.0/lib/vendor/redux.min.js"></script>
+    <script src="https://source.zoom.us/3.9.0/lib/vendor/redux-thunk.min.js"></script>
+    <script src="https://source.zoom.us/3.9.0/lib/vendor/lodash.min.js"></script>
+
+    <!-- Zoom SDK -->
+<script src="https://source.zoom.us/zoom-meeting-3.9.0.min.js"></script>
+<div id="zmmtg-root"></div>
+    <div id="meetingSDKElement"></div>
+<script>
+        // Set up Zoom Meeting configuration
+        const sdkKey = "{{$sdkKey}}";
+        const meetingNumber = "{{$meetingNumber}}";
+        const role = "{{$role}}";
+        const userName = "{{$username}}";
+        const userEmail="{{$email}}";
+        const passWord = "{{$passWord}}";
+        const leaveUrl = "{{$redirectUrl}}";
+        const signature = "{{$signature}}";
+	 	const tk = "{{$tk}}";
+
+        // Initialize the SDK
+        ZoomMtg.setZoomJSLib("https://source.zoom.us/3.9.0/lib", "/av");
+        ZoomMtg.preLoadWasm();
+        ZoomMtg.prepareWebSDK();
+
+        function startMeeting() {
+            ZoomMtg.init({
+                leaveUrl: leaveUrl,
+                disableCORP: !window.crossOriginIsolated,
+                success: function () {
+                    ZoomMtg.join({
+                        sdkKey: sdkKey,
+                        signature: signature,
+                        meetingNumber: meetingNumber,
+                        userName: userName,
+                        passWord: passWord,
+						tk:tk,
+                        success: function () {
+                            console.log("Joined Zoom meeting successfully");
+                        },
+                        error: function (error) {
+                            console.error("Error joining meeting:", error);
+                        }
+                    });
+                },
+                error: function (error) {
+                    console.error("Error initializing Zoom SDK:", error);
+                }
+            });
+        }
+
+	   document.addEventListener("DOMContentLoaded", startMeeting);
+</script>]]></template>
+  <template type="public" title="fs_zoom_meeting" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title page="{$page}">{{ phrase('fs_zoom_meetings') }}</xf:title>
+
+<xf:css src="fs_general_zoom_meeting.less" />
+<xf:css src="structured_list.less" />
+
+<xf:if is="$xf.visitor.user_id==$meeting.user_id And $meeting.status != 1">
+	<xf:pageaction>
+		<xf:button href="{{ link('zoom-meeting/start-meeting',$meeting) }}" class="button--cta"  rel="nofollow">
+			{{ phrase('fs_start_meeting') }}
+		</xf:button>
+	</xf:pageaction>
+</xf:if>
+
+<xf:if is="{{$xf.visitor.isMemberOf($meeting.join_usergroup_ids)}} && $meeting.user_id != $xf.visitor.user_id && $meeting.status == 1">
+	<xf:pageaction>
+		<xf:button href="{{ link('zoom-meeting/join-meeting',$meeting) }}" class="button"  rel="nofollow">
+			{{ phrase('fs_join_meeting') }}
+		</xf:button>
+	</xf:pageaction>
+</xf:if>
+
+<div class="block" data-type="zoom-meeting">
+
+	<div class="block-container">
+		<!--Listing View--->
+		<div class="block-body">
+			<xf:if is="$meeting is not empty">
+
+				<div class="structItemContainer">
+					<xf:macro template="fs_zoom_meeting_listing_list_macros" name="listing" arg-meeting="{$meeting}" />  
+				</div>
+
+				<xf:else />
+				<div class="block-row"> {{ phrase('fs_no_meeting_found') }} </div>
+			</xf:if>
+			<xf:if is="$meeting is not empty">
+			<div class="block-footer"> <span class="block-footer-counter">{{ display_totals($total, $total) }}</span
+				>
+			</div>
+			</xf:if>
+		</div>
+	</div>
+
+	<div class="block-outer block-outer--after">
+		<xf:pagenav
+					page="{$page}"
+					perpage="{$perPage}"
+					total="{$total}"
+					link="zoom-meeting"
+					params="{$filters}"
+					wrapperclass="block-outer-main"
+					/>
+		<xf:showignored wrapperclass="block-outer-opposite" />
+	</div>
+</div>
+
+<xf:widgetpos id="zoom_overview_sidnav" position="sidenav" />]]></template>
+  <template type="public" title="fs_zoom_meeting_guest_joiners" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{$meeting.topic}}</xf:title>
+
+<xf:form action="{{ link('zoom-meeting/join-meeting', $meeting) }}" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:formrow label="{{ phrase('username') }}" explain="{{phrase('fs_username_required_to_join_meeting')}}">
+				<xf:textbox  name="guest_username" required="true"
+				 />
+			</xf:formrow>
+		</div>
+	<xf:submitrow icon="save" rowtype="simple" />
+	</div>
+</xf:form>]]></template>
+  <template type="public" title="fs_zoom_meeting_listing_list_macros" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:macro name="listing" arg-meeting="!" arg-showWatched="{{ true }}" arg-allowInlineMod="{{ true }}" arg-chooseName="" arg-extraInfo="">
+
+	<div class="structItem structItem--resource " id="meeting-{{$meeting.meeting_id}}" data-author="{{ $meeting.User.username ?: '' }}">
+		<div class="structItem-cell structItem-cell--main" data-xf-init="touch-proxy">
+			<div class="structItem-title"> <a href="#" data-tp-primary="on">{$meeting.topic}</a> </div>
+			<div class="structItem-minor">
+				<ul class="structItem-parts">
+					<li>
+						<xf:username user="$meeting.User" defaultname="{$meeting.User.username}" />
+					</li>
+					<li class="structItem-startDate">
+						<xf:date time="{$meeting.start_time}" /> </li>
+				</ul>
+			</div>
+		</div>
+		<div class="block-body block-row block-row--minor structItem-cell structItem-cell--resourceMeta">
+
+			<xf:if is="$meeting.status==1"> 
+				<dl class="pairs pairs--justified">
+					<dt>{{ phrase('fs_meeting_status') }}</dt>
+					<dd  id="meeting-live-{{$meeting.meeting_id}}" class="status_live">{{phrase('fs_status_live')}}</dd>
+				</dl>
+				<dl class="pairs pairs--justified">
+					<dt>{{ phrase('fs_meeting_end') }}</dt>
+					<dd id="meeting-end-{{$meeting.meeting_id}}"><xf:date time="{$meeting.end_time}" /></dd>
+				</dl>
+				<xf:if is="$meeting.getMeetingUserCount()"> 
+					<dl class="pairs pairs--justified">
+						<dt>{{ phrase('fs_user_joined') }}</dt>
+						<dd>{{$meeting.getMeetingUserCount()}}</dd>
+					</dl>
+				</xf:if>
+
+				<xf:elseif is="$meeting.status==0"/>
+				<dl class="pairs pairs--justified">
+					<dt>{{ phrase('fs_meeting_duration') }}</dt> 
+					<dd>
+						{{ phrase('fs_meeting_duration_min', {'duration': $meeting.duration}) }}
+					</dd>
+				</dl>
+				<dl class="pairs pairs--justified">
+					<dt>{{ phrase('fs_meeting_status') }}</dt>
+					<dd  id="meeting-waiting-{{$meeting.meeting_id}}"class="status_waiting">{{phrase('fs_status_waiting')}}</dd>
+				</dl>
+				<xf:include template="fs_zoom_meeting_timer_counter_js" />
+				<dl class="pairs pairs--justified meeting-counter-{{$meeting.meeting_id}}">
+					<dt>{{ phrase('fs_left_time') }}</dt>
+					<dd>
+						<xf:macro template="fs_zoom_meeting_macro" name="leftTime" arg-meeting="{$meeting}" />
+					</dd>
+				</dl>
+				<xf:elseif is="$meeting.status==2"/> 
+				<dl class="pairs pairs--justified">
+					<dt>{{ phrase('fs_meeting_status') }}</dt>
+					<dd class="status_closed" id="meeting-closed-{{$meeting.meeting_id}}">{{phrase('fs_status_closed')}}</dd>
+				</dl>
+				<dl class="pairs pairs--justified">
+					<dt>{{ phrase('fs_meeting_end') }}</dt>
+					<dd><xf:date time="{$meeting.end_time}" /></dd>
+				</dl>
+				<xf:if is="$meeting.getMeetingUserCount()"> 
+					<dl class="pairs pairs--justified">
+						<dt>{{ phrase('fs_user_joined') }}</dt>
+						<dd>{{$meeting.getMeetingUserCount()}}</dd>
+					</dl>
+				</xf:if>
+
+			</xf:if>
+
+		</div>
+	</div>
+</xf:macro>]]></template>
+  <template type="public" title="fs_zoom_meeting_macro" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:macro name="header" arg-meeting="!">
+	<xf:page option="headerHtml">
+		<div class="contentRow contentRow--hideFigureNarrow">
+			<div class="contentRow-main">
+				<div class="p-title">
+					<h1 class="p-title-value">
+
+						{$meeting.topic}
+
+					</h1> 
+				</div>
+
+				<div class="p-title-pageAction" style="float:right;">
+
+					<xf:if is="$xf.visitor.user_id==$meeting.user_id And $meeting.status != 1">
+						<xf:button href="{{ link('meetings/start-meeting',$meeting) }}" class="button--cta"  rel="nofollow">
+							{{ phrase('fs_start_meeting') }}
+						</xf:button>
+					</xf:if>
+
+					<xf:if is="{{$xf.visitor.isMemberOf($meeting.join_usergroup_ids)}} && $meeting.user_id!=$xf.visitor.user_id && $meeting.status == 1">
+						<xf:button href="{{ link('meetings/join-meeting',$meeting) }}" class="button"  rel="nofollow">
+							{{ phrase('fs_join_meeting') }}
+						</xf:button>
+					</xf:if>
+
+				</div>
+
+				<div class="p-description">
+					<ul class="listInline listInline--bullet">
+						<li>
+							<xf:fa icon="fa-user" title="{{ phrase('author')|for_attr }}" /> <span class="u-srOnly">{{ phrase('fs_creater') }}</span>
+							<xf:username user="{$meeting.User}" defaultname="{$meeting.User.username}" class="u-concealed" /> </li>
+						<li>
+							<xf:fa icon="fa-clock" title="{{ phrase('xfrm_creation_date')|for_attr }}" /> <span class="u-srOnly">{{ phrase('fs_creation_date') }}</span>
+							<a href="{{ link('meetings', $meeting) }}" class="u-concealed">
+								<xf:date time="{$meeting.created_date}" />
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</xf:page>
+</xf:macro>
+
+<xf:macro name="tabs" arg-meeting="!" arg-selected="!">
+	<div class="tabs tabs--standalone">
+		<div class="hScroller" data-xf-init="h-scroller">
+			<span class="hScroller-scroll">
+				<a class="tabs-tab {{ $selected == 'joiner' ? 'is-active' : '' }}" href="{{ link('meetings/joiners', $meeting) }}">{{ phrase('fs_meeting_zoom_joined') }}</a>
+			</span>
+		</div>
+	</div>
+</xf:macro>
+
+<xf:macro name="leftTime" arg-meeting="!">
+	<div id="meeting-counter-{{$meeting.meeting_id}}"> <span class="label label--accent label--small label--counter" id="days-meeting-{{$meeting.meeting_id}}">
+		{{phrase('fs_meeting_DD')}}
+		</span> <span class="label label--accent label--small label--counter" id="hours-meeting-{{$meeting.meeting_id}}">
+		{{phrase('fs_meeting_HH')}}
+		</span> <span class="label  label--accent label--small label--counter" id="minutes-meeting-{{$meeting.meeting_id}}">
+		{{phrase('fs_meeting_MM')}}
+		</span> <span class="label label--accent label--small label--counter" id="seconds-meeting-{{$meeting.meeting_id}}">
+		{{phrase('fs_meeting_SS')}}
+		</span> 
+	</div>
+</xf:macro>
+
+<xf:macro name="meetingJoin" arg-meeting="!">
+	<xf:sidebar key="meetingJoin">
+		<div class="block">
+			<div class="block-container">
+				<h3 class="block-minorHeader">{{ phrase('fs_meeting_join') }}</h3>
+
+				<div class="block-body block-row block-row--minor">
+					<dl class="pairs pairs--justified"><dt>{{ phrase('fs_meeting_join_url') }}</dt> <dd>
+						<xf:macro name="copy_key" arg-url="{{$meeting.z_join_url}}" arg-success="{{phrase('fs_join_url_copy_successfully')}}" arg-targclass="js-join-copyUrl{{$meeting.meeting_id}}"/>
+						</dd></dl>
+				</div>
+			</div>
+		</div>
+	</xf:sidebar>
+</xf:macro>
+
+<xf:macro name="simple_meeting" arg-meeting="!">
+	<div class="contentRow">
+		<div class="contentRow-main contentRow-main--close">
+			<a href="{{ link('meetings', $meeting) }}">{$meeting.topic}</a>
+			<div class="contentRow-minor contentRow-minor--smaller">
+				<ul class="listInline listInline--bullet">
+					<li>{{ $meeting.User.username ?: $meeting.username }}</li>
+					<li>{{ phrase('fs_meetimg_date:') }} <xf:date time="{$meeting.start_time}" /></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</xf:macro>
+
+<xf:macro name="copy_key" arg-url="!" arg-success="!" arg-targclass="">
+	<code class="{{$targclass}}" style="display:none;">{$url}</code>
+	<xf:button icon="copy"
+			   data-xf-init="copy-to-clipboard"
+			   data-copy-target=".{{$targclass}}"
+			   data-success="{{$success}}"
+			   class="button--link is-hidden" />
+</xf:macro>
+
+<xf:macro name="uper_copy_key" arg-url="!" arg-success="!" arg-targclass="">
+	<code class="{{$targclass}}" style="display:none;">{$url}</code>
+	<xf:button icon="copy"
+			   data-xf-init="copy-to-clipboard"
+			   data-copy-target=".{{$targclass}}"
+			   data-success="{{$success}}"
+			   class="is-hidden button--cta" >{{phrase('fs_copy_join_url')}}</xf:button>
+</xf:macro>]]></template>
+  <template type="public" title="fs_zoom_meeting_timer_counter_js" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<xf:js>
+	
+$(document).ready(function() {
+
+	function DateTimeConverter(unixdatetime) {
+		// Convert UNIX timestamp to ISO string (UTC format)
+		var utcDateTime = new Date(unixdatetime * 1000).toISOString(); // Returns in 'YYYY-MM-DDTHH:mm:ss.sssZ' format
+
+		// Extract the human-readable date and time in UTC
+		var datePart = utcDateTime.split('T')[0];  // 'YYYY-MM-DD' part
+		var timePart = utcDateTime.split('T')[1].split('.')[0]; // 'HH:mm:ss' part, removing milliseconds
+
+		// Combine into the desired format
+		var fulldate = datePart + " " + timePart;
+		
+		// Split into parts for ISO format processing
+		var tempCountTimmer = fulldate.split(/[- :]/);
+		
+		// Construct a UTC Date object
+		var tempDateObject = new Date(Date.UTC(tempCountTimmer[0], tempCountTimmer[1] - 1, tempCountTimmer[2], tempCountTimmer[3], tempCountTimmer[4], tempCountTimmer[5]));
+		var CountDownDateTime = new Date(tempDateObject).getTime();
+		
+		return CountDownDateTime;
+	}
+
+	function timmerCounter(meeting_id, start_datetime) {
+		let meet_id = meeting_id;
+
+		// Convert start datetime to UTC countdown date
+		let humanDateTime = DateTimeConverter(start_datetime);
+		let countDownDate = new Date(humanDateTime).getTime();
+
+		let counter = setInterval(function() {
+			let now = new Date().getTime();
+			let timeDistance = countDownDate - now;
+
+			// Check if timeDistance is valid and display countdown
+			if (timeDistance >= 0) {
+				$("#days-meeting-" + meet_id).html(Math.floor(timeDistance / (1000 * 60 * 60 * 24)) + " D");
+				$("#hours-meeting-" + meet_id).html(Math.floor((timeDistance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)) + " H");
+				$("#minutes-meeting-" + meet_id).html(Math.floor((timeDistance % (1000 * 60 * 60)) / (1000 * 60)) + " M");
+				$("#seconds-meeting-" + meet_id).html(Math.floor((timeDistance % (1000 * 60)) / 1000) + " S");
+			}
+
+			// Hide countdown if timeDistance is negative (countdown over)
+			if (timeDistance < 0) {
+								 
+				clearInterval(counter);
+				$(".meeting-counter-" + meet_id).hide();
+				$("#meeting-counter-" + meet_id).hide();
+				$('#meeting-waiting-'+meet_id).text('Live');
+				$('#meeting-waiting-'+meet_id).removeClass('status_waiting').addClass('status_live');
+
+			}
+		}, 1000);
+	}
+
+	// Initialize countdown with UTC timestamp values
+	timmerCounter({{$meeting.meeting_id}}, {{$meeting.start_time}});
+});
+
+</xf:js>]]></template>
+  <template type="public" title="fs_zoom_meetings_members_online" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<div class="block" data-widget-section="onlineNow"{{ widget_data($widget) }}>
+	<div class="block-container">
+		<h3 class="block-minorHeader"><a href="{{ link('online') }}">{$title}</a></h3>
+		<div class="block-body">
+			<div class="block-row block-row--minor">
+				<xf:if is="$online is not empty">
+					<ul class="listInline listInline--comma">
+						<xf:foreach loop="$online" value="$val"><xf:trim>
+							<li><xf:if is="$val.User">
+								<xf:username user="$val.User" rich="true" class="{{ !$val.User ? 'username--invisible' : '' }}" />
+								<xf:else />
+								{{$val.username}}
+								</xf:if></li>
+							</xf:trim></xf:foreach>
+					</ul>
+					<xf:else />
+					{{ phrase('no_members_online_now') }}
+				</xf:if>
+			</div>
+		</div>
+		<div class="block-footer">
+			<span class="block-footer-counter">{{ phrase('online_now_x_members_y_guests_z',{
+				'total': number($total),
+				'members': number($members),
+				'guests': number($guests)})
+				}}</span>
+		</div>
+	</div>
+</div>]]></template>
+</templates>

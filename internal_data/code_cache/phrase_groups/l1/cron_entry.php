@@ -45,6 +45,7 @@ return array (
   'cron_entry.fs_scheduleBanUsers' => '[FS] Schedule Ban User',
   'cron_entry.fs_upgradeUsergroup' => '[FS] Upgrade Usergroup by Messages',
   'cron_entry.fs_upgradeUsergroups' => '[FS] Upgrade Usergroup by Login',
+  'cron_entry.fs_zoom_meeting_fresh_tok' => '[FS] Zoom refresh Token',
   'cron_entry.memberStatsCache' => 'Rebuild member stats cache',
   'cron_entry.rebuildSearchForumCache' => 'Rebuild expired search forum caches',
   'cron_entry.rtcRemoveExpiredBans' => 'RTC: Remove expired bans',

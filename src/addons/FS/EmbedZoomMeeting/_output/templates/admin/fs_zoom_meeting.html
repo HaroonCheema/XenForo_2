@@ -1,0 +1,50 @@
+<xf:title>{{ phrase('fs_meeting_list') }}</xf:title>
+
+<xf:if is="$meeting is empty">
+	<xf:pageaction>
+		<xf:button href="{{ link('zoom-meeting/add') }}" icon="user">{{ phrase('fs_add_meeting') }}</xf:button>
+	</xf:pageaction>
+</xf:if>
+
+<xf:if is="$meeting is not empty">
+	<xf:form action="{{ link('zoom-meeting/toggle') }}" class="block" ajax="true">
+		<div class="block-container">
+			<div class="block-body">
+
+				<xf:datalist data-xf-init="responsive-data-list">
+					<xf:datarow rowtype="header">
+						<xf:cell>{{ phrase('fs_zoom_topic') }}</xf:cell>
+						<xf:cell>{{ phrase('fs_start_date') }}</xf:cell>
+						<xf:cell>{{ phrase('fs_start_time') }}</xf:cell>
+						<xf:cell>{{ phrase('fs_duration') }}</xf:cell>
+						<xf:comment><xf:cell>{{ phrase('fs_start_url') }}</xf:cell>
+							<xf:cell>{{ phrase('fs_join_url') }}</xf:cell></xf:comment>
+						<xf:cell class="dataList-cell--min">&nbsp;</xf:cell>
+					</xf:datarow>
+
+					<xf:datarow>
+						<xf:cell>{$meeting.topic}</xf:cell>
+						<xf:cell>{$meeting.getStartDate()}</xf:cell>
+						<xf:cell>{$meeting.getStartTime()}</xf:cell>
+						<xf:cell>{$meeting.duration} mints</xf:cell>
+						<xf:comment><xf:cell><xf:macro name="copy_key" arg-url="{{$meeting.z_start_url}}" arg-success="start url successfully copy." arg-targclass="js-startUrl{{$meeting.meeting_id}}"/></xf:cell>
+							<xf:cell><xf:macro name="copy_key" arg-url="{{$meeting.z_join_url}}" arg-success="Join url successfully copy." arg-targclass="js-joinUrl{{$meeting.meeting_id}}"/></xf:cell></xf:comment>
+						<xf:action href="{{ link('zoom-meeting/edit', $meeting) }}">{{ phrase('edit') }}</xf:action>
+					</xf:datarow>
+
+				</xf:datalist>
+			</div>
+		</div>
+	</xf:form>
+	<xf:else />
+	<div class="blockMessage">{{ phrase('no_results_found') }}</div>
+</xf:if>
+
+<xf:macro name="copy_key" arg-url="!" arg-success="!" arg-targclass="">
+	<code class="{{$targclass}}" style="display:none;">{$url}</code>
+	<xf:button icon="copy"
+			   data-xf-init="copy-to-clipboard"
+			   data-copy-target=".{{$targclass}}"
+			   data-success="{{$success}}"
+			   class="button--link is-hidden" />
+</xf:macro>

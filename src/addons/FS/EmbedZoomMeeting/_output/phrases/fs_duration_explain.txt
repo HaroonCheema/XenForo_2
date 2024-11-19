@@ -1,0 +1,1 @@
+Duration should be count in minutes.

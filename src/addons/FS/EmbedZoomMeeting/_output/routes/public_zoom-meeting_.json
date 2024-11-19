@@ -1,0 +1,11 @@
+{
+    "route_type": "public",
+    "route_prefix": "zoom-meeting",
+    "sub_name": "",
+    "format": ":int<meeting_id>/:page",
+    "build_class": "",
+    "build_method": "",
+    "controller": "FS\\EmbedZoomMeeting:Meeting",
+    "context": "fs_zoom_meetings",
+    "action_prefix": ""
+}

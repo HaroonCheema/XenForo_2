@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<content_type_fields>
-  <field content_type="entity" field_name="zoom_meeting">FS\ZoomMeeting:Meeting</field>
-</content_type_fields>

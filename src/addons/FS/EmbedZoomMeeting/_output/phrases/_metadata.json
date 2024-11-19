@@ -1,0 +1,386 @@
+{
+    "admin_navigation.fs_zoom.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "e54e9ae913bc4456e1b8e9ebb4eb13ff"
+    },
+    "admin_navigation.fs_zoom_meetings.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "a6e3488cf178a7e7e41d05cccfdc5a80"
+    },
+    "cron_entry.fs_zoom_meeting_fresh_tok.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "7274f67be3cbb77f59583c5ed320eea2"
+    },
+    "fs_add_meeting.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "48a510c1e48b38c7765a2f826bfea5b6"
+    },
+    "fs_duration.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "e02d2ae03de9d493df2b6b2d2813d302"
+    },
+    "fs_duration_explain.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d974abc8da7374854db3bed018431e44"
+    },
+    "fs_edit_meeting.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "7dce122004969d56ae2e0245cb754d35"
+    },
+    "fs_join_meeting.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "68c52893fd1984843cc93c6b79d5ea7b"
+    },
+    "fs_join_meeting_validation.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "8224317dd901c38b448cccca1ce322b3"
+    },
+    "fs_join_url.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "52f4cefbc01c19402bafba3c6279ead1"
+    },
+    "fs_left_time.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "948e18fe7f2d5142f7f6b1bddbed01c0"
+    },
+    "fs_meetimg_date.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "30bc0baa91098076da51f2704623c673"
+    },
+    "fs_meeting_DD.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "350bfcb1e3cfb28ddff48ce525d4f139"
+    },
+    "fs_meeting_HH.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "faafc315b95987fc2b071bcd8f698b81"
+    },
+    "fs_meeting_MM.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "ad05f78187c942f9dd521605fa81f1ba"
+    },
+    "fs_meeting_SS.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d53aeb78abc83a52ab8982f5c82a3d5b"
+    },
+    "fs_meeting_duration.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "e02d2ae03de9d493df2b6b2d2813d302"
+    },
+    "fs_meeting_duration_min.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "375b4b8e66209acd02c2af0434929230"
+    },
+    "fs_meeting_end.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "b2a19dbea7063353abee67515bb4c897"
+    },
+    "fs_meeting_join.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "608254d85ac7c2484fe030c492e2537e"
+    },
+    "fs_meeting_join_url.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "52f4cefbc01c19402bafba3c6279ead1"
+    },
+    "fs_meeting_list.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "e54e9ae913bc4456e1b8e9ebb4eb13ff"
+    },
+    "fs_meeting_status.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "ec53a8c4f07baed5d8825072c89799be"
+    },
+    "fs_meeting_timing.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d3b69e993f4e9bf9c479c7e794ede387"
+    },
+    "fs_meeting_zoom_joined.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "e74241744dfbb41b5a9b7d6421a0eff2"
+    },
+    "fs_need_to_validate_you_have_meeting_on_zoom_portal.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "64f35b7a218ff6bf4e370f2da3b391d6"
+    },
+    "fs_need_to_wait_wait_for_start_meeting_by_host.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "f4130b3e260f062dfb5b0a0ce6a13244"
+    },
+    "fs_no_meeting_found.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d66710ec296109a112bba39f7a9fdd6f"
+    },
+    "fs_start_date.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "4d34f1097f6c8b9cee28bca8b78bbee9"
+    },
+    "fs_start_meeting.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "894ed9be3e756a1b5f2a9fa4ad8ecc27"
+    },
+    "fs_start_time.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "2bbc845892f400626baab5af687527c5"
+    },
+    "fs_start_url.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "2a6313bc4b6875620480ada1b4e8661c"
+    },
+    "fs_status_closed.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "03f4a47830f97377a35321051685071e"
+    },
+    "fs_status_live.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "955ad3298db330b5ee880c2c9e6f23a0"
+    },
+    "fs_status_waiting.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "5706de961fb376d701be6e7762d8b09c"
+    },
+    "fs_unique_username_must_required.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "c2789fc817734f5b14a8b978b5ef3676"
+    },
+    "fs_user_groups_allow_join.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "f4401fc3f251016a5734e82248924b54"
+    },
+    "fs_user_groups_allow_join_explain.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "7e39f44dbac0627b0b95f9930d21760e"
+    },
+    "fs_user_joined.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "f9aae5fda8d810a29f12d1e61b4ab25f"
+    },
+    "fs_username_required_to_join_meeting.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "300bc94068aaa0865da711d76d6901d8"
+    },
+    "fs_zoom_meeting_topic.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "25812bf456959aa5f28dc570f341a3ba"
+    },
+    "fs_zoom_meetings.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "a08d347931099e5edaedd3564cf7ca41"
+    },
+    "fs_zoom_topic.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "25812bf456959aa5f28dc570f341a3ba"
+    },
+    "nav.fs_zoom_meetings.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "a08d347931099e5edaedd3564cf7ca41"
+    },
+    "option.fs_webhook_secret_key.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "f3e062ea46d5b183ad812c4a4b8d3fa3"
+    },
+    "option.fs_zoom_access_token.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "42fbc11276af80496a2c31ca9a0c5f62"
+    },
+    "option.fs_zoom_client_id.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "76525f0f34b48475e5ca33f71d296f3b"
+    },
+    "option.fs_zoom_client_secret.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "734082edf44417dd19cc65943aa65c36"
+    },
+    "option.fs_zoom_credentials_change.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "c90e0673a07e7c996bd6a8738c9cdec7"
+    },
+    "option.fs_zoom_refresh_token.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "58dba109efc4b2646e5c18271c6e96c7"
+    },
+    "option_explain.fs_webhook_secret_key.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "a8a6984174ded1f2bfe4a743e07abdb6"
+    },
+    "option_explain.fs_zoom_access_token.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "b06afb054c789a554f00ff99549287ec"
+    },
+    "option_explain.fs_zoom_client_id.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "option_explain.fs_zoom_client_secret.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "option_explain.fs_zoom_credentials_change.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "option_explain.fs_zoom_refresh_token.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "b06afb054c789a554f00ff99549287ec"
+    },
+    "option_group.fs_embed_zoom_credentials.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "23f1dee27143eb6e93fbab9332bce610"
+    },
+    "option_group.fs_zoom_meeting.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "819aeb2f41a3b1d081bc9f5da3c8b4fd"
+    },
+    "option_group_description.fs_embed_zoom_credentials.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "option_group_description.fs_zoom_meeting.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "permission.fs_zoom_meeting_zoom_meeting_view.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "a1bebf3b95d795af483a6cb6fe95fc83"
+    },
+    "permission_interface.fs_zoom_meeting.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "e54e9ae913bc4456e1b8e9ebb4eb13ff"
+    },
+    "widget_def.fs_zoom_member_online.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "92398123341cb548a0c7b62768fb4681"
+    },
+    "widget_def_desc.fs_zoom_member_online.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    }
+}

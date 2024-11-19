@@ -1,0 +1,20 @@
+{
+    "fs_webhook_secret_key.json": {
+        "hash": "41eca42273fce2986419d7eb7f08dd61"
+    },
+    "fs_zoom_access_token.json": {
+        "hash": "fe0fb6d3e23dd1ecadd8e11612e14dc1"
+    },
+    "fs_zoom_client_id.json": {
+        "hash": "eb8046677178c07321751cd35d4b1914"
+    },
+    "fs_zoom_client_secret.json": {
+        "hash": "3f31f498c700cd6a978c889c50753090"
+    },
+    "fs_zoom_credentials_change.json": {
+        "hash": "80c0e1dd0864b3adb8364d0341120727"
+    },
+    "fs_zoom_refresh_token.json": {
+        "hash": "f8d1ffffe2931c6696bc96b429ccbe3b"
+    }
+}
