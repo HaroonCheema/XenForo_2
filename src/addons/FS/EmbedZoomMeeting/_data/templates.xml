@@ -58,7 +58,7 @@
 	explain="{$explainHtml}"
 	rowclass="{$rowClass}">
 
-	<div>{{ phrase('built_zoom_auth_system') }}</div>
+	<div>{{ phrase('fs_built_zoom_auth_system') }}</div>
 	<div class="u-inputSpacer">
 		<xf:button href="{{ link('options/zoom-meeting-auth-setup', $option) }}" data-xf-click="overlay">
 			{{ phrase('change') }}
@@ -71,7 +71,7 @@
 	<div class="block-container">
 		<div class="block-body">
 			<xf:inforow>
-				{{ phrase('zoom_setup_explain:') }}
+				{{ phrase('fs_zoom_setup_explain:') }}
 				<div><code>{$redirectUri}</code></div>
 			</xf:inforow>
 
@@ -85,7 +85,7 @@
 						   required="required" />
 
 			<xf:inforow>
-				{{ phrase('continuing_will_redirect_you_to_zoom_to_confirm_account_you_want_to') }}
+				{{ phrase('fs_continuing_will_redirect_you_to_zoom_to_confirm_account_you_want_to') }}
 			</xf:inforow>
 		</div>
 		<xf:submitrow sticky="true" submit="{{ phrase('continue') }}" />
@@ -281,7 +281,7 @@
 <xf:css src="fs_general_zoom_meeting.less" />
 <xf:css src="structured_list.less" />
 
-<xf:if is="$xf.visitor.user_id==$meeting.user_id And $meeting.status != 1">
+<xf:if is="$meeting && $xf.visitor.user_id == $meeting.user_id && $meeting.status != 1">
 	<xf:pageaction>
 		<xf:button href="{{ link('zoom-meeting/start-meeting',$meeting) }}" class="button--cta"  rel="nofollow">
 			{{ phrase('fs_start_meeting') }}

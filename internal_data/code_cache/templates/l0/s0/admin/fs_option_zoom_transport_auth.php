@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 8def4bef4ad948d5ec07032b02b9c179
+// FROM HASH: a65ef6117bfae369c6474dd2a5d831b3
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -11,7 +11,7 @@ return array(
 	<div class="block-container">
 		<div class="block-body">
 			' . $__templater->formInfoRow('
-				' . 'zoom_setup_explain:' . '
+				' . 'You will need to navigate to Zoom <a href="https://marketplace.zoom.us/develop/applications/" target="_blank">App</a> and setup a new project with OAuth 2.0 credentials for a web application., creating an app with get the client id and client secret also set the redirect url.' . $__vars['xf']['language']['label_separator'] . '
 				<div><code>' . $__templater->escape($__vars['redirectUri']) . '</code></div>
 			', array(
 	)) . '
@@ -33,7 +33,7 @@ return array(
 	)) . '
 
 			' . $__templater->formInfoRow('
-				' . 'continuing_will_redirect_you_to_zoom_to_confirm_account_you_want_to' . '
+				' . 'Continuing will redirect you to Zoom to confirm the account you want to connect with.' . '
 			', array(
 	)) . '
 		</div>

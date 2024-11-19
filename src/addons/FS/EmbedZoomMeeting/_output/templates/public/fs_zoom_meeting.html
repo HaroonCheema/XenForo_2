@@ -3,7 +3,7 @@
 <xf:css src="fs_general_zoom_meeting.less" />
 <xf:css src="structured_list.less" />
 
-<xf:if is="$xf.visitor.user_id==$meeting.user_id And $meeting.status != 1">
+<xf:if is="$meeting && $xf.visitor.user_id == $meeting.user_id && $meeting.status != 1">
 	<xf:pageaction>
 		<xf:button href="{{ link('zoom-meeting/start-meeting',$meeting) }}" class="button--cta"  rel="nofollow">
 			{{ phrase('fs_start_meeting') }}

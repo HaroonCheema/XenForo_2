@@ -7,12 +7,12 @@
     "admin/fs_option_template_zoomadvance.html": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
-        "hash": "8268f2110db813d55ad15efef3825e1d"
+        "hash": "abca765b6aeeb7d64fb860c0624b5e44"
     },
     "admin/fs_option_zoom_transport_auth.html": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
-        "hash": "8def4bef4ad948d5ec07032b02b9c179"
+        "hash": "a65ef6117bfae369c6474dd2a5d831b3"
     },
     "admin/fs_zoom_meeting.html": {
         "version_id": 1000010,
@@ -37,7 +37,7 @@
     "public/fs_zoom_meeting.html": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
-        "hash": "47d02b4c8a27a7aad8be1ba7f158b2f5"
+        "hash": "fcfe93951a7cfdb21797472b7ad966a7"
     },
     "public/fs_zoom_meeting_guest_joiners.html": {
         "version_id": 1000010,

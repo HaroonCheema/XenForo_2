@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 47d02b4c8a27a7aad8be1ba7f158b2f5
+// FROM HASH: fcfe93951a7cfdb21797472b7ad966a7
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -16,7 +16,7 @@ return array(
 	$__finalCompiled .= '
 
 ';
-	if (($__vars['xf']['visitor']['user_id'] == $__vars['meeting']['user_id']) AND ($__vars['meeting']['status'] != 1)) {
+	if ($__vars['meeting'] AND (($__vars['xf']['visitor']['user_id'] == $__vars['meeting']['user_id']) AND ($__vars['meeting']['status'] != 1))) {
 		$__finalCompiled .= '
 	';
 		$__templater->pageParams['pageAction'] = $__templater->preEscaped('

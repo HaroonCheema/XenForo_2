@@ -23,6 +23,18 @@
         "version_string": "1.0.0 Alpha",
         "hash": "48a510c1e48b38c7765a2f826bfea5b6"
     },
+    "fs_built_zoom_auth_system.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "abfea690c9b05a36fbfc43a9d70386e9"
+    },
+    "fs_continuing_will_redirect_you_to_zoom_to_confirm_account_you_want_to.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d3a17c5e77bd5be76ff75156b0091cbd"
+    },
     "fs_duration.txt": {
         "global_cache": false,
         "version_id": 1000010,
@@ -250,6 +262,12 @@
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
         "hash": "a08d347931099e5edaedd3564cf7ca41"
+    },
+    "fs_zoom_setup_explain.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "44b509337d348e35fbcaa61ed405c11b"
     },
     "fs_zoom_topic.txt": {
         "global_cache": false,
