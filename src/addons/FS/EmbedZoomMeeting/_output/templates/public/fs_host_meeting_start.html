@@ -1,58 +1,84 @@
 <style>
-	.p-navSticky{
-		display:none !important;
-	}
-</style>
-<script src="https://source.zoom.us/3.9.0/lib/vendor/react.min.js"></script>
-    <script src="https://source.zoom.us/3.9.0/lib/vendor/react-dom.min.js"></script>
-    <script src="https://source.zoom.us/3.9.0/lib/vendor/redux.min.js"></script>
-    <script src="https://source.zoom.us/3.9.0/lib/vendor/redux-thunk.min.js"></script>
-    <script src="https://source.zoom.us/3.9.0/lib/vendor/lodash.min.js"></script>
 
-    <!-- Zoom SDK -->
+	body {
+		overflow: visible !important;
+	}
+
+	@media (min-width: 1200px) and (max-width: 1399.98px) {
+		#zmmtg-root {
+			height: 66% !important;
+			margin-top: 123px !important;
+		}
+
+		.video-share-layout {
+			height: 77% !important;
+		}
+	}
+
+	@media (min-width: 1400px) {
+		#zmmtg-root {
+			height: 76% !important;
+			margin-top: 123px !important;
+		}
+
+		.video-share-layout {
+			height: 87% !important;
+		}
+	}
+
+
+</style>
+
+<script src="https://source.zoom.us/3.9.0/lib/vendor/react.min.js"></script>
+<script src="https://source.zoom.us/3.9.0/lib/vendor/react-dom.min.js"></script>
+<script src="https://source.zoom.us/3.9.0/lib/vendor/redux.min.js"></script>
+<script src="https://source.zoom.us/3.9.0/lib/vendor/redux-thunk.min.js"></script>
+<script src="https://source.zoom.us/3.9.0/lib/vendor/lodash.min.js"></script>
+
+<!-- Zoom SDK -->
 <script src="https://source.zoom.us/zoom-meeting-3.9.0.min.js"></script>
 <div id="zmmtg-root"></div>
-    <div id="meetingSDKElement"></div>
+<div id="meetingSDKElement"></div>
 <script>
-        // Set up Zoom Meeting configuration
-        const sdkKey = "{{$sdkKey}}";
-        const meetingNumber = "{{$meetingNumber}}";
-        const role = "{{$role}}";
-        const userName = "{{$username}}";
-        const userEmail="{{$email}}";
-        const passWord = "{{$passWord}}"; 
-        const leaveUrl = "{{$redirectUrl}}";
-        const signature = "{{$signature}}";
+	// Set up Zoom Meeting configuration
+	const sdkKey = "{{$sdkKey}}";
+	const meetingNumber = "{{$meetingNumber}}";
+	const role = "{{$role}}";
+	const userName = "{{$username}}";
+	const userEmail="{{$email}}";
+	const passWord = "{{$passWord}}"; 
+	const leaveUrl = "{{$redirectUrl}}";
+	const signature = "{{$signature}}";
 
-        // Initialize the SDK
-        ZoomMtg.setZoomJSLib("https://source.zoom.us/3.9.0/lib", "/av");
-        ZoomMtg.preLoadWasm();
-        ZoomMtg.prepareWebSDK();
+	// Initialize the SDK
+	ZoomMtg.setZoomJSLib("https://source.zoom.us/3.9.0/lib", "/av");
+	ZoomMtg.preLoadWasm();
+	ZoomMtg.prepareWebSDK();
 
-        function startMeeting() {
-            ZoomMtg.init({
-                leaveUrl: leaveUrl,
-                disableCORP: !window.crossOriginIsolated,
-                success: function () {
-                    ZoomMtg.join({
-                        sdkKey: sdkKey,
-                        signature: signature,
-                        meetingNumber: meetingNumber,
-                        userName: userName,
-                        passWord: passWord,
-                        success: function () {
-                            console.log("Joined Zoom meeting successfully");
-                        },
-                        error: function (error) {
-                            console.error("Error joining meeting:", error);
-                        }
-                    });
-                },
-                error: function (error) {
-                    console.error("Error initializing Zoom SDK:", error);
-                }
-            });
-        }
+	function startMeeting() {
+		ZoomMtg.init({
+			leaveUrl: leaveUrl,
+			disableCORP: !window.crossOriginIsolated,
+			success: function () {
+				ZoomMtg.join({
+					sdkKey: sdkKey,
+					signature: signature,
+					meetingNumber: meetingNumber,
+					userName: userName,
+					passWord: passWord,
+					success: function () {
+						console.log("Joined Zoom meeting successfully");
+					},
+					error: function (error) {
+						console.error("Error joining meeting:", error);
+					}
+				});
+			},
+			error: function (error) {
+				console.error("Error initializing Zoom SDK:", error);
+			}
+		});
+	}
 
-	   document.addEventListener("DOMContentLoaded", startMeeting);
+	document.addEventListener("DOMContentLoaded", startMeeting);
 </script>

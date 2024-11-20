@@ -1084,7 +1084,7 @@ return function($__templater, $__selectedNav, array $__vars)
 	if ($__templater->method($__vars['xf']['visitor'], 'canViewMeeting', array())) {
 		$__navTemp = [
 		'title' => \XF::phrase('nav.fs_zoom_meetings'),
-		'href' => $__templater->func('link', array('zoom-meeting', ), false),
+		'href' => $__templater->func('link', array('video-chat', ), false),
 		'attributes' => [],
 	];
 		if ($__navTemp) {

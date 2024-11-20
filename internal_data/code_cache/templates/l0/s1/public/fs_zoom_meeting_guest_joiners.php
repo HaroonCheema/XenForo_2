@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: ee4e94512c5db402fac2655c68ecc186
+// FROM HASH: 60003b402f896bc9add78fe6fd35bf5f
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -20,14 +20,14 @@ return array(
 		'explain' => 'Username required to join meeting.',
 	)) . '
 		</div>
-	' . $__templater->formSubmitRow(array(
+		' . $__templater->formSubmitRow(array(
 		'icon' => 'save',
 	), array(
 		'rowtype' => 'simple',
 	)) . '
 	</div>
 ', array(
-		'action' => $__templater->func('link', array('zoom-meeting/join-meeting', $__vars['meeting'], ), false),
+		'action' => $__templater->func('link', array('video-chat/', ), false),
 		'class' => 'block',
 	));
 	return $__finalCompiled;

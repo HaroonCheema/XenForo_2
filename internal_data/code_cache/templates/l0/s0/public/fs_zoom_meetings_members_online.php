@@ -1,12 +1,12 @@
 <?php
-// FROM HASH: 7e5f47306ad2b00fcf57d8cb9b76893f
+// FROM HASH: d4e1c4fcd05c24eb836a11ea98393167
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
 	$__finalCompiled = '';
 	$__finalCompiled .= '<div class="block" data-widget-section="onlineNow"' . $__templater->func('widget_data', array($__vars['widget'], ), true) . '>
 	<div class="block-container">
-		<h3 class="block-minorHeader"><a href="' . $__templater->func('link', array('online', ), true) . '">' . $__templater->escape($__vars['title']) . '</a></h3>
+		<h3 class="block-minorHeader"><a href="#">' . $__templater->escape($__vars['title']) . '</a></h3>
 		<div class="block-body">
 			<div class="block-row block-row--minor">
 				';

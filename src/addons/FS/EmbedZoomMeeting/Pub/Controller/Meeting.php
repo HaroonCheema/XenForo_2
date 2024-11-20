@@ -7,7 +7,6 @@ use XF\Pub\Controller\AbstractController;
 
 class Meeting extends AbstractController
 {
-
     public function preDispatchController($action, ParameterBag $params)
     {
         $visitor = \xf::visitor();
@@ -19,38 +18,48 @@ class Meeting extends AbstractController
 
     public function actionIndex(ParameterBag $params)
     {
+        $meeting = $this->finder('FS\EmbedZoomMeeting:Meeting')->fetchOne();
 
-        $finder = $this->finder('FS\EmbedZoomMeeting:Meeting')->fetchOne();
+        if (!$meeting) {
 
-        $viewParams = [
-            'meeting' => $finder,
-            'total' => $finder ? 1 : '',
-        ];
-
-        return $this->view('FS\Meeting:Meeting', 'fs_zoom_meeting', $viewParams);
-    }
-
-    protected function assertMeetingExists($id, $with = null, $phraseKey = null)
-    {
-        return $this->assertRecordExists('FS\EmbedZoomMeeting:Meeting', $id, $with, $phraseKey);
-    }
-
-    public function actionStartMeeting(ParameterBag $params)
-    {
-
-        $meeting = $this->assertMeetingExists($params->meeting_id);
+            throw new \XF\PrintableException(\xf::phrase('fs_zoom_the_requested_meeting_could_not_be_found'));
+        }
 
         $visitor = \xf::visitor();
 
+        if ($meeting->user_id == $visitor->user_id) {
+
+            $viewParams = $this->hostStartMeeting($meeting);
+
+            $meeting->fastUpdate('start_time', \xf::$time);
+
+            return $this->view('FS\EmbedZoomMeeting:Meeting', 'fs_host_meeting_start', $viewParams);
+        }
+
         if ($meeting->user_id != $visitor->user_id) {
 
-            throw $this->exception($this->noPermission());
-        }
+            if ($meeting->status != 1) {
 
-        if ($meeting->status == 1) {
+                throw new \XF\PrintableException(\xf::phrase('fs_need_to_wait_wait_for_start_meeting_by_host'));
+            }
 
-            throw new \XF\PrintableException("Meeting is already in progress...!");
+            if (!$visitor->user_id && !$this->isPost()) {
+
+                $viewParams = [
+                    'meeting' => $meeting,
+                ];
+                return $this->view('', 'fs_zoom_meeting_guest_joiners', $viewParams);
+            }
+
+            $viewParams = $this->userJoinMeeting($meeting);
+
+            return $this->view('FS\EmbedZoomMeeting:Meeting', 'fs_join_meeting_start', $viewParams);
         }
+    }
+
+    protected function hostStartMeeting(\FS\EmbedZoomMeeting\Entity\Meeting $meeting)
+    {
+        $visitor = \xf::visitor();
 
         $meetingSdkService = $this->service('FS\EmbedZoomMeeting:MeetingSdk');
 
@@ -81,42 +90,19 @@ class Meeting extends AbstractController
             'email' => $visitor->email ?: "",
             'passWord' => $meetingPassWord,
             'signature' => $signature,
-            'redirectUrl' => $this->buildLink('canonical:zoom-meeting'),
+            'redirectUrl' => $this->buildLink('canonical:forums'),
         ];
 
-        $meeting->fastUpdate('start_time', \xf::$time);
-
-        return $this->view('FS\EmbedZoomMeeting:Meeting', 'fs_host_meeting_start', $viewParams);
+        return $viewParams;
     }
 
-    public function actionjoinMeeting(ParameterBag $params)
+    protected function userJoinMeeting(\FS\EmbedZoomMeeting\Entity\Meeting $meeting)
     {
-
-        $meeting = $this->assertMeetingExists($params->meeting_id);
-
         $visitor = \xf::visitor();
-
-        if ($meeting->status != 1) {
-
-            throw new \XF\PrintableException(\xf::phrase('fs_need_to_wait_wait_for_start_meeting_by_host'));
-        }
-
-        if ($meeting->user_id == $visitor->user_id) {
-
-            throw $this->exception($this->noPermission());
-        }
 
         if (!$visitor->isMemberOf($meeting->join_usergroup_ids)) {
 
             throw $this->exception($this->noPermission());
-        }
-
-        if (!$visitor->user_id && !$this->isPost()) {
-
-            $viewParams = [
-                'meeting' => $meeting,
-            ];
-            return $this->view('', 'fs_zoom_meeting_guest_joiners', $viewParams);
         }
 
         if (!$visitor->user_id && $this->isPost()) {
@@ -158,9 +144,9 @@ class Meeting extends AbstractController
             'email' => $visitor->email ?: "",
             'passWord' => $meetingPassWord,
             'signature' => $signature,
-            'redirectUrl' => $this->buildLink('canonical:zoom-meeting'),
+            'redirectUrl' => $this->buildLink('canonical:forums'),
         ];
 
-        return $this->view('FS\EmbedZoomMeeting:Meeting', 'fs_join_meeting_start', $viewParams);
+        return $viewParams;
     }
 }

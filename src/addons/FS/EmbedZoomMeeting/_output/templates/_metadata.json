@@ -19,49 +19,24 @@
         "version_string": "1.0.0 Alpha",
         "hash": "d72657682cdf2decc4f635025acba2b5"
     },
-    "public/fs_general_zoom_meeting.less": {
-        "version_id": 1000010,
-        "version_string": "1.0.0 Alpha",
-        "hash": "a0377c57144d193ef7c44ea15c03ddfa"
-    },
     "public/fs_host_meeting_start.html": {
-        "version_id": 1000010,
-        "version_string": "1.0.0 Alpha",
-        "hash": "d401d4b29bd5b72d484367e6a3736071"
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "6aa60e841a54cf8fae5861eb10a53924"
     },
     "public/fs_join_meeting_start.html": {
-        "version_id": 1000010,
-        "version_string": "1.0.0 Alpha",
-        "hash": "24274fdc8e6dedc1cfa7340bde15de31"
-    },
-    "public/fs_zoom_meeting.html": {
-        "version_id": 1000010,
-        "version_string": "1.0.0 Alpha",
-        "hash": "fcfe93951a7cfdb21797472b7ad966a7"
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "1a3ca63b64f948d1aaed877ab7d0e10c"
     },
     "public/fs_zoom_meeting_guest_joiners.html": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
-        "hash": "ee4e94512c5db402fac2655c68ecc186"
-    },
-    "public/fs_zoom_meeting_listing_list_macros.html": {
-        "version_id": 1000010,
-        "version_string": "1.0.0 Alpha",
-        "hash": "9fab62a5dc489bd735e93b35fa92c03a"
-    },
-    "public/fs_zoom_meeting_macro.html": {
-        "version_id": 1000010,
-        "version_string": "1.0.0 Alpha",
-        "hash": "8bf2c1beef2e44a6da9c94e5e6425c73"
-    },
-    "public/fs_zoom_meeting_timer_counter_js.html": {
-        "version_id": 1000010,
-        "version_string": "1.0.0 Alpha",
-        "hash": "241e88e30aaf0664d9d098368d2c1425"
+        "hash": "60003b402f896bc9add78fe6fd35bf5f"
     },
     "public/fs_zoom_meetings_members_online.html": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
-        "hash": "7e5f47306ad2b00fcf57d8cb9b76893f"
+        "hash": "d4e1c4fcd05c24eb836a11ea98393167"
     }
 }

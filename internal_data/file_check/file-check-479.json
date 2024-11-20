@@ -40,7 +40,8 @@
             "src/addons/CMTV/Math/_data/templates.xml"
         ],
         "SV/MultiPrefix": [
-            "src/addons/SV/MultiPrefix/XF/Template/Templater.php"
+            "src/addons/SV/MultiPrefix/XF/Template/Templater.php",
+            "src/addons/SV/MultiPrefix/_data/options.xml"
         ],
         "BS/ScheduledPosting": [
             "src/addons/BS/ScheduledPosting/XF/Entity/User.php"
@@ -50,6 +51,11 @@
             "src/addons/XenBulletins/StopHumanSpam/_data/bb_codes.xml",
             "src/addons/XenBulletins/StopHumanSpam/_data/class_extensions.xml",
             "src/addons/XenBulletins/StopHumanSpam/_data/phrases.xml"
+        ],
+        "AVForums/TagEssentials": [
+            "src/addons/AVForums/TagEssentials/XF/Finder/Thread.php",
+            "src/addons/AVForums/TagEssentials/_data/options.xml",
+            "src/addons/AVForums/TagEssentials/_data/templates.xml"
         ],
         "XF": [
             "connected_account.php",
@@ -71,7 +77,6 @@
             "src/XF/Entity/AttachmentData.php",
             "src/XF/Entity/Forum.php",
             "src/XF/Entity/Post.php",
-            "src/XF/Entity/Search.php",
             "src/XF/Entity/Thread.php",
             "src/XF/FindNew/AbstractHandler.php",
             "src/XF/FindNew/Thread.php",
@@ -86,13 +91,11 @@
             "src/XF/Pub/Controller/Post.php",
             "src/XF/Pub/Controller/Purchase.php",
             "src/XF/Pub/Controller/Register.php",
-            "src/XF/Pub/Controller/Tag.php",
             "src/XF/Pub/Controller/Thread.php",
             "src/XF/Pub/Controller/WhatsNew.php",
             "src/XF/Purchasable/AbstractPurchasable.php",
             "src/XF/Repository/Forum.php",
             "src/XF/Repository/Thread.php",
-            "src/XF/Search/Query/Query.php",
             "src/XF/Service/AbstractNotifier.php",
             "src/XF/Service/Attachment/Preparer.php",
             "src/XF/Service/Post/Preparer.php",
@@ -103,7 +106,8 @@
             "src/XF/Widget/ForumStatistics.php"
         ],
         "XFRM": [
-            "src/addons/XFRM/addon.json"
+            "src/addons/XFRM/addon.json",
+            "src/addons/XFRM/Pub/Controller/ResourceItem.php"
         ],
         "BS/RealTimeChat": [
             "src/addons/BS/RealTimeChat/_data/options.xml"
@@ -166,6 +170,11 @@
             "src/addons/FS/ExcludeReactionScore/XF/Admin/Controller/Forum.php",
             "src/addons/FS/ExcludeReactionScore/XF/Entity/Forum.php"
         ],
+        "FS/ExtendNewPostsWidget": [
+            "src/addons/FS/ExtendNewPostsWidget/addon.json",
+            "src/addons/FS/ExtendNewPostsWidget/XF/Widget/NewPosts.php",
+            "src/addons/FS/ExtendNewPostsWidget/_data/templates.xml"
+        ],
         "FS/HideContentWithPreview": [
             "src/addons/FS/HideContentWithPreview/addon.json",
             "src/addons/FS/HideContentWithPreview/BbCode/Locked.php",
@@ -183,9 +192,6 @@
             "src/addons/FS/IPSearchResult/_data/phrases.xml",
             "src/addons/FS/IPSearchResult/_data/templates.xml",
             "src/addons/FS/IPSearchResult/_data/template_modifications.xml"
-        ],
-        "FS/LatestThread": [
-            "src/addons/FS/LatestThread/Pub/Controller/ThreadContent.php"
         ],
         "FS/Limitations": [
             "src/addons/FS/Limitations/Cron/Limits.php",
@@ -279,6 +285,14 @@
         "FS/WebsiteRanking": [
             "src/addons/FS/WebsiteRanking/XF/Entity/Forum.php"
         ],
+        "FS/XFMG": [
+            "src/addons/FS/XFMG/addon.json",
+            "src/addons/FS/XFMG/Entity/Album.php",
+            "src/addons/FS/XFMG/Pub/Controller/Media.php",
+            "src/addons/FS/XFMG/_data/phrases.xml",
+            "src/addons/FS/XFMG/_data/templates.xml",
+            "src/addons/FS/XFMG/_data/template_modifications.xml"
+        ],
         "nick97/WatchList": [
             "src/addons/nick97/WatchList/addon.json",
             "src/addons/nick97/WatchList/_data/template_modifications.xml"
@@ -317,6 +331,6 @@
         ]
     },
     "total_missing": 4,
-    "total_inconsistent": 225,
-    "total_checked": 12482
+    "total_inconsistent": 235,
+    "total_checked": 12512
 }

@@ -1,6 +1,6 @@
 {
     "route_type": "public",
-    "route_prefix": "zoom-meeting",
+    "route_prefix": "video-chat",
     "sub_name": "",
     "format": ":int<meeting_id>/:page",
     "build_class": "",

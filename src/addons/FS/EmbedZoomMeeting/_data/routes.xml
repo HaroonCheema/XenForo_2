@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <routes>
   <route route_type="admin" route_prefix="zoom-meeting" format=":int&lt;meeting_id&gt;" controller="FS\EmbedZoomMeeting:Meeting" context="fs_zoom_meetings"/>
-  <route route_type="public" route_prefix="zoom-meeting" format=":int&lt;meeting_id&gt;/:page" controller="FS\EmbedZoomMeeting:Meeting" context="fs_zoom_meetings"/>
+  <route route_type="public" route_prefix="video-chat" format=":int&lt;meeting_id&gt;/:page" controller="FS\EmbedZoomMeeting:Meeting" context="fs_zoom_meetings"/>
 </routes>

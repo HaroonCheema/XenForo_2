@@ -45,8 +45,9 @@
   <phrase title="fs_zoom_meeting_topic" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Topic]]></phrase>
   <phrase title="fs_zoom_meetings" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Zoom Meeting]]></phrase>
   <phrase title="fs_zoom_setup_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You will need to navigate to Zoom <a href="https://marketplace.zoom.us/develop/applications/" target="_blank">App</a> and setup a new project with OAuth 2.0 credentials for a web application., creating an app with get the client id and client secret also set the redirect url.]]></phrase>
+  <phrase title="fs_zoom_the_requested_meeting_could_not_be_found" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[The requested Video Chat could not be found.]]></phrase>
   <phrase title="fs_zoom_topic" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Topic]]></phrase>
-  <phrase title="nav.fs_zoom_meetings" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Zoom Meeting]]></phrase>
+  <phrase title="nav.fs_zoom_meetings" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Video Chat]]></phrase>
   <phrase title="option.fs_webhook_secret_key" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Webhook Secret Token]]></phrase>
   <phrase title="option.fs_zoom_access_token" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Zoom Access Token]]></phrase>
   <phrase title="option.fs_zoom_client_id" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Client ID]]></phrase>

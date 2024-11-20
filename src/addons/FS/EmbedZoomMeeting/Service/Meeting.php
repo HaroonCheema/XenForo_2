@@ -319,8 +319,7 @@ class Meeting extends \XF\Service\AbstractService
 
         if ($join) {
 
-            $join->status = 0;
-            $join->save();
+            $join->delete();
         }
     }
 
@@ -343,9 +342,6 @@ class Meeting extends \XF\Service\AbstractService
 
         if ($meeting) {
 
-            // $meeting->end_time = \xf::$time;
-            // $meeting->status = 2;
-            // $meeting->save();
             $meeting->delete();
         }
 
@@ -355,8 +351,6 @@ class Meeting extends \XF\Service\AbstractService
 
             foreach ($userRegisters as $userRegister) {
 
-                // $userRegister->status = 0;
-                // $userRegister->save();
                 $userRegister->delete();
             }
         }
