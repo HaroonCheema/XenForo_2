@@ -875,6 +875,8 @@ Use the textbox above to specify a format. <b>{title}</b> will be replaced with 
   'option_explain.watchAlertActiveOnly' => 'If enabled, watched content alerts and emails will only be sent to users that have visited within the specified number of days. This can improve performance on large or very active installations.',
   'option_explain.webShare' => 'On supported devices, this button will open the browser\'s web share prompt, allowing users to share the current page to other applications.',
   'option_explain.whatsAppShare' => 'If a user clicks this button WhatsApp will open a list of users with whom to share the current page URL and title.',
+  'option_explain.xb_change_the_path_to_the_tmp_file' => 'This option allows you to change the value for your TMP file, by default :  <b>/tmp</b>.',
+  'option_explain.xb_enable' => 'This option allows you to enable the avatar gallery in your forum.',
   'option_explain.xb_th_default_image' => '',
   'option_explain.xb_th_xenbros_activation' => '',
   'option_explain.xfmEnableCrosspage' => 'If this option is enabled, users will be notified of a new message instantly on all pages.',

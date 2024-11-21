@@ -270,6 +270,8 @@ return array (
   'admin_navigation.widgetDefinitions' => 'Widget definitions',
   'admin_navigation.widgetPositions' => 'Widget positions',
   'admin_navigation.widgets' => 'Widgets',
+  'admin_navigation.xb_ag_avatar_gallery' => 'Avatar gallery',
+  'admin_navigation.xb_avatar_gallery' => '[XB] Avatar-Gallery',
   'admin_navigation.xb_videos_by_ron' => 'Videos by Ron',
   'admin_navigation.xfmg' => 'Media',
   'admin_navigation.xfmgBatchUpdate' => 'Batch update',

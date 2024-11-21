@@ -243,6 +243,8 @@ return array (
   'permission.general_viewProfile' => 'View member profiles',
   'permission.general_viewWarning' => 'View warning details',
   'permission.general_warn' => 'Give users warnings directly',
+  'permission.general_xb_can_delete_avatar' => 'Can delete avatar',
+  'permission.general_xb_cannot_use_avatar_glry' => 'Can\'t use avatar gallery.',
   'permission.klUIModerator_klUIBypassPSBPrivacy' => 'Bypass profile stats bar privacy',
   'permission.klUIModerator_klUIBypassUNCPrivacy' => 'Bypass username change history privacy',
   'permission.klUIModerator_klUISeeDeactivatedProfile' => 'View deactivated profiles',

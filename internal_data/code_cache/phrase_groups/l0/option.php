@@ -772,6 +772,8 @@ return array (
   'option.watchAlertActiveOnly' => 'Only send watched content alerts/emails to users active in last:',
   'option.webShare' => 'Enable web share button',
   'option.whatsAppShare' => 'Enable WhatsApp share button',
+  'option.xb_change_the_path_to_the_tmp_file' => 'Path to the TMP file',
+  'option.xb_enable' => 'Enable',
   'option.xb_th_default_image' => 'Default Thread thumbnail',
   'option.xb_th_xenbros_activation' => 'Activate Addon',
   'option.xfmEnableCrosspage' => 'Show new messages on all pages',

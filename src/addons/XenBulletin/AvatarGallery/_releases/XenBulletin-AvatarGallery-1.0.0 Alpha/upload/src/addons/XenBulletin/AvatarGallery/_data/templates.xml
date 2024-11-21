@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="admin" title="xb_avatar_gallery" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('avatars') }}</xf:title>
+
+<xf:pageaction>
+	<xf:button href="{{ link('ag/add') }}" icon="add">{{ phrase('add_avatar') }}</xf:button>
+</xf:pageaction>
+
+<xf:form action="{{ link('ag') }}" ajax="true" class="block">
+	
+	<div class="block-container">
+		<xf:if is="$avatars is not empty">
+			<div class="block-body">
+				<xf:datalist data-xf-init="responsive-data-list">
+					<xf:datarow rowtype="header">
+						<xf:cell>{{ phrase('avatar') }}</xf:cell>
+					
+						<xf:cell class="dataList-cell--min">&nbsp;</xf:cell>
+					</xf:datarow>
+					<xf:foreach loop="$avatars" value="$avatar">
+						<xf:datarow>
+							<xf:cell href="{{$avatar.getAvatarImgUrl()}}" target="_blank"><img src="{{$avatar.getAvatarImgUrl()}}" alt="avatar image" width="100" height="100"/></xf:cell>
+							
+							<xf:delete href="{{ link('ag/delete', $avatar) }}" />
+						</xf:datarow>
+					</xf:foreach>
+				</xf:datalist>
+			</div>
+			<div class="block-footer">
+				<span class="block-footer-counter">{{ display_totals($avatars, $total) }}</span>
+			</div>
+		<xf:else />
+			<div class="block-body block-row">{{ phrase('no_results_found') }}</div>
+		</xf:if>
+	</div>
+
+	<xf:pagenav page="{$page}" perpage="{$perPage}" total="{$total}"
+		link="ag" params="{$filters}"
+		wrapperclass="block-outer block-outer--after" />
+</xf:form>]]></template>
+  <template type="admin" title="xb_avatar_gallery_delete" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('confirm_action') }}</xf:title>
+
+<xf:form action="{{ link('ag/delete', $avatar) }}" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:inforow rowtype="confirm">
+				{{ phrase('please_confirm_that_you_want_to_delete_following:') }}
+				<strong></strong>
+				<img src="{{$avatar.getAvatarImgUrl()}}" alt="avatar image" width="200" height="200"/>
+			</xf:inforow>
+		</div>
+		<xf:submitrow rowtype="simple" icon="delete" />
+	</div>
+</xf:form>]]></template>
+  <template type="admin" title="xb_avatar_gallery_edit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('add_avatar') }}</xf:title>
+
+<xf:form action="{{ link('ag/save', $avatar) }}" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			
+			<xf:uploadrow name="img_path" accept=".jpeg,.jpg,.png" required="true"
+				label="{{ phrase('avatar_img') }}" 
+				explain="{{ phrase('upload_avatar_image') }}" />
+
+		</div>
+
+		<xf:submitrow sticky="true" icon="save" />
+	</div>
+</xf:form>]]></template>
+  <template type="public" title="xb_avatarGallery" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:css src="xb_avatarGallery.less" />
+<xf:js src="XenBulletin/AvatarGallery/gallery_avatar.js"/>
+
+<xf:if is="$xf.options.xb_enable && !$xf.visitor.hasPermission('general', 'xb_cannot_use_avatar_glry')">
+    <label>{{ phrase('xb_use_gallery_avatar') }}</label>
+    <div class="input xb_gallery_container">
+		<ul class="xb_avatar_list">
+			<li>
+				<xf:foreach loop="$gallery_images" key="$category" value="$avatars">
+					<xf:if is="$avatars.permission != '2'">
+						<xf:if is="{$avatars.permission}">
+							
+							<xf:foreach loop="$avatars.dirname" value="$avatar">
+								<div id="xb_avatar_select" data-xf-click="xb_avatar" data-avatar-data-path="{$avatar.data-path}">
+									<i class="fa fa-check"></i>
+									<img class="avatar avatar--m" src="{$avatar.url}" >
+								</div>
+							</xf:foreach>
+						</xf:if>
+						<xf:elseif is="$avatars.permission == '2'"/>
+						
+						<xf:foreach loop="$avatars.dirname" value="$avatar">
+							<div id="xb_avatar_select" data-xf-click="xb_avatar" data-avatar-data-path="{$avatar.data-path}">
+								<i class="fa fa-check"></i>
+								<img class="avatar avatar--m" src="{$avatar.url}" >
+							</div>
+						</xf:foreach>
+					</xf:if>
+				</xf:foreach>
+			<li><input id="xb_avatar_choice" type="hidden" name="gallery_avatar"/></li>
+		</ul>
+	</div>
+</xf:if>]]></template>
+  <template type="public" title="xb_avatarGallery.less" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[.xb_gallery_container {
+	max-height:250px;
+	overflow:auto;
+}
+div#xb_avatar_select {
+	border-radius: 5px;
+	display: inline-block;
+	border: solid @xf-inputBgColor ;
+    border-radius: 100%;
+	padding: 0;
+	margin: 0;
+	-moz-appearance: none;
+	margin-bottom: @xf-paddingSmall;
+	position: relative;
+	overflow:hidden;
+	:hover {
+		opacity: 0.7;
+		cursor: pointer;
+	}
+	&.checked {
+		border: solid #185886;
+		border-radius: 100%;
+	}
+	&.checked .fa{
+		display: block;
+	}
+	.fa {
+		display: none;
+		position: absolute;
+		font-size: 60px;
+		color: #185886;
+		padding: 20px;
+	}
+}
+ul.xb_avatar_list {
+	margin: 0px !important;
+	padding: 0px !important;
+	list-style-type: none;
+}]]></template>
+  <template type="public" title="xb_avatarGalleryRegister" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:css src="xb_avatarGallery.less" />
+<xf:js src="XenBulletin/AvatarGallery/gallery_avatar.js" min="1"/>
+
+<xf:if is="$gallery_images">
+	<dl class="formRow formRow--input">
+		<dt>
+			<div class="formRow-labelWrapper">
+				<label>{{ phrase('avatar:') }}</label>
+			</div>
+		</dt>
+		<dd>
+			<div class="input xb_gallery_container">
+				<ul class="xb_avatar_list">
+					<li>
+						<xf:foreach loop="$gallery_images" key="$category" value="$avatars">
+							
+							<xf:foreach loop="$avatars" value="$avatar">
+								<div id="xb_avatar_select" data-xf-click="xb_avatar" data-avatar-data-path="{$avatar.data-path}">
+									<i class="fa fa-check"></i>
+									<img class="avatar avatar--m" src="{$avatar.url}" >
+								</div>
+							</xf:foreach>
+						</xf:foreach>
+					</li>
+					<li><input id="xb_avatar_choice" type="hidden" name="gallery_avatar"/></li>
+				</ul>
+			</div>
+			<p class="formRow-explain">{{ phrase('xb_avatar_explain') }}</p>
+		</dd>
+	</dl>
+</xf:if>]]></template>
+</templates>

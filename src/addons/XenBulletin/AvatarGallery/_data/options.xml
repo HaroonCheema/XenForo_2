@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<options>
+  <option option_id="xb_change_the_path_to_the_tmp_file" edit_format="textbox" data_type="string">
+    <default_value>/tmp</default_value>
+    <relation group_id="xb_avatar_gallery" display_order="2"/>
+  </option>
+  <option option_id="xb_enable" edit_format="onoff" data_type="boolean">
+    <default_value>0</default_value>
+    <relation group_id="xb_avatar_gallery" display_order="1"/>
+  </option>
+</options>

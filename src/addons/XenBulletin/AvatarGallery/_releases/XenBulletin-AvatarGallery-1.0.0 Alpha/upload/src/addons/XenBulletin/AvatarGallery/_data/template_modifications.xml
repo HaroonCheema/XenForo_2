@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="account_avatar" modification_key="xb_account_avatar" description="Add the gallery to the avatar selection modal" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/(<label>(.*?)<\/label>(.*?)<\/dfn>)/is]]></find>
+    <replace><![CDATA[<xf:if is="$xf.visitor.hasPermission('avatar', 'allowed')">
+$0
+</xf:if >
+<xf:include template="xb_avatarGallery" />]]></replace>
+  </modification>
+  <modification type="public" template="account_avatar" modification_key="xb_delete_vbutton_delete_avatar" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/(<xf:submitrow submit="{{ phrase\('okay'\) }}" rowtype="simple" class="js-overlayClose">)(.*?)(<xf:html>)(.*?)(<xf:button type="submit" name="delete_avatar" value="1" class="js-deleteAvatar" icon="delete" \/>)(.*?)(<\/xf:html>)(.*?)(<\/xf:submitrow>)/s]]></find>
+    <replace><![CDATA[<xf:if is="$xf.visitor.hasPermission('general', 'xb_can_delete_avatar')">
+	$0
+	<xf:else/>
+	<xf:submitrow submit="{{ phrase('okay') }}" rowtype="simple" class="js-overlayClose" />
+</xf:if>]]></replace>
+  </modification>
+</template_modifications>

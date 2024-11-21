@@ -58,6 +58,7 @@ return array (
   'permission_interface.thMonetizePermissions' => '[TH] Monetize permissions',
   'permission_interface.trader' => 'Trader',
   'permission_interface.tvthreads_interface' => '[OzzModz] TMDb TV Thread Starter',
+  'permission_interface.xb_avatar_gallery' => '[XB] Avatar-Gallery',
   'permission_interface.xc_thread_article' => '[FS] Thread Change Article',
   'permission_interface.xfmgAlbum' => 'XFMG: Album permissions',
   'permission_interface.xfmgAlbumModerator' => 'XFMG: Album moderator permissions',

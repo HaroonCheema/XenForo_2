@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="add_avatar" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add avatar]]></phrase>
+  <phrase title="admin_navigation.xb_ag_avatar_gallery" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Avatar gallery]]></phrase>
+  <phrase title="admin_navigation.xb_avatar_gallery" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[XB] Avatar-Gallery]]></phrase>
+  <phrase title="avatar_img" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Avatar]]></phrase>
+  <phrase title="option.xb_change_the_path_to_the_tmp_file" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Path to the TMP file]]></phrase>
+  <phrase title="option.xb_enable" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enable]]></phrase>
+  <phrase title="option_explain.xb_change_the_path_to_the_tmp_file" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[This option allows you to change the value for your TMP file, by default :  <b>/tmp</b>.]]></phrase>
+  <phrase title="option_explain.xb_enable" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[This option allows you to enable the avatar gallery in your forum.]]></phrase>
+  <phrase title="option_group.xb_avatar_gallery" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[XB] AvatarGallery]]></phrase>
+  <phrase title="option_group_description.xb_avatar_gallery" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="permission.general_xb_can_delete_avatar" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Can delete avatar]]></phrase>
+  <phrase title="permission.general_xb_cannot_use_avatar_glry" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Can't use avatar gallery.]]></phrase>
+  <phrase title="permission_interface.xb_avatar_gallery" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[XB] Avatar-Gallery]]></phrase>
+  <phrase title="upload_avatar_image" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Upload image for avatar gallery.]]></phrase>
+  <phrase title="xb_avatar_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You can choose an avatar from this pre-selected list.]]></phrase>
+  <phrase title="xb_required_error" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You have not selected an avatar. Please select one.]]></phrase>
+  <phrase title="xb_uncategorized" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Uncategorized]]></phrase>
+  <phrase title="xb_use_gallery_avatar" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Use a gallery avatar]]></phrase>
+  <phrase title="xb_you_can_t_delete_your_avatar" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You can't delete your avatar]]></phrase>
+</phrases>
