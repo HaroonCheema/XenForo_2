@@ -255,38 +255,38 @@ class ReplyPoints extends \XF\Service\AbstractService
             }
         }
 
-        // if ($thread->last_thread_update > $thread->last_cron_run) {
+        if ($thread->last_thread_update > $thread->last_cron_run) {
 
-        //     foreach ($userIdUsers as $key => $user) {
-        //         if ($user) {
+            foreach ($userIdUsers as $key => $user) {
+                if ($user) {
 
-        //             $updateThreadUserTotal =  $db->fetchRow(
-        //                 "SELECT SUM(`thread_points`) AS threads_score,
-        //             SUM(`reply_points`) AS reply_score,
-        //             SUM(`word_points`) AS worlds_score,
-        //             SUM(`reaction_points`) AS reactions_score,
-        //             SUM(`solution_points`) AS solutions_score
-        //             FROM fs_thread_scoring_system
-        //             WHERE user_id  = ?
-        //         ",
-        //                 [
-        //                     $key,
-        //                 ]
-        //             );
+                    $updateThreadUserTotal =  $db->fetchRow(
+                        "SELECT SUM(`thread_points`) AS threads_score,
+                    SUM(`reply_points`) AS reply_score,
+                    SUM(`word_points`) AS worlds_score,
+                    SUM(`reaction_points`) AS reactions_score,
+                    SUM(`solution_points`) AS solutions_score
+                    FROM fs_thread_scoring_system
+                    WHERE user_id  = ?
+                ",
+                        [
+                            $key,
+                        ]
+                    );
 
-        //             $userTotalScore = floatval($updateThreadUserTotal['threads_score']) + floatval($updateThreadUserTotal['reply_score']) + floatval($updateThreadUserTotal['worlds_score']) + floatval($updateThreadUserTotal['reactions_score']) + floatval($updateThreadUserTotal['solutions_score']);
+                    $userTotalScore = floatval($updateThreadUserTotal['threads_score']) + floatval($updateThreadUserTotal['reply_score']) + floatval($updateThreadUserTotal['worlds_score']) + floatval($updateThreadUserTotal['reactions_score']) + floatval($updateThreadUserTotal['solutions_score']);
 
-        //             $user->threads_score = floatval($updateThreadUserTotal['threads_score']);
-        //             $user->reply_score = floatval($updateThreadUserTotal['reply_score']);
-        //             $user->worlds_score = floatval($updateThreadUserTotal['worlds_score']);
-        //             $user->reactions_score = floatval($updateThreadUserTotal['reactions_score']);
-        //             $user->solutions_score = floatval($updateThreadUserTotal['solutions_score']);
-        //             $user->total_score = $userTotalScore;
+                    $user->threads_score = floatval($updateThreadUserTotal['threads_score']);
+                    $user->reply_score = floatval($updateThreadUserTotal['reply_score']);
+                    $user->worlds_score = floatval($updateThreadUserTotal['worlds_score']);
+                    $user->reactions_score = floatval($updateThreadUserTotal['reactions_score']);
+                    $user->solutions_score = floatval($updateThreadUserTotal['solutions_score']);
+                    $user->total_score = $userTotalScore;
 
-        //             $user->save();
-        //         }
-        //     }
-        // }
+                    $user->save();
+                }
+            }
+        }
 
         $prevUsers = \XF::finder('FS\ThreadScoringSystem:ScoringSystem')->where('user_id', '!=', $userIds)->where('thread_id', $thread->thread_id)->fetch();
 

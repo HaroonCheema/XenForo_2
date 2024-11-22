@@ -1,10 +1,10 @@
 <?php
-// FROM HASH: 1a3ca63b64f948d1aaed877ab7d0e10c
+// FROM HASH: f1875979c0d8cfa4a8e15a443316e831
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
 	$__finalCompiled = '';
-	if (!$__vars['xf']['visitor']['user_id']) {
+	if ((!$__vars['xf']['visitor']['user_id']) OR (!$__vars['xf']['visitor']['is_admin'])) {
 		$__finalCompiled .= '
 	<style>
 

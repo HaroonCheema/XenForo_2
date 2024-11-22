@@ -225,7 +225,7 @@
 
 	document.addEventListener("DOMContentLoaded", startMeeting);
 </script>]]></template>
-  <template type="public" title="fs_join_meeting_start" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[<xf:if is="!$xf.visitor.user_id">
+  <template type="public" title="fs_join_meeting_start" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[<xf:if is="!$xf.visitor.user_id || !$xf.visitor.is_admin">
 	<style>
 
 		body {

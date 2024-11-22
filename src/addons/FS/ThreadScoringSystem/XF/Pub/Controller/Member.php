@@ -38,14 +38,12 @@ class Member extends XFCP_Member
 
     public function actionAllUsersPoints()
     {
-        // if (!\xf::visitor()->hasPermission('fs_thread_scoring_system', 'can_view')) {
-        //     return $this->noPermission();
-        // }
+        if (!\xf::visitor()->hasPermission('fs_thread_scoring_system', 'can_view')) {
+            return $this->noPermission();
+        }
 
         $orderBy = \XF::options()->fs_thread_scoring_list_order;
         $minimumPoints = \XF::options()->fs_total_users_minimum_points;
-
-        // $records = $this->finder('FS\ThreadScoringSystem:TotalScoringSystem')->where('user_id', '!=', 0)->where('total_score', '>=', $minimumPoints)->order('total_score', $orderBy)->fetch();
 
         $records = $this->finder('XF:User')->where('total_score', '>=', $minimumPoints)->order('total_score', $orderBy)->fetch();
 
@@ -59,9 +57,9 @@ class Member extends XFCP_Member
     public function actionCustomUsersPoints()
     {
 
-        // if (!\xf::visitor()->hasPermission('fs_thread_scoring_system', 'can_view')) {
-        //     return $this->noPermission();
-        // }
+        if (!\xf::visitor()->hasPermission('fs_thread_scoring_system', 'can_view')) {
+            return $this->noPermission();
+        }
 
         $orderBy = \XF::options()->fs_thread_scoring_list_order;
         $minimumPoints = \XF::options()->fs_total_users_minimum_points;

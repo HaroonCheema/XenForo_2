@@ -27,34 +27,34 @@ class Meeting extends AbstractController
 
         $visitor = \xf::visitor();
 
-        if ($meeting->user_id == $visitor->user_id) {
+        // if ($meeting->user_id == $visitor->user_id) {
 
-            $viewParams = $this->hostStartMeeting($meeting);
+        //     $viewParams = $this->hostStartMeeting($meeting);
 
-            $meeting->fastUpdate('start_time', \xf::$time);
+        //     $meeting->fastUpdate('start_time', \xf::$time);
 
-            return $this->view('FS\EmbedZoomMeeting:Meeting', 'fs_host_meeting_start', $viewParams);
+        //     return $this->view('FS\EmbedZoomMeeting:Meeting', 'fs_host_meeting_start', $viewParams);
+        // }
+
+        // if ($meeting->user_id != $visitor->user_id) {
+
+        // if ($meeting->status != 1) {
+
+        //     throw new \XF\PrintableException(\xf::phrase('fs_need_to_wait_wait_for_start_meeting_by_host'));
+        // }
+
+        if (!$visitor->user_id && !$this->isPost()) {
+
+            $viewParams = [
+                'meeting' => $meeting,
+            ];
+            return $this->view('', 'fs_zoom_meeting_guest_joiners', $viewParams);
         }
 
-        if ($meeting->user_id != $visitor->user_id) {
+        $viewParams = $this->userJoinMeeting($meeting);
 
-            if ($meeting->status != 1) {
-
-                throw new \XF\PrintableException(\xf::phrase('fs_need_to_wait_wait_for_start_meeting_by_host'));
-            }
-
-            if (!$visitor->user_id && !$this->isPost()) {
-
-                $viewParams = [
-                    'meeting' => $meeting,
-                ];
-                return $this->view('', 'fs_zoom_meeting_guest_joiners', $viewParams);
-            }
-
-            $viewParams = $this->userJoinMeeting($meeting);
-
-            return $this->view('FS\EmbedZoomMeeting:Meeting', 'fs_join_meeting_start', $viewParams);
-        }
+        return $this->view('FS\EmbedZoomMeeting:Meeting', 'fs_join_meeting_start', $viewParams);
+        // }
     }
 
     protected function hostStartMeeting(\FS\EmbedZoomMeeting\Entity\Meeting $meeting)

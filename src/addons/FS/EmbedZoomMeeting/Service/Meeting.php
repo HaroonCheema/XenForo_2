@@ -338,21 +338,21 @@ class Meeting extends \XF\Service\AbstractService
 
     public function endMeeting($meetingId)
     {
-        $meeting = $this->finder('FS\EmbedZoomMeeting:Meeting')->where('z_meeting_id', $meetingId)->fetchOne();
+        // $meeting = $this->finder('FS\EmbedZoomMeeting:Meeting')->where('z_meeting_id', $meetingId)->fetchOne();
 
-        if ($meeting) {
+        // if ($meeting) {
 
-            $meeting->delete();
-        }
+        //     $meeting->delete();
+        // }
 
-        $userRegisters = $this->finder('FS\EmbedZoomMeeting:Register')->where('meeting_id', $meetingId)->fetch();
+        // $userRegisters = $this->finder('FS\EmbedZoomMeeting:Register')->where('meeting_id', $meetingId)->fetch();
 
-        if (count($userRegisters)) {
+        // if (count($userRegisters)) {
 
-            foreach ($userRegisters as $userRegister) {
+        //     foreach ($userRegisters as $userRegister) {
 
-                $userRegister->delete();
-            }
-        }
+        //         $userRegister->delete();
+        //     }
+        // }
     }
 }
