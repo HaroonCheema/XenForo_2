@@ -67,6 +67,7 @@ class Meeting extends \XF\Service\AbstractService
             "start_time" => $start_time, // ISO 8601 format: 'YYYY-MM-DDTHH:MM:SS'
             "duration" => $duration, // Duration in minutes
             "timezone" => $timezone, // Example: 'America/New_York' or 'UTC'
+            "password" => time(),
             "settings" => [
                 "join_before_host" => true,
                 "approval_type" => 2,
@@ -130,6 +131,7 @@ class Meeting extends \XF\Service\AbstractService
             "start_time" => $start_time,
             "duration" => $duration,
             "timezone" => $timezone,
+            "password" => time(),
             "settings" => [
                 "join_before_host" => true,
                 "approval_type" => 2,
@@ -288,6 +290,7 @@ class Meeting extends \XF\Service\AbstractService
     public function joinMeeting($username, $email, $participant_uuid, $meetingId)
     {
         $join = $this->finder('FS\EmbedZoomMeeting:Register')->where('participant_uuid', $participant_uuid)->where('meeting_id', $meetingId)->fetchOne();
+        // $join = $this->finder('FS\EmbedZoomMeeting:Register')->whereOr(['participant_uuid', $participant_uuid], ['username', $username])->where('meeting_id', $meetingId)->fetchOne();
 
         if ($join) {
 

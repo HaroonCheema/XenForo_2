@@ -75,7 +75,9 @@ class Meeting extends AbstractController
         $query = parse_url($meeting->z_join_url, PHP_URL_QUERY);
         parse_str($query, $params);
 
-        $meetingPassWord = $params['pwd'];
+        // $meetingPassWord = $params['pwd'];
+
+        $meetingPassWord = isset($params['pwd']) ? $params['pwd'] : '';
 
         $sdkKey = \xf::options()->fs_zoom_client_id;
         $sdkSecret = \xf::options()->fs_zoom_client_secret;
@@ -127,7 +129,7 @@ class Meeting extends AbstractController
         $query = parse_url($meeting->z_join_url, PHP_URL_QUERY);
         parse_str($query, $params);
 
-        $meetingPassWord = $params['pwd'];
+        $meetingPassWord = isset($params['pwd']) ? $params['pwd'] : '';
 
         $meetingSdkService = $this->service('FS\EmbedZoomMeeting:MeetingSdk');
 

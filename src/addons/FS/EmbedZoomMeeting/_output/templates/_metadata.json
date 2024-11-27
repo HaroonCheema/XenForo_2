@@ -25,9 +25,9 @@
         "hash": "6aa60e841a54cf8fae5861eb10a53924"
     },
     "public/fs_join_meeting_start.html": {
-        "version_id": 1000100,
-        "version_string": "1.0.1 Alpha",
-        "hash": "f1875979c0d8cfa4a8e15a443316e831"
+        "version_id": 1000200,
+        "version_string": "1.0.2 Alpha",
+        "hash": "a01fe491a4dd8f520c3835a9abf0aaa1"
     },
     "public/fs_zoom_meeting_guest_joiners.html": {
         "version_id": 1000010,

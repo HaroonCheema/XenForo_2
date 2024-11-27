@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: f1875979c0d8cfa4a8e15a443316e831
+// FROM HASH: a01fe491a4dd8f520c3835a9abf0aaa1
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -14,8 +14,8 @@ return array(
 
 		@media (min-width: 1200px) and (max-width: 1399.98px) {
 			#zmmtg-root {
-				height: 71% !important;
-				margin-top: 87px !important;
+				height: 68% !important;
+				margin-top: 151px !important;
 			}
 
 			.video-share-layout {
@@ -25,8 +25,8 @@ return array(
 
 		@media (min-width: 1400px) {
 			#zmmtg-root {
-				height: 80% !important;
-				margin-top: 87px !important;
+				height: 78% !important;
+				margin-top: 151px !important;
 			}
 
 			.video-share-layout {
@@ -47,8 +47,8 @@ return array(
 
 		@media (min-width: 1200px) and (max-width: 1399.98px) {
 			#zmmtg-root {
-				height: 66% !important;
-				margin-top: 123px !important;
+				height: 63% !important;
+				margin-top: 185px !important;
 			}
 
 			.video-share-layout {
@@ -58,8 +58,8 @@ return array(
 
 		@media (min-width: 1400px) {
 			#zmmtg-root {
-				height: 76% !important;
-				margin-top: 123px !important;
+				height: 74% !important;
+				margin-top: 185px !important;
 			}
 
 			.video-share-layout {
@@ -72,6 +72,9 @@ return array(
 ';
 	}
 	$__finalCompiled .= '
+
+
+' . '
 
 <script src="https://source.zoom.us/3.9.0/lib/vendor/react.min.js"></script>
 <script src="https://source.zoom.us/3.9.0/lib/vendor/react-dom.min.js"></script>
