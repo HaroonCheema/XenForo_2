@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <templates>
-  <template type="admin" title="limit_node_selection" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[<xf:formrow label="{{phrase('forum_selection_limit')}}">
+  <template type="admin" title="limit_node_selection" version_id="1000300" version_string="1.0.3 Alpha"><![CDATA[<xf:formrow label="{{phrase('forum_selection_limit')}}">
 	<div class="check-selection-button">
 		<xf:button class="add-limit">{{phrase('add_limit')}}</xf:button>
 		<xf:button class="remove-limit">{{phrase('remove_limit')}}</xf:button>
@@ -14,9 +14,9 @@
 			<div class="clone-limit-selection" style="display:flex;margin-top: 10px;" data-index="{{$i}}">
 				<div class="forum-selection" style="width:80%;">
 					<xf:select name="options[unique_node_ids][{{$i}}][]" value="{{$nodeId}}" multiple="multiple" size="4">
-						<xf:foreach loop="$limitForums" value="$forum">
-							<xf:option value="{{$forum.node_id}}" >
-								{{$forum.title}}
+						<xf:foreach loop="$nodeTree.getFlattened(0)" value="$treeEntry">
+							<xf:option value="{$treeEntry.record.node_id}" disabled="{{ $treeEntry.record.node_type_id != 'Forum' }}">
+								{{ repeat('&nbsp;&nbsp;', $treeEntry.depth)|raw }} {$treeEntry.record.title}
 							</xf:option>
 						</xf:foreach>
 					</xf:select>
@@ -37,9 +37,9 @@
 			<div class="forum-selection" style="width:80%;">
 				<xf:select name="options[unique_node_ids][{{$currentIndex}}][]" multiple="multiple" size="4">
 					<xf:option value="0">None</xf:option>
-					<xf:foreach loop="$limitForums" value="$forum">
-						<xf:option value="{{$forum.node_id}}" >
-							{{$forum.title}}
+					<xf:foreach loop="$nodeTree.getFlattened(0)" value="$treeEntry">
+						<xf:option value="{$treeEntry.record.node_id}" disabled="{{ $treeEntry.record.node_type_id != 'Forum' }}">
+							{{ repeat('&nbsp;&nbsp;', $treeEntry.depth)|raw }} {$treeEntry.record.title}
 						</xf:option>
 					</xf:foreach>
 				</xf:select>

@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: f09f266f43450563b7a626d85002c0d9
+// FROM HASH: 49f8e7a9344bf1c7da6c4364369ad24d
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -19,12 +19,14 @@ return array(
 				<div class="forum-selection" style="width:80%;">
 					';
 				$__compilerTemp2 = array();
-				if ($__templater->isTraversable($__vars['limitForums'])) {
-					foreach ($__vars['limitForums'] AS $__vars['forum']) {
+				$__compilerTemp3 = $__templater->method($__vars['nodeTree'], 'getFlattened', array(0, ));
+				if ($__templater->isTraversable($__compilerTemp3)) {
+					foreach ($__compilerTemp3 AS $__vars['treeEntry']) {
 						$__compilerTemp2[] = array(
-							'value' => $__vars['forum']['node_id'],
+							'value' => $__vars['treeEntry']['record']['node_id'],
+							'disabled' => ($__vars['treeEntry']['record']['node_type_id'] != 'Forum'),
 							'label' => '
-								' . $__templater->escape($__vars['forum']['title']) . '
+								' . $__templater->filter($__templater->func('repeat', array('&nbsp;&nbsp;', $__vars['treeEntry']['depth'], ), false), array(array('raw', array()),), true) . ' ' . $__templater->escape($__vars['treeEntry']['record']['title']) . '
 							',
 							'_type' => 'option',
 						);
@@ -57,17 +59,19 @@ return array(
 		$__compilerTemp1 .= '
 	';
 	}
-	$__compilerTemp3 = array(array(
+	$__compilerTemp4 = array(array(
 		'value' => '0',
 		'label' => 'None',
 		'_type' => 'option',
 	));
-	if ($__templater->isTraversable($__vars['limitForums'])) {
-		foreach ($__vars['limitForums'] AS $__vars['forum']) {
-			$__compilerTemp3[] = array(
-				'value' => $__vars['forum']['node_id'],
+	$__compilerTemp5 = $__templater->method($__vars['nodeTree'], 'getFlattened', array(0, ));
+	if ($__templater->isTraversable($__compilerTemp5)) {
+		foreach ($__compilerTemp5 AS $__vars['treeEntry']) {
+			$__compilerTemp4[] = array(
+				'value' => $__vars['treeEntry']['record']['node_id'],
+				'disabled' => ($__vars['treeEntry']['record']['node_type_id'] != 'Forum'),
 				'label' => '
-							' . $__templater->escape($__vars['forum']['title']) . '
+							' . $__templater->filter($__templater->func('repeat', array('&nbsp;&nbsp;', $__vars['treeEntry']['depth'], ), false), array(array('raw', array()),), true) . ' ' . $__templater->escape($__vars['treeEntry']['record']['title']) . '
 						',
 				'_type' => 'option',
 			);
@@ -96,7 +100,7 @@ return array(
 		'name' => 'options[unique_node_ids][' . $__vars['currentIndex'] . '][]',
 		'multiple' => 'multiple',
 		'size' => '4',
-	), $__compilerTemp3) . '
+	), $__compilerTemp4) . '
 				<span style="font-size: 13px;color: #8c8c8c;">' . 'Select node against limit.' . '</span>
 			</div>
 			<div style="width:80%;margin-right:10px;">
