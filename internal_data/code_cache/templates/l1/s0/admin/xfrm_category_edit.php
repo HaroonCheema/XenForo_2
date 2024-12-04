@@ -50,14 +50,27 @@ return array(
 		)) . '
 ';
 	}
-	$__compilerTemp2 = array(array(
+	$__compilerTemp2 = '';
+	if ($__templater->method($__vars['category'], 'isImage', array())) {
+		$__compilerTemp2 .= '
+						' . $__templater->formRow('
+						' . $__templater->formInfoRow('
+							<img src="' . $__templater->escape($__templater->method($__vars['category'], 'getImgUrl', array(true, ))) . '" style="width:80px;height:60px" >
+						', array(
+			'rowtype' => 'confirm',
+		)) . '
+							', array(
+		)) . '
+					';
+	}
+	$__compilerTemp3 = array(array(
 		'value' => '0',
 		'label' => $__vars['xf']['language']['parenthesis_open'] . 'None' . $__vars['xf']['language']['parenthesis_close'],
 		'_type' => 'option',
 	));
 	if ($__templater->isTraversable($__vars['forumOptions'])) {
 		foreach ($__vars['forumOptions'] AS $__vars['forum']) {
-			$__compilerTemp2[] = array(
+			$__compilerTemp3[] = array(
 				'value' => $__vars['forum']['value'],
 				'disabled' => $__vars['forum']['disabled'],
 				'label' => $__templater->escape($__vars['forum']['label']),
@@ -69,18 +82,18 @@ return array(
 		'src' => 'xf/prefix_menu.js',
 		'min' => '1',
 	));
-	$__compilerTemp3 = '';
+	$__compilerTemp4 = '';
 	if (!$__templater->test($__vars['availableFields'], 'empty', array())) {
-		$__compilerTemp3 .= '
+		$__compilerTemp4 .= '
 				<hr class="formRowSep" />
 
 				';
-		$__compilerTemp4 = $__templater->mergeChoiceOptions(array(), $__vars['availableFields']);
-		$__compilerTemp3 .= $__templater->formCheckBoxRow(array(
+		$__compilerTemp5 = $__templater->mergeChoiceOptions(array(), $__vars['availableFields']);
+		$__compilerTemp4 .= $__templater->formCheckBoxRow(array(
 			'name' => 'available_fields',
 			'value' => $__vars['category']['field_cache'],
 			'listclass' => 'field listColumns',
-		), $__compilerTemp4, array(
+		), $__compilerTemp5, array(
 			'label' => 'Available fields',
 			'hint' => '
 						' . $__templater->formCheckBox(array(
@@ -94,7 +107,7 @@ return array(
 		)) . '
 			';
 	} else {
-		$__compilerTemp3 .= '
+		$__compilerTemp4 .= '
 				<hr class="formRowSep" />
 
 				' . $__templater->formRow('
@@ -104,18 +117,18 @@ return array(
 		)) . '
 			';
 	}
-	$__compilerTemp5 = '';
+	$__compilerTemp6 = '';
 	if (!$__templater->test($__vars['availablePrefixes'], 'empty', array())) {
-		$__compilerTemp5 .= '
+		$__compilerTemp6 .= '
 				<hr class="formRowSep" />
 
 				';
-		$__compilerTemp6 = $__templater->mergeChoiceOptions(array(), $__vars['availablePrefixes']);
-		$__compilerTemp5 .= $__templater->formCheckBoxRow(array(
+		$__compilerTemp7 = $__templater->mergeChoiceOptions(array(), $__vars['availablePrefixes']);
+		$__compilerTemp6 .= $__templater->formCheckBoxRow(array(
 			'name' => 'available_prefixes',
 			'value' => $__vars['category']['prefix_cache'],
 			'listclass' => 'prefix listColumns',
-		), $__compilerTemp6, array(
+		), $__compilerTemp7, array(
 			'label' => 'Available prefixes',
 			'hint' => '
 						' . $__templater->formCheckBox(array(
@@ -141,7 +154,7 @@ return array(
 
 			';
 	} else {
-		$__compilerTemp5 .= '
+		$__compilerTemp6 .= '
 
 				<hr class="formRowSep" />
 
@@ -180,6 +193,15 @@ return array(
 	)) . '
 
 ' . $__compilerTemp1 . '
+
+' . $__templater->formUploadRow(array(
+		'name' => 'image',
+		'accept' => '.gif,.jpeg,.jpg,.jpe,.png',
+	), array(
+		'label' => 'Image',
+		'explain' => 'Upload Image',
+	)) . '
+					' . $__compilerTemp2 . '
 
 			' . $__templater->callMacro('category_tree_macros', 'parent_category_select_row', array(
 		'category' => $__vars['category'],
@@ -272,7 +294,7 @@ return array(
 		'name' => 'thread_node_id',
 		'value' => $__vars['category']['thread_node_id'],
 		'id' => 'js-rmThreadNodeList',
-	), $__compilerTemp2, array(
+	), $__compilerTemp3, array(
 		'label' => 'Automatically create thread in forum',
 		'explain' => 'If selected, whenever a resource in this category is created, a thread will be posted in this forum. Only "general discussion" type forums may be selected.',
 	)) . '
@@ -292,9 +314,9 @@ return array(
 		'rowtype' => 'input',
 	)) . '
 
-			' . $__compilerTemp3 . '
+			' . $__compilerTemp4 . '
 
-			' . $__compilerTemp5 . '
+			' . $__compilerTemp6 . '
 		</div>
 		' . $__templater->formSubmitRow(array(
 		'icon' => 'save',

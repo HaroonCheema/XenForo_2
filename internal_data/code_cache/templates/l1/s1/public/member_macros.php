@@ -152,6 +152,12 @@ return array(
 ';
 	}
 	$__finalCompiled .= '
+	<dl class="pairs pairs--rows pairs--rows--centered">
+		<dt>' . 'Special Credits' . '</dt>
+		<dd>
+			' . $__templater->filter($__vars['user']['special_credit'], array(array('number', array()),), true) . '
+		</dd>
+	</dl>
 ' . '
 	<dl class="pairs pairs--rows pairs--rows--centered">
 		<dt title="' . $__templater->filter('Reaction score', array(array('for_attr', array()),), true) . '">' . 'Reaction score' . '</dt>

@@ -56,6 +56,7 @@ return array (
   'permission_interface.siropuChatUser' => 'Chat user permissions',
   'permission_interface.snog_movies' => '[OzzModz] TMDb Movie Thread Starter',
   'permission_interface.thMonetizePermissions' => '[TH] Monetize permissions',
+  'permission_interface.thtc' => '[TH] Thread Credits permissions',
   'permission_interface.trader' => 'Trader',
   'permission_interface.tvthreads_interface' => '[OzzModz] TMDb TV Thread Starter',
   'permission_interface.xb_avatar_gallery' => '[XB] Avatar-Gallery',

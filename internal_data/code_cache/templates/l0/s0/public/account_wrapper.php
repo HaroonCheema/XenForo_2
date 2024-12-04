@@ -81,6 +81,9 @@ return array(
 				</a>
 				' . $__compilerTemp2 . '
 				' . $__compilerTemp3 . '
+<a class="blockLink ' . (($__vars['pageSelected'] == 'thtc_credit_packages') ? 'is-selected' : '') . '" href="' . $__templater->func('link', array('account/thtc-credit-packages', ), true) . '">
+	' . 'Credit packages' . '
+</a>
 				' . $__compilerTemp4 . '
 				<a class="blockLink ' . (($__vars['pageSelected'] == 'following') ? 'is-selected' : '') . '" href="' . $__templater->func('link', array('account/following', ), true) . '">
 					' . 'Following' . '

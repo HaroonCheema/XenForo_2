@@ -175,6 +175,7 @@ return array (
   'permission.forum_thMonetize_postSnippet' => 'Post snippet length (requires view post content)',
   'permission.forum_thMonetize_viewPost' => 'View post content (requires view thread content)',
   'permission.forum_threadReplyBan' => 'Ban users from replying to a thread',
+  'permission.forum_thtc_bypass_credits' => 'Bypass thread credits prompt',
   'permission.forum_undelete' => 'Undelete threads / posts',
   'permission.forum_uploadAttachment' => 'Upload attachments to posts',
   'permission.forum_uploadVideo' => 'Upload video/audio to posts',

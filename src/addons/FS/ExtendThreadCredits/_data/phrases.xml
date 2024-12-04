@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="add_special_credit" version_id="10200" version_string="1.2.0"><![CDATA[Add Special Credit]]></phrase>
+  <phrase title="add_user_special_credit" version_id="10200" version_string="1.2.0"><![CDATA[Add User Special Credits]]></phrase>
+  <phrase title="admin_navigation.delete_purchase_log" version_id="10200" version_string="1.2.0"><![CDATA[Deleted User Purchase Log]]></phrase>
+  <phrase title="admin_navigation.user_special_credit_log" version_id="10200" version_string="1.2.0"><![CDATA[Manage User Special Credit]]></phrase>
+  <phrase title="credit_log" version_id="1" version_string="1"><![CDATA[Thread Credit History]]></phrase>
+  <phrase title="del_purchase_list" version_id="10200" version_string="1.2.0"><![CDATA[Deleted User Purchase Log List]]></phrase>
+  <phrase title="edit_user_special_credit" version_id="10200" version_string="1.2.0"><![CDATA[Edit User Special Credit:]]></phrase>
+  <phrase title="export_purchase_log" version_id="1" version_string="1"><![CDATA[Export]]></phrase>
+  <phrase title="export_purchase_log_desc" version_id="1" version_string="1"><![CDATA[Export a CSV list of all Purchases Log that match the current search parameters.]]></phrase>
+  <phrase title="give_special_credit" version_id="10200" version_string="1.2.0"><![CDATA[Give Special Credit To User]]></phrase>
+  <phrase title="not_restore_log" version_id="10200" version_string="1.2.0"><![CDATA[Are You Sure To Delete this User Purchase Log?]]></phrase>
+  <phrase title="purchase_log_delete" version_id="10200" version_string="1.2.0"><![CDATA[Delete User's Purchase Log]]></phrase>
+  <phrase title="restore_log_delete" version_id="10200" version_string="1.2.0"><![CDATA[Restore User's Purchase Log]]></phrase>
+  <phrase title="special_credit" version_id="10200" version_string="1.2.0"><![CDATA[User Special Credits List]]></phrase>
+  <phrase title="special_credit_account_menu" version_id="10200" version_string="1.2.0"><![CDATA[Special Credits]]></phrase>
+  <phrase title="sure_to_restore" version_id="10200" version_string="1.2.0"><![CDATA[Are You Sure To Restore This User Purchase Log]]></phrase>
+</phrases>

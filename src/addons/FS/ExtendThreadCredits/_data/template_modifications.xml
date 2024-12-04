@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="account_visitor_menu" modification_key="fs_account_visitor_menu" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<!--[XF:stats_pairs:above_messages]-->]]></find>
+    <replace><![CDATA[<dl class="pairs pairs--justified fauxBlockLink">
+	<dt>{{ phrase('special_credit_account_menu') }}</dt>
+	<dd>
+			{$xf.visitor.special_credit|number}
+	</dd>
+</dl>
+$0]]></replace>
+  </modification>
+  <modification type="public" template="member_macros" modification_key="fs_special_credit" description="Display User Special Credit" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<!--[XF:stat_pairs:above_reactions]-->]]></find>
+    <replace><![CDATA[	<dl class="pairs pairs--rows pairs--rows--centered">
+		<dt>{{ phrase('special_credit_account_menu') }}</dt>
+		<dd>
+			{$user.special_credit|number}
+		</dd>
+	</dl>
+$0]]></replace>
+  </modification>
+  <modification type="admin" template="thtc_credit_package_purchase_log" modification_key="fs_add_purchase_log_filter" description="Add Filter above purchase log" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:title>
+	{{ phrase('thtc_credit_package_purchase_log:') }} {$creditPackage.title}
+</xf:title>
+
+<xf:breadcrumb href="{{ link('thtc-credit-package/edit', $creditPackage) }}">{$creditPackage.title}</xf:breadcrumb>
+
+<xf:if is="$purchases is not empty">
+	<div class="block">
+		<div class="block-container">
+			<div class="block-body">
+				<xf:datalist>
+					<xf:foreach loop="$purchases" value="$purchase">
+						<xf:set var="$purchaseRequest" value="{$purchase.PurchaseRequest}" />
+						<xf:datarow>
+							<xf:cell class="dataList-cell--min dataList-cell--image dataList-cell--imageSmall">
+								<xf:avatar user="$purchase.User" size="xs" />
+							</xf:cell>
+							<xf:main href="{{ link('users/edit', $purchase.User) }}">
+								<xf:label><xf:username user="$purchase.User" rich="true" notooltip="true" href="" /></xf:label>
+								<xf:hint>
+									<ul class="listInline listInline--bullet" style="display: inline-block">
+										<li>{{ $purchaseRequest ? ($purchaseRequest.PaymentProfile.title ?: phrase('unknown_payment_profile')) : phrase('thtc_manually_granted') }}</li>
+										<li><xf:date time="{$purchase.purchased_at}" /></li>
+									</ul>
+								</xf:hint>
+							</xf:main>
+						</xf:datarow>
+					</xf:foreach>
+				</xf:datalist>
+			</div>
+			<div class="block-footer">
+				<span class="block-footer-counter">{{ display_totals($purchases, $total) }}</span>
+			</div>
+		</div>
+		<xf:pagenav page="{$page}" perpage="{$perPage}" total="{$total}"
+			link="thtc-credit-package/purchase-log" data="{$creditPackage}" params="{$linkParams}"
+			wrapperclass="block-outer block-outer--after" />
+	</div>
+<xf:else />
+	<div class="blockMessage">{{ phrase('no_entries_have_been_logged') }}</div>
+</xf:if>]]></find>
+    <replace><![CDATA[<xf:pageaction>
+<xf:title>
+    {{ phrase('thtc_credit_package_purchase_log:') }} {$creditPackage.title}
+</xf:title>
+
+<xf:breadcrumb href="{{ link('thtc-credit-package/edit', $creditPackage) }}">{{ $creditPackage.title }}</xf:breadcrumb>
+<xf:form action="{{ link('thtc-credit-package/purchase-log', $creditPackage, {'filter': 1}) }}" method="post" class="block" id="filterForm">
+    <div class="filterBlock">			
+        <ul class="listInline">
+            <li>
+                <xf:textbox name="username" value="{{ $username }}" ac="single"
+                    class="input filterBlock-input"
+                    placeholder="{{ phrase('user_name') }}" />
+            </li>
+            <li>
+                <xf:select name="purchase_type" value="{{ $linkFilters.purchase_type }}" class="filterBlock-input">
+                    <xf:option>{{ phrase('Both') }}</xf:option>
+                    <xf:option value="credit_purchase">{{ phrase('Paid') }}</xf:option>
+                    <xf:option value="manually_granted">{{ phrase('Manually Granted') }}</xf:option>
+                </xf:select>
+            </li>
+            <li style="display: inline-block; vertical-align: bottom">
+                <div class="inputGroup inputGroup--auto">
+                    <xf:dateinput placeholder="{{ phrase('Start') }}" name="start" value="{{ $linkFilters.start ? date($linkFilters.start, 'Y-m-d') : '' }}"
+                        class="filterBlock-input filterBlock-input--small" />
+                    <span class="inputGroup-text">-</span>
+                    <xf:dateinput name="end" placeholder="{{ phrase('End') }}" value="{{ $linkFilters.end ? date($linkFilters.end, 'Y-m-d') : '' }}"
+                        class="filterBlock-input filterBlock-input--small" />
+                </div>
+            </li>
+            <li>
+                <xf:button type="submit" class="button--small" id="filterButton">{{ phrase('Filter') }}</xf:button>
+				<xf:button type="button" class="button--small" id="exportButton" fa="fa-file-export" title="{{ phrase('export_purchase_log_desc') }}" data-xf-init="_tooltip">
+    {{ phrase('export_purchase_log') }}
+</xf:button>
+            </li>
+        </ul>
+    </div>
+</xf:form>
+
+<!-- Export Button -->
+
+
+</xf:pageaction>
+<div id="purchaseListContainer">
+    <xf:if is="$purchases is not empty">
+        <div class="block">
+            <div class="block-container">
+                <div class="block-body">
+                    <xf:datalist>
+                        <xf:foreach loop="$purchases" value="$purchase">
+                            <xf:set var="$purchaseRequest" value="{$purchase.PurchaseRequest}" />
+                            <xf:datarow>
+                                <xf:cell class="dataList-cell--min dataList-cell--image dataList-cell--imageSmall">
+                                    <xf:avatar user="$purchase.User" size="xs" />
+                                </xf:cell>
+                                <xf:main href="{{ link('users/edit', $purchase.User) }}">
+                                    <xf:label><xf:username user="$purchase.User" rich="true" notooltip="true" href="" /></xf:label>
+                                    <xf:hint>
+                                        <ul class="listInline listInline--bullet" style="display: inline-block">
+                                            <li>{{ $purchaseRequest ? ($purchaseRequest.PaymentProfile.title ?: phrase('unknown_payment_profile')) : phrase('thtc_manually_granted') }}</li>
+                                            <li><xf:date time="{$purchase.purchased_at}" /></li>
+                                        </ul>
+                                    </xf:hint>
+                                </xf:main>
+								<xf:delete href="{{ link('delete-purchase-log/delete-purchase', $purchase) }}" />
+                            </xf:datarow>
+                        </xf:foreach>
+                    </xf:datalist>
+                </div>
+                <div class="block-footer">
+                    <span class="block-footer-counter">{{ display_totals($purchases, $total) }}</span>
+                </div>
+            </div>
+<xf:if is="$linkFilters is not empty">
+            <xf:pagenav page="{$page}" perpage="{$perPage}" total="{$total}"
+                link="thtc-credit-package/purchase-log&filter=1" data="{$creditPackage}" params="{$linkFilters}"
+                wrapperclass="block-outer block-outer--after" />
+<xf:else />
+    <xf:pagenav page="{$page}" perpage="{$perPage}" total="{$total}"
+                link="thtc-credit-package/purchase-log" data="{$creditPackage}" params="{$linkFilters}"
+                wrapperclass="block-outer block-outer--after" />
+</xf:if>
+        </div>
+    <xf:else />
+        <div class="blockMessage">{{ phrase('no_entries_have_been_logged') }}</div>
+    </xf:if>
+</div>
+<script>
+    // Store the original filter form action on page load
+    var originalFormAction = document.getElementById('filterForm').action;
+
+    // Handle the export button click
+    document.getElementById('exportButton').addEventListener('click', function() {
+        var form = document.getElementById('filterForm');
+        
+        // Change the form action to export URL
+        form.action = "{{ link('thtc-credit-package/purchase-export', $creditPackage) }}";
+        
+        // Submit the form to trigger the export
+        form.submit();
+        
+        // Reset the form action back to the original (filter) URL
+        form.action = originalFormAction;
+    });
+
+    // Ensure the filter button uses the original action
+    document.getElementById('filterButton').addEventListener('click', function() {
+        var form = document.getElementById('filterForm');
+        
+        // Reset the form action to the original filter URL before submission
+        form.action = originalFormAction;
+    });
+</script>]]></replace>
+  </modification>
+  <modification type="admin" template="user_edit" modification_key="extend_thread_credit" description="Add one tab of thread credit" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[					<a class="tabs-tab" role="tab" tabindex="0"
+						id="user-permissions"
+						aria-controls="user-permissions"
+						href="{{ link('users/edit', $user) }}#user-permissions">{{ phrase('permissions') }}</a>]]></find>
+    <replace><![CDATA[$0
+<a class="tabs-tab" role="tab" tabindex="0"
+id="user-credit"
+aria-controls="user-credit"
+href="{{ link('users/edit', $user) }}#user-credit">{{ phrase('credit_log') }}</a>]]></replace>
+  </modification>
+  <modification type="admin" template="user_edit" modification_key="user_thread_credit" description="Add link in list" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[			<xf:if is="$user.user_id">
+				<li data-href="{{ link('permissions/users', $user, {'tabbed':1}) }}" role="tabpanel" aria-labelledby="user-permissions">
+					<div class="block-body block-row">{{ phrase('loading...') }}</div>
+				</li>
+			</xf:if>]]></find>
+    <replace><![CDATA[$0
+<xf:if is="$user.user_id">
+<li data-href="{{ link('users/thread-credit', $user) }}" role="tabpanel" aria-labelledby="user-credit">
+<div class="block-body block-row">{{ phrase('loading...') }}</div>
+</li>
+</xf:if>]]></replace>
+  </modification>
+</template_modifications>

@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="admin" title="delete_user_purchase_log" version_id="3" version_string="1"><![CDATA[<xf:title>{{ phrase('del_purchase_list') }}</xf:title>
+
+<xf:if is="$deletedPurchases is not empty">
+   <div class="block">
+      <div class="block-container">
+         <div class="block-body">
+            <xf:datalist data-xf-init="responsive-data-list">
+               <xf:datarow rowtype="header">
+                  <xf:cell>Package Name</xf:cell>
+				   <xf:cell>Purchaser Name</xf:cell>
+                  <xf:cell>Reason of Deletion</xf:cell>             
+				  <xf:cell>Deleted At</xf:cell>
+                  <xf:cell>Action</xf:cell>
+               </xf:datarow>
+               <xf:foreach loop="$deletedPurchases" value="$deletedPurchase">
+                  <xf:datarow>
+                     <xf:cell>{$deletedPurchase.package_name}</xf:cell>
+					  <xf:cell>{$deletedPurchase.User.username}</xf:cell>
+                     <xf:cell>{$deletedPurchase.reason_of_deletion}</xf:cell>
+					 <xf:cell><xf:date time="{$deletedPurchase.time}" /></xf:cell>
+					<xf:cell><xf:button icon="fa-history" href="{{ link('delete-purchase-log/confirm-delete',$deletedPurchase) }}" overlay="true">
+						{{ phrase('Restore') }}
+					</xf:button>
+                     </xf:cell>
+                  </xf:datarow>
+               </xf:foreach>
+            </xf:datalist>
+         </div>
+         <div class="block-footer">
+            <span class="block-footer-counter">{{ display_totals($deletedPurchases, $total) }}</span>
+         </div>
+      </div>
+
+      <xf:pagenav page="{$page}" perpage="{$perPage}" total="{$total}" link="delete-purchase-log"
+         wrapperclass="block-outer block-outer--after" />
+   </div>
+   <xf:else />
+   <div class="blockMessage">There is no Deleted List</div>
+</xf:if>]]></template>
+  <template type="admin" title="purchase_log_delete" version_id="3" version_string="1"><![CDATA[<xf:title>{{ phrase('purchase_log_delete') }}</xf:title>
+<xf:form action="{{ link('delete-purchase-log/delete-purchase', $creditPackage) }}" class="block" ajax="true">
+    <div class="block-container">
+        <div class="block-body">
+            <xf:inforow>
+                <div class="blockMessage blockMessage--important">
+                    <strong>{{ phrase('note:') }}</strong> {{ phrase('not_restore_log') }}
+                </div>
+            </xf:inforow>
+            <xf:inforow label="{{ phrase('user_to_delete') }}" style="text-align: center;">
+                <strong>{$creditPackage.User.username}</strong>
+            </xf:inforow>
+            <xf:textboxrow name="reason" label="{{ phrase('Reason') }}" required="true" />
+        </div>
+        <xf:submitrow icon="delete" sticky="true" />
+    </div>
+    <xf:redirect />
+</xf:form>]]></template>
+  <template type="admin" title="purchase_log_filter" version_id="1" version_string="1"><![CDATA[<xf:form action="{{ link('admin.php?thtc-credit-package/test.1/purchase-log/filters', $creditPackage) }}">
+	<xf:extension name="start"></xf:extension>
+
+	<!--[XF:above_prefixes]-->
+	<xf:if is="$prefixes is not empty">
+		<div class="menu-row menu-row--separated">
+			{{ phrase('prefix:') }}
+			<div class="u-inputSpacer">
+				<xf:macro template="prefix_macros" name="select"
+					arg-prefixes="{$prefixes}"
+					arg-type="thread"
+					arg-selected="{{ $filters.prefix_id ? $filters.prefix_id : 0 }}"
+					arg-name="prefix_id"
+					arg-noneLabel="{{ phrase('(any)') }}" />
+			</div>
+		</div>
+	</xf:if>
+
+	<xf:extension name="before_started_by"></xf:extension>
+
+	<!--[XF:above_started_by]-->
+	<div class="menu-row menu-row--separated">
+		<label for="ctrl_started_by">{{ phrase('started_by:') }}</label>
+		<div class="u-inputSpacer">
+			<xf:textbox name="starter" value="{{ $starterFilter ? $starterFilter.username : '' }}" ac="single"
+				maxlength="{{ max_length($xf.visitor, 'username') }}" id="ctrl_started_by" />
+		</div>
+	</div>
+
+	<xf:extension name="before_date_limit"></xf:extension>
+
+	<!--[XF:above_last_updated]-->
+	<div class="menu-row menu-row--separated">
+		<label for="ctrl_last_updated">{{ phrase('last_updated:') }}</label>
+		<div class="u-inputSpacer">
+			<xf:if is="$filters.no_date_limit">
+				<xf:set var="$lastDays" value="" />
+			<xf:else />
+				<xf:set var="$lastDays" value="{{ $filters.last_days ?: $forum.list_date_limit_days }}" />
+			</xf:if>
+			<xf:select name="last_days" value="{$lastDays}" id="ctrl_last_updated">
+				<xf:option value="-1">{{ phrase('Purchase Type') }}</xf:option>
+				<xf:option value="7">{{ phrase('Credit') }}</xf:option>
+				<xf:option value="14">{{ phrase('Manually') }}</xf:option>
+
+			</xf:select>
+		</div>
+	</div>
+
+	<xf:extension name="before_type"></xf:extension>
+
+	<!--[XF:above_allowed_thread_types]-->
+	<xf:if is="count($allowedThreadTypes) > 1">
+		<div class="menu-row menu-row--separated">
+			<label for="ctrl_thread_type">{{ phrase('thread_type_filter:') }}</label>
+			<div class="u-inputSpacer">
+				<xf:select name="thread_type" value="{$filters.thread_type}" id="ctrl_thread_type">
+					<xf:option value="">{{ phrase('(any)') }}</xf:option>
+					<xf:foreach loop="$allowedThreadTypes" key="$threadTypeId" value="$threadType">
+						<xf:option value="{$threadTypeId}">{{ $threadType.getTypeTitle() }}</xf:option>
+					</xf:foreach>
+				</xf:select>
+			</div>
+		</div>
+	</xf:if>
+
+	<xf:extension name="before_sort"></xf:extension>
+
+	<!--[XF:above_sort_by]-->
+	<div class="menu-row menu-row--separated">
+		{{ phrase('sort_by:') }}
+		<div class="inputGroup u-inputSpacer">
+			<span class="u-srOnly" id="ctrl_sort_by">{{ phrase('sort_order') }}</span>
+			<xf:select name="order" value="{{ $filters.order ?: $forum.default_sort_order }}" aria-labelledby="ctrl_sort_by">
+				<xf:foreach loop="$sortOptions" key="$sortKey" value="$null">
+					<xf:option value="{$sortKey}">{{ phrase_dynamic('forum_sort.' . $sortKey) }}</xf:option>
+				</xf:foreach>
+			</xf:select>
+			<span class="inputGroup-splitter"></span>
+			<span class="u-srOnly" id="ctrl_sort_direction">{{ phrase('sort_direction') }}</span>
+			<xf:select name="direction" value="{{ $filters.direction ?: $forum.default_sort_direction }}" aria-labelledby="ctrl_sort_direction">
+				<xf:option value="desc">{{ phrase('descending') }}</xf:option>
+				<xf:option value="asc">{{ phrase('ascending') }}</xf:option>
+			</xf:select>
+		</div>
+	</div>
+						<xf:formrow label="{{ phrase('pb_qb_widget_display_date') }}" rowtype="input">
+						<div class="inputGroup">
+
+							<xf:dateinput name="widget_start_date" value="{{ $quote.widget_start_date > 0 ? date($quote.widget_start_date, 'Y-m-d') : '' }}"
+										  data-min-date="{{ date($xf.time, 'Y-m-d') }}"
+										  data-year-range="1" />
+							<span class="inputGroup-text">-</span>
+
+							<div class="inputGroup inputGroup--date inputDate">
+								<xf:textbox name="widget_start_time" type="time"
+											value="{{ $quote.widget_start_date > 0 ? date($quote.widget_start_date, 'H:i:s') : '' }}" />
+							</div>
+
+							<span class="inputGroup-text">-</span>
+
+							<xf:dateinput name="widget_end_date" value="{{ $quote.widget_end_date > 0 ? date($quote.widget_end_date, 'Y-m-d') : '' }}"
+										  data-min-date="{{ date($xf.time, 'Y-m-d') }}"
+										  data-year-range="1" />
+
+							<span class="inputGroup-text">-</span>
+
+							<div class="inputGroup inputGroup--date inputDate">
+								<xf:textbox name="widget_end_time" type="time"
+											value="{{ $quote.widget_end_date > 0 ? date($quote.widget_end_date, 'H:i:s') : '' }}" />
+							</div>
+						</div>
+
+					</xf:formrow>
+
+	<xf:extension name="end"></xf:extension>
+
+	<div class="menu-footer">
+		<span class="menu-footer-controls">
+			<xf:button type="submit" class="button--primary">{{ phrase('filter') }}</xf:button>
+		</span>
+	</div>
+	<xf:hiddenval name="apply">1</xf:hiddenval>
+</xf:form>]]></template>
+  <template type="admin" title="restore_purchase_log" version_id="3" version_string="1"><![CDATA[<xf:title>{{ phrase('restore_log_delete') }}</xf:title>
+<xf:form action="{{ link('delete-purchase-log/restore-purchase-log', $deletedLog) }}" class="block" ajax="true">
+    <div class="block-container">
+        <div class="block-body">
+            <xf:inforow>
+                <div class="blockMessage blockMessage--important">
+                    <strong>{{ phrase('note:') }}</strong> {{ phrase('sure_to_restore') }}
+                </div>
+            </xf:inforow>
+            <xf:inforow label="{{ phrase('user_to_delete') }}" style="text-align: center;">
+                <strong>{$deletedLog.User.username}</strong>
+            </xf:inforow>
+        </div>
+        <xf:submitrow icon="delete" sticky="true" />
+    </div>
+    <xf:redirect />
+</xf:form>]]></template>
+  <template type="admin" title="special_credit_add_edit" version_id="10200" version_string="1.2.0"><![CDATA[<xf:title>
+    <xf:if is="$specialCredits.user_special_credit_id">
+        {{ phrase('edit_user_special_credit') }} {$specialCredits.User.username}
+        <xf:else />
+        {{ phrase('add_user_special_credit') }}
+    </xf:if>
+</xf:title>
+
+<xf:form action="{{ link('user-special-credit/save', $specialCredits) }}" ajax="true" class="block">
+    <div class="block-container">
+        <div class="block-body">
+            <xf:textboxrow name="username" ac="single" value="{$specialCredits.User.username}" 
+                label="{{ phrase('user_name') }}" />
+            <xf:textarearow name="reason" value="{$specialCredits.reason}" autosize="true" 
+                label="{{ phrase('reason') }}" required="true" />
+            <xf:numberboxrow name="special_credit" label="{{ phrase('thtc_credits') }}" min="1" step="1" value="{$specialCredits.User.special_credit}" />
+        </div>
+        <xf:submitrow icon="save" />
+    </div>
+</xf:form>]]></template>
+  <template type="admin" title="special_credit_list" version_id="10300" version_string="1.7.0"><![CDATA[<xf:title>
+	{{ phrase('special_credit') }}
+</xf:title>
+<xf:pageaction>
+	<xf:button icon="add" href="{{ link('user-special-credit/add') }}">
+		{{ phrase('add_special_credit') }}
+	</xf:button>
+</xf:pageaction>
+
+<xf:if is="$specialCredits is not empty">
+   <div class="block">
+      <div class="block-container">
+         <div class="block-body">
+            <xf:datalist data-xf-init="responsive-data-list">
+               <xf:datarow rowtype="header">
+                  <xf:cell>User Name</xf:cell>
+                  <xf:cell>Credits</xf:cell>
+                  <xf:cell>Given By:</xf:cell>
+                  <xf:cell>Time</xf:cell>
+                  <xf:cell>Reason</xf:cell>
+				   <xf:cell>Action</xf:cell>
+				   <xf:cell>&nbsp;</xf:cell>
+               </xf:datarow>
+               <xf:foreach loop="$specialCredits" value="$value">
+                  <xf:datarow>
+                     <xf:cell>{$value.User.username}</xf:cell>
+                     <xf:cell>{$value.User.special_credit}</xf:cell>
+                     <xf:cell>{$value.Moderator.username}</xf:cell>
+					  <xf:cell><xf:date time="{$value.given_at}" /></xf:cell>
+                     <xf:cell>{$value.reason}</xf:cell>
+					  
+
+                     <xf:action href="{{ link('user-special-credit/edit', $value) }}" overlay="true">Edit</xf:action>
+                     <xf:delete href="{{ link('user-special-credit/delete', $value) }}" tooltip="Delete" />
+                  </xf:datarow>
+               </xf:foreach>
+            </xf:datalist>
+         </div>
+         <div class="block-footer">
+            <span class="block-footer-counter">{{ display_totals($specialCredits, $total) }}</span>
+         </div>
+      </div>
+
+      <xf:pagenav page="{$page}" perpage="{$perPage}" total="{$total}" link="user-special-credit/list"
+         wrapperclass="block-outer block-outer--after" />
+   </div>
+   <xf:else />
+   <div class="blockMessage">There is no Data</div>
+</xf:if>]]></template>
+  <template type="admin" title="user_thread_credit" version_id="1" version_string="1"><![CDATA[<xf:title>User Thread Credit</xf:title>
+	<h3 class="block-minorHeader">{{ phrase('credit_log') }}</h3>
+<xf:form action="{{ link('admin.1/edit#user-credit/manual') }}" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:textboxrow name="username" ac="single"
+				label="{{ phrase('user_name') }}" />
+		</div>
+		<xf:submitrow icon="Filter" />
+	</div>
+</xf:form>
+<xf:title>
+	hwello
+</xf:title>
+
+<xf:if is="$purchases is not empty">
+	<div class="block">
+		<div class="block-container">
+			<div class="block-body">
+				<xf:datalist>
+					<xf:foreach loop="$purchases" value="$purchase">
+						<xf:set var="$purchaseRequest" value="{$purchase.PurchaseRequest}" />
+						<xf:datarow>
+							<xf:cell class="dataList-cell--min dataList-cell--image dataList-cell--imageSmall">
+								<xf:avatar user="$purchase.User" size="xs" />
+							</xf:cell>
+							<xf:main href="{{ link('users/edit', $purchase.User) }}">
+								<xf:label><xf:username user="$purchase.User" rich="true" notooltip="true" href="" /></xf:label>
+								<xf:hint>
+									<ul class="listInline listInline--bullet" style="display: inline-block">
+										<li>{{ $purchaseRequest ? ($purchaseRequest.PaymentProfile.title ?: phrase('unknown_payment_profile')) : phrase('thtc_manually_granted') }}</li>
+										<li><xf:date time="{$purchase.purchased_at}" /></li>
+									</ul>
+								</xf:hint>
+							</xf:main>
+						</xf:datarow>
+					</xf:foreach>
+				</xf:datalist>
+			</div>
+			<div class="block-footer">
+				<span class="block-footer-counter">{{ display_totals($purchases, $total) }}</span>
+			</div>
+		</div>
+		<xf:pagenav page="{$page}" perpage="{$perPage}" total="{$total}"
+			link="thtc-credit-package/purchase-log" data="{$creditPackage}" params="{$linkParams}"
+			wrapperclass="block-outer block-outer--after" />
+	</div>
+<xf:else />
+	<div class="blockMessage">{{ phrase('no_entries_have_been_logged') }}</div>
+</xf:if>]]></template>
+</templates>

@@ -1,0 +1,15 @@
+<xf:title>{{ phrase('add_avatar') }}</xf:title>
+
+<xf:form action="{{ link('ag/save', $avatar) }}" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			
+			<xf:uploadrow name="img_path" accept=".jpeg,.jpg,.png" required="true"
+				label="{{ phrase('avatar_img') }}" 
+				explain="{{ phrase('upload_avatar_image') }}" />
+
+		</div>
+
+		<xf:submitrow sticky="true" icon="save" />
+	</div>
+</xf:form>

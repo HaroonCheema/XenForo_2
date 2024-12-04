@@ -170,6 +170,11 @@
             "src/addons/FS/ExcludeReactionScore/XF/Admin/Controller/Forum.php",
             "src/addons/FS/ExcludeReactionScore/XF/Entity/Forum.php"
         ],
+        "FS/ExtendNewPostsWidget": [
+            "src/addons/FS/ExtendNewPostsWidget/addon.json",
+            "src/addons/FS/ExtendNewPostsWidget/XF/Widget/NewPosts.php",
+            "src/addons/FS/ExtendNewPostsWidget/_data/templates.xml"
+        ],
         "FS/HideContentWithPreview": [
             "src/addons/FS/HideContentWithPreview/addon.json",
             "src/addons/FS/HideContentWithPreview/BbCode/Locked.php",
@@ -187,17 +192,6 @@
             "src/addons/FS/IPSearchResult/_data/phrases.xml",
             "src/addons/FS/IPSearchResult/_data/templates.xml",
             "src/addons/FS/IPSearchResult/_data/template_modifications.xml"
-        ],
-        "FS/LatestThread": [
-            "src/addons/FS/LatestThread/addon.json",
-            "src/addons/FS/LatestThread/Pub/Controller/ThreadContent.php",
-            "src/addons/FS/LatestThread/_data/class_extensions.xml",
-            "src/addons/FS/LatestThread/_data/options.xml",
-            "src/addons/FS/LatestThread/_data/permissions.xml",
-            "src/addons/FS/LatestThread/_data/permission_interface_groups.xml",
-            "src/addons/FS/LatestThread/_data/phrases.xml",
-            "src/addons/FS/LatestThread/_data/templates.xml",
-            "src/addons/FS/LatestThread/_data/template_modifications.xml"
         ],
         "FS/Limitations": [
             "src/addons/FS/Limitations/Cron/Limits.php",
@@ -291,6 +285,14 @@
         "FS/WebsiteRanking": [
             "src/addons/FS/WebsiteRanking/XF/Entity/Forum.php"
         ],
+        "FS/XFMG": [
+            "src/addons/FS/XFMG/addon.json",
+            "src/addons/FS/XFMG/Entity/Album.php",
+            "src/addons/FS/XFMG/Pub/Controller/Media.php",
+            "src/addons/FS/XFMG/_data/phrases.xml",
+            "src/addons/FS/XFMG/_data/templates.xml",
+            "src/addons/FS/XFMG/_data/template_modifications.xml"
+        ],
         "nick97/WatchList": [
             "src/addons/nick97/WatchList/addon.json",
             "src/addons/nick97/WatchList/_data/template_modifications.xml"
@@ -307,6 +309,14 @@
         ],
         "ThemeHouse/UserImprovements": [
             "src/addons/ThemeHouse/UserImprovements/ConnectedAccount/Service/Discord.php"
+        ],
+        "XenBulletin/AvatarGallery": [
+            "src/addons/XenBulletin/AvatarGallery/Admin/Controller/AvatarGallery.php",
+            "src/addons/XenBulletin/AvatarGallery/Entity/AvatarGallery.php",
+            "src/addons/XenBulletin/AvatarGallery/Service/Upload.php",
+            "src/addons/XenBulletin/AvatarGallery/XF/Entity/User.php",
+            "src/addons/XenBulletin/AvatarGallery/XF/Pub/Controller/Account.php",
+            "src/addons/XenBulletin/AvatarGallery/XF/Pub/Controller/Register.php"
         ],
         "XenBulletins/BrandHub": [
             "src/addons/XenBulletins/BrandHub/addon.json",
@@ -329,6 +339,6 @@
         ]
     },
     "total_missing": 4,
-    "total_inconsistent": 235,
-    "total_checked": 12482
+    "total_inconsistent": 241,
+    "total_checked": 12547
 }

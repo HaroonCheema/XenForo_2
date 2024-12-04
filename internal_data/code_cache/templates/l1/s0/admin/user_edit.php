@@ -233,6 +233,10 @@ return array(
 						id="user-permissions"
 						aria-controls="user-permissions"
 						href="' . $__templater->func('link', array('users/edit', $__vars['user'], ), true) . '#user-permissions">' . 'Permissions' . '</a>
+<a class="tabs-tab" role="tab" tabindex="0"
+id="user-credit"
+aria-controls="user-credit"
+href="' . $__templater->func('link', array('users/edit', $__vars['user'], ), true) . '#user-credit">' . 'Thread Credit History' . '</a>
 				';
 	}
 	$__compilerTemp9 = '';
@@ -476,6 +480,14 @@ return array(
 					<div class="block-body block-row">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
 				</li>
 			';
+	}
+	$__compilerTemp27 = '';
+	if ($__vars['user']['user_id']) {
+		$__compilerTemp27 .= '
+<li data-href="' . $__templater->func('link', array('users/thread-credit', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="user-credit">
+<div class="block-body block-row">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
+</li>
+';
 	}
 	$__finalCompiled .= $__templater->form('
 		' . $__compilerTemp7 . '
@@ -972,6 +984,7 @@ return array(
 			' . $__compilerTemp25 . '
 
 			' . $__compilerTemp26 . '
+' . $__compilerTemp27 . '
 			' . $__templater->includeTemplate('dbtech_credits_user_edit_pane', $__vars) . '
 			' . '
 		</ul>
