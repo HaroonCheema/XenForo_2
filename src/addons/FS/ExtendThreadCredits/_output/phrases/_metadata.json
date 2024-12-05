@@ -1,0 +1,50 @@
+{
+    "fs_extend_credits.txt": {
+        "global_cache": false,
+        "version_id": 200000,
+        "version_string": "2.0.0",
+        "hash": "948a2e3548aaf7f9941a3192fa607d51"
+    },
+    "fs_extend_num_credits_used.txt": {
+        "global_cache": false,
+        "version_id": 200000,
+        "version_string": "2.0.0",
+        "hash": "f39e72ba530cf740a8d3623398d54c4c"
+    },
+    "fs_extend_thread_credit_log.txt": {
+        "global_cache": false,
+        "version_id": 200000,
+        "version_string": "2.0.0",
+        "hash": "a2b28a0c49388b449e493620973b933a"
+    },
+    "fs_extend_thread_credits_log.txt": {
+        "global_cache": false,
+        "version_id": 200000,
+        "version_string": "2.0.0",
+        "hash": "0ece2e7a5c817590601ce3626195ec2d"
+    },
+    "fs_extend_thread_purchase_date.txt": {
+        "global_cache": false,
+        "version_id": 200000,
+        "version_string": "2.0.0",
+        "hash": "21e7533dfe5e76ba441951a8238e276f"
+    },
+    "fs_extend_thread_title.txt": {
+        "global_cache": false,
+        "version_id": 200000,
+        "version_string": "2.0.0",
+        "hash": "eae08e29c636d9742b6a96fc3213d12e"
+    },
+    "fs_extend_threads_purchase_date.txt": {
+        "global_cache": false,
+        "version_id": 200000,
+        "version_string": "2.0.0",
+        "hash": "44749712dbec183e983dcd78a7736c41"
+    },
+    "fs_extend_threads_title.txt": {
+        "global_cache": false,
+        "version_id": 200000,
+        "version_string": "2.0.0",
+        "hash": "eae08e29c636d9742b6a96fc3213d12e"
+    }
+}

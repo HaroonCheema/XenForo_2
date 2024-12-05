@@ -19,5 +19,5 @@ $config['enableLivePayments'] = false;
 
 $config['debug'] = true;
 
-$config['development']['defaultAddOn'] = 'FS/EmbedZoomMeeting';
+$config['development']['defaultAddOn'] = 'FS/ExtendThreadCredits';
 $config['development']['enabled'] = true;

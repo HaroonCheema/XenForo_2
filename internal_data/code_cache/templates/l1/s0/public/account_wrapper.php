@@ -68,6 +68,10 @@ return array(
 				<a class="blockLink ' . (($__vars['pageSelected'] == 'privacy') ? 'is-selected' : '') . '" href="' . $__templater->func('link', array('account/privacy', ), true) . '">
 					' . 'Privacy' . '
 				</a>
+<a class="blockLink ' . (($__vars['pageSelected'] == 'thread-credits-log/') ? 'is-selected' : '') . '" href="' . $__templater->func('link', array('thread-credits-log/', ), true) . '">
+					' . 'Thread credit log' . '
+</a>
+
 <a class="blockLink ' . (($__vars['pageSelected'] == 'team/') ? 'is-selected' : '') . '" href="' . $__templater->func('link', array('team/', ), true) . '">
 					' . 'Favourite Team' . '
 </a>

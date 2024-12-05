@@ -230,6 +230,7 @@ return array(
 		<li><a href="' . $__templater->func('link', array('account/following', ), true) . '" class="menu-linkRow">' . 'Following' . '</a></li>
 		<li><a href="' . $__templater->func('link', array('account/ignored', ), true) . '" class="menu-linkRow">' . 'Ignoring' . '</a></li>
 <li><a href="' . $__templater->func('link', array('team/', ), true) . '" class="menu-linkRow" data-xf-click="overlay">' . 'Favourite Team' . '</a></li>
+<li><a href="' . $__templater->func('link', array('thread-credits-log/', ), true) . '" class="menu-linkRow">' . 'Thread credit log' . '</a></li>
 <li><a href="' . $__templater->func('link', array('escrow/deposit', ), true) . '" class="menu-linkRow" data-xf-click="overlay">' . 'Deposit' . '</a></li>
 		' . '
 	</ul>

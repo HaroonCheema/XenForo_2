@@ -10,6 +10,19 @@
 </dl>
 $0]]></replace>
   </modification>
+  <modification type="public" template="account_visitor_menu" modification_key="fs_extend_thread_credits_log" description="fs_extend_thread_credits_log" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<li><a href="{{ link('account/ignored') }}" class="menu-linkRow">{{ phrase('ignoring') }}</a></li>]]></find>
+    <replace><![CDATA[$0
+<li><a href="{{ link('thread-credits-log/') }}" class="menu-linkRow">{{ phrase('fs_extend_thread_credits_log') }}</a></li>]]></replace>
+  </modification>
+  <modification type="public" template="account_wrapper" modification_key="fs_extend_thread_credits_log_list" description="fs_extend_thread_credits_log_list" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<a class="blockLink {{ \$pageSelected == 'privacy' \? 'is-selected' : '' }}" href="{{ link\('account\/privacy'\) }}">.*?<\/a>/is]]></find>
+    <replace><![CDATA[$0
+<a class="blockLink {{ \$pageSelected == 'thread-credits-log/' ? 'is-selected' : '' }}" href="{{ link('thread-credits-log/') }}">
+					{{ phrase('fs_extend_thread_credits_log') }}
+</a>
+]]></replace>
+  </modification>
   <modification type="public" template="member_macros" modification_key="fs_special_credit" description="Display User Special Credit" execution_order="10" enabled="1" action="str_replace">
     <find><![CDATA[<!--[XF:stat_pairs:above_reactions]-->]]></find>
     <replace><![CDATA[	<dl class="pairs pairs--rows pairs--rows--centered">

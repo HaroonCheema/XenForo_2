@@ -1,0 +1,30 @@
+<xf:form action="{{ link('thread-credits-log') }}">
+
+	<div class="menu-row menu-row--separated">
+		{{ phrase('sort_by:') }}
+		<div class="inputGroup u-inputSpacer">
+			<span class="u-srOnly" id="ctrl_sort_by">{{ phrase('sort_order') }}</span>
+			<xf:select name="order" value="{{ $conditions.order ?: 'thread_title' }}" aria-labelledby="ctrl_sort_by">
+				<xf:option value="thread_title">{{ phrase('fs_extend_threads_title') }}</xf:option>
+				<xf:option value="credits_spent">{{ phrase('fs_extend_credits') }}</xf:option>
+				<xf:option value="purchased_at">{{ phrase('fs_extend_threads_purchase_date') }}</xf:option>
+			</xf:select>
+			<span class="inputGroup-splitter"></span>
+			<span class="u-srOnly" id="ctrl_sort_direction">{{ phrase('sort_direction') }}</span>
+			<xf:select name="direction" value="{{ $conditions.direction ?: 'desc' }}" aria-labelledby="ctrl_sort_direction">
+				<xf:option value="desc">{{ phrase('descending') }}</xf:option>
+				<xf:option value="asc">{{ phrase('ascending') }}</xf:option>
+			</xf:select>
+		</div>
+
+	</div>
+
+	<div class="menu-footer">
+		<span class="menu-footer-controls">
+			<xf:button type="submit" class="button--primary"
+					   >{{ phrase('filter') }}</xf:button
+				>
+		</span>
+	</div>
+	<xf:hiddenval name="search">1</xf:hiddenval>
+</xf:form>

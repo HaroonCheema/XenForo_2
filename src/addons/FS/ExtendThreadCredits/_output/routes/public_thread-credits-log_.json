@@ -1,0 +1,11 @@
+{
+    "route_type": "public",
+    "route_prefix": "thread-credits-log",
+    "sub_name": "",
+    "format": ":int<user_credit_package_id>/:page",
+    "build_class": "",
+    "build_method": "",
+    "controller": "FS\\ExtendThreadCredits:ThreadCreditsLog",
+    "context": "",
+    "action_prefix": ""
+}

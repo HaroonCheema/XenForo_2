@@ -1,0 +1,9 @@
+{
+    "template": "account_wrapper",
+    "description": "fs_extend_thread_credits_log_list",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/<a class=\"blockLink {{ \\$pageSelected == 'privacy' \\? 'is-selected' : '' }}\" href=\"{{ link\\('account\\/privacy'\\) }}\">.*?<\\/a>/is",
+    "replace": "$0\n<a class=\"blockLink {{ \\$pageSelected == 'thread-credits-log/' ? 'is-selected' : '' }}\" href=\"{{ link('thread-credits-log/') }}\">\n\t\t\t\t\t{{ phrase('fs_extend_thread_credits_log') }}\n</a>\n"
+}

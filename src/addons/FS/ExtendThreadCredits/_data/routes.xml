@@ -2,4 +2,5 @@
 <routes>
   <route route_type="admin" route_prefix="delete-purchase-log" format=":int&lt;user_credit_package_id&gt;" controller="FS\ExtendThreadCredits:DeletePurchaseLog" context="delete_purchase_log"/>
   <route route_type="admin" route_prefix="user-special-credit" format=":int&lt;user_special_credit_id&gt;" controller="FS\ExtendThreadCredits:UserSpecialCredit" context="user_special_credit_log"/>
+  <route route_type="public" route_prefix="thread-credits-log" format=":int&lt;user_credit_package_id&gt;/:page" controller="FS\ExtendThreadCredits:ThreadCreditsLog"/>
 </routes>

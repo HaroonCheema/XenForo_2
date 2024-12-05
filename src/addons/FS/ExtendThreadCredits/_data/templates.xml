@@ -317,4 +317,145 @@
 <xf:else />
 	<div class="blockMessage">{{ phrase('no_entries_have_been_logged') }}</div>
 </xf:if>]]></template>
+  <template type="public" title="fs_extend_thread_credits_log" version_id="2000100" version_string="2.0.1"><![CDATA[<xf:title> {{ phrase('fs_extend_thread_credit_log') }} </xf:title>
+
+<xf:wrap template="account_wrapper" />
+
+<div class="block">
+
+	<div class="block-outer">
+		<xf:macro
+				  template="fs_extend_thread_filter_macro"
+				  name="quick_filter"
+				  arg-key="thread-credits-log"
+				  arg-class="block-outer-opposite"
+				  />
+	</div>
+	<div class="block-container">
+
+		<xf:macro name="search_menu" arg-conditions="{$conditions}" />
+
+		<div class="block-body">
+
+			<xf:datalist data-xf-init="responsive-data-list">
+				<xf:if is="$data is not empty">
+
+					<xf:macro name="record_table_list" arg-data="{$data}" />
+					<xf:else />
+					<div class="blockMessage">
+						{{ phrase('no_items_have_been_created_yet') }}
+					</div>
+				</xf:if>
+			</xf:datalist>
+		</div>
+
+		<div class="block-footer">
+			<span class="block-footer-counter"
+				  >{{ display_totals($totalReturn, $total) }}</span
+				>
+		</div>
+
+	</div>
+	<div class="block-outer block-outer--after">
+		<xf:pagenav
+					page="{$page}"
+					perpage="{$perPage}"
+					total="{$total}"
+					link="thread-credits-log"
+					data="{$data}"
+					params="{$conditions}"
+					wrapperclass="block-outer-main"
+					/>
+		<xf:showignored wrapperclass="block-outer-opposite" />
+	</div>
+</div>
+
+<xf:macro name="search_menu" arg-conditions="!">
+	<div class="block-filterBar">
+		<div class="filterBar">
+			<a
+			   class="filterBar-menuTrigger"
+			   data-xf-click="menu"
+			   role="button"
+			   tabindex="0"
+			   aria-expanded="false"
+			   aria-haspopup="true"
+			   >{{ phrase('filters') }}</a
+				>
+			<div
+				 class="menu menu--wide"
+				 data-menu="menu"
+				 aria-hidden="true"
+				 data-href="{{ link('thread-credits-log/refine-search', null, $conditions)}}"
+				 data-load-target=".js-filterMenuBody"
+				 >
+				<div class="menu-content">
+					<h4 class="menu-header">{{ phrase('show_only:') }}</h4>
+					<div class="js-filterMenuBody">
+						<div class="menu-row">{{ phrase('loading...') }}</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</xf:macro>
+
+<xf:macro name="record_table_list" arg-data="{$data}">
+	<xf:datarow rowtype="header">
+		<xf:cell> {{ phrase('fs_extend_thread_title') }} </xf:cell>
+		<xf:cell> {{ phrase('fs_extend_thread_purchase_date') }} </xf:cell>
+		<xf:cell> {{ phrase('fs_extend_num_credits_used') }} </xf:cell>
+	</xf:datarow>
+	<xf:foreach loop="{$data}" value="$val">
+		<xf:datarow>
+			<xf:cell href="{{ link('threads', $val.Thread) }}"> {{ snippet($val.Thread.title, 60, {'stripBbCode': true}) }} </xf:cell>
+			<xf:cell> <xf:date time="{$val.purchased_at}" /> </xf:cell>
+			<xf:cell> 1 </xf:cell>
+		</xf:datarow>
+	</xf:foreach>
+</xf:macro>]]></template>
+  <template type="public" title="fs_extend_thread_filter_macro" version_id="200000" version_string="2.0.0"><![CDATA[<xf:macro name="quick_filter" arg-key="" arg-ajax="" arg-class="">
+	<xf:js src="xf/filter.js" min="1" />
+	<div class="{$class} quickFilter u-jsOnly" data-xf-init="filter" data-key="{$key}" data-ajax="{$ajax}">
+		<div class="inputGroup inputGroup--inline inputGroup--joined">
+			<input type="text" class="input js-filterInput" placeholder="{{ phrase('filter...')|for_attr }}" data-xf-key="{{ phrase('shortcut.filter')|for_attr }}" />
+			<span class="inputGroup-text">
+				<xf:checkbox standalone="true">
+					<xf:option class="js-filterPrefix" label="{{ phrase('prefix') }}" />
+				</xf:checkbox>
+			</span>
+			<i class="inputGroup-text js-filterClear is-disabled" aria-hidden="true"></i>
+		</div>
+	</div>
+</xf:macro>]]></template>
+  <template type="public" title="fs_extend_thread_order_by__filter" version_id="200000" version_string="2.0.0"><![CDATA[<xf:form action="{{ link('thread-credits-log') }}">
+
+	<div class="menu-row menu-row--separated">
+		{{ phrase('sort_by:') }}
+		<div class="inputGroup u-inputSpacer">
+			<span class="u-srOnly" id="ctrl_sort_by">{{ phrase('sort_order') }}</span>
+			<xf:select name="order" value="{{ $conditions.order ?: 'thread_title' }}" aria-labelledby="ctrl_sort_by">
+				<xf:option value="thread_title">{{ phrase('fs_extend_threads_title') }}</xf:option>
+				<xf:option value="credits_spent">{{ phrase('fs_extend_credits') }}</xf:option>
+				<xf:option value="purchased_at">{{ phrase('fs_extend_threads_purchase_date') }}</xf:option>
+			</xf:select>
+			<span class="inputGroup-splitter"></span>
+			<span class="u-srOnly" id="ctrl_sort_direction">{{ phrase('sort_direction') }}</span>
+			<xf:select name="direction" value="{{ $conditions.direction ?: 'desc' }}" aria-labelledby="ctrl_sort_direction">
+				<xf:option value="desc">{{ phrase('descending') }}</xf:option>
+				<xf:option value="asc">{{ phrase('ascending') }}</xf:option>
+			</xf:select>
+		</div>
+
+	</div>
+
+	<div class="menu-footer">
+		<span class="menu-footer-controls">
+			<xf:button type="submit" class="button--primary"
+					   >{{ phrase('filter') }}</xf:button
+				>
+		</span>
+	</div>
+	<xf:hiddenval name="search">1</xf:hiddenval>
+</xf:form>]]></template>
 </templates>
