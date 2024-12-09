@@ -121,7 +121,7 @@ Thankyou...!
   <phrase title="option_group.auction" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Auction]]></phrase>
   <phrase title="option_group_description.auction" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Auction Plugin]]></phrase>
   <phrase title="payment_methods" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[PAYMENTS ACCEPTED]]></phrase>
-  <phrase title="permission.fs_auction_add" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Add auction listing]]></phrase>
+  <phrase title="permission.fs_auction_permissions_add" version_id="1040700" version_string="1.4.7 Alpha"><![CDATA[Add auction listing]]></phrase>
   <phrase title="permission_interface.fs_auction_permissions" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[FS Auction Plugin Permissions]]></phrase>
   <phrase title="receiveEmailNotification" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[and receive email notifications]]></phrase>
   <phrase title="shippingTerms" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[SHIPPING TERMS]]></phrase>

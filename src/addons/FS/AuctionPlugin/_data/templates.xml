@@ -83,7 +83,7 @@
 	'auctionTitle': $extra.title
 
 }) }}]]></template>
-  <template type="public" title="fs_auctionArchive" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[<xf:title page="{$page}">{{ phrase('fs_auction') }}</xf:title>
+  <template type="public" title="fs_auctionArchive" version_id="1040700" version_string="1.4.7 Alpha"><![CDATA[<xf:title page="{$page}">{{ phrase('fs_auction') }}</xf:title>
 <script>
   // For All Auctions
   function DateTimeConverter(unixdatetime) {
@@ -345,8 +345,7 @@
       </div>
     </div>
   </div>
-</xf:macro>
-]]></template>
+</xf:macro>]]></template>
   <template type="public" title="fs_auction_bookmark_macros" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[<xf:macro name="link"
 	arg-content="!"
 	arg-confirmUrl="!"
@@ -932,7 +931,7 @@ min-height:275px;
 		
 	}
 }]]></template>
-  <template type="public" title="fs_auction_listing_list_macros" version_id="1040300" version_string="1.4.3 Alpha"><![CDATA[<xf:macro name="listing"
+  <template type="public" title="fs_auction_listing_list_macros" version_id="1040600" version_string="1.4.6 Alpha"><![CDATA[<xf:macro name="listing"
 	arg-listing="!"
 	arg-category="{{ null }}"
 	arg-showWatched="{{ true }}"
@@ -960,13 +959,14 @@ min-height:275px;
 		<div class="structItem-cell structItem-cell--main" data-xf-init="touch-proxy">
 		
 			<div class="structItem-title">
-			<span class="label label--blue label--smallest">
-						{{ phrase_dynamic($listing.Thread.Prefix.getPhraseName()) }}
-					</span>
+				<xf:if is="$listing.Thread.prefix_id">
+			   		 <a class="labelLink" rel="nofollow">{{ prefix('thread', $listing.Thread, 'html', '') }}</a>
+				</xf:if>
 				<a href="{{ link('auction/view-auction', $listing) }}" class="" data-tp-primary="on">{$listing.Thread.title}</a>
-					<xf:comment><span class="structItem-listingDescription">  {{ phrase('AuctionStarting_bid') }}: {{ phrase('dollorSymbol') }}{{ $listing.Thread.custom_fields.starting_bid}}</span>
+					
+			<xf:comment><span class="structItem-listingDescription">  {{ phrase('AuctionStarting_bid') }}: {{ phrase('dollorSymbol') }}{{ $listing.Thread.custom_fields.starting_bid}}</span>
 			</xf:comment>
-						</div>
+		</div>
 			<div class="structItem-minor">
 
 					<ul class="structItem-parts">
@@ -1128,10 +1128,9 @@ min-height:275px;
 				</div>
 
 			<div class="structItem-title">
-					<span class="label label--blue label--smallest">
-						{{ phrase_dynamic($listing.Thread.Prefix.getPhraseName()) }}
-							
-					</span>
+						<xf:if is="$listing.Thread.prefix_id">
+			   		 		<a class="labelLink" rel="nofollow">{{ prefix('thread', $listing.Thread, 'html', '') }}</a>
+						</xf:if>
 			<a href="{{ link('auction/view-auction', $listing) }}" class="" data-tp-primary="on">{{ snippet($listing.Thread.title, 33, {'stripBbCode': true}) }}</a>
 			</div>
 			<div class="structItem-minor">
@@ -1217,7 +1216,7 @@ min-height:275px;
 
   <xf:hiddenval name="search">1</xf:hiddenval>
 </xf:form>]]></template>
-  <template type="public" title="fs_auction_view_single" version_id="1040300" version_string="1.4.3 Alpha"><![CDATA[<xf:title>{{$auction.Thread.title}}</xf:title>
+  <template type="public" title="fs_auction_view_single" version_id="1040700" version_string="1.4.7 Alpha"><![CDATA[<xf:title>{{$auction.Thread.title}}</xf:title>
 <style>
 .attachmentList > li:first-child{display:none}
 
