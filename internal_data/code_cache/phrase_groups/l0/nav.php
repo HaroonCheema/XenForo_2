@@ -91,6 +91,7 @@ return array (
   'nav.whatsNewNewsFeed' => 'Your news feed',
   'nav.whatsNewPosts' => 'New posts',
   'nav.whatsNewProfilePosts' => 'New profile posts',
+  'nav.xb_videos' => 'Videos',
   'nav.xfmg' => 'Media',
   'nav.xfmgAddMedia' => 'Add media',
   'nav.xfmgMarkViewed' => 'Mark viewed',

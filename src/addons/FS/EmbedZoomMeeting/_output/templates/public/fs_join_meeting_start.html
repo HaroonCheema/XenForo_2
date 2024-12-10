@@ -1,66 +1,75 @@
-<xf:if is="!$xf.visitor.user_id || !$xf.visitor.is_admin">
-	<style>
+<style> 
+	.p-navSticky { 
+		display:none !important; 
+	} 
+</style>
 
-		body {
-			overflow: visible !important;
-		}
+<xf:comment>
+	<xf:if is="!$xf.visitor.user_id || !$xf.visitor.is_admin">
+		<style>
 
-		@media (min-width: 1200px) and (max-width: 1399.98px) {
-			#zmmtg-root {
-				height: 68% !important;
-				margin-top: 151px !important;
+			body {
+				overflow: visible !important;
 			}
 
-			.video-share-layout {
-				height: 80% !important;
-			}
-		}
+			@media (min-width: 1200px) and (max-width: 1399.98px) {
+				#zmmtg-root {
+					height: 68% !important;
+					margin-top: 151px !important;
+				}
 
-		@media (min-width: 1400px) {
-			#zmmtg-root {
-				height: 78% !important;
-				margin-top: 151px !important;
-			}
-
-			.video-share-layout {
-				height: 87% !important;
-			}
-		}
-
-
-	</style>
-	<xf:else />
-	<style>
-
-		body {
-			overflow: visible !important;
-		}
-
-		@media (min-width: 1200px) and (max-width: 1399.98px) {
-			#zmmtg-root {
-				height: 63% !important;
-				margin-top: 185px !important;
+				.video-share-layout {
+					height: 80% !important;
+				}
 			}
 
-			.video-share-layout {
-				height: 77% !important;
+			@media (min-width: 1400px) {
+				#zmmtg-root {
+					height: 78% !important;
+					margin-top: 151px !important;
+				}
+
+				.video-share-layout {
+					height: 87% !important;
+				}
 			}
-		}
 
-		@media (min-width: 1400px) {
-			#zmmtg-root {
-				height: 74% !important;
-				margin-top: 185px !important;
+
+		</style>
+		<xf:else />
+		<style>
+
+			body {
+				overflow: visible !important;
 			}
 
-			.video-share-layout {
-				height: 87% !important;
+			@media (min-width: 1200px) and (max-width: 1399.98px) {
+				#zmmtg-root {
+					height: 63% !important;
+					margin-top: 185px !important;
+				}
+
+				.video-share-layout {
+					height: 77% !important;
+				}
 			}
-		}
+
+			@media (min-width: 1400px) {
+				#zmmtg-root {
+					height: 74% !important;
+					margin-top: 185px !important;
+				}
+
+				.video-share-layout {
+					height: 87% !important;
+				}
+			}
 
 
-	</style>
-</xf:if>
+		</style>
+	</xf:if>
+
+</xf:comment>
 
 
 <xf:comment>

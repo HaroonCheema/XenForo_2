@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<admin_navigation>
+  <admin_navigation_entry navigation_id="add_iframe" parent_navigation_id="brand" display_order="1" link="iframe" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="audio_brand" parent_navigation_id="brand" display_order="0" link="brand" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="brand" display_order="1" link="brand" icon="fa-video" debug_only="0" development_only="0" hide_no_children="0"/>
+</admin_navigation>

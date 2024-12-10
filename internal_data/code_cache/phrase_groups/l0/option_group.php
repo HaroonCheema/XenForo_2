@@ -18,6 +18,7 @@ return array (
   'option_group.bh_brand_hub' => '[XB] Brand Hub',
   'option_group.boardActive' => 'Board active',
   'option_group.bot_option' => '[XC] Thread GPT Bot',
+  'option_group.brand_viedo' => 'Brand Video',
   'option_group.bsXFWebSockets' => '[021] XenForo WebSockets',
   'option_group.censoringOptions' => 'Censoring',
   'option_group.checkAttachment' => '[FS] Check Attachment',

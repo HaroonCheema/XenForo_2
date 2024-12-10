@@ -1,39 +1,16 @@
 <?php
-// FROM HASH: 6aa60e841a54cf8fae5861eb10a53924
+// FROM HASH: f150a03a280b0e287f2c9f4e24f24d38
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
 	$__finalCompiled = '';
-	$__finalCompiled .= '<style>
-
-	body {
-		overflow: visible !important;
-	}
-
-	@media (min-width: 1200px) and (max-width: 1399.98px) {
-		#zmmtg-root {
-			height: 66% !important;
-			margin-top: 123px !important;
-		}
-
-		.video-share-layout {
-			height: 77% !important;
-		}
-	}
-
-	@media (min-width: 1400px) {
-		#zmmtg-root {
-			height: 76% !important;
-			margin-top: 123px !important;
-		}
-
-		.video-share-layout {
-			height: 87% !important;
-		}
-	}
-
-
+	$__finalCompiled .= '<style> 
+	.p-navSticky { 
+		display:none !important; 
+	} 
 </style>
+
+' . '
 
 <script src="https://source.zoom.us/3.9.0/lib/vendor/react.min.js"></script>
 <script src="https://source.zoom.us/3.9.0/lib/vendor/react-dom.min.js"></script>

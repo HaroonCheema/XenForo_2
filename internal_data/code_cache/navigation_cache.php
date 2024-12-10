@@ -445,6 +445,18 @@ return function($__templater, $__selectedNav, array $__vars)
 			}
 		}
 
+		if (($__vars['xf']['reply']['containerKey'] == ('node-' . $__vars['xf']['options']['fs_questionAnswerForum']))) {
+			$__navTemp = [
+		'title' => \XF::phrase('nav.fs_question_answers_searchForums'),
+		'href' => $__templater->func('link', array('search', null, array('type' => 'questionAnswer', ), ), false),
+		'attributes' => [],
+	];
+			if ($__navTemp) {
+				$__tree['forums']['children']['fs_question_answers_searchForums'] = $__navTemp;
+				$__flat['fs_question_answers_searchForums'] =& $__tree['forums']['children']['fs_question_answers_searchForums'];
+			}
+		}
+
 		if ($__templater->method($__vars['xf']['visitor'], 'canSearch', array())) {
 			$__navTemp = [
 		'title' => \XF::phrase('nav.searchForums'),
@@ -459,13 +471,15 @@ return function($__templater, $__selectedNav, array $__vars)
 
 		if (($__vars['xf']['reply']['containerKey'] == ('node-' . $__vars['xf']['options']['fs_questionAnswerForum']))) {
 			$__navTemp = [
-		'title' => \XF::phrase('nav.fs_question_answers_searchForums'),
-		'href' => $__templater->func('link', array('search', null, array('type' => 'questionAnswer', ), ), false),
-		'attributes' => [],
+		'title' => \XF::phrase('nav.fs_question_answers_markForumsRead'),
+		'href' => $__templater->func('link', array('forums/', ), false) . $__vars['xf']['options']['fs_questionAnswerForum'] . '/mark-read&date=$xf.time',
+		'attributes' => [
+			'data-xf-click' => 'overlay',
+		],
 	];
 			if ($__navTemp) {
-				$__tree['forums']['children']['fs_question_answers_searchForums'] = $__navTemp;
-				$__flat['fs_question_answers_searchForums'] =& $__tree['forums']['children']['fs_question_answers_searchForums'];
+				$__tree['forums']['children']['fs_question_answers_markForumsRead'] = $__navTemp;
+				$__flat['fs_question_answers_markForumsRead'] =& $__tree['forums']['children']['fs_question_answers_markForumsRead'];
 			}
 		}
 
@@ -480,20 +494,6 @@ return function($__templater, $__selectedNav, array $__vars)
 			if ($__navTemp) {
 				$__tree['forums']['children']['markForumsRead'] = $__navTemp;
 				$__flat['markForumsRead'] =& $__tree['forums']['children']['markForumsRead'];
-			}
-		}
-
-		if (($__vars['xf']['reply']['containerKey'] == ('node-' . $__vars['xf']['options']['fs_questionAnswerForum']))) {
-			$__navTemp = [
-		'title' => \XF::phrase('nav.fs_question_answers_markForumsRead'),
-		'href' => $__templater->func('link', array('forums/', ), false) . $__vars['xf']['options']['fs_questionAnswerForum'] . '/mark-read&date=$xf.time',
-		'attributes' => [
-			'data-xf-click' => 'overlay',
-		],
-	];
-			if ($__navTemp) {
-				$__tree['forums']['children']['fs_question_answers_markForumsRead'] = $__navTemp;
-				$__flat['fs_question_answers_markForumsRead'] =& $__tree['forums']['children']['fs_question_answers_markForumsRead'];
 			}
 		}
 
@@ -685,6 +685,30 @@ return function($__templater, $__selectedNav, array $__vars)
 
 	}
 
+	$__navTemp = [
+		'title' => \XF::phrase('nav.fs_auction_category'),
+		'href' => $__templater->func('link', array('auction', ), false),
+		'attributes' => [],
+	];
+	if ($__navTemp) {
+		$__tree['fs_auction_category'] = $__navTemp;
+		$__flat['fs_auction_category'] =& $__tree['fs_auction_category'];
+		if (empty($__tree['fs_auction_category']['children'])) { $__tree['fs_auction_category']['children'] = []; }
+
+		$__navTemp = [
+		'title' => \XF::phrase('nav.auctionAddListing'),
+		'href' => $__templater->func('link', array('auction/add', ), false),
+		'attributes' => [
+			'data-xf-click' => 'overlay',
+		],
+	];
+		if ($__navTemp) {
+			$__tree['fs_auction_category']['children']['auctionAddListing'] = $__navTemp;
+			$__flat['auctionAddListing'] =& $__tree['fs_auction_category']['children']['auctionAddListing'];
+		}
+
+	}
+
 	if ($__templater->method($__vars['xf']['visitor'], 'canViewMedia', array())) {
 		$__navTemp = [
 		'title' => \XF::phrase('nav.xfmg'),
@@ -849,30 +873,6 @@ return function($__templater, $__selectedNav, array $__vars)
 			}
 
 		}
-	}
-
-	$__navTemp = [
-		'title' => \XF::phrase('nav.fs_auction_category'),
-		'href' => $__templater->func('link', array('auction', ), false),
-		'attributes' => [],
-	];
-	if ($__navTemp) {
-		$__tree['fs_auction_category'] = $__navTemp;
-		$__flat['fs_auction_category'] =& $__tree['fs_auction_category'];
-		if (empty($__tree['fs_auction_category']['children'])) { $__tree['fs_auction_category']['children'] = []; }
-
-		$__navTemp = [
-		'title' => \XF::phrase('nav.auctionAddListing'),
-		'href' => $__templater->func('link', array('auction/add', ), false),
-		'attributes' => [
-			'data-xf-click' => 'overlay',
-		],
-	];
-		if ($__navTemp) {
-			$__tree['fs_auction_category']['children']['auctionAddListing'] = $__navTemp;
-			$__flat['auctionAddListing'] =& $__tree['fs_auction_category']['children']['auctionAddListing'];
-		}
-
 	}
 
 	if ($__templater->method($__vars['xf']['visitor'], 'canViewResources', array())) {
@@ -1059,6 +1059,18 @@ return function($__templater, $__selectedNav, array $__vars)
 		}
 	}
 
+	if ($__templater->method($__vars['xf']['visitor'], 'canViewMeeting', array())) {
+		$__navTemp = [
+		'title' => \XF::phrase('nav.fs_zoom_meetings'),
+		'href' => $__templater->func('link', array('video-chat', ), false),
+		'attributes' => [],
+	];
+		if ($__navTemp) {
+			$__tree['fs_zoom_meetings'] = $__navTemp;
+			$__flat['fs_zoom_meetings'] =& $__tree['fs_zoom_meetings'];
+		}
+	}
+
 	$__navTemp = [
 		'title' => \XF::phrase('nav.createCrud'),
 		'href' => $__templater->func('link', array('crud', ), false),
@@ -1081,22 +1093,20 @@ return function($__templater, $__selectedNav, array $__vars)
 
 	}
 
-	if ($__templater->method($__vars['xf']['visitor'], 'canViewMeeting', array())) {
-		$__navTemp = [
-		'title' => \XF::phrase('nav.fs_zoom_meetings'),
-		'href' => $__templater->func('link', array('video-chat', ), false),
-		'attributes' => [],
-	];
-		if ($__navTemp) {
-			$__tree['fs_zoom_meetings'] = $__navTemp;
-			$__flat['fs_zoom_meetings'] =& $__tree['fs_zoom_meetings'];
-		}
-	}
-
 	$__navTemp = \XF\Navigation\NodeType::displayNodeExtended(11, "fs_questionAnswer_nav");
 	if ($__navTemp) {
 		$__tree['fs_questionAnswer_nav'] = $__navTemp;
 		$__flat['fs_questionAnswer_nav'] =& $__tree['fs_questionAnswer_nav'];
+	}
+
+	$__navTemp = [
+		'title' => \XF::phrase('nav.xb_videos'),
+		'href' => $__templater->func('link', array('videos', ), false),
+		'attributes' => [],
+	];
+	if ($__navTemp) {
+		$__tree['xb_videos'] = $__navTemp;
+		$__flat['xb_videos'] =& $__tree['xb_videos'];
 	}
 
 

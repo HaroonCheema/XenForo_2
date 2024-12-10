@@ -1,77 +1,16 @@
 <?php
-// FROM HASH: a01fe491a4dd8f520c3835a9abf0aaa1
+// FROM HASH: 5832946ddaaf06ba86eef59b842faeab
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
 	$__finalCompiled = '';
-	if ((!$__vars['xf']['visitor']['user_id']) OR (!$__vars['xf']['visitor']['is_admin'])) {
-		$__finalCompiled .= '
-	<style>
+	$__finalCompiled .= '<style> 
+	.p-navSticky { 
+		display:none !important; 
+	} 
+</style>
 
-		body {
-			overflow: visible !important;
-		}
-
-		@media (min-width: 1200px) and (max-width: 1399.98px) {
-			#zmmtg-root {
-				height: 68% !important;
-				margin-top: 151px !important;
-			}
-
-			.video-share-layout {
-				height: 80% !important;
-			}
-		}
-
-		@media (min-width: 1400px) {
-			#zmmtg-root {
-				height: 78% !important;
-				margin-top: 151px !important;
-			}
-
-			.video-share-layout {
-				height: 87% !important;
-			}
-		}
-
-
-	</style>
-	';
-	} else {
-		$__finalCompiled .= '
-	<style>
-
-		body {
-			overflow: visible !important;
-		}
-
-		@media (min-width: 1200px) and (max-width: 1399.98px) {
-			#zmmtg-root {
-				height: 63% !important;
-				margin-top: 185px !important;
-			}
-
-			.video-share-layout {
-				height: 77% !important;
-			}
-		}
-
-		@media (min-width: 1400px) {
-			#zmmtg-root {
-				height: 74% !important;
-				margin-top: 185px !important;
-			}
-
-			.video-share-layout {
-				height: 87% !important;
-			}
-		}
-
-
-	</style>
-';
-	}
-	$__finalCompiled .= '
+' . '
 
 
 ' . '

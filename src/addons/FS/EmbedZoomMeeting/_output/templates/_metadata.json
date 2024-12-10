@@ -20,14 +20,14 @@
         "hash": "d72657682cdf2decc4f635025acba2b5"
     },
     "public/fs_host_meeting_start.html": {
-        "version_id": 1000100,
-        "version_string": "1.0.1 Alpha",
-        "hash": "6aa60e841a54cf8fae5861eb10a53924"
+        "version_id": 1000300,
+        "version_string": "1.0.3 Alpha",
+        "hash": "f150a03a280b0e287f2c9f4e24f24d38"
     },
     "public/fs_join_meeting_start.html": {
-        "version_id": 1000200,
-        "version_string": "1.0.2 Alpha",
-        "hash": "a01fe491a4dd8f520c3835a9abf0aaa1"
+        "version_id": 1000300,
+        "version_string": "1.0.3 Alpha",
+        "hash": "5832946ddaaf06ba86eef59b842faeab"
     },
     "public/fs_zoom_meeting_guest_joiners.html": {
         "version_id": 1000010,

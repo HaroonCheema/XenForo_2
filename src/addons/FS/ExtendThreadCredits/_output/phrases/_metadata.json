@@ -1,4 +1,16 @@
 {
+    "1des.txt": {
+        "global_cache": false,
+        "version_id": 2000100,
+        "version_string": "2.0.1",
+        "hash": "dce09456a54b0e0a7de4164bc0b36ff7"
+    },
+    "1intro.txt": {
+        "global_cache": false,
+        "version_id": 2000100,
+        "version_string": "2.0.1",
+        "hash": "e64cf36c08bf354307c1b081374b06ce"
+    },
     "fs_extend_credits.txt": {
         "global_cache": false,
         "version_id": 200000,

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="add_brand_video" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add brand Video]]></phrase>
+  <phrase title="add_iframe_video" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add Iframe Video]]></phrase>
+  <phrase title="admin_navigation.add_iframe" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Iframe]]></phrase>
+  <phrase title="admin_navigation.audio_brand" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Audio Brand]]></phrase>
+  <phrase title="admin_navigation.brand" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Brand]]></phrase>
+  <phrase title="brand_video" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Brand Video]]></phrase>
+  <phrase title="iframe_video" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Iframe Video]]></phrase>
+  <phrase title="nav.xb_videos" version_id="1000020" version_string="1.0.1 Alpha"><![CDATA[Videos]]></phrase>
+  <phrase title="option.brand_page" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Brand page]]></phrase>
+  <phrase title="option.latestRecord" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Latest record of X Videos]]></phrase>
+  <phrase title="option.ronspage" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Rons Page]]></phrase>
+  <phrase title="option.xb_slider_videos" version_id="1000020" version_string="1.0.1 Alpha"><![CDATA[Number of videos in sliders]]></phrase>
+  <phrase title="option_explain.brand_page" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Brand Video  Page Pagination Settings]]></phrase>
+  <phrase title="option_explain.latestRecord" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Latest Record of X days mention here Like ('x' 10 days , 20 days of Record)]]></phrase>
+  <phrase title="option_explain.ronspage" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Rons Page Pagination Settings]]></phrase>
+  <phrase title="option_explain.xb_slider_videos" version_id="1000020" version_string="1.0.1 Alpha"><![CDATA[Number of videos to display in sliders]]></phrase>
+  <phrase title="option_group.brand_viedo" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Brand Video]]></phrase>
+  <phrase title="option_group_description.brand_viedo" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="rons_featured" version_id="1000020" version_string="1.0.1 Alpha"><![CDATA[Rons Featured]]></phrase>
+</phrases>

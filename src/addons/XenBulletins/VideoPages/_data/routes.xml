@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<routes>
+  <route route_type="admin" route_prefix="brand" format=":int&lt;video_id&gt;/" controller="XenBulletins\VideoPages:AddVideo"/>
+  <route route_type="admin" route_prefix="iframe" format=":int&lt;iframe_id&gt;/" controller="XenBulletins\VideoPages:Iframe"/>
+  <route route_type="public" route_prefix="brand" format=":int&lt;video_id&gt;/" controller="XenBulletins\VideoPages:Brand" context="xb_videos"/>
+  <route route_type="public" route_prefix="rons" controller="XenBulletins\VideoPages:Rons" context="xb_videos"/>
+  <route route_type="public" route_prefix="videos" controller="XenBulletins\VideoPages:FetchVideo" context="xb_videos"/>
+</routes>

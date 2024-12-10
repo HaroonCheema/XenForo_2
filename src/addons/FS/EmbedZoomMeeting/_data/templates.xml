@@ -141,36 +141,44 @@
 			   data-success="{{$success}}"
 			   class="button--link is-hidden" />
 </xf:macro>]]></template>
-  <template type="public" title="fs_host_meeting_start" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[<style>
-
-	body {
-		overflow: visible !important;
-	}
-
-	@media (min-width: 1200px) and (max-width: 1399.98px) {
-		#zmmtg-root {
-			height: 66% !important;
-			margin-top: 123px !important;
-		}
-
-		.video-share-layout {
-			height: 77% !important;
-		}
-	}
-
-	@media (min-width: 1400px) {
-		#zmmtg-root {
-			height: 76% !important;
-			margin-top: 123px !important;
-		}
-
-		.video-share-layout {
-			height: 87% !important;
-		}
-	}
-
-
+  <template type="public" title="fs_host_meeting_start" version_id="1000300" version_string="1.0.3 Alpha"><![CDATA[<style> 
+	.p-navSticky { 
+		display:none !important; 
+	} 
 </style>
+
+<xf:comment>
+	<style>
+
+		body {
+			overflow: visible !important;
+		}
+
+		@media (min-width: 1200px) and (max-width: 1399.98px) {
+			#zmmtg-root {
+				height: 66% !important;
+				margin-top: 123px !important;
+			}
+
+			.video-share-layout {
+				height: 77% !important;
+			}
+		}
+
+		@media (min-width: 1400px) {
+			#zmmtg-root {
+				height: 76% !important;
+				margin-top: 123px !important;
+			}
+
+			.video-share-layout {
+				height: 87% !important;
+			}
+		}
+
+
+	</style>
+</xf:comment>
 
 <script src="https://source.zoom.us/3.9.0/lib/vendor/react.min.js"></script>
 <script src="https://source.zoom.us/3.9.0/lib/vendor/react-dom.min.js"></script>
@@ -225,69 +233,78 @@
 
 	document.addEventListener("DOMContentLoaded", startMeeting);
 </script>]]></template>
-  <template type="public" title="fs_join_meeting_start" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[<xf:if is="!$xf.visitor.user_id || !$xf.visitor.is_admin">
-	<style>
+  <template type="public" title="fs_join_meeting_start" version_id="1000300" version_string="1.0.3 Alpha"><![CDATA[<style> 
+	.p-navSticky { 
+		display:none !important; 
+	} 
+</style>
 
-		body {
-			overflow: visible !important;
-		}
+<xf:comment>
+	<xf:if is="!$xf.visitor.user_id || !$xf.visitor.is_admin">
+		<style>
 
-		@media (min-width: 1200px) and (max-width: 1399.98px) {
-			#zmmtg-root {
-				height: 68% !important;
-				margin-top: 151px !important;
+			body {
+				overflow: visible !important;
 			}
 
-			.video-share-layout {
-				height: 80% !important;
-			}
-		}
+			@media (min-width: 1200px) and (max-width: 1399.98px) {
+				#zmmtg-root {
+					height: 68% !important;
+					margin-top: 151px !important;
+				}
 
-		@media (min-width: 1400px) {
-			#zmmtg-root {
-				height: 78% !important;
-				margin-top: 151px !important;
-			}
-
-			.video-share-layout {
-				height: 87% !important;
-			}
-		}
-
-
-	</style>
-	<xf:else />
-	<style>
-
-		body {
-			overflow: visible !important;
-		}
-
-		@media (min-width: 1200px) and (max-width: 1399.98px) {
-			#zmmtg-root {
-				height: 63% !important;
-				margin-top: 185px !important;
+				.video-share-layout {
+					height: 80% !important;
+				}
 			}
 
-			.video-share-layout {
-				height: 77% !important;
+			@media (min-width: 1400px) {
+				#zmmtg-root {
+					height: 78% !important;
+					margin-top: 151px !important;
+				}
+
+				.video-share-layout {
+					height: 87% !important;
+				}
 			}
-		}
 
-		@media (min-width: 1400px) {
-			#zmmtg-root {
-				height: 74% !important;
-				margin-top: 185px !important;
+
+		</style>
+		<xf:else />
+		<style>
+
+			body {
+				overflow: visible !important;
 			}
 
-			.video-share-layout {
-				height: 87% !important;
+			@media (min-width: 1200px) and (max-width: 1399.98px) {
+				#zmmtg-root {
+					height: 63% !important;
+					margin-top: 185px !important;
+				}
+
+				.video-share-layout {
+					height: 77% !important;
+				}
 			}
-		}
+
+			@media (min-width: 1400px) {
+				#zmmtg-root {
+					height: 74% !important;
+					margin-top: 185px !important;
+				}
+
+				.video-share-layout {
+					height: 87% !important;
+				}
+			}
 
 
-	</style>
-</xf:if>
+		</style>
+	</xf:if>
+
+</xf:comment>
 
 
 <xf:comment>
