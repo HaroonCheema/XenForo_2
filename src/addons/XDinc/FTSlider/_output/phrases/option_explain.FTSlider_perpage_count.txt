@@ -1,0 +1,1 @@
+Specify the number of topics to display on a page.

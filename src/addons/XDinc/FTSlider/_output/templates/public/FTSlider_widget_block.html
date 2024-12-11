@@ -1,0 +1,54 @@
+<xf:if is="$ftsliders is not empty && $xf.visitor.hasPermission('FTSlider_permissions','FTSlider_view')">
+	<xf:css src="FTSlider.less" />
+	<xf:js src="FTSlider/jquery.fts.1.0.js">
+		<xf:js src="FTSlider/jquery.fts.wheel.js" />
+		<xf:js src="FTSlider/jquery.fts.min.js" />
+		{{ include('FTSlider_js') }}
+	</xf:js>
+	<div class="block ftslider">
+		<div class="block-container">
+			<h3 class="block-header">{{$xf.options.FTSlider_title}}</h3>	
+
+			<div class="block-body">	
+				<div id="fs_auction_fullwidth_slider" class="everslider fullwidth-slider">
+					<ul class="es-slides">
+						<xf:foreach loop="$ftsliders" value="$value" i="$key">
+							<li>
+								<a href="{{ link('auction/view-auction/', $value) }}">
+									<img src="{{ count($value.Thread.FirstPost.Attachments) ? link('full:attachments', $value.Thread.FirstPost.Attachments.first()) : base_url('styles/FS/AuctionPlugin/no_image.png',true) }}" 
+										 alt="xyz{$key}.jpeg"
+										 loading="lazy"
+										 title="{{ $value.Thread.title }}">	
+								</a>
+								<div class="fullwidth-title">
+									<div class="ftslider_title_detail">
+										<xf:avatar user="$value.Thread.User" size="xxs"class="FTSlider_Avatar " defaultname="{$fallbackName}" itemprop="image" />	
+										{{ $value.Thread.User.username }}
+										<xf:date time="$value.Thread.post_date" class="ftslider-date" data-full-old-date="true" />
+
+										<xf:comment>
+											<xf:if is="{$xf.options.FTSlider_hide_count}">	
+												<div class="ftslider_statistics">
+													<i class="{{ property('xtr_statistics_icon_view') }}"></i>  {$value.Thread.view_count|NUMBER}
+													<i class="{{ property('xtr_statistics_icon_reply') }}"></i>  {$value.Thread.reply_count|NUMBER}
+												</div>
+											</xf:if>
+										</xf:comment>
+									</div>
+									<div class="ftslider_content">
+										<a href="{{ link('auction/view-auction/', $value) }}" title="{{ $value.Thread.title }}">
+											<xf:if is="$value.Thread.prefix_id">{{ prefix('thread', $value.Thread, 'html', '') }}</xf:if>
+											{{ snippet($value.Thread.title, 25, {'stripBbCode': true}) }}
+										</a>	
+
+										<div class="ftslider_excerpt"><a href="{{ link('auction/view-auction/', $value) }}">{{ snippet($value.Thread.FirstPost.message, 100, {'stripBbCode': true}) }}</a></div>
+									</div>	
+								</div>
+							</li>
+						</xf:foreach>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>	
+</xf:if>

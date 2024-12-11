@@ -28,6 +28,29 @@ If you want to white list a domain\'s sub-domains and not the top level one, <b>
   'option_explain.DC_LinkProxy_pass_expire_time' => 'Enter Password expire time in seconds.',
   'option_explain.DC_LinkProxy_pass_length' => 'Enter password length',
   'option_explain.DC_LinkProxy_pass_reset_time' => 'Enter Password reset time in seconds.',
+  'option_explain.FTSliderOrderBy' => 'Default sort order by is set to descending.',
+  'option_explain.FTSliderOrderType' => 'Select a sort order type.',
+  'option_explain.FTSliderPage_contentLimit' => 'You can limit the number of characters to display in the thread content.',
+  'option_explain.FTSliderPage_nav' => 'Enable or disable extra page navigation above the featured thread.',
+  'option_explain.FTSlider_auto' => 'Auto Play options will be enabled when you push navigation buttons.',
+  'option_explain.FTSlider_count' => 'Specify the number of Featured Threads items that will be shown the most. This value can be limited to at least minimum "4" subjects for ideal display.',
+  'option_explain.FTSlider_effect' => 'Enable or disable "Fade" effect.',
+  'option_explain.FTSlider_enable' => 'This option is enable or disable "Featured Threads Slider" add-on.',
+  'option_explain.FTSlider_fadeDirection' => 'Choose fade direction side',
+  'option_explain.FTSlider_fade_delay' => '',
+  'option_explain.FTSlider_fade_duration' => '',
+  'option_explain.FTSlider_hide_indicator' => 'Hide or show thread indicator on message attribution position.',
+  'option_explain.FTSlider_limit' => 'You can limit the number of characters to display in the topic content. The highlighted picture will show the characters as many as the number of characters you have specified in your topic.',
+  'option_explain.FTSlider_navigation' => 'Add next and prev button on carousel slider. <br>
+<b>Note:</b> You can disable this option if you enabled fade effect.',
+  'option_explain.FTSlider_perpage_count' => 'Specify the number of topics to display on a page.',
+  'option_explain.FTSlider_size' => 'Slider images to be uploaded will be reduced to the size you specify. Large image sizes can cause visual problems. Recommended value is 396X250 pixels. If you change recommended size some of padding issue can be shown.',
+  'option_explain.FTSlider_skip_thread' => '<b>How many items are skip on slider in a round?</b><br>
+For example, if the value "2" is entered,  "2" featured threads will move forward on the slider.</br>
+Recommended: "1" Thread -/- Max.: "4" Thread',
+  'option_explain.FTSlider_ticker_timeout' => 'You can make more "slow" transitions to look at the subjects in more detail, more "fast" transitions to make all of your many things look.',
+  'option_explain.FTSlider_title' => 'Choose featured threads slider title.',
+  'option_explain.FTSlider_transit_speed' => 'You can adjust the sliding speed of the subject change. You may need it to read text more efficiently while moving topics.',
   'option_explain.Fs_NodeIcon_nodeDimensions' => '',
   'option_explain.TvThreads_aggregateCredits' => 'If checked, cast & crew data for TV shows will be fetched all the entire cast & crew for all episodes belonging to a TV show.</br>
 This can be a large amount of data and will affect performance.',
@@ -338,6 +361,7 @@ By default, we will always serve the graphics from the preferred CDN, though if 
   'option_explain.emojiStyle' => 'Emojis can look vastly different depending on which device you are using. Older devices may not support emoji at all. We can replace native device emoji (or missing emoji) with the artwork sets above.<br />
 <br />
 <b>Note:</b> Image emojis will only be displayed in areas which support rich text input.',
+  'option_explain.enableFTSlider_hover' => '',
   'option_explain.enableMemberList' => 'If enabled, people will be able to browse an alphabetical list of users. This can have performance implications with a large number of users.',
   'option_explain.enableNewsFeed' => 'With this option disabled, viewing the news feed will be completely disabled.',
   'option_explain.enableNotices' => 'If you don\'t use the notices system, you can completely disable it and save a query on session creation.',
@@ -934,4 +958,5 @@ Use the textbox above to specify a format. <b>{title}</b> will be replaced with 
   'option_explain.xfrmReviewsPerPage' => '',
   'option_explain.xfrmUpdateMaxLength' => 'The maximum number of characters that can be in a resource update or description. This includes BB code. Setting this value too large or disabling it entirely may cause performance issues and is not recommended.',
   'option_explain.xfrmUpdatesPerPage' => '',
+  'option_explain.xtr_mousehover' => '',
 );

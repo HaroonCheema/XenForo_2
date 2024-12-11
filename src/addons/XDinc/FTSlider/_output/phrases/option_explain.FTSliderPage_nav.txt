@@ -1,0 +1,1 @@
+Enable or disable extra page navigation above the featured thread.

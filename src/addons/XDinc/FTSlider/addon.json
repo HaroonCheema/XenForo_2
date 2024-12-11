@@ -1,0 +1,14 @@
+{
+  "legacy_addon_id": "",
+  "title": "[XTR] Featured Thread Slider",
+  "description": "Show to featured thread slider and page with responsive design to your community.",
+  "version_id": 1010770,
+  "version_string": "1.1.7",
+  "dev": "XENTR | XenForo Add-ons - Styles",
+  "dev_url": "https://xentr.net",
+  "faq_url": "",
+  "support_url": "https://xentr.net",
+  "extra_urls": [],
+  "require": [],
+  "icon": "icon.png"
+}

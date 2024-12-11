@@ -1,0 +1,9 @@
+{
+    "template": "forum_list",
+    "description": "Featured Thread Slider-Above Nodes",
+    "execution_order": 40,
+    "enabled": false,
+    "action": "str_replace",
+    "find": "<xf:widgetpos id=\"forum_list_above_nodes\" />",
+    "replace": "<xf:if is=\"{$xf.options.FTSlider_position} == 'abovenodes' &&\n\t\t\t\t\t\t{$xf.options.FTSlider_enable}\">\n                 <xf:widget key=\"XD_FTSlider_widget\" /> \n            </xf:if>\n$0"
+}

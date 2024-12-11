@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation>
+  <navigation_entry navigation_id="FTSlider_list_nav" parent_navigation_id="forums" display_order="350" navigation_type_id="basic" enabled="1"><![CDATA[{"link":"{{ link('all-features') }}","display_condition":"$xf.visitor.hasPermission('FTSlider_permissions', 'FTSlider_view_page')","extra_attributes":[]}]]></navigation_entry>
+</navigation>

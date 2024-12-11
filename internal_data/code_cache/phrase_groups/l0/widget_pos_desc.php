@@ -44,4 +44,5 @@ return array (
   'widget_pos_desc.xfrm_category_sidenav' => 'Displays inside the side navigation on the resource category pages. Widget templates rendered in this position can use the current category entity in the <code>{$context.category}</code> param.',
   'widget_pos_desc.xfrm_overview_above_resources' => 'Displays above the resource list on the resource overview page.',
   'widget_pos_desc.xfrm_overview_sidenav' => 'Displays inside the side navigation on the resource overview page.',
+  'widget_pos_desc.xtr_ftslider_sidenav' => 'Displays inside the side navigation on the featured thread page.',
 );

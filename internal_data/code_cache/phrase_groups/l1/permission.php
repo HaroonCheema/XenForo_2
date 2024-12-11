@@ -1,5 +1,9 @@
 <?php
 return array (
+  'permission.FTSlider_permissions_FTSlider_moderate' => 'Moderate featured threads slider',
+  'permission.FTSlider_permissions_FTSlider_submit' => 'Submit featured threads promotion',
+  'permission.FTSlider_permissions_FTSlider_view' => 'View featured threads slider',
+  'permission.FTSlider_permissions_FTSlider_view_page' => 'View featured threads page',
   'permission.Like_needLike' => 'Needs Likes to see Attachments?',
   'permission.avatar_allowed' => 'Upload an avatar',
   'permission.bh_brand_hub_bh_canEditDiscussionDesc' => 'Can Add/Edit discussion Description',

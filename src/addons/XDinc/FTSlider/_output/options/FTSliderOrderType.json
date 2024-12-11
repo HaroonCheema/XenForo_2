@@ -1,0 +1,13 @@
+{
+    "edit_format": "select",
+    "edit_format_params": "Thread.post_date={{ phrase('post_date') }}\nThread.FirstPost.last_edit_date={{ phrase('edit_date') }}\nThread.last_post_date={{ phrase('last_reply_date') }}\nftslider_time={{ phrase('FTSlider_featured_date') }}",
+    "data_type": "string",
+    "sub_options": [],
+    "validation_class": "",
+    "validation_method": "",
+    "advanced": false,
+    "default_value": "Thread.post_date",
+    "relations": {
+        "FTSlider_Options": 350
+    }
+}

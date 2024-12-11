@@ -1,0 +1,1074 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="admin" title="FTSlider_feature_delete" version_id="1000600" version_string="1.0.6"><![CDATA[<xf:title>{{ phrase('confirm_action') }}</xf:title>
+<xf:form action="{{ link('ft-slider/features/delete', $ftslider) }}" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:inforow rowtype="confirm">
+				{{ phrase('please_confirm_that_you_want_to_delete_following:') }}
+				<strong><a href="{{ link('ft-slider/features/edit', $feature) }}">{$ftslider.Thread.title}</a></strong>
+			</xf:inforow>
+		</div>
+		<xf:submitrow rowtype="simple" icon="delete" />
+	</div>
+	<xf:redirect />
+</xf:form>]]></template>
+  <template type="admin" title="FTSlider_feature_edit" version_id="1000600" version_string="1.0.6"><![CDATA[<xf:title>{{ phrase('FTSlider_edit_feature_admin:') }} {$feature.Thread.title}</xf:title>
+
+<xf:breadcrumb href="{{ link('ft-slider/features') }}">{{ phrase('FTSlider_features') }}</xf:breadcrumb>
+
+<xf:pageaction>
+	<xf:button href="{{ link('ft-slider/features/delete', $thread) }}" icon="delete" overlay="true" />
+</xf:pageaction>
+
+<xf:css src="FTSlider_index.less"></xf:css>
+
+<xf:form action="{{ link('ft-slider/features/save', $thread) }}" ajax="true" class="block">
+	<div class="block-container">
+
+		<xf:macro template="public:FTSlider_feature_edit" name="edit_block"
+			arg-ftslider="{$ftslider}" arg-thread="{$thread}" />
+
+		<xf:submitrow sticky="true" icon="save" />
+	</div>
+</xf:form>]]></template>
+  <template type="admin" title="FTSlider_feature_list" version_id="1000600" version_string="1.0.6"><![CDATA[<xf:title>{{ phrase('FTSlider_features') }}</xf:title>
+
+<div class="block">
+	<div class="block-outer">
+		<xf:macro template="filter_macros" name="quick_filter"
+			arg-key="ftslider"
+			arg-ajax="{{ link('ftslider/features') }}"
+			arg-class="block-outer-opposite" />
+	</div>
+	<div class="block-container">
+		<h3 class="block-header">{{ phrase('FTSlider_features') }}</h3>
+
+		<div class="block-body">
+			<xf:datalist>
+				<xf:foreach loop="$ftsliders" value="$ftslider">
+					<xf:datarow>
+						<xf:main
+							hash="{$ftslider.thread_id}"
+							href="{{ link('ft-slider/features/edit', $ftslider) }}"
+							label="{$ftslider.Thread.title}"
+							hint="{$ftslider.ftslider_title}"
+							dir="auto" />
+						<xf:action href="{{ link('ft-slider/features/edit', $ftslider) }}">
+							<xf:date time="{$ftslider.ftslider_date}" />
+						</xf:action>
+						<xf:delete href="{{ link('ft-slider/features/delete', $ftslider) }}"
+							tooltip="{{ phrase('delete') }}" />
+					</xf:datarow>
+				</xf:foreach>
+				<xf:if is="$filter AND $total > $perPage">
+					<xf:datarow rowclass="dataList-row--note dataList-row--noHover js-filterForceShow">
+						<xf:cell colspan="2">{{ phrase('FTSlider_more_records') }}</xf:cell>
+					</xf:datarow>
+				</xf:if>
+			</xf:datalist>
+		</div>
+
+		<div class="block-footer">
+			<span class="block-footer-counter">{{ display_totals($ftsliders, $total) }}</span>
+		</div>
+	</div>
+
+	<xf:pagenav
+		page="{$page}" perpage="{$perPage}" total="{$total}"
+		link="ftslider/features"
+		wrapperclass="js-filterHide block-outer block-outer--after" />
+</div>]]></template>
+  <template type="admin" title="FTSlider_options_macros" version_id="1010570" version_string="1.1.5"><![CDATA[<xf:macro name="option_form_block" arg-group="" arg-options="!" arg-containerBeforeHtml="">
+
+	<xf:set var="$hundred" value="0" />
+
+	<xf:if is="$options is not empty">
+		<xf:form action="{{ link('options/update') }}" ajax="true" class="block">
+			{$containerBeforeHtml|raw}
+			<div class="block-container">
+				<h3 class="block-formSectionHeader">
+					<span class="collapseTrigger collapseTrigger--block is-active" data-xf-click="toggle" data-target="< :up:next">
+						{{ phrase('fts_general_options') }}
+					</span>
+				</h3>
+				<div class="block-body block-body--collapsible is-active">
+					<xf:foreach loop="$options" value="$option">
+						<xf:if is="$option.Relations.FTSlider_Options.display_order < 100">
+							<xf:if is="$group">
+								<xf:set var="$curHundred" value="{{ floor($option.Relations.{$group.group_id}.display_order / 100) }}" />
+								<xf:if is="{{ $curHundred > $hundred }}">
+									<xf:set var="$hundred" value="{$curHundred}" />
+									<hr class="formRowSep" />
+								</xf:if>
+							</xf:if>
+							<xf:macro template="option_macros" name="option_row" arg-group="{$group}" arg-option="{$option}" />
+						</xf:if>
+					</xf:foreach>
+				</div>
+				<h3 class="block-formSectionHeader">
+					<span class="collapseTrigger collapseTrigger--block is-active" data-xf-click="toggle" data-target="< :up:next">
+						{{ phrase('fts_slider_options') }}
+					</span>
+				</h3>
+				<div class="block-body block-body--collapsible is-active">
+					<xf:foreach loop="$options" value="$option">
+						<xf:if is="$option.Relations.FTSlider_Options.display_order >= 100 AND $option.Relations.FTSlider_Options.display_order < 200">
+							<xf:if is="$group">
+								<xf:set var="$curHundred" value="{{ floor($option.Relations.{$group.group_id}.display_order / 100) }}" />
+								<xf:if is="{{ $curHundred > $hundred }}">
+									<xf:set var="$hundred" value="{$curHundred}" />
+									<hr class="formRowSep" />
+								</xf:if>
+							</xf:if>
+							<xf:macro template="option_macros" name="option_row" arg-group="{$group}" arg-option="{$option}" />
+						</xf:if>
+					</xf:foreach>
+				</div>
+				<h3 class="block-formSectionHeader">
+					<span class="collapseTrigger collapseTrigger--block is-active" data-xf-click="toggle" data-target="< :up:next">
+						{{ phrase('fts_nodes_options') }}
+					</span>
+				</h3>               
+				<div class="block-body block-body--collapsible is-active">
+					<xf:foreach loop="$options" value="$option">
+						<xf:if is="$option.Relations.FTSlider_Options.display_order >= 200 AND $option.Relations.FTSlider_Options.display_order < 300">
+							<xf:if is="$group">
+								<xf:set var="$curHundred" value="{{ floor($option.Relations.{$group.group_id}.display_order / 100) }}" />
+								<xf:if is="{{ $curHundred > $hundred }}">
+									<xf:set var="$hundred" value="{$curHundred}" />
+									<hr class="formRowSep" />
+								</xf:if>
+							</xf:if>
+							<xf:macro template="option_macros" name="option_row" arg-group="{$group}" arg-option="{$option}" />
+						</xf:if>
+					</xf:foreach>
+				</div>
+				<h3 class="block-formSectionHeader">
+					<span class="collapseTrigger collapseTrigger--block is-active" data-xf-click="toggle" data-target="< :up:next">
+						{{ phrase('fts_page_options') }}
+					</span>
+				</h3>               
+				<div class="block-body block-body--collapsible is-active">
+					<xf:foreach loop="$options" value="$option">
+						<xf:if is="$option.Relations.FTSlider_Options.display_order >= 300">
+							<xf:if is="$group">
+								<xf:set var="$curHundred" value="{{ floor($option.Relations.{$group.group_id}.display_order / 100) }}" />
+								<xf:if is="{{ $curHundred > $hundred }}">
+									<xf:set var="$hundred" value="{$curHundred}" />
+									<hr class="formRowSep" />
+								</xf:if>
+							</xf:if>
+							<xf:macro template="option_macros" name="option_row" arg-group="{$group}" arg-option="{$option}" />
+						</xf:if>
+					</xf:foreach>
+				</div>
+				<xf:submitrow sticky="true" icon="save" />
+			</div>
+		</xf:form>
+	</xf:if>
+</xf:macro>]]></template>
+  <template type="admin" title="widget_def_options_FTSlider_widget" version_id="1000600" version_string="1.0.6"><![CDATA[]]></template>
+  <template type="public" title="FTSlider.less" version_id="1010570" version_string="1.1.5"><![CDATA[/** 
+ * Featured threads slider designed by XenTR.Net.
+*/
+
+.ftslider 
+{	
+	.block-header 
+	{
+		margin-bottom: 3px;		
+	}
+}
+
+.ftslider_content > a 
+{	
+	text-transform: {{ property('FTSlider_text_transform') }};
+}
+.fullwidth-title 
+{
+	.xf-xtr_featured_slider();
+	
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	line-height: 15px;
+	
+	.ftslider_excerpt 
+	{
+		display: none;
+	}
+	
+	.ftslider_content .ftslider_excerpt a 
+	{
+		.xf-xtr_excerpts_color();
+		font-family: {{ property('FTSlider_excerptsfont') }};
+	}
+}
+
+.ftslider_content 
+{
+	padding: 0 @xf-paddingLarge;
+	margin: (@xf-paddingMedium - 1px) 0;
+	
+	>a 
+	{
+		display: block;
+		text-transform: {{ property('FTSlider_text_transform') }};
+		font-family: {{ property('FTSlider_titlefont') }};
+		.xf-xtr_slider_content_title();
+		cursor: pointer;
+
+		&:hover 
+		{
+			.xf-xtr_slider_content_title_hover();
+		}
+
+		&:after 
+		{
+			content: "\2192";
+			margin-left: (@xf-paddingMedium - 1px);
+		}
+	}
+}
+
+.ftslider_title_detail 
+{
+	.xf-xtr_featured_slider_avatar_bar();
+	
+	.ftslider-date 
+	{
+		padding: @xf-paddingSmall;
+		display: inline-block;
+		cursor: default;
+	}
+}
+
+.ftslider_statistics 
+{
+	float: right;
+	display: inline-block;
+	position: relative;
+	padding: @xf-paddingSmall;
+	cursor: default;
+	
+	i {
+		.xf-xtr_statistic_icon_style();
+		margin: (@xf-paddingMedium - 3px);
+	}
+}
+
+.fullwidth-slider .es-slides > li:hover .fullwidth-title .ftslider_excerpt 
+{
+	display: inline-block;
+	cursor: default;
+}
+
+
+// Featured threads slider mobile device
+<xf:if is="property('FTSlider_hide_mobile')">
+@media (max-width: (@xf-FTSlider_hide_mobile_responsive - 1))
+{
+	.ftslider { display: none; }
+}
+</xf:if>
+
+<xf:if is="property('FTSlider_avatar') == 'cycle'">
+.FTSlider_Avatar { border-radius: 50%; }
+</xf:if>
+
+<xf:if is="property('FTSlider_avatar') == 'square'">
+.FTSlider_Avatar { border-radius: 5%; }
+</xf:if>
+
+<xf:if is="property('FTSlider_title_infoblock')">
+.ftslider_title_detail { display: none; }
+</xf:if>
+
+<xf:if is="property('FTSlider_hide_thread_title')">
+.ftslider_content > a { display: none; }
+</xf:if>
+
+// Ever Slider
+.everslider 
+{
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.everslider .es-slides 
+{
+	position: relative;
+	width: 100000px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	-webkit-transform: translate3d(0,0,0);
+}
+
+.everslider .es-slides > li 
+{
+	position: relative;
+	float: left;
+	padding: 0!important;
+    border: 0!important;
+    margin: 0 {{ property('xtr_featured_slider_margin')}}px 0 0;
+    cursor: default; 
+	 -webkit-transform: translate3d(0,0,0);
+}
+
+.everslider.es-swipe-grab .es-slides > li 
+{
+	cursor: default; 
+    cursor: -webkit-grabbing; 
+    cursor: -moz-grabbing; 
+}
+
+.everslider .es-slides img 
+{
+	width: 100%;
+	height: auto;
+	max-width: none;
+}
+
+/* Preload */
+
+.everslider 
+{
+	background: url({{ base_url('styles/FTSlider/preload.gif') }});
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.everslider.es-slides-ready { background: none; }
+
+.es-slides { visibility: hidden; }
+
+.es-slides-ready .es-slides { visibility: visible; }
+
+/* Navigation */
+.es-navigation a 
+{
+    position: absolute;
+    top: 50%;
+    margin-top: -17px;
+    padding: (@xf-paddingMedium + 1px);
+}
+
+.es-navigation .es-prev { left: 0 }
+.es-navigation .es-next { right: 0 }
+
+.es-navigation .es-first,
+.es-navigation .es-last 
+{
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+    cursor: default;
+}
+
+.es-navigation a .ftslider_excerpt 
+{
+	display: block;
+	width: auto;
+	height: 20px;
+}
+
+/* fullwidth slider */
+
+.fullwidth-slider .es-slides > li 
+{
+	/* 1.6 ~ image width/height */
+	width: 300px;	
+	height: 189px !important;
+	min-height: 187px;
+	background: @xf-xtr_featured_slider--background-color;
+	overflow: hidden;
+}
+
+.fullwidth-slider .es-navigation a 
+{
+	.xf-xtr_navigation_button_color();
+}
+
+.fullwidth-slider .es-ticker 
+{
+	bottom: auto;
+	top: 0;
+	margin-right: 34px;
+}
+
+.fullwidth-slider .es-slides > li img  
+{
+	opacity: 1;
+	-webkit-transition: opacity .3s;
+	-moz-transition: opacity .3s;
+	-o-transition: opacity .3s;
+	transition: opacity .3s;
+}
+
+.fullwidth-slider .es-slides > li:hover img { opacity: 0.8; }
+
+[data-template="FTSlider_page"] .dataList-cell i { color: @xf-textColorDimmed; }]]></template>
+  <template type="public" title="FTSlider_delete" version_id="1000600" version_string="1.0.6"><![CDATA[<xf:title>{{ phrase('confirm_action') }}</xf:title>
+<xf:form action="{{ link('threads/ftslider-delete', $ftslider.Thread) }}" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:inforow rowtype="confirm">
+				{{ phrase('FTSlider_approve_delete') }}
+				<strong><a href="{{ link('threads', $ftslider.Thread) }}">{$ftslider.Thread.title}</a></strong>
+			</xf:inforow>
+		</div>
+		<xf:submitrow rowtype="simple" icon="delete" />
+	</div>
+</xf:form>]]></template>
+  <template type="public" title="FTSlider_edit_block" version_id="1000800" version_string="1.0.8"><![CDATA[<xf:if is="!$ftslider">
+	<xf:title>{{ phrase('FTSlider_detail') }}</xf:title>
+<xf:else />
+	<xf:title>{{ phrase('FTSlider_edit_title') }}</xf:title>
+</xf:if>
+
+<xf:breadcrumb source="$thread.getBreadcrumbs()" />
+<xf:css src="FTSlider_less" />
+
+<xf:form action="{{ link('threads/ftslider-edit', $thread) }}) }}"
+		 class="block" 
+		 upload="true" 
+		 ajax="true">
+
+	<div class="block-container">
+		<xf:macro name="edit_block"
+			      arg-ftslider="{$ftslider}" 
+				  arg-thread="{$thread}" />
+		
+		<xf:submitrow icon="save" sticky="true">
+			<xf:html>
+				<xf:if is="$ftslider AND {{ $xf.visitor.hasPermission('FTSlider_permissions', 'FTSlider_moderate') }}">
+					<xf:button href="{{ link('threads/ftslider-delete', $thread) }}"icon="delete"overlay="true">{{ phrase('FTSlider_unfeature') }}</xf:button>
+				</xf:if>
+			</xf:html>
+		</xf:submitrow>
+	</div>
+</xf:form>
+
+<xf:macro name="edit_block" 
+		  arg-ftslider="!" 
+		  arg-thread="!">
+	
+	<div class="block-body">
+		<xf:uploadrow 
+			name="upload" 
+		    accept=".gif,.jpeg,.jpg,.jpe,.png"
+			label="{{ phrase('FTSlider_upload_icon') }}"
+			explain="{{ phrase('FTSlider_icon_size', {
+					'width': $xf.options.FTSlider_size.width,
+					'height': $xf.options.FTSlider_size.height
+				     }) }} "/>
+	<xf:textboxrow name="ftslider[ftslider_imgurl]" value="{{ $ftslider.ftslider_imgurl }}"
+					   label="{{ phrase('FTSlider_image_url') }}" explain="{{ phrase('FTSlider_image_url_explain') }}" />
+		
+		<xf:if is="{$ftslider.image}">
+			<xf:formrow label="{{ phrase('FTSlider_current_icon') }}" rowtype="input">
+			<div class="inputGroup">
+			<xf:formrow rowtype="fullWidth noLabel">
+				<img src="{{ base_url($ftslider.image) }}" />
+			</xf:formrow>
+			</div>
+		</xf:formrow>
+		</xf:if>
+		
+    <div style="display:none;">
+		<xf:formrow label="{{ phrase('date') }}" rowtype="input">
+			<div class="inputGroup">
+				<xf:dateinput name="date"
+					value="{{ date($ftslider ? $ftslider.ftslider_date : $thread.post_date, 'picker') }}" />
+				<span class="inputGroup-splitter"></span>
+				<xf:textbox 
+				    type="time" 
+					name="time"
+					value="{{ date($ftslider ? $ftslider.ftslider_date : $thread.post_date, 'H:i') }}" />
+			  </div>
+		   </xf:formrow>
+		</div>	
+	<h2 class="block-formSectionHeader">
+		<span class="collapseTrigger collapseTrigger--block{{ $ftslider.ftslider_title ? ' is-active' : '' }}"
+				data-xf-click="toggle" data-target="< :up :next">
+			<span class="block-formSectionHeader-aligner">{{ phrase('FTSlider_excerpt') }}</span>
+		</span>
+	</h2>
+	<div class="block-body block-body--collapsible{{ $ftslider.ftslider_title ? ' is-active' : '' }}">
+		<xf:checkboxrow>
+			<xf:option name="custom_excerpt" value="1"
+				checked="{{ $ftslider.ftslider_title ? true : false  }}"
+				data-xf-init="disabler"
+				data-container="#Excerpt"
+				data-hide="false"
+				label="{{ phrase('FTSlider_use_custom_title_and_excerpt') }}" />
+		</xf:checkboxrow>
+
+		<div id="Excerpt">
+			<xf:textboxrow name="ftslider[ftslider_title]"
+				maxlength="{{ max_length('XF:Thread', 'title') }}" label="{{ phrase('FTSlider_title') }}"
+				value="{{ $ftslider.ftslider_title ? $ftslider.ftslider_title : $thread.title }}" />
+
+			<xf:textarearow name="ftslider[ftslider_excerpt]" rows="6" autosize="true"
+				maxlength="{$xf.options.messageMaxLength}" label="{{ phrase('FTSlider_content') }}"
+				value="{$ftslider.ftslider_excerpt}" placeholder="{$thread.FirstPost.message}" />
+		</div>
+	</div>
+	 </div>
+</xf:macro>]]></template>
+  <template type="public" title="FTSlider_feature_edit" version_id="1000800" version_string="1.0.8"><![CDATA[<xf:if is="!$ftslider">
+	<xf:title>{{ phrase('FTSlider_detail') }}</xf:title>
+<xf:else />
+	<xf:title>{{ phrase('FTSlider_edit_title') }}</xf:title>
+</xf:if>
+
+<xf:breadcrumb source="$thread.getBreadcrumbs()" />
+<xf:css src="FTSlider_less" />
+
+<xf:form action="{{ link('threads/ftslider-edit', $thread) }}) }}"
+		 class="block" 
+		 upload="true" 
+		 ajax="true">
+
+	<div class="block-container">
+		<xf:macro name="edit_block"
+			      arg-ftslider="{$ftslider}" 
+				  arg-thread="{$thread}" />
+		
+		<xf:submitrow icon="save" sticky="true">
+			<xf:html>
+				<xf:if is="$ftslider AND {{ $xf.visitor.hasPermission('FTSlider_permissions', 'FTSlider_moderate') }}">
+					<xf:button href="{{ link('threads/ftslider-delete', $thread) }}"icon="delete"overlay="true">{{ phrase('FTSlider_unfeature') }}</xf:button>
+				</xf:if>
+			</xf:html>
+		</xf:submitrow>
+	</div>
+</xf:form>
+
+<xf:macro name="edit_block" 
+		  arg-ftslider="!" 
+		  arg-thread="!">
+	
+	<div class="block-body">
+		<xf:uploadrow 
+			name="upload" 
+		    accept=".gif,.jpeg,.jpg,.jpe,.png"
+			label="{{ phrase('FTSlider_upload_icon') }}"
+			explain="{{ phrase('FTSlider_icon_size', {
+					'width': $xf.options.FTSlider_size.width,
+					'height': $xf.options.FTSlider_size.height
+				     }) }} "/>
+	<xf:textboxrow name="ftslider[ftslider_imgurl]" value="{{ $ftslider.ftslider_imgurl }}"
+					   label="{{ phrase('FTSlider_image_url') }}" explain="{{ phrase('FTSlider_image_url_explain') }}" />
+		
+		<xf:if is="{$ftslider.image}">
+			<xf:formrow label="{{ phrase('FTSlider_current_icon') }}" rowtype="input">
+			<div class="inputGroup">
+			<xf:formrow rowtype="fullWidth noLabel">
+				<img src="{{ base_url($ftslider.image) }}" />
+			</xf:formrow>
+			</div>
+		</xf:formrow>
+		</xf:if>
+		
+    <div style="display:none;">
+		<xf:formrow label="{{ phrase('date') }}" rowtype="input">
+			<div class="inputGroup">
+				<xf:dateinput name="date"
+					value="{{ date($ftslider ? $ftslider.ftslider_date : $thread.post_date, 'picker') }}" />
+				<span class="inputGroup-splitter"></span>
+				<xf:textbox 
+				    type="time" 
+					name="time"
+					value="{{ date($ftslider ? $ftslider.ftslider_date : $thread.post_date, 'H:i') }}" />
+			  </div>
+		   </xf:formrow>
+		</div>	
+	<h2 class="block-formSectionHeader">
+		<span class="collapseTrigger collapseTrigger--block{{ $ftslider.ftslider_title ? ' is-active' : '' }}"
+				data-xf-click="toggle" data-target="< :up :next">
+			<span class="block-formSectionHeader-aligner">{{ phrase('FTSlider_excerpt') }}</span>
+		</span>
+	</h2>
+	<div class="block-body block-body--collapsible{{ $ftslider.ftslider_title ? ' is-active' : '' }}">
+		<xf:checkboxrow>
+			<xf:option name="custom_excerpt" value="1"
+				checked="{{ $ftslider.ftslider_title ? true : false  }}"
+				data-xf-init="disabler"
+				data-container="#Excerpt"
+				data-hide="false"
+				label="{{ phrase('FTSlider_use_custom_title_and_excerpt') }}" />
+		</xf:checkboxrow>
+
+		<div id="Excerpt">
+			<xf:textboxrow name="ftslider[ftslider_title]"
+				maxlength="{{ max_length('XF:Thread', 'title') }}" label="{{ phrase('FTSlider_title') }}"
+				value="{{ $ftslider.ftslider_title ? $ftslider.ftslider_title : $thread.title }}" />
+
+			<xf:textarearow name="ftslider[ftslider_excerpt]" rows="6" autosize="true"
+				maxlength="{$xf.options.messageMaxLength}" label="{{ phrase('FTSlider_content') }}"
+				value="{$ftslider.ftslider_excerpt}" placeholder="{$thread.FirstPost.message}" />
+		</div>
+	</div>
+	 </div>
+</xf:macro>]]></template>
+  <template type="public" title="FTSlider_grid_view_layout.less" version_id="1010570" version_string="1.1.5"><![CDATA[.ftsliders-body .fts-grid-view
+{
+	.m-listPlain();
+	.m-clearFix();
+	display: flex;
+	flex-wrap: wrap;
+	margin: 3px;
+
+	.ftslider-image-link
+	{
+		display: block;
+		position: relative;
+		overflow: hidden;
+		transition: all .5s;
+		
+		&:hover
+		{
+			transform: scale(1.07);
+		}
+	}
+
+	.ftslider-container
+	{
+		flex: 1 1 33.3%;  // change to 33,3% for 3 columns
+		max-width: 33.3%; // change to 33,3% for 3 columns 
+		padding: 5px;
+
+		@media (max-width: 1200px) { flex: 1 1 33.3%; max-width: 33.3%;} // add/change max-width: 33%; for 3 columns 
+		@media (max-width: @xf-responsiveWide) { flex: 1 1 33.3%; max-width: 33.3%;} // add/change max-width: 33,3%; for 3 columns 
+		@media (max-width: @xf-responsiveMedium) { flex: 1 1 50%; max-width: 50%;}
+		@media (max-width: @xf-responsiveNarrow) { flex: 1 1 100%; max-width: 100%;}		
+		
+		&.is-unread
+		{
+			.ftslider-list .ftslider-title
+			{
+				font-weight: @xf-fontWeightHeavy;
+			}
+		}	
+		
+		&.is-mod-selected
+		{
+			background: @xf-inlineModHighlightColor !important;
+			opacity: 1;
+		}
+		
+		&.is-moderated
+		{
+			background: @xf-contentHighlightBg;
+			
+			.ftslider-list .ftslider-title
+			{
+				font-style: italic;
+			}
+		}
+		
+		&.is-deleted
+		{
+			opacity: .7;
+
+			.ftslider-list .ftslider-title
+			{
+				text-decoration: line-through;
+			}
+		}
+	}
+
+	.ftslider-link
+	{
+		position: relative;
+		overflow: hidden;
+		
+		&.large-ftslider-link
+		{
+			.ftslider-image-link:after
+			{
+				height: auto;
+			}
+		}
+		
+		img 
+		{
+			transition: all 0.5s;
+			width: 100%;
+			
+			&:hover {
+				transform: scale(1.1);
+			}
+		}	
+	}
+	
+	.ftslider-readmore
+	{
+		float: right;
+		font-size: 14px;
+		padding-right: 6px;
+		font-style: italic;
+	}
+	
+	.ftslider-statistics
+	{
+		float: right;
+		padding-right: 6px;
+	}	
+	
+	.ftslider-list
+	{
+		max-width: 100%;
+		position: relative;
+		padding: 10px 0px;
+		bottom: 0px;
+		display: block;
+		pointer-events: auto;
+		
+		.ftslider-sub-header
+		{
+			padding-bottom: 5px;
+			font-size: @xf-fontSizeSmaller;
+			font-style: italic;
+			color: @xf-textColorMuted;
+		}
+		
+		.ftslider-title
+		{
+			display: inline-block;
+			padding-bottom: 5px;
+			font-size: 16px;
+			font-weight: 400;
+			line-height: 1.4;
+			color: @xf-linkColor;
+
+		}
+		
+		h3
+		{
+			padding: 0;
+			margin: 0;
+		}
+		
+		.ftslider-content
+		{
+			padding-top: 5px;	
+		}	
+		
+		.listInline.listInline--bullet
+		{
+			color: #bbb;
+			font-size: 11px;
+		}
+		
+		.publish-date,
+		.category-title	
+		{
+			color: @xf-textColorMuted;
+			font-size: 11px;
+		}
+		
+		.grid-item-minor
+		{
+			font-size: @xf-fontSizeSmaller;
+			color: @xf-textColorMuted;
+
+			.m-hiddenLinks();
+		}
+		
+		.grid-item-extraInfo
+		{
+			.m-listPlain();
+			float: right;
+
+			> li
+			{
+				float: left;
+				margin-left: 8px;
+			}
+
+			input[type=checkbox]
+			{
+				.m-checkboxAligner();
+			}
+		}
+		
+		.grid-item-articleCustomFieldsOnList
+		{
+			font-size: @xf-fontSizeSmaller;
+			margin-top: @xf-paddingSmall;
+			margin-bottom: @xf-paddingSmall;
+		}		
+	}
+}
+
+@media (max-width:@xf-responsiveWide)
+{
+	
+	.fts-grid-view .grid-image-link
+	{
+		min-height: auto;
+	}
+	
+	.gridContainerFTSliderGridView .fts-grid-view .grid-item img { width: 100%; }
+
+	.fts-grid-view .ftslider-list
+	{
+		padding: 8px;
+		max-width: 100%;
+		bottom: 0;
+	}
+
+	.fts-grid-view .ftslider-list .ftslider-title
+	{
+		padding-bottom: 0px;
+		font-size: 16px;
+	}
+}
+
+@media (max-width: @xf-responsiveMedium)
+{
+	.fts-grid-view .ftslider-container
+	{
+		float: none;
+		width: auto;
+		padding: 0;
+		margin-bottom: 10px;
+	}
+}
+
+@media (max-width:450px)
+{
+	.fts-grid-view .ftslider-link .ftslider-image-link
+	{
+		// height: 150px !important;
+		// min-height: 150px !important;
+	}
+}]]></template>
+  <template type="public" title="FTSlider_js" version_id="1010070" version_string="1.1.0"><![CDATA[$(document).ready(function(){	
+			
+			$('#fullwidth_slider').everslider({
+				mode: 'carousel',
+				effect: '{{$xf.options.FTSlider_effect}}',
+				fadeEasing: 'linear',
+				fadeDuration: {{$xf.options.FTSlider_fade_duration}},
+				fadeDelay: {{$xf.options.FTSlider_fade_delay}},
+				fadeDirection: {{$xf.options.FTSlider_fadeDirection}},
+				moveSlides: {{$xf.options.FTSlider_skip_thread}},
+				slideEasing: 'easeInOutCubic',
+				slideDuration: {{$xf.options.FTSlider_transit_speed}},
+				navigation: {{$xf.options.FTSlider_navigation}},
+				touchSwipe: false,
+				keyboard: true,
+				swipeThreshold: 10,
+				nextNav: '<span class="alt-arrow"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>',
+				prevNav: '<span class="alt-arrow"><i class="fa fa-chevron-left" aria-hidden="true"></i></span>',
+				ticker: {{$xf.options.FTSlider_auto}},
+				tickerAutoStart: true,
+				tickerHover: {{$xf.options.xtr_mousehover}},
+				tickerTimeout: {{$xf.options.FTSlider_ticker_timeout}}
+			});
+			
+			$('#fullwidth_slider_fade').everslider({
+				mode: 'carousel',
+				effect: 'fade',
+				moveSlides: 1,
+				fadeEasing: 'linear',
+				fadeDuration: 500,
+				fadeDelay: 200,
+				fadeDirection: 1,
+				navigation: true,
+				touchSwipe: false,
+				keyboard: true,
+				swipeThreshold: 10,
+				nextNav: '<span class="alt-arrow"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>',
+				prevNav: '<span class="alt-arrow"><i class="fa fa-chevron-left" aria-hidden="true"></i></span>',
+				ticker: true,
+				tickerAutoStart: false,
+				tickerTimeout: 2000
+			});
+   });]]></template>
+  <template type="public" title="FTSlider_list_macros" version_id="1010400" version_string="1.1.4"><![CDATA[<xf:macro name="grid_view_layout"
+	arg-ftslider="!"
+	arg-category="{{ null }}"
+	arg-filterPrefix="{{ false }}"
+	arg-showWatched="{{ true }}"
+	arg-allowInlineMod="{{ true }}"
+	arg-chooseName=""
+	arg-extraInfo="">
+
+	<xf:css src="structured_list.less" />
+	<xf:css src="message.less" />
+	<li class="ftslider-container">
+		<div class="ftslider-link large-ftslider-link">
+			<a class="ftslider-image-link" href="{{ link('threads', $ftslider.Thread) }}">
+				<img src="{{ base_url($ftslider.ftslider_imgurl ? $ftslider.ftslider_imgurl : $ftslider.image) }}" 
+				alt="{{ $ftslider.ftslider_title ? $ftslider.ftslider_title : $ftslider.Thread.title }}" 
+				title="{{ $ftslider.ftslider_title ? $ftslider.ftslider_title : $ftslider.Thread.title }}">	
+			</a>
+
+			<div class="ftslider-list">
+				<div class="ftslider-sub-header">
+					<ul class="listInline listInline--bullet">
+						<li>
+							<xf:fa icon="fa-user" title="{{ phrase('thread_starter')|for_attr }}" />
+							<span class="u-srOnly">{{ phrase('thread_starter') }}</span>
+
+							<xf:username user="{$ftslider.Thread.User}" defaultname="{$ftslider.Thread.username}" class="u-concealed" />
+						</li>
+						<li>
+							<xf:fa icon="fa-clock" title="{{ phrase('start_date')|for_attr }}" />
+							<span class="u-srOnly">{{ phrase('start_date') }}</span>
+
+							<a href="{{ link('threads', $ftslider) }}" class="u-concealed"><xf:date time="{$ftslider.ftslider_date}" /></a>
+						</li>
+						<li>
+							<span class="ftslider-statistics">
+								<i class="{{ property('xtr_statistics_icon_view') }}"></i> {$ftslider.Thread.view_count|NUMBER}
+								<i class="{{ property('xtr_statistics_icon_reply') }}"></i> {$ftslider.Thread.reply_count|NUMBER}
+							</span>
+						</li>
+					</ul>
+				</div>
+				
+				<h3>
+					<span class="ftslider-title">
+						<xf:if is="{$xf.options.FTSlider_hide_prefix}">	
+							<xf:if is="$ftslider.Thread.prefix_id">{{ prefix('thread', $ftslider.Thread, 'html', '') }}</xf:if>
+						</xf:if> 
+						<a href="{{ link('threads', $ftslider.Thread) }}" class="" data-tp-primary="on">{{ $ftslider.ftslider_title ? $ftslider.ftslider_title : $ftslider.Thread.title }}</a>
+					</span>		
+				</h3>
+
+				<div class="ftslider-content">
+					{{ snippet($ftslider.Thread.FirstPost.message, $xf.options.FTSliderPage_contentLimit, {'stripQuote': true}) }} 
+					<span class="ftslider-readmore">
+						<a href="{{ link('threads', $ftslider.Thread) }}" data-xf-init="tooltip" title="{{$ftslider.Thread.title}}">		
+				   			<i class="far fa-book-reader"></i> {{ phrase('FTSlider_read_more') }}
+						</a>	
+					</span>	
+				</div>
+			</div>			
+		</div>
+	</li>
+</xf:macro>]]></template>
+  <template type="public" title="FTSlider_page" version_id="1010300" version_string="1.1.3"><![CDATA[<xf:if is="$ftsliders is not empty && $xf.options.enableFTSliderpage">
+
+	<xf:title>{{ phrase('FTSlider_featured_thread') }}</xf:title>
+	<xf:description>{{ phrase('FTSlider_featured_thread_desc') }}</xf:description>
+
+	<xf:if is="$xf.options.enableFTSlideronPage">	
+		<xf:widget key="XD_FTSlider_widget" />
+		<xf:css>
+		.ftslider .block-header {
+			display: none;
+		}
+		</xf:css>
+	</xf:if>
+
+	<xf:css src="FTSlider_grid_view_layout.less" />
+	
+	<xf:if is="$xf.options.FTSliderPage_nav">	
+		<div class="block-outer block-outer--before">
+			<xf:pagenav
+					page="{$page}" perpage="{$perPage}" total="{$total}"
+					link="all-features" wrapperclass="block-outer-main" />
+			<xf:showignored wrapperclass="block-outer-opposite" />
+		</div>
+	</xf:if>
+	
+	<div class="block">
+		<div class="block-container">
+			<div class="block-body">
+				<xf:if is="$ftsliders is not empty">
+						<div class="ftsliders-body">		
+							<ul class="fts-grid-view">
+								<xf:foreach loop="$ftsliders" value="$ftslider">
+									<xf:macro template="FTSlider_list_macros" 
+											  name="grid_view_layout"
+											  arg-filterPrefix="{{ true }}"									  
+											  arg-ftslider="{$ftslider}" />
+								</xf:foreach>
+							</ul>
+						</div>
+				</xf:if>
+			</div>
+		</div>
+
+		<div class="block-outer block-outer--after">
+			<xf:pagenav
+				page="{$page}" perpage="{$perPage}" total="{$total}"
+				link="all-features" wrapperclass="block-outer-main" />
+			<xf:showignored wrapperclass="block-outer-opposite" />
+		</div>
+	</div>
+	
+	<xf:widgetpos id="xtr_ftslider_sidenav" position="sidenav" />
+	
+</xf:if>]]></template>
+  <template type="public" title="FTSlider_widget_block" version_id="1010070" version_string="1.1.0"><![CDATA[<xf:if is="$ftsliders is not empty && $xf.visitor.hasPermission('FTSlider_permissions','FTSlider_view')">
+	<xf:css src="FTSlider.less" />
+	<xf:js src="FTSlider/jquery.fts.1.0.js">
+	<xf:js src="FTSlider/jquery.fts.wheel.js" />
+	<xf:js src="FTSlider/jquery.fts.min.js" />
+		{{ include('FTSlider_js') }}
+	</xf:js>
+	<div class="block ftslider">
+	<div class="block-container">
+		<xf:if is="{$xf.options.FTSlider_hide_block}">	
+			<h3 class="block-header">{{$xf.options.FTSlider_title}}</h3>	
+		</xf:if>
+		<div class="block-body">	
+			<div id="fullwidth_slider" class="everslider fullwidth-slider">
+				<ul class="es-slides">
+					<xf:foreach loop="$ftsliders" value="$ftslider" i="$key">
+						<li>
+							<a href="{{ link('threads', $ftslider.Thread) }}">
+								<img src="{{ base_url($ftslider.ftslider_imgurl ? $ftslider.ftslider_imgurl : $ftslider.image) }}" 
+								alt="{{ $ftslider.ftslider_title ? $ftslider.ftslider_title : $ftslider.Thread.title }}" 
+								title="{{ $ftslider.ftslider_title ? $ftslider.ftslider_title : $ftslider.Thread.title }}">	
+							</a>
+							<div class="fullwidth-title">
+								<div class="ftslider_title_detail">
+									<xf:if is="{$xf.options.FTSlider_hide_avatar}">	
+										<xf:avatar user="$ftslider.Thread.User" size="xxs"class="FTSlider_Avatar " defaultname="{$fallbackName}" itemprop="image" />	
+									</xf:if>
+									<xf:if is="property('FTSlider_title_detail') == 'show'">
+									{{ $ftslider.Thread.User ? $ftslider.Thread.User.username : $ftslider.Thread.username }}
+										<xf:date time="$ftslider.ftslider_date" class="ftslider-date" data-full-old-date="true" />
+									</xf:if>	
+									<xf:if is="{$xf.options.FTSlider_hide_count}">	
+										<div class="ftslider_statistics">
+											<i class="{{ property('xtr_statistics_icon_view') }}"></i>  {$ftslider.Thread.view_count|NUMBER}
+											<i class="{{ property('xtr_statistics_icon_reply') }}"></i>  {$ftslider.Thread.reply_count|NUMBER}
+										</div>
+									</xf:if>
+								</div>
+								<div class="ftslider_content">
+									<a href="{{ link('threads', $ftslider.Thread) }}" title="{{ $ftslider.ftslider_title ? $ftslider.ftslider_title : $ftslider.Thread.title }}">
+										<xf:if is="{$xf.options.FTSlider_hide_prefix}">	
+											<xf:if is="$ftslider.Thread.prefix_id">{{ prefix('thread', $ftslider.Thread, 'html', '') }}</xf:if>
+										</xf:if> 
+										{{ $ftslider.ftslider_title ? $ftslider.ftslider_title : $ftslider.Thread.title }}
+									</a>	
+									
+									<xf:if is="property('FTSlider_hide_excerpts') == 'show'">
+										<div class="ftslider_excerpt"><a href="{{ link('threads', $ftslider.Thread) }}">{$ftslider.ftslider_excerpt}</a></div>
+									</xf:if>	
+								</div>	
+							</div>
+						</li>
+					</xf:foreach>
+				</ul>
+			</div>
+		</div>
+	</div>
+	</div>	
+</xf:if>]]></template>
+</templates>

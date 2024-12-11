@@ -234,7 +234,14 @@ return array(
 			'children' => $__vars['nodeTree'],
 			'extras' => $__vars['nodeExtras'],
 		), $__vars) . '
-' . $__templater->widgetPosition('forum_list_below_nodes', array()) . '
+' . $__templater->widgetPosition('forum_list_below_nodes', array()) . '  
+           ';
+		if (($__vars['xf']['options']['FTSlider_position'] == 'belownodes') AND $__vars['xf']['options']['FTSlider_enable']) {
+			$__finalCompiled .= '
+                 ' . $__templater->renderWidget('XD_FTSlider_widget', array(), array()) . '
+            ';
+		}
+		$__finalCompiled .= '
 
 ';
 		$__templater->setPageParam('head.' . 'rss_forum', $__templater->preEscaped('<link rel="alternate" type="application/rss+xml" title="' . $__templater->filter('RSS feed for ' . $__vars['xf']['options']['boardTitle'] . '', array(array('for_attr', array()),), true) . '" href="' . $__templater->func('link', array('forums/index.rss', '-', ), true) . '" />'));

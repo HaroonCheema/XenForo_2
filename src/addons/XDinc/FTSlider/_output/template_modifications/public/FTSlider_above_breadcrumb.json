@@ -1,0 +1,9 @@
+{
+    "template": "PAGE_CONTAINER",
+    "description": "Featured Thread Slider Above Breadcrumb",
+    "execution_order": 10,
+    "enabled": false,
+    "action": "str_replace",
+    "find": "<xf:ad position=\"container_breadcrumb_top_above\" />",
+    "replace": "<xf:if is=\"{$xf.options.FTSlider_position} == 'abovebreadcrumb' &&\n\t\t\t\t\t\t{$xf.options.FTSlider_enable} &&\n\t\t\t\t\t    $template == 'forum_list'\">\n                 <xf:widget key=\"XD_FTSlider_widget\" />\n           </xf:if>  \n\n$0"
+}

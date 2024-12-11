@@ -1,0 +1,13 @@
+{
+    "edit_format": "radio",
+    "edit_format_params": "ASC={{ phrase('ascending') }}\nDESC={{ phrase('descending') }}",
+    "data_type": "string",
+    "sub_options": [],
+    "validation_class": "",
+    "validation_method": "",
+    "advanced": false,
+    "default_value": "DESC",
+    "relations": {
+        "FTSlider_Options": 360
+    }
+}

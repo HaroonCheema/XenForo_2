@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<options>
+  <option option_id="FTSliderOrderBy" edit_format="radio" data_type="string" advanced="0">
+    <default_value>DESC</default_value>
+    <edit_format_params>ASC={{ phrase('ascending') }}
+DESC={{ phrase('descending') }}</edit_format_params>
+    <relation group_id="FTSlider_Options" display_order="360"/>
+  </option>
+  <option option_id="FTSliderOrderType" edit_format="select" data_type="string" advanced="0">
+    <default_value>Thread.post_date</default_value>
+    <edit_format_params>Thread.post_date={{ phrase('post_date') }}
+Thread.FirstPost.last_edit_date={{ phrase('edit_date') }}
+Thread.last_post_date={{ phrase('last_reply_date') }}
+ftslider_time={{ phrase('FTSlider_featured_date') }}</edit_format_params>
+    <relation group_id="FTSlider_Options" display_order="350"/>
+  </option>
+  <option option_id="FTSliderPage_contentLimit" edit_format="spinbox" data_type="positive_integer" advanced="0">
+    <default_value>500</default_value>
+    <edit_format_params>min=0
+step=5</edit_format_params>
+    <relation group_id="FTSlider_Options" display_order="320"/>
+  </option>
+  <option option_id="FTSliderPage_nav" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>0</default_value>
+    <relation group_id="FTSlider_Options" display_order="330"/>
+  </option>
+  <option option_id="FTSlider_auto" edit_format="radio" data_type="string" advanced="0">
+    <default_value>true</default_value>
+    <edit_format_params>true={{ phrase('Enable') }}
+false={{ phrase('Disable') }}</edit_format_params>
+    <relation group_id="FTSlider_Options" display_order="100"/>
+  </option>
+  <option option_id="FTSlider_count" edit_format="spinbox" data_type="string" advanced="0">
+    <default_value>8</default_value>
+    <edit_format_params>min=2</edit_format_params>
+    <relation group_id="FTSlider_Options" display_order="90"/>
+  </option>
+  <option option_id="FTSlider_effect" edit_format="radio" data_type="string" advanced="0">
+    <default_value>none</default_value>
+    <edit_format_params>fade={{ phrase('Enable') }}
+none={{ phrase('Disable') }}</edit_format_params>
+    <relation group_id="FTSlider_Options" display_order="120"/>
+  </option>
+  <option option_id="FTSlider_enable" edit_format="onoff" data_type="string" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="FTSlider_Options" display_order="10"/>
+  </option>
+  <option option_id="FTSlider_fadeDirection" edit_format="radio" data_type="string" advanced="0">
+    <default_value>1</default_value>
+    <edit_format_params>1={{ phrase('From_right') }}
+-1={{ phrase('From_left') }}</edit_format_params>
+    <relation group_id="FTSlider_Options" display_order="130"/>
+  </option>
+  <option option_id="FTSlider_fade_delay" edit_format="spinbox" data_type="string" advanced="0">
+    <default_value>200</default_value>
+    <edit_format_params>min=50
+step=5</edit_format_params>
+    <relation group_id="FTSlider_Options" display_order="150"/>
+  </option>
+  <option option_id="FTSlider_fade_duration" edit_format="spinbox" data_type="string" advanced="0">
+    <default_value>500</default_value>
+    <edit_format_params>min=200
+step=5</edit_format_params>
+    <relation group_id="FTSlider_Options" display_order="140"/>
+  </option>
+  <option option_id="FTSlider_hide_avatar" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="FTSlider_Options" display_order="70"/>
+  </option>
+  <option option_id="FTSlider_hide_block" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="FTSlider_Options" display_order="20"/>
+  </option>
+  <option option_id="FTSlider_hide_count" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="FTSlider_Options" display_order="60"/>
+  </option>
+  <option option_id="FTSlider_hide_indicator" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>0</default_value>
+    <relation group_id="FTSlider_Options" display_order="50"/>
+  </option>
+  <option option_id="FTSlider_hide_prefix" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="FTSlider_Options" display_order="40"/>
+  </option>
+  <option option_id="FTSlider_limit" edit_format="spinbox" data_type="unsigned_integer" advanced="0">
+    <default_value>180</default_value>
+    <edit_format_params>min=0
+step=5</edit_format_params>
+    <relation group_id="FTSlider_Options" display_order="160"/>
+  </option>
+  <option option_id="FTSlider_navigation" edit_format="radio" data_type="string" advanced="0">
+    <default_value>true</default_value>
+    <edit_format_params>true={{ phrase('Enable') }}
+false={{ phrase('Disable') }}</edit_format_params>
+    <relation group_id="FTSlider_Options" display_order="110"/>
+  </option>
+  <option option_id="FTSlider_nodes" edit_format="callback" data_type="array" advanced="0">
+    <default_value>[]</default_value>
+    <edit_format_params>XF\Option\Forum::renderSelectMultiple</edit_format_params>
+    <sub_options>*</sub_options>
+    <relation group_id="FTSlider_Options" display_order="200"/>
+  </option>
+  <option option_id="FTSlider_perpage_count" edit_format="spinbox" data_type="integer" advanced="0">
+    <default_value>18</default_value>
+    <edit_format_params>min=1</edit_format_params>
+    <relation group_id="FTSlider_Options" display_order="340"/>
+  </option>
+  <option option_id="FTSlider_position" edit_format="radio" data_type="string" advanced="0">
+    <default_value>abovenodes</default_value>
+    <edit_format_params>abovebreadcrumb={{ phrase('widget_pos.forum_list_above_breadcrumb') }}
+belowbreadcrumb={{ phrase('widget_pos.forum_list_below_breadcrumb') }}
+abovenodes={{ phrase('widget_pos.forum_list_above_nodes') }}
+belownodes={{ phrase('widget_pos.forum_list_below_nodes') }}
+sidebar={{ phrase('widget_pos.forum_list_sidebar') }}
+widget={{ phrase('widget_key_use') }}</edit_format_params>
+    <relation group_id="FTSlider_Options" display_order="80"/>
+  </option>
+  <option option_id="FTSlider_size" edit_format="template" data_type="array" advanced="0">
+    <default_value>{"width":"396","height":"250"}</default_value>
+    <edit_format_params>option_template_attachmentMaxDimensions</edit_format_params>
+    <sub_options>width
+height</sub_options>
+    <relation group_id="FTSlider_Options" display_order="95"/>
+  </option>
+  <option option_id="FTSlider_skip_thread" edit_format="spinbox" data_type="integer" advanced="0">
+    <default_value>1</default_value>
+    <edit_format_params>min=1
+max=4</edit_format_params>
+    <relation group_id="FTSlider_Options" display_order="185"/>
+  </option>
+  <option option_id="FTSlider_ticker_timeout" edit_format="spinbox" data_type="unsigned_integer" advanced="0">
+    <default_value>2000</default_value>
+    <edit_format_params>min=100
+step=100</edit_format_params>
+    <relation group_id="FTSlider_Options" display_order="170"/>
+  </option>
+  <option option_id="FTSlider_title" edit_format="textbox" data_type="string" advanced="0">
+    <default_value>Featured Threads</default_value>
+    <relation group_id="FTSlider_Options" display_order="30"/>
+  </option>
+  <option option_id="FTSlider_transit_speed" edit_format="spinbox" data_type="unsigned_integer" advanced="0">
+    <default_value>700</default_value>
+    <edit_format_params>min=500
+step=200</edit_format_params>
+    <relation group_id="FTSlider_Options" display_order="180"/>
+  </option>
+  <option option_id="enableFTSlider_hover" edit_format="radio" data_type="string" advanced="0">
+    <default_value>Hover</default_value>
+    <edit_format_params>Hover={{ phrase('Enable') }}
+noHover={{ phrase('Disable') }}</edit_format_params>
+    <relation group_id="FTSlider_Options" display_order="195"/>
+  </option>
+  <option option_id="enableFTSlideronPage" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>0</default_value>
+    <relation group_id="FTSlider_Options" display_order="310"/>
+  </option>
+  <option option_id="enableFTSliderpage" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="FTSlider_Options" display_order="300"/>
+  </option>
+  <option option_id="xtr_mousehover" edit_format="radio" data_type="string" advanced="0">
+    <default_value>true</default_value>
+    <edit_format_params>true={{ phrase('Enable') }}
+false={{ phrase('Disable') }}</edit_format_params>
+    <relation group_id="FTSlider_Options" display_order="190"/>
+  </option>
+</options>

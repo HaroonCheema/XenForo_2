@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style_properties>
+  <style_property property_name="FTSlider_avatar" group_name="FTSlider_style_options" title="Featured Slider Avatar Style" property_type="value" value_type="radio" value_group="Settings" display_order="20">
+    <value_parameters>cycle ={{ phrase('Cycle') }}
+square ={{ phrase('Square') }}</value_parameters>
+    <value>"square"</value>
+  </style_property>
+  <style_property property_name="FTSlider_excerptsfont" group_name="FTSlider_style_options" title="Featured Thread Excerpts Font" description="The font list for your thread excerpts." property_type="value" value_type="string" value_group="Font" display_order="110">
+    <value>"'Segoe UI', 'Helvetica Neue', Helvetica, Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', sans-serif"</value>
+  </style_property>
+  <style_property property_name="FTSlider_hide_excerpts" group_name="FTSlider_style_options" title="Hide Featured Thread Excerpts" description="Hide thread excerpts block." property_type="value" value_type="radio" value_group="Settings" display_order="50">
+    <value_parameters>hide={{ phrase('Hide') }}
+show={{ phrase('Show') }}</value_parameters>
+    <value>"show"</value>
+  </style_property>
+  <style_property property_name="FTSlider_hide_mobile" group_name="FTSlider_style_options" title="FTSlider Hide Mobile" property_type="value" value_type="boolean" depends_on="FTSliderMobile" value_group="FTSliderMobile" display_order="0">
+    <value>0</value>
+  </style_property>
+  <style_property property_name="FTSlider_hide_mobile_responsive" group_name="FTSlider_style_options" title="Hide On Mobile Device Responsive" description="Hide featured threads slider on mobile device." property_type="value" value_type="radio" depends_on="FTSlider_hide_mobile" value_group="FTSliderMobile" display_order="10">
+    <value_parameters>@xf-responsiveWide=Responsive Wide
+@xf-responsiveMedium=Responsive Medium
+@xf-responsiveNarrow=Responsive Narrow</value_parameters>
+    <value>"@xf-responsiveNarrow"</value>
+  </style_property>
+  <style_property property_name="FTSlider_hide_thread_title" group_name="FTSlider_style_options" title="Hide Featured Thread Title" description="Hide thread title block." property_type="value" value_type="boolean" value_group="Settings" display_order="60">
+    <value>0</value>
+  </style_property>
+  <style_property property_name="FTSlider_text_transform" group_name="FTSlider_style_options" title="Featured Title Text-Transform" property_type="value" value_type="radio" value_group="Settings" display_order="70">
+    <value_parameters>uppercase ={{ phrase('Uppercase') }}
+inherit ={{ phrase('Default') }}</value_parameters>
+    <value>"uppercase"</value>
+  </style_property>
+  <style_property property_name="FTSlider_title_detail" group_name="FTSlider_style_options" title="Hide User and Time" description="Hide user and threads time on slider." property_type="value" value_type="radio" value_group="Settings" display_order="30">
+    <value_parameters>hide={{ phrase('Hide') }}
+show={{ phrase('Show') }}</value_parameters>
+    <value>"show"</value>
+  </style_property>
+  <style_property property_name="FTSlider_title_infoblock" group_name="FTSlider_style_options" title="Hide Info Block (Avatar, User, Time and Counts)" description="This option completely hide the info block." property_type="value" value_type="boolean" value_group="Settings" display_order="40">
+    <value>0</value>
+  </style_property>
+  <style_property property_name="FTSlider_titlefont" group_name="FTSlider_style_options" title="Featured Thread Title Font" description="The font list for your thread title." property_type="value" value_type="string" value_group="Font" display_order="100">
+    <value>"'Segoe UI', 'Helvetica Neue', Helvetica, Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', sans-serif"</value>
+  </style_property>
+  <style_property property_name="xtr_excerpts_color" group_name="FTSlider_style_options" title="Excerpts content color" description="Select to excerpts content color" property_type="css" display_order="60" css_components="text,extra">
+    <value>{
+    "font-size": "11px",
+    "color": "@xf-paletteColor1",
+    "text-decoration": "none"
+}</value>
+  </style_property>
+  <style_property property_name="xtr_featured_slider" group_name="FTSlider_style_options" title="Featured slider style" property_type="css" display_order="10" css_components="text,background,border,padding,extra">
+    <value>{
+    "font-size": "11px",
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(31,31,31,0.7)",
+    "border-bottom-width": "@xf-borderSize",
+    "border-bottom-color": "@xf-borderColorLight",
+    "padding": "0",
+    "extra": "box-shadow: rgba(0,0,0,0.1) 0px 1px 4px;"
+}</value>
+  </style_property>
+  <style_property property_name="xtr_featured_slider_avatar_bar" group_name="FTSlider_style_options" title="Featured slider avatar bar" description="Customize featured slider avatar bar (Background, border etc.)" property_type="css" display_order="20" css_components="text,background,border,border_radius,padding,extra">
+    <value>{
+    "font-size": "@xf-fontSizeSmall",
+    "color": "@xf-paletteNeutral1",
+    "background-color": "rgba(97, 97, 97, 0.6)",
+    "background-image": "styles/FTSlider/title.png",
+    "padding": "@xf-paddingMedium",
+    "extra": "box-shadow: inset rgba(255,255,255,0.3) 0px 1px 0px, rgba(0,0,0,0.3) 0px 1px 3px;\nmargin-bottom: @xf-paddingSmall;"
+}</value>
+  </style_property>
+  <style_property property_name="xtr_featured_slider_margin" group_name="FTSlider_style_options" title="Featured slider margin" description="Space between of two featured threads image. (Min:3 Max:30)" property_type="value" value_type="number" value_group="FeaturedSliderMargin" display_order="120">
+    <value_parameters>min=3
+max=30</value_parameters>
+    <value>"6"</value>
+  </style_property>
+  <style_property property_name="xtr_navigation_button_color" group_name="FTSlider_style_options" title="Navigation buttons color" description="Customize navigation button background color" property_type="css" display_order="70" css_components="text,background,extra">
+    <value>{
+    "color": "rgb(255, 255, 255)",
+    "background-color": "rgba(0, 0, 0, 0.6)"
+}</value>
+  </style_property>
+  <style_property property_name="xtr_slider_content_title" group_name="FTSlider_style_options" title="Featured slider content title" description="Featured threads title color" property_type="css" display_order="30" css_components="text,border,padding,extra">
+    <value>{
+    "font-size": "@xf-fontSizeSmall",
+    "color": "rgb(255, 255, 255)",
+    "text-decoration": "none"
+}</value>
+  </style_property>
+  <style_property property_name="xtr_slider_content_title_hover" group_name="FTSlider_style_options" title="Featured slider content title hover" description="Featured threads title hover color" property_type="css" display_order="40" css_components="text">
+    <value>{
+    "color": "@xf-borderColorAccentContent"
+}</value>
+  </style_property>
+  <style_property property_name="xtr_statistic_icon_style" group_name="FTSlider_style_options" title="Statistics icon color" description="View and reply icon color" property_type="css" display_order="50" css_components="text,extra">
+    <value>{
+    "color": "@xf-paletteNeutral1"
+}</value>
+  </style_property>
+  <style_property property_name="xtr_statistics_icon_reply" group_name="FTSlider_style_options" title="Statistics icon reply" description="Here you can enter a icon definition for the third column field. &lt;/br&gt;You'll find &lt;a href=&quot;https://fontawesome.com/icons?d=gallery&quot; target=&quot;_blank&quot;&gt; here &lt;/a&gt;.&#10;Enter the fontawesome icon definition like this example: &lt;b&gt; far fa-comments &lt;/b&gt;" property_type="value" value_type="string" value_group="StatisticsIcon" display_order="90">
+    <value>"far fa-comments"</value>
+  </style_property>
+  <style_property property_name="xtr_statistics_icon_view" group_name="FTSlider_style_options" title="Statistics icon view" description="Here you can enter a icon definition for the third column field. &lt;/br&gt;You'll find &lt;a href=&quot;https://fontawesome.com/icons?d=gallery&quot; target=&quot;_blank&quot;&gt; here &lt;/a&gt;.&#10;Enter the fontawesome icon definition like this example: &lt;b&gt; far fa-eye&lt;/b&gt;" property_type="value" value_type="string" value_group="StatisticsIcon" display_order="80">
+    <value>"far fa-eye"</value>
+  </style_property>
+</style_properties>

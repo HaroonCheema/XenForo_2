@@ -1,6 +1,7 @@
 <?php
 return array (
   'nav.BRATR_newThreadRatings' => 'New Thread Ratings',
+  'nav.FTSlider_list_nav' => 'Featured threads',
   'nav._default' => 'Default (no selected tab)',
   'nav.addRecord' => 'Add',
   'nav.auctionAddListing' => 'Add Auction',

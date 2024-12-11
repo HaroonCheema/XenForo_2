@@ -1,5 +1,7 @@
 <?php
 return array (
+  'admin_permission.FTSlider' => '[XD] Featured Threads Slider',
+  'admin_permission.FThread_Perm' => '[XD] Feature Threads',
   'admin_permission.activitySummary' => 'Manage activity summary',
   'admin_permission.addOn' => 'Manage add-ons',
   'admin_permission.advertising' => 'Manage advertising',

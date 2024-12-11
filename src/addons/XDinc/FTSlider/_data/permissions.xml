@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<permissions>
+  <permission permission_group_id="FTSlider_permissions" permission_id="FTSlider_moderate" permission_type="flag" interface_group_id="FTSlider" display_order="1"/>
+  <permission permission_group_id="FTSlider_permissions" permission_id="FTSlider_submit" permission_type="flag" interface_group_id="FTSlider" display_order="2"/>
+  <permission permission_group_id="FTSlider_permissions" permission_id="FTSlider_view" permission_type="flag" interface_group_id="FTSlider" display_order="3"/>
+  <permission permission_group_id="FTSlider_permissions" permission_id="FTSlider_view_page" permission_type="flag" interface_group_id="FTSlider" display_order="1"/>
+</permissions>

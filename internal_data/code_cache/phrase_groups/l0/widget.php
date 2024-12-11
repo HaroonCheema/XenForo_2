@@ -1,6 +1,7 @@
 <?php
 return array (
   'widget.WelcomeBanner' => 'Welcome Banner',
+  'widget.XD_FTSlider_widget' => '',
   'widget.bh_highest_rated_items' => '',
   'widget.dbtech_credits_richest' => '',
   'widget.dbtech_credits_wallet' => '',

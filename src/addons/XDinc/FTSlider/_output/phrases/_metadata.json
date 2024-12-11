@@ -1,0 +1,62 @@
+{
+    "option.FTSliderOrderBy.txt": {
+        "global_cache": false,
+        "version_id": 1010770,
+        "version_string": "1.1.7",
+        "hash": "7b872bd7c3ec7e6cba80a69ebe29ddac"
+    },
+    "option.FTSliderOrderType.txt": {
+        "global_cache": false,
+        "version_id": 1010770,
+        "version_string": "1.1.7",
+        "hash": "9b17274dba85a0da8cf76e3dea5fa3d1"
+    },
+    "option.FTSliderPage_contentLimit.txt": {
+        "global_cache": false,
+        "version_id": 1010770,
+        "version_string": "1.1.7",
+        "hash": "246270d3e49e9c284e251fae55ba0632"
+    },
+    "option.FTSliderPage_nav.txt": {
+        "global_cache": false,
+        "version_id": 1010770,
+        "version_string": "1.1.7",
+        "hash": "2011e062bca780b07b7b827d41da372c"
+    },
+    "option.FTSlider_perpage_count.txt": {
+        "global_cache": false,
+        "version_id": 1010770,
+        "version_string": "1.1.7",
+        "hash": "12783e6d16309f35f2e56492833f6d49"
+    },
+    "option_explain.FTSliderOrderBy.txt": {
+        "global_cache": false,
+        "version_id": 1010770,
+        "version_string": "1.1.7",
+        "hash": "9903db22339a16e682f97c4ba0442e67"
+    },
+    "option_explain.FTSliderOrderType.txt": {
+        "global_cache": false,
+        "version_id": 1010770,
+        "version_string": "1.1.7",
+        "hash": "85d10783075705b8734e5c737aee5645"
+    },
+    "option_explain.FTSliderPage_contentLimit.txt": {
+        "global_cache": false,
+        "version_id": 1010770,
+        "version_string": "1.1.7",
+        "hash": "16dfe80429b0f34018659650ecd2675d"
+    },
+    "option_explain.FTSliderPage_nav.txt": {
+        "global_cache": false,
+        "version_id": 1010770,
+        "version_string": "1.1.7",
+        "hash": "4220b43a7b6d3633b1ebce492a2baa58"
+    },
+    "option_explain.FTSlider_perpage_count.txt": {
+        "global_cache": false,
+        "version_id": 1010770,
+        "version_string": "1.1.7",
+        "hash": "313c2f3105cd7408cc26b3ca29e8cd26"
+    }
+}

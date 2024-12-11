@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+<modification type="public" template="PAGE_CONTAINER" modification_key="xfworld_copyright" description="xfworld Copyright" execution_order="100" enabled="1" action="str_replace">
+<find><![CDATA[{{ phrase('extra_copyright') }}]]></find>
+<replace><![CDATA[$0
+<div class="xfworld-copyright">
+<a href="https://xfworld.net"
+target="_blank">Addon provided by xfworld.net ©2000-2022</a>
+</div>]]></replace>
+</modification>
+  <modification type="public" template="PAGE_CONTAINER" modification_key="FTSlider_above_breadcrumb" description="Featured Thread Slider Above Breadcrumb" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:ad position="container_breadcrumb_top_above" />]]></find>
+    <replace><![CDATA[<xf:if is="{$xf.options.FTSlider_position} == 'abovebreadcrumb' &&
+						{$xf.options.FTSlider_enable} &&
+					    $template == 'forum_list'">
+                 <xf:widget key="XD_FTSlider_widget" />
+           </xf:if>  
+
+$0]]></replace>
+  </modification>
+  <modification type="public" template="PAGE_CONTAINER" modification_key="FTSlider_below_breadcrumb" description="Featured Thread Slider Below Breadcrumb" execution_order="20" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:ad position="container_breadcrumb_top_below" />]]></find>
+    <replace><![CDATA[<xf:if is="{$xf.options.FTSlider_position} == 'belowbreadcrumb' &&
+						{$xf.options.FTSlider_enable} &&
+					    $template == 'forum_list'">
+                 <xf:widget key="XD_FTSlider_widget" />
+            </xf:if>  
+$0]]></replace>
+  </modification>
+  <modification type="public" template="PAGE_CONTAINER" modification_key="FTSlider_copyright" description="FTSlider Copyright" execution_order="100" enabled="1" action="str_replace">
+    <find><![CDATA[{{ phrase('extra_copyright') }}]]></find>
+    <replace><![CDATA[$0 | <a href="https://xentr.net/" class="u-concealed" dir="ltr" target="_blank">Xenforo Add-ons<span class="copyright"> &copy; by ©XenTR</span></a>]]></replace>
+  </modification>
+  <modification type="public" template="PAGE_CONTAINER" modification_key="FTSlider_sidebar" description="Featured Thread Slider-Sidebar" execution_order="30" enabled="1" action="str_replace">
+    <find><![CDATA[<div class="p-body-sidebar">]]></find>
+    <replace><![CDATA[$0
+<xf:if is="{$xf.options.FTSlider_position} == 'sidebar' &&
+	{$xf.options.FTSlider_enable} &&
+		 $template == 'forum_list'">
+     <xf:widget key="XD_FTSlider_widget" />
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="forum_list" modification_key="FTSlider_above_nodes" description="Featured Thread Slider-Above Nodes" execution_order="40" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:widgetpos id="forum_list_above_nodes" />]]></find>
+    <replace><![CDATA[<xf:if is="{$xf.options.FTSlider_position} == 'abovenodes' &&
+						{$xf.options.FTSlider_enable}">
+                 <xf:widget key="XD_FTSlider_widget" /> 
+            </xf:if>
+$0]]></replace>
+  </modification>
+  <modification type="public" template="forum_list" modification_key="FTSlider_below_nodes" description="Featured Thread Slider-Below Nodes" execution_order="50" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:widgetpos id="forum_list_below_nodes" />]]></find>
+    <replace><![CDATA[$0  
+           <xf:if is="{$xf.options.FTSlider_position} == 'belownodes' &&
+					  {$xf.options.FTSlider_enable}">
+                 <xf:widget key="XD_FTSlider_widget" />
+            </xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="post_macros" modification_key="FTSlider_warning" description="Featured Thread Slider-Warning" execution_order="100" enabled="1" action="str_replace">
+    <find><![CDATA[		<ul class="message-attribution-opposite message-attribution-opposite--list {$oppositeClass}">]]></find>
+    <replace><![CDATA[$0	                       
+		<xf:if is="{$xf.options.FTSlider_hide_indicator}">						
+				<xf:if is="$thread.FTSlider && $xf.options.FTSlider_enable && $post.position % $xf.options.messagesPerPage == 0">
+					<span class="message-newIndicator">{{ phrase('FTSlider_promoted') }}</span>
+				</xf:if>
+		</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="thread_view" modification_key="FTSlider_button" description="Featured Thread Slider-Button" execution_order="80" enabled="1" action="str_replace">
+    <find><![CDATA[						<xf:if is="$thread.canApproveUnapprove() AND $thread.discussion_state == 'moderated'">
+							<xf:button href="{{ link('threads/approve', $thread) }}" class="button--link" overlay="true">
+								{{ phrase('approve') }}
+							</xf:button>
+						</xf:if>]]></find>
+    <replace><![CDATA[$0
+<xf:if contentcheck="true">
+	<xf:contentcheck>
+		<xf:if is="in_array($thread.node_id, $xf.options.FTSlider_nodes)">
+		<xf:if is="$xf.visitor.hasPermission('FTSlider_permissions', 'FTSlider_submit') && 
+				   $xf.options.FTSlider_enable && !in_array($post.Thread.node_id, $xf.options.FTSlider_nodes)">
+			<xf:button href="{{ link('threads/ftslider-edit', $thread) }}"
+					class="button--link"
+					 data-xf-click="overlay">
+				<xf:if is="{$ftslider}">
+					<i class="fas fa-edit"></i> {{ phrase('FTSlider_edit') }}
+				<xf:else />
+					<i class="fas fa-sliders-h"></i> {{ phrase('FTSlider_promote') }}
+				</xf:if>
+			</xf:button>
+		</xf:if>
+	  </xf:if>
+	</xf:contentcheck>
+</xf:if>]]></replace>
+  </modification>
+</template_modifications>

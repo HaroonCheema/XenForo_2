@@ -1,0 +1,1 @@
+You can limit the number of characters to display in the thread content.

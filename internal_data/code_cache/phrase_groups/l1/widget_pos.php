@@ -8,7 +8,9 @@ return array (
   'widget_pos.dbtech_ecommerce_overview_sidenav' => 'Product overview: Sidenav',
   'widget_pos.dbtech_ecommerce_product_sidebar' => 'Product page: Sidebar',
   'widget_pos.find_threads_sidenav' => 'Find threads: Sidenav',
+  'widget_pos.forum_list_above_breadcrumb' => 'Forum list: Above breadcrumb',
   'widget_pos.forum_list_above_nodes' => 'Forum list: Above nodes',
+  'widget_pos.forum_list_below_breadcrumb' => 'Forum list: Below breadcrumb',
   'widget_pos.forum_list_below_nodes' => 'Forum list: Below nodes',
   'widget_pos.forum_list_sidebar' => 'Forum list: Sidebar',
   'widget_pos.forum_new_posts_sidebar' => 'Forum new posts: Sidebar',
@@ -44,4 +46,5 @@ return array (
   'widget_pos.xfrm_category_sidenav' => 'Resource category: Sidenav',
   'widget_pos.xfrm_overview_above_resources' => 'Resource overview: Above resources',
   'widget_pos.xfrm_overview_sidenav' => 'Resource overview: Sidenav',
+  'widget_pos.xtr_ftslider_sidenav' => 'Featured Thread: Sidenav',
 );

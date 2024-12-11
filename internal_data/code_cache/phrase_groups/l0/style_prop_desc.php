@@ -1,5 +1,15 @@
 <?php
 return array (
+  'style_prop_desc.FTSlider_avatar' => '',
+  'style_prop_desc.FTSlider_excerptsfont' => 'The font list for your thread excerpts.',
+  'style_prop_desc.FTSlider_hide_excerpts' => 'Hide thread excerpts block.',
+  'style_prop_desc.FTSlider_hide_mobile' => '',
+  'style_prop_desc.FTSlider_hide_mobile_responsive' => 'Hide featured threads slider on mobile device.',
+  'style_prop_desc.FTSlider_hide_thread_title' => 'Hide thread title block.',
+  'style_prop_desc.FTSlider_text_transform' => '',
+  'style_prop_desc.FTSlider_title_detail' => 'Hide user and threads time on slider.',
+  'style_prop_desc.FTSlider_title_infoblock' => 'This option completely hide the info block.',
+  'style_prop_desc.FTSlider_titlefont' => 'The font list for your thread title.',
   'style_prop_desc.animationSpeed' => 'All animations within the system base their speed on this value. Smaller values (in seconds) make for faster animations',
   'style_prop_desc.avatarBg' => 'The basic background of all avatars, graphical and generic',
   'style_prop_desc.avatarBorderRadius' => 'Controls the size of the rounded corners on avatars - a sufficiently large value will make avatars circular',
@@ -481,5 +491,17 @@ return array (
   'style_prop_desc.xfmSearchInputIcon' => '',
   'style_prop_desc.xfmSearchInputResetIcon' => '',
   'style_prop_desc.xfmgCategoryList' => 'A node style category list can be displayed while browsing the gallery.',
+  'style_prop_desc.xtr_excerpts_color' => 'Select to excerpts content color',
+  'style_prop_desc.xtr_featured_slider' => '',
+  'style_prop_desc.xtr_featured_slider_avatar_bar' => 'Customize featured slider avatar bar (Background, border etc.)',
+  'style_prop_desc.xtr_featured_slider_margin' => 'Space between of two featured threads image. (Min:3 Max:30)',
+  'style_prop_desc.xtr_navigation_button_color' => 'Customize navigation button background color',
+  'style_prop_desc.xtr_slider_content_title' => 'Featured threads title color',
+  'style_prop_desc.xtr_slider_content_title_hover' => 'Featured threads title hover color',
+  'style_prop_desc.xtr_statistic_icon_style' => 'View and reply icon color',
+  'style_prop_desc.xtr_statistics_icon_reply' => 'Here you can enter a icon definition for the third column field. </br>You\'ll find <a href="https://fontawesome.com/icons?d=gallery" target="_blank"> here </a>.
+Enter the fontawesome icon definition like this example: <b> far fa-comments </b>',
+  'style_prop_desc.xtr_statistics_icon_view' => 'Here you can enter a icon definition for the third column field. </br>You\'ll find <a href="https://fontawesome.com/icons?d=gallery" target="_blank"> here </a>.
+Enter the fontawesome icon definition like this example: <b> far fa-eye</b>',
   'style_prop_desc.zIndexMultiplier' => 'Controls the relative \'height\' of elements in the Z-dimension (perpendicular to the screen). Unless you have a specific reason to change this, leave it alone...',
 );

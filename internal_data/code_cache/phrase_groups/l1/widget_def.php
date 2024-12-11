@@ -1,6 +1,7 @@
 <?php
 return array (
   'widget_def.BRATR_newRatings' => 'Brivium - New Thread Ratings',
+  'widget_def.FTSlider_widget' => '[XTR] Featured Thread Slider',
   'widget_def.RealTimeChat' => 'Real Time Chat',
   'widget_def.WelcomeBanner' => 'Welcome Banner',
   'widget_def.altf_filter_widget' => 'Thread Filter Widget',

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="FTSlider_approve_delete" version_id="1010170" version_string="1.1.1"><![CDATA[Please confirm the deletion (un-feature) of the this thread.]]></phrase>
+  <phrase title="FTSlider_content" version_id="1000600" version_string="1.0.6"><![CDATA[Featured Content]]></phrase>
+  <phrase title="FTSlider_current_icon" version_id="1000600" version_string="1.0.6"><![CDATA[Current Image]]></phrase>
+  <phrase title="FTSlider_detail" version_id="1000600" version_string="1.0.6"><![CDATA[Promote Featured]]></phrase>
+  <phrase title="FTSlider_edit" version_id="1000600" version_string="1.0.6"><![CDATA[Edit Featured]]></phrase>
+  <phrase title="FTSlider_edit_feature_admin" version_id="1000600" version_string="1.0.6"><![CDATA[Edit Featured Thread]]></phrase>
+  <phrase title="FTSlider_edit_title" version_id="1000600" version_string="1.0.6"><![CDATA[Featured Thread Edit]]></phrase>
+  <phrase title="FTSlider_excerpt" version_id="1000600" version_string="1.0.6"><![CDATA[Featured Excerpt Options]]></phrase>
+  <phrase title="FTSlider_featured" version_id="1000600" version_string="1.0.6"><![CDATA[Thread Featured]]></phrase>
+  <phrase title="FTSlider_featured_date" version_id="1010400" version_string="1.1.4"><![CDATA[Featured date]]></phrase>
+  <phrase title="FTSlider_featured_thread" version_id="1010170" version_string="1.1.1"><![CDATA[Featured Thread List]]></phrase>
+  <phrase title="FTSlider_featured_thread_desc" version_id="1010300" version_string="1.1.3"><![CDATA[Featured thread page lists all currently and previously featured threads, with summary content.]]></phrase>
+  <phrase title="FTSlider_featured_title" version_id="1010400" version_string="1.1.4"><![CDATA[Title A-Z]]></phrase>
+  <phrase title="FTSlider_features" version_id="1000600" version_string="1.0.6"><![CDATA[Featured Threads List]]></phrase>
+  <phrase title="FTSlider_icon_size" version_id="1000900" version_string="1.0.9"><![CDATA[The image to be loaded will be edited as {width} x {height} pixels. If you want to upload a new image do not need un-feature thread, just re-upload image and save.]]></phrase>
+  <phrase title="FTSlider_image_url" version_id="1000600" version_string="1.0.6"><![CDATA[Image URL]]></phrase>
+  <phrase title="FTSlider_image_url_explain" version_id="1000600" version_string="1.0.6"><![CDATA[You can put images directly with URL. If you leave blank the image URL, default-current image will be active.]]></phrase>
+  <phrase title="FTSlider_index_features" version_id="1000600" version_string="1.0.6"><![CDATA[Featured Threads]]></phrase>
+  <phrase title="FTSlider_index_options" version_id="1000600" version_string="1.0.6"><![CDATA[Slider Options]]></phrase>
+  <phrase title="FTSlider_index_style_options" version_id="1000600" version_string="1.0.6"><![CDATA[Slider Style Options]]></phrase>
+  <phrase title="FTSlider_index_widgets" version_id="1000600" version_string="1.0.6"><![CDATA[Manage Slider Widget]]></phrase>
+  <phrase title="FTSlider_more_records" version_id="1000600" version_string="1.0.6"><![CDATA[More records filter matching.]]></phrase>
+  <phrase title="FTSlider_promote" version_id="1000600" version_string="1.0.6"><![CDATA[Feature]]></phrase>
+  <phrase title="FTSlider_promoted" version_id="1000600" version_string="1.0.6"><![CDATA[Featured]]></phrase>
+  <phrase title="FTSlider_read_more" version_id="1010170" version_string="1.1.1"><![CDATA[Read more]]></phrase>
+  <phrase title="FTSlider_reply" version_id="1010170" version_string="1.1.1"><![CDATA[Reply]]></phrase>
+  <phrase title="FTSlider_start_date" version_id="1010170" version_string="1.1.1"><![CDATA[Start date]]></phrase>
+  <phrase title="FTSlider_thread_starter" version_id="1010170" version_string="1.1.1"><![CDATA[Thread starter]]></phrase>
+  <phrase title="FTSlider_title" version_id="1000600" version_string="1.0.6"><![CDATA[Featured Title]]></phrase>
+  <phrase title="FTSlider_unfeature" version_id="1000800" version_string="1.0.8"><![CDATA[Un-Feature]]></phrase>
+  <phrase title="FTSlider_upload_icon" version_id="1000600" version_string="1.0.6"><![CDATA[Upload Image]]></phrase>
+  <phrase title="FTSlider_use_custom_title_and_excerpt" version_id="1000600" version_string="1.0.6"><![CDATA[Use custom title and excerpt]]></phrase>
+  <phrase title="FTSlider_view" version_id="1010170" version_string="1.1.1"><![CDATA[View]]></phrase>
+  <phrase title="From_left" version_id="1000900" version_string="1.0.9"><![CDATA[From left to right]]></phrase>
+  <phrase title="From_right" version_id="1000900" version_string="1.0.9"><![CDATA[From right to left]]></phrase>
+  <phrase title="admin_navigation.FTSlider" version_id="1010400" version_string="1.1.4"><![CDATA[Featured thread options]]></phrase>
+  <phrase title="admin_navigation.FTSliderOptions" version_id="1010300" version_string="1.1.3"><![CDATA[Featured Thread Slider]]></phrase>
+  <phrase title="admin_navigation.FTSlider_List" version_id="1010400" version_string="1.1.4"><![CDATA[Featured thread list]]></phrase>
+  <phrase title="admin_navigation.xtrFTSliderNav" version_id="1010300" version_string="1.1.3"><![CDATA[Featured Thread Slider]]></phrase>
+  <phrase title="admin_permission.FTSlider" version_id="1000600" version_string="1.0.6"><![CDATA[[XD] Featured Threads Slider]]></phrase>
+  <phrase title="admin_permission.FThread_Perm" version_id="1000600" version_string="1.0.6"><![CDATA[[XD] Feature Threads]]></phrase>
+  <phrase title="fts_general_options" version_id="1000600" version_string="1.0.6"><![CDATA[General Options]]></phrase>
+  <phrase title="fts_nodes_options" version_id="1000600" version_string="1.0.6"><![CDATA[Nodes Options]]></phrase>
+  <phrase title="fts_page_options" version_id="1010170" version_string="1.1.1"><![CDATA[Page Options]]></phrase>
+  <phrase title="fts_slider_options" version_id="1000600" version_string="1.0.6"><![CDATA[Slider Options]]></phrase>
+  <phrase title="fts_slider_warning" version_id="1000600" version_string="1.0.6"><![CDATA[There was an unexpected error. Please try again later.]]></phrase>
+  <phrase title="nav.FTSlider_list_nav" version_id="1010170" version_string="1.1.1"><![CDATA[Featured threads]]></phrase>
+  <phrase title="option.FTSliderOrderBy" version_id="1010400" version_string="1.1.4"><![CDATA[Sort order by]]></phrase>
+  <phrase title="option.FTSliderOrderType" version_id="1010400" version_string="1.1.4"><![CDATA[Sort order type]]></phrase>
+  <phrase title="option.FTSliderPage_contentLimit" version_id="1010300" version_string="1.1.3"><![CDATA[Featured Thread Characters Limit]]></phrase>
+  <phrase title="option.FTSliderPage_nav" version_id="1010300" version_string="1.1.3"><![CDATA[Enabled extra page extra page navigation]]></phrase>
+  <phrase title="option.FTSlider_auto" version_id="1000600" version_string="1.0.6"><![CDATA[Slider Auto Play Option]]></phrase>
+  <phrase title="option.FTSlider_count" version_id="1000600" version_string="1.0.6"><![CDATA[Number of Featured Threads to Show]]></phrase>
+  <phrase title="option.FTSlider_effect" version_id="1000600" version_string="1.0.6"><![CDATA[Fade Effect]]></phrase>
+  <phrase title="option.FTSlider_enable" version_id="1000600" version_string="1.0.6"><![CDATA[Enable Featured Threads Slider]]></phrase>
+  <phrase title="option.FTSlider_fadeDirection" version_id="1000900" version_string="1.0.9"><![CDATA[Fade Direction]]></phrase>
+  <phrase title="option.FTSlider_fade_delay" version_id="1000600" version_string="1.0.6"><![CDATA[Fade Effect Delay]]></phrase>
+  <phrase title="option.FTSlider_fade_duration" version_id="1000600" version_string="1.0.6"><![CDATA[Fade Effect Duration]]></phrase>
+  <phrase title="option.FTSlider_hide_avatar" version_id="1000600" version_string="1.0.6"><![CDATA[Enable Avatar on Featured Slider]]></phrase>
+  <phrase title="option.FTSlider_hide_block" version_id="1000600" version_string="1.0.6"><![CDATA[Enable Block-Header]]></phrase>
+  <phrase title="option.FTSlider_hide_count" version_id="1000800" version_string="1.0.8"><![CDATA[Enable Thread Reply and View Count on Featured Slider]]></phrase>
+  <phrase title="option.FTSlider_hide_indicator" version_id="1000800" version_string="1.0.8"><![CDATA[Enable Featured Thread Indicator]]></phrase>
+  <phrase title="option.FTSlider_hide_prefix" version_id="1000800" version_string="1.0.8"><![CDATA[Enable Thread Prefix on Featured Slider]]></phrase>
+  <phrase title="option.FTSlider_limit" version_id="1000600" version_string="1.0.6"><![CDATA[Slider Content Characters Limit]]></phrase>
+  <phrase title="option.FTSlider_navigation" version_id="1000600" version_string="1.0.6"><![CDATA[Slider Navigation Buttons]]></phrase>
+  <phrase title="option.FTSlider_nodes" version_id="1000600" version_string="1.0.6"><![CDATA[Select Nodes]]></phrase>
+  <phrase title="option.FTSlider_perpage_count" version_id="1010170" version_string="1.1.1"><![CDATA[Featured Threads Per Page]]></phrase>
+  <phrase title="option.FTSlider_position" version_id="1000600" version_string="1.0.6"><![CDATA[Display in Positions]]></phrase>
+  <phrase title="option.FTSlider_size" version_id="1000600" version_string="1.0.6"><![CDATA[Featured Threads Slider Image Size]]></phrase>
+  <phrase title="option.FTSlider_skip_thread" version_id="1000600" version_string="1.0.6"><![CDATA[Per Each Slider Skip Thread Count]]></phrase>
+  <phrase title="option.FTSlider_ticker_timeout" version_id="1000700" version_string="1.0.7"><![CDATA[Skip Change Time Interval (Ticker Timeout)]]></phrase>
+  <phrase title="option.FTSlider_title" version_id="1000600" version_string="1.0.6"><![CDATA[Featured Threads Slider Title]]></phrase>
+  <phrase title="option.FTSlider_transit_speed" version_id="1000600" version_string="1.0.6"><![CDATA[Slider Transit Speed]]></phrase>
+  <phrase title="option.enableFTSlider_hover" version_id="1010170" version_string="1.1.1"><![CDATA[Enable Hover Effect]]></phrase>
+  <phrase title="option.enableFTSlideronPage" version_id="1010170" version_string="1.1.1"><![CDATA[Enable Feature Threads Slider on Page]]></phrase>
+  <phrase title="option.enableFTSliderpage" version_id="1010170" version_string="1.1.1"><![CDATA[Enable Featured Threads Page]]></phrase>
+  <phrase title="option.xtr_mousehover" version_id="1010070" version_string="1.1.0"><![CDATA[Featured slider mouse hover]]></phrase>
+  <phrase title="option_explain.FTSliderOrderBy" version_id="1010400" version_string="1.1.4"><![CDATA[Default sort order by is set to descending.]]></phrase>
+  <phrase title="option_explain.FTSliderOrderType" version_id="1010400" version_string="1.1.4"><![CDATA[Select a sort order type.]]></phrase>
+  <phrase title="option_explain.FTSliderPage_contentLimit" version_id="1010300" version_string="1.1.3"><![CDATA[You can limit the number of characters to display in the thread content.]]></phrase>
+  <phrase title="option_explain.FTSliderPage_nav" version_id="1010300" version_string="1.1.3"><![CDATA[Enable or disable extra page navigation above the featured thread.]]></phrase>
+  <phrase title="option_explain.FTSlider_auto" version_id="1000600" version_string="1.0.6"><![CDATA[Auto Play options will be enabled when you push navigation buttons.]]></phrase>
+  <phrase title="option_explain.FTSlider_count" version_id="1000800" version_string="1.0.8"><![CDATA[Specify the number of Featured Threads items that will be shown the most. This value can be limited to at least minimum "4" subjects for ideal display.]]></phrase>
+  <phrase title="option_explain.FTSlider_effect" version_id="1000600" version_string="1.0.6"><![CDATA[Enable or disable "Fade" effect.]]></phrase>
+  <phrase title="option_explain.FTSlider_enable" version_id="1010300" version_string="1.1.3"><![CDATA[This option is enable or disable "Featured Threads Slider" add-on.]]></phrase>
+  <phrase title="option_explain.FTSlider_fadeDirection" version_id="1000900" version_string="1.0.9"><![CDATA[Choose fade direction side]]></phrase>
+  <phrase title="option_explain.FTSlider_fade_delay" version_id="1000600" version_string="1.0.6"><![CDATA[]]></phrase>
+  <phrase title="option_explain.FTSlider_fade_duration" version_id="1000600" version_string="1.0.6"><![CDATA[]]></phrase>
+  <phrase title="option_explain.FTSlider_hide_avatar" version_id="1000800" version_string="1.0.8"><![CDATA[Hide or show user avatar on featured threads slider.]]></phrase>
+  <phrase title="option_explain.FTSlider_hide_block" version_id="1000600" version_string="1.0.6"><![CDATA[Enable feature threads slider block-header.]]></phrase>
+  <phrase title="option_explain.FTSlider_hide_count" version_id="1000800" version_string="1.0.8"><![CDATA[Hide or show thread reply and view count on featured threads slider.]]></phrase>
+  <phrase title="option_explain.FTSlider_hide_indicator" version_id="1000800" version_string="1.0.8"><![CDATA[Hide or show thread indicator on message attribution position.]]></phrase>
+  <phrase title="option_explain.FTSlider_hide_prefix" version_id="1000800" version_string="1.0.8"><![CDATA[Hide or show thread prefix on featured threads slider.]]></phrase>
+  <phrase title="option_explain.FTSlider_limit" version_id="1000600" version_string="1.0.6"><![CDATA[You can limit the number of characters to display in the topic content. The highlighted picture will show the characters as many as the number of characters you have specified in your topic.]]></phrase>
+  <phrase title="option_explain.FTSlider_navigation" version_id="1000600" version_string="1.0.6"><![CDATA[Add next and prev button on carousel slider. <br>
+<b>Note:</b> You can disable this option if you enabled fade effect.]]></phrase>
+  <phrase title="option_explain.FTSlider_nodes" version_id="1000600" version_string="1.0.6"><![CDATA[Select to nodes featured.]]></phrase>
+  <phrase title="option_explain.FTSlider_perpage_count" version_id="1010170" version_string="1.1.1"><![CDATA[Specify the number of topics to display on a page.]]></phrase>
+  <phrase title="option_explain.FTSlider_position" version_id="1000600" version_string="1.0.6"><![CDATA[<p>You may choose those positons are above or add a with widget anywhere.</p>
+<textarea class="input input--fitHeight" rows="1" readonly="readonly" data-xf-init="textarea-handler"><xf:widget key="XD_FTSlider_widget" /></textarea>
+<p><b>How to use between of categories?</b></p>
+<p>Display in positions options should be selected "Use Widget Key". Open to <b>node_list_category</b> template and find the first <b>&lt;/xf: macro></b> add above the code. You can use with change to the category ID's number (1) wherever you want.</p>
+<textarea class="input input--fitHeight" rows="1" readonly="readonly" data-xf-init="textarea-handler"><xf:if is="{$node.node_id} === 1">  <xf:widget key="XD_FTSlider_widget" /></xf:if></textarea>]]></phrase>
+  <phrase title="option_explain.FTSlider_size" version_id="1000900" version_string="1.0.9"><![CDATA[Slider images to be uploaded will be reduced to the size you specify. Large image sizes can cause visual problems. Recommended value is 396X250 pixels. If you change recommended size some of padding issue can be shown.]]></phrase>
+  <phrase title="option_explain.FTSlider_skip_thread" version_id="1000600" version_string="1.0.6"><![CDATA[<b>How many items are skip on slider in a round?</b><br>
+For example, if the value "2" is entered,  "2" featured threads will move forward on the slider.</br>
+Recommended: "1" Thread -/- Max.: "4" Thread]]></phrase>
+  <phrase title="option_explain.FTSlider_ticker_timeout" version_id="1000700" version_string="1.0.7"><![CDATA[You can make more "slow" transitions to look at the subjects in more detail, more "fast" transitions to make all of your many things look.]]></phrase>
+  <phrase title="option_explain.FTSlider_title" version_id="1000600" version_string="1.0.6"><![CDATA[Choose featured threads slider title.]]></phrase>
+  <phrase title="option_explain.FTSlider_transit_speed" version_id="1000600" version_string="1.0.6"><![CDATA[You can adjust the sliding speed of the subject change. You may need it to read text more efficiently while moving topics.]]></phrase>
+  <phrase title="option_explain.enableFTSlider_hover" version_id="1010170" version_string="1.1.1"><![CDATA[]]></phrase>
+  <phrase title="option_explain.enableFTSlideronPage" version_id="1010300" version_string="1.1.3"><![CDATA[Enable or disable slider on Feature Threads page.]]></phrase>
+  <phrase title="option_explain.enableFTSliderpage" version_id="1010300" version_string="1.1.3"><![CDATA[This option is enable or disable "Featured Threads" page.]]></phrase>
+  <phrase title="option_explain.xtr_mousehover" version_id="1010070" version_string="1.1.0"><![CDATA[]]></phrase>
+  <phrase title="option_group.FTSlider_Options" version_id="1000800" version_string="1.0.8"><![CDATA[[XTR] Featured Threads Slider]]></phrase>
+  <phrase title="option_group_description.FTSlider_Options" version_id="1000600" version_string="1.0.6"><![CDATA[Featured Threads Slider Options]]></phrase>
+  <phrase title="permission.FTSlider_permissions_FTSlider_moderate" version_id="1000600" version_string="1.0.6"><![CDATA[Moderate featured threads slider]]></phrase>
+  <phrase title="permission.FTSlider_permissions_FTSlider_submit" version_id="1000600" version_string="1.0.6"><![CDATA[Submit featured threads promotion]]></phrase>
+  <phrase title="permission.FTSlider_permissions_FTSlider_view" version_id="1000600" version_string="1.0.6"><![CDATA[View featured threads slider]]></phrase>
+  <phrase title="permission.FTSlider_permissions_FTSlider_view_page" version_id="1010170" version_string="1.1.1"><![CDATA[View featured threads page]]></phrase>
+  <phrase title="permission_interface.FTSlider" version_id="1000800" version_string="1.0.8"><![CDATA[[XTR] Featured Threads Slider]]></phrase>
+  <phrase title="style_prop.FTSlider_avatar" version_id="1000600" version_string="1.0.6"><![CDATA[Featured Slider Avatar Style]]></phrase>
+  <phrase title="style_prop.FTSlider_excerptsfont" version_id="1000600" version_string="1.0.6"><![CDATA[Featured Thread Excerpts Font]]></phrase>
+  <phrase title="style_prop.FTSlider_hide_excerpts" version_id="1000600" version_string="1.0.6"><![CDATA[Hide Featured Thread Excerpts]]></phrase>
+  <phrase title="style_prop.FTSlider_hide_mobile" version_id="1000900" version_string="1.0.9"><![CDATA[FTSlider Hide Mobile]]></phrase>
+  <phrase title="style_prop.FTSlider_hide_mobile_responsive" version_id="1000900" version_string="1.0.9"><![CDATA[Hide On Mobile Device Responsive]]></phrase>
+  <phrase title="style_prop.FTSlider_hide_thread_title" version_id="1010200" version_string="1.1.2"><![CDATA[Hide Featured Thread Title]]></phrase>
+  <phrase title="style_prop.FTSlider_text_transform" version_id="1000600" version_string="1.0.6"><![CDATA[Featured Title Text-Transform]]></phrase>
+  <phrase title="style_prop.FTSlider_title_detail" version_id="1010070" version_string="1.1.0"><![CDATA[Hide User and Time]]></phrase>
+  <phrase title="style_prop.FTSlider_title_infoblock" version_id="1010070" version_string="1.1.0"><![CDATA[Hide Info Block (Avatar, User, Time and Counts)]]></phrase>
+  <phrase title="style_prop.FTSlider_titlefont" version_id="1000600" version_string="1.0.6"><![CDATA[Featured Thread Title Font]]></phrase>
+  <phrase title="style_prop.xtr_excerpts_color" version_id="1000900" version_string="1.0.9"><![CDATA[Excerpts content color]]></phrase>
+  <phrase title="style_prop.xtr_featured_slider" version_id="1000900" version_string="1.0.9"><![CDATA[Featured slider style]]></phrase>
+  <phrase title="style_prop.xtr_featured_slider_avatar_bar" version_id="1000900" version_string="1.0.9"><![CDATA[Featured slider avatar bar]]></phrase>
+  <phrase title="style_prop.xtr_featured_slider_margin" version_id="1000900" version_string="1.0.9"><![CDATA[Featured slider margin]]></phrase>
+  <phrase title="style_prop.xtr_navigation_button_color" version_id="1000900" version_string="1.0.9"><![CDATA[Navigation buttons color]]></phrase>
+  <phrase title="style_prop.xtr_slider_content_title" version_id="1000900" version_string="1.0.9"><![CDATA[Featured slider content title]]></phrase>
+  <phrase title="style_prop.xtr_slider_content_title_hover" version_id="1000900" version_string="1.0.9"><![CDATA[Featured slider content title hover]]></phrase>
+  <phrase title="style_prop.xtr_statistic_icon_style" version_id="1000900" version_string="1.0.9"><![CDATA[Statistics icon color]]></phrase>
+  <phrase title="style_prop.xtr_statistics_icon_reply" version_id="1000900" version_string="1.0.9"><![CDATA[Statistics icon reply]]></phrase>
+  <phrase title="style_prop.xtr_statistics_icon_view" version_id="1000900" version_string="1.0.9"><![CDATA[Statistics icon view]]></phrase>
+  <phrase title="style_prop_desc.FTSlider_avatar" version_id="1000600" version_string="1.0.6"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.FTSlider_excerptsfont" version_id="1000600" version_string="1.0.6"><![CDATA[The font list for your thread excerpts.]]></phrase>
+  <phrase title="style_prop_desc.FTSlider_hide_excerpts" version_id="1000600" version_string="1.0.6"><![CDATA[Hide thread excerpts block.]]></phrase>
+  <phrase title="style_prop_desc.FTSlider_hide_mobile" version_id="1000900" version_string="1.0.9"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.FTSlider_hide_mobile_responsive" version_id="1000900" version_string="1.0.9"><![CDATA[Hide featured threads slider on mobile device.]]></phrase>
+  <phrase title="style_prop_desc.FTSlider_hide_thread_title" version_id="1010200" version_string="1.1.2"><![CDATA[Hide thread title block.]]></phrase>
+  <phrase title="style_prop_desc.FTSlider_text_transform" version_id="1000600" version_string="1.0.6"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.FTSlider_title_detail" version_id="1010070" version_string="1.1.0"><![CDATA[Hide user and threads time on slider.]]></phrase>
+  <phrase title="style_prop_desc.FTSlider_title_infoblock" version_id="1010070" version_string="1.1.0"><![CDATA[This option completely hide the info block.]]></phrase>
+  <phrase title="style_prop_desc.FTSlider_titlefont" version_id="1000600" version_string="1.0.6"><![CDATA[The font list for your thread title.]]></phrase>
+  <phrase title="style_prop_desc.xtr_excerpts_color" version_id="1000900" version_string="1.0.9"><![CDATA[Select to excerpts content color]]></phrase>
+  <phrase title="style_prop_desc.xtr_featured_slider" version_id="1000900" version_string="1.0.9"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.xtr_featured_slider_avatar_bar" version_id="1000900" version_string="1.0.9"><![CDATA[Customize featured slider avatar bar (Background, border etc.)]]></phrase>
+  <phrase title="style_prop_desc.xtr_featured_slider_margin" version_id="1000900" version_string="1.0.9"><![CDATA[Space between of two featured threads image. (Min:3 Max:30)]]></phrase>
+  <phrase title="style_prop_desc.xtr_navigation_button_color" version_id="1000900" version_string="1.0.9"><![CDATA[Customize navigation button background color]]></phrase>
+  <phrase title="style_prop_desc.xtr_slider_content_title" version_id="1000900" version_string="1.0.9"><![CDATA[Featured threads title color]]></phrase>
+  <phrase title="style_prop_desc.xtr_slider_content_title_hover" version_id="1000900" version_string="1.0.9"><![CDATA[Featured threads title hover color]]></phrase>
+  <phrase title="style_prop_desc.xtr_statistic_icon_style" version_id="1000900" version_string="1.0.9"><![CDATA[View and reply icon color]]></phrase>
+  <phrase title="style_prop_desc.xtr_statistics_icon_reply" version_id="1000900" version_string="1.0.9"><![CDATA[Here you can enter a icon definition for the third column field. </br>You'll find <a href="https://fontawesome.com/icons?d=gallery" target="_blank"> here </a>.
+Enter the fontawesome icon definition like this example: <b> far fa-comments </b>]]></phrase>
+  <phrase title="style_prop_desc.xtr_statistics_icon_view" version_id="1000900" version_string="1.0.9"><![CDATA[Here you can enter a icon definition for the third column field. </br>You'll find <a href="https://fontawesome.com/icons?d=gallery" target="_blank"> here </a>.
+Enter the fontawesome icon definition like this example: <b> far fa-eye</b>]]></phrase>
+  <phrase title="style_prop_group.FTSlider_style_options" version_id="1000900" version_string="1.0.9"><![CDATA[[XTR] Featured Threads Slider]]></phrase>
+  <phrase title="style_prop_group_desc.FTSlider_style_options" version_id="1000600" version_string="1.0.6"><![CDATA[Settings controlling the content experts , title color of structural borders, as well as global settings for mobil device.]]></phrase>
+  <phrase title="widget_def.FTSlider_widget" version_id="1010300" version_string="1.1.3"><![CDATA[[XTR] Featured Thread Slider]]></phrase>
+  <phrase title="widget_def_desc.FTSlider_widget" version_id="1000600" version_string="1.0.6"><![CDATA[Show to featured threads slider with responsive design to your community.]]></phrase>
+  <phrase title="widget_key_use" version_id="1010570" version_string="1.1.5"><![CDATA[Use: Custom widget key]]></phrase>
+  <phrase title="widget_pos.forum_list_above_breadcrumb" version_id="1010570" version_string="1.1.5"><![CDATA[Forum list: Above breadcrumb]]></phrase>
+  <phrase title="widget_pos.forum_list_below_breadcrumb" version_id="1010570" version_string="1.1.5"><![CDATA[Forum list: Below breadcrumb]]></phrase>
+  <phrase title="widget_pos.xtr_ftslider_sidenav" version_id="1010300" version_string="1.1.3"><![CDATA[Featured Thread: Sidenav]]></phrase>
+  <phrase title="widget_pos_desc.xtr_ftslider_sidenav" version_id="1010300" version_string="1.1.3"><![CDATA[Displays inside the side navigation on the featured thread page.]]></phrase>
+</phrases>

@@ -1,0 +1,9 @@
+{
+    "template": "PAGE_CONTAINER",
+    "description": "Featured Thread Slider-Sidebar",
+    "execution_order": 30,
+    "enabled": false,
+    "action": "str_replace",
+    "find": "<div class=\"p-body-sidebar\">",
+    "replace": "$0\n<xf:if is=\"{$xf.options.FTSlider_position} == 'sidebar' &&\n\t{$xf.options.FTSlider_enable} &&\n\t\t $template == 'forum_list'\">\n     <xf:widget key=\"XD_FTSlider_widget\" />\n</xf:if>"
+}
