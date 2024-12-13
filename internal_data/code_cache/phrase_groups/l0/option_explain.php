@@ -482,6 +482,13 @@ Example: 1,2,3,4,..',
   'option_explain.fs_welcome_banner_applicable_threads' => 'List the welcome banner thread ids that are allowed to be display. Use , (comma) between ids.
 Example: 1,2,3,4,..',
   'option_explain.fs_wr_numOfSites' => 'How many Websites will be display in stats list (sits percentage)',
+  'option_explain.fs_yt_Slider_auto' => 'Auto Play options will be enabled when you push navigation buttons.',
+  'option_explain.fs_yt_Slider_skip' => '<b>How many items are skip on slider in a round?</b><br>
+For example, if the value "2" is entered,  "2" Thumbnails will move forward on the slider.</br>
+Recommended: "1" Thumbnail -/- Max.: "4" Thumbnails',
+  'option_explain.fs_yt_slider_image_dimensions' => '',
+  'option_explain.fs_yt_slider_ticker_timeout' => 'You can make more "slow" transitions to look at the subjects in more detail, more "fast" transitions to make all of your many things look.',
+  'option_explain.fs_yt_slider_transit_speed' => 'You can adjust the sliding speed of the subject change. You may need it to read text more efficiently while moving topics.',
   'option_explain.fs_zoom_access_token' => 'Do not need to change or insert any thing.',
   'option_explain.fs_zoom_client_id' => '',
   'option_explain.fs_zoom_client_secret' => '',

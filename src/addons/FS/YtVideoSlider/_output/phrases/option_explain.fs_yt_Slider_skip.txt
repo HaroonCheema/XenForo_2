@@ -1,0 +1,3 @@
+<b>How many items are skip on slider in a round?</b><br>
+For example, if the value "2" is entered,  "2" Thumbnails will move forward on the slider.</br>
+Recommended: "1" Thumbnail -/- Max.: "4" Thumbnails

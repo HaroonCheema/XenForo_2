@@ -1,0 +1,62 @@
+<xf:title>
+	<xf:if is="$videoitem.video_id"> {{phrase('fs_yt_edit_video') }} : {$videoitem.title} <xf:breadcrumb href="#">{{
+		phrase('fs_yt_edit_video') }}</xf:breadcrumb> <xf:else />{{
+		phrase('fs_yt_new_video') }}
+		<xf:breadcrumb href="#">{{ phrase('fs_yt_new_video') }}</xf:breadcrumb> </xf:if>
+</xf:title>
+<xf:form
+		 action="{{ link('yt-videos/save', $videoitem) }}"
+		 ajax="true"
+		 class="block"
+		 data-force-flash-message="true"
+		 >
+	<div class="block-container">
+		<div class="block-body">
+
+			<xf:textboxrow name="title" value="{$videoitem.title}" label="{{ phrase('fs_yt_video_title') }}" hint="{{ phrase('required') }}" required="required"/>
+
+			<xf:radiorow name="type" id="key" value="{{ $videoitem.video_id ? ($videoitem.thumbnail ? '0' : '1') : '0' }}"
+						 label="{{ phrase('type') }}">
+
+				<xf:option value="0" data-xf-init="disabler" data-container=".js-navTypeForm--0" data-hide="true">{{ phrase('fs_yt_new_video_url') }}</xf:option>
+				<xf:option value="1" data-xf-init="disabler" data-container=".js-navTypeForm--1" data-hide="true">{{ phrase('fs_yt_new_video_video') }}</xf:option>
+			</xf:radiorow>
+
+			<hr class="formRowSep" />
+
+			<div class="js-navTypeForm js-navTypeForm--0">
+				<xf:textboxrow name="url" value="{$videoitem.url}" hint="{{ phrase('required') }}" placeholder="{{ phrase('fs_yt_new_video_url_place') }}" label="{{ phrase('fs_yt_new_video_url') }}" required="required"/> 
+			</div>
+
+			<div class="js-navTypeForm js-navTypeForm--1">
+				<xf:uploadrow name="upload" accept="video/*" label="{{ phrase('fs_yt_new_video_video') }}" hint="{{ phrase('required') }}"/>
+			</div>
+
+			<xf:if is="{$videoitem.thumbnail} && $videoitem.video_id">
+
+				<hr class="formRowSep" />
+
+				<xf:formrow>
+					<a href="{{$videoitem.thumbnail}}" target="_blank">
+						<img src="{{ base_url($videoitem.thumbnail) }}" width="300" height="300" />
+					</a>
+				</xf:formrow>
+			</xf:if>
+
+			<xf:if is="$videoitem.attachment_id && $videoitem.video_id">
+
+				<hr class="formRowSep" />
+
+				<xf:formrow>
+					<a href="{{$videoitem.Attachment.direct_url}}" target="_blank">
+						<video data-xf-init="video-init" width="200" height="200">
+							<source src="{$videoitem.Attachment.direct_url}" />
+						</video>
+					</a>
+				</xf:formrow>
+			</xf:if>
+
+		</div>
+		<xf:submitrow submit="" icon="save" />
+	</div>
+</xf:form>

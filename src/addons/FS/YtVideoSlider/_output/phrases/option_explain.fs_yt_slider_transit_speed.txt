@@ -1,0 +1,1 @@
+You can adjust the sliding speed of the subject change. You may need it to read text more efficiently while moving topics.

@@ -1,0 +1,85 @@
+<xf:title>{{ phrase('fs_yt_video') }}</xf:title>
+
+<xf:pageaction>
+	<xf:button href="{{ link('yt-videos/add') }}" icon="add">{{ phrase('fs_yt_add_btn') }}</xf:button>
+</xf:pageaction>
+<xf:form action="{{ link($prefix . '/toggle') }}" class="block" ajax="true">
+	<div class="block-outer">
+		<xf:macro
+				  template="filter_macros"
+				  name="quick_filter"
+				  arg-key="yt-videos"
+				  arg-class="block-outer-opposite"
+				  />
+	</div>
+
+	<div class="block-container">
+
+		<xf:if is="$videoitems is not empty">
+			<div class="block-body">
+				<xf:datalist data-xf-init="responsive-data-list">
+
+					<xf:macro
+							  name="table_list"
+							  arg-data="{$videoitems}"
+							  />
+
+
+				</xf:datalist>
+				<div class="block-footer">
+					<span class="block-footer-counter"
+						  >{{ display_totals($totalReturn, $total) }}</span
+						>
+				</div>
+
+			</div>
+			<xf:else />
+			<div class="block-body block-row">{{ phrase('no_items_have_been_created_yet') }}</div>
+
+		</xf:if>
+
+	</div>
+
+
+	<xf:pagenav
+				page="{$page}"
+				perpage="{$perPage}"
+				total="{$total}"
+				link="yt-videos"
+				wrapperclass="block"
+				/>
+</xf:form>
+<xf:macro
+		  name="table_list"
+		  arg-data="!"
+		  >
+	<xf:datarow rowtype="header">
+		<xf:cell> {{ phrase('fs_yt_title') }} </xf:cell>
+		<xf:cell> {{ phrase('fs_yt_thumbnail') }} </xf:cell>
+		<xf:cell class="dataList-cell--min"></xf:cell>
+		<xf:cell class="dataList-cell--min"></xf:cell>
+	</xf:datarow>
+	<xf:foreach loop="{$data}" value="$value">
+		<xf:datarow>
+
+			<xf:cell> {$value.title} </xf:cell>
+			<xf:cell href="{{$value.thumbnail ?: $value.Attachment.direct_url}}" target="_blank">
+
+				<xf:if is="$value.thumbnail">
+					<img src="{{$value.thumbnail}}" alt="avatar image" width="100" height="100"/>
+					<xf:else />
+					<video data-xf-init="video-init" width="100" height="100">
+						<source src="{$value.Attachment.direct_url}" />
+					</video>
+				</xf:if>
+
+			</xf:cell>
+
+			<xf:action href="{{ link('yt-videos/edit', $value) }}" >{{ phrase('edit') }}</xf:action>
+			<xf:delete
+					   href="{{ link('yt-videos/delete', $value) }}"
+					   overlay="true"
+					   />
+		</xf:datarow>
+	</xf:foreach>
+</xf:macro>

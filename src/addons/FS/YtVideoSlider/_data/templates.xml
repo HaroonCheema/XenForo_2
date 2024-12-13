@@ -1,0 +1,529 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="admin" title="fs_yt_video_add_edit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>
+	<xf:if is="$videoitem.video_id"> {{phrase('fs_yt_edit_video') }} : {$videoitem.title} <xf:breadcrumb href="#">{{
+		phrase('fs_yt_edit_video') }}</xf:breadcrumb> <xf:else />{{
+		phrase('fs_yt_new_video') }}
+		<xf:breadcrumb href="#">{{ phrase('fs_yt_new_video') }}</xf:breadcrumb> </xf:if>
+</xf:title>
+<xf:form
+		 action="{{ link('yt-videos/save', $videoitem) }}"
+		 ajax="true"
+		 class="block"
+		 data-force-flash-message="true"
+		 >
+	<div class="block-container">
+		<div class="block-body">
+
+			<xf:textboxrow name="title" value="{$videoitem.title}" label="{{ phrase('fs_yt_video_title') }}" hint="{{ phrase('required') }}" required="required"/>
+
+			<xf:radiorow name="type" id="key" value="{{ $videoitem.video_id ? ($videoitem.thumbnail ? '0' : '1') : '0' }}"
+						 label="{{ phrase('type') }}">
+
+				<xf:option value="0" data-xf-init="disabler" data-container=".js-navTypeForm--0" data-hide="true">{{ phrase('fs_yt_new_video_url') }}</xf:option>
+				<xf:option value="1" data-xf-init="disabler" data-container=".js-navTypeForm--1" data-hide="true">{{ phrase('fs_yt_new_video_video') }}</xf:option>
+			</xf:radiorow>
+
+			<hr class="formRowSep" />
+
+			<div class="js-navTypeForm js-navTypeForm--0">
+				<xf:textboxrow name="url" value="{$videoitem.url}" hint="{{ phrase('required') }}" placeholder="{{ phrase('fs_yt_new_video_url_place') }}" label="{{ phrase('fs_yt_new_video_url') }}" required="required"/> 
+			</div>
+
+			<div class="js-navTypeForm js-navTypeForm--1">
+				<xf:uploadrow name="upload" accept="video/*" label="{{ phrase('fs_yt_new_video_video') }}" hint="{{ phrase('required') }}"/>
+			</div>
+
+			<xf:if is="{$videoitem.thumbnail} && $videoitem.video_id">
+
+				<hr class="formRowSep" />
+
+				<xf:formrow>
+					<a href="{{$videoitem.thumbnail}}" target="_blank">
+						<img src="{{ base_url($videoitem.thumbnail) }}" width="300" height="300" />
+					</a>
+				</xf:formrow>
+			</xf:if>
+
+			<xf:if is="$videoitem.attachment_id && $videoitem.video_id">
+
+				<hr class="formRowSep" />
+
+				<xf:formrow>
+					<a href="{{$videoitem.Attachment.direct_url}}" target="_blank">
+						<video data-xf-init="video-init" width="200" height="200">
+							<source src="{$videoitem.Attachment.direct_url}" />
+						</video>
+					</a>
+				</xf:formrow>
+			</xf:if>
+
+		</div>
+		<xf:submitrow submit="" icon="save" />
+	</div>
+</xf:form>]]></template>
+  <template type="admin" title="fs_yt_video_index" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('fs_yt_video') }}</xf:title>
+
+<xf:pageaction>
+	<xf:button href="{{ link('yt-videos/add') }}" icon="add">{{ phrase('fs_yt_add_btn') }}</xf:button>
+</xf:pageaction>
+<xf:form action="{{ link($prefix . '/toggle') }}" class="block" ajax="true">
+	<div class="block-outer">
+		<xf:macro
+				  template="filter_macros"
+				  name="quick_filter"
+				  arg-key="yt-videos"
+				  arg-class="block-outer-opposite"
+				  />
+	</div>
+
+	<div class="block-container">
+
+		<xf:if is="$videoitems is not empty">
+			<div class="block-body">
+				<xf:datalist data-xf-init="responsive-data-list">
+
+					<xf:macro
+							  name="table_list"
+							  arg-data="{$videoitems}"
+							  />
+
+
+				</xf:datalist>
+				<div class="block-footer">
+					<span class="block-footer-counter"
+						  >{{ display_totals($totalReturn, $total) }}</span
+						>
+				</div>
+
+			</div>
+			<xf:else />
+			<div class="block-body block-row">{{ phrase('no_items_have_been_created_yet') }}</div>
+
+		</xf:if>
+
+	</div>
+
+
+	<xf:pagenav
+				page="{$page}"
+				perpage="{$perPage}"
+				total="{$total}"
+				link="yt-videos"
+				wrapperclass="block"
+				/>
+</xf:form>
+<xf:macro
+		  name="table_list"
+		  arg-data="!"
+		  >
+	<xf:datarow rowtype="header">
+		<xf:cell> {{ phrase('fs_yt_title') }} </xf:cell>
+		<xf:cell> {{ phrase('fs_yt_thumbnail') }} </xf:cell>
+		<xf:cell class="dataList-cell--min"></xf:cell>
+		<xf:cell class="dataList-cell--min"></xf:cell>
+	</xf:datarow>
+	<xf:foreach loop="{$data}" value="$value">
+		<xf:datarow>
+
+			<xf:cell> {$value.title} </xf:cell>
+			<xf:cell href="{{$value.thumbnail ?: $value.Attachment.direct_url}}" target="_blank">
+
+				<xf:if is="$value.thumbnail">
+					<img src="{{$value.thumbnail}}" alt="avatar image" width="100" height="100"/>
+					<xf:else />
+					<video data-xf-init="video-init" width="100" height="100">
+						<source src="{$value.Attachment.direct_url}" />
+					</video>
+				</xf:if>
+
+			</xf:cell>
+
+			<xf:action href="{{ link('yt-videos/edit', $value) }}" >{{ phrase('edit') }}</xf:action>
+			<xf:delete
+					   href="{{ link('yt-videos/delete', $value) }}"
+					   overlay="true"
+					   />
+		</xf:datarow>
+	</xf:foreach>
+</xf:macro>]]></template>
+  <template type="public" title="fs_yt_video_slider.less" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[/** 
+ * Featured threads slider designed by XenTR.Net.
+*/
+
+.ftslider 
+{	
+	.block-header 
+	{
+		margin-bottom: 3px;		
+	}
+}
+
+.ftslider_content > a 
+{	
+	text-transform: uppercase;
+}
+
+.fullwidth-slider .es-navigation a {
+    color: #ffffff;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.ftslider_title_detail {
+    font-size: 13px;
+    color: #fefefe;
+    background: rgba(97, 97, 97, 0.6) url(styles/FS/YtVideos/title.png);
+    padding: 6px;
+    box-shadow: inset rgba(255, 255, 255, 0.3) 0px 1px 0px, rgba(0, 0, 0, 0.3) 0px 1px 3px;
+    margin-bottom: 3px;
+}
+
+.ftslider_content > a {
+    display: block;
+    text-transform: uppercase;
+    font-family: 'Segoe UI', 'Helvetica Neue', Helvetica, Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', sans-serif;
+    font-size: 13px;
+    color: #ffffff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.fullwidth-title .ftslider_content .ftslider_excerpt a {
+    font-size: 11px;
+    color: #edf6fd;
+    text-decoration: none;
+    font-family: 'Segoe UI', 'Helvetica Neue', Helvetica, Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', sans-serif;
+}
+
+.fullwidth-title {
+    font-size: 11px;
+    color: #ffffff;
+    background: rgba(31, 31, 31, 0.7);
+    border-bottom: 1px solid #dfdfdf;
+    padding: 0;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 4px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    line-height: 15px;
+}
+
+.fullwidth-title 
+{
+	.xf-xtr_featured_slider();
+	
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	line-height: 15px;
+	
+	.ftslider_excerpt 
+	{
+		display: none;
+	}
+	
+	.ftslider_content .ftslider_excerpt a 
+	{
+		.xf-xtr_excerpts_color();
+		font-family: "'Segoe UI', 'Helvetica Neue', Helvetica, Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', sans-serif";
+	}
+}
+
+.ftslider_content 
+{
+	padding: 0 @xf-paddingLarge;
+	margin: (@xf-paddingMedium - 1px) 0;
+	
+	>a 
+	{
+		display: block;
+		text-transform: uppercase;
+		font-family: "'Segoe UI', 'Helvetica Neue', Helvetica, Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', sans-serif";
+		.xf-xtr_slider_content_title();
+		cursor: pointer;
+
+		&:hover 
+		{
+			.xf-xtr_slider_content_title_hover();
+		}
+
+		&:after 
+		{
+			content: "\2192";
+			margin-left: (@xf-paddingMedium - 1px);
+		}
+	}
+}
+
+.ftslider_title_detail 
+{
+	.xf-xtr_featured_slider_avatar_bar();
+	
+	.ftslider-date 
+	{
+		padding: @xf-paddingSmall;
+		display: inline-block;
+		cursor: default;
+	}
+}
+
+.ftslider_statistics 
+{
+	float: right;
+	display: inline-block;
+	position: relative;
+	padding: @xf-paddingSmall;
+	cursor: default;
+	
+	i {
+		.xf-xtr_statistic_icon_style();
+		margin: (@xf-paddingMedium - 3px);
+	}
+}
+
+.fullwidth-slider .es-slides > li:hover .fullwidth-title .ftslider_excerpt 
+{
+	display: inline-block;
+	cursor: default;
+}
+
+.FTSlider_Avatar { border-radius: 50%; }
+
+<xf:if is="false">
+.fullwidth-title { display: none; }
+</xf:if>
+
+// Ever Slider
+.everslider 
+{
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.everslider .es-slides 
+{
+	position: relative;
+	width: 100000px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	-webkit-transform: translate3d(0,0,0);
+}
+
+.everslider .es-slides > li 
+{
+	position: relative;
+	float: left;
+	padding: 0!important;
+    border: 0!important;
+    margin: 0 6px 0 0;
+    cursor: default; 
+	 -webkit-transform: translate3d(0,0,0);
+}
+
+.everslider.es-swipe-grab .es-slides > li 
+{
+	cursor: default; 
+    cursor: -webkit-grabbing; 
+    cursor: -moz-grabbing; 
+}
+
+.everslider .es-slides img 
+{
+	width: 100%;
+	height: auto;
+	max-width: none;
+}
+
+/* Preload */
+
+.everslider 
+{
+	background: url({{ base_url('styles/FS/YtVideos/preload.gif') }});
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.everslider.es-slides-ready { background: none; }
+
+.es-slides { visibility: hidden; }
+
+.es-slides-ready .es-slides { visibility: visible; }
+
+/* Navigation */
+.es-navigation a 
+{
+    position: absolute;
+    top: 50%;
+    margin-top: -17px;
+    padding: (@xf-paddingMedium + 1px);
+}
+
+.es-navigation .es-prev { left: 0 }
+.es-navigation .es-next { right: 0 }
+
+.es-navigation .es-first,
+.es-navigation .es-last 
+{
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+    cursor: default;
+}
+
+.es-navigation a .ftslider_excerpt 
+{
+	display: block;
+	width: auto;
+	height: 20px;
+}
+
+/* fullwidth slider */
+
+.fullwidth-slider .es-slides > li 
+{
+	/* 1.6 ~ image width/height */
+	width: 300px;	
+	height: 189px !important;
+	min-height: 187px;
+	background: rgba(97, 97, 97, 0.6);
+	overflow: hidden;
+}
+
+.fullwidth-slider .es-navigation a 
+{
+	.xf-xtr_navigation_button_color();
+}
+
+.fullwidth-slider .es-ticker 
+{
+	bottom: auto;
+	top: 0;
+	margin-right: 34px;
+}
+
+.fullwidth-slider .es-slides > li img  
+{
+	opacity: 1;
+	-webkit-transition: opacity .3s;
+	-moz-transition: opacity .3s;
+	-o-transition: opacity .3s;
+	transition: opacity .3s;
+}
+
+.fullwidth-slider .es-slides > li:hover img { opacity: 0.8; }]]></template>
+  <template type="public" title="fs_yt_video_slider_js" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[$(document).ready(function(){	
+			
+			$('#fs_yt_video_fullwidth_slider').everslider({
+				mode: 'carousel',
+				effect: '',
+				fadeEasing: 'linear',
+				fadeDuration: '',
+				fadeDelay: '',
+				fadeDirection: '',
+				moveSlides: {{$xf.options.fs_yt_Slider_skip}},
+				slideEasing: 'easeInOutCubic',
+				slideDuration: {{$xf.options.fs_yt_slider_transit_speed}},
+				navigation: true,
+				touchSwipe: false,
+				keyboard: true,
+				swipeThreshold: 10,
+				nextNav: '<xf:fa icon="fas fa-chevron-right" />',
+				prevNav: '<xf:fa icon="fas fa-chevron-left" />',
+				ticker: {{$xf.options.fs_yt_Slider_auto}},
+				tickerAutoStart: true,
+				tickerHover: true,
+				tickerTimeout: {{$xf.options.fs_yt_slider_ticker_timeout}}
+			});
+			
+			$('#fullwidth_slider_fade').everslider({
+				mode: 'carousel',
+				effect: 'fade',
+				moveSlides: 1,
+				fadeEasing: 'linear',
+				fadeDuration: 500,
+				fadeDelay: 200,
+				fadeDirection: 1,
+				navigation: true,
+				touchSwipe: false,
+				keyboard: true,
+				swipeThreshold: 10,
+				nextNav: '<span class="alt-arrow"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>',
+				prevNav: '<span class="alt-arrow"><i class="fa fa-chevron-left" aria-hidden="true"></i></span>',
+				ticker: true,
+				tickerAutoStart: false,
+				tickerTimeout: 2000
+			});
+   });]]></template>
+  <template type="public" title="fs_yt_video_widget_slider" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css" />
+<xf:js src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<xf:js>
+
+	$(document).ready(function(){
+
+	jQuery('a[id^="yt-url-"]').magnificPopup({
+	type: 'iframe'
+	});
+
+	jQuery('a[id^="video-file-"]').magnificPopup({
+	type: 'iframe'
+	});
+
+	});
+</xf:js>
+
+<xf:if is="$data is not empty">
+	<xf:css src="fs_yt_video_slider.less" />
+	<xf:js src="FS/YtVideos/jquery.fts.1.0.js">
+		<xf:js src="FS/YtVideos/jquery.fts.wheel.js" />
+		<xf:js src="FS/YtVideos/jquery.fts.min.js" />
+		{{ include('fs_yt_video_slider_js') }}
+	</xf:js>
+	<div class="block ftslider">
+		<div class="block-container">
+			<h3 class="block-header">{{ $title ?: phrase('fs_yt_videos_slider') }}</h3>	
+
+			<div class="block-body">	
+				<div id="fs_yt_video_fullwidth_slider" class="everslider fullwidth-slider">
+					<ul class="es-slides">
+						<xf:foreach loop="$data" value="$value" i="$key">
+							<li>
+
+								<xf:if is="$value.thumbnail">
+									<a class="yt-url" id="yt-url-{$value.video_id}" href="{{ $value.getYtWatchUrl() }}">
+
+										<img src="{{$value.thumbnail}}" 
+											 alt="xyz{$key}.jpeg"
+											 loading="lazy"
+											 style="width: {$xf.options.fs_yt_slider_image_dimensions.width}px; height: {$xf.options.fs_yt_slider_image_dimensions.height}px;"
+											 title="{{ $value.title }}"
+											 />
+									</a>
+									<xf:else />
+									<a class="video-file" id="video-file-{$value.video_id}" href="{{ $value.Attachment.direct_url }}">
+
+										<video data-xf-init="video-init" 
+											   style="width: {$xf.options.fs_yt_slider_image_dimensions.width}px; height: {$xf.options.fs_yt_slider_image_dimensions.height}px;"
+											   >
+											<source src="{$value.Attachment.direct_url}" />
+										</video>
+									</a>
+								</xf:if>		
+
+							</li>
+						</xf:foreach>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>	
+</xf:if>]]></template>
+</templates>

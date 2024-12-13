@@ -1,0 +1,6 @@
+{
+  "additional_files": ["styles/FS/YtVideos", "js/FS/YtVideos"],
+  "exec": [
+    "echo '{title} version {version_string} ({version_id}) has been built successfully!' > 'src/addons/FS/YtVideoSlider/_build/built.txt'"
+  ]
+}

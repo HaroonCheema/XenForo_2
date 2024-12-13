@@ -1,0 +1,164 @@
+{
+    "admin_navigation.fs_yt_video_slider.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "f706618cf2e2e40652d6ce253bc09b65"
+    },
+    "admin_navigation.fsytvideosadd.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "ec211f7c20af43e742bf2570c3cb84f9"
+    },
+    "fs_yt_add_btn.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "be42c759c49a8aa51d22c9286510b53e"
+    },
+    "fs_yt_edit_video.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "2cfcb4a177fd6279d1ddff7afdd54532"
+    },
+    "fs_yt_new_video.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "be42c759c49a8aa51d22c9286510b53e"
+    },
+    "fs_yt_new_video_url.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "cf26c0d5b71f36207ad9b694d77ab7c5"
+    },
+    "fs_yt_new_video_url_place.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "dba51bcc527ba93f7fe03868747280d5"
+    },
+    "fs_yt_new_video_video.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "1dc610930b894a7aa62e53a43fb6a37f"
+    },
+    "fs_yt_thumbnail.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "b7c161bb87bb0308fb25e6f68d0a5632"
+    },
+    "fs_yt_title.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "b78a3223503896721cca1303f776159b"
+    },
+    "fs_yt_video.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "f706618cf2e2e40652d6ce253bc09b65"
+    },
+    "fs_yt_video_title.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "b78a3223503896721cca1303f776159b"
+    },
+    "fs_yt_videos_slider.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "f706618cf2e2e40652d6ce253bc09b65"
+    },
+    "option.fs_yt_Slider_auto.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "f02478d0d32459c7482f58f91d30e0e0"
+    },
+    "option.fs_yt_Slider_skip.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "62527239611a0f0ff496fad6dfa2eb8d"
+    },
+    "option.fs_yt_slider_image_dimensions.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "dd7a416192a831df868aec6fc8aff089"
+    },
+    "option.fs_yt_slider_ticker_timeout.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "56be964ebae184f695d47be0af3bf419"
+    },
+    "option.fs_yt_slider_transit_speed.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "95a66da3c5d93e927ab198aa6efbfb34"
+    },
+    "option_explain.fs_yt_Slider_auto.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "6ad39d9ed648295ab6508175f69517f7"
+    },
+    "option_explain.fs_yt_Slider_skip.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "9073da2f27606fe0b0075438df06bfdb"
+    },
+    "option_explain.fs_yt_slider_image_dimensions.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "option_explain.fs_yt_slider_ticker_timeout.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "02f414d916e246f1b60a15e01e1c42b6"
+    },
+    "option_explain.fs_yt_slider_transit_speed.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "132fa45f1dc5fd85581b775f93303a30"
+    },
+    "option_group.fs_yt_videos.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "ca228a06674601b7e6fc686b99151bdd"
+    },
+    "option_group_description.fs_yt_videos.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "widget_def.fs_yt_videos_slider.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "c6dc813cf40e1463e674cea1bdf98f6d"
+    },
+    "widget_def_desc.fs_yt_videos_slider.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    }
+}

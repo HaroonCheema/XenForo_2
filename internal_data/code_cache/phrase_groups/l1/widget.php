@@ -25,6 +25,7 @@ return array (
   'widget.fs_media_slider_testing' => 'Testing Media Slider',
   'widget.fs_question_answer_count_wid' => 'Question Answer Counts',
   'widget.fs_thread_scoring_system' => 'Thread scoring system',
+  'widget.fs_yt_videos_slider_widget' => '[FS] Yt Video',
   'widget.fs_zoom_members_online' => 'Zoom Members Online',
   'widget.latest_followed_profile_posts' => 'Latest profile posts by followers',
   'widget.latest_posts' => 'Latest posts',

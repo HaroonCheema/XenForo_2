@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<content_type_fields>
+  <field content_type="fs_yt_video_slider" field_name="attachment_handler_class">FS\YtVideoSlider\Attachment\Video</field>
+  <field content_type="fs_yt_video_slider" field_name="entity">FS\YtVideoSlider:Video</field>
+</content_type_fields>

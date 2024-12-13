@@ -1,0 +1,17 @@
+{
+    "fs_yt_Slider_auto.json": {
+        "hash": "4966d5d36f4c6dbb070d293f3eabe1e0"
+    },
+    "fs_yt_Slider_skip.json": {
+        "hash": "834f589d25da90a31947ba3ba8f64d17"
+    },
+    "fs_yt_slider_image_dimensions.json": {
+        "hash": "a99e917731979211613e7dc3906582bc"
+    },
+    "fs_yt_slider_ticker_timeout.json": {
+        "hash": "5bcec252d2546ec4b6e6bf9d567df56a"
+    },
+    "fs_yt_slider_transit_speed.json": {
+        "hash": "43495f064b8aabb282038629ba3830c4"
+    }
+}

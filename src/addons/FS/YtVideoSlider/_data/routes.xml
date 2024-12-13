@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<routes>
+  <route route_type="admin" route_prefix="yt-videos" format=":int&lt;video_id,title&gt;/:page" controller="FS\YtVideoSlider:YtVideos" context="fsytvideosadd"/>
+</routes>

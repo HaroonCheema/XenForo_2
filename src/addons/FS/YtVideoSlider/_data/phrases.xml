@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="admin_navigation.fs_yt_video_slider" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Yt Videos]]></phrase>
+  <phrase title="admin_navigation.fsytvideosadd" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add]]></phrase>
+  <phrase title="fs_yt_add_btn" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add video]]></phrase>
+  <phrase title="fs_yt_edit_video" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Edit video]]></phrase>
+  <phrase title="fs_yt_new_video" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add video]]></phrase>
+  <phrase title="fs_yt_new_video_url" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Video URL]]></phrase>
+  <phrase title="fs_yt_new_video_url_place" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[https://www.youtube.com/]]></phrase>
+  <phrase title="fs_yt_new_video_video" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Upload video]]></phrase>
+  <phrase title="fs_yt_thumbnail" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Thumbnail]]></phrase>
+  <phrase title="fs_yt_title" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Title]]></phrase>
+  <phrase title="fs_yt_video" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Yt Videos]]></phrase>
+  <phrase title="fs_yt_video_title" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Title]]></phrase>
+  <phrase title="fs_yt_videos_slider" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Yt Videos]]></phrase>
+  <phrase title="option.fs_yt_Slider_auto" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Slider Auto Play Option]]></phrase>
+  <phrase title="option.fs_yt_Slider_skip" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Per Each Slider Skip Thumbnails Count]]></phrase>
+  <phrase title="option.fs_yt_slider_image_dimensions" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Thumbnail dimensions]]></phrase>
+  <phrase title="option.fs_yt_slider_ticker_timeout" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Skip Change Time Interval (Ticker Timeout)]]></phrase>
+  <phrase title="option.fs_yt_slider_transit_speed" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Slider Transit Speed]]></phrase>
+  <phrase title="option_explain.fs_yt_Slider_auto" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Auto Play options will be enabled when you push navigation buttons.]]></phrase>
+  <phrase title="option_explain.fs_yt_Slider_skip" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<b>How many items are skip on slider in a round?</b><br>
+For example, if the value "2" is entered,  "2" Thumbnails will move forward on the slider.</br>
+Recommended: "1" Thumbnail -/- Max.: "4" Thumbnails]]></phrase>
+  <phrase title="option_explain.fs_yt_slider_image_dimensions" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_explain.fs_yt_slider_ticker_timeout" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You can make more "slow" transitions to look at the subjects in more detail, more "fast" transitions to make all of your many things look.]]></phrase>
+  <phrase title="option_explain.fs_yt_slider_transit_speed" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You can adjust the sliding speed of the subject change. You may need it to read text more efficiently while moving topics.]]></phrase>
+  <phrase title="option_group.fs_yt_videos" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Yt Videos Slider Setting]]></phrase>
+  <phrase title="option_group_description.fs_yt_videos" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="widget_def.fs_yt_videos_slider" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Yt Videos Slider Widget]]></phrase>
+  <phrase title="widget_def_desc.fs_yt_videos_slider" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+</phrases>

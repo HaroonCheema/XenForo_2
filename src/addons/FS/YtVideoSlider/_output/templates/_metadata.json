@@ -1,0 +1,27 @@
+{
+    "admin/fs_yt_video_add_edit.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "81cdb2936f59a7666fce11e4dcacd3ee"
+    },
+    "admin/fs_yt_video_index.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "ae02d079790820d2bbed7b747035b5d7"
+    },
+    "public/fs_yt_video_slider.less": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "05ad57d2fcb01d12619f15f2aba99e1c"
+    },
+    "public/fs_yt_video_slider_js.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "e4bda998786a85bf0afec4f5c004cd32"
+    },
+    "public/fs_yt_video_widget_slider.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "3f30a9dae4620ad0385878fb2b20f6c3"
+    }
+}

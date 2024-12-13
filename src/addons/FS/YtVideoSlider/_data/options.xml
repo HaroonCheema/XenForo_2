@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<options>
+  <option option_id="fs_yt_Slider_auto" edit_format="radio" data_type="string">
+    <default_value>true</default_value>
+    <edit_format_params>true={{ phrase('Enable') }}
+false={{ phrase('Disable') }}</edit_format_params>
+    <relation group_id="fs_yt_videos" display_order="3"/>
+  </option>
+  <option option_id="fs_yt_Slider_skip" edit_format="spinbox" data_type="integer">
+    <default_value>1</default_value>
+    <edit_format_params>min=1
+max=4</edit_format_params>
+    <relation group_id="fs_yt_videos" display_order="2"/>
+  </option>
+  <option option_id="fs_yt_slider_image_dimensions" edit_format="template" data_type="array">
+    <default_value>{"width":"302","height":"189"}</default_value>
+    <edit_format_params>option_template_attachmentMaxDimensions</edit_format_params>
+    <sub_options>width
+height</sub_options>
+    <relation group_id="fs_yt_videos" display_order="1"/>
+  </option>
+  <option option_id="fs_yt_slider_ticker_timeout" edit_format="spinbox" data_type="unsigned_integer">
+    <default_value>2000</default_value>
+    <edit_format_params>min=100
+step=100</edit_format_params>
+    <relation group_id="fs_yt_videos" display_order="5"/>
+  </option>
+  <option option_id="fs_yt_slider_transit_speed" edit_format="spinbox" data_type="unsigned_integer">
+    <default_value>700</default_value>
+    <edit_format_params>min=500
+step=200</edit_format_params>
+    <relation group_id="fs_yt_videos" display_order="4"/>
+  </option>
+</options>

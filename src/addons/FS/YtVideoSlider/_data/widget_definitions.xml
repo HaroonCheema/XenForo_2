@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<widget_definitions>
+  <widget_definition definition_id="fs_yt_videos_slider" definition_class="FS\YtVideoSlider\Widget\YtVideos"/>
+</widget_definitions>

@@ -1,0 +1,1 @@
+Auto Play options will be enabled when you push navigation buttons.

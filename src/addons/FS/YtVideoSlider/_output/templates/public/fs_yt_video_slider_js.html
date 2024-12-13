@@ -1,0 +1,43 @@
+$(document).ready(function(){	
+			
+			$('#fs_yt_video_fullwidth_slider').everslider({
+				mode: 'carousel',
+				effect: '',
+				fadeEasing: 'linear',
+				fadeDuration: '',
+				fadeDelay: '',
+				fadeDirection: '',
+				moveSlides: {{$xf.options.fs_yt_Slider_skip}},
+				slideEasing: 'easeInOutCubic',
+				slideDuration: {{$xf.options.fs_yt_slider_transit_speed}},
+				navigation: true,
+				touchSwipe: false,
+				keyboard: true,
+				swipeThreshold: 10,
+				nextNav: '<xf:fa icon="fas fa-chevron-right" />',
+				prevNav: '<xf:fa icon="fas fa-chevron-left" />',
+				ticker: {{$xf.options.fs_yt_Slider_auto}},
+				tickerAutoStart: true,
+				tickerHover: true,
+				tickerTimeout: {{$xf.options.fs_yt_slider_ticker_timeout}}
+			});
+			
+			$('#fullwidth_slider_fade').everslider({
+				mode: 'carousel',
+				effect: 'fade',
+				moveSlides: 1,
+				fadeEasing: 'linear',
+				fadeDuration: 500,
+				fadeDelay: 200,
+				fadeDirection: 1,
+				navigation: true,
+				touchSwipe: false,
+				keyboard: true,
+				swipeThreshold: 10,
+				nextNav: '<span class="alt-arrow"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>',
+				prevNav: '<span class="alt-arrow"><i class="fa fa-chevron-left" aria-hidden="true"></i></span>',
+				ticker: true,
+				tickerAutoStart: false,
+				tickerTimeout: 2000
+			});
+   });

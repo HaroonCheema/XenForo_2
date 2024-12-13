@@ -1,0 +1,5 @@
+{
+    "content_type": "fs_yt_video_slider",
+    "field_name": "attachment_handler_class",
+    "field_value": "FS\\YtVideoSlider\\Attachment\\Video"
+}
