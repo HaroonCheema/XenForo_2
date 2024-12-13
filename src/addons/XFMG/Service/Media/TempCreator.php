@@ -65,8 +65,7 @@ class TempCreator extends AbstractService
 		$validator = $this->app->validator('Url');
 		$url = $validator->coerceValue($url);
 
-		if (!$validator->isValid($url) || !$this->app->http()->reader()->isRequestableUntrustedUrl($url))
-		{
+		if (!$validator->isValid($url) || !$this->app->http()->reader()->isRequestableUntrustedUrl($url)) {
 			$error = \XF::phraseDeferred('xfmg_pasted_text_does_not_appear_to_be_valid_url');
 			return null;
 		}
@@ -77,8 +76,7 @@ class TempCreator extends AbstractService
 		$sites = $bbCodeMediaSiteRepo->findActiveMediaSites()->fetch();
 		$match = $bbCodeMediaSiteRepo->urlMatchesMediaSiteList($url, $sites);
 
-		if (!$match)
-		{
+		if (!$match) {
 			$error = \XF::phraseDeferred('specified_url_cannot_be_embedded_as_media');
 			return null;
 		}
@@ -131,7 +129,7 @@ class TempCreator extends AbstractService
 		$mediaTemp->save();
 
 		$abstractedThumbnailPath = $mediaTemp->getAbstractedTempThumbnailPath();
-              
+
 		$thumbnailDate = 0;
 
 		/** @var \XFMG\Service\Media\ThumbnailGenerator $thumbnailGenerator */
@@ -139,8 +137,7 @@ class TempCreator extends AbstractService
 
 		$updates = [];
 
-		if ($this->attachment)
-		{
+		if ($this->attachment) {
 			$attachment = $this->attachment;
 
 			$updates += [
@@ -148,8 +145,11 @@ class TempCreator extends AbstractService
 				'attachment_id' => $attachment->attachment_id
 			];
 
-			if ($thumbnailGenerator->createTempThumbnailFromAttachment($attachment, $abstractedThumbnailPath, $mediaTemp->media_type))
-			{
+			echo "<pre>";
+			var_dump($abstractedThumbnailPath, $mediaTemp->media_type);
+			// exit;
+
+			if ($thumbnailGenerator->createTempThumbnailFromAttachment($attachment, $abstractedThumbnailPath, $mediaTemp->media_type)) {
 				$thumbnailDate = time();
 			}
 
@@ -157,25 +157,19 @@ class TempCreator extends AbstractService
 
 			$ffmpegOptions = $this->app->options()->xfmgFfmpeg;
 
-			if ($mediaTemp->media_type == 'video')
-			{
+			if ($mediaTemp->media_type == 'video') {
 				$abstractedPath = $attachment->Data->getAbstractedDataPath();
 				$tempPath = \XF\Util\File::copyAbstractedPathToTempFile($abstractedPath);
 
-				if ($ffmpegOptions['forceTranscode'])
-				{
+				if ($ffmpegOptions['forceTranscode']) {
 					$updates['requires_transcoding'] = true;
-				}
-				else
-				{
+				} else {
 					$videoInfo = new \XFMG\VideoInfo\Preparer($tempPath);
 					$result = $videoInfo->getInfo();
 
 					$updates['requires_transcoding'] = (!$result->isValid() || $result->requiresTranscoding());
 				}
-			}
-			else if ($mediaTemp->media_type == 'audio')
-			{
+			} else if ($mediaTemp->media_type == 'audio') {
 				$abstractedPath = $attachment->Data->getAbstractedDataPath();
 				$tempPath = \XF\Util\File::copyAbstractedPathToTempFile($abstractedPath);
 
@@ -184,17 +178,14 @@ class TempCreator extends AbstractService
 
 				$updates['requires_transcoding'] = ($MP3Detector->isValidMP3() ? false : true);
 			}
-		}
-		else if ($this->mediaSiteId)
-		{
+		} else if ($this->mediaSiteId) {
 			/** @var \XFMG\Repository\Media $mediaRepo */
 			$mediaRepo = $this->repository('XFMG:Media');
-                       
+
 			$embedDataHandler = $mediaRepo->createEmbedDataHandler($this->mediaSiteId);
 			$tempFile = $embedDataHandler->getTempThumbnailPath($this->mediaSiteUrl, $this->mediaSiteId, $this->siteMediaId);
 
-			if ($tempFile && $thumbnailGenerator->getTempThumbnailFromImage($tempFile, $abstractedThumbnailPath))
-			{
+			if ($tempFile && $thumbnailGenerator->getTempThumbnailFromImage($tempFile, $abstractedThumbnailPath)) {
 				$thumbnailDate = time();
 			}
 
@@ -206,13 +197,11 @@ class TempCreator extends AbstractService
 			];
 		}
 
-		if ($thumbnailDate)
-		{
+		if ($thumbnailDate) {
 			$updates['thumbnail_date'] = $thumbnailDate;
 		}
 
-		if ($updates)
-		{
+		if ($updates) {
 			$mediaTemp->fastUpdate($updates);
 		}
 

@@ -463,22 +463,41 @@
    });]]></template>
   <template type="public" title="fs_yt_video_widget_slider" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css" />
 <xf:js src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 
 <xf:js>
 
-	$(document).ready(function(){
+	$(document).on('click', 'a[id^="yt-url-"], a[id^="video-file-"]', function (e) {
+	e.preventDefault();
+	$('#fs_yt_video_fullwidth_slider').addClass('slider-locked'); // Lock slider
 
-	jQuery('a[id^="yt-url-"]').magnificPopup({
-	type: 'iframe'
+	$(this).magnificPopup({
+	type: 'iframe',
+	callbacks: {
+	beforeOpen: function () {
+	console.log('Slider locked.');
+	},
+	close: function () {
+	$('#fs_yt_video_fullwidth_slider').removeClass('slider-locked'); // Unlock slider
+	console.log('Slider unlocked.');
+	},
+	},
+	}).magnificPopup('open');
 	});
 
-	jQuery('a[id^="video-file-"]').magnificPopup({
-	type: 'iframe'
-	});
 
-	});
+
+
 </xf:js>
+
+<style>
+
+	.slider-locked {
+		pointer-events: none; /* Disable all pointer interactions */
+		touch-action: none; /* Prevent touch interactions */
+	}
+
+</style>
 
 <xf:if is="$data is not empty">
 	<xf:css src="fs_yt_video_slider.less" />
@@ -496,32 +515,27 @@
 					<ul class="es-slides">
 						<xf:foreach loop="$data" value="$value" i="$key">
 							<li>
-
 								<xf:if is="$value.thumbnail">
-									<a class="yt-url" id="yt-url-{$value.video_id}" href="{{ $value.getYtWatchUrl() }}">
-
+									<a class="yt-url" id="yt-url-{$key}-{$value.id}" href="{{ $value.getYtWatchUrl() }}">
 										<img src="{{$value.thumbnail}}" 
 											 alt="xyz{$key}.jpeg"
 											 loading="lazy"
 											 style="width: {$xf.options.fs_yt_slider_image_dimensions.width}px; height: {$xf.options.fs_yt_slider_image_dimensions.height}px;"
-											 title="{{ $value.title }}"
-											 />
+											 title="{{ $value.title }}" />
 									</a>
 									<xf:else />
-									<a class="video-file" id="video-file-{$value.video_id}" href="{{ $value.Attachment.direct_url }}">
-
-										<video data-xf-init="video-init" 
-											   style="width: {$xf.options.fs_yt_slider_image_dimensions.width}px; height: {$xf.options.fs_yt_slider_image_dimensions.height}px;"
-											   >
+									<a class="video-file" id="video-file-{$key}-{$value.id}" href="{{ $value.Attachment.direct_url }}">
+										<video data-xf-init="video-init"
+											   style="width: {$xf.options.fs_yt_slider_image_dimensions.width}px; height: {$xf.options.fs_yt_slider_image_dimensions.height}px;">
 											<source src="{$value.Attachment.direct_url}" />
 										</video>
 									</a>
-								</xf:if>		
-
+								</xf:if>
 							</li>
 						</xf:foreach>
 					</ul>
 				</div>
+
 			</div>
 		</div>
 	</div>	

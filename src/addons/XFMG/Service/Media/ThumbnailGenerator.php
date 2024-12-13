@@ -12,29 +12,23 @@ class ThumbnailGenerator extends AbstractService
 
 		$dataPath = $data->getAbstractedDataPath();
 
-		if ($mediaType == 'image')
-		{
+		if ($mediaType == 'image') {
 			$sourceFile = \XF\Util\File::copyAbstractedPathToTempFile($dataPath);
 
 			$width = $data->width;
 			$height = $data->height;
 
 			return $this->getTempThumbnailFromImage($sourceFile, $abstractedDestination, $width, $height);
-		}
-		else if ($mediaType == 'video' || $mediaType == 'audio')
-		{
+		} else if ($mediaType == 'video' || $mediaType == 'audio') {
 			$ffmpegOptions = \XF::options()->xfmgFfmpeg;
-			if (!$ffmpegOptions['ffmpegPath'] || !$ffmpegOptions['thumbnail'])
-			{
+			if (!$ffmpegOptions['ffmpegPath'] || !$ffmpegOptions['thumbnail']) {
 				return false;
 			}
 
 			$sourceFile = \XF\Util\File::copyAbstractedPathToTempFile($dataPath);
 
 			return $this->getTempThumbnailFromFfmpeg($sourceFile, $abstractedDestination, $mediaType);
-		}
-		else
-		{
+		} else {
 			return false;
 		}
 	}
@@ -43,17 +37,14 @@ class ThumbnailGenerator extends AbstractService
 	{
 		$tempThumbFile = null;
 
-		if ($width === null || $height === null)
-		{
+		if ($width === null || $height === null) {
 			$imageInfo = getimagesize($sourceFile);
-			if (!$imageInfo)
-			{
+			if (!$imageInfo) {
 				return false;
 			}
 
 			$imageType = $imageInfo[2];
-			switch ($imageType)
-			{
+			switch ($imageType) {
 				case IMAGETYPE_GIF:
 				case IMAGETYPE_JPEG:
 				case IMAGETYPE_PNG:
@@ -67,22 +58,17 @@ class ThumbnailGenerator extends AbstractService
 			$height = $imageInfo[1];
 		}
 
-		if ($width && $height && $this->app->imageManager()->canResize($width, $height))
-		{
+		if ($width && $height && $this->app->imageManager()->canResize($width, $height)) {
 			$tempThumbFile = $this->generateThumbnailFromFile($sourceFile);
 		}
 
-		if (!$tempThumbFile)
-		{
+		if (!$tempThumbFile) {
 			return false;
 		}
 
-		try
-		{
+		try {
 			\XF\Util\File::copyFileToAbstractedPath($tempThumbFile, $abstractedDestination);
-		}
-		catch (\Exception $e)
-		{
+		} catch (\Exception $e) {
 			\XF\Util\File::deleteFromAbstractedPath($abstractedDestination);
 
 			throw $e;
@@ -93,11 +79,13 @@ class ThumbnailGenerator extends AbstractService
 
 	public function getTempThumbnailFromFfmpeg($sourceFile, $abstractedDestination, $mediaType)
 	{
+
+		var_dump($abstractedDestination, $sourceFile);
+
 		$tempThumbFile = null;
 
 		$ffmpegOptions = $this->app->options()->xfmgFfmpeg;
-		if (!$ffmpegOptions['ffmpegPath'] || !$ffmpegOptions['thumbnail'])
-		{
+		if (!$ffmpegOptions['ffmpegPath'] || !$ffmpegOptions['thumbnail']) {
 			return false;
 		}
 
@@ -110,36 +98,29 @@ class ThumbnailGenerator extends AbstractService
 		$ffmpeg->setType($mediaType);
 
 		$frame = $ffmpeg->getKeyFrame();
-		if (!$frame)
-		{
+		if (!$frame) {
 			return false;
 		}
 
 		$imageInfo = @getimagesize($frame);
-		if (!$imageInfo)
-		{
+		if (!$imageInfo) {
 			return false;
 		}
 
 		$width = $imageInfo[0];
 		$height = $imageInfo[1];
 
-		if ($width && $height && $this->app->imageManager()->canResize($width, $height))
-		{
+		if ($width && $height && $this->app->imageManager()->canResize($width, $height)) {
 			$tempThumbFile = $this->generateThumbnailFromFile($frame);
 		}
 
-		if (!$tempThumbFile)
-		{
+		if (!$tempThumbFile) {
 			return false;
 		}
 
-		try
-		{
+		try {
 			\XF\Util\File::copyFileToAbstractedPath($tempThumbFile, $abstractedDestination);
-		}
-		catch (\Exception $e)
-		{
+		} catch (\Exception $e) {
 			\XF\Util\File::deleteFromAbstractedPath($abstractedDestination);
 
 			throw $e;
@@ -151,16 +132,13 @@ class ThumbnailGenerator extends AbstractService
 	public function generateThumbnailFromFile($sourceFile, &$width = null, &$height = null)
 	{
 		$image = $this->app->imageManager()->imageFromFile($sourceFile);
-		if (!$image)
-		{
+		if (!$image) {
 			return null;
 		}
 
-		if ($image instanceof \XF\Image\Imagick)
-		{
+		if ($image instanceof \XF\Image\Imagick) {
 			// Workaround to only use the first frame of a multi-frame image for the thumb
-			foreach ($image->getImage() AS $imagick)
-			{
+			foreach ($image->getImage() as $imagick) {
 				$image->setImage($imagick->getImage());
 				break;
 			}
@@ -174,15 +152,12 @@ class ThumbnailGenerator extends AbstractService
 			->unsharpMask();
 
 		$newTempFile = \XF\Util\File::getTempFile();
-		if ($newTempFile && $image->save($newTempFile))
-		{
+		if ($newTempFile && $image->save($newTempFile)) {
 			$width = $image->getWidth();
 			$height = $image->getHeight();
 
 			return $newTempFile;
-		}
-		else
-		{
+		} else {
 			return null;
 		}
 	}

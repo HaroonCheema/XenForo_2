@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 3f30a9dae4620ad0385878fb2b20f6c3
+// FROM HASH: 55ed9a3b919d5652051fa5855a6c05db
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -10,24 +10,43 @@ return array(
 		'src' => 'https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js',
 	));
 	$__finalCompiled .= '
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 
 ';
 	$__templater->inlineJs('
 
-	$(document).ready(function(){
+	$(document).on(\'click\', \'a[id^="yt-url-"], a[id^="video-file-"]\', function (e) {
+	e.preventDefault();
+	$(\'#fs_yt_video_fullwidth_slider\').addClass(\'slider-locked\'); // Lock slider
 
-	jQuery(\'a[id^="yt-url-"]\').magnificPopup({
-	type: \'iframe\'
+	$(this).magnificPopup({
+	type: \'iframe\',
+	callbacks: {
+	beforeOpen: function () {
+	console.log(\'Slider locked.\');
+	},
+	close: function () {
+	$(\'#fs_yt_video_fullwidth_slider\').removeClass(\'slider-locked\'); // Unlock slider
+	console.log(\'Slider unlocked.\');
+	},
+	},
+	}).magnificPopup(\'open\');
 	});
 
-	jQuery(\'a[id^="video-file-"]\').magnificPopup({
-	type: \'iframe\'
-	});
 
-	});
+
+
 ');
 	$__finalCompiled .= '
+
+<style>
+
+	.slider-locked {
+		pointer-events: none; /* Disable all pointer interactions */
+		touch-action: none; /* Prevent touch interactions */
+	}
+
+</style>
 
 ';
 	if (!$__templater->test($__vars['data'], 'empty', array())) {
@@ -65,34 +84,28 @@ return array(
 				$__vars['key']++;
 				$__finalCompiled .= '
 							<li>
-
 								';
 				if ($__vars['value']['thumbnail']) {
 					$__finalCompiled .= '
-									<a class="yt-url" id="yt-url-' . $__templater->escape($__vars['value']['video_id']) . '" href="' . $__templater->escape($__templater->method($__vars['value'], 'getYtWatchUrl', array())) . '">
-
+									<a class="yt-url" id="yt-url-' . $__templater->escape($__vars['key']) . '-' . $__templater->escape($__vars['value']['id']) . '" href="' . $__templater->escape($__templater->method($__vars['value'], 'getYtWatchUrl', array())) . '">
 										<img src="' . $__templater->escape($__vars['value']['thumbnail']) . '" 
 											 alt="xyz' . $__templater->escape($__vars['key']) . '.jpeg"
 											 loading="lazy"
 											 style="width: ' . $__templater->escape($__vars['xf']['options']['fs_yt_slider_image_dimensions']['width']) . 'px; height: ' . $__templater->escape($__vars['xf']['options']['fs_yt_slider_image_dimensions']['height']) . 'px;"
-											 title="' . $__templater->escape($__vars['value']['title']) . '"
-											 />
+											 title="' . $__templater->escape($__vars['value']['title']) . '" />
 									</a>
 									';
 				} else {
 					$__finalCompiled .= '
-									<a class="video-file" id="video-file-' . $__templater->escape($__vars['value']['video_id']) . '" href="' . $__templater->escape($__vars['value']['Attachment']['direct_url']) . '">
-
-										<video data-xf-init="video-init" 
-											   style="width: ' . $__templater->escape($__vars['xf']['options']['fs_yt_slider_image_dimensions']['width']) . 'px; height: ' . $__templater->escape($__vars['xf']['options']['fs_yt_slider_image_dimensions']['height']) . 'px;"
-											   >
+									<a class="video-file" id="video-file-' . $__templater->escape($__vars['key']) . '-' . $__templater->escape($__vars['value']['id']) . '" href="' . $__templater->escape($__vars['value']['Attachment']['direct_url']) . '">
+										<video data-xf-init="video-init"
+											   style="width: ' . $__templater->escape($__vars['xf']['options']['fs_yt_slider_image_dimensions']['width']) . 'px; height: ' . $__templater->escape($__vars['xf']['options']['fs_yt_slider_image_dimensions']['height']) . 'px;">
 											<source src="' . $__templater->escape($__vars['value']['Attachment']['direct_url']) . '" />
 										</video>
 									</a>
 								';
 				}
-				$__finalCompiled .= '		
-
+				$__finalCompiled .= '
 							</li>
 						';
 			}
@@ -100,6 +113,7 @@ return array(
 		$__finalCompiled .= '
 					</ul>
 				</div>
+
 			</div>
 		</div>
 	</div>	

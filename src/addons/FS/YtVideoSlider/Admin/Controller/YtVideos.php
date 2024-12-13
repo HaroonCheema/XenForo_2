@@ -54,31 +54,148 @@ class YtVideos extends AbstractController
         return $this->view('FS\YtVideoSlider:Video\Create', 'fs_yt_video_add_edit', $viewParams);
     }
 
+    // public function actionSave(ParameterBag $params)
+    // {
+
+    //     if ($params->video_id) {
+    //         $dataEditAdd = $this->assertRecordExists('FS\YtVideoSlider:Video', $params->video_id);
+    //     } else {
+    //         $dataEditAdd = $this->em()->create('FS\YtVideoSlider:Video');
+
+    //         if ($this->filter('type', 'bool')) {
+
+    //             $video = $this->request->getFile('upload');
+
+    //             if (!$video) {
+    //                 throw $this->exception($this->error(\XF::phraseDeferred('please_complete_required_fields')));
+    //             }
+    //         }
+    //     }
+
+    //     $this->dataSaveProcess($dataEditAdd)->run();
+
+    //     if ($this->filter('type', 'bool')) {
+    //         $this->saveVideo($dataEditAdd);
+    //     }
+
+    //     return $this->redirect($this->buildLink('yt-videos'));
+    // }
+
     public function actionSave(ParameterBag $params)
     {
+        $abstractedDestination = "data://xfmg/temp/103324.jpg";
+        $mediaType = 'video';
+        // $sourceFile = "/var/www/html/xenforo/internal_data/temp/xfZHxgxu";
 
-        if ($params->video_id) {
-            $dataEditAdd = $this->assertRecordExists('FS\YtVideoSlider:Video', $params->video_id);
-        } else {
-            $dataEditAdd = $this->em()->create('FS\YtVideoSlider:Video');
+        $video = $this->request->getFile('upload');
 
-            if ($this->filter('type', 'bool')) {
+        $type = 'fs_yt_video_slider';
 
-                $video = $this->request->getFile('upload');
+        $context = array('video_id' => '1');
+        $hash = md5(microtime(true) . \XF::generateRandomString(8, true));
+        $handler = $this->repository('XF:Attachment')->getAttachmentHandler($type);
 
-                if (!$video) {
-                    throw $this->exception($this->error(\XF::phraseDeferred('please_complete_required_fields')));
-                }
+        /** @var \XF\Attachment\Manipulator $manipulator */
+        $class = \XF::extendClass('XF\Attachment\Manipulator');
+        $manipulator = new $class($handler, $this->getAttachmentRepo(), $context, $hash);
+        /** @var \XF\Entity\Attachment $attachment */
+
+        $attachment = $manipulator->insertAttachmentFromUpload($video, $error);
+
+        $data = $attachment->Data;
+
+        $dataPath = $data->getAbstractedDataPath();
+
+        $sourceFile = \XF\Util\File::copyAbstractedPathToTempFile($dataPath);
+
+
+        $this->getTempThumbnailFromFfmpeg($sourceFile, $abstractedDestination, $mediaType);
+
+        echo "<pre>";
+        var_dump($video->getTempFile(), $sourceFile);
+        exit;
+    }
+
+    public function getTempThumbnailFromFfmpeg($sourceFile, $abstractedDestination, $mediaType)
+    {
+        $tempThumbFile = null;
+
+        $ffmpegOptions = $this->app->options()->xfmgFfmpeg;
+        if (!$ffmpegOptions['ffmpegPath'] || !$ffmpegOptions['thumbnail']) {
+            return false;
+        }
+
+        $class = '\XFMG\Ffmpeg\Runner';
+        $class = \XF::extendClass($class);
+
+        /** @var \XFMG\Ffmpeg\Runner $ffmpeg */
+        $ffmpeg = new $class($ffmpegOptions['ffmpegPath']);
+        $ffmpeg->setFileName($sourceFile);
+        $ffmpeg->setType($mediaType);
+
+        $frame = $ffmpeg->getKeyFrame();
+        if (!$frame) {
+            return false;
+        }
+
+        $imageInfo = @getimagesize($frame);
+        if (!$imageInfo) {
+            return false;
+        }
+
+        $width = $imageInfo[0];
+        $height = $imageInfo[1];
+
+        if ($width && $height && $this->app->imageManager()->canResize($width, $height)) {
+            $tempThumbFile = $this->generateThumbnailFromFile($frame);
+        }
+
+        if (!$tempThumbFile) {
+            return false;
+        }
+
+        try {
+            \XF\Util\File::copyFileToAbstractedPath($tempThumbFile, $abstractedDestination);
+        } catch (\Exception $e) {
+            \XF\Util\File::deleteFromAbstractedPath($abstractedDestination);
+
+            throw $e;
+        }
+
+        return true;
+    }
+
+    public function generateThumbnailFromFile($sourceFile, &$width = null, &$height = null)
+    {
+        $image = $this->app->imageManager()->imageFromFile($sourceFile);
+        if (!$image) {
+            return null;
+        }
+
+        if ($image instanceof \XF\Image\Imagick) {
+            // Workaround to only use the first frame of a multi-frame image for the thumb
+            foreach ($image->getImage() as $imagick) {
+                $image->setImage($imagick->getImage());
+                break;
             }
         }
 
-        $this->dataSaveProcess($dataEditAdd)->run();
+        $thumbDimensions = $this->app->options()->xfmgThumbnailDimensions;
+        $thumbWidth = $thumbDimensions['width'];
+        $thumbHeight = $thumbDimensions['height'];
 
-        if ($this->filter('type', 'bool')) {
-            $this->saveVideo($dataEditAdd);
+        $image->resizeAndCrop($thumbWidth, $thumbHeight)
+            ->unsharpMask();
+
+        $newTempFile = \XF\Util\File::getTempFile();
+        if ($newTempFile && $image->save($newTempFile)) {
+            $width = $image->getWidth();
+            $height = $image->getHeight();
+
+            return $newTempFile;
+        } else {
+            return null;
         }
-
-        return $this->redirect($this->buildLink('yt-videos'));
     }
 
     protected function dataSaveProcess(\FS\YtVideoSlider\Entity\Video $data)
