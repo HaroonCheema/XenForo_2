@@ -63,14 +63,20 @@
 		<xf:datarow>
 
 			<xf:cell> {$value.title} </xf:cell>
-			<xf:cell href="{{$value.thumbnail ?: $value.Attachment.direct_url}}" target="_blank">
+			<xf:cell href="{{$value.thumbnail ?: $value.isImage() ? $value.getImgUrl() :$value.Attachment.direct_url}}" target="_blank">
 
 				<xf:if is="$value.thumbnail">
 					<img src="{{$value.thumbnail}}" alt="avatar image" width="100" height="100"/>
 					<xf:else />
-					<video data-xf-init="video-init" width="100" height="100">
-						<source src="{$value.Attachment.direct_url}" />
-					</video>
+
+					<xf:if is="$value.isImage()">
+						<img src="{{$value.getImgUrl()}}" alt="avatar image" width="100" height="100"/>
+
+						<xf:else />
+						<video data-xf-init="video-init" width="100" height="100">
+							<source src="{$value.Attachment.direct_url}" />
+						</video>
+					</xf:if>
 				</xf:if>
 
 			</xf:cell>

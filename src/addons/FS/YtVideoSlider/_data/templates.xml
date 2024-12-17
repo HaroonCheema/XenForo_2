@@ -127,14 +127,20 @@
 		<xf:datarow>
 
 			<xf:cell> {$value.title} </xf:cell>
-			<xf:cell href="{{$value.thumbnail ?: $value.Attachment.direct_url}}" target="_blank">
+			<xf:cell href="{{$value.thumbnail ?: $value.isImage() ? $value.getImgUrl() :$value.Attachment.direct_url}}" target="_blank">
 
 				<xf:if is="$value.thumbnail">
 					<img src="{{$value.thumbnail}}" alt="avatar image" width="100" height="100"/>
 					<xf:else />
-					<video data-xf-init="video-init" width="100" height="100">
-						<source src="{$value.Attachment.direct_url}" />
-					</video>
+
+					<xf:if is="$value.isImage()">
+						<img src="{{$value.getImgUrl()}}" alt="avatar image" width="100" height="100"/>
+
+						<xf:else />
+						<video data-xf-init="video-init" width="100" height="100">
+							<source src="{$value.Attachment.direct_url}" />
+						</video>
+					</xf:if>
 				</xf:if>
 
 			</xf:cell>
@@ -516,7 +522,7 @@
 						<xf:foreach loop="$data" value="$value" i="$key">
 							<li>
 								<xf:if is="$value.thumbnail">
-									<a class="yt-url" id="yt-url-{$key}-{$value.id}" href="{{ $value.getYtWatchUrl() }}">
+									<a class="yt-url" id="yt-url-{$key}-{$value.video_id}" href="{{ $value.getYtWatchUrl() }}">
 										<img src="{{$value.thumbnail}}" 
 											 alt="xyz{$key}.jpeg"
 											 loading="lazy"
@@ -524,11 +530,19 @@
 											 title="{{ $value.title }}" />
 									</a>
 									<xf:else />
-									<a class="video-file" id="video-file-{$key}-{$value.id}" href="{{ $value.Attachment.direct_url }}">
-										<video data-xf-init="video-init"
-											   style="width: {$xf.options.fs_yt_slider_image_dimensions.width}px; height: {$xf.options.fs_yt_slider_image_dimensions.height}px;">
-											<source src="{$value.Attachment.direct_url}" />
-										</video>
+									<a class="video-file" id="video-file-{$key}-{$value.video_id}" href="{{ $value.Attachment.direct_url }}">
+										<xf:if is="$value.isImage()">
+											<img src="{{$value.getImgUrl()}}" 
+												 alt="xyz{$key}.jpeg"
+												 loading="lazy"
+												 style="width: {$xf.options.fs_yt_slider_image_dimensions.width}px; height: {$xf.options.fs_yt_slider_image_dimensions.height}px;"
+												 title="{{ $value.title }}" />
+											<xf:else />
+											<video data-xf-init="video-init"
+												   style="width: {$xf.options.fs_yt_slider_image_dimensions.width}px; height: {$xf.options.fs_yt_slider_image_dimensions.height}px;">
+												<source src="{$value.Attachment.direct_url}" />
+											</video>
+										</xf:if>
 									</a>
 								</xf:if>
 							</li>

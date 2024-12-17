@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: ae02d079790820d2bbed7b747035b5d7
+// FROM HASH: 017178f238736119b8797ad34c00392e
 return array(
 'macros' => array('table_list' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -41,9 +41,21 @@ return array(
 					';
 			} else {
 				$__compilerTemp1 .= '
-					<video data-xf-init="video-init" width="100" height="100">
-						<source src="' . $__templater->escape($__vars['value']['Attachment']['direct_url']) . '" />
-					</video>
+
+					';
+				if ($__templater->method($__vars['value'], 'isImage', array())) {
+					$__compilerTemp1 .= '
+						<img src="' . $__templater->escape($__templater->method($__vars['value'], 'getImgUrl', array())) . '" alt="avatar image" width="100" height="100"/>
+
+						';
+				} else {
+					$__compilerTemp1 .= '
+						<video data-xf-init="video-init" width="100" height="100">
+							<source src="' . $__templater->escape($__vars['value']['Attachment']['direct_url']) . '" />
+						</video>
+					';
+				}
+				$__compilerTemp1 .= '
 				';
 			}
 			$__finalCompiled .= $__templater->dataRow(array(
@@ -52,7 +64,7 @@ return array(
 				'html' => ' ' . $__templater->escape($__vars['value']['title']) . ' ',
 			),
 			array(
-				'href' => ($__vars['value']['thumbnail'] ?: $__vars['value']['Attachment']['direct_url']),
+				'href' => (($__vars['value']['thumbnail'] ?: $__templater->method($__vars['value'], 'isImage', array())) ? $__templater->method($__vars['value'], 'getImgUrl', array()) : $__vars['value']['Attachment']['direct_url']),
 				'target' => '_blank',
 				'_type' => 'cell',
 				'html' => '

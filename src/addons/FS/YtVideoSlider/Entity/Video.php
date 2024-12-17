@@ -20,7 +20,17 @@ class Video extends \XF\Mvc\Entity\Entity
         if ($attachment_id) {
             /** @var \XF\Entity\Attachment $attachment */
             $attachment = $this->em()->find('XF:Attachment', $attachment_id);
-            $attachment->delete(false);
+            if ($attachment) {
+                $attachment->delete(false);
+            }
+        }
+
+        $fs = $this->app()->fs();
+
+        $ImgPath = $this->getAbstractedThumbanilPath();
+
+        if ($fs->has($ImgPath)) {
+            $fs->delete($ImgPath);
         }
     }
 
@@ -61,5 +71,31 @@ class Video extends \XF\Mvc\Entity\Entity
             return "https://www.youtube.com/watch?v=" . $videoId;
         }
         return '';
+    }
+
+    public function getImgUrl($canonical = true)
+    {
+        $videoId = $this->video_id;
+        $path = sprintf('ytVideo/' . '/%d/%d.jpg', floor($videoId / 1000), $videoId);
+
+        return \XF::app()->applyExternalDataUrl($path, $canonical);
+    }
+
+    public function getAbstractedThumbanilPath()
+    {
+        $videoId = $this->video_id;
+
+        return sprintf('data://ytVideo/' . '/%d/%d.jpg', floor($videoId / 1000), $videoId);
+    }
+
+    public function isImage()
+    {
+        $fs = $this->app()->fs();
+
+        $ImgPath = $this->getAbstractedThumbanilPath();
+
+        if ($fs->has($ImgPath)) {
+            return 'true';
+        }
     }
 }

@@ -7,7 +7,7 @@
     "admin/fs_yt_video_index.html": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
-        "hash": "ae02d079790820d2bbed7b747035b5d7"
+        "hash": "017178f238736119b8797ad34c00392e"
     },
     "public/fs_yt_video_slider.less": {
         "version_id": 1000010,
@@ -22,6 +22,6 @@
     "public/fs_yt_video_widget_slider.html": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
-        "hash": "55ed9a3b919d5652051fa5855a6c05db"
+        "hash": "eb709dd700420b255a0240901bccf514"
     }
 }

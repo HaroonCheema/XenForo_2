@@ -1097,7 +1097,9 @@ return function($__templater, $__selectedNav, array $__vars)
 		$__navTemp = [
 		'title' => \XF::phrase('nav.fs_zoom_meetings'),
 		'href' => $__templater->func('link', array('video-chat', ), false),
-		'attributes' => [],
+		'attributes' => [
+			'target' => '"_blank"',
+		],
 	];
 		if ($__navTemp) {
 			$__tree['fs_zoom_meetings'] = $__navTemp;

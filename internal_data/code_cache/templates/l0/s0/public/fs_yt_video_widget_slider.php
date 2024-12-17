@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 55ed9a3b919d5652051fa5855a6c05db
+// FROM HASH: eb709dd700420b255a0240901bccf514
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -87,7 +87,7 @@ return array(
 								';
 				if ($__vars['value']['thumbnail']) {
 					$__finalCompiled .= '
-									<a class="yt-url" id="yt-url-' . $__templater->escape($__vars['key']) . '-' . $__templater->escape($__vars['value']['id']) . '" href="' . $__templater->escape($__templater->method($__vars['value'], 'getYtWatchUrl', array())) . '">
+									<a class="yt-url" id="yt-url-' . $__templater->escape($__vars['key']) . '-' . $__templater->escape($__vars['value']['video_id']) . '" href="' . $__templater->escape($__templater->method($__vars['value'], 'getYtWatchUrl', array())) . '">
 										<img src="' . $__templater->escape($__vars['value']['thumbnail']) . '" 
 											 alt="xyz' . $__templater->escape($__vars['key']) . '.jpeg"
 											 loading="lazy"
@@ -97,11 +97,25 @@ return array(
 									';
 				} else {
 					$__finalCompiled .= '
-									<a class="video-file" id="video-file-' . $__templater->escape($__vars['key']) . '-' . $__templater->escape($__vars['value']['id']) . '" href="' . $__templater->escape($__vars['value']['Attachment']['direct_url']) . '">
-										<video data-xf-init="video-init"
-											   style="width: ' . $__templater->escape($__vars['xf']['options']['fs_yt_slider_image_dimensions']['width']) . 'px; height: ' . $__templater->escape($__vars['xf']['options']['fs_yt_slider_image_dimensions']['height']) . 'px;">
-											<source src="' . $__templater->escape($__vars['value']['Attachment']['direct_url']) . '" />
-										</video>
+									<a class="video-file" id="video-file-' . $__templater->escape($__vars['key']) . '-' . $__templater->escape($__vars['value']['video_id']) . '" href="' . $__templater->escape($__vars['value']['Attachment']['direct_url']) . '">
+										';
+					if ($__templater->method($__vars['value'], 'isImage', array())) {
+						$__finalCompiled .= '
+											<img src="' . $__templater->escape($__templater->method($__vars['value'], 'getImgUrl', array())) . '" 
+												 alt="xyz' . $__templater->escape($__vars['key']) . '.jpeg"
+												 loading="lazy"
+												 style="width: ' . $__templater->escape($__vars['xf']['options']['fs_yt_slider_image_dimensions']['width']) . 'px; height: ' . $__templater->escape($__vars['xf']['options']['fs_yt_slider_image_dimensions']['height']) . 'px;"
+												 title="' . $__templater->escape($__vars['value']['title']) . '" />
+											';
+					} else {
+						$__finalCompiled .= '
+											<video data-xf-init="video-init"
+												   style="width: ' . $__templater->escape($__vars['xf']['options']['fs_yt_slider_image_dimensions']['width']) . 'px; height: ' . $__templater->escape($__vars['xf']['options']['fs_yt_slider_image_dimensions']['height']) . 'px;">
+												<source src="' . $__templater->escape($__vars['value']['Attachment']['direct_url']) . '" />
+											</video>
+										';
+					}
+					$__finalCompiled .= '
 									</a>
 								';
 				}

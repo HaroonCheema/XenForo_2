@@ -5,7 +5,9 @@
     "type_config": {
         "link": "{{ link('video-chat') }}",
         "display_condition": "$xf.visitor.canViewMeeting()",
-        "extra_attributes": []
+        "extra_attributes": {
+            "target": "\"_blank\""
+        }
     },
     "enabled": true
 }
