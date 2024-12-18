@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<options>
+  <option option_id="fs_change_the_path_to_the_tmp_file" edit_format="textbox" data_type="string">
+    <default_value>/tmp</default_value>
+    <relation group_id="fs_avatar_gallery" display_order="2"/>
+  </option>
+  <option option_id="fs_enable" edit_format="onoff" data_type="boolean">
+    <default_value>0</default_value>
+    <relation group_id="fs_avatar_gallery" display_order="1"/>
+  </option>
+  <option option_id="fs_random_limit" edit_format="spinbox" data_type="integer">
+    <default_value>2</default_value>
+    <edit_format_params>min=0</edit_format_params>
+    <relation group_id="fs_avatar_gallery" display_order="4"/>
+  </option>
+  <option option_id="fs_use_random" edit_format="onoff" data_type="boolean">
+    <default_value>0</default_value>
+    <relation group_id="fs_avatar_gallery" display_order="3"/>
+  </option>
+</options>

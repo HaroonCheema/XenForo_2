@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="admin" title="avatar_gallery_tools_rebuild" version_id="1000310" version_string="1.0.3 Alpha"><![CDATA[<xf:set var="$avatarBody">
+	
+	<xf:selectrow name="options[type]"
+		label="{{ phrase('avatar_type') }}">
+
+		<xf:option value="1">{{ phrase('(all)') }}</xf:option>
+		<xf:option value="2">{{ phrase('(only_have_not_avatars)') }}</xf:option>
+		
+	</xf:selectrow>
+</xf:set>
+
+<xf:macro  template="tools_rebuild" name="rebuild_job"
+	arg-header="{{ phrase('gallery_avatar') }}"
+	arg-body="{$avatarBody}"
+	arg-job="FS\AvatarGallery:UserAvatar" />]]></template>
+  <template type="admin" title="fs_avatar_gallery" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('fs_avatars_gallery') }}</xf:title>
+
+<xf:pageaction>
+	<xf:button href="{{ link('ag/add') }}" icon="add">{{ phrase('fs_add_avatar') }}</xf:button>
+</xf:pageaction>
+
+<xf:form action="{{ link('ag/quick-delete') }}" ajax="true" class="block">
+
+	<div class="block-container">
+		<xf:if is="$avatars is not empty">
+			<xf:form action="{{ link('ag/quick-delete') }}" ajax="true"
+					data-xf-init="select-plus"
+					data-sp-checkbox=".dataList-cell--toggle input:checkbox"
+					data-sp-container=".dataList-row"
+					data-sp-control=".dataList-cell a">
+				
+				<div class="block-body">
+					<xf:datalist data-xf-init="responsive-data-list">
+						<xf:datarow rowtype="header">
+							<xf:cell class="dataList-cell--min">&nbsp;</xf:cell>
+							<xf:cell>{{ phrase('fs_avatar') }}</xf:cell>
+							<xf:cell class="dataList-cell--min">&nbsp;</xf:cell>
+						</xf:datarow>
+						<xf:foreach loop="$avatars" value="$avatar">
+							<xf:datarow>
+								<xf:toggle name="img_ids[]" value="{$avatar.img_id}" />
+								<xf:cell href="{{$avatar.getAvatarImgUrl()}}" target="_blank"><img src="{{$avatar.getAvatarImgUrl()}}" alt="avatar image" width="100" height="100"/></xf:cell>
+
+								<xf:delete href="{{ link('ag/delete', $avatar) }}" />
+							</xf:datarow>
+						</xf:foreach>
+					</xf:datalist>
+				</div>
+				<div class="block-footer block-footer--split">
+					<span class="block-footer-counter">{{ display_totals($avatars, $total) }}</span>
+					<span class="block-footer-select"><xf:checkbox standalone="true"><xf:option check-all=".dataList" label="{{ phrase('select_all') }}" /></xf:checkbox></span>
+					<span class="block-footer-controls"><xf:button type="submit" name="quickdelete" value="1" icon="delete" /></span>
+				</div>
+			</xf:form>
+			<xf:else />
+			<div class="block-body block-row">{{ phrase('no_results_found') }}</div>
+		</xf:if>
+	</div>
+
+	<xf:pagenav page="{$page}" perpage="{$perPage}" total="{$total}"
+				link="ag" params="{$filters}"
+				wrapperclass="block-outer block-outer--after" />
+</xf:form>]]></template>
+  <template type="admin" title="fs_avatar_gallery_delete" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('confirm_action') }}</xf:title>
+
+<xf:form action="{{ link('ag/delete', $avatar) }}" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:inforow rowtype="confirm">
+				{{ phrase('please_confirm_that_you_want_to_delete_following:') }}
+				<strong></strong>
+				<img src="{{$avatar.getAvatarImgUrl()}}" alt="avatar image" width="200" height="200"/>
+			</xf:inforow>
+		</div>
+		<xf:submitrow rowtype="simple" icon="delete" />
+	</div>
+</xf:form>]]></template>
+  <template type="admin" title="fs_avatar_gallery_edit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('fs_add_avatar') }}</xf:title>
+
+<xf:form action="{{ link('ag/save', $avatar) }}" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+
+			<xf:uploadrow name="img_path[]" accept=".jpeg,.jpg,.png" multiple="true" required="true"
+						  label="{{ phrase('fs_avatar_img') }}" 
+						  explain="{{ phrase('fs_upload_avatar_image') }}" />
+
+		</div>
+
+		<xf:submitrow sticky="true" icon="save" />
+	</div>
+</xf:form>]]></template>
+  <template type="admin" title="quick_delete_imgs" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('confirm_action') }}</xf:title>
+
+<xf:form action="{{ link('ag/quick-delete') }}" class="block" ajax="true">
+
+	<div class="block-container">
+		
+				<div class="block-body">
+					<xf:inforow rowtype="confirm">
+							{{ phrase('please_confirm_that_you_want_to_delete_x_items', {'count': count($images)}) }}
+					</xf:inforow>
+				</div>
+		        
+		       <input type="hidden" value="{{$img_ids}}" name="avatar_ids">
+
+		<xf:submitrow rowtype="simple" icon="delete" />
+	</div>
+
+</xf:form>]]></template>
+  <template type="public" title="fs_avatarGallery" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:css src="fs_avatarGallery.less" />
+<xf:js src="FS/AvatarGallery/gallery_avatar.js?{{$xf.time}}"/>
+
+<xf:if is="$xf.options.fs_enable && !$xf.visitor.hasPermission('general', 'fs_cannot_use_avatar_glry') && count($gallery_images)">
+    <label>{{ phrase('fs_use_gallery_avatar') }}</label>
+    <div class="input xb_gallery_container">
+		<ul class="xb_avatar_list">
+			<li class="avatar-items">
+				<xf:foreach loop="$gallery_images" key="$category" value="$avatars">
+					<xf:if is="$avatars.permission != '2'">
+						<xf:if is="{$avatars.permission}">
+							<xf:foreach loop="$avatars.dirname" value="$avatar">
+								<div id="xb_avatar_select" data-xf-click="xb_avatar" data-avatar-data-path="{$avatar.data-path}">
+									<i class="fa fa-check"></i>
+									<img class="avatar avatar--s" src="{$avatar.url}" >
+								</div>
+							</xf:foreach>
+						</xf:if>
+						<xf:elseif is="$avatars.permission == '2'"/>
+						
+						<xf:foreach loop="$avatars.dirname" value="$avatar">
+							<div id="xb_avatar_select" data-xf-click="xb_avatar" data-avatar-data-path="{$avatar.data-path}">
+								<i class="fa fa-check"></i>
+								<img class="avatar avatar--s" src="{$avatar.url}" >
+							</div>
+						</xf:foreach>
+					</xf:if>
+				</xf:foreach>
+			<li><input id="xb_avatar_choice" type="hidden" name="gallery_avatar"/></li>
+		</ul>
+	</div>
+</xf:if>]]></template>
+  <template type="public" title="fs_avatarGallery.less" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[.xb_gallery_container {
+	max-height:250px;
+	overflow:auto;
+}
+div#xb_avatar_select {
+	border-radius: 5px;
+	display: inline-block;
+	border: solid @xf-inputBgColor ;
+    border-radius: 100%;
+	padding: 0;
+	margin: 0;
+	-moz-appearance: none;
+	margin-bottom: @xf-paddingSmall;
+	position: relative;
+	overflow:hidden;
+	:hover {
+		opacity: 0.7;
+		cursor: pointer;
+	}
+	&.checked {
+		border: solid #185886;
+		border-radius: 100%;
+	}
+	&.checked .fa{
+		display: block;
+	}
+	.fa {
+		display: none;
+		position: absolute;
+		font-size: 60px;
+		color: #185886;
+		padding: 20px;
+	}
+}
+ul.xb_avatar_list {
+	margin: 0px !important;
+	padding: 0px !important;
+	list-style-type: none;
+}
+.img-ai-error{
+	color:red;
+}
+.is-disabled-generate{
+	    opacity: 0.5;  /* Make the button appear faded */
+    pointer-events: none;  /* Prevent click events */
+    cursor: not-allowed;  
+}]]></template>
+  <template type="public" title="fs_avatarGalleryRegister" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:css src="fs_avatarGallery.less" />
+<xf:js src="FS/AvatarGallery/gallery_avatar.js" min="1"/>
+
+<xf:if is="$gallery_images">
+	<dl class="formRow formRow--input">
+		<dt>
+			<div class="formRow-labelWrapper">
+				<label>{{ phrase('avatar:') }}</label>
+			</div>
+		</dt>
+		<dd>
+			<div class="input xb_gallery_container">
+				<ul class="xb_avatar_list">
+					<li>
+						<xf:foreach loop="$gallery_images" key="$category" value="$avatars">
+							
+							<xf:foreach loop="$avatars" value="$avatar">
+								<div id="xb_avatar_select" data-xf-click="xb_avatar" data-avatar-data-path="{$avatar.data-path}">
+									<i class="fa fa-check"></i>
+									<img class="avatar avatar--s" src="{$avatar.url}" >
+								</div>
+							</xf:foreach>
+						</xf:foreach>
+					</li>
+					<li><input id="xb_avatar_choice" type="hidden" name="gallery_avatar"/></li>
+				</ul>
+			</div>
+			<p class="formRow-explain">{{ phrase('xb_avatar_explain') }}</p>
+		</dd>
+	</dl>
+</xf:if>]]></template>
+  <template type="public" title="gallery_avatar_register" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:css src="fs_avatarGallery.less" />
+<xf:js src="FS/AvatarGallery/gallery_avatar.js?{{$xf.time}}"/>
+
+<xf:if is="$xf.options.fs_enable && !$xf.visitor.hasPermission('general', 'fs_cannot_use_avatar_glry')">
+	
+	<xf:formrow label="{{ phrase('register_avatars')}} ">
+			<div class="avatarControl-inputs">
+						
+										<label>{{ phrase('upload_new_custom_avatar:') }}</label>
+										<xf:upload name="img_avatar" class="js-uploadAvatar" accept=".gif,.jpeg,.jpg,.jpe,.png,.webp" />
+										<dfn class="inputChoices-explain">
+											{{ phrase('it_is_recommended_that_you_use_image_that_is_at_least_x_pixels', {
+											'width': 400,
+											'height': 400
+											}) }}
+										</dfn>
+							
+			</div>
+            <br>
+			<label>{{ phrase('fs_use_gallery_avatar') }}</label>
+			<div class="input xb_gallery_container">
+				<ul class="xb_avatar_list">
+					<li class="avatar-items">
+							<xf:foreach loop="$gallery_images" key="$category" value="$avatars">
+									<xf:foreach loop="$avatars" value="$avatar">
+										<div id="xb_avatar_select" data-xf-click="xb_avatar" data-avatar-data-path="{$avatar.data-path}">
+											<i class="fa fa-check"></i>
+											<img class="avatar avatar--s" src="{$avatar.url}" >
+										</div>
+									</xf:foreach>
+						</xf:foreach>
+					<li><input id="xb_avatar_choice" type="hidden" name="gallery_avatar"/></li>
+				</ul>
+			</div>
+	</xf:formrow>
+</xf:if>]]></template>
+  <template type="public" title="generate_image" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<div id="xb_avatar_select" data-xf-click="xb_avatar" data-ai-img="1" data-avatar-data-path="{{$imglink}}">
+					<i class="fa fa-check"></i>
+					<img class="avatar avatar--m" src="{{$imglink}}">
+</div>]]></template>
+</templates>

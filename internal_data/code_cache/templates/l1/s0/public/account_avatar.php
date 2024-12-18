@@ -25,8 +25,8 @@ return array(
 	$__compilerTemp1 = '';
 	if ($__templater->method($__vars['xf']['visitor'], 'hasPermission', array('avatar', 'allowed', ))) {
 		$__compilerTemp1 .= '
-<span class="main-avatar">
-	<label>' . 'Upload new custom avatar' . $__vars['xf']['language']['label_separator'] . '</label>
+	<span class="main-avatar">
+		<label>' . 'Upload new custom avatar' . $__vars['xf']['language']['label_separator'] . '</label>
 								' . $__templater->formUpload(array(
 			'name' => 'upload',
 			'class' => 'js-uploadAvatar',
@@ -35,12 +35,31 @@ return array(
 								<dfn class="inputChoices-explain">
 									' . 'It is recommended that you use an image that is at least ' . 400 . 'x' . 400 . ' pixels.' . '
 								</dfn>
-</span>	
+	</span>	
 ';
 	}
 	$__compilerTemp2 = '';
-	if ($__vars['xf']['options']['gravatarEnable']) {
+	if ($__vars['xf']['options']['fs_use_random']) {
 		$__compilerTemp2 .= '
+	';
+		if ($__templater->method($__vars['xf']['visitor'], 'canUseRandomAvatar', array())) {
+			$__compilerTemp2 .= '
+		' . $__templater->button('Random', array(
+				'href' => $__templater->func('link', array('account/random', ), false),
+			), '', array(
+			)) . '
+	';
+		}
+		$__compilerTemp2 .= '
+	';
+	} else {
+		$__compilerTemp2 .= '
+	' . $__templater->includeTemplate('fs_avatarGallery', $__vars) . '
+';
+	}
+	$__compilerTemp3 = '';
+	if ($__vars['xf']['options']['gravatarEnable']) {
+		$__compilerTemp3 .= '
 				<li class="block-row block-row--separated avatarControl">
 					<div class="avatarControl-preview">
 						<span class="avatar avatar--m">
@@ -85,36 +104,6 @@ return array(
 				</li>
 			';
 	}
-	$__compilerTemp3 = '';
-	if ($__templater->method($__vars['xf']['visitor'], 'hasPermission', array('general', 'xb_can_delete_avatar', ))) {
-		$__compilerTemp3 .= '
-	' . $__templater->formSubmitRow(array(
-			'submit' => 'Okay',
-			'class' => 'js-overlayClose',
-		), array(
-			'rowtype' => 'simple',
-			'html' => '
-				' . $__templater->button('', array(
-			'type' => 'submit',
-			'name' => 'delete_avatar',
-			'value' => '1',
-			'class' => 'js-deleteAvatar',
-			'icon' => 'delete',
-		), '', array(
-		)) . '
-			',
-		)) . '
-	';
-	} else {
-		$__compilerTemp3 .= '
-	' . $__templater->formSubmitRow(array(
-			'submit' => 'Okay',
-			'class' => 'js-overlayClose',
-		), array(
-			'rowtype' => 'simple',
-		)) . '
-';
-	}
 	$__finalCompiled .= $__templater->form('
 	<div class="block-container">
 		<ul class="block-body">
@@ -151,15 +140,31 @@ return array(
 		'hint' => 'Drag this image to crop it, then click <i>Okay</i> to confirm, or upload a new avatar below.',
 		'_dependent' => array('
 								' . $__compilerTemp1 . '
-' . $__templater->includeTemplate('xb_avatarGallery', $__vars) . '
+' . $__compilerTemp2 . '
+
 							'),
 		'_type' => 'option',
 	))) . '
 				</div>
 			</li>
-			' . $__compilerTemp2 . '
+			' . $__compilerTemp3 . '
 		</ul>
-		' . $__compilerTemp3 . '
+		' . $__templater->formSubmitRow(array(
+		'submit' => 'Okay',
+		'class' => 'js-overlayClose',
+	), array(
+		'rowtype' => 'simple',
+		'html' => '
+				' . $__templater->button('', array(
+		'type' => 'submit',
+		'name' => 'delete_avatar',
+		'value' => '1',
+		'class' => 'js-deleteAvatar',
+		'icon' => 'delete',
+	), '', array(
+	)) . '
+			',
+	)) . '
 	</div>
 ', array(
 		'action' => $__templater->func('link', array('account/avatar', ), false),

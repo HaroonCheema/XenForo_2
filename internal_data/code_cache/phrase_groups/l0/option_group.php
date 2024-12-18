@@ -36,6 +36,7 @@ return array (
   'option_group.fs_MediaTagSetting' => '[FS] Media-Tag-Setting',
   'option_group.fs_age_verification' => '[FS] Female Age Verification',
   'option_group.fs_assign_group' => '[FS] Assign Group',
+  'option_group.fs_avatar_gallery' => '[FS] Avatar Gallery',
   'option_group.fs_ban_user_change' => '[FS] Ban User Changes',
   'option_group.fs_bitcoin_integ' => '[FS] Bitcoin Integration',
   'option_group.fs_bunny_integration' => '[FS] Bunny-Integration',

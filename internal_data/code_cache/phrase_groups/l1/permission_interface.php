@@ -27,6 +27,7 @@ return array (
   'permission_interface.fs_Thread_Thumbnail_perms' => '[FS] Thread Thumbnail',
   'permission_interface.fs_attachment' => '[FS] Like See Attachment',
   'permission_interface.fs_auction_permissions' => 'FS Auction Plugin Permissions',
+  'permission_interface.fs_avatar_gallery' => '[FS] Avatar Gallery',
   'permission_interface.fs_ban_watch_profile' => '[FS] Ban User Changes',
   'permission_interface.fs_bunny_integration' => '[FS] Bunny Integration',
   'permission_interface.fs_forum_group_permission' => 'FS Forum Group Permission',

@@ -70,6 +70,7 @@ return array (
   'cron_entry.thui_profileviewcounters' => '[TH] User Improvements: Update profile view counters',
   'cron_entry.trophy' => 'Update user trophies',
   'cron_entry.updatePostCounter' => 'FS Post Counter (Update)',
+  'cron_entry.update_random_avatarLimit' => 'Reset Random Avatar Daily Limit',
   'cron_entry.userGroupPromotions' => 'User group promotions',
   'cron_entry.userconvseration' => 'check register user convesation message Tournament',
   'cron_entry.views' => 'Update view counters',

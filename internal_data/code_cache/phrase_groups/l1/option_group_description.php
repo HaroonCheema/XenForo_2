@@ -38,6 +38,7 @@ You may set a user into \'discouraged\' mode by editing their user profile, or d
   'option_group_description.fs_MediaTagSetting' => '',
   'option_group_description.fs_age_verification' => '',
   'option_group_description.fs_assign_group' => '[FS] Assign Group',
+  'option_group_description.fs_avatar_gallery' => '',
   'option_group_description.fs_ban_user_change' => '',
   'option_group_description.fs_bitcoin_integ' => '[FS] Bitcoin Integration',
   'option_group_description.fs_bunny_integration' => 'bunny.net Api Integration',

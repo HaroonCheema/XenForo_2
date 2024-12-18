@@ -24,7 +24,7 @@ return array(
 	<div class="block-container">
 		<div class="block-body">
 			' . $__templater->formInfoRow('
-					' . 'Please confirm that you want to delete the following selected Items' . '
+					' . 'Are you sure to want delete this items ({count})' . '
 			', array(
 		'rowtype' => 'confirm',
 	)) . '

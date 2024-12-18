@@ -226,6 +226,7 @@ return array (
   'permission.general_editCustomTitle' => 'Edit custom title',
   'permission.general_editProfile' => 'Edit profile',
   'permission.general_editSignature' => 'Edit signature',
+  'permission.general_fs_cannot_use_avatar_glry' => 'Can\'t use avatar gallery.',
   'permission.general_fs_viewBannedProfile' => 'View Banned Profile',
   'permission.general_giftUpgradesForFree' => 'Gift upgrades for free',
   'permission.general_manageWarning' => 'Delete all warnings',

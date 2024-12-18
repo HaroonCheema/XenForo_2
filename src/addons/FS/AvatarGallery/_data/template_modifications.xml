@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="account_avatar" modification_key="fs_account_avatar" description="Add the gallery to the avatar selection modal" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/(<label>(.*?)<\/label>(.*?)<\/dfn>)/is]]></find>
+    <replace><![CDATA[<xf:if is="$xf.visitor.hasPermission('avatar', 'allowed')">
+	<span class="main-avatar">
+		$0
+	</span>	
+</xf:if >
+<xf:if is="$xf.options.fs_use_random">
+	<xf:if is="$xf.visitor.canUseRandomAvatar()">
+		<xf:button href="{{ link('account/random') }}" >{{ phrase('fs_random_avatar') }}</xf:button>
+	</xf:if>
+	<xf:else />
+	<xf:include template="fs_avatarGallery" />
+</xf:if>
+]]></replace>
+  </modification>
+  <modification type="public" template="account_avatar" modification_key="fs_gallery_avatar_delete_avatar" execution_order="10" enabled="0" action="preg_replace">
+    <find><![CDATA[/(<xf:submitrow submit="{{ phrase\('okay'\) }}" rowtype="simple" class="js-overlayClose">)(.*?)(<xf:html>)(.*?)(<xf:button type="submit" name="delete_avatar" value="1" class="js-deleteAvatar" icon="delete" \/>)(.*?)(<\/xf:html>)(.*?)(<\/xf:submitrow>)/s]]></find>
+    <replace><![CDATA[<xf:if is="$xf.visitor.hasPermission('general', 'fs_can_delete_avatar')">
+	$0
+	<xf:else/>
+	<xf:submitrow submit="{{ phrase('okay') }}" rowtype="simple" class="js-overlayClose" />
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="register_form" modification_key="register_form_gallery_avatar" description="Gallery Avatars Register Form" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:macro id="register_macros::custom_fields" />]]></find>
+    <replace><![CDATA[$0
+<xf:include template="gallery_avatar_register" />]]></replace>
+  </modification>
+  <modification type="admin" template="tools_rebuild" modification_key="avatar_gallery" description="Avatar Gallery" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<!--[XF:rebuild_top]-->]]></find>
+    <replace><![CDATA[$0
+<xf:include template="avatar_gallery_tools_rebuild" />]]></replace>
+  </modification>
+</template_modifications>

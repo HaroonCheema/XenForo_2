@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="admin_navigation.fs_ag_avatar_gallery" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Avatar gallery]]></phrase>
+  <phrase title="admin_navigation.fs_avatar_gallery" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Avatar Gallery]]></phrase>
+  <phrase title="ai_img_url_must_required" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Ai Img Url Must Required.]]></phrase>
+  <phrase title="avatar_type" version_id="1000310" version_string="1.0.3 Alpha"><![CDATA[Rebuild Type]]></phrase>
+  <phrase title="cron_entry.update_random_avatarLimit" version_id="1000610" version_string="1.0.6 Alpha"><![CDATA[Reset Random Avatar Daily Limit]]></phrase>
+  <phrase title="fs_add_avatar" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add avatar]]></phrase>
+  <phrase title="fs_avatar" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Avatars]]></phrase>
+  <phrase title="fs_avatar_img" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Avatar]]></phrase>
+  <phrase title="fs_avatars_gallery" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Avatars Gallery]]></phrase>
+  <phrase title="fs_generate" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Generate]]></phrase>
+  <phrase title="fs_generate_avatar_ai" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Gnerate Ai Avatar]]></phrase>
+  <phrase title="fs_image_des" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Write about image e.g. A cat is sitting on table.]]></phrase>
+  <phrase title="fs_random_avatar" version_id="1000610" version_string="1.0.6 Alpha"><![CDATA[Random]]></phrase>
+  <phrase title="fs_upload_avatar_image" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Upload image for avatar gallery.]]></phrase>
+  <phrase title="fs_use_gallery_avatar" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Use a gallery avatar]]></phrase>
+  <phrase title="fs_you_can_t_delete_your_avatar" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You can't delete your avatar...!]]></phrase>
+  <phrase title="gallery_avatar" version_id="1000310" version_string="1.0.3 Alpha"><![CDATA[Gallery Avatar]]></phrase>
+  <phrase title="only_have_not_avatars" version_id="1000310" version_string="1.0.3 Alpha"><![CDATA[Only have not Avatar]]></phrase>
+  <phrase title="option.fs_change_the_path_to_the_tmp_file" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Path to the TMP file]]></phrase>
+  <phrase title="option.fs_enable" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enable]]></phrase>
+  <phrase title="option.fs_random_limit" version_id="1000610" version_string="1.0.6 Alpha"><![CDATA[Random limit]]></phrase>
+  <phrase title="option.fs_use_random" version_id="1000610" version_string="1.0.6 Alpha"><![CDATA[Random]]></phrase>
+  <phrase title="option_explain.fs_change_the_path_to_the_tmp_file" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[This option allows you to change the value for your TMP file, by default :  <b>/tmp</b>.]]></phrase>
+  <phrase title="option_explain.fs_enable" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[This option allows you to enable the avatar gallery.]]></phrase>
+  <phrase title="option_explain.fs_random_limit" version_id="1000610" version_string="1.0.6 Alpha"><![CDATA[Random avatar limit for per day.0 will be consider unlimited.]]></phrase>
+  <phrase title="option_explain.fs_use_random" version_id="1000610" version_string="1.0.6 Alpha"><![CDATA[This option allows you to enable the random avatar feature.]]></phrase>
+  <phrase title="option_group.fs_avatar_gallery" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Avatar Gallery]]></phrase>
+  <phrase title="option_group_description.fs_avatar_gallery" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="permission.general_fs_cannot_use_avatar_glry" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Can't use avatar gallery.]]></phrase>
+  <phrase title="permission_interface.fs_avatar_gallery" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Avatar Gallery]]></phrase>
+  <phrase title="please_confirm_that_you_want_to_delete_x_items" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Are you sure to want delete this items ({count})]]></phrase>
+  <phrase title="register_avatars" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Avatars]]></phrase>
+  <phrase title="some_thing_went_wrong_for_img_ai" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Some Thing went Wrong for deploy image AI.]]></phrase>
+  <phrase title="your_daily_limit_excceded" version_id="1000110" version_string="1.0.1 Alpha"><![CDATA[Your have use the daily limit {count}.]]></phrase>
+</phrases>

@@ -1,0 +1,1 @@
+This option allows you to enable the random avatar feature.

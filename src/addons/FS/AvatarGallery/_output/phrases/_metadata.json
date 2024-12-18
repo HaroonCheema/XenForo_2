@@ -1,0 +1,38 @@
+{
+    "cron_entry.update_random_avatarLimit.txt": {
+        "global_cache": false,
+        "version_id": 1000610,
+        "version_string": "1.0.6 Alpha",
+        "hash": "c54cc954867587597f38d06dd75eb8ba"
+    },
+    "fs_random_avatar.txt": {
+        "global_cache": false,
+        "version_id": 1000610,
+        "version_string": "1.0.6 Alpha",
+        "hash": "64663f4646781c9c0110838b905daa23"
+    },
+    "option.fs_random_limit.txt": {
+        "global_cache": false,
+        "version_id": 1000610,
+        "version_string": "1.0.6 Alpha",
+        "hash": "44cfb6b189574502e8ef75e0c7361882"
+    },
+    "option.fs_use_random.txt": {
+        "global_cache": false,
+        "version_id": 1000610,
+        "version_string": "1.0.6 Alpha",
+        "hash": "64663f4646781c9c0110838b905daa23"
+    },
+    "option_explain.fs_random_limit.txt": {
+        "global_cache": false,
+        "version_id": 1000610,
+        "version_string": "1.0.6 Alpha",
+        "hash": "8fdb15e1718ba20be4886de82dfa4d94"
+    },
+    "option_explain.fs_use_random.txt": {
+        "global_cache": false,
+        "version_id": 1000610,
+        "version_string": "1.0.6 Alpha",
+        "hash": "be71bfc45c6ab6b5a9d4f1cb73fb9824"
+    }
+}
