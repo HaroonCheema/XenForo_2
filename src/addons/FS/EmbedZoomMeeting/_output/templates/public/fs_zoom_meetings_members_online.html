@@ -6,11 +6,11 @@
 				<xf:if is="$online is not empty">
 					<ul class="listInline listInline--comma">
 						<xf:foreach loop="$online" value="$val"><xf:trim>
-							<li><xf:if is="$val.User">
-								<xf:username user="$val.User" rich="true" class="{{ !$val.User ? 'username--invisible' : '' }}" />
+							<xf:if is="$val.User">
+								<li><xf:username user="$val.User" rich="true" class="{{ !$val.User ? 'username--invisible' : '' }}" /></li>
 								<xf:else />
-								{{$val.username}}
-								</xf:if></li>
+								<li>{{$val.username}}</li>
+							</xf:if>
 							</xf:trim></xf:foreach>
 					</ul>
 					<xf:else />

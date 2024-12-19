@@ -25,8 +25,8 @@
         "hash": "f150a03a280b0e287f2c9f4e24f24d38"
     },
     "public/fs_join_meeting_start.html": {
-        "version_id": 1000300,
-        "version_string": "1.0.3 Alpha",
+        "version_id": 1000500,
+        "version_string": "1.0.5 Alpha",
         "hash": "5832946ddaaf06ba86eef59b842faeab"
     },
     "public/fs_zoom_meeting_guest_joiners.html": {
@@ -35,8 +35,8 @@
         "hash": "60003b402f896bc9add78fe6fd35bf5f"
     },
     "public/fs_zoom_meetings_members_online.html": {
-        "version_id": 1000010,
-        "version_string": "1.0.0 Alpha",
-        "hash": "d4e1c4fcd05c24eb836a11ea98393167"
+        "version_id": 1000500,
+        "version_string": "1.0.5 Alpha",
+        "hash": "cddafb721bb8baedbf93e627b37d3c05"
     }
 }

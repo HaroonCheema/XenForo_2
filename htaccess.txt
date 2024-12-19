@@ -14,6 +14,11 @@ ErrorDocument 500 default
 ErrorDocument 501 default
 ErrorDocument 503 default
 
+<IfModule mod_headers.c>
+    Header always set Cross-Origin-Embedder-Policy "require-corp"
+    Header always set Cross-Origin-Opener-Policy "same-origin"
+</IfModule>
+
 <IfModule mod_rewrite.c>
 	RewriteEngine On
 

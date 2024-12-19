@@ -233,7 +233,7 @@
 
 	document.addEventListener("DOMContentLoaded", startMeeting);
 </script>]]></template>
-  <template type="public" title="fs_join_meeting_start" version_id="1000300" version_string="1.0.3 Alpha"><![CDATA[<style> 
+  <template type="public" title="fs_join_meeting_start" version_id="1000500" version_string="1.0.5 Alpha"><![CDATA[<style> 
 	.p-navSticky { 
 		display:none !important; 
 	} 
@@ -443,7 +443,7 @@
 		<xf:submitrow icon="save" rowtype="simple" />
 	</div>
 </xf:form>]]></template>
-  <template type="public" title="fs_zoom_meetings_members_online" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<div class="block" data-widget-section="onlineNow"{{ widget_data($widget) }}>
+  <template type="public" title="fs_zoom_meetings_members_online" version_id="1000500" version_string="1.0.5 Alpha"><![CDATA[<div class="block" data-widget-section="onlineNow"{{ widget_data($widget) }}>
 	<div class="block-container">
 		<h3 class="block-minorHeader"><a href="#">{$title}</a></h3>
 		<div class="block-body">
@@ -451,11 +451,11 @@
 				<xf:if is="$online is not empty">
 					<ul class="listInline listInline--comma">
 						<xf:foreach loop="$online" value="$val"><xf:trim>
-							<li><xf:if is="$val.User">
-								<xf:username user="$val.User" rich="true" class="{{ !$val.User ? 'username--invisible' : '' }}" />
+							<xf:if is="$val.User">
+								<li><xf:username user="$val.User" rich="true" class="{{ !$val.User ? 'username--invisible' : '' }}" /></li>
 								<xf:else />
-								{{$val.username}}
-								</xf:if></li>
+								<li>{{$val.username}}</li>
+							</xf:if>
 							</xf:trim></xf:foreach>
 					</ul>
 					<xf:else />

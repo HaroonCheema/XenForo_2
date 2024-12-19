@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: d4e1c4fcd05c24eb836a11ea98393167
+// FROM HASH: cddafb721bb8baedbf93e627b37d3c05
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -19,17 +19,17 @@ return array(
 				$__compilerTemp1 = '';
 				if ($__vars['val']['User']) {
 					$__compilerTemp1 .= '
-								' . $__templater->func('username_link', array($__vars['val']['User'], true, array(
+								<li>' . $__templater->func('username_link', array($__vars['val']['User'], true, array(
 						'class' => ((!$__vars['val']['User']) ? 'username--invisible' : ''),
-					))) . '
+					))) . '</li>
 								';
 				} else {
 					$__compilerTemp1 .= '
-								' . $__templater->escape($__vars['val']['username']) . '
-								';
+								<li>' . $__templater->escape($__vars['val']['username']) . '</li>
+							';
 				}
 				$__finalCompiled .= trim('
-							<li>' . $__compilerTemp1 . '</li>
+							' . $__compilerTemp1 . '
 							');
 			}
 		}
