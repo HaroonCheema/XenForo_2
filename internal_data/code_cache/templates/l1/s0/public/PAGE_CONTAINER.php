@@ -432,18 +432,6 @@ return array(
 	$__compilerTemp1 = '';
 	$__compilerTemp1 .= '
 				';
-	if (($__vars['xf']['visitor']['is_admin'] OR $__vars['xf']['visitor']['is_moderator']) AND $__vars['xf']['session']['fsPendingFemalesCount']['total']) {
-		$__compilerTemp1 .= '
-	<a href="' . $__templater->func('link', array('female-verify/queue', ), true) . '"
-	   class="p-staffBar-link badgeContainer badgeContainer--highlighted"
-	   data-badge="' . $__templater->filter($__vars['xf']['session']['fsPendingFemalesCount']['total'], array(array('number', array()),), true) . '">
-		' . 'Female pendings' . '
-	</a>
-';
-	}
-	$__compilerTemp1 .= '
-
-';
 	if ($__vars['xf']['visitor']['is_moderator'] AND $__vars['xf']['session']['unapprovedCounts']['total']) {
 		$__compilerTemp1 .= '
 					<a href="' . $__templater->func('link', array('approval-queue', ), true) . '" class="p-staffBar-link badgeContainer badgeContainer--highlighted" data-badge="' . $__templater->filter($__vars['xf']['session']['unapprovedCounts']['total'], array(array('number', array()),), true) . '">

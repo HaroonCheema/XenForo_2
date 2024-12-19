@@ -174,25 +174,7 @@ Before your content can be posted, please take a few moments to register a free 
 		'hint' => 'Required',
 	)) . '
 
-			' . $__templater->formRadioRow(array(
-		'name' => 'gender',
-		'required' => 'required',
-		'value' => 'male',
-	), array(array(
-		'value' => 'male',
-		'label' => 'Male',
-		'_type' => 'option',
-	),
-	array(
-		'value' => 'female',
-		'label' => 'Female',
-		'_type' => 'option',
-	)), array(
-		'hint' => 'Required',
-		'label' => 'Gender',
-	)) . '
-
-' . $__templater->callMacro('register_macros', 'dob_row', array(), $__vars) . '
+			' . $__templater->callMacro('register_macros', 'dob_row', array(), $__vars) . '
 
 			' . $__templater->callMacro('register_macros', 'location_row', array(
 		'value' => $__vars['fields']['location'],
