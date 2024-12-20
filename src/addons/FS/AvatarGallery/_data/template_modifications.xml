@@ -25,9 +25,14 @@
 </xf:if>]]></replace>
   </modification>
   <modification type="public" template="register_form" modification_key="register_form_gallery_avatar" description="Gallery Avatars Register Form" execution_order="10" enabled="1" action="str_replace">
-    <find><![CDATA[<xf:macro id="register_macros::custom_fields" />]]></find>
+    <find><![CDATA[<xf:macro template="register_macros" name="custom_fields" />]]></find>
     <replace><![CDATA[$0
-<xf:include template="gallery_avatar_register" />]]></replace>
+
+<xf:if is="$xf.options.fs_use_random">
+	<xf:include template="fs_random_avatar_register" />
+	<xf:else />
+	<xf:include template="gallery_avatar_register" />
+</xf:if>]]></replace>
   </modification>
   <modification type="admin" template="tools_rebuild" modification_key="avatar_gallery" description="Avatar Gallery" execution_order="10" enabled="1" action="str_replace">
     <find><![CDATA[<!--[XF:rebuild_top]-->]]></find>

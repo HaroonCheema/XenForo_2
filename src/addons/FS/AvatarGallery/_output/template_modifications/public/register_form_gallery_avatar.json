@@ -1,0 +1,9 @@
+{
+    "template": "register_form",
+    "description": "Gallery Avatars Register Form",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:macro template=\"register_macros\" name=\"custom_fields\" />",
+    "replace": "$0\n\n<xf:if is=\"$xf.options.fs_use_random\">\n\t<xf:include template=\"fs_random_avatar_register\" />\n\t<xf:else />\n\t<xf:include template=\"gallery_avatar_register\" />\n</xf:if>"
+}

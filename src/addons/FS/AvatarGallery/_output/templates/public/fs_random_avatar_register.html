@@ -1,0 +1,15 @@
+<xf:css src="fs_avatarGallery.less" />
+<xf:js src="FS/AvatarGallery/random_avatar.js?{{$xf.time}}"/>
+
+<xf:formrow label="{{ phrase('fs_random_register_avatar')}} ">
+	<div id="xb_avatar_select">
+		<img class="avatar avatar--s" src="{$random_avatar.url}" >
+	</div>
+
+	<input id="fs_random_input" type="hidden" name="gallery_avatar" value="{$random_avatar.data-path}"/>
+	<input id="fs_random_avatar_limit" type="hidden" name="random_avatar_limit" />
+</xf:formrow>
+
+<xf:formrow label="{{ phrase('fs_random_register_avatar_btn')}}" id="random_button_c">
+	<xf:button data-xf-click="xb_random_avatar" data-random-data-limit="{$xf.options.fs_random_limit}">{{ phrase('fs_random_avatar_register') }}</xf:button>
+</xf:formrow>

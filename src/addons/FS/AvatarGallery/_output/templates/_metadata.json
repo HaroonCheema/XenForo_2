@@ -1,0 +1,12 @@
+{
+    "public/fs_random_avatar_register.html": {
+        "version_id": 1000700,
+        "version_string": "1.0.7 Alpha",
+        "hash": "2bf410c2960fdb239ee90fc6d95911cc"
+    },
+    "public/gallery_avatar_register.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "096ec366562c3283ff807f74847e3ac2"
+    }
+}

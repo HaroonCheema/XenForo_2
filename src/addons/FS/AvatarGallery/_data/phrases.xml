@@ -13,6 +13,9 @@
   <phrase title="fs_generate_avatar_ai" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Gnerate Ai Avatar]]></phrase>
   <phrase title="fs_image_des" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Write about image e.g. A cat is sitting on table.]]></phrase>
   <phrase title="fs_random_avatar" version_id="1000610" version_string="1.0.6 Alpha"><![CDATA[Random]]></phrase>
+  <phrase title="fs_random_avatar_register" version_id="1000700" version_string="1.0.7 Alpha"><![CDATA[Random]]></phrase>
+  <phrase title="fs_random_register_avatar" version_id="1000700" version_string="1.0.7 Alpha"><![CDATA[Current Avatar]]></phrase>
+  <phrase title="fs_random_register_avatar_btn" version_id="1000700" version_string="1.0.7 Alpha"><![CDATA[Change Avatar]]></phrase>
   <phrase title="fs_upload_avatar_image" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Upload image for avatar gallery.]]></phrase>
   <phrase title="fs_use_gallery_avatar" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Use a gallery avatar]]></phrase>
   <phrase title="fs_you_can_t_delete_your_avatar" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You can't delete your avatar...!]]></phrase>

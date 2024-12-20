@@ -2,11 +2,13 @@
 
 namespace FS\AvatarGallery\XF\Pub\Controller;
 
-use XF\Service\User\AvatarService;
+// use XF\Mvc\ParameterBag;
 
-class Register extends XFCP_Register {
+class Register extends XFCP_Register
+{
 
-    public function actionIndex() {
+    public function actionIndex()
+    {
         if (\XF::visitor()->user_id) {
             return $this->redirect($this->getDynamicRedirectIfNot($this->buildLink('register')), '');
         }
@@ -15,7 +17,11 @@ class Register extends XFCP_Register {
         if ($parent instanceof \XF\Mvc\Reply\View) {
             $option = \xf::options();
 
-            if ($option->fs_enable) {
+            if ($option->fs_use_random) {
+
+                $parent->setParam('random_avatar', $this->getRandomAvatars());
+                return $parent;
+            } elseif ($option->fs_enable) {
                 $parent->setParam('gallery_images', $this->getGalleryImages());
                 return $parent;
             }
@@ -26,7 +32,47 @@ class Register extends XFCP_Register {
         return $parent;
     }
 
-    private function getGalleryImages() {
+    protected function getRandomAvatars()
+    {
+        $files = \XF::app()->fs()->listContents('data://gallery_avatars', true);
+
+        if (!count($files)) {
+
+            return;
+        }
+
+        $randomKey = array_rand($files);
+
+        $filesCount = $randomKey + 1;
+
+        if ($filesCount == count($files)) {
+            $randomKey = 0;
+        }
+
+        $randomImgPath = $files[$randomKey]['path'];
+
+        $randomImage = [
+            'url' => $this->app()->applyExternalDataUrl($randomImgPath),
+            'data-path' => $randomImgPath
+        ];
+
+        return $randomImage;
+    }
+
+    public function actionRandomAvatar()
+    {
+        $viewParams = $this->getRandomAvatars();
+
+        $this->setResponseType('json');
+        $view = $this->view();
+        $view->setJsonParam('randomImage', $viewParams);
+        return $view;
+
+        return $randomImage;
+    }
+
+    private function getGalleryImages()
+    {
         $valid_extensions = [
             'jpg',
             'jpeg',
@@ -58,29 +104,34 @@ class Register extends XFCP_Register {
         return $formatted;
     }
 
-    public function actionRegister() {
+    public function actionRegister()
+    {
         $option = \xf::options();
-//        $avatarInput = $this->request->filter('gallery_avatar', 'str');
-//        if (
-//                !$avatarInput &&
-//                $option->fs_enable
-//        ) {
-//            return $this->error(\XF::phrase('fs_required_error'));
-//        }
+        //        $avatarInput = $this->request->filter('gallery_avatar', 'str');
+        //        if (
+        //                !$avatarInput &&
+        //                $option->fs_enable
+        //        ) {
+        //            return $this->error(\XF::phrase('fs_required_error'));
+        //        }
 
         return parent::actionRegister();
     }
 
-    protected function finalizeRegistration(\XF\Entity\User $user) {
+    protected function finalizeRegistration(\XF\Entity\User $user)
+    {
         $parent = parent::finalizeRegistration($user);
         $option = \xf::options();
-        if ($option->fs_enable) {
+        $app = \xf::app();
+        if ($option->fs_enable || $option->fs_use_random) {
 
             $gallery_avatar = $this->filter('gallery_avatar', 'str');
 
             $upload = $this->request->getFile('img_avatar', false, false);
 
-            $avatarService = $this->service(AvatarService::class, $user);
+            /** @var \XF\Service\User\Avatar $avatarService */
+            $avatarService = $app->service('XF:User\Avatar', $user);
+            // $avatarService = $this->service(Avatar::class, $user);
             if ($upload) {
 
                 if (!$avatarService->setImageFromUpload($upload)) {
@@ -90,6 +141,12 @@ class Register extends XFCP_Register {
                 if (!$avatarService->updateAvatar()) {
                     return $this->error(\XF::phrase('new_avatar_could_not_be_processed'));
                 }
+
+                // $randomAvatarLimit = $this->request->filter('fs_random_avatar_limit', 'uint');
+
+                // if ($randomAvatarLimit) {
+                //     $user->fastUpdate('random_avatar_limit', $randomAvatarLimit);
+                // }
 
                 return $parent;
             }

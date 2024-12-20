@@ -1,0 +1,36 @@
+<xf:css src="fs_avatarGallery.less" />
+<xf:js src="FS/AvatarGallery/gallery_avatar.js?{{$xf.time}}"/>
+
+<xf:if is="$xf.options.fs_enable && !$xf.visitor.hasPermission('general', 'fs_cannot_use_avatar_glry')">
+	
+	<xf:formrow label="{{ phrase('register_avatars')}} ">
+			<div class="avatarControl-inputs">
+						
+										<label>{{ phrase('upload_new_custom_avatar:') }}</label>
+										<xf:upload name="img_avatar" class="js-uploadAvatar" accept=".gif,.jpeg,.jpg,.jpe,.png,.webp" />
+										<dfn class="inputChoices-explain">
+											{{ phrase('it_is_recommended_that_you_use_image_that_is_at_least_x_pixels', {
+											'width': 400,
+											'height': 400
+											}) }}
+										</dfn>
+							
+			</div>
+            <br>
+			<label>{{ phrase('fs_use_gallery_avatar') }}</label>
+			<div class="input xb_gallery_container">
+				<ul class="xb_avatar_list">
+					<li class="avatar-items">
+							<xf:foreach loop="$gallery_images" key="$category" value="$avatars">
+									<xf:foreach loop="$avatars" value="$avatar">
+										<div id="xb_avatar_select" data-xf-click="xb_avatar" data-avatar-data-path="{$avatar.data-path}">
+											<i class="fa fa-check"></i>
+											<img class="avatar avatar--s" src="{$avatar.url}" >
+										</div>
+									</xf:foreach>
+						</xf:foreach>
+					<li><input id="xb_avatar_choice" type="hidden" name="gallery_avatar"/></li>
+				</ul>
+			</div>
+	</xf:formrow>
+</xf:if>

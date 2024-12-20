@@ -11,6 +11,24 @@
         "version_string": "1.0.6 Alpha",
         "hash": "64663f4646781c9c0110838b905daa23"
     },
+    "fs_random_avatar_register.txt": {
+        "global_cache": false,
+        "version_id": 1000700,
+        "version_string": "1.0.7 Alpha",
+        "hash": "64663f4646781c9c0110838b905daa23"
+    },
+    "fs_random_register_avatar.txt": {
+        "global_cache": false,
+        "version_id": 1000700,
+        "version_string": "1.0.7 Alpha",
+        "hash": "3d489c16fc0a330011425f85d7ec6011"
+    },
+    "fs_random_register_avatar_btn.txt": {
+        "global_cache": false,
+        "version_id": 1000700,
+        "version_string": "1.0.7 Alpha",
+        "hash": "be99d0933ed23b46471a6202d1f41b4e"
+    },
     "option.fs_random_limit.txt": {
         "global_cache": false,
         "version_id": 1000610,

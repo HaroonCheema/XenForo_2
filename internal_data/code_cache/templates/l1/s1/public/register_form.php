@@ -119,6 +119,16 @@ Before your content can be posted, please take a few moments to register a free 
 		)) . '
 			';
 	}
+	$__compilerTemp5 = '';
+	if ($__vars['xf']['options']['fs_use_random']) {
+		$__compilerTemp5 .= '
+	' . $__templater->includeTemplate('fs_random_avatar_register', $__vars) . '
+	';
+	} else {
+		$__compilerTemp5 .= '
+	' . $__templater->includeTemplate('gallery_avatar_register', $__vars) . '
+';
+	}
 	$__finalCompiled .= $__templater->form('
 
 	<div class="block-container">
@@ -181,6 +191,8 @@ Before your content can be posted, please take a few moments to register a free 
 	), $__vars) . '
 
 			' . $__templater->callMacro('register_macros', 'custom_fields', array(), $__vars) . '
+
+' . $__compilerTemp5 . '
 
 			' . $__templater->formRowIfContent($__templater->func('captcha', array(false, false)), array(
 		'label' => 'Verification',
