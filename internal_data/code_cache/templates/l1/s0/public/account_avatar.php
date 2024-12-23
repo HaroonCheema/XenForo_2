@@ -26,7 +26,7 @@ return array(
 	if ($__templater->method($__vars['xf']['visitor'], 'hasPermission', array('avatar', 'allowed', ))) {
 		$__compilerTemp1 .= '
 	<span class="main-avatar">
-		<label>' . 'Upload new custom avatar' . $__vars['xf']['language']['label_separator'] . '</label>
+		<label>' . 'Upload' . $__vars['xf']['language']['label_separator'] . '</label>
 								' . $__templater->formUpload(array(
 			'name' => 'upload',
 			'class' => 'js-uploadAvatar',

@@ -1,4 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<routes>
-  <route route_type="admin" route_prefix="ag" format=":int&lt;img_id&gt;/" controller="FS\AvatarGallery:AvatarGallery" context="fs_ag_avatar_gallery"/>
-</routes>
+<routes/>

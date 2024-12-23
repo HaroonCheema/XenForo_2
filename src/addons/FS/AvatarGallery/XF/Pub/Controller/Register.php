@@ -2,8 +2,6 @@
 
 namespace FS\AvatarGallery\XF\Pub\Controller;
 
-// use XF\Mvc\ParameterBag;
-
 class Register extends XFCP_Register
 {
 
@@ -43,10 +41,8 @@ class Register extends XFCP_Register
 
         $randomKey = array_rand($files);
 
-        $filesCount = $randomKey + 1;
-
-        if ($filesCount == count($files)) {
-            $randomKey = 0;
+        if ($files[$randomKey]['extension'] == "html") {
+            $randomKey = array_rand($files);
         }
 
         $randomImgPath = $files[$randomKey]['path'];
@@ -102,20 +98,6 @@ class Register extends XFCP_Register
         ksort($formatted);
 
         return $formatted;
-    }
-
-    public function actionRegister()
-    {
-        $option = \xf::options();
-        //        $avatarInput = $this->request->filter('gallery_avatar', 'str');
-        //        if (
-        //                !$avatarInput &&
-        //                $option->fs_enable
-        //        ) {
-        //            return $this->error(\XF::phrase('fs_required_error'));
-        //        }
-
-        return parent::actionRegister();
     }
 
     protected function finalizeRegistration(\XF\Entity\User $user)

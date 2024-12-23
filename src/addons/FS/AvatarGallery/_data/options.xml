@@ -13,6 +13,17 @@
     <edit_format_params>min=0</edit_format_params>
     <relation group_id="fs_avatar_gallery" display_order="4"/>
   </option>
+  <option option_id="fs_register_avatar_preview" edit_format="template" data_type="array">
+    <default_value>{"width":"75","height":"75"}</default_value>
+    <edit_format_params>option_template_attachmentMaxDimensions</edit_format_params>
+    <sub_options>width
+height</sub_options>
+    <relation group_id="fs_avatar_gallery" display_order="6"/>
+  </option>
+  <option option_id="fs_use_custom" edit_format="onoff" data_type="boolean">
+    <default_value>0</default_value>
+    <relation group_id="fs_avatar_gallery" display_order="5"/>
+  </option>
   <option option_id="fs_use_random" edit_format="onoff" data_type="boolean">
     <default_value>0</default_value>
     <relation group_id="fs_avatar_gallery" display_order="3"/>

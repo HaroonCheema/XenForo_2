@@ -220,55 +220,110 @@ ul.xb_avatar_list {
 		</dd>
 	</dl>
 </xf:if>]]></template>
-  <template type="public" title="fs_random_avatar_register" version_id="1000700" version_string="1.0.7 Alpha"><![CDATA[<xf:css src="fs_avatarGallery.less" />
+  <template type="public" title="fs_random_avatar_register" version_id="1000900" version_string="1.0.9 Alpha"><![CDATA[<xf:css src="fs_avatarGallery.less" />
 <xf:js src="FS/AvatarGallery/random_avatar.js?{{$xf.time}}"/>
 
-<xf:formrow label="{{ phrase('fs_random_register_avatar')}} ">
-	<div id="xb_avatar_select">
-		<img class="avatar avatar--s" src="{$random_avatar.url}" >
-	</div>
+<style>
+	#onCustomAvatar{
+		display: none;
+	}
+</style>
 
-	<input id="fs_random_input" type="hidden" name="gallery_avatar" value="{$random_avatar.data-path}"/>
-	<input id="fs_random_avatar_limit" type="hidden" name="random_avatar_limit" />
-</xf:formrow>
+<xf:if is="$xf.options.fs_use_random || $xf.options.fs_use_custom">
+
+	<xf:if is="($xf.options.fs_use_random && $xf.options.fs_use_custom) || $xf.options.fs_use_random">
+
+		<xf:formrow label="{{ phrase('fs_random_register_avatar')}}" >
+			<div id="xb_avatar_select">
+				<img class="avatar avatar--s" id="imagePreview" src="{$random_avatar.url}" style="width: {$xf.options.fs_register_avatar_preview.width}px; height: {$xf.options.fs_register_avatar_preview.height}px;">
+			</div>
+		</xf:formrow>
+		<xf:else />
+		<xf:formrow label="{{ phrase('fs_random_register_avatar')}}" id="onCustomAvatar">
+			<div id="xb_avatar_select">
+				<img class="avatar avatar--s" id="imagePreview" src="{$random_avatar.url}" style="width: {$xf.options.fs_register_avatar_preview.width}px; height: {$xf.options.fs_register_avatar_preview.height}px;">
+			</div>
+		</xf:formrow>
+	</xf:if>
+
+</xf:if>
+
+
 
 <xf:formrow label="{{ phrase('fs_random_register_avatar_btn')}}" id="random_button_c">
-	<xf:button data-xf-click="xb_random_avatar" data-random-data-limit="{$xf.options.fs_random_limit}">{{ phrase('fs_random_avatar_register') }}</xf:button>
-</xf:formrow>]]></template>
-  <template type="public" title="gallery_avatar_register" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:css src="fs_avatarGallery.less" />
+	<xf:if is="$xf.options.fs_use_random">
+		<input id="fs_random_input" type="hidden" name="gallery_avatar" value="{$random_avatar.data-path}"/>
+		<input id="fs_random_avatar_limit" type="hidden" name="random_avatar_limit" />
+
+		<xf:button data-xf-click="xb_random_avatar" data-random-data-limit="{$xf.options.fs_random_limit}">{{ phrase('fs_random_avatar_register') }}</xf:button>
+
+	</xf:if>
+	<xf:if is="$xf.options.fs_use_custom">
+
+		<label class="button">{{ phrase('upload_new_custom_avatar') }}
+			<xf:upload name="img_avatar" id="imageUpload" class="js-uploadAvatar" accept=".gif,.jpeg,.jpg,.jpe,.png,.webp" style="display: none;"/>
+		</label>
+
+	</xf:if>
+</xf:formrow>
+
+<script>
+	document.getElementById('imageUpload').addEventListener('change', function(event) {
+		const file = event.target.files[0];
+		const preview = document.getElementById('imagePreview');
+		const previewImgTag = document.getElementById('onCustomAvatar');
+
+		if (file) {
+			const reader = new FileReader();
+			reader.onload = function(e) {
+				preview.src = e.target.result;
+				previewImgTag.style.display = 'flex'; 
+			};
+			reader.readAsDataURL(file); 
+		} else {
+			previewImgTag.style.display = 'none'; 
+			preview.src = ''; 
+		}
+	});
+</script>]]></template>
+  <template type="public" title="gallery_avatar_register" version_id="1000800" version_string="1.0.8 Alpha"><![CDATA[<xf:css src="fs_avatarGallery.less" />
 <xf:js src="FS/AvatarGallery/gallery_avatar.js?{{$xf.time}}"/>
 
 <xf:if is="$xf.options.fs_enable && !$xf.visitor.hasPermission('general', 'fs_cannot_use_avatar_glry')">
-	
+
 	<xf:formrow label="{{ phrase('register_avatars')}} ">
+
+		<xf:comment>
 			<div class="avatarControl-inputs">
-						
-										<label>{{ phrase('upload_new_custom_avatar:') }}</label>
-										<xf:upload name="img_avatar" class="js-uploadAvatar" accept=".gif,.jpeg,.jpg,.jpe,.png,.webp" />
-										<dfn class="inputChoices-explain">
-											{{ phrase('it_is_recommended_that_you_use_image_that_is_at_least_x_pixels', {
-											'width': 400,
-											'height': 400
-											}) }}
-										</dfn>
-							
+
+				<label>{{ phrase('upload_new_custom_avatar:') }}</label>
+				<xf:upload name="img_avatar" class="js-uploadAvatar" accept=".gif,.jpeg,.jpg,.jpe,.png,.webp" />
+				<dfn class="inputChoices-explain">
+					{{ phrase('it_is_recommended_that_you_use_image_that_is_at_least_x_pixels', {
+					'width': 400,
+					'height': 400
+					}) }}
+				</dfn>
+
 			</div>
-            <br>
-			<label>{{ phrase('fs_use_gallery_avatar') }}</label>
-			<div class="input xb_gallery_container">
-				<ul class="xb_avatar_list">
-					<li class="avatar-items">
-							<xf:foreach loop="$gallery_images" key="$category" value="$avatars">
-									<xf:foreach loop="$avatars" value="$avatar">
-										<div id="xb_avatar_select" data-xf-click="xb_avatar" data-avatar-data-path="{$avatar.data-path}">
-											<i class="fa fa-check"></i>
-											<img class="avatar avatar--s" src="{$avatar.url}" >
-										</div>
-									</xf:foreach>
+			<br>
+		</xf:comment>
+
+		<label>{{ phrase('fs_use_gallery_avatar') }}</label>
+		<div class="input xb_gallery_container">
+			<ul class="xb_avatar_list">
+				<li class="avatar-items">
+					<xf:foreach loop="$gallery_images" key="$category" value="$avatars">
+						<xf:foreach loop="$avatars" value="$avatar">
+							<div id="xb_avatar_select" data-xf-click="xb_avatar" data-avatar-data-path="{$avatar.data-path}">
+								<i class="fa fa-check"></i>
+								<img class="avatar avatar--s" src="{$avatar.url}" >
+							</div>
 						</xf:foreach>
-					<li><input id="xb_avatar_choice" type="hidden" name="gallery_avatar"/></li>
-				</ul>
-			</div>
+					</xf:foreach>
+				<li><input id="xb_avatar_choice" type="hidden" name="gallery_avatar"/></li>
+			</ul>
+		</div>
 	</xf:formrow>
 </xf:if>]]></template>
   <template type="public" title="generate_image" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<div id="xb_avatar_select" data-xf-click="xb_avatar" data-ai-img="1" data-avatar-data-path="{{$imglink}}">

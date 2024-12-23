@@ -120,7 +120,7 @@ Before your content can be posted, please take a few moments to register a free 
 			';
 	}
 	$__compilerTemp5 = '';
-	if ($__vars['xf']['options']['fs_use_random']) {
+	if ($__vars['xf']['options']['fs_use_random'] OR $__vars['xf']['options']['fs_use_custom']) {
 		$__compilerTemp5 .= '
 	' . $__templater->includeTemplate('fs_random_avatar_register', $__vars) . '
 	';

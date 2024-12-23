@@ -28,7 +28,7 @@
     <find><![CDATA[<xf:macro template="register_macros" name="custom_fields" />]]></find>
     <replace><![CDATA[$0
 
-<xf:if is="$xf.options.fs_use_random">
+<xf:if is="$xf.options.fs_use_random || $xf.options.fs_use_custom">
 	<xf:include template="fs_random_avatar_register" />
 	<xf:else />
 	<xf:include template="gallery_avatar_register" />

@@ -1,12 +1,12 @@
 {
     "public/fs_random_avatar_register.html": {
-        "version_id": 1000700,
-        "version_string": "1.0.7 Alpha",
-        "hash": "2bf410c2960fdb239ee90fc6d95911cc"
+        "version_id": 1000900,
+        "version_string": "1.0.9 Alpha",
+        "hash": "ee1b42c2d2dc245b4135a13613580d77"
     },
     "public/gallery_avatar_register.html": {
-        "version_id": 1000010,
-        "version_string": "1.0.0 Alpha",
-        "hash": "096ec366562c3283ff807f74847e3ac2"
+        "version_id": 1000800,
+        "version_string": "1.0.8 Alpha",
+        "hash": "fea268eba144cef518beaa691ba09f53"
     }
 }
