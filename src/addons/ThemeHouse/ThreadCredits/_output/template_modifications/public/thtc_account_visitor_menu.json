@@ -1,0 +1,9 @@
+{
+    "template": "account_visitor_menu",
+    "description": "Add credit packages link to visitor menu",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "#account\\/upgrades.*<\\/xf:if>#sU",
+    "replace": "$0\n<li>\n\t<a href=\"{{ link('account/thtc-credit-packages') }}\" class=\"menu-linkRow\">\n\t\t{{ phrase('thtc_credit_packages') }}\n\t</a>\n</li>"
+}

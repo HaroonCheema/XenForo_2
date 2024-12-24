@@ -1,0 +1,9 @@
+{
+    "template": "account_visitor_menu",
+    "description": "Add credits to visitor menu",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<!--[XF:stats_pairs:above_messages]-->",
+    "replace": "<dl class=\"pairs pairs--justified fauxBlockLink\">\n\t<dt>{{ phrase('thtc_credits') }}</dt>\n\t<dd>\n\t\t<a href=\"{{ link('account/thtc-credit-packages') }}\" class=\"fauxBlockLink-linkRow u-concealed\">\n\t\t\t{$xf.visitor.thtc_credits_cache|number}\n\t\t</a>\n\t</dd>\n</dl>\n$0"
+}
