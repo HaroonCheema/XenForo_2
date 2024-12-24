@@ -1,12 +1,12 @@
 <?php
-// FROM HASH: d91f869b4b0885147f6e7bed52abaafe
+// FROM HASH: 7a423a145ba04f1d7258c8520ea19910
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
 	$__finalCompiled = '';
 	$__finalCompiled .= $__templater->callMacro('fs_avatar_gallery_macro', 'js_and_style_css', array(), $__vars) . '
 
-' . $__templater->callMacro('fs_avatar_gallery_macro', 'register_details_avatar', array(
+' . $__templater->callMacro('fs_avatar_gallery_macro', 'account_details_avatar', array(
 		'random_avatar' => $__vars['random_avatar'],
 	), $__vars) . '
 

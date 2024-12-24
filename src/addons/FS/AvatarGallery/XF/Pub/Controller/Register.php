@@ -14,13 +14,15 @@ class Register extends XFCP_Register
         $parent = parent::actionIndex();
         if ($parent instanceof \XF\Mvc\Reply\View) {
             $option = \xf::options();
+            $randomAvatarsServ = \xf::app()->service('FS\AvatarGallery:AvatarGallery');
 
             if ($option->fs_use_random) {
 
-                $parent->setParam('random_avatar', $this->getRandomAvatars());
+                $parent->setParam('random_avatar', $randomAvatarsServ->getRandomAvatars());
                 return $parent;
             } elseif ($option->fs_enable) {
-                $parent->setParam('gallery_images', $this->getGalleryImages());
+
+                $parent->setParam('gallery_images', $randomAvatarsServ->getGalleryImagesRegister());
                 return $parent;
             }
 
@@ -30,34 +32,11 @@ class Register extends XFCP_Register
         return $parent;
     }
 
-    protected function getRandomAvatars()
-    {
-        $files = \XF::app()->fs()->listContents('data://gallery_avatars', true);
-
-        if (!count($files)) {
-
-            return;
-        }
-
-        $randomKey = array_rand($files);
-
-        if ($files[$randomKey]['extension'] == "html") {
-            $randomKey = array_rand($files);
-        }
-
-        $randomImgPath = $files[$randomKey]['path'];
-
-        $randomImage = [
-            'url' => $this->app()->applyExternalDataUrl($randomImgPath),
-            'data-path' => $randomImgPath
-        ];
-
-        return $randomImage;
-    }
-
     public function actionRandomAvatar()
     {
-        $viewParams = $this->getRandomAvatars();
+        $randomAvatars = \xf::app()->service('FS\AvatarGallery:AvatarGallery');
+
+        $viewParams = $randomAvatars->getRandomAvatars();
 
         $this->setResponseType('json');
         $view = $this->view();
@@ -65,39 +44,6 @@ class Register extends XFCP_Register
         return $view;
 
         return $randomImage;
-    }
-
-    private function getGalleryImages()
-    {
-        $valid_extensions = [
-            'jpg',
-            'jpeg',
-            'gif',
-            'png'
-        ];
-
-        $files = \XF::app()->fs()->listContents('data://gallery_avatars', true);
-
-        $formatted = [];
-
-        foreach ($files as $file) {
-            $category = preg_replace('/gallery_avatars\/?/', '', $file['dirname']);
-
-            if (empty($category)) {
-                $category = \XF::phrase('fs_uncategorized')->render();
-            }
-
-            if ($file['type'] === 'file' && in_array(strtolower($file['extension']), $valid_extensions)) {
-                $formatted[$category][] = [
-                    'url' => $this->app()->applyExternalDataUrl($file['path']),
-                    'data-path' => $file['path']
-                ];
-            }
-        }
-
-        ksort($formatted);
-
-        return $formatted;
     }
 
     protected function finalizeRegistration(\XF\Entity\User $user)

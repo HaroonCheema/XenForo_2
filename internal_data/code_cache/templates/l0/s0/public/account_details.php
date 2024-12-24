@@ -77,19 +77,10 @@ return array(
 				';
 	}
 	$__compilerTemp5 = '';
-	if ($__templater->method($__vars['xf']['visitor'], 'canUploadAvatar', array())) {
+	if ($__vars['xf']['options']['fs_use_random'] OR $__vars['xf']['options']['fs_use_custom']) {
 		$__compilerTemp5 .= '
-				' . $__templater->formRow('
-
-					' . $__templater->func('avatar', array($__vars['xf']['visitor'], 'm', false, array(
-			'href' => $__templater->func('link', array('account/avatar', ), false),
-			'data-xf-click' => 'overlay',
-		))) . '
-				', array(
-			'label' => 'Avatar',
-			'explain' => 'Click the image to change your avatar.',
-		)) . '
-			';
+	' . $__templater->includeTemplate('fs_random_avatar_account_details', $__vars) . '
+';
 	}
 	$__compilerTemp6 = '';
 	if ($__templater->method($__vars['xf']['visitor'], 'canUploadProfileBanner', array())) {

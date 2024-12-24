@@ -1,0 +1,9 @@
+{
+    "template": "account_details",
+    "description": "Add random and custom button into account details section",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/<xf:if is=\"\\$xf\\.visitor\\.canUploadAvatar\\(\\)\">.*?<\\/xf:if>/is",
+    "replace": "<xf:if is=\"$xf.options.fs_use_random || $xf.options.fs_use_custom\">\n\t<xf:include template=\"fs_random_avatar_account_details\" />\n</xf:if>"
+}

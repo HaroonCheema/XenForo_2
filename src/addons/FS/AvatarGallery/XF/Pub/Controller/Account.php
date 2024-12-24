@@ -6,9 +6,65 @@ use XF\Service\User\AvatarService;
 
 class Account extends XFCP_Account
 {
+    public function actionAccountDetails()
+    {
+        $parent = parent::actionAccountDetails();
+
+        $app = \xf::app();
+        $user = \XF::visitor();
+        $option = \xf::options();
+
+        if ($this->isPost()) {
+
+            if (!$user->user_id) {
+                return $this->noPermission();
+            }
+            $gallery_avatar = $this->filter('gallery_avatar', 'str');
+            $upload = $this->request->getFile('img_avatar', false, false);
+
+            /** @var \XF\Service\User\Avatar $avatarService */
+            $avatarService = $app->service('XF:User\Avatar', $user);
+            if ($upload) {
+
+                if (!$avatarService->setImageFromUpload($upload)) {
+                    return $this->error($avatarService->getError());
+                }
+
+                if (!$avatarService->updateAvatar()) {
+                    return $this->error(\XF::phrase('new_avatar_could_not_be_processed'));
+                }
+            } elseif (\XF::app()->fs()->has('data://' . $gallery_avatar)) {
+
+                if (!$user->canUseRandomAvatar()) {
+                    return $this->noPermission();
+                }
+
+                $tmp = tempnam($option->fs_change_the_path_to_the_tmp_file, 'php');
+                $data = \XF::app()->fs()->readStream('data://' . $gallery_avatar);
+
+                file_put_contents($tmp, $data);
+
+                $avatarService = $this->service('XF:User\Avatar', $user);
+
+                $avatarService->setImage($tmp);
+                $avatarService->updateAvatar();
+
+                unlink($tmp);
+
+                $updateLimit = $user->random_avatar_limit + 1;
+
+                $user->bulkSet([
+                    'random_avatar_limit' => $updateLimit,
+                ]);
+
+                $user->save();
+            }
+        }
+        return $parent;
+    }
+
     public function actionAvatar()
     {
-
         $reply = parent::actionAvatar();
 
         if ($this->isPost()) {
@@ -74,9 +130,9 @@ class Account extends XFCP_Account
 
                     $visitor = \XF::visitor();
 
-                    // $avatarService = $this->service('XF:User\Avatar', $visitor);
+                    $avatarService = $this->service('XF:User\Avatar', $visitor);
 
-                    $avatarService = $this->service(AvatarService::class, $visitor);
+                    // $avatarService = $this->service(AvatarService::class, $visitor);
 
                     $avatarService->setImage($tmp);
                     $avatarService->updateAvatar();
@@ -85,57 +141,12 @@ class Account extends XFCP_Account
                 }
             }
         } else {
-            $reply->setParam('gallery_images', $this->getGalleryImages());
+            $randomAvatarsServ = \xf::app()->service('FS\AvatarGallery:AvatarGallery');
+
+            $reply->setParam('gallery_images', $randomAvatarsServ->getGalleryImagesAccount());
         }
 
         return $reply;
-    }
-
-    private function getGalleryImages()
-    {
-
-        $valid_extensions = [
-            'jpg',
-            'jpeg',
-            'gif',
-            'png'
-        ];
-
-        $files = \XF::app()->fs()->listContents('data://gallery_avatars', true);
-
-        $formatted = [];
-        $visitor = \XF::visitor();
-        $userGroup = $visitor->user_group_id;
-        $secondaryUserGroup = $visitor->secondary_group_ids;
-        foreach ($files as $file) {
-            $category = preg_replace('/gallery_avatars\/?/', '', $file['dirname']);
-
-            if (empty($category)) {
-                $category = \XF::phrase('fs_uncategorized')->render();
-            }
-            if ($file['type'] === 'file' && in_array(strtolower($file['extension']), $valid_extensions)) {
-                $permission = '';
-                if ($permission == null) {
-                    $formatted[$category]['permission'] = '2';
-                } else {
-                    $formatted[$category]['permission'] = false;
-                    if (in_array($userGroup, $permission['permission_category'])) {
-                        $formatted[$category]['permission'] = true;
-                    }
-                    foreach ($secondaryUserGroup as $Goup) {
-                        if (in_array($Goup, $permission['permission_category'])) {
-                            $formatted[$category]['permission'] = true;
-                        }
-                    }
-                }
-                $formatted[$category]['dirname'][] = [
-                    'url' => $this->app()->applyExternalDataUrl($file['path']),
-                    'data-path' => $file['path']
-                ];
-            }
-        }
-        ksort($formatted);
-        return $formatted;
     }
 
     public function actionRandom()
@@ -159,7 +170,9 @@ class Account extends XFCP_Account
 
         $tmp = tempnam(\xf::options()->fs_change_the_path_to_the_tmp_file, 'php');
 
-        $gallery_avatar = $this->getRandomAvatar($files);
+        $randomAvatars = \xf::app()->service('FS\AvatarGallery:AvatarGallery');
+
+        $gallery_avatar = $randomAvatars->getRandomAvatar();
 
         $this->changeAvatar($user, $gallery_avatar, $tmp);
 
@@ -174,19 +187,6 @@ class Account extends XFCP_Account
         $user->save();
 
         return $this->redirect($redirect);
-    }
-
-    public function getRandomAvatar($files)
-    {
-        $randomKey = array_rand($files);
-
-        $filesCount = $randomKey + 1;
-
-        if ($filesCount == count($files)) {
-            $randomKey = 0;
-        }
-
-        return $files[$randomKey]['path'];
     }
 
     public function changeAvatar($user, $gallery_avatar, $tmp)

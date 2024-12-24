@@ -2,7 +2,10 @@
     "public/fs_account_avatar.json": {
         "hash": "3f29591942b40bbe24e5c69090f91b7b"
     },
+    "public/fs_avatar_gallery_profile.json": {
+        "hash": "08cb4efbe1417f5aa24b4fa380bac190"
+    },
     "public/register_form_gallery_avatar.json": {
-        "hash": "259e36df09938c1353d4d8ffed9f6c1a"
+        "hash": "25f266304729536d1a58ebacb6b6cce6"
     }
 }
