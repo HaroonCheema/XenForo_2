@@ -1,0 +1,14 @@
+<xf:set var="$viewableCurrencies" value="{{ $xf.app.em.getRepository('DBTech\Credits:Currency').getCurrencies(true) }}" />
+
+<xf:if is="$viewableCurrencies">
+	<xf:foreach loop="$viewableCurrencies" value="$currency" if="$currency.postbit">
+	<dl class="pairs pairs--justified">
+		<dt title="{$currency.title}">{$currency.title}</dt>
+		<dd>
+			<a href="{{ link('dbtech-credits/currency', $currency, {'user_id': $user.user_id}) }}" data-xf-click="overlay" class="fauxBlockLink-blockLink u-concealed">
+				{$currency.prefix}{{ $currency.getValueFromUser($user) }}{$currency.suffix}
+			</a>
+		</dd>
+	</dl>
+	</xf:foreach>
+</xf:if>

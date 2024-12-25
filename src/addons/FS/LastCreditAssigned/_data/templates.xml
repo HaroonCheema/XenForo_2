@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="public" title="fs_last_credits_date_postbit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:set var="$lastCreditDate" value="{{ $user.getLastCreditDate() }}" />
+
+<xf:if is="$lastCreditDate">
+	<dl class="pairs pairs--justified">
+		<dt title="{{ phrase('fs_last_credit_given') }}">{{ phrase('fs_last_credit_given') }}</dt>
+		<dd>
+			<xf:set var="$lastCreditDateTime" value="{{ date($lastCreditDate.purchased_at, 'M j, Y') }} at {{ time($lastCreditDate.purchased_at) }}" />
+			
+			<span title="{{ $lastCreditDateTime }}">
+				{{ snippet($lastCreditDateTime, 4, {'stripBbCode': true}) }}
+			</span>
+
+		</dd>
+	</dl>
+</xf:if>]]></template>
+</templates>

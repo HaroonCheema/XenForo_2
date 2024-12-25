@@ -183,7 +183,8 @@ return array(
 	' . $__templater->callMacro('BRATR_rating_macros', 'receive_rating_count', array(
 		'user' => $__vars['user'],
 	), $__vars) . '
-' . '
+' . $__templater->includeTemplate('dbtech_credits_member_stats', $__vars) . '
+	' . '
 
 ';
 	if ($__templater->method($__vars['xf']['visitor'], 'hasPermission', array('fs_thread_scoring_system', 'can_view', ))) {

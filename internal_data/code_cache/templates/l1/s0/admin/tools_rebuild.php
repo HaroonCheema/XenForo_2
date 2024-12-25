@@ -397,6 +397,7 @@ return array(
 ' . $__templater->includeTemplate('xfmg_tools_rebuild', $__vars) . '
 ' . $__templater->includeTemplate('xfrm_tools_rebuild', $__vars) . '
 ' . $__templater->includeTemplate('dbtech_ecommerce_tools_rebuild', $__vars) . '
+' . $__templater->includeTemplate('dbtech_credits_tools_rebuild', $__vars) . '
 
 ';
 	return $__finalCompiled;

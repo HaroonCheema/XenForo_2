@@ -32,7 +32,8 @@ return array(
 				</div>
 
 				<div class="contentRow-minor">
-					<dl class="pairs pairs--justified fauxBlockLink">
+					' . $__templater->includeTemplate('dbtech_credits_member_dropdown', $__vars) . '
+				<dl class="pairs pairs--justified fauxBlockLink">
 	<dt>' . 'Special Credits' . '</dt>
 	<dd>
 			' . $__templater->filter($__vars['xf']['visitor']['special_credit'], array(array('number', array()),), true) . '

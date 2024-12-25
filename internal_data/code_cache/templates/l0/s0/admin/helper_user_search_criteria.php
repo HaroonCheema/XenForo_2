@@ -282,6 +282,8 @@ return array(
 
 <hr class="formRowSep" />
 
+' . $__templater->includeTemplate('dbtech_credits_helper_user_search_criteria', $__vars) . '
+
 ' . $__templater->includeTemplate('dbtech_ecommerce_helper_user_search_criteria', $__vars) . '
 
 ' . $__templater->formCheckBoxRow(array(

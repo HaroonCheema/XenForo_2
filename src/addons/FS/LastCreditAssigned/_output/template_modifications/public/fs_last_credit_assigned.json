@@ -1,0 +1,9 @@
+{
+    "template": "message_macros",
+    "description": "Add last credit date postbit",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:if is=\"$extras.custom_fields\">",
+    "replace": "<xf:include template=\"fs_last_credits_date_postbit\" />\n\t$0"
+}
