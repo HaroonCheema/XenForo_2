@@ -424,6 +424,8 @@ return array (
   'option.fs_web_ranking_parent_web_id' => 'Parent Website Id',
   'option.fs_webhook_secret_key' => 'Webhook Secret Token',
   'option.fs_welcome_banner_applicable_threads' => 'Welcome Banner Applicable Threads',
+  'option.fs_who_replied_forums_allowed' => 'Select Forums',
+  'option.fs_who_replied_thread_starter_color' => 'Color',
   'option.fs_wr_numOfSites' => 'Number of sites',
   'option.fs_yt_Slider_auto' => 'Slider Auto Play Option',
   'option.fs_yt_Slider_skip' => 'Per Each Slider Skip Thumbnails Count',

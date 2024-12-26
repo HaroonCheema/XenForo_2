@@ -1,0 +1,26 @@
+<div class="block" data-widget-section="onlineNow"{{ widget_data($widget) }}>
+	<div class="block-container">
+		<h3 class="block-minorHeader"><a href="#">{$title}</a></h3>
+		<div class="block-body">
+			<div class="block-row block-row--minor">
+				<xf:if is="$thread is not empty">
+					<ul class="listInline listInline--comma">
+						<xf:trim>
+							<li><xf:username user="$thread.User" rich="true" class="" style="color: {$xf.options.fs_who_replied_thread_starter_color}; font-weight: bold;"/></li>
+							</xf:trim>
+						<xf:foreach loop="$users" value="$user"><xf:trim>
+							<li><xf:username user="$user" rich="true" class="" /></li>
+							</xf:trim></xf:foreach>
+					</ul>
+					<xf:else />
+					{{ phrase('no_members_online_now') }}
+				</xf:if>
+			</div>
+		</div>
+		<div class="block-footer">
+			<span class="block-footer-counter">{{ phrase('fs_who_replied_thread_total_x',{
+				'total': number($total)})
+				}}</span>
+		</div>
+	</div>
+</div>

@@ -487,6 +487,8 @@ Example: 1,2,3,4,..',
   'option_explain.fs_webhook_secret_key' => 'Must Required for webhook validate.',
   'option_explain.fs_welcome_banner_applicable_threads' => 'List the welcome banner thread ids that are allowed to be display. Use , (comma) between ids.
 Example: 1,2,3,4,..',
+  'option_explain.fs_who_replied_forums_allowed' => '',
+  'option_explain.fs_who_replied_thread_starter_color' => 'You can add here color name or color code...!',
   'option_explain.fs_wr_numOfSites' => 'How many Websites will be display in stats list (sits percentage)',
   'option_explain.fs_yt_Slider_auto' => 'Auto Play options will be enabled when you push navigation buttons.',
   'option_explain.fs_yt_Slider_skip' => '<b>How many items are skip on slider in a round?</b><br>

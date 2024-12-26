@@ -1,0 +1,56 @@
+{
+    "fs_who_replied_thread_total_x.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "66a77d7074b4680af5bb9cef6917e263"
+    },
+    "option.fs_who_replied_forums_allowed.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "e14feb572141c2f760d594d0592efe99"
+    },
+    "option.fs_who_replied_thread_starter_color.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "cb5feb1b7314637725a2e73bdc9f7295"
+    },
+    "option_explain.fs_who_replied_forums_allowed.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "option_explain.fs_who_replied_thread_starter_color.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "e562f752ccd2d1e7852dd523ceb29f09"
+    },
+    "option_group.fs_who_replied_integ.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "a04bf97b046a2db761b203d2b6b60f9c"
+    },
+    "option_group_description.fs_who_replied_integ.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "widget_def.fs_who_replied_thread_mem.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "77d1291066b1b94df9e749bef473bc97"
+    },
+    "widget_def_desc.fs_who_replied_thread_mem.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    }
+}

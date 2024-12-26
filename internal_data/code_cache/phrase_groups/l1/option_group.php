@@ -63,6 +63,7 @@ return array (
   'option_group.fs_translator' => '[FS] Translator',
   'option_group.fs_web_ranking' => '[FS] Website Ranking',
   'option_group.fs_welcome_banner' => '[FS] Welcome Banner',
+  'option_group.fs_who_replied_integ' => '[FS] Who Replied Integration',
   'option_group.fs_yt_videos' => '[FS] Yt Videos Slider Setting',
   'option_group.fs_zoom_meeting' => '[FS] Zoom Meeting Auth',
   'option_group.hematthumb' => '[Xenbros]Thread Thumbnail',

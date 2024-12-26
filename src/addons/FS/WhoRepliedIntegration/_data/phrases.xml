@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="fs_who_replied_thread_total_x" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Total:&nbsp;{total} ]]></phrase>
+  <phrase title="option.fs_who_replied_forums_allowed" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Select Forums]]></phrase>
+  <phrase title="option.fs_who_replied_thread_starter_color" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Color]]></phrase>
+  <phrase title="option_explain.fs_who_replied_forums_allowed" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_explain.fs_who_replied_thread_starter_color" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You can add here color name or color code...!]]></phrase>
+  <phrase title="option_group.fs_who_replied_integ" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Who Replied Integration]]></phrase>
+  <phrase title="option_group_description.fs_who_replied_integ" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="widget_def.fs_who_replied_thread_mem" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Who Replied Thread Members]]></phrase>
+  <phrase title="widget_def_desc.fs_who_replied_thread_mem" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+</phrases>
