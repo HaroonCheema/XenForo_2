@@ -682,6 +682,8 @@ return array (
   'option.svMultiPrefixMultipleFilter' => 'Multiple prefixes filter type',
   'option.svMultiprefixSortDisplay' => 'Sort prefixes on display',
   'option.svStripPrefixOnContainerChange' => 'When moving content that has multiple prefixes, strip unusable prefixes rather than block moving',
+  'option.svWhoRepliedPagination' => 'Who replied pagination features',
+  'option.svWhoReplied_usersPerPageChoices' => 'Allowed "Users per page" choices',
   'option.tagCloud' => 'Enable tag cloud with up to X tags:',
   'option.tagCloudMinUses' => 'Minimum tag cloud uses',
   'option.tagLength' => 'Tag length limit',

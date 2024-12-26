@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="svStoryUI_thread_list_macros" modification_key="whoreplied_svStoryUI_thread_list_macros" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/(<dt>{{ phrase\('replies'\) }}<\/dt>\s*<dd>)(?:.*?)(\$thread\.reply_count\s*\|\s*[^\s]+)(?:.*?)(<\/dd>)/si]]></find>
+    <replace><![CDATA[$1
+<xf:set var="$threadReplyCount">{{ $2 }}</xf:set>
+<xf:include template="thread_list_macros_whoreplied" />
+$3]]></replace>
+  </modification>
+  <modification type="public" template="thread_list_macros" modification_key="whoreplied_thread_list_macros" execution_order="6340" enabled="1" action="preg_replace">
+    <find><![CDATA[/(<dt>{{ phrase\('replies'\) }}<\/dt>\s*<dd>)(?:.*?)(\$thread\.reply_count\s*\|\s*[^\s]+)(?:.*?)(<\/dd>)/si]]></find>
+    <replace><![CDATA[$1
+<xf:set var="$threadReplyCount">{{ $2 }}</xf:set>
+<xf:include template="thread_list_macros_whoreplied" />
+$3]]></replace>
+  </modification>
+  <modification type="public" template="thread_view" modification_key="whoreplied_thread_tools" execution_order="6340" enabled="1" action="str_replace">
+    <find><![CDATA[<!--[XF:thread_tools_menu:before_footer]-->]]></find>
+    <replace><![CDATA[<xf:if is="$thread.canViewWhoReplied()">
+	<a href="{{ link('threads/who-replied', $thread) }}" data-xf-click="overlay" class="menu-linkRow">{{ phrase('whoreplied_whoreplied') }}</a>
+</xf:if>
+$0]]></replace>
+  </modification>
+</template_modifications>

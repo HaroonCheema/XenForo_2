@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="option.svWhoRepliedPagination" version_id="1711256423" version_string="2.3.0"><![CDATA[Who replied pagination features]]></phrase>
+  <phrase title="option.svWhoReplied_usersPerPageChoices" version_id="1711256423" version_string="2.3.0"><![CDATA[Allowed "Users per page" choices]]></phrase>
+  <phrase title="option_explain.svWhoRepliedPagination" version_id="1711256423" version_string="2.3.0"><![CDATA[You can choose the enabled pagination features using this setting.]]></phrase>
+  <phrase title="option_explain.svWhoReplied_usersPerPageChoices" version_id="2020000" version_string="2.2.0"><![CDATA[Enter the valid choices for the "Users per page" drop-down on the Who Replied page.]]></phrase>
+  <phrase title="option_group.WhoReplied" version_id="1050000" version_string="1.5.0"><![CDATA[Who Replied]]></phrase>
+  <phrase title="option_group_description.WhoReplied" version_id="1050000" version_string="1.5.0"><![CDATA[Options for the Who Replied add-on.]]></phrase>
+  <phrase title="permission.forum_whoRepliedView" version_id="3" version_string="1.1.0"><![CDATA[View Who Replied]]></phrase>
+  <phrase title="svWhoReplied_ajax_pagination" version_id="1711256423" version_string="2.3.0"><![CDATA[AJAX pagination]]></phrase>
+  <phrase title="svWhoReplied_ajax_pagination_with_filter" version_id="1711256423" version_string="2.3.0"><![CDATA[AJAX pagination with filter bar]]></phrase>
+  <phrase title="svWhoReplied_standard_pagination" version_id="1711256423" version_string="2.3.0"><![CDATA[Standard pagination]]></phrase>
+  <phrase title="whoreplied_members_who_replied" version_id="1" version_string="1.0.0"><![CDATA[Members Who Replied this thread]]></phrase>
+  <phrase title="whoreplied_see_posts" version_id="3" version_string="1.1.0"><![CDATA[See all posts from this user in this thread]]></phrase>
+  <phrase title="whoreplied_users_per_page" version_id="2020000" version_string="2.2.0"><![CDATA[Users per page]]></phrase>
+  <phrase title="whoreplied_whoreplied" version_id="1" version_string="1.0.0" global_cache="1"><![CDATA[Who Replied?]]></phrase>
+</phrases>

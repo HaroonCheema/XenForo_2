@@ -192,6 +192,7 @@ return array (
   'permission.forum_viewScheduled' => 'View scheduled publications',
   'permission.forum_votePoll' => 'Vote on polls',
   'permission.forum_warn' => 'Give warnings on posts',
+  'permission.forum_whoRepliedView' => 'View Who Replied',
   'permission.fs_IPSearchResult_canUseSearch' => 'Can Use Ip Search',
   'permission.fs_attachment_needlike' => '[FS] Need Like to See Attachment ?',
   'permission.fs_auction_permissions_add' => 'Add auction listing',

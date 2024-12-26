@@ -235,6 +235,13 @@ return array(
 	}
 	$__compilerTemp2 .= '
 
+';
+	if ($__templater->method($__vars['thread'], 'canViewWhoReplied', array())) {
+		$__compilerTemp2 .= '
+	<a href="' . $__templater->func('link', array('threads/who-replied', $__vars['thread'], ), true) . '" data-xf-click="overlay" class="menu-linkRow">' . 'Who Replied?' . '</a>
+';
+	}
+	$__compilerTemp2 .= '
 ' . '
 											';
 	if ($__templater->method($__vars['thread'], 'canUseInlineModeration', array())) {

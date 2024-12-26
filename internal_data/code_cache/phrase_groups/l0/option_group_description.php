@@ -7,6 +7,7 @@ return array (
   'option_group_description.FTSlider_Options' => 'Featured Threads Slider Options',
   'option_group_description.Fs_NodeIcon' => '',
   'option_group_description.TvThreads' => 'Options for the TMDb TV thread starter add-on',
+  'option_group_description.WhoReplied' => 'Options for the Who Replied add-on.',
   'option_group_description.acp' => 'Contains various options relating to the admin control panel itself.',
   'option_group_description.addCategoryImage' => '',
   'option_group_description.alerts' => 'When events happen that affect individual users, they are alerted via this system. If you are using a supported device, alerts can be sent directly to the device as a push notification. As large volumes of alerts are generated, they are periodically pruned from the database.',

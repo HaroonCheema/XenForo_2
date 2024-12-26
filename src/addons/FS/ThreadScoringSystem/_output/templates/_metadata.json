@@ -25,13 +25,13 @@
         "hash": "307ec9134a3856021530a3ee475636c9"
     },
     "public/fs_thread_scoring_system_side_widget.html": {
-        "version_id": 1010500,
-        "version_string": "1.1.5 Alpha",
+        "version_id": 1010600,
+        "version_string": "1.1.6 Alpha",
         "hash": "50e94b03982d52f7484f117a3d19bcdc"
     },
     "public/widget_fs_thread_scoring_monthly_score.html": {
-        "version_id": 1010200,
-        "version_string": "1.1.2 Alpha",
+        "version_id": 1010600,
+        "version_string": "1.1.6 Alpha",
         "hash": "c9035e9dd7fe66562868c3669a35d3ac"
     }
 }

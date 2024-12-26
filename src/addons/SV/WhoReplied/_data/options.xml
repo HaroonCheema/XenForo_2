@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<options>
+  <option option_id="svWhoRepliedPagination" edit_format="radio" data_type="string" advanced="0">
+    <default_value>ajax_filter</default_value>
+    <edit_format_params>standard={{ phrase('svWhoReplied_standard_pagination') }}
+ajax={{ phrase('svWhoReplied_ajax_pagination') }}
+ajax_filter={{ phrase('svWhoReplied_ajax_pagination_with_filter') }}</edit_format_params>
+    <relation group_id="WhoReplied" display_order="1"/>
+  </option>
+  <option option_id="svWhoReplied_usersPerPageChoices" edit_format="callback" data_type="array" validation_class="SV\StandardLib\Option\EntriesPerPage" validation_method="verifyOption" advanced="0">
+    <default_value>[25,50]</default_value>
+    <edit_format_params>SV\StandardLib\Option\EntriesPerPage::renderOption</edit_format_params>
+    <sub_options>*</sub_options>
+    <relation group_id="WhoReplied" display_order="10"/>
+  </option>
+</options>
