@@ -3,7 +3,7 @@
     "description": "Gallery Avatars Register Form",
     "execution_order": 10,
     "enabled": true,
-    "action": "str_replace",
-    "find": "<xf:macro template=\"register_macros\" name=\"custom_fields\" />",
-    "replace": "$0\n\n<xf:if is=\"$xf.options.fs_use_random || $xf.options.fs_use_custom\">\n\t<xf:include template=\"fs_random_avatar_register\" />\n</xf:if>\n\n<xf:if is=\"$xf.options.fs_enable && !$xf.options.fs_use_random\">\n\t<xf:include template=\"gallery_avatar_register\" />\n</xf:if>"
+    "action": "preg_replace",
+    "find": "/<xf:textboxrow name=\"username\" value=\"\" autocomplete=\"off\" rowclass=\"formRow--limited\".*?explain=\"{{ phrase\\('please_leave_this_field_blank'\\) }}\" \\/>/is",
+    "replace": "<xf:include template=\"fs_random_avatar_register\" />\n\n<xf:if is=\"$xf.options.fs_enable && !$xf.options.fs_use_random\">\n\t<xf:include template=\"gallery_avatar_register\" />\n</xf:if>\n\n$0"
 }

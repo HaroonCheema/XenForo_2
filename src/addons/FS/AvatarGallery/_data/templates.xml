@@ -220,7 +220,7 @@ ul.xb_avatar_list {
 		</dd>
 	</dl>
 </xf:if>]]></template>
-  <template type="public" title="fs_avatar_gallery_macro" version_id="1010300" version_string="1.1.3 Alpha"><![CDATA[<xf:macro name="js_and_style_css" >
+  <template type="public" title="fs_avatar_gallery_macro" version_id="1010500" version_string="1.1.5 Alpha"><![CDATA[<xf:macro name="js_and_style_css" >
 
 	<xf:css src="fs_avatarGallery.less" />
 	<xf:js src="FS/AvatarGallery/random_avatar.js?{{$xf.time}}"/>
@@ -237,53 +237,43 @@ ul.xb_avatar_list {
 
 	<xf:formrow label="{{ phrase('fs_random_register_avatar')}}" id="onCustomAvatar">
 		<div id="xb_avatar_select">
-			<img class="avatar avatar--s" id="imagePreview" src="{$random_avatar.url}" style="width: {$xf.options.fs_register_avatar_preview.width}px; height: {$xf.options.fs_register_avatar_preview.height}px;">
+			<img class="avatar avatar--m" id="imagePreview" src="{$random_avatar.url}" >
 		</div>
 	</xf:formrow>
 
-	<xf:if is="($xf.options.fs_use_random && $xf.visitor.canUseRandomAvatar()) || $xf.options.fs_use_custom">
+	<xf:formrow label="{{ phrase('fs_random_register_avatar_btn')}}" >
+		<xf:if is="$xf.options.fs_use_random">
+			<input id="fs_random_input" type="hidden" name="gallery_avatar" value="{$random_avatar.data-path}"/>
+			<input id="fs_random_avatar_limit" type="hidden" name="random_avatar_limit" />
 
-		<xf:formrow label="{{ phrase('fs_random_register_avatar_btn')}}" >
-			<xf:if is="$xf.options.fs_use_random && $xf.visitor.canUseRandomAvatar()">
-				<input id="fs_random_input" type="hidden" name="gallery_avatar" value="{$random_avatar.data-path}"/>
-				<input id="fs_random_avatar_limit" type="hidden" name="random_avatar_limit" />
+			<xf:button id="random_button_c" data-xf-click="fs_random_account_details" data-random-data-limit="{$xf.options.fs_random_limit}">{{ phrase('fs_random_avatar_register') }}</xf:button>
 
-				<xf:button id="random_button_c" data-xf-click="fs_random_account_details" data-random-data-limit="{$xf.options.fs_random_limit}">{{ phrase('fs_random_avatar_register') }}</xf:button>
+		</xf:if>
 
-			</xf:if>
-			<xf:if is="$xf.options.fs_use_custom">
+		<label class="button">{{ phrase('fs_upload_new_custom_avatar') }}
+			<xf:upload name="img_avatar" id="imageUpload" class="js-uploadAvatar" accept=".gif,.jpeg,.jpg,.jpe,.png,.webp" style="display: none;"/>
+		</label>
 
-				<label class="button">{{ phrase('upload_new_custom_avatar') }}
-					<xf:upload name="img_avatar" id="imageUpload" class="js-uploadAvatar" accept=".gif,.jpeg,.jpg,.jpe,.png,.webp" style="display: none;"/>
-				</label>
-
-			</xf:if>
-		</xf:formrow>
-
-	</xf:if>
+	</xf:formrow>
 
 </xf:macro>
 
 
 <xf:macro name="register_details_avatar" arg-random_avatar="!">
 
-	<xf:if is="$xf.options.fs_use_random || $xf.options.fs_use_custom">
+	<xf:if is="$xf.options.fs_use_random">
 
-		<xf:if is="($xf.options.fs_use_random && $xf.options.fs_use_custom) || $xf.options.fs_use_random">
-
-			<xf:formrow label="{{ phrase('fs_random_register_avatar')}}" >
-				<div id="xb_avatar_select">
-					<img class="avatar avatar--s" id="imagePreview" src="{$random_avatar.url}" style="width: {$xf.options.fs_register_avatar_preview.width}px; height: {$xf.options.fs_register_avatar_preview.height}px;">
-				</div>
-			</xf:formrow>
-			<xf:else />
-			<xf:formrow label="{{ phrase('fs_random_register_avatar')}}" id="onCustomAvatar">
-				<div id="xb_avatar_select">
-					<img class="avatar avatar--s" id="imagePreview" src="{$random_avatar.url}" style="width: {$xf.options.fs_register_avatar_preview.width}px; height: {$xf.options.fs_register_avatar_preview.height}px;">
-				</div>
-			</xf:formrow>
-		</xf:if>
-
+		<xf:formrow label="{{ phrase('fs_random_register_avatar')}}" >
+			<div id="xb_avatar_select">
+				<img class="avatar avatar--s" id="imagePreview" src="{$random_avatar.url}" style="width: {$xf.options.fs_register_avatar_preview.width}px; height: {$xf.options.fs_register_avatar_preview.height}px;">
+			</div>
+		</xf:formrow>
+		<xf:else />
+		<xf:formrow label="{{ phrase('fs_random_register_avatar')}}" id="onCustomAvatar">
+			<div id="xb_avatar_select">
+				<img class="avatar avatar--s" id="imagePreview" src="{$random_avatar.url}" style="width: {$xf.options.fs_register_avatar_preview.width}px; height: {$xf.options.fs_register_avatar_preview.height}px;">
+			</div>
+		</xf:formrow>
 	</xf:if>
 
 	<xf:formrow label="{{ phrase('fs_random_register_avatar_btn')}}" id="random_button_c">
@@ -294,13 +284,11 @@ ul.xb_avatar_list {
 			<xf:button data-xf-click="xb_random_avatar" data-random-data-limit="{$xf.options.fs_random_limit}">{{ phrase('fs_random_avatar_register') }}</xf:button>
 
 		</xf:if>
-		<xf:if is="$xf.options.fs_use_custom">
 
-			<label class="button">{{ phrase('upload_new_custom_avatar') }}
-				<xf:upload name="img_avatar" id="imageUpload" class="js-uploadAvatar" accept=".gif,.jpeg,.jpg,.jpe,.png,.webp" style="display: none;"/>
-			</label>
+		<label class="button">{{ phrase('fs_upload_new_custom_avatar') }}
+			<xf:upload name="img_avatar" id="imageUpload" class="js-uploadAvatar" accept=".gif,.jpeg,.jpg,.jpe,.png,.webp" style="display: none;"/>
+		</label>
 
-		</xf:if>
 	</xf:formrow>
 
 </xf:macro>
@@ -312,6 +300,7 @@ ul.xb_avatar_list {
 			const file = event.target.files[0];
 			const preview = document.getElementById('imagePreview');
 			const previewImgTag = document.getElementById('onCustomAvatar');
+			const fsAccountDetailsAvatar = document.getElementById('fs_account_details_avatar');
 
 			if (file) {
 				const reader = new FileReader();
@@ -320,6 +309,9 @@ ul.xb_avatar_list {
 					previewImgTag.style.display = 'flex'; 
 				};
 				reader.readAsDataURL(file); 
+				if (fsAccountDetailsAvatar) {
+					fsAccountDetailsAvatar.style.display = "none";
+				}
 			} else {
 				previewImgTag.style.display = 'none'; 
 				preview.src = ''; 

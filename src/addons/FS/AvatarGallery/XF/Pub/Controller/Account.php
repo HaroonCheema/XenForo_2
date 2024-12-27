@@ -158,7 +158,7 @@ class Account extends XFCP_Account
         }
 
         if (!$user->canUseRandomAvatar()) {
-            return $this->noPermission();
+            throw $this->exception($this->error(\XF::phrase('fs_avatar_gallery_random_limit_reached')));
         }
 
         $files = \XF::app()->fs()->listContents('data://gallery_avatars', true);

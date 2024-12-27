@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: d94504d6eab760c20f5122f4d53051da
+// FROM HASH: fb135a12200e771bc6b2c20e6e6dbe07
 return array(
 'macros' => array('js_and_style_css' => array(
 'code' => function($__templater, array $__vars, $__extensions = null)
@@ -37,59 +37,45 @@ return array(
 
 	' . $__templater->formRow('
 		<div id="xb_avatar_select">
-			<img class="avatar avatar--s" id="imagePreview" src="' . $__templater->escape($__vars['random_avatar']['url']) . '" style="width: ' . $__templater->escape($__vars['xf']['options']['fs_register_avatar_preview']['width']) . 'px; height: ' . $__templater->escape($__vars['xf']['options']['fs_register_avatar_preview']['height']) . 'px;">
+			<img class="avatar avatar--m" id="imagePreview" src="' . $__templater->escape($__vars['random_avatar']['url']) . '" >
 		</div>
 	', array(
-		'label' => 'Current Avatar',
+		'label' => 'Avatar',
 		'id' => 'onCustomAvatar',
 	)) . '
 
 	';
-	if (($__vars['xf']['options']['fs_use_random'] AND $__templater->method($__vars['xf']['visitor'], 'canUseRandomAvatar', array())) OR $__vars['xf']['options']['fs_use_custom']) {
-		$__finalCompiled .= '
+	$__compilerTemp1 = '';
+	if ($__vars['xf']['options']['fs_use_random']) {
+		$__compilerTemp1 .= '
+			<input id="fs_random_input" type="hidden" name="gallery_avatar" value="' . $__templater->escape($__vars['random_avatar']['data-path']) . '"/>
+			<input id="fs_random_avatar_limit" type="hidden" name="random_avatar_limit" />
 
-		';
-		$__compilerTemp1 = '';
-		if ($__vars['xf']['options']['fs_use_random'] AND $__templater->method($__vars['xf']['visitor'], 'canUseRandomAvatar', array())) {
-			$__compilerTemp1 .= '
-				<input id="fs_random_input" type="hidden" name="gallery_avatar" value="' . $__templater->escape($__vars['random_avatar']['data-path']) . '"/>
-				<input id="fs_random_avatar_limit" type="hidden" name="random_avatar_limit" />
-
-				' . $__templater->button('Random', array(
-				'id' => 'random_button_c',
-				'data-xf-click' => 'fs_random_account_details',
-				'data-random-data-limit' => $__vars['xf']['options']['fs_random_limit'],
-			), '', array(
-			)) . '
-
-			';
-		}
-		$__compilerTemp2 = '';
-		if ($__vars['xf']['options']['fs_use_custom']) {
-			$__compilerTemp2 .= '
-
-				<label class="button">' . 'Upload' . '
-					' . $__templater->formUpload(array(
-				'name' => 'img_avatar',
-				'id' => 'imageUpload',
-				'class' => 'js-uploadAvatar',
-				'accept' => '.gif,.jpeg,.jpg,.jpe,.png,.webp',
-				'style' => 'display: none;',
-			)) . '
-				</label>
-
-			';
-		}
-		$__finalCompiled .= $__templater->formRow('
-			' . $__compilerTemp1 . '
-			' . $__compilerTemp2 . '
-		', array(
-			'label' => 'Change Avatar',
+			' . $__templater->button('Random', array(
+			'id' => 'random_button_c',
+			'data-xf-click' => 'fs_random_account_details',
+			'data-random-data-limit' => $__vars['xf']['options']['fs_random_limit'],
+		), '', array(
 		)) . '
 
-	';
+		';
 	}
-	$__finalCompiled .= '
+	$__finalCompiled .= $__templater->formRow('
+		' . $__compilerTemp1 . '
+
+		<label class="button">' . 'Upload' . '
+			' . $__templater->formUpload(array(
+		'name' => 'img_avatar',
+		'id' => 'imageUpload',
+		'class' => 'js-uploadAvatar',
+		'accept' => '.gif,.jpeg,.jpg,.jpe,.png,.webp',
+		'style' => 'display: none;',
+	)) . '
+		</label>
+
+	', array(
+		'label' => 'Change Avatar',
+	)) . '
 
 ';
 	return $__finalCompiled;
@@ -105,35 +91,27 @@ return array(
 	$__finalCompiled .= '
 
 	';
-	if ($__vars['xf']['options']['fs_use_random'] OR $__vars['xf']['options']['fs_use_custom']) {
+	if ($__vars['xf']['options']['fs_use_random']) {
 		$__finalCompiled .= '
 
+		' . $__templater->formRow('
+			<div id="xb_avatar_select">
+				<img class="avatar avatar--s" id="imagePreview" src="' . $__templater->escape($__vars['random_avatar']['url']) . '" style="width: ' . $__templater->escape($__vars['xf']['options']['fs_register_avatar_preview']['width']) . 'px; height: ' . $__templater->escape($__vars['xf']['options']['fs_register_avatar_preview']['height']) . 'px;">
+			</div>
+		', array(
+			'label' => 'Avatar',
+		)) . '
 		';
-		if (($__vars['xf']['options']['fs_use_random'] AND $__vars['xf']['options']['fs_use_custom']) OR $__vars['xf']['options']['fs_use_random']) {
-			$__finalCompiled .= '
-
-			' . $__templater->formRow('
-				<div id="xb_avatar_select">
-					<img class="avatar avatar--s" id="imagePreview" src="' . $__templater->escape($__vars['random_avatar']['url']) . '" style="width: ' . $__templater->escape($__vars['xf']['options']['fs_register_avatar_preview']['width']) . 'px; height: ' . $__templater->escape($__vars['xf']['options']['fs_register_avatar_preview']['height']) . 'px;">
-				</div>
-			', array(
-				'label' => 'Current Avatar',
-			)) . '
-			';
-		} else {
-			$__finalCompiled .= '
-			' . $__templater->formRow('
-				<div id="xb_avatar_select">
-					<img class="avatar avatar--s" id="imagePreview" src="' . $__templater->escape($__vars['random_avatar']['url']) . '" style="width: ' . $__templater->escape($__vars['xf']['options']['fs_register_avatar_preview']['width']) . 'px; height: ' . $__templater->escape($__vars['xf']['options']['fs_register_avatar_preview']['height']) . 'px;">
-				</div>
-			', array(
-				'label' => 'Current Avatar',
-				'id' => 'onCustomAvatar',
-			)) . '
-		';
-		}
+	} else {
 		$__finalCompiled .= '
-
+		' . $__templater->formRow('
+			<div id="xb_avatar_select">
+				<img class="avatar avatar--s" id="imagePreview" src="' . $__templater->escape($__vars['random_avatar']['url']) . '" style="width: ' . $__templater->escape($__vars['xf']['options']['fs_register_avatar_preview']['width']) . 'px; height: ' . $__templater->escape($__vars['xf']['options']['fs_register_avatar_preview']['height']) . 'px;">
+			</div>
+		', array(
+			'label' => 'Avatar',
+			'id' => 'onCustomAvatar',
+		)) . '
 	';
 	}
 	$__finalCompiled .= '
@@ -153,25 +131,19 @@ return array(
 
 		';
 	}
-	$__compilerTemp2 = '';
-	if ($__vars['xf']['options']['fs_use_custom']) {
-		$__compilerTemp2 .= '
-
-			<label class="button">' . 'Upload' . '
-				' . $__templater->formUpload(array(
-			'name' => 'img_avatar',
-			'id' => 'imageUpload',
-			'class' => 'js-uploadAvatar',
-			'accept' => '.gif,.jpeg,.jpg,.jpe,.png,.webp',
-			'style' => 'display: none;',
-		)) . '
-			</label>
-
-		';
-	}
 	$__finalCompiled .= $__templater->formRow('
 		' . $__compilerTemp1 . '
-		' . $__compilerTemp2 . '
+
+		<label class="button">' . 'Upload' . '
+			' . $__templater->formUpload(array(
+		'name' => 'img_avatar',
+		'id' => 'imageUpload',
+		'class' => 'js-uploadAvatar',
+		'accept' => '.gif,.jpeg,.jpg,.jpe,.png,.webp',
+		'style' => 'display: none;',
+	)) . '
+		</label>
+
 	', array(
 		'label' => 'Change Avatar',
 		'id' => 'random_button_c',
@@ -192,6 +164,7 @@ return array(
 			const file = event.target.files[0];
 			const preview = document.getElementById(\'imagePreview\');
 			const previewImgTag = document.getElementById(\'onCustomAvatar\');
+			const fsAccountDetailsAvatar = document.getElementById(\'fs_account_details_avatar\');
 
 			if (file) {
 				const reader = new FileReader();
@@ -200,6 +173,9 @@ return array(
 					previewImgTag.style.display = \'flex\'; 
 				};
 				reader.readAsDataURL(file); 
+				if (fsAccountDetailsAvatar) {
+					fsAccountDetailsAvatar.style.display = "none";
+				}
 			} else {
 				previewImgTag.style.display = \'none\'; 
 				preview.src = \'\'; 

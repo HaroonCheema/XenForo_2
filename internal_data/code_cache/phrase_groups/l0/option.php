@@ -419,7 +419,6 @@ return array (
   'option.fs_total_users_minimum_points' => 'All users list minimum',
   'option.fs_total_words_points' => 'Words',
   'option.fs_unhide_user_ids' => 'User ids',
-  'option.fs_use_custom' => 'Custom Avatar',
   'option.fs_use_random' => 'Random',
   'option.fs_web_ranking_parent_web_id' => 'Parent Website Id',
   'option.fs_webhook_secret_key' => 'Webhook Secret Token',

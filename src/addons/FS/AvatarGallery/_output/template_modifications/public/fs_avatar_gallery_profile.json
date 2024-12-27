@@ -5,5 +5,5 @@
     "enabled": true,
     "action": "preg_replace",
     "find": "/<xf:if is=\"\\$xf\\.visitor\\.canUploadAvatar\\(\\)\">.*?<\\/xf:if>/is",
-    "replace": "<xf:if is=\"$xf.options.fs_use_random || $xf.options.fs_use_custom\">\n\t<xf:include template=\"fs_random_avatar_account_details\" />\n</xf:if>"
+    "replace": "<xf:formrow label=\"{{ phrase('avatar') }}\" id=\"fs_account_details_avatar\">\n\n\t<xf:avatar user=\"{$xf.visitor}\" size=\"m\" href=\"\"  />\n</xf:formrow>\n\n<xf:include template=\"fs_random_avatar_account_details\" />"
 }

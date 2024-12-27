@@ -20,10 +20,6 @@
 height</sub_options>
     <relation group_id="fs_avatar_gallery" display_order="6"/>
   </option>
-  <option option_id="fs_use_custom" edit_format="onoff" data_type="boolean">
-    <default_value>0</default_value>
-    <relation group_id="fs_avatar_gallery" display_order="5"/>
-  </option>
   <option option_id="fs_use_random" edit_format="onoff" data_type="boolean">
     <default_value>0</default_value>
     <relation group_id="fs_avatar_gallery" display_order="3"/>

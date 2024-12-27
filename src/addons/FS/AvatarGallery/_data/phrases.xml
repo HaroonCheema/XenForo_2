@@ -5,6 +5,7 @@
   <phrase title="cron_entry.update_random_avatarLimit" version_id="1000610" version_string="1.0.6 Alpha"><![CDATA[Reset Random Avatar Daily Limit]]></phrase>
   <phrase title="fs_add_avatar" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add avatar]]></phrase>
   <phrase title="fs_avatar" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Avatars]]></phrase>
+  <phrase title="fs_avatar_gallery_random_limit_reached" version_id="1010300" version_string="1.1.3 Alpha"><![CDATA[Changing random avatar per day limit has been reached...!]]></phrase>
   <phrase title="fs_avatar_img" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Avatar]]></phrase>
   <phrase title="fs_avatars_gallery" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Avatars Gallery]]></phrase>
   <phrase title="fs_generate" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Generate]]></phrase>
@@ -12,10 +13,11 @@
   <phrase title="fs_image_des" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Write about image e.g. A cat is sitting on table.]]></phrase>
   <phrase title="fs_random_avatar" version_id="1000610" version_string="1.0.6 Alpha"><![CDATA[Random]]></phrase>
   <phrase title="fs_random_avatar_register" version_id="1000700" version_string="1.0.7 Alpha"><![CDATA[Random]]></phrase>
-  <phrase title="fs_random_register_avatar" version_id="1000700" version_string="1.0.7 Alpha"><![CDATA[Current Avatar]]></phrase>
+  <phrase title="fs_random_register_avatar" version_id="1010500" version_string="1.1.5 Alpha"><![CDATA[Avatar]]></phrase>
   <phrase title="fs_random_register_avatar_btn" version_id="1000700" version_string="1.0.7 Alpha"><![CDATA[Change Avatar]]></phrase>
   <phrase title="fs_register_avatar_custom" version_id="1000800" version_string="1.0.8 Alpha"><![CDATA[Custom]]></phrase>
   <phrase title="fs_upload_avatar_image" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Upload image for avatar gallery.]]></phrase>
+  <phrase title="fs_upload_new_custom_avatar" version_id="1010300" version_string="1.1.3 Alpha"><![CDATA[Upload]]></phrase>
   <phrase title="fs_use_gallery_avatar" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Use a gallery avatar]]></phrase>
   <phrase title="fs_you_can_t_delete_your_avatar" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You can't delete your avatar...!]]></phrase>
   <phrase title="gallery_avatar" version_id="1000310" version_string="1.0.3 Alpha"><![CDATA[Gallery Avatar]]></phrase>
@@ -24,13 +26,11 @@
   <phrase title="option.fs_enable" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enable]]></phrase>
   <phrase title="option.fs_random_limit" version_id="1000610" version_string="1.0.6 Alpha"><![CDATA[Random limit]]></phrase>
   <phrase title="option.fs_register_avatar_preview" version_id="1000900" version_string="1.0.9 Alpha"><![CDATA[Register Avatar preview dimensions]]></phrase>
-  <phrase title="option.fs_use_custom" version_id="1000800" version_string="1.0.8 Alpha"><![CDATA[Custom Avatar]]></phrase>
   <phrase title="option.fs_use_random" version_id="1000610" version_string="1.0.6 Alpha"><![CDATA[Random]]></phrase>
   <phrase title="option_explain.fs_change_the_path_to_the_tmp_file" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[This option allows you to change the value for your TMP file, by default :  <b>/tmp</b>.]]></phrase>
   <phrase title="option_explain.fs_enable" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[This option allows you to enable the avatar gallery.]]></phrase>
   <phrase title="option_explain.fs_random_limit" version_id="1000610" version_string="1.0.6 Alpha"><![CDATA[Random avatar limit for per day.0 will be consider unlimited.]]></phrase>
   <phrase title="option_explain.fs_register_avatar_preview" version_id="1000900" version_string="1.0.9 Alpha"><![CDATA[]]></phrase>
-  <phrase title="option_explain.fs_use_custom" version_id="1000800" version_string="1.0.8 Alpha"><![CDATA[This option allows you to enable the custom avatar feature for register user.]]></phrase>
   <phrase title="option_explain.fs_use_random" version_id="1000610" version_string="1.0.6 Alpha"><![CDATA[This option allows you to enable the random avatar feature.]]></phrase>
   <phrase title="option_group.fs_avatar_gallery" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Avatar Gallery]]></phrase>
   <phrase title="option_group_description.fs_avatar_gallery" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>

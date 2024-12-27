@@ -481,7 +481,6 @@ Example: 1,2,3,4,..',
   'option_explain.fs_total_words_points' => 'You can adjust total words points from here...!',
   'option_explain.fs_unhide_user_ids' => 'List the user ids that are allowed to be display username to all. Use , (comma) between ids.
 Example: 1,2,3,4,..',
-  'option_explain.fs_use_custom' => 'This option allows you to enable the custom avatar feature for register user.',
   'option_explain.fs_use_random' => 'This option allows you to enable the random avatar feature.',
   'option_explain.fs_web_ranking_parent_web_id' => '',
   'option_explain.fs_webhook_secret_key' => 'Must Required for webhook validate.',

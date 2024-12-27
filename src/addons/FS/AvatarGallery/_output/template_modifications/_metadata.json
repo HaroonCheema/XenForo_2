@@ -1,11 +1,11 @@
 {
     "public/fs_account_avatar.json": {
-        "hash": "3f29591942b40bbe24e5c69090f91b7b"
+        "hash": "10851c2ad53a744540dd524fd3b9a5e4"
     },
     "public/fs_avatar_gallery_profile.json": {
-        "hash": "08cb4efbe1417f5aa24b4fa380bac190"
+        "hash": "25618e10c6d43c40aa77ae6ff4077fbc"
     },
     "public/register_form_gallery_avatar.json": {
-        "hash": "25f266304729536d1a58ebacb6b6cce6"
+        "hash": "57dde5cd991259634570dfa99be75c13"
     }
 }

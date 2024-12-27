@@ -41,16 +41,11 @@ return array(
 	$__compilerTemp2 = '';
 	if ($__vars['xf']['options']['fs_use_random']) {
 		$__compilerTemp2 .= '
-	';
-		if ($__templater->method($__vars['xf']['visitor'], 'canUseRandomAvatar', array())) {
-			$__compilerTemp2 .= '
-		' . $__templater->button('Random', array(
-				'href' => $__templater->func('link', array('account/random', ), false),
-			), '', array(
-			)) . '
-	';
-		}
-		$__compilerTemp2 .= '
+	' . $__templater->button('Random', array(
+			'href' => $__templater->func('link', array('account/random', ), false),
+			'overlay' => ($__templater->method($__vars['xf']['visitor'], 'canUseRandomAvatar', array()) ? '' : 'true'),
+		), '', array(
+		)) . '
 	';
 	} else {
 		$__compilerTemp2 .= '

@@ -5,6 +5,12 @@
         "version_string": "1.0.6 Alpha",
         "hash": "c54cc954867587597f38d06dd75eb8ba"
     },
+    "fs_avatar_gallery_random_limit_reached.txt": {
+        "global_cache": false,
+        "version_id": 1010300,
+        "version_string": "1.1.3 Alpha",
+        "hash": "46b57aa618d76aaf5463c28a720bf91d"
+    },
     "fs_random_avatar.txt": {
         "global_cache": false,
         "version_id": 1000610,
@@ -19,9 +25,9 @@
     },
     "fs_random_register_avatar.txt": {
         "global_cache": false,
-        "version_id": 1000700,
-        "version_string": "1.0.7 Alpha",
-        "hash": "3d489c16fc0a330011425f85d7ec6011"
+        "version_id": 1010500,
+        "version_string": "1.1.5 Alpha",
+        "hash": "32036005d1f6ed59803ba3e13c80993e"
     },
     "fs_random_register_avatar_btn.txt": {
         "global_cache": false,
@@ -35,6 +41,12 @@
         "version_string": "1.0.8 Alpha",
         "hash": "90589c47f06eb971d548591f23c285af"
     },
+    "fs_upload_new_custom_avatar.txt": {
+        "global_cache": false,
+        "version_id": 1010300,
+        "version_string": "1.1.3 Alpha",
+        "hash": "91412465ea9169dfd901dd5e7c96dd99"
+    },
     "option.fs_random_limit.txt": {
         "global_cache": false,
         "version_id": 1000610,
@@ -46,12 +58,6 @@
         "version_id": 1000900,
         "version_string": "1.0.9 Alpha",
         "hash": "59ac03e51bd1b84c17c4d000316081cb"
-    },
-    "option.fs_use_custom.txt": {
-        "global_cache": false,
-        "version_id": 1000800,
-        "version_string": "1.0.8 Alpha",
-        "hash": "8d1d619d19750c1ac5ba76a2ce17c965"
     },
     "option.fs_use_random.txt": {
         "global_cache": false,
@@ -70,12 +76,6 @@
         "version_id": 1000900,
         "version_string": "1.0.9 Alpha",
         "hash": "d41d8cd98f00b204e9800998ecf8427e"
-    },
-    "option_explain.fs_use_custom.txt": {
-        "global_cache": false,
-        "version_id": 1000800,
-        "version_string": "1.0.8 Alpha",
-        "hash": "12f926aeae7c9388fe559e11582db15b"
     },
     "option_explain.fs_use_random.txt": {
         "global_cache": false,

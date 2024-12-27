@@ -1,1 +1,0 @@
-This option allows you to enable the custom avatar feature for register user.

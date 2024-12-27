@@ -5,5 +5,5 @@
     "enabled": true,
     "action": "preg_replace",
     "find": "/(<label>(.*?)<\\/label>(.*?)<\\/dfn>)/is",
-    "replace": "<xf:if is=\"$xf.visitor.hasPermission('avatar', 'allowed')\">\n\t<span class=\"main-avatar\">\n\t\t$0\n\t</span>\t\n</xf:if >\n<xf:if is=\"$xf.options.fs_use_random\">\n\t<xf:if is=\"$xf.visitor.canUseRandomAvatar()\">\n\t\t<xf:button href=\"{{ link('account/random') }}\" >{{ phrase('fs_random_avatar') }}</xf:button>\n\t</xf:if>\n\t<xf:else />\n\t<xf:include template=\"fs_avatarGallery\" />\n</xf:if>\n"
+    "replace": "<xf:if is=\"$xf.visitor.hasPermission('avatar', 'allowed')\">\n\t<span class=\"main-avatar\">\n\t\t$0\n\t</span>\t\n</xf:if >\n<xf:if is=\"$xf.options.fs_use_random\">\n\t<xf:button href=\"{{ link('account/random') }}\" overlay=\"{{$xf.visitor.canUseRandomAvatar() ? '' : 'true'}}\">{{ phrase('fs_random_avatar') }}</xf:button>\n\t<xf:else />\n\t<xf:include template=\"fs_avatarGallery\" />\n</xf:if>\n"
 }

@@ -39,22 +39,22 @@ class UserAvatar extends AbstractRebuildJob
         }
 
         /** @var \XF\Entity\User $user */
-        $user = $this->app->em()->find(\XF\Entity\User::class, $id, ['Profile']);
+        $user = $this->app->em()->find('XF:User', $id, ['Profile']);
 
         if (!$user) {
             return;
         }
 
-        if ($avatarType == 1) {
+        $randomAvatars = \xf::app()->service('FS\AvatarGallery:AvatarGallery');
 
-            $gallery_avatar = $this->getRandomAvatar($files);
+        $gallery_avatar = $randomAvatars->getRandomAvatar();
+
+        if ($avatarType == 1) {
 
             $this->changeAvatar($user, $gallery_avatar, $tmp);
         }
 
         if ($avatarType == 2 && !$user->avatar_date) {
-
-            $gallery_avatar = $this->getRandomAvatar($files);
 
             $this->changeAvatar($user, $gallery_avatar, $tmp);
         }
@@ -63,13 +63,6 @@ class UserAvatar extends AbstractRebuildJob
     protected function getStatusType()
     {
         return \XF::phrase('users');
-    }
-
-    public function getRandomAvatar($files)
-    {
-
-        $randomKey = array_rand($files);
-        return $files[$randomKey]['path'];
     }
 
     public function changeAvatar($user, $gallery_avatar, $tmp)

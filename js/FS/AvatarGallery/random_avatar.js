@@ -17,22 +17,22 @@
 
       const button = e.target;
 
-      const hiddenInput = document.querySelector("#fs_random_avatar_limit");
-      let currentValue = parseInt(hiddenInput.value || "0", 10);
+      // const hiddenInput = document.querySelector("#fs_random_avatar_limit");
+      // let currentValue = parseInt(hiddenInput.value || "0", 10);
 
       // console.log(`Current Value: ${currentValue}, Limit: ${limit}`);
 
-      currentValue++;
-      hiddenInput.value = currentValue;
+      // currentValue++;
+      // hiddenInput.value = currentValue;
 
-      if (currentValue >= limit) {
-        const randomButton = document.getElementById("random_button_c");
-        if (randomButton) {
-          randomButton.style.display = "none";
-        }
+      // if (currentValue >= limit) {
+      //   const randomButton = document.getElementById("random_button_c");
+      //   if (randomButton) {
+      //     randomButton.style.display = "none";
+      //   }
 
-        // return; // Stop further processing
-      }
+      //   // return; // Stop further processing
+      // }
 
       XF.ajax(
         "POST",
@@ -72,23 +72,18 @@
 
       const button = e.target;
 
-      const hiddenInput = document.querySelector("#fs_random_avatar_limit");
-      let currentValue = parseInt(hiddenInput.value || "0", 10);
+      // const hiddenInput = document.querySelector("#fs_random_avatar_limit");
+      // let currentValue = parseInt(hiddenInput.value || "0", 10);
 
-      const randomAvatart = document.getElementById("onCustomAvatar");
-      if (randomAvatart) {
-        randomAvatart.style.display = "flex";
-      }
+      // currentValue++;
+      // hiddenInput.value = currentValue;
 
-      currentValue++;
-      hiddenInput.value = currentValue;
-
-      if (currentValue >= limit) {
-        const randomButton = document.getElementById("random_button_c");
-        if (randomButton) {
-          randomButton.style.display = "none";
-        }
-      }
+      // if (currentValue >= limit) {
+      //   const randomButton = document.getElementById("random_button_c");
+      //   if (randomButton) {
+      //     randomButton.style.display = "none";
+      //   }
+      // }
 
       XF.ajax(
         "POST",
@@ -104,6 +99,18 @@
             const randomInput = document.querySelector("#fs_random_input");
             if (randomInput) {
               randomInput.value = data.randomImage["data-path"];
+            }
+
+            const randomAvatart = document.getElementById("onCustomAvatar");
+            if (randomAvatart) {
+              randomAvatart.style.display = "flex";
+            }
+
+            const accountDetailsAvatar = document.getElementById(
+              "fs_account_details_avatar"
+            );
+            if (accountDetailsAvatar) {
+              accountDetailsAvatar.style.display = "none";
             }
           }
         },

@@ -38,12 +38,18 @@ class Register extends XFCP_Register
 
         $viewParams = $randomAvatars->getRandomAvatars();
 
+        $user = \XF::visitor();
+
+        if ($user->user_id) {
+            if (!$user->canUseRandomAvatar()) {
+                throw $this->exception($this->error(\XF::phrase('fs_avatar_gallery_random_limit_reached')));
+            }
+        }
+
         $this->setResponseType('json');
         $view = $this->view();
         $view->setJsonParam('randomImage', $viewParams);
         return $view;
-
-        return $randomImage;
     }
 
     protected function finalizeRegistration(\XF\Entity\User $user)
