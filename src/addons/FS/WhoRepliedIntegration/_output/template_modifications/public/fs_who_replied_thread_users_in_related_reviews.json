@@ -1,0 +1,9 @@
+{
+    "template": "widget_pf_related_reviews",
+    "description": "fs_who_replied_thread_users_in_related_reviews",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/<xf:foreach loop=\"\\$forum_threads\" key=\"\\$key\" value=\"\\$thread\" i=\"\\$i\">.*?<\\/xf:foreach>/is",
+    "replace": "<xf:foreach loop=\"$forum_threads\" key=\"$key\" value=\"$thread\" i=\"$i\">\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<a href=\"{{ link('threads', $thread) }}\" target=\"_blank\">{$thread.Forum.title} - {$thread.title}</a>\n\n\t\t\t\t\t\t<xf:set var=\"$threadUsers\" value=\"{{$thread.getThisThreadUsers()}}\" />\n\t\t\t\t\t\t<xf:if is=\"{{$threadUsers}}\">\n\t\t\t\t\t\t\t<ul class=\"listInline listInline--comma\">\n\t\t\t\t\t\t\t\t<xf:if is=\"{{$threadUsers.currentThread}}\">\n\t\t\t\t\t\t\t\t\t<xf:trim>\n\t\t\t\t\t\t\t\t\t\t<li><xf:username user=\"$threadUsers.currentThread.User\" rich=\"true\" class=\"\" style=\"color: {$xf.options.fs_who_replied_thread_starter_color}; font-weight: bold;\"/></li>\n\t\t\t\t\t\t\t\t\t</xf:trim>\n\t\t\t\t\t\t\t\t</xf:if>\n\t\t\t\t\t\t\t\t<xf:foreach loop=\"$threadUsers.users\" value=\"$user\"><xf:trim>\n\t\t\t\t\t\t\t\t\t<li><xf:username user=\"$user\" rich=\"true\" class=\"\" /></li>\n\t\t\t\t\t\t\t\t\t</xf:trim></xf:foreach>\n\t\t\t\t\t\t\t</ul>\n\t\t\t\t\t\t</xf:if>\n\t\t\t\t\t</li>\n\t\t\t\t</xf:foreach>"
+}

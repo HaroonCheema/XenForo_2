@@ -40,17 +40,5 @@
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
         "hash": "d41d8cd98f00b204e9800998ecf8427e"
-    },
-    "widget_def.fs_who_replied_thread_mem.txt": {
-        "global_cache": false,
-        "version_id": 1000010,
-        "version_string": "1.0.0 Alpha",
-        "hash": "77d1291066b1b94df9e749bef473bc97"
-    },
-    "widget_def_desc.fs_who_replied_thread_mem.txt": {
-        "global_cache": false,
-        "version_id": 1000010,
-        "version_string": "1.0.0 Alpha",
-        "hash": "d41d8cd98f00b204e9800998ecf8427e"
     }
 }

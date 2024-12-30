@@ -1,2 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<template_modifications/>
+<template_modifications>
+  <modification type="public" template="widget_pf_related_reviews" modification_key="fs_who_replied_thread_users_in_related_reviews" description="fs_who_replied_thread_users_in_related_reviews" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<xf:foreach loop="\$forum_threads" key="\$key" value="\$thread" i="\$i">.*?<\/xf:foreach>/is]]></find>
+    <replace><![CDATA[<xf:foreach loop="$forum_threads" key="$key" value="$thread" i="$i">
+					<li>
+						<a href="{{ link('threads', $thread) }}" target="_blank">{$thread.Forum.title} - {$thread.title}</a>
+
+						<xf:set var="$threadUsers" value="{{$thread.getThisThreadUsers()}}" />
+						<xf:if is="{{$threadUsers}}">
+							<ul class="listInline listInline--comma">
+								<xf:if is="{{$threadUsers.currentThread}}">
+									<xf:trim>
+										<li><xf:username user="$threadUsers.currentThread.User" rich="true" class="" style="color: {$xf.options.fs_who_replied_thread_starter_color}; font-weight: bold;"/></li>
+									</xf:trim>
+								</xf:if>
+								<xf:foreach loop="$threadUsers.users" value="$user"><xf:trim>
+									<li><xf:username user="$user" rich="true" class="" /></li>
+									</xf:trim></xf:foreach>
+							</ul>
+						</xf:if>
+					</li>
+				</xf:foreach>]]></replace>
+  </modification>
+</template_modifications>

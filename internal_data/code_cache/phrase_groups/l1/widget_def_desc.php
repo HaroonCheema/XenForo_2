@@ -19,7 +19,6 @@ return array (
   'widget_def_desc.fsPackageRating' => 'User Upgrade Ratings',
   'widget_def_desc.fs_logo_slider_widget' => '',
   'widget_def_desc.fs_thread_month_wise_scor' => '',
-  'widget_def_desc.fs_who_replied_thread_mem' => '',
   'widget_def_desc.fs_yt_videos_slider' => '',
   'widget_def_desc.fs_zoom_member_online' => '',
   'widget_def_desc.highestRatedInCategory' => '',

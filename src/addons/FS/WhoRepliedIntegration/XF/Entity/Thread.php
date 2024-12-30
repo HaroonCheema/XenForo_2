@@ -1,15 +1,15 @@
 <?php
 
-namespace FS\WhoRepliedIntegration\Widget;
+namespace FS\WhoRepliedIntegration\XF\Entity;
 
-use XF\Widget\AbstractWidget;
+use XF\Mvc\Entity\Structure;
 
-
-class WhoRepliedMembers extends AbstractWidget
+class Thread extends XFCP_Thread
 {
-    public function render()
+
+    public function getThisThreadUsers()
     {
-        $request = $this->app->request();
+        $request = \XF::app()->request();
         $threadId = 0;
 
         $currentUrl = $request->getRequestUri();
@@ -28,27 +28,26 @@ class WhoRepliedMembers extends AbstractWidget
             return false;
         }
 
+        $currentThreadId = $this->thread_id;
+
         $finder = \XF::finder('XF:User')->where('user_id', '!=', $thread->user_id)
-            ->with('ThreadUserPost|' . $threadId, true)
-            ->order("ThreadUserPost|$threadId.post_count", 'DESC')
+            ->with('ThreadUserPost|' . $currentThreadId, true)
+            ->order("ThreadUserPost|$currentThreadId.post_count", 'DESC')
             ->order('user_id');
 
-        $total = $finder->total();
+        $userExist = \XF::finder('XF:Post')->where('thread_id', $currentThreadId)->where('user_id', $thread->user_id)->fetchOne();
+
+        // $total = $finder->total();
 
         $users = $finder->fetch();
 
         $viewParams = [
             'users'  => $users,
-            'thread'  => $thread,
+            'currentThread'  => $userExist ? $thread : false,
 
-            'total'   => $total ? $total + 1 : 1,
+            // 'total'   => $total ? $total + 1 : 1,
         ];
 
-        return $this->renderer('fs_who_replied_thread_members', $viewParams);
-    }
-
-    public function getOptionsTemplate()
-    {
-        return null;
+        return $viewParams;
     }
 }

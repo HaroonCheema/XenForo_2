@@ -71,7 +71,6 @@ class RelatedReviews extends AbstractWidget
                             }
                         }
                     }
-
                 }
 
                 $eh_related = $service->searchEscortHub($phone);
@@ -80,9 +79,15 @@ class RelatedReviews extends AbstractWidget
             $this->app->logException($exception);
         }
 
+        $threadFound = $this->finder('XF:Thread')
+            ->with('Forum')
+            ->where('node_id', 208)
+            ->order('thread_id', 'desc')
+            ->fetch(3);
 
         return $this->renderer('widget_pf_related_reviews', [
-            'forum_threads' => $forum_related,
+            'forum_threads' => $threadFound,
+            // 'forum_threads' => $forum_related,
             'eh_ads' => $eh_related
         ]);
     }

@@ -17,6 +17,41 @@ return array(
 			$__finalCompiled .= '
 					<li>
 						<a href="' . $__templater->func('link', array('threads', $__vars['thread'], ), true) . '" target="_blank">' . $__templater->escape($__vars['thread']['Forum']['title']) . ' - ' . $__templater->escape($__vars['thread']['title']) . '</a>
+
+						';
+			$__vars['threadUsers'] = $__templater->method($__vars['thread'], 'getThisThreadUsers', array());
+			$__finalCompiled .= '
+						';
+			if ($__vars['threadUsers']) {
+				$__finalCompiled .= '
+							<ul class="listInline listInline--comma">
+								';
+				if ($__vars['threadUsers']['currentThread']) {
+					$__finalCompiled .= '
+									' . trim('
+										<li>' . $__templater->func('username_link', array($__vars['threadUsers']['currentThread']['User'], true, array(
+						'class' => '',
+						'style' => 'color: ' . $__vars['xf']['options']['fs_who_replied_thread_starter_color'] . '; font-weight: bold;',
+					))) . '</li>
+									') . '
+								';
+				}
+				$__finalCompiled .= '
+								';
+				if ($__templater->isTraversable($__vars['threadUsers']['users'])) {
+					foreach ($__vars['threadUsers']['users'] AS $__vars['user']) {
+						$__finalCompiled .= trim('
+									<li>' . $__templater->func('username_link', array($__vars['user'], true, array(
+							'class' => '',
+						))) . '</li>
+									');
+					}
+				}
+				$__finalCompiled .= '
+							</ul>
+						';
+			}
+			$__finalCompiled .= '
 					</li>
 				';
 		}
