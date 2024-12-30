@@ -1,0 +1,12 @@
+{
+    "public/widget_escorthub_search_form.html": {
+        "version_id": 101,
+        "version_string": "1.0.1 Beta",
+        "hash": "4f54ed46ec3812d5d8f6e179745a0937"
+    },
+    "public/widget_pf_related_reviews.html": {
+        "version_id": 101,
+        "version_string": "1.0.1 Beta",
+        "hash": "7ea91051abd0f4b6c2d8518199a679c5"
+    }
+}

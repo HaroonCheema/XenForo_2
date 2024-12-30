@@ -33,6 +33,8 @@ return array (
   'widget_pos.siropu_chat_page_sidebar' => 'Chat: Chat page sidebar',
   'widget_pos.siropu_chat_sidebar_bottom' => 'Chat: Sidebar bottom',
   'widget_pos.siropu_chat_sidebar_top' => 'Chat: Sidebar top',
+  'widget_pos.snogFormListSidebar' => 'Advanced Form List: Sidebar',
+  'widget_pos.snogFormSidebar' => 'Advanced Form: Sidebar',
   'widget_pos.thread_view_above_messages' => 'Thread view: Above messages',
   'widget_pos.thread_view_below_messages' => 'Thread view: Below messages',
   'widget_pos.thread_view_below_quick_reply' => 'Thread view: Below quick reply',

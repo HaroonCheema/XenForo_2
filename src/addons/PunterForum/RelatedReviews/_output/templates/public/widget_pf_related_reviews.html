@@ -1,0 +1,29 @@
+<div class="block-container">
+        <h3 class="block-minorHeader">Recensioni già presenti nel forum:</h3>
+        <div class="block-body">
+            <div class="block-row">
+			<ul>
+				<xf:foreach loop="$forum_threads" key="$key" value="$thread" i="$i">
+					<li>
+						<a href="{{ link('threads', $thread) }}" target="_blank">{$thread.Forum.title} - {$thread.title}</a>
+					</li>
+				</xf:foreach>
+			</ul>
+        </div>
+    </div>
+</div>
+
+	<div class="block-container">
+        <h3 class="block-minorHeader">Annunci presenti su EH:</h3>
+        <div class="block-body">
+            <div class="block-row">
+			<ul>
+				<xf:foreach loop="$eh_ads" key="$key" value="$ad" i="$i">
+					<li>
+						<a href="{$ad.url}" target="_blank">{$ad.city} - {$ad.title}</a>
+					</li>
+				</xf:foreach>
+			</ul>
+        </div>
+    </div>
+</div>

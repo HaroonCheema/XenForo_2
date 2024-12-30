@@ -1,0 +1,22 @@
+{
+    "legacy_addon_id": "",
+    "title": "[PF] Related Reviews",
+    "description": "Add some useful widget to search ads on escorhub.info",
+    "version_id": 101,
+    "version_string": "1.0.1 Beta",
+    "dev": "Emanuel Righetto",
+    "dev_url": "https://www.emanuelrighetto.it",
+    "faq_url": "",
+    "support_url": "",
+    "extra_urls": {
+        "GitHub": "https://github.com/erighetto"
+    },
+    "require": {
+        "PunterForum/PhoneCoreLibrary": [
+            "*",
+            "[PF] Phone Core Library"
+        ]
+    },
+    "icon": "RelatedReviews.png",
+    "composer_autoload": "vendor/composer"
+}

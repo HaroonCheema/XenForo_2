@@ -4,6 +4,7 @@ return array(
 'macros' => array('body' => array(
 'arguments' => function($__templater, array $__vars) { return array(
 		'message' => '',
+		'thread' => '',
 		'attachmentData' => null,
 		'forceHash' => '',
 		'messageSelector' => '',
@@ -56,6 +57,7 @@ return array(
 	$__vars['editorHtml'] = $__templater->preEscaped('
 						' . $__templater->callMacro(null, 'editor', array(
 		'message' => $__vars['message'],
+		'thread' => $__vars['thread'],
 		'attachmentData' => $__vars['attachmentData'],
 		'forceHash' => $__vars['forceHash'],
 		'messageSelector' => $__vars['messageSelector'],
@@ -102,6 +104,7 @@ return array(
 'editor' => array(
 'arguments' => function($__templater, array $__vars) { return array(
 		'message' => '',
+		'thread' => '',
 		'attachmentData' => null,
 		'forceHash' => '',
 		'messageSelector' => '',
@@ -170,7 +173,37 @@ return array(
 
 	<div class="formButtonGroup ' . ($__vars['simpleSubmit'] ? 'formButtonGroup--simple' : '') . '">
 		<div class="formButtonGroup-primary">
-			' . $__templater->button('
+			';
+	if ($__vars['thread']) {
+		$__finalCompiled .= '
+				';
+		$__vars['qrform'] = $__templater->method($__vars['thread'], 'getQrform', array());
+		$__finalCompiled .= '
+				';
+		if ($__vars['qrform']) {
+			$__finalCompiled .= '
+					';
+			if ((!$__vars['qrform']['qrstarter']) OR ($__vars['qrform']['qrstarter'] AND ($__vars['xf']['visitor']['user_id'] == $__vars['thread']['user_id']))) {
+				$__finalCompiled .= '
+						' . $__templater->button('
+							' . $__templater->escape($__vars['qrform']['qrbutton']) . '
+						', array(
+					'href' => $__templater->func('link', array('form/select', $__vars['qrform'], array('thread' => $__vars['thread']['thread_id'], ), ), false) . ' ',
+					'class' => 'button--cta',
+					'icon' => 'write',
+				), '', array(
+				)) . '
+					';
+			}
+			$__finalCompiled .= '
+				';
+		}
+		$__finalCompiled .= '
+			';
+	}
+	$__finalCompiled .= '
+
+' . $__templater->button('
 				' . ($__templater->escape($__vars['submitText']) ?: 'Post reply') . '
 			', array(
 		'type' => 'submit',

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="public" title="widget_escorthub_search_form" version_id="101" version_string="1.0.1 Beta"><![CDATA[<div class="block">
+    <div class="block-container">
+        <h3 class="block-minorHeader">EscortHub search form</h3>
+        <div class="block-body">
+            <div class="block-row">
+                <div class="container">
+					<xf:form id="phone-search"
+							 class="block" action="{{ link('escorthub-search/index') }}"
+							 ajax="true"
+							 data-redirect="off"
+							 data-xf-init="phone-search">
+						<xf:textboxrow name="phone"
+									   type="tel"
+									   label="{{ phrase('phone_number') }}" 
+									   required="required" 
+									   hint="{{ phrase('required') }}" />
+						<xf:submitrow submit="{{ phrase('search') }}" icon="search" />
+					</xf:form>
+				  <div id="remote-data"></div>
+				</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<xf:js src="PunterForum/RelatedReviews/phone-search.js" addon="PunterForum/RelatedReviews" />]]></template>
+  <template type="public" title="widget_pf_related_reviews" version_id="101" version_string="1.0.1 Beta"><![CDATA[<div class="block-container">
+        <h3 class="block-minorHeader">Recensioni già presenti nel forum:</h3>
+        <div class="block-body">
+            <div class="block-row">
+			<ul>
+				<xf:foreach loop="$forum_threads" key="$key" value="$thread" i="$i">
+					<li>
+						<a href="{{ link('threads', $thread) }}" target="_blank">{$thread.Forum.title} - {$thread.title}</a>
+					</li>
+				</xf:foreach>
+			</ul>
+        </div>
+    </div>
+</div>
+
+	<div class="block-container">
+        <h3 class="block-minorHeader">Annunci presenti su EH:</h3>
+        <div class="block-body">
+            <div class="block-row">
+			<ul>
+				<xf:foreach loop="$eh_ads" key="$key" value="$ad" i="$i">
+					<li>
+						<a href="{$ad.url}" target="_blank">{$ad.city} - {$ad.title}</a>
+					</li>
+				</xf:foreach>
+			</ul>
+        </div>
+    </div>
+</div>]]></template>
+</templates>

@@ -78,6 +78,7 @@ return array (
   'option_group.nick97traktIntegration' => '[nick97] Trakt Integration',
   'option_group.nodeList' => 'Node & forum list',
   'option_group.ozzmodz_dvn' => '[OzzModz] Display Visitor Name',
+  'option_group.ozzmodz_forms' => '[OzzModz] Advanced Forms',
   'option_group.performance' => 'System and performance',
   'option_group.postCounter' => '[FS] Post Counter',
   'option_group.pwa' => 'PWA options',

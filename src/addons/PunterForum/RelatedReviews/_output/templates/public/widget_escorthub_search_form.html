@@ -1,0 +1,26 @@
+<div class="block">
+    <div class="block-container">
+        <h3 class="block-minorHeader">EscortHub search form</h3>
+        <div class="block-body">
+            <div class="block-row">
+                <div class="container">
+					<xf:form id="phone-search"
+							 class="block" action="{{ link('escorthub-search/index') }}"
+							 ajax="true"
+							 data-redirect="off"
+							 data-xf-init="phone-search">
+						<xf:textboxrow name="phone"
+									   type="tel"
+									   label="{{ phrase('phone_number') }}" 
+									   required="required" 
+									   hint="{{ phrase('required') }}" />
+						<xf:submitrow submit="{{ phrase('search') }}" icon="search" />
+					</xf:form>
+				  <div id="remote-data"></div>
+				</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<xf:js src="PunterForum/RelatedReviews/phone-search.js" addon="PunterForum/RelatedReviews" />

@@ -1,0 +1,32 @@
+{
+    "phone_number.txt": {
+        "global_cache": false,
+        "version_id": 101,
+        "version_string": "1.0.1 Beta",
+        "hash": "1e4dbc7eaa78468a3bc1448a3d68d906"
+    },
+    "widget_def.escorthub_search_form.txt": {
+        "global_cache": false,
+        "version_id": 101,
+        "version_string": "1.0.1 Beta",
+        "hash": "d3eece6988f50c57e6e882294d88cd3d"
+    },
+    "widget_def.related_reviews.txt": {
+        "global_cache": false,
+        "version_id": 101,
+        "version_string": "1.0.1 Beta",
+        "hash": "920bc8ee9e8300bf1c128efe088d5cfc"
+    },
+    "widget_def_desc.escorthub_search_form.txt": {
+        "global_cache": false,
+        "version_id": 101,
+        "version_string": "1.0.1 Beta",
+        "hash": "42cd150d787cb061ef09ca75b4cfa3ed"
+    },
+    "widget_def_desc.related_reviews.txt": {
+        "global_cache": false,
+        "version_id": 101,
+        "version_string": "1.0.1 Beta",
+        "hash": "72ccb243e47484f2f2a3c0cac48a2c98"
+    }
+}

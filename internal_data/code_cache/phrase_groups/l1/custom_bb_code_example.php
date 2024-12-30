@@ -20,5 +20,6 @@ return array (
   'custom_bb_code_example.product' => '[PRODUCT=product, X]Product BB Code[/PRODUCT]',
   'custom_bb_code_example.release' => '',
   'custom_bb_code_example.runtime' => '',
+  'custom_bb_code_example.tab' => '',
   'custom_bb_code_example.xen_word_highlight' => '',
 );

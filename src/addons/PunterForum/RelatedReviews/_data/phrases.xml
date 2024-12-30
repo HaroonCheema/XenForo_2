@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="phone_number" version_id="101" version_string="1.0.1 Beta"><![CDATA[Phone Number]]></phrase>
+  <phrase title="widget_def.escorthub_search_form" version_id="101" version_string="1.0.1 Beta"><![CDATA[EscortHub Search Form]]></phrase>
+  <phrase title="widget_def.related_reviews" version_id="101" version_string="1.0.1 Beta"><![CDATA[Related Reviews]]></phrase>
+  <phrase title="widget_def_desc.escorthub_search_form" version_id="101" version_string="1.0.1 Beta"><![CDATA[This form allows you to search for ads within the EscortHub data warehouse]]></phrase>
+  <phrase title="widget_def_desc.related_reviews" version_id="101" version_string="1.0.1 Beta"><![CDATA[Look for reviews by comparing phone numbers]]></phrase>
+</phrases>

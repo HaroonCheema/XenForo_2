@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<widget_definitions>
+  <widget_definition definition_id="escorthub_search_form" definition_class="PunterForum\RelatedReviews\Widget\EscortHubSearchForm"/>
+  <widget_definition definition_id="related_reviews" definition_class="PunterForum\RelatedReviews\Widget\RelatedReviews"/>
+</widget_definitions>

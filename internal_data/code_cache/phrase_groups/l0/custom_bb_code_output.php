@@ -20,5 +20,6 @@ return array (
   'custom_bb_code_output.product' => '',
   'custom_bb_code_output.release' => '',
   'custom_bb_code_output.runtime' => '',
+  'custom_bb_code_output.tab' => '',
   'custom_bb_code_output.xen_word_highlight' => '',
 );

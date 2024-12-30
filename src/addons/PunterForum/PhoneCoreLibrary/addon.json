@@ -1,0 +1,17 @@
+{
+    "legacy_addon_id": "",
+    "title": "[PF] Phone Core Library",
+    "description": "Add a service to manage phone number",
+    "version_id": 100,
+    "version_string": "1.0.1 Alpha",
+    "dev": "Emanuel Righetto",
+    "dev_url": "https://www.emanuelrighetto.it",
+    "faq_url": "",
+    "support_url": "",
+    "extra_urls": {
+        "GitHub": "https://github.com/erighetto"
+    },
+    "require": [],
+    "icon": "PhoneCoreLibrary.png",
+    "composer_autoload": "vendor/composer"
+}

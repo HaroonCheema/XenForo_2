@@ -60,6 +60,7 @@ return array (
   'cron_entry.sitemap' => 'Rebuild sitemap',
   'cron_entry.snogMoviesConvert' => 'Convert XF1 movie threads to XF2 version',
   'cron_entry.snogMoviesWatchProvider' => '[OzzModz] TMDb Movie Thread Starter: Update watch provider data',
+  'cron_entry.snogProcessPolls' => 'Process form poll results',
   'cron_entry.snogTV1' => 'Update TV episode posts that are missing images or plots',
   'cron_entry.snogTvWatchProvider' => '[OzzModz] TMDb TV Thread Starter: Update watch provider data',
   'cron_entry.snog_movies_changes' => '[OzzModz] TMDb Movie Thread Starter: Check for Movie changes',
