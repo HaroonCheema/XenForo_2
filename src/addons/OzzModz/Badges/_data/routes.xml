@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<routes>
+  <route route_type="admin" route_prefix="ozzmodz-badges" format=":int&lt;badge_id&gt;/" controller="OzzModz\Badges:Badge" context="ozzmodz_badges"/>
+  <route route_type="admin" route_prefix="ozzmodz-badges-categories" format=":int&lt;badge_category_id&gt;/" controller="OzzModz\Badges:BadgeCategory" context="ozzmodz_badges"/>
+  <route route_type="admin" route_prefix="ozzmodz-badges-tiers" format=":int&lt;badge_tier_id&gt;/" controller="OzzModz\Badges:BadgeTiers" context="ozzmodz_badges_tiers"/>
+  <route route_type="admin" route_prefix="ozzmodz-badges-user-badge" format=":int&lt;user_badge_id&gt;" controller="OzzModz\Badges:UserBadge" context="ozzmodz_badges_userBadge"/>
+  <route route_type="api" route_prefix="badge-categories" controller="OzzModz\Badges:BadgeCategories"/>
+  <route route_type="api" route_prefix="badge-categories" sub_name="-" format=":+int&lt;badge_category_id&gt;/" controller="OzzModz\Badges:BadgeCategory"/>
+  <route route_type="api" route_prefix="badge-tiers" controller="OzzModz\Badges:BadgeTiers"/>
+  <route route_type="api" route_prefix="badge-tiers" sub_name="-" format=":+int&lt;badge_tier_id&gt;/" controller="OzzModz\Badges:BadgeTier"/>
+  <route route_type="api" route_prefix="badges" controller="OzzModz\Badges:Badges"/>
+  <route route_type="api" route_prefix="badges" sub_name="-" format=":+int&lt;badge_id&gt;/" controller="OzzModz\Badges:Badge"/>
+  <route route_type="api" route_prefix="user-badges" controller="OzzModz\Badges:UserBadges"/>
+  <route route_type="api" route_prefix="user-badges" sub_name="-" format=":+int&lt;user_badge_id&gt;/" controller="OzzModz\Badges:UserBadge"/>
+  <route route_type="public" route_prefix="ozzmodz-badges" format=":int&lt;badge_id&gt;/" controller="OzzModz\Badges:Badge"/>
+  <route route_type="public" route_prefix="user-badges" format=":+int&lt;user_badge_id&gt;/" controller="OzzModz\Badges:UserBadge"/>
+</routes>

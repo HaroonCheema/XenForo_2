@@ -26,6 +26,7 @@ return array (
   'dbtech_credits_eventtrigger_description.openbet' => 'Creating an open bet',
   'dbtech_credits_eventtrigger_description.openbetaccept' => 'Accepting an open bet',
   'dbtech_credits_eventtrigger_description.openbetaccepted' => 'Someone accepting your open bet',
+  'dbtech_credits_eventtrigger_description.ozzmodz_badges_awarded' => 'Being awarded with badge',
   'dbtech_credits_eventtrigger_description.paycheck' => 'Occurs at regular intervals.',
   'dbtech_credits_eventtrigger_description.payment' => 'Making a purchase via XenForo\'s payment profile system.',
   'dbtech_credits_eventtrigger_description.poll' => 'Creating a poll.',

@@ -108,6 +108,19 @@ return array(
 		'label' => 'Reason for banning',
 		'explain' => 'This will be shown to the user if provided.',
 	)) . '
+
+			' . $__templater->formCheckBoxRow(array(
+		'standalone' => 'true',
+	), array(array(
+		'name' => 'ozzmodz_badges_unaward',
+		'value' => '1',
+		'label' => '
+					' . 'Take away all badges' . '
+				',
+		'_type' => 'option',
+	)), array(
+	)) . '
+
 		</div>
 
 		' . $__templater->formSubmitRow(array(

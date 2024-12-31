@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<options>
+  <option option_id="ozzmodz_badges_allowAwardReasonHtml" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>0</default_value>
+    <relation group_id="ozzmodz_badges" display_order="1000"/>
+  </option>
+  <option option_id="ozzmodz_badges_allowedTooltipTags" edit_format="textbox" data_type="string" advanced="0">
+    <default_value>&lt;b&gt;
+&lt;strong&gt;
+&lt;del&gt;
+&lt;s&gt;
+&lt;br&gt;
+&lt;p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;ol&gt;</default_value>
+    <edit_format_params>rows=6</edit_format_params>
+    <relation group_id="ozzmodz_badges" display_order="1011"/>
+  </option>
+  <option option_id="ozzmodz_badges_awardReasonMaxLength" edit_format="spinbox" data_type="integer" advanced="0">
+    <default_value>0</default_value>
+    <edit_format_params>min=0</edit_format_params>
+    <relation group_id="ozzmodz_badges" display_order="1020"/>
+  </option>
+  <option option_id="ozzmodz_badges_badgeUpdateSessonInterval" edit_format="spinbox" data_type="unsigned_integer" advanced="0">
+    <default_value>1800</default_value>
+    <edit_format_params>units={{ phrase('units_seconds') }}</edit_format_params>
+    <relation group_id="ozzmodz_badges" display_order="12"/>
+  </option>
+  <option option_id="ozzmodz_badges_cacheAwardReason" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>0</default_value>
+    <relation group_id="ozzmodz_badges" display_order="1010"/>
+  </option>
+  <option option_id="ozzmodz_badges_cacheStackedCount" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="ozzmodz_badges" display_order="110"/>
+  </option>
+  <option option_id="ozzmodz_badges_cronInterval" edit_format="select" data_type="string" advanced="1">
+    <default_value>2</default_value>
+    <edit_format_params>0.25={{ phrase('ozzmodz_interval_last_x_minutes', {'number': '15'}) }}
+0.50={{ phrase('ozzmodz_interval_last_x_minutes', {'number': '30'}) }}
+0.75={{ phrase('ozzmodz_interval_last_x_minutes', {'number': '45'}) }}
+1={{ phrase('ozzmodz_interval_last_x_hour', {'number': '1'}) }}
+2={{ phrase('ozzmodz_interval_last_x_hours', {'number': '2'}) }}
+3={{ phrase('ozzmodz_interval_last_x_hours', {'number': '3'}) }}
+6={{ phrase('ozzmodz_interval_last_x_hours', {'number': '6'}) }}
+12={{ phrase('ozzmodz_interval_last_x_hours', {'number': '12'}) }}
+24={{ phrase('ozzmodz_interval_last_x_hours', {'number': '24'}) }}
+48={{ phrase('ozzmodz_interval_last_x_days', {'number': '2'}) }}
+72={{ phrase('ozzmodz_interval_last_x_days', {'number': '3'}) }}
+96={{ phrase('ozzmodz_interval_last_x_days', {'number': '4'}) }}
+120={{ phrase('ozzmodz_interval_last_x_days', {'number': '5'}) }}
+144={{ phrase('ozzmodz_interval_last_x_days', {'number': '6'}) }}
+168={{ phrase('ozzmodz_interval_last_x_days', {'number': '7'}) }}
+366={{ phrase('ozzmodz_interval_last_x_weeks', {'number': '2'}) }}
+0={{ phrase('ozzmodz_cron_interval_disabled') }}</edit_format_params>
+    <relation group_id="ozzmodz_badges" display_order="11"/>
+  </option>
+  <option option_id="ozzmodz_badges_debug" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>0</default_value>
+    <relation group_id="ozzmodz_badges" display_order="1"/>
+  </option>
+  <option option_id="ozzmodz_badges_emailToggle" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>0</default_value>
+    <relation group_id="emailOptions" display_order="800"/>
+    <relation group_id="ozzmodz_badges" display_order="10"/>
+  </option>
+  <option option_id="ozzmodz_badges_featuredBadgesSort" edit_format="select" data_type="string" advanced="0">
+    <default_value>desc</default_value>
+    <edit_format_params>asc={{ phrase('ozzmodz_oldest_badges') }}
+desc={{ phrase('ozzmodz_most_recent_badges') }}
+disabled={{ phrase('ozzmodz_featured_badges_disabled') }}</edit_format_params>
+    <relation group_id="debug" display_order="1000000"/>
+  </option>
+  <option option_id="ozzmodz_badges_featuredDefaultDirection" edit_format="select" data_type="string" advanced="0">
+    <default_value>desc</default_value>
+    <edit_format_params>asc={{ phrase('ascending') }}
+desc={{ phrase('descending') }}</edit_format_params>
+    <relation group_id="ozzmodz_badges" display_order="101"/>
+  </option>
+  <option option_id="ozzmodz_badges_featuredDefaultOrder" edit_format="select" data_type="string" advanced="0">
+    <default_value>award_date</default_value>
+    <edit_format_params>award_date={{ phrase('ozzmodz_badges_award_date') }}
+Badge.display_order={{ phrase('display_order') }}</edit_format_params>
+    <relation group_id="ozzmodz_badges" display_order="100"/>
+  </option>
+  <option option_id="ozzmodz_badges_mdiSource" edit_format="select" data_type="string" advanced="0">
+    <default_value>disabled</default_value>
+    <edit_format_params>disabled={{ phrase('disabled') }}
+local={{ phrase('locally_hosted') }}
+mdi=CDN (materialdesignicons.com)</edit_format_params>
+    <relation group_id="ozzmodz_badges" display_order="9"/>
+  </option>
+  <option option_id="ozzmodz_badges_stackBadgesMemberTab" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="ozzmodz_badges" display_order="120"/>
+  </option>
+  <option option_id="ozzmodz_badges_stackingForceFeature" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="ozzmodz_badges" display_order="106"/>
+  </option>
+  <option option_id="ozzmodz_badges_stackingSortDisplayOrder" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="ozzmodz_badges" display_order="105"/>
+  </option>
+  <option option_id="ozzmodz_badges_updateBatchSize" edit_format="spinbox" data_type="unsigned_integer" advanced="0">
+    <default_value>0</default_value>
+    <edit_format_params>min=0</edit_format_params>
+    <relation group_id="ozzmodz_badges" display_order="21"/>
+  </option>
+</options>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<api_scopes>
+  <api_scope api_scope_id="badge_category:delete"/>
+  <api_scope api_scope_id="badge_category:read"/>
+  <api_scope api_scope_id="badge_tier:delete"/>
+  <api_scope api_scope_id="badge_tier:read"/>
+  <api_scope api_scope_id="badges:delete"/>
+  <api_scope api_scope_id="badges:read"/>
+  <api_scope api_scope_id="user_badges:read"/>
+  <api_scope api_scope_id="user_badges:write"/>
+</api_scopes>

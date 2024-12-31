@@ -151,6 +151,7 @@ return array(
 		'job' => 'XF:ReactionScore',
 	), $__vars) . '
 ' . '
+' . $__templater->includeTemplate('ozzmodz_badges_tools_rebuild', $__vars) . '
 
 ';
 	$__vars['likesContentTypes'] = $__templater->method($__vars['xf']['app'], 'getContentTypePhrases', array(true, 'like_handler_class', ));

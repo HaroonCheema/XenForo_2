@@ -590,6 +590,37 @@ Recommended: "1" Thumbnail -/- Max.: "4" Thumbnails',
   'option_explain.oEmbedLogLength' => 'Controls how long oEmbed logs are retained after the most recent request for the referenced oEmbed data. Logs are only removed if the oEmbed data has expired and been pruned. Set this to 0 to disable log pruning.',
   'option_explain.oEmbedRequestReferrer' => 'If enabled, whenever oEmbed data is accessed, referrer information will be maintained. This can be viewed in the logs to determine where the embedded media has been mentioned. Use 0 to keep the referrer data forever.',
   'option_explain.onlineStatusTimeout' => 'After a user interacts with the system (by clicking a link etc.) they will be considered \'online\'. They will be considered to be offline if they do not interact with the system again within the time specified here.',
+  'option_explain.ozzmodz_badges_allowAwardReasonHtml' => 'Allows the use of HTML codes in the reason for issuing a badge. <b>NOT RECOMMENDED FOR SAFETY PURPOSES</b>',
+  'option_explain.ozzmodz_badges_allowedTooltipTags' => 'List the list of allowed HTML tags to display in badge tooltips. Split with new line.
+<br/>
+This setting is used to exclude invalid tags that break the display of the page, such as  A element, that cannot  be used as an A element must not contain any other A elements.',
+  'option_explain.ozzmodz_badges_awardReasonMaxLength' => '',
+  'option_explain.ozzmodz_badges_badgeUpdateSessonInterval' => 'Specify the time interval after which badges for online users will be updated again after their first login.</br>
+Specify 0 to completely disable real time and update badges only by cronjob.',
+  'option_explain.ozzmodz_badges_cacheAwardReason' => 'Click this if you want to display the reward reason in the badges displayed in postbit on mouseover (which is obtained from cache).<br />
+<b>Not recommended when displaying a large number of featured badges and long reward reasons. You must run the "[OzzModz] Badges: Rebuild user badge cache" <a href="admin.php?tools/rebuild">rebuild cache job</a> to apply the changes. </b>',
+  'option_explain.ozzmodz_badges_cacheStackedCount' => 'Click this if you want to display the stacked badge count in the badges displayed in postbit (which is obtained from cache).
+You must run the "[OzzModz] Badges: Rebuild user badge cache" rebuild cache job to apply the changes.',
+  'option_explain.ozzmodz_badges_cronInterval' => 'Changing this interval increases or decreases the scope of users that will be checked for parameters which would trigger a condition awarding a badge.<br/>
+<u>The longer the duration, the bigger the impact on performance.</u><br/>
+<strong>Disabling the activity interval is not recommended as it will search your entire user database whenever the cron is triggered.</strong>',
+  'option_explain.ozzmodz_badges_debug' => 'Enable if you want to log debugging data. This can help in identifying slow badge criteria.<br />
+<b>WARNING: This can generate thousands of logs in the error log!</b>',
+  'option_explain.ozzmodz_badges_emailToggle' => 'Toggling this setting on will prevent emails from being sent to your users when they are awarded a badge via cron.<br/><strong>Enabling this function will override your users preferences - disabling all emails (for badges).</strong>',
+  'option_explain.ozzmodz_badges_featuredBadgesSort' => '',
+  'option_explain.ozzmodz_badges_featuredDefaultDirection' => 'Select how you would like badges displayed when a user has not selected any badges to feature on their profile.<br/>
+<b>You must run the "[OzzModz] Badges: Rebuild user badge cache" <a href="admin.php?tools/rebuild">rebuild cache job</a> to apply the changes.</b>',
+  'option_explain.ozzmodz_badges_featuredDefaultOrder' => 'Select how you would like badges displayed when a user has not selected any badges to feature on their profile.<br/>
+Award date - Ascending: Oldest badges<br/>
+Award date - Descending: Recent badges<br/>
+
+<b>You must run the "[OzzModz] Badges: Rebuild user badge cache" <a href="admin.php?tools/rebuild">rebuild cache job</a> to apply the changes.</b>',
+  'option_explain.ozzmodz_badges_mdiSource' => '',
+  'option_explain.ozzmodz_badges_stackBadgesMemberTab' => '',
+  'option_explain.ozzmodz_badges_stackingForceFeature' => 'If enabled and the user has a featured badge selected that has staking badges, the higher staking badge will be displayed as a featured badge instead of the user\'s chosen one.',
+  'option_explain.ozzmodz_badges_stackingSortDisplayOrder' => 'Use this option if you have wrong badge staking order in featured user badge list.<br/>
+<b>You must run the "[OzzModz] Badges: Rebuild user badge cache" <a href="admin.php?tools/rebuild">rebuild cache job</a> to apply the changes.</b>',
+  'option_explain.ozzmodz_badges_updateBatchSize' => 'Specify how many badges should be updated per job run. A large value can negatively affect performance.',
   'option_explain.ozzmodz_dvn_token' => 'Enter the token that will be used for replacement to visitor name. Case insensitive.',
   'option_explain.ozzmodz_forms_floodCheck' => 'Users will have to wait this many seconds between submitting new form.',
   'option_explain.pinterestShare' => 'This button will let your users pin your content to any Pinterest board.',

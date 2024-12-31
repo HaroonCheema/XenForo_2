@@ -30,6 +30,7 @@ return array (
   'style_prop_group_desc.misc' => 'Various settings that don\'t fit elsewhere are included here, including badges, chips and animation parameters.',
   'style_prop_group_desc.nodeList' => 'Specific styling elements for the hierarchical list of forums, pages etc. are included here.',
   'style_prop_group_desc.overlay' => 'Common styling controls for the various overlays (windows of content that open over the top of the rest of the page) are found here.',
+  'style_prop_group_desc.ozzmodz_badges' => 'Styling options for "Badges" addon.',
   'style_prop_group_desc.page' => 'Settings related to the layout of pages and how they respond to different viewport sizes. Also styling for some universal elements.',
   'style_prop_group_desc.palette' => 'This defines the base set of colors that your site will used. Specific usages of these colors can be defined within individual groups.',
   'style_prop_group_desc.rtcContainer' => '',

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class_extensions>
+  <extension from_class="XF\Admin\Controller\Banning" to_class="OzzModz\Badges\XF\Admin\Controller\Banning" execute_order="10" active="1"/>
+  <extension from_class="XF\CssRenderer" to_class="OzzModz\Badges\XF\CssRenderer" execute_order="10" active="1"/>
+  <extension from_class="XF\Entity\User" to_class="OzzModz\Badges\XF\Entity\User" execute_order="10" active="1"/>
+  <extension from_class="XF\Entity\UserOption" to_class="OzzModz\Badges\XF\Entity\UserOption" execute_order="10" active="1"/>
+  <extension from_class="XF\Pub\Controller\Account" to_class="OzzModz\Badges\XF\Pub\Controller\Account" execute_order="10" active="1"/>
+  <extension from_class="XF\Pub\Controller\Member" to_class="OzzModz\Badges\XF\Pub\Controller\Member" execute_order="10" active="1"/>
+  <extension from_class="XF\Searcher\User" to_class="OzzModz\Badges\XF\Searcher\User" execute_order="10" active="1"/>
+</class_extensions>

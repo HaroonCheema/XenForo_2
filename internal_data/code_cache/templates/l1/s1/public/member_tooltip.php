@@ -107,15 +107,28 @@ return array(
 					';
 	}
 	$__compilerTemp9 = '';
-	$__compilerTemp10 = '';
-	$__compilerTemp10 .= $__templater->func('user_activity', array($__vars['user']));
-	if (strlen(trim($__compilerTemp10)) > 0) {
+	if ($__templater->func('property', array('ozzmodz_badges_show_in_tooltip', ), false)) {
 		$__compilerTemp9 .= '
+	';
+		$__templater->includeCss('ozzmodz_badges_featured_badges.less');
+		$__compilerTemp9 .= '
+	
+	' . $__templater->callMacro('ozzmodz_badges_featured_badges_macros', 'featured_badges', array(
+			'location' => 'member_tooltip',
+			'user' => $__vars['user'],
+		), $__vars) . '
+';
+	}
+	$__compilerTemp10 = '';
+	$__compilerTemp11 = '';
+	$__compilerTemp11 .= $__templater->func('user_activity', array($__vars['user']));
+	if (strlen(trim($__compilerTemp11)) > 0) {
+		$__compilerTemp10 .= '
 						<div class="memberTooltip-blurb">
 							<dl class="pairs pairs--inline">
 								<dt>' . 'Last seen' . '</dt>
 								<dd dir="auto">
-									' . $__compilerTemp10 . '
+									' . $__compilerTemp11 . '
 								</dd>
 							</dl>
 						</div>
@@ -148,6 +161,8 @@ return array(
 				<div class="memberTooltip-blurbContainer">
 					' . $__compilerTemp7 . '
 
+' . $__compilerTemp9 . '
+
 					<div class="memberTooltip-blurb">
 						<dl class="pairs pairs--inline">
 							<dt>' . 'Joined' . '</dt>
@@ -156,7 +171,7 @@ return array(
 						</dl>
 					</div>
 
-					' . $__compilerTemp9 . '
+					' . $__compilerTemp10 . '
 				</div>
 			</div>
 		')) . '
@@ -172,19 +187,19 @@ return array(
 		</div>
 
 		';
-	$__compilerTemp11 = '';
-	$__compilerTemp11 .= '
+	$__compilerTemp12 = '';
+	$__compilerTemp12 .= '
 				' . $__templater->callMacro('member_macros', 'member_action_buttons', array(
 		'user' => $__vars['user'],
 		'context' => 'tooltip',
 	), $__vars) . '
 			';
-	if (strlen(trim($__compilerTemp11)) > 0) {
+	if (strlen(trim($__compilerTemp12)) > 0) {
 		$__finalCompiled .= '
 			<hr class="memberTooltip-separator" />
 
 			<div class="memberTooltip-actions">
-			' . $__compilerTemp11 . '
+			' . $__compilerTemp12 . '
 			</div>
 		';
 	}

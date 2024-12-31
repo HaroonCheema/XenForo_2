@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="admin_navigation.ozzmodz_badges" version_id="2000000" version_string="2.0.0"><![CDATA[Badges]]></phrase>
+  <phrase title="admin_navigation.ozzmodz_badges_tiers" version_id="2020300" version_string="2.2.3"><![CDATA[Badge tiers]]></phrase>
+  <phrase title="admin_navigation.ozzmodz_badges_userBadge" version_id="2030034" version_string="2.3.0 Beta 4"><![CDATA[Users awarded with badge]]></phrase>
+  <phrase title="admin_permission.ozzmodz_badges" version_id="2000001" version_string="2.0.0 1"><![CDATA[[OzzModz] Badges: Manage badges]]></phrase>
+  <phrase title="alert_opt_out.dbtech_credits_txn_ozzmodz_badges_awarded" version_id="2010270" version_string="2.1.2"><![CDATA[You trigger the Badge award event]]></phrase>
+  <phrase title="alert_opt_out.ozzmodz_badges_badge_award" version_id="2000000" version_string="2.0.0"><![CDATA[Awards you a new badge]]></phrase>
+  <phrase title="api_scope.badge_category_delete" version_id="2020300" version_string="2.2.3"><![CDATA[Covers viewing badge category deletion]]></phrase>
+  <phrase title="api_scope.badge_category_read" version_id="2020300" version_string="2.2.3"><![CDATA[Covers viewing badge categories]]></phrase>
+  <phrase title="api_scope.badge_tier_delete" version_id="2020300" version_string="2.2.3"><![CDATA[Covers viewing badge tier deletion]]></phrase>
+  <phrase title="api_scope.badge_tier_read" version_id="2020300" version_string="2.2.3"><![CDATA[Covers viewing badge tier viewing]]></phrase>
+  <phrase title="api_scope.badges_delete" version_id="2020300" version_string="2.2.3"><![CDATA[Covers deleting badges]]></phrase>
+  <phrase title="api_scope.badges_read" version_id="2020300" version_string="2.2.3"><![CDATA[Covers viewing badges]]></phrase>
+  <phrase title="api_scope.badges_write" version_id="2020300" version_string="2.2.3"><![CDATA[Covers awarding users]]></phrase>
+  <phrase title="api_scope.ozzmodz_badges_delete" version_id="2020300" version_string="2.2.3"><![CDATA[Covers unawarding users]]></phrase>
+  <phrase title="api_scope.ozzmodz_badges_remove" version_id="2000000" version_string="2.0.0"><![CDATA[Remove a badge via API call]]></phrase>
+  <phrase title="api_scope.ozzmodz_badges_write" version_id="2020300" version_string="2.2.3"><![CDATA[Covers awarding users]]></phrase>
+  <phrase title="api_scope.user_badges_read" version_id="2020300" version_string="2.2.3"><![CDATA[Covers viewing user badges]]></phrase>
+  <phrase title="api_scope.user_badges_write" version_id="2020300" version_string="2.2.3"><![CDATA[Covers awarding users]]></phrase>
+  <phrase title="cron_entry.ozzmodz_badges" version_id="1000070" version_string="1.0.0"><![CDATA[[OzzModz] Badges: Update user badges]]></phrase>
+  <phrase title="dbtech_credits_eventtrigger_description.ozzmodz_badges_awarded" version_id="2010192" version_string="2.1.1 Patch Level 2"><![CDATA[Being awarded with badge]]></phrase>
+  <phrase title="dbtech_credits_eventtrigger_title.ozzmodz_badges_award" version_id="2010192" version_string="2.1.1 Patch Level 2"><![CDATA[[OzzModz] Badges: Award]]></phrase>
+  <phrase title="dbtech_credits_eventtrigger_title.ozzmodz_badges_awarded" version_id="2010192" version_string="2.1.1 Patch Level 2"><![CDATA[[OzzModz] Badges: Awarded]]></phrase>
+  <phrase title="help_page_desc.badges" version_id="1000070" version_string="1.0.0"><![CDATA[Badges are special awards for unique and valuable actions. This page shows a list of all badges.]]></phrase>
+  <phrase title="help_page_desc.ozzmodz_badges" version_id="2000000" version_string="2.0.0"><![CDATA[Badges are special awards for unique and valuable actions. This page shows a list of all badges.]]></phrase>
+  <phrase title="help_page_title.badges" version_id="1000070" version_string="1.0.0"><![CDATA[Badges]]></phrase>
+  <phrase title="help_page_title.ozzmodz_badges" version_id="2000000" version_string="2.0.0"><![CDATA[Badges]]></phrase>
+  <phrase title="member_stat.ozzmodz_badges_most_badges" version_id="1000070" version_string="1.0.0"><![CDATA[Most badges]]></phrase>
+  <phrase title="option.ozzmodz_badges_allowAwardReasonHtml" version_id="2030171" version_string="2.3.1.1"><![CDATA[Allow HTML code in award reason]]></phrase>
+  <phrase title="option.ozzmodz_badges_allowedTooltipTags" version_id="2030401" version_string="2.3.4 1"><![CDATA[Allowed HTML tags to display in badge tooltip]]></phrase>
+  <phrase title="option.ozzmodz_badges_awardReasonMaxLength" version_id="2030400" version_string="2.3.4"><![CDATA[Award reason max length]]></phrase>
+  <phrase title="option.ozzmodz_badges_badgeUpdateSessonInterval" version_id="2030600" version_string="2.3.6"><![CDATA[Real time badge update interval]]></phrase>
+  <phrase title="option.ozzmodz_badges_cacheAwardReason" version_id="2030400" version_string="2.3.4"><![CDATA[Cache badge award reason]]></phrase>
+  <phrase title="option.ozzmodz_badges_cacheStackedCount" version_id="2030403" version_string="2.3.4 3"><![CDATA[Cache badge stacked count]]></phrase>
+  <phrase title="option.ozzmodz_badges_cronInterval" version_id="2020000" version_string="2.2.0"><![CDATA[Cron Activity Interval]]></phrase>
+  <phrase title="option.ozzmodz_badges_debug" version_id="2030600" version_string="2.3.6"><![CDATA[Badges debug mode]]></phrase>
+  <phrase title="option.ozzmodz_badges_emailToggle" version_id="2030631" version_string="2.3.6 Beta 1"><![CDATA[Disable Badges Email Notifications Globally]]></phrase>
+  <phrase title="option.ozzmodz_badges_featuredBadgesSort" version_id="2020300" version_string="2.2.3"><![CDATA[[DEPRECATED] Sort Order]]></phrase>
+  <phrase title="option.ozzmodz_badges_featuredDefaultDirection" version_id="2020300" version_string="2.2.3"><![CDATA[Default sort direction]]></phrase>
+  <phrase title="option.ozzmodz_badges_featuredDefaultOrder" version_id="2020300" version_string="2.2.3"><![CDATA[Default sort order]]></phrase>
+  <phrase title="option.ozzmodz_badges_mdiSource" version_id="2020001" version_string="2.2.0 1"><![CDATA[Material design icon support]]></phrase>
+  <phrase title="option.ozzmodz_badges_stackBadgesMemberTab" version_id="2030403" version_string="2.3.4 3"><![CDATA[Stack badges on member tab]]></phrase>
+  <phrase title="option.ozzmodz_badges_stackingForceFeature" version_id="2030296" version_string="2.3.2 Patch Level 6"><![CDATA[Force stacking badge featuring]]></phrase>
+  <phrase title="option.ozzmodz_badges_stackingSortDisplayOrder" version_id="2030298" version_string="2.3.2 Patch Level 8"><![CDATA[Always sort featured badges by display order]]></phrase>
+  <phrase title="option.ozzmodz_badges_updateBatchSize" version_id="2030300" version_string="2.3.3"><![CDATA[User badge update batch size]]></phrase>
+  <phrase title="option_explain.ozzmodz_badges_allowAwardReasonHtml" version_id="2030171" version_string="2.3.1.1"><![CDATA[Allows the use of HTML codes in the reason for issuing a badge. <b>NOT RECOMMENDED FOR SAFETY PURPOSES</b>]]></phrase>
+  <phrase title="option_explain.ozzmodz_badges_allowedTooltipTags" version_id="2030401" version_string="2.3.4 1"><![CDATA[List the list of allowed HTML tags to display in badge tooltips. Split with new line.
+<br/>
+This setting is used to exclude invalid tags that break the display of the page, such as  A element, that cannot  be used as an A element must not contain any other A elements.]]></phrase>
+  <phrase title="option_explain.ozzmodz_badges_awardReasonMaxLength" version_id="2030400" version_string="2.3.4"><![CDATA[]]></phrase>
+  <phrase title="option_explain.ozzmodz_badges_badgeUpdateSessonInterval" version_id="2030600" version_string="2.3.6"><![CDATA[Specify the time interval after which badges for online users will be updated again after their first login.</br>
+Specify 0 to completely disable real time and update badges only by cronjob.]]></phrase>
+  <phrase title="option_explain.ozzmodz_badges_cacheAwardReason" version_id="2030400" version_string="2.3.4"><![CDATA[Click this if you want to display the reward reason in the badges displayed in postbit on mouseover (which is obtained from cache).<br />
+<b>Not recommended when displaying a large number of featured badges and long reward reasons. You must run the "[OzzModz] Badges: Rebuild user badge cache" <a href="admin.php?tools/rebuild">rebuild cache job</a> to apply the changes. </b>]]></phrase>
+  <phrase title="option_explain.ozzmodz_badges_cacheStackedCount" version_id="2030401" version_string="2.3.4 1"><![CDATA[Click this if you want to display the stacked badge count in the badges displayed in postbit (which is obtained from cache).
+You must run the "[OzzModz] Badges: Rebuild user badge cache" rebuild cache job to apply the changes.]]></phrase>
+  <phrase title="option_explain.ozzmodz_badges_cronInterval" version_id="2010400" version_string="2.1.4"><![CDATA[Changing this interval increases or decreases the scope of users that will be checked for parameters which would trigger a condition awarding a badge.<br/>
+<u>The longer the duration, the bigger the impact on performance.</u><br/>
+<strong>Disabling the activity interval is not recommended as it will search your entire user database whenever the cron is triggered.</strong>]]></phrase>
+  <phrase title="option_explain.ozzmodz_badges_debug" version_id="2030600" version_string="2.3.6"><![CDATA[Enable if you want to log debugging data. This can help in identifying slow badge criteria.<br />
+<b>WARNING: This can generate thousands of logs in the error log!</b>]]></phrase>
+  <phrase title="option_explain.ozzmodz_badges_emailToggle" version_id="2000000" version_string="2.0.0"><![CDATA[Toggling this setting on will prevent emails from being sent to your users when they are awarded a badge via cron.<br/><strong>Enabling this function will override your users preferences - disabling all emails (for badges).</strong>]]></phrase>
+  <phrase title="option_explain.ozzmodz_badges_featuredBadgesSort" version_id="2020300" version_string="2.2.3"><![CDATA[]]></phrase>
+  <phrase title="option_explain.ozzmodz_badges_featuredDefaultDirection" version_id="2020300" version_string="2.2.3"><![CDATA[Select how you would like badges displayed when a user has not selected any badges to feature on their profile.<br/>
+<b>You must run the "[OzzModz] Badges: Rebuild user badge cache" <a href="admin.php?tools/rebuild">rebuild cache job</a> to apply the changes.</b>]]></phrase>
+  <phrase title="option_explain.ozzmodz_badges_featuredDefaultOrder" version_id="2020300" version_string="2.2.3"><![CDATA[Select how you would like badges displayed when a user has not selected any badges to feature on their profile.<br/>
+Award date - Ascending: Oldest badges<br/>
+Award date - Descending: Recent badges<br/>
+
+<b>You must run the "[OzzModz] Badges: Rebuild user badge cache" <a href="admin.php?tools/rebuild">rebuild cache job</a> to apply the changes.</b>]]></phrase>
+  <phrase title="option_explain.ozzmodz_badges_mdiSource" version_id="2020001" version_string="2.2.0 1"><![CDATA[]]></phrase>
+  <phrase title="option_explain.ozzmodz_badges_stackBadgesMemberTab" version_id="2030403" version_string="2.3.4 3"><![CDATA[]]></phrase>
+  <phrase title="option_explain.ozzmodz_badges_stackingForceFeature" version_id="2030296" version_string="2.3.2 Patch Level 6"><![CDATA[If enabled and the user has a featured badge selected that has staking badges, the higher staking badge will be displayed as a featured badge instead of the user's chosen one.]]></phrase>
+  <phrase title="option_explain.ozzmodz_badges_stackingSortDisplayOrder" version_id="2030298" version_string="2.3.2 Patch Level 8"><![CDATA[Use this option if you have wrong badge staking order in featured user badge list.<br/>
+<b>You must run the "[OzzModz] Badges: Rebuild user badge cache" <a href="admin.php?tools/rebuild">rebuild cache job</a> to apply the changes.</b>]]></phrase>
+  <phrase title="option_explain.ozzmodz_badges_updateBatchSize" version_id="2030600" version_string="2.3.6"><![CDATA[Specify how many badges should be updated per job run. A large value can negatively affect performance.]]></phrase>
+  <phrase title="option_group.ozzmodz_badges" version_id="2000000" version_string="2.0.0"><![CDATA[[OzzModz] Badges]]></phrase>
+  <phrase title="option_group_description.ozzmodz_badges" version_id="2000000" version_string="2.0.0"><![CDATA[Manage global settings for Badges]]></phrase>
+  <phrase title="ozzmodz_badge_featured_badge" version_id="2000000" version_string="2.0.0"><![CDATA[Feature badge]]></phrase>
+  <phrase title="ozzmodz_badges" version_id="2000000" version_string="2.0.0"><![CDATA[Badges]]></phrase>
+  <phrase title="ozzmodz_badges__is_already_stacked_with" version_id="2030036" version_string="2.3.0 Beta 6"><![CDATA[This badge is already stacked with]]></phrase>
+  <phrase title="ozzmodz_badges_add_badge" version_id="2000000" version_string="2.0.0"><![CDATA[Add badge]]></phrase>
+  <phrase title="ozzmodz_badges_add_badge_category" version_id="2000000" version_string="2.0.0"><![CDATA[Add badge category]]></phrase>
+  <phrase title="ozzmodz_badges_alt_desc_explain" version_id="2000000" version_string="2.0.0"><![CDATA[Provide a short description of the image you are using for this badge.<br><br>
+Alternative Descriptions purpose is to describe badges (images) to visitors who are unable to see them. This includes screen readers and browsers that block images, but it also includes users who are sight-impaired or otherwise unable to visually identify an image. Including alt text with your badges ensures all users, regardless of visual ability, can appreciate the content on your site.]]></phrase>
+  <phrase title="ozzmodz_badges_alt_description" version_id="2000000" version_string="2.0.0"><![CDATA[Alt Description]]></phrase>
+  <phrase title="ozzmodz_badges_auto_non_repeatative_cannot_be_unawarded" version_id="2020300" version_string="2.2.3"><![CDATA[Non-repeatable auto-awarding badges cannot be deleted]]></phrase>
+  <phrase title="ozzmodz_badges_avoid_duplicates" version_id="2020196" version_string="2.2.1 Patch Level 6"><![CDATA[Avoid duplicates]]></phrase>
+  <phrase title="ozzmodz_badges_awaiting_new_queue_items" version_id="2030600" version_string="2.3.6"><![CDATA[Awaiting new queue items]]></phrase>
+  <phrase title="ozzmodz_badges_award" version_id="1000070" version_string="1.0.0"><![CDATA[Award]]></phrase>
+  <phrase title="ozzmodz_badges_award_date" version_id="2020300" version_string="2.2.3"><![CDATA[Award date]]></phrase>
+  <phrase title="ozzmodz_badges_award_reason" version_id="1000070" version_string="1.0.0"><![CDATA[Award reason]]></phrase>
+  <phrase title="ozzmodz_badges_award_repeat_next_x_time" version_id="2030051" version_string="2.3.0 Release Candidate 1"><![CDATA[The user can only be awarded this badge after {time}]]></phrase>
+  <phrase title="ozzmodz_badges_award_this_badge_if" version_id="1000070" version_string="1.0.0"><![CDATA[Award this badge if...]]></phrase>
+  <phrase title="ozzmodz_badges_award_users" version_id="2020196" version_string="2.2.1 Patch Level 6"><![CDATA[Award users...]]></phrase>
+  <phrase title="ozzmodz_badges_award_with_badge" version_id="1000070" version_string="1.0.0"><![CDATA[Award with badge]]></phrase>
+  <phrase title="ozzmodz_badges_awarded_by" version_id="2030034" version_string="2.3.0 Beta 4"><![CDATA[Awarded by]]></phrase>
+  <phrase title="ozzmodz_badges_awarded_users" version_id="1000070" version_string="1.0.0"><![CDATA[Awarded users]]></phrase>
+  <phrase title="ozzmodz_badges_awarded_with_badges" version_id="2030100" version_string="2.3.1"><![CDATA[Awarded with badges]]></phrase>
+  <phrase title="ozzmodz_badges_awarding" version_id="2030100" version_string="2.3.1"><![CDATA[Awarding]]></phrase>
+  <phrase title="ozzmodz_badges_badge" version_id="1000070" version_string="1.0.0"><![CDATA[Badge]]></phrase>
+  <phrase title="ozzmodz_badges_badge_award_body_html" version_id="2030036" version_string="2.3.0 Beta 6"><![CDATA[<p>{username},</p>
+
+<p>You have been awarded with a new badge: {badge}</p>]]></phrase>
+  <phrase title="ozzmodz_badges_badge_award_email_reason_provided" version_id="2030036" version_string="2.3.0 Beta 6"><![CDATA[<p>The following reason was provided:</p>
+<div class="message">{reason}</div>]]></phrase>
+  <phrase title="ozzmodz_badges_badge_award_subject" version_id="1000070" version_string="1.0.0"><![CDATA[{board} - New badge]]></phrase>
+  <phrase title="ozzmodz_badges_badge_category" version_id="2000000" version_string="2.0.0"><![CDATA[Badge category]]></phrase>
+  <phrase title="ozzmodz_badges_badge_category_title.0" version_id="2030100" version_string="2.3.1"><![CDATA[Uncategorized]]></phrase>
+  <phrase title="ozzmodz_badges_badge_category_title.uncategorized" version_id="2000072" version_string="2.0.0.2"><![CDATA[Uncategorized]]></phrase>
+  <phrase title="ozzmodz_badges_badge_count_between" version_id="2030103" version_string="2.3.1 3"><![CDATA[Badge count between]]></phrase>
+  <phrase title="ozzmodz_badges_badge_is_active" version_id="2030051" version_string="2.3.0 Release Candidate 1"><![CDATA[Badge is active]]></phrase>
+  <phrase title="ozzmodz_badges_badge_is_active_explain" version_id="2030051" version_string="2.3.0 Release Candidate 1"><![CDATA[Disabled badges can no longer be awarded, and will no longer appear in public pages.]]></phrase>
+  <phrase title="ozzmodz_badges_badge_link" version_id="2030500" version_string="2.3.5"><![CDATA[Badge link]]></phrase>
+  <phrase title="ozzmodz_badges_badge_link_explain" version_id="2030500" version_string="2.3.5"><![CDATA[By default, clicking on a badge opens the badges tab of the user's profile. You can set your link instead.]]></phrase>
+  <phrase title="ozzmodz_badges_badge_options" version_id="1000070" version_string="1.0.0"><![CDATA[Badge options]]></phrase>
+  <phrase title="ozzmodz_badges_badge_tier" version_id="2020300" version_string="2.2.3"><![CDATA[Badge tier]]></phrase>
+  <phrase title="ozzmodz_badges_badge_tier_add" version_id="2030031" version_string="2.3.0 Beta 1"><![CDATA[Add badge tier]]></phrase>
+  <phrase title="ozzmodz_badges_badge_tier_edit" version_id="2030031" version_string="2.3.0 Beta 1"><![CDATA[Edit badge tier]]></phrase>
+  <phrase title="ozzmodz_badges_badge_tiers" version_id="2020300" version_string="2.2.3"><![CDATA[Badge tiers]]></phrase>
+  <phrase title="ozzmodz_badges_badges" version_id="1000070" version_string="1.0.0"><![CDATA[Badges]]></phrase>
+  <phrase title="ozzmodz_badges_badges_awarded_to_x" version_id="1000070" version_string="1.0.0"><![CDATA[Badges awarded to {name}]]></phrase>
+  <phrase title="ozzmodz_badges_comma_separated_badge_ids" version_id="1000070" version_string="1.0.0"><![CDATA[Comma separated badge IDs.]]></phrase>
+  <phrase title="ozzmodz_badges_confirm_awarding_users" version_id="2030100" version_string="2.3.1"><![CDATA[Confirm awarding users]]></phrase>
+  <phrase title="ozzmodz_badges_confirm_unawarding_users" version_id="2030100" version_string="2.3.1"><![CDATA[Confirm unawarding users]]></phrase>
+  <phrase title="ozzmodz_badges_criteria_cannot_be_awarded_manually" version_id="2020196" version_string="2.2.1 Patch Level 6"><![CDATA[Badges with user criteria cannot be awarded manually.]]></phrase>
+  <phrase title="ozzmodz_badges_criteria_cannot_be_unawarded_manually" version_id="2030171" version_string="2.3.1.1"><![CDATA[The badges with a user criteria will be automatically awarded again if the criteria is met.]]></phrase>
+  <phrase title="ozzmodz_badges_css_class" version_id="1000070" version_string="1.0.0"><![CDATA[CSS class]]></phrase>
+  <phrase title="ozzmodz_badges_css_class_explain" version_id="1000070" version_string="1.0.0"><![CDATA[This class can be used for applying additional styles.]]></phrase>
+  <phrase title="ozzmodz_badges_css_explain" version_id="2030053" version_string="2.3.0 Release Candidate 3"><![CDATA[Use !important modifier to override base properties]]></phrase>
+  <phrase title="ozzmodz_badges_dbtech_credits_gained_x_y_via_awarded" version_id="2010192" version_string="2.1.1 Patch Level 2"><![CDATA[You earned {currency} for being awarded with a new badge.]]></phrase>
+  <phrase title="ozzmodz_badges_dbtech_credits_gained_x_y_via_awarded_negate" version_id="2010192" version_string="2.1.1 Patch Level 2"><![CDATA[You gained {currency} because your badge was removed.]]></phrase>
+  <phrase title="ozzmodz_badges_dbtech_credits_lost_x_y_via_awarded" version_id="2010192" version_string="2.1.1 Patch Level 2"><![CDATA[You were charged {currency} for being awarded with a new badge.]]></phrase>
+  <phrase title="ozzmodz_badges_dbtech_credits_lost_x_y_via_awarded_negate" version_id="2010192" version_string="2.1.1 Patch Level 2"><![CDATA[You lost {currency} because someone else deleted your badge.]]></phrase>
+  <phrase title="ozzmodz_badges_delete_badges_in_category" version_id="1000070" version_string="1.0.0"><![CDATA[Delete badges in category]]></phrase>
+  <phrase title="ozzmodz_badges_delete_category" version_id="1000070" version_string="1.0.0"><![CDATA[Delete category]]></phrase>
+  <phrase title="ozzmodz_badges_deleting_badges_in_category" version_id="1000070" version_string="1.0.0"><![CDATA[Deleting badges in category...]]></phrase>
+  <phrase title="ozzmodz_badges_deleting_user_badges" version_id="2030051" version_string="2.3.0 Release Candidate 1"><![CDATA[Deleting user badges]]></phrase>
+  <phrase title="ozzmodz_badges_edit_badge" version_id="1000070" version_string="1.0.0"><![CDATA[Edit badge]]></phrase>
+  <phrase title="ozzmodz_badges_edit_badge_category" version_id="1000070" version_string="1.0.0"><![CDATA[Edit badge category]]></phrase>
+  <phrase title="ozzmodz_badges_edit_badge_reason" version_id="1000270" version_string="1.0.2"><![CDATA[Edit badge reason]]></phrase>
+  <phrase title="ozzmodz_badges_edit_reason" version_id="1000270" version_string="1.0.2"><![CDATA[Edit reason]]></phrase>
+  <phrase title="ozzmodz_badges_email_on_award" version_id="2000000" version_string="2.0.0"><![CDATA[Receive emails on badge award]]></phrase>
+  <phrase title="ozzmodz_badges_feature_badge" version_id="1000070" version_string="1.0.0"><![CDATA[Feature badge]]></phrase>
+  <phrase title="ozzmodz_badges_featured" version_id="2030296" version_string="2.3.2 Patch Level 6"><![CDATA[Featured]]></phrase>
+  <phrase title="ozzmodz_badges_featured_badges" version_id="1000070" version_string="1.0.0"><![CDATA[Featured badges]]></phrase>
+  <phrase title="ozzmodz_badges_has_user_criteria" version_id="1000070" version_string="1.0.0"><![CDATA[Has user criteria]]></phrase>
+  <phrase title="ozzmodz_badges_html_code_icon" version_id="2030471" version_string="2.3.4.1"><![CDATA[HTML code icon]]></phrase>
+  <phrase title="ozzmodz_badges_html_code_icon_explain" version_id="2030471" version_string="2.3.4.1"><![CDATA[Enter the HTML code for your badge. When using SVG or BASE64, please note that this code is not cached in the browser and increases the page size.]]></phrase>
+  <phrase title="ozzmodz_badges_icon_code_explain" version_id="2030053" version_string="2.3.0 Release Candidate 3"><![CDATA[Font Awesome icon code. For example: <code>fa-comments</code> or <code>fas fa-adjust</code>. <a href="https://fontawesome.com/v5/search" target="_blank">List of icon codes</a>.]]></phrase>
+  <phrase title="ozzmodz_badges_icon_type" version_id="1000070" version_string="1.0.0"><![CDATA[Icon type]]></phrase>
+  <phrase title="ozzmodz_badges_image_url_1x" version_id="2000000" version_string="2.0.0"><![CDATA[URL to Image (1x Resolution)]]></phrase>
+  <phrase title="ozzmodz_badges_image_url_2x" version_id="2000000" version_string="2.0.0"><![CDATA[URL to Image (2x Resolution) - Optional]]></phrase>
+  <phrase title="ozzmodz_badges_image_url_3x" version_id="2000000" version_string="2.0.0"><![CDATA[URL to Image (3x Resolution) - Optional]]></phrase>
+  <phrase title="ozzmodz_badges_image_url_4x" version_id="2000000" version_string="2.0.0"><![CDATA[URL to Image (4x Resolution) - Optional]]></phrase>
+  <phrase title="ozzmodz_badges_image_url_explain" version_id="1000070" version_string="1.0.0"><![CDATA[The web path from your site's XenForo installation directory to icon image. For default XenForo style use the square image icon.]]></phrase>
+  <phrase title="ozzmodz_badges_import_retain_ids_warning" version_id="2000002" version_string="2.0.0 2"><![CDATA[Checking this option will purge your existing badges data from [OzzModz] Badges.]]></phrase>
+  <phrase title="ozzmodz_badges_is_manually_awarded" version_id="2030051" version_string="2.3.0 Release Candidate 1"><![CDATA[Is manually awarded]]></phrase>
+  <phrase title="ozzmodz_badges_is_manually_awarded_explain" version_id="2030051" version_string="2.3.0 Release Candidate 1"><![CDATA[Disable this option if you want the badge to be awarded only automatically. Manually awarded badges are not removed automatically.]]></phrase>
+  <phrase title="ozzmodz_badges_is_repetitive" version_id="2010000" version_string="2.1.0"><![CDATA[Repetitive]]></phrase>
+  <phrase title="ozzmodz_badges_is_repetitive_explain" version_id="2010000" version_string="2.1.0"><![CDATA[If selected, this badge may be awarded multiple times.]]></phrase>
+  <phrase title="ozzmodz_badges_is_revoked" version_id="2010500" version_string="2.1.5"><![CDATA[Is recallable]]></phrase>
+  <phrase title="ozzmodz_badges_is_revoked_explain" version_id="2010500" version_string="2.1.5"><![CDATA[If checked, this badge will be revoked if the criteria no longer met]]></phrase>
+  <phrase title="ozzmodz_badges_mdi_icon" version_id="2020100" version_string="2.2.1"><![CDATA[Material Design Icon]]></phrase>
+  <phrase title="ozzmodz_badges_mdi_icon_code_explain" version_id="2020100" version_string="2.2.1"><![CDATA[Material Design Icon code. For example: <code>mdi-cheese</code> or <code>mdi-car-light-alert</code>. <a href="https://pictogrammers.github.io/@mdi/font/6.5.95/" target="_blank">List of icon codes</a>.]]></phrase>
+  <phrase title="ozzmodz_badges_members_awarded_with_this_badge" version_id="1000070" version_string="1.0.0"><![CDATA[Members awarded with this badge]]></phrase>
+  <phrase title="ozzmodz_badges_no_badges_available" version_id="2020100" version_string="2.2.1"><![CDATA[No badges available]]></phrase>
+  <phrase title="ozzmodz_badges_no_badges_have_been_added_to_this_category_yet" version_id="1000070" version_string="1.0.0"><![CDATA[No badges have been added to this category yet.]]></phrase>
+  <phrase title="ozzmodz_badges_no_badges_have_been_created_yet" version_id="2000000" version_string="2.0.0"><![CDATA[No badges have been created yet.]]></phrase>
+  <phrase title="ozzmodz_badges_no_rewardable_badges_for_this_user" version_id="2030036" version_string="2.3.0 Beta 6"><![CDATA[No rewardable badges for this user]]></phrase>
+  <phrase title="ozzmodz_badges_only_large_icons" version_id="2020195" version_string="2.2.1 Patch Level 5"><![CDATA[Import only large icons]]></phrase>
+  <phrase title="ozzmodz_badges_only_large_icons_hint" version_id="2020195" version_string="2.2.1 Patch Level 5"><![CDATA[Check this option if you want to import only large variants of badge images.]]></phrase>
+  <phrase title="ozzmodz_badges_optionally_describe_badge_and_criteria_user_needs_to_award" version_id="2000000" version_string="2.0.0"><![CDATA[Optionally describe the badge and the criteria the user needs to meet to be awarded it.]]></phrase>
+  <phrase title="ozzmodz_badges_please_confirm_that_you_want_to_delete_for_following_user_badge" version_id="2030171" version_string="2.3.1.1"><![CDATA[Please confirm that you want delete following user badge]]></phrase>
+  <phrase title="ozzmodz_badges_please_confirm_that_you_want_to_delete_x_badges" version_id="2010300" version_string="2.1.3"><![CDATA[Please confirm that you want to delete the {number} selected badges.]]></phrase>
+  <phrase title="ozzmodz_badges_please_confirm_that_you_want_to_export_x_badges" version_id="2010300" version_string="2.1.3"><![CDATA[Please confirm that you want to export the {number} selected badges.]]></phrase>
+  <phrase title="ozzmodz_badges_please_select_at_least_one_badge" version_id="2010300" version_string="2.1.3"><![CDATA[Please select at least one badge]]></phrase>
+  <phrase title="ozzmodz_badges_please_select_the_badge_icon_type" version_id="2000000" version_string="2.0.0"><![CDATA[Please select the badge icon type.]]></phrase>
+  <phrase title="ozzmodz_badges_please_specify_a_badge_icon_value" version_id="2000000" version_string="2.0.0"><![CDATA[Please specify a badge icon value.]]></phrase>
+  <phrase title="ozzmodz_badges_rebuild_user_badge_cache" version_id="2000075" version_string="2.0.0.5"><![CDATA[Rebuild user badge cache]]></phrase>
+  <phrase title="ozzmodz_badges_rebuild_user_badge_cache_explain" version_id="2030053" version_string="2.3.0 Release Candidate 3"><![CDATA[Rebuilds cached user badges values (recent user badges, tier counters) that used to display in common places where additional database queries are not allowed (postbit, member card).]]></phrase>
+  <phrase title="ozzmodz_badges_rebuild_user_badges" version_id="2020000" version_string="2.2.0"><![CDATA[Rebuild user badges]]></phrase>
+  <phrase title="ozzmodz_badges_rebuild_user_badges_explain" version_id="2030053" version_string="2.3.0 Release Candidate 3"><![CDATA[Rebuild of all existing badges for all users (rewards if criteria is met and revoked if not)]]></phrase>
+  <phrase title="ozzmodz_badges_recalculate_badge_count" version_id="2000000" version_string="2.0.0"><![CDATA[Recalculate badge count]]></phrase>
+  <phrase title="ozzmodz_badges_repeat_delay" version_id="2030051" version_string="2.3.0 Release Candidate 1"><![CDATA[Delay between re-awarding]]></phrase>
+  <phrase title="ozzmodz_badges_requested_badge_category_not_found" version_id="2020300" version_string="2.2.3"><![CDATA[Requested badge category not found]]></phrase>
+  <phrase title="ozzmodz_badges_requested_badge_not_found" version_id="2020300" version_string="2.2.3"><![CDATA[Requested badge not found]]></phrase>
+  <phrase title="ozzmodz_badges_requested_badge_tier_not_found" version_id="2020300" version_string="2.2.3"><![CDATA[Requested badge tier not found]]></phrase>
+  <phrase title="ozzmodz_badges_requested_user_badge_not_found" version_id="2020300" version_string="2.2.3"><![CDATA[Requested user badge not found]]></phrase>
+  <phrase title="ozzmodz_badges_sort_badges" version_id="2000000" version_string="2.0.0"><![CDATA[Sort badges]]></phrase>
+  <phrase title="ozzmodz_badges_stacked_with" version_id="2030036" version_string="2.3.0 Beta 6"><![CDATA[Stacked with]]></phrase>
+  <phrase title="ozzmodz_badges_stacking_badge" version_id="2030036" version_string="2.3.0 Beta 6"><![CDATA[Badge stacking]]></phrase>
+  <phrase title="ozzmodz_badges_stacking_explain" version_id="2030296" version_string="2.3.2 Patch Level 6"><![CDATA[Choose the badge he will stack with. Badges can only stack one level - sorted by recent in the first place.<br />
+<b>NOTE:</b> Make sure the badges are correctly sorted in display order (use the sort tool in the menu)<br />
+If you make changes to an existing you must perform a user badge cache rebuild if you want to apply changes to already awarded badges.
+]]></phrase>
+  <phrase title="ozzmodz_badges_take_away" version_id="2000000" version_string="2.0.0"><![CDATA[Take away]]></phrase>
+  <phrase title="ozzmodz_badges_take_away_badge" version_id="2000000" version_string="2.0.0"><![CDATA[Take away badge]]></phrase>
+  <phrase title="ozzmodz_badges_take_away_badge_usernames" version_id="2020291" version_string="2.2.2 Patch Level 1"><![CDATA[You may enter multiple names here. Leave it empty if you want take away  this badge from all users.]]></phrase>
+  <phrase title="ozzmodz_badges_this_badge_has_criteria_and_will_be_awarded_automatically_if_criteria_met" version_id="2030171" version_string="2.3.1.1"><![CDATA[This badge has a user criteria and will be automatically awarded again if the criteria is met.]]></phrase>
+  <phrase title="ozzmodz_badges_total_badges" version_id="2000000" version_string="2.0.0"><![CDATA[Total badges]]></phrase>
+  <phrase title="ozzmodz_badges_unaward" version_id="2030100" version_string="2.3.1"><![CDATA[Unaward]]></phrase>
+  <phrase title="ozzmodz_badges_unaward_all" version_id="2020001" version_string="2.2.0 1"><![CDATA[Take away all badges]]></phrase>
+  <phrase title="ozzmodz_badges_unaward_users" version_id="2020196" version_string="2.2.1 Patch Level 6"><![CDATA[Unaward users...]]></phrase>
+  <phrase title="ozzmodz_badges_unawarding" version_id="2030100" version_string="2.3.1"><![CDATA[Unawarding]]></phrase>
+  <phrase title="ozzmodz_badges_unfeature_badge" version_id="2000000" version_string="2.0.0"><![CDATA[Unfeature badge]]></phrase>
+  <phrase title="ozzmodz_badges_user_badge" version_id="2030303" version_string="2.3.3 3"><![CDATA[User badge]]></phrase>
+  <phrase title="ozzmodz_badges_user_badge_update_queue" version_id="2030600" version_string="2.3.6"><![CDATA[User badge update queue]]></phrase>
+  <phrase title="ozzmodz_badges_user_has_at_least_x_badges" version_id="1000070" version_string="1.0.0"><![CDATA[User has at least X badges]]></phrase>
+  <phrase title="ozzmodz_badges_user_has_no_more_than_x_badges" version_id="1000070" version_string="1.0.0"><![CDATA[User has no more than X badges]]></phrase>
+  <phrase title="ozzmodz_badges_user_has_not_awarded_for_at_least_x_days" version_id="2010000" version_string="2.1.0"><![CDATA[User has not been awarded with badge for at least X days]]></phrase>
+  <phrase title="ozzmodz_badges_user_has_not_the_following_badges" version_id="2030171" version_string="2.3.1.1"><![CDATA[User does NOT have the following badges]]></phrase>
+  <phrase title="ozzmodz_badges_user_has_the_following_badges" version_id="1000070" version_string="1.0.0"><![CDATA[User has the following badges]]></phrase>
+  <phrase title="ozzmodz_badges_user_is_already_awarded_with_this_badge" version_id="2020196" version_string="2.2.1 Patch Level 6"><![CDATA[This user is already awarded with this badge.]]></phrase>
+  <phrase title="ozzmodz_badges_view_all_available_badges" version_id="1000070" version_string="1.0.0"><![CDATA[View all available badges]]></phrase>
+  <phrase title="ozzmodz_badges_x_user_y_badge" version_id="2020300" version_string="2.2.3"><![CDATA[{username}'s {title} badge]]></phrase>
+  <phrase title="ozzmodz_badges_you_awarded_x_users" version_id="2030171" version_string="2.3.1.1"><![CDATA[You successfully awarded {number} users. ]]></phrase>
+  <phrase title="ozzmodz_badges_you_cant_change_this_badge_reason" version_id="1000270" version_string="1.0.2"><![CDATA[You can't change this badge's reason!]]></phrase>
+  <phrase title="ozzmodz_badges_you_cant_feature_more_than_x_badges" version_id="1000070" version_string="1.0.0"><![CDATA[You can't feature more than {badgeCount} badges!]]></phrase>
+  <phrase title="ozzmodz_badges_you_cant_feature_this_badge" version_id="1000070" version_string="1.0.0"><![CDATA[You can't feature this badge!]]></phrase>
+  <phrase title="ozzmodz_badges_you_have_been_awarded_a_badge_x" version_id="1000070" version_string="1.0.0"><![CDATA[You have been awarded a badge: {badge}]]></phrase>
+  <phrase title="ozzmodz_badges_you_unawarded_x_users" version_id="2030171" version_string="2.3.1.1"><![CDATA[You successfully unawarded {number} users. ]]></phrase>
+  <phrase title="ozzmodz_cron_interval_disabled" version_id="2020194" version_string="2.2.1 Patch Level 4"><![CDATA[Disabled (Dangerous Performance Impact!)]]></phrase>
+  <phrase title="ozzmodz_featured_badges_disabled" version_id="2020194" version_string="2.2.1 Patch Level 4"><![CDATA[Disabled (Featured Badges Only)]]></phrase>
+  <phrase title="ozzmodz_interval_last_x_days" version_id="2020194" version_string="2.2.1 Patch Level 4"><![CDATA[Last {number} Days]]></phrase>
+  <phrase title="ozzmodz_interval_last_x_hour" version_id="2020194" version_string="2.2.1 Patch Level 4"><![CDATA[Last {number} hour]]></phrase>
+  <phrase title="ozzmodz_interval_last_x_hours" version_id="2020194" version_string="2.2.1 Patch Level 4"><![CDATA[Last {number} hours]]></phrase>
+  <phrase title="ozzmodz_interval_last_x_minutes" version_id="2020194" version_string="2.2.1 Patch Level 4"><![CDATA[Last {number} Minutes]]></phrase>
+  <phrase title="ozzmodz_interval_last_x_weeks" version_id="2020194" version_string="2.2.1 Patch Level 4"><![CDATA[Last {number} weeks]]></phrase>
+  <phrase title="ozzmodz_most_recent_badges" version_id="2020194" version_string="2.2.1 Patch Level 4"><![CDATA[Most Recent Badges]]></phrase>
+  <phrase title="ozzmodz_oldest_badges" version_id="2020194" version_string="2.2.1 Patch Level 4"><![CDATA[Oldest Badges]]></phrase>
+  <phrase title="permission.ozzmodz_badges_award" version_id="2000000" version_string="2.0.0"><![CDATA[Award user with badge]]></phrase>
+  <phrase title="permission.ozzmodz_badges_featuredNumber" version_id="2000000" version_string="2.0.0"><![CDATA[Max number of featured badges]]></phrase>
+  <phrase title="permission.ozzmodz_badges_manageAnyFeatured" version_id="2020300" version_string="2.2.3"><![CDATA[Manage others featured badges]]></phrase>
+  <phrase title="permission.ozzmodz_badges_manageFeatured" version_id="2020300" version_string="2.2.3"><![CDATA[Manage own featured badges]]></phrase>
+  <phrase title="permission.ozzmodz_badges_takeAway" version_id="2000000" version_string="2.0.0"><![CDATA[Take away the badge]]></phrase>
+  <phrase title="permission.ozzmodz_badges_viewAwardedList" version_id="2010000" version_string="2.1.0"><![CDATA[View awarded member list]]></phrase>
+  <phrase title="permission.ozzmodz_badges_viewOthersTab" version_id="2010000" version_string="2.1.0"><![CDATA[View other members badges tab]]></phrase>
+  <phrase title="permission_interface.ozzmodz_badges" version_id="2000000" version_string="2.0.0"><![CDATA[[OzzModz] Badges]]></phrase>
+  <phrase title="permission_interface.ozzmodz_badges_moderatorPermissions" version_id="2000000" version_string="2.0.0"><![CDATA[[OzzModz] Badges: Moderator Permissions]]></phrase>
+  <phrase title="style_prop.ozzmodz_badges_featured_badges_label" version_id="2030403" version_string="2.3.4 3"><![CDATA[Featured badges stacked counter label]]></phrase>
+  <phrase title="style_prop.ozzmodz_badges_message_badge_size" version_id="2010101" version_string="2.1.1 1"><![CDATA[Size of badges in message]]></phrase>
+  <phrase title="style_prop.ozzmodz_badges_message_badge_size_single" version_id="2010101" version_string="2.1.1 1"><![CDATA[Size of badge in message (single column)]]></phrase>
+  <phrase title="style_prop.ozzmodz_badges_message_badges_gap" version_id="2000000" version_string="2.0.0"><![CDATA[Gap between badges in message]]></phrase>
+  <phrase title="style_prop.ozzmodz_badges_profile_badge_size" version_id="2000000" version_string="2.0.0"><![CDATA[Size of badge in profile]]></phrase>
+  <phrase title="style_prop.ozzmodz_badges_profile_badge_size_mobile" version_id="2010101" version_string="2.1.1 1"><![CDATA[Size of badge in mobile profile]]></phrase>
+  <phrase title="style_prop.ozzmodz_badges_profile_badges_gap" version_id="2000000" version_string="2.0.0"><![CDATA[Gap between badges in profile]]></phrase>
+  <phrase title="style_prop.ozzmodz_badges_show_in_message" version_id="2000000" version_string="2.0.0"><![CDATA[Display featured badges in messages]]></phrase>
+  <phrase title="style_prop.ozzmodz_badges_show_in_profile" version_id="2000000" version_string="2.0.0"><![CDATA[Display badges in user profile]]></phrase>
+  <phrase title="style_prop.ozzmodz_badges_show_in_tooltip" version_id="2000000" version_string="2.0.0"><![CDATA[Display featured badges in member tooltip]]></phrase>
+  <phrase title="style_prop.ozzmodz_badges_show_on_mobile" version_id="2000000" version_string="2.0.0"><![CDATA[Display badges on mobile]]></phrase>
+  <phrase title="style_prop.ozzmodz_badges_show_on_mobile_inline" version_id="2000000" version_string="2.0.0"><![CDATA[Display badges on mobile as inline block]]></phrase>
+  <phrase title="style_prop.ozzmodz_badges_show_stacked_counter" version_id="2030632" version_string="2.3.6 Beta 2"><![CDATA[Show stacked badges counter in postbit & member profile]]></phrase>
+  <phrase title="style_prop.ozzmodz_badges_tiers_show" version_id="2030632" version_string="2.3.6 Beta 2"><![CDATA[Display badge tiers in postbit and member card]]></phrase>
+  <phrase title="style_prop.ozzmodz_badges_tiers_show_on_mobile" version_id="2030037" version_string="2.3.0 Beta 7"><![CDATA[Display badge tiers on mobile]]></phrase>
+  <phrase title="style_prop.ozzmodz_badges_tooltip_badge_size" version_id="2000000" version_string="2.0.0"><![CDATA[Size of badge in member tooltip]]></phrase>
+  <phrase title="style_prop.ozzmodz_badges_tooltip_badges_gap" version_id="2000000" version_string="2.0.0"><![CDATA[Gap between badges in member tooltip]]></phrase>
+  <phrase title="style_prop_desc.ozzmodz_badges_featured_badges_label" version_id="2030403" version_string="2.3.4 3"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.ozzmodz_badges_message_badge_size" version_id="2000000" version_string="2.0.0"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.ozzmodz_badges_message_badge_size_single" version_id="2010192" version_string="2.1.1 Patch Level 2"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.ozzmodz_badges_message_badges_gap" version_id="2000000" version_string="2.0.0"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.ozzmodz_badges_profile_badge_size" version_id="2000000" version_string="2.0.0"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.ozzmodz_badges_profile_badge_size_mobile" version_id="2010192" version_string="2.1.1 Patch Level 2"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.ozzmodz_badges_profile_badges_gap" version_id="2000000" version_string="2.0.0"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.ozzmodz_badges_show_in_message" version_id="2000000" version_string="2.0.0"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.ozzmodz_badges_show_in_profile" version_id="2000000" version_string="2.0.0"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.ozzmodz_badges_show_in_tooltip" version_id="2000000" version_string="2.0.0"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.ozzmodz_badges_show_on_mobile" version_id="2000000" version_string="2.0.0"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.ozzmodz_badges_show_on_mobile_inline" version_id="2000000" version_string="2.0.0"><![CDATA[If checked, badges will be displaying under the user info. Otherwise will be displayed floating to the right of the postbit.]]></phrase>
+  <phrase title="style_prop_desc.ozzmodz_badges_show_stacked_counter" version_id="2030632" version_string="2.3.6 Beta 2"><![CDATA[Requires <a href="/admin.php?options/ozzmodz_badges_cacheStackedCount/view">Cache badge stacked count</a> option enabled.]]></phrase>
+  <phrase title="style_prop_desc.ozzmodz_badges_tiers_show" version_id="2030632" version_string="2.3.6 Beta 2"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.ozzmodz_badges_tiers_show_on_mobile" version_id="2030037" version_string="2.3.0 Beta 7"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.ozzmodz_badges_tooltip_badge_size" version_id="2000000" version_string="2.0.0"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.ozzmodz_badges_tooltip_badges_gap" version_id="2000000" version_string="2.0.0"><![CDATA[]]></phrase>
+  <phrase title="style_prop_group.ozzmodz_badges" version_id="2000000" version_string="2.0.0"><![CDATA[[OzzModz] Badges]]></phrase>
+  <phrase title="style_prop_group_desc.ozzmodz_badges" version_id="2000000" version_string="2.0.0"><![CDATA[Styling options for "Badges" addon.]]></phrase>
+  <phrase title="style_prop_vgroup.memberTooltipFeaturedBadges" version_id="2020194" version_string="2.2.1 Patch Level 4"><![CDATA[Member tooltip featured badges]]></phrase>
+  <phrase title="style_prop_vgroup.messageFeaturedBadges" version_id="2020194" version_string="2.2.1 Patch Level 4"><![CDATA[Message featured badges]]></phrase>
+  <phrase title="style_prop_vgroup.profileFeaturedBadges" version_id="2020194" version_string="2.2.1 Patch Level 4"><![CDATA[Profile featured badges]]></phrase>
+</phrases>

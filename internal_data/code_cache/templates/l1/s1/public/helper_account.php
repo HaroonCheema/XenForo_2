@@ -111,6 +111,12 @@ return array(
 			'_type' => 'option',
 		);
 	}
+	$__compilerTemp1[] = array(
+		'name' => 'option[ozzmodz_badges_email_on_award]',
+		'checked' => $__vars['xf']['visitor']['Option']['ozzmodz_badges_email_on_award'],
+		'label' => 'Receive emails on badge award',
+		'_type' => 'option',
+	);
 	$__compilerTemp2 = '';
 	if ($__vars['showExplain']) {
 		$__compilerTemp2 .= 'You may find additional email options under <a href="' . $__templater->func('link', array('account/preferences', ), true) . '">Preferences</a>.';

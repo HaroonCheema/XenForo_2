@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style_properties>
+  <style_property property_name="ozzmodz_badges_featured_badges_label" group_name="ozzmodz_badges" title="Featured badges stacked counter label" property_type="css" has_variations="0" display_order="10000" css_components="text,background,border,border_radius,padding,extra">
+    <value>{
+    "font-size": "@xf-fontSizeSmallest",
+    "color": "@xf-textColorMuted",
+    "background-color": "@xf-contentAltBg",
+    "border-color": "@xf-borderColorHeavy",
+    "padding-top": "1px",
+    "padding-right": "3px",
+    "padding-bottom": "1px",
+    "padding-left": "3px",
+    "extra": "left: 25%;\ntop: 60%;\nmargin: 0;\nline-height: 11px;"
+}</value>
+  </style_property>
+  <style_property property_name="ozzmodz_badges_message_badge_size" group_name="ozzmodz_badges" title="Size of badges in message" property_type="value" value_type="unit" has_variations="0" value_group="messageFeaturedBadges" display_order="30">
+    <value>"22px"</value>
+  </style_property>
+  <style_property property_name="ozzmodz_badges_message_badge_size_single" group_name="ozzmodz_badges" title="Size of badge in message (single column)" property_type="value" value_type="unit" has_variations="0" value_group="messageFeaturedBadges" display_order="31">
+    <value>"30px"</value>
+  </style_property>
+  <style_property property_name="ozzmodz_badges_message_badges_gap" group_name="ozzmodz_badges" title="Gap between badges in message" property_type="value" value_type="unit" has_variations="0" value_group="messageFeaturedBadges" display_order="40">
+    <value>"10px"</value>
+  </style_property>
+  <style_property property_name="ozzmodz_badges_profile_badge_size" group_name="ozzmodz_badges" title="Size of badge in profile" property_type="value" value_type="unit" has_variations="0" value_group="profileFeaturedBadges" display_order="60">
+    <value>"30px"</value>
+  </style_property>
+  <style_property property_name="ozzmodz_badges_profile_badge_size_mobile" group_name="ozzmodz_badges" title="Size of badge in mobile profile" property_type="value" value_type="unit" has_variations="0" value_group="profileFeaturedBadges" display_order="61">
+    <value>"40px"</value>
+  </style_property>
+  <style_property property_name="ozzmodz_badges_profile_badges_gap" group_name="ozzmodz_badges" title="Gap between badges in profile" property_type="value" value_type="unit" has_variations="0" value_group="profileFeaturedBadges" display_order="70">
+    <value>"10px"</value>
+  </style_property>
+  <style_property property_name="ozzmodz_badges_show_in_message" group_name="ozzmodz_badges" title="Display featured badges in messages" property_type="value" value_type="boolean" has_variations="0" value_group="messageFeaturedBadges" display_order="10">
+    <value>1</value>
+  </style_property>
+  <style_property property_name="ozzmodz_badges_show_in_profile" group_name="ozzmodz_badges" title="Display badges in user profile" property_type="value" value_type="boolean" has_variations="0" value_group="profileFeaturedBadges" display_order="50">
+    <value>1</value>
+  </style_property>
+  <style_property property_name="ozzmodz_badges_show_in_tooltip" group_name="ozzmodz_badges" title="Display featured badges in member tooltip" property_type="value" value_type="boolean" has_variations="0" value_group="memberTooltipFeaturedBadges" display_order="80">
+    <value>1</value>
+  </style_property>
+  <style_property property_name="ozzmodz_badges_show_on_mobile" group_name="ozzmodz_badges" title="Display badges on mobile" property_type="value" value_type="boolean" has_variations="0" value_group="messageFeaturedBadges" display_order="20">
+    <value>1</value>
+  </style_property>
+  <style_property property_name="ozzmodz_badges_show_on_mobile_inline" group_name="ozzmodz_badges" title="Display badges on mobile as inline block" description="If checked, badges will be displaying under the user info. Otherwise will be displayed floating to the right of the postbit." property_type="value" value_type="boolean" has_variations="0" display_order="25">
+    <value>1</value>
+  </style_property>
+  <style_property property_name="ozzmodz_badges_show_stacked_counter" group_name="ozzmodz_badges" title="Show stacked badges counter in postbit &amp; member profile" description="Requires &lt;a href=&quot;/admin.php?options/ozzmodz_badges_cacheStackedCount/view&quot;&gt;Cache badge stacked count&lt;/a&gt; option enabled." property_type="value" value_type="boolean" has_variations="0" value_group="messageFeaturedBadges" display_order="23">
+    <value>1</value>
+  </style_property>
+  <style_property property_name="ozzmodz_badges_tiers_show" group_name="ozzmodz_badges" title="Display badge tiers in postbit and member card" property_type="value" value_type="boolean" has_variations="0" value_group="messageFeaturedBadges" display_order="21">
+    <value>1</value>
+  </style_property>
+  <style_property property_name="ozzmodz_badges_tiers_show_on_mobile" group_name="ozzmodz_badges" title="Display badge tiers on mobile" property_type="value" value_type="boolean" has_variations="0" depends_on="ozzmodz_badges_tiers_show" value_group="messageFeaturedBadges" display_order="22">
+    <value>1</value>
+  </style_property>
+  <style_property property_name="ozzmodz_badges_tooltip_badge_size" group_name="ozzmodz_badges" title="Size of badge in member tooltip" property_type="value" value_type="unit" has_variations="0" value_group="memberTooltipFeaturedBadges" display_order="90">
+    <value>"25px"</value>
+  </style_property>
+  <style_property property_name="ozzmodz_badges_tooltip_badges_gap" group_name="ozzmodz_badges" title="Gap between badges in member tooltip" property_type="value" value_type="unit" has_variations="0" value_group="memberTooltipFeaturedBadges" display_order="100">
+    <value>"10px"</value>
+  </style_property>
+</style_properties>

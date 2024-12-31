@@ -30,6 +30,7 @@ return array (
   'style_prop_group.misc' => 'Miscellaneous',
   'style_prop_group.nodeList' => 'Node/forum list',
   'style_prop_group.overlay' => 'Overlays',
+  'style_prop_group.ozzmodz_badges' => '[OzzModz] Badges',
   'style_prop_group.page' => 'Page setup',
   'style_prop_group.palette' => 'Color palette',
   'style_prop_group.rtcContainer' => '[Real-Time Chat] Container',

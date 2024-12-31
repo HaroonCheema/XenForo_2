@@ -44,6 +44,8 @@ return array (
   'permission_interface.klUI' => '[TH] User Improvements permissions',
   'permission_interface.klUIModerator' => '[TH] User Improvements moderator permissions',
   'permission_interface.nick97_watch_list' => '[nick97] Watch List',
+  'permission_interface.ozzmodz_badges' => '[OzzModz] Badges',
+  'permission_interface.ozzmodz_badges_moderatorPermissions' => '[OzzModz] Badges: Moderator Permissions',
   'permission_interface.postAttachmentPermissions' => 'Post attachment permissions',
   'permission_interface.profilePostModeratorPermissions' => 'Profile post moderator permissions',
   'permission_interface.profilePostPermissions' => 'Profile post permissions',

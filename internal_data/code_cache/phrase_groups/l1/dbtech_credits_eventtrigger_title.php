@@ -24,6 +24,8 @@ return array (
   'dbtech_credits_eventtrigger_title.openbet' => 'Sportsbook Open Bet',
   'dbtech_credits_eventtrigger_title.openbetaccept' => 'Sportsbook Open Bet Accept',
   'dbtech_credits_eventtrigger_title.openbetaccepted' => 'Sportsbook Open Bet Accepted',
+  'dbtech_credits_eventtrigger_title.ozzmodz_badges_award' => '[OzzModz] Badges: Award',
+  'dbtech_credits_eventtrigger_title.ozzmodz_badges_awarded' => '[OzzModz] Badges: Awarded',
   'dbtech_credits_eventtrigger_title.paycheck' => 'Paycheck',
   'dbtech_credits_eventtrigger_title.payment' => 'Payment Profile',
   'dbtech_credits_eventtrigger_title.poll' => 'Poll',

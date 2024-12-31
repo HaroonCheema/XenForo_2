@@ -17,7 +17,25 @@ return array(
 
 	<link rel="stylesheet" href="' . $__templater->func('css_url', array($__vars['cssUrls'], ), true) . '" />
 
-	<!--XF:CSS-->
+	';
+	$__templater->includeCss('ozzmodz_badges.less');
+	$__finalCompiled .= '
+
+<!--XF:CSS-->
+';
+	if ($__vars['xf']['app']['options']['ozzmodz_badges_mdiSource'] == 'mdi') {
+		$__finalCompiled .= '
+	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@mdi/font@6.5.95/css/materialdesignicons.min.css">
+';
+	} else if ($__vars['xf']['app']['options']['ozzmodz_badges_mdiSource'] == 'local') {
+		$__finalCompiled .= '
+	';
+		$__templater->includeCss('ozzmodz_badges_mdi.less');
+		$__finalCompiled .= '
+';
+	}
+	$__finalCompiled .= '
+
 	';
 	if ($__vars['xf']['fullJs']) {
 		$__finalCompiled .= '

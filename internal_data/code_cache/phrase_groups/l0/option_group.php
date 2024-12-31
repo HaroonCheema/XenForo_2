@@ -77,6 +77,7 @@ return array (
   'option_group.nfGiftUpgrades' => 'NixFifty: Gift Upgrades',
   'option_group.nick97traktIntegration' => '[nick97] Trakt Integration',
   'option_group.nodeList' => 'Node & forum list',
+  'option_group.ozzmodz_badges' => '[OzzModz] Badges',
   'option_group.ozzmodz_dvn' => '[OzzModz] Display Visitor Name',
   'option_group.ozzmodz_forms' => '[OzzModz] Advanced Forms',
   'option_group.performance' => 'System and performance',

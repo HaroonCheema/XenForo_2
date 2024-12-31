@@ -47,6 +47,7 @@ return array (
   'cron_entry.fs_upgradeUsergroups' => '[FS] Upgrade Usergroup by Login',
   'cron_entry.fs_zoom_meeting_fresh_tok' => '[FS] Zoom refresh Token',
   'cron_entry.memberStatsCache' => 'Rebuild member stats cache',
+  'cron_entry.ozzmodz_badges' => '[OzzModz] Badges: Update user badges',
   'cron_entry.rebuildSearchForumCache' => 'Rebuild expired search forum caches',
   'cron_entry.rtcRemoveExpiredBans' => 'RTC: Remove expired bans',
   'cron_entry.run_successfully' => 'Cron entry was run successfully.',

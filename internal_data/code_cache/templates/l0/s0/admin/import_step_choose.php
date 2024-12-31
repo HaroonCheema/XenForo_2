@@ -34,8 +34,16 @@ return array(
 	$__compilerTemp2 = array();
 	if ($__vars['canRetainIds']) {
 		$__compilerTemp3 = '';
+		if (($__vars['importerId'] == 'OzzModz\\Badges:VersoBitBadges')) {
+			$__compilerTemp3 .= '
+	<div class="blockMessage blockMessage--warning blockMessage--iconic">
+		' . 'Checking this option will purge your existing badges data from [OzzModz] Badges.' . '
+	</div>
+';
+		}
+		$__compilerTemp4 = '';
 		if ($__vars['isCoreImporter']) {
-			$__compilerTemp3 .= '<strong>' . 'Note: if selected, user ID 1 from the source database will be merged into user ID 1 in XenForo. The XenForo user\'s email and password will be maintained for security.' . '</strong>';
+			$__compilerTemp4 .= '<strong>' . 'Note: if selected, user ID 1 from the source database will be merged into user ID 1 in XenForo. The XenForo user\'s email and password will be maintained for security.' . '</strong>';
 		}
 		$__compilerTemp2[] = array(
 			'name' => 'retain_ids',
@@ -43,7 +51,9 @@ return array(
 			'label' => 'Retain content IDs',
 			'hint' => '
 								' . 'If selected, when possible, the same ID will be used in XenForo as was used in the source database. This can make it easier redirect old links into XenForo.' . '
-								' . $__compilerTemp3 . '
+
+' . $__compilerTemp3 . '
+								' . $__compilerTemp4 . '
 							',
 			'_type' => 'option',
 		);

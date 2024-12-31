@@ -33,6 +33,7 @@ return array (
   'admin_permission.node' => 'Manage nodes',
   'admin_permission.notice' => 'Manage notices',
   'admin_permission.option' => 'Manage options',
+  'admin_permission.ozzmodz_badges' => '[OzzModz] Badges: Manage badges',
   'admin_permission.payment' => 'Manage payment providers',
   'admin_permission.reaction' => 'Manage reactions',
   'admin_permission.rebuildCache' => 'Rebuild caches',

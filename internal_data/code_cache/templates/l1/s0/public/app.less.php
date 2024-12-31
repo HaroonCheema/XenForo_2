@@ -74,6 +74,7 @@ return array(
 ' . $__templater->includeTemplate('app_ignored.less', $__vars) . '
 ' . $__templater->includeTemplate('app_username_styles.less', $__vars) . '
 ' . $__templater->includeTemplate('app_user_banners.less', $__vars) . '
+' . $__templater->includeTemplate('ozzmodz_badges_badge_tiers.less', $__vars) . '
 ' . $__templater->includeTemplate('app_alerts.less', $__vars) . '
 ' . $__templater->includeTemplate('app_content_vote.less', $__vars);
 	return $__finalCompiled;

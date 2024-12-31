@@ -54,8 +54,24 @@ return array(
 			';
 	}
 	$__compilerTemp3 = '';
-	if ($__vars['user']['is_banned']) {
+	if ($__templater->method($__vars['xf']['visitor'], 'canTakeAwayBadges', array())) {
 		$__compilerTemp3 .= '
+				' . $__templater->formCheckBoxRow(array(
+			'standalone' => 'true',
+		), array(array(
+			'name' => 'ozzmodz_badges_unaward',
+			'value' => '1',
+			'label' => '
+						' . 'Take away all badges' . '
+					',
+			'_type' => 'option',
+		)), array(
+		)) . '
+			';
+	}
+	$__compilerTemp4 = '';
+	if ($__vars['user']['is_banned']) {
+		$__compilerTemp4 .= '
 					' . $__templater->button('
 						' . 'Lift ban' . '
 					', array(
@@ -98,12 +114,15 @@ return array(
 		'label' => 'Reason for banning',
 		'explain' => 'This will be shown to the user if provided.',
 	)) . '
+
+			' . $__compilerTemp3 . '
+
 		</div>
 		' . $__templater->formSubmitRow(array(
 		'icon' => 'save',
 	), array(
 		'html' => '
-				' . $__compilerTemp3 . '
+				' . $__compilerTemp4 . '
 			',
 	)) . '
 	</div>

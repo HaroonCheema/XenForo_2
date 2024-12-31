@@ -66,7 +66,9 @@ return array(
 	';
 	}
 	$__finalCompiled .= '
-	' . '
+	' . $__templater->includeTemplate('ozzmodz_badges_moderator_actions', $__vars) . '
+
+' . '
 ';
 	return $__finalCompiled;
 }
@@ -165,6 +167,22 @@ return array(
 			' . $__templater->filter($__vars['user']['reaction_score'], array(array('number', array()),), true) . '
 		</dd>
 	</dl>
+	' . '
+	';
+	if ($__vars['user']['ozzmodz_badges_badge_count']) {
+		$__finalCompiled .= '
+		<dl class="pairs pairs--rows pairs--rows--centered fauxBlockLink">
+			<dt>' . 'Badges' . '</dt>
+			<dd>
+				<a href="' . $__templater->func('link', array('members/badges', $__vars['user'], ), true) . '" data-xf-click="overlay" class="fauxBlockLink-linkRow u-concealed">
+					' . $__templater->filter($__vars['user']['ozzmodz_badges_badge_count'], array(array('number', array()),), true) . '
+				</a>
+				
+			</dd>
+		</dl>
+	';
+	}
+	$__finalCompiled .= '
 	' . '
 	';
 	if ($__vars['xf']['options']['enableTrophies']) {

@@ -282,6 +282,27 @@ return array(
 
 <hr class="formRowSep" />
 
+
+' . $__templater->formRow('
+	<div class="inputGroup">
+		' . $__templater->formNumberBox(array(
+		'name' => 'criteria[ozzmodz_badges_badge_count][start]',
+		'value' => $__vars['criteria']['ozzmodz_badges_badge_count']['start'],
+		'readonly' => $__vars['readOnly'],
+	)) . '
+		<span class="inputGroup-text">-</span>
+		' . $__templater->formNumberBox(array(
+		'name' => 'criteria[ozzmodz_badges_badge_count][end]',
+		'value' => $__vars['criteria']['ozzmodz_badges_badge_count']['end'],
+		'readonly' => $__vars['readOnly'],
+	)) . '
+	</div>
+', array(
+		'rowtype' => 'input',
+		'label' => 'Badge count between',
+	)) . '
+
+
 ' . $__templater->includeTemplate('dbtech_credits_helper_user_search_criteria', $__vars) . '
 
 ' . $__templater->includeTemplate('dbtech_ecommerce_helper_user_search_criteria', $__vars) . '
@@ -515,6 +536,17 @@ return array(
 		$__finalCompiled .= '
 	<hr class="formRowSep" />
 	' . $__compilerTemp5 . '
+';
+	}
+	if (!$__vars['noOzzModzBadges']) {
+		$__finalCompiled .= '
+	' . $__templater->callMacro('ozzmodz_badges_badge_macros', 'badge_chooser', array(
+			'name' => 'criteria[ozzmodz_badges_badge_ids]',
+			'badgeData' => $__vars['ozzModzBadges'],
+			'multiple' => true,
+			'emptyLabel' => ' ',
+			'label' => 'Awarded with badges',
+		), $__vars) . '
 ';
 	}
 	return $__finalCompiled;

@@ -42,6 +42,22 @@ return array(
 		'class' => 'message-userBanner',
 		'itemprop' => 'jobTitle',
 	))) . '
+
+			';
+	if ($__templater->func('property', array('ozzmodz_badges_show_in_message', ), false)) {
+		$__finalCompiled .= '
+				';
+		$__templater->includeCss('ozzmodz_badges_featured_badges.less');
+		$__finalCompiled .= '
+
+				' . $__templater->callMacro('ozzmodz_badges_featured_badges_macros', 'featured_badges', array(
+			'location' => 'message',
+			'user' => $__vars['user'],
+		), $__vars) . '
+			';
+	}
+	$__finalCompiled .= '
+
 		</div>
 		';
 	if ($__vars['user']['user_id']) {

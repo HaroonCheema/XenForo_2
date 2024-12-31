@@ -175,15 +175,28 @@ return array(
 						';
 	}
 	$__compilerTemp9 = '';
-	$__compilerTemp10 = '';
-	$__compilerTemp10 .= $__templater->func('user_activity', array($__vars['user']));
-	if (strlen(trim($__compilerTemp10)) > 0) {
+	if ($__templater->func('property', array('ozzmodz_badges_show_in_profile', ), false)) {
 		$__compilerTemp9 .= '
+	';
+		$__templater->includeCss('ozzmodz_badges_featured_badges.less');
+		$__compilerTemp9 .= '
+	
+	' . $__templater->callMacro('ozzmodz_badges_featured_badges_macros', 'featured_badges', array(
+			'location' => 'member_view',
+			'user' => $__vars['user'],
+		), $__vars) . '
+';
+	}
+	$__compilerTemp10 = '';
+	$__compilerTemp11 = '';
+	$__compilerTemp11 .= $__templater->func('user_activity', array($__vars['user']));
+	if (strlen(trim($__compilerTemp11)) > 0) {
+		$__compilerTemp10 .= '
 								<div class="memberHeader-blurb">
 									<dl class="pairs pairs--inline">
 										<dt>' . 'Last seen' . '</dt>
 										<dd dir="auto">
-											' . $__compilerTemp10 . '
+											' . $__compilerTemp11 . '
 										</dd>
 									</dl>
 								</div>
@@ -222,6 +235,8 @@ return array(
 		'class' => 'memberHeader-blurb',
 	))) . '
 
+' . $__compilerTemp9 . '
+
 							<div class="memberHeader-blurb">
 								<dl class="pairs pairs--inline">
 									<dt>' . 'Joined' . '</dt>
@@ -230,7 +245,7 @@ return array(
 								</dl>
 							</div>
 
-							' . $__compilerTemp9 . '
+							' . $__compilerTemp10 . '
 						</div>
 					</div>
 					</div>
@@ -247,19 +262,19 @@ return array(
 					</div>
 
 					';
-	$__compilerTemp11 = '';
-	$__compilerTemp11 .= '
+	$__compilerTemp12 = '';
+	$__compilerTemp12 .= '
 								' . $__templater->callMacro('member_macros', 'member_action_buttons', array(
 		'user' => $__vars['user'],
 		'context' => 'profile',
 	), $__vars) . '
 							';
-	if (strlen(trim($__compilerTemp11)) > 0) {
+	if (strlen(trim($__compilerTemp12)) > 0) {
 		$__finalCompiled .= '
 						<hr class="memberHeader-separator" />
 
 						<div class="memberHeader-buttons">
-							' . $__compilerTemp11 . '
+							' . $__compilerTemp12 . '
 						</div>
 					';
 	}
@@ -416,6 +431,16 @@ return array(
 	   class="tabs-tab"
 	   id="my-points-score"
 	   role="tab">' . 'Points score' . '</a>
+';
+		}
+		$__finalCompiled .= '
+
+';
+		if ($__templater->method($__vars['xf']['visitor'], 'canViewBadgesTab', array($__vars['user'], ))) {
+			$__finalCompiled .= '
+	' . $__templater->callMacro('ozzmodz_badges_member_macros', 'badges_tab', array(
+				'user' => $__vars['user'],
+			), $__vars) . '
 ';
 		}
 		$__finalCompiled .= '
@@ -637,6 +662,16 @@ return array(
 	<li data-href="' . $__templater->func('link', array('members/my-points-score', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="my-points-score">
 		<div class="blockMessage">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
 	</li>
+';
+		}
+		$__finalCompiled .= '
+
+';
+		if ($__templater->method($__vars['xf']['visitor'], 'canViewBadgesTab', array($__vars['user'], ))) {
+			$__finalCompiled .= '
+	' . $__templater->callMacro('ozzmodz_badges_member_macros', 'badges_pane', array(
+				'user' => $__vars['user'],
+			), $__vars) . '
 ';
 		}
 		$__finalCompiled .= '

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="app.less" modification_key="ozzmodz_badges_app_less" description="Add CSS" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[{{ include('app_user_banners.less') }}]]></find>
+    <replace><![CDATA[$0
+{{ include('ozzmodz_badges_badge_tiers.less') }}]]></replace>
+  </modification>
+  <modification type="admin" template="ban_user_edit" modification_key="ozzzmodz_badges_ban_user_edit_unaward" description="Add checkbox" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<xf:textboxrow name="user_reason" value="{\$userBan\.user_reason}"[\s\S]*?\/>/]]></find>
+    <replace><![CDATA[$0
+
+			<xf:checkboxrow standalone="true">
+				<xf:option name="ozzmodz_badges_unaward" value="1">
+					{{ phrase('ozzmodz_badges_unaward_all') }}
+				</xf:option>
+			</xf:checkboxrow>
+]]></replace>
+  </modification>
+  <modification type="public" template="helper_account" modification_key="ozzmodz_badges_helper_account_award" description="Add option to email on badge award" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[		<xf:if is="$showConversationOption">
+			<xf:option name="option[email_on_conversation]" selected="$xf.visitor.Option.email_on_conversation"
+				label="{{ phrase('receive_email_when_new_conversation_message_is_received') }}" />
+		</xf:if>]]></find>
+    <replace><![CDATA[$0
+
+<xf:option name="option[ozzmodz_badges_email_on_award]" checked="{$xf.visitor.Option.ozzmodz_badges_email_on_award}"
+		   label="{{ phrase('ozzmodz_badges_email_on_award') }}" />]]></replace>
+  </modification>
+  <modification type="admin" template="helper_criteria" modification_key="ozzmodz_badges_helper_criteria" description="Adding addon user criteria" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<!--[XF:user:after_content]-->]]></find>
+    <replace><![CDATA[$0
+
+<xf:include template="ozzmodz_badges_helper_criteria" />]]></replace>
+  </modification>
+  <modification type="public" template="helper_js_global" modification_key="ozzmodz_badges_helper_js_global" description="(Helper) Add Badges CSS/JS to Global JS Helper." execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[(<!--XF:CSS-->)]]></find>
+    <replace><![CDATA[<xf:css src="ozzmodz_badges.less" />
+
+$0]]></replace>
+  </modification>
+  <modification type="public" template="helper_js_global" modification_key="ozzmodz_badges_helper_js_global_css" description="Material design icons" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<!--XF:CSS-->]]></find>
+    <replace><![CDATA[$0
+<xf:if is="$xf.app.options.ozzmodz_badges_mdiSource == 'mdi'">
+	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@mdi/font@6.5.95/css/materialdesignicons.min.css">
+<xf:elseif is="$xf.app.options.ozzmodz_badges_mdiSource == 'local'" />
+	<xf:css src="ozzmodz_badges_mdi.less" />
+</xf:if>
+]]></replace>
+  </modification>
+  <modification type="admin" template="helper_user_search_criteria" modification_key="ozzmodz_badges_helper_user_search_criteria" description="Add criteria" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/$/]]></find>
+    <replace><![CDATA[<xf:if is="!$noOzzModzBadges">
+	<xf:macro template="ozzmodz_badges_badge_macros" name="badge_chooser"
+			  arg-name="criteria[ozzmodz_badges_badge_ids]"
+			  arg-badgeData="{$ozzModzBadges}"
+			  arg-multiple="{{ true }}"
+			  arg-emptyLabel=" "
+			  arg-label="{{ phrase('ozzmodz_badges_awarded_with_badges') }}"/>
+</xf:if>]]></replace>
+  </modification>
+  <modification type="admin" template="helper_user_search_criteria" modification_key="ozzmodz_badges_helper_user_search_criteria_count" description="Add badges count" execution_order="1" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:checkboxrow name="criteria[user_state]" readonly="{$readOnly}"]]></find>
+    <replace><![CDATA[
+<xf:formrow rowtype="input" label="{{ phrase('ozzmodz_badges_badge_count_between') }}">
+	<div class="inputGroup">
+		<xf:numberbox name="criteria[ozzmodz_badges_badge_count][start]" value="{$criteria.ozzmodz_badges_badge_count.start}"
+			readonly="{$readOnly}"/>
+		<span class="inputGroup-text">-</span>
+		<xf:numberbox name="criteria[ozzmodz_badges_badge_count][end]" value="{$criteria.ozzmodz_badges_badge_count.end}"
+			readonly="{$readOnly}"/>
+	</div>
+</xf:formrow>
+
+
+$0]]></replace>
+  </modification>
+  <modification type="admin" template="import_step_choose" modification_key="ozzmodz_badges_import_step_choose" description="Add retain ids notice" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[{{ phrase('if_selected_same_id_used_in_xenforo_as_source_db') }}]]></find>
+    <replace><![CDATA[$0
+
+<xf:if is="{{ $importerId == 'OzzModz\Badges:VersoBitBadges' }}">
+	<div class="blockMessage blockMessage--warning blockMessage--iconic">
+		{{ phrase('ozzmodz_badges_import_retain_ids_warning') }}
+	</div>
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="member_ban_edit" modification_key="ozzzmodz_badges_member_ban_edit_unaward" description="Add checkbox" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<xf:textboxrow name="user_reason" value="{\$userBan\.user_reason}"[\s\S]*?\/>/]]></find>
+    <replace><![CDATA[$0
+
+			<xf:if is="$xf.visitor.canTakeAwayBadges()">
+				<xf:checkboxrow standalone="true">
+					<xf:option name="ozzmodz_badges_unaward" value="1">
+						{{ phrase('ozzmodz_badges_unaward_all') }}
+					</xf:option>
+				</xf:checkboxrow>
+			</xf:if>
+]]></replace>
+  </modification>
+  <modification type="public" template="member_macros" modification_key="ozzmodz_badges_member_macros" description="(Admin Tools) Moderator actions for awarding and taking away badges." execution_order="5" enabled="1" action="preg_replace">
+    <find><![CDATA[(<!--\[XF:moderator_menu:bottom\]-->)]]></find>
+    <replace><![CDATA[<xf:include template="ozzmodz_badges_moderator_actions" />
+
+$0]]></replace>
+  </modification>
+  <modification type="public" template="member_macros" modification_key="ozzmodz_badges_member_macros_badge_count" description="(Badge Display - Count) Display the number of badges the user has collected." execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[(<!--\[XF:stat_pairs:above_trophies\]-->)]]></find>
+    <replace><![CDATA[<!--[XF:stat_pairs:above_badge_total]-->
+	<xf:if is="$user.ozzmodz_badges_badge_count">
+		<dl class="pairs pairs--rows pairs--rows--centered fauxBlockLink">
+			<dt>{{ phrase('ozzmodz_badges') }}</dt>
+			<dd>
+				<a href="{{ link('members/badges', $user) }}" data-xf-click="overlay" class="fauxBlockLink-linkRow u-concealed">
+					{$user.ozzmodz_badges_badge_count|number}
+				</a>
+				
+			</dd>
+		</dl>
+	</xf:if>
+	$0]]></replace>
+  </modification>
+  <modification type="public" template="member_tooltip" modification_key="ozzmodz_badges_member_tooltip" description="(Badge Display - Icon Set) Displaying badges in member tooltip" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[(<xf:if contentcheck="true">*\s*<div class="memberTooltip-blurb">*\s*<xf:contentcheck>*\s*<xf:userblurb user="\$user" tag="div" \/>*\s*<\/xf:contentcheck>*\s*<\/div>*\s*<\/xf:if>)]]></find>
+    <replace><![CDATA[$0
+
+<xf:if is="{{ property('ozzmodz_badges_show_in_tooltip') }}">
+	<xf:css src="ozzmodz_badges_featured_badges.less" />
+	
+	<xf:macro name="featured_badges" template="ozzmodz_badges_featured_badges_macros"
+			  arg-location="member_tooltip" arg-user="{$user}" />
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="member_view" modification_key="ozzmodz_badges_member_view_badges_pane" description="(Profile Tab) Display a list of the badges the user has been awarded." execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[(<!--\[XF:tab_panes:end\]-->)]]></find>
+    <replace><![CDATA[<xf:if is="$xf.visitor.canViewBadgesTab($user)">
+	<xf:macro name="badges_pane" template="ozzmodz_badges_member_macros"
+		  arg-user="{$user}" />
+</xf:if>
+
+$0]]></replace>
+  </modification>
+  <modification type="public" template="member_view" modification_key="ozzmodz_badges_member_view_badges_tab" description="(Navigation) Add Badges Tab to Profile Page." execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[(<!--\[XF:tabs:end\]-->)]]></find>
+    <replace><![CDATA[<xf:if is="$xf.visitor.canViewBadgesTab($user)">
+	<xf:macro name="badges_tab" template="ozzmodz_badges_member_macros"
+		  arg-user="{$user}" />
+</xf:if>
+
+$0]]></replace>
+  </modification>
+  <modification type="public" template="member_view" modification_key="ozzmodz_badges_member_view_featured_badges" description="(Badge Display - Icon Set) Show badges in the header of the members profile." execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[(<xf:userblurb user="\$user" tag="div" class="memberHeader-blurb" \/>)]]></find>
+    <replace><![CDATA[$0
+
+<xf:if is="{{ property('ozzmodz_badges_show_in_profile') }}">
+	<xf:css src="ozzmodz_badges_featured_badges.less" />
+	
+	<xf:macro name="featured_badges" template="ozzmodz_badges_featured_badges_macros"
+			  arg-location="member_view" arg-user="{$user}" />
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="message_macros" modification_key="ozzmodz_badges_message_macros" description="(Badge Display - Icon Set) Show badges on the post bit." execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[(<xf:userbanners user="\$user" tag="div" class="message-userBanner" itemprop=".*?" />)]]></find>
+    <replace><![CDATA[$0
+
+			<xf:if is="{{ property('ozzmodz_badges_show_in_message') }}">
+				<xf:css src="ozzmodz_badges_featured_badges.less" />
+
+				<xf:macro name="featured_badges" template="ozzmodz_badges_featured_badges_macros"
+						  arg-location="message" arg-user="{$user}" />
+			</xf:if>
+]]></replace>
+  </modification>
+  <modification type="admin" template="tools_rebuild" modification_key="ozzmodz_badges_tools_rebuild" description="Add rebuild tools" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<!--[XF:after_reactions]-->]]></find>
+    <replace><![CDATA[$0
+<xf:include template="ozzmodz_badges_tools_rebuild" />]]></replace>
+  </modification>
+</template_modifications>

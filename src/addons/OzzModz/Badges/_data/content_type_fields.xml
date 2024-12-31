@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<content_type_fields>
+  <field content_type="ozzmodz_badges_awarded" field_name="dbtech_credits_entity">OzzModz\Badges:UserBadge</field>
+  <field content_type="ozzmodz_badges_awarded" field_name="dbtech_credits_eventtrigger_handler_class">OzzModz\Badges\EventTrigger\Awarded</field>
+  <field content_type="ozzmodz_badges_badge" field_name="alert_handler_class">OzzModz\Badges\Alert\Badge</field>
+  <field content_type="ozzmodz_badges_badge" field_name="entity">OzzModz\Badges:Badge</field>
+</content_type_fields>

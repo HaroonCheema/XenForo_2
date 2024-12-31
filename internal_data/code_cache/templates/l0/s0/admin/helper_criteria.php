@@ -644,6 +644,8 @@ return array(
 			<hr class="formRowSep" />
 
 			' . '
+
+' . $__templater->includeTemplate('ozzmodz_badges_helper_criteria', $__vars) . '
 			' . $__templater->includeTemplate('dbtech_ecommerce_user_criteria', $__vars) . '
 			' . $__templater->includeTemplate('dbtech_credits_user_criteria', $__vars) . '
 
@@ -1252,6 +1254,8 @@ return array(
 		<hr class="formRowSep" />
 
 		' . '
+
+' . $__templater->includeTemplate('ozzmodz_badges_helper_criteria', $__vars) . '
 			' . $__templater->includeTemplate('dbtech_ecommerce_user_criteria', $__vars) . '
 			' . $__templater->includeTemplate('dbtech_credits_user_criteria', $__vars) . '
 
