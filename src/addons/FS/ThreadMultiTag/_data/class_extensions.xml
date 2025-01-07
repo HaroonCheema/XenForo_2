@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class_extensions>
+  <extension from_class="XF\Entity\TagContent" to_class="FS\ThreadMultiTag\XF\Entity\TagContent" execute_order="10" active="1"/>
+  <extension from_class="XF\Pub\Controller\Forum" to_class="FS\ThreadMultiTag\XF\Pub\Controller\Forum" execute_order="10" active="1"/>
+  <extension from_class="XF\Pub\Controller\Post" to_class="FS\ThreadMultiTag\XF\Pub\Controller\Post" execute_order="10" active="1"/>
+  <extension from_class="XF\Repository\Tag" to_class="FS\ThreadMultiTag\XF\Repository\Tag" execute_order="10" active="1"/>
+  <extension from_class="XF\Service\Tag\Changer" to_class="FS\ThreadMultiTag\XF\Service\Tag\Changer" execute_order="10" active="1"/>
+</class_extensions>

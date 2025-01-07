@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="option.thread_multi_tag" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Thread Multi custom field id]]></phrase>
+  <phrase title="option_explain.thread_multi_tag" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_group.thread_multi_tags" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Thread Multi Tag]]></phrase>
+  <phrase title="option_group_description.thread_multi_tags" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+</phrases>

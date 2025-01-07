@@ -762,6 +762,7 @@ return array (
   'option.thmonetize_suggestUpgradeOnNoPermissionErrorRoutes' => 'Suggest user upgrades on no permission error routes',
   'option.thread_creater_user' => 'Thread Creator',
   'option.thread_grid_layout_lessv2' => 'Select Node',
+  'option.thread_multi_tag' => 'Thread Multi custom field id',
   'option.thtc_newPostNodeId' => 'New Threads Forum',
   'option.thtc_newThreadCreditPackage' => 'New Thread Credit Package',
   'option.thtc_nodeIds' => 'Active Forums',

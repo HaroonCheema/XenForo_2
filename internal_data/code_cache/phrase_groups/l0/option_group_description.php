@@ -104,6 +104,7 @@ It is possible to filter the news feed down to just users you follow, or a singl
   'option_group_description.thmonetize' => 'Options for the [TH] Monetize add-on.',
   'option_group_description.thread_article_view' => '',
   'option_group_description.thread_grid_layoutv2_less' => '',
+  'option_group_description.thread_multi_tags' => '',
   'option_group_description.ththreadcredits' => 'Options for the [TH] Thread Credits add-on.',
   'option_group_description.thuserimprovements' => 'Options for the [TH] User Improvements add-on.',
   'option_group_description.tournament' => 'Tournament options',

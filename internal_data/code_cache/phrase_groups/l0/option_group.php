@@ -100,6 +100,7 @@ return array (
   'option_group.thmonetize' => '[TH] Monetize',
   'option_group.thread_article_view' => '[FS] Thread Article View',
   'option_group.thread_grid_layoutv2_less' => '[Xenbros] Thread Grid',
+  'option_group.thread_multi_tags' => '[FS] Thread Multi Tag',
   'option_group.ththreadcredits' => '[TH] Thread Credits',
   'option_group.thuserimprovements' => '[TH] User Improvements',
   'option_group.tournament' => 'Tournament',
