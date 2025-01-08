@@ -1,0 +1,26 @@
+<xf:title>
+	<xf:if is="$model.model_id"> {{ phrase('fs_car_model_edit') }}
+		<xf:breadcrumb href="#">{{ phrase('fs_car_model_edit') }}</xf:breadcrumb> <xf:else
+																						   /> {{ phrase('fs_car_model_add') }} <xf:breadcrumb href="#">{{
+		phrase('fs_car_model_add') }}</xf:breadcrumb> </xf:if>
+</xf:title>
+
+<xf:form
+		 action="{{ link('car-model/save', $model) }}"
+		 class="block"
+		 ajax="1"
+		 >
+	<div class="block-container">
+		<div class="block-body">
+			<xf:textboxrow
+						   name="model"
+						   value="{$model.model}"
+						   label="{{ phrase('fs_car_model_name') }}"
+						   autosize="true"
+						   row="5"
+						   />
+		</div>
+
+		<xf:submitrow submit="{{ phrase('save') }}" fa="fa-save" />
+	</div>
+</xf:form>

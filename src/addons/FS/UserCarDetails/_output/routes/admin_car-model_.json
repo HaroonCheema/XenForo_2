@@ -1,0 +1,11 @@
+{
+    "route_type": "admin",
+    "route_prefix": "car-model",
+    "sub_name": "",
+    "format": ":int<model_id>/:page",
+    "build_class": "",
+    "build_method": "",
+    "controller": "FS\\UserCarDetails:Model",
+    "context": "fs_user_car_model_add",
+    "action_prefix": ""
+}

@@ -150,6 +150,8 @@ return array (
   'admin_navigation.fs_quiz_question' => 'Questions',
   'admin_navigation.fs_search_own_thread' => 'Add',
   'admin_navigation.fs_select_team' => '[FS] Create Team',
+  'admin_navigation.fs_user_car_model' => 'Car Model',
+  'admin_navigation.fs_user_car_model_add' => 'Add Model',
   'admin_navigation.fs_usergroup_batch' => '[FS] Batch',
   'admin_navigation.fs_usergroup_batch_add' => 'Add Batch',
   'admin_navigation.fs_yt_video_slider' => '[FS] Yt Videos',

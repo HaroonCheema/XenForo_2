@@ -1,0 +1,9 @@
+{
+    "template": "account_visitor_menu",
+    "description": "user can enter their car details here...!",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<!--[XF:account_links:bottom]-->",
+    "replace": "<li><a href=\"{{ link('car-details') }}\" class=\"menu-linkRow\">{{ phrase('fs_user_car_details_vis') }}</a></li>\n\n$0"
+}

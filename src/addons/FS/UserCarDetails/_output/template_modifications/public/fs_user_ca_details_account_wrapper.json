@@ -1,0 +1,9 @@
+{
+    "template": "account_wrapper",
+    "description": "fs_user_ca_details_account_wrapper",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/<a class=\"blockLink {{ \\$pageSelected == 'privacy' \\? 'is-selected' : '' }}\" href=\"{{ link\\('account\\/privacy'\\) }}\">.*?<\\/a>/is",
+    "replace": "$0\n<a class=\"blockLink {{ \\$pageSelected == 'carDetails/' ? 'is-selected' : '' }}\" href=\"{{ link('car-details/') }}\">\n\t\t\t\t\t{{ phrase('fs_user_car_details_vis') }}\n</a>"
+}

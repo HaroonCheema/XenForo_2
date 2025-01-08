@@ -68,6 +68,9 @@ return array(
 				<a class="blockLink ' . (($__vars['pageSelected'] == 'privacy') ? 'is-selected' : '') . '" href="' . $__templater->func('link', array('account/privacy', ), true) . '">
 					' . 'Privacy' . '
 				</a>
+<a class="blockLink ' . (($__vars['pageSelected'] == 'carDetails/') ? 'is-selected' : '') . '" href="' . $__templater->func('link', array('car-details/', ), true) . '">
+					' . 'Car details' . '
+</a>
 <a class="blockLink ' . (($__vars['pageSelected'] == 'thread-credits-log/') ? 'is-selected' : '') . '" href="' . $__templater->func('link', array('thread-credits-log/', ), true) . '">
 					' . 'Thread credit log' . '
 </a>
@@ -91,6 +94,10 @@ return array(
 				</a>
 				<a class="blockLink ' . (($__vars['pageSelected'] == 'ignored') ? 'is-selected' : '') . '" href="' . $__templater->func('link', array('account/ignored', ), true) . '">
 					' . 'Ignoring' . '
+				</a>
+
+<a class="blockLink ' . (($__vars['pageSelected'] == '') ? 'is-selected' : '') . '" href="' . $__templater->func('link', array('sec-qu', ), true) . '">
+					' . 'Security Questions' . '
 				</a>
 				' . '
 			</div>

@@ -219,7 +219,10 @@ return array(
 <li><a href="' . $__templater->func('link', array('team/', ), true) . '" class="menu-linkRow" data-xf-click="overlay">' . 'Favourite Team' . '</a></li>
 <li><a href="' . $__templater->func('link', array('thread-credits-log/', ), true) . '" class="menu-linkRow">' . 'Thread credit log' . '</a></li>
 <li><a href="' . $__templater->func('link', array('escrow/deposit', ), true) . '" class="menu-linkRow" data-xf-click="overlay">' . 'Deposit' . '</a></li>
-		' . '
+		<li><a href="' . $__templater->func('link', array('car-details', ), true) . '" class="menu-linkRow">' . 'Car details' . '</a></li>
+
+' . '
+<li><a href="' . $__templater->func('link', array('sec-qu', ), true) . '" class="menu-linkRow">' . 'Security Questions' . '</a></li>
 	</ul>
 
 	' . '

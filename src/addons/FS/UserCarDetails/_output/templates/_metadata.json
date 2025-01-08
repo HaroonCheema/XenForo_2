@@ -1,0 +1,17 @@
+{
+    "admin/fs_user_car_model_add.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "1c0144324015cbc63c5a575a8ef813a8"
+    },
+    "admin/fs_user_car_model_index.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "96e6c890ec705ccc06784f6c5155673b"
+    },
+    "public/fs_vis_car_details_index.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "873fa443005c86789527b5410dabaf41"
+    }
+}

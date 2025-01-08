@@ -19,5 +19,5 @@ $config['enableLivePayments'] = false;
 
 $config['debug'] = true;
 
-$config['development']['defaultAddOn'] = 'FS/WhoRepliedIntegration';
+$config['development']['defaultAddOn'] = 'FS/UserCarDetails';
 $config['development']['enabled'] = true;
