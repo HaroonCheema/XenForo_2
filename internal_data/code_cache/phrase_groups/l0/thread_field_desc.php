@@ -19,6 +19,7 @@ return array (
 		<li>Failure to abide by these rules can result in the loss of using the Auctions and Classifieds.</li>
 </ol>',
   'thread_field_desc.gameTitle' => '',
+  'thread_field_desc.multi_tags' => '',
   'thread_field_desc.payment_methods' => 'Chose which forms of payment you accept.',
   'thread_field_desc.shipping_term' => 'Chose your shipping terms.',
   'thread_field_desc.ships_via' => 'Choose the shipping service you will use.',

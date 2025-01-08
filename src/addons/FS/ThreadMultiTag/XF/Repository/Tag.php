@@ -5,10 +5,11 @@ namespace FS\ThreadMultiTag\XF\Repository;
 use XF\Mvc\Entity\Repository;
 use XF\Util\Arr;
 
-class Tag extends XFCP_Tag {
+class Tag extends XFCP_Tag
+{
 
-    public function modifyContentMultiTags($contentType, $contentId, array $addIds, array $removeIds, $userId = null) {
-
+    public function modifyContentMultiTags($contentType, $contentId, array $addIds, array $removeIds, $userId = null)
+    {
         $handler = $this->getTagHandler($contentType, true);
         $content = $handler->getContent($contentId);
         if (!$content) {
@@ -41,14 +42,11 @@ class Tag extends XFCP_Tag {
         return $cache;
     }
 
-    protected function addTagIdsToContentMulti(array $tagIds, $contentType, $contentId, $contentDate, $contentVisible, $addUserId) {
-
-
-
-
+    protected function addTagIdsToContentMulti(array $tagIds, $contentType, $contentId, $contentDate, $contentVisible, $addUserId)
+    {
 
         $db = $this->db();
-//        
+        //        
         $multiTagIds = $db->query("SELECT tag_id FROM xf_tag_content
                                 WHERE multi_order != 0
 				AND content_type = ?
@@ -60,13 +58,12 @@ class Tag extends XFCP_Tag {
             $this->recalculateTagUsageCache($multiTagIds);
         }
 
-
         $visibleSql = $contentVisible ? 1 : 0;
 
         $insertedIds = [];
 
         $order = 0;
-        foreach ($tagIds AS $addId) {
+        foreach ($tagIds as $addId) {
             $order = $order + 1;
             $inserted = $db->insert('xf_tag_content', [
                 'content_type' => $contentType,
@@ -77,7 +74,7 @@ class Tag extends XFCP_Tag {
                 'content_date' => $contentDate,
                 'visible' => $visibleSql,
                 'multi_order' => $order,
-                    ], false, false, 'IGNORE');
+            ], false, false, 'IGNORE');
             $contentTagId = $db->lastInsertId();
 
             if ($inserted && $contentVisible) {

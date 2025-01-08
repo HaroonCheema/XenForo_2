@@ -592,14 +592,7 @@ return array(
 						';
 		if (($__vars['xf']['visitor']['user_state'] == 'rejected') OR ($__vars['xf']['visitor']['user_state'] == 'disabled')) {
 			$__compilerTemp6 .= '
-							<a href="' . $__templater->func('link', array('account/thtc-credit-packages', ), true) . '"
-   data-badge="' . $__templater->filter($__vars['xf']['visitor']['thtc_credits_cache'], array(array('number', array()),), true) . '"
-  class="p-navgroup-link p-navgroup-link--iconic p-navgroup-link--threadCredits badgeContainer badgeContainer--highlighted">
-	' . $__templater->fontAwesome('fa-coins', array(
-			)) . '
-	' . 'Credits' . '
-</a>
-<a href="' . $__templater->func('link', array('account', ), true) . '"
+							<a href="' . $__templater->func('link', array('account', ), true) . '"
 								class="p-navgroup-link p-navgroup-link--iconic p-navgroup-link--user">
 								' . $__templater->func('avatar', array($__vars['xf']['visitor'], 'xxs', false, array(
 				'href' => '',
@@ -617,14 +610,7 @@ return array(
 				'section' => 'start',
 				'nav' => $__vars['navTree']['dbtechCredits'],
 			), $__vars) . '
-							<a href="' . $__templater->func('link', array('account/thtc-credit-packages', ), true) . '"
-   data-badge="' . $__templater->filter($__vars['xf']['visitor']['thtc_credits_cache'], array(array('number', array()),), true) . '"
-  class="p-navgroup-link p-navgroup-link--iconic p-navgroup-link--threadCredits badgeContainer badgeContainer--highlighted">
-	' . $__templater->fontAwesome('fa-coins', array(
-			)) . '
-	' . 'Credits' . '
-</a>
-<a href="' . $__templater->func('link', array('account', ), true) . '"
+							<a href="' . $__templater->func('link', array('account', ), true) . '"
 								class="p-navgroup-link p-navgroup-link--iconic p-navgroup-link--user"
 								data-xf-click="menu"
 								data-xf-key="' . $__templater->filter('m', array(array('for_attr', array()),), true) . '"
@@ -1009,14 +995,7 @@ return array(
 		$__finalCompiled .= '
 			<div class="p-offCanvasAccountLink">
 				<div class="offCanvasMenu-linkHolder">
-					<a href="' . $__templater->func('link', array('account/thtc-credit-packages', ), true) . '"
-   data-badge="' . $__templater->filter($__vars['xf']['visitor']['thtc_credits_cache'], array(array('number', array()),), true) . '"
-  class="p-navgroup-link p-navgroup-link--iconic p-navgroup-link--threadCredits badgeContainer badgeContainer--highlighted">
-	' . $__templater->fontAwesome('fa-coins', array(
-		)) . '
-	' . 'Credits' . '
-</a>
-<a href="' . $__templater->func('link', array('account', ), true) . '" class="offCanvasMenu-link">
+					<a href="' . $__templater->func('link', array('account', ), true) . '" class="offCanvasMenu-link">
 						' . $__templater->func('avatar', array($__vars['xf']['visitor'], 'xxs', false, array(
 			'href' => '',
 		))) . '

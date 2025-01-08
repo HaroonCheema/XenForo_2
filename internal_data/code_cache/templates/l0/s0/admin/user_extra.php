@@ -85,58 +85,14 @@ return array(
 	$__finalCompiled .= '
 		</div>
 
-		<h3 class="block-minorHeader">' . 'Credit packages' . '</h3>
-<div class="block-body">
-	';
-	if (!$__templater->test($__vars['thtcCreditPackages'], 'empty', array())) {
-		$__finalCompiled .= '
-		';
-		$__compilerTemp2 = '';
-		if ($__templater->isTraversable($__vars['thtcCreditPackages'])) {
-			foreach ($__vars['thtcCreditPackages'] AS $__vars['purchase']) {
-				$__compilerTemp2 .= '
-				';
-				$__vars['purchaseRequest'] = $__vars['purchase']['PurchaseRequest'];
-				$__compilerTemp2 .= '
-				' . $__templater->dataRow(array(
-				), array(array(
-					'label' => $__templater->escape($__vars['purchase']['CreditPackage']['title']),
-					'hint' => '
-							<ul class="listInline listInline--bullet" style="display: inline-block">
-								<li>' . ($__vars['purchaseRequest'] ? ($__templater->escape($__vars['purchaseRequest']['PaymentProfile']['title']) ?: 'Unknown payment profile') : 'Manually granted') . '</li>
-								<li>' . $__templater->func('date_dynamic', array($__vars['purchase']['purchased_at'], array(
-				))) . '</li>
-							</ul>
-						',
-					'_type' => 'main',
-					'html' => '',
-				))) . '
-			';
-			}
-		}
-		$__finalCompiled .= $__templater->dataList('
-			' . $__compilerTemp2 . '
-		', array(
-			'data-xf-init' => 'responsive-data-list',
-		)) . '
-		';
-	} else {
-		$__finalCompiled .= '
-		<div class="block-row">' . 'None' . '</div>
-	';
-	}
-	$__finalCompiled .= '
-</div>
-
-
-<h3 class="block-minorHeader">' . 'Connected accounts' . '</h3>
+		<h3 class="block-minorHeader">' . 'Connected accounts' . '</h3>
 		<div class="block-body block-row">
 			';
-	$__compilerTemp3 = true;
+	$__compilerTemp2 = true;
 	if ($__templater->isTraversable($__vars['connectedProviders'])) {
 		foreach ($__vars['connectedProviders'] AS $__vars['provider']) {
 			if ($__templater->method($__vars['provider'], 'isAssociated', array($__vars['user'], ))) {
-				$__compilerTemp3 = false;
+				$__compilerTemp2 = false;
 				$__finalCompiled .= '
 				<dl class="pairs pairs--columns pairs--fixedSmall">
 					<dt>' . $__templater->escape($__vars['provider']['title']) . '</dt>
@@ -146,7 +102,7 @@ return array(
 			}
 		}
 	}
-	if ($__compilerTemp3) {
+	if ($__compilerTemp2) {
 		$__finalCompiled .= '
 				' . 'None' . '
 			';

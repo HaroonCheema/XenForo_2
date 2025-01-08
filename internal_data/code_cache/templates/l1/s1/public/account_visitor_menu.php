@@ -39,14 +39,6 @@ return array(
 			' . $__templater->filter($__vars['xf']['visitor']['special_credit'], array(array('number', array()),), true) . '
 	</dd>
 </dl>
-<dl class="pairs pairs--justified fauxBlockLink">
-	<dt>' . 'Credits' . '</dt>
-	<dd>
-		<a href="' . $__templater->func('link', array('account/thtc-credit-packages', ), true) . '" class="fauxBlockLink-linkRow u-concealed">
-			' . $__templater->filter($__vars['xf']['visitor']['thtc_credits_cache'], array(array('number', array()),), true) . '
-		</a>
-	</dd>
-</dl>
 ' . '
 					<dl class="pairs pairs--justified fauxBlockLink">
 						<dt>' . 'Messages' . '</dt>
@@ -221,11 +213,6 @@ return array(
 		<li><a href="' . $__templater->func('link', array('account/preferences', ), true) . '" class="menu-linkRow">' . 'Preferences' . '</a></li>
 		' . $__compilerTemp3 . '
 		' . $__compilerTemp4 . '
-<li>
-	<a href="' . $__templater->func('link', array('account/thtc-credit-packages', ), true) . '" class="menu-linkRow">
-		' . 'Credit packages' . '
-	</a>
-</li>
 		' . $__compilerTemp5 . '
 		<li><a href="' . $__templater->func('link', array('account/following', ), true) . '" class="menu-linkRow">' . 'Following' . '</a></li>
 		<li><a href="' . $__templater->func('link', array('account/ignored', ), true) . '" class="menu-linkRow">' . 'Ignoring' . '</a></li>

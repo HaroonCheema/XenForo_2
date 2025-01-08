@@ -500,12 +500,7 @@ return array(
 <div class="structItem-cell structItem-cell--meta" title="' . $__templater->filter('First message reaction score' . $__vars['xf']['language']['label_separator'], array(array('for_attr', array()),), true) . ' ' . $__templater->filter($__vars['thread']['first_post_reaction_score'], array(array('number', array()),), true) . '">
 			<dl class="pairs pairs--justified">
 				<dt>' . 'Replies' . '</dt>
-				<dd>
-';
-	$__vars['threadReplyCount'] = $__templater->preEscaped($__templater->filter($__vars['thread']['reply_count'], array(array('number_short', array()),), true));
-	$__finalCompiled .= '
-' . $__templater->includeTemplate('thread_list_macros_whoreplied', $__vars) . '
-</dd>
+				<dd>' . (($__vars['thread']['discussion_type'] == 'redirect') ? '&ndash;' : $__templater->filter($__vars['thread']['reply_count'], array(array('number_short', array()),), true)) . '</dd>
 			</dl>
 			<dl class="pairs pairs--justified structItem-minor">
 				<dt>' . 'Views' . '</dt>

@@ -395,18 +395,6 @@ return function($__templater, $__selectedNav, array $__vars)
 			}
 		}
 
-		if ($__templater->method($__vars['xf']['visitor'], 'hasPermission', array('FTSlider_permissions', 'FTSlider_view_page', ))) {
-			$__navTemp = [
-		'title' => \XF::phrase('nav.FTSlider_list_nav'),
-		'href' => $__templater->func('link', array('all-features', ), false),
-		'attributes' => [],
-	];
-			if ($__navTemp) {
-				$__tree['forums']['children']['FTSlider_list_nav'] = $__navTemp;
-				$__flat['FTSlider_list_nav'] =& $__tree['forums']['children']['FTSlider_list_nav'];
-			}
-		}
-
 		if ($__vars['xf']['visitor']['user_id']) {
 			$__navTemp = [
 		'title' => \XF::phrase('nav.watched'),
@@ -1044,18 +1032,6 @@ return function($__templater, $__selectedNav, array $__vars)
 				}
 			}
 
-		}
-	}
-
-	if ($__vars['xf']['session']['snogFormsCount']['total']) {
-		$__navTemp = [
-		'title' => \XF::phrase('nav.snog_forms_nav'),
-		'href' => $__templater->func('link', array('form', ), false),
-		'attributes' => [],
-	];
-		if ($__navTemp) {
-			$__tree['snog_forms_nav'] = $__navTemp;
-			$__flat['snog_forms_nav'] =& $__tree['snog_forms_nav'];
 		}
 	}
 
