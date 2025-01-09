@@ -1,0 +1,9 @@
+<xf:set var="$currencies" value="{$xf.app.em.getRepository('DBTech\Credits:Currency').getCurrencies()}" />
+
+<li role="tabpanel" id="dbtech-credits">
+	<div class="block-body">
+		<xf:foreach loop="$currencies" value="$currency">
+			<xf:numberboxrow label="{$currency.title}" name="credits[{$currency.currency_id}]" value="{{ $user.getDbtechCreditsCurrency($currency) }}" step="any" />
+		</xf:foreach>
+	</div>
+</li>

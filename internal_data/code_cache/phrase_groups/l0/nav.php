@@ -47,6 +47,7 @@ return array (
   'nav.fsWebsiteRanking' => 'Website Ranking',
   'nav.fs_a' => 'Test A',
   'nav.fs_auction_category' => 'Auction',
+  'nav.fs_car_details_list' => 'Car Details',
   'nav.fs_escrow' => 'Escrow',
   'nav.fs_escrow_add' => 'Start Escrow',
   'nav.fs_forumGroups_index' => 'Forum Groups',

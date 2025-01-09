@@ -1,0 +1,11 @@
+{
+    "route_type": "public",
+    "route_prefix": "cars-list",
+    "sub_name": "",
+    "format": ":int<user_id>/:page",
+    "build_class": "",
+    "build_method": "",
+    "controller": "FS\\UserCarDetails:CarsList",
+    "context": "fs_car_details_list",
+    "action_prefix": ""
+}

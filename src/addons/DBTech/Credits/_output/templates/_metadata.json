@@ -4,6 +4,11 @@
         "version_string": "5.7.7",
         "hash": "9e0e5ff9a8ffa18052e749e64b18c3ae"
     },
+    "admin/dbtech_credits_user_edit_pane.html": {
+        "version_id": 905030034,
+        "version_string": "5.3.0 Beta 4",
+        "hash": "a5f40f5f843f4e3a134590f9d48f30f7"
+    },
     "admin/dbtech_credits_user_edit_tab.html": {
         "version_id": 905080070,
         "version_string": "5.8.0",

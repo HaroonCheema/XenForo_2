@@ -1,0 +1,34 @@
+<xf:form action="{{ link('cars-list/') }}">
+
+	<div class="menu-row">
+		{{ phrase('fs_car_select_model_filter') }}
+		<div class="u-inputSpacer"><xf:select name="model_id" value="{$conditions.model_id|default([0])}" required="required">
+			<xf:option value="0">{{ phrase('none') }}</xf:option>
+			<xf:foreach loop="$models" value="$val">
+				<xf:option value="{$val.model_id}">{$val.model}</xf:option>
+			</xf:foreach>
+			</xf:select>
+		</div>
+	</div>
+
+	<div class="menu-row">
+		{{ phrase('fs_car_location_filter') }}
+		<div class="u-inputSpacer">
+			<xf:textbox
+						name="car_location"
+						value="{$conditions.car_location}"
+						rowtype="fullWidth"
+						placeholder="{{ phrase('fs_car_details_filter_location') }}"
+						/>
+		</div>
+	</div>
+
+	<div class="menu-footer">
+		<span class="menu-footer-controls">
+			<xf:button type="submit" class="button--primary"
+					   >{{ phrase('filter') }}</xf:button
+				>
+		</span>
+	</div>
+	<xf:hiddenval name="apply">1</xf:hiddenval>
+</xf:form>

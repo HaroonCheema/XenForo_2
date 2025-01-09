@@ -20,7 +20,7 @@ class CarDetails extends AbstractController
     {
         $visitor = \XF::visitor();
 
-        $models = $this->Finder('FS\UserCarDetails:Model')->fetch();
+        $models = $this->finder('FS\UserCarDetails:Model')->fetch();
 
         $viewpParams = [
             'pageSelected' => 'carDetails/',
@@ -34,38 +34,11 @@ class CarDetails extends AbstractController
 
     public function actionSave()
     {
-        $visitor = \XF::visitor();
+        $user = \XF::visitor();
 
-        $input = $this->filterInputs();
-
-        $visitor->bulkSet($input);
-
-        $visitor->save();
+        $carDetailsServ = $this->service('FS\UserCarDetails:AddEditCarDetails');
+        $carDetailsServ->filterInputs($user);
 
         return $this->redirect($this->buildLink('car-details/'));
-    }
-
-    protected function filterInputs()
-    {
-        $input = $this->filter([
-            'model_id' => 'int',
-            'car_colour' => 'str',
-            'car_trim' => 'str',
-            'car_location' => 'str',
-            'car_plaque_number' => 'str',
-            'car_reg_number' => 'str',
-            'car_forum_name' => 'str',
-            'car_unique_information' => 'str'
-        ]);
-
-        if (!$input['model_id'] || $input['car_colour'] == '' || $input['car_trim'] == '' || $input['car_plaque_number'] == '' || $input['car_reg_number'] == '') {
-            throw $this->exception($this->error(\XF::phraseDeferred('please_complete_required_fields')));
-        }
-
-        if ($this->filter('car_reg_date', 'str')) {
-            $input['car_reg_date'] = strtotime($this->filter('car_reg_date', 'str'));
-        }
-
-        return $input;
     }
 }

@@ -1,0 +1,9 @@
+{
+    "template": "user_edit",
+    "description": "fs_user_car_details_add_tab",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<!--[XF:tabs:end]-->",
+    "replace": "<a class=\"tabs-tab\" role=\"tab\" tabindex=\"0\" aria-controls=\"car-details\">{{ phrase('fs_user_car_details') }}</a>\n$0"
+}

@@ -1,0 +1,100 @@
+<xf:title> {{ phrase('fs_car_details_list_all') }} </xf:title>
+
+<div class="block">
+
+	<div class="block-container">
+
+		<xf:macro name="car_details_filter" arg-conditions="{$conditions}" />
+
+		<div class="block-body">
+
+			<xf:datalist data-xf-init="responsive-data-list">
+				<xf:if is="$data is not empty">
+
+					<xf:macro name="record_table_list" arg-data="{$data}" />
+					<xf:else />
+					<div class="blockMessage">
+						{{ phrase('no_items_have_been_created_yet') }}
+					</div>
+				</xf:if>
+			</xf:datalist>
+		</div>
+
+		<div class="block-footer">
+			<span class="block-footer-counter"
+				  >{{ display_totals($data, $total) }}</span
+				>
+		</div>
+
+	</div>
+	<div class="block-outer block-outer--after">
+		<xf:pagenav
+					page="{$page}"
+					perpage="{$perPage}"
+					total="{$total}"
+					link="cars-list"
+					data="{$data}"
+					params="{$conditions}"
+					wrapperclass="block-outer-main"
+					/>
+		<xf:showignored wrapperclass="block-outer-opposite" />
+	</div>
+</div>
+
+<xf:macro name="car_details_filter" arg-conditions="!">
+	<div class="block-filterBar">
+		<div class="filterBar">
+			<a
+			   class="filterBar-menuTrigger"
+			   data-xf-click="menu"
+			   role="button"
+			   tabindex="0"
+			   aria-expanded="false"
+			   aria-haspopup="true"
+			   >{{ phrase('filters') }}</a
+				>
+			<div
+				 class="menu menu--wide"
+				 data-menu="menu"
+				 aria-hidden="true"
+				 data-href="{{ link('cars-list/refine-search', null, $conditions)}}"
+				 data-load-target=".js-filterMenuBody"
+				 >
+				<div class="menu-content">
+					<h4 class="menu-header">{{ phrase('fs_car_details_filter') }}</h4>
+					<div class="js-filterMenuBody">
+						<div class="menu-row">{{ phrase('loading...') }}</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</xf:macro>
+
+<xf:macro name="record_table_list" arg-data="{$data}">
+	<xf:datarow rowtype="header">
+		<xf:cell> {{ phrase('fs_car_details_list_model') }} </xf:cell>
+		<xf:cell> {{ phrase('fs_car_details_list_car_colour') }} </xf:cell>
+		<xf:cell> {{ phrase('fs_car_details_list_car_trim') }} </xf:cell>
+		<xf:cell> {{ phrase('fs_car_details_list_car_location') }} </xf:cell>
+		<xf:cell> {{ phrase('fs_car_details_list_car_plaque_number') }} </xf:cell>
+		<xf:cell> {{ phrase('fs_car_details_list_car_reg_number') }} </xf:cell>
+		<xf:cell> {{ phrase('fs_car_details_list_car_reg_date') }} </xf:cell>
+		<xf:cell> {{ phrase('fs_car_details_list_car_forum_name') }} </xf:cell>
+		<xf:cell> {{ phrase('fs_car_details_list_car_unique_information') }} </xf:cell>
+	</xf:datarow>
+	<xf:foreach loop="{$data}" value="$val">
+		<xf:datarow>
+			<xf:cell href="{{ link('members/', $val) }}" > {{ $val.CarModel.model }} </xf:cell>
+			<xf:cell> {{ $val.car_colour }} </xf:cell>
+			<xf:cell> {{ $val.car_trim }} </xf:cell>
+			<xf:cell> {{ $val.car_location }} </xf:cell>
+			<xf:cell> {{ $val.car_plaque_number }} </xf:cell>
+			<xf:cell> {{ $val.car_reg_number }} </xf:cell>
+			<xf:cell><xf:if is="$val.car_reg_date"> <xf:date time="{$val.car_reg_date}" /> <xf:else /> - </xf:if></xf:cell>
+			<xf:cell> {{ $val.car_forum_name }} </xf:cell>
+			<xf:cell title="{{ $val.car_unique_information }}"> {{ snippet($val.car_unique_information, 30, {'stripBbCode': true}) }} </xf:cell>
+
+		</xf:datarow>
+	</xf:foreach>
+</xf:macro>

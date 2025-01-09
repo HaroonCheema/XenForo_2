@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="admin_navigation.fs_user_car_model" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Car Model]]></phrase>
+  <phrase title="admin_navigation.fs_user_car_model_add" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add Model]]></phrase>
+  <phrase title="fs_car_details_add_colour" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter your car colour here..!]]></phrase>
+  <phrase title="fs_car_details_add_forum_name" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter forum name here...!]]></phrase>
+  <phrase title="fs_car_details_add_location" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter your location here...!]]></phrase>
+  <phrase title="fs_car_details_add_plaque_number" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter your car plaque number here...!]]></phrase>
+  <phrase title="fs_car_details_add_reg_number" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter your car reg number here...!]]></phrase>
+  <phrase title="fs_car_details_add_trim" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter your car trim  here...!]]></phrase>
+  <phrase title="fs_car_details_add_unique_information" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter unique information here...!]]></phrase>
+  <phrase title="fs_car_details_colour" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Colour]]></phrase>
+  <phrase title="fs_car_details_filter" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Show only:]]></phrase>
+  <phrase title="fs_car_details_filter_location" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Filter by location...!]]></phrase>
+  <phrase title="fs_car_details_forum_name" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Forum Name]]></phrase>
+  <phrase title="fs_car_details_list_all" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Car Details]]></phrase>
+  <phrase title="fs_car_details_list_car_colour" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Colour]]></phrase>
+  <phrase title="fs_car_details_list_car_forum_name" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Forum Name]]></phrase>
+  <phrase title="fs_car_details_list_car_location" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Location]]></phrase>
+  <phrase title="fs_car_details_list_car_plaque_number" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Plaque Number]]></phrase>
+  <phrase title="fs_car_details_list_car_reg_date" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Car Reg Date]]></phrase>
+  <phrase title="fs_car_details_list_car_reg_number" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Reg number]]></phrase>
+  <phrase title="fs_car_details_list_car_trim" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trim]]></phrase>
+  <phrase title="fs_car_details_list_car_unique_information" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Unique Information]]></phrase>
+  <phrase title="fs_car_details_list_model" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Model]]></phrase>
+  <phrase title="fs_car_details_location" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Location]]></phrase>
+  <phrase title="fs_car_details_plaque_number" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Plaque Number]]></phrase>
+  <phrase title="fs_car_details_reg_date" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Car Reg Date]]></phrase>
+  <phrase title="fs_car_details_reg_number" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Reg Number]]></phrase>
+  <phrase title="fs_car_details_select_model" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Select your car model...!]]></phrase>
+  <phrase title="fs_car_details_select_models" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Model]]></phrase>
+  <phrase title="fs_car_details_select_reg_date" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Select your car reg date from here...!]]></phrase>
+  <phrase title="fs_car_details_trim" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trim]]></phrase>
+  <phrase title="fs_car_details_unique_information" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Unique Information]]></phrase>
+  <phrase title="fs_car_location_filter" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Location :]]></phrase>
+  <phrase title="fs_car_model" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Car Model]]></phrase>
+  <phrase title="fs_car_model_add" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add model]]></phrase>
+  <phrase title="fs_car_model_add_btn" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add model]]></phrase>
+  <phrase title="fs_car_model_edit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Edit model]]></phrase>
+  <phrase title="fs_car_model_name" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Name]]></phrase>
+  <phrase title="fs_car_select_model_filter" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Model :]]></phrase>
+  <phrase title="fs_user_car_details" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Car details]]></phrase>
+  <phrase title="fs_user_car_details_vis" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Car details]]></phrase>
+  <phrase title="nav.fs_car_details_list" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Car Details]]></phrase>
+</phrases>

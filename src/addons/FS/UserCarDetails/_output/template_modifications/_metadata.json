@@ -1,4 +1,10 @@
 {
+    "admin/fs_user_car_details_add_pane.json": {
+        "hash": "5a357d3e43279ccee09e738075f8dfee"
+    },
+    "admin/fs_user_car_details_add_tab.json": {
+        "hash": "746197104a02ececdebfcc8bb87f288a"
+    },
     "public/fs_user_ca_details_account_wrapper.json": {
         "hash": "90c910785abc0d1183b545b35137a6bf"
     },

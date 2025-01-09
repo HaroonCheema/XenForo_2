@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="account_visitor_menu" modification_key="fs_user_car_details_visitor_menu" description="user can enter their car details here...!" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<!--[XF:account_links:bottom]-->]]></find>
+    <replace><![CDATA[<li><a href="{{ link('car-details') }}" class="menu-linkRow">{{ phrase('fs_user_car_details_vis') }}</a></li>
+
+$0]]></replace>
+  </modification>
+  <modification type="public" template="account_wrapper" modification_key="fs_user_ca_details_account_wrapper" description="fs_user_ca_details_account_wrapper" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<a class="blockLink {{ \$pageSelected == 'privacy' \? 'is-selected' : '' }}" href="{{ link\('account\/privacy'\) }}">.*?<\/a>/is]]></find>
+    <replace><![CDATA[$0
+<a class="blockLink {{ \$pageSelected == 'carDetails/' ? 'is-selected' : '' }}" href="{{ link('car-details/') }}">
+					{{ phrase('fs_user_car_details_vis') }}
+</a>]]></replace>
+  </modification>
+  <modification type="admin" template="user_edit" modification_key="fs_user_car_details_add_pane" description="fs_user_car_details_add_pane" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<!--[XF:tab_panes:end]-->]]></find>
+    <replace><![CDATA[<xf:include template="fs_user_car_details_add_edit_pane" />
+			$0]]></replace>
+  </modification>
+  <modification type="admin" template="user_edit" modification_key="fs_user_car_details_add_tab" description="fs_user_car_details_add_tab" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<!--[XF:tabs:end]-->]]></find>
+    <replace><![CDATA[<a class="tabs-tab" role="tab" tabindex="0" aria-controls="car-details">{{ phrase('fs_user_car_details') }}</a>
+$0]]></replace>
+  </modification>
+</template_modifications>

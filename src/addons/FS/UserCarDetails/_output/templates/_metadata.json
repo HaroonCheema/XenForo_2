@@ -1,4 +1,9 @@
 {
+    "admin/fs_user_car_details_add_edit_pane.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "133c0809543c98c4c7a0901f61ec0670"
+    },
     "admin/fs_user_car_model_add.html": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
@@ -8,6 +13,16 @@
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
         "hash": "96e6c890ec705ccc06784f6c5155673b"
+    },
+    "public/fs_car_details_list_filter.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "dd84123467bf7c799576df8ea3b2dc84"
+    },
+    "public/fs_car_details_list_index.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "b4876e4eb6344c3f8f27a920c10d6df8"
     },
     "public/fs_vis_car_details_index.html": {
         "version_id": 1000010,

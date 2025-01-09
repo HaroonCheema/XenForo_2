@@ -1,0 +1,110 @@
+<xf:set var="$models" value="{$xf.app.em.getRepository('FS\UserCarDetails:Models').getModels()}" />
+
+<li role="tabpanel" id="car-details">
+	<div class="block-body">
+		<xf:formrow rowtype="input" 
+					label="{{ phrase('fs_car_details_select_models') }}" explain="{{ phrase('fs_car_details_select_model') }}">
+
+			<ul class="inputList">
+				<li><xf:select name="model_id" value="{$user.model_id|default([0])}" >
+					<xf:foreach loop="$models" value="$val">
+						<xf:option value="{$val.model_id}">{$val.model}</xf:option>
+					</xf:foreach>
+					</xf:select></li>
+			</ul>
+		</xf:formrow>
+
+		<xf:formrow
+					rowtype="input"
+					label="{{ phrase('fs_car_details_colour') }}"
+					>
+			<xf:textboxrow
+						   name="car_colour"
+						   value="{$user.car_colour}"
+						   rowtype="fullWidth"
+						   explain="{{ phrase('fs_car_details_add_colour') }}"
+						   />
+		</xf:formrow>
+
+		<xf:formrow
+					rowtype="input"
+					label="{{ phrase('fs_car_details_trim') }}"
+					>
+			<xf:textboxrow
+						   name="car_trim"
+						   value="{$user.car_trim}"
+						   rowtype="fullWidth"
+						   explain="{{ phrase('fs_car_details_add_trim') }}"
+						   />
+		</xf:formrow>
+
+		<xf:formrow
+					rowtype="input"
+					label="{{ phrase('fs_car_details_location') }}"
+					>
+			<xf:textboxrow
+						   name="car_location"
+						   value="{$user.car_location}"
+						   rowtype="fullWidth"
+						   explain="{{ phrase('fs_car_details_add_location') }}"
+						   />
+		</xf:formrow>
+
+		<xf:formrow
+					rowtype="input"
+					label="{{ phrase('fs_car_details_plaque_number') }}"
+					>
+			<xf:textboxrow
+						   name="car_plaque_number"
+						   value="{$user.car_plaque_number}"
+						   rowtype="fullWidth"
+						   explain="{{ phrase('fs_car_details_add_plaque_number') }}"
+						   />
+		</xf:formrow>
+
+		<xf:formrow
+					rowtype="input"
+					label="{{ phrase('fs_car_details_reg_number') }}"
+					>
+			<xf:textboxrow
+						   name="car_reg_number"
+						   value="{$user.car_reg_number}"
+						   rowtype="fullWidth"
+						   explain="{{ phrase('fs_car_details_add_reg_number') }}"
+						   />
+		</xf:formrow>
+
+		<xf:formrow
+					rowtype="input"
+					label="{{ phrase('fs_car_details_reg_date') }}"
+					>
+			<xf:dateinput name="car_reg_date" value="{{ $user.car_reg_date ? date($user.car_reg_date, 'picker') : '' }}" explain="{{ phrase('fs_car_details_select_reg_date') }}" />
+
+		</xf:formrow>
+
+		<xf:formrow
+					rowtype="input"
+					label="{{ phrase('fs_car_details_forum_name') }}"
+					>
+			<xf:textboxrow
+						   name="car_forum_name"
+						   value="{$user.car_forum_name}"
+						   rowtype="fullWidth"
+						   explain="{{ phrase('fs_car_details_add_forum_name') }}"
+						   />
+		</xf:formrow>
+
+		<xf:formrow
+					rowtype="input"
+					label="{{ phrase('fs_car_details_unique_information') }}"
+					>
+			<xf:textboxrow
+						   name="car_unique_information"
+						   value="{$user.car_unique_information}"
+						   rowtype="fullWidth"
+						   explain="{{ phrase('fs_car_details_add_unique_information') }}"
+						   />
+		</xf:formrow>
+	</div>
+	<xf:submitrow icon="save" sticky="true" />
+</li>

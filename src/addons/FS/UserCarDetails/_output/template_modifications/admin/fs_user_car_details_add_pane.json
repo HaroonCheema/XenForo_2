@@ -1,0 +1,9 @@
+{
+    "template": "user_edit",
+    "description": "fs_user_car_details_add_pane",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<!--[XF:tab_panes:end]-->",
+    "replace": "<xf:include template=\"fs_user_car_details_add_edit_pane\" />\n\t\t\t$0"
+}

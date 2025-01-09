@@ -654,6 +654,16 @@ return function($__templater, $__selectedNav, array $__vars)
 	}
 
 	$__navTemp = [
+		'title' => \XF::phrase('nav.fs_car_details_list'),
+		'href' => $__templater->func('link', array('cars-list', ), false),
+		'attributes' => [],
+	];
+	if ($__navTemp) {
+		$__tree['fs_car_details_list'] = $__navTemp;
+		$__flat['fs_car_details_list'] =& $__tree['fs_car_details_list'];
+	}
+
+	$__navTemp = [
 		'title' => \XF::phrase('nav.fs_quiz'),
 		'href' => $__templater->func('link', array('quiz', ), false),
 		'attributes' => [],
@@ -661,6 +671,52 @@ return function($__templater, $__selectedNav, array $__vars)
 	if ($__navTemp) {
 		$__tree['fs_quiz'] = $__navTemp;
 		$__flat['fs_quiz'] =& $__tree['fs_quiz'];
+	}
+
+	$__navTemp = [
+		'title' => \XF::phrase('nav.fs_auction_category'),
+		'href' => $__templater->func('link', array('auction', ), false),
+		'attributes' => [],
+	];
+	if ($__navTemp) {
+		$__tree['fs_auction_category'] = $__navTemp;
+		$__flat['fs_auction_category'] =& $__tree['fs_auction_category'];
+		if (empty($__tree['fs_auction_category']['children'])) { $__tree['fs_auction_category']['children'] = []; }
+
+		$__navTemp = [
+		'title' => \XF::phrase('nav.auctionAddListing'),
+		'href' => $__templater->func('link', array('auction/add', ), false),
+		'attributes' => [
+			'data-xf-click' => 'overlay',
+		],
+	];
+		if ($__navTemp) {
+			$__tree['fs_auction_category']['children']['auctionAddListing'] = $__navTemp;
+			$__flat['auctionAddListing'] =& $__tree['fs_auction_category']['children']['auctionAddListing'];
+		}
+
+	}
+
+	$__navTemp = [
+		'title' => \XF::phrase('nav.fs_escrow'),
+		'href' => $__templater->func('link', array('escrow', ), false),
+		'attributes' => [],
+	];
+	if ($__navTemp) {
+		$__tree['fs_escrow'] = $__navTemp;
+		$__flat['fs_escrow'] =& $__tree['fs_escrow'];
+		if (empty($__tree['fs_escrow']['children'])) { $__tree['fs_escrow']['children'] = []; }
+
+		$__navTemp = [
+		'title' => \XF::phrase('nav.fs_escrow_add'),
+		'href' => $__templater->func('link', array('escrow/add', ), false),
+		'attributes' => [],
+	];
+		if ($__navTemp) {
+			$__tree['fs_escrow']['children']['fs_escrow_add'] = $__navTemp;
+			$__flat['fs_escrow_add'] =& $__tree['fs_escrow']['children']['fs_escrow_add'];
+		}
+
 	}
 
 	if ($__templater->method($__vars['xf']['visitor'], 'canViewMedia', array())) {
@@ -827,52 +883,6 @@ return function($__templater, $__selectedNav, array $__vars)
 			}
 
 		}
-	}
-
-	$__navTemp = [
-		'title' => \XF::phrase('nav.fs_auction_category'),
-		'href' => $__templater->func('link', array('auction', ), false),
-		'attributes' => [],
-	];
-	if ($__navTemp) {
-		$__tree['fs_auction_category'] = $__navTemp;
-		$__flat['fs_auction_category'] =& $__tree['fs_auction_category'];
-		if (empty($__tree['fs_auction_category']['children'])) { $__tree['fs_auction_category']['children'] = []; }
-
-		$__navTemp = [
-		'title' => \XF::phrase('nav.auctionAddListing'),
-		'href' => $__templater->func('link', array('auction/add', ), false),
-		'attributes' => [
-			'data-xf-click' => 'overlay',
-		],
-	];
-		if ($__navTemp) {
-			$__tree['fs_auction_category']['children']['auctionAddListing'] = $__navTemp;
-			$__flat['auctionAddListing'] =& $__tree['fs_auction_category']['children']['auctionAddListing'];
-		}
-
-	}
-
-	$__navTemp = [
-		'title' => \XF::phrase('nav.fs_escrow'),
-		'href' => $__templater->func('link', array('escrow', ), false),
-		'attributes' => [],
-	];
-	if ($__navTemp) {
-		$__tree['fs_escrow'] = $__navTemp;
-		$__flat['fs_escrow'] =& $__tree['fs_escrow'];
-		if (empty($__tree['fs_escrow']['children'])) { $__tree['fs_escrow']['children'] = []; }
-
-		$__navTemp = [
-		'title' => \XF::phrase('nav.fs_escrow_add'),
-		'href' => $__templater->func('link', array('escrow/add', ), false),
-		'attributes' => [],
-	];
-		if ($__navTemp) {
-			$__tree['fs_escrow']['children']['fs_escrow_add'] = $__navTemp;
-			$__flat['fs_escrow_add'] =& $__tree['fs_escrow']['children']['fs_escrow_add'];
-		}
-
 	}
 
 	if ($__templater->method($__vars['xf']['visitor'], 'canViewResources', array())) {
@@ -1059,6 +1069,20 @@ return function($__templater, $__selectedNav, array $__vars)
 		}
 	}
 
+	if ($__templater->method($__vars['xf']['visitor'], 'canViewMeeting', array())) {
+		$__navTemp = [
+		'title' => \XF::phrase('nav.fs_zoom_meetings'),
+		'href' => $__templater->func('link', array('video-chat', ), false),
+		'attributes' => [
+			'target' => '"_blank"',
+		],
+	];
+		if ($__navTemp) {
+			$__tree['fs_zoom_meetings'] = $__navTemp;
+			$__flat['fs_zoom_meetings'] =& $__tree['fs_zoom_meetings'];
+		}
+	}
+
 	$__navTemp = [
 		'title' => \XF::phrase('nav.createCrud'),
 		'href' => $__templater->func('link', array('crud', ), false),
@@ -1079,20 +1103,6 @@ return function($__templater, $__selectedNav, array $__vars)
 			$__flat['addRecord'] =& $__tree['createCrud']['children']['addRecord'];
 		}
 
-	}
-
-	if ($__templater->method($__vars['xf']['visitor'], 'canViewMeeting', array())) {
-		$__navTemp = [
-		'title' => \XF::phrase('nav.fs_zoom_meetings'),
-		'href' => $__templater->func('link', array('video-chat', ), false),
-		'attributes' => [
-			'target' => '"_blank"',
-		],
-	];
-		if ($__navTemp) {
-			$__tree['fs_zoom_meetings'] = $__navTemp;
-			$__flat['fs_zoom_meetings'] =& $__tree['fs_zoom_meetings'];
-		}
 	}
 
 	$__navTemp = \XF\Navigation\NodeType::displayNodeExtended(11, "fs_questionAnswer_nav");
