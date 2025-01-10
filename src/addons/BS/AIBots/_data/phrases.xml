@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="admin_navigation.bsAiBots" version_id="1000070" version_string="1.0.0"><![CDATA[AI bots]]></phrase>
+  <phrase title="admin_navigation.bsAibChatGptNodePrompts" version_id="1000070" version_string="1.0.0"><![CDATA[ChatGPT node prompts]]></phrase>
+  <phrase title="bs_ai_bot.chat_gpt_invalid_bot_profile_context_limit" version_id="1010070" version_string="1.1.0"><![CDATA[Invalid context limit for bot profile. Please set value between {min} and {max}]]></phrase>
+  <phrase title="bs_ai_bot.chat_gpt_invalid_chat_model" version_id="1000270" version_string="1.0.2"><![CDATA[Invalid chat model. Make sure your account has permission to use the selected model.]]></phrase>
+  <phrase title="bs_ai_bot.chat_gpt_invalid_conversation_context_limit" version_id="1000270" version_string="1.0.2"><![CDATA[Invalid context limit for conversations. Please set value between {min} and {max}]]></phrase>
+  <phrase title="bs_ai_bot.chat_gpt_invalid_temperature" version_id="1000070" version_string="1.0.0"><![CDATA[Invalid temperature. Please set value betweet 0.1 and 1.0]]></phrase>
+  <phrase title="bs_ai_bot.chat_gpt_invalid_thread_context_limit" version_id="1000270" version_string="1.0.2"><![CDATA[Invalid context limit for threads. Please set value between {min} and {max}]]></phrase>
+  <phrase title="bs_ai_bot.chat_gpt_prompts_must_be_filled" version_id="1000070" version_string="1.0.0"><![CDATA[Prompts must be filled in for all contexts in which the bot is activated.]]></phrase>
+  <phrase title="bs_aib_active_for_user_groups" version_id="1000070" version_string="1.0.0"><![CDATA[Active for user groups]]></phrase>
+  <phrase title="bs_aib_active_for_user_groups_explain" version_id="1000070" version_string="1.0.0"><![CDATA[Only users who are members of the selected groups will be able to use the bot.]]></phrase>
+  <phrase title="bs_aib_active_in_context" version_id="1000070" version_string="1.0.0"><![CDATA[Context]]></phrase>
+  <phrase title="bs_aib_active_in_context_explain" version_id="1000070" version_string="1.0.0"><![CDATA[Places where the bot will be available.]]></phrase>
+  <phrase title="bs_aib_active_nodes_explain" version_id="1000070" version_string="1.0.0"><![CDATA[Bot wil reply only in the selected forums.]]></phrase>
+  <phrase title="bs_aib_add_bot" version_id="1000070" version_string="1.0.0"><![CDATA[Add bot]]></phrase>
+  <phrase title="bs_aib_ai_bots" version_id="1000070" version_string="1.0.0"><![CDATA[AI bots]]></phrase>
+  <phrase title="bs_aib_ai_bots_chat_gpt_edit_prompt_for_node" version_id="1000070" version_string="1.0.0"><![CDATA[{bot}: prompt for {node}]]></phrase>
+  <phrase title="bs_aib_ai_bots_chat_gpt_node_prompts" version_id="1000070" version_string="1.0.0"><![CDATA[ChatGPT node prompts]]></phrase>
+  <phrase title="bs_aib_bot_create_restrictions_warning" version_id="1000070" version_string="1.0.0"><![CDATA[For the bot to work, you need to select the necessary nodes and user groups for which it will work. This can be done in the "Restrictions" tab.]]></phrase>
+  <phrase title="bs_aib_bot_handler.chatgpt" version_id="1000070" version_string="1.0.0"><![CDATA[ChatGPT]]></phrase>
+  <phrase title="bs_aib_bot_handler.gptdalle" version_id="1000070" version_string="1.0.0"><![CDATA[GPT Dall-E]]></phrase>
+  <phrase title="bs_aib_bot_not_found" version_id="1000070" version_string="1.0.0"><![CDATA[Bot not found.]]></phrase>
+  <phrase title="bs_aib_bot_profile" version_id="1010070" version_string="1.1.0"><![CDATA[Bot profile]]></phrase>
+  <phrase title="bs_aib_bot_profile_context_limit_explain" version_id="1010070" version_string="1.1.0"><![CDATA[The number of comments that will be loaded into the bot.<br>
+Set to 0 to have the bot only reply to the comment that triggered.]]></phrase>
+  <phrase title="bs_aib_bot_profile_prompt_explain" version_id="1010070" version_string="1.1.0"><![CDATA[Available variables:<br>
+<em>{author}</em> – Username of the user who contacted the bot<br>
+<em>{date}</em> – Current date in "2021-12-31" format<br>
+<em>{time}</em> – Current time in "10:15" format<br>
+<br>
+This prompt will describe the behavior of the bot when compiling a response for profile comment.<br>
+This prompt does not guarantee that the bot will follow the instructions exactly. ChatGPT is in the process of learning and a prompts only regulate the response it will generate, not fully control it.<br>
+For a better understanding of how prompts should be composed, you can take a look at the "<a href="https://github.com/f/awesome-chatgpt-prompts" target="_blank">Awesome prompts</a>" repository.]]></phrase>
+  <phrase title="bs_aib_bot_user_not_found" version_id="1000070" version_string="1.0.0"><![CDATA[Bot user not found.]]></phrase>
+  <phrase title="bs_aib_bot_with_same_username_already_exists" version_id="1000070" version_string="1.0.0"><![CDATA[Bot with same username already exists.]]></phrase>
+  <phrase title="bs_aib_chat_model" version_id="1010070" version_string="1.1.0"><![CDATA[Chat model]]></phrase>
+  <phrase title="bs_aib_chat_model_explain" version_id="1010070" version_string="1.1.0"><![CDATA[GPT 4 understands context better, and can process more information.<br>
+GPT 3.5 is significantly faster and cheaper.<br>
+More details about the difference in models can be found at <a href="https://platform.openai.com/docs/models/overview" target="_blank">this link</a>.]]></phrase>
+  <phrase title="bs_aib_context_limit" version_id="1000270" version_string="1.0.2"><![CDATA[Context limit]]></phrase>
+  <phrase title="bs_aib_conversation_context_limit_explain" version_id="1000070" version_string="1.0.0"><![CDATA[The number of messages that will be loaded from the conversation into the bot.<br>
+Set to 0 to have the bot only reply to the message that triggered.]]></phrase>
+  <phrase title="bs_aib_conversation_prompt_explain" version_id="1000070" version_string="1.0.0"><![CDATA[Available variables:<br>
+<em>{conversation_title}</em> – Title of current conversation<br>
+<em>{conversation_id}</em> – ID of current conversation<br>
+<em>{author}</em> – Username of the user who contacted the bot<br>
+<em>{recipients}</em> – List of recipient usernames of current conversation<br>
+<em>{date}</em> – Current date in "2021-12-31" format<br>
+<em>{time}</em> – Current time in "10:15" format<br>
+<br>
+This prompt will describe the behavior of the bot when compiling a response for conversation message.<br>
+This prompt does not guarantee that the bot will follow the instructions exactly. ChatGPT is in the process of learning and a prompts only regulate the response it will generate, not fully control it.<br>
+For a better understanding of how prompts should be composed, you can take a look at the "<a href="https://github.com/f/awesome-chatgpt-prompts" target="_blank">Awesome prompts</a>" repository.]]></phrase>
+  <phrase title="bs_aib_conversation_triggers" version_id="1000070" version_string="1.0.0"><![CDATA[Conversation triggers]]></phrase>
+  <phrase title="bs_aib_disable_ai_bots" version_id="1000070" version_string="1.0.0"><![CDATA[Disable AI bots]]></phrase>
+  <phrase title="bs_aib_edit_bot" version_id="1000070" version_string="1.0.0"><![CDATA[Edit bot]]></phrase>
+  <phrase title="bs_aib_enable_ai_bots" version_id="1000070" version_string="1.0.0"><![CDATA[Enable AI bots]]></phrase>
+  <phrase title="bs_aib_general" version_id="1000070" version_string="1.0.0"><![CDATA[General]]></phrase>
+  <phrase title="bs_aib_gpt_dalle_give_message" version_id="1000070" version_string="1.0.0"><![CDATA[Take it!]]></phrase>
+  <phrase title="bs_aib_handler" version_id="1000070" version_string="1.0.0"><![CDATA[Handler]]></phrase>
+  <phrase title="bs_aib_ignore_regexes" version_id="1000070" version_string="1.0.0"><![CDATA[Ignore regexes]]></phrase>
+  <phrase title="bs_aib_ignore_regexes_explain" version_id="1000070" version_string="1.0.0"><![CDATA[Bot will not respond on post if text matching one of these regexes. ]]></phrase>
+  <phrase title="bs_aib_image_filename_x" version_id="1000070" version_string="1.0.0"><![CDATA[{prompt} ({key})]]></phrase>
+  <phrase title="bs_aib_image_restrictions" version_id="1000070" version_string="1.0.0"><![CDATA[Image restrictions]]></phrase>
+  <phrase title="bs_aib_invalid_handler" version_id="1000070" version_string="1.0.0"><![CDATA[Invalid handler]]></phrase>
+  <phrase title="bs_aib_is_active" version_id="1000070" version_string="1.0.0"><![CDATA[Active]]></phrase>
+  <phrase title="bs_aib_max_image_size" version_id="1000070" version_string="1.0.0"><![CDATA[Max image size]]></phrase>
+  <phrase title="bs_aib_max_image_size_explain" version_id="1000070" version_string="1.0.0"><![CDATA[The size of the generated images will be limited to the specified value, even if the user requests larger images.]]></phrase>
+  <phrase title="bs_aib_max_images_per_message" version_id="1000070" version_string="1.0.0"><![CDATA[Max images per message]]></phrase>
+  <phrase title="bs_aib_max_images_per_message_explain" version_id="1000070" version_string="1.0.0"><![CDATA[The number of generated images will be limited to the specified number even if the user has requested more images]]></phrase>
+  <phrase title="bs_aib_max_images_per_post" version_id="1000070" version_string="1.0.0"><![CDATA[Max images per post]]></phrase>
+  <phrase title="bs_aib_max_replies_per_conversation" version_id="1000070" version_string="1.0.0"><![CDATA[Max replies per conversation]]></phrase>
+  <phrase title="bs_aib_max_replies_per_conversation_explain" version_id="1000070" version_string="1.0.0"><![CDATA[If the number of bot messages in a conversation reaches this value, it will not respond.<br>
+Set to "0" to remove this limitation.]]></phrase>
+  <phrase title="bs_aib_max_replies_per_thread" version_id="1000070" version_string="1.0.0"><![CDATA[Max replies per thread]]></phrase>
+  <phrase title="bs_aib_max_replies_per_thread_explain" version_id="1000070" version_string="1.0.0"><![CDATA[If the number of bot posts in a thread reaches this value, it will not respond.<br>
+Set to "0" to remove this limitation.]]></phrase>
+  <phrase title="bs_aib_mention" version_id="1000070" version_string="1.0.0"><![CDATA[Mention]]></phrase>
+  <phrase title="bs_aib_node_prompt_explain" version_id="1000070" version_string="1.0.0"><![CDATA[This prompt will replace the global thread prompt.<br>
+<br>
+Available variables:<br>
+<em>{node_title}</em> – A title of  thecurrent node<br>
+<em>{node_id}</em> – ID of the current node<br>
+<em>{node_description}</em> – A description of the current node<br>
+<em>{thread_title}</em> – Title of current thread<br>
+<em>{thread_id}</em> – ID of current thread<br>
+<em>{author}</em> – Username of the user who contacted the bot<br>
+<em>{date}</em> – Current date in "2021-12-31" format<br>
+<em>{time}</em> – Current time in "10:15" format<br>
+<br>
+This prompt will be triggered when the bot replies in a specific forum.<br>
+This prompt does not guarantee that the bot will follow the instructions exactly. ChatGPT is in the process of learning and a prompts only regulate the response it will generate, not fully control it.<br>
+For a better understanding of how prompts should be composed, you can take a look at the "<a href="https://github.com/f/awesome-chatgpt-prompts" target="_blank">Awesome prompts</a>" repository.<br>]]></phrase>
+  <phrase title="bs_aib_node_type_must_be_forum" version_id="1000070" version_string="1.0.0"><![CDATA[Node type must be forum.]]></phrase>
+  <phrase title="bs_aib_post_triggers" version_id="1000070" version_string="1.0.0"><![CDATA[Post triggers]]></phrase>
+  <phrase title="bs_aib_posted_in" version_id="1000070" version_string="1.0.0"><![CDATA[Posted in]]></phrase>
+  <phrase title="bs_aib_posted_in_explain" version_id="1000070" version_string="1.0.0"><![CDATA[The bot will respond to all messages posted in selected forums, except for those messages that match ignore regexes.]]></phrase>
+  <phrase title="bs_aib_private_appeal" version_id="1000070" version_string="1.0.0"><![CDATA[Private appeal]]></phrase>
+  <phrase title="bs_aib_private_appeal_explain" version_id="1000070" version_string="1.0.0"><![CDATA[Reply in a conversation where only the bot and the user are recipients.]]></phrase>
+  <phrase title="bs_aib_prompt" version_id="1000070" version_string="1.0.0"><![CDATA[Prompt]]></phrase>
+  <phrase title="bs_aib_prompt_placeholder" version_id="1000070" version_string="1.0.0"><![CDATA[(Example) You are a language learning bot named Lingua. Your job is to help users learn a new language by providing practice exercises and conversation practice. You specialize in grammar rules and pronunciation, but you have knowledge about every aspect of the language. If given the opportunity, you might add cultural context to your lessons to make them more interesting]]></phrase>
+  <phrase title="bs_aib_prompts" version_id="1000070" version_string="1.0.0"><![CDATA[Prompts]]></phrase>
+  <phrase title="bs_aib_quote" version_id="1000070" version_string="1.0.0"><![CDATA[Quote]]></phrase>
+  <phrase title="bs_aib_restrictions" version_id="1000070" version_string="1.0.0"><![CDATA[Restrictions]]></phrase>
+  <phrase title="bs_aib_smart_ignore" version_id="1000270" version_string="1.0.2"><![CDATA[Smart ignore]]></phrase>
+  <phrase title="bs_aib_smart_ignore_explain" version_id="1000070" version_string="1.0.0"><![CDATA[Enabling this option instructs the bot to ignore messages that are not intended for it.
+<br><br>
+Please note that this feature is experimental and cannot guarantee 100% results. However, reducing the context of the bot can significantly improve its performance. Also, for more correct operation of this function, it is recommended to tell the bot its username in the prompt.
+<br><br>
+By activating this option, 50 tokens will be added to each request. However, it can save tokens on the output for messages that don't require a response and makes the bot much smarter.]]></phrase>
+  <phrase title="bs_aib_spam_check" version_id="1000070" version_string="1.0.0"><![CDATA[Spam check]]></phrase>
+  <phrase title="bs_aib_spam_check_explain" version_id="1000070" version_string="1.0.0"><![CDATA[If the option is enabled, the bot's messages will be checked for spam, just like regular users.]]></phrase>
+  <phrase title="bs_aib_stream_mode_explain" version_id="1000270" version_string="1.0.2"><![CDATA[If this option is enabled, users will see how the bot is typing a message.]]></phrase>
+  <phrase title="bs_aib_temperature" version_id="1000070" version_string="1.0.0"><![CDATA[Temperature]]></phrase>
+  <phrase title="bs_aib_temperature_explain" version_id="1000070" version_string="1.0.0"><![CDATA[See the <a href="https://platform.openai.com/docs/guides/chat/instructing-chat-models">OpenAI API documentation</a> for details.]]></phrase>
+  <phrase title="bs_aib_there_are_currently_no_active_bots" version_id="1000070" version_string="1.0.0"><![CDATA[There are currently no active bots.]]></phrase>
+  <phrase title="bs_aib_thread_context_limit_explain" version_id="1000070" version_string="1.0.0"><![CDATA[The number of messages that will be loaded from the thread into the bot.<br>
+Set to 0 to have the bot only reply to the message that triggered.]]></phrase>
+  <phrase title="bs_aib_thread_prompt_explain" version_id="1000070" version_string="1.0.0"><![CDATA[Available variables:<br>
+<em>{thread_title}</em> – Title of current thread<br>
+<em>{thread_id}</em> – ID of current thread<br>
+<em>{author}</em> – Username of the user who contacted the bot<br>
+<em>{forum_title}</em> – Title of thread forum<br>
+<em>{date}</em> – Current date in "2021-12-31" format<br>
+<em>{time}</em> – Current time in "10:15" format<br>
+<br>
+This prompt will describe the behavior of the bot when compiling a response for thread message.<br>
+You can also <a href="{node_prompts_link}" target="_blank">set up prompts individually for each forum.</a><br>
+This prompt does not guarantee that the bot will follow the instructions exactly. ChatGPT is in the process of learning and a prompts only regulate the response it will generate, not fully control it.<br>
+For a better understanding of how prompts should be composed, you can take a look at the "<a href="https://github.com/f/awesome-chatgpt-prompts" target="_blank">Awesome prompts</a>" repository.<br>]]></phrase>
+  <phrase title="bs_aib_thread_smart_ignore_explain" version_id="1000070" version_string="1.0.0"><![CDATA[Enabling this option instructs the bot to ignore messages that are not intended for it. For instance, if the bot is set up to respond to all messages in a forum, but users can also communicate with each other, the bot will ignore messages from users that don't refer to it, despite mentions or other triggers.
+<br><br>
+Please note that this feature is experimental and cannot guarantee 100% results. However, reducing the context of the bot can significantly improve its performance. Also, for more correct operation of this function, it is recommended to tell the bot its username in the prompt.
+<br><br>
+By activating this option, 50 tokens will be added to each request. However, it can save tokens on the output for messages that don't require a response and makes the bot much smarter.]]></phrase>
+  <phrase title="bs_aib_trigger_regexes" version_id="1000070" version_string="1.0.0"><![CDATA[Regexes]]></phrase>
+  <phrase title="bs_aib_trigger_regexes_explain" version_id="1000070" version_string="1.0.0"><![CDATA[If a message is matched with one of these regular expressions, the bot will fire.]]></phrase>
+  <phrase title="bs_aib_triggers" version_id="1000070" version_string="1.0.0"><![CDATA[Triggers]]></phrase>
+  <phrase title="bs_aib_tuning" version_id="1000070" version_string="1.0.0"><![CDATA[Tuning]]></phrase>
+  <phrase title="bs_aib_use_this_to_disable_bot" version_id="1000070" version_string="1.0.0"><![CDATA[Use this to disable bot.]]></phrase>
+  <phrase title="permission.bsAib_aibGdEMaxRepsBotPrfPerDay" version_id="1010070" version_string="1.1.0"><![CDATA[Max replies in bot profile per day]]></phrase>
+  <phrase title="permission.bsAib_aibGdEUseInBotProfile" version_id="1010070" version_string="1.1.0"><![CDATA[Use bots in their profiles]]></phrase>
+  <phrase title="permission.bsAib_aibGptMaxRepsBotPrfPerDay" version_id="1010070" version_string="1.1.0"><![CDATA[Max replies in bot profile per day]]></phrase>
+  <phrase title="permission.bsAib_aibGptUseInBotProfile" version_id="1010070" version_string="1.1.0"><![CDATA[Use bots in their profiles]]></phrase>
+  <phrase title="permission.conversation_aibGdEMaxRepliesPerConv" version_id="1000070" version_string="1.0.0"><![CDATA[Max replies per conversation]]></phrase>
+  <phrase title="permission.conversation_aibGdEMaxRepsPerDayConv" version_id="1000070" version_string="1.0.0"><![CDATA[Max replies in conversations per day]]></phrase>
+  <phrase title="permission.conversation_aibGdEUse" version_id="1000070" version_string="1.0.0"><![CDATA[Use bots in conversation]]></phrase>
+  <phrase title="permission.conversation_aibGptMaxRepliesPerConv" version_id="1000070" version_string="1.0.0"><![CDATA[Max replies per conversation]]></phrase>
+  <phrase title="permission.conversation_aibGptMaxRepsPerDayConv" version_id="1000070" version_string="1.0.0"><![CDATA[Max replies in conversations per day]]></phrase>
+  <phrase title="permission.conversation_aibGptUse" version_id="1000070" version_string="1.0.0"><![CDATA[Use bots in conversations]]></phrase>
+  <phrase title="permission.forum_aibGdEMaxRepliesPerThread" version_id="1000070" version_string="1.0.0"><![CDATA[Max replies per thread]]></phrase>
+  <phrase title="permission.forum_aibGdEMaxRepsPerDayThread" version_id="1000070" version_string="1.0.0"><![CDATA[Max replies in threads per day]]></phrase>
+  <phrase title="permission.forum_aibGdEUse" version_id="1000070" version_string="1.0.0"><![CDATA[Use bots in threads]]></phrase>
+  <phrase title="permission.forum_aibGptMaxRepliesPerThread" version_id="1000070" version_string="1.0.0"><![CDATA[Max replies per thread]]></phrase>
+  <phrase title="permission.forum_aibGptMaxRepsPerDayThread" version_id="1000070" version_string="1.0.0"><![CDATA[Max replies in threads per day]]></phrase>
+  <phrase title="permission.forum_aibGptUse" version_id="1000070" version_string="1.0.0"><![CDATA[Use bots in threads]]></phrase>
+  <phrase title="permission.forum_bsAibToggleBots" version_id="1000070" version_string="1.0.0"><![CDATA[Deactivate bots in own threads]]></phrase>
+  <phrase title="permission.forum_bsAibToggleBotsAny" version_id="1000070" version_string="1.0.0"><![CDATA[Deactivate bots in any threads]]></phrase>
+  <phrase title="permission_interface.aiBotsGptDallE" version_id="1000070" version_string="1.0.0"><![CDATA[[021] AI Bots – GPT Dall-E]]></phrase>
+  <phrase title="permission_interface.bsAiBots" version_id="1000070" version_string="1.0.0"><![CDATA[[021] AI Bots]]></phrase>
+  <phrase title="permission_interface.bsAiBotsChatGpt" version_id="1000070" version_string="1.0.0"><![CDATA[[021] AI Bots – ChatGPT]]></phrase>
+  <phrase title="permission_interface.bsAiBotsModerator" version_id="1000070" version_string="1.0.0"><![CDATA[[021] AI Bots moderator permissions]]></phrase>
+</phrases>

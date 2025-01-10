@@ -1,0 +1,547 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="admin" title="bs_ai_bot.chat_gpt_dalle_tab_panes" version_id="1010070" version_string="1.1.0"><![CDATA[<li role="tabpanel" id="tuning">
+	<xf:macro name="tuning"
+			  arg-bot="{$bot}" />
+</li>
+<li role="tabpanel" id="image_restrictions">
+	<xf:macro name="image_restrictions" 
+			  arg-bot="{$bot}" />
+</li>
+<li role="tabpanel" id="restrictions">
+	<xf:macro template="bs_ai_bot.chat_gpt_tab_panes"
+			  name="restrictions" 
+			  arg-bot="{$bot}"
+			  arg-userGroups="{$userGroups}"
+			  arg-nodeTree="{$nodeTree}" />
+</li>
+<li role="tabpanel" id="triggers">
+	<xf:macro template="bs_ai_bot.chat_gpt_tab_panes"
+			  name="triggers" 
+			  arg-bot="{$bot}"
+			  arg-nodeTree="{$nodeTree}" />
+</li>
+
+<xf:macro name="tuning" arg-bot="!">
+	<!-- TUNING: START -->
+	<xf:selectrow label="{{ phrase('bs_aib_chat_model') }}" 
+		explain="{{ phrase('bs_aib_chat_model_explain') }}"
+		name="general[chat_model]"
+		value="{$bot.getSafest('general', 'chat_model', 'gpt-3.5-turbo')}"
+	>
+		<xf:option value="gpt-3.5-turbo">gpt-3.5-turbo</xf:option>
+		<xf:option value="gpt-4">gpt-4</xf:option>
+		<xf:option value="gpt-4-32k">gpt-4-32k</xf:option>
+	</xf:selectrow>
+	<!-- TUNING: END -->
+</xf:macro>
+
+<xf:macro name="image_restrictions" arg-bot="!">
+	<!-- IMAGE RESTRICTIONS: START -->
+	<xf:numberboxrow name="restrictions[max_images_per_message]"
+					 label="{{ phrase('bs_aib_max_images_per_message') }}"
+					 explain="{{ phrase('bs_aib_max_images_per_message_explain') }}"
+					 value="{$bot.restrictions.max_images_per_message}"
+					 min="1"
+					 max="4" />
+
+	<xf:selectrow name="restrictions[max_image_size]"
+				  label="{{ phrase('bs_aib_max_image_size') }}"
+				  explain="{{ phrase('bs_aib_max_image_size_explain') }}"
+				  value="{$bot.restrictions.max_image_size}">
+		<xf:option value="256">256x256</xf:option>
+		<xf:option value="512">512x512</xf:option>
+		<xf:option value="1024">1024x1024</xf:option>
+	</xf:selectrow>
+	<!-- IMAGE RESTRICTIONS: END -->
+</xf:macro>]]></template>
+  <template type="admin" title="bs_ai_bot.chat_gpt_tab_panes" version_id="1010070" version_string="1.1.0"><![CDATA[<li role="tabpanel" id="tuning">
+	<xf:macro name="tuning" 
+			  arg-bot="{$bot}" />
+</li>
+<li role="tabpanel" id="restrictions">
+	<xf:macro name="restrictions" 
+			  arg-bot="{$bot}"
+			  arg-userGroups="{$userGroups}"
+			  arg-nodeTree="{$nodeTree}" />
+</li>
+<li role="tabpanel" id="triggers">
+	<xf:macro name="triggers" 
+			  arg-bot="{$bot}"
+			  arg-nodeTree="{$nodeTree}" />
+</li>
+
+<xf:macro name="tuning" arg-bot="!">
+	<!-- TUNING: START -->
+	
+	<xf:selectrow label="{{ phrase('bs_aib_chat_model') }}" 
+		explain="{{ phrase('bs_aib_chat_model_explain') }}"
+		name="general[chat_model]"
+		value="{$bot.getSafest('general', 'chat_model', 'gpt-3.5-turbo')}"
+	>
+		<xf:option value="gpt-3.5-turbo">gpt-3.5-turbo</xf:option>
+		<xf:option value="gpt-4">gpt-4</xf:option>
+		<xf:option value="gpt-4-32k">gpt-4-32k</xf:option>
+	</xf:selectrow>
+	
+	<!-- TUNING: AFTER CHAT MODEL -->
+	
+	<h3 class="block-formSectionHeader">
+		<span class="collapseTrigger collapseTrigger--block" data-xf-click="toggle" data-target="< :up:next">
+			{{ phrase('threads') }}
+		</span>
+	</h3>
+	<div class="block-body block-body--collapsible">
+		<xf:textarearow label="{{ phrase('bs_aib_prompt') }}" 
+						explain="{{ phrase('bs_aib_thread_prompt_explain', {'node_prompts_link': link('ai-bots/chat-gpt-node-prompts')}) }}"
+						name="general[thread_prompt]" 
+						value="{$bot.general.thread_prompt}"
+						placeholder="{{ phrase('bs_aib_prompt_placeholder') }}"
+						rows="5" />
+
+		<xf:numberboxrow name="general[thread_context_limit]" 
+						 label="{{ phrase('bs_aib_context_limit') }}"
+						 explain="{{ phrase('bs_aib_thread_context_limit_explain') }}"
+						 min="0" 
+						 value="{$bot.general.thread_context_limit}" />
+
+		<xf:checkboxrow explain="{{ phrase('bs_aib_thread_smart_ignore_explain') }}">
+			<xf:option name="general[thread_smart_ignore]"
+					   label="{{ phrase('bs_aib_smart_ignore') }}"
+					   checked="{$bot.general.thread_smart_ignore}" />
+		</xf:checkboxrow>
+		
+		<hr class="formRowSep" />
+	</div>
+	
+	<!-- TUNING: AFTER THREADS -->
+	
+	<h3 class="block-formSectionHeader">
+		<span class="collapseTrigger collapseTrigger--block" data-xf-click="toggle" data-target="< :up:next">
+			{{ phrase('conversations') }}
+		</span>
+	</h3>
+	<div class="block-body block-body--collapsible">
+		<xf:textarearow label="{{ phrase('bs_aib_prompt') }}" 
+						explain="{{ phrase('bs_aib_conversation_prompt_explain') }}"
+						name="general[conversation_prompt]" 
+						value="{$bot.general.conversation_prompt}"
+						placeholder="{{ phrase('bs_aib_prompt_placeholder') }}"
+						rows="5" />
+
+		<xf:numberboxrow name="general[conversation_context_limit]" 
+						 label="{{ phrase('bs_aib_context_limit') }}"
+						 explain="{{ phrase('bs_aib_conversation_context_limit_explain') }}"
+						 min="0" 
+						 value="{$bot.general.conversation_context_limit}" />
+
+		<xf:checkboxrow explain="{{ phrase('bs_aib_smart_ignore_explain') }}">
+			<xf:option name="general[conversation_smart_ignore]"
+					   label="{{ phrase('bs_aib_smart_ignore') }}"
+					   checked="{$bot.general.conversation_smart_ignore}" />
+		</xf:checkboxrow>
+
+		<hr class="formRowSep" />
+	</div>
+	
+	<!-- TUNING: AFTER CONVERSATIONS -->
+	
+	<h3 class="block-formSectionHeader">
+		<span class="collapseTrigger collapseTrigger--block" data-xf-click="toggle" data-target="< :up:next">
+			{{ phrase('bs_aib_bot_profile') }}
+		</span>
+	</h3>
+	<div class="block-body block-body--collapsible">
+		<xf:textarearow label="{{ phrase('bs_aib_prompt') }}" 
+						explain="{{ phrase('bs_aib_bot_profile_prompt_explain') }}"
+						name="general[bot_profile_prompt]" 
+						value="{$bot.getSafest('general', 'bot_profile_prompt')}"
+						placeholder="{{ phrase('bs_aib_prompt_placeholder') }}"
+						rows="5" />
+
+		<xf:numberboxrow name="general[bot_profile_context_limit]" 
+						 label="{{ phrase('bs_aib_context_limit') }}"
+						 explain="{{ phrase('bs_aib_bot_profile_context_limit_explain') }}"
+						 min="0" 
+						 value="{$bot.getSafest('general', 'bot_profile_context_limit')}" />
+
+		<hr class="formRowSep" />
+	</div>
+	
+	<!-- TUNING: AFTER BOT PROFILE -->
+	
+	<xf:numberboxrow name="general[temperature]" 
+					 label="{{ phrase('bs_aib_temperature') }}"
+					 explain="{{ phrase('bs_aib_temperature_explain') }}"
+					 max="1" 
+					 min="0.1" 
+					 step="0.1" 
+					 value="{$bot.general.temperature}" />
+	<!-- TUNING: END -->
+</xf:macro>
+
+<xf:macro name="restrictions" arg-bot="!" arg-userGroups="!" arg-nodeTree="!">
+	<!-- RESTRICTIONS: START  -->
+	<xf:selectrow name="restrictions[active_for_user_group_ids]" 
+				  multiple="true" 
+				  value="{$bot.restrictions.active_for_user_group_ids}" 
+				  listclass="listColumns"
+				  label="{{ phrase('bs_aib_active_for_user_groups') }}"
+				  explain="{{ phrase('bs_aib_active_for_user_groups_explain') }}">
+		<xf:option value="-1">{{ phrase('all') }}</xf:option>
+		<xf:options source="$userGroups" />
+	</xf:selectrow>
+
+	<hr class="formRowSep" />
+	
+	<!-- RESTRICTIONS: AFTER ACTIVE USER GROUPS -->
+
+	<xf:formrow rowtype="input" 
+				label="{{ phrase('applicable_forums') }}"
+				explain="{{ phrase('bs_aib_active_nodes_explain') }}"
+	>
+		<xf:macro template="forum_selection_macros" name="select_forums"
+				  arg-selectName="restrictions[active_node_ids]"
+				  arg-nodeIds="{$bot.restrictions.active_node_ids}"
+				  arg-nodeTree="{$nodeTree}"
+				  arg-withRow="{{ false }}" />
+	</xf:formrow>
+
+	<xf:numberboxrow name="restrictions[max_replies_per_thread]"
+					 label="{{ phrase('bs_aib_max_replies_per_thread') }}"
+					 explain="{{ phrase('bs_aib_max_replies_per_thread_explain') }}"
+					 value="{$bot.restrictions.max_replies_per_thread}" />
+
+	<hr class="formRowSep" />
+	
+	<!-- RESTRICTIONS: AFTER THREADS -->
+	
+	<xf:numberboxrow name="restrictions[max_replies_per_conversation]"
+					 label="{{ phrase('bs_aib_max_replies_per_conversation') }}"
+					 explain="{{ phrase('bs_aib_max_replies_per_conversation_explain') }}"
+					 value="{$bot.restrictions.max_replies_per_conversation}" />
+
+	<hr class="formRowSep" />
+	
+	<!-- RESTRICTIONS: AFTER CONVERSATIONS -->
+	<xf:checkboxrow explain="{{ phrase('bs_aib_spam_check_explain') }}">
+		<xf:option name="restrictions[spam_check]"
+				   label="{{ phrase('bs_aib_spam_check') }}"
+				   checked="{$bot.restrictions.spam_check}" />
+	</xf:checkboxrow>
+	<!-- RESTRICTIONS: END -->
+</xf:macro>
+
+<xf:macro name="triggers" arg-bot="!" arg-nodeTree="!">
+	<!-- TRIGGERS: START -->
+	<xf:selectrow name="triggers[active_in_context]" 
+				  multiple="true" 
+				  value="{$bot.triggers.active_in_context}"
+				  label="{{ phrase('bs_aib_active_in_context') }}"
+				  explain="{{ phrase('bs_aib_active_in_context_explain') }}"
+	>
+		<xf:option value="thread"
+				   label="{{ phrase('thread') }}" />
+		<xf:option value="conversation"
+				   label="{{ phrase('conversation') }}" />
+		<xf:option value="bot_profile"
+				   label="{{ phrase('bs_aib_bot_profile') }}" />
+	</xf:selectrow>
+
+	<hr class="formRowSep" />
+	
+	<!-- TRIGGERS: AFTER CONTEXT -->
+
+	<xf:checkboxrow name="triggers[post]" 
+					value="{$bot.triggers.post}"
+					label="{{ phrase('bs_aib_post_triggers') }}"
+	>
+		<xf:option value="mention"
+				   label="{{ phrase('bs_aib_mention') }}"
+				   checked="{{ in_array('mention', $bot.triggers.post) }}"/>
+		<xf:option value="quote"
+				   label="{{ phrase('bs_aib_quote') }}"
+				   checked="{{ in_array('quote', $bot.triggers.post) }}" />
+	</xf:checkboxrow>
+	
+	<xf:formrow rowtype="input" 
+				label="{{ phrase('bs_aib_posted_in') }}"
+				explain="{{ phrase('bs_aib_posted_in_explain') }}"
+	>
+		<xf:macro template="forum_selection_macros" name="select_forums"
+				  arg-selectName="triggers[posted_in_node_ids]"
+				  arg-nodeIds="{$bot.triggers.posted_in_node_ids}"
+				  arg-nodeTree="{$nodeTree}"
+				  arg-withRow="{{ false }}" />
+	</xf:formrow>
+	
+	<!-- TRIGGERS: AFTER POSTS -->
+
+	<hr class="formRowSep" />
+
+	<xf:checkboxrow name="triggers[conversation]" 
+					value="{$bot.triggers.conversation}"
+					label="{{ phrase('bs_aib_conversation_triggers') }}"
+	>
+		<xf:option value="private_appeal" 
+				   label="{{ phrase('bs_aib_private_appeal') }}"
+				   checked="{{ in_array('private_appeal', $bot.triggers.conversation) }}"
+				   hint="{{ phrase('bs_aib_private_appeal_explain') }}"/>
+		<xf:option value="mention"
+				   label="{{ phrase('bs_aib_mention') }}"
+				   checked="{{ in_array('mention', $bot.triggers.conversation) }}"/>
+		<xf:option value="quote"
+				   label="{{ phrase('bs_aib_quote') }}"
+				   checked="{{ in_array('quote', $bot.triggers.conversation) }}" />
+	</xf:checkboxrow>
+
+	<hr class="formRowSep" />
+	
+	<!-- TRIGGERS: AFTER CONVERSATION -->
+
+	<xf:formrow rowtype="input"
+				label="{{ phrase('bs_aib_trigger_regexes') }}"
+				explain="{{ phrase('bs_aib_trigger_regexes_explain') }}">
+		<ul class="listPlain inputGroup-container">
+			<xf:foreach loop="$bot.triggers.regexes" key="$counter" value="$regex">
+				<li class="inputGroup">
+					<xf:textbox name="triggers[regexes][{$counter}]" value="{$regex}" placeholder="{{ phrase('regular_expression') }}" />
+				</li>
+			</xf:foreach>
+
+			<li class="inputGroup" data-xf-init="field-adder" data-increment-format="triggers[regexes][{counter}]">
+				<xf:textbox name="triggers[regexes][{$nextCounter}]" placeholder="{{ phrase('regular_expression') }}" />
+			</li>
+		</ul>
+	</xf:formrow>
+
+	<xf:formrow rowtype="input"
+				label="{{ phrase('bs_aib_ignore_regexes') }}"
+				explain="{{ phrase('bs_aib_ignore_regexes_explain') }}">
+		<ul class="listPlain inputGroup-container">
+			<xf:foreach loop="$bot.triggers.ignore_regexes" key="$counter" value="$regex">
+				<li class="inputGroup">
+					<xf:textbox name="triggers[ignore_regexes][{$counter}]" value="{$regex}" placeholder="{{ phrase('regular_expression') }}" />
+				</li>
+			</xf:foreach>
+
+			<li class="inputGroup" data-xf-init="field-adder" data-increment-format="triggers[ignore_regexes][{counter}]">
+				<xf:textbox name="triggers[ignore_regexes][{$nextCounter}]" placeholder="{{ phrase('regular_expression') }}" />
+			</li>
+		</ul>
+	</xf:formrow>
+	<!-- TRIGGERS: END -->
+</xf:macro>]]></template>
+  <template type="admin" title="bs_ai_bot_edit" version_id="1000070" version_string="1.0.0"><![CDATA[<xf:if is="$bot.isInsert()">
+	<xf:title>{{ phrase('bs_aib_add_bot') }}</xf:title>
+<xf:else />
+	<xf:title>{{ phrase('bs_aib_edit_bot:') }} {$bot.username}</xf:title>
+</xf:if>
+
+<xf:pageaction if="$bot.isUpdate()">
+	<xf:button href="{{ link('ai-bots/delete', $bot) }}" icon="delete" overlay="true" />
+</xf:pageaction>
+
+<xf:if is="$bot.isInsert()">
+	<div class="blockMessage blockMessage--warning blockMessage--iconic">
+		{{ phrase('bs_aib_bot_create_restrictions_warning') }}
+	</div>
+</xf:if>
+
+<xf:js src="bs/ai_bots/bot_edit.js" min="1" />
+
+<xf:form action="{{ link('ai-bots/save', $bot) }}" class="block" ajax="true">
+	<div class="block-container">
+		<h2 class="block-tabHeader tabs hScroller js-aibTabs" data-xf-init="tabs h-scroller" role="tablist">
+			<span class="hScroller-scroll">
+				<a class="tabs-tab is-active" 
+				   role="tab" 
+				   tabindex="0" 
+				   aria-controls="general"
+				   data-protected="true">
+					{{ phrase('bs_aib_general') }}
+				</a>
+				<xf:foreach loop="$bot.tabs" key="$tabIndex" value="$tab">
+					<a class="tabs-tab" 
+					   role="tab" 
+					   tabindex="{{ $tabIndex + 1 }}" 
+					   aria-controls="{$tab.id}">
+						{$tab.title}
+					</a>
+				</xf:foreach>
+			</span>
+		</h2>
+
+		<ul class="tabPanes block-body js-aibTabPanes">
+			<li class="is-active" role="tabpanel" id="general" data-protected="true">
+				<xf:macro name="general" 
+						  arg-bot="{$bot}"
+						  arg-userGroups="{$userGroups}"
+						  arg-handlers="{$handlers}" />
+			</li>
+			<xf:if is="$bot.isUpdate()">
+				{$bot.Handler.renderTabPanes()|raw}
+			</xf:if>
+		</ul>
+		
+		<xf:submitrow sticky="true" icon="save" />
+	</div>
+</xf:form>
+
+<xf:macro name="general" arg-bot="!" arg-userGroups="!" arg-handlers="!">
+	<xf:if is="!$bot.user_id">
+		<xf:textboxrow name="username" ac="single"
+					   label="{{ phrase('user') }}" />
+	</xf:if>
+
+	<xf:checkboxrow>
+		<xf:option name="is_active" selected="$bot.is_active"
+				   label="{{ phrase('bs_aib_is_active') }}"
+				   hint="{{ phrase('bs_aib_use_this_to_disable_bot') }}"/>
+	</xf:checkboxrow>
+	
+	<xf:selectrow 
+			label="{{ phrase('bs_aib_handler') }}"
+			name="bot_class"
+			data-xf-init="aib-handler-tabs-loader"
+			data-link="{{ link('ai-bots/tabs', $bot) }}"
+			data-first-load="{{ $bot.isInsert() ? 'true' : 'false' }}"
+			value="{$bot.bot_class}"
+	>
+		<xf:options source="{$handlers}" />
+	</xf:selectrow>
+
+	<xf:checkboxrow name="extra_user_group_ids" value="{$bot.extra_user_group_ids}" listclass="listColumns"
+					label="{{ phrase('add_user_to_user_groups') }}">
+		<xf:hint><br />
+			<xf:checkbox standalone="true"><xf:option check-all="< .formRow" label="{{ phrase('select_all') }}" /></xf:checkbox>
+		</xf:hint>
+		<xf:options source="$userGroups" />
+	</xf:checkboxrow>
+</xf:macro>]]></template>
+  <template type="admin" title="bs_ai_bot_list" version_id="1000070" version_string="1.0.0"><![CDATA[<xf:title>{{ phrase('bs_aib_ai_bots') }}</xf:title>
+
+<xf:pageaction>
+	<xf:button href="{{ link('ai-bots/add') }}" icon="add">{{ phrase('bs_aib_add_bot') }}</xf:button>
+</xf:pageaction>
+
+<xf:if is="$bots is not empty">
+	<xf:form action="{{ link('ai-bots/toggle') }}" class="block" ajax="true">
+		<div class="block-container">
+			<div class="block-body">
+				<xf:datalist>
+					<xf:foreach loop="$handlers" key="$handlerClass" value="$handlerTitle">
+						<xf:if is="{$groupedBots.{$handlerClass}} is not empty">
+							<xf:datarow rowtype="subsection" rowclass="dataList-row--noHover">
+								<xf:cell colspan="4">{$handlerTitle}</xf:cell>
+							</xf:datarow>
+							<xf:foreach loop="{$groupedBots.{$handlerClass}}" value="$bot">
+								<xf:datarow>
+									<xf:cell class="dataList-cell--min dataList-cell--image dataList-cell--imageSmall"
+											 href="{{ link('ai-bots/edit', $bot) }}">
+										<xf:avatar user="$bot.User" size="s" href="" />
+									</xf:cell>
+									<xf:main href="{{ link('ai-bots/edit', $bot) }}">
+										<xf:label><xf:username user="$bot.User" rich="true" notooltip="true" href="" /></xf:label>
+									</xf:main>
+									<xf:toggle name="is_active[{$bot.bot_id}]" selected="$bot.is_active"
+											   class="dataList-cell--separated" submit="true"
+											   tooltip="{{ phrase('enable_disable_x', {'title': $bot.username}) }}"/>
+									<xf:delete href="{{ link('ai-bots/delete', $bot) }}" />
+								</xf:datarow>
+							</xf:foreach>
+						</xf:if>
+					</xf:foreach>
+				</xf:datalist>
+			</div>
+		</div>
+	</xf:form>
+	<xf:pagenav page="{$page}" perpage="{$perPage}" total="{$total}"
+				link="ai-bots" />
+	<xf:else />
+	<div class="blockMessage">{{ phrase('bs_aib_there_are_currently_no_active_bots') }}</div>
+</xf:if>]]></template>
+  <template type="admin" title="bs_aib_chat_gpt_node_prompt_edit" version_id="1000070" version_string="1.0.0"><![CDATA[<xf:title>{{ phrase('bs_aib_ai_bots_chat_gpt_edit_prompt_for_node', {'node': $node.title, 'bot': $bot.username}) }}</xf:title>
+
+<xf:form action="{{ link('ai-bots/chat-gpt-node-prompts/save', $prompt) }}" class="block" ajax="true">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:textarearow label="{{ phrase('bs_aib_prompt') }}" 
+							explain="{{ phrase('bs_aib_node_prompt_explain') }}"
+							name="prompt" 
+							value="{$prompt.prompt}"
+							placeholder="{{ phrase('bs_aib_prompt_placeholder') }}"
+							rows="5" />
+		</div>
+		
+		<xf:submitrow icon="save" />
+	</div>
+</xf:form>]]></template>
+  <template type="admin" title="bs_aib_chat_gpt_node_prompt_list" version_id="1000070" version_string="1.0.0"><![CDATA[<xf:title>{{ phrase('bs_aib_ai_bots_chat_gpt_node_prompts') }}</xf:title>
+
+<xf:if is="$bots is not empty">
+	<div class="block">
+		<div class="block-container">
+			<xf:foreach loop="$bots" value="$bot">
+				<h3 class="block-formSectionHeader">
+					<span class="collapseTrigger collapseTrigger--block" data-xf-click="toggle" data-target="< :up:next">
+						<xf:avatar user="$bot.User" size="xxs" href="" />
+						{$bot.username}
+					</span>
+				</h3>
+				<div class="block-body block-body--collapsible">
+					<xf:datalist>
+						<xf:macro name="node_tree_edit" 
+								  arg-bot="{$bot}"
+								  arg-nodeTree="{$nodeTree}" 
+								  arg-groupedPrompts="{$groupedPrompts.{$bot.bot_id}}" />
+					</xf:datalist>
+				</div>
+			</xf:foreach>
+		</div>
+	</div>
+	<xf:else />
+	<div class="blockMessage">{{ phrase('bs_aib_there_are_currently_no_active_bots') }}</div>
+</xf:if>
+
+<xf:macro name="node_tree_edit" arg-bot="!" arg-nodeTree="!" arg-groupedPrompts="!">
+	<xf:foreach loop="$nodeTree.getFlattened(0)" value="$treeEntry">
+		<xf:set var="$node" value="{$treeEntry.record}" />
+		<xf:datarow
+			rowtype="{{ $node.node_type_id !== 'Forum' ? 'subsection' : '' }}"
+			rowclass="{{ $node.node_type_id !== 'Forum' ? 'dataList-row--noHover' : '' }}{{ {$groupedPrompts.{$node.node_id}.prompt} ? ' dataList-row--custom' : '' }}"
+		>
+			<xf:cell class="dataList-cell--min">
+				<xf:macro name="node_list::node_icon" arg-node="{$node}" />
+			</xf:cell>
+			<xf:cell class="dataList-cell--link dataList-cell--main">
+				<xf:if is="$node.node_type_id === 'Forum'">
+					<a href="{{ link('ai-bots/chat-gpt-node-prompts/edit', $node, {'bot_id': $bot.bot_id}) }}">
+						<xf:macro name="node_title" arg-node="{$node}" arg-treeEntry="{$treeEntry}" />
+					</a>
+					<xf:else />
+					<xf:macro name="node_title" arg-node="{$node}" arg-treeEntry="{$treeEntry}" />
+				</xf:if>
+			</xf:cell>
+		</xf:datarow>
+	</xf:foreach>
+</xf:macro>
+
+<xf:macro name="node_title" arg-node="!" arg-treeEntry="!">
+	<div class="u-depth{$treeEntry.depth}">
+		<div class="dataList-mainRow">
+			{$node.title}
+			<span class="dataList-hint" dir="auto">
+				{$node.NodeType.title}
+				<xf:if is="
+					$node.node_type_id == 'Forum'
+					AND $node.Data.TypeHandler
+					AND $node.Data.forum_type_id != 'discussion'
+				">
+					({{ $node.Data.TypeHandler.getTypeTitle() }})
+				</xf:if>
+			</span>
+		</div>
+	</div>
+</xf:macro>]]></template>
+</templates>

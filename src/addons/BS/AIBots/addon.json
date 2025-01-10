@@ -1,0 +1,23 @@
+{
+    "legacy_addon_id": "",
+    "title": "[021] AI Bots",
+    "description": "Multifunctional artificial intelligence forum bots.",
+    "version_id": 1020070,
+    "version_string": "1.2.0",
+    "dev": "021",
+    "dev_url": "https://devsell.io/",
+    "faq_url": "",
+    "support_url": "",
+    "extra_urls": [],
+    "require": {
+        "BS/ChatGPTBots": [
+            1050070,
+            "[021] ChatGPT Framework 1.5.0+"
+        ],
+        "XF": [
+            2020070,
+            "XenForo 2.2.0+"
+        ]
+    },
+    "icon": "icon.png"
+}

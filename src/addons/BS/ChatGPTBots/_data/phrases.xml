@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="option.bsChatGptApiKey" version_id="1000070" version_string="1.0.0"><![CDATA[OpenAI API Key]]></phrase>
+  <phrase title="option_explain.bsChatGptApiKey" version_id="1000070" version_string="1.0.0"><![CDATA[The key can be obtained on <a href="https://platform.openai.com/account/api-keys" target="_blank">OpenAI API keys</a> page.]]></phrase>
+  <phrase title="option_group.bsChatGptBots" version_id="1020170" version_string="1.2.1"><![CDATA[[021] ChatGPT Framework]]></phrase>
+  <phrase title="option_group_description.bsChatGptBots" version_id="1000070" version_string="1.0.0"><![CDATA[]]></phrase>
+</phrases>

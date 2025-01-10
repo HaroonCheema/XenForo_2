@@ -172,6 +172,7 @@ return array (
   'option.bot_gpt_temperature' => 'Chat GPT Temperature',
   'option.bounceEmailAddress' => 'Bounced email address',
   'option.brand_page' => 'Brand page',
+  'option.bsChatGptApiKey' => 'OpenAI API Key',
   'option.bsXFWebSocketsCopyright' => 'Show copyright',
   'option.bsXFWebSocketsPusherAppID' => 'Pusher app ID',
   'option.bsXFWebSocketsPusherCluster' => 'Pusher cluster',

@@ -228,6 +228,28 @@ return array(
 	}
 	$__compilerTemp2 .= '
 ';
+	if ($__templater->method($__vars['thread'], 'canToggleAiBots', array())) {
+		$__compilerTemp2 .= '
+	<a href="' . $__templater->func('link', array('threads/toggle-ai-bots', $__vars['thread'], ), true) . '"
+	   class="menu-linkRow"
+	   data-xf-click="switch"
+	   data-menu-closer="true">
+		';
+		if (!$__vars['thread']['bs_aib_enable_bots']) {
+			$__compilerTemp2 .= '
+			' . 'Enable AI bots' . '
+			';
+		} else {
+			$__compilerTemp2 .= '
+			' . 'Disable AI bots' . '
+		';
+		}
+		$__compilerTemp2 .= '
+	</a>
+';
+	}
+	$__compilerTemp2 .= '
+';
 	if ($__vars['xf']['visitor']['is_admin'] OR $__vars['xf']['visitor']['is_moderator']) {
 		$__compilerTemp2 .= '
 												<a href="' . $__templater->func('link', array('threads/delete-edit', $__vars['thread'], ), true) . '" data-xf-click="overlay" class="menu-linkRow">' . 'Delete Edit Threads' . '</a>

@@ -32,7 +32,7 @@ For a better understanding of how prompts should be composed, you can take a loo
 		'min' => '0',
 		'value' => $__vars['bot']['general']['rtc_context_limit'],
 	), array(
-		'label' => 'bs_aib_context_limit',
+		'label' => 'Context limit',
 		'explain' => 'The number of messages that will be loaded from the chat into the bot.<br>
 Set to 0 to have the bot only reply to the message that triggered.',
 	)) . '

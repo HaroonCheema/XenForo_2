@@ -377,8 +377,21 @@ return array(
 ';
 	}
 	$__compilerTemp11 = '';
-	if ($__vars['forum']['node_id'] == $__vars['xf']['options']['fs_escrow_applicable_forum']) {
+	if ($__templater->method($__vars['thread'], 'canToggleAiBots', array())) {
 		$__compilerTemp11 .= '
+	' . $__templater->formCheckBoxRow(array(
+		), array(array(
+			'name' => 'bs_aib_enable_bots',
+			'label' => 'Enable AI bots',
+			'checked' => $__vars['thread']['bs_aib_enable_bots'],
+			'_type' => 'option',
+		)), array(
+		)) . '
+';
+	}
+	$__compilerTemp12 = '';
+	if ($__vars['forum']['node_id'] == $__vars['xf']['options']['fs_escrow_applicable_forum']) {
+		$__compilerTemp12 .= '
 ' . $__templater->formSubmitRow(array(
 			'submit' => 'Post Escrow',
 			'icon' => 'write',
@@ -387,7 +400,7 @@ return array(
 		)) . '
 	';
 	} else {
-		$__compilerTemp11 .= '
+		$__compilerTemp12 .= '
 	' . $__templater->formSubmitRow(array(
 			'submit' => 'Post thread',
 			'icon' => 'write',
@@ -456,13 +469,14 @@ return array(
 				<hr class="formRowSep" />
 				' . $__compilerTemp10 . '
 
-				' . $__templater->formRowIfContent($__templater->func('captcha', array(false, false)), array(
+				' . $__compilerTemp11 . '
+' . $__templater->formRowIfContent($__templater->func('captcha', array(false, false)), array(
 		'label' => 'Verification',
 	)) . '
 			</div>
 		</div>
 
-		' . $__compilerTemp11 . '
+		' . $__compilerTemp12 . '
 	</div>
 
 ' . $__templater->includeTemplate('avForumsTagEss_forum_post_thread_tag_suggestion_js', $__vars) . '

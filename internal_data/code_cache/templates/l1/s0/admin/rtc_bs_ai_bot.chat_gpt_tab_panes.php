@@ -13,10 +13,10 @@ return array(
 	' . $__templater->formTextAreaRow(array(
 		'name' => 'general[rtc_prompt]',
 		'value' => $__vars['bot']['general']['rtc_prompt'],
-		'placeholder' => 'bs_aib_prompt_placeholder',
+		'placeholder' => '(Example) You are a language learning bot named Lingua. Your job is to help users learn a new language by providing practice exercises and conversation practice. You specialize in grammar rules and pronunciation, but you have knowledge about every aspect of the language. If given the opportunity, you might add cultural context to your lessons to make them more interesting',
 		'rows' => '5',
 	), array(
-		'label' => 'bs_aib_prompt',
+		'label' => 'Prompt',
 		'explain' => 'Available variables:<br>
 <em>{author}</em> – Username of the user who contacted the bot<br>
 <em>{date}</em> – Current date in "2021-12-31" format<br>
@@ -32,7 +32,7 @@ For a better understanding of how prompts should be composed, you can take a loo
 		'min' => '0',
 		'value' => $__vars['bot']['general']['rtc_context_limit'],
 	), array(
-		'label' => 'bs_aib_context_limit',
+		'label' => 'Context limit',
 		'explain' => 'The number of messages that will be loaded from the chat into the bot.<br>
 Set to 0 to have the bot only reply to the message that triggered.',
 	)) . '
@@ -40,11 +40,15 @@ Set to 0 to have the bot only reply to the message that triggered.',
 	' . $__templater->formCheckBoxRow(array(
 	), array(array(
 		'name' => 'general[rtc_smart_ignore]',
-		'label' => 'bs_aib_smart_ignore',
+		'label' => 'Smart ignore',
 		'checked' => $__vars['bot']['general']['rtc_smart_ignore'],
 		'_type' => 'option',
 	)), array(
-		'explain' => 'bs_aib_smart_ignore_explain',
+		'explain' => 'Enabling this option instructs the bot to ignore messages that are not intended for it.
+<br><br>
+Please note that this feature is experimental and cannot guarantee 100% results. However, reducing the context of the bot can significantly improve its performance. Also, for more correct operation of this function, it is recommended to tell the bot its username in the prompt.
+<br><br>
+By activating this option, 50 tokens will be added to each request. However, it can save tokens on the output for messages that don\'t require a response and makes the bot much smarter.',
 	)) . '
 
 	' . $__templater->formCheckBoxRow(array(
@@ -54,7 +58,7 @@ Set to 0 to have the bot only reply to the message that triggered.',
 		'checked' => $__templater->method($__vars['bot'], 'getSafest', array('general', 'rtc_streaming_mode', )),
 		'_type' => 'option',
 	)), array(
-		'explain' => 'bs_aib_stream_mode_explain',
+		'explain' => 'If this option is enabled, users will see how the bot is typing a message.',
 	)) . '
 	
 	' . $__templater->formCheckBoxRow(array(

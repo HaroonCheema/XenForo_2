@@ -1,0 +1,87 @@
+<xf:if is="$bot.isInsert()">
+	<xf:title>{{ phrase('bs_aib_add_bot') }}</xf:title>
+<xf:else />
+	<xf:title>{{ phrase('bs_aib_edit_bot:') }} {$bot.username}</xf:title>
+</xf:if>
+
+<xf:pageaction if="$bot.isUpdate()">
+	<xf:button href="{{ link('ai-bots/delete', $bot) }}" icon="delete" overlay="true" />
+</xf:pageaction>
+
+<xf:if is="$bot.isInsert()">
+	<div class="blockMessage blockMessage--warning blockMessage--iconic">
+		{{ phrase('bs_aib_bot_create_restrictions_warning') }}
+	</div>
+</xf:if>
+
+<xf:js src="bs/ai_bots/bot_edit.js" min="1" />
+
+<xf:form action="{{ link('ai-bots/save', $bot) }}" class="block" ajax="true">
+	<div class="block-container">
+		<h2 class="block-tabHeader tabs hScroller js-aibTabs" data-xf-init="tabs h-scroller" role="tablist">
+			<span class="hScroller-scroll">
+				<a class="tabs-tab is-active" 
+				   role="tab" 
+				   tabindex="0" 
+				   aria-controls="general"
+				   data-protected="true">
+					{{ phrase('bs_aib_general') }}
+				</a>
+				<xf:foreach loop="$bot.tabs" key="$tabIndex" value="$tab">
+					<a class="tabs-tab" 
+					   role="tab" 
+					   tabindex="{{ $tabIndex + 1 }}" 
+					   aria-controls="{$tab.id}">
+						{$tab.title}
+					</a>
+				</xf:foreach>
+			</span>
+		</h2>
+
+		<ul class="tabPanes block-body js-aibTabPanes">
+			<li class="is-active" role="tabpanel" id="general" data-protected="true">
+				<xf:macro name="general" 
+						  arg-bot="{$bot}"
+						  arg-userGroups="{$userGroups}"
+						  arg-handlers="{$handlers}" />
+			</li>
+			<xf:if is="$bot.isUpdate()">
+				{$bot.Handler.renderTabPanes()|raw}
+			</xf:if>
+		</ul>
+		
+		<xf:submitrow sticky="true" icon="save" />
+	</div>
+</xf:form>
+
+<xf:macro name="general" arg-bot="!" arg-userGroups="!" arg-handlers="!">
+	<xf:if is="!$bot.user_id">
+		<xf:textboxrow name="username" ac="single"
+					   label="{{ phrase('user') }}" />
+	</xf:if>
+
+	<xf:checkboxrow>
+		<xf:option name="is_active" selected="$bot.is_active"
+				   label="{{ phrase('bs_aib_is_active') }}"
+				   hint="{{ phrase('bs_aib_use_this_to_disable_bot') }}"/>
+	</xf:checkboxrow>
+	
+	<xf:selectrow 
+			label="{{ phrase('bs_aib_handler') }}"
+			name="bot_class"
+			data-xf-init="aib-handler-tabs-loader"
+			data-link="{{ link('ai-bots/tabs', $bot) }}"
+			data-first-load="{{ $bot.isInsert() ? 'true' : 'false' }}"
+			value="{$bot.bot_class}"
+	>
+		<xf:options source="{$handlers}" />
+	</xf:selectrow>
+
+	<xf:checkboxrow name="extra_user_group_ids" value="{$bot.extra_user_group_ids}" listclass="listColumns"
+					label="{{ phrase('add_user_to_user_groups') }}">
+		<xf:hint><br />
+			<xf:checkbox standalone="true"><xf:option check-all="< .formRow" label="{{ phrase('select_all') }}" /></xf:checkbox>
+		</xf:hint>
+		<xf:options source="$userGroups" />
+	</xf:checkboxrow>
+</xf:macro>

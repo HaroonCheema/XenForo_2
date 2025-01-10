@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<routes>
+  <route route_type="admin" route_prefix="ai-bots" format=":int&lt;bot_id&gt;/" controller="BS\AIBots:Bot" context="bsAiBots"/>
+  <route route_type="admin" route_prefix="ai-bots" sub_name="chat-gpt-node-prompts" format="chat-gpt-node-prompts/:int&lt;node_id,title&gt;/:int&lt;prompt_id&gt;/" controller="BS\AIBots:ChatGPTNodePrompt" context="bsAibChatGptNodePrompts"/>
+</routes>

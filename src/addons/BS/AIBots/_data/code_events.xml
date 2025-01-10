@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<code_events>
+  <event event_id="ai_bot_handlers"><![CDATA[<p>Allows to extend bot handlers</p>
+
+<p>Callback signature:</p>
+<blockquote><code><em>array</em> &amp;$handlers</code></blockquote>
+
+<p>Arguments:</p>
+<ol>
+	<li><code><em>array</em> &amp;$handlers</code> - handlers array in format [['class_name' => 'title'], ...]</li>
+</ol>]]></event>
+</code_events>

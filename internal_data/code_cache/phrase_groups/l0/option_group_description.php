@@ -21,6 +21,7 @@ return array (
   'option_group_description.boardActive' => 'Turn your board on and off here.',
   'option_group_description.bot_option' => '',
   'option_group_description.brand_viedo' => '',
+  'option_group_description.bsChatGptBots' => '',
   'option_group_description.bsXFWebSockets' => '',
   'option_group_description.censoringOptions' => 'User-generated text will be subject to the censorship rules you define here.',
   'option_group_description.checkAttachment' => 'For check attachments exist or not.',

@@ -189,6 +189,7 @@ You should also provide the maximum video/audio file size in kilobytes (KB). Vid
   'option_explain.bot_gpt_temperature' => '',
   'option_explain.bounceEmailAddress' => 'If an email cannot be delivered, the bounce notification will be returned to this email address. If left blank, bounced messages will be returned to the default email address. A value is required here if automated bounce handling is to be enabled. Note that this option may not work unless the return path parameter is enabled or mail is sent via SMTP using the Email Transport option.',
   'option_explain.brand_page' => 'Brand Video  Page Pagination Settings',
+  'option_explain.bsChatGptApiKey' => 'The key can be obtained on <a href="https://platform.openai.com/account/api-keys" target="_blank">OpenAI API keys</a> page.',
   'option_explain.bsXFWebSocketsCopyright' => '',
   'option_explain.bsXFWebSocketsPusherAppID' => '',
   'option_explain.bsXFWebSocketsPusherCluster' => '',

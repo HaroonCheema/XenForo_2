@@ -38,6 +38,8 @@ return array (
   'admin_navigation.bh_rebuild_review_stats' => 'Rebuild Review Stats',
   'admin_navigation.brand' => 'Brand',
   'admin_navigation.brand_hub' => 'Brand Hub',
+  'admin_navigation.bsAiBots' => 'AI bots',
+  'admin_navigation.bsAibChatGptNodePrompts' => 'ChatGPT node prompts',
   'admin_navigation.bsRtc' => 'Chat',
   'admin_navigation.bsRtcRooms' => 'Rooms',
   'admin_navigation.checksAndTests' => 'Checks and tests',

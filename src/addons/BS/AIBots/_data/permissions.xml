@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<permissions>
+  <permission permission_group_id="bsAib" permission_id="aibGdEMaxRepsBotPrfPerDay" permission_type="integer" interface_group_id="aiBotsGptDallE" display_order="70"/>
+  <permission permission_group_id="bsAib" permission_id="aibGdEUseInBotProfile" permission_type="flag" interface_group_id="aiBotsGptDallE" display_order="21"/>
+  <permission permission_group_id="bsAib" permission_id="aibGptMaxRepsBotPrfPerDay" permission_type="integer" interface_group_id="bsAiBotsChatGpt" display_order="50"/>
+  <permission permission_group_id="bsAib" permission_id="aibGptUseInBotProfile" permission_type="flag" interface_group_id="bsAiBotsChatGpt" display_order="3"/>
+  <permission permission_group_id="conversation" permission_id="aibGdEMaxRepliesPerConv" permission_type="integer" interface_group_id="aiBotsGptDallE" display_order="50"/>
+  <permission permission_group_id="conversation" permission_id="aibGdEMaxRepsPerDayConv" permission_type="integer" interface_group_id="aiBotsGptDallE" display_order="60"/>
+  <permission permission_group_id="conversation" permission_id="aibGdEUse" permission_type="flag" interface_group_id="aiBotsGptDallE" display_order="10"/>
+  <permission permission_group_id="conversation" permission_id="aibGptMaxRepliesPerConv" permission_type="integer" interface_group_id="bsAiBotsChatGpt" display_order="30"/>
+  <permission permission_group_id="conversation" permission_id="aibGptMaxRepsPerDayConv" permission_type="integer" interface_group_id="bsAiBotsChatGpt" display_order="40"/>
+  <permission permission_group_id="conversation" permission_id="aibGptUse" permission_type="flag" interface_group_id="bsAiBotsChatGpt" display_order="1"/>
+  <permission permission_group_id="forum" permission_id="aibGdEMaxRepliesPerThread" permission_type="integer" interface_group_id="aiBotsGptDallE" display_order="30"/>
+  <permission permission_group_id="forum" permission_id="aibGdEMaxRepsPerDayThread" permission_type="integer" interface_group_id="aiBotsGptDallE" display_order="40"/>
+  <permission permission_group_id="forum" permission_id="aibGdEUse" permission_type="flag" interface_group_id="aiBotsGptDallE" display_order="20"/>
+  <permission permission_group_id="forum" permission_id="aibGptMaxRepliesPerThread" permission_type="integer" interface_group_id="bsAiBotsChatGpt" display_order="10"/>
+  <permission permission_group_id="forum" permission_id="aibGptMaxRepsPerDayThread" permission_type="integer" interface_group_id="bsAiBotsChatGpt" display_order="20"/>
+  <permission permission_group_id="forum" permission_id="aibGptUse" permission_type="flag" interface_group_id="bsAiBotsChatGpt" display_order="2"/>
+  <permission permission_group_id="forum" permission_id="bsAibToggleBots" permission_type="flag" interface_group_id="bsAiBots" display_order="10"/>
+  <permission permission_group_id="forum" permission_id="bsAibToggleBotsAny" permission_type="flag" interface_group_id="bsAiBotsModerator" display_order="10"/>
+</permissions>
