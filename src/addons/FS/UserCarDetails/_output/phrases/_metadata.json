@@ -11,6 +11,12 @@
         "version_string": "1.0.0 Alpha",
         "hash": "b97e20e28da5973437b695e884ce6888"
     },
+    "fs_car_detail_username.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "041baab118d414fa18f5c23760e27471"
+    },
     "fs_car_details_add_colour.txt": {
         "global_cache": false,
         "version_id": 1000010,
@@ -185,11 +191,23 @@
         "version_string": "1.0.0 Alpha",
         "hash": "1fc5884251ca9f20a4fd5f79a458f94f"
     },
+    "fs_car_details_unique_info.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "83a99117eb9432d0dcaf20410fcb1756"
+    },
     "fs_car_details_unique_information.txt": {
         "global_cache": false,
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
         "hash": "83a99117eb9432d0dcaf20410fcb1756"
+    },
+    "fs_car_details_username.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "f6039d44b29456b20f8f373155ae4973"
     },
     "fs_car_location_filter.txt": {
         "global_cache": false,

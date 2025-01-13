@@ -17,12 +17,17 @@
     "public/fs_car_details_list_filter.html": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
-        "hash": "dd84123467bf7c799576df8ea3b2dc84"
+        "hash": "4f327511e5434af07849111738fecebb"
     },
     "public/fs_car_details_list_index.html": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
-        "hash": "b4876e4eb6344c3f8f27a920c10d6df8"
+        "hash": "1271fdc66f43feb4ef1affa98d606982"
+    },
+    "public/fs_car_unique_information.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "674311be8adcb2da465363373821381b"
     },
     "public/fs_vis_car_details_index.html": {
         "version_id": 1000010,

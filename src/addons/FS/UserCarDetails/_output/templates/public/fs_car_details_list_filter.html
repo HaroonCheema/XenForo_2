@@ -1,6 +1,13 @@
 <xf:form action="{{ link('cars-list/') }}">
 
 	<div class="menu-row">
+		{{ phrase('fs_car_detail_username') }}
+		<div class="u-inputSpacer">
+			<xf:textbox name="fs_car_details_username" value="{$conditions.fs_car_details_username}" ac="single" />
+		</div>
+	</div>
+
+	<div class="menu-row">
 		{{ phrase('fs_car_select_model_filter') }}
 		<div class="u-inputSpacer"><xf:select name="model_id" value="{$conditions.model_id|default([0])}" required="required">
 			<xf:option value="0">{{ phrase('none') }}</xf:option>

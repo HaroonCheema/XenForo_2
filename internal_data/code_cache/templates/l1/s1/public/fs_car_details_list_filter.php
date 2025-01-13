@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: dd84123467bf7c799576df8ea3b2dc84
+// FROM HASH: 4f327511e5434af07849111738fecebb
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -19,6 +19,17 @@ return array(
 		}
 	}
 	$__finalCompiled .= $__templater->form('
+
+	<div class="menu-row">
+		' . 'Username :' . '
+		<div class="u-inputSpacer">
+			' . $__templater->formTextBox(array(
+		'name' => 'fs_car_details_username',
+		'value' => $__vars['conditions']['fs_car_details_username'],
+		'ac' => 'single',
+	)) . '
+		</div>
+	</div>
 
 	<div class="menu-row">
 		' . 'Model :' . '

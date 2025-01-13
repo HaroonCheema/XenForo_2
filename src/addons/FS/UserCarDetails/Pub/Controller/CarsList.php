@@ -59,9 +59,21 @@ class CarsList extends AbstractController
         return $this->view('FS\UserCarDetails:CarsList\RefineSearch', 'fs_car_details_list_filter', $viewParams);
     }
 
+    public function actionUniqueInfo(ParameterBag $params)
+    {
+        $car_unique_information = $this->filter('car_unique_information', 'str');
+
+        $viewParams = [
+            'car_unique_information' => $car_unique_information,
+        ];
+
+        return $this->view('FS\UserCarDetails:CarsList\UniqueInfo', 'fs_car_unique_information', $viewParams);
+    }
+
     protected function filterSearchConditions()
     {
         $filters = $this->filter([
+            'fs_car_details_username' => 'str',
             'model_id' => 'int',
             'car_location' => 'str',
         ]);
@@ -90,6 +102,8 @@ class CarsList extends AbstractController
         if (!empty($conditions['car_location'])) {
 
             $carDetails->where('car_location', 'LIKE', $carDetails->escapeLike($conditions['car_location'], '%?%'));
+        } elseif (!empty($conditions['fs_car_details_username'])) {
+            $carDetails->where('username', $conditions['fs_car_details_username']);
         }
 
         return $carDetails;

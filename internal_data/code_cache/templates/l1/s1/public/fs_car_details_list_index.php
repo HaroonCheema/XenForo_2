@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: b4876e4eb6344c3f8f27a920c10d6df8
+// FROM HASH: 1271fdc66f43feb4ef1affa98d606982
 return array(
 'macros' => array('car_details_filter' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -52,6 +52,10 @@ return array(
 		'rowtype' => 'header',
 	), array(array(
 		'_type' => 'cell',
+		'html' => ' ' . 'Username' . ' ',
+	),
+	array(
+		'_type' => 'cell',
 		'html' => ' ' . 'Model' . ' ',
 	),
 	array(
@@ -100,7 +104,12 @@ return array(
 			}
 			$__finalCompiled .= $__templater->dataRow(array(
 			), array(array(
-				'href' => $__templater->func('link', array('members/', $__vars['val'], ), false),
+				'_type' => 'cell',
+				'html' => ' ' . $__templater->func('username_link', array($__vars['val'], true, array(
+				'class' => ((!$__vars['val']) ? 'username--invisible' : ''),
+			))) . ' ',
+			),
+			array(
 				'_type' => 'cell',
 				'html' => ' ' . $__templater->escape($__vars['val']['CarModel']['model']) . ' ',
 			),
@@ -133,7 +142,9 @@ return array(
 				'html' => ' ' . $__templater->escape($__vars['val']['car_forum_name']) . ' ',
 			),
 			array(
+				'href' => $__templater->func('link', array('cars-list/unique-info', $__vars['val'], array('car_unique_information' => $__vars['val']['car_unique_information'], ), ), false),
 				'title' => $__vars['val']['car_unique_information'],
+				'overlay' => 'true',
 				'_type' => 'cell',
 				'html' => ' ' . $__templater->func('snippet', array($__vars['val']['car_unique_information'], 30, array('stripBbCode' => true, ), ), true) . ' ',
 			))) . '

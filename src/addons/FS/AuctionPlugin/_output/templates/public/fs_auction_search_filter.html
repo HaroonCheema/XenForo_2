@@ -1,0 +1,47 @@
+<xf:form action="{{ link('auction') }}">
+	<div class="menu-row">
+    {{ phrase('fs_auction_username:') }}
+    <div class="u-inputSpacer">
+      	<xf:textbox name="fs_auction_username" value="{$conditions.fs_auction_username}" ac="single" />
+    </div>
+  </div>
+	
+	<div class="menu-row menu-row--separated">
+			{{ phrase('fs_auction_status:') }}
+			<div class="u-inputSpacer">
+				<xf:select name="fs_auction_status" value="{$conditions.fs_auction_status}">
+					<xf:option value="all" selected="true" label="{{ phrase('all') }}" />
+					<xf:option value="1" label="{{ phrase('fs_auction_active') }}" />
+					<xf:option value="0" label="{{ phrase('fs_auction_expired') }}" />
+				</xf:select>
+			</div>
+		</div>
+	
+	<div class="menu-row menu-row--separated">
+			{{ phrase('fs_auction_cat:') }}
+			<div class="u-inputSpacer">
+				<xf:select name="fs_auction_cat" value="{$conditions.fs_auction_cat}">
+        <xf:option value="0" selected="true">{{ phrase('(none)') }}</xf:option>
+
+        <xf:foreach loop="$categories" value="$cat">
+          <xf:option
+            value="{$cat.category_id}"
+            >{$cat.title}</xf:option
+          >
+        </xf:foreach>
+      </xf:select>
+			</div>
+		</div>
+	
+	
+	
+	  <div class="menu-footer">
+    <span class="menu-footer-controls">
+      <xf:button type="submit" class="button--primary"
+        >{{ phrase('filter') }}</xf:button
+      >
+    </span>
+  </div>
+
+  <xf:hiddenval name="search">1</xf:hiddenval>
+</xf:form>

@@ -24,6 +24,11 @@
         "version_string": "1.4.6 Alpha",
         "hash": "f664129a4624c70398d178ddec1f94d6"
     },
+    "public/fs_auction_search_filter.html": {
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "52fdaf1b3bc435eca033032e854299b6"
+    },
     "public/fs_auction_view_single.html": {
         "version_id": 1040700,
         "version_string": "1.4.7 Alpha",

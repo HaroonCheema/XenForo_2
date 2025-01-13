@@ -73,6 +73,7 @@
 
 <xf:macro name="record_table_list" arg-data="{$data}">
 	<xf:datarow rowtype="header">
+		<xf:cell> {{ phrase('fs_car_details_username') }} </xf:cell>
 		<xf:cell> {{ phrase('fs_car_details_list_model') }} </xf:cell>
 		<xf:cell> {{ phrase('fs_car_details_list_car_colour') }} </xf:cell>
 		<xf:cell> {{ phrase('fs_car_details_list_car_trim') }} </xf:cell>
@@ -85,7 +86,8 @@
 	</xf:datarow>
 	<xf:foreach loop="{$data}" value="$val">
 		<xf:datarow>
-			<xf:cell href="{{ link('members/', $val) }}" > {{ $val.CarModel.model }} </xf:cell>
+			<xf:cell> <xf:username user="$val" rich="true" class="{{ !$val ? 'username--invisible' : '' }}" /> </xf:cell>
+			<xf:cell> {{ $val.CarModel.model }} </xf:cell>
 			<xf:cell> {{ $val.car_colour }} </xf:cell>
 			<xf:cell> {{ $val.car_trim }} </xf:cell>
 			<xf:cell> {{ $val.car_location }} </xf:cell>
@@ -93,7 +95,7 @@
 			<xf:cell> {{ $val.car_reg_number }} </xf:cell>
 			<xf:cell><xf:if is="$val.car_reg_date"> <xf:date time="{$val.car_reg_date}" /> <xf:else /> - </xf:if></xf:cell>
 			<xf:cell> {{ $val.car_forum_name }} </xf:cell>
-			<xf:cell title="{{ $val.car_unique_information }}"> {{ snippet($val.car_unique_information, 30, {'stripBbCode': true}) }} </xf:cell>
+			<xf:cell href="{{ link('cars-list/unique-info', $val, {'car_unique_information': $val.car_unique_information}) }}" title="{{ $val.car_unique_information }}" overlay="true"> {{ snippet($val.car_unique_information, 30, {'stripBbCode': true}) }} </xf:cell>
 
 		</xf:datarow>
 	</xf:foreach>
