@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <phrases>
-  <phrase title="admin_navigation.fs_user_car_model" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Car Model]]></phrase>
+  <phrase title="admin_navigation.fs_user_car_location_add" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add Location]]></phrase>
+  <phrase title="admin_navigation.fs_user_car_model" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Car Details]]></phrase>
   <phrase title="admin_navigation.fs_user_car_model_add" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add Model]]></phrase>
+  <phrase title="fs_car_detail_username" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Username :]]></phrase>
   <phrase title="fs_car_details_add_colour" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter your car colour here..!]]></phrase>
   <phrase title="fs_car_details_add_forum_name" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter forum name here...!]]></phrase>
   <phrase title="fs_car_details_add_location" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter your location here...!]]></phrase>
@@ -27,12 +29,20 @@
   <phrase title="fs_car_details_plaque_number" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Plaque Number]]></phrase>
   <phrase title="fs_car_details_reg_date" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Car Reg Date]]></phrase>
   <phrase title="fs_car_details_reg_number" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Reg Number]]></phrase>
+  <phrase title="fs_car_details_select_location" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Select your car location...!]]></phrase>
   <phrase title="fs_car_details_select_model" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Select your car model...!]]></phrase>
   <phrase title="fs_car_details_select_models" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Model]]></phrase>
   <phrase title="fs_car_details_select_reg_date" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Select your car reg date from here...!]]></phrase>
   <phrase title="fs_car_details_trim" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trim]]></phrase>
+  <phrase title="fs_car_details_unique_info" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Unique Information]]></phrase>
   <phrase title="fs_car_details_unique_information" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Unique Information]]></phrase>
+  <phrase title="fs_car_details_username" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Username]]></phrase>
+  <phrase title="fs_car_location" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Car Location]]></phrase>
+  <phrase title="fs_car_location_add" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add location]]></phrase>
+  <phrase title="fs_car_location_add_btn" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add Location]]></phrase>
+  <phrase title="fs_car_location_edit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Edit location]]></phrase>
   <phrase title="fs_car_location_filter" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Location :]]></phrase>
+  <phrase title="fs_car_location_name" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Location]]></phrase>
   <phrase title="fs_car_model" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Car Model]]></phrase>
   <phrase title="fs_car_model_add" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add model]]></phrase>
   <phrase title="fs_car_model_add_btn" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add model]]></phrase>

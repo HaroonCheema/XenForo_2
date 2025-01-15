@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 1271fdc66f43feb4ef1affa98d606982
+// FROM HASH: b5914fb4a5ac799d714da3118f9eae0b
 return array(
 'macros' => array('car_details_filter' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -123,7 +123,7 @@ return array(
 			),
 			array(
 				'_type' => 'cell',
-				'html' => ' ' . $__templater->escape($__vars['val']['car_location']) . ' ',
+				'html' => ' ' . $__templater->escape($__vars['val']['CarLocation']['location']) . ' ',
 			),
 			array(
 				'_type' => 'cell',

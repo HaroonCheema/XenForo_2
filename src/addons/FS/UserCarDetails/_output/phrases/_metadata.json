@@ -1,9 +1,15 @@
 {
+    "admin_navigation.fs_user_car_location_add.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "a46340dfde3d21b81a706650aacab998"
+    },
     "admin_navigation.fs_user_car_model.txt": {
         "global_cache": false,
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
-        "hash": "6adfc6ff2b9175e08de761894ffa442f"
+        "hash": "f2a06aa384354b6b9ff97939583a5214"
     },
     "admin_navigation.fs_user_car_model_add.txt": {
         "global_cache": false,
@@ -167,6 +173,12 @@
         "version_string": "1.0.0 Alpha",
         "hash": "eccb4cbc1d74913b9a017086dd899736"
     },
+    "fs_car_details_select_location.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "6a9729f136139dfeb3a7643e79704cf3"
+    },
     "fs_car_details_select_model.txt": {
         "global_cache": false,
         "version_id": 1000010,
@@ -209,11 +221,41 @@
         "version_string": "1.0.0 Alpha",
         "hash": "f6039d44b29456b20f8f373155ae4973"
     },
+    "fs_car_location.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "73165373e3c92292fa1b137ad51a599a"
+    },
+    "fs_car_location_add.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "9364087da62f2f18abd8061965d5c7f6"
+    },
+    "fs_car_location_add_btn.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "a46340dfde3d21b81a706650aacab998"
+    },
+    "fs_car_location_edit.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "4691f040435e7c178a44c4412d522e78"
+    },
     "fs_car_location_filter.txt": {
         "global_cache": false,
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
         "hash": "abf9012e9560b3c44a536f5c4a2a0b62"
+    },
+    "fs_car_location_name.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "ce5bf551379459c1c61d2a204061c455"
     },
     "fs_car_model.txt": {
         "global_cache": false,

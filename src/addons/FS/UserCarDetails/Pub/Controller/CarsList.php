@@ -24,7 +24,20 @@ class CarsList extends AbstractController
                 return $this->error(\XF::phrase('please_complete_required_field'));
             }
         } else {
-            $carDetails->where('model_id', '!=', 0)
+
+            $conditions = [
+                ['model_id', '!=', 0],
+                ['location_id', '!=', 0],
+                ['car_colour', '!=', ''],
+                ['car_trim', '!=', ''],
+                ['car_plaque_number', '!=', ''],
+                ['car_reg_number', '!=', ''],
+                ['car_reg_date', '!=', 0],
+                ['car_forum_name', '!=', ''],
+                ['car_unique_information', '!=', '']
+            ];
+
+            $carDetails->whereOr($conditions)
                 ->order('user_id', 'DESC');
         }
 
@@ -50,10 +63,12 @@ class CarsList extends AbstractController
     public function actionRefineSearch()
     {
         $models = $this->finder('FS\UserCarDetails:Model')->fetch();
+        $locations = $this->finder('FS\UserCarDetails:Location')->fetch();
 
         $viewParams = [
             'conditions' => $this->filterSearchConditions(),
             'models' => $models,
+            'locations' => $locations,
         ];
 
         return $this->view('FS\UserCarDetails:CarsList\RefineSearch', 'fs_car_details_list_filter', $viewParams);
@@ -76,6 +91,7 @@ class CarsList extends AbstractController
             'fs_car_details_username' => 'str',
             'model_id' => 'int',
             'car_location' => 'str',
+            'location_id' => 'int',
         ]);
 
         if ($this->filter('apply', 'uint')) {
@@ -94,15 +110,24 @@ class CarsList extends AbstractController
         if ($conditions['model_id']) {
 
             $carDetails->where('model_id', $conditions['model_id']);
-        } else {
-            $carDetails->where('model_id', '!=', 0);
+        }
+
+        // else {
+        //     $carDetails->where('model_id', '!=', 0);
+        // }
+
+        if ($conditions['location_id']) {
+
+            $carDetails->where('location_id', $conditions['location_id']);
         }
 
 
-        if (!empty($conditions['car_location'])) {
+        // if (!empty($conditions['car_location'])) {
 
-            $carDetails->where('car_location', 'LIKE', $carDetails->escapeLike($conditions['car_location'], '%?%'));
-        } elseif (!empty($conditions['fs_car_details_username'])) {
+        //     $carDetails->where('car_location', 'LIKE', $carDetails->escapeLike($conditions['car_location'], '%?%'));
+        // } 
+
+        if (!empty($conditions['fs_car_details_username'])) {
             $carDetails->where('username', $conditions['fs_car_details_username']);
         }
 

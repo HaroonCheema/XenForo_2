@@ -20,4 +20,12 @@ class Models extends Repository
 
 		return count($models) ? $models : [];
 	}
+
+	public function getLocations()
+	{
+		$locations = \XF::app()->finder('FS\UserCarDetails:Location')->fetch();
+
+
+		return count($locations) ? $locations : [];
+	}
 }

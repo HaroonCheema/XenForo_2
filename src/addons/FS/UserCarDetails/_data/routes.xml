@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <routes>
+  <route route_type="admin" route_prefix="car-location" format=":int&lt;location_id&gt;/:page" controller="FS\UserCarDetails:Location" context="fs_user_car_location_add"/>
   <route route_type="admin" route_prefix="car-model" format=":int&lt;model_id&gt;/:page" controller="FS\UserCarDetails:Model" context="fs_user_car_model_add"/>
   <route route_type="public" route_prefix="car-details" format=":int&lt;user_id&gt;/:page" controller="FS\UserCarDetails:CarDetails"/>
   <route route_type="public" route_prefix="cars-list" format=":int&lt;user_id&gt;/:page" controller="FS\UserCarDetails:CarsList" context="fs_car_details_list"/>

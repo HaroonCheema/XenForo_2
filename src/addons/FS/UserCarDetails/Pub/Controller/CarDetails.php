@@ -21,12 +21,14 @@ class CarDetails extends AbstractController
         $visitor = \XF::visitor();
 
         $models = $this->finder('FS\UserCarDetails:Model')->fetch();
+        $locations = $this->finder('FS\UserCarDetails:Location')->fetch();
 
         $viewpParams = [
             'pageSelected' => 'carDetails/',
 
             'user' => $visitor,
             'models' => $models,
+            'locations' => $locations,
         ];
 
         return $this->view('FS\SelectTeam:Index', 'fs_vis_car_details_index', $viewpParams);

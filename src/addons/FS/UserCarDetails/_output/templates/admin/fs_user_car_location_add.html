@@ -1,0 +1,26 @@
+<xf:title>
+	<xf:if is="$location.location_id"> {{ phrase('fs_car_location_edit') }}
+		<xf:breadcrumb href="#">{{ phrase('fs_car_location_edit') }}</xf:breadcrumb> <xf:else
+																							  /> {{ phrase('fs_car_location_add') }} <xf:breadcrumb href="#">{{
+		phrase('fs_car_location_add') }}</xf:breadcrumb> </xf:if>
+</xf:title>
+
+<xf:form
+		 action="{{ link('car-location/save', $location) }}"
+		 class="block"
+		 ajax="1"
+		 >
+	<div class="block-container">
+		<div class="block-body">
+			<xf:textboxrow
+						   name="location"
+						   value="{$location.location}"
+						   label="{{ phrase('fs_car_location_name') }}"
+						   autosize="true"
+						   row="5"
+						   />
+		</div>
+
+		<xf:submitrow submit="{{ phrase('save') }}" fa="fa-save" />
+	</div>
+</xf:form>

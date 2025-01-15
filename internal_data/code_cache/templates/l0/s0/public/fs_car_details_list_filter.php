@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 4f327511e5434af07849111738fecebb
+// FROM HASH: 05af2f654e7c42dbcd322ecb4a64df3d
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -14,6 +14,20 @@ return array(
 			$__compilerTemp1[] = array(
 				'value' => $__vars['val']['model_id'],
 				'label' => $__templater->escape($__vars['val']['model']),
+				'_type' => 'option',
+			);
+		}
+	}
+	$__compilerTemp2 = array(array(
+		'value' => '0',
+		'label' => 'None',
+		'_type' => 'option',
+	));
+	if ($__templater->isTraversable($__vars['locations'])) {
+		foreach ($__vars['locations'] AS $__vars['val']) {
+			$__compilerTemp2[] = array(
+				'value' => $__vars['val']['location_id'],
+				'label' => $__templater->escape($__vars['val']['location']),
 				'_type' => 'option',
 			);
 		}
@@ -43,12 +57,11 @@ return array(
 
 	<div class="menu-row">
 		' . 'Location :' . '
-		<div class="u-inputSpacer">
-			' . $__templater->formTextBox(array(
-		'name' => 'car_location',
-		'value' => $__vars['conditions']['car_location'],
-		'placeholder' => 'Filter by location...!',
-	)) . '
+		<div class="u-inputSpacer">' . $__templater->formSelect(array(
+		'name' => 'location_id',
+		'value' => $__templater->filter($__vars['conditions']['location_id'], array(array('default', array(array(0, ), )),), false),
+		'required' => 'required',
+	), $__compilerTemp2) . '
 		</div>
 	</div>
 

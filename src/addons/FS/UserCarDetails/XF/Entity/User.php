@@ -13,7 +13,7 @@ class User extends XFCP_User
         $structure->columns['model_id'] =  ['type' => self::UINT, 'default' => 0];
         $structure->columns['car_colour'] =  ['type' => self::STR, 'default' => null];
         $structure->columns['car_trim'] =  ['type' => self::STR, 'default' => null];
-        $structure->columns['car_location'] =  ['type' => self::STR, 'default' => null];
+        $structure->columns['location_id'] =  ['type' => self::UINT, 'default' => 0];
         $structure->columns['car_plaque_number'] =  ['type' => self::STR, 'default' => null];
         $structure->columns['car_reg_number'] =  ['type' => self::STR, 'default' => null];
         $structure->columns['car_reg_date'] =  ['type' => self::UINT, 'default' => 0];
@@ -26,6 +26,13 @@ class User extends XFCP_User
                 'entity' => 'FS\UserCarDetails:Model',
                 'type' => self::TO_ONE,
                 'conditions' => 'model_id',
+                'primary' => true
+            ],
+
+            'CarLocation' => [
+                'entity' => 'FS\UserCarDetails:Location',
+                'type' => self::TO_ONE,
+                'conditions' => 'location_id',
                 'primary' => true
             ],
         ];

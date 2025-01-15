@@ -11,7 +11,7 @@ class AddEditCarDetails extends \XF\Service\AbstractService
             'model_id' => 'int',
             'car_colour' => 'str',
             'car_trim' => 'str',
-            'car_location' => 'str',
+            'location_id' => 'int',
             'car_plaque_number' => 'str',
             'car_reg_number' => 'str',
             'car_forum_name' => 'str',
@@ -24,7 +24,7 @@ class AddEditCarDetails extends \XF\Service\AbstractService
 
         if (!preg_match('/\badmin\.php\b/', $currentUrl)) {
 
-            if (!$input['model_id'] || $input['car_colour'] == '' || $input['car_trim'] == '' || $input['car_plaque_number'] == '' || $input['car_reg_number'] == '') {
+            if (empty($input['car_colour']) || empty($input['car_trim']) || empty($input['car_plaque_number']) || empty($input['car_reg_number'])) {
 
                 throw new \XF\PrintableException(\XF::phrase('please_complete_required_fields'));
             }

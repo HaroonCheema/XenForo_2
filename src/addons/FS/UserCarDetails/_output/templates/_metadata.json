@@ -2,7 +2,17 @@
     "admin/fs_user_car_details_add_edit_pane.html": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
-        "hash": "133c0809543c98c4c7a0901f61ec0670"
+        "hash": "3c62500c58628d829f2fe00c3a38f187"
+    },
+    "admin/fs_user_car_location_add.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "cdb0d8c465d54e37df1842b14444f9c8"
+    },
+    "admin/fs_user_car_location_index.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "f9da8cd9ce9b1a61baf8464a3b11e52b"
     },
     "admin/fs_user_car_model_add.html": {
         "version_id": 1000010,
@@ -17,12 +27,12 @@
     "public/fs_car_details_list_filter.html": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
-        "hash": "4f327511e5434af07849111738fecebb"
+        "hash": "05af2f654e7c42dbcd322ecb4a64df3d"
     },
     "public/fs_car_details_list_index.html": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
-        "hash": "1271fdc66f43feb4ef1affa98d606982"
+        "hash": "b5914fb4a5ac799d714da3118f9eae0b"
     },
     "public/fs_car_unique_information.html": {
         "version_id": 1000010,
@@ -30,8 +40,8 @@
         "hash": "674311be8adcb2da465363373821381b"
     },
     "public/fs_vis_car_details_index.html": {
-        "version_id": 1000010,
-        "version_string": "1.0.0 Alpha",
-        "hash": "873fa443005c86789527b5410dabaf41"
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "1e4311cc4058b1555b27426064787134"
     }
 }

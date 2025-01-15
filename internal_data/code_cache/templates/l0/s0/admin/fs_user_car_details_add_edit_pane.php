@@ -1,16 +1,23 @@
 <?php
-// FROM HASH: 133c0809543c98c4c7a0901f61ec0670
+// FROM HASH: 3c62500c58628d829f2fe00c3a38f187
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
 	$__finalCompiled = '';
 	$__vars['models'] = $__templater->method($__templater->method($__vars['xf']['app']['em'], 'getRepository', array('FS\\UserCarDetails:Models', )), 'getModels', array());
 	$__finalCompiled .= '
+';
+	$__vars['locations'] = $__templater->method($__templater->method($__vars['xf']['app']['em'], 'getRepository', array('FS\\UserCarDetails:Models', )), 'getLocations', array());
+	$__finalCompiled .= '
 
 <li role="tabpanel" id="car-details">
 	<div class="block-body">
 		';
-	$__compilerTemp1 = array();
+	$__compilerTemp1 = array(array(
+		'value' => '0',
+		'label' => 'None',
+		'_type' => 'option',
+	));
 	if ($__templater->isTraversable($__vars['models'])) {
 		foreach ($__vars['models'] AS $__vars['val']) {
 			$__compilerTemp1[] = array(
@@ -60,17 +67,33 @@ return array(
 		'label' => 'Trim',
 	)) . '
 
-		' . $__templater->formRow('
-			' . $__templater->formTextBoxRow(array(
-		'name' => 'car_location',
-		'value' => $__vars['user']['car_location'],
-	), array(
-		'rowtype' => 'fullWidth',
-		'explain' => 'Enter your location here...!',
-	)) . '
+		';
+	$__compilerTemp2 = array(array(
+		'value' => '0',
+		'label' => 'None',
+		'_type' => 'option',
+	));
+	if ($__templater->isTraversable($__vars['locations'])) {
+		foreach ($__vars['locations'] AS $__vars['val']) {
+			$__compilerTemp2[] = array(
+				'value' => $__vars['val']['location_id'],
+				'label' => $__templater->escape($__vars['val']['location']),
+				'_type' => 'option',
+			);
+		}
+	}
+	$__finalCompiled .= $__templater->formRow('
+
+			<ul class="inputList">
+				<li>' . $__templater->formSelect(array(
+		'name' => 'location_id',
+		'value' => $__templater->filter($__vars['user']['location_id'], array(array('default', array(array(0, ), )),), false),
+	), $__compilerTemp2) . '</li>
+			</ul>
 		', array(
 		'rowtype' => 'input',
 		'label' => 'Location',
+		'explain' => 'Select your car location...!',
 	)) . '
 
 		' . $__templater->formRow('

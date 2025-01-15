@@ -5,6 +5,9 @@
             "js/sv/vendor/domurl/url.js",
             "js/sv/vendor/moment/LICENSE",
             "js/sv/vendor/moment/moment.js"
+        ],
+        "XDinc/FTSlider": [
+            "src/addons/XDinc/FTSlider/Admin/Controller/FTSlider.php"
         ]
     },
     "inconsistent": {
@@ -81,7 +84,6 @@
             "src/XF/FindNew/AbstractHandler.php",
             "src/XF/FindNew/Thread.php",
             "src/XF/Http/Request.php",
-            "src/XF/Job/ReactionIsCounted.php",
             "src/XF/Mvc/Entity/Entity.php",
             "src/XF/Payment/Stripe.php",
             "src/XF/PermissionSet.php",
@@ -109,6 +111,12 @@
         "XFRM": [
             "src/addons/XFRM/addon.json",
             "src/addons/XFRM/Pub/Controller/ResourceItem.php"
+        ],
+        "BS/AIBots": [
+            "src/addons/BS/AIBots/Service/LicenseChecker.php"
+        ],
+        "BS/ChatGPTBots": [
+            "src/addons/BS/ChatGPTBots/_data/options.xml"
         ],
         "BS/RealTimeChat": [
             "src/addons/BS/RealTimeChat/_data/options.xml"
@@ -142,10 +150,28 @@
             "src/addons/FS/AuctionPlugin/_data/code_event_listeners.xml",
             "src/addons/FS/AuctionPlugin/_data/content_type_fields.xml",
             "src/addons/FS/AuctionPlugin/_data/options.xml",
+            "src/addons/FS/AuctionPlugin/_data/permissions.xml",
             "src/addons/FS/AuctionPlugin/_data/phrases.xml",
             "src/addons/FS/AuctionPlugin/_data/routes.xml",
             "src/addons/FS/AuctionPlugin/_data/templates.xml",
             "src/addons/FS/AuctionPlugin/_data/template_modifications.xml"
+        ],
+        "FS/AvatarGallery": [
+            "js/FS/AvatarGallery/gallery_avatar.js",
+            "src/addons/FS/AvatarGallery/addon.json",
+            "src/addons/FS/AvatarGallery/Cron/DailyLimit.php",
+            "src/addons/FS/AvatarGallery/Job/UserAvatar.php",
+            "src/addons/FS/AvatarGallery/Setup.php",
+            "src/addons/FS/AvatarGallery/XF/Entity/User.php",
+            "src/addons/FS/AvatarGallery/XF/Pub/Controller/Account.php",
+            "src/addons/FS/AvatarGallery/XF/Pub/Controller/Register.php",
+            "src/addons/FS/AvatarGallery/_data/admin_navigation.xml",
+            "src/addons/FS/AvatarGallery/_data/cron.xml",
+            "src/addons/FS/AvatarGallery/_data/options.xml",
+            "src/addons/FS/AvatarGallery/_data/phrases.xml",
+            "src/addons/FS/AvatarGallery/_data/routes.xml",
+            "src/addons/FS/AvatarGallery/_data/templates.xml",
+            "src/addons/FS/AvatarGallery/_data/template_modifications.xml"
         ],
         "FS/DownloadThreadAttachments": [
             "src/addons/FS/DownloadThreadAttachments/addon.json",
@@ -170,6 +196,13 @@
             "src/addons/FS/ExcludeReactionScore/addon.json",
             "src/addons/FS/ExcludeReactionScore/XF/Admin/Controller/Forum.php",
             "src/addons/FS/ExcludeReactionScore/XF/Entity/Forum.php"
+        ],
+        "FS/ExtendThreadCredits": [
+            "src/addons/FS/ExtendThreadCredits/addon.json",
+            "src/addons/FS/ExtendThreadCredits/_data/phrases.xml",
+            "src/addons/FS/ExtendThreadCredits/_data/routes.xml",
+            "src/addons/FS/ExtendThreadCredits/_data/templates.xml",
+            "src/addons/FS/ExtendThreadCredits/_data/template_modifications.xml"
         ],
         "FS/ExtendNewPostsWidget": [
             "src/addons/FS/ExtendNewPostsWidget/addon.json",
@@ -279,6 +312,15 @@
             "src/addons/FS/ThreadThumbnail/_data/templates.xml",
             "src/addons/FS/ThreadThumbnail/_data/template_modifications.xml"
         ],
+        "FS/ThreadMultiTag": [
+            "src/addons/FS/ThreadMultiTag/addon.json",
+            "src/addons/FS/ThreadMultiTag/XF/Entity/TagContent.php",
+            "src/addons/FS/ThreadMultiTag/XF/Pub/Controller/Forum.php",
+            "src/addons/FS/ThreadMultiTag/XF/Pub/Controller/Post.php",
+            "src/addons/FS/ThreadMultiTag/XF/Repository/Tag.php",
+            "src/addons/FS/ThreadMultiTag/XF/Service/Tag/Changer.php",
+            "src/addons/FS/ThreadMultiTag/_data/class_extensions.xml"
+        ],
         "FS/UpdateUserId": [
             "src/addons/FS/UpdateUserId/addon.json",
             "src/addons/FS/UpdateUserId/Service/UpdateUser.php"
@@ -298,6 +340,9 @@
             "src/addons/nick97/WatchList/addon.json",
             "src/addons/nick97/WatchList/_data/template_modifications.xml"
         ],
+        "OzzModz/Badges": [
+            "src/addons/OzzModz/Badges/Entity/Badge.php"
+        ],
         "Awedo/PostAreas": [
             "src/addons/Awedo/PostAreas/Model/PostAndThreadStats.php",
             "src/addons/Awedo/PostAreas/XF/Pub/Controller/Member.php"
@@ -308,8 +353,19 @@
             "src/addons/Snog/Movies/Service/Movie/Creator.php",
             "src/addons/Snog/Movies/ThreadType/Movie.php"
         ],
+        "ThemeHouse/ThreadCredits": [
+            "src/addons/ThemeHouse/ThreadCredits/_data/options.xml"
+        ],
         "ThemeHouse/UserImprovements": [
             "src/addons/ThemeHouse/UserImprovements/ConnectedAccount/Service/Discord.php"
+        ],
+        "XenBulletin/AvatarGallery": [
+            "src/addons/XenBulletin/AvatarGallery/Admin/Controller/AvatarGallery.php",
+            "src/addons/XenBulletin/AvatarGallery/Entity/AvatarGallery.php",
+            "src/addons/XenBulletin/AvatarGallery/Service/Upload.php",
+            "src/addons/XenBulletin/AvatarGallery/XF/Entity/User.php",
+            "src/addons/XenBulletin/AvatarGallery/XF/Pub/Controller/Account.php",
+            "src/addons/XenBulletin/AvatarGallery/XF/Pub/Controller/Register.php"
         ],
         "XenBulletins/BrandHub": [
             "src/addons/XenBulletins/BrandHub/addon.json",
@@ -325,13 +381,20 @@
             "src/addons/XenBulletin/VideoByRon/Admin/Controller/ByRon.php",
             "src/addons/XenBulletin/VideoByRon/Service/Media/ThumbnailGenerator.php"
         ],
+        "XenBulletins/VideoPages": [
+            "src/addons/XenBulletins/VideoPages/Admin/Controller/AddVideo.php"
+        ],
         "XC/ThreadGPTBot": [
             "js/botGPT/submit.js",
             "src/addons/XC/ThreadGPTBot/XF/Pub/Controller/Bot.php",
             "src/addons/XC/ThreadGPTBot/XF/Pub/View/Bot.php"
+        ],
+        "XDinc/FTSlider": [
+            "src/addons/XDinc/FTSlider/addon.json",
+            "src/addons/XDinc/FTSlider/Widget/FTSliders.php"
         ]
     },
-    "total_missing": 4,
-    "total_inconsistent": 236,
-    "total_checked": 12512
+    "total_missing": 5,
+    "total_inconsistent": 276,
+    "total_checked": 14819
 }

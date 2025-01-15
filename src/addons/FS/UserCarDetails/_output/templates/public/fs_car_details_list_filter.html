@@ -20,13 +20,12 @@
 
 	<div class="menu-row">
 		{{ phrase('fs_car_location_filter') }}
-		<div class="u-inputSpacer">
-			<xf:textbox
-						name="car_location"
-						value="{$conditions.car_location}"
-						rowtype="fullWidth"
-						placeholder="{{ phrase('fs_car_details_filter_location') }}"
-						/>
+		<div class="u-inputSpacer"><xf:select name="location_id" value="{$conditions.location_id|default([0])}" required="required">
+			<xf:option value="0">{{ phrase('none') }}</xf:option>
+			<xf:foreach loop="$locations" value="$val">
+				<xf:option value="{$val.location_id}">{$val.location}</xf:option>
+			</xf:foreach>
+			</xf:select>
 		</div>
 	</div>
 

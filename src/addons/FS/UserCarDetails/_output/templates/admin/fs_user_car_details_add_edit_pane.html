@@ -1,4 +1,5 @@
 <xf:set var="$models" value="{$xf.app.em.getRepository('FS\UserCarDetails:Models').getModels()}" />
+<xf:set var="$locations" value="{$xf.app.em.getRepository('FS\UserCarDetails:Models').getLocations()}" />
 
 <li role="tabpanel" id="car-details">
 	<div class="block-body">
@@ -7,6 +8,7 @@
 
 			<ul class="inputList">
 				<li><xf:select name="model_id" value="{$user.model_id|default([0])}" >
+					<xf:option value="0">{{ phrase('none') }}</xf:option>
 					<xf:foreach loop="$models" value="$val">
 						<xf:option value="{$val.model_id}">{$val.model}</xf:option>
 					</xf:foreach>
@@ -38,16 +40,17 @@
 						   />
 		</xf:formrow>
 
-		<xf:formrow
-					rowtype="input"
-					label="{{ phrase('fs_car_details_location') }}"
-					>
-			<xf:textboxrow
-						   name="car_location"
-						   value="{$user.car_location}"
-						   rowtype="fullWidth"
-						   explain="{{ phrase('fs_car_details_add_location') }}"
-						   />
+		<xf:formrow rowtype="input" 
+					label="{{ phrase('fs_car_details_location') }}" explain="{{ phrase('fs_car_details_select_location') }}">
+
+			<ul class="inputList">
+				<li><xf:select name="location_id" value="{$user.location_id|default([0])}" >
+					<xf:option value="0">{{ phrase('none') }}</xf:option>
+					<xf:foreach loop="$locations" value="$val">
+						<xf:option value="{$val.location_id}">{$val.location}</xf:option>
+					</xf:foreach>
+					</xf:select></li>
+			</ul>
 		</xf:formrow>
 
 		<xf:formrow
