@@ -7,7 +7,7 @@ return array(
 	if ($__templater->method($__vars['result'], 'isBasicLink', array())) {
 		$__finalCompiled .= '
 	<div>
-		<a href="' . $__templater->escape($__vars['urlEncoded']) . '"
+		<a href="' . $__templater->escape($__vars['result']['url']) . '"
 			class="' . ($__templater->escape($__vars['linkInfo']['class']) ?: '') . '"
 			target="' . ($__templater->escape($__vars['linkInfo']['target']) ?: '') . '"
 			rel="' . ($__vars['rels'] ? $__templater->filter($__vars['rels'], array(array('join', array(' ', )),), true) : '') . '"
@@ -49,7 +49,7 @@ return array(
 		$__finalCompiled .= '
 			<div class="contentRow-main">
 				<h3 class="contentRow-header js-unfurl-title">
-					<a href="' . $__templater->escape($__vars['urlEncoded']) . '"
+					<a href="' . $__templater->escape($__vars['result']['url']) . '"
 						class="' . ($__templater->escape($__vars['linkInfo']['class']) ?: '') . ' fauxBlockLink-blockLink"
 						target="' . ($__templater->escape($__vars['linkInfo']['target']) ?: '') . '"
 						rel="' . ($__vars['rels'] ? $__templater->filter($__vars['rels'], array(array('join', array(' ', )),), true) : '') . '"
