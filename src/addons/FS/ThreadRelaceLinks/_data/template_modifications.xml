@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="thread_view" modification_key="fs_thread_post_replace_links" description="fs_thread_post_replace_links" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<!--[XF:thread_tools_menu:before_footer]-->]]></find>
+    <replace><![CDATA[<xf:if is="{{ $xf.visitor.hasPermission('fs_thread_replace_links', 'can_replace_link') }}">
+	<a href="{{ link('threads/replace-links', $thread) }}" data-xf-click="overlay" class="menu-linkRow">{{ phrase('fs_thread_replace_links') }}</a>
+</xf:if>
+
+$0]]></replace>
+  </modification>
+</template_modifications>

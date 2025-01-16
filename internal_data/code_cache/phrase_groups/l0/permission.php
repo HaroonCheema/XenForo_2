@@ -220,6 +220,7 @@ return array (
   'permission.fs_forum_group_permission_add' => 'Add Forum Group',
   'permission.fs_limitations_fs_conversationLimit' => 'Conversation Limit',
   'permission.fs_limitations_fs_dailyDiscussiontLimit' => 'Daily Discussion Limit',
+  'permission.fs_thread_replace_links_can_replace_link' => 'Can replace link',
   'permission.fs_thread_scoring_system_can_view' => 'Can view',
   'permission.fs_thread_thumbnail_group_fs_thread_thumbnail' => 'Allow Thread Thumbnail',
   'permission.fs_threadsaleitem_fs_saleitem' => 'Allow to enable Sale Item?',

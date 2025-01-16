@@ -1,0 +1,9 @@
+{
+    "template": "thread_view",
+    "description": "fs_thread_post_replace_links",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<!--[XF:thread_tools_menu:before_footer]-->",
+    "replace": "<xf:if is=\"{{ $xf.visitor.hasPermission('fs_thread_replace_links', 'can_replace_link') }}\">\n\t<a href=\"{{ link('threads/replace-links', $thread) }}\" data-xf-click=\"overlay\" class=\"menu-linkRow\">{{ phrase('fs_thread_replace_links') }}</a>\n</xf:if>\n\n$0"
+}

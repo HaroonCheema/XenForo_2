@@ -257,6 +257,14 @@ return array(
 	}
 	$__compilerTemp2 .= '
 
+';
+	if ($__templater->method($__vars['xf']['visitor'], 'hasPermission', array('fs_thread_replace_links', 'can_replace_link', ))) {
+		$__compilerTemp2 .= '
+	<a href="' . $__templater->func('link', array('threads/replace-links', $__vars['thread'], ), true) . '" data-xf-click="overlay" class="menu-linkRow">' . 'Replace Link' . '</a>
+';
+	}
+	$__compilerTemp2 .= '
+
 ' . '
 											';
 	if ($__templater->method($__vars['thread'], 'canUseInlineModeration', array())) {

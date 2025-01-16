@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="fs_replace_links_thread" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Replace Links]]></phrase>
+  <phrase title="fs_thread_replace_enter_new_link_here" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter new link here...!]]></phrase>
+  <phrase title="fs_thread_replace_enter_old_link_here" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter old link here...!]]></phrase>
+  <phrase title="fs_thread_replace_link_enter_valid_url" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Its not an valid url : {url}]]></phrase>
+  <phrase title="fs_thread_replace_links" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Replace Link]]></phrase>
+  <phrase title="fs_thread_replace_new_link" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[New link]]></phrase>
+  <phrase title="fs_thread_replace_old_link" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Old link]]></phrase>
+  <phrase title="permission.fs_thread_replace_links_can_replace_link" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Can replace link]]></phrase>
+  <phrase title="permission_interface.fs_thread_replace_links" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Thread Replace Links]]></phrase>
+</phrases>
