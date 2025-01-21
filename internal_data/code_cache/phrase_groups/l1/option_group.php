@@ -10,6 +10,7 @@ return array (
   'option_group.WhoReplied' => 'Who Replied',
   'option_group.acp' => 'Admin control panel',
   'option_group.addCategoryImage' => '[FS] Add Category Image',
+  'option_group.af_forumstats' => '[AddonFlare] (AJAX) Advanced Forum Stats',
   'option_group.alerts' => 'User alerts and notifications',
   'option_group.altf_main' => 'Thread Filter by AddonsLab',
   'option_group.appearance' => 'Appearance',

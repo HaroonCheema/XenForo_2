@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<options>
+  <option option_id="af_forumstats_invert_columns" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>0</default_value>
+    <relation group_id="af_forumstats" display_order="45"/>
+  </option>
+  <option option_id="af_forumstats_left_animate" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="af_forumstats" display_order="40"/>
+  </option>
+  <option option_id="af_forumstats_left_width" edit_format="spinbox" data_type="unsigned_integer" advanced="0">
+    <default_value>25</default_value>
+    <relation group_id="af_forumstats" display_order="20"/>
+  </option>
+  <option option_id="af_forumstats_main_width" edit_format="spinbox" data_type="unsigned_integer" advanced="0">
+    <default_value>75</default_value>
+    <relation group_id="af_forumstats" display_order="30"/>
+  </option>
+  <option option_id="af_forumstats_mini_mode" edit_format="template" data_type="array" advanced="0">
+    <default_value>{"enabled":"0","size":"1"}</default_value>
+    <edit_format_params>af_forumstats_option_template_minimode</edit_format_params>
+    <sub_options>enabled
+size</sub_options>
+    <relation group_id="af_forumstats" display_order="35"/>
+  </option>
+  <option option_id="af_forumstats_position" edit_format="select" data_type="string" advanced="0">
+    <default_value>forum_list_above_nodes</default_value>
+    <edit_format_params>none = None
+forum_list_above_nodes = Above Forums
+forum_list_below_nodes = Below Forums</edit_format_params>
+    <relation group_id="af_forumstats" display_order="5"/>
+  </option>
+  <option option_id="af_forumstats_refreshTime" edit_format="spinbox" data_type="positive_integer" advanced="0">
+    <default_value>30</default_value>
+    <relation group_id="af_forumstats" display_order="10"/>
+  </option>
+  <option option_id="af_forumstats_ugs_allowed" edit_format="callback" data_type="array" advanced="0">
+    <default_value>[1,2,3,4]</default_value>
+    <edit_format_params>XF\Option\UserGroup::renderSelectMultiple</edit_format_params>
+    <sub_options>*</sub_options>
+    <relation group_id="af_forumstats" display_order="50"/>
+  </option>
+</options>

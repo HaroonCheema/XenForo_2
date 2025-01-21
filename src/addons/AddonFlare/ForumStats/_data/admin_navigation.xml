@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<admin_navigation>
+  <admin_navigation_entry navigation_id="af_forumstats" parent_navigation_id="appearance" display_order="400" icon="fa-bar-chart" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="af_forumstats_config" parent_navigation_id="af_forumstats" display_order="10" link="forum-stats" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="af_forumstats_opt" parent_navigation_id="af_forumstats" display_order="5" link="options/groups/af_forumstats/" debug_only="0" development_only="0" hide_no_children="0"/>
+</admin_navigation>

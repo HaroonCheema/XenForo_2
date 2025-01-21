@@ -1,0 +1,1693 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="admin" title="af_forumstats_def_options_hottest_threads" version_id="1050070" version_string="1.5.0"><![CDATA[<hr class="formRowSep" />
+
+<xf:macro template="af_forumstats_def_options_thread_macros" name="options"
+    arg-options="{$options}"
+    arg-nodeTree="{$nodeTree}"
+    arg-cutoff="{{ {'min': 1, 'explain': false} }}"
+    arg-includeClosed="{{ true }}" />]]></template>
+  <template type="admin" title="af_forumstats_def_options_latest_forum_news" version_id="1050070" version_string="1.5.0"><![CDATA[<hr class="formRowSep" />
+
+<xf:macro template="af_forumstats_def_options_thread_macros" name="options"
+    arg-options="{$options}"
+    arg-nodeTree="{$nodeTree}"
+    arg-cutoff="{{ false }}" />]]></template>
+  <template type="admin" title="af_forumstats_def_options_most_liked_threads" version_id="1040070" version_string="1.4.0"><![CDATA[<hr class="formRowSep" />
+
+<xf:numberboxrow name="options[limit]" value="{$options.limit}" min="1"
+    label="{{ phrase('maximum_entries') }}" />
+
+<xf:numberboxrow name="options[cutoff]" value="{$options.cutoff}" min="1"
+    label="{{ phrase('af_forumstats_cutoff_days') }}" />
+
+<xf:selectrow name="options[node_ids][]" value="{{ $options.node_ids ?: '' }}" multiple="multiple" size="7"
+    label="{{ phrase('af_forumstats_included_forums') }}"
+    explain="{{ phrase('only_include_threads_in_selected_forums') }}">
+
+    <xf:option value="">{{ phrase('all_forums') }}</xf:option>
+    <xf:foreach loop="$nodeTree.getFlattened(0)" value="$treeEntry">
+        <xf:option value="{$treeEntry.record.node_id}" disabled="{{ $treeEntry.record.node_type_id != 'Forum' }}">
+            {{ repeat('&nbsp;&nbsp;', $treeEntry.depth)|raw }} {$treeEntry.record.title}
+        </xf:option>
+    </xf:foreach>
+</xf:selectrow>
+
+<xf:selectrow name="options[excluded_node_ids][]" value="{{ $options.excluded_node_ids ?: '' }}" multiple="multiple" size="7"
+    label="{{ phrase('af_forumstats_excluded_forums') }}"
+    explain="{{ phrase('af_forumstats_excluded_forums_explain') }}">
+
+    <xf:option value="">{{ phrase('none') }}</xf:option>
+    <xf:foreach loop="$nodeTree.getFlattened(0)" value="$treeEntry">
+        <xf:option value="{$treeEntry.record.node_id}" disabled="{{ $treeEntry.record.node_type_id != 'Forum' }}">
+            {{ repeat('&nbsp;&nbsp;', $treeEntry.depth)|raw }} {$treeEntry.record.title}
+        </xf:option>
+    </xf:foreach>
+</xf:selectrow>
+
+<xf:selectrow name="options[thread_prefix]" value="{{ $options.thread_prefix ?: '' }}"
+    label="{{ phrase('af_forumstats_thread_prefix') }}">
+
+    <xf:option value="">{{ phrase('no_prefix') }}</xf:option>
+    <xf:option value="html">HTML</xf:option>
+    <xf:option value="plain">Plain</xf:option>
+</xf:selectrow>
+
+<xf:radiorow name="options[include_closed]" value="{$options.include_closed}"
+    label="{{ phrase('af_forumstats_include_closed') }}"
+    explain="{{ phrase('af_forumstats_include_closed_explain') }}">
+    <xf:option value="1">{{ phrase('yes') }}</xf:option>
+    <xf:option value="0">{{ phrase('no') }}</xf:option>
+</xf:radiorow>
+
+<xf:checkboxrow label="{{ phrase('af_forumstats_ignore_view_perms') }}">
+    <xf:option name="options[ignore_view_perms]" selected="$options.ignore_view_perms"
+        label="{{ phrase('yes') }}" />
+</xf:checkboxrow>]]></template>
+  <template type="admin" title="af_forumstats_def_options_most_liked_users" version_id="1010070" version_string="1.1.0"><![CDATA[<hr class="formRowSep" />
+
+<xf:numberboxrow name="options[limit]" value="{$options.limit}" min="1"
+    label="{{ phrase('maximum_entries') }}" />
+
+<xf:checkboxrow label="{{ phrase('af_forumstats_rich_usernames') }}">
+    <xf:option name="options[rich_usernames]" selected="$options.rich_usernames">{{ phrase('yes') }}</xf:option>
+</xf:checkboxrow>]]></template>
+  <template type="admin" title="af_forumstats_def_options_most_popular_forums" version_id="1040070" version_string="1.4.0"><![CDATA[<hr class="formRowSep" />
+
+<xf:numberboxrow name="options[limit]" value="{$options.limit}" min="1"
+    label="{{ phrase('maximum_entries') }}" />
+
+<xf:selectrow name="options[node_ids][]" value="{{ $options.node_ids ?: '' }}" multiple="multiple" size="7"
+    label="{{ phrase('af_forumstats_included_forums') }}"
+    explain="{{ phrase('only_include_threads_in_selected_forums') }}">
+
+    <xf:option value="">{{ phrase('all_forums') }}</xf:option>
+    <xf:foreach loop="$nodeTree.getFlattened(0)" value="$treeEntry">
+        <xf:option value="{$treeEntry.record.node_id}" disabled="{{ $treeEntry.record.node_type_id != 'Forum' }}">
+            {{ repeat('&nbsp;&nbsp;', $treeEntry.depth)|raw }} {$treeEntry.record.title}
+        </xf:option>
+    </xf:foreach>
+</xf:selectrow>
+
+<xf:selectrow name="options[excluded_node_ids][]" value="{{ $options.excluded_node_ids ?: '' }}" multiple="multiple" size="7"
+    label="{{ phrase('af_forumstats_excluded_forums') }}"
+    explain="{{ phrase('af_forumstats_excluded_forums_explain') }}">
+
+    <xf:option value="">{{ phrase('none') }}</xf:option>
+    <xf:foreach loop="$nodeTree.getFlattened(0)" value="$treeEntry">
+        <xf:option value="{$treeEntry.record.node_id}" disabled="{{ $treeEntry.record.node_type_id != 'Forum' }}">
+            {{ repeat('&nbsp;&nbsp;', $treeEntry.depth)|raw }} {$treeEntry.record.title}
+        </xf:option>
+    </xf:foreach>
+</xf:selectrow>
+
+<xf:checkboxrow label="{{ phrase('af_forumstats_ignore_view_perms') }}">
+    <xf:option name="options[ignore_view_perms]" selected="$options.ignore_view_perms"
+        label="{{ phrase('yes') }}" />
+</xf:checkboxrow>]]></template>
+  <template type="admin" title="af_forumstats_def_options_most_reacted_threads" version_id="1050070" version_string="1.5.0"><![CDATA[<hr class="formRowSep" />
+
+<xf:macro template="af_forumstats_def_options_thread_macros" name="options"
+    arg-options="{$options}"
+    arg-nodeTree="{$nodeTree}"
+    arg-cutoff="{{ {'min': 1, 'explain': false} }}"
+    arg-includeClosed="{{ true }}" />]]></template>
+  <template type="admin" title="af_forumstats_def_options_most_reacted_users" version_id="1050070" version_string="1.5.0"><![CDATA[<hr class="formRowSep" />
+
+<xf:numberboxrow name="options[limit]" value="{$options.limit}" min="1"
+    label="{{ phrase('maximum_entries') }}" />
+
+<xf:checkboxrow label="{{ phrase('af_forumstats_rich_usernames') }}">
+    <xf:option name="options[rich_usernames]" selected="$options.rich_usernames">{{ phrase('yes') }}</xf:option>
+</xf:checkboxrow>]]></template>
+  <template type="admin" title="af_forumstats_def_options_most_viewed_threads" version_id="1050070" version_string="1.5.0"><![CDATA[<hr class="formRowSep" />
+
+<xf:macro template="af_forumstats_def_options_thread_macros" name="options"
+    arg-options="{$options}"
+    arg-nodeTree="{$nodeTree}"
+    arg-cutoff="{{ {'min': 1, 'explain': false} }}"
+    arg-includeClosed="{{ true }}" />]]></template>
+  <template type="admin" title="af_forumstats_def_options_new_members" version_id="1010070" version_string="1.1.0"><![CDATA[<hr class="formRowSep" />
+
+<xf:numberboxrow name="options[limit]" value="{$options.limit}" min="1"
+    label="{{ phrase('maximum_entries') }}" />
+
+<xf:checkboxrow label="{{ phrase('af_forumstats_rich_usernames') }}">
+    <xf:option name="options[rich_usernames]" selected="$options.rich_usernames">{{ phrase('yes') }}</xf:option>
+</xf:checkboxrow>]]></template>
+  <template type="admin" title="af_forumstats_def_options_new_posts" version_id="1050070" version_string="1.5.0"><![CDATA[<hr class="formRowSep" />
+
+<xf:macro template="af_forumstats_def_options_thread_macros" name="options"
+    arg-options="{$options}"
+    arg-nodeTree="{$nodeTree}"
+    arg-cutoff="{{ {'min': 0, 'explain': true} }}" />]]></template>
+  <template type="admin" title="af_forumstats_def_options_new_resources" version_id="1040070" version_string="1.4.0"><![CDATA[<hr class="formRowSep" />
+
+<xf:numberboxrow name="options[limit]" value="{$options.limit}" min="1"
+    label="{{ phrase('maximum_entries') }}" />
+
+<xf:selectrow name="options[resource_category_ids][]" value="{{ $options.resource_category_ids ?: 0 }}" multiple="multiple" size="7"
+    label="{{ phrase('xfrm_category_limit') }}">
+
+    <xf:option value="0">{{ phrase('xfrm_all_categories_or_contextual_category') }}</xf:option>
+    <xf:foreach loop="$categoryTree.getFlattened(0)" value="$treeEntry">
+        <xf:option value="{$treeEntry.record.resource_category_id}">
+            {{ repeat('&nbsp;&nbsp;', $treeEntry.depth)|raw }}{$treeEntry.record.title}
+        </xf:option>
+    </xf:foreach>
+    <xf:explain>{{ phrase('xfrm_all_categories_or_contextual_explain') }}</xf:explain>
+</xf:selectrow>
+
+<xf:selectrow name="options[prefix]" value="{{ $options.prefix ?: '' }}"
+    label="{{ phrase('prefix') }}">
+
+    <xf:option value="">{{ phrase('no_prefix') }}</xf:option>
+    <xf:option value="html">HTML</xf:option>
+    <xf:option value="plain">Plain</xf:option>
+</xf:selectrow>
+
+<xf:checkboxrow label="{{ phrase('af_forumstats_ignore_view_perms') }}">
+    <xf:option name="options[ignore_view_perms]" selected="$options.ignore_view_perms"
+        label="{{ phrase('yes') }}" />
+</xf:checkboxrow>]]></template>
+  <template type="admin" title="af_forumstats_def_options_new_threads" version_id="1050070" version_string="1.5.0"><![CDATA[<hr class="formRowSep" />
+
+<xf:macro template="af_forumstats_def_options_thread_macros" name="options"
+    arg-options="{$options}"
+    arg-nodeTree="{$nodeTree}"
+    arg-cutoff="{{ false }}" />]]></template>
+  <template type="admin" title="af_forumstats_def_options_thread_macros" version_id="1050170" version_string="1.5.1"><![CDATA[<xf:macro name="options" arg-options="!" arg-nodeTree="!" arg-cutoff="!" arg-includeClosed="{{ false }}">
+    <xf:numberboxrow name="options[limit]" value="{$options.limit}" min="1"
+        label="{{ phrase('maximum_entries') }}" />
+
+    <xf:if is="$cutoff">
+        <xf:numberboxrow name="options[cutoff]" value="{$options.cutoff}" min="{$cutoff.min}"
+            label="{{ phrase('af_forumstats_cutoff_days') }}"
+            explain="{{ $cutoff.explain ? phrase('af_forumstats_new_posts_cutoff_explain') : '' }}" />
+    </xf:if>
+
+    <xf:selectrow name="options[node_ids][]" value="{{ $options.node_ids ?: '' }}" multiple="multiple" size="7"
+        label="{{ phrase('af_forumstats_included_forums') }}"
+        explain="{{ phrase('only_include_threads_in_selected_forums') }}">
+
+        <xf:option value="">{{ phrase('all_forums') }}</xf:option>
+        <xf:foreach loop="$nodeTree.getFlattened(0)" value="$treeEntry">
+            <xf:option value="{$treeEntry.record.node_id}" disabled="{{ $treeEntry.record.node_type_id != 'Forum' }}">
+                {{ repeat('&nbsp;&nbsp;', $treeEntry.depth)|raw }} {$treeEntry.record.title}
+            </xf:option>
+        </xf:foreach>
+    </xf:selectrow>
+
+    <xf:selectrow name="options[excluded_node_ids][]" value="{{ $options.excluded_node_ids ?: '' }}" multiple="multiple" size="7"
+        label="{{ phrase('af_forumstats_excluded_forums') }}"
+        explain="{{ phrase('af_forumstats_excluded_forums_explain') }}">
+
+        <xf:option value="">{{ phrase('none') }}</xf:option>
+        <xf:foreach loop="$nodeTree.getFlattened(0)" value="$treeEntry">
+            <xf:option value="{$treeEntry.record.node_id}" disabled="{{ $treeEntry.record.node_type_id != 'Forum' }}">
+                {{ repeat('&nbsp;&nbsp;', $treeEntry.depth)|raw }} {$treeEntry.record.title}
+            </xf:option>
+        </xf:foreach>
+    </xf:selectrow>
+
+    <xf:selectrow name="options[thread_prefix]" value="{{ $options.thread_prefix ?: '' }}"
+        label="{{ phrase('af_forumstats_thread_prefix') }}">
+
+        <xf:option value="">{{ phrase('no_prefix') }}</xf:option>
+        <xf:option value="html">HTML</xf:option>
+        <xf:option value="plain">Plain</xf:option>
+    </xf:selectrow>
+
+    <xf:if is="$includeClosed">
+        <xf:radiorow name="options[include_closed]" value="{$options.include_closed}"
+            label="{{ phrase('af_forumstats_include_closed') }}"
+            explain="{{ phrase('af_forumstats_include_closed_explain') }}">
+            <xf:option value="1">{{ phrase('yes') }}</xf:option>
+            <xf:option value="0">{{ phrase('no') }}</xf:option>
+        </xf:radiorow>
+    </xf:if>
+
+    <xf:checkboxrow label="{{ phrase('af_forumstats_ignore_view_perms') }}">
+        <xf:option name="options[ignore_view_perms]" selected="$options.ignore_view_perms"
+            label="{{ phrase('yes') }}" />
+    </xf:checkboxrow>
+
+    <xf:checkboxrow label="{{ phrase('af_forumstats_show_forum_title') }}">
+        <xf:option name="options[show_forum_title]" selected="$options.show_forum_title"
+            label="{{ phrase('yes') }}" />
+    </xf:checkboxrow>
+
+    <xf:checkboxrow label="{{ phrase('af_forumstats_show_last_poster') }}">
+        <xf:option name="options[show_last_poster]" selected="$options.show_last_poster"
+            label="{{ phrase('yes') }}"
+            data-hide="true">
+            <xf:dependent>
+                <xf:checkbox>
+                    <xf:option name="options[show_last_poster_rich]" selected="$options.show_last_poster_rich"
+                        label="{{ phrase('af_forumstats_rich_usernames') }}" />
+                </xf:checkbox>
+            </xf:dependent>
+        </xf:option>
+    </xf:checkboxrow>
+</xf:macro>]]></template>
+  <template type="admin" title="af_forumstats_def_options_top_resources" version_id="1040070" version_string="1.4.0"><![CDATA[<hr class="formRowSep" />
+
+<xf:numberboxrow name="options[limit]" value="{$options.limit}" min="1"
+    label="{{ phrase('maximum_entries') }}" />
+
+<xf:selectrow name="options[resource_category_ids][]" value="{{ $options.resource_category_ids ?: 0 }}" multiple="multiple" size="7"
+    label="{{ phrase('xfrm_category_limit') }}">
+
+    <xf:option value="0">{{ phrase('xfrm_all_categories_or_contextual_category') }}</xf:option>
+    <xf:foreach loop="$categoryTree.getFlattened(0)" value="$treeEntry">
+        <xf:option value="{$treeEntry.record.resource_category_id}">
+            {{ repeat('&nbsp;&nbsp;', $treeEntry.depth)|raw }}{$treeEntry.record.title}
+        </xf:option>
+    </xf:foreach>
+    <xf:explain>{{ phrase('xfrm_all_categories_or_contextual_explain') }}</xf:explain>
+</xf:selectrow>
+
+<xf:selectrow name="options[prefix]" value="{{ $options.prefix ?: '' }}"
+    label="{{ phrase('prefix') }}">
+
+    <xf:option value="">{{ phrase('no_prefix') }}</xf:option>
+    <xf:option value="html">HTML</xf:option>
+    <xf:option value="plain">Plain</xf:option>
+</xf:selectrow>
+
+<xf:checkboxrow label="{{ phrase('af_forumstats_ignore_view_perms') }}">
+    <xf:option name="options[ignore_view_perms]" selected="$options.ignore_view_perms"
+        label="{{ phrase('yes') }}" />
+</xf:checkboxrow>]]></template>
+  <template type="admin" title="af_forumstats_def_options_top_thread_starters" version_id="1010070" version_string="1.1.0"><![CDATA[<hr class="formRowSep" />
+
+<xf:numberboxrow name="options[limit]" value="{$options.limit}" min="1"
+    label="{{ phrase('maximum_entries') }}" />
+
+<xf:checkboxrow label="{{ phrase('af_forumstats_rich_usernames') }}">
+    <xf:option name="options[rich_usernames]" selected="$options.rich_usernames">{{ phrase('yes') }}</xf:option>
+</xf:checkboxrow>]]></template>
+  <template type="admin" title="af_forumstats_definition_chooser" version_id="1000070" version_string="1.0.0"><![CDATA[<xf:title>{{ phrase('af_forumstats_choose_type') }}</xf:title>
+
+<xf:form action="{{ link('forum-stats/add') }}" class="block" ajax="true">
+    <div class="block-container">
+        <div class="block-body">
+            <xf:selectrow name="type"
+                label="{{ phrase('af_forumstats_type') }}">
+
+                <xf:option value="">{{ phrase('af_forumstats_choose_type') }}</xf:option>
+                <xf:options source="{$forumStatDefinitions}" />
+            </xf:selectrow>
+        </div>
+        <xf:submitrow submit="{{ phrase('af_forumstats_add_stat') }}" icon="add" />
+    </div>
+</xf:form>]]></template>
+  <template type="admin" title="af_forumstats_option_template_minimode" version_id="1040070" version_string="1.4.0"><![CDATA[<xf:checkboxrow
+    label="{$option.title}"
+    hint="{$hintHtml}"
+    explain="{$explainHtml}"
+    html="{$listedHtml}">
+
+    <xf:option name="{$inputName}[enabled]" label="{{ phrase('enabled') }}" value="1" selected="$option.option_value.enabled" data-hide="true">
+        <xf:hint>{{ phrase('af_forumstats_mini_mode_explain') }}</xf:hint>
+
+        <xf:dependent>
+            <div class="inputGroup">
+                <span class="inputGroup-text">
+                    {{ phrase('size:') }}
+                </span>
+                <span class="inputGroup" dir="ltr">
+                    <xf:select name="{$inputName}[size]" class="input--inline input--autoSize"
+                        value="{$option.option_value.size}">
+                        <xf:option value="1">{{ phrase('af_forumstats_small') }}</xf:option>
+                        <xf:option value="2">{{ phrase('af_forumstats_smaller') }}</xf:option>
+                        <xf:option value="3">{{ phrase('af_forumstats_smallest') }}</xf:option>
+                    </xf:select>
+                </span>
+            </div>
+        </xf:dependent>
+
+    </xf:option>
+</xf:checkboxrow>]]></template>
+  <template type="admin" title="af_forumstats_stat_delete" version_id="1000070" version_string="1.0.0"><![CDATA[<xf:title>{{ phrase('confirm_action') }}</xf:title>
+
+<xf:form action="{{ link('forum-stats/delete', $forumStat) }}" ajax="true" class="block">
+    <div class="block-container">
+        <div class="block-body">
+            <xf:inforow rowtype="confirm">
+                {{ phrase('please_confirm_that_you_want_to_delete_following:') }}
+                <strong><a href="{{ link('forum-stats/edit', $forumStat) }}">{$forumStat.title}</a></strong>
+            </xf:inforow>
+        </div>
+        <xf:submitrow rowtype="simple" icon="delete" />
+    </div>
+</xf:form>]]></template>
+  <template type="admin" title="af_forumstats_stat_edit" version_id="1050170" version_string="1.5.1"><![CDATA[<xf:if is="$forumStat.isInsert()">
+    <xf:title>{{ phrase('af_forumstats_add_stat') }}</xf:title>
+<xf:else />
+    <xf:title>{{ phrase('af_forumstats_edit_stat') }}: {$forumStat.title}</xf:title>
+</xf:if>
+
+<xf:pageaction if="$forumStat.isUpdate()">
+    <xf:button href="{{ link('forum-stats/delete', $forumStat) }}" icon="delete" overlay="true" />
+</xf:pageaction>
+
+<xf:form action="{{ link('forum-stats/save', $forumStat) }}" class="block" ajax="true">
+    <div class="block-container">
+        <div class="block-body">
+
+            <xf:formrow
+                label="{{ phrase('af_forumstats_type') }}"
+                explain="">
+                {$forumStatDefinition.title}
+                <xf:hiddenval name="definition_id">{$forumStatDefinition.definition_id}</xf:hiddenval>
+            </xf:formrow>
+
+            <xf:textboxrow
+            label="{{ phrase('af_forumstats_custom_title') }}"
+            explain="{{ phrase('af_forumstats_custom_title_explain') }} ({$forumStatDefinition.title})"
+            name="custom_title" value="{$forumStat.custom_title}"
+            maxlength="{{ max_length($forumStat, 'custom_title') }}" />
+
+            <hr class="formRowSep" />
+
+            <xf:selectrow name="position" value="{$forumStat.position}"
+                label="{{ phrase('af_forumstats_position') }}">
+
+                <xf:option value="">{{ phrase('af_forumstats_choose_pos') }}</xf:option>
+                <xf:options source="{$forumStat.positions}" />
+            </xf:selectrow>
+
+            <xf:macro template="display_order_macros" name="row"
+                arg-value="{{ $forumStat.display_order ?: 5 }}" arg-step="5" />
+
+            <xf:checkboxrow label="{{ phrase('af_forumstats_active') }}">
+                <xf:option name="active" selected="$forumStat.active"
+                    label="{{ phrase('yes') }}" />
+            </xf:checkboxrow>
+
+            {$forumStat.renderOptions()|raw}
+
+            <hr class="formRowSep" />
+
+            <xf:set var="$options" value="{{ $forumStat.handler.getOptions() }}" />
+            <xf:checkboxrow label="{{ phrase('af_forumstats_show_counter') }}">
+                <xf:option name="options[show_counter]" selected="$options.show_counter"
+                    label="{{ phrase('yes') }}" />
+            </xf:checkboxrow>
+        </div>
+        <xf:submitrow sticky="true" icon="save" />
+    </div>
+</xf:form>]]></template>
+  <template type="admin" title="af_forumstats_stat_list" version_id="1000070" version_string="1.0.0"><![CDATA[<xf:title>{{ phrase('af_forumstats') }}</xf:title>
+
+<xf:pageaction>
+    <xf:button href="{{ link('forum-stats/add') }}" icon="add" overlay="true">{{ phrase('af_forumstats_add_stat') }}</xf:button>
+</xf:pageaction>
+
+
+<xf:form action="{{ link('forum-stats/toggle') }}" class="block" ajax="true">
+    <div class="block-container">
+        <xf:set var="$totals" value="0" />
+        <xf:foreach loop="$forumStatPositions" key="$position" value="$forumStatPosition">
+            <div class="block-body">
+                <xf:datalist>
+                    <xf:datarow rowtype="subsection" rowclass="dataList-row--noHover">
+                        <xf:cell colspan="3">Position: {$position|to_upper('ucwords')}</xf:cell>
+                    </xf:datarow>
+                    <xf:foreach loop="$forumStatPosition" value="$forumStat">
+                        <xf:datarow label="{$forumStat.title}" href="{{ link('forum-stats/edit', $forumStat) }}" rowclass="{{ $forumStat.active ? '' : 'dataList-row--deleted' }}">
+                            <xf:hint></xf:hint>
+                            <xf:explain></xf:explain>
+                            <xf:toggle name="active[{$forumStat.stat_id}]" selected="$forumStat.active"
+                                class="dataList-cell--separated" submit="true"
+                                tooltip="{{ phrase('enable_disable_x', {'title': $forumStat.title}) }}" />
+                            <xf:delete href="{{ link('forum-stats/delete', $forumStat) }}" tooltip="{{ phrase('delete') }}" />
+                        </xf:datarow>
+                    </xf:foreach>
+                </xf:datalist>
+            </div>
+            <xf:set var="$totals" value="{{ $totals + count($forumStatPosition) }}" />
+        </xf:foreach>
+
+        <div class="block-footer">
+            <span class="block-footer-counter">{{ display_totals($totals) }}</span>
+        </div>
+    </div>
+</xf:form>]]></template>
+  <template type="public" title="af_forumstats_hottest_threads" version_id="1070070" version_string="1.7.0"><![CDATA[<div class="block-body">
+    <xf:if is="$threads is not empty">
+        <xf:datalist data-xf-init="">
+            <xf:foreach loop="$threads" value="$thread" i="$i">
+                <xf:set var="$canPreview" value="{{ $thread.canPreview() }}" />
+                <xf:datarow>
+                    <xf:if is="$options.show_counter">
+                        <xf:cell class="dataList-cell--min dataList-cell--alt dataList-cell--forumStats-counter">
+                            {$i|number}
+                        </xf:cell>
+                    </xf:if>
+                    <xf:cell
+                        class="dataList-cell--min dataList-cell--alt dataList-cell--image dataList-cell--imageSmall"
+                        href="{{ link('members', $thread.User) }}">
+                        <xf:avatar user="$thread.User" size="xxs" defaultname="{$thread.username}" />
+                    </xf:cell>
+                    <xf:cell class="dataList-cell--main {{ $thread.isUnread() ? 'dataList-cell--highlighted' : '' }}" href="{{ link('threads', $thread) }}">
+                        <div class="dataList-textRow">
+                            <span data-xf-init="{{ $canPreview ? 'preview-tooltip' : '' }}" data-preview-url="{{ $canPreview ? link('threads/preview', $thread) : '' }}">{{ $options.thread_prefix ? prefix('thread', $thread, $options.thread_prefix) : '' }}{$thread.title}</span>
+                        </div>
+                    </xf:cell>
+                    <xf:cell class="dataList-cell--min dataList-cell--alt unit-replies">
+                        <div class="miniCol">
+                            {$thread.reply_count|number}
+                        </div>
+                    </xf:cell>
+                    <xf:if is="$options.show_forum_title">
+                        <xf:cell class="dataList-cell--min dataList-cell--forumStats-forumTitle">
+                            <a href="{{ link('forums', $thread.Forum) }}">{$thread.Forum.title}</a>
+                        </xf:cell>
+                    </xf:if>
+                    <xf:cell class="dataList-cell--min dataList-cell--alt">
+                        <div class="miniCol">
+                            <xf:date time="{$thread.post_date}" />
+                        </div>
+                    </xf:cell>
+                    <xf:if is="$options.show_last_poster">
+                        <xf:cell class="dataList-cell--min dataList-cell--alt">
+                            <xf:username user="{$thread.LastPoster}" defaultname="{$thread.last_post_username}" rich="{{ $options.show_last_poster_rich ? 'true' : '' }}" />
+                        </xf:cell>
+                    </xf:if>
+                </xf:datarow>
+
+            </xf:foreach>
+        </xf:datalist>
+    <xf:else />
+        <div class="block-row">
+            {{ phrase('no_results_found') }}
+        </div>
+    </xf:if>
+</div>]]></template>
+  <template type="public" title="af_forumstats_latest_forum_news" version_id="1070070" version_string="1.7.0"><![CDATA[<div class="block-body">
+    <xf:if is="$threads is not empty">
+        <xf:datalist data-xf-init="">
+            <xf:foreach loop="$threads" value="$thread" i="$i">
+                <xf:set var="$canPreview" value="{{ $thread.canPreview() }}" />
+                <xf:datarow>
+                    <xf:if is="$options.show_counter">
+                        <xf:cell class="dataList-cell--min dataList-cell--alt dataList-cell--forumStats-counter">
+                            {$i|number}
+                        </xf:cell>
+                    </xf:if>
+                    <xf:cell
+                        class="dataList-cell--min dataList-cell--alt dataList-cell--image dataList-cell--imageSmall"
+                        href="{{ link('members', $thread.User) }}">
+                        <xf:avatar user="$thread.User" size="xxs" defaultname="{$thread.username}" />
+                    </xf:cell>
+                    <xf:cell class="dataList-cell--main {{ $thread.isUnread() ? 'dataList-cell--highlighted' : '' }}" href="{{ link('threads', $thread) }}">
+                        <div class="dataList-textRow">
+                            <span data-xf-init="{{ $canPreview ? 'preview-tooltip' : '' }}" data-preview-url="{{ $canPreview ? link('threads/preview', $thread) : '' }}">{{ $options.thread_prefix ? prefix('thread', $thread, $options.thread_prefix) : '' }}{$thread.title}</span>
+                        </div>
+                    </xf:cell>
+                    <xf:if is="$options.show_forum_title">
+                        <xf:cell class="dataList-cell--min dataList-cell--forumStats-forumTitle">
+                            <a href="{{ link('forums', $thread.Forum) }}">{$thread.Forum.title}</a>
+                        </xf:cell>
+                    </xf:if>
+                    <xf:cell class="dataList-cell--min dataList-cell--alt">
+                        <div class="miniCol">
+                            <xf:date time="{$thread.post_date}" />
+                        </div>
+                    </xf:cell>
+                    <xf:if is="$options.show_last_poster">
+                        <xf:cell class="dataList-cell--min dataList-cell--alt">
+                            <xf:username user="{$thread.LastPoster}" defaultname="{$thread.last_post_username}" rich="{{ $options.show_last_poster_rich ? 'true' : '' }}" />
+                        </xf:cell>
+                    </xf:if>
+                </xf:datarow>
+
+            </xf:foreach>
+        </xf:datalist>
+    <xf:else />
+        <div class="block-row">
+            {{ phrase('no_results_found') }}
+        </div>
+    </xf:if>
+</div>]]></template>
+  <template type="public" title="af_forumstats_most_liked_threads" version_id="1050170" version_string="1.5.1"><![CDATA[<div class="block-body">
+    <xf:if is="$threads is not empty">
+        <xf:datalist data-xf-init="">
+            <xf:foreach loop="$threads" value="$thread" i="$i">
+                <xf:set var="$canPreview" value="{{ $thread.canPreview() }}" />
+                <xf:datarow>
+                    <xf:if is="$options.show_counter">
+                        <xf:cell class="dataList-cell--min dataList-cell--alt dataList-cell--forumStats-counter">
+                            {$i|number}
+                        </xf:cell>
+                    </xf:if>
+                    <xf:cell class="dataList-cell--main {{ $thread.isUnread() ? 'dataList-cell--highlighted' : '' }}" href="{{ link('threads', $thread) }}">
+                        <div class="dataList-textRow">
+                            <span data-xf-init="{{ $canPreview ? 'preview-tooltip' : '' }}" data-preview-url="{{ $canPreview ? link('threads/preview', $thread) : '' }}">{{ $options.thread_prefix ? prefix('thread', $thread, $options.thread_prefix) : '' }}{$thread.title}</span>
+                        </div>
+                    </xf:cell>
+                    <xf:cell class="dataList-cell--min dataList-cell--alt unit-likes">
+                        <div class="miniCol">
+                            {$thread.first_post_likes|number}
+                        </div>
+                    </xf:cell>
+                </xf:datarow>
+
+            </xf:foreach>
+        </xf:datalist>
+    <xf:else />
+        <div class="block-row">
+            {{ phrase('no_results_found') }}
+        </div>
+    </xf:if>
+</div>]]></template>
+  <template type="public" title="af_forumstats_most_liked_users" version_id="1050170" version_string="1.5.1"><![CDATA[<div class="block-body">
+    <xf:if is="$users is not empty">
+        <xf:datalist data-xf-init="">
+            <xf:foreach loop="$users" value="$user" i="$i">
+
+                <xf:datarow>
+                    <xf:if is="$options.show_counter">
+                        <xf:cell class="dataList-cell--min dataList-cell--alt dataList-cell--forumStats-counter">
+                            {$i|number}
+                        </xf:cell>
+                    </xf:if>
+                    <xf:cell
+                        class="dataList-cell--min dataList-cell--image dataList-cell--imageSmall"
+                        href="{{ link('members', $user) }}">
+                        <xf:avatar user="$user" size="xxs" defaultname="{$user.username}" />
+                    </xf:cell>
+
+                    <xf:cell href="{{ link('members', $user) }}" class="dataList-cell--main dataList-cell--min">
+                        <xf:username user="$user" rich="{{ $options.rich_usernames ? 'true' : '' }}" notooltip="true" href="" />
+                    </xf:cell>
+
+                    <xf:cell class="dataList-cell--min dataList-cell--alt unit-likes">
+                        <div class="miniCol">
+                            {$user.like_count|number}
+                        </div>
+                    </xf:cell>
+
+                </xf:datarow>
+
+            </xf:foreach>
+        </xf:datalist>
+    <xf:else />
+        <div class="block-row">
+            {{ phrase('no_results_found') }}
+        </div>
+    </xf:if>
+</div>]]></template>
+  <template type="public" title="af_forumstats_most_popular_forums" version_id="1050170" version_string="1.5.1"><![CDATA[<div class="block-body">
+    <xf:if is="$forums is not empty">
+        <xf:datalist data-xf-init="">
+            <xf:foreach loop="$forums" value="$forum" i="$i">
+
+                <xf:datarow>
+                    <xf:if is="$options.show_counter">
+                        <xf:cell class="dataList-cell--min dataList-cell--alt dataList-cell--forumStats-counter">
+                            {$i|number}
+                        </xf:cell>
+                    </xf:if>
+                    <xf:cell class="dataList-cell--main" href="{{ link('forums', $forum) }}">
+                        <div class="dataList-textRow">{$forum.title}</div>
+                    </xf:cell>
+                    <xf:cell class="dataList-cell--min dataList-cell--alt unit-posts">
+                        <div class="miniCol">
+                            {$forum.message_count|number}
+                        </div>
+                    </xf:cell>
+                </xf:datarow>
+
+            </xf:foreach>
+        </xf:datalist>
+    <xf:else />
+        <div class="block-row">
+            {{ phrase('no_results_found') }}
+        </div>
+    </xf:if>
+</div>]]></template>
+  <template type="public" title="af_forumstats_most_reacted_threads" version_id="1070070" version_string="1.7.0"><![CDATA[<div class="block-body">
+    <xf:if is="$threads is not empty">
+        <xf:datalist data-xf-init="">
+            <xf:foreach loop="$threads" value="$thread" i="$i">
+                <xf:set var="$canPreview" value="{{ $thread.canPreview() }}" />
+                <xf:datarow>
+                    <xf:if is="$options.show_counter">
+                        <xf:cell class="dataList-cell--min dataList-cell--alt dataList-cell--forumStats-counter">
+                            {$i|number}
+                        </xf:cell>
+                    </xf:if>
+                    <xf:cell class="dataList-cell--main {{ $thread.isUnread() ? 'dataList-cell--highlighted' : '' }}" href="{{ link('threads', $thread) }}">
+                        <div class="dataList-textRow">
+                            <span data-xf-init="{{ $canPreview ? 'preview-tooltip' : '' }}" data-preview-url="{{ $canPreview ? link('threads/preview', $thread) : '' }}">{{ $options.thread_prefix ? prefix('thread', $thread, $options.thread_prefix) : '' }}{$thread.title}</span>
+                        </div>
+                    </xf:cell>
+                    <xf:cell class="dataList-cell--min dataList-cell--alt unit-score">
+                        <div class="miniCol">
+                            {$thread.first_post_reaction_score|number}
+                        </div>
+                    </xf:cell>
+                    <xf:if is="$options.show_forum_title">
+                        <xf:cell class="dataList-cell--min dataList-cell--forumStats-forumTitle">
+                            <a href="{{ link('forums', $thread.Forum) }}">{$thread.Forum.title}</a>
+                        </xf:cell>
+                    </xf:if>
+                    <xf:if is="$options.show_last_poster">
+                        <xf:cell class="dataList-cell--min dataList-cell--alt">
+                            <xf:username user="{$thread.LastPoster}" defaultname="{$thread.last_post_username}" rich="{{ $options.show_last_poster_rich ? 'true' : '' }}" />
+                        </xf:cell>
+                    </xf:if>
+                </xf:datarow>
+
+            </xf:foreach>
+        </xf:datalist>
+    <xf:else />
+        <div class="block-row">
+            {{ phrase('no_results_found') }}
+        </div>
+    </xf:if>
+</div>]]></template>
+  <template type="public" title="af_forumstats_most_reacted_users" version_id="1050170" version_string="1.5.1"><![CDATA[<div class="block-body">
+    <xf:if is="$users is not empty">
+        <xf:datalist data-xf-init="">
+            <xf:foreach loop="$users" value="$user" i="$i">
+
+                <xf:datarow>
+                    <xf:if is="$options.show_counter">
+                        <xf:cell class="dataList-cell--min dataList-cell--alt dataList-cell--forumStats-counter">
+                            {$i|number}
+                        </xf:cell>
+                    </xf:if>
+                    <xf:cell
+                        class="dataList-cell--min dataList-cell--image dataList-cell--imageSmall"
+                        href="{{ link('members', $user) }}">
+                        <xf:avatar user="$user" size="xxs" defaultname="{$user.username}" />
+                    </xf:cell>
+
+                    <xf:cell href="{{ link('members', $user) }}" class="dataList-cell--main dataList-cell--min">
+                        <xf:username user="$user" rich="{{ $options.rich_usernames ? 'true' : '' }}" notooltip="true" href="" />
+                    </xf:cell>
+
+                    <xf:cell class="dataList-cell--min dataList-cell--alt unit-score">
+                        <div class="miniCol">
+                            {$user.reaction_score|number}
+                        </div>
+                    </xf:cell>
+
+                </xf:datarow>
+
+            </xf:foreach>
+        </xf:datalist>
+    <xf:else />
+        <div class="block-row">
+            {{ phrase('no_results_found') }}
+        </div>
+    </xf:if>
+</div>]]></template>
+  <template type="public" title="af_forumstats_most_viewed_threads" version_id="1070070" version_string="1.7.0"><![CDATA[<div class="block-body">
+    <xf:if is="$threads is not empty">
+        <xf:datalist data-xf-init="">
+            <xf:foreach loop="$threads" value="$thread" i="$i">
+                <xf:set var="$canPreview" value="{{ $thread.canPreview() }}" />
+                <xf:datarow>
+                    <xf:if is="$options.show_counter">
+                        <xf:cell class="dataList-cell--min dataList-cell--alt dataList-cell--forumStats-counter">
+                            {$i|number}
+                        </xf:cell>
+                    </xf:if>
+                    <xf:cell
+                        class="dataList-cell--min dataList-cell--alt dataList-cell--image dataList-cell--imageSmall"
+                        href="{{ link('members', $thread.User) }}">
+                        <xf:avatar user="$thread.User" size="xxs" defaultname="{$thread.username}" />
+                    </xf:cell>
+                    <xf:cell class="dataList-cell--main {{ $thread.isUnread() ? 'dataList-cell--highlighted' : '' }}" href="{{ link('threads', $thread) }}">
+                        <div class="dataList-textRow">
+                            <span data-xf-init="{{ $canPreview ? 'preview-tooltip' : '' }}" data-preview-url="{{ $canPreview ? link('threads/preview', $thread) : '' }}">{{ $options.thread_prefix ? prefix('thread', $thread, $options.thread_prefix) : '' }}{$thread.title}</span>
+                        </div>
+                    </xf:cell>
+                    <xf:cell class="dataList-cell--min dataList-cell--alt unit-views">
+                        <div class="miniCol">
+                            {$thread.view_count|number}
+                        </div>
+                    </xf:cell>
+                    <xf:if is="$options.show_forum_title">
+                        <xf:cell class="dataList-cell--min dataList-cell--forumStats-forumTitle">
+                            <a href="{{ link('forums', $thread.Forum) }}">{$thread.Forum.title}</a>
+                        </xf:cell>
+                    </xf:if>
+                    <xf:cell class="dataList-cell--min dataList-cell--alt">
+                        <div class="miniCol">
+                            <xf:date time="{$thread.post_date}" />
+                        </div>
+                    </xf:cell>
+                    <xf:if is="$options.show_last_poster">
+                        <xf:cell class="dataList-cell--min dataList-cell--alt">
+                            <xf:username user="{$thread.LastPoster}" defaultname="{$thread.last_post_username}" rich="{{ $options.show_last_poster_rich ? 'true' : '' }}" />
+                        </xf:cell>
+                    </xf:if>
+                </xf:datarow>
+
+            </xf:foreach>
+        </xf:datalist>
+    <xf:else />
+        <div class="block-row">
+            {{ phrase('no_results_found') }}
+        </div>
+    </xf:if>
+</div>]]></template>
+  <template type="public" title="af_forumstats_new_members" version_id="1050170" version_string="1.5.1"><![CDATA[<div class="block-body">
+    <xf:if is="$users is not empty">
+        <xf:datalist data-xf-init="">
+            <xf:foreach loop="$users" value="$user" i="$i">
+
+                <xf:datarow>
+                    <xf:if is="$options.show_counter">
+                        <xf:cell class="dataList-cell--min dataList-cell--alt dataList-cell--forumStats-counter">
+                            {$i|number}
+                        </xf:cell>
+                    </xf:if>
+                    <xf:cell
+                        class="dataList-cell--min dataList-cell--image dataList-cell--imageSmall"
+                        href="{{ link('members', $user) }}">
+                        <xf:avatar user="$user" size="xxs" defaultname="{$user.username}" />
+                    </xf:cell>
+
+                    <xf:cell href="{{ link('members', $user) }}" class="dataList-cell--main dataList-cell--min">
+                        <xf:username user="$user" rich="{{ $options.rich_usernames ? 'true' : '' }}" notooltip="true" href="" />
+                    </xf:cell>
+
+                    <xf:cell href="{{ link('members', $user) }}" class="dataList-cell--min dataList-cell--alt">
+                        <div class="miniCol">
+                            <xf:date time="$user.register_date" />
+                        </div>
+                    </xf:cell>
+                </xf:datarow>
+
+            </xf:foreach>
+        </xf:datalist>
+    <xf:else />
+        <div class="block-row">
+            {{ phrase('no_results_found') }}
+        </div>
+    </xf:if>
+</div>]]></template>
+  <template type="public" title="af_forumstats_new_posts" version_id="1070070" version_string="1.7.0"><![CDATA[<div class="block-body">
+    <xf:if is="$threads is not empty">
+        <xf:datalist data-xf-init="">
+            <xf:foreach loop="$threads" value="$thread" i="$i">
+                <xf:set var="$canPreview" value="{{ $thread.canPreview() }}" />
+                <xf:datarow>
+                    <xf:if is="$options.show_counter">
+                        <xf:cell class="dataList-cell--min dataList-cell--alt dataList-cell--forumStats-counter">
+                            {$i|number}
+                        </xf:cell>
+                    </xf:if>
+                    <xf:cell
+                        class="dataList-cell--min dataList-cell--alt dataList-cell--image dataList-cell--imageSmall"
+                        href="{{ link('members', $thread.LastPoster) }}">
+                        <xf:avatar user="$thread.LastPoster" size="xxs" defaultname="{$thread.last_post_username}" />
+                    </xf:cell>
+                    <xf:cell class="dataList-cell--main {{ $thread.isUnread() ? 'dataList-cell--highlighted' : '' }}" href="{{ $thread.isUnread() ? link('threads/unread', $thread) : link('threads/post', $thread, {'post_id': $thread.last_post_id}) }}">
+                        <div class="dataList-textRow">
+                            <span data-xf-init="{{ $canPreview ? 'preview-tooltip' : '' }}" data-preview-url="{{ $canPreview ? link('threads/preview', $thread) : '' }}">{{ $options.thread_prefix ? prefix('thread', $thread, $options.thread_prefix) : '' }}{$thread.title}</span>
+                        </div>
+                        <xf:comment>
+                            <div class="dataList-subRow">
+                                <ul class="listInline listInline--bullet">
+                                    <li>{{ phrase('latest_x', {'name': $thread.last_post_cache.username}) }}</li>
+                                </ul>
+                            </div>
+                        </xf:comment>
+                    </xf:cell>
+                    <xf:if is="$options.show_forum_title">
+                        <xf:cell class="dataList-cell--min dataList-cell--forumStats-forumTitle">
+                            <a href="{{ link('forums', $thread.Forum) }}">{$thread.Forum.title}</a>
+                        </xf:cell>
+                    </xf:if>
+                    <xf:cell class="dataList-cell--min dataList-cell--alt dataList-cell--forumStats-date">
+                        <div class="miniCol">
+                            <xf:date time="{$thread.last_post_date}" />
+                        </div>
+                    </xf:cell>
+                    <xf:if is="$options.show_last_poster">
+                        <xf:cell class="dataList-cell--min dataList-cell--alt">
+                            <xf:username user="{$thread.LastPoster}" defaultname="{$thread.last_post_username}" rich="{{ $options.show_last_poster_rich ? 'true' : '' }}" />
+                        </xf:cell>
+                    </xf:if>
+                </xf:datarow>
+
+            </xf:foreach>
+        </xf:datalist>
+    <xf:else />
+        <div class="block-row">
+            {{ phrase('no_results_found') }}
+        </div>
+    </xf:if>
+</div>]]></template>
+  <template type="public" title="af_forumstats_new_resources" version_id="1050170" version_string="1.5.1"><![CDATA[<div class="block-body">
+    <xf:if is="$resources is not empty">
+        <xf:datalist data-xf-init="">
+            <xf:foreach loop="$resources" value="$resource" i="$i">
+
+                <xf:datarow>
+                    <xf:if is="$options.show_counter">
+                        <xf:cell class="dataList-cell--min dataList-cell--alt dataList-cell--forumStats-counter">
+                            {$i|number}
+                        </xf:cell>
+                    </xf:if>
+                    <xf:if is="$xf.options.xfrmAllowIcons">
+                        <xf:cell
+                            class="dataList-cell--min dataList-cell--alt dataList-cell--image dataList-cell--imageSmall"
+                            href="{{ link('resources', $resource) }}">
+                            {{ resource_icon($resource, 'xxs', link('resources', $resource)) }}
+                        </xf:cell>
+                    <xf:else />
+                        <xf:cell
+                            class="dataList-cell--min dataList-cell--alt dataList-cell--image dataList-cell--imageSmall"
+                            href="{{ link('members', $resource.User) }}">
+                            <xf:avatar user="$resource.User" size="xxs" />
+                        </xf:cell>
+                    </xf:if>
+
+                    <xf:cell class="dataList-cell--main" href="{{ link('resources', $resource) }}">
+                        <div class="dataList-textRow">{{ $options.prefix ? prefix('resource', $resource,  $options.prefix) : '' }}{$resource.title}</div>
+                    </xf:cell>
+                    <xf:cell class="dataList-cell--min dataList-cell--alt">
+                        <div class="miniCol">
+                            <xf:date time="{$resource.last_update}" />
+                        </div>
+                    </xf:cell>
+                </xf:datarow>
+
+            </xf:foreach>
+        </xf:datalist>
+    <xf:else />
+        <div class="block-row">
+            {{ phrase('no_results_found') }}
+        </div>
+    </xf:if>
+</div>]]></template>
+  <template type="public" title="af_forumstats_new_threads" version_id="1070070" version_string="1.7.0"><![CDATA[<div class="block-body">
+    <xf:if is="$threads is not empty">
+        <xf:datalist data-xf-init="">
+            <xf:foreach loop="$threads" value="$thread" i="$i">
+                <xf:set var="$canPreview" value="{{ $thread.canPreview() }}" />
+                <xf:datarow>
+                    <xf:if is="$options.show_counter">
+                        <xf:cell class="dataList-cell--min dataList-cell--alt dataList-cell--forumStats-counter">
+                            {$i|number}
+                        </xf:cell>
+                    </xf:if>
+                    <xf:cell
+                        class="dataList-cell--min dataList-cell--alt dataList-cell--image dataList-cell--imageSmall"
+                        href="">
+                        <xf:avatar user="$thread.User" size="xxs" defaultname="{$thread.username}" />
+                    </xf:cell>
+                    <xf:cell class="dataList-cell--main {{ $thread.isUnread() ? 'dataList-cell--highlighted' : '' }}" href="{{ link('threads', $thread) }}">
+                        <div class="dataList-textRow">
+                            <span data-xf-init="{{ $canPreview ? 'preview-tooltip' : '' }}" data-preview-url="{{ $canPreview ? link('threads/preview', $thread) : '' }}">{{ $options.thread_prefix ? prefix('thread', $thread, $options.thread_prefix) : '' }}{$thread.title}</span>
+                        </div>
+                    </xf:cell>
+                    <xf:if is="$options.show_forum_title">
+                        <xf:cell class="dataList-cell--min dataList-cell--forumStats-forumTitle">
+                            <a href="{{ link('forums', $thread.Forum) }}">{$thread.Forum.title}</a>
+                        </xf:cell>
+                    </xf:if>
+                    <xf:cell class="dataList-cell--min dataList-cell--alt unit-replies">
+                        <div class="miniCol">
+                            {$thread.reply_count|number}
+                        </div>
+                    </xf:cell>
+                    <xf:cell class="dataList-cell--min dataList-cell--alt">
+                        <div class="miniCol">
+                            <xf:date time="{$thread.post_date}" />
+                        </div>
+                    </xf:cell>
+                    <xf:if is="$options.show_last_poster">
+                        <xf:cell class="dataList-cell--min dataList-cell--alt">
+                            <xf:username user="{$thread.LastPoster}" defaultname="{$thread.last_post_username}" rich="{{ $options.show_last_poster_rich ? 'true' : '' }}" />
+                        </xf:cell>
+                    </xf:if>
+                </xf:datarow>
+
+            </xf:foreach>
+        </xf:datalist>
+    <xf:else />
+        <div class="block-row">
+            {{ phrase('no_results_found') }}
+        </div>
+    </xf:if>
+</div>]]></template>
+  <template type="public" title="af_forumstats_results" version_id="1000070" version_string="1.0.0"><![CDATA[<xf:if is="$forumStat.position == 'left'">
+    <div class="js-forumStatsSidebar">
+</xf:if>
+
+{$forumStat.render()|raw}
+
+<xf:if is="$forumStat.position == 'left'">
+    </div>
+</xf:if>]]></template>
+  <template type="public" title="af_forumstats_stats" version_id="1070370" version_string="1.7.3"><![CDATA[<xf:css src="af_forumstats_stats.less" />
+
+<xf:css>
+	.forumStatsContainer .unit-replies .miniCol::after
+	{
+	content: "{{ phrase('af_forumstats_unit.replies') }}";
+	}
+	.forumStatsContainer .unit-views .miniCol::after
+	{
+	content: "{{ phrase('af_forumstats_unit.views') }}";
+	}
+	.forumStatsContainer .unit-likes .miniCol::after
+	{
+	content: "{{ phrase('af_forumstats_unit.likes') }}";
+	}
+	.forumStatsContainer .unit-posts .miniCol::after
+	{
+	content: "{{ phrase('af_forumstats_unit.posts') }}";
+	}
+	.forumStatsContainer .unit-threads .miniCol::after
+	{
+	content: "{{ phrase('af_forumstats_unit.threads') }}";
+	}
+	.forumStatsContainer .unit-score .miniCol::after
+	{
+	content: "{{ phrase('af_forumstats_unit.score') }}";
+	}
+
+	.forumStats-sidebar
+	{
+	width: {$xf.options.af_forumstats_left_width}%;
+	}
+	.forumStats-main
+	{
+	width: {$xf.options.af_forumstats_main_width}%;
+	}
+</xf:css>
+
+<xf:if is="$xf.options.af_forumstats_invert_columns">
+	<xf:css>
+		.forumStats-sidebar
+		{
+		-webkit-box-ordinal-group:3;
+		-ms-flex-order:2;
+		order:2;
+		}
+		.forumStats-main
+		{
+		-webkit-box-ordinal-group:2;
+		-ms-flex-order:1;
+		order:1;
+		}
+	</xf:css>
+</xf:if>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<xf:js>
+	!function($, window, document)
+	{
+	"use strict";
+
+	XF.ForumStatsClick = XF.Event.newHandler({
+	eventNameSpace: 'XFForumStatsClick',
+
+	options: {
+	container: '.forumStatsContainer',
+	target: '.js-forumStatsSidebar',
+	href: null,
+	menuTrigger: '#forumStats-left-menu-trigger'
+	},
+
+	loaderTarget: null,
+	container: null,
+	href: null,
+	loading: false,
+
+	init() {
+	const containerSelector = this.options.container;
+	const container = containerSelector ? this.target.closest(containerSelector) : this.target;
+
+	this.container = container;
+
+	const targetSelector = this.options.target;
+	const target = targetSelector ? XF.findRelativeIf(targetSelector, this.container) : container;
+
+	if (target) {
+	this.loaderTarget = target;
+	} else {
+	console.error('No loader target for', this.target);
+	return;
+	}
+
+	this.href = this.options.href || this.target.getAttribute('href');
+
+	if (!this.href) {
+	console.error('No href for', this.target);
+	}
+	},
+
+	click(e) {
+
+	e.preventDefault();
+
+	if (this.loading) {
+	return;
+	}
+
+	this.loading = true;
+
+	const $clicked = $(this.target);
+	const animate = $clicked.data('animate-replace');
+	$clicked.addClass('is-selected')
+	.siblings()
+	.removeClass('is-selected');
+
+	$(this.options.menuTrigger).html($clicked.data('title'));
+
+	XF.ajax('get', this.href, null)
+	.then(response => {
+	const { data } = response;
+
+	if (data.html) {
+	if (animate === 'true' || animate === true) {
+	$('.js-forumStatsSidebar').slideUp(500, () => {
+	XF.setupHtmlInsert(data.html, html => {
+	$('.js-forumStatsSidebar').html(html).fadeIn(500);
+	});
+	});
+	} else {
+	XF.setupHtmlInsert(data.html, html => {
+	$('.js-forumStatsSidebar').html(html);
+	});
+	}
+	}
+	})
+	.finally(() => { this.loading = false });
+	}
+	});
+
+	$('.forumStats-left-menu').on('click', '[data-menu-closer]', function(e) {
+	var $this = $(this);
+
+	$this.addClass('is-selected').siblings().removeClass('is-selected');
+	$('#forumStats-left-menu-trigger').html($this.data('title'));
+	});
+
+	var refreshDelay = {$xf.options.af_forumstats_refreshTime};
+	var autoRefreshInterval;
+
+	$(function() {
+	if ($('.forumStatsContainer').hasClass('forumStats-shown'))
+	{
+	checkAutoRefresh();
+	}
+	});
+
+	var checkAutoRefresh = function()
+	{
+	var checked = $('.js-forumStats-autoRefresh').is(':checked');
+
+	if (checked)
+	{
+	resetAutoRefreshTimer();
+	}
+	else
+	{
+	clearAutoRefreshTimer();
+	}
+
+	XF.Cookie.set('forumstats_autorefresh', checked ? 1 : 0);
+	}
+
+	var clearAutoRefreshTimer = function()
+	{
+	if (autoRefreshInterval)
+	{
+	clearInterval(autoRefreshInterval);
+	}
+	}
+
+	var resetAutoRefreshTimer = function()
+	{
+	clearAutoRefreshTimer();
+	autoRefreshInterval = setInterval(refresh, refreshDelay * 1000);
+	}
+
+	var refresh = function() {
+	const $tabContainer = $('.forumStats-main .tabs').first();
+	const $panes = $('.forumStats-main .tabPanes').children();
+	const $activePane = $panes.filter('.is-active');
+
+	if ($activePane.length) {
+	const href = $activePane.data('href-initial');
+
+	$('.tooltip.tooltip--preview').hide();
+
+	XF.ajax('get', href, {}, function(data) {
+	if (data.html) {
+	XF.setupHtmlInsert(data.html, function($html) {
+	$activePane.html($html);
+	});
+	}
+	});
+	}
+	};
+
+	$('.refreshNow').on('click', function(e) {
+	e.preventDefault();
+	checkAutoRefresh();
+	refresh();
+	});
+
+	$('.js-forumStats-autoRefresh').on('change', function() {
+	checkAutoRefresh();
+	});
+
+	$('.hideForumStats').on('click', function(e) {
+	e.preventDefault();
+	$('.forumStatsContainer').removeClass('forumStats-shown').addClass('forumStats-hidden');
+	clearAutoRefreshTimer();
+	XF.Cookie.set('forumstats_show', 0);
+	});
+
+	$('.showForumStats').on('click', function(e) {
+	e.preventDefault();
+	$('.forumStatsContainer').removeClass('forumStats-hidden').addClass('forumStats-shown');
+	checkAutoRefresh();
+	refresh();
+	XF.Cookie.set('forumstats_show', 1);
+	});
+
+	XF.Event.register('click','forum-stats', 'XF.ForumStatsClick');
+	}
+	(jQuery, window, document);
+</xf:js>
+
+<xf:set var="$showStats" value="{{ $xf.request.getCookie('forumstats_show') !== false ? $xf.request.getCookie('forumstats_show') : true }}" />
+
+<div class="forumStatsContainer {{ $showStats ? 'forumStats-shown' : 'forumStats-hidden' }} {{ $xf.options.af_forumstats_mini_mode.enabled ? 'forumStats-mini' : '' }} {{ ($xf.options.af_forumstats_mini_mode.enabled AND $xf.options.af_forumstats_mini_mode.size) ? 'forumStats-mini-' . $xf.options.af_forumstats_mini_mode.size : '' }}">
+
+	<xf:if is="$forumStats.positions.left && $xf.options.af_forumstats_left_width > 0">
+		<xf:set var="$first" value="{$forumStats.first.left}" />
+		<div class="block forumStats-sidebar forumStats-shown">
+			<div class="block-container" style="">
+				<div class="tabs--standalone">
+
+					<a class="menuTrigger"
+					   id="forumStats-left-menu-trigger"
+					   data-xf-click="menu"
+					   role="button"
+					   tabindex="0"
+					   aria-expanded="false"
+					   aria-haspopup="true">{$first.title}</a>
+
+					<xf:set var="$counter" value="1" />
+
+					<div class="menu forumStats-left-menu" data-menu="menu" aria-hidden="true">
+						<div class="menu-content u-jsOnly">
+							<xf:foreach loop="$forumStats.positions.left" key="$stat_id" value="$forumStat">
+								<a class="menu-linkRow {{ $counter == 1 ? 'is-selected' : '' }}" href="{{ link('forum-stats/results', $forumStat) }}"
+								   data-animate-replace="{{ $xf.options.af_forumstats_left_animate ? 'true' : 'false' }}"
+								   data-xf-click="forum-stats"
+								   rel="nofollow"
+								   data-menu-closer="true"
+								   data-replace=".js-forumStatsSidebar"
+								   data-title="{$forumStat.title}">
+									{$forumStat.title}
+								</a>
+								<xf:set var="$counter" value="{{ $counter + 1 }}" />
+							</xf:foreach>
+						</div>
+					</div>
+				</div>
+
+				<xf:include template="af_forumstats_results">
+					<xf:set var="$forumStat" value="{$first}" />
+				</xf:include>
+
+			</div>
+
+		</div>
+	</xf:if>
+
+
+	<xf:if is="$forumStats.positions.main && $xf.options.af_forumstats_main_width > 0">
+		<xf:set var="$first" value="{$forumStats.first.main}" />
+		<div class="forumStats-main forumStats-shown">
+
+			<xf:set var="$counter" value="1" />
+
+			<div class="tabs tabs--standalone" data-xf-init="tabs" role="tablist" style="margin-bottom: 0;">
+				<div class="hScroller" data-xf-init="h-scroller">
+					<span class="hScroller-scroll">
+						<xf:foreach loop="$forumStats.positions.main" key="$stat_id" value="$forumStat">
+							<a class="tabs-tab forumStats-main-tab {{ $counter == 1 ? 'is-active' : '' }}" role="tab" tabindex="0" aria-controls="forumstats-{$stat_id}">{$forumStat.title}</a>
+							<xf:set var="$counter" value="{{ $counter + 1 }}" />
+						</xf:foreach>
+					</span>
+				</div>
+			</div>
+
+			<xf:set var="$counter" value="1" />
+
+			<ul class="tabPanes block-container">
+				<xf:foreach loop="$forumStats.positions.main" key="$stat_id" value="$forumStat">
+					<xf:if is="$counter == 1">
+						<li class="is-active" role="tabpanel" id="forumstats-{$stat_id}" data-href-initial="{{ link('forum-stats/results', $forumStat) }}">
+							<xf:include template="af_forumstats_results">
+								<xf:set var="$forumStat" value="{$first}" />
+							</xf:include>
+						</li>
+						<xf:else />
+						<li class="" role="tabpanel" id="forumstats-{$stat_id}" data-href="{{ link('forum-stats/results', $forumStat) }}" data-href-initial="{{ link('forum-stats/results', $forumStat) }}">
+							<div class="block-body block-row">{{ phrase('loading...') }}</div>
+						</li>
+					</xf:if>
+					<xf:set var="$counter" value="{{ $counter + 1 }}" />
+				</xf:foreach>
+			</ul>
+
+		</div>
+	</xf:if>
+
+	<div class="block-container forumStats-footer">
+		<div class="block-footer">
+			<div class="forumStats-shown">
+				<xf:checkbox standalone="true">
+					<xf:option value="1"
+							   selected="{{ $xf.request.getCookie('forumstats_autorefresh') !== false ? $xf.request.getCookie('forumstats_autorefresh') : true }}"
+							   class="js-forumStats-autoRefresh">
+						<xf:label>{{ phrase('af_forumstats_autoRefresh') }} ({{ phrase('af_forumstats_x_seconds', {'count': number($xf.options.af_forumstats_refreshTime)}) }})</xf:label>
+					</xf:option>
+				</xf:checkbox>
+				<a class="hideForumStats"><xf:fa icon="fa-minus" /> {{ phrase('af_forumstats_hideStats') }}</a>
+				<a class="refreshNow"><xf:fa icon="fa-sync" /> {{ phrase('af_forumstats_refreshNow') }}</a>
+			</div>
+			<div class="forumStats-hidden">
+				<a class="showForumStats"><xf:fa icon="fa-plus" /> {{ phrase('af_forumstats_showStats') }}</a>
+			</div>
+		</div>
+	</div>
+
+
+</div>]]></template>
+  <template type="public" title="af_forumstats_stats.less" version_id="1070170" version_string="1.7.1"><![CDATA[.forumStatsContainer
+{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-align: stretch;
+        -ms-flex-align: stretch;
+            align-items: stretch;
+    -ms-flex-line-pack: stretch;
+        align-content: stretch;
+    margin-bottom: 10px;
+
+    a
+    {
+        cursor: pointer;
+    }
+
+    // like 2.0.x
+    .avatar
+    {
+        &.avatar--default
+        {
+            &.avatar--default--dynamic,
+            &.avatar--default--text
+            {
+                // converts our avatar sized LH to a font sized version which adapts based solely on font-size
+                line-height: (@xf-avatarDynamicLineHeight) / ((@xf-avatarDynamicTextPercent) / 100);
+            }
+        }
+    }
+
+    .dataList-cell--forumStats-counter
+    {
+        color: @xf-afForumStatsCounterColor;
+    }
+}
+
+.forumStats-sidebar
+{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    width: 20%;
+    margin-bottom: 0;
+    /* flex: 1;*/
+
+    -webkit-box-ordinal-group:2;
+        -ms-flex-order:1;
+            order:1;
+
+    .block-minorHeader
+    {
+        .xf-contentAltBase();
+        border-bottom-color: @xf-borderColorHeavy;
+        border-bottom-width: @xf-borderSize;
+        border-bottom-style: solid;
+    }
+
+    .tabs--standalone
+    {
+        padding: 6px 10px 6px;
+        margin-bottom: 0;
+        border-top-right-radius: 0 !important;
+        border-left: 0;
+        border-right: 0;
+    }
+
+    .block-container
+    {
+        -webkit-box-flex: 1;
+            -ms-flex: 1 0 auto;
+                flex: 1 0 auto;
+        border-top: 0;
+        border-right: 0;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    .block-body.block-row
+    {
+    }
+
+    a
+    {
+        font-size: @xf-fontSizeNormal;
+    }
+
+    // fix main width for sidebar
+    .dataList-cell.dataList-cell--main
+    {
+        min-width: initial;
+    }
+}
+.forumStats-main
+{
+    width: 80%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+
+    -webkit-box-ordinal-group:3;
+        -ms-flex-order:2;
+            order:2;
+
+    .block-container
+    {
+        -webkit-box-flex: 1;
+            -ms-flex: 1 0 auto;
+                flex: 1 0 auto;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        border-top: 0;
+    }
+
+    .dataList
+    {
+        overflow-x: auto;
+    }
+}
+
+.forumStats-footer
+{
+    text-align: center;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    -webkit-transition: none;
+    transition: none;
+
+    -webkit-box-ordinal-group:4;
+        -ms-flex-order:3;
+            order:3;
+}
+
+// fix for some styles that push the auto-refresh input into the next row
+.forumStats-shown > .iconic
+{
+    width: auto !important;
+}
+
+.forumStatsContainer.forumStats-shown .forumStats-footer
+{
+    border-top: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.refreshNow
+{
+    float: right;
+}
+
+.hideForumStats, .showForumStats
+{
+    float: left;
+}
+
+.forumStatsContainer
+{
+    &.forumStats-shown
+    {
+        .forumStats-hidden
+        {
+            display: none;
+        }
+    }
+    &.forumStats-hidden
+    {
+        margin-bottom: 5px;
+
+        .forumStats-shown
+        {
+            display: none;
+        }
+    }
+}
+
+// mini mode stuff
+@af-fs-avatar-mini-1: @avatar-xxs; // same as XXS
+@af-fs-avatar-mini-2: (@_avatarBaseSize) / 5;
+@af-fs-avatar-mini-3: (@_avatarBaseSize) / 6;
+
+.forumStatsContainer.forumStats-mini
+{
+    .dataList-cell
+    {
+        padding: 0 3px;
+
+        &.dataList-cell--action,
+        &.dataList-cell--link
+        {
+            padding: 0 3px;
+
+            a,
+            label,
+            .dataList-blockLink
+            {
+                padding: 0;
+            }
+        }
+    }
+
+    .forumStats-main
+    {
+        .dataList-cell
+        {
+            &.dataList-cell--alt,
+            &.dataList-cell--link
+            {
+                .m-overflowEllipsis();
+                max-width: 175px;
+            }
+        }
+    }
+
+    .forumStats-sidebar
+    {
+        .dataList-cell
+        {
+            &.dataList-cell--alt,
+            &.dataList-cell--link
+            {
+                .m-overflowEllipsis();
+                max-width: 100px;
+            }
+        }
+    }
+
+    // default
+    .dataList-cell.dataList-cell--imageSmall .avatar,
+    .dataList-cell.dataList-cell--imageSmall .avatar > img
+    {
+
+		    width: 24px;
+			height: 24px;
+			font-size: 14px;
+    }
+
+    &.forumStats-mini-2
+    {
+        .dataList-cell.dataList-cell--imageSmall .avatar,
+        .dataList-cell.dataList-cell--imageSmall .avatar > img
+        {
+
+			    width: 19.2px;
+				height: 19.2px;
+				font-size: 12px;
+
+        }
+    }
+    &.forumStats-mini-3
+    {
+        .dataList-cell.dataList-cell--imageSmall .avatar,
+        .dataList-cell.dataList-cell--imageSmall .avatar > img
+        {
+                width: 16px;
+				height: 16px;
+				font-size: 10px;
+        }
+    }
+}
+
+@media (max-width: @xf-responsiveWide)
+{
+    .forumStatsContainer
+    {
+        display: block !important;
+    }
+    .forumStats-sidebar
+    {
+        display: none !important;
+    }
+    .forumStats-main
+    {
+        width: 100% !important;
+    }
+}
+
+
+@media (max-width: @xf-responsiveEdgeSpacerRemoval)
+{
+    .forumStatsContainer .tabPanes
+    {
+        margin-left: -@xf-pageEdgeSpacer;
+        margin-right: -@xf-pageEdgeSpacer;
+    }
+    .forumStatsContainer .forumStats-sidebar .tabs--standalone
+    {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+@media (max-width: @xf-responsiveNarrow)
+{
+    .forumStatsContainer .miniCol
+    {
+        // width: 100px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 11px;
+    }
+}]]></template>
+  <template type="public" title="af_forumstats_top_resources" version_id="1050170" version_string="1.5.1"><![CDATA[<div class="block-body">
+    <xf:if is="$resources is not empty">
+        <xf:datalist data-xf-init="">
+            <xf:foreach loop="$resources" value="$resource" i="$i">
+
+                <xf:datarow>
+                    <xf:if is="$options.show_counter">
+                        <xf:cell class="dataList-cell--min dataList-cell--alt dataList-cell--forumStats-counter">
+                            {$i|number}
+                        </xf:cell>
+                    </xf:if>
+                    <xf:if is="$xf.options.xfrmAllowIcons">
+                        <xf:cell
+                            class="dataList-cell--min dataList-cell--alt dataList-cell--image dataList-cell--imageSmall"
+                            href="{{ link('resources', $resource) }}">
+                            {{ resource_icon($resource, 'xxs', link('resources', $resource)) }}
+                        </xf:cell>
+                    <xf:else />
+                        <xf:cell
+                            class="dataList-cell--min dataList-cell--alt dataList-cell--image dataList-cell--imageSmall"
+                            href="{{ link('members', $resource.User) }}">
+                            <xf:avatar user="$resource.User" size="xxs" />
+                        </xf:cell>
+                    </xf:if>
+
+                    <xf:cell class="dataList-cell--main" href="{{ link('resources', $resource) }}">
+                        <div class="dataList-textRow">{{ $options.prefix ? prefix('resource', $resource,  $options.prefix) : '' }}{$resource.title}</div>
+                    </xf:cell>
+                    <xf:cell class="dataList-cell--min dataList-cell--alt">
+                        <div class="miniCol">
+                            <xf:date time="{$resource.last_update}" />
+                        </div>
+                    </xf:cell>
+                </xf:datarow>
+
+            </xf:foreach>
+        </xf:datalist>
+    <xf:else />
+        <div class="block-row">
+            {{ phrase('no_results_found') }}
+        </div>
+    </xf:if>
+</div>]]></template>
+  <template type="public" title="af_forumstats_top_thread_starters" version_id="1050170" version_string="1.5.1"><![CDATA[<div class="block-body">
+    <xf:if is="$users is not empty">
+        <xf:datalist data-xf-init="">
+            <xf:foreach loop="$users" value="$user" i="$i">
+
+                <xf:datarow>
+                    <xf:if is="$options.show_counter">
+                        <xf:cell class="dataList-cell--min dataList-cell--alt dataList-cell--forumStats-counter">
+                            {$i|number}
+                        </xf:cell>
+                    </xf:if>
+                    <xf:cell
+                        class="dataList-cell--min dataList-cell--image dataList-cell--imageSmall"
+                        href="{{ link('members', $user) }}">
+                        <xf:avatar user="$user" size="xxs" defaultname="{$user.username}" />
+                    </xf:cell>
+
+                    <xf:cell href="{{ link('members', $user) }}" class="dataList-cell--main dataList-cell--min">
+                        <xf:username user="$user" rich="{{ $options.rich_usernames ? 'true' : '' }}" notooltip="true" href="" />
+                    </xf:cell>
+
+                    <xf:cell class="dataList-cell--min dataList-cell--alt unit-threads">
+                        <div class="miniCol">
+                            {$threadCounts.{$user.user_id}|number}
+                        </div>
+                    </xf:cell>
+
+                </xf:datarow>
+
+            </xf:foreach>
+        </xf:datalist>
+    <xf:else />
+        <div class="block-row">
+            {{ phrase('no_results_found') }}
+        </div>
+    </xf:if>
+</div>]]></template>
+</templates>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="forum_list" modification_key="af_forumstats_forum_list_above" description="Insert stats (above)" execution_order="999" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:widgetpos id="forum_list_above_nodes" />]]></find>
+    <replace><![CDATA[$0
+{{ $xf.addonFlareForumStatsForumStatRepo ? $xf.addonFlareForumStatsForumStatRepo.renderForumStats('forum_list_above_nodes')|raw : null }}]]></replace>
+  </modification>
+  <modification type="public" template="forum_list" modification_key="af_forumstats_forum_list_below" description="Insert stats (below)" execution_order="999" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:widgetpos id="forum_list_below_nodes" />]]></find>
+    <replace><![CDATA[{{ $xf.addonFlareForumStatsForumStatRepo ? $xf.addonFlareForumStatsForumStatRepo.renderForumStats('forum_list_below_nodes')|raw : null }}
+$0]]></replace>
+  </modification>
+</template_modifications>

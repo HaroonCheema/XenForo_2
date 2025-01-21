@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="admin_navigation.af_forumstats" version_id="1000070" version_string="1.0.0"><![CDATA[Advanced Forum Stats]]></phrase>
+  <phrase title="admin_navigation.af_forumstats_config" version_id="1000070" version_string="1.0.0"><![CDATA[Configure Stats]]></phrase>
+  <phrase title="admin_navigation.af_forumstats_opt" version_id="1000070" version_string="1.0.0"><![CDATA[Options]]></phrase>
+  <phrase title="af_forumstats" version_id="1000070" version_string="1.0.0"><![CDATA[Advanced Forum Stats]]></phrase>
+  <phrase title="af_forumstats_active" version_id="1040070" version_string="1.4.0"><![CDATA[Active]]></phrase>
+  <phrase title="af_forumstats_add_stat" version_id="1000070" version_string="1.0.0"><![CDATA[Add Stat]]></phrase>
+  <phrase title="af_forumstats_autoRefresh" version_id="1000070" version_string="1.0.0"><![CDATA[Auto-refresh]]></phrase>
+  <phrase title="af_forumstats_choose_pos" version_id="1000070" version_string="1.0.0"><![CDATA[Choose Position]]></phrase>
+  <phrase title="af_forumstats_choose_type" version_id="1000070" version_string="1.0.0"><![CDATA[Choose Type]]></phrase>
+  <phrase title="af_forumstats_custom_title" version_id="1020070" version_string="1.2.0"><![CDATA[Custom Title]]></phrase>
+  <phrase title="af_forumstats_custom_title_explain" version_id="1020070" version_string="1.2.0"><![CDATA[If empty, the type name from above will be used]]></phrase>
+  <phrase title="af_forumstats_cutoff_days" version_id="1000070" version_string="1.0.0"><![CDATA[Cutoff Days]]></phrase>
+  <phrase title="af_forumstats_def.hottest_threads" version_id="1000070" version_string="1.0.0"><![CDATA[Hottest Threads]]></phrase>
+  <phrase title="af_forumstats_def.latest_forum_news" version_id="1000070" version_string="1.0.0"><![CDATA[Latest Forum News]]></phrase>
+  <phrase title="af_forumstats_def.most_liked_threads" version_id="1000070" version_string="1.0.0"><![CDATA[Most Liked Threads]]></phrase>
+  <phrase title="af_forumstats_def.most_liked_users" version_id="1040070" version_string="1.4.0"><![CDATA[Most Liked Users]]></phrase>
+  <phrase title="af_forumstats_def.most_popular_forums" version_id="1000070" version_string="1.0.0"><![CDATA[Most Popular Forums]]></phrase>
+  <phrase title="af_forumstats_def.most_reacted_threads" version_id="1050070" version_string="1.5.0"><![CDATA[Most Reacted Threads]]></phrase>
+  <phrase title="af_forumstats_def.most_reacted_users" version_id="1050070" version_string="1.5.0"><![CDATA[Most Reacted Users]]></phrase>
+  <phrase title="af_forumstats_def.most_viewed_threads" version_id="1000070" version_string="1.0.0"><![CDATA[Most Viewed Threads]]></phrase>
+  <phrase title="af_forumstats_def.new_members" version_id="1000070" version_string="1.0.0"><![CDATA[Latest Members]]></phrase>
+  <phrase title="af_forumstats_def.new_posts" version_id="1000070" version_string="1.0.0"><![CDATA[Latest Posts]]></phrase>
+  <phrase title="af_forumstats_def.new_resources" version_id="1000070" version_string="1.0.0"><![CDATA[New Resources]]></phrase>
+  <phrase title="af_forumstats_def.new_threads" version_id="1000070" version_string="1.0.0"><![CDATA[Latest Threads]]></phrase>
+  <phrase title="af_forumstats_def.top_resources" version_id="1000070" version_string="1.0.0"><![CDATA[Top Resources]]></phrase>
+  <phrase title="af_forumstats_def.top_thread_starters" version_id="1000070" version_string="1.0.0"><![CDATA[Top Thread Starters]]></phrase>
+  <phrase title="af_forumstats_edit_stat" version_id="1000070" version_string="1.0.0"><![CDATA[Edit Stat]]></phrase>
+  <phrase title="af_forumstats_excluded_forums" version_id="1000070" version_string="1.0.0"><![CDATA[Excluded Forums]]></phrase>
+  <phrase title="af_forumstats_excluded_forums_explain" version_id="1000070" version_string="1.0.0"><![CDATA[These forums will always be excluded (overrides the setting above)]]></phrase>
+  <phrase title="af_forumstats_hideStats" version_id="1000070" version_string="1.0.0"><![CDATA[Hide Stats]]></phrase>
+  <phrase title="af_forumstats_ignore_view_perms" version_id="1040070" version_string="1.4.0"><![CDATA[Ignore user view permissions]]></phrase>
+  <phrase title="af_forumstats_include_closed" version_id="1000070" version_string="1.0.0"><![CDATA[Include Closed]]></phrase>
+  <phrase title="af_forumstats_include_closed_explain" version_id="1000070" version_string="1.0.0"><![CDATA[Include closed threads?]]></phrase>
+  <phrase title="af_forumstats_included_forums" version_id="1000070" version_string="1.0.0"><![CDATA[Included Forums]]></phrase>
+  <phrase title="af_forumstats_mini_mode_explain" version_id="1040070" version_string="1.4.0"><![CDATA[Use a more compact version that takes up less space]]></phrase>
+  <phrase title="af_forumstats_new_posts_cutoff_explain" version_id="1040070" version_string="1.4.0"><![CDATA[If 0, the <a href="admin.php?options/groups/discussionOptions/">Read marking data lifetime</a> option value will be used]]></phrase>
+  <phrase title="af_forumstats_position" version_id="1000070" version_string="1.0.0"><![CDATA[Position]]></phrase>
+  <phrase title="af_forumstats_refreshNow" version_id="1000070" version_string="1.0.0"><![CDATA[Refresh Now]]></phrase>
+  <phrase title="af_forumstats_rich_usernames" version_id="1010070" version_string="1.1.0"><![CDATA[Rich Usernames]]></phrase>
+  <phrase title="af_forumstats_showStats" version_id="1000070" version_string="1.0.0"><![CDATA[Show Stats]]></phrase>
+  <phrase title="af_forumstats_show_counter" version_id="1050170" version_string="1.5.1"><![CDATA[Show counter]]></phrase>
+  <phrase title="af_forumstats_show_forum_title" version_id="1050070" version_string="1.5.0"><![CDATA[Show forum title]]></phrase>
+  <phrase title="af_forumstats_show_last_poster" version_id="1050170" version_string="1.5.1"><![CDATA[Show last poster]]></phrase>
+  <phrase title="af_forumstats_small" version_id="1040070" version_string="1.4.0"><![CDATA[Small]]></phrase>
+  <phrase title="af_forumstats_smaller" version_id="1040070" version_string="1.4.0"><![CDATA[Smaller]]></phrase>
+  <phrase title="af_forumstats_smallest" version_id="1040070" version_string="1.4.0"><![CDATA[Smallest]]></phrase>
+  <phrase title="af_forumstats_stat" version_id="1000070" version_string="1.0.0"><![CDATA[Stat]]></phrase>
+  <phrase title="af_forumstats_thread_prefix" version_id="1000070" version_string="1.0.0"><![CDATA[Thread Prefix]]></phrase>
+  <phrase title="af_forumstats_type" version_id="1000070" version_string="1.0.0"><![CDATA[Type]]></phrase>
+  <phrase title="af_forumstats_unit.likes" version_id="1000070" version_string="1.0.0"><![CDATA[Likes]]></phrase>
+  <phrase title="af_forumstats_unit.posts" version_id="1000070" version_string="1.0.0"><![CDATA[Posts]]></phrase>
+  <phrase title="af_forumstats_unit.replies" version_id="1000070" version_string="1.0.0"><![CDATA[Replies]]></phrase>
+  <phrase title="af_forumstats_unit.score" version_id="1040070" version_string="1.4.0"><![CDATA[Score]]></phrase>
+  <phrase title="af_forumstats_unit.threads" version_id="1000070" version_string="1.0.0"><![CDATA[Threads]]></phrase>
+  <phrase title="af_forumstats_unit.views" version_id="1000070" version_string="1.0.0"><![CDATA[Views]]></phrase>
+  <phrase title="af_forumstats_x_seconds" version_id="1000070" version_string="1.0.0"><![CDATA[{count}s]]></phrase>
+  <phrase title="af_forumstats_z" version_id="1050070" version_string="1.5.0"><![CDATA[No license found for add-on: (AJAX) Advanced Forum Stats. <br>Please <a href="https://www.addonflare.com/xenforo-2-addons/ajax-advanced-forum-stats.10/" rel="nofollow" target="_blank">purchase a license</a> or <a href="admin.php?add-ons/AddonFlare-ForumStats/uninstall" rel="nofollow" target="_blank">uninstall</a> the add-on.<br>
+If you have a valid license, please <a href="admin.php?add-ons/" rel="nofollow" target="_blank">disable</a> the add-on to remove this message and <a href="https://www.addonflare.com/licenses/" rel="nofollow" target="_blank">submit a support ticket</a>.]]></phrase>
+  <phrase title="option.af_forumstats_invert_columns" version_id="1020070" version_string="1.2.0"><![CDATA[Invert Columns]]></phrase>
+  <phrase title="option.af_forumstats_left_animate" version_id="1000070" version_string="1.0.0"><![CDATA[Animate Sidebar Data]]></phrase>
+  <phrase title="option.af_forumstats_left_width" version_id="1000070" version_string="1.0.0"><![CDATA[Sidebar Width %]]></phrase>
+  <phrase title="option.af_forumstats_main_width" version_id="1000070" version_string="1.0.0"><![CDATA[Main Content Width %]]></phrase>
+  <phrase title="option.af_forumstats_mini_mode" version_id="1040070" version_string="1.4.0"><![CDATA[Mini Mode]]></phrase>
+  <phrase title="option.af_forumstats_position" version_id="1000070" version_string="1.0.0"><![CDATA[Position]]></phrase>
+  <phrase title="option.af_forumstats_refreshTime" version_id="1000070" version_string="1.0.0"><![CDATA[Refresh Time (In seconds)]]></phrase>
+  <phrase title="option.af_forumstats_ugs_allowed" version_id="1000070" version_string="1.0.0"><![CDATA[Usergroups Allowed]]></phrase>
+  <phrase title="option_explain.af_forumstats_invert_columns" version_id="1020070" version_string="1.2.0"><![CDATA[Invert the positions of the left/main columns]]></phrase>
+  <phrase title="option_explain.af_forumstats_left_animate" version_id="1000070" version_string="1.0.0"><![CDATA[]]></phrase>
+  <phrase title="option_explain.af_forumstats_left_width" version_id="1000070" version_string="1.0.0"><![CDATA[Note: Sidebar width + Main Content width <b>must</b> equal 100<br>
+Set 0 to disable (Main Content should be 100 if this is disabled)]]></phrase>
+  <phrase title="option_explain.af_forumstats_main_width" version_id="1000070" version_string="1.0.0"><![CDATA[Note: Sidebar width + Main Content width <b>must</b> equal 100<br>
+Set 0 to disable (Sidebar should be 100 if this is disabled)]]></phrase>
+  <phrase title="option_explain.af_forumstats_mini_mode" version_id="1040070" version_string="1.4.0"><![CDATA[]]></phrase>
+  <phrase title="option_explain.af_forumstats_position" version_id="1000070" version_string="1.0.0"><![CDATA[If you want to display the stats in a custom location, add the following code to the template:
+<textarea class="input input--fitHeight" rows="3" readonly="readonly" data-xf-init="textarea-handler">{{ $xf.addonFlareForumStatsForumStatRepo ? $xf.addonFlareForumStatsForumStatRepo.renderForumStats()|raw : null }}</textarea>
+Note: Selecting "None" for this setting will allow displaying in custom locations with the code above]]></phrase>
+  <phrase title="option_explain.af_forumstats_refreshTime" version_id="1000070" version_string="1.0.0"><![CDATA[Note: Setting this too low may affect performance]]></phrase>
+  <phrase title="option_explain.af_forumstats_ugs_allowed" version_id="1000070" version_string="1.0.0"><![CDATA[]]></phrase>
+  <phrase title="option_group.af_forumstats" version_id="1030070" version_string="1.3.0"><![CDATA[[AddonFlare] (AJAX) Advanced Forum Stats]]></phrase>
+  <phrase title="option_group_description.af_forumstats" version_id="1000070" version_string="1.0.0"><![CDATA[]]></phrase>
+  <phrase title="style_prop.afForumStatsCounterColor" version_id="1070070" version_string="1.7.0"><![CDATA[Counter: color]]></phrase>
+  <phrase title="style_prop_desc.afForumStatsCounterColor" version_id="1070070" version_string="1.7.0"><![CDATA[]]></phrase>
+  <phrase title="style_prop_group.af_forumstats" version_id="1070070" version_string="1.7.0"><![CDATA[[AddonFlare] AJAX Advanced Forum Stats]]></phrase>
+  <phrase title="style_prop_group_desc.af_forumstats" version_id="1070070" version_string="1.7.0"><![CDATA[A number of properties to control the appearance of the AJAX Advanced Forum Stats add-on]]></phrase>
+</phrases>

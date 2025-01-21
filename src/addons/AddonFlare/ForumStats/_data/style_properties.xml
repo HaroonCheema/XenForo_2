@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style_properties>
+  <style_property property_name="afForumStatsCounterColor" group_name="af_forumstats" title="Counter: color" property_type="value" value_type="color" has_variations="0" display_order="100">
+    <value>"@xf-textColorAccentContent"</value>
+  </style_property>
+</style_properties>

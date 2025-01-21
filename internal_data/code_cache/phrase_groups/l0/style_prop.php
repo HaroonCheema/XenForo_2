@@ -10,6 +10,7 @@ return array (
   'style_prop.FTSlider_title_detail' => 'Hide User and Time',
   'style_prop.FTSlider_title_infoblock' => 'Hide Info Block (Avatar, User, Time and Counts)',
   'style_prop.FTSlider_titlefont' => 'Featured Thread Title Font',
+  'style_prop.afForumStatsCounterColor' => 'Counter: color',
   'style_prop.animationSpeed' => 'Base animation speed',
   'style_prop.avatarBg' => 'Avatar background color',
   'style_prop.avatarBorderRadius' => 'Avatar border radius',

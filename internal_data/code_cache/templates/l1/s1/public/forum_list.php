@@ -230,10 +230,12 @@ return array(
 		$__finalCompiled .= '
 
 ' . $__templater->widgetPosition('forum_list_above_nodes', array()) . '
+' . ($__vars['xf']['addonFlareForumStatsForumStatRepo'] ? $__templater->filter($__templater->method($__vars['xf']['addonFlareForumStatsForumStatRepo'], 'renderForumStats', array('forum_list_above_nodes', )), array(array('raw', array()),), true) : null) . '
 ' . $__templater->callMacro(null, 'node_list', array(
 			'children' => $__vars['nodeTree'],
 			'extras' => $__vars['nodeExtras'],
 		), $__vars) . '
+' . ($__vars['xf']['addonFlareForumStatsForumStatRepo'] ? $__templater->filter($__templater->method($__vars['xf']['addonFlareForumStatsForumStatRepo'], 'renderForumStats', array('forum_list_below_nodes', )), array(array('raw', array()),), true) : null) . '
 ' . $__templater->widgetPosition('forum_list_below_nodes', array()) . '
 
 ';

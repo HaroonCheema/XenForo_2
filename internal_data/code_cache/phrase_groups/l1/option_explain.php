@@ -109,6 +109,18 @@ Note: Users can decide to opt-in/opt-out of receiving the activity summary email
   'option_explain.addBanUserGroup' => 'When a user is banned, they can be added to a specific user group while the ban is active. This allows overrides to their user group styling, for example.',
   'option_explain.adminRequireTfa' => 'If enabled, admins will not be able to access the control panel until they have activated two-step verification. This will not affect users currently logged into the control panel until their next login.',
   'option_explain.adsDisallowedTemplates' => 'You may want to prevent all ads from showing within certain templates, such as errors or other pages that may be against your ad provider\'s ToS. List them above.',
+  'option_explain.af_forumstats_invert_columns' => 'Invert the positions of the left/main columns',
+  'option_explain.af_forumstats_left_animate' => '',
+  'option_explain.af_forumstats_left_width' => 'Note: Sidebar width + Main Content width <b>must</b> equal 100<br>
+Set 0 to disable (Main Content should be 100 if this is disabled)',
+  'option_explain.af_forumstats_main_width' => 'Note: Sidebar width + Main Content width <b>must</b> equal 100<br>
+Set 0 to disable (Sidebar should be 100 if this is disabled)',
+  'option_explain.af_forumstats_mini_mode' => '',
+  'option_explain.af_forumstats_position' => 'If you want to display the stats in a custom location, add the following code to the template:
+<textarea class="input input--fitHeight" rows="3" readonly="readonly" data-xf-init="textarea-handler">{{ $xf.addonFlareForumStatsForumStatRepo ? $xf.addonFlareForumStatsForumStatRepo.renderForumStats()|raw : null }}</textarea>
+Note: Selecting "None" for this setting will allow displaying in custom locations with the code above',
+  'option_explain.af_forumstats_refreshTime' => 'Note: Setting this too low may affect performance',
+  'option_explain.af_forumstats_ugs_allowed' => '',
   'option_explain.akismetKey' => '<a href="https://akismet.com/signup/" target="_blank">Akismet</a> is a service that scans comments and determines if they are spam. If you enter an Akismet API key here, user messages will be checked for spam. You can sign up for an API key via their site. If Akismet determines a message is spam, it will have to be manually approved before being displayed.',
   'option_explain.alertExpiryDays' => 'User alerts will disappear from the alerts list this many days after being viewed. Unviewed alerts will automatically expire after 30 days.',
   'option_explain.alertsPerPage' => 'Controls how many alerts are shown on each page of users\' full alert list.',
