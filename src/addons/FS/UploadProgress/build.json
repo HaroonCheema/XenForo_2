@@ -1,0 +1,6 @@
+{
+  "additional_files": ["js/fs/attachment_manager.js"],
+  "exec": [
+    "echo '{title} version {version_string} ({version_id}) has been built successfully!' > 'src/addons/FS/UploadProgress/_build/built.txt'"
+  ]
+}

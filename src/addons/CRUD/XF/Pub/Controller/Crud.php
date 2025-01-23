@@ -633,6 +633,18 @@ class Crud extends AbstractController
     public function actionIndex(ParameterBag $params)
     {
 
+        // \XF[addonFlareForumStatsForumStatRepo]->renderForumStats('forum_list_above_nodes');
+
+        // $app->repository('AddonFlare\ForumStats:ForumStat')
+
+        // $app = \XF::app();
+
+        // $app->repository('AddonFlare\ForumStats:ForumStat')->renderForumStats('forum_list_above_nodes');
+
+        // echo "<pre>";
+        // var_dump("Hello world");
+        // exit;
+
         // $options = \XF::options();
 
         // $excludeForumIds = \XF::options()->fs_thread_scoring_system_exc_forms;

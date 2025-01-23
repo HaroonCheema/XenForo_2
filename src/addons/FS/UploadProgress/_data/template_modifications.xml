@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="helper_attach_upload" modification_key="new_attach_js" description="add new attachment js" execution_order="9" enabled="1" action="preg_replace">
+    <find><![CDATA[#<xf:js prod="xf\/attachment_manager-compiled.js"[^>]*?\/>#i]]></find>
+    <replace><![CDATA[<xf:css src="porgress.less" />	
+
+<xf:js src="fs/attachment_manager.js" />
+<xf:js src="vendor/flow.js/flow-compiled.js" />]]></replace>
+  </modification>
+</template_modifications>

@@ -15,9 +15,17 @@ return array(
 	$__finalCompiled .= '
 
 	';
+	$__templater->includeCss('porgress.less');
+	$__finalCompiled .= '	
+
+';
 	$__templater->includeJs(array(
-		'prod' => 'xf/attachment_manager-compiled.js',
-		'dev' => 'vendor/flow.js/flow-compiled.js, xf/attachment_manager.js',
+		'src' => 'fs/attachment_manager.js',
+	));
+	$__finalCompiled .= '
+';
+	$__templater->includeJs(array(
+		'src' => 'vendor/flow.js/flow-compiled.js',
 	));
 	$__finalCompiled .= '
 

@@ -1,0 +1,9 @@
+{
+    "template": "helper_attach_upload",
+    "description": "add new attachment js",
+    "execution_order": 9,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "#<xf:js prod=\"xf\\/attachment_manager-compiled.js\"[^>]*?\\/>#i",
+    "replace": "<xf:css src=\"porgress.less\" />\t\n\n<xf:js src=\"fs/attachment_manager.js\" />\n<xf:js src=\"vendor/flow.js/flow-compiled.js\" />"
+}

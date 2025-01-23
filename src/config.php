@@ -19,5 +19,5 @@ $config['enableLivePayments'] = false;
 
 $config['debug'] = true;
 
-$config['development']['defaultAddOn'] = 'FS/ThreadRelaceLinks';
+$config['development']['defaultAddOn'] = 'FS/UploadProgress';
 $config['development']['enabled'] = true;

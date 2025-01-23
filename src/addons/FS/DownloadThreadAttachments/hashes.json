@@ -1,5 +1,5 @@
 {
-    "src/addons/FS/DownloadThreadAttachments/addon.json": "9cdd7fc85079a65c5869de65552b8a078421bcb511da6bbf5b6e7e5931010952",
+    "src/addons/FS/DownloadThreadAttachments/addon.json": "db6526bffd89fa6416deeb3c8cbc40a97d3b789607a320be4612dce01b651edc",
     "src/addons/FS/DownloadThreadAttachments/Cron/DownloadSizeLimit.php": "2828b0bec0403491a7324684bbe41c3b6d1f703a62939e498714b1a61d3aa887",
     "src/addons/FS/DownloadThreadAttachments/Helper.php": "301f7ad0822185e77ed168d1a7237ac36d4431366168403d575efd0e98b75068",
     "src/addons/FS/DownloadThreadAttachments/Setup.php": "11ad0f60c97cc453201b70228b66a55b0dd3a1dc3a7f5b7fb8e046b9a5d18ba7",
@@ -7,7 +7,7 @@
     "src/addons/FS/DownloadThreadAttachments/XF/Entity/Thread.php": "49cc70a1ddd4509d0b948ac459aafa902cd271c785f31879a882deff16e33ee0",
     "src/addons/FS/DownloadThreadAttachments/XF/Entity/User.php": "38678ec5afcc9bac28a9202b4920daf66df1d04850435f39a6c98dbe97732586",
     "src/addons/FS/DownloadThreadAttachments/XF/Entity/UserGroup.php": "161ecc0e45c55ef7c4d24f88e1074036d7cd31e3f702f79f307807cc0befb708",
-    "src/addons/FS/DownloadThreadAttachments/XF/Pub/Controller/Post.php": "f3d3ddc931c9cd44111111b2b533f3768b13065c6ce3e58f1136047db1963872",
+    "src/addons/FS/DownloadThreadAttachments/XF/Pub/Controller/Post.php": "f2f5baa0d5c0f4e110fcf3d11d401a0c25c1244b2f09692df6c8ba9204ae8d20",
     "src/addons/FS/DownloadThreadAttachments/XF/Pub/Controller/Thread.php": "d358bea5b952f97c0e3547ceffc77510ef3a8e1ad365fe1523bc9a92ee1dfbd4",
     "src/addons/FS/DownloadThreadAttachments/XF/Pub/Views/DownloadZip.php": "ca500b09f5bd7ad66cb24c9f7011ae57129a636886d6e58e6b0c68e782b4d8e7",
     "src/addons/FS/DownloadThreadAttachments/_data/activity_summary_definitions.xml": "99d8c2563a31320d66f958fc8bda78613545f5f7959bb3cf5318805e3a3c39d2",

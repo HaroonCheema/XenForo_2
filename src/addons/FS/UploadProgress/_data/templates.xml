@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="public" title="porgress.less" version_id="1" version_string="1"><![CDATA[.progress-bar {
+				width: 100%;
+				background-color: #e0e0e0;
+				padding: 3px;
+				border-radius: 3px;
+				box-shadow: inset 0 1px 3px rgba(0, 0, 0, .2);
+	text-align: center;
+			}
+			
+			.progress-bar-fill {
+				display: block;
+				height: 22px;
+				background-color: #659cef;
+				border-radius: 3px;
+				width: 0%;
+				transition: width 500ms ease-in-out;
+			}]]></template>
+</templates>

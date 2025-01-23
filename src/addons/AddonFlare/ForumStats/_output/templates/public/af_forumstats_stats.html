@@ -1,0 +1,344 @@
+<xf:css src="af_forumstats_stats.less" />
+
+<xf:css>
+	.forumStatsContainer .unit-replies .miniCol::after
+	{
+	content: "{{ phrase('af_forumstats_unit.replies') }}";
+	}
+	.forumStatsContainer .unit-views .miniCol::after
+	{
+	content: "{{ phrase('af_forumstats_unit.views') }}";
+	}
+	.forumStatsContainer .unit-likes .miniCol::after
+	{
+	content: "{{ phrase('af_forumstats_unit.likes') }}";
+	}
+	.forumStatsContainer .unit-posts .miniCol::after
+	{
+	content: "{{ phrase('af_forumstats_unit.posts') }}";
+	}
+	.forumStatsContainer .unit-threads .miniCol::after
+	{
+	content: "{{ phrase('af_forumstats_unit.threads') }}";
+	}
+	.forumStatsContainer .unit-score .miniCol::after
+	{
+	content: "{{ phrase('af_forumstats_unit.score') }}";
+	}
+
+	.forumStats-sidebar
+	{
+	width: {$xf.options.af_forumstats_left_width}%;
+	}
+	.forumStats-main
+	{
+	width: {$xf.options.af_forumstats_main_width}%;
+	}
+</xf:css>
+
+<xf:if is="$xf.options.af_forumstats_invert_columns">
+	<xf:css>
+		.forumStats-sidebar
+		{
+		-webkit-box-ordinal-group:3;
+		-ms-flex-order:2;
+		order:2;
+		}
+		.forumStats-main
+		{
+		-webkit-box-ordinal-group:2;
+		-ms-flex-order:1;
+		order:1;
+		}
+	</xf:css>
+</xf:if>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<xf:js>
+	!function($, window, document)
+	{
+	"use strict";
+
+	XF.ForumStatsClick = XF.Event.newHandler({
+	eventNameSpace: 'XFForumStatsClick',
+
+	options: {
+	container: '.forumStatsContainer',
+	target: '.js-forumStatsSidebar',
+	href: null,
+	menuTrigger: '#forumStats-left-menu-trigger'
+	},
+
+	loaderTarget: null,
+	container: null,
+	href: null,
+	loading: false,
+
+	init() {
+	const containerSelector = this.options.container;
+	const container = containerSelector ? this.target.closest(containerSelector) : this.target;
+
+	this.container = container;
+
+	const targetSelector = this.options.target;
+	const target = targetSelector ? XF.findRelativeIf(targetSelector, this.container) : container;
+
+	if (target) {
+	this.loaderTarget = target;
+	} else {
+	console.error('No loader target for', this.target);
+	return;
+	}
+
+	this.href = this.options.href || this.target.getAttribute('href');
+
+	if (!this.href) {
+	console.error('No href for', this.target);
+	}
+	},
+
+	click(e) {
+
+	e.preventDefault();
+
+	if (this.loading) {
+	return;
+	}
+
+	this.loading = true;
+
+	const $clicked = $(this.target);
+	const animate = $clicked.data('animate-replace');
+	$clicked.addClass('is-selected')
+	.siblings()
+	.removeClass('is-selected');
+
+	$(this.options.menuTrigger).html($clicked.data('title'));
+
+	XF.ajax('get', this.href, null)
+	.then(response => {
+	const { data } = response;
+
+	if (data.html) {
+	if (animate === 'true' || animate === true) {
+	$('.js-forumStatsSidebar').slideUp(500, () => {
+	XF.setupHtmlInsert(data.html, html => {
+	$('.js-forumStatsSidebar').html(html).fadeIn(500);
+	});
+	});
+	} else {
+	XF.setupHtmlInsert(data.html, html => {
+	$('.js-forumStatsSidebar').html(html);
+	});
+	}
+	}
+	})
+	.finally(() => { this.loading = false });
+	}
+	});
+
+	$('.forumStats-left-menu').on('click', '[data-menu-closer]', function(e) {
+	var $this = $(this);
+
+	$this.addClass('is-selected').siblings().removeClass('is-selected');
+	$('#forumStats-left-menu-trigger').html($this.data('title'));
+	});
+
+	var refreshDelay = {$xf.options.af_forumstats_refreshTime};
+	var autoRefreshInterval;
+
+	$(function() {
+	if ($('.forumStatsContainer').hasClass('forumStats-shown'))
+	{
+	checkAutoRefresh();
+	}
+	});
+
+	var checkAutoRefresh = function()
+	{
+	var checked = $('.js-forumStats-autoRefresh').is(':checked');
+
+	if (checked)
+	{
+	resetAutoRefreshTimer();
+	}
+	else
+	{
+	clearAutoRefreshTimer();
+	}
+
+	XF.Cookie.set('forumstats_autorefresh', checked ? 1 : 0);
+	}
+
+	var clearAutoRefreshTimer = function()
+	{
+	if (autoRefreshInterval)
+	{
+	clearInterval(autoRefreshInterval);
+	}
+	}
+
+	var resetAutoRefreshTimer = function()
+	{
+	clearAutoRefreshTimer();
+	autoRefreshInterval = setInterval(refresh, refreshDelay * 1000);
+	}
+
+	var refresh = function() {
+	const $tabContainer = $('.forumStats-main .tabs').first();
+	const $panes = $('.forumStats-main .tabPanes').children();
+	const $activePane = $panes.filter('.is-active');
+
+	if ($activePane.length) {
+	const href = $activePane.data('href-initial');
+
+	$('.tooltip.tooltip--preview').hide();
+
+	XF.ajax('get', href, {}, function(data) {
+	if (data.html) {
+	XF.setupHtmlInsert(data.html, function($html) {
+	$activePane.html($html);
+	});
+	}
+	});
+	}
+	};
+
+	$('.refreshNow').on('click', function(e) {
+	e.preventDefault();
+	checkAutoRefresh();
+	refresh();
+	});
+
+	$('.js-forumStats-autoRefresh').on('change', function() {
+	checkAutoRefresh();
+	});
+
+	$('.hideForumStats').on('click', function(e) {
+	e.preventDefault();
+	$('.forumStatsContainer').removeClass('forumStats-shown').addClass('forumStats-hidden');
+	clearAutoRefreshTimer();
+	XF.Cookie.set('forumstats_show', 0);
+	});
+
+	$('.showForumStats').on('click', function(e) {
+	e.preventDefault();
+	$('.forumStatsContainer').removeClass('forumStats-hidden').addClass('forumStats-shown');
+	checkAutoRefresh();
+	refresh();
+	XF.Cookie.set('forumstats_show', 1);
+	});
+
+	XF.Event.register('click','forum-stats', 'XF.ForumStatsClick');
+	}
+	(jQuery, window, document);
+</xf:js>
+
+<xf:set var="$showStats" value="{{ $xf.request.getCookie('forumstats_show') !== false ? $xf.request.getCookie('forumstats_show') : true }}" />
+
+<div class="forumStatsContainer {{ $showStats ? 'forumStats-shown' : 'forumStats-hidden' }} {{ $xf.options.af_forumstats_mini_mode.enabled ? 'forumStats-mini' : '' }} {{ ($xf.options.af_forumstats_mini_mode.enabled AND $xf.options.af_forumstats_mini_mode.size) ? 'forumStats-mini-' . $xf.options.af_forumstats_mini_mode.size : '' }}">
+
+	<xf:if is="$forumStats.positions.left && $xf.options.af_forumstats_left_width > 0">
+		<xf:set var="$first" value="{$forumStats.first.left}" />
+		<div class="block forumStats-sidebar forumStats-shown">
+			<div class="block-container" style="">
+				<div class="tabs--standalone">
+
+					<a class="menuTrigger"
+					   id="forumStats-left-menu-trigger"
+					   data-xf-click="menu"
+					   role="button"
+					   tabindex="0"
+					   aria-expanded="false"
+					   aria-haspopup="true">{$first.title}</a>
+
+					<xf:set var="$counter" value="1" />
+
+					<div class="menu forumStats-left-menu" data-menu="menu" aria-hidden="true">
+						<div class="menu-content u-jsOnly">
+							<xf:foreach loop="$forumStats.positions.left" key="$stat_id" value="$forumStat">
+								<a class="menu-linkRow {{ $counter == 1 ? 'is-selected' : '' }}" href="{{ link('forum-stats/results', $forumStat) }}"
+								   data-animate-replace="{{ $xf.options.af_forumstats_left_animate ? 'true' : 'false' }}"
+								   data-xf-click="forum-stats"
+								   rel="nofollow"
+								   data-menu-closer="true"
+								   data-replace=".js-forumStatsSidebar"
+								   data-title="{$forumStat.title}">
+									{$forumStat.title}
+								</a>
+								<xf:set var="$counter" value="{{ $counter + 1 }}" />
+							</xf:foreach>
+						</div>
+					</div>
+				</div>
+
+				<xf:include template="af_forumstats_results">
+					<xf:set var="$forumStat" value="{$first}" />
+				</xf:include>
+
+			</div>
+
+		</div>
+	</xf:if>
+
+
+	<xf:if is="$forumStats.positions.main && $xf.options.af_forumstats_main_width > 0">
+		<xf:set var="$first" value="{$forumStats.first.main}" />
+		<div class="forumStats-main forumStats-shown">
+
+			<xf:set var="$counter" value="1" />
+
+			<div class="tabs tabs--standalone" data-xf-init="tabs" role="tablist" style="margin-bottom: 0;">
+				<div class="hScroller" data-xf-init="h-scroller">
+					<span class="hScroller-scroll">
+						<xf:foreach loop="$forumStats.positions.main" key="$stat_id" value="$forumStat">
+							<a class="tabs-tab forumStats-main-tab {{ $counter == 1 ? 'is-active' : '' }}" role="tab" tabindex="0" aria-controls="forumstats-{$stat_id}">{$forumStat.title}</a>
+							<xf:set var="$counter" value="{{ $counter + 1 }}" />
+						</xf:foreach>
+					</span>
+				</div>
+			</div>
+
+			<xf:set var="$counter" value="1" />
+
+			<ul class="tabPanes block-container">
+				<xf:foreach loop="$forumStats.positions.main" key="$stat_id" value="$forumStat">
+					<xf:if is="$counter == 1">
+						<li class="is-active" role="tabpanel" id="forumstats-{$stat_id}" data-href-initial="{{ link('forum-stats/results', $forumStat) }}">
+							<xf:include template="af_forumstats_results">
+								<xf:set var="$forumStat" value="{$first}" />
+							</xf:include>
+						</li>
+						<xf:else />
+						<li class="" role="tabpanel" id="forumstats-{$stat_id}" data-href="{{ link('forum-stats/results', $forumStat) }}" data-href-initial="{{ link('forum-stats/results', $forumStat) }}">
+							<div class="block-body block-row">{{ phrase('loading...') }}</div>
+						</li>
+					</xf:if>
+					<xf:set var="$counter" value="{{ $counter + 1 }}" />
+				</xf:foreach>
+			</ul>
+
+		</div>
+	</xf:if>
+
+	<div class="block-container forumStats-footer">
+		<div class="block-footer">
+			<div class="forumStats-shown">
+				<xf:checkbox standalone="true">
+					<xf:option value="1"
+							   selected="{{ $xf.request.getCookie('forumstats_autorefresh') !== false ? $xf.request.getCookie('forumstats_autorefresh') : true }}"
+							   class="js-forumStats-autoRefresh">
+						<xf:label>{{ phrase('af_forumstats_autoRefresh') }} ({{ phrase('af_forumstats_x_seconds', {'count': number($xf.options.af_forumstats_refreshTime)}) }})</xf:label>
+					</xf:option>
+				</xf:checkbox>
+				<a class="hideForumStats"><xf:fa icon="fa-minus" /> {{ phrase('af_forumstats_hideStats') }}</a>
+				<a class="refreshNow"><xf:fa icon="fa-sync" /> {{ phrase('af_forumstats_refreshNow') }}</a>
+			</div>
+			<div class="forumStats-hidden">
+				<a class="showForumStats"><xf:fa icon="fa-plus" /> {{ phrase('af_forumstats_showStats') }}</a>
+			</div>
+		</div>
+	</div>
+
+
+</div>
