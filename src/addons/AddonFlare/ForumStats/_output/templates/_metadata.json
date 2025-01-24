@@ -1,7 +1,22 @@
 {
+    "public/af_forumstats_new_posts.html": {
+        "version_id": 1070470,
+        "version_string": "1.7.4",
+        "hash": "40a780a3434003fe1d006f33f2202fbd"
+    },
+    "public/af_forumstats_results.html": {
+        "version_id": 1070470,
+        "version_string": "1.7.4",
+        "hash": "f7c5b978d553282c51c99934d18ca0c7"
+    },
     "public/af_forumstats_stats.html": {
-        "version_id": 1070370,
-        "version_string": "1.7.3",
+        "version_id": 1070470,
+        "version_string": "1.7.4",
         "hash": "13176521ae0d99ebc961f5db1aef1df6"
+    },
+    "public/af_forumstats_stats.less": {
+        "version_id": 1070170,
+        "version_string": "1.7.1",
+        "hash": "af6508462d467a35b03a16b471663774"
     }
 }

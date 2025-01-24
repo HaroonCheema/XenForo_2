@@ -1,0 +1,53 @@
+<div class="block-body">
+    <xf:if is="$threads is not empty">
+        <xf:datalist data-xf-init="">
+            <xf:foreach loop="$threads" value="$thread" i="$i">
+                <xf:set var="$canPreview" value="{{ $thread.canPreview() }}" />
+                <xf:datarow>
+                    <xf:if is="$options.show_counter">
+                        <xf:cell class="dataList-cell--min dataList-cell--alt dataList-cell--forumStats-counter">
+                            {$i|number}
+                        </xf:cell>
+                    </xf:if>
+                    <xf:cell
+                        class="dataList-cell--min dataList-cell--alt dataList-cell--image dataList-cell--imageSmall"
+                        href="{{ link('members', $thread.LastPoster) }}">
+                        <xf:avatar user="$thread.LastPoster" size="xxs" defaultname="{$thread.last_post_username}" />
+                    </xf:cell>
+                    <xf:cell class="dataList-cell--main {{ $thread.isUnread() ? 'dataList-cell--highlighted' : '' }}" href="{{ $thread.isUnread() ? link('threads/unread', $thread) : link('threads/post', $thread, {'post_id': $thread.last_post_id}) }}">
+                        <div class="dataList-textRow">
+                            <span data-xf-init="{{ $canPreview ? 'preview-tooltip' : '' }}" data-preview-url="{{ $canPreview ? link('threads/preview', $thread) : '' }}">{{ $options.thread_prefix ? prefix('thread', $thread, $options.thread_prefix) : '' }}{$thread.title}</span>
+                        </div>
+                        <xf:comment>
+                            <div class="dataList-subRow">
+                                <ul class="listInline listInline--bullet">
+                                    <li>{{ phrase('latest_x', {'name': $thread.last_post_cache.username}) }}</li>
+                                </ul>
+                            </div>
+                        </xf:comment>
+                    </xf:cell>
+                    <xf:if is="$options.show_forum_title">
+                        <xf:cell class="dataList-cell--min dataList-cell--forumStats-forumTitle">
+                            <a href="{{ link('forums', $thread.Forum) }}">{$thread.Forum.title}</a>
+                        </xf:cell>
+                    </xf:if>
+                    <xf:cell class="dataList-cell--min dataList-cell--alt dataList-cell--forumStats-date">
+                        <div class="miniCol">
+                            <xf:date time="{$thread.last_post_date}" />
+                        </div>
+                    </xf:cell>
+                    <xf:if is="$options.show_last_poster">
+                        <xf:cell class="dataList-cell--min dataList-cell--alt">
+                            <xf:username user="{$thread.LastPoster}" defaultname="{$thread.last_post_username}" rich="{{ $options.show_last_poster_rich ? 'true' : '' }}" />
+                        </xf:cell>
+                    </xf:if>
+                </xf:datarow>
+
+            </xf:foreach>
+        </xf:datalist>
+    <xf:else />
+        <div class="block-row">
+            {{ phrase('no_results_found') }}
+        </div>
+    </xf:if>
+</div>

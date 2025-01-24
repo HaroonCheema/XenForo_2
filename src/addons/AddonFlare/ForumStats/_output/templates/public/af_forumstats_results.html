@@ -1,0 +1,9 @@
+<xf:if is="$forumStat.position == 'left'">
+    <div class="js-forumStatsSidebar">
+</xf:if>
+
+{$forumStat.render()|raw}
+
+<xf:if is="$forumStat.position == 'left'">
+    </div>
+</xf:if>
