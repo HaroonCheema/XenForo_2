@@ -19,6 +19,11 @@ class Location extends Entity
             'location' => ['type' => self::STR, 'default' => null],
         ];
 
+        $structure->relations = [];
+        $structure->defaultWith = [];
+        $structure->getters = [];
+        $structure->behaviors = [];
+
         return $structure;
     }
 }

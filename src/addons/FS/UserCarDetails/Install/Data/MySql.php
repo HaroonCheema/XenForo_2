@@ -28,6 +28,25 @@ class MySql
             $table->addPrimaryKey('location_id');
         };
 
+        $tables['fs_user_car_details'] = function (Create $table) {
+            /** @var Create|Alter $table */
+            $table->addColumn('car_id', 'int')->autoIncrement();
+
+            $table->addColumn('username', 'mediumtext')->nullable()->setDefault(null);
+
+            $table->addColumn('model_id', 'int')->setDefault(0);
+            $table->addColumn('car_colour', 'mediumtext')->nullable()->setDefault(null);
+            $table->addColumn('car_trim', 'mediumtext')->nullable()->setDefault(null);
+            $table->addColumn('location_id', 'int')->setDefault(0);
+            $table->addColumn('car_plaque_number', 'mediumtext')->nullable()->setDefault(null);
+            $table->addColumn('car_reg_number', 'mediumtext')->nullable()->setDefault(null);
+            $table->addColumn('car_reg_date', 'int')->setDefault(0);
+            $table->addColumn('car_forum_name', 'mediumtext')->nullable()->setDefault(null);
+            $table->addColumn('car_unique_information', 'mediumtext')->nullable()->setDefault(null);
+
+            $table->addPrimaryKey('car_id');
+        };
+
         return $tables;
     }
 }

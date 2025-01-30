@@ -1,4 +1,10 @@
 {
+    "admin_navigation.fs_user_car_details_add.txt": {
+        "global_cache": false,
+        "version_id": 1000200,
+        "version_string": "1.0.2 Alpha",
+        "hash": "99f896aa55b66c910f1fbdd975069fc8"
+    },
     "admin_navigation.fs_user_car_location_add.txt": {
         "global_cache": false,
         "version_id": 1000010,

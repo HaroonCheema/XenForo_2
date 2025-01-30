@@ -155,6 +155,7 @@ return array (
   'admin_navigation.fs_quiz_question' => 'Questions',
   'admin_navigation.fs_search_own_thread' => 'Add',
   'admin_navigation.fs_select_team' => '[FS] Create Team',
+  'admin_navigation.fs_user_car_details_add' => 'Add Car Details',
   'admin_navigation.fs_user_car_location_add' => 'Add Location',
   'admin_navigation.fs_user_car_model' => 'Car Details',
   'admin_navigation.fs_user_car_model_add' => 'Add Model',

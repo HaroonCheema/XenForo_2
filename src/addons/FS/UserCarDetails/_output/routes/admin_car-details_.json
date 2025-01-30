@@ -1,0 +1,11 @@
+{
+    "route_type": "admin",
+    "route_prefix": "car-details",
+    "sub_name": "",
+    "format": ":int<car_id>/:page",
+    "build_class": "",
+    "build_method": "",
+    "controller": "FS\\UserCarDetails:UserCarDetail",
+    "context": "fs_user_car_details_add",
+    "action_prefix": ""
+}

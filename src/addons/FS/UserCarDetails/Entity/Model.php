@@ -19,6 +19,11 @@ class Model extends Entity
             'model' => ['type' => self::STR, 'default' => null],
         ];
 
+        $structure->relations = [];
+        $structure->defaultWith = [];
+        $structure->getters = [];
+        $structure->behaviors = [];
+
         return $structure;
     }
 }
