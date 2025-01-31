@@ -27,6 +27,7 @@ class UserCarDetail extends Entity
             'car_reg_date' =>  ['type' => self::UINT, 'default' => 0],
             'car_forum_name' =>  ['type' => self::STR, 'default' => null],
             'car_unique_information' =>  ['type' => self::STR, 'default' => null],
+            'updated_at' => ['type' => self::UINT, 'default' => \XF::$time],
         ];
 
         $structure->relations = [
@@ -34,7 +35,19 @@ class UserCarDetail extends Entity
                 'entity' => 'XF:User',
                 'type' => self::TO_ONE,
                 'conditions' => 'username',
-            ]
+            ],
+
+            'Model' => [
+                'entity' => 'FS\UserCarDetails:Model',
+                'type' => self::TO_ONE,
+                'conditions' => 'model_id',
+            ],
+
+            'Location' => [
+                'entity' => 'FS\UserCarDetails:Location',
+                'type' => self::TO_ONE,
+                'conditions' => 'location_id',
+            ],
         ];
 
         $structure->defaultWith = [];

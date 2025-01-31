@@ -35,6 +35,12 @@ class User extends XFCP_User
                 'conditions' => 'location_id',
                 'primary' => true
             ],
+
+            'CarDetail' => [
+                'entity' => 'FS\UserCarDetails:UserCarDetail',
+                'type' => self::TO_ONE,
+                'conditions' => 'username',
+            ],
         ];
 
         return $structure;

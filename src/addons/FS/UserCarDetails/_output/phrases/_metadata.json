@@ -299,6 +299,36 @@
         "version_string": "1.0.0 Alpha",
         "hash": "6a36ac7e5ed7c2d3c699e99641b15275"
     },
+    "fs_user_car_detail_add.txt": {
+        "global_cache": false,
+        "version_id": 1000200,
+        "version_string": "1.0.2 Alpha",
+        "hash": "f9c3000ad177f215707fc229553c67c8"
+    },
+    "fs_user_car_detail_add_btn.txt": {
+        "global_cache": false,
+        "version_id": 1000200,
+        "version_string": "1.0.2 Alpha",
+        "hash": "743911d593bf1c29f5e65ef7f31ba144"
+    },
+    "fs_user_car_detail_edit.txt": {
+        "global_cache": false,
+        "version_id": 1000200,
+        "version_string": "1.0.2 Alpha",
+        "hash": "e3ed048392d1b7c85721180fe6b8b15a"
+    },
+    "fs_user_car_detail_index.txt": {
+        "global_cache": false,
+        "version_id": 1000200,
+        "version_string": "1.0.2 Alpha",
+        "hash": "e24118e0e4d372f473394694b1a36796"
+    },
+    "fs_user_car_detail_username.txt": {
+        "global_cache": false,
+        "version_id": 1000200,
+        "version_string": "1.0.2 Alpha",
+        "hash": "f6039d44b29456b20f8f373155ae4973"
+    },
     "fs_user_car_details.txt": {
         "global_cache": false,
         "version_id": 1000010,

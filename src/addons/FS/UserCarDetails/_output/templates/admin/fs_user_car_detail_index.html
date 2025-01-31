@@ -1,0 +1,91 @@
+<xf:title>{{ phrase('fs_user_car_detail_index') }}</xf:title>
+
+<xf:pageaction>
+	<xf:button href="{{ link('car-details/add') }}" icon="add">{{ phrase('fs_user_car_detail_add_btn') }}</xf:button>
+</xf:pageaction>
+<xf:form action="{{ link($prefix . '/toggle') }}" class="block" ajax="true">
+	<div class="block-outer">
+		<xf:macro
+				  template="filter_macros"
+				  name="quick_filter"
+				  arg-key="car-details"
+				  arg-class="block-outer-opposite"
+				  />
+	</div>
+
+	<div class="block-container">
+
+		<xf:if is="$cars is not empty">
+			<div class="block-body">
+				<xf:datalist data-xf-init="responsive-data-list">
+
+					<xf:macro
+							  name="table_list"
+							  arg-data="{$cars}"
+							  />
+
+
+				</xf:datalist>
+				<div class="block-footer">
+					<span class="block-footer-counter"
+						  >{{ display_totals($cars, $total) }}</span
+						>
+				</div>
+
+			</div>
+			<xf:else />
+			<div class="block-body block-row">{{ phrase('no_items_have_been_created_yet') }}</div>
+
+		</xf:if>
+
+	</div>
+
+
+	<xf:pagenav
+				page="{$page}"
+				perpage="{$perPage}"
+				total="{$total}"
+				link="car-details"
+				wrapperclass="block"
+				/>
+</xf:form>
+<xf:macro
+		  name="table_list"
+		  arg-data="!"
+		  >
+	<xf:datarow rowtype="header">
+		<xf:cell> {{ phrase('fs_user_car_detail_username') }} </xf:cell>
+		<xf:cell> {{ phrase('fs_car_details_select_models') }} </xf:cell>
+		<xf:cell> {{ phrase('fs_car_details_colour') }} </xf:cell>
+		<xf:cell> {{ phrase('fs_car_details_trim') }} </xf:cell>
+		<xf:cell> {{ phrase('fs_car_details_location') }} </xf:cell>
+		<xf:cell> {{ phrase('fs_car_details_plaque_number') }} </xf:cell>
+		<xf:cell> {{ phrase('fs_car_details_reg_number') }} </xf:cell>
+		<xf:cell> {{ phrase('fs_car_details_reg_date') }} </xf:cell>
+		<xf:cell> {{ phrase('fs_car_details_forum_name') }} </xf:cell>
+		<xf:cell> {{ phrase('fs_car_details_unique_information') }} </xf:cell>
+		<xf:cell class="dataList-cell--min"></xf:cell>
+		<xf:cell class="dataList-cell--min"></xf:cell>
+	</xf:datarow>
+	<xf:foreach loop="{$data}" value="$val">
+		<xf:datarow>
+
+			<xf:cell> <xf:username user="$val.User" rich="true" class="{{ !$val ? 'username--invisible' : '' }}" /> </xf:cell>
+			<xf:cell> {{ $val.Model.model }} </xf:cell>
+			<xf:cell> {{ $val.car_colour }} </xf:cell>
+			<xf:cell> {{ $val.car_trim }} </xf:cell>
+			<xf:cell> {{ $val.Location.location }} </xf:cell>
+			<xf:cell> {{ $val.car_plaque_number }} </xf:cell>
+			<xf:cell> {{ $val.car_reg_number }} </xf:cell>
+			<xf:cell><xf:if is="$val.car_reg_date"> <xf:date time="{$val.car_reg_date}" /> <xf:else /> - </xf:if></xf:cell>
+			<xf:cell> {{ $val.car_forum_name }} </xf:cell>
+			<xf:cell href="{{ link('car-details/unique-info', $val, {'car_unique_information': $val.car_unique_information}) }}" title="{{ $val.car_unique_information }}" overlay="true"> {{ snippet($val.car_unique_information, 10, {'stripBbCode': true}) }} </xf:cell>
+
+			<xf:action href="{{ link('car-details/edit', $val) }}" >{{ phrase('edit') }}</xf:action>
+			<xf:delete
+					   href="{{ link('car-details/delete', $val) }}"
+					   overlay="true"
+					   />
+		</xf:datarow>
+	</xf:foreach>
+</xf:macro>

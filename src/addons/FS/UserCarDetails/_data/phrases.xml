@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <phrases>
+  <phrase title="admin_navigation.fs_user_car_details_add" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Add Car Details]]></phrase>
   <phrase title="admin_navigation.fs_user_car_location_add" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add Location]]></phrase>
   <phrase title="admin_navigation.fs_user_car_model" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Car Details]]></phrase>
   <phrase title="admin_navigation.fs_user_car_model_add" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add Model]]></phrase>
@@ -49,6 +50,11 @@
   <phrase title="fs_car_model_edit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Edit model]]></phrase>
   <phrase title="fs_car_model_name" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Name]]></phrase>
   <phrase title="fs_car_select_model_filter" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Model :]]></phrase>
+  <phrase title="fs_user_car_detail_add" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Add Car Detail]]></phrase>
+  <phrase title="fs_user_car_detail_add_btn" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Add car]]></phrase>
+  <phrase title="fs_user_car_detail_edit" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Edit Car Detail]]></phrase>
+  <phrase title="fs_user_car_detail_index" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[[FS] Car Details]]></phrase>
+  <phrase title="fs_user_car_detail_username" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Username]]></phrase>
   <phrase title="fs_user_car_details" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Car details]]></phrase>
   <phrase title="fs_user_car_details_vis" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Car details]]></phrase>
   <phrase title="nav.fs_car_details_list" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Car Details]]></phrase>

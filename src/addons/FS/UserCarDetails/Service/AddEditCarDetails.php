@@ -40,6 +40,24 @@ class AddEditCarDetails extends \XF\Service\AbstractService
 
         $user->save();
 
+        $carDetail = $user['CarDetail'];
+
+        if (!$carDetail) {
+            if ($input['model_id'] || $input['car_colour'] || $input['car_trim'] || $input['location_id'] || $input['car_plaque_number'] || $input['car_reg_number'] || $input['car_forum_name'] || $input['car_unique_information'] || $input['car_reg_date']) {
+                $carDetail = \xf::app()->em()->create('FS\UserCarDetails:UserCarDetail');
+                $input['username'] = $user['username'];
+            }
+        }
+
+        if ($carDetail) {
+
+            $input['updated_at'] = time();
+
+            $carDetail->bulkSet($input);
+
+            $carDetail->save();
+        }
+
         return true;
     }
 }

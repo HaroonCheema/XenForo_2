@@ -63,7 +63,7 @@ class Setup extends AbstractSetup
 		});
 	}
 
-	public function upgrade1000300Step1(array $stepParams)
+	public function upgrade1000400Step2(array $stepParams)
 	{
 
 		$this->schemaManager()->createTable('fs_user_car_details', function (Create $table) {
@@ -81,6 +81,7 @@ class Setup extends AbstractSetup
 			$table->addColumn('car_reg_date', 'int')->setDefault(0);
 			$table->addColumn('car_forum_name', 'mediumtext')->nullable()->setDefault(null);
 			$table->addColumn('car_unique_information', 'mediumtext')->nullable()->setDefault(null);
+			$table->addColumn('updated_at', 'int')->setDefault(0);
 
 			$table->addPrimaryKey('car_id');
 		});

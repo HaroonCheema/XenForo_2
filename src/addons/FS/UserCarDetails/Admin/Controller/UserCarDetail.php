@@ -10,7 +10,7 @@ class UserCarDetail extends AbstractController
 
     public function actionIndex(ParameterBag $params)
     {
-        $finder = $this->finder('FS\UserCarDetails:Location')->order('location_id', 'DESC');
+        $finder = $this->finder('FS\UserCarDetails:UserCarDetail')->order('updated_at', 'DESC');
 
         $page = $params->page;
         $perPage = 15;
@@ -18,92 +18,182 @@ class UserCarDetail extends AbstractController
         $finder->limitByPage($page, $perPage);
 
         $viewParams = [
-            'locations' => $finder->fetch(),
+            'cars' => $finder->fetch(),
 
             'page' => $page,
             'perPage' => $perPage,
             'total' => $finder->total(),
         ];
 
-        return $this->view('FS\UserCarDetails:Location\Index', 'fs_user_car_location_index', $viewParams);
+        return $this->view('FS\UserCarDetails:UserCarDetail\Index', 'fs_user_car_detail_index', $viewParams);
     }
 
     public function actionAdd()
     {
-        $newLocation = $this->em()->create('FS\UserCarDetails:Location');
-        return $this->locationAddEdit($newLocation);
+        $newCar = $this->em()->create('FS\UserCarDetails:UserCarDetail');
+        return $this->carAddEdit($newCar);
     }
 
     public function actionEdit(ParameterBag $params)
     {
         /**
     
-         * @var \FS\UserCarDetails\Entity\Location $carLocation
+         * @var \FS\UserCarDetails\Entity\UserCarDetail $carDetail
          */
-        $carLocation = $this->assertDataExists($params->location_id);
-        return $this->locationAddEdit($carLocation);
+        $carDetail = $this->assertDataExists($params->car_id);
+        return $this->carAddEdit($carDetail);
     }
 
-    protected function locationAddEdit(\FS\UserCarDetails\Entity\Location $carLocation)
+    protected function carAddEdit(\FS\UserCarDetails\Entity\UserCarDetail $carDetail)
     {
         $viewParams = [
-            'location' => $carLocation
+            'car' => $carDetail
         ];
 
-        return $this->view('FS\UserCarDetails:Location\Add', 'fs_user_car_location_add', $viewParams);
+        return $this->view('FS\UserCarDetails:UserCarDetail\Add', 'fs_user_car_detail_add_edit', $viewParams);
     }
 
     public function actionSave(ParameterBag $params)
     {
-        if ($params->location_id) {
-            $locationEditAdd = $this->assertDataExists($params->location_id);
+        $username = $this->filter('username', 'str');
+
+        if ($params->car_id) {
+            $carEditAdd = $this->assertDataExists($params->car_id);
+
+            if (!$username || ($username && isset($carEditAdd['username']) && ($username != $carEditAdd['username']))) {
+
+                if ($carEditAdd['User']) {
+                    $carEditAdd['User']->bulkSet($this->emptyInputs());
+                    $carEditAdd['User']->save();
+                }
+            }
         } else {
-            $locationEditAdd = $this->em()->create('FS\UserCarDetails:Location');
+            $carEditAdd = $this->em()->create('FS\UserCarDetails:UserCarDetail');
         }
 
-        $this->locationSaveProcess($locationEditAdd)->run();
+        if ($username) {
+            $getUserExist = $this->finder('FS\UserCarDetails:UserCarDetail')->where('username', $username)->fetchOne();
 
-        return $this->redirect($this->buildLink('car-location'));
+            if ($getUserExist) {
+                $carEditAdd = $getUserExist;
+            }
+        }
+
+        $this->carSaveProcess($carEditAdd)->run();
+
+        if ($carEditAdd['User']) {
+            $formInput = $this->filterInputs();
+
+            $carEditAdd->User->bulkSet($formInput);
+
+            $carEditAdd->User->save();
+        }
+
+        return $this->redirect($this->buildLink('car-details'));
     }
 
-    protected function locationSaveProcess(\FS\UserCarDetails\Entity\Location $carLocation)
+    protected function carSaveProcess(\FS\UserCarDetails\Entity\UserCarDetail $carDetail)
     {
-        $input = $this->filter([
-            'location' => 'str',
-        ]);
+        $input = $this->filterInputs();
+
+        $input['updated_at'] = time();
+
+        $input['username'] = $this->filter('username', 'str');
 
         $form = $this->formAction();
-        $form->basicEntitySave($carLocation, $input);
+
+        $form->basicEntitySave($carDetail, $input);
 
         return $form;
     }
 
+    protected function filterInputs()
+    {
+
+        $input = $this->filter([
+            'model_id' => 'int',
+            'car_colour' => 'str',
+            'car_trim' => 'str',
+            'location_id' => 'int',
+            'car_plaque_number' => 'str',
+            'car_reg_number' => 'str',
+            'car_forum_name' => 'str',
+            'car_unique_information' => 'str',
+        ]);
+
+        if ($this->filter('car_reg_date', 'str')) {
+            $input['car_reg_date'] = strtotime(\xf::app()->request()->filter('car_reg_date', 'str'));
+        } else {
+            $input['car_reg_date'] = 0;
+        }
+
+        return $input;
+    }
+
+    protected function emptyInputs()
+    {
+
+        $input = [
+            'model_id' => 0,
+            'car_colour' => '',
+            'car_trim' => '',
+            'location_id' => 0,
+            'car_plaque_number' => '',
+            'car_reg_number' => '',
+            'car_forum_name' => '',
+            'car_unique_information' => '',
+            'car_reg_date' => 0,
+        ];
+
+        return $input;
+    }
+
     public function actionDelete(ParameterBag $params)
     {
-        $replyExists = $this->assertDataExists($params->location_id);
+        $replyExists = $this->assertDataExists($params->car_id);
+
+        if ($this->isPost()) {
+
+            if ($replyExists['User']) {
+                $replyExists['User']->bulkSet($this->emptyInputs());
+                $replyExists['User']->save();
+            }
+
+        }
 
         /** @var \XF\ControllerPlugin\Delete $plugin */
         $plugin = $this->plugin('XF:Delete');
         return $plugin->actionDelete(
             $replyExists,
-            $this->buildLink('car-location/delete', $replyExists),
+            $this->buildLink('car-details/delete', $replyExists),
             null,
-            $this->buildLink('car-location'),
-            "{$replyExists->location}"
+            $this->buildLink('car-details'),
+            "Car Detail"
         );
     }
 
-    // plugin for check location_id exists or not 
+    public function actionUniqueInfo(ParameterBag $params)
+    {
+        $car_unique_information = $this->filter('car_unique_information', 'str');
+
+        $viewParams = [
+            'car_unique_information' => $car_unique_information,
+        ];
+
+        return $this->view('FS\UserCarDetails:UserCarDetail\UniqueInfo', 'fs_user_car_detail_unique_information', $viewParams);
+    }
+
+    // plugin for check car_id exists or not 
 
     /**
-     * @param string $location_id
+     * @param string $car_id
      * @param array|string|null $with
      * @param null|string $phraseKey
      *
-     * @return \FS\UserCarDetails\Entity\Location
+     * @return \FS\UserCarDetails\Entity\UserCarDetail
      */
     protected function assertDataExists($id, array $extraWith = [], $phraseKey = null)
     {
-        return $this->assertRecordExists('FS\UserCarDetails:Location', $id, $extraWith, $phraseKey);
+        return $this->assertRecordExists('FS\UserCarDetails:UserCarDetail', $id, $extraWith, $phraseKey);
     }
 }

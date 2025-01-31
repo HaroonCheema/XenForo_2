@@ -1,4 +1,19 @@
 {
+    "admin/fs_user_car_detail_add_edit.html": {
+        "version_id": 1000200,
+        "version_string": "1.0.2 Alpha",
+        "hash": "13890ad7cbfb76e0efc0c6beb713a61a"
+    },
+    "admin/fs_user_car_detail_index.html": {
+        "version_id": 1000200,
+        "version_string": "1.0.2 Alpha",
+        "hash": "9ac8aee783d40287fb2bb610aa7ff6f3"
+    },
+    "admin/fs_user_car_detail_unique_information.html": {
+        "version_id": 1000200,
+        "version_string": "1.0.2 Alpha",
+        "hash": "674311be8adcb2da465363373821381b"
+    },
     "admin/fs_user_car_details_add_edit_pane.html": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",

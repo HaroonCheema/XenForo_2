@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <admin_navigation>
+  <admin_navigation_entry navigation_id="fs_user_car_details_add" parent_navigation_id="fs_user_car_model" display_order="3" link="car-details" debug_only="0" development_only="0" hide_no_children="0"/>
   <admin_navigation_entry navigation_id="fs_user_car_location_add" parent_navigation_id="fs_user_car_model" display_order="2" link="car-location" debug_only="0" development_only="0" hide_no_children="0"/>
   <admin_navigation_entry navigation_id="fs_user_car_model" display_order="1" icon="fa-car" debug_only="0" development_only="0" hide_no_children="0"/>
   <admin_navigation_entry navigation_id="fs_user_car_model_add" parent_navigation_id="fs_user_car_model" display_order="1" link="car-model" debug_only="0" development_only="0" hide_no_children="0"/>
