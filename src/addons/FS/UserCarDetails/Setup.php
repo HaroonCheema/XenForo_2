@@ -43,27 +43,27 @@ class Setup extends AbstractSetup
 
 	// ################################ UPGRADE ######################
 
-	public function upgrade1000200Step1(array $stepParams)
-	{
-		$this->alterTable('xf_user', function (\XF\Db\Schema\Alter $table) {
+	// public function upgrade1000200Step1(array $stepParams)
+	// {
+	// 	$this->alterTable('xf_user', function (\XF\Db\Schema\Alter $table) {
 
-			$table->addColumn('location_id', 'int')->setDefault(0);
-		});
+	// 		$table->addColumn('location_id', 'int')->setDefault(0);
+	// 	});
 
-		$this->schemaManager()->createTable('fs_car_locations_list', function (Create $table) {
+	// 	$this->schemaManager()->createTable('fs_car_locations_list', function (Create $table) {
 
-			$table->addColumn('location_id', 'int')->autoIncrement();
-			$table->addColumn('location', 'mediumtext')->nullable();
+	// 		$table->addColumn('location_id', 'int')->autoIncrement();
+	// 		$table->addColumn('location', 'mediumtext')->nullable();
 
-			$table->addPrimaryKey('location_id');
-		});
+	// 		$table->addPrimaryKey('location_id');
+	// 	});
 
-		$this->schemaManager()->alterTable('xf_user', function (\XF\Db\Schema\Alter $table) {
-			$table->dropColumns(['car_location']);
-		});
-	}
+	// 	$this->schemaManager()->alterTable('xf_user', function (\XF\Db\Schema\Alter $table) {
+	// 		$table->dropColumns(['car_location']);
+	// 	});
+	// }
 
-	public function upgrade1000400Step2(array $stepParams)
+	public function upgrade1000500Step2(array $stepParams)
 	{
 
 		$this->schemaManager()->createTable('fs_user_car_details', function (Create $table) {
@@ -85,6 +85,18 @@ class Setup extends AbstractSetup
 
 			$table->addPrimaryKey('car_id');
 		});
+	}
+
+	// ############################### POST INSTALL ###########################
+
+	public function postInstall(array &$stateChanges)
+	{
+		$app = \XF::app();
+
+		$jobID = 'move_user_cars_' . time();
+
+		$app->jobManager()->enqueueUnique($jobID, 'FS\UserCarDetails:CarDetails', [], false);
+		// $app->jobManager()->runUnique($jobID, 120);
 	}
 
 	// ############################### UNINSTALL ###########################

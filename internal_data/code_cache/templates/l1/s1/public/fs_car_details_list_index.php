@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: b5914fb4a5ac799d714da3118f9eae0b
+// FROM HASH: f840ee8a370ead318f02d9d34819e3f8
 return array(
 'macros' => array('car_details_filter' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -96,22 +96,28 @@ return array(
 			$__finalCompiled .= '
 		';
 			$__compilerTemp1 = '';
-			if ($__vars['val']['car_reg_date']) {
-				$__compilerTemp1 .= ' ' . $__templater->func('date_dynamic', array($__vars['val']['car_reg_date'], array(
+			if ($__vars['val']['username']) {
+				$__compilerTemp1 .= ' ' . $__templater->func('username_link', array($__vars['val']['User'], true, array(
+					'class' => '',
 				))) . ' ';
 			} else {
-				$__compilerTemp1 .= ' - ';
+				$__compilerTemp1 .= ' ' . 'Unknown' . ' ';
+			}
+			$__compilerTemp2 = '';
+			if ($__vars['val']['car_reg_date']) {
+				$__compilerTemp2 .= ' ' . $__templater->func('date_dynamic', array($__vars['val']['car_reg_date'], array(
+				))) . ' ';
+			} else {
+				$__compilerTemp2 .= ' - ';
 			}
 			$__finalCompiled .= $__templater->dataRow(array(
 			), array(array(
 				'_type' => 'cell',
-				'html' => ' ' . $__templater->func('username_link', array($__vars['val'], true, array(
-				'class' => ((!$__vars['val']) ? 'username--invisible' : ''),
-			))) . ' ',
+				'html' => ' ' . $__compilerTemp1 . ' ',
 			),
 			array(
 				'_type' => 'cell',
-				'html' => ' ' . $__templater->escape($__vars['val']['CarModel']['model']) . ' ',
+				'html' => ' ' . $__templater->escape($__vars['val']['Model']['model']) . ' ',
 			),
 			array(
 				'_type' => 'cell',
@@ -123,7 +129,7 @@ return array(
 			),
 			array(
 				'_type' => 'cell',
-				'html' => ' ' . $__templater->escape($__vars['val']['CarLocation']['location']) . ' ',
+				'html' => ' ' . $__templater->escape($__vars['val']['Location']['location']) . ' ',
 			),
 			array(
 				'_type' => 'cell',
@@ -135,7 +141,7 @@ return array(
 			),
 			array(
 				'_type' => 'cell',
-				'html' => $__compilerTemp1,
+				'html' => $__compilerTemp2,
 			),
 			array(
 				'_type' => 'cell',

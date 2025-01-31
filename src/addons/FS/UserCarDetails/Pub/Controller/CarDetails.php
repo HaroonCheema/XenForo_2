@@ -26,7 +26,7 @@ class CarDetails extends AbstractController
         $viewpParams = [
             'pageSelected' => 'carDetails/',
 
-            'user' => $visitor,
+            'user' => $visitor->CarDetail,
             'models' => $models,
             'locations' => $locations,
         ];

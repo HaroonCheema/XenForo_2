@@ -13,7 +13,7 @@ class CarsList extends AbstractController
         $page = $params->page;
         $perPage = 15;
 
-        $carDetails = $this->finder('XF:User');
+        $carDetails = $this->finder('FS\UserCarDetails:UserCarDetail');
 
         $conditions = $this->filterSearchConditions();
 
@@ -38,7 +38,7 @@ class CarsList extends AbstractController
             ];
 
             $carDetails->whereOr($conditions)
-                ->order('user_id', 'DESC');
+                ->order('updated_at', 'DESC');
         }
 
         $carDetails
@@ -105,7 +105,7 @@ class CarsList extends AbstractController
     {
         $conditions = $this->filterSearchConditions();
 
-        $carDetails = $this->finder('XF:User');
+        $carDetails = $this->finder('FS\UserCarDetails:UserCarDetail');
 
         if ($conditions['model_id']) {
 

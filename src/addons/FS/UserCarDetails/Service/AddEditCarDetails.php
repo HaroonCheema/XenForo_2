@@ -36,10 +36,6 @@ class AddEditCarDetails extends \XF\Service\AbstractService
             $input['car_reg_date'] = 0;
         }
 
-        $user->bulkSet($input);
-
-        $user->save();
-
         $carDetail = $user['CarDetail'];
 
         if (!$carDetail) {

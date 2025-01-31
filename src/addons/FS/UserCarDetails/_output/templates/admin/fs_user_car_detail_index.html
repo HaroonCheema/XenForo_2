@@ -70,7 +70,7 @@
 	<xf:foreach loop="{$data}" value="$val">
 		<xf:datarow>
 
-			<xf:cell> <xf:username user="$val.User" rich="true" class="{{ !$val ? 'username--invisible' : '' }}" /> </xf:cell>
+			<xf:cell> <xf:if is="$val.username"> <xf:username user="$val.User" rich="true" class="" /> <xf:else /> {{ phrase('fs_car_details_list_unknown') }} </xf:if> </xf:cell>
 			<xf:cell> {{ $val.Model.model }} </xf:cell>
 			<xf:cell> {{ $val.car_colour }} </xf:cell>
 			<xf:cell> {{ $val.car_trim }} </xf:cell>

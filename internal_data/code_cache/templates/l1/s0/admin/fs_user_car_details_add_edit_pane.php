@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 3c62500c58628d829f2fe00c3a38f187
+// FROM HASH: bc95e103b891efaeea1af7670b9d898c
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -32,7 +32,7 @@ return array(
 			<ul class="inputList">
 				<li>' . $__templater->formSelect(array(
 		'name' => 'model_id',
-		'value' => $__templater->filter($__vars['user']['model_id'], array(array('default', array(array(0, ), )),), false),
+		'value' => $__templater->filter($__vars['user']['CarDetail']['model_id'], array(array('default', array(array(0, ), )),), false),
 	), $__compilerTemp1) . '</li>
 			</ul>
 		', array(
@@ -44,7 +44,7 @@ return array(
 		' . $__templater->formRow('
 			' . $__templater->formTextBoxRow(array(
 		'name' => 'car_colour',
-		'value' => $__vars['user']['car_colour'],
+		'value' => $__vars['user']['CarDetail']['car_colour'],
 	), array(
 		'rowtype' => 'fullWidth',
 		'explain' => 'Enter your car colour here..!',
@@ -57,7 +57,7 @@ return array(
 		' . $__templater->formRow('
 			' . $__templater->formTextBoxRow(array(
 		'name' => 'car_trim',
-		'value' => $__vars['user']['car_trim'],
+		'value' => $__vars['user']['CarDetail']['car_trim'],
 	), array(
 		'rowtype' => 'fullWidth',
 		'explain' => 'Enter your car trim  here...!',
@@ -87,7 +87,7 @@ return array(
 			<ul class="inputList">
 				<li>' . $__templater->formSelect(array(
 		'name' => 'location_id',
-		'value' => $__templater->filter($__vars['user']['location_id'], array(array('default', array(array(0, ), )),), false),
+		'value' => $__templater->filter($__vars['user']['CarDetail']['location_id'], array(array('default', array(array(0, ), )),), false),
 	), $__compilerTemp2) . '</li>
 			</ul>
 		', array(
@@ -99,7 +99,7 @@ return array(
 		' . $__templater->formRow('
 			' . $__templater->formTextBoxRow(array(
 		'name' => 'car_plaque_number',
-		'value' => $__vars['user']['car_plaque_number'],
+		'value' => $__vars['user']['CarDetail']['car_plaque_number'],
 	), array(
 		'rowtype' => 'fullWidth',
 		'explain' => 'Enter your car plaque number here...!',
@@ -112,7 +112,7 @@ return array(
 		' . $__templater->formRow('
 			' . $__templater->formTextBoxRow(array(
 		'name' => 'car_reg_number',
-		'value' => $__vars['user']['car_reg_number'],
+		'value' => $__vars['user']['CarDetail']['car_reg_number'],
 	), array(
 		'rowtype' => 'fullWidth',
 		'explain' => 'Enter your car reg number here...!',
@@ -125,7 +125,7 @@ return array(
 		' . $__templater->formRow('
 			' . $__templater->formDateInput(array(
 		'name' => 'car_reg_date',
-		'value' => ($__vars['user']['car_reg_date'] ? $__templater->func('date', array($__vars['user']['car_reg_date'], 'picker', ), false) : ''),
+		'value' => ($__vars['user']['CarDetail']['car_reg_date'] ? $__templater->func('date', array($__vars['user']['CarDetail']['car_reg_date'], 'picker', ), false) : ''),
 	)) . '
 
 		', array(
@@ -136,7 +136,7 @@ return array(
 		' . $__templater->formRow('
 			' . $__templater->formTextBoxRow(array(
 		'name' => 'car_forum_name',
-		'value' => $__vars['user']['car_forum_name'],
+		'value' => $__vars['user']['CarDetail']['car_forum_name'],
 	), array(
 		'rowtype' => 'fullWidth',
 		'explain' => 'Enter forum name here...!',
@@ -149,7 +149,7 @@ return array(
 		' . $__templater->formRow('
 			' . $__templater->formTextBoxRow(array(
 		'name' => 'car_unique_information',
-		'value' => $__vars['user']['car_unique_information'],
+		'value' => $__vars['user']['CarDetail']['car_unique_information'],
 	), array(
 		'rowtype' => 'fullWidth',
 		'explain' => 'Enter unique information here...!',

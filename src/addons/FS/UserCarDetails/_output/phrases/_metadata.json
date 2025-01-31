@@ -155,6 +155,12 @@
         "version_string": "1.0.0 Alpha",
         "hash": "a559b87068921eec05086ce5485e9784"
     },
+    "fs_car_details_list_unknown.txt": {
+        "global_cache": false,
+        "version_id": 1000400,
+        "version_string": "1.0.4 Alpha",
+        "hash": "88183b946cc5f0e8c96b2e66e1c74a7e"
+    },
     "fs_car_details_location.txt": {
         "global_cache": false,
         "version_id": 1000010,

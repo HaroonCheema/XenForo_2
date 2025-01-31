@@ -59,14 +59,6 @@ class UserCarDetail extends AbstractController
 
         if ($params->car_id) {
             $carEditAdd = $this->assertDataExists($params->car_id);
-
-            if (!$username || ($username && isset($carEditAdd['username']) && ($username != $carEditAdd['username']))) {
-
-                if ($carEditAdd['User']) {
-                    $carEditAdd['User']->bulkSet($this->emptyInputs());
-                    $carEditAdd['User']->save();
-                }
-            }
         } else {
             $carEditAdd = $this->em()->create('FS\UserCarDetails:UserCarDetail');
         }
@@ -81,24 +73,12 @@ class UserCarDetail extends AbstractController
 
         $this->carSaveProcess($carEditAdd)->run();
 
-        if ($carEditAdd['User']) {
-            $formInput = $this->filterInputs();
-
-            $carEditAdd->User->bulkSet($formInput);
-
-            $carEditAdd->User->save();
-        }
-
         return $this->redirect($this->buildLink('car-details'));
     }
 
     protected function carSaveProcess(\FS\UserCarDetails\Entity\UserCarDetail $carDetail)
     {
         $input = $this->filterInputs();
-
-        $input['updated_at'] = time();
-
-        $input['username'] = $this->filter('username', 'str');
 
         $form = $this->formAction();
 
@@ -111,6 +91,7 @@ class UserCarDetail extends AbstractController
     {
 
         $input = $this->filter([
+            'username' => 'str',
             'model_id' => 'int',
             'car_colour' => 'str',
             'car_trim' => 'str',
@@ -127,23 +108,7 @@ class UserCarDetail extends AbstractController
             $input['car_reg_date'] = 0;
         }
 
-        return $input;
-    }
-
-    protected function emptyInputs()
-    {
-
-        $input = [
-            'model_id' => 0,
-            'car_colour' => '',
-            'car_trim' => '',
-            'location_id' => 0,
-            'car_plaque_number' => '',
-            'car_reg_number' => '',
-            'car_forum_name' => '',
-            'car_unique_information' => '',
-            'car_reg_date' => 0,
-        ];
+        $input['updated_at'] = time();
 
         return $input;
     }
@@ -151,15 +116,6 @@ class UserCarDetail extends AbstractController
     public function actionDelete(ParameterBag $params)
     {
         $replyExists = $this->assertDataExists($params->car_id);
-
-        if ($this->isPost()) {
-
-            if ($replyExists['User']) {
-                $replyExists['User']->bulkSet($this->emptyInputs());
-                $replyExists['User']->save();
-            }
-
-        }
 
         /** @var \XF\ControllerPlugin\Delete $plugin */
         $plugin = $this->plugin('XF:Delete');

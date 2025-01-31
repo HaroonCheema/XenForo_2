@@ -5,9 +5,9 @@
         "hash": "13890ad7cbfb76e0efc0c6beb713a61a"
     },
     "admin/fs_user_car_detail_index.html": {
-        "version_id": 1000200,
-        "version_string": "1.0.2 Alpha",
-        "hash": "9ac8aee783d40287fb2bb610aa7ff6f3"
+        "version_id": 1000400,
+        "version_string": "1.0.4 Alpha",
+        "hash": "1368020dc8b5b0927a5253f7cb7fa36c"
     },
     "admin/fs_user_car_detail_unique_information.html": {
         "version_id": 1000200,
@@ -15,9 +15,9 @@
         "hash": "674311be8adcb2da465363373821381b"
     },
     "admin/fs_user_car_details_add_edit_pane.html": {
-        "version_id": 1000010,
-        "version_string": "1.0.0 Alpha",
-        "hash": "3c62500c58628d829f2fe00c3a38f187"
+        "version_id": 1000400,
+        "version_string": "1.0.4 Alpha",
+        "hash": "bc95e103b891efaeea1af7670b9d898c"
     },
     "admin/fs_user_car_location_add.html": {
         "version_id": 1000010,
@@ -45,9 +45,9 @@
         "hash": "05af2f654e7c42dbcd322ecb4a64df3d"
     },
     "public/fs_car_details_list_index.html": {
-        "version_id": 1000010,
-        "version_string": "1.0.0 Alpha",
-        "hash": "b5914fb4a5ac799d714da3118f9eae0b"
+        "version_id": 1000400,
+        "version_string": "1.0.4 Alpha",
+        "hash": "f840ee8a370ead318f02d9d34819e3f8"
     },
     "public/fs_car_unique_information.html": {
         "version_id": 1000010,

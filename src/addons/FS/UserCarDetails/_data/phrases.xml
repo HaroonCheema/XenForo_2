@@ -26,6 +26,7 @@
   <phrase title="fs_car_details_list_car_trim" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Trim]]></phrase>
   <phrase title="fs_car_details_list_car_unique_information" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Unique Information]]></phrase>
   <phrase title="fs_car_details_list_model" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Model]]></phrase>
+  <phrase title="fs_car_details_list_unknown" version_id="1000400" version_string="1.0.4 Alpha"><![CDATA[Unknown]]></phrase>
   <phrase title="fs_car_details_location" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Location]]></phrase>
   <phrase title="fs_car_details_plaque_number" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Plaque Number]]></phrase>
   <phrase title="fs_car_details_reg_date" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Car Reg Date]]></phrase>

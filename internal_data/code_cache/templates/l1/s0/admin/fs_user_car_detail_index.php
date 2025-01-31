@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 9ac8aee783d40287fb2bb610aa7ff6f3
+// FROM HASH: 1368020dc8b5b0927a5253f7cb7fa36c
 return array(
 'macros' => array('table_list' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -67,18 +67,24 @@ return array(
 			$__finalCompiled .= '
 		';
 			$__compilerTemp1 = '';
-			if ($__vars['val']['car_reg_date']) {
-				$__compilerTemp1 .= ' ' . $__templater->func('date_dynamic', array($__vars['val']['car_reg_date'], array(
+			if ($__vars['val']['username']) {
+				$__compilerTemp1 .= ' ' . $__templater->func('username_link', array($__vars['val']['User'], true, array(
+					'class' => '',
 				))) . ' ';
 			} else {
-				$__compilerTemp1 .= ' - ';
+				$__compilerTemp1 .= ' ' . 'Unknown' . ' ';
+			}
+			$__compilerTemp2 = '';
+			if ($__vars['val']['car_reg_date']) {
+				$__compilerTemp2 .= ' ' . $__templater->func('date_dynamic', array($__vars['val']['car_reg_date'], array(
+				))) . ' ';
+			} else {
+				$__compilerTemp2 .= ' - ';
 			}
 			$__finalCompiled .= $__templater->dataRow(array(
 			), array(array(
 				'_type' => 'cell',
-				'html' => ' ' . $__templater->func('username_link', array($__vars['val']['User'], true, array(
-				'class' => ((!$__vars['val']) ? 'username--invisible' : ''),
-			))) . ' ',
+				'html' => ' ' . $__compilerTemp1 . ' ',
 			),
 			array(
 				'_type' => 'cell',
@@ -106,7 +112,7 @@ return array(
 			),
 			array(
 				'_type' => 'cell',
-				'html' => $__compilerTemp1,
+				'html' => $__compilerTemp2,
 			),
 			array(
 				'_type' => 'cell',
