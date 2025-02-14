@@ -40,8 +40,7 @@ class Mail
 		$this->mailer = $mailer;
 		$this->message = new \Swift_Message();
 
-		if ($templateName)
-		{
+		if ($templateName) {
 			$this->templateName = $templateName;
 			$this->templateParams = is_array($templateParams) ? $templateParams : [];
 		}
@@ -49,12 +48,9 @@ class Mail
 
 	public function setTo($email, $name = null)
 	{
-		try
-		{
+		try {
 			$this->message->setTo($email, $name);
-		}
-		catch (\Swift_SwiftException $e)
-		{
+		} catch (\Swift_SwiftException $e) {
 			$this->applySetupError($e);
 
 			return $this;
@@ -63,8 +59,7 @@ class Mail
 		$this->bounceHmac = $this->mailer->calculateBounceHmac($email);
 
 		$headers = $this->message->getHeaders();
-		if ($headers->has('X-To-Validate'))
-		{
+		if ($headers->has('X-To-Validate')) {
 			$headers->removeAll('X-To-Validate');
 		}
 		$headers->addTextHeader('X-To-Validate', $this->bounceHmac . '+' . $email);
@@ -78,8 +73,7 @@ class Mail
 
 	public function setToUser(\XF\Entity\User $user)
 	{
-		if (!$user->email)
-		{
+		if (!$user->email) {
 			$this->setupError = new \Exception("Trying to send email to user without email (ID: $user->user_id)");
 
 			return $this;
@@ -102,12 +96,9 @@ class Mail
 
 	public function setFrom($email, $name = null)
 	{
-		try
-		{
+		try {
 			$this->message->setFrom($email, $name);
-		}
-		catch (\Swift_SwiftException $e)
-		{
+		} catch (\Swift_SwiftException $e) {
 			$this->applySetupError($e);
 		}
 
@@ -116,12 +107,9 @@ class Mail
 
 	public function setReplyTo($email, $name = null)
 	{
-		try
-		{
+		try {
 			$this->message->setReplyTo($email, $name);
-		}
-		catch (\Swift_SwiftException $e)
-		{
+		} catch (\Swift_SwiftException $e) {
 			$this->applySetupError($e);
 		}
 
@@ -132,17 +120,13 @@ class Mail
 	{
 		$email = preg_replace('/["\'\s\\\\]/', '', $email);
 
-		try
-		{
+		try {
 			$this->message->setReturnPath($email);
-		}
-		catch (\Swift_SwiftException $e)
-		{
+		} catch (\Swift_SwiftException $e) {
 			$this->applySetupError($e);
 		}
 
-		if ($useVerp)
-		{
+		if ($useVerp) {
 			$this->bounceVerpBase = $email;
 			$this->applyVerp();
 		}
@@ -152,8 +136,7 @@ class Mail
 
 	public function setListUnsubscribe($unsubEmail, $useVerp = false)
 	{
-		if (!$unsubEmail || !$this->toUser)
-		{
+		if (!$unsubEmail || !$this->toUser) {
 			// if we're not sending to an actual user, or no unsub email no point in setting header
 			return $this;
 		}
@@ -162,11 +145,9 @@ class Mail
 		$hmac = substr($this->toUser->getEmailConfirmKey(), 0, 8);
 		$userEmail = $this->toUser->email;
 
-		if ($useVerp)
-		{
+		if ($useVerp) {
 			$verpAddress = $this->getVerpAddress($hmac, $unsubEmail);
-			if ($verpAddress)
-			{
+			if ($verpAddress) {
 				$unsubEmail = $verpAddress;
 			}
 		}
@@ -185,14 +166,10 @@ class Mail
 	protected function applyVerp()
 	{
 		$verpAddress = $this->getVerpAddress($this->bounceHmac, $this->bounceVerpBase);
-		if ($verpAddress)
-		{
-			try
-			{
+		if ($verpAddress) {
+			try {
 				$this->message->setReturnPath($verpAddress);
-			}
-			catch (\Swift_SwiftException $e)
-			{
+			} catch (\Swift_SwiftException $e) {
 				$this->applySetupError($e);
 			}
 		}
@@ -202,16 +179,13 @@ class Mail
 
 	protected function getVerpAddress($hmac, $verpBase, $to = null)
 	{
-		if (!$hmac || !$verpBase)
-		{
+		if (!$hmac || !$verpBase) {
 			return null;
 		}
 
-		if (!$to)
-		{
+		if (!$to) {
 			$toAll = $this->message->getTo();
-			if (!$toAll || count($toAll) > 1)
-			{
+			if (!$toAll || count($toAll) > 1) {
 				// 0 or 2+ to addresses, so we can't really do verp
 				return null;
 			}
@@ -228,12 +202,9 @@ class Mail
 
 	public function setSender($sender, $name = null)
 	{
-		try
-		{
+		try {
 			$this->message->setSender($sender, $name);
-		}
-		catch (\Swift_SwiftException $e)
-		{
+		} catch (\Swift_SwiftException $e) {
 			$this->applySetupError($e);
 		}
 
@@ -242,12 +213,9 @@ class Mail
 
 	public function setId($id)
 	{
-		try
-		{
+		try {
 			$this->message->setId($id);
-		}
-		catch (\Swift_SwiftException $e)
-		{
+		} catch (\Swift_SwiftException $e) {
 			$this->applySetupError($e);
 		}
 
@@ -266,13 +234,11 @@ class Mail
 		$htmlBodyStr = strval($htmlBody);
 		$textBodyStr = strval($textBody);
 
-		if (!strlen($htmlBodyStr) && !strlen($textBodyStr))
-		{
+		if (!strlen($htmlBodyStr) && !strlen($textBodyStr)) {
 			throw new \InvalidArgumentException("Must provide at least one of the HTML and text bodies");
 		}
 
-		if ($textBody === null)
-		{
+		if ($textBody === null) {
 			$textBodyStr = $this->mailer->generateTextBody($htmlBodyStr);
 		}
 
@@ -282,18 +248,13 @@ class Mail
 
 		$this->message->setSubject($subject);
 
-		if (strlen($textBodyStr) && !strlen($htmlBodyStr))
-		{
+		if (strlen($textBodyStr) && !strlen($htmlBodyStr)) {
 			$this->message->setBody($textBodyStr, 'text/plain', 'utf-8');
-		}
-		else
-		{
-			if (strlen($htmlBodyStr))
-			{
+		} else {
+			if (strlen($htmlBodyStr)) {
 				$this->message->addPart($htmlBodyStr, 'text/html', 'utf-8');
 			}
-			if (strlen($textBodyStr))
-			{
+			if (strlen($textBodyStr)) {
 				$this->message->addPart($textBodyStr, 'text/plain', 'utf-8');
 			}
 		}
@@ -319,22 +280,30 @@ class Mail
 
 	public function renderTemplate()
 	{
-		if (!$this->templateName)
-		{
+
+		if (!$this->templateName) {
 			throw new \LogicException("Cannot render an email template without one specified");
 		}
 
 		$output = $this->mailer->renderMailTemplate(
-			$this->templateName, $this->templateParams, $this->language, $this->toUser
+			$this->templateName,
+			$this->templateParams,
+			$this->language,
+			$this->toUser
 		);
+
+		// $string = $output['html'];
+
+		// $replacement = '<img src="https://forum.uogenesis.pl/data/assets/logo_default/logo-gen.png" width="429" height="196" alt="Ultima Online Genesis">';
+
+		// $output['html'] = preg_replace('/>XenForo</', '>' . $replacement . '<', $string);
+		// $output['html'] = preg_replace('/>Ultima Online Genesis</', '>' . $replacement . '<', $string);
 
 		$this->setContent($output['subject'], $output['html'], $output['text']);
 
-		if ($output['headers'])
-		{
+		if ($output['headers']) {
 			$headers = $this->message->getHeaders();
-			foreach ($output['headers'] AS $header => $value)
-			{
+			foreach ($output['headers'] as $header => $value) {
 				$headers->addTextHeader($header, $value);
 			}
 		}
@@ -358,8 +327,7 @@ class Mail
 	{
 		$from = $this->message->getFrom();
 
-		if (!$from)
-		{
+		if (!$from) {
 			return null;
 		}
 
@@ -379,8 +347,7 @@ class Mail
 	 */
 	public function getSendableMessage()
 	{
-		if ($this->templateName)
-		{
+		if ($this->templateName) {
 			$this->renderTemplate();
 		}
 
@@ -389,15 +356,13 @@ class Mail
 
 	public function send(\Swift_Transport $transport = null, $allowRetry = true)
 	{
-		if ($this->setupError)
-		{
+		if ($this->setupError) {
 			$this->logSetupError($this->setupError);
 			return 0;
 		}
 
 		$message = $this->getSendableMessage();
-		if (!$message->getTo())
-		{
+		if (!$message->getTo()) {
 			return 0;
 		}
 
@@ -406,15 +371,13 @@ class Mail
 
 	public function queue()
 	{
-		if ($this->setupError)
-		{
+		if ($this->setupError) {
 			$this->logSetupError($this->setupError);
 			return false;
 		}
 
 		$message = $this->getSendableMessage();
-		if (!$message->getTo())
-		{
+		if (!$message->getTo()) {
 			return false;
 		}
 
@@ -430,8 +393,7 @@ class Mail
 	 */
 	protected function applySetupError(\Exception $e)
 	{
-		if (\XF::$debugMode)
-		{
+		if (\XF::$debugMode) {
 			throw $e;
 		}
 

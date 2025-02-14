@@ -6,6 +6,9 @@
             "js/sv/vendor/moment/LICENSE",
             "js/sv/vendor/moment/moment.js"
         ],
+        "FS/DownloadThreadAttachments": [
+            "src/addons/FS/DownloadThreadAttachments/XF/Pub/Views/DownloadZip.php"
+        ],
         "XDinc/FTSlider": [
             "src/addons/XDinc/FTSlider/Admin/Controller/FTSlider.php"
         ]
@@ -112,6 +115,12 @@
             "src/addons/XFRM/addon.json",
             "src/addons/XFRM/Pub/Controller/ResourceItem.php"
         ],
+        "BS/AIBots": [
+            "src/addons/BS/AIBots/Service/LicenseChecker.php"
+        ],
+        "BS/ChatGPTBots": [
+            "src/addons/BS/ChatGPTBots/_data/options.xml"
+        ],
         "BS/RealTimeChat": [
             "src/addons/BS/RealTimeChat/_data/options.xml"
         ],
@@ -150,8 +159,24 @@
             "src/addons/FS/AuctionPlugin/_data/templates.xml",
             "src/addons/FS/AuctionPlugin/_data/template_modifications.xml"
         ],
+        "FS/AvatarGallery": [
+            "js/FS/AvatarGallery/gallery_avatar.js",
+            "src/addons/FS/AvatarGallery/addon.json",
+            "src/addons/FS/AvatarGallery/Cron/DailyLimit.php",
+            "src/addons/FS/AvatarGallery/Job/UserAvatar.php",
+            "src/addons/FS/AvatarGallery/Setup.php",
+            "src/addons/FS/AvatarGallery/XF/Entity/User.php",
+            "src/addons/FS/AvatarGallery/XF/Pub/Controller/Account.php",
+            "src/addons/FS/AvatarGallery/XF/Pub/Controller/Register.php",
+            "src/addons/FS/AvatarGallery/_data/admin_navigation.xml",
+            "src/addons/FS/AvatarGallery/_data/cron.xml",
+            "src/addons/FS/AvatarGallery/_data/options.xml",
+            "src/addons/FS/AvatarGallery/_data/phrases.xml",
+            "src/addons/FS/AvatarGallery/_data/routes.xml",
+            "src/addons/FS/AvatarGallery/_data/templates.xml",
+            "src/addons/FS/AvatarGallery/_data/template_modifications.xml"
+        ],
         "FS/DownloadThreadAttachments": [
-            "src/addons/FS/DownloadThreadAttachments/addon.json",
             "src/addons/FS/DownloadThreadAttachments/XF/Pub/Controller/Post.php",
             "src/addons/FS/DownloadThreadAttachments/_data/templates.xml",
             "src/addons/FS/DownloadThreadAttachments/_data/template_modifications.xml"
@@ -289,9 +314,23 @@
             "src/addons/FS/ThreadThumbnail/_data/templates.xml",
             "src/addons/FS/ThreadThumbnail/_data/template_modifications.xml"
         ],
+        "FS/ThreadMultiTag": [
+            "src/addons/FS/ThreadMultiTag/addon.json",
+            "src/addons/FS/ThreadMultiTag/XF/Entity/TagContent.php",
+            "src/addons/FS/ThreadMultiTag/XF/Pub/Controller/Forum.php",
+            "src/addons/FS/ThreadMultiTag/XF/Pub/Controller/Post.php",
+            "src/addons/FS/ThreadMultiTag/XF/Repository/Tag.php",
+            "src/addons/FS/ThreadMultiTag/XF/Service/Tag/Changer.php",
+            "src/addons/FS/ThreadMultiTag/_data/class_extensions.xml"
+        ],
         "FS/UpdateUserId": [
             "src/addons/FS/UpdateUserId/addon.json",
             "src/addons/FS/UpdateUserId/Service/UpdateUser.php"
+        ],
+        "FS/UploadProgress": [
+            "js/fs/attachment_manager.js",
+            "src/addons/FS/UploadProgress/addon.json",
+            "src/addons/FS/UploadProgress/_data/template_modifications.xml"
         ],
         "FS/WebsiteRanking": [
             "src/addons/FS/WebsiteRanking/XF/Entity/Forum.php"
@@ -307,6 +346,9 @@
         "nick97/WatchList": [
             "src/addons/nick97/WatchList/addon.json",
             "src/addons/nick97/WatchList/_data/template_modifications.xml"
+        ],
+        "OzzModz/Badges": [
+            "src/addons/OzzModz/Badges/Entity/Badge.php"
         ],
         "Awedo/PostAreas": [
             "src/addons/Awedo/PostAreas/Model/PostAndThreadStats.php",
@@ -359,7 +401,7 @@
             "src/addons/XDinc/FTSlider/Widget/FTSliders.php"
         ]
     },
-    "total_missing": 5,
-    "total_inconsistent": 251,
-    "total_checked": 12721
+    "total_missing": 6,
+    "total_inconsistent": 278,
+    "total_checked": 14869
 }
