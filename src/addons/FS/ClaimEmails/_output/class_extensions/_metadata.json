@@ -1,0 +1,11 @@
+{
+    "XF-Admin-Controller-User_FS-ClaimEmails-XF-Admin-Controller-User.json": {
+        "hash": "53a9435c058d32437aa62c64e3711ac2"
+    },
+    "XF-Entity-User_FS-ClaimEmails-XF-Entity-User.json": {
+        "hash": "a65a7851e91a325de200557de9c779ea"
+    },
+    "XF-Pub-Controller-Register_FS-ClaimEmails-XF-Pub-Controller-Register.json": {
+        "hash": "1d96216e4904f974e412255d6400c371"
+    }
+}
