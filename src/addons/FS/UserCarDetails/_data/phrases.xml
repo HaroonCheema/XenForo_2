@@ -50,6 +50,7 @@
   <phrase title="fs_car_model_add_btn" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add model]]></phrase>
   <phrase title="fs_car_model_edit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Edit model]]></phrase>
   <phrase title="fs_car_model_name" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Name]]></phrase>
+  <phrase title="fs_car_please_complete_required_field" version_id="1000500" version_string="1.0.5 Alpha"><![CDATA[Please input atleast one field...!]]></phrase>
   <phrase title="fs_car_select_model_filter" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Model :]]></phrase>
   <phrase title="fs_user_car_detail_add" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Add Car Detail]]></phrase>
   <phrase title="fs_user_car_detail_add_btn" version_id="1000200" version_string="1.0.2 Alpha"><![CDATA[Add car]]></phrase>

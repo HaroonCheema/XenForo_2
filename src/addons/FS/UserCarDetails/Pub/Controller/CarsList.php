@@ -21,29 +21,18 @@ class CarsList extends AbstractController
             $carDetails = $this->applySearchFilter();
 
             if (count($carDetails->getConditions()) == 0) {
-                return $this->error(\XF::phrase('please_complete_required_field'));
+
+                $carDetails = $this->ifFilterNotApply($carDetails);
+
+                // return $this->error(\XF::phrase('fs_car_please_complete_required_field'));
             }
         } else {
 
-            $conditions = [
-                ['model_id', '!=', 0],
-                ['location_id', '!=', 0],
-                ['car_colour', '!=', ''],
-                ['car_trim', '!=', ''],
-                ['car_plaque_number', '!=', ''],
-                ['car_reg_number', '!=', ''],
-                ['car_reg_date', '!=', 0],
-                ['car_forum_name', '!=', ''],
-                ['car_unique_information', '!=', '']
-            ];
-
-            $carDetails->whereOr($conditions)
-                ->order('updated_at', 'DESC');
+            $carDetails = $this->ifFilterNotApply($carDetails);
         }
 
         $carDetails
             ->limitByPage($page, $perPage);
-
 
         $total = $carDetails->total();
 
@@ -58,6 +47,24 @@ class CarsList extends AbstractController
         ];
 
         return $this->view('FS\UserCarDetails:Index', 'fs_car_details_list_index', $viewParams);
+    }
+
+    protected function ifFilterNotApply($carDetails)
+    {
+        $conditions = [
+            ['model_id', '!=', 0],
+            ['location_id', '!=', 0],
+            ['car_colour', '!=', ''],
+            ['car_trim', '!=', ''],
+            ['car_plaque_number', '!=', ''],
+            ['car_reg_number', '!=', ''],
+            ['car_reg_date', '!=', 0],
+            ['car_forum_name', '!=', ''],
+            ['car_unique_information', '!=', '']
+        ];
+
+        return $carDetails->whereOr($conditions)
+            ->order('updated_at', 'DESC');
     }
 
     public function actionRefineSearch()
