@@ -1,0 +1,38 @@
+{
+    "option.fs_email_limit.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "ca32f41e9fc9a360c26d90c4a341b5b8"
+    },
+    "option.fs_ranfom_email_domain.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "3412f6442c18b580a5217e8831699d1d"
+    },
+    "option_explain.fs_email_limit.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "396699f6f56dc1b6dd1abb35df6e76fb"
+    },
+    "option_explain.fs_ranfom_email_domain.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "521d1179ff395af49d0401510f95bea7"
+    },
+    "option_group.fs_claim_emails.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "13abf9be0fc357513ed079243add2fbb"
+    },
+    "option_group_description.fs_claim_emails.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    }
+}

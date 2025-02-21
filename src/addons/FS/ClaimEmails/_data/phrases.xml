@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="option.fs_email_limit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Random Email Length]]></phrase>
+  <phrase title="option.fs_ranfom_email_domain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Random Email Domain]]></phrase>
+  <phrase title="option_explain.fs_email_limit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[you can change email length from here...!]]></phrase>
+  <phrase title="option_explain.fs_ranfom_email_domain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[you can change random email domain from here...!]]></phrase>
+  <phrase title="option_group.fs_claim_emails" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Claim Emails]]></phrase>
+  <phrase title="option_group_description.fs_claim_emails" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+</phrases>

@@ -44,6 +44,7 @@ return array (
   'option_group.fs_bitcoin_integ' => '[FS] Bitcoin Integration',
   'option_group.fs_bunny_integration' => '[FS] Bunny-Integration',
   'option_group.fs_cancel_multiple_subscriptions' => '[FS] Cancel Multiple Subscriptions',
+  'option_group.fs_claim_emails' => '[FS] Claim Emails',
   'option_group.fs_custom_forum_widget' => '[FS] Custom Forum Widget',
   'option_group.fs_embed_zoom_credentials' => 'Embed Zoom Api Credentials',
   'option_group.fs_female_verification_group' => '[FS] Female Verification',
