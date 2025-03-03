@@ -19,6 +19,8 @@ use XF\Payment\Stripe;
 
 use Doctrine\Common\Cache\CacheProvider;
 
+use ZipArchive;
+
 
 
 class Crud extends AbstractController
@@ -630,8 +632,177 @@ class Crud extends AbstractController
     //     exit;
     // }
 
+
+    protected function getThreadsDataInZipFile()
+    {
+
+        // $tempDir = sys_get_temp_dir();
+        // $zipFile = $tempDir . '/xenforo_exports.zip';
+        // $zip = new ZipArchive();
+        // $zip->open($zipFile, ZipArchive::CREATE | ZipArchive::OVERWRITE);
+
+        $zipFile = 'xenforo_exports.zip';
+        $zip = new ZipArchive();
+        $zip->open($zipFile, ZipArchive::CREATE | ZipArchive::OVERWRITE);
+
+        $files = [
+            'xf_thread.csv' => [],
+            'xf_post.csv' => [],
+            'xf_attachments.csv' => [],
+            'xf_attachment_data.csv' => []
+        ];
+
+        $threadId = 100;
+
+        if ($threadId) {
+            $threads = $this->finder('XF:Thread')->where('thread_id', $threadId)->fetch();
+
+            if ($threads) {
+
+                foreach ($threads as $key => $thread) {
+                    $files['xf_thread.csv'][] = $thread;
+
+                    $posts = $this->finder('XF:Post')->where('thread_id', $thread->thread_id)->fetch();
+
+                    if ($posts) {
+                        foreach ($posts as $key => $post) {
+                            $files['xf_post.csv'][] = $post;
+
+                            $attachments = $post['Attachments'];
+
+                            if (count($attachments)) {
+
+                                foreach ($attachments as $key => $attachment) {
+                                    $attachmentData = $attachment['Data'];
+                                    $files['xf_attachments.csv'][] = $attachment;
+
+
+                                    $files['xf_attachment_data.csv'][] = $attachmentData;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // Create CSV Files
+        foreach ($files as $fileName => $data) {
+            $this->writeCsvFile($fileName, $data);
+        }
+
+        // Close ZIP and prepare download
+        $zip->close();
+
+        // Force download ZIP
+        header('Content-Type: application/zip');
+        header('Content-Disposition: attachment; filename="xenforo_exports.zip"');
+        header('Pragma: no-cache');
+        header('Expires: 0');
+        readfile($zipFile);
+        exit;
+    }
+
+    protected function writeCsvFile($fileName, $data)
+    {
+        global $tempDir, $zip;
+
+        if (empty($data)) return;
+
+        $filePath = $tempDir . '/' . $fileName;
+        $file = fopen($filePath, 'w');
+
+        // Add header row
+        fputcsv($file, array_keys($data[0]));
+
+        // Add data rows
+        foreach ($data as $row) {
+            fputcsv($file, $row);
+        }
+
+        fclose($file);
+        $zip->addFile($filePath, $fileName);
+    }
+
     public function actionIndex(ParameterBag $params)
     {
+
+        $this->getThreadsDataInZipFile();
+
+        exit;
+
+        $zipFile = 'xenforo_exports.zip';
+        $zip = new ZipArchive();
+        $zip->open($zipFile, ZipArchive::CREATE | ZipArchive::OVERWRITE);
+
+        $app = \XF::app(); // Get XenForo App
+        $db = $app->db();
+
+        $tables = [
+            'xf_thread' => 'thread_id > 100',
+            'xf_post' => 'post_id > 100',
+            'xf_attachment' => 'attachment_id > 100'
+        ];
+
+        foreach ($tables as $tableName => $condition) {
+            $rows = $db->fetchAll("SELECT * FROM {$tableName} WHERE {$condition}");
+            if (!$rows) continue;
+
+            $fileName = "{$tableName}.csv";
+            $filePath = sys_get_temp_dir() . "/" . $fileName;
+
+            $output = fopen($filePath, 'w');
+            fputcsv($output, array_keys($rows[0]));
+            foreach ($rows as $row) {
+                fputcsv($output, $row);
+            }
+            fclose($output);
+
+            $zip->addFile($filePath, $fileName);
+        }
+
+        $zip->close();
+
+        // Force download ZIP
+        header('Content-Type: application/zip');
+        header('Content-Disposition: attachment; filename="xenforo_exports.zip"');
+        header('Pragma: no-cache');
+        header('Expires: 0');
+        readfile($zipFile);
+        exit;
+
+        $app = \XF::app();
+        $db = $app->db();
+
+        $tableName = 'xf_thread';
+        $fileName = $tableName . '_filtered.csv';
+
+        $rows = $db->fetchAll("SELECT * FROM {$tableName} WHERE thread_id > ?", 100);
+
+        // Check if there are records
+        if (!$rows) {
+            die('No records found with thread_id > 600.');
+        }
+
+        // Set headers to force CSV download
+        header('Content-Type: text/csv');
+        header('Content-Disposition: attachment; filename="' . $fileName . '"');
+        header('Pragma: no-cache');
+        header('Expires: 0');
+
+        $output = fopen('php://output', 'w');
+
+        // Get column names for CSV header
+        $header = array_keys($rows[0]);
+        fputcsv($output, $header);
+
+        // Add each row to the CSV
+        foreach ($rows as $row) {
+            fputcsv($output, $row);
+        }
+
+        fclose($output);
+        exit; // Stop further execution
 
         // \XF[addonFlareForumStatsForumStatRepo]->renderForumStats('forum_list_above_nodes');
 
