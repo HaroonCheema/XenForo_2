@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cron>
+  <entry entry_id="afprExpiryReminders" cron_class="AddonFlare\PaidRegistrations\Cron\ExpiryReminders" cron_method="process" active="1"><![CDATA[{"day_type":"dom","dom":[-1],"hours":[-1],"minutes":[5]}]]></entry>
+  <entry entry_id="afprGuestPurchases" cron_class="AddonFlare\PaidRegistrations\Cron\GuestPurchases" cron_method="process" active="1"><![CDATA[{"day_type":"dom","dom":[-1],"hours":[-1],"minutes":[0,10,20,30,40,50]}]]></entry>
+</cron>

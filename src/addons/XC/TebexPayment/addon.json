@@ -1,0 +1,14 @@
+{
+    "legacy_addon_id": "",
+    "title": "[XC] TebexPayment",
+    "description": "Xenforo 2 Addon enables the Tebex Checkout API system directly on the website. The development team behind GameServersHub designed addon.com",
+    "version_id": 1080010,
+    "version_string": "1.8.0 Alpha",
+    "dev": "XenCircle",
+    "dev_url": "https://discord.gg/gsh",
+    "faq_url": "https://discord.gg/gsh",
+    "support_url": "https://discord.gg/gsh",
+    "extra_urls": [],
+    "require": [],
+    "icon": ""
+}

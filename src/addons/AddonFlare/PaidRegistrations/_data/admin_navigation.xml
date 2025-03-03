@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<admin_navigation>
+  <admin_navigation_entry navigation_id="af_paidregistrations" parent_navigation_id="users" display_order="2005" link="paid-registrations" icon="fa-money" debug_only="0" development_only="0" hide_no_children="1"/>
+  <admin_navigation_entry navigation_id="af_paidregistrations_acc" parent_navigation_id="af_paidregistrations" display_order="10" link="paid-registrations" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="af_paidregistrations_coupons" parent_navigation_id="af_paidregistrations" display_order="15" link="paid-registrations/coupons" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="af_paidregistrations_opt" parent_navigation_id="af_paidregistrations" display_order="5" link="options/groups/af_paidregistrations/" debug_only="0" development_only="0" hide_no_children="0"/>
+</admin_navigation>

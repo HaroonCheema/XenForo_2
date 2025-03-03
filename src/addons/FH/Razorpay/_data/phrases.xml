@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="after_payment_profile_create" version_id="1000110" version_string="1.0.1 Alpha"><![CDATA[After the payment profile create need to set the razor pay payment id 
+<a href="{boardUrl}/{url}">here</a>.]]></phrase>
+  <phrase title="razor_api_key" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Api key]]></phrase>
+  <phrase title="razor_api_key_exlain" version_id="1000110" version_string="1.0.1 Alpha"><![CDATA[Razor Pay api key. You can find this <a href="https://dashboard.razorpay.com/signin?screen=sign_in">here</a>.]]></phrase>
+  <phrase title="razor_api_secret_key" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Secret key]]></phrase>
+  <phrase title="razor_api_secret_key_explain" version_id="1000110" version_string="1.0.1 Alpha"><![CDATA[Razor Pay secret key. You can find this <a href="https://dashboard.razorpay.com/signin?screen=sign_in">here</a>.]]></phrase>
+  <phrase title="razor_important" version_id="1000110" version_string="1.0.1 Alpha"><![CDATA[Important]]></phrase>
+  <phrase title="razor_pay" version_id="1000110" version_string="1.0.1 Alpha"><![CDATA[RazorPay]]></phrase>
+  <phrase title="razor_payment_you_must_provide_an_api_key" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Must provide api key.]]></phrase>
+  <phrase title="razor_payment_you_must_provide_an_secret_key" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Must Provide Secret Key]]></phrase>
+  <phrase title="razor_purchase_not_found" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[purchase request not found....!]]></phrase>
+  <phrase title="razor_some_thing_went_wrong" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Some Thing went Wrong.]]></phrase>
+  <phrase title="razor_webhook" version_id="1000110" version_string="1.0.1 Alpha"><![CDATA[Webhook]]></phrase>
+  <phrase title="razor_webhook_explain" version_id="1000110" version_string="1.0.1 Alpha"><![CDATA[Copy the web hook url above and set in razor pay Webhook Setup  also active all <strong>Events<strong>.]]></phrase>
+</phrases>

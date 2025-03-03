@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class_extensions>
+  <extension from_class="AddonFlare\PaidRegistrations\Entity\AccountType" to_class="FS\BitCart\AddonFlare\PaidRegistrations\Entity\AccountType" execute_order="10" active="1"/>
+  <extension from_class="AddonFlare\PaidRegistrations\Repository\AccountType" to_class="FS\BitCart\AddonFlare\PaidRegistrations\Repository\AccountType" execute_order="10" active="1"/>
+  <extension from_class="XF\Pub\Controller\Register" to_class="FS\BitCart\XF\Pub\Controller\Register" execute_order="10" active="1"/>
+  <extension from_class="XF\Purchasable\UserUpgrade" to_class="FS\BitCart\XF\Purchasable\UserUpgrade" execute_order="10" active="1"/>
+</class_extensions>

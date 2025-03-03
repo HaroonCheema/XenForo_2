@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="admin" title="payment_profile_razor_pay" version_id="1000310" version_string="1.0.3 Alpha"><![CDATA[<xf:textboxrow name="options[api_key]" value="{$profile.options.api_key}"
+	label="{{ phrase('razor_api_key') }}" explain="{{ phrase('razor_api_key_exlain') }}"
+	/>
+<xf:textboxrow name="options[api_secret]" value="{$profile.options.api_secret}"
+	label="{{ phrase('razor_api_secret_key') }}" explain="{{ phrase('razor_api_secret_key_explain') }}"
+	/>
+<xf:formrow label="{{ phrase('razor_webhook') }}" explain="{{ phrase('razor_webhook_explain') }}">
+	{{$xf.options.boardUrl}}/payment_callback.php?_xfProvider=razor_pay
+</xf:formrow>]]></template>
+  <template type="public" title="account_upgrades_razorpay" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:if is="$available is not empty">
+	<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+	<xf:foreach loop="$available" value="$upgrade">
+		<script>
+			document.getElementById('rzp-button-{{$upgrade.user_upgrade_id}}').onclick = function(e) {
+				// Get the form by its ID
+				var form = document.getElementById('paymentForm-{{$upgrade.user_upgrade_id}}');
+
+				// Get the form data
+				var formData = new FormData(form);
+
+				// Retrieve payment_profile_id from the FormData
+				var paymentProfileId = formData.get('payment_profile_id');
+
+
+				console.log(paymentProfileId);
+				var userUpgradeId = formData.get('user_upgrade_id'); 
+								console.log(userUpgradeId);
+				// Check if the payment profile ID is 2
+				if (paymentProfileId == {{$xf.options.razor_payment_profile_id}}) {
+					console.log(paymentProfileId);
+					// If payment_profile_id is 2, submit the form via AJAX
+					e.preventDefault(); // Prevent default form submission
+
+					var actionUrl = form.action;
+					 var urlParams = new URLSearchParams(actionUrl.split('?')[1]);
+					 var userUpgradeId = urlParams.get('user_upgrade_id'); // 
+					console.log(paymentProfileId);
+					console.log(userUpgradeId);
+
+					 var ajaxData = new FormData();
+					ajaxData.append('user_upgrade_id', userUpgradeId); // Append user_upgrade_id to FormData
+					ajaxData.append('payment_profile_id', paymentProfileId); // Append payment_profile_id to FormData
+					// Make the AJAX request using the new FormData object
+						XF.ajax('POST', XF.canonicalizeUrl('index.php?razorpay/create-order'), ajaxData, function(res) {
+							var razorpayOptions = res.razorpayOptions;
+							
+							  console.log(razorpayOptions);
+
+							var rzp1 = new Razorpay(razorpayOptions);
+							rzp1.open();
+						});
+
+				} 
+				// If payment_profile_id is not 2, do nothing; the form will submit normally
+			}
+		</script>
+	</xf:foreach>
+</xf:if>]]></template>
+  <template type="public" title="payment_create_razorpay" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+		var rzp1 = new Razorpay({{$razorpayOptions|raw}});
+		rzp1.open();
+	
+</script>]]></template>
+</templates>

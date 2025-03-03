@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="must_provide_password" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Must Provide Password Tebex]]></phrase>
+  <phrase title="must_provide_username" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Must provide Username Tebex]]></phrase>
+  <phrase title="must_provide_webhook_url" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[webhook Url Require....!]]></phrase>
+  <phrase title="password_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Get the password from <a href="https://creator.tebex.io/developers/api-keys">Private Key</a>]]></phrase>
+  <phrase title="tebex_revenue_share_should_be_digit" version_id="1040010" version_string="1.4.0 Alpha"><![CDATA[Tebex Revenue share should be digit.]]></phrase>
+  <phrase title="username_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Get the username by <a href="https://creator.tebex.io/developers/api-keys">Username</a>]]></phrase>
+  <phrase title="webhook_secret" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Webhook Secret]]></phrase>
+  <phrase title="webhook_secret_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You will also need to add your callback URL in this <a href="https://creator.tebex.io/webhooks">location</a>. Click "Add an endpoint" and add: {boardUrl}/{url}]]></phrase>
+  <phrase title="xc_password_tebex" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Tebex Password]]></phrase>
+  <phrase title="xc_tebex_both_field_required" version_id="1040010" version_string="1.4.0 Alpha"><![CDATA[Tebex Both Wallet address and Commission Required.....]]></phrase>
+  <phrase title="xc_tebex_commission" version_id="1040010" version_string="1.4.0 Alpha"><![CDATA[Tebex Share Revenue in %]]></phrase>
+  <phrase title="xc_tebex_commission_explain" version_id="1040010" version_string="1.4.0 Alpha"><![CDATA[% of Share Revenue should be digit.]]></phrase>
+  <phrase title="xc_tebex_wallet" version_id="1030010" version_string="1.3.0 Alpha"><![CDATA[Tebex Wallet Address]]></phrase>
+  <phrase title="xc_tebex_wallet_address" version_id="1040010" version_string="1.4.0 Alpha"><![CDATA[Tebex Wallet Address
+]]></phrase>
+  <phrase title="xc_tebex_wallet_explain" version_id="1030010" version_string="1.3.0 Alpha"><![CDATA[Enter you wallet address here to accept this payment method.]]></phrase>
+  <phrase title="xc_username_tebex" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Tebex Username]]></phrase>
+</phrases>

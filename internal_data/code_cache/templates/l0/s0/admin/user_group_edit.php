@@ -140,6 +140,22 @@ return array(
 
 		' . '' . '
 		' . '' . '
+' . $__templater->formTextBoxRow(array(
+		'name' => 'wallet_address',
+		'value' => $__vars['userGroup']['wallet_address'],
+	), array(
+		'label' => 'Tebex Wallet Address
+',
+	)) . '
+' . $__templater->formTextBoxRow(array(
+		'name' => 'comission',
+		'value' => ($__vars['userGroup']['comission'] ? $__vars['userGroup']['comission'] : ''),
+	), array(
+		'label' => 'Tebex Share Revenue in %',
+		'explain' => '% of Share Revenue should be digit.',
+	)) . '
+
+
 
 		' . $__templater->callMacro('permission_macros', 'edit_groups', array(
 		'interfaceGroups' => $__vars['permissionData']['interfaceGroups'],

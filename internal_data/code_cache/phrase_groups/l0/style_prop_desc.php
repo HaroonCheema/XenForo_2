@@ -11,6 +11,8 @@ return array (
   'style_prop_desc.FTSlider_title_infoblock' => 'This option completely hide the info block.',
   'style_prop_desc.FTSlider_titlefont' => 'The font list for your thread title.',
   'style_prop_desc.afForumStatsCounterColor' => '',
+  'style_prop_desc.af_pr_gift_postbit' => '',
+  'style_prop_desc.af_pr_gift_profile' => '',
   'style_prop_desc.animationSpeed' => 'All animations within the system base their speed on this value. Smaller values (in seconds) make for faster animations',
   'style_prop_desc.avatarBg' => 'The basic background of all avatars, graphical and generic',
   'style_prop_desc.avatarBorderRadius' => 'Controls the size of the rounded corners on avatars - a sufficiently large value will make avatars circular',

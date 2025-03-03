@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="admin" title="payment_profile_bit_cart" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:textboxrow name="options[store_id]" value="{$profile.options.store_id}"
+	label="{{ phrase('store_id') }}" explain="{{ phrase('store_id_explain') }}"
+	/>
+<xf:textboxrow name="options[basic_url]" value="{$profile.options.basic_url}"
+	label="{{ phrase('basic_admin_route') }}" explain="{{ phrase('basic_admin_route_explain') }}"
+	/>]]></template>
+  <template type="public" title="register_without_payment" version_id="1000110" version_string="1.0.1 Alpha"><![CDATA[<xf:title>{{ phrase('fs_registration_without_payment') }}</xf:title>
+<xf:css src="andy_paid_registrations.less" />
+<div class="block">
+	<div class="block-container">
+		<div class="block-body block-row paid-registrations-block-body">
+			<div class="blockMessage blockMessage--important blockMessage--iconic">
+				<xf:inforow rowtype="confirm">{{ phrase('fs_registration_with_out_payment_is_not_allowed') }}</xf:inforow>
+			</div>
+			<xf:button href="{{ link('register') }}" class="button--link">{{ phrase('register') }}</xf:button>
+		</div>
+	</div>
+</div>]]></template>
+</templates>

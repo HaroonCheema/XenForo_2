@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<options>
+  <option option_id="af_paidregistrations_box_margin" edit_format="textbox" data_type="string" advanced="0">
+    <default_value>1%</default_value>
+    <relation group_id="af_paidregistrations" display_order="15"/>
+  </option>
+  <option option_id="af_paidregistrations_cbf" edit_format="callback" data_type="string" advanced="0">
+    <default_value></default_value>
+    <edit_format_params>AddonFlare\PaidRegistrations\Listener::adminBrandingFreeText</edit_format_params>
+    <relation group_id="af_paidregistrations" display_order="150"/>
+  </option>
+  <option option_id="af_paidregistrations_force_same_email" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="af_paidregistrations" display_order="50"/>
+  </option>
+  <option option_id="af_paidregistrations_freeTitle" edit_format="textbox" data_type="string" advanced="0">
+    <default_value>Basic</default_value>
+    <relation group_id="af_paidregistrations" display_order="1"/>
+  </option>
+  <option option_id="af_paidregistrations_gift_upgrades" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="af_paidregistrations" display_order="28"/>
+  </option>
+  <option option_id="af_paidregistrations_gift_upgrades_alert" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="af_paidregistrations" display_order="30"/>
+  </option>
+  <option option_id="af_paidregistrations_gift_upgrades_anon" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="af_paidregistrations" display_order="29"/>
+  </option>
+  <option option_id="af_paidregistrations_gift_upgrades_email" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="af_paidregistrations" display_order="31"/>
+  </option>
+  <option option_id="af_paidregistrations_guest" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="af_paidregistrations" display_order="20"/>
+  </option>
+  <option option_id="af_paidregistrations_member" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="af_paidregistrations" display_order="25"/>
+  </option>
+  <option option_id="af_paidregistrations_member_sideNav" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="af_paidregistrations" display_order="35"/>
+  </option>
+  <option option_id="af_paidregistrations_member_sidebar" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="af_paidregistrations" display_order="40"/>
+  </option>
+  <option option_id="af_paidregistrations_paypal_redirect" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="af_paidregistrations" display_order="45"/>
+  </option>
+  <option option_id="af_paidregistrations_priceFontSize" edit_format="textbox" data_type="string" advanced="0">
+    <default_value>28px</default_value>
+    <relation group_id="af_paidregistrations" display_order="10"/>
+  </option>
+  <option option_id="af_pr_upgrade_expiry_reminders" edit_format="template" data_type="array" validation_class="\AddonFlare\PaidRegistrations\Option\ExpiryReminders" validation_method="verifyOption" advanced="0">
+    <default_value>{"enabled":"1","alerts":"1","emails":"1","days":[1,3]}</default_value>
+    <edit_format_params>af_pr_option_template_expiry_reminders</edit_format_params>
+    <sub_options>*</sub_options>
+    <relation group_id="af_paidregistrations" display_order="60"/>
+  </option>
+  <option option_id="af_pr_upgrade_extend" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="af_paidregistrations" display_order="26"/>
+  </option>
+</options>

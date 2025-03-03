@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="basic_admin_route" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Basic Admin url.]]></phrase>
+  <phrase title="basic_admin_route_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Basic Admin Url.Do not put backslash at the end.]]></phrase>
+  <phrase title="basic_url_must_required" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Basic Url must required.....!]]></phrase>
+  <phrase title="fs_registration_with_out_payment_is_not_allowed" version_id="1000110" version_string="1.0.1 Alpha"><![CDATA[Not Allow to register without payment clear.]]></phrase>
+  <phrase title="fs_registration_without_payment" version_id="1000110" version_string="1.0.1 Alpha"><![CDATA[Register Without Payment]]></phrase>
+  <phrase title="option.bit_cart_profile_id" version_id="1000110" version_string="1.0.1 Alpha"><![CDATA[BitCart Payment Profile Id]]></phrase>
+  <phrase title="option_explain.bit_cart_profile_id" version_id="1000110" version_string="1.0.1 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_group.bit_cart_paid_registration" version_id="1000110" version_string="1.0.1 Alpha"><![CDATA[BitCart For Paid Registration Addon]]></phrase>
+  <phrase title="option_group_description.bit_cart_paid_registration" version_id="1000110" version_string="1.0.1 Alpha"><![CDATA[]]></phrase>
+  <phrase title="store_id" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Store Id]]></phrase>
+  <phrase title="store_id_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Find Store <a href="https://admin.bitcart.ai/stores">Click here </a>]]></phrase>
+  <phrase title="store_id_must_require" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Store Id Must required....!]]></phrase>
+</phrases>

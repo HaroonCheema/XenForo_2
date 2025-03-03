@@ -1,6 +1,8 @@
 <?php
 return array (
   'cron_entry.activitySummaryEmail' => 'Send activity summary email',
+  'cron_entry.afprExpiryReminders' => '[AddonFlare] Paid Registrations: Expiry Reminders',
+  'cron_entry.afprGuestPurchases' => '[AddonFlare] Paid Registrations: Guest Purchases',
   'cron_entry.altf_hourly_cron' => 'Thread Filter - Hourly Cron',
   'cron_entry.awedoPostAreasCacheUpdate' => 'Post Areas (Update Cache)',
   'cron_entry.bh_updateBrandDiscussionC' => 'Update brand discussion count',

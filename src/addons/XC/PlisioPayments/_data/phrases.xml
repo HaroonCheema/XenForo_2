@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="xc_api_key" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[API key]]></phrase>
+  <phrase title="xc_api_key_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter your API key for Coinbase Commerce. You can find this <a href="https://commerce.coinbase.com/dashboard/settings">here</a>. Additionally, you may also need to whitelist your domain on that page (your board URL is: {boardUrl}).]]></phrase>
+  <phrase title="xc_webhook_secret" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Webhook secret]]></phrase>
+  <phrase title="xc_webhook_secret_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[The key for your webhook secret. Found on the <a href="https://plisio.net/account">Coinbase Commerce settings page</a>. You will also need to add your callback URL in the same location. Click "Add an endpoint" and add: {boardUrl}/{url}]]></phrase>
+  <phrase title="xc_you_must_provide_a_webhook_secret" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Provided Web hook Url....!]]></phrase>
+  <phrase title="xc_you_must_provide_an_api_key" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Must Provided Api key....!]]></phrase>
+</phrases>

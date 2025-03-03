@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<content_type_fields>
+  <field content_type="af_pr_gift_upgrade" field_name="alert_handler_class">AddonFlare\PaidRegistrations\Alert\GiftUpgrade</field>
+  <field content_type="af_pr_gift_upgrade" field_name="entity">XF:UserUpgrade</field>
+  <field content_type="af_pr_user_upgrade" field_name="alert_handler_class">AddonFlare\PaidRegistrations\Alert\UserUpgrade</field>
+  <field content_type="af_pr_user_upgrade" field_name="email_stop_class">AddonFlare\PaidRegistrations\EmailStop\UserUpgrade</field>
+  <field content_type="af_pr_user_upgrade" field_name="entity">XF:UserUpgrade</field>
+</content_type_fields>

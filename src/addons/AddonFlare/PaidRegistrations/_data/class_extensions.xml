@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class_extensions>
+  <extension from_class="AddonFlare\StripeCheckout\Payment\StripeCheckout" to_class="AddonFlare\PaidRegistrations\AddonFlare\StripeCheckout\Payment\StripeCheckout" execute_order="10" active="1"/>
+  <extension from_class="XF\Entity\PurchaseRequest" to_class="AddonFlare\PaidRegistrations\XF\Entity\PurchaseRequest" execute_order="10" active="1"/>
+  <extension from_class="XF\Entity\User" to_class="AddonFlare\PaidRegistrations\XF\Entity\User" execute_order="10" active="1"/>
+  <extension from_class="XF\Entity\UserUpgrade" to_class="AddonFlare\PaidRegistrations\XF\Entity\UserUpgrade" execute_order="10" active="1"/>
+  <extension from_class="XF\Payment\PayPal" to_class="AddonFlare\PaidRegistrations\XF\Payment\PayPal" execute_order="9999" active="1"/>
+  <extension from_class="XF\Payment\Stripe" to_class="AddonFlare\PaidRegistrations\XF\Payment\Stripe" execute_order="9999" active="1"/>
+  <extension from_class="XF\Pub\Controller\Account" to_class="AddonFlare\PaidRegistrations\XF\Pub\Controller\Account" execute_order="9999" active="1"/>
+  <extension from_class="XF\Pub\Controller\Purchase" to_class="AddonFlare\PaidRegistrations\XF\Pub\Controller\Purchase" execute_order="9999" active="1"/>
+  <extension from_class="XF\Pub\Controller\Register" to_class="AddonFlare\PaidRegistrations\XF\Pub\Controller\Register" execute_order="9999" active="1"/>
+  <extension from_class="XF\Purchasable\UserUpgrade" to_class="AddonFlare\PaidRegistrations\XF\Purchasable\UserUpgrade" execute_order="9999" active="1"/>
+  <extension from_class="XF\Repository\UserUpgrade" to_class="AddonFlare\PaidRegistrations\XF\Repository\UserUpgrade" execute_order="10" active="1"/>
+  <extension from_class="XF\Template\Templater" to_class="AddonFlare\PaidRegistrations\XF\Template\Templater" execute_order="9999" active="1"/>
+</class_extensions>

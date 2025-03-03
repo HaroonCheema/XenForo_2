@@ -1,0 +1,1342 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="admin" title="af_paidregistrations_accounttype_delete" version_id="1040770" version_string="1.4.7"><![CDATA[<xf:title>{{ phrase('confirm_action') }}</xf:title>
+
+<xf:form action="{{ link('paid-registrations/delete', $accountType) }}" ajax="true" class="block">
+    <div class="block-container">
+        <div class="block-body">
+            <xf:inforow rowtype="confirm">
+                {{ phrase('please_confirm_that_you_want_to_delete_following:') }}
+                {{ phrase('af_paidregistrations_accountType') }}: <strong><a href="{{ link('paid-registrations/edit', $accountType) }}">{$accountType.title}</a></strong>
+            </xf:inforow>
+        </div>
+        <xf:submitrow rowtype="simple" icon="delete" />
+    </div>
+</xf:form>]]></template>
+  <template type="admin" title="af_paidregistrations_accounttype_edit" version_id="1070170" version_string="1.7.1"><![CDATA[<xf:if is="$accountType.isInsert()">
+    <xf:title>Add {{ phrase('af_paidregistrations_accountType') }}</xf:title>
+<xf:else />
+    <xf:title>Edit {{ phrase('af_paidregistrations_accountType') }}</xf:title>
+</xf:if>
+
+<xf:pageaction if="$accountType.isUpdate() AND $accountType.for_deletion">
+    <xf:button href="{{ link('paid-registrations/delete', $accountType) }}" icon="delete" overlay="true" />
+</xf:pageaction>
+
+<xf:css>
+    .inputGroup--color {
+        width: 300px;
+    }
+</xf:css>
+
+<xf:form action="{{ link('paid-registrations/save', $accountType) }}" ajax="true" class="block">
+    <div class="block-container">
+        <div class="block-body">
+            <xf:formrow label="User Upgrade">
+                <xf:if is="$accountType.UserUpgrade">
+                    <a target="_blank" href="{{ link('user-upgrades/edit', $accountType.UserUpgrade) }}">{$accountType.UserUpgrade.title} ({$accountType.UserUpgrade.cost_phrase})</a>
+                <xf:else />
+                    {$accountType.title}
+                </xf:if>
+            </xf:formrow>
+
+            <xf:if is="$accountType.UserUpgrade">
+                <xf:radiorow name="title_type" value="{{ $accountType.custom_title ? 'custom' : 'default' }}" label="{{ phrase('title') }}">
+                    <xf:option value="default">{$accountType.UserUpgrade.title}</xf:option>
+                    <xf:option value="custom" data-hide="" label="{{ phrase('custom_title') }}">
+                        <xf:textbox name="custom_title" value="{$accountType.custom_title}"
+                            maxlength="{{ max_length($accountType, 'custom_title') }}" />
+                    </xf:option>
+                </xf:radiorow>
+            </xf:if>
+
+            <xf:numberboxrow name="row" value="{{ $accountType.row ?: 1 }}" min="1" step="1"
+                label="Row" />
+
+            <xf:macro template="display_order_macros" name="row"
+                arg-value="{{ $accountType.display_order ?: 5 }}" arg-step="5" />
+
+            <xf:macro template="public:color_picker_macros" name="color_picker"
+                arg-name="color"
+                arg-value="{{ $accountType.color ?: property('paletteColor4') }}"
+                arg-allowPalette="{{ true }}"
+                arg-label="Color"
+                arg-required="{{ true }}"
+                arg-includeScripts="{{ true }}"
+                arg-explain="Color of the upgrade shown in the registration page" />
+
+            <xf:textarearow name="features" value="{$accountType.features}" code="true" autosize="true"
+                label="Features">
+                <xf:explain>
+                    These are shown in the registration page<br>
+                    1 Per Line (HTML Allowed)
+                </xf:explain>
+            </xf:textarearow>
+
+            <xf:checkboxrow label="Featured">
+                <xf:explain>Display a "{{ phrase('af_paidregistrations_featured') }}" badge for this upgrade?</xf:explain>
+                <xf:option name="is_featured" selected="$accountType.is_featured"
+                    label="{{ phrase('yes') }}" />
+            </xf:checkboxrow>
+
+            <xf:if is="$accountType.user_upgrade_id != -1">
+
+                <xf:macro template="helper_user_group_edit" name="checkboxes"
+                    arg-label="User groups allowed to purchase"
+                    arg-id="purchase_user_group"
+                    arg-selectedUserGroups="{$accountType.purchase_user_group_ids}" />
+
+                <xf:if is="$accountType.version">
+                    <xf:checkboxrow label="Is Giftable">
+                        <xf:explain>Allow users to purchase as a gift?</xf:explain>
+                        <xf:option name="is_giftable" selected="$accountType.is_giftable"
+                            label="{{ phrase('yes') }}" />
+                    </xf:checkboxrow>
+
+                    <xf:checkboxrow label="Allow Custom Amount" explain="{{ phrase('af_paidregistrations_customamount_setting_explain') }}">
+                        <xf:option name="allow_custom_amount" selected="$accountType.allow_custom_amount"
+                            label="{{ phrase('yes') }}"
+                            data-xf-init="disabler"
+                            data-container=".js-hiderContainer"
+                            data-hide="yes"
+                            data-invert="true">
+                                <xf:dependent>
+                                    <xf:textbox name="custom_amount_min" class="input--autoSize"
+                                    value="{$accountType.custom_amount_min}" />
+                                    <p class="formRow-explain">{{ phrase('af_paidregistrations_min_amount') }}</p>
+                                </xf:dependent>
+                                <xf:dependent>
+                                    <xf:checkbox>
+                                        <xf:option value="1" label="{{ phrase('af_paidregistrations_disable_for_guests') }}"
+                                            name="disable_custom_amount_guest" selected="$accountType.disable_custom_amount_guest">
+                                        </xf:option>
+                                    </xf:checkbox>
+                                </xf:dependent>
+                        </xf:option>
+                    </xf:checkboxrow>
+                <xf:else />
+                    <xf:checkboxrow label="Is Giftable">
+                        <xf:explain>Allow users to purchase as a gift?</xf:explain>
+                        <xf:option name="" disabled="disabled" selected="0">
+                            <xf:label>{{ phrase('yes') }} (Available <xf:macro name="upgradeMessage" />)</xf:label>
+                        </xf:option>
+                    </xf:checkboxrow>
+                    <xf:hiddenval name="is_giftable" value="1" />
+                    <xf:checkboxrow label="Allow Custom Amount" explain="{{ phrase('af_paidregistrations_customamount_setting_explain') }}">
+                        <xf:option name="" disabled="disabled" selected="0">
+                            <xf:label>{{ phrase('yes') }} (Available <xf:macro name="upgradeMessage" />)</xf:label>
+                        </xf:option>
+                    </xf:checkboxrow>
+                </xf:if>
+
+                <div class="js-hiderContainer">
+                    <hr class="formRowSep" />
+                    <xf:formrow rowtype="input"
+                        label="Alias User Upgrades"
+                        explain="{{ phrase('af_paidregistrations_alias_explain') }}">
+
+                        <ul class="listPlain inputGroup-container">
+                            <xf:foreach loop="$accountType.alias_user_upgrades" key="$counter" value="$alias">
+                                <li class="inputGroup" dir="ltr">
+                                    <xf:select name="alias_user_upgrades[{$counter}][user_upgrade_id]" value="{$alias.user_upgrade_id}" class="input--autoSize">
+                                        <xf:option>{{ phrase('none') }}</xf:option>
+                                        <xf:foreach loop="$upgrades" key="$user_upgrade_id" value="$upgrade">
+                                            <xf:option value="{$user_upgrade_id}">{$upgrade.title} ({$upgrade.cost_phrase}{{ $upgrade.length_unit ? '' : ' ' . phrase('af_paidregistrations_permanent') }})</xf:option>
+                                        </xf:foreach>
+                                    </xf:select>
+                                    <span class="inputGroup-splitter"></span>
+
+                                    <xf:checkbox>
+                                        <xf:option name="alias_user_upgrades[{$counter}][default]" value="1" selected="$alias.default" labelclass="inputGroup-text">{{ phrase('default') }}</xf:option>
+                                    </xf:checkbox>
+                                </li>
+                            </xf:foreach>
+                            <li class="inputGroup" dir="ltr" data-xf-init="field-adder" data-clone-init="true" data-increment-format="alias_user_upgrades[{counter}]">
+                                <xf:select name="alias_user_upgrades[{$nextCounter}][user_upgrade_id]" value="" class="input--autoSize">
+                                    <xf:option>{{ phrase('none') }}</xf:option>
+                                    <xf:foreach loop="$upgrades" key="$user_upgrade_id" value="$upgrade">
+                                        <xf:option value="{$user_upgrade_id}">{$upgrade.title} ({$upgrade.cost_phrase}{{ $upgrade.length_unit ? '' : ' ' . phrase('af_paidregistrations_permanent') }})</xf:option>
+                                    </xf:foreach>
+                                </xf:select>
+                                <span class="inputGroup-splitter"></span>
+                                <span class="inputGroup-text">
+                                    <xf:checkbox standalone="true">
+                                        <xf:option name="alias_user_upgrades[{$nextCounter}][default]" value="1">{{ phrase('default') }}</xf:option>
+                                    </xf:checkbox>
+                                </span>
+                            </li>
+                        </ul>
+                    </xf:formrow>
+                </div>
+            </xf:if>
+
+            <xf:if is="$accountType.for_deletion">
+                <xf:checkboxrow label="Active">
+                    <xf:option name="active" selected="$accountType.active"
+                        label="{{ phrase('yes') }}" />
+                </xf:checkboxrow>
+            <xf:else />
+                <xf:checkboxrow label="Active">
+                    <xf:option name="" disabled="disabled" selected="1">
+                        <xf:label>{{ phrase('yes') }} (disable <xf:macro name="upgradeMessage" />)</xf:label>
+                    </xf:option>
+                </xf:checkboxrow>
+            </xf:if>
+
+            <xf:hiddenval name="user_upgrade_id">{$accountType.user_upgrade_id}</xf:hiddenval>
+
+        </div>
+        <xf:submitrow icon="save" sticky="true" />
+    </div>
+</xf:form>
+
+<xf:macro name="upgradeMessage">
+    by&nbsp;<a href="https://www.addonflare.com/xenforo-2-addons/paid-registrations.9/" target="_blank">upgrading to full version</a>
+</xf:macro>]]></template>
+  <template type="admin" title="af_paidregistrations_accounttype_list" version_id="1060470" version_string="1.6.4"><![CDATA[<xf:title>{{ phrase('af_paidregistrations_accountTypes') }}</xf:title>
+
+<xf:pageaction>
+    <xf:button href="{{ link('paid-registrations/add') }}" icon="add" overlay="true">{{ phrase('af_paidregistrations_add_account_type') }}</xf:button>
+</xf:pageaction>
+
+<xf:set var="$first" value="{$accountTypeRows|first|first}" />
+
+<xf:form action="{{ link('paid-registrations/toggle') }}" ajax="true" class="block">
+    <xf:if is="$accountTypeRows AND !$first.version">
+        <div class="block-outer">
+            <div class="">
+                <div class="inputGroup inputGroup--inline inputGroup--joined">
+                    <xf:checkbox standalone="true">
+                        <xf:option labelclass="inputGroup-text" checked="checked" disabled="true" class="">
+                            <xf:label>Always show "{$xf.options.af_paidregistrations_freeTitle}" account type (hide by&nbsp;<a href="https://www.addonflare.com/xenforo-2-addons/paid-registrations.9/" target="_blank">upgrading to full version</a>)</xf:label>
+                        </xf:option>
+                    </xf:checkbox>
+                </div>
+            </div>
+        </div>
+    </xf:if>
+    <div class="block-container">
+        <xf:set var="$totals" value="0" />
+        <xf:foreach loop="$accountTypeRows" key="$row" value="$accountTypeRow">
+            <div class="block-body">
+                <xf:datalist>
+                    <xf:datarow rowtype="subsection" rowclass="dataList-row--noHover">
+                        <xf:cell colspan="3">Row #{$row}</xf:cell>
+                    </xf:datarow>
+                    <xf:foreach loop="$accountTypeRow" value="$accountType">
+                        <xf:datarow label="{$accountType.title}" href="{{ link('paid-registrations/edit', $accountType) }}" rowclass="">
+                            <xf:hint></xf:hint>
+                            <xf:explain>{{ $accountType.UserUpgrade.cost_phrase ?: phrase('af_paidregistrations_free') }}</xf:explain>
+                            <xf:toggle name="active[{$accountType.account_type_id}]" selected="$accountType.active"
+                                class="dataList-cell--separated" submit="true"
+                                tooltip="{{ phrase('enable_disable_x', {'title': $accountType.title}) }}" />
+                            <xf:if is="$accountType.for_deletion">
+                                <xf:delete href="{{ link('paid-registrations/delete', $accountType) }}" tooltip="{{ phrase('delete') }}" />
+                            </xf:if>
+                        </xf:datarow>
+                    </xf:foreach>
+                </xf:datalist>
+            </div>
+            <xf:set var="$totals" value="{{ $totals + count($accountTypeRow) }}" />
+        </xf:foreach>
+
+        <div class="block-footer">
+            <span class="block-footer-counter">{{ display_totals($totals) }}</span>
+        </div>
+    </div>
+</xf:form>]]></template>
+  <template type="admin" title="af_paidregistrations_choose_upgrade" version_id="1020170" version_string="1.2.1"><![CDATA[<xf:title>Choose User Upgrade</xf:title>
+
+<xf:form action="{{ link('paid-registrations/add') }}" ajax="true" class="block">
+    <div class="block-container">
+        <div class="block-body">
+            <xf:selectrow name="user_upgrade_id"
+                label="User Upgrade">
+
+                <xf:option />
+                <xf:option value="-1" label="{$xf.options.af_paidregistrations_freeTitle}" />
+
+                <xf:foreach loop="$upgrades" key="$user_upgrade_id" value="$upgrade">
+                    <xf:option value="{$user_upgrade_id}">{$upgrade.title} ({$upgrade.cost_phrase}{{ $upgrade.length_unit ? '' : ' ' . phrase('af_paidregistrations_permanent') }})</xf:option>
+                </xf:foreach>
+
+            </xf:selectrow>
+        </div>
+        <xf:submitrow submit="{{ phrase('proceed...') }}" />
+    </div>
+</xf:form>]]></template>
+  <template type="admin" title="af_pr_coupon_edit" version_id="1060471" version_string="1.6.4.1"><![CDATA[<xf:if is="$coupon.isInsert()">
+    <xf:title>{{ phrase('af_pr_add_coupon') }}</xf:title>
+<xf:else />
+    <xf:title>{{ phrase('af_pr_edit_coupon:') }} {$coupon.title}</xf:title>
+</xf:if>
+
+<xf:pageaction if="$coupon.isUpdate()">
+    <xf:button href="{{ link('paid-registrations/coupons/delete', $coupon) }}" icon="delete" overlay="true" />
+</xf:pageaction>
+
+<xf:form action="{{ link('paid-registrations/coupons/save', $coupon) }}" ajax="true" class="block">
+    <div class="block-container">
+        <div class="block-body">
+
+            <xf:textboxrow name="title" value="{$coupon.title}" maxlength="{{ max_length($coupon, 'title') }}"
+                label="{{ phrase('title') }}" />
+
+            <xf:textboxrow name="coupon_code" value="{$coupon.coupon_code}" autosize="true" maxlength="{{ max_length($coupon, 'coupon_code') }}"
+                label="{{ phrase('af_pr_coupon_code') }}" explain="{{ phrase('case_sensitive') }}" />
+
+            <xf:radiorow name="discount_type" value="{$coupon.discount_type}"
+                label="{{ phrase('af_pr_discount_type') }}">
+                <xf:option value="flat" label="{{ phrase('af_pr_flat_amount') }}">
+                    <xf:textbox name="discount_value" value="{{ $coupon.discount_type == 'flat' ? ($coupon.discount_value|number(2)) : '' }}" size="6" class="input--inline"></xf:textbox>
+                </xf:option>
+                <xf:option value="percent" label="{{ phrase('af_pr_percentage') }}">
+                    <xf:dependent>
+                        <div class="inputGroup">
+                            <xf:textbox name="discount_value" value="{{ $coupon.discount_type == 'percent' ? $coupon.discount_value : '' }}" size="6" class="input--inline"></xf:textbox>
+                            <span class="inputGroup-text">%</span>
+                        </div>
+                    </xf:dependent>
+                </xf:option>
+            </xf:radiorow>
+
+            <xf:radiorow name="unlimited_uses" value="{$coupon.unlimited_uses}"
+                label="{{ phrase('af_pr_uses') }}">
+                <xf:option value="1" label="{{ phrase('af_pr_unlimited') }}">
+                </xf:option>
+                <xf:option value="0" label="{{ phrase('af_pr_limited') }}">
+                    <xf:numberbox name="uses_remaining" value="{{ $coupon.unlimited_uses ? '' : $coupon.uses_remaining }}" min="0" autocomplete="off" />
+                </xf:option>
+            </xf:radiorow>
+
+            <xf:checkboxrow>
+                <xf:option name="active" selected="$coupon.active">{{ phrase('enabled') }}</xf:option>
+            </xf:checkboxrow>
+
+            <hr class="formRowSep" />
+
+            <xf:macro name="dateTimeInputRow"
+                arg-label="{{ phrase('af_pr_start_date') }}"
+                arg-name="start_date"
+                arg-date="{$coupon.start_date_data}"
+                arg-data="{$data}" />
+
+            <xf:formrow label="{{ phrase('af_pr_end_date') }}">
+                <xf:radio name="end_date_type" value="{{ !$coupon.end_date ? 'never' : 'sel' }}">
+                    <xf:option value="never">{{ phrase('never') }}</xf:option>
+                    <xf:option value="sel" label="{{ phrase('date_time') }}">
+                        <xf:dependent>
+                            <xf:macro name="dateTimeInputRow"
+                                arg-name="end_date"
+                                arg-date="{$coupon.end_date_data}"
+                                arg-data="{$data}"
+                                arg-withRow="0" />
+                        </xf:dependent>
+                    </xf:option>
+                </xf:radio>
+            </xf:formrow>
+
+            <hr class="formRowSep" />
+
+            <xf:macro template="helper_user_group_edit" name="checkboxes"
+                arg-label="{{ phrase('af_pr_ugs_allowed') }}"
+                arg-id="user_group"
+                arg-selectedUserGroups="{{ $coupon.isInsert() ? [-1] : $coupon.user_group_ids }}" />
+
+            <xf:macro name="checkbox_columns"
+                arg-label="{{ phrase('af_pr_accounts_types_allowed') }}"
+                arg-id="account_type"
+                arg-options="{$accountTypeTitlePairs}"
+                arg-selected="{{ $coupon.isInsert() ? [-1] : $coupon.account_type_ids }}"
+                arg-selectedText="{{ phrase('af_pr_selected_account_types:') }}" />
+
+        </div>
+
+        <xf:submitrow sticky="true" icon="save" />
+
+    </div>
+</xf:form>
+
+<xf:macro name="dateTimeInputRow"
+    arg-label=""
+    arg-name="!"
+    arg-date="!"
+    arg-data="!"
+    arg-withRow="1">
+
+    <xf:set var="$inner">
+        <div class="inputGroup-container">
+            <div class="inputGroup">
+                <xf:dateinput name="{$name}[ymd]" value="{$date.picker}" />
+                <span class="inputGroup-text">
+                    {{ phrase('criteria_time:') }}
+                </span>
+                <span class="inputGroup" dir="ltr">
+                    <xf:select name="{$name}[hh]" value="{$date.hh}" class="input--inline input--autoSize">
+                        <xf:foreach loop="$data.hours" value="$hour">
+                            <xf:option value="{$hour}" label="{$hour}" />
+                        </xf:foreach>
+                    </xf:select>
+                    <span class="inputGroup-text">:</span>
+                    <xf:select name="{$name}[mm]" value="{$date.mm}" class="input--inline input--autoSize">
+                        <xf:foreach loop="$data.minutes" value="$minute">
+                            <xf:option value="{$minute}" label="{$minute}" />
+                        </xf:foreach>
+                    </xf:select>
+                </span>
+            </div>
+
+            <div class="inputGroup">
+                <span class="inputGroup-text">{{ phrase('af_pr_timezone:') }}</span>
+                <xf:select name="{$name}[timezone]" value="{{ $date.timezone ? $date.timezone : $xf.visitor.timezone }}" class="input--inline input--autoSize">
+                    <xf:options source="{$data.timeZones}" />
+                </xf:select>
+            </div>
+        </div>
+    </xf:set>
+
+    <xf:if is="$withRow">
+        <xf:formrow label="{$label}">
+            {$inner|raw}
+        </xf:formrow>
+    <xf:else />
+        {$inner|raw}
+    </xf:if>
+</xf:macro>
+
+<xf:macro name="checkbox_columns"
+    arg-label="!"
+    arg-id="!"
+    arg-options="!"
+    arg-selected="!"
+    arg-selectedText="!"
+    arg-withRow="1">
+
+    <xf:set var="$allSelected" value="{{ array_keys($options) == $selected || in_array('-1', $selected) }}" />
+
+    <xf:set var="$inner">
+        <xf:radio name="{$id}" id="{$id}">
+            <xf:option value="all" selected="{$allSelected}">{{ phrase('all') }}</xf:option>
+            <xf:option value="sel" selected="!{$allSelected}" label="{$selectedText}">
+                <xf:dependent>
+                    <xf:checkbox name="{{ $id . '_ids' }}" listclass="listColumns">
+                        <xf:foreach loop="$options" key="$key" value="$value">
+                            <xf:option value="{$key}" selected="{{ in_array($key, $selected) || $allSelected  }}">
+                                {$value}
+                            </xf:option>
+                        </xf:foreach>
+                    </xf:checkbox>
+
+                    <xf:checkbox>
+                        <xf:option data-xf-init="check-all" data-container="{{ '#' . $id }}">{{ phrase('select_all') }}</xf:option>
+                    </xf:checkbox>
+                </xf:dependent>
+            </xf:option>
+        </xf:radio>
+    </xf:set>
+
+    <xf:if is="$withRow">
+        <xf:formrow label="{$label}" name="{$id}" id="{$id}">
+            {$inner|raw}
+        </xf:formrow>
+    <xf:else />
+        {$inner|raw}
+    </xf:if>
+</xf:macro>]]></template>
+  <template type="admin" title="af_pr_coupon_list" version_id="1060471" version_string="1.6.4.1"><![CDATA[<xf:title>{{ phrase('af_pr_coupons') }}</xf:title>
+
+<xf:pageaction>
+    <xf:button href="{{ link('paid-registrations/coupons/add') }}" icon="add">{{ phrase('af_pr_add_coupon') }}</xf:button>
+</xf:pageaction>
+
+<xf:if is="$coupons is not empty">
+    <xf:form action="{{ link('paid-registrations/coupons/toggle') }}" class="block" ajax="true">
+        <div class="block-outer">
+            <xf:macro template="filter_macros" name="quick_filter" arg-key="cron" arg-class="block-outer-opposite" />
+        </div>
+        <div class="block-container">
+            <div class="block-body">
+                <xf:datalist>
+                    <xf:datarow rowtype="header">
+                        <xf:cell />
+                        <xf:cell>{{ phrase('af_pr_discount') }}</xf:cell>
+                        <xf:cell>{{ phrase('start_date') }}</xf:cell>
+                        <xf:cell>{{ phrase('end_date') }}</xf:cell>
+                        <xf:cell />
+                        <xf:cell />
+                    </xf:datarow>
+                    <xf:foreach loop="$coupons" value="$coupon">
+                        <xf:datarow>
+                            <xf:main hash="{$coupon.coupon_id}" href="{{ link('paid-registrations/coupons/edit', $coupon) }}"
+                                label="{$coupon.title}"
+                                hint="{$coupon.coupon_code}">
+
+                                <xf:explain>
+                                </xf:explain>
+                            </xf:main>
+                            <xf:cell>
+                                <xf:if is="$coupon.discount_type == 'percent'">
+                                    {$coupon.discount_value}%
+                                <xf:elseif is="$coupon.discount_type == 'flat'" />
+                                    {$coupon.discount_value|number(2)} ({{ phrase('af_pr_flat_amount') }})
+                                </xf:if>
+                            </xf:cell>
+                            <xf:cell><xf:date data-full-date="true" time="$coupon.start_date" /></xf:cell>
+                            <xf:cell>
+                                <xf:if is="$coupon.end_date">
+                                    <xf:date data-full-date="true" time="$coupon.end_date" />
+                                <xf:else />
+                                    {{ phrase('never') }}
+                                </xf:if>
+                            </xf:cell>
+                            <xf:toggle name="active[{$coupon.coupon_id}]" selected="$coupon.active"
+                                class="dataList-cell--separated" submit="true"
+                                tooltip="{{ phrase('enable_disable_x', {'title': $coupon.title}) }}" />
+                            <xf:delete href="{{ link('paid-registrations/coupons/delete', $coupon) }}" />
+                        </xf:datarow>
+                    </xf:foreach>
+                </xf:datalist>
+            </div>
+            <div class="block-footer">
+                <span class="block-footer-counter">{{ display_totals($coupons) }}</span>
+            </div>
+        </div>
+    </xf:form>
+<xf:else />
+    <div class="blockMessage">{{ phrase('no_items_have_been_created_yet') }}</div>
+</xf:if>]]></template>
+  <template type="admin" title="af_pr_option_template_expiry_reminders" version_id="1070170" version_string="1.7.1"><![CDATA[<xf:checkboxrow
+    hint="{$hintHtml}"
+    explain="{$explainHtml}"
+    html="{$listedHtml}">
+
+    <xf:option name="{$inputName}[enabled]" selected="$option.option_value.enabled" label="{$option.title}">
+        <xf:dependent>
+            <xf:checkbox>
+                <xf:option name="{$inputName}[alerts]" selected="$option.option_value.alerts">{{ phrase('alerts') }}</xf:option>
+                <xf:option name="{$inputName}[emails]" selected="$option.option_value.emails">{{ phrase('emails') }}</xf:option>
+            </xf:checkbox>
+            <div>{{ phrase('af_pr_notify_on_these_days_label:') }}</div>
+            <xf:set var="$daysValue" value="{{ $option.option_value.enabled ? $option.option_value.days : [1,3] }}" />
+            <xf:tokeninput name="{$inputName}[days]" value="{$daysValue|join(', ')}"
+                min-length="1" />
+        </xf:dependent>
+    </xf:option>
+</xf:checkboxrow>]]></template>
+  <template type="email" title="af_paidregistration_free_receipt" version_id="1080070" version_string="1.8.0"><![CDATA[<mail:subject>{{ phrase('af_paidregistrations_yourFreeRegistrationLink') }}</mail:subject>
+
+<p>{{ phrase('thank_you_for_purchasing_account_upgrade_at_x', {'board_url': link('canonical:index'), 'board_title': $xf.options.boardTitle}) }}</p>
+
+{{ phrase('af_paidregistrations_receipt_message', {'registerUrl': link('canonical:register', null, {'prk': $purchaseRequest.request_key, '_xfRedirect': $redirectUrl}), 'contactUrl': link('canonical:misc/contact')}) }}]]></template>
+  <template type="email" title="af_paidregistrations_gift_received" version_id="1050070" version_string="1.5.0"><![CDATA[<mail:subject>{{ phrase('af_paidregistrations_you_have_been_gifted_subject') }}</mail:subject>
+
+{{ phrase('af_paidregistrations_you_have_been_gifted_html_body', {'to_username': $xf.toUser.username, 'from_username': $anonymous ? phrase('anonymous') : ('<a href="' . $fromLink . '">' . $fromUsername . '</a>'), 'upgrades_url': link('canonical:account/upgrades'), 'upgrade_title': $upgrade.title}) }}
+
+<p><a href="{{ link('canonical:account/upgrades') }}" class="button">{{ phrase('manage_your_account_upgrades') }}</a></p>
+
+<xf:if is="$xf.toUser.canUseContactForm()">
+    <p>{{ phrase('af_paidregistrations_questions_contact_us', {'contacturl': link('canonical:misc/contact') }) }}</p>
+</xf:if>]]></template>
+  <template type="email" title="af_paidregistrations_receipt" version_id="1050070" version_string="1.5.0"><![CDATA[<mail:subject>{{ phrase('af_paidregistrations_yourRegistrationLink') }}</mail:subject>
+
+<p>{{ phrase('thank_you_for_purchasing_account_upgrade_at_x', {'board_url': link('canonical:index'), 'board_title': $xf.options.boardTitle}) }}</p>
+
+{{ phrase('af_paidregistrations_receipt_message', {'registerUrl': link('canonical:register', null, {'prk': $purchaseRequest.request_key, '_xfRedirect': $redirectUrl}), 'contactUrl': link('canonical:misc/contact')}) }}]]></template>
+  <template type="email" title="af_paidregistrations_upgrade_expiry_reminder" version_id="1070170" version_string="1.7.1"><![CDATA[<mail:subject>{{ phrase('af_pr_upgrade_expiry_reminder_subject', {'daysAmount': $daysAmount|number, 'daysPhrase': $daysPhrase}) }}</mail:subject>
+
+{{ phrase('af_pr_upgrade_expiry_reminder_html', {
+    'user': $xf.toUser.username,
+    'extendUrl': link('canonical:account/upgrade-payment-options', null, {'extend': 1, 'userUpgradeId': $upgrade.user_upgrade_id}),
+    'daysAmount': $daysAmount|number,
+    'daysPhrase': $daysPhrase, 'title': $upgrade.title
+}) }}
+
+<xf:comment>
+{{ phrase('af_pr_upgrade_expiry_email_html_footer', {
+    'disable_link': link('canonical:email-stop/af_pr_user_upgrade', $xf.toUser)
+}) }}
+</xf:comment>]]></template>
+  <template type="public" title="af_paidregistrations_accounttype" version_id="1070170" version_string="1.7.1"><![CDATA[<xf:title>Choose {{ phrase('af_paidregistrations_accountType') }}</xf:title>
+
+<xf:css>
+    .accountType-title .priceContainer {
+        font-size: {$xf.options.af_paidregistrations_priceFontSize};
+    }
+    .accountType {
+        margin-left: {$xf.options.af_paidregistrations_box_margin};
+        margin-right: {$xf.options.af_paidregistrations_box_margin};
+    }
+    @media (max-width: {{  property('responsiveWide') }})
+    {
+        .accountType {
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+
+    .accountTypesOverlay
+    {
+        max-width: calc(100% - 20px);
+    }
+</xf:css>
+
+<xf:js>
+!function($, window, document)
+{
+    "use strict";
+
+    var $modal = $('.overlay-container #accountTypes');
+
+    if ($modal.length)
+    {
+        $modal.closest('.overlay').addClass('accountTypesOverlay');
+    }
+}
+(jQuery, window, document);
+</xf:js>
+
+<xf:macro template="af_paidregistrations_accounttype_macros" name="account_types" arg-accountTypeRows="{$accountTypeRows}" />]]></template>
+  <template type="public" title="af_paidregistrations_accounttype.less" version_id="1080170" version_string="1.8.1"><![CDATA[#accountTypes {
+  text-align: center;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.accountTypesRow {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  /* align-items: center;*/
+  justify-content: center;
+}
+
+.accountType {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 10px 1%;
+  font-family: 'Lato', Arial, sans-serif;
+  max-width: 325px;
+}
+
+.accountType-inner {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+
+  background: #fff;
+  margin: 0 auto;
+  width: 100%;
+  position:relative;
+
+  .btn {
+    padding: 2em 0;
+    text-align: center;
+
+    a {
+      background: #323232;
+      padding: 10px 5%;
+      color: #fff;
+      text-transform: uppercase;
+      font-weight: 700;
+      text-decoration: none
+    }
+
+    a:hover {
+      -webkit-box-shadow: 0px 0px 19px -3px rgba(0,0,0,0.7);
+              box-shadow: 0px 0px 19px -3px rgba(0,0,0,0.7);
+    }
+  }
+
+
+  .featured {
+      position: absolute;
+      top: -7px;
+      background: #F80;
+      color: #fff;
+      text-transform: uppercase;
+      z-index: 2;
+      padding: 2px 5px;
+      font-size: 9px;
+      border-radius: 2px;
+      right: 10px;
+      font-weight: 700;
+  }
+}
+
+.accountType-title {
+  background: #53CFE9;
+  height: 140px;
+  position: relative;
+  text-align: center;
+  color: #fff;
+  margin-bottom: 30px;
+
+  > h3 {
+    background: #20BADA;
+    font-size: 20px;
+    padding: 5px 0;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .priceContainer {
+    position: absolute;
+    bottom: -25px;
+    background: #20BADA;
+    height: 105px;
+    width: 105px;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    border-radius: 50px;
+    border: 5px solid #fff;
+    /* line-height: 80px;*/
+    font-size: 28px;
+    font-weight: 700;
+
+    .price {
+      top: 50%;
+      left: 50%;
+      position: absolute;
+      -webkit-transform: translate(-50%, -50%);
+              transform: translate(-50%, -50%);
+
+      .customAmount {
+        font-size: 12px;
+      }
+
+      .duration {
+        /* position: absolute;*/
+        font-size: 9px;
+        /* bottom: -10px;*/
+        /* left: 30px;*/
+        text-transform: uppercase;
+        font-weight: 400;
+      }
+    }
+
+    &.customAmount .price {
+      font-size: 16px;
+      line-height: 17px;
+
+      .duration {
+        line-height: 12px;
+        margin-top: 5px;
+      }
+    }
+
+  }
+}
+
+.accountType-content {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 auto;
+          flex: 1 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+
+  color: #323232;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+  }
+  li {
+    border-bottom: 1px solid #E5E5E5;
+    padding: 10px 0;
+  }
+
+  li:last-child {
+    border: none;
+  }
+}
+
+
+@media (max-width: @xf-responsiveWide)
+{
+  .accountType {
+    width: 100%;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    -webkit-box-flex: 0;
+        -ms-flex: none;
+            flex: none;
+  }
+  .accountType-inner {
+    width: 65%;
+  }
+}
+
+@media (max-width: @xf-responsiveNarrow)
+{
+  .accountType-inner {
+    width: 80%;
+  }
+}
+
+@media (min-width: (@xf-responsiveWide + 1px)) and (max-width: 1060px)
+{
+  html[data-template="af_paidregistrations_accounttype_member"] .p-body-main.p-body-main--withSidebar.p-body-main--withSideNav .accountType-inner > .btn > a
+  {
+      padding: 1% 1%;
+  }
+}
+
+<xf:comment>Design modified from "Round Prices Table" by hmache</xf:comment>]]></template>
+  <template type="public" title="af_paidregistrations_accounttype_macros" version_id="1050070" version_string="1.5.0"><![CDATA[<xf:macro name="account_types" arg-accountTypeRows="!" arg-giftUser="{{ null }}">
+    <xf:if contentcheck="true">
+        <xf:head option="afprGoogleFonts">
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700" />
+        </xf:head>
+
+        <xf:css src="af_paidregistrations_accounttype.less" />
+
+        <div id="accountTypes">
+            <xf:contentcheck>
+                <xf:foreach loop="$accountTypeRows" value="$accountTypeRow">
+                    <div class="accountTypesRow">
+                        <xf:foreach loop="$accountTypeRow" value="$accountType">
+                            <xf:macro name="account_type" arg-accountType="{$accountType}" arg-giftUser="{$giftUser}" />
+                        </xf:foreach>
+                    </div>
+                </xf:foreach>
+            </xf:contentcheck>
+        </div>
+    </xf:if>
+</xf:macro>
+
+<xf:macro name="account_type" arg-accountType="!" arg-giftUser="{{ null }}">
+    <xf:set var="$id" value="{$accountType.account_type_id}" />
+    <div class="accountType" data-id="{$id}">
+        <div class="accountType-inner">
+            <xf:if is="$accountType.is_featured">
+                <div class="featured">{{ phrase('af_paidregistrations_featured') }}</div>
+            </xf:if>
+            <div class="accountType-title">
+                <h3>{$accountType.title}</h3>
+                <div class="priceContainer {{ $accountType.allow_custom_amount ? 'customAmount' : '' }}">
+                    <div class="price">
+                        {{ $accountType.allow_custom_amount ? phrase('af_paidregistrations_customamount_cost') : $accountType.cost }}
+                        <div class="duration">{$accountType.length_phrase}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="accountType-content">
+                <ul>
+                    <xf:foreach loop="$accountType.features_list" value="$feature">
+                        <li>{$feature|raw}</li>
+                    </xf:foreach>
+                </ul>
+            </div>
+            <div class="btn">
+                <xf:if is="$giftUser">
+                    <a href="{{ link('purchase/gift-upgrade', null, {'accountType' : $accountType.account_type_id, 'userId': $giftUser.user_id}) }}" data-xf-click="overlay">{{ phrase('af_paidregistrations_giftNow') }}</a>
+                <xf:elseif is="$xf.visitor.user_id" />
+                    <a href="{{ link('account/upgrade-payment-options', null, {'accountType' : $accountType.account_type_id}) }}" data-xf-click="overlay">{{ phrase('af_paidregistrations_upgradeNow') }}</a>
+                <xf:else />
+                    <xf:if is="$accountType.user_upgrade_id == -1">
+                        <a href="{{ link('register', null, {'accountType' : $accountType.account_type_id}) }}">{{ phrase('af_paidregistrations_joinNow') }}</a>
+                    <xf:else />
+                        <a href="{{ link('register/purchase', null, {'accountType' : $accountType.account_type_id}) }}" data-xf-click="overlay">{{ phrase('af_paidregistrations_joinNow') }}</a>
+                    </xf:if>
+                </xf:if>
+            </div>
+        </div>
+    </div>
+    <xf:css>
+        .accountType[data-id="{$id}"] .accountType-title {
+            background: {$accountType.color};
+        }
+        .accountType[data-id="{$id}"] .accountType-title > h3 {
+            background: {$accountType.color_dark};
+        }
+        .accountType[data-id="{$id}"] .priceContainer {
+            background: {$accountType.color_dark};
+        }
+    </xf:css>
+</xf:macro>]]></template>
+  <template type="public" title="af_paidregistrations_accounttype_member" version_id="1080070" version_string="1.8.0"><![CDATA[<xf:wrap template="account_wrapper" />
+
+<xf:title>{{ phrase('account_upgrades') }}</xf:title>
+
+<xf:js src="xf/payment.js" min="1" />
+
+<xf:css>
+    .accountType-title .priceContainer {
+        font-size: {$xf.options.af_paidregistrations_priceFontSize};
+    }
+    .accountType {
+        margin-top: 0;
+        margin-left: {$xf.options.af_paidregistrations_box_margin};
+        margin-right: {$xf.options.af_paidregistrations_box_margin};
+    }
+    @media (max-width: {{  property('responsiveWide') }})
+    {
+        .accountType {
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+    .accountTypesRow .accountType:first-child {
+        margin-left: 0;
+    }
+    .accountTypesRow .accountType:last-child {
+        margin-right: 0;
+    }
+</xf:css>
+
+<xf:if contentcheck="true">
+    <xf:contentcheck>
+
+        <xf:if contentcheck="true">
+            <div class="block" style="margin-bottom: 0;">
+                <div class="block-container">
+                    <h2 class="block-header">{{ phrase('available_upgrades') }}</h2>
+                </div>
+            </div>
+            <xf:contentcheck>
+                <xf:macro template="af_paidregistrations_accounttype_macros" name="account_types" arg-accountTypeRows="{$accountTypeRows}" />
+            </xf:contentcheck>
+        </xf:if>
+
+        <xf:css>
+            .button.button--icon--gift > .button-text::before {
+                content: "\f06b";
+                display: inline-block;
+                width: 0.89em;
+            }
+        </xf:css>
+
+        <xf:if is="$xf.options.af_paidregistrations_gift_upgrades">
+            <xf:form action="{{ link('purchase/gift-upgrade') }}" method="get" class="block">
+                <div class="block-container">
+                    <h2 class="block-header">
+                        <span class="collapseTrigger collapseTrigger--block {{ !is_toggled('collapse_afpr_gift') ? 'is-active' : '' }}" data-xf-click="toggle" data-xf-init="toggle-storage" data-storage-key="collapse_afpr_gift" data-storage-type="cookie" data-target="#js-collapse_afpr_gift">
+                            {{ phrase('af_paidregistrations_gift_upgrade') }}
+                        </span>
+                    </h2>
+                    <div class="block-body block-body--collapsible {{ !is_toggled('collapse_afpr_gift') ? 'is-active' : '' }}" id="js-collapse_afpr_gift">
+                        <xf:formrow rowtype="input" label="{{ phrase('user_name') }}" explain="{{ phrase('af_paidregistrations_gift_upgrade_enter_username') }}">
+                            <div class="inputGroup">
+                                <xf:textbox name="username" ac="single"
+                                    maxlength="{{ max_length($xf.visitor, 'username') }}" />
+                                <xf:button type="submit" icon="gift" class="button--primary">{{ phrase('proceed...') }}</xf:button>
+                            </div>
+                        </xf:formrow>
+                    </div>
+                </div>
+            </xf:form>
+        </xf:if>
+
+        <xf:if is="$purchased is not empty">
+            <div class="block">
+                <div class="block-container">
+                    <h2 class="block-header">{{ phrase('purchased_upgrades') }}</h2>
+
+                    <ul class="block-body listPlain">
+                        <xf:foreach loop="$purchased" value="$upgrade">
+                            <li>
+                                <div>
+                                    <xf:set var="$active" value="{$upgrade.Active.{$xf.visitor.user_id}}" />
+                                    <xf:formrow rowclass="formRow--noColon"
+                                        label="{$upgrade.title}"
+                                        hint="{$upgrade.cost_phrase}"
+                                        explain="{$upgrade.description|raw}">
+
+                                        <xf:if is="$active.end_date">
+                                            {{ phrase('expires:') }} <xf:date time="{$active.end_date}" />
+                                        <xf:else />
+                                            {{ phrase('expires_never') }}
+                                        </xf:if>
+
+                                        <xf:if contentcheck="true">
+                                            <div class="afprUserUpgradeButtonGroup">
+                                                <xf:contentcheck>
+                                                    <xf:if is="$upgrade.canExtendUpgrade()">
+                                                        <div>
+                                                            <xf:button href="{{ link('account/upgrade-payment-options', null, {'extend': 1, 'userUpgradeId': $upgrade.user_upgrade_id}) }}"
+                                                                overlay="true" target="_blank">
+                                                                {{ phrase('af_pr_extend') }}
+                                                            </xf:button>
+                                                        </div>
+                                                    </xf:if>
+
+                                                    <xf:if is="$upgrade.length_unit && $upgrade.recurring && $active.PurchaseRequest">
+                                                        <xf:set var="$provider" value="{$active.PurchaseRequest.PaymentProfile.Provider}" />
+                                                        {{ $provider.renderCancellation($active)|raw }}
+                                                    </xf:if>
+                                                </xf:contentcheck>
+                                            </div>
+                                        </xf:if>
+                                    </xf:formrow>
+                                </div>
+                            </li>
+                        </xf:foreach>
+                    </ul>
+                </div>
+            </div>
+        </xf:if>
+    </xf:contentcheck>
+<xf:else />
+    <div class="blockMessage">{{ phrase('there_currently_no_purchasable_user_upgrades') }}</div>
+</xf:if>
+
+<xf:css>
+    .afprUserUpgradeButtonGroup > div
+    {
+        display: inline-block;
+    }
+</xf:css>
+
+
+
+]]></template>
+  <template type="public" title="af_paidregistrations_gift_upgrade_accounttype" version_id="1050070" version_string="1.5.0"><![CDATA[<xf:title>{{ phrase('af_paidregistrations_gift_x_username', {'username': $user.username}) }}</xf:title>
+
+<xf:breadcrumb href="{{ link('account/upgrades') }}">{{ phrase('account_upgrades') }}</xf:breadcrumb>
+
+<xf:css>
+    .accountType-title .priceContainer {
+        font-size: {$xf.options.af_paidregistrations_priceFontSize};
+    }
+    .accountType {
+        margin-left: {$xf.options.af_paidregistrations_box_margin};
+        margin-right: {$xf.options.af_paidregistrations_box_margin};
+    }
+    @media (max-width: {{  property('responsiveWide') }})
+    {
+        .accountType {
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+</xf:css>
+
+<xf:macro template="af_paidregistrations_accounttype_macros" name="account_types" arg-accountTypeRows="{$accountTypeRows}" arg-giftUser="{{ $user }}" />]]></template>
+  <template type="public" title="af_paidregistrations_gift_upgrade_purchase" version_id="1050070" version_string="1.5.0"><![CDATA[<xf:title>{{ phrase('thanks_for_your_purchase') }}</xf:title>
+
+<xf:wrap template="account_wrapper" />
+
+<div class="blockMessage">{{ phrase('af_paidregistrations_thank_you_for_purchasing_this_gift', {'username': $user.username}) }}</div>]]></template>
+  <template type="public" title="af_paidregistrations_profile_selectrow" version_id="1050070" version_string="1.5.0"><![CDATA[<div class="alias_profiles">
+    <xf:macro template="af_paidregistrations_purchase" name="payment_profile_selectrow" arg-upgrade="{$upgrade}" arg-profiles="{$profiles}" />
+</div>]]></template>
+  <template type="public" title="af_paidregistrations_purchase" version_id="1080070" version_string="1.8.0"><![CDATA[<xf:set var="$hasAliasUpgrades" value="{{ count($aliasUpgrades) }}" />
+
+<xf:title>{{ phrase('af_paidregistrations_accountType') }}: {$accountType.title}<xf:if is="!$hasAliasUpgrades AND !$allowCustomAmount"> ({$accountType.UserUpgrade.cost_phrase})</xf:if><xf:if is="$giftUser"> ({{ phrase('af_paidregistrations_gift_x_username', {'username': $giftUser.username}) }})</xf:if></xf:title>
+
+<xf:set var="$formId" value="{{ unique_id('afprAccountType' . $accountType.account_type_id) }}" />
+
+<xf:form action="{{ link('purchase', $upgrade) }}" ajax="true" class="block js-paymentForm" data-xf-init="payment-provider-container" id="{$formId}">
+    <div class="block-container">
+        <div class="block-body">
+            <xf:if is="!$xf.visitor.user_id">
+                <xf:textboxrow name="email" type="email" label="{{ phrase('your_email_address') }}" />
+            </xf:if>
+            <xf:if is="$allowCustomAmount">
+                <xf:textboxrow name="custom_cost_amount"
+                type="text" size="5" class="input--inline"
+                explain="{{ phrase('af_paidregistrations_customamount_explain') }}">
+                    <xf:label>
+                        {{ phrase('af_paidregistrations_customamount') }} ({{ $upgrade.cost_currency ?: 'USD' }})
+                    </xf:label>
+                    <xf:hint>
+                        <xf:if is="$accountType.custom_amount_min > 0">
+                            {{ phrase('af_paidregistrations_min_amount') }} {$accountType.custom_amount_min|number(2)} {{ $upgrade.cost_currency ?: 'USD' }}
+                        </xf:if>
+                    </xf:hint>
+                    <xf:html>
+                        {$accountType.length_phrase}
+                    </xf:html>
+                </xf:textboxrow>
+            </xf:if>
+            <xf:if is="$hasAliasUpgrades">
+                <xf:radiorow name="user_upgrade_id" class="user_upgrade_id"
+                    label="{{ phrase('(af_paidregistrations_choose_user_upgrade)') }}">
+                    <xf:foreach loop="$aliasUpgrades" key="$alias_user_upgrade_id" value="$alias_upgrade">
+                        <xf:option value="{$alias_user_upgrade_id}" selected="{{ $alias_user_upgrade_id == $defaultAlias }}">{$alias_upgrade.title} ({$alias_upgrade.cost_phrase}{{ $alias_upgrade.length_unit ? '' : ' ' . phrase('af_paidregistrations_permanent') }})</xf:option>
+                    </xf:foreach>
+                </xf:radiorow>
+            <xf:else />
+                <xf:hiddenval name="user_upgrade_id" value="{$upgrade.user_upgrade_id}" />
+            </xf:if>
+
+            <xf:if is="$hasAliasUpgrades">
+                <div class="alias_profiles"></div>
+            <xf:else />
+                <xf:if is="count($upgrade.payment_profile_ids) == 1">
+                    <div class="afprSinglePaymentMethod">
+                        <xf:formrow label="{{ phrase('af_paidregistrations_payment_method') }}">
+                            {$profiles.{$upgrade.payment_profile_ids.0}}
+                        </xf:formrow>
+                    </div>
+                    <xf:hiddenval name="payment_profile_id" value="{$upgrade.payment_profile_ids.0}" />
+                <xf:else />
+                    <xf:macro name="payment_profile_selectrow" arg-upgrade="{$upgrade}" arg-profiles="{$profiles}" />
+                </xf:if>
+            </xf:if>
+
+            <xf:if is="$giftUser AND $xf.options.af_paidregistrations_gift_upgrades_anon">
+                <xf:checkboxrow explain="{{ phrase('af_paidregistrations_gift_anonymously_explain') }}">
+                    <xf:option name="giftAnonymously" value="1" selected="{{ false }}">
+                        {{ phrase('af_paidregistrations_gift_anonymously') }}
+                    </xf:option>
+                </xf:checkboxrow>
+            </xf:if>
+
+            <xf:if is="$hasCoupons AND !$allowCustomAmount">
+                <xf:formrow
+                    label="{{ phrase('af_pr_coupon_code') }}"
+                    explain="{{ phrase('af_pr_coupon_code_explain') }}">
+                    <xf:textbox disabled="{{ $hasAliasUpgrades ? 'disabled' : '' }}" name="coupon_code" type="text" size="25" class="input--inline afpr_coupon_code" />
+                    <xf:button disabled="{{ $hasAliasUpgrades ? 'disabled' : '' }}" class="{{ $hasAliasUpgrades ? 'is-disabled' : '' }}" data-xf-click="afpr-apply-coupon" data-form-id="{$formId}" data-account-type-id="{$accountType.account_type_id}" data-href="{{ link('purchase/afpr-apply-coupon') }}">{{ phrase('af_pr_apply_coupon') }}</xf:button>
+                </xf:formrow>
+
+                <div class="afpr_priceWithCoupon">
+                    <xf:formrow label="Price with coupon">
+                        <div class="afpr_new_price">{{ phrase('afpr_new_price:') }} {$newPrice}</div>
+                    </xf:formrow>
+                </div>
+
+            </xf:if>
+
+        </div>
+        <xf:if is="$isRegistration">
+            <xf:hiddenval name="registration" value="1" />
+        </xf:if>
+        <xf:if is="$giftUser">
+            <xf:hiddenval name="giftUserId" value="{$giftUser.user_id}" />
+        </xf:if>
+        <xf:if is="$isExtend">
+            <xf:hiddenval name="extend" value="1" class="extend" />
+        </xf:if>
+        <xf:hiddenval name="accountTypeId" value="{$accountType.account_type_id}" />
+        <xf:submitrow rowtype="" submit="{{ phrase('continue') }}" />
+    </div>
+</xf:form>
+<div class="js-paymentProviderReply-user_upgrade{$upgrade.user_upgrade_id}"></div>
+
+<xf:macro name="payment_profile_selectrow" arg-upgrade="!" arg-profiles="!">
+    <xf:selectrow name="payment_profile_id"
+        label="{{ phrase('(choose_payment_method)') }}">
+        <xf:foreach loop="$upgrade.payment_profile_ids" value="$profileId">
+            <xf:if is="{$profiles.{$profileId}}">
+                <xf:option value="{$profileId}">{$profiles.{$profileId}}</xf:option>
+            </xf:if>
+        </xf:foreach>
+    </xf:selectrow>
+</xf:macro>
+
+<xf:css>
+    .overlay-content > .block.js-paymentForm:first-child {
+        margin-bottom: 0;
+    }
+    .afpr_priceWithCoupon
+    {
+        display: none;
+    }
+    .afpr_priceWithCoupon.is-active
+    {
+        display: block;
+    }
+</xf:css>
+
+<xf:if is="!$isRegistration AND !$allowCustomAmount AND !$hasCoupons AND $hasOnlyPayPal AND $xf.request.isXhr()">
+    <xf:css>
+        .overlay {
+            display: none !important;
+        }
+    </xf:css>
+    <xf:js>
+        !function($, window, document, _undefined)
+        {
+            "use strict";
+
+            // get the last one to avoid any issues
+            $('form.js-paymentForm').last().submit();
+            XF.Modal.close();
+        }
+        (jQuery, window, document);
+    </xf:js>
+</xf:if>
+
+<xf:js>
+!function($, window, document, _undefined)
+{
+    "use strict";
+
+    XF.AFPRApplyCouponClick = XF.Event.newHandler({
+        eventNameSpace: 'AFPRApplyCouponClick',
+        options: {
+            href: null,
+            formId: null,
+            accountTypeId: null,
+            couponInput: '.afpr_coupon_code',
+            extend: '.extend',
+        },
+
+        $form: null,
+        $input: null,
+        $extend: null,
+
+        loading: false,
+
+        init: function()
+        {
+            this.$form = $('form#' + this.options.formId);
+            this.$input = this.$form.find(this.options.couponInput);
+            this.$extend = this.$form.find(this.options.extend);
+
+            if (!this.$input.length)
+            {
+                console.error('Coupon field not found');
+            }
+        },
+
+        click: function(e)
+        {
+            e.preventDefault();
+
+            if (this.loading)
+            {
+                return;
+            }
+
+            this.loading = true;
+
+            var self = this;
+
+            var checkedInput = 'input[type=radio][name=user_upgrade_id]:checked',
+                $upgrade = this.$form.find(checkedInput);
+
+            if (!$upgrade.length)
+            {
+                $upgrade = this.$form.find('input[name="user_upgrade_id"]');
+            }
+
+            var data = {
+                code: this.$input.val(),
+                upgradeId: $upgrade.val(),
+                accountTypeId: this.options.accountTypeId,
+                extend: this.$extend.val(),
+            };
+
+            XF.ajax('POST', this.options.href, data, XF.proxy(this, 'loaded'))
+                .always(function() { self.loading = false; });
+        },
+
+        loaded: function(data)
+        {
+            if (data && data.valid)
+            {
+                this.$form.find('.afpr_priceWithCoupon').addClass('is-active');
+
+                this.$form.find('.afpr_new_price').text(data.newPrice + " (save: " + data.saving + ")");
+
+                // form value is not sent if fully disabled
+                this.$form.find('.afpr_coupon_code').
+                                addClass('is-disabled').prop('readonly', 'readonly');
+
+                this.$form.find('.afpr_coupon_code + button').
+                                addClass('is-disabled').prop('readonly', 'readonly').attr('disabled', 'disabled');
+
+                XF.flashMessage(data.message, 3000);
+            }
+        },
+    });
+
+    XF.Event.register('click', 'afpr-apply-coupon', 'XF.AFPRApplyCouponClick');
+}
+(jQuery, window, document);
+</xf:js>
+
+<xf:if is="$hasAliasUpgrades">
+    <xf:js>
+        !function($, window, document, _undefined)
+        {
+            "use strict";
+
+            var inputSelector = "form#{$formId|escape('js')} input[type=radio][name=user_upgrade_id]",
+                inputCheckedSelector = inputSelector + ':checked';
+
+            $(inputSelector).change(function()
+            {
+                var $this = $(this),
+                    user_upgrade_id = $(inputCheckedSelector).val();
+
+                XF.ajax('post', XF.canonicalizeUrl("{{ link('purchase/afpr-alias-profiles')|escape('js') }}"), {user_upgrade_id: user_upgrade_id}, function (data)
+                {
+                    if (!data.html) return;
+                    XF.setupHtmlInsert(data.html, function ($html, container, onComplete)
+                    {
+                        // only get the current one, no other open modals
+                        var $old = $("form#{$formId|escape('js')}").find('.alias_profiles');
+                        var $new = $html;
+
+                        $new.hide().insertAfter($old);
+                        $old.xfFadeUp(XF.config.speed.fast, function()
+                        {
+                            $old.remove();
+
+                            if ($new.length)
+                            {
+                                XF.activate($new);
+                                onComplete(false);
+                            }
+
+                            $new.xfFadeDown(XF.config.speed.fast, XF.layoutChange);
+
+                            $new.parent().find('.afpr_coupon_code, .afpr_coupon_code + button').
+                                removeClass('is-disabled').prop('disabled', false);
+                        });
+
+                        return false; // onComplete is already handled above
+                    });
+                });
+            });
+
+            // auto load if we have a default checked
+            $(inputCheckedSelector).trigger('change');
+        }
+        (jQuery, window, document);
+    </xf:js>
+</xf:if>]]></template>
+  <template type="public" title="alert_af_pr_gift_upgrade_receive" version_id="1050070" version_string="1.5.0"><![CDATA[{{ phrase('af_pr_you_have_been_gifted_x_by_y', {
+    'upgrade': '<a href="' . link('account/upgrades') . '" class="fauxBlockLink-blockLink">' . $content.title . '</a>',
+    'from_user': $extra.anon ? phrase('anonymous') : username_link($user, false, {'defaultname': $alert.username})
+}) }}]]></template>
+  <template type="public" title="alert_af_pr_user_upgrade_expiring" version_id="1070170" version_string="1.7.1"><![CDATA[{{ phrase('af_pr_upgrade_expiry_alert', {
+    'upgradeUrl': '<a href="' . link('account/upgrade-payment-options', null, {'extend': 1, 'userUpgradeId': $content.user_upgrade_id}) . '" class="fauxBlockLink-blockLink">' . $content.title . '</a>',
+    'daysAmount': $extra.daysAmount|number,
+    'daysPhrase': $extra.daysPhrase
+}) }}]]></template>
+</templates>

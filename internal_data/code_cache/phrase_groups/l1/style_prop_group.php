@@ -1,6 +1,7 @@
 <?php
 return array (
   'style_prop_group.FTSlider_style_options' => '[XTR] Featured Threads Slider',
+  'style_prop_group.afPaidRegistrations' => '[AddonFlare] Paid Registrations',
   'style_prop_group.af_forumstats' => '[AddonFlare] AJAX Advanced Forum Stats',
   'style_prop_group.avatar' => 'Avatars',
   'style_prop_group.basic' => 'Basic options',

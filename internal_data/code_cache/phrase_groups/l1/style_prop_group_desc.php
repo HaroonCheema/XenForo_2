@@ -1,6 +1,7 @@
 <?php
 return array (
   'style_prop_group_desc.FTSlider_style_options' => 'Settings controlling the content experts , title color of structural borders, as well as global settings for mobil device.',
+  'style_prop_group_desc.afPaidRegistrations' => 'A number of properties to control the appearance of the Paid Registrations add-on',
   'style_prop_group_desc.af_forumstats' => 'A number of properties to control the appearance of the AJAX Advanced Forum Stats add-on',
   'style_prop_group_desc.avatar' => 'Avatars are graphical representations of users. Some users may upload their own images, while others will use the default letter-based imagery. Styling for both of these types is controlled here.',
   'style_prop_group_desc.basic' => 'Defines the location of various commonly-used assets etc.',

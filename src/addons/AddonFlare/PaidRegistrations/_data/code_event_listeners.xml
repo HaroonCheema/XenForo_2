@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<code_event_listeners>
+  <listener event_id="app_pub_render_page" execute_order="999" callback_class="AddonFlare\PaidRegistrations\Listener" callback_method="appPubRenderPage" active="1"/>
+  <listener event_id="controller_post_dispatch" execute_order="10" callback_class="AddonFlare\PaidRegistrations\Listener" callback_method="adminOptionControllerPostDispatch" active="1" hint="XF\Admin\Controller\Option" description="Change section context for admin options page"/>
+  <listener event_id="entity_structure" execute_order="10" callback_class="AddonFlare\PaidRegistrations\Listener" callback_method="userUpgradeEntityStructure" active="1" hint="XF\Entity\UserUpgrade" description="Add Account Type relation"/>
+</code_event_listeners>
