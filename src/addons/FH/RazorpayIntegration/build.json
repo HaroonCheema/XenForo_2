@@ -1,6 +1,0 @@
-{
-  "additional_files": ["rzp_payment_callback.php"],
-  "exec": [
-    "echo '{title} version {version_string} ({version_id}) has been built successfully!' > 'src/addons/FH/RazorpayIntegration/_build/built.txt'"
-  ]
-}
