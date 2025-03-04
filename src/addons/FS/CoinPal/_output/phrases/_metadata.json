@@ -1,0 +1,38 @@
+{
+    "fs_coin_pal_merchant_id.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "f20a25c6a3b23eb8599bbd253bf92075"
+    },
+    "fs_coin_pal_merchant_id_explain.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "f8272788c6b187813845bc141823c7de"
+    },
+    "fs_coin_pal_secret_key.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "952bf87c967660b7bbd4e1eb08cefc92"
+    },
+    "fs_coin_pal_secret_key_explain.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "707c9b4add83930c3caf1909f68e86d4"
+    },
+    "fs_coinpal_merchant_id_must_required.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "f4bf9f4e6745cbaf71206d1046f7e8b5"
+    },
+    "fs_coinpal_secret_key_must_required.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "f6f47c96588dc8785ce28d810c2a1168"
+    }
+}

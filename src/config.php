@@ -19,5 +19,5 @@ $config['enableLivePayments'] = false;
 
 $config['debug'] = true;
 
-$config['development']['defaultAddOn'] = 'FS/ClaimEmails';
+$config['development']['defaultAddOn'] = 'FS/CoinPal';
 $config['development']['enabled'] = true;

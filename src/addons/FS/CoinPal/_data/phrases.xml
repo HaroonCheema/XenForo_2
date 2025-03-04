@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="fs_coin_pal_merchant_id" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Merchant id]]></phrase>
+  <phrase title="fs_coin_pal_merchant_id_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter <a href="https://portal.coinpal.io/#/admin/integration" target="_blank">CoinPal</a> merchant id here...!]]></phrase>
+  <phrase title="fs_coin_pal_secret_key" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Secret key]]></phrase>
+  <phrase title="fs_coin_pal_secret_key_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter <a href="https://portal.coinpal.io/#/admin/integration" target="_blank">CoinPal</a> secret key here...!]]></phrase>
+  <phrase title="fs_coinpal_merchant_id_must_required" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Merchant id must required.]]></phrase>
+  <phrase title="fs_coinpal_secret_key_must_required" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Secret key must required.]]></phrase>
+</phrases>
