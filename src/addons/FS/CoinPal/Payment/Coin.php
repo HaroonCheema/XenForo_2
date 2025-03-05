@@ -45,10 +45,6 @@ class Coin extends AbstractProvider
         $paymentProfile = $purchase->paymentProfile;
         $merchant_id = $paymentProfile->options['merchant_id'];
 
-        // echo "<pre>";
-        // var_dump($merchant_id);
-        // exit;
-
         return [
             'purchaseRequest' => $purchaseRequest,
             'paymentProfile' => $paymentProfile,
@@ -75,20 +71,22 @@ class Coin extends AbstractProvider
         $orderCurrency = $purchase->currency;
         $purchaser = $purchase->purchaser;
 
-        // $redirectURL = "http://localhost/xenforo/index.php?account/upgrade-purchase";
 
-        // echo "<pre>";
-        // var_dump($purchase->returnUrl);
-        // exit;
+        $data = [
+            "requestId" => $requestId,
+            "merchantNo" => $merchantId,
+            "orderNo" => $orderNo,
+            "orderAmount" => $orderAmount,
+            "orderCurrency" => $orderCurrency,
+        ];
+
+        // $redirectURL = "http://localhost/xenforo/index.php?account/upgrade-purchase";
 
         $chargeData = array();
 
         try {
 
-            $signature = $this->makeSign($secretKey, $requestId, $merchantId, $orderNo, $orderAmount, $orderCurrency);
-
-            // $signData = $secretKey . $requestId . $merchantId . $orderNo . $orderAmount . $orderCurrency;
-            // $signature = hash('sha256', $signData);
+            $signature = $this->makeSign($data, $secretKey);
 
             $client = $this->getHttpClient();
 
@@ -142,7 +140,6 @@ class Coin extends AbstractProvider
             throw $controller->exception($controller->error(\XF::phrase('something_went_wrong_please_try_again')));
         }
 
-
         $paymentRepo->logCallback(
             $purchaseRequest->request_key,
             $this->providerId,
@@ -156,55 +153,10 @@ class Coin extends AbstractProvider
         return $controller->redirect($redirectUrl);
     }
 
-    protected function makeSign($secretKey, $requestId, $merchantId, $orderNo, $orderAmount, $orderCurrency)
-    {
-        $signString = $secretKey . $requestId . $merchantId . $orderNo . $orderAmount . $orderCurrency;
-        $this->log('sign string：' . $signString);
-        return hash('sha256', $signString);
-    }
-
-    public function log($data)
-    {
-        // if (!self::isDebug()) {
-        //     return true;
-        // }
-        $data = is_array($data) ? var_export($data, true) : $data;
-        file_put_contents('./coinpal.log', $data . PHP_EOL, FILE_APPEND);
-    }
-
     public function notificationUrl()
     {
-
         return \xf::options()->boardUrl . "/payment_callback.php?_xfProvider=coin_pal";
-        // return \xf::options()->boardUrl . "/payment_callback.php?_xfProvider=bit_cart";
     }
-
-    // public function paymentRedirectUrl($basicRoute, $invoiceId)
-    // {
-
-
-    //     return $basicRoute . "/i/" . $invoiceId;
-    // }
-
-    // public function validatePurchaser(CallbackState $state)
-    // {
-    //     if ($this->isGuestPurchaseUserUpgrade($state->getPurchaseRequest())) {
-    //         $state->isGuestPurchaseUserUpgrade = true;
-
-    //         return true;
-    //     }
-
-    //     return parent::validatePurchaser($state);
-    // }
-
-    // public function completeTransaction(CallbackState $state)
-    // {
-    //     if ($state->isGuestPurchaseUserUpgrade) {
-    //         $this->logAsGuestPaidUserUpgrade($state);
-    //     } else {
-    //         parent::completeTransaction($state);
-    //     }
-    // }
 
     /**
      * @param \XF\Http\Request $request
@@ -213,106 +165,41 @@ class Coin extends AbstractProvider
      */
     public function setupCallback(\XF\Http\Request $request)
     {
-
         $state = new CallbackState();
 
-        $state->notifyURL = $request->filter('notifyURL', 'str');
-        $state->version = $request->filter('version', 'str');
-        $state->merchantNo = $request->filter('merchantNo', 'str');
-        $state->reference = $request->filter('reference', 'str');
-        $state->orderAmount = $request->filter('orderAmount', 'str');
-        $state->selectedWallet = $request->filter('selectedWallet', 'str');
-        $state->dueAmount = $request->filter('dueAmount', 'str');
-        $state->paidAmount = $request->filter('paidAmount', 'str');
-        $state->status = $request->filter('status', 'str');
-        $state->secretKey = $request->filter('secretKey', 'str');
-        $state->requestId = $request->filter('requestId', 'str');
-        $state->orderNo = $request->filter('orderNo', 'str');
-        $state->orderCurrency = $request->filter('orderCurrency', 'str');
-        $state->paidOrderAmount = $request->filter('paidOrderAmount', 'str');
-        $state->dueCurrency = $request->filter('dueCurrency', 'str');
-        $state->paidCurrency = $request->filter('paidCurrency', 'str');
-        $state->paidUsdt = $request->filter('paidUsdt', 'str');
-        $state->confirmedTime = $request->filter('confirmedTime', 'str');
-        $state->remark = $request->filter('remark', 'str');
-        $state->unresolvedLabel = $request->filter('unresolvedLabel', 'str');
+        $postParams = $_POST;
 
-        return $state;
+        $state->version = $postParams['version'] ?? "";
+        $state->merchantNo = $postParams['merchantNo'] ?? "";
+        $state->reference = $postParams['reference'] ?? "";
+        $state->orderAmount = $postParams['orderAmount'] ?? "";
+        $state->selectedWallet = $postParams['selectedWallet'] ?? "";
+        $state->dueAmount = $postParams['dueAmount'] ?? "";
+        $state->paidAmount = $postParams['paidAmount'] ?? "";
+        $state->paidAddress = $postParams['paidAddress'] ?? "";
+        $state->status = $postParams['status'] ?? "";
+        $state->requestId = $postParams['requestId'] ?? "";
+        $state->orderNo = $postParams['orderNo'] ?? "";
+        $state->orderCurrency = $postParams['orderCurrency'] ?? "";
+        $state->paidOrderAmount = $postParams['paidOrderAmount'] ?? "";
+        $state->dueCurrency = $postParams['dueCurrency'] ?? "";
+        $state->paidCurrency = $postParams['paidCurrency'] ?? "";
+        $state->paidUsdt = $postParams['paidUsdt'] ?? "";
+        $state->confirmedTime = $postParams['confirmedTime'] ?? "";
+        $state->remark = $postParams['remark'] ?? "";
+        $state->unresolvedLabel = $postParams['unresolvedLabel'] ?? "";
+        $state->sign = $postParams['sign'] ?? "";
+        $state->requestKey = $postParams['requestId'] ?? "";
+        $state->transactionId = $postParams['reference'] ?? "";
 
-        $state = new CallbackState();
-        $inputRaw = $request->getInputRaw();
-        $state->inputRaw = $inputRaw;
-
-        $input = @json_decode($inputRaw, true);
-        $filtered = \XF::app()->inputFilterer()->filterArray($input ?: [], [
-            'notifyURL' => 'str',
-            'version' => 'str',
-            'merchantNo' => 'str',
-            'reference' => 'str',
-            'orderAmount' => 'str',
-            'selectedWallet' => 'str',
-            'dueAmount' => 'str',
-            'paidAmount' => 'str',
-            'paidAddress' => 'str',
-            'status' => 'str',
-            'secretKey' => 'str',
-            'requestId' => 'str',
-            'orderNo' => 'str',
-            'orderCurrency' => 'str',
-            'paidOrderAmount' => 'str',
-            'dueCurrency' => 'str',
-            'paidCurrency' => 'str',
-            'paidUsdt' => 'str',
-            'confirmedTime' => 'str',
-            'remark' => 'str',
-            'unresolvedLabel' => 'str'
-        ]);
-
-        $state->notifyURL = isset($filtered['notifyURL']) ? $filtered['notifyURL'] : "";
-        $state->version = isset($filtered['version']) ? $filtered['version'] : "";
-        $state->merchantNo = isset($filtered['merchantNo']) ? $filtered['merchantNo'] : "";
-        $state->reference = isset($filtered['reference']) ? $filtered['reference'] : "";
-        $state->orderAmount = isset($filtered['orderAmount']) ? $filtered['orderAmount'] : "";
-        $state->selectedWallet = isset($filtered['selectedWallet']) ? $filtered['selectedWallet'] : "";
-        $state->dueAmount = isset($filtered['dueAmount']) ? $filtered['dueAmount'] : "";
-        $state->paidAmount = isset($filtered['paidAmount']) ? $filtered['paidAmount'] : "";
-        $state->status = isset($filtered['status']) ? $filtered['status'] : "";
-        $state->secretKey = isset($filtered['secretKey']) ? $filtered['secretKey'] : "";
-        $state->requestId = isset($filtered['requestId']) ? $filtered['requestId'] : "";
-        $state->orderNo = isset($filtered['orderNo']) ? $filtered['orderNo'] : "";
-        $state->orderCurrency = isset($filtered['orderCurrency']) ? $filtered['orderCurrency'] : "";
-        $state->paidOrderAmount = isset($filtered['paidOrderAmount']) ? $filtered['paidOrderAmount'] : "";
-        $state->dueCurrency = isset($filtered['dueCurrency']) ? $filtered['dueCurrency'] : "";
-        $state->paidCurrency = isset($filtered['paidCurrency']) ? $filtered['paidCurrency'] : "";
-        $state->paidUsdt = isset($filtered['paidUsdt']) ? $filtered['paidUsdt'] : "";
-        $state->confirmedTime = isset($filtered['confirmedTime']) ? $filtered['confirmedTime'] : "";
-        $state->remark = isset($filtered['remark']) ? $filtered['remark'] : "";
-        $state->unresolvedLabel = isset($filtered['unresolvedLabel']) ? $filtered['unresolvedLabel'] : "";
-
-
-        // $state->eventType = isset($filtered['status']) ? $filtered['status'] : "";
-        // $state->transactionId = isset($filtered['id']) ? $filtered['id'] : "";
-
-        $state->event = $filtered;
-
-        // if ($state->transactionId) {
-
-        //     list($reqeustkey, $invoiceData) = $this->invoiceStatus($state->transactionId);
-
-        //     $state->requestKey = $reqeustkey;
-
-        //     if ($invoiceData) {
-
-        //         $state->event = $invoiceData;
-        //     }
-        // }
+        // $this->logIntoFile('----------------setupCallback--------------------------');
+        // $this->logIntoFile('notify: ' . json_encode($state));
 
         return $state;
     }
 
     public function validateCallback(CallbackState $state)
     {
-
         if (!$state->status) {
 
             $state->logType = 'error';
@@ -331,6 +218,15 @@ class Coin extends AbstractProvider
             return false;
         }
 
+        if (!$state->requestKey) {
+
+            $state->logType = 'error';
+            $state->logMessage = 'CoinPal: Invalid purchase request.Request Key not found.';
+            $state->httpCode = 404;
+
+            return false;
+        }
+
         if (!$state->getPurchaseRequest()) {
 
             $state->logType = 'error';
@@ -339,9 +235,6 @@ class Coin extends AbstractProvider
 
             return false;
         }
-
-        // ['merchant_id'];
-        // ['secret_key'];
 
         if (!$state->getPaymentProfile()->options['secret_key']) {
 
@@ -361,9 +254,18 @@ class Coin extends AbstractProvider
             return false;
         }
 
-        $paymentStatus = ["paid", "partial_paid", "paid_confirming", "partial_paid_confirming"];
+        if (!$this->verifySign($state, $state->getPaymentProfile()->options['secret_key'])) {
 
-        if (!in_array($state->status, $paymentStatus)) {
+            $state->logType = 'error';
+            $state->logMessage = 'CoinPal: Invalid purchase request.Signature not matched';
+            $state->httpCode = 401;
+
+            return false;
+        }
+
+        // $paymentStatus = ["paid", "partial_paid", "paid_confirming", "partial_paid_confirming"];
+
+        if ($state->status != "paid") {
 
             $state->logType = 'info';
             $state->logMessage = 'CoinPal: Event "' . htmlspecialchars($state->status) . '" processed.';
@@ -377,6 +279,7 @@ class Coin extends AbstractProvider
 
     public function getPaymentResult(CallbackState $state)
     {
+
         switch ($state->status) {
             case 'paid':
                 // case 'partial_paid':
@@ -392,12 +295,9 @@ class Coin extends AbstractProvider
 
     public function prepareLogData(CallbackState $state)
     {
+        $data = (array) $state;
 
-        $state->logDetails = $state->_POST;
-
-        // $state->logDetails = $state->orderNo;
-        // $state->logDetails['eventType'] = $state->status;
-        // $state->logDetails['eventType'] = $state->eventType;
+        $state->logDetails = $data;
     }
 
     public function supportsRecurring(\XF\Entity\PaymentProfile $paymentProfile, $unit, $amount, &$result = self::ERR_NO_RECURRING)
@@ -411,22 +311,38 @@ class Coin extends AbstractProvider
         return $client;
     }
 
-    // public function invoiceStatus($invoiceId)
+    public function verifySign($dataParams, $secretKey)
+    {
+        $data = (array) $dataParams;
+
+        if (empty($data['sign'])) {
+            return false;
+        }
+
+        $sign = $this->makeSign($data, $secretKey);
+
+        if ($sign != $data['sign']) {
+            return false;
+        }
+
+        return true;
+    }
+
+    protected function makeSign($data, $secretKey)
+    {
+        // // this signature format is only user for get payment information
+        // $signString = $apiKey . $data['reference'] . $data['requestId'] . $data['merchantNo'] . $data['timestamp'];
+
+        $signString = $secretKey . $data['requestId'] . $data['merchantNo'] . $data['orderNo'] . $data['orderAmount'] . $data['orderCurrency'];
+        return hash('sha256', $signString);
+    }
+
+    // public function logIntoFile($data)
     // {
-
-
-    //     $client = $this->getHttpClient();
-
-    //     try {
-
-    //         $invoiceData = \GuzzleHttp\json_decode($client->get($this->getApiEndpoint() . '/invoices/' . $invoiceId)->getBody()->getContents(), true);
-
-    //         $requestKey = $invoiceData['order_id'];
-    //     } catch (\Exception $e) {
-
-    //         return [null, null];
-    //     }
-
-    //     return [$requestKey, $invoiceData];
+    //     // if (!self::isDebug()) {
+    //     //     return true;
+    //     // }
+    //     $data = is_array($data) ? var_export($data, true) : $data;
+    //     file_put_contents('./coinpal.log', $data . PHP_EOL, FILE_APPEND);
     // }
 }
