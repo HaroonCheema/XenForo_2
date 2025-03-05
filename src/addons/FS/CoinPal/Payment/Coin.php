@@ -85,9 +85,10 @@ class Coin extends AbstractProvider
 
         try {
 
-            $signData = $secretKey . $requestId . $merchantId . $orderNo . $orderAmount . $orderCurrency;
+            $signature = $this->makeSign($secretKey, $requestId, $merchantId, $orderNo, $orderAmount, $orderCurrency);
 
-            $signature = hash('sha256', $signData);
+            // $signData = $secretKey . $requestId . $merchantId . $orderNo . $orderAmount . $orderCurrency;
+            // $signature = hash('sha256', $signData);
 
             $client = $this->getHttpClient();
 
@@ -153,6 +154,22 @@ class Coin extends AbstractProvider
         );
 
         return $controller->redirect($redirectUrl);
+    }
+
+    protected function makeSign($secretKey, $requestId, $merchantId, $orderNo, $orderAmount, $orderCurrency)
+    {
+        $signString = $secretKey . $requestId . $merchantId . $orderNo . $orderAmount . $orderCurrency;
+        $this->log('sign string：' . $signString);
+        return hash('sha256', $signString);
+    }
+
+    public function log($data)
+    {
+        // if (!self::isDebug()) {
+        //     return true;
+        // }
+        $data = is_array($data) ? var_export($data, true) : $data;
+        file_put_contents('./coinpal.log', $data . PHP_EOL, FILE_APPEND);
     }
 
     public function notificationUrl()
