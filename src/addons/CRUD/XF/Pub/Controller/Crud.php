@@ -727,82 +727,82 @@ class Crud extends AbstractController
     public function actionIndex(ParameterBag $params)
     {
 
-        $this->getThreadsDataInZipFile();
+        // $this->getThreadsDataInZipFile();
 
-        exit;
+        // exit;
 
-        $zipFile = 'xenforo_exports.zip';
-        $zip = new ZipArchive();
-        $zip->open($zipFile, ZipArchive::CREATE | ZipArchive::OVERWRITE);
+        // $zipFile = 'xenforo_exports.zip';
+        // $zip = new ZipArchive();
+        // $zip->open($zipFile, ZipArchive::CREATE | ZipArchive::OVERWRITE);
 
-        $app = \XF::app(); // Get XenForo App
-        $db = $app->db();
+        // $app = \XF::app(); // Get XenForo App
+        // $db = $app->db();
 
-        $tables = [
-            'xf_thread' => 'thread_id > 100',
-            'xf_post' => 'post_id > 100',
-            'xf_attachment' => 'attachment_id > 100'
-        ];
+        // $tables = [
+        //     'xf_thread' => 'thread_id > 100',
+        //     'xf_post' => 'post_id > 100',
+        //     'xf_attachment' => 'attachment_id > 100'
+        // ];
 
-        foreach ($tables as $tableName => $condition) {
-            $rows = $db->fetchAll("SELECT * FROM {$tableName} WHERE {$condition}");
-            if (!$rows) continue;
+        // foreach ($tables as $tableName => $condition) {
+        //     $rows = $db->fetchAll("SELECT * FROM {$tableName} WHERE {$condition}");
+        //     if (!$rows) continue;
 
-            $fileName = "{$tableName}.csv";
-            $filePath = sys_get_temp_dir() . "/" . $fileName;
+        //     $fileName = "{$tableName}.csv";
+        //     $filePath = sys_get_temp_dir() . "/" . $fileName;
 
-            $output = fopen($filePath, 'w');
-            fputcsv($output, array_keys($rows[0]));
-            foreach ($rows as $row) {
-                fputcsv($output, $row);
-            }
-            fclose($output);
+        //     $output = fopen($filePath, 'w');
+        //     fputcsv($output, array_keys($rows[0]));
+        //     foreach ($rows as $row) {
+        //         fputcsv($output, $row);
+        //     }
+        //     fclose($output);
 
-            $zip->addFile($filePath, $fileName);
-        }
+        //     $zip->addFile($filePath, $fileName);
+        // }
 
-        $zip->close();
+        // $zip->close();
 
-        // Force download ZIP
-        header('Content-Type: application/zip');
-        header('Content-Disposition: attachment; filename="xenforo_exports.zip"');
-        header('Pragma: no-cache');
-        header('Expires: 0');
-        readfile($zipFile);
-        exit;
+        // // Force download ZIP
+        // header('Content-Type: application/zip');
+        // header('Content-Disposition: attachment; filename="xenforo_exports.zip"');
+        // header('Pragma: no-cache');
+        // header('Expires: 0');
+        // readfile($zipFile);
+        // exit;
 
-        $app = \XF::app();
-        $db = $app->db();
+        // $app = \XF::app();
+        // $db = $app->db();
 
-        $tableName = 'xf_thread';
-        $fileName = $tableName . '_filtered.csv';
+        // $tableName = 'xf_thread';
+        // $fileName = $tableName . '_filtered.csv';
 
-        $rows = $db->fetchAll("SELECT * FROM {$tableName} WHERE thread_id > ?", 100);
+        // $rows = $db->fetchAll("SELECT * FROM {$tableName} WHERE thread_id > ?", 100);
 
-        // Check if there are records
-        if (!$rows) {
-            die('No records found with thread_id > 600.');
-        }
+        // // Check if there are records
+        // if (!$rows) {
+        //     die('No records found with thread_id > 600.');
+        // }
 
-        // Set headers to force CSV download
-        header('Content-Type: text/csv');
-        header('Content-Disposition: attachment; filename="' . $fileName . '"');
-        header('Pragma: no-cache');
-        header('Expires: 0');
+        // // Set headers to force CSV download
+        // header('Content-Type: text/csv');
+        // header('Content-Disposition: attachment; filename="' . $fileName . '"');
+        // header('Pragma: no-cache');
+        // header('Expires: 0');
 
-        $output = fopen('php://output', 'w');
+        // $output = fopen('php://output', 'w');
 
-        // Get column names for CSV header
-        $header = array_keys($rows[0]);
-        fputcsv($output, $header);
+        // // Get column names for CSV header
+        // $header = array_keys($rows[0]);
+        // fputcsv($output, $header);
 
-        // Add each row to the CSV
-        foreach ($rows as $row) {
-            fputcsv($output, $row);
-        }
+        // // Add each row to the CSV
+        // foreach ($rows as $row) {
+        //     fputcsv($output, $row);
+        // }
 
-        fclose($output);
-        exit; // Stop further execution
+        // fclose($output);
+        // exit; // Stop further execution
 
         // \XF[addonFlareForumStatsForumStatRepo]->renderForumStats('forum_list_above_nodes');
 
