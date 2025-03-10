@@ -5,14 +5,14 @@ namespace FS\RandomUsernameAndPasswords\Entity;
 use XF\Mvc\Entity\Structure;
 use XF\Mvc\Entity\Entity;
 
-class Register extends Entity
+class RandomUsers extends Entity
 {
 
     public static function getStructure(Structure $structure)
     {
 
         $structure->table = 'fs_random_username_and_passwords';
-        $structure->shortName = 'FS\RandomUsernameAndPasswords:Register';
+        $structure->shortName = 'FS\RandomUsernameAndPasswords:RandomUsers';
         $structure->primaryKey = 'random_id';
         $structure->contentType = 'fs_random_username_and_passwords';
         $structure->columns = [
@@ -29,6 +29,7 @@ class Register extends Entity
             'email' => ['type' => self::STR, 'default' => ''],
             'subscription_date' => ['type' => self::STR, 'default' => ''],
             'website' => ['type' => self::STR, 'default' => ''],
+            'is_name_used' => ['type' => self::UINT, 'default' => 0],
         ];
 
         $structure->relations = [];

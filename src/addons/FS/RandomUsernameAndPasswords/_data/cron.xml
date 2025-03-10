@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cron>
+  <entry entry_id="randomUsernamePasswords" cron_class="FS\RandomUsernameAndPasswords\Cron\RandomUsernames" cron_method="assignRandomUsernameAndPasswords" active="1"><![CDATA[{"day_type":"dom","dom":[-1],"hours":[0],"minutes":[0]}]]></entry>
+</cron>

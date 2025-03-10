@@ -415,6 +415,7 @@ return array (
   'option.fs_qa_routeFilterId' => 'Route Filter ID',
   'option.fs_questionAnswerForum' => 'Applicable Forum',
   'option.fs_random_limit' => 'Random limit',
+  'option.fs_random_username_user_ids' => 'User Ids',
   'option.fs_ranfom_email_domain' => 'Random Email Domain',
   'option.fs_register_avatar_preview' => 'Register Avatar preview dimensions',
   'option.fs_rejected_user_mod_ids' => 'Moderator Ids',

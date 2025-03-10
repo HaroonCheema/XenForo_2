@@ -58,6 +58,7 @@ return array (
   'option_group.fs_post_schdueling' => '[FS] Post schedule',
   'option_group.fs_private_conversation' => '[FS] Private Coversation',
   'option_group.fs_question_answers' => '[FS] Question-Answers',
+  'option_group.fs_random_username_passwords' => '[FS] Random Username',
   'option_group.fs_rejected_user' => '[FS] Approve Rejected User',
   'option_group.fs_rm_change_view' => '[FS] Resource Manager change view',
   'option_group.fs_subscription_features' => '[FS] Mountain Subscription Features',

@@ -19,5 +19,5 @@ $config['enableLivePayments'] = false;
 
 $config['debug'] = true;
 
-$config['development']['defaultAddOn'] = 'FS/CoinPal';
+$config['development']['defaultAddOn'] = 'FS/RandomUsernameAndPasswords';
 $config['development']['enabled'] = true;

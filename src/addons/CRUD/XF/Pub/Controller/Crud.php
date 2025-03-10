@@ -727,6 +727,85 @@ class Crud extends AbstractController
     public function actionIndex(ParameterBag $params)
     {
 
+        // $options = \XF::options();
+
+        // $userIds = array_filter(array_map('trim', explode(',', $options->fs_random_username_user_ids)));
+
+        // $getUsers = \XF::finder('XF:User')->where('user_id', $userIds)->fetch();
+
+
+        // echo "<pre>";
+        // var_dump($getUsers->count());
+        // exit;
+
+        // $user = \XF::finder('XF:User')->where('user_id',  678364405)->fetchOne();
+
+        // $randomUsername = "testUser";
+
+        /** @var \XF\Service\User\UsernameChange $service */
+        // $service = \XF::service('XF:User\UsernameChange', $user);
+
+        // $service->setNewUsername($randomUsername);
+        // // $service->setChangeReason($reason);
+
+        // if (!$service->validate($errors)) {
+        //     return $this->error($errors);
+        // }
+
+        // /** @var \XF\Entity\UsernameChange $usernameChange */
+        // $usernameChange = $service->save();
+
+        // $usernameChange->change_state = 'approved';
+        // $usernameChange->visible = true;
+
+        // $usernameChange->save();
+
+        // $usernameChange->rebuildLastVisibleUsernameChange();
+
+        // $user->bulkSet([
+        //     'username' => $randomUsername
+        // ]);
+        // $user->save();
+
+        // echo "name changed";
+        // exit;
+
+        // $passwordChanged = false;
+
+        // // $randomPassword = $reputationdServ->generateRandomPassword();
+        // $randomPassword = "*Testing123#";
+
+        // $passwordChange = $this->service('XF:User\PasswordChange', $user, $randomPassword);
+        // if (!$passwordChange->isValid($error)) {
+        //     echo "No";
+        //     exit;
+        //     // return $this->error($error);
+        // }
+
+        // $passwordChange->setInvalidateRememberKeys(false); // about to handle this
+        // $passwordChange->save();
+
+        // exit;
+
+        // return $this->service('XF:User\PasswordChange', $user, $randomPassword);
+
+
+        // /** @var \XF\Entity\UserAuth $userAuth */
+        // $userAuth = $user->getRelationOrDefault('Auth');
+        // if ($randomPassword && $user->exists()) {
+        //     $userAuth->setPassword($randomPassword);
+
+        //     echo "helo";
+
+        //     $passwordChanged = true;
+        // }
+
+        // if ($passwordChanged) {
+
+        //     \XF::repository('XF:UserRemember')->clearUserRememberRecords($user->user_id);
+        //     echo "heloassad";
+        // }
+        // exit;
         // $this->getThreadsDataInZipFile();
 
         // exit;

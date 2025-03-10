@@ -18,22 +18,21 @@ class Setup extends AbstractSetup
 
 	public function installstep1()
 	{
+
 		$sm = $this->schemaManager();
 
-		$this->schemaManager()->createTable('fs_random_username_and_passwords', function (Create $table) {
-			$table->addColumn('random_id', 'int')->autoIncrement();
-			$table->addColumn('customer_id', 'varchar', 255)->setDefault('');
-			$table->addColumn('first_name', 'varchar', 255)->setDefault('');
-			$table->addColumn('last_name', 'varchar', 255)->setDefault('');
-			$table->addColumn('company', 'varchar', 255)->setDefault('');
-			$table->addColumn('city', 'varchar', 255)->setDefault('');
-			$table->addColumn('country', 'varchar', 255)->setDefault('');
-			$table->addColumn('phone_one', 'varchar', 255)->setDefault('');
-			$table->addColumn('phone_two', 'varchar', 255)->setDefault('');
-			$table->addColumn('email', 'varchar', 255)->setDefault('');
-			$table->addColumn('subscription_date', 'varchar', 255)->setDefault('');
-			$table->addColumn('website', 'varchar', 255)->setDefault('');
-			$table->addPrimaryKey('random_id');
+		$sm->alterTable('xf_user', function (Alter $table) {
+			$table->addColumn('is_renamed', 'int', 10)->setDefault(0);
+		});
+
+	}
+
+	public function uninstallStep1()
+	{
+		$sm = $this->schemaManager();
+
+		$sm->alterTable('xf_user', function (Alter $table) {
+			$table->dropColumns(['is_renamed']);
 		});
 	}
 }

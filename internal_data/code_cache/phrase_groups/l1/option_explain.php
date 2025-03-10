@@ -483,6 +483,7 @@ This option requires that the specified account is a catch-all account or suppor
   'option_explain.fs_qa_routeFilterId' => 'Enter the ID of RouteFilter which you yave create for QuestionsAnswers forum',
   'option_explain.fs_questionAnswerForum' => 'Select the Question Forum on which Question&Answers search functionality will work.',
   'option_explain.fs_random_limit' => 'Random avatar limit for per day.0 will be consider unlimited.',
+  'option_explain.fs_random_username_user_ids' => 'Enter the User Ids Comma separated like 1,2,3,4.',
   'option_explain.fs_ranfom_email_domain' => 'you can change random email domain from here...!',
   'option_explain.fs_register_avatar_preview' => '',
   'option_explain.fs_rejected_user_mod_ids' => 'Enter the ids Comma separated like 1,2,3,4,5,6,......',

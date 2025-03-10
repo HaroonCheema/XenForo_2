@@ -1,0 +1,32 @@
+{
+    "cron_entry.randomUsernamePasswords.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "386876d0b1132aad7eabc26ab35e7f0b"
+    },
+    "option.fs_random_username_user_ids.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "612bb5469f8ae3dfda9ead660239b48d"
+    },
+    "option_explain.fs_random_username_user_ids.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "33864e099f9041a38e9d0b6f2215360e"
+    },
+    "option_group.fs_random_username_passwords.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "0dcfb4251c0a21877e487b66b149c370"
+    },
+    "option_group_description.fs_random_username_passwords.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    }
+}
