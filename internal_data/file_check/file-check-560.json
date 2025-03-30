@@ -6,6 +6,9 @@
             "js/sv/vendor/moment/LICENSE",
             "js/sv/vendor/moment/moment.js"
         ],
+        "FS/DownloadThreadAttachments": [
+            "src/addons/FS/DownloadThreadAttachments/XF/Pub/Views/DownloadZip.php"
+        ],
         "XDinc/FTSlider": [
             "src/addons/XDinc/FTSlider/Admin/Controller/FTSlider.php"
         ]
@@ -63,8 +66,6 @@
         "XF": [
             "connected_account.php",
             "index.php",
-            "js/vendor/flow.js/flow-compiled.js",
-            "js/xf/attachment_manager-compiled.js",
             "js/xf/attachment_manager.js",
             "js/xf/core/action.min.js",
             "js/xf/editor-compiled.js",
@@ -86,6 +87,7 @@
             "src/XF/FindNew/AbstractHandler.php",
             "src/XF/FindNew/Thread.php",
             "src/XF/Http/Request.php",
+            "src/XF/Mail/Mail.php",
             "src/XF/Mvc/Entity/Entity.php",
             "src/XF/Payment/Stripe.php",
             "src/XF/PermissionSet.php",
@@ -176,6 +178,7 @@
             "src/addons/FS/AvatarGallery/_data/template_modifications.xml"
         ],
         "FS/DownloadThreadAttachments": [
+            "src/addons/FS/DownloadThreadAttachments/XF/Pub/Controller/Post.php",
             "src/addons/FS/DownloadThreadAttachments/_data/templates.xml",
             "src/addons/FS/DownloadThreadAttachments/_data/template_modifications.xml"
         ],
@@ -327,6 +330,7 @@
         ],
         "FS/UploadProgress": [
             "js/fs/attachment_manager.js",
+            "src/addons/FS/UploadProgress/addon.json",
             "src/addons/FS/UploadProgress/_data/template_modifications.xml"
         ],
         "FS/WebsiteRanking": [
@@ -388,6 +392,9 @@
         "XenBulletins/VideoPages": [
             "src/addons/XenBulletins/VideoPages/Admin/Controller/AddVideo.php"
         ],
+        "XC/PlisioPayments": [
+            "src/addons/XC/PlisioPayments/Payment/CoinbaseCommerce.php"
+        ],
         "XC/ThreadGPTBot": [
             "js/botGPT/submit.js",
             "src/addons/XC/ThreadGPTBot/XF/Pub/Controller/Bot.php",
@@ -398,7 +405,7 @@
             "src/addons/XDinc/FTSlider/Widget/FTSliders.php"
         ]
     },
-    "total_missing": 5,
-    "total_inconsistent": 278,
-    "total_checked": 14869
+    "total_missing": 6,
+    "total_inconsistent": 280,
+    "total_checked": 15370
 }
