@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="admin" template="user_edit" modification_key="add_reviews_balance_edit_user" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:formrow label="{{ phrase('two_step_verification') }}">]]></find>
+    <replace><![CDATA[<xf:textboxrow name="add_balance" value="0" label="{{ phrase('Add Review Balance') }}">
+	<xf:explain>{$user.reviews_balance} days of access remaining</xf:explain>
+</xf:textboxrow>
+<xf:formrow label="{{ phrase('two_step_verification') }}">]]></replace>
+  </modification>
+  <modification type="admin" template="user_upgrade_edit" modification_key="user_upgrade_edit_add_is_review_balance" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[			<xf:checkboxrow>
+				<xf:option name="can_purchase" selected="$upgrade.can_purchase">{{ phrase('can_be_purchased') }}</xf:option>
+			</xf:checkboxrow>]]></find>
+    <replace><![CDATA[
+			<xf:checkboxrow>
+				<xf:option name="is_review_balance" selected="$upgrade.is_review_balance">{{ phrase('is_review_balance') }}</xf:option>
+			</xf:checkboxrow>		]]></replace>
+  </modification>
+</template_modifications>

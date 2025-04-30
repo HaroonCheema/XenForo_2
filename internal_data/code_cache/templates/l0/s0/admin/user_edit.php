@@ -316,7 +316,14 @@ href="' . $__templater->func('link', array('users/edit', $__vars['user'], ), tru
 	$__compilerTemp13 = '';
 	if ($__vars['user']['user_id']) {
 		$__compilerTemp13 .= '
-						';
+						' . $__templater->formTextBoxRow(array(
+			'name' => 'add_balance',
+			'value' => '0',
+		), array(
+			'label' => 'Add Review Balance',
+			'explain' => $__templater->escape($__vars['user']['reviews_balance']) . ' days of access remaining',
+		)) . '
+';
 		$__compilerTemp14 = '';
 		if ($__vars['user']['Option']['use_tfa']) {
 			$__compilerTemp14 .= '

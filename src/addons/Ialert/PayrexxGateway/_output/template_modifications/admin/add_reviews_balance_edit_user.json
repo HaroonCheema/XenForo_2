@@ -1,0 +1,9 @@
+{
+    "template": "user_edit",
+    "description": "",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:formrow label=\"{{ phrase('two_step_verification') }}\">",
+    "replace": "<xf:textboxrow name=\"add_balance\" value=\"0\" label=\"{{ phrase('Add Review Balance') }}\">\n\t<xf:explain>{$user.reviews_balance} days of access remaining</xf:explain>\n</xf:textboxrow>\n<xf:formrow label=\"{{ phrase('two_step_verification') }}\">"
+}

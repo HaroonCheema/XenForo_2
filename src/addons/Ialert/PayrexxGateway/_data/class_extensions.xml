@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class_extensions>
+  <extension from_class="AMP\Repository\Review" to_class="Ialert\PayrexxGateway\Repository\AMP\Review" execute_order="10" active="1"/>
+  <extension from_class="XF\Admin\Controller\User" to_class="Ialert\PayrexxGateway\XF\Admin\Controller\User" execute_order="10" active="1"/>
+  <extension from_class="XF\Admin\Controller\UserUpgrade" to_class="Ialert\PayrexxGateway\XF\Admin\Controller\UserUpgrade" execute_order="10" active="1"/>
+  <extension from_class="XF\Service\User\Upgrade" to_class="Ialert\PayrexxGateway\XF\Service\User\Upgrade" execute_order="10" active="1"/>
+</class_extensions>

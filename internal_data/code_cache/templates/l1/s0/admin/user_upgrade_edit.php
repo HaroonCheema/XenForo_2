@@ -181,14 +181,15 @@ return array(
 
 			' . $__compilerTemp3 . '
 
+
 			' . $__templater->formCheckBoxRow(array(
 	), array(array(
-		'name' => 'can_purchase',
-		'selected' => $__vars['upgrade']['can_purchase'],
-		'label' => 'Can be purchased',
+		'name' => 'is_review_balance',
+		'selected' => $__vars['upgrade']['is_review_balance'],
+		'label' => 'Use for review balance',
 		'_type' => 'option',
 	)), array(
-	)) . '
+	)) . '		
 		</div>
 		' . $__templater->formSubmitRow(array(
 		'icon' => 'save',
