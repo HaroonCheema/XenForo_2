@@ -11,13 +11,22 @@ return array(
 	));
 	if ($__templater->isTraversable($__vars['contentTypes'])) {
 		foreach ($__vars['contentTypes'] AS $__vars['contentType']) {
-			$__compilerTemp1[] = array(
-				'value' => $__vars['contentType'],
-				'label' => $__templater->escape($__templater->method($__vars['xf']['app'], 'getContentTypePhrase', array($__vars['contentType'], ))),
-				'_type' => 'option',
-			);
+			if ($__vars['contentType'] == 'node') {
+				$__compilerTemp1[] = array(
+					'value' => $__vars['contentType'],
+					'label' => 'Group',
+					'_type' => 'option',
+				);
+			} else {
+				$__compilerTemp1[] = array(
+					'value' => $__vars['contentType'],
+					'label' => $__templater->escape($__templater->method($__vars['xf']['app'], 'getContentTypePhrase', array($__vars['contentType'], ))),
+					'_type' => 'option',
+				);
+			}
 		}
 	}
+	$__vars['user'] = ($__vars['filters']['content_id'] ? $__templater->method($__vars['xf']['app']['em'], 'find', array('Xf:User', $__vars['filters']['content_id'], )) : '');
 	$__finalCompiled .= $__templater->form('
 	' . '
 	<div class="menu-row menu-row--separated">
@@ -32,6 +41,21 @@ return array(
 	</div>
 	
 	' . '
+<div class="menu-row menu-row--separated">
+	<label for="ctrl_content_type">' . 'Username or Email' . $__vars['xf']['language']['label_separator'] . '</label>
+	<div class="u-inputSpacer">
+
+		' . '' . '
+
+		' . $__templater->formTextBox(array(
+		'name' => 'username',
+		'ac' => 'single',
+		'value' => ($__vars['user'] ? ($__vars['filters']['isEmail'] ? $__vars['user']['email'] : $__vars['user']['username']) : ''),
+		'maxlength' => $__templater->func('max_length', array($__vars['xf']['visitor'], 'username', ), false),
+	)) . '
+	</div>
+</div>
+' . '
 	<div class="menu-row menu-row--separated">
 		' . 'Sort direction' . $__vars['xf']['language']['label_separator'] . '
 		<div class="inputGroup u-inputSpacer">
