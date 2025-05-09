@@ -1,0 +1,6 @@
+{
+    "from_class": "XenBulletins\\BrandHub\\Entity\\Brand",
+    "to_class": "FS\\TractorLandingPageApi\\Entity\\Brand",
+    "execute_order": 10,
+    "active": true
+}

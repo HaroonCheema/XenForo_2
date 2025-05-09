@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<options>
+  <option option_id="fs_tractorbynet_auction_id" edit_format="textbox" data_type="string">
+    <default_value>178</default_value>
+    <relation group_id="fs_tractor_by_net_api" display_order="3"/>
+  </option>
+  <option option_id="fs_tractorbynet_construction" edit_format="textbox" data_type="string">
+    <default_value></default_value>
+    <relation group_id="fs_tractor_by_net_api" display_order="5"/>
+  </option>
+  <option option_id="fs_tractorbynet_database" edit_format="spinbox" data_type="positive_integer">
+    <default_value>10</default_value>
+    <edit_format_params>min=10</edit_format_params>
+    <relation group_id="fs_tractor_by_net_api" display_order="1"/>
+  </option>
+  <option option_id="fs_tractorbynet_forums_brand" edit_format="textbox" data_type="string">
+    <default_value></default_value>
+    <relation group_id="fs_tractor_by_net_api" display_order="7"/>
+  </option>
+  <option option_id="fs_tractorbynet_forums_topic" edit_format="textbox" data_type="string">
+    <default_value></default_value>
+    <relation group_id="fs_tractor_by_net_api" display_order="8"/>
+  </option>
+  <option option_id="fs_tractorbynet_lawn_garder" edit_format="textbox" data_type="string">
+    <default_value></default_value>
+    <relation group_id="fs_tractor_by_net_api" display_order="6"/>
+  </option>
+  <option option_id="fs_tractorbynet_marketplace_listings" edit_format="spinbox" data_type="positive_integer">
+    <default_value>3</default_value>
+    <edit_format_params>min=3</edit_format_params>
+    <relation group_id="fs_tractor_by_net_api" display_order="2"/>
+  </option>
+  <option option_id="fs_tractorbynet_tractors" edit_format="textbox" data_type="string">
+    <default_value></default_value>
+    <relation group_id="fs_tractor_by_net_api" display_order="4"/>
+  </option>
+</options>

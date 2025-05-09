@@ -49,6 +49,12 @@
             "src/addons/SV/MultiPrefix/XF/Template/Templater.php",
             "src/addons/SV/MultiPrefix/_data/options.xml"
         ],
+        "Ialert/PayrexxGateway": [
+            "src/addons/Ialert/PayrexxGateway/addon.json",
+            "src/addons/Ialert/PayrexxGateway/XF/Service/User/Upgrade.php",
+            "src/addons/Ialert/PayrexxGateway/_data/class_extensions.xml",
+            "src/addons/Ialert/PayrexxGateway/_data/template_modifications.xml"
+        ],
         "BS/ScheduledPosting": [
             "src/addons/BS/ScheduledPosting/XF/Entity/User.php"
         ],
@@ -324,6 +330,10 @@
             "src/addons/FS/ThreadMultiTag/XF/Service/Tag/Changer.php",
             "src/addons/FS/ThreadMultiTag/_data/class_extensions.xml"
         ],
+        "FS/TractorLandingPageApi": [
+            "src/addons/FS/TractorLandingPageApi/Api/Controller/TractorController.php",
+            "src/addons/FS/TractorLandingPageApi/_data/class_extensions.xml"
+        ],
         "FS/UpdateUserId": [
             "src/addons/FS/UpdateUserId/addon.json",
             "src/addons/FS/UpdateUserId/Service/UpdateUser.php"
@@ -406,6 +416,6 @@
         ]
     },
     "total_missing": 6,
-    "total_inconsistent": 280,
-    "total_checked": 15336
+    "total_inconsistent": 286,
+    "total_checked": 15454
 }

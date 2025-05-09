@@ -19,5 +19,5 @@ $config['enableLivePayments'] = false;
 
 $config['debug'] = true;
 
-$config['development']['defaultAddOn'] = 'FS/RandomUsernameAndPasswords';
+$config['development']['defaultAddOn'] = 'FS/TractorLandingPageApi';
 $config['development']['enabled'] = true;

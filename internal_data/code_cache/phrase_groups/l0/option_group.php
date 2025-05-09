@@ -66,6 +66,7 @@ return array (
   'option_group.fs_thread_rules' => '[FS] Threads Rules',
   'option_group.fs_thread_scoring_system' => '[FS] Thread Scoring System',
   'option_group.fs_thread_thumbnail' => '[FS] Thread Thumbnail',
+  'option_group.fs_tractor_by_net_api' => '[FS] Tractorbynet Api',
   'option_group.fs_translator' => '[FS] Translator',
   'option_group.fs_web_ranking' => '[FS] Website Ranking',
   'option_group.fs_welcome_banner' => '[FS] Welcome Banner',

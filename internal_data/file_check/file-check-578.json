@@ -49,6 +49,12 @@
             "src/addons/SV/MultiPrefix/XF/Template/Templater.php",
             "src/addons/SV/MultiPrefix/_data/options.xml"
         ],
+        "Ialert/PayrexxGateway": [
+            "src/addons/Ialert/PayrexxGateway/addon.json",
+            "src/addons/Ialert/PayrexxGateway/XF/Service/User/Upgrade.php",
+            "src/addons/Ialert/PayrexxGateway/_data/class_extensions.xml",
+            "src/addons/Ialert/PayrexxGateway/_data/template_modifications.xml"
+        ],
         "BS/ScheduledPosting": [
             "src/addons/BS/ScheduledPosting/XF/Entity/User.php"
         ],
@@ -377,6 +383,7 @@
         ],
         "XenBulletins/BrandHub": [
             "src/addons/XenBulletins/BrandHub/addon.json",
+            "src/addons/XenBulletins/BrandHub/Entity/Brand.php",
             "src/addons/XenBulletins/BrandHub/Entity/Thread.php",
             "src/addons/XenBulletins/BrandHub/Install/Data/MySql.php",
             "src/addons/XenBulletins/BrandHub/Pub/Controller/Item.php",
@@ -392,6 +399,9 @@
         "XenBulletins/VideoPages": [
             "src/addons/XenBulletins/VideoPages/Admin/Controller/AddVideo.php"
         ],
+        "XC/PlisioPayments": [
+            "src/addons/XC/PlisioPayments/Payment/CoinbaseCommerce.php"
+        ],
         "XC/ThreadGPTBot": [
             "js/botGPT/submit.js",
             "src/addons/XC/ThreadGPTBot/XF/Pub/Controller/Bot.php",
@@ -403,6 +413,6 @@
         ]
     },
     "total_missing": 6,
-    "total_inconsistent": 279,
-    "total_checked": 14869
+    "total_inconsistent": 285,
+    "total_checked": 15424
 }
