@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="xfmg_category_add" modification_key="ts_mgm_xfmg_category_add" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:macro template="xfmg_media_add_macros" name="add_form"
+	arg-category="{$category}"
+	arg-album="{$album}"
+	arg-canUpload="{$category.canUploadMedia()}"
+	arg-canEmbed="{$category.canEmbedMedia()}"
+	arg-attachmentData="{$attachmentData}"]]></find>
+    <replace><![CDATA[$0
+	arg-additional="{$additional}"
+]]></replace>
+  </modification>
+  <modification type="public" template="xfmg_media_add_macros" modification_key="ts_mgm_xfmg_media_add_macros_1" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:textarearow name="album[description]" autosize="true" rows="1"
+							data-xf-init="user-mentioner"
+							maxlength="{{ max_length('XFMG:Album', 'description') }}"
+							label="{{ phrase('xfmg_album_description') }}">
+
+							<xf:explain>
+								<xf:if is="$category">
+									{{ phrase('xfmg_album_is_being_created_inside_x_category', {'title': $category.title}) }}
+								<xf:else />
+									{{ phrase('xfmg_album_and_its_contents_will_be_private') }}
+								</xf:if>
+							</xf:explain>
+						</xf:textarearow>]]></find>
+    <replace><![CDATA[<xf:editorrow name="album[description]"
+			  maxlength="{{ max_length('XFMG:Album', 'description') }}"
+			  removebuttons="{$disabledButtons}"
+			  label="{{ phrase('xfmg_album_description') }}">
+	<xf:explain>
+		<xf:if is="$category">
+			{{ phrase('xfmg_album_is_being_created_inside_x_category', {'title': $category.title}) }}
+			<xf:else />
+			{{ phrase('xfmg_album_and_its_contents_will_be_private') }}
+		</xf:if>
+	</xf:explain>
+</xf:editorrow>]]></replace>
+  </modification>
+  <modification type="public" template="xfmg_media_add_macros" modification_key="ts_mgm_xfmg_media_add_macros_2" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:textarearow name="{$namePrefix}[description]" value="{{ mustache('description') }}" autosize="true"
+							rowclass="mediaItem-input"
+							data-xf-init="user-mentioner"
+							rowtype="fullWidth noGutter"
+							label="{{ phrase('description') }}" />]]></find>
+    <replace><![CDATA[<xf:textarearow name="{$namePrefix}[description]" value="{{ mustache('description') }}" autosize="true"
+							rowclass="mediaItem-input"
+							data-xf-init="editor"
+							rowtype="fullWidth noGutter"
+							label="{{ phrase('description') }}" />]]></replace>
+  </modification>
+  <modification type="public" template="xfmg_media_add_macros" modification_key="ts_mgm_xfmg_media_add_macros_2_2_1" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:textarearow name="{$namePrefix}[description]" value="{{ mustache('description') }}" autosize="true"
+							maxlength="{{ max_length('XFMG:MediaItem', 'description') }}"
+							rowclass="mediaItem-input"
+							data-xf-init="user-mentioner"
+							rowtype="fullWidth noGutter"
+							label="{{ phrase('description') }}" />]]></find>
+    <replace><![CDATA[<xf:textarearow name="{$namePrefix}[description]" value="{{ mustache('description') }}" autosize="true"
+							maxlength="{{ max_length('XFMG:MediaItem', 'description') }}"
+							rowclass="mediaItem-input"
+							data-xf-init="editor"
+							rowtype="fullWidth noGutter"
+							label="{{ phrase('description') }}" />]]></replace>
+  </modification>
+  <modification type="public" template="xfmg_media_add_macros" modification_key="ts_mgm_xfmg_media_add_macros_3" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<script type="text/template" class="js-mediaAddTemplate">]]></find>
+    <replace><![CDATA[<xf:css src="ts_mgm_additional.less" />
+<xf:include template="ts_mgm_additional.js" />
+<!-- <xf:editor name="description_placeholder"
+		   maxlength="{{ max_length($mediaItem, 'description') }}"
+		   removebuttons="{$disabledButtons}"
+		   label="{{ phrase('description') }}" /> -->
+$0]]></replace>
+  </modification>
+  <modification type="public" template="xfmg_media_add_macros" modification_key="ts_mgm_xfmg_media_add_macros_4" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:macro name="add_form"
+	arg-album="{{ null }}"
+	arg-category="{{ null }}"
+	arg-canUpload="{{ false }}"
+	arg-canEmbed="{{ false }}"
+	arg-attachmentData="!"]]></find>
+    <replace><![CDATA[$0
+	arg-additional="{{ null }}"
+]]></replace>
+  </modification>
+  <modification type="public" template="xfmg_media_add_macros" modification_key="ts_mgm_xfmg_media_add_macros_5" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:macro name="added_media_template" arg-album="{$album}" arg-category="{$category}" />]]></find>
+    <replace><![CDATA[<xf:macro name="added_media_template" arg-album="{$album}" arg-category="{$category}" arg-additional="{$additional}" />]]></replace>
+  </modification>
+  <modification type="public" template="xfmg_media_add_macros" modification_key="ts_mgm_xfmg_media_add_macros_6" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:macro name="added_media_template" arg-album="" arg-category="">]]></find>
+    <replace><![CDATA[<xf:macro name="added_media_template" arg-album="" arg-category="" arg-additional="">]]></replace>
+  </modification>
+  <modification type="public" template="xfmg_media_add_macros" modification_key="ts_mgm_xfmg_media_add_macros_7" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[						<div data-xf-init="attachment-on-insert"
+							data-file-row=".js-mediaItem"
+							data-href="{{ link('media/add/on-insert', null, {'album_id': $album.album_id, 'category_id': $category.category_id}) }}"
+							data-link-data="{{ {'name_prefix': $namePrefix}|json }}"
+							style="display: none;"></div>]]></find>
+    <replace><![CDATA[{{ phrase('ts_mgm_additional:') }} <xf:macro name="addCheckboxes" 
+											template="ts_mgm_additional_checkboxes" 
+											arg-additional="{{$additional}}"
+											arg-namePrefix="{{$namePrefix}}"/>
+$0]]></replace>
+  </modification>
+  <modification type="public" template="xfmg_media_edit" modification_key="ts_mgm_xfmg_media_edit" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:textarearow name="description" value="{$mediaItem.description_}" autosize="true"
+				maxlength="{{ max_length($mediaItem, 'description') }}"
+				label="{{ phrase('description') }}" />]]></find>
+    <replace><![CDATA[<xf:editorrow name="description" value="{$mediaItem.description_}"
+			  maxlength="{{ max_length($mediaItem, 'description') }}"
+			  removebuttons="{$disabledButtons}"
+			  label="{{ phrase('description') }}" />]]></replace>
+  </modification>
+  <modification type="public" template="xfmg_media_edit" modification_key="ts_mgm_xfmg_media_edit_2" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[				<xf:macro template="helper_action" name="author_alert" />
+			</xf:if>]]></find>
+    <replace><![CDATA[$0
+<xf:macro name="addCheckboxes2" 
+		  template="ts_mgm_additional_checkboxes" 
+		  arg-additional="{{$additional}}"
+		  arg-namePrefix="{{$namePrefix}}"
+		  arg-mediaItemAdditionals="{{$mediaItem.getAdditionalCategories()}}"/>
+]]></replace>
+  </modification>
+  <modification type="public" template="xfmg_media_edit" modification_key="ts_mgm_xfmg_media_edit_3" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:breadcrumb source="$mediaItem.getBreadcrumbs()" />]]></find>
+    <replace><![CDATA[$0
+<xf:css src="ts_mgm_additional.less" />
+<xf:include template="ts_mgm_additional.js" />]]></replace>
+  </modification>
+  <modification type="public" template="xfmg_media_view" modification_key="ts_mgm_xfmg_media_view" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[{{ structured_text($mediaItem.description) }}]]></find>
+    <replace><![CDATA[{{ bb_code($mediaItem.description, 'media', $mediaItem) }}]]></replace>
+  </modification>
+  <modification type="public" template="xfmg_media_view" modification_key="ts_mgm_xfmg_media_view_2" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[data-xf-click="overlay">{{ phrase('view_warning') }}</a>
+										<xf:set var="$hasActionBarMenu" value="{{ true }}" />]]></find>
+    <replace><![CDATA[$0
+<xf:elseif is="$mediaItem.user_id == $xf.visitor.user_id OR $xf.visitor.hasPermission('xfmg','canChangeAny')" />
+<xf:if is="$mediaItem.Category">										
+	<a href="{{ link('media/changeMedia', $mediaItem) }}"
+	   class="actionBar-action actionBar-action--menuItem"
+	   data-xf-click="overlay">{{ phrase('ts_mgm_change') }}</a>
+	<xf:set var="$hasActionBarMenu" value="{{ true }}" />
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="xfmg_media_view_macros" modification_key="ts_mgm_xfmg_media_view_macros" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[arg-rowClass="ratingStarsRow--textBlock" />
+					</dd>
+				</dl>]]></find>
+    <replace><![CDATA[$0
+				<xf:if is="{{$mediaItem.getAdditionalCategories().count()}}">
+					<xf:set var="$additionals" value="" />
+					<dl class="pairs pairs--justified">
+						<dt>{{ phrase('ts_mgm_additional') }}</dt>
+						<dd>
+							<xf:foreach loop="{{$mediaItem.getAdditionalCategories()}}" value="$cat">
+								<a href="{{link('media/categories', $cat)}}">{{$cat->title}}</a>,
+							</xf:foreach>
+						</dd>
+					</dl>
+				</xf:if>]]></replace>
+  </modification>
+</template_modifications>

@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="public" title="ts_mgm_additional.js" version_id="1000060" version_string="1.0.0 Release Candidate 10"><![CDATA[<script>
+	function toggle(id) {
+		 document.getElementById(id).style.display = document.getElementById(id).style.display === "block" ? "none" : "block"; 
+	}
+</script>]]></template>
+  <template type="public" title="ts_mgm_additional.less" version_id="1000059" version_string="1.0.0 Release Candidate 9"><![CDATA[.ts-mgm-checkboxes {
+	display: none;
+	max-height: 100px;
+	overflow: auto;
+}]]></template>
+  <template type="public" title="ts_mgm_additional_checkboxes" version_id="1000068" version_string="1.0.0 Release Candidate 18"><![CDATA[<xf:macro name="addCheckboxes"
+		  arg-namePrefix="{{null}}"
+		  arg-additional="{{null}}">
+	<a onclick="toggle('{{$namePrefix}}[temp_media_id]');">{{ phrase('ts_mgm_show') }}</a> <br />
+	<div id="{{$namePrefix}}[temp_media_id]" class="ts-mgm-checkboxes">
+		<xf:foreach loop="$additional" value="$cat">
+			<xf:checkbox>
+				<xf:if is="{$namePrefix}">
+					<xf:set var="$name" value="{$namePrefix}[additional][]" />
+					<xf:else />
+					<xf:set var="$name" value="additional[]" />
+				</xf:if>
+				<xf:option value="{{ $cat.category_id }}" name="{{$name}}"
+						   label="{{ $cat.title }} ">
+				</xf:option>
+			</xf:checkbox>
+		</xf:foreach>
+	</div>
+</xf:macro>
+
+<xf:macro name="addCheckboxes2"
+		  arg-namePrefix="{{null}}"
+		  arg-additional="{{null}}"
+		  arg-mediaItemAdditionals="{{null}}">
+	
+	<dl class="formRow formRow--input" >
+		<dt><a onclick="toggle('{{$namePrefix}}[temp_media_id]');">{{ phrase('ts_mgm_show') }} {{phrase('ts_mgm_additional')}}</a></dt>
+	</dl>
+	<div id="{{$namePrefix}}[temp_media_id]" class="ts-mgm-checkboxes">
+		<xf:checkboxrow label="{{phrase('ts_mgm_additional')}}">
+			<xf:foreach loop="$additional" value="$cat">
+				<xf:if is="{$namePrefix}">
+					<xf:set var="$name" value="{$namePrefix}[additional][]" />
+					<xf:else />
+					<xf:set var="$name" value="additional[]" />
+				</xf:if>
+				<xf:option value="{{ $cat.category_id }}" name="{{$name}}"
+						   label="{{ $cat.title }} " checked="{{in_array($cat, $mediaItemAdditionals) ? 'true' : ''}}">
+				</xf:option>
+			</xf:foreach>
+		</xf:checkboxrow>
+	</div>
+</xf:macro>]]></template>
+  <template type="public" title="ts_mgm_xfmg_category_add" version_id="1000062" version_string="1.0.0 Release Candidate 12"><![CDATA[<xf:title>{{ phrase('ts_mgm_change_media:') }} {$mediaItem.title}</xf:title>
+
+<xf:breadcrumb source="$category.getBreadcrumbs()" />
+
+<xf:macro template="ts_mgm_xfmg_media_add_macros" name="add_form"
+		  arg-mediaItem="{$mediaItem}"
+		  arg-category="{$category}"
+		  arg-album="{$album}"
+		  arg-canUpload="{$category.canUploadMedia()}"
+		  arg-canEmbed="{$category.canEmbedMedia()}"
+		  arg-attachmentData="{$attachmentData}"
+		  arg-allowCreateAlbum="{{ $album ? true : false }}" />]]></template>
+  <template type="public" title="ts_mgm_xfmg_media_add_macros" version_id="1000062" version_string="1.0.0 Release Candidate 12"><![CDATA[<xf:macro name="add_form"
+		  arg-album="{{ null }}"
+		  arg-mediaItem="{{ null }}"
+		  arg-category="{{ null }}"
+		  arg-canUpload="{{ false }}"
+		  arg-canEmbed="{{ false }}"
+		  arg-attachmentData="!"
+		  arg-allowCreateAlbum="{{ false }}">
+
+	<xf:css src="xfmg_media_add.less" />
+
+	<xf:js src="xfmg/media_add.js" min="1" />
+	<xf:js prod="xf/attachment_manager-compiled.js" dev="vendor/flow.js/flow-compiled.js, xf/attachment_manager.js" />
+
+	<xf:form action="{{ link('media/changeMedia', $mediaItem) }}" ajax="true"
+			 data-xf-init="media-manager"
+			 data-media-action-url="{{ link('media/add-action') }}"
+			 data-action-button=".js-mediaAction"
+			 data-files-container=".js-mediaList"
+			 data-upload-template=".js-mediaAddTemplate"
+			 data-file-row=".js-mediaItem" >
+
+		<div class="block block--mediaList">
+			<div class="block-container">
+				<div class="block-body block-row">
+					<ul class="mediaList mediaList--buttons">
+						<xf:if is="{{$mediaItem.hasThumbnail()}}">
+							<li class="mediaList-button"><img src="{{$mediaItem.getThumbnailUrl()}}" height="120px" width="120px" alt="{{phrase('ts_mgm_old:')}}" /></li>
+						</xf:if>
+						<li class="mediaList-button{{ !$canUpload ? ' is-hidden' : '' }}">
+							<xf:if is="$canUpload">
+								<a href="{{ link('attachments/upload', null, {'type': 'xfmg_media', 'context': $attachmentData.context, 'hash': $attachmentData.hash}) }}"
+								   target="_blank" class="mediaList-inner mediaList-inner--upload js-attachmentUpload"
+								   data-accept=".{$attachmentData.constraints.extensions|join(',.')}">
+									{{ phrase('xfmg_upload_file') }}
+								</a>
+
+								<xf:hiddenval name="attachment_hash">{$attachmentData.hash}</xf:hiddenval>
+								<xf:hiddenval name="attachment_hash_combined">{{ {
+									'type': 'xfmg_media',
+									'context': $attachmentData.context,
+									'hash': $attachmentData.hash
+									}|json }}</xf:hiddenval>
+								<xf:else />
+								<div class="js-attachmentUpload"><!-- Placeholder upload button --></div>
+							</xf:if>
+						</li>
+					</ul>
+
+					<ul class="mediaList js-mediaList u-hidden"></ul>
+
+					<xf:macro name="added_media_template" arg-album="{$album}" arg-category="{$category}" arg-mediaItem="{$mediaItem}" />
+				</div>
+				<xf:if is="!$allowCreateAlbum">
+					<xf:submitrow rowtype="simple" icon="save" />
+				</xf:if>
+			</div>
+		</div>
+
+		<xf:if is="$allowCreateAlbum">
+			<div class="block">
+				<div class="block-container">
+					<div class="block-body">
+						<xf:textboxrow name="album[title]"
+									   maxlength="{{ max_length('XFMG:Album', 'title') }}"
+									   label="{{ phrase('xfmg_album_title') }}" />
+
+						<xf:textarearow name="album[description]" autosize="true" rows="1"
+										data-xf-init="user-mentioner"
+										maxlength="{{ max_length('XFMG:Album', 'description') }}"
+										label="{{ phrase('xfmg_album_description') }}">
+
+							<xf:explain>
+								<xf:if is="$category">
+									{{ phrase('xfmg_album_is_being_created_inside_x_category', {'title': $category.title}) }}
+									<xf:else />
+									{{ phrase('xfmg_album_and_its_contents_will_be_private') }}
+								</xf:if>							
+							</xf:explain>
+						</xf:textarearow>
+
+						<xf:if is="!$category">
+							<xf:macro template="xfmg_album_edit" name="change_privacy_view" arg-album="{$album}" />
+						</xf:if>
+					</div>
+					<xf:submitrow rowtype="simple" icon="save" />
+				</div>
+			</div>
+			<xf:if is="$category.category_id">
+				<xf:hiddenval name="category_id">{$category.category_id}</xf:hiddenval>
+			</xf:if>
+			<xf:hiddenval name="album_id">0</xf:hiddenval>
+			<xf:elseif is="$category.category_id" />
+			<xf:hiddenval name="category_id">{$category.category_id}</xf:hiddenval>
+			<xf:elseif is="$album.album_id" />
+			<xf:hiddenval name="album_id">{$album.album_id}</xf:hiddenval>
+		</xf:if>
+	</xf:form>
+
+	<xf:set var="$container" value="{{ $category ?: $album }}" />
+
+	<xf:sidebar key="constraintStats">
+		<div class="block">
+			<div class="block-container">
+				<div class="block-body block-row">
+					<xf:if is="$container.hasPermission('maxImageWidth') > 0 AND $container.hasPermission('maxImageHeight') <= 0">
+						<dl class="pairs pairs--justified">
+							<dt>{{ phrase('xfmg_max_width') }}</dt>
+							<dd>
+								{$attachmentData.constraints.width|number}px
+							</dd>
+						</dl>
+						<xf:elseif is="$container.hasPermission('maxImageWidth') <= 0 AND $container.hasPermission('maxImageHeight') > 0" />
+						<dl class="pairs pairs--justified">
+							<dt>{{ phrase('xfmg_max_height') }}</dt>
+							<dd>
+								{$attachmentData.constraints.height|number}px
+							</dd>
+						</dl>
+						<xf:elseif is="$container.hasPermission('maxImageWidth') > 0 AND $container.hasPermission('maxImageHeight') > 0" />
+						<dl class="pairs pairs--justified">
+							<dt>{{ phrase('xfmg_max_dimensions') }}</dt>
+							<dd>
+								{$attachmentData.constraints.width|number}px x {$attachmentData.constraints.height|number}px
+							</dd>
+						</dl>
+					</xf:if>
+
+					<xf:if is="$container.hasPermission('maxFileSize') > 0">
+						<dl class="pairs pairs--justified">
+							<dt>{{ phrase('xfmg_max_file_size') }}</dt>
+							<dd>
+								{$attachmentData.constraints.size|file_size}
+							</dd>
+						</dl>
+					</xf:if>
+
+					<xf:if is="$container.hasPermission('maxAllowedStorage') > 0">
+						<dl class="pairs pairs--justified">
+							<dt>{{ phrase('xfmg_remaining_storage') }}</dt>
+							<dd>
+								<xf:if is="$xf.visitor.xfmg_media_quota < $attachmentData.constraints.total">
+									<span data-xf-init="tooltip" title="{{ phrase('xfmg_using_x_of_your_y_quota', {'quota': $xf.visitor.xfmg_media_quota|file_size, 'total': $attachmentData.constraints.total|file_size}) }}">
+										{{ ($attachmentData.constraints.total - $xf.visitor.xfmg_media_quota)|file_size }}
+									</span>
+									<xf:else />
+									<span data-xf-init="tooltip" title="{{ phrase('xfmg_using_x_of_your_y_quota', {'quota': $attachmentData.constraints.total|file_size, 'total': $attachmentData.constraints.total|file_size}) }}">
+										{{ 0|file_size }}
+									</span>
+								</xf:if>
+							</dd>
+						</dl>
+					</xf:if>
+
+					<dl class="pairs pairs--justified">
+						<dt>{{ phrase('xfmg_allowed_types') }}</dt>
+						<dd>
+							<ul class="typesList listInline listInline--bullet">
+								<xf:foreach loop="$container.allowed_types" value="$type">
+									<xf:if is="$type == 'embed'">
+										<span class="typesList-type typesList-type--{$type}" data-xf-init="tooltip" title="{{ phrase('xfmg_you_can_embed_media_from_various_bb_code_media_sites')|for_attr }}"></span>
+										<xf:else />
+										<xf:if is="xfmg_allowed_media($type)">
+											<span class="typesList-type typesList-type--{$type}" data-xf-init="tooltip" title="{{ phrase('xfmg_allowed_extensions:')|for_attr }} {{ xfmg_allowed_media($type)|join(', ')|for_attr }}"></span>
+										</xf:if>
+									</xf:if>
+								</xf:foreach>
+							</ul>
+						</dd>
+					</dl>
+				</div>
+			</div>
+		</div>
+	</xf:sidebar>
+</xf:macro>
+
+<xf:macro name="added_media_template" arg-album="" arg-category="" arg-mediaItem="">
+	<script type="text/template" class="js-mediaAddTemplate">
+		<li class="js-mediaItem"
+			{{ mustache('#attachment_id', 'data-attachment-id="{{attachment_id}}"') }}
+			{{ mustache('#temp_media_id', 'data-temp-media-id="{{temp_media_id}}"') }}
+			{{ mustache('#media_type', 'data-temp-media-type="{{media_type}}"') }}>
+
+			<div class="contentRow">
+				<span class="contentRow-figure mediaList-figure">
+					<xf:mustache name="#thumbnail_date">
+						<a href="{{ mustache('link') }}" target="_blank"><img src="{{ mustache('temp_thumbnail_url') }}" class="js-attachmentThumb" alt="{{ mustache('title') }}" /></a>
+		</xf:mustache>
+					<xf:mustache name="^thumbnail_date">
+						<i class="mediaList-placeholder"></i>
+		</xf:mustache>
+		</span>
+				<div class="contentRow-main">
+
+					<xf:set var="$namePrefix">media[{{ mustache('temp_media_id') }}]</xf:set>
+
+					<xf:mustache name="^uploading">
+						<xf:textboxrow name="{$namePrefix}[title]" value="{{ $mediaItem.title }}"
+							rowclass="mediaItem-input"
+							rowtype="fullWidth noGutter"
+							label="{{phrase('title')}}"
+							disabled="disabled" />
+
+						<xf:textarearow name="{$namePrefix}[description]" value="{{ $mediaItem.description }}" autosize="true"
+							rowclass="mediaItem-input"
+							data-xf-init="user-mentioner"
+							rowtype="fullWidth noGutter"
+							label="{{phrase('description')}}"
+							disabled="disabled" />
+
+						<div data-xf-init="attachment-on-insert"
+							data-file-row=".js-mediaItem"
+							data-href="{{ link('media/add/on-insert', null, {'album_id': $album.album_id, 'category_id': $category.category_id}) }}"
+							data-link-data="{{ {'name_prefix': $namePrefix}|json }}"
+							style="display: none;"></div>
+
+						<xf:hiddenval name="{$namePrefix}[title]">{{ $mediaItem.title }}</xf:hiddenval>
+						<xf:hiddenval name="{$namePrefix}[temp_media_id]">{{ mustache('temp_media_id') }}</xf:hiddenval>
+						<xf:hiddenval name="{$namePrefix}[media_hash]">{{ mustache('media_hash') }}</xf:hiddenval>
+						<xf:hiddenval name="{$namePrefix}[media_type]">{{ mustache('media_type') }}</xf:hiddenval>
+
+						<xf:mustache name="#attachment_id">
+							<xf:hiddenval name="{$namePrefix}[attachment_id]">{{ mustache('attachment_id') }}</xf:hiddenval>
+		</xf:mustache>
+						<xf:mustache name="#temp_media_embed_url">
+							<xf:hiddenval name="{$namePrefix}[temp_media_embed_url]">{{ mustache('temp_media_embed_url') }}</xf:hiddenval>
+		</xf:mustache>
+						<xf:mustache name="#temp_media_tag">
+							<xf:hiddenval name="{$namePrefix}[temp_media_tag]">{{ mustache('temp_media_tag') }}</xf:hiddenval>
+		</xf:mustache>
+		</xf:mustache>
+
+					<span class="contentRow-extra u-jsOnly">
+						<xf:mustache name="^uploading">
+							<xf:button class="button--small js-mediaAction" data-action="delete">
+								{{ phrase('button.delete') }}
+		</xf:button>
+		</xf:mustache>
+
+						<xf:mustache name="#uploading">
+							<xf:button class="button--small js-mediaAction" data-action="cancel">
+								{{ phrase('button.cancel') }}
+		</xf:button>
+		</xf:mustache>
+		</span>
+
+					<div class="contentRow-title">
+						<xf:mustache name="#uploading">
+							<span>{{ mustache('filename') }}</span>
+		</xf:mustache>
+		</div>
+
+					<xf:mustache name="#uploading">
+						<div class="contentRow-spaced">
+							<div class="mediaList-progress js-attachmentProgress"></div>
+							<div class="mediaList-error js-attachmentError"></div>
+		</div>
+		</xf:mustache>
+
+					<xf:mustache name="#requires_transcoding">
+						<div class="contentRow-spaced">
+							<div class="mediaList-error js-attachmentError">
+								{{ phrase('xfmg_this_media_needs_to_be_processed_before_it_can_be_added_to_gallery') }}
+		</div>
+		</div>
+		</xf:mustache>
+		</div>
+		</div>
+		</li>
+	</script>
+</xf:macro>]]></template>
+</templates>

@@ -8,6 +8,7 @@ return array(
 		'canUpload' => false,
 		'canEmbed' => false,
 		'attachmentData' => '!',
+		'additional' => null,
 		'allowCreateAlbum' => false,
 	); },
 'code' => function($__templater, array $__vars, $__extensions = null)
@@ -174,6 +175,7 @@ return array(
 					' . $__templater->callMacro(null, 'added_media_template', array(
 		'album' => $__vars['album'],
 		'category' => $__vars['category'],
+		'additional' => $__vars['additional'],
 	), $__vars) . '
 				</div>
 				' . $__compilerTemp3 . '
@@ -317,12 +319,22 @@ return array(
 'arguments' => function($__templater, array $__vars) { return array(
 		'album' => '',
 		'category' => '',
+		'additional' => '',
 	); },
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
 	$__finalCompiled = '';
 	$__finalCompiled .= '
-	<script type="text/template" class="js-mediaAddTemplate">
+	';
+	$__templater->includeCss('ts_mgm_additional.less');
+	$__finalCompiled .= '
+' . $__templater->includeTemplate('ts_mgm_additional.js', $__vars) . '
+<!-- ' . $__templater->formEditor(array(
+		'name' => 'description_placeholder',
+		'maxlength' => $__templater->func('max_length', array($__vars['mediaItem'], 'description', ), false),
+		'removebuttons' => $__vars['disabledButtons'],
+	)) . ' -->
+<script type="text/template" class="js-mediaAddTemplate">
 		<li class="js-mediaItem"
 			' . $__templater->func('mustache', array('#attachment_id', 'data-attachment-id="{{attachment_id}}"', ), true) . '
 			' . $__templater->func('mustache', array('#temp_media_id', 'data-temp-media-id="{{temp_media_id}}"', ), true) . '
@@ -359,13 +371,17 @@ return array(
 		'value' => $__templater->func('mustache', array('description', ), false),
 		'autosize' => 'true',
 		'maxlength' => $__templater->func('max_length', array('XFMG:MediaItem', 'description', ), false),
-		'data-xf-init' => 'user-mentioner',
+		'data-xf-init' => 'editor',
 	), array(
 		'rowclass' => 'mediaItem-input',
 		'rowtype' => 'fullWidth noGutter',
 		'label' => 'Description',
 	)) . '
 
+' . 'Additional categories' . $__vars['xf']['language']['label_separator'] . ' ' . $__templater->callMacro('ts_mgm_additional_checkboxes', 'addCheckboxes', array(
+		'additional' => $__vars['additional'],
+		'namePrefix' => $__vars['namePrefix'],
+	), $__vars) . '
 						<div data-xf-init="attachment-on-insert"
 							data-file-row=".js-mediaItem"
 							data-href="' . $__templater->func('link', array('media/add/on-insert', null, array('album_id' => $__vars['album']['album_id'], 'category_id' => $__vars['category']['category_id'], ), ), true) . '"

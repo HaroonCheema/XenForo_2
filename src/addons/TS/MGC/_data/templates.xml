@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="admin" title="ts_mgc_option_template_time_window" version_id="1000054" version_string="1.0.0 Release Candidate 4"><![CDATA[<xf:radiorow name="{$inputName}" value="{$option.option_value}"
+	label="{$option.title}"
+	hint="{$hintHtml}"
+	explain="{$explainHtml}"
+	html="{$listedHtml}">
+	<xf:set var="$timeI" value="{{date(1551416400)}}" />
+	<xf:option value="all" label="{{ phrase('ts_mgc_all_time') }}" />
+	<xf:option value="recent" label="{{ phrase('ts_mgc_recent') }}" />
+	<xf:option value="march" label="{{ phrase('ts_mgc_install', {'time' : $timeI}) }}" />
+</xf:radiorow>]]></template>
+</templates>

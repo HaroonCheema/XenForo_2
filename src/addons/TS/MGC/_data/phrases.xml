@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="cron_entry.ts_mgc_rebuild_counters" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[[TS] MediaGallery Counter - Rebuild all]]></phrase>
+  <phrase title="option.ts_mgc_time_window" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Time window]]></phrase>
+  <phrase title="option_explain.ts_mgc_time_window" version_id="1000051" version_string="1.0.0 Release Candidate 1"><![CDATA[Set the time window to count media comments from. Don't forget to run the cron after changing this option. The cron is located at <b>Tools > Cron entries > [TS] MediaGallery Counter - Rebuild all > Run now</b> (blue arrows) and runs every 24 hours if not hit manually.]]></phrase>
+  <phrase title="option_group.ts_mgc" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[[TS] MediaGallery Counter]]></phrase>
+  <phrase title="option_group_description.ts_mgc" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[]]></phrase>
+  <phrase title="ts_mgc_all_time" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[All time]]></phrase>
+  <phrase title="ts_mgc_comments" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Comments]]></phrase>
+  <phrase title="ts_mgc_counter" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Your comments]]></phrase>
+  <phrase title="ts_mgc_install" version_id="1000052" version_string="1.0.0 Release Candidate 2"><![CDATA[Install ({time})]]></phrase>
+  <phrase title="ts_mgc_recent" version_id="1000011" version_string="1.0.0 Alpha 1"><![CDATA[Last 30 days]]></phrase>
+</phrases>

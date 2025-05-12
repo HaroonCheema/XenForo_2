@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<options>
+  <option option_id="ts_mgc_time_window" edit_format="template" data_type="string">
+    <default_value>all</default_value>
+    <edit_format_params>ts_mgc_option_template_time_window</edit_format_params>
+    <relation group_id="ts_mgc" display_order="1"/>
+  </option>
+</options>

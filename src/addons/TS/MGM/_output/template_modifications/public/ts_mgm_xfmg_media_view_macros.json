@@ -1,0 +1,9 @@
+{
+    "template": "xfmg_media_view_macros",
+    "description": "",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "\t\targ-rowClass=\"ratingStarsRow--textBlock\" />\n\t\t\t</dd>\n\t\t</dl>",
+    "replace": "$0\n\t\t\t\t<xf:if is=\"{{$mediaItem.getAdditionalCategories().count()}}\">\n\t\t\t\t\t<xf:set var=\"$additionals\" value=\"\" />\n\t\t\t\t\t<dl class=\"pairs pairs--justified\">\n\t\t\t\t\t\t<dt>{{ phrase('ts_mgm_additional') }}</dt>\n\t\t\t\t\t\t<dd>\n\t\t\t\t\t\t\t<xf:foreach loop=\"{{$mediaItem.getAdditionalCategories()}}\" value=\"$cat\">\n\t\t\t\t\t\t\t\t<a href=\"{{link('media/categories', $cat)}}\">{{$cat->title}}</a>,\n\t\t\t\t\t\t\t</xf:foreach>\n\t\t\t\t\t\t</dd>\n\t\t\t\t\t</dl>\n\t\t\t\t</xf:if>"
+}

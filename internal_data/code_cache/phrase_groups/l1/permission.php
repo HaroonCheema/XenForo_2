@@ -465,6 +465,7 @@ return array (
   'permission.xfmg_approveUnapproveAlbum' => 'Approve / unapprove albums',
   'permission.xfmg_approveUnapproveComment' => 'Approve / unapprove comments',
   'permission.xfmg_bypassPrivacy' => 'Bypass album privacy (view all albums and contents)',
+  'permission.xfmg_canChangeAny' => 'Can change any media',
   'permission.xfmg_changePrivacyAnyAlbum' => 'Change privacy of any album',
   'permission.xfmg_changePrivacyOwnAlbum' => 'Change privacy of own album',
   'permission.xfmg_createAlbum' => 'Create new album',

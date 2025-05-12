@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class_extensions>
+  <extension from_class="XFMG\Entity\Comment" to_class="TS\MGC\XFMG\Entity\Comment" execute_order="10" active="1"/>
+  <extension from_class="XF\Entity\User" to_class="TS\MGC\XF\Entity\User" execute_order="10" active="1"/>
+  <extension from_class="XF\Repository\User" to_class="TS\MGC\XF\Repository\User" execute_order="10" active="1"/>
+</class_extensions>

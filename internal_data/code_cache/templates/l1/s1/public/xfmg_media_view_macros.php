@@ -428,6 +428,30 @@ return array(
 	), $__vars) . '
 					</dd>
 				</dl>
+				';
+	if ($__templater->method($__templater->method($__vars['mediaItem'], 'getAdditionalCategories', array()), 'count', array())) {
+		$__finalCompiled .= '
+					';
+		$__vars['additionals'] = '';
+		$__finalCompiled .= '
+					<dl class="pairs pairs--justified">
+						<dt>' . 'Additional categories' . '</dt>
+						<dd>
+							';
+		$__compilerTemp1 = $__templater->method($__vars['mediaItem'], 'getAdditionalCategories', array());
+		if ($__templater->isTraversable($__compilerTemp1)) {
+			foreach ($__compilerTemp1 AS $__vars['cat']) {
+				$__finalCompiled .= '
+								<a href="' . $__templater->func('link', array('media/categories', $__vars['cat'], ), true) . '">' . $__templater->escape($__vars['cat']->{'title'}) . '</a>,
+							';
+			}
+		}
+		$__finalCompiled .= '
+						</dd>
+					</dl>
+				';
+	}
+	$__finalCompiled .= '
 
 				' . $__templater->callMacro('custom_fields_macros', 'custom_fields_view', array(
 		'type' => 'xfmgMediaFields',

@@ -10,6 +10,10 @@ return array(
 ';
 	$__templater->breadcrumbs($__templater->method($__vars['mediaItem'], 'getBreadcrumbs', array()));
 	$__finalCompiled .= '
+';
+	$__templater->includeCss('ts_mgm_additional.less');
+	$__finalCompiled .= '
+' . $__templater->includeTemplate('ts_mgm_additional.js', $__vars) . '
 
 ';
 	$__compilerTemp1 = '';
@@ -60,11 +64,11 @@ return array(
 		'label' => 'Title',
 	)) . '
 
-			' . $__templater->formTextAreaRow(array(
+			' . $__templater->formEditorRow(array(
 		'name' => 'description',
 		'value' => $__vars['mediaItem']['description_'],
-		'autosize' => 'true',
 		'maxlength' => $__templater->func('max_length', array($__vars['mediaItem'], 'description', ), false),
+		'removebuttons' => $__vars['disabledButtons'],
 	), array(
 		'label' => 'Description',
 	)) . '
@@ -74,6 +78,12 @@ return array(
 			' . $__compilerTemp2 . '
 
 			' . $__compilerTemp4 . '
+' . $__templater->callMacro('ts_mgm_additional_checkboxes', 'addCheckboxes2', array(
+		'additional' => $__vars['additional'],
+		'namePrefix' => $__vars['namePrefix'],
+		'mediaItemAdditionals' => $__templater->method($__vars['mediaItem'], 'getAdditionalCategories', array()),
+	), $__vars) . '
+
 		</div>
 		' . $__templater->formSubmitRow(array(
 		'icon' => 'save',

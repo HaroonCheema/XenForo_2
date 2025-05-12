@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="permission.xfmg_canChangeAny" version_id="1000063" version_string="1.0.0 Release Candidate 13"><![CDATA[Can change any media]]></phrase>
+  <phrase title="ts_mgm_additional" version_id="1000060" version_string="1.0.0 Release Candidate 10"><![CDATA[Additional categories]]></phrase>
+  <phrase title="ts_mgm_change" version_id="1000062" version_string="1.0.0 Release Candidate 12"><![CDATA[Change Media]]></phrase>
+  <phrase title="ts_mgm_change_media" version_id="1000062" version_string="1.0.0 Release Candidate 12"><![CDATA[Change Media Picture]]></phrase>
+  <phrase title="ts_mgm_old" version_id="1000062" version_string="1.0.0 Release Candidate 12"><![CDATA[Old]]></phrase>
+  <phrase title="ts_mgm_show" version_id="1000059" version_string="1.0.0 Release Candidate 9"><![CDATA[Show]]></phrase>
+</phrases>

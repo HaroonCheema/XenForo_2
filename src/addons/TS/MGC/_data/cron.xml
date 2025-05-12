@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cron>
+  <entry entry_id="ts_mgc_rebuild_counters" cron_class="TS\MGC\Cron\Rebuild" cron_method="runCron" active="1"><![CDATA[{"day_type":"dom","dom":[-1],"hours":[0],"minutes":[5]}]]></entry>
+</cron>

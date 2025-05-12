@@ -137,7 +137,7 @@ return array(
 					<div class="bbCodeBlock bbCodeBlock--expandable">
 						<div class="bbCodeBlock-content">
 							<div class="bbCodeBlock-expandContent">
-								' . $__templater->func('structured_text', array($__vars['mediaItem']['description'], ), true) . '
+								' . $__templater->func('bb_code', array($__vars['mediaItem']['description'], 'media', $__vars['mediaItem'], ), true) . '
 							</div>
 							<div class="bbCodeBlock-expandLink"><a>' . 'Click to expand...' . '</a></div>
 						</div>
@@ -271,6 +271,21 @@ return array(
 											data-xf-click="overlay">' . 'View warning' . '</a>
 										';
 		$__vars['hasActionBarMenu'] = true;
+		$__compilerTemp3 .= '
+';
+	} else if (($__vars['mediaItem']['user_id'] == $__vars['xf']['visitor']['user_id']) OR $__templater->method($__vars['xf']['visitor'], 'hasPermission', array('xfmg', 'canChangeAny', ))) {
+		$__compilerTemp3 .= '
+';
+		if ($__vars['mediaItem']['Category']) {
+			$__compilerTemp3 .= '										
+	<a href="' . $__templater->func('link', array('media/changeMedia', $__vars['mediaItem'], ), true) . '"
+	   class="actionBar-action actionBar-action--menuItem"
+	   data-xf-click="overlay">' . 'Change Media' . '</a>
+	';
+			$__vars['hasActionBarMenu'] = true;
+			$__compilerTemp3 .= '
+';
+		}
 		$__compilerTemp3 .= '
 									';
 	}

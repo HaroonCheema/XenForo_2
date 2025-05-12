@@ -29,6 +29,7 @@ return array(
 		'canUpload' => $__templater->method($__vars['category'], 'canUploadMedia', array()),
 		'canEmbed' => $__templater->method($__vars['category'], 'canEmbedMedia', array()),
 		'attachmentData' => $__vars['attachmentData'],
+		'additional' => $__vars['additional'],
 		'allowCreateAlbum' => ($__vars['album'] ? true : false),
 	), $__vars);
 	return $__finalCompiled;
