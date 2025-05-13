@@ -89,13 +89,19 @@ return array(
 	$__finalCompiled = '';
 		$__finalCompiled .= '
 				<div class="structItemContainer">
-					' . $__templater->callMacro(null, ($__vars['templateOverrides']['quick_thread_macro'] ?: 'thread_list_macros::quick_thread'), $__templater->combineMacroArgumentAttributes($__vars['templateOverrides']['quick_thread_macro_args'], array(
-		'forum' => $__vars['forum'],
-		'page' => $__vars['page'],
-		'order' => $__vars['sortInfo']['order'],
-		'direction' => $__vars['sortInfo']['direction'],
-		'prefixes' => $__vars['quickThreadPrefixes'],
-	)), $__vars) . '
+					';
+	if (!$__vars['forum']['Node']['snog_posid']) {
+		$__finalCompiled .= '
+	' . $__templater->callMacro(null, ($__vars['templateOverrides']['quick_thread_macro'] ?: 'thread_list_macros::quick_thread'), $__templater->combineMacroArgumentAttributes($__vars['templateOverrides']['quick_thread_macro_args'], array(
+			'forum' => $__vars['forum'],
+			'page' => $__vars['page'],
+			'order' => $__vars['sortInfo']['order'],
+			'direction' => $__vars['sortInfo']['direction'],
+			'prefixes' => $__vars['quickThreadPrefixes'],
+		)), $__vars) . '
+';
+	}
+	$__finalCompiled .= '
 
 					';
 	if (!$__templater->test($__vars['stickyThreads'], 'empty', array()) OR !$__templater->test($__vars['threads'], 'empty', array())) {
@@ -451,14 +457,24 @@ return array(
 ';
 					} else {
 						$__compilerTemp1 .= '
+	';
+						if ($__vars['forum']['Node']['snog_posid'] AND $__vars['forum']['Node']['snog_label']) {
+							$__compilerTemp1 .= '
+	' . $__templater->escape($__vars['forum']['Node']['snog_label']) . '
+';
+						} else {
+							$__compilerTemp1 .= '
 	' . 'Post thread' . '
+';
+						}
+						$__compilerTemp1 .= '
 ';
 					}
 					$__templater->pageParams['pageAction'] = $__templater->preEscaped('
 	' . $__templater->button('
 		' . $__compilerTemp1 . '
 	', array(
-						'href' => $__templater->func('link', array('forums/post-thread', $__vars['forum'], ), false),
+						'href' => ($__vars['forum']['Node']['snog_posid'] ? $__templater->func('link', array('form/select', array('posid' => $__vars['forum']['Node']['snog_posid'], ), ), false) : $__templater->func('link', array('forums/post-thread', $__vars['forum'], ), false)),
 						'class' => 'button--cta',
 						'icon' => 'write',
 					), '', array(
@@ -481,14 +497,24 @@ return array(
 ';
 				} else {
 					$__compilerTemp2 .= '
+	';
+					if ($__vars['forum']['Node']['snog_posid'] AND $__vars['forum']['Node']['snog_label']) {
+						$__compilerTemp2 .= '
+	' . $__templater->escape($__vars['forum']['Node']['snog_label']) . '
+';
+					} else {
+						$__compilerTemp2 .= '
 	' . 'Post thread' . '
+';
+					}
+					$__compilerTemp2 .= '
 ';
 				}
 				$__templater->pageParams['pageAction'] = $__templater->preEscaped('
 	' . $__templater->button('
 		' . $__compilerTemp2 . '
 	', array(
-					'href' => $__templater->func('link', array('forums/post-thread', $__vars['forum'], ), false),
+					'href' => ($__vars['forum']['Node']['snog_posid'] ? $__templater->func('link', array('form/select', array('posid' => $__vars['forum']['Node']['snog_posid'], ), ), false) : $__templater->func('link', array('forums/post-thread', $__vars['forum'], ), false)),
 					'class' => 'button--cta',
 					'icon' => 'write',
 				), '', array(

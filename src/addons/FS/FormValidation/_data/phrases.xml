@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="fs_banned_url" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Provided URL in link field is banned]]></phrase>
+  <phrase title="fs_please_enter_a_valid_phone_number" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Please Enter a valid phone number.]]></phrase>
+  <phrase title="option.fs_bannedList" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[URL Banned List]]></phrase>
+  <phrase title="option.fs_phoneNumberFieldId" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Phone Number Field ID]]></phrase>
+  <phrase title="option.fs_urlFieldId" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[URL Field ID]]></phrase>
+  <phrase title="option_explain.fs_bannedList" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter one URL per line.]]></phrase>
+  <phrase title="option_explain.fs_phoneNumberFieldId" version_id="1000100" version_string="1.0.1"><![CDATA[Enter the id of Phone Number input field that is created in the form (Advance form) Enter multi Ids separated by comma]]></phrase>
+  <phrase title="option_explain.fs_urlFieldId" version_id="1000100" version_string="1.0.1"><![CDATA[Enter the ID of URL input field that is created in the form (Advance form) Enter multi Ids separated by comma]]></phrase>
+  <phrase title="option_group.fs_formValidation" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Form-Validation]]></phrase>
+  <phrase title="option_group_description.fs_formValidation" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+</phrases>

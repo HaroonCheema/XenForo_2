@@ -1071,6 +1071,18 @@ return function($__templater, $__selectedNav, array $__vars)
 		}
 	}
 
+	if ($__vars['xf']['session']['snogFormsCount']['total']) {
+		$__navTemp = [
+		'title' => \XF::phrase('nav.snog_forms_nav'),
+		'href' => $__templater->func('link', array('form', ), false),
+		'attributes' => [],
+	];
+		if ($__navTemp) {
+			$__tree['snog_forms_nav'] = $__navTemp;
+			$__flat['snog_forms_nav'] =& $__tree['snog_forms_nav'];
+		}
+	}
+
 	if ($__templater->method($__vars['xf']['visitor'], 'canViewDbtechCredits', array())) {
 		$__navTemp = [
 		'title' => \XF::phrase('nav.dbtechCredits'),

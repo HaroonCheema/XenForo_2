@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<options>
+  <option option_id="fs_bannedList" edit_format="textbox" data_type="string">
+    <default_value></default_value>
+    <edit_format_params>rows=6</edit_format_params>
+    <relation group_id="fs_formValidation" display_order="3"/>
+  </option>
+  <option option_id="fs_phoneNumberFieldId" edit_format="textbox" data_type="string">
+    <default_value>58,78</default_value>
+    <relation group_id="fs_formValidation" display_order="1"/>
+  </option>
+  <option option_id="fs_urlFieldId" edit_format="textbox" data_type="string">
+    <default_value>60,80</default_value>
+    <relation group_id="fs_formValidation" display_order="2"/>
+  </option>
+</options>

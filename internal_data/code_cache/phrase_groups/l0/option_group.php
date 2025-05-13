@@ -50,6 +50,7 @@ return array (
   'option_group.fs_custom_forum_widget' => '[FS] Custom Forum Widget',
   'option_group.fs_embed_zoom_credentials' => 'Embed Zoom Api Credentials',
   'option_group.fs_female_verification_group' => '[FS] Female Verification',
+  'option_group.fs_formValidation' => '[FS] Form-Validation',
   'option_group.fs_forum_groups' => '[FS] Forum Groups',
   'option_group.fs_hcwp' => '[FS] HideConten-With-Preview',
   'option_group.fs_hide_usernames' => '[FS] Hide Usernames',
