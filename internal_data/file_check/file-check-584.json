@@ -49,6 +49,12 @@
             "src/addons/SV/MultiPrefix/XF/Template/Templater.php",
             "src/addons/SV/MultiPrefix/_data/options.xml"
         ],
+        "Ialert/PayrexxGateway": [
+            "src/addons/Ialert/PayrexxGateway/addon.json",
+            "src/addons/Ialert/PayrexxGateway/XF/Service/User/Upgrade.php",
+            "src/addons/Ialert/PayrexxGateway/_data/class_extensions.xml",
+            "src/addons/Ialert/PayrexxGateway/_data/template_modifications.xml"
+        ],
         "BS/ScheduledPosting": [
             "src/addons/BS/ScheduledPosting/XF/Entity/User.php"
         ],
@@ -324,6 +330,13 @@
             "src/addons/FS/ThreadMultiTag/XF/Service/Tag/Changer.php",
             "src/addons/FS/ThreadMultiTag/_data/class_extensions.xml"
         ],
+        "FS/TractorLandingPageApi": [
+            "src/addons/FS/TractorLandingPageApi/Api/Controller/TractorController.php",
+            "src/addons/FS/TractorLandingPageApi/_data/class_extensions.xml",
+            "src/addons/FS/TractorLandingPageApi/_data/options.xml",
+            "src/addons/FS/TractorLandingPageApi/_data/option_groups.xml",
+            "src/addons/FS/TractorLandingPageApi/_data/phrases.xml"
+        ],
         "FS/UpdateUserId": [
             "src/addons/FS/UpdateUserId/addon.json",
             "src/addons/FS/UpdateUserId/Service/UpdateUser.php"
@@ -367,6 +380,9 @@
         "ThemeHouse/UserImprovements": [
             "src/addons/ThemeHouse/UserImprovements/ConnectedAccount/Service/Discord.php"
         ],
+        "TS/MGM": [
+            "src/addons/TS/MGM/XFMG/Pub/Controller/Media.php"
+        ],
         "XenBulletin/AvatarGallery": [
             "src/addons/XenBulletin/AvatarGallery/Admin/Controller/AvatarGallery.php",
             "src/addons/XenBulletin/AvatarGallery/Entity/AvatarGallery.php",
@@ -406,6 +422,6 @@
         ]
     },
     "total_missing": 6,
-    "total_inconsistent": 280,
-    "total_checked": 15370
+    "total_inconsistent": 290,
+    "total_checked": 15521
 }
