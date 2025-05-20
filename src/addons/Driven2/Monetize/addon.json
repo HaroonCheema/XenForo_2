@@ -1,0 +1,14 @@
+{
+    "legacy_addon_id": "",
+    "title": "Driven-AmazonMonetize",
+    "description": "This addon is used to monetize amazon links.",
+    "version_id": 1000100,
+    "version_string": "1.0.1",
+    "dev": "",
+    "dev_url": "https://driven2services.com/forum",
+    "faq_url": "",
+    "support_url": "https://driven2services.com/forum",
+    "extra_urls": [],
+    "require": [],
+    "icon": "logo.png"
+}

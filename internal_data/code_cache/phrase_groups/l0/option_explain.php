@@ -249,6 +249,13 @@ If enabled, any data collected will be stored anonymously and will not include a
   'option_explain.conversationPopupExpiryHours' => 'The conversations popup will show all conversations with unread replies, plus any read conversations whose most recent replies fall within the time frame (in hours) before now.',
   'option_explain.convertMarkdownToBbCode' => 'If enabled, some Markdown styling will automatically be converted to BB code when saved. Markdown is a simple method for adding formatting by using common patterns such as changing *example* into italics. This can make adding formatting to messages easier, but it can sometimes cause unexpected formatting changes.',
   'option_explain.currentVersionId' => '',
+  'option_explain.d_monetizeAmazonCategory' => 'This is the category id found in the url=search-alias= or url=search-alias%3D tag.  Affiliate linking will not work properly without this.',
+  'option_explain.d_monetizeAmazonTagString' => 'Your Amazon Associates Affliate ID (USA).',
+  'option_explain.d_monetizeAmazonTagStringCA' => 'Your Amazon Associates Affliate ID (Canada).',
+  'option_explain.d_monetizeDefaultSearch' => 'If search terms cannot be found after cleaning title and message, use this as the search term.',
+  'option_explain.d_monetizeExcludeForums' => 'Comma separated listed of forum ids to exclude.',
+  'option_explain.d_monetizeFatalWordsString' => 'If any of these words appear in a post or thread title, the post(s) will not have its images linked. Separate each word with a comma.',
+  'option_explain.d_monetizeWordsString' => 'Add words to be monetized here.  These will be added to any search terms this addon can generate from the post and title. Separate each word with a comma.',
   'option_explain.dbtechCreditsSmartNegate' => 'If enabled, a negation event trigger (f.ex. a post being deleted) will delete the existing transaction instead of inserting a new transaction. This does not work for all event triggers.<br />
 If multiple transactions are found, it will negate the event using a new transaction instead.<br />
 You can also override this feature by setting the "Negation amount" to a value other than 0.',

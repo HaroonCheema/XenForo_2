@@ -79,6 +79,7 @@ return array (
   'permission.conversation_uploadVideo' => 'Upload video/audio to conversations',
   'permission.conversation_xfmSetIndividualWallpaper' => 'Set individual wallpaper for conversation',
   'permission.conversation_xfmSetWallpaper' => 'Set wallpaper for conversation',
+  'permission.d_monetize_d_monetize' => 'AmzoneSearch Words Monetize',
   'permission.dbtechCredits_adjust' => 'Adjust currencies',
   'permission.dbtechCredits_approveUnapprove' => 'Approve / unapprove transactions',
   'permission.dbtechCredits_bypassChargeTag' => 'Bypass "Charge" tags',

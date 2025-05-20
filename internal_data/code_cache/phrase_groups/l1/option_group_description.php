@@ -29,6 +29,7 @@ return array (
   'option_group_description.censoringOptions' => 'User-generated text will be subject to the censorship rules you define here.',
   'option_group_description.checkAttachment' => 'For check attachments exist or not.',
   'option_group_description.closeThread' => 'Fs close thread options',
+  'option_group_description.d_monetize' => 'All settings regarding AmazonSearch words are listed here.',
   'option_group_description.dbtechEcommerce' => 'Settings pertaining to DragonByte eCommerce.',
   'option_group_description.dbtech_credits' => 'Settings pertaining to DragonByte Credits.',
   'option_group_description.dc_link_proxy_db' => '',

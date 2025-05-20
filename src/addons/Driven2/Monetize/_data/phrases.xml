@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="option.d_monetizeAmazonCategory" version_id="1" version_string="1.0.0"><![CDATA[Required Product Category]]></phrase>
+  <phrase title="option.d_monetizeAmazonTagString" version_id="1" version_string="1.0.0"><![CDATA[Amazon Tag]]></phrase>
+  <phrase title="option.d_monetizeAmazonTagStringCA" version_id="1" version_string="1.0.0"><![CDATA[Amazon TagCA]]></phrase>
+  <phrase title="option.d_monetizeDefaultSearch" version_id="1" version_string="1.0.0"><![CDATA[Default Search Term]]></phrase>
+  <phrase title="option.d_monetizeExcludeForums" version_id="1" version_string="1.0.0"><![CDATA[Excluded forums]]></phrase>
+  <phrase title="option.d_monetizeFatalWordsString" version_id="1" version_string="1.0.0"><![CDATA[Fatal Words]]></phrase>
+  <phrase title="option.d_monetizeWordsString" version_id="1" version_string="1.0.0"><![CDATA[Default Words]]></phrase>
+  <phrase title="option_explain.d_monetizeAmazonCategory" version_id="1" version_string="1.0.0"><![CDATA[This is the category id found in the url=search-alias= or url=search-alias%3D tag.  Affiliate linking will not work properly without this.]]></phrase>
+  <phrase title="option_explain.d_monetizeAmazonTagString" version_id="1" version_string="1.0.0"><![CDATA[Your Amazon Associates Affliate ID (USA).]]></phrase>
+  <phrase title="option_explain.d_monetizeAmazonTagStringCA" version_id="1" version_string="1.0.0"><![CDATA[Your Amazon Associates Affliate ID (Canada).]]></phrase>
+  <phrase title="option_explain.d_monetizeDefaultSearch" version_id="1" version_string="1.0.0"><![CDATA[If search terms cannot be found after cleaning title and message, use this as the search term.]]></phrase>
+  <phrase title="option_explain.d_monetizeExcludeForums" version_id="1" version_string="1.0.0"><![CDATA[Comma separated listed of forum ids to exclude.]]></phrase>
+  <phrase title="option_explain.d_monetizeFatalWordsString" version_id="1" version_string="1.0.0"><![CDATA[If any of these words appear in a post or thread title, the post(s) will not have its images linked. Separate each word with a comma.]]></phrase>
+  <phrase title="option_explain.d_monetizeWordsString" version_id="1" version_string="1.0.0"><![CDATA[Add words to be monetized here.  These will be added to any search terms this addon can generate from the post and title. Separate each word with a comma.]]></phrase>
+  <phrase title="option_group.d_monetize" version_id="1" version_string="1.0.0"><![CDATA[AmzoneSearch Words Monetize]]></phrase>
+  <phrase title="option_group_description.d_monetize" version_id="1" version_string="1.0.0"><![CDATA[All settings regarding AmazonSearch words are listed here.]]></phrase>
+  <phrase title="permission.d_monetize_d_monetize" version_id="1" version_string="1.0.0"><![CDATA[AmzoneSearch Words Monetize]]></phrase>
+  <phrase title="permission_interface.d_monetize" version_id="1" version_string="1.0.0"><![CDATA[Monetize]]></phrase>
+</phrases>

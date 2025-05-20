@@ -29,6 +29,7 @@ return array (
   'option_group.censoringOptions' => 'Censoring',
   'option_group.checkAttachment' => '[FS] Check Attachment',
   'option_group.closeThread' => '[FS] Close Thread',
+  'option_group.d_monetize' => 'AmzoneSearch Words Monetize',
   'option_group.dbtechEcommerce' => 'DragonByte Tech: eCommerce',
   'option_group.dbtech_credits' => 'DragonByte Tech: Credits',
   'option_group.dc_link_proxy_db' => 'D.C Link Proxy - Link DataBase',
