@@ -57,6 +57,8 @@ class Templater extends XFCP_Templater
     private function insertMonetizeTags($post, $title, $keywords)
     {
         $keywords = str_replace(' ', '+', $keywords);
+        $option = \XF::options();
+        $productCategory = $option->d_monetizeAmazonCategory;
 
         /***************************************************************************************************
          ** 03-13-2019 : Note from Ken - do not change this linking method.  I tried other "valid" methods **
@@ -74,7 +76,7 @@ class Templater extends XFCP_Templater
 
         $post = preg_replace(
             '/\[attach\s+type="full"(?:\s+alt="[^"]*")?(?:\s+size="[^"]*")?\](\d+)\[\/attach\]/im',
-            '[URL=https://www.amazon.com/s/ref=as_li_ss_tl?url=search-alias=automotive&field-keywords=' .
+            '[URL=https://www.amazon.com/s/ref=as_li_ss_tl?url=search-alias=' . $productCategory . '&field-keywords=' .
                 $keywords .
                 '&linkCode=ll2&tag=' .
                 $this->amazontag .
@@ -84,7 +86,7 @@ class Templater extends XFCP_Templater
 
         $post = preg_replace(
             '/(\[url\S+)?\[img\](\S+)\[\/img\](\[\/url\])?/im',
-            '[URL=https://www.amazon.com/s/ref=as_li_ss_tl?url=search-alias=automotive&field-keywords=' .
+            '[URL=https://www.amazon.com/s/ref=as_li_ss_tl?url=search-alias=' . $productCategory . '&field-keywords=' .
                 $keywords .
                 '&linkCode=ll2&tag=' .
                 $this->amazontag .
