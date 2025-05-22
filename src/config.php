@@ -19,5 +19,5 @@ $config['enableLivePayments'] = false;
 
 $config['debug'] = true;
 
-$config['development']['defaultAddOn'] = 'FS/TractorLandingPageApi';
+$config['development']['defaultAddOn'] = 'PF/EditorSymbols';
 $config['development']['enabled'] = true;

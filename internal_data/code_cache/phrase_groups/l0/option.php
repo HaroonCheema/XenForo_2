@@ -576,6 +576,7 @@ return array (
   'option.ozzmodz_badges_updateBatchSize' => 'User badge update batch size',
   'option.ozzmodz_dvn_token' => 'Token for replacement',
   'option.ozzmodz_forms_floodCheck' => 'Minimum time between submitting new form',
+  'option.pf_es_symbols' => 'Editor symbols',
   'option.pinterestShare' => 'Enable Pinterest share button',
   'option.pollMaximumResponses' => 'Maximum number of poll choices',
   'option.preRegAction' => 'Writing before registering setup',

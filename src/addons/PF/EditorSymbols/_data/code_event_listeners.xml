@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<code_event_listeners>
+  <listener event_id="editor_button_data" execute_order="10" callback_class="PF\EditorSymbols\Listener" callback_method="editorButtonData" active="1" description="editorButtonData"/>
+  <listener event_id="editor_dialog" execute_order="10" callback_class="PF\EditorSymbols\Listener" callback_method="editorDialog" active="1"/>
+</code_event_listeners>

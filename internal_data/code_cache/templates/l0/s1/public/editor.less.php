@@ -810,7 +810,7 @@ return array(
 .xfPreview
 {
 	.m-clearFix();
-}';
+}' . $__templater->includeTemplate('pf_es_editor_symbols.less', $__vars);
 	return $__finalCompiled;
 }
 );

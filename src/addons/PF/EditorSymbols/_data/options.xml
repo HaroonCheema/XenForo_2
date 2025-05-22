@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<options>
+  <option option_id="pf_es_symbols" edit_format="textbox" data_type="string">
+    <default_value>&amp;fnof;
+&amp;Alpha;
+&amp;Beta;
+&amp;Gamma;
+&amp;Delta;</default_value>
+    <edit_format_params>rows=10</edit_format_params>
+    <relation group_id="messageOptions" display_order="900"/>
+  </option>
+</options>

@@ -1,0 +1,9 @@
+{
+    "event_id": "editor_dialog",
+    "execute_order": 10,
+    "callback_class": "PF\\EditorSymbols\\Listener",
+    "callback_method": "editorDialog",
+    "active": true,
+    "hint": "",
+    "description": ""
+}

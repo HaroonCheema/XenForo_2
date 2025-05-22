@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="option.pf_es_symbols" version_id="901000090" version_string="1.0.0 Patch Level"><![CDATA[Editor symbols]]></phrase>
+  <phrase title="option_explain.pf_es_symbols" version_id="901000090" version_string="1.0.0"><![CDATA[Put one per line.]]></phrase>
+  <phrase title="pf_es_add_symbol" version_id="901000190" version_string="1.0.1"><![CDATA[Add symbol]]></phrase>
+</phrases>

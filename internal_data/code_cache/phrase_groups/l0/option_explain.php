@@ -678,6 +678,7 @@ Award date - Descending: Recent badges<br/>
   'option_explain.ozzmodz_badges_updateBatchSize' => 'Specify how many badges should be updated per job run. A large value can negatively affect performance.',
   'option_explain.ozzmodz_dvn_token' => 'Enter the token that will be used for replacement to visitor name. Case insensitive.',
   'option_explain.ozzmodz_forms_floodCheck' => 'Users will have to wait this many seconds between submitting new form.',
+  'option_explain.pf_es_symbols' => 'Put one per line.',
   'option_explain.pinterestShare' => 'This button will let your users pin your content to any Pinterest board.',
   'option_explain.pollMaximumResponses' => 'This will limit the number of choices that can be given as responses to a poll.',
   'option_explain.preRegAction' => 'If enabled, guests will be able to write supported content but asked to register before it is submitted and publicly viewable. In most circumstances, the permissions should be inherited from the group or groups that a newly registered user would be placed into. By default, this is the "Registered" group.',

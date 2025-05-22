@@ -1,0 +1,13 @@
+<xf:css src="pf_es_editor_symbols.less" />
+
+<div class="menu-scroller">
+	<div class="menu-row">
+		<ul class="pfEsSymbolList js-pfEsSymbolsList">		
+			<xf:foreach loop="$symbols" value="$symbol">
+				<li>
+					<a class="js-psEsSymbol" data-value="{$symbol}">{$symbol|raw}</a>
+				</li>
+			</xf:foreach>
+		</ul>
+	</div>
+</div>
