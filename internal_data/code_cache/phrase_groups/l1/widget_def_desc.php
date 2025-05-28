@@ -41,6 +41,8 @@ return array (
   'widget_def_desc.siropu_chat_rooms' => 'Display Chat by Siropu rooms.',
   'widget_def_desc.siropu_chat_top_chatters' => 'Display Chat by Siropu top chatters.',
   'widget_def_desc.siropu_chat_users' => 'Display Chat by Siropu active users.',
+  'widget_def_desc.siropu_referral_link' => 'Display the referral link.',
+  'widget_def_desc.siropu_referral_top_ref' => 'Display top referrers.',
   'widget_def_desc.snog_forms' => 'Displays a list of available forms.',
   'widget_def_desc.snog_forms_form' => 'Displays a selected forms.',
   'widget_def_desc.snog_movies_poster_slider' => '',

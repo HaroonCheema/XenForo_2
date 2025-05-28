@@ -186,7 +186,7 @@ return array(
 	$__finalCompiled = '';
 	$__finalCompiled .= '
 	';
-	$__vars['meta'] = $__templater->preEscaped('<meta property="og:url" content="' . $__templater->escape($__vars['shareUrl']) . '" />');
+	$__vars['meta'] = $__templater->preEscaped('<meta property="og:url" content="' . $__templater->escape($__vars['shareUrl']) . $__templater->func('siropu_rs_referral_link_param', array(), true) . '" />');
 	$__finalCompiled .= '
 	' . $__templater->callMacro(null, 'output', array(
 		'option' => 'meta_share_url',

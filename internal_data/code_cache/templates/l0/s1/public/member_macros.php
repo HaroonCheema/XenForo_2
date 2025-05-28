@@ -202,7 +202,34 @@ return array(
 		'user' => $__vars['user'],
 	), $__vars) . '
 ' . $__templater->includeTemplate('dbtech_credits_member_stats', $__vars) . '
-	' . '
+	';
+	if ($__vars['xf']['options']['siropuReferralSystemDisplayReferralCount'] AND $__vars['user']['siropu_rs_referral_count']) {
+		$__finalCompiled .= '
+	<dl class="pairs pairs--rows pairs--rows--centered menu-fauxLinkRow">
+		<dt>' . 'Referrals' . '</dt>
+		<dd>
+			<a href="' . $__templater->func('link', array('members/referrals', $__vars['user'], ), true) . '" class="fauxBlockLink-linkRow u-concealed" data-xf-click="overlay">' . $__templater->filter($__vars['user']['siropu_rs_referral_count'], array(array('number', array()),), true) . '</a>
+		</dd>
+	</dl>
+';
+	}
+	$__finalCompiled .= '
+';
+	if ($__vars['xf']['options']['siropuReferralSystemDisplayReferrer'] AND $__vars['user']['siropu_rs_referrer_id']) {
+		$__finalCompiled .= '
+	<dl class="pairs pairs--rows pairs--rows--centered menu-fauxLinkRow">
+		<dt>' . 'Referrer' . '</dt>
+		<dd>
+			' . $__templater->func('username_link', array($__vars['user']['SRS_Referrer'], true, array(
+			'class' => 'fauxBlockLink-linkRow u-concealed',
+			'notooltip' => 'true',
+		))) . '
+		</dd>
+	</dl>
+';
+	}
+	$__finalCompiled .= '
+' . '
 
 ';
 	if ($__templater->method($__vars['xf']['visitor'], 'hasPermission', array('fs_thread_scoring_system', 'can_view', ))) {

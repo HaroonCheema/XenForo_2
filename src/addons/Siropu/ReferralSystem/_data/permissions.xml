@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<permissions>
+  <permission permission_group_id="siropuReferralSystem" permission_id="refer" permission_type="flag" interface_group_id="siropuReferralSystem" display_order="10"/>
+  <permission permission_group_id="siropuReferralSystem" permission_id="referralRegRewardAmount" permission_type="integer" interface_group_id="siropuReferralSystem" display_order="20"/>
+  <permission permission_group_id="siropuReferralSystem" permission_id="referralRewardAmountLimit" permission_type="integer" interface_group_id="siropuReferralSystem" display_order="40"/>
+  <permission permission_group_id="siropuReferralSystem" permission_id="referralUpgRewardAmount" permission_type="integer" interface_group_id="siropuReferralSystem" display_order="30"/>
+  <permission permission_group_id="siropuReferralSystem" permission_id="spamCleaner" permission_type="flag" interface_group_id="siropuReferralSystemModerator" display_order="10"/>
+</permissions>

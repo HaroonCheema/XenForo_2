@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class_extensions>
+  <extension from_class="XF\Entity\Post" to_class="Siropu\ReferralSystem\XF\Entity\Post" execute_order="10" active="1"/>
+  <extension from_class="XF\Entity\User" to_class="Siropu\ReferralSystem\XF\Entity\User" execute_order="1000" active="1"/>
+  <extension from_class="XF\Pub\Controller\Account" to_class="Siropu\ReferralSystem\XF\Pub\Controller\Account" execute_order="10" active="1"/>
+  <extension from_class="XF\Pub\Controller\Member" to_class="Siropu\ReferralSystem\XF\Pub\Controller\Member" execute_order="10" active="1"/>
+  <extension from_class="XF\Pub\Controller\SpamCleaner" to_class="Siropu\ReferralSystem\XF\Pub\Controller\SpamCleaner" execute_order="10" active="1"/>
+</class_extensions>

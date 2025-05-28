@@ -39,6 +39,7 @@ return array (
   'admin_permission.rebuildCache' => 'Rebuild caches',
   'admin_permission.resourceManager' => 'Manage resources',
   'admin_permission.siropuChat' => 'Manage Chat',
+  'admin_permission.siropuReferralSystem' => 'Manage Referral System',
   'admin_permission.snogFormsAdmin' => 'Manage Forms',
   'admin_permission.style' => 'Manage styles, style properties, and templates',
   'admin_permission.tags' => 'Manage tags',

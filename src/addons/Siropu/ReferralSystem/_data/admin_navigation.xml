@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<admin_navigation>
+  <admin_navigation_entry navigation_id="siropuReferralSystem" display_order="10102" icon="fas fa-users" admin_permission_id="siropuReferralSystem" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="siropuReferralSystemReferralTools" parent_navigation_id="siropuReferralSystem" display_order="10" link="referral-system/tools" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="siropuReferralSystemReferrals" parent_navigation_id="siropuReferralSystem" display_order="30" link="referral-system/referrals" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="siropuReferralSystemReferrerDecrypt" parent_navigation_id="siropuReferralSystem" display_order="50" link="referral-system/referrer/decrypt" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="siropuReferralSystemReferrerLog" parent_navigation_id="siropuReferralSystem" display_order="20" link="referral-system/referrer-log" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="siropuReferralSystemRewardType" parent_navigation_id="siropuReferralSystem" display_order="40" link="referral-system/reward-types" debug_only="0" development_only="0" hide_no_children="0"/>
+</admin_navigation>

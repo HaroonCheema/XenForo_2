@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<code_event_listeners>
+  <listener event_id="app_pub_complete" execute_order="10" callback_class="Siropu\ReferralSystem\Listener" callback_method="appPubComplete" active="1" description="Set referrer cookies."/>
+  <listener event_id="criteria_user" execute_order="10" callback_class="Siropu\ReferralSystem\Listener" callback_method="criteriaUser" active="1" description="Add referral user criteria."/>
+  <listener event_id="entity_post_save" execute_order="10" callback_class="Siropu\ReferralSystem\Listener" callback_method="userUpgradeActivePostSave" active="1" hint="XF\Entity\UserUpgradeActive" description="Extend user upgrade active entity post save."/>
+  <listener event_id="templater_setup" execute_order="10" callback_class="Siropu\ReferralSystem\Listener" callback_method="templaterSetup" active="1" description="Adds new templater functions."/>
+  <listener event_id="user_merge_combine" execute_order="10" callback_class="Siropu\ReferralSystem\Listener" callback_method="userMergeCombine" active="1" description="Allow the referral count to be updated when merging users."/>
+  <listener event_id="user_searcher_orders" execute_order="10" callback_class="Siropu\ReferralSystem\Listener" callback_method="userSearcherOrders" active="1" description="Add referral count to user searcher orders."/>
+</code_event_listeners>

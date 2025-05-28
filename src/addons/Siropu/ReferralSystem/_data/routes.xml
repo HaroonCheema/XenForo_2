@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<routes>
+  <route route_type="admin" route_prefix="referral-system" sub_name="referrals" format="referrals/:int&lt;user_id&gt;/" controller="Siropu\ReferralSystem:Referral" context="siropuReferralSystem"/>
+  <route route_type="admin" route_prefix="referral-system" sub_name="referrer" format="referrer" controller="Siropu\ReferralSystem:Referrer" context="siropuReferralSystem"/>
+  <route route_type="admin" route_prefix="referral-system" sub_name="referrer-log" format="referrer-log/:int&lt;log_id&gt;/" controller="Siropu\ReferralSystem:ReferrerLog" context="siropuReferralSystem"/>
+  <route route_type="admin" route_prefix="referral-system" sub_name="reward-types" format="reward-types/:int&lt;reward_type_id&gt;/" controller="Siropu\ReferralSystem:RewardType" context="siropuReferralSystem"/>
+  <route route_type="admin" route_prefix="referral-system" sub_name="tools" format="tools/:int&lt;tool_id&gt;/" controller="Siropu\ReferralSystem:Tool" context="siropuReferralSystem"/>
+</routes>

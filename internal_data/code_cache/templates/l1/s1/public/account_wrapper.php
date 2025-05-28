@@ -13,24 +13,32 @@ return array(
 				';
 	}
 	$__compilerTemp2 = '';
-	if ($__templater->method($__vars['xf']['visitor'], 'canEditSignature', array())) {
+	if ($__templater->method($__vars['xf']['visitor'], 'hasPermission', array('siropuReferralSystem', 'refer', ))) {
 		$__compilerTemp2 .= '
+     <a class="blockLink ' . (($__vars['pageSelected'] == 'referrals') ? 'is-selected' : '') . '" href="' . $__templater->func('link', array('account/referrals', ), true) . '">
+          ' . 'Your referrals' . '
+     </a>
+';
+	}
+	$__compilerTemp3 = '';
+	if ($__templater->method($__vars['xf']['visitor'], 'canEditSignature', array())) {
+		$__compilerTemp3 .= '
 					<a class="blockLink ' . (($__vars['pageSelected'] == 'signature') ? 'is-selected' : '') . '" href="' . $__templater->func('link', array('account/signature', ), true) . '">
 						' . 'Signature' . '
 					</a>
 				';
 	}
-	$__compilerTemp3 = '';
+	$__compilerTemp4 = '';
 	if ($__vars['xf']['app']['userUpgradeCount']) {
-		$__compilerTemp3 .= '
+		$__compilerTemp4 .= '
 					<a class="blockLink ' . (($__vars['pageSelected'] == 'upgrades') ? 'is-selected' : '') . '" href="' . $__templater->func('link', array('account/upgrades', ), true) . '">
 						' . 'Account upgrades' . '
 					</a>
 				';
 	}
-	$__compilerTemp4 = '';
+	$__compilerTemp5 = '';
 	if ($__vars['xf']['app']['connectedAccountCount']) {
-		$__compilerTemp4 .= '
+		$__compilerTemp5 .= '
 					<a class="blockLink ' . (($__vars['pageSelected'] == 'connected_account') ? 'is-selected' : '') . '" href="' . $__templater->func('link', array('account/connected-accounts', ), true) . '">
 						' . 'Connected accounts' . '
 					</a>
@@ -54,6 +62,7 @@ return array(
 	' . 'My Ratings' . '
 </a>
 ' . '
+' . $__compilerTemp2 . '
 			</div>
 
 			<h3 class="block-minorHeader">' . 'Settings' . '</h3>
@@ -86,9 +95,9 @@ return array(
 				<a class="blockLink ' . (($__vars['pageSelected'] == 'preferences') ? 'is-selected' : '') . '" href="' . $__templater->func('link', array('account/preferences', ), true) . '">
 					' . 'Preferences' . '
 				</a>
-				' . $__compilerTemp2 . '
 				' . $__compilerTemp3 . '
 				' . $__compilerTemp4 . '
+				' . $__compilerTemp5 . '
 				<a class="blockLink ' . (($__vars['pageSelected'] == 'following') ? 'is-selected' : '') . '" href="' . $__templater->func('link', array('account/following', ), true) . '">
 					' . 'Following' . '
 				</a>

@@ -12,7 +12,7 @@ return array(
 				' . $__templater->callMacro('share_page_macros', 'buttons', array(
 		'iconic' => true,
 		'hideLink' => true,
-		'pageUrl' => $__vars['contentUrl'],
+		'pageUrl' => $__vars['contentUrl'] . $__templater->func('siropu_rs_referral_link_param', array(), false),
 		'pageTitle' => $__vars['contentTitle'],
 		'pageDesc' => $__vars['contentDesc'],
 	), $__vars) . '
@@ -28,7 +28,7 @@ return array(
 	<div class="block-body block-row block-row--separated">
 		' . $__templater->callMacro('share_page_macros', 'share_clipboard_input', array(
 		'label' => '',
-		'text' => $__vars['contentUrl'],
+		'text' => $__vars['contentUrl'] . $__templater->func('siropu_rs_referral_link_param', array(), false),
 		'successText' => 'Link copied to clipboard.',
 	), $__vars) . '
 	</div>

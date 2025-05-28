@@ -1,0 +1,667 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="admin" title="siropu_referral_system_option_template_rewardTypes" version_id="1000070" version_string="1.0.0"><![CDATA[<xf:formrow rowtype="input"
+	hint="{$hintHtml}"
+	explain="{$explainHtml}"
+	html="{$listedHtml}"
+	label="{$option.title}">
+
+	<xf:select name="{$inputName}" value="{$option.option_value}" class="input--autoSize">
+		<xf:option>{{ phrase('(none)') }}</xf:option>
+		<xf:options source="{$rewardTypes}" />
+	</xf:select>
+</xf:formrow>]]></template>
+  <template type="admin" title="siropu_referral_system_referral_add" version_id="2000031" version_string="2.0.0 Beta 1"><![CDATA[<xf:title>{{ phrase('siropu_referral_system_add_referral') }}</xf:title>
+
+<xf:form action="{{ link('referral-system/referrals/save') }}" class="block" ajax="true">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:textboxrow name="referral" label="{{ phrase('siropu_referral_system_referral') }}" placeholder="{{ phrase('name...') }}" data-xf-init="auto-complete" data-single="true" />
+			<xf:textboxrow name="referrer" label="{{ phrase('siropu_referral_system_referrer') }}" placeholder="{{ phrase('name...') }}" data-xf-init="auto-complete" data-single="true" />
+		</div>
+		<xf:submitrow rowtype="simple" icon="save" submit="{{ phrase('siropu_referral_system_add_referral') }}" />
+	</div>
+</xf:form>]]></template>
+  <template type="admin" title="siropu_referral_system_referral_delete" version_id="2000031" version_string="2.0.0 Beta 1"><![CDATA[<xf:title>{{ phrase('confirm_action') }}</xf:title>
+
+<xf:form action="{{ link('referral-system/referrals/delete', $referral) }}" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:inforow rowtype="confirm">
+				{{ phrase('please_confirm_that_you_want_to_delete_following:') }}
+				<strong><xf:username user="$referral" rich="true" /></strong>
+			</xf:inforow>
+		</div>
+		<xf:submitrow rowtype="simple" icon="delete" />
+	</div>
+</xf:form>]]></template>
+  <template type="admin" title="siropu_referral_system_referral_list" version_id="1000770" version_string="1.0.7"><![CDATA[<xf:title>{{ phrase('siropu_referral_system_referrals') }}</xf:title>
+
+<xf:pageaction>
+	<xf:button href="{{ link('referral-system/referrals/add') }}" icon="add" data-xf-click="overlay">{{ phrase('siropu_referral_system_add_referral') }}</xf:button>
+</xf:pageaction>
+
+<xf:form action="{{ link('referral-system/referrals') }}" class="block">
+	<div class="block-container">
+		<div class="block-body block-row">
+			<xf:textbox name="username" placeholder="{{ phrase('siropu_referral_system_referrer...') }}" type="search" value="" data-xf-init="auto-complete" data-single="true" class="input--inline" />
+			<xf:button type="submit" icon="search">{{ phrase('siropu_referral_system_find_referrals') }}</xf:button>
+		</div>
+	</div>
+</xf:form>
+
+<xf:if is="$referrals is not empty">
+	<div class="block">
+		<div class="block-container">
+			<div class="block-body">
+				<xf:datalist data-xf-init="responsive-data-list">
+					<thead>
+						<xf:datarow rowtype="header">
+							<xf:cell>{{ phrase('user') }}</xf:cell>
+							<xf:cell>{{ phrase('joined') }}</xf:cell>
+							<xf:cell>{{ phrase('ip') }}</xf:cell>
+							<xf:cell>{{ phrase('messages') }}</xf:cell>
+							<xf:cell>{{ phrase('siropu_referral_system_referrer') }}</xf:cell>
+							<xf:cell />
+						</xf:datarow>
+					</thead>
+					<xf:foreach loop="$referrals" value="$referral">
+						<xf:datarow>
+							<xf:cell><xf:username user="$referral" rich="true" /></xf:cell>
+							<xf:cell><xf:date time="{$referral.register_date}" /></xf:cell>
+							<xf:cell>
+								<xf:set var="$ip" value="{$referral.getIp('register')|ip}" />
+								<xf:if is="$ip">
+									<a href="{{ link('users/ip-users', null, {'ip':$ip}) }}" data-xf-click="overlay">{$ip}</a>
+								<xf:else />
+									{{ phrase('n_a') }}
+								</xf:if>
+							</xf:cell>
+							<xf:cell>{$referral.message_count|number}</xf:cell>
+							<xf:cell><xf:username user="$referral.SRS_Referrer" rich="true" /></xf:cell>
+							<xf:delete href="{{ link('referral-system/referrals/delete', $referral) }}" />
+						</xf:datarow>
+					</xf:foreach>
+				</xf:datalist>
+			</div>
+			<div class="block-footer">
+				<span class="block-footer-counter">{{ display_totals($referrals, $total) }}</span>
+			</div>
+		</div>
+	</div>
+
+	<xf:pagenav page="{$page}"
+				perpage="{$perPage}"
+				total="{$total}"
+				params="{$linkParams}"
+				link="referral-system/referrals"
+				wrapperclass="block-outer block-outer--after" />
+<xf:else />
+	<div class="blockMessage">{{ phrase('no_entries_have_been_logged') }}</div>
+</xf:if>]]></template>
+  <template type="admin" title="siropu_referral_system_referrer_decrypt" version_id="1000070" version_string="1.0.0"><![CDATA[<xf:title>{{ phrase('siropu_referral_system_decrypt_referrer_id') }}</xf:title>
+
+<xf:form action="{{ link('referral-system/referrer/decrypt') }}" class="block">
+	<div class="block-container">
+		<div class="block-body block-row">
+			<xf:textbox name="referrer_id" placeholder="{{ phrase('siropu_referral_system_encrypted_id') }}" class="input--inline" required="required" />
+			<xf:button type="submit">{{ phrase('siropu_referral_system_decrypt') }}</xf:button>
+		</div>
+	</div>
+</xf:form>
+
+<xf:if is="$userId">
+	<div class="block">
+		<div class="block-container">
+			<div class="block-body block-row">
+				{{ phrase('user_id:') }} {$userId}<xf:if is="$user">, {{ phrase('user:') }} <xf:username user="$user" rich="true" /></xf:if>
+			</div>
+		</div>
+	</div>
+</xf:if>]]></template>
+  <template type="admin" title="siropu_referral_system_referrer_log_clear" version_id="2020170" version_string="2.2.1"><![CDATA[<xf:title>{{ phrase('siropu_referral_system_clear_log') }}</xf:title>
+
+<xf:form action="{{ link('referral-system/referrer-log/clear') }}" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:inforow rowtype="confirm">
+				{{ phrase('siropu_referral_system_are_you_sure_you_want_to_clear_log') }}
+			</xf:inforow>
+		</div>
+		<xf:submitrow rowtype="simple" icon="delete" submit="{{ phrase('siropu_referral_system_clear_log') }}" />
+	</div>
+</xf:form>]]></template>
+  <template type="admin" title="siropu_referral_system_referrer_log_list" version_id="2020170" version_string="2.2.1"><![CDATA[<xf:title>{{ phrase('siropu_referral_system_referrer_log') }}</xf:title>
+
+<xf:if is="$entries is not empty">
+	<xf:pageaction>
+		<xf:button href="{{ link('referral-system/referrer-log/clear') }}" overlay="true" icon="delete">{{ phrase('siropu_referral_system_clear_log') }}</xf:button>
+	</xf:pageaction>
+</xf:if>
+
+<xf:form action="{{ link('referral-system/referrer-log') }}" class="block">
+	<div class="block-container">
+		<div class="block-body block-row">
+			<xf:textbox name="referrer" placeholder="{{ phrase('siropu_referral_system_referrer...') }}" type="search" value="{$linkParams.referrer}" data-xf-init="auto-complete" data-single="true" class="input--inline" />
+			<xf:button type="submit">{{ phrase('find') }}</xf:button>
+		</div>
+	</div>
+</xf:form>
+
+<xf:if is="$entries is not empty">
+	<div class="block">
+		<div class="block-container">
+			<div class="block-body">
+				<xf:datalist data-xf-init="responsive-data-list">
+					<thead>
+						<xf:datarow rowtype="header">
+							<xf:cell>{{ phrase('date') }}</xf:cell>
+							<xf:cell>{{ phrase('siropu_referral_system_referrer_username') }}</xf:cell>
+							<xf:cell>{{ phrase('siropu_referral_system_referrer_url') }}</xf:cell>
+							<xf:cell />
+						</xf:datarow>
+					</thead>
+					<xf:foreach loop="$entries" value="$entry">
+						<xf:datarow delete="{{ link('referral-system/referrer-log/delete', $entry) }}">
+							<xf:cell><xf:date time="{$entry.date}" /></xf:cell>
+							<xf:cell>
+								<xf:if is="$entry.User">
+									<xf:username user="$entry.User" rich="true" />
+								<xf:else />
+									{{ phrase('n_a') }}
+								</xf:if>
+							</xf:cell>
+							<xf:cell>{$entry.url}</xf:cell>
+						</xf:datarow>
+					</xf:foreach>
+				</xf:datalist>
+			</div>
+			<div class="block-footer">
+				<span class="block-footer-counter">{{ display_totals($entries, $total) }}</span>
+			</div>
+		</div>
+	</div>
+
+	<xf:pagenav page="{$page}" perpage="{$perPage}" total="{$total}" params="{$linkParams}" link="referral-system/referrer-log"
+						wrapperclass="block-outer block-outer--after" />
+<xf:else />
+	<div class="blockMessage">{{ phrase('no_entries_have_been_logged') }}</div>
+</xf:if>]]></template>
+  <template type="admin" title="siropu_referral_system_reward_type_edit" version_id="1000070" version_string="1.0.0"><![CDATA[<xf:if is="$rewardType.isInsert()">
+	<xf:title>{{ phrase('siropu_referral_system_add_reward_type:') }} {$rewardType.type_phrase}</xf:title>
+<xf:else />
+	<xf:title>{{ phrase('siropu_referral_system_edit_reward_type:') }} {$rewardType.name}</xf:title>
+</xf:if>
+
+<xf:pageaction if="$rewardType.isUpdate()">
+	<xf:button href="{{ link('referral-system/reward-types/delete', $rewardType) }}" icon="delete" overlay="true" />
+</xf:pageaction>
+
+<xf:form action="{{ link('referral-system/reward-types/save', $rewardType) }}" upload="true" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:textboxrow name="name" value="{$rewardType.name}" label="{{ phrase('siropu_referral_system_reward_type_name') }}" />
+
+			<xf:if is="$currencies is not empty">
+				<xf:selectrow name="currency" value="{$rewardType.currency}" label="{{ phrase('siropu_referral_system_currency') }}">
+					<xf:options source="{$currencies}" />
+				</xf:selectrow>
+			</xf:if>
+		</div>
+
+		<xf:submitrow icon="save" />
+	</div>
+	<xf:if is="$rewardType.isInsert()">
+		<xf:hiddenval name="type" value="{$rewardType.type}" />
+	</xf:if>
+</xf:form>]]></template>
+  <template type="admin" title="siropu_referral_system_reward_type_list" version_id="1000070" version_string="1.0.0"><![CDATA[<xf:title>{{ phrase('siropu_referral_system_reward_types') }}</xf:title>
+
+<xf:pageaction>
+	<div class="buttonGroup-buttonWrapper">
+		<xf:button class="menuTrigger" data-xf-click="menu" aria-expanded="false" aria-haspopup="true" icon="add">{{ phrase('siropu_referral_system_add_reward_type') }}</xf:button>
+		<div class="menu" data-menu="menu" aria-hidden="true">
+			<div class="menu-content">
+				<h4 class="menu-header">{{ phrase('type') }}</h4>
+				<a href="{{ link('referral-system/reward-types/add', '', {'type': 'trophy_points'}) }}" class="menu-linkRow">{{ phrase('siropu_referral_system_reward_type.trophy_points') }}</a>
+				<a href="{{ link('referral-system/reward-types/add', '', {'type': 'dbtech_credits'}) }}" class="menu-linkRow">{{ phrase('siropu_referral_system_reward_type.dbtech_credits') }}</a>
+			</div>
+		</div>
+	</div>
+</xf:pageaction>
+
+<xf:if is="$rewardTypes is not empty">
+	<xf:form action="{{ link('referral-system/reward-types/toggle') }}" class="block" ajax="true">
+		<div class="block-outer">
+			<xf:macro template="filter_macros" name="quick_filter" arg-key="rewardTypes" arg-class="block-outer-opposite" />
+		</div>
+		<div class="block-container">
+			<div class="block-body">
+				<xf:datalist>
+					<xf:foreach loop="$rewardTypes" value="$rewardType">
+						<xf:datarow label="{$rewardType.name}"
+									href="{{ link('referral-system/reward-types/edit', $rewardType) }}"
+									hint="{$rewardType.type_phrase}"
+									delete="{{ link('referral-system/reward-types/delete', $rewardType) }}"
+									dir="auto">
+						</xf:datarow>
+					</xf:foreach>
+				</xf:datalist>
+				<div class="block-footer">
+					<span class="block-footer-counter">{{ display_totals($rewardTypes, $total) }}</span>
+				</div>
+			</div>
+		</div>
+	</xf:form>
+<xf:else />
+	<div class="blockMessage">{{ phrase('no_items_have_been_created_yet') }}</div>
+</xf:if>]]></template>
+  <template type="admin" title="siropu_referral_system_tool_delete" version_id="2000031" version_string="2.0.0 Beta 1"><![CDATA[<xf:title>{{ phrase('confirm_action') }}</xf:title>
+
+<xf:form action="{{ link('referral-system/tools/delete', $tool) }}" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:inforow rowtype="confirm">
+				{{ phrase('please_confirm_that_you_want_to_delete_following:') }}
+				<strong><a href="{{ link('referral-system/tools/edit', $tool) }}">{$tool.name}</a></strong>
+			</xf:inforow>
+		</div>
+		<xf:submitrow rowtype="simple" icon="delete" />
+	</div>
+</xf:form>]]></template>
+  <template type="admin" title="siropu_referral_system_tool_edit" version_id="2000031" version_string="2.0.0 Beta 1"><![CDATA[<xf:if is="$tool.isInsert()">
+	<xf:if is="$tool.isBanner()">
+		<xf:title>{{ phrase('siropu_referral_system_add_banner') }}</xf:title>
+	<xf:else />
+		<xf:title>{{ phrase('siropu_referral_system_add_text_link') }}</xf:title>
+	</xf:if>
+<xf:else />
+	<xf:title>{{ phrase('siropu_referral_system_edit_tool:') }} {$tool.name}</xf:title>
+</xf:if>
+
+<xf:pageaction if="$tool.isUpdate()">
+	<xf:button href="{{ link('referral-system/tools/delete', $tool) }}" icon="delete" overlay="true" />
+</xf:pageaction>
+
+<xf:form action="{{ link('referral-system/tools/save', $tool) }}" upload="true" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:textboxrow name="name" value="{$tool.name}" label="{{ phrase('siropu_referral_system_tool_name') }}" />
+
+			<xf:if is="$tool.isBanner()">
+				<xf:selectrow name="size" value="{$tool.size}" label="{{ phrase('siropu_referral_system_banner_size') }}">
+					<xf:option value="468x60">468 x 60</xf:option>
+					<xf:option value="728x90">728 x 90</xf:option>
+					<xf:option value="250x250">250 x 250</xf:option>
+					<xf:option value="200x200">200 x 200</xf:option>
+					<xf:option value="300x250">300 x 250</xf:option>
+					<xf:option value="300x600">300 x 600</xf:option>
+					<xf:option value="320x100">320 x 100</xf:option>
+					<xf:option value="320x50">320 x 50</xf:option>
+					<xf:option value="336x280">336 x 280</xf:option>
+					<xf:option value="234x60">234 x 60</xf:option>
+					<xf:option value="120x600">120 x 600</xf:option>
+					<xf:option value="120x240">120 x 240</xf:option>
+					<xf:option value="160x600">160 x 600</xf:option>
+					<xf:option value="970x250">970 x 250</xf:option>
+					<xf:option value="125x125">125 x 125</xf:option>
+				</xf:selectrow>
+
+				<xf:uploadrow name="upload" label="{{ phrase('siropu_referral_system_upload_banner') }}" accept=".gif,.jpeg,.jpg,.jpe,.png" />
+
+				<xf:if is="$tool.content">
+					<xf:formrow label="{{ phrase('siropu_referral_system_current_banner') }}">
+						<img src="{$tool.absolute_file_path}">
+					</xf:formrow>
+				</xf:if>
+			<xf:else />
+				<xf:textboxrow name="content" value="{$tool.content}" label="{{ phrase('siropu_referral_system_link_text') }}" />
+			</xf:if>
+
+			<xf:textboxrow name="target_url" value="{$tool.target_url}"
+						   label="{{ phrase('siropu_referral_system_target_url') }}"
+						   explain="{{ phrase('siropu_referral_system_target_url_explain') }}" />
+
+			<hr class="formRowSep" />
+
+			<xf:checkboxrow>
+				<xf:option name="enabled" value="1" selected="{$tool.enabled}">{{ phrase('siropu_referral_system_enable_tool') }}</xf:option>
+			</xf:checkboxrow>
+		</div>
+
+		<xf:submitrow icon="save" />
+	</div>
+	<xf:if is="$tool.isInsert()">
+		<xf:hiddenval name="type" value="{$tool.type}" />
+	</xf:if>
+</xf:form>]]></template>
+  <template type="admin" title="siropu_referral_system_tool_list" version_id="2000032" version_string="2.0.0-Beta-2"><![CDATA[<xf:title>{{ phrase('siropu_referral_system_referral_tools') }}</xf:title>
+
+<xf:pageaction>
+	<div class="buttonGroup-buttonWrapper">
+		<xf:button class="menuTrigger" data-xf-click="menu" aria-expanded="false" aria-haspopup="true" icon="add">{{ phrase('siropu_referral_system_add_tool') }}</xf:button>
+		<div class="menu" data-menu="menu" aria-hidden="true">
+			<div class="menu-content">
+				<h4 class="menu-header">{{ phrase('type') }}</h4>
+				<a href="{{ link('referral-system/tools/add', '', {'type': 'banner'}) }}" class="menu-linkRow">{{ phrase('siropu_referral_system_type.banner') }}</a>
+				<a href="{{ link('referral-system/tools/add', '', {'type': 'text'}) }}" class="menu-linkRow">{{ phrase('siropu_referral_system_type.text') }}</a>
+			</div>
+		</div>
+	</div>
+</xf:pageaction>
+
+<xf:if is="$tools is not empty">
+	<xf:form action="{{ link('referral-system/tools/toggle') }}" class="block" ajax="true">
+		<div class="block-outer">
+			<xf:macro template="filter_macros" name="quick_filter" arg-key="tools" arg-class="block-outer-opposite" />
+		</div>
+		<div class="block-container">
+			<div class="block-body">
+				<xf:datalist>
+					<xf:foreach loop="$tools" value="$tool">
+						<xf:datarow label="{$tool.name}"
+									href="{{ link('referral-system/tools/edit', $tool) }}"
+									hint="{$tool.type_phrase}"
+									explain="{$tool.click_count} {{ phrase('siropu_referral_system_clicks') }}"
+									delete="{{ link('referral-system/tools/delete', $tool) }}"
+									dir="auto">
+							<xf:toggle name="enabled[{$tool.tool_id}]" selected="$tool.enabled"
+									   class="dataList-cell--separated" submit="true"
+									   tooltip="{{ phrase('enable_disable_x', {'title': $tool.name}) }}" />
+						</xf:datarow>
+					</xf:foreach>
+				</xf:datalist>
+				<div class="block-footer">
+					<span class="block-footer-counter">{{ display_totals($tools, $total) }}</span>
+				</div>
+			</div>
+		</div>
+	</xf:form>
+<xf:else />
+	<div class="blockMessage">{{ phrase('no_items_have_been_created_yet') }}</div>
+</xf:if>]]></template>
+  <template type="admin" title="widget_def_options_siropu_referral_link" version_id="1000070" version_string="1.0.0"><![CDATA[<hr class="formRowSep" />
+
+<xf:checkboxrow explain="{{ phrase('siropu_referral_system_enable_current_page_link_explain') }}">
+	<xf:option name="options[currentPageLink]" selected="$options.currentPageLink" label="{{ phrase('siropu_referral_system_enable_current_page_link') }}" />
+</xf:checkboxrow>]]></template>
+  <template type="admin" title="widget_def_options_siropu_referral_top_ref" version_id="1000070" version_string="1.0.0"><![CDATA[<hr class="formRowSep" />
+
+<xf:radiorow name="options[type]">
+	<xf:option value="allTime" selected="$options.type == 'allTime'">{{ phrase('siropu_referral_system_all_time') }}</xf:option>
+	<xf:option value="currentMonth" selected="$options.type == 'currentMonth'">{{ phrase('siropu_referral_system_current_month') }}</xf:option>
+</xf:radiorow>
+
+<xf:numberboxrow name="options[limit]" value="{$options.limit}" label="{{ phrase('maximum_entries') }}" min="3" />
+
+<xf:checkboxrow>
+	<xf:option name="options[compact]" value="1" selected="$options.compact">{{ phrase('siropu_referral_system_use_compact_mode') }}</xf:option>
+</xf:checkboxrow>]]></template>
+  <template type="public" title="alert_user_siropu_rs_new_referral" version_id="1000070" version_string="1.0.0"><![CDATA[{{ phrase('siropu_referral_system_new_referral', {'name': username_link($user, false, {'defaultname': $alert.username})}) }}]]></template>
+  <template type="public" title="alert_user_siropu_rs_referral_dupe" version_id="1000070" version_string="1.0.0"><![CDATA[{{ phrase('siropu_referral_system_referral_dupe', {
+	'name': username_link($user, false, {'defaultname': $alert.username}),
+	'referrer': username_link($extra.referrer)})
+}}]]></template>
+  <template type="public" title="alert_user_siropu_rs_referral_reg_reward" version_id="1000070" version_string="1.0.0"><![CDATA[{{ phrase('siropu_referral_system_you_have_received_x_trophy_points_for_new_referral', {'points': $extra.trophyPoints}) }}]]></template>
+  <template type="public" title="alert_user_siropu_rs_referral_upg_reward" version_id="1000070" version_string="1.0.0"><![CDATA[{{ phrase('siropu_referral_system_you_have_received_x_trophy_points_for_referral_account_upgrade', {'points': $extra.trophyPoints}) }}]]></template>
+  <template type="public" title="siropu_referral_system_account_referral_faq" version_id="2000031" version_string="2.0.0 Beta 1"><![CDATA[<xf:title>{{ phrase('faq') }}</xf:title>
+
+<div class="block">
+	<div class="block-container">
+		<div class="block-body block-row">
+			{{ phrase('siropu_referral_system_faq') }}
+		</div>
+	</div>
+</div>]]></template>
+  <template type="public" title="siropu_referral_system_account_referral_tools" version_id="1000070" version_string="1.0.0"><![CDATA[<xf:title>{{ phrase('siropu_referral_system_referral_tools') }}</xf:title>
+
+<xf:if is="$xf.options.siropuReferralSystemGenerarteLink">
+	<xf:js src="siropu/rs/tools.js" min="1" />
+
+	<xf:css>
+		.urlResult
+		{
+			display: none;
+		}
+	</xf:css>
+	
+	<xf:form class="block" data-xf-init="siropu-referral-system-link-generator">
+		<div class="block-container">
+			<div class="block-body">
+				<xf:formrow label="{{ phrase('siropu_referral_system_generate_referral_link') }}" explain="{{ phrase('siropu_referral_system_generate_referral_link_explain') }}" rowclass="siropuGenerateCustomLink">
+					<div class="inputGroup">
+						<xf:textbox name="url" autocomplete="off" />
+						<span class="inputGroup-splitter"></span>
+						<xf:button type="submit">{{ phrase('siropu_referral_system_generate') }}</xf:button>
+					</div>
+				</xf:formrow>
+
+				<xf:formrow rowclass="urlResult" label="{{ phrase('siropu_referral_system_your_referral_link') }}">
+					<xf:textbox name="result" />
+				</xf:formrow>
+			</div>
+		</div>
+	</xf:form>
+</xf:if>
+
+<xf:if is="$tools is not empty">
+	<div class="block">
+		<div class="block-container">
+			<h2 class="block-tabHeader tabs hScroller" data-xf-init="tabs h-scroller" role="tablist">
+				<span class="hScroller-scroll">
+					<xf:if is="$tools.banner">
+						<a class="tabs-tab is-active" role="tab" tabindex="0" aria-controls="{{ unique_id('banners') }}">{{ phrase('siropu_referral_system_banners') }}</a>
+					</xf:if>
+					<xf:if is="$tools.text">
+						<a class="tabs-tab" role="tab" tabindex="0" aria-controls="{{ unique_id('text_links') }}">{{ phrase('siropu_referral_system_text_links') }}</a>
+					</xf:if>
+				</span>
+			</h2>
+			<ul class="tabPanes block-body">
+				<xf:if is="$tools.banner">
+					<li class="is-active" role="tabpanel" id="{{ unique_id('banners') }}">
+						<xf:macro name="tools" arg-type="banner" arg-tools="{$tools.banner}" />
+					</li>
+				</xf:if>
+				<xf:if is="$tools.text">
+					<li role="tabpanel" id="{{ unique_id('text_links') }}">
+						<xf:macro name="tools" arg-type="text" arg-tools="{$tools.text}" />
+					</li>
+				</xf:if>
+			</ul>
+			<div class="block-footer">
+				{{ phrase('siropu_referral_system_referral_tools_explain') }}
+			</div>
+		</div>
+	</div>
+</xf:if>
+
+<xf:macro name="tools" arg-type="!" arg-tools="!">
+	<xf:datalist data-xf-init="responsive-data-list">
+		<thead>
+			<xf:datarow rowtype="header">
+				<xf:if is="$type == 'banner'">
+					<xf:cell>{{ phrase('siropu_referral_system_banner_size') }}</xf:cell>
+				</xf:if>
+				<xf:cell>{{ phrase('siropu_referral_system_html') }}</xf:cell>
+				<xf:cell>{{ phrase('siropu_referral_system_bb_code') }}</xf:cell>
+				<xf:cell>{{ phrase('preview') }}</xf:cell>
+			</xf:datarow>
+		</thead>
+		<xf:foreach loop="$tools" value="$tool">
+			<xf:set var="$htmlValue"><xf:trim>
+				<a href="{{ siropu_rs_referral_link('tool', $tool) }}" target="_blank"><xf:if is="$tool.isBanner()"><img src="{$tool.absolute_file_path}"><xf:else />{$tool.content}</xf:if></a>
+			</xf:trim></xf:set>
+			<xf:set var="$bbCodeValue"><xf:trim>
+				[URL={{ siropu_rs_referral_link('tool', $tool) }}]<xf:if is="$tool.isBanner()">[IMG]{$tool.absolute_file_path}[/IMG]<xf:else />{$tool.content}</xf:if>[/URL]
+			</xf:trim></xf:set>
+			<xf:datarow>
+				<xf:if is="$type == 'banner'">
+					<xf:cell><b>{$tool.size}</b></xf:cell>
+				</xf:if>
+				<xf:cell>
+					<textarea class="input" rows="5">{$htmlValue}</textarea>
+				</xf:cell>
+				<xf:cell>
+					<textarea class="input" rows="5">{$bbCodeValue}</textarea>
+				</xf:cell>
+				<xf:cell width="10%">
+					<xf:button href="{{ link('account/referral-tools/preview', null, {'tool_id': $tool.tool_id}) }}" icon="preview" data-xf-click="overlay">{{ phrase('siropu_referral_system_click_to_view') }}</xf:button>
+				</xf:cell>
+			</xf:datarow>
+		</xf:foreach>
+	</xf:datalist>
+</xf:macro>]]></template>
+  <template type="public" title="siropu_referral_system_account_referrals" version_id="1000070" version_string="1.0.0"><![CDATA[<xf:title>{{ phrase('siropu_referral_system_your_referrals') }}</xf:title>
+
+<xf:wrap template="account_wrapper" />
+
+<div class="block">
+	<div class="block-container">
+		<div class="block-body block-row">
+			<b>{{ phrase('siropu_referral_system_your_referral_link') }}</b>: {{ siropu_rs_referral_link('user') }}
+			<xf:macro template="siropu_referral_system_macros" name="copy_to_clipboard" arg-type="user" />
+		</div>
+		<xf:macro template="siropu_referral_system_macros" name="referral_tools_block_footer"  />
+	</div>
+</div>
+
+<xf:if is="$referrals is not empty">
+	<div class="block">
+		<div class="block-container">
+			<ol class="block-body">
+				<xf:foreach loop="$referrals" value="$referral">
+					<li class="block-row block-row--separated">
+						<xf:macro template="member_list_macros" name="item" arg-user="{$referral}" arg-extraData="{{ date_time($referral.register_date) }}" />
+					</li>
+				</xf:foreach>
+			</ol>
+		</div>
+
+		<xf:pagenav link="account/referrals" page="{$page}" perpage="{$perPage}" total="{$total}" wrapperclass="block-outer block-outer--after" />
+	</div>
+<xf:else />
+	<div class="blockMessage">{{ phrase('siropu_referral_system_you_do_not_have_any_referrals') }}</div>
+</xf:if>]]></template>
+  <template type="public" title="siropu_referral_system_guest_message" version_id="2018070" version_string="2.1.8"><![CDATA[<div class="blockMessage blockMessage--success">
+	<xf:fa icon="fa-info-circle" />
+	{{ phrase('siropu_referral_system_you_have_been_invited_by_x_to_join_please_click_to_register', {
+		'username': $user.username,
+		'registrationUrl': link('register')
+	}) }}
+</div>]]></template>
+  <template type="public" title="siropu_referral_system_macros" version_id="1000070" version_string="1.0.0"><![CDATA[<xf:macro name="referral_tools_block_footer" arg-faq="{{ true }}">
+	<div class="block-footer block-footer-split">
+		<span class="block-footer-counter">
+			<a href="{{ link('account/referral-tools') }}" data-xf-click="overlay"><xf:fa icon="fa-cog" /> {{ phrase('siropu_referral_system_tools') }}</a>
+		</span>
+		<xf:if is="$faq">
+			<span class="block-footer-controls">
+				<a href="{{ link('account/referral-faq') }}" data-xf-click="overlay"><xf:fa icon="fa-question-circle" /> {{ phrase('siropu_referral_system_whats_is_this') }}</a>
+			</span>
+		</xf:if>
+	</div>
+</xf:macro>
+
+<xf:macro name="copy_to_clipboard" arg-type="!" arg-tool="{{ null }}" arg-pageLink="{{ false }}">
+	<button class="siropuCopyReferralLink button button--link" data-xf-init="copy-to-clipboard" data-copy-text="{{ siropu_rs_referral_link($type, $tool, $pageLink) }}" style="font-size: 10px; padding: 2px 5px;">{{ phrase('copy_link') }}</button>
+</xf:macro>]]></template>
+  <template type="public" title="siropu_referral_system_member_referrals" version_id="1000070" version_string="1.0.0"><![CDATA[<xf:title>{{ phrase('siropu_referral_system_members_referred_by_x', {'user': $user.username}) }}</xf:title>
+
+<xf:if is="$referrals is not empty">
+	<div class="block">
+		<div class="block-container">
+			<ol class="block-body">
+				<xf:foreach loop="$referrals" value="$referral">
+					<li class="block-row block-row--separated">
+						<xf:macro template="member_list_macros" name="item"
+								  arg-user="{$referral}"
+								  arg-extraData="{{ date_time($referral.register_date) }}" />
+					</li>
+				</xf:foreach>
+			</ol>
+		</div>
+
+		<xf:pagenav link="members/referrals" page="{$page}" perpage="{$perPage}" total="{$total}" data="{$user}"
+					wrapperclass="block-outer block-outer--after" />
+	</div>
+<xf:else />
+	<div class="blockMessage">{{ phrase('siropu_referral_system_x_does_not_have_any_referrals', {'user': $user.username}) }}</div>
+</xf:if>]]></template>
+  <template type="public" title="siropu_referral_system_referral_link_widget" version_id="1000070" version_string="1.0.0"><![CDATA[<div class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<h3 class="block-minorHeader">{$title}</h3>
+			<div class="block-row">
+				<p>
+					<b>{{ phrase('siropu_referral_system_your_referral_link') }}</b>: {{ siropu_rs_referral_link('user') }}
+					<xf:macro template="siropu_referral_system_macros" name="copy_to_clipboard" arg-type="user" />
+				</p>
+				<xf:if contentcheck="true">
+					<p>
+						<b>{{ phrase('siropu_referral_system_current_page_referral_link') }}</b>:
+						<xf:contentcheck>
+							{{ siropu_rs_referral_link('page', null, $options.currentPageLink) }}
+						</xf:contentcheck>
+						<xf:macro template="siropu_referral_system_macros" name="copy_to_clipboard" arg-type="page" arg-pageLink="{{ true }}" />
+					</p>
+				</xf:if>
+			</div>
+		</div>
+		<xf:macro template="siropu_referral_system_macros" name="referral_tools_block_footer" />
+	</div>
+</div>]]></template>
+  <template type="public" title="siropu_referral_system_referral_tool_preview" version_id="2000031" version_string="2.0.0 Beta 1"><![CDATA[<xf:title>{{ phrase('preview') }}</xf:title>
+
+<div class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<div class="block-row">
+				<xf:if is="$tool.isBanner()">
+					<img src="{$tool.absolute_file_path}" />
+				<xf:else />
+					<a>{$tool.content}</a>
+				</xf:if>
+			</div>
+		</div>
+	</div>
+</div>]]></template>
+  <template type="public" title="siropu_referral_system_top_referrers_widget" version_id="1000070" version_string="1.0.0"><![CDATA[<div class="block">
+	<div class="block-container">
+		<h3 class="block-minorHeader">{$title}</h3>
+		<xf:if is="$options.compact">
+			<div class="block-body block-row">
+				<xf:foreach loop="$topReferrers" value="$user">
+					<dl class="pairs pairs--justified">
+						<dt>
+							<xf:avatar user="$user" size="xxs" itemprop="image" />
+							<xf:username user="$user" rich="true" />
+						</dt>
+						<dd class="contentRow-minor contentRow-minor--hideLinks">
+							<a href="{{ link('members/referrals', $user, {'type': $options.type})}}" class="u-concealed" data-xf-click="overlay">{$user.siropu_rs_referral_count}</a>
+						</dd>
+					</dl>
+				</xf:foreach>
+			</div>
+		<xf:else />
+			<ul class="block-body">
+				<xf:foreach loop="$topReferrers" value="$user">
+					<li class="block-row">
+						<div class="contentRow">
+							<div class="contentRow-figure">
+								<xf:avatar user="$user" size="xs" />
+							</div>
+							<div class="contentRow-main contentRow-main--close">
+								<xf:username user="$user" rich="true" />
+								<div class="contentRow-minor">
+									{{ phrase('siropu_referral_system_referrals:') }} <a href="{{ link('members/referrals', $user, {'type': $options.type})}}" class="u-concealed" data-xf-click="overlay">{$user.siropu_rs_referral_count}</a>
+								</div>
+							</div>
+						</div>
+					</li>
+				</xf:foreach>
+			</ul>
+		</xf:if>
+	</div>
+</div>]]></template>
+</templates>

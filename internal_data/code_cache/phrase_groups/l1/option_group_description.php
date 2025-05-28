@@ -102,6 +102,7 @@ It is possible to filter the news feed down to just users you follow, or a singl
   'option_group_description.serviceProviders' => 'For some functions, XenForo will hand off to a third party service provider. You may change some of the defaults used here.',
   'option_group_description.sharing' => 'These options control the social network sharing features of XenForo.',
   'option_group_description.siropuChat' => 'Options for Chat by Siropu.',
+  'option_group_description.siropuReferralSystem' => 'Options for Referral System by Siropu.',
   'option_group_description.sitemap' => 'These options allow you to control how the XML sitemap is generated and submitted to search engines. The sitemap can be used to speed up search engine indexing of your site.',
   'option_group_description.snogMovies' => 'Options for the TMDb movie thread starter add-on',
   'option_group_description.spam' => 'Default options for the spam cleaner and prevention systems are located here.',

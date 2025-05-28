@@ -91,6 +91,24 @@ return array(
 			'_type' => 'option',
 		);
 	}
+	if ($__templater->method($__vars['xf']['visitor'], 'hasPermission', array('siropuReferralSystem', 'spamCleaner', ))) {
+		if ($__vars['user']['siropu_rs_referrer_id']) {
+			$__compilerTemp4[] = array(
+				'name' => 'siropu_referral_system[remove_referrer]',
+				'checked' => 'true',
+				'label' => 'Remove referrer',
+				'_type' => 'option',
+			);
+		}
+		if ($__vars['user']['siropu_rs_referral_count']) {
+			$__compilerTemp4[] = array(
+				'name' => 'siropu_referral_system[remove_referrals]',
+				'checked' => 'true',
+				'label' => 'Remove referrals',
+				'_type' => 'option',
+			);
+		}
+	}
 	$__finalCompiled .= $__templater->form('
 	<div class="block-container">
 		<div class="block-body">

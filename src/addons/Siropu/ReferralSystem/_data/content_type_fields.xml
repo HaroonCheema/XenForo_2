@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<content_type_fields>
+  <field content_type="siropu_referral_system" field_name="spam_handler_class">Siropu\ReferralSystem\Spam\Cleaner\User</field>
+</content_type_fields>

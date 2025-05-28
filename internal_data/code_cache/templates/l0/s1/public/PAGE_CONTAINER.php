@@ -1224,7 +1224,14 @@ return array(
 
 			<div class="p-body-content">
 				' . $__templater->callAdsMacro('container_content_above', array(), $__vars) . '
-				<div class="p-body-pageContent">' . $__templater->filter($__vars['content'], array(array('raw', array()),), true) . '</div>
+				<div class="p-body-pageContent">';
+	if (!$__templater->func('in_array', array($__vars['template'], array('register_form', 'login', ), ), false)) {
+		$__finalCompiled .= '
+	' . $__templater->func('siropu_rs_referral_message', array(), true) . '
+';
+	}
+	$__finalCompiled .= '
+' . $__templater->filter($__vars['content'], array(array('raw', array()),), true) . '</div>
 				' . $__templater->callAdsMacro('container_content_below', array(), $__vars) . '
 			</div>
 

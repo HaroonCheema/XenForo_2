@@ -8,6 +8,7 @@ return array (
   'member_stat.most_points' => 'Most points',
   'member_stat.most_solutions' => 'Most solutions',
   'member_stat.ozzmodz_badges_most_badges' => 'Most badges',
+  'member_stat.siropuReferralSystemMostReferrals' => 'Most referrals',
   'member_stat.staff_members' => 'Staff members',
   'member_stat.todays_birthdays' => 'Today\'s birthdays',
   'member_stat.xfmg_most_albums' => 'Most albums',

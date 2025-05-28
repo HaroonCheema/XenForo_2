@@ -318,6 +318,13 @@ return array(
 
 			' . $__templater->formCheckBoxRow(array(
 	), array(array(
+		'name' => 'user_criteria[siropu_rs_is_referral][rule]',
+		'value' => 'siropu_rs_is_referral',
+		'selected' => $__vars['criteria']['siropu_rs_is_referral'],
+		'label' => 'User has registered using a referral link',
+		'_type' => 'option',
+	),
+	array(
 		'name' => 'user_criteria[is_guest][rule]',
 		'value' => 'is_guest',
 		'selected' => $__vars['criteria']['is_guest'],
@@ -632,6 +639,20 @@ return array(
 		'_dependent' => array($__templater->formNumberBox(array(
 		'name' => 'user_criteria[inactive_days][data][days]',
 		'value' => $__vars['criteria']['inactive_days']['days'],
+		'size' => '5',
+		'min' => '0',
+		'step' => '1',
+	))),
+		'_type' => 'option',
+	),
+	array(
+		'name' => 'user_criteria[siropu_rs_referral_count][rule]',
+		'value' => 'siropu_rs_referral_count',
+		'selected' => $__vars['criteria']['siropu_rs_referral_count'],
+		'label' => 'User has at least X referrals' . $__vars['xf']['language']['label_separator'],
+		'_dependent' => array($__templater->formNumberBox(array(
+		'name' => 'user_criteria[siropu_rs_referral_count][data][referrals]',
+		'value' => $__vars['criteria']['siropu_rs_referral_count']['referrals'],
 		'size' => '5',
 		'min' => '0',
 		'step' => '1',
@@ -956,6 +977,13 @@ return array(
 
 		' . $__templater->formCheckBoxRow(array(
 	), array(array(
+		'name' => 'user_criteria[siropu_rs_is_referral][rule]',
+		'value' => 'siropu_rs_is_referral',
+		'selected' => $__vars['criteria']['siropu_rs_is_referral'],
+		'label' => 'User has registered using a referral link',
+		'_type' => 'option',
+	),
+	array(
 		'name' => 'user_criteria[is_guest][rule]',
 		'value' => 'is_guest',
 		'selected' => $__vars['criteria']['is_guest'],
@@ -1242,6 +1270,20 @@ return array(
 		'_dependent' => array($__templater->formNumberBox(array(
 		'name' => 'user_criteria[inactive_days][data][days]',
 		'value' => $__vars['criteria']['inactive_days']['days'],
+		'size' => '5',
+		'min' => '0',
+		'step' => '1',
+	))),
+		'_type' => 'option',
+	),
+	array(
+		'name' => 'user_criteria[siropu_rs_referral_count][rule]',
+		'value' => 'siropu_rs_referral_count',
+		'selected' => $__vars['criteria']['siropu_rs_referral_count'],
+		'label' => 'User has at least X referrals' . $__vars['xf']['language']['label_separator'],
+		'_dependent' => array($__templater->formNumberBox(array(
+		'name' => 'user_criteria[siropu_rs_referral_count][data][referrals]',
+		'value' => $__vars['criteria']['siropu_rs_referral_count']['referrals'],
 		'size' => '5',
 		'min' => '0',
 		'step' => '1',

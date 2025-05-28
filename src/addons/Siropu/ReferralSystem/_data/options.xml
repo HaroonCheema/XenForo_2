@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<options>
+  <option option_id="siropuReferralSystemApplyRefLinkToSocialMedia" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="siropuReferralSystem" display_order="5"/>
+  </option>
+  <option option_id="siropuReferralSystemDisplayReferralCount" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="siropuReferralSystem" display_order="7"/>
+  </option>
+  <option option_id="siropuReferralSystemDisplayReferrer" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="siropuReferralSystem" display_order="8"/>
+  </option>
+  <option option_id="siropuReferralSystemEncryptUserId" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>0</default_value>
+    <relation group_id="siropuReferralSystem" display_order="6"/>
+  </option>
+  <option option_id="siropuReferralSystemGenerarteLink" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="siropuReferralSystem" display_order="4"/>
+  </option>
+  <option option_id="siropuReferralSystemGuestMessage" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="siropuReferralSystem" display_order="12"/>
+  </option>
+  <option option_id="siropuReferralSystemMemberProfileReferralTab" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="siropuReferralSystem" display_order="9"/>
+  </option>
+  <option option_id="siropuReferralSystemProfilePageAsReferralLink" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>0</default_value>
+    <relation group_id="siropuReferralSystem" display_order="3"/>
+  </option>
+  <option option_id="siropuReferralSystemReferralLinkWidget" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="siropuReferralSystem" display_order="10"/>
+  </option>
+  <option option_id="siropuReferralSystemReferralRegistrationReward" edit_format="callback" data_type="unsigned_integer" advanced="0">
+    <default_value>0</default_value>
+    <edit_format_params>Siropu\ReferralSystem\Option\RewardTypes::renderOption</edit_format_params>
+    <relation group_id="siropuReferralSystem" display_order="14"/>
+  </option>
+  <option option_id="siropuReferralSystemReferralUpgradeReward" edit_format="callback" data_type="unsigned_integer" advanced="0">
+    <default_value>0</default_value>
+    <edit_format_params>Siropu\ReferralSystem\Option\RewardTypes::renderOption</edit_format_params>
+    <relation group_id="siropuReferralSystem" display_order="16"/>
+  </option>
+  <option option_id="siropuReferralSystemReferralUrlParameter" edit_format="textbox" data_type="string" advanced="0">
+    <default_value>referrer</default_value>
+    <relation group_id="siropuReferralSystem" display_order="1"/>
+  </option>
+  <option option_id="siropuReferralSystemReferrerAutoFollow" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>0</default_value>
+    <relation group_id="siropuReferralSystem" display_order="13"/>
+  </option>
+  <option option_id="siropuReferralSystemRewardMinPosts" edit_format="spinbox" data_type="unsigned_integer" advanced="0">
+    <default_value>0</default_value>
+    <edit_format_params>min=0</edit_format_params>
+    <relation group_id="siropuReferralSystem" display_order="15"/>
+  </option>
+  <option option_id="siropuReferralSystemTopReferrersWidget" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="siropuReferralSystem" display_order="11"/>
+  </option>
+  <option option_id="siropuReferralSystemTrackHttpReferrer" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="siropuReferralSystem" display_order="2"/>
+  </option>
+</options>

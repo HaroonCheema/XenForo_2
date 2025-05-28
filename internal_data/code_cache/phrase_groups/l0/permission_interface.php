@@ -64,6 +64,8 @@ return array (
   'permission_interface.siropuChatAdmin' => 'Chat admin permissions',
   'permission_interface.siropuChatModerator' => 'Chat moderator permissions',
   'permission_interface.siropuChatUser' => 'Chat user permissions',
+  'permission_interface.siropuReferralSystem' => 'Referral System Permissions',
+  'permission_interface.siropuReferralSystemModerator' => 'Referral System Moderator Permissions',
   'permission_interface.snogForms' => 'Advanced Forms Permissions',
   'permission_interface.snog_movies' => '[OzzModz] TMDb Movie Thread Starter',
   'permission_interface.thMonetizePermissions' => '[TH] Monetize permissions',

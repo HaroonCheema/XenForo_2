@@ -42,6 +42,8 @@ return array (
   'widget_def.siropu_chat_rooms' => 'Chat: Rooms',
   'widget_def.siropu_chat_top_chatters' => 'Chat: Top chatters',
   'widget_def.siropu_chat_users' => 'Chat: Active users',
+  'widget_def.siropu_referral_link' => 'Referral System: Referral link',
+  'widget_def.siropu_referral_top_ref' => 'Referral System: Top referrers',
   'widget_def.snog_forms' => 'Form list',
   'widget_def.snog_forms_form' => 'Form',
   'widget_def.snog_movies_poster_slider' => '[OzzModz] TMDb Movie Thread Starter: Poster Carousel',

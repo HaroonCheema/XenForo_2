@@ -41,6 +41,8 @@ return array (
   'widget.siropu_chat_rooms' => '',
   'widget.siropu_chat_top_chatters' => '',
   'widget.siropu_chat_users' => '',
+  'widget.siropu_referral_link' => 'Referral link',
+  'widget.siropu_referral_top_referrers' => 'Top referrers',
   'widget.unread_posts' => 'Unread posts',
   'widget.whats_new_new_posts' => '',
   'widget.whats_new_new_profile_posts' => '',

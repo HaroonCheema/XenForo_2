@@ -61,6 +61,7 @@ return array (
   'cron_entry.siropuChatRoomAutoPrune' => 'Chat: Room auto-prune',
   'cron_entry.siropuChatRoomUsers' => 'Chat: Update room user count',
   'cron_entry.siropuChatSanctions' => 'Chat: Delete expired sanctions',
+  'cron_entry.siropuRSDailyCleanUp' => 'Referral System: Daily clean up',
   'cron_entry.sitemap' => 'Rebuild sitemap',
   'cron_entry.snogMoviesConvert' => 'Convert XF1 movie threads to XF2 version',
   'cron_entry.snogMoviesWatchProvider' => '[OzzModz] TMDb Movie Thread Starter: Update watch provider data',

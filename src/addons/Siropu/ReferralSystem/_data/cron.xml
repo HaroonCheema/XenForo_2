@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cron>
+  <entry entry_id="siropuRSDailyCleanUp" cron_class="Siropu\ReferralSystem\Cron\CleanUp" cron_method="runDailyCleanUp" active="1"><![CDATA[{"day_type":"dom","dom":[-1],"hours":[0,12],"minutes":[0]}]]></entry>
+</cron>

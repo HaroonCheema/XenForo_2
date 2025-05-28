@@ -369,6 +369,17 @@ return array(
 		$__finalCompiled .= '
 
 ';
+		if ($__vars['xf']['options']['siropuReferralSystemMemberProfileReferralTab'] AND $__vars['user']['siropu_rs_referral_count']) {
+			$__finalCompiled .= '
+	<a href="' . $__templater->func('link', array('members/referrals', $__vars['user'], ), true) . '"
+	   class="tabs-tab"
+	   id="srsReferrals"
+	   role="tab">' . 'Referrals' . '</a>
+';
+		}
+		$__finalCompiled .= '
+
+';
 		if ($__templater->method($__vars['xf']['visitor'], 'hasOption', array('hasDbEcommerce', )) AND ($__templater->method($__vars['xf']['visitor'], 'canViewDbtechEcommerceProducts', array()) AND $__vars['user']['dbtech_ecommerce_product_count'])) {
 			$__finalCompiled .= '
 	<a href="' . $__templater->func('link', array('dbtech-ecommerce/authors', $__vars['user'], ), true) . '"
@@ -603,6 +614,16 @@ return array(
 		if ($__templater->method($__vars['xf']['visitor'], 'canViewResources', array()) AND $__vars['user']['xfrm_resource_count']) {
 			$__finalCompiled .= '
 	<li data-href="' . $__templater->func('link', array('resources/authors', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="resources">
+		<div class="blockMessage">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
+	</li>
+';
+		}
+		$__finalCompiled .= '
+
+';
+		if ($__vars['xf']['options']['siropuReferralSystemMemberProfileReferralTab'] AND $__vars['user']['siropu_rs_referral_count']) {
+			$__finalCompiled .= '
+	<li data-href="' . $__templater->func('link', array('members/referrals', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="srsReferrals">
 		<div class="blockMessage">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
 	</li>
 ';

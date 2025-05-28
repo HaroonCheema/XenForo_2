@@ -98,6 +98,7 @@ return array (
   'option_group.serviceProviders' => 'External service providers',
   'option_group.sharing' => 'Sharing',
   'option_group.siropuChat' => 'Chat',
+  'option_group.siropuReferralSystem' => 'Referral System',
   'option_group.sitemap' => 'XML sitemap generation',
   'option_group.snogMovies' => '[OzzModz] TMDb Movie Thread Starter',
   'option_group.spam' => 'Spam management',

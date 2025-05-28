@@ -59,6 +59,18 @@ return array(
 					</dl>
 					' . '
 ';
+	if ($__templater->method($__vars['xf']['visitor'], 'hasPermission', array('siropuReferralSystem', 'refer', ))) {
+		$__finalCompiled .= '
+	<dl class="pairs pairs--justified fauxBlockLink">
+		<dt>' . 'Referrals' . '</dt>
+		<dd>
+			<a href="' . $__templater->func('link', array('members/referrals', $__vars['xf']['visitor'], ), true) . '" class="fauxBlockLink-linkRow u-concealed" data-xf-click="overlay">' . $__templater->filter($__vars['xf']['visitor']['siropu_rs_referral_count'], array(array('number', array()),), true) . '</a>
+		</dd>
+	</dl>
+';
+	}
+	$__finalCompiled .= '
+';
 	if (true) {
 		$__finalCompiled .= '
 						<dl class="pairs pairs--justified fauxBlockLink">
@@ -132,26 +144,32 @@ return array(
 		';
 	}
 	$__compilerTemp3 = '';
-	if ($__templater->method($__vars['xf']['visitor'], 'canEditSignature', array())) {
+	if ($__templater->method($__vars['xf']['visitor'], 'hasPermission', array('siropuReferralSystem', 'refer', ))) {
 		$__compilerTemp3 .= '
+	<li><a href="' . $__templater->func('link', array('account/referrals', ), true) . '" class="menu-linkRow">' . 'Your referrals' . '</a></li>
+';
+	}
+	$__compilerTemp4 = '';
+	if ($__templater->method($__vars['xf']['visitor'], 'canEditSignature', array())) {
+		$__compilerTemp4 .= '
 			<li><a href="' . $__templater->func('link', array('account/signature', ), true) . '" class="menu-linkRow">' . 'Signature' . '</a></li>
 		';
 	}
-	$__compilerTemp4 = '';
+	$__compilerTemp5 = '';
 	if ($__vars['xf']['app']['userUpgradeCount']) {
-		$__compilerTemp4 .= '
+		$__compilerTemp5 .= '
 			<li><a href="' . $__templater->func('link', array('account/upgrades', ), true) . '" class="menu-linkRow">' . 'Account upgrades' . '</a></li>
 		';
 	}
-	$__compilerTemp5 = '';
+	$__compilerTemp6 = '';
 	if ($__vars['xf']['app']['connectedAccountCount']) {
-		$__compilerTemp5 .= '
+		$__compilerTemp6 .= '
 			<li><a href="' . $__templater->func('link', array('account/connected-accounts', ), true) . '" class="menu-linkRow">' . 'Connected accounts' . '</a></li>
 		';
 	}
-	$__compilerTemp6 = '';
+	$__compilerTemp7 = '';
 	if ($__templater->method($__vars['xf']['visitor'], 'canPostOnProfile', array())) {
-		$__compilerTemp6 .= '
+		$__compilerTemp7 .= '
 		' . $__templater->form('
 
 			<span class="u-srOnly" id="ctrl_message">' . 'Update your status' . $__vars['xf']['language']['label_separator'] . '</span>
@@ -200,6 +218,7 @@ return array(
 		<li><a href="' . $__templater->func('link', array('account/reactions', ), true) . '" class="menu-linkRow">' . 'Reactions received' . '</a></li>
 		<li><a href="' . $__templater->func('link', array('account/bratr-my-ratings', ), true) . '" class="menu-linkRow">' . 'My Ratings' . '</a></li>
 ' . '
+' . $__compilerTemp3 . '
 	</ul>
 
 	' . '
@@ -211,9 +230,9 @@ return array(
 		<li><a href="' . $__templater->func('link', array('account/security', ), true) . '" class="menu-linkRow">' . 'Password and security' . '</a></li>
 		<li><a href="' . $__templater->func('link', array('account/privacy', ), true) . '" class="menu-linkRow">' . 'Privacy' . '</a></li>
 		<li><a href="' . $__templater->func('link', array('account/preferences', ), true) . '" class="menu-linkRow">' . 'Preferences' . '</a></li>
-		' . $__compilerTemp3 . '
 		' . $__compilerTemp4 . '
 		' . $__compilerTemp5 . '
+		' . $__compilerTemp6 . '
 		<li><a href="' . $__templater->func('link', array('account/following', ), true) . '" class="menu-linkRow">' . 'Following' . '</a></li>
 		<li><a href="' . $__templater->func('link', array('account/ignored', ), true) . '" class="menu-linkRow">' . 'Ignoring' . '</a></li>
 <li><a href="' . $__templater->func('link', array('team/', ), true) . '" class="menu-linkRow" data-xf-click="overlay">' . 'Favourite Team' . '</a></li>
@@ -230,7 +249,7 @@ return array(
 
 	<a href="' . $__templater->func('link', array('logout', null, array('t' => $__templater->func('csrf_token', array(), false), ), ), true) . '" class="menu-linkRow">' . 'Log out' . '</a>
 
-	' . $__compilerTemp6 . '
+	' . $__compilerTemp7 . '
 ');
 	$__finalCompiled .= '
 
