@@ -58,18 +58,6 @@ return array(
 	}
 	$__finalCompiled .= '
 
-';
-	if ($__templater->func('property', array('af_pr_gift_postbit', ), false) AND $__templater->method($__vars['xf']['visitor'], 'canGiftUserUpgrade', array($__vars['user'], ))) {
-		$__finalCompiled .= '
-	' . $__templater->button('<i class="fa fa-gift" aria-hidden="true"></i> ' . 'Gift Upgrade', array(
-			'class' => 'button--smaller button--fullWidth button--icon u-hideMedium',
-			'href' => $__templater->func('link', array('purchase/gift-upgrade', null, array('userId' => $__vars['user']['user_id'], ), ), false),
-			'overlay' => 'true',
-		), '', array(
-		)) . '
-';
-	}
-	$__finalCompiled .= '
 		</div>
 		';
 	if ($__vars['user']['user_id']) {

@@ -74,45 +74,14 @@ Before your content can be posted, please take a few moments to register a free 
 
 ';
 	$__compilerTemp2 = '';
-	if ($__vars['xf']['options']['af_paidregistrations_guest']) {
-		$__compilerTemp2 .= '
-    ';
-		if ($__vars['userUpgrade']) {
-			$__compilerTemp2 .= '
-        ' . $__templater->formInfoRow('Thank you for your purchase! Please fill this form to complete registration, your account upgrade will be automatically applied shortly.', array(
-			)) . '
-        ' . $__templater->formRow($__templater->escape($__vars['userUpgrade']['title']) . ' (' . $__templater->escape($__vars['userUpgrade']['cost_phrase']) . ')', array(
-				'label' => 'Account Type',
-			)) . '
-        ' . $__templater->formHiddenVal('prk', $__vars['purchaseRequest']['request_key'], array(
-			)) . '
-    ';
-		} else {
-			$__compilerTemp2 .= '
-        ' . $__templater->formRow($__templater->escape($__vars['xf']['options']['af_paidregistrations_freeTitle']) . ' (' . 'Free' . ')', array(
-				'label' => 'Account Type',
-			)) . '
-    ';
-		}
-		$__compilerTemp2 .= '
-    ';
-		if ($__templater->method($__vars['xf']['request'], 'exists', array('_xfRedirect', ))) {
-			$__compilerTemp2 .= '
-        ' . $__templater->func('redirect_input', array($__templater->method($__vars['xf']['request'], 'get', array('_xfRedirect', )), null, false, ), true) . '
-    ';
-		}
-		$__compilerTemp2 .= '
-';
-	}
-	$__compilerTemp3 = '';
 	if ($__vars['xf']['options']['fs_enable'] AND (!$__vars['xf']['options']['fs_use_random'])) {
-		$__compilerTemp3 .= '
+		$__compilerTemp2 .= '
 	' . $__templater->includeTemplate('gallery_avatar_register', $__vars) . '
 ';
 	}
-	$__compilerTemp4 = '';
+	$__compilerTemp3 = '';
 	if (($__templater->func('rand', array(0, 2, ), false) == 1)) {
-		$__compilerTemp4 .= '
+		$__compilerTemp3 .= '
 				' . $__templater->formTextBoxRow(array(
 			'name' => $__templater->method($__vars['regForm'], 'getFieldName', array('email_hp', )),
 			'value' => '',
@@ -126,43 +95,9 @@ Before your content can be posted, please take a few moments to register a free 
 		)) . '
 			';
 	}
-	$__compilerTemp5 = '';
-	if ($__vars['paidRegistrationsRefreshUrl']) {
-		$__compilerTemp5 .= '
-	';
-		$__templater->setPageParam('head.' . 'paidRegistrationsRefreshUrl', $__templater->preEscaped('
-		<script>
-			window.location.href = "' . $__templater->filter($__vars['paidRegistrationsRefreshUrl'], array(array('escape', array('js', )),), true) . '";
-		</script>
-		<noscript>
-			<meta http-equiv="refresh" content="0;url=' . $__templater->escape($__vars['paidRegistrationsRefreshUrl']) . '" />
-		</noscript>
-	'));
-		$__compilerTemp5 .= '
-';
-	}
-	$__vars['emailRowContents'] = $__templater->preEscaped('
-	' . $__templater->callMacro('register_macros', 'email_row', array(
-		'fieldName' => $__templater->method($__vars['regForm'], 'getFieldName', array('email', )),
-		'value' => $__vars['fields']['email'],
-	), $__vars) . '
-');
-	$__compilerTemp6 = '';
-	if ($__vars['purchaseRequest'] AND $__vars['xf']['options']['af_paidregistrations_force_same_email']) {
-		$__compilerTemp6 .= '
-	';
-		$__vars['emailRowContents'] = $__templater->func('trim', array($__vars['emailRowContents'], '', ), false);
-		$__compilerTemp6 .= '
-	' . $__templater->filter($__vars['emailRowContents'], array(array('replace', array('type="email"', 'type="email" readonly="readonly"', )),array('raw', array()),), true) . '
-';
-	} else {
-		$__compilerTemp6 .= '
-	' . $__templater->filter($__vars['emailRowContents'], array(array('raw', array()),), true) . '
-';
-	}
-	$__compilerTemp7 = '';
+	$__compilerTemp4 = '';
 	if (($__templater->func('rand', array(0, 2, ), false) == 1)) {
-		$__compilerTemp7 .= '
+		$__compilerTemp4 .= '
 				' . $__templater->formTextBoxRow(array(
 			'name' => 'email',
 			'value' => '',
@@ -176,9 +111,9 @@ Before your content can be posted, please take a few moments to register a free 
 		)) . '
 			';
 	}
-	$__compilerTemp8 = '';
+	$__compilerTemp5 = '';
 	if (($__templater->func('rand', array(0, 2, ), false) == 1)) {
-		$__compilerTemp8 .= '
+		$__compilerTemp5 .= '
 				' . $__templater->formTextBoxRow(array(
 			'name' => 'password',
 			'type' => 'password',
@@ -196,10 +131,9 @@ Before your content can be posted, please take a few moments to register a free 
 		<div class="block-body">
 
 			' . '
-			' . $__compilerTemp2 . '
-' . $__templater->includeTemplate('fs_random_avatar_register', $__vars) . '
+			' . $__templater->includeTemplate('fs_random_avatar_register', $__vars) . '
 
-' . $__compilerTemp3 . '
+' . $__compilerTemp2 . '
 
 ' . $__templater->formTextBoxRow(array(
 		'name' => 'username',
@@ -218,18 +152,18 @@ Before your content can be posted, please take a few moments to register a free 
 	), $__vars) . '
 
 			' . '
+			' . $__compilerTemp3 . '
+
+			' . $__templater->callMacro('register_macros', 'email_row', array(
+		'fieldName' => $__templater->method($__vars['regForm'], 'getFieldName', array('email', )),
+		'value' => $__vars['fields']['email'],
+	), $__vars) . '
+
+			' . '
 			' . $__compilerTemp4 . '
 
+			' . '
 			' . $__compilerTemp5 . '
-
-' . '' . '
-' . $__compilerTemp6 . '
-
-			' . '
-			' . $__compilerTemp7 . '
-
-			' . '
-			' . $__compilerTemp8 . '
 
 			' . $__templater->formPasswordBoxRow(array(
 		'name' => $__templater->method($__vars['regForm'], 'getFieldName', array('password', )),

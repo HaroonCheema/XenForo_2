@@ -403,18 +403,6 @@ return array(
 	}
 	$__compilerTemp2 .= '
 			' . '
-';
-	if ($__templater->func('property', array('af_pr_gift_profile', ), false) AND $__templater->method($__vars['xf']['visitor'], 'canGiftUserUpgrade', array($__vars['user'], ))) {
-		$__compilerTemp2 .= '
-	' . $__templater->button('<i class="fa fa-gift" aria-hidden="true"></i> ' . 'Gift Upgrade', array(
-			'class' => 'button--link button--icon',
-			'href' => $__templater->func('link', array('purchase/gift-upgrade', null, array('userId' => $__vars['user']['user_id'], ), ), false),
-			'overlay' => 'true',
-		), '', array(
-		)) . '
-';
-	}
-	$__compilerTemp2 .= '
 		';
 	if (strlen(trim($__compilerTemp2)) > 0) {
 		$__finalCompiled .= '
