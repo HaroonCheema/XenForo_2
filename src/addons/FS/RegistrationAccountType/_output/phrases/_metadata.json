@@ -1,0 +1,26 @@
+{
+    "fs_registration_account_type_referrer_required.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "907b98caa111cc442d1067935c0ba4d5"
+    },
+    "fs_registration_type_account.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "51bdfc4588e299668d9478a2293e7eff"
+    },
+    "fs_registration_type_donee.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "8c39040ef1125691b644e8cdccc7b509"
+    },
+    "fs_registration_type_doner.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "e10fd11e1e23c77440413d34c04c38c3"
+    }
+}

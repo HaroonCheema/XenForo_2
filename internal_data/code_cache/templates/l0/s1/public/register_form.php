@@ -159,6 +159,31 @@ Before your content can be posted, please take a few moments to register a free 
 		'value' => $__vars['fields']['email'],
 	), $__vars) . '
 
+' . $__templater->formRow('
+	' . $__templater->formSelect(array(
+		'name' => 'reg_account_type',
+		'required' => 'required',
+	), array(array(
+		'value' => '',
+		'label' => 'None',
+		'_type' => 'option',
+	),
+	array(
+		'value' => 'doner',
+		'label' => 'Doner',
+		'_type' => 'option',
+	),
+	array(
+		'value' => 'donee',
+		'label' => 'Donee',
+		'_type' => 'option',
+	))) . '
+
+', array(
+		'label' => 'Account type',
+		'hint' => 'Required',
+	)) . '
+
 			' . '
 			' . $__compilerTemp4 . '
 

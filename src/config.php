@@ -19,5 +19,5 @@ $config['enableLivePayments'] = false;
 
 $config['debug'] = true;
 
-$config['development']['defaultAddOn'] = 'PF/EditorSymbols';
+$config['development']['defaultAddOn'] = 'FS/RegistrationAccountType';
 $config['development']['enabled'] = true;

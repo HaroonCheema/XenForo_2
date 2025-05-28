@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="fs_registration_account_type_referrer_required" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Referrer is required ...!]]></phrase>
+  <phrase title="fs_registration_type_account" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Account type]]></phrase>
+  <phrase title="fs_registration_type_donee" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Donee]]></phrase>
+  <phrase title="fs_registration_type_doner" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Doner]]></phrase>
+</phrases>

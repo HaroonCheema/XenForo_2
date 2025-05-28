@@ -168,7 +168,7 @@ class User extends XFCP_User
 
           $referrer = $this->SRS_Referrer;
 
-          if ($referrer)
+          if ($referrer && $referrer->siropu_rs_referral_count > 0)
           {
                $referrer->fastUpdate('siropu_rs_referral_count', $referrer->siropu_rs_referral_count - 1);
           }

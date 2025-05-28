@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="register_form" modification_key="fs_registration_add_dropdown_account_type" description="fs_registration_add_dropdown_account_type" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<xf:macro template="register_macros" name="email_row".*?arg-value="{\$fields\.email}" \/>/is]]></find>
+    <replace><![CDATA[$0
+
+<xf:formrow 
+			label="{{ phrase('fs_registration_type_account') }}" 
+			hint="{{ phrase('required') }}">
+	<xf:select name="reg_account_type" required="required" >
+		<xf:option value="">{{ phrase('none') }}</xf:option>
+
+		<xf:option value="doner">{{ phrase('fs_registration_type_doner') }}</xf:option>
+		<xf:option value="donee">{{ phrase('fs_registration_type_donee') }}</xf:option>
+	</xf:select>
+
+</xf:formrow>]]></replace>
+  </modification>
+</template_modifications>
