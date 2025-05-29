@@ -456,7 +456,7 @@ return array (
   'option.fs_total_solution_points' => 'Solutions',
   'option.fs_total_users_minimum_points' => 'All users list minimum',
   'option.fs_total_words_points' => 'Words',
-  'option.fs_tractorbynet_auction_id' => 'Auction id',
+  'option.fs_tractorbynet_auction_id' => 'Applicable Forums Listings',
   'option.fs_tractorbynet_construction' => 'Marketplace Construction',
   'option.fs_tractorbynet_database' => 'Tractor Database',
   'option.fs_tractorbynet_forums_brand' => 'Forum by brand ids',

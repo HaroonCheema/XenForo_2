@@ -1,12 +1,14 @@
 {
-    "edit_format": "textbox",
-    "edit_format_params": "",
-    "data_type": "string",
-    "sub_options": [],
+    "edit_format": "callback",
+    "edit_format_params": "\\XF\\Option\\Forum::renderSelectMultiple",
+    "data_type": "array",
+    "sub_options": [
+        "*"
+    ],
     "validation_class": "",
     "validation_method": "",
     "advanced": false,
-    "default_value": "178",
+    "default_value": "[178]",
     "relations": {
         "fs_tractor_by_net_api": 3
     }

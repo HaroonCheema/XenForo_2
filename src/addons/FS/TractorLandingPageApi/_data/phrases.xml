@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <phrases>
-  <phrase title="option.fs_tractorbynet_auction_id" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Auction id]]></phrase>
+  <phrase title="option.fs_tractorbynet_auction_id" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Applicable Forums Listings]]></phrase>
   <phrase title="option.fs_tractorbynet_construction" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Marketplace Construction]]></phrase>
   <phrase title="option.fs_tractorbynet_database" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Tractor Database]]></phrase>
   <phrase title="option.fs_tractorbynet_forums_brand" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Forum by brand ids]]></phrase>
@@ -8,7 +8,7 @@
   <phrase title="option.fs_tractorbynet_lawn_garder" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Marketplace Lawn & Garden]]></phrase>
   <phrase title="option.fs_tractorbynet_marketplace_listings" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Marketplace Listings]]></phrase>
   <phrase title="option.fs_tractorbynet_tractors" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Marketplace Tractors]]></phrase>
-  <phrase title="option_explain.fs_tractorbynet_auction_id" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add here you auction id...!]]></phrase>
+  <phrase title="option_explain.fs_tractorbynet_auction_id" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You can select multiple <b>forums</b> for your <b>Marketplace Listings</b>.]]></phrase>
   <phrase title="option_explain.fs_tractorbynet_construction" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add url here for <b>Marketplace Categories Construction</b>.]]></phrase>
   <phrase title="option_explain.fs_tractorbynet_database" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[How much <b>Tractor Database</b> you want to display in your landing page...!]]></phrase>
   <phrase title="option_explain.fs_tractorbynet_forums_brand" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter the <b>Forum by brand ids</b> Comma separated like 1,2,3,4.]]></phrase>

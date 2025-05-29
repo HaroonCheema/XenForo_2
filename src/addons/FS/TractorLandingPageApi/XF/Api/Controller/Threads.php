@@ -7,23 +7,45 @@ class Threads extends XFCP_Threads
 
     public function actionGetAuctionsListing()
     {
+        $allThreads = [];
         $page = 1;
-        $perPage = \XF::options()->fs_tractorbynet_marketplace_listings;
-        $auctionId = intval(\XF::options()->fs_tractorbynet_auction_id);
+        $perPage = (int) \XF::options()->fs_tractorbynet_marketplace_listings;
+        $nodeIds = \XF::options()->fs_tractorbynet_auction_id;
+        $count = count($nodeIds);
 
-        /** @var \XF\Finder\Thread $threadFinder */
-        $threadFinder = $this->finder('XF:Thread')
-            ->with('api')
-            ->where('discussion_type', '!=', 'redirect')
-            ->where('node_id', $auctionId)
-            ->order('post_date', 'desc');
+        if ($count) {
 
-        $threadFinder->limitByPage($page, $perPage);
+            $base = intdiv($perPage, $count);
+            $remainder = $perPage % $count;
 
-        $threads = $threadFinder->fetch();
+            $nodeQuotaMap = [];
+
+            foreach ($nodeIds as $nodeId) {
+                $quota = $base + ($remainder > 0 ? 1 : 0);
+                $nodeQuotaMap[$nodeId] = $quota;
+                $remainder--;
+            }
+
+            foreach ($nodeQuotaMap as $nodeId => $quota) {
+                /** @var \XF\Finder\Thread $threadFinder */
+                $threadFinder = $this->finder('XF:Thread')
+                    ->with('api')
+                    ->where('discussion_type', '!=', 'redirect')
+                    ->where('node_id', $nodeId)
+                    ->order('post_date', 'desc')
+                    ->limitByPage($page, $quota);
+
+                $threads = $threadFinder->fetch();
+
+                foreach ($threads as $thread) {
+                    $allThreads[] = $thread;
+                }
+            }
+        }
 
         return $this->apiResult([
-            'threads' => $threads->toApiResults()
+            'threads' => $allThreads
+            // 'threads' => \XF::asApiResult($allThreads)
         ]);
     }
 }

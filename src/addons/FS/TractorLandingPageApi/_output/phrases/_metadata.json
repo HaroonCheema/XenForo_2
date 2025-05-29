@@ -3,7 +3,7 @@
         "global_cache": false,
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
-        "hash": "defc6b8370160911e6a02f1191647270"
+        "hash": "79ad313dcfee23acc5db0caa8de1a46a"
     },
     "option.fs_tractorbynet_construction.txt": {
         "global_cache": false,
@@ -51,7 +51,7 @@
         "global_cache": false,
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
-        "hash": "1de77de59881f82d49564ac676f18564"
+        "hash": "3686d447d267f7d21960d3e56b46114c"
     },
     "option_explain.fs_tractorbynet_construction.txt": {
         "global_cache": false,
