@@ -1,0 +1,65 @@
+<xf:title class="bh-title">{{ phrase('bh_select_brand') }}</xf:title>
+
+<xf:css src="bh_brandHub_list.less" />
+
+
+<xf:comment>
+<xf:macro template="bh_brand_hub_macros" name="navigation" arg-pageSelected="{$pageSelected}" arg-total="{$total}" arg-route="{$xf.options.bh_main_route}"  />
+</xf:comment>
+	
+<div class="block">
+	<xf:if is="$brands is not empty">
+		<div class="block-outer">
+			<xf:macro template="bh_filter_macros" name="quick_filter" arg-key="bh_brand"
+					arg-ajax="{{ link($xf.options.bh_main_route, null) }}"
+					arg-class="block-outer-opposite" />
+		</div>
+	</xf:if>
+		
+<div class="block-container">
+	
+	<xf:macro template="bh_overview_macros" name="list_filter_bar"
+				  arg-filters="{$filters}"
+				  arg-baseLinkPath="{$xf.options.bh_main_route}" />
+
+	
+	<div class="block-body">
+		<xf:if is="$brands is not empty">
+			<xf:datalist data-xf-init="responsive-data-list">
+				<xf:datarow rowtype="header">
+					<xf:cell><a href="{{ link($route, null, {'order': 'brand_title', 'direction': $xf.options.bh_default_direction}) }}" rel="nofollow">{{ phrase('bh_brand_title') }}</a></xf:cell>
+					<xf:cell><a href="{{ link($route, null, {'order': 'discussion_count', 'direction': $xf.options.bh_default_direction}) }}" rel="nofollow">{{ phrase('bh_discussions') }}</a></xf:cell>
+					<xf:cell><a href="{{ link($route, null, {'order': 'view_count', 'direction': $xf.options.bh_default_direction}) }}" rel="nofollow">{{ phrase('bh_views') }}</a></xf:cell>
+					<xf:cell><a href="{{ link($route, null, {'order': 'rating_avg', 'direction': $xf.options.bh_default_direction}) }}" rel="nofollow">{{ phrase('bh_rating_avg') }}</a></xf:cell>
+					<xf:cell><a href="{{ link($route, null, {'order': 'review_count', 'direction': $xf.options.bh_default_direction}) }}" rel="nofollow">{{ phrase('bh_reviews') }}</a></xf:cell>
+
+				</xf:datarow>
+				<xf:foreach loop="$brands" value="$brand">
+					<xf:datarow>
+						
+						<xf:cell href="{{ link($xf.options.bh_main_route, $brand) }}">{$brand.brand_title}</xf:cell>
+						<xf:cell>{$brand.discussion_count}</xf:cell>
+						<xf:cell>{$brand.view_count}</xf:cell>
+						<xf:cell>{$brand.rating_avg}</xf:cell>
+						<xf:cell>{$brand.review_count}</xf:cell>
+
+					</xf:datarow>
+				</xf:foreach>
+			</xf:datalist>
+			
+			<div class="block-footer block-footer--split">
+				<span class="block-footer-counter">{{ display_totals($brands, $total) }}</span>
+			</div>
+		<xf:else />
+			<div class="blockMessage">{{ phrase('no_results_found') }}</div>
+		</xf:if>
+		
+	<xf:macro  template="bh_ad_macros" name="sideBar_brand"  />
+		
+	</div>
+</div>
+
+	<xf:pagenav page="{$page}" perpage="{$perPage}" total="{$total}"
+		link="{$xf.options.bh_main_route}" params="{$filters}"
+		wrapperclass="block-outer block-outer--after" />
+</div>

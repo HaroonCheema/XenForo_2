@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: d1dbf49ebc6df1fcb13d772133f49ce1
+// FROM HASH: 84fb65755eefa524861a6de9d2883004
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -46,6 +46,11 @@ return array(
 	$__compilerTemp1[] = array(
 		'value' => 'review_count',
 		'label' => 'Reviews',
+		'_type' => 'option',
+	);
+	$__compilerTemp1[] = array(
+		'value' => 'create_date',
+		'label' => 'Date',
 		'_type' => 'option',
 	);
 	$__finalCompiled .= $__templater->form('

@@ -399,6 +399,28 @@ return array(
 ';
 		}
 		$__finalCompiled .= '
+';
+		if ($__templater->method($__vars['user'], 'canViewOwnerPagesOnProfile', array())) {
+			$__finalCompiled .= '
+	<a href="' . $__templater->func('link', array('members/tabpages', ), true) . '"
+	   class="tabs-tab"
+	   id="bh_owner_page_tab"
+	   role="tab">' . 'Owner Pages' . '</a>
+';
+		}
+		$__finalCompiled .= '
+
+
+';
+		if ($__templater->method($__vars['user'], 'canViewItemsOnProfile', array())) {
+			$__finalCompiled .= '
+<a href="' . $__templater->func('link', array('members/itemlistsub', $__vars['user'], ), true) . '"
+       class="tabs-tab"
+	   id="bh_item_list_sub"
+	   role="tab">' . 'Subscribe Items' . '</a>
+';
+		}
+		$__finalCompiled .= '
 
 				<a href="' . $__templater->func('link', array('members/about', $__vars['user'], ), true) . '"
 					class="tabs-tab"
@@ -648,6 +670,26 @@ return array(
 ';
 		}
 		$__finalCompiled .= '
+';
+		if ($__templater->method($__vars['user'], 'canViewOwnerPagesOnProfile', array())) {
+			$__finalCompiled .= '
+	<li data-href="' . $__templater->func('link', array('members/tabpages', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="bh_owner_page_tab">
+		<div class="blockMessage">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
+	</li>
+';
+		}
+		$__finalCompiled .= '
+
+';
+		if ($__templater->method($__vars['user'], 'canViewItemsOnProfile', array())) {
+			$__finalCompiled .= '
+<li data-href="' . $__templater->func('link', array('members/itemlistsub', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="bh_item_list_sub">
+		<div class="blockMessage">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
+	</li>
+';
+		}
+		$__finalCompiled .= '
+
 
 	<li data-href="' . $__templater->func('link', array('members/about', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="about">
 		<div class="blockMessage">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>

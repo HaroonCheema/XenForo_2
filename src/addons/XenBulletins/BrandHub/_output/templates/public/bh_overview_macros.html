@@ -1,0 +1,55 @@
+<xf:macro name="list_filter_bar" arg-filters="!" arg-baseLinkPath="!" arg-content="{{ null }}">
+	<xf:set var="$sortOrders" value="{{ {
+									 
+		'item_id': phrase('bh_item_id'),
+		'item_title': phrase('bh_item_title'),
+									 
+		'brand_id': phrase('bh_brand_id'),
+		'brand_title': phrase('bh_brand_title'),
+		'discussion_count': phrase('bh_discussions'),
+		'view_count': phrase('bh_views'),
+		'rating_avg': phrase('bh_rating_avg'),
+		'review_count': phrase('bh_reviews'),
+		
+		'rating': phrase('bh_rating'),
+		'rating_date': phrase('bh_rating_date'),
+		'reaction_score': phrase('bh_reaction_score'),
+		'create_date': phrase('bh_create_date'),
+									 							 
+		'page_id': phrase('bh_page_id')
+									 
+									 						 						 
+	} }}" />
+
+	<div class="block-filterBar">
+		<div class="filterBar">
+			<xf:if contentcheck="true">
+				<ul class="filterBar-filters">
+					<xf:contentcheck>
+						<xf:if is="$filters.order AND {$sortOrders.{$filters.order}}">
+							<li><a href="{{ link($baseLinkPath, $content, $filters|replace({'order': null, 'direction': null})) }}"
+								class="filterBar-filterToggle" data-xf-init="tooltip" title="{{ phrase('return_to_default_order')|for_attr }}">
+								<span class="filterBar-filterToggle-label">{{ phrase('sort_by:') }}</span>
+								{$sortOrders.{$filters.order}}
+								<i class="fa {{ $filters.direction == 'asc' ? 'fa-angle-up' : 'fa-angle-down' }}" aria-hidden="true"></i>
+								<span class="u-srOnly"><xf:if is="$filters.direction == 'asc'">{{ phrase('ascending') }}<xf:else />{{ phrase('descending') }}</xf:if></span>
+							</a></li>
+						</xf:if>
+					</xf:contentcheck>
+				</ul>
+			</xf:if>
+
+			<a class="filterBar-menuTrigger" data-xf-click="menu" role="button" tabindex="0" aria-expanded="false" aria-haspopup="true">{{ phrase('filters') }}</a>
+			<div class="menu menu--wide" data-menu="menu" aria-hidden="true"
+				data-href="{{ link($baseLinkPath . '/filters', $content, $filters?:[]) }}"
+				data-load-target=".js-filterMenuBody">
+				<div class="menu-content">
+					<h4 class="menu-header">{{ phrase('show_only:') }}</h4>
+					<div class="js-filterMenuBody">
+						<div class="menu-row">{{ phrase('loading...') }}</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</xf:macro>

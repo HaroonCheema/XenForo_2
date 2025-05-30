@@ -1,0 +1,13 @@
+{
+    "edit_format": "select",
+    "edit_format_params": "desc = {{ phrase('descending') }} \nasc = {{ phrase('ascending') }}",
+    "data_type": "string",
+    "sub_options": [],
+    "validation_class": "",
+    "validation_method": "",
+    "advanced": false,
+    "default_value": "desc",
+    "relations": {
+        "bh_brand_hub": 1
+    }
+}

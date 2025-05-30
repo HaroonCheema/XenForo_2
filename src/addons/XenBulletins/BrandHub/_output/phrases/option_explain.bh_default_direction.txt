@@ -1,0 +1,1 @@
+Select the default direction for brand list (list will be sorted by this direction)

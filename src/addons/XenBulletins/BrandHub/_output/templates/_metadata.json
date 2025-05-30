@@ -1,18 +1,43 @@
 {
+    "admin/bh_option_template_defaultSortOrder_of_taggedThreads.html": {
+        "version_id": 3040000,
+        "version_string": "3.4.0 Alpha",
+        "hash": "eda4e2b0cf838d8d295f71050a9d0603"
+    },
     "public/bh_brandHub_list.less": {
         "version_id": 3050100,
         "version_string": "3.5.1 Alpha",
         "hash": "61fbd1d32661bc0d7faf41d3ec8993b4"
+    },
+    "public/bh_brand_list.html": {
+        "version_id": 3050200,
+        "version_string": "3.5.2 Alpha",
+        "hash": "a7c9a92013c17e050b9cf6201a749c25"
+    },
+    "public/bh_filters.html": {
+        "version_id": 3050200,
+        "version_string": "3.5.2 Alpha",
+        "hash": "84fb65755eefa524861a6de9d2883004"
     },
     "public/bh_item_detail.html": {
         "version_id": 3050100,
         "version_string": "3.5.1 Alpha",
         "hash": "b89e103fc6986bf4e283be97db11bcb0"
     },
+    "public/bh_item_list.html": {
+        "version_id": 3050200,
+        "version_string": "3.5.2 Alpha",
+        "hash": "12be3a9ec573b716a546057ee78009ec"
+    },
     "public/bh_item_page_edit.html": {
         "version_id": 1000900,
         "version_string": "1.0.9 Alpha",
         "hash": "3ceb641223ac93db102b70c3a674b9c0"
+    },
+    "public/bh_overview_macros.html": {
+        "version_id": 3050200,
+        "version_string": "3.5.2 Alpha",
+        "hash": "3646ce50576561b053a195a8de98c85d"
     },
     "public/bh_tab_owner_pages.html": {
         "version_id": 3050100,

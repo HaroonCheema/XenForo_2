@@ -169,6 +169,7 @@ return array (
   'option.bh_brandListDefaultOrder' => 'Default Sort Order (Brands)',
   'option.bh_breadCrumSlug' => 'Breadcrum Slug',
   'option.bh_defaultSortOrderOfDiscussions' => 'Default sort order of tagged threads',
+  'option.bh_default_direction' => 'Default Direction',
   'option.bh_default_tab' => 'Default Tab',
   'option.bh_discussions_on_item' => 'Number of Discussions display on Item',
   'option.bh_displayExcerpt' => 'Display Excerpt',

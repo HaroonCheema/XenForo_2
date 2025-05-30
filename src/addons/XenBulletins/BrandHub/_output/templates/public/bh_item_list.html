@@ -1,0 +1,91 @@
+<xf:title class="bh-title">{{$brandObj.brand_title}} {{ phrase('items') }}</xf:title>
+
+<xf:css src="bh_brandHub_list.less" />
+
+<xf:comment>
+<xf:macro template="bh_brand_hub_macros" name="navigation" 
+		  arg-pageSelected="{$pageSelected}" 
+		  arg-total="{$total}" 
+		  arg-route="{$xf.options.bh_main_route}" 
+		  arg-brand="{$brandObj}"   />
+</xf:comment>
+
+<div class="block">
+	
+	<xf:if is="$items is not empty">
+		<div class="block-outer">
+			<xf:macro template="bh_filter_macros" name="quick_filter" arg-key="bh_item"
+					arg-ajax="{{ link($xf.options.bh_main_route .'/brand', $brandObj) }}"
+					arg-class="block-outer-opposite" />
+		</div>
+	</xf:if>
+
+
+
+<div class="block-container">
+		<xf:macro template="bh_overview_macros" name="list_filter_bar"
+				  arg-filters="{$filters}"
+				  arg-baseLinkPath="{$xf.options.bh_main_route}"
+				  arg-content="{$brandObj}" />
+	
+	<div class="block-body">
+		<xf:if is="$items is not empty">
+			<xf:datalist data-xf-init="responsive-data-list">
+				<xf:datarow rowtype="header">
+					<xf:cell>{{ phrase('bh_item_title') }}</xf:cell>
+					<xf:cell>{{ phrase('bh_discussions') }}</xf:cell>
+					<xf:cell>{{ phrase('bh_views') }}</xf:cell>
+					<xf:cell>{{ phrase('bh_rating_avg') }}</xf:cell>
+					<xf:cell>{{ phrase('bh_reviews') }}</xf:cell>
+
+				</xf:datarow>
+				<xf:foreach loop="$items" value="$item">
+					<xf:datarow>
+						
+						<xf:cell href="{{ link({$xf.options.bh_main_route}.'/item', $item) }}">{$item.item_title}</xf:cell>
+						<xf:cell>{$item.discussion_count}</xf:cell>
+						<xf:cell>{$item.view_count}</xf:cell>
+						<xf:cell>{$item.rating_avg}</xf:cell>
+						<xf:cell>{$item.review_count}</xf:cell>
+
+					</xf:datarow>
+				</xf:foreach>
+			</xf:datalist>
+			
+			<div class="block-footer block-footer--split">
+				<span class="block-footer-counter">{{ display_totals($items, $total) }}</span>
+			</div>
+		<xf:else />
+			<div class="blockMessage">{{ phrase('no_results_found') }}</div>
+		</xf:if>
+		
+		
+		
+
+			<xf:sidebar key="shareSidebar">
+				<xf:macro template="bh_brand_hub_macros" name="brandRelatedLinks" arg-brandObj="{$brandObj}" />
+			</xf:sidebar>
+		
+	<xf:macro  template="bh_ad_macros" name="sideBar_itemlist" />
+		
+	</div>
+</div>
+
+	<xf:pagenav page="{$page}" perpage="{$perPage}" total="{$total}"
+		link="{$xf.options.bh_main_route}" data="{$brandObj}" params="{$filters}"
+		wrapperclass="block-outer block-outer--after" />
+</div>
+
+<div class='clearfix'></div>
+	<h4 class="block-body block-row block-row--separated">{{ phrase('bh_brand_about', {'brandTitle': $brandObj.brand_title}) }}</h4><br>
+
+	<div class="block-container">	
+		<blockquote class="message-body">
+			{{ bb_code($brandObj.Description.description, 'description', $brandObj.Description) }}
+			<br>
+			<xf:if is="$xf.visitor.hasPermission('bh_brand_hub','bh_can_edit_brandDescript')">
+			<a href="{{ link({$xf.options.bh_main_route}.'/edit', $brandObj) }}" data-xf-click="overlay">{{ phrase('edit') }}</a>
+		</xf:if>
+		</blockquote>
+		
+	</div>

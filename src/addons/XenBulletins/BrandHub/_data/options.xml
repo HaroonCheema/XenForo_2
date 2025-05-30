@@ -47,6 +47,12 @@ review_count={{ phrase('bh_reviews') }}</edit_format_params>
 direction</sub_options>
     <relation group_id="bh_brand_hub" display_order="10"/>
   </option>
+  <option option_id="bh_default_direction" edit_format="select" data_type="string">
+    <default_value>desc</default_value>
+    <edit_format_params>desc = {{ phrase('descending') }} 
+asc = {{ phrase('ascending') }}</edit_format_params>
+    <relation group_id="bh_brand_hub" display_order="1"/>
+  </option>
   <option option_id="bh_default_tab" edit_format="select" data_type="string">
     <default_value>view_count</default_value>
     <edit_format_params>all = All 

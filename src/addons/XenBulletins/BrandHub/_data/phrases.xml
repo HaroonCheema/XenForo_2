@@ -39,6 +39,7 @@
   <phrase title="bh_cannot_update_review_while_your_previous_review_exists_in_deleted_state" version_id="3000700" version_string="3.0.7 Alpha"><![CDATA[Cannot update the review while your previous review exists in a deleted state. Please wait until the admin takes action on this.]]></phrase>
   <phrase title="bh_category" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Category]]></phrase>
   <phrase title="bh_category_title" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Title]]></phrase>
+  <phrase title="bh_create_date" version_id="3050200" version_string="3.5.2 Alpha"><![CDATA[Date]]></phrase>
   <phrase title="bh_create_owner_page" version_id="3000700" version_string="3.0.7 Alpha"><![CDATA[Create your own {itemTitle} owner page]]></phrase>
   <phrase title="bh_delete_owner_page" version_id="1020900" version_string="1.2.9 Alpha"><![CDATA[Delete Owner Page]]></phrase>
   <phrase title="bh_delete_review" version_id="1000800" version_string="1.0.8 Alpha"><![CDATA[Delete review]]></phrase>
@@ -198,7 +199,7 @@
   <phrase title="item_description" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Description]]></phrase>
   <phrase title="leave_a_comment" version_id="3000900" version_string="3.0.9 Alpha"><![CDATA[Leave a comment]]></phrase>
   <phrase title="leave_update" version_id="3000900" version_string="3.0.9 Alpha"><![CDATA[Leave update]]></phrase>
-  <phrase title="nav.bh_brand_hub" version_id="3000100" version_string="3.0.1 Alpha"><![CDATA[Brand Hub]]></phrase>
+  <phrase title="nav.bh_brand_hub" version_id="3050200" version_string="3.5.2 Alpha"><![CDATA[Brand Hub]]></phrase>
   <phrase title="nav.bh_quick_ownerPage" version_id="3000800" version_string="3.0.8 Alpha"><![CDATA[Quick Owner-Page]]></phrase>
   <phrase title="nav.bh_quick_review" version_id="3000800" version_string="3.0.8 Alpha"><![CDATA[Quick Review]]></phrase>
   <phrase title="nav.bh_recent_photos" version_id="3000400" version_string="3.0.4 Alpha"><![CDATA[Recent photos]]></phrase>
@@ -213,6 +214,7 @@
   <phrase title="option.bh_brandListDefaultOrder" version_id="3000500" version_string="3.0.5 Alpha"><![CDATA[Default Sort Order (Brands)]]></phrase>
   <phrase title="option.bh_breadCrumSlug" version_id="3050100" version_string="3.5.1 Alpha"><![CDATA[Breadcrum Slug]]></phrase>
   <phrase title="option.bh_defaultSortOrderOfDiscussions" version_id="3040000" version_string="3.4.0 Alpha"><![CDATA[Default sort order of tagged threads]]></phrase>
+  <phrase title="option.bh_default_direction" version_id="3050200" version_string="3.5.2 Alpha"><![CDATA[Default Direction]]></phrase>
   <phrase title="option.bh_default_tab" version_id="3000100" version_string="3.0.1 Alpha"><![CDATA[Default Tab]]></phrase>
   <phrase title="option.bh_discussions_on_item" version_id="3040000" version_string="3.4.0 Alpha"><![CDATA[Number of Discussions display on Item]]></phrase>
   <phrase title="option.bh_displayExcerpt" version_id="3040000" version_string="3.4.0 Alpha"><![CDATA[Display Excerpt]]></phrase>
@@ -236,6 +238,7 @@
   <phrase title="option_explain.bh_brandListDefaultOrder" version_id="3000500" version_string="3.0.5 Alpha"><![CDATA[Select the default sort order for brand list (list will be sorted by this column)]]></phrase>
   <phrase title="option_explain.bh_breadCrumSlug" version_id="3050100" version_string="3.5.1 Alpha"><![CDATA[Root breadcrumb to replace with a slug (e.g Forums to Datebase)]]></phrase>
   <phrase title="option_explain.bh_defaultSortOrderOfDiscussions" version_id="3040000" version_string="3.4.0 Alpha"><![CDATA[Default sort order of discussions (tagged threads) on item page.]]></phrase>
+  <phrase title="option_explain.bh_default_direction" version_id="3050200" version_string="3.5.2 Alpha"><![CDATA[Select the default direction for brand list (list will be sorted by this direction)]]></phrase>
   <phrase title="option_explain.bh_default_tab" version_id="3000100" version_string="3.0.1 Alpha"><![CDATA[Select the default tab for brand list (list will be sorted by this tab)]]></phrase>
   <phrase title="option_explain.bh_discussions_on_item" version_id="3040000" version_string="3.4.0 Alpha"><![CDATA[Number of discussions (tagged threads) to display on item page.]]></phrase>
   <phrase title="option_explain.bh_displayExcerpt" version_id="3040000" version_string="3.4.0 Alpha"><![CDATA[Display Excerpt message of discussions (tagged threads) on item page]]></phrase>
@@ -302,7 +305,6 @@
   <phrase title="permission_interface.OwnerPagePostPermissions" version_id="3000900" version_string="3.0.9 Alpha"><![CDATA[OwnerPage post permissions]]></phrase>
   <phrase title="permission_interface.bh_brand_hub" version_id="1000700" version_string="1.0.7 Alpha"><![CDATA[[XB] Brand-Hub]]></phrase>
   <phrase title="please_confirm_that_you_want_to_delete_x_brands" version_id="3000100" version_string="3.0.1 Alpha"><![CDATA[Please confirm that you want to delete the following selected brands]]></phrase>
-  <phrase title="please_confirm_that_you_want_to_delete_x_items" version_id="3000100" version_string="3.0.1 Alpha"><![CDATA[Please confirm that you want to delete the following selected Items]]></phrase>
   <phrase title="please_confirm_that_you_want_to_unlink_x_discussions_from_x_item" version_id="3000100" version_string="3.0.1 Alpha"><![CDATA[Please confirm that you want to Remove (unlink) the following selected discussions from <strong> {itemTitle} </strong>]]></phrase>
   <phrase title="please_select_a_x" version_id="1000600" version_string="1.0.6 Alpha"><![CDATA[Please select a {type}]]></phrase>
   <phrase title="popular_items" version_id="1000800" version_string="1.0.8 Alpha"><![CDATA[Popular items]]></phrase>

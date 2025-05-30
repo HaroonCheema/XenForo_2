@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 18dcc3e8203fc3b04b3a9a6396ce4b5f
+// FROM HASH: 3646ce50576561b053a195a8de98c85d
 return array(
 'macros' => array('list_filter_bar' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -12,7 +12,7 @@ return array(
 	$__finalCompiled = '';
 	$__finalCompiled .= '
 	';
-	$__vars['sortOrders'] = array('item_id' => 'Item id', 'item_title' => 'Title', 'brand_id' => 'Brand id', 'brand_title' => 'Title', 'discussion_count' => 'Discussions', 'view_count' => 'Views', 'rating_avg' => 'Rating average', 'review_count' => 'Reviews', 'rating' => 'Rating', 'rating_date' => 'Rating Date', 'reaction_score' => 'Reaction Score', 'page_id' => 'Page id', );
+	$__vars['sortOrders'] = array('item_id' => 'Item id', 'item_title' => 'Title', 'brand_id' => 'Brand id', 'brand_title' => 'Title', 'discussion_count' => 'Discussions', 'view_count' => 'Views', 'rating_avg' => 'Rating average', 'review_count' => 'Reviews', 'rating' => 'Rating', 'rating_date' => 'Rating Date', 'reaction_score' => 'Reaction Score', 'create_date' => 'Date', 'page_id' => 'Page id', );
 	$__finalCompiled .= '
 
 	<div class="block-filterBar">

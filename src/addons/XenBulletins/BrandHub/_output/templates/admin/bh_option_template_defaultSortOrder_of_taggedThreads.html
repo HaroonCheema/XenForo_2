@@ -1,0 +1,18 @@
+<xf:formrow rowtype="input"
+			label="{$option.title}"
+			hint="{$hintHtml}"
+			explain="{$explainHtml}"
+			html="{$listedHtml}">
+	<div class="inputPair">
+		<xf:select name="{$inputName}[order]" value="{$option.option_value.order}" class="input--inline">
+			<xf:option value="view_count">{{ phrase('views') }}</xf:option>
+			<xf:option value="reply_count">{{ phrase('replies') }}</xf:option>
+			<xf:option value="post_date">{{ phrase('post_date') }}</xf:option>
+		</xf:select>
+		<xf:select name="{$inputName}[direction]" value="{$option.option_value.direction}"
+				   class="input--inline">
+			<xf:option value="asc" label="{{ phrase('ascending') }}" />
+			<xf:option value="desc" label="{{ phrase('descending') }}" />
+		</xf:select>
+	</div>
+</xf:formrow>

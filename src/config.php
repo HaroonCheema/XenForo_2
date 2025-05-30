@@ -19,5 +19,5 @@ $config['enableLivePayments'] = false;
 
 $config['debug'] = true;
 
-$config['development']['defaultAddOn'] = 'FS/RegistrationAccountType';
+$config['development']['defaultAddOn'] = 'XenBulletins/BrandHub';
 $config['development']['enabled'] = true;

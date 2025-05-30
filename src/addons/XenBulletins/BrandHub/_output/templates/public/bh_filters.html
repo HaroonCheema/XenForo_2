@@ -1,0 +1,36 @@
+<xf:form action="{{ link($route, $brand) }}">
+	
+	<!--[brandHub:above_sort_by]-->
+	<div class="menu-row menu-row--separated">
+		{{ phrase('sort_by:') }}
+		<div class="inputGroup u-inputSpacer">
+			<xf:select name="order" value="{{ $filters.order ?: $xf.options.bh_ListDefaultOrder }}">
+				<xf:if is="$brand">
+					<xf:option value="item_id">{{ phrase('bh_item_id') }}</xf:option>
+					<xf:option value="item_title">{{ phrase('bh_item_title') }}</xf:option>
+				<xf:else />
+					<xf:option value="brand_id">{{ phrase('bh_brand_id') }}</xf:option>
+					<xf:option value="brand_title">{{ phrase('bh_brand_title') }}</xf:option>
+				</xf:if>
+
+				<xf:option value="discussion_count">{{ phrase('bh_discussions') }}</xf:option>
+				<xf:option value="view_count">{{ phrase('bh_views') }}</xf:option>
+				<xf:option value="rating_avg">{{ phrase('bh_rating_avg') }}</xf:option>
+				<xf:option value="review_count">{{ phrase('bh_reviews') }}</xf:option>
+				<xf:option value="create_date">{{ phrase('bh_create_date') }}</xf:option>
+			</xf:select>
+			<span class="inputGroup-splitter"></span>
+			<xf:select name="direction" value="{{ $filters.direction ?: 'desc' }}">
+				<xf:option value="desc">{{ phrase('descending') }}</xf:option>
+				<xf:option value="asc">{{ phrase('ascending') }}</xf:option>
+			</xf:select>
+		</div>
+	</div>
+
+	<div class="menu-footer">
+		<span class="menu-footer-controls">
+			<xf:button type="submit" class="button--primary">{{ phrase('filter') }}</xf:button>
+		</span>
+	</div>
+	<xf:hiddenval name="apply">1</xf:hiddenval>
+</xf:form>

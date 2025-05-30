@@ -3222,7 +3222,7 @@ a.file-insertLink,
 		</xf:datarow>
 	</xf:if>
 </xf:macro>]]></template>
-  <template type="public" title="bh_brand_list" version_id="3000500" version_string="3.0.5 Alpha"><![CDATA[<xf:title class="bh-title">{{ phrase('bh_select_brand') }}</xf:title>
+  <template type="public" title="bh_brand_list" version_id="3050200" version_string="3.5.2 Alpha"><![CDATA[<xf:title class="bh-title">{{ phrase('bh_select_brand') }}</xf:title>
 
 <xf:css src="bh_brandHub_list.less" />
 
@@ -3251,11 +3251,11 @@ a.file-insertLink,
 		<xf:if is="$brands is not empty">
 			<xf:datalist data-xf-init="responsive-data-list">
 				<xf:datarow rowtype="header">
-					<xf:cell>{{ phrase('bh_brand_title') }}</xf:cell>
-					<xf:cell>{{ phrase('bh_discussions') }}</xf:cell>
-					<xf:cell>{{ phrase('bh_views') }}</xf:cell>
-					<xf:cell>{{ phrase('bh_rating_avg') }}</xf:cell>
-					<xf:cell>{{ phrase('bh_reviews') }}</xf:cell>
+					<xf:cell><a href="{{ link($route, null, {'order': 'brand_title', 'direction': $xf.options.bh_default_direction}) }}" rel="nofollow">{{ phrase('bh_brand_title') }}</a></xf:cell>
+					<xf:cell><a href="{{ link($route, null, {'order': 'discussion_count', 'direction': $xf.options.bh_default_direction}) }}" rel="nofollow">{{ phrase('bh_discussions') }}</a></xf:cell>
+					<xf:cell><a href="{{ link($route, null, {'order': 'view_count', 'direction': $xf.options.bh_default_direction}) }}" rel="nofollow">{{ phrase('bh_views') }}</a></xf:cell>
+					<xf:cell><a href="{{ link($route, null, {'order': 'rating_avg', 'direction': $xf.options.bh_default_direction}) }}" rel="nofollow">{{ phrase('bh_rating_avg') }}</a></xf:cell>
+					<xf:cell><a href="{{ link($route, null, {'order': 'review_count', 'direction': $xf.options.bh_default_direction}) }}" rel="nofollow">{{ phrase('bh_reviews') }}</a></xf:cell>
 
 				</xf:datarow>
 				<xf:foreach loop="$brands" value="$brand">
@@ -3425,7 +3425,7 @@ a.file-insertLink,
 	</xf:if>
 
 </xf:trim></xf:macro>]]></template>
-  <template type="public" title="bh_filters" version_id="3000500" version_string="3.0.5 Alpha"><![CDATA[<xf:form action="{{ link($route, $brand) }}">
+  <template type="public" title="bh_filters" version_id="3050200" version_string="3.5.2 Alpha"><![CDATA[<xf:form action="{{ link($route, $brand) }}">
 	
 	<!--[brandHub:above_sort_by]-->
 	<div class="menu-row menu-row--separated">
@@ -3444,6 +3444,7 @@ a.file-insertLink,
 				<xf:option value="view_count">{{ phrase('bh_views') }}</xf:option>
 				<xf:option value="rating_avg">{{ phrase('bh_rating_avg') }}</xf:option>
 				<xf:option value="review_count">{{ phrase('bh_reviews') }}</xf:option>
+				<xf:option value="create_date">{{ phrase('bh_create_date') }}</xf:option>
 			</xf:select>
 			<span class="inputGroup-splitter"></span>
 			<xf:select name="direction" value="{{ $filters.direction ?: 'desc' }}">
@@ -4930,7 +4931,7 @@ a.file-insertLink,
 		{{ bb_code($mediaItem.media_tag, 'xfmg_media', $mediaItem) }}
 	</xf:if>
 </xf:macro>]]></template>
-  <template type="public" title="bh_item_list" version_id="3010000" version_string="3.1.0 Alpha"><![CDATA[<xf:title class="bh-title">{{$brandObj.brand_title}} {{ phrase('items') }}</xf:title>
+  <template type="public" title="bh_item_list" version_id="3050200" version_string="3.5.2 Alpha"><![CDATA[<xf:title class="bh-title">{{$brandObj.brand_title}} {{ phrase('items') }}</xf:title>
 
 <xf:css src="bh_brandHub_list.less" />
 
@@ -5638,7 +5639,7 @@ a.file-insertLink,
 		href="{{ link({$route}, $brand, {'type': 'discussion_count'}) }}" rel="nofollow">{{ phrase('bh_most_discussed') }}</a>
 	
 </xf:macro>]]></template>
-  <template type="public" title="bh_overview_macros" version_id="3000900" version_string="3.0.9 Alpha"><![CDATA[<xf:macro name="list_filter_bar" arg-filters="!" arg-baseLinkPath="!" arg-content="{{ null }}">
+  <template type="public" title="bh_overview_macros" version_id="3050200" version_string="3.5.2 Alpha"><![CDATA[<xf:macro name="list_filter_bar" arg-filters="!" arg-baseLinkPath="!" arg-content="{{ null }}">
 	<xf:set var="$sortOrders" value="{{ {
 									 
 		'item_id': phrase('bh_item_id'),
@@ -5654,6 +5655,7 @@ a.file-insertLink,
 		'rating': phrase('bh_rating'),
 		'rating_date': phrase('bh_rating_date'),
 		'reaction_score': phrase('bh_reaction_score'),
+		'create_date': phrase('bh_create_date'),
 									 							 
 		'page_id': phrase('bh_page_id')
 									 

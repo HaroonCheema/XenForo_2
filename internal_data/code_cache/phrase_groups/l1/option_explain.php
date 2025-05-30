@@ -194,6 +194,7 @@ You should also provide the maximum video/audio file size in kilobytes (KB). Vid
   'option_explain.bh_brandListDefaultOrder' => 'Select the default sort order for brand list (list will be sorted by this column)',
   'option_explain.bh_breadCrumSlug' => 'Root breadcrumb to replace with a slug (e.g Forums to Datebase)',
   'option_explain.bh_defaultSortOrderOfDiscussions' => 'Default sort order of discussions (tagged threads) on item page.',
+  'option_explain.bh_default_direction' => 'Select the default direction for brand list (list will be sorted by this direction)',
   'option_explain.bh_default_tab' => 'Select the default tab for brand list (list will be sorted by this tab)',
   'option_explain.bh_discussions_on_item' => 'Number of discussions (tagged threads) to display on item page.',
   'option_explain.bh_displayExcerpt' => 'Display Excerpt message of discussions (tagged threads) on item page',
