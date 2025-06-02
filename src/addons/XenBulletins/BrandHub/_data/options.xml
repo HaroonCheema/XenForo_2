@@ -60,7 +60,7 @@ view_count = Most Viewed
 discussion_count = Most Discussed
 rating_avg = Highest Rated
 owner_count = Most Owners</edit_format_params>
-    <relation group_id="bh_brand_hub" display_order="1"/>
+    <relation group_id="bh_brand_hub" display_order="2"/>
   </option>
   <option option_id="bh_discussions_on_item" edit_format="spinbox" data_type="integer">
     <default_value>9</default_value>
@@ -100,6 +100,12 @@ view_count={{ phrase('bh_views') }}
 rating_avg={{ phrase('bh_rating_avg') }}
 review_count={{ phrase('bh_reviews') }}</edit_format_params>
     <relation group_id="bh_brand_hub" display_order="2"/>
+  </option>
+  <option option_id="bh_item_default_direction" edit_format="select" data_type="string">
+    <default_value>desc</default_value>
+    <edit_format_params>desc = {{ phrase('descending') }} 
+asc = {{ phrase('ascending') }}</edit_format_params>
+    <relation group_id="bh_brand_hub" display_order="1"/>
   </option>
   <option option_id="bh_itemsPerPage" edit_format="spinbox" data_type="integer">
     <default_value>20</default_value>

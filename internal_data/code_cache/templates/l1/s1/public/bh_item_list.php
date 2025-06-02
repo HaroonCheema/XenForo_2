@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 12be3a9ec573b716a546057ee78009ec
+// FROM HASH: 36077d6aeeceef55b688d0c4f7a92a7d
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -77,23 +77,23 @@ return array(
 			'rowtype' => 'header',
 		), array(array(
 			'_type' => 'cell',
-			'html' => 'Title',
+			'html' => '<a href="' . $__templater->func('link', array($__vars['route'], $__vars['item'], array('order' => 'item_title', 'direction' => $__vars['xf']['options']['bh_item_default_direction'], ), ), true) . '" rel="nofollow">' . 'Title' . '</a>',
 		),
 		array(
 			'_type' => 'cell',
-			'html' => 'Discussions',
+			'html' => '<a href="' . $__templater->func('link', array($__vars['route'], $__vars['item'], array('order' => 'discussion_count', 'direction' => $__vars['xf']['options']['bh_item_default_direction'], ), ), true) . '" rel="nofollow">' . 'Discussions' . '</a>',
 		),
 		array(
 			'_type' => 'cell',
-			'html' => 'Views',
+			'html' => '<a href="' . $__templater->func('link', array($__vars['route'], $__vars['item'], array('order' => 'view_count', 'direction' => $__vars['xf']['options']['bh_item_default_direction'], ), ), true) . '" rel="nofollow">' . 'Views' . '</a>',
 		),
 		array(
 			'_type' => 'cell',
-			'html' => 'Rating average',
+			'html' => '<a href="' . $__templater->func('link', array($__vars['route'], $__vars['item'], array('order' => 'rating_avg', 'direction' => $__vars['xf']['options']['bh_item_default_direction'], ), ), true) . '" rel="nofollow">' . 'Rating average' . '</a>',
 		),
 		array(
 			'_type' => 'cell',
-			'html' => 'Reviews',
+			'html' => '<a href="' . $__templater->func('link', array($__vars['route'], $__vars['item'], array('order' => 'review_count', 'direction' => $__vars['xf']['options']['bh_item_default_direction'], ), ), true) . '" rel="nofollow">' . 'Reviews' . '</a>',
 		))) . '
 				' . $__compilerTemp1 . '
 			', array(

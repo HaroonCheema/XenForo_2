@@ -4,5 +4,11 @@
     },
     "bh_default_direction.json": {
         "hash": "c8654f4db6d7598b0b4f847fe970e393"
+    },
+    "bh_default_tab.json": {
+        "hash": "27a9a8f3cf34332a4b0ad85581491af9"
+    },
+    "bh_item_default_direction.json": {
+        "hash": "c8654f4db6d7598b0b4f847fe970e393"
     }
 }

@@ -19,9 +19,15 @@
     },
     "option.bh_default_direction.txt": {
         "global_cache": false,
-        "version_id": 3050200,
-        "version_string": "3.5.2 Alpha",
-        "hash": "1e4fa7fd0d176a15992bcb8da40d339c"
+        "version_id": 3050300,
+        "version_string": "3.5.3 Alpha",
+        "hash": "c5985e3cc775c2ba4c80ea010136bd06"
+    },
+    "option.bh_item_default_direction.txt": {
+        "global_cache": false,
+        "version_id": 3050300,
+        "version_string": "3.5.3 Alpha",
+        "hash": "7fcb36f667911c4f4834e69bf890cd64"
     },
     "option_explain.bh_breadCrumSlug.txt": {
         "global_cache": false,
@@ -31,8 +37,14 @@
     },
     "option_explain.bh_default_direction.txt": {
         "global_cache": false,
-        "version_id": 3050200,
-        "version_string": "3.5.2 Alpha",
-        "hash": "182539bee9d33809f632ef9b5de70a78"
+        "version_id": 3050300,
+        "version_string": "3.5.3 Alpha",
+        "hash": "628fafd8e3fb7610826001aac25a2535"
+    },
+    "option_explain.bh_item_default_direction.txt": {
+        "global_cache": false,
+        "version_id": 3050300,
+        "version_string": "3.5.3 Alpha",
+        "hash": "71b79ce4d0039607833a4bb49d08174a"
     }
 }

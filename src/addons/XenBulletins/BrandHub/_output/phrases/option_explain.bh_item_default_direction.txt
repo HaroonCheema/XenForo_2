@@ -1,0 +1,1 @@
+Select the default direction for items list (list will be sorted by this direction).

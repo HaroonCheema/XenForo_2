@@ -214,7 +214,7 @@
   <phrase title="option.bh_brandListDefaultOrder" version_id="3000500" version_string="3.0.5 Alpha"><![CDATA[Default Sort Order (Brands)]]></phrase>
   <phrase title="option.bh_breadCrumSlug" version_id="3050100" version_string="3.5.1 Alpha"><![CDATA[Breadcrum Slug]]></phrase>
   <phrase title="option.bh_defaultSortOrderOfDiscussions" version_id="3040000" version_string="3.4.0 Alpha"><![CDATA[Default sort order of tagged threads]]></phrase>
-  <phrase title="option.bh_default_direction" version_id="3050200" version_string="3.5.2 Alpha"><![CDATA[Default Direction]]></phrase>
+  <phrase title="option.bh_default_direction" version_id="3050300" version_string="3.5.3 Alpha"><![CDATA[Default Brands Direction]]></phrase>
   <phrase title="option.bh_default_tab" version_id="3000100" version_string="3.0.1 Alpha"><![CDATA[Default Tab]]></phrase>
   <phrase title="option.bh_discussions_on_item" version_id="3040000" version_string="3.4.0 Alpha"><![CDATA[Number of Discussions display on Item]]></phrase>
   <phrase title="option.bh_displayExcerpt" version_id="3040000" version_string="3.4.0 Alpha"><![CDATA[Display Excerpt]]></phrase>
@@ -222,6 +222,7 @@
   <phrase title="option.bh_excerptLength" version_id="3040000" version_string="3.4.0 Alpha"><![CDATA[Excerpt length in characters]]></phrase>
   <phrase title="option.bh_highest_rated_items" version_id="1000800" version_string="1.0.8 Alpha"><![CDATA[Highest Rated items in Widget]]></phrase>
   <phrase title="option.bh_itemListDefaultOrder" version_id="3000500" version_string="3.0.5 Alpha"><![CDATA[Default Sort Order (Items)]]></phrase>
+  <phrase title="option.bh_item_default_direction" version_id="3050300" version_string="3.5.3 Alpha"><![CDATA[Default Items Direction]]></phrase>
   <phrase title="option.bh_itemsPerPage" version_id="3000500" version_string="3.0.5 Alpha"><![CDATA[Items Per Page]]></phrase>
   <phrase title="option.bh_main_route" version_id="1020700" version_string="1.2.7 Alpha"><![CDATA[Main Route]]></phrase>
   <phrase title="option.bh_main_route_id" version_id="1020700" version_string="1.2.7 Alpha"><![CDATA[main Route ID]]></phrase>
@@ -238,7 +239,7 @@
   <phrase title="option_explain.bh_brandListDefaultOrder" version_id="3000500" version_string="3.0.5 Alpha"><![CDATA[Select the default sort order for brand list (list will be sorted by this column)]]></phrase>
   <phrase title="option_explain.bh_breadCrumSlug" version_id="3050100" version_string="3.5.1 Alpha"><![CDATA[Root breadcrumb to replace with a slug (e.g Forums to Datebase)]]></phrase>
   <phrase title="option_explain.bh_defaultSortOrderOfDiscussions" version_id="3040000" version_string="3.4.0 Alpha"><![CDATA[Default sort order of discussions (tagged threads) on item page.]]></phrase>
-  <phrase title="option_explain.bh_default_direction" version_id="3050200" version_string="3.5.2 Alpha"><![CDATA[Select the default direction for brand list (list will be sorted by this direction)]]></phrase>
+  <phrase title="option_explain.bh_default_direction" version_id="3050300" version_string="3.5.3 Alpha"><![CDATA[Select the default direction for brand list (list will be sorted by this direction).]]></phrase>
   <phrase title="option_explain.bh_default_tab" version_id="3000100" version_string="3.0.1 Alpha"><![CDATA[Select the default tab for brand list (list will be sorted by this tab)]]></phrase>
   <phrase title="option_explain.bh_discussions_on_item" version_id="3040000" version_string="3.4.0 Alpha"><![CDATA[Number of discussions (tagged threads) to display on item page.]]></phrase>
   <phrase title="option_explain.bh_displayExcerpt" version_id="3040000" version_string="3.4.0 Alpha"><![CDATA[Display Excerpt message of discussions (tagged threads) on item page]]></phrase>
@@ -246,6 +247,7 @@
   <phrase title="option_explain.bh_excerptLength" version_id="3040000" version_string="3.4.0 Alpha"><![CDATA[The maximum number of characters of discussion (tagged threads) content to display on item page. (0 will disable content from being display on item page).]]></phrase>
   <phrase title="option_explain.bh_highest_rated_items" version_id="1000800" version_string="1.0.8 Alpha"><![CDATA[Number of items show in Highest Rated Category widget]]></phrase>
   <phrase title="option_explain.bh_itemListDefaultOrder" version_id="3000500" version_string="3.0.5 Alpha"><![CDATA[Select the default sort order for item list (list will be sorted by this column)]]></phrase>
+  <phrase title="option_explain.bh_item_default_direction" version_id="3050300" version_string="3.5.3 Alpha"><![CDATA[Select the default direction for items list (list will be sorted by this direction).]]></phrase>
   <phrase title="option_explain.bh_itemsPerPage" version_id="3000500" version_string="3.0.5 Alpha"><![CDATA[]]></phrase>
   <phrase title="option_explain.bh_main_route" version_id="1020700" version_string="1.2.7 Alpha"><![CDATA[addon's main route (route prefix)]]></phrase>
   <phrase title="option_explain.bh_main_route_id" version_id="1020700" version_string="1.2.7 Alpha"><![CDATA[addon's main route id (id of  public route bh-brands). We set this automatically when install this addon, so don't change this option's value.]]></phrase>

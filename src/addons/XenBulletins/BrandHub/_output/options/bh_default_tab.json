@@ -1,0 +1,13 @@
+{
+    "edit_format": "select",
+    "edit_format_params": "all = All \nview_count = Most Viewed\ndiscussion_count = Most Discussed\nrating_avg = Highest Rated\nowner_count = Most Owners",
+    "data_type": "string",
+    "sub_options": [],
+    "validation_class": "",
+    "validation_method": "",
+    "advanced": false,
+    "default_value": "view_count",
+    "relations": {
+        "bh_brand_hub": 2
+    }
+}

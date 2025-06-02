@@ -121,7 +121,7 @@ class Brands extends AbstractController
             $items->order($filters['order'], $filters['direction']);
         else {
             $defaultOrder = $this->options()->bh_itemListDefaultOrder;
-            $defaultDir = $this->options()->bh_default_direction;
+            $defaultDir = $this->options()->bh_item_default_direction;
             // $defaultDir = 'desc';
 
             $items->order($defaultOrder, $defaultDir);
@@ -135,7 +135,9 @@ class Brands extends AbstractController
             'page' => $page,
             'perPage' => $perPage,
             'total' => $total,
-            'filters' => $filters
+            'filters' => $filters,
+            'route' => \XF::options()->bh_main_route
+
         ];
 
         return $this->view('XenBulletins\BrandHub:Brand', 'bh_item_list', $viewParams);
@@ -248,11 +250,13 @@ class Brands extends AbstractController
                 $input['direction'] = 'desc';
             }
 
-            if ($brand)
+            if ($brand) {
                 $defaultOrder = $this->options()->bh_itemListDefaultOrder;
-            else
+                $defaultDir =  $this->options()->bh_item_default_direction;
+            } else {
                 $defaultOrder = $this->options()->bh_brandListDefaultOrder;
-            $defaultDir =  $this->options()->bh_default_direction;
+                $defaultDir =  $this->options()->bh_default_direction;
+            }
 
             if ($input['order'] != $defaultOrder || $input['direction'] != $defaultDir) {
                 $filters['order'] = $input['order'];
