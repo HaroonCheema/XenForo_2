@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="option.fspr_api_key" version_id="1000000" version_string="1.0.0"><![CDATA[Enter the API key]]></phrase>
+  <phrase title="option.fspr_payment_site_url" version_id="1000000" version_string="1.0.0"><![CDATA[Enter payment site base URL]]></phrase>
+  <phrase title="option.fspr_user_upgrade_ids" version_id="1000200" version_string="1.0.2"><![CDATA[User Upgrade Ids]]></phrase>
+  <phrase title="option_explain.fspr_api_key" version_id="1000000" version_string="1.0.0"><![CDATA[Enter the Super API key obtained from your payment site.]]></phrase>
+  <phrase title="option_explain.fspr_payment_site_url" version_id="1000000" version_string="1.0.0"><![CDATA[Enter the base URL of your payment site]]></phrase>
+  <phrase title="option_explain.fspr_user_upgrade_ids" version_id="1000200" version_string="1.0.2"><![CDATA[Enter here main site user upgrade id and then this site user upgrade id like first enter main site id and then after : that this site user upgrade id. Example like 12:34,56:78,....]]></phrase>
+  <phrase title="option_group.fs_payment_redirection" version_id="1000000" version_string="1.0.0"><![CDATA[[FS] Payment Redirection]]></phrase>
+  <phrase title="option_group_description.fs_payment_redirection" version_id="1000000" version_string="1.0.0"><![CDATA[]]></phrase>
+</phrases>

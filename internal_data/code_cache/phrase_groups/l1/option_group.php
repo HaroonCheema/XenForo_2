@@ -57,7 +57,7 @@ return array (
   'option_group.fs_hide_usernames' => '[FS] Hide Usernames',
   'option_group.fs_logo_slider' => '[FS] Logo Slider',
   'option_group.fs_package_rating' => '[FS] Package Rating',
-  'option_group.fs_payment_redirection_v2' => '[FS] Payment Redirection V2',
+  'option_group.fs_payment_redirection' => '[FS] Payment Redirection',
   'option_group.fs_post_schdueling' => '[FS] Post schedule',
   'option_group.fs_private_conversation' => '[FS] Private Coversation',
   'option_group.fs_question_answers' => '[FS] Question-Answers',

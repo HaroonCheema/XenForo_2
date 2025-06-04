@@ -19,5 +19,5 @@ $config['enableLivePayments'] = false;
 
 $config['debug'] = true;
 
-$config['development']['defaultAddOn'] = 'FS/PaymentRedirectionV2';
+$config['development']['defaultAddOn'] = 'FS/PaymentRedirection';
 $config['development']['enabled'] = true;

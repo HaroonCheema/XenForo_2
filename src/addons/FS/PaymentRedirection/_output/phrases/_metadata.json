@@ -1,0 +1,14 @@
+{
+    "option.fspr_user_upgrade_ids.txt": {
+        "global_cache": false,
+        "version_id": 1000200,
+        "version_string": "1.0.2",
+        "hash": "3bac4b32ff9e29b4e9767a9ba7ee15b3"
+    },
+    "option_explain.fspr_user_upgrade_ids.txt": {
+        "global_cache": false,
+        "version_id": 1000200,
+        "version_string": "1.0.2",
+        "hash": "2dc49d22d3ed2ea371c67a4c551a2e68"
+    }
+}
