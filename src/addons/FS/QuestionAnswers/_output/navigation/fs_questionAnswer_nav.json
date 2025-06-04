@@ -3,10 +3,10 @@
     "display_order": 1100,
     "navigation_type_id": "node",
     "type_config": {
-        "node_id": 11,
+        "node_id": 13,
         "with_children": false,
         "node_title": true,
         "extra_attributes": []
     },
-    "enabled": true
+    "enabled": false
 }

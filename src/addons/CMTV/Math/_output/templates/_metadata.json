@@ -1,4 +1,9 @@
 {
+    "admin/CMTV_Math_option_json.html": {
+        "version_id": 3000170,
+        "version_string": "3.0.1",
+        "hash": "44c10c1f4c35838144df2020dd7ffc8e"
+    },
     "public/CMTV_Math_insert_math_jax_dialog.html": {
         "version_id": 4040800,
         "version_string": "4.4.8",

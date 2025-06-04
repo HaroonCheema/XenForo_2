@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="option.fspr_v2_api_key" version_id="1000000" version_string="1.0.0"><![CDATA[Enter the API key]]></phrase>
+  <phrase title="option.fspr_v2_main_site_url" version_id="1000000" version_string="1.0.0"><![CDATA[Enter main site base URL]]></phrase>
+  <phrase title="option_explain.fspr_v2_api_key" version_id="1000000" version_string="1.0.0"><![CDATA[Enter the Super API key obtained from your main site.]]></phrase>
+  <phrase title="option_explain.fspr_v2_main_site_url" version_id="1000000" version_string="1.0.0"><![CDATA[Enter the base URL of your main site]]></phrase>
+  <phrase title="option_group.fs_payment_redirection_v2" version_id="1000000" version_string="1.0.0"><![CDATA[[FS] Payment Redirection V2]]></phrase>
+  <phrase title="option_group_description.fs_payment_redirection_v2" version_id="1000000" version_string="1.0.0"><![CDATA[]]></phrase>
+</phrases>

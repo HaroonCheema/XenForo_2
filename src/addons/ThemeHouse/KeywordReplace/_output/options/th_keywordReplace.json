@@ -1,0 +1,15 @@
+{
+    "edit_format": "callback",
+    "edit_format_params": "ThemeHouse\\KeywordReplace\\Option\\KeywordReplace::renderOption",
+    "data_type": "array",
+    "sub_options": [
+        "*"
+    ],
+    "validation_class": "ThemeHouse\\KeywordReplace\\Option\\KeywordReplace",
+    "validation_method": "verifyOption",
+    "advanced": false,
+    "default_value": "[]",
+    "relations": {
+        "th_keywordReplace": 1
+    }
+}

@@ -1,0 +1,11 @@
+<xf:formrow rowtype="input"
+	hint="{$hintHtml}"
+	explain="{$explainHtml}"
+	html="{$listedHtml}"
+	label="{$option.title}">
+
+	<xf:select name="{$inputName}" value="{$option.option_value}" class="input--autoSize">
+		<xf:option>{{ phrase('(none)') }}</xf:option>
+		<xf:options source="{$rewardTypes}" />
+	</xf:select>
+</xf:formrow>

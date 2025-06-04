@@ -19,5 +19,5 @@ $config['enableLivePayments'] = false;
 
 $config['debug'] = true;
 
-$config['development']['defaultAddOn'] = 'XenBulletins/BrandHub';
+$config['development']['defaultAddOn'] = 'FS/PaymentRedirectionV2';
 $config['development']['enabled'] = true;

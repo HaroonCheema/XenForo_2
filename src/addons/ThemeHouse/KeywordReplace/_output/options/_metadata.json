@@ -1,0 +1,14 @@
+{
+    "th_keywordReplace.json": {
+        "hash": "f19d4652b2575364c18b855e7921259c"
+    },
+    "th_keywordReplace_excludedUserGroups.json": {
+        "hash": "26a8d9f97ad77396e75fe7c6852c3ac1"
+    },
+    "th_keywordReplace_limitPerPage.json": {
+        "hash": "2e8170c1789406e4f0c60da65134fc95"
+    },
+    "th_keywordReplace_limitPerWord.json": {
+        "hash": "34ee66af8bd070e1cf582424090b609f"
+    }
+}

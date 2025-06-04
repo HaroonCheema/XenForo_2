@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="admin" title="payment_profile_coinpayments" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:textboxrow name="options[merchant_id]" value="{$profile.options.merchant_id}" type="text"
+	label="{{ phrase('coinpayments_merchant_id') }}"
+	hint="{{ phrase('required') }}">
+
+	<xf:explain>
+		{{ phrase('coinpayments_merchant_id_explain') }}
+	</xf:explain>
+</xf:textboxrow>
+
+
+<xf:textboxrow name="options[ipn_secret]" value="{$profile.options.ipn_secret}" type="text"
+	label="{{ phrase('coinpayments_ipn_secret') }}"
+	hint="{{ phrase('optional') }}">
+
+	<xf:explain>
+		{{ phrase('coinpayments_ipn_secret_explain') }}
+	</xf:explain>
+</xf:textboxrow>
+
+
+<xf:textboxrow name="options[currency_exit]" value="{$profile.options.currency_exit}" type="text"
+	label="{{ phrase('coinpayments_currency_exit_label') }}"
+	hint="{{ phrase('required') }}">
+
+	<xf:explain>
+		{{ phrase('coinpayments_currency_exit_explain') }}
+	</xf:explain>
+</xf:textboxrow>
+
+<xf:textboxrow name="options[public_key]" value="{$profile.options.public_key}" type="text"
+	label="{{ phrase('coinpayments_public_key_label') }}"
+	hint="{{ phrase('required') }}">
+
+	<xf:explain>
+		{{ phrase('coinpayments_key_explain') }}
+	</xf:explain>
+</xf:textboxrow>
+
+<xf:textboxrow name="options[private_key]" value="{$profile.options.private_key}" type="text"
+	label="{{ phrase('coinpayments_private_key_label') }}"
+	hint="{{ phrase('required') }}">
+
+	<xf:explain>
+		{{ phrase('coinpayments_key_explain') }}
+	</xf:explain>
+</xf:textboxrow>]]></template>
+</templates>

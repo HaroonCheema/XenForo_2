@@ -1,0 +1,37 @@
+<xen:require js="js/themehouse/keywordreplace/options_keyword_replace.js" />
+
+<xen:controlunit label="{$preparedOption.title}" hint="{$preparedOption.hint}">
+	<xen:explain>{xen:raw $preparedOption.explain}</xen:explain>
+	<xen:html>
+		<ul>
+			<xen:foreach loop="$choices" key="$counter" value="$choice">
+				<li>
+					<input type="checkbox" name="{$fieldPrefix}[{$preparedOption.option_id}][{$counter}][live]" value="1" {xen:checked {$choice.live}} />
+					<xen:textbox name="{$fieldPrefix}[{$preparedOption.option_id}][{$counter}][word]" value="{$choice.word}" placeholder="{xen:phrase word_or_phrase}" size="20" />
+					<xen:select name="{$fieldPrefix}[{$preparedOption.option_id}][{$counter}][replace_type]" value="{$choice.replace_type}" inputclass="value autoSize">
+						<xen:option value="url">{xen:phrase th_with_url_keyword_replace}</xen:option>
+						<xen:option value="overlay">{xen:phrase th_with_url_overlay_keyword_replace}</xen:option>
+						<xen:option value="">{xen:phrase th_with_html_keyword_replace}</xen:option>
+					</xen:select>
+					<xen:textbox name="{$fieldPrefix}[{$preparedOption.option_id}][{$counter}][limit]" value="{$choice.limit}" placeholder="{xen:phrase limit}" size="5" />
+					<xen:textbox name="{$fieldPrefix}[{$preparedOption.option_id}][{$counter}][replace]" value="{$choice.replace}" placeholder="{xen:phrase replacement}" size="30" />
+				</li>
+			</xen:foreach>
+
+			<li class="KeywordReplaceOptionListener">
+				<input type="checkbox" name="{$fieldPrefix}[{$preparedOption.option_id}][{$nextCounter}][live]" value="1" checked="checked" />
+				<xen:textbox name="{$fieldPrefix}[{$preparedOption.option_id}][{$nextCounter}][word]" value="" placeholder="{xen:phrase word_or_phrase}" size="20" />
+				<xen:select name="{$fieldPrefix}[{$preparedOption.option_id}][{$nextCounter}][replace_type]" value="" inputclass="value autoSize">
+					<xen:option value="url">{xen:phrase th_with_url_keyword_replace}</xen:option>
+					<xen:option value="overlay">{xen:phrase th_with_url_overlay_keyword_replace}</xen:option>
+					<xen:option value="">{xen:phrase th_with_html_keyword_replace}</xen:option>
+				</xen:select>
+				<xen:textbox name="{$fieldPrefix}[{$preparedOption.option_id}][{$nextCounter}][limit]" value="" placeholder="{xen:phrase limit}" size="5" />
+				<xen:textbox name="{$fieldPrefix}[{$preparedOption.option_id}][{$nextCounter}][replace]" value="" placeholder="{xen:phrase replacement}" size="30" />
+			</li>
+		</ul>
+
+		<input type="hidden" name="{$listedFieldName}" value="{$preparedOption.option_id}" />
+		{xen:raw $editLink}
+	</xen:html>
+</xen:controlunit>

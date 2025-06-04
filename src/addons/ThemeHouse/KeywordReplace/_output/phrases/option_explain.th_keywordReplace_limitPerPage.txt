@@ -1,0 +1,1 @@
+Total number of keyword replacements to make per page, 0 for unlimited.

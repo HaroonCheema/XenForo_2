@@ -1,0 +1,1 @@
+This is a list of keywords or phrases that are to be replaced. If a replacement keyword or phrase is entered, the replacement text will be rewritten to this (for example, replacing "dog" with "cat").

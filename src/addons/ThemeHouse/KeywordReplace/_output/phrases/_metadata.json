@@ -1,0 +1,62 @@
+{
+    "option.th_keywordReplace.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "2b650eed9dc223f35d13eb46fa31958a"
+    },
+    "option.th_keywordReplace_excludedUserGroups.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "f7e3e3cda594a904b5932e8e10f99fd7"
+    },
+    "option.th_keywordReplace_limitPerPage.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "547d05140064183a6b1bd1b50e1e1e83"
+    },
+    "option.th_keywordReplace_limitPerWord.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "9ea969b485faeee81a28f17ceab2995d"
+    },
+    "option_explain.th_keywordReplace.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "a39c173a46082749305c2d03b5c14d79"
+    },
+    "option_explain.th_keywordReplace_excludedUserGroups.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "2322c2c78bf95b2adbac8e75a0af9e4f"
+    },
+    "option_explain.th_keywordReplace_limitPerPage.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "557a2ede82e16a3352b9ba61ebdff46a"
+    },
+    "option_explain.th_keywordReplace_limitPerWord.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "df4df668177730110a8acf3d231baf82"
+    },
+    "option_group.th_keywordReplace.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "6cf687fd1c719d950aeb77a4211ed782"
+    },
+    "option_group_description.th_keywordReplace.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "69919a0f090acd18b69a64e29cef020c"
+    }
+}

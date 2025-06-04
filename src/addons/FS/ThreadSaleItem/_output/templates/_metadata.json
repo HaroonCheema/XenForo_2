@@ -1,0 +1,12 @@
+{
+    "public/fs_saleitem_fields.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "0566f54e16a96492c65c2f94fba5ba4d"
+    },
+    "public/fs_saleitem_post_edit.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "f6f066d2d79832322614b2ac62f15a1a"
+    }
+}

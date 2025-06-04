@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<code_event_listeners>
+  <listener event_id="app_pub_render_page" execute_order="10" callback_class="FS\PaymentRedirectionV2\Listener" callback_method="appPubRenderPage" active="1"/>
+  <listener event_id="home_page_url" execute_order="10" callback_class="FS\PaymentRedirectionV2\Listener" callback_method="homePageUrl" active="1"/>
+</code_event_listeners>

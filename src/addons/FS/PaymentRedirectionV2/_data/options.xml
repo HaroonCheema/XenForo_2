@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<options>
+  <option option_id="fspr_v2_api_key" edit_format="textbox" data_type="string" advanced="0">
+    <default_value></default_value>
+    <relation group_id="fs_payment_redirection_v2" display_order="1"/>
+  </option>
+  <option option_id="fspr_v2_main_site_url" edit_format="textbox" data_type="string" advanced="0">
+    <default_value></default_value>
+    <relation group_id="fs_payment_redirection_v2" display_order="1"/>
+  </option>
+</options>

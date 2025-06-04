@@ -5,11 +5,6 @@ return function($__templater, $__selectedNav, array $__vars)
 	$__tree = [];
 	$__flat = [];
 
-	\XF\Navigation\NodeType::configureDisplayExtended(11, "fs_questionAnswer_nav", [
-		'title' => null,
-		'with_children' => false,
-		'attributes' => [],
-	]);
 
 	$__navTemp = [
 		'title' => \XF::phrase('nav._default'),
@@ -1195,24 +1190,6 @@ return function($__templater, $__selectedNav, array $__vars)
 		if ($__navTemp) {
 			$__tree['createCrud']['children']['addRecord'] = $__navTemp;
 			$__flat['addRecord'] =& $__tree['createCrud']['children']['addRecord'];
-		}
-
-	}
-
-	$__navTemp = \XF\Navigation\NodeType::displayNodeExtended(11, "fs_questionAnswer_nav");
-	if ($__navTemp) {
-		$__tree['fs_questionAnswer_nav'] = $__navTemp;
-		$__flat['fs_questionAnswer_nav'] =& $__tree['fs_questionAnswer_nav'];
-		if (empty($__tree['fs_questionAnswer_nav']['children'])) { $__tree['fs_questionAnswer_nav']['children'] = []; }
-
-		$__navTemp = [
-		'title' => \XF::phrase('nav.fs_a'),
-		'href' => '',
-		'attributes' => [],
-	];
-		if ($__navTemp) {
-			$__tree['fs_questionAnswer_nav']['children']['fs_a'] = $__navTemp;
-			$__flat['fs_a'] =& $__tree['fs_questionAnswer_nav']['children']['fs_a'];
 		}
 
 	}

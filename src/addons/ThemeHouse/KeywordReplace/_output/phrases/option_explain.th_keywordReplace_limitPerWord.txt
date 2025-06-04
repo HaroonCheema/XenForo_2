@@ -1,0 +1,1 @@
+Total number of keyword replacements to make per word, 0 for unlimited. This value is ignored if a limit is specified for an individual keyword.

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="coinpayments_amount_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Amount of the original currency that will be converted into the outdoing currency.]]></phrase>
+  <phrase title="coinpayments_amount_label" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Amount]]></phrase>
+  <phrase title="coinpayments_currency_entry_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Currency that will be used to calculate the price in the outgoing currency.]]></phrase>
+  <phrase title="coinpayments_currency_entry_label" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Original Currency]]></phrase>
+  <phrase title="coinpayments_currency_exit_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[The currency the buyer will be sending. For example if your products are priced in USD but you are receiving BTC, you would use BTC. (for testing purposes use LTCT (Litecoin Testnet)
+]]></phrase>
+  <phrase title="coinpayments_currency_exit_label" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Outgoing Currency]]></phrase>
+  <phrase title="coinpayments_error_from_cointpayments" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Error from CointPayments :]]></phrase>
+  <phrase title="coinpayments_error_no_response" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[No response from CoinPayments. Please try again later. ]]></phrase>
+  <phrase title="coinpayments_error_occured" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[We were unable to retrieve a valid transaction, please try again or contact an administrator with your transaction number.]]></phrase>
+  <phrase title="coinpayments_error_occured_invalid_payment" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[We were unable to retrieve a valid transaction, please try again or contact an administrator with your transaction number (<b>{transactionId}</b>).]]></phrase>
+  <phrase title="coinpayments_error_too_many_requests" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You have carried out too many tests in a given time, please try again later.]]></phrase>
+  <phrase title="coinpayments_error_transaction_canceled" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[I'm sorry, but this transaction was cancelled. ]]></phrase>
+  <phrase title="coinpayments_error_transaction_pending" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Sorry, payment for this transaction is in progress. Please pay the amount and refresh this page.]]></phrase>
+  <phrase title="coinpayments_error_transaction_security" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Sorry, but you don't have permission to pay for this transaction.]]></phrase>
+  <phrase title="coinpayments_ipn_secret" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[IPN Secret]]></phrase>
+  <phrase title="coinpayments_ipn_secret_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[This is used to verify that an IPN is from us.
+You can obtain your 'IPN Secret' from coinPayments via this link : <u><a href="https://www.coinpayments.net/index.php?cmd=acct_settings" target="_blank">https://www.coinpayments.net/index.php?cmd=acct_settings</a></u>]]></phrase>
+  <phrase title="coinpayments_key_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You can obtain a key via this link : <u><a href="https://www.coinpayments.net/acct-api-keys" target="_blank">https://www.coinpayments.net/acct-api-keys</a></u>]]></phrase>
+  <phrase title="coinpayments_merchant_id" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Merchant ID]]></phrase>
+  <phrase title="coinpayments_merchant_id_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You can obtain your 'merchant id' from coinPayments via this link : <u><a href="https://www.coinpayments.net/index.php?cmd=acct_settings" target="_blank">https://www.coinpayments.net/index.php?cmd=acct_settings</a></u>]]></phrase>
+  <phrase title="coinpayments_pay_informations" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Payment informations]]></phrase>
+  <phrase title="coinpayments_pay_with_website" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Pay on CoinPayments ]]></phrase>
+  <phrase title="coinpayments_pay_x" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Pay {cost} ({currency_exit}) ]]></phrase>
+  <phrase title="coinpayments_payment_details" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Payment with {currency}]]></phrase>
+  <phrase title="coinpayments_payment_informations" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<i>{address}</i> - {confirmations} confirmations - Transaction number : <i>{transactionId}</i> - Tag : {tagId}]]></phrase>
+  <phrase title="coinpayments_payments_processed_securely_by_x" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Payments are processed securely by <a href="{link}" target="_blank">{provider}</a>. ]]></phrase>
+  <phrase title="coinpayments_private_key_label" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Private Key]]></phrase>
+  <phrase title="coinpayments_public_key_label" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Public Key]]></phrase>
+  <phrase title="coinpayments_validate_payment" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Validate payment ]]></phrase>
+  <phrase title="coinpayments_you_must_provide_currency_exit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You must provide a Outgoing Currency.]]></phrase>
+  <phrase title="coinpayments_you_must_provide_merchant_id" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You must provide your Merchant ID]]></phrase>
+  <phrase title="coinpayments_you_must_provide_private_key" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You must provide a Private API Key.]]></phrase>
+  <phrase title="coinpayments_you_must_provide_public_key" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You must provide a Public API Key.]]></phrase>
+</phrases>
