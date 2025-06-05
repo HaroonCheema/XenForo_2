@@ -12,7 +12,7 @@ class Account extends XFCP_Account
         $apiKey = \XF::options()->fspr_api_key;
         $paymentSiteUrl = \XF::options()->fspr_payment_site_url;
 
-        $findUrl = $paymentSiteUrl . 'index.php/api/users/find-name?username=' . urlencode(\XF::visitor()->username);
+        $findUrl = $paymentSiteUrl . 'index.php?api/users/find-name&username=' . urlencode(\XF::visitor()->username);
 
         $headers = [
             "XF-Api-Key: $apiKey",
@@ -35,7 +35,7 @@ class Account extends XFCP_Account
             $this->loginUserRedirect($userId);
         } else {
             $user = \XF::visitor();
-            $apiUrl = $paymentSiteUrl . 'index.php/api/users';
+            $apiUrl = $paymentSiteUrl . 'index.php?api/users';
             $postData = [
                 'username' => $user->username,
                 'email' => $user->email,
@@ -129,7 +129,7 @@ class Account extends XFCP_Account
 
         $returnUrl = $paymentSiteUrl . 'index.php?account/upgrades'; 
 
-        $apiUrl = $paymentSiteUrl . 'index.php/api/auth/login-token';
+        $apiUrl = $paymentSiteUrl . 'index.php?api/auth/login-token';
 
         $postData = http_build_query([
             'user_id' => $userId,
