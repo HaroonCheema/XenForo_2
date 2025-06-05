@@ -6,7 +6,6 @@ use XF\Mvc\ParameterBag;
 
 class Account extends XFCP_Account
 {
-    // private string $paymentSiteUrl = 'http://localhost/x22dev/';
 
     public function actionUpgrades()
     {
