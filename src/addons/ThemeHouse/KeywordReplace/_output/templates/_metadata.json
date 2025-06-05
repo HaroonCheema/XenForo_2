@@ -2,11 +2,11 @@
     "admin/th_option_template_keyword_replace.html": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
-        "hash": "7dbf4b46b761e3a8c58e6dec8d51e468"
+        "hash": "96a0beed8667915a8d496cbde92a150d"
     },
     "admin/th_option_template_keyword_replace_xen1.html": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
-        "hash": "0ee59a028a77bfaff6228ab259d03b2c"
+        "hash": "13e0e064d4106e13aaf9428da41adc26"
     }
 }

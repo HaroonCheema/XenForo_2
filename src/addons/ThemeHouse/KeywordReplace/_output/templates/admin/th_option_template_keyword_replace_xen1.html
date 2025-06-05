@@ -7,14 +7,14 @@
 			<xen:foreach loop="$choices" key="$counter" value="$choice">
 				<li>
 					<input type="checkbox" name="{$fieldPrefix}[{$preparedOption.option_id}][{$counter}][live]" value="1" {xen:checked {$choice.live}} />
-					<xen:textbox name="{$fieldPrefix}[{$preparedOption.option_id}][{$counter}][word]" value="{$choice.word}" placeholder="{xen:phrase word_or_phrase}" size="20" />
-					<xen:select name="{$fieldPrefix}[{$preparedOption.option_id}][{$counter}][replace_type]" value="{$choice.replace_type}" inputclass="value autoSize">
-						<xen:option value="url">{xen:phrase th_with_url_keyword_replace}</xen:option>
-						<xen:option value="overlay">{xen:phrase th_with_url_overlay_keyword_replace}</xen:option>
-						<xen:option value="">{xen:phrase th_with_html_keyword_replace}</xen:option>
-					</xen:select>
-					<xen:textbox name="{$fieldPrefix}[{$preparedOption.option_id}][{$counter}][limit]" value="{$choice.limit}" placeholder="{xen:phrase limit}" size="5" />
-					<xen:textbox name="{$fieldPrefix}[{$preparedOption.option_id}][{$counter}][replace]" value="{$choice.replace}" placeholder="{xen:phrase replacement}" size="30" />
+					<xf:textbox name="{$fieldPrefix}[{$preparedOption.option_id}][{$counter}][word]" value="{$choice.word}" placeholder="{xen:phrase word_or_phrase}" size="20" />
+					<xf:select name="{$fieldPrefix}[{$preparedOption.option_id}][{$counter}][replace_type]" value="{$choice.replace_type}" inputclass="value autoSize">
+						<xf:option value="url">{xen:phrase th_with_url_keyword_replace}</xf:option>
+						<xf:option value="overlay">{xen:phrase th_with_url_overlay_keyword_replace}</xf:option>
+						<xf:option value="">{xen:phrase th_with_html_keyword_replace}</xf:option>
+					</xf:select>
+					<xf:textbox name="{$fieldPrefix}[{$preparedOption.option_id}][{$counter}][limit]" value="{$choice.limit}" placeholder="{xen:phrase limit}" size="5" />
+					<xf:textbox name="{$fieldPrefix}[{$preparedOption.option_id}][{$counter}][replace]" value="{$choice.replace}" placeholder="{xen:phrase replacement}" size="30" />
 				</li>
 			</xen:foreach>
 

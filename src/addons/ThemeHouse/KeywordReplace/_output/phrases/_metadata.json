@@ -1,4 +1,16 @@
 {
+    "fs_th_replacement.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "bc9f7bf4eb0da7be897ea1d789a7bf33"
+    },
+    "fs_th_word.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "07a094a210794e74a0e5e1a1457a92ee"
+    },
     "option.th_keywordReplace.txt": {
         "global_cache": false,
         "version_id": 1000010,
@@ -58,5 +70,23 @@
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
         "hash": "69919a0f090acd18b69a64e29cef020c"
+    },
+    "th_with_html_keyword_replace.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "3135f4019bee015e2d1ae7f77f9f3f64"
+    },
+    "th_with_url_keyword_replace.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "02a3a357710cc2a5dfdfb74ed012fb59"
+    },
+    "th_with_url_overlay_keyword_replace.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "6b551379c3c0b59326abdaf3b4395bd3"
     }
 }

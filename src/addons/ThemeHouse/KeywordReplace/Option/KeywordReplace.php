@@ -15,6 +15,9 @@ class KeywordReplace extends AbstractOption
                 'word' => $word['word'],
                 'replace' => is_string($word['replace']) ? $word['replace'] : '',
                 'live' => $word['live'] ?? 0,
+                'limit' => $word['limit'] ?? 0,
+                'replace_type' => $word['replace_type'] ?? ''
+
             ];
         }
 
@@ -22,6 +25,23 @@ class KeywordReplace extends AbstractOption
             'choices' => $choices,
             'nextCounter' => count($choices)
         ]);
+    }
+
+    public static function verifyOption(array &$words)
+    {
+        $output = array();
+
+        foreach ($words as $word) {
+            if (!isset($word['word']) || strval($word['word']) === '') {
+                continue;
+            }
+
+            $output[strval(strtolower($word['word']))] = $word;
+        }
+
+        $words = $output;
+
+        return true;
     }
 
     // public static function renderOption(\XF\Entity\Option $option, array $htmlParams)
@@ -62,25 +82,27 @@ class KeywordReplace extends AbstractOption
     //     );
     // }
 
-    public static function verifyOption(array &$value)
-    {
-        $output = [];
 
-        foreach ($value as $word) {
-            if (!isset($word['word']) || !isset($word['replace'])) {
-                continue;
-            }
 
-            $cache = self::buildCensorCacheValue($word['word'], $word['replace']);
-            if ($cache) {
-                $output[] = $cache;
-            }
-        }
+    // public static function verifyOption1(array &$value)
+    // {
+    //     $output = [];
 
-        $value = $output;
+    //     foreach ($value as $word) {
+    //         if (!isset($word['word']) || !isset($word['replace'])) {
+    //             continue;
+    //         }
 
-        return true;
-    }
+    //         $cache = self::buildCensorCacheValue($word['word'], $word['replace']);
+    //         if ($cache) {
+    //             $output[] = $cache;
+    //         }
+    //     }
+
+    //     $value = $output;
+
+    //     return true;
+    // }
 
 
 
@@ -92,51 +114,51 @@ class KeywordReplace extends AbstractOption
      *
      * @return array|bool
      */
-    public static function buildCensorCacheValue($find, $replace)
-    {
-        $find = trim(strval($find));
-        if ($find === '') {
-            return false;
-        }
+    // public static function buildCensorCacheValue($find, $replace)
+    // {
+    //     $find = trim(strval($find));
+    //     if ($find === '') {
+    //         return false;
+    //     }
 
-        $prefixWildCard = preg_match('#^\*#', $find);
-        $suffixWildCard = preg_match('#\*$#', $find);
+    //     $prefixWildCard = preg_match('#^\*#', $find);
+    //     $suffixWildCard = preg_match('#\*$#', $find);
 
-        $replace = is_int($replace) ? '' : trim(strval($replace));
-        if ($replace === '') {
-            $replace = utf8_strlen($find);
-            if ($prefixWildCard) {
-                $replace--;
-            }
-            if ($suffixWildCard) {
-                $replace--;
-            }
-        }
+    //     $replace = is_int($replace) ? '' : trim(strval($replace));
+    //     if ($replace === '') {
+    //         $replace = utf8_strlen($find);
+    //         if ($prefixWildCard) {
+    //             $replace--;
+    //         }
+    //         if ($suffixWildCard) {
+    //             $replace--;
+    //         }
+    //     }
 
-        $regexFind = $find;
-        if ($prefixWildCard) {
-            $regexFind = substr($regexFind, 1);
-        }
-        if ($suffixWildCard) {
-            $regexFind = substr($regexFind, 0, -1);
-        }
+    //     $regexFind = $find;
+    //     if ($prefixWildCard) {
+    //         $regexFind = substr($regexFind, 1);
+    //     }
+    //     if ($suffixWildCard) {
+    //         $regexFind = substr($regexFind, 0, -1);
+    //     }
 
-        if (!strlen($regexFind)) {
-            return false;
-        }
+    //     if (!strlen($regexFind)) {
+    //         return false;
+    //     }
 
-        $regex = '#'
-            . ($prefixWildCard ? '' : '(?<=\W|^)')
-            . preg_quote($regexFind, '#')
-            . ($suffixWildCard ? '' : '(?=\W|$)')
-            . '#iu';
+    //     $regex = '#'
+    //         . ($prefixWildCard ? '' : '(?<=\W|^)')
+    //         . preg_quote($regexFind, '#')
+    //         . ($suffixWildCard ? '' : '(?=\W|$)')
+    //         . '#iu';
 
-        return [
-            'word' => $find,
-            'regex' => $regex,
-            'replace' => $replace
-        ];
-    }
+    //     return [
+    //         'word' => $find,
+    //         'regex' => $regex,
+    //         'replace' => $replace
+    //     ];
+    // }
 
 
     // public static function renderOption(XenForo_View $view, $fieldPrefix, array $preparedOption, $canEdit)

@@ -11,9 +11,17 @@
 				<xf:checkbox>
 					<xf:option name="{$inputName}[{$counter}][live]" value="1" checked="{{$choice.live ? 'checked' : ''}}" />
 				</xf:checkbox>
-				<xf:textbox name="{$inputName}[{$counter}][word]" value="{$choice.word}" placeholder="{{ phrase('word_or_phrase') }}" size="20" />
+				<xf:textbox name="{$inputName}[{$counter}][word]" value="{$choice.word}" placeholder="{{ phrase('fs_th_word') }}" size="20" />
 				<span class="inputGroup-splitter"></span>
-				<xf:textbox name="{$inputName}[{$counter}][replace]" value="{$choice.replace}" placeholder="{{ phrase('replacement_optional') }}" size="20" />
+				<xf:textbox name="{$inputName}[{$counter}][replace]" value="{$choice.replace}" placeholder="{{ phrase('fs_th_replacement') }}" size="20" />
+				<xf:textbox name="{$inputName}[{$counter}][limit]" value="{$choice.limit}" placeholder="{{ phrase('limit') }}" size="5" />
+
+				<xf:select name="{$inputName}[{$counter}][replace_type]" value="{$choice.replace_type}" inputclass="value autoSize">
+					<xf:option value="url">{{ phrase('th_with_url_keyword_replace') }}</xf:option>
+					<xf:option value="overlay">{{ phrase('th_with_url_overlay_keyword_replace') }}</xf:option>
+					<xf:option value="">{{ phrase('th_with_html_keyword_replace') }}</xf:option>
+				</xf:select>
+
 			</li>
 		</xf:foreach>
 
@@ -21,9 +29,17 @@
 			<xf:checkbox>
 				<xf:option name="{$inputName}[{$nextCounter}][live]" value="1" checked="checked" />
 			</xf:checkbox>
-			<xf:textbox name="{$inputName}[{$nextCounter}][word]" placeholder="{{ phrase('word_or_phrase') }}" size="20" />
+			<xf:textbox name="{$inputName}[{$nextCounter}][word]" placeholder="{{ phrase('fs_th_word') }}" size="20" />
 			<span class="inputGroup-splitter"></span>
-			<xf:textbox name="{$inputName}[{$nextCounter}][replace]" placeholder="{{ phrase('replacement_optional') }}" size="20" />
+			<xf:textbox name="{$inputName}[{$nextCounter}][replace]" placeholder="{{ phrase('fs_th_replacement') }}" size="20" />
+			<xf:textbox name="{$inputName}[{$nextCounter}][limit]" placeholder="{{ phrase('limit') }}" size="5" />
+
+			<xf:select name="{$inputName}[{$nextCounter}][replace_type]" value="" inputclass="value autoSize">
+				<xf:option value="url">{{ phrase('th_with_url_keyword_replace') }}</xf:option>
+				<xf:option value="overlay">{{ phrase('th_with_url_overlay_keyword_replace') }}</xf:option>
+				<xf:option value="">{{ phrase('th_with_html_keyword_replace') }}</xf:option>
+			</xf:select>
+
 		</li>
 	</ul>
 </xf:formrow>

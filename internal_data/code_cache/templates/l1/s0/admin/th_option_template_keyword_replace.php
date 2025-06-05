@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 7dbf4b46b761e3a8c58e6dec8d51e468
+// FROM HASH: 96a0beed8667915a8d496cbde92a150d
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -19,16 +19,43 @@ return array(
 				' . $__templater->formTextBox(array(
 				'name' => $__vars['inputName'] . '[' . $__vars['counter'] . '][word]',
 				'value' => $__vars['choice']['word'],
-				'placeholder' => 'Word or phrase',
+				'placeholder' => 'Word',
 				'size' => '20',
 			)) . '
 				<span class="inputGroup-splitter"></span>
 				' . $__templater->formTextBox(array(
 				'name' => $__vars['inputName'] . '[' . $__vars['counter'] . '][replace]',
 				'value' => $__vars['choice']['replace'],
-				'placeholder' => 'Replacement (optional)',
+				'placeholder' => 'Replacement',
 				'size' => '20',
 			)) . '
+				' . $__templater->formTextBox(array(
+				'name' => $__vars['inputName'] . '[' . $__vars['counter'] . '][limit]',
+				'value' => $__vars['choice']['limit'],
+				'placeholder' => 'limit',
+				'size' => '5',
+			)) . '
+
+				' . $__templater->formSelect(array(
+				'name' => $__vars['inputName'] . '[' . $__vars['counter'] . '][replace_type]',
+				'value' => $__vars['choice']['replace_type'],
+				'inputclass' => 'value autoSize',
+			), array(array(
+				'value' => 'url',
+				'label' => 'Url',
+				'_type' => 'option',
+			),
+			array(
+				'value' => 'overlay',
+				'label' => 'Overlay',
+				'_type' => 'option',
+			),
+			array(
+				'value' => '',
+				'label' => 'Html',
+				'_type' => 'option',
+			))) . '
+
 			</li>
 		';
 		}
@@ -48,15 +75,41 @@ return array(
 	))) . '
 			' . $__templater->formTextBox(array(
 		'name' => $__vars['inputName'] . '[' . $__vars['nextCounter'] . '][word]',
-		'placeholder' => 'Word or phrase',
+		'placeholder' => 'Word',
 		'size' => '20',
 	)) . '
 			<span class="inputGroup-splitter"></span>
 			' . $__templater->formTextBox(array(
 		'name' => $__vars['inputName'] . '[' . $__vars['nextCounter'] . '][replace]',
-		'placeholder' => 'Replacement (optional)',
+		'placeholder' => 'Replacement',
 		'size' => '20',
 	)) . '
+			' . $__templater->formTextBox(array(
+		'name' => $__vars['inputName'] . '[' . $__vars['nextCounter'] . '][limit]',
+		'placeholder' => 'limit',
+		'size' => '5',
+	)) . '
+
+			' . $__templater->formSelect(array(
+		'name' => $__vars['inputName'] . '[' . $__vars['nextCounter'] . '][replace_type]',
+		'value' => '',
+		'inputclass' => 'value autoSize',
+	), array(array(
+		'value' => 'url',
+		'label' => 'Url',
+		'_type' => 'option',
+	),
+	array(
+		'value' => 'overlay',
+		'label' => 'Overlay',
+		'_type' => 'option',
+	),
+	array(
+		'value' => '',
+		'label' => 'Html',
+		'_type' => 'option',
+	))) . '
+
 		</li>
 	</ul>
 ', array(

@@ -19,5 +19,5 @@ $config['enableLivePayments'] = false;
 
 $config['debug'] = true;
 
-$config['development']['defaultAddOn'] = 'FS/PaymentRedirection';
+$config['development']['defaultAddOn'] = 'ThemeHouse/KeywordReplace';
 $config['development']['enabled'] = true;
