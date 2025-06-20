@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: a7c9a92013c17e050b9cf6201a749c25
+// FROM HASH: 6e3eae6f636bbfcd2c116c874ca3ef60
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -41,6 +41,10 @@ return array(
 		';
 	if (!$__templater->test($__vars['brands'], 'empty', array())) {
 		$__finalCompiled .= '
+		    ';
+		$__vars['revDirection'] = ($__vars['filters']['direction'] ? (($__vars['filters']['direction'] == 'desc') ? 'asc' : 'desc') : $__vars['xf']['options']['bh_default_direction']);
+		$__finalCompiled .= '
+
 			';
 		$__compilerTemp1 = '';
 		if ($__templater->isTraversable($__vars['brands'])) {
@@ -76,23 +80,23 @@ return array(
 			'rowtype' => 'header',
 		), array(array(
 			'_type' => 'cell',
-			'html' => '<a href="' . $__templater->func('link', array($__vars['route'], null, array('order' => 'brand_title', 'direction' => $__vars['xf']['options']['bh_default_direction'], ), ), true) . '" rel="nofollow">' . 'Title' . '</a>',
+			'html' => '<a href="' . $__templater->func('link', array($__vars['route'], null, array('order' => 'brand_title', 'direction' => $__vars['revDirection'], ), ), true) . '" rel="nofollow">' . 'Title' . '</a>',
 		),
 		array(
 			'_type' => 'cell',
-			'html' => '<a href="' . $__templater->func('link', array($__vars['route'], null, array('order' => 'discussion_count', 'direction' => $__vars['xf']['options']['bh_default_direction'], ), ), true) . '" rel="nofollow">' . 'Discussions' . '</a>',
+			'html' => '<a href="' . $__templater->func('link', array($__vars['route'], null, array('order' => 'discussion_count', 'direction' => $__vars['revDirection'], ), ), true) . '" rel="nofollow">' . 'Discussions' . '</a>',
 		),
 		array(
 			'_type' => 'cell',
-			'html' => '<a href="' . $__templater->func('link', array($__vars['route'], null, array('order' => 'view_count', 'direction' => $__vars['xf']['options']['bh_default_direction'], ), ), true) . '" rel="nofollow">' . 'Views' . '</a>',
+			'html' => '<a href="' . $__templater->func('link', array($__vars['route'], null, array('order' => 'view_count', 'direction' => $__vars['revDirection'], ), ), true) . '" rel="nofollow">' . 'Views' . '</a>',
 		),
 		array(
 			'_type' => 'cell',
-			'html' => '<a href="' . $__templater->func('link', array($__vars['route'], null, array('order' => 'rating_avg', 'direction' => $__vars['xf']['options']['bh_default_direction'], ), ), true) . '" rel="nofollow">' . 'Rating average' . '</a>',
+			'html' => '<a href="' . $__templater->func('link', array($__vars['route'], null, array('order' => 'rating_avg', 'direction' => $__vars['revDirection'], ), ), true) . '" rel="nofollow">' . 'Rating average' . '</a>',
 		),
 		array(
 			'_type' => 'cell',
-			'html' => '<a href="' . $__templater->func('link', array($__vars['route'], null, array('order' => 'review_count', 'direction' => $__vars['xf']['options']['bh_default_direction'], ), ), true) . '" rel="nofollow">' . 'Reviews' . '</a>',
+			'html' => '<a href="' . $__templater->func('link', array($__vars['route'], null, array('order' => 'review_count', 'direction' => $__vars['revDirection'], ), ), true) . '" rel="nofollow">' . 'Reviews' . '</a>',
 		))) . '
 				' . $__compilerTemp1 . '
 			', array(

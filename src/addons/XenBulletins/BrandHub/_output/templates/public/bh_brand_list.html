@@ -25,13 +25,15 @@
 	
 	<div class="block-body">
 		<xf:if is="$brands is not empty">
+		    <xf:set var="$revDirection" value="{{ $filters.direction ? ($filters.direction == 'desc' ? 'asc' : 'desc') : $xf.options.bh_default_direction }}" />
+
 			<xf:datalist data-xf-init="responsive-data-list">
 				<xf:datarow rowtype="header">
-					<xf:cell><a href="{{ link($route, null, {'order': 'brand_title', 'direction': $xf.options.bh_default_direction}) }}" rel="nofollow">{{ phrase('bh_brand_title') }}</a></xf:cell>
-					<xf:cell><a href="{{ link($route, null, {'order': 'discussion_count', 'direction': $xf.options.bh_default_direction}) }}" rel="nofollow">{{ phrase('bh_discussions') }}</a></xf:cell>
-					<xf:cell><a href="{{ link($route, null, {'order': 'view_count', 'direction': $xf.options.bh_default_direction}) }}" rel="nofollow">{{ phrase('bh_views') }}</a></xf:cell>
-					<xf:cell><a href="{{ link($route, null, {'order': 'rating_avg', 'direction': $xf.options.bh_default_direction}) }}" rel="nofollow">{{ phrase('bh_rating_avg') }}</a></xf:cell>
-					<xf:cell><a href="{{ link($route, null, {'order': 'review_count', 'direction': $xf.options.bh_default_direction}) }}" rel="nofollow">{{ phrase('bh_reviews') }}</a></xf:cell>
+					<xf:cell><a href="{{ link($route, null, {'order': 'brand_title', 'direction': $revDirection}) }}" rel="nofollow">{{ phrase('bh_brand_title') }}</a></xf:cell>
+					<xf:cell><a href="{{ link($route, null, {'order': 'discussion_count', 'direction': $revDirection}) }}" rel="nofollow">{{ phrase('bh_discussions') }}</a></xf:cell>
+					<xf:cell><a href="{{ link($route, null, {'order': 'view_count', 'direction': $revDirection}) }}" rel="nofollow">{{ phrase('bh_views') }}</a></xf:cell>
+					<xf:cell><a href="{{ link($route, null, {'order': 'rating_avg', 'direction': $revDirection}) }}" rel="nofollow">{{ phrase('bh_rating_avg') }}</a></xf:cell>
+					<xf:cell><a href="{{ link($route, null, {'order': 'review_count', 'direction': $revDirection}) }}" rel="nofollow">{{ phrase('bh_reviews') }}</a></xf:cell>
 
 				</xf:datarow>
 				<xf:foreach loop="$brands" value="$brand">

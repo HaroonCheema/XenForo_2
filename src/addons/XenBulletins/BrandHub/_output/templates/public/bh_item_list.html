@@ -30,13 +30,15 @@
 	
 	<div class="block-body">
 		<xf:if is="$items is not empty">
+			<xf:set var="$revDirection" value="{{ $filters.direction ? ($filters.direction == 'desc' ? 'asc' : 'desc') : $xf.options.bh_item_default_direction }}" />
+			
 			<xf:datalist data-xf-init="responsive-data-list">
 				<xf:datarow rowtype="header">
-					<xf:cell><a href="{{ link($route, $item, {'order': 'item_title', 'direction': $xf.options.bh_item_default_direction}) }}" rel="nofollow">{{ phrase('bh_item_title') }}</a></xf:cell>
-					<xf:cell><a href="{{ link($route, $item, {'order': 'discussion_count', 'direction': $xf.options.bh_item_default_direction}) }}" rel="nofollow">{{ phrase('bh_discussions') }}</a></xf:cell>
-					<xf:cell><a href="{{ link($route, $item, {'order': 'view_count', 'direction': $xf.options.bh_item_default_direction}) }}" rel="nofollow">{{ phrase('bh_views') }}</a></xf:cell>
-					<xf:cell><a href="{{ link($route, $item, {'order': 'rating_avg', 'direction': $xf.options.bh_item_default_direction}) }}" rel="nofollow">{{ phrase('bh_rating_avg') }}</a></xf:cell>
-					<xf:cell><a href="{{ link($route, $item, {'order': 'review_count', 'direction': $xf.options.bh_item_default_direction}) }}" rel="nofollow">{{ phrase('bh_reviews') }}</a></xf:cell>
+					<xf:cell><a href="{{ link($route, $item, {'order': 'item_title', 'direction': $revDirection}) }}" rel="nofollow">{{ phrase('bh_item_title') }}</a></xf:cell>
+					<xf:cell><a href="{{ link($route, $item, {'order': 'discussion_count', 'direction': $revDirection}) }}" rel="nofollow">{{ phrase('bh_discussions') }}</a></xf:cell>
+					<xf:cell><a href="{{ link($route, $item, {'order': 'view_count', 'direction': $revDirection}) }}" rel="nofollow">{{ phrase('bh_views') }}</a></xf:cell>
+					<xf:cell><a href="{{ link($route, $item, {'order': 'rating_avg', 'direction': $revDirection}) }}" rel="nofollow">{{ phrase('bh_rating_avg') }}</a></xf:cell>
+					<xf:cell><a href="{{ link($route, $item, {'order': 'review_count', 'direction': $revDirection}) }}" rel="nofollow">{{ phrase('bh_reviews') }}</a></xf:cell>
 
 				</xf:datarow>
 				<xf:foreach loop="$items" value="$item">

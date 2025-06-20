@@ -3222,7 +3222,7 @@ a.file-insertLink,
 		</xf:datarow>
 	</xf:if>
 </xf:macro>]]></template>
-  <template type="public" title="bh_brand_list" version_id="3050200" version_string="3.5.2 Alpha"><![CDATA[<xf:title class="bh-title">{{ phrase('bh_select_brand') }}</xf:title>
+  <template type="public" title="bh_brand_list" version_id="3050400" version_string="3.5.4 Alpha"><![CDATA[<xf:title class="bh-title">{{ phrase('bh_select_brand') }}</xf:title>
 
 <xf:css src="bh_brandHub_list.less" />
 
@@ -3249,13 +3249,15 @@ a.file-insertLink,
 	
 	<div class="block-body">
 		<xf:if is="$brands is not empty">
+		    <xf:set var="$revDirection" value="{{ $filters.direction ? ($filters.direction == 'desc' ? 'asc' : 'desc') : $xf.options.bh_default_direction }}" />
+
 			<xf:datalist data-xf-init="responsive-data-list">
 				<xf:datarow rowtype="header">
-					<xf:cell><a href="{{ link($route, null, {'order': 'brand_title', 'direction': $xf.options.bh_default_direction}) }}" rel="nofollow">{{ phrase('bh_brand_title') }}</a></xf:cell>
-					<xf:cell><a href="{{ link($route, null, {'order': 'discussion_count', 'direction': $xf.options.bh_default_direction}) }}" rel="nofollow">{{ phrase('bh_discussions') }}</a></xf:cell>
-					<xf:cell><a href="{{ link($route, null, {'order': 'view_count', 'direction': $xf.options.bh_default_direction}) }}" rel="nofollow">{{ phrase('bh_views') }}</a></xf:cell>
-					<xf:cell><a href="{{ link($route, null, {'order': 'rating_avg', 'direction': $xf.options.bh_default_direction}) }}" rel="nofollow">{{ phrase('bh_rating_avg') }}</a></xf:cell>
-					<xf:cell><a href="{{ link($route, null, {'order': 'review_count', 'direction': $xf.options.bh_default_direction}) }}" rel="nofollow">{{ phrase('bh_reviews') }}</a></xf:cell>
+					<xf:cell><a href="{{ link($route, null, {'order': 'brand_title', 'direction': $revDirection}) }}" rel="nofollow">{{ phrase('bh_brand_title') }}</a></xf:cell>
+					<xf:cell><a href="{{ link($route, null, {'order': 'discussion_count', 'direction': $revDirection}) }}" rel="nofollow">{{ phrase('bh_discussions') }}</a></xf:cell>
+					<xf:cell><a href="{{ link($route, null, {'order': 'view_count', 'direction': $revDirection}) }}" rel="nofollow">{{ phrase('bh_views') }}</a></xf:cell>
+					<xf:cell><a href="{{ link($route, null, {'order': 'rating_avg', 'direction': $revDirection}) }}" rel="nofollow">{{ phrase('bh_rating_avg') }}</a></xf:cell>
+					<xf:cell><a href="{{ link($route, null, {'order': 'review_count', 'direction': $revDirection}) }}" rel="nofollow">{{ phrase('bh_reviews') }}</a></xf:cell>
 
 				</xf:datarow>
 				<xf:foreach loop="$brands" value="$brand">
@@ -4931,7 +4933,7 @@ a.file-insertLink,
 		{{ bb_code($mediaItem.media_tag, 'xfmg_media', $mediaItem) }}
 	</xf:if>
 </xf:macro>]]></template>
-  <template type="public" title="bh_item_list" version_id="3050300" version_string="3.5.3 Alpha"><![CDATA[<xf:title class="bh-title">{{$brandObj.brand_title}} {{ phrase('items') }}</xf:title>
+  <template type="public" title="bh_item_list" version_id="3050400" version_string="3.5.4 Alpha"><![CDATA[<xf:title class="bh-title">{{$brandObj.brand_title}} {{ phrase('items') }}</xf:title>
 
 <xf:css src="bh_brandHub_list.less" />
 
@@ -4963,13 +4965,15 @@ a.file-insertLink,
 	
 	<div class="block-body">
 		<xf:if is="$items is not empty">
+			<xf:set var="$revDirection" value="{{ $filters.direction ? ($filters.direction == 'desc' ? 'asc' : 'desc') : $xf.options.bh_item_default_direction }}" />
+			
 			<xf:datalist data-xf-init="responsive-data-list">
 				<xf:datarow rowtype="header">
-					<xf:cell><a href="{{ link($route, $item, {'order': 'item_title', 'direction': $xf.options.bh_item_default_direction}) }}" rel="nofollow">{{ phrase('bh_item_title') }}</a></xf:cell>
-					<xf:cell><a href="{{ link($route, $item, {'order': 'discussion_count', 'direction': $xf.options.bh_item_default_direction}) }}" rel="nofollow">{{ phrase('bh_discussions') }}</a></xf:cell>
-					<xf:cell><a href="{{ link($route, $item, {'order': 'view_count', 'direction': $xf.options.bh_item_default_direction}) }}" rel="nofollow">{{ phrase('bh_views') }}</a></xf:cell>
-					<xf:cell><a href="{{ link($route, $item, {'order': 'rating_avg', 'direction': $xf.options.bh_item_default_direction}) }}" rel="nofollow">{{ phrase('bh_rating_avg') }}</a></xf:cell>
-					<xf:cell><a href="{{ link($route, $item, {'order': 'review_count', 'direction': $xf.options.bh_item_default_direction}) }}" rel="nofollow">{{ phrase('bh_reviews') }}</a></xf:cell>
+					<xf:cell><a href="{{ link($route, $item, {'order': 'item_title', 'direction': $revDirection}) }}" rel="nofollow">{{ phrase('bh_item_title') }}</a></xf:cell>
+					<xf:cell><a href="{{ link($route, $item, {'order': 'discussion_count', 'direction': $revDirection}) }}" rel="nofollow">{{ phrase('bh_discussions') }}</a></xf:cell>
+					<xf:cell><a href="{{ link($route, $item, {'order': 'view_count', 'direction': $revDirection}) }}" rel="nofollow">{{ phrase('bh_views') }}</a></xf:cell>
+					<xf:cell><a href="{{ link($route, $item, {'order': 'rating_avg', 'direction': $revDirection}) }}" rel="nofollow">{{ phrase('bh_rating_avg') }}</a></xf:cell>
+					<xf:cell><a href="{{ link($route, $item, {'order': 'review_count', 'direction': $revDirection}) }}" rel="nofollow">{{ phrase('bh_reviews') }}</a></xf:cell>
 
 				</xf:datarow>
 				<xf:foreach loop="$items" value="$item">
@@ -5639,7 +5643,7 @@ a.file-insertLink,
 		href="{{ link({$route}, $brand, {'type': 'discussion_count'}) }}" rel="nofollow">{{ phrase('bh_most_discussed') }}</a>
 	
 </xf:macro>]]></template>
-  <template type="public" title="bh_overview_macros" version_id="3050200" version_string="3.5.2 Alpha"><![CDATA[<xf:macro name="list_filter_bar" arg-filters="!" arg-baseLinkPath="!" arg-content="{{ null }}">
+  <template type="public" title="bh_overview_macros" version_id="3050400" version_string="3.5.4 Alpha"><![CDATA[<xf:macro name="list_filter_bar" arg-filters="!" arg-baseLinkPath="!" arg-content="{{ null }}">
 	<xf:set var="$sortOrders" value="{{ {
 									 
 		'item_id': phrase('bh_item_id'),

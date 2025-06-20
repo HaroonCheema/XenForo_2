@@ -242,7 +242,6 @@ class Brands extends AbstractController
             'direction' => 'str'
         ]);
 
-
         $sorts = $this->getAvailableSorts();
 
         if ($input['order'] && isset($sorts[$input['order']])) {
@@ -250,18 +249,18 @@ class Brands extends AbstractController
                 $input['direction'] = 'desc';
             }
 
-            if ($brand) {
-                $defaultOrder = $this->options()->bh_itemListDefaultOrder;
-                $defaultDir =  $this->options()->bh_item_default_direction;
-            } else {
-                $defaultOrder = $this->options()->bh_brandListDefaultOrder;
-                $defaultDir =  $this->options()->bh_default_direction;
-            }
+            // if ($brand) {
+            //     $defaultOrder = $this->options()->bh_itemListDefaultOrder;
+            //     $defaultDir =  $this->options()->bh_item_default_direction;
+            // } else {
+            //     $defaultOrder = $this->options()->bh_brandListDefaultOrder;
+            //     $defaultDir =  $this->options()->bh_default_direction;
+            // }
 
-            if ($input['order'] != $defaultOrder || $input['direction'] != $defaultDir) {
-                $filters['order'] = $input['order'];
-                $filters['direction'] = $input['direction'];
-            }
+            // if ($input['order'] != $defaultOrder || $input['direction'] != $defaultDir) {
+            $filters['order'] = $input['order'];
+            $filters['direction'] = $input['direction'];
+            // }
         }
 
 
