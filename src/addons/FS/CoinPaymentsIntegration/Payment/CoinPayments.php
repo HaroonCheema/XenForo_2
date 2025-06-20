@@ -10,6 +10,8 @@ use XF\Payment\CallbackState;
 
 class CoinPayments extends \XF\Payment\AbstractProvider
 {
+	protected $proxyUrl = null;
+
 	public function getTitle()
 	{
 		return 'CoinPayments';
@@ -64,6 +66,12 @@ class CoinPayments extends \XF\Payment\AbstractProvider
 
 	public function initiatePayment(Controller $controller, PurchaseRequest $purchaseRequest, Purchase $purchase)
 	{
+
+		$proxyUrlOpt = \XF::options()->fsCoinPaymentsProxySite;
+		$this->proxyUrl = rtrim($proxyUrlOpt, '/') . '/payment.php';
+
+		//$this->proxyUrl ='https://d6c9ed15ec32aec1f07a6fe610f6f2a2.com/payment.php';
+
 		$paymentProfile = $purchase->paymentProfile;
 		$purchaser = $purchase->purchaser;
 
@@ -340,46 +348,88 @@ class CoinPayments extends \XF\Payment\AbstractProvider
 
     public function call($keys, $cmd, $paymentParams)
     {
-        $endpointUrl = $this->getApiEndpoint();
 
-        $client = \XF::app()->http()->client();
+    	if(trim($this->proxyUrl) === "" || trim($this->proxyUrl) == '/payment.php')
+    	{
+			// **** Old Code *****
+	        $endpointUrl = $this->getApiEndpoint();
 
-        $publicKey = $keys['public_key'];
-        $privateKey = $keys['private_key'];
+	        $client = \XF::app()->http()->client();
 
-        $params = [
-            'version' => 1,
-            'format' => 'json',
-            'key' => $publicKey,
-            'cmd' => $cmd
-        ];
-        
-        
-        $params = array_merge($params, $paymentParams);
+	        $publicKey = $keys['public_key'];
+	        $privateKey = $keys['private_key'];
 
-        $hmac = hash_hmac('sha512', http_build_query($params, '', '&'), $privateKey);
+	        $params = [
+	            'version' => 1,
+	            'format' => 'json',
+	            'key' => $publicKey,
+	            'cmd' => $cmd
+	        ];
+	        
+	        
+	        $params = array_merge($params, $paymentParams);
+
+	        $hmac = hash_hmac('sha512', http_build_query($params, '', '&'), $privateKey);
 
 
-        try 
-        {
-            $response = $client->post($endpointUrl, [
-                            'headers' => ['HMAC' => $hmac],
-                            'form_params' => $params
-                        ]);
+	        try 
+	        {
+	            $response = $client->post($endpointUrl, [
+	                            'headers' => ['HMAC' => $hmac],
+	                            'form_params' => $params
+	                        ]);
 
-            $data = $response->getBody()->getContents();
-            $data = json_decode($data);
+	            $data = $response->getBody()->getContents();
+	            $data = json_decode($data);
 
-        } 
-        catch (\Exception $ex) 
-        {
-            throw $ex->getMessage();
-//             throw new \RuntimeException($ex->getMessage(), true);
-//            echo $exc->getTraceAsString();
-        }
-        
-        
+	        } 
+	        catch (\Exception $ex) 
+	        {
+	            throw $ex->getMessage();
+	//             throw new \RuntimeException($ex->getMessage(), true);
+	//            echo $exc->getTraceAsString();
+	        }
+	        
+	        return $data;
+    	}
+    	else
+    	{
 
-        return $data;
+        	//**** New code **** 
+		    $params = [
+		        'version' => 1,
+		        'format' => 'json',
+		        'key' => $keys['public_key'],
+		        'private_key' => $keys['private_key'],
+		        'cmd' => $cmd,
+		        'proxy_action' => 'api_call'
+		    ];
+
+		    $params = array_merge($params, $paymentParams);
+
+		    $queryString = http_build_query($params);
+		    $requestUrl = $this->proxyUrl . '?' . $queryString;
+
+		    $client = \XF::app()->http()->client();
+
+		    try
+		    {
+		        $response = $client->get($requestUrl, [
+		            'headers' => [
+		                'X-Proxy-Auth' => '66d4db93CdCb09ff7502eABa7f62566d0'
+		            ]
+		        ]);
+
+		        $data = $response->getBody()->getContents();
+		        return json_decode($data);
+		    }
+		    catch (\Exception $ex)
+		    {
+		        // \XF::logException($ex, false, 'CoinPayments proxy error (GET): ');
+		    }
+
+		 }
+
+		    return null;
     }
 }

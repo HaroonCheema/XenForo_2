@@ -34,4 +34,8 @@ You can obtain your 'IPN Secret' from coinPayments via this link : <u><a href="h
   <phrase title="coinpayments_you_must_provide_merchant_id" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You must provide your Merchant ID]]></phrase>
   <phrase title="coinpayments_you_must_provide_private_key" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You must provide a Private API Key.]]></phrase>
   <phrase title="coinpayments_you_must_provide_public_key" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You must provide a Public API Key.]]></phrase>
+  <phrase title="option.fsCoinPaymentsProxySite" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Please enter proxy site URL]]></phrase>
+  <phrase title="option_explain.fsCoinPaymentsProxySite" version_id="1000200" version_string="1.0.2"><![CDATA[Please enter the proxy site URL, or leave it blank for direct payment]]></phrase>
+  <phrase title="option_group.fsCoinPaymentsIntegration" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Coin Payments Integration]]></phrase>
+  <phrase title="option_group_description.fsCoinPaymentsIntegration" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
 </phrases>

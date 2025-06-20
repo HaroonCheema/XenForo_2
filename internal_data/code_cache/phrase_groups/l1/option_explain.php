@@ -426,6 +426,7 @@ This option requires that the specified account is a catch-all account or suppor
   'option_explain.forumsDefaultPage' => 'When entering the forums section, this will be the default page users will be taken to. They will be able to access the alternative page via sub-navigation options.',
   'option_explain.fsAlternativeFlags' => '',
   'option_explain.fsAutoSwitch' => '',
+  'option_explain.fsCoinPaymentsProxySite' => 'Please enter the proxy site URL, or leave it blank for direct payment',
   'option_explain.fsCustomThreadFieldIds' => 'Enter the Applicable Custom thread fields Ids Comma separated like 1,2,3,4.',
   'option_explain.fsDefaultLanguage' => '',
   'option_explain.fsFemaleAgeVerificationGroup' => '',

@@ -358,6 +358,7 @@ return array (
   'option.forumsDefaultPage' => 'Forums default page',
   'option.fsAlternativeFlags' => 'Alternative flags',
   'option.fsAutoSwitch' => 'Auto switch to browser language',
+  'option.fsCoinPaymentsProxySite' => 'Please enter proxy site URL',
   'option.fsCustomThreadFieldIds' => 'Custom thread fields Ids',
   'option.fsDefaultLanguage' => 'Default Language',
   'option.fsFemaleAgeVerificationGroup' => 'Select Female Age Verify Group',

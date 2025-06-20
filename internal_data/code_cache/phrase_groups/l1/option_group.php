@@ -38,6 +38,7 @@ return array (
   'option_group.discussionOptions' => 'Threads,  discussions and conversations',
   'option_group.emailOptions' => 'Email options',
   'option_group.form_thread_moderation' => '[FS] Form Thread Moderation',
+  'option_group.fsCoinPaymentsIntegration' => '[FS] Coin Payments Integration',
   'option_group.fsEscrow' => '[FS] Escrow',
   'option_group.fs_MediaTagSetting' => '[FS] Media-Tag-Setting',
   'option_group.fs_age_verification' => '[FS] Female Age Verification',
