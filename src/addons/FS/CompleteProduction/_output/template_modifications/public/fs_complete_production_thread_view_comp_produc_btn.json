@@ -1,0 +1,9 @@
+{
+    "template": "thread_view",
+    "description": "fs_complete_production_thread_view_comp_produc_btn",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:extension name=\"thread_action_buttons\">",
+    "replace": "$0\n\n<xf:if is=\"$thread.canCompleteProduction()\">\n\t<xf:button href=\"{{ link('threads/complete-production', $thread) }}\" class=\"button--link\" overlay=\"true\">\n\t\t{{ phrase('fs_production_complete') }}\n\t</xf:button>\n</xf:if>\n<xf:if is=\"$thread.canReceiveMoney()\">\n\t<xf:button href=\"{{ link('threads/receive-money', $thread) }}\" class=\"button--link\" overlay=\"true\">\n\t\t{{ phrase('fs_production_receive_money') }}\n\t</xf:button>\n</xf:if>"
+}

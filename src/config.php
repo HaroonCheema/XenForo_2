@@ -19,5 +19,5 @@ $config['enableLivePayments'] = false;
 
 $config['debug'] = true;
 
-$config['development']['defaultAddOn'] = 'ThemeHouse/KeywordReplace';
+$config['development']['defaultAddOn'] = 'FS/CompleteProduction';
 $config['development']['enabled'] = true;

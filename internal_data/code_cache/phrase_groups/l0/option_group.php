@@ -61,6 +61,7 @@ return array (
   'option_group.fs_payment_redirection' => '[FS] Payment Redirection',
   'option_group.fs_post_schdueling' => '[FS] Post schedule',
   'option_group.fs_private_conversation' => '[FS] Private Coversation',
+  'option_group.fs_production_complete' => '[FS] Production',
   'option_group.fs_question_answers' => '[FS] Question-Answers',
   'option_group.fs_random_username_passwords' => '[FS] Random Username',
   'option_group.fs_rejected_user' => '[FS] Approve Rejected User',

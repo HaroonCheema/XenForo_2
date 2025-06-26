@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="thread_view" modification_key="fs_complete_production_thread_view_comp_produc_btn" description="fs_complete_production_thread_view_comp_produc_btn" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:extension name="thread_action_buttons">]]></find>
+    <replace><![CDATA[$0
+
+<xf:if is="$thread.canCompleteProduction()">
+	<xf:button href="{{ link('threads/complete-production', $thread) }}" class="button--link" overlay="true">
+		{{ phrase('fs_production_complete') }}
+	</xf:button>
+</xf:if>
+<xf:if is="$thread.canReceiveMoney()">
+	<xf:button href="{{ link('threads/receive-money', $thread) }}" class="button--link" overlay="true">
+		{{ phrase('fs_production_receive_money') }}
+	</xf:button>
+</xf:if>]]></replace>
+  </modification>
+</template_modifications>

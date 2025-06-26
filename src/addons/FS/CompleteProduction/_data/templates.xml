@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="public" title="fs_production_complete_product" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('fs_production_complete_title') }}</xf:title>
+
+<xf:breadcrumb source="$thread.getBreadcrumbs()" />
+
+<xf:form action="{{ link('threads/complete-production', $thread) }}" class="block" ajax="true">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:inforow rowtype="confirm">
+				{{ phrase('fs_production_you_sure_you_want_to_comnplete_this_product') }}
+			</xf:inforow>
+
+		</div>
+		<xf:submitrow submit="{{ phrase('fs_production_submit') }}" rowtype="simple" />
+	</div>
+</xf:form>]]></template>
+  <template type="public" title="fs_production_receive_money" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('fs_production_receive_money_title') }}</xf:title>
+
+<xf:breadcrumb source="$thread.getBreadcrumbs()" />
+
+<xf:form action="{{ link('threads/receive-money', $thread) }}" class="block" ajax="true">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:inforow rowtype="confirm">
+				{{ phrase('fs_production_you_sure_you_want_to_receive_money') }}
+			</xf:inforow>
+
+		</div>
+		<xf:submitrow submit="{{ phrase('fs_production_receive_submit') }}" rowtype="simple" />
+	</div>
+</xf:form>]]></template>
+</templates>

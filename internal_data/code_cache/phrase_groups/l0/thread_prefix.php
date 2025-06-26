@@ -5,7 +5,7 @@ return array (
   'thread_prefix.11' => 'Status # 1',
   'thread_prefix.12' => 'Status # 2',
   'thread_prefix.13' => 'Status # 3',
-  'thread_prefix.2' => 'abc',
+  'thread_prefix.2' => 'Invoice Required',
   'thread_prefix.3' => 'xyz Prefix',
   'thread_prefix.4' => 'Auction',
   'thread_prefix.5' => 'Testing',

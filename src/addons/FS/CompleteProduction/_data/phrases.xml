@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="fs_complete_product_text" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Product has been completed.]]></phrase>
+  <phrase title="fs_product_money_received_text" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Transfer has been received.]]></phrase>
+  <phrase title="fs_production_complete" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Complete Production]]></phrase>
+  <phrase title="fs_production_complete_title" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Complete Production]]></phrase>
+  <phrase title="fs_production_receive_money" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Receive Money]]></phrase>
+  <phrase title="fs_production_receive_money_title" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Receive Money]]></phrase>
+  <phrase title="fs_production_receive_submit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Received]]></phrase>
+  <phrase title="fs_production_submit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Completed]]></phrase>
+  <phrase title="fs_production_you_sure_you_want_to_comnplete_this_product" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Are you sure you want to complete this product?]]></phrase>
+  <phrase title="fs_production_you_sure_you_want_to_receive_money" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Are you sure, Transfer has been received?]]></phrase>
+  <phrase title="option.fs_complete_production_prefix_id" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Complete production prefix id]]></phrase>
+  <phrase title="option.fs_production_btn_forums" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Applicable Forums]]></phrase>
+  <phrase title="option.fs_receive_money_prefix_id" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Receive money prefix id]]></phrase>
+  <phrase title="option_explain.fs_complete_production_prefix_id" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter custom thread prefix id here related to complete production.]]></phrase>
+  <phrase title="option_explain.fs_production_btn_forums" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_explain.fs_receive_money_prefix_id" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter custom thread prefix id here related to receive money.]]></phrase>
+  <phrase title="option_group.fs_production_complete" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Production]]></phrase>
+  <phrase title="option_group_description.fs_production_complete" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+</phrases>

@@ -63,6 +63,7 @@ You may set a user into \'discouraged\' mode by editing their user profile, or d
   'option_group_description.fs_payment_redirection' => '',
   'option_group_description.fs_post_schdueling' => '',
   'option_group_description.fs_private_conversation' => 'Option here control the Private Coversation add-on.',
+  'option_group_description.fs_production_complete' => '',
   'option_group_description.fs_question_answers' => '',
   'option_group_description.fs_random_username_passwords' => '',
   'option_group_description.fs_rejected_user' => '',

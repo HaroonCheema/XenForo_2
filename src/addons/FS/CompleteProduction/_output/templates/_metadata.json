@@ -1,0 +1,12 @@
+{
+    "public/fs_production_complete_product.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "5b6cc6afa706f0d04eee77d34d8fcd7e"
+    },
+    "public/fs_production_receive_money.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "8c90ef20a87b1fe6ea79dc6a83b5a6b0"
+    }
+}

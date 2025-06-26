@@ -40,6 +40,35 @@ return array(
 {
 	$__finalCompiled = '';
 		$__finalCompiled .= '
+
+';
+	if ($__templater->method($__vars['thread'], 'canCompleteProduction', array())) {
+		$__finalCompiled .= '
+	' . $__templater->button('
+		' . 'Complete Production' . '
+	', array(
+			'href' => $__templater->func('link', array('threads/complete-production', $__vars['thread'], ), false),
+			'class' => 'button--link',
+			'overlay' => 'true',
+		), '', array(
+		)) . '
+';
+	}
+	$__finalCompiled .= '
+';
+	if ($__templater->method($__vars['thread'], 'canReceiveMoney', array())) {
+		$__finalCompiled .= '
+	' . $__templater->button('
+		' . 'Receive Money' . '
+	', array(
+			'href' => $__templater->func('link', array('threads/receive-money', $__vars['thread'], ), false),
+			'class' => 'button--link',
+			'overlay' => 'true',
+		), '', array(
+		)) . '
+';
+	}
+	$__finalCompiled .= '
 						
 						';
 	if ($__vars['canInlineMod']) {
