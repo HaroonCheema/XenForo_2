@@ -59,6 +59,12 @@
         "version_string": "1.0.0 Alpha",
         "hash": "7e5ae65763d766bab0b53e318917ea2d"
     },
+    "option.fs_complete_production_btn_text.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "1cecadee00719eedb4f275703108cb7d"
+    },
     "option.fs_complete_production_prefix_id.txt": {
         "global_cache": false,
         "version_id": 1000010,
@@ -76,6 +82,12 @@
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
         "hash": "8e0d29ca3adecb58e83615a0f06ee54c"
+    },
+    "option_explain.fs_complete_production_btn_text.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "3a6acde5fd0488b3509ea82e9c373c28"
     },
     "option_explain.fs_complete_production_prefix_id.txt": {
         "global_cache": false,

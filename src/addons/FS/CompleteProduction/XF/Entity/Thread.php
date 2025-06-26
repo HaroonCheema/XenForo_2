@@ -22,11 +22,15 @@ class Thread extends XFCP_Thread
     {
         $visitor = \XF::visitor();
         $options = \XF::options();
+
         $thread = $this;
         $message = $thread->FirstPost['message'] ?? '';
         $completionDate = false;
+        $btnConditionText = $options->fs_complete_production_btn_text ?? 'Transfer';
 
-        $pattern = '/\[TD\]COMPLETION DATE\[\/TD\]\s*\[TD\](.*?)\[\/TD\]/i';
+        // $pattern = '/\[TD\]COMPLETION DATE\[\/TD\]\s*\[TD\](.*?)\[\/TD\]/i';
+
+        $pattern = '/<td>\s*Completion Date\s*<\/td>\s*<td>\s*(\d{2}\/\d{2}\/\d{4})\s*<\/td>/i';
 
         if (preg_match($pattern, $message, $matches)) {
             $completionDateStr = $matches[1];
@@ -43,6 +47,7 @@ class Thread extends XFCP_Thread
             && $completionDate
             && $completionDate <= $today
             && $thread->is_product_completed == 0
+            && !preg_match('/\b' . $btnConditionText . '\b/i', $thread->title)
         ) {
             return true;
         }
@@ -54,10 +59,11 @@ class Thread extends XFCP_Thread
     {
         $options = \XF::options();
         $thread = $this;
+        $btnConditionText = $options->fs_complete_production_btn_text ?? 'Transfer';
 
         if (
             in_array($thread->node_id, $options->fs_production_btn_forums)
-            && preg_match('/\btransfer\b/i', $thread->title)
+            && preg_match('/\b' . $btnConditionText . '\b/i', $thread->title)
             && $thread->is_transfer_received == 0
 
         ) {

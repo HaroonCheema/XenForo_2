@@ -400,6 +400,7 @@ return array (
   'option.fs_cancel_multiple_subscriptions_userGroup' => 'Select user group',
   'option.fs_change_the_path_to_the_tmp_file' => 'Path to the TMP file',
   'option.fs_color' => 'Select The Colour',
+  'option.fs_complete_production_btn_text' => 'Complete Production Text',
   'option.fs_complete_production_prefix_id' => 'Complete production prefix id',
   'option.fs_custom_thread_image_dimensions' => 'Thread image dimensions',
   'option.fs_email_limit' => 'Random Email Length',

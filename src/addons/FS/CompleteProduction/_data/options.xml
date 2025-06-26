@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <options>
+  <option option_id="fs_complete_production_btn_text" edit_format="textbox" data_type="string">
+    <default_value>Transfer</default_value>
+    <relation group_id="fs_production_complete" display_order="4"/>
+  </option>
   <option option_id="fs_complete_production_prefix_id" edit_format="textbox" data_type="string">
     <default_value></default_value>
     <relation group_id="fs_production_complete" display_order="1"/>
