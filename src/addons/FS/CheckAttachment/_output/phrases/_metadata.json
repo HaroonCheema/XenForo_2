@@ -1,4 +1,10 @@
 {
+    "fs_attachment_not_allowed.txt": {
+        "global_cache": false,
+        "version_id": 1000400,
+        "version_string": "1.0.4 Alpha",
+        "hash": "cf9e5ab479c6f8f0cf21d8f460367a5e"
+    },
     "fs_attachment_required.txt": {
         "global_cache": false,
         "version_id": 1000010,
@@ -11,11 +17,23 @@
         "version_string": "1.0.0 Alpha",
         "hash": "216c63c94551f2cfe5e92b3bf1cd8144"
     },
+    "option.fs_ca_exclude_forum.txt": {
+        "global_cache": false,
+        "version_id": 1000400,
+        "version_string": "1.0.4 Alpha",
+        "hash": "3edc48feedde446b2b644fac684b1fba"
+    },
     "option_explain.ca_applicable_forum.txt": {
         "global_cache": false,
-        "version_id": 1000100,
-        "version_string": "1.0.1 Alpha",
-        "hash": "e5529413eabad3f4b39822b01cee6bff"
+        "version_id": 1000400,
+        "version_string": "1.0.4 Alpha",
+        "hash": "624743cf22d3d521d1dfeaddb8bbe82d"
+    },
+    "option_explain.fs_ca_exclude_forum.txt": {
+        "global_cache": false,
+        "version_id": 1000400,
+        "version_string": "1.0.4 Alpha",
+        "hash": "171e1846515a043c330025eab70ae1cd"
     },
     "option_group.checkAttachment.txt": {
         "global_cache": false,

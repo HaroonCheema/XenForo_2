@@ -396,6 +396,7 @@ return array (
   'option.fs_bitcoin_six_month_widget_uid' => 'Six Months Premium widget uid',
   'option.fs_bitcoin_vip_companion' => 'VIP Companion group id',
   'option.fs_bitcoin_vip_companion_widget_uid' => 'VIP Companion widget uid',
+  'option.fs_ca_exclude_forum' => 'Only text forums',
   'option.fs_cancel_multiple_subscriptions_mintues' => 'User group timeout',
   'option.fs_cancel_multiple_subscriptions_userGroup' => 'Select user group',
   'option.fs_change_the_path_to_the_tmp_file' => 'Path to the TMP file',

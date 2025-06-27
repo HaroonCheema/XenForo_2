@@ -1,1 +1,1 @@
-Select forums for check attachment.
+Select forums for allowed attachment only in <b>first post</b>.

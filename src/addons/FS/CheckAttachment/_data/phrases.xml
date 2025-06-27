@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <phrases>
+  <phrase title="fs_attachment_not_allowed" version_id="1000400" version_string="1.0.4 Alpha"><![CDATA[Attachments or Media not allowed...!]]></phrase>
   <phrase title="fs_attachment_required" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Attachment Required...!]]></phrase>
   <phrase title="option.ca_applicable_forum" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Applicable forums]]></phrase>
-  <phrase title="option_explain.ca_applicable_forum" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Select forums for check attachmnt.]]></phrase>
+  <phrase title="option.fs_ca_exclude_forum" version_id="1000400" version_string="1.0.4 Alpha"><![CDATA[Only text forums]]></phrase>
+  <phrase title="option_explain.ca_applicable_forum" version_id="1000400" version_string="1.0.4 Alpha"><![CDATA[Select forums for allowed attachment only in <b>first post</b>.]]></phrase>
+  <phrase title="option_explain.fs_ca_exclude_forum" version_id="1000400" version_string="1.0.4 Alpha"><![CDATA[Select forums for allowed only text.]]></phrase>
   <phrase title="option_group.checkAttachment" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Check Attachment]]></phrase>
   <phrase title="option_group_description.checkAttachment" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[For check attachments exist or not.]]></phrase>
 </phrases>

@@ -19,5 +19,5 @@ $config['enableLivePayments'] = false;
 
 $config['debug'] = true;
 
-$config['development']['defaultAddOn'] = 'FS/CompleteProduction';
+$config['development']['defaultAddOn'] = 'FS/CheckAttachment';
 $config['development']['enabled'] = true;
