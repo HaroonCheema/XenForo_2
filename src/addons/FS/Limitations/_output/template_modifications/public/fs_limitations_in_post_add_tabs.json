@@ -1,0 +1,9 @@
+{
+    "template": "post_macros",
+    "description": "fs_limitations_in_post_add_tabs",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:macro template=\"message_macros\" name=\"user_info\" arg-user=\"{$post.User}\"\n\t\t\t\t\t\t\targ-fallbackName=\"{$post.username}\"\n\t\t\t\t\t\t\targ-includeMicrodata=\"{$includeMicrodata}\"\n\t\t\t\t\t\t\targ-itemProp=\"author\" />",
+    "replace": "$0\n\n<br/>\n<div class=\"blockMessage\">\n\t<h2 class=\"block-tabHeader block-tabHeaderfs block-tabHeader--memberTabs tabs hScroller\" style=\"display:block\"\n\t\trole=\"tablist\">\n\t\t<span class=\"hScroller-scroll\">\n\t\t\t<a class=\"tabs-tab fsblock\"href=\"{{ link('members/#alert', $post.User) }}\" role=\"tab\">Alert</a>\n\t\t\t<xf:if is=\"$post.User.account_type == 2\">\n\t\t\t<a class=\"tabs-tab fsblock\" href=\"{{ link('members/#ads', $post.User) }}\" role=\"tab\">My Ads</a>\n\t\t\t</xf:if>\t\n\t\t\t<a class=\"tabs-tab fsblock\" href=\"{{ link('members/#reviews', $post.User) }}\" role=\"tab\">My Reviews</a>\n\t\t\t<a class=\"tabs-tab fsblock\" href=\"{{ link('members/#myvouch', $post.User) }}\" role=\"tab\">My Vouches</a>\n\t\t</span>\n\t</h2>\n</div>"
+}

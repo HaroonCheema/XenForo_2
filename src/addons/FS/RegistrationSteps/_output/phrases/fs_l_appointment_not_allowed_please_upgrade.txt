@@ -1,0 +1,1 @@
+Appointment not allowed please <a href="{upgradeUrl}"> upgrade </a> your account.

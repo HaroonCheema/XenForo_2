@@ -1,0 +1,9 @@
+{
+    "template": "member_view",
+    "description": "fs_limitations_member_view_hide_my_ads",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<a class=\"tabs-tab fsblock\" href=\"{{ link('members/ads', $user) }}\" id=\"ads\"\n\t\t\t\t\t\trole=\"tab\">My Ads</a>",
+    "replace": "<xf:if is=\"$user.account_type == 2\">\n\t$0\n</xf:if>"
+}

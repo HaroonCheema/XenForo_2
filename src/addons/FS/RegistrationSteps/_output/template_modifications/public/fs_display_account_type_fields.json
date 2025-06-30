@@ -1,0 +1,9 @@
+{
+    "template": "register_form",
+    "description": "Display Account Type Fields",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:captcharow label=\"{{ phrase('verification') }}\" hint=\"{{ phrase('required') }}\" context=\"xf_register\" />\n",
+    "replace": "<div class=\"js-hobbyist\">\n\t\t\t<xf:macro template=\"custom_fields_macros\" name=\"custom_fields_edit\"\n\t\targ-type=\"users\" arg-group=\"{{ null }}\"\n\t\targ-set=\"{$xf.visitor.Profile.getGroupTypeFields('hobbyist_fields')}\"\n\t\targ-additionalFilters=\"{{ ['registration'] }}\" />\n\t\t\t\t\n</div>\n\t\t\t\n<div class=\"js-provider\">\n\t\n\t<xf:include template=\"companion_verfication\"/>\n\n     <xf:macro template=\"custom_fields_macros\" name=\"custom_fields_edit\"\n\t\targ-type=\"users\" arg-group=\"{{ null }}\"\n\t\targ-set=\"{$xf.visitor.Profile.getGroupTypeFields('provider_fields')}\"\n\t\targ-additionalFilters=\"{{ ['registration'] }}\" />\t\t\n</div>\n$0"
+}

@@ -1,0 +1,13 @@
+{
+    "edit_format": "textbox",
+    "edit_format_params": "",
+    "data_type": "string",
+    "sub_options": [],
+    "validation_class": "",
+    "validation_method": "",
+    "advanced": false,
+    "default_value": "12,19,42,59,60,61,62,63,64,65,66,67,68,69,70,71,72",
+    "relations": {
+        "fs_limitations": 15
+    }
+}

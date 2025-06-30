@@ -1,0 +1,9 @@
+{
+    "template": "conversation_list",
+    "description": "fs_limitations_conversation_to_mailbox",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:title page=\"{$page}\">{{ phrase('conversations') }}</xf:title>",
+    "replace": "<xf:title page=\"{$page}\">{{ phrase('fs_limitations_mail_box') }}</xf:title>"
+}

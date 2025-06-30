@@ -1,0 +1,57 @@
+<dl class="formRow formRow--customField" data-field="ReceiveEmailfromOther">
+				<dt>
+					
+				</dt>
+				<dd>
+					<ul class="field_ReceiveEmailfromOther listColumns inputChoices" role="group" aria-labelledby="_xfUid-15-1751015160">
+							<span class="iconic-label">Verification</span>
+
+						</ul>
+						<div class="formRow-explain">For verification purposes, please select and include a link to your profile on another listing site. We accept profile links from P411 and TER, as well as profiles on similar sites. If you do not have a profile on another site, select “Get Verified” and we will verify your identity for a Sinsations profile.</div>
+	</dd>
+</dl>
+<xf:selectrow name="verify_key" value="{$input_20}" label="{{ phrase('verification') }}" required="true">
+	<xf:option value="Get Verified">Get Verified</xf:option>
+
+	<xf:option data-hide="true"
+	           data-xf-init="disabler"
+	           data-container=".js-p411" value="P411">P411</xf:option>
+	
+	<xf:option data-hide="true"
+	           data-xf-init="disabler"
+	           data-container=".js-privatedelights" value="Private Delights">Private Delights</xf:option>
+	
+	<xf:option data-hide="true"
+	           data-xf-init="disabler"
+	           data-container=".js-slixa" value="Slixa">Slixa</xf:option>
+
+	<xf:option data-hide="true"
+	           data-xf-init="disabler"
+	           data-container=".js-ter" value="TER">TER</xf:option>
+	
+	<xf:option data-hide="true"
+	           data-xf-init="disabler"
+	           data-container=".js-tryst" value="Tryst">Tryst</xf:option>
+
+</xf:selectrow>
+
+<div class="js-p411" data-platform="P411">
+	<xf:textboxrow name="verify_val" label="P411 ID" explain="0 of 7 max characters"  hint="{{ phrase('required') }}" />
+</div>
+
+
+<div class="js-privatedelights" data-platform="Private Delights" hint="{{ phrase('required') }}" >
+	<xf:textboxrow name="verify_val" label="Listing Site URL"  explain="Direct link to your profile on that site."/>
+</div>
+
+<div class="js-slixa" data-platform="Slixa" hint="{{ phrase('required') }}">
+	<xf:textboxrow name="verify_val" label="Listing Site URL"  explain="Direct link to your profile on that site."/>
+</div>
+
+<div class="js-ter" data-platform="TER">
+	<xf:textboxrow name="verify_val" label="TER Link"  explain="Direct link to your profile on that site."  hint="{{ phrase('required') }}" />
+</div>
+
+<div class="js-tryst" data-platform="Tryst">
+	<xf:textboxrow name="verify_val" label="Listing Site URL"  explain="Direct link to your profile on that site."  hint="{{ phrase('required') }}" />
+</div>

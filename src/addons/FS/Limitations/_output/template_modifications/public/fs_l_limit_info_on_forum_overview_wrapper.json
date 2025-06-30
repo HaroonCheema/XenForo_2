@@ -1,0 +1,9 @@
+{
+    "template": "forum_overview_wrapper",
+    "description": "show Discussion post limit info on forum list (forum_overview_wrapper)",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:pageaction>",
+    "replace": "$0\n<xf:include template=\"fs_discussion_post_limits_info\" />"
+}

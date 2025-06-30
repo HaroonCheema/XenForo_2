@@ -1,0 +1,9 @@
+{
+    "template": "forum_post_thread",
+    "description": "fs_limitations_forum_post_thread_review_notice",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:breadcrumb source=\"$forum.getBreadcrumbs()\" />",
+    "replace": "$0\n\n<xf:if is=\"in_array($forum.node_id, $xf.options.fs_register_Reviews_ids|split)\">\n\t<div class=\"blockMessage\">\n\t\t{{phrase('fs_limitations_reviews_forum_post_thread')}}\t\t\n\t</div>\n</xf:if>"
+}

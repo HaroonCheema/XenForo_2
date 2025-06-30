@@ -1,0 +1,9 @@
+{
+    "template": "fs_register_mail_input",
+    "description": "fs_limitations_change_type_field_drop_down",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:textboxrow name=\"type\" hint=\"{{phrase('fs_register_required')}}\" label=\"{{ phrase('fs_register_type') }}\"  required=\"true\" />",
+    "replace": "<xf:selectrow\n\t\t\t\t\t  name=\"type\"\n\t\t\t\t\t  label=\"{{ phrase('fs_register_type') }}\"\n\t\t\t\t\t  hint=\"{{ phrase('fs_register_required') }}\"\n\t\t\t\t\t  required=\"true\"\n\t\t\t\t\t  >\n\t\t\t<xf:option value=\"\">{{ phrase('none') }}</xf:option>\n\t\t\t<xf:option value=\"Incall\">{{ phrase('Incall') }}</xf:option>\n\t\t\t<xf:option value=\"Outcall\">{{ phrase('Outcall') }}</xf:option>\n\t\t</xf:selectrow>"
+}

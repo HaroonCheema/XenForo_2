@@ -1,0 +1,13 @@
+{
+    "edit_format": "spinbox",
+    "edit_format_params": "min=100\nmax=300",
+    "data_type": "positive_integer",
+    "sub_options": [],
+    "validation_class": "",
+    "validation_method": "",
+    "advanced": false,
+    "default_value": "150",
+    "relations": {
+        "fs_limitations": 10
+    }
+}

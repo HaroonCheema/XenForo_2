@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <cron>
   <entry entry_id="fs_resetDailyDiscussLimit" cron_class="FS\Limitations\Cron\Limits" cron_method="resetDailyDiscussionLimit" active="1"><![CDATA[{"day_type":"dom","dom":[-1],"hours":[0],"minutes":[0]}]]></entry>
+  <entry entry_id="fs_resetUserDailyAds" cron_class="FS\Limitations\Cron\Limits" cron_method="resetUserDailyAdsAndRepost" active="1"><![CDATA[{"day_type":"dom","dom":[-1],"hours":[23],"minutes":[59]}]]></entry>
 </cron>

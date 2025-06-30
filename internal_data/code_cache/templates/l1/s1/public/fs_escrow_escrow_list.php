@@ -79,7 +79,7 @@ return array(
 	} else {
 		$__finalCompiled .= '
 				<div class="block-body ' . $__templater->escape($__vars['type']) . '==\'my\' ? \'js-myLoadMore\' : \'js-mentionedLoadMore\' ">
-					<div class="block-row">' . 'No Data Found...!' . '</div>
+					<div class="block-row">' . 'No reviews Found' . '</div>
 				</div>
 			';
 	}

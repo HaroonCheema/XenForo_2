@@ -1,0 +1,153 @@
+<style>
+
+	.container1 {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	.box1 {
+		padding: 0px 20px 10px 20px;
+		text-align: center;
+		color: #fff;
+	}
+
+	.block1-minorHeader1 {
+		padding: 6px 10px;
+		margin: 0;
+		font-weight: 400;
+		text-decoration: none;
+		font-size: 17px;
+		color: #47a7eb;
+	}
+
+	@media (max-width: 768px) {
+		.box1 {
+			min-width: 40%; / Set the width to 100% for smaller screens /
+		}
+	}
+
+	@media screen and (max-width: 600px) {
+		.box1 {
+			min-width: 40%; / Make boxes full width on small screens /
+		}
+	}
+
+	@media screen and (max-width: 480px) {
+		.box1 {
+			min-width: 100%; / Make boxes full width on small screens /
+		}
+	}
+
+	.addYourLink1{
+		color: #000; 
+		border: 5px dotted #000; 
+		width: 200px;
+		text-decoration: none;
+	}
+
+	a:hover {
+		color: #000;
+		text-decoration: none;
+	}
+
+</style>
+
+<xf:css src="regsitration_steps.less"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<div class="block"{{ widget_data($widget) }}>
+	<xf:if is="{{count($featured_threads)}}">
+
+		<div class="block-container">
+			<h3 class="block-minorHeader">{{ phrase('fs_regisgter_featuerd_title') }}</h3>
+			<xf:if is="count($featured_threads) > 4">
+
+				<div class="block-body block-row">
+					<div class="owl-carousel">
+						<xf:foreach loop="$featured_threads" value="$thread">
+							<div class="text-center">
+								<xf:if is="{{ count($thread.FirstPost.Attachments) }}">
+									<img src="{{ link('full:attachments', $thread.FirstPost.Attachments.first() ) }}" alt="{$thread.title}" class="thread-img" />
+									<xf:else/>
+									<xf:avatar user="{$thread.User}" size="l"
+											   href="{{ link('members',$thread.User) }}" class="square-border"/>
+								</xf:if>
+
+								<p>
+									<a href="{{ link('threads',$thread)}}">  {{$thread.title }}</a>
+								</p>
+
+							</div>
+						</xf:foreach>
+					</div>
+
+				</div>
+				<xf:else/>
+				<div class="container1">
+					<xf:foreach loop="$featured_threads" value="$thread">
+						<div class="box1">
+							<div class="text-center1">
+								<xf:if is="{{ count($thread.FirstPost.Attachments) }}">
+									<img src="{{ link('full:attachments', $thread.FirstPost.Attachments.first() ) }}" alt="{$thread.title}" class="thread-img" />
+									<xf:else/>
+									<xf:avatar user="{$thread.User}" size="l"
+											   href="{{ link('members',$thread.User) }}" class="square-border"/>
+								</xf:if>
+
+								<p>
+									<a href="{{ link('threads',$thread)}}">  {{$thread.title }}</a>
+								</p>
+
+							</div>
+						</div>
+					</xf:foreach>
+
+					<div class="box1">
+						<div class="addYourLink1">
+							<a href="{{ link('account-upgrade',null)}}" style="color: #000000;">
+								{{ phrase('fs_regisgter_add_your_listing') }}
+							</a>
+						</div>
+					</div>
+				</div>
+			</xf:if>
+		</div>
+	</xf:if>
+
+</div>
+
+<xf:js>
+	$(document).ready(function(){
+	$('.owl-carousel').owlCarousel({
+	loop:true,
+	margin:10,
+	autoplay:true,
+	autoplaySpeed:2000,
+	autoplayTimeout:3000,
+	responsiveClass:true,
+	nav:true,
+	navRewind:true,
+	center:true,
+	responsive:{
+	0:{
+	items:1,
+
+	},
+	400:{
+	items:2,
+
+	},
+	600:{
+	items:4,
+
+	},
+	1000:{
+	items:5,
+
+
+	}
+	}
+
+	})
+	});
+</xf:js>

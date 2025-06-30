@@ -1,0 +1,9 @@
+{
+    "template": "member_view",
+    "description": "fs_limitations_member_view_hide_my_ad",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<li data-href=\"{{ link('members/ads', $user) }}\" role=\"tabpanel\" aria-labelledby=\"ads\">\n\t\t\t<div class=\"blockMessage\">{{ phrase('loading...') }}</div>\n\t\t</li>",
+    "replace": "<xf:if is=\"$user.account_type == 2\">\n\t$0\n</xf:if>"
+}

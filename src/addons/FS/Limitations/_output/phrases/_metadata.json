@@ -17,6 +17,24 @@
         "version_string": "1.0.0 Alpha",
         "hash": "f07f8c8f1d85b6036a1506a27a08ad08"
     },
+    "fs_l_media_upload_not_allowed_please_upgrade.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "f57636cd72e300ce31ecb46a46c35272"
+    },
+    "fs_l_vouch_not_allowed_please_upgrade.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "f294e3e7d2c1ec7624a31d0f815b761a"
+    },
+    "fs_l_your_daily_discussion_post_limit.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "b3ffe404499f9ed48d189c10e40cf6cd"
+    },
     "fs_limitaions_daily_ads.txt": {
         "global_cache": false,
         "version_id": 1000010,
@@ -28,6 +46,12 @@
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
         "hash": "7c9fb2fa085d85de3a07fcf6d7098b2c"
+    },
+    "fs_limitaions_discussion_notice_add.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "7e70d3594c284108e7fdaaa7e4aeca4d"
     },
     "fs_limitaions_node_ids.txt": {
         "global_cache": false,
@@ -61,9 +85,15 @@
     },
     "fs_limitations_admirer_mail_body.txt": {
         "global_cache": false,
+        "version_id": 1000110,
+        "version_string": "1.0.1 Alpha",
+        "hash": "626bf300c6f5c39b115b9e4df0778c52"
+    },
+    "fs_limitations_agree_page_change_swb.txt": {
+        "global_cache": false,
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
-        "hash": "654f12891adcc958ca4af9ffef8b05da"
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
     },
     "fs_limitations_companion_mail_body.txt": {
         "global_cache": false,
@@ -77,6 +107,18 @@
         "version_string": "1.0.0 Alpha",
         "hash": "e252c87f16a733b2935e576ecc877059"
     },
+    "fs_limitations_daily_ads_limit_reached.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "33b63f38194de5011bf8848929b70e9c"
+    },
+    "fs_limitations_daily_ads_not_permission.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "a8b90be16999937939f81e1c175622a8"
+    },
     "fs_limitations_daily_repost.txt": {
         "global_cache": false,
         "version_id": 1000010,
@@ -89,11 +131,71 @@
         "version_string": "1.0.0 Alpha",
         "hash": "00037ef68d36037962218d947a915733"
     },
+    "fs_limitations_ladies_lounge_notice.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "ef1c8a40499ab421b92622f7ea0f0998"
+    },
+    "fs_limitations_last_repost_limit.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "447a87e66f40d911f03e4231bc01abc1"
+    },
+    "fs_limitations_listing_notice.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "3b081d2ca4ad8b138c7af76c5b049bdc"
+    },
+    "fs_limitations_listing_notice_2.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "ec3703f9ab559eb1b22aa0b20af7ff6d"
+    },
+    "fs_limitations_mail_box.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "2dcff8c037093c5d3552ad532e603f9f"
+    },
+    "fs_limitations_men_lounge_notice.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "83665402af92425a39fe372b76024f38"
+    },
+    "fs_limitations_my_gallary.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "70fbb385da8da9ef04e04160c1cbd8f8"
+    },
     "fs_limitations_node_ids.txt": {
         "global_cache": false,
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
         "hash": "6d6159fca6082f1cb87099b02cef6681"
+    },
+    "fs_limitations_repost_limit_reached.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "e80bad6b9b34865478defcfde2f9f4f4"
+    },
+    "fs_limitations_repost_not_permission.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "a3ddec0b32e504bca427542feb2f633d"
+    },
+    "fs_limitations_reviews_forum_post_thread.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "e51294c63f53e3b5ea40bbabe6522d06"
     },
     "fs_limitations_user_Group.txt": {
         "global_cache": false,
@@ -106,5 +208,107 @@
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
         "hash": "4bd1950c1f41c311f919e943c7dabda7"
+    },
+    "option.fs_discussions_form_ids.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "79fb757d422e0f3cec96b32aac55f734"
+    },
+    "option.fs_limitations_forums_ids.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "e09d6ae5fea42f08b569b4a67cb4663d"
+    },
+    "option.fs_limitations_xfmgMediaPerPage.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "1e8bee5c30eecd38a54884dc7722096f"
+    },
+    "option.fs_limitations_xfmgThumbnailDimensions.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "371832ef524cb233ed3ffda24518f2ba"
+    },
+    "option.fs_listing_form_ifds.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "1382af2699c1db1ea3c4d66513aabc98"
+    },
+    "option.fs_listing_ladies_lounge_ids.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "2a80ebea4dab1318dca84015c5be8668"
+    },
+    "option.fs_listing_men_lounge_ids.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "26022bae2e9322ee92c4508e51582ed7"
+    },
+    "option_explain.fs_discussions_form_ids.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "81517b10ada7301faa822202d51c64a0"
+    },
+    "option_explain.fs_limitations_forums_ids.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "868f294b74bfc2ce506ef20b4f79c519"
+    },
+    "option_explain.fs_limitations_xfmgMediaPerPage.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "af009f23ec0ed8bece2c08c3c3a4e13f"
+    },
+    "option_explain.fs_limitations_xfmgThumbnailDimensions.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "e7f903fb0df9867f74557476e2e546a6"
+    },
+    "option_explain.fs_listing_form_ifds.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "a2d08635c45e4ead7856f681bff04362"
+    },
+    "option_explain.fs_listing_ladies_lounge_ids.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "b832b1c6a9e8cf79d579adec106296ea"
+    },
+    "option_explain.fs_listing_men_lounge_ids.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "0f86c7326b3951fd2ba3d2e2da0fb950"
+    },
+    "option_group.fs_limitations.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "9056669f3641b7e2f50de0d9b3ef0b67"
+    },
+    "option_group_description.fs_limitations.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "permission.fs_limitations_fs_limitations_can_vouch.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "11805a738f772562f47718477f21ad95"
     }
 }

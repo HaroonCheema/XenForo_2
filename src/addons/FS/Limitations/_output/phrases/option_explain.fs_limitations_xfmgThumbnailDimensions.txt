@@ -1,0 +1,1 @@
+When adding media to the my gallery in member about, a thumbnail is created based on these dimensions.

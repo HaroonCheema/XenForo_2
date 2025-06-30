@@ -1,0 +1,9 @@
+{
+    "template": "_page_node.150",
+    "description": "fs_limitations_change_agree_btn_link",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:button  href=\"{{ link('forums/', $null) }}\" class=\"button-agree\">{{ phrase('fs_landing_agree') }}</xf:button>",
+    "replace": "<xf:button  href=\"{{ link('swbVipCompanion/', $null) }}\" class=\"button-agree\">{{ phrase('fs_landing_agree') }}</xf:button>"
+}

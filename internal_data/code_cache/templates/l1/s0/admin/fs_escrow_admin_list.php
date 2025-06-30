@@ -197,7 +197,7 @@ return array(
 	} else {
 		$__finalCompiled .= '
           <div class="block-body block-row">
-            ' . 'No Data Found...!' . '
+            ' . 'No reviews Found' . '
           </div>
         ';
 	}

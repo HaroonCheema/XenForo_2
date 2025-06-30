@@ -1,0 +1,23 @@
+{
+    "fs_discussions_form_ids.json": {
+        "hash": "6872a4d0ed6c025e8d3af2c63079b95a"
+    },
+    "fs_limitations_forums_ids.json": {
+        "hash": "f99da683f74e686f0511dc20d10de771"
+    },
+    "fs_limitations_xfmgMediaPerPage.json": {
+        "hash": "e87e6341c918d5e8ef02bb5f9b76741d"
+    },
+    "fs_limitations_xfmgThumbnailDimensions.json": {
+        "hash": "fb35ee9c68e7b3c60f58dec668c2cd68"
+    },
+    "fs_listing_form_ifds.json": {
+        "hash": "403cb9c2fd110388b2299df4cc383753"
+    },
+    "fs_listing_ladies_lounge_ids.json": {
+        "hash": "573e554870c165480ce8ddeb294d3c35"
+    },
+    "fs_listing_men_lounge_ids.json": {
+        "hash": "2b927993b97f3c2d43f40378be2e4d20"
+    }
+}

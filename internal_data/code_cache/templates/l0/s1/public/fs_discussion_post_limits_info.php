@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 2f033e699c8dd61bdd4b14f8acc5371a
+// FROM HASH: b5153d4f2807678cb5d7ce73a90a492c
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -16,7 +16,7 @@ return array(
 	$__finalCompiled .= '
 
 ';
-	$__vars['upgradeUrl'] = (($__vars['xf']['visitor']['user_id'] == 1) ? $__templater->func('link', array('account-upgrade/admirer', ), false) : $__templater->func('link', array('account-upgrade/companion', ), false));
+	$__vars['upgradeUrl'] = (($__vars['xf']['visitor']['account_type'] == 1) ? $__templater->func('link', array('account-upgrade/admirer', ), false) : $__templater->func('link', array('account-upgrade/companion', ), false));
 	$__finalCompiled .= '
 
 ';

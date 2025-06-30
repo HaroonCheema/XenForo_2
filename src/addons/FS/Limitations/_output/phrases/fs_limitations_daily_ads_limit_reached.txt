@@ -1,0 +1,1 @@
+Daily Ads limit reached. Please <a href="{upgradeUrl}"> upgrade </a> your account.

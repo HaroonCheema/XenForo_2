@@ -44,7 +44,7 @@ return array(
 	} else {
 		$__compilerTemp1 .= '
 				<div class="block-body js-logLoadMore ">
-					<div class="block-row">' . 'No Data Found...!' . '</div>
+					<div class="block-row">' . 'No reviews Found' . '</div>
 				</div>
 			';
 	}

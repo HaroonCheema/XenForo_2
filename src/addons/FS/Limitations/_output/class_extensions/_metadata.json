@@ -1,5 +1,20 @@
 {
+    "XF-Entity-User_FS-Limitations-XF-Entity-User.json": {
+        "hash": "6484643f7b5acba2bea4422e92931f19"
+    },
+    "XF-Pub-Controller-Forum_FS-Limitations-XF-Pub-Controller-Forum.json": {
+        "hash": "d32e04f812fe259a9692fc346d5f4cb4"
+    },
     "XF-Pub-Controller-Member_FS-Limitations-XF-Pub-Controller-Member.json": {
         "hash": "3a345de6fc739c1a3c91e11d697c7991"
+    },
+    "XF-Pub-Controller-Page_FS-Limitations-XF-Pub-Controller-Page.json": {
+        "hash": "245557fd336b3a0e47111be92d637a1f"
+    },
+    "XFMG-ControllerPlugin-MediaList_FS-Limitations-XFMG-ControllerPlugin-MediaList.json": {
+        "hash": "5a444fc7fc20c8417226cef0c7038445"
+    },
+    "XFMG-Pub-Controller-Media_FS-Limitations-XFMG-Pub-Controller-Media.json": {
+        "hash": "1533ab4df97fb17396345abd2382c00c"
     }
 }

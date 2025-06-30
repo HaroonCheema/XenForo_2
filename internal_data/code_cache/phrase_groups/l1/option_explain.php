@@ -1,5 +1,6 @@
 <?php
 return array (
+  'option_explain.Advertiser_manaul_approval' => '',
   'option_explain.AwedoTceSpecialChars' => 'Each of the characters will be removed from the content before it is checked for banned words. Note: Blanks will be ignored.',
   'option_explain.BRARS_postToThread' => 'If enabled, the reviews also get posted directly into the thread.<br>
 You can use {message} to get content review message.',
@@ -472,6 +473,7 @@ This option requires that the specified account is a catch-all account or suppor
   'option_explain.fs_complete_production_btn_text' => 'Enter here text which you want to use for show <b>Complete Production button</b> if not exist in thread title.',
   'option_explain.fs_complete_production_prefix_id' => 'Enter custom thread prefix id here related to complete production.',
   'option_explain.fs_custom_thread_image_dimensions' => '',
+  'option_explain.fs_discussions_form_ids' => 'Enter the Discussions forum ids Comma separated like 1,2,3,4,5,6,......',
   'option_explain.fs_email_limit' => 'you can change email length from here...!',
   'option_explain.fs_enable' => 'This option allows you to enable the avatar gallery.',
   'option_explain.fs_enable_image' => '',
@@ -486,8 +488,14 @@ This option requires that the specified account is a catch-all account or suppor
   'option_explain.fs_forums' => '',
   'option_explain.fs_hcwp_btnUrl' => 'Provide the link for button of hidden content widget',
   'option_explain.fs_hcwp_userGroups' => 'The content will be hidden for users belonging to these UserGroups',
+  'option_explain.fs_limitations_forums_ids' => 'Enter the FORUM_IDS Comma separated like 25,26.',
+  'option_explain.fs_limitations_xfmgMediaPerPage' => 'The maximum number of media items to show per page in member about.',
+  'option_explain.fs_limitations_xfmgThumbnailDimensions' => 'When adding media to the my gallery in member about, a thumbnail is created based on these dimensions.',
   'option_explain.fs_link_group_apply_settings' => 'If a user has multiple groups tell either the time of group with high-style priority is applied or with low priority.',
   'option_explain.fs_link_html_position' => '',
+  'option_explain.fs_listing_form_ifds' => 'Enter the Listing forum ids Comma separated like 1,2,3,4,5,6,......',
+  'option_explain.fs_listing_ladies_lounge_ids' => 'Enter the Ladies Lounge ids Comma separated like 1,2,3,4,5,6,......',
+  'option_explain.fs_listing_men_lounge_ids' => 'Enter the Men Lounge ids Comma separated like 1,2,3,4,5,6,......',
   'option_explain.fs_logo_slider_logo_dimensions' => '',
   'option_explain.fs_logo_slider_logos' => '',
   'option_explain.fs_mts_customMsgColor' => 'Enter the colour name or colour code for Custom message',
@@ -503,6 +511,8 @@ This option requires that the specified account is a catch-all account or suppor
   'option_explain.fs_ranfom_email_domain' => 'you can change random email domain from here...!',
   'option_explain.fs_receive_money_prefix_id' => 'Enter custom thread prefix id here related to receive money.',
   'option_explain.fs_register_avatar_preview' => '',
+  'option_explain.fs_register_hobbyiest_fields' => 'Enter the custom user FIELD_ID  <b>Comma separated like: filed1,field2.</b>',
+  'option_explain.fs_register_provider_fields' => 'Enter the custom user FIELD_ID  <b>Comma separated like: filed1,field2.</b>',
   'option_explain.fs_rejected_user_mod_ids' => 'Enter the ids Comma separated like 1,2,3,4,5,6,......',
   'option_explain.fs_reply_reaction_points' => 'You can adjust total reaction points from here...!',
   'option_explain.fs_rm_bg_img' => '',

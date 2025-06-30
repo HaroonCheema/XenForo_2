@@ -1,20 +1,270 @@
 <?xml version="1.0" encoding="utf-8"?>
 <phrases>
+  <phrase title="admin_navigation.fsLimitations" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Insert]]></phrase>
+  <phrase title="admin_navigation.fsLimitationsMain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Limitations]]></phrase>
   <phrase title="cron_entry.fs_resetDailyDiscussLimit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Reset Daily Discussion Post Limit]]></phrase>
+  <phrase title="cron_entry.fs_resetUserDailyAds" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Reset User Daily Ads and  Repost Limit]]></phrase>
   <phrase title="fs_l_conversation_limit_reached_please_upgrade" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Your conversation limit reached  <b>( {visitorConversationMessageCount} / {conversasionLimit} )</b>.
 Please <a href="{upgradeUrl}"> upgrade </a> your account.]]></phrase>
   <phrase title="fs_l_conversation_not_allowed_please_upgrade" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Conversation not allowed please <a href="{upgradeUrl}"> upgrade </a> your account.]]></phrase>
   <phrase title="fs_l_daily_discussion_limit_reached_please_upgrade" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Your Discussion limit reached  <b>( {visitorDailyDiscussionCount} / {dailyDiscussionLimit} )</b>.
 Please <a href="{upgradeUrl}"> upgrade </a> your account.]]></phrase>
   <phrase title="fs_l_discussion_not_allowed_please_upgrade" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Discussion not allowed. Please <a href="{upgradeUrl}"> upgrade </a> your account.]]></phrase>
+  <phrase title="fs_l_media_upload_not_allowed_please_upgrade" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Media Upload not allowed. Please <a href="{upgradeUrl}"> upgrade </a> your account.]]></phrase>
   <phrase title="fs_l_remaining" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Remaining]]></phrase>
+  <phrase title="fs_l_vouch_not_allowed_please_upgrade" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Vouch not allowed. Please <a href="{upgradeUrl}"> upgrade </a> your account.]]></phrase>
   <phrase title="fs_l_your_consersation_limit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Your Conversation limit: <b>( {visitorConversationMessageCount} / {conversasionLimit} )</b> .&nbsp;&nbsp;
 Remaining:  <b>{remianingCount}</b>]]></phrase>
   <phrase title="fs_l_your_conversation_limit_unlimited" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Your conversation limit: <b>Unlimited</b>]]></phrase>
   <phrase title="fs_l_your_daily_discussion_post_limit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Your daily discussion post limit: <b>( {visitorDailyPostCount} / {dailyPostLimit} )</b> .&nbsp;&nbsp;
 Remaining:  <b>{remianingCount}</b>]]></phrase>
   <phrase title="fs_l_your_daily_discussion_post_limit_unlimited" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Your daily discussion post limit: <b>Unlimited</b>]]></phrase>
+  <phrase title="fs_limitaions_daily_ads" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Daily ads]]></phrase>
+  <phrase title="fs_limitaions_daily_repost" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Daily repost]]></phrase>
+  <phrase title="fs_limitaions_discussion_notice_add" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[. All members are welcome to mingle and engage here. Let's ensure our discussions
+remain on-topic, stimulating, and, above all, entertaining!]]></phrase>
+  <phrase title="fs_limitaions_node_ids" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Node Ids]]></phrase>
+  <phrase title="fs_limitaions_node_ids_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter the FORUM_IDS Comma separated like 1,2,3,4,5,........]]></phrase>
+  <phrase title="fs_limitations" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Limitations]]></phrase>
+  <phrase title="fs_limitations_add" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add new limitations]]></phrase>
+  <phrase title="fs_limitations_add_btn" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add Limitations]]></phrase>
+  <phrase title="fs_limitations_admirer_mail_body" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Welcome to our verification-centric community! We take safety and trust seriously.
+That's why everyone participating in our board community must go through a
+verification process—no exceptions. Once verified, you'll gain access to a range of
+features, including appointment requests, review writing, verification badges, ad posting,
+and messaging.<br><br>
+
+South West Board (SWB) takes pride in prioritizing the safety and quality of our
+community above all else. Our commitment to your security is unwavering, which is why
+we've chosen to maintain a private and exclusive environment. To be part of our thriving
+community, verification is a must. By doing so, we ensure a superior experience for all
+members. Join SWB, your trusted private adult community, where every member is
+verified, making it a secure and enriching space you'll be eager to be a part of.<br><br>
+
+To learn more about the verification process for both companions and admirers, please
+review our upgrade subscription options. At the core of our community is the
+commitment to safety, ensuring you can interact confidently and securely. Your
+well-being is our top priority.<br><br>
+
+Are you a gentleman tired of navigating through the screening process? We have a
+solution for you! Our board's Premium Membership offers an exclusive "Verified Check"
+status that can be proudly displayed on your profile. This Verified Check assures other
+members that you have been thoroughly verified by the SWB team, adding an extra layer
+of trust and security to your presence on our platform.<br><br>
+
+But that's not all. With your Verified status, you can also request references from female
+members within our community. These references will be prominently listed on your
+profile, further enhancing your credibility and safety within our community. This will
+provide companions with a unique link to view your SWB profile and reference
+information without the need for manual copying and pasting into emails or texts
+requesting for verification. Similiar to P411 OK's system.<br><br>
+
+Stay safe and verified in our trusted SWB community. Upgrade to Premium Membership
+today!<br><br>
+
+Joining our community offers a unique experience tailored to your needs. As a Premium
+member, you unlock unparalleled benefits:<br><br>
+
+1. Exclusive Content: Enjoy special access to "The Rest of the Story" (ROS) reviews,
+which remain hidden from guests, regular, and female members.<br><br>
+
+2. Engage in Private Discussions: Create and browse through "Private" posts in public
+forums, and immerse yourself in exclusive spaces like the Men's Lounge.<br><br>
+
+3. Enhanced Messaging: Say goodbye to the basic 50-message limit. With Premium,
+store up to 1,000 messages, neatly organizing them in custom folders.<br><br>
+
+Moreover, as a testament to your authenticity:<br><br>
+
+4. SWB Verified Badge: Your profile will feature an SWB badge, signifying our
+verification, reinforcing trust among members.<br><br>
+
+5. P411 Affiliation: If you're linked with the P411 site, we'll highlight this on your profile,
+making your membership evident to others.<br><br>
+
+6. Gather or solicit vouches/OKs from companions with whom you have had
+encounters.<br><br>
+
+7. Easily request a companion appointment through the SWB system without using an
+appointment request form.<br><br>
+
+8. Unlimited access to all listings.<br><br>
+
+9. On priority enquiry response.<br><br>
+
+To become a VIP hobbyist:<br><br>
+
+1. Payment: We exclusively transact in Bitcoin. Utilize the Cash App, scan our QR code,
+and complete your payment with ease. The rates are:<br><br>
+
+- 1 year: $100 this plan is valid for 1 year.<br><br>
+
+- 6 months: $65 this plan is valid for 6 months.<br><br>
+
+We DO NOT offer refunds in Bitcoin. We only accept Bitcoin payments. Please ensure
+you are using Bitcoin and nothing else.<br><br>
+
+Finally, becoming a member is a straightforward process that includes verification. To
+achieve verified status on SWB and access premium features, you must provide only
+one (1) of the following verifications along with a paid subscription. After verification,
+proceed to our upgrade section to initiate your payment.<br><br>
+
+1. Submit both your work and personal ID copies. You may choose to conceal or redact
+certain personal details, excluding your name and date of birth, while submitting both
+your work and personal ID copies.<br><br>
+
+OR<br><br>
+
+2. Share your LinkedIn profile or send a blank employment email from your work to
+Kathy at kathy@southwestboard.com. Both your email and Linkedln profile must match.<br><br>
+
+OR<br><br>
+
+3. Submit (2) references from a SWB verified companion or (2) references from a P411
+verified companion. Companions are required to be currently engaged on the platform,
+and your meeting with the companion must have occurred within the last 3 months.
+They must verify you.<br><br>
+
+OR<br><br>
+
+4. Provide an active (paid) verifiable P411 ID for confirmation and submit the email
+address that corresponds to your P411 account.<br><br>
+
+While sharing IDs, redact any private details. We only need your name and date of birth.
+Prioritizing your privacy, our registration system is offshore, ensuring optimal data
+encryption. Once your payment is processed, your verification begins. We want to make
+it absolutely clear: we do not collect or retain your personal information. Once your
+verification process is complete, we promptly and securely delete all personal
+information offshore that you provided to us for verification purposes. Your privacy is
+our top priority.<br><br>
+
+Should you have any questions or require assistance with payment-related inquiries,
+please don't hesitate to contact Kathy at kathy@southwestboard.com. We're here to
+help and ensure a smooth experience for you. We're here to help and ensure a smooth
+experience for you.<br><br>
+
+Please submit all necessary documents or required information to Kathy. Kathy will
+verify your account within 24 - 48 hours. Once verified, proceed to our upgrade section
+to enhance your account. Kathy at kathy@southwestboard.com.<br><br>]]></phrase>
+  <phrase title="fs_limitations_agree_page_change_swb" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="fs_limitations_companion_mail_body" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[ONCE VERIFIED PURCHASE UPGRADES UNDER UPGRADE TAB.<br><br>
+
+**VIP Plan Monthly Subscription**:<br><br>
+
+- Ideal for highly active board members.<br>
+- 1-month subscription with each purchase.<br>
+- Publish 3 listings daily. <br>
+- Option to repost 10x daily. <br>
+- Enhanced photo storage capacity.<br>
+- Enhanced message storage.<br>
+- Price: $150/month.<br><br><br>
+
+
+**Standard Plan Monthly Subscription**:<br><br>
+
+- Great for those who plan to use the site multiple times weekly.<br>
+- Publish 1 listing daily. <br>
+- Option to repost 2x daily. <br>
+- Limited photo storage capacity.<br>
+- Limited message storage.<br>
+- Price: $100.<br><br><br>
+
+
+**Top 20 Companion VIP banner Monthly**:<br><br>
+
+This is an ultra high visibility plan for 1 month. <br><br>
+
+- Limited to 20 spots.<br>
+- Featured at the top of the SWB board. <br>
+- 30-day highlight period.<br>
+- One month validity. <br>
+- $250 per month. <br><br>
+
+**Top 10 Companion City banner Monthly**<br><br>
+
+- Limited to 10 spots.<br>
+- Listing in 1 city of your choice. <br>
+- Featured at the top of the city listing.<br>
+- One month validity. <br>
+- 30-day highlighted period.<br>
+- Price: $150 for 30 days.<br>]]></phrase>
+  <phrase title="fs_limitations_daily_ads" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Daily Ads]]></phrase>
+  <phrase title="fs_limitations_daily_ads_limit_reached" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Daily Ads limit reached. Please <a href="{upgradeUrl}"> upgrade </a> your account.]]></phrase>
+  <phrase title="fs_limitations_daily_ads_not_permission" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Ads not allowed. Please <a href="{upgradeUrl}"> upgrade </a> your account.]]></phrase>
+  <phrase title="fs_limitations_daily_repost" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Daily Repost]]></phrase>
+  <phrase title="fs_limitations_edit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Edit limitations]]></phrase>
+  <phrase title="fs_limitations_ladies_lounge_notice" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<p style="padding: 0 1%;">
+<strong>
+Access to this lounge is restricted to SWB Verified ladies' accounts only.
+</strong>
+</p>]]></phrase>
+  <phrase title="fs_limitations_last_repost_limit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You can only do 1x repost in an hour, Please try again later...!]]></phrase>
+  <phrase title="fs_limitations_listing_notice" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<p style="padding: 0 1%; text-align: justify;">
+<strong>Your account will be <span style="color: red;">DELETED</span> and <span style="color: red;">BANNED</span> from SWB if your profile or ads
+include and of the following: Read Carefully.</strong>
+
+<br><br>
+
+Text describing your services MAY NOT BE sexually explicit. Be creative when making
+your ads or profile. You may NOT use text that directly or indirectly (including the use of
+slang GFE, FBSM, greek, intimacy or other “code” words or phrases that offers,
+references, solicits, or promises illegal and or sexual activity. You may not include
+explicit / nude photos. If you're uncertain whether your terminology is appropriate,
+consider whether it describes a sexual act. If it does, please remove it.No exceptions.
+</p>]]></phrase>
+  <phrase title="fs_limitations_listing_notice_2" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<p style="padding: 0 1%; text-align: justify;">
+Please refrain from using fake images. We thoroughly inspect all images, conducting reverse
+Google image searches, checking Instagram, adult sites, etc. If a listing is discovered to be
+using fake images, the entire profile/account will be deleted from SWB.
+</p>]]></phrase>
+  <phrase title="fs_limitations_mail_box" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Mailbox]]></phrase>
+  <phrase title="fs_limitations_men_lounge_notice" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<p style="padding: 0 1%;">
+<strong>
+Access to this lounge is restricted to SWB Verified mens’ accounts only.
+</strong>
+</p>]]></phrase>
+  <phrase title="fs_limitations_my_gallary" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[My Gallary]]></phrase>
+  <phrase title="fs_limitations_node_ids" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Node Ids]]></phrase>
+  <phrase title="fs_limitations_repost_limit_reached" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Repost limit reached. Please <a href="{upgradeUrl}"> upgrade </a> your account.]]></phrase>
+  <phrase title="fs_limitations_repost_not_permission" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Repost not allowed. Please <a href="{upgradeUrl}"> upgrade </a> your account.]]></phrase>
+  <phrase title="fs_limitations_reviews_forum_post_thread" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<p style="padding: 0 1%; text-align: justify;">
+<strong>
+Thank you for taking the time to provide your review! Your input helps keep our community
+informed and, in turn, safer.<br/><br/>
+
+Please note that discussing illegal activities, such as exchanging sex for money, drug use or
+sales, or any other potentially incriminating activities, is strictly prohibited. Additionally, reviews
+containing explicit nude photos, videos, or links are not allowed. Remember, our platform is for
+entertainment purposes only, so keep that in mind when writing your review and enjoy yourself!<br/><br/>
+
+When submitting your review, the "SWB Handle" field is crucial. Ensure you accurately input
+your provider's username, including any symbols or unusual spacing. This information helps
+identify the reviewed provider, adds your review to their profile, enables future vouching, and
+enhances searchability. Filling in more fields increases the visibility of your review.<br/><br/>
+
+We appreciate your cooperation and active participation on the SWB platform!
+</strong>
+</p>]]></phrase>
+  <phrase title="fs_limitations_user_Group" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[User Group]]></phrase>
+  <phrase title="fs_limitations_user_group_already_exist" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[User group alread exist...!]]></phrase>
+  <phrase title="option.fs_discussions_form_ids" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Discussions forum ids]]></phrase>
+  <phrase title="option.fs_limitations_forums_ids" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Welcome Forums Ids]]></phrase>
+  <phrase title="option.fs_limitations_xfmgMediaPerPage" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[About Media items per page]]></phrase>
+  <phrase title="option.fs_limitations_xfmgThumbnailDimensions" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Maximum thumbnail dimensions]]></phrase>
+  <phrase title="option.fs_listing_form_ifds" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Listing forum ids]]></phrase>
+  <phrase title="option.fs_listing_ladies_lounge_ids" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Ladies Lounge ids]]></phrase>
+  <phrase title="option.fs_listing_men_lounge_ids" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Men Lounge ids]]></phrase>
+  <phrase title="option_explain.fs_discussions_form_ids" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter the Discussions forum ids Comma separated like 1,2,3,4,5,6,......]]></phrase>
+  <phrase title="option_explain.fs_limitations_forums_ids" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter the FORUM_IDS Comma separated like 25,26.]]></phrase>
+  <phrase title="option_explain.fs_limitations_xfmgMediaPerPage" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[The maximum number of media items to show per page in member about.]]></phrase>
+  <phrase title="option_explain.fs_limitations_xfmgThumbnailDimensions" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[When adding media to the my gallery in member about, a thumbnail is created based on these dimensions.]]></phrase>
+  <phrase title="option_explain.fs_listing_form_ifds" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter the Listing forum ids Comma separated like 1,2,3,4,5,6,......]]></phrase>
+  <phrase title="option_explain.fs_listing_ladies_lounge_ids" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter the Ladies Lounge ids Comma separated like 1,2,3,4,5,6,......]]></phrase>
+  <phrase title="option_explain.fs_listing_men_lounge_ids" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter the Men Lounge ids Comma separated like 1,2,3,4,5,6,......]]></phrase>
+  <phrase title="option_group.fs_limitations" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Limitations]]></phrase>
+  <phrase title="option_group_description.fs_limitations" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
   <phrase title="permission.fs_limitations_fs_conversationLimit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Conversation Limit]]></phrase>
   <phrase title="permission.fs_limitations_fs_dailyDiscussiontLimit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Daily Discussion Limit]]></phrase>
+  <phrase title="permission.fs_limitations_fs_limitations_can_vouch" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Can vouch]]></phrase>
   <phrase title="permission_interface.fs_limitations" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Limitations]]></phrase>
 </phrases>

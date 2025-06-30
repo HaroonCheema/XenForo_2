@@ -1,0 +1,1 @@
+Vouch not allowed. Please <a href="{upgradeUrl}"> upgrade </a> your account.

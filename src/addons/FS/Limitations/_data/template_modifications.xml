@@ -1,18 +1,188 @@
 <?xml version="1.0" encoding="utf-8"?>
 <template_modifications>
+  <modification type="public" template="PAGE_CONTAINER" modification_key="fs_limitations_apend_discussion_notice" description="fs_limitations_apend_discussion_notice" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:if is="$description is not empty">
+					<div class="p-description welcome-description">{$description}</div>
+				</xf:if>]]></find>
+    <replace><![CDATA[<xf:if is="$description is not empty">
+					<div class="p-description welcome-description">
+						<xf:if is="in_array($forum.node_id, $xf.options.fs_discussions_form_ids|split)">
+							{$description}{{ phrase('fs_limitaions_discussion_notice_add') }}
+							<xf:else/>
+							{$description}
+						</xf:if>
+					</div>
+				</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="_page_node.150" modification_key="fs_limitations_change_agree_btn_link" description="fs_limitations_change_agree_btn_link" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:button  href="{{ link('forums/', $null) }}" class="button-agree">{{ phrase('fs_landing_agree') }}</xf:button>]]></find>
+    <replace><![CDATA[<xf:button  href="{{ link('swbVipCompanion/', $null) }}" class="button-agree">{{ phrase('fs_landing_agree') }}</xf:button>]]></replace>
+  </modification>
+  <modification type="public" template="_page_node.150" modification_key="fs_limitations_change_rule_page_title" description="fs_limitations_change_rule_page_title" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:css src="fs_rule_landing_page.less" />]]></find>
+    <replace><![CDATA[<xf:title>{{ phrase('fs_limitations_agree_page_change_swb') }}</xf:title>
+
+$0]]></replace>
+  </modification>
   <modification type="public" template="conversation_list" modification_key="fs_l_limit_info_on_conversation_list" description="show Conversation limit info on conversation_list" execution_order="10" enabled="1" action="str_replace">
     <find><![CDATA[<xf:pageaction if="$xf.visitor.canStartConversation()">]]></find>
     <replace><![CDATA[$0
 <xf:include template="fs_conversation_limits_info" />]]></replace>
+  </modification>
+  <modification type="public" template="conversation_list" modification_key="fs_limitations_conversation_to_mailbox" description="fs_limitations_conversation_to_mailbox" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:title page="{$page}">{{ phrase('conversations') }}</xf:title>]]></find>
+    <replace><![CDATA[<xf:title page="{$page}">{{ phrase('fs_limitations_mail_box') }}</xf:title>]]></replace>
+  </modification>
+  <modification type="public" template="forum_list" modification_key="fs_limitations_forum_list_hide_new_post_btn" description="fs_limitations_forum_list_hide_new_post_btn" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:wrap template="forum_overview_wrapper">
+	<xf:set var="$pageSelected">forums</xf:set>
+</xf:wrap>]]></find>
+    <replace><![CDATA[<xf:comment>
+<xf:wrap template="forum_overview_wrapper">
+	<xf:set var="$pageSelected">forums</xf:set>
+</xf:wrap>
+</xf:comment>]]></replace>
   </modification>
   <modification type="public" template="forum_overview_wrapper" modification_key="fs_l_limit_info_on_forum_overview_wrapper" description="show Discussion post limit info on forum list (forum_overview_wrapper)" execution_order="10" enabled="1" action="str_replace">
     <find><![CDATA[<xf:pageaction>]]></find>
     <replace><![CDATA[$0
 <xf:include template="fs_discussion_post_limits_info" />]]></replace>
   </modification>
+  <modification type="public" template="forum_post_thread" modification_key="fs_limitations_forum_post_thread_review_notice" description="fs_limitations_forum_post_thread_review_notice" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:breadcrumb source="$forum.getBreadcrumbs()" />]]></find>
+    <replace><![CDATA[$0
+
+<xf:if is="in_array($forum.node_id, $xf.options.fs_register_Reviews_ids|split)">
+	<div class="blockMessage">
+		{{phrase('fs_limitations_reviews_forum_post_thread')}}		
+	</div>
+</xf:if>]]></replace>
+  </modification>
   <modification type="public" template="forum_view" modification_key="fs_l_limit_info_on_forum_view" description="show Discussion post limit info on forum_view" execution_order="10" enabled="1" action="str_replace">
     <find><![CDATA[<xf:pageaction if="$forum.canCreateThread() OR $forum.canCreateThreadPreReg()">]]></find>
     <replace><![CDATA[$0
 <xf:include template="fs_discussion_post_limits_info" />]]></replace>
+  </modification>
+  <modification type="public" template="forum_view" modification_key="fs_limitations_add_listing_notice" description="fs_limitations_add_listing_notice" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:extension name="thread_list_block_classes" value="" />]]></find>
+    <replace><![CDATA[<xf:if is="in_array($forum.node_id, $xf.options.fs_listing_form_ifds|split)">
+	<div class="blockMessage">
+		{{phrase('fs_limitations_listing_notice')}}		
+	</div>
+	
+	<div class="blockMessage">
+		{{phrase('fs_limitations_listing_notice_2')}}		
+	</div>
+</xf:if>
+
+<xf:if is="in_array($forum.node_id, $xf.options.fs_listing_ladies_lounge_ids|split)">
+	<div class="blockMessage">
+		{{phrase('fs_limitations_ladies_lounge_notice')}}		
+	</div>
+</xf:if>
+
+<xf:if is="in_array($forum.node_id, $xf.options.fs_listing_men_lounge_ids|split)">
+	<div class="blockMessage">
+		{{phrase('fs_limitations_men_lounge_notice')}}		
+	</div>
+</xf:if>
+
+$0]]></replace>
+  </modification>
+  <modification type="public" template="fs_register_mail_input" modification_key="fs_limitations_change_type_field_drop_down" description="fs_limitations_change_type_field_drop_down" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:textboxrow name="type" hint="{{phrase('fs_register_required')}}" label="{{ phrase('fs_register_type') }}"  required="true" />]]></find>
+    <replace><![CDATA[<xf:selectrow
+					  name="type"
+					  label="{{ phrase('fs_register_type') }}"
+					  hint="{{ phrase('fs_register_required') }}"
+					  required="true"
+					  >
+			<xf:option value="">{{ phrase('none') }}</xf:option>
+			<xf:option value="Incall">{{ phrase('Incall') }}</xf:option>
+			<xf:option value="Outcall">{{ phrase('Outcall') }}</xf:option>
+		</xf:selectrow>]]></replace>
+  </modification>
+  <modification type="public" template="member_about" modification_key="fs_limitation_member_about_add_my_gallary" description="fs_limitation_member_about_add_my_gallary" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:if is="$followersCount">]]></find>
+    <replace><![CDATA[	<div class="block-row block-row--separated">
+		<h4 class="block-textHeader">{{ phrase('fs_limitations_my_gallary') }}
+		<xf:if is="$user.user_id == $xf.visitor.user_id">
+			<xf:button href="{{ link('media/users', $user) }}" icon="add" style="float: right; margin-top: 12px;">{{ phrase('add') }}</xf:button>
+			</xf:if>
+			</h4>
+		<xf:if is="$mediaItems is not empty">
+		<div class="block-container">
+			<div class="block-body">
+				<xf:macro template="fs_limitations_xfmg_media_list_macros" name="media_list"
+						  arg-mediaItems="{$mediaItems}"
+						  arg-forceInlineMod="{$canInlineMod}" />
+				
+					<xf:button href="{{ link('media/users', $user) }}" icon="refresh" style="float: right; margin-top: 12px;">{{ phrase('more') }}</xf:button>
+				
+			</div>
+		</div>
+			</xf:if>
+	</div>
+
+
+$0]]></replace>
+  </modification>
+  <modification type="public" template="member_view" modification_key="fs_limitations_member_view_hide_my_ad" description="fs_limitations_member_view_hide_my_ad" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<li data-href="{{ link('members/ads', $user) }}" role="tabpanel" aria-labelledby="ads">
+			<div class="blockMessage">{{ phrase('loading...') }}</div>
+		</li>]]></find>
+    <replace><![CDATA[<xf:if is="$user.account_type == 2">
+	$0
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="member_view" modification_key="fs_limitations_member_view_hide_my_ads" description="fs_limitations_member_view_hide_my_ads" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<a class="tabs-tab fsblock" href="{{ link('members/ads', $user) }}" id="ads"
+						role="tab">My Ads</a>]]></find>
+    <replace><![CDATA[<xf:if is="$user.account_type == 2">
+	$0
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="post_macros" modification_key="fs_limitations_in_post_add_tabs" description="fs_limitations_in_post_add_tabs" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:macro template="message_macros" name="user_info" arg-user="{$post.User}"
+							arg-fallbackName="{$post.username}"
+							arg-includeMicrodata="{$includeMicrodata}"
+							arg-itemProp="author" />]]></find>
+    <replace><![CDATA[$0
+
+<br/>
+<div class="blockMessage">
+	<h2 class="block-tabHeader block-tabHeaderfs block-tabHeader--memberTabs tabs hScroller" style="display:block"
+		role="tablist">
+		<span class="hScroller-scroll">
+			<a class="tabs-tab fsblock"href="{{ link('members/#alert', $post.User) }}" role="tab">Alert</a>
+			<xf:if is="$post.User.account_type == 2">
+			<a class="tabs-tab fsblock" href="{{ link('members/#ads', $post.User) }}" role="tab">My Ads</a>
+			</xf:if>	
+			<a class="tabs-tab fsblock" href="{{ link('members/#reviews', $post.User) }}" role="tab">My Reviews</a>
+			<a class="tabs-tab fsblock" href="{{ link('members/#myvouch', $post.User) }}" role="tab">My Vouches</a>
+		</span>
+	</h2>
+</div>]]></replace>
+  </modification>
+  <modification type="public" template="thread_view" modification_key="fs_limitations_thread_view_hide_review_private" description="fs_limitations_thread_view_hide_review_private" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<xf:if is="\$post\.message_state == 'deleted'">.*?<\/xf:if>/is]]></find>
+    <replace><![CDATA[<xf:if is="$xf.visitor.getCheckPrivateReviews() And in_array($forum.node_id, $xf.options.fs_register_Reviews_ids|split)">
+	<xf:if is="$post.isFirstPost()">
+		<xf:if is="$post.message_state == 'deleted'">
+			<xf:macro name="{{ $templateOverrides.post_deleted_macro ?: 'post_macros::post_deleted' }}"
+					  arg-post="{$post}"
+					  arg-thread="{$thread}"
+					  args="{$templateOverrides.post_deleted_macro_args}" />
+			<xf:else />
+			<xf:macro name="{{ $templateOverrides.post_macro ?: 'post_macros::post' }}"
+					  arg-post="{$post}"
+					  arg-thread="{$thread}"
+					  arg-highlightedPosts="{$highlightedPosts}"
+					  args="{$templateOverrides.post_macro_args}" />
+		</xf:if>
+	</xf:if>
+	<xf:else />
+	$0
+</xf:if>]]></replace>
   </modification>
 </template_modifications>

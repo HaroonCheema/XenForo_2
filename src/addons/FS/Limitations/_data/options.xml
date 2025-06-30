@@ -1,2 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<options/>
+<options>
+  <option option_id="fs_discussions_form_ids" edit_format="textbox" data_type="string" advanced="0">
+    <default_value>11,45,46,47,48,49,50,51,52,53,54,55,56,57,58</default_value>
+    <relation group_id="fs_limitations" display_order="30"/>
+  </option>
+  <option option_id="fs_limitations_forums_ids" edit_format="textbox" data_type="string" advanced="0">
+    <default_value></default_value>
+    <relation group_id="fs_limitations" display_order="1"/>
+  </option>
+  <option option_id="fs_limitations_xfmgMediaPerPage" edit_format="spinbox" data_type="positive_integer" advanced="0">
+    <default_value>10</default_value>
+    <edit_format_params>min=5
+max=100</edit_format_params>
+    <relation group_id="fs_limitations" display_order="5"/>
+  </option>
+  <option option_id="fs_limitations_xfmgThumbnailDimensions" edit_format="spinbox" data_type="positive_integer" advanced="0">
+    <default_value>150</default_value>
+    <edit_format_params>min=100
+max=300</edit_format_params>
+    <relation group_id="fs_limitations" display_order="10"/>
+  </option>
+  <option option_id="fs_listing_form_ifds" edit_format="textbox" data_type="string" advanced="0">
+    <default_value>12,19,42,59,60,61,62,63,64,65,66,67,68,69,70,71,72</default_value>
+    <relation group_id="fs_limitations" display_order="15"/>
+  </option>
+  <option option_id="fs_listing_ladies_lounge_ids" edit_format="textbox" data_type="string" advanced="0">
+    <default_value>104,105,106,107,108,109,110,111,112,113,114,115,116,117,118</default_value>
+    <relation group_id="fs_limitations" display_order="20"/>
+  </option>
+  <option option_id="fs_listing_men_lounge_ids" edit_format="textbox" data_type="string" advanced="0">
+    <default_value>119,120,121,122,123,124,125,126,127,128,129,130,131,132,133</default_value>
+    <relation group_id="fs_limitations" display_order="25"/>
+  </option>
+</options>

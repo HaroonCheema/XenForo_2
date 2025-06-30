@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="member_view" modification_key="comp_verification" description="Companion verfication" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<!--[XF:tabs:end]-->]]></find>
+    <replace><![CDATA[<xf:if is="$user.comp_verify_key && ($xf.visitor.user_id==$user.user_id || $xf.visitor.is_admin || $xf.visitor.is_moderator)">
+					<a href="{{ link('members/com-verify', $user) }}"
+						class="tabs-tab"
+						id="com-verify"
+						role="tab">{{ phrase('com_verify') }}</a>
+</xf:if>
+$0]]></replace>
+  </modification>
+  <modification type="public" template="member_view" modification_key="comp_verification_detail" description="comp verification detail" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<!--[XF:tab_panes:end]-->]]></find>
+    <replace><![CDATA[<xf:if is="$user.comp_verify_key && ($xf.visitor.user_id==$user.user_id || $xf.visitor.is_admin || $xf.visitor.is_moderator)">
+
+<li data-href="{{ link('members/com-verify', $user) }}" role="tabpanel" aria-labelledby="com-verify">
+		<div class="blockMessage">{{ phrase('loading...') }}</div>
+	</li>
+	
+</xf:if>
+
+$0]]></replace>
+  </modification>
+</template_modifications>

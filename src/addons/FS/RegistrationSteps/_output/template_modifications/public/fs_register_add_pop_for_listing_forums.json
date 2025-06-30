@@ -1,0 +1,9 @@
+{
+    "template": "forum_view",
+    "description": "fs_register_add_pop_for_listing_forums",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/<xf:pageaction if=\"\\$forum\\.canCreateThread\\(\\) OR \\$forum\\.canCreateThreadPreReg\\(\\)\">.*?<\\/xf:pageaction>/is",
+    "replace": "<xf:if is=\"$forum.getCompaninionThreadIds()\">\n\t<xf:if is=\"$xf.visitor.getAdsAllowed()\">\n\t\t<xf:pageaction if=\"$forum.canCreateThread() OR $forum.canCreateThreadPreReg()\">\n\t\t\t<xf:button href=\"{{ link('forums/post-listing', $forum) }}\" class=\"button--cta\" overlay=\"true\" icon=\"write\" rel=\"nofollow\">\n\t\t\t\t{{ phrase('post_compainion') }}\n\t\t\t</xf:button>\n\t\t</xf:pageaction>\n\t</xf:if>\n\t<xf:else />\n\t$0\n</xf:if>"
+}

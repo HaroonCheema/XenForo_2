@@ -1,0 +1,9 @@
+{
+    "template": "_page_node.150",
+    "description": "fs_limitations_change_rule_page_title",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:css src=\"fs_rule_landing_page.less\" />",
+    "replace": "<xf:title>{{ phrase('fs_limitations_agree_page_change_swb') }}</xf:title>\n\n$0"
+}

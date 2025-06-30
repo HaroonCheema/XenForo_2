@@ -1,0 +1,9 @@
+{
+    "template": "male_email_send_template",
+    "description": "fs_registration_add_username_male",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<table>",
+    "replace": "$0\n<tr>\n\t<td>{{ phrase('fs_registration_mail_username') }} </td>\n\t<td>{$username}</td>\n</tr>"
+}

@@ -1,0 +1,5 @@
+<p style="padding: 0 1%; text-align: justify;">
+Please refrain from using fake images. We thoroughly inspect all images, conducting reverse
+Google image searches, checking Instagram, adult sites, etc. If a listing is discovered to be
+using fake images, the entire profile/account will be deleted from SWB.
+</p>

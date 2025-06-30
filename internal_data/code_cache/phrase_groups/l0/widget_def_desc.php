@@ -2,6 +2,9 @@
 return array (
   'widget_def_desc.BRATR_newRatings' => 'Displays the new thread ratings',
   'widget_def_desc.FTSlider_widget' => 'Show to featured threads slider with responsive design to your community.',
+  'widget_def_desc.FeaturedProvider' => '',
+  'widget_def_desc.TopUsers' => '',
+  'widget_def_desc.UserStates' => '',
   'widget_def_desc.WelcomeBanner' => 'Welcome Banner Threads',
   'widget_def_desc.altf_filter_widget' => 'A widget to allow filtering the current forum by custom fields',
   'widget_def_desc.birthdays' => 'A block containing a heap of avatars of users whose birthday is today.',

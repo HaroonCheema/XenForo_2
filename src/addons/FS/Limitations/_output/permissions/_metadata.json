@@ -1,0 +1,11 @@
+{
+    "fs_limitations-fs_conversationLimit.json": {
+        "hash": "c655e487c4b7dd1e24f13ff06d6fcd04"
+    },
+    "fs_limitations-fs_dailyDiscussiontLimit.json": {
+        "hash": "55d6b06c769e7ab51aece589ed5bd87a"
+    },
+    "fs_limitations-fs_limitations_can_vouch.json": {
+        "hash": "82caf23d946bea0796ad0944b55c10d9"
+    }
+}

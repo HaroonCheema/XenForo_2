@@ -1,0 +1,251 @@
+<xf:macro template="xfmg_media_list_macros" name="media_create_message" arg-transcoding="{$transcoding}" arg-pendingApproval="{$pendingApproval}">
+	<xf:if is="$transcoding">
+		<div class="blockMessage blockMessage--important">
+			{{ phrase('xfmg_one_or_more_of_your_videos_needs_to_be_processed') }}
+		</div>
+	</xf:if>
+
+	<xf:if is="$pendingApproval">
+		<div class="blockMessage blockMessage--important">
+			{{ phrase('content_submitted_displayed_pending_approval') }}
+		</div>
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="media_list" arg-mediaItems="!" arg-allowInlineMod="{{ true }}" arg-forceInlineMod="{{ false }}">
+	<xf:css src="xfmg_media_list.less" />
+
+	<div class="itemList">
+		<xf:foreach loop="$mediaItems" value="$mediaItem">
+			<xf:macro name="media_list_item"
+				arg-mediaItem="{$mediaItem}"
+				arg-allowInlineMod="{$allowInlineMod}"
+				arg-forceInlineMod="{$forceInlineMod}" />
+		</xf:foreach>
+		<xf:macro name="media_list_placeholders" />
+	</div>
+</xf:macro>
+
+<xf:macro name="list_filter_bar" arg-filters="!" arg-baseLinkPath="!" arg-linkData="{{ null }}" arg-ownerFilter="{{ null }}">
+	<xf:set var="$sortOrders" value="{{ {
+		'media_date': phrase('date'),
+		'comment_count': phrase('xfmg_comments'),
+		'rating_weighted': phrase('rating'),
+		'reaction_score': phrase('reaction_score'),
+		'view_count': phrase('views')
+	} }}" />
+
+	<div class="block-filterBar">
+		<div class="filterBar">
+			<xf:if contentcheck="true">
+				<ul class="filterBar-filters">
+					<xf:contentcheck>
+						<xf:if is="$filters.type">
+							<li><a href="{{ link($baseLinkPath, $linkData, $filters|replace('type', null)) }}"
+								class="filterBar-filterToggle" data-xf-init="tooltip" title="{{ phrase('remove_this_filter')|for_attr }}">
+								<span class="filterBar-filterToggle-label">{{ phrase('type:') }}</span>
+								<xf:if is="$filters.type == 'image'">
+									{{ phrase('xfmg_images') }}
+								<xf:elseif is="$filters.type == 'audio'" />
+									{{ phrase('xfmg_audio') }}
+								<xf:elseif is="$filters.type == 'video'" />
+									{{ phrase('xfmg_videos') }}
+								<xf:elseif is="$filters.type == 'embed'" />
+									{{ phrase('xfmg_embeds') }}
+								</xf:if>
+							</a></li>
+						</xf:if>
+						<xf:if is="$filters.owner_id AND $ownerFilter">
+							<li><a href="{{ link($baseLinkPath, $linkData, $filters|replace('owner_id', null)) }}"
+								class="filterBar-filterToggle" data-xf-init="tooltip" title="{{ phrase('remove_this_filter')|for_attr }}">
+								<span class="filterBar-filterToggle-label">{{ phrase('xfmg_media_owner:') }}</span>
+								{$ownerFilter.username}</a></li>
+						</xf:if>
+						<xf:if is="$filters.order AND {$sortOrders.{$filters.order}}">
+							<li><a href="{{ link($baseLinkPath, $linkData, $filters|replace({'order': null, 'direction': null})) }}"
+								class="filterBar-filterToggle" data-xf-init="tooltip" title="{{ phrase('return_to_default_order')|for_attr }}">
+								<span class="filterBar-filterToggle-label">{{ phrase('sort_by:') }}</span>
+								{$sortOrders.{$filters.order}}
+								<xf:fa icon="{{ $filters.direction == 'asc' ? 'fa-angle-up' : 'fa-angle-down' }}" />
+								<span class="u-srOnly"><xf:if is="$filters.direction == 'asc'">{{ phrase('ascending') }}<xf:else />{{ phrase('descending') }}</xf:if></span>
+							</a></li>
+						</xf:if>
+					</xf:contentcheck>
+				</ul>
+			</xf:if>
+
+			<a class="filterBar-menuTrigger" data-xf-click="menu" role="button" tabindex="0" aria-expanded="false" aria-haspopup="true">{{ phrase('filters') }}</a>
+			<div class="menu menu--wide" data-menu="menu" aria-hidden="true"
+				data-href="{{ link($baseLinkPath . '/filters', $linkData, $filters) }}"
+				data-load-target=".js-filterMenuBody">
+				<div class="menu-content">
+					<h4 class="menu-header">{{ phrase('show_only:') }}</h4>
+					<div class="js-filterMenuBody">
+						<div class="menu-row">{{ phrase('loading...') }}</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</xf:macro>
+
+<xf:macro name="media_list_item" arg-mediaItem="!" arg-allowInlineMod="{{ true }}" arg-forceInlineMod="{{ false }}">
+	<div class="itemList-item js-inlineModContainer{{ $mediaItem.isIgnored() ? ' is-ignored' : '' }}" style="width: 150px" data-author="{{ $mediaItem.User.username ?: $mediaItem.username }}">
+		<xf:if is="$allowInlineMod">
+			<xf:macro name="media_list_item_inline_mod"
+				arg-mediaItem="{$mediaItem}"
+				arg-forceInlineMod="{$forceInlineMod}" />
+		</xf:if>
+		<xf:macro name="media_list_item_type_icon" arg-mediaItem="{$mediaItem}" />
+		<a href="{{ link('media', $mediaItem) }}">
+			<xf:macro name="media_list_item_thumb" arg-mediaItem="{$mediaItem}" />
+		</a>
+		<xf:macro name="media_list_item_overlay" arg-mediaItem="{$mediaItem}" />
+	</div>
+</xf:macro>
+
+<xf:macro name="media_list_item_struct_item" arg-item="!" arg-chooseName="" arg-extraInfo="">
+	<xf:css src="structured_list.less" />
+
+	<xf:if is="$item.LastComment AND $item.LastComment.isUnread()">
+		<xf:set var="$link">{{ link(($item.content_type == 'xfmg_media' ? 'media/media-comments/unread' : 'media/album-comments/unread'), $item) }}</xf:set>
+	<xf:else />
+		<xf:set var="$link">{{ link(($item.content_type == 'xfmg_media' ? 'media' : 'media/albums'), $item) }}</xf:set>
+	</xf:if>
+	<div class="structItem structItem--middle{{ ($item.LastComment AND $item.LastComment.isUnread()) ? ' is-unread' : '' }}" data-author="{{ $item.User.username ?: $item.username }}">
+		<div class="structItem-cell structItem-cell--icon structItem-cell--iconFixedSmall">
+			<div class="structItem-iconContainer">
+				<a href="{$link}">
+					{{ xfmg_thumbnail($item, 'xfmgThumbnail--small', true) }}
+				</a>
+				<xf:avatar user="$item.User" size="s"
+					href="" class="avatar--separated structItem-secondaryIcon" />
+			</div>
+		</div>
+		<div class="structItem-cell structItem-cell--main" data-xf-init="touch-proxy">
+			<div class="structItem-title">
+				<a href="{$link}" class="" data-tp-primary="on">{$item.title}</a>
+			</div>
+
+			<div class="structItem-minor">
+				<xf:if contentcheck="true">
+					<ul class="structItem-extraInfo">
+						<xf:contentcheck>
+							<xf:if is="{$extraInfo}">
+								<li>{$extraInfo}</li>
+							</xf:if>
+							<xf:if is="$chooseName">
+								<li><xf:checkbox standalone="true">
+									<xf:if is="$item.content_type == 'xfmg_media'">
+										<xf:option name="{$chooseName}[]" value="{$item.media_id}" class="js-chooseItem" />
+									<xf:else />
+										<xf:option name="{$chooseName}[]" value="{$item.album_id}" class="js-chooseItem" />
+									</xf:if>
+								</xf:checkbox></li>
+							</xf:if>
+						</xf:contentcheck>
+					</ul>
+				</xf:if>
+				<ul class="structItem-parts">
+					<li><xf:username user="{$item.User}" defaultname="{$item.username}" /></li>
+					<xf:if is="$item.content_type == 'xfmg_media'">
+						<li>{{ phrase('xfmg_media_item') }}</li>
+						<li><xf:date time="{$item.media_date}" /></li>
+					<xf:else />
+						<li>{{ phrase('xfmg_album') }}</li>
+						<li><xf:date time="{$item.create_date}" /></li>
+					</xf:if>
+					<xf:if is="$item.category_id AND $item.Category">
+						<li>{{ phrase('xfmg_category:') }} {$item.Category.title}</li>
+					</xf:if>
+					<xf:if is="$item.content_type == 'xfmg_media' AND $item.Album">
+						<li>{{ phrase('xfmg_album:') }} {$item.Album.title}</li>
+					</xf:if>
+				</ul>
+			</div>
+		</div>
+		<div class="structItem-cell structItem-cell--meta">
+			<dl class="pairs pairs--justified">
+				<dt>{{ phrase('comments') }}</dt>
+				<dd>{$item.comment_count|number}</dd>
+			</dl>
+		</div>
+		<div class="structItem-cell structItem-cell--latest">
+			<xf:if is="$item.LastComment">
+				<a href="{{ link('media/comments', $item.LastComment) }}" rel="nofollow"><xf:date time="{$item.last_comment_date}" class="structItem-latestDate" /></a>
+				<div class="structItem-minor">
+					<xf:username user="{$item.LastCommenter}" />
+				</div>
+			<xf:else />
+				-
+			</xf:if>
+		</div>
+	</div>
+</xf:macro>
+
+<xf:macro name="media_list_item_slider" arg-mediaItem="!">
+	<div class="itemList-item itemList-item--slider">
+		<a href="{{ link('media', $mediaItem) }}">
+			<xf:macro name="media_list_item_thumb" arg-mediaItem="{$mediaItem}" />
+		</a>
+	</div>
+</xf:macro>
+
+<xf:macro name="media_list_item_inline_mod" arg-mediaItem="!" arg-forceInlineMod="{{ false }}">
+	<xf:if is="$mediaItem.canUseInlineModeration() OR $forceInlineMod">
+		<xf:checkbox standalone="true">
+			<xf:option value="{$mediaItem.media_id}"
+				labelclass="itemList-itemOverlayTop"
+				class="js-inlineModToggle"
+				data-xf-init="{{ $mediaItem.canUseInlineModeration() ? 'tooltip' : '' }}"
+				title="{{ $mediaItem.canUseInlineModeration() ? phrase('select_for_moderation') : '' }}" />
+		</xf:checkbox>
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="media_list_item_type_icon" arg-mediaItem="!">
+	<xf:if is="$mediaItem.media_type == 'embed'">
+		<div class="itemList-itemTypeIcon itemList-itemTypeIcon--embed itemList-itemTypeIcon--embed--{$mediaItem.media_site_id}"></div>
+	<xf:else />
+		<div class="itemList-itemTypeIcon itemList-itemTypeIcon--{$mediaItem.media_type}"></div>
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="media_list_item_thumb" arg-mediaItem="!">
+	{{ xfmg_thumbnail($mediaItem, 'xfmgThumbnail--fluid', true) }}
+</xf:macro>
+
+<xf:macro name="media_list_item_overlay" arg-mediaItem="!">
+	<div class="itemList-itemOverlay">
+		<div class="itemInfoRow">
+			<div class="itemInfoRow-main">
+				<h3 class="itemInfoRow-title">
+					<a href="{{ link('media', $mediaItem) }}">{$mediaItem.title}</a>
+				</h3>
+				<div class="itemInfoRow-status">
+					<ul class="listInline listInline--bullet">
+						<li><xf:fa icon="fa-user" title="{{ phrase('xfmg_media_owner')|for_attr }}" /> <xf:username user="$mediaItem.User" defaultname="{$mediaItem.username}" /></li>
+						<li><xf:fa icon="fa-clock" title="{{ phrase('xfmg_date_added')|for_attr }}" /> {{ date($mediaItem.media_date, 'absolute') }}</li>
+					</ul>
+				</div>
+				<div class="itemInfoRow-status">
+					<ul class="listInline listInline--bullet">
+						<li><xf:fa icon="fa-thumbs-up" title="{{ phrase('reaction_score')|for_attr }}" /> {$mediaItem.reaction_score|number_short}</li>
+						<li><xf:fa icon="fa-comments" title="{{ phrase('xfmg_comments')|for_attr }}" /> {$mediaItem.comment_count|number_short}</li>
+						<xf:if is="$mediaItem.media_state == 'deleted'">
+							<li>{{ phrase('deleted') }}</li>
+						<xf:elseif is="$mediaItem.media_state == 'moderated'" />
+							<li>{{ phrase('moderated') }}</li>
+						</xf:if>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</xf:macro>
+
+<xf:macro name="media_list_placeholders" arg-start="1" arg-end="10">
+	<xf:foreach loop="{{ range($start, $end) }}" value="$placeholder">
+		<div class="itemList-item itemList-item--placeholder"></div>
+	</xf:foreach>
+</xf:macro>

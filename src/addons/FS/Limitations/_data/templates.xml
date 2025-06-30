@@ -1,5 +1,209 @@
 <?xml version="1.0" encoding="utf-8"?>
 <templates>
+  <template type="admin" title="fs_limitations_add_edit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>
+	<xf:if is="$data.id">
+		{{phrase('fs_limitations_edit') }} : {$data.UserGroup.title} 
+		<xf:else />
+		{{phrase('fs_limitations_add') }}
+	</xf:if>
+</xf:title>
+<xf:form
+		 action="{{ link('limitations/save', $data) }}"
+		 ajax="true"
+		 class="block"
+		 data-force-flash-message="true"
+		 >
+	<div class="block-container">
+		<div class="block-body">
+
+			<!-- User Group List -->
+			
+			<xf:if is="!$data.user_group_id">
+			
+			<xf:selectrow
+						  name="user_group_id"
+						  value="{$nodeIds}"
+						  label="{{ phrase('user_group') }}"
+						  hint="{{ phrase('required') }}"
+						  required="required"
+						  >
+				<xf:option value="0">{{ phrase('(none)') }}</xf:option>
+
+				<xf:foreach loop="$userGroups" value="$userGroup">
+					<xf:option
+							   value="{$userGroup.user_group_id}"
+							   selected="{{$data.user_group_id == $userGroup.user_group_id }}"
+							   >{$userGroup.title}</xf:option
+						>
+				</xf:foreach>
+			</xf:selectrow>
+				
+				<xf:else />
+				
+				<xf:hiddenval name="user_group_id">{$data.user_group_id}</xf:hiddenval>
+				
+			</xf:if>
+				
+
+			<xf:textboxrow
+						   name="node_ids"
+						   value="{$data.node_ids}"
+						   label="{{ phrase('fs_limitaions_node_ids') }}"
+						   hint="{{ phrase('required') }}"
+						   explain="{{ phrase('fs_limitaions_node_ids_explain') }}"
+						   autosize="true"
+						   row="5"
+						   />
+
+			<xf:numberboxrow
+							 name="daily_ads"
+							 value="{$data.daily_ads}"
+							 label="{{ phrase('fs_limitaions_daily_ads') }}"
+							 hint="{{ phrase('required') }}"
+							 autosize="true"
+							 row="5"
+							 />
+
+			<xf:numberboxrow
+							 name="daily_repost"
+							 value="{$data.daily_repost}"
+							 label="{{ phrase('fs_limitaions_daily_repost') }}"
+							 autosize="true"
+							 row="5"
+							 />
+		</div>
+		<xf:submitrow submit="" icon="save" />
+	</div>
+</xf:form>]]></template>
+  <template type="admin" title="fs_limitations_index" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('fs_limitations') }}</xf:title>
+
+<xf:pageaction>
+	<xf:button href="{{ link('limitations/add') }}" icon="add">{{ phrase('fs_limitations_add_btn') }}</xf:button>
+</xf:pageaction>
+<xf:form action="{{ link($prefix . '/toggle') }}" class="block" ajax="true">
+	<div class="block-outer">
+		<xf:macro
+				  template="filter_macros"
+				  name="quick_filter"
+				  arg-key="limitations"
+				  arg-class="block-outer-opposite"
+				  />
+	</div>
+
+	<div class="block-container">
+
+		<xf:if is="$data is not empty">
+			<div class="block-body">
+				<xf:datalist data-xf-init="responsive-data-list">
+
+					<xf:macro
+							  name="table_list"
+							  arg-data="{$data}"
+							  />
+
+
+				</xf:datalist>
+				<div class="block-footer">
+					<span class="block-footer-counter"
+						  >{{ display_totals($totalReturn, $total) }}</span
+						>
+				</div>
+
+			</div>
+			<xf:else />
+			<div class="block-body block-row">{{ phrase('no_items_have_been_created_yet') }}</div>
+
+		</xf:if>
+
+	</div>
+
+
+	<xf:pagenav
+				page="{$page}"
+				perpage="{$perPage}"
+				total="{$total}"
+				link="limitations"
+				wrapperclass="block"
+				/>
+</xf:form>
+<xf:macro
+		  name="table_list"
+		  arg-data="!"
+		  >
+	<xf:datarow rowtype="header">
+		<xf:cell> {{ phrase('fs_limitations_user_Group') }} </xf:cell>
+		<xf:cell> {{ phrase('fs_limitations_node_ids') }} </xf:cell>
+		<xf:cell> {{ phrase('fs_limitations_daily_ads') }} </xf:cell>
+		<xf:cell> {{ phrase('fs_limitations_daily_repost') }} </xf:cell>
+		<xf:cell class="dataList-cell--min"></xf:cell>
+		<xf:cell class="dataList-cell--min"></xf:cell>
+	</xf:datarow>
+	<xf:foreach loop="{$data}" value="$value">
+		<xf:datarow>
+
+			<xf:cell> {$value.UserGroup.title} </xf:cell>
+			<xf:cell> {$value.node_ids} </xf:cell>
+			<xf:cell> {$value.daily_ads} </xf:cell>
+			<xf:cell> {$value.daily_repost} </xf:cell>
+
+			<xf:action href="{{ link('limitations/edit', $value) }}" >{{ phrase('edit') }}</xf:action>
+			<xf:delete
+					   href="{{ link('limitations/delete', $value) }}"
+					   overlay="true"
+					   />
+		</xf:datarow>
+	</xf:foreach>
+</xf:macro>]]></template>
+  <template type="email" title="fs_limitations_admirer_mail" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<mail:subject>
+	Subscription Packages
+</mail:subject>
+
+{{ phrase('fs_limitations_admirer_mail_body') }}]]></template>
+  <template type="email" title="fs_limitations_companion_mail" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<mail:subject>
+	Subscription Packages
+</mail:subject>
+
+{{ phrase('fs_limitations_companion_mail_body') }}]]></template>
+  <template type="email" title="fs_limitations_send_payment_confirm_male" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<style>
+	table {
+		border-collapse: collapse;
+		width: 100%;
+	}
+
+	td {
+		border: 1px solid #dddddd;
+		padding: 8px;
+	}
+
+	tr:nth-child(even) {
+		background-color: #dddddd;
+	}
+</style>
+
+<mail:subject>{{ phrase('receipt_for_your_account_upgrade_at_x', {'board_title': $xf.options.boardTitle}) }}</mail:subject>
+
+<p>{{ phrase('thank_you_for_purchasing_account_upgrade_at_x', {'board_url': link('canonical:index'), 'board_title': $xf.options.boardTitle}) }}</p>
+<br/>
+<table>
+	<tr>
+		<td>{{ phrase('Username') }} </td>
+		<td>{$username}</td>
+	</tr>
+	<tr>
+		<td>{{ phrase('purchased_item') }} </td>
+		<td>{$title}</td>
+	</tr>
+	<tr>
+		<td> {{ phrase('price') }}</td>
+		<td>${$price}</td>
+	</tr>
+</table>
+<br/>
+<xf:if is="$xf.toUser.canUseContactForm()">
+	<p>{{ phrase('thank_you_for_your_purchase_questions_contact_us', {'contacturl': link('canonical:misc/contact') }) }}</p>
+	<xf:else />
+	<p>{{ phrase('thank_you_for_your_purchase') }}</p>
+</xf:if>]]></template>
   <template type="public" title="fs_conversation_limits_info" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<style>
 	.limit-info{margin-right: 10px;}
 </style>
@@ -97,5 +301,673 @@
 	<div class="side right">
 		<div>{$percentage} %</div>
 	</div>
+</xf:macro>]]></template>
+  <template type="public" title="fs_limitations_featured_vip_comp" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<style>
+	@media only screen and (min-width: 580px)
+		.aTag {
+			margin: 8px;
+			flex: 1 0 calc(33.333% - 16px);
+			max-width: calc(33.333% - 16px);
+	}
+	a {
+		color: inherit;
+		text-decoration: none;
+		cursor: pointer;
+	}
+
+	@media only screen and (min-width: 580px)
+		.cardMain {
+			margin: 0px;
+	}
+
+	.cardMain {
+		position: relative;
+		border-radius: 6px;
+		overflow: hidden;
+		margin: 16px 0px;
+		width: 100%;
+	}
+	div {
+		-webkit-tap-highlight-color: transparent;
+	}
+
+	.imageDiv2 {
+		position: relative;
+		width: 100%;
+		padding-top: 133.33%;
+	}
+	.imageDiv {
+		width: 100%;
+		box-sizing: border-box;
+		border-radius: 6px !important;
+	}
+
+	.imageDiv span {
+		border-radius: 6px !important;
+	}
+	.ImageClass {
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		width: 100%;
+		height: 100%;
+		background-position: center top;
+		background-size: cover;
+		border-radius: 6px;
+		user-select: auto;
+	}
+
+	.imageTopDiv {
+		position: absolute;
+		top: 0px;
+		width: 100%;
+		padding: 8px;
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	.topHeadingLabel2 {
+		position: relative;
+		display: inline-flex;
+		-webkit-box-pack: center;
+		justify-content: center;
+		box-sizing: border-box;
+		font-family: "Source Sans Pro", HelveticaNeue, Helvetica, Arial, Sans;
+		-webkit-box-align: center;
+		align-items: center;
+		text-align: center;
+		max-width: 100%;
+		cursor: default;
+		flex-direction: row;
+		height: 16px;
+		border-width: 1px;
+		border-style: solid;
+		font-size: 12px;
+		border-radius: 100px;
+		padding: 0px 8px;
+		color: rgb(255, 255, 255);
+		background: rgb(235, 160, 14);
+		border-color: rgb(235, 160, 14);
+	}
+
+	.topHeadingText {
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		line-height: 16px;
+	}
+
+	.footerDiv {
+		position: absolute;
+		width: 100%;
+		bottom: 0px;
+		color: white;
+		padding: 8px;
+		background: linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+	}
+
+	@media only screen and (min-width: 580px)
+		.footerText {
+			font-size: 20px;
+	}
+	.footerText {
+		font-size: 18px;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		width: auto;
+	}
+
+	.square-border{
+		border-radius:3px !important;
+	}
+
+	.container {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	.box ,.box12{
+		flex: 1;
+		min-width: 23%; / Set minimum width for each box /
+		margin: 0px 10px 20px 10px;
+		padding: 0px 10px 0px 10px;
+		text-align: center;
+		color: #fff;
+		border-radius: 5px;
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+		max-width: 24%;
+		margin: 6px;
+	}
+
+	.block-minorHeader {
+		padding: 6px 10px;
+		margin: 0;
+		font-weight: 400;
+		text-decoration: none;
+		font-size: 17px;
+		color: #47a7eb;
+	}
+
+	@media (max-width: 768px) {
+		.box ,.box12{
+			min-width: 40%; / Set the width to 100% for smaller screens /
+		}
+	}
+
+	@media screen and (max-width: 600px) {
+		.box ,.box12{
+			min-width: 40%; / Make boxes full width on small screens /
+		}
+	}
+
+	@media screen and (max-width: 480px) {
+		.box,.box12 {
+			min-width: 100%; / Make boxes full width on small screens /
+		}
+	}
+
+	.avatar.avatar-- {
+		font-size: 115px;
+	}
+
+	.addYourLink2{
+		color: #000; 
+		border: 5px dotted #000; 
+		width: 200px;
+		text-decoration: none;
+	}
+
+	a:hover {
+		color: #000;
+		text-decoration: none;
+	}
+
+	.box12{
+		justify-content: center;
+		align-items: center;
+		display: flex;
+	}
+
+</style>
+
+<xf:title>{{ phrase('Featured VIP Companion') }}</xf:title>
+
+<div class="block">
+	<div class="block-container">
+		<h3 class="block-minorHeader">Featured VIP Companion</h3>
+		<div class="container">
+			<xf:foreach loop="$users" value="$user">
+
+
+				<div class="box">
+					<a class="" href="{{ link('members',$user) }}">
+						<div>
+							<div itemindex="1" threshold="0.7" class="cardMain">
+								<div class="imageDiv imageDiv2">
+									<xf:avatar user="{$user}" size=""
+											   href="{{ link('members',$user) }}" class="square-border ImageClass"/>
+								</div>
+								<div class="imageTopDiv">
+									<label class="topHeadingLabel topHeadingLabel2">
+										<span class="topHeadingText">VIP Companion</span>
+									</label>
+								</div>
+								<div class="footerDiv">
+									<div style="display: flex; height: 24px;">
+										<div class="footerText" style="font-size: 24px; font-weight: 600; height: 26px; line-height: 24px;"><a href="{{ link('members',$user)}}">  {{$user.username }}</a></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</a>
+				</div>
+			</xf:foreach>
+
+				<div class="box12">
+					<div class="addYourLink2">
+						<a href="{{ link('account-upgrade',null)}}" style="color: #000000;">
+							{{ phrase('fs_registration_add_your_profile') }}
+						</a>
+					</div>
+				</div>
+		</div>
+	</div>
+</div>]]></template>
+  <template type="public" title="fs_limitations_featured_vip_comp_css.less" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[@media only screen and (min-width: 580px)
+		.aTag {
+			margin: 8px;
+			flex: 1 0 calc(33.333% - 16px);
+			max-width: calc(33.333% - 16px);
+	}
+	a {
+		color: inherit;
+		text-decoration: none;
+		cursor: pointer;
+	}
+
+	@media only screen and (min-width: 580px)
+		.cardMain {
+			margin: 0px;
+	}
+
+	.cardMain {
+		position: relative;
+		border-radius: 6px;
+		overflow: hidden;
+		margin: 16px 0px;
+		width: 100%;
+	}
+	div {
+		-webkit-tap-highlight-color: transparent;
+	}
+
+	.imageDiv2 {
+		position: relative;
+		width: 100%;
+		padding-top: 133.33%;
+	}
+	.imageDiv {
+		width: 100%;
+		box-sizing: border-box;
+		border-radius: 6px !important;
+	}
+
+	.imageDiv span {
+		border-radius: 6px !important;
+	}
+	.ImageClass {
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		width: 100%;
+		height: 100%;
+		background-position: center top;
+		background-size: cover;
+		border-radius: 6px;
+		user-select: auto;
+	}
+
+	.imageTopDiv {
+		position: absolute;
+		top: 0px;
+		width: 100%;
+		padding: 8px;
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	.topHeadingLabel2 {
+		position: relative;
+		display: inline-flex;
+		-webkit-box-pack: center;
+		justify-content: center;
+		box-sizing: border-box;
+		font-family: "Source Sans Pro", HelveticaNeue, Helvetica, Arial, Sans;
+		-webkit-box-align: center;
+		align-items: center;
+		text-align: center;
+		max-width: 100%;
+		cursor: default;
+		flex-direction: row;
+		height: 16px;
+		border-width: 1px;
+		border-style: solid;
+		font-size: 12px;
+		border-radius: 100px;
+		padding: 0px 8px;
+		color: rgb(255, 255, 255);
+		background: rgb(235, 160, 14);
+		border-color: rgb(235, 160, 14);
+	}
+
+	.topHeadingText {
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		line-height: 16px;
+	}
+
+	.footerDiv {
+		position: absolute;
+		width: 100%;
+		bottom: 0px;
+		color: white;
+		padding: 8px;
+		background: linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+	}
+
+	@media only screen and (min-width: 580px)
+		.footerText {
+			font-size: 20px;
+	}
+	.footerText {
+		font-size: 18px;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		width: auto;
+	}
+
+	.square-border{
+		border-radius:3px !important;
+	}
+
+	.container {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	.box ,.box12{
+		flex: 1;
+		min-width: 23%; / Set minimum width for each box /
+		margin: 0px 10px 20px 10px;
+		padding: 0px 10px 0px 10px;
+		text-align: center;
+		color: #fff;
+		border-radius: 5px;
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+		max-width: 24%;
+		margin: 6px;
+	}
+
+	.block-minorHeader {
+		padding: 6px 10px;
+		margin: 0;
+		font-weight: 400;
+		text-decoration: none;
+		font-size: 17px;
+		color: #47a7eb;
+	}
+
+	@media (max-width: 768px) {
+		.box ,.box12{
+			min-width: 40%; / Set the width to 100% for smaller screens /
+		}
+	}
+
+	@media screen and (max-width: 600px) {
+		.box ,.box12{
+			min-width: 40%; / Make boxes full width on small screens /
+		}
+	}
+
+	@media screen and (max-width: 480px) {
+		.box,.box12 {
+			min-width: 100%; / Make boxes full width on small screens /
+		}
+	}
+
+	.avatar.avatar-- {
+		font-size: 115px;
+	}
+
+	.addYourLink2{
+		color: #000; 
+		border: 5px dotted #000; 
+		width: 200px;
+		text-decoration: none;
+	}
+
+	a:hover {
+		color: #000;
+		text-decoration: none;
+	}
+
+	.box12{
+		justify-content: center;
+		align-items: center;
+		display: flex;
+	}]]></template>
+  <template type="public" title="fs_limitations_xfmg_media_list_macros" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:macro template="xfmg_media_list_macros" name="media_create_message" arg-transcoding="{$transcoding}" arg-pendingApproval="{$pendingApproval}">
+	<xf:if is="$transcoding">
+		<div class="blockMessage blockMessage--important">
+			{{ phrase('xfmg_one_or_more_of_your_videos_needs_to_be_processed') }}
+		</div>
+	</xf:if>
+
+	<xf:if is="$pendingApproval">
+		<div class="blockMessage blockMessage--important">
+			{{ phrase('content_submitted_displayed_pending_approval') }}
+		</div>
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="media_list" arg-mediaItems="!" arg-allowInlineMod="{{ true }}" arg-forceInlineMod="{{ false }}">
+	<xf:css src="xfmg_media_list.less" />
+
+	<div class="itemList">
+		<xf:foreach loop="$mediaItems" value="$mediaItem">
+			<xf:macro name="media_list_item"
+				arg-mediaItem="{$mediaItem}"
+				arg-allowInlineMod="{$allowInlineMod}"
+				arg-forceInlineMod="{$forceInlineMod}" />
+		</xf:foreach>
+		<xf:macro name="media_list_placeholders" />
+	</div>
+</xf:macro>
+
+<xf:macro name="list_filter_bar" arg-filters="!" arg-baseLinkPath="!" arg-linkData="{{ null }}" arg-ownerFilter="{{ null }}">
+	<xf:set var="$sortOrders" value="{{ {
+		'media_date': phrase('date'),
+		'comment_count': phrase('xfmg_comments'),
+		'rating_weighted': phrase('rating'),
+		'reaction_score': phrase('reaction_score'),
+		'view_count': phrase('views')
+	} }}" />
+
+	<div class="block-filterBar">
+		<div class="filterBar">
+			<xf:if contentcheck="true">
+				<ul class="filterBar-filters">
+					<xf:contentcheck>
+						<xf:if is="$filters.type">
+							<li><a href="{{ link($baseLinkPath, $linkData, $filters|replace('type', null)) }}"
+								class="filterBar-filterToggle" data-xf-init="tooltip" title="{{ phrase('remove_this_filter')|for_attr }}">
+								<span class="filterBar-filterToggle-label">{{ phrase('type:') }}</span>
+								<xf:if is="$filters.type == 'image'">
+									{{ phrase('xfmg_images') }}
+								<xf:elseif is="$filters.type == 'audio'" />
+									{{ phrase('xfmg_audio') }}
+								<xf:elseif is="$filters.type == 'video'" />
+									{{ phrase('xfmg_videos') }}
+								<xf:elseif is="$filters.type == 'embed'" />
+									{{ phrase('xfmg_embeds') }}
+								</xf:if>
+							</a></li>
+						</xf:if>
+						<xf:if is="$filters.owner_id AND $ownerFilter">
+							<li><a href="{{ link($baseLinkPath, $linkData, $filters|replace('owner_id', null)) }}"
+								class="filterBar-filterToggle" data-xf-init="tooltip" title="{{ phrase('remove_this_filter')|for_attr }}">
+								<span class="filterBar-filterToggle-label">{{ phrase('xfmg_media_owner:') }}</span>
+								{$ownerFilter.username}</a></li>
+						</xf:if>
+						<xf:if is="$filters.order AND {$sortOrders.{$filters.order}}">
+							<li><a href="{{ link($baseLinkPath, $linkData, $filters|replace({'order': null, 'direction': null})) }}"
+								class="filterBar-filterToggle" data-xf-init="tooltip" title="{{ phrase('return_to_default_order')|for_attr }}">
+								<span class="filterBar-filterToggle-label">{{ phrase('sort_by:') }}</span>
+								{$sortOrders.{$filters.order}}
+								<xf:fa icon="{{ $filters.direction == 'asc' ? 'fa-angle-up' : 'fa-angle-down' }}" />
+								<span class="u-srOnly"><xf:if is="$filters.direction == 'asc'">{{ phrase('ascending') }}<xf:else />{{ phrase('descending') }}</xf:if></span>
+							</a></li>
+						</xf:if>
+					</xf:contentcheck>
+				</ul>
+			</xf:if>
+
+			<a class="filterBar-menuTrigger" data-xf-click="menu" role="button" tabindex="0" aria-expanded="false" aria-haspopup="true">{{ phrase('filters') }}</a>
+			<div class="menu menu--wide" data-menu="menu" aria-hidden="true"
+				data-href="{{ link($baseLinkPath . '/filters', $linkData, $filters) }}"
+				data-load-target=".js-filterMenuBody">
+				<div class="menu-content">
+					<h4 class="menu-header">{{ phrase('show_only:') }}</h4>
+					<div class="js-filterMenuBody">
+						<div class="menu-row">{{ phrase('loading...') }}</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</xf:macro>
+
+<xf:macro name="media_list_item" arg-mediaItem="!" arg-allowInlineMod="{{ true }}" arg-forceInlineMod="{{ false }}">
+	<div class="itemList-item js-inlineModContainer{{ $mediaItem.isIgnored() ? ' is-ignored' : '' }}" style="width: 150px" data-author="{{ $mediaItem.User.username ?: $mediaItem.username }}">
+		<xf:if is="$allowInlineMod">
+			<xf:macro name="media_list_item_inline_mod"
+				arg-mediaItem="{$mediaItem}"
+				arg-forceInlineMod="{$forceInlineMod}" />
+		</xf:if>
+		<xf:macro name="media_list_item_type_icon" arg-mediaItem="{$mediaItem}" />
+		<a href="{{ link('media', $mediaItem) }}">
+			<xf:macro name="media_list_item_thumb" arg-mediaItem="{$mediaItem}" />
+		</a>
+		<xf:macro name="media_list_item_overlay" arg-mediaItem="{$mediaItem}" />
+	</div>
+</xf:macro>
+
+<xf:macro name="media_list_item_struct_item" arg-item="!" arg-chooseName="" arg-extraInfo="">
+	<xf:css src="structured_list.less" />
+
+	<xf:if is="$item.LastComment AND $item.LastComment.isUnread()">
+		<xf:set var="$link">{{ link(($item.content_type == 'xfmg_media' ? 'media/media-comments/unread' : 'media/album-comments/unread'), $item) }}</xf:set>
+	<xf:else />
+		<xf:set var="$link">{{ link(($item.content_type == 'xfmg_media' ? 'media' : 'media/albums'), $item) }}</xf:set>
+	</xf:if>
+	<div class="structItem structItem--middle{{ ($item.LastComment AND $item.LastComment.isUnread()) ? ' is-unread' : '' }}" data-author="{{ $item.User.username ?: $item.username }}">
+		<div class="structItem-cell structItem-cell--icon structItem-cell--iconFixedSmall">
+			<div class="structItem-iconContainer">
+				<a href="{$link}">
+					{{ xfmg_thumbnail($item, 'xfmgThumbnail--small', true) }}
+				</a>
+				<xf:avatar user="$item.User" size="s"
+					href="" class="avatar--separated structItem-secondaryIcon" />
+			</div>
+		</div>
+		<div class="structItem-cell structItem-cell--main" data-xf-init="touch-proxy">
+			<div class="structItem-title">
+				<a href="{$link}" class="" data-tp-primary="on">{$item.title}</a>
+			</div>
+
+			<div class="structItem-minor">
+				<xf:if contentcheck="true">
+					<ul class="structItem-extraInfo">
+						<xf:contentcheck>
+							<xf:if is="{$extraInfo}">
+								<li>{$extraInfo}</li>
+							</xf:if>
+							<xf:if is="$chooseName">
+								<li><xf:checkbox standalone="true">
+									<xf:if is="$item.content_type == 'xfmg_media'">
+										<xf:option name="{$chooseName}[]" value="{$item.media_id}" class="js-chooseItem" />
+									<xf:else />
+										<xf:option name="{$chooseName}[]" value="{$item.album_id}" class="js-chooseItem" />
+									</xf:if>
+								</xf:checkbox></li>
+							</xf:if>
+						</xf:contentcheck>
+					</ul>
+				</xf:if>
+				<ul class="structItem-parts">
+					<li><xf:username user="{$item.User}" defaultname="{$item.username}" /></li>
+					<xf:if is="$item.content_type == 'xfmg_media'">
+						<li>{{ phrase('xfmg_media_item') }}</li>
+						<li><xf:date time="{$item.media_date}" /></li>
+					<xf:else />
+						<li>{{ phrase('xfmg_album') }}</li>
+						<li><xf:date time="{$item.create_date}" /></li>
+					</xf:if>
+					<xf:if is="$item.category_id AND $item.Category">
+						<li>{{ phrase('xfmg_category:') }} {$item.Category.title}</li>
+					</xf:if>
+					<xf:if is="$item.content_type == 'xfmg_media' AND $item.Album">
+						<li>{{ phrase('xfmg_album:') }} {$item.Album.title}</li>
+					</xf:if>
+				</ul>
+			</div>
+		</div>
+		<div class="structItem-cell structItem-cell--meta">
+			<dl class="pairs pairs--justified">
+				<dt>{{ phrase('comments') }}</dt>
+				<dd>{$item.comment_count|number}</dd>
+			</dl>
+		</div>
+		<div class="structItem-cell structItem-cell--latest">
+			<xf:if is="$item.LastComment">
+				<a href="{{ link('media/comments', $item.LastComment) }}" rel="nofollow"><xf:date time="{$item.last_comment_date}" class="structItem-latestDate" /></a>
+				<div class="structItem-minor">
+					<xf:username user="{$item.LastCommenter}" />
+				</div>
+			<xf:else />
+				-
+			</xf:if>
+		</div>
+	</div>
+</xf:macro>
+
+<xf:macro name="media_list_item_slider" arg-mediaItem="!">
+	<div class="itemList-item itemList-item--slider">
+		<a href="{{ link('media', $mediaItem) }}">
+			<xf:macro name="media_list_item_thumb" arg-mediaItem="{$mediaItem}" />
+		</a>
+	</div>
+</xf:macro>
+
+<xf:macro name="media_list_item_inline_mod" arg-mediaItem="!" arg-forceInlineMod="{{ false }}">
+	<xf:if is="$mediaItem.canUseInlineModeration() OR $forceInlineMod">
+		<xf:checkbox standalone="true">
+			<xf:option value="{$mediaItem.media_id}"
+				labelclass="itemList-itemOverlayTop"
+				class="js-inlineModToggle"
+				data-xf-init="{{ $mediaItem.canUseInlineModeration() ? 'tooltip' : '' }}"
+				title="{{ $mediaItem.canUseInlineModeration() ? phrase('select_for_moderation') : '' }}" />
+		</xf:checkbox>
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="media_list_item_type_icon" arg-mediaItem="!">
+	<xf:if is="$mediaItem.media_type == 'embed'">
+		<div class="itemList-itemTypeIcon itemList-itemTypeIcon--embed itemList-itemTypeIcon--embed--{$mediaItem.media_site_id}"></div>
+	<xf:else />
+		<div class="itemList-itemTypeIcon itemList-itemTypeIcon--{$mediaItem.media_type}"></div>
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="media_list_item_thumb" arg-mediaItem="!">
+	{{ xfmg_thumbnail($mediaItem, 'xfmgThumbnail--fluid', true) }}
+</xf:macro>
+
+<xf:macro name="media_list_item_overlay" arg-mediaItem="!">
+	<div class="itemList-itemOverlay">
+		<div class="itemInfoRow">
+			<div class="itemInfoRow-main">
+				<h3 class="itemInfoRow-title">
+					<a href="{{ link('media', $mediaItem) }}">{$mediaItem.title}</a>
+				</h3>
+				<div class="itemInfoRow-status">
+					<ul class="listInline listInline--bullet">
+						<li><xf:fa icon="fa-user" title="{{ phrase('xfmg_media_owner')|for_attr }}" /> <xf:username user="$mediaItem.User" defaultname="{$mediaItem.username}" /></li>
+						<li><xf:fa icon="fa-clock" title="{{ phrase('xfmg_date_added')|for_attr }}" /> {{ date($mediaItem.media_date, 'absolute') }}</li>
+					</ul>
+				</div>
+				<div class="itemInfoRow-status">
+					<ul class="listInline listInline--bullet">
+						<li><xf:fa icon="fa-thumbs-up" title="{{ phrase('reaction_score')|for_attr }}" /> {$mediaItem.reaction_score|number_short}</li>
+						<li><xf:fa icon="fa-comments" title="{{ phrase('xfmg_comments')|for_attr }}" /> {$mediaItem.comment_count|number_short}</li>
+						<xf:if is="$mediaItem.media_state == 'deleted'">
+							<li>{{ phrase('deleted') }}</li>
+						<xf:elseif is="$mediaItem.media_state == 'moderated'" />
+							<li>{{ phrase('moderated') }}</li>
+						</xf:if>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</xf:macro>
+
+<xf:macro name="media_list_placeholders" arg-start="1" arg-end="10">
+	<xf:foreach loop="{{ range($start, $end) }}" value="$placeholder">
+		<div class="itemList-item itemList-item--placeholder"></div>
+	</xf:foreach>
 </xf:macro>]]></template>
 </templates>

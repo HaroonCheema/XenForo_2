@@ -1,0 +1,9 @@
+{
+    "template": "PAGE_CONTAINER",
+    "description": "fs_limitations_apend_discussion_notice",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:if is=\"$description is not empty\">\n\t\t\t\t\t<div class=\"p-description welcome-description\">{$description}</div>\n\t\t\t\t</xf:if>",
+    "replace": "<xf:if is=\"$description is not empty\">\n\t\t\t\t\t<div class=\"p-description welcome-description\">\n\t\t\t\t\t\t<xf:if is=\"in_array($forum.node_id, $xf.options.fs_discussions_form_ids|split)\">\n\t\t\t\t\t\t\t{$description}{{ phrase('fs_limitaions_discussion_notice_add') }}\n\t\t\t\t\t\t\t<xf:else/>\n\t\t\t\t\t\t\t{$description}\n\t\t\t\t\t\t</xf:if>\n\t\t\t\t\t</div>\n\t\t\t\t</xf:if>"
+}

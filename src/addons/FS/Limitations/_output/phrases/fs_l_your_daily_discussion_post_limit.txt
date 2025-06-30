@@ -1,0 +1,2 @@
+Your daily discussion post limit: <b>( {visitorDailyPostCount} / {dailyPostLimit} )</b> .&nbsp;&nbsp;
+Remaining:  <b>{remianingCount}</b>

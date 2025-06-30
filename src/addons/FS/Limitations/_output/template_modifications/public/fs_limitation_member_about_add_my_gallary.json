@@ -1,0 +1,9 @@
+{
+    "template": "member_about",
+    "description": "fs_limitation_member_about_add_my_gallary",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:if is=\"$followersCount\">",
+    "replace": "\t<div class=\"block-row block-row--separated\">\n\t\t<h4 class=\"block-textHeader\">{{ phrase('fs_limitations_my_gallary') }}\n\t\t<xf:if is=\"$user.user_id == $xf.visitor.user_id\">\n\t\t\t<xf:button href=\"{{ link('media/users', $user) }}\" icon=\"add\" style=\"float: right; margin-top: 12px;\">{{ phrase('add') }}</xf:button>\n\t\t\t</xf:if>\n\t\t\t</h4>\n\t\t<xf:if is=\"$mediaItems is not empty\">\n\t\t<div class=\"block-container\">\n\t\t\t<div class=\"block-body\">\n\t\t\t\t<xf:macro template=\"fs_limitations_xfmg_media_list_macros\" name=\"media_list\"\n\t\t\t\t\t\t  arg-mediaItems=\"{$mediaItems}\"\n\t\t\t\t\t\t  arg-forceInlineMod=\"{$canInlineMod}\" />\n\t\t\t\t\n\t\t\t\t\t<xf:button href=\"{{ link('media/users', $user) }}\" icon=\"refresh\" style=\"float: right; margin-top: 12px;\">{{ phrase('more') }}</xf:button>\n\t\t\t\t\n\t\t\t</div>\n\t\t</div>\n\t\t\t</xf:if>\n\t</div>\n\n\n$0"
+}

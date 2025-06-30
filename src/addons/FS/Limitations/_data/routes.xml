@@ -1,2 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<routes/>
+<routes>
+  <route route_type="admin" route_prefix="limitations" format=":int&lt;id&gt;/:page" controller="FS\Limitations:Limitations" context="fsLimitations"/>
+</routes>

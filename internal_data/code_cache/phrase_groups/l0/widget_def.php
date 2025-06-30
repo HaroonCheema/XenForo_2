@@ -2,7 +2,10 @@
 return array (
   'widget_def.BRATR_newRatings' => 'Brivium - New Thread Ratings',
   'widget_def.FTSlider_widget' => '[XTR] Featured Thread Slider',
+  'widget_def.FeaturedProvider' => 'Featured Provider',
   'widget_def.RealTimeChat' => 'Real Time Chat',
+  'widget_def.TopUsers' => 'Top Users',
+  'widget_def.UserStates' => 'User States',
   'widget_def.WelcomeBanner' => 'Welcome Banner',
   'widget_def.altf_filter_widget' => 'Thread Filter Widget',
   'widget_def.birthdays' => 'Today\'s birthdays',

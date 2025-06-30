@@ -1,7 +1,13 @@
 <?php
 
+/** @noinspection PhpIllegalPsrClassPathInspection */
 // ################## THIS IS A GENERATED FILE ##################
 // DO NOT EDIT DIRECTLY. EDIT THE CLASS EXTENSIONS IN THE CONTROL PANEL.
+
+namespace FS\Limitations\XFMG\ControllerPlugin
+{
+	class XFCP_MediaList extends \XFMG\ControllerPlugin\MediaList {}
+}
 
 namespace FS\Limitations\XFMG\Pub\Controller
 {
@@ -20,4 +26,5 @@ namespace FS\Limitations\XF\Pub\Controller
 	class XFCP_Conversation extends \XF\Pub\Controller\Conversation {}
 	class XFCP_Forum extends \XF\Pub\Controller\Forum {}
 	class XFCP_Member extends \XF\Pub\Controller\Member {}
+	class XFCP_Page extends \XF\Pub\Controller\Page {}
 }

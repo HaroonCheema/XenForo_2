@@ -1,0 +1,9 @@
+{
+    "template": "forum_list",
+    "description": "fs_limitations_forum_list_hide_new_post_btn",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:wrap template=\"forum_overview_wrapper\">\n\t<xf:set var=\"$pageSelected\">forums</xf:set>\n</xf:wrap>",
+    "replace": "<xf:comment>\n<xf:wrap template=\"forum_overview_wrapper\">\n\t<xf:set var=\"$pageSelected\">forums</xf:set>\n</xf:wrap>\n</xf:comment>"
+}

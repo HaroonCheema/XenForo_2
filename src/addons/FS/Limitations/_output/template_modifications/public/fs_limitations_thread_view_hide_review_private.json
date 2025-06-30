@@ -1,0 +1,9 @@
+{
+    "template": "thread_view",
+    "description": "fs_limitations_thread_view_hide_review_private",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/<xf:if is=\"\\$post\\.message_state == 'deleted'\">.*?<\\/xf:if>/is",
+    "replace": "<xf:if is=\"$xf.visitor.getCheckPrivateReviews() And in_array($forum.node_id, $xf.options.fs_register_Reviews_ids|split)\">\n\t<xf:if is=\"$post.isFirstPost()\">\n\t\t<xf:if is=\"$post.message_state == 'deleted'\">\n\t\t\t<xf:macro name=\"{{ $templateOverrides.post_deleted_macro ?: 'post_macros::post_deleted' }}\"\n\t\t\t\t\t  arg-post=\"{$post}\"\n\t\t\t\t\t  arg-thread=\"{$thread}\"\n\t\t\t\t\t  args=\"{$templateOverrides.post_deleted_macro_args}\" />\n\t\t\t<xf:else />\n\t\t\t<xf:macro name=\"{{ $templateOverrides.post_macro ?: 'post_macros::post' }}\"\n\t\t\t\t\t  arg-post=\"{$post}\"\n\t\t\t\t\t  arg-thread=\"{$thread}\"\n\t\t\t\t\t  arg-highlightedPosts=\"{$highlightedPosts}\"\n\t\t\t\t\t  args=\"{$templateOverrides.post_macro_args}\" />\n\t\t</xf:if>\n\t</xf:if>\n\t<xf:else />\n\t$0\n</xf:if>"
+}

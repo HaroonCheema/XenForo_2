@@ -11,7 +11,7 @@ class Forum extends XFCP_Forum
         if (!$params->node_id && !$params->node_name) {
             return $this->rerouteController('XF:Forum', 'postThreadChooser');
         }
-
+ 
         $forum = $this->assertViewableForum($params->node_id ?: $params->node_name, ['DraftThreads|' . \XF::visitor()->user_id]);
 
         $isPreRegThread = $forum->canCreateThreadPreReg();

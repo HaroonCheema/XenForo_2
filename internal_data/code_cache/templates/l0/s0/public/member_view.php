@@ -267,6 +267,7 @@ return array(
 								' . $__templater->callMacro('member_macros', 'member_action_buttons', array(
 		'user' => $__vars['user'],
 		'context' => 'profile',
+		'vouch' => $__vars['vouch'],
 	), $__vars) . '
 							';
 	if (strlen(trim($__compilerTemp12)) > 0) {
@@ -431,6 +432,16 @@ return array(
 	   class="tabs-tab"
 	   id="bratr-ratings"
 	   role="tab">' . 'Receive Ratings' . '</a>
+';
+		}
+		$__finalCompiled .= '
+';
+		if ($__vars['user']['comp_verify_key'] AND ((($__vars['xf']['visitor']['user_id'] == $__vars['user']['user_id']) OR $__vars['xf']['visitor']['is_admin']) OR $__vars['xf']['visitor']['is_moderator'])) {
+			$__finalCompiled .= '
+					<a href="' . $__templater->func('link', array('members/com-verify', $__vars['user'], ), true) . '"
+						class="tabs-tab"
+						id="com-verify"
+						role="tab">' . 'Verification' . '</a>
 ';
 		}
 		$__finalCompiled .= '
@@ -677,6 +688,18 @@ return array(
 ';
 		}
 		$__finalCompiled .= '
+';
+		if ($__vars['user']['comp_verify_key'] AND ((($__vars['xf']['visitor']['user_id'] == $__vars['user']['user_id']) OR $__vars['xf']['visitor']['is_admin']) OR $__vars['xf']['visitor']['is_moderator'])) {
+			$__finalCompiled .= '
+
+<li data-href="' . $__templater->func('link', array('members/com-verify', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="com-verify">
+		<div class="blockMessage">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
+	</li>
+	
+';
+		}
+		$__finalCompiled .= '
+
 ';
 		if ($__templater->method($__vars['xf']['visitor'], 'hasPermission', array('fs_thread_scoring_system', 'can_view', ))) {
 			$__finalCompiled .= '
