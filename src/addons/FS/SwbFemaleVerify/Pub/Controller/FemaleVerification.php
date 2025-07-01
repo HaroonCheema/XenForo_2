@@ -11,7 +11,7 @@ class FemaleVerification extends AbstractController
 	{
 		$visitor = \XF::visitor();
 
-		if (!$visitor->user_id || $visitor->identity_status == 'queue' || $visitor->identity_status == 'sent' || $visitor->account_type != 2) {
+		if (!$visitor->user_id || $visitor->identity_status == 'queue' || $visitor->identity_status == 'sent' || $visitor->account_type == 1) {
 
 			return $this->noPermission();
 		}

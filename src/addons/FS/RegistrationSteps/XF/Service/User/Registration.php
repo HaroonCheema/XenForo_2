@@ -2,9 +2,11 @@
 
 namespace FS\RegistrationSteps\XF\Service\User;
 
-class Registration extends XFCP_Registration {
+class Registration extends XFCP_Registration
+{
 
-    public function setFromInput(array $input) {
+    public function setFromInput(array $input)
+    {
         $parent = parent::setFromInput($input);
         if (isset($input['account_type'])) {
             $this->setAccountType($input['account_type']);
@@ -13,11 +15,13 @@ class Registration extends XFCP_Registration {
         return $parent;
     }
 
-    public function setAccountType($type) {
+    public function setAccountType($type)
+    {
         $this->user->account_type = $type;
     }
 
-    public function setCustomFields(array $values) {
+    public function setCustomFields(array $values)
+    {
         /** @var \XF\CustomField\Set $fieldSet */
         $account_type = \xf::app()->request()->filter('account_type', 'uint');
 
@@ -34,11 +38,12 @@ class Registration extends XFCP_Registration {
         return parent::setCustomFields($values);
     }
 
-    public function setCustomFieldAccountType($fieldSet, $values) {
+    public function setCustomFieldAccountType($fieldSet, $values)
+    {
 
         $fieldDefinition = $fieldSet->getDefinitionSet()
-                ->filterEditable($fieldSet, 'user')
-                ->filter('registration');
+            ->filterEditable($fieldSet, 'user')
+            ->filter('registration');
 
         $customFieldsShown = array_keys($fieldDefinition->getFieldDefinitions());
 
@@ -47,8 +52,11 @@ class Registration extends XFCP_Registration {
         }
     }
 
-    protected function setInitialUserState() {
+    protected function setInitialUserState()
+    {
         if ($this->user->account_type == 2 && intval($this->app->options()->Advertiser_manaul_approval == 1)) {
+            return parent::setInitialUserState();
+
             $this->user->user_state = 'moderated';
             return;
         } else {
@@ -56,7 +64,8 @@ class Registration extends XFCP_Registration {
         }
     }
 
-    public function sendverifyMail($user) {
+    public function sendverifyMail($user)
+    {
 
         $activationId = $this->generateVerifId();
 
@@ -74,22 +83,26 @@ class Registration extends XFCP_Registration {
         $this->changeState($user, $activationId);
     }
 
-    public function changeState($user, $activationId) {
+    public function changeState($user, $activationId)
+    {
 
         $user->is_verify = 0;
         $user->activation_id = $activationId;
         $user->save();
     }
 
-    public function registerDirectVerifyUrl() {
+    public function registerDirectVerifyUrl()
+    {
         return \XF::app()->router('public')->buildLink('canonical:register/direct-verify');
     }
 
-    public function registerVerifyUrl($activationId) {
+    public function registerVerifyUrl($activationId)
+    {
         return \XF::app()->router('public')->buildLink('canonical:register/verify', null, array('i' => $activationId));
     }
 
-    public function generateVerifId() {
+    public function generateVerifId()
+    {
 
         return md5(\XF::generateRandomString(30));
     }

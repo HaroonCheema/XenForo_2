@@ -1,9 +1,0 @@
-{
-    "template": "PAGE_CONTAINER",
-    "description": "fs_add_pending_females_here",
-    "execution_order": 10,
-    "enabled": true,
-    "action": "str_replace",
-    "find": "<xf:if is=\"$xf.visitor.is_moderator && $xf.session.unapprovedCounts.total\">",
-    "replace": "<xf:if is=\"($xf.visitor.is_admin || $xf.visitor.is_moderator) && $xf.session.fsPendingFemalesCount.total\">\n\t<a href=\"{{ link('female-verify/queue') }}\"\n\t   class=\"p-staffBar-link badgeContainer badgeContainer--highlighted\"\n\t   data-badge=\"{{ $xf.session.fsPendingFemalesCount.total|number}}\">\n\t\t{{ phrase('fs_pending_females') }}\n\t</a>\n</xf:if>\n\n$0"
-}

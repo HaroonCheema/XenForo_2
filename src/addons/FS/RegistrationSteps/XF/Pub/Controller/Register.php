@@ -21,30 +21,30 @@ class Register extends XFCP_Register
     {
         $parent = parent::finalizeRegistration($user);
 
-        $registration = $this->service('XF:User\Registration');
-        if ($user && $user->email && $user->account_type == 2) {
-            $registration->sendverifyMail($user);
+        // $registration = $this->service('XF:User\Registration');
+        // if ($user && $user->email && $user->account_type == 2) {
+        //     $registration->sendverifyMail($user);
 
-            $mail = $this->app->mailer()->newMail()->setTo($user->email);
-            $mail->setTemplate('fs_limitations_companion_mail');
-            $mail->queue();
-        }
+        //     $mail = $this->app->mailer()->newMail()->setTo($user->email);
+        //     $mail->setTemplate('fs_limitations_companion_mail');
+        //     $mail->queue();
+        // }
 
-        if ($user && $user->email && $user->account_type == 1) {
+        // if ($user && $user->email && $user->account_type == 1) {
 
-            $mail = $this->app->mailer()->newMail()->setTo($user->email);
-            $mail->setTemplate('fs_limitations_admirer_mail');
+        //     $mail = $this->app->mailer()->newMail()->setTo($user->email);
+        //     $mail->setTemplate('fs_limitations_admirer_mail');
 
-           $mail->queue();
-        }
+        //    $mail->queue();
+        // }
         $this->assingStaticGroup($user);
         return $parent;
     }
     protected function assingStaticGroup($user)
     {
         if ($user &&  $user->account_type == 2) {
-            // $user->user_group_id = 5;
-            $user->user_group_id = 16;
+            $user->user_group_id = 5;
+            // $user->user_group_id = 16;
         } elseif ($user &&  $user->account_type == 1) {
             $user->user_group_id = 6;
         }
@@ -152,7 +152,7 @@ class Register extends XFCP_Register
         $user->is_verify = 1;
 
         $user->save();
-        $this->sendMail($user);
+        // $this->sendMail($user);
     }
 
     public function actionverifyReagain()

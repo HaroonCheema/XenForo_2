@@ -2,9 +2,11 @@
 
 namespace FS\RegisterVerfication\XF\Service\User;
 
-class Registration extends XFCP_Registration {
+class Registration extends XFCP_Registration
+{
 
-    public function setFromInput(array $input) {
+    public function setFromInput(array $input)
+    {
 
         $parent = parent::setFromInput($input);
 
@@ -16,13 +18,13 @@ class Registration extends XFCP_Registration {
 
         if ($accountType == 2) {
 
-            if ($compVerifyValue == "") {
+            // if ($compVerifyValue == "") {
 
-                $this->user->error(\XF::phrase('need_to_full_field_of_verfication'));
-            }
+            //     $this->user->error(\XF::phrase('need_to_full_field_of_verfication'));
+            // }
 
             $this->user->comp_verify_key = $compVerifyKey;
-            $this->user->comp_verify_val = $compVerifyValue;
+            $this->user->comp_verify_val = $compVerifyValue ?? "";
         }
 
         return $parent;

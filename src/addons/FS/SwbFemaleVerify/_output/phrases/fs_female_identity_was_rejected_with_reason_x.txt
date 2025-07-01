@@ -1,1 +1,0 @@
-Your request about Verification was rejected. Reason: {reason}

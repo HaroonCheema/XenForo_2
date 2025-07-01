@@ -1,0 +1,9 @@
+{
+    "template": "register_macros",
+    "description": "fs_registration_steps_add_email_explain",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/<xf:textboxrow name=\"{\\$fieldName}\" value=\"{\\$value}\" type=\"email\" autocomplete=\"email\" required=\"required\".*?hint=\"{{ phrase\\('required'\\) }}\" \\/>/is",
+    "replace": "<xf:textboxrow name=\"{$fieldName}\" value=\"{$value}\" type=\"email\" autocomplete=\"email\" required=\"required\"\n\t\tmaxlength=\"{{ max_length($xf.visitor, 'email') }}\"\n\t\tlabel=\"{{ phrase('email') }}\"\n\t\texplain=\"{{ phrase('fs_registration_step_email_explain') }}\"\n\t\thint=\"{{ phrase('required') }}\" />"
+}

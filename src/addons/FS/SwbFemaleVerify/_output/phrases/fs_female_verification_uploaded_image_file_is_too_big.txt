@@ -1,1 +1,0 @@
-Uploaded image file is too big (<b>{megabytes} MB</b>). Maximum allowed size is <b>{fileSizeInMb}MB</b>.

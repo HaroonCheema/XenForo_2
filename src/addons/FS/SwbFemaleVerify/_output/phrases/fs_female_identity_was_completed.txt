@@ -1,1 +1,0 @@
-Your request about verification created at {create_date} was completed.

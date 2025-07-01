@@ -235,27 +235,27 @@ Before your content can be posted, please take a few moments to register a free 
 		'value' => '',
 		'id' => 'account_type',
 	), array(array(
-		'value' => '1',
-		'label' => 'Hobbyist',
-		'data-hide' => 'true',
-		'selected' => true,
-		'data-xf-init' => 'disabler',
-		'data-container' => '.js-hobbyist',
-		'_type' => 'option',
-	),
-	array(
 		'value' => '2',
 		'label' => 'Companion',
 		'data-hide' => 'true',
+		'selected' => true,
 		'data-xf-init' => 'disabler',
 		'data-container' => '.js-provider',
+		'_type' => 'option',
+	),
+	array(
+		'value' => '1',
+		'label' => 'Hobbyist',
+		'data-hide' => 'true',
+		'data-xf-init' => 'disabler',
+		'data-container' => '.js-hobbyist',
 		'_type' => 'option',
 	)), array(
 		'hint' => 'Required',
 		'label' => 'Account Type',
 	)) . '
-			<div class="js-hobbyist">
-				' . $__templater->formRow('<span>' . '<h3>Sign up hobbyist  / premium account</h3>
+<div class="js-hobbyist">
+	' . $__templater->formRow('<span>' . '<h3>Sign up hobbyist  / premium account</h3>
 Joining our community offers a unique experience tailored to your needs. As a Premium
 member, you unlock unparalleled benefits:<br>
 <ul>
@@ -299,17 +299,17 @@ We prioritize safety within our community, and our membership system helps maint
 and enjoyable environment for all. Join us as a paid member to unlock the complete experience
 of SWB!' . '</span>', array(
 	)) . '
-				' . $__templater->callMacro('custom_fields_macros', 'custom_fields_edit', array(
+	' . $__templater->callMacro('custom_fields_macros', 'custom_fields_edit', array(
 		'type' => 'users',
 		'group' => null,
 		'set' => $__templater->method($__vars['xf']['visitor']['Profile'], 'getGroupTypeFields', array('hobbyist_fields', )),
 		'additionalFilters' => array('registration', ),
 	), $__vars) . '
-				
-			</div>
-			
-			<div class="js-provider">
-				' . $__templater->formRow('<span>' . '<strong>All independent and reputable Companions can sign up for a free SWB account under these conditions: </strong>
+
+</div>
+
+<div class="js-provider">
+	' . $__templater->formRow('<span>' . '<strong>All independent and reputable Companions can sign up for a free SWB account under these conditions: </strong>
 <ul>
 <li>No agencies at this time. 
 </li>
@@ -340,14 +340,14 @@ the benefits of our VIP and premium membership today!
 
 <b>Please ensure to check your email or spam folder after completing the registration process for further instructions on how to proceed with verification. We require all verification documents before granting access to SWB. Don\'t forget to check your email for important details.</b>' . '</span>', array(
 	)) . '
-				
-				' . $__templater->callMacro('custom_fields_macros', 'custom_fields_edit', array(
+
+	' . $__templater->callMacro('custom_fields_macros', 'custom_fields_edit', array(
 		'type' => 'users',
 		'group' => null,
 		'set' => $__templater->method($__vars['xf']['visitor']['Profile'], 'getGroupTypeFields', array('provider_fields', )),
 		'additionalFilters' => array('registration', ),
 	), $__vars) . '		
-			</div>		
+</div>		
 
 
 			' . $__templater->formRowIfContent($__templater->func('captcha', array(false, false)), array(

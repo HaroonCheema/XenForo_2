@@ -30,7 +30,7 @@
         "hash": "4ab88a74010484c2ea4d8d16ef7e531b"
     },
     "public/fs_add_fields_according_to_account_type.json": {
-        "hash": "b0af4e10eed266216709a1e0e3e74be4"
+        "hash": "98bb8b36d5e842dc4a4ad4dc4bda74c3"
     },
     "public/fs_display_account_type_fields.json": {
         "hash": "02cfd49911c96f45d282f446e250fed7"
@@ -40,6 +40,9 @@
     },
     "public/fs_registration_add_confirm_password.json": {
         "hash": "333f724dbb317fd9cf2f684d94b5b5f2"
+    },
+    "public/fs_registration_steps_add_email_explain.json": {
+        "hash": "915e49388da523d7752e28566a0df268"
     },
     "public/hide_message_and_add_user_field.json": {
         "hash": "6025cd593b90567af7e4767405fb0e1f"

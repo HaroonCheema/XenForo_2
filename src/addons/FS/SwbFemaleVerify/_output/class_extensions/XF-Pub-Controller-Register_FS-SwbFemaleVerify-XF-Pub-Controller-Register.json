@@ -1,6 +1,0 @@
-{
-    "from_class": "XF\\Pub\\Controller\\Register",
-    "to_class": "FS\\SwbFemaleVerify\\XF\\Pub\\Controller\\Register",
-    "execute_order": 10,
-    "active": true
-}

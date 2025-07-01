@@ -79,16 +79,24 @@ class Editor extends \XF\Service\AbstractService
 	protected function _save()
 	{
 		$female = $this->female;
-
+		
 		$db = $this->db();
 		$db->beginTransaction();
 
 		if ($female->isStateChanged('female_state', 'rejected') == 'enter') {
 			$this->onReject();
-			$female->User->fastupdate('identity_status', 'rejected');
+			
+			if($female->User){
+			    $female->User->fastupdate('identity_status', 'rejected');
+			}
+			
 		} elseif ($female->isStateChanged('female_state', 'sent') == 'enter') {
+			
 			$this->onApprove();
-			$female->User->fastupdate('identity_status', 'sent');
+			if($female->User){
+			    
+			    $female->User->fastupdate('identity_status', 'sent');
+			}
 		}
 
 		$female->save(true, false);
