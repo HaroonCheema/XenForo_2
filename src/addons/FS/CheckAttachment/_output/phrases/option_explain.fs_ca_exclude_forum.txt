@@ -1,1 +1,1 @@
-Select forums for allowed only text.
+Select forums for allowed <b>only text</b>.

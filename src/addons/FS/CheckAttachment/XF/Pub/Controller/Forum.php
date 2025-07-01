@@ -15,8 +15,9 @@ class Forum extends XFCP_Forum
         $options = \XF::options();
         $applicable_forum = $options->ca_applicable_forum;
         $only_text_forum = $options->fs_ca_exclude_forum;
+        $atleast_one_attachment = $options->fs_ca_atleast_attachment_forum;
 
-        if (in_array($forum->node_id, $applicable_forum) || in_array($forum->node_id, $only_text_forum)) {
+        if (in_array($forum->node_id, $applicable_forum) || in_array($forum->node_id, $only_text_forum) || in_array($forum->node_id, $atleast_one_attachment)) {
             $message = $this->plugin('XF:Editor')->fromInput('message');
 
             $attachmentsService = \xf::app()->service('FS\CheckAttachment:ValidateAttachments');
@@ -26,7 +27,7 @@ class Forum extends XFCP_Forum
                 if ($responce['exist'] || $responce['attachmentFinder'] != NULL) {
                     throw $this->exception($this->error(\XF::phrase('fs_attachment_not_allowed')));
                 }
-            } else {
+            } elseif (in_array($forum->node_id, $applicable_forum) || in_array($forum->node_id, $atleast_one_attachment)) {
                 if (!$responce['exist'] && $responce['attachmentFinder'] == NULL) {
                     throw $this->exception($this->error(\XF::phrase('fs_attachment_required')));
                 }

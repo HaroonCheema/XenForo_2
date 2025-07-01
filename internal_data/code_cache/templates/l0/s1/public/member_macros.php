@@ -289,7 +289,6 @@ return array(
 'arguments' => function($__templater, array $__vars) { return array(
 		'user' => '!',
 		'context' => '!',
-		'vouch' => '',
 	); },
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -404,42 +403,6 @@ return array(
 	}
 	$__compilerTemp2 .= '
 			' . '
-
-	';
-	if ($__vars['xf']['visitor']['user_id'] AND ($__vars['xf']['visitor']['user_id'] != $__vars['user']['user_id'])) {
-		$__compilerTemp2 .= '
-			' . $__templater->button(' ' . (($__vars['vouch'] == 2) ? '<i class="fas fa-thumbs-down"></i> - ' : '<i class="fas fa-thumbs-up"></i> + ') . ' ' . 'Vouch', array(
-			'href' => $__templater->func('link', array('members/addvouch', $__vars['user'], array('vouch' => $__vars['vouch'], ), ), false),
-			'class' => 'button--link button',
-			'overlay' => 'true',
-		), '', array(
-		)) . '
-			';
-		if ($__vars['user']['account_type'] == 2) {
-			$__compilerTemp2 .= '
-				' . $__templater->button('Review Me', array(
-				'href' => $__templater->func('link', array('members/addreview', $__vars['user'], ), false),
-				'class' => 'button--link button',
-				'overlay' => 'true',
-			), '', array(
-			)) . '
-			';
-		}
-		$__compilerTemp2 .= '
-		';
-	}
-	$__compilerTemp2 .= '
-';
-	if ($__vars['user']['account_type'] == 2) {
-		$__compilerTemp2 .= '
-			' . $__templater->button('fs_album', array(
-			'href' => $__templater->func('link', array('media/albums/users', $__vars['user'], ), false),
-			'class' => 'button--link button',
-		), '', array(
-		)) . '
-';
-	}
-	$__compilerTemp2 .= '
 		';
 	if (strlen(trim($__compilerTemp2)) > 0) {
 		$__finalCompiled .= '

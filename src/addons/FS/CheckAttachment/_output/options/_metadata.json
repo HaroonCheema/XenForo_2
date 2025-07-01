@@ -2,6 +2,9 @@
     "ca_applicable_forum.json": {
         "hash": "36814936c208cdfa817d458f713fe642"
     },
+    "fs_ca_atleast_attachment_forum.json": {
+        "hash": "d86cfb3c47fbf865e3d5b157e064ae49"
+    },
     "fs_ca_exclude_forum.json": {
         "hash": "e6eb001328dc226c5e72a2ffa79b6480"
     }

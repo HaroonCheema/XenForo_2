@@ -1,4 +1,10 @@
 {
+    "fs_atleast_one_attachment_required.txt": {
+        "global_cache": false,
+        "version_id": 1000500,
+        "version_string": "1.0.5 Alpha",
+        "hash": "c7d95d99b3f50449f79ec72439c40ea4"
+    },
     "fs_attachment_not_allowed.txt": {
         "global_cache": false,
         "version_id": 1000400,
@@ -13,9 +19,15 @@
     },
     "option.ca_applicable_forum.txt": {
         "global_cache": false,
-        "version_id": 1000010,
-        "version_string": "1.0.0 Alpha",
-        "hash": "216c63c94551f2cfe5e92b3bf1cd8144"
+        "version_id": 1000600,
+        "version_string": "1.0.6 Alpha",
+        "hash": "bd659185322e98c72c6045c5e07a36e2"
+    },
+    "option.fs_ca_atleast_attachment_forum.txt": {
+        "global_cache": false,
+        "version_id": 1000500,
+        "version_string": "1.0.5 Alpha",
+        "hash": "b8ab223a0d2f04b5dc6f1bfc67f9b418"
     },
     "option.fs_ca_exclude_forum.txt": {
         "global_cache": false,
@@ -29,11 +41,17 @@
         "version_string": "1.0.4 Alpha",
         "hash": "624743cf22d3d521d1dfeaddb8bbe82d"
     },
+    "option_explain.fs_ca_atleast_attachment_forum.txt": {
+        "global_cache": false,
+        "version_id": 1000500,
+        "version_string": "1.0.5 Alpha",
+        "hash": "4907cc76f7dde6480b019306651521a3"
+    },
     "option_explain.fs_ca_exclude_forum.txt": {
         "global_cache": false,
-        "version_id": 1000400,
-        "version_string": "1.0.4 Alpha",
-        "hash": "171e1846515a043c330025eab70ae1cd"
+        "version_id": 1000500,
+        "version_string": "1.0.5 Alpha",
+        "hash": "d99544a811b8d43e1dc8c216bac5b9de"
     },
     "option_group.checkAttachment.txt": {
         "global_cache": false,

@@ -39,7 +39,7 @@ return array(
 						';
 	if ($__vars['xf']['visitor']['user_id']) {
 		$__compilerTemp3 .= '
-							
+							<a href="' . $__templater->func('link', array('media/users', $__vars['xf']['visitor'], ), true) . '" class="blockLink' . (($__vars['selected'] == 'yourMedia') ? ' is-selected' : '') . '">' . 'Your media' . '</a>
 
 							';
 		if ($__templater->method($__vars['xf']['visitor'], 'canViewAlbums', array()) OR $__vars['hasAlbumCategories']) {
