@@ -7,9 +7,9 @@ class ValidateAttachments extends \XF\Service\AbstractService
 
     public function checkAttachments($message, $attachment_hash)
     {
-        $pattern = '/\b(?:https?:\/\/|www\.)[^\s<>"\']+|\[(?:ATTACH|IMG|MEDIA|URL|GALLERY)/';
+        // $pattern = '/\b(?:https?:\/\/|www\.)[^\s<>"\']+|\[(?:ATTACH|IMG|MEDIA|URL|GALLERY)/';
 
-        //$pattern = "/ATTACH|IMG|MEDIA/";
+        $pattern = "/ATTACH|IMG|GALLERY|MEDIA/";
 
         $exist = preg_match_all($pattern, $message, $match);
 
