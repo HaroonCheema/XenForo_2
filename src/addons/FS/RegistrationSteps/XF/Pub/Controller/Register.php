@@ -42,12 +42,14 @@ class Register extends XFCP_Register
     }
     protected function assingStaticGroup($user)
     {
-        if ($user &&  $user->account_type == 2) {
-            $user->user_group_id = 5;
-            // $user->user_group_id = 16;
-        } elseif ($user &&  $user->account_type == 1) {
-            $user->user_group_id = 6;
-        }
+        // if ($user &&  $user->account_type == 2) {
+        //     $user->user_group_id = 5;
+        //     // $user->user_group_id = 16;
+        // } elseif ($user &&  $user->account_type == 1) {
+        //     $user->user_group_id = 6;
+        // }
+
+        $user->user_group_id = 16;
         $user->save();
     }
 
