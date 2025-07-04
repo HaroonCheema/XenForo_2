@@ -428,26 +428,46 @@ href="' . $__templater->func('link', array('users/edit', $__vars['user'], ), tru
 					');
 	$__compilerTemp16 = $__templater->mergeChoiceOptions(array(), $__vars['userGroups']);
 	$__compilerTemp17 = $__templater->mergeChoiceOptions(array(), $__vars['userGroups']);
-	$__compilerTemp18 = array(array(
+	$__compilerTemp18 = '';
+	if ($__vars['user']['account_type'] == 1) {
+		$__compilerTemp18 .= '
+' . $__templater->callMacro('public:custom_fields_macros', 'custom_fields_edit', array(
+			'type' => 'users',
+			'group' => null,
+			'set' => $__templater->method($__vars['user']['Profile'], 'getGroupTypeFields', array('hobbyist_fields', )),
+			'additionalFilters' => array('registration', ),
+		), $__vars) . '
+';
+	} else if ($__vars['user']['account_type'] == 2) {
+		$__compilerTemp18 .= '
+	' . $__templater->callMacro('public:custom_fields_macros', 'custom_fields_edit', array(
+			'type' => 'users',
+			'group' => null,
+			'set' => $__templater->method($__vars['user']['Profile'], 'getGroupTypeFields', array('provider_fields', )),
+			'additionalFilters' => array('registration', ),
+		), $__vars) . '
+	';
+	}
+	$__compilerTemp19 = array(array(
 		'value' => '0',
 		'label' => $__vars['xf']['language']['parenthesis_open'] . 'Use default style' . $__vars['xf']['language']['parenthesis_close'],
 		'_type' => 'option',
 	));
-	$__compilerTemp19 = $__templater->method($__vars['styleTree'], 'getFlattened', array(0, ));
-	if ($__templater->isTraversable($__compilerTemp19)) {
-		foreach ($__compilerTemp19 AS $__vars['treeEntry']) {
-			$__compilerTemp18[] = array(
+	$__compilerTemp20 = $__templater->method($__vars['styleTree'], 'getFlattened', array(0, ));
+	if ($__templater->isTraversable($__compilerTemp20)) {
+		foreach ($__compilerTemp20 AS $__vars['treeEntry']) {
+			$__compilerTemp19[] = array(
 				'value' => $__vars['treeEntry']['record']['style_id'],
 				'label' => $__templater->func('repeat', array('--', $__vars['treeEntry']['depth'], ), true) . ' ' . $__templater->escape($__vars['treeEntry']['record']['title']),
 				'_type' => 'option',
 			);
 		}
 	}
-	$__compilerTemp20 = array();
-	$__compilerTemp21 = $__templater->method($__vars['languageTree'], 'getFlattened', array(0, ));
-	if ($__templater->isTraversable($__compilerTemp21)) {
-		foreach ($__compilerTemp21 AS $__vars['treeEntry']) {
-			$__compilerTemp20[] = array(
+	$__compilerTemp21 = array();
+	$__compilerTemp22 = $__templater->method($__vars['languageTree'], 'getFlattened', array(0, ));
+	if ($__templater->isTraversable($__compilerTemp22)) {
+		foreach ($__compilerTemp22 AS $__vars['treeEntry']) {
+			$__compilerTemp21[] = array(
 				'value' => $__vars['treeEntry']['record']['language_id'],
 				'label' => $__templater->func('repeat', array('--', $__vars['treeEntry']['depth'], ), true) . '
 								' . $__templater->escape($__vars['treeEntry']['record']['title']),
@@ -455,19 +475,11 @@ href="' . $__templater->func('link', array('users/edit', $__vars['user'], ), tru
 			);
 		}
 	}
-	$__compilerTemp22 = $__templater->mergeChoiceOptions(array(), $__vars['timeZones']);
-	$__compilerTemp23 = '';
-	if ($__vars['user']['user_id']) {
-		$__compilerTemp23 .= '
-				<li data-href="' . $__templater->func('link', array('users/extra', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="user-extras">
-					<div class="block-body block-row">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
-				</li>
-			';
-	}
+	$__compilerTemp23 = $__templater->mergeChoiceOptions(array(), $__vars['timeZones']);
 	$__compilerTemp24 = '';
 	if ($__vars['user']['user_id']) {
 		$__compilerTemp24 .= '
-				<li data-href="' . $__templater->func('link', array('users/user-ips', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="user-ips">
+				<li data-href="' . $__templater->func('link', array('users/extra', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="user-extras">
 					<div class="block-body block-row">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
 				</li>
 			';
@@ -475,7 +487,7 @@ href="' . $__templater->func('link', array('users/edit', $__vars['user'], ), tru
 	$__compilerTemp25 = '';
 	if ($__vars['user']['user_id']) {
 		$__compilerTemp25 .= '
-				<li data-href="' . $__templater->func('link', array('users/change-log', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="user-changes">
+				<li data-href="' . $__templater->func('link', array('users/user-ips', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="user-ips">
 					<div class="block-body block-row">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
 				</li>
 			';
@@ -483,7 +495,7 @@ href="' . $__templater->func('link', array('users/edit', $__vars['user'], ), tru
 	$__compilerTemp26 = '';
 	if ($__vars['user']['user_id']) {
 		$__compilerTemp26 .= '
-				<li data-href="' . $__templater->func('link', array('permissions/users', $__vars['user'], array('tabbed' => 1, ), ), true) . '" role="tabpanel" aria-labelledby="user-permissions">
+				<li data-href="' . $__templater->func('link', array('users/change-log', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="user-changes">
 					<div class="block-body block-row">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
 				</li>
 			';
@@ -491,6 +503,14 @@ href="' . $__templater->func('link', array('users/edit', $__vars['user'], ), tru
 	$__compilerTemp27 = '';
 	if ($__vars['user']['user_id']) {
 		$__compilerTemp27 .= '
+				<li data-href="' . $__templater->func('link', array('permissions/users', $__vars['user'], array('tabbed' => 1, ), ), true) . '" role="tabpanel" aria-labelledby="user-permissions">
+					<div class="block-body block-row">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
+				</li>
+			';
+	}
+	$__compilerTemp28 = '';
+	if ($__vars['user']['user_id']) {
+		$__compilerTemp28 .= '
 <li data-href="' . $__templater->func('link', array('users/thread-credit', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="user-credit">
 <div class="block-body block-row">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
 </li>
@@ -539,6 +559,18 @@ href="' . $__templater->func('link', array('users/edit', $__vars['user'], ), tru
 	), array(
 		'label' => 'Email',
 	)) . '
+
+' . $__templater->formCheckBoxRow(array(
+	), array(array(
+		'selected' => $__vars['user']['is_featured'],
+		'name' => 'user[is_featured]',
+		'label' => 'Featured',
+		'_type' => 'option',
+	)), array(
+		'label' => '',
+	)) . '
+
+
 
 					' . $__compilerTemp12 . '
 
@@ -682,7 +714,7 @@ href="' . $__templater->func('link', array('users/edit', $__vars['user'], ), tru
 	), array(
 		'label' => 'Website',
 	)) . '
-					' . $__templater->callMacro('public:custom_fields_macros', 'custom_fields_edit', array(
+					' . $__templater->callMacro('public:register_custom_fields', 'general_custom_fields_edit', array(
 		'type' => 'users',
 		'group' => 'personal',
 		'set' => $__vars['user']['Profile']['custom_fields'],
@@ -750,13 +782,14 @@ href="' . $__templater->func('link', array('users/edit', $__vars['user'], ), tru
 					</span>
 				</h3>
 				<div class="block-body block-body--collapsible">
-					' . $__templater->callMacro('public:custom_fields_macros', 'custom_fields_edit', array(
+	' . $__compilerTemp18 . '
+' . $__templater->callMacro('public:register_custom_fields', 'general_custom_fields_edit', array(
 		'type' => 'users',
 		'group' => 'contact',
 		'set' => $__vars['user']['Profile']['custom_fields'],
 		'editMode' => 'admin',
 	), $__vars) . '
-				</div>
+</div>
 
 				<h3 class="block-formSectionHeader">
 					<span class="collapseTrigger collapseTrigger--block" data-xf-click="toggle" data-target="< :up:next">
@@ -767,7 +800,7 @@ href="' . $__templater->func('link', array('users/edit', $__vars['user'], ), tru
 					' . $__templater->formSelectRow(array(
 		'name' => 'user[style_id]',
 		'value' => $__vars['user']['style_id'],
-	), $__compilerTemp18, array(
+	), $__compilerTemp19, array(
 		'label' => 'Style',
 	)) . '
 
@@ -776,14 +809,14 @@ href="' . $__templater->func('link', array('users/edit', $__vars['user'], ), tru
 					' . $__templater->formSelectRow(array(
 		'name' => 'user[language_id]',
 		'value' => $__vars['user']['language_id'],
-	), $__compilerTemp20, array(
+	), $__compilerTemp21, array(
 		'label' => 'Language',
 	)) . '
 
 					' . $__templater->formSelectRow(array(
 		'name' => 'user[timezone]',
 		'value' => $__vars['user']['timezone'],
-	), $__compilerTemp22, array(
+	), $__compilerTemp23, array(
 		'label' => 'Time zone',
 	)) . '
 
@@ -985,14 +1018,14 @@ href="' . $__templater->func('link', array('users/edit', $__vars['user'], ), tru
 	)) . '
 			</li>
 
-			' . $__compilerTemp23 . '
-
 			' . $__compilerTemp24 . '
 
 			' . $__compilerTemp25 . '
 
 			' . $__compilerTemp26 . '
-' . $__compilerTemp27 . '
+
+			' . $__compilerTemp27 . '
+' . $__compilerTemp28 . '
 			' . $__templater->includeTemplate('fs_user_car_details_add_edit_pane', $__vars) . '
 			' . $__templater->includeTemplate('dbtech_credits_user_edit_pane', $__vars) . '
 			' . '

@@ -449,37 +449,68 @@ return array(
 			if ($__vars['forum']['Node']['node_state'] == 'visible') {
 				$__finalCompiled .= '
 	';
-				if ($__templater->method($__vars['forum'], 'canCreateThread', array()) OR $__templater->method($__vars['forum'], 'canCreateThreadPreReg', array())) {
-					$__compilerTemp1 = '';
-					if ((($__vars['xf']['reply']['containerKey'] == ('node-' . $__vars['xf']['options']['fs_questionAnswerForum'])) OR ($__templater->method($__vars['xf']['app']['request'], 'getRoutePath', array()) == 'esperto/'))) {
-						$__compilerTemp1 .= '
-	' . 'Submit your question' . '
-';
-					} else {
-						$__compilerTemp1 .= '
+				if ($__templater->method($__vars['forum'], 'getCompaninionThreadIds', array())) {
+					$__finalCompiled .= '
 	';
-						if ($__vars['forum']['Node']['snog_posid'] AND $__vars['forum']['Node']['snog_label']) {
+					if ($__templater->method($__vars['xf']['visitor'], 'getAdsAllowed', array())) {
+						$__finalCompiled .= '
+		';
+						if ($__templater->method($__vars['forum'], 'canCreateThread', array()) OR $__templater->method($__vars['forum'], 'canCreateThreadPreReg', array())) {
+							$__templater->pageParams['pageAction'] = $__templater->preEscaped('
+			' . $__templater->button('
+				' . 'post_compainion' . '
+			', array(
+								'href' => $__templater->func('link', array('forums/post-listing', $__vars['forum'], ), false),
+								'class' => 'button--cta',
+								'overlay' => 'true',
+								'icon' => 'write',
+								'rel' => 'nofollow',
+							), '', array(
+							)) . '
+		');
+						}
+						$__finalCompiled .= '
+	';
+					}
+					$__finalCompiled .= '
+	';
+				} else {
+					$__finalCompiled .= '
+	';
+					if ($__templater->method($__vars['forum'], 'canCreateThread', array()) OR $__templater->method($__vars['forum'], 'canCreateThreadPreReg', array())) {
+						$__compilerTemp1 = '';
+						if ((($__vars['xf']['reply']['containerKey'] == ('node-' . $__vars['xf']['options']['fs_questionAnswerForum'])) OR ($__templater->method($__vars['xf']['app']['request'], 'getRoutePath', array()) == 'esperto/'))) {
 							$__compilerTemp1 .= '
-	' . $__templater->escape($__vars['forum']['Node']['snog_label']) . '
+	' . 'Submit your question' . '
 ';
 						} else {
 							$__compilerTemp1 .= '
+	';
+							if ($__vars['forum']['Node']['snog_posid'] AND $__vars['forum']['Node']['snog_label']) {
+								$__compilerTemp1 .= '
+	' . $__templater->escape($__vars['forum']['Node']['snog_label']) . '
+';
+							} else {
+								$__compilerTemp1 .= '
 	' . 'Post thread' . '
 ';
-						}
-						$__compilerTemp1 .= '
+							}
+							$__compilerTemp1 .= '
 ';
-					}
-					$__templater->pageParams['pageAction'] = $__templater->preEscaped('
+						}
+						$__templater->pageParams['pageAction'] = $__templater->preEscaped('
 	' . $__templater->button('
 		' . $__compilerTemp1 . '
 	', array(
-						'href' => ($__vars['forum']['Node']['snog_posid'] ? $__templater->func('link', array('form/select', array('posid' => $__vars['forum']['Node']['snog_posid'], ), ), false) : $__templater->func('link', array('forums/post-thread', $__vars['forum'], ), false)),
-						'class' => 'button--cta',
-						'icon' => 'write',
-					), '', array(
-					)) . '
+							'href' => ($__vars['forum']['Node']['snog_posid'] ? $__templater->func('link', array('form/select', array('posid' => $__vars['forum']['Node']['snog_posid'], ), ), false) : $__templater->func('link', array('forums/post-thread', $__vars['forum'], ), false)),
+							'class' => 'button--cta',
+							'icon' => 'write',
+						), '', array(
+						)) . '
 ');
+					}
+					$__finalCompiled .= '
+';
 				}
 				$__finalCompiled .= '
 	';
@@ -489,37 +520,68 @@ return array(
 		} else {
 			$__finalCompiled .= '
 	';
-			if ($__templater->method($__vars['forum'], 'canCreateThread', array()) OR $__templater->method($__vars['forum'], 'canCreateThreadPreReg', array())) {
-				$__compilerTemp2 = '';
-				if ((($__vars['xf']['reply']['containerKey'] == ('node-' . $__vars['xf']['options']['fs_questionAnswerForum'])) OR ($__templater->method($__vars['xf']['app']['request'], 'getRoutePath', array()) == 'esperto/'))) {
-					$__compilerTemp2 .= '
-	' . 'Submit your question' . '
-';
-				} else {
-					$__compilerTemp2 .= '
+			if ($__templater->method($__vars['forum'], 'getCompaninionThreadIds', array())) {
+				$__finalCompiled .= '
 	';
-					if ($__vars['forum']['Node']['snog_posid'] AND $__vars['forum']['Node']['snog_label']) {
+				if ($__templater->method($__vars['xf']['visitor'], 'getAdsAllowed', array())) {
+					$__finalCompiled .= '
+		';
+					if ($__templater->method($__vars['forum'], 'canCreateThread', array()) OR $__templater->method($__vars['forum'], 'canCreateThreadPreReg', array())) {
+						$__templater->pageParams['pageAction'] = $__templater->preEscaped('
+			' . $__templater->button('
+				' . 'post_compainion' . '
+			', array(
+							'href' => $__templater->func('link', array('forums/post-listing', $__vars['forum'], ), false),
+							'class' => 'button--cta',
+							'overlay' => 'true',
+							'icon' => 'write',
+							'rel' => 'nofollow',
+						), '', array(
+						)) . '
+		');
+					}
+					$__finalCompiled .= '
+	';
+				}
+				$__finalCompiled .= '
+	';
+			} else {
+				$__finalCompiled .= '
+	';
+				if ($__templater->method($__vars['forum'], 'canCreateThread', array()) OR $__templater->method($__vars['forum'], 'canCreateThreadPreReg', array())) {
+					$__compilerTemp2 = '';
+					if ((($__vars['xf']['reply']['containerKey'] == ('node-' . $__vars['xf']['options']['fs_questionAnswerForum'])) OR ($__templater->method($__vars['xf']['app']['request'], 'getRoutePath', array()) == 'esperto/'))) {
 						$__compilerTemp2 .= '
-	' . $__templater->escape($__vars['forum']['Node']['snog_label']) . '
+	' . 'Submit your question' . '
 ';
 					} else {
 						$__compilerTemp2 .= '
+	';
+						if ($__vars['forum']['Node']['snog_posid'] AND $__vars['forum']['Node']['snog_label']) {
+							$__compilerTemp2 .= '
+	' . $__templater->escape($__vars['forum']['Node']['snog_label']) . '
+';
+						} else {
+							$__compilerTemp2 .= '
 	' . 'Post thread' . '
 ';
-					}
-					$__compilerTemp2 .= '
+						}
+						$__compilerTemp2 .= '
 ';
-				}
-				$__templater->pageParams['pageAction'] = $__templater->preEscaped('
+					}
+					$__templater->pageParams['pageAction'] = $__templater->preEscaped('
 	' . $__templater->button('
 		' . $__compilerTemp2 . '
 	', array(
-					'href' => ($__vars['forum']['Node']['snog_posid'] ? $__templater->func('link', array('form/select', array('posid' => $__vars['forum']['Node']['snog_posid'], ), ), false) : $__templater->func('link', array('forums/post-thread', $__vars['forum'], ), false)),
-					'class' => 'button--cta',
-					'icon' => 'write',
-				), '', array(
-				)) . '
+						'href' => ($__vars['forum']['Node']['snog_posid'] ? $__templater->func('link', array('form/select', array('posid' => $__vars['forum']['Node']['snog_posid'], ), ), false) : $__templater->func('link', array('forums/post-thread', $__vars['forum'], ), false)),
+						'class' => 'button--cta',
+						'icon' => 'write',
+					), '', array(
+					)) . '
 ');
+				}
+				$__finalCompiled .= '
+';
 			}
 			$__finalCompiled .= '
 ';
@@ -669,7 +731,15 @@ return array(
 ' . $__templater->includeTemplate('altf_above_thread_filter_container', $__vars) . '
 <div class="block ' . $__templater->escape($__templater->renderExtension('thread_list_block_classes', $__vars, $__extensions)) . '" style="' . ((($__vars['forum']['Node']['parent_node_id'] == $__vars['xf']['options']['fs_forum_groups_applicable_forum']) AND ($__vars['forum']['Node']['node_state'] != 'visible')) ? 'display: none;' : '') . '" data-xf-init="' . ($__vars['canInlineMod'] ? 'inline-mod' : '') . '" data-type="thread" data-href="' . $__templater->func('link', array('inline-mod', ), true) . '">
 	
-	<div class="block-outer">';
+	';
+		if ($__templater->method($__vars['forum'], 'getCompaninionThreadIds', array())) {
+			$__finalCompiled .= '
+' . $__templater->includeTemplate('fs_register_featured_ads', $__vars) . '
+';
+		}
+		$__finalCompiled .= '
+
+<div class="block-outer">';
 		$__compilerTemp3 = '';
 		$__compilerTemp4 = '';
 		$__compilerTemp4 .= '

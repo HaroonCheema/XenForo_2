@@ -190,7 +190,141 @@ Before your content can be posted, please take a few moments to register a free 
 			' . '
 			' . $__compilerTemp5 . '
 
-			' . $__templater->formPasswordBoxRow(array(
+			' . $__templater->formRadioRow(array(
+		'name' => 'account_type',
+		'value' => '',
+		'id' => 'account_type',
+	), array(array(
+		'value' => '2',
+		'label' => 'Companion',
+		'data-hide' => 'true',
+		'selected' => true,
+		'data-xf-init' => 'disabler',
+		'data-container' => '.js-provider',
+		'_type' => 'option',
+	),
+	array(
+		'value' => '1',
+		'label' => 'Hobbyist',
+		'data-hide' => 'true',
+		'data-xf-init' => 'disabler',
+		'data-container' => '.js-hobbyist',
+		'_type' => 'option',
+	)), array(
+		'hint' => 'Required',
+		'label' => 'Account Type',
+	)) . '
+<div class="js-hobbyist">
+	' . $__templater->formRow('<span>' . '<h3>Sign up hobbyist  / premium account</h3>
+Joining our community offers a unique experience tailored to your needs. As a Premium
+member, you unlock unparalleled benefits:<br>
+<ul>
+<li>Exclusive Content: Enjoy special access to "The Rest of the Story" (ROS) reviews,
+which remain hidden from guests, regular, and female members.</li>
+<li>Engage in Private Discussions: Create and browse through "Private" posts in
+public forums, and immerse yourself in exclusive spaces like the Men\'s Lounge.</li>
+<li>Enhanced  Messaging: Say goodbye to the basic 50-message limit. With
+Premium, store up to 1,000 messages, neatly organizing them in custom folders.</li>
+<li>You will gain exclusive access to a "Request an Appointment" feature, allowing you to
+schedule appointments with companions more efficiently. Say goodbye to the
+back-and-forth process of waiting for reference checks and date/time confirmations.
+With this feature, you can directly request an appointment with the companion by
+providing the necessary information and sending your request.</li>
+</ul>
+Moreover, as a testament to your authenticity:<br>
+<ul>
+<li>Verified SWB Badge: Your profile will feature an SWB badge, signifying our
+verification in our community, reinforcing trust among members.<l/i>
+<li>P411 Affiliation: If you\'re linked with the P411 site, we\'ll highlight this on your
+profile, making your membership evident to others.</li>
+</ul>
+<ul>
+<li>1 year: $100<l/i>
+<li>6 months: $65</li>
+</ul>
+<br>
+After you submit your verification then head over to make your payment, we will
+commence the verification process. This typically requires a minimum of 24 - 48 hours
+to complete.
+<br><br>
+To initiate your upgrade, kindly provide the required information as specified within the upgrade
+subscription guidelines. Following that, you can conveniently make your payment through the
+designated "Upgrade" section on our website. Elevate your experience and enjoy all the benefits
+of our premium membership today!<br><br>
+While registering on our platform is free and allows you to browse, please note that you will
+have limited access to the site without a membership. To enjoy the full array of features and
+benefits our community has to offer, a membership is essential. Southwest Board (SWB)
+operates as a paid members-only site.<br><br>
+We prioritize safety within our community, and our membership system helps maintain a secure
+and enjoyable environment for all. Join us as a paid member to unlock the complete experience
+of SWB!' . '</span>', array(
+	)) . '
+</div>
+
+<div class="js-provider">
+	' . $__templater->formRow('<span>' . '<strong>All independent and reputable Companions can sign up for a free SWB account under these conditions: </strong>
+<ul>
+<li>No agencies at this time. 
+</li>
+<li>Sexual content, direct or coded, is banned in SWB ads.</li>
+<li>Companions must be 21+, with age verification required.</li>
+<li>Any signs of minor exploitation, human trafficking, or undue control will be reported for investigation.</li>
+<li>SWB aims to provide a safe environment.</li>
+</ul>
+
+While registering on our platform is free and allows you to browse, please note that you will
+have limited access to the site without a membership. To enjoy the full array of features and
+benefits our community has to offer, a membership is essential. Southwest Board (SWB)
+operates as a paid members-only site.
+<br><br>
+We prioritize safety within our community, and our membership system helps maintain a secure
+and enjoyable environment for all. Join us as a paid member to unlock the complete experience
+of SWB!
+<br><br>
+Once you\'ve successfully signed up and completed the verification process, you\'ll unlock the
+option to enhance your membership experience by upgrading. For a comprehensive
+understanding of our membership details and the prerequisites involved, please refer to the
+"General Interest" section found under "Upgrade Subscription."
+<br><br>
+To initiate your upgrade, kindly provide the required information as specified within the upgrade
+subscription guidelines. Following that, you can conveniently make your payment through the
+designated "Companion Upgrade" section on our website. Elevate your experience and enjoy all
+the benefits of our VIP and premium membership today!
+
+<b>Please ensure to check your email or spam folder after completing the registration process for further instructions on how to proceed with verification. We require all verification documents before granting access to SWB. Don\'t forget to check your email for important details.</b>' . '</span>', array(
+	)) . '
+</div>		
+
+<script>
+	document.addEventListener(\'DOMContentLoaded\', function () {
+		let scrollX = 0, scrollY = 0;
+		const radios = document.querySelectorAll(\'input[name="account_type"]\');
+
+		const lockScroll = () => {
+			scrollX = window.scrollX || window.pageXOffset;
+			scrollY = window.scrollY || window.pageYOffset;
+
+			document.body.style.overflow = \'hidden\';
+			document.documentElement.style.overflow = \'hidden\';
+		};
+
+		const unlockScroll = () => {
+			document.body.style.overflow = \'\';
+			document.documentElement.style.overflow = \'\';
+			window.scrollTo(scrollX, scrollY);
+		};
+
+		radios.forEach(radio => {
+			radio.addEventListener(\'change\', function () {
+				lockScroll();
+
+				setTimeout(unlockScroll, 300);
+			});
+		});
+	});
+</script>
+
+' . $__templater->formPasswordBoxRow(array(
 		'name' => $__templater->method($__vars['regForm'], 'getFieldName', array('password', )),
 		'autocomplete' => 'new-password',
 		'required' => 'required',
@@ -209,13 +343,27 @@ Before your content can be posted, please take a few moments to register a free 
 		'hint' => 'Required',
 	)) . '
 
+' . $__templater->formPasswordBoxRow(array(
+		'name' => 'password_confirm',
+		'autocomplete' => 'new-password',
+		'required' => 'required',
+	), array(
+		'label' => 'Confirm new password',
+		'hint' => 'Required',
+	)) . '
+
 			' . $__templater->callMacro('register_macros', 'dob_row', array(), $__vars) . '
 
 			' . $__templater->callMacro('register_macros', 'location_row', array(
 		'value' => $__vars['fields']['location'],
 	), $__vars) . '
 
-			' . $__templater->callMacro('register_macros', 'custom_fields', array(), $__vars) . '
+			' . $__templater->callMacro('register_custom_fields', 'general_custom_fields_edit', array(
+		'type' => 'users',
+		'group' => null,
+		'set' => $__vars['xf']['visitor']['Profile']['custom_fields'],
+		'additionalFilters' => array('registration', ),
+	), $__vars) . '
 
 			' . $__templater->formRowIfContent($__templater->func('captcha', array(false, false)), array(
 		'label' => 'Verification',

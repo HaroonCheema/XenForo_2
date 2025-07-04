@@ -153,7 +153,17 @@ return array(
 						';
 	$__compilerTemp2 = '';
 	$__compilerTemp2 .= '
-											' . '
+											' . ' 
+
+';
+	if (($__vars['xf']['visitor']['is_moderator'] OR $__vars['xf']['visitor']['is_admin']) AND $__templater->method($__vars['thread'], 'getCompaninionThreadIds', array())) {
+		$__compilerTemp2 .= '	
+		<a href="' . $__templater->func('link', array('threads/featured', $__vars['thread'], ), true) . '"  class="menu-linkRow" data-xf-click="overlay">' . 'Featured' . '</a>
+';
+	}
+	$__compilerTemp2 .= '
+
+
 											';
 	if ($__templater->method($__vars['thread'], 'canEdit', array())) {
 		$__compilerTemp2 .= '

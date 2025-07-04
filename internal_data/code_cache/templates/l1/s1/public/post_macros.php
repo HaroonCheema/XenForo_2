@@ -489,6 +489,34 @@ return array(
 	<div class="message-userContent lbContainer js-lbContainer ' . ($__templater->method($__vars['post'], 'isIgnored', array()) ? 'is-ignored' : '') . '"
 		data-lb-id="post-' . $__templater->escape($__vars['post']['post_id']) . '"
 		data-lb-caption-desc="' . ($__vars['post']['User'] ? $__templater->escape($__vars['post']['User']['username']) : $__templater->escape($__vars['post']['username'])) . ' &middot; ' . $__templater->func('date_time', array($__vars['post']['post_date'], ), true) . '">
+';
+	if ($__templater->method($__vars['post'], 'isFirstPost', array()) AND ($__templater->method($__vars['thread'], 'getReviewsThreadIds', array()) OR $__templater->method($__vars['thread'], 'getAlertThreadIds', array()))) {
+		$__finalCompiled .= '
+	<dl  class="pairs pairs--columns pairs--fixedSmall pairs--customField">
+		<dt>
+			' . 'SWB Username' . '
+		</dt>
+		<dd>
+			<strong>' . $__templater->escape($__vars['thread']['ReviewFor']['username']) . '</strong>
+		</dd>
+	</dl>
+	';
+		if ($__templater->method($__vars['thread'], 'getReviewsThreadIds', array())) {
+			$__finalCompiled .= '
+		<dl  class="pairs pairs--columns pairs--fixedSmall pairs--customField">
+		<dt>
+			' . 'User ID' . '
+		</dt>
+		<dd>
+			<strong>' . $__templater->escape($__vars['thread']['review_for']) . '</strong>
+		</dd>
+	</dl>
+		';
+		}
+		$__finalCompiled .= '
+';
+	}
+	$__finalCompiled .= '
 
 		';
 	if ($__vars['thread']['Forum']['node_id'] == $__vars['xf']['options']['fs_auction_applicable_forum']) {
@@ -510,7 +538,14 @@ return array(
 ';
 	if ($__templater->method($__vars['post'], 'isFirstPost', array())) {
 		$__finalCompiled .= '
-			' . $__templater->callMacro('custom_fields_macros', 'custom_fields_view', array(
+			';
+		if ($__templater->method($__vars['thread'], 'getCompaninionThreadIds', array())) {
+			$__finalCompiled .= '
+	' . $__templater->includeTemplate('fs_register_thread_overview_box', $__vars) . '
+';
+		}
+		$__finalCompiled .= '
+' . $__templater->callMacro('custom_fields_macros', 'custom_fields_view', array(
 			'type' => 'threads',
 			'group' => 'before',
 			'onlyInclude' => $__vars['thread']['Forum']['field_cache'],
@@ -526,16 +561,63 @@ return array(
 		'post' => $__vars['post'],
 	), $__vars) . '
 			';
-	if ($__vars['snippet']) {
+	if ((!$__templater->method($__vars['post'], 'isFirstPost', array())) OR (!$__templater->method($__vars['thread'], 'getReviewsThreadIds', array()))) {
 		$__finalCompiled .= '
+	';
+		if ($__vars['snippet']) {
+			$__finalCompiled .= '
 				' . $__templater->func('bb_code_snippet', array($__vars['post']['message'], 'post', $__vars['post'], $__vars['snippet'], ), true) . '
 			';
-	} else {
-		$__finalCompiled .= '
+		} else {
+			$__finalCompiled .= '
 				' . $__templater->func('bb_code', array($__vars['post']['message'], 'post', $__vars['post'], ), true) . '
 			';
+		}
+		$__finalCompiled .= '
+	';
+	} else {
+		$__finalCompiled .= '
+	';
+		$__templater->inlineCss('
+		.message-fields{
+		margin-top:0px !important;
+		}');
+		$__finalCompiled .= '
+';
 	}
 	$__finalCompiled .= '
+
+
+
+';
+	if ($__templater->method($__vars['post'], 'isFirstPost', array()) AND ($__templater->method($__vars['thread'], 'getReviewsThreadIds', array()) AND $__templater->method($__vars['xf']['visitor'], 'isMemberOf', array(array(7, 8, ), )))) {
+		$__finalCompiled .= '
+	';
+		if ($__vars['snippet']) {
+			$__finalCompiled .= '
+				' . $__templater->func('bb_code_snippet', array($__vars['post']['message'], 'post', $__vars['post'], $__vars['snippet'], ), true) . '
+			';
+		} else {
+			$__finalCompiled .= '
+				' . $__templater->func('bb_code', array($__vars['post']['message'], 'post', $__vars['post'], ), true) . '
+			';
+		}
+		$__finalCompiled .= '
+	';
+	} else if ($__templater->method($__vars['post'], 'isFirstPost', array()) AND ($__templater->method($__vars['thread'], 'getReviewsThreadIds', array()) AND (!$__templater->method($__vars['xf']['visitor'], 'isMemberOf', array(array(7, 8, ), ))))) {
+		$__finalCompiled .= '
+	<p> ' . 'Buy <a href="' . $__templater->func('link', array('register/premuim', ), true) . '" role="button" target="_blank">  Premium  </a>to view message' . ' </p>
+
+	<p><strong>Only admirers are authorized to purchase premium access. Companions
+		attempting to buy premium solely to read reviews will face automatic banning from
+		SWB.</strong></p>
+';
+	}
+	$__finalCompiled .= '
+
+
+
+
 			<div class="js-selectToQuoteEnd">&nbsp;</div>
 			' . $__templater->callAdsMacro('post_below_content', array(
 		'post' => $__vars['post'],

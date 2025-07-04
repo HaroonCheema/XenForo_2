@@ -1,0 +1,108 @@
+<style>
+	.js-privatedelights .formRow-explain,
+	.js-slixa .formRow-explain,
+	.js-ter .formRow-explain,
+	.js-tryst .formRow-explain,
+	.js-tna .formRow-explain,
+	.js-tob .formRow-explain,
+	.js-oh2 .formRow-explain
+	{
+		color: red;
+		font-weight: 700;
+	}
+
+</style>
+<dl class="formRow formRow--customField" data-field="ReceiveEmailfromOther">
+	<dt>
+
+	</dt>
+	<dd>
+		<ul class="field_ReceiveEmailfromOther listColumns inputChoices" role="group" aria-labelledby="_xfUid-15-1751015160">
+			<span class="iconic-label">{{phrase('verification_reg')}}</span>
+
+		</ul>
+		<div class="formRow-explain">{{phrase('verification_reg_explain')}}</div>
+	</dd>
+</dl>
+<xf:comment>
+	1 for get verified
+	2 for p411
+	3 for private delgihts
+	4 slixa
+	5 for ter
+	6 for trys
+	7 fot tna
+	8 for tob
+	9 for oh2
+</xf:comment>
+<xf:selectrow name="comp_verify_key" label="{{ phrase('verification_reg') }}" hint="{{phrase('required')}}">
+	<xf:option data-hide="true"
+			   data-xf-init="disabler"
+			   data-container=".js-refferal" value="1">{{phrase('get_verified')}}</xf:option>
+
+	<xf:option data-hide="true"
+			   data-xf-init="disabler"
+			   data-container=".js-p411" value="2">{{phrase('p_four_one')}}</xf:option>
+
+	<xf:option data-hide="true"
+			   data-xf-init="disabler"
+			   data-container=".js-privatedelights" value="3">{{ phrase('previlige_delights') }}</xf:option>
+
+	<xf:option data-hide="true"
+			   data-xf-init="disabler"
+			   data-container=".js-slixa" value="4">{{phrase('slixa')}}</xf:option>
+
+	<xf:option data-hide="true"
+			   data-xf-init="disabler"
+			   data-container=".js-ter" value="5">{{phrase('ter')}}</xf:option>
+
+	<xf:option data-hide="true"
+			   data-xf-init="disabler"
+			   data-container=".js-tryst" value="6">{{ phrase('tryst') }}</xf:option>
+	<xf:option data-hide="true"
+			   data-xf-init="disabler"
+			   data-container=".js-tna" value="7">{{ phrase('tna') }}</xf:option>
+	<xf:option data-hide="true"
+			   data-xf-init="disabler"
+			   data-container=".js-tob" value="8">{{ phrase('tob') }}</xf:option>
+	<xf:option data-hide="true"
+			   data-xf-init="disabler"
+			   data-container=".js-oh2" value="9">{{ phrase('oh2') }}</xf:option>
+
+
+</xf:selectrow>
+
+<div class="js-refferal" data-platform="refferal">
+	<xf:comment><xf:textboxrow name="comp_verify_val" label="Referral" explain="Enter the provider SWB username or copy and paste their profile and receive a free month." /></xf:comment>
+</div>
+<div class="js-p411" data-platform="P411">
+	<xf:textboxrow name="comp_verify_val" label="P411 ID" explain="0 to 7 max characters"  hint="{{ phrase('required') }}"/>
+</div>
+
+
+<div class="js-privatedelights" data-platform="Private Delights" hint="{{ phrase('required') }}" >
+	<xf:textboxrow name="comp_verify_val" label="Listing Site URL"  explain="Direct link to your profile on that site."/>
+</div>
+
+<div class="js-slixa" data-platform="Slixa" hint="{{ phrase('required') }}">
+	<xf:textboxrow name="comp_verify_val" label="Listing Site URL"  explain="Direct link to your profile on that site." />
+</div>
+
+<div class="js-ter" data-platform="TER">
+	<xf:textboxrow name="comp_verify_val" label="TER Link"  explain="Direct link to your profile on that site."  hint="{{ phrase('required') }}" />
+</div>
+
+<div class="js-tryst" data-platform="Tryst">
+	<xf:textboxrow name="comp_verify_val" label="Listing Site URL"  explain="Direct link to your profile on that site."  hint="{{ phrase('required') }}"  />
+</div>
+<div class="js-tna" data-platform="tna">
+	<xf:textboxrow name="comp_verify_val" label="Listing Site URL"  explain="Direct link to your profile on that site."  hint="{{ phrase('required') }}"  />
+</div>
+<div class="js-tob" data-platform="tob">
+	<xf:textboxrow name="comp_verify_val" label="Listing Site URL"  explain="Direct link to your profile on that site."  hint="{{ phrase('required') }}"  />
+</div>
+<div class="js-oh2" data-platform="oh2">
+	<xf:textboxrow name="comp_verify_val" label="Listing Site URL"  explain="Direct link to your profile on that site."  hint="{{ phrase('required') }}"  />
+</div>
+
+<xf:textboxrow name="fs_regis_referral" label="Referral" explain="Enter the provider SWB username or copy and paste their profile and receive a free month." />

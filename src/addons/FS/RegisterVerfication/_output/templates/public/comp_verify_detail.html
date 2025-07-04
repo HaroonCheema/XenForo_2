@@ -1,0 +1,45 @@
+<div class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<div class="block-row block-row--separated">
+				<h4 class="block-textHeader">{{ phrase('verification') }}</h4>
+
+				<dl class="pairs pairs--columns pairs--fixedSmall">
+					<xf:if is="$user.comp_verify_key == 1">
+						<dt>{{ phrase('get_verified') }}</dt>
+						<dd>{{phrase('fs_get_verified_val')}}</dd>
+						<xf:else />
+						<xf:if is="$user.comp_verify_key == 2" >
+							<dt>{{phrase('p_four_one')}}</dt>
+							<xf:elseif is="$user.comp_verify_key == 3" />
+							<dt>{{ phrase('previlige_delights') }}</dt>
+							<xf:elseif is="$user.comp_verify_key == 4" />
+							<dt>{{phrase('slixa')}}</dt>
+							<xf:elseif is="$user.comp_verify_key == 5" />
+							<dt>{{phrase('ter')}}</dt>
+							<xf:elseif is="$user.comp_verify_key == 6" />
+							<dt>{{ phrase('tryst') }}</dt>
+							<xf:elseif is="$user.comp_verify_key == 7" />
+							<dt>{{ phrase('tna') }}</dt>
+							<xf:elseif is="$user.comp_verify_key == 8" />
+							<dt>{{ phrase('tob') }}</dt>
+							<xf:elseif is="$user.comp_verify_key == 9" />
+							<dt>{{ phrase('oh2') }}</dt>
+						</xf:if>
+
+						<dd>{{$user.comp_verify_val}}</dd>
+					</xf:if>
+
+				</dl>
+
+				<xf:if is="$user.fs_regis_referral">
+					<dl class="pairs pairs--columns pairs--fixedSmall">
+						<dt>Referral</dt>
+						<dd>{{$user.fs_regis_referral}}</dd>
+					</dl>
+				</xf:if>
+
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <phrases>
   <phrase title="com_verify" version_id="1000100" version_string="1.0.1"><![CDATA[Verification]]></phrase>
+  <phrase title="fs_get_verified_val" version_id="1000300" version_string="1.0.3"><![CDATA[Verified]]></phrase>
   <phrase title="get_verified" version_id="1000100" version_string="1.0.1"><![CDATA[Get Verified]]></phrase>
   <phrase title="need_to_full_field_of_verfication" version_id="1000100" version_string="1.0.1"><![CDATA[Need to fulfill the fields of verification related  companion.]]></phrase>
   <phrase title="p_four_one" version_id="1000100" version_string="1.0.1"><![CDATA[P411]]></phrase>

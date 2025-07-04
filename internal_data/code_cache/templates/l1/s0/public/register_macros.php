@@ -48,6 +48,7 @@ return array(
 		'maxlength' => $__templater->func('max_length', array($__vars['xf']['visitor'], 'email', ), false),
 	), array(
 		'label' => 'Email',
+		'explain' => 'fs_registration_step_email_explain',
 		'hint' => 'Required',
 	)) . '
 ';
