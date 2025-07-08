@@ -1,0 +1,32 @@
+{
+    "fs_post_register.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "0ba7583639a274c434bbe6ef797115a4"
+    },
+    "option.fs_register_on_post_forums.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "dd880eee1e6ece4314b11f3a606c5304"
+    },
+    "option_explain.fs_register_on_post_forums.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d4601ad64f09f6dfb6dd542c02b72b59"
+    },
+    "option_group.fs_register_on_post.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "7be2308ad3fe783bf28e41f0b56f50c6"
+    },
+    "option_group_description.fs_register_on_post.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    }
+}

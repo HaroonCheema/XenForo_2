@@ -1,0 +1,9 @@
+{
+    "template": "forum_post_thread",
+    "description": "fs_register_fields_add_on _post_thread",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/<xf:textboxrow name=\"_xfUsername\" data-xf-init=\"guest-username\".*?label=\"{{ phrase\\('name'\\) }}\" \\/>/is",
+    "replace": "<xf:include template=\"fs_add_register_form_fields\" />"
+}

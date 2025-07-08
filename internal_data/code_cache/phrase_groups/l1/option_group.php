@@ -65,6 +65,7 @@ return array (
   'option_group.fs_production_complete' => '[FS] Production',
   'option_group.fs_question_answers' => '[FS] Question-Answers',
   'option_group.fs_random_username_passwords' => '[FS] Random Username',
+  'option_group.fs_register_on_post' => '[FS] Register on Post',
   'option_group.fs_register_steps' => '[FS] Register Steps',
   'option_group.fs_rejected_user' => '[FS] Approve Rejected User',
   'option_group.fs_rm_change_view' => '[FS] Resource Manager change view',

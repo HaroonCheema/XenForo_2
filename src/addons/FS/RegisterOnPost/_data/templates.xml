@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="public" title="fs_add_register_form_fields" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:if is="$forum.canRegisterUsingPost()">
+
+	<xf:formrow>
+		<xf:inforow>
+			<h3>
+				<center>
+					{{ phrase('fs_post_register') }}
+				</center>
+			</h3>
+		</xf:inforow>
+	</xf:formrow>
+
+	<xf:macro template="register_macros" name="username_row"
+			  arg-fieldName="{{ $regForm.getFieldName('username') }}"
+			  arg-value="{$fields.username}" />
+
+	<xf:macro template="register_macros" name="email_row"
+			  arg-fieldName="{{ $regForm.getFieldName('email') }}"
+			  arg-value="{$fields.email}" />
+
+	<xf:passwordboxrow name="{{ $regForm.getFieldName('password') }}" autocomplete="new-password"
+					   label="{{ phrase('password') }}"
+					   hint="{{ phrase('required') }}"
+					   required="required" checkstrength="true" />
+
+	<xf:comment>
+		<xf:captcharow label="{{ phrase('verification') }}" hint="{{ phrase('required') }}" />
+	</xf:comment>
+
+	<xf:macro template="register_macros" name="tos_row" />
+
+	<xf:hiddenval name="reg_key">{{ $regForm.getUniqueKey() }}</xf:hiddenval>
+	<xf:hiddenval name="{{ $regForm.getFieldName('timezone') }}" value="" data-xf-init="auto-timezone" />
+
+	<xf:else />
+
+	<xf:textboxrow name="_xfUsername" data-xf-init="guest-username"
+				   maxlength="{{ max_length($xf.visitor, 'username') }}"
+				   label="{{ phrase('name') }}" />
+
+</xf:if>]]></template>
+</templates>

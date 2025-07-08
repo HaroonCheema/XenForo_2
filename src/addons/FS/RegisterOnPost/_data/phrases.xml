@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="fs_post_register" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Register]]></phrase>
+  <phrase title="option.fs_register_on_post_forums" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Applicable Forum]]></phrase>
+  <phrase title="option_explain.fs_register_on_post_forums" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Select forums where you want to display registration form.]]></phrase>
+  <phrase title="option_group.fs_register_on_post" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Register on Post]]></phrase>
+  <phrase title="option_group_description.fs_register_on_post" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+</phrases>

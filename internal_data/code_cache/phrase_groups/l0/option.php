@@ -445,6 +445,7 @@ return array (
   'option.fs_receive_money_prefix_id' => 'Receive money prefix id',
   'option.fs_register_avatar_preview' => 'Register Avatar preview dimensions',
   'option.fs_register_hobbyiest_fields' => 'Hobbyist Fields',
+  'option.fs_register_on_post_forums' => 'Applicable Forum',
   'option.fs_register_provider_fields' => 'Companion/Advertiser',
   'option.fs_rejected_user_mod_ids' => 'Moderator Ids',
   'option.fs_reply_reaction_points' => 'Reactions',

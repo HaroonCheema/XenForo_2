@@ -513,6 +513,7 @@ This option requires that the specified account is a catch-all account or suppor
   'option_explain.fs_receive_money_prefix_id' => 'Enter custom thread prefix id here related to receive money.',
   'option_explain.fs_register_avatar_preview' => '',
   'option_explain.fs_register_hobbyiest_fields' => 'Enter the custom user FIELD_ID  <b>Comma separated like: filed1,field2.</b>',
+  'option_explain.fs_register_on_post_forums' => 'Select forums where you want to display registration form.',
   'option_explain.fs_register_provider_fields' => 'Enter the custom user FIELD_ID  <b>Comma separated like: filed1,field2.</b>',
   'option_explain.fs_rejected_user_mod_ids' => 'Enter the ids Comma separated like 1,2,3,4,5,6,......',
   'option_explain.fs_reply_reaction_points' => 'You can adjust total reaction points from here...!',

@@ -100,6 +100,11 @@ class Creator extends \XF\Service\AbstractService
 		return $this->postPreparer;
 	}
 
+	public function setUserNew(\XF\Entity\User $user)
+	{
+		$this->setUser($user);
+	}
+
 	protected function setUser(\XF\Entity\User $user)
 	{
 		$this->user = $user;
