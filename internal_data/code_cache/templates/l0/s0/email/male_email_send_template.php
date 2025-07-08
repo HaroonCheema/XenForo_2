@@ -26,10 +26,6 @@ tr:nth-child(even) {
 	' . 'Preferred contact method' . ' : ' . $__templater->escape($__vars['contact']) . '
 </p>
 <table>
-<tr>
-	<td>' . 'Username' . ' </td>
-	<td>' . $__templater->escape($__vars['username']) . '</td>
-</tr>
   <tr>
     <td>' . 'Request type' . ' </td>
     <td>' . 'Appointment' . '</td>

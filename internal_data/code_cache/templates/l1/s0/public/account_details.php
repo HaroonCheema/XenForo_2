@@ -161,11 +161,12 @@ return array(
 			'label' => 'Website',
 		)) . '
 
-				' . $__templater->callMacro('public:register_custom_fields', 'general_custom_fields_edit', array(
+				' . $__templater->callMacro('custom_fields_macros', 'custom_fields_edit', array(
 			'type' => 'users',
 			'group' => 'personal',
 			'set' => $__vars['xf']['visitor']['Profile']['custom_fields'],
 		), $__vars) . '
+
 				<hr class="formRowSep" />
 
 				' . $__templater->formEditorRow(array(
@@ -183,38 +184,12 @@ return array(
 			';
 		$__compilerTemp8 = '';
 		$__compilerTemp8 .= '
-						';
-		if ($__vars['xf']['visitor']['account_type'] == 1) {
-			$__compilerTemp8 .= '
-' . $__templater->callMacro('custom_fields_macros', 'custom_fields_edit', array(
-				'type' => 'users',
-				'group' => null,
-				'set' => $__templater->method($__vars['xf']['visitor']['Profile'], 'getGroupTypeFields', array('hobbyist_fields', )),
-				'additionalFilters' => array('registration', ),
-			), $__vars) . '
-';
-		} else if ($__vars['xf']['visitor']['account_type'] == 2) {
-			$__compilerTemp8 .= '
-	' . $__templater->callMacro('custom_fields_macros', 'custom_fields_edit', array(
-				'type' => 'users',
-				'group' => null,
-				'set' => $__templater->method($__vars['xf']['visitor']['Profile'], 'getGroupTypeFields', array('provider_fields', )),
-				'additionalFilters' => array('registration', ),
-			), $__vars) . '
-	';
-		}
-		$__compilerTemp8 .= '
-';
-		if ($__vars['xf']['visitor']['account_type'] == 2) {
-			$__compilerTemp8 .= '
-' . $__templater->callMacro('register_custom_fields', 'general_custom_fields_edit', array(
-				'type' => 'users',
-				'group' => 'contact',
-				'set' => $__vars['xf']['visitor']['Profile']['custom_fields'],
-			), $__vars) . '
-';
-		}
-		$__compilerTemp8 .= '					';
+						' . $__templater->callMacro('custom_fields_macros', 'custom_fields_edit', array(
+			'type' => 'users',
+			'group' => 'contact',
+			'set' => $__vars['xf']['visitor']['Profile']['custom_fields'],
+		), $__vars) . '
+					';
 		if (strlen(trim($__compilerTemp8)) > 0) {
 			$__compilerTemp7 .= '
 				<h2 class="block-formSectionHeader"><span class="block-formSectionHeader-aligner">' . 'Identities' . '</span></h2>

@@ -267,7 +267,6 @@ return array(
 								' . $__templater->callMacro('member_macros', 'member_action_buttons', array(
 		'user' => $__vars['user'],
 		'context' => 'profile',
-		'vouch' => $__vars['vouch'],
 	), $__vars) . '
 							';
 	if (strlen(trim($__compilerTemp12)) > 0) {

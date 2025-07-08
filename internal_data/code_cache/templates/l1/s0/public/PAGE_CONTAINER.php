@@ -1354,40 +1354,10 @@ return array(
 	}
 	$__finalCompiled .= '
 
-					<li><a href="' . $__templater->func('link', array('help/compliance', ), true) . '">' . '2257 Exemption ' . '</a></li>
-<li><a href="' . $__templater->func('link', array('forums/index.rss', '-', ), true) . '" target="_blank" class="p-footer-rssLink" title="' . $__templater->filter('RSS', array(array('for_attr', array()),), true) . '"><span aria-hidden="true">' . $__templater->fontAwesome('fa-rss', array(
+					<li><a href="' . $__templater->func('link', array('forums/index.rss', '-', ), true) . '" target="_blank" class="p-footer-rssLink" title="' . $__templater->filter('RSS', array(array('for_attr', array()),), true) . '"><span aria-hidden="true">' . $__templater->fontAwesome('fa-rss', array(
 	)) . '<span class="u-srOnly">' . 'RSS' . '</span></span></a></li>
 				</ul>
 			</div>
-		</div>
-<div class="footer_logos">
-			';
-	$__templater->inlineCss('
-			.footer_logo_item{
-				width:45px;
-				height:45px;
-				border-radius:3px;
-				
-				}
-				
-			
-			');
-	$__finalCompiled .= '
-			<ul class="p-footer-linkList">
-				<li><a href="https://swopusa.org/" target="_blank" class="p-footer-rssLink"><img src="' . $__templater->func('base_url', array('styles/FS/RegistrationSteps/SWOPUSAMenuLogo.jpg', ), true) . '" class="footer_logo_item"></a></li>
-				<li><a href="https://www.stopthetraffik.org/" target="_blank" class="p-footer-rssLink"><img src="' . $__templater->func('base_url', array('styles/FS/RegistrationSteps/humanTraffic.png', ), true) . '" class="footer_logo_item"></a></li>
-				<li><a href="https://www.rtalabel.org" target="_blank" class="p-footer-rssLink"><img src="' . $__templater->func('base_url', array('styles/FS/RegistrationSteps/rtaLogo.png', ), true) . '" class="footer_logo_item"></a></li>
-			</ul>
-	<div class="main_content">
-		<div class="sub_content">
-			<p>' . 'SWB upholds a strict ZERO tolerance policy against human trafficking and underage
-involvement. If you suspect any such activities, report immediately to the Human
-Trafficking Hotline: 1-888-373-7888.' . '</p>
-		</div>
-	
-	</div>
-	
-	
 		</div>
 
 		';
@@ -1523,8 +1493,6 @@ Trafficking Hotline: 1-888-373-7888.' . '</p>
 
 ' . '
 
-' . '
-<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 ';
 	return $__finalCompiled;
 }

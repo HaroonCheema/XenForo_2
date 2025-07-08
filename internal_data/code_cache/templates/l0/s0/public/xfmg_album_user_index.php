@@ -20,14 +20,14 @@ return array(
 	';
 		$__templater->pageParams['pageAction'] = $__templater->preEscaped('
 		' . $__templater->button('
-			' . 'Add Album....' . '
+			' . 'Add media' . $__vars['xf']['language']['ellipsis'] . '
 		', array(
-			'href' => $__templater->func('link', array('media/albums/create', ), false),
+			'href' => $__templater->func('link', array('media/add', ), false),
 			'class' => 'button--cta',
 			'icon' => 'add',
+			'data-xf-click' => 'overlay',
 		), '', array(
 		)) . '
-
 	');
 		$__finalCompiled .= '
 ';
