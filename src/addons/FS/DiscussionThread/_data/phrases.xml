@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="discussion" version_id="1000000" version_string="1.0.0"><![CDATA[Discussion]]></phrase>
+  <phrase title="discussion_forum" version_id="1000000" version_string="1.0.0"><![CDATA[Discussion forum]]></phrase>
+  <phrase title="discussion_forum_was_not_created" version_id="1000000" version_string="1.0.0"><![CDATA[Discussion forum was not created]]></phrase>
+  <phrase title="discussion_thread" version_id="1000000" version_string="1.0.0"><![CDATA[Discussion thread]]></phrase>
+  <phrase title="discussion_x" version_id="1000000" version_string="1.0.0"><![CDATA[Discussion: {x}]]></phrase>
+  <phrase title="discussions" version_id="1000000" version_string="1.0.0"><![CDATA[Discussions]]></phrase>
+  <phrase title="fs_discussion_related_post" version_id="1000800" version_string="1.0.8"><![CDATA[Related posts:]]></phrase>
+  <phrase title="fs_dt_discussion1" version_id="1000500" version_string="1.0.5"><![CDATA[Discussion:{x}]]></phrase>
+  <phrase title="fs_dt_discussion2" version_id="1000500" version_string="1.0.5"><![CDATA[Discussion: {x}]]></phrase>
+  <phrase title="fs_dt_discussion3" version_id="1000500" version_string="1.0.5"><![CDATA[Discussion :{x}]]></phrase>
+  <phrase title="fs_dt_discussion4" version_id="1000500" version_string="1.0.5"><![CDATA[Discussion : {x}]]></phrase>
+  <phrase title="fs_dt_post_message" version_id="1000000" version_string="1.0.0"><![CDATA[[B]Title[/B]: {title}
+[B]Text[/B]: {text}
+
+[B]Related threads[/B]:
+{related}]]></phrase>
+  <phrase title="fs_redirecting" version_id="1000000" version_string="1.0.0"><![CDATA[Redirecting to the discussion thread. Please wait a moment...]]></phrase>
+  <phrase title="fs_thread_discussion_comment" version_id="1000800" version_string="1.0.8"><![CDATA[Comment]]></phrase>
+  <phrase title="latest_discussions" version_id="1000000" version_string="1.0.0"><![CDATA[Latest discussions]]></phrase>
+  <phrase title="option.dtDiscThreadUserId" version_id="1000700" version_string="1.0.7"><![CDATA[Please enter the user Id for the discussion thread]]></phrase>
+  <phrase title="option.dtFirstPostMessage" version_id="1000000" version_string="1.0.0"><![CDATA[First post message for discussion thread]]></phrase>
+  <phrase title="option.dtThreadTitlePrefix" version_id="1000500" version_string="1.0.5"><![CDATA[Thread title prefixes to search for discussion thread]]></phrase>
+  <phrase title="option.dtThreadTitlePrefixCreate" version_id="1000500" version_string="1.0.5"><![CDATA[Thread title prefix to create a new discussion thread]]></phrase>
+  <phrase title="option.dtUnreadPostLink" version_id="1000600" version_string="1.0.6"><![CDATA[Discussion thread links to the unread post]]></phrase>
+  <phrase title="option.dt_applicable_forums_discussion" version_id="1000000" version_string="1.0.0"><![CDATA[Applicable forums for latest discussions]]></phrase>
+  <phrase title="option_explain.dtDiscThreadUserId" version_id="1000700" version_string="1.0.7"><![CDATA[]]></phrase>
+  <phrase title="option_explain.dtFirstPostMessage" version_id="1000500" version_string="1.0.5"><![CDATA[]]></phrase>
+  <phrase title="option_explain.dtThreadTitlePrefix" version_id="1000500" version_string="1.0.5"><![CDATA[Please enter thread title prefixes to search for discussion thread, separated by commas]]></phrase>
+  <phrase title="option_explain.dtThreadTitlePrefixCreate" version_id="1000500" version_string="1.0.5"><![CDATA[Please enter a thread title prefix to create a new discussion thread.]]></phrase>
+  <phrase title="option_explain.dtUnreadPostLink" version_id="1000600" version_string="1.0.6"><![CDATA[]]></phrase>
+  <phrase title="option_explain.dt_applicable_forums_discussion" version_id="1000000" version_string="1.0.0"><![CDATA[Select the forums on which latest discussions will be enabled]]></phrase>
+  <phrase title="option_group.fs_discussionthread" version_id="1000000" version_string="1.0.0"><![CDATA[[FS] Discussion Thread]]></phrase>
+  <phrase title="option_group_description.fs_discussionthread" version_id="1000000" version_string="1.0.0"><![CDATA[]]></phrase>
+</phrases>

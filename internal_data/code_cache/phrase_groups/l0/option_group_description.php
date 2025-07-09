@@ -52,6 +52,7 @@ You may set a user into \'discouraged\' mode by editing their user profile, or d
   'option_group_description.fs_cancel_multiple_subscriptions' => '',
   'option_group_description.fs_claim_emails' => '',
   'option_group_description.fs_custom_forum_widget' => '',
+  'option_group_description.fs_discussionthread' => '',
   'option_group_description.fs_embed_zoom_credentials' => '',
   'option_group_description.fs_female_verification_group' => '',
   'option_group_description.fs_formValidation' => '',

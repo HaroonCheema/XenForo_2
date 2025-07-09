@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="public" title="fs_dt_latest_disc_posts" version_id="1000100" version_string="1.0.1"><![CDATA[<xf:if is="$discPosts is not empty and $forum.Node.disc_node_id and in_array($thread.node_id, $xf.options.dt_applicable_forums_discussion)">
+	<div class="block" {{ widget_data($widget) }}>
+		<div class="block-container">
+			<h3 class="block-header">{{ phrase('latest_discussions') }}   </h3>
+			<div class="block-body">
+				<div class="structItemContainer">
+					<xf:foreach loop="$discPosts" value="$post">
+						<xf:macro template="fs_post_macro" name="post"arg-note="{$post}" />	
+					</xf:foreach>
+				</div>
+			</div>
+		</div>
+	</div>
+</xf:if>
+
+<xf:comment>
+<xf:macro name="thread_list_macros::item" arg-allowInlineMod="{{ false }}" arg-thread="{$thread}" />
+</xf:comment>]]></template>
+  <template type="public" title="fs_dt_macro" version_id="1000600" version_string="1.0.6"><![CDATA[<xf:macro name="name" arg-thread="!" arg-forum="!" arg-discThread="!">
+
+	<xf:if is="$forum.Node.disc_node_id">
+		<xf:button href="{{ link('threads/discussion_thread', $thread) }}" class="button--link">
+				{{ phrase('discussion_thread') }}
+		</xf:button>
+	</xf:if>
+
+</xf:macro>
+
+<xf:comment>
+	
+	<xf:if is="$forum.Node.disc_node_id">
+		<div class="tabs tabs--standalone tabs--standalone--small tabs--standalone--inline">
+			<a href="{{ link('threads/discussion_thread', $thread) }}" class="tabs-tab">
+				{{ phrase('discussion_thread') }}
+			</a>
+		</div>
+	</xf:if>
+	
+	
+	
+	
+	<xf:if is="{{ in_array($thread.node_id, $xf.options.dt_applicable_forums_discussion) }} and $thread != -1">
+		<a href="{{ link('threads/discussion-thread', $thread) }}"
+		   class="actionBar-action actionBar-action--ip actionBar-action--menuItem">
+			{{ phrase('discussion_thread') }}
+		</a>
+	</xf:if>	
+</xf:comment>]]></template>
+  <template type="public" title="fs_dt_redirect" version_id="1000000" version_string="1.0.0"><![CDATA[<xf:comment>
+<xf:title>{{phrase('discussion')}} - {$thread.title}</xf:title>
+<br/>
+{{phrase('fs_redirecting')}}
+<script>
+    // Simulate a brief pause (like refresh), then redirect
+    setTimeout(function() {
+        window.location.href = '{{ link('threads', $thread) }}';
+    }, 4000); // second delay
+</script>
+</xf:comment>]]></template>
+  <template type="public" title="fs_post_macro" version_id="1000000" version_string="1.0.0"><![CDATA[<xf:macro name="post" arg-note="!" arg-profileUser="{{ null }}">
+	<xf:css src="message.less" />
+
+	<article class="message message--simple"
+			 data-author="{$note.User.username}"
+			 data-content="note-{$note.thread_id}"
+			 id="js-note-{$note.thread_id}">
+
+		<span class="u-anchorTarget" id="note-{$note.thread_id}"></span>
+
+		<div class="message-inner">
+
+			<!-- Userbit -->
+ 			<div class="message-cell message-cell--user">
+				<xf:macro template="message_macros"
+						  name="user_info_simple"
+						  arg-user="{$note.User}"
+						  arg-fallbackName="{$note.User.username}" />
+			</div>
+
+			<!-- Message Area -->
+			<div class="message-cell message-cell--main">
+				<div class="message-main js-quickEditTarget">
+					<div class="message-content js-messageContent">
+						<header class="message-attribution message-attribution--plain">
+							<ul class="listInline listInline--bullet">
+								<li class="message-attribution-user">
+									<xf:avatar user="$note.User" size="xxs" />
+									<h4 class="attribution">
+										<xf:username user="$note.User" rich="true" defaultname="{$note.User.username}" /> <!--First User --> 
+										<xf:if is="!$profileUser">
+											<xf:fa icon="{{ $xf.isRtl ? 'fa-caret-left' : 'fa-caret-right' }} u-muted" />
+											<a href="{{ link('threads', $note.Thread) }}" class="u-concealed" rel="nofollow">
+											{$note.Thread.title}
+											</a>
+											<!-- <xf:username user="$note.User" rich="true" defaultname="{{ phrase('unknown') }}" aria-hidden="true" /> -->
+										</xf:if>
+									</h4>
+								</li>
+								<li><a href="{{ link('threads', $note.Thread) }}" class="u-concealed" rel="nofollow"><xf:date time="$note.post_date" /></a></li>
+							</ul>
+						</header>
+
+						<article class="message-body">
+								{{ snippet($note.message, 300) }}
+							<xf:comment>
+								{{ snippet($note.message, 300) }}
+								{{ bb_code($note.message, 'fs_discussionthread', $note) }}
+							</xf:comment>
+								<a href="{{ link('posts', $note) }}">{{ phrase('see_more') }}</a>
+						</article>
+					</div>
+
+					<footer class="message-footer">
+						<div class="message-actionBar actionBar">
+						</div>
+					</footer>
+				</div>
+			</div>
+		</div>
+	</article>
+</xf:macro>]]></template>
+</templates>

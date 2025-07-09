@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="admin" template="node_edit_macros" modification_key="fs_dt_node_edit_macros" description="Select option for discussion forum in node_edit_macros" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:macro template="display_order_macros" name="row"]]></find>
+    <replace><![CDATA[	<!-- Select discussion forum -->
+	<xf:selectrow name="node[disc_node_id]" value="{$node.disc_node_id}"
+		label="{{ phrase('discussion_forum') }}">
+		<xf:option value="0">{{ phrase('(none)') }}</xf:option>
+		<xf:foreach loop="$nodeTree.getFlattened(0)" value="$treeEntry">
+			<xf:option value="{$treeEntry.record.node_id}" 
+				disabled="{{ $treeEntry.record.node_type_id != 'Forum' ? 'disabled' : '' }}">
+				{{ repeat('--', $treeEntry.depth) }} {$treeEntry.record.title}
+			</xf:option>
+		</xf:foreach>
+	</xf:selectrow>
+$0]]></replace>
+  </modification>
+  <modification type="public" template="post_macros" modification_key="fs_thread_discussion_add_comment" description="fs_thread_discussion_add_comment" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<xf:if is="\$post\.canWarn\(\)">.*?<\/xf:if>/is]]></find>
+    <replace><![CDATA[$0
+
+<xf:if is="$post.Thread.canCommentDiscussion()">
+	<a href="{{ link('posts/comment', $post) }}"
+	   class="actionBar-action actionBar-action--comment actionBar-action--menuItem">{{ phrase('fs_thread_discussion_comment') }}</a>
+
+	<xf:set var="$hasActionBarMenu" value="{{ true }}" />
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="thread_view" modification_key="fs_dt_thread_view_add_link_discussion" description="Add discussion link button in thread_view" execution_order="11" enabled="1" action="str_replace">
+    <find><![CDATA[									{{ phrase('watch') }}
+								</xf:if>
+							</xf:button>
+						</xf:if>
+]]></find>
+    <replace><![CDATA[$0
+<xf:macro template="fs_dt_macro" name="name" arg-thread = "{$thread}" arg-forum="{$forum}" arg-discThread="{$discThread}"/>
+]]></replace>
+  </modification>
+  <modification type="public" template="thread_view" modification_key="latest_disc_posts_thread_view" description="latest discussion posts thread_view" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<div class="blockMessage blockMessage--none">]]></find>
+    <replace><![CDATA[<xf:include template="fs_dt_latest_disc_posts" />
+$0]]></replace>
+  </modification>
+</template_modifications>

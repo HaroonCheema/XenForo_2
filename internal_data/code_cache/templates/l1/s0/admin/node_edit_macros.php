@@ -94,7 +94,33 @@ return array(
 		'label' => 'Parent node',
 	)) . '
 
-	' . $__templater->callMacro('display_order_macros', 'row', array(
+		<!-- Select discussion forum -->
+	';
+	$__compilerTemp3 = array(array(
+		'value' => '0',
+		'label' => $__vars['xf']['language']['parenthesis_open'] . 'None' . $__vars['xf']['language']['parenthesis_close'],
+		'_type' => 'option',
+	));
+	$__compilerTemp4 = $__templater->method($__vars['nodeTree'], 'getFlattened', array(0, ));
+	if ($__templater->isTraversable($__compilerTemp4)) {
+		foreach ($__compilerTemp4 AS $__vars['treeEntry']) {
+			$__compilerTemp3[] = array(
+				'value' => $__vars['treeEntry']['record']['node_id'],
+				'disabled' => (($__vars['treeEntry']['record']['node_type_id'] != 'Forum') ? 'disabled' : ''),
+				'label' => '
+				' . $__templater->func('repeat', array('--', $__vars['treeEntry']['depth'], ), true) . ' ' . $__templater->escape($__vars['treeEntry']['record']['title']) . '
+			',
+				'_type' => 'option',
+			);
+		}
+	}
+	$__finalCompiled .= $__templater->formSelectRow(array(
+		'name' => 'node[disc_node_id]',
+		'value' => $__vars['node']['disc_node_id'],
+	), $__compilerTemp3, array(
+		'label' => 'Discussion forum',
+	)) . '
+' . $__templater->callMacro('display_order_macros', 'row', array(
 		'name' => 'node[display_order]',
 		'value' => $__vars['node']['display_order'],
 		'explain' => 'The position of this item relative to other nodes with the same parent.',

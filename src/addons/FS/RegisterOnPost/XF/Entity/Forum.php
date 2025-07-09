@@ -10,7 +10,7 @@ class Forum extends XFCP_Forum
     {
         $options = \XF::options();
 
-        if (in_array($this->node_id, $options->fs_register_on_post_forums)) {
+        if (in_array($this->node_id, $options->fs_register_on_post_forums) && !\XF::visitor()->user_id) {
             return true;
         }
 

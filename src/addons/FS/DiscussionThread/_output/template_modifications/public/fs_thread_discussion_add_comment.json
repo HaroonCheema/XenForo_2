@@ -1,0 +1,9 @@
+{
+    "template": "post_macros",
+    "description": "fs_thread_discussion_add_comment",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/<xf:if is=\"\\$post\\.canWarn\\(\\)\">.*?<\\/xf:if>/is",
+    "replace": "$0\n\n<xf:if is=\"$post.Thread.canCommentDiscussion()\">\n\t<a href=\"{{ link('posts/comment', $post) }}\"\n\t   class=\"actionBar-action actionBar-action--comment actionBar-action--menuItem\">{{ phrase('fs_thread_discussion_comment') }}</a>\n\n\t<xf:set var=\"$hasActionBarMenu\" value=\"{{ true }}\" />\n</xf:if>"
+}

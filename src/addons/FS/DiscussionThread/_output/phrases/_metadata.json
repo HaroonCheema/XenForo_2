@@ -1,0 +1,14 @@
+{
+    "fs_discussion_related_post.txt": {
+        "global_cache": false,
+        "version_id": 1000800,
+        "version_string": "1.0.8",
+        "hash": "c869f5172e08fe79e4c6fe1203341b2c"
+    },
+    "fs_thread_discussion_comment.txt": {
+        "global_cache": false,
+        "version_id": 1000800,
+        "version_string": "1.0.8",
+        "hash": "0be8406951cdfda82f00f79328cf4efc"
+    }
+}

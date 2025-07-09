@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<options>
+  <option option_id="dtDiscThreadUserId" edit_format="textbox" data_type="string">
+    <default_value></default_value>
+    <relation group_id="fs_discussionthread" display_order="6"/>
+  </option>
+  <option option_id="dtFirstPostMessage" edit_format="textbox" data_type="string">
+    <default_value>First post</default_value>
+    <relation group_id="fs_discussionthread" display_order="2"/>
+  </option>
+  <option option_id="dtThreadTitlePrefix" edit_format="textbox" data_type="string">
+    <default_value>Diskussion</default_value>
+    <relation group_id="fs_discussionthread" display_order="3"/>
+  </option>
+  <option option_id="dtThreadTitlePrefixCreate" edit_format="textbox" data_type="string">
+    <default_value>Diskussion</default_value>
+    <relation group_id="fs_discussionthread" display_order="4"/>
+  </option>
+  <option option_id="dtUnreadPostLink" edit_format="onoff" data_type="string">
+    <default_value>1</default_value>
+    <relation group_id="fs_discussionthread" display_order="5"/>
+  </option>
+  <option option_id="dt_applicable_forums_discussion" edit_format="callback" data_type="array">
+    <default_value>[]</default_value>
+    <edit_format_params>XF\Option\Forum::renderSelectMultiple</edit_format_params>
+    <sub_options>*</sub_options>
+    <relation group_id="fs_discussionthread" display_order="1"/>
+  </option>
+</options>

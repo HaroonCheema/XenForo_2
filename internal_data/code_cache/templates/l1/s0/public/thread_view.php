@@ -150,6 +150,12 @@ return array(
 	}
 	$__finalCompiled .= '
 
+' . $__templater->callMacro('fs_dt_macro', 'name', array(
+		'thread' => $__vars['thread'],
+		'forum' => $__vars['forum'],
+		'discThread' => $__vars['discThread'],
+	), $__vars) . '
+
 						';
 	$__compilerTemp2 = '';
 	$__compilerTemp2 .= '
@@ -1208,6 +1214,7 @@ return array(
 	)) . '
 ' . $__templater->renderExtension('below_quick_reply', $__vars, $__extensions) . '
 
+' . $__templater->includeTemplate('fs_dt_latest_disc_posts', $__vars) . '
 <div class="blockMessage blockMessage--none">
 	' . $__templater->callMacro('share_page_macros', 'buttons', array(
 		'iconic' => true,

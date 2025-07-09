@@ -948,6 +948,19 @@ return array(
 	}
 	$__compilerTemp2 .= '
 
+';
+	if ($__templater->method($__vars['post']['Thread'], 'canCommentDiscussion', array())) {
+		$__compilerTemp2 .= '
+	<a href="' . $__templater->func('link', array('posts/comment', $__vars['post'], ), true) . '"
+	   class="actionBar-action actionBar-action--comment actionBar-action--menuItem">' . 'Comment' . '</a>
+
+	';
+		$__vars['hasActionBarMenu'] = true;
+		$__compilerTemp2 .= '
+';
+	}
+	$__compilerTemp2 .= '
+
 			';
 	if (!$__templater->func('in_array', array($__vars['thread']['node_id'], $__vars['xf']['options']['fsPrivateConversationExcludeForums'], ), false)) {
 		$__compilerTemp2 .= '

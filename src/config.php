@@ -19,5 +19,5 @@ $config['enableLivePayments'] = false;
 
 $config['debug'] = true;
 
-$config['development']['defaultAddOn'] = 'FS/RegisterOnPost';
+$config['development']['defaultAddOn'] = 'FS/DiscussionThread';
 $config['development']['enabled'] = true;
