@@ -21,8 +21,8 @@ class Post extends XFCP_Post
         $postLink = $this->buildLink('canonical:posts', $post);
 
         $message = "[QUOTE]
-[B]" . \XF::phrase('fs_discussion_related_post') . "[/B]
-[URL='$postLink']" . $postLink . "[/URL][/QUOTE]";
+        [B][URL='$postLink']" . \XF::phrase('fs_discussion_related_post') . "[/URL][/B]
+        " . $post->message . "[/QUOTE]";
 
         $draft = $discThread->draft_reply;
 
