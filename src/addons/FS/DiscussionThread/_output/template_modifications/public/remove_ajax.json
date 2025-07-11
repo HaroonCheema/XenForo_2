@@ -1,0 +1,9 @@
+{
+    "template": "post_edit",
+    "description": "Remove aja",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/<xf:form action=\"{{ link\\('posts\\/edit', \\$post\\) }}\" ajax=\"true\" class=\"block\"\n\tdata-xf-init=\"attachment-manager{{ \\(\\$post\\.isFirstPost\\(\\) AND \\$thread\\.canEdit\\(\\)\\) \\? ' post-edit' : '' }}\">.*?<\\/xf:form>/s",
+    "replace": "<xf:if is=\"$removeAjax\">\n\t<xf:include template=\"post_edit_remove_ajax\" />\n<xf:else/>\n\t$0\n</xf:if>"
+}

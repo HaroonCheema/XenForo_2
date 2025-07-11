@@ -15,16 +15,25 @@
 	</xf:selectrow>
 $0]]></replace>
   </modification>
-  <modification type="public" template="post_macros" modification_key="fs_thread_discussion_add_comment" description="fs_thread_discussion_add_comment" execution_order="10" enabled="1" action="preg_replace">
-    <find><![CDATA[/<xf:if is="\$post\.canWarn\(\)">.*?<\/xf:if>/is]]></find>
-    <replace><![CDATA[$0
-
-<xf:if is="$post.Thread.canCommentDiscussion()">
+  <modification type="public" template="post_edit" modification_key="remove_ajax" description="Remove aja" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<xf:form action="{{ link\('posts\/edit', \$post\) }}" ajax="true" class="block"
+	data-xf-init="attachment-manager{{ \(\$post\.isFirstPost\(\) AND \$thread\.canEdit\(\)\) \? ' post-edit' : '' }}">.*?<\/xf:form>/s]]></find>
+    <replace><![CDATA[<xf:if is="$removeAjax">
+	<xf:include template="post_edit_remove_ajax" />
+<xf:else/>
+	$0
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="post_macros" modification_key="fs_thread_discussion_add_comment" description="fs_thread_discussion_add_comment" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:react content="{$post}" link="posts/react" list="< .js-post | .js-reactionsList" />]]></find>
+    <replace><![CDATA[<xf:if is="$post.Thread.canCommentDiscussion()">
 	<a href="{{ link('posts/comment', $post) }}"
 	   class="actionBar-action actionBar-action--comment actionBar-action--menuItem">{{ phrase('fs_thread_discussion_comment') }}</a>
 
 	<xf:set var="$hasActionBarMenu" value="{{ true }}" />
-</xf:if>]]></replace>
+</xf:if>
+
+$0]]></replace>
   </modification>
   <modification type="public" template="thread_view" modification_key="fs_dt_thread_view_add_link_discussion" description="Add discussion link button in thread_view" execution_order="11" enabled="1" action="str_replace">
     <find><![CDATA[									{{ phrase('watch') }}

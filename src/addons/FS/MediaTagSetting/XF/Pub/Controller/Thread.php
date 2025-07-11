@@ -32,8 +32,7 @@ class Thread extends XFCP_Thread
                 $unselected = array_diff($userIds, $mediaTag->user_group_ids);
 
                 if ($visitor->isMemberOf($unselected)) {
-                    
-                } else if ($visitor->isMemberOf($mediaTag->user_group_ids)) {
+                } elseif ($visitor->isMemberOf($mediaTag->user_group_ids)) {
                     foreach ($posts as $post) {
                         $post->message = $this->removeMediaTags($post->message, $mediaTag);
                     }

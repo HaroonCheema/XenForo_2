@@ -673,7 +673,20 @@ return array(
 	';
 	$__compilerTemp1 = '';
 	$__compilerTemp1 .= '
-			' . $__templater->func('react', array(array(
+			';
+	if ($__templater->method($__vars['post']['Thread'], 'canCommentDiscussion', array())) {
+		$__compilerTemp1 .= '
+	<a href="' . $__templater->func('link', array('posts/comment', $__vars['post'], ), true) . '"
+	   class="actionBar-action actionBar-action--comment actionBar-action--menuItem">' . 'Comment' . '</a>
+
+	';
+		$__vars['hasActionBarMenu'] = true;
+		$__compilerTemp1 .= '
+';
+	}
+	$__compilerTemp1 .= '
+
+' . $__templater->func('react', array(array(
 		'content' => $__vars['post'],
 		'link' => 'posts/react',
 		'list' => '< .js-post | .js-reactionsList',
@@ -945,19 +958,6 @@ return array(
 		$__vars['hasActionBarMenu'] = true;
 		$__compilerTemp2 .= '
 			';
-	}
-	$__compilerTemp2 .= '
-
-';
-	if ($__templater->method($__vars['post']['Thread'], 'canCommentDiscussion', array())) {
-		$__compilerTemp2 .= '
-	<a href="' . $__templater->func('link', array('posts/comment', $__vars['post'], ), true) . '"
-	   class="actionBar-action actionBar-action--comment actionBar-action--menuItem">' . 'Comment' . '</a>
-
-	';
-		$__vars['hasActionBarMenu'] = true;
-		$__compilerTemp2 .= '
-';
 	}
 	$__compilerTemp2 .= '
 

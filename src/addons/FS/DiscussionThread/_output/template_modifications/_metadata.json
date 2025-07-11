@@ -1,5 +1,8 @@
 {
     "public/fs_thread_discussion_add_comment.json": {
-        "hash": "96da1e5be11e7e0d9157e1c19a956652"
+        "hash": "3c5aad5c3879ceac8477120f5dd69bcd"
+    },
+    "public/remove_ajax.json": {
+        "hash": "685d503524feea8ff872dddf763ebca5"
     }
 }
