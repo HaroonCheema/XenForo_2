@@ -1,0 +1,23 @@
+{
+    "legacy_addon_id": "",
+    "title": "[JUM] Connected Accounts",
+    "description": "Additional providers of connected accounts.",
+    "version_id": 2010170,
+    "version_string": "2.1.1",
+    "dev": "Jumuro",
+    "dev_url": "https://jumuro.ru/",
+    "faq_url": "",
+    "support_url": "",
+    "extra_urls": [],
+    "require": {
+        "XF": [
+            2010010,
+            "XenForo 2.1.0+"
+        ],
+        "php": [
+            "7.3.0",
+            "PHP 7.3.0+"
+        ]
+    },
+    "icon": "fa-user-plus"
+}

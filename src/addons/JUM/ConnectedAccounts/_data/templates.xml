@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="admin" title="connected_account_provider_jum_amazon" version_id="2010170" version_string="2.1.1"><![CDATA[<xf:textboxrow name="options[client_id]" value="{$options.client_id}"
+	label="{{ phrase('client_id') }}"
+	hint="{{ phrase('required') }}"
+	explain="{{ phrase('jum_con_acc_amazon_client_id_explain') }}" />
+
+<xf:textboxrow name="options[client_secret]" value="{$options.client_secret}"
+	label="{{ phrase('client_secret') }}"
+	hint="{{ phrase('required') }}"
+	explain="{{ phrase('jum_con_acc_amazon_client_secret_explain') }}" />]]></template>
+  <template type="admin" title="connected_account_provider_jum_dropbox" version_id="2010170" version_string="2.1.1"><![CDATA[<xf:textboxrow name="options[app_key]" value="{$options.app_key}"
+	label="{{ phrase('app_key') }}"
+	hint="{{ phrase('required') }}"
+	explain="{{ phrase('jum_con_acc_dropbox_app_app_key') }}" />
+
+<xf:textboxrow name="options[app_secret]" value="{$options.app_secret}"
+	label="{{ phrase('app_secret') }}"
+	hint="{{ phrase('required') }}"
+	explain="{{ phrase('jum_con_acc_dropbox_app_secret_key') }}" />]]></template>
+  <template type="admin" title="connected_account_provider_jum_instagram" version_id="2010170" version_string="2.1.1"><![CDATA[<xf:textboxrow name="options[client_id]" value="{$options.client_id}"
+	label="{{ phrase('client_id') }}"
+	hint="{{ phrase('required') }}"
+	explain="{{ phrase('jum_con_acc_instagram_client_id_explain') }}" />
+
+<xf:textboxrow name="options[client_secret]" value="{$options.client_secret}"
+	label="{{ phrase('client_secret') }}"
+	hint="{{ phrase('required') }}"
+	explain="{{ phrase('jum_con_acc_instagram_client_secret_explain') }}" />]]></template>
+  <template type="admin" title="connected_account_provider_jum_odnoklassniki" version_id="2010170" version_string="2.1.1"><![CDATA[<xf:textboxrow name="options[app_id]" value="{$options.app_id}"
+	label="{{ phrase('app_id') }}"
+	hint="{{ phrase('required') }}"
+	explain="{{ phrase('jum_con_acc_odnoklassniki_app_id_explain') }}" />
+
+<xf:textboxrow name="options[app_pub_key]" value="{$options.app_pub_key}"
+	label="{{ phrase('jum_con_acc_odnoklassniki_app_pub_key') }}"
+	hint="{{ phrase('required') }}"
+	explain="{{ phrase('jum_con_acc_odnoklassniki_app_pub_key_explain') }}" />
+
+<xf:textboxrow name="options[app_secret_key]" value="{$options.app_secret_key}"
+	label="{{ phrase('jum_con_acc_odnoklassniki_app_secret_key') }}"
+	hint="{{ phrase('required') }}"
+	explain="{{ phrase('jum_con_acc_odnoklassniki_app_secret_key_explain') }}" />
+
+<xf:checkboxrow>
+	<xf:option name="options[scope_email]" selected="{$options.scope_email}"
+		label="{{ phrase('jum_con_acc_odnoklassniki_scope_email_explain') }}"
+		hint="{{ phrase('jum_con_acc_odnoklassniki_scope_email_explain_hint') }}" />
+</xf:checkboxrow>]]></template>
+  <template type="admin" title="connected_account_provider_jum_paypal" version_id="2010170" version_string="2.1.1"><![CDATA[<xf:textboxrow name="options[client_id]" value="{$options.client_id}"
+	label="{{ phrase('client_id') }}"
+	hint="{{ phrase('required') }}"
+	explain="{{ phrase('jum_con_acc_paypal_client_id') }}" />
+
+<xf:textboxrow name="options[client_secret]" value="{$options.client_secret}"
+	label="{{ phrase('client_secret') }}"
+	hint="{{ phrase('required') }}"
+	explain="{{ phrase('jum_con_acc_paypal_client_secret') }}" />
+
+<xf:checkboxrow>
+	<xf:option name="options[scope_email]" selected="{$options.scope_email}"
+		label="{{ phrase('jum_con_acc_paypal_scope_email_explain') }}"
+		hint="{{ phrase('jum_con_acc_paypal_scope_email_hint') }}" />
+	<xf:option name="options[scope_location]" selected="{$options.scope_location}"
+		label="{{ phrase('jum_con_acc_paypal_scope_location_explain') }}"
+		hint="{{ phrase('jum_con_acc_paypal_scope_location_hint') }}" />
+</xf:checkboxrow>]]></template>
+  <template type="admin" title="connected_account_provider_jum_pinterest" version_id="2010170" version_string="2.1.1"><![CDATA[<xf:textboxrow name="options[app_id]" value="{$options.app_id}"
+	label="{{ phrase('app_id') }}"
+	hint="{{ phrase('required') }}"
+	explain="{{ phrase('jum_con_acc_pinterest_app_id_explain') }}" />
+
+<xf:textboxrow name="options[app_secret]" value="{$options.app_secret}"
+	label="{{ phrase('app_secret') }}"
+	hint="{{ phrase('required') }}"
+	explain="{{ phrase('jum_con_acc_pinterest_app_secret_explain') }}" />]]></template>
+  <template type="admin" title="connected_account_provider_jum_reddit" version_id="2010170" version_string="2.1.1"><![CDATA[<xf:textboxrow name="options[app_id]" value="{$options.app_id}"
+	label="{{ phrase('app_id') }}"
+	hint="{{ phrase('required') }}"
+	explain="{{ phrase('jum_con_acc_reddit_app_id_explain') }}" />
+
+<xf:textboxrow name="options[app_secret]" value="{$options.app_secret}"
+	label="{{ phrase('app_secret') }}"
+	hint="{{ phrase('required') }}"
+	explain="{{ phrase('con_acc_reddit_app_secret_explain') }}" />]]></template>
+  <template type="admin" title="connected_account_provider_jum_tumblr" version_id="2010170" version_string="2.1.1"><![CDATA[<xf:textboxrow name="options[consumer_key]" value="{$options.consumer_key}"
+	label="{{ phrase('consumer_key') }}"
+	hint="{{ phrase('required') }}"
+	explain="{{ phrase('jum_con_acc_tumblr_consumer_key_explain') }}" />
+
+<xf:textboxrow name="options[consumer_secret]" value="{$options.consumer_secret}"
+	label="{{ phrase('consumer_secret') }}"
+	hint="{{ phrase('required') }}"
+	explain="{{ phrase('con_acc_tumblr_consumer_secret_explain') }}" />]]></template>
+  <template type="admin" title="connected_account_provider_jum_twitch" version_id="2010170" version_string="2.1.1"><![CDATA[<xf:textboxrow name="options[client_id]" value="{$options.client_id}"
+	label="{{ phrase('client_id') }}"
+	hint="{{ phrase('required') }}"
+	explain="{{ phrase('jum_con_acc_twitch_client_id_explain') }}" />
+
+<xf:textboxrow name="options[client_secret]" value="{$options.client_secret}"
+	label="{{ phrase('client_secret') }}"
+	hint="{{ phrase('required') }}"
+	explain="{{ phrase('con_acc_twitch_client_secret_explain') }}" />]]></template>
+  <template type="admin" title="connected_account_provider_jum_vimeo" version_id="2010170" version_string="2.1.1"><![CDATA[<xf:textboxrow name="options[client_id]" value="{$options.client_id}"
+	label="{{ phrase('client_id') }}"
+	hint="{{ phrase('required') }}"
+	explain="{{ phrase('jum_con_acc_vimeo_client_id_explain') }}" />
+
+<xf:textboxrow name="options[app_secret]" value="{$options.app_secret}"
+	label="{{ phrase('app_secret') }}"
+	hint="{{ phrase('required') }}"
+	explain="{{ phrase('con_acc_vimeo_app_secret_explain') }}" />]]></template>
+  <template type="admin" title="connected_account_provider_jum_vkontakte" version_id="2010170" version_string="2.1.1"><![CDATA[<xf:textboxrow name="options[app_id]" value="{$options.app_id}"
+	label="{{ phrase('app_id') }}"
+	hint="{{ phrase('required') }}"
+	explain="{{ phrase('jum_con_acc_vkontakte_app_id_explain') }}" />
+
+<xf:textboxrow name="options[app_secret]" value="{$options.app_secret}"
+	label="{{ phrase('app_secret') }}"
+	hint="{{ phrase('required') }}"
+	explain="{{ phrase('con_acc_vkontakte_app_secret_explain') }}" />]]></template>
+  <template type="admin" title="connected_account_provider_jum_yandex" version_id="2010170" version_string="2.1.1"><![CDATA[<xf:textboxrow name="options[app_id]" value="{$options.app_id}"
+	label="{{ phrase('app_id') }}"
+	hint="{{ phrase('required') }}"
+	explain="{{ phrase('jum_con_acc_yandex_app_id_explain') }}" />
+
+<xf:textboxrow name="options[app_password]" value="{$options.app_password}"
+	label="{{ phrase('app_password') }}"
+	hint="{{ phrase('required') }}"
+	explain="{{ phrase('con_acc_yandex_app_password_explain') }}" />]]></template>
+  <template type="admin" title="connected_account_provider_test_jum_amazon" version_id="2010170" version_string="2.1.1"><![CDATA[<xf:if is="!$providerData">
+	<xf:macro template="connected_account_provider_test_macros" name="explain"
+		arg-providerTitle="{$provider.title}"
+		arg-keyName="{{ phrase('client_id') }}"
+		arg-keyValue="{$provider.options.client_id}" />
+<xf:else />
+	<xf:macro template="connected_account_provider_test_macros" name="success" />
+
+	<xf:macro template="connected_account_provider_test_macros" name="display_name"
+		arg-name="{$providerData.username}" />
+
+	<xf:macro template="connected_account_provider_test_macros" name="email"
+		arg-email="{$providerData.email}" />
+</xf:if>]]></template>
+  <template type="admin" title="connected_account_provider_test_jum_dropbox" version_id="2010170" version_string="2.1.1"><![CDATA[<xf:if is="!$providerData">
+	<xf:macro template="connected_account_provider_test_macros" name="explain"
+		arg-providerTitle="{$provider.title}"
+		arg-keyName="{{ phrase('app_key') }}"
+		arg-keyValue="{$provider.options.app_key}" />
+<xf:else />
+	<xf:macro template="connected_account_provider_test_macros" name="success" />
+
+	<xf:macro template="connected_account_provider_test_macros" name="display_name"
+		arg-name="{$providerData.username}" />
+
+	<xf:macro template="connected_account_provider_test_macros" name="email"
+		arg-email="{$providerData.email}" />
+
+	<xf:macro template="connected_account_provider_test_macros" name="picture"
+		arg-url="{$providerData.avatar_url}" />
+</xf:if>]]></template>
+  <template type="admin" title="connected_account_provider_test_jum_instagram" version_id="2010170" version_string="2.1.1"><![CDATA[<xf:if is="!$providerData">
+	<xf:macro template="connected_account_provider_test_macros" name="explain"
+		arg-providerTitle="{$provider.title}"
+		arg-keyName="{{ phrase('client_id') }}"
+		arg-keyValue="{$provider.options.client_id}" />
+<xf:else />
+	<xf:macro template="connected_account_provider_test_macros" name="success" />
+
+	<xf:macro template="connected_account_provider_test_macros" name="display_name"
+		arg-name="{$providerData.username}" />
+
+	<xf:macro template="connected_account_provider_test_macros" name="picture"
+		arg-url="{$providerData.avatar_url}" />
+</xf:if>]]></template>
+  <template type="admin" title="connected_account_provider_test_jum_odnoklassniki" version_id="2010170" version_string="2.1.1"><![CDATA[<xf:if is="!$providerData">
+	<xf:macro template="connected_account_provider_test_macros" name="explain"
+		arg-providerTitle="{$provider.title}"
+		arg-keyName="{{ phrase('app_id') }}"
+		arg-keyValue="{$provider.options.app_id}" />
+<xf:else />
+	<xf:macro template="connected_account_provider_test_macros" name="success" />
+
+	<xf:macro template="connected_account_provider_test_macros" name="display_name"
+		arg-name="{$providerData.username}" />
+
+	<xf:macro template="connected_account_provider_test_macros" name="email"
+		arg-email="{$providerData.email}" />
+
+	<xf:macro template="connected_account_provider_test_macros" name="picture"
+		arg-url="{$providerData.avatar_url}" />
+</xf:if>]]></template>
+  <template type="admin" title="connected_account_provider_test_jum_paypal" version_id="2010170" version_string="2.1.1"><![CDATA[<xf:if is="!$providerData">
+	<xf:macro template="connected_account_provider_test_macros" name="explain"
+		arg-providerTitle="{$provider.title}"
+		arg-keyName="{{ phrase('client_id') }}"
+		arg-keyValue="{$provider.options.client_id}" />
+<xf:else />
+	<xf:macro template="connected_account_provider_test_macros" name="success" />
+
+	<xf:macro template="connected_account_provider_test_macros" name="display_name"
+		arg-name="{$providerData.username}" />
+
+	<xf:macro template="connected_account_provider_test_macros" name="email"
+		arg-email="{$providerData.email}" />
+
+	<xf:macro template="connected_account_provider_test_macros" name="picture"
+		arg-url="{$providerData.avatar_url}" />
+</xf:if>]]></template>
+  <template type="admin" title="connected_account_provider_test_jum_pinterest" version_id="2010170" version_string="2.1.1"><![CDATA[<xf:if is="!$providerData">
+	<xf:macro template="connected_account_provider_test_macros" name="explain"
+		arg-providerTitle="{$provider.title}"
+		arg-keyName="{{ phrase('app_id') }}"
+		arg-keyValue="{$provider.options.app_id}" />
+<xf:else />
+	<xf:macro template="connected_account_provider_test_macros" name="success" />
+
+	<xf:macro template="connected_account_provider_test_macros" name="display_name"
+		arg-name="{$providerData.username}" />
+</xf:if>]]></template>
+  <template type="admin" title="connected_account_provider_test_jum_reddit" version_id="2010170" version_string="2.1.1"><![CDATA[<xf:if is="!$providerData">
+	<xf:macro template="connected_account_provider_test_macros" name="explain"
+		arg-providerTitle="{$provider.title}"
+		arg-keyName="{{ phrase('app_id') }}"
+		arg-keyValue="{$provider.options.app_id}" />
+<xf:else />
+	<xf:macro template="connected_account_provider_test_macros" name="success" />
+
+	<xf:macro template="connected_account_provider_test_macros" name="display_name"
+		arg-name="{$providerData.username}" />
+
+	<xf:macro template="connected_account_provider_test_macros" name="picture"
+		arg-url="{$providerData.avatar_url}" />
+</xf:if>]]></template>
+  <template type="admin" title="connected_account_provider_test_jum_tumblr" version_id="2010170" version_string="2.1.1"><![CDATA[<xf:if is="!$providerData">
+	<xf:macro template="connected_account_provider_test_macros" name="explain"
+		arg-providerTitle="{$provider.title}"
+		arg-keyName="{{ phrase('consumer_key') }}"
+		arg-keyValue="{$provider.options.consumer_key}" />
+<xf:else />
+	<xf:macro template="connected_account_provider_test_macros" name="success" />
+
+	<xf:macro template="connected_account_provider_test_macros" name="display_name"
+		arg-name="{$providerData.username}" />
+
+	<xf:macro template="connected_account_provider_test_macros" name="picture"
+		arg-url="{$providerData.avatar_url}" />
+</xf:if>]]></template>
+  <template type="admin" title="connected_account_provider_test_jum_twitch" version_id="2010170" version_string="2.1.1"><![CDATA[<xf:if is="!$providerData">
+	<xf:macro template="connected_account_provider_test_macros" name="explain"
+		arg-providerTitle="{$provider.title}"
+		arg-keyName="{{ phrase('client_id') }}"
+		arg-keyValue="{$provider.options.client_id}" />
+<xf:else />
+	<xf:macro template="connected_account_provider_test_macros" name="success" />
+
+	<xf:macro template="connected_account_provider_test_macros" name="display_name"
+		arg-name="{$providerData.username}" />
+
+	<xf:macro template="connected_account_provider_test_macros" name="email"
+		arg-email="{$providerData.email}" />
+
+	<xf:macro template="connected_account_provider_test_macros" name="picture"
+		arg-url="{$providerData.avatar_url}" />
+</xf:if>]]></template>
+  <template type="admin" title="connected_account_provider_test_jum_vimeo" version_id="2010170" version_string="2.1.1"><![CDATA[<xf:if is="!$providerData">
+	<xf:macro template="connected_account_provider_test_macros" name="explain"
+		arg-providerTitle="{$provider.title}"
+		arg-keyName="{{ phrase('client_id') }}"
+		arg-keyValue="{$provider.options.client_id}" />
+<xf:else />
+	<xf:macro template="connected_account_provider_test_macros" name="success" />
+
+	<xf:macro template="connected_account_provider_test_macros" name="display_name"
+		arg-name="{$providerData.username}" />
+
+	<xf:macro template="connected_account_provider_test_macros" name="picture"
+		arg-url="{$providerData.avatar_url}" />
+</xf:if>]]></template>
+  <template type="admin" title="connected_account_provider_test_jum_vkontakte" version_id="2010170" version_string="2.1.1"><![CDATA[<xf:if is="!$providerData">
+	<xf:macro template="connected_account_provider_test_macros" name="explain"
+		arg-providerTitle="{$provider.title}"
+		arg-keyName="{{ phrase('app_id') }}"
+		arg-keyValue="{$provider.options.app_id}" />
+<xf:else />
+	<xf:macro template="connected_account_provider_test_macros" name="success" />
+
+	<xf:macro template="connected_account_provider_test_macros" name="display_name"
+		arg-name="{$providerData.username}" />
+
+	<xf:macro template="connected_account_provider_test_macros" name="email"
+		arg-email="{$providerData.email}" />
+
+	<xf:macro template="connected_account_provider_test_macros" name="picture"
+		arg-url="{$providerData.avatar_url}" />
+</xf:if>]]></template>
+  <template type="admin" title="connected_account_provider_test_jum_yandex" version_id="2010170" version_string="2.1.1"><![CDATA[<xf:if is="!$providerData">
+	<xf:macro template="connected_account_provider_test_macros" name="explain"
+		arg-providerTitle="{$provider.title}"
+		arg-keyName="{{ phrase('app_id') }}"
+		arg-keyValue="{$provider.options.app_id}" />
+<xf:else />
+	<xf:macro template="connected_account_provider_test_macros" name="success" />
+
+	<xf:macro template="connected_account_provider_test_macros" name="display_name"
+		arg-name="{$providerData.username}" />
+
+	<xf:macro template="connected_account_provider_test_macros" name="email"
+		arg-email="{$providerData.email}" />
+
+	<xf:macro template="connected_account_provider_test_macros" name="picture"
+		arg-url="{$providerData.avatar_url}" />
+</xf:if>]]></template>
+  <template type="public" title="connected_account_associated_jum_amazon" version_id="2010170" version_string="2.1.1"><![CDATA[{{ $providerData.username ?: phrase('account_associated') }}]]></template>
+  <template type="public" title="connected_account_associated_jum_dropbox" version_id="2010170" version_string="2.1.1"><![CDATA[<xf:if is="$providerData.avatar_url">
+	<img src="{{ $providerData.avatar_url }}" width="48" alt="" />
+</xf:if>
+<div>{{ $providerData.username ?: phrase('account_associated') }}</div>]]></template>
+  <template type="public" title="connected_account_associated_jum_instagram" version_id="2010170" version_string="2.1.1"><![CDATA[<xf:if is="$providerData.avatar_url">
+	<a href="{$providerData.profile_link}" target="_blank">
+		<img src="{$providerData.avatar_url}" width="48" alt="" />
+	</a>
+</xf:if>
+<div>
+	<a href="{$providerData.profile_link}" target="_blank">{{ $providerData.fullname ?: phrase('view_account') }}</a>
+</div>]]></template>
+  <template type="public" title="connected_account_associated_jum_odnoklassniki" version_id="2010170" version_string="2.1.1"><![CDATA[<xf:if is="$providerData.avatar_url">
+	<a href="{$providerData.profile_link}" target="_blank">
+		<img src="{$providerData.avatar_url}" width="48" alt="" />
+	</a>
+</xf:if>
+<div>
+	<a href="{$providerData.profile_link}" target="_blank">{{ $providerData.username ?: phrase('view_account') }}</a>
+</div>]]></template>
+  <template type="public" title="connected_account_associated_jum_paypal" version_id="2010170" version_string="2.1.1"><![CDATA[{{ $providerData.username ?: phrase('account_associated') }}]]></template>
+  <template type="public" title="connected_account_associated_jum_pinterest" version_id="2010170" version_string="2.1.1"><![CDATA[<a href="{$providerData.profile_link}" target="_blank">{{ $providerData.username ?: phrase('view_account') }}</a>]]></template>
+  <template type="public" title="connected_account_associated_jum_reddit" version_id="2010170" version_string="2.1.1"><![CDATA[<a href="{$providerData.profile_link}" target="_blank">
+	<img src="{$providerData.avatar_url}" width="48" alt="" />
+</a>
+<div>
+	<a href="{$providerData.profile_link}" target="_blank">{{ $providerData.username ?: phrase('view_account') }}</a>
+</div>]]></template>
+  <template type="public" title="connected_account_associated_jum_tumblr" version_id="2010170" version_string="2.1.1"><![CDATA[<a href="{$providerData.profile_link}" target="_blank">
+	<img src="{$providerData.avatar_url}" width="48" alt="" />
+</a>
+<div>
+	<a href="{$providerData.profile_link}" target="_blank">{{ $providerData.username ?: phrase('view_account') }}</a>
+</div>]]></template>
+  <template type="public" title="connected_account_associated_jum_twitch" version_id="2010170" version_string="2.1.1"><![CDATA[<a href="{$providerData.profile_link}" target="_blank">
+	<img src="{$providerData.avatar_url}" width="48" alt="" />
+</a>
+<div>
+	<a href="{$providerData.profile_link}" target="_blank">{{ $providerData.username ?: phrase('view_account') }}</a>
+</div>]]></template>
+  <template type="public" title="connected_account_associated_jum_vimeo" version_id="2010170" version_string="2.1.1"><![CDATA[<a href="{$providerData.profile_link}" target="_blank">
+	<img src="{$providerData.avatar_url}" width="48" alt="" />
+</a>
+<div>
+	<a href="{$providerData.profile_link}" target="_blank">{{ $providerData.username ?: phrase('view_account') }}</a>
+</div>]]></template>
+  <template type="public" title="connected_account_associated_jum_vkontakte" version_id="2010170" version_string="2.1.1"><![CDATA[<a href="{$providerData.profile_link}" target="_blank">
+	<img src="{$providerData.avatar_url}" width="48" alt="" />
+</a>
+<div>
+	<a href="{$providerData.profile_link}" target="_blank">{{ $providerData.username ?: phrase('view_account') }}</a>
+</div>]]></template>
+  <template type="public" title="connected_account_associated_jum_yandex" version_id="2010170" version_string="2.1.1"><![CDATA[<xf:if is="$providerData.avatar_url">
+	<img src="{{ $providerData.avatar_url }}" width="48" alt="" />
+</xf:if>
+<div>{{ $providerData.username ?: phrase('account_associated') }}</div>]]></template>
+</templates>

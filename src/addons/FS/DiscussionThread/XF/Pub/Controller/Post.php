@@ -18,7 +18,11 @@ class Post extends XFCP_Post
 
         $discThread = $post->Thread->DiscThread;
 
-        $postLink = $this->buildLink('canonical:posts', $post);
+        // $postLink = $this->buildLink('posts', $post);
+
+        $baseUrl = \XF::options()->boardUrl;
+
+        $postLink = $baseUrl . "/index.php?posts/" . $post->post_id . "/";
 
         $quoteMessage = $post->message;
 
@@ -42,7 +46,7 @@ class Post extends XFCP_Post
             if ($visitor->isMemberOf($unselected)) {
             } else
             if ($visitor->isMemberOf($mediaTag->user_group_ids)) {
-                $quoteMessage = $this->removeMediaTags($quoteMessage, $mediaTag);
+                $quoteMessage = $this->replaceMediaTags($quoteMessage, $mediaTag);
             }
         }
 
@@ -59,13 +63,16 @@ class Post extends XFCP_Post
         $dtUnreadPostLink = \XF::options()->dtUnreadPostLink;
 
         if ($dtUnreadPostLink)
-            return $this->redirect($this->buildLink('threads/unread', $discThread));
+            return $this->redirect($this->buildLink('threads/#quickReplyForm', $discThread));
+        // return $this->redirect($this->buildLink('threads/unread', $discThread));
         else
-            return $this->redirect($this->buildLink('threads', $discThread));
+            return $this->redirect($this->buildLink('threads/#quickReplyForm', $discThread));
     }
 
     public function actionEdit(ParameterBag $params)
     {
+        $parent = parent::actionEdit($params);
+
         $post = $this->assertViewablePost($params->post_id, ['Thread.Prefix']);
 
         $message = $post->message;
@@ -76,37 +83,14 @@ class Post extends XFCP_Post
 
         if (!preg_match($pattern, $message, $matches)) {
 
-            return parent::actionEdit($params);
+            return $parent;
         }
 
         if (!$post->canEdit($error)) {
             return $this->noPermission($error);
         }
 
-        $thread = $post->Thread;
-
         if ($this->isPost()) {
-            $editor = $this->setupPostEdit($post);
-            $editor->checkForSpam();
-
-            if ($post->isFirstPost() && $thread->canEdit()) {
-                $threadEditor = $this->setupFirstPostThreadEdit($thread, $threadChanges);
-                $editor->setThreadEditor($threadEditor);
-            } else {
-                $threadEditor = null;
-                $threadChanges = [];
-            }
-
-            if (!$editor->validate($errors)) {
-                return $this->error($errors);
-            }
-
-            $editor->save();
-
-            $this->finalizePostEdit($editor, $threadEditor);
-
-            $message = $post->message;
-
             $postLinkText =  \XF::phrase('fs_discussion_related_post');
 
             $pattern = '/^\[QUOTE\](.*?)\[URL=\'[^\']*?posts\/(\d+)\/\'\]' . $postLinkText . '\[\/URL\](.*?)\[\/QUOTE\]/is';
@@ -119,7 +103,9 @@ class Post extends XFCP_Post
 
                 if ($quotePost) {
 
-                    $postLink = $this->buildLink('canonical:posts', $quotePost);
+                    $postLink = $baseUrl . "/index.php?posts/" . $quotePost->post_id . "/";
+
+                    // $postLink = $this->buildLink('canonical:posts', $quotePost);
 
                     $quoteMessage = $quotePost->message;
 
@@ -136,43 +122,9 @@ class Post extends XFCP_Post
                 }
             }
 
-            return $this->redirect($this->buildLink('posts', $post));
-
-            if ($this->filter('_xfWithData', 'bool') && $this->filter('_xfInlineEdit', 'bool')) {
-                $threadPlugin = $this->plugin('XF:Thread');
-                $threadPlugin->fetchExtraContentForPostsFullView([$post->post_id => $post], $thread);
-
-                $typeHandler = $thread->TypeHandler;
-
-                $viewParams = [
-                    'post' => $post,
-                    'thread' => $thread,
-                    'isPinnedFirstPost' => $post->isFirstPost() && $typeHandler->isFirstPostPinned($thread),
-                    'templateOverrides' => $typeHandler->getThreadViewTemplateOverrides($thread)
-                ];
-
-                $reply = $this->view('XF:Post\EditNewPost', 'post_edit_new_post', $viewParams);
-                $reply->setJsonParams([
-                    'message' => \XF::phrase('your_changes_have_been_saved'),
-                    'threadChanges' => $threadChanges
-                ]);
-                return $reply;
-            } else {
-                return $this->redirect($this->buildLink('posts', $post));
-            }
+            return $parent;
         } else {
-            /** @var \XF\Entity\Forum $forum */
-            $forum = $post->Thread->Forum;
-            if ($forum->canUploadAndManageAttachments()) {
-                /** @var \XF\Repository\Attachment $attachmentRepo */
-                $attachmentRepo = $this->repository('XF:Attachment');
-                $attachmentData = $attachmentRepo->getEditorData('post', $post);
-            } else {
-                $attachmentData = null;
-            }
-
-            $prefix = $thread->Prefix;
-            $prefixes = $forum->getUsablePrefixes($prefix);
+            $parent = parent::actionEdit($params);
 
             $quotePost = $post;
 
@@ -196,31 +148,29 @@ class Post extends XFCP_Post
                 if ($visitor->isMemberOf($unselected)) {
                 } else
                 if ($visitor->isMemberOf($mediaTag->user_group_ids)) {
-                    $quotePost->message = $this->removeMediaTags($quotePost->message, $mediaTag);
+                    $quotePost->message = $this->replaceMediaTags($quotePost->message, $mediaTag);
                 }
             }
 
-            $viewParams = [
-                'post' => $quotePost,
-                'thread' => $thread,
-                'forum' => $forum,
-                'prefixes' => $prefixes,
-                'attachmentData' => $attachmentData,
-                'quickEdit' => $this->filter('_xfWithData', 'bool'),
-                'removeAjax' => true
-            ];
-            return $this->view('XF:Post\Edit', 'post_edit', $viewParams);
+            $parent->setParams([
+                // 'post' => $quotePost,
+                'removeAjax' => true,
+            ]);
+
+            return $parent;
         }
     }
 
-    public function removeMediaTags($message, \FS\MediaTagSetting\Entity\MediaTag $mediaTag)
+    public function replaceMediaTags($message, \FS\MediaTagSetting\Entity\MediaTag $mediaTag)
     {
-        $patterns = [];
-
         foreach ($mediaTag->media_site_ids as $mediaId) {
-            $patterns[] = '#\[media=' . $mediaId . '([^\[]*?)\[/media\]#i';
+            $pattern = '#\[MEDIA=' . preg_quote($mediaId, '#') . '\](.*?)\[/MEDIA\]#i';
+
+            $message = preg_replace_callback($pattern, function ($matches) use ($mediaId) {
+                return "[MEDIA={$mediaId}]********[/MEDIA]";
+            }, $message);
         }
 
-        return preg_replace($patterns, '[fs_custom_msg]' . $mediaTag->custom_message . '[/fs_custom_msg]', $message);
+        return $message;
     }
 }

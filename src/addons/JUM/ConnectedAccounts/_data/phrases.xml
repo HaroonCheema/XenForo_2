@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="app_key" version_id="2010070" version_string="2.1.0"><![CDATA[App key]]></phrase>
+  <phrase title="app_password" version_id="2010070" version_string="2.1.0"><![CDATA[App password]]></phrase>
+  <phrase title="con_acc.jum_amazon" version_id="2010170" version_string="2.1.1"><![CDATA[Amazon]]></phrase>
+  <phrase title="con_acc.jum_dropbox" version_id="2010170" version_string="2.1.1"><![CDATA[Dropbox]]></phrase>
+  <phrase title="con_acc.jum_instagram" version_id="2010170" version_string="2.1.1"><![CDATA[Instagram]]></phrase>
+  <phrase title="con_acc.jum_odnoklassniki" version_id="2010170" version_string="2.1.1"><![CDATA[OK]]></phrase>
+  <phrase title="con_acc.jum_paypal" version_id="2010170" version_string="2.1.1"><![CDATA[PayPal]]></phrase>
+  <phrase title="con_acc.jum_pinterest" version_id="2010170" version_string="2.1.1"><![CDATA[Pinterest]]></phrase>
+  <phrase title="con_acc.jum_reddit" version_id="2010170" version_string="2.1.1"><![CDATA[Reddit]]></phrase>
+  <phrase title="con_acc.jum_tumblr" version_id="2010170" version_string="2.1.1"><![CDATA[Tumblr]]></phrase>
+  <phrase title="con_acc.jum_twitch" version_id="2010170" version_string="2.1.1"><![CDATA[Twitch]]></phrase>
+  <phrase title="con_acc.jum_vimeo" version_id="2010170" version_string="2.1.1"><![CDATA[Vimeo]]></phrase>
+  <phrase title="con_acc.jum_vkontakte" version_id="2010170" version_string="2.1.1"><![CDATA[VK]]></phrase>
+  <phrase title="con_acc.jum_yandex" version_id="2010170" version_string="2.1.1"><![CDATA[Yandex]]></phrase>
+  <phrase title="con_acc_desc.jum_amazon" version_id="2010170" version_string="2.1.1"><![CDATA[]]></phrase>
+  <phrase title="con_acc_desc.jum_dropbox" version_id="2010170" version_string="2.1.1"><![CDATA[]]></phrase>
+  <phrase title="con_acc_desc.jum_instagram" version_id="2010170" version_string="2.1.1"><![CDATA[]]></phrase>
+  <phrase title="con_acc_desc.jum_odnoklassniki" version_id="2010170" version_string="2.1.1"><![CDATA[]]></phrase>
+  <phrase title="con_acc_desc.jum_paypal" version_id="2010170" version_string="2.1.1"><![CDATA[]]></phrase>
+  <phrase title="con_acc_desc.jum_pinterest" version_id="2010170" version_string="2.1.1"><![CDATA[]]></phrase>
+  <phrase title="con_acc_desc.jum_reddit" version_id="2010170" version_string="2.1.1"><![CDATA[]]></phrase>
+  <phrase title="con_acc_desc.jum_tumblr" version_id="2010170" version_string="2.1.1"><![CDATA[]]></phrase>
+  <phrase title="con_acc_desc.jum_twitch" version_id="2010170" version_string="2.1.1"><![CDATA[]]></phrase>
+  <phrase title="con_acc_desc.jum_vimeo" version_id="2010170" version_string="2.1.1"><![CDATA[]]></phrase>
+  <phrase title="con_acc_desc.jum_vkontakte" version_id="2010170" version_string="2.1.1"><![CDATA[]]></phrase>
+  <phrase title="con_acc_desc.jum_yandex" version_id="2010170" version_string="2.1.1"><![CDATA[]]></phrase>
+  <phrase title="con_acc_reddit_app_secret_explain" version_id="2010070" version_string="2.1.0"><![CDATA[App secret of your Reddit application. ]]></phrase>
+  <phrase title="con_acc_tumblr_consumer_secret_explain" version_id="2010070" version_string="2.1.0"><![CDATA[Consumer secret of your Tumblr application.]]></phrase>
+  <phrase title="con_acc_twitch_client_secret_explain" version_id="2010070" version_string="2.1.0"><![CDATA[Secret code of your application.]]></phrase>
+  <phrase title="con_acc_vimeo_app_secret_explain" version_id="2010070" version_string="2.1.0"><![CDATA[Client secret of your application.]]></phrase>
+  <phrase title="con_acc_vkontakte_app_secret_explain" version_id="2010070" version_string="2.1.0"><![CDATA[The secret for the VK application you created for this domain.]]></phrase>
+  <phrase title="con_acc_yandex_app_password_explain" version_id="2010070" version_string="2.1.0"><![CDATA[The Application password of your Yandex application.]]></phrase>
+  <phrase title="jum_con_acc_amazon_client_id_explain" version_id="2010070" version_string="2.1.0"><![CDATA[Client ID of your application.
+<br/>
+You can create it in the Amazon console on the <a href="https://developer.amazon.com/settings/console/securityprofile/overview.html" target="_blank">Security profiles</a> page.]]></phrase>
+  <phrase title="jum_con_acc_amazon_client_secret_explain" version_id="2010070" version_string="2.1.0"><![CDATA[Client Secret of your application.]]></phrase>
+  <phrase title="jum_con_acc_dropbox_app_app_key" version_id="2010070" version_string="2.1.0"><![CDATA[App key of your application.
+<br/>
+You can create it in the Dropbox app console on this <a href="https://www.dropbox.com/developers/apps/create" target="_blank">page</a>.]]></phrase>
+  <phrase title="jum_con_acc_dropbox_app_secret_key" version_id="2010070" version_string="2.1.0"><![CDATA[App secret of your application.]]></phrase>
+  <phrase title="jum_con_acc_instagram_client_id_explain" version_id="2010070" version_string="2.1.0"><![CDATA[Сlient ID of your application.
+<br/>
+You can create it in the Instagram <a href="https://www.instagram.com/developer/clients/manage/" target="_blank">app console</a>.]]></phrase>
+  <phrase title="jum_con_acc_instagram_client_secret_explain" version_id="2010070" version_string="2.1.0"><![CDATA[Client Secret of your application.]]></phrase>
+  <phrase title="jum_con_acc_odnoklassniki_app_id_explain" version_id="2010070" version_string="2.1.0"><![CDATA[The Application ID of your Odnoklassniki application. You can create an application on <a href="https://ok.ru/vitrine/myuploaded" target="_blank">this page</a>.]]></phrase>
+  <phrase title="jum_con_acc_odnoklassniki_app_pub_key" version_id="2010070" version_string="2.1.0"><![CDATA[Public key]]></phrase>
+  <phrase title="jum_con_acc_odnoklassniki_app_pub_key_explain" version_id="2010070" version_string="2.1.0"><![CDATA[]]></phrase>
+  <phrase title="jum_con_acc_odnoklassniki_app_secret_key" version_id="2010070" version_string="2.1.0"><![CDATA[Secret key]]></phrase>
+  <phrase title="jum_con_acc_odnoklassniki_app_secret_key_explain" version_id="2010070" version_string="2.1.0"><![CDATA[]]></phrase>
+  <phrase title="jum_con_acc_odnoklassniki_scope_email_explain" version_id="2010070" version_string="2.1.0"><![CDATA[Request the user's email]]></phrase>
+  <phrase title="jum_con_acc_odnoklassniki_scope_email_explain_hint" version_id="2010070" version_string="2.1.0"><![CDATA[Before you set this option, you must add scope 'GET_EMAIL' to the application.
+<br/>
+Read more <a href="https://apiok.ru/ext/oauth/permissions" target="_blank">here</a>.]]></phrase>
+  <phrase title="jum_con_acc_paypal_client_id" version_id="2010070" version_string="2.1.0"><![CDATA[Client ID of your application.
+<br/>
+You can create it in the PayPal <a href="https://developer.paypal.com/developer/applications" target="_blank">dashboard</a>.]]></phrase>
+  <phrase title="jum_con_acc_paypal_client_secret" version_id="2010070" version_string="2.1.0"><![CDATA[Client secret of your application.]]></phrase>
+  <phrase title="jum_con_acc_paypal_scope_email_explain" version_id="2010070" version_string="2.1.0"><![CDATA[Request the user's email]]></phrase>
+  <phrase title="jum_con_acc_paypal_scope_email_hint" version_id="2010070" version_string="2.1.0"><![CDATA[Before you set this option, you must add scope 'email' to the application.
+<br/>
+Read more <a href="https://developer.paypal.com/docs/integration/direct/identity/attributes/#user-attribute-and-scope-mappingss" target="_blank">here</a>.]]></phrase>
+  <phrase title="jum_con_acc_paypal_scope_location_explain" version_id="2010070" version_string="2.1.0"><![CDATA[Request the user's location]]></phrase>
+  <phrase title="jum_con_acc_paypal_scope_location_hint" version_id="2010070" version_string="2.1.0"><![CDATA[Before you set this option, you must add scope 'address' to the application.
+<br/>
+Read more <a href="https://developer.paypal.com/docs/integration/direct/identity/attributes/#user-attribute-and-scope-mappingss" target="_blank">here</a>.]]></phrase>
+  <phrase title="jum_con_acc_pinterest_app_id_explain" version_id="2010070" version_string="2.1.0"><![CDATA[The Application ID of your Pinterest application. You can create an application on <a href="https://developers.pinterest.com" target="_blank">this page</a>.]]></phrase>
+  <phrase title="jum_con_acc_pinterest_app_secret_explain" version_id="2010070" version_string="2.1.0"><![CDATA[The Application Secret of your Pinterest application.]]></phrase>
+  <phrase title="jum_con_acc_reddit_app_id_explain" version_id="2010070" version_string="2.1.0"><![CDATA[Web app ID of your Reddit application. You can create an application on <a href="https://www.reddit.com/prefs/apps" target="_blank">this page</a>.]]></phrase>
+  <phrase title="jum_con_acc_tumblr_consumer_key_explain" version_id="2010070" version_string="2.1.0"><![CDATA[Consumer key of your application.
+<br/>
+You can create it in the Tumblr settings <a href="https://www.tumblr.com/settings/apps" target="_blank">page</a>.]]></phrase>
+  <phrase title="jum_con_acc_twitch_client_id_explain" version_id="2010070" version_string="2.1.0"><![CDATA[Client ID of your application.
+<br/>
+You can create it in the Twitch developers console on this <a href="https://glass.twitch.tv/console/apps" target="_blank">page</a>.]]></phrase>
+  <phrase title="jum_con_acc_vimeo_client_id_explain" version_id="2010070" version_string="2.1.0"><![CDATA[Client identifier of your vimeo application. You can create an application on <a href="https://developer.vimeo.com/apps" target="_blank">this page</a>.]]></phrase>
+  <phrase title="jum_con_acc_vkontakte_app_id_explain" version_id="2010070" version_string="2.1.0"><![CDATA[The ID that is associated with your <a href="https://vk.com/apps?act=manage" target="_blank">VK application</a> for this domain.]]></phrase>
+  <phrase title="jum_con_acc_yandex_app_id_explain" version_id="2010070" version_string="2.1.0"><![CDATA[The Application ID of your Yandex application. You can create an application on <a href="https://oauth.yandex.ru/" target="_blank">this page</a>.]]></phrase>
+  <phrase title="jum_user_is_not_associated_with_any_of_selected_connected_account_providers" version_id="2010070" version_string="2.1.0"><![CDATA[User is NOT associated with any of the selected connected account providers]]></phrase>
+</phrases>

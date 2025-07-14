@@ -1,0 +1,9 @@
+{
+    "template": "thread_view",
+    "description": "fs_add_editor_id_add_reply",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/<xf:form action=\"{{ link\\('threads\\/add-reply', \\$thread\\) }}\".*?data-message-container=\"div\\[data-type='post'] \\.js-replyNewMessageContainer\">/is",
+    "replace": "<xf:form action=\"{{ link('threads/add-reply', $thread) }}\"\n\t\tid=\"quickReplyForm\"\n\t\tajax=\"true\"\n\t\tdraft=\"{{ link('threads/draft', $thread) }}\"\n\t\tclass=\"block js-quickReply\"\n\t\tdata-xf-init=\"attachment-manager quick-reply{{ ($xf.visitor.isShownCaptcha() AND !$isPreRegReply) ? ' guest-captcha' : '' }}\"\n\t\tdata-message-container=\"div[data-type='post'] .js-replyNewMessageContainer\">"
+}

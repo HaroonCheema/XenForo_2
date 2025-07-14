@@ -1196,6 +1196,7 @@ return array(
 		</div>
 	', array(
 				'action' => $__templater->func('link', array('threads/add-reply', $__vars['thread'], ), false),
+				'id' => 'quickReplyForm',
 				'ajax' => 'true',
 				'draft' => $__templater->func('link', array('threads/draft', $__vars['thread'], ), false),
 				'class' => 'block js-quickReply',

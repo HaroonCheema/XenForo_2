@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="core_button.less" modification_key="jum_core_buttons_less_buttons_icon_margin" description="icon_margin" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[{
+			.m-faBase('Brands');
+			font-size: 120%;
+			vertical-align: middle;
+			display: inline-block;
+			margin: -4px 6px -4px 0;
+		}]]></find>
+    <replace><![CDATA[{
+			.m-faBase('Brands');
+			font-size: 130%;
+			vertical-align: middle;
+			display: inline-block;
+			margin: -6px 2px -4px -2px;
+		}]]></replace>
+  </modification>
+  <modification type="public" template="core_button.less" modification_key="jum_core_buttons_less_icons" description="icons" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[&--facebook]]></find>
+    <replace><![CDATA[&--jum_vkontakte
+		{
+			.m-buttonColorVariation(#507299, white);
+			.m-buttonIcon(@fa-var-vk, 1.1em);
+		}
+		&--jum_odnoklassniki
+		{
+			.m-buttonColorVariation(#ee8208, white);
+			.m-buttonIcon(@fa-var-odnoklassniki, .96em);
+		}
+		&--jum_yandex
+		{
+			.m-buttonColorVariation(#ffdb4d, #000);
+			.m-buttonIcon(@fa-var-yandex);
+		}
+		&--jum_amazon
+		{
+			.m-buttonColorVariation(#232f3e, white);
+			.m-buttonIcon(@fa-var-amazon);
+		}
+		&--jum_instagram
+		{
+			.m-buttonColorVariation(#8a49a1, white);
+			.m-buttonIcon(@fa-var-instagram);
+		}
+		&--jum_reddit
+		{
+			.m-buttonColorVariation(#ff571a, white);
+			.m-buttonIcon(@fa-var-reddit);
+		}
+		&--jum_paypal
+		{
+			.m-buttonColorVariation(#0070ba, white);
+			.m-buttonIcon(@fa-var-paypal, .96em);
+		}
+		&--jum_pinterest
+		{
+			.m-buttonColorVariation(#e60023, white);
+			.m-buttonIcon(@fa-var-pinterest);
+		}
+		&--jum_vimeo
+		{
+			.m-buttonColorVariation(#00ADEF, white);
+			.m-buttonIcon(@fa-var-vimeo);
+		}
+		&--jum_tumblr
+		{
+			.m-buttonColorVariation(#36465d, white);
+			.m-buttonIcon(@fa-var-tumblr);
+		}
+		&--jum_twitch
+		{
+			.m-buttonColorVariation(#4b367c, white);
+			.m-buttonIcon(@fa-var-twitch);
+		}
+		&--jum_dropbox
+		{
+			.m-buttonColorVariation(#0061ff, white);
+			.m-buttonIcon(@fa-var-dropbox);
+		}
+		$0]]></replace>
+  </modification>
+  <modification type="admin" template="helper_criteria" modification_key="jum_helper_criteria_not_connected_accounts" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[</xf:checkboxrow>
+
+			<hr class="formRowSep" />
+
+			<!--[XF:user:after_connected]-->]]></find>
+    <replace><![CDATA[<xf:option name="user_criteria[not_connected_accounts][rule]" value="not_connected_accounts" selected="{$criteria.not_connected_accounts}"
+					label="{{ phrase('jum_user_is_not_associated_with_any_of_selected_connected_account_providers:') }}">
+
+					<xf:select name="user_criteria[not_connected_accounts][data][provider_ids]" size="4" multiple="true" value="{$criteria.not_connected_accounts.provider_ids}">
+						<xf:options source="$data.connectedAccProviders" />
+					</xf:select>
+
+				</xf:option>
+			$0]]></replace>
+  </modification>
+  <modification type="public" template="register_connected_account" modification_key="jum_register_connected_account" description="username_row" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:macro template="register_macros" name="username_row" />]]></find>
+    <replace><![CDATA[<xf:if is="$providerData.username">
+						<xf:macro template="register_macros" name="username_row" arg-value="{$providerData.username}" />
+					<xf:else />
+						$0
+					</xf:if>]]></replace>
+  </modification>
+</template_modifications>

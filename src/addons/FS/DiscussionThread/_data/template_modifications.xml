@@ -35,6 +35,16 @@ $0]]></replace>
 
 $0]]></replace>
   </modification>
+  <modification type="public" template="thread_view" modification_key="fs_add_editor_id_add_reply" description="fs_add_editor_id_add_reply" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<xf:form action="{{ link\('threads\/add-reply', \$thread\) }}".*?data-message-container="div\[data-type='post'] \.js-replyNewMessageContainer">/is]]></find>
+    <replace><![CDATA[<xf:form action="{{ link('threads/add-reply', $thread) }}"
+		id="quickReplyForm"
+		ajax="true"
+		draft="{{ link('threads/draft', $thread) }}"
+		class="block js-quickReply"
+		data-xf-init="attachment-manager quick-reply{{ ($xf.visitor.isShownCaptcha() AND !$isPreRegReply) ? ' guest-captcha' : '' }}"
+		data-message-container="div[data-type='post'] .js-replyNewMessageContainer">]]></replace>
+  </modification>
   <modification type="public" template="thread_view" modification_key="fs_dt_thread_view_add_link_discussion" description="Add discussion link button in thread_view" execution_order="11" enabled="1" action="str_replace">
     <find><![CDATA[									{{ phrase('watch') }}
 								</xf:if>
