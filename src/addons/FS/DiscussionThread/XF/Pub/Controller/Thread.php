@@ -133,6 +133,8 @@ class Thread extends XFCP_Thread
 
             if ($quotePost) {
 
+                $baseUrl = \XF::options()->boardUrl;
+
                 $postLink = $baseUrl . "/index.php?posts/" . $quotePost->post_id . "/";
 
                 // $postLink = $this->buildLink('canonical:posts', $quotePost);

@@ -164,22 +164,31 @@ return array(
 							';
 	}
 	$__compilerTemp7 = '';
-	$__compilerTemp8 = '';
-	$__compilerTemp8 .= $__templater->func('user_banners', array($__vars['user'], array(
-	)));
-	if (strlen(trim($__compilerTemp8)) > 0) {
+	if ($__vars['xf']['options']['klUIProfileShowcase']) {
 		$__compilerTemp7 .= '
+	' . $__templater->callMacro('thuserimprovements_trophy_showcase_macros', 'showcase_display', array(
+			'user' => $__vars['user'],
+			'position' => 'profile',
+		), $__vars) . '
+';
+	}
+	$__compilerTemp8 = '';
+	$__compilerTemp9 = '';
+	$__compilerTemp9 .= $__templater->func('user_banners', array($__vars['user'], array(
+	)));
+	if (strlen(trim($__compilerTemp9)) > 0) {
+		$__compilerTemp8 .= '
 							<div class="memberHeader-banners">
-								' . $__compilerTemp8 . '
+								' . $__compilerTemp9 . '
 							</div>
 						';
 	}
-	$__compilerTemp9 = '';
+	$__compilerTemp10 = '';
 	if ($__templater->func('property', array('ozzmodz_badges_show_in_profile', ), false)) {
-		$__compilerTemp9 .= '
+		$__compilerTemp10 .= '
 	';
 		$__templater->includeCss('ozzmodz_badges_featured_badges.less');
-		$__compilerTemp9 .= '
+		$__compilerTemp10 .= '
 	
 	' . $__templater->callMacro('ozzmodz_badges_featured_badges_macros', 'featured_badges', array(
 			'location' => 'member_view',
@@ -187,16 +196,16 @@ return array(
 		), $__vars) . '
 ';
 	}
-	$__compilerTemp10 = '';
 	$__compilerTemp11 = '';
-	$__compilerTemp11 .= $__templater->func('user_activity', array($__vars['user']));
-	if (strlen(trim($__compilerTemp11)) > 0) {
-		$__compilerTemp10 .= '
+	$__compilerTemp12 = '';
+	$__compilerTemp12 .= $__templater->func('user_activity', array($__vars['user']));
+	if (strlen(trim($__compilerTemp12)) > 0) {
+		$__compilerTemp11 .= '
 								<div class="memberHeader-blurb">
 									<dl class="pairs pairs--inline">
 										<dt>' . 'Last seen' . '</dt>
 										<dd dir="auto">
-											' . $__compilerTemp11 . '
+											' . $__compilerTemp12 . '
 										</dd>
 									</dl>
 								</div>
@@ -223,11 +232,13 @@ return array(
 								' . $__templater->func('username_link', array($__vars['user'], true, array(
 		'href' => '',
 	))) . '
+' . $__templater->includeTemplate('thuserimprovements_username_change_history', $__vars) . '
 							</span>
 							' . $__compilerTemp6 . '
-						</h1>
-
 						' . $__compilerTemp7 . '
+</h1>
+
+						' . $__compilerTemp8 . '
 
 						<div class="memberHeader-blurbContainer">
 							' . $__templater->func('user_blurb', array($__vars['user'], array(
@@ -235,7 +246,7 @@ return array(
 		'class' => 'memberHeader-blurb',
 	))) . '
 
-' . $__compilerTemp9 . '
+' . $__compilerTemp10 . '
 
 							<div class="memberHeader-blurb">
 								<dl class="pairs pairs--inline">
@@ -245,7 +256,7 @@ return array(
 								</dl>
 							</div>
 
-							' . $__compilerTemp10 . '
+							' . $__compilerTemp11 . '
 						</div>
 					</div>
 					</div>
@@ -262,19 +273,19 @@ return array(
 					</div>
 
 					';
-	$__compilerTemp12 = '';
-	$__compilerTemp12 .= '
+	$__compilerTemp13 = '';
+	$__compilerTemp13 .= '
 								' . $__templater->callMacro('member_macros', 'member_action_buttons', array(
 		'user' => $__vars['user'],
 		'context' => 'profile',
 	), $__vars) . '
 							';
-	if (strlen(trim($__compilerTemp12)) > 0) {
+	if (strlen(trim($__compilerTemp13)) > 0) {
 		$__finalCompiled .= '
 						<hr class="memberHeader-separator" />
 
 						<div class="memberHeader-buttons">
-							' . $__compilerTemp12 . '
+							' . $__compilerTemp13 . '
 						</div>
 					';
 	}
@@ -467,6 +478,16 @@ return array(
 		$__finalCompiled .= '
 
 ' . '
+';
+		if ($__vars['xf']['options']['klUISeparateTrophyTab']) {
+			$__finalCompiled .= '
+	<a href="' . $__templater->func('link', array('members/trophies', $__vars['user'], ), true) . '"
+	   class="tabs-tab"
+	   id="trophies"
+	   role="tab">' . 'Trophies' . '</a>
+';
+		}
+		$__finalCompiled .= '
 			</span>
 ';
 	}
@@ -720,6 +741,15 @@ return array(
 		$__finalCompiled .= '
 
 ' . '
+';
+		if ($__vars['xf']['options']['klUISeparateTrophyTab']) {
+			$__finalCompiled .= '
+	<li data-href="' . $__templater->func('link', array('members/trophies', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="trophies">
+		<div class="blockMessage">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
+	</li>
+';
+		}
+		$__finalCompiled .= '
 </ul>
 ';
 	}

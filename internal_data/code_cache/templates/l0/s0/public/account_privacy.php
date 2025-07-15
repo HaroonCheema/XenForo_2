@@ -117,6 +117,8 @@ return array(
 		'name' => 'allow_view_identities',
 		'label' => 'View your identities' . $__vars['xf']['language']['label_separator'],
 	), $__vars) . '
+
+' . $__templater->includeTemplate('thuserimprovements_account_privacy', $__vars) . '
 			', array(
 		'rowtype' => 'inputLabelPair noColon',
 		'label' => 'Allow users to' . $__vars['xf']['language']['ellipsis'],

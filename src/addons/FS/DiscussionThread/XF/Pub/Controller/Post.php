@@ -24,6 +24,10 @@ class Post extends XFCP_Post
 
         $postLink = $baseUrl . "/index.php?posts/" . $post->post_id . "/";
 
+        // $customUrlSite = "https://celebforum.to";
+
+        // $postLink = $customUrlSite . "/index.php?posts/" . $post->post_id . "/";
+
         $quoteMessage = $post->message;
 
         $visitor = \XF::visitor();
@@ -102,6 +106,8 @@ class Post extends XFCP_Post
                 $quotePost = $this->em()->find('XF:Post', $postId);
 
                 if ($quotePost) {
+
+                    $baseUrl = \XF::options()->boardUrl;
 
                     $postLink = $baseUrl . "/index.php?posts/" . $quotePost->post_id . "/";
 

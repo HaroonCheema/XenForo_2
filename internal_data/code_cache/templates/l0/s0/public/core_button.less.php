@@ -281,10 +281,10 @@ a.button // needed for specificity over a:link
 		.button-icon
 		{
 			.m-faBase(\'Brands\');
-			font-size: 120%;
+			font-size: 130%;
 			vertical-align: middle;
 			display: inline-block;
-			margin: -4px 6px -4px 0;
+			margin: -6px 2px -4px -2px;
 		}
 
 		.button-icon
@@ -293,6 +293,66 @@ a.button // needed for specificity over a:link
 			vertical-align: 0;
 		}
 
+		&--jum_vkontakte
+		{
+			.m-buttonColorVariation(#507299, white);
+			.m-buttonIcon(@fa-var-vk, 1.1em);
+		}
+		&--jum_odnoklassniki
+		{
+			.m-buttonColorVariation(#ee8208, white);
+			.m-buttonIcon(@fa-var-odnoklassniki, .96em);
+		}
+		&--jum_yandex
+		{
+			.m-buttonColorVariation(#ffdb4d, #000);
+			.m-buttonIcon(@fa-var-yandex);
+		}
+		&--jum_amazon
+		{
+			.m-buttonColorVariation(#232f3e, white);
+			.m-buttonIcon(@fa-var-amazon);
+		}
+		&--jum_instagram
+		{
+			.m-buttonColorVariation(#8a49a1, white);
+			.m-buttonIcon(@fa-var-instagram);
+		}
+		&--jum_reddit
+		{
+			.m-buttonColorVariation(#ff571a, white);
+			.m-buttonIcon(@fa-var-reddit);
+		}
+		&--jum_paypal
+		{
+			.m-buttonColorVariation(#0070ba, white);
+			.m-buttonIcon(@fa-var-paypal, .96em);
+		}
+		&--jum_pinterest
+		{
+			.m-buttonColorVariation(#e60023, white);
+			.m-buttonIcon(@fa-var-pinterest);
+		}
+		&--jum_vimeo
+		{
+			.m-buttonColorVariation(#00ADEF, white);
+			.m-buttonIcon(@fa-var-vimeo);
+		}
+		&--jum_tumblr
+		{
+			.m-buttonColorVariation(#36465d, white);
+			.m-buttonIcon(@fa-var-tumblr);
+		}
+		&--jum_twitch
+		{
+			.m-buttonColorVariation(#4b367c, white);
+			.m-buttonIcon(@fa-var-twitch);
+		}
+		&--jum_dropbox
+		{
+			.m-buttonColorVariation(#0061ff, white);
+			.m-buttonIcon(@fa-var-dropbox);
+		}
 		&--facebook
 		{
 			.m-buttonColorVariation(#3B5998, white);

@@ -94,16 +94,7 @@ return array(
 
 	';
 	$__compilerTemp1 = $__templater->mergeChoiceOptions(array(), $__vars['data']['connectedAccProviders']);
-	$__compilerTemp2 = array();
-	if ($__templater->isTraversable($__vars['data']['userGroups'])) {
-		foreach ($__vars['data']['userGroups'] AS $__vars['userGroupId'] => $__vars['userGroupTitle']) {
-			$__compilerTemp2[] = array(
-				'value' => $__vars['userGroupId'],
-				'label' => $__templater->escape($__vars['userGroupTitle']),
-				'_type' => 'option',
-			);
-		}
-	}
+	$__compilerTemp2 = $__templater->mergeChoiceOptions(array(), $__vars['data']['connectedAccProviders']);
 	$__compilerTemp3 = array();
 	if ($__templater->isTraversable($__vars['data']['userGroups'])) {
 		foreach ($__vars['data']['userGroups'] AS $__vars['userGroupId'] => $__vars['userGroupTitle']) {
@@ -115,17 +106,27 @@ return array(
 		}
 	}
 	$__compilerTemp4 = array();
-	$__compilerTemp5 = $__templater->method($__vars['data']['languageTree'], 'getFlattened', array(0, ));
-	if ($__templater->isTraversable($__compilerTemp5)) {
-		foreach ($__compilerTemp5 AS $__vars['treeEntry']) {
+	if ($__templater->isTraversable($__vars['data']['userGroups'])) {
+		foreach ($__vars['data']['userGroups'] AS $__vars['userGroupId'] => $__vars['userGroupTitle']) {
 			$__compilerTemp4[] = array(
+				'value' => $__vars['userGroupId'],
+				'label' => $__templater->escape($__vars['userGroupTitle']),
+				'_type' => 'option',
+			);
+		}
+	}
+	$__compilerTemp5 = array();
+	$__compilerTemp6 = $__templater->method($__vars['data']['languageTree'], 'getFlattened', array(0, ));
+	if ($__templater->isTraversable($__compilerTemp6)) {
+		foreach ($__compilerTemp6 AS $__vars['treeEntry']) {
+			$__compilerTemp5[] = array(
 				'value' => $__vars['treeEntry']['record']['language_id'],
 				'label' => $__templater->func('repeat', array('--', $__vars['treeEntry']['depth'], ), true) . ' ' . $__templater->escape($__vars['treeEntry']['record']['title']),
 				'_type' => 'option',
 			);
 		}
 	}
-	$__compilerTemp6 = array(array(
+	$__compilerTemp7 = array(array(
 		'name' => 'user_criteria[language][rule]',
 		'value' => 'language',
 		'selected' => $__vars['criteria']['language'],
@@ -133,153 +134,241 @@ return array(
 		'_dependent' => array($__templater->formSelect(array(
 		'name' => 'user_criteria[language][data][language_id]',
 		'value' => $__vars['criteria']['language']['language_id'],
-	), $__compilerTemp4)),
+	), $__compilerTemp5)),
 		'_type' => 'option',
 	));
-	$__compilerTemp6[] = array(
+	$__compilerTemp7[] = array(
 		'label' => 'Avatar' . $__vars['xf']['language']['label_separator'],
 		'_type' => 'optgroup',
 		'options' => array(),
 	);
-	end($__compilerTemp6); $__compilerTemp7 = key($__compilerTemp6);
-	$__compilerTemp6[$__compilerTemp7]['options'][] = array(
+	end($__compilerTemp7); $__compilerTemp8 = key($__compilerTemp7);
+	$__compilerTemp7[$__compilerTemp8]['options'][] = array(
 		'name' => 'user_criteria[has_avatar][rule]',
 		'value' => 'has_avatar',
 		'selected' => $__vars['criteria']['has_avatar'],
 		'label' => 'User has an avatar',
 		'_type' => 'option',
 	);
-	$__compilerTemp6[$__compilerTemp7]['options'][] = array(
+	$__compilerTemp7[$__compilerTemp8]['options'][] = array(
 		'name' => 'user_criteria[no_avatar][rule]',
 		'value' => 'no_avatar',
 		'selected' => $__vars['criteria']['no_avatar'],
 		'label' => 'User has no avatar',
 		'_type' => 'option',
 	);
-	$__compilerTemp6[] = array(
+	$__compilerTemp7[] = array(
 		'label' => 'High resolution avatar' . $__vars['xf']['language']['label_separator'],
 		'_type' => 'optgroup',
 		'options' => array(),
 	);
-	end($__compilerTemp6); $__compilerTemp8 = key($__compilerTemp6);
-	$__compilerTemp6[$__compilerTemp8]['options'][] = array(
+	end($__compilerTemp7); $__compilerTemp9 = key($__compilerTemp7);
+	$__compilerTemp7[$__compilerTemp9]['options'][] = array(
 		'name' => 'user_criteria[has_highdpi_avatar][rule]',
 		'value' => 'has_highdpi_avatar',
 		'selected' => $__vars['criteria']['has_highdpi_avatar'],
 		'label' => 'User has a high-resolution (retina) avatar',
 		'_type' => 'option',
 	);
-	$__compilerTemp6[$__compilerTemp8]['options'][] = array(
+	$__compilerTemp7[$__compilerTemp9]['options'][] = array(
 		'name' => 'user_criteria[no_highdpi_avatar][rule]',
 		'value' => 'no_highdpi_avatar',
 		'selected' => $__vars['criteria']['no_highdpi_avatar'],
 		'label' => 'User has no high-resolution (retina) avatar',
 		'_type' => 'option',
 	);
-	$__compilerTemp6[] = array(
+	$__compilerTemp7[] = array(
 		'label' => 'Two-step verification' . $__vars['xf']['language']['label_separator'],
 		'_type' => 'optgroup',
 		'options' => array(),
 	);
-	end($__compilerTemp6); $__compilerTemp9 = key($__compilerTemp6);
-	$__compilerTemp6[$__compilerTemp9]['options'][] = array(
+	end($__compilerTemp7); $__compilerTemp10 = key($__compilerTemp7);
+	$__compilerTemp7[$__compilerTemp10]['options'][] = array(
 		'name' => 'user_criteria[with_tfa][rule]',
 		'value' => 'with_tfa',
 		'selected' => $__vars['criteria']['with_tfa'],
 		'label' => 'User has enabled two-step verification',
 		'_type' => 'option',
 	);
-	$__compilerTemp6[$__compilerTemp9]['options'][] = array(
+	$__compilerTemp7[$__compilerTemp10]['options'][] = array(
 		'name' => 'user_criteria[without_tfa][rule]',
 		'value' => 'without_tfa',
 		'selected' => $__vars['criteria']['without_tfa'],
 		'label' => 'User has not enabled two-step verification',
 		'_type' => 'option',
 	);
-	$__compilerTemp6[] = array(
+	$__compilerTemp7[] = array(
 		'label' => 'Activity summary email' . $__vars['xf']['language']['label_separator'],
 		'_type' => 'optgroup',
 		'options' => array(),
 	);
-	end($__compilerTemp6); $__compilerTemp10 = key($__compilerTemp6);
-	$__compilerTemp6[$__compilerTemp10]['options'][] = array(
+	end($__compilerTemp7); $__compilerTemp11 = key($__compilerTemp7);
+	$__compilerTemp7[$__compilerTemp11]['options'][] = array(
 		'name' => 'user_criteria[activity_summary_enabled][rule]',
 		'value' => 'activity_summary_enabled',
 		'selected' => $__vars['criteria']['activity_summary_enabled'],
 		'label' => 'User has activity summary emails enabled',
 		'_type' => 'option',
 	);
-	$__compilerTemp6[$__compilerTemp10]['options'][] = array(
+	$__compilerTemp7[$__compilerTemp11]['options'][] = array(
 		'name' => 'user_criteria[activity_summary_disabled][rule]',
 		'value' => 'activity_summary_disabled',
 		'selected' => $__vars['criteria']['activity_summary_disabled'],
 		'label' => 'User has activity summary emails disabled',
 		'_type' => 'option',
 	);
-	$__compilerTemp11 = '';
-	$__compilerTemp12 = '';
-	$__compilerTemp12 .= '
+	$__compilerTemp7[] = array(
+		'label' => 'User name changes' . $__vars['xf']['language']['label_separator'],
+		'_type' => 'optgroup',
+		'options' => array(),
+	);
+	end($__compilerTemp7); $__compilerTemp12 = key($__compilerTemp7);
+	$__compilerTemp7[$__compilerTemp12]['options'][] = array(
+		'name' => 'user_criteria[kl_ui_min_username_changes][rule]',
+		'value' => 'kl_ui_min_username_changes',
+		'selected' => $__vars['criteria']['kl_ui_min_username_changes'],
+		'label' => 'User has changed his name at least X times' . $__vars['xf']['language']['label_separator'],
+		'_dependent' => array($__templater->formNumberBox(array(
+		'name' => 'user_criteria[kl_ui_min_username_changes][data][count]',
+		'value' => $__vars['criteria']['kl_ui_min_username_changes']['count'],
+		'size' => '5',
+		'min' => '0',
+		'step' => '1',
+	))),
+		'_type' => 'option',
+	);
+	$__compilerTemp7[$__compilerTemp12]['options'][] = array(
+		'name' => 'user_criteria[kl_ui_max_username_changes][rule]',
+		'value' => 'kl_ui_max_username_changes',
+		'selected' => $__vars['criteria']['kl_ui_max_username_changes'],
+		'label' => 'User has changed his name no more than X times' . $__vars['xf']['language']['label_separator'],
+		'_dependent' => array($__templater->formNumberBox(array(
+		'name' => 'user_criteria[kl_ui_max_username_changes][data][count]',
+		'value' => $__vars['criteria']['kl_ui_max_username_changes']['count'],
+		'size' => '5',
+		'min' => '0',
+		'step' => '1',
+	))),
+		'_type' => 'option',
+	);
+	$__compilerTemp7[] = array(
+		'label' => 'User name color' . $__vars['xf']['language']['label_separator'],
+		'_type' => 'optgroup',
+		'options' => array(),
+	);
+	end($__compilerTemp7); $__compilerTemp13 = key($__compilerTemp7);
+	$__compilerTemp7[$__compilerTemp13]['options'][] = array(
+		'name' => 'user_criteria[kl_ui_username_color][rule]',
+		'value' => 'kl_ui_username_color',
+		'selected' => $__vars['criteria']['kl_ui_username_color'],
+		'label' => 'User has a user name color',
+		'_type' => 'option',
+	);
+	$__compilerTemp7[$__compilerTemp13]['options'][] = array(
+		'name' => 'user_criteria[kl_ui_no_username_color][rule]',
+		'value' => 'kl_ui_no_username_color',
+		'selected' => $__vars['criteria']['kl_ui_no_username_color'],
+		'label' => 'User has no user name color',
+		'_type' => 'option',
+	);
+	$__compilerTemp7[] = array(
+		'label' => 'Profile views' . $__vars['xf']['language']['label_separator'],
+		'_type' => 'optgroup',
+		'options' => array(),
+	);
+	end($__compilerTemp7); $__compilerTemp14 = key($__compilerTemp7);
+	$__compilerTemp7[$__compilerTemp14]['options'][] = array(
+		'name' => 'user_criteria[kl_ui_min_profile_views][rule]',
+		'value' => 'kl_ui_min_profile_views',
+		'selected' => $__vars['criteria']['kl_ui_min_profile_views'],
+		'label' => 'User has at least X profile views' . $__vars['xf']['language']['label_separator'],
+		'_dependent' => array($__templater->formNumberBox(array(
+		'name' => 'user_criteria[kl_ui_min_profile_views][data][count]',
+		'value' => $__vars['criteria']['kl_ui_min_profile_views']['count'],
+		'size' => '5',
+		'min' => '0',
+		'step' => '1',
+	))),
+		'_type' => 'option',
+	);
+	$__compilerTemp7[$__compilerTemp14]['options'][] = array(
+		'name' => 'user_criteria[kl_ui_max_profile_views][rule]',
+		'value' => 'kl_ui_max_profile_views',
+		'selected' => $__vars['criteria']['kl_ui_max_profile_views'],
+		'label' => 'User has no more than X profile views' . $__vars['xf']['language']['label_separator'],
+		'_dependent' => array($__templater->formNumberBox(array(
+		'name' => 'user_criteria[kl_ui_max_profile_views][data][count]',
+		'value' => $__vars['criteria']['kl_ui_max_profile_views']['count'],
+		'size' => '5',
+		'min' => '0',
+		'step' => '1',
+	))),
+		'_type' => 'option',
+	);
+	$__compilerTemp15 = '';
+	$__compilerTemp16 = '';
+	$__compilerTemp16 .= '
 					';
-	$__compilerTemp13 = $__templater->method($__templater->method($__vars['xf']['app']['em'], 'getRepository', array('XF:UserField', )), 'getDisplayGroups', array());
-	if ($__templater->isTraversable($__compilerTemp13)) {
-		foreach ($__compilerTemp13 AS $__vars['fieldGroup'] => $__vars['groupPhrase']) {
-			$__compilerTemp12 .= '
+	$__compilerTemp17 = $__templater->method($__templater->method($__vars['xf']['app']['em'], 'getRepository', array('XF:UserField', )), 'getDisplayGroups', array());
+	if ($__templater->isTraversable($__compilerTemp17)) {
+		foreach ($__compilerTemp17 AS $__vars['fieldGroup'] => $__vars['groupPhrase']) {
+			$__compilerTemp16 .= '
 
 						';
 			$__vars['customFields'] = $__templater->method($__vars['app'], 'getCustomFields', array('users', $__vars['fieldGroup'], ));
-			$__compilerTemp12 .= '
+			$__compilerTemp16 .= '
 						';
-			$__compilerTemp14 = '';
-			$__compilerTemp14 .= '
+			$__compilerTemp18 = '';
+			$__compilerTemp18 .= '
 								';
 			if ($__templater->isTraversable($__vars['customFields'])) {
 				foreach ($__vars['customFields'] AS $__vars['fieldId'] => $__vars['fieldDefinition']) {
-					$__compilerTemp14 .= '
+					$__compilerTemp18 .= '
 									';
 					$__vars['fieldName'] = 'user_field_' . $__vars['fieldId'];
-					$__compilerTemp14 .= '
+					$__compilerTemp18 .= '
 									';
 					$__vars['choices'] = $__vars['fieldDefinition']['field_choices'];
-					$__compilerTemp14 .= '
+					$__compilerTemp18 .= '
 									';
-					$__compilerTemp15 = '';
+					$__compilerTemp19 = '';
 					if (!$__vars['choices']) {
-						$__compilerTemp15 .= '
+						$__compilerTemp19 .= '
 													' . $__templater->formTextBox(array(
 							'name' => 'user_criteria[' . $__vars['fieldName'] . '][data][text]',
 							'value' => $__vars['criteria'][$__vars['fieldName']]['text'],
 						)) . '
 												';
 					} else if ($__templater->func('count', array($__vars['choices'], ), false) > 6) {
-						$__compilerTemp15 .= '
+						$__compilerTemp19 .= '
 													';
-						$__compilerTemp16 = $__templater->mergeChoiceOptions(array(), $__vars['choices']);
-						$__compilerTemp15 .= $__templater->formSelect(array(
+						$__compilerTemp20 = $__templater->mergeChoiceOptions(array(), $__vars['choices']);
+						$__compilerTemp19 .= $__templater->formSelect(array(
 							'name' => 'user_criteria[' . $__vars['fieldName'] . '][data][choices]',
 							'value' => $__vars['criteria'][$__vars['fieldName']]['choices'],
 							'multiple' => 'multiple',
 							'size' => '5',
-						), $__compilerTemp16) . '
+						), $__compilerTemp20) . '
 												';
 					} else {
-						$__compilerTemp15 .= '
+						$__compilerTemp19 .= '
 													';
-						$__compilerTemp17 = $__templater->mergeChoiceOptions(array(), $__vars['choices']);
-						$__compilerTemp15 .= $__templater->formCheckBox(array(
+						$__compilerTemp21 = $__templater->mergeChoiceOptions(array(), $__vars['choices']);
+						$__compilerTemp19 .= $__templater->formCheckBox(array(
 							'name' => 'user_criteria[' . $__vars['fieldName'] . '][data][choices]',
 							'value' => $__vars['criteria'][$__vars['fieldName']]['choices'],
 							'listclass' => 'listColumns',
-						), $__compilerTemp17) . '
+						), $__compilerTemp21) . '
 												';
 					}
-					$__compilerTemp14 .= $__templater->formCheckBoxRow(array(
+					$__compilerTemp18 .= $__templater->formCheckBoxRow(array(
 					), array(array(
 						'name' => 'user_criteria[' . $__vars['fieldName'] . '][rule]',
 						'value' => $__vars['fieldName'],
 						'selected' => $__vars['criteria'][$__vars['fieldName']],
 						'label' => ($__vars['choices'] ? 'User choice is among' : 'User value contains text' . $__vars['xf']['language']['label_separator']),
 						'_dependent' => array('
-												' . $__compilerTemp15 . '
+												' . $__compilerTemp19 . '
 											'),
 						'_type' => 'option',
 					)), array(
@@ -288,27 +377,27 @@ return array(
 								';
 				}
 			}
-			$__compilerTemp14 .= '
+			$__compilerTemp18 .= '
 							';
-			if (strlen(trim($__compilerTemp14)) > 0) {
-				$__compilerTemp12 .= '
+			if (strlen(trim($__compilerTemp18)) > 0) {
+				$__compilerTemp16 .= '
 							<h2 class="block-formSectionHeader"><span class="block-formSectionHeader-aligner">' . $__templater->escape($__vars['groupPhrase']) . '</span></h2>
-							' . $__compilerTemp14 . '
+							' . $__compilerTemp18 . '
 						';
 			}
-			$__compilerTemp12 .= '
+			$__compilerTemp16 .= '
 
 					';
 		}
 	}
-	$__compilerTemp12 .= '
+	$__compilerTemp16 .= '
 				';
-	if (strlen(trim($__compilerTemp12)) > 0) {
-		$__compilerTemp11 .= '
-				' . $__compilerTemp12 . '
+	if (strlen(trim($__compilerTemp16)) > 0) {
+		$__compilerTemp15 .= '
+				' . $__compilerTemp16 . '
 			';
 	} else {
-		$__compilerTemp11 .= '
+		$__compilerTemp15 .= '
 				' . 'No custom fields have been created yet.' . '
 			';
 	}
@@ -433,6 +522,19 @@ return array(
 		'value' => $__vars['criteria']['connected_accounts']['provider_ids'],
 	), $__compilerTemp1)),
 		'_type' => 'option',
+	),
+	array(
+		'name' => 'user_criteria[not_connected_accounts][rule]',
+		'value' => 'not_connected_accounts',
+		'selected' => $__vars['criteria']['not_connected_accounts'],
+		'label' => 'User is NOT associated with any of the selected connected account providers' . $__vars['xf']['language']['label_separator'],
+		'_dependent' => array($__templater->formSelect(array(
+		'name' => 'user_criteria[not_connected_accounts][data][provider_ids]',
+		'size' => '4',
+		'multiple' => 'true',
+		'value' => $__vars['criteria']['not_connected_accounts']['provider_ids'],
+	), $__compilerTemp2)),
+		'_type' => 'option',
 	)), array(
 		'label' => 'Connected accounts',
 	)) . '
@@ -452,7 +554,7 @@ return array(
 		'size' => '4',
 		'multiple' => 'true',
 		'value' => $__vars['criteria']['user_groups']['user_group_ids'],
-	), $__compilerTemp2)),
+	), $__compilerTemp3)),
 		'_type' => 'option',
 	),
 	array(
@@ -465,7 +567,7 @@ return array(
 		'size' => '4',
 		'multiple' => 'true',
 		'value' => $__vars['criteria']['not_user_groups']['user_group_ids'],
-	), $__compilerTemp3)),
+	), $__compilerTemp4)),
 		'_type' => 'option',
 	)), array(
 		'label' => 'User groups',
@@ -671,7 +773,7 @@ return array(
 			' . $__templater->includeTemplate('dbtech_credits_user_criteria', $__vars) . '
 
 			' . $__templater->formCheckBoxRow(array(
-	), $__compilerTemp6, array(
+	), $__compilerTemp7, array(
 		'label' => 'User profile and options',
 	)) . '
 
@@ -724,7 +826,7 @@ return array(
 		</li>
 
 		<li class="' . (($__vars['active'] == 'user_field') ? 'is-active' : '') . '" role="tabpanel" id="' . $__templater->func('unique_id', array('criteriaUserField', ), true) . '">
-			' . $__compilerTemp11 . '
+			' . $__compilerTemp15 . '
 		</li>
 	');
 	$__finalCompiled .= '
@@ -876,70 +978,158 @@ return array(
 		'label' => 'User has not enabled two-step verification',
 		'_type' => 'option',
 	);
-	$__compilerTemp10 = '';
-	$__compilerTemp11 = '';
-	$__compilerTemp11 .= '
+	$__compilerTemp6[] = array(
+		'label' => 'User name changes' . $__vars['xf']['language']['label_separator'],
+		'_type' => 'optgroup',
+		'options' => array(),
+	);
+	end($__compilerTemp6); $__compilerTemp10 = key($__compilerTemp6);
+	$__compilerTemp6[$__compilerTemp10]['options'][] = array(
+		'name' => 'user_criteria[kl_ui_min_username_changes][rule]',
+		'value' => 'kl_ui_min_username_changes',
+		'selected' => $__vars['criteria']['kl_ui_min_username_changes'],
+		'label' => 'User has changed his name at least X times' . $__vars['xf']['language']['label_separator'],
+		'_dependent' => array($__templater->formNumberBox(array(
+		'name' => 'user_criteria[kl_ui_min_username_changes][data][count]',
+		'value' => $__vars['criteria']['kl_ui_min_username_changes']['count'],
+		'size' => '5',
+		'min' => '0',
+		'step' => '1',
+	))),
+		'_type' => 'option',
+	);
+	$__compilerTemp6[$__compilerTemp10]['options'][] = array(
+		'name' => 'user_criteria[kl_ui_max_username_changes][rule]',
+		'value' => 'kl_ui_max_username_changes',
+		'selected' => $__vars['criteria']['kl_ui_max_username_changes'],
+		'label' => 'User has changed his name no more than X times' . $__vars['xf']['language']['label_separator'],
+		'_dependent' => array($__templater->formNumberBox(array(
+		'name' => 'user_criteria[kl_ui_max_username_changes][data][count]',
+		'value' => $__vars['criteria']['kl_ui_max_username_changes']['count'],
+		'size' => '5',
+		'min' => '0',
+		'step' => '1',
+	))),
+		'_type' => 'option',
+	);
+	$__compilerTemp6[] = array(
+		'label' => 'User name color' . $__vars['xf']['language']['label_separator'],
+		'_type' => 'optgroup',
+		'options' => array(),
+	);
+	end($__compilerTemp6); $__compilerTemp11 = key($__compilerTemp6);
+	$__compilerTemp6[$__compilerTemp11]['options'][] = array(
+		'name' => 'user_criteria[kl_ui_username_color][rule]',
+		'value' => 'kl_ui_username_color',
+		'selected' => $__vars['criteria']['kl_ui_username_color'],
+		'label' => 'User has a user name color',
+		'_type' => 'option',
+	);
+	$__compilerTemp6[$__compilerTemp11]['options'][] = array(
+		'name' => 'user_criteria[kl_ui_no_username_color][rule]',
+		'value' => 'kl_ui_no_username_color',
+		'selected' => $__vars['criteria']['kl_ui_no_username_color'],
+		'label' => 'User has no user name color',
+		'_type' => 'option',
+	);
+	$__compilerTemp6[] = array(
+		'label' => 'Profile views' . $__vars['xf']['language']['label_separator'],
+		'_type' => 'optgroup',
+		'options' => array(),
+	);
+	end($__compilerTemp6); $__compilerTemp12 = key($__compilerTemp6);
+	$__compilerTemp6[$__compilerTemp12]['options'][] = array(
+		'name' => 'user_criteria[kl_ui_min_profile_views][rule]',
+		'value' => 'kl_ui_min_profile_views',
+		'selected' => $__vars['criteria']['kl_ui_min_profile_views'],
+		'label' => 'User has at least X profile views' . $__vars['xf']['language']['label_separator'],
+		'_dependent' => array($__templater->formNumberBox(array(
+		'name' => 'user_criteria[kl_ui_min_profile_views][data][count]',
+		'value' => $__vars['criteria']['kl_ui_min_profile_views']['count'],
+		'size' => '5',
+		'min' => '0',
+		'step' => '1',
+	))),
+		'_type' => 'option',
+	);
+	$__compilerTemp6[$__compilerTemp12]['options'][] = array(
+		'name' => 'user_criteria[kl_ui_max_profile_views][rule]',
+		'value' => 'kl_ui_max_profile_views',
+		'selected' => $__vars['criteria']['kl_ui_max_profile_views'],
+		'label' => 'User has no more than X profile views' . $__vars['xf']['language']['label_separator'],
+		'_dependent' => array($__templater->formNumberBox(array(
+		'name' => 'user_criteria[kl_ui_max_profile_views][data][count]',
+		'value' => $__vars['criteria']['kl_ui_max_profile_views']['count'],
+		'size' => '5',
+		'min' => '0',
+		'step' => '1',
+	))),
+		'_type' => 'option',
+	);
+	$__compilerTemp13 = '';
+	$__compilerTemp14 = '';
+	$__compilerTemp14 .= '
 					';
-	$__compilerTemp12 = $__templater->method($__templater->method($__vars['xf']['app']['em'], 'getRepository', array('XF:UserField', )), 'getDisplayGroups', array());
-	if ($__templater->isTraversable($__compilerTemp12)) {
-		foreach ($__compilerTemp12 AS $__vars['fieldGroup'] => $__vars['groupPhrase']) {
-			$__compilerTemp11 .= '
+	$__compilerTemp15 = $__templater->method($__templater->method($__vars['xf']['app']['em'], 'getRepository', array('XF:UserField', )), 'getDisplayGroups', array());
+	if ($__templater->isTraversable($__compilerTemp15)) {
+		foreach ($__compilerTemp15 AS $__vars['fieldGroup'] => $__vars['groupPhrase']) {
+			$__compilerTemp14 .= '
 
 						';
 			$__vars['customFields'] = $__templater->method($__vars['app'], 'getCustomFields', array('users', $__vars['fieldGroup'], ));
-			$__compilerTemp11 .= '
+			$__compilerTemp14 .= '
 						';
-			$__compilerTemp13 = '';
-			$__compilerTemp13 .= '
+			$__compilerTemp16 = '';
+			$__compilerTemp16 .= '
 								';
 			if ($__templater->isTraversable($__vars['customFields'])) {
 				foreach ($__vars['customFields'] AS $__vars['fieldId'] => $__vars['fieldDefinition']) {
-					$__compilerTemp13 .= '
+					$__compilerTemp16 .= '
 									';
 					$__vars['fieldName'] = 'user_field_' . $__vars['fieldId'];
-					$__compilerTemp13 .= '
+					$__compilerTemp16 .= '
 									';
 					$__vars['choices'] = $__vars['fieldDefinition']['field_choices'];
-					$__compilerTemp13 .= '
+					$__compilerTemp16 .= '
 									';
-					$__compilerTemp14 = '';
+					$__compilerTemp17 = '';
 					if (!$__vars['choices']) {
-						$__compilerTemp14 .= '
+						$__compilerTemp17 .= '
 													' . $__templater->formTextBox(array(
 							'name' => 'user_criteria[' . $__vars['fieldName'] . '][data][text]',
 							'value' => $__vars['criteria'][$__vars['fieldName']]['text'],
 						)) . '
 												';
 					} else if ($__templater->func('count', array($__vars['choices'], ), false) > 6) {
-						$__compilerTemp14 .= '
+						$__compilerTemp17 .= '
 													';
-						$__compilerTemp15 = $__templater->mergeChoiceOptions(array(), $__vars['choices']);
-						$__compilerTemp14 .= $__templater->formSelect(array(
+						$__compilerTemp18 = $__templater->mergeChoiceOptions(array(), $__vars['choices']);
+						$__compilerTemp17 .= $__templater->formSelect(array(
 							'name' => 'user_criteria[' . $__vars['fieldName'] . '][data][choices]',
 							'value' => $__vars['criteria'][$__vars['fieldName']]['choices'],
 							'multiple' => 'multiple',
 							'size' => '5',
-						), $__compilerTemp15) . '
+						), $__compilerTemp18) . '
 												';
 					} else {
-						$__compilerTemp14 .= '
+						$__compilerTemp17 .= '
 													';
-						$__compilerTemp16 = $__templater->mergeChoiceOptions(array(), $__vars['choices']);
-						$__compilerTemp14 .= $__templater->formCheckBox(array(
+						$__compilerTemp19 = $__templater->mergeChoiceOptions(array(), $__vars['choices']);
+						$__compilerTemp17 .= $__templater->formCheckBox(array(
 							'name' => 'user_criteria[' . $__vars['fieldName'] . '][data][choices]',
 							'value' => $__vars['criteria'][$__vars['fieldName']]['choices'],
 							'listclass' => 'listColumns',
-						), $__compilerTemp16) . '
+						), $__compilerTemp19) . '
 												';
 					}
-					$__compilerTemp13 .= $__templater->formCheckBoxRow(array(
+					$__compilerTemp16 .= $__templater->formCheckBoxRow(array(
 					), array(array(
 						'name' => 'user_criteria[' . $__vars['fieldName'] . '][rule]',
 						'value' => $__vars['fieldName'],
 						'selected' => $__vars['criteria'][$__vars['fieldName']],
 						'label' => ($__vars['choices'] ? 'User choice is among' : 'User value contains text' . $__vars['xf']['language']['label_separator']),
 						'_dependent' => array('
-												' . $__compilerTemp14 . '
+												' . $__compilerTemp17 . '
 											'),
 						'_type' => 'option',
 					)), array(
@@ -948,27 +1138,27 @@ return array(
 								';
 				}
 			}
-			$__compilerTemp13 .= '
+			$__compilerTemp16 .= '
 							';
-			if (strlen(trim($__compilerTemp13)) > 0) {
-				$__compilerTemp11 .= '
+			if (strlen(trim($__compilerTemp16)) > 0) {
+				$__compilerTemp14 .= '
 							<h2 class="block-formSectionHeader"><span class="block-formSectionHeader-aligner">' . $__templater->escape($__vars['groupPhrase']) . '</span></h2>
-							' . $__compilerTemp13 . '
+							' . $__compilerTemp16 . '
 						';
 			}
-			$__compilerTemp11 .= '
+			$__compilerTemp14 .= '
 
 					';
 		}
 	}
-	$__compilerTemp11 .= '
+	$__compilerTemp14 .= '
 				';
-	if (strlen(trim($__compilerTemp11)) > 0) {
-		$__compilerTemp10 .= '
-				' . $__compilerTemp11 . '
+	if (strlen(trim($__compilerTemp14)) > 0) {
+		$__compilerTemp13 .= '
+				' . $__compilerTemp14 . '
 			';
 	} else {
-		$__compilerTemp10 .= '
+		$__compilerTemp13 .= '
 				' . 'No custom fields have been created yet.' . '
 			';
 	}
@@ -1360,7 +1550,7 @@ return array(
 		</h3>
 
 		<div class="block-body block-body--collapsible">
-			' . $__compilerTemp10 . '
+			' . $__compilerTemp13 . '
 		</div>
 	');
 	$__finalCompiled .= '

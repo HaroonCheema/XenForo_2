@@ -19,5 +19,5 @@ $config['enableLivePayments'] = false;
 
 $config['debug'] = true;
 
-$config['development']['defaultAddOn'] = 'FS/DiscussionThread';
+$config['development']['defaultAddOn'] = 'JUM/ConnectedAccounts';
 $config['development']['enabled'] = true;

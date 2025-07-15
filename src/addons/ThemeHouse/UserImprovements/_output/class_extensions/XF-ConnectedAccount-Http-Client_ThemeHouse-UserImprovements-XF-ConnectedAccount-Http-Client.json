@@ -1,0 +1,6 @@
+{
+    "from_class": "XF\\ConnectedAccount\\Http\\Client",
+    "to_class": "ThemeHouse\\UserImprovements\\XF\\ConnectedAccount\\Http\\Client",
+    "execute_order": 10,
+    "active": true
+}

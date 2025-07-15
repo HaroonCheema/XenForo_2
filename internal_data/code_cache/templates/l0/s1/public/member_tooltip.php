@@ -176,6 +176,16 @@ return array(
 			</div>
 		')) . '
 		<div class="memberTooltip-info">
+';
+	if ($__vars['xf']['options']['thuserimprovements_member_tooltip_showcase']) {
+		$__finalCompiled .= '
+	' . $__templater->callMacro('thuserimprovements_trophy_showcase_macros', 'showcase_display', array(
+			'user' => $__vars['user'],
+			'position' => 'tooltip',
+		), $__vars) . '
+';
+	}
+	$__finalCompiled .= '
 			<div class="memberTooltip-stats">
 				<div class="pairJustifier">
 					' . $__templater->callMacro('member_macros', 'member_stat_pairs', array(

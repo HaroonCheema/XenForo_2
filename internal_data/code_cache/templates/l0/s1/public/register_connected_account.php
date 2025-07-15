@@ -23,26 +23,38 @@ return array(
 
 ';
 	$__compilerTemp1 = '';
-	if ($__vars['providerData']['email']) {
+	if ($__vars['providerData']['username']) {
 		$__compilerTemp1 .= '
+						' . $__templater->callMacro('register_macros', 'username_row', array(
+			'value' => $__vars['providerData']['username'],
+		), $__vars) . '
+					';
+	} else {
+		$__compilerTemp1 .= '
+						' . $__templater->callMacro('register_macros', 'username_row', array(), $__vars) . '
+					';
+	}
+	$__compilerTemp2 = '';
+	if ($__vars['providerData']['email']) {
+		$__compilerTemp2 .= '
 						' . $__templater->formRow($__templater->escape($__vars['providerData']['email']), array(
 			'label' => 'Email',
 		)) . '
 					';
 	} else {
-		$__compilerTemp1 .= '
+		$__compilerTemp2 .= '
 						' . $__templater->callMacro('register_macros', 'email_row', array(), $__vars) . '
 					';
 	}
-	$__compilerTemp2 = '';
+	$__compilerTemp3 = '';
 	if (!$__vars['providerData']['dob']) {
-		$__compilerTemp2 .= '
+		$__compilerTemp3 .= '
 						' . $__templater->callMacro('register_macros', 'dob_row', array(), $__vars) . '
 					';
 	}
-	$__compilerTemp3 = '';
+	$__compilerTemp4 = '';
 	if (!$__vars['providerData']['location']) {
-		$__compilerTemp3 .= '
+		$__compilerTemp4 .= '
 						' . $__templater->callMacro('register_macros', 'location_row', array(), $__vars) . '
 					';
 	}
@@ -64,13 +76,13 @@ return array(
 				role="tabpanel"
 				id="' . $__templater->func('unique_id', array('regCreate', ), true) . '">
 				<div class="block-body">
-					' . $__templater->callMacro('register_macros', 'username_row', array(), $__vars) . '
-
 					' . $__compilerTemp1 . '
 
 					' . $__compilerTemp2 . '
 
 					' . $__compilerTemp3 . '
+
+					' . $__compilerTemp4 . '
 
 					' . $__templater->callMacro('register_macros', 'custom_fields', array(), $__vars) . '
 

@@ -82,6 +82,9 @@ return array(
 {
 	$__finalCompiled = '';
 	$__finalCompiled .= '
+	';
+	if ($__templater->method($__vars['user'], 'canViewTHUIProfileStatsBar', array())) {
+		$__finalCompiled .= '
 	' . '
 	' . '
 	<dl class="pairs pairs--rows pairs--rows--centered fauxBlockLink">
@@ -93,8 +96,8 @@ return array(
 		</dd>
 	</dl>
 	';
-	if ($__vars['user']['question_solution_count']) {
-		$__finalCompiled .= '
+		if ($__vars['user']['question_solution_count']) {
+			$__finalCompiled .= '
 		' . '
 		<dl class="pairs pairs--rows pairs--rows--centered fauxBlockLink">
 			<dt>' . 'Solutions' . '</dt>
@@ -103,14 +106,14 @@ return array(
 			</dd>
 		</dl>
 	';
-	}
-	$__finalCompiled .= '
-	';
-	if ($__templater->method($__vars['xf']['visitor'], 'canViewMedia', array())) {
+		}
 		$__finalCompiled .= '
 	';
-		if ($__vars['user']['xfmg_media_count']) {
+		if ($__templater->method($__vars['xf']['visitor'], 'canViewMedia', array())) {
 			$__finalCompiled .= '
+	';
+			if ($__vars['user']['xfmg_media_count']) {
+				$__finalCompiled .= '
 		<dl class="pairs pairs--rows pairs--rows--centered menu-fauxLinkRow">
 			<dt>' . 'Media' . '</dt>
 			<dd>
@@ -120,14 +123,26 @@ return array(
 			</dd>
 		</dl>
 	';
+			}
+			$__finalCompiled .= '
+';
 		}
 		$__finalCompiled .= '
 ';
-	}
-	$__finalCompiled .= '
+		if ($__vars['xf']['options']['klUiProfileViews'] AND ($__vars['user']['th_view_count'] AND $__templater->method($__vars['user'], 'canViewTHUIProfileViewCount', array()))) {
+			$__finalCompiled .= '
+	<dl class="pairs pairs--rows pairs--rows--centered menu-fauxLinkRow">
+		<dt>' . 'Profile views' . '</dt>
+		<dd>
+			' . $__templater->filter($__vars['user']['th_view_count'], array(array('number', array()),), true) . '
+		</dd>
+	</dl>
 ';
-	if ($__templater->method($__vars['xf']['visitor'], 'canViewResources', array()) AND $__vars['user']['xfrm_resource_count']) {
+		}
 		$__finalCompiled .= '
+';
+		if ($__templater->method($__vars['xf']['visitor'], 'canViewResources', array()) AND $__vars['user']['xfrm_resource_count']) {
+			$__finalCompiled .= '
 	<dl class="pairs pairs--rows pairs--rows--centered menu-fauxLinkRow">
 		<dt>' . 'Resources' . '</dt>
 		<dd>
@@ -137,12 +152,12 @@ return array(
 		</dd>
 	</dl>
 ';
-	}
-	$__finalCompiled .= '
+		}
+		$__finalCompiled .= '
 ' . '
 	';
-	if ($__templater->method($__vars['xf']['visitor'], 'hasOption', array('hasDbEcommerce', )) AND ($__templater->method($__vars['xf']['visitor'], 'canViewDbtechEcommerceProducts', array()) AND $__vars['user']['dbtech_ecommerce_product_count'])) {
-		$__finalCompiled .= '
+		if ($__templater->method($__vars['xf']['visitor'], 'hasOption', array('hasDbEcommerce', )) AND ($__templater->method($__vars['xf']['visitor'], 'canViewDbtechEcommerceProducts', array()) AND $__vars['user']['dbtech_ecommerce_product_count'])) {
+			$__finalCompiled .= '
 	<dl class="pairs pairs--rows pairs--rows--centered menu-fauxLinkRow">
 		<dt>' . 'Products' . '</dt>
 		<dd>
@@ -152,8 +167,8 @@ return array(
 		</dd>
 	</dl>
 ';
-	}
-	$__finalCompiled .= '
+		}
+		$__finalCompiled .= '
 	<dl class="pairs pairs--rows pairs--rows--centered">
 		<dt>' . 'Special Credits' . '</dt>
 		<dd>
@@ -169,8 +184,8 @@ return array(
 	</dl>
 	' . '
 	';
-	if ($__vars['user']['ozzmodz_badges_badge_count']) {
-		$__finalCompiled .= '
+		if ($__vars['user']['ozzmodz_badges_badge_count']) {
+			$__finalCompiled .= '
 		<dl class="pairs pairs--rows pairs--rows--centered fauxBlockLink">
 			<dt>' . 'Badges' . '</dt>
 			<dd>
@@ -181,12 +196,12 @@ return array(
 			</dd>
 		</dl>
 	';
-	}
-	$__finalCompiled .= '
+		}
+		$__finalCompiled .= '
 	' . '
 	';
-	if ($__vars['xf']['options']['enableTrophies']) {
-		$__finalCompiled .= '
+		if ($__vars['xf']['options']['enableTrophies']) {
+			$__finalCompiled .= '
 		<dl class="pairs pairs--rows pairs--rows--centered fauxBlockLink">
 			<dt title="' . $__templater->filter('Trophy points', array(array('for_attr', array()),), true) . '">' . 'Points' . '</dt>
 			<dd>
@@ -196,15 +211,15 @@ return array(
 			</dd>
 		</dl>
 	';
-	}
-	$__finalCompiled .= '
+		}
+		$__finalCompiled .= '
 	' . $__templater->callMacro('BRATR_rating_macros', 'receive_rating_count', array(
-		'user' => $__vars['user'],
-	), $__vars) . '
+			'user' => $__vars['user'],
+		), $__vars) . '
 ' . $__templater->includeTemplate('dbtech_credits_member_stats', $__vars) . '
 	';
-	if ($__vars['xf']['options']['siropuReferralSystemDisplayReferralCount'] AND $__vars['user']['siropu_rs_referral_count']) {
-		$__finalCompiled .= '
+		if ($__vars['xf']['options']['siropuReferralSystemDisplayReferralCount'] AND $__vars['user']['siropu_rs_referral_count']) {
+			$__finalCompiled .= '
 	<dl class="pairs pairs--rows pairs--rows--centered menu-fauxLinkRow">
 		<dt>' . 'Referrals' . '</dt>
 		<dd>
@@ -212,24 +227,31 @@ return array(
 		</dd>
 	</dl>
 ';
-	}
-	$__finalCompiled .= '
-';
-	if ($__vars['xf']['options']['siropuReferralSystemDisplayReferrer'] AND $__vars['user']['siropu_rs_referrer_id']) {
+		}
 		$__finalCompiled .= '
+';
+		if ($__vars['xf']['options']['siropuReferralSystemDisplayReferrer'] AND $__vars['user']['siropu_rs_referrer_id']) {
+			$__finalCompiled .= '
 	<dl class="pairs pairs--rows pairs--rows--centered menu-fauxLinkRow">
 		<dt>' . 'Referrer' . '</dt>
 		<dd>
 			' . $__templater->func('username_link', array($__vars['user']['SRS_Referrer'], true, array(
-			'class' => 'fauxBlockLink-linkRow u-concealed',
-			'notooltip' => 'true',
-		))) . '
+				'class' => 'fauxBlockLink-linkRow u-concealed',
+				'notooltip' => 'true',
+			))) . '
 		</dd>
 	</dl>
 ';
+		}
+		$__finalCompiled .= '
+' . '
+';
+	} else {
+		$__finalCompiled .= '
+	<style>.memberHeader-separator{display: none}</style>
+';
 	}
 	$__finalCompiled .= '
-' . '
 
 ';
 	if ($__templater->method($__vars['xf']['visitor'], 'hasPermission', array('fs_thread_scoring_system', 'can_view', ))) {

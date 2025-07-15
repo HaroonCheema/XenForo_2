@@ -221,6 +221,16 @@ return array(
 					';
 		}
 		$__compilerTemp1 .= '
+					';
+		if ($__vars['xf']['options']['klUIPostbitShowcase']) {
+			$__compilerTemp1 .= '
+						' . $__templater->callMacro('thuserimprovements_trophy_showcase_macros', 'showcase_display', array(
+				'user' => $__vars['user'],
+				'position' => 'postbit',
+			), $__vars) . '
+					';
+		}
+		$__compilerTemp1 .= '
 				';
 		if (strlen(trim($__compilerTemp1)) > 0) {
 			$__finalCompiled .= '

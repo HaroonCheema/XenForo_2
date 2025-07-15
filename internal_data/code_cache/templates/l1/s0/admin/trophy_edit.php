@@ -61,7 +61,9 @@ return array(
 		'explain' => 'These points can be used to track progression and change a user\'s title.',
 	)) . '
 
-				' . $__templater->formTextAreaRow(array(
+				' . $__templater->includeTemplate('thuserimprovements_trophy_category_select', $__vars) . '
+' . $__templater->includeTemplate('thuserimprovements_trophy_icon_select', $__vars) . '
+' . $__templater->formTextAreaRow(array(
 		'name' => 'description',
 		'value' => ($__vars['trophy']['trophy_id'] ? $__vars['trophy']['MasterDescription']['phrase_text'] : ''),
 		'autosize' => 'true',
