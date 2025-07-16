@@ -1,8 +1,20 @@
 {
+    "fs_admirer_verification_reg_explain.txt": {
+        "global_cache": false,
+        "version_id": 1000600,
+        "version_string": "1.0.6",
+        "hash": "825529512f4abb4e8fc9181f8847d22a"
+    },
     "fs_get_verified_val.txt": {
         "global_cache": false,
         "version_id": 1000300,
         "version_string": "1.0.3",
         "hash": "3f68e67dc6c397aaa9d1c24c356f754f"
+    },
+    "please_select_verification_type.txt": {
+        "global_cache": false,
+        "version_id": 1000600,
+        "version_string": "1.0.6",
+        "hash": "05d46bfc55c72b167dd917fb02925f60"
     }
 }

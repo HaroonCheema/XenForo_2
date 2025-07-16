@@ -27,7 +27,7 @@ return array(
 			<span class="iconic-label">' . 'Verification' . '</span>
 
 		</ul>
-		<div class="formRow-explain">' . 'fs_admirer_verification_reg_explain' . '</div>
+		<div class="formRow-explain">' . 'For verification purposes, please select and include a link to your profile on another listing site. We accept profile links from P411, TNA, OH2 and TOB, as well as profiles on similar sites. If you do not have a profile on another site, select “Get Verified” and we will verify your identity for a SWB profile.' . '</div>
 	</dd>
 </dl>
 ' . '

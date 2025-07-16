@@ -8,6 +8,11 @@ use XF\Mvc\RouteMatch;
 
 class BitcoinIntegration extends AbstractController
 {
+	protected function preDispatchController($action, ParameterBag $params)
+	{
+		$this->assertRegistrationRequired();
+	}
+
 	public function actionIndex(ParameterBag $params)
 	{
 		$visitor = \XF::visitor();

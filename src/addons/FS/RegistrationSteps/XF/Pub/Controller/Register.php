@@ -17,6 +17,40 @@ class Register extends XFCP_Register
         return $input;
     }
 
+    public function actionRegister()
+    {
+        $parent = parent::actionRegister();
+
+        $regForm = $this->service('XF:User\RegisterForm', $this->session());
+
+        $input = $this->getRegistrationInput($regForm);
+
+        $dobString = $input['custom_fields']['dateofbirth'] ?? '';
+
+        if ($dobString) {
+            $dob = new \DateTime($dobString);
+            $today = new \DateTime();
+
+            if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $dobString)) {
+                throw new \Exception("Date of birth Invalid format.");
+            }
+
+            if ($dob > $today) {
+                throw new \Exception("Date of birth cannot be in the future.");
+            }
+
+            $age = $dob->diff($today)->y;
+
+            if (!($age >= 21)) {
+                return $this->error(\XF::phrase('fs_sorry_you_must_be_years_old_to_register'));
+            }
+        } else {
+            return $this->error(\XF::phrase('please_complete_required_fields'));
+        }
+
+        return $parent;
+    }
+
     protected function finalizeRegistration(\XF\Entity\User $user)
     {
         $parent = parent::finalizeRegistration($user);
