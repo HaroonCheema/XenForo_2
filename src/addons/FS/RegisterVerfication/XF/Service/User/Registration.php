@@ -26,7 +26,7 @@ class Registration extends XFCP_Registration
 
             $compVerifyValue = \xf::app()->request()->filter('comp_verify_val', 'str');
 
-            if (strlen($compVerifyValue) < 1) {
+            if (strlen($compVerifyValue) < 1 && $compVerifyKey != 10) {
 
                 $this->user->error(\XF::phrase('please_complete_required_fields'));
             }
@@ -38,7 +38,7 @@ class Registration extends XFCP_Registration
                 } else {
                     $this->user->comp_verify_val = $compVerifyValue ?? "";
                 }
-            } else {
+            } elseif ($compVerifyKey != 10) {
                 // $compVerifyValue = \xf::app()->request()->filter('comp_verify_val', 'str');
                 $this->user->comp_verify_val = $compVerifyValue ?? "";
             }
@@ -47,16 +47,16 @@ class Registration extends XFCP_Registration
 
         } elseif ($accountType == 1) {
 
-            // if ($compVerifyKey != 1) {
-            $admVerifyValue = \xf::app()->request()->filter('adm_verify_val', 'str');
+            if ($compVerifyKey != 10) {
+                $admVerifyValue = \xf::app()->request()->filter('adm_verify_val', 'str');
 
-            if (strlen($admVerifyValue) < 1) {
-                // if ($compVerifyKey == 2 && strlen($admVerifyValue) < 1) {
+                if (strlen($admVerifyValue) < 1) {
+                    // if ($compVerifyKey == 2 && strlen($admVerifyValue) < 1) {
 
-                $this->user->error(\XF::phrase('please_complete_required_fields'));
+                    $this->user->error(\XF::phrase('please_complete_required_fields'));
+                }
+                $this->user->comp_verify_val = $admVerifyValue ?? "";
             }
-            $this->user->comp_verify_val = $admVerifyValue ?? "";
-            // }
         }
 
         $this->user->comp_verify_key = $compVerifyKey;

@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 051bdde58019fcdb766bb866e24e7102
+// FROM HASH: 673da2684038720346785aed377579c5
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -104,6 +104,14 @@ return array(
 		'value' => '9',
 		'label' => 'oh2',
 		'_type' => 'option',
+	),
+	array(
+		'data-hide' => 'true',
+		'data-xf-init' => 'disabler',
+		'data-container' => '.js-submitingId',
+		'value' => '10',
+		'label' => 'fs_register_submiting_id',
+		'_type' => 'option',
 	)), array(
 		'label' => 'Verification',
 		'hint' => 'Required',
@@ -129,6 +137,7 @@ return array(
 	), array(
 		'label' => 'Listing Site URL',
 		'explain' => 'Direct link to your profile on that site.',
+		'hint' => 'Required',
 	)) . '
 </div>
 
@@ -138,6 +147,7 @@ return array(
 	), array(
 		'label' => 'Listing Site URL',
 		'explain' => 'Direct link to your profile on that site.',
+		'hint' => 'Required',
 	)) . '
 </div>
 
@@ -185,6 +195,16 @@ return array(
 		'label' => 'Listing Site URL',
 		'explain' => 'Direct link to your profile on that site.',
 		'hint' => 'Required',
+	)) . '
+</div>
+<div class="js-submitingId" data-platform="submitingId">
+	' . $__templater->formUploadRow(array(
+		'name' => 'fs_image_companion',
+		'accept' => '.gif,.jpeg,.jpg,.jpe,.png',
+	), array(
+		'label' => 'fs_register_veirfy_add_image',
+		'hint' => 'Required',
+		'explain' => 'fs_register_veirfy_upload_image_explain',
 	)) . '
 </div>
 

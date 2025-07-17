@@ -34,6 +34,7 @@
 	7 fot tna
 	8 for tob
 	9 for oh2
+   10 for submiting id
 </xf:comment>
 <xf:selectrow name="comp_verify_key" label="{{ phrase('verification_reg') }}" hint="{{phrase('required')}}">
 	<xf:option data-hide="true"
@@ -68,6 +69,9 @@
 	<xf:option data-hide="true"
 			   data-xf-init="disabler"
 			   data-container=".js-oh2" value="9">{{ phrase('oh2') }}</xf:option>
+	<xf:option data-hide="true"
+			   data-xf-init="disabler"
+			   data-container=".js-submitingId" value="10">{{ phrase('fs_register_submiting_id') }}</xf:option>
 
 
 </xf:selectrow>
@@ -81,11 +85,11 @@
 
 
 <div class="js-privatedelights" data-platform="Private Delights" hint="{{ phrase('required') }}" >
-	<xf:textboxrow name="comp_verify_val" label="Listing Site URL"  explain="Direct link to your profile on that site."/>
+	<xf:textboxrow name="comp_verify_val" label="Listing Site URL"  explain="Direct link to your profile on that site." hint="{{ phrase('required') }}"/>
 </div>
 
 <div class="js-slixa" data-platform="Slixa" hint="{{ phrase('required') }}">
-	<xf:textboxrow name="comp_verify_val" label="Listing Site URL"  explain="Direct link to your profile on that site." />
+	<xf:textboxrow name="comp_verify_val" label="Listing Site URL"  explain="Direct link to your profile on that site." hint="{{ phrase('required') }}"/>
 </div>
 
 <div class="js-ter" data-platform="TER">
@@ -103,6 +107,12 @@
 </div>
 <div class="js-oh2" data-platform="oh2">
 	<xf:textboxrow name="comp_verify_val" label="Listing Site URL"  explain="Direct link to your profile on that site."  hint="{{ phrase('required') }}"  />
+</div>
+<div class="js-submitingId" data-platform="submitingId">
+	<xf:uploadrow name="fs_image_companion" accept=".gif,.jpeg,.jpg,.jpe,.png"
+				  label="{{ phrase('fs_register_veirfy_add_image') }}"
+				  hint="{{ phrase('required') }}"
+				  explain="{{ phrase('fs_register_veirfy_upload_image_explain') }}" />
 </div>
 
 <xf:textboxrow name="fs_regis_referral" label="Referral" explain="Enter the provider SWB username or copy and paste their profile and receive a free month." />

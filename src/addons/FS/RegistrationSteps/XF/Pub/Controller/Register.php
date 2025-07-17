@@ -10,7 +10,6 @@ class Register extends XFCP_Register
     protected function getRegistrationInput(\XF\Service\User\RegisterForm $regForm)
     {
 
-
         $input = parent::getRegistrationInput($regForm);
         $input['account_type'] = $this->filter('account_type', 'int');
         $input['password_confirm'] = $this->filter('password_confirm', 'str');
@@ -20,6 +19,26 @@ class Register extends XFCP_Register
     public function actionRegister()
     {
         $parent = parent::actionRegister();
+
+        $compVerifyKey = $this->filter('comp_verify_key', 'int');
+
+        $accountType = $this->filter('account_type', 'int');
+
+        if ($compVerifyKey == 10) {
+
+            $registerImage = false;
+
+            if ($accountType == 2) {
+                $registerImage = $this->request->getFile('fs_image_companion', false, false);
+            } elseif ($accountType == 1) {
+                $registerImage = $this->request->getFile('fs_image', false, false);
+            }
+
+            if (!$registerImage) {
+
+                return $this->error(\XF::phrase('please_complete_required_fields'));
+            }
+        }
 
         $regForm = $this->service('XF:User\RegisterForm', $this->session());
 
@@ -32,11 +51,11 @@ class Register extends XFCP_Register
             $today = new \DateTime();
 
             if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $dobString)) {
-                throw new \Exception("Date of birth Invalid format.");
+                return $this->error("Date of birth Invalid format.");
             }
 
             if ($dob > $today) {
-                throw new \Exception("Date of birth cannot be in the future.");
+                return $this->error("Date of birth cannot be in the future.");
             }
 
             $age = $dob->diff($today)->y;
@@ -54,6 +73,32 @@ class Register extends XFCP_Register
     protected function finalizeRegistration(\XF\Entity\User $user)
     {
         $parent = parent::finalizeRegistration($user);
+
+        $accountType = $this->filter('account_type', 'int');
+
+        if ($user->comp_verify_key == 10) {
+
+            $registerImage = false;
+
+            if ($accountType == 2) {
+                $registerImage = $this->request->getFile('fs_image_companion', false, false);
+            } elseif ($accountType == 1) {
+                $registerImage = $this->request->getFile('fs_image', false, false);
+            }
+
+            if ($registerImage) {
+
+                $uploadService = $this->service('FS\RegisterVerfication:Upload', $user);
+
+                if (!$uploadService->setImageFromUpload($registerImage)) {
+                    return $this->error($uploadService->getError());
+                }
+
+                if (!$uploadService->uploadImage()) {
+                    return $this->error(\XF::phrase('new_image_could_not_be_processed'));
+                }
+            }
+        }
 
         // $registration = $this->service('XF:User\Registration');
         // if ($user && $user->email && $user->account_type == 2) {

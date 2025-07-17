@@ -9,7 +9,8 @@ class Client extends XFCP_Client
 {
     public function retrieveResponse(UriInterface $endpoint, $requestBody, array $extraHeaders = [], $method = 'POST')
     {
-        if (strpos($endpoint->getAbsoluteUri(), 'reddit.com/api') == false) {
+
+        if (strpos($endpoint->getAbsoluteUri(), 'reddit.com/api') == false || strpos($endpoint->getAbsoluteUri(), 'oauth.reddit.com/api') != false) {
 
             return parent::retrieveResponse($endpoint, $requestBody, $extraHeaders, $method);
         }
