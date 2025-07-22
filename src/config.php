@@ -19,5 +19,5 @@ $config['enableLivePayments'] = false;
 
 $config['debug'] = true;
 
-$config['development']['defaultAddOn'] = 'JUM/ConnectedAccounts';
+$config['development']['defaultAddOn'] = 'FS/CoinPaymentsIntegrationNew';
 $config['development']['enabled'] = true;

@@ -1,0 +1,50 @@
+{
+    "fs_coinpayments_client_id_label.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "55f1909df3a38584bfb1de96a7ee9b05"
+    },
+    "fs_coinpayments_client_secret_label.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "734082edf44417dd19cc65943aa65c36"
+    },
+    "fs_coinpayments_error_from_cointpayments.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "e79be0e97761de09dd4de58dc3ceb6fc"
+    },
+    "fs_coinpayments_error_no_response.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "97094fdb79faaa810beef9717e02aeac"
+    },
+    "fs_coinpayments_error_too_many_requests.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "7f92e70ae90d990a6c7aae04cd4de599"
+    },
+    "fs_coinpayments_key_explain.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "e482bf09144719d42f70da30b31c89d5"
+    },
+    "fs_coinpayments_you_must_provide_client_id.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "a90b3593036767cb967e6ced83091ba9"
+    },
+    "fs_coinpayments_you_must_provide_client_secret.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "203b6fbc378351f1a1449a682e2f521e"
+    }
+}

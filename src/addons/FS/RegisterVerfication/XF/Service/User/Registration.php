@@ -10,21 +10,39 @@ class Registration extends XFCP_Registration
 
         $parent = parent::setFromInput($input);
 
-        $compVerifyKey = \xf::app()->request()->filter('comp_verify_key', 'int');
+        $request = \xf::app()->request();
 
-        $accountType = \xf::app()->request()->filter('account_type', 'int');
+        $compVerifyKey = $request->filter('comp_verify_key', 'int');
+
+        $accountType = $request->filter('account_type', 'int');
 
         if ($compVerifyKey == 1) {
             $this->user->error(\XF::phrase('please_select_verification_type'));
         }
 
+        if ($compVerifyKey == 10) {
+
+            $registerImage = false;
+
+            if ($accountType == 2) {
+                $registerImage = $request->getFile('fs_image_companion', false, false);
+            } elseif ($accountType == 1) {
+                $registerImage = $request->getFile('fs_image', false, false);
+            }
+
+            if (!$registerImage) {
+
+                return $this->user->error(\XF::phrase('please_complete_required_fields'));
+            }
+        }
+
         if ($accountType == 2) {
 
-            $getVerifyValue = \xf::app()->request()->filter('fs_regis_referral', 'str');
+            $getVerifyValue = $request->filter('fs_regis_referral', 'str');
 
             $this->user->fs_regis_referral = $getVerifyValue ?? "";
 
-            $compVerifyValue = \xf::app()->request()->filter('comp_verify_val', 'str');
+            $compVerifyValue = $request->filter('comp_verify_val', 'str');
 
             if (strlen($compVerifyValue) < 1 && $compVerifyKey != 10) {
 
@@ -39,7 +57,7 @@ class Registration extends XFCP_Registration
                     $this->user->comp_verify_val = $compVerifyValue ?? "";
                 }
             } elseif ($compVerifyKey != 10) {
-                // $compVerifyValue = \xf::app()->request()->filter('comp_verify_val', 'str');
+                // $compVerifyValue = $request->filter('comp_verify_val', 'str');
                 $this->user->comp_verify_val = $compVerifyValue ?? "";
             }
 
@@ -48,7 +66,7 @@ class Registration extends XFCP_Registration
         } elseif ($accountType == 1) {
 
             if ($compVerifyKey != 10) {
-                $admVerifyValue = \xf::app()->request()->filter('adm_verify_val', 'str');
+                $admVerifyValue = $request->filter('adm_verify_val', 'str');
 
                 if (strlen($admVerifyValue) < 1) {
                     // if ($compVerifyKey == 2 && strlen($admVerifyValue) < 1) {

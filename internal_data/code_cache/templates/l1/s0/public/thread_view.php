@@ -988,21 +988,30 @@ return array(
 					' . $__templater->renderExtension('messages_block_body_before_post', $__vars, $__extensions) . '
 
 					';
-				if ($__vars['post']['message_state'] == 'deleted') {
+				if (($__vars['post']['message_state'] == 'deleted') AND (($__vars['post']['user_id'] == $__vars['xf']['visitor']['user_id']) AND ($__vars['post']['user_id'] != $__vars['post']['DeletionLog']['delete_user_id']))) {
 					$__finalCompiled .= '
-						' . $__templater->callMacro(null, ($__vars['templateOverrides']['post_deleted_macro'] ?: 'post_macros::post_deleted'), $__templater->combineMacroArgumentAttributes($__vars['templateOverrides']['post_deleted_macro_args'], array(
-						'post' => $__vars['post'],
-						'thread' => $__vars['thread'],
-					)), $__vars) . '
-					';
-				} else {
-					$__finalCompiled .= '
-						' . $__templater->callMacro(null, ($__vars['templateOverrides']['post_macro'] ?: 'post_macros::post'), $__templater->combineMacroArgumentAttributes($__vars['templateOverrides']['post_macro_args'], array(
+	' . $__templater->callMacro(null, ($__vars['templateOverrides']['post_macro'] ?: 'post_macros::post'), $__templater->combineMacroArgumentAttributes($__vars['templateOverrides']['post_macro_args'], array(
 						'post' => $__vars['post'],
 						'thread' => $__vars['thread'],
 						'highlightedPosts' => $__vars['highlightedPosts'],
 					)), $__vars) . '
-					';
+
+	';
+				} else if ($__vars['post']['message_state'] == 'deleted') {
+					$__finalCompiled .= '
+	' . $__templater->callMacro(null, ($__vars['templateOverrides']['post_deleted_macro'] ?: 'post_macros::post_deleted'), $__templater->combineMacroArgumentAttributes($__vars['templateOverrides']['post_deleted_macro_args'], array(
+						'post' => $__vars['post'],
+						'thread' => $__vars['thread'],
+					)), $__vars) . '
+	';
+				} else {
+					$__finalCompiled .= '
+	' . $__templater->callMacro(null, ($__vars['templateOverrides']['post_macro'] ?: 'post_macros::post'), $__templater->combineMacroArgumentAttributes($__vars['templateOverrides']['post_macro_args'], array(
+						'post' => $__vars['post'],
+						'thread' => $__vars['thread'],
+						'highlightedPosts' => $__vars['highlightedPosts'],
+					)), $__vars) . '
+';
 				}
 				$__finalCompiled .= '
 

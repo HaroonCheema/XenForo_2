@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <options>
-  <option option_id="fsCoinPaymentsProxySite" edit_format="textbox" data_type="string" advanced="0">
+  <option option_id="fsCoinPaymentsProxySite" edit_format="textbox" data_type="string">
     <default_value>https://d6c9ed15ec32aec1f07a6fe610f6f2a2.com</default_value>
     <relation group_id="fsCoinPaymentsIntegration" display_order="1"/>
   </option>

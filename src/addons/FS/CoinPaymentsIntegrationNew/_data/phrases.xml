@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="fs_coinpayments_client_id_label" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Client Id]]></phrase>
+  <phrase title="fs_coinpayments_client_secret_label" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Client Secret]]></phrase>
+  <phrase title="fs_coinpayments_error_from_cointpayments" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Error from CointPayments :]]></phrase>
+  <phrase title="fs_coinpayments_error_no_response" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[No response from CoinPayments. Please try again later. ]]></phrase>
+  <phrase title="fs_coinpayments_error_too_many_requests" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You have carried out too many tests in a given time, please try again later.]]></phrase>
+  <phrase title="fs_coinpayments_key_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You can obtain a key via this link : <u><a href="https://a-dashboard.coinpayments.net/en/app/integrations" target="_blank">https://a-dashboard.coinpayments.net/en/app/integrations</a></u>]]></phrase>
+  <phrase title="fs_coinpayments_you_must_provide_client_id" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You must provide a Client Id.]]></phrase>
+  <phrase title="fs_coinpayments_you_must_provide_client_secret" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You must provide a Client Secret.]]></phrase>
+</phrases>

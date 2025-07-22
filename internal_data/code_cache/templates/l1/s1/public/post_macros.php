@@ -133,11 +133,11 @@ return array(
 {
 	$__finalCompiled = '';
 		$__finalCompiled .= '
-									' . $__templater->callMacro(null, 'post_notices', array(
+		' . $__templater->callMacro(null, 'post_notices', array(
 		'post' => $__vars['post'],
 		'thread' => $__vars['thread'],
 	), $__vars) . '
-								';
+	';
 	return $__finalCompiled;
 },
 'user_content' => function($__templater, array $__vars, $__extensions = null)
@@ -176,7 +176,16 @@ return array(
 	$__finalCompiled = '';
 		$__finalCompiled .= '
 
-								' . $__templater->renderExtension('notices', $__vars, $__extensions) . '
+								';
+	if (($__vars['post']['message_state'] == 'deleted') AND (($__vars['post']['user_id'] == $__vars['xf']['visitor']['user_id']) AND ($__vars['post']['user_id'] != $__vars['post']['DeletionLog']['delete_user_id']))) {
+		$__finalCompiled .= '
+	';
+	} else {
+		$__finalCompiled .= '
+	' . $__templater->renderExtension('notices', $__vars, $__extensions) . '
+';
+	}
+	$__finalCompiled .= '
 
 								' . $__templater->renderExtension('user_content', $__vars, $__extensions) . '
 

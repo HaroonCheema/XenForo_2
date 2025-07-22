@@ -1,0 +1,9 @@
+{
+    "template": "thread_view",
+    "description": "fs_thread_view_poster_see_deleted_post",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/<xf:if is=\"\\$post\\.message_state == 'deleted'\">.*?<\\/xf:if>/is",
+    "replace": "<xf:if is=\"$post.message_state == 'deleted' && $post.user_id == $xf.visitor.user_id && $post.user_id != $post.DeletionLog.delete_user_id\">\n\t<xf:macro name=\"{{ $templateOverrides.post_macro ?: 'post_macros::post' }}\"\n\t\t\t  arg-post=\"{$post}\"\n\t\t\t  arg-thread=\"{$thread}\"\n\t\t\t  arg-highlightedPosts=\"{$highlightedPosts}\"\n\t\t\t  args=\"{$templateOverrides.post_macro_args}\" />\n\n\t<xf:elseif is=\"$post.message_state == 'deleted'\" />\n\t<xf:macro name=\"{{ $templateOverrides.post_deleted_macro ?: 'post_macros::post_deleted' }}\"\n\t\t\t  arg-post=\"{$post}\"\n\t\t\t  arg-thread=\"{$thread}\"\n\t\t\t  args=\"{$templateOverrides.post_deleted_macro_args}\" />\n\t<xf:else />\n\t<xf:macro name=\"{{ $templateOverrides.post_macro ?: 'post_macros::post' }}\"\n\t\t\t  arg-post=\"{$post}\"\n\t\t\t  arg-thread=\"{$thread}\"\n\t\t\t  arg-highlightedPosts=\"{$highlightedPosts}\"\n\t\t\t  args=\"{$templateOverrides.post_macro_args}\" />\n</xf:if>"
+}

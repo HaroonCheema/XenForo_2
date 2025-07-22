@@ -1,0 +1,9 @@
+{
+    "template": "post_macros",
+    "description": "fs_post_macros_poster_see_deleted_post",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/<xf:extension name=\"notices\">.*?<\\/xf:extension>/is",
+    "replace": "<xf:if is=\"$post.message_state == 'deleted' && $post.user_id == $xf.visitor.user_id && $post.user_id != $post.DeletionLog.delete_user_id\">\n\t<xf:else />\n\t<xf:extension name=\"notices\">\n\t\t<xf:macro name=\"post_notices\" arg-post=\"{$post}\" arg-thread=\"{$thread}\" />\n\t</xf:extension>\n</xf:if>"
+}
