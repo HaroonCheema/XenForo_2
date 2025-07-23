@@ -464,6 +464,7 @@ return array (
   'option.fs_rm_resoureces_per_page' => 'Resources box',
   'option.fs_saleforums_allow' => 'Included Forums',
   'option.fs_scheduled_ban_user_timezone' => 'Timezones',
+  'option.fs_see_deleted_applicable_forums_ids' => 'Applicable forums',
   'option.fs_show_icon' => 'Show Icon',
   'option.fs_subscrip_applicable_userGroups' => 'Applicable Upgrade Ids',
   'option.fs_team_mobile_dimensions' => 'Team icon dimensions',

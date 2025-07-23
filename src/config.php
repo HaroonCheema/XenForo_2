@@ -19,5 +19,5 @@ $config['enableLivePayments'] = false;
 
 $config['debug'] = true;
 
-$config['development']['defaultAddOn'] = 'FS/CoinPaymentsIntegrationNew';
+$config['development']['defaultAddOn'] = 'FS/SeeDeletedPost';
 $config['development']['enabled'] = true;

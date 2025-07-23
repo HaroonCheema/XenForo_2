@@ -1,2 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<phrases/>
+<phrases>
+  <phrase title="option.fs_see_deleted_applicable_forums_ids" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Applicable forums]]></phrase>
+  <phrase title="option_explain.fs_see_deleted_applicable_forums_ids" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_group.fs_see_deleted_post" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] See Deleted Posts]]></phrase>
+  <phrase title="option_group_description.fs_see_deleted_post" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+</phrases>

@@ -1,0 +1,26 @@
+{
+    "option.fs_see_deleted_applicable_forums_ids.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "216c63c94551f2cfe5e92b3bf1cd8144"
+    },
+    "option_explain.fs_see_deleted_applicable_forums_ids.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "option_group.fs_see_deleted_post.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "e9f93ed44a7bec68350f0ed3a370586a"
+    },
+    "option_group_description.fs_see_deleted_post.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    }
+}
