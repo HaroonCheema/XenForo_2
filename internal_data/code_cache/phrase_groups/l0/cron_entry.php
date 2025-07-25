@@ -48,6 +48,7 @@ return array (
   'cron_entry.fs_upgradeUsergroup' => '[FS] Upgrade Usergroup by Messages',
   'cron_entry.fs_upgradeUsergroups' => '[FS] Upgrade Usergroup by Login',
   'cron_entry.fs_zoom_meeting_fresh_tok' => '[FS] Zoom refresh Token',
+  'cron_entry.mail_queue' => 'Mail bulk Queue',
   'cron_entry.memberStatsCache' => 'Rebuild member stats cache',
   'cron_entry.ozzmodz_badges' => '[OzzModz] Badges: Update user badges',
   'cron_entry.randomUsernamePasswords' => '[FS] Random Username And Passwords',

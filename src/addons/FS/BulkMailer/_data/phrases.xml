@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="add_list" version_id="100100" version_string="y"><![CDATA[Add list]]></phrase>
+  <phrase title="admin_navigation.bulk_mailer" version_id="100100" version_string="y"><![CDATA[Bulk Mailer]]></phrase>
+  <phrase title="admin_navigation.mail_listing" version_id="100100" version_string="y"><![CDATA[Mail Listing]]></phrase>
+  <phrase title="cron_entry.mail_queue" version_id="100100" version_string="y"><![CDATA[Mail bulk Queue]]></phrase>
+  <phrase title="first_column_will_be_consider_email" version_id="100100" version_string="y"><![CDATA[First Column will be consider as email.Only support excel file.]]></phrase>
+  <phrase title="mail_list_failed_emails" version_id="100100" version_string="y"><![CDATA[Failed Mails]]></phrase>
+  <phrase title="mail_list_mail_status" version_id="100300" version_string="1.0.3"><![CDATA[Status]]></phrase>
+  <phrase title="mail_list_mail_type" version_id="100100" version_string="y"><![CDATA[Type]]></phrase>
+  <phrase title="mail_list_send_emails" version_id="100100" version_string="y"><![CDATA[Send Mails]]></phrase>
+  <phrase title="mail_list_title" version_id="100100" version_string="y"><![CDATA[Title]]></phrase>
+  <phrase title="mail_list_total_emails" version_id="100100" version_string="y"><![CDATA[Total Emails]]></phrase>
+  <phrase title="mail_listing" version_id="100100" version_string="y"><![CDATA[Mail Listing]]></phrase>
+  <phrase title="mail_listing_title" version_id="100100" version_string="y"><![CDATA[Title]]></phrase>
+  <phrase title="mail_queue_attempts" version_id="100100" version_string="y"><![CDATA[Attempts]]></phrase>
+  <phrase title="mail_queue_email" version_id="100100" version_string="y"><![CDATA[Email]]></phrase>
+  <phrase title="mail_queue_listing" version_id="100100" version_string="y"><![CDATA[listing : {title}]]></phrase>
+  <phrase title="mail_queue_send_date" version_id="100100" version_string="y"><![CDATA[Date]]></phrase>
+  <phrase title="mail_queue_status" version_id="100100" version_string="y"><![CDATA[Status]]></phrase>
+  <phrase title="mail_queue_user" version_id="100100" version_string="y"><![CDATA[User]]></phrase>
+  <phrase title="please_enter_valid_description" version_id="100100" version_string="y"><![CDATA[Enter valid description]]></phrase>
+  <phrase title="please_enter_valid_subject" version_id="100100" version_string="y"><![CDATA[Enter valid Subject]]></phrase>
+  <phrase title="please_select_at_least_one_usergroup" version_id="100100" version_string="y"><![CDATA[Select at-least one usergroups]]></phrase>
+  <phrase title="please_upload_valid_file" version_id="100100" version_string="y"><![CDATA[Upload Valid File.]]></phrase>
+  <phrase title="please_upload_xlsx_file_only" version_id="100100" version_string="y"><![CDATA[File Should support only excel.]]></phrase>
+  <phrase title="queue_list" version_id="100100" version_string="y"><![CDATA[List]]></phrase>
+  <phrase title="resend" version_id="100100" version_string="y"><![CDATA[Resend]]></phrase>
+  <phrase title="return_to_list" version_id="100100" version_string="y"><![CDATA[Return ]]></phrase>
+</phrases>

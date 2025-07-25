@@ -1,0 +1,6 @@
+{
+    "from_class": "XF\\Job\\UserEmail",
+    "to_class": "FS\\MapEmails\\XF\\Job\\UserEmail",
+    "execute_order": 10,
+    "active": true
+}

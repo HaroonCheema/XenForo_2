@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="fs_emails_per_hour" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[E-mails Per Minute]]></phrase>
+  <phrase title="fs_form_maps" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Old (Map)]]></phrase>
+  <phrase title="fs_form_users" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[New]]></phrase>
+  <phrase title="fs_used_emails" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Use E-mail]]></phrase>
+</phrases>

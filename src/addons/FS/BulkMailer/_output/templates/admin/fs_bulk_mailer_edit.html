@@ -1,0 +1,65 @@
+<xf:title>{{ $mailingList.mailing_list_id ? 'Edit Mailing List' : 'Add New Mailing List' }}</xf:title>
+
+<xf:form action="{{ link('mailing-lists/save',$mailingList) }}" upload="true" ajax="true" class="block">
+    <div class="block-container">
+        <div class="block-body">
+			
+            <xf:textboxrow name="title" value="{$mailingList.title}"
+						   label="{{ phrase('title') }}" />
+			
+			 <xf:textboxrow name="subject" value="{$mailingList.subject}"
+						   label="{{ phrase('subject') }}" />
+            
+            <xf:editorrow name="description" value="{$mailingList.description}"
+						  label="{{ phrase('description') }}" />
+            
+            <xf:textboxrow name="from_email" value="{{ $mailingList.from_email }}" 
+                label="From Email" />
+            
+            <xf:textboxrow name="from_name" value="{{ $mailingList.from_name }}" 
+                label="From Name" />
+            
+            <xf:radiorow name="type" value="{{ $mailingList.type }}" label="Type">
+                <xf:option value="0" label="File Based" data-hide="true">
+					<xf:dependent>
+							<xf:uploadrow name="email_file" explain="{{phrase('first_column_will_be_consider_email')}}"
+							label="Excel File"
+							accept=".xlsx,.xls"
+							dependent="[name=type]"
+							showif="0" />
+					</xf:dependent>
+				</xf:option>
+                <xf:option value="1" label="User Group Based" data-hide="true">
+				   <xf:dependent>
+					<xf:checkboxrow name="usergroup_ids" 
+							label="User Groups"
+							dependent="[name=type]"
+							showif="1"
+							value="{{ $mailingList.usergroup_ids }}">
+							<xf:foreach loop="$userGroups" value="$userGroup">
+								<xf:option value="{{ $userGroup.user_group_id }}">
+									{{ $userGroup.title }}
+								</xf:option>
+							</xf:foreach>
+						</xf:checkboxrow>
+					</xf:dependent>
+				</xf:option>
+            </xf:radiorow>
+         
+            
+            <xf:numberboxrow name="emails_per_hour" 
+                value="{{ $mailingList.emails_per_hour }}"
+                label="Emails Per Hour"
+                min="1" />
+            
+            <xf:checkboxrow>
+                <xf:option name="active" 
+                    label="Active"
+                    value="1"
+                    selected="{{ $mailingList.active }}" />
+            </xf:checkboxrow>
+        </div>
+        
+       	<xf:submitrow sticky="true" icon="save" />
+    </div>
+</xf:form>

@@ -1,0 +1,14 @@
+{
+    "legacy_addon_id": "",
+    "title": "[FS] BulkMailer",
+    "description": "BulkMailer to support the file and usergroups",
+    "version_id": 100900,
+    "version_string": "1.0.9",
+    "dev": "",
+    "dev_url": "",
+    "faq_url": "",
+    "support_url": "",
+    "extra_urls": [],
+    "require": [],
+    "icon": ""
+}

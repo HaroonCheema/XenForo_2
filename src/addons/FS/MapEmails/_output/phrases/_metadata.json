@@ -1,0 +1,26 @@
+{
+    "fs_emails_per_hour.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "8a83de5cb53079059c33f288fdb2d37f"
+    },
+    "fs_form_maps.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "34e1743d43d3c08bba65d0485e65df08"
+    },
+    "fs_form_users.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "03c2e7e41ffc181a4e84080b4710e81e"
+    },
+    "fs_used_emails.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "511a0c6a72216618ccb8497828378a9e"
+    }
+}

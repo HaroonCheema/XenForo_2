@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="admin" title="fs_bulk_mailer_edit" version_id="100100" version_string="y"><![CDATA[<xf:title>{{ $mailingList.mailing_list_id ? 'Edit Mailing List' : 'Add New Mailing List' }}</xf:title>
+
+<xf:form action="{{ link('mailing-lists/save',$mailingList) }}" upload="true" ajax="true" class="block">
+    <div class="block-container">
+        <div class="block-body">
+			
+            <xf:textboxrow name="title" value="{$mailingList.title}"
+						   label="{{ phrase('title') }}" />
+			
+			 <xf:textboxrow name="subject" value="{$mailingList.subject}"
+						   label="{{ phrase('subject') }}" />
+            
+            <xf:editorrow name="description" value="{$mailingList.description}"
+						  label="{{ phrase('description') }}" />
+            
+            <xf:textboxrow name="from_email" value="{{ $mailingList.from_email }}" 
+                label="From Email" />
+            
+            <xf:textboxrow name="from_name" value="{{ $mailingList.from_name }}" 
+                label="From Name" />
+            
+            <xf:radiorow name="type" value="{{ $mailingList.type }}" label="Type">
+                <xf:option value="0" label="File Based" data-hide="true">
+					<xf:dependent>
+							<xf:uploadrow name="email_file" explain="{{phrase('first_column_will_be_consider_email')}}"
+							label="Excel File"
+							accept=".xlsx,.xls"
+							dependent="[name=type]"
+							showif="0" />
+					</xf:dependent>
+				</xf:option>
+                <xf:option value="1" label="User Group Based" data-hide="true">
+				   <xf:dependent>
+					<xf:checkboxrow name="usergroup_ids" 
+							label="User Groups"
+							dependent="[name=type]"
+							showif="1"
+							value="{{ $mailingList.usergroup_ids }}">
+							<xf:foreach loop="$userGroups" value="$userGroup">
+								<xf:option value="{{ $userGroup.user_group_id }}">
+									{{ $userGroup.title }}
+								</xf:option>
+							</xf:foreach>
+						</xf:checkboxrow>
+					</xf:dependent>
+				</xf:option>
+            </xf:radiorow>
+         
+            
+            <xf:numberboxrow name="emails_per_hour" 
+                value="{{ $mailingList.emails_per_hour }}"
+                label="Emails Per Hour"
+                min="1" />
+            
+            <xf:checkboxrow>
+                <xf:option name="active" 
+                    label="Active"
+                    value="1"
+                    selected="{{ $mailingList.active }}" />
+            </xf:checkboxrow>
+        </div>
+        
+       	<xf:submitrow sticky="true" icon="save" />
+    </div>
+</xf:form>]]></template>
+  <template type="admin" title="fs_bulk_mailer_list" version_id="100800" version_string="1.0.8"><![CDATA[<xf:title>{{ phrase('mail_listing') }}</xf:title>
+
+<xf:pageaction>
+	<xf:button href="{{ link('mailing-lists/add') }}" icon="add">{{ phrase('add_list') }}</xf:button>
+</xf:pageaction>
+
+<div class="block">
+	<xf:if is="$mailingLists is not empty">
+		<div class="block-outer">
+			<xf:macro template="filter_macros" name="quick_filter" arg-key="mailing-lists"
+					arg-ajax="{{ link('mailing-lists', null) }}"
+					arg-class="block-outer-opposite" />
+		</div>
+	</xf:if>
+
+
+	<div class="block-container">
+		<xf:if is="$mailingLists is not empty">
+			<xf:form action="{{ link('mailing-lists/toggle') }}" class ="block" ajax="true">
+			
+				<div class="block-body">
+
+					<xf:datalist data-xf-init="responsive-data-list">
+						<xf:datarow rowtype="header">
+							<xf:cell>{{ phrase('mail_list_title') }}</xf:cell>
+							<xf:cell>{{ phrase('mail_list_mail_type') }}</xf:cell>
+							<xf:cell>{{ phrase('mail_list_mail_status') }}</xf:cell>
+							<xf:cell>{{ phrase('mail_list_total_emails') }}</xf:cell>
+							<xf:cell>{{ phrase('mail_list_send_emails') }}</xf:cell>
+							<xf:cell>Next Run</xf:cell>
+							<xf:cell class="dataList-cell--min">&nbsp;</xf:cell>
+							<xf:cell class="dataList-cell--min">&nbsp;</xf:cell>
+							<xf:cell class="dataList-cell--min">&nbsp;</xf:cell>
+							<xf:cell class="dataList-cell--min">&nbsp;</xf:cell>
+						</xf:datarow>
+						<xf:foreach loop="$mailingLists" value="$mailingList">
+							<xf:datarow>
+								<xf:cell>{$mailingList.title}</xf:cell>
+								<xf:if is="{$mailingList.type}">
+									   <xf:cell>UserGroups</xf:cell>
+								<xf:else/>
+									<xf:cell>File</xf:cell>
+								</xf:if>
+								<xf:if is="$mailingList.process_status == 0">
+									<xf:cell>Pending</xf:cell>
+								<xf:elseif is="$mailingList.process_status == 1" />
+									<xf:cell>Processing</xf:cell>
+								<xf:elseif is="$mailingList.process_status == 2" />
+									<xf:cell>Completed</xf:cell>
+								</xf:if>
+
+								<xf:cell>{$mailingList.total_emails}</xf:cell>
+								<xf:cell>{$mailingList.sent_emails}</xf:cell>
+								<xf:cell>
+									<xf:if is="$mailingList.process_status == 2">
+										Completed	
+									<xf:elseif is="$mailingList.next_run" />
+										<xf:date time="{{$mailingList.next_run}}"/>
+									<xf:elseif is="!$mailingList.next_run" />
+										Soon Start
+									</xf:if>
+								</xf:cell>
+								<xf:toggle name="active[{$mailingList.mailing_list_id}]" selected="$mailingList.active"
+								   class="dataList-cell--separated" submit="true"
+								   tooltip="{{ phrase('enable_disable_x', {'title': $mailingList.title}) }}" />
+								<xf:action href="{{ link('mailing-lists/queue-list', $mailingList) }}" >{{ phrase('queue_list') }}</xf:action>
+								<xf:action href="{{ link('mailing-lists/edit', $mailingList) }}" >{{ phrase('edit') }}</xf:action>
+								<xf:delete href="{{ link('mailing-lists/delete', $mailingList) }}" />
+							</xf:datarow>
+						</xf:foreach>
+					</xf:datalist>
+				</div>
+				<div class="block-footer block-footer--split">
+					<span class="block-footer-counter">{{ display_totals($items, $total) }}</span>
+				</div>
+			</xf:form>
+		<xf:else />
+			<div class="block-body block-row">{{ phrase('no_results_found') }}</div>
+		</xf:if>
+	</div>
+
+	<xf:pagenav page="{$page}" perpage="{$perPage}" total="{$total}"
+		link="mailing-lists" params="{$filters}"
+		wrapperclass="js-filterHide block-outer block-outer--after" />
+	
+</div>]]></template>
+  <template type="admin" title="fs_bulk_mailer_queue_list" version_id="100400" version_string="1.0.4"><![CDATA[<xf:title>{{ phrase('mail_queue_listing',{'title':$mailingList.title}) }}</xf:title>
+<xf:pageaction>
+    <xf:button href="{{ link('mailing-lists') }}" icon="back">{{ phrase('return_to_list') }}</xf:button>
+</xf:pageaction>
+
+<div class="block">
+    <xf:if is="$queueItems is not empty">
+        <div class="block-outer">
+            <xf:macro template="filter_macros" name="quick_filter" arg-key="mail-queue"
+                    arg-class="block-outer-opposite" />
+        </div>
+    </xf:if>
+
+    <div class="block-container">
+        <xf:if is="$queueItems is not empty">
+            <xf:form action="{{ link('mailing-lists/queue') }}" ajax="true"
+                    data-xf-init="select-plus"
+                    data-sp-checkbox=".dataList-cell--toggle input:checkbox"
+                    data-sp-container=".dataList-row"
+                    data-sp-control=".dataList-cell a">
+            
+                <div class="block-body">
+                    <xf:datalist data-xf-init="responsive-data-list">
+                        <xf:datarow rowtype="header">
+                            <xf:cell>{{ phrase('mail_queue_email') }}</xf:cell>
+							 <xf:if is="$mailingList.type">
+                           		 <xf:cell>{{ phrase('mail_queue_user') }}</xf:cell>
+							</xf:if>
+                            <xf:cell>{{ phrase('mail_queue_status') }}</xf:cell>
+                            <xf:cell>{{ phrase('mail_queue_send_date') }}</xf:cell>
+                            <xf:cell>{{ phrase('mail_queue_attempts') }}</xf:cell>
+							<xf:cell class="dataList-cell--min">&nbsp;</xf:cell>
+                        </xf:datarow>
+
+                        <xf:foreach loop="$queueItems" value="$item">
+                            <xf:datarow>
+                                <xf:cell>{$item.email}</xf:cell>
+								<xf:if is="$item.User">
+									<xf:cell>
+										<a href="{{ link('users/edit', $item.User) }}">{$item.User.username}</a>
+									</xf:cell>
+								 </xf:if>
+								
+								<xf:if is="{{$item.status=='invalid'}}">
+									 <xf:cell>Invalid Email</xf:cell>
+								<xf:else/>
+									 <xf:cell>{$item.status}</xf:cell>
+								</xf:if>
+                               
+								
+                                <xf:cell>
+                                    <xf:if is="$item.send_date">
+                                        <xf:date time="$item.send_date"/>
+                                    <xf:else/>
+                                        {{ phrase('pending') }}
+                                    </xf:if>
+                                </xf:cell>
+                                <xf:cell>{$item.attempts}</xf:cell>
+								<xf:if is="{{$item.status=='sent'}}">
+									<xf:cell>{{ phrase('sended') }}</xf:cell>
+								<xf:else/>
+									<xf:action href="{{ link('mailing-lists/resend', $item,{'queue_id':$item.queue_id}) }}" >{{ phrase('resend') }}</xf:action>
+								</xf:if>
+                            </xf:datarow>
+                        </xf:foreach>
+                    </xf:datalist>
+                </div>
+
+                <div class="block-footer block-footer--split">
+                    <span class="block-footer-counter">{{ display_totals($queueItems, $total) }}</span>
+                </div>
+            </xf:form>
+        <xf:else/>
+            <div class="block-body block-row">{{ phrase('no_results_found') }}</div>
+        </xf:if>
+    </div>
+
+    <xf:pagenav page="{$page}" perpage="{$perPage}" total="{$total}"
+        link="mailing-lists/{{$mailingList.mailing_list_id}}/queue-list" params="{$filters}"
+        wrapperclass="js-filterHide block-outer block-outer--after" />
+</div>]]></template>
+</templates>

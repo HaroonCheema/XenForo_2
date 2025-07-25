@@ -20,55 +20,55 @@ class Register extends XFCP_Register
     {
         $parent = parent::actionRegister();
 
-        $compVerifyKey = $this->filter('comp_verify_key', 'int');
+        // $compVerifyKey = $this->filter('comp_verify_key', 'int');
 
-        $accountType = $this->filter('account_type', 'int');
+        // $accountType = $this->filter('account_type', 'int');
 
-        if ($compVerifyKey == 10) {
+        // if ($compVerifyKey == 10) {
 
-            $registerImage = false;
+        //     $registerImage = false;
 
-            if ($accountType == 2) {
-                $registerImage = $this->request->getFile('fs_image_companion', false, false);
-            } elseif ($accountType == 1) {
-                $registerImage = $this->request->getFile('fs_image', false, false);
-            }
+        //     if ($accountType == 2) {
+        //         $registerImage = $this->request->getFile('fs_image_companion', false, false);
+        //     } elseif ($accountType == 1) {
+        //         $registerImage = $this->request->getFile('fs_image', false, false);
+        //     }
 
-            if (!$registerImage) {
+        //     if (!$registerImage) {
 
-                return $this->error(\XF::phrase('please_complete_required_fields'));
-            }
-        }
+        //         return $this->error(\XF::phrase('please_complete_required_fields'));
+        //     }
+        // }
 
-        if ($accountType == 2) {
+        // if ($accountType == 2) {
 
-            $regForm = $this->service('XF:User\RegisterForm', $this->session());
+        //     $regForm = $this->service('XF:User\RegisterForm', $this->session());
 
-            $input = $this->getRegistrationInput($regForm);
+        //     $input = $this->getRegistrationInput($regForm);
 
-            $dobString = $input['custom_fields']['dateofbirth'] ?? '';
+        //     $dobString = $input['custom_fields']['dateofbirth'] ?? '';
 
-            if ($dobString) {
-                $dob = new \DateTime($dobString);
-                $today = new \DateTime();
+        //     if ($dobString) {
+        //         $dob = new \DateTime($dobString);
+        //         $today = new \DateTime();
 
-                if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $dobString)) {
-                    return $this->error("Date of birth Invalid format.");
-                }
+        //         if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $dobString)) {
+        //             return $this->error("Date of birth Invalid format.");
+        //         }
 
-                if ($dob > $today) {
-                    return $this->error("Date of birth cannot be in the future.");
-                }
+        //         if ($dob > $today) {
+        //             return $this->error("Date of birth cannot be in the future.");
+        //         }
 
-                $age = $dob->diff($today)->y;
+        //         $age = $dob->diff($today)->y;
 
-                if (!($age >= 21)) {
-                    return $this->error(\XF::phrase('fs_sorry_you_must_be_years_old_to_register'));
-                }
-            } else {
-                return $this->error(\XF::phrase('please_complete_required_fields'));
-            }
-        }
+        //         if (!($age >= 21)) {
+        //             return $this->error(\XF::phrase('fs_sorry_you_must_be_years_old_to_register'));
+        //         }
+        //     } else {
+        //         return $this->error(\XF::phrase('please_complete_required_fields'));
+        //     }
+        // }
 
         return $parent;
     }

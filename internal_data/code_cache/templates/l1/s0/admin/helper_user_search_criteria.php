@@ -36,6 +36,31 @@ return array(
 		), array(
 			'label' => 'Email',
 		)) . '
+
+' . $__templater->formRadioRow(array(
+			'name' => 'criteria[used_email]',
+		), array(array(
+			'value' => '',
+			'selected' => true,
+			'label' => 'New',
+			'_type' => 'option',
+		),
+		array(
+			'value' => 'old',
+			'label' => 'Old (Map)',
+			'_type' => 'option',
+		)), array(
+			'label' => 'Use E-mail',
+		)) . '
+
+' . $__templater->formNumberBoxRow(array(
+			'name' => 'criteria[emails_per_hour]',
+			'value' => '3',
+			'min' => '1',
+			'max' => '3',
+		), array(
+			'label' => 'E-mails Per Minute',
+		)) . '
 ';
 	}
 	$__finalCompiled .= '

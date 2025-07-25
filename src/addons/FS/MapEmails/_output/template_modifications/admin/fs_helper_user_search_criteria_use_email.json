@@ -1,0 +1,9 @@
+{
+    "template": "helper_user_search_criteria",
+    "description": "fs_helper_user_search_criteria_use_email",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/<xf:textboxrow name=\"criteria\\[email]\" value=\"{\\$criteria\\.email}\".*?label=\"{{ phrase\\('email'\\) }}\" \\/>/is",
+    "replace": "$0\n\n<xf:radiorow name=\"criteria[used_email]\"\n\t\t\t label=\"{{ phrase('fs_used_emails') }}\">\n\n\t<xf:option value=\"\" selected=\"true\"\n\t\t\t   label=\"{{ phrase('fs_form_users') }}\" />\n\t<xf:option value=\"old\"\n\t\t\t   label=\"{{ phrase('fs_form_maps') }}\"\n\t\t\t   />\n</xf:radiorow>\n\n<xf:numberboxrow name=\"criteria[emails_per_hour]\" \n\t\t\t\t value=\"3\"\n\t\t\t\t label=\"{{ phrase('fs_emails_per_hour') }}\"\n\t\t\t\t min=\"1\"\n\t\t\t\t max=\"3\" />"
+}
