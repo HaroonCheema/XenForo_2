@@ -1,0 +1,11 @@
+{
+    "route_type": "api",
+    "route_prefix": "insert-emails",
+    "sub_name": "",
+    "format": "",
+    "build_class": "",
+    "build_method": "",
+    "controller": "FS\\SendMailFromTable:InsertEmails",
+    "context": "",
+    "action_prefix": ""
+}

@@ -1,0 +1,9 @@
+{
+    "template": "user_email",
+    "description": "fs_user_email_add_templates",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/<xf:codeeditorrow name=\"email_body\".*?explain=\" {{ phrase\\('following_placeholders_will_be_replaced_in_message_for_email'\\) }} {{ phrase\\('you_may_also_use_phrase_title_which_will_be_replaced'\\) }}\" \\/>/is",
+    "replace": "$0\n\n<xf:formrow rowtype=\"input\" \n\t\t\tlabel=\"{{ phrase('fs_email_template_select') }}\" explain=\"{{ phrase('fs_email_template_select_explain') }}\">\n\n\t<ul class=\"inputList\">\n\t\t<li><xf:select name=\"criteria[email_template]\" value=\"0\" >\n\t\t\t<xf:option value=\"0\">{{ phrase('none') }}</xf:option>\n\t\t\t<xf:foreach loop=\"$emailTemplates\" value=\"$val\">\n\t\t\t\t<xf:option value=\"{$val.id}\">{$val.title}</xf:option>\n\t\t\t</xf:foreach>\n\t\t\t</xf:select></li>\n\t</ul>\n</xf:formrow>"
+}

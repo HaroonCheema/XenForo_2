@@ -413,6 +413,7 @@ return array (
   'option.fs_complete_production_prefix_id' => 'Complete production prefix id',
   'option.fs_custom_thread_image_dimensions' => 'Thread image dimensions',
   'option.fs_discussions_form_ids' => 'Discussions forum ids',
+  'option.fs_email_from_table_template_ids' => 'Template id',
   'option.fs_email_limit' => 'Random Email Length',
   'option.fs_enable' => 'Enable',
   'option.fs_enable_image' => 'Display Image',

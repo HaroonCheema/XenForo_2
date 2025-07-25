@@ -1,0 +1,6 @@
+{
+    "from_class": "XF\\Admin\\Controller\\User",
+    "to_class": "FS\\MapEmails\\XF\\Admin\\Controller\\User",
+    "execute_order": 100,
+    "active": true
+}

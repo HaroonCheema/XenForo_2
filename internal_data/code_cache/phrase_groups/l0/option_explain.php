@@ -481,6 +481,7 @@ This option requires that the specified account is a catch-all account or suppor
   'option_explain.fs_complete_production_prefix_id' => 'Enter custom thread prefix id here related to complete production.',
   'option_explain.fs_custom_thread_image_dimensions' => '',
   'option_explain.fs_discussions_form_ids' => 'Enter the Discussions forum ids Comma separated like 1,2,3,4,5,6,......',
+  'option_explain.fs_email_from_table_template_ids' => '',
   'option_explain.fs_email_limit' => 'you can change email length from here...!',
   'option_explain.fs_enable' => 'This option allows you to enable the avatar gallery.',
   'option_explain.fs_enable_image' => '',

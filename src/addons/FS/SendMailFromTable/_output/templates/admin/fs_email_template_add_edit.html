@@ -1,0 +1,36 @@
+<xf:title>
+	<xf:if is="$tempData.id"> {{ phrase('fs_email_template_edit') }}
+		<xf:breadcrumb href="#">{{ phrase('fs_email_template_edit') }}</xf:breadcrumb> <xf:else
+																								/> {{ phrase('fs_email_template_add') }} <xf:breadcrumb href="#">{{
+		phrase('fs_email_template_add') }}</xf:breadcrumb> </xf:if>
+</xf:title>
+
+<xf:form
+		 action="{{ link('email-template/save', $tempData) }}"
+		 class="block"
+		 ajax="1"
+		 >
+	<div class="block-container">
+		<div class="block-body">
+
+			<xf:textboxrow name="title"
+						   value="{$tempData.title}"
+						   label="{{ phrase('fs_email_template_title') }}"
+						   autosize="true"
+						   row="5"
+						   required="required"
+						   hint="{{ phrase('required') }}"
+						   />
+
+			<xf:textarearow name="email_body" 
+							value="{$tempData.email_body}" 
+							rows="2" 
+							autosize="true"
+							label="{{ phrase('fs_email_template_body') }}" 
+							required="required" 
+							hint="{{ phrase('required') }}"/>
+		</div>
+
+		<xf:submitrow submit="{{ phrase('save') }}" fa="fa-save" />
+	</div>
+</xf:form>

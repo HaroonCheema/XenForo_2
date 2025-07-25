@@ -21,7 +21,22 @@ return array(
 	}
 	$__finalCompiled .= '
 
-' . $__templater->form('
+';
+	$__compilerTemp1 = array(array(
+		'value' => '0',
+		'label' => 'None',
+		'_type' => 'option',
+	));
+	if ($__templater->isTraversable($__vars['emailTemplates'])) {
+		foreach ($__vars['emailTemplates'] AS $__vars['val']) {
+			$__compilerTemp1[] = array(
+				'value' => $__vars['val']['id'],
+				'label' => $__templater->escape($__vars['val']['title']),
+				'_type' => 'option',
+			);
+		}
+	}
+	$__finalCompiled .= $__templater->form('
 	<div class="block-container">
 		<div class="block-body">
 			' . $__templater->formCheckBoxRow(array(
@@ -80,6 +95,20 @@ return array(
 	), array(
 		'label' => 'Email body',
 		'explain' => ' ' . 'The following placeholders will be replaced in the message: {name}, {email}, {id}, {unsub}.' . ' ' . 'You may also use {phrase:phrase_title} which will be replaced with the phrase text in the recipient\'s language.',
+	)) . '
+
+' . $__templater->formRow('
+
+	<ul class="inputList">
+		<li>' . $__templater->formSelect(array(
+		'name' => 'criteria[email_template]',
+		'value' => '0',
+	), $__compilerTemp1) . '</li>
+	</ul>
+', array(
+		'rowtype' => 'input',
+		'label' => 'Email Templates',
+		'explain' => 'Select any template for sending emails.',
 	)) . '
 
 			' . $__templater->formCheckBoxRow(array(

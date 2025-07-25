@@ -1,0 +1,86 @@
+{
+    "admin_navigation.fs_email_templates_add.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "e37f4fc0441c524ee5a89453f12178c8"
+    },
+    "admin_navigation.fs_email_templates_nav.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d1491737706019cee6bd17528ef504b5"
+    },
+    "fs_email_template_add.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "ec211f7c20af43e742bf2570c3cb84f9"
+    },
+    "fs_email_template_add_btn.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "ad4ed0f42dcaf4d181e77ca32c45aca3"
+    },
+    "fs_email_template_body.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "ac101b32dda4448cf13a93fe283dddd8"
+    },
+    "fs_email_template_edit.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "7dce122004969d56ae2e0245cb754d35"
+    },
+    "fs_email_template_index.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "c8e20f45575884613a9c1e3668aa67b7"
+    },
+    "fs_email_template_select.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "c143a6b696f32a8cb3aec51f15435239"
+    },
+    "fs_email_template_select_explain.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "acf28107808feea108d2c9ef0a487d3c"
+    },
+    "fs_email_template_title.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "b78a3223503896721cca1303f776159b"
+    },
+    "option.fs_email_from_table_template_ids.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "ec2d8cc3d6a887ec2c079e5afbd292b0"
+    },
+    "option_explain.fs_email_from_table_template_ids.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "option_group.fs_email_from_table.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "9b04a62f67d1f0212837cebf7f85b622"
+    },
+    "option_group_description.fs_email_from_table.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    }
+}

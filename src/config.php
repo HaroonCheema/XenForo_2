@@ -19,5 +19,5 @@ $config['enableLivePayments'] = false;
 
 $config['debug'] = true;
 
-$config['development']['defaultAddOn'] = 'FS/MapEmails';
+$config['development']['defaultAddOn'] = 'FS/SendMailFromTable';
 $config['development']['enabled'] = true;

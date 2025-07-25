@@ -1,0 +1,18 @@
+<xf:formrow rowtype="input"
+			label="{$option.title}"
+			hint="{$hintHtml}"
+			explain="{$explainHtml}"
+			html="{$listedHtml}"
+			rowclass="{$rowClass}">
+
+	<xf:set var="{$emailTemplates}" value="{$option.getEmailTemplates()}" />
+
+	<xf:select name="{$inputName}" value="{$option.option_value}" >
+		<xf:option value="0">{{ phrase('none') }}</xf:option>
+		<xf:foreach loop="$emailTemplates" value="$val">
+			<xf:option value="{$val.id}">{$val.title}</xf:option>
+		</xf:foreach>
+	</xf:select>
+
+
+</xf:formrow>

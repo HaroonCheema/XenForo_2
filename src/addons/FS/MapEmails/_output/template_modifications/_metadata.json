@@ -1,5 +1,8 @@
 {
     "admin/fs_helper_user_search_criteria_use_email.json": {
         "hash": "82e3b66bbc3eb6031d683cb8888ec684"
+    },
+    "admin/fs_user_email_add_templates.json": {
+        "hash": "955e341f620bbfcf19739a112d6f09bf"
     }
 }

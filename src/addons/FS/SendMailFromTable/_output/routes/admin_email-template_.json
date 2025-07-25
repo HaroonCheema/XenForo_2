@@ -1,0 +1,11 @@
+{
+    "route_type": "admin",
+    "route_prefix": "email-template",
+    "sub_name": "",
+    "format": ":int<id>/:page",
+    "build_class": "",
+    "build_method": "",
+    "controller": "FS\\SendMailFromTable:EmailTemplate",
+    "context": "fs_email_templates_add",
+    "action_prefix": ""
+}
