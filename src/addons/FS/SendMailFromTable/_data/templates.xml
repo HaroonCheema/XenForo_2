@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="admin" title="fs_email_logs_details" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('fs_email_logs_detail') }}</xf:title>
+
+<xf:form action="{{ link($prefix . '/toggle') }}" class="block" ajax="true">
+	<div class="block-outer">
+		<xf:macro
+				  template="filter_macros"
+				  name="quick_filter"
+				  arg-key="email-logs/detail"
+				  arg-class="block-outer-opposite"
+				  />
+	</div>
+
+	<div class="block-container">
+
+		<xf:if is="$emailLogsDetail is not empty">
+			<div class="block-body">
+				<xf:datalist data-xf-init="responsive-data-list">
+
+					<xf:macro
+							  name="table_list"
+							  arg-data="{$emailLogsDetail}"
+							  />
+
+				</xf:datalist>
+
+				<div class="block-footer">
+					<span class="block-footer-counter"
+						  >{{ display_totals($emailLogsDetail, $total) }}</span
+						>
+				</div>
+
+			</div>
+			<xf:else />
+			<div class="block-body block-row">{{ phrase('no_items_have_been_created_yet') }}</div>
+
+		</xf:if>
+
+	</div>
+
+
+	<xf:pagenav
+				page="{$page}"
+				perpage="{$perPage}"
+				total="{$total}"
+				link="email-logs/detail"
+				wrapperclass="block"
+				/>
+</xf:form>
+<xf:macro
+		  name="table_list"
+		  arg-data="!"
+		  >
+	<xf:datarow rowtype="header">
+		<xf:cell> {{ phrase('fs_email_logs_email') }} </xf:cell>
+		<xf:cell> {{ phrase('fs_email_logs_date') }} </xf:cell>
+	</xf:datarow>
+	<xf:foreach loop="{$data}" key="$key" i="$i" value="$value">
+		<xf:datarow>
+
+			<xf:cell> {$value.email} </xf:cell>
+			<xf:cell> <xf:date time="{$value.date}" /> </xf:cell>
+
+		</xf:datarow>
+	</xf:foreach>
+</xf:macro>]]></template>
+  <template type="admin" title="fs_email_logs_index" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('fs_email_logs_index') }}</xf:title>
+
+<xf:form action="{{ link($prefix . '/toggle') }}" class="block" ajax="true">
+	<div class="block-outer">
+		<xf:macro
+				  template="filter_macros"
+				  name="quick_filter"
+				  arg-key="email-logs"
+				  arg-class="block-outer-opposite"
+				  />
+	</div>
+
+	<div class="block-container">
+
+		<xf:if is="$emailLogs is not empty">
+			<div class="block-body">
+				<xf:datalist data-xf-init="responsive-data-list">
+
+					<xf:macro
+							  name="table_list"
+							  arg-data="{$emailLogs}"
+							  />
+
+				</xf:datalist>
+
+				<div class="block-footer">
+					<span class="block-footer-counter"
+						  >{{ display_totals($emailLogs, $total) }}</span
+						>
+				</div>
+
+			</div>
+			<xf:else />
+			<div class="block-body block-row">{{ phrase('no_items_have_been_created_yet') }}</div>
+
+		</xf:if>
+
+	</div>
+
+
+	<xf:pagenav
+				page="{$page}"
+				perpage="{$perPage}"
+				total="{$total}"
+				link="email-logs"
+				wrapperclass="block"
+				/>
+</xf:form>
+<xf:macro
+		  name="table_list"
+		  arg-data="!"
+		  >
+	<xf:datarow rowtype="header">
+		<xf:cell> {{ phrase('fs_email_logs_no') }} </xf:cell>
+		<xf:cell> {{ phrase('fs_email_logs_from') }} </xf:cell>
+		<xf:cell> {{ phrase('fs_email_logs_to') }} </xf:cell>
+		<xf:cell class="dataList-cell--min"></xf:cell>
+	</xf:datarow>
+	<xf:foreach loop="{$data}" key="$key" i="$i" value="$value">
+		<xf:datarow>
+
+			<xf:cell> {$i} </xf:cell>
+			<xf:cell> <xf:date time="{$value.from}" /> </xf:cell>
+			<xf:cell> <xf:date time="{$value.to}" /> </xf:cell>
+			<xf:action href="{{ link('email-logs/detail', $value) }}" >
+				{{ phrase('fs_email_logs_details') }}
+			</xf:action>
+
+		</xf:datarow>
+	</xf:foreach>
+</xf:macro>]]></template>
+  <template type="admin" title="fs_email_template_add_edit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>
+	<xf:if is="$tempData.id"> {{ phrase('fs_email_template_edit') }}
+		<xf:breadcrumb href="#">{{ phrase('fs_email_template_edit') }}</xf:breadcrumb> <xf:else
+																								/> {{ phrase('fs_email_template_add') }} <xf:breadcrumb href="#">{{
+		phrase('fs_email_template_add') }}</xf:breadcrumb> </xf:if>
+</xf:title>
+
+<xf:form
+		 action="{{ link('email-template/save', $tempData) }}"
+		 class="block"
+		 ajax="1"
+		 >
+	<div class="block-container">
+		<div class="block-body">
+
+			<xf:textboxrow name="title"
+						   value="{$tempData.title}"
+						   label="{{ phrase('fs_email_template_title') }}"
+						   autosize="true"
+						   row="5"
+						   required="required"
+						   hint="{{ phrase('required') }}"
+						   />
+
+			<xf:textarearow name="email_body" 
+							value="{$tempData.email_body}" 
+							rows="2" 
+							autosize="true"
+							label="{{ phrase('fs_email_template_body') }}" 
+							required="required" 
+							hint="{{ phrase('required') }}"/>
+		</div>
+
+		<xf:submitrow submit="{{ phrase('save') }}" fa="fa-save" />
+	</div>
+</xf:form>]]></template>
+  <template type="admin" title="fs_email_template_index" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('fs_email_template_index') }}</xf:title>
+
+<xf:pageaction>
+	<xf:button href="{{ link('email-template/add') }}" icon="add">{{ phrase('fs_email_template_add_btn') }}</xf:button>
+</xf:pageaction>
+
+<xf:form action="{{ link($prefix . '/toggle') }}" class="block" ajax="true">
+	<div class="block-outer">
+		<xf:macro
+				  template="filter_macros"
+				  name="quick_filter"
+				  arg-key="email-template"
+				  arg-class="block-outer-opposite"
+				  />
+	</div>
+
+	<div class="block-container">
+
+		<xf:if is="$emailTemplates is not empty">
+			<div class="block-body">
+				<xf:datalist data-xf-init="responsive-data-list">
+
+					<xf:macro
+							  name="table_list"
+							  arg-data="{$emailTemplates}"
+							  />
+
+				</xf:datalist>
+
+				<div class="block-footer">
+					<span class="block-footer-counter"
+						  >{{ display_totals($emailTemplates, $total) }}</span
+						>
+				</div>
+
+			</div>
+			<xf:else />
+			<div class="block-body block-row">{{ phrase('no_items_have_been_created_yet') }}</div>
+
+		</xf:if>
+
+	</div>
+
+
+	<xf:pagenav
+				page="{$page}"
+				perpage="{$perPage}"
+				total="{$total}"
+				link="email-template"
+				wrapperclass="block"
+				/>
+</xf:form>
+<xf:macro
+		  name="table_list"
+		  arg-data="!"
+		  >
+	<xf:datarow rowtype="header">
+		<xf:cell> {{ phrase('fs_email_template_title') }} </xf:cell>
+		<xf:cell> {{ phrase('fs_email_template_body') }} </xf:cell>
+		<xf:cell class="dataList-cell--min"></xf:cell>
+		<xf:cell class="dataList-cell--min"></xf:cell>
+	</xf:datarow>
+	<xf:foreach loop="{$data}" value="$value">
+		<xf:datarow>
+
+			<xf:cell> {$value.title} </xf:cell>
+			<xf:cell title="{$value.email_body}"> {{ snippet($value.email_body, 100, {'stripBbCode': true}) }} </xf:cell>
+
+			<xf:action href="{{ link('email-template/edit', $value) }}" overlay="true" >{{ phrase('edit') }}</xf:action>
+			<xf:delete
+					   href="{{ link('email-template/delete', $value) }}"
+					   overlay="true"
+					   />
+		</xf:datarow>
+	</xf:foreach>
+</xf:macro>]]></template>
+  <template type="admin" title="fs_option_template_email" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:formrow rowtype="input"
+			label="{$option.title}"
+			hint="{$hintHtml}"
+			explain="{$explainHtml}"
+			html="{$listedHtml}"
+			rowclass="{$rowClass}">
+
+	<xf:set var="{$emailTemplates}" value="{$option.getEmailTemplates()}" />
+
+	<xf:select name="{$inputName}" value="{$option.option_value}" >
+		<xf:option value="0">{{ phrase('none') }}</xf:option>
+		<xf:foreach loop="$emailTemplates" value="$val">
+			<xf:option value="{$val.id}">{$val.title}</xf:option>
+		</xf:foreach>
+	</xf:select>
+
+
+</xf:formrow>]]></template>
+</templates>

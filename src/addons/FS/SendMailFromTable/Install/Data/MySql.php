@@ -17,6 +17,17 @@ class MySql
 
             $table->addColumn('email', 'varchar', 120);
             $table->addColumn('date', 'int')->setDefault(0);
+            $table->addColumn('is_pending', 'tinyint', 3)->setDefault(1);
+
+            $table->addPrimaryKey('id');
+        };
+
+        $tables['fs_cron_emails_log'] = function (Create $table) {
+            /** @var Create|Alter $table */
+            $table->addColumn('id', 'int')->autoIncrement();
+
+            $table->addColumn('from', 'int')->setDefault(0);
+            $table->addColumn('to', 'int')->setDefault(0);
 
             $table->addPrimaryKey('id');
         };

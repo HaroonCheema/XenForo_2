@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="admin_navigation.fs_email_submit_log" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[E-mail logs]]></phrase>
+  <phrase title="admin_navigation.fs_email_templates_add" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add Template]]></phrase>
+  <phrase title="admin_navigation.fs_email_templates_nav" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] E-mail Tempates]]></phrase>
+  <phrase title="cron_entry.fs_send_email_from_table" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Send E-mail from table]]></phrase>
+  <phrase title="fs_email_logs_date" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Date]]></phrase>
+  <phrase title="fs_email_logs_detail" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] E-mail logs detail]]></phrase>
+  <phrase title="fs_email_logs_details" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Details]]></phrase>
+  <phrase title="fs_email_logs_email" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Email]]></phrase>
+  <phrase title="fs_email_logs_from" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[From]]></phrase>
+  <phrase title="fs_email_logs_index" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] E-mail logs]]></phrase>
+  <phrase title="fs_email_logs_no" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[No#]]></phrase>
+  <phrase title="fs_email_logs_to" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[To]]></phrase>
+  <phrase title="fs_email_template_add" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add]]></phrase>
+  <phrase title="fs_email_template_add_btn" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add template]]></phrase>
+  <phrase title="fs_email_template_body" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Body]]></phrase>
+  <phrase title="fs_email_template_edit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Edit]]></phrase>
+  <phrase title="fs_email_template_index" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] E-mail Templates]]></phrase>
+  <phrase title="fs_email_template_select" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Email Templates]]></phrase>
+  <phrase title="fs_email_template_select_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Select any template for sending emails.]]></phrase>
+  <phrase title="fs_email_template_title" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Title]]></phrase>
+  <phrase title="option.fs_email_from_table_template_ids" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Template id]]></phrase>
+  <phrase title="option.fs_send_emails_per_minute" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[E-mails Per Minute]]></phrase>
+  <phrase title="option_explain.fs_email_from_table_template_ids" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_explain.fs_send_emails_per_minute" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_group.fs_email_from_table" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Send E-mails from table]]></phrase>
+  <phrase title="option_group_description.fs_email_from_table" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+</phrases>

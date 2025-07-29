@@ -20,4 +20,21 @@
 				 min="1"
 				 max="3" />]]></replace>
   </modification>
+  <modification type="admin" template="user_email" modification_key="fs_user_email_add_templates" description="fs_user_email_add_templates" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<xf:codeeditorrow name="email_body".*?explain=" {{ phrase\('following_placeholders_will_be_replaced_in_message_for_email'\) }} {{ phrase\('you_may_also_use_phrase_title_which_will_be_replaced'\) }}" \/>/is]]></find>
+    <replace><![CDATA[$0
+
+<xf:formrow rowtype="input" 
+			label="{{ phrase('fs_email_template_select') }}" explain="{{ phrase('fs_email_template_select_explain') }}">
+
+	<ul class="inputList">
+		<li><xf:select name="criteria[email_template]" value="0" >
+			<xf:option value="0">{{ phrase('none') }}</xf:option>
+			<xf:foreach loop="$emailTemplates" value="$val">
+				<xf:option value="{$val.id}">{$val.title}</xf:option>
+			</xf:foreach>
+			</xf:select></li>
+	</ul>
+</xf:formrow>]]></replace>
+  </modification>
 </template_modifications>

@@ -1,5 +1,8 @@
 {
     "fs_email_from_table_template_ids.json": {
         "hash": "386e898bb4edd83006be4bbbb1402532"
+    },
+    "fs_send_emails_per_minute.json": {
+        "hash": "ad3cf73267d7b85281566efd274255c8"
     }
 }

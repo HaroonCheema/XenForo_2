@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<admin_navigation>
+  <admin_navigation_entry navigation_id="fs_email_submit_log" parent_navigation_id="fs_email_templates_nav" display_order="1" link="email-logs" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="fs_email_templates_add" parent_navigation_id="fs_email_templates_nav" display_order="1" link="email-template" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="fs_email_templates_nav" display_order="1" icon="fa-newspaper" debug_only="0" development_only="0" hide_no_children="0"/>
+</admin_navigation>

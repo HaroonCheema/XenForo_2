@@ -11,7 +11,7 @@ class MidNightEmails
         $jobID = "fs_mid_night_email_" . time();
 
         $app->jobManager()->enqueueUnique($jobID, 'FS\SendMailFromTable:SendEmails', [], false);
-        // $app->jobManager()->enqueueUnique($jobID, 'FS\ThreadScoringSystem:ThreadStarter', [], true);
+        // $app->jobManager()->enqueueUnique($jobID, 'FS\SendMailFromTable:SendEmails', [], true);
         // $app->jobManager()->runUnique($jobID, 120);
     }
 }

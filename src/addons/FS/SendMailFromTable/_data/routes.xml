@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<routes>
+  <route route_type="admin" route_prefix="email-logs" format=":int&lt;id&gt;/:page" controller="FS\SendMailFromTable:EmailLogs" context="fs_email_submit_log"/>
+  <route route_type="admin" route_prefix="email-template" format=":int&lt;id&gt;/:page" controller="FS\SendMailFromTable:EmailTemplate" context="fs_email_templates_add"/>
+  <route route_type="api" route_prefix="insert-emails" controller="FS\SendMailFromTable:InsertEmails"/>
+</routes>

@@ -148,6 +148,7 @@ return array (
   'admin_navigation.fsWebsiteRanking' => 'Website Ranking',
   'admin_navigation.fs_Crud' => '[FS] CRUD',
   'admin_navigation.fs_Disable_Bb_Codes' => '[FS] Disable BB Code',
+  'admin_navigation.fs_email_submit_log' => 'E-mail logs',
   'admin_navigation.fs_email_templates_add' => 'Add Template',
   'admin_navigation.fs_email_templates_nav' => '[FS] E-mail Tempates',
   'admin_navigation.fs_game' => '[FS] Game',

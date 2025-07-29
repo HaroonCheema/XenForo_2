@@ -19,6 +19,7 @@ class MidNightEmails extends Entity
 
             'email' => ['type' => self::STR, 'maxLength' => 120],
             'date' => ['type' => self::UINT, 'default' => \XF::$time],
+			'is_pending' => ['type' => self::BOOL, 'default' => true],
         ];
 
         $structure->relations = [];

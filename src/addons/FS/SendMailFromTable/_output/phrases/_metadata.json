@@ -1,4 +1,10 @@
 {
+    "admin_navigation.fs_email_submit_log.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "a84e91fa8a81b14a870aa6d0280ec96c"
+    },
     "admin_navigation.fs_email_templates_add.txt": {
         "global_cache": false,
         "version_id": 1000010,
@@ -10,6 +16,60 @@
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
         "hash": "d1491737706019cee6bd17528ef504b5"
+    },
+    "cron_entry.fs_send_email_from_table.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "c56759a1a3fe43b8f9bae3e8274d0eab"
+    },
+    "fs_email_logs_date.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "44749712dbec183e983dcd78a7736c41"
+    },
+    "fs_email_logs_detail.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "23598c9d37acadb78182d792fa07cd37"
+    },
+    "fs_email_logs_details.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "3ec365dd533ddb7ef3d1c111186ce872"
+    },
+    "fs_email_logs_email.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "ce8ae9da5b7cd6c3df2929543a9af92d"
+    },
+    "fs_email_logs_from.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "5da618e8e4b89c66fe86e32cdafde142"
+    },
+    "fs_email_logs_index.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "0fb65762920c9208d6e934e3f08d6c12"
+    },
+    "fs_email_logs_no.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "3c0c27fea4ee9ef40b0da592679475a1"
+    },
+    "fs_email_logs_to.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "e12167aa0a7698e6ebc92b4ce3909b53"
     },
     "fs_email_template_add.txt": {
         "global_cache": false,
@@ -65,7 +125,19 @@
         "version_string": "1.0.0 Alpha",
         "hash": "ec2d8cc3d6a887ec2c079e5afbd292b0"
     },
+    "option.fs_send_emails_per_minute.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "8a83de5cb53079059c33f288fdb2d37f"
+    },
     "option_explain.fs_email_from_table_template_ids.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "option_explain.fs_send_emails_per_minute.txt": {
         "global_cache": false,
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
