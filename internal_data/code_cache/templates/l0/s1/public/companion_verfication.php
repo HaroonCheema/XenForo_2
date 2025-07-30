@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 673da2684038720346785aed377579c5
+// FROM HASH: 14a555a2c1f6a72bee834c46b63bdc7a
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -18,6 +18,9 @@ return array(
 	}
 
 </style>
+
+' . $__templater->callMacro('register_macros', 'dob_row', array(), $__vars) . '
+
 <dl class="formRow formRow--customField" data-field="ReceiveEmailfromOther">
 	<dt>
 

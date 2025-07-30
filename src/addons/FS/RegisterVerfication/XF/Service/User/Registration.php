@@ -38,28 +38,28 @@ class Registration extends XFCP_Registration
 
         if ($accountType == 2) {
 
-            $dobString = $input['custom_fields']['dateofbirth'] ?? '';
+            // $dobString = $input['custom_fields']['dateofbirth'] ?? '';
 
-            if ($dobString) {
-                $dob = new \DateTime($dobString);
-                $today = new \DateTime();
+            // if ($dobString) {
+            //     $dob = new \DateTime($dobString);
+            //     $today = new \DateTime();
 
-                if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $dobString)) {
-                    return $this->user->error("Date of birth Invalid format.");
-                }
+            //     if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $dobString)) {
+            //         return $this->user->error("Date of birth Invalid format.");
+            //     }
 
-                if ($dob > $today) {
-                    return $this->user->error("Date of birth cannot be in the future.");
-                }
+            //     if ($dob > $today) {
+            //         return $this->user->error("Date of birth cannot be in the future.");
+            //     }
 
-                $age = $dob->diff($today)->y;
+            //     $age = $dob->diff($today)->y;
 
-                if (!($age >= 21)) {
-                    return $this->user->error(\XF::phrase('fs_sorry_you_must_be_years_old_to_register'));
-                }
-            } else {
-                return $this->user->error(\XF::phrase('please_complete_required_fields'));
-            }
+            //     if (!($age >= 21)) {
+            //         return $this->user->error(\XF::phrase('fs_sorry_you_must_be_years_old_to_register'));
+            //     }
+            // } else {
+            //     return $this->user->error(\XF::phrase('please_complete_required_fields'));
+            // }
 
             $getVerifyValue = $request->filter('fs_regis_referral', 'str');
 
@@ -103,5 +103,32 @@ class Registration extends XFCP_Registration
         $this->user->comp_verify_key = $compVerifyKey;
 
         return $parent;
+    }
+
+    protected function applyExtraValidation()
+    {
+        $user = $this->user;
+
+        if ($user->account_type == 2) {
+            return parent::applyExtraValidation();
+        }
+
+        $options = $this->app->options();
+        // $age = $user->Profile->getAge(true);
+
+        // if ($options->registrationSetup['requireDob']) {
+        //     if (!$age) {
+        //         // incomplete dob
+        //         $user->error(\XF::phrase('please_enter_valid_date_of_birth'), 'dob');
+        //     } else if ($options->registrationSetup['minimumAge']) {
+        //         if ($age < intval($options->registrationSetup['minimumAge'])) {
+        //             $user->error(\XF::phrase('sorry_you_too_young_to_create_an_account'), 'dob');
+        //         }
+        //     }
+        // }
+
+        if (!empty($options->registrationSetup['requireLocation']) && !$user->Profile->location) {
+            $user->error(\XF::phrase('please_enter_valid_location'), 'location');
+        }
     }
 }

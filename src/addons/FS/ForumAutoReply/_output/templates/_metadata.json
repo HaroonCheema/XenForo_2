@@ -1,7 +1,7 @@
 {
     "admin/forum_auto_reply_add.html": {
-        "version_id": 1000400,
-        "version_string": "1.0.4",
-        "hash": "80460a6f1397756419d3c240fe7c2cd2"
+        "version_id": 2000000,
+        "version_string": "2.0.0",
+        "hash": "131d952351a88c340a25090b62fd75b8"
     }
 }

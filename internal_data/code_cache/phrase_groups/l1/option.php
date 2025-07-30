@@ -408,6 +408,7 @@ return array (
   'option.fs_cancel_multiple_subscriptions_mintues' => 'User group timeout',
   'option.fs_cancel_multiple_subscriptions_userGroup' => 'Select user group',
   'option.fs_change_the_path_to_the_tmp_file' => 'Path to the TMP file',
+  'option.fs_chat_gpt_api_key' => 'OpenAI API Key',
   'option.fs_color' => 'Select The Colour',
   'option.fs_complete_production_btn_text' => 'Complete Production Text',
   'option.fs_complete_production_prefix_id' => 'Complete production prefix id',

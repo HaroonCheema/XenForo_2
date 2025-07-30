@@ -1,0 +1,163 @@
+<xf:if is="$category.isInsert()">
+	<xf:title>{{ phrase('dbtech_ecommerce_add_category') }}</xf:title>
+<xf:else />
+	<xf:title>{{ phrase('dbtech_ecommerce_edit_category:') }} {$category.title}</xf:title>
+</xf:if>
+
+<xf:pageaction if="$category.isUpdate()">
+	<xf:button href="{{ link('dbtech-ecommerce/categories/delete', $category) }}" icon="delete" overlay="true" />
+</xf:pageaction>
+
+<xf:js src="xf/sort.js, vendor/dragula/dragula.js" />
+<xf:css src="public:dragula.less" />
+
+<xf:form action="{{ link('dbtech-ecommerce/categories/save', $category) }}" class="block" ajax="true">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:textboxrow name="title" value="{$category.title}" label="{{ phrase('title') }}" />
+
+			<xf:textarearow name="description" value="{$category.description}"
+							rows="2" autosize="true" class="input--fitHeight--short"
+							label="{{ phrase('description') }}"
+							explain="{{ phrase('you_may_use_html') }}" />
+			
+			<xf:macro template="category_tree_macros" name="parent_category_select_row"
+					  arg-category="{$category}"
+					  arg-categoryTree="{$categoryTree}"
+					  arg-idKey="category_id" />
+
+			<xf:macro template="display_order_macros" name="row"
+					  arg-value="{$category.display_order}" />
+
+			<xf:checkboxrow explain="{{ phrase('dbtech_ecommerce_moderation_applies_frontend_only') }}">
+				<xf:option name="always_moderate_create" selected="$category.always_moderate_create">
+					{{ phrase('dbtech_ecommerce_always_moderate_products_posted_in_this_category') }}
+				</xf:option>
+				<xf:option name="always_moderate_update" selected="$category.always_moderate_update">
+					{{ phrase('dbtech_ecommerce_always_moderate_product_updates_posted_in_this_category') }}
+				</xf:option>
+			</xf:checkboxrow>
+			
+			<xf:selectrow name="thread_node_id" value="{$category.thread_node_id}" id="js-dbtechEcommerceNewsNodeList"
+				label="{{ phrase('dbtech_ecommerce_automatically_create_news_thread_in_forum') }}"
+				explain="{{ phrase('dbtech_ecommerce_if_selected_product_created_thread_posted_forum') }}">
+
+				<xf:option value="0">{{ phrase('(none)') }}</xf:option>
+				<xf:foreach loop="$forumOptions" value="$forum">
+					<xf:option value="{$forum.value}" disabled="{$forum.disabled}" label="{$forum.label}" />
+				</xf:foreach>
+			</xf:selectrow>
+
+			<xf:formrow label="{{ phrase('dbtech_ecommerce_automatically_created_news_thread_prefix') }}" rowtype="input">
+				<xf:js src="xf/prefix_menu.js" min="1" />
+				<xf:macro template="public:prefix_macros" name="select"
+					arg-type="thread"
+					arg-prefixes="{$threadPrefixes}"
+					arg-selected="{$category.thread_prefix_id}"
+					arg-name="thread_prefix_id"
+					arg-href="{{ link('forums/prefixes') }}"
+					arg-listenTo="#js-dbtechEcommerceNewsNodeList" />
+			</xf:formrow>
+
+			<xf:radiorow name="product_update_notify" value="{$category.product_update_notify}"
+						 label="{{ phrase('dbtech_ecommerce_product_update_notifications') }}"
+						 explain="{{ phrase('dbtech_ecommerce_product_update_notifications_explain') }}">
+
+				<xf:option value="thread" label="{{ phrase('new_thread') }}" />
+				<xf:option value="reply" label="{{ phrase('reply') }}" />
+
+			</xf:radiorow>
+
+			<xf:if is="$availableFields is not empty">
+				<hr class="formRowSep" />
+
+				<xf:checkboxrow name="available_fields" value="{$category.field_cache}" listclass="field listColumns"
+								label="{{ phrase('available_fields') }}"
+								explain="{{ phrase('dbtech_ecommerce_product_asterisk_fields_required_explain') }}">
+
+					<xf:foreach loop="$availableFields" key="$fieldId" value="$field">
+						<xf:option value="{$fieldId}" label="{$field.title}" labelclass="{{ $field.required ? 'u-appendAsterisk' : '' }}" />
+					</xf:foreach>
+
+					<xf:hint>
+						<xf:checkbox standalone="true">
+							<xf:option check-all=".field.listColumns">{{ phrase('select_all') }}</xf:option>
+						</xf:checkbox>
+					</xf:hint>
+				</xf:checkboxrow>
+			<xf:else />
+				<hr class="formRowSep" />
+
+				<xf:formrow label="{{ phrase('available_fields') }}">
+					{{ phrase('none')|parens }} <xf:if is="$context == 'admin'"><a href="{{ link('dbtech-ecommerce/fields/add') }}" target="_blank">{{ phrase('add_field') }}</a></xf:if>
+				</xf:formrow>
+			</xf:if>
+			
+			<xf:if is="$availablePrefixes is not empty">
+				<hr class="formRowSep" />
+
+				<xf:checkboxrow name="available_prefixes" value="{$category.prefix_cache}" listclass="prefix listColumns"
+					label="{{ phrase('available_prefixes') }}">
+
+					<xf:options source="$availablePrefixes" />
+					<xf:hint>
+						<xf:checkbox standalone="true">
+							<xf:option check-all=".prefix.listColumns">{{ phrase('select_all') }}</xf:option>
+						</xf:checkbox>
+					</xf:hint>
+				</xf:checkboxrow>
+
+				<xf:checkboxrow name="require_prefix" value="{$category.require_prefix}">
+					<xf:option value="1"
+						label="{{ phrase('require_users_to_select_prefix') }}"
+						hint="{{ phrase('dbtech_ecommerce_if_selected_users_required_select_prefix_when_creating_editing') }}" />
+				</xf:checkboxrow>
+
+			<xf:else />
+
+				<hr class="formRowSep" />
+
+				<xf:formrow label="{{ phrase('available_prefixes') }}">
+					{{ phrase('none')|parens }} <a href="{{ link('dbtech-ecommerce/prefixes') }}" target="_blank">{{ phrase('add_prefix') }}</a>
+				</xf:formrow>
+
+			</xf:if>
+			
+			<xf:formrow rowtype="input"
+				label="{{ phrase('dbtech_ecommerce_available_product_filters') }}"
+				explain="{{ phrase('dbtech_ecommerce_value_represents_internal_value_for_filter_text_is_displayed') }}">
+
+				<div class="inputGroup-container" data-xf-init="list-sorter" data-drag-handle=".dragHandle">
+					<xf:foreach loop="$category.product_filters" key="$filter" value="$text">
+						<div class="inputGroup">
+							<span class="inputGroup-text dragHandle"
+								  aria-label="{{ phrase('drag_handle')|for_attr }}"></span>
+							<xf:textbox name="product_filter[]" value="{$filter}"
+								placeholder="{{ phrase('value_a_z_0_9_and_only') }}"
+								size="24" maxlength="25"
+								dir="ltr" />
+							<span class="inputGroup-splitter"></span>
+							<xf:textbox name="product_filter_text[]" value="{$text}"
+								placeholder="{{ phrase('text') }}" size="24" />
+						</div>
+					</xf:foreach>
+					<div class="inputGroup is-undraggable js-blockDragafter" data-xf-init="field-adder"
+						 data-remove-class="is-undraggable js-blockDragafter">
+						<span class="inputGroup-text dragHandle"
+							  aria-label="{{ phrase('drag_handle')|for_attr }}"></span>
+						<xf:textbox name="product_filter[]"
+							placeholder="{{ phrase('value_a_z_0_9_and_only') }}"
+							size="24" maxlength="25" data-i="0"
+							dir="ltr" />
+						<span class="inputGroup-splitter"></span>
+						<xf:textbox name="product_filter_text[]"
+							placeholder="{{ phrase('text') }}"
+							size="24" data-i="0" />
+					</div>
+				</div>
+			</xf:formrow>
+		</div>
+
+		<xf:submitrow sticky="true" icon="save" />
+	</div>
+</xf:form>

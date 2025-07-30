@@ -1,0 +1,9 @@
+{
+    "template": "account_wrapper",
+    "description": "fs_register_verfication_my_photo",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<a class=\"blockLink\" href=\"{{ link('members', $xf.visitor) }}\">{{ phrase('your_profile') }}</a>",
+    "replace": "$0\n\n<a class=\"blockLink\" href=\"{{ link('media/users', $xf.visitor) }}\">{{ phrase('fs_register_verification_my_photo') }}</a>"
+}

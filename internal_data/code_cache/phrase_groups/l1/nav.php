@@ -63,6 +63,7 @@ return array (
   'nav.fs_question_answers_watchedForums' => 'Watched forums',
   'nav.fs_question_answers_yourThreads' => 'Your questions',
   'nav.fs_quiz' => 'Quiz',
+  'nav.fs_tbn_my_threads' => 'My threads',
   'nav.fs_zoom_meetings' => 'Video Chat',
   'nav.home' => 'Home',
   'nav.latestActivity' => 'Latest activity',

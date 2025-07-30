@@ -64,6 +64,13 @@ return array(
 					'_type' => 'main',
 					'html' => '',
 				);
+				$__compilerTemp3[] = array(
+					'href' => $__templater->func('link', array('bb-codes/permissions', $__vars['bbCode'], ), false),
+					'_type' => 'action',
+					'html' => '
+	' . 'Permissions' . '
+',
+				);
 				if (!$__vars['exportView']) {
 					$__compilerTemp3[] = array(
 						'name' => 'active[' . $__vars['bbCode']['bb_code_id'] . ']',

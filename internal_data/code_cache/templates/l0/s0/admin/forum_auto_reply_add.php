@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 80460a6f1397756419d3c240fe7c2cd2
+// FROM HASH: 131d952351a88c340a25090b62fd75b8
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -223,7 +223,7 @@ return array(
           ' . $__compilerTemp7 . '
           <div
             class="inputGroup is-undraggable js-blockDragafter"
-            data-xf-init="field-adder"
+            data-xf-init="fie ld-adder"
             data-remove-class="is-undraggable js-blockDragafter"
           >
             ' . $__templater->formTextBoxRow(array(

@@ -10,6 +10,7 @@ return array (
   'widget.dbtech_ecommerce_overview_latest_reviews' => '',
   'widget.dbtech_ecommerce_overview_top_authors' => '',
   'widget.dbtech_ecommerce_whats_new_overview_new_products' => '',
+  'widget.default_thread_filter_widget' => 'Thread Filter',
   'widget.forum_overview_forum_statistics' => '',
   'widget.forum_overview_members_online' => '',
   'widget.forum_overview_new_posts' => '',

@@ -1,0 +1,11 @@
+{
+    "route_type": "public",
+    "route_prefix": "my-threads",
+    "sub_name": "",
+    "format": ":str_int<node_name,node_id,title>/:page",
+    "build_class": "",
+    "build_method": "",
+    "controller": "FS\\TractorByNetMyThreads:MyThreads",
+    "context": "fs_tbn_my_threads",
+    "action_prefix": ""
+}

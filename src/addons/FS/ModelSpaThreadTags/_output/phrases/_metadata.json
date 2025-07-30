@@ -1,0 +1,50 @@
+{
+    "fs_chat_gpt_api_key_not_configured.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "1e0fe5bf0d2d03c0be268b1da03fcc3b"
+    },
+    "fs_model_spa_thread_title.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "e9bd373325349ceb4b036ee7c259bba5"
+    },
+    "fs_register_verification_my_photo.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "95179c52f689de2b878e41cd5dd3dbf8"
+    },
+    "fs_thread_tag_suggestion_btn.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "0f78b20318b5aef4dca6dbae5051960a"
+    },
+    "option.fs_chat_gpt_api_key.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "fbd635ef0b00544e12444ef000005693"
+    },
+    "option_explain.fs_chat_gpt_api_key.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "423b0f731176aa7869847d18c34f5043"
+    },
+    "option_group.fs_model_spa_thread.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "18c34cade30c8ed17e99ee8dd891750d"
+    },
+    "option_group_description.fs_model_spa_thread.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    }
+}

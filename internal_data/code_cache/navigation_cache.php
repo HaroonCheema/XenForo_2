@@ -88,6 +88,18 @@ return function($__templater, $__selectedNav, array $__vars)
 
 	}
 
+	if ($__vars['xf']['visitor']['user_id']) {
+		$__navTemp = [
+		'title' => \XF::phrase('nav.fs_tbn_my_threads'),
+		'href' => $__templater->func('link', array('my-threads', ), false),
+		'attributes' => [],
+	];
+		if ($__navTemp) {
+			$__tree['fs_tbn_my_threads'] = $__navTemp;
+			$__flat['fs_tbn_my_threads'] =& $__tree['fs_tbn_my_threads'];
+		}
+	}
+
 	$__navTemp = [
 		'title' => \XF::phrase('nav.fsGameReviews'),
 		'href' => $__templater->func('link', array('game-rating', ), false),
@@ -108,6 +120,16 @@ return function($__templater, $__selectedNav, array $__vars)
 			$__flat['fsPackageReview'] =& $__tree['fsGameReviews']['children']['fsPackageReview'];
 		}
 
+	}
+
+	$__navTemp = [
+		'title' => \XF::phrase('nav.fsPackageReview123'),
+		'href' => $__templater->func('link', array('search/member', null, array('user_id' => $__vars['xf']['visitor']['user_id'], ), ), false),
+		'attributes' => [],
+	];
+	if ($__navTemp) {
+		$__tree['fsPackageReview123'] = $__navTemp;
+		$__flat['fsPackageReview123'] =& $__tree['fsPackageReview123'];
 	}
 
 	if ($__vars['xf']['homePageUrl']) {
@@ -668,78 +690,6 @@ return function($__templater, $__selectedNav, array $__vars)
 		$__flat['fs_quiz'] =& $__tree['fs_quiz'];
 	}
 
-	$__navTemp = [
-		'title' => \XF::phrase('nav.fs_auction_category'),
-		'href' => $__templater->func('link', array('auction', ), false),
-		'attributes' => [],
-	];
-	if ($__navTemp) {
-		$__tree['fs_auction_category'] = $__navTemp;
-		$__flat['fs_auction_category'] =& $__tree['fs_auction_category'];
-		if (empty($__tree['fs_auction_category']['children'])) { $__tree['fs_auction_category']['children'] = []; }
-
-		$__navTemp = [
-		'title' => \XF::phrase('nav.auctionAddListing'),
-		'href' => $__templater->func('link', array('auction/add', ), false),
-		'attributes' => [
-			'data-xf-click' => 'overlay',
-		],
-	];
-		if ($__navTemp) {
-			$__tree['fs_auction_category']['children']['auctionAddListing'] = $__navTemp;
-			$__flat['auctionAddListing'] =& $__tree['fs_auction_category']['children']['auctionAddListing'];
-		}
-
-	}
-
-	$__navTemp = [
-		'title' => \XF::phrase('nav.fs_escrow'),
-		'href' => $__templater->func('link', array('escrow', ), false),
-		'attributes' => [],
-	];
-	if ($__navTemp) {
-		$__tree['fs_escrow'] = $__navTemp;
-		$__flat['fs_escrow'] =& $__tree['fs_escrow'];
-		if (empty($__tree['fs_escrow']['children'])) { $__tree['fs_escrow']['children'] = []; }
-
-		$__navTemp = [
-		'title' => \XF::phrase('nav.fs_escrow_add'),
-		'href' => $__templater->func('link', array('escrow/add', ), false),
-		'attributes' => [],
-	];
-		if ($__navTemp) {
-			$__tree['fs_escrow']['children']['fs_escrow_add'] = $__navTemp;
-			$__flat['fs_escrow_add'] =& $__tree['fs_escrow']['children']['fs_escrow_add'];
-		}
-
-	}
-
-	if ($__templater->method($__vars['xf']['visitor'], 'haspermission', array('fs_forum_group_permission', 'add', ))) {
-		$__navTemp = [
-		'title' => \XF::phrase('nav.fs_forumGroups_index'),
-		'href' => $__templater->func('link', array('forumGroups', ), false),
-		'attributes' => [],
-	];
-		if ($__navTemp) {
-			$__tree['fs_forumGroups_index'] = $__navTemp;
-			$__flat['fs_forumGroups_index'] =& $__tree['fs_forumGroups_index'];
-			if (empty($__tree['fs_forumGroups_index']['children'])) { $__tree['fs_forumGroups_index']['children'] = []; }
-
-			$__navTemp = [
-		'title' => \XF::phrase('nav.forumGroupsAddSubForum'),
-		'href' => $__templater->func('link', array('forumGroups/add', ), false),
-		'attributes' => [
-			'data-xf-click' => 'overlay',
-		],
-	];
-			if ($__navTemp) {
-				$__tree['fs_forumGroups_index']['children']['forumGroupsAddSubForum'] = $__navTemp;
-				$__flat['forumGroupsAddSubForum'] =& $__tree['fs_forumGroups_index']['children']['forumGroupsAddSubForum'];
-			}
-
-		}
-	}
-
 	if ($__templater->method($__vars['xf']['visitor'], 'canViewMedia', array())) {
 		$__navTemp = [
 		'title' => \XF::phrase('nav.xfmg'),
@@ -901,6 +851,78 @@ return function($__templater, $__selectedNav, array $__vars)
 					$__tree['xfmg']['children']['xfmgMarkViewed'] = $__navTemp;
 					$__flat['xfmgMarkViewed'] =& $__tree['xfmg']['children']['xfmgMarkViewed'];
 				}
+			}
+
+		}
+	}
+
+	$__navTemp = [
+		'title' => \XF::phrase('nav.fs_auction_category'),
+		'href' => $__templater->func('link', array('auction', ), false),
+		'attributes' => [],
+	];
+	if ($__navTemp) {
+		$__tree['fs_auction_category'] = $__navTemp;
+		$__flat['fs_auction_category'] =& $__tree['fs_auction_category'];
+		if (empty($__tree['fs_auction_category']['children'])) { $__tree['fs_auction_category']['children'] = []; }
+
+		$__navTemp = [
+		'title' => \XF::phrase('nav.auctionAddListing'),
+		'href' => $__templater->func('link', array('auction/add', ), false),
+		'attributes' => [
+			'data-xf-click' => 'overlay',
+		],
+	];
+		if ($__navTemp) {
+			$__tree['fs_auction_category']['children']['auctionAddListing'] = $__navTemp;
+			$__flat['auctionAddListing'] =& $__tree['fs_auction_category']['children']['auctionAddListing'];
+		}
+
+	}
+
+	$__navTemp = [
+		'title' => \XF::phrase('nav.fs_escrow'),
+		'href' => $__templater->func('link', array('escrow', ), false),
+		'attributes' => [],
+	];
+	if ($__navTemp) {
+		$__tree['fs_escrow'] = $__navTemp;
+		$__flat['fs_escrow'] =& $__tree['fs_escrow'];
+		if (empty($__tree['fs_escrow']['children'])) { $__tree['fs_escrow']['children'] = []; }
+
+		$__navTemp = [
+		'title' => \XF::phrase('nav.fs_escrow_add'),
+		'href' => $__templater->func('link', array('escrow/add', ), false),
+		'attributes' => [],
+	];
+		if ($__navTemp) {
+			$__tree['fs_escrow']['children']['fs_escrow_add'] = $__navTemp;
+			$__flat['fs_escrow_add'] =& $__tree['fs_escrow']['children']['fs_escrow_add'];
+		}
+
+	}
+
+	if ($__templater->method($__vars['xf']['visitor'], 'haspermission', array('fs_forum_group_permission', 'add', ))) {
+		$__navTemp = [
+		'title' => \XF::phrase('nav.fs_forumGroups_index'),
+		'href' => $__templater->func('link', array('forumGroups', ), false),
+		'attributes' => [],
+	];
+		if ($__navTemp) {
+			$__tree['fs_forumGroups_index'] = $__navTemp;
+			$__flat['fs_forumGroups_index'] =& $__tree['fs_forumGroups_index'];
+			if (empty($__tree['fs_forumGroups_index']['children'])) { $__tree['fs_forumGroups_index']['children'] = []; }
+
+			$__navTemp = [
+		'title' => \XF::phrase('nav.forumGroupsAddSubForum'),
+		'href' => $__templater->func('link', array('forumGroups/add', ), false),
+		'attributes' => [
+			'data-xf-click' => 'overlay',
+		],
+	];
+			if ($__navTemp) {
+				$__tree['fs_forumGroups_index']['children']['forumGroupsAddSubForum'] = $__navTemp;
+				$__flat['forumGroupsAddSubForum'] =& $__tree['fs_forumGroups_index']['children']['forumGroupsAddSubForum'];
 			}
 
 		}
@@ -1102,20 +1124,6 @@ return function($__templater, $__selectedNav, array $__vars)
 		}
 	}
 
-	if ($__templater->method($__vars['xf']['visitor'], 'canViewMeeting', array())) {
-		$__navTemp = [
-		'title' => \XF::phrase('nav.fs_zoom_meetings'),
-		'href' => $__templater->func('link', array('video-chat', ), false),
-		'attributes' => [
-			'target' => '"_blank"',
-		],
-	];
-		if ($__navTemp) {
-			$__tree['fs_zoom_meetings'] = $__navTemp;
-			$__flat['fs_zoom_meetings'] =& $__tree['fs_zoom_meetings'];
-		}
-	}
-
 	$__navTemp = [
 		'title' => \XF::phrase('nav.createCrud'),
 		'href' => $__templater->func('link', array('crud', ), false),
@@ -1136,6 +1144,20 @@ return function($__templater, $__selectedNav, array $__vars)
 			$__flat['addRecord'] =& $__tree['createCrud']['children']['addRecord'];
 		}
 
+	}
+
+	if ($__templater->method($__vars['xf']['visitor'], 'canViewMeeting', array())) {
+		$__navTemp = [
+		'title' => \XF::phrase('nav.fs_zoom_meetings'),
+		'href' => $__templater->func('link', array('video-chat', ), false),
+		'attributes' => [
+			'target' => '"_blank"',
+		],
+	];
+		if ($__navTemp) {
+			$__tree['fs_zoom_meetings'] = $__navTemp;
+			$__flat['fs_zoom_meetings'] =& $__tree['fs_zoom_meetings'];
+		}
 	}
 
 	$__navTemp = [

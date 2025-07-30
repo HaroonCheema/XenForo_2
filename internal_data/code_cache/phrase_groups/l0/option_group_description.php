@@ -62,6 +62,7 @@ You may set a user into \'discouraged\' mode by editing their user profile, or d
   'option_group_description.fs_hide_usernames' => '',
   'option_group_description.fs_limitations' => '',
   'option_group_description.fs_logo_slider' => '',
+  'option_group_description.fs_model_spa_thread' => '',
   'option_group_description.fs_package_rating' => '',
   'option_group_description.fs_payment_redirection' => '',
   'option_group_description.fs_post_schdueling' => '',

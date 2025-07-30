@@ -15,7 +15,7 @@ class Member extends XFCP_Member
         $visitor = \xf::visitor();
 
         if (
-            $visitor->user_id == $user->user_id ||
+            // $visitor->user_id == $user->user_id ||
             $visitor->is_admin ||
             $visitor->is_moderator
         ) {

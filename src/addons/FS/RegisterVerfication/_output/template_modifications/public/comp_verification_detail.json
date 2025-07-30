@@ -1,0 +1,9 @@
+{
+    "template": "member_view",
+    "description": "comp verification detail",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<!--[XF:tab_panes:end]-->",
+    "replace": "<xf:comment><xf:if is=\"$user.comp_verify_key && ($xf.visitor.user_id==$user.user_id || $xf.visitor.is_admin || $xf.visitor.is_moderator)\"></xf:comment>\n<xf:if is=\"$user.comp_verify_key && ($xf.visitor.is_admin || $xf.visitor.is_moderator)\">\n\n<li data-href=\"{{ link('members/com-verify', $user) }}\" role=\"tabpanel\" aria-labelledby=\"com-verify\">\n\t\t<div class=\"blockMessage\">{{ phrase('loading...') }}</div>\n\t</li>\n\t\n</xf:if>\n\n$0"
+}

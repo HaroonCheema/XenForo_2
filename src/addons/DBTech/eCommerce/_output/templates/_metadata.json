@@ -1,4 +1,9 @@
 {
+    "admin/dbtech_ecommerce_category_edit.html": {
+        "version_id": 3010071,
+        "version_string": "3.1.0.1",
+        "hash": "6e3d7616d24e02e566bc228cf4b5475e"
+    },
     "public/dbtech_ecommerce_filters.html": {
         "version_id": 3010071,
         "version_string": "3.1.0.1",

@@ -476,6 +476,7 @@ This option requires that the specified account is a catch-all account or suppor
   'option_explain.fs_cancel_multiple_subscriptions_mintues' => '',
   'option_explain.fs_cancel_multiple_subscriptions_userGroup' => '',
   'option_explain.fs_change_the_path_to_the_tmp_file' => 'This option allows you to change the value for your TMP file, by default :  <b>/tmp</b>.',
+  'option_explain.fs_chat_gpt_api_key' => 'The key can be obtained on <a href="https://platform.openai.com/account/api-keys" target="_blank">OpenAI API keys</a> page.',
   'option_explain.fs_color' => '',
   'option_explain.fs_complete_production_btn_text' => 'Enter here text which you want to use for show <b>Complete Production button</b> if not exist in thread title.',
   'option_explain.fs_complete_production_prefix_id' => 'Enter custom thread prefix id here related to complete production.',

@@ -1,0 +1,9 @@
+{
+    "template": "member_view",
+    "description": "Companion verfication",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<!--[XF:tabs:end]-->",
+    "replace": "<xf:comment><xf:if is=\"$user.comp_verify_key && ($xf.visitor.user_id==$user.user_id || $xf.visitor.is_admin || $xf.visitor.is_moderator)\"></xf:comment>\n\t<xf:if is=\"$user.comp_verify_key && ($xf.visitor.is_admin || $xf.visitor.is_moderator)\">\n\t\t<a href=\"{{ link('members/com-verify', $user) }}\"\n\t\t   class=\"tabs-tab\"\n\t\t   id=\"com-verify\"\n\t\t   role=\"tab\">{{ phrase('com_verify') }}</a>\n\t</xf:if>\n\t$0"
+}

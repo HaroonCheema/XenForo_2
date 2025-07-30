@@ -125,16 +125,49 @@ return array(
 {
 	$__finalCompiled = '';
 	$__finalCompiled .= '
-	' . $__templater->formEditor(array(
-		'name' => 'message',
-		'value' => $__vars['message'],
-		'attachments' => ($__vars['attachmentData'] ? $__vars['attachmentData']['attachments'] : array()),
-		'data-min-height' => $__vars['minHeight'],
-		'placeholder' => $__vars['placeholder'],
-		'data-deferred' => ($__vars['deferred'] ? 'on' : 'off'),
-		'data-xf-key' => 'r',
-		'data-preview-url' => $__vars['previewUrl'],
-	)) . '
+		';
+	if ($__vars['thread']['is_dropdown_active'] != 0) {
+		$__finalCompiled .= '
+		';
+		$__compilerTemp1 = array();
+		if ($__templater->isTraversable($__vars['thread']['dropdwon_options'])) {
+			foreach ($__vars['thread']['dropdwon_options'] AS $__vars['val']) {
+				if ($__vars['val']) {
+					$__compilerTemp1[] = array(
+						'value' => $__vars['val'],
+						'label' => $__templater->escape($__vars['val']),
+						'_type' => 'option',
+					);
+				}
+			}
+		}
+		$__finalCompiled .= $__templater->formSelectRow(array(
+			'name' => 'message',
+		), $__compilerTemp1, array(
+			'label' => 'Select Reply',
+		)) . '
+		
+		
+		  
+	
+		';
+	} else {
+		$__finalCompiled .= '
+		' . $__templater->formEditor(array(
+			'name' => 'message',
+			'value' => $__vars['message'],
+			'attachments' => ($__vars['attachmentData'] ? $__vars['attachmentData']['attachments'] : array()),
+			'data-min-height' => $__vars['minHeight'],
+			'placeholder' => $__vars['placeholder'],
+			'data-deferred' => ($__vars['deferred'] ? 'on' : 'off'),
+			'data-xf-key' => 'r',
+			'data-preview-url' => $__vars['previewUrl'],
+		)) . '
+		
+		
+';
+	}
+	$__finalCompiled .= '
 
 	';
 	if ((!$__vars['xf']['visitor']['user_id']) AND $__vars['showGuestControls']) {
@@ -213,21 +246,12 @@ return array(
 	)) . '
 		</div>
 		';
-	$__compilerTemp1 = '';
-	$__compilerTemp1 .= '
-					';
-	if ($__vars['attachmentData']) {
-		$__compilerTemp1 .= '
-						' . $__templater->callMacro('helper_attach_upload', 'upload_link_from_data', array(
-			'attachmentData' => $__vars['attachmentData'],
-			'forceHash' => $__vars['forceHash'],
-		), $__vars) . '
-					';
-	}
-	$__compilerTemp1 .= '
+	$__compilerTemp2 = '';
+	$__compilerTemp2 .= '
+ 
 					';
 	if ($__vars['xf']['options']['multiQuote'] AND $__vars['multiQuoteHref']) {
-		$__compilerTemp1 .= '
+		$__compilerTemp2 .= '
 						' . $__templater->callMacro('multi_quote_macros', 'button', array(
 			'href' => $__vars['multiQuoteHref'],
 			'messageSelector' => $__vars['messageSelector'],
@@ -235,12 +259,12 @@ return array(
 		), $__vars) . '
 					';
 	}
-	$__compilerTemp1 .= '
+	$__compilerTemp2 .= '
 				';
-	if (strlen(trim($__compilerTemp1)) > 0) {
+	if (strlen(trim($__compilerTemp2)) > 0) {
 		$__finalCompiled .= '
 			<div class="formButtonGroup-extra">
-				' . $__compilerTemp1 . '
+				' . $__compilerTemp2 . '
 			</div>
 		';
 	}

@@ -1,0 +1,9 @@
+{
+    "template": "thread_view",
+    "description": "fs_thread_view_add_tags_suggestions",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/<xf:if is=\"\\$thread\\.canWatch\\(\\)\">.*?<\\/xf:if>/is",
+    "replace": "$0\n\n<xf:if is=\"$xf.visitor.is_admin || $xf.visitor.is_moderator\">\n\t<xf:button href=\"{{ link('threads/suggestion', $thread) }}\" class=\"button--link\" >\n\t\t{{ phrase('fs_thread_tag_suggestion_btn') }}\n\t</xf:button>\n</xf:if>"
+}
