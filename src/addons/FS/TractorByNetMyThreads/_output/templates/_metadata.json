@@ -1,0 +1,12 @@
+{
+    "public/fs_tbn_forum_view.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "8d5fda03272cf78f7c71ce2142f98dcd"
+    },
+    "public/fs_tbn_forum_view_type_article.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "1e23b532fdf9afb58b9e5680abbb0971"
+    }
+}

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="fs_tbn_post_ad" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Post new ad]]></phrase>
+  <phrase title="nav.fs_tbn_my_threads" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[My threads]]></phrase>
+  <phrase title="option.fs_tbn_my_thread_forum_id" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[My thread forum]]></phrase>
+  <phrase title="option.fs_tbn_my_thread_minimum_items" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Minimum Items]]></phrase>
+  <phrase title="option.fs_tbn_my_threads_specific_forum_id" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Select applicable forum]]></phrase>
+  <phrase title="option_explain.fs_tbn_my_thread_forum_id" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_explain.fs_tbn_my_thread_minimum_items" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Minimum item in specific forum to allow used my threads.]]></phrase>
+  <phrase title="option_explain.fs_tbn_my_threads_specific_forum_id" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Select your specific forum here.]]></phrase>
+  <phrase title="option_group.fs_my_threads_group" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] TBN my Threads]]></phrase>
+  <phrase title="option_group_description.fs_my_threads_group" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+</phrases>

@@ -1,0 +1,6 @@
+{
+    "from_class": "XF\\ForumType\\Article",
+    "to_class": "FS\\TractorByNetMyThreads\\XF\\ForumType\\Article",
+    "execute_order": 10,
+    "active": true
+}

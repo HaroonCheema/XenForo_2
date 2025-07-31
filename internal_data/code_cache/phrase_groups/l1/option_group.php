@@ -61,6 +61,7 @@ return array (
   'option_group.fs_limitations' => '[FS] Limitations',
   'option_group.fs_logo_slider' => '[FS] Logo Slider',
   'option_group.fs_model_spa_thread' => '[FS] Model and Spa thread tags',
+  'option_group.fs_my_threads_group' => '[FS] TBN my Threads',
   'option_group.fs_package_rating' => '[FS] Package Rating',
   'option_group.fs_payment_redirection' => '[FS] Payment Redirection',
   'option_group.fs_post_schdueling' => '[FS] Post schedule',

@@ -88,10 +88,10 @@ return function($__templater, $__selectedNav, array $__vars)
 
 	}
 
-	if ($__vars['xf']['visitor']['user_id']) {
+	if ($__templater->method($__vars['xf']['visitor'], 'canUseMyThreads', array())) {
 		$__navTemp = [
 		'title' => \XF::phrase('nav.fs_tbn_my_threads'),
-		'href' => $__templater->func('link', array('my-threads', ), false),
+		'href' => $__templater->func('link', array('my-threads/', ), false),
 		'attributes' => [],
 	];
 		if ($__navTemp) {
@@ -1098,6 +1098,62 @@ return function($__templater, $__selectedNav, array $__vars)
 			$__tree['snog_forms_nav'] = $__navTemp;
 			$__flat['snog_forms_nav'] =& $__tree['snog_forms_nav'];
 		}
+	}
+
+	$__navTemp = [
+		'title' => \XF::phrase('nav.bh_brand_hub'),
+		'href' => $__templater->func('link', array($__vars['xf']['options']['bh_main_route'], ), false),
+		'attributes' => [],
+	];
+	if ($__navTemp) {
+		$__tree['bh_brand_hub'] = $__navTemp;
+		$__flat['bh_brand_hub'] =& $__tree['bh_brand_hub'];
+		if (empty($__tree['bh_brand_hub']['children'])) { $__tree['bh_brand_hub']['children'] = []; }
+
+		if ($__templater->method($__vars['xf']['visitor'], 'hasPermission', array('bh_brand_hub', 'canViewRecentContent', ))) {
+			$__navTemp = [
+		'title' => \XF::phrase('nav.bh_recent_reviews'),
+		'href' => $__templater->func('link', array('bh-recent-reviews', ), false),
+		'attributes' => [],
+	];
+			if ($__navTemp) {
+				$__tree['bh_brand_hub']['children']['bh_recent_reviews'] = $__navTemp;
+				$__flat['bh_recent_reviews'] =& $__tree['bh_brand_hub']['children']['bh_recent_reviews'];
+			}
+		}
+
+		if ($__templater->method($__vars['xf']['visitor'], 'hasPermission', array('bh_brand_hub', 'canViewRecentContent', ))) {
+			$__navTemp = [
+		'title' => \XF::phrase('nav.bh_recent_photos'),
+		'href' => $__templater->func('link', array('bh-recent-photos', ), false),
+		'attributes' => [],
+	];
+			if ($__navTemp) {
+				$__tree['bh_brand_hub']['children']['bh_recent_photos'] = $__navTemp;
+				$__flat['bh_recent_photos'] =& $__tree['bh_brand_hub']['children']['bh_recent_photos'];
+			}
+		}
+
+		$__navTemp = [
+		'title' => \XF::phrase('nav.bh_quick_review'),
+		'href' => $__templater->func('link', array('bh-quick-review', ), false),
+		'attributes' => [],
+	];
+		if ($__navTemp) {
+			$__tree['bh_brand_hub']['children']['bh_quick_review'] = $__navTemp;
+			$__flat['bh_quick_review'] =& $__tree['bh_brand_hub']['children']['bh_quick_review'];
+		}
+
+		$__navTemp = [
+		'title' => \XF::phrase('nav.bh_quick_ownerPage'),
+		'href' => $__templater->func('link', array('bh-quick-owner-page', ), false),
+		'attributes' => [],
+	];
+		if ($__navTemp) {
+			$__tree['bh_brand_hub']['children']['bh_quick_ownerPage'] = $__navTemp;
+			$__flat['bh_quick_ownerPage'] =& $__tree['bh_brand_hub']['children']['bh_quick_ownerPage'];
+		}
+
 	}
 
 	if ($__templater->method($__vars['xf']['visitor'], 'canViewDbtechCredits', array())) {

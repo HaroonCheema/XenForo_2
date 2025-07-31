@@ -3,8 +3,8 @@
     "display_order": 1,
     "navigation_type_id": "basic",
     "type_config": {
-        "link": "{{ link('my-threads') }}",
-        "display_condition": "$xf.visitor.user_id",
+        "link": "{{ link('my-threads/') }}",
+        "display_condition": "$xf.visitor.canUseMyThreads()",
         "extra_attributes": []
     },
     "enabled": true
