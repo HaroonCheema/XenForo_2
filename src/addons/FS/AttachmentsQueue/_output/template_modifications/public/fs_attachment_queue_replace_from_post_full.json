@@ -1,0 +1,9 @@
+{
+    "template": "bb_code_tag_attach",
+    "description": "fs_attachment_queue_replace_from_post_full",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/<img src=\"{{ link\\('full:attachments', \\$attachment, {'hash': \\$attachment\\.temp_hash}\\) }}\".*?width=\"{\\$attachment\\.width}\" height=\"{\\$attachment\\.height}\" loading=\"lazy\" \\/>/is",
+    "replace": "<xf:if is=\"{{$attachment.content_type == 'post' && $attachment.attachment_state == 'pending'}}\">\n\t<img src=\"{$xf.options.fs_attachment_queue_pending_img}\"\n\t\t class=\"bbImage {$alignClass}\"\n\t\t style=\"{$styleAttr}\"\n\t\t alt=\"{$alt}\"\n\t\t title=\"{$alt}\"\n\t\t width=\"{$attachment.width}\" height=\"{$attachment.height}\" loading=\"lazy\" />\n\t<xf:elseif is=\"$attachment.content_type == 'post' && $attachment.attachment_state == 'rejected'\" />\n\t<img src=\"{$xf.options.fs_attachment_queue_rejected_img}\"\n\t\t class=\"bbImage {$alignClass}\"\n\t\t style=\"{$styleAttr}\"\n\t\t alt=\"{$alt}\"\n\t\t title=\"{$alt}\"\n\t\t width=\"{$attachment.width}\" height=\"{$attachment.height}\" loading=\"lazy\" />\n\t<xf:else />\n\t$0\n</xf:if>"
+}

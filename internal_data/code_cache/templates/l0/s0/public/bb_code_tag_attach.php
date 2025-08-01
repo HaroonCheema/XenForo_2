@@ -40,12 +40,36 @@ return array(
 		$__compilerTemp1 = '';
 		if ($__vars['noLightbox']) {
 			$__compilerTemp1 .= '
-		<img src="' . $__templater->func('link', array('full:attachments', $__vars['attachment'], array('hash' => $__vars['attachment']['temp_hash'], ), ), true) . '"
+		';
+			if ((($__vars['attachment']['content_type'] == 'post') AND ($__vars['attachment']['attachment_state'] == 'pending'))) {
+				$__compilerTemp1 .= '
+	<img src="' . $__templater->escape($__vars['xf']['options']['fs_attachment_queue_pending_img']) . '"
+		 class="bbImage ' . $__templater->escape($__vars['alignClass']) . '"
+		 style="' . $__templater->escape($__vars['styleAttr']) . '"
+		 alt="' . $__templater->escape($__vars['alt']) . '"
+		 title="' . $__templater->escape($__vars['alt']) . '"
+		 width="' . $__templater->escape($__vars['attachment']['width']) . '" height="' . $__templater->escape($__vars['attachment']['height']) . '" loading="lazy" />
+	';
+			} else if (($__vars['attachment']['content_type'] == 'post') AND ($__vars['attachment']['attachment_state'] == 'rejected')) {
+				$__compilerTemp1 .= '
+	<img src="' . $__templater->escape($__vars['xf']['options']['fs_attachment_queue_rejected_img']) . '"
+		 class="bbImage ' . $__templater->escape($__vars['alignClass']) . '"
+		 style="' . $__templater->escape($__vars['styleAttr']) . '"
+		 alt="' . $__templater->escape($__vars['alt']) . '"
+		 title="' . $__templater->escape($__vars['alt']) . '"
+		 width="' . $__templater->escape($__vars['attachment']['width']) . '" height="' . $__templater->escape($__vars['attachment']['height']) . '" loading="lazy" />
+	';
+			} else {
+				$__compilerTemp1 .= '
+	<img src="' . $__templater->func('link', array('full:attachments', $__vars['attachment'], array('hash' => $__vars['attachment']['temp_hash'], ), ), true) . '"
 			class="bbImage ' . $__templater->escape($__vars['alignClass']) . '"
 			style="' . $__templater->escape($__vars['styleAttr']) . '"
 			alt="' . $__templater->escape($__vars['alt']) . '"
 			title="' . $__templater->escape($__vars['alt']) . '"
 			width="' . $__templater->escape($__vars['attachment']['width']) . '" height="' . $__templater->escape($__vars['attachment']['height']) . '" loading="lazy" />
+';
+			}
+			$__compilerTemp1 .= '
 	';
 		} else {
 			$__compilerTemp1 .= '
@@ -66,10 +90,38 @@ return array(
 	' . $__compilerTemp1 . '
 ');
 	} else if ($__vars['canView'] AND (!$__vars['noLightbox'])) {
-		$__finalCompiled .= trim('
+		$__compilerTemp2 = '';
+		if ((($__vars['attachment']['content_type'] == 'post') AND ($__vars['attachment']['attachment_state'] == 'pending'))) {
+			$__compilerTemp2 .= '
 	' . $__templater->callMacro('lightbox_macros', 'setup', array(
-			'canViewAttachments' => $__vars['canView'],
-		), $__vars) . '
+				'canViewAttachments' => $__vars['canView'],
+			), $__vars) . '
+	<a href="' . $__templater->escape($__vars['xf']['options']['fs_attachment_queue_pending_img']) . '"
+	   target="_blank" class="js-lbImage"><img src="' . $__templater->escape($__vars['xf']['options']['fs_attachment_queue_pending_img']) . '"
+											   class="bbImage ' . $__templater->escape($__vars['alignClass']) . '"
+											   style="' . $__templater->escape($__vars['styleAttr']) . '"
+											   alt="' . $__templater->escape($__vars['alt']) . '"
+											   title="' . $__templater->escape($__vars['alt']) . '"
+											   width="' . $__templater->escape($__vars['attachment']['thumbnail_width']) . '" height="' . $__templater->escape($__vars['attachment']['thumbnail_height']) . '" loading="lazy" /></a>
+	';
+		} else if (($__vars['attachment']['content_type'] == 'post') AND ($__vars['attachment']['attachment_state'] == 'rejected')) {
+			$__compilerTemp2 .= '
+	' . $__templater->callMacro('lightbox_macros', 'setup', array(
+				'canViewAttachments' => $__vars['canView'],
+			), $__vars) . '
+	<a href="' . $__templater->escape($__vars['xf']['options']['fs_attachment_queue_rejected_img']) . '"
+	   target="_blank" class="js-lbImage"><img src="' . $__templater->escape($__vars['xf']['options']['fs_attachment_queue_rejected_img']) . '"
+											   class="bbImage ' . $__templater->escape($__vars['alignClass']) . '"
+											   style="' . $__templater->escape($__vars['styleAttr']) . '"
+											   alt="' . $__templater->escape($__vars['alt']) . '"
+											   title="' . $__templater->escape($__vars['alt']) . '"
+											   width="' . $__templater->escape($__vars['attachment']['thumbnail_width']) . '" height="' . $__templater->escape($__vars['attachment']['thumbnail_height']) . '" loading="lazy" /></a>
+	';
+		} else {
+			$__compilerTemp2 .= '
+	' . $__templater->callMacro('lightbox_macros', 'setup', array(
+				'canViewAttachments' => $__vars['canView'],
+			), $__vars) . '
 	<a href="' . $__templater->func('link', array('full:attachments', $__vars['attachment'], array('hash' => $__vars['attachment']['temp_hash'], ), ), true) . '"
 		target="_blank" class="js-lbImage"><img src="' . $__templater->escape($__vars['attachment']['thumbnail_url_full']) . '"
 		class="bbImage ' . $__templater->escape($__vars['alignClass']) . '"
@@ -77,6 +129,10 @@ return array(
 		alt="' . $__templater->escape($__vars['alt']) . '"
 		title="' . $__templater->escape($__vars['alt']) . '"
 		width="' . $__templater->escape($__vars['attachment']['thumbnail_width']) . '" height="' . $__templater->escape($__vars['attachment']['thumbnail_height']) . '" loading="lazy" /></a>
+';
+		}
+		$__finalCompiled .= trim('
+	' . $__compilerTemp2 . '
 ');
 	} else {
 		$__finalCompiled .= trim('

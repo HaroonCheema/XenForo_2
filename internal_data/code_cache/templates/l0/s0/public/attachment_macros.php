@@ -18,10 +18,30 @@ return array(
 			'canViewAttachments' => $__vars['canView'],
 		), $__vars) . '
 
-			<a class="file-preview ' . ($__vars['canView'] ? 'js-lbImage' : '') . '" href="' . $__templater->escape($__vars['attachment']['direct_url']) . '" target="_blank">
+			';
+		if (($__vars['attachment']['content_type'] == 'post') AND ($__vars['attachment']['attachment_state'] == 'pending')) {
+			$__finalCompiled .= '
+	<a class="file-preview ' . ($__vars['canView'] ? 'js-lbImage' : '') . '" href="' . $__templater->escape($__vars['xf']['options']['fs_attachment_queue_pending_img']) . '" target="_blank">
+		<img src="' . $__templater->escape($__vars['xf']['options']['fs_attachment_queue_pending_img']) . '" alt="' . $__templater->escape($__vars['attachment']['filename']) . '"
+			 width="' . $__templater->escape($__vars['attachment']['thumbnail_width']) . '" height="' . $__templater->escape($__vars['attachment']['thumbnail_height']) . '" loading="lazy" />
+	</a>
+	';
+		} else if (($__vars['attachment']['content_type'] == 'post') AND ($__vars['attachment']['attachment_state'] == 'rejected')) {
+			$__finalCompiled .= '
+	<a class="file-preview ' . ($__vars['canView'] ? 'js-lbImage' : '') . '" href="' . $__templater->escape($__vars['xf']['options']['fs_attachment_queue_rejected_img']) . '" target="_blank">
+		<img src="' . $__templater->escape($__vars['xf']['options']['fs_attachment_queue_rejected_img']) . '" alt="' . $__templater->escape($__vars['attachment']['filename']) . '"
+			 width="' . $__templater->escape($__vars['attachment']['thumbnail_width']) . '" height="' . $__templater->escape($__vars['attachment']['thumbnail_height']) . '" loading="lazy" />
+	</a>
+	';
+		} else {
+			$__finalCompiled .= '
+	<a class="file-preview ' . ($__vars['canView'] ? 'js-lbImage' : '') . '" href="' . $__templater->escape($__vars['attachment']['direct_url']) . '" target="_blank">
 				<img src="' . $__templater->escape($__vars['attachment']['thumbnail_url']) . '" alt="' . $__templater->escape($__vars['attachment']['filename']) . '"
 					width="' . $__templater->escape($__vars['attachment']['thumbnail_width']) . '" height="' . $__templater->escape($__vars['attachment']['thumbnail_height']) . '" loading="lazy" />
 			</a>
+';
+		}
+		$__finalCompiled .= '
 		';
 	} else if ($__vars['attachment']['is_video'] AND $__vars['canView']) {
 		$__finalCompiled .= '

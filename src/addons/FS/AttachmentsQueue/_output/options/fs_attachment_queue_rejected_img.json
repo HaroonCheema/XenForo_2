@@ -1,0 +1,13 @@
+{
+    "edit_format": "textbox",
+    "edit_format_params": "",
+    "data_type": "string",
+    "sub_options": [],
+    "validation_class": "",
+    "validation_method": "",
+    "advanced": false,
+    "default_value": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgYINTMOE-ljIvmnN0TWHvxpuFi8yh4Z84pQ&s",
+    "relations": {
+        "fs_attachment_approval_queue": 2
+    }
+}

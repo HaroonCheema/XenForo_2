@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="fs_attachment_queue_approval_title" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Attachment queue]]></phrase>
+  <phrase title="fs_attachments_queue_approvale" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Attachment Approval Queue]]></phrase>
+  <phrase title="option.fs_attachment_queue_pending_img" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Pending img url]]></phrase>
+  <phrase title="option.fs_attachment_queue_rejected_img" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Rejected img url]]></phrase>
+  <phrase title="option_explain.fs_attachment_queue_pending_img" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_explain.fs_attachment_queue_rejected_img" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_group.fs_attachment_approval_queue" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Attachment Approval Queue]]></phrase>
+  <phrase title="option_group_description.fs_attachment_approval_queue" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+</phrases>

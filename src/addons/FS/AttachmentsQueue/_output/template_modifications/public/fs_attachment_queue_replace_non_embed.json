@@ -1,0 +1,9 @@
+{
+    "template": "attachment_macros",
+    "description": "fs_attachment_queue_replace_non_embed",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/<a class=\"file-preview {{ \\$canView \\? 'js-lbImage' : '' }}\" href=\"{\\$attachment\\.direct_url}\" target=\"_blank\">.*?<\\/a>/is",
+    "replace": "<xf:if is=\"$attachment.content_type == 'post' && $attachment.attachment_state == 'pending'\">\n\t<a class=\"file-preview {{ $canView ? 'js-lbImage' : '' }}\" href=\"{$xf.options.fs_attachment_queue_pending_img}\" target=\"_blank\">\n\t\t<img src=\"{$xf.options.fs_attachment_queue_pending_img}\" alt=\"{$attachment.filename}\"\n\t\t\t width=\"{$attachment.thumbnail_width}\" height=\"{$attachment.thumbnail_height}\" loading=\"lazy\" />\n\t</a>\n\t<xf:elseif is=\"$attachment.content_type == 'post' && $attachment.attachment_state == 'rejected'\" />\n\t<a class=\"file-preview {{ $canView ? 'js-lbImage' : '' }}\" href=\"{$xf.options.fs_attachment_queue_rejected_img}\" target=\"_blank\">\n\t\t<img src=\"{$xf.options.fs_attachment_queue_rejected_img}\" alt=\"{$attachment.filename}\"\n\t\t\t width=\"{$attachment.thumbnail_width}\" height=\"{$attachment.thumbnail_height}\" loading=\"lazy\" />\n\t</a>\n\t<xf:else />\n\t$0\n</xf:if>"
+}

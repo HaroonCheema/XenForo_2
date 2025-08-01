@@ -1,0 +1,183 @@
+<xf:title>{{ phrase('fs_attachments_queue_approvale') }}</xf:title>
+
+<div class="blocks">
+	<xf:if is="$pendingAttachments is not empty">
+
+		<div class="block-outer block-outer--before">
+			<xf:pagenav	page="{$page}" perpage="{$perPage}" total="{$total}" link="attachment-queue/" params="{$conditions}"
+						wrapperclass="block-outer-main" />
+		</div>
+
+		<xf:form class="block-container" action="{{ link('attachment-queue/save') }}" ajax="true" class="js-stickyParent approvalQueue">
+
+			<div class="blocks">
+				<xf:foreach loop="$pendingAttachments" value="$attachment">
+					<div class="block">
+						<div class="block-container approvalQueue-item js-approvalQueue-item">
+							<div class="block-body">
+								<xf:macro name="fs_attachment_form" arg-attachment="{$attachment}"
+										  arg-redirect="{$redirect}"
+										  arg-page="{$page}" />
+							</div>
+						</div>
+					</div>
+
+
+				</xf:foreach>
+
+				<div class="block">
+					<div class="block-container block-container--none" >
+						<xf:submitrow icon="save" sticky=".js-stickyParent" rowtype="standalone" />
+					</div>
+				</div>
+			</div>
+		</xf:form>
+
+
+		<div class="block-outer block-outer--after">
+			<xf:pagenav	page="{$page}" perpage="{$perPage}" total="{$total}" link="attachment-queue/" params="{$conditions}"
+						wrapperclass="block-outer-main" />
+		</div>
+
+		<xf:else />
+
+		<div class="block">
+			<div class="block-container">
+				<div class="block-body">
+					<div class="formInfoRow">
+						{{ phrase('no_results_found') }}
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</xf:if>
+</div>
+
+<xf:macro name="fs_attachment_form" arg-attachment="!" arg-redirect="/" arg-page="0">
+
+	<div class="message">
+		<xf:css src="message.less" />
+		<div class="message-inner">
+			<div class="message-cell message-cell--user">
+
+				<xf:extension name="user_wrapper">
+					<section itemscope itemtype="https://schema.org/Person" class="message-user">
+						<xf:extension name="user_avatar">
+							<div class="message-avatar">
+								<div class="message-avatar-wrapper">
+									<xf:avatar user="$attachment.Data.User" size="m" itemprop="image" />
+								</div>
+							</div>
+						</xf:extension>
+
+						<div class="message-userDetails">
+							<xf:extension name="user_name">
+								<h4 class="message-name"><xf:username user="$attachment.Data.User" rich="true" itemprop="name" /></h4>
+							</xf:extension>
+						</div>
+
+						<span class="message-userArrow"></span>
+					</section>
+				</xf:extension>
+
+			</div>
+
+			<div class="message-cell message-cell--main">
+				<div class="message-expandWrapper js-expandWatch">
+					<div class="message-expandContent js-expandContent">
+						<div class="message-main">
+
+							<header class="message-attribution">
+								<xf:extension name="attributes">
+									<ul class="message-attribution-main listInline">
+										<xf:extension name="attributes_main">
+											<li><xf:date time="{$attachment.attach_date}" /></li>
+										</xf:extension>
+									</ul>
+
+									<ul class="message-attribution-opposite message-attribution-opposite--list">
+										<xf:extension name="attributes_opposite">
+											<li>
+												<a href="{{ link('posts/', $attachment.Post) }}" target="_blank" rel="nofollow">
+													{{ $attachment.Post.Thread.title }}
+												</a>
+											</li>
+										</xf:extension>
+									</ul>
+									<xf:comment>
+										<ul class="message-attribution-opposite message-attribution-opposite--list">
+											<xf:extension name="attributes_opposite">
+												<li>
+													<a href="{{ link('attachment-queue/', $attachment.Page) }}" target="_blank" rel="nofollow">
+														#{{ $attachment.attachment_id|number }}
+													</a>
+												</li>
+											</xf:extension>
+										</ul>
+									</xf:comment>
+								</xf:extension>
+							</header>
+
+							<div class="message-content">
+
+								<div class="message-userContent">
+									<div class="message-body">
+
+										<div class="pairWrapper pairWrapper--spaced">
+
+											<xf:extension name="data_start"></xf:extension>
+
+											<xf:extension name="data_payment_system">
+
+												<a class="file-preview'js-lbImage" href="{$attachment.direct_url}" target="_blank">
+													<img src="{$attachment.thumbnail_url}" alt="{$attachment.filename}"
+														 width="{$attachment.thumbnail_width}" height="{$attachment.thumbnail_height}" loading="lazy" />
+												</a>
+											</xf:extension>
+
+											<xf:extension name="data_end"></xf:extension>
+
+										</div>
+
+									</div>
+								</div>
+
+							</div>
+
+						</div>
+					</div>
+					<div class="message-expandLink js-expandLink"><a>{{ phrase('click_to_expand') }}</a></div>
+				</div>
+			</div>
+
+			<div class="message-cell message-cell--extra" style="display: flex; flex-direction: column; justify-content: space-between;">
+				<xf:extension name="actions">
+					<div>
+
+						<xf:radio name="attachments[{{$attachment.attachment_id}}]">
+							<!--[XF:above_attachment_state_actions]-->
+							<xf:option value="pending" checked="checked" data-xf-click="fs-attachment-queue-control">
+								{{ phrase('pending') }}
+							</xf:option>
+							<xf:option value="approve" data-xf-click="fs-attachment-queue-control">
+								{{ phrase('approve') }}
+							</xf:option>
+							<xf:option value="rejected" data-xf-click="fs-attachment-queue-control">
+								<xf:label>{{ phrase('reject') }}</xf:label>
+							</xf:option>
+							<!--[XF:bellow_attachment_state_actions]-->
+						</xf:radio>
+
+					</div>
+
+				</xf:extension>
+			</div>
+
+		</div>
+	</div>
+
+
+	<xf:redirect url="{$redirect}" />
+
+</xf:macro>

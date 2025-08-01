@@ -210,7 +210,7 @@ return array(
 				' . $__templater->callMacro(null, 'crumb', array(
 			'position' => $__vars['position'],
 			'href' => $__vars['rootBreadcrumb']['href'],
-			'value' => $__vars['xf']['options']['bh_breadCrumSlug'],
+			'value' => $__vars['rootBreadcrumb']['title'],
 		), $__vars) . '
 			';
 	}
@@ -467,6 +467,18 @@ return array(
 	$__compilerTemp1 = '';
 	$__compilerTemp1 .= '
 				';
+	if ($__vars['xf']['visitor']['is_admin'] OR ($__vars['xf']['visitor']['is_moderator'] AND $__vars['xf']['session']['fsAttachmentsPendingCount']['total'])) {
+		$__compilerTemp1 .= '
+	<a href="' . $__templater->func('link', array('attachment-queue', ), true) . '"
+	   class="p-staffBar-link badgeContainer badgeContainer--highlighted"
+	   data-badge="' . $__templater->filter($__vars['xf']['session']['fsAttachmentsPendingCount']['total'], array(array('number', array()),), true) . '">
+		' . 'Attachment queue' . '
+	</a>
+';
+	}
+	$__compilerTemp1 .= '
+
+';
 	if ($__vars['xf']['visitor']['is_moderator'] AND $__vars['xf']['session']['unapprovedCounts']['total']) {
 		$__compilerTemp1 .= '
 					<a href="' . $__templater->func('link', array('approval-queue', ), true) . '" class="p-staffBar-link badgeContainer badgeContainer--highlighted" data-badge="' . $__templater->filter($__vars['xf']['session']['unapprovedCounts']['total'], array(array('number', array()),), true) . '">

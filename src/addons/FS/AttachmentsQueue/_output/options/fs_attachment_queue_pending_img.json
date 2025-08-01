@@ -1,0 +1,13 @@
+{
+    "edit_format": "textbox",
+    "edit_format_params": "",
+    "data_type": "string",
+    "sub_options": [],
+    "validation_class": "",
+    "validation_method": "",
+    "advanced": false,
+    "default_value": "https://t4.ftcdn.net/jpg/10/16/63/35/360_F_1016633572_91oo1FpZHs8vAWtM4zWLdVPPBdX8IGPc.jpg",
+    "relations": {
+        "fs_attachment_approval_queue": 1
+    }
+}

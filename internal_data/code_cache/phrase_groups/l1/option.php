@@ -382,6 +382,8 @@ return array (
   'option.fsShowLanguage' => 'Show floating language selector',
   'option.fsWidgetLook' => 'Widget look',
   'option.fs_assign_group_applicable' => 'Applicable Group',
+  'option.fs_attachment_queue_pending_img' => 'Pending img url',
+  'option.fs_attachment_queue_rejected_img' => 'Rejected img url',
   'option.fs_auction_applicable_forum' => 'Forum Id',
   'option.fs_auction_bumping_allowed' => 'Allowed Bumping',
   'option.fs_auction_dropDown_list_limit' => 'Bidding Drop Down List Limit',

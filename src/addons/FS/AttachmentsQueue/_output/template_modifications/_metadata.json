@@ -1,0 +1,14 @@
+{
+    "public/fs_attachment_queue_approval_page_container.json": {
+        "hash": "19ac1e9ebe86a1acb41a270a4f8fb23d"
+    },
+    "public/fs_attachment_queue_replace_from_post_full.json": {
+        "hash": "4499366aa27261cccb42a3e177ab7677"
+    },
+    "public/fs_attachment_queue_replace_from_post_thumb.json": {
+        "hash": "2be38b2db1f8511f7889dc33c00ccb34"
+    },
+    "public/fs_attachment_queue_replace_non_embed.json": {
+        "hash": "08afb0bdc47375f82ec8dee979653852"
+    }
+}

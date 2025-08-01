@@ -1,0 +1,11 @@
+{
+    "route_type": "public",
+    "route_prefix": "attachment-queue",
+    "sub_name": "",
+    "format": ":int<attachment_id>/",
+    "build_class": "",
+    "build_method": "",
+    "controller": "FS\\AttachmentsQueue:Queue",
+    "context": "",
+    "action_prefix": ""
+}

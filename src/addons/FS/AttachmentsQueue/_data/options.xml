@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<options>
+  <option option_id="fs_attachment_queue_pending_img" edit_format="textbox" data_type="string">
+    <default_value>https://t4.ftcdn.net/jpg/10/16/63/35/360_F_1016633572_91oo1FpZHs8vAWtM4zWLdVPPBdX8IGPc.jpg</default_value>
+    <relation group_id="fs_attachment_approval_queue" display_order="1"/>
+  </option>
+  <option option_id="fs_attachment_queue_rejected_img" edit_format="textbox" data_type="string">
+    <default_value>https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgYINTMOE-ljIvmnN0TWHvxpuFi8yh4Z84pQ&amp;s</default_value>
+    <relation group_id="fs_attachment_approval_queue" display_order="2"/>
+  </option>
+</options>
