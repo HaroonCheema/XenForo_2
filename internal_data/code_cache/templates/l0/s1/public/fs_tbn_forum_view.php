@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 8d5fda03272cf78f7c71ce2142f98dcd
+// FROM HASH: 17a67630123de7b59df3a371572dbf95
 return array(
 'extensions' => array('above_node_list' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -50,17 +50,7 @@ return array(
 	}
 	$__finalCompiled .= '
 					
-					<a class="filterBar-menuTrigger" data-xf-click="menu" role="button" tabindex="0" aria-expanded="false" aria-haspopup="true">' . 'Filters' . '</a>
-					<div class="menu menu--wide" data-menu="menu" aria-hidden="true"
-						data-href="' . $__templater->func('link', array('forums/filters', $__vars['forum'], $__vars['filters'], ), true) . '"
-						data-load-target=".js-filterMenuBody">
-						<div class="menu-content">
-							<h4 class="menu-header">' . 'Show only' . $__vars['xf']['language']['label_separator'] . '</h4>
-							<div class="js-filterMenuBody">
-								<div class="menu-row">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
-							</div>
-						</div>
-					</div>
+					' . '
 				</div>
 			</div>
 		';
@@ -446,7 +436,7 @@ return array(
 	$__finalCompiled .= '
 
 ';
-	if ($__vars['canInlineMod']) {
+	if ($__vars['xf']['visitor']['is_admin'] OR $__vars['xf']['visitor']['is_moderator']) {
 		$__finalCompiled .= '
 	';
 		$__templater->includeJs(array(
@@ -464,56 +454,20 @@ return array(
 	), $__vars) . '
 
 ' . '
-<div class="block ' . $__templater->escape($__templater->renderExtension('thread_list_block_classes', $__vars, $__extensions)) . '" data-xf-init="' . ($__vars['canInlineMod'] ? 'inline-mod' : '') . '" data-type="thread" data-href="' . $__templater->func('link', array('inline-mod', ), true) . '">
+<div class="block ' . $__templater->escape($__templater->renderExtension('thread_list_block_classes', $__vars, $__extensions)) . '" data-xf-init="' . (($__vars['xf']['visitor']['is_admin'] OR $__vars['xf']['visitor']['is_moderator']) ? 'inline-mod' : '') . '" data-type="thread" data-href="' . $__templater->func('link', array('inline-mod', ), true) . '">
 	
 	<div class="block-outer">';
 	$__compilerTemp1 = '';
 	$__compilerTemp2 = '';
 	$__compilerTemp2 .= '
 					';
-	if ($__vars['canInlineMod']) {
+	if ($__vars['xf']['visitor']['is_admin'] OR $__vars['xf']['visitor']['is_moderator']) {
 		$__compilerTemp2 .= '
 						' . $__templater->callMacro('inline_mod_macros', 'button', array(), $__vars) . '
 					';
 	}
 	$__compilerTemp2 .= '
-					';
-	if ($__vars['xf']['visitor']['user_id']) {
-		$__compilerTemp2 .= '
-						' . $__templater->button('
-							' . 'Mark read' . '
-						', array(
-			'href' => $__templater->func('link', array('forums/mark-read', $__vars['specificForum'], array('date' => $__vars['xf']['time'], ), ), false),
-			'class' => 'button--link',
-			'overlay' => 'true',
-		), '', array(
-		)) . '
-					';
-	}
-	$__compilerTemp2 .= '
-					';
-	if ($__templater->method($__vars['specificForum'], 'canWatch', array())) {
-		$__compilerTemp2 .= '
-						';
-		$__compilerTemp3 = '';
-		if ($__vars['specificForum']['Watch'][$__vars['xf']['visitor']['user_id']]) {
-			$__compilerTemp3 .= 'Unwatch';
-		} else {
-			$__compilerTemp3 .= 'Watch';
-		}
-		$__compilerTemp2 .= $__templater->button('
-							' . $__compilerTemp3 . '
-						', array(
-			'href' => $__templater->func('link', array('forums/watch', $__vars['specificForum'], ), false),
-			'class' => 'button--link',
-			'data-xf-click' => 'switch-overlay',
-			'data-sk-watch' => 'Watch',
-			'data-sk-unwatch' => 'Unwatch',
-		), '', array(
-		)) . '
-					';
-	}
-	$__compilerTemp2 .= '
+					' . '
 				';
 	if (strlen(trim($__compilerTemp2)) > 0) {
 		$__compilerTemp1 .= '

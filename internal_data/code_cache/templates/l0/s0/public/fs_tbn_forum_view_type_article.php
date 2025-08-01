@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 1e23b532fdf9afb58b9e5680abbb0971
+// FROM HASH: 9633335b44f3e7d35857919a39d3f94d
 return array(
 'extends' => function($__templater, array $__vars) { return 'fs_tbn_forum_view'; },
 'extensions' => array('thread_list_block_classes' => function($__templater, array $__vars, $__extensions = null)
@@ -166,6 +166,8 @@ return array(
 {
 	$__finalCompiled = '';
 	$__finalCompiled .= '
+
+
 
 ' . '
 

@@ -2,11 +2,11 @@
     "public/fs_tbn_forum_view.html": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
-        "hash": "8d5fda03272cf78f7c71ce2142f98dcd"
+        "hash": "17a67630123de7b59df3a371572dbf95"
     },
     "public/fs_tbn_forum_view_type_article.html": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
-        "hash": "1e23b532fdf9afb58b9e5680abbb0971"
+        "hash": "9633335b44f3e7d35857919a39d3f94d"
     }
 }

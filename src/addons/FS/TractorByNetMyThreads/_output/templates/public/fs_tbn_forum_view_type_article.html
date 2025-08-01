@@ -1,5 +1,7 @@
 <xf:extends template="fs_tbn_forum_view" />
 
+
+
 <xf:extension name="thread_list_block_classes" value="block--articles
 	{{ ($forum.type_config.display_style != 'full' AND $forum.canViewThreadContent()) ? 'block--messages' : '' }}
 	{{ ($forum.type_config.display_style == 'preview' AND $forum.canViewThreadContent()) ? 'block--previews' : '' }}

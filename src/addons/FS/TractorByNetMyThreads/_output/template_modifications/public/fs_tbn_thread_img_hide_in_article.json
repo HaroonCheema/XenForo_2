@@ -1,0 +1,9 @@
+{
+    "template": "extra.less",
+    "description": "fs_tbn_thread_img_hide_in_article",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/^(.*)$/is",
+    "replace": "$0\n\n@media (max-width: 424px)\n{\n\t[data-template=\"fs_tbn_forum_view_type_article\"] {\n\t\t.articlePreview-image {\n\t\t\tdisplay: none;\n\t\t}\n\t}\n}"
+}

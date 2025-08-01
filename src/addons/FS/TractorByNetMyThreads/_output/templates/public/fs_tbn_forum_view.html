@@ -43,7 +43,7 @@
 	<xf:ad position="forum_view_below_node_list" arg-forum="{$forum}" />
 </xf:if>
 
-<xf:if is="$canInlineMod">
+<xf:if is="$xf.visitor.is_admin || $xf.visitor.is_moderator">
 	<xf:js src="xf/inline_mod.js" min="1" />
 </xf:if>
 
@@ -51,7 +51,7 @@
 <xf:ad position="forum_view_above_thread_list" arg-forum="{$forum}" />
 
 <xf:extension name="thread_list_block_classes" value="" />
-<div class="block {{ extension_value('thread_list_block_classes') }}" data-xf-init="{{ $canInlineMod ? 'inline-mod' : '' }}" data-type="thread" data-href="{{ link('inline-mod') }}">
+<div class="block {{ extension_value('thread_list_block_classes') }}" data-xf-init="{{ ($xf.visitor.is_admin || $xf.visitor.is_moderator) ? 'inline-mod' : '' }}" data-type="thread" data-href="{{ link('inline-mod') }}">
 	
 	<div class="block-outer"><xf:trim>
 		<xf:pagenav page="{$page}" perpage="{$perPage}" total="{$total}"
@@ -61,9 +61,10 @@
 			<div class="block-outer-opposite">
 				<div class="buttonGroup">
 				<xf:contentcheck>
-					<xf:if is="$canInlineMod">
+					<xf:if is="$xf.visitor.is_admin || $xf.visitor.is_moderator">
 						<xf:macro template="inline_mod_macros" name="button" />
 					</xf:if>
+					<xf:comment>
 					<xf:if is="$xf.visitor.user_id">
 						<xf:button href="{{ link('forums/mark-read', $specificForum, {'date': $xf.time}) }}"
 							class="button--link" overlay="true">
@@ -78,6 +79,7 @@
 							<xf:if is="{$specificForum.Watch.{$xf.visitor.user_id}}">{{ phrase('unwatch') }}<xf:else />{{ phrase('watch') }}</xf:if>
 						</xf:button>
 					</xf:if>
+					</xf:comment>
 				</xf:contentcheck>
 				</div>
 			</div>
@@ -103,6 +105,7 @@
 						</ul>
 					</xf:if>
 					
+					<xf:comment>
 					<a class="filterBar-menuTrigger" data-xf-click="menu" role="button" tabindex="0" aria-expanded="false" aria-haspopup="true">{{ phrase('filters') }}</a>
 					<div class="menu menu--wide" data-menu="menu" aria-hidden="true"
 						data-href="{{ link('forums/filters', $forum, $filters) }}"
@@ -114,6 +117,7 @@
 							</div>
 						</div>
 					</div>
+					</xf:comment>
 				</div>
 			</div>
 		</xf:extension>
