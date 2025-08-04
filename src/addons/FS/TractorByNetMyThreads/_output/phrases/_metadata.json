@@ -5,6 +5,12 @@
         "version_string": "1.0.0 Alpha",
         "hash": "3d18c4831399a7837ed89197e0f996e0"
     },
+    "fs_tbn_view_messages.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "1669ba376f599c34ba88ce2566591d35"
+    },
     "nav.fs_tbn_my_threads.txt": {
         "global_cache": false,
         "version_id": 1000010,

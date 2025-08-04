@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 196f098cbf0c05445f217c36e798f8e5
+// FROM HASH: ea95ef4d7ba5d26b660a08e00f1d5b6e
 return array(
 'macros' => array('table_list' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -41,7 +41,7 @@ return array(
 			),
 			array(
 				'_type' => 'cell',
-				'html' => ' ' . $__templater->func('date_dynamic', array($__vars['value']['from'], array(
+				'html' => ' ' . $__templater->func('date_dynamic', array(($__vars['value']['to'] - 86400), array(
 			))) . ' ',
 			),
 			array(

@@ -4,5 +4,8 @@
     },
     "fs_send_emails_per_minute.json": {
         "hash": "ad3cf73267d7b85281566efd274255c8"
+    },
+    "fs_send_message_on_whatsapp.json": {
+        "hash": "150be2b004d0808e578d150e75f5673d"
     }
 }

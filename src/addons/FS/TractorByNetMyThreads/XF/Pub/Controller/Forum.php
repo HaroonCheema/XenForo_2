@@ -65,10 +65,23 @@ class Forum extends XFCP_Forum
         $threads = $threadList->fetch();
         $totalThreads = $threadList->total();
 
+        $newMessages = 0;
+
+        foreach ($threads as $key => $thread) {
+            $readDate = $thread->getVisitorReadDate();
+
+            $unReadPosts = $this->finder("XF:Post")->where('thread_id', $thread->thread_id)->where('post_date', '>', $readDate)->total();
+
+            if ($unReadPosts) {
+                $newMessages += $unReadPosts;
+            }
+        }
+
         $parent->setParams([
             'threads' => $threads,
             'specificForum' => $newForum,
-            'total' => $totalThreads
+            'total' => $totalThreads,
+            'newMessages' => $newMessages
         ]);
 
         return $parent;
@@ -83,5 +96,13 @@ class Forum extends XFCP_Forum
         }
 
         return parent::actionPostThread($params);
+    }
+
+    /**
+     * @return \XF\Repository\Post
+     */
+    protected function getPostRepo()
+    {
+        return $this->repository('XF:Post');
     }
 }

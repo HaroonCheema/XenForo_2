@@ -31,6 +31,7 @@ class InsertEmails extends AbstractController
         foreach ($emails as $emailData) {
             $newEmail = $this->em()->create('FS\SendMailFromTable:MidNightEmails');
             $newEmail->email = $emailData['email'] ?? '';
+            $newEmail->phone_no = $emailData['phone_no'] ?? '';
             $newEmail->date = $emailData['date'] ?? \XF::$time;
             $newEmail->save();
         }

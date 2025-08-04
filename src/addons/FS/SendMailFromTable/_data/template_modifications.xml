@@ -1,2 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<template_modifications/>
+<template_modifications>
+  <modification type="public" template="PAGE_CONTAINER" modification_key="fs_send_email_logs_by_table" description="fs_send_email_logs_by_table" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:if is="$xf.visitor.is_moderator && $xf.session.unapprovedCounts.total">]]></find>
+    <replace><![CDATA[<xf:if is="$xf.visitor.is_admin || $xf.visitor.is_moderator">
+	<a href="{{ link('email-logs') }}"
+	   class="p-staffBar-link">
+		{{ phrase('fs_send_email_logs_pub') }}
+	</a>
+</xf:if>
+
+$0]]></replace>
+  </modification>
+</template_modifications>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <templates>
-  <template type="admin" title="fs_email_logs_details" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('fs_email_logs_detail') }}</xf:title>
+  <template type="admin" title="fs_email_logs_details" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[<xf:title>{{ phrase('fs_email_logs_detail') }}</xf:title>
 
 <xf:form action="{{ link($prefix . '/toggle') }}" class="block" ajax="true">
 	<div class="block-outer">
@@ -55,6 +55,7 @@
 	<xf:datarow rowtype="header">
 		<xf:cell> {{ phrase('fs_email_logs_email') }} </xf:cell>
 		<xf:cell> {{ phrase('fs_email_logs_date') }} </xf:cell>
+		<xf:cell class="dataList-cell--min"></xf:cell>
 	</xf:datarow>
 	<xf:foreach loop="{$data}" key="$key" i="$i" value="$value">
 		<xf:datarow>
@@ -62,10 +63,16 @@
 			<xf:cell> {$value.email} </xf:cell>
 			<xf:cell> <xf:date time="{$value.date}" /> </xf:cell>
 
+			<xf:if is="$value.phone_no is not empty">
+				<xf:action href="{{ link('email-logs/send', $value) }}" >
+					{{ phrase('send') }}
+				</xf:action>
+			</xf:if>
+
 		</xf:datarow>
 	</xf:foreach>
 </xf:macro>]]></template>
-  <template type="admin" title="fs_email_logs_index" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('fs_email_logs_index') }}</xf:title>
+  <template type="admin" title="fs_email_logs_index" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[<xf:title>{{ phrase('fs_email_logs_index') }}</xf:title>
 
 <xf:form action="{{ link($prefix . '/toggle') }}" class="block" ajax="true">
 	<div class="block-outer">
@@ -127,7 +134,7 @@
 		<xf:datarow>
 
 			<xf:cell> {$i} </xf:cell>
-			<xf:cell> <xf:date time="{$value.from}" /> </xf:cell>
+			<xf:cell> <xf:date time="{{$value.to - 86400}}" /> </xf:cell>
 			<xf:cell> <xf:date time="{$value.to}" /> </xf:cell>
 			<xf:action href="{{ link('email-logs/detail', $value) }}" >
 				{{ phrase('fs_email_logs_details') }}
@@ -266,4 +273,137 @@
 
 
 </xf:formrow>]]></template>
+  <template type="public" title="fs_email_logs_details" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[<xf:title>{{ phrase('fs_email_logs_detail') }}</xf:title>
+
+<xf:form action="{{ link($prefix . '/toggle') }}" class="block" ajax="true">
+	<div class="block-outer">
+		
+	</div>
+
+	<div class="block-container">
+
+		<xf:if is="$emailLogsDetail is not empty">
+			<div class="block-body">
+				<xf:datalist data-xf-init="responsive-data-list">
+
+					<xf:macro
+							  name="table_list"
+							  arg-data="{$emailLogsDetail}"
+							  />
+
+				</xf:datalist>
+
+				<div class="block-footer">
+					<span class="block-footer-counter"
+						  >{{ display_totals($emailLogsDetail, $total) }}</span
+						>
+				</div>
+
+			</div>
+			<xf:else />
+			<div class="block-body block-row">{{ phrase('no_items_have_been_created_yet') }}</div>
+
+		</xf:if>
+
+	</div>
+
+
+	<xf:pagenav
+				page="{$page}"
+				perpage="{$perPage}"
+				total="{$total}"
+				link="email-logs/detail"
+				wrapperclass="block"
+				/>
+</xf:form>
+<xf:macro
+		  name="table_list"
+		  arg-data="!"
+		  >
+	<xf:datarow rowtype="header">
+		<xf:cell> {{ phrase('fs_email_logs_email') }} </xf:cell>
+		<xf:cell> {{ phrase('fs_email_logs_date') }} </xf:cell>
+		<xf:cell class="dataList-cell--min"></xf:cell>
+	</xf:datarow>
+	<xf:foreach loop="{$data}" key="$key" i="$i" value="$value">
+		<xf:datarow>
+
+			<xf:cell> {$value.email} </xf:cell>
+			<xf:cell> <xf:date time="{$value.date}" /> </xf:cell>
+
+			<xf:if is="$value.phone_no is not empty">
+				<xf:action href="{{ link('email-logs/send', $value) }}" >
+					{{ phrase('send') }}
+				</xf:action>
+			</xf:if>
+
+		</xf:datarow>
+	</xf:foreach>
+</xf:macro>]]></template>
+  <template type="public" title="fs_email_logs_index" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[<xf:title>{{ phrase('fs_email_logs_index') }}</xf:title>
+
+<xf:form action="{{ link($prefix . '/toggle') }}" class="block" ajax="true">
+	<div class="block-outer">
+	
+	</div>
+
+	<div class="block-container">
+
+		<xf:if is="$emailLogs is not empty">
+			<div class="block-body">
+				<xf:datalist data-xf-init="responsive-data-list">
+
+					<xf:macro
+							  name="table_list"
+							  arg-data="{$emailLogs}"
+							  />
+
+				</xf:datalist>
+
+				<div class="block-footer">
+					<span class="block-footer-counter"
+						  >{{ display_totals($emailLogs, $total) }}</span
+						>
+				</div>
+
+			</div>
+			<xf:else />
+			<div class="block-body block-row">{{ phrase('no_items_have_been_created_yet') }}</div>
+
+		</xf:if>
+
+	</div>
+
+
+	<xf:pagenav
+				page="{$page}"
+				perpage="{$perPage}"
+				total="{$total}"
+				link="email-logs"
+				wrapperclass="block"
+				/>
+</xf:form>
+<xf:macro
+		  name="table_list"
+		  arg-data="!"
+		  >
+	<xf:datarow rowtype="header">
+		<xf:cell> {{ phrase('fs_email_logs_no') }} </xf:cell>
+		<xf:cell> {{ phrase('fs_email_logs_from') }} </xf:cell>
+		<xf:cell> {{ phrase('fs_email_logs_to') }} </xf:cell>
+		<xf:cell class="dataList-cell--min"></xf:cell>
+	</xf:datarow>
+	<xf:foreach loop="{$data}" key="$key" i="$i" value="$value">
+		<xf:datarow>
+
+			<xf:cell> {$i} </xf:cell>
+			<xf:cell> <xf:date time="{{$value.to - 86400}}" /> </xf:cell>
+			<xf:cell> <xf:date time="{$value.to}" /> </xf:cell>
+			<xf:action href="{{ link('email-logs/detail', $value) }}" >
+				{{ phrase('fs_email_logs_details') }}
+			</xf:action>
+
+		</xf:datarow>
+	</xf:foreach>
+</xf:macro>]]></template>
 </templates>

@@ -11,4 +11,15 @@
 max=5</edit_format_params>
     <relation group_id="fs_email_from_table" display_order="2"/>
   </option>
+  <option option_id="fs_send_message_on_whatsapp" edit_format="textbox" data_type="string">
+    <default_value>*Hello!*
+
+Are you _busy_?
+
+Its only for ~testing~ and use `code`.
+
+Visit: https://example.com</default_value>
+    <edit_format_params>rows=3</edit_format_params>
+    <relation group_id="fs_email_from_table" display_order="3"/>
+  </option>
 </options>

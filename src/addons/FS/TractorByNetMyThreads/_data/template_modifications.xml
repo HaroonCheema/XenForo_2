@@ -1,2 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<template_modifications/>
+<template_modifications>
+  <modification type="public" template="extra.less" modification_key="fs_tbn_thread_img_hide_in_article" description="fs_tbn_thread_img_hide_in_article" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/^(.*)$/is]]></find>
+    <replace><![CDATA[$0
+
+@media (max-width: 424px)
+{
+	[data-template="fs_tbn_forum_view_type_article"] {
+		.articlePreview-image {
+			display: none;
+		}
+	}
+}]]></replace>
+  </modification>
+</template_modifications>

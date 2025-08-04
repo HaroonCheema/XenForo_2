@@ -3,7 +3,7 @@
 namespace FS\SendMailFromTable\Admin\Controller;
 
 use XF\Mvc\ParameterBag;
-use XF\Pub\Controller\AbstractController;
+use XF\Admin\Controller\AbstractController;
 
 class EmailLogs extends AbstractController
 {
@@ -34,9 +34,9 @@ class EmailLogs extends AbstractController
         $cromEmailLog = $this->assertDataExists($params->id);
 
         $emailLogs = \XF::finder('FS\SendMailFromTable:MidNightEmails')
-            ->where('date', '>=', $cromEmailLog->from)
-            ->where('date', '<=', $cromEmailLog->to)
-            ->where('is_pending', false)
+            // ->where('date', '>=', $cromEmailLog->from)
+            // ->where('date', '<=', $cromEmailLog->to)
+            ->where('id', $cromEmailLog['email_ids'])
             ->order('id', 'DESC');
 
         $page = $params->page;
@@ -54,7 +54,26 @@ class EmailLogs extends AbstractController
         return $this->view('FS\SendMailFromTable:EmailLogs\Index', 'fs_email_logs_details', $viewParams);
     }
 
-    // plugin for check id exists or not 
+    public function actionSend(ParameterBag $params)
+    {
+        $midNightEmail = $this->assertEmailDataExists($params->id);
+
+        $message = \XF::options()->fs_send_message_on_whatsapp;
+
+        $phoneNum = $midNightEmail['phone_no'];
+
+        if (!$message || !$phoneNum) {
+            $this->noPermission();
+        }
+
+        $cleanPhone = preg_replace('/[^0-9]/', '', $phoneNum);
+
+        $encodedMessage = urlencode($message);
+
+        $whatsAppUrl = "https://wa.me/{$cleanPhone}?text={$encodedMessage}";
+
+        return $this->redirect($whatsAppUrl);
+    }
 
     /**
      * @param string $id
@@ -66,5 +85,10 @@ class EmailLogs extends AbstractController
     protected function assertDataExists($id, array $extraWith = [], $phraseKey = null)
     {
         return $this->assertRecordExists('FS\SendMailFromTable:CronEmailLogs', $id, $extraWith, $phraseKey);
+    }
+
+    protected function assertEmailDataExists($id, array $extraWith = [], $phraseKey = null)
+    {
+        return $this->assertRecordExists('FS\SendMailFromTable:MidNightEmails', $id, $extraWith, $phraseKey);
     }
 }

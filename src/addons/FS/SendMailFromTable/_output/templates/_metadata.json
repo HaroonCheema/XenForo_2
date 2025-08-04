@@ -1,13 +1,13 @@
 {
     "admin/fs_email_logs_details.html": {
-        "version_id": 1000010,
-        "version_string": "1.0.0 Alpha",
-        "hash": "ae31e27d7bfecc25b5c87c94ace5a678"
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "841b581195b53646e2708b8dcb929c5e"
     },
     "admin/fs_email_logs_index.html": {
-        "version_id": 1000010,
-        "version_string": "1.0.0 Alpha",
-        "hash": "196f098cbf0c05445f217c36e798f8e5"
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "ea95ef4d7ba5d26b660a08e00f1d5b6e"
     },
     "admin/fs_email_template_add_edit.html": {
         "version_id": 1000010,
@@ -23,5 +23,15 @@
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
         "hash": "3c535a3f0c30e8f34ed09bf0b6eae54e"
+    },
+    "public/fs_email_logs_details.html": {
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "ace8775b073fb83c8cf7e94ebe82ea31"
+    },
+    "public/fs_email_logs_index.html": {
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "1d839df8e8b67022917de2e0bd45e0da"
     }
 }

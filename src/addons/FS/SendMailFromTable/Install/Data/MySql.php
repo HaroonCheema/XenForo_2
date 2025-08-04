@@ -16,6 +16,7 @@ class MySql
             $table->addColumn('id', 'int')->autoIncrement();
 
             $table->addColumn('email', 'varchar', 120);
+            $table->addColumn('phone_no', 'varchar', 20)->setDefault('');
             $table->addColumn('date', 'int')->setDefault(0);
             $table->addColumn('is_pending', 'tinyint', 3)->setDefault(1);
 
@@ -26,8 +27,8 @@ class MySql
             /** @var Create|Alter $table */
             $table->addColumn('id', 'int')->autoIncrement();
 
-            $table->addColumn('from', 'int')->setDefault(0);
             $table->addColumn('to', 'int')->setDefault(0);
+            $table->addColumn('email_ids', 'mediumblob');
 
             $table->addPrimaryKey('id');
         };

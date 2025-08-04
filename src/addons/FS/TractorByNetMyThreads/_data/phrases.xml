@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <phrases>
   <phrase title="fs_tbn_post_ad" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Post new ad]]></phrase>
+  <phrase title="fs_tbn_view_messages" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[View messages]]></phrase>
   <phrase title="nav.fs_tbn_my_threads" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[My threads]]></phrase>
   <phrase title="option.fs_tbn_my_thread_forum_id" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[My thread forum]]></phrase>
   <phrase title="option.fs_tbn_my_thread_minimum_items" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Minimum Items]]></phrase>

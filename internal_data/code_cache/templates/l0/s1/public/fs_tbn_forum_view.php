@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 17a67630123de7b59df3a371572dbf95
+// FROM HASH: 31dd3d32881660808bab6069b4d0f48a
 return array(
 'extensions' => array('above_node_list' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -21,13 +21,13 @@ return array(
 {
 	$__finalCompiled = '';
 		$__finalCompiled .= '
-								' . $__templater->callMacro(null, 'filters', array(
+									' . $__templater->callMacro(null, 'filters', array(
 		'forum' => $__vars['forum'],
 		'filters' => $__vars['filters'],
 		'starterFilter' => $__vars['starterFilter'],
 		'threadTypeFilter' => $__vars['threadTypeFilter'],
 	), $__vars) . '
-							';
+								';
 	return $__finalCompiled;
 },
 'thread_list_header' => function($__templater, array $__vars, $__extensions = null)
@@ -39,17 +39,17 @@ return array(
 					';
 	$__compilerTemp1 = '';
 	$__compilerTemp1 .= '
-							' . $__templater->renderExtension('filters', $__vars, $__extensions) . '
-						';
+								' . $__templater->renderExtension('filters', $__vars, $__extensions) . '
+							';
 	if (strlen(trim($__compilerTemp1)) > 0) {
 		$__finalCompiled .= '
 						<ul class="filterBar-filters">
-						' . $__compilerTemp1 . '
+							' . $__compilerTemp1 . '
 						</ul>
 					';
 	}
 	$__finalCompiled .= '
-					
+
 					' . '
 				</div>
 			</div>
@@ -128,7 +128,7 @@ return array(
 		}
 		$__finalCompiled .= '
 						</div>
-					';
+						';
 	} else if ($__vars['filters']) {
 		$__finalCompiled .= '
 						<div class="structItemContainer-group js-threadList">
@@ -147,7 +147,7 @@ return array(
 		}
 		$__finalCompiled .= '
 						</div>
-					';
+						';
 	} else {
 		$__finalCompiled .= '
 						<div class="structItemContainer-group js-threadList">
@@ -162,7 +162,7 @@ return array(
 				'page' => $__vars['page'],
 				'filters' => $__vars['filters'],
 			), $__vars) . '
-							';
+								';
 		} else {
 			$__finalCompiled .= '
 								<div class="structItem js-emptyThreadList">
@@ -206,7 +206,7 @@ return array(
 	if ($__vars['filters']['prefix_id']) {
 		$__finalCompiled .= '
 			<li><a href="' . $__templater->func('link', array('forums', $__vars['forum'], $__templater->filter($__vars['filters'], array(array('replace', array('prefix_id', null, )),), false), ), true) . '"
-				class="filterBar-filterToggle" data-xf-init="tooltip" title="' . $__templater->filter('Remove this filter', array(array('for_attr', array()),), true) . '">
+				   class="filterBar-filterToggle" data-xf-init="tooltip" title="' . $__templater->filter('Remove this filter', array(array('for_attr', array()),), true) . '">
 				<span class="filterBar-filterToggle-label">' . 'Prefix' . $__vars['xf']['language']['label_separator'] . '</span>
 				' . $__templater->func('prefix_title', array('thread', $__vars['filters']['prefix_id'], ), true) . '</a></li>
 		';
@@ -223,7 +223,7 @@ return array(
 	if ($__vars['filters']['starter_id'] AND $__vars['starterFilter']) {
 		$__finalCompiled .= '
 			<li><a href="' . $__templater->func('link', array('forums', $__vars['forum'], $__templater->filter($__vars['filters'], array(array('replace', array('starter_id', null, )),), false), ), true) . '"
-				class="filterBar-filterToggle" data-xf-init="tooltip" title="' . $__templater->filter('Remove this filter', array(array('for_attr', array()),), true) . '">
+				   class="filterBar-filterToggle" data-xf-init="tooltip" title="' . $__templater->filter('Remove this filter', array(array('for_attr', array()),), true) . '">
 				<span class="filterBar-filterToggle-label">' . 'Started by' . $__vars['xf']['language']['label_separator'] . '</span>
 				' . $__templater->escape($__vars['starterFilter']['username']) . '</a></li>
 		';
@@ -240,7 +240,7 @@ return array(
 	if ($__vars['filters']['thread_type'] AND $__vars['threadTypeFilter']) {
 		$__finalCompiled .= '
 			<li><a href="' . $__templater->func('link', array('forums', $__vars['forum'], $__templater->filter($__vars['filters'], array(array('replace', array('thread_type', null, )),), false), ), true) . '"
-				class="filterBar-filterToggle" data-xf-init="tooltip" title="' . $__templater->filter('Remove this filter', array(array('for_attr', array()),), true) . '">
+				   class="filterBar-filterToggle" data-xf-init="tooltip" title="' . $__templater->filter('Remove this filter', array(array('for_attr', array()),), true) . '">
 				<span class="filterBar-filterToggle-label">' . 'Thread type' . $__vars['xf']['language']['label_separator'] . '</span>
 				' . $__templater->escape($__templater->method($__vars['threadTypeFilter'], 'getTypeTitle', array())) . '</a></li>
 		';
@@ -257,7 +257,7 @@ return array(
 	if ($__vars['filters']['last_days'] AND $__vars['dateLimits'][$__vars['filters']['last_days']]) {
 		$__finalCompiled .= '
 			<li><a href="' . $__templater->func('link', array('forums', $__vars['forum'], $__templater->filter($__vars['filters'], array(array('replace', array('last_days', null, )),), false), ), true) . '"
-				class="filterBar-filterToggle" data-xf-init="tooltip" title="' . $__templater->filter('Remove this filter', array(array('for_attr', array()),), true) . '">
+				   class="filterBar-filterToggle" data-xf-init="tooltip" title="' . $__templater->filter('Remove this filter', array(array('for_attr', array()),), true) . '">
 				<span class="filterBar-filterToggle-label">' . 'Last updated' . $__vars['xf']['language']['label_separator'] . '</span>
 				' . $__templater->escape($__vars['dateLimits'][$__vars['filters']['last_days']]) . '</a></li>
 		';
@@ -274,7 +274,7 @@ return array(
 	if ($__vars['filters']['order']) {
 		$__finalCompiled .= '
 			<li><a href="' . $__templater->func('link', array('forums', $__vars['forum'], $__templater->filter($__vars['filters'], array(array('replace', array(array('order' => null, 'direction' => null, ), )),), false), ), true) . '"
-				class="filterBar-filterToggle" data-xf-init="tooltip" title="' . $__templater->filter('Return to the default order', array(array('for_attr', array()),), true) . '">
+				   class="filterBar-filterToggle" data-xf-init="tooltip" title="' . $__templater->filter('Return to the default order', array(array('for_attr', array()),), true) . '">
 				<span class="filterBar-filterToggle-label">' . 'Sort by' . $__vars['xf']['language']['label_separator'] . '</span>
 				' . $__templater->func('phrase_dynamic', array('forum_sort.' . $__vars['filters']['order'], ), true) . '
 				' . $__templater->fontAwesome((($__vars['filters']['direction'] == 'asc') ? 'fa-angle-up' : 'fa-angle-down'), array(
@@ -286,7 +286,7 @@ return array(
 			$__finalCompiled .= 'Descending';
 		}
 		$__finalCompiled .= '</span>
-			</a></li>
+				</a></li>
 		';
 	}
 	$__finalCompiled .= '
@@ -352,9 +352,17 @@ return array(
 	$__templater->pageParams['pageNumber'] = $__vars['page'];
 	$__finalCompiled .= '
 
+<style>
+	.newMessages:after {
+		margin-left: 5px;
+	}
+
+</style>
+
 ';
 	if ($__templater->method($__vars['specificForum'], 'canCreateThread', array()) OR $__templater->method($__vars['specificForum'], 'canCreateThreadPreReg', array())) {
 		$__templater->pageParams['pageAction'] = $__templater->preEscaped('
+
 	' . $__templater->button('
 		' . 'Post new ad' . '
 	', array(
@@ -363,6 +371,16 @@ return array(
 			'icon' => 'write',
 		), '', array(
 		)) . '
+
+	' . $__templater->button('
+		' . 'View messages' . '
+	', array(
+			'href' => '#',
+			'class' => 'button--cta badgeContainer badgeContainer--highlighted newMessages',
+			'data-badge' => $__vars['newMessages'],
+		), '', array(
+		)) . '
+
 ');
 	}
 	$__finalCompiled .= '
@@ -455,25 +473,25 @@ return array(
 
 ' . '
 <div class="block ' . $__templater->escape($__templater->renderExtension('thread_list_block_classes', $__vars, $__extensions)) . '" data-xf-init="' . (($__vars['xf']['visitor']['is_admin'] OR $__vars['xf']['visitor']['is_moderator']) ? 'inline-mod' : '') . '" data-type="thread" data-href="' . $__templater->func('link', array('inline-mod', ), true) . '">
-	
+
 	<div class="block-outer">';
 	$__compilerTemp1 = '';
 	$__compilerTemp2 = '';
 	$__compilerTemp2 .= '
-					';
+						';
 	if ($__vars['xf']['visitor']['is_admin'] OR $__vars['xf']['visitor']['is_moderator']) {
 		$__compilerTemp2 .= '
-						' . $__templater->callMacro('inline_mod_macros', 'button', array(), $__vars) . '
-					';
+							' . $__templater->callMacro('inline_mod_macros', 'button', array(), $__vars) . '
+						';
 	}
 	$__compilerTemp2 .= '
-					' . '
-				';
+						' . '
+					';
 	if (strlen(trim($__compilerTemp2)) > 0) {
 		$__compilerTemp1 .= '
 			<div class="block-outer-opposite">
 				<div class="buttonGroup">
-				' . $__compilerTemp2 . '
+					' . $__compilerTemp2 . '
 				</div>
 			</div>
 		';
@@ -489,7 +507,7 @@ return array(
 		'perPage' => $__vars['perPage'],
 	))) . '
 		' . $__compilerTemp1 . '
-	') . '</div>
+		') . '</div>
 
 	<div class="block-container">
 
@@ -528,7 +546,7 @@ return array(
 						' . 'You have insufficient privileges to post threads here.' . '
 						<!-- this is not interactive so shouldn\'t be a button element -->
 					</span>
-				';
+					';
 		} else {
 			$__finalCompiled .= '
 					' . $__templater->button('

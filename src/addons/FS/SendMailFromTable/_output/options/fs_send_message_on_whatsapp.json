@@ -1,0 +1,13 @@
+{
+    "edit_format": "textbox",
+    "edit_format_params": "rows=3",
+    "data_type": "string",
+    "sub_options": [],
+    "validation_class": "",
+    "validation_method": "",
+    "advanced": false,
+    "default_value": "*Hello!*\n\nAre you _busy_?\n\nIts only for ~testing~ and use `code`.\n\nVisit: https://example.com",
+    "relations": {
+        "fs_email_from_table": 3
+    }
+}

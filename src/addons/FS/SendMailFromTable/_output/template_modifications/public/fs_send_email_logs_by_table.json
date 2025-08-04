@@ -1,0 +1,9 @@
+{
+    "template": "PAGE_CONTAINER",
+    "description": "fs_send_email_logs_by_table",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:if is=\"$xf.visitor.is_moderator && $xf.session.unapprovedCounts.total\">",
+    "replace": "<xf:if is=\"$xf.visitor.is_admin || $xf.visitor.is_moderator\">\n\t<a href=\"{{ link('email-logs') }}\"\n\t   class=\"p-staffBar-link\">\n\t\t{{ phrase('fs_send_email_logs_pub') }}\n\t</a>\n</xf:if>\n\n$0"
+}

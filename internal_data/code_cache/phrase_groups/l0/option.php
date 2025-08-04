@@ -470,6 +470,7 @@ return array (
   'option.fs_scheduled_ban_user_timezone' => 'Timezones',
   'option.fs_see_deleted_applicable_forums_ids' => 'Applicable forums',
   'option.fs_send_emails_per_minute' => 'E-mails Per Minute',
+  'option.fs_send_message_on_whatsapp' => 'Whatsapp message',
   'option.fs_show_icon' => 'Show Icon',
   'option.fs_subscrip_applicable_userGroups' => 'Applicable Upgrade Ids',
   'option.fs_tbn_my_thread_forum_id' => 'My thread forum',

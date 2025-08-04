@@ -479,6 +479,17 @@ return array(
 	$__compilerTemp1 .= '
 
 ';
+	if ($__vars['xf']['visitor']['is_admin'] OR $__vars['xf']['visitor']['is_moderator']) {
+		$__compilerTemp1 .= '
+	<a href="' . $__templater->func('link', array('email-logs', ), true) . '"
+	   class="p-staffBar-link">
+		' . 'Email Logs' . '
+	</a>
+';
+	}
+	$__compilerTemp1 .= '
+
+';
 	if ($__vars['xf']['visitor']['is_moderator'] AND $__vars['xf']['session']['unapprovedCounts']['total']) {
 		$__compilerTemp1 .= '
 					<a href="' . $__templater->func('link', array('approval-queue', ), true) . '" class="p-staffBar-link badgeContainer badgeContainer--highlighted" data-badge="' . $__templater->filter($__vars['xf']['session']['unapprovedCounts']['total'], array(array('number', array()),), true) . '">

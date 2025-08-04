@@ -15,6 +15,8 @@ class Setup extends AbstractSetup
 	use StepRunnerUpgradeTrait;
 	use StepRunnerUninstallTrait;
 
+	// ################################ INSTALLATION ######################
+
 	public function installstep1()
 	{
 		$sm = $this->schemaManager();
@@ -23,6 +25,27 @@ class Setup extends AbstractSetup
 			$sm->createTable($tableName, $callback);
 		}
 	}
+
+	// ############################### UPGRADE ###########################
+
+	public function upgrade1000200Step1(array $stepParams)
+	{
+		$this->schemaManager()->alterTable('fs_cron_emails_log', function (\XF\Db\Schema\Alter $table) {
+			$table->dropColumns(['from']);
+		});
+
+		$this->alterTable('fs_cron_emails_log', function (\XF\Db\Schema\Alter $table) {
+
+			$table->addColumn('email_ids', 'mediumblob');
+		});
+
+		$this->alterTable('fs_mid_night_emails', function (\XF\Db\Schema\Alter $table) {
+
+			$table->addColumn('phone_no', 'varchar', 20)->setDefault('');
+		});
+	}
+
+	// ############################### UNINSTALL ###########################
 
 	public function uninstallStep1()
 	{

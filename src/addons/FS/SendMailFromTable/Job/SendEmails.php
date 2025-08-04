@@ -12,6 +12,7 @@ class SendEmails extends AbstractJob
         'emailNextCounter' => 0,
         'nextRunAt' => 0,
         'count' => 0,
+        'log_id' => 0,
     ];
 
     public function run($maxRunTime)
@@ -38,9 +39,10 @@ class SendEmails extends AbstractJob
 
         $now = time();
         $todayMidnight = strtotime('today midnight');
-        $yesterdayMidnight = $todayMidnight - 86400;
+        // $yesterdayMidnight = $todayMidnight - 86400;
 
-        $pendingEmails = \XF::finder('FS\SendMailFromTable:MidNightEmails')->where('date', '>=', $yesterdayMidnight)->where('date', '<=', $todayMidnight)->where('is_pending', true)->fetch();
+        // $pendingEmails = \XF::finder('FS\SendMailFromTable:MidNightEmails')->where('date', '>=', $yesterdayMidnight)->where('date', '<=', $todayMidnight)->where('is_pending', true)->fetch();
+        $pendingEmails = \XF::finder('FS\SendMailFromTable:MidNightEmails')->where('is_pending', true)->fetch();
 
         if (!$pendingEmails->count()) {
 
@@ -53,10 +55,11 @@ class SendEmails extends AbstractJob
             $emailLog = \xf::app()->em()->create('FS\SendMailFromTable:CronEmailLogs');
 
             $emailLog->bulkSet([
-                'from' => $yesterdayMidnight,
                 'to' => $todayMidnight,
             ]);
             $emailLog->save();
+
+            $this->data['log_id'] = $emailLog->id;
         }
 
         if ($this->data['nextRunAt'] > time()) {
@@ -87,9 +90,13 @@ class SendEmails extends AbstractJob
         //     }
         // }
 
+        $emailIds = array();
+
         foreach ($pendingEmails as $key => $emailData) {
 
             $this->data['count']++;
+
+            $emailIds[] = $emailData->id;
 
             $tokens = $this->prepareToken($emailData->email);
             $html = strtr($email['email_body'], $tokens);
@@ -117,6 +124,8 @@ class SendEmails extends AbstractJob
 
                 $this->data['nextRunAt'] = time() + 60; // Set next run time to 1 minute later
 
+                $this->updateEmailIds($emailIds);
+
                 return $this->resume();
             }
 
@@ -125,7 +134,27 @@ class SendEmails extends AbstractJob
             }
         }
 
+        $this->updateEmailIds($emailIds);
+
         return $this->resume();
+    }
+
+    protected function updateEmailIds($emailIds)
+    {
+        if ($emailIds && $this->data['log_id']) {
+            $emailLogs = \XF::app()->em()->find("FS\SendMailFromTable:CronEmailLogs", $this->data['log_id']);
+
+            if ($emailLogs) {
+                $mergedIds = array_unique(array_merge($emailLogs['email_ids'], $emailIds));
+                $emailLogs->bulkSet([
+                    'email_ids' => $mergedIds,
+                ]);
+
+                $emailLogs->save();
+            }
+        }
+
+        return true;
     }
 
     protected function prepareToken($email)

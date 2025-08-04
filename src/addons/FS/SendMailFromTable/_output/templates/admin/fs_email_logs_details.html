@@ -53,12 +53,19 @@
 	<xf:datarow rowtype="header">
 		<xf:cell> {{ phrase('fs_email_logs_email') }} </xf:cell>
 		<xf:cell> {{ phrase('fs_email_logs_date') }} </xf:cell>
+		<xf:cell class="dataList-cell--min"></xf:cell>
 	</xf:datarow>
 	<xf:foreach loop="{$data}" key="$key" i="$i" value="$value">
 		<xf:datarow>
 
 			<xf:cell> {$value.email} </xf:cell>
 			<xf:cell> <xf:date time="{$value.date}" /> </xf:cell>
+
+			<xf:if is="$value.phone_no is not empty">
+				<xf:action href="{{ link('email-logs/send', $value) }}" >
+					{{ phrase('send') }}
+				</xf:action>
+			</xf:if>
 
 		</xf:datarow>
 	</xf:foreach>

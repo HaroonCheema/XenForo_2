@@ -17,8 +17,9 @@ class CronEmailLogs extends Entity
         $structure->columns = [
             'id' => ['type' => self::UINT, 'autoIncrement' => true],
 
-            'from' => ['type' => self::UINT, 'default' => \XF::$time],
             'to' => ['type' => self::UINT, 'default' => \XF::$time],
+
+            'email_ids' => ['type' => self::JSON_ARRAY, 'default' => []],
         ];
 
         $structure->relations = [];

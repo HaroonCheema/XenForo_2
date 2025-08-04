@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: ae31e27d7bfecc25b5c87c94ace5a678
+// FROM HASH: 841b581195b53646e2708b8dcb929c5e
 return array(
 'macros' => array('table_list' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -18,6 +18,11 @@ return array(
 	array(
 		'_type' => 'cell',
 		'html' => ' ' . 'Date' . ' ',
+	),
+	array(
+		'class' => 'dataList-cell--min',
+		'_type' => 'cell',
+		'html' => '',
 	))) . '
 	';
 	$__vars['i'] = 0;
@@ -25,16 +30,27 @@ return array(
 		foreach ($__vars['data'] AS $__vars['key'] => $__vars['value']) {
 			$__vars['i']++;
 			$__finalCompiled .= '
-		' . $__templater->dataRow(array(
-			), array(array(
+		';
+			$__compilerTemp1 = array(array(
 				'_type' => 'cell',
 				'html' => ' ' . $__templater->escape($__vars['value']['email']) . ' ',
-			),
-			array(
+			)
+,array(
 				'_type' => 'cell',
 				'html' => ' ' . $__templater->func('date_dynamic', array($__vars['value']['date'], array(
 			))) . ' ',
-			))) . '
+			));
+			if (!$__templater->test($__vars['value']['phone_no'], 'empty', array())) {
+				$__compilerTemp1[] = array(
+					'href' => $__templater->func('link', array('email-logs/send', $__vars['value'], ), false),
+					'_type' => 'action',
+					'html' => '
+					' . 'Send' . '
+				',
+				);
+			}
+			$__finalCompiled .= $__templater->dataRow(array(
+			), $__compilerTemp1) . '
 	';
 		}
 	}

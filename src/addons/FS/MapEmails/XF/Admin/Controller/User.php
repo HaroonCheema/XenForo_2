@@ -61,4 +61,51 @@ class User extends XFCP_User
             ['sent' => $data['total']]
         ));
     }
+
+
+    protected function prepareEmailData()
+    {
+
+        $email = $this->filter([
+            'list_only' => 'bool',
+            'from_name' => 'str',
+            'from_email' => 'str',
+
+            'email_title' => 'str',
+            'email_format' => 'str',
+            'email_body' => 'str',
+            'email_wrapped' => 'bool',
+            'email_unsub' => 'bool'
+        ]);
+
+        $data = $this->plugin('XF:UserCriteriaAction')->getInitializedSearchData([
+            'no_empty_email' => true
+        ]);
+
+        if (!$data['criteria']['email_template']) {
+            return parent::prepareEmailData();
+        }
+
+        $emailTemplate = \xf::app()->em()->find('FS\SendMailFromTable:EmailTemplates', $data['criteria']['email_template']);
+
+        if (!$emailTemplate) {
+            return parent::prepareEmailData();
+        }
+
+        $email['email_title'] = $emailTemplate->title;
+        $email['email_body'] = $emailTemplate->email_body;
+        $email['email_format'] = "html";
+
+        if (!$email['list_only'] && (!$email['from_name'] || !$email['from_email'] || !$email['email_title'] || !$email['email_body'])) {
+            throw $this->exception($this->error(\XF::phraseDeferred('please_complete_required_fields')));
+        }
+
+        if (strpos($email['email_body'], '{unsub}') !== false) {
+            $email['email_unsub'] = false;
+        }
+
+        $data['email'] = $email;
+
+        return $data;
+    }
 }

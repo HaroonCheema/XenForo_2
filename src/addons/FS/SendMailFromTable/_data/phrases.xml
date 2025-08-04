@@ -20,10 +20,13 @@
   <phrase title="fs_email_template_select" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Email Templates]]></phrase>
   <phrase title="fs_email_template_select_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Select any template for sending emails.]]></phrase>
   <phrase title="fs_email_template_title" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Title]]></phrase>
+  <phrase title="fs_send_email_logs_pub" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Email Logs]]></phrase>
   <phrase title="option.fs_email_from_table_template_ids" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Template id]]></phrase>
   <phrase title="option.fs_send_emails_per_minute" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[E-mails Per Minute]]></phrase>
+  <phrase title="option.fs_send_message_on_whatsapp" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Whatsapp message]]></phrase>
   <phrase title="option_explain.fs_email_from_table_template_ids" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
   <phrase title="option_explain.fs_send_emails_per_minute" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_explain.fs_send_message_on_whatsapp" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[Enter message here which you want to send.]]></phrase>
   <phrase title="option_group.fs_email_from_table" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Send E-mails from table]]></phrase>
   <phrase title="option_group_description.fs_email_from_table" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
 </phrases>

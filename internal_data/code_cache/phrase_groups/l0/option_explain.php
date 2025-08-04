@@ -538,6 +538,7 @@ This option requires that the specified account is a catch-all account or suppor
   'option_explain.fs_scheduled_ban_user_timezone' => 'According to this Time Zone User will be banned.',
   'option_explain.fs_see_deleted_applicable_forums_ids' => '',
   'option_explain.fs_send_emails_per_minute' => '',
+  'option_explain.fs_send_message_on_whatsapp' => 'Enter message here which you want to send.',
   'option_explain.fs_show_icon' => '',
   'option_explain.fs_subscrip_applicable_userGroups' => 'Enter the Applicable User Upgrade Ids Comma separated like 1,2,3,4.',
   'option_explain.fs_tbn_my_thread_forum_id' => '',

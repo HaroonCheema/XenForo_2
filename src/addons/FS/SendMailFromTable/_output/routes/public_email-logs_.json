@@ -1,0 +1,11 @@
+{
+    "route_type": "public",
+    "route_prefix": "email-logs",
+    "sub_name": "",
+    "format": ":int<id>/:page",
+    "build_class": "",
+    "build_method": "",
+    "controller": "FS\\SendMailFromTable:EmailLogs",
+    "context": "",
+    "action_prefix": ""
+}

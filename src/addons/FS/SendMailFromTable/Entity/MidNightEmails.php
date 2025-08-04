@@ -18,6 +18,7 @@ class MidNightEmails extends Entity
             'id' => ['type' => self::UINT, 'autoIncrement' => true],
 
             'email' => ['type' => self::STR, 'maxLength' => 120],
+            'phone_no' => ['type' => self::STR, 'maxLength' => 20, 'default' => ''],
             'date' => ['type' => self::UINT, 'default' => \XF::$time],
 			'is_pending' => ['type' => self::BOOL, 'default' => true],
         ];
