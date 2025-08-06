@@ -1,0 +1,9 @@
+{
+    "template": "fs_tbn_forum_view",
+    "description": "XenForo 2.1.x - Adds custom field sort options to the array with sorting options",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "#<xf:set var=\"\\$sortOrders\".*?/>#s",
+    "replace": "$0\n<xf:set var=\"$additionalSortOptions\" value=\"{{ $additionalSortOptions ? $additionalSortOptions : $__globals.additionalSortOptions }}\" />\n\t<xf:set var=\"$sortOrders\" value=\"{{ $sortOrders + (is_array($additionalSortOptions) ? $additionalSortOptions : []) }}\"/>"
+}

@@ -1,0 +1,9 @@
+{
+    "template": "fs_tbn_forum_view",
+    "description": "Active filter JS configuration and Clear all link",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "#(<ul class=\"filterBar\\-filters\">)(.*?)(</ul>)#s",
+    "replace": "$1\n\t\t\t\t\t\t<xf:include template=\"altf_auto_reload_configurator\" />\n\t\t\t\t\t\t$2\n\t\t\t\t\t\t<xf:include template=\"altf_clear_active_filters\" />\n\t\t\t\t\t\t$3"
+}

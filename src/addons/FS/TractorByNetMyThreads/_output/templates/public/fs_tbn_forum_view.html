@@ -13,7 +13,7 @@
 		{{ phrase('fs_tbn_post_ad') }}
 	</xf:button>
 
-	<xf:button href="#" class="button--cta badgeContainer badgeContainer--highlighted newMessages" data-badge="{$newMessages}">
+	<xf:button href="{{ link('my-ad/messages') }}" class="button--cta badgeContainer badgeContainer--highlighted newMessages" data-badge="{$newMessages}">
 		{{ phrase('fs_tbn_view_messages') }}
 	</xf:button>
 
@@ -118,7 +118,6 @@
 						</ul>
 					</xf:if>
 
-					<xf:comment>
 						<a class="filterBar-menuTrigger" data-xf-click="menu" role="button" tabindex="0" aria-expanded="false" aria-haspopup="true">{{ phrase('filters') }}</a>
 						<div class="menu menu--wide" data-menu="menu" aria-hidden="true"
 							 data-href="{{ link('forums/filters', $forum, $filters) }}"
@@ -130,7 +129,6 @@
 								</div>
 							</div>
 						</div>
-					</xf:comment>
 				</div>
 			</div>
 		</xf:extension>

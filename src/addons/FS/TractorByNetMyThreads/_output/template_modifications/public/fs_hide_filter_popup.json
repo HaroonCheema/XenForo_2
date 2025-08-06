@@ -1,0 +1,9 @@
+{
+    "template": "fs_tbn_forum_view",
+    "description": "Hides filter popup if filter location is not popup",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "#<a class=\"filterBar\\-menuTrigger\".*?loading.*?</div>.*?</div>.*?</div>.*?</div>#s",
+    "replace": "<xf:if is=\"$filter_location==='popup'\">\n\t\t\t\t$0\n\t\t\t\t<xf:else />\n\t\t\t\t\t<xf:css src=\"altf_active_filter.less\"/>\n\t\t\t\t\t<span class=\"filterButtonPlaceholder ThreadFilter\">.</span>\n\t\t\t\t</xf:if>\n\t\t\t\t<xf:include template=\"altf_filter_icon_replace_filter\" />"
+}

@@ -65,9 +65,21 @@ class Forum extends XFCP_Forum
         $threads = $threadList->fetch();
         $totalThreads = $threadList->total();
 
+        $newThreadRepo = $this->getThreadRepo();
+
+        $threadListAll = $newThreadRepo->findThreadsForForumView(
+            $newForum,
+            [
+                'allowOwnPending' => $this->hasContentPendingApproval()
+            ]
+        );
+
+        // $threadListAll->where('sticky', 0)->fetch();
+        $threadListAll->where('sticky', 0)->where('user_id', \XF::visitor()->user_id)->fetch();
+
         $newMessages = 0;
 
-        foreach ($threads as $key => $thread) {
+        foreach ($threadListAll as $key => $thread) {
             $readDate = $thread->getVisitorReadDate();
 
             $unReadPosts = $this->finder("XF:Post")->where('thread_id', $thread->thread_id)->where('post_date', '>', $readDate)->total();

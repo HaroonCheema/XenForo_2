@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation>
-  <navigation_entry navigation_id="fs_tbn_my_threads" display_order="1" navigation_type_id="basic" enabled="1"><![CDATA[{"link":"{{ link('my-threads\/') }}","display_condition":"$xf.visitor.canUseMyThreads()","extra_attributes":[]}]]></navigation_entry>
+  <navigation_entry navigation_id="fs_tbn_my_threads" display_order="1" navigation_type_id="basic" enabled="1"><![CDATA[{"link":"{{ link('my-ads\/') }}","display_condition":"$xf.visitor.canUseMyThreads()","extra_attributes":[]}]]></navigation_entry>
 </navigation>

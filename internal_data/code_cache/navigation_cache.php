@@ -91,7 +91,7 @@ return function($__templater, $__selectedNav, array $__vars)
 	if ($__templater->method($__vars['xf']['visitor'], 'canUseMyThreads', array())) {
 		$__navTemp = [
 		'title' => \XF::phrase('nav.fs_tbn_my_threads'),
-		'href' => $__templater->func('link', array('my-threads/', ), false),
+		'href' => $__templater->func('link', array('my-ads/', ), false),
 		'attributes' => [],
 	];
 		if ($__navTemp) {

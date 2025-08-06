@@ -1,0 +1,9 @@
+{
+    "template": "fs_tbn_forum_view",
+    "description": "Active custom field filters",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:if is=\"$filters.order",
+    "replace": "<xf:include template=\"altf_forum_view_active_filters\" />\n\t\t$0"
+}

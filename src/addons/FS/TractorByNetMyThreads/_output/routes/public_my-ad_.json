@@ -1,0 +1,11 @@
+{
+    "route_type": "public",
+    "route_prefix": "my-ad",
+    "sub_name": "",
+    "format": ":page",
+    "build_class": "",
+    "build_method": "",
+    "controller": "FS\\TractorByNetMyThreads:ViewMessages",
+    "context": "forums",
+    "action_prefix": ""
+}

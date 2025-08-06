@@ -14,6 +14,10 @@ class User extends XFCP_User
             return false;
         }
 
+        if (!$options->fs_tbn_my_thread_minimum_items) {
+            return true;
+        }
+
         $specificForumThreadsCount = \XF::finder("XF:Thread")->where('node_id', $options->fs_tbn_my_threads_specific_forum_id)->where('user_id', \XF::visitor()->user_id)->total();
 
         if (!$specificForumThreadsCount) {

@@ -1,4 +1,22 @@
 {
+    "fs_my_ad_message.txt": {
+        "global_cache": false,
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "db94d1de27ce0c8ef6b02a87975f3183"
+    },
+    "fs_my_ad_there_no_messages_to_display.txt": {
+        "global_cache": false,
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "c8c8732a8640a9dd8fdb117ac056d90e"
+    },
+    "fs_my_ads_unread_replies.txt": {
+        "global_cache": false,
+        "version_id": 1000300,
+        "version_string": "1.0.3 Alpha",
+        "hash": "8cc46df5ae23686a6fbb8e132f4aaf26"
+    },
     "fs_tbn_post_ad.txt": {
         "global_cache": false,
         "version_id": 1000010,
@@ -13,9 +31,9 @@
     },
     "nav.fs_tbn_my_threads.txt": {
         "global_cache": false,
-        "version_id": 1000010,
-        "version_string": "1.0.0 Alpha",
-        "hash": "256c8f45baf8b12a138099e650223a95"
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "985b09fd6597fce0cc79c43afd196d3f"
     },
     "option.fs_tbn_my_thread_forum_id.txt": {
         "global_cache": false,
@@ -55,9 +73,9 @@
     },
     "option_group.fs_my_threads_group.txt": {
         "global_cache": false,
-        "version_id": 1000010,
-        "version_string": "1.0.0 Alpha",
-        "hash": "90139d474ceba42ea954a1b7fa63b8fb"
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "9597aff88de75058996a66dd089f6cee"
     },
     "option_group_description.fs_my_threads_group.txt": {
         "global_cache": false,

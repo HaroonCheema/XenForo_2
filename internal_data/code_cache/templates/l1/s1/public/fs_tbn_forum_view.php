@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 31dd3d32881660808bab6069b4d0f48a
+// FROM HASH: 4480987b5875201c95c258cd316c8e95
 return array(
 'extensions' => array('above_node_list' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -44,13 +44,41 @@ return array(
 	if (strlen(trim($__compilerTemp1)) > 0) {
 		$__finalCompiled .= '
 						<ul class="filterBar-filters">
+						' . $__templater->includeTemplate('altf_auto_reload_configurator', $__vars) . '
+						
 							' . $__compilerTemp1 . '
+						
+						' . $__templater->includeTemplate('altf_clear_active_filters', $__vars) . '
 						</ul>
 					';
 	}
 	$__finalCompiled .= '
 
-					' . '
+						';
+	if ($__vars['filter_location'] === 'popup') {
+		$__finalCompiled .= '
+				<a class="filterBar-menuTrigger" data-xf-click="menu" role="button" tabindex="0" aria-expanded="false" aria-haspopup="true">' . 'Filters' . '</a>
+						<div class="menu menu--wide" data-menu="menu" aria-hidden="true"
+							 data-href="' . $__templater->func('link', array('forums/filters', $__vars['forum'], $__vars['filters'], ), true) . '"
+							 data-load-target=".js-filterMenuBody">
+							<div class="menu-content">
+								<h4 class="menu-header">' . 'Show only' . $__vars['xf']['language']['label_separator'] . '</h4>
+								<div class="js-filterMenuBody">
+									<div class="menu-row">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
+								</div>
+							</div>
+						</div>
+				';
+	} else {
+		$__finalCompiled .= '
+					';
+		$__templater->includeCss('altf_active_filter.less');
+		$__finalCompiled .= '
+					<span class="filterButtonPlaceholder ThreadFilter">.</span>
+				';
+	}
+	$__finalCompiled .= '
+				' . $__templater->includeTemplate('altf_filter_icon_replace_filter', $__vars) . '
 				</div>
 			</div>
 		';
@@ -270,6 +298,7 @@ return array(
 {
 	$__finalCompiled = '';
 		$__finalCompiled .= '
+		' . $__templater->includeTemplate('altf_forum_view_active_filters', $__vars) . '
 		';
 	if ($__vars['filters']['order']) {
 		$__finalCompiled .= '
@@ -375,7 +404,7 @@ return array(
 	' . $__templater->button('
 		' . 'View messages' . '
 	', array(
-			'href' => '#',
+			'href' => $__templater->func('link', array('my-ad/messages', ), false),
 			'class' => 'button--cta badgeContainer badgeContainer--highlighted newMessages',
 			'data-badge' => $__vars['newMessages'],
 		), '', array(
@@ -472,6 +501,7 @@ return array(
 	), $__vars) . '
 
 ' . '
+' . $__templater->includeTemplate('altf_above_thread_filter_container', $__vars) . '
 <div class="block ' . $__templater->escape($__templater->renderExtension('thread_list_block_classes', $__vars, $__extensions)) . '" data-xf-init="' . (($__vars['xf']['visitor']['is_admin'] OR $__vars['xf']['visitor']['is_moderator']) ? 'inline-mod' : '') . '" data-type="thread" data-href="' . $__templater->func('link', array('inline-mod', ), true) . '">
 
 	<div class="block-outer">';

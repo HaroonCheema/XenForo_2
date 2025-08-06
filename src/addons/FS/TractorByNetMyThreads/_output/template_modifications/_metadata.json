@@ -1,5 +1,20 @@
 {
+    "public/fs_above_thread_list_filter_container.json": {
+        "hash": "b5da0dc803d83e705dc755412f7fddbb"
+    },
+    "public/fs_add_sort_options_to_array.json": {
+        "hash": "7aaaf4fd6edc82d8348412b7b47a3e65"
+    },
+    "public/fs_forum_view_active_filter_tools.json": {
+        "hash": "31c0084548c5f5245dc4e0b829d49484"
+    },
+    "public/fs_forum_view_active_filters.json": {
+        "hash": "dcfecee706dddfed05f40239b8052f14"
+    },
+    "public/fs_hide_filter_popup.json": {
+        "hash": "30798cc786e34d0c5d6073ddd7ec3a4f"
+    },
     "public/fs_tbn_thread_img_hide_in_article.json": {
-        "hash": "a96454a3b7af56ac5a130f9da2866d08"
+        "hash": "3d9382d25906a82a0b425ab099d37a7b"
     }
 }

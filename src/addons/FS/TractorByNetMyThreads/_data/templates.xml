@@ -1,6 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
 <templates>
-  <template type="public" title="fs_tbn_forum_view" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title page="{$page}">{$forum.Node.title}</xf:title>
+  <template type="public" title="fs_my_ads_view_messages" version_id="1000300" version_string="1.0.3 Alpha"><![CDATA[<xf:title page="{$page}">{{ phrase('fs_my_ad_message') }}</xf:title>
+
+<div class="block" data-xf-init="inline-mod" data-type="conversation" data-href="{{ link('inline-mod') }}">
+	<div class="block-outer">
+		<xf:pagenav
+					page="{$page}" perpage="{$perPage}" total="{$total}"
+					link="my-ad/messages" params=""
+					wrapperclass="block-outer-main" />
+	</div>
+
+	<div class="block-container">
+
+		<div class="block-body">
+			<xf:if is="$unreadThreads is not empty">
+				<div class="structItemContainer">
+					<xf:foreach loop="$unreadThreads" value="$value">
+						<xf:macro name="viewMessages" arg-value="{$value}" />
+					</xf:foreach>
+				</div>
+				
+				<div class="block-footer">
+					<span class="block-footer-counter">{{ display_totals($unreadThreads, $total) }}</span>
+				</div>
+				<xf:else />
+				<div class="block-row">{{ phrase('fs_my_ad_there_no_messages_to_display') }}</div>
+			</xf:if>
+		</div>
+	</div>
+
+	<xf:pagenav page="{$page}" perpage="{$perPage}" total="{$total}"
+				link="my-ad/messages" params=""
+				wrapperclass="block-outer block-outer--after" />
+</div>
+
+<xf:macro name="viewMessages"
+		  arg-value="!" >
+
+	<xf:css src="structured_list.less" />
+
+	<div class="structItem structItem--conversation is-unread js-inlineModContainer" data-author="{{ $value.thread.User.username }}">
+		<div class="structItem-cell structItem-cell--icon">
+			<div class="structItem-iconContainer">
+				<xf:avatar user="$value.thread.User" size="s" defaultname="{$value.thread.User.username}" />
+			</div>
+		</div>
+		<div class="structItem-cell structItem-cell--main" data-xf-init="touch-proxy">
+
+			<a href="{{ link('threads', $value.thread) }}" class="structItem-title" data-tp-primary="on">{$value.thread.title}</a>
+
+			<div class="structItem-minor">
+				<xf:comment>
+					<xf:if contentcheck="true">
+						<ul class="structItem-extraInfo">
+							<xf:contentcheck>
+								<xf:if is="$allowInlineMod">
+									<li><xf:checkbox standalone="true">
+										<xf:option value="{$userConv.conversation_id}" class="js-inlineModToggle" />
+										</xf:checkbox></li>
+								</xf:if>
+							</xf:contentcheck>
+						</ul>
+					</xf:if>
+				</xf:comment>
+
+				<ul class="structItem-parts">
+					<li>
+						<ul class="listInline listInline--comma listInline--selfInline">
+							<li><xf:username user="$value.thread.User" defaultname="{$value.thread.User.username}" title="{{ phrase('conversation_starter') }}" /></li>
+						</ul>
+					</li>
+					<li class="structItem-startDate"><a href="{{ link('threads', $value.thread) }}" rel="nofollow"><xf:date time="{$value.thread.post_date}" /></a></li>
+				</ul>
+
+			</div>
+		</div>
+		<div class="structItem-cell structItem-cell--meta">
+			<dl class="pairs pairs--justified">
+				<dt>{{ phrase('fs_my_ads_unread_replies') }}</dt>
+				<dd>{$value.unReadPostsCount|number}</dd>
+			</dl>
+			<dl class="pairs pairs--justified structItem-minor">
+				<dt>{{ phrase('participants') }}</dt>
+				<dd>{$value.participants|number}</dd>
+			</dl>
+		</div>
+		<div class="structItem-cell structItem-cell--latest">
+			<a href="{{ link('threads', $value.thread) }}" rel="nofollow"><xf:date time="{$value.thread.last_post_date}" class="structItem-latestDate" /></a>
+			<div class="structItem-minor"><xf:username user="{$value.thread.LastPost.User}" /></div>
+		</div>
+	</div>
+</xf:macro>]]></template>
+  <template type="public" title="fs_tbn_forum_view" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[<xf:title page="{$page}">{$forum.Node.title}</xf:title>
 
 <style>
 	.newMessages:after {
@@ -15,7 +106,7 @@
 		{{ phrase('fs_tbn_post_ad') }}
 	</xf:button>
 
-	<xf:button href="#" class="button--cta badgeContainer badgeContainer--highlighted newMessages" data-badge="{$newMessages}">
+	<xf:button href="{{ link('my-ad/messages') }}" class="button--cta badgeContainer badgeContainer--highlighted newMessages" data-badge="{$newMessages}">
 		{{ phrase('fs_tbn_view_messages') }}
 	</xf:button>
 
@@ -120,7 +211,6 @@
 						</ul>
 					</xf:if>
 
-					<xf:comment>
 						<a class="filterBar-menuTrigger" data-xf-click="menu" role="button" tabindex="0" aria-expanded="false" aria-haspopup="true">{{ phrase('filters') }}</a>
 						<div class="menu menu--wide" data-menu="menu" aria-hidden="true"
 							 data-href="{{ link('forums/filters', $forum, $filters) }}"
@@ -132,7 +222,6 @@
 								</div>
 							</div>
 						</div>
-					</xf:comment>
 				</div>
 			</div>
 		</xf:extension>
