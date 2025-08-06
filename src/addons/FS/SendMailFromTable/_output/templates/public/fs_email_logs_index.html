@@ -57,7 +57,7 @@
 			<xf:cell> {$i} </xf:cell>
 			<xf:cell> <xf:date time="{{$value.to - 86400}}" /> </xf:cell>
 			<xf:cell> <xf:date time="{$value.to}" /> </xf:cell>
-			<xf:action href="{{ link('email-logs/detail', $value) }}" >
+			<xf:action href="{{ link('email-logs-detail', $value) }}" >
 				{{ phrase('fs_email_logs_details') }}
 			</xf:action>
 

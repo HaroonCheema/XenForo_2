@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: ace8775b073fb83c8cf7e94ebe82ea31
+// FROM HASH: c40197a39166f05f924f2c2e7200bdf2
 return array(
 'macros' => array('table_list' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -42,7 +42,8 @@ return array(
 			));
 			if (!$__templater->test($__vars['value']['phone_no'], 'empty', array())) {
 				$__compilerTemp1[] = array(
-					'href' => $__templater->func('link', array('email-logs/send', $__vars['value'], ), false),
+					'href' => $__templater->func('link', array('email-logs-detail/send', $__vars['value'], ), false),
+					'target' => '_blank',
 					'_type' => 'action',
 					'html' => '
 					' . 'Send' . '
@@ -109,7 +110,8 @@ return array(
 	' . $__templater->func('page_nav', array(array(
 		'page' => $__vars['page'],
 		'total' => $__vars['total'],
-		'link' => 'email-logs/detail',
+		'link' => 'email-logs-detail',
+		'params' => array('id' => $__vars['cromEmailLogId'], ),
 		'wrapperclass' => 'block',
 		'perPage' => $__vars['perPage'],
 	))) . '

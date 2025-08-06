@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 1d839df8e8b67022917de2e0bd45e0da
+// FROM HASH: 962aa81abbed015f0f7f01270e5cdc95
 return array(
 'macros' => array('table_list' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -50,7 +50,7 @@ return array(
 			))) . ' ',
 			),
 			array(
-				'href' => $__templater->func('link', array('email-logs/detail', $__vars['value'], ), false),
+				'href' => $__templater->func('link', array('email-logs-detail', $__vars['value'], ), false),
 				'_type' => 'action',
 				'html' => '
 				' . 'Details' . '

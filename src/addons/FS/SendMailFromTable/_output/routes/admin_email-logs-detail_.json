@@ -1,0 +1,11 @@
+{
+    "route_type": "admin",
+    "route_prefix": "email-logs-detail",
+    "sub_name": "",
+    "format": ":int<id>/:page",
+    "build_class": "",
+    "build_method": "",
+    "controller": "FS\\SendMailFromTable:EmailLogDetails",
+    "context": "fs_email_submit_log",
+    "action_prefix": ""
+}

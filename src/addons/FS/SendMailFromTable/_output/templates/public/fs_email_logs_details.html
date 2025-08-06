@@ -37,7 +37,10 @@
 				page="{$page}"
 				perpage="{$perPage}"
 				total="{$total}"
-				link="email-logs/detail"
+				link="email-logs-detail"
+				params="{{ {
+					'id': $cromEmailLogId
+				} }}"
 				wrapperclass="block"
 				/>
 </xf:form>
@@ -57,7 +60,7 @@
 			<xf:cell> <xf:date time="{$value.date}" /> </xf:cell>
 
 			<xf:if is="$value.phone_no is not empty">
-				<xf:action href="{{ link('email-logs/send', $value) }}" >
+				<xf:action href="{{ link('email-logs-detail/send', $value) }}" target="_blank">
 					{{ phrase('send') }}
 				</xf:action>
 			</xf:if>

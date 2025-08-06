@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 841b581195b53646e2708b8dcb929c5e
+// FROM HASH: f7fa4400e99d68bb2e2ef74da964c514
 return array(
 'macros' => array('table_list' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -42,7 +42,8 @@ return array(
 			));
 			if (!$__templater->test($__vars['value']['phone_no'], 'empty', array())) {
 				$__compilerTemp1[] = array(
-					'href' => $__templater->func('link', array('email-logs/send', $__vars['value'], ), false),
+					'href' => $__templater->func('link', array('email-logs-detail/send', $__vars['value'], ), false),
+					'target' => '_blank',
 					'_type' => 'action',
 					'html' => '
 					' . 'Send' . '
@@ -97,7 +98,7 @@ return array(
 	$__finalCompiled .= $__templater->form('
 	<div class="block-outer">
 		' . $__templater->callMacro('filter_macros', 'quick_filter', array(
-		'key' => 'email-logs/detail',
+		'key' => 'email-logs-detail',
 		'class' => 'block-outer-opposite',
 	), $__vars) . '
 	</div>
@@ -112,7 +113,8 @@ return array(
 	' . $__templater->func('page_nav', array(array(
 		'page' => $__vars['page'],
 		'total' => $__vars['total'],
-		'link' => 'email-logs/detail',
+		'link' => 'email-logs-detail',
+		'params' => array('id' => $__vars['cromEmailLogId'], ),
 		'wrapperclass' => 'block',
 		'perPage' => $__vars['perPage'],
 	))) . '

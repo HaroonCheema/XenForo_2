@@ -1,4 +1,7 @@
 {
+    "admin_email-logs-detail_.json": {
+        "hash": "e2d3da9921c6ae093272b20675e28c1f"
+    },
     "admin_email-logs_.json": {
         "hash": "abbf5ad5cc43876351e7e4e1c2fca922"
     },
@@ -7,6 +10,9 @@
     },
     "api_insert-emails_.json": {
         "hash": "f7e150955634409a240ab9fea105485c"
+    },
+    "public_email-logs-detail_.json": {
+        "hash": "ce0a1f5db11f6c64b992d624e4ec595f"
     },
     "public_email-logs_.json": {
         "hash": "5cf548e4d686fd4ac22e09509f695f05"
