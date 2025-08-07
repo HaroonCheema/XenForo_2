@@ -1,0 +1,9 @@
+{
+    "template": "post_macros",
+    "description": "fs_attachment_queue_post_macros_notice_in_awaiting",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:extension name=\"content\">",
+    "replace": "$0\n\n<xf:if is=\"{{$xf.visitor.user_id == $post.user_id && $post.getAwaitingApproval()}}\">\n\n\t\t<div class=\"messageNotice messageNotice--moderated\">\n\t\t\t{{ phrase('fs_this_message_is_awaiting_moderator_approval_and_is_invisible_to_normal') }}\n\t\t</div>\n</xf:if>"
+}

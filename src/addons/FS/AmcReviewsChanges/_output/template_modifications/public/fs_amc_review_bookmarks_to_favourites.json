@@ -1,0 +1,9 @@
+{
+    "template": "account_bookmarks",
+    "description": "fs_amc_review_bookmarks_to_favourites",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "{{ phrase('bookmarks') }}",
+    "replace": "{{ phrase('fs_amc_bookmark_to_favourite') }}"
+}

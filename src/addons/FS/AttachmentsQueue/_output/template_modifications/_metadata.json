@@ -2,13 +2,22 @@
     "public/fs_attachment_queue_approval_page_container.json": {
         "hash": "19ac1e9ebe86a1acb41a270a4f8fb23d"
     },
+    "public/fs_attachment_queue_hide_attachment.json": {
+        "hash": "af8feb4dcb1dcfeefd7df5c3f9ae5cc6"
+    },
+    "public/fs_attachment_queue_message_macros.json": {
+        "hash": "7039f0ff478180ebcf55e1c1ab88772c"
+    },
+    "public/fs_attachment_queue_post_macros_notice_in_awaiting.json": {
+        "hash": "6f00d5e3a4485ff0521c5adde97b2765"
+    },
     "public/fs_attachment_queue_replace_from_post_full.json": {
-        "hash": "4499366aa27261cccb42a3e177ab7677"
+        "hash": "7d2a1cbaea2525a95b0486e5fd1b2d44"
     },
     "public/fs_attachment_queue_replace_from_post_thumb.json": {
-        "hash": "2be38b2db1f8511f7889dc33c00ccb34"
+        "hash": "7df57bbd4c645bd8673ad8e0f5ac339e"
     },
-    "public/fs_attachment_queue_replace_non_embed.json": {
-        "hash": "08afb0bdc47375f82ec8dee979653852"
+    "public/fs_attachment_queue_tag_attach.json": {
+        "hash": "6e259815a989c3f743ee597f75909a7f"
     }
 }

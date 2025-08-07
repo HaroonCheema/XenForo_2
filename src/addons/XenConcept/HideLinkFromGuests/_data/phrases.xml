@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="option.xc_hide_link_from_guests_allowed_nodes" version_id="2000300" version_string="2.0.3"><![CDATA[Show links in]]></phrase>
+  <phrase title="option.xc_hide_link_from_guests_attach_allowed_nodes" version_id="2001200" version_string="2.1.2"><![CDATA[Show images attach in]]></phrase>
+  <phrase title="option.xc_hide_link_from_guests_image_allowed_nodes" version_id="2000900" version_string="2.0.9"><![CDATA[Show images in]]></phrase>
+  <phrase title="option.xc_hide_link_from_guests_media_allowed_nodes" version_id="2000700" version_string="2.0.7"><![CDATA[Show medias in]]></phrase>
+  <phrase title="option.xc_hide_links_from_guests_allow_internal_img" version_id="2001490" version_string="2.1.4"><![CDATA[Allow internal images?]]></phrase>
+  <phrase title="option.xc_hide_links_from_guests_allow_internal_links" version_id="2000200" version_string="2.0.2"><![CDATA[Allow internal links?]]></phrase>
+  <phrase title="option.xc_hide_links_from_guests_anonym_url" version_id="2001300" version_string="2.1.3"><![CDATA[Anonym-URL]]></phrase>
+  <phrase title="option.xc_hide_links_from_guests_atta_no_validated_email" version_id="2001200" version_string="2.1.2"><![CDATA[Hide images attach of the users who have not validated their email]]></phrase>
+  <phrase title="option.xc_hide_links_from_guests_enable_hide_attach" version_id="2001200" version_string="2.1.2"><![CDATA[Enable hide images attach]]></phrase>
+  <phrase title="option.xc_hide_links_from_guests_enable_hide_image" version_id="2000900" version_string="2.0.9"><![CDATA[Enable hide image]]></phrase>
+  <phrase title="option.xc_hide_links_from_guests_enable_hide_link" version_id="2000700" version_string="2.0.7"><![CDATA[Enable hide link]]></phrase>
+  <phrase title="option.xc_hide_links_from_guests_enable_hide_media" version_id="2000700" version_string="2.0.7"><![CDATA[Enable hide media]]></phrase>
+  <phrase title="option.xc_hide_links_from_guests_image_no_validated_email" version_id="2000900" version_string="2.0.9"><![CDATA[Hide images of the users who have not validated their email]]></phrase>
+  <phrase title="option.xc_hide_links_from_guests_img_websites_excluded" version_id="2001490" version_string="2.1.4"><![CDATA[Website Excluted]]></phrase>
+  <phrase title="option.xc_hide_links_from_guests_limit_insert_attach" version_id="2001300" version_string="2.1.3"><![CDATA[Limit for inserting "Error with the attach should be replaced"]]></phrase>
+  <phrase title="option.xc_hide_links_from_guests_limit_insert_image" version_id="2001300" version_string="2.1.3"><![CDATA[Limit for inserting "Error with the image should be replaced"]]></phrase>
+  <phrase title="option.xc_hide_links_from_guests_limit_insert_links" version_id="2001300" version_string="2.1.3"><![CDATA[Limit for inserting "Error with the link should be replaced"]]></phrase>
+  <phrase title="option.xc_hide_links_from_guests_limit_insert_media" version_id="2001300" version_string="2.1.3"><![CDATA[Limit for inserting "Error with the media should be replaced"]]></phrase>
+  <phrase title="option.xc_hide_links_from_guests_media_no_validated_email" version_id="2000700" version_string="2.0.7"><![CDATA[Hide medias of the users who have not validated their email]]></phrase>
+  <phrase title="option.xc_hide_links_from_guests_no_validated_email" version_id="2000600" version_string="2.0.6"><![CDATA[Hide links of the users who have not validated their email]]></phrase>
+  <phrase title="option.xc_hide_links_from_guests_websites_excluded" version_id="2000100" version_string="2.0.1"><![CDATA[Website Excluted]]></phrase>
+  <phrase title="option_explain.xc_hide_link_from_guests_allowed_nodes" version_id="2000300" version_string="2.0.3"><![CDATA[Select the forums where the links will be visible.]]></phrase>
+  <phrase title="option_explain.xc_hide_link_from_guests_attach_allowed_nodes" version_id="2001200" version_string="2.1.2"><![CDATA[Select the forums where the images attach will be visible]]></phrase>
+  <phrase title="option_explain.xc_hide_link_from_guests_image_allowed_nodes" version_id="2000900" version_string="2.0.9"><![CDATA[Select the forums where the images will be visible.]]></phrase>
+  <phrase title="option_explain.xc_hide_link_from_guests_media_allowed_nodes" version_id="2000700" version_string="2.0.7"><![CDATA[Select the forums where the medias will be visible.]]></phrase>
+  <phrase title="option_explain.xc_hide_links_from_guests_allow_internal_img" version_id="2001490" version_string="2.1.4"><![CDATA[Allow internal image display to visitors.]]></phrase>
+  <phrase title="option_explain.xc_hide_links_from_guests_allow_internal_links" version_id="2000200" version_string="2.0.2"><![CDATA[Allow internal link display to visitors.]]></phrase>
+  <phrase title="option_explain.xc_hide_links_from_guests_anonym_url" version_id="2001300" version_string="2.1.3"><![CDATA[]]></phrase>
+  <phrase title="option_explain.xc_hide_links_from_guests_atta_no_validated_email" version_id="2001200" version_string="2.1.2"><![CDATA[]]></phrase>
+  <phrase title="option_explain.xc_hide_links_from_guests_enable_hide_attach" version_id="2001200" version_string="2.1.2"><![CDATA[Let hide attach to visitors or not]]></phrase>
+  <phrase title="option_explain.xc_hide_links_from_guests_enable_hide_image" version_id="2000900" version_string="2.0.9"><![CDATA[Let hide images to visitors or not]]></phrase>
+  <phrase title="option_explain.xc_hide_links_from_guests_enable_hide_link" version_id="2000700" version_string="2.0.7"><![CDATA[Let hide links to visitors or not]]></phrase>
+  <phrase title="option_explain.xc_hide_links_from_guests_enable_hide_media" version_id="2000700" version_string="2.0.7"><![CDATA[Let hide medias to visitors or not]]></phrase>
+  <phrase title="option_explain.xc_hide_links_from_guests_image_no_validated_email" version_id="2000900" version_string="2.0.9"><![CDATA[]]></phrase>
+  <phrase title="option_explain.xc_hide_links_from_guests_img_websites_excluded" version_id="2001490" version_string="2.1.4"><![CDATA[Separate each site with a line break. Allows to display certain site (img) to the visitor.]]></phrase>
+  <phrase title="option_explain.xc_hide_links_from_guests_limit_insert_attach" version_id="2001300" version_string="2.1.3"><![CDATA[Maximum number of attachs to be replaced with the error. Within a post. after that the attach is only removed. 
+0 = disabled]]></phrase>
+  <phrase title="option_explain.xc_hide_links_from_guests_limit_insert_image" version_id="2001300" version_string="2.1.3"><![CDATA[Maximum number of images to be replaced with the error. Within a post. after that the image is only removed. 
+0 = disabled]]></phrase>
+  <phrase title="option_explain.xc_hide_links_from_guests_limit_insert_links" version_id="2001300" version_string="2.1.3"><![CDATA[Maximum number of links to be replaced with the error. Within a post. after that the link is only removed. 
+0 = disabled]]></phrase>
+  <phrase title="option_explain.xc_hide_links_from_guests_limit_insert_media" version_id="2001300" version_string="2.1.3"><![CDATA[Maximum number of medias to be replaced with the error. Within a post. after that the media is only removed. 
+0 = disabled]]></phrase>
+  <phrase title="option_explain.xc_hide_links_from_guests_media_no_validated_email" version_id="2000700" version_string="2.0.7"><![CDATA[]]></phrase>
+  <phrase title="option_explain.xc_hide_links_from_guests_no_validated_email" version_id="2000600" version_string="2.0.6"><![CDATA[]]></phrase>
+  <phrase title="option_explain.xc_hide_links_from_guests_websites_excluded" version_id="2000100" version_string="2.0.1"><![CDATA[Separate each site with a comma. Allows to display certain site (link) to the visitor.]]></phrase>
+  <phrase title="option_group.xc_hide_links_from_guests" version_id="2001500" version_string="2.1.5"><![CDATA[[XenConcept] Hide links / Medias / Images (BbCode)]]></phrase>
+  <phrase title="option_group_description.xc_hide_links_from_guests" version_id="2001500" version_string="2.1.5"><![CDATA[Options that control the Hide links / Medias (BbCode) add-on.]]></phrase>
+  <phrase title="style_prop.xc_hide_link_from_guests_error_attach" version_id="2001300" version_string="2.1.3"><![CDATA[Error attach]]></phrase>
+  <phrase title="style_prop.xc_hide_link_from_guests_error_attach_icon" version_id="2001300" version_string="2.1.3"><![CDATA[Error attach - Icon]]></phrase>
+  <phrase title="style_prop.xc_hide_link_from_guests_error_image" version_id="2000900" version_string="2.0.9"><![CDATA[Error image]]></phrase>
+  <phrase title="style_prop.xc_hide_link_from_guests_error_image_icon" version_id="2000900" version_string="2.0.9"><![CDATA[Error image - Icon]]></phrase>
+  <phrase title="style_prop.xc_hide_link_from_guests_error_link" version_id="2000900" version_string="2.0.9"><![CDATA[Error link]]></phrase>
+  <phrase title="style_prop.xc_hide_link_from_guests_error_link_icon" version_id="2000900" version_string="2.0.9"><![CDATA[Error link - Icon]]></phrase>
+  <phrase title="style_prop.xc_hide_link_from_guests_error_media" version_id="2000900" version_string="2.0.9"><![CDATA[Error media]]></phrase>
+  <phrase title="style_prop.xc_hide_link_from_guests_error_media_icon" version_id="2000900" version_string="2.0.9"><![CDATA[Error media - Icon]]></phrase>
+  <phrase title="style_prop_desc.xc_hide_link_from_guests_error_attach" version_id="2001300" version_string="2.1.3"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.xc_hide_link_from_guests_error_attach_icon" version_id="2001300" version_string="2.1.3"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.xc_hide_link_from_guests_error_image" version_id="2000900" version_string="2.0.9"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.xc_hide_link_from_guests_error_image_icon" version_id="2000900" version_string="2.0.9"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.xc_hide_link_from_guests_error_link" version_id="2000900" version_string="2.0.9"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.xc_hide_link_from_guests_error_link_icon" version_id="2000900" version_string="2.0.9"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.xc_hide_link_from_guests_error_media" version_id="2000900" version_string="2.0.9"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.xc_hide_link_from_guests_error_media_icon" version_id="2000900" version_string="2.0.9"><![CDATA[]]></phrase>
+  <phrase title="style_prop_group.xc_hide_link_from_guests" version_id="2000900" version_string="2.0.9"><![CDATA[[XenConcept] Hide links / Medias / Images (BbCode) to guests]]></phrase>
+  <phrase title="style_prop_group_desc.xc_hide_link_from_guests" version_id="2000900" version_string="2.0.9"><![CDATA[]]></phrase>
+  <phrase title="xc_hide_links_from_guests_guests_error_hide_attach" version_id="2001200" version_string="2.1.2"><![CDATA[You must be registered for see images attach]]></phrase>
+  <phrase title="xc_hide_links_from_guests_guests_error_hide_image" version_id="2001500" version_string="2.1.5"><![CDATA[You must be registered for see images]]></phrase>
+  <phrase title="xc_hide_links_from_guests_guests_error_hide_link" version_id="2001500" version_string="2.1.5"><![CDATA[You must be registered for see links]]></phrase>
+  <phrase title="xc_hide_links_from_guests_guests_error_hide_media" version_id="2001600" version_string="2.1.6"><![CDATA[You must be registered for see medias]]></phrase>
+  <phrase title="xc_hide_links_from_guests_user_error_hide_attach" version_id="2001200" version_string="2.1.2"><![CDATA[You must confirm your email to see the images attach]]></phrase>
+  <phrase title="xc_hide_links_from_guests_user_error_hide_image" version_id="2001500" version_string="2.1.5"><![CDATA[You must confirm your email to see the images]]></phrase>
+  <phrase title="xc_hide_links_from_guests_user_error_hide_link" version_id="2001500" version_string="2.1.5"><![CDATA[You must confirm your email to see the links]]></phrase>
+  <phrase title="xc_hide_links_from_guests_user_error_hide_medias" version_id="2000800" version_string="2.0.8"><![CDATA[You must confirm your email to see the medias]]></phrase>
+  <phrase title="xc_hide_links_medias_to_guests_hide_attach_options" version_id="2001200" version_string="2.1.2"><![CDATA[Hide attach options]]></phrase>
+  <phrase title="xc_hide_links_medias_to_guests_hide_images_options" version_id="2000900" version_string="2.0.9"><![CDATA[Hide images options]]></phrase>
+  <phrase title="xc_hide_links_medias_to_guests_hide_links_options" version_id="2000700" version_string="2.0.7"><![CDATA[Hide links options]]></phrase>
+  <phrase title="xc_hide_links_medias_to_guests_hide_medias_options" version_id="2000700" version_string="2.0.7"><![CDATA[Hide medias options]]></phrase>
+</phrases>

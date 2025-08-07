@@ -133,6 +133,7 @@ return array (
   'option_group.usersAndRegistration' => 'User registration',
   'option_group.xb_avatar_gallery' => '[XB] AvatarGallery',
   'option_group.xb_stop_human_span' => '[XB] Stop Human Spam',
+  'option_group.xc_hide_links_from_guests' => '[XenConcept] Hide links / Medias / Images (BbCode)',
   'option_group.xc_threadsaleitem' => '[FS] Thread Sale Item',
   'option_group.xenforoMessenger' => '[021] XenForo Messenger',
   'option_group.xfmg' => 'XenForo Media Gallery',

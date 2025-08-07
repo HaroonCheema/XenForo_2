@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="PAGE_CONTAINER" modification_key="fs_awc_reviews_add_profile" description="fs_awc_reviews_add_profile" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<xf:if is="\$xf\.visitor\.is_admin">.*?<\/xf:if>/is]]></find>
+    <replace><![CDATA[$0
+
+<xf:if contentcheck="true">
+	<a class="p-staffBar-link menuTrigger" data-xf-click="menu" data-xf-key="alt+m" role="button" tabindex="0" aria-expanded="false" aria-haspopup="true">{{ phrase('fs_amc_review_profile') }}</a>
+	<div class="menu" data-menu="menu" aria-hidden="true">
+		<div class="menu-content">
+			<h4 class="menu-header">{{ phrase('fs_amc_review_profile_tools') }}</h4>
+			<xf:contentcheck>
+				<xf:if is="$xf.visitor.user_id">
+					<a href="{{ link('members', $xf.visitor) }}" class="menu-linkRow">{{ phrase('fs_amc_reviews_your_profile') }}</a>
+				</xf:if>
+				<xf:if is="$xf.visitor.user_id">
+					<a href="{{ link('account/account-details') }}" class="menu-linkRow">{{ phrase('fs_amc_reviews_edit_profile') }}</a>
+				</xf:if>
+			</xf:contentcheck>
+		</div>
+	</div>
+</xf:if>
+
+<xf:if is="$xf.visitor.user_id">
+	<a href="{{ link('account/bookmarks') }}" class="p-staffBar-link" >{{ phrase('fs_amc_reviews_favourite') }}</a>
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="account_bookmarks" modification_key="fs_amc_review_bookmarks_to_favourites" description="fs_amc_review_bookmarks_to_favourites" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[{{ phrase('bookmarks') }}]]></find>
+    <replace><![CDATA[{{ phrase('fs_amc_bookmark_to_favourite') }}]]></replace>
+  </modification>
+  <modification type="public" template="account_bookmarks" modification_key="fs_amc_review_no_favourite_yet_added" description="fs_amc_review_no_favourite_yet_added" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[{{ phrase('you_have_not_added_any_bookmarks_yet') }}]]></find>
+    <replace><![CDATA[{{ phrase('you_have_not_added_any_favourites_yet') }}]]></replace>
+  </modification>
+  <modification type="public" template="account_visitor_menu" modification_key="fs_amc_review_account_visitor_menu_favourite" description="fs_amc_review_account_visitor_menu_favourite" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[{{ phrase('bookmarks') }}]]></find>
+    <replace><![CDATA[{{ phrase('fs_amc_bookmark_to_favourite') }}]]></replace>
+  </modification>
+  <modification type="public" template="account_wrapper" modification_key="fs_amc_review_account_wrapper_favourite" description="fs_amc_review_account_wrapper_favourite" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[{{ phrase('bookmarks') }}]]></find>
+    <replace><![CDATA[{{ phrase('fs_amc_bookmark_to_favourite') }}]]></replace>
+  </modification>
+  <modification type="public" template="bookmark_edit" modification_key="fs_amc_bookmark_add_item" description="fs_amc_bookmark_add_item" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[{{ phrase('add_bookmark') }}]]></find>
+    <replace><![CDATA[{{ phrase('fs_amc_item_add') }}]]></replace>
+  </modification>
+  <modification type="public" template="bookmark_edit" modification_key="fs_amc_bookmark_added_replc" description="fs_amc_bookmark_added_replc" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[{{ phrase('bookmark_added') }}]]></find>
+    <replace><![CDATA[{{ phrase('fs_amc_item_added') }}]]></replace>
+  </modification>
+  <modification type="public" template="bookmark_edit" modification_key="fs_amc_bookmark_edit_item" description="fs_amc_bookmark_edit_item" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[{{ phrase('edit_bookmark') }}]]></find>
+    <replace><![CDATA[{{ phrase('fs_amc_item_edit') }}]]></replace>
+  </modification>
+  <modification type="public" template="bookmark_macros" modification_key="fs_amc_bookmark_macros_item_tools" description="fs_amc_bookmark_macros_item_tools" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[{{ phrase('bookmark_tools') }}]]></find>
+    <replace><![CDATA[{{ phrase('fs_amc_item_tools') }}]]></replace>
+  </modification>
+  <modification type="public" template="bookmark_macros" modification_key="fs_amc_bookmark_macros_replc" description="fs_amc_bookmark_macros_replc" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[{{ phrase('bookmarked') }}]]></find>
+    <replace><![CDATA[{{ phrase('fs_amc_bookmarked_favourite') }}]]></replace>
+  </modification>
+  <modification type="public" template="bookmark_macros" modification_key="fs_amc_no_item_note" description="fs_amc_no_item_note" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[{{ phrase('no_bookmark_note') }}]]></find>
+    <replace><![CDATA[{{ phrase('fs_amc_no_item_note') }}]]></replace>
+  </modification>
+  <modification type="public" template="extra.less" modification_key="fs_amc_review_item_favourite_color" description="fs_amc_review_item_favourite_color" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/^(.*)$/is]]></find>
+    <replace><![CDATA[$0
+
+.itemFavouriteClr
+{
+color: #1d9f1d !important;
+}
+
+.itemFavouriteClrBtn
+{
+background-color: #1d9f1d !important;
+color: #fff !important;
+}]]></replace>
+  </modification>
+  <modification type="public" template="post_macros" modification_key="fs_amc_post_macros_add_to_favourite" description="fs_amc_post_macros_add_to_favourite" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<xf:macro template="bookmark_macros" name="link".*?arg-showText="{{ false }}"\/>/is]]></find>
+    <replace><![CDATA[<xf:macro template="bookmark_macros" name="link"
+		  arg-content="{$post}"
+		  arg-class="message-attribution-gadget bookmarkLink--highlightable itemFavouriteClr"
+		  arg-confirmUrl="{{ link('posts/bookmark', $post) }}"
+		  arg-showText="{{ true }}"
+		  arg-editText="{{ phrase('fs_amc_favourite_edit') }}"
+		  arg-addText="{{ phrase('fs_amc_favourite_add') }}"
+		  />]]></replace>
+  </modification>
+  <modification type="public" template="thread_view" modification_key="fs_amc_review_add_to_favourites" description="fs_amc_review_add_to_favourites" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<xf:if is="\$thread\.canWatch\(\)">.*?<\/xf:if>/is]]></find>
+    <replace><![CDATA[$0
+
+<xf:if is="$xf.visitor.user_id">
+
+	<xf:macro template="bookmark_macros" name="button"
+			  arg-content="{$thread.FirstPost}"
+			  arg-confirmUrl="{{ link('posts/bookmark', $thread.FirstPost) }}"
+			  arg-showText="true"
+			  arg-editText="{{ phrase('fs_amc_favourite_edit') }}"
+			  arg-addText="{{ phrase('fs_amc_favourite_add') }}"
+			  arg-class="button--link itemFavouriteClrBtn"
+			  />
+</xf:if>]]></replace>
+  </modification>
+</template_modifications>

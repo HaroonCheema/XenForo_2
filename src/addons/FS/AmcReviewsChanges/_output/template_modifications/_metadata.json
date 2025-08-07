@@ -1,0 +1,44 @@
+{
+    "public/fs_amc_bookmark_add_item.json": {
+        "hash": "46ca719d8844501d9fb53c0202fbb7a2"
+    },
+    "public/fs_amc_bookmark_added_replc.json": {
+        "hash": "ff2c571d81611459152bce3b8f5f67f8"
+    },
+    "public/fs_amc_bookmark_edit_item.json": {
+        "hash": "1025c65a32680ce5979ddacc885cb889"
+    },
+    "public/fs_amc_bookmark_macros_item_tools.json": {
+        "hash": "d4b617f99568cc705eea1692ad8b774d"
+    },
+    "public/fs_amc_bookmark_macros_replc.json": {
+        "hash": "87d097d86f70f45d3cad614c9fe18ef7"
+    },
+    "public/fs_amc_no_item_note.json": {
+        "hash": "fa9b853cbeee2a9f55d5bcec49f85602"
+    },
+    "public/fs_amc_post_macros_add_to_favourite.json": {
+        "hash": "78fe19b6175326f0f9d924ace0f57eb7"
+    },
+    "public/fs_amc_review_account_visitor_menu_favourite.json": {
+        "hash": "f1d18b98b1680e2a21ce09433f31d434"
+    },
+    "public/fs_amc_review_account_wrapper_favourite.json": {
+        "hash": "25b3fae5a261fc595344d4cfdfe56baa"
+    },
+    "public/fs_amc_review_add_to_favourites.json": {
+        "hash": "97a585b4b505a4970b0ebea3c73ec095"
+    },
+    "public/fs_amc_review_bookmarks_to_favourites.json": {
+        "hash": "59cc1bd5bc8528939a7abb4098de2659"
+    },
+    "public/fs_amc_review_item_favourite_color.json": {
+        "hash": "cc25c35901661943243297fbd0cac941"
+    },
+    "public/fs_amc_review_no_favourite_yet_added.json": {
+        "hash": "f693763b9f4f8cc74f7e7e3675303e2d"
+    },
+    "public/fs_awc_reviews_add_profile.json": {
+        "hash": "1f21a09a2f2c805ed026c503be4a86fb"
+    }
+}

@@ -1,0 +1,9 @@
+{
+    "template": "thread_view",
+    "description": "fs_amc_review_add_to_favourites",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/<xf:if is=\"\\$thread\\.canWatch\\(\\)\">.*?<\\/xf:if>/is",
+    "replace": "$0\n\n<xf:if is=\"$xf.visitor.user_id\">\n\n\t<xf:macro template=\"bookmark_macros\" name=\"button\"\n\t\t\t  arg-content=\"{$thread.FirstPost}\"\n\t\t\t  arg-confirmUrl=\"{{ link('posts/bookmark', $thread.FirstPost) }}\"\n\t\t\t  arg-showText=\"true\"\n\t\t\t  arg-editText=\"{{ phrase('fs_amc_favourite_edit') }}\"\n\t\t\t  arg-addText=\"{{ phrase('fs_amc_favourite_add') }}\"\n\t\t\t  arg-class=\"button--link itemFavouriteClrBtn\"\n\t\t\t  />\n</xf:if>"
+}

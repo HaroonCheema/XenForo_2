@@ -1,0 +1,6 @@
+{
+    "from_class": "XF\\ControllerPlugin\\Bookmark",
+    "to_class": "FS\\AmcReviewsChanges\\XF\\ControllerPlugin\\Bookmark",
+    "execute_order": 100,
+    "active": true
+}

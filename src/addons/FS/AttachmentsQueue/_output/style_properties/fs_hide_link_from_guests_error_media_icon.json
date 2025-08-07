@@ -1,0 +1,19 @@
+{
+    "group_name": "fs_hide_link_from_guests",
+    "title": "Error media - Icon",
+    "description": "",
+    "property_type": "css",
+    "css_components": [
+        "text",
+        "extra"
+    ],
+    "value_type": "",
+    "value_parameters": "",
+    "depends_on": "",
+    "value_group": "",
+    "property_value": {
+        "color": "#f2930d",
+        "extra": "content: \"\\f03d\";"
+    },
+    "display_order": 4
+}

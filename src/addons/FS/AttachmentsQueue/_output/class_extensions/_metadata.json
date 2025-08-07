@@ -1,5 +1,14 @@
 {
+    "XF-BbCode-Renderer-Html_FS-AttachmentsQueue-XF-BbCode-Renderer-Html.json": {
+        "hash": "07495dabaf4527a30bee82652fe0b950"
+    },
     "XF-Entity-Attachment_FS-AttachmentsQueue-XF-Entity-Attachment.json": {
         "hash": "a0cfdcad2faadbe8487b8f69a32f31fa"
+    },
+    "XF-Entity-Post_FS-AttachmentsQueue-XF-Entity-Post.json": {
+        "hash": "e477cb1d6556b4261eef5b0ce98ce302"
+    },
+    "XF-Pub-Controller-Attachment_FS-AttachmentsQueue-XF-Pub-Controller-Attachment.json": {
+        "hash": "10d6faff4ab61f8b3bce7ba051db5577"
     }
 }

@@ -1,0 +1,9 @@
+{
+    "template": "extra.less",
+    "description": "fs_amc_review_item_favourite_color",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/^(.*)$/is",
+    "replace": "$0\n\n.itemFavouriteClr\n{\ncolor: #1d9f1d !important;\n}\n\n.itemFavouriteClrBtn\n{\nbackground-color: #1d9f1d !important;\ncolor: #fff !important;\n}"
+}

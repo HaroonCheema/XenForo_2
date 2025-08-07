@@ -1,0 +1,14 @@
+{
+    "legacy_addon_id": "",
+    "title": "[XenConcept] Hide links / Medias / Images (BbCode)",
+    "description": "Let's hide links / Medias / Images",
+    "version_id": 2001600,
+    "version_string": "2.1.6",
+    "dev": "XenConcept",
+    "dev_url": "https://www.xen-concept.com/",
+    "faq_url": "https://www.xen-concept.com/forums/faqs.13/",
+    "support_url": "https://www.xen-concept.com/forums/bug-reports.7/",
+    "extra_urls": [],
+    "require": [],
+    "icon": "logo.png"
+}

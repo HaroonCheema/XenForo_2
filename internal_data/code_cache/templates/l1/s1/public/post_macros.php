@@ -176,6 +176,17 @@ return array(
 	$__finalCompiled = '';
 		$__finalCompiled .= '
 
+';
+	if ((($__vars['xf']['visitor']['user_id'] == $__vars['post']['user_id']) AND $__templater->method($__vars['post'], 'getAwaitingApproval', array()))) {
+		$__finalCompiled .= '
+
+		<div class="messageNotice messageNotice--moderated">
+			' . 'This message attachments is awaiting moderator approval, and is invisible to normal visitors.' . '
+		</div>
+';
+	}
+	$__finalCompiled .= '
+
 								';
 	if (($__vars['post']['message_state'] == 'deleted') AND (($__vars['post']['user_id'] == $__vars['xf']['visitor']['user_id']) AND ($__vars['post']['user_id'] != $__vars['post']['DeletionLog']['delete_user_id']))) {
 		$__finalCompiled .= '
@@ -404,9 +415,11 @@ return array(
 	$__compilerTemp1 .= '
 						' . $__templater->callMacro('bookmark_macros', 'link', array(
 		'content' => $__vars['post'],
-		'class' => 'message-attribution-gadget bookmarkLink--highlightable',
+		'class' => 'message-attribution-gadget bookmarkLink--highlightable itemFavouriteClr',
 		'confirmUrl' => $__templater->func('link', array('posts/bookmark', $__vars['post'], ), false),
-		'showText' => false,
+		'showText' => true,
+		'editText' => 'Edit favourite',
+		'addText' => 'Add to favourite',
 	), $__vars) . '
 					';
 	if (strlen(trim($__compilerTemp1)) > 0) {
@@ -583,14 +596,14 @@ return array(
 	$__finalCompiled .= '
 
 		';
-	if ($__vars['post']['attach_count']) {
+	if ($__vars['post']['attach_count'] AND $__vars['xf']['visitor']['user_id']) {
 		$__finalCompiled .= '
-			' . $__templater->callMacro('message_macros', 'attachments', array(
+	' . $__templater->callMacro('message_macros', 'attachments', array(
 			'attachments' => $__vars['post']['Attachments'],
 			'message' => $__vars['post'],
 			'canView' => $__templater->method($__vars['thread'], 'canViewAttachments', array()),
 		), $__vars) . '
-		';
+';
 	}
 	$__finalCompiled .= '
 	</div>

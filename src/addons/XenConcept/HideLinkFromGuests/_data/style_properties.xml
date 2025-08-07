@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style_properties>
+  <style_property property_name="xc_hide_link_from_guests_error_attach" group_name="xc_hide_link_from_guests" title="Error attach" property_type="css" display_order="7" css_components="text,background,border,border_radius,border_width_simple,border_color_simple,border_radius_simple,padding,extra">
+    <value>{
+    "font-size": "12px",
+    "color": "#aa6709",
+    "background-color": "#fff4e5",
+    "border-left-width": "2px",
+    "border-left-color": "#f2930d"
+}</value>
+  </style_property>
+  <style_property property_name="xc_hide_link_from_guests_error_attach_icon" group_name="xc_hide_link_from_guests" title="Error attach - Icon" property_type="css" display_order="8" css_components="text,extra">
+    <value>{
+    "color": "#f2930d",
+    "extra": "content: \"\\f03e\";"
+}</value>
+  </style_property>
+  <style_property property_name="xc_hide_link_from_guests_error_image" group_name="xc_hide_link_from_guests" title="Error image" property_type="css" display_order="5" css_components="text,background,border,border_radius,border_width_simple,border_color_simple,border_radius_simple,padding,extra">
+    <value>{
+    "font-size": "12px",
+    "color": "#aa6709",
+    "background-color": "#fff4e5",
+    "border-left-width": "2px",
+    "border-left-color": "#f2930d"
+}</value>
+  </style_property>
+  <style_property property_name="xc_hide_link_from_guests_error_image_icon" group_name="xc_hide_link_from_guests" title="Error image - Icon" property_type="css" display_order="6" css_components="text,extra">
+    <value>{
+    "color": "#f2930d",
+    "extra": "content: \"\\f03e\";"
+}</value>
+  </style_property>
+  <style_property property_name="xc_hide_link_from_guests_error_link" group_name="xc_hide_link_from_guests" title="Error link" property_type="css" display_order="1" css_components="text,background,border,border_radius,border_width_simple,border_color_simple,border_radius_simple,padding,extra">
+    <value>{
+    "font-size": "12px",
+    "color": "#aa6709",
+    "background-color": "#fff4e5",
+    "border-left-width": "2px",
+    "border-left-color": "#f2930d",
+    "extra": "display: inline-block;"
+}</value>
+  </style_property>
+  <style_property property_name="xc_hide_link_from_guests_error_link_icon" group_name="xc_hide_link_from_guests" title="Error link - Icon" property_type="css" display_order="2" css_components="text,extra">
+    <value>{
+    "color": "#f2930d",
+    "extra": "content: \"\\f0c1\";"
+}</value>
+  </style_property>
+  <style_property property_name="xc_hide_link_from_guests_error_media" group_name="xc_hide_link_from_guests" title="Error media" property_type="css" display_order="3" css_components="text,background,border,border_radius,border_width_simple,border_color_simple,border_radius_simple,padding,extra">
+    <value>{
+    "font-size": "12px",
+    "color": "#aa6709",
+    "background-color": "#fff4e5",
+    "border-left-width": "2px",
+    "border-left-color": "#f2930d"
+}</value>
+  </style_property>
+  <style_property property_name="xc_hide_link_from_guests_error_media_icon" group_name="xc_hide_link_from_guests" title="Error media - Icon" property_type="css" display_order="4" css_components="text,extra">
+    <value>{
+    "color": "#f2930d",
+    "extra": "content: \"\\f03d\";"
+}</value>
+  </style_property>
+</style_properties>

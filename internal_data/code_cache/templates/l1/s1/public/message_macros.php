@@ -292,10 +292,19 @@ return array(
 		foreach ($__vars['attachments'] AS $__vars['attachment']) {
 			if (!$__templater->method($__vars['message'], 'isAttachmentEmbedded', array($__vars['attachment'], ))) {
 				$__compilerTemp1 .= '
-						' . $__templater->callMacro('attachment_macros', 'attachment_list_item', array(
-					'attachment' => $__vars['attachment'],
-					'canView' => $__vars['canView'],
-				), $__vars) . '
+						';
+				if (($__vars['attachment']['content_type'] == 'post') AND ((($__vars['attachment']['attachment_state'] == 'pending') OR ($__vars['attachment']['attachment_state'] == 'rejected')) AND ($__vars['attachment']['Data']['user_id'] != $__vars['xf']['visitor']['user_id']))) {
+					$__compilerTemp1 .= '
+	';
+				} else {
+					$__compilerTemp1 .= '
+	' . $__templater->callMacro('attachment_macros', 'attachment_list_item', array(
+						'attachment' => $__vars['attachment'],
+						'canView' => $__vars['canView'],
+					), $__vars) . '
+';
+				}
+				$__compilerTemp1 .= '
 					';
 			}
 		}

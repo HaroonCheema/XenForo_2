@@ -140,7 +140,7 @@ return array(
 					';
 		} else {
 			$__finalCompiled .= '
-						' . 'No bookmark note.' . '
+						' . 'No item note.' . '
 					';
 		}
 		$__finalCompiled .= '
@@ -183,7 +183,7 @@ return array(
 
 		<div class="menu" data-menu="menu" aria-hidden="true">
 			<div class="menu-content">
-				<h3 class="menu-header">' . 'Bookmark tools' . '</h3>
+				<h3 class="menu-header">' . 'Item tools' . '</h3>
 				<a class="menu-linkRow" role="button" tabindex="0" data-menu-closer="on" data-xf-init="copy-to-clipboard" data-copy-text="' . $__templater->escape($__vars['bookmark']['content_link']) . '">' . 'Copy link' . '</a>
 				<a href="' . $__templater->escape($__vars['bookmark']['edit_link']) . '" class="menu-linkRow" data-xf-click="overlay">' . 'Edit' . '</a>
 				<a href="' . $__templater->escape($__vars['bookmark']['delete_link']) . '" class="menu-linkRow" data-xf-click="overlay">' . 'Delete' . '</a>
@@ -222,9 +222,9 @@ return array(
 	$__finalCompiled .= '
 			<li>
 				' . $__templater->fontAwesome('fa-clock', array(
-		'title' => 'Bookmarked',
+		'title' => 'Favourite',
 	)) . '
-				<span class="u-srOnly">' . 'Bookmarked' . '</span>
+				<span class="u-srOnly">' . 'Favourite' . '</span>
 				' . $__templater->func('date_dynamic', array($__vars['bookmark']['bookmark_date'], array(
 	))) . '
 			</li>

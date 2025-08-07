@@ -18,5 +18,10 @@
         "version_id": 2020032,
         "version_string": "2.2.0 Beta 2",
         "hash": "a31a05b7cb6e918b69f72731ab956e30"
+    },
+    "public/dbtech_ecommerce_product_wrapper.html": {
+        "version_id": 3000071,
+        "version_string": "3.0.0.1",
+        "hash": "ffbe23ca4f119e89ffcd502928c4f3fa"
     }
 }

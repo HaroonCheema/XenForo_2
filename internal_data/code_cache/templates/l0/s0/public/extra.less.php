@@ -5,7 +5,18 @@ return array(
 {
 	$__finalCompiled = '';
 	$__finalCompiled .= '
-' . $__templater->includeTemplate('Fs_NodeIcon_icon.less', $__vars);
+' . $__templater->includeTemplate('Fs_NodeIcon_icon.less', $__vars) . '
+
+.itemFavouriteClr
+{
+color: #1d9f1d !important;
+}
+
+.itemFavouriteClrBtn
+{
+background-color: #1d9f1d !important;
+color: #fff !important;
+}';
 	return $__finalCompiled;
 }
 );

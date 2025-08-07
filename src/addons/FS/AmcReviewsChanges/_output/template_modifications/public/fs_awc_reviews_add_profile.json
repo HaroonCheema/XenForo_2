@@ -1,0 +1,9 @@
+{
+    "template": "PAGE_CONTAINER",
+    "description": "fs_awc_reviews_add_profile",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/<xf:if is=\"\\$xf\\.visitor\\.is_admin\">.*?<\\/xf:if>/is",
+    "replace": "$0\n\n<xf:if contentcheck=\"true\">\n\t<a class=\"p-staffBar-link menuTrigger\" data-xf-click=\"menu\" data-xf-key=\"alt+m\" role=\"button\" tabindex=\"0\" aria-expanded=\"false\" aria-haspopup=\"true\">{{ phrase('fs_amc_review_profile') }}</a>\n\t<div class=\"menu\" data-menu=\"menu\" aria-hidden=\"true\">\n\t\t<div class=\"menu-content\">\n\t\t\t<h4 class=\"menu-header\">{{ phrase('fs_amc_review_profile_tools') }}</h4>\n\t\t\t<xf:contentcheck>\n\t\t\t\t<xf:if is=\"$xf.visitor.user_id\">\n\t\t\t\t\t<a href=\"{{ link('members', $xf.visitor) }}\" class=\"menu-linkRow\">{{ phrase('fs_amc_reviews_your_profile') }}</a>\n\t\t\t\t</xf:if>\n\t\t\t\t<xf:if is=\"$xf.visitor.user_id\">\n\t\t\t\t\t<a href=\"{{ link('account/account-details') }}\" class=\"menu-linkRow\">{{ phrase('fs_amc_reviews_edit_profile') }}</a>\n\t\t\t\t</xf:if>\n\t\t\t</xf:contentcheck>\n\t\t</div>\n\t</div>\n</xf:if>\n\n<xf:if is=\"$xf.visitor.user_id\">\n\t<a href=\"{{ link('account/bookmarks') }}\" class=\"p-staffBar-link\" >{{ phrase('fs_amc_reviews_favourite') }}</a>\n</xf:if>"
+}

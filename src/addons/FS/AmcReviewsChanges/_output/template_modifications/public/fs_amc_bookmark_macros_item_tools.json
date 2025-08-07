@@ -1,0 +1,9 @@
+{
+    "template": "bookmark_macros",
+    "description": "fs_amc_bookmark_macros_item_tools",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "{{ phrase('bookmark_tools') }}",
+    "replace": "{{ phrase('fs_amc_item_tools') }}"
+}

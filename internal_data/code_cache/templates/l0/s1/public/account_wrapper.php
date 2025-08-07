@@ -8,7 +8,7 @@ return array(
 	if ($__templater->method($__vars['xf']['visitor'], 'canViewBookmarks', array())) {
 		$__compilerTemp1 .= '
 					<a class="blockLink ' . (($__vars['pageSelected'] == 'bookmarks') ? 'is-selected' : '') . '" href="' . $__templater->func('link', array('account/bookmarks', ), true) . '">
-						' . 'Bookmarks' . '
+						' . 'Favourites' . '
 					</a>
 				';
 	}

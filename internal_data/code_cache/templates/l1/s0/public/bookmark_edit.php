@@ -11,15 +11,15 @@ return array(
 		$__compilerTemp1 = '';
 		if ($__vars['added']) {
 			$__compilerTemp1 .= '
-					' . 'Bookmark added' . '
+					' . 'Item added' . '
 				';
 		} else if ($__templater->method($__vars['bookmark'], 'isInsert', array())) {
 			$__compilerTemp1 .= '
-					' . 'Add bookmark' . '
+					' . 'Add item' . '
 				';
 		} else {
 			$__compilerTemp1 .= '
-					' . 'Edit bookmark' . '
+					' . 'Edit Item' . '
 				';
 		}
 		$__finalCompiled .= $__templater->form('
@@ -87,13 +87,13 @@ return array(
 		if ($__templater->method($__vars['bookmark'], 'isInsert', array())) {
 			$__finalCompiled .= '
 		';
-			$__templater->pageParams['pageTitle'] = $__templater->preEscaped('Add bookmark');
+			$__templater->pageParams['pageTitle'] = $__templater->preEscaped('Add item');
 			$__finalCompiled .= '
 	';
 		} else {
 			$__finalCompiled .= '
 		';
-			$__templater->pageParams['pageTitle'] = $__templater->preEscaped('Edit bookmark');
+			$__templater->pageParams['pageTitle'] = $__templater->preEscaped('Edit Item');
 			$__finalCompiled .= '
 	';
 		}

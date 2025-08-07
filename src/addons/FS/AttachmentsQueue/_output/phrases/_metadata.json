@@ -11,6 +11,36 @@
         "version_string": "1.0.0 Alpha",
         "hash": "e158190c07127f18d6aa517cba6491c2"
     },
+    "fs_hide_links_from_guests_guests_error_hide_attach.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "40d6f3754896773c849d88bd3248a92f"
+    },
+    "fs_hide_links_from_guests_guests_error_hide_image.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "21792a26006cb178eabfec4fc214be7f"
+    },
+    "fs_hide_links_from_guests_guests_error_hide_link.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "eb6126b928f48ca5fa5ade20bdd69b3e"
+    },
+    "fs_hide_links_from_guests_guests_error_hide_media.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "b96521ae2ffdaea2358d7cb4b3f5b779"
+    },
+    "fs_this_message_is_awaiting_moderator_approval_and_is_invisible_to_normal.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "093a468bb8d67e0c28bfced60f8f40e0"
+    },
     "option.fs_attachment_queue_pending_img.txt": {
         "global_cache": false,
         "version_id": 1000010,
@@ -42,6 +72,114 @@
         "hash": "e158190c07127f18d6aa517cba6491c2"
     },
     "option_group_description.fs_attachment_approval_queue.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "style_prop.fs_hide_link_from_guests_error_attach.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "62fc85b7e68deb0828bbb34720e035e7"
+    },
+    "style_prop.fs_hide_link_from_guests_error_attach_icon.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "fcca87bc19957a108c6c0fcde5e45023"
+    },
+    "style_prop.fs_hide_link_from_guests_error_image.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "19c5e015845b0a6c4889b9c85adf9554"
+    },
+    "style_prop.fs_hide_link_from_guests_error_image_icon.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "ecf3730fc57d3792bd003c47c1a985dd"
+    },
+    "style_prop.fs_hide_link_from_guests_error_link.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "c8afaa1abadcc0c08483df1db98d3891"
+    },
+    "style_prop.fs_hide_link_from_guests_error_link_icon.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "8bfcb1473788f8f3bab22fa44679b91f"
+    },
+    "style_prop.fs_hide_link_from_guests_error_media.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "368c0f2c1db16be7320feae78896dcf4"
+    },
+    "style_prop.fs_hide_link_from_guests_error_media_icon.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "f4c0d30d085ebf2ec5da8f7e63cacb82"
+    },
+    "style_prop_desc.fs_hide_link_from_guests_error_attach.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "style_prop_desc.fs_hide_link_from_guests_error_attach_icon.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "style_prop_desc.fs_hide_link_from_guests_error_image.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "style_prop_desc.fs_hide_link_from_guests_error_image_icon.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "style_prop_desc.fs_hide_link_from_guests_error_link.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "style_prop_desc.fs_hide_link_from_guests_error_link_icon.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "style_prop_desc.fs_hide_link_from_guests_error_media.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "style_prop_desc.fs_hide_link_from_guests_error_media_icon.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "style_prop_group.fs_hide_link_from_guests.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "bd986ef8a53b96a7b12c37a383027d12"
+    },
+    "style_prop_group_desc.fs_hide_link_from_guests.txt": {
         "global_cache": false,
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",

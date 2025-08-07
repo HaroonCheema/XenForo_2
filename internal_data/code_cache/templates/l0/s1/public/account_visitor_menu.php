@@ -113,7 +113,7 @@ return array(
 				';
 	if ($__templater->method($__vars['xf']['visitor'], 'canViewBookmarks', array())) {
 		$__compilerTemp1 .= '
-					<a href="' . $__templater->func('link', array('account/bookmarks', ), true) . '" class="tabs-tab" role="tab" tabindex="0" aria-controls="' . $__templater->func('unique_id', array('accountMenuBookmarks', ), true) . '">' . 'Bookmarks' . '</a>
+					<a href="' . $__templater->func('link', array('account/bookmarks', ), true) . '" class="tabs-tab" role="tab" tabindex="0" aria-controls="' . $__templater->func('unique_id', array('accountMenuBookmarks', ), true) . '">' . 'Favourites' . '</a>
 				';
 	}
 	$__compilerTemp1 .= '

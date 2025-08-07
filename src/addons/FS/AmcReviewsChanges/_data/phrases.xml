@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="fs_amc_bookmark_to_favourite" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Favourites]]></phrase>
+  <phrase title="fs_amc_bookmarked_favourite" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Favourite]]></phrase>
+  <phrase title="fs_amc_favourite_add" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add to favourite]]></phrase>
+  <phrase title="fs_amc_favourite_edit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Edit favourite]]></phrase>
+  <phrase title="fs_amc_item_add" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add item]]></phrase>
+  <phrase title="fs_amc_item_added" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Item added]]></phrase>
+  <phrase title="fs_amc_item_deleted_successfully" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Item deleted successfully.]]></phrase>
+  <phrase title="fs_amc_item_edit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Edit Item]]></phrase>
+  <phrase title="fs_amc_item_saved_successfully" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Item saved successfully.]]></phrase>
+  <phrase title="fs_amc_item_tools" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Item tools]]></phrase>
+  <phrase title="fs_amc_no_item_note" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[No item note.]]></phrase>
+  <phrase title="fs_amc_review_add_to_favourite_btn" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add to favourite]]></phrase>
+  <phrase title="fs_amc_review_profile" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Profile]]></phrase>
+  <phrase title="fs_amc_review_profile_tools" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Profile tools]]></phrase>
+  <phrase title="fs_amc_reviews_edit_profile" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Edit profile]]></phrase>
+  <phrase title="fs_amc_reviews_favourite" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Favourites]]></phrase>
+  <phrase title="fs_amc_reviews_your_profile" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Your profile]]></phrase>
+  <phrase title="you_have_not_added_any_favourites_yet" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You have not added any favourites yet.]]></phrase>
+</phrases>

@@ -2,10 +2,33 @@
 <phrases>
   <phrase title="fs_attachment_queue_approval_title" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Attachment queue]]></phrase>
   <phrase title="fs_attachments_queue_approvale" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Attachment Approval Queue]]></phrase>
+  <phrase title="fs_hide_links_from_guests_guests_error_hide_attach" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You must be registered for see images attach]]></phrase>
+  <phrase title="fs_hide_links_from_guests_guests_error_hide_image" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You must be registered for see images]]></phrase>
+  <phrase title="fs_hide_links_from_guests_guests_error_hide_link" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You must be registered for see links]]></phrase>
+  <phrase title="fs_hide_links_from_guests_guests_error_hide_media" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You must be registered for see medias]]></phrase>
+  <phrase title="fs_this_message_is_awaiting_moderator_approval_and_is_invisible_to_normal" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[This message attachments is awaiting moderator approval, and is invisible to normal visitors.]]></phrase>
   <phrase title="option.fs_attachment_queue_pending_img" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Pending img url]]></phrase>
   <phrase title="option.fs_attachment_queue_rejected_img" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Rejected img url]]></phrase>
   <phrase title="option_explain.fs_attachment_queue_pending_img" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
   <phrase title="option_explain.fs_attachment_queue_rejected_img" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
   <phrase title="option_group.fs_attachment_approval_queue" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Attachment Approval Queue]]></phrase>
   <phrase title="option_group_description.fs_attachment_approval_queue" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="style_prop.fs_hide_link_from_guests_error_attach" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Error attach]]></phrase>
+  <phrase title="style_prop.fs_hide_link_from_guests_error_attach_icon" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Error attach - Icon]]></phrase>
+  <phrase title="style_prop.fs_hide_link_from_guests_error_image" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Error image]]></phrase>
+  <phrase title="style_prop.fs_hide_link_from_guests_error_image_icon" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Error image - Icon]]></phrase>
+  <phrase title="style_prop.fs_hide_link_from_guests_error_link" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Error link]]></phrase>
+  <phrase title="style_prop.fs_hide_link_from_guests_error_link_icon" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Error link - Icon]]></phrase>
+  <phrase title="style_prop.fs_hide_link_from_guests_error_media" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Error media]]></phrase>
+  <phrase title="style_prop.fs_hide_link_from_guests_error_media_icon" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Error media - Icon]]></phrase>
+  <phrase title="style_prop_desc.fs_hide_link_from_guests_error_attach" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.fs_hide_link_from_guests_error_attach_icon" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.fs_hide_link_from_guests_error_image" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.fs_hide_link_from_guests_error_image_icon" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.fs_hide_link_from_guests_error_link" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.fs_hide_link_from_guests_error_link_icon" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.fs_hide_link_from_guests_error_media" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.fs_hide_link_from_guests_error_media_icon" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="style_prop_group.fs_hide_link_from_guests" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Hide attachments from guests]]></phrase>
+  <phrase title="style_prop_group_desc.fs_hide_link_from_guests" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
 </phrases>

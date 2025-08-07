@@ -1,0 +1,9 @@
+{
+    "template": "post_macros",
+    "description": "fs_attachment_queue_hide_attachment",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/<xf:if is=\"\\$post\\.attach_count\">.*?<\\/xf:if>/is",
+    "replace": "<xf:if is=\"$post.attach_count && $xf.visitor.user_id\">\n\t<xf:macro template=\"message_macros\" name=\"attachments\"\n\t\t\t  arg-attachments=\"{$post.Attachments}\"\n\t\t\t  arg-message=\"{$post}\"\n\t\t\t  arg-canView=\"{{ $thread.canViewAttachments() }}\" />\n</xf:if>"
+}

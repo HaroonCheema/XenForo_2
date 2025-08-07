@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="admin" title="xc_hide_links_medias_to_guests_addon_option_tabbed_macros" version_id="2001200" version_string="2.1.2"><![CDATA[<xf:title>{{ phrase('options:') }} {$addOn.title}</xf:title>
+
+<xf:if is="$groups is not empty">
+	
+	<xf:set var="{$AddOnRepo}" value="{$xf.app.em.getRepository('XF:AddOn')}" />
+	<xf:set var="{$addons}" value="{$AddOnRepo.findAddOnsForList()->fetch()}" />
+	
+	<xf:form action="{{ link('options/update') }}" ajax="true" class="block">
+		<div class="block-container">
+			<xf:foreach loop="$groups" key="$groupId" value="$group">
+				<xf:if is="{$groupedOptions.{$groupId}} is not empty">
+					
+					<xf:macro name="base_addon_options" arg-groups="{$groups}" arg-group="{$group}" />
+					
+					<xf:if is="$groupId === 'xc_hide_links_from_guests'">
+
+						<xf:macro name="xc_options" arg-groups="{$groups}" 
+								  arg-addons="{$addons}"
+								  arg-groupedOptions="{$groupedOptions}" />
+						
+					<xf:else />
+					
+						<xf:macro name="base_options" arg-groups="{$groups}" 
+								  rg-groupedOptions="{$groupedOptions}" />
+					
+					</xf:if>
+				</xf:if>
+			</xf:foreach>
+			<xf:submitrow sticky="true" icon="save" />
+		</div>
+	</xf:form>
+<xf:else />
+	<div class="blockMessage">{{ phrase('no_items_have_been_created_yet') }}</div>
+</xf:if>
+
+<xf:macro name="base_options" arg-groups="!" arg-groupedOptions="!">
+    <div class="block-body {{ $groups.count() > 1 ? 'block-body--collapsible' : '' }} is-active">
+
+        <xf:set var="$hundred" value="0" />
+
+        <xf:foreach loop="{$groupedOptions.{$groupId}}" value="{$option}">
+
+            <xf:if is="$group">
+                <xf:set var="$curHundred" value="{{ floor($option.Relations.{$group.group_id}.display_order / 100) }}" />
+                <xf:if is="{{ $curHundred > $hundred }}">
+                    <xf:set var="$hundred" value="{$curHundred}" />
+                    <hr class="formRowSep" />
+                </xf:if>
+            </xf:if>
+
+            <xf:macro template="option_macros" name="option_row" arg-group="{$group}" arg-option="{$option}" arg-includeAddOnHint="{{ false }}" />
+        </xf:foreach>
+    </div>
+</xf:macro>
+
+<xf:macro name="base_addon_options" arg-groups="!" arg-group="!">
+	<h3 class="block-formSectionHeader">
+		<span class="{{ $groups.count() > 1 ? 'collapseTrigger collapseTrigger--block' : '' }} is-active" data-xf-click="{{ $groups.count() > 1 ? 'toggle' : '' }}" data-target="< :up:next">
+				{$group.title}
+		</span>
+		<span class="block-desc">
+				{$group.description}
+		</span>
+	</h3>
+</xf:macro>
+
+<xf:macro name="xc_options" arg-groups="!" arg-groupedOptions="!" arg-addons="!">
+    <h2 class="block-tabHeader tabs" data-xf-init="tabs" role="tablist">
+
+		<a class="tabs-tab is-active" role="tab" tabindex="0" aria-controls="hideLinkOptions">{{ phrase('xc_hide_links_medias_to_guests_hide_links_options') }}</a>
+		<a class="tabs-tab is-active" role="tab" tabindex="0" aria-controls="hideMediaOptions">{{ phrase('xc_hide_links_medias_to_guests_hide_medias_options') }}</a>
+		<a class="tabs-tab is-active" role="tab" tabindex="0" aria-controls="hideImageOptions">{{ phrase('xc_hide_links_medias_to_guests_hide_images_options') }}</a>
+		<a class="tabs-tab is-active" role="tab" tabindex="0" aria-controls="hideAttachOptions">{{ phrase('xc_hide_links_medias_to_guests_hide_attach_options') }}</a>
+    </h2>
+    <ul class="tabPanes">
+        <li class="is-active" role="tabpanel" id="hideLinkOptions">
+            <div class="block-body">
+                <xf:foreach loop="{$groupedOptions.xc_hide_links_from_guests}" value="$option">
+                    <xf:if is="$option.Relations.xc_hide_links_from_guests.display_order < 100">
+                        <xf:macro template="option_macros" name="option_row" arg-group="{$group}" arg-option="{$option}" />
+                    </xf:if>
+                </xf:foreach>
+            </div>
+        </li>
+		 <li role="tabpanel" id="hideMediaOptions">
+            <div class="block-body">
+                <xf:foreach loop="{$groupedOptions.xc_hide_links_from_guests}" value="$option">
+                    <xf:if is="$option.Relations.xc_hide_links_from_guests.display_order >= 100 AND $option.Relations.xc_hide_links_from_guests.display_order < 200">
+						<xf:macro template="option_macros" name="option_row" arg-group="{$group}" arg-option="{$option}" />
+                    </xf:if>
+                </xf:foreach>
+            </div>
+        </li>
+		<li role="tabpanel" id="hideImageOptions">
+            <div class="block-body">
+                <xf:foreach loop="{$groupedOptions.xc_hide_links_from_guests}" value="$option">
+                    <xf:if is="$option.Relations.xc_hide_links_from_guests.display_order >= 200 AND $option.Relations.xc_hide_links_from_guests.display_order < 300">
+                        <xf:macro template="option_macros" name="option_row" arg-group="{$group}" arg-option="{$option}" />
+                    </xf:if>
+                </xf:foreach>
+            </div>
+        </li>
+		<li role="tabpanel" id="hideAttachOptions">
+            <div class="block-body">
+                <xf:foreach loop="{$groupedOptions.xc_hide_links_from_guests}" value="$option">
+                    <xf:if is="$option.Relations.xc_hide_links_from_guests.display_order >= 300 AND $option.Relations.xc_hide_links_from_guests.display_order < 400">
+                        <xf:macro template="option_macros" name="option_row" arg-group="{$group}" arg-option="{$option}" />
+                    </xf:if>
+                </xf:foreach>
+            </div>
+        </li>
+    </ul>
+</xf:macro>]]></template>
+  <template type="admin" title="xc_hide_links_medias_to_guests_option_tabbed_macros" version_id="2001200" version_string="2.1.2"><![CDATA[<xf:macro name="option_form_block" arg-group="" arg-options="!" arg-containerBeforeHtml="">
+    <xf:if is="$options is not empty">
+
+        <xf:form action="{{ link('options/update') }}" ajax="true" class="block">
+            {$containerBeforeHtml|raw}
+            <div class="block-container">
+                <h2 class="block-tabHeader tabs" data-xf-init="tabs" role="tablist">
+					
+                    <a class="tabs-tab is-active" role="tab" tabindex="0" aria-controls="hideLinkOptions">{{ phrase('xc_hide_links_medias_to_guests_hide_links_options') }}</a>
+					<a class="tabs-tab is-active" role="tab" tabindex="0" aria-controls="hideMediaOptions">{{ phrase('xc_hide_links_medias_to_guests_hide_medias_options') }}</a>
+					<a class="tabs-tab is-active" role="tab" tabindex="0" aria-controls="hideImageOptions">{{ phrase('xc_hide_links_medias_to_guests_hide_images_options') }}</a>
+                    <a class="tabs-tab is-active" role="tab" tabindex="0" aria-controls="hideAttachOptions">{{ phrase('xc_hide_links_medias_to_guests_hide_attach_options') }}</a>
+				</h2>
+                <ul class="tabPanes">
+                    <li class="is-active" role="tabpanel" id="hideLinkOptions">
+                        <div class="block-body">
+                            <xf:foreach loop="$options" value="$option">
+                            <xf:if is="$option.Relations.xc_hide_links_from_guests.display_order < 100">
+                                <xf:macro template="option_macros" name="option_row" arg-group="{$group}" arg-option="{$option}" />
+                            </xf:if>
+                            </xf:foreach>
+                        </div>
+                    </li>
+                    <li role="tabpanel" id="hideMediaOptions">
+                        <div class="block-body">
+                            <xf:foreach loop="$options" value="$option">
+                            <xf:if is="$option.Relations.xc_hide_links_from_guests.display_order >= 100 AND $option.Relations.xc_hide_links_from_guests.display_order < 200">
+                                <xf:macro template="option_macros" name="option_row" arg-group="{$group}" arg-option="{$option}" />
+                            </xf:if>
+                            </xf:foreach>
+                        </div>
+                    </li>
+					<li role="tabpanel" id="hideImageOptions">
+                        <div class="block-body">
+                            <xf:foreach loop="$options" value="$option">
+                            <xf:if is="$option.Relations.xc_hide_links_from_guests.display_order >= 200 AND $option.Relations.xc_hide_links_from_guests.display_order < 300">
+                                <xf:macro template="option_macros" name="option_row" arg-group="{$group}" arg-option="{$option}" />
+                            </xf:if>
+                            </xf:foreach>
+                        </div>
+                    </li>
+					<li role="tabpanel" id="hideAttachOptions">
+                        <div class="block-body">
+                            <xf:foreach loop="$options" value="$option">
+                            <xf:if is="$option.Relations.xc_hide_links_from_guests.display_order >= 300 AND $option.Relations.xc_hide_links_from_guests.display_order < 400">
+                                <xf:macro template="option_macros" name="option_row" arg-group="{$group}" arg-option="{$option}" />
+                            </xf:if>
+                            </xf:foreach>
+                        </div>
+                    </li>
+                </ul>
+                <xf:submitrow sticky="true" icon="save" />
+            </div>
+        </xf:form>
+    </xf:if>
+</xf:macro>]]></template>
+  <template type="public" title="xc_hide_links_medias_to_guests_bb_code_hide.less" version_id="2001300" version_string="2.1.3"><![CDATA[.messageHide {
+	
+	margin: @xf-messagePaddingSmall 0;
+	padding: @xf-messagePaddingSmall @xf-messagePadding;
+	
+	a,
+	a:hover
+	{
+		.xf-contentAccentLink();
+	}
+
+	&:first-child
+	{
+		margin-top: 0;
+	}
+
+	&:before
+	{
+		display: inline-block;
+		.m-faBase();
+		padding-right: .2em;
+		font-size: 125%;
+	}
+	
+	&.messageHide--link { .xf-xc_hide_link_from_guests_error_link(); }
+	&.messageHide--media { .xf-xc_hide_link_from_guests_error_media(); }
+	&.messageHide--image { .xf-xc_hide_link_from_guests_error_image(); }
+	&.messageHide--attach { .xf-xc_hide_link_from_guests_error_attach(); }
+	
+	&.messageHide--link:before { .xf-xc_hide_link_from_guests_error_link_icon(); }
+	&.messageHide--media:before { .xf-xc_hide_link_from_guests_error_media_icon(); }
+	&.messageHide--image:before { .xf-xc_hide_link_from_guests_error_image_icon(); }
+	&.messageHide--attach:before { .xf-xc_hide_link_from_guests_error_attach_icon(); }
+}]]></template>
+  <template type="public" title="xc_hide_links_medias_to_guests_bb_code_hide_error" version_id="2001500" version_string="2.1.5"><![CDATA[<xf:css src="xc_hide_links_medias_to_guests_bb_code_hide.less" />
+	
+<div class="messageHide messageHide--{$tag}">
+	{$errorPhrase|raw}
+</div>]]></template>
+</templates>

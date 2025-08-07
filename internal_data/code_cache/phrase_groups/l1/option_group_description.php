@@ -137,6 +137,7 @@ It is possible to filter the news feed down to just users you follow, or a singl
   'option_group_description.usersAndRegistration' => '',
   'option_group_description.xb_avatar_gallery' => '',
   'option_group_description.xb_stop_human_span' => '',
+  'option_group_description.xc_hide_links_from_guests' => 'Options that control the Hide links / Medias (BbCode) add-on.',
   'option_group_description.xc_threadsaleitem' => '',
   'option_group_description.xenforoMessenger' => '',
   'option_group_description.xfmg' => 'Options that control the media gallery add-on.',

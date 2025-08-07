@@ -148,10 +148,26 @@ return array(
 			)) . '
 ';
 		}
+		$__compilerTemp3 = '';
+		if ($__vars['xf']['visitor']['user_id']) {
+			$__compilerTemp3 .= '
+
+	' . $__templater->callMacro('bookmark_macros', 'button', array(
+				'content' => $__vars['thread']['FirstPost'],
+				'confirmUrl' => $__templater->func('link', array('posts/bookmark', $__vars['thread']['FirstPost'], ), false),
+				'showText' => 'true',
+				'editText' => 'Edit favourite',
+				'addText' => 'Add to favourite',
+				'class' => 'button--link itemFavouriteClrBtn',
+			), $__vars) . '
+';
+		}
 		$__finalCompiled .= $__templater->button('
 								' . $__compilerTemp1 . '
 
 ' . $__compilerTemp2 . '
+
+' . $__compilerTemp3 . '
 							', array(
 			'href' => $__templater->func('link', array('threads/watch', $__vars['thread'], ), false),
 			'class' => 'button--link',
@@ -165,35 +181,35 @@ return array(
 	$__finalCompiled .= '
 
 						';
-	$__compilerTemp3 = '';
-	$__compilerTemp3 .= '
+	$__compilerTemp4 = '';
+	$__compilerTemp4 .= '
 											' . ' 
 
 
 ';
 	if ($__vars['xf']['visitor']['is_moderator'] OR $__vars['xf']['visitor']['is_admin']) {
-		$__compilerTemp3 .= '
+		$__compilerTemp4 .= '
 <a href="' . $__templater->func('link', array('dropdownreply', $__vars['thread'], ), true) . '"  class="menu-linkRow">' . 'Add Dropdown Reply' . '</a>
 ';
 	}
-	$__compilerTemp3 .= '
+	$__compilerTemp4 .= '
 											';
 	if ($__templater->method($__vars['thread'], 'canEdit', array())) {
-		$__compilerTemp3 .= '
+		$__compilerTemp4 .= '
 												<a href="' . $__templater->func('link', array('threads/edit', $__vars['thread'], ), true) . '" data-xf-click="overlay" class="menu-linkRow">' . 'Edit thread' . '</a>
 											';
 	}
-	$__compilerTemp3 .= '
+	$__compilerTemp4 .= '
 											';
 	if ($__templater->method($__vars['thread'], 'canChangeType', array()) AND ($__templater->func('count', array($__vars['creatableThreadTypes'], ), false) > 1)) {
-		$__compilerTemp3 .= '
+		$__compilerTemp4 .= '
 												<a href="' . $__templater->func('link', array('threads/change-type', $__vars['thread'], ), true) . '" data-xf-click="overlay" class="menu-linkRow">' . 'Change thread type' . '</a>
 											';
 	}
-	$__compilerTemp3 .= '
+	$__compilerTemp4 .= '
 											';
 	if ($__templater->method($__vars['thread'], 'canLockUnlock', array())) {
-		$__compilerTemp3 .= '
+		$__compilerTemp4 .= '
 												<a href="' . $__templater->func('link', array('threads/quick-close', $__vars['thread'], ), true) . '"
 													class="menu-linkRow"
 													data-xf-click="switch"
@@ -201,22 +217,22 @@ return array(
 
 													';
 		if ($__vars['thread']['discussion_open']) {
-			$__compilerTemp3 .= '
+			$__compilerTemp4 .= '
 														' . 'Lock thread' . '
 													';
 		} else {
-			$__compilerTemp3 .= '
+			$__compilerTemp4 .= '
 														' . 'Unlock thread' . '
 													';
 		}
-		$__compilerTemp3 .= '
+		$__compilerTemp4 .= '
 												</a>
 											';
 	}
-	$__compilerTemp3 .= '
+	$__compilerTemp4 .= '
 											';
 	if ($__templater->method($__vars['thread'], 'canStickUnstick', array())) {
-		$__compilerTemp3 .= '
+		$__compilerTemp4 .= '
 												<a href="' . $__templater->func('link', array('threads/quick-stick', $__vars['thread'], ), true) . '"
 													class="menu-linkRow"
 													data-xf-click="switch"
@@ -224,103 +240,103 @@ return array(
 
 													';
 		if ($__vars['thread']['sticky']) {
-			$__compilerTemp3 .= '
+			$__compilerTemp4 .= '
 														' . 'Unstick thread' . '
 													';
 		} else {
-			$__compilerTemp3 .= '
+			$__compilerTemp4 .= '
 														' . 'Stick thread' . '
 													';
 		}
-		$__compilerTemp3 .= '
+		$__compilerTemp4 .= '
 												</a>
 											';
 	}
-	$__compilerTemp3 .= '
+	$__compilerTemp4 .= '
 											';
 	if ($__templater->method($__vars['thread'], 'canCreatePoll', array())) {
-		$__compilerTemp3 .= '
+		$__compilerTemp4 .= '
 												<a href="' . $__templater->func('link', array('threads/poll/create', $__vars['thread'], ), true) . '" data-xf-click="overlay" class="menu-linkRow">' . 'Create poll' . '</a>
 											';
 	}
-	$__compilerTemp3 .= '
+	$__compilerTemp4 .= '
 											';
 	if ($__templater->method($__vars['thread'], 'canDelete', array('soft', ))) {
-		$__compilerTemp3 .= '
+		$__compilerTemp4 .= '
 												<a href="' . $__templater->func('link', array('threads/delete', $__vars['thread'], ), true) . '" data-xf-click="overlay" class="menu-linkRow">' . 'Delete thread' . '</a>
 											';
 	}
-	$__compilerTemp3 .= '
+	$__compilerTemp4 .= '
 											';
 	if ($__templater->method($__vars['thread'], 'canMove', array())) {
-		$__compilerTemp3 .= '
+		$__compilerTemp4 .= '
 												<a href="' . $__templater->func('link', array('threads/move', $__vars['thread'], ), true) . '" data-xf-click="overlay" class="menu-linkRow">' . 'Move thread' . '</a>
 											';
 	}
-	$__compilerTemp3 .= '
+	$__compilerTemp4 .= '
 											';
 	if ($__templater->method($__vars['thread'], 'canReplyBan', array())) {
-		$__compilerTemp3 .= '
+		$__compilerTemp4 .= '
 												<a href="' . $__templater->func('link', array('threads/reply-bans', $__vars['thread'], ), true) . '" data-xf-click="overlay" class="menu-linkRow">' . 'Manage reply bans' . '</a>
 											';
 	}
-	$__compilerTemp3 .= '
+	$__compilerTemp4 .= '
 											';
 	if ($__templater->method($__vars['thread'], 'canViewModeratorLogs', array())) {
-		$__compilerTemp3 .= '
+		$__compilerTemp4 .= '
 												<a href="' . $__templater->func('link', array('threads/moderator-actions', $__vars['thread'], ), true) . '" data-xf-click="overlay" class="menu-linkRow">' . 'Moderator actions' . '</a>
 											';
 	}
-	$__compilerTemp3 .= '
+	$__compilerTemp4 .= '
 											';
 	if ($__templater->method($__vars['thread'], 'canResetRating', array())) {
-		$__compilerTemp3 .= '
+		$__compilerTemp4 .= '
 	<a href="' . $__templater->func('link', array('threads/br-reset-rating', $__vars['thread'], ), true) . '" data-xf-click="overlay" class="menu-linkRow">' . 'Reset Rating' . '</a>
 ';
 	}
-	$__compilerTemp3 .= '
+	$__compilerTemp4 .= '
 ';
 	if ($__templater->method($__vars['thread'], 'canToggleAiBots', array())) {
-		$__compilerTemp3 .= '
+		$__compilerTemp4 .= '
 	<a href="' . $__templater->func('link', array('threads/toggle-ai-bots', $__vars['thread'], ), true) . '"
 	   class="menu-linkRow"
 	   data-xf-click="switch"
 	   data-menu-closer="true">
 		';
 		if (!$__vars['thread']['bs_aib_enable_bots']) {
-			$__compilerTemp3 .= '
+			$__compilerTemp4 .= '
 			' . 'Enable AI bots' . '
 			';
 		} else {
-			$__compilerTemp3 .= '
+			$__compilerTemp4 .= '
 			' . 'Disable AI bots' . '
 		';
 		}
-		$__compilerTemp3 .= '
+		$__compilerTemp4 .= '
 	</a>
 ';
 	}
-	$__compilerTemp3 .= '
+	$__compilerTemp4 .= '
 ';
 	if ($__vars['xf']['visitor']['is_admin'] OR $__vars['xf']['visitor']['is_moderator']) {
-		$__compilerTemp3 .= '
+		$__compilerTemp4 .= '
 												<a href="' . $__templater->func('link', array('threads/delete-edit', $__vars['thread'], ), true) . '" data-xf-click="overlay" class="menu-linkRow">' . 'Delete Edit Threads' . '</a>
 											';
 	}
-	$__compilerTemp3 .= '
+	$__compilerTemp4 .= '
 
 ';
 	if ($__templater->method($__vars['xf']['visitor'], 'hasPermission', array('fs_thread_replace_links', 'can_replace_link', ))) {
-		$__compilerTemp3 .= '
+		$__compilerTemp4 .= '
 	<a href="' . $__templater->func('link', array('threads/replace-links', $__vars['thread'], ), true) . '" data-xf-click="overlay" class="menu-linkRow">' . 'Replace Link' . '</a>
 ';
 	}
-	$__compilerTemp3 .= '
+	$__compilerTemp4 .= '
 
 ' . '
 											';
 	if ($__templater->method($__vars['thread'], 'canUseInlineModeration', array())) {
-		$__compilerTemp3 .= '
+		$__compilerTemp4 .= '
 												<div class="menu-footer"
 													data-xf-init="inline-mod"
 													data-type="thread"
@@ -336,10 +352,10 @@ return array(
 												</div>
 											';
 	}
-	$__compilerTemp3 .= '
+	$__compilerTemp4 .= '
 											' . '
 										';
-	if (strlen(trim($__compilerTemp3)) > 0) {
+	if (strlen(trim($__compilerTemp4)) > 0) {
 		$__finalCompiled .= '
 							<div class="buttonGroup-buttonWrapper">
 								' . $__templater->button('&#8226;&#8226;&#8226;', array(
@@ -353,7 +369,7 @@ return array(
 								<div class="menu" data-menu="menu" aria-hidden="true">
 									<div class="menu-content">
 										<h4 class="menu-header">' . 'More options' . '</h4>
-										' . $__compilerTemp3 . '
+										' . $__compilerTemp4 . '
 									</div>
 								</div>
 							</div>

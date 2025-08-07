@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class_extensions>
+  <extension from_class="XF\ControllerPlugin\Bookmark" to_class="FS\AmcReviewsChanges\XF\ControllerPlugin\Bookmark" execute_order="100" active="1"/>
+</class_extensions>

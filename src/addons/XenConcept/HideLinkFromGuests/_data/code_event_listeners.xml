@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<code_event_listeners>
+  <listener event_id="templater_macro_pre_render" execute_order="10" callback_class="XenConcept\HideLinkFromGuests\Listener\Listener" callback_method="optionTabbed" active="1" hint="admin:option_macros:option_form_block" description="Option tabbed"/>
+  <listener event_id="templater_template_pre_render" execute_order="10" callback_class="XenConcept\HideLinkFromGuests\Listener\Listener" callback_method="templaterPreRender" active="1" hint="admin:addon_options" description="AddOn Options tabbed"/>
+</code_event_listeners>

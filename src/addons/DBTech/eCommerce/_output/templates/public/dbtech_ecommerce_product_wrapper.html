@@ -1,0 +1,497 @@
+<xf:breadcrumb source="$product.Category.getBreadcrumbs()" />
+<xf:if is="$product.isAddOn()">
+	<xf:breadcrumb href="{{ link('dbtech-ecommerce', $product.Parent, ($license ? {'license_key': $license.license_key} : {})) }}">{$product.Parent.title}</xf:breadcrumb>
+</xf:if>
+
+<xf:css src="dbtech_ecommerce.less" />
+
+<xf:macro template="dbtech_ecommerce_product_page_macros" name="product_page_options"
+	arg-category="{$product.Category}"
+	arg-product="{$product}" />
+
+<xf:macro template="lightbox_macros" name="setup" arg-canViewAttachments="{{ $product.canViewProductImages() }}" />
+
+<xf:description meta="false">
+	<ul class="listInline listInline--bullet">
+		<li>
+			<i class="fa fa-user" aria-hidden="true" title="{{ phrase('dbtech_ecommerce_seller')|for_attr }}"></i>
+			<span class="u-srOnly">{{ phrase('dbtech_ecommerce_seller') }}</span>
+
+			<xf:username user="{$product.User}" defaultname="{$product.username}" class="u-concealed" />
+		</li>
+		<li>
+			<i class="fa fa-clock-o" aria-hidden="true" title="{{ phrase('dbtech_ecommerce_creation_date')|for_attr }}"></i>
+			<span class="u-srOnly">{{ phrase('dbtech_ecommerce_creation_date') }}</span>
+
+			<a href="{{ link('dbtech-ecommerce', $product) }}" class="u-concealed"><xf:date time="{$product.creation_date}" /></a>
+		</li>
+		<xf:if is="$xf.options.enableTagging && ($product.canEditTags() || $product.tags)">
+			<li>
+				<i class="fa fa-tags" aria-hidden="true" title="{{ phrase('tags')|for_attr }}"></i>
+				<span class="u-srOnly">{{ phrase('tags') }}</span>
+
+				<xf:if is="$product.tags">
+					<xf:foreach loop="$product.tags" value="$tag">
+						<a href="{{ link('tags', $tag) }}" class="tagItem" dir="auto">{$tag.tag}</a>
+					</xf:foreach>
+				<xf:else />
+					{{ phrase('none') }}
+				</xf:if>
+				<xf:if is="$product.canEditTags()">
+					<a href="{{ link('dbtech-ecommerce/tags', $product) }}" class="u-concealed" data-xf-click="overlay"
+					   data-xf-init="tooltip" title="{{ phrase('edit_tags')|for_attr }}">
+						<i class="fa fa-pencil" aria-hidden="true"></i>
+						<span class="u-srOnly">{{ phrase('edit') }}</span>
+					</a>
+				</xf:if>
+			</li>
+		</xf:if>
+	</ul>
+	<div class="p-description">{$product.tagline}</div>
+</xf:description>
+
+<xf:if contentcheck="true">
+	<dl class="blockStatus blockStatus--standalone">
+		<dt>{{ phrase('status') }}</dt>
+		<xf:contentcheck>
+			<xf:if is="$product.product_state == 'deleted'">
+				<dd class="blockStatus-message blockStatus-message--deleted">
+					<xf:macro template="deletion_macros" name="notice" arg-log="{$product.DeletionLog}" />
+				</dd>
+				<xf:elseif is="$product.product_state == 'moderated'" />
+				<dd class="blockStatus-message blockStatus-message--moderated">
+					{{ phrase('awaiting_approval_before_being_displayed_publicly') }}
+				</dd>
+			</xf:if>
+		</xf:contentcheck>
+	</dl>
+</xf:if>
+
+<div class="block">
+	<xf:if contentcheck="true">
+		<div class="block-outer">
+			<div class="block-outer-opposite">
+				<xf:contentcheck>
+					<xf:if is="$product.canRate(false) && $xf.options.dbtechEcommerceEnableRate">
+						<xf:button href="{{ link('dbtech-ecommerce/rate', $product) }}" overlay="true">
+							{{ phrase('leave_rating') }}
+						</xf:button>
+					</xf:if>
+					<xf:if is="$product.canReleaseUpdate()">
+						<xf:button href="{{ link('dbtech-ecommerce/release/add', $product) }}" overlay="true">{{ phrase('dbtech_ecommerce_release_update') }}</xf:button>
+					</xf:if>
+
+					<xf:if contentcheck="true">
+						<div class="buttonGroup">
+							<xf:contentcheck>
+								<xf:if is="$product.canUndelete() && $product.product_state == 'deleted'">
+									<xf:button href="{{ link('dbtech-ecommerce/undelete', $product) }}" class="button--link" overlay="true">
+										{{ phrase('undelete') }}
+									</xf:button>
+								</xf:if>
+								<xf:if is="$product.canApproveUnapprove() && $product.product_state == 'moderated'">
+									<xf:button href="{{ link('dbtech-ecommerce/approve', $product, {'t': csrf_token()}) }}" class="button--link">
+										{{ phrase('approve') }}
+									</xf:button>
+								</xf:if>
+								<xf:if is="$product.canWatch()">
+									<xf:button href="{{ link('dbtech-ecommerce/watch', $product) }}" class="button--link"
+											   data-xf-click="switch-overlay"
+											   data-sk-watch="{{ phrase('watch') }}"
+											   data-sk-unwatch="{{ phrase('unwatch') }}">
+
+										<xf:if is="{$product.Watch.{$xf.visitor.user_id}}">
+											{{ phrase('unwatch') }}
+											<xf:else />
+											{{ phrase('watch') }}
+										</xf:if>
+									</xf:button>
+								</xf:if>
+
+								<xf:if is="$product.canBookmarkContent()">
+									<xf:macro template="bookmark_macros" name="button"
+											  arg-content="{$product}"
+											  arg-confirmUrl="{{ link('dbtech-ecommerce/bookmark', $product) }}"/>
+								</xf:if>
+
+								<xf:if contentcheck="true">
+									<div class="buttonGroup-buttonWrapper">
+										<xf:button class="button--link menuTrigger" data-xf-click="menu" aria-expanded="false" aria-haspopup="true" title="{{ phrase('more_options')|for_attr }}">&#8226;&#8226;&#8226;</xf:button>
+										<div class="menu" data-menu="menu" aria-hidden="true">
+											<div class="menu-content">
+												<h4 class="menu-header">{{ phrase('more_options') }}</h4>
+												<xf:contentcheck>
+													<!--[XF:product_tools_menu:top]-->
+													<xf:if is="$product.canEdit()">
+														<a href="{{ link('dbtech-ecommerce/edit', $product) }}" class="menu-linkRow">{{ phrase('dbtech_ecommerce_edit_product') }}</a>
+													</xf:if>
+													<xf:if is="$product.canEditIcon()">
+														<a href="{{ link('dbtech-ecommerce/edit-icon', $product) }}" class="menu-linkRow" data-xf-click="overlay">{{ phrase('dbtech_ecommerce_edit_product_icon') }}</a>
+													</xf:if>
+													<xf:if is="$product.canAddAddOn()">
+														<a href="{{ link('dbtech-ecommerce/add-on/add', $product) }}" class="menu-linkRow">{{ phrase('dbtech_ecommerce_add_addon_product') }}</a>
+													</xf:if>
+													<xf:if is="$product.canMove()">
+														<a href="{{ link('dbtech-ecommerce/move', $product) }}" data-xf-click="overlay" class="menu-linkRow">{{ phrase('dbtech_ecommerce_move_product') }}</a>
+													</xf:if>
+													<xf:if is="$product.canChangeParent()">
+														<a href="{{ link('dbtech-ecommerce/add-on/move', $product) }}" data-xf-click="overlay" class="menu-linkRow">{{ phrase('dbtech_ecommerce_change_parent_product') }}</a>
+													</xf:if>
+													<xf:if is="$product.canReassign()">
+														<a href="{{ link('dbtech-ecommerce/reassign', $product) }}" data-xf-click="overlay" class="menu-linkRow">{{ phrase('dbtech_ecommerce_reassign_product') }}</a>
+													</xf:if>
+													<xf:if is="$product.canChangeDiscussionThread()">
+														<a href="{{ link('dbtech-ecommerce/change-thread', $product) }}" data-xf-click="overlay" class="menu-linkRow">{{ phrase('dbtech_ecommerce_change_discussion_thread') }}</a>
+													</xf:if>
+													<xf:if is="$product.canDelete('soft')">
+														<a href="{{ link('dbtech-ecommerce/delete', $product) }}" data-xf-click="overlay" class="menu-linkRow">{{ phrase('dbtech_ecommerce_delete_product') }}</a>
+													</xf:if>
+													<!--[XF:product_tools_menu:before_footer]-->
+													<xf:if is="$product.canUseInlineModeration()">
+														<div class="menu-footer"
+															 data-xf-init="inline-mod"
+															 data-type="dbtech_ecommerce_product"
+															 data-href="{{ link('inline-mod') }}"
+															 data-toggle=".js-productInlineModToggle">
+															<xf:checkbox>
+																<xf:option class="js-productInlineModToggle">{{ phrase('select_for_moderation') }}</xf:option>
+															</xf:checkbox>
+														</div>
+														<xf:js src="xf/inline_mod.js" min="1" />
+													</xf:if>
+													<!--[XF:product_tools_menu:bottom]-->
+												</xf:contentcheck>
+											</div>
+										</div>
+									</div>
+								</xf:if>
+							</xf:contentcheck>
+						</div>
+					</xf:if>
+				</xf:contentcheck>
+			</div>
+		</div>
+	</xf:if>
+
+	<xf:if contentcheck="true">
+		<div class="block-outer js-productStatusField">
+			<div class="blockStatus blockStatus--info">
+				<xf:contentcheck>
+					<xf:macro template="custom_fields_macros" name="custom_fields_view"
+							  arg-type="dbtechEcommerceProducts"
+							  arg-group="above_main"
+							  arg-onlyInclude="{$category.field_cache}"
+							  arg-set="{$product.product_fields}"
+							  arg-wrapperClass="blockStatus-message" />
+				</xf:contentcheck>
+			</div>
+		</div>
+	</xf:if>
+
+	<xf:if contentcheck="true">
+		<div class="block-container">
+			<div class="block-body">
+				<xf:contentcheck>
+					<xf:macro name="dbtech_ecommerce_product_wrapper_macros::description"
+							  arg-product="{$product}" />
+					<xf:if contentcheck="true">
+						<div class="block-row">
+							<div class="lbContainer js-productBody"
+								 data-xf-init="lightbox">
+
+								<div class="productBody">
+									<div class="productBody--main js-lbContainer"
+										 data-lb-id="dbtech_ecommerce_product-{$product.product_id}"
+										 data-lb-caption-title="{$product.title}"
+										 data-lb-caption-desc="{{ $product.User ? $product.User.username : $product.username }} &middot; {{ date_time($product.creation_date) }}">
+
+										<xf:css src="attachments.less" />
+										<ul class="attachmentList productBody--attachments">
+											<xf:contentcheck>
+												<xf:foreach loop="$product.Attachments" value="$attachment">
+													<xf:macro template="attachment_macros" name="attachment_list_item"
+															  arg-attachment="{$attachment}"
+															  arg-canView="{{ $product.canViewProductImages() }}" />
+												</xf:foreach>
+											</xf:contentcheck>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</xf:if>
+				</xf:contentcheck>
+			</div>
+		</div>
+	</xf:if>
+
+	<xf:if contentcheck="true">
+		<div class="block-outer block-outer--after js-productStatusFieldAfter">
+			<div class="blockStatus blockStatus--info">
+				<xf:contentcheck>
+					<xf:macro template="custom_fields_macros" name="custom_fields_view"
+							  arg-type="dbtechEcommerceProducts"
+							  arg-group="below_main"
+							  arg-onlyInclude="{$category.field_cache}"
+							  arg-set="{$product.product_fields}"
+							  arg-wrapperClass="blockStatus-message" />
+				</xf:contentcheck>
+			</div>
+		</div>
+	</xf:if>
+</div>
+
+<div class="block">
+	<div class="block-container">
+		<xf:macro name="dbtech_ecommerce_product_wrapper_macros::tabs"
+				  arg-product="{$product}"
+				  arg-pageSelected="{$pageSelected}" />
+		{$innerContent|raw}
+	</div>
+
+	<xf:if contentcheck="true">
+		<div class="block-outer block-outer--after">
+			<xf:contentcheck>
+				<xf:pagenav
+						page="{$page}" perpage="{$perPage}" total="{$total}"
+						link="dbtech-ecommerce/{$pageSelected}" data="{$product}" params="{$licenseParams}"
+						wrapperclass="block-outer-main" />
+			</xf:contentcheck>
+		</div>
+	</xf:if>
+</div>
+
+<xf:sidebar key="productInfo">
+	<div class="block">
+		<div class="block-container">
+			<h3 class="block-minorHeader">{{ phrase('dbtech_ecommerce_product_information') }}</h3>
+
+			<xf:if contentcheck="true">
+				<div class="block-body block-row block-row--minor">
+					<xf:contentcheck>
+						<xf:foreach loop="$product.requirements" value="$requirement">
+							<span class="label label--accent label--fullSize">{$requirement}</span>
+						</xf:foreach>
+					</xf:contentcheck>
+				</div>
+			</xf:if>
+
+			<div class="block-body block-row block-row--minor">
+				<!--[eCommerce:product_information_above_info_fields]-->
+
+				<xf:macro template="custom_fields_macros" name="custom_fields_view"
+						  arg-type="dbtechEcommerceProducts"
+						  arg-group="above_info"
+						  arg-onlyInclude="{$category.field_cache}"
+						  arg-set="{$product.product_fields}"/>
+
+				<!--[eCommerce:product_information_below_info_fields]-->
+
+				<dl class="pairs pairs--justified"><dt>{{ phrase('dbtech_ecommerce_seller') }}</dt> <dd><xf:username user="$product.User" rich="true" /></dd></dl>
+				<dl class="pairs pairs--justified"><dt>{{ phrase('dbtech_ecommerce_release_date') }}</dt> <dd><xf:date time="$product.creation_date" /></dd></dl>
+				<xf:if is="$product.hasDownloadFunctionality()">
+					<dl class="pairs pairs--justified"><dt>{{ phrase('dbtech_ecommerce_last_update') }}</dt> <dd><xf:date time="$product.last_update" /></dd></dl>
+					<xf:if is="$xf.visitor.hasPermission('dbtechEcommerceAdmin', 'viewDownloadLog')">
+						<dl class="pairs pairs--justified"><dt>{{ phrase('dbtech_ecommerce_total_downloads') }}</dt> <dd>{$product.full_download_count|number}</dd></dl>
+					</xf:if>
+				</xf:if>
+
+				<!--[eCommerce:product_information_below_pairs]-->
+
+				<xf:if is="$xf.options.dbtechEcommerceEnableRate && property('dbtechEcommerceProductRatingStyle') == 'stars'">
+					<dl class="pairs pairs--justified"><dt>{{ phrase('dbtech_ecommerce_customer_rating') }}</dt> <dd>
+						<xf:macro template="rating_macros" name="stars_text"
+								  arg-rating="{$product.rating_avg}"
+								  arg-count="{$product.rating_count}"
+								  arg-rowClass="ratingStarsRow--textBlock"
+								  arg-starsClass="ratingStars--smaller" />
+					</dd></dl>
+				</xf:if>
+
+				<!--[eCommerce:product_information_above_info_fields2]-->
+
+				<xf:macro template="custom_fields_macros" name="custom_fields_view"
+						  arg-type="dbtechEcommerceProducts"
+						  arg-group="below_info"
+						  arg-onlyInclude="{$category.field_cache}"
+						  arg-set="{$product.product_fields}" />
+
+				<!--[eCommerce:product_information_below_info_fields2]-->
+
+				<xf:if is="$xf.options.dbtechEcommerceEnableRate && property('dbtechEcommerceProductRatingStyle') == 'circle'">
+					<xf:macro template="dbtech_ecommerce_rating_macros" name="stars_circle"
+							  arg-rating="{$product.rating_avg}"
+							  arg-count="{$product.rating_count}"
+							  arg-rowClass="ratingStarsRow--textBlock"
+							  arg-starsClass="ratingStars--smaller" />
+				</xf:if>
+
+				<xf:if contentcheck="true">
+					<div class="productInfo-buttons">
+						<xf:contentcheck>
+							<!--[eCommerce:product_information_buttons_top]-->
+
+							<xf:if is="$product.hasViewableDiscussion()">
+								<xf:button href="{{ link('threads', $product.Discussion) }}"  class="button--fullWidth">{{ phrase('dbtech_ecommerce_join_discussion') }}</xf:button>
+							</xf:if>
+
+							<xf:if is="$product.hasViewableSupportForum()">
+								<xf:button href="{{ link($product.SupportForum.Node.getRoute(), $product.SupportForum) }}"  class="button--link button--fullWidth">{{ phrase('dbtech_ecommerce_get_support') }}</xf:button>
+							</xf:if>
+
+							<!--[eCommerce:product_information_buttons_bottom]-->
+						</xf:contentcheck>
+					</div>
+				</xf:if>
+
+				<!--[eCommerce:product_information_bottom]-->
+			</div>
+		</div>
+	</div>
+</xf:sidebar>
+
+<xf:sidebar key="pricingInfo">
+	<xf:if contentcheck="true">
+		<div class="block">
+			<div class="block-container">
+				<h3 class="block-minorHeader">{{ phrase('dbtech_ecommerce_pricing_information') }}</h3>
+
+				<xf:contentcheck>
+					<xf:if is="!$license || $product.canPurchase($license)">
+						<div class="block-body block-row block-row--minor block-row--pricingInfo block-row--pricingInfo{$product.product_type|to_upper('ucwords')}">
+							<xf:if is="$product.Costs is not empty">
+								<xf:foreach loop="$product.Costs" value="$cost">
+									<xf:if is="$product.hasLicenseFunctionality()">
+										<dl class="pairs pairs--justified pairs--price">
+											<dt>{$cost.length}</dt>
+											<dd>
+												{$cost.getPrice($license, true, true)}
+											</dd>
+										</dl>
+										<xf:if is="!$cost.isLifetime() && !$license">
+											<dl class="pairs pairs--justified pairs--price pairs--renewal">
+												<dt>{{ phrase('dbtech_ecommerce_renewal_cost') }}</dt>
+												<dd>
+													{$cost.getDigitalRenewalPrice(null, true)}
+												</dd>
+											</dl>
+										</xf:if>
+									<xf:else />
+										<dl class="pairs pairs--justified pairs--stock">
+											<dt>{$cost.title}</dt>
+											<xf:if is="!$product.hasStockFunctionality() || $cost.stock">
+												<dd>{$cost.getPrice(null, true, true)}</dd>
+											<xf:elseif is="$product.hasStockFunctionality()" />
+												<dd>{{ phrase('dbtech_ecommerce_out_of_stock') }} - <span class="u-muted" style="text-decoration:line-through">{$cost.getPrice(null, true, true)}</span></dd>
+											</xf:if>
+										</dl>
+									</xf:if>
+								</xf:foreach>
+							</xf:if>
+						</div>
+					</xf:if>
+
+					<xf:if is="$product.Children is not empty">
+						<xf:foreach loop="$product.Children" value="$childProduct" if="$childProduct.canView()">
+							<h3 class="block-minorHeader">{$childProduct.title}</h3>
+
+							<div class="block-body block-row block-row--minor block-row--childProducts">
+								<xf:if is="$childProduct.Costs is not empty">
+									<xf:foreach loop="$childProduct.Costs" value="$cost">
+										<xf:if is="$childProduct.hasLicenseFunctionality()">
+											<dl class="pairs pairs--justified pairs--price">
+												<dt>{$cost.length}</dt>
+												<dd>{$cost.getPrice(null, true, true)}</dd>
+											</dl>
+										<xf:else />
+											<dl class="pairs pairs--justified pairs--price">
+												<dt>{$cost.title}</dt>
+												<dd>{$cost.getPrice(null, true, true)}</dd>
+											</dl>
+										</xf:if>
+									</xf:foreach>
+								</xf:if>
+							</div>
+						</xf:foreach>
+
+					</xf:if>
+
+					<xf:if is="$product.canPurchase($license)">
+						<div class="block-body block-row block-row--minor block-row--purchaseParent">
+							<xf:button href="{{ link('dbtech-ecommerce/purchase', $product, ($license ? {'license_key': $license.license_key} : {})) }}" class="button--fullWidth button--cta" icon="purchase" overlay="true" data-cache="false">
+								<xf:if is="$license">
+									{{ phrase('dbtech_ecommerce_renew') }}
+								<xf:elseif is="count($product.cost_cache) == 1 && $product.getStartingCost().getPrice() == 0.00" />
+									<xf:if is="$product.canPurchaseAddOns()">
+										{{ phrase('dbtech_ecommerce_get_free_purchase_add_ons') }}
+									<xf:else />
+										{{ phrase('dbtech_ecommerce_get_free') }}
+									</xf:if>
+								<xf:else />
+									{{ phrase('dbtech_ecommerce_purchase') }}
+								</xf:if>
+							</xf:button>
+						</div>
+
+						<xf:if is="$product.canPurchaseAllAccess($license)">
+							<div class="block-body block-row block-row--minor block-row--purchaseParent">
+								<xf:button href="{{ link('dbtech-ecommerce/purchase/all-access', $product) }}" class="button--fullWidth button--primary" icon="download">
+									{{ phrase('dbtech_ecommerce_get_free_with_all_access_pass') }}
+								</xf:button>
+							</div>
+						<xf:elseif is="$product.AllAccessLicense" />
+							<div class="block-body block-row block-row--minor block-row--purchaseParent">
+								<xf:button href="{{ link('dbtech-ecommerce/licenses/license', $product.AllAccessLicense) }}" class="button--fullWidth button--primary is-disabled" icon="download">
+									{{ phrase('dbtech_ecommerce_already_owned_via_pass') }}
+								</xf:button>
+							</div>
+						</xf:if>
+					<xf:elseif is="$product.canPurchaseAddOns($license)" />
+						<div class="block-body block-row block-row--minor block-row--purchaseAddOns">
+							<xf:button href="{{ link('dbtech-ecommerce/purchase/add-ons', $product, ($license ? {'license_key': $license.license_key} : {})) }}" icon="purchase" overlay="true" data-cache="false">
+								{{ phrase('dbtech_ecommerce_buy_add_ons') }}
+							</xf:button>
+						</div>
+					</xf:if>
+
+					<xf:if is="$showCheckout">
+						<div class="block-body block-row block-row--minor block-row--checkout">
+							<xf:button href="{{ link('dbtech-ecommerce/checkout') }}" class="button--cta button--fullWidth" fa="fa-shopping-cart">{{ phrase('dbtech_ecommerce_checkout') }}</xf:button>
+						</div>
+					</xf:if>
+				</xf:contentcheck>
+			</div>
+		</div>
+	</xf:if>
+</xf:sidebar>
+
+<xf:sidebar key="shareProduct">
+	<xf:if contentcheck="true">
+		<div class="block">
+			<div class="block-container">
+				<xf:contentcheck>
+					<xf:if contentcheck="true">
+						<h3 class="block-minorHeader">{{ phrase('dbtech_ecommerce_share_this_product') }}</h3>
+						<div class="block-body block-row block-row--separated">
+							<xf:contentcheck>
+								<xf:macro template="share_page_macros" name="buttons"
+										  arg-iconic="{{ true }}" />
+							</xf:contentcheck>
+						</div>
+					</xf:if>
+					<xf:if contentcheck="true">
+						<div class="block-body block-row block-row--separated">
+							<xf:contentcheck>
+								<xf:macro template="share_page_macros" name="share_clipboard_input"
+										  arg-label="{{ phrase('dbtech_ecommerce_copy_product_bb_code') }}"
+										  arg-text="[PRODUCT=product, {$product.product_id}][/PRODUCT]" />
+							</xf:contentcheck>
+						</div>
+					</xf:if>
+				</xf:contentcheck>
+			</div>
+		</div>
+	</xf:if>
+</xf:sidebar>
+
+<xf:widgetpos id="dbtech_ecommerce_product_sidebar" context-product="{$product}" position="sidebar" />

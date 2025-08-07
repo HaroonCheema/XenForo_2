@@ -18,7 +18,7 @@ class EmailLogDetails extends AbstractController
             // ->where('date', '>=', $cromEmailLog->from)
             // ->where('date', '<=', $cromEmailLog->to)
             ->where('id', $cromEmailLog['email_ids'])
-            ->order('id', 'DESC');
+            ->order('phone_no', 'DESC');
 
         $page = $params->page;
         $perPage = 15;

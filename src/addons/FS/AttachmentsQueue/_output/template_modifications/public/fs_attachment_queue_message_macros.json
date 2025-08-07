@@ -1,0 +1,9 @@
+{
+    "template": "message_macros",
+    "description": "fs_attachment_queue_message_macros_hide_from_others",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/<xf:macro template=\"attachment_macros\" name=\"attachment_list_item\".*?arg-canView=\"{\\$canView}\" \\/>/is",
+    "replace": "<xf:if is=\"$attachment.content_type == 'post' && ($attachment.attachment_state == 'pending' || $attachment.attachment_state == 'rejected') && $attachment.Data.user_id != $xf.visitor.user_id\">\n\t<xf:else />\n\t$0\n</xf:if>"
+}

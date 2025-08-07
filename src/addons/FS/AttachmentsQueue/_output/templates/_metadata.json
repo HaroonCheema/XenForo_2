@@ -3,5 +3,15 @@
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
         "hash": "0ca0b4e2a2dd6fd9dc9630b78c3ff2cc"
+    },
+    "public/fs_hide_links_medias_to_guests_bb_code_hide.less": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "ab395c5f3f2508af409e252299e6e0e5"
+    },
+    "public/fs_hide_links_medias_to_guests_bb_code_hide_error.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "8cf1666d12993274ae0ab2df72bb15a9"
     }
 }

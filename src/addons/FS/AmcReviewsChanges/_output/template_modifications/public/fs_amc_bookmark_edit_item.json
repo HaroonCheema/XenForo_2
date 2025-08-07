@@ -1,0 +1,9 @@
+{
+    "template": "bookmark_edit",
+    "description": "fs_amc_bookmark_edit_item",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "{{ phrase('edit_bookmark') }}",
+    "replace": "{{ phrase('fs_amc_item_edit') }}"
+}

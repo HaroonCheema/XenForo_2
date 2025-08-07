@@ -4,7 +4,7 @@ return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
 	$__finalCompiled = '';
-	$__templater->pageParams['pageTitle'] = $__templater->preEscaped('Bookmarks');
+	$__templater->pageParams['pageTitle'] = $__templater->preEscaped('Favourites');
 	$__finalCompiled .= '
 
 ';
@@ -97,7 +97,7 @@ return array(
 				';
 		} else {
 			$__finalCompiled .= '
-					<div class="block-row">' . 'You have not added any bookmarks yet.' . '</div>
+					<div class="block-row">' . 'You have not added any favourites yet.' . '</div>
 				';
 		}
 		$__finalCompiled .= '

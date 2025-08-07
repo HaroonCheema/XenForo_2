@@ -1,0 +1,9 @@
+{
+    "template": "post_macros",
+    "description": "fs_amc_post_macros_add_to_favourite",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/<xf:macro template=\"bookmark_macros\" name=\"link\".*?arg-showText=\"{{ false }}\"\\/>/is",
+    "replace": "<xf:macro template=\"bookmark_macros\" name=\"link\"\n\t\t  arg-content=\"{$post}\"\n\t\t  arg-class=\"message-attribution-gadget bookmarkLink--highlightable itemFavouriteClr\"\n\t\t  arg-confirmUrl=\"{{ link('posts/bookmark', $post) }}\"\n\t\t  arg-showText=\"{{ true }}\"\n\t\t  arg-editText=\"{{ phrase('fs_amc_favourite_edit') }}\"\n\t\t  arg-addText=\"{{ phrase('fs_amc_favourite_add') }}\"\n\t\t  />"
+}

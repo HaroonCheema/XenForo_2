@@ -1,0 +1,110 @@
+{
+    "fs_amc_bookmark_to_favourite.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "3ca3437e2b34588cb159823968104e0d"
+    },
+    "fs_amc_bookmarked_favourite.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "f70f058e05f01861b6efb4598ce6a58e"
+    },
+    "fs_amc_favourite_add.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "89cb08f619e073866bbe96bbfe6e404e"
+    },
+    "fs_amc_favourite_edit.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "bf336bb9349ff19d0d944b2b0dba1842"
+    },
+    "fs_amc_item_add.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "ff19c966036b4a0c7350b2fc7e2861c2"
+    },
+    "fs_amc_item_added.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "c2a5742412dc8477c9574f57cc8fd150"
+    },
+    "fs_amc_item_deleted_successfully.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "58b0209b5ac1daa54c7c011a58ef931f"
+    },
+    "fs_amc_item_edit.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "95a480afa92aff31772402b042f11491"
+    },
+    "fs_amc_item_saved_successfully.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "e6afea3dc3cba68c122d355c3712e514"
+    },
+    "fs_amc_item_tools.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "3e2bd726a51fa6a9813ce4da9c2c29c1"
+    },
+    "fs_amc_no_item_note.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d72147254ac4ae455963ff24d9176c3d"
+    },
+    "fs_amc_review_add_to_favourite_btn.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "89cb08f619e073866bbe96bbfe6e404e"
+    },
+    "fs_amc_review_profile.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "cce99c598cfdb9773ab041d54c3d973a"
+    },
+    "fs_amc_review_profile_tools.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "2c875889e739de732abe42acc4ad7da8"
+    },
+    "fs_amc_reviews_edit_profile.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "dfd87bd34b4599aaaef6d0f2c8b6e3d7"
+    },
+    "fs_amc_reviews_favourite.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "3ca3437e2b34588cb159823968104e0d"
+    },
+    "fs_amc_reviews_your_profile.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "3d8de6fcc09baf73f7175fe59f278ced"
+    },
+    "you_have_not_added_any_favourites_yet.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "bd28a94b3f543fbcbb77ddd8a8543430"
+    }
+}
