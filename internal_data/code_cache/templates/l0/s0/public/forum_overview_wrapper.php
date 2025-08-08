@@ -21,28 +21,49 @@ return array(
 	';
 	} else {
 		$__compilerTemp1 .= '
-		' . $__templater->button('
-			' . 'New posts' . '
-		', array(
-			'href' => (($__vars['xf']['options']['forumsDefaultPage'] == 'new_posts') ? $__templater->func('link', array('forums/new-posts', ), false) : $__templater->func('link', array('whats-new/posts', ), false)),
-			'icon' => 'bolt',
-		), '', array(
-		)) . '
+		';
+		if ($__templater->method($__vars['xf']['visitor'], 'hasPermission', array('forum', 'postReviewAlert', ))) {
+			$__compilerTemp1 .= '
+
+	' . $__templater->button('
+		' . 'Post review' . '
+	', array(
+				'href' => $__templater->func('link', array('forums/create-review', ), false),
+				'class' => 'button--cta',
+				'icon' => 'write',
+				'overlay' => 'true',
+			), '', array(
+			)) . '
+
+	' . $__templater->button('
+		' . 'Post alert' . '
+	', array(
+				'href' => $__templater->func('link', array('forums/create-alert', ), false),
+				'class' => 'button--cta',
+				'style' => 'background: red; border-color: red;',
+				'icon' => 'write',
+				'overlay' => 'true',
+			), '', array(
+			)) . '
+
+';
+		}
+		$__compilerTemp1 .= '
 	';
 	}
 	$__compilerTemp2 = '';
-	if ($__templater->method($__vars['xf']['visitor'], 'canCreateThread', array()) OR $__templater->method($__vars['xf']['visitor'], 'canCreateThreadPreReg', array())) {
+	if (($__templater->method($__vars['xf']['visitor'], 'canCreateThread', array()) OR $__templater->method($__vars['xf']['visitor'], 'canCreateThreadPreReg', array())) AND ($__vars['xf']['visitor']['is_admin'] OR $__vars['xf']['visitor']['is_moderator'])) {
 		$__compilerTemp2 .= '
-		' . $__templater->button('
-			' . 'Post thread' . $__vars['xf']['language']['ellipsis'] . '
-		', array(
+	' . $__templater->button('
+		' . 'Post thread' . $__vars['xf']['language']['ellipsis'] . '
+	', array(
 			'href' => $__templater->func('link', array('forums/create-thread', ), false),
 			'class' => 'button--cta',
 			'icon' => 'write',
 			'overlay' => 'true',
 		), '', array(
 		)) . '
-	';
+';
 	}
 	$__templater->pageParams['pageAction'] = $__templater->preEscaped('
 	' . $__compilerTemp1 . '

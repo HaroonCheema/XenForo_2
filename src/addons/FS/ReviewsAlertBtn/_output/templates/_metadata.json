@@ -1,0 +1,12 @@
+{
+    "public/fs_forum_post_alert_chooser.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "f537e724fbb7a34521d75f39ca3c9320"
+    },
+    "public/fs_forum_post_review_chooser.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "e2add14e7161e22a0a2152c43be3feec"
+    }
+}

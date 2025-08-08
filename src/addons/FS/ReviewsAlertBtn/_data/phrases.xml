@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="fs_post_alert" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Post alert]]></phrase>
+  <phrase title="fs_post_alert_in" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Post alert in...]]></phrase>
+  <phrase title="fs_post_review" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Post review]]></phrase>
+  <phrase title="fs_post_review_in" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Post review in...]]></phrase>
+  <phrase title="permission.forum_postReviewAlert" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Post new Review & Alert]]></phrase>
+  <phrase title="permission_interface.fs_post_reviews" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Review & Alert Forums]]></phrase>
+</phrases>

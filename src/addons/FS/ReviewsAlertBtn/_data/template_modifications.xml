@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="forum_overview_wrapper" modification_key="fs_forum_overview_wrapper_hide_thread_btn_from_usr" description="fs_forum_overview_wrapper_hide_thread_btn_from_usr" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<xf:if is="\$xf\.visitor\.canCreateThread\(\) OR \$xf\.visitor\.canCreateThreadPreReg\(\)">.*?<\/xf:if>/is]]></find>
+    <replace><![CDATA[<xf:if is="($xf.visitor.canCreateThread() OR $xf.visitor.canCreateThreadPreReg()) AND ($xf.visitor.is_admin OR $xf.visitor.is_moderator)">
+	<xf:button href="{{ link('forums/create-thread') }}" class="button--cta" icon="write" overlay="true">
+		{{ phrase('post_thread...') }}
+	</xf:button>
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="forum_overview_wrapper" modification_key="fs_review_alert_add_btn" description="fs_review_alert_add_btn" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<xf:button href="{{ \$xf\.options\.forumsDefaultPage == 'new_posts' \? link\('forums\/new-posts'\) : link\('whats-new\/posts'\) }}" icon="bolt">.*?<\/xf:button>/is]]></find>
+    <replace><![CDATA[<xf:if is="{{ $xf.visitor.hasPermission('forum', 'postReviewAlert') }}">
+
+	<xf:button href="{{ link('forums/create-review') }}" class="button--cta" icon="write" overlay="true">
+		{{ phrase('fs_post_review') }}
+	</xf:button>
+
+	<xf:button href="{{ link('forums/create-alert') }}" class="button--cta" style="background: red; border-color: red;" icon="write" overlay="true">
+		{{ phrase('fs_post_alert') }}
+	</xf:button>
+
+</xf:if>]]></replace>
+  </modification>
+</template_modifications>

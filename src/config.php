@@ -19,5 +19,5 @@ $config['enableLivePayments'] = false;
 
 $config['debug'] = true;
 
-$config['development']['defaultAddOn'] = 'FS/AttachmentsQueue';
+$config['development']['defaultAddOn'] = 'FS/ReviewsAlertBtn';
 $config['development']['enabled'] = true;

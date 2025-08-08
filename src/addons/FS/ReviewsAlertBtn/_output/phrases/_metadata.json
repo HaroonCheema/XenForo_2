@@ -1,0 +1,38 @@
+{
+    "fs_post_alert.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "343c2b3fdf815074eeb1b3d7e90cdb35"
+    },
+    "fs_post_alert_in.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "4fc7ea13494469580b7b9a87a0c14b5a"
+    },
+    "fs_post_review.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "b4402b0e866e7cfbc7d9f91fa653690e"
+    },
+    "fs_post_review_in.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d298e629ba46e46368ead73f1b753a98"
+    },
+    "permission.forum_postReviewAlert.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "b6a3cddf122021ef68add45dad2cb982"
+    },
+    "permission_interface.fs_post_reviews.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "fc8b7e80ea306ee19dafd604e267e55d"
+    }
+}

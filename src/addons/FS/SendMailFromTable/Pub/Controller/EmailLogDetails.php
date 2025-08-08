@@ -13,7 +13,7 @@ class EmailLogDetails extends AbstractController
 
         $visitor = \XF::visitor();
 
-        if (!$visitor->is_admin || !$visitor->is_moderator) {
+        if (!$visitor->is_admin && !$visitor->is_moderator) {
             throw $this->exception(
                 $this->noPermission()
             );

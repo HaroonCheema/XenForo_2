@@ -186,6 +186,7 @@ return array (
   'permission.forum_markSolutionAnyThread' => 'Mark post as solution to any question thread (when applicable)',
   'permission.forum_nf_gift' => 'Gift posts',
   'permission.forum_postReply' => 'Post replies',
+  'permission.forum_postReviewAlert' => 'Post new Review & Alert',
   'permission.forum_postThread' => 'Post new thread',
   'permission.forum_react' => 'React to posts',
   'permission.forum_scheduledPosting' => 'Create scheduled publications',

@@ -38,6 +38,7 @@ return array (
   'permission_interface.fs_forum_group_permission' => 'FS Forum Group Permission',
   'permission_interface.fs_hide_usernames' => '[FS] Hide Usernames',
   'permission_interface.fs_limitations' => '[FS] Limitations',
+  'permission_interface.fs_post_reviews' => '[FS] Review & Alert Forums',
   'permission_interface.fs_thread_replace_links' => '[FS] Thread Replace Links',
   'permission_interface.fs_thread_replies_abrove' => 'Thread Post Approve',
   'permission_interface.fs_thread_scoring_system' => '[FS] Thread Scoring System',

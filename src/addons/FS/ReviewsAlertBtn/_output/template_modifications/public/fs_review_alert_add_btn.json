@@ -1,0 +1,9 @@
+{
+    "template": "forum_overview_wrapper",
+    "description": "fs_review_alert_add_btn",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/<xf:button href=\"{{ \\$xf\\.options\\.forumsDefaultPage == 'new_posts' \\? link\\('forums\\/new-posts'\\) : link\\('whats-new\\/posts'\\) }}\" icon=\"bolt\">.*?<\\/xf:button>/is",
+    "replace": "<xf:if is=\"{{ $xf.visitor.hasPermission('forum', 'postReviewAlert') }}\">\n\n\t<xf:button href=\"{{ link('forums/create-review') }}\" class=\"button--cta\" icon=\"write\" overlay=\"true\">\n\t\t{{ phrase('fs_post_review') }}\n\t</xf:button>\n\n\t<xf:button href=\"{{ link('forums/create-alert') }}\" class=\"button--cta\" style=\"background: red; border-color: red;\" icon=\"write\" overlay=\"true\">\n\t\t{{ phrase('fs_post_alert') }}\n\t</xf:button>\n\n</xf:if>"
+}
