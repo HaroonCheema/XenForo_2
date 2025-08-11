@@ -1,0 +1,12 @@
+<xf:if is="$xf.options.altf_additional_filters.lockedUnlockedStatus">
+    <div class="menu-row menu-row--separated">
+        <label for="ctrl_last_updated">{{ phrase('altf_locked_status:') }}</label>
+        <div class="u-inputSpacer">
+            <xf:select name="is_locked" value="{$filters.is_locked}" id="ctrl_last_updated">
+                <xf:option value="0">{{ phrase('any') }}</xf:option>
+                <xf:option value="-1">{{ phrase('open') }}</xf:option>
+                <xf:option value="1">{{ phrase('locked') }}</xf:option>
+            </xf:select>
+        </div>
+    </div>
+</xf:if>

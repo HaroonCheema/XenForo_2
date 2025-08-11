@@ -1,5 +1,6 @@
 <?php
 return array (
+  'thread_field_title.Type' => 'Type',
   'thread_field_title.asdsadsdasd' => 'asdsadsad',
   'thread_field_title.auction_Ends_At' => 'auction_time_zone',
   'thread_field_title.auction_guidelines' => 'AUCTION GUIDLINES',

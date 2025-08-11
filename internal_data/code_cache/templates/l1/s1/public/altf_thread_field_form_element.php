@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: df255635931ddd8ded84419ce36aedd8
+// FROM HASH: e4375bee22af6ffbf2c492dca1fa9dc9
 return array(
 'macros' => array('filter_element' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -452,7 +452,6 @@ return array(
 
 ' . '
 
-' . '
 ';
 	return $__finalCompiled;
 }

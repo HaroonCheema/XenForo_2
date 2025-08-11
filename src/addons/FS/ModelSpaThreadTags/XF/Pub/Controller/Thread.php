@@ -23,69 +23,81 @@ class Thread extends XFCP_Thread
 
         $thread = $this->assertViewableThread($params->thread_id, $this->getThreadViewExtraWith());
 
-        $data = $this->getModelAndSpaName($thread);
+        if ($this->isPost()) {
+            $input = $this->filter([
+                'threadModelSpaFields' => 'array',
+            ]);
 
-        $content = $data['choices'][0]['message']['content'] ?? '';
+            echo "<pre>";
+            var_dump($input);
+            exit;
+        } else {
 
-        if (!$content) {
-            return $this->notFound();
-        }
+            $data = $this->getModelAndSpaName($thread);
 
-        $modelName = 'N/A';
-        $spaName = 'N/A';
+            $content = $data['choices'][0]['message']['content'] ?? '';
 
-        // Normalize line endings and split
-        $lines = preg_split("/\r\n|\n|\r/", $content);
+            if (!$content) {
+                return $this->notFound();
+            }
 
-        foreach ($lines as $line) {
-            if (stripos($line, 'model name') !== false) {
-                $modelName = trim(preg_replace('/model name\s*:\s*/i', '', $line));
-            } elseif (stripos($line, 'spa name') !== false) {
-                $spaName = trim(preg_replace('/spa name\s*:\s*/i', '', $line));
+            $modelName = 'N/A';
+            $spaName = 'N/A';
+
+            // Normalize line endings and split
+            $lines = preg_split("/\r\n|\n|\r/", $content);
+
+            foreach ($lines as $line) {
+                if (stripos($line, 'model name') !== false) {
+                    $modelName = trim(preg_replace('/model name\s*:\s*/i', '', $line));
+                } elseif (stripos($line, 'spa name') !== false) {
+                    $spaName = trim(preg_replace('/spa name\s*:\s*/i', '', $line));
+                }
+            }
+
+            if (stripos($modelName, 'not mentioned') !== false || $modelName === '') {
+                $modelName = '';
+            }
+            if (stripos($spaName, 'not mentioned') !== false || $spaName === '') {
+                $spaName = '';
+            }
+
+            if (!$modelName && !$spaName) {
+                return $this->error(\XF::phrase('fs_thread_model_or_spa_not_found'));
+            }
+
+            $finder = \XF::finder('XF:Thread');
+
+            $conditions = [
+                ['title', 'LIKE', $finder->escapeLike("Review", '%?%')],
+                // ['title', 'LIKE', $finder->escapeLike($modelName, '%?%')],
+                ['title', 'LIKE', $finder->escapeLike($spaName, '%?%')],
+            ];
+
+            $threads = $finder
+                ->whereOr($conditions)->fetch();
+
+            $threadModelSpaValues = array();
+
+            foreach ($threads as $key => $threadVal) {
+                $threadModelSpaValues[$key]['modelName'] = '';
+                $threadModelSpaValues[$key]['spaName'] = '';
+                $threadModelSpaValues[$key]['thread'] = $threadVal;
+
+                if (stripos($threadVal->title, "Review") !== false) {
+                    // if (stripos($threadVal->title, $modelName) !== false) {
+                    $threadModelSpaValues[$key]['modelName'] = $modelName;
+                }
+
+                if (stripos($threadVal->title, $spaName) !== false) {
+                    $threadModelSpaValues[$key]['spaName'] = $spaName;
+                }
             }
         }
 
-        if (stripos($modelName, 'not mentioned') !== false || $modelName === '') {
-            $modelName = '';
-        }
-        if (stripos($spaName, 'not mentioned') !== false || $spaName === '') {
-            $spaName = '';
-        }
-
-        if (!$modelName && !$spaName) {
-            return $this->error(\XF::phrase('fs_thread_model_or_spa_not_found'));
-        }
-
-        $finder = \XF::finder('XF:Thread');
-
-        $conditions = [
-            ['title', 'LIKE', $finder->escapeLike("Review", '%?%')],
-            // ['title', 'LIKE', $finder->escapeLike($modelName, '%?%')],
-            ['title', 'LIKE', $finder->escapeLike($spaName, '%?%')],
-        ];
-
-        $threads = $finder
-            ->whereOr($conditions)->fetch();
-
-        $threadModelSpaValues = array();
-
-        foreach ($threads as $key => $threadVal) {
-            $threadModelSpaValues[$key]['modelName'] = '';
-            $threadModelSpaValues[$key]['spaName'] = '';
-
-            if (stripos($threadVal->title, "Review") !== false) {
-                // if (stripos($threadVal->title, $modelName) !== false) {
-                $threadModelSpaValues[$key]['modelName'] = $modelName;
-            }
-
-            if (stripos($threadVal->title, $spaName) !== false) {
-                $threadModelSpaValues[$key]['spaName'] = $spaName;
-            }
-        }
-
-        echo "<pre>";
-        var_dump($threadModelSpaValues);
-        exit;
+        // echo "<pre>";
+        // var_dump($threadModelSpaValues);
+        // exit;
 
         $viewParams = [
             'thread' => $thread,

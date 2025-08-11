@@ -1,8 +1,18 @@
 {
+    "public/altf_additional_filter_elements.html": {
+        "version_id": 2060070,
+        "version_string": "2.6.0",
+        "hash": "a75221ce86861e705361cc8f10d3ba5a"
+    },
     "public/altf_sidebar_filter_container.html": {
         "version_id": 3080070,
         "version_string": "3.8.0",
         "hash": "e3615c98427d5989fdbe596f313acb2a"
+    },
+    "public/altf_thread_field_form_element.html": {
+        "version_id": 3080070,
+        "version_string": "3.8.0",
+        "hash": "e4375bee22af6ffbf2c492dca1fa9dc9"
     },
     "public/altf_thread_filter_form_macros.html": {
         "version_id": 3080070,
@@ -10,8 +20,8 @@
         "hash": "99241ff181b8cf951d2e411a6deb13b1"
     },
     "public/altf_thread_filter_popup_form.html": {
-        "version_id": 3020270,
-        "version_string": "3.2.2",
+        "version_id": 3080070,
+        "version_string": "3.8.0",
         "hash": "df146e0a6f701ba9ce8717f4e351480a"
     }
 }

@@ -1,0 +1,319 @@
+<xf:macro name="edit_form" 
+		  arg-context="public"
+		  arg-linkPrefix="!"
+		  arg-product="!"
+		  arg-category="!"
+		  arg-forumOptions="!"
+		  arg-attachmentData="!"
+		  arg-userGroups="!"
+		  arg-shippingZones="{{ [] }}"
+		  arg-productOwner="!"
+		  arg-prefixes="{{ null }}"
+		  arg-availableFields="{{ null }}"
+		  arg-editableTags="{{ null }}"
+		  arg-uneditableTags="{{ null }}"
+		  arg-threadPrefixes="{{ null }}">
+
+	<xf:js src="xf/sort.js, vendor/dragula/dragula.js" />
+	<xf:css src="public:dragula.less" />
+
+	<xf:form action="{{ link_type($context, $linkPrefix . '/save', $product, {'category_id': $product.product_category_id, 'parent_product_id': $product.parent_product_id}) }}" class="block" ajax="true">
+		<div class="block-container">
+			<div class="block-body">
+				<xf:if is="$product.isUpdate() && $product.canSendModeratorActionAlert()">
+					<xf:formrow label="{{ phrase('dbtech_ecommerce_edit_notice') }}">
+						<xf:macro template="helper_action" name="author_alert" arg-row="{{ false }}" />
+					</xf:formrow>
+					
+					<hr class="formRowSep" />
+				</xf:if>
+
+				<xf:if is="$context == 'admin'">
+					<xf:if is="$product.isInsert()">
+						<xf:textboxrow name="username" ac="single" value="{$productOwner.username}"
+							label="{{ phrase('dbtech_ecommerce_product_owner') }}" />
+					<xf:else />
+						<xf:formrow label="{{ phrase('dbtech_ecommerce_product_owner') }}">
+							{$product.User.username} <a href="{{ link_type($context, $linkPrefix . '/reassign', $product) }}" data-xf-click="overlay">{{ phrase('reassign') }}</a>
+						</xf:formrow>
+					</xf:if>
+				</xf:if>
+				
+				<xf:macro name="title"
+					arg-product="{$product}"
+					arg-prefixes="{$prefixes}" />
+
+				<xf:if is="$xf.options.enableTagging && ($product.canEditTags() || $product.tags)">
+					<xf:macro template="tag_macros" name="edit_rows"
+							  arg-uneditableTags="{$uneditableTags}"
+							  arg-editableTags="{$editableTags}" />
+				</xf:if>
+				
+				<xf:macro name="tagline"
+					arg-product="{$product}" />
+
+				<xf:textarearow name="description" value="{{ $product.exists() ? $product.MasterDescription.phrase_text : '' }}"
+								rows="2" autosize="true" class="input--fitHeight--short"
+								label="{{ phrase('description') }}"
+								explain="{{ phrase('dbtech_ecommerce_short_description_explain') }}" />
+
+				<xf:checkboxrow>
+					<xf:option name="is_discountable" value="1" selected="$product.is_discountable">
+						<xf:label>{{ phrase('dbtech_ecommerce_is_discountable') }}</xf:label>
+						<xf:hint>{{ phrase('dbtech_ecommerce_is_discountable_explain') }}</xf:hint>
+					</xf:option>
+
+					<xf:option name="is_featured" value="1" selected="$product.is_featured">
+						<xf:label>{{ phrase('dbtech_ecommerce_is_featured') }}</xf:label>
+						<xf:hint>{{ phrase('dbtech_ecommerce_is_featured_explain') }}</xf:hint>
+					</xf:option>
+
+					<xf:option name="is_listed" value="1" selected="$product.is_listed">
+						<xf:label>{{ phrase('dbtech_ecommerce_is_listed') }}</xf:label>
+						<xf:hint>{{ phrase('dbtech_ecommerce_is_listed_explain') }}</xf:hint>
+					</xf:option>
+
+					<xf:if is="$product.hasLicenseFunctionality()">
+						<xf:option name="is_all_access" value="1" selected="$product.is_all_access">
+							<xf:label>{{ phrase('dbtech_ecommerce_is_all_access') }}</xf:label>
+							<xf:hint>{{ phrase('dbtech_ecommerce_is_all_access_explain') }}</xf:hint>
+						</xf:option>
+					</xf:if>
+				</xf:checkboxrow>
+
+				<xf:if is="$product.hasLicenseFunctionality()">
+					<xf:macro name="dbtech_ecommerce_helper_user_group_edit::additional_checkboxes"
+							  arg-label="{{ phrase('dbtech_ecommerce_product_all_access_user_groups') }}" arg-id="all_access_group_ids"
+							  arg-explain="{{ phrase('dbtech_ecommerce_product_all_access_user_groups_explain') }}"
+							  arg-selectedUserGroups="{{ $product.product_id ? $product.all_access_group_ids : [] }}" />
+				</xf:if>
+
+				<hr class="formRowSep" />
+
+				<xf:formrow label="{{ phrase('dbtech_ecommerce_parent_product') }}">
+					{{ $product.Parent ? $product.Parent.title : phrase('none') }}
+				</xf:formrow>
+
+				<xf:formrow label="{{ phrase('category') }}">
+					{$category.title} <xf:if is="!$product.isAddOn() && !$product.isInsert() && $context == 'admin'"> <a href="{{ link_type($context, $linkPrefix . '/move', $product) }}" data-xf-click="overlay">{{ phrase('button.move') }}</a></xf:if>
+				</xf:formrow>
+
+				<xf:if is="!$product.isAddOn()">
+					<xf:if is="$category.product_filters is not empty">
+						<hr class="formRowSep" />
+
+						<xf:checkboxrow name="available_filters" value="{$product.product_filters}" listclass="filter listColumns"
+										label="{{ phrase('dbtech_ecommerce_available_product_filters') }}"
+										explain="{{ phrase('dbtech_ecommerce_available_product_filters_explain') }}">
+
+							<xf:foreach loop="$category.product_filters" key="$filterId" value="$filter">
+								<xf:option value="{$filterId}" label="{$filter}" />
+							</xf:foreach>
+
+							<xf:hint>
+								<xf:checkbox standalone="true">
+									<xf:option check-all=".filter.listColumns">{{ phrase('select_all') }}</xf:option>
+								</xf:checkbox>
+							</xf:hint>
+						</xf:checkboxrow>
+					<xf:else />
+						<hr class="formRowSep" />
+
+						<xf:formrow 
+									label="{{ phrase('dbtech_ecommerce_available_product_filters') }}"
+									explain="{{ phrase('dbtech_ecommerce_available_product_filters_explain') }}">
+							{{ phrase('none')|parens }}
+						</xf:formrow>
+					</xf:if>
+				</xf:if>
+
+				<hr class="formRowSep" />
+				
+				<xf:if contentcheck="true">
+					<xf:contentcheck>
+						<xf:macro template="custom_fields_macros" name="custom_fields_edit_groups"
+								  arg-type="dbtechEcommerceProducts"
+								  arg-set="{$product.product_fields}"
+								  arg-groups="{{ ['above_main', 'above_info'] }}"
+								  arg-editMode="{{ $product.getFieldEditMode() }}"
+								  arg-onlyInclude="{$category.field_cache}"
+								  arg-namePrefix="product_fields" />
+					</xf:contentcheck>
+
+					<hr class="formRowSep" />
+				</xf:if>				
+
+				<xf:tokeninputrow name="requirements" value="{$product.requirements|join(', ')}"
+					label="{{ phrase('dbtech_ecommerce_product_requirements') }}"
+					explain="{{ phrase('dbtech_ecommerce_multiple_requirements_may_be_separated_by_commas') }}" />
+
+				<xf:editorrow name="description_full" value="{$product.description_full}" previewable="0"
+					label="{{ phrase('dbtech_ecommerce_full_product_description') }}"
+					explain="{{ phrase('dbtech_ecommerce_full_product_description_explain') }}" />
+
+				<xf:editorrow name="product_specification" value="{$product.product_specification}" previewable="0"
+					label="{{ $product.hasLicenseFunctionality() ? phrase('dbtech_ecommerce_feature_list') : phrase('dbtech_ecommerce_product_specifications') }}"
+					explain="{{ $product.hasLicenseFunctionality() ? phrase('dbtech_ecommerce_feature_list_explain') : phrase('dbtech_ecommerce_product_specification_explain') }}" />
+
+				<xf:editorrow name="copyright_info" value="{$product.copyright_info}" previewable="0"
+					label="{{ phrase('dbtech_ecommerce_product_copyright_info') }}"
+					explain="{{ phrase('dbtech_ecommerce_product_copyright_info_explain') }}" />
+
+				<div data-xf-init="attachment-manager">
+					<xf:formrow label="{{ phrase('dbtech_ecommerce_product_images') }}">
+
+						<xf:if is="$attachmentData">
+							<xf:macro template="helper_attach_upload" name="upload_block" arg-attachmentData="{$attachmentData}" />
+						</xf:if>
+					</xf:formrow>
+				</div>
+				
+				<xf:if contentcheck="true">
+					<xf:contentcheck>
+						<xf:macro template="custom_fields_macros" name="custom_fields_edit_groups"
+								  arg-type="dbtechEcommerceProducts"
+								  arg-set="{$product.product_fields}"
+								  arg-groups="{{ ['below_info', 'below_main', 'new_tab'] }}"
+								  arg-editMode="{{ $product.getFieldEditMode() }}"
+								  arg-onlyInclude="{$category.field_cache}"
+								  arg-namePrefix="product_fields" />
+					</xf:contentcheck>
+				</xf:if>
+			</div>
+
+			<h3 class="block-formSectionHeader">
+				<span class="block-formSectionHeader-aligner">{{ phrase('dbtech_ecommerce_welcome_email') }}</span>
+			</h3>
+			<xf:checkboxrow name="welcome_email" value="{$product.welcome_email}"
+							explain="{{ phrase('dbtech_ecommerce_send_welcome_email_explain') }}">
+
+				<xf:option value="1">{{ phrase('dbtech_ecommerce_send_welcome_email') }}</xf:option>
+			</xf:checkboxrow>
+
+			<xf:textboxrow name="welcome_email_options[from_name]" value="{{ $product.WelcomeEmail ? $product.WelcomeEmail.from_name : ($xf.options.emailSenderName ? $xf.options.emailSenderName : $xf.options.boardTitle) }}"
+						   maxlength="{{ max_length('DBTech\eCommerce:ProductWelcomeEmail', 'from_name') }}"
+						   label="{{ phrase('from_name') }}" />
+
+			<xf:textboxrow name="welcome_email_options[from_email]" value="{{ $product.WelcomeEmail ? $product.WelcomeEmail.from_email : $xf.options.defaultEmailAddress }}" type="email"
+						   label="{{ phrase('from_email') }}"/>
+
+			<hr class="formRowSep" />
+
+			<xf:textboxrow name="welcome_email_options[email_title]" value="{{ $product.WelcomeEmail ? $product.WelcomeEmail.email_title : '' }}"
+						   label="{{ phrase('email_title') }}" />
+
+			<xf:radiorow name="welcome_email_options[email_format]" value="{{ $product.WelcomeEmail ? $product.WelcomeEmail.email_format : 'text' }}"
+						 label="{{ phrase('email_format') }}">
+
+				<xf:option value="text"
+						   label="{{ phrase('plain_text') }}" />
+				<xf:option value="html"
+						   label="HTML"
+						   hint="{{ phrase('note_that_email_clients_handle_html_in_widely_varying_ways') }}" />
+			</xf:radiorow>
+
+			<xf:codeeditorrow name="welcome_email_options[email_body]" value="{{ $product.WelcomeEmail ? $product.WelcomeEmail.email_body : '' }}"
+							  mode="html" data-line-wrapping="true"
+							  class="codeEditor--autoSize codeEditor--proportional"
+							  label="{{ phrase('email_body') }}"
+							  explain=" {{ phrase('following_placeholders_will_be_replaced_in_message_for_email') }}" />
+
+			{{ $product.renderOptions($context, $linkPrefix)|raw }}
+
+			<h3 class="block-formSectionHeader">
+				<span class="block-formSectionHeader-aligner">{{ phrase('general_options') }}</span>
+			</h3>
+			<div class="block-body">
+
+				<xf:macro template="dbtech_ecommerce_helper_user_group_edit" name="additional_checkboxes"
+						  arg-label="{{ phrase('dbtech_ecommerce_product_permanent_additional_user_groups') }}" arg-id="extra_group_ids"
+						  arg-explain="{{ phrase('dbtech_ecommerce_product_additional_user_groups_explain') }}"
+						  arg-selectedUserGroups="{$product.extra_group_ids}" />
+
+				<xf:if is="$product.hasLicenseFunctionality()">
+					<xf:macro template="dbtech_ecommerce_helper_user_group_edit" name="additional_checkboxes"
+							  arg-label="{{ phrase('dbtech_ecommerce_product_temporary_additional_user_groups') }}" arg-id="temporary_extra_group_ids"
+							  arg-explain="{{ phrase('dbtech_ecommerce_product_temporary_additional_user_groups_explain') }}"
+							  arg-selectedUserGroups="{$product.temporary_extra_group_ids}" />
+				</xf:if>
+
+				<xf:if is="$availableFields is not empty">
+					<hr class="formRowSep" />
+
+					<xf:checkboxrow name="available_fields" value="{$product.field_cache}" listclass="field listColumns"
+									label="{{ phrase('available_fields') }}"
+									explain="{{ phrase('dbtech_ecommerce_product_asterisk_fields_required_explain') }}">
+
+						<xf:foreach loop="$availableFields" key="$fieldId" value="$field">
+							<xf:option value="{$fieldId}" label="{$field.title}" labelclass="{{ $field.required ? 'u-appendAsterisk' : '' }}" />
+						</xf:foreach>
+
+						<xf:hint>
+							<xf:checkbox standalone="true">
+								<xf:option check-all=".field.listColumns">{{ phrase('select_all') }}</xf:option>
+							</xf:checkbox>
+						</xf:hint>
+					</xf:checkboxrow>
+				<xf:else />
+					<hr class="formRowSep" />
+
+					<xf:formrow label="{{ phrase('available_fields') }}">
+						{{ phrase('none')|parens }} <xf:if is="$context == 'admin'"><a href="{{ link_type($context, $linkPrefix . '/order-fields/add') }}" target="_blank">{{ phrase('add_field') }}</a></xf:if>
+					</xf:formrow>
+				</xf:if>				
+
+				<xf:selectrow name="thread_node_id" value="{$product.thread_node_id}" id="js-dbtechEcommercePurchaseNodeList"
+							  label="{{ phrase('dbtech_ecommerce_automatically_create_purchase_thread_in_forum') }}"
+							  explain="{{ phrase('dbtech_ecommerce_if_selected_purchase_product_created_thread_posted_forum') }}">
+
+					<xf:option value="0">{{ phrase('(none)') }}</xf:option>
+					<xf:foreach loop="$forumOptions" value="$forum">
+						<xf:option value="{$forum.value}" disabled="{$forum.disabled}" label="{$forum.label}" />
+					</xf:foreach>
+				</xf:selectrow>
+
+				<xf:formrow label="{{ phrase('dbtech_ecommerce_automatically_created_purchase_thread_prefix') }}" rowtype="input">
+					<xf:js src="xf/prefix_menu.js" min="1" />
+					<xf:macro template="prefix_macros" name="select"
+						arg-type="thread"
+						arg-prefixes="{$threadPrefixes}"
+						arg-selected="{{ $product.thread_prefix_id ? $product.thread_prefix_id : 0 }}"
+						arg-name="thread_prefix_id"
+						arg-href="{{ link_type($context, 'forums/prefixes') }}"
+						arg-listenTo="#js-dbtechEcommercePurchaseNodeList" />
+				</xf:formrow>
+
+				<hr class="formRowSep" />
+
+				<xf:selectrow name="support_node_id" value="{$product.support_node_id}"
+							  label="{{ phrase('dbtech_ecommerce_support_forum') }}"
+							  explain="{{ phrase('dbtech_ecommerce_if_selected_get_support_button_shown') }}">
+
+					<xf:option value="0">{{ phrase('(none)') }}</xf:option>
+					<xf:foreach loop="$forumOptions" value="$forum">
+						<xf:option value="{$forum.value}" disabled="{$forum.disabled}" label="{$forum.label}" />
+					</xf:foreach>
+				</xf:selectrow>
+			</div>
+
+			<xf:hiddenval name="product_type" value="{$product.product_type}" />
+			<xf:submitrow sticky="true" icon="save" />
+		</div>
+	</xf:form>
+</xf:macro>
+
+<xf:macro name="title" arg-product="!" arg-prefixes="!">
+	<xf:prefixinputrow
+		label="{{ phrase('title') }}"
+		prefixes="{$prefixes}"
+		type="dbtechEcommerceProduct"
+		prefix-value="{$product.prefix_id}"
+		textbox-value="{$product.title}"
+		placeholder="{{ phrase('title...') }}" />
+</xf:macro>
+
+<xf:macro name="tagline" arg-product="!">
+	<xf:textboxrow name="tagline" value="{{ $product.exists() ? $product.MasterTagline.phrase_text : '' }}"
+		label="{{ phrase('dbtech_ecommerce_product_tagline') }}"
+		explain="{{ phrase('dbtech_ecommerce_product_tagline_explain') }}" />
+</xf:macro>

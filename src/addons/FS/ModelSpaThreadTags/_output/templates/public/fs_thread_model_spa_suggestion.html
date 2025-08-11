@@ -1,0 +1,65 @@
+<xf:title> {{ phrase('fs_thread_suggestions_title') }} </xf:title>
+
+<xf:if is="!$threadModelSpaValues">
+
+	<div class="block">
+
+		<div class="block-container">
+
+			<div class="block-body">
+				<div class="blockMessage">
+					{{ phrase('no_items_have_been_created_yet') }}
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<xf:else />
+
+	<xf:form
+			 action="{{ link('threads/suggestion', $thread) }}"
+			 ajax="true"
+			 class="block"
+			 data-force-flash-message="true"
+			 >
+		<div class="block-container">
+			<div class="block-body">
+
+				<xf:foreach loop="{$threadModelSpaValues}" key="$key" value="$val">
+
+					<div class="inputGroup-container" data-xf-init="list-sorter" data-drag-handle=".dragHandle">
+						<xf:formrow rowtype="input" label="{{ $val.thread.title }}" explain="">
+
+							<div class="inputGroup">
+
+								<span class="inputGroup-text"
+									  aria-label="">--><a href="{{ link('threads', $val.thread) }}" target="_blank">
+									({{ phrase('Link') }})
+									</a></span>
+
+								<xf:textbox name="threadModelSpaFields[{$key}][model]" value="{$val.modelName}"
+											placeholder="{{ phrase('fs_enter_model_name') }}"
+											size="24" maxlength=""
+											dir="ltr" />
+								<span class="inputGroup-splitter"></span>
+								<xf:textbox name="threadModelSpaFields[{$key}][spa]" value="{$val.spaName}"
+											placeholder="{{ phrase('fs_enter_spa_name') }}" size="24" />
+
+								<span class="inputGroup-text"
+									  aria-label=""><a href="{{ link('email-logs-detail/send', $value) }}" target="_blank">
+									{{ phrase('save') }}
+									</a></span>
+
+							</div>
+
+						</xf:formrow>
+					</div>
+
+				</xf:foreach>
+
+			</div>
+			<xf:submitrow submit="" icon="save" />
+		</div>
+	</xf:form>
+
+</xf:if>

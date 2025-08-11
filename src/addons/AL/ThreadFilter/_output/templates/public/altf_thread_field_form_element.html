@@ -1,0 +1,208 @@
+<xf:macro name="filter_element" arg-set="!" arg-definition="!" arg-editMode="!" arg-namePrefix="!">
+    <xf:comment>Select2 loading is moved to a top-level macro</xf:comment>
+    <xf:if is="in_array($definition.field_type, ['textbox', 'textarea', 'bbcode'])">
+        <xf:macro name="altf_custom_fields_edit_textbox" arg-set="{$set}" arg-definition="{$definition}" arg-editMode="{$editMode}" arg-namePrefix="{$namePrefix}"/>
+
+        <xf:elseif is="{$definition.field_type}==='stars'"/>
+        <xf:macro template="rating_macros" name="rating"
+                  arg-name="{$namePrefix}[{$definition.field_id}]"
+                  arg-currentRating="{$set.{$definition.field_id}}"
+                  arg-deselectable="true"
+                  arg-row="{{ false }}"/>
+
+        <xf:elseif is="in_array($definition.field_type, ['location'])"/>
+        <xf:macro name="altf_custom_fields_edit_location" arg-set="{$set}" arg-definition="{$definition}" arg-editMode="{$editMode}" arg-namePrefix="{$namePrefix}"/>
+
+        <xf:comment>Multiselect should load from this template as welll</xf:comment>
+        <xf:elseif is="in_array($definition.FieldData.filter_template, ['checkbox', 'select', 'radio', 'multiselect'])"/>
+        <xf:macro name="custom_fields_edit_{$definition.FieldData.filter_template}" arg-set="{$set}" arg-definition="{$definition}" arg-editMode="{$editMode}" arg-namePrefix="{$namePrefix}"/>
+
+        <xf:else/>
+        <xf:macro template="custom_fields_macros" name="custom_fields_edit_{$definition.FieldData.filter_template}" arg-set="{$set}" arg-definition="{$definition}" arg-editMode="{$editMode}" arg-namePrefix="{$namePrefix}"/>
+    </xf:if>
+</xf:macro>
+
+<xf:comment>Multiselect macro that loads the select macro</xf:comment>
+<xf:macro name="custom_fields_edit_multiselect" arg-set="!" arg-definition="!" arg-editMode="!" arg-namePrefix="custom_fields">
+
+    <xf:macro name="custom_fields_edit_select"
+              arg-set="{$set}"
+              arg-definition="{$definition}"
+              arg-editMode="!"
+              arg-multi="1"
+              arg-namePrefix="{$namePrefix}"/>
+</xf:macro>
+
+<xf:macro name="custom_fields_edit_select" arg-set="!" arg-definition="!" arg-editMode="!" arg-multi="" arg-namePrefix="custom_fields">
+    <xf:select name="{$namePrefix}[{$definition.field_id}]"
+               value="{{ $set.{$definition.field_id} === null ? '' : {$set.{$definition.field_id}} }}"
+               multiple="{$multi}"
+               size="{{$multi && $xf.options.altf_filterable_lists ? 1 : 0}}"
+               class="field_{$definition.field_id}">
+        <xf:option value=""/>
+        <xf:foreach loop="$definition.getFacetData().getChoices($definition, $set, false)" key="$key" value="$option">
+            <xf:option value="{$key}"
+                       labelclass="{$definition.getFacetData().getChoiceClass($definition, $key)}"
+            >{{$option|raw}}
+            </xf:option>
+        </xf:foreach>
+    </xf:select>
+</xf:macro>
+
+<xf:macro name="custom_fields_edit_radio" arg-set="!" arg-definition="!" arg-editMode="!" arg-namePrefix="custom_fields">
+    <xf:radio name="{$namePrefix}[{$definition.field_id}]"
+              value="{{ $set.{$definition.field_id} === null ? '' : {$set.{$definition.field_id}} }}"
+              required="{{ $definition.isRequired($editMode) ? 'required' : '' }}"
+              class="field_{$definition.field_id}"
+              listclass="listColumns">
+        <xf:if is="!$definition.isRequired($editMode)">
+            <xf:option value="">{{ phrase('no_selection') }}</xf:option>
+        </xf:if>
+        <xf:foreach loop="$definition.getFacetData().getChoices($definition, $set)" key="$key" value="$option">
+            <xf:option value="{$key}"
+                       labelclass="{$definition.getFacetData().getChoiceClass($definition, $key)}"
+            >{{$option|raw}}
+            </xf:option>
+        </xf:foreach>
+    </xf:radio>
+</xf:macro>
+
+<xf:macro name="custom_fields_edit_checkbox" arg-set="!" arg-definition="!" arg-editMode="!" arg-namePrefix="custom_fields">
+    <xf:checkbox name="{$namePrefix}[{$definition.field_id}]" value="{$set.{$definition.field_id}}"
+                 required="{{ $definition.isRequired($editMode) ? 'required' : '' }}"
+                 listclass="field_{$definition.field_id} listColumns">
+        <xf:foreach loop="$definition.getFacetData().getChoices($definition, $set)" key="$key" value="$option">
+            <xf:option value="{$key}"
+                       labelclass="{$definition.getFacetData().getChoiceClass($definition, $key)}"
+            >{{$option|raw}}
+            </xf:option>
+        </xf:foreach>
+    </xf:checkbox>
+</xf:macro>
+
+<xf:macro name="altf_custom_fields_edit_location" arg-set="!" arg-definition="!" arg-editMode="!" arg-namePrefix="custom_fields">
+    <xf:macro
+            template="allf_custom_fields_macros"
+            name="custom_fields_filter_location"
+            arg-set="{$set}"
+            arg-definition="{$definition}"
+            arg-editMode="{$editMode}"
+            arg-defaultDistanceUnit="{$xf.options.altf_default_distance_unit}"
+            arg-namePrefix="{$namePrefix}"
+            arg-customFieldContainerType="threads"
+            arg-hideDistanceUnit="{$xf.options.altf_hide_distance_unit}"
+    />
+    <xf:comment>@see EnhancedSet::getCustomFieldContainerType()</xf:comment>
+</xf:macro>
+
+<xf:macro name="altf_custom_fields_edit_textbox" arg-set="!" arg-definition="!" arg-editMode="!" arg-namePrefix="custom_fields">
+
+    <xf:if is="$definition.match_type == 'date'">
+
+        <xf:dateinput name="{$namePrefix}[{$definition.field_id}][from]" value="{$set.{$definition.field_id}.from}"
+                      data-field="{$definition.field_id}"
+                      maxlength="{{ $definition.max_length ? $definition.max_length : '' }}"
+                      required="{{ $definition.isRequired($editMode) ? 'required' : '' }}"
+                      class="field_{$definition.field_id}"
+                      placeholder=" {{ phrase('altf_from') }} "
+        />
+
+        <span class="inputGroup-splitter"></span>
+
+        <xf:dateinput name="{$namePrefix}[{$definition.field_id}][to]" value="{$set.{$definition.field_id}.to}"
+                      data-field="{$definition.field_id}"
+                      maxlength="{{ $definition.max_length ? $definition.max_length : '' }}"
+                      required="{{ $definition.isRequired($editMode) ? 'required' : '' }}"
+                      class="field_{$definition.field_id}"
+                      placeholder=" {{ phrase('altf_to') }} "
+        />
+
+
+        <xf:elseif is="$definition.match_type == 'color'"/>
+
+        <xf:macro template="color_picker_macros" name="color_picker"
+                  arg-name="{$namePrefix}[{$definition.field_id}]"
+                  arg-value="{$set.{$definition.field_id}}"
+                  arg-mapName=""
+                  arg-row="{{ false }}"
+                  arg-required="{$definition.isRequired($editMode)}"/>
+
+        <xf:else/>
+
+        <xf:if is="$definition.match_type == 'number'">
+
+            <xf:set var="$type" value="number"/>
+            <xf:set var="$step" value="1"/>
+
+            <xf:if is="$definition.match_params.number_integer">
+                <xf:if is="$definition.match_params.number_min >= 0">
+                    <xf:set var="$pattern" value="\d*"/>
+                </xf:if>
+                <xf:else/>
+                <xf:set var="$step" value="any"/>
+            </xf:if>
+            <xf:if is="$definition.match_params.number_min !== ''">
+                <xf:set var="$min" value="{$definition.match_params.number_min}"/>
+            </xf:if>
+            <xf:if is="$definition.match_params.number_max !== ''">
+                <xf:set var="$max" value="{$definition.match_params.number_max}"/>
+            </xf:if>
+
+            <xf:elseif is="in_array($definition.match_type, ['regex', 'alphanumeric'])"/>
+
+            <xf:set var="$type" value="text"/>
+            <xf:set var="$pattern" value="{{ $definition.match_type == 'regex' ? $definition.match_params.regex : '\w+' }}"/>
+            <xf:set var="$title">{{ phrase('please_enter_value_that_matches_required_format') }}</xf:set>
+
+            <xf:elseif is="in_array($definition.match_type, ['date', 'email', 'url', 'color'])"/>
+
+            <xf:set var="$type" value="{$definition.match_type}"/>
+
+            <xf:else/>
+
+            <xf:set var="$type" value="text"/>
+
+        </xf:if>
+
+        <xf:if is="$type==='number'">
+            <xf:textbox name="{$namePrefix}[{$definition.field_id}][from]" value="{$set.{$definition.field_id}.from}"
+                        type="{$type}"
+                        maxlength="{{ $definition.max_length ? $definition.max_length : '' }}"
+                        pattern="{$pattern}"
+                        title="{$title}"
+                        min="{$min}"
+                        max="{$max}"
+                        step="{$step}"
+                        required="{{ $definition.isRequired($editMode) ? 'required' : '' }}"
+                        class="field_{$definition.field_id}"
+                        placeholder=" {{ phrase('altf_from') }} "
+            />
+
+            <span class="inputGroup-splitter"></span>
+
+            <xf:textbox name="{$namePrefix}[{$definition.field_id}][to]" value="{$set.{$definition.field_id}.to}"
+                        type="{$type}"
+                        maxlength="{{ $definition.max_length ? $definition.max_length : '' }}"
+                        pattern="{$pattern}"
+                        title="{$title}"
+                        min="{$min}"
+                        max="{$max}"
+                        step="{$step}"
+                        required="{{ $definition.isRequired($editMode) ? 'required' : '' }}"
+                        class="field_{$definition.field_id}"
+                        placeholder=" {{ phrase('altf_to') }} "
+            />
+            <xf:else/>
+            <xf:textbox name="{$namePrefix}[{$definition.field_id}]" value="{$set.{$definition.field_id}}"
+                        type="{$type}"
+                        maxlength="{{ $definition.max_length ? $definition.max_length : '' }}"
+                        pattern="{$pattern}"
+                        title="{$title}"
+                        min="{$min}"
+                        max="{$max}"
+                        step="{$step}"
+                        required="{{ $definition.isRequired($editMode) ? 'required' : '' }}"
+                        class="field_{$definition.field_id}"/>
+        </xf:if>
+    </xf:if>
+</xf:macro>

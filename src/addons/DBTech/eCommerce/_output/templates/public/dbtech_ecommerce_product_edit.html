@@ -1,0 +1,27 @@
+<xf:if is="$product.isInsert()">
+	<xf:title>{{ phrase('dbtech_ecommerce_add_product') }}</xf:title>
+<xf:else />
+	<xf:title>{{ phrase('dbtech_ecommerce_edit_product:') }} {$product.title}</xf:title>
+</xf:if>
+
+<xf:breadcrumb source="$product.getBreadcrumbs()" />
+
+<xf:pageaction if="$product.isUpdate() AND $product.canDelete('soft')">
+	<xf:button href="{{ link('dbtech-ecommerce/delete', $product) }}" icon="delete" overlay="true" />
+</xf:pageaction>
+
+<xf:macro name="dbtech_ecommerce_product_edit_macros::edit_form"
+		  arg-context="public"
+		  arg-linkPrefix="dbtech-ecommerce"
+		  arg-product="{$product}"
+		  arg-category="{$category}"
+		  arg-forumOptions="{$forumOptions}"
+		  arg-attachmentData="{$attachmentData}"
+		  arg-userGroups="{$userGroups}"
+		  arg-shippingZones="{$shippingZones}"
+		  arg-productOwner="{$productOwner}"
+		  arg-prefixes="{$prefixes}"
+		  arg-availableFields="{$availableFields}"
+		  arg-editableTags="{$editableTags}"
+		  arg-uneditableTags="{$uneditableTags}"
+		  arg-threadPrefixes="{$threadPrefixes}" />

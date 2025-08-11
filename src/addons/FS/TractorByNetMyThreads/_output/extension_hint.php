@@ -8,6 +8,11 @@ namespace FS\TractorByNetMyThreads\XF\Entity
 	class XFCP_User extends \XF\Entity\User {}
 }
 
+namespace FS\TractorByNetMyThreads\XF\Finder
+{
+	class XFCP_Thread extends \XF\Finder\Thread {}
+}
+
 namespace FS\TractorByNetMyThreads\XF\ForumType
 {
 	class XFCP_Article extends \XF\ForumType\Article {}

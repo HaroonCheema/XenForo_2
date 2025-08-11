@@ -1,0 +1,267 @@
+<h3 class="block-formSectionHeader">
+	<span class="block-formSectionHeader-aligner">{{ phrase('dbtech_ecommerce_options_for_digital_products') }}</span>
+</h3>
+<div class="block-body">
+	<xf:textboxrow name="license_prefix" value="{$product.license_prefix}"
+				   label="{{ phrase('dbtech_ecommerce_license_prefix') }}"
+				   explain="{{ phrase('dbtech_ecommerce_license_prefix_explain') }}" />
+
+	<xf:if is="!$product.isAddOn()">
+		<xf:formrow rowtype="input"
+					label="{{ phrase('dbtech_ecommerce_product_downloadable_versions') }}"
+					explain="{{ phrase('dbtech_ecommerce_value_represents_internal_value_for_version_text_is_displayed') }}">
+
+			<div class="inputGroup-container" data-xf-init="list-sorter" data-drag-handle=".dragHandle">
+				<xf:foreach loop="$product.product_versions" key="$version" value="$text">
+					<div class="inputGroup">
+						<span class="inputGroup-text dragHandle"
+							  aria-label="{{ phrase('drag_handle')|for_attr }}"></span>
+						<xf:textbox name="product_version[]" value="{$version}"
+									placeholder="{{ phrase('value_a_z_0_9_and_only') }}"
+									size="24" maxlength="25"
+									dir="ltr" />
+						<span class="inputGroup-splitter"></span>
+						<xf:textbox name="product_version_text[]" value="{$text}"
+									placeholder="{{ phrase('text') }}" size="24" />
+					</div>
+				</xf:foreach>
+				<div class="inputGroup is-undraggable js-blockDragafter" data-xf-init="field-adder"
+					 data-remove-class="is-undraggable js-blockDragafter">
+					<span class="inputGroup-text dragHandle"
+						  aria-label="{{ phrase('drag_handle')|for_attr }}"></span>
+					<xf:textbox name="product_version[]"
+								placeholder="{{ phrase('value_a_z_0_9_and_only') }}"
+								size="24" maxlength="25" data-i="0"
+								dir="ltr" />
+					<span class="inputGroup-splitter"></span>
+					<xf:textbox name="product_version_text[]"
+								placeholder="{{ phrase('text') }}"
+								size="24" data-i="0" />
+				</div>
+			</div>
+		</xf:formrow>
+	</xf:if>
+
+	<xf:checkboxrow explain="{{ phrase('dbtech_ecommerce_has_demo_version_explain') }}">
+		<xf:option name="has_demo" value="1" selected="$product.has_demo">
+			{{ phrase('dbtech_ecommerce_has_demo_version') }}
+		</xf:option>
+	</xf:checkboxrow>
+</div>
+
+<xf:set var="$noHighlight" value="{{ true }}" />
+<xf:foreach loop="$product.Costs" value="$cost">
+	<xf:if is="$cost.highlighted">
+		<xf:set var="$noHighlight" value="{{ false }}" />
+	</xf:if>
+</xf:foreach>
+
+<div data-xf-init="dbtech-ecommerce-product-pricing-manager" data-manage-url="{{ link_type($context, $linkPrefix . '/cost-row', $product) }}" data-product-type="dbtech_ecommerce_digital">
+	<xf:macro name="cost_row_list"
+			  arg-costs="{$product.Costs}" />
+
+	<h3 class="block-formSectionHeader">
+		<span class="block-formSectionHeader-aligner">
+			{{ phrase('dbtech_ecommerce_product_pricing_tier_options') }}
+		</span>
+	</h3>
+	<div class="block-body">
+		<xf:radiorow name="highlighted">
+			<xf:option value="0" selected="{$noHighlight}">
+				<xf:label>{{ phrase('dbtech_ecommerce_no_highlighted_option') }}</xf:label>
+				<xf:hint>{{ phrase('dbtech_ecommerce_no_highlighted_option_hint') }}</xf:hint>
+			</xf:option>
+		</xf:radiorow>
+
+		<xf:formrow rowtype="input"
+					explain="{{ phrase('dbtech_ecommerce_license_length_explain') }}">
+
+			<xf:button type="button" class="button--link js-addProductPricing" icon="add">
+				{{ phrase('dbtech_ecommerce_add_pricing_tier') }}
+			</xf:button>
+		</xf:formrow>
+	</div>
+</div>
+
+<xf:macro name="cost_row" arg-cost="!">
+	<div class="js-productCost" data-cost-id="{$cost.product_cost_id}">
+
+		<h3 class="block-formSectionHeader">
+			<span class="block-formSectionHeader-aligner">
+				{{ phrase('dbtech_ecommerce_product_pricing_tier') }}
+			</span>
+			<span class="contentRow-extra u-jsOnly">
+				<xf:button class="button--small js-pricingAction" data-action="delete">
+					{{ phrase('button.delete') }}
+				</xf:button>
+			</span>
+		</h3>
+		<div class="block-body">
+			<xf:formrow rowtype="input" label="{{ phrase('cost') }}">
+				<div class="inputGroup">
+					<xf:numberbox name="cost_amount[{$cost.product_cost_id}]" value="{$cost.cost_amount}" min="0" step="any" class="input--numberNarrow" />
+					<span class="inputGroup-text">{$xf.options.dbtechEcommerceCurrency}</span>
+				</div>
+			</xf:formrow>
+
+			<xf:radiorow name="renewal_type[{$cost.product_cost_id}]"
+						 label="{{ phrase('dbtech_ecommerce_renewal_cost') }}"
+						 value="{$cost.renewal_type}">
+				<xf:option value="global"
+						   label="{{ phrase('dbtech_ecommerce_renewal_cost_global') }}"
+						   hint="{{ phrase('dbtech_ecommerce_renewal_cost_global_hint') }}">
+				</xf:option>
+				<xf:option value="fixed"
+						   label="{{ phrase('dbtech_ecommerce_renewal_cost_fixed') }}"
+						   data-hide="true">
+					<xf:dependent>
+						<div class="inputGroup">
+							<xf:numberbox name="renewal_amount[{$cost.product_cost_id}]" value="{$cost.renewal_amount}" min="0" step="any" class="input--numberNarrow" />
+							<span class="inputGroup-text">{$xf.options.dbtechEcommerceCurrency}</span>
+						</div>
+					</xf:dependent>
+				</xf:option>
+				<xf:option value="percentage"
+						   label="{{ phrase('dbtech_ecommerce_renewal_cost_percentage') }}"
+						   data-hide="true">
+					<xf:dependent>
+						<div class="inputGroup">
+							<xf:numberbox name="renewal_amount[{{ mustache('product_cost_id') }}]" value="{{ mustache('renewal_amount') }}" min="0" step="any" class="input--numberNarrow" />
+							<span class="inputGroup-text">%</span>
+						</div>
+					</xf:dependent>
+				</xf:option>
+			</xf:radiorow>
+
+			<xf:radiorow name="length_type[{$cost.product_cost_id}]"
+						 label="{{ phrase('dbtech_ecommerce_license_duration') }}"
+						 explain="{{ phrase('dbtech_ecommerce_license_length_explain') }}">
+
+				<xf:option value="permanent" selected="$cost.length_unit == ''">{{ phrase('permanent') }}</xf:option>
+				<xf:option value="timed" selected="$cost.length_unit != ''" label="{{ phrase('for_length:') }}">
+					<xf:dependent>
+						<div class="inputGroup">
+							<xf:numberbox name="length_amount[{$cost.product_cost_id}]" value="{{ $cost.length_amount ?: 1 }}" min="1" max="365" class="input--numberNarrow" />
+							<span class="inputGroup-splitter"></span>
+							<xf:select name="length_unit[{$cost.product_cost_id}]" value="{{ ($cost.length_unit == 'permanent' OR !$cost.length_amount) ? 'month' : $cost.length_unit }}" class="input--autoSize">
+								<xf:option value="day">{{ phrase('days') }}</xf:option>
+								<xf:option value="month">{{ phrase('months') }}</xf:option>
+								<xf:option value="year">{{ phrase('years') }}</xf:option>
+							</xf:select>
+						</div>
+
+					</xf:dependent>
+				</xf:option>
+			</xf:radiorow>
+
+			<xf:textboxrow name="cost_description[{$cost.product_cost_id}]" value="{$cost.description}"
+						   maxlength="{{ max_length($cost, 'description') }}"
+						   label="{{ phrase('description') }}" />
+
+			<xf:radiorow name="highlighted">
+				<xf:option value="{$cost.product_cost_id}" selected="$cost.highlighted">
+					<xf:label>{{ phrase('dbtech_ecommerce_highlighted') }}</xf:label>
+					<xf:hint>{{ phrase('dbtech_ecommerce_highlighted_hint') }}</xf:hint>
+				</xf:option>
+			</xf:radiorow>
+		</div>
+	</div>
+</xf:macro>
+
+<xf:macro name="cost_row_list" arg-costs="{{ [] }}" arg-listClass="">
+	<xf:css src="dbtech_ecommerce_product_pricing.less" />
+	<xf:js src="DBTech/eCommerce/product_pricing.js" addon="DBTech/eCommerce" min="1" />
+
+	<div class="productCostList {$listClass} js-productCosts">
+		<xf:foreach loop="$costs" value="$cost">
+			<xf:macro name="cost_row" arg-cost="{$cost}" />
+		</xf:foreach>
+	</div>
+	<xf:macro name="cost_row_template" />
+</xf:macro>
+
+<xf:macro name="cost_row_template">
+	<script type="text/template" class="js-pricingTemplate">
+		<div class="js-productCost" data-cost-id="{{ mustache('product_cost_id') }}">
+			<h3 class="block-formSectionHeader">
+				<span class="block-formSectionHeader-aligner">
+					{{ phrase('dbtech_ecommerce_product_pricing_tier') }}
+				</span>
+				<span class="contentRow-extra u-jsOnly">
+					<xf:button class="button--small js-pricingAction" data-action="delete">
+						{{ phrase('button.delete') }}
+					</xf:button>
+				</span>
+			</h3>
+			<div class="block-body">
+				<xf:formrow rowtype="input" label="{{ phrase('cost') }}">
+					<div class="inputGroup">
+						<xf:numberbox name="cost_amount[{{ mustache('product_cost_id') }}]" value="{{ mustache('cost_amount') }}" min="0" step="any" class="input--numberNarrow" />
+						<span class="inputGroup-text">{$xf.options.dbtechEcommerceCurrency}</span>
+					</div>
+				</xf:formrow>
+
+				<xf:radiorow name="renewal_type[{{ mustache('product_cost_id') }}]"
+							 label="{{ phrase('dbtech_ecommerce_renewal_cost') }}"
+							 value="global">
+					<xf:option value="global"
+							   label="{{ phrase('dbtech_ecommerce_renewal_cost_global') }}"
+							   hint="{{ phrase('dbtech_ecommerce_renewal_cost_global_hint') }}">
+					</xf:option>
+					<xf:option value="fixed"
+							   label="{{ phrase('dbtech_ecommerce_renewal_cost_fixed') }}"
+							   data-hide="true">
+						<xf:dependent>
+							<div class="inputGroup">
+								<xf:numberbox name="renewal_amount[{{ mustache('product_cost_id') }}]" value="{{ mustache('renewal_amount') }}" min="0" step="any" class="input--numberNarrow" />
+								<span class="inputGroup-text">{$xf.options.dbtechEcommerceCurrency}</span>
+							</div>
+						</xf:dependent>
+					</xf:option>
+					<xf:option value="percentage"
+							   label="{{ phrase('dbtech_ecommerce_renewal_cost_percentage') }}"
+							   data-hide="true">
+						<xf:dependent>
+							<div class="inputGroup">
+								<xf:numberbox name="renewal_amount[{{ mustache('product_cost_id') }}]" value="{{ mustache('renewal_amount') }}" min="0" step="any" class="input--numberNarrow" />
+								<span class="inputGroup-text">%</span>
+							</div>
+						</xf:dependent>
+					</xf:option>
+				</xf:radiorow>
+
+				<xf:radiorow name="length_type[{{ mustache('product_cost_id') }}]"
+							 label="{{ phrase('dbtech_ecommerce_license_duration') }}"
+							 explain="{{ phrase('dbtech_ecommerce_license_length_explain') }}">
+
+					<xf:option value="permanent" selected="true">{{ phrase('permanent') }}</xf:option>
+					<xf:option value="timed" label="{{ phrase('for_length:') }}">
+						<xf:dependent>
+							<div class="inputGroup">
+								<xf:numberbox name="length_amount[{{ mustache('product_cost_id') }}]" value="1" min="1" max="365" class="input--numberNarrow" />
+								<span class="inputGroup-splitter"></span>
+								<xf:select name="length_unit[{{ mustache('product_cost_id') }}]" value="month" class="input--autoSize">
+									<xf:option value="day">{{ phrase('days') }}</xf:option>
+									<xf:option value="month">{{ phrase('months') }}</xf:option>
+									<xf:option value="year">{{ phrase('years') }}</xf:option>
+								</xf:select>
+							</div>
+
+						</xf:dependent>
+					</xf:option>
+				</xf:radiorow>
+
+				<xf:textboxrow name="cost_description[{{ mustache('product_cost_id') }}]"
+							   maxlength="255"
+							   label="{{ phrase('description') }}" />
+
+				<xf:radiorow name="highlighted">
+					<xf:option value="{{ mustache('product_cost_id') }}">
+						<xf:label>{{ phrase('dbtech_ecommerce_highlighted') }}</xf:label>
+						<xf:hint>{{ phrase('dbtech_ecommerce_highlighted_hint') }}</xf:hint>
+					</xf:option>
+				</xf:radiorow>
+			</div>
+		</div>
+	</script>
+</xf:macro>
