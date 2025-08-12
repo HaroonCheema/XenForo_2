@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="admin" title="fs_show_nav_icon_add_edit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>
+	<xf:if is="$data.id"> {{phrase('fs_nav_icon_edit') }} <xf:else /> {{ phrase('fs_nav_icon_add') }} </xf:if>
+</xf:title>
+<xf:form
+		 action="{{ link('nav-icon/save', $data) }}"
+		 ajax="true"
+		 class="block"
+		 data-force-flash-message="true"
+		 >
+	<div class="block-container">
+		<div class="block-body">
+			<xf:textboxrow
+						   name="fs_icon_url"
+						   value="{$data.fs_icon_url}"
+						   label="{{phrase('fs_nav_icon_url') }}"
+						   hint="{{phrase('required')}}"
+						   autosize="true"
+						   required="required"
+						   row="5"
+						   />
+
+			<xf:uploadrow name="image" accept=".jpeg,.jpg,.jpe,.png,.svg"
+						  label="{{ phrase('fs_nav_icon_image') }}" hint="{{$data.id ? '' : phrase('required')}}" required="{{$data.id ? '' : 'required'}}"
+						  explain="{{ phrase('fs_nav_icon_image_placeholder') }}" />
+
+			<xf:if is="{$data.getImgUrl()} && $data.id">
+
+				<hr class="formRowSep" />
+
+				<xf:formrow label="{{ phrase('fs_select_nav_icon_image') }}">
+					<img src="{{ base_url($data.getImgUrl()) }}" />
+				</xf:formrow>
+
+			</xf:if>
+
+			<hr class="formRowSep" />
+
+			<xf:checkboxrow>
+				<xf:option name="enabled" selected="{$data.enabled}">{{ phrase('enabled') }}</xf:option>
+			</xf:checkboxrow>
+		</div>
+		<xf:submitrow submit="" icon="save" />
+	</div>
+</xf:form>]]></template>
+  <template type="admin" title="fs_show_nav_icon_index" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:title>{{ phrase('fs_nav_icon_title') }}</xf:title>
+
+<xf:pageaction>
+	<xf:button href="{{ link('nav-icon/add') }}" icon="add">{{ phrase('fs_nav_icon_add_logo') }}</xf:button>
+</xf:pageaction>
+<xf:form action="{{ link('nav-icon/toggle') }}" class="block" ajax="true">
+	<div class="block-outer">
+		<xf:macro
+				  template="filter_macros"
+				  name="quick_filter"
+				  arg-key="nav-icon"
+				  arg-class="block-outer-opposite"
+				  />
+	</div>
+
+	<div class="block-container">
+
+		<xf:if is="$data is not empty">
+			<div class="block-body">
+				<xf:datalist data-xf-init="responsive-data-list">
+
+					<xf:macro
+							  name="table_list"
+							  arg-data="{$data}"
+							  />
+
+
+				</xf:datalist>
+				<div class="block-footer">
+					<span class="block-footer-counter"
+						  >{{ display_totals($totalReturn, $total) }}</span
+						>
+				</div>
+
+			</div>
+			<xf:else />
+			<div class="block-body block-row">{{ phrase('no_items_have_been_created_yet') }}</div>
+
+		</xf:if>
+
+	</div>
+
+
+	<xf:pagenav
+				page="{$page}"
+				perpage="{$perPage}"
+				total="{$total}"
+				link="nav-icon"
+				wrapperclass="block"
+				/>
+</xf:form>
+<xf:macro
+		  name="table_list"
+		  arg-data="!"
+		  >
+	<xf:datarow rowtype="header">
+		<xf:cell> {{ phrase('fs_nav_icon_url_list') }} </xf:cell>
+		<xf:cell> {{ phrase('fs_nav_icon_thumbnail') }} </xf:cell>
+		<xf:cell class="dataList-cell--min"></xf:cell>
+		<xf:cell class="dataList-cell--min"></xf:cell>
+		<xf:cell class="dataList-cell--min"></xf:cell>
+	</xf:datarow>
+	<xf:foreach loop="{$data}" value="$value">
+		<xf:datarow>
+
+			<xf:cell> {$value.fs_icon_url} </xf:cell>
+			<xf:cell href="{{$value.isImage() ? base_url($value.getImgUrl()) : '#'}}" target="_blank"> 
+				<img src="{{ base_url($value.getImgUrl()) }}" alt="image" width="100" height="100"/>
+			</xf:cell>
+			<xf:toggle name="enabled[{$value.id}]" selected="$value.enabled"
+					   class="dataList-cell--separated" submit="true"
+					   tooltip="" />
+			<xf:action href="{{ link('nav-icon/edit', $value) }}" >{{ phrase('edit') }}</xf:action>
+			<xf:delete
+					   href="{{ link('nav-icon/delete', $value) }}"
+					   overlay="true"
+					   />
+		</xf:datarow>
+	</xf:foreach>
+</xf:macro>]]></template>
+</templates>

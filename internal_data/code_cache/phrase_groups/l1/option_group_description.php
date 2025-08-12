@@ -77,6 +77,7 @@ You may set a user into \'discouraged\' mode by editing their user profile, or d
   'option_group_description.fs_rejected_user' => '',
   'option_group_description.fs_rm_change_view' => '',
   'option_group_description.fs_see_deleted_post' => '',
+  'option_group_description.fs_show_nav_icon' => '',
   'option_group_description.fs_subscription_features' => '',
   'option_group_description.fs_team_select' => '',
   'option_group_description.fs_thread_rules' => '',

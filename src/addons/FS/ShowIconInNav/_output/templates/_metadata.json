@@ -1,0 +1,12 @@
+{
+    "admin/fs_show_nav_icon_add_edit.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "e24e63b77ff4d9c22ac9f0e1dc0328c9"
+    },
+    "admin/fs_show_nav_icon_index.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "17518e28b66d2b5da13f5a133df8e9d5"
+    }
+}

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="PAGE_CONTAINER" modification_key="fs_show_nav_icons" description="fs_show_nav_icons" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<xf:foreach loop="\$navTree" key="\$navSection" value="\$navEntry" i="\$i" if="{{ \$navSection != \$xf\.app\.defaultNavigationId }}">.*?<\/xf:foreach>/is]]></find>
+    <replace><![CDATA[$0
+
+<xf:set var="$navIcons" value="{$xf.visitor.getNavIcons()}" />
+
+<xf:if is="$navIcons">
+	<li style="margin-left: {$xf.options.fs_show_nav_icon_space}px;"></li>
+	<xf:foreach loop="$navIcons" key="$key" value="$value">
+		<li>
+			<a href="{{$value.fs_icon_url}}" target="_blank" style="margin: 0px 7px;">
+				<img src="{{ base_url($value.getImgUrl()) }}" style="width: {$xf.options.fs_show_nav_icon_dimensions.width}px; height: {$xf.options.fs_show_nav_icon_dimensions.height}px;" alt="image" />
+			</a>
+		</li>
+	</xf:foreach>
+</xf:if>]]></replace>
+  </modification>
+</template_modifications>

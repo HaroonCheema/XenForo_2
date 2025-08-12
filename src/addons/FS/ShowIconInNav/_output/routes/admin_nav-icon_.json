@@ -1,0 +1,11 @@
+{
+    "route_type": "admin",
+    "route_prefix": "nav-icon",
+    "sub_name": "",
+    "format": ":int<id>/:page",
+    "build_class": "",
+    "build_method": "",
+    "controller": "FS\\ShowIconInNav:NavIcon",
+    "context": "fs_show_icon_in_nav_add",
+    "action_prefix": ""
+}

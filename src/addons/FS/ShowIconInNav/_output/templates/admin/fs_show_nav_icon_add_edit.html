@@ -1,0 +1,44 @@
+<xf:title>
+	<xf:if is="$data.id"> {{phrase('fs_nav_icon_edit') }} <xf:else /> {{ phrase('fs_nav_icon_add') }} </xf:if>
+</xf:title>
+<xf:form
+		 action="{{ link('nav-icon/save', $data) }}"
+		 ajax="true"
+		 class="block"
+		 data-force-flash-message="true"
+		 >
+	<div class="block-container">
+		<div class="block-body">
+			<xf:textboxrow
+						   name="fs_icon_url"
+						   value="{$data.fs_icon_url}"
+						   label="{{phrase('fs_nav_icon_url') }}"
+						   hint="{{phrase('required')}}"
+						   autosize="true"
+						   required="required"
+						   row="5"
+						   />
+
+			<xf:uploadrow name="image" accept=".jpeg,.jpg,.jpe,.png,.svg"
+						  label="{{ phrase('fs_nav_icon_image') }}" hint="{{$data.id ? '' : phrase('required')}}" required="{{$data.id ? '' : 'required'}}"
+						  explain="{{ phrase('fs_nav_icon_image_placeholder') }}" />
+
+			<xf:if is="{$data.getImgUrl()} && $data.id">
+
+				<hr class="formRowSep" />
+
+				<xf:formrow label="{{ phrase('fs_select_nav_icon_image') }}">
+					<img src="{{ base_url($data.getImgUrl()) }}" />
+				</xf:formrow>
+
+			</xf:if>
+
+			<hr class="formRowSep" />
+
+			<xf:checkboxrow>
+				<xf:option name="enabled" selected="{$data.enabled}">{{ phrase('enabled') }}</xf:option>
+			</xf:checkboxrow>
+		</div>
+		<xf:submitrow submit="" icon="save" />
+	</div>
+</xf:form>

@@ -1,0 +1,9 @@
+{
+    "template": "PAGE_CONTAINER",
+    "description": "fs_show_nav_icons",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/<xf:foreach loop=\"\\$navTree\" key=\"\\$navSection\" value=\"\\$navEntry\" i=\"\\$i\" if=\"{{ \\$navSection != \\$xf\\.app\\.defaultNavigationId }}\">.*?<\\/xf:foreach>/is",
+    "replace": "$0\n\n<xf:set var=\"$navIcons\" value=\"{$xf.visitor.getNavIcons()}\" />\n\n<xf:if is=\"$navIcons\">\n\t<li style=\"margin-left: {$xf.options.fs_show_nav_icon_space}px;\"></li>\n\t<xf:foreach loop=\"$navIcons\" key=\"$key\" value=\"$value\">\n\t\t<li>\n\t\t\t<a href=\"{{$value.fs_icon_url}}\" target=\"_blank\" style=\"margin: 0px 7px;\">\n\t\t\t\t<img src=\"{{ base_url($value.getImgUrl()) }}\" style=\"width: {$xf.options.fs_show_nav_icon_dimensions.width}px; height: {$xf.options.fs_show_nav_icon_dimensions.height}px;\" alt=\"image\" />\n\t\t\t</a>\n\t\t</li>\n\t</xf:foreach>\n</xf:if>"
+}

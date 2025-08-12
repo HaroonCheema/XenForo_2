@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<routes>
+  <route route_type="admin" route_prefix="nav-icon" format=":int&lt;id&gt;/:page" controller="FS\ShowIconInNav:NavIcon" context="fs_show_icon_in_nav_add"/>
+</routes>

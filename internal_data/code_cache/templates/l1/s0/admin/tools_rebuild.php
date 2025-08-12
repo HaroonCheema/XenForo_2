@@ -62,7 +62,6 @@ return array(
 	$__finalCompiled .= '
 
 ' . '
-' . $__templater->includeTemplate('avatar_gallery_tools_rebuild', $__vars) . '
 
 ';
 	$__compilerTemp1 = array(array(

@@ -75,6 +75,7 @@ return array (
   'option_group.fs_rejected_user' => '[FS] Approve Rejected User',
   'option_group.fs_rm_change_view' => '[FS] Resource Manager change view',
   'option_group.fs_see_deleted_post' => '[FS] See Deleted Posts',
+  'option_group.fs_show_nav_icon' => '[FS] Show Icons in Nav',
   'option_group.fs_subscription_features' => '[FS] Mountain Subscription Features',
   'option_group.fs_team_select' => '[FS] Select Your Teams',
   'option_group.fs_thread_rules' => '[FS] Threads Rules',

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="admin_navigation.fs_nav_icon_show" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Show Icon]]></phrase>
+  <phrase title="admin_navigation.fs_show_icon_in_nav_add" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add icon]]></phrase>
+  <phrase title="fs_nav_icon_add" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add icon]]></phrase>
+  <phrase title="fs_nav_icon_add_logo" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add icon]]></phrase>
+  <phrase title="fs_nav_icon_edit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Edit icon]]></phrase>
+  <phrase title="fs_nav_icon_image" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Icon]]></phrase>
+  <phrase title="fs_nav_icon_image_placeholder" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add icon from here.]]></phrase>
+  <phrase title="fs_nav_icon_thumbnail" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Icon]]></phrase>
+  <phrase title="fs_nav_icon_title" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] All icons]]></phrase>
+  <phrase title="fs_nav_icon_url" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Icon url]]></phrase>
+  <phrase title="fs_nav_icon_url_list" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Url]]></phrase>
+  <phrase title="fs_select_nav_icon_image" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Selected icon]]></phrase>
+  <phrase title="option.fs_show_nav_icon_dimensions" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Icon dimensions]]></phrase>
+  <phrase title="option.fs_show_nav_icon_space" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Space from tabs]]></phrase>
+  <phrase title="option_explain.fs_show_nav_icon_dimensions" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_explain.fs_show_nav_icon_space" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_group.fs_show_nav_icon" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Show Icons in Nav]]></phrase>
+  <phrase title="option_group_description.fs_show_nav_icon" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+</phrases>
