@@ -24,7 +24,7 @@ class Queue extends AbstractController
 
 	public function actionIndex()
 	{
-		$pendingAttachments = $this->finder('XF:Attachment')->order('attachment_id', 'DESC')
+		$pendingAttachments = $this->finder('XF:Attachment')->where('content_type', 'post')->order('attachment_id', 'DESC')
 			->where('attachment_state', 'pending');
 
 		$page = $this->filterPage();

@@ -1,0 +1,32 @@
+<xf:css src="fs_avatarGallery.less" />
+<xf:js src="FS/AvatarGallery/gallery_avatar.js?{{$xf.time}}"/>
+
+<xf:if is="$xf.options.fs_enable && !$xf.visitor.hasPermission('general', 'fs_cannot_use_avatar_glry') && count($gallery_images)">
+    <label>{{ phrase('fs_use_gallery_avatar') }}</label>
+    <div class="input xb_gallery_container">
+		<ul class="xb_avatar_list">
+			<li class="avatar-items">
+				<xf:foreach loop="$gallery_images" key="$category" value="$avatars">
+					<xf:if is="$avatars.permission != '2'">
+						<xf:if is="{$avatars.permission}">
+							<xf:foreach loop="$avatars.dirname" value="$avatar">
+								<div id="xb_avatar_select" data-xf-click="xb_avatar" data-avatar-data-path="{$avatar.data-path}">
+									<i class="fa fa-check"></i>
+									<img class="avatar avatar--s" src="{$avatar.url}" >
+								</div>
+							</xf:foreach>
+						</xf:if>
+						<xf:elseif is="$avatars.permission == '2'"/>
+						
+						<xf:foreach loop="$avatars.dirname" value="$avatar">
+							<div id="xb_avatar_select" data-xf-click="xb_avatar" data-avatar-data-path="{$avatar.data-path}">
+								<i class="fa fa-check"></i>
+								<img class="avatar avatar--s" src="{$avatar.url}" >
+							</div>
+						</xf:foreach>
+					</xf:if>
+				</xf:foreach>
+			<li><input id="xb_avatar_choice" type="hidden" name="gallery_avatar"/></li>
+		</ul>
+	</div>
+</xf:if>

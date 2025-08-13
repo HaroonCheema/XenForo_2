@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 0ca0b4e2a2dd6fd9dc9630b78c3ff2cc
+// FROM HASH: 42e34a00e1c88f3223ea43fd789120d0
 return array(
 'macros' => array('fs_attachment_form' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -236,18 +236,24 @@ return array(
 		if ($__templater->isTraversable($__vars['pendingAttachments'])) {
 			foreach ($__vars['pendingAttachments'] AS $__vars['attachment']) {
 				$__compilerTemp1 .= '
-					<div class="block">
-						<div class="block-container approvalQueue-item js-approvalQueue-item">
-							<div class="block-body">
-								' . $__templater->callMacro(null, 'fs_attachment_form', array(
-					'attachment' => $__vars['attachment'],
-					'redirect' => $__vars['redirect'],
-					'page' => $__vars['page'],
-				), $__vars) . '
+
+					';
+				if ($__vars['attachment']['Data']) {
+					$__compilerTemp1 .= '
+						<div class="block">
+							<div class="block-container approvalQueue-item js-approvalQueue-item">
+								<div class="block-body">
+									' . $__templater->callMacro(null, 'fs_attachment_form', array(
+						'attachment' => $__vars['attachment'],
+						'redirect' => $__vars['redirect'],
+						'page' => $__vars['page'],
+					), $__vars) . '
+								</div>
 							</div>
 						</div>
-					</div>
-
+					';
+				}
+				$__compilerTemp1 .= '
 
 				';
 			}

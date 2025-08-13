@@ -11,17 +11,19 @@
 		<xf:form class="block-container" action="{{ link('attachment-queue/save') }}" ajax="true" class="js-stickyParent approvalQueue">
 
 			<div class="blocks">
-				<xf:foreach loop="$pendingAttachments" value="$attachment">
-					<div class="block">
-						<div class="block-container approvalQueue-item js-approvalQueue-item">
-							<div class="block-body">
-								<xf:macro name="fs_attachment_form" arg-attachment="{$attachment}"
-										  arg-redirect="{$redirect}"
-										  arg-page="{$page}" />
+				<xf:foreach loop="$pendingAttachments" value="$attachment" >
+
+					<xf:if is="$attachment.Data">
+						<div class="block">
+							<div class="block-container approvalQueue-item js-approvalQueue-item">
+								<div class="block-body">
+									<xf:macro name="fs_attachment_form" arg-attachment="{$attachment}"
+											  arg-redirect="{$redirect}"
+											  arg-page="{$page}" />
+								</div>
 							</div>
 						</div>
-					</div>
-
+					</xf:if>
 
 				</xf:foreach>
 

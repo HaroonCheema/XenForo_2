@@ -36,6 +36,17 @@ class Attachment extends XFCP_Attachment
 
     protected function _postSave()
     {
+        if ($this->isInsert()) {
+            /** @var AttachmentData $data */
+            $data = $this->Data;
+            if ($data) {
+                if ($data->User->is_admin || $data->User->is_moderator || $this->content_type != 'post') {
+                    // $this->attachment_state = 'approve';
+                    $this->fastUpdate('attachment_state', "approve");
+                }
+            }
+        }
+
         if ($this->content_type == 'post') {
             \XF::repository("FS\AttachmentsQueue:AttachmentQueueRepo")->rebuildPendingAttachmentCounts();
         }

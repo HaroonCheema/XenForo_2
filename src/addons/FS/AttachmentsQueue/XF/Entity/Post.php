@@ -8,7 +8,7 @@ class Post extends XFCP_Post
 {
     public function getAwaitingApproval()
     {
-        $isAnyInModerator = \XF::finder('XF:Attachment')->where('content_type', 'post')->where('content_id', $this->post_id)->total();
+        $isAnyInModerator = \XF::finder('XF:Attachment')->where('content_type', 'post')->where('content_id', $this->post_id)->where('attachment_state', 'pending')->total();
 
         $visitor = \XF::visitor();
 
@@ -16,6 +16,6 @@ class Post extends XFCP_Post
             return true;
         }
 
-        return ;
+        return false;
     }
 }

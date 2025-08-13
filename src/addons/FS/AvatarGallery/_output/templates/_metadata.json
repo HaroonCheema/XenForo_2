@@ -4,6 +4,11 @@
         "version_string": "1.0.0 Alpha",
         "hash": "f38f7355131ce0c3f0ddd1181d9eee99"
     },
+    "public/fs_avatarGallery.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "704e47dd3097bbfe1169f82b564da8e0"
+    },
     "public/fs_avatar_gallery_macro.html": {
         "version_id": 1010500,
         "version_string": "1.1.5 Alpha",
