@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="option.fs_plisio_gateway_site_url" version_id="1000070" version_string="1.0.0"><![CDATA[Proxy site URL]]></phrase>
+  <phrase title="option_explain.fs_plisio_gateway_site_url" version_id="1000070" version_string="1.0.0"><![CDATA[Enter the proxy site URL, or leave it blank for direct payment]]></phrase>
+  <phrase title="option_group.fs_plisio_payment_gateway" version_id="1000070" version_string="1.0.0"><![CDATA[Plisio Payment Gateway]]></phrase>
+  <phrase title="option_group_description.fs_plisio_payment_gateway" version_id="1000070" version_string="1.0.0"><![CDATA[]]></phrase>
+  <phrase title="plisio_secret_key" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Secret key]]></phrase>
+  <phrase title="plisio_title" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Plisio Payment Gateway]]></phrase>
+</phrases>

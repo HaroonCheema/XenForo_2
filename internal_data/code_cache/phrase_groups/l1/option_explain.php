@@ -513,6 +513,7 @@ This option requires that the specified account is a catch-all account or suppor
   'option_explain.fs_mts_customMsgbackGroundColor' => 'Enter the colour name or colour code for custom message Background',
   'option_explain.fs_phoneNumberFieldId' => 'Enter the id of Phone Number input field that is created in the form (Advance form) Enter multi Ids separated by comma',
   'option_explain.fs_pkg_rat_applicable_userGroups' => 'Enter the Applicable User Upgrade Ids Comma separated like 1,2,3,4.',
+  'option_explain.fs_plisio_gateway_site_url' => 'Enter the proxy site URL, or leave it blank for direct payment',
   'option_explain.fs_post_reply_points' => 'You can adjust post reply points from here...!',
   'option_explain.fs_production_btn_forums' => '',
   'option_explain.fs_qa_routeFilterId' => 'Enter the ID of RouteFilter which you yave create for QuestionsAnswers forum',

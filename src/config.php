@@ -19,5 +19,7 @@ $config['enableLivePayments'] = false;
 
 $config['debug'] = true;
 
-$config['development']['defaultAddOn'] = 'FS/ShowIconInNav';
+// $config['development']['defaultAddOn'] = 'FS/ShowIconInNav';
+$config['development']['defaultAddOn'] = 'Plisio';
+
 $config['development']['enabled'] = true;

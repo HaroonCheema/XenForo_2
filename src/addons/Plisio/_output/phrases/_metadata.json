@@ -1,0 +1,26 @@
+{
+    "option.fs_plisio_gateway_site_url.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "35fc6c9e2001f83408f97917e2a6ba81"
+    },
+    "option_explain.fs_plisio_gateway_site_url.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "1e6c5e6cfd85217e20e55d7726c7a571"
+    },
+    "option_group.fs_plisio_payment_gateway.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "fad288eea110525295f8dfc7ca470191"
+    },
+    "option_group_description.fs_plisio_payment_gateway.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    }
+}
