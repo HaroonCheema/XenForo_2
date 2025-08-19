@@ -28,7 +28,18 @@ return array(
 		<tr>
 			<td class="content" align="' . ($__vars['xf']['isRtl'] ? 'right' : 'left') . '" valign="top">
 
+';
+	$__vars['samAds'] = $__templater->func('sam_mail_ads', array($__vars['xf']['toUser'], ), false);
+	$__finalCompiled .= '
+' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+		'ads' => $__templater->func('sam_mail_position_ads', array($__vars['samAds'], 'mail_above_content', ), false),
+		'position' => 'mail_above_content',
+	), $__vars) . '
 ' . $__templater->filter($__vars['html'], array(array('raw', array()),), true) . '
+' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+		'ads' => $__templater->func('sam_mail_position_ads', array($__vars['samAds'], 'mail_below_content', ), false),
+		'position' => 'mail_below_content',
+	), $__vars) . '
 
 			</td>
 		</tr>

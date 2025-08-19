@@ -43,6 +43,24 @@ return array(
 					'alert' => $__vars['alert'],
 				), $__vars) . '
 					</li>
+';
+				$__vars['samCounter'] = $__templater->func('number', array($__vars['samCounter'] + 1, ), false);
+				$__finalCompiled .= '
+';
+				$__compilerTemp1 = '';
+				$__compilerTemp1 .= '
+			' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+					'position' => 'account_alerts_below_item_container_' . $__vars['samCounter'],
+				), $__vars) . '
+		';
+				if (strlen(trim($__compilerTemp1)) > 0) {
+					$__finalCompiled .= '
+	<li class="block-row block-row--separated samUnitWrapper">
+		' . $__compilerTemp1 . '
+	</li>
+';
+				}
+				$__finalCompiled .= '
 				';
 			}
 		}

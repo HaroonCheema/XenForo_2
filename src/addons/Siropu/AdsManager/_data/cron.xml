@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cron>
+  <entry entry_id="samDailyCleanUp" cron_class="Siropu\AdsManager\Cron\Ad" cron_method="runDailyCleanUp" active="1"><![CDATA[{"day_type":"dom","dom":[-1],"hours":[1],"minutes":[35]}]]></entry>
+  <entry entry_id="samDailyImpressionDistrib" cron_class="Siropu\AdsManager\Cron\Ad" cron_method="dailyImpressionDistribution" active="1"><![CDATA[{"day_type":"dom","dom":[-1],"hours":[0],"minutes":[-1]}]]></entry>
+  <entry entry_id="samDisableExpiredAds" cron_class="Siropu\AdsManager\Cron\Ad" cron_method="disableExpiredAds" active="1"><![CDATA[{"day_type":"dom","dom":[-1],"hours":[-1],"minutes":[3,33]}]]></entry>
+  <entry entry_id="samDisableLowCtrAds" cron_class="Siropu\AdsManager\Cron\Ad" cron_method="disableLowCtrAds" active="1"><![CDATA[{"day_type":"dom","dom":[-1],"hours":[0],"minutes":[0]}]]></entry>
+  <entry entry_id="samEnableAds" cron_class="Siropu\AdsManager\Cron\Ad" cron_method="enableAds" active="1"><![CDATA[{"day_type":"dom","dom":[-1],"hours":[-1],"minutes":[6,36]}]]></entry>
+  <entry entry_id="samExpiredInvoice" cron_class="Siropu\AdsManager\Cron\Invoice" cron_method="processExpiredInvoices" active="1"><![CDATA[{"day_type":"dom","dom":[-1],"hours":[-1],"minutes":[0,30]}]]></entry>
+  <entry entry_id="samProcessQueue" cron_class="Siropu\AdsManager\Cron\Ad" cron_method="processQueue" active="1"><![CDATA[{"day_type":"dom","dom":[-1],"hours":[-1],"minutes":[0,15,30,45]}]]></entry>
+  <entry entry_id="samSendExpiryNotification" cron_class="Siropu\AdsManager\Cron\Ad" cron_method="sendExpiryNotification" active="1"><![CDATA[{"day_type":"dom","dom":[-1],"hours":[0,6,12,18],"minutes":[-1]}]]></entry>
+  <entry entry_id="samWidgetsRebuild" cron_class="Siropu\AdsManager\Cron\Ad" cron_method="rebuildWidgetsCache" active="1"><![CDATA[{"day_type":"dom","dom":[-1],"hours":[0,6,12,18],"minutes":[-1]}]]></entry>
+</cron>

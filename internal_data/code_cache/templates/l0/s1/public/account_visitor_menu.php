@@ -168,8 +168,29 @@ return array(
 		';
 	}
 	$__compilerTemp7 = '';
-	if ($__templater->method($__vars['xf']['visitor'], 'canPostOnProfile', array())) {
+	if ($__vars['xf']['options']['siropuAdsManagerEnabled'] AND ($__vars['xf']['options']['siropuAdsManagerMenuLink'] AND $__templater->method($__vars['xf']['visitor'], 'hasPermission', array('siropuAdsManager', 'createAds', )))) {
 		$__compilerTemp7 .= '
+	<li><a href="' . $__templater->func('link', array('ads-manager', ), true) . '" class="menu-linkRow">' . 'Ads Manager' . '</a></li>
+';
+	}
+	$__compilerTemp8 = '';
+	$__compilerTemp9 = '';
+	$__compilerTemp9 .= '
+			' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+		'position' => 'visitor_menu',
+	), $__vars) . '
+		';
+	if (strlen(trim($__compilerTemp9)) > 0) {
+		$__compilerTemp8 .= '
+	<hr class="menu-separator" />
+	<div class="menu-row">
+		' . $__compilerTemp9 . '
+	</div>
+';
+	}
+	$__compilerTemp10 = '';
+	if ($__templater->method($__vars['xf']['visitor'], 'canPostOnProfile', array())) {
+		$__compilerTemp10 .= '
 		' . $__templater->form('
 
 			<span class="u-srOnly" id="ctrl_message">' . 'Update your status' . $__vars['xf']['language']['label_separator'] . '</span>
@@ -241,6 +262,7 @@ return array(
 		<li><a href="' . $__templater->func('link', array('car-details', ), true) . '" class="menu-linkRow">' . 'Car details' . '</a></li>
 
 ' . '
+' . $__compilerTemp7 . '
 <li><a href="' . $__templater->func('link', array('sec-qu', ), true) . '" class="menu-linkRow">' . 'Security Questions' . '</a></li>
 	</ul>
 
@@ -249,7 +271,8 @@ return array(
 
 	<a href="' . $__templater->func('link', array('logout', null, array('t' => $__templater->func('csrf_token', array(), false), ), ), true) . '" class="menu-linkRow">' . 'Log out' . '</a>
 
-	' . $__compilerTemp7 . '
+	' . $__compilerTemp8 . '
+' . $__compilerTemp10 . '
 ');
 	$__finalCompiled .= '
 

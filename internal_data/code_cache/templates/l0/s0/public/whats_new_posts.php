@@ -228,6 +228,25 @@ return array(
 				' . $__templater->callMacro('thread_list_macros', 'item', array(
 					'thread' => $__vars['thread'],
 				), $__vars) . '
+';
+				$__vars['samCounter'] = $__templater->func('number', array($__vars['samCounter'] + 1, ), false);
+				$__finalCompiled .= '
+';
+				$__compilerTemp1 = '';
+				$__compilerTemp1 .= '
+			' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+					'position' => 'whats_new_posts_below_item_container_' . $__vars['samCounter'],
+				), $__vars) . '
+		';
+				if (strlen(trim($__compilerTemp1)) > 0) {
+					$__finalCompiled .= '
+	<div class="structItem structItem--thread samUnitWrapper">
+		' . $__compilerTemp1 . '
+	</div>
+';
+				}
+				$__finalCompiled .= '
+				
 			';
 			}
 		}

@@ -188,9 +188,43 @@ return array(
 		if ($__templater->isTraversable($__vars['userConvs'])) {
 			foreach ($__vars['userConvs'] AS $__vars['userConv']) {
 				$__finalCompiled .= '
-						' . $__templater->callMacro('conversation_list_macros', 'item', array(
+						';
+				$__vars['samCounter'] = $__templater->func('number', array($__vars['samCounter'] + 1, ), false);
+				$__finalCompiled .= '
+
+';
+				$__compilerTemp2 = '';
+				$__compilerTemp2 .= '
+			' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+					'position' => 'conv_list_above_item_container_' . $__vars['samCounter'],
+				), $__vars) . '
+		';
+				if (strlen(trim($__compilerTemp2)) > 0) {
+					$__finalCompiled .= '
+	<div class="structItem structItem--thread samUnitWrapper">
+		' . $__compilerTemp2 . '
+	</div>
+';
+				}
+				$__finalCompiled .= '
+' . $__templater->callMacro('conversation_list_macros', 'item', array(
 					'userConv' => $__vars['userConv'],
 				), $__vars) . '
+';
+				$__compilerTemp3 = '';
+				$__compilerTemp3 .= '
+			' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+					'position' => 'conv_list_below_item_container_' . $__vars['samCounter'],
+				), $__vars) . '
+		';
+				if (strlen(trim($__compilerTemp3)) > 0) {
+					$__finalCompiled .= '
+	<div class="structItem structItem--thread samUnitWrapper">
+		' . $__compilerTemp3 . '
+	</div>
+';
+				}
+				$__finalCompiled .= '
 					';
 			}
 		}

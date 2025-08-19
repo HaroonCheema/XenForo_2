@@ -64,7 +64,16 @@ return array(
 							data-lb-caption-desc="' . $__templater->func('date_time', array($__vars['message']['message_date'], ), true) . '">
 
 							<article class="message-body js-selectToQuote">
-								' . $__templater->func('bb_code', array($__vars['message']['message'], 'conversation_message', $__vars['message'], ), true) . '
+								';
+	$__vars['samCounter'] = $__templater->func('sam_counter', array(), false);
+	$__finalCompiled .= '
+' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+		'position' => 'message_above_content_' . $__vars['samCounter'],
+	), $__vars) . '
+' . $__templater->filter($__templater->func('bb_code', array($__vars['message']['message'], 'conversation_message', $__vars['message'], ), false), array(array('sam_keyword_ads', array('conversation', $__vars['xf']['samFilterAds'], $__vars['message'], $__vars['message']['User'] AND $__templater->method($__vars['message']['User'], 'isMemberOf', array($__vars['xf']['options']['siropuAdsManagerUserGroupPostExceptions'], )), $__vars['conversation']['reply_count'] + 1, )),), true) . '
+' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+		'position' => 'message_below_content_' . $__vars['samCounter'],
+	), $__vars) . '
 								<div class="js-selectToQuoteEnd">&nbsp;</div>
 							</article>
 
@@ -81,8 +90,14 @@ return array(
 	$__finalCompiled .= '
 						</div>
 
-						' . $__templater->callMacro('message_macros', 'signature', array(
+						' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+		'position' => 'message_above_signature_' . $__templater->func('sam_counter', array('message_above_signature', ), false),
+	), $__vars) . '
+' . $__templater->callMacro('message_macros', 'signature', array(
 		'user' => $__vars['message']['User'],
+	), $__vars) . '
+' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+		'position' => 'message_below_signature_' . $__templater->func('sam_counter', array('message_below_signature', ), false),
 	), $__vars) . '
 					</div>
 

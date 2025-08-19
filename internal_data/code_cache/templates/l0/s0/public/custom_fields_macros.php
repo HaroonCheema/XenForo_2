@@ -155,7 +155,7 @@ return array(
 		';
 		} else {
 			$__finalCompiled .= '
-			' . $__templater->filter($__templater->method($__vars['definition'], 'getFormattedValue', array($__vars['value'], )), array(array('raw', array()),), true) . '
+			' . ($__templater->func('contains', array($__vars['xf']['reply']['template'], 'thread_view_', ), false) ? $__templater->filter($__templater->method($__vars['definition'], 'getFormattedValue', array($__vars['value'], )), array(array('raw', array()),array('sam_keyword_ads', array('thread', $__vars['xf']['samFilterAds'], null, false, 0, true, )),), true) : $__templater->filter($__templater->method($__vars['definition'], 'getFormattedValue', array($__vars['value'], )), array(array('raw', array()),), true)) . '
 		';
 		}
 		$__finalCompiled .= '

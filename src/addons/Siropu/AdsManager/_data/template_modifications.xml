@@ -1,0 +1,867 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="AMP_CONTAINER" modification_key="siropu_ads_manager_amp_container" description="Add the ad macros template in all default ad positions." execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[@<xf:ad position="([\w]+)" />@]]></find>
+    <replace><![CDATA[<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="$1" />
+$0]]></replace>
+  </modification>
+  <modification type="email" template="MAIL_CONTAINER" modification_key="siropu_ads_manager_mail_container" description="Add the ad macros template above and below the mail content." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[{$html|raw}]]></find>
+    <replace><![CDATA[<xf:set var="$samAds" value="{{ sam_mail_ads($xf.toUser) }}" />
+<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-ads="{{ sam_mail_position_ads($samAds, 'mail_above_content') }}" arg-position="mail_above_content" />
+$0
+<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-ads="{{ sam_mail_position_ads($samAds, 'mail_below_content') }}" arg-position="mail_below_content" />]]></replace>
+  </modification>
+  <modification type="public" template="PAGE_CONTAINER" modification_key="siropu_ads_manager_footer" description="Add the ad macros template in the footer." execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<footer.*?>/]]></find>
+    <replace><![CDATA[$0
+<xf:if contentcheck="true">
+	<div class="p-footer-inner">
+		<xf:contentcheck>
+			<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="footer" />
+		</xf:contentcheck>
+	</div>
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="PAGE_CONTAINER" modification_key="siropu_ads_manager_footer_below" description="Add the ad macros template below the footer." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[</footer>]]></find>
+    <replace><![CDATA[$0
+<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="footer_below" />]]></replace>
+  </modification>
+  <modification type="public" template="PAGE_CONTAINER" modification_key="siropu_ads_manager_page_container" description="Add the ad macros template in all default ad positions." execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[@<xf:ad position="([\w]+)" />@]]></find>
+    <replace><![CDATA[<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="$1" />
+$0]]></replace>
+  </modification>
+  <modification type="public" template="PAGE_CONTAINER" modification_key="siropu_ads_manager_page_container_after_body" description="Add the ad macros template after the open &lt;body&gt; tag." execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[#(<body.*?>)#]]></find>
+    <replace><![CDATA[$1
+<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="no_wrapper_after_body" arg-wrapper="{{ false }}" />
+<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="header_above" />]]></replace>
+  </modification>
+  <modification type="public" template="PAGE_CONTAINER" modification_key="siropu_ads_manager_page_container_before_body" description="Add the ad macros template before the closing &lt;body&gt; tag." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[</body>]]></find>
+    <replace><![CDATA[<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="no_wrapper_before_body" arg-wrapper="{{ false }}" />
+$0]]></replace>
+  </modification>
+  <modification type="public" template="PAGE_CONTAINER" modification_key="siropu_ads_manager_page_container_footer_fixed" description="Add the ad macros template for &quot;footer fixed&quot; position." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[</body>]]></find>
+    <replace><![CDATA[<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="footer_fixed" />
+$0]]></replace>
+  </modification>
+  <modification type="public" template="PAGE_CONTAINER" modification_key="siropu_ads_manager_page_container_head" description="Add the ad macros template between the &lt;head&gt; tag." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[</head>]]></find>
+    <replace><![CDATA[<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="no_wrapper_head" arg-wrapper="{{ false }}" />
+<xf:if is="$xf.samLoadJsCarousel">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.4.5/css/swiper.min.css">
+</xf:if>
+$0]]></replace>
+  </modification>
+  <modification type="public" template="PAGE_CONTAINER" modification_key="siropu_ads_manager_page_container_page_info" description="Display page information." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<!--XF:EXTRA_OUTPUT-->]]></find>
+    <replace><![CDATA[$0
+<xf:if is="$xf.options.siropuAdsManagerPageInfo AND $xf.visitor.is_admin">
+	<div class="block" style="text-align: center;">
+		<div class="block-container">
+			<h3 class="block-header"><i class="fas fa-info-circle"></i> {{ phrase('siropu_ads_manager_page_info') }}</h3>
+			<div class="block-body block-row">
+				<b>{{ phrase('siropu_ads_manager_controller_class:') }}</b> {{ $xf.reply.controller ?: phrase('n_a') }}<br />
+				<b>{{ phrase('siropu_ads_manager_controller_method:') }}</b> {{ $xf.reply.action ?: phrase('n_a') }}<br />
+				<b>{{ phrase('siropu_ads_manager_view_class:') }}</b> {{ $xf.reply.view ?: phrase('n_a') }}<br />
+				<b>{{ phrase('siropu_ads_manager_content_template:') }}</b> {{ $xf.reply.template ?: phrase('n_a') }}
+			</div>
+		</div>
+	</div>
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="PAGE_CONTAINER" modification_key="siropu_ads_manager_page_container_search_menu" description="Add the ad macros template in search menu." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<div class="menu-footer">]]></find>
+    <replace><![CDATA[<xf:if contentcheck="true">
+	<div class="menu-row">
+		<xf:contentcheck>
+			<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="search_menu" />
+		</xf:contentcheck>
+	</div>
+</xf:if>
+$0]]></replace>
+  </modification>
+  <modification type="public" template="account_alerts" modification_key="siropu_ads_manager_account_alerts" description="Add the ad macros template below alert item container." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[</li>]]></find>
+    <replace><![CDATA[$0
+<xf:set var="$samCounter" value="{{ number($samCounter + 1) }}" />
+<xf:if contentcheck="true">
+	<li class="block-row block-row--separated samUnitWrapper">
+		<xf:contentcheck>
+			<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="account_alerts_below_item_container_{$samCounter}" />
+		</xf:contentcheck>
+	</li>
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="account_preferences" modification_key="siropu_ads_manager_account_preferences" description="Add custom user options." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:macro template="custom_fields_macros" name="custom_fields_edit" arg-type="users" arg-group="preferences" arg-set="{$xf.visitor.Profile.custom_fields}" />]]></find>
+    <replace><![CDATA[$0
+<xf:if is="$xf.visitor.canOptInViewAdsSiropuAdsManager()">
+	<xf:checkboxrow label="{{ phrase('siropu_ads_manager_ads_options') }}">
+		<xf:option name="siropu_ads_manager_view_ads"
+				   checked="{$xf.visitor.Option.siropu_ads_manager_view_ads}"
+				   label="{{ phrase('siropu_ads_manager_view_ads') }}"
+				   hint="{{ phrase('siropu_ads_manager_view_ads_explain') }}" />
+	</xf:checkboxrow>
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="account_visitor_menu" modification_key="siropu_ads_manager_account_visitor_menu" description="Add the ad macros template in visitor menu." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:if is="$xf.visitor.canPostOnProfile()">]]></find>
+    <replace><![CDATA[<xf:if contentcheck="true">
+	<hr class="menu-separator" />
+	<div class="menu-row">
+		<xf:contentcheck>
+			<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="visitor_menu" />
+		</xf:contentcheck>
+	</div>
+</xf:if>
+$0]]></replace>
+  </modification>
+  <modification type="public" template="account_visitor_menu" modification_key="siropu_ads_manager_account_visitor_menu_link" description="Add the link to the advertiser section." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<!--[XF:account_links:bottom]-->]]></find>
+    <replace><![CDATA[$0
+<xf:if is="$xf.options.siropuAdsManagerEnabled AND $xf.options.siropuAdsManagerMenuLink AND $xf.visitor.hasPermission('siropuAdsManager', 'createAds')">
+	<li><a href="{{ link('ads-manager') }}" class="menu-linkRow">{{ phrase('nav.siropuAdsManager') }}</a></li>
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="account_wrapper" modification_key="siropu_ads_manager_account_wrapper" description="Add the navigation menu." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<h3 class="block-minorHeader">{{ phrase('settings') }}</h3>]]></find>
+    <replace><![CDATA[<xf:if is="$xf.options.siropuAdsManagerEnabled AND $xf.options.siropuAdsManagerAccountSection AND $xf.visitor.hasPermission('siropuAdsManager', 'createAds')">
+	<h3 class="block-minorHeader">{{ phrase('siropu_ads_manager') }}</h3>
+	<xf:macro template="siropu_ads_manager_wrapper" name="sidenav" arg-pageSelected="{$pageSelected}" />
+</xf:if>
+$0]]></replace>
+  </modification>
+  <modification type="public" template="bb_code_tag_attach" modification_key="siropu_ads_manager_bb_code_tag_attach" description="Add the ad macros template above and below BB Code attachments." execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/(.+)/s]]></find>
+    <replace><![CDATA[<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="above_bb_code_attachment" />
+$1
+<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="below_bb_code_attachment" />]]></replace>
+  </modification>
+  <modification type="public" template="bb_code_tag_attach" modification_key="siropu_ads_manager_bb_code_tag_attach_video" description="Add the ad macros template above BB Code video attachment." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<div class="bbMediaWrapper-inner">]]></find>
+    <replace><![CDATA[$0
+<xf:if contentcheck="true">
+	<div class="samVideoOverlay"></div>
+	<xf:contentcheck>
+		<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="over_bb_code_video_attachment" />
+	</xf:contentcheck>
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="conversation_list" modification_key="siropu_ads_manager_conversation_list" description="Add the ad macros template above and below thread container." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:macro template="conversation_list_macros" name="item" arg-userConv="{$userConv}" />]]></find>
+    <replace><![CDATA[<xf:set var="$samCounter" value="{{ number($samCounter + 1) }}" />
+
+<xf:if contentcheck="true">
+	<div class="structItem structItem--thread samUnitWrapper">
+		<xf:contentcheck>
+			<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="conv_list_above_item_container_{$samCounter}" />
+		</xf:contentcheck>
+	</div>
+</xf:if>
+$0
+<xf:if contentcheck="true">
+	<div class="structItem structItem--thread samUnitWrapper">
+		<xf:contentcheck>
+			<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="conv_list_below_item_container_{$samCounter}" />
+		</xf:contentcheck>
+	</div>
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="conversation_message_macros" modification_key="siropu_ads_manager_conversation_message_macros" description="Add template filter." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[bb_code($message.message, 'conversation_message', $message)]]></find>
+    <replace><![CDATA[$0|sam_keyword_ads('conversation', $xf.samFilterAds, $message, ($message.User AND $message.User.isMemberOf($xf.options.siropuAdsManagerUserGroupPostExceptions)), $conversation.reply_count + 1)]]></replace>
+  </modification>
+  <modification type="public" template="conversation_message_macros" modification_key="siropu_ads_manager_conversation_message_macros_con" description="Add the ad macros template above and below the message content." execution_order="0" enabled="1" action="str_replace">
+    <find><![CDATA[{{ bb_code($message.message, 'conversation_message', $message) }}]]></find>
+    <replace><![CDATA[<xf:set var="$samCounter" value="{{ sam_counter() }}" />
+<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="message_above_content_{$samCounter}" />
+$0
+<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="message_below_content_{$samCounter}" />]]></replace>
+  </modification>
+  <modification type="public" template="conversation_message_macros" modification_key="siropu_ads_manager_conversation_message_macros_s" description="Add the ad macros template above and below the signature." execution_order="0" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:macro template="message_macros" name="signature" arg-user="{$message.User}" />]]></find>
+    <replace><![CDATA[<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="message_above_signature_{{ sam_counter('message_above_signature') }}" />
+$0
+<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="message_below_signature_{{ sam_counter('message_below_signature') }}" />]]></replace>
+  </modification>
+  <modification type="public" template="conversation_view" modification_key="siropu_ads_manager_conversation_view_below" description="Add the ad macros template above and below message container." execution_order="20" enabled="1" action="preg_replace">
+    <find><![CDATA[#(<xf:foreach loop="\$messages" value="\$message">)(.*)(</xf:foreach>)#sU]]></find>
+    <replace><![CDATA[$1
+<xf:set var="$samCounter" value="{{ number($samCounter + 1) }}" />
+<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="message_above_container_{$samCounter}" />
+$2
+<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="message_below_container_{$samCounter}" />
+$3]]></replace>
+  </modification>
+  <modification type="public" template="custom_fields_macros" modification_key="siropu_ads_manager_custom_fields_macros" description="Add template filter." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[$definition.getFormattedValue($value)|raw]]></find>
+    <replace><![CDATA[{ contains($xf.reply.template, 'thread_view_') ? $0|sam_keyword_ads('thread', $xf.samFilterAds, null, false, 0, true) : $0 }]]></replace>
+  </modification>
+  <modification type="public" template="dbtech_ecommerce_product_specifications" modification_key="siropu_ads_manager_dbtech_ecommerce_product_specif" description="Add template filter." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[bb_code($product.product_specification, 'dbtech_ecommerce_product_specifications', $product)]]></find>
+    <replace><![CDATA[$0|sam_keyword_ads('dbtech_product_spec', $xf.samFilterAds, $product, ($product.User AND $product.User.isMemberOf($xf.options.siropuAdsManagerUserGroupPostExceptions)))]]></replace>
+  </modification>
+  <modification type="public" template="dbtech_ecommerce_product_view" modification_key="siropu_ads_manager_dbtech_ecommerce_product_view" description="Add template filter." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[bb_code($product.description_full, 'dbtech_ecommerce_description_full', $product)]]></find>
+    <replace><![CDATA[$0|sam_keyword_ads('dbtech_product_desc', $xf.samFilterAds, $product, ($product.User AND $product.User.isMemberOf($xf.options.siropuAdsManagerUserGroupPostExceptions)))]]></replace>
+  </modification>
+  <modification type="public" template="forum_overview_wrapper" modification_key="siropu_ads_manager_forum_overview_wrapper" description="Add the ad macros template in all default ad positions." execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[@<xf:ad position="([\w]+)" />@]]></find>
+    <replace><![CDATA[<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="$1" />
+$0]]></replace>
+  </modification>
+  <modification type="public" template="forum_view" modification_key="siropu_ads_manager_forum_view" description="Add the ad macros template above and below thread container." execution_order="20" enabled="1" action="preg_replace">
+    <find><![CDATA[#(<xf:foreach loop="\$threads" value="\$thread">)(.*?)(</xf:foreach>)#sU]]></find>
+    <replace><![CDATA[$1
+<xf:set var="$samCounter" value="{{ number($samCounter + 1) }}" />
+
+<xf:if contentcheck="true">
+	<div class="structItem structItem--thread samUnitWrapper">
+		<xf:contentcheck>
+			<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="thread_list_above_item_container_{$samCounter}" />
+		</xf:contentcheck>
+	</div>
+</xf:if>
+$2
+<xf:if contentcheck="true">
+	<div class="structItem structItem--thread samUnitWrapper">
+		<xf:contentcheck>
+			<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="thread_list_below_item_container_{$samCounter}" />
+		</xf:contentcheck>
+	</div>
+</xf:if>
+$3]]></replace>
+  </modification>
+  <modification type="public" template="forum_view" modification_key="siropu_ads_manager_forum_view_pos" description="Add the ad macros template in all default ad positions." execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[#<xf:ad position="([\w]+)" arg-forum="{\$forum}" />#]]></find>
+    <replace><![CDATA[$0
+<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="$1" />]]></replace>
+  </modification>
+  <modification type="public" template="forum_view" modification_key="siropu_ads_manager_forum_view_sticky" description="Add &quot;advertise here&quot; for promo and sticky thread ads." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:if is="$stickyThreads is not empty OR $threads is not empty">]]></find>
+    <replace><![CDATA[<xf:if is="$xf.options.siropuAdsManagerEnabled AND $xf.visitor.hasPermission('siropuAdsManager', 'createAds')">
+	<xf:if is="$xf.samThreadAds.thread is not empty AND in_array($forum.node_id, $xf.options.siropuAdsManagerPromoThreadForums)">
+		<xf:macro template="siropu_ads_manager_ad_macros" name="ad_thread" arg-type="thread" arg-forum="{$forum}" />
+	</xf:if>
+
+	<xf:if is="$xf.samThreadAds.sticky is not empty AND in_array($forum.node_id, $xf.options.siropuAdsManagerAllowedStickyForums)">
+		<xf:macro template="siropu_ads_manager_ad_macros" name="ad_thread" arg-type="sticky" arg-forum="{$forum}" />
+	</xf:if>
+</xf:if>
+<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="forum_view_above_stickies" />
+$0]]></replace>
+  </modification>
+  <modification type="admin" template="helper_criteria" modification_key="siropu_ads_manager_helper_criteria_nodes" description="Add custom page criteria node options." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<!--[XF:page:after_nodes]-->]]></find>
+    <replace><![CDATA[$0
+
+<xf:css>
+	ul[data-page-critaria="node"]
+	{
+		max-height: 200px;
+		overflow: auto;
+	}
+</xf:css>
+
+<xf:checkboxrow>
+	<xf:option name="page_criteria[nodes_not][rule]" value="nodes_not" selected="{$criteria.nodes_not}"
+			   label="{{ phrase('siropu_ads_manager_page_is_not_within_nodes:') }}" class="samNodeToggle">
+		<xf:dependent>
+			<xf:textbox type="search" placeholder="{{ phrase('siropu_ads_manager_type_to_find_node') }}" data-xf-init="siropu-ads-manager-find-node" autocomplete="off" />
+			<xf:checkbox name="page_criteria[nodes_not][data][node_ids]" value="{$criteria.nodes_not.node_ids}" data-page-critaria="node">
+				<xf:foreach loop="$data.nodes" value="$option">
+					<xf:option value="{$option.value}" label="{$option.label}" />
+				</xf:foreach>
+		</xf:checkbox>
+			<xf:checkbox style="margin-top: 25px;">
+				<xf:option name="page_criteria[nodes_not][data][node_only]" value="1" selected="{$criteria.nodes_not.node_only}"
+						   label="{{ phrase('siropu_ads_manager_do_not_display_within_selected_nodes_no_children') }}" />
+			</xf:checkbox>
+			<xf:checkbox>
+				<xf:option name="page_criteria[nodes_not][data][display_outside]" value="1" selected="{$criteria.nodes_not.display_outside}"
+						   label="{{ phrase('siropu_ads_manager_display_outside_selected_nodes') }}" />
+			</xf:checkbox>
+		</xf:dependent>
+	</xf:option>
+</xf:checkboxrow>
+
+<hr class="formRowSep" />]]></replace>
+  </modification>
+  <modification type="admin" template="helper_criteria" modification_key="siropu_ads_manager_helper_criteria_nodes_custom" description="Change page criteria node options to checkbox." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:checkboxrow label="{{ phrase('nodes') }}">
+				<xf:option name="page_criteria[nodes][rule]" value="nodes" selected="{$criteria.nodes}"
+					label="{{ phrase('page_is_within_nodes:') }}">
+
+					<xf:select name="page_criteria[nodes][data][node_ids]" multiple="true" value="{$criteria.nodes.node_ids}">
+						<xf:foreach loop="$data.nodes" value="$option">
+							<xf:option value="{$option.value}" label="{$option.label}" />
+						</xf:foreach>
+					</xf:select>
+					<xf:checkbox>
+						<xf:option name="page_criteria[nodes][data][node_only]" value="1" selected="{$criteria.nodes.node_only}"
+							label="{{ phrase('only_display_within_selected_nodes_no_children') }}" />
+					</xf:checkbox>
+
+				</xf:option>
+			</xf:checkboxrow>]]></find>
+    <replace><![CDATA[<xf:js src="siropu/am/admin.js" min="1" />
+<xf:checkboxrow label="{{ phrase('nodes') }}">
+				<xf:option name="page_criteria[nodes][rule]" value="nodes" selected="{$criteria.nodes}"
+					label="{{ phrase('page_is_within_nodes:') }}" class="samNodeToggle">
+			<xf:dependent>
+				<xf:textbox type="search" placeholder="{{ phrase('siropu_ads_manager_type_to_find_node') }}" data-xf-init="siropu-ads-manager-find-node" autocomplete="off" />
+					<xf:checkbox name="page_criteria[nodes][data][node_ids]" value="{$criteria.nodes.node_ids}" data-page-critaria="node">
+						<xf:foreach loop="$data.nodes" value="$option">
+							<xf:option value="{$option.value}" label="{$option.label}" />
+						</xf:foreach>
+					</xf:checkbox>
+					<xf:checkbox style="margin-top: 25px;">
+						<xf:option name="page_criteria[nodes][data][node_only]" value="1" selected="{$criteria.nodes.node_only}"
+							label="{{ phrase('only_display_within_selected_nodes_no_children') }}" />
+					</xf:checkbox>
+					</xf:dependent>
+				</xf:option>
+			</xf:checkboxrow>]]></replace>
+  </modification>
+  <modification type="admin" template="helper_criteria" modification_key="siropu_ads_manager_helper_criteria_template" description="Add custom page criteria template options." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<!--[XF:page:after_page_info]-->]]></find>
+    <replace><![CDATA[$0
+<xf:checkboxrow>
+	<xf:option name="page_criteria[template_not][rule]" value="template_not" selected="{$criteria.template_not}"
+			   label="{{ phrase('siropu_ads_manager_content_template_is_not:') }}">
+
+		<xf:textbox name="page_criteria[template_not][data][name]" value="{$criteria.template_not.name}" dir="ltr" />
+		<xf:afterhint>
+			{{ phrase('siropu_ads_manager_content_template_criteria_explain') }}<br>
+			<a href="{{ link('ads-manager/help/content-template-list') }}" data-xf-click="overlay">{{ phrase('siropu_ads_manager_view_content_template_list') }}</a>
+		</xf:afterhint>
+	</xf:option>
+	<xf:option name="page_criteria[style_not][rule]" value="style_not" selected="{$criteria.style_not}"
+			   label="{{ phrase('siropu_ads_manager_user_is_not_browsing_with_following_style') }}">
+
+		<xf:select name="page_criteria[style_not][data][style_id]" value="{$criteria.style_not.style_id}">
+			<xf:foreach loop="$data.styleTree.getFlattened(0)" value="$treeEntry">
+				<xf:option value="{$treeEntry.record.style_id}">{{ repeat('--', $treeEntry.depth) }} {$treeEntry.record.title}</xf:option>
+			</xf:foreach>
+		</xf:select>
+	</xf:option>
+</xf:checkboxrow>]]></replace>
+  </modification>
+  <modification type="admin" template="helper_criteria" modification_key="siropu_ads_manager_helper_criteria_template_phrase" description="Change content template explain phrase." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:afterhint>{{ phrase('content_template_criteria_explain') }}</xf:afterhint>]]></find>
+    <replace><![CDATA[<xf:afterhint>
+	{{ phrase('siropu_ads_manager_content_template_criteria_explain') }}<br>
+	<a href="{{ link('ads-manager/help/content-template-list') }}" data-xf-click="overlay">{{ phrase('siropu_ads_manager_view_content_template_list') }}</a>
+</xf:afterhint>]]></replace>
+  </modification>
+  <modification type="admin" template="helper_criteria" modification_key="siropu_ads_manager_helper_criteria_user_status" description="Add user status criteria." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<!--[XF:user:status_top]-->]]></find>
+    <replace><![CDATA[$0
+<xf:option name="user_criteria[is_guest_cookie][rule]" value="is_guest_cookie" selected="{$criteria.is_guest_cookie}"
+					label="{{ phrase('siropu_ads_manager_user_is_guest_and_accepted_cookies') }}" />]]></replace>
+  </modification>
+  <modification type="public" template="helper_js_global" modification_key="siropu_ads_manager_helper_js_global" description="Include the JS file." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:corejs />]]></find>
+    <replace><![CDATA[$0
+<xf:if is="!$xf.samAdmin">
+	<xf:include template="siropu_ads_manager_ad_js" />
+	<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="javascript" />
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="latest_activity" modification_key="siropu_ads_manager_latest_activity" description="Add the ad macros template below activity list item container." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:macro template="news_feed_macros" name="feed_row" arg-item="{$item}" />]]></find>
+    <replace><![CDATA[$0
+<xf:set var="$samCounter" value="{{ number($samCounter + 1) }}" />
+<xf:if contentcheck="true">
+	<li class="block-row block-row--separated samUnitWrapper">
+		<xf:contentcheck>
+			<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="latest_activity_list_below_item_container_{$samCounter}" />
+		</xf:contentcheck>
+	</li>
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="member_view" modification_key="siropu_ads_manager_member_view_below" description="Add the ad macros template above and below post profile container." execution_order="20" enabled="1" action="preg_replace">
+    <find><![CDATA[#(<xf:foreach loop="\$profilePosts" value="\$profilePost">)(.*)(</xf:foreach>)#sU]]></find>
+    <replace><![CDATA[$1
+<xf:set var="$samCounter" value="{{ number($samCounter + 1) }}" />
+<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="profile_post_above_container_{$samCounter}" />
+$2
+<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="profile_post_below_container_{$samCounter}" />
+$3]]></replace>
+  </modification>
+  <modification type="public" template="member_view" modification_key="siropu_ads_manager_member_view_tabs" description="Add the ad macros template below tabs." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:ad position="member_view_below_tabs" arg-user="{$user}" />]]></find>
+    <replace><![CDATA[$0
+<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="member_view_below_tabs" />
+]]></replace>
+  </modification>
+  <modification type="public" template="node_list_category" modification_key="siropu_ads_manager_node_list_category" description="Add the ad macros template below category container." execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[#(<xf:macro name="depth1".*)(</xf:macro>)#sU]]></find>
+    <replace><![CDATA[$1
+<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="node_list_below_category_container_{$node.node_id}" />
+$2]]></replace>
+  </modification>
+  <modification type="public" template="node_list_category" modification_key="siropu_ads_manager_node_list_category_title" description="Add the ad macros template in category node title container." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<a href="{{ link('categories', $node) }}">{$node.title}</a>]]></find>
+    <replace><![CDATA[<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="node_title_above_{$node.node_id}" />
+$0
+<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="node_title_container_{$node.node_id}" />]]></replace>
+  </modification>
+  <modification type="public" template="node_list_forum" modification_key="siropu_ads_manager_node_list_forum" description="Add the ad macros template in forum node title container." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<a href="{{ link('forums', $node) }}" data-xf-init="{{ $descriptionDisplay == 'tooltip' ? 'element-tooltip' : '' }}" data-shortcut="node-description">{$node.title}</a>]]></find>
+    <replace><![CDATA[<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="node_title_above_{$node.node_id}" />
+$0
+<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="node_title_container_{$node.node_id}" />]]></replace>
+  </modification>
+  <modification type="public" template="node_list_link_forum" modification_key="siropu_ads_manager_node_list_link_forum" description="Add the ad macros template in link node title container." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<a href="{{ link('link-forums', $node) }}" data-xf-init="{{ $descriptionDisplay == 'tooltip' ? 'element-tooltip' : '' }}" data-shortcut="node-description">{$node.title}</a>]]></find>
+    <replace><![CDATA[<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="node_title_above_{$node.node_id}" />
+$0
+<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="node_title_container_{$node.node_id}" />]]></replace>
+  </modification>
+  <modification type="public" template="node_list_page" modification_key="siropu_ads_manager_node_list_page" description="Add the ad macros template in page node title container." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<a href="{{ link('pages', $node) }}" data-xf-init="{{ $descriptionDisplay == 'tooltip' ? 'element-tooltip' : '' }}" data-shortcut="node-description">{$node.title}</a>
+]]></find>
+    <replace><![CDATA[<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="node_title_above_{$node.node_id}" />
+$0
+<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="node_title_container_{$node.node_id}" />]]></replace>
+  </modification>
+  <modification type="admin" template="option_list" modification_key="siropu_ads_manager_option_list" description="Add tabs for all admin options." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:description>{$group.description}</xf:description>]]></find>
+    <replace><![CDATA[$0
+<xf:if is="in_array($group.group_id, ['siropuAdsManager', 'siropuAdsManagerAdvertiser', 'siropuAdsManagerAdmin'])">
+	<h2 class="block-tabHeader tabs hScroller" data-xf-init="h-scroller">
+		<span class="hScroller-scroll">
+			<a href="{{ link('options/groups/siropuAdsManager/') }}" class="tabs-tab{{ $group.group_id == 'siropuAdsManager' ? ' is-active' : '' }}">{{ phrase('admin_navigation.samOptionsGeneral') }}</a>
+			<a href="{{ link('options/groups/siropuAdsManagerAdvertiser/') }}" class="tabs-tab{{ $group.group_id == 'siropuAdsManagerAdvertiser' ? ' is-active' : '' }}">{{ phrase('admin_navigation.samOptionsAdvertiser') }}</a>
+			<a href="{{ link('options/groups/siropuAdsManagerAdmin/') }}" class="tabs-tab{{ $group.group_id == 'siropuAdsManagerAdmin' ? ' is-active' : '' }}">{{ phrase('admin_navigation.samOptionsAdmin') }}</a>
+		</span>
+	</h2>
+</xf:if>]]></replace>
+  </modification>
+  <modification type="admin" template="option_macros" modification_key="siropu_ads_manager_option_macros" description="Add info block message." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<hr class="formRowSep" />]]></find>
+    <replace><![CDATA[$0
+<xf:if is="$group.group_id == 'siropuAdsManager' AND $curHundred == 8">
+	<xf:formrow>
+		<div class="blockMessage blockMessage--important blockMessage--iconic">
+			{{ phrase('siropu_ads_manager_custom_css_info') }}
+		</div>
+	</xf:formrow>
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="post_macros" modification_key="siropu_ads_manager_post" description="Add the ad macros template above and below the post content." execution_order="0" enabled="1" action="str_replace">
+    <find><![CDATA[{{ bb_code($post.message, 'post', $post) }}]]></find>
+    <replace><![CDATA[<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="post_above_content_{{ sam_counter('post_above_content') }}" />
+$0
+<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="post_below_content_{{ sam_counter('post_below_content') }}" />]]></replace>
+  </modification>
+  <modification type="public" template="post_macros" modification_key="siropu_ads_manager_post_macros" description="Add template filter." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[bb_code($post.message, 'post', $post)]]></find>
+    <replace><![CDATA[$0|sam_keyword_ads(($thread.discussion_type == 'discussion' ? 'thread' : ('thread_' . $thread.discussion_type)), $xf.samFilterAds, $post, ($post.User AND $post.User.isMemberOf($xf.options.siropuAdsManagerUserGroupPostExceptions)), $thread.reply_count + 1)]]></replace>
+  </modification>
+  <modification type="public" template="post_macros" modification_key="siropu_ads_manager_post_macros_signature" description="Add the ad macros template above and below the signature." execution_order="0" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:macro template="message_macros" name="signature" arg-user="{$post.User}" />]]></find>
+    <replace><![CDATA[<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="post_above_signature_{{ sam_counter('post_above_signature') }}" />
+$0
+<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="post_below_signature_{{ sam_counter('post_below_signature') }}" />]]></replace>
+  </modification>
+  <modification type="public" template="profile_post_macros" modification_key="siropu_ads_manager_profile_post_macros_keyword" description="Add template filter." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[bb_code($profilePost.message, 'profile_post', $profilePost)]]></find>
+    <replace><![CDATA[$0|sam_keyword_ads('profile', $xf.samFilterAds, $profilePost, ($profilePost.User AND $profilePost.User.isMemberOf($xf.options.siropuAdsManagerUserGroupPostExceptions)))]]></replace>
+  </modification>
+  <modification type="public" template="search_results" modification_key="siropu_ads_manager_search_results" description="Add the ad macros template below search results item container." execution_order="20" enabled="1" action="str_replace">
+    <find><![CDATA[{{ $result.render({'mod': $activeModType})|raw }}]]></find>
+    <replace><![CDATA[$0
+<xf:set var="$samCounter" value="{{ number($samCounter + 1) }}" />
+<xf:if contentcheck="true">
+	<li class="block-row block-row--separated samUnitWrapper">
+		<xf:contentcheck>
+			<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="search_results_below_item_container_{$samCounter}" />
+		</xf:contentcheck>
+	</li>
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="siropu_chat_conversation_message_row" modification_key="siropu_ads_manager_chat_conversation_message_row" description="Add template filter." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[bb_code($message.message, 'siropu_chat_conv_message', $message.User)]]></find>
+    <replace><![CDATA[$0|sam_keyword_ads('chat_conv', $xf.samFilterAds, $message, ($message.User AND $message.User.isMemberOf($xf.options.siropuAdsManagerUserGroupPostExceptions)))]]></replace>
+  </modification>
+  <modification type="public" template="siropu_chat_room_message_helper" modification_key="siropu_ads_manager_chat_room_message_helper" description="Add template filter." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[bb_code($message.message, 'siropu_chat_room_message', $message)]]></find>
+    <replace><![CDATA[$0|sam_keyword_ads('chat', $xf.samFilterAds, $message, ($message.User AND $message.User.isMemberOf($xf.options.siropuAdsManagerUserGroupPostExceptions)))]]></replace>
+  </modification>
+  <modification type="public" template="snog_groups_main" modification_key="siropu_ads_manager_snog_groups_main" description="Add the ad macros template in all default ad positions for social groups add-on." execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[@<xf:ad position="([\w]+)" />@]]></find>
+    <replace><![CDATA[<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="$1" />
+$0]]></replace>
+  </modification>
+  <modification type="public" template="tag_view" modification_key="siropu_ads_manager_tag_view" description="Add the ad macros template below tag result container." execution_order="20" enabled="1" action="str_replace">
+    <find><![CDATA[{{ $result.render({'mod': $activeModType})|raw }}]]></find>
+    <replace><![CDATA[$0
+<xf:set var="$samCounter" value="{{ number($samCounter + 1) }}" />
+<xf:if contentcheck="true">
+	<li class="block-row block-row--separated samUnitWrapper">
+		<xf:contentcheck>
+			<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="tag_view_below_item_container_{$samCounter}" />
+		</xf:contentcheck>
+	</li>
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="thread_view" modification_key="siropu_ads_manager_thread_view" description="Add the ad macros template above and below the thread posts." execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[@<xf:ad position="([\w]+)" [^/]+/>@]]></find>
+    <replace><![CDATA[<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="$1" />
+$0]]></replace>
+  </modification>
+  <modification type="public" template="thread_view" modification_key="siropu_ads_manager_thread_view_below_pinned" description="Add the ad macros template below pinned post." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:extension name="above_messages_below_pinned"></xf:extension>]]></find>
+    <replace><![CDATA[<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="above_messages_below_pinned" />
+$0
+<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="above_messages_below_solution" />]]></replace>
+  </modification>
+  <modification type="public" template="thread_view" modification_key="siropu_ads_manager_thread_view_below_post" description="Add the ad macros template above and below post container." execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[#(<xf:foreach loop="\$posts" value="\$post">)(.*)(</xf:foreach>)#sU]]></find>
+    <replace><![CDATA[$1
+<xf:set var="$samCounter" value="{{ number($samCounter + 1) }}" />
+<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="post_above_container_{$samCounter}" />
+$2
+<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="post_below_container_{$samCounter}" />
+$3]]></replace>
+  </modification>
+  <modification type="public" template="whats_new_posts" modification_key="siropu_ads_manager_whats_new_posts_below" description="Add the ad macros template below list item container." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:macro template="thread_list_macros" name="item" arg-thread="{$thread}" />]]></find>
+    <replace><![CDATA[$0
+<xf:set var="$samCounter" value="{{ number($samCounter + 1) }}" />
+<xf:if contentcheck="true">
+	<div class="structItem structItem--thread samUnitWrapper">
+		<xf:contentcheck>
+			<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="whats_new_posts_below_item_container_{$samCounter}" />
+		</xf:contentcheck>
+	</div>
+</xf:if>
+				]]></replace>
+  </modification>
+  <modification type="public" template="whats_new_profile_posts" modification_key="siropu_ads_manager_whats_new_profile_posts_below" description="Add the ad macros template below list item container." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[</xf:foreach>]]></find>
+    <replace><![CDATA[<xf:set var="$samCounter" value="{{ number($samCounter + 1) }}" />
+<xf:if contentcheck="true">
+	<article class="message message--simple samUnitWrapper">
+		<xf:contentcheck>
+			<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="whats_new_profile_posts_below_item_container_{$samCounter}" />
+		</xf:contentcheck>
+	</article>
+</xf:if>
+$0]]></replace>
+  </modification>
+  <modification type="public" template="xa_ams_article_view" modification_key="siropu_ads_manager_xa_ams_article_view" description="Add template filter." execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/bb_code\(\$article(Page)?\.message, 'ams_(article|page)', \$article(Page)?\)/]]></find>
+    <replace><![CDATA[$0|sam_keyword_ads('ams_article', $xf.samFilterAds, $article, ($article.User AND $article.User.isMemberOf($xf.options.siropuAdsManagerUserGroupPostExceptions)))]]></replace>
+  </modification>
+  <modification type="public" template="xa_ams_article_view" modification_key="siropu_ads_manager_xa_ams_article_view_2" description="Add the ad macros template above and below article content." execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[#{{ bb_code\(\$article\.message, 'ams_article', \$article\).*?}}#]]></find>
+    <replace><![CDATA[<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="ams_article_above_content" />
+$0
+<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="ams_article_below_content" />]]></replace>
+  </modification>
+  <modification type="public" template="xa_ams_category_view" modification_key="siropu_ads_manager_xa_ams_category_view" description="Add the ad macros template between articles." execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[#(<xf:foreach loop="\$articles" value="\$article">)(.*)(</xf:foreach>)#sU]]></find>
+    <replace><![CDATA[$1
+<xf:set var="$samCounter" value="{{ number($samCounter + 1) }}" />
+<xf:if is="$xf.options.xaAmsArticleListLayoutType == 'grid_view'">
+	<xf:if contentcheck="true">
+		<div class="structItem structItem--article">
+			<xf:contentcheck>
+				<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="ams_article_before_item_{$samCounter}" />
+			</xf:contentcheck>
+		</div>
+	</xf:if>
+<xf:elseif is="$xf.options.xaAmsArticleListLayoutType == 'list_view'" />
+	<xf:if contentcheck="true">
+		<div class="structItem-cell structItem-cell--main structItem-cell--listViewLayout">
+			<xf:contentcheck>
+				<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="ams_article_before_item_{$samCounter}" />
+			</xf:contentcheck>
+		</div>
+	</xf:if>
+<xf:else />
+	<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="ams_article_before_item_{$samCounter}" />
+</xf:if>
+$2
+<xf:if is="$xf.options.xaAmsArticleListLayoutType == 'grid_view'">
+	<xf:if contentcheck="true">
+		<div class="structItem structItem--article">
+			<xf:contentcheck>
+				<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="ams_article_after_item_{$samCounter}" />
+			</xf:contentcheck>
+		</div>
+	</xf:if>
+<xf:elseif is="$xf.options.xaAmsArticleListLayoutType == 'list_view'" />
+	<xf:if contentcheck="true">
+		<div class="structItem-cell structItem-cell--main structItem-cell--listViewLayout">
+			<xf:contentcheck>
+				<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="ams_article_after_item_{$samCounter}" />
+			</xf:contentcheck>
+		</div>
+	</xf:if>
+<xf:else />
+	<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="ams_article_after_item_{$samCounter}" />
+</xf:if>
+$3]]></replace>
+  </modification>
+  <modification type="public" template="xa_ams_index" modification_key="siropu_ads_manager_xa_ams_index" description="Add the ad macros template in article rows." execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[#(<xf:foreach loop="\$articles" value="\$article">)(.*)(</xf:foreach>)#sU]]></find>
+    <replace><![CDATA[$1
+<xf:set var="$samCounter" value="{{ number($samCounter + 1) }}" />
+<xf:if is="$xf.options.xaAmsArticleListLayoutType == 'grid_view'">
+	<xf:if contentcheck="true">
+		<div class="structItem structItem--article">
+			<xf:contentcheck>
+				<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="ams_article_before_item_{$samCounter}" />
+			</xf:contentcheck>
+		</div>
+	</xf:if>
+<xf:elseif is="$xf.options.xaAmsArticleListLayoutType == 'list_view'" />
+	<xf:if contentcheck="true">
+		<div class="structItem-cell structItem-cell--main structItem-cell--listViewLayout">
+			<xf:contentcheck>
+				<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="ams_article_before_item_{$samCounter}" />
+			</xf:contentcheck>
+		</div>
+	</xf:if>
+<xf:else />
+	<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="ams_article_before_item_{$samCounter}" />
+</xf:if>
+$2
+<xf:if is="$xf.options.xaAmsArticleListLayoutType == 'grid_view'">
+	<xf:if contentcheck="true">
+		<div class="structItem structItem--article">
+			<xf:contentcheck>
+				<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="ams_article_after_item_{$samCounter}" />
+			</xf:contentcheck>
+		</div>
+	</xf:if>
+<xf:elseif is="$xf.options.xaAmsArticleListLayoutType == 'list_view'" />
+	<xf:if contentcheck="true">
+		<div class="structItem-cell structItem-cell--main structItem-cell--listViewLayout">
+			<xf:contentcheck>
+				<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="ams_article_after_item_{$samCounter}" />
+			</xf:contentcheck>
+		</div>
+	</xf:if>
+<xf:else />
+	<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="ams_article_after_item_{$samCounter}" />
+</xf:if>
+$3]]></replace>
+  </modification>
+  <modification type="public" template="xa_sc_item_view" modification_key="siropu_ads_manager_xa_sc_item_view" description="Add template filter." execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[#(bb_code\(\$item\.message(_s\d)?, 'sc_item', \$item\))#]]></find>
+    <replace><![CDATA[$0|sam_keyword_ads('showcase_item', $xf.samFilterAds, $item, ($item.User AND $item.User.isMemberOf($xf.options.siropuAdsManagerUserGroupPostExceptions)))]]></replace>
+  </modification>
+  <modification type="public" template="xa_sc_item_view" modification_key="siropu_ads_manager_xa_sc_item_view_unit" description="Add the ad macros template above and below article content." execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[#{{ bb_code\(\$item\.message(_s[0-9])?, 'sc_item', \$item\).*?}}#]]></find>
+    <replace><![CDATA[<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="sc_item_above$1_content" />
+$0
+<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="sc_item_below$1_content" />]]></replace>
+  </modification>
+  <modification type="public" template="xfmg_album_list_macros" modification_key="siropu_ads_manager_xfmg_album_list_macros" description="Add the ad macros template in the album list." execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[#(<xf:foreach loop="\$albums".*)(</xf:foreach>)#sU]]></find>
+    <replace><![CDATA[$1
+<xf:set var="$samCounter" value="{{ number($samCounter + 1) }}" />
+<xf:if contentcheck="true">
+	<div class="itemList-item samUnitWrapper">
+		<xf:contentcheck>
+			<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="media_album_list_item_{$samCounter}" />
+		</xf:contentcheck>
+	</div>
+</xf:if>
+$2]]></replace>
+  </modification>
+  <modification type="public" template="xfmg_album_view" modification_key="siropu_ads_manager_xfmg_album_view_desc" description="Add the ad macros template below album description." execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[#(<xf:if is="\$album\.description">)(.*)(</xf:if>)#sU]]></find>
+    <replace><![CDATA[$1
+$2
+<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="album_view_below_description" />
+$3]]></replace>
+  </modification>
+  <modification type="public" template="xfmg_album_view" modification_key="siropu_ads_manager_xfmg_album_view_info" description="Add the ad macros template above and below the info block album sidebar." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:macro name="info_sidebar" arg-album="{$album}" />]]></find>
+    <replace><![CDATA[<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="sidebar_above_media_album_info_block" />
+$0
+<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="sidebar_below_media_album_info_block" />]]></replace>
+  </modification>
+  <modification type="public" template="xfmg_album_view" modification_key="siropu_ads_manager_xfmg_album_view_share" description="Add the ad macros template above and below the share block album sidebar." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:macro name="share_sidebar" arg-album="{$album}" />]]></find>
+    <replace><![CDATA[<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="sidebar_above_media_album_share_block" />
+$0
+<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="sidebar_below_media_album_share_block" />]]></replace>
+  </modification>
+  <modification type="public" template="xfmg_comment_macros" modification_key="siropu_ads_manager_xfmg_comment_macros_below" description="Add the ad macros template below media comment list item container." execution_order="20" enabled="1" action="preg_replace">
+    <find><![CDATA[#(<xf:foreach loop="\$comments".*)(</xf:foreach>)#sU]]></find>
+    <replace><![CDATA[$1
+<xf:set var="$samCounter" value="{{ number($samCounter + 1) }}" />
+<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="media_comment_list_below_item_container_{$samCounter}" />
+$2]]></replace>
+  </modification>
+  <modification type="public" template="xfmg_media_list_macros" modification_key="siropu_ads_manager_xfmg_media_list_macros_item" description="Add the ad macros template in the item list." execution_order="20" enabled="1" action="preg_replace">
+    <find><![CDATA[#(<xf:foreach loop="\$mediaItems".*)(</xf:foreach>)#sU]]></find>
+    <replace><![CDATA[$1
+<xf:set var="$samCounter" value="{{ number($samCounter + 1) }}" />
+<xf:if contentcheck="true">
+	<div class="itemList-item samUnitWrapper">
+		<xf:contentcheck>
+			<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="media_list_item_{$samCounter}" />
+		</xf:contentcheck>
+	</div>
+</xf:if>
+$2]]></replace>
+  </modification>
+  <modification type="public" template="xfmg_media_view" modification_key="siropu_ads_manager_xfmg_comment_macros_above" description="Add the ad macros template above media comments." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<div class="columnContainer-comments">]]></find>
+    <replace><![CDATA[$0
+<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="media_view_above_comments" />]]></replace>
+  </modification>
+  <modification type="public" template="xfmg_media_view" modification_key="siropu_ads_manager_xfmg_media_view_desc" description="Add the ad macros template below media description." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<div class="bbCodeBlock-expandLink js-expandLink"><a>{{ phrase('click_to_expand') }}</a></div>
+						</div>
+					</div>]]></find>
+    <replace><![CDATA[$0
+<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="media_view_below_description" />]]></replace>
+  </modification>
+  <modification type="public" template="xfmg_media_view" modification_key="siropu_ads_manager_xfmg_media_view_info" description="Add the ad macros template above and below the info block media sidebar." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:macro template="xfmg_media_view_macros" name="info_sidebar" arg-mediaItem="{$mediaItem}" />]]></find>
+    <replace><![CDATA[<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="sidebar_above_media_info_block" />
+$0
+<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="sidebar_below_media_info_block" />]]></replace>
+  </modification>
+  <modification type="public" template="xfmg_media_view" modification_key="siropu_ads_manager_xfmg_media_view_prev" description="Add the ad macros template above and below the media preview block." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:macro template="xfmg_media_view_macros" name="media_film_strip" arg-mediaItem="{$mediaItem}" arg-filmStripParams="{$filmStripParams}" />]]></find>
+    <replace><![CDATA[<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="media_view_above_media_preview" />
+$0
+<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="media_view_below_media_preview" />]]></replace>
+  </modification>
+  <modification type="public" template="xfmg_media_view" modification_key="siropu_ads_manager_xfmg_media_view_share" description="Add the ad macros template above and below the share block media sidebar." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:macro template="xfmg_media_view_macros" name="share_sidebar" arg-mediaItem="{$mediaItem}" />]]></find>
+    <replace><![CDATA[<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="sidebar_above_media_share_block" />
+$0
+<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="sidebar_below_media_share_block" />]]></replace>
+  </modification>
+  <modification type="public" template="xfmg_media_view_macros" modification_key="siropu_ads_manager_xfmg_media_view_macros_embed" description="Add the ad macros template in video embed container." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[{{ bb_code($mediaItem.media_tag, 'xfmg_media', $mediaItem) }}]]></find>
+    <replace><![CDATA[$0
+<xf:if contentcheck="true">
+	<div class="samVideoOverlay"></div>
+	<div class="samMediaViewContainer">
+		<xf:contentcheck>
+			<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="media_view_video_embed_container" />
+		</xf:contentcheck>
+	</div>
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="xfmg_media_view_macros" modification_key="siropu_ads_manager_xfmg_media_view_macros_image" description="Add the ad macros template in image container." execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[#(<div class="media-container-image js-mediaContainerImage">)(.*)(</div>)#sU]]></find>
+    <replace><![CDATA[$1
+$2
+<xf:if contentcheck="true">
+	<div class="samMediaViewContainer">
+		<xf:contentcheck>
+			<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="media_view_image_container" />
+		</xf:contentcheck>
+	</div>
+</xf:if>
+$3]]></replace>
+  </modification>
+  <modification type="public" template="xfmg_media_view_macros" modification_key="siropu_ads_manager_xfmg_media_view_macros_video" description="Add the ad macros template in video container." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[</video>]]></find>
+    <replace><![CDATA[$0
+<xf:if contentcheck="true">
+	<div class="samVideoOverlay"></div>
+	<div class="samMediaViewContainer">
+		<xf:contentcheck>
+			<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="media_view_video_container" />
+		</xf:contentcheck>
+	</div>
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="xfrm_category_view" modification_key="siropu_ads_manager_xfrm_category_view_below" description="Add the ad macros template below resource item container." execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[#(<xf:foreach loop="\$resources".*)(</xf:foreach>)#sU]]></find>
+    <replace><![CDATA[$1
+<xf:set var="$samCounter" value="{{ number($samCounter + 1) }}" />
+<xf:if contentcheck="true">
+	<div class="structItem structItem--resource samUnitWrapper">
+		<xf:contentcheck>
+			<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="resource_list_below_item_container_{$samCounter}" />
+		</xf:contentcheck>
+	</div>
+</xf:if>
+$2]]></replace>
+  </modification>
+  <modification type="public" template="xfrm_overview" modification_key="siropu_ads_manager_xfrm_overview_below" description="Add the ad macros template below resource item container." execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[#(<xf:foreach loop="\$resources".*)(</xf:foreach>)#sU]]></find>
+    <replace><![CDATA[$1
+<xf:set var="$samCounter" value="{{ number($samCounter + 1) }}" />
+<xf:if contentcheck="true">
+	<div class="structItem structItem--resource samUnitWrapper">
+		<xf:contentcheck>
+			<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="resource_list_below_item_container_{$samCounter}" />
+		</xf:contentcheck>
+	</div>
+</xf:if>
+$2]]></replace>
+  </modification>
+  <modification type="public" template="xfrm_resource_reviews" modification_key="siropu_ads_manager_xfrm_resource_reviews_below" description="Add the ad macros template below resource review item container." execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[#(<xf:foreach loop="\$reviews".*)(</xf:foreach>)#sU]]></find>
+    <replace><![CDATA[$1
+<xf:set var="$samCounter" value="{{ number($samCounter + 1) }}" />
+<xf:if contentcheck="true">
+	<div class="message message--simple samUnitWrapper">
+		<xf:contentcheck>
+			<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="resource_review_list_below_item_container_{$samCounter}" />
+		</xf:contentcheck>
+	</div>
+</xf:if>
+$2]]></replace>
+  </modification>
+  <modification type="public" template="xfrm_resource_update_macros" modification_key="siropu_ads_manager_xfrm_resource_update_macros_des" description="Add the ad macros template above and below the update description." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[{{ bb_code($update.message, 'resource_update', $update) }}]]></find>
+    <replace><![CDATA[<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="resource_update_above_description" />
+$0
+<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="resource_update_below_description" />]]></replace>
+  </modification>
+  <modification type="public" template="xfrm_resource_view" modification_key="siropu_ads_manager_xfrm_resource_view" description="Add template filter." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[bb_code($description.message, 'resource_update', $description)]]></find>
+    <replace><![CDATA[$0|sam_keyword_ads('resource', $xf.samFilterAds, $resource, ($resource.User AND $resource.User.isMemberOf($xf.options.siropuAdsManagerUserGroupPostExceptions)))]]></replace>
+  </modification>
+  <modification type="public" template="xfrm_resource_view" modification_key="siropu_ads_manager_xfrm_resource_view_desc" description="Add the ad macros template above and below the resource description." execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/{{ bb_code\(\$description\.message, 'resource_update', \$description\).+?}}/]]></find>
+    <replace><![CDATA[<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="resource_view_above_description" />
+$0
+<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="resource_view_below_description" />]]></replace>
+  </modification>
+  <modification type="public" template="xfrm_resource_view" modification_key="siropu_ads_manager_xfrm_resource_view_info" description="Add the ad macros template above the info block resource sidebar." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<div class="resourceBody-sidebar">]]></find>
+    <replace><![CDATA[$0
+<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="sidebar_above_resource_info_block" />]]></replace>
+  </modification>
+  <modification type="public" template="xfrm_resource_view" modification_key="siropu_ads_manager_xfrm_resource_view_review" description="Add the ad macros template below resource review item container." execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[#(<xf:foreach loop="\$latestReviews".*)(</xf:foreach>)#sU]]></find>
+    <replace><![CDATA[$1
+<xf:set var="$samCounter" value="{{ number($samCounter + 1) }}" />
+<xf:if contentcheck="true">
+	<div class="message message--simple samUnitWrapper">
+		<xf:contentcheck>
+			<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="resource_review_list_below_item_container_{$samCounter}" />
+		</xf:contentcheck>
+	</div>
+</xf:if>
+$2]]></replace>
+  </modification>
+  <modification type="public" template="xfrm_resource_view" modification_key="siropu_ads_manager_xfrm_resource_view_share" description="Add the ad macros template below the share block resource sidebar." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:macro template="share_page_macros" name="buttons" arg-iconic="{{ true }}" />]]></find>
+    <replace><![CDATA[$0
+<xf:macro template="siropu_ads_manager_ad_macros" name="ad_unit" arg-position="sidebar_below_resource_share_block" />]]></replace>
+  </modification>
+</template_modifications>

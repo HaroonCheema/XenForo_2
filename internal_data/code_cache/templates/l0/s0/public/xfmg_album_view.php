@@ -695,6 +695,7 @@ return array(
 			';
 	if ($__vars['album']['description']) {
 		$__finalCompiled .= '
+
 				<div class="xfmgInfoBlock-description">
 					<div class="bbCodeBlock bbCodeBlock--expandable">
 						<div class="bbCodeBlock-content">
@@ -705,7 +706,11 @@ return array(
 						</div>
 					</div>
 				</div>
-			';
+			
+' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+			'position' => 'album_view_below_description',
+		), $__vars) . '
+';
 	}
 	$__finalCompiled .= '
 
@@ -881,16 +886,28 @@ return array(
 		</div>
 
 		<div class="columnContainer-sidebar">
-			' . $__templater->callMacro(null, 'info_sidebar', array(
+			' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+			'position' => 'sidebar_above_media_album_info_block',
+		), $__vars) . '
+' . $__templater->callMacro(null, 'info_sidebar', array(
 			'album' => $__vars['album'],
+		), $__vars) . '
+' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+			'position' => 'sidebar_below_media_album_info_block',
 		), $__vars) . '
 			' . $__templater->callMacro(null, 'privacy_sidebar', array(
 			'album' => $__vars['album'],
 			'addUsers' => $__vars['addUsers'],
 			'viewUsers' => $__vars['viewUsers'],
 		), $__vars) . '
-			' . $__templater->callMacro(null, 'share_sidebar', array(
+			' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+			'position' => 'sidebar_above_media_album_share_block',
+		), $__vars) . '
+' . $__templater->callMacro(null, 'share_sidebar', array(
 			'album' => $__vars['album'],
+		), $__vars) . '
+' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+			'position' => 'sidebar_below_media_album_share_block',
 		), $__vars) . '
 		</div>
 	</div>
@@ -899,8 +916,14 @@ return array(
 		$__finalCompiled .= '
 	';
 		$__templater->modifySidebarHtml('infoSidebar', '
-		' . $__templater->callMacro(null, 'info_sidebar', array(
+		' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+			'position' => 'sidebar_above_media_album_info_block',
+		), $__vars) . '
+' . $__templater->callMacro(null, 'info_sidebar', array(
 			'album' => $__vars['album'],
+		), $__vars) . '
+' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+			'position' => 'sidebar_below_media_album_info_block',
 		), $__vars) . '
 	', 'replace');
 		$__finalCompiled .= '
@@ -915,8 +938,14 @@ return array(
 		$__finalCompiled .= '
 	';
 		$__templater->modifySidebarHtml('shareSidebar', '
-		' . $__templater->callMacro(null, 'share_sidebar', array(
+		' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+			'position' => 'sidebar_above_media_album_share_block',
+		), $__vars) . '
+' . $__templater->callMacro(null, 'share_sidebar', array(
 			'album' => $__vars['album'],
+		), $__vars) . '
+' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+			'position' => 'sidebar_below_media_album_share_block',
 		), $__vars) . '
 	', 'replace');
 		$__finalCompiled .= '

@@ -26,6 +26,24 @@ return array(
 					' . $__templater->callMacro('news_feed_macros', 'feed_row', array(
 					'item' => $__vars['item'],
 				), $__vars) . '
+';
+				$__vars['samCounter'] = $__templater->func('number', array($__vars['samCounter'] + 1, ), false);
+				$__finalCompiled .= '
+';
+				$__compilerTemp2 = '';
+				$__compilerTemp2 .= '
+			' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+					'position' => 'latest_activity_list_below_item_container_' . $__vars['samCounter'],
+				), $__vars) . '
+		';
+				if (strlen(trim($__compilerTemp2)) > 0) {
+					$__finalCompiled .= '
+	<li class="block-row block-row--separated samUnitWrapper">
+		' . $__compilerTemp2 . '
+	</li>
+';
+				}
+				$__finalCompiled .= '
 				';
 			}
 		}

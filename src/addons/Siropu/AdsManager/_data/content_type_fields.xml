@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<content_type_fields>
+  <field content_type="siropu_ads_manager_ad" field_name="alert_handler_class">Siropu\AdsManager\Alert\Ad</field>
+  <field content_type="siropu_ads_manager_ad" field_name="attachment_handler_class">Siropu\AdsManager\Attachment\Ad</field>
+  <field content_type="siropu_ads_manager_ad" field_name="entity">Siropu\AdsManager:Ad</field>
+  <field content_type="siropu_ads_manager_inv" field_name="alert_handler_class">Siropu\AdsManager\Alert\Invoice</field>
+  <field content_type="siropu_ads_manager_inv" field_name="entity">Siropu\AdsManager:Invoice</field>
+</content_type_fields>

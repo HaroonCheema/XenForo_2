@@ -17,7 +17,13 @@ return array(
 		<span class="u-anchorTarget" id="' . $__templater->escape($__templater->method($__vars['node']['Data'], 'getCategoryAnchor', array())) . '"></span>
 		<div class="block-container">
 			<h2 class="block-header">
-				<a href="' . $__templater->func('link', array('categories', $__vars['node'], ), true) . '">' . $__templater->escape($__vars['node']['title']) . '</a>
+				' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+		'position' => 'node_title_above_' . $__vars['node']['node_id'],
+	), $__vars) . '
+<a href="' . $__templater->func('link', array('categories', $__vars['node'], ), true) . '">' . $__templater->escape($__vars['node']['title']) . '</a>
+' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+		'position' => 'node_title_container_' . $__vars['node']['node_id'],
+	), $__vars) . '
 				';
 	if ($__vars['node']['description']) {
 		$__finalCompiled .= '<span class="block-desc">' . $__templater->filter($__vars['node']['description'], array(array('raw', array()),), true) . '</span>';
@@ -33,6 +39,10 @@ return array(
 			</div>
 		</div>
 	</div>
+
+' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+		'position' => 'node_list_below_category_container_' . $__vars['node']['node_id'],
+	), $__vars) . '
 ';
 	return $__finalCompiled;
 }

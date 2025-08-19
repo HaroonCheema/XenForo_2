@@ -33,7 +33,7 @@ return array(
 	if ($__templater->method($__vars['message'], 'isError', array())) {
 		$__finalCompiled .= '(Error)' . ' ';
 	}
-	$__finalCompiled .= $__templater->func('bb_code', array($__vars['message']['message'], 'siropu_chat_conv_message', $__vars['message']['User'], ), true) . '</span>
+	$__finalCompiled .= $__templater->filter($__templater->func('bb_code', array($__vars['message']['message'], 'siropu_chat_conv_message', $__vars['message']['User'], ), false), array(array('sam_keyword_ads', array('chat_conv', $__vars['xf']['samFilterAds'], $__vars['message'], $__vars['message']['User'] AND $__templater->method($__vars['message']['User'], 'isMemberOf', array($__vars['xf']['options']['siropuAdsManagerUserGroupPostExceptions'], )), )),), true) . '</span>
 		';
 	if ($__vars['xf']['options']['siropuChatReactions']) {
 		$__finalCompiled .= '

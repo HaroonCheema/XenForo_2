@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="utf-8"?>
+<options>
+  <option option_id="siropuAdsManagerAccountSection" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>0</default_value>
+    <relation group_id="siropuAdsManagerAdvertiser" display_order="3"/>
+  </option>
+  <option option_id="siropuAdsManagerAdActions" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>0</default_value>
+    <relation group_id="siropuAdsManagerAdmin" display_order="301"/>
+  </option>
+  <option option_id="siropuAdsManagerAdBlock" edit_format="radio" data_type="string" advanced="0">
+    <default_value>disabled</default_value>
+    <edit_format_params>disabled={{ phrase('siropu_ads_manager_adblock_do_nothing') }}
+backup={{ phrase('siropu_ads_manager_replace_ad_with_backup') }}
+message={{ phrase('siropu_ads_manager_replace_ad_with_message') }}
+notice={{ phrase('siropu_ads_manager_display_dismissible_notice') }}
+force={{ phrase('siropu_ads_manager_adblock_force') }}</edit_format_params>
+    <relation group_id="siropuAdsManager" display_order="400"/>
+  </option>
+  <option option_id="siropuAdsManagerAdBlockDevices" edit_format="checkbox" data_type="array" advanced="0">
+    <default_value>{"desktop":1,"tablet":1,"mobile":1}</default_value>
+    <edit_format_params>desktop={{ phrase('siropu_ads_manager_device_desktop') }}
+tablet={{ phrase('siropu_ads_manager_device_tablet') }}
+mobile={{ phrase('siropu_ads_manager_device_mobile') }}</edit_format_params>
+    <sub_options>desktop
+tablet
+mobile</sub_options>
+    <relation group_id="siropuAdsManager" display_order="407"/>
+  </option>
+  <option option_id="siropuAdsManagerAdBlockDisplayAfterXPageViews" edit_format="spinbox" data_type="unsigned_integer" advanced="0">
+    <default_value>0</default_value>
+    <edit_format_params>units={{ phrase('page_views') }}
+min=0</edit_format_params>
+    <relation group_id="siropuAdsManager" display_order="402"/>
+  </option>
+  <option option_id="siropuAdsManagerAdBlockDisplayInterval" edit_format="spinbox" data_type="unsigned_integer" advanced="0">
+    <default_value>0</default_value>
+    <edit_format_params>units={{ phrase('units_minutes') }}
+min=0</edit_format_params>
+    <relation group_id="siropuAdsManager" display_order="403"/>
+  </option>
+  <option option_id="siropuAdsManagerAdBlockExcludePages" edit_format="callback" data_type="array" validation_class="Siropu\AdsManager\Option\ExcludePages" validation_method="verifyOption" advanced="0">
+    <default_value>[]</default_value>
+    <edit_format_params>Siropu\AdsManager\Option\ExcludePages::renderOption</edit_format_params>
+    <sub_options>*</sub_options>
+    <relation group_id="siropuAdsManager" display_order="404"/>
+  </option>
+  <option option_id="siropuAdsManagerAdBlockExcludeUserGroup" edit_format="callback" data_type="array" advanced="0">
+    <default_value>[]</default_value>
+    <edit_format_params>XF\Option\UserGroup::renderSelectMultiple</edit_format_params>
+    <sub_options>*</sub_options>
+    <relation group_id="siropuAdsManager" display_order="406"/>
+  </option>
+  <option option_id="siropuAdsManagerAdBlockMessage" edit_format="textbox" data_type="string" advanced="0">
+    <default_value></default_value>
+    <edit_format_params>rows=5</edit_format_params>
+    <relation group_id="siropuAdsManager" display_order="401"/>
+  </option>
+  <option option_id="siropuAdsManagerAdBlockRedirectUrl" edit_format="textbox" data_type="string" advanced="0">
+    <default_value></default_value>
+    <relation group_id="siropuAdsManager" display_order="405"/>
+  </option>
+  <option option_id="siropuAdsManagerAdCustomSizes" edit_format="callback" data_type="array" validation_class="Siropu\AdsManager\Option\CustomAdSizes" validation_method="verifyOption" advanced="0">
+    <default_value>[]</default_value>
+    <edit_format_params>Siropu\AdsManager\Option\CustomAdSizes::renderOption</edit_format_params>
+    <sub_options>*</sub_options>
+    <relation group_id="siropuAdsManager" display_order="300"/>
+  </option>
+  <option option_id="siropuAdsManagerAdParsingWhenPosting" edit_format="checkbox" data_type="array" advanced="0">
+    <default_value>{"thread":0,"conversation":0,"profile":0,"chat":0}</default_value>
+    <edit_format_params>thread={{ phrase('siropu_ads_manager_thread_posts') }}
+conversation={{ phrase('siropu_ads_manager_conversation_messages') }}
+profile={{ phrase('siropu_ads_manager_profile_posts') }}
+chat={{ phrase('siropu_ads_manager_chat_messages') }}</edit_format_params>
+    <sub_options>thread
+conversation
+profile
+chat</sub_options>
+    <relation group_id="siropuAdsManager" display_order="500"/>
+  </option>
+  <option option_id="siropuAdsManagerAdminAlertNotification" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="siropuAdsManagerAdmin" display_order="2"/>
+  </option>
+  <option option_id="siropuAdsManagerAdminEmailNotification" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="siropuAdsManagerAdmin" display_order="1"/>
+  </option>
+  <option option_id="siropuAdsManagerAdsPerPage" edit_format="spinbox" data_type="positive_integer" advanced="0">
+    <default_value>50</default_value>
+    <edit_format_params>min=5</edit_format_params>
+    <relation group_id="siropuAdsManagerAdmin" display_order="400"/>
+  </option>
+  <option option_id="siropuAdsManagerAdsTxt" edit_format="callback" data_type="string" validation_class="Siropu\AdsManager\Option\AdsTxt" validation_method="verifyOption" advanced="0">
+    <default_value></default_value>
+    <edit_format_params>Siropu\AdsManager\Option\AdsTxt::renderOption</edit_format_params>
+    <relation group_id="siropuAdsManager" display_order="1000"/>
+  </option>
+  <option option_id="siropuAdsManagerAdvertiserUserGroups" edit_format="callback" data_type="array" advanced="0">
+    <default_value>[]</default_value>
+    <edit_format_params>Siropu\AdsManager\Option\AdvertiserUserGroups::renderSelectMultiple</edit_format_params>
+    <sub_options>*</sub_options>
+    <relation group_id="siropuAdsManagerAdvertiser" display_order="800"/>
+  </option>
+  <option option_id="siropuAdsManagerAdvertisersPage" edit_format="template" data_type="array" advanced="0">
+    <default_value>{"enabled":false,"order":"random"}</default_value>
+    <edit_format_params>siropu_ads_manager_option_template_advertisersPage</edit_format_params>
+    <sub_options>enabled
+order</sub_options>
+    <relation group_id="siropuAdsManagerAdvertiser" display_order="8"/>
+  </option>
+  <option option_id="siropuAdsManagerAdvertisersWidget" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>0</default_value>
+    <relation group_id="siropuAdsManagerAdvertiser" display_order="3000"/>
+  </option>
+  <option option_id="siropuAdsManagerAffiliateLinkThreadCustomFields" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>0</default_value>
+    <relation group_id="siropuAdsManager" display_order="502"/>
+  </option>
+  <option option_id="siropuAdsManagerAllowedBannerTypes" edit_format="checkbox" data_type="array" advanced="0">
+    <default_value>{"jpg":1,"png":1,"gif":1,"svg":0,"webp":0,"mp4":0,"swf":0}</default_value>
+    <edit_format_params>jpg=JPG
+png=PNG
+gif=GIF
+svg=SVG
+webp=WEBP
+mp4=MP4
+swf=SWF ({{ phrase('siropu_ads_manager_flash_animations') }})</edit_format_params>
+    <sub_options>jpg
+png
+gif
+svg
+webp
+mp4
+swf</sub_options>
+    <relation group_id="siropuAdsManagerAdvertiser" display_order="5"/>
+  </option>
+  <option option_id="siropuAdsManagerAllowedFeaturedResourceCategories" edit_format="callback" data_type="array" advanced="0">
+    <default_value>[]</default_value>
+    <edit_format_params>Siropu\AdsManager\Option\AllowedResourceCategories::renderSelectMultiple</edit_format_params>
+    <sub_options>*</sub_options>
+    <relation group_id="siropuAdsManagerAdvertiser" display_order="700"/>
+  </option>
+  <option option_id="siropuAdsManagerAllowedStickyForums" edit_format="callback" data_type="array" advanced="0">
+    <default_value>[]</default_value>
+    <edit_format_params>XF\Option\Forum::renderSelectMultiple</edit_format_params>
+    <sub_options>*</sub_options>
+    <relation group_id="siropuAdsManagerAdvertiser" display_order="600"/>
+  </option>
+  <option option_id="siropuAdsManagerArchiveInactiveAds" edit_format="spinbox" data_type="unsigned_integer" advanced="0">
+    <default_value>30</default_value>
+    <edit_format_params>units={{ phrase('days') }}
+min=0</edit_format_params>
+    <relation group_id="siropuAdsManager" display_order="5"/>
+  </option>
+  <option option_id="siropuAdsManagerBannerDirName" edit_format="textbox" data_type="string" validation_class="Siropu\AdsManager\Option\BannerDirName" validation_method="verifyOption" advanced="0">
+    <default_value></default_value>
+    <relation group_id="siropuAdsManager" display_order="0"/>
+  </option>
+  <option option_id="siropuAdsManagerBodySelector" edit_format="textbox" data_type="string" advanced="0">
+    <default_value>.p-body</default_value>
+    <relation group_id="siropuAdsManager" display_order="700"/>
+  </option>
+  <option option_id="siropuAdsManagerClickCountCondition" edit_format="spinbox" data_type="unsigned_numeric" advanced="0">
+    <default_value>24</default_value>
+    <edit_format_params>units={{ phrase('hours') }}
+min=0</edit_format_params>
+    <relation group_id="siropuAdsManager" display_order="101"/>
+  </option>
+  <option option_id="siropuAdsManagerClickFraudDeleteDaysOld" edit_format="spinbox" data_type="unsigned_integer" advanced="0">
+    <default_value>7</default_value>
+    <edit_format_params>units={{ phrase('days') }}</edit_format_params>
+    <relation group_id="siropuAdsManager" display_order="202"/>
+  </option>
+  <option option_id="siropuAdsManagerClickFraudGlobalBlock" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>0</default_value>
+    <relation group_id="siropuAdsManager" display_order="6"/>
+  </option>
+  <option option_id="siropuAdsManagerDeleteClickStats" edit_format="spinbox" data_type="unsigned_integer" advanced="0">
+    <default_value>0</default_value>
+    <edit_format_params>units={{ phrase('days') }}</edit_format_params>
+    <relation group_id="siropuAdsManager" display_order="201"/>
+  </option>
+  <option option_id="siropuAdsManagerDeleteDailyStats" edit_format="spinbox" data_type="unsigned_integer" advanced="0">
+    <default_value>0</default_value>
+    <edit_format_params>units={{ phrase('days') }}</edit_format_params>
+    <relation group_id="siropuAdsManager" display_order="200"/>
+  </option>
+  <option option_id="siropuAdsManagerDisableLowCtrAds" edit_format="template" data_type="array" validation_class="Siropu\AdsManager\Option\DisableLowCtrAds" validation_method="verifyOption" advanced="0">
+    <default_value>{"enabled":"","ctr":"","days":""}</default_value>
+    <edit_format_params>siropu_ads_manager_option_template_disableLowCtrAds</edit_format_params>
+    <sub_options>enabled
+ctr
+days</sub_options>
+    <relation group_id="siropuAdsManagerAdmin" display_order="200"/>
+  </option>
+  <option option_id="siropuAdsManagerDisallowedKeywords" edit_format="textbox" data_type="string" advanced="0">
+    <default_value></default_value>
+    <edit_format_params>rows=5</edit_format_params>
+    <relation group_id="siropuAdsManagerAdvertiser" display_order="402"/>
+  </option>
+  <option option_id="siropuAdsManagerDisallowedTemplates" edit_format="textbox" data_type="string" advanced="0">
+    <default_value>error
+login
+login_password_confirm
+login_two_step
+message_page
+register_complete
+register_connected_account
+register_confirm
+register_form
+lost_password
+lost_password_confirm
+contact_form
+help_index
+help_page
+account_details</default_value>
+    <edit_format_params>rows=3</edit_format_params>
+    <relation group_id="siropuAdsManager" display_order="1"/>
+  </option>
+  <option option_id="siropuAdsManagerDisplayAdExpirationDate" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="siropuAdsManagerAdmin" display_order="402"/>
+  </option>
+  <option option_id="siropuAdsManagerDisplayAdOwner" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="siropuAdsManagerAdmin" display_order="401"/>
+  </option>
+  <option option_id="siropuAdsManagerEnableCustomThreadFields" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>0</default_value>
+    <relation group_id="siropuAdsManagerAdvertiser" display_order="502"/>
+  </option>
+  <option option_id="siropuAdsManagerEnableCustomThreadPrefix" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>0</default_value>
+    <relation group_id="siropuAdsManagerAdvertiser" display_order="503"/>
+  </option>
+  <option option_id="siropuAdsManagerEnabled" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="siropuAdsManagerAdvertiser" display_order="1"/>
+  </option>
+  <option option_id="siropuAdsManagerExpiredPromoThreadForum" edit_format="callback" data_type="unsigned_integer" advanced="0">
+    <default_value>0</default_value>
+    <edit_format_params>XF\Option\Forum::renderSelect</edit_format_params>
+    <relation group_id="siropuAdsManagerAdvertiser" display_order="501"/>
+  </option>
+  <option option_id="siropuAdsManagerFeaturedResourcePrefix" edit_format="callback" data_type="unsigned_integer" advanced="0">
+    <default_value>0</default_value>
+    <edit_format_params>Siropu\AdsManager\Option\FeaturedResourcePrefix::renderSelect</edit_format_params>
+    <relation group_id="siropuAdsManagerAdvertiser" display_order="701"/>
+  </option>
+  <option option_id="siropuAdsManagerFeaturedResourcesWidget" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>0</default_value>
+    <relation group_id="siropuAdsManagerAdvertiser" display_order="3002"/>
+  </option>
+  <option option_id="siropuAdsManagerFeaturedThreadsWidget" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>0</default_value>
+    <relation group_id="siropuAdsManagerAdvertiser" display_order="3001"/>
+  </option>
+  <option option_id="siropuAdsManagerFooterSelector" edit_format="textbox" data_type="string" advanced="0">
+    <default_value>.p-footer</default_value>
+    <relation group_id="siropuAdsManager" display_order="702"/>
+  </option>
+  <option option_id="siropuAdsManagerForumMaxStickies" edit_format="spinbox" data_type="unsigned_integer" advanced="0">
+    <default_value>3</default_value>
+    <edit_format_params>min=1</edit_format_params>
+    <relation group_id="siropuAdsManagerAdvertiser" display_order="601"/>
+  </option>
+  <option option_id="siropuAdsManagerHomeMessage" edit_format="textbox" data_type="string" advanced="0">
+    <default_value>Welcome to our advertisement management system from where you can purchase ad spaces on our website. If you are interested in advertising with us, please check out our available advertisement packages.</default_value>
+    <edit_format_params>rows=5</edit_format_params>
+    <relation group_id="siropuAdsManagerAdvertiser" display_order="4"/>
+  </option>
+  <option option_id="siropuAdsManagerInnerBodySelector" edit_format="textbox" data_type="string" advanced="0">
+    <default_value>.p-body-inner</default_value>
+    <relation group_id="siropuAdsManager" display_order="701"/>
+  </option>
+  <option option_id="siropuAdsManagerInvoicePayTimeLimit" edit_format="spinbox" data_type="unsigned_integer" advanced="0">
+    <default_value>36</default_value>
+    <edit_format_params>units={{ phrase('hours') }}
+min=1</edit_format_params>
+    <relation group_id="siropuAdsManagerAdvertiser" display_order="2000"/>
+  </option>
+  <option option_id="siropuAdsManagerJsFilePath" edit_format="textbox" data_type="string" validation_class="Siropu\AdsManager\Option\CoreJsFilePath" validation_method="verifyOption" advanced="0">
+    <default_value></default_value>
+    <relation group_id="siropuAdsManager" display_order="0"/>
+  </option>
+  <option option_id="siropuAdsManagerKeywordDescription" edit_format="spinbox" data_type="unsigned_integer" advanced="0">
+    <default_value>0</default_value>
+    <edit_format_params>max=255</edit_format_params>
+    <relation group_id="siropuAdsManagerAdvertiser" display_order="401"/>
+  </option>
+  <option option_id="siropuAdsManagerKeywordMaxWords" edit_format="spinbox" data_type="positive_integer" advanced="0">
+    <default_value>3</default_value>
+    <edit_format_params>min=1</edit_format_params>
+    <relation group_id="siropuAdsManagerAdvertiser" display_order="400"/>
+  </option>
+  <option option_id="siropuAdsManagerKeywordThreadCustomFields" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>0</default_value>
+    <relation group_id="siropuAdsManager" display_order="501"/>
+  </option>
+  <option option_id="siropuAdsManagerMaxAdDescriptionLength" edit_format="spinbox" data_type="unsigned_integer" advanced="0">
+    <default_value>85</default_value>
+    <edit_format_params>min=30</edit_format_params>
+    <relation group_id="siropuAdsManagerAdvertiser" display_order="101"/>
+  </option>
+  <option option_id="siropuAdsManagerMaxAdTitleLength" edit_format="spinbox" data_type="unsigned_integer" advanced="0">
+    <default_value>35</default_value>
+    <edit_format_params>min=15</edit_format_params>
+    <relation group_id="siropuAdsManagerAdvertiser" display_order="100"/>
+  </option>
+  <option option_id="siropuAdsManagerMaxBgImageSize" edit_format="spinbox" data_type="unsigned_integer" advanced="0">
+    <default_value>2000</default_value>
+    <edit_format_params>min=0
+step=250</edit_format_params>
+    <relation group_id="siropuAdsManagerAdvertiser" display_order="103"/>
+  </option>
+  <option option_id="siropuAdsManagerMaxImageSize" edit_format="spinbox" data_type="unsigned_integer" advanced="0">
+    <default_value>150</default_value>
+    <edit_format_params>min=0</edit_format_params>
+    <relation group_id="siropuAdsManagerAdvertiser" display_order="102"/>
+  </option>
+  <option option_id="siropuAdsManagerMaxPromoThreadStickies" edit_format="spinbox" data_type="unsigned_integer" advanced="0">
+    <default_value>3</default_value>
+    <edit_format_params>min=1</edit_format_params>
+    <relation group_id="siropuAdsManagerAdvertiser" display_order="506"/>
+  </option>
+  <option option_id="siropuAdsManagerMaxUserPromoThreads" edit_format="spinbox" data_type="unsigned_integer" advanced="0">
+    <default_value>3</default_value>
+    <edit_format_params>min=1</edit_format_params>
+    <relation group_id="siropuAdsManagerAdvertiser" display_order="505"/>
+  </option>
+  <option option_id="siropuAdsManagerMenuLink" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>0</default_value>
+    <relation group_id="siropuAdsManagerAdvertiser" display_order="2"/>
+  </option>
+  <option option_id="siropuAdsManagerNodeIdNot" edit_format="textbox" data_type="string" advanced="0">
+    <default_value></default_value>
+    <relation group_id="siropuAdsManager" display_order="2"/>
+  </option>
+  <option option_id="siropuAdsManagerPageInfo" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>0</default_value>
+    <relation group_id="siropuAdsManagerAdmin" display_order="303"/>
+  </option>
+  <option option_id="siropuAdsManagerPaymentInstructions" edit_format="textbox" data_type="string" advanced="0">
+    <default_value></default_value>
+    <edit_format_params>rows=3</edit_format_params>
+    <relation group_id="siropuAdsManagerAdvertiser" display_order="7"/>
+  </option>
+  <option option_id="siropuAdsManagerPaymentProfiles" edit_format="callback" data_type="array" advanced="0">
+    <default_value>[]</default_value>
+    <edit_format_params>Siropu\AdsManager\Option\PaymentProfiles::renderCheckMultiple</edit_format_params>
+    <sub_options>*</sub_options>
+    <relation group_id="siropuAdsManagerAdvertiser" display_order="6"/>
+  </option>
+  <option option_id="siropuAdsManagerPlaceholderBgColor" edit_format="template" data_type="string" advanced="0">
+    <default_value>rgb(204, 204, 204)</default_value>
+    <edit_format_params>siropu_ads_manager_option_template_placeholderColor</edit_format_params>
+    <relation group_id="siropuAdsManagerAdvertiser" display_order="900"/>
+  </option>
+  <option option_id="siropuAdsManagerPlaceholderTextColor" edit_format="template" data_type="string" advanced="0">
+    <default_value>rgb(85, 85, 85)</default_value>
+    <edit_format_params>siropu_ads_manager_option_template_placeholderColor</edit_format_params>
+    <relation group_id="siropuAdsManagerAdvertiser" display_order="901"/>
+  </option>
+  <option option_id="siropuAdsManagerPositionVisualization" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>0</default_value>
+    <relation group_id="siropuAdsManagerAdmin" display_order="300"/>
+  </option>
+  <option option_id="siropuAdsManagerPreferredCurrency" edit_format="template" data_type="string" advanced="0">
+    <default_value>USD</default_value>
+    <edit_format_params>siropu_ads_manager_option_template_preferredCurrency</edit_format_params>
+    <relation group_id="siropuAdsManagerAdmin" display_order="100"/>
+  </option>
+  <option option_id="siropuAdsManagerPromoThreadForums" edit_format="callback" data_type="array" advanced="0">
+    <default_value>[]</default_value>
+    <edit_format_params>XF\Option\Forum::renderSelectMultiple</edit_format_params>
+    <sub_options>*</sub_options>
+    <relation group_id="siropuAdsManagerAdvertiser" display_order="500"/>
+  </option>
+  <option option_id="siropuAdsManagerPromoThreadPrefix" edit_format="callback" data_type="unsigned_integer" advanced="0">
+    <default_value>0</default_value>
+    <edit_format_params>Siropu\AdsManager\Option\ThreadPrefix::renderSelect</edit_format_params>
+    <relation group_id="siropuAdsManagerAdvertiser" display_order="504"/>
+  </option>
+  <option option_id="siropuAdsManagerSamBannerUnitCssClass" edit_format="textbox" data_type="string" advanced="0">
+    <default_value>samBannerUnit</default_value>
+    <relation group_id="siropuAdsManager" display_order="802"/>
+  </option>
+  <option option_id="siropuAdsManagerSamCodeUnitCssClass" edit_format="textbox" data_type="string" advanced="0">
+    <default_value>samCodeUnit</default_value>
+    <relation group_id="siropuAdsManager" display_order="801"/>
+  </option>
+  <option option_id="siropuAdsManagerSamItemCssClass" edit_format="textbox" data_type="string" advanced="0">
+    <default_value>samItem</default_value>
+    <relation group_id="siropuAdsManager" display_order="800"/>
+  </option>
+  <option option_id="siropuAdsManagerSamLinkUnitCssClass" edit_format="textbox" data_type="string" advanced="0">
+    <default_value>samLinkUnit</default_value>
+    <relation group_id="siropuAdsManager" display_order="804"/>
+  </option>
+  <option option_id="siropuAdsManagerSamTextUnitCssClass" edit_format="textbox" data_type="string" advanced="0">
+    <default_value>samTextUnit</default_value>
+    <relation group_id="siropuAdsManager" display_order="803"/>
+  </option>
+  <option option_id="siropuAdsManagerStickyThreadPrefix" edit_format="callback" data_type="unsigned_integer" advanced="0">
+    <default_value>0</default_value>
+    <edit_format_params>Siropu\AdsManager\Option\ThreadPrefix::renderSelect</edit_format_params>
+    <relation group_id="siropuAdsManagerAdvertiser" display_order="603"/>
+  </option>
+  <option option_id="siropuAdsManagerSubscriptions" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="siropuAdsManagerAdvertiser" display_order="2001"/>
+  </option>
+  <option option_id="siropuAdsManagerTermsAndConditions" edit_format="textbox" data_type="string" advanced="0">
+    <default_value></default_value>
+    <edit_format_params>rows=5</edit_format_params>
+    <relation group_id="siropuAdsManagerAdvertiser" display_order="1000"/>
+  </option>
+  <option option_id="siropuAdsManagerThreadIdNot" edit_format="textbox" data_type="string" advanced="0">
+    <default_value></default_value>
+    <relation group_id="siropuAdsManager" display_order="3"/>
+  </option>
+  <option option_id="siropuAdsManagerThreadPrefixNot" edit_format="callback" data_type="array" advanced="0">
+    <default_value>[]</default_value>
+    <edit_format_params>Siropu\AdsManager\Option\ThreadPrefix::renderSelectMultiple</edit_format_params>
+    <sub_options>*</sub_options>
+    <relation group_id="siropuAdsManager" display_order="4"/>
+  </option>
+  <option option_id="siropuAdsManagerUserGroupPostExceptions" edit_format="callback" data_type="array" advanced="0">
+    <default_value>[]</default_value>
+    <edit_format_params>XF\Option\UserGroup::renderSelectMultiple</edit_format_params>
+    <sub_options>*</sub_options>
+    <relation group_id="siropuAdsManager" display_order="600"/>
+  </option>
+  <option option_id="siropuAdsManagerUserMaxStickies" edit_format="spinbox" data_type="unsigned_integer" advanced="0">
+    <default_value>1</default_value>
+    <edit_format_params>min=1</edit_format_params>
+    <relation group_id="siropuAdsManagerAdvertiser" display_order="602"/>
+  </option>
+  <option option_id="siropuAdsManagerViewCountCondition" edit_format="spinbox" data_type="unsigned_numeric" advanced="0">
+    <default_value>24</default_value>
+    <edit_format_params>units={{ phrase('hours') }}
+min=0</edit_format_params>
+    <relation group_id="siropuAdsManager" display_order="100"/>
+  </option>
+  <option option_id="siropuAdsManagerViewCountMethod" edit_format="radio" data_type="string" advanced="0">
+    <default_value>view</default_value>
+    <edit_format_params>view={{ phrase('siropu_ads_manager_when_ad_is_viewed') }}
+impression={{ phrase('siropu_ads_manager_when_ad_is_loaded') }}</edit_format_params>
+    <relation group_id="siropuAdsManager" display_order="102"/>
+  </option>
+</options>

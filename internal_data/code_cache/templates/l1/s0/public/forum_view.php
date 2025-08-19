@@ -104,6 +104,36 @@ return array(
 	$__finalCompiled .= '
 
 					';
+	if ($__vars['xf']['options']['siropuAdsManagerEnabled'] AND $__templater->method($__vars['xf']['visitor'], 'hasPermission', array('siropuAdsManager', 'createAds', ))) {
+		$__finalCompiled .= '
+	';
+		if (!$__templater->test($__vars['xf']['samThreadAds']['thread'], 'empty', array()) AND $__templater->func('in_array', array($__vars['forum']['node_id'], $__vars['xf']['options']['siropuAdsManagerPromoThreadForums'], ), false)) {
+			$__finalCompiled .= '
+		' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_thread', array(
+				'type' => 'thread',
+				'forum' => $__vars['forum'],
+			), $__vars) . '
+	';
+		}
+		$__finalCompiled .= '
+
+	';
+		if (!$__templater->test($__vars['xf']['samThreadAds']['sticky'], 'empty', array()) AND $__templater->func('in_array', array($__vars['forum']['node_id'], $__vars['xf']['options']['siropuAdsManagerAllowedStickyForums'], ), false)) {
+			$__finalCompiled .= '
+		' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_thread', array(
+				'type' => 'sticky',
+				'forum' => $__vars['forum'],
+			), $__vars) . '
+	';
+		}
+		$__finalCompiled .= '
+';
+	}
+	$__finalCompiled .= '
+' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+		'position' => 'forum_view_above_stickies',
+	), $__vars) . '
+';
 	if (!$__templater->test($__vars['stickyThreads'], 'empty', array()) OR !$__templater->test($__vars['threads'], 'empty', array())) {
 		$__finalCompiled .= '
 						';
@@ -127,6 +157,9 @@ return array(
 							' . $__templater->callAdsMacro('forum_view_below_stickies', array(
 				'forum' => $__vars['forum'],
 			), $__vars) . '
+' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+				'position' => 'forum_view_below_stickies',
+			), $__vars) . '
 						';
 		}
 		$__finalCompiled .= '
@@ -145,6 +178,26 @@ return array(
 					if ($__templater->isTraversable($__vars['threads'])) {
 						foreach ($__vars['threads'] AS $__vars['thread']) {
 							$__finalCompiled .= '
+';
+							$__vars['samCounter'] = $__templater->func('number', array($__vars['samCounter'] + 1, ), false);
+							$__finalCompiled .= '
+
+';
+							$__compilerTemp1 = '';
+							$__compilerTemp1 .= '
+			' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+								'position' => 'thread_list_above_item_container_' . $__vars['samCounter'],
+							), $__vars) . '
+		';
+							if (strlen(trim($__compilerTemp1)) > 0) {
+								$__finalCompiled .= '
+	<div class="structItem structItem--thread samUnitWrapper">
+		' . $__compilerTemp1 . '
+	</div>
+';
+							}
+							$__finalCompiled .= '
+
 			' . $__templater->callMacro(null, ($__vars['templateOverrides']['thread_list_macro'] ?: 'thread_list_macros::item'), $__templater->combineMacroArgumentAttributes($__vars['templateOverrides']['thread_list_macro_args'], array(
 								'thread' => $__vars['thread'],
 								'forum' => $__vars['forum'],
@@ -188,7 +241,23 @@ return array(
 							'thread' => $__vars['thread'],
 							'forum' => $__vars['forum'],
 						)), $__vars) . '
-	';
+	
+';
+						$__compilerTemp2 = '';
+						$__compilerTemp2 .= '
+			' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+							'position' => 'thread_list_below_item_container_' . $__vars['samCounter'],
+						), $__vars) . '
+		';
+						if (strlen(trim($__compilerTemp2)) > 0) {
+							$__finalCompiled .= '
+	<div class="structItem structItem--thread samUnitWrapper">
+		' . $__compilerTemp2 . '
+	</div>
+';
+						}
+						$__finalCompiled .= '
+';
 					}
 				}
 				$__finalCompiled .= '
@@ -576,6 +645,9 @@ return array(
 	' . $__templater->callAdsMacro('forum_view_above_node_list', array(
 				'forum' => $__vars['forum'],
 			), $__vars) . '
+' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+				'position' => 'forum_view_above_node_list',
+			), $__vars) . '
 	<div class="block">
 		<div class="block-container">
 			<div class="block-body">
@@ -627,6 +699,9 @@ return array(
 	' . $__templater->callAdsMacro('forum_view_below_node_list', array(
 				'forum' => $__vars['forum'],
 			), $__vars) . '
+' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+				'position' => 'forum_view_below_node_list',
+			), $__vars) . '
 ';
 		}
 		$__finalCompiled .= '
@@ -663,6 +738,9 @@ return array(
 ' . $__templater->renderExtension('above_thread_list', $__vars, $__extensions) . '
 ' . $__templater->callAdsMacro('forum_view_above_thread_list', array(
 			'forum' => $__vars['forum'],
+		), $__vars) . '
+' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+			'position' => 'forum_view_above_thread_list',
 		), $__vars) . '
 
 ' . '
@@ -814,6 +892,9 @@ return array(
 
 ' . $__templater->callAdsMacro('forum_view_below_thread_list', array(
 			'forum' => $__vars['forum'],
+		), $__vars) . '
+' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+			'position' => 'forum_view_below_thread_list',
 		), $__vars) . '
 ' . $__templater->renderExtension('below_thread_list', $__vars, $__extensions) . '
 

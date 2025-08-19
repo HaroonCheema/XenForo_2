@@ -28,7 +28,7 @@ return array(
 
 <div class="block-body">
 	<div class="block-row">
-		' . $__templater->func('bb_code', array($__vars['product']['product_specification'], 'dbtech_ecommerce_product_specifications', $__vars['product'], ), true) . '
+		' . $__templater->filter($__templater->func('bb_code', array($__vars['product']['product_specification'], 'dbtech_ecommerce_product_specifications', $__vars['product'], ), false), array(array('sam_keyword_ads', array('dbtech_product_spec', $__vars['xf']['samFilterAds'], $__vars['product'], $__vars['product']['User'] AND $__templater->method($__vars['product']['User'], 'isMemberOf', array($__vars['xf']['options']['siropuAdsManagerUserGroupPostExceptions'], )), )),), true) . '
 	</div>
 </div>';
 	return $__finalCompiled;

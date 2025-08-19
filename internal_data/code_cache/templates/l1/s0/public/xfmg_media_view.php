@@ -83,9 +83,15 @@ return array(
 </div>
 
 <div class="block js-mediaInfoBlock">
-	' . $__templater->callMacro('xfmg_media_view_macros', 'media_film_strip', array(
+	' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+		'position' => 'media_view_above_media_preview',
+	), $__vars) . '
+' . $__templater->callMacro('xfmg_media_view_macros', 'media_film_strip', array(
 		'mediaItem' => $__vars['mediaItem'],
 		'filmStripParams' => $__vars['filmStripParams'],
+	), $__vars) . '
+' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+		'position' => 'media_view_below_media_preview',
 	), $__vars) . '
 
 	<div class="block-container">
@@ -570,6 +576,9 @@ return array(
 		$__finalCompiled .= '
 	<div class="columnContainer">
 		<div class="columnContainer-comments">
+' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+			'position' => 'media_view_above_comments',
+		), $__vars) . '
 			' . $__templater->callMacro('xfmg_comment_macros', 'comment_list', array(
 			'comments' => $__vars['comments'],
 			'content' => $__vars['mediaItem'],
@@ -583,8 +592,14 @@ return array(
 		</div>
 
 		<div class="columnContainer-sidebar">
-			' . $__templater->callMacro('xfmg_media_view_macros', 'info_sidebar', array(
+			' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+			'position' => 'sidebar_above_media_info_block',
+		), $__vars) . '
+' . $__templater->callMacro('xfmg_media_view_macros', 'info_sidebar', array(
 			'mediaItem' => $__vars['mediaItem'],
+		), $__vars) . '
+' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+			'position' => 'sidebar_below_media_info_block',
 		), $__vars) . '
 
 			' . $__templater->callMacro('xfmg_media_view_macros', 'extra_info_sidebar', array(
@@ -603,8 +618,14 @@ return array(
 			'mediaNotes' => $__vars['mediaNotes'],
 		), $__vars) . '
 
-			' . $__templater->callMacro('xfmg_media_view_macros', 'share_sidebar', array(
+			' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+			'position' => 'sidebar_above_media_share_block',
+		), $__vars) . '
+' . $__templater->callMacro('xfmg_media_view_macros', 'share_sidebar', array(
 			'mediaItem' => $__vars['mediaItem'],
+		), $__vars) . '
+' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+			'position' => 'sidebar_below_media_share_block',
 		), $__vars) . '
 		</div>
 	</div>
@@ -613,8 +634,14 @@ return array(
 		$__finalCompiled .= '
 	';
 		$__templater->modifySidebarHtml('infoSidebar', '
-		' . $__templater->callMacro('xfmg_media_view_macros', 'info_sidebar', array(
+		' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+			'position' => 'sidebar_above_media_info_block',
+		), $__vars) . '
+' . $__templater->callMacro('xfmg_media_view_macros', 'info_sidebar', array(
 			'mediaItem' => $__vars['mediaItem'],
+		), $__vars) . '
+' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+			'position' => 'sidebar_below_media_info_block',
 		), $__vars) . '
 	', 'replace');
 		$__finalCompiled .= '
@@ -648,8 +675,14 @@ return array(
 		$__finalCompiled .= '
 	';
 		$__templater->modifySidebarHtml('shareSidebar', '
-		' . $__templater->callMacro('xfmg_media_view_macros', 'share_sidebar', array(
+		' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+			'position' => 'sidebar_above_media_share_block',
+		), $__vars) . '
+' . $__templater->callMacro('xfmg_media_view_macros', 'share_sidebar', array(
 			'mediaItem' => $__vars['mediaItem'],
+		), $__vars) . '
+' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+			'position' => 'sidebar_below_media_share_block',
 		), $__vars) . '
 	', 'replace');
 		$__finalCompiled .= '

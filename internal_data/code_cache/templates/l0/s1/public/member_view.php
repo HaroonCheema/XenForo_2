@@ -500,6 +500,10 @@ return array(
 ' . $__templater->callAdsMacro('member_view_below_tabs', array(
 		'user' => $__vars['user'],
 	), $__vars) . '
+' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+		'position' => 'member_view_below_tabs',
+	), $__vars) . '
+
 
 ';
 	if ($__vars['user']['is_banned'] AND (!$__templater->method($__vars['xf']['visitor'], 'hasPermission', array('fs_ban_watch_profile', 'other_can_check', )))) {
@@ -561,11 +565,22 @@ return array(
 				if ($__templater->isTraversable($__vars['profilePosts'])) {
 					foreach ($__vars['profilePosts'] AS $__vars['profilePost']) {
 						$__finalCompiled .= '
+';
+						$__vars['samCounter'] = $__templater->func('number', array($__vars['samCounter'] + 1, ), false);
+						$__finalCompiled .= '
+' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+							'position' => 'profile_post_above_container_' . $__vars['samCounter'],
+						), $__vars) . '
+
 								' . $__templater->callMacro('profile_post_macros', (($__vars['profilePost']['message_state'] == 'deleted') ? 'profile_post_deleted' : 'profile_post'), array(
 							'attachmentData' => $__vars['profilePostAttachData'][$__vars['profilePost']['profile_post_id']],
 							'profilePost' => $__vars['profilePost'],
 						), $__vars) . '
-							';
+							
+' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+							'position' => 'profile_post_below_container_' . $__vars['samCounter'],
+						), $__vars) . '
+';
 					}
 				}
 				$__finalCompiled .= '

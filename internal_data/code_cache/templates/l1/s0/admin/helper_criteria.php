@@ -414,6 +414,13 @@ return array(
 		'_type' => 'option',
 	),
 	array(
+		'name' => 'user_criteria[is_guest_cookie][rule]',
+		'value' => 'is_guest_cookie',
+		'selected' => $__vars['criteria']['is_guest_cookie'],
+		'label' => 'User is a guest and accepted cookies',
+		'_type' => 'option',
+	),
+	array(
 		'name' => 'user_criteria[is_guest][rule]',
 		'value' => 'is_guest',
 		'selected' => $__vars['criteria']['is_guest'],
@@ -1174,6 +1181,13 @@ return array(
 		'_type' => 'option',
 	),
 	array(
+		'name' => 'user_criteria[is_guest_cookie][rule]',
+		'value' => 'is_guest_cookie',
+		'selected' => $__vars['criteria']['is_guest_cookie'],
+		'label' => 'User is a guest and accepted cookies',
+		'_type' => 'option',
+	),
+	array(
 		'name' => 'user_criteria[is_guest][rule]',
 		'value' => 'is_guest',
 		'selected' => $__vars['criteria']['is_guest'],
@@ -1622,6 +1636,10 @@ return array(
 		}
 	}
 	$__compilerTemp6 = $__templater->mergeChoiceOptions(array(), $__vars['data']['timeZones']);
+	$__templater->includeJs(array(
+		'src' => 'siropu/am/admin.js',
+		'min' => '1',
+	));
 	$__compilerTemp7 = array();
 	if ($__templater->isTraversable($__vars['data']['nodes'])) {
 		foreach ($__vars['data']['nodes'] AS $__vars['option']) {
@@ -1652,11 +1670,39 @@ return array(
 			);
 		}
 	}
+	$__templater->inlineCss('
+	ul[data-page-critaria="node"]
+	{
+		max-height: 200px;
+		overflow: auto;
+	}
+');
 	$__compilerTemp10 = array();
-	$__compilerTemp11 = $__templater->method($__vars['data']['styleTree'], 'getFlattened', array(0, ));
-	if ($__templater->isTraversable($__compilerTemp11)) {
-		foreach ($__compilerTemp11 AS $__vars['treeEntry']) {
+	if ($__templater->isTraversable($__vars['data']['nodes'])) {
+		foreach ($__vars['data']['nodes'] AS $__vars['option']) {
 			$__compilerTemp10[] = array(
+				'value' => $__vars['option']['value'],
+				'label' => $__templater->escape($__vars['option']['label']),
+				'_type' => 'option',
+			);
+		}
+	}
+	$__compilerTemp11 = array();
+	$__compilerTemp12 = $__templater->method($__vars['data']['styleTree'], 'getFlattened', array(0, ));
+	if ($__templater->isTraversable($__compilerTemp12)) {
+		foreach ($__compilerTemp12 AS $__vars['treeEntry']) {
+			$__compilerTemp11[] = array(
+				'value' => $__vars['treeEntry']['record']['style_id'],
+				'label' => $__templater->func('repeat', array('--', $__vars['treeEntry']['depth'], ), true) . ' ' . $__templater->escape($__vars['treeEntry']['record']['title']),
+				'_type' => 'option',
+			);
+		}
+	}
+	$__compilerTemp13 = array();
+	$__compilerTemp14 = $__templater->method($__vars['data']['styleTree'], 'getFlattened', array(0, ));
+	if ($__templater->isTraversable($__compilerTemp14)) {
+		foreach ($__compilerTemp14 AS $__vars['treeEntry']) {
+			$__compilerTemp13[] = array(
 				'value' => $__vars['treeEntry']['record']['style_id'],
 				'label' => $__templater->func('repeat', array('--', $__vars['treeEntry']['depth'], ), true) . ' ' . $__templater->escape($__vars['treeEntry']['record']['title']),
 				'_type' => 'option',
@@ -1790,24 +1836,36 @@ return array(
 
 			' . '
 
-			' . $__templater->formCheckBoxRow(array(
+			' . '' . '
+' . $__templater->formCheckBoxRow(array(
 	), array(array(
 		'name' => 'page_criteria[nodes][rule]',
 		'value' => 'nodes',
 		'selected' => $__vars['criteria']['nodes'],
 		'label' => 'Page is within nodes' . $__vars['xf']['language']['label_separator'],
-		'_dependent' => array($__templater->formSelect(array(
+		'class' => 'samNodeToggle',
+		'_dependent' => array('
+				' . $__templater->formTextBox(array(
+		'type' => 'search',
+		'placeholder' => 'Type to find node...',
+		'data-xf-init' => 'siropu-ads-manager-find-node',
+		'autocomplete' => 'off',
+	)) . '
+					' . $__templater->formCheckBox(array(
 		'name' => 'page_criteria[nodes][data][node_ids]',
-		'multiple' => 'true',
 		'value' => $__vars['criteria']['nodes']['node_ids'],
-	), $__compilerTemp7), $__templater->formCheckBox(array(
+		'data-page-critaria' => 'node',
+	), $__compilerTemp7) . '
+					' . $__templater->formCheckBox(array(
+		'style' => 'margin-top: 25px;',
 	), array(array(
 		'name' => 'page_criteria[nodes][data][node_only]',
 		'value' => '1',
 		'selected' => $__vars['criteria']['nodes']['node_only'],
 		'label' => 'Only display within selected nodes (rather than including child nodes)',
 		'_type' => 'option',
-	)))),
+	))) . '
+					'),
 		'_type' => 'option',
 	)), array(
 		'label' => 'Nodes',
@@ -1864,6 +1922,51 @@ return array(
 	)) . '
 
 <hr class="formRowSep" />
+
+' . '' . '
+
+' . $__templater->formCheckBoxRow(array(
+	), array(array(
+		'name' => 'page_criteria[nodes_not][rule]',
+		'value' => 'nodes_not',
+		'selected' => $__vars['criteria']['nodes_not'],
+		'label' => 'Page is NOT within nodes' . $__vars['xf']['language']['label_separator'],
+		'class' => 'samNodeToggle',
+		'_dependent' => array('
+			' . $__templater->formTextBox(array(
+		'type' => 'search',
+		'placeholder' => 'Type to find node...',
+		'data-xf-init' => 'siropu-ads-manager-find-node',
+		'autocomplete' => 'off',
+	)) . '
+			' . $__templater->formCheckBox(array(
+		'name' => 'page_criteria[nodes_not][data][node_ids]',
+		'value' => $__vars['criteria']['nodes_not']['node_ids'],
+		'data-page-critaria' => 'node',
+	), $__compilerTemp10) . '
+			' . $__templater->formCheckBox(array(
+		'style' => 'margin-top: 25px;',
+	), array(array(
+		'name' => 'page_criteria[nodes_not][data][node_only]',
+		'value' => '1',
+		'selected' => $__vars['criteria']['nodes_not']['node_only'],
+		'label' => 'Do NOT display within selected nodes only (rather than including child nodes)',
+		'_type' => 'option',
+	))) . '
+			' . $__templater->formCheckBox(array(
+	), array(array(
+		'name' => 'page_criteria[nodes_not][data][display_outside]',
+		'value' => '1',
+		'selected' => $__vars['criteria']['nodes_not']['display_outside'],
+		'label' => 'Display outside of selected nodes (non-node pages)',
+		'_type' => 'option',
+	))) . '
+		'),
+		'_type' => 'option',
+	)), array(
+	)) . '
+
+<hr class="formRowSep" />
 			' . $__templater->includeTemplate('dbtech_ecommerce_helper_criteria_page', $__vars) . '
 
 			<hr class="formRowSep" />
@@ -1877,7 +1980,7 @@ return array(
 		'_dependent' => array($__templater->formSelect(array(
 		'name' => 'page_criteria[style][data][style_id]',
 		'value' => $__vars['criteria']['style']['style_id'],
-	), $__compilerTemp10)),
+	), $__compilerTemp11)),
 		'_type' => 'option',
 	),
 	array(
@@ -1930,13 +2033,45 @@ return array(
 		'value' => $__vars['criteria']['template']['name'],
 		'dir' => 'ltr',
 	))),
-		'afterhint' => 'The name of the template specified in the controller response.',
+		'afterhint' => '
+	' . 'The name of the template specified in the controller response. Multiple templates may be separated by commas.' . '<br>
+	<a href="' . $__templater->func('link', array('ads-manager/help/content-template-list', ), true) . '" data-xf-click="overlay">' . 'View content template list' . '</a>
+',
 		'_type' => 'option',
 	)), array(
 		'label' => 'Page information',
 	)) . '
 
 			' . '
+' . $__templater->formCheckBoxRow(array(
+	), array(array(
+		'name' => 'page_criteria[template_not][rule]',
+		'value' => 'template_not',
+		'selected' => $__vars['criteria']['template_not'],
+		'label' => 'Content template is NOT' . $__vars['xf']['language']['label_separator'],
+		'_dependent' => array($__templater->formTextBox(array(
+		'name' => 'page_criteria[template_not][data][name]',
+		'value' => $__vars['criteria']['template_not']['name'],
+		'dir' => 'ltr',
+	))),
+		'afterhint' => '
+			' . 'The name of the template specified in the controller response. Multiple templates may be separated by commas.' . '<br>
+			<a href="' . $__templater->func('link', array('ads-manager/help/content-template-list', ), true) . '" data-xf-click="overlay">' . 'View content template list' . '</a>
+		',
+		'_type' => 'option',
+	),
+	array(
+		'name' => 'page_criteria[style_not][rule]',
+		'value' => 'style_not',
+		'selected' => $__vars['criteria']['style_not'],
+		'label' => 'User is NOT browsing with the following style:',
+		'_dependent' => array($__templater->formSelect(array(
+		'name' => 'page_criteria[style_not][data][style_id]',
+		'value' => $__vars['criteria']['style_not']['style_id'],
+	), $__compilerTemp13)),
+		'_type' => 'option',
+	)), array(
+	)) . '
 		</li>
 	');
 	$__finalCompiled .= '

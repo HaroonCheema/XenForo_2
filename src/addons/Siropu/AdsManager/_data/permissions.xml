@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<permissions>
+  <permission permission_group_id="siropuAdsManager" permission_id="bypassApproval" permission_type="flag" interface_group_id="siropuAdsManager" display_order="9"/>
+  <permission permission_group_id="siropuAdsManager" permission_id="createAds" permission_type="flag" interface_group_id="siropuAdsManager" display_order="2"/>
+  <permission permission_group_id="siropuAdsManager" permission_id="delete" permission_type="flag" interface_group_id="siropuAdsManager" display_order="8"/>
+  <permission permission_group_id="siropuAdsManager" permission_id="deleteFeatured" permission_type="flag" interface_group_id="siropuAdsManagerModerator" display_order="6"/>
+  <permission permission_group_id="siropuAdsManager" permission_id="deleteSticky" permission_type="flag" interface_group_id="siropuAdsManagerModerator" display_order="3"/>
+  <permission permission_group_id="siropuAdsManager" permission_id="editFeatured" permission_type="flag" interface_group_id="siropuAdsManagerModerator" display_order="4"/>
+  <permission permission_group_id="siropuAdsManager" permission_id="editSticky" permission_type="flag" interface_group_id="siropuAdsManagerModerator" display_order="1"/>
+  <permission permission_group_id="siropuAdsManager" permission_id="editWithoutApproval" permission_type="flag" interface_group_id="siropuAdsManager" display_order="8"/>
+  <permission permission_group_id="siropuAdsManager" permission_id="moveFeatured" permission_type="flag" interface_group_id="siropuAdsManagerModerator" display_order="5"/>
+  <permission permission_group_id="siropuAdsManager" permission_id="moveSticky" permission_type="flag" interface_group_id="siropuAdsManagerModerator" display_order="2"/>
+  <permission permission_group_id="siropuAdsManager" permission_id="optInViewAds" permission_type="flag" interface_group_id="siropuAdsManager" display_order="15"/>
+  <permission permission_group_id="siropuAdsManager" permission_id="pauseAds" permission_type="integer" interface_group_id="siropuAdsManager" display_order="13"/>
+  <permission permission_group_id="siropuAdsManager" permission_id="uploadAttachments" permission_type="flag" interface_group_id="siropuAdsManager" display_order="14"/>
+  <permission permission_group_id="siropuAdsManager" permission_id="useCustomBannerCode" permission_type="flag" interface_group_id="siropuAdsManager" display_order="5"/>
+  <permission permission_group_id="siropuAdsManager" permission_id="useDeviceCriteria" permission_type="flag" interface_group_id="siropuAdsManager" display_order="7"/>
+  <permission permission_group_id="siropuAdsManager" permission_id="useExternalBanners" permission_type="flag" interface_group_id="siropuAdsManager" display_order="4"/>
+  <permission permission_group_id="siropuAdsManager" permission_id="useGeoCriteria" permission_type="flag" interface_group_id="siropuAdsManager" display_order="6"/>
+  <permission permission_group_id="siropuAdsManager" permission_id="useMultipleBanners" permission_type="flag" interface_group_id="siropuAdsManager" display_order="3"/>
+  <permission permission_group_id="siropuAdsManager" permission_id="viewAds" permission_type="flag" interface_group_id="siropuAdsManager" display_order="1"/>
+  <permission permission_group_id="siropuAdsManager" permission_id="viewClickStats" permission_type="flag" depend_permission_id="viewGeneralStats" interface_group_id="siropuAdsManager" display_order="12"/>
+  <permission permission_group_id="siropuAdsManager" permission_id="viewDailyStats" permission_type="flag" depend_permission_id="viewGeneralStats" interface_group_id="siropuAdsManager" display_order="11"/>
+  <permission permission_group_id="siropuAdsManager" permission_id="viewGeneralStats" permission_type="flag" interface_group_id="siropuAdsManager" display_order="10"/>
+</permissions>

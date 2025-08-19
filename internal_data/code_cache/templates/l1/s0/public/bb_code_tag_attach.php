@@ -4,14 +4,32 @@ return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
 	$__finalCompiled = '';
+	$__finalCompiled .= $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+		'position' => 'above_bb_code_attachment',
+	), $__vars) . '
+';
 	if (!$__vars['attachment']) {
 		$__finalCompiled .= trim('
 	<a href="' . $__templater->func('link', array('full:attachments', array('attachment_id' => $__vars['id'], ), ), true) . '" target="_blank">' . 'View attachment ' . $__templater->escape($__vars['id']) . '' . '</a>
 ');
 	} else if ($__vars['attachment']['is_video'] AND ($__vars['full'] AND $__vars['canView'])) {
+		$__compilerTemp1 = '';
+		$__compilerTemp2 = '';
+		$__compilerTemp2 .= '
+		' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+			'position' => 'over_bb_code_video_attachment',
+		), $__vars) . '
+	';
+		if (strlen(trim($__compilerTemp2)) > 0) {
+			$__compilerTemp1 .= '
+	<div class="samVideoOverlay"></div>
+	' . $__compilerTemp2 . '
+';
+		}
 		$__finalCompiled .= trim('
 	<div class="bbMediaWrapper bbMediaWrapper--inline ' . $__templater->escape($__vars['alignClass']) . '">
 		<div class="bbMediaWrapper-inner">
+' . $__compilerTemp1 . '
 			<video controls data-xf-init="video-init"
 				style="' . $__templater->escape($__vars['styleAttr']) . '">
 				<source src="' . $__templater->escape($__vars['attachment']['direct_url']) . '" />
@@ -37,16 +55,16 @@ return array(
 	<a href="' . $__templater->func('link', array('full:attachments', $__vars['attachment'], array('hash' => $__vars['attachment']['temp_hash'], ), ), true) . '" target="_blank">' . 'View attachment ' . $__templater->escape($__vars['attachment']['filename']) . '' . '</a>
 ');
 	} else if ($__vars['canView'] AND $__vars['full']) {
-		$__compilerTemp1 = '';
+		$__compilerTemp3 = '';
 		if ($__vars['noLightbox']) {
-			$__compilerTemp1 .= '
+			$__compilerTemp3 .= '
 		';
 			if ((($__vars['attachment']['content_type'] == 'post') AND ((($__vars['attachment']['attachment_state'] == 'pending') OR ($__vars['attachment']['attachment_state'] == 'rejected')) AND ($__vars['attachment']['Data']['user_id'] != $__vars['xf']['visitor']['user_id'])))) {
-				$__compilerTemp1 .= '
+				$__compilerTemp3 .= '
 	
 	';
 			} else {
-				$__compilerTemp1 .= '
+				$__compilerTemp3 .= '
 	<img src="' . $__templater->func('link', array('full:attachments', $__vars['attachment'], array('hash' => $__vars['attachment']['temp_hash'], ), ), true) . '"
 			class="bbImage ' . $__templater->escape($__vars['alignClass']) . '"
 			style="' . $__templater->escape($__vars['styleAttr']) . '"
@@ -55,17 +73,17 @@ return array(
 			width="' . $__templater->escape($__vars['attachment']['width']) . '" height="' . $__templater->escape($__vars['attachment']['height']) . '" loading="lazy" />
 ';
 			}
-			$__compilerTemp1 .= '
+			$__compilerTemp3 .= '
 	';
 		} else {
-			$__compilerTemp1 .= '
+			$__compilerTemp3 .= '
 		';
 			if ((($__vars['attachment']['content_type'] == 'post') AND ((($__vars['attachment']['attachment_state'] == 'pending') OR ($__vars['attachment']['attachment_state'] == 'rejected')) AND ($__vars['attachment']['Data']['user_id'] != $__vars['xf']['visitor']['user_id'])))) {
-				$__compilerTemp1 .= '
+				$__compilerTemp3 .= '
 
 	';
 			} else {
-				$__compilerTemp1 .= '
+				$__compilerTemp3 .= '
 	' . $__templater->callMacro(null, 'lightbox_macros::single_image', array(
 					'canViewAttachments' => $__vars['canView'],
 					'id' => 'attachment' . $__vars['attachment']['attachment_id'],
@@ -79,20 +97,20 @@ return array(
 				), $__vars) . '
 ';
 			}
-			$__compilerTemp1 .= '
+			$__compilerTemp3 .= '
 	';
 		}
 		$__finalCompiled .= trim('
-	' . $__compilerTemp1 . '
+	' . $__compilerTemp3 . '
 ');
 	} else if ($__vars['canView'] AND (!$__vars['noLightbox'])) {
-		$__compilerTemp2 = '';
+		$__compilerTemp4 = '';
 		if ((($__vars['attachment']['content_type'] == 'post') AND ((($__vars['attachment']['attachment_state'] == 'pending') OR ($__vars['attachment']['attachment_state'] == 'rejected')) AND ($__vars['attachment']['Data']['user_id'] != $__vars['xf']['visitor']['user_id'])))) {
-			$__compilerTemp2 .= '
+			$__compilerTemp4 .= '
 
 	';
 		} else {
-			$__compilerTemp2 .= '
+			$__compilerTemp4 .= '
 	' . $__templater->callMacro('lightbox_macros', 'setup', array(
 				'canViewAttachments' => $__vars['canView'],
 			), $__vars) . '
@@ -106,7 +124,7 @@ return array(
 ';
 		}
 		$__finalCompiled .= trim('
-	' . $__compilerTemp2 . '
+	' . $__compilerTemp4 . '
 ');
 	} else {
 		$__finalCompiled .= trim('
@@ -119,6 +137,10 @@ return array(
 		width="' . $__templater->escape($__vars['attachment']['thumbnail_width']) . '" height="' . $__templater->escape($__vars['attachment']['thumbnail_height']) . '" loading="lazy" /></a>
 ');
 	}
+	$__finalCompiled .= '
+' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+		'position' => 'below_bb_code_attachment',
+	), $__vars);
 	return $__finalCompiled;
 }
 );

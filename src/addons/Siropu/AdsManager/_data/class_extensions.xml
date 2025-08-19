@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class_extensions>
+  <extension from_class="XFRM\Pub\Controller\ResourceItem" to_class="Siropu\AdsManager\XFRM\Pub\Controller\ResourceItem" execute_order="10" active="1"/>
+  <extension from_class="XF\Criteria\Page" to_class="Siropu\AdsManager\XF\Criteria\Page" execute_order="10" active="1"/>
+  <extension from_class="XF\Entity\User" to_class="Siropu\AdsManager\XF\Entity\User" execute_order="10" active="1"/>
+  <extension from_class="XF\Pub\Controller\Account" to_class="Siropu\AdsManager\XF\Pub\Controller\Account" execute_order="10" active="1"/>
+  <extension from_class="XF\Pub\Controller\InlineMod" to_class="Siropu\AdsManager\XF\Pub\Controller\InlineMod" execute_order="10" active="1"/>
+  <extension from_class="XF\Pub\Controller\Thread" to_class="Siropu\AdsManager\XF\Pub\Controller\Thread" execute_order="10" active="1"/>
+</class_extensions>

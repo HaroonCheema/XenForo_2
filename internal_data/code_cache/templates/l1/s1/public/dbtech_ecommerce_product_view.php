@@ -100,7 +100,7 @@ return array(
 
 ';
 	$__compilerTemp7 = '';
-	$__compilerTemp7 .= $__templater->func('bb_code', array($__vars['product']['description_full'], 'dbtech_ecommerce_description_full', $__vars['product'], ), true);
+	$__compilerTemp7 .= $__templater->filter($__templater->func('bb_code', array($__vars['product']['description_full'], 'dbtech_ecommerce_description_full', $__vars['product'], ), false), array(array('sam_keyword_ads', array('dbtech_product_desc', $__vars['xf']['samFilterAds'], $__vars['product'], $__vars['product']['User'] AND $__templater->method($__vars['product']['User'], 'isMemberOf', array($__vars['xf']['options']['siropuAdsManagerUserGroupPostExceptions'], )), )),), true);
 	if (strlen(trim($__compilerTemp7)) > 0) {
 		$__finalCompiled .= '
 	<div class="block-body">

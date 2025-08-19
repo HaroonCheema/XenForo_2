@@ -491,6 +491,18 @@ return array(
 						$__vars['hundred'] = $__vars['curHundred'];
 						$__compilerTemp1 .= '
 								<hr class="formRowSep" />
+';
+						if (($__vars['group']['group_id'] == 'siropuAdsManager') AND ($__vars['curHundred'] == 8)) {
+							$__compilerTemp1 .= '
+	' . $__templater->formRow('
+		<div class="blockMessage blockMessage--important blockMessage--iconic">
+			' . 'If any of the values below are changed, you have to go to the template called <b>siropu_ads_manager_ad.less</b> and hit the save button without changing anything in the template. This will update the values you have set here in the CSS.' . '
+		</div>
+	', array(
+							)) . '
+';
+						}
+						$__compilerTemp1 .= '
 							';
 					}
 					$__compilerTemp1 .= '

@@ -165,8 +165,14 @@ return array(
 {
 	$__finalCompiled = '';
 		$__finalCompiled .= '
-									' . $__templater->callMacro('message_macros', 'signature', array(
+									' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+		'position' => 'post_above_signature_' . $__templater->func('sam_counter', array('post_above_signature', ), false),
+	), $__vars) . '
+' . $__templater->callMacro('message_macros', 'signature', array(
 		'user' => $__vars['post']['User'],
+	), $__vars) . '
+' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+		'position' => 'post_below_signature_' . $__templater->func('sam_counter', array('post_below_signature', ), false),
 	), $__vars) . '
 								';
 	return $__finalCompiled;
@@ -554,7 +560,13 @@ return array(
 			';
 	} else {
 		$__finalCompiled .= '
-				' . $__templater->func('bb_code', array($__vars['post']['message'], 'post', $__vars['post'], ), true) . '
+				' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+			'position' => 'post_above_content_' . $__templater->func('sam_counter', array('post_above_content', ), false),
+		), $__vars) . '
+' . $__templater->filter($__templater->func('bb_code', array($__vars['post']['message'], 'post', $__vars['post'], ), false), array(array('sam_keyword_ads', array((($__vars['thread']['discussion_type'] == 'discussion') ? 'thread' : ('thread_' . $__vars['thread']['discussion_type'])), $__vars['xf']['samFilterAds'], $__vars['post'], $__vars['post']['User'] AND $__templater->method($__vars['post']['User'], 'isMemberOf', array($__vars['xf']['options']['siropuAdsManagerUserGroupPostExceptions'], )), $__vars['thread']['reply_count'] + 1, )),), true) . '
+' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+			'position' => 'post_below_content_' . $__templater->func('sam_counter', array('post_below_content', ), false),
+		), $__vars) . '
 			';
 	}
 	$__finalCompiled .= '

@@ -105,7 +105,14 @@ return array(
 						';
 				}
 				$__finalCompiled .= '
-					';
+					
+';
+				$__vars['samCounter'] = $__templater->func('number', array($__vars['samCounter'] + 1, ), false);
+				$__finalCompiled .= '
+' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+					'position' => 'media_comment_list_below_item_container_' . $__vars['samCounter'],
+				), $__vars) . '
+';
 			}
 		}
 		$__finalCompiled .= '

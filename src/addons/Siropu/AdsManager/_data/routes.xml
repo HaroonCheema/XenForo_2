@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<routes>
+  <route route_type="admin" route_prefix="ads-manager" controller="Siropu\AdsManager:Home" context="adsManager"/>
+  <route route_type="admin" route_prefix="ads-manager" sub_name="ads" format="ads/:int&lt;ad_id&gt;/" controller="Siropu\AdsManager:Ad" context="adsManager"/>
+  <route route_type="admin" route_prefix="ads-manager" sub_name="help" format="help" controller="Siropu\AdsManager:Help"/>
+  <route route_type="admin" route_prefix="ads-manager" sub_name="invoices" format="invoices/:int&lt;invoice_id&gt;/" controller="Siropu\AdsManager:Invoice" context="adsManager"/>
+  <route route_type="admin" route_prefix="ads-manager" sub_name="packages" format="packages/:int&lt;package_id&gt;/" controller="Siropu\AdsManager:Package" context="adsManager"/>
+  <route route_type="admin" route_prefix="ads-manager" sub_name="position-categories" format="position-categories/:int&lt;category_id&gt;" controller="Siropu\AdsManager:PositionCategory"/>
+  <route route_type="admin" route_prefix="ads-manager" sub_name="positions" format="positions/:str&lt;position_id&gt;/" controller="Siropu\AdsManager:Position" context="adsManager"/>
+  <route route_type="admin" route_prefix="ads-manager" sub_name="promo-codes" format="promo-codes/:str&lt;promo_code&gt;/" controller="Siropu\AdsManager:PromoCode" context="adsManager"/>
+  <route route_type="admin" route_prefix="ads-manager" sub_name="statistics" format="statistics/" controller="Siropu\AdsManager:Statistics" context="adsManager"/>
+  <route route_type="admin" route_prefix="ads-manager" sub_name="stats-access" format="stats-access/:str&lt;access_key&gt;/" controller="Siropu\AdsManager:StatsAccess" context="samTools"/>
+  <route route_type="admin" route_prefix="ads-manager" sub_name="subscriptions" format="subscriptions/:int&lt;subscription_id&gt;/" controller="Siropu\AdsManager:Subscription" context="adsManager"/>
+  <route route_type="admin" route_prefix="ads-manager" sub_name="tools" format="tools/" controller="Siropu\AdsManager:Tool" context="adsManager"/>
+  <route route_type="public" route_prefix="ads-manager" controller="Siropu\AdsManager:Home" context="siropuAdsManager"/>
+  <route route_type="public" route_prefix="ads-manager" sub_name="ads" format="ads/:int&lt;ad_id&gt;/" controller="Siropu\AdsManager:Ad" context="siropuAdsManager"/>
+  <route route_type="public" route_prefix="ads-manager" sub_name="advertisers" format="advertisers" controller="Siropu\AdsManager:Advertiser" context="siropuAdsManager"/>
+  <route route_type="public" route_prefix="ads-manager" sub_name="ajax" format="ajax" controller="Siropu\AdsManager:Ajax"/>
+  <route route_type="public" route_prefix="ads-manager" sub_name="invoices" format="invoices/:int&lt;invoice_id&gt;/" controller="Siropu\AdsManager:Invoice" context="siropuAdsManager"/>
+  <route route_type="public" route_prefix="ads-manager" sub_name="packages" format="packages/:str&lt;package_id&gt;/" controller="Siropu\AdsManager:Package" context="siropuAdsManager"/>
+  <route route_type="public" route_prefix="ads-manager" sub_name="statistics" format="statistics/:str&lt;access_key&gt;/" controller="Siropu\AdsManager:Statistics" context="siropuAdsManager"/>
+  <route route_type="public" route_prefix="sam-embed" controller="Siropu\AdsManager:Embed"/>
+  <route route_type="public" route_prefix="sam-item" format=":int&lt;ad_id&gt;/" controller="Siropu\AdsManager:Ad"/>
+</routes>

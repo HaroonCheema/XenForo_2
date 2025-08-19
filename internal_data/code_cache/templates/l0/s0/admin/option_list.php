@@ -46,6 +46,19 @@ return array(
 	$__templater->pageParams['pageDescription'] = $__templater->preEscaped($__templater->escape($__vars['group']['description']));
 	$__templater->pageParams['pageDescriptionMeta'] = true;
 	$__finalCompiled .= '
+';
+	if ($__templater->func('in_array', array($__vars['group']['group_id'], array('siropuAdsManager', 'siropuAdsManagerAdvertiser', 'siropuAdsManagerAdmin', ), ), false)) {
+		$__finalCompiled .= '
+	<h2 class="block-tabHeader tabs hScroller" data-xf-init="h-scroller">
+		<span class="hScroller-scroll">
+			<a href="' . $__templater->func('link', array('options/groups/siropuAdsManager/', ), true) . '" class="tabs-tab' . (($__vars['group']['group_id'] == 'siropuAdsManager') ? ' is-active' : '') . '">' . 'General options' . '</a>
+			<a href="' . $__templater->func('link', array('options/groups/siropuAdsManagerAdvertiser/', ), true) . '" class="tabs-tab' . (($__vars['group']['group_id'] == 'siropuAdsManagerAdvertiser') ? ' is-active' : '') . '">' . 'Advertiser options' . '</a>
+			<a href="' . $__templater->func('link', array('options/groups/siropuAdsManagerAdmin/', ), true) . '" class="tabs-tab' . (($__vars['group']['group_id'] == 'siropuAdsManagerAdmin') ? ' is-active' : '') . '">' . 'Admin options' . '</a>
+		</span>
+	</h2>
+';
+	}
+	$__finalCompiled .= '
 
 ';
 	$__compilerTemp2 = '';

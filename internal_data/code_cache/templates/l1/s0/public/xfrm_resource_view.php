@@ -140,7 +140,13 @@ return array(
 					';
 	} else {
 		$__finalCompiled .= '
-						' . $__templater->func('bb_code', array($__vars['description']['message'], 'resource_update', $__vars['description'], ), true) . '
+						' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+			'position' => 'resource_view_above_description',
+		), $__vars) . '
+' . $__templater->filter($__templater->func('bb_code', array($__vars['description']['message'], 'resource_update', $__vars['description'], ), false), array(array('sam_keyword_ads', array('resource', $__vars['xf']['samFilterAds'], $__vars['resource'], $__vars['resource']['User'] AND $__templater->method($__vars['resource']['User'], 'isMemberOf', array($__vars['xf']['options']['siropuAdsManagerUserGroupPostExceptions'], )), )),), true) . '
+' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+			'position' => 'resource_view_below_description',
+		), $__vars) . '
 					';
 	}
 	$__finalCompiled .= '
@@ -349,6 +355,9 @@ return array(
 				</article>
 
 				<div class="resourceBody-sidebar">
+' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+		'position' => 'sidebar_above_resource_info_block',
+	), $__vars) . '
 					<div class="resourceSidebarGroup">
 						<dl class="pairs pairs--justified">
 							<dt>' . 'Author' . '</dt>
@@ -527,6 +536,9 @@ return array(
 								' . $__templater->callMacro('share_page_macros', 'buttons', array(
 		'iconic' => true,
 	), $__vars) . '
+' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+		'position' => 'sidebar_below_resource_share_block',
+	), $__vars) . '
 							';
 	if (strlen(trim($__compilerTemp12)) > 0) {
 		$__finalCompiled .= '
@@ -592,7 +604,26 @@ return array(
 					'review' => $__vars['review'],
 					'resource' => $__vars['resource'],
 				), $__vars) . '
-			';
+			
+';
+				$__vars['samCounter'] = $__templater->func('number', array($__vars['samCounter'] + 1, ), false);
+				$__finalCompiled .= '
+';
+				$__compilerTemp13 = '';
+				$__compilerTemp13 .= '
+			' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+					'position' => 'resource_review_list_below_item_container_' . $__vars['samCounter'],
+				), $__vars) . '
+		';
+				if (strlen(trim($__compilerTemp13)) > 0) {
+					$__finalCompiled .= '
+	<div class="message message--simple samUnitWrapper">
+		' . $__compilerTemp13 . '
+	</div>
+';
+				}
+				$__finalCompiled .= '
+';
 			}
 		}
 		$__finalCompiled .= '

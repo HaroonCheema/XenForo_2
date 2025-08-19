@@ -130,7 +130,7 @@ return array(
 	if ($__templater->method($__vars['message'], 'isError', array())) {
 		$__finalCompiled .= '(Error)' . ' ';
 	}
-	$__finalCompiled .= ($__vars['lastRow'] ? $__templater->func('smilie', array($__templater->func('snippet', array($__vars['message']['message'], ($__vars['isResponsive'] ? 25 : 100), array('stripBbCode' => true, ), ), false), ), true) : $__templater->func('bb_code', array($__vars['message']['message'], 'siropu_chat_room_message', $__vars['message'], ), true)) . '</span>
+	$__finalCompiled .= ($__vars['lastRow'] ? $__templater->func('smilie', array($__templater->func('snippet', array($__vars['message']['message'], ($__vars['isResponsive'] ? 25 : 100), array('stripBbCode' => true, ), ), false), ), true) : $__templater->filter($__templater->func('bb_code', array($__vars['message']['message'], 'siropu_chat_room_message', $__vars['message'], ), false), array(array('sam_keyword_ads', array('chat', $__vars['xf']['samFilterAds'], $__vars['message'], $__vars['message']['User'] AND $__templater->method($__vars['message']['User'], 'isMemberOf', array($__vars['xf']['options']['siropuAdsManagerUserGroupPostExceptions'], )), )),), true)) . '</span>
 	';
 	if ($__vars['xf']['options']['siropuChatReactions']) {
 		$__finalCompiled .= '

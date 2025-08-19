@@ -142,6 +142,24 @@ return array(
 					'showTargetUser' => true,
 				), $__vars) . '
 			';
+				$__vars['samCounter'] = $__templater->func('number', array($__vars['samCounter'] + 1, ), false);
+				$__finalCompiled .= '
+';
+				$__compilerTemp4 = '';
+				$__compilerTemp4 .= '
+			' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+					'position' => 'whats_new_profile_posts_below_item_container_' . $__vars['samCounter'],
+				), $__vars) . '
+		';
+				if (strlen(trim($__compilerTemp4)) > 0) {
+					$__finalCompiled .= '
+	<article class="message message--simple samUnitWrapper">
+		' . $__compilerTemp4 . '
+	</article>
+';
+				}
+				$__finalCompiled .= '
+';
 			}
 		}
 		$__finalCompiled .= '

@@ -900,6 +900,9 @@ return array(
 	$__finalCompiled .= '
 
 ' . $__templater->renderExtension('above_messages', $__vars, $__extensions) . '
+' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+		'position' => 'thread_view_above_messages',
+	), $__vars) . '
 ' . $__templater->callAdsMacro('thread_view_above_messages', array(
 		'thread' => $__vars['thread'],
 	), $__vars) . '
@@ -955,7 +958,13 @@ return array(
 	}
 	$__finalCompiled .= '
 
+' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+		'position' => 'above_messages_below_pinned',
+	), $__vars) . '
 ' . $__templater->renderExtension('above_messages_below_pinned', $__vars, $__extensions) . '
+' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+		'position' => 'above_messages_below_solution',
+	), $__vars) . '
 
 ' . '
 <div class="block ' . $__templater->escape($__templater->renderExtension('message_block_classes', $__vars, $__extensions)) . '" data-xf-init="' . ($__vars['canInlineMod'] ? 'inline-mod' : '') . '" data-type="post" data-href="' . $__templater->func('link', array('inline-mod', ), true) . '" data-search-target="*">
@@ -1003,6 +1012,13 @@ return array(
 		if ($__templater->isTraversable($__vars['posts'])) {
 			foreach ($__vars['posts'] AS $__vars['post']) {
 				$__finalCompiled .= '
+';
+				$__vars['samCounter'] = $__templater->func('number', array($__vars['samCounter'] + 1, ), false);
+				$__finalCompiled .= '
+' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+					'position' => 'post_above_container_' . $__vars['samCounter'],
+				), $__vars) . '
+
 
 					' . $__templater->renderExtension('messages_block_body_before_post', $__vars, $__extensions) . '
 
@@ -1036,7 +1052,11 @@ return array(
 
 					' . $__templater->renderExtension('messages_block_body_after_post', $__vars, $__extensions) . '
 
-				';
+				
+' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+					'position' => 'post_below_container_' . $__vars['samCounter'],
+				), $__vars) . '
+';
 			}
 		}
 		$__finalCompiled .= '
@@ -1124,6 +1144,9 @@ return array(
 	), $__vars) . '
 </div>
 
+' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+		'position' => 'thread_view_below_messages',
+	), $__vars) . '
 ' . $__templater->callAdsMacro('thread_view_below_messages', array(
 		'thread' => $__vars['thread'],
 	), $__vars) . '

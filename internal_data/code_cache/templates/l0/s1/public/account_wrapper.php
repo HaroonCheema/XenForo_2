@@ -21,32 +21,41 @@ return array(
 ';
 	}
 	$__compilerTemp3 = '';
-	if ($__templater->method($__vars['xf']['visitor'], 'canEditSignature', array())) {
+	if ($__vars['xf']['options']['siropuAdsManagerEnabled'] AND ($__vars['xf']['options']['siropuAdsManagerAccountSection'] AND $__templater->method($__vars['xf']['visitor'], 'hasPermission', array('siropuAdsManager', 'createAds', )))) {
 		$__compilerTemp3 .= '
+	<h3 class="block-minorHeader">' . 'Ads Manager' . '</h3>
+	' . $__templater->callMacro('siropu_ads_manager_wrapper', 'sidenav', array(
+			'pageSelected' => $__vars['pageSelected'],
+		), $__vars) . '
+';
+	}
+	$__compilerTemp4 = '';
+	if ($__templater->method($__vars['xf']['visitor'], 'canEditSignature', array())) {
+		$__compilerTemp4 .= '
 					<a class="blockLink ' . (($__vars['pageSelected'] == 'signature') ? 'is-selected' : '') . '" href="' . $__templater->func('link', array('account/signature', ), true) . '">
 						' . 'Signature' . '
 					</a>
 				';
 	}
-	$__compilerTemp4 = '';
+	$__compilerTemp5 = '';
 	if ($__vars['xf']['app']['userUpgradeCount']) {
-		$__compilerTemp4 .= '
+		$__compilerTemp5 .= '
 					<a class="blockLink ' . (($__vars['pageSelected'] == 'upgrades') ? 'is-selected' : '') . '" href="' . $__templater->func('link', array('account/upgrades', ), true) . '">
 						' . 'Account upgrades' . '
 					</a>
 				';
 	}
-	$__compilerTemp5 = '';
+	$__compilerTemp6 = '';
 	if ($__vars['xf']['app']['connectedAccountCount']) {
-		$__compilerTemp5 .= '
+		$__compilerTemp6 .= '
 					<a class="blockLink ' . (($__vars['pageSelected'] == 'connected_account') ? 'is-selected' : '') . '" href="' . $__templater->func('link', array('account/connected-accounts', ), true) . '">
 						' . 'Connected accounts' . '
 					</a>
 				';
 	}
-	$__compilerTemp6 = '';
+	$__compilerTemp7 = '';
 	if ($__templater->method($__vars['xf']['visitor'], 'hasPermission', array('klUI', 'klUISelfDeactivate', ))) {
-		$__compilerTemp6 .= '
+		$__compilerTemp7 .= '
 	<a class="blockLink ' . (($__vars['pageSelected'] == 'self_deactivate') ? 'is-selected' : '') . '" href="' . $__templater->func('link', array('account/thui-deactivate/', ), true) . '">
 		' . 'Deactivate account' . '
 	</a>
@@ -75,7 +84,8 @@ return array(
 ' . $__compilerTemp2 . '
 			</div>
 
-			<h3 class="block-minorHeader">' . 'Settings' . '</h3>
+			' . $__compilerTemp3 . '
+<h3 class="block-minorHeader">' . 'Settings' . '</h3>
 			<div class="block-body">
 				' . '
 				<a class="blockLink ' . (($__vars['pageSelected'] == 'account_details') ? 'is-selected' : '') . '" href="' . $__templater->func('link', array('account/account-details', ), true) . '">
@@ -105,9 +115,9 @@ return array(
 				<a class="blockLink ' . (($__vars['pageSelected'] == 'preferences') ? 'is-selected' : '') . '" href="' . $__templater->func('link', array('account/preferences', ), true) . '">
 					' . 'Preferences' . '
 				</a>
-				' . $__compilerTemp3 . '
 				' . $__compilerTemp4 . '
 				' . $__compilerTemp5 . '
+				' . $__compilerTemp6 . '
 				<a class="blockLink ' . (($__vars['pageSelected'] == 'following') ? 'is-selected' : '') . '" href="' . $__templater->func('link', array('account/following', ), true) . '">
 					' . 'Following' . '
 				</a>
@@ -127,7 +137,7 @@ return array(
 		<div class="block-container">
 			<div class="block-body">
 				<a href="' . $__templater->func('link', array('logout', null, array('t' => $__templater->func('csrf_token', array(), false), ), ), true) . '" class="blockLink">' . 'Log out' . '</a>
-' . $__compilerTemp6 . '
+' . $__compilerTemp7 . '
 			</div>
 		</div>
 	</div>

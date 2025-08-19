@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<admin_navigation>
+  <admin_navigation_entry navigation_id="adsManager" display_order="99" link="ads-manager/" icon="fa-usd-circle" admin_permission_id="siropuAdsManager" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="samAdList" parent_navigation_id="samAds" display_order="1" link="ads-manager/ads/" admin_permission_id="siropuAdsManager" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="samAdStats" parent_navigation_id="samAds" display_order="3" link="ads-manager/ads/top-performing" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="samAds" parent_navigation_id="adsManager" display_order="1" link="ads-manager/ads/" admin_permission_id="siropuAdsManager" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="samAdsCreate" parent_navigation_id="samAds" display_order="2" link="ads-manager/ads/create" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="samChangeOwner" parent_navigation_id="samTools" display_order="1" link="ads-manager/tools/change-ad-owner" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="samClickFraud" parent_navigation_id="samTools" display_order="3" link="ads-manager/tools/click-fraud-monitor" admin_permission_id="siropuAdsManager" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="samInvoiceAdd" parent_navigation_id="samInvoices" display_order="2" link="ads-manager/invoices/add" admin_permission_id="siropuAdsManager" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="samInvoiceList" parent_navigation_id="samInvoices" display_order="1" link="ads-manager/invoices/" admin_permission_id="siropuAdsManager" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="samInvoiceStats" parent_navigation_id="samInvoices" display_order="3" link="ads-manager/invoices/statistics" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="samInvoices" parent_navigation_id="adsManager" display_order="5" link="ads-manager/invoices/" admin_permission_id="siropuAdsManager" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="samMassExtend" parent_navigation_id="samTools" display_order="4" link="ads-manager/tools/mass-extend" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="samOptions" parent_navigation_id="adsManager" display_order="10" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="samOptionsAdmin" parent_navigation_id="samOptions" display_order="3" link="options/groups/siropuAdsManagerAdmin/" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="samOptionsAdvertiser" parent_navigation_id="samOptions" display_order="2" link="options/groups/siropuAdsManagerAdvertiser/" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="samOptionsGeneral" parent_navigation_id="samOptions" display_order="1" link="options/groups/siropuAdsManager/" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="samPackageCreate" parent_navigation_id="samPackages" display_order="2" link="ads-manager/packages/create" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="samPackageList" parent_navigation_id="samPackages" display_order="1" link="ads-manager/packages/" admin_permission_id="siropuAdsManager" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="samPackageTopPerforming" parent_navigation_id="samPackages" display_order="3" link="ads-manager/packages/top-performing" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="samPackages" parent_navigation_id="adsManager" display_order="2" link="ads-manager/packages/" admin_permission_id="siropuAdsManager" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="samPositionAdd" parent_navigation_id="samPositions" display_order="2" link="ads-manager/positions/add" admin_permission_id="siropuAdsManager" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="samPositionList" parent_navigation_id="samPositions" display_order="1" link="ads-manager/positions/" admin_permission_id="siropuAdsManager" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="samPositionTopPerforming" parent_navigation_id="samPositions" display_order="3" link="ads-manager/positions/top-performing" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="samPositions" parent_navigation_id="adsManager" display_order="3" link="ads-manager/positions/" admin_permission_id="siropuAdsManager" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="samPromoCodeAdd" parent_navigation_id="samPromoCodes" display_order="2" link="ads-manager/promo-codes/add" admin_permission_id="siropuAdsManager" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="samPromoCodeList" parent_navigation_id="samPromoCodes" display_order="1" link="ads-manager/promo-codes/" admin_permission_id="siropuAdsManager" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="samPromoCodes" parent_navigation_id="adsManager" display_order="4" link="ads-manager/promo-codes/" admin_permission_id="siropuAdsManager" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="samStatsAccess" parent_navigation_id="samTools" display_order="2" link="ads-manager/tools/stats-access" admin_permission_id="siropuAdsManager" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="samTools" parent_navigation_id="adsManager" display_order="7" link="ads-manager/tools/" admin_permission_id="siropuAdsManager" debug_only="0" development_only="0" hide_no_children="0"/>
+</admin_navigation>

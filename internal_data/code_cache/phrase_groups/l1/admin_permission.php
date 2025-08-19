@@ -38,6 +38,7 @@ return array (
   'admin_permission.reaction' => 'Manage reactions',
   'admin_permission.rebuildCache' => 'Rebuild caches',
   'admin_permission.resourceManager' => 'Manage resources',
+  'admin_permission.siropuAdsManager' => 'Manage Ads Manager',
   'admin_permission.siropuChat' => 'Manage Chat',
   'admin_permission.siropuReferralSystem' => 'Manage Referral System',
   'admin_permission.snogFormsAdmin' => 'Manage Forms',

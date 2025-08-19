@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<widget_definitions>
+  <widget_definition definition_id="siropu_ads_manager_adv" definition_class="Siropu\AdsManager\Widget\Advertisers"/>
+  <widget_definition definition_id="siropu_ads_manager_feat" definition_class="Siropu\AdsManager\Widget\FeaturedResources"/>
+  <widget_definition definition_id="siropu_ads_manager_sticky" definition_class="Siropu\AdsManager\Widget\FeaturedThreads"/>
+</widget_definitions>

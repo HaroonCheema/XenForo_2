@@ -214,12 +214,23 @@ return array(
 	if ($__templater->isTraversable($__vars['messages'])) {
 		foreach ($__vars['messages'] AS $__vars['message']) {
 			$__finalCompiled .= '
+';
+			$__vars['samCounter'] = $__templater->func('number', array($__vars['samCounter'] + 1, ), false);
+			$__finalCompiled .= '
+' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+				'position' => 'message_above_container_' . $__vars['samCounter'],
+			), $__vars) . '
+
 				' . $__templater->callMacro('conversation_message_macros', 'message', array(
 				'message' => $__vars['message'],
 				'conversation' => $__vars['conversation'],
 				'lastRead' => $__vars['lastRead'],
 			), $__vars) . '
-			';
+			
+' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+				'position' => 'message_below_container_' . $__vars['samCounter'],
+			), $__vars) . '
+';
 		}
 	}
 	$__finalCompiled .= '

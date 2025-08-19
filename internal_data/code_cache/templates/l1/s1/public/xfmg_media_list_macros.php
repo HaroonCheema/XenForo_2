@@ -57,7 +57,26 @@ return array(
 				'allowInlineMod' => $__vars['allowInlineMod'],
 				'forceInlineMod' => $__vars['forceInlineMod'],
 			), $__vars) . '
+		
+';
+			$__vars['samCounter'] = $__templater->func('number', array($__vars['samCounter'] + 1, ), false);
+			$__finalCompiled .= '
+';
+			$__compilerTemp1 = '';
+			$__compilerTemp1 .= '
+			' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+				'position' => 'media_list_item_' . $__vars['samCounter'],
+			), $__vars) . '
 		';
+			if (strlen(trim($__compilerTemp1)) > 0) {
+				$__finalCompiled .= '
+	<div class="itemList-item samUnitWrapper">
+		' . $__compilerTemp1 . '
+	</div>
+';
+			}
+			$__finalCompiled .= '
+';
 		}
 	}
 	$__finalCompiled .= '

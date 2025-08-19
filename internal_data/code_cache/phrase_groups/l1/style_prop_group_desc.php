@@ -40,6 +40,7 @@ return array (
   'style_prop_group_desc.rtcMessages' => '',
   'style_prop_group_desc.rtcRooms' => '',
   'style_prop_group_desc.rte' => 'The rich text (or WYSIWYG) editor is the preferred method of entering text for messages posted to the forum. Various parts of the editor can be styled with the settings in this group.',
+  'style_prop_group_desc.siropuAdsManager' => 'Style properties for Ads Manager by Siropu.',
   'style_prop_group_desc.siropuChat' => 'Customize style for Chat by Siropu.',
   'style_prop_group_desc.snog_movies' => '',
   'style_prop_group_desc.snog_tv' => '',

@@ -89,6 +89,24 @@ return array(
 		foreach ($__vars['results'] AS $__vars['result']) {
 			$__finalCompiled .= '
 				' . $__templater->filter($__templater->method($__vars['result'], 'render', array(array('mod' => $__vars['activeModType'], ), )), array(array('raw', array()),), true) . '
+';
+			$__vars['samCounter'] = $__templater->func('number', array($__vars['samCounter'] + 1, ), false);
+			$__finalCompiled .= '
+';
+			$__compilerTemp1 = '';
+			$__compilerTemp1 .= '
+			' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+				'position' => 'tag_view_below_item_container_' . $__vars['samCounter'],
+			), $__vars) . '
+		';
+			if (strlen(trim($__compilerTemp1)) > 0) {
+				$__finalCompiled .= '
+	<li class="block-row block-row--separated samUnitWrapper">
+		' . $__compilerTemp1 . '
+	</li>
+';
+			}
+			$__finalCompiled .= '
 			';
 		}
 	}

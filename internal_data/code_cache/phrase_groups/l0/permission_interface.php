@@ -62,6 +62,8 @@ return array (
   'permission_interface.scheduledPostingsModeratorInterface' => 'Scheduled posting moderator permissions',
   'permission_interface.shsUserPermsions' => 'Stop Human Spam - User Permissions',
   'permission_interface.signaturePermissions' => 'Signature permissions',
+  'permission_interface.siropuAdsManager' => 'Ads Manager permissions',
+  'permission_interface.siropuAdsManagerModerator' => 'Ads Manager moderator permissions',
   'permission_interface.siropuChatAdmin' => 'Chat admin permissions',
   'permission_interface.siropuChatModerator' => 'Chat moderator permissions',
   'permission_interface.siropuChatUser' => 'Chat user permissions',

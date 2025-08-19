@@ -92,6 +92,7 @@ return array(
 	if ($__vars['mediaItem']['media_type'] == 'image') {
 		$__finalCompiled .= '
 		<div class="media-container-image js-mediaContainerImage">
+
 			';
 		if ($__templater->isTraversable($__vars['mediaNotes'])) {
 			foreach ($__vars['mediaNotes'] AS $__vars['note']) {
@@ -120,7 +121,23 @@ return array(
 			';
 		}
 		$__finalCompiled .= '
-		</div>
+		
+';
+		$__compilerTemp1 = '';
+		$__compilerTemp1 .= '
+			' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+			'position' => 'media_view_image_container',
+		), $__vars) . '
+		';
+		if (strlen(trim($__compilerTemp1)) > 0) {
+			$__finalCompiled .= '
+	<div class="samMediaViewContainer">
+		' . $__compilerTemp1 . '
+	</div>
+';
+		}
+		$__finalCompiled .= '
+</div>
 	';
 	} else if ($__vars['mediaItem']['media_type'] == 'video') {
 		$__finalCompiled .= '
@@ -134,6 +151,22 @@ return array(
 
 					<source src="' . $__templater->escape($__templater->method($__vars['mediaItem'], 'getVideoUrl', array())) . '" type="video/mp4" />
 				</video>
+';
+		$__compilerTemp2 = '';
+		$__compilerTemp2 .= '
+			' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+			'position' => 'media_view_video_container',
+		), $__vars) . '
+		';
+		if (strlen(trim($__compilerTemp2)) > 0) {
+			$__finalCompiled .= '
+	<div class="samVideoOverlay"></div>
+	<div class="samMediaViewContainer">
+		' . $__compilerTemp2 . '
+	</div>
+';
+		}
+		$__finalCompiled .= '
 			</div>
 		</div>
 	';
@@ -171,6 +204,22 @@ return array(
 	} else if ($__vars['mediaItem']['media_type'] == 'embed') {
 		$__finalCompiled .= '
 		' . $__templater->func('bb_code', array($__vars['mediaItem']['media_tag'], 'xfmg_media', $__vars['mediaItem'], ), true) . '
+';
+		$__compilerTemp3 = '';
+		$__compilerTemp3 .= '
+			' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+			'position' => 'media_view_video_embed_container',
+		), $__vars) . '
+		';
+		if (strlen(trim($__compilerTemp3)) > 0) {
+			$__finalCompiled .= '
+	<div class="samVideoOverlay"></div>
+	<div class="samMediaViewContainer">
+		' . $__compilerTemp3 . '
+	</div>
+';
+		}
+		$__finalCompiled .= '
 	';
 	}
 	$__finalCompiled .= '

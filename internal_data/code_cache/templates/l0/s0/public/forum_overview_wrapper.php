@@ -4,7 +4,10 @@ return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
 	$__finalCompiled = '';
-	$__finalCompiled .= $__templater->callAdsMacro('forum_overview_top', array(), $__vars) . '
+	$__finalCompiled .= $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+		'position' => 'forum_overview_top',
+	), $__vars) . '
+' . $__templater->callAdsMacro('forum_overview_top', array(), $__vars) . '
 ' . $__templater->widgetPosition('forum_overview_top', array()) . '
 
 ';
@@ -73,6 +76,9 @@ return array(
 
 ' . $__templater->filter($__vars['innerContent'], array(array('raw', array()),), true) . '
 
+' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+		'position' => 'forum_overview_bottom',
+	), $__vars) . '
 ' . $__templater->callAdsMacro('forum_overview_bottom', array(), $__vars) . '
 ' . $__templater->widgetPosition('forum_overview_bottom', array());
 	return $__finalCompiled;

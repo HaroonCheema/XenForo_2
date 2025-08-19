@@ -130,7 +130,7 @@ return array(
 							data-lb-id="profile-post-' . $__templater->escape($__vars['profilePost']['profile_post_id']) . '"
 							data-lb-caption-desc="' . ($__vars['profilePost']['User'] ? $__templater->escape($__vars['profilePost']['User']['username']) : $__templater->escape($__vars['profilePost']['username'])) . ' &middot; ' . $__templater->func('date_time', array($__vars['profilePost']['post_date'], ), true) . '">
 							<article class="message-body">
-								' . $__templater->func('bb_code', array($__vars['profilePost']['message'], 'profile_post', $__vars['profilePost'], ), true) . '
+								' . $__templater->filter($__templater->func('bb_code', array($__vars['profilePost']['message'], 'profile_post', $__vars['profilePost'], ), false), array(array('sam_keyword_ads', array('profile', $__vars['xf']['samFilterAds'], $__vars['profilePost'], $__vars['profilePost']['User'] AND $__templater->method($__vars['profilePost']['User'], 'isMemberOf', array($__vars['xf']['options']['siropuAdsManagerUserGroupPostExceptions'], )), )),), true) . '
 							</article>
 
 							';

@@ -83,7 +83,13 @@ return array(
 							data-lb-caption-desc="' . ($__vars['resource']['User'] ? $__templater->escape($__vars['resource']['User']['username']) : $__templater->escape($__vars['resource']['username'])) . ' &middot; ' . $__templater->func('date_time', array($__vars['update']['post_date'], ), true) . '">
 
 							<blockquote class="message-body">
-								' . $__templater->func('bb_code', array($__vars['update']['message'], 'resource_update', $__vars['update'], ), true) . '
+								' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+		'position' => 'resource_update_above_description',
+	), $__vars) . '
+' . $__templater->func('bb_code', array($__vars['update']['message'], 'resource_update', $__vars['update'], ), true) . '
+' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+		'position' => 'resource_update_below_description',
+	), $__vars) . '
 							</blockquote>
 
 							';

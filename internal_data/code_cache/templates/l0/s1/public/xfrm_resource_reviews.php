@@ -149,14 +149,33 @@ return array(
 				';
 		}
 		$__finalCompiled .= '
-			';
+			
+';
+		$__vars['samCounter'] = $__templater->func('number', array($__vars['samCounter'] + 1, ), false);
+		$__finalCompiled .= '
+';
+		$__compilerTemp5 = '';
+		$__compilerTemp5 .= '
+			' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+			'position' => 'resource_review_list_below_item_container_' . $__vars['samCounter'],
+		), $__vars) . '
+		';
+		if (strlen(trim($__compilerTemp5)) > 0) {
+			$__finalCompiled .= '
+	<div class="message message--simple samUnitWrapper">
+		' . $__compilerTemp5 . '
+	</div>
+';
+		}
+		$__finalCompiled .= '
+';
 	}
 	$__finalCompiled .= '
 		</div>
 	</div>
 	';
-	$__compilerTemp5 = '';
-	$__compilerTemp5 .= '
+	$__compilerTemp6 = '';
+	$__compilerTemp6 .= '
 				' . $__templater->func('page_nav', array(array(
 		'page' => $__vars['page'],
 		'total' => $__vars['total'],
@@ -167,10 +186,10 @@ return array(
 		'perPage' => $__vars['perPage'],
 	))) . '
 			';
-	if (strlen(trim($__compilerTemp5)) > 0) {
+	if (strlen(trim($__compilerTemp6)) > 0) {
 		$__finalCompiled .= '
 		<div class="block-outer block-outer--after">
-			' . $__compilerTemp5 . '
+			' . $__compilerTemp6 . '
 		</div>
 	';
 	}

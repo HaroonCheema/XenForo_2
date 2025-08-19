@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<code_event_listeners>
+  <listener event_id="app_setup" execute_order="10" callback_class="Siropu\AdsManager\Listener" callback_method="appSetup" active="1" description="Autoload 3rd party libraries."/>
+  <listener event_id="criteria_page" execute_order="10" callback_class="Siropu\AdsManager\Listener" callback_method="criteriaPage" active="1" description="Add custom page criteria options."/>
+  <listener event_id="criteria_user" execute_order="10" callback_class="Siropu\AdsManager\Listener" callback_method="criteriaUser" active="1" description="Extend user criteria."/>
+  <listener event_id="entity_pre_save" execute_order="10" callback_class="Siropu\AdsManager\Listener" callback_method="resourceItemEntityPreSave" active="1" hint="XFRM\Entity\ResourceItem" description="Extend resource item entity pre save."/>
+  <listener event_id="entity_pre_save" execute_order="10" callback_class="Siropu\AdsManager\Listener" callback_method="threadEntityPreSave" active="1" hint="XF\Entity\Thread" description="Extend thread entity pre save."/>
+  <listener event_id="entity_structure" execute_order="10" callback_class="Siropu\AdsManager\Listener" callback_method="userOptionEntityStructure" active="1" hint="XF\Entity\UserOption" description="Extend user option entity structure."/>
+  <listener event_id="templater_global_data" execute_order="10" callback_class="Siropu\AdsManager\Listener" callback_method="templaterGlobalData" active="1" description="Add template global data for ads."/>
+  <listener event_id="templater_macro_post_render" execute_order="10" callback_class="Siropu\AdsManager\Listener" callback_method="templaterMacroPostRender" active="1" hint="public:siropu_ads_manager_ad_macros:ad_unit" description="Remove white space between divs."/>
+  <listener event_id="templater_setup" execute_order="10" callback_class="Siropu\AdsManager\Listener" callback_method="templaterSetup" active="1" description="Adds new templater functions."/>
+</code_event_listeners>

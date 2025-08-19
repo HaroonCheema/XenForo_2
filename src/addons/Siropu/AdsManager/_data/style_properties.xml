@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style_properties>
+  <style_property property_name="siropuAdsManagerAdBlockNotice" group_name="siropuAdsManager" title="AdBlock notice" description="Style the AdBlock detected notice." property_type="css" display_order="10" css_components="text,background,border,border_radius,border_width_simple,border_color_simple,border_radius_simple,padding,extra">
+    <value>{
+    "font-size": "15px",
+    "color": "rgb(255, 255, 255)",
+    "font-weight": "@xf-fontWeightHeavy",
+    "background-color": "rgb(213, 78, 73)",
+    "border-width": "1px",
+    "border-color": "rgb(182, 30, 25)",
+    "border-radius": "@xf-blockBorderRadius",
+    "padding": "10px",
+    "extra": "display: none;\nmargin: 10px 0;"
+}</value>
+  </style_property>
+  <style_property property_name="siropuAdsManagerAdBlockNoticeDismiss" group_name="siropuAdsManager" title="AdBlock notice dismiss" description="Style the AdBlock notice dismiss button." property_type="css" display_order="20" css_components="text,background,border,border_radius,border_width_simple,border_color_simple,border_radius_simple,padding,extra">
+    <value>{
+    "font-size": "16px",
+    "color": "rgb(134, 20, 16)",
+    "text-decoration": "none",
+    "extra": "float: right;\ncursor: pointer;"
+}</value>
+  </style_property>
+  <style_property property_name="siropuAdsManagerAdBlockReplaceMessage" group_name="siropuAdsManager" title="AdBlock replace message" description="Style the message that replaces the ad blocked by AdBlock." property_type="css" display_order="1" css_components="text,background,border,border_radius,border_width_simple,border_color_simple,border_radius_simple,padding,extra">
+    <value>[]</value>
+  </style_property>
+</style_properties>

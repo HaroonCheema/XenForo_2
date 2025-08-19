@@ -65,6 +65,16 @@ return array(
 	$__finalCompiled = '';
 	$__finalCompiled .= '
 	' . $__templater->func('core_js') . '
+';
+	if (!$__vars['xf']['samAdmin']) {
+		$__finalCompiled .= '
+	' . $__templater->includeTemplate('siropu_ads_manager_ad_js', $__vars) . '
+	' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+			'position' => 'javascript',
+		), $__vars) . '
+';
+	}
+	$__finalCompiled .= '
 	';
 	if ($__vars['app'] == 'public') {
 		$__finalCompiled .= '
