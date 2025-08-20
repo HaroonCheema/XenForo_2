@@ -19,7 +19,6 @@ $config['enableLivePayments'] = false;
 
 $config['debug'] = true;
 
-// $config['development']['defaultAddOn'] = 'FS/ShowIconInNav';
-$config['development']['defaultAddOn'] = 'Plisio';
+$config['development']['defaultAddOn'] = 'FS/TractorByNetMyThreads';
 
 $config['development']['enabled'] = true;

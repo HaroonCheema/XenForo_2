@@ -1,0 +1,9 @@
+{
+    "template": "PAGE_CONTAINER",
+    "description": "Add the ad macros template in all default ad positions.",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "@<xf:ad position=\"([\\w]+)\" />@",
+    "replace": "<xf:macro template=\"siropu_ads_manager_ad_macros\" name=\"ad_unit\" arg-position=\"$1\" />\n$0"
+}

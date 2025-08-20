@@ -1,0 +1,9 @@
+{
+    "template": "forum_view",
+    "description": "Add the ad macros template above and below thread container.",
+    "execution_order": 20,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "#(<xf:foreach loop=\"\\$threads\" value=\"\\$thread\">)(.*?)(</xf:foreach>)#sU",
+    "replace": "$1\n<xf:set var=\"$samCounter\" value=\"{{ number($samCounter + 1) }}\" />\n\n<xf:if contentcheck=\"true\">\n\t<div class=\"structItem structItem--thread samUnitWrapper\">\n\t\t<xf:contentcheck>\n\t\t\t<xf:macro template=\"siropu_ads_manager_ad_macros\" name=\"ad_unit\" arg-position=\"thread_list_above_item_container_{$samCounter}\" />\n\t\t</xf:contentcheck>\n\t</div>\n</xf:if>\n$2\n<xf:if contentcheck=\"true\">\n\t<div class=\"structItem structItem--thread samUnitWrapper\">\n\t\t<xf:contentcheck>\n\t\t\t<xf:macro template=\"siropu_ads_manager_ad_macros\" name=\"ad_unit\" arg-position=\"thread_list_below_item_container_{$samCounter}\" />\n\t\t</xf:contentcheck>\n\t</div>\n</xf:if>\n$3"
+}

@@ -1,0 +1,9 @@
+{
+    "template": "PAGE_CONTAINER",
+    "description": "Add the ad macros template in search menu.",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<div class=\"menu-footer\">",
+    "replace": "<xf:if contentcheck=\"true\">\n\t<div class=\"menu-row\">\n\t\t<xf:contentcheck>\n\t\t\t<xf:macro template=\"siropu_ads_manager_ad_macros\" name=\"ad_unit\" arg-position=\"search_menu\" />\n\t\t</xf:contentcheck>\n\t</div>\n</xf:if>\n$0"
+}

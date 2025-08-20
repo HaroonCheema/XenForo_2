@@ -1,0 +1,44 @@
+{
+    "public/siropu_ads_manager_amp_container.json": {
+        "hash": "f343b731da7cf66767b36dbf727de2f8"
+    },
+    "public/siropu_ads_manager_footer.json": {
+        "hash": "edfc3045e1afb6f136092b3194526d47"
+    },
+    "public/siropu_ads_manager_footer_below.json": {
+        "hash": "a5a2e0601e5663ded7ef0d96c50d3de7"
+    },
+    "public/siropu_ads_manager_forum_overview_wrapper.json": {
+        "hash": "dbba8d245edd7a6d145b58e0d3253835"
+    },
+    "public/siropu_ads_manager_forum_view.json": {
+        "hash": "c60d0a14a851f15a68d952e41f5fb5ce"
+    },
+    "public/siropu_ads_manager_forum_view_pos.json": {
+        "hash": "1ab0cf97db5a8351b5c4395daca87c29"
+    },
+    "public/siropu_ads_manager_forum_view_sticky.json": {
+        "hash": "5e565d178ad85a08d088b2302fcbfb33"
+    },
+    "public/siropu_ads_manager_page_container.json": {
+        "hash": "00fd6b29c5c842d1a276b63b8c2eebdd"
+    },
+    "public/siropu_ads_manager_page_container_after_body.json": {
+        "hash": "3f1d0cb9103d1ae5868b49ffdc93d70b"
+    },
+    "public/siropu_ads_manager_page_container_before_body.json": {
+        "hash": "8a4ed0fdb77e0d0c4bb29bae65afa2e9"
+    },
+    "public/siropu_ads_manager_page_container_footer_fixed.json": {
+        "hash": "e31f2defd1110a761500aed2b67d36c6"
+    },
+    "public/siropu_ads_manager_page_container_head.json": {
+        "hash": "30c786b49d0a86ef3426bfd8809c0052"
+    },
+    "public/siropu_ads_manager_page_container_page_info.json": {
+        "hash": "07bca1fbee6ffa11484e2f41342ecba7"
+    },
+    "public/siropu_ads_manager_page_container_search_menu.json": {
+        "hash": "318420e19bbba106412cb021f7d29b55"
+    }
+}

@@ -1,0 +1,9 @@
+{
+    "template": "PAGE_CONTAINER",
+    "description": "Add the ad macros template before the closing <body> tag.",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "</body>",
+    "replace": "<xf:macro template=\"siropu_ads_manager_ad_macros\" name=\"ad_unit\" arg-position=\"no_wrapper_before_body\" arg-wrapper=\"{{ false }}\" />\n$0"
+}

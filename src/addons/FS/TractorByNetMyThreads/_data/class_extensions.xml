@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class_extensions>
+  <extension from_class="Siropu\AdsManager\Template\Ad" to_class="FS\TractorByNetMyThreads\Siropu\AdsManager\Template\Ad" execute_order="10" active="1"/>
   <extension from_class="XF\Entity\User" to_class="FS\TractorByNetMyThreads\XF\Entity\User" execute_order="10" active="1"/>
   <extension from_class="XF\Finder\Thread" to_class="FS\TractorByNetMyThreads\XF\Finder\Thread" execute_order="20" active="1"/>
   <extension from_class="XF\ForumType\Article" to_class="FS\TractorByNetMyThreads\XF\ForumType\Article" execute_order="10" active="1"/>

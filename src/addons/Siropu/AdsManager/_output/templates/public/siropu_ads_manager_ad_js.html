@@ -1,0 +1,215 @@
+<script>
+	XF.samViewCountMethod = "{$xf.options.siropuAdsManagerViewCountMethod}";
+	XF.samServerTime = {$xf.time};
+	XF.samItem = ".{$xf.options.siropuAdsManagerSamItemCssClass}";
+	XF.samCodeUnit = ".{$xf.options.siropuAdsManagerSamCodeUnitCssClass}";
+	XF.samBannerUnit = ".{$xf.options.siropuAdsManagerSamBannerUnitCssClass}";
+</script>
+<xf:if is="$xf.samLoadJsCarousel">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.4.5/js/swiper.min.js"></script>
+	<script>
+	$(function() {
+		var options = {
+			slidesPerColumnFill: 'row',
+			pagination: {
+				el: '.swiper-pagination',
+				clickable: true
+			},
+			navigation: {
+				nextEl: '.swiper-button-next',
+				prevEl: '.swiper-button-prev'
+			},
+			autoplay: {
+				delay: 3000,
+				disableOnInteraction: false
+			},
+			on: {
+				init: function() {
+					var unit = this.$wrapperEl;
+					unit.find(XF.samItem + ' img[data-src]').trigger('loadImage');
+					unit.find('.swiper-slide-active').trigger('adViewCarousel');
+				},
+				slideChangeTransitionEnd: function() {
+					this.$wrapperEl.find('.swiper-slide-active').trigger('adViewCarousel');
+				}
+			}
+		}
+		$('.sam-swiper-container').each(function() {
+			jQuery.extend(options, $(this).data('options'));
+			var id = $(this).data('id');
+			var swiper = [];
+			swiper[id] = new Swiper('.sam-swiper-container[data-id="' + id + '"]', options);
+			$(this).on('mouseover', function() {
+				swiper[id].autoplay.stop();
+			});
+			$(this).on('mouseout', function() {
+				swiper[id].autoplay.start();
+			});
+		});
+	});
+	</script>
+</xf:if>
+<xf:if is="$xf.options.siropuAdsManagerAdBlock != 'disabled'
+		   AND !$xf.visitor.isMemberOf($xf.options.siropuAdsManagerAdBlockExcludeUserGroup)
+		   AND !in_array($xf.reply.template, $xf.options.siropuAdsManagerAdBlockExcludePages)
+		   AND $xf.samAds
+		   AND {$xf.options.siropuAdsManagerAdBlockDevices.{$xf.samAds.getUserDevice()}}">
+	<script>
+		$(function() {
+			var adBlockAction = "{$xf.options.siropuAdsManagerAdBlock}";
+			var supportUsTitle = "{{ phrase('siropu_ads_manager_support_us_title')|escape('js') }}";
+			var supportUsMessage = "{{ phrase('siropu_ads_manager_support_us_message')|escape('js') }}";
+			var supportRedirectUrl = "{$xf.options.siropuAdsManagerAdBlockRedirectUrl}";
+			var adBlockNotice = {
+				element: '.p-body-content',
+				method: 'prepend',
+				content: "{$xf.options.siropuAdsManagerAdBlockMessage|escape('js')}",
+				interval: {$xf.options.siropuAdsManagerAdBlockDisplayInterval},
+				views: {$xf.options.siropuAdsManagerAdBlockDisplayAfterXPageViews}
+			};
+			function hasContentHeight(ad) {
+				if (ad.find('[data-xf-init="sam-lazy"]').length) {
+					return true;
+				}
+				var adminActions = ad.find('.samAdminActions');
+				var ignoreContent = ad.find('.samIgnoreContent');
+				var adsenseUnit = ad.find('ins.adsbygoogle');
+				var googleTagUnit = ad.find('[id^="div-gpt-ad"]');
+				var ignoredHeight = 0;
+				if (adminActions.length) {
+					ignoredHeight += adminActions.height();
+				}
+				if (ignoreContent.length) {
+					ignoredHeight += ignoreContent.height();
+				}
+				if (adsenseUnit.length) {
+					if (adsenseUnit[0].attributes['data-adsbygoogle-status'] === undefined) {
+						return false;
+					} else if (adsenseUnit.is(':hidden')) {
+						return true;
+					}
+				} else if (googleTagUnit.length) {
+					if (googleTagUnit.css('min-height') == '1px') {
+						return false;
+					}
+				}
+				return (ad.height() - ignoredHeight) > 0;
+			}
+			function initDetection() {
+				 $('<div class="banner_728x90 ad-banner" />').appendTo('body');
+				 var adUnits = $(XF.samCodeUnit + ' ' + XF.samItem + ':not(.samLazyLoading)' + ',' + XF.samBannerUnit + ' ' + XF.samItem + ':not(.samLazyLoading)');
+				 if (adUnits.length && ($('.banner_728x90.ad-banner').is(':hidden') || XF.samCoreLoaded === undefined)) {
+					  if (adBlockAction == 'backup' || adBlockAction == 'message') {
+						   adUnits.each(function() {
+								if (!hasContentHeight($(this)) && $(this).find('> a img[data-src]').length == 0) {
+									 if (adBlockAction == 'backup') {
+										  var backup = $(this).find('.samBackup');
+										  if (backup.length) {
+											   backup.find('img').each(function() {
+													$(this).attr('src', $(this).data('src'));
+											   });
+											   backup.fadeIn();
+										  }
+									 } else {
+										  $('<div class="samSupportUs" />').html(supportUsMessage).prependTo($(this));
+									 }
+								}
+						   });
+					  } else {
+						   var adsBlocked = 0;
+						   adUnits.each(function() {
+								if (!hasContentHeight($(this))) {
+									 adsBlocked += 1;
+								};
+						   });
+						   var canDisplayNotice = true;
+						  	var pageViewCount = {{ $xf.session.get('samPageViewCount') ?: 0 }};
+						  	if (adBlockNotice.views && adBlockNotice.views > pageViewCount) {
+								canDisplayNotice = false;
+							}
+						   if (adsBlocked && canDisplayNotice) {
+							   if (adBlockAction == 'notice') {
+								   var dismissCookieTime = adBlockNotice.interval ? XF.Cookie.get('sam_notice_dismiss') : false;
+								   if (dismissCookieTime && (Math.floor(Date.now() / 1000) - dismissCookieTime <= (adBlockNotice.interval * 60)))
+								   {
+										return;
+								   }
+								   var content = supportUsMessage;
+								   if (adBlockNotice.content) {
+									   content = adBlockNotice.content;
+								   }
+								   var notice = $('<div id="samNotice" />');
+								   notice.prepend('<a role="button" id="samDismiss">×</a>');
+								   notice.append('<span>' + content + '</span>');
+								   if (adBlockNotice.method == 'prepend') {
+									   notice.prependTo(adBlockNotice.element);
+								   } else {
+									   notice.appendTo(adBlockNotice.element);
+								   }
+								   notice.fadeIn('slow');
+								   XF.activate(notice);
+								   $('body').addClass('samAdBlockDetected');
+							   } else {
+								   var pUrl = window.location.href;
+								   var rUrl = supportRedirectUrl;
+								   if (rUrl && pUrl.indexOf(rUrl) === -1) {
+									   window.location.href = rUrl;
+									   return;
+								   }
+								   var $overlay = XF.getOverlayHtml({
+									   title: supportUsTitle,
+									   dismissible: false,
+									   html: '<div class="blockMessage">' + supportUsMessage + '</div>'
+								   });
+								   var overlay = new XF.Overlay($overlay, {
+									   backdropClose: false,
+									   keyboard: false,
+									   escapeClose: false,
+									   className: 'samSupportUsOverlay'
+								   });
+								   overlay.show();
+								   $('head').append('<style>::-webkit-scrollbar{display: none;}</style>');
+								   $('.samSupportUsOverlay').css('background-color', 'black').fadeTo('slow', 0.95);
+							   }
+						   }
+					  }
+				 }
+			}
+			$(document).on('click', '#samDismiss', function() {
+				$(this).parent('#samNotice').fadeOut();
+				$('body').removeClass('samAdBlockDetected');
+				XF.Cookie.set('sam_notice_dismiss', Math.floor(Date.now() / 1000));
+			});
+			$(document).on('samInitDetection', function() {
+				initDetection();
+			});
+			$(document).trigger('samInitDetection');
+		});
+	</script>
+</xf:if>
+<script>
+	$(function() {
+		var bkp = $('div[data-ba]');
+		if (bkp.length) {
+			bkp.each(function() {
+				var ad = $(this);
+				if (ad.find('ins.adsbygoogle').is(':hidden')) {
+					 XF.ajax('GET', XF.canonicalizeUrl('index.php?sam-item/' + ad.data('ba') + '/get-backup'), {}, function(data) {
+						 if (data.backup) {
+							 ad.html(data.backup);
+						 }
+					 }, { skipDefault: true, global: false});
+				}
+			});
+		}
+		$('.samAdvertiseHereLink').each(function() {
+			var unit = $(this).parent();
+			if (unit.hasClass('samCustomSize')) {
+				unit.css('margin-bottom', 20);
+			}
+		});
+		$('div[data-position="footer_fixed"] > div[data-cv="true"]').each(function() {
+			$(this).trigger('adView');
+		});
+	});
+</script>

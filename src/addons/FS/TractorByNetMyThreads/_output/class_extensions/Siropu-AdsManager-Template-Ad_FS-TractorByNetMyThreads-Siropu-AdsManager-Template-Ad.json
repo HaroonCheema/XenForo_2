@@ -1,0 +1,6 @@
+{
+    "from_class": "Siropu\\AdsManager\\Template\\Ad",
+    "to_class": "FS\\TractorByNetMyThreads\\Siropu\\AdsManager\\Template\\Ad",
+    "execute_order": 10,
+    "active": true
+}

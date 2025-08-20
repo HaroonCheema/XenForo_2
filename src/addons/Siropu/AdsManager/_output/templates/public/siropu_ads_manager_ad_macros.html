@@ -1,0 +1,514 @@
+<xf:macro name="ad_unit" arg-position="!" arg-wrapper="{{ true }}" arg-ads="{{ [] }}">
+	<xf:if is="$xf.visitor AND $xf.visitor.hasPermission('siropuAdsManager', 'viewAds')">
+
+		<xf:if is="$ads is empty AND $xf.samAds">
+			<xf:set var="$ads" value="{$xf.samAds.getAds($position)}" />
+		</xf:if>
+
+		<xf:if contentcheck="true">
+			<xf:css src="siropu_ads_manager_ad.less" />
+
+			<xf:if is="$xf.options.siropuAdsManagerJsFilePath">
+				<xf:js src="{$xf.options.siropuAdsManagerJsFilePath}" />
+			<xf:else />
+				<xf:js src="siropu/am/core.js" min="1" />
+			</xf:if>
+
+			<xf:contentcheck>
+				<xf:foreach loop="$ads" key="$type" value="$data">
+					<xf:foreach loop="$data" value="$typeAds">
+						<xf:set var="$count" value="{{ count($typeAds) }}" />
+						<xf:set var="$firstAd" value="{$typeAds|first}" />
+						<xf:set var="$carousel" value="{$firstAd.isInCarousel($count)}" />
+						<xf:if is="$type == 'text' AND $position == 'forum_view_above_stickies'">
+							<xf:macro name="ad_text_thread" arg-ads="{$typeAds}" />
+						<xf:elseif is="$type == 'link' AND (contains($position, 'sidebar') || contains($position, 'sidenav'))" />
+							<div class="block">
+								<div class="block-container">
+									<h3 class="block-minorHeader">{{ phrase('siropu_ads_manager_advertisements') }}</h3>
+									<div class="block-body block-row">
+										<xf:macro name="ad_link" arg-position="{$position}" arg-ads="{$typeAds}" arg-firstAd="{$firstAd}" arg-carousel="{$carousel}" arg-unitAttributes="{{ sam_unit_attributes($typeAds, $position) }}" />
+									</div>
+								</div>
+							</div>
+						<xf:else />
+							<xf:if is="$wrapper == false AND $type == 'code'">
+								<xf:foreach loop="$typeAds" value="$ad">
+									{{ ($ad.isCallback() ? $ad.callback : $ad.getCode($position))|raw }}
+								</xf:foreach>
+							<xf:else />
+								<xf:set var="$adUnit">
+									<xf:macro name="ad_{$type}" arg-position="{$position}" arg-ads="{$typeAds}" arg-firstAd="{$firstAd}" arg-carousel="{$carousel}" arg-unitAttributes="{{ sam_unit_attributes($typeAds, $position) }}" />
+								</xf:set>
+								<xf:set var="$output">
+									<xf:if is="$carousel">
+										<xf:macro name="carousel_container" arg-package="{$firstAd.Package}" arg-adUnit="{$adUnit}" arg-firstAd="{$firstAd}" arg-carousel="{$carousel}" />
+									<xf:else />
+										{$adUnit}
+									</xf:if>
+								</xf:set>
+								<xf:if is="$firstAd.Package AND $firstAd.Package.isInPostLayout($position)">
+									<xf:macro name="xf_post_layout" arg-package="{$firstAd.Package}" arg-content="{$output|raw}" arg-position="{$position}" />
+								<xf:else />
+									{$output|raw}
+								</xf:if>
+							</xf:if>
+						</xf:if>
+					</xf:foreach>
+				</xf:foreach>
+				<xf:if is="$xf.visitor.is_admin AND $xf.options.siropuAdsManagerPositionVisualization AND {$xf.samPositions.{$position}}">
+					<div class="samPositionPreview">{$xf.samPositions.{$position}|raw}</div>
+				</xf:if>
+			</xf:contentcheck>
+		</xf:if>
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="ad_code" arg-position="!" arg-ads="!" arg-firstAd="!" arg-unitAttributes="!" arg-carousel="{{ false }}">
+	<xf:if contentcheck="true">
+		<div {$unitAttributes|raw}>
+			<xf:contentcheck>
+				<xf:foreach loop="$ads" value="$ad" if="$ad.getSetting('no_wrapper') == 0">
+					<div {$ad.getAttributes($position, $carousel)|raw}>
+						<xf:if is="!$ad.settings.lazyload">
+							{{ ($ad.isCallback() ? $ad.callback : $ad.getCode($position))|raw }}
+						</xf:if>
+						<xf:macro name="backup" arg-ad="{$ad}" />
+						<xf:macro name="close_button" arg-position="{$position}" />
+						<xf:macro name="admin_actions" arg-ad="{$ad}" />
+					</div>
+				</xf:foreach>
+			</xf:contentcheck>
+			<xf:macro name="advertise_here" arg-ad="{$firstAd}" arg-display="{{ !$carousel }}" />
+		</div>
+	</xf:if>
+	<xf:foreach loop="$ads" value="$ad" if="$ad.getSetting('no_wrapper') == 1">
+		{{ ($ad.isCallback() ? $ad.callback : $ad.getCode($position))|raw }}
+		<xf:macro name="admin_actions" arg-ad="{$ad}" />
+	</xf:foreach>
+</xf:macro>
+
+<xf:macro name="ad_banner" arg-position="!" arg-ads="!" arg-firstAd="!" arg-unitAttributes="!" arg-carousel="{{ false }}">
+	<div {$unitAttributes|raw}>
+		<xf:foreach loop="$ads" value="$ad">
+			<xf:set var="$bannerFile" value="{$ad.banner}" />
+			<div {$ad.getAttributes($position, $carousel)|raw}>
+				<xf:if is="$ad.content_2">
+					<xf:if is="!$ad.settings.lazyload">
+						{$ad.getCode($position)|raw}
+					</xf:if>
+					<xf:macro name="backup" arg-ad="{$ad}" />
+				<xf:elseif is="$ad.isFlash($bannerFile)" />
+					<xf:macro name="flash_banner" arg-ad="{$ad}" arg-file="{$bannerFile}" />
+				<xf:elseif is="$ad.isMp4($bannerFile)" />
+					<xf:macro name="mp4_banner" arg-ad="{$ad}" arg-file="{$bannerFile}" />
+				<xf:else />
+					<xf:if is="!$ad.settings.lazyload">
+						<a {$ad.link_attributes|raw}>
+							<xf:if is="$ad.settings.lazyload_image">
+								<img data-src="{$bannerFile}" alt="{$ad.content_4|for_attr}" {$ad.width_height|raw} data-carousel="{{ ($position != 'advertisers' AND $carousel) ? 'true' : 'false' }}" data-xf-init="sam-lazy">
+							<xf:else />
+								<img src="{$bannerFile}" alt="{$ad.content_4|for_attr}" {$ad.width_height|raw}>
+							</xf:if>
+						</a>
+					</xf:if>
+				</xf:if>
+				<xf:macro name="admin_actions" arg-ad="{$ad}" />
+				<xf:macro name="close_button" arg-position="{$position}" />
+			</div>
+		</xf:foreach>
+		<xf:macro name="advertise_here" arg-ad="{$firstAd}" arg-display="{{ !$carousel }}" />
+	</div>
+</xf:macro>
+
+<xf:macro name="ad_text" arg-position="!" arg-ads="!" arg-firstAd="!" arg-unitAttributes="!" arg-carousel="{{ false }}">
+	<div {$unitAttributes|raw}>
+		<xf:foreach loop="$ads" value="$ad">
+			<div {$ad.getAttributes($position, $carousel)|raw}>
+				<xf:if is="$ad.hasBanner()">
+					<div class="samItemImage">
+						<xf:if is="$ad.content_2">
+							{$ad.code|raw}
+						<xf:else />
+							<a {$ad.link_attributes|raw}>
+								<xf:if is="$ad.settings.lazyload_image">
+									<img data-src="{$ad.banner}" alt="{$ad.content_4|for_attr}" data-xf-init="sam-lazy">
+								<xf:else />
+									<img src="{$ad.banner}" alt="{$ad.content_4|for_attr}">
+								</xf:if>
+							</a>
+						</xf:if>
+					</div>
+				</xf:if>
+				<div class="samItemContent">
+					<div class="samItemTitle">
+						<a {$ad.link_attributes|raw}>{$ad.title}</a>
+					</div>
+					<div class="samItemDescription">
+						{$ad.description|nl2br}
+					</div>
+				</div>
+				<xf:macro name="admin_actions" arg-ad="{$ad}" />
+				<xf:macro name="close_button" arg-position="{$position}" />
+			</div>
+		</xf:foreach>
+		<xf:macro name="advertise_here" arg-ad="{$firstAd}" arg-display="{{ !$carousel }}" />
+	</div>
+</xf:macro>
+
+<xf:macro name="ad_link" arg-position="!" arg-ads="!" arg-firstAd="!" arg-unitAttributes="!" arg-carousel="{{ false }}">
+	<div {$unitAttributes|raw}>
+		<xf:foreach loop="$ads" value="$ad">
+			<div {$ad.getAttributes($position, $carousel)|raw}>
+				<a {$ad.link_attributes|raw}>{$ad.title}</a>
+				<xf:macro name="admin_actions" arg-ad="{$ad}" />
+				<xf:macro name="close_button" arg-position="{$position}" />
+			</div>
+		</xf:foreach>
+		<xf:macro name="advertise_here" arg-ad="{$firstAd}" arg-display="{{ !$carousel }}" />
+	</div>
+</xf:macro>
+
+<xf:macro name="ad_popup" arg-ads="!">
+	<xf:css src="siropu_ads_manager_ad.less" />
+	<xf:if is="$xf.options.siropuAdsManagerJsFilePath">
+		<xf:js src="{$xf.options.siropuAdsManagerJsFilePath}" />
+	<xf:else />
+		<xf:js src="siropu/am/core.js" min="1" />
+	</xf:if>
+	<xf:js><xf:trim>
+		$(function() {
+			<xf:foreach loop="$ads" value="$ad">
+				setTimeout(function() {
+					<xf:if is="$ad.content_2">
+						{$ad.content_2|raw}
+					<xf:elseif is="$ad.target_url" />
+						var samWindowPopup = window.open('{$ad.target_url}', 'samWindowPopup', '{{ $ad.content_3 ?: 'fullscreen=yes' }}');
+						<xf:if is="$ad.settings.hide_after">
+							setTimeout(function() {
+								samWindowPopup.close();
+							}, {{ $ad.settings.hide_after * 1000 }});
+						</xf:if>
+					<xf:else />
+						var $samOverlay = XF.getOverlayHtml({
+							title: '{$ad.title|for_attr}',
+							html: '<div class="blockMessage"><div {$ad.attributes|raw}></div></div>'
+						});
+						$samOverlay.find('.samItem').html({$ad.popup_content|raw});
+						var samOverlay = new XF.Overlay($samOverlay, {
+							backdropClose: false,
+							keyboard: false,
+							escapeClose: false,
+							focusShow: false,
+							className: 'samOverlay{{ $ad.settings.hide_close_button ? ' samOverlayDisableClose' : '' }} samOverlay_{$ad.ad_id}'
+						});
+						samOverlay.show();
+						<xf:if is="$ad.settings.count_views">
+							setTimeout(function() {
+								$('.samItem[data-id="{$ad.ad_id}"]').trigger('adView');
+							}, 1000);
+						</xf:if>
+						<xf:if is="$ad.settings.hide_after">
+							setTimeout(function() {
+								samOverlay.hide();
+							}, {{ $ad.settings.hide_after * 1000 }});
+						</xf:if>
+					</xf:if>
+					<xf:if is="$ad.settings.count_views || $ad.settings.display_frequency AND ($ad.content_2 || $ad.target_url)">
+						var jsAd = $('<span {$ad.attributes} />').css({'visibility': 'hidden', 'position': 'absolute', 'top': 0});
+						jsAd.appendTo($('.p-body'));
+						XF.activate(jsAd);
+						setTimeout(function() {
+							<xf:if is="$ad.settings.count_views">
+								jsAd.trigger('adView');
+							</xf:if>
+							<xf:if is="$ad.settings.display_frequency">
+								jsAd.trigger('adJsView');
+							</xf:if>
+						}, 1000);
+					</xf:if>
+				}, {{ $ad.settings.display_after * 1000 }});
+			</xf:foreach>
+		});
+	</xf:trim></xf:js>
+</xf:macro>
+
+<xf:macro name="ad_background" arg-ads="!">
+	<xf:css src="siropu_ads_manager_ad.less" />
+	<xf:js src="siropu/am/core.js" min="1" />
+	<xf:js><xf:trim>
+		XF.samBgAds = [];
+		$(function() {
+			function calculateAdWidth() {
+				return ($(window).width() - $('{$xf.options.siropuAdsManagerInnerBodySelector}').width()) / 2;
+			}
+			var body = $('{$xf.options.siropuAdsManagerBodySelector}');
+			var footer = $('{$xf.options.siropuAdsManagerFooterSelector}');
+			var footerHeight = footer.innerHeight();
+			var adWidth = calculateAdWidth();
+			$(window).scroll(function() {
+				if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight - footerHeight)) {
+					$('.samBackgroundItem').css('bottom', footerHeight);
+				} else {
+					$('.samBackgroundItem').css('bottom', '');
+				}
+			});
+			$(window).resize(function() {
+				$('.samBackgroundItem').css('width', calculateAdWidth());
+			});
+			<xf:foreach loop="$ads" value="$ad">
+				setTimeout(function() {
+					body.addClass('samBackground').css('background-image', "url('{$ad.banner}')");
+					var leftAd = $('<a {$ad.attributes} />').css('width', adWidth);
+					var rightAd = leftAd.clone().css('right', 0);
+					leftAd.appendTo(body);
+					rightAd.appendTo(body);
+					XF.activate(leftAd);
+					XF.activate(rightAd);
+					<xf:if contentcheck="true">
+						setTimeout(function() {
+							<xf:contentcheck><xf:trim>
+								<xf:if is="$ad.settings.count_views">
+									leftAd.trigger('adView');
+								</xf:if>
+								<xf:if is="$ad.settings.display_frequency">
+									leftAd.trigger('adJsView');
+								</xf:if>
+							</xf:trim></xf:contentcheck>
+						}, 1000);
+					</xf:if>
+					<xf:if is="$ad.settings.hide_after">
+						setTimeout(function() {
+							body.removeClass('samBackground').css('background-image', '');
+							leftAd.remove();
+							rightAd.remove();
+						}, {{ $ad.settings.hide_after * 1000 }});
+					</xf:if>
+				}, {{ $ad.settings.display_after * 1000 }});
+				<xf:if is="$ad.settings.count_views">
+					XF.samBgAds.push({$ad.ad_id});
+				</xf:if>
+			</xf:foreach>
+		});
+	</xf:trim></xf:js>
+</xf:macro>
+
+<xf:macro name="ad_text_thread" arg-ads="!">
+	<xf:foreach loop="$ads" value="$ad">
+		<div class="structItem">
+			<div class="structItem-cell structItem-cell--icon">
+				<div class="structItem-iconContainer">
+					<xf:if is="$ad.hasBanner()">
+						<a {$ad.link_attributes|raw} class="avatar"><img src="{$ad.banner}" alt="{$ad.content_4|for_attr}"></a>
+					<xf:else />
+						<xf:avatar user="$ad.User" size="s" />
+					</xf:if>
+				</div>
+			</div>
+			<div class="structItem-cell structItem-cell--main">
+				<div class="structItem-title">
+					<a {$ad.link_attributes|raw}>{$ad.title}</a>
+				</div>
+				<div class="structItem-minor">
+					{$ad.description}
+					<xf:macro name="admin_actions" arg-ad="{$ad}" />
+				</div>
+			</div>
+		</div>
+	</xf:foreach>
+</xf:macro>
+
+<xf:macro name="ad_thread" arg-type="!" arg-forum="!">
+	<xf:set var="$packageData" value="{$xf.samThreadAds.{$type}}" />
+	<xf:set var="$costAmount" value="{{ ($packageData.cost_custom.{$forum.node_id} ? {$packageData.cost_custom.{$forum.node_id}} : $packageData.cost_amount)|currency($packageData.cost_currency) }}" />
+	<div class="structItem">
+		<div class="structItem-cell structItem-cell--icon">
+			<div class="structItem-iconContainer">
+				<xf:avatar user="$xf.visitor" size="s" />
+			</div>
+		</div>
+		<div class="structItem-cell structItem-cell--main">
+			<div class="structItem-title">
+				<a href="{{ link('ads-manager/packages/create-ad', $packageData) }}">
+					<xf:if is="$type == 'thread'">
+						{{ phrase('siropu_ads_manager_create_your_promo_thread', {'costAmount': $costAmount, 'costPer': $packageData.cost_per}) }}
+					<xf:else />
+						{{ phrase('siropu_ads_manager_make_your_thread_sticky', {'costAmount': $costAmount, 'costPer': $packageData.cost_per}) }}
+					</xf:if>
+				</a>
+			</div>
+			<div class="structItem-minor">
+				<xf:if is="$type == 'thread'">
+					{{ phrase('siropu_ads_manager_create_your_promo_thread_explain') }}
+				<xf:else />
+					{{ phrase('siropu_ads_manager_make_your_thread_sticky_explain') }}
+				</xf:if>
+			</div>
+		</div>
+	</div>
+</xf:macro>
+
+<xf:macro name="flash_banner" arg-ad="!" arg-file="!">
+	<xf:set var="$url" value="{$file}?clickTAG={$ad.target_url}{{ $ad.settings.target_blank ? '&clickTARGET=_blank' : '' }}" />
+	<object {$ad.width_height|raw} >
+		<param name="movie" value="{$url}">
+		<param name="menu" value="false">
+		<param name="wmode" value="opaque">
+		<param name="scale" value="showAll">
+		<embed src="{$url}" {$ad.width_height|raw} menu="false" wmode="Opaque">
+	</object>
+</xf:macro>
+
+<xf:macro name="mp4_banner" arg-ad="!" arg-file="!">
+	<video {$ad.width_height|raw} autoplay muted {{ $ad.target_url ? 'onclick="window.open(\'' . $ad.target_url . '\')"' : '' }}>
+		<source src="{$file}" type="video/mp4">
+	</video>
+</xf:macro>
+
+<xf:macro name="backup" arg-ad="!">
+	<xf:if is="$xf.options.siropuAdsManagerAdBlock == 'backup' AND $ad.content_3 AND $ad.canViewBackup()">
+		<div class="samBackup" style="display: none;">
+			{$ad.getBackup()|raw}
+		</div>
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="advertise_here" arg-ad="!" arg-display="{{ true }}" arg-carousel="{{ false }}">
+	<xf:if is="$ad.Package AND $display">
+		<xf:set var="$cssClass" value="{{ $carousel ? $ad.Package.getUnitAlignmentClass() : '' }}" />
+		<xf:if is="$xf.options.siropuAdsManagerEnabled AND $ad.Package.advertise_here AND $ad.Package.empty_slot_count AND $ad.Package.placeholder_id != $ad.ad_id AND $ad.Package.isValidAdvertiser() AND $xf.visitor.hasPermission('siropuAdsManager', 'createAds')">
+			<div class="samAdvertiseHereLink{$cssClass}"{{ $carousel ? ' style="margin-top: 20px;"' : '' }}>
+				<a href="{{ link('ads-manager/packages/create-ad', $ad.Package) }}">{{ phrase('siropu_ads_manager_your_ad_here_description', {'costAmount': $ad.Package.cost_amount|currency($ad.Package.cost_currency), 'costPer': $ad.Package.getCostPerPhrase()}) }}</a>
+			</div>
+		</xf:if>
+		<xf:if contentcheck="true">
+			<div class="samUnitContent{$cssClass}"{{ $carousel ? ' style="margin-top: 20px;"' : '' }}>
+				<xf:contentcheck>
+					{$ad.Package.content|raw}
+					<xf:include template="siropu_ads_manager_content_below_unit" />
+				</xf:contentcheck>
+			</div>
+		</xf:if>
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="admin_actions" arg-ad="!">
+	<xf:if is="$xf.visitor.is_admin AND $xf.options.siropuAdsManagerAdActions">
+		<div class="samAdminActions">
+			<xf:button href="{{ link_type('admin', 'ads-manager/ads/details', $ad) }}" class="button--link" data-xf-click="overlay"><xf:fa icon="fas fa-info-circle" /></xf:button>
+			<xf:button href="{{ link_type('admin', 'ads-manager/ads/edit', $ad) }}" class="button--link" data-xf-click="overlay"><xf:fa icon="fas fa-edit" /></xf:button>
+			<xf:button href="{{ link_type('admin', 'ads-manager/ads/delete', $ad) }}" class="button--link" data-xf-click="overlay"><xf:fa icon="fas fa-trash" /></xf:button>
+			<xf:if is="!$ad.isXfItem()">
+				<xf:button class="button--link menuTrigger"
+						   data-xf-click="menu"
+						   aria-label="{{ phrase('more_options') }}"
+						   aria-expanded="false"
+						   aria-haspopup="true">
+					<xf:fa icon="fas fa-chart-bar" />
+				</xf:button>
+				<div class="menu" data-menu="menu" aria-hidden="true">
+					<div class="menu-content">
+						<a href="{{ link_type('admin', 'ads-manager/ads/general-stats', $ad) }}" class="menu-linkRow" data-xf-click="overlay">{{ phrase('siropu_ads_manager_general_stats') }}</a>
+						<a href="{{ link_type('admin', 'ads-manager/ads/daily-stats', $ad) }}" class="menu-linkRow" data-xf-click="overlay">{{ phrase('siropu_ads_manager_daily_stats') }}</a>
+						<a href="{{ link_type('admin', 'ads-manager/ads/click-stats', $ad) }}" class="menu-linkRow" data-xf-click="overlay">{{ phrase('siropu_ads_manager_click_stats') }}</a>
+					</div>
+				</div>
+			</xf:if>
+			<xf:button class="button--link menuTrigger"
+					   data-xf-click="menu"
+					   aria-label="{{ phrase('more_options') }}"
+					   aria-expanded="false"
+					   aria-haspopup="true">
+				<xf:fa icon="fas fa-cog" />
+			</xf:button>
+			<div class="menu" data-menu="menu" aria-hidden="true">
+				<div class="menu-content">
+					<a href="{{ link_type('admin', 'ads-manager/ads/clone', $ad) }}" class="menu-linkRow" data-xf-click="overlay">{{ phrase('siropu_ads_manager_clone') }}</a>
+					<xf:if is="!$ad.isXfItem()">
+						<a href="{{ link_type('admin', 'ads-manager/ads/embed', $ad) }}" class="menu-linkRow" data-xf-click="overlay">{{ phrase('siropu_ads_manager_embed') }}</a>
+					</xf:if>
+					<a href="{{ link_type('admin', 'ads-manager/ads/export', $ad) }}" class="menu-linkRow" data-xf-click="overlay">{{ phrase('siropu_ads_manager_export') }}</a>
+				</div>
+			</div>
+		</div>
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="close_button" arg-position="">
+	<xf:if is="$position == 'footer_fixed'">
+		<a role="button" class="samCloseButton" data-xf-click="sam-close"><xf:fa icon="fas fa-times-square" /></a>
+	</xf:if>
+	<xf:if is="in_array($position, ['over_bb_code_video_attachment', 'media_view_video_container', 'media_view_video_embed_container'])">
+		<a role="button" class="samOverlayCloseButton" data-xf-click="sam-close">
+			{{ phrase('siropu_ads_manager_close_ad_and_play') }}
+		</a>
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="carousel_container" arg-package="!" arg-adUnit="!" arg-firstAd="!" arg-carousel="{{ false }}">
+	<div class="sam-swiper-container swiper-container"{$package.getUnitStyle()|raw} data-id="{$package.package_id}" data-options='{$package.carousel_settings|raw}'>
+		{$adUnit}
+		<xf:if is="$package.settings.carousel.arrows">
+			<div class="swiper-button-prev"></div>
+			<div class="swiper-button-next"></div>
+		</xf:if>
+		<xf:if is="$package.settings.carousel.bullets">
+			<div class="swiper-pagination"></div>
+		</xf:if>
+	</div>
+	<xf:macro name="advertise_here" arg-ad="{$firstAd}" arg-carousel="{$carousel}" />
+</xf:macro>
+
+<xf:macro name="xf_post_layout" arg-package="!" arg-content="!" arg-position="!">
+	<xf:set var="$isProfilePost" value="{{ contains($position, 'profile_post_') ? true : false }}" />
+	<xf:set var="$userAvatar" value="{$package.getPostLayoutSetting('avatar', '')}" />
+	<xf:set var="$userName" value="{$package.getPostLayoutSetting('username')|raw}" />
+	<xf:set var="$userTitle" value="{$package.getPostLayoutSetting('title')|raw}" />
+	<article class="message message--{{ $isProfilePost ? 'simple' : 'post' }}">
+		<div class="message-inner">
+			<div class="message-cell message-cell--user">
+				<section class="message-user">
+					<div class="message-avatar message-avatar--online">
+						<div class="message-avatar-wrapper">
+							<xf:if is="$userAvatar is not empty">
+								<a class="avatar avatar--{{ $isProfilePost ? 's' : 'm' }}">
+									<img src="{$userAvatar}" width="96" height="96" loading="lazy"> 
+								</a>
+							<xf:else />
+								<a class="avatar avatar--{{ $isProfilePost ? 's' : 'm' }} avatar--default avatar--default--dynamic" style="background-color: #cc9933; color: #3d2e0f">
+									<span role="img">A</span> 
+								</a>
+							</xf:if>
+						</div>
+					</div>
+					<xf:if contentcheck="true">
+						<div class="message-userDetails">
+							<xf:contentcheck>
+								<xf:if is="$userName">
+									<h4 class="message-name">
+										<span class="username">{$userName|raw}</span>
+									</h4>
+								</xf:if>
+								<xf:if is="$userTitle">
+									<h5 class="userTitle message-userTitle" dir="auto">{$userTitle|raw}</h5>
+								</xf:if>
+							</xf:contentcheck>
+						</div>
+					</xf:if>
+				</section>
+				<span class="message-userArrow"></span>
+			</div>
+			<div class="message-cell message-cell--main">
+				<div class="message-main">
+					<div class="message-content">
+						<div class="message-userContent">
+							<article class="message-body">
+								<div class="bbWrapper">{$content}</div>
+							</article>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</article>
+</xf:macro>

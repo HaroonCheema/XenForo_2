@@ -3,6 +3,11 @@
 // ################## THIS IS A GENERATED FILE ##################
 // DO NOT EDIT DIRECTLY. EDIT THE CLASS EXTENSIONS IN THE CONTROL PANEL.
 
+namespace FS\TractorByNetMyThreads\Siropu\AdsManager\Template
+{
+	class XFCP_Ad extends \Siropu\AdsManager\Template\Ad {}
+}
+
 namespace FS\TractorByNetMyThreads\XF\Entity
 {
 	class XFCP_User extends \XF\Entity\User {}

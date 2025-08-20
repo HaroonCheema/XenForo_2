@@ -1,0 +1,9 @@
+{
+    "template": "PAGE_CONTAINER",
+    "description": "Display page information.",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<!--XF:EXTRA_OUTPUT-->",
+    "replace": "$0\n<xf:if is=\"$xf.options.siropuAdsManagerPageInfo AND $xf.visitor.is_admin\">\n\t<div class=\"block\" style=\"text-align: center;\">\n\t\t<div class=\"block-container\">\n\t\t\t<h3 class=\"block-header\"><i class=\"fas fa-info-circle\"></i> {{ phrase('siropu_ads_manager_page_info') }}</h3>\n\t\t\t<div class=\"block-body block-row\">\n\t\t\t\t<b>{{ phrase('siropu_ads_manager_controller_class:') }}</b> {{ $xf.reply.controller ?: phrase('n_a') }}<br />\n\t\t\t\t<b>{{ phrase('siropu_ads_manager_controller_method:') }}</b> {{ $xf.reply.action ?: phrase('n_a') }}<br />\n\t\t\t\t<b>{{ phrase('siropu_ads_manager_view_class:') }}</b> {{ $xf.reply.view ?: phrase('n_a') }}<br />\n\t\t\t\t<b>{{ phrase('siropu_ads_manager_content_template:') }}</b> {{ $xf.reply.template ?: phrase('n_a') }}\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</xf:if>"
+}
