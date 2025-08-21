@@ -9,9 +9,13 @@ class Ad extends XFCP_Ad
         $options = \XF::options();
         $visitor = \XF::visitor();
 
-        $this->pageState['template'] = $reply->getTemplateName();
+        if ($reply instanceof \XF\Mvc\Reply\View) {
+            $this->pageState['template'] = $reply->getTemplateName();
+        } else {
+            return parent::__construct($app, $reply);
+        }
 
-        if($this->pageState['template'] != "fs_tbn_forum_view_type_article"){
+        if ($this->pageState['template'] != "fs_tbn_forum_view_type_article") {
 
             return parent::__construct($app, $reply);
         }
