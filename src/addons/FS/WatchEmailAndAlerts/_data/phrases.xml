@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="option.fs_watch_less_than_user_id" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[x Value]]></phrase>
+  <phrase title="option.fs_watch_specific_user_id" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Specific User id]]></phrase>
+  <phrase title="option_explain.fs_watch_less_than_user_id" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_explain.fs_watch_specific_user_id" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="option_group.fs_watch_email_alerts" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Watch Email and Alerts]]></phrase>
+  <phrase title="option_group_description.fs_watch_email_alerts" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+</phrases>

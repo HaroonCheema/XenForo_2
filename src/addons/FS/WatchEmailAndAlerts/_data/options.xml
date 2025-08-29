@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<options>
+  <option option_id="fs_watch_less_than_user_id" edit_format="textbox" data_type="string">
+    <default_value></default_value>
+    <relation group_id="fs_watch_email_alerts" display_order="1"/>
+  </option>
+  <option option_id="fs_watch_specific_user_id" edit_format="textbox" data_type="string">
+    <default_value></default_value>
+    <relation group_id="fs_watch_email_alerts" display_order="2"/>
+  </option>
+</options>

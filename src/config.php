@@ -19,6 +19,6 @@ $config['enableLivePayments'] = false;
 
 $config['debug'] = true;
 
-$config['development']['defaultAddOn'] = 'FS/TractorByNetMyThreads';
+$config['development']['defaultAddOn'] = 'FS/WatchEmailAndAlerts';
 
 $config['development']['enabled'] = true;

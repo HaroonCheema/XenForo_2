@@ -86,6 +86,7 @@ You may set a user into \'discouraged\' mode by editing their user profile, or d
   'option_group_description.fs_thread_thumbnail' => '',
   'option_group_description.fs_tractor_by_net_api' => '',
   'option_group_description.fs_translator' => '[FS] Translator',
+  'option_group_description.fs_watch_email_alerts' => '',
   'option_group_description.fs_web_ranking' => '',
   'option_group_description.fs_welcome_banner' => '',
   'option_group_description.fs_who_replied_integ' => '',

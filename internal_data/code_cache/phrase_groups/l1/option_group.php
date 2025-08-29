@@ -84,6 +84,7 @@ return array (
   'option_group.fs_thread_thumbnail' => '[FS] Thread Thumbnail',
   'option_group.fs_tractor_by_net_api' => '[FS] Tractorbynet Api',
   'option_group.fs_translator' => '[FS] Translator',
+  'option_group.fs_watch_email_alerts' => '[FS] Watch Email and Alerts',
   'option_group.fs_web_ranking' => '[FS] Website Ranking',
   'option_group.fs_welcome_banner' => '[FS] Welcome Banner',
   'option_group.fs_who_replied_integ' => '[FS] Who Replied Integration',

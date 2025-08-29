@@ -506,6 +506,8 @@ return array (
   'option.fs_unhide_user_ids' => 'User ids',
   'option.fs_urlFieldId' => 'URL Field ID',
   'option.fs_use_random' => 'Random',
+  'option.fs_watch_less_than_user_id' => 'x Value',
+  'option.fs_watch_specific_user_id' => 'Specific User id',
   'option.fs_web_ranking_parent_web_id' => 'Parent Website Id',
   'option.fs_webhook_secret_key' => 'Webhook Secret Token',
   'option.fs_welcome_banner_applicable_threads' => 'Welcome Banner Applicable Threads',

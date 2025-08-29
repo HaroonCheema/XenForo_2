@@ -576,6 +576,8 @@ Example: 1,2,3,4,..',
 Example: 1,2,3,4,..',
   'option_explain.fs_urlFieldId' => 'Enter the ID of URL input field that is created in the form (Advance form) Enter multi Ids separated by comma',
   'option_explain.fs_use_random' => 'This option allows you to enable the random avatar feature.',
+  'option_explain.fs_watch_less_than_user_id' => '',
+  'option_explain.fs_watch_specific_user_id' => '',
   'option_explain.fs_web_ranking_parent_web_id' => '',
   'option_explain.fs_webhook_secret_key' => 'Must Required for webhook validate.',
   'option_explain.fs_welcome_banner_applicable_threads' => 'List the welcome banner thread ids that are allowed to be display. Use , (comma) between ids.
