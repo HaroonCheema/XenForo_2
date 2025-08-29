@@ -144,6 +144,13 @@ return array(
 	), $__vars) . '
 				</h3>
 				';
+	if (!$__templater->test($__vars['node']['TVForum'], 'empty', array())) {
+		$__finalCompiled .= '
+	' . $__templater->includeTemplate('snog_tv_node_info', $__vars) . '
+';
+	}
+	$__finalCompiled .= '
+';
 	if (($__vars['descriptionDisplay'] != 'none') AND $__vars['node']['description']) {
 		$__finalCompiled .= '
 					<div class="node-description ' . (($__vars['descriptionDisplay'] == 'tooltip') ? 'node-description--tooltip js-nodeDescTooltip' : '') . '">' . $__templater->filter($__vars['node']['description'], array(array('raw', array()),), true) . '</div>
@@ -207,6 +214,16 @@ return array(
 	if (!$__vars['extras']['privateInfo']) {
 		$__finalCompiled .= '
 				<div class="node-stats">
+';
+		if ((!$__vars['node']['TVForum']['tv_parent_id']) AND $__vars['node']['TVForum']['tv_id']) {
+			$__finalCompiled .= '
+	' . $__templater->callMacro('rating_macros', 'stars', array(
+				'rating' => $__vars['node']['TVForum']['tv_rating'],
+			), $__vars) . '
+';
+		}
+		$__finalCompiled .= '
+
 					<dl class="pairs pairs--rows">
 						<dt>' . 'Threads' . '</dt>
 						<dd>' . $__templater->filter($__vars['extras']['discussion_count'], array(array('number_short', array(1, )),), true) . '</dd>

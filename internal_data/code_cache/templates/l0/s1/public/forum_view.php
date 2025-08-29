@@ -1,7 +1,30 @@
 <?php
 // FROM HASH: 426ea89559d91425ccfdf0ce408b4684
 return array(
-'extensions' => array('above_node_list' => function($__templater, array $__vars, $__extensions = null)
+'extensions' => array('structured_data_extra_params' => function($__templater, array $__vars, $__extensions = null)
+{
+	return array();
+},
+'structured_data' => function($__templater, array $__vars, $__extensions = null)
+{
+	$__finalCompiled = '';
+		$__finalCompiled .= '
+		';
+	$__vars['ldJson'] = $__templater->method($__vars['forum'], 'getLdStructuredData', array($__vars['threads'], $__vars['page'], $__templater->renderExtension('structured_data_extra_params', $__vars, $__extensions), ));
+	$__finalCompiled .= '
+		';
+	if ($__vars['ldJson']) {
+		$__finalCompiled .= '
+			<script type="application/ld+json">
+				' . $__templater->filter($__vars['ldJson'], array(array('json', array(true, )),array('raw', array()),), true) . '
+			</script>
+		';
+	}
+	$__finalCompiled .= '
+	';
+	return $__finalCompiled;
+},
+'above_node_list' => function($__templater, array $__vars, $__extensions = null)
 {
 	$__finalCompiled = '';
 	
@@ -90,15 +113,21 @@ return array(
 		$__finalCompiled .= '
 				<div class="structItemContainer">
 					';
-	if (!$__vars['forum']['Node']['snog_posid']) {
+	if ($__templater->test($__vars['forum']['TVForum'], 'empty', array()) OR (!$__vars['forum']['TVForum']['tv_season'])) {
 		$__finalCompiled .= '
+	';
+		if (!$__vars['forum']['Node']['snog_posid']) {
+			$__finalCompiled .= '
 	' . $__templater->callMacro(null, ($__vars['templateOverrides']['quick_thread_macro'] ?: 'thread_list_macros::quick_thread'), $__templater->combineMacroArgumentAttributes($__vars['templateOverrides']['quick_thread_macro_args'], array(
-			'forum' => $__vars['forum'],
-			'page' => $__vars['page'],
-			'order' => $__vars['sortInfo']['order'],
-			'direction' => $__vars['sortInfo']['direction'],
-			'prefixes' => $__vars['quickThreadPrefixes'],
-		)), $__vars) . '
+				'forum' => $__vars['forum'],
+				'page' => $__vars['page'],
+				'order' => $__vars['sortInfo']['order'],
+				'direction' => $__vars['sortInfo']['direction'],
+				'prefixes' => $__vars['quickThreadPrefixes'],
+			)), $__vars) . '
+';
+		}
+		$__finalCompiled .= '
 ';
 	}
 	$__finalCompiled .= '
@@ -405,6 +434,47 @@ return array(
 	$__finalCompiled = '';
 		$__finalCompiled .= '
 		';
+	if ($__vars['filters']['genre']) {
+		$__finalCompiled .= '
+	<li><a href="' . $__templater->func('link', array('forums', $__vars['forum'], $__templater->filter($__vars['filters'], array(array('replace', array('genre', null, )),), false), ), true) . '"
+		class="filterBar-filterToggle" data-xf-init="tooltip" title="' . 'Remove this filter' . '">
+		<span class="filterBar-filterToggle-label">' . 'Genre' . ':</span>
+		' . $__templater->escape($__vars['filters']['genre']) . '</a></li>
+';
+	}
+	$__finalCompiled .= '
+';
+	if ($__vars['filters']['director']) {
+		$__finalCompiled .= '
+	<li><a href="' . $__templater->func('link', array('forums', $__vars['forum'], $__templater->filter($__vars['filters'], array(array('replace', array('director', null, )),), false), ), true) . '"
+		class="filterBar-filterToggle" data-xf-init="tooltip" title="' . 'Remove this filter' . '">
+		<span class="filterBar-filterToggle-label">' . 'Director' . ':</span>
+		' . $__templater->escape($__vars['filters']['director']) . '</a></li>
+';
+	}
+	$__finalCompiled .= '
+';
+	if ($__vars['filters']['cast']) {
+		$__finalCompiled .= '
+	<li><a href="' . $__templater->func('link', array('forums', $__vars['forum'], $__templater->filter($__vars['filters'], array(array('replace', array('cast', null, )),), false), ), true) . '"
+		class="filterBar-filterToggle" data-xf-init="tooltip" title="' . 'Remove this filter' . '">
+		<span class="filterBar-filterToggle-label">' . 'Cast' . ':</span>
+		' . $__templater->escape($__vars['filters']['cast']) . '</a></li>
+';
+	}
+	$__finalCompiled .= '
+';
+	if ($__vars['filters']['movie_title']) {
+		$__finalCompiled .= '
+	<li><a href="' . $__templater->func('link', array('forums', $__vars['forum'], $__templater->filter($__vars['filters'], array(array('replace', array('movie_title', null, )),), false), ), true) . '"
+		class="filterBar-filterToggle" data-xf-init="tooltip" title="' . 'Remove this filter' . '">
+		<span class="filterBar-filterToggle-label">' . 'Movie title' . ':</span>
+		' . $__templater->escape($__vars['filters']['movie_title']) . '</a></li>
+';
+	}
+	$__finalCompiled .= '
+' . $__templater->includeTemplate('snog_tv_filter_removal', $__vars) . '
+';
 	if ($__vars['filters']['last_days'] AND $__vars['dateLimits'][$__vars['filters']['last_days']]) {
 		$__finalCompiled .= '
 			<li><a href="' . $__templater->func('link', array('forums', $__vars['forum'], $__templater->filter($__vars['filters'], array(array('replace', array('last_days', null, )),), false), ), true) . '"
@@ -518,37 +588,79 @@ return array(
 			if ($__vars['forum']['Node']['node_state'] == 'visible') {
 				$__finalCompiled .= '
 	';
-				if ($__templater->method($__vars['forum'], 'canCreateThread', array()) OR $__templater->method($__vars['forum'], 'canCreateThreadPreReg', array())) {
-					$__compilerTemp1 = '';
-					if ((($__vars['xf']['reply']['containerKey'] == ('node-' . $__vars['xf']['options']['fs_questionAnswerForum'])) OR ($__templater->method($__vars['xf']['app']['request'], 'getRoutePath', array()) == 'esperto/'))) {
-						$__compilerTemp1 .= '
-	' . 'Submit your question' . '
+				if (!$__templater->test($__vars['forum']['TVForum'], 'empty', array()) AND (!$__vars['forum']['TVForum']['tv_parent_id'])) {
+					$__finalCompiled .= '
+	' . $__templater->includeTemplate('snog_tv_add_season', $__vars) . '
+';
+				} else {
+					$__finalCompiled .= '
+	';
+					if (!$__templater->test($__vars['forum']['TVForum'], 'empty', array()) AND $__vars['forum']['TVForum']['tv_parent_id']) {
+						$__finalCompiled .= '
+	' . $__templater->includeTemplate('snog_tv_add_episode', $__vars) . '
 ';
 					} else {
-						$__compilerTemp1 .= '
+						$__finalCompiled .= '
 	';
-						if ($__vars['forum']['Node']['snog_posid'] AND $__vars['forum']['Node']['snog_label']) {
-							$__compilerTemp1 .= '
+						if ($__templater->method($__vars['forum'], 'canCreateThread', array()) OR $__templater->method($__vars['forum'], 'canCreateThreadPreReg', array())) {
+							$__compilerTemp1 = '';
+							if ((($__vars['xf']['reply']['containerKey'] == ('node-' . $__vars['xf']['options']['fs_questionAnswerForum'])) OR ($__templater->method($__vars['xf']['app']['request'], 'getRoutePath', array()) == 'esperto/'))) {
+								$__compilerTemp1 .= '
+	' . 'Submit your question' . '
+';
+							} else {
+								$__compilerTemp1 .= '
+	';
+								if ($__vars['forum']['forum_type_id'] == 'snog_movies_movie') {
+									$__compilerTemp1 .= '
+	' . 'Post movie' . '
+';
+								} else {
+									$__compilerTemp1 .= '
+	';
+									if ($__templater->func('in_array', array($__vars['forum']['node_id'], $__vars['xf']['options']['TvThreads_forum'], ), false) AND (!$__vars['xf']['options']['TvThreads_mix'])) {
+										$__compilerTemp1 .= '
+	' . 'Post a new TV show' . '
+';
+									} else {
+										$__compilerTemp1 .= '
+';
+										if ($__vars['forum']['Node']['snog_posid'] AND $__vars['forum']['Node']['snog_label']) {
+											$__compilerTemp1 .= '
 	' . $__templater->escape($__vars['forum']['Node']['snog_label']) . '
 ';
-						} else {
-							$__compilerTemp1 .= '
+										} else {
+											$__compilerTemp1 .= '
 	' . 'Post thread' . '
 ';
-						}
-						$__compilerTemp1 .= '
+										}
+										$__compilerTemp1 .= '	
 ';
-					}
-					$__templater->pageParams['pageAction'] = $__templater->preEscaped('
+									}
+									$__compilerTemp1 .= '
+	
+';
+								}
+								$__compilerTemp1 .= '
+
+';
+							}
+							$__templater->pageParams['pageAction'] = $__templater->preEscaped('
 	' . $__templater->button('
 		' . $__compilerTemp1 . '
 	', array(
-						'href' => ($__vars['forum']['Node']['snog_posid'] ? $__templater->func('link', array('form/select', array('posid' => $__vars['forum']['Node']['snog_posid'], ), ), false) : $__templater->func('link', array('forums/post-thread', $__vars['forum'], ), false)),
-						'class' => 'button--cta',
-						'icon' => 'write',
-					), '', array(
-					)) . '
+								'href' => ($__vars['forum']['Node']['snog_posid'] ? $__templater->func('link', array('form/select', array('posid' => $__vars['forum']['Node']['snog_posid'], ), ), false) : $__templater->func('link', array('forums/post-thread', $__vars['forum'], ), false)),
+								'class' => 'button--cta',
+								'icon' => 'write',
+							), '', array(
+							)) . '
 ');
+						}
+						$__finalCompiled .= '
+';
+					}
+					$__finalCompiled .= '
+';
 				}
 				$__finalCompiled .= '
 	';
@@ -558,37 +670,79 @@ return array(
 		} else {
 			$__finalCompiled .= '
 	';
-			if ($__templater->method($__vars['forum'], 'canCreateThread', array()) OR $__templater->method($__vars['forum'], 'canCreateThreadPreReg', array())) {
-				$__compilerTemp2 = '';
-				if ((($__vars['xf']['reply']['containerKey'] == ('node-' . $__vars['xf']['options']['fs_questionAnswerForum'])) OR ($__templater->method($__vars['xf']['app']['request'], 'getRoutePath', array()) == 'esperto/'))) {
-					$__compilerTemp2 .= '
-	' . 'Submit your question' . '
+			if (!$__templater->test($__vars['forum']['TVForum'], 'empty', array()) AND (!$__vars['forum']['TVForum']['tv_parent_id'])) {
+				$__finalCompiled .= '
+	' . $__templater->includeTemplate('snog_tv_add_season', $__vars) . '
+';
+			} else {
+				$__finalCompiled .= '
+	';
+				if (!$__templater->test($__vars['forum']['TVForum'], 'empty', array()) AND $__vars['forum']['TVForum']['tv_parent_id']) {
+					$__finalCompiled .= '
+	' . $__templater->includeTemplate('snog_tv_add_episode', $__vars) . '
 ';
 				} else {
-					$__compilerTemp2 .= '
+					$__finalCompiled .= '
 	';
-					if ($__vars['forum']['Node']['snog_posid'] AND $__vars['forum']['Node']['snog_label']) {
-						$__compilerTemp2 .= '
+					if ($__templater->method($__vars['forum'], 'canCreateThread', array()) OR $__templater->method($__vars['forum'], 'canCreateThreadPreReg', array())) {
+						$__compilerTemp2 = '';
+						if ((($__vars['xf']['reply']['containerKey'] == ('node-' . $__vars['xf']['options']['fs_questionAnswerForum'])) OR ($__templater->method($__vars['xf']['app']['request'], 'getRoutePath', array()) == 'esperto/'))) {
+							$__compilerTemp2 .= '
+	' . 'Submit your question' . '
+';
+						} else {
+							$__compilerTemp2 .= '
+	';
+							if ($__vars['forum']['forum_type_id'] == 'snog_movies_movie') {
+								$__compilerTemp2 .= '
+	' . 'Post movie' . '
+';
+							} else {
+								$__compilerTemp2 .= '
+	';
+								if ($__templater->func('in_array', array($__vars['forum']['node_id'], $__vars['xf']['options']['TvThreads_forum'], ), false) AND (!$__vars['xf']['options']['TvThreads_mix'])) {
+									$__compilerTemp2 .= '
+	' . 'Post a new TV show' . '
+';
+								} else {
+									$__compilerTemp2 .= '
+';
+									if ($__vars['forum']['Node']['snog_posid'] AND $__vars['forum']['Node']['snog_label']) {
+										$__compilerTemp2 .= '
 	' . $__templater->escape($__vars['forum']['Node']['snog_label']) . '
 ';
-					} else {
-						$__compilerTemp2 .= '
+									} else {
+										$__compilerTemp2 .= '
 	' . 'Post thread' . '
 ';
-					}
-					$__compilerTemp2 .= '
+									}
+									$__compilerTemp2 .= '	
 ';
-				}
-				$__templater->pageParams['pageAction'] = $__templater->preEscaped('
+								}
+								$__compilerTemp2 .= '
+	
+';
+							}
+							$__compilerTemp2 .= '
+
+';
+						}
+						$__templater->pageParams['pageAction'] = $__templater->preEscaped('
 	' . $__templater->button('
 		' . $__compilerTemp2 . '
 	', array(
-					'href' => ($__vars['forum']['Node']['snog_posid'] ? $__templater->func('link', array('form/select', array('posid' => $__vars['forum']['Node']['snog_posid'], ), ), false) : $__templater->func('link', array('forums/post-thread', $__vars['forum'], ), false)),
-					'class' => 'button--cta',
-					'icon' => 'write',
-				), '', array(
-				)) . '
+							'href' => ($__vars['forum']['Node']['snog_posid'] ? $__templater->func('link', array('form/select', array('posid' => $__vars['forum']['Node']['snog_posid'], ), ), false) : $__templater->func('link', array('forums/post-thread', $__vars['forum'], ), false)),
+							'class' => 'button--cta',
+							'icon' => 'write',
+						), '', array(
+						)) . '
 ');
+					}
+					$__finalCompiled .= '
+';
+				}
+				$__finalCompiled .= '
+';
 			}
 			$__finalCompiled .= '
 ';
@@ -596,8 +750,14 @@ return array(
 		$__finalCompiled .= '
 
 ';
-		$__templater->pageParams['pageDescription'] = $__templater->preEscaped($__templater->filter($__vars['forum']['Node']['description'], array(array('raw', array()),), true));
-		$__templater->pageParams['pageDescriptionMeta'] = true;
+		if ($__templater->test($__vars['forum']['TVForum'], 'empty', array())) {
+			$__finalCompiled .= '
+	';
+			$__templater->pageParams['pageDescription'] = $__templater->preEscaped($__templater->filter($__vars['forum']['Node']['description'], array(array('raw', array()),), true));
+			$__templater->pageParams['pageDescriptionMeta'] = true;
+			$__finalCompiled .= '
+';
+		}
 		$__finalCompiled .= '
 
 ';
@@ -612,6 +772,13 @@ return array(
 			$__finalCompiled .= '
 ';
 		}
+		$__finalCompiled .= '
+
+';
+		$__templater->setPageParam('ldJsonHtml', '
+	' . '' . '
+	' . $__templater->renderExtension('structured_data', $__vars, $__extensions) . '
+');
 		$__finalCompiled .= '
 
 ' . $__templater->callMacro('metadata_macros', 'canonical_url', array(
@@ -739,6 +906,19 @@ return array(
 ' . $__templater->callAdsMacro('forum_view_above_thread_list', array(
 			'forum' => $__vars['forum'],
 		), $__vars) . '
+';
+		if (!$__templater->test($__vars['forum']['TVForum'], 'empty', array()) AND (!$__vars['forum']['TVForum']['tv_parent_id'])) {
+			$__finalCompiled .= '
+	';
+			if ($__templater->method($__vars['forum'], 'canCreateThread', array())) {
+				$__finalCompiled .= '
+		' . $__templater->includeTemplate('snog_tv_post_thread', $__vars) . '
+	';
+			}
+			$__finalCompiled .= '
+';
+		}
+		$__finalCompiled .= '
 ' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
 			'position' => 'forum_view_above_thread_list',
 		), $__vars) . '

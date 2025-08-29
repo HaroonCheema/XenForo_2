@@ -319,7 +319,39 @@ return array(
 	}
 	$__compilerTemp3 .= '
 
-' . '
+';
+	if (($__vars['forum']['forum_type_id'] == 'snog_tv') AND $__templater->method($__vars['xf']['visitor'], 'hasPermission', array('tvthreads_interface', 'add_info', ))) {
+		$__compilerTemp3 .= '
+	';
+		if (!$__vars['thread']['TV']) {
+			$__compilerTemp3 .= '
+		<a href="' . $__templater->func('link', array('tv/addinfo', $__vars['thread'], ), true) . '" data-xf-click="overlay" class="menu-linkRow">' . 'Add TV show info' . '</a>
+	';
+		}
+		$__compilerTemp3 .= '
+';
+	}
+	$__compilerTemp3 .= '
+';
+	if ((($__templater->func('property', array('snog_movies_posterUpdateButtonPosition', ), false) == 'thread_tools_menu') AND ($__vars['thread']['Movie'] AND ($__vars['xf']['visitor']['is_admin'] OR $__vars['xf']['visitor']['is_moderator'])))) {
+		$__compilerTemp3 .= '
+												<a href="' . $__templater->func('link', array('movies/poster', $__vars['thread']['Movie'], ), true) . '" data-xf-click="overlay" class="menu-linkRow">
+													' . 'Check for new poster' . '
+												</a>
+											';
+	}
+	$__compilerTemp3 .= '
+
+											';
+	if ((($__templater->func('property', array('snog_tv_posterUpdateButtonPosition', ), false) == 'thread_tools_menu') AND ($__vars['thread']['TV'] AND ($__vars['xf']['visitor']['is_admin'] OR $__vars['xf']['visitor']['is_moderator'])))) {
+		$__compilerTemp3 .= '
+												<a href="' . $__templater->func('link', array('tv/poster', $__vars['thread']['TV'], ), true) . '" data-xf-click="overlay" class="menu-linkRow">
+													' . 'Check for new poster' . '
+												</a>
+											';
+	}
+	$__compilerTemp3 .= '
+											' . '
 											';
 	if ($__templater->method($__vars['thread'], 'canUseInlineModeration', array())) {
 		$__compilerTemp3 .= '
@@ -1190,16 +1222,31 @@ return array(
 		} else {
 			$__finalCompiled .= '
 	';
-			$__templater->includeJs(array(
-				'src' => 'xf/message.js',
-				'min' => '1',
-			));
 			$__compilerTemp8 = '';
-			if ((($__vars['xf']['reply']['containerKey'] == ('node-' . $__vars['xf']['options']['fs_questionAnswerForum'])) OR ($__templater->method($__vars['xf']['app']['request'], 'getRoutePath', array()) == 'esperto/'))) {
+			if (!$__templater->test($__vars['thread']['TV'], 'empty', array()) AND (!$__vars['thread']['TV']['tv_episode'])) {
 				$__compilerTemp8 .= '
 	';
+				$__templater->includeJs(array(
+					'src' => 'Snog/TV/message.min.js',
+				));
+				$__compilerTemp8 .= '
+';
+			} else {
+				$__compilerTemp8 .= '
+	';
+				$__templater->includeJs(array(
+					'src' => 'xf/message.js',
+					'min' => '1',
+				));
+				$__compilerTemp8 .= '
+';
+			}
+			$__compilerTemp9 = '';
+			if ((($__vars['xf']['reply']['containerKey'] == ('node-' . $__vars['xf']['options']['fs_questionAnswerForum'])) OR ($__templater->method($__vars['xf']['app']['request'], 'getRoutePath', array()) == 'esperto/'))) {
+				$__compilerTemp9 .= '
+	';
 				if ($__vars['xf']['visitor']['is_admin']) {
-					$__compilerTemp8 .= '
+					$__compilerTemp9 .= '
 ' . $__templater->callMacro('quick_reply_macros', 'body', array(
 						'message' => $__vars['thread']['draft_reply']['message'],
 						'thread' => $__vars['thread'],
@@ -1216,10 +1263,10 @@ return array(
 					), $__vars) . '
 ';
 				}
-				$__compilerTemp8 .= '
+				$__compilerTemp9 .= '
 ';
 			} else {
-				$__compilerTemp8 .= '
+				$__compilerTemp9 .= '
 	' . $__templater->callMacro('quick_reply_macros', 'body', array(
 					'message' => $__vars['thread']['draft_reply']['message'],
 					'thread' => $__vars['thread'],
@@ -1238,11 +1285,11 @@ return array(
 			}
 			$__finalCompiled .= $__templater->form('
 
-		' . '' . '
+		' . $__compilerTemp8 . '
 
 		<div class="block-container">
 			<div class="block-body">
-				' . $__compilerTemp8 . '
+				' . $__compilerTemp9 . '
 			</div>
 		</div>
 	', array(
