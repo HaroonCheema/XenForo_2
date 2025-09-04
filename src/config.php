@@ -19,6 +19,6 @@ $config['enableLivePayments'] = false;
 
 $config['debug'] = true;
 
-$config['development']['defaultAddOn'] = 'FS/WatchEmailAndAlerts';
+$config['development']['defaultAddOn'] = 'FS/UpgradePauseUnpause';
 
 $config['development']['enabled'] = true;

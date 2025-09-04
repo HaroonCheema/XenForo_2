@@ -169,16 +169,7 @@ return array(
 						';
 	$__compilerTemp3 = '';
 	$__compilerTemp3 .= '
-											' . ' 
-
-
-';
-	if ($__vars['xf']['visitor']['is_moderator'] OR $__vars['xf']['visitor']['is_admin']) {
-		$__compilerTemp3 .= '
-<a href="' . $__templater->func('link', array('dropdownreply', $__vars['thread'], ), true) . '"  class="menu-linkRow">' . 'Add Dropdown Reply' . '</a>
-';
-	}
-	$__compilerTemp3 .= '
+											' . '
 											';
 	if ($__templater->method($__vars['thread'], 'canEdit', array())) {
 		$__compilerTemp3 .= '

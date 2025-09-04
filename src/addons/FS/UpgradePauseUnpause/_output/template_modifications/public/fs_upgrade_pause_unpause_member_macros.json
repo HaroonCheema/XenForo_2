@@ -1,0 +1,9 @@
+{
+    "template": "member_macros",
+    "description": "fs_ upgrade_pause_unpause_member_macros",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<!--[XF:action_group_2:end]-->",
+    "replace": "<xf:if is=\"$xf.visitor.canPauseUnpauseUser($user)\">\n\t<a href=\"{{ link('members/pause', $user) }}\"\n\t   class=\"button button--link\"\n\t   data-xf-click=\"switch\"\n\t   data-sk-fs_pause=\"{{ phrase('fs_pause') }}\"\n\t   data-sk-fs_unpause=\"{{ phrase('fs_unpause') }}\">\n\t\t{{ $user.isPaused() ? phrase('fs_unpause') : phrase('fs_pause') }}\n\t</a>\n</xf:if>\n\n$0"
+}

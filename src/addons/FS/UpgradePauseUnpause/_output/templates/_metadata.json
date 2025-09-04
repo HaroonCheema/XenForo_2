@@ -1,0 +1,17 @@
+{
+    "public/alert_dummy_entity_pause.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "750a54a7a9a3abd1733a0e39ed082f04"
+    },
+    "public/alert_dummy_entity_unpause.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "0ae64c49da4260f893dedf4c242c0a72"
+    },
+    "public/fs_upgrade_thread_watch_pause.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "5db4b426db9df038ac1c9982e5d6b148"
+    }
+}

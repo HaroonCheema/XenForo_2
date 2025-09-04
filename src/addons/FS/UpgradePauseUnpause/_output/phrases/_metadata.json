@@ -1,0 +1,50 @@
+{
+    "fs_Upgrade_you_sure_you_want_to_pause_this_thread.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "167c736610c78e7f32206c61cefac99b"
+    },
+    "fs_Upgrade_you_sure_you_want_to_unpause_this_thread.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "f664214578148e4c92465acfe45b5243"
+    },
+    "fs_pause.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "105b296a83f9c105355403f3332af50f"
+    },
+    "fs_pause_upgrade.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "ff6269dee99dcb2a10166be107d8908e"
+    },
+    "fs_uesr_upgrade_pause_alert.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "40b214407b2a21503dc0f5995fe2d5ef"
+    },
+    "fs_uesr_upgrade_unpause_alert.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "9441b4e2d1097c39a5f9f19a8013a197"
+    },
+    "fs_unpause.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "648ff76ea7617136d7a5e0cbff92606f"
+    },
+    "fs_unpause_upgrade.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "19e1e4d1804fe2b3259970e7f9e2948a"
+    }
+}

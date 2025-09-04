@@ -424,7 +424,21 @@ return array(
 			';
 	}
 	$__compilerTemp2 .= '
-			' . '
+			';
+	if ($__templater->method($__vars['xf']['visitor'], 'canPauseUnpauseUser', array($__vars['user'], ))) {
+		$__compilerTemp2 .= '
+	<a href="' . $__templater->func('link', array('members/pause', $__vars['user'], ), true) . '"
+	   class="button button--link"
+	   data-xf-click="switch"
+	   data-sk-fs_pause="' . 'Pause' . '"
+	   data-sk-fs_unpause="' . 'Unpause' . '">
+		' . ($__templater->method($__vars['user'], 'isPaused', array()) ? 'Unpause' : 'Pause') . '
+	</a>
+';
+	}
+	$__compilerTemp2 .= '
+
+' . '
 		';
 	if (strlen(trim($__compilerTemp2)) > 0) {
 		$__finalCompiled .= '

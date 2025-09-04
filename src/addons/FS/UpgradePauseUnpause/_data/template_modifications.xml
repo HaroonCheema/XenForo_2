@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="member_macros" modification_key="fs_upgrade_pause_unpause_member_macros" description="fs_ upgrade_pause_unpause_member_macros" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<!--[XF:action_group_2:end]-->]]></find>
+    <replace><![CDATA[<xf:if is="$xf.visitor.canPauseUnpauseUser($user)">
+	<a href="{{ link('members/pause', $user) }}"
+	   class="button button--link"
+	   data-xf-click="switch"
+	   data-sk-fs_pause="{{ phrase('fs_pause') }}"
+	   data-sk-fs_unpause="{{ phrase('fs_unpause') }}">
+		{{ $user.isPaused() ? phrase('fs_unpause') : phrase('fs_pause') }}
+	</a>
+</xf:if>
+
+$0]]></replace>
+  </modification>
+</template_modifications>

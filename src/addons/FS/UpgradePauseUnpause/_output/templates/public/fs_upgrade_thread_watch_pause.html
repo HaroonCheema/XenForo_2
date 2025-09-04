@@ -1,0 +1,30 @@
+<xf:if is="$isPaused">
+	<xf:title>{{ phrase('fs_unpause_upgrade') }}</xf:title>
+	<xf:else />
+	<xf:title>{{ phrase('fs_pause_upgrade') }}</xf:title>
+</xf:if>
+
+<xf:form action="{{ link('members/pause', $user) }}" class="block" ajax="true">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:if is="$isPaused">
+				<xf:inforow rowtype="confirm">
+					{{ phrase('you_sure_you_want_to_unwatch_this_thread') }}
+				</xf:inforow>
+
+				<xf:hiddenval name="stop">1</xf:hiddenval>
+				<xf:else />
+				<xf:inforow rowtype="confirm">
+					{{ phrase('you_sure_you_want_to_unwatch_this_thread') }}
+				</xf:inforow>
+			</xf:if>
+
+			<xf:hiddenval name="itsPause">1</xf:hiddenval>
+		</div>
+		<xf:if is="$isPaused">
+			<xf:submitrow submit="{{ phrase('fs_unpause') }}" rowtype="simple" />
+			<xf:else />
+			<xf:submitrow submit="{{ phrase('fs_pause') }}" />
+		</xf:if>
+	</div>
+</xf:form>

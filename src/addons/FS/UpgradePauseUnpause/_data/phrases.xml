@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="fs_Upgrade_you_sure_you_want_to_pause_this_thread" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Are you sure you want to pause upgrade?]]></phrase>
+  <phrase title="fs_Upgrade_you_sure_you_want_to_unpause_this_thread" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Are you sure you want to unpause upgrade?]]></phrase>
+  <phrase title="fs_pause" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Pause]]></phrase>
+  <phrase title="fs_pause_upgrade" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Pause Upgrade]]></phrase>
+  <phrase title="fs_uesr_upgrade_pause_alert" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Your upgrade paused right now.]]></phrase>
+  <phrase title="fs_uesr_upgrade_unpause_alert" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Your upgrade unpaused successfully.]]></phrase>
+  <phrase title="fs_unpause" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Unpause]]></phrase>
+  <phrase title="fs_unpause_upgrade" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Unpause Upgrade]]></phrase>
+</phrases>
