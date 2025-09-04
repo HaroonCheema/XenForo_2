@@ -24,12 +24,26 @@
             "src/addons/DC/LinkProxy/_data/options.xml",
             "src/addons/DC/LinkProxy/_data/option_groups.xml",
             "src/addons/DC/LinkProxy/_data/phrases.xml",
+            "src/addons/DC/LinkProxy/_data/templates.xml",
+            "src/addons/DC/LinkProxy/addon.json",
+            "src/addons/DC/LinkProxy/Admin/Controller/LinkProxy.php",
+            "src/addons/DC/LinkProxy/Cron/TFAuth.php",
+            "src/addons/DC/LinkProxy/Pub/Controller/Passwords.php",
+            "src/addons/DC/LinkProxy/Setup.php",
+            "src/addons/DC/LinkProxy/XF/Pub/Controller/Redirect.php",
+            "src/addons/DC/LinkProxy/_data/options.xml",
+            "src/addons/DC/LinkProxy/_data/option_groups.xml",
+            "src/addons/DC/LinkProxy/_data/phrases.xml",
             "src/addons/DC/LinkProxy/_data/templates.xml"
         ],
         "DBTech/eCommerce": [
+            "src/addons/DBTech/eCommerce/Install/Upgrade1049970Trait.php",
             "src/addons/DBTech/eCommerce/Install/Upgrade1049970Trait.php"
         ],
         "Driven2/Monetize": [
+            "src/addons/Driven2/Monetize/addon.json",
+            "src/addons/Driven2/Monetize/XF/Template/Templater.php",
+            "src/addons/Driven2/Monetize/_data/options.xml",
             "src/addons/Driven2/Monetize/addon.json",
             "src/addons/Driven2/Monetize/XF/Template/Templater.php",
             "src/addons/Driven2/Monetize/_data/options.xml"
@@ -80,6 +94,7 @@
             "js/xf/attachment_manager.js",
             "js/xf/core/action.min.js",
             "js/xf/editor-compiled.js",
+            "payment_callback.php",
             "src/XF/Admin/Controller/AbstractNode.php",
             "src/XF/Admin/Controller/Moderator.php",
             "src/XF/Admin/Controller/Notice.php",
@@ -195,6 +210,21 @@
             "src/addons/FS/PaymentRedirection/_data/options.xml",
             "src/addons/FS/PaymentRedirection/_data/phrases.xml"
         ],
+        "FS/CoinPaymentsIntegration": [
+            "src/addons/FS/CoinPaymentsIntegration/addon.json",
+            "src/addons/FS/CoinPaymentsIntegration/Payment/CoinPayments.php",
+            "src/addons/FS/CoinPaymentsIntegration/_data/options.xml"
+        ],
+        "FS/DiscussionThread": [
+            "src/addons/FS/DiscussionThread/addon.json",
+            "src/addons/FS/DiscussionThread/XF/Entity/Thread.php",
+            "src/addons/FS/DiscussionThread/XF/Pub/Controller/Thread.php",
+            "src/addons/FS/DiscussionThread/_data/class_extensions.xml",
+            "src/addons/FS/DiscussionThread/_data/options.xml",
+            "src/addons/FS/DiscussionThread/_data/phrases.xml",
+            "src/addons/FS/DiscussionThread/_data/templates.xml",
+            "src/addons/FS/DiscussionThread/_data/template_modifications.xml"
+        ],
         "FS/DownloadThreadAttachments": [
             "src/addons/FS/DownloadThreadAttachments/XF/Pub/Controller/Post.php",
             "src/addons/FS/DownloadThreadAttachments/_data/templates.xml",
@@ -291,7 +321,13 @@
             "src/addons/FS/QuizSystem/_data/templates.xml"
         ],
         "FS/RegisterVerfication": [
-            "src/addons/FS/RegisterVerfication/XF/Service/User/Registration.php"
+            "src/addons/FS/RegisterVerfication/addon.json",
+            "src/addons/FS/RegisterVerfication/Setup.php",
+            "src/addons/FS/RegisterVerfication/XF/Entity/User.php",
+            "src/addons/FS/RegisterVerfication/XF/Pub/Controller/Member.php",
+            "src/addons/FS/RegisterVerfication/XF/Service/User/Registration.php",
+            "src/addons/FS/RegisterVerfication/_data/phrases.xml",
+            "src/addons/FS/RegisterVerfication/_data/templates.xml"
         ],
         "FS/RegistrationSteps": [
             "src/addons/FS/RegistrationSteps/Listener.php",
@@ -376,6 +412,10 @@
             "src/addons/FS/XFMG/_data/templates.xml",
             "src/addons/FS/XFMG/_data/template_modifications.xml"
         ],
+        "JUM/ConnectedAccounts": [
+            "src/addons/JUM/ConnectedAccounts/addon.json",
+            "src/addons/JUM/ConnectedAccounts/_data/class_extensions.xml"
+        ],
         "nick97/WatchList": [
             "src/addons/nick97/WatchList/addon.json",
             "src/addons/nick97/WatchList/_data/template_modifications.xml"
@@ -448,6 +488,6 @@
         ]
     },
     "total_missing": 6,
-    "total_inconsistent": 306,
-    "total_checked": 15866
+    "total_inconsistent": 340,
+    "total_checked": 18322
 }
