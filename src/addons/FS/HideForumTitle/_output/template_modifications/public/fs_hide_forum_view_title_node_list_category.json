@@ -1,0 +1,9 @@
+{
+    "template": "node_list_category",
+    "description": "fs_hide_forum_view_title_node_list_category",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "{$node.title}",
+    "replace": "{$node.getNodeTitle()}"
+}

@@ -1,0 +1,29 @@
+{
+    "legacy_addon_id": "",
+    "title": "[XenGenTr] Forum istatistik sistemi",
+    "description": "Forumdan konuların çeşitli özellikleri ile tab olarak listelenmesini ve kullanıcılara ait bazi istatistik verilerin listelenmesini sağlar.",
+    "version_id": 4000500,
+    "version_string": "4.0.5",
+    "dev": "eTiKeT™",
+    "dev_url": "https://xenforo.gen.tr",
+    "faq_url": "",
+    "support_url": "https://xenforo.gen.tr/konular/xengentr-forum-istatistik-sistemi.3168/",
+    "extra_urls": {
+        "[XGT] Forum istatistik sistemi": "https://xenforo.gen.tr/xenforo-kaynaklari/xengentr-forum-istatistik-sistemi.617/"
+    },
+    "require": {
+        "XF": [
+            2020031,
+            "XenForo 2.2.0+"
+        ],
+        "php": [
+            "7.4.0",
+            "PHP 7.4.0+"
+        ],
+        "XenGenTr/XGTCoreLibrary": [
+            1000300,
+            "[XenGenTr] Core Library 1.0.3+"
+        ]
+    },
+    "icon": "XenGenTr.png"
+}

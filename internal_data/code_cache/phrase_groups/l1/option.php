@@ -1102,5 +1102,8 @@ return array (
   'option.xfrmReviewsPerPage' => 'Reviews per page',
   'option.xfrmUpdateMaxLength' => 'Maximum resource update/description length',
   'option.xfrmUpdatesPerPage' => 'Resource updates per page',
+  'option.xgtForumistatik_konumu_tumsayfalarda' => 'Tüm sayfalarda göster',
+  'option.xgtIstatistikGosterimLimiti' => 'İçerik gösterim limiti',
+  'option.xgtIstatistikOtoyenileme' => 'Otomatik yenileme',
   'option.xtr_mousehover' => 'Featured slider mouse hover',
 );

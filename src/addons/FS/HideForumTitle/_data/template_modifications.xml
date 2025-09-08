@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="category_view" modification_key="fs_hide_forum_view_title_category_view" description="fs_hide_forum_view_title_category_view" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[{$category.title}]]></find>
+    <replace><![CDATA[{$category.Node.getNodeTitle()}]]></replace>
+  </modification>
+  <modification type="public" template="forum_view" modification_key="fs_hide_forum_view_title" description="fs_hide_forum_view_title" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:title page="{$page}">{$forum.Node.title}</xf:title>]]></find>
+    <replace><![CDATA[<xf:title page="{$page}">{$forum.Node.getNodeTitle()}</xf:title>]]></replace>
+  </modification>
+  <modification type="public" template="node_list_category" modification_key="fs_hide_forum_view_title_node_list_category" description="fs_hide_forum_view_title_node_list_category" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[{$node.title}]]></find>
+    <replace><![CDATA[{$node.getNodeTitle()}]]></replace>
+  </modification>
+  <modification type="public" template="node_list_forum" modification_key="fs_hide_node_list_forum_title" description="fs_hide_node_list_forum_title" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[{$node.title}]]></find>
+    <replace><![CDATA[{$node.getNodeTitle()}]]></replace>
+  </modification>
+  <modification type="public" template="thread_list_macros" modification_key="fs_hide_forum_title_thread_list_macros" description="fs_hide_forum_title_thread_list_macros" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[{$thread.Forum.title}]]></find>
+    <replace><![CDATA[{$thread.Forum.Node.getNodeTitle()}]]></replace>
+  </modification>
+  <modification type="public" template="widget_new_threads" modification_key="fs_hide_forum_title_widget_new_threads" description="fs_hide_forum_title_widget_new_threads" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[{$thread.Forum.title}]]></find>
+    <replace><![CDATA[{$thread.Forum.Node.getNodeTitle()}]]></replace>
+  </modification>
+</template_modifications>

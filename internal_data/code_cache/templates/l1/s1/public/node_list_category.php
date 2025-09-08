@@ -17,13 +17,7 @@ return array(
 		<span class="u-anchorTarget" id="' . $__templater->escape($__templater->method($__vars['node']['Data'], 'getCategoryAnchor', array())) . '"></span>
 		<div class="block-container">
 			<h2 class="block-header">
-				' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
-		'position' => 'node_title_above_' . $__vars['node']['node_id'],
-	), $__vars) . '
-<a href="' . $__templater->func('link', array('categories', $__vars['node'], ), true) . '">' . $__templater->escape($__vars['node']['title']) . '</a>
-' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
-		'position' => 'node_title_container_' . $__vars['node']['node_id'],
-	), $__vars) . '
+				<a href="' . $__templater->func('link', array('categories', $__vars['node'], ), true) . '">' . $__templater->escape($__templater->method($__vars['node'], 'getNodeTitle', array())) . '</a>
 				';
 	if ($__vars['node']['description']) {
 		$__finalCompiled .= '<span class="block-desc">' . $__templater->filter($__vars['node']['description'], array(array('raw', array()),), true) . '</span>';
@@ -85,7 +79,7 @@ return array(
 	$__vars['descriptionDisplay'] = $__templater->func('property', array('nodeListDescriptionDisplay', ), false);
 	$__finalCompiled .= '
 				<h3 class="node-title">
-					<a href="' . $__templater->func('link', array('categories', $__vars['node'], ), true) . '" data-xf-init="' . (($__vars['descriptionDisplay'] == 'tooltip') ? 'element-tooltip' : '') . '" data-shortcut="node-description">' . $__templater->escape($__vars['node']['title']) . '</a>
+					<a href="' . $__templater->func('link', array('categories', $__vars['node'], ), true) . '" data-xf-init="' . (($__vars['descriptionDisplay'] == 'tooltip') ? 'element-tooltip' : '') . '" data-shortcut="node-description">' . $__templater->escape($__templater->method($__vars['node'], 'getNodeTitle', array())) . '</a>
 				</h3>
 				';
 	if (($__vars['descriptionDisplay'] != 'none') AND $__vars['node']['description']) {
@@ -239,7 +233,7 @@ return array(
 	$__finalCompiled = '';
 	$__finalCompiled .= '
 	<li>
-		<a href="' . $__templater->func('link', array('categories', $__vars['node'], ), true) . '" class="subNodeLink subNodeLink--category ' . ($__vars['extras']['hasNew'] ? 'subNodeLink--unread' : '') . '">' . $__templater->escape($__vars['node']['title']) . '</a>
+		<a href="' . $__templater->func('link', array('categories', $__vars['node'], ), true) . '" class="subNodeLink subNodeLink--category ' . ($__vars['extras']['hasNew'] ? 'subNodeLink--unread' : '') . '">' . $__templater->escape($__templater->method($__vars['node'], 'getNodeTitle', array())) . '</a>
 		' . $__templater->callMacro('forum_list', 'sub_node_list', array(
 		'children' => $__vars['children'],
 		'childExtras' => $__vars['childExtras'],

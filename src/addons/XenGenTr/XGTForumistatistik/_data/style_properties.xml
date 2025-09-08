@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style_properties>
+  <style_property property_name="xgt_Forumistatik_konumlari" group_name="xgt_FrmIstatistik_secenekler" title="İstatistik konuları" property_type="value" value_type="select" display_order="0">
+    <value_parameters>iceriklerustu = {{ phrase('xgt_forum_statistic_above_all_content') }}
+forumlarustu = {{ phrase('xgt_forum_statistic_above_the_forums') }}
+forumlaralti = {{ phrase('xgt_forum_statistic_below_the_forums') }}
+breadcrumbsustu= {{ phrase('xgt_ForumIstatistik_breadcrumbs_ustunde') }}
+breadcrumbsalt= {{ phrase('xgt_ForumIstatistik_breadcrumbs_altinda') }}
+kendikonumum = {{ phrase('xgt_forum_statistic_my_own_location') }}</value_parameters>
+    <value>"iceriklerustu"</value>
+  </style_property>
+  <style_property property_name="xgt_Forumistatik_konumlari_manuel" group_name="xgt_FrmIstatistik_secenekler" title="Kendi konumum kodunuz" property_type="value" value_type="template" display_order="10">
+    <value_parameters>template=style_property_template_xgt_istatistik_konumlari
+type=array</value_parameters>
+    <value>[]</value>
+  </style_property>
+  <style_property property_name="xgt_Frmistatistik_aktif_tab_ap" group_name="xgt_FrmIstatistik_tasarim" title="Aktif tab buton renk" description="Seçili olan buton arka plan rengi." property_type="value" value_type="color" value_group="TabButonlari" display_order="720">
+    <value>"@xf-linkHoverColor"</value>
+  </style_property>
+  <style_property property_name="xgt_Frmistatistik_aktif_tab_metin" group_name="xgt_FrmIstatistik_tasarim" title="Aktif tab buton metin renk" description="Seçili olan buton metin rengi." property_type="value" value_type="color" value_group="TabButonlari" display_order="730">
+    <value>"@xf-blockTabHeaderTextColor"</value>
+  </style_property>
+  <style_property property_name="xgt_Frmistatistik_aktif_tab_sinir_renk" group_name="xgt_FrmIstatistik_tasarim" title="Aktif tab buton alt sınır renk" property_type="value" value_type="color" value_group="TabButonlari" display_order="740">
+    <value>"@xf-textColorAttention"</value>
+  </style_property>
+  <style_property property_name="xgt_Frmistatistik_altHeader_ap" group_name="xgt_FrmIstatistik_tasarim" title="Mini header arkaplan rengi" property_type="value" value_type="color" value_group="MiniHeader" display_order="1000">
+    <value>"@xf-majorHeadingBg"</value>
+  </style_property>
+  <style_property property_name="xgt_Frmistatistik_altHeader_metin" group_name="xgt_FrmIstatistik_tasarim" title="Mini header metin rengi" property_type="value" value_type="color" value_group="MiniHeader" display_order="1010">
+    <value>"@xf-majorHeadingTextColor"</value>
+  </style_property>
+  <style_property property_name="xgt_Frmistatistik_altHeader_metinAlani" group_name="xgt_FrmIstatistik_secenekler" title="Header açıklam metin türü" property_type="value" value_type="radio" value_group="MiniHeader" display_order="1020">
+    <value_parameters>metin= Sadece metin
+metinikon= Metin ve ikon
+ikon= Sadece ikon</value_parameters>
+    <value>"metinikon"</value>
+  </style_property>
+  <style_property property_name="xgt_Frmistatistik_anketIkon_renk" group_name="xgt_FrmIstatistik_tasarim" title="Anket ikon rengi" property_type="value" value_type="color" value_group="IcerikIkonlari" display_order="2040">
+    <value>"rgb(233, 166, 48)"</value>
+  </style_property>
+  <style_property property_name="xgt_Frmistatistik_baglantilar" group_name="xgt_FrmIstatistik_tasarim" title="Bağlantı rengi" property_type="value" value_type="color" value_group="GenelDuzenlemeler" display_order="600">
+    <value>"@xf-linkColor"</value>
+  </style_property>
+  <style_property property_name="xgt_Frmistatistik_collapse" group_name="xgt_FrmIstatistik_secenekler" title="Collapse sistemi etkin" property_type="value" value_type="boolean" value_group="GenelSecenekler" display_order="191">
+    <value>1</value>
+  </style_property>
+  <style_property property_name="xgt_Frmistatistik_cozumIkon_renk" group_name="xgt_FrmIstatistik_tasarim" title="Çözüldü ikon rengi" description="İçeriğin belirtildiği ikonların renklerini bu alandan düzenleye bilirsiniz." property_type="value" value_type="color" value_group="IcerikIkonlari" display_order="2000">
+    <value>"rgb(9, 128, 9)"</value>
+  </style_property>
+  <style_property property_name="xgt_Frmistatistik_google_buton" group_name="xgt_FrmIstatistik_secenekler" title="Veri listesi - Google arat butonu etkin" property_type="value" value_type="boolean" value_group="GenelSecenekler" display_order="110">
+    <value>1</value>
+  </style_property>
+  <style_property property_name="xgt_Frmistatistik_header_radius" group_name="xgt_FrmIstatistik_tasarim" title="Kenar kıvrımı" property_type="value" value_type="unit" value_group="GenelDuzenlemeler" display_order="620">
+    <value>"5px"</value>
+  </style_property>
+  <style_property property_name="xgt_Frmistatistik_icerikBilgi_ikonlari" group_name="xgt_FrmIstatistik_secenekler" title="Veri listesi - İçerik detay ikonları etkin (soru, makale, kaynak)" property_type="value" value_type="boolean" value_group="GenelSecenekler" display_order="150">
+    <value>1</value>
+  </style_property>
+  <style_property property_name="xgt_Frmistatistik_icerik_forumu" group_name="xgt_FrmIstatistik_secenekler" title="Veri listesi - İçerik forumu etkin" property_type="value" value_type="boolean" value_group="GenelSecenekler" display_order="170">
+    <value>1</value>
+  </style_property>
+  <style_property property_name="xgt_Frmistatistik_icerik_satir1" group_name="xgt_FrmIstatistik_tasarim" title="İçerik row 1 satır rengi" property_type="value" value_type="color" value_group="IcerikListelemeOzellikleri" display_order="900">
+    <value>"@xf-contentBg"</value>
+  </style_property>
+  <style_property property_name="xgt_Frmistatistik_icerik_satir2" group_name="xgt_FrmIstatistik_tasarim" title="İçerik row 2 satır rengi" property_type="value" value_type="color" value_group="IcerikListelemeOzellikleri" display_order="910">
+    <value>"@xf-blockFooterBg"</value>
+  </style_property>
+  <style_property property_name="xgt_Frmistatistik_icerik_satir_yukseklik" group_name="xgt_FrmIstatistik_tasarim" title="Satır yüksekliği" description="Burada yapacağız artış nedeni ile listelenen içerik sayısında düşüş, sıralamada bozulmalar görüle bilir. Bunun kontrolünü &lt;b&gt;İstatistik blok en fazla yüksekliği&lt;/b&gt; alanını artırarak kontrol edebilirsiniz." property_type="value" value_type="unit" value_group="IcerikListelemeOzellikleri" display_order="990">
+    <value>"4px"</value>
+  </style_property>
+  <style_property property_name="xgt_Frmistatistik_kaynakIkon_renk" group_name="xgt_FrmIstatistik_tasarim" title="Kaynak ikon rengi" property_type="value" value_type="color" value_group="IcerikIkonlari" display_order="2050">
+    <value>"rgb(21, 70, 105)"</value>
+  </style_property>
+  <style_property property_name="xgt_Frmistatistik_konuIkon_renk" group_name="xgt_FrmIstatistik_tasarim" title="Konu ikon rengi" property_type="value" value_type="color" value_group="IcerikIkonlari" display_order="2020">
+    <value>"rgb(37, 119, 177)"</value>
+  </style_property>
+  <style_property property_name="xgt_Frmistatistik_kullanici_veri_konum" group_name="xgt_FrmIstatistik_secenekler" title="Kullanıcı istatistik alanı konumu" description="Kullanıcı istatistik alanın görünmesi istediğini konumu seçebilirsiniz." property_type="value" value_type="radio" depends_on="xgt_Frmistatistik_kullanici_verisi" value_group="KullaniciIstatistikleri" display_order="310">
+    <value_parameters>solda= {{ phrase('xgtFrmIstatistik_icerik_konumu_solda') }}
+sagda= {{ phrase('xgtFrmIstatistik_icerik_konumu_sagda') }}</value_parameters>
+    <value>"sagda"</value>
+  </style_property>
+  <style_property property_name="xgt_Frmistatistik_kullanici_verisi" group_name="xgt_FrmIstatistik_secenekler" title="Kullanıcı istatistikleri etkin" description="Kullanıcılara ait istatistik verilerinin gösterimi için seçili olmalı ve ilgili kullanıcı grubunun bu alanı göre bilme yetkisi olmalıdır." property_type="value" value_type="boolean" value_group="KullaniciIstatistikleri" display_order="300">
+    <value>1</value>
+  </style_property>
+  <style_property property_name="xgt_Frmistatistik_makaleIkon_renk" group_name="xgt_FrmIstatistik_tasarim" title="Makale ikon rengi" property_type="value" value_type="color" value_group="IcerikIkonlari" display_order="2030">
+    <value>"rgb(75, 176, 167)"</value>
+  </style_property>
+  <style_property property_name="xgt_Frmistatistik_maxYukseklik" group_name="xgt_FrmIstatistik_tasarim" title="İstatistik blok en fazla yüksekliği" description="Her &lt;b&gt;33px&lt;/b&gt;'lik bir artış ortalama bir satır alan kadar istatistik alanını aşağı doğru genişletecektir. &lt;br&gt;Buna göre eğer 66px bir artış yaparsanız 2 satır daha içerik eklemiş olursunuz." property_type="value" value_type="unit" value_group="GenelDuzenlemeler" display_order="630">
+    <value>"355px"</value>
+  </style_property>
+  <style_property property_name="xgt_Frmistatistik_mesaj_sayisi" group_name="xgt_FrmIstatistik_secenekler" title="Veri listesi - Mesaj sayısı etkin" property_type="value" value_type="boolean" value_group="GenelSecenekler" display_order="180">
+    <value>1</value>
+  </style_property>
+  <style_property property_name="xgt_Frmistatistik_metin_boyutu" group_name="xgt_FrmIstatistik_tasarim" title="Metin boyutu" property_type="value" value_type="unit" value_group="GenelDuzenlemeler" display_order="610">
+    <value>"13px"</value>
+  </style_property>
+  <style_property property_name="xgt_Frmistatistik_online_durumu" group_name="xgt_FrmIstatistik_secenekler" title="Veri listesi - Kullanıcı online durumu etkin" property_type="value" value_type="boolean" value_group="GenelSecenekler" display_order="130">
+    <value>1</value>
+  </style_property>
+  <style_property property_name="xgt_Frmistatistik_sayisal_veriler" group_name="xgt_FrmIstatistik_tasarim" title="Sayısal verileri renk" property_type="value" value_type="color" value_group="IcerikListelemeOzellikleri" display_order="970">
+    <value>"@xf-textColorDimmed"</value>
+  </style_property>
+  <style_property property_name="xgt_Frmistatistik_sekme_ikonlari" group_name="xgt_FrmIstatistik_secenekler" title="Tab sekme ikonları etkin" property_type="value" value_type="boolean" value_group="GenelSecenekler" display_order="100">
+    <value>1</value>
+  </style_property>
+  <style_property property_name="xgt_Frmistatistik_sinir_altSinirlar_etkin" group_name="xgt_FrmIstatistik_secenekler" title="Alt sınır çizgileri etkin" description="İçeriklerin altında bulunan sınır çizgileri aç/kapat" property_type="value" value_type="boolean" value_group="IcerikListelemeOzellikleri" display_order="982">
+    <value>1</value>
+  </style_property>
+  <style_property property_name="xgt_Frmistatistik_sinir_renk" group_name="xgt_FrmIstatistik_tasarim" title="Satırlar arası sınır rengi" property_type="value" value_type="color" value_group="IcerikListelemeOzellikleri" display_order="980">
+    <value>"rgb(238, 238, 238)"</value>
+  </style_property>
+  <style_property property_name="xgt_Frmistatistik_sinir_yanSinirlar_etkin" group_name="xgt_FrmIstatistik_secenekler" title="Yan sınır çizgileri etkin" description="İçeriklerin sağında, solunda bulunan sınır çizgileri aç/kapat" property_type="value" value_type="boolean" value_group="IcerikListelemeOzellikleri" display_order="981">
+    <value>1</value>
+  </style_property>
+  <style_property property_name="xgt_Frmistatistik_sira_ap" group_name="xgt_FrmIstatistik_tasarim" title="Sira numarası arka plan renk" property_type="value" value_type="color" value_group="IcerikListelemeOzellikleri" display_order="995">
+    <value>"@xf-majorHeadingBg"</value>
+  </style_property>
+  <style_property property_name="xgt_Frmistatistik_sira_metin" group_name="xgt_FrmIstatistik_tasarim" title="Sira numarası metin renk" property_type="value" value_type="color" value_group="IcerikListelemeOzellikleri" display_order="996">
+    <value>"@xf-majorHeadingTextColor"</value>
+  </style_property>
+  <style_property property_name="xgt_Frmistatistik_sira_numarasi" group_name="xgt_FrmIstatistik_secenekler" title="Veri listesi - Sıra numarası etkin" property_type="value" value_type="boolean" value_group="GenelSecenekler" display_order="105">
+    <value>1</value>
+  </style_property>
+  <style_property property_name="xgt_Frmistatistik_sonMesaj_avatar" group_name="xgt_FrmIstatistik_secenekler" title="Veri listesi - Son mesaj yazan kullanıcının avatarı etkin" property_type="value" value_type="boolean" value_group="GenelSecenekler" display_order="140">
+    <value>1</value>
+  </style_property>
+  <style_property property_name="xgt_Frmistatistik_son_yazan" group_name="xgt_FrmIstatistik_secenekler" title="Veri listesi - Son mesaj yazan etkin" property_type="value" value_type="boolean" value_group="GenelSecenekler" display_order="190">
+    <value>1</value>
+  </style_property>
+  <style_property property_name="xgt_Frmistatistik_soruIkon_renk" group_name="xgt_FrmIstatistik_tasarim" title="Sorun ikon rengi" property_type="value" value_type="color" value_group="IcerikIkonlari" display_order="2010">
+    <value>"rgb(200, 64, 64)"</value>
+  </style_property>
+  <style_property property_name="xgt_Frmistatistik_srollbar" group_name="xgt_FrmIstatistik_secenekler" title="Scroll bar fonkisyonu" property_type="value" value_type="radio" value_group="SrollBar" display_order="200">
+    <value_parameters>gizle = Tamamen gizli
+gizlegoster = Gizle üzerinde gelince göster
+goster = Her zaman göster</value_parameters>
+    <value>"gizlegoster"</value>
+  </style_property>
+  <style_property property_name="xgt_Frmistatistik_tab_ap" group_name="xgt_FrmIstatistik_tasarim" title="Tam bar arkaplan rengi" property_type="value" value_type="color" value_group="TabButonlari" display_order="709">
+    <value>"@xf-blockTabHeaderBg"</value>
+  </style_property>
+  <style_property property_name="xgt_Frmistatistik_tab_metin" group_name="xgt_FrmIstatistik_tasarim" title="Tab bar metin renk" property_type="value" value_type="color" value_group="TabButonlari" display_order="710">
+    <value>"@xf-blockTabHeaderTextColor"</value>
+  </style_property>
+  <style_property property_name="xgt_Frmistatistik_tab_metin_boyut" group_name="xgt_FrmIstatistik_tasarim" title="Tab butonları metin boyutu" property_type="value" value_type="unit" value_group="TabButonlari" display_order="701">
+    <value>"15px"</value>
+  </style_property>
+  <style_property property_name="xgt_Frmistatistik_tab_yan_sinir_renk" group_name="xgt_FrmIstatistik_tasarim" title="Tab butonlar yan sınır renk" property_type="value" value_type="color" value_group="TabButonlari" display_order="750">
+    <value>"rgb(84, 158, 210)"</value>
+  </style_property>
+  <style_property property_name="xgt_Frmistatistik_zaman_bilgisi" group_name="xgt_FrmIstatistik_secenekler" title="Veri listesi - Zaman etkin" property_type="value" value_type="boolean" value_group="GenelSecenekler" display_order="160">
+    <value>1</value>
+  </style_property>
+</style_properties>

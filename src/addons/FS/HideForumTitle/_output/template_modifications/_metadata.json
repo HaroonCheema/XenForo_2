@@ -1,0 +1,20 @@
+{
+    "public/fs_hide_forum_title_thread_list_macros.json": {
+        "hash": "b9bbb7ea8b7cae99233bc38692bf3463"
+    },
+    "public/fs_hide_forum_title_widget_new_threads.json": {
+        "hash": "8686b00738031f797bd88401a903fd83"
+    },
+    "public/fs_hide_forum_view_title.json": {
+        "hash": "49b81860cd955d93765862d504c46caa"
+    },
+    "public/fs_hide_forum_view_title_category_view.json": {
+        "hash": "e490233328387148f2e27beda003936d"
+    },
+    "public/fs_hide_forum_view_title_node_list_category.json": {
+        "hash": "4cd9a86dfbac041655bea0d1566fcb6c"
+    },
+    "public/fs_hide_node_list_forum_title.json": {
+        "hash": "654f7441cc79264b56b0e866ac99c9aa"
+    }
+}

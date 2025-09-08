@@ -4,7 +4,7 @@ return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
 	$__finalCompiled = '';
-	$__templater->pageParams['pageTitle'] = $__templater->preEscaped($__templater->escape($__vars['category']['title']));
+	$__templater->pageParams['pageTitle'] = $__templater->preEscaped($__templater->escape($__templater->method($__vars['category']['Node'], 'getNodeTitle', array())));
 	$__finalCompiled .= '
 ';
 	$__templater->pageParams['pageDescription'] = $__templater->preEscaped($__templater->filter($__vars['category']['description'], array(array('raw', array()),), true));

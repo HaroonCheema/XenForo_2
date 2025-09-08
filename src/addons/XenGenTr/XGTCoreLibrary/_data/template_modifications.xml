@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="admin" template="category_edit" modification_key="xgt_styles_kategori_ikonlari" description="[XGT] Core Library" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<xf:macro template="node_edit_macros" name="navigation".*?\/>/s]]></find>
+    <replace><![CDATA[$0
+<xf:macro template="xgt_styles_kategori_ikonlari" 
+		  name="xgtStylesKategorikon" 
+		  arg-forum="{$forum}" arg-node="{$node}" />
+]]></replace>
+  </modification>
+  <modification type="admin" template="node_list" modification_key="xgt_styles_kategori_ikonlari_demo" description="[XGT] Core Library - Demo" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<xf:action.*?\/>.*?<\/xf:action>/s]]></find>
+    <replace><![CDATA[	<xf:action>
+		<i style="height: 30px;
+				  width: 30px;
+				  text-align: center;
+				  line-height: 30px;
+				  background: #000;
+				  color: #fff;
+				  font-size: 22px;
+				  margin-left: 5px;" 
+		   class="{$node.xgt_style_fa_ikon}"></i>
+	</xf:action>
+
+$0]]></replace>
+  </modification>
+  <modification type="admin" template="style_property_macros" modification_key="xgt_style_property_macros_brandmark" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[{$property.title}]]></find>
+    <replace><![CDATA[{{ xgt_style_property_prefix($property) }}$0]]></replace>
+  </modification>
+</template_modifications>

@@ -57,7 +57,7 @@ return array(
 	$__finalCompiled .= '
 
 	';
-	$__vars['titleHtml'] = $__templater->preEscaped('<span class="u-anchorTarget" id="sp-' . $__templater->escape($__vars['property']['property_name']) . '"></span>' . $__templater->escape($__vars['property']['title']));
+	$__vars['titleHtml'] = $__templater->preEscaped('<span class="u-anchorTarget" id="sp-' . $__templater->escape($__vars['property']['property_name']) . '"></span>' . $__templater->func('xgt_style_property_prefix', array($__vars['property'], ), true) . $__templater->escape($__vars['property']['title']));
 	$__finalCompiled .= '
 
 	';
@@ -362,7 +362,7 @@ return array(
 		'property' => $__vars['property'],
 	), $__vars) . '
 
-				<span class="u-anchorTarget" id="sp-' . $__templater->escape($__vars['property']['property_name']) . '"></span><span>' . $__templater->escape($__vars['property']['title']) . '</span>
+				<span class="u-anchorTarget" id="sp-' . $__templater->escape($__vars['property']['property_name']) . '"></span><span>' . $__templater->func('xgt_style_property_prefix', array($__vars['property'], ), true) . $__templater->escape($__vars['property']['title']) . '</span>
 				';
 	if ($__vars['property']['description']) {
 		$__finalCompiled .= '<span class="block-desc">' . $__templater->escape($__vars['property']['description']) . '</span>';

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<options>
+  <option option_id="xgtForumistatik_konumu_tumsayfalarda" edit_format="onoff" data_type="string" advanced="0">
+    <default_value></default_value>
+    <relation group_id="xgtForumistatistik_Secenekleri" display_order="100"/>
+  </option>
+  <option option_id="xgtIstatistikGosterimLimiti" edit_format="spinbox" data_type="integer" advanced="0">
+    <default_value>20</default_value>
+    <relation group_id="xgtForumistatistik_Secenekleri" display_order="200"/>
+  </option>
+  <option option_id="xgtIstatistikOtoyenileme" edit_format="template" data_type="array" validation_class="XF\Option\Style" validation_method="triggerStyleUpdate" advanced="0">
+    <default_value>{"otoyenileme":1,"otoyenilemezamani":30,"ziyaretciler":0}</default_value>
+    <edit_format_params>xgt_forumistatik_otoyenileme</edit_format_params>
+    <sub_options>otoyenileme
+otoyenilemezamani
+ziyaretciler</sub_options>
+    <relation group_id="xgtForumistatistik_Secenekleri" display_order="300"/>
+  </option>
+</options>

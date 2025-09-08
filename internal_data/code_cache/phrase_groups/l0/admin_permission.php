@@ -61,4 +61,5 @@ return array (
   'admin_permission.viewStatistics' => 'View statistics',
   'admin_permission.warning' => 'Manage warnings',
   'admin_permission.widget' => 'Manage widgets',
+  'admin_permission.xgtForumIstatistik_yonet' => '[XGT] Forum istatistik - Veri ekleyebilir',
 );

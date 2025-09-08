@@ -53,4 +53,6 @@ return array (
   'style_prop_group.xenforoMessengerRooms' => '[XenForo Messenger] Conversations',
   'style_prop_group.xenforoMessengerSearch' => '[XenForo Messenger] Search',
   'style_prop_group.xfmgAppearance' => 'XFMG: Appearance',
+  'style_prop_group.xgt_FrmIstatistik_secenekler' => '📊 [XGT] Forum istatistik - Seçenekler',
+  'style_prop_group.xgt_FrmIstatistik_tasarim' => '📊 [XGT] Forum istatistik - Tasarım',
 );

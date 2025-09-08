@@ -5,6 +5,7 @@ return array (
   'permission_interface.FTSlider' => '[XTR] Featured Threads Slider',
   'permission_interface.OwnerPagePostModeratorPermissions' => 'OwnerPage post moderator permissions',
   'permission_interface.OwnerPagePostPermissions' => 'OwnerPage post permissions',
+  'permission_interface.XGT_istatistik_izin_grubu' => '[XGT] Forum istatistikleri - izinleri',
   'permission_interface.aiBotsGptDallE' => '[021] AI Bots – GPT Dall-E',
   'permission_interface.bh_brand_hub' => '[XB] Brand-Hub',
   'permission_interface.bookmarkPermissions' => 'Bookmark permissions',

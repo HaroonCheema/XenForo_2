@@ -49,6 +49,11 @@ return array(
 		'node' => $__vars['node'],
 		'navChoices' => $__vars['navChoices'],
 	), $__vars) . '
+' . $__templater->callMacro('xgt_styles_kategori_ikonlari', 'xgtStylesKategorikon', array(
+		'forum' => $__vars['forum'],
+		'node' => $__vars['node'],
+	), $__vars) . '
+
 			' . $__templater->callMacro('node_edit_macros', 'style', array(
 		'node' => $__vars['node'],
 		'styleTree' => $__vars['styleTree'],

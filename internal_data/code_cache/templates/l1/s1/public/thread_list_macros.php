@@ -453,7 +453,7 @@ return array(
 						';
 		if (!$__vars['forum']) {
 			$__finalCompiled .= '
-							<li><a href="' . $__templater->func('link', array('forums', $__vars['thread']['Forum'], ), true) . '">' . $__templater->escape($__vars['thread']['Forum']['title']) . '</a></li>
+							<li><a href="' . $__templater->func('link', array('forums', $__vars['thread']['Forum'], ), true) . '">' . $__templater->escape($__templater->method($__vars['thread']['Forum']['Node'], 'getNodeTitle', array())) . '</a></li>
 						';
 		}
 		$__finalCompiled .= '
@@ -642,7 +642,7 @@ return array(
 				</ul>
 			</div>
 			<div class="contentRow-minor contentRow-minor--hideLinks">
-				<a href="' . $__templater->func('link', array('forums', $__vars['thread']['Forum'], ), true) . '">' . $__templater->escape($__vars['thread']['Forum']['title']) . '</a>
+				<a href="' . $__templater->func('link', array('forums', $__vars['thread']['Forum'], ), true) . '">' . $__templater->escape($__templater->method($__vars['thread']['Forum']['Node'], 'getNodeTitle', array())) . '</a>
 			</div>
 		</div>
 	</div>
@@ -676,7 +676,7 @@ return array(
 				</ul>
 			</div>
 			<div class="contentRow-minor contentRow-minor--hideLinks">
-				<a href="' . $__templater->func('link', array('forums', $__vars['thread']['Forum'], ), true) . '">' . $__templater->escape($__vars['thread']['Forum']['title']) . '</a>
+				<a href="' . $__templater->func('link', array('forums', $__vars['thread']['Forum'], ), true) . '">' . $__templater->escape($__templater->method($__vars['thread']['Forum']['Node'], 'getNodeTitle', array())) . '</a>
 			</div>
 		</div>
 	</div>

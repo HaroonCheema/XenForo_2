@@ -144,4 +144,5 @@ return array (
   'option_group.xenforoMessenger' => '[021] XenForo Messenger',
   'option_group.xfmg' => 'XenForo Media Gallery',
   'option_group.xfrm' => 'XenForo Resource Manager',
+  'option_group.xgtForumistatistik_Secenekleri' => '📊 [XGT] Forum istatistik - Seçenekler',
 );

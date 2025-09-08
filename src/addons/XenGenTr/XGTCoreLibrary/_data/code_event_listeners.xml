@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<code_event_listeners>
+  <listener event_id="entity_structure" execute_order="10" callback_class="XenGenTr\XGTCoreLibrary\Listener\Listener" callback_method="nodeEntityStructure" active="1" hint="XF\Entity\Node" description="[XGT] Core Library"/>
+  <listener event_id="templater_setup" execute_order="10" callback_class="XenGenTr\XGTCoreLibrary\Listener\TemplaterSetup" callback_method="templaterSetup" active="1" description="[XGT] Core Library"/>
+</code_event_listeners>

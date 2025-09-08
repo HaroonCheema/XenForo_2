@@ -359,4 +359,7 @@ return array (
   'admin_navigation.xfrmFields' => 'Resource fields',
   'admin_navigation.xfrmPrefixes' => 'Resource prefixes',
   'admin_navigation.xfrmReviewFields' => 'Resource review fields',
+  'admin_navigation.xgt_forumistatistik' => '[XGT] Forum istatistik',
+  'admin_navigation.xgt_forumistatistik_secenekleri' => 'İstatistik seçenekleri',
+  'admin_navigation.xgt_forumistatistik_sekme_ekle' => 'İstatistik içerikleri',
 );

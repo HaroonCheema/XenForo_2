@@ -1,0 +1,25 @@
+{
+    "legacy_addon_id": "",
+    "title": "[XenGenTr] Core Library",
+    "description": "XGT Ait tum eklenti ve urunler icin gelisitirilmis entegre bir eklentidir.. ",
+    "version_id": 1000300,
+    "version_string": "1.0.3",
+    "dev": "eTiKeT",
+    "dev_url": "https://xenforo.gen.tr",
+    "faq_url": "",
+    "support_url": "https://xenforo.gen.tr/",
+    "extra_urls": {
+        "[XenGenTr] Core Library": "https://xenforo.gen.tr/"
+    },
+    "require": {
+        "XF": [
+            2020031,
+            "XenForo 2.2.0+"
+        ],
+        "php": [
+            "7.0.0",
+            "PHP 7.0.0+"
+        ]
+    },
+    "icon": "XenGenTr.png"
+}

@@ -104,7 +104,7 @@ return array(
 					))) . '</li>
 													<li>' . $__templater->func('date_dynamic', array($__vars['post']['post_date'], array(
 					))) . '</li>
-													<li><a href="' . $__templater->func('link', array('forums', $__vars['thread']['Forum'], ), true) . '">' . $__templater->escape($__vars['thread']['Forum']['title']) . '</a></li>
+													<li><a href="' . $__templater->func('link', array('forums', $__vars['thread']['Forum'], ), true) . '">' . $__templater->escape($__templater->method($__vars['thread']['Forum']['Node'], 'getNodeTitle', array())) . '</a></li>
 													<li>' . 'Replies' . $__vars['xf']['language']['label_separator'] . ' ' . $__templater->filter($__vars['thread']['reply_count'], array(array('number', array()),), true) . '</li>
 												</ul>
 											</header>

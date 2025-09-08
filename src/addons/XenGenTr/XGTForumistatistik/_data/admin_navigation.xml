@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<admin_navigation>
+  <admin_navigation_entry navigation_id="xgt_forumistatistik" parent_navigation_id="appearance" display_order="1000" link="forum-istatistik" icon="fad fa-chart-pie" admin_permission_id="option" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="xgt_forumistatistik_secenekleri" parent_navigation_id="xgt_forumistatistik" display_order="5" link="options/groups/xgtForumistatistik_Secenekleri/" admin_permission_id="option" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="xgt_forumistatistik_sekme_ekle" parent_navigation_id="xgt_forumistatistik" display_order="10" link="forum-istatistik" admin_permission_id="xgtForumIstatistik_yonet" debug_only="0" development_only="0" hide_no_children="0"/>
+</admin_navigation>

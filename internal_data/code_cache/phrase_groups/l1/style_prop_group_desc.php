@@ -53,4 +53,6 @@ return array (
   'style_prop_group_desc.xenforoMessengerRooms' => '',
   'style_prop_group_desc.xenforoMessengerSearch' => '',
   'style_prop_group_desc.xfmgAppearance' => 'A number of properties to control the appearance of XenForo Media Gallery',
+  'style_prop_group_desc.xgt_FrmIstatistik_secenekler' => '[XGT] Forum istatistik sistemi için çeşitli seçenekleri içerir.',
+  'style_prop_group_desc.xgt_FrmIstatistik_tasarim' => '[XGT] Forum istatistik sisteminin tasarıma özel renk yönetimlerini içerir.',
 );

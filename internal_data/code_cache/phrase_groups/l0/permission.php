@@ -5,6 +5,8 @@ return array (
   'permission.FTSlider_permissions_FTSlider_view' => 'View featured threads slider',
   'permission.FTSlider_permissions_FTSlider_view_page' => 'View featured threads page',
   'permission.Like_needLike' => 'Needs Likes to see Attachments?',
+  'permission.XGT_istatistik_izin_grubu_XGT_istatistik_gor' => 'İstatistikleri görebilir mi?',
+  'permission.XGT_istatistik_izin_grubu_XGT_istatistik_kullanici' => 'Kullanıcı istatistik görebilir mi?',
   'permission.avatar_allowed' => 'Upload an avatar',
   'permission.bh_brand_hub_bh_canEditDiscussionDesc' => 'Can Add/Edit discussion Description',
   'permission.bh_brand_hub_bh_canSetItemMainPhoto' => 'Can Set Item Main-Photo',

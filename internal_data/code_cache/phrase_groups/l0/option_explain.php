@@ -1245,5 +1245,9 @@ Use the textbox above to specify a format. <b>{title}</b> will be replaced with 
   'option_explain.xfrmReviewsPerPage' => '',
   'option_explain.xfrmUpdateMaxLength' => 'The maximum number of characters that can be in a resource update or description. This includes BB code. Setting this value too large or disabling it entirely may cause performance issues and is not recommended.',
   'option_explain.xfrmUpdatesPerPage' => '',
+  'option_explain.xgtForumistatik_konumu_tumsayfalarda' => 'Konum olarak sadece kendi konumum seçim yapılır ise istatistik alanı tüm sayfalarda gösterilecektir (<b>Gereksiz yük nedeni ile tavsiye edilmemektedir</b>).',
+  'option_explain.xgtIstatistikGosterimLimiti' => 'İstatistik içinde gösterilecek olan veri sayısı. Değer satır olarak listelenecektir 10=10 satır veri demektir.<br> Blok içine içerik sayınız sığmıyor daha fazla alana ihtiyacınıza var ise;<br>
+<b>Tema özellikleri >>📊 [XGT] Forum istatistik - Tasarım >> İstatistik blok en fazla yüksekliği </b> Alanından satır eklemesi yapa bilirsiniz.',
+  'option_explain.xgtIstatistikOtoyenileme' => 'İçeriklerin anlık takibi için otomatik yenileme süresini belirleyiniz. SANİYE cinsinden bir zaman aralığı seçiniz.',
   'option_explain.xtr_mousehover' => '',
 );

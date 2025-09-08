@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style_property_groups>
+  <style_property_group group_name="xgt_FrmIstatistik_secenekler" title="📊 [XGT] Forum istatistik - Seçenekler" description="[XGT] Forum istatistik sistemi için çeşitli seçenekleri içerir." display_order="1000000"/>
+  <style_property_group group_name="xgt_FrmIstatistik_tasarim" title="📊 [XGT] Forum istatistik - Tasarım" description="[XGT] Forum istatistik sisteminin tasarıma özel renk yönetimlerini içerir." display_order="1000001"/>
+</style_property_groups>

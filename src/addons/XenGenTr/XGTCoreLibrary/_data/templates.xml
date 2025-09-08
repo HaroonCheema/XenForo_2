@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="admin" title="xgt_style_property_prefix" version_id="1000001" version_string="1.0.0 Beta"><![CDATA[<xf:css src="xgt_style_property_prefix.less" />
+<img src="{{ base_url('styles/XenGenTr/XenGenTr.png') }}" class="xgt_dataList-styleProperty-mainRow-brandmark">&nbsp;]]></template>
+  <template type="admin" title="xgt_style_property_prefix.less" version_id="1000001" version_string="1.0.0 Beta"><![CDATA[.xgt_dataList-styleProperty-mainRow-brandmark 
+{
+    max-width: 20px;
+    vertical-align: middle;
+}
+
+.formRow dt .xgt_dataList-styleProperty-mainRow-brandmark 
+{
+    float: left;
+}]]></template>
+  <template type="admin" title="xgt_styles_kategori_ikonlari" version_id="1000300" version_string="1.0.3"><![CDATA[<xf:macro name="xgtStylesKategorikon" arg-node="!" arg-category="" arg-forum="">
+	<xf:checkboxrow label="{{ phrase('xgt_styles_kategori_ikonu') }}" explain="{{ phrase('xgt_styles_kategori_ikonu_detay') }}" autosize="true">		
+		<xf:option name="node[xgt_style_fa_ikon]" selected="{$node.xgt_style_fa_ikon}" label="{{ phrase('xgt_styles_kategori_ikonu_etkinlestir') }}" data-hide="true">	
+			<xf:dependent>
+				<xf:textbox name="node[xgt_style_fa_ikon]" value="{$node.xgt_style_fa_ikon}" />
+				<span class="formRow-explain">{{ phrase('xgt_styles_kategori_ikonu_etkinlestir_aciklama') }}</span>
+			</xf:dependent>
+		</xf:option>
+	</xf:checkboxrow>
+</xf:macro>]]></template>
+</templates>

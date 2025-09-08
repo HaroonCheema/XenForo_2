@@ -1,0 +1,1844 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="admin" title="style_property_template_xgt_istatistik_konumlari" version_id="4000300" version_string="4.0.3"><![CDATA[<xf:formrow label="{$titleHtml}" hint="{$hintHtml}" explain="{$property.description}">	
+	<dfn class="formRow-explain">{{ phrase('xgt_FrmIstatistik_konumlari_aciklama') }}<br><br>		
+		<textarea style="color: #c84448;border: solid 1px #c84448;border-left: solid 3px #c84448;background: #fde9e9;" class="input input--fitHeight" rows="1" readonly="readonly" data-xf-init="textarea-handler">&lt;xf:macro template="xgt_FrmIstatistik_konumlar_macros" name="xgt_istatistik_konum" arg-template="" arg-location="kendikonumum" arg-position="!" /&gt;</textarea>
+	</dfn>
+</xf:formrow>]]></template>
+  <template type="admin" title="widget_def_options_xgtForumIstKullanici_wd" version_id="1000025" version_string="1.0.0 Beta 5"><![CDATA[]]></template>
+  <template type="admin" title="xgt_forumistatik_otoyenileme" version_id="3020000" version_string="3.2.0"><![CDATA[<xf:checkboxrow label="{$option.title}" hint="{$hintHtml}" explain="{$explainHtml}" html="{$listedHtml}">	
+	<xf:option name="{$inputName}[otoyenileme]" label="{{ phrase('enable') }}" selected="{$option.option_value.otoyenileme}" data-hide="true">
+		<xf:dependent> 
+			<dfn class="formRow-explain"></dfn>
+			<div class="inputGroup">
+				<span class="inputGroup-text">
+					{{ phrase('xgt_forumistatik_otoyenileme_zamani') }}
+				</span>
+				<span class="inputGroup" dir="ltr">
+					<xf:numberbox name="{$inputName}[otoyenilemezamani]" class="input--inline input--autoSize" value="{{ $option.option_value.otoyenilemezamani ? $option.option_value.otoyenilemezamani : '30' }}" min="10" step="5"/>
+				</span>
+			</div>
+			<dfn class="formRow-explain"></dfn>
+			<div class="inputGroup"> 
+				<xf:checkbox>
+					<xf:option name="{$inputName}[ziyaretciler]" selected="$option.option_value.ziyaretciler" value="{{ $option.option_value.ziyaretciler ? $option.option_value.ziyaretciler : '1' }}" label="{{ phrase('xgt_forumistatik_otoyenileme_ziyaretci') }}" />			 
+				</xf:checkbox>   
+			</div>	
+			<dfn class="formRow-explain">{{ phrase('xgt_forumistatik_otoyenileme_ziyaretci_detay') }}</dfn>
+		</xf:dependent>
+	</xf:option>
+</xf:checkboxrow>]]></template>
+  <template type="admin" title="xgt_forumistatistik_acp_opsiyon_encok_goruntulenen" version_id="1000017" version_string="1.0.0 Alpha 7"><![CDATA[<hr class="formRowSep" />
+
+<xf:selectrow name="options[excluded_node_ids][]" value="{{ $options.excluded_node_ids ?: '' }}" multiple="multiple" size="7"
+    label="{{ phrase('xgt_forumistatik_haric_forumlar') }}"
+    explain="{{ phrase('xgt_forumistatik_haric_forumlar_detay') }}">
+
+    <xf:option value="">{{ phrase('none') }}</xf:option>
+    <xf:foreach loop="$nodeTree.getFlattened(0)" value="$treeEntry">
+        <xf:option value="{$treeEntry.record.node_id}" disabled="{{ $treeEntry.record.node_type_id != 'Forum' }}">
+            {{ repeat('&nbsp;&nbsp;', $treeEntry.depth)|raw }} {$treeEntry.record.title}
+        </xf:option>
+    </xf:foreach>
+</xf:selectrow>]]></template>
+  <template type="admin" title="xgt_forumistatistik_acp_opsiyon_encok_mesaj" version_id="1000017" version_string="1.0.0 Alpha 7"><![CDATA[<hr class="formRowSep" />
+
+<xf:selectrow name="options[excluded_node_ids][]" value="{{ $options.excluded_node_ids ?: '' }}" multiple="multiple" size="7"
+    label="{{ phrase('xgt_forumistatik_haric_forumlar') }}"
+    explain="{{ phrase('xgt_forumistatik_haric_forumlar_detay') }}">
+
+    <xf:option value="">{{ phrase('none') }}</xf:option>
+    <xf:foreach loop="$nodeTree.getFlattened(0)" value="$treeEntry">
+        <xf:option value="{$treeEntry.record.node_id}" disabled="{{ $treeEntry.record.node_type_id != 'Forum' }}">
+            {{ repeat('&nbsp;&nbsp;', $treeEntry.depth)|raw }} {$treeEntry.record.title}
+        </xf:option>
+    </xf:foreach>
+</xf:selectrow>]]></template>
+  <template type="admin" title="xgt_forumistatistik_acp_opsiyon_encok_tepki" version_id="1000017" version_string="1.0.0 Alpha 7"><![CDATA[<hr class="formRowSep" />
+
+<xf:selectrow name="options[excluded_node_ids][]" value="{{ $options.excluded_node_ids ?: '' }}" multiple="multiple" size="7"
+    label="{{ phrase('xgt_forumistatik_haric_forumlar') }}"
+    explain="{{ phrase('xgt_forumistatik_haric_forumlar_detay') }}">
+
+    <xf:option value="">{{ phrase('none') }}</xf:option>
+    <xf:foreach loop="$nodeTree.getFlattened(0)" value="$treeEntry">
+        <xf:option value="{$treeEntry.record.node_id}" disabled="{{ $treeEntry.record.node_type_id != 'Forum' }}">
+            {{ repeat('&nbsp;&nbsp;', $treeEntry.depth)|raw }} {$treeEntry.record.title}
+        </xf:option>
+    </xf:foreach>
+</xf:selectrow>]]></template>
+  <template type="admin" title="xgt_forumistatistik_acp_opsiyon_yeni_kaynaklar" version_id="3000600" version_string="3.0.6"><![CDATA[<hr class="formRowSep" />
+
+<xf:selectrow name="options[resource_category_ids][]" value="{{ $options.resource_category_ids ?: 0 }}" multiple="multiple" size="7"
+			  label="{{ phrase('xgt_forumistatik_veri_alinacak_kategoriler') }}"
+			  explain="{{ phrase('xgt_forumistatik_haric_kategori_detay') }}">
+
+    <xf:option value="0">{{ phrase('none') }}</xf:option>
+    <xf:foreach loop="$categoryTree.getFlattened(0)" value="$treeEntry">
+        <xf:option value="{$treeEntry.record.resource_category_id}">
+            {{ repeat('&nbsp;&nbsp;', $treeEntry.depth)|raw }}{$treeEntry.record.title}
+        </xf:option>
+    </xf:foreach>
+</xf:selectrow>]]></template>
+  <template type="admin" title="xgt_forumistatistik_acp_opsiyon_yeni_konular" version_id="1000017" version_string="1.0.0 Alpha 7"><![CDATA[<hr class="formRowSep" />
+
+<xf:selectrow name="options[excluded_node_ids][]" value="{{ $options.excluded_node_ids ?: '' }}" multiple="multiple" size="7"
+    label="{{ phrase('xgt_forumistatik_haric_forumlar') }}"
+    explain="{{ phrase('xgt_forumistatik_haric_forumlar_detay') }}">
+
+    <xf:option value="">{{ phrase('none') }}</xf:option>
+    <xf:foreach loop="$nodeTree.getFlattened(0)" value="$treeEntry">
+        <xf:option value="{$treeEntry.record.node_id}" disabled="{{ $treeEntry.record.node_type_id != 'Forum' }}">
+            {{ repeat('&nbsp;&nbsp;', $treeEntry.depth)|raw }} {$treeEntry.record.title}
+        </xf:option>
+    </xf:foreach>
+</xf:selectrow>]]></template>
+  <template type="admin" title="xgt_forumistatistik_acp_opsiyon_yeni_mesajlar" version_id="3000600" version_string="3.0.6"><![CDATA[<hr class="formRowSep" />
+
+<xf:selectrow name="options[excluded_node_ids][]" value="{{ $options.excluded_node_ids ?: '' }}" multiple="multiple" size="7"
+			  label="{{ phrase('xgt_forumistatik_haric_forumlar') }}"
+			  explain="{{ phrase('xgt_forumistatik_haric_forumlar_detay') }}">
+	
+    <xf:option value="0">{{ phrase('none') }}</xf:option>
+    <xf:foreach loop="$nodeTree.getFlattened(0)" value="$treeEntry">
+        <xf:option value="{$treeEntry.record.node_id}" disabled="{{ $treeEntry.record.node_type_id != 'Forum' }}">
+            {{ repeat('&nbsp;&nbsp;', $treeEntry.depth)|raw }} {$treeEntry.record.title}
+        </xf:option>
+    </xf:foreach>
+</xf:selectrow>]]></template>
+  <template type="admin" title="xgt_istatistik_icerik_duzenle" version_id="2002009" version_string="2.1.0 Beta 9"><![CDATA[<xf:if is="$forumIstatistik.isInsert()">
+    <xf:title>{{ phrase('xgt_istatistik_veri_ekle') }}</xf:title>
+<xf:else />
+    <xf:title>{{ phrase('xgt_istatistik_veri_duzenleniyor:') }} {$forumIstatistik.title}</xf:title>
+</xf:if>
+
+<xf:pageaction if="$forumIstatistik.isUpdate()">
+    <xf:button href="{{ link('forum-istatistik/liste/sil', $forumIstatistik) }}" icon="delete" overlay="true" />
+</xf:pageaction>
+
+<xf:form action="{{ link('forum-istatistik/liste/save', $forumIstatistik) }}" class="block" ajax="true">
+	<div class="block-container">
+	 	<div class="block-body">
+		  	<xf:formrow label="{{ phrase('xgt_acp_forumistatistikleri_icerik_turu') }}">
+					{$forumIstatistikIcerik.title}
+					<xf:hiddenval name="icerik_id">{$forumIstatistikIcerik.icerik_id}</xf:hiddenval>
+		  	</xf:formrow>
+		  	<xf:textboxrow label="{{ phrase('title') }}" explain="{{ phrase('xgt_forumistatistik_baslik_aciklama:') }} <b>{$forumIstatistikIcerik.title}</b>" 
+						   name="custom_title" value="{$forumIstatistik.custom_title}"
+						   maxlength="{{ max_length($forumIstatistik, 'custom_title') }}" />
+			
+			<xf:formrow label="{{ phrase('xgt_forumistatik_sekme_ikonu') }}" hint="{$hintHtml}" explain="{{ phrase('xgt_forumistatik_sekme_ikonu_detay') }}" html="{$listedHtml}">
+				<div class="inputGroup">
+					<xf:textbox label="{{ phrase('xgt_forumistatik_sekme_ikonu') }}" explain="{{ phrase('xgt_forumistatik_sekme_ikonu_detay') }}" 
+								name="veri_ikonu" value="{$forumIstatistik.veri_ikonu}"
+								maxlength="{{ max_length($forumIstatistik, 'veri_ikonu') }}" />
+					<span class="inputGroup-splitter"></span>
+					<xf:if is="$forumIstatistik.veri_ikonu">
+						<div style="color: #47a7eb; width: 100px; text-align: center;background: #f7fbfe;border: solid 1px #cbcbcb; border-radius: 4px; line-height: 2; font-size: 30px;"><i class="{$forumIstatistik.veri_ikonu}"></i></div>
+					</xf:if>	
+				</div>
+			</xf:formrow>
+		  	<div name="pozinyon" value="anaveri" label="{{ phrase('xgt_forumistatik_konum_sec') }}" source="{$forumIstatistik.pozisyonlar}" style="display:none;">
+		  		<xf:selectrow name="pozinyon" value="anaveri" label="{{ phrase('xgt_forumistatik_konum_sec') }}" style="display:none;">
+			  		<xf:option value="anaveri">{{ phrase('xgt_forumistatik_konum_sec') }}</xf:option>
+			  		<xf:options source="{$forumIstatistik.pozisyonlar}" />
+		  		</xf:selectrow>
+		  	</div>
+		  	<xf:numberboxrow name="display_order" label="{{ phrase('display_order') }}" value="{{ $forumIstatistik.display_order ?: 5 }}" min="0" required="required"/>
+			<xf:checkboxrow label="{{ phrase('xgt_forumistatik_aktif') }}">
+					<xf:option name="active" selected="$forumIstatistik.active" label="{{ phrase('yes') }}" />
+		  	</xf:checkboxrow>
+		  	{$forumIstatistik.renderOptions()|raw}
+	 	</div>
+	 	<xf:submitrow sticky="true" icon="save" />
+	</div>
+</xf:form>]]></template>
+  <template type="admin" title="xgt_istatistik_icerik_listesi" version_id="4000002" version_string="4.0.0 Alpha 2"><![CDATA[<xf:title>{{ phrase('xgt_acp_forumistatistikleri') }}</xf:title>
+<xf:pageaction>
+	<xf:button href="{{ link('forum-istatistik/liste/ekle', $forumIstatistik) }}" icon="add">{{ phrase('xgt_acp_forumistatistikleri_veri_ekle') }}</xf:button>
+</xf:pageaction>
+<xf:form action="{{ link('forum-istatistik/liste/toggle') }}" class="block" ajax="true">
+	<div class="block-container">
+		<xf:datalist>
+			<xf:foreach loop="$forumIstatistikPozisyonlar" key="$pozinyon" value="$forumIstatistikPozinyon">
+				<xf:foreach loop="$forumIstatistikPozinyon" value="$forumIstatistik">  
+					<xf:datarow>
+						<xf:cell href="{{ link('forum-istatistik/liste/duzenle', $forumIstatistik) }}" class="dataList-cell--main">
+							<div class="dataList-mainRow">
+								{$forumIstatistik.title}
+							</div>
+						</xf:cell>		
+						<xf:cell class="dataList-cell--min dataList-cell--hint" title="{{ phrase('xgt_forumistatik_sekme_ikonu') }}">
+							<xf:if is="$forumIstatistik.veri_ikonu">
+								<i style="color: #47a7eb; font-size: 20px;" class="{$forumIstatistik.veri_ikonu}"></i>
+							</xf:if>
+						</xf:cell>
+						<xf:cell class="dataList-cell--min dataList-cell--hint" title="{{ phrase('xgt_forumistatik_sekme_sirasi') }}">{{ phrase('xgt_forumistatik_sekme_sirasi:') }} {$forumIstatistik.display_order}</xf:cell>
+							
+						<xf:toggle name="aktif[{$forumIstatistik.veri_id}]" selected="$forumIstatistik.active" 
+								   class="dataList-cell--separated" submit="true" 
+								   tooltip="{{ phrase('enable_disable_x', {'title': $forumIstatistik.title}) }}" />
+						
+						<xf:delete href="{{ link('forum-istatistik/liste/sil', $forumIstatistik) }}"  tooltip="{{ phrase('delete') }}" />
+					</xf:datarow>
+				</xf:foreach>
+			</xf:foreach>
+		</xf:datalist>
+		<div class="block-footer">
+			<span class="block-footer-counter">{{ display_totals($forumIstatistikPozisyonlar, $total) }}</span>
+		</div>	
+	</div>		
+</xf:form>
+
+<div class="blockMessage blockMessage--success" style="border-radius:4px;padding: 10px;font-size: 20px;font-weight: 400;">
+	{{ phrase('xgt_forumistatik_acp_ornek_tab') }}
+</div>
+
+<xf:foreach loop="$forumIstatistikPozisyonlar" key="$pozinyon" value="$forumIstatistikPozinyon">
+	<div class="block">	
+		<h2 class="block-tabHeader tabs hScroller" data-xf-init="tabs h-scroller" data-state="replace" role="tablist" style="border-top-left-radius: 4px;border-top-right-radius: 4px;border-bottom: none;">
+			<span class="hScroller-scroll">
+				<xf:foreach loop="$forumIstatistikPozinyon" value="$forumIstatistik"> 
+					<xf:if is="$forumIstatistik.active">
+						<a href="{{ link('forum-istatistik/liste/duzenle', $forumIstatistik) }}" class="tabs-tab {{ $counter == 1 ? 'is-active' : '' }}" role="tab" tabindex="0" aria-controls="istatistikveri-{$veri_id}">
+							<xf:if is="property('xgt_Frmistatistik_sekme_ikonlari') AND $forumIstatistik.veri_ikonu">
+								<i class="{$forumIstatistik.veri_ikonu}"></i> 
+							</xf:if>
+							{$forumIstatistik.title}
+						</a>
+					</xf:if>
+				</xf:foreach>
+			</span>
+		</h2>
+		<div class="block-body">
+			<div class="block-container" style="border-radius: 0px 0px 4px 4px;padding: 10px; border-width: 0;">
+				{{ phrase('xgt_forumistatik_acp_icerkleriniz') }}
+			</div>	
+		</div>
+	</div>			
+</xf:foreach>]]></template>
+  <template type="admin" title="xgt_istatistik_icerik_sec" version_id="3000700" version_string="3.0.7 Beta 1"><![CDATA[<xf:title>{{ phrase('xgt_acp_forumistatistikleri_icerik_turu_sec') }}</xf:title>
+
+<xf:form action="{{ link('forum-istatistik/ekle') }}" class="block" ajax="true">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:selectrow name="type" data-xf-init="show-hide-select" value="{$forumIstatistikIcerik.icerik_id}" label="{{ phrase('xgt_acp_forumistatistikleri_icerik_turu') }}">
+				<xf:option type="threads" value="yeni_mesajlar">{{ phrase('xgt_forumistatistik.yeni_mesajlar') }}</xf:option>
+				<xf:option type="threads" value="yeni_konular">{{ phrase('xgt_forumistatistik.yeni_konular') }}</xf:option>
+				<xf:option type="threads" value="encok_tepki">{{ phrase('xgt_forumistatistik.encok_tepki') }}</xf:option>
+				<xf:option type="threads" value="encok_mesaj">{{ phrase('xgt_forumistatistik.encok_mesaj') }}</xf:option>
+				<xf:option type="threads" value="encok_goruntulenen">{{ phrase('xgt_forumistatistik.encok_goruntulenen') }}</xf:option>
+				<xf:option type="resources" value="yeni_kaynaklar">{{ phrase('xgt_forumistatistik.yeni_kaynaklar') }}</xf:option>
+				<xf:explain>{{ phrase('xgt_acp_forumistatistikleri_icerik_turu_aciklama') }}</xf:explain>
+			</xf:selectrow>				
+		</div>
+		<xf:submitrow submit="{{ phrase('xgt_acp_forumistatistikleri_icerik_turu_ekle') }}" icon="add" />
+	</div>
+</xf:form>]]></template>
+  <template type="admin" title="xgt_istatistik_icerik_sil" version_id="1000021" version_string="1.0.0 Beta 1"><![CDATA[<xf:title>{{ phrase('confirm_action') }}</xf:title>
+
+<xf:form action="{{ link('forum-istatistik/liste/sil', $forumIstatistik) }}" ajax="true" class="block">
+    <div class="block-container">
+        <div class="block-body">
+            <xf:inforow rowtype="confirm">
+                {{ phrase('please_confirm_that_you_want_to_delete_following:') }}
+                <strong><a href="{{ link('forum-istatistik/edit', $forumIstatistik) }}">{$forumIstatistik.title}</a></strong>
+            </xf:inforow>
+        </div>
+        <xf:submitrow rowtype="simple" icon="delete" />
+    </div>
+</xf:form>]]></template>
+  <template type="public" title="xgt_FrmIstatistik" version_id="4000108" version_string="4.0.1"><![CDATA[<xf:if is="$xf.visitor.canIstatistikleriGor()">
+	<div class="xgtForumIstatistik">
+		<div class="xgtForumIstatistik-row">	
+			<xf:if is="$xf.visitor.canKullaniciIstatistikGor()">
+				<xf:if is="property('xgt_Frmistatistik_altHeader_metinAlani') == 'metin' OR property('xgt_Frmistatistik_altHeader_metinAlani') == 'metinikon'">
+					<xf:set var="$kullanici-metin">{{ phrase('xgt_forumistatik_kullanici') }}</xf:set>
+					<xf:set var="$mesaj-metin">{{ phrase('xgt_forumistatik_mesaj_sayisi') }}</xf:set>
+				</xf:if>
+				<xf:if is="property('xgt_Frmistatistik_altHeader_metinAlani') == 'ikon' OR property('xgt_Frmistatistik_altHeader_metinAlani') == 'metinikon'">
+					<xf:set var="$kullanici-ikon"><i class="fal fa-user"></i></xf:set>
+					<xf:set var="$mesaj-ikon"><i class="fal fa-comment-dots"></i></xf:set>
+				</xf:if>
+				<xf:if is="{{ property('xgt_Frmistatistik_kullanici_verisi') AND property('xgt_Frmistatistik_kullanici_veri_konum') == 'solda' }}">
+					<div class="xgtForumIstatistik-row--sol-s">
+						<h2 class="xgtForumIstatistik-tabHeader block-tabHeader">
+							<div class="tabs-tab _userTabs">
+								<xf:if is="property('xgt_Frmistatistik_sekme_ikonlari')">
+									<i class="fad fa-user-friends"></i>
+								</xf:if>
+								{{ phrase('xgt_forumistatik_encok_mesaj') }}
+							</div>
+						</h2>
+						<div class="_xgtIstatistik--blok">
+							<div class="_xgtIstatistik-satir _xgtIstatistik_miniHeader">
+								<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--konu">
+									{$kullanici-ikon|raw}{$kullanici-metin|raw}
+								</div>
+								<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--cevap">
+									{$mesaj-ikon|raw}{$mesaj-metin|raw}
+								</div>
+							</div>
+							<xf:widget key="xgtForumIstatistik_encok_mesaj_kullanici" />
+						</div>
+					</div>
+				</xf:if>	
+			</xf:if>
+			<div class="{{ ($xf.visitor.canKullaniciIstatistikGor() AND property('xgt_Frmistatistik_kullanici_verisi')) ? 'xgtForumIstatistik-row--l' : '' }}{{ (!$xf.visitor.canKullaniciIstatistikGor() OR !property('xgt_Frmistatistik_kullanici_verisi')) ? 'xgtForumIstatistik-row--xl' : '' }}">
+				<xf:if is="$forumIstatistikleri.pozisyonlar.anaveri">
+					<xf:set var="$baslangic" value="{$forumIstatistikleri.baslangic.anaveri}" />     
+					<xf:set var="$counter" value="1" />
+					<h2 class="xgtForumIstatistik-tabHeader block-tabHeader tabs hScroller" data-xf-init="tabs h-scroller" data-state="replace" role="tablist">
+							<span class="hScroller-scroll">
+								<xf:foreach loop="$forumIstatistikleri.pozisyonlar.anaveri" key="$veri_id" value="$forumIstatistik">
+									<a class="tabs-tab {{ $counter == 1 ? 'is-active' : '' }}" role="tab" tabindex="0" aria-controls="istatistikveri-{$veri_id}">
+										<xf:if is="property('xgt_Frmistatistik_sekme_ikonlari') AND $forumIstatistik.veri_ikonu">
+											<i class="{$forumIstatistik.veri_ikonu}"></i> 
+										</xf:if>
+										{$forumIstatistik.title}
+									</a>
+									<xf:set var="$counter" value="{{ $counter + 1 }}" />
+								</xf:foreach>
+							</span>
+						<xf:if is="property('xgt_Frmistatistik_collapse')">
+							<xf:if is="{{ $xf.visitor.canKullaniciIstatistikGor() AND property('xgt_Frmistatistik_kullanici_verisi') AND property('xgt_Frmistatistik_kullanici_veri_konum') == 'solda' OR !$xf.visitor.canKullaniciIstatistikGor() OR !property('xgt_Frmistatistik_kullanici_verisi') }}">
+								<div class="_collapseButton">
+									<span class="collapseTrigger is-active" data-xf-click="toggle" data-xf-init="toggle-storage tooltip" 
+										  data-target="._xgtIstatistik--blok" data-storage-key="xgtForumIstatistik"
+										  title="{{ phrase('xgt_FrmIstatistik_istatistik_gizle') }}"></span>
+								</div>
+							</xf:if>
+						</xf:if>
+					</h2>
+					<xf:set var="$counter" value="1" />
+					<ul class="tabPanes _xgtIstatistik--blok">
+						<xf:foreach loop="$forumIstatistikleri.pozisyonlar.anaveri" key="$veri_id"  value="$forumIstatistik">
+							<xf:if is="$counter == 1">
+								<li class="is-active" role="tabpanel" id="istatistikveri-{$veri_id}" data-href-initial="{{ link('forum-istatistik/sonuclar', $forumIstatistik) }}">
+									<xf:include template="xgt_FrmIstatistik_icerikSonuc">
+										<xf:set var="$forumIstatistik" value="{$baslangic}" />
+									</xf:include>
+								</li>
+							<xf:else />
+								<li class="" role="tabpanel" id="istatistikveri-{$veri_id}" data-href="{{ link('forum-istatistik/sonuclar', $forumIstatistik) }}" data-href-initial="{{ link('forum-istatistik/sonuclar', $forumIstatistik) }}">
+									<div class="_istatistikYukleniyor">
+										<i class="fas fa-spinner fa-pulse"></i>
+									</div>
+								</li>
+							</xf:if>
+							<xf:set var="$counter" value="{{ $counter + 1 }}" />
+						</xf:foreach>
+					</ul>
+				</xf:if>
+			</div>	
+			<xf:if is="$xf.visitor.canKullaniciIstatistikGor()">
+				<xf:if is="{{ property('xgt_Frmistatistik_kullanici_verisi') AND property('xgt_Frmistatistik_kullanici_veri_konum') == 'sagda' }}">
+					<div class="xgtForumIstatistik-row--sag-s _sutun-bosluk">
+						<h2 class="xgtForumIstatistik-tabHeader block-tabHeader">
+							<div class="tabs-tab _userTabs">
+								<xf:if is="property('xgt_Frmistatistik_sekme_ikonlari')">
+									<i class="fad fa-user-friends"></i>
+								</xf:if>
+								{{ phrase('xgt_forumistatik_encok_mesaj') }}
+							</div>
+							<xf:if is="property('xgt_Frmistatistik_collapse')">
+								<div class="_collapseButton">
+									<span class="collapseTrigger is-active" data-xf-click="toggle" data-xf-init="toggle-storage tooltip" 
+										  data-target="._xgtIstatistik--blok"  data-storage-key="xgtForumIstatistik" title="{{ phrase('xgt_FrmIstatistik_istatistik_gizle') }}"></span>
+								</div>
+							</xf:if>
+						</h2>
+						<div class="_xgtIstatistik--blok">
+							<div class="_xgtIstatistik-satir _xgtIstatistik_miniHeader">
+								<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--konu">
+									{$kullanici-ikon|raw}{$kullanici-metin|raw}
+								</div>
+								<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--cevap">
+									{$mesaj-ikon|raw}{$mesaj-metin|raw}
+								</div>
+							</div>
+							<xf:widget key="xgtForumIstatistik_encok_mesaj_kullanici" />
+						</div>
+					</div>
+				</xf:if>
+			</xf:if>
+		</div>
+		<xf:if is="$xf.options.xgtIstatistikOtoyenileme.otoyenileme">
+			<xf:macro template="xgt_FrmIstatistik.js" name="otoyenile" arg-kullanici="{$kullanici}" />
+		</xf:if>
+		<xf:css src="xgt_FrmIstatistik.less" />
+	</div>
+</xf:if>]]></template>
+  <template type="public" title="xgt_FrmIstatistik.js" version_id="4000008" version_string="4.0.0"><![CDATA[<xf:macro name="otoyenile" arg-kullanici="{$kullanici}">	
+	<xf:if is="!$xf.options.xgtIstatistikOtoyenileme.ziyaretciler">	
+		<xf:if is="$xf.visitor.user_id">
+			<xf:macro name="sadecekullanici" arg-kullanici="{$kullanici}"/>
+		</xf:if>		
+	<xf:elseif is="$xf.options.xgtIstatistikOtoyenileme.ziyaretciler" />	
+		<xf:macro name="sadecekullanici" arg-kullanici="{$kullanici}"/>
+	</xf:if> 	
+	<xf:macro name="sadecekullanici" arg-kullanici="!">	
+		<xf:js>
+			!function($, window, document){
+				"use strict";
+				XF.ForumIstatistikEkle = XF.extend(XF.Inserter, {
+					__backup: {
+							'onLoad': '_onLoad'
+					},
+					onLoad: function(data){
+						this._onLoad(data);
+						if (!data.html){
+							return;
+							}
+					},
+				});
+				XF.ForumIstatistikTikla = XF.Event.newHandler({
+					eventNameSpace: 'ForumIstatistikTikla',
+					options: $.extend(true, {}, XF._baseInserterOptions),
+					inserter: null,
+					init: function(){
+						this.inserter = new XF.ForumIstatistikEkle(this.$target, this.options);
+					},
+					click: function(e){
+						this.inserter.onEvent(e);
+					}
+				});
+				var refreshDelay = {$xf.options.xgtIstatistikOtoyenileme.otoyenilemezamani};
+				var autoRefreshInterval;
+
+				$(function() {
+					checkAutoRefresh(); 
+				});
+				var checkAutoRefresh = function(){
+					resetAutoRefreshTimer();
+				}
+				var clearAutoRefreshTimer = function(){
+					if (autoRefreshInterval){
+						clearInterval(autoRefreshInterval);
+					}
+				}
+				var resetAutoRefreshTimer = function(){
+					clearAutoRefreshTimer();
+					autoRefreshInterval = setInterval(refresh, refreshDelay * 1000);
+				}
+				var refresh = function(){
+					var $tabs = $('.xgtForumIstatistik-tabHeader.tabs').first();
+					var handler = XF.Element.getHandler($tabs, 'tabs');
+			
+					var aktifPanelIndex, $aktifPanel;
+
+					$.each(handler.$panes, function(index, el) {
+						var $el = $(el);
+						if ($el.hasClass('is-active'))
+						{
+							aktifPanelIndex = index;
+							$aktifPanel = $el;
+							return;
+						}
+					});
+			
+					if (!$aktifPanel) return; 
+					$('.tooltip.tooltip--preview').hide();
+					$aktifPanel.data('href', $aktifPanel.data('href-initial'));
+					handler.activateTab(aktifPanelIndex);
+				};
+				XF.Click.register('forum-istatistik', 'XF.ForumIstatistikTikla');
+			}
+			(jQuery, window, document);
+		</xf:js>
+	</xf:macro>	
+</xf:macro>]]></template>
+  <template type="public" title="xgt_FrmIstatistik.less" version_id="4000500" version_string="4.0.5"><![CDATA[/************************************************************
+*  [XGT] Forum istatistik 4. nesil LESS
+*  XGT Yazılım ve web hizmetleri - eTiKeT™
+*  www.xenforo.gen.tr
+*  Baslangic: 26.01.2020 
+*  Son gucelleme: 18.04.2023
+************************************************************/
+//-- Baglantilar
+@xgtFrmistatistik_baglantilar         : @xf-xgt_Frmistatistik_baglantilar;
+@xgtFrmistatistik_baglantilar-h       : xf-intensify(@xf-xgt_Frmistatistik_baglantilar, 20%);
+//-- Tab butonlar
+@xgtFrmistatistik_tab_ap              : @xf-xgt_Frmistatistik_tab_ap;
+@xgtFrmistatistik_tab_metin           : @xf-xgt_Frmistatistik_tab_metin;
+@xgtFrmistatistik_tab_yan_sinir_renk  : @xf-xgt_Frmistatistik_tab_yan_sinir_renk;
+//-- Aktif tab buton	
+@xgtFrmistatistik_aktif_tab_ap        : @xf-xgt_Frmistatistik_aktif_tab_ap;
+@xgtFrmistatistik_aktif_tab_metin     : @xf-xgt_Frmistatistik_aktif_tab_metin;
+@xgtFrmistatistik_aktif_tab_sinir_renk: @xf-xgt_Frmistatistik_aktif_tab_sinir_renk;
+//-- Sınır ve satırlar
+@xgtFrmistatistik_sinir_renk          : @xf-xgt_Frmistatistik_sinir_renk;
+@xgtFrmistatistik_icerik_satir1       : @xf-xgt_Frmistatistik_icerik_satir1;
+@xgtFrmistatistik_icerik_satir2       : @xf-xgt_Frmistatistik_icerik_satir2;
+//-- Mini header
+@xgtFrmistatistik_altHeader_ap        : linear-gradient(0deg, @xf-xgt_Frmistatistik_altHeader_ap, mix(xf-intensify(@xf-xgt_Frmistatistik_altHeader_ap, 10%), @xf-xgt_Frmistatistik_altHeader_ap, 50%));
+@xgtFrmistatistik_altHeader_metin     : @xf-xgt_Frmistatistik_altHeader_metin;
+//-- Sıra numaraları
+@xgtFrmistatistik_sira_ap             : @xf-xgt_Frmistatistik_sira_ap;
+@xgtFrmistatistik_sira_metin          : @xf-xgt_Frmistatistik_sira_metin;
+//-- Sayısal veriler
+@xgtFrmistatistik_sayisal_veriler     : @xf-xgt_Frmistatistik_sayisal_veriler;
+//-- Gövde yüksekligi
+@xgtFrmIstatistik-maxYukseklik        : @xf-xgt_Frmistatistik_maxYukseklik;
+//-- Global sutun genislikleri
+@xgtFrmIstatistik-sira       : 25px;
+@xgtFrmIstatistik-avatar     : 33px;
+@xgtFrmIstatistik-konu       : 100%;
+@xgtFrmIstatistik-forum      : 120px;	 
+@xgtFrmIstatistik-cevap      : 70px;
+@xgtFrmIstatistik-goruntuleme: 70px;
+@xgtFrmIstatistik-zaman      : 90px;
+@xgtFrmIstatistik-sonYazan   : 110px;
+//-- Global LESS yapısı
+body .xgtForumIstatistik {counter-reset: steps !important;}
+html .xgtForumIstatistik ._xgtIstatistik--blok{
+	&::-webkit-scrollbar-thumb {
+		background: #858585;
+		border-radius: 4px;
+	}
+	&::-moz-scrollbar-track {
+		background: #858585;
+		border-radius: 4px;
+	}
+}
+html .xgtForumIstatistik ._xgtIstatistik--blok{
+	<xf:if is="property('xgt_Frmistatistik_srollbar') == 'gizle'">
+		scrollbar-width: none;
+		&::-webkit-scrollbar { width: 0px;}
+		&::-moz-scrollbar    { width: 0px;}
+	<xf:elseif is="property('xgt_Frmistatistik_srollbar') == 'goster'" />
+		scrollbar-width: thin;
+		&::-webkit-scrollbar{ width: 1px;}
+		&::-moz-scrollbar   { width: 1px;}
+	</xf:if>
+}
+<xf:if is="property('xgt_Frmistatistik_srollbar') == 'gizlegoster'">
+	html .xgtForumIstatistik ._xgtIstatistik--blok{
+		scrollbar-width: none;
+		&::-webkit-scrollbar{ width: 0px;}
+		&::-moz-scrollbar   { width: 0px;}
+		&:hover{
+			scrollbar-width: thin;
+			&::-webkit-scrollbar{ width: 1px;}
+			&::-moz-scrollbar   { width: 1px;}
+		}
+	}
+</xf:if>	
+.xgtForumIstatistik
+{	
+	margin: 5px 0;
+
+	&-row
+	{
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		flex-wrap: wrap;
+
+		&--sag-s, 
+		&--sol-s
+		{
+			<xf:if is="property('xgt_Frmistatistik_kullanici_veri_konum') == 'solda'">
+				flex: 0 0 20%;
+				max-width: 20%;
+			<xf:else />
+				flex: 0 0 19.7%;
+				max-width: 19.7%;
+				margin-left: 0.3%;
+			</xf:if>
+		}
+		&--l
+		{
+			<xf:if is="property('xgt_Frmistatistik_kullanici_veri_konum') == 'sagda'">
+				flex: 0 0 80%;
+				max-width: 80%;
+		    <xf:else />
+				flex: 0 0 79.7%;
+				max-width: 79.7%;
+				margin-left: 0.3%;
+		    </xf:if>
+		}
+		&--xl
+		{
+			flex: 0 0 100%;
+			max-width: 100%;	
+		}		
+	}
+	._xgtIstatistik--blok
+	{
+		max-height: @xgtFrmIstatistik-maxYukseklik;
+		overflow-y: auto;
+		border-radius: 0px 0px @xf-xgt_Frmistatistik_header_radius @xf-xgt_Frmistatistik_header_radius;
+		
+		.m-transition(all, -xf-height;);
+
+		&.is-active
+		{
+			overflow: hidden;
+			height: 0;
+			opacity: 0;	
+			
+			.m-transition(all, -xf-height;);
+		}
+	}		
+	.collapseTrigger
+	{
+		opacity: 0.5;
+		transition: opacity 0.3s;
+		margin-right: 5px;
+		font-size: 22px;
+		
+		&:before{ content: "\f205";}
+		
+		&.is-active:before
+		{
+			content: "\f205";
+			transform: scale(-1, 1);
+		}
+	}		
+	.xgtForumIstatistik-tabHeader.block-tabHeader
+	{
+		background: @xgtFrmistatistik_tab_ap;
+		color: @xgtFrmistatistik_tab_metin ;
+		border-bottom: none;
+		
+		.tabs-tab
+		{
+			border-right: solid 1px @xgtFrmistatistik_tab_yan_sinir_renk;
+			font-size: @xf-xgt_Frmistatistik_tab_metin_boyut;
+			position: relative;
+			
+			&:not(.is-readonly):hover,
+			&:hover
+			{
+				background: @xgtFrmistatistik_aktif_tab_ap;
+				color: @xgtFrmistatistik_aktif_tab_metin;
+			}
+			
+			&.is-active
+			{
+				background: @xgtFrmistatistik_aktif_tab_ap;
+				color: @xgtFrmistatistik_aktif_tab_metin;
+				border-color: @xgtFrmistatistik_aktif_tab_sinir_renk;
+				border-right: solid 1px @xgtFrmistatistik_tab_yan_sinir_renk;
+				
+				&::after 
+				{
+					border-radius: 20px;
+					content: "\f357";
+					color: @xgtFrmistatistik_aktif_tab_sinir_renk;
+					display: inline-block;
+					line-height: 15px;
+					font-weight: 900;
+					font-family: 'Font Awesome 5 Duotone';
+					bottom: -1px; left: 0; right: 0;
+					margin: auto;
+					position: absolute;
+					overflow: hidden;
+					width: 15px; height: 8px;
+				}
+			}
+			//--- Kullanıcı alan tab ozelliklerini gizle
+			&._userTabs
+			{
+				border-right: none;
+
+				&:hover,
+				&:not(.is-readonly):hover
+				{
+					background: none;
+					color: inherit;
+					cursor: text;
+				}
+			}
+		}
+	}
+	._xgtIstatistik-konuListe
+	{
+		padding: 0;
+		margin: 0;
+		list-style: none;
+	}
+	
+	&-tabHeader
+	{
+		position: relative;
+		border-radius:@xf-xgt_Frmistatistik_header_radius @xf-xgt_Frmistatistik_header_radius 0px 0px;
+		margin-bottom: 0;
+		
+		._collapseButton
+		{
+			position: absolute;
+			right: 0;
+			top: 0;
+		}
+	}
+	._xgtIstatistik-satir
+	{	
+		display: table;
+		font-size: @xf-xgt_Frmistatistik_metin_boyutu;
+		table-layout: fixed;
+		list-style: none;
+		margin: 0;
+		width: 100%;
+		<xf:if is="property('xgt_Frmistatistik_sinir_altSinirlar_etkin')">
+			border-bottom: solid 1px @xgtFrmistatistik_sinir_renk;
+		</xf:if>
+		//-- 2 1. row ap renk
+		&:nth-child(1n)
+		{ 
+			background: @xgtFrmistatistik_icerik_satir1;
+			<xf:if is="!property('xgt_Frmistatistik_sinir_altSinirlar_etkin')">
+				border-bottom: solid 1px @xgtFrmistatistik_icerik_satir1;
+			</xf:if>
+		}
+		
+		//-- 2 2. row ap renk
+		&:nth-child(2n)
+		{ 
+			background: @xgtFrmistatistik_icerik_satir2;
+			<xf:if is="!property('xgt_Frmistatistik_sinir_altSinirlar_etkin')">
+				border-bottom: solid 1px @xgtFrmistatistik_icerik_satir2;
+			</xf:if>
+		}
+		
+		&--hucre
+		{
+			display: table-cell;
+			padding: @xf-xgt_Frmistatistik_icerik_satir_yukseklik 1px;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			vertical-align: top;
+			white-space: nowrap;
+			
+			//-- Tum baglantilar
+			a
+			{
+				color:@xgtFrmistatistik_baglantilar;
+				&:hover{color:@xgtFrmistatistik_baglantilar-h;}
+			}
+		}
+		
+		&--sira
+		{
+			width: @xgtFrmIstatistik-sira;
+			max-width: @xgtFrmIstatistik-sira;
+			text-align: center;
+			
+			&._sayisal
+			{			
+				background: @xgtFrmistatistik_sira_ap;
+				color: @xgtFrmistatistik_sira_metin;
+				
+				&::before
+				{
+					counter-increment: steps;
+					content: "" counter(steps) "";
+				}	
+			}
+		}
+
+		&--avatar
+		{
+			<xf:if is="property('xgt_Frmistatistik_sira_numarasi')">
+				width: @xgtFrmIstatistik-avatar;
+				max-width: @xgtFrmIstatistik-avatar;
+			<xf:else />
+				width: (@xgtFrmIstatistik-avatar)+5px;
+				max-width: (@xgtFrmIstatistik-avatar)+5px;			
+			</xf:if>
+			position: relative;
+			text-align: center;
+			//-- Cevrim ici, Dışı  tasarımı	
+			&-offline,
+			&-online 
+			{
+				border: solid 1px #fff;
+				border-radius: 50px 50px 0px 50px;
+				display: inline-block;
+				width: 11px; height: 11px;
+				position: absolute;
+				content: '';
+				<xf:if is="property('xgt_Frmistatistik_sira_numarasi')">
+					left: 0;
+				<xf:else />
+					left: 2px;
+				</xf:if>
+			}
+
+			&-online  {background: #669933;}			
+			&-offline {background: #e03030;}		
+			
+			.avatar
+			{
+				font-size: @xf-xgt_Frmistatistik_metin_boyutu;
+				
+				&.avatar--s
+				{
+					width: 25px; height: 25px;
+					font-size: @xf-xgt_Frmistatistik_metin_boyutu;
+					margin-top: -2px;
+				}
+			}
+
+			._istatistikHucre_avatar 
+			{
+				font-size: @xf-xgt_Frmistatistik_metin_boyutu;
+				position: absolute;
+				width: 16px;height: 16px;
+				right: 0; bottom: 0;
+			}
+		}
+		
+		&--konu
+		{
+			width: @xgtFrmIstatistik-konu;
+			max-width: @xgtFrmIstatistik-konu;
+			position: relative;
+
+			//-- Okunmamis mesaj metin kalinlik
+			&._yeniIcerik{ font-weight: 700; }
+			
+			//-- Google butonu
+			._googleButon
+			{
+				background: #4285f4;
+				color: #fff;
+				display: inline-block;
+				font-size: (@xf-xgt_Frmistatistik_metin_boyutu)-2px;
+				padding: 0px 3px 1px 3px;
+				border-radius: 5px;
+				margin: 0 0 0 2px;
+			}
+		}
+		
+		&--forum
+		{	
+			<xf:if is="property('xgt_Frmistatistik_kullanici_verisi')">
+				width: @xgtFrmIstatistik-forum;
+				max-width: @xgtFrmIstatistik-forum;
+			<xf:else />
+				width: (@xgtFrmIstatistik-forum)+100px;
+				max-width: (@xgtFrmIstatistik-forum)+100px;
+			</xf:if>
+			
+			//-- Icerik bilgi ikonları
+			._icerikIkonu
+			{
+				color: #979797;
+				display: inline-block;
+				margin-right: 3px;	
+				
+				&--cozuldu {color: @xf-xgt_Frmistatistik_cozumIkon_renk;}
+				&--soru    {color: @xf-xgt_Frmistatistik_soruIkon_renk;}
+				&--konu    {color: @xf-xgt_Frmistatistik_konuIkon_renk;}
+				&--makale  {color: @xf-xgt_Frmistatistik_makaleIkon_renk;}
+				&--anket   {color: @xf-xgt_Frmistatistik_anketIkon_renk;}
+				&--kaynak  {color: @xf-xgt_Frmistatistik_kaynakIkon_renk;}
+			}
+		}
+		
+		&--cevap
+		{
+			width: @xgtFrmIstatistik-cevap;
+			max-width: @xgtFrmIstatistik-cevap;
+		}
+		
+		&--goruntuleme
+		{
+			width: @xgtFrmIstatistik-goruntuleme;
+			max-width: @xgtFrmIstatistik-goruntuleme;
+		}
+		
+		&--zaman
+		{
+			<xf:if is="property('xgt_Frmistatistik_kullanici_verisi')">
+				width: @xgtFrmIstatistik-zaman;
+				max-width: @xgtFrmIstatistik-zaman;	
+			<xf:else />
+				width: (@xgtFrmIstatistik-zaman)+20px;
+				max-width: (@xgtFrmIstatistik-zaman)+20px;
+			</xf:if>
+		}
+		
+		&--sonYazan
+		{	
+			padding-left: 5px;	
+			<xf:if is="property('xgt_Frmistatistik_kullanici_verisi')">
+				width: @xgtFrmIstatistik-sonYazan;
+				max-width: @xgtFrmIstatistik-sonYazan;			
+			<xf:else />
+				width: (@xgtFrmIstatistik-sonYazan)+20px;
+				max-width: (@xgtFrmIstatistik-sonYazan)+20px;
+			</xf:if>
+		}
+		&--derece
+		{
+			width: @xgtFrmIstatistik-cevap + @xgtFrmIstatistik-goruntuleme;
+			max-width: @xgtFrmIstatistik-cevap + @xgtFrmIstatistik-goruntuleme;
+		}
+		&--sira, &--cevap, &--goruntuleme
+		{
+			color:@xgtFrmistatistik_sayisal_veriler;
+			cursor: help;
+		}
+		&--cevap, &--goruntuleme, &--zaman, &--derece {text-align: center;}
+		&--forum, &--cevap, &--goruntuleme, &--zaman, &--sonYazan, &--derece
+		{
+			padding-left: 4px;
+			padding-right: 2px;
+			<xf:if is="property('xgt_Frmistatistik_sinir_yanSinirlar_etkin')">
+				border-left:solid 1px @xgtFrmistatistik_sinir_renk;
+			</xf:if>
+			<xf:if is="property('xgt_Frmistatistik_altHeader_metinAlani') == 'ikon'">
+				text-align: center;	
+			</xf:if>
+		}
+		
+		//-- Mini header
+		&._xgtIstatistik_miniHeader 
+		{
+			background: @xgtFrmistatistik_altHeader_ap;
+			color: @xgtFrmistatistik_altHeader_metin;
+			border-bottom:none;
+
+			i{ margin-right: 5px; }
+
+			._xgtIstatistik-satir
+			{
+				&--sira, &--forum, &--cevap, &--goruntuleme, &--zaman, &--sonYazan, &--derece
+				{
+					color: @xgtFrmistatistik_altHeader_metin;
+					border-left: none;
+					text-align: center;
+				}
+				&--konu { padding-left:5px; }
+			}
+		}	
+	}
+	//---- Istatistik yukleniyor ikon
+	._istatistikYukleniyor
+	{
+		font-size: 100px;
+		text-align: center;
+		color: @xgtFrmistatistik_aktif_tab_sinir_renk;
+		height: 100%; width: 100%;
+		display: inline-block;
+		margin-top:100px;
+	}
+	//-- Çözünürlük sınırları
+	@media (max-width: @xf-responsiveWide){
+		.xgtForumIstatistik-row--sol-s, 
+		.xgtForumIstatistik-row--sag-s {display:none;}
+		.xgtForumIstatistik-row--l{
+			flex: 100%;
+			max-width: 100%;
+		}
+	}
+	@media (max-width: 800px){
+		._xgtIstatistik-satir--zaman, 
+		.collapseTrigger,
+		._xgtIstatistik-satir--sira {display:none;}		
+	}
+	@media (max-width: 700px){
+		._xgtIstatistik-satir--cevap,
+		._xgtIstatistik-satir--goruntuleme {display:none;}		
+	}
+	@media (max-width: 600px){
+		._xgtIstatistik-satir--sonYazan {display:none;}		
+	}
+	@media (max-width: 500px){
+		._xgtIstatistik-satir--sabitKonu,
+		._xgtIstatistik-satir--forum {display:none;}		
+	}
+	.hScroller-action.hScroller-action--end { z-index: 9; }
+}]]></template>
+  <template type="public" title="xgt_FrmIstatistik_enCok_cevap" version_id="4000008" version_string="4.0.0"><![CDATA[<xf:macro template="xgt_FrmIstatistik_miniHeader_macros" name="genelSeklemler" arg-genel="!"/>
+<xf:if is="$threads is not empty">
+	<ul class="_xgtIstatistik-konuListe">
+		<xf:foreach loop="$threads" value="$thread">
+			<li class="_xgtIstatistik-satir">
+				<xf:if is="property('xgt_Frmistatistik_sira_numarasi')">
+					<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--sira _sayisal"></div>
+				</xf:if>
+				<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--avatar">
+					<xf:if is="property('xgt_Frmistatistik_online_durumu')">	
+						<xf:if is="$thread.User && $thread.User.isOnline()">
+							<span class="_xgtIstatistik-satir--avatar-online" tabindex="0" data-xf-init="tooltip" data-trigger="auto" title="{{ phrase('xgt_forumistatik_kullanici_cevrim_ici') }}"></span>
+						<xf:else />
+							<span class="_xgtIstatistik-satir--avatar-offlline" tabindex="0" data-xf-init="tooltip" data-trigger="auto" title="{{ phrase('xgt_forumistatik_kullanici_cevrim_disi') }}"></span>
+						</xf:if>	
+					</xf:if>				
+					<xf:avatar user="$thread.User" size="s" defaultname="{$thread.username}" />
+					<xf:if is="$thread.getUserPostCount()">
+						<xf:avatar user="$xf.visitor" size="xxs" href="" 
+								   class="avatar--separated _istatistikHucre_avatar" tabindex="0" 
+								   data-xf-init="tooltip" 
+								   data-trigger="auto"
+								   title="{{ phrase('you_have_posted_x_messages_in_this_thread', {'count': $thread.getUserPostCount() }) }}" />
+					</xf:if>	
+				</div>
+				<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--konu structItem--thread{{ $thread.prefix_id ? ' is-prefix' . $thread.prefix_id : '' }} {{ $thread.isIgnored() ? ' is-ignored' : '' }} {{ ($thread.isUnread() AND !$forceRead) ? ' _yeniIcerik' : '' }} {{ $thread.discussion_state == 'moderated' ? ' is-moderated' : '' }} {{ $thread.discussion_state == 'deleted' ? ' is-deleted' : '' }} js-inlineModContainer js-threadListItem-{$thread.thread_id}" 
+				 	data-author="{{ $thread.User.username ?: $thread.username }}">
+					<xf:if is="property('xgt_Frmistatistik_google_buton')">
+						<a href="http://www.google.com/search?hl=tr&amp;q={$thread.title}" title="{$thread.title}" target="_blank">
+							<div class="_googleButon">
+								<i class="fab fa-google" title="{{ phrase('xgt_forumistatik_google_arama_yap') }}"></i>
+							</div>
+						</a>
+					</xf:if>
+					<xf:set var="$canPreview" value="{{ $thread.canPreview() }}" />
+					<xf:if is="$thread.prefix_id">
+						<xf:if is="$forum">
+							<a href="{{ link('forums', $forum, {'prefix_id': $thread.prefix_id}) }}" class="labelLink" rel="nofollow">{{ prefix('thread', $thread, 'html', '') }}</a>
+						<xf:else />
+							{{ prefix('thread', $thread, 'html', '') }}
+						</xf:if>
+					</xf:if>
+					<a href="{{ link('threads' . (($thread.isUnread() AND !$forceRead) ? '/unread' : ''), $thread) }}" class="" data-tp-primary="on" data-xf-init="{{ $canPreview ? 'preview-tooltip' : '' }}" data-preview-url="{{ $canPreview ? link('threads/preview', $thread) : '' }}">{$thread.title}</a>	
+				</div>
+				<xf:if is="property('xgt_Frmistatistik_icerik_forumu')">
+					<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--forum" data-xf-init="tooltip" title="{{ phrase('xgt_forumistatik_forumu') }}">		
+						<xf:if is="property('xgt_Frmistatistik_icerikBilgi_ikonlari')">
+							<xf:include template="xgt_FrmIstatistik_icerikIkonlari" />
+						</xf:if>
+						<a href="{{ link('forums', $thread.Forum) }}" title="{$thread.Forum.title}">{$thread.Forum.title}</a>
+					</div>
+				</xf:if>
+				<xf:if is="property('xgt_Frmistatistik_mesaj_sayisi')">
+					<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--cevap" data-xf-init="tooltip" title="{{ phrase('xgt_forumistatik_cevaplari') }}">
+						{{ $thread.discussion_type == 'redirect' ? '&ndash;' : $thread.reply_count|number }}
+					</div>	
+					<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--goruntuleme" data-xf-init="tooltip" title="{{ phrase('xgt_forumistatik_goruntuleme') }}">
+						{{ $thread.discussion_type == 'redirect' ? '&ndash;' : ($thread.view_count > $thread.reply_count ? $thread.view_count|number_short(1) : number($thread.reply_count|number_short(1))) }}
+					</div>	
+				</xf:if>
+				<xf:if is="property('xgt_Frmistatistik_zaman_bilgisi')">
+					<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--zaman">
+						<xf:if is="$thread.discussion_type == 'redirect'">
+							{{ phrase('n_a') }}
+						<xf:else />
+							<a href="{{ link('threads/latest', $thread) }}" rel="nofollow"><xf:date time="{$thread.last_post_date}" class="structItem-latestDate" /></a>
+						</xf:if>
+					</div>	
+				</xf:if>
+				<xf:if is="property('xgt_Frmistatistik_son_yazan')">
+					<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--sonYazan">
+						<xf:if is="$thread.discussion_type == 'redirect'">
+							<xf:if is="property('xgt_Frmistatistik_sonMesaj_avatar')">	
+								<xf:avatar user="{{ null }}" size="xs" />
+							</xf:if>
+							{{ phrase('n_a') }}
+						<xf:else />
+							<xf:if is="$xf.visitor.isIgnoring($thread.last_post_user_id)">
+								{{ phrase('ignored_member') }}
+							<xf:else />
+								<xf:if is="property('xgt_Frmistatistik_sonMesaj_avatar')">	
+									<xf:avatar user="{$thread.User}" defaultname="{$thread.User}" size="xxs" />
+								</xf:if>								
+								<xf:username user="$thread.User" defaultname="{$thread.username}" />
+							</xf:if>
+						</xf:if>
+					</div>
+				</xf:if>
+			</li>
+		</xf:foreach>
+	</ul>
+<xf:else />
+	 <div class="block-row">
+		  {{ phrase('no_results_found') }}
+	 </div>
+</xf:if>]]></template>
+  <template type="public" title="xgt_FrmIstatistik_enCok_goruntuleme" version_id="4000008" version_string="4.0.0"><![CDATA[<xf:macro template="xgt_FrmIstatistik_miniHeader_macros" name="goruntuleme" arg-goruntuleme="!"/>
+<xf:if is="$threads is not empty">
+	<ul class="_xgtIstatistik-konuListe">
+		<xf:foreach loop="$threads" value="$thread">
+			<li class="_xgtIstatistik-satir">
+				<xf:if is="property('xgt_Frmistatistik_sira_numarasi')">
+					<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--sira _sayisal"></div>
+				</xf:if>
+				<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--avatar">
+					<xf:if is="property('xgt_Frmistatistik_online_durumu')">	
+						<xf:if is="$thread.User && $thread.User.isOnline()">
+							<span class="_xgtIstatistik-satir--avatar-online" tabindex="0" data-xf-init="tooltip" data-trigger="auto" title="{{ phrase('xgt_forumistatik_kullanici_cevrim_ici') }}"></span>
+						<xf:else />
+							<span class="_xgtIstatistik-satir--avatar-offlline" tabindex="0" data-xf-init="tooltip" data-trigger="auto" title="{{ phrase('xgt_forumistatik_kullanici_cevrim_disi') }}"></span>
+						</xf:if>	
+					</xf:if>				
+					<xf:avatar user="$thread.User" size="s" defaultname="{$thread.username}" />
+					<xf:if is="$thread.getUserPostCount()">
+						<xf:avatar user="$xf.visitor" size="xxs" href="" 
+								   class="avatar--separated _istatistikHucre_avatar" tabindex="0" 
+								   data-xf-init="tooltip" 
+								   data-trigger="auto"
+								   title="{{ phrase('you_have_posted_x_messages_in_this_thread', {'count': $thread.getUserPostCount() }) }}" />
+					</xf:if>
+				</div>
+				<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--konu structItem--thread{{ $thread.prefix_id ? ' is-prefix' . $thread.prefix_id : '' }} {{ $thread.isIgnored() ? ' is-ignored' : '' }} {{ ($thread.isUnread() AND !$forceRead) ? ' _yeniIcerik' : '' }} {{ $thread.discussion_state == 'moderated' ? ' is-moderated' : '' }} {{ $thread.discussion_state == 'deleted' ? ' is-deleted' : '' }} js-inlineModContainer js-threadListItem-{$thread.thread_id}" 
+				 	data-author="{{ $thread.User.username ?: $thread.username }}">
+					<xf:if is="property('xgt_Frmistatistik_google_buton')">
+						<a href="http://www.google.com/search?hl=tr&amp;q={$thread.title}" title="{$thread.title}" target="_blank">
+							<div class="_googleButon">
+								<i class="fab fa-google" title="{{ phrase('xgt_forumistatik_google_arama_yap') }}"></i>
+							</div>
+						</a>
+					</xf:if>				
+					<xf:set var="$canPreview" value="{{ $thread.canPreview() }}" />
+					<xf:if is="$thread.prefix_id">
+						<xf:if is="$forum">
+							<a href="{{ link('forums', $forum, {'prefix_id': $thread.prefix_id}) }}" class="labelLink" rel="nofollow">{{ prefix('thread', $thread, 'html', '') }}</a>
+						<xf:else />
+							{{ prefix('thread', $thread, 'html', '') }}
+						</xf:if>
+					</xf:if>
+					<a href="{{ link('threads' . (($thread.isUnread() AND !$forceRead) ? '/unread' : ''), $thread) }}" class="" data-tp-primary="on" data-xf-init="{{ $canPreview ? 'preview-tooltip' : '' }}" data-preview-url="{{ $canPreview ? link('threads/preview', $thread) : '' }}">{$thread.title}</a>			
+				</div>
+				<xf:if is="property('xgt_Frmistatistik_icerik_forumu')">			
+					<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--forum" data-xf-init="tooltip" title="{{ phrase('xgt_forumistatik_forumu') }}">		
+						<xf:if is="property('xgt_Frmistatistik_icerikBilgi_ikonlari')">
+							<xf:include template="xgt_FrmIstatistik_icerikIkonlari" />
+						</xf:if>
+						<a href="{{ link('forums', $thread.Forum) }}" title="{$thread.Forum.title}">{$thread.Forum.title}</a>
+					</div>
+				</xf:if>
+				<xf:if is="property('xgt_Frmistatistik_mesaj_sayisi')">
+					<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--cevap" data-xf-init="tooltip" title="{{ phrase('xgt_forumistatik_cevaplari') }}">
+						{{ $thread.discussion_type == 'redirect' ? '&ndash;' : $thread.reply_count|number }}
+					</div>	
+					<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--goruntuleme" data-xf-init="tooltip" title="{{ phrase('xgt_forumistatik_goruntuleme') }}">
+						{{ $thread.discussion_type == 'redirect' ? '&ndash;' : ($thread.view_count > $thread.reply_count ? $thread.view_count|number_short(1) : number($thread.reply_count|number_short(1))) }}
+					</div>
+				</xf:if>	
+				<xf:if is="property('xgt_Frmistatistik_zaman_bilgisi')">
+					<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--zaman">
+						<xf:if is="$thread.discussion_type == 'redirect'">
+							{{ phrase('n_a') }}
+						<xf:else />
+							<a href="{{ link('threads/latest', $thread) }}" rel="nofollow"><xf:date time="{$thread.last_post_date}" class="structItem-latestDate" /></a>
+						</xf:if>
+					</div>	
+				</xf:if>
+				<xf:if is="property('xgt_Frmistatistik_son_yazan')">
+					<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--sonYazan">
+						<xf:if is="$thread.discussion_type == 'redirect'">
+							<xf:if is="property('xgt_Frmistatistik_sonMesaj_avatar')">	
+								<xf:avatar user="{{ null }}" size="xs" />
+							</xf:if>
+							{{ phrase('n_a') }}
+						<xf:else />
+							<xf:if is="$xf.visitor.isIgnoring($thread.last_post_user_id)">
+								{{ phrase('ignored_member') }}
+							<xf:else />
+								<xf:if is="property('xgt_Frmistatistik_sonMesaj_avatar')">	
+									<xf:avatar user="{$thread.User}" defaultname="{$thread.User}" size="xxs" />
+								</xf:if>								
+								<xf:username user="$thread.User" defaultname="{$thread.username}" />
+							</xf:if>
+						</xf:if>
+					</div>
+				</xf:if>
+			</li>
+		</xf:foreach>
+	</ul>
+<xf:else />
+	 <div class="block-row">
+		  {{ phrase('no_results_found') }}
+	 </div>
+</xf:if>]]></template>
+  <template type="public" title="xgt_FrmIstatistik_enCok_mesajKullanici" version_id="4000005" version_string="4.0.0 Alpha 5"><![CDATA[<ul class="_xgtIstatistik-konuListe">
+	<xf:foreach loop="$results" key="$userId" value="$data">
+		<li class="_xgtIstatistik-satir">				
+			<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--avatar">
+				<xf:avatar user="$data.user" size="xxs" />
+			</div>
+			<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--konu">
+				<xf:username user="$data.user" rich="true" />
+			</div>
+			<xf:if is="$data.value">
+				<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--cevap" data-xf-init="tooltip" title="{{ phrase('xgt_forumistatik_mesaj_sayisi') }}">
+					{$data.value}
+				</div>
+			</xf:if>
+		</li>  
+	</xf:foreach>
+</ul>]]></template>
+  <template type="public" title="xgt_FrmIstatistik_enCok_tepki" version_id="4000008" version_string="4.0.0"><![CDATA[<xf:macro template="xgt_FrmIstatistik_miniHeader_macros" name="encoktepki" arg-encoktepki="!" />
+ <xf:if is="$threads is not empty">
+	<ul class="_xgtIstatistik-konuListe">
+		<xf:foreach loop="$threads" value="$thread">
+			<li class="_xgtIstatistik-satir">
+				<xf:if is="property('xgt_Frmistatistik_sira_numarasi')">
+					<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--sira _sayisal"></div>
+				</xf:if>
+				<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--avatar">
+					<xf:if is="property('xgt_Frmistatistik_online_durumu')">	
+						<xf:if is="$thread.User && $thread.User.isOnline()">
+							<span class="_xgtIstatistik-satir--avatar-online" tabindex="0" data-xf-init="tooltip" data-trigger="auto" title="{{ phrase('xgt_forumistatik_kullanici_cevrim_ici') }}"></span>
+						<xf:else />
+							<span class="_xgtIstatistik-satir--avatar-offlline" tabindex="0" data-xf-init="tooltip" data-trigger="auto" title="{{ phrase('xgt_forumistatik_kullanici_cevrim_disi') }}"></span>
+						</xf:if>	
+					</xf:if>				
+					<xf:avatar user="$thread.User" size="s" defaultname="{$thread.username}" />
+					<xf:if is="$thread.getUserPostCount()">
+						<xf:avatar user="$xf.visitor" size="xxs" href="" 
+								   class="avatar--separated _istatistikHucre_avatar" 
+								   tabindex="0" data-xf-init="tooltip" data-trigger="auto" 
+								   title="{{ phrase('you_have_posted_x_messages_in_this_thread', {'count': $thread.getUserPostCount() }) }}" />
+					</xf:if>
+				</div>
+				<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--konu structItem--thread{{ $thread.prefix_id ? ' is-prefix' . $thread.prefix_id : '' }} {{ $thread.isIgnored() ? ' is-ignored' : '' }} {{ ($thread.isUnread() AND !$forceRead) ? ' _yeniIcerik' : '' }} {{ $thread.discussion_state == 'moderated' ? ' is-moderated' : '' }} {{ $thread.discussion_state == 'deleted' ? ' is-deleted' : '' }} js-inlineModContainer js-threadListItem-{$thread.thread_id}" 
+				 	data-author="{{ $thread.User.username ?: $thread.username }}">
+					<xf:if is="property('xgt_Frmistatistik_google_buton')">
+						<a href="http://www.google.com/search?hl=tr&amp;q={$thread.title}" title="{$thread.title}" target="_blank">
+							<div class="_googleButon">
+								<i class="fab fa-google" title="{{ phrase('xgt_forumistatik_google_arama_yap') }}"></i>
+							</div>
+						</a>
+					</xf:if>
+					<xf:set var="$canPreview" value="{{ $thread.canPreview() }}" />
+					<xf:if is="$thread.prefix_id">
+						<xf:if is="$forum">
+							<a href="{{ link('forums', $forum, {'prefix_id': $thread.prefix_id}) }}" class="labelLink" rel="nofollow">{{ prefix('thread', $thread, 'html', '') }}</a>
+						<xf:else />
+							{{ prefix('thread', $thread, 'html', '') }}
+						</xf:if>
+					</xf:if>
+					<a href="{{ link('threads' . (($thread.isUnread() AND !$forceRead) ? '/unread' : ''), $thread) }}" class="" data-tp-primary="on" data-xf-init="{{ $canPreview ? 'preview-tooltip' : '' }}" data-preview-url="{{ $canPreview ? link('threads/preview', $thread) : '' }}">{$thread.title}</a>		
+				</div>				
+				<xf:if is="property('xgt_Frmistatistik_icerik_forumu')">
+					<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--forum" data-xf-init="tooltip" title="{{ phrase('xgt_forumistatik_forumu') }}">		
+						<xf:if is="property('xgt_Frmistatistik_icerikBilgi_ikonlari')">
+							<xf:include template="xgt_FrmIstatistik_icerikIkonlari" />
+						</xf:if>
+						<a href="{{ link('forums', $thread.Forum) }}" title="{$thread.Forum.title}">{$thread.Forum.title}</a>
+					</div>
+				</xf:if>
+				<xf:if is="property('xgt_Frmistatistik_mesaj_sayisi')">
+					<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--cevap" data-xf-init="tooltip" title="{{ phrase('xgt_forumistatik_cevaplari') }}">
+						{{ $thread.discussion_type == 'redirect' ? '&ndash;' : $thread.reply_count|number }}
+					</div>	
+					<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--goruntuleme" data-xf-init="tooltip" title="{{ phrase('xgt_forumistatik_tepkiskoru') }}">
+						<div class="TepkiVurgusu">
+							{$thread.first_post_reaction_score|number}
+						</div>
+					</div>	
+				</xf:if>
+				<xf:if is="property('xgt_Frmistatistik_zaman_bilgisi')">
+					<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--zaman">
+						<xf:if is="$thread.discussion_type == 'redirect'">
+							{{ phrase('n_a') }}
+						<xf:else />
+							<a href="{{ link('threads/latest', $thread) }}" rel="nofollow"><xf:date time="{$thread.last_post_date}" class="structItem-latestDate" /></a>
+						</xf:if>
+					</div>	
+				</xf:if>
+				<xf:if is="property('xgt_Frmistatistik_son_yazan')">	
+					<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--sonYazan">
+						<xf:if is="$thread.discussion_type == 'redirect'">
+							<xf:if is="property('xgt_Frmistatistik_sonMesaj_avatar')">	
+								<xf:avatar user="{{ null }}" size="xs" />
+							</xf:if>							
+							{{ phrase('n_a') }}
+						<xf:else />
+							<xf:if is="$xf.visitor.isIgnoring($thread.last_post_user_id)">
+								{{ phrase('ignored_member') }}
+							<xf:else />
+								<xf:if is="property('xgt_Frmistatistik_sonMesaj_avatar')">	
+									<xf:avatar user="{$thread.User}" defaultname="{$thread.User}" size="xxs" />
+								</xf:if>								
+								<xf:username user="$thread.User" defaultname="{$thread.username}" />
+							</xf:if>
+						</xf:if>
+					</div>
+				</xf:if>
+			</li>
+		</xf:foreach>
+	</ul>
+<xf:else />
+	 <div class="block-row">
+		  {{ phrase('no_results_found') }}
+	 </div>
+</xf:if>]]></template>
+  <template type="public" title="xgt_FrmIstatistik_icerikIkonlari" version_id="4000001" version_string="4.0.0 Alpha 1"><![CDATA[<xf:if contentcheck="true">
+	<div class="_icerikIkonu">
+		<xf:contentcheck>
+			<xf:extension name="statuses">
+				<xf:if is="property('reactionSummaryOnLists') == 'status' && $thread.first_post_reactions">
+					<xf:reactions summary="true" reactions="{$thread.first_post_reactions}" />
+				</xf:if>
+				<xf:if is="$thread.discussion_type == 'redirect'">
+				<xf:elseif is="$thread.discussion_type == 'question' && $thread.type_data.solution_post_id" />
+					<xf:extension name="thread_type_question_solved">
+						<i class="fal fa-check-circle _icerikIkonu--cozuldu" aria-hidden="true" title="{{ phrase('solved')|for_attr }}" data-xf-init="tooltip" title="{{ phrase('solved')|for_attr }}"></i>
+						<span class="u-srOnly">{{ phrase('solved') }}</span>
+					</xf:extension>
+				<xf:elseif is="!$forum || $forum.forum_type_id == 'discussion'" />
+					<xf:if is="$thread.discussion_type == 'poll'">
+						<xf:extension name="thread_type_poll">													
+							<i class="fal fa-chart-bar _icerikIkonu--anket" aria-hidden="true" title="{{ phrase('thread_type.poll')|for_attr }}" data-xf-init="tooltip" title="{{ phrase('thread_type.poll')|for_attr }}"></i>
+							<span class="u-srOnly">{{ phrase('thread_type.poll') }}</span>
+						</xf:extension>
+					<xf:elseif is="$thread.discussion_type == 'article'" />
+						<xf:extension name="thread_type_article">
+							<i class="fal fa-file-alt _icerikIkonu--makale" aria-hidden="true" title="{{ phrase('thread_type.article')|for_attr }}" data-xf-init="tooltip" title="{{ phrase('thread_type.article')|for_attr }}"></i>
+							<span class="u-srOnly">{{ phrase('thread_type.article') }}</span>
+						</xf:extension>
+					<xf:elseif is="$thread.discussion_type == 'question'" />
+						<xf:extension name="thread_type_question">
+							<i class="fal fa-question-circle _icerikIkonu--soru" aria-hidden="true" title="{{ phrase('thread_type.question')|for_attr }}" data-xf-init="tooltip" title="{{ phrase('thread_type.question')|for_attr }}"></i>
+							<span class="u-srOnly">{{ phrase('thread_type.question') }}</span>
+						</xf:extension>
+					<xf:elseif is="$thread.discussion_type == 'suggestion'" />
+						<xf:extension name="thread_type_suggestion">
+							<i class="fal fa-bullseye-arrow _icerikIkonu--cozuldu" aria-hidden="true" title="{{ phrase('thread_type.suggestion')|for_attr }}" data-xf-init="tooltip" title="{{ phrase('thread_type.suggestion')|for_attr }}"></i>
+							<span class="u-srOnly">{{ phrase('thread_type.suggestion') }}</span>
+						</xf:extension>
+					<xf:elseif is="$thread.discussion_type == 'resource'" />
+						<xf:extension name="thread_type_resource">													
+							<i class="fal fa-cog _icerikIkonu--kaynak" aria-hidden="true" title="{{ phrase('thread_type.resource')|for_attr }}" data-xf-init="tooltip" title="{{ phrase('thread_type.resource')|for_attr }}"></i>
+							<span class="u-srOnly">{{ phrase('thread_type.resource') }}</span>
+						</xf:extension>
+					<xf:else />
+						<xf:extension name="thread_type_discussion">
+							<i class="fal fa-comments _icerikIkonu--konu" aria-hidden="true" title="{{ phrase('thread_type.discussion')|for_attr }}" data-xf-init="tooltip" title="{{ phrase('thread_type.discussion')|for_attr }}"></i>
+							<span class="u-srOnly">{{ phrase('thread_type.discussion') }}</span>
+						</xf:extension>
+					</xf:if>
+				</xf:if>
+			</xf:extension>
+		</xf:contentcheck>
+	</div>
+</xf:if>]]></template>
+  <template type="public" title="xgt_FrmIstatistik_icerikSonuc" version_id="3020000" version_string="3.2.0"><![CDATA[{$forumIstatistik.render()|raw}]]></template>
+  <template type="public" title="xgt_FrmIstatistik_konumlar_macros" version_id="4000400" version_string="4.0.4"><![CDATA[<xf:macro name="xgt_istatistik_konum" arg-template="!" arg-position="!" arg-location="!">
+	<xf:set var="$templateName" value="{$template}" />
+	<xf:set var="$position" value="{$position}" />
+	<xf:set var="$location" value="{$location}" /> 
+	<xf:if is="property('xgt_Forumistatik_konumlari') == 'kendikonumum' AND {$location} == 'kendikonumum'">
+		<!-- Kendi konumum tum sayfalarda -->
+		<xf:if is="$xf.options.xgtForumistatik_konumu_tumsayfalarda">
+			<xf:macro name="xgtForumIstatistikleri" arg-template="{$templateName}" arg-position="{$position}" arg-location="{$location}" />
+		<xf:elseif is="$xf.reply.template == 'forum_list'" />
+			<xf:macro name="xgtForumIstatistikleri" arg-template="{$templateName}" arg-position="{$position}" arg-location="{$location}" />
+		</xf:if>
+	</xf:if>	
+	<xf:if is="property('xgt_Forumistatik_konumlari') == 'iceriklerustu' AND {$location} == 'iceriklerustu'">
+		<!-- İceriklerin üzerinde -->
+		<xf:if is="$xf.options.xgtForumistatik_konumu_tumsayfalarda">
+			<xf:macro name="xgtForumIstatistikleri" arg-template="{$templateName}" arg-position="{$position}" arg-location="{$location}" />
+		<xf:elseif is="$xf.reply.template == 'forum_list'" />
+			<xf:macro name="xgtForumIstatistikleri" arg-template="{$templateName}" arg-position="{$position}" arg-location="{$location}" />
+		</xf:if>	
+	</xf:if> 
+	<xf:if is="property('xgt_Forumistatik_konumlari') == 'forumlarustu' AND {$location} == 'forumlarustu'">
+		<!-- Forumlar üstü -->
+		<xf:macro name="xgtForumIstatistikleri" arg-template="{$templateName}" arg-position="{$position}" arg-location="{$location}" />
+	</xf:if> 
+	<xf:if is="property('xgt_Forumistatik_konumlari') == 'forumlaralti' AND {$location} == 'forumlaralti'">
+		<!-- Forumlar altı -->
+		<xf:macro name="xgtForumIstatistikleri" arg-template="{$templateName}" arg-position="{$position}" arg-location="{$location}" />
+	</xf:if>
+	<xf:if is="property('xgt_Forumistatik_konumlari') == 'breadcrumbsustu' AND {$location} == 'breadcrumbsustu' AND $template == 'forum_list'">
+		<!-- Breadcrumbsustu üstü -->
+		<xf:macro name="xgtForumIstatistikleri" arg-template="{$templateName}" arg-position="{$position}" arg-location="{$location}" />
+	</xf:if> 
+	<xf:if is="property('xgt_Forumistatik_konumlari') == 'breadcrumbsalt' AND {$location} == 'breadcrumbsalt' AND $template == 'forum_list'">
+		<!-- Breadcrumbsustu altı -->
+		<xf:macro name="xgtForumIstatistikleri" arg-template="{$templateName}" arg-position="{$position}" arg-location="{$location}" />
+	</xf:if> 
+	<xf:macro name="xgtForumIstatistikleri" arg-template="!" arg-position="!" arg-location="!">	
+		{{ $xf.xengentrForumIstatistikleriForumIstatistikRepo ? $xf.xengentrForumIstatistikleriForumIstatistikRepo.renderForumIstatistikleri()|raw : null }}
+	</xf:macro>	
+</xf:macro>]]></template>
+  <template type="public" title="xgt_FrmIstatistik_miniHeader_macros" version_id="4000008" version_string="4.0.0"><![CDATA[<xf:macro name="genelSeklemler" arg-genel="!">
+	<xf:if is="property('xgt_Frmistatistik_altHeader_metinAlani') == 'metin' OR property('xgt_Frmistatistik_altHeader_metinAlani') == 'metinikon'">
+		<xf:set var="$konu-metin">{{ phrase('xgt_forumistatik_konu') }}</xf:set>
+		<xf:set var="$forum-metin">{{ phrase('xgt_forumistatik_forumu') }}</xf:set>
+		<xf:set var="$cevap-metin">{{ phrase('xgt_forumistatik_cevaplari') }}</xf:set>
+		<xf:set var="$goruntuleme-metin">{{ phrase('xgt_forumistatik_goruntuleme') }}</xf:set>
+		<xf:set var="$zaman-metin">{{ phrase('xgt_forumistatik_zamani') }}</xf:set>
+		<xf:set var="$sonyazan-metin">{{ phrase('xgt_forumistatik_yazar') }}</xf:set>
+	</xf:if>
+	<xf:if is="property('xgt_Frmistatistik_altHeader_metinAlani') == 'ikon' OR property('xgt_Frmistatistik_altHeader_metinAlani') == 'metinikon'">
+		<xf:set var="$konu-ikon"><i class="fal fa-comments"></i></xf:set>
+		<xf:set var="$forum-ikon"><i class="fal fa-list-alt"></i></xf:set>
+		<xf:set var="$cevap-ikon"><i class="fal fa-comment-dots"></i></xf:set>
+		<xf:set var="$goruntuleme-ikon"><i class="fal fa-eye"></i></xf:set>
+		<xf:set var="$zaman-ikon"><i class="fal fa-clock"></i></xf:set>
+		<xf:set var="$sonyazan-ikon"><i class="fal fa-reply"></i></xf:set>	
+	</xf:if>
+	<div class="_xgtIstatistik-satir _xgtIstatistik_miniHeader">
+		<xf:if is="property('xgt_Frmistatistik_sira_numarasi')">
+			<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--sira"><i class="fal fa-sort-numeric-down"></i></div>
+		</xf:if>
+		<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--avatar"></div>
+		<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--konu">
+			{$konu-ikon|raw}{$konu-metin|raw}
+		</div>
+		<xf:if is="property('xgt_Frmistatistik_icerik_forumu')">
+			<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--forum">
+				{$forum-ikon|raw}{$forum-metin|raw}
+			</div>
+		</xf:if>
+		<xf:if is="property('xgt_Frmistatistik_mesaj_sayisi')">
+			<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--cevap">
+				{$cevap-ikon|raw}{$cevap-metin|raw}
+			</div>
+			<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--goruntuleme">
+				{$goruntuleme-ikon|raw}{$goruntuleme-metin|raw}
+			</div>
+		</xf:if>
+		<xf:if is="property('xgt_Frmistatistik_zaman_bilgisi')">
+			<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--zaman">
+				{$zaman-ikon|raw}{$zaman-metin|raw}
+			</div>	
+		</xf:if>
+		<xf:if is="property('xgt_Frmistatistik_son_yazan')">
+			<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--sonYazan">
+				{$sonyazan-ikon|raw}{$sonyazan-metin|raw}
+			</div>
+		</xf:if>		  
+	</div>
+</xf:macro>
+<xf:macro name="encoktepki" arg-encoktepki="!">
+	<xf:if is="property('xgt_Frmistatistik_altHeader_metinAlani') == 'metin' OR property('xgt_Frmistatistik_altHeader_metinAlani') == 'metinikon'">
+		<xf:set var="$konu-metin">{{ phrase('xgt_forumistatik_konu') }}</xf:set>
+		<xf:set var="$forum-metin">{{ phrase('xgt_forumistatik_forumu') }}</xf:set>
+		<xf:set var="$cevap-metin">{{ phrase('xgt_forumistatik_begeni_sayisi') }}</xf:set>
+		<xf:set var="$goruntuleme-metin">{{ phrase('xgt_forumistatik_goruntuleme') }}</xf:set>
+		<xf:set var="$zaman-metin">{{ phrase('xgt_forumistatik_zamani') }}</xf:set>
+		<xf:set var="$sonyazan-metin">{{ phrase('xgt_forumistatik_konusahibi') }}</xf:set>
+	</xf:if>
+	<xf:if is="property('xgt_Frmistatistik_altHeader_metinAlani') == 'ikon' OR property('xgt_Frmistatistik_altHeader_metinAlani') == 'metinikon'">
+		<xf:set var="$konu-ikon"><i class="fal fa-comments"></i></xf:set>
+		<xf:set var="$forum-ikon"><i class="fal fa-list-alt"></i></xf:set>
+		<xf:set var="$cevap-ikon"><i class="fal fa-thumbs-up"></i></xf:set>
+		<xf:set var="$goruntuleme-ikon"><i class="fal fa-eye"></i></xf:set>
+		<xf:set var="$zaman-ikon"><i class="fal fa-clock"></i></xf:set>
+		<xf:set var="$sonyazan-ikon"><i class="fal fa-user-crown"></i></xf:set>	
+	</xf:if>		
+	<div class="_xgtIstatistik-satir _xgtIstatistik_miniHeader">
+		<xf:if is="property('xgt_Frmistatistik_sira_numarasi')">
+			<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--sira"><i class="fal fa-sort-numeric-down"></i></div>
+		</xf:if>
+		<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--avatar"></div>
+		<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--konu">
+			{$konu-ikon|raw}{$konu-metin|raw}
+		</div>
+		<xf:if is="property('xgt_Frmistatistik_icerik_forumu')">
+			<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--forum">
+				{$forum-ikon|raw}{$forum-metin|raw}
+			</div>
+		</xf:if>
+		<xf:if is="property('xgt_Frmistatistik_mesaj_sayisi')">
+			<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--cevap">
+				{$cevap-ikon|raw}{$cevap-metin|raw}
+			</div>
+			<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--goruntuleme">
+				{$goruntuleme-ikon|raw}{$goruntuleme-metin|raw}
+			</div>
+		</xf:if>
+		<xf:if is="property('xgt_Frmistatistik_zaman_bilgisi')">
+			<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--zaman">
+				{$zaman-ikon|raw}{$zaman-metin|raw}
+			</div>	
+		</xf:if>
+		<xf:if is="property('xgt_Frmistatistik_son_yazan')">
+			<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--sonYazan">
+				{$sonyazan-ikon|raw}{$sonyazan-metin|raw}
+			</div>
+		</xf:if>		  
+	</div>
+</xf:macro>
+<xf:macro name="goruntuleme" arg-goruntuleme="!">
+	<xf:if is="property('xgt_Frmistatistik_altHeader_metinAlani') == 'metin' OR property('xgt_Frmistatistik_altHeader_metinAlani') == 'metinikon'">
+		<xf:set var="$konu-metin">{{ phrase('xgt_forumistatik_konu') }}</xf:set>
+		<xf:set var="$forum-metin">{{ phrase('xgt_forumistatik_forumu') }}</xf:set>
+		<xf:set var="$cevap-metin">{{ phrase('xgt_forumistatik_cevaplari') }}</xf:set>
+		<xf:set var="$goruntuleme-metin">{{ phrase('xgt_forumistatik_goruntuleme') }}</xf:set>
+		<xf:set var="$zaman-metin">{{ phrase('xgt_forumistatik_zamani') }}</xf:set>
+		<xf:set var="$sonyazan-metin">{{ phrase('xgt_forumistatik_konusahibi') }}</xf:set>
+	</xf:if>
+	<xf:if is="property('xgt_Frmistatistik_altHeader_metinAlani') == 'ikon' OR property('xgt_Frmistatistik_altHeader_metinAlani') == 'metinikon'">
+		<xf:set var="$konu-ikon"><i class="fal fa-comments"></i></xf:set>
+		<xf:set var="$forum-ikon"><i class="fal fa-list-alt"></i></xf:set>
+		<xf:set var="$cevap-ikon"><i class="fal fa-comment-dots"></i></xf:set>
+		<xf:set var="$goruntuleme-ikon"><i class="fal fa-eye"></i></xf:set>
+		<xf:set var="$zaman-ikon"><i class="fal fa-clock"></i></xf:set>
+		<xf:set var="$sonyazan-ikon"><i class="fal fa-user-crown"></i></xf:set>	
+	</xf:if>		
+	<div class="_xgtIstatistik-satir _xgtIstatistik_miniHeader">
+		<xf:if is="property('xgt_Frmistatistik_sira_numarasi')">
+			<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--sira"><i class="fal fa-sort-numeric-down"></i></div>
+		</xf:if>
+		<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--avatar"></div>
+		<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--konu">
+			{$konu-ikon|raw}{$konu-metin|raw}
+		</div>
+		<xf:if is="property('xgt_Frmistatistik_icerik_forumu')">
+			<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--forum">
+				{$forum-ikon|raw}{$forum-metin|raw}
+			</div>
+		</xf:if>
+		<xf:if is="property('xgt_Frmistatistik_mesaj_sayisi')">
+			<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--cevap">
+				{$cevap-ikon|raw}{$cevap-metin|raw}
+			</div>
+			<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--goruntuleme">
+				{$goruntuleme-ikon|raw}{$goruntuleme-metin|raw}
+			</div>
+		</xf:if>
+		<xf:if is="property('xgt_Frmistatistik_zaman_bilgisi')">
+			<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--zaman">
+				{$zaman-ikon|raw}{$zaman-metin|raw}
+			</div>	
+		</xf:if>
+		<xf:if is="property('xgt_Frmistatistik_son_yazan')">
+			<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--sonYazan">
+				{$sonyazan-ikon|raw}{$sonyazan-metin|raw}
+			</div>
+		</xf:if>		  
+	</div>
+</xf:macro>
+<xf:macro name="Kaynaklar" arg-mesaj="!">
+	<xf:if is="property('xgt_Frmistatistik_altHeader_metinAlani') == 'metin' OR property('xgt_Frmistatistik_altHeader_metinAlani') == 'metinikon'">
+		<xf:set var="$kaynak-metin">{{ phrase('xgt_forumistatik_kaynak') }}</xf:set>
+		<xf:set var="$kategori-metin">{{ phrase('xgt_forumistatik_kategori') }}</xf:set>
+		<xf:set var="$derece-metin">{{ phrase('xgt_forumistatik_derecelendirme') }}</xf:set>
+		<xf:set var="$zaman-metin">{{ phrase('xgt_forumistatik_zamani') }}</xf:set>
+		<xf:set var="$sonyazan-metin">{{ phrase('xgt_forumistatik_kaynaksahibi') }}</xf:set>
+	</xf:if>
+	<xf:if is="property('xgt_Frmistatistik_altHeader_metinAlani') == 'ikon' OR property('xgt_Frmistatistik_altHeader_metinAlani') == 'metinikon'">
+		<xf:set var="$kaynak-ikon"><i class="fal fa-download" aria-hidden="true"></i></xf:set>
+		<xf:set var="$kategori-ikon"><i class="fal fa-list-alt"></i></xf:set>
+		<xf:set var="$derece-ikon"><i class="fal fa-stars"></i></xf:set>
+		<xf:set var="$zaman-ikon"><i class="fal fa-clock"></i></xf:set>
+		<xf:set var="$sonyazan-ikon"><i class="fal fa-user-crown"></i></xf:set>	
+	</xf:if>	
+	<div class="_xgtIstatistik-satir _xgtIstatistik_miniHeader">
+		<xf:if is="property('xgt_Frmistatistik_sira_numarasi')">
+			<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--sira"><i class="fal fa-sort-numeric-down"></i></div>
+		</xf:if>
+		<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--avatar"></div>
+		<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--konu">
+			{$kaynak-ikon|raw}{$kaynak-metin|raw}
+		</div>
+		<xf:if is="property('xgt_Frmistatistik_icerik_forumu')">
+			<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--forum">
+				{$kategori-ikon|raw}{$kategori-metin|raw}
+			</div>
+		</xf:if>
+		<xf:if is="property('xgt_Frmistatistik_mesaj_sayisi')">
+			<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--derece">
+				{$derece-ikon|raw}{$derece-metin|raw}
+			</div>
+		</xf:if>
+		<xf:if is="property('xgt_Frmistatistik_zaman_bilgisi')">
+			<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--zaman">
+				{$zaman-ikon|raw}{$zaman-metin|raw}
+			</div>	
+		</xf:if>
+		<xf:if is="property('xgt_Frmistatistik_son_yazan')">
+			<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--sonYazan">
+				{$sonyazan-ikon|raw}{$sonyazan-metin|raw}
+			</div>
+		</xf:if>		  
+	</div>
+</xf:macro>]]></template>
+  <template type="public" title="xgt_FrmIstatistik_yeniKaynaklar" version_id="4000008" version_string="4.0.0"><![CDATA[<xf:macro template="xgt_FrmIstatistik_miniHeader_macros" name="Kaynaklar" arg-mesaj="!"/>
+<xf:if is="$resources is not empty"> 
+	<ul class="_xgtIstatistik-konuListe">
+		  <xf:foreach loop="$resources" value="$resource" i="$i">
+			<li class="_xgtIstatistik-satir">
+				<xf:if is="property('xgt_Frmistatistik_sira_numarasi')">
+					<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--sira _sayisal"></div>
+				</xf:if>
+				<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--avatar">
+					<xf:if is="property('xgt_Frmistatistik_online_durumu')">	
+						<xf:if is="$resource.User && $resource.User.isOnline()">
+							<span class="_xgtIstatistik-satir--avatar-online" tabindex="0" data-xf-init="tooltip" data-trigger="auto" title="{{ phrase('xgt_forumistatik_kullanici_cevrim_ici') }}"></span>
+						<xf:else />
+							<span class="_xgtIstatistik-satir--avatar-offlline" tabindex="0" data-xf-init="tooltip" data-trigger="auto" title="{{ phrase('xgt_forumistatik_kullanici_cevrim_disi') }}"></span>
+						</xf:if>	
+					</xf:if>					
+					<xf:if is="$xf.options.xfrmAllowIcons">
+						{{ resource_icon($resource, 's', link('resources', $resource)) }}
+						<xf:avatar user="$resource.User" size="xxs" href=""  class="avatar--separated _istatistikHucre_avatar" tabindex="0"
+								   data-xf-init="tooltip"
+								   data-trigger="auto" />
+					<xf:else />
+						<xf:avatar user="$resource.User" size="s" defaultname="{$resource.username}" />
+					</xf:if>
+				</div>
+				<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--konu">
+					<xf:if is="property('xgt_Frmistatistik_google_buton')">
+						<a href="http://www.google.com/search?hl=tr&amp;q={$thread.title}" title="{$thread.title}" target="_blank">
+							<div class="_googleButon">
+								<i class="fab fa-google" title="{{ phrase('xgt_forumistatik_google_arama_yap') }}"></i>
+							</div>
+						</a>
+					</xf:if>	
+					<xf:if is="$resource.prefix_id">
+						<xf:if is="$category">
+							<a href="{{ link('resources/categories', $category, {'prefix_id': $resource.prefix_id}) }}" class="labelLink" rel="nofollow">{{ prefix('resource', $resource, 'html', '') }}</a>
+							<xf:else />
+							<xf:if is="$filterPrefix">
+								<a href="{{ link('resources', null, {'prefix_id': $resource.prefix_id}) }}" class="labelLink" rel="nofollow">{{ prefix('resource', $resource, 'html', '') }}</a>
+								<xf:else />
+								{{ prefix('resource', $resource, 'html', '') }}
+							</xf:if>
+						</xf:if>
+					</xf:if>
+					<a href="{{ link('resources', $resource) }}" class="" data-tp-primary="on">{$resource.title}</a>
+					<xf:if is="$resource.isVersioned()">
+						<span class="u-muted">{$resource.CurrentVersion.version_string}</span>
+					</xf:if>
+					<xf:if is="$resource.isExternalPurchasable()">
+						<span class="label label--primary label--smallest">{$resource.price|currency($resource.currency)}</span>
+					</xf:if>			
+				</div>
+				<xf:if is="property('xgt_Frmistatistik_icerik_forumu')">
+					<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--forum" data-xf-init="tooltip" title="{{ phrase('xgt_forumistatik_kategori') }}">
+						<xf:if is="property('xgt_Frmistatistik_icerikBilgi_ikonlari')">
+							<xf:if contentcheck="true">
+								<div class="_icerikIkonu">
+									<xf:contentcheck>
+										<xf:extension name="statuses">
+											<xf:extension name="thread_type_resource">	
+												<i class="fad fa-cog Konuikonu--konu" aria-hidden="true" title="{{ phrase('thread_type.resource')|for_attr }}" data-xf-init="tooltip" title="{{ phrase('thread_type.resource')|for_attr }}"></i>
+												<span class="u-srOnly">{{ phrase('thread_type.resource') }}</span>
+											</xf:extension>
+										</xf:extension>
+									</xf:contentcheck>
+								</div>
+							</xf:if>	
+						</xf:if>
+						<xf:if is="!$category OR $category.hasChildren()">
+							<a href="{{ link('resources/categories', $resource.Category) }}" title="$resource.Category.title}">{$resource.Category.title}</a>
+						</xf:if>
+					</div>
+				</xf:if>
+				<xf:if is="property('xgt_Frmistatistik_mesaj_sayisi')">
+					<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--derece">
+						<xf:macro template="rating_macros" name="stars" arg-rating="{$resource.rating_avg}"arg-class="Derecelendirme" />
+					</div>	
+				</xf:if>
+				<xf:if is="property('xgt_Frmistatistik_zaman_bilgisi')">
+					<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--zaman">
+						<a href="{{ link('resources', $resource) }}" rel="nofollow"><xf:date time="{$resource.resource_date}" /></a>
+					</div>	
+				</xf:if>
+				<xf:if is="property('xgt_Frmistatistik_son_yazan')">
+					<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--sonYazan">
+						<xf:if is="property('xgt_Frmistatistik_sonMesaj_avatar')">	
+							<xf:avatar user="$resource.User" size="xxs" defaultname="{$resource.username}" />
+						</xf:if>
+						<xf:username user="$resource.User" defaultname="{$resource.username}" />
+					</div>
+				</xf:if>
+			</li>
+		</xf:foreach>
+	</ul>
+<xf:else />
+	 <div class="block-row">
+		  {{ phrase('no_results_found') }}
+	 </div>
+</xf:if>]]></template>
+  <template type="public" title="xgt_FrmIstatistik_yeniKonular" version_id="4000008" version_string="4.0.0"><![CDATA[<xf:macro template="xgt_FrmIstatistik_miniHeader_macros" name="genelSeklemler" arg-genel="!"/>
+<xf:if is="$threads is not empty">
+	<ul class="_xgtIstatistik-konuListe">
+		<xf:foreach loop="$threads" value="$thread">
+			<li class="_xgtIstatistik-satir">
+				<xf:if is="property('xgt_Frmistatistik_sira_numarasi')">
+					<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--sira _sayisal"></div>
+				</xf:if>
+				<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--avatar">
+					<xf:if is="property('xgt_Frmistatistik_online_durumu')">
+						<xf:if is="$thread.User && $thread.User.isOnline()">
+							<span class="_xgtIstatistik-satir--avatar-online" tabindex="0" data-xf-init="tooltip" data-trigger="auto" title="{{ phrase('xgt_forumistatik_kullanici_cevrim_ici') }}"></span>
+						<xf:else />
+							<span class="_xgtIstatistik-satir--avatar-offlline" tabindex="0" data-xf-init="tooltip" data-trigger="auto" title="{{ phrase('xgt_forumistatik_kullanici_cevrim_disi') }}"></span>
+						</xf:if>
+					</xf:if>					
+					<xf:avatar user="$thread.User" size="s" defaultname="{$thread.username}" />
+					<xf:if is="$thread.getUserPostCount()">
+						<xf:avatar user="$xf.visitor" size="xxs" href=""
+							   	class="avatar--separated _istatistikHucre_avatar"
+							   	tabindex="0"
+							   	data-xf-init="tooltip"
+							   	data-trigger="auto"
+							   	title="{{ phrase('you_have_posted_x_messages_in_this_thread', {'count': $thread.getUserPostCount() }) }}" />
+					</xf:if>		
+				</div>
+				<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--konu structItem--thread{{ $thread.prefix_id ? ' is-prefix' . $thread.prefix_id : '' }} {{ $thread.isIgnored() ? ' is-ignored' : '' }} {{ ($thread.isUnread() AND !$forceRead) ? ' _yeniIcerik' : '' }} {{ $thread.discussion_state == 'moderated' ? ' is-moderated' : '' }} {{ $thread.discussion_state == 'deleted' ? ' is-deleted' : '' }} js-inlineModContainer js-threadListItem-{$thread.thread_id}" 
+				 	data-author="{{ $thread.User.username ?: $thread.username }}">
+					<xf:if is="property('xgt_Frmistatistik_google_buton')">
+						<a href="http://www.google.com/search?hl=tr&amp;q={$thread.title}" title="{$thread.title}" target="_blank">
+							<div class="_googleButon">
+								<i class="fab fa-google" title="{{ phrase('xgt_forumistatik_google_arama_yap') }}"></i>
+							</div>
+						</a>
+					</xf:if>
+					<xf:set var="$canPreview" value="{{ $thread.canPreview() }}" />
+					<xf:if is="$thread.prefix_id">
+						<xf:if is="$forum">
+							<a href="{{ link('forums', $forum, {'prefix_id': $thread.prefix_id}) }}" class="labelLink" rel="nofollow">{{ prefix('thread', $thread, 'html', '') }}</a>
+						<xf:else />
+							{{ prefix('thread', $thread, 'html', '') }}
+						</xf:if>
+					</xf:if>
+					<a href="{{ link('threads' . (($thread.isUnread() AND !$forceRead) ? '/unread' : ''), $thread) }}" class="" data-tp-primary="on" data-xf-init="{{ $canPreview ? 'preview-tooltip' : '' }}" data-preview-url="{{ $canPreview ? link('threads/preview', $thread) : '' }}">{$thread.title}</a>
+				</div>
+				<xf:if is="property('xgt_Frmistatistik_icerik_forumu')">
+					<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--forum">
+						<xf:if is="property('xgt_Frmistatistik_icerikBilgi_ikonlari')">
+							<xf:include template="xgt_FrmIstatistik_icerikIkonlari" />
+						</xf:if>
+						<a href="{{ link('forums', $thread.Forum) }}" title="{$thread.Forum.title}">{$thread.Forum.title}</a>
+					</div>
+				</xf:if>
+				<xf:if is="property('xgt_Frmistatistik_mesaj_sayisi')">
+					<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--cevap" data-xf-init="tooltip" title="{{ phrase('xgt_forumistatik_cevaplari') }}">
+						{{ $thread.discussion_type == 'redirect' ? '&ndash;' : $thread.reply_count|number }}
+					</div>	
+					<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--goruntuleme" data-xf-init="tooltip" title="{{ phrase('xgt_forumistatik_goruntuleme') }}">
+						{{ $thread.discussion_type == 'redirect' ? '&ndash;' : ($thread.view_count > $thread.reply_count ? $thread.view_count|number_short(1) : number($thread.reply_count|number_short(1))) }}
+					</div>	
+				</xf:if>
+		
+				<xf:if is="property('xgt_Frmistatistik_zaman_bilgisi')">
+					<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--zaman">
+						<xf:if is="$thread.discussion_type == 'redirect'">
+							{{ phrase('n_a') }}
+						<xf:else />
+							<a href="{{ link('threads/latest', $thread) }}" rel="nofollow"><xf:date time="{$thread.last_post_date}" class="structItem-latestDate" /></a>
+						</xf:if>
+					</div>	
+				</xf:if>
+				<xf:if is="property('xgt_Frmistatistik_son_yazan')">
+					<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--sonYazan">
+						<xf:if is="$thread.discussion_type == 'redirect'">
+							<xf:if is="property('xgt_Frmistatistik_sonMesaj_avatar')">
+								<xf:avatar user="{{ null }}" size="xs" />
+							</xf:if>
+							{{ phrase('n_a') }}
+						<xf:else />
+							<xf:if is="$xf.visitor.isIgnoring($thread.last_post_user_id)">
+								{{ phrase('ignored_member') }}
+							<xf:else />
+								<xf:if is="property('xgt_Frmistatistik_sonMesaj_avatar')">
+									<xf:avatar user="{$thread.User}" defaultname="{$thread.User}" size="xxs" />
+								</xf:if>					
+								<xf:username user="$thread.User" defaultname="{$thread.username}" />
+							</xf:if>
+						</xf:if>
+					</div>
+				</xf:if>
+			</li>
+		</xf:foreach>
+	</ul>
+<xf:else />
+	 <div class="block-row">
+		  {{ phrase('no_results_found') }}
+	 </div>
+</xf:if>]]></template>
+  <template type="public" title="xgt_FrmIstatistik_yeniMesajlar" version_id="4000008" version_string="4.0.0"><![CDATA[<xf:macro template="xgt_FrmIstatistik_miniHeader_macros" name="genelSeklemler" arg-genel="!"/>
+<xf:if is="$threads is not empty">
+	<ul class="_xgtIstatistik-konuListe">
+		<xf:foreach loop="$threads" value="$thread">
+			<li class="_xgtIstatistik-satir">
+				<xf:if is="property('xgt_Frmistatistik_sira_numarasi')">
+					<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--sira _sayisal"></div>
+				</xf:if>
+				<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--avatar">
+					<xf:if is="property('xgt_Frmistatistik_online_durumu')">
+						<xf:if is="$thread.User && $thread.User.isOnline()">
+							<span class="_xgtIstatistik-satir--avatar-online" tabindex="0" data-xf-init="tooltip" data-trigger="auto" title="{{ phrase('xgt_forumistatik_kullanici_cevrim_ici') }}"></span>
+						<xf:else />
+							<span class="_xgtIstatistik-satir--avatar-offlline" tabindex="0" data-xf-init="tooltip" data-trigger="auto" title="{{ phrase('xgt_forumistatik_kullanici_cevrim_disi') }}"></span>
+						</xf:if>	
+					</xf:if>				
+					<xf:avatar user="$thread.User" size="s" defaultname="{$thread.username}" />
+					<xf:if is="$thread.getUserPostCount()">
+						<xf:avatar user="$xf.visitor" size="xxs" href="" 
+								   class="avatar--separated _istatistikHucre_avatar" tabindex="0" 
+								   data-xf-init="tooltip" 
+								   data-trigger="auto"
+								   title="{{ phrase('you_have_posted_x_messages_in_this_thread', {'count': $thread.getUserPostCount() }) }}" />
+					</xf:if>
+				</div>
+				<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--konu {{ ($thread.isUnread() AND !$forceRead) ? ' _yeniIcerik' : '' }}" data-author="{{ $thread.User.username ?: $thread.username }}">	
+					<xf:if is="property('xgt_Frmistatistik_google_buton')">
+						<a href="http://www.google.com/search?hl=tr&amp;q={$thread.title}" title="{$thread.title}" target="_blank">
+							<div class="_googleButon">
+								<i class="fab fa-google" title="{{ phrase('xgt_forumistatik_google_arama_yap') }}"></i>
+							</div>
+						</a>
+					</xf:if>
+					<xf:set var="$canPreview" value="{{ $thread.canPreview() }}" />
+					<xf:if is="$thread.prefix_id">
+						<xf:if is="$forum">
+							<a href="{{ link('forums', $forum, {'prefix_id': $thread.prefix_id}) }}" class="labelLink" rel="nofollow">{{ prefix('thread', $thread, 'html', '') }}</a>
+						<xf:else />
+							{{ prefix('thread', $thread, 'html', '') }}
+						</xf:if>
+					</xf:if>
+					<a href="{{ link('threads' . (($thread.isUnread() AND !$forceRead) ? '/unread' : ''), $thread) }}" class="" data-tp-primary="on" data-xf-init="{{ $canPreview ? 'preview-tooltip' : '' }}" data-preview-url="{{ $canPreview ? link('threads/preview', $thread) : '' }}">{$thread.title}</a>			
+				</div>		
+				<xf:if is="property('xgt_Frmistatistik_icerik_forumu')">
+					<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--forum" data-xf-init="tooltip" title="{{ phrase('xgt_forumistatik_forumu') }}">		
+						<xf:if is="property('xgt_Frmistatistik_icerikBilgi_ikonlari')">
+							<xf:include template="xgt_FrmIstatistik_icerikIkonlari" />
+						</xf:if>
+						<a href="{{ link('forums', $thread.Forum) }}" title="{$thread.Forum.title}">{$thread.Forum.title}</a>
+					</div>
+				</xf:if>
+				<xf:if is="property('xgt_Frmistatistik_mesaj_sayisi')">
+					<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--cevap" data-xf-init="tooltip" title="{{ phrase('xgt_forumistatik_cevaplari') }}">
+						{{ $thread.discussion_type == 'redirect' ? '&ndash;' : $thread.reply_count|number }}
+					</div>
+					<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--goruntuleme" data-xf-init="tooltip" title="{{ phrase('xgt_forumistatik_goruntuleme') }}">
+						{{ $thread.discussion_type == 'redirect' ? '&ndash;' : ($thread.view_count > $thread.reply_count ? $thread.view_count|number_short(1) : number($thread.reply_count|number_short(1))) }}
+					</div>	
+				</xf:if>
+				<xf:if is="property('xgt_Frmistatistik_zaman_bilgisi')">
+					<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--zaman">
+						<xf:if is="$thread.discussion_type == 'redirect'">
+							{{ phrase('n_a') }}
+							<xf:else />
+							<a href="{{ link('threads/latest', $thread) }}" rel="nofollow"><xf:date time="{$thread.last_post_date}" class="structItem-latestDate" /></a>
+						</xf:if>
+					</div>	
+				</xf:if>
+				<xf:if is="property('xgt_Frmistatistik_son_yazan')">
+					<div class="_xgtIstatistik-satir--hucre _xgtIstatistik-satir--sonYazan">
+						<xf:if is="$thread.discussion_type == 'redirect'">
+							<xf:if is="property('xgt_Frmistatistik_sonMesaj_avatar')">	
+								<xf:avatar user="{{ null }}" size="xs" />
+							</xf:if>
+							{{ phrase('n_a') }}
+							<xf:else />
+							<xf:if is="$xf.visitor.isIgnoring($thread.last_post_user_id)">
+								{{ phrase('ignored_member') }}
+							<xf:else />
+								<xf:if is="property('xgt_Frmistatistik_sonMesaj_avatar')">	
+									<xf:avatar user="{$thread.LastPoster}" defaultname="{$thread.last_post_username}" size="xxs" />
+								</xf:if>
+								<xf:if is="{$thread.LastPoster}">
+									<xf:username user="{$thread.LastPoster}" defaultname="{$thread.LastPoster}" rich="true" />
+								<xf:else />
+									<xf:username user="{$thread.last_post_cache}" rich="true" />
+								</xf:if>
+							</xf:if>
+						</xf:if>
+					</div>
+				</xf:if>
+			</li>
+		</xf:foreach>
+	</ul>
+<xf:else />
+	<div class="block-row">
+		{{ phrase('no_results_found') }}
+	</div>
+</xf:if>]]></template>
+</templates>

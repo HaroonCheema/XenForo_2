@@ -577,7 +577,7 @@ return array(
 	} else {
 		$__finalCompiled .= '
 	';
-		$__templater->pageParams['pageTitle'] = $__templater->preEscaped($__templater->escape($__vars['forum']['Node']['title']));
+		$__templater->pageParams['pageTitle'] = $__templater->preEscaped($__templater->escape($__templater->method($__vars['forum']['Node'], 'getNodeTitle', array())));
 		$__templater->pageParams['pageNumber'] = $__vars['page'];
 		$__finalCompiled .= '
 

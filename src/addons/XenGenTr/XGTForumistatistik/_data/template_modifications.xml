@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="PAGE_CONTAINER" modification_key="xgt_ForumIstatistik_konum_breadcrumb_alt" description="[XGT] Forum istatistik - Konum breadcrumb altında" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:ad position="container_breadcrumb_top_below" />]]></find>
+    <replace><![CDATA[<xf:macro template="xgt_FrmIstatistik_konumlar_macros" name="xgt_istatistik_konum" 
+		  arg-template="{$template}" 
+		  arg-location="breadcrumbsalt" arg-position="!" />
+$0]]></replace>
+  </modification>
+  <modification type="public" template="PAGE_CONTAINER" modification_key="xgt_ForumIstatistik_konum_breadcrumb_ustu" description="[XGT] Forum istatistik - Konum breadcrumb üstünde" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:ad position="container_breadcrumb_top_above" />]]></find>
+    <replace><![CDATA[<xf:macro template="xgt_FrmIstatistik_konumlar_macros" name="xgt_istatistik_konum" 
+		  arg-template="{$template}" 
+		  arg-location="breadcrumbsustu" arg-position="!" />
+$0]]></replace>
+  </modification>
+  <modification type="public" template="PAGE_CONTAINER" modification_key="xgt_forumistatistik_konum_icerikler_ustunde" description="[XGT] Forum istatistik - Konum içerikler üstünde" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<!--XF:EXTRA_OUTPUT-->]]></find>
+    <replace><![CDATA[$0
+<xf:macro template="xgt_FrmIstatistik_konumlar_macros" name="xgt_istatistik_konum" 
+		  arg-template="{$template}" 
+		  arg-location="iceriklerustu" arg-position="!" />]]></replace>
+  </modification>
+  <modification type="public" template="forum_list" modification_key="xgt_forumistatistik_konum_forumalar_alti" description="[XGT] Forum istatistik - Konum forumlar altı" execution_order="999" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:widgetpos id="forum_list_below_nodes" />]]></find>
+    <replace><![CDATA[<xf:macro template="xgt_FrmIstatistik_konumlar_macros" name="xgt_istatistik_konum" 
+		  arg-template="{$template}" 
+		  arg-location="forumlaralti" arg-position="!" />
+$0]]></replace>
+  </modification>
+  <modification type="public" template="forum_list" modification_key="xgt_forumistatistik_konum_forumalar_ustu" description="[XGT] Forum istatistik - Konum forumlar üstü" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:widgetpos id="forum_list_above_nodes" />]]></find>
+    <replace><![CDATA[$0
+<xf:macro template="xgt_FrmIstatistik_konumlar_macros" name="xgt_istatistik_konum" 
+		  arg-template="{$template}" 
+		  arg-location="forumlarustu" arg-position="!" />]]></replace>
+  </modification>
+</template_modifications>

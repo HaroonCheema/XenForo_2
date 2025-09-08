@@ -68,4 +68,5 @@ return array (
   'widget_def_desc.xfrm_latest_reviews' => 'Displays the latest resource reviews.',
   'widget_def_desc.xfrm_new_resources' => 'Displays the most recently updated resources.',
   'widget_def_desc.xfrm_top_resources' => 'Displays the top rated resources.',
+  'widget_def_desc.xgtForumIstKullanici_wd' => '[XenGenTr] Forum istatistik sistemine entegre en çok mesaj atan kullanıcılar alanı.',
 );

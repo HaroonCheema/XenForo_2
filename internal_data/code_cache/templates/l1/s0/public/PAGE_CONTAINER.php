@@ -1201,6 +1201,11 @@ return array(
 <div class="p-body">
 	<div class="p-body-inner">
 		<!--XF:EXTRA_OUTPUT-->
+' . $__templater->callMacro('xgt_FrmIstatistik_konumlar_macros', 'xgt_istatistik_konum', array(
+		'template' => $__vars['template'],
+		'location' => 'iceriklerustu',
+		'position' => '!',
+	), $__vars) . '
 ';
 	if ($__vars['xf']['options']['siropuAdsManagerPageInfo'] AND $__vars['xf']['visitor']['is_admin']) {
 		$__finalCompiled .= '
@@ -1244,6 +1249,11 @@ return array(
 		' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
 		'position' => 'container_breadcrumb_top_above',
 	), $__vars) . '
+' . $__templater->callMacro('xgt_FrmIstatistik_konumlar_macros', 'xgt_istatistik_konum', array(
+		'template' => $__vars['template'],
+		'location' => 'breadcrumbsustu',
+		'position' => '!',
+	), $__vars) . '
 ' . $__templater->callAdsMacro('container_breadcrumb_top_above', array(), $__vars) . '
 		' . $__templater->callMacro(null, 'breadcrumbs', array(
 		'breadcrumbs' => $__vars['breadcrumbs'],
@@ -1252,6 +1262,11 @@ return array(
 	), $__vars) . '
 		' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
 		'position' => 'container_breadcrumb_top_below',
+	), $__vars) . '
+' . $__templater->callMacro('xgt_FrmIstatistik_konumlar_macros', 'xgt_istatistik_konum', array(
+		'template' => $__vars['template'],
+		'location' => 'breadcrumbsalt',
+		'position' => '!',
 	), $__vars) . '
 ' . $__templater->callAdsMacro('container_breadcrumb_top_below', array(), $__vars) . '
 

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="xgt_styles_kategori_ikonu" version_id="1000100" version_string="1.0.1"><![CDATA[Kategori ikonunuz]]></phrase>
+  <phrase title="xgt_styles_kategori_ikonu_detay" version_id="1000100" version_string="1.0.1"><![CDATA[Kategori vurguları için ikon ekleye bilirsiniz, bu fonksiyon sadece <b>XGT Temaları için geçerlidir</b>.]]></phrase>
+  <phrase title="xgt_styles_kategori_ikonu_etkinlestir" version_id="1000100" version_string="1.0.1"><![CDATA[Etkinleştir]]></phrase>
+  <phrase title="xgt_styles_kategori_ikonu_etkinlestir_aciklama" version_id="1000100" version_string="1.0.1"><![CDATA[ <b> Kategori ikonu sadece FA ikon olmalıdır. Örnek: fad fa-list-alt</b>]]></phrase>
+</phrases>

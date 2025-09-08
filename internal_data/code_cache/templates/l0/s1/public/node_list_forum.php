@@ -66,7 +66,7 @@ return array(
 	$__finalCompiled = '';
 	$__finalCompiled .= '
 	<li>
-		<a href="' . $__templater->func('link', array('forums', $__vars['node'], ), true) . '" class="subNodeLink subNodeLink--forum ' . ($__vars['extras']['hasNew'] ? 'subNodeLink--unread' : '') . '">' . $__templater->escape($__vars['node']['title']) . '</a>
+		<a href="' . $__templater->func('link', array('forums', $__vars['node'], ), true) . '" class="subNodeLink subNodeLink--forum ' . ($__vars['extras']['hasNew'] ? 'subNodeLink--unread' : '') . '">' . $__templater->escape($__templater->method($__vars['node'], 'getNodeTitle', array())) . '</a>
 		' . $__templater->callMacro('forum_list', 'sub_node_list', array(
 		'children' => $__vars['children'],
 		'childExtras' => $__vars['childExtras'],
@@ -135,13 +135,7 @@ return array(
 	$__vars['descriptionDisplay'] = $__templater->func('property', array('nodeListDescriptionDisplay', ), false);
 	$__finalCompiled .= '
 				<h3 class="node-title">
-					' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
-		'position' => 'node_title_above_' . $__vars['node']['node_id'],
-	), $__vars) . '
-<a href="' . $__templater->func('link', array('forums', $__vars['node'], ), true) . '" data-xf-init="' . (($__vars['descriptionDisplay'] == 'tooltip') ? 'element-tooltip' : '') . '" data-shortcut="node-description">' . $__templater->escape($__vars['node']['title']) . '</a>
-' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
-		'position' => 'node_title_container_' . $__vars['node']['node_id'],
-	), $__vars) . '
+					<a href="' . $__templater->func('link', array('forums', $__vars['node'], ), true) . '" data-xf-init="' . (($__vars['descriptionDisplay'] == 'tooltip') ? 'element-tooltip' : '') . '" data-shortcut="node-description">' . $__templater->escape($__templater->method($__vars['node'], 'getNodeTitle', array())) . '</a>
 				</h3>
 				';
 	if (!$__templater->test($__vars['node']['TVForum'], 'empty', array())) {

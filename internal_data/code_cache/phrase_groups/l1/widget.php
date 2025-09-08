@@ -21,6 +21,7 @@ return array (
   'widget.fsPackageRating1231232' => '',
   'widget.fsPackageRatings' => '',
   'widget.fs_custom_forum_widget' => 'Custom Forum Widget',
+  'widget.fs_custom_forum_widgetqweqw' => 'Test istatistik',
   'widget.fs_extend_new_posts' => 'Extends New Posts',
   'widget.fs_logo_slider' => 'Logo Slider',
   'widget.fs_media_slider_testing' => 'Testing Media Slider',
@@ -56,4 +57,5 @@ return array (
   'widget.xfrm_overview_latest_reviews' => '',
   'widget.xfrm_overview_top_authors' => '',
   'widget.xfrm_whats_new_overview_new_resources' => '',
+  'widget.xgtForumIstatistik_encok_mesaj_kullanici' => '',
 );

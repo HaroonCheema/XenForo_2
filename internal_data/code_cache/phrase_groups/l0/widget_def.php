@@ -69,4 +69,5 @@ return array (
   'widget_def.xfrm_latest_reviews' => 'XFRM: Latest reviews',
   'widget_def.xfrm_new_resources' => 'XFRM: New resources',
   'widget_def.xfrm_top_resources' => 'XFRM: Top resources',
+  'widget_def.xgtForumIstKullanici_wd' => '[XGT] Forum istatistik - En çok mesaj',
 );

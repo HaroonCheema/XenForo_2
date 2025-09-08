@@ -131,6 +131,20 @@ return array(
 							',
 				)
 ,array(
+					'_type' => 'action',
+					'html' => '
+		<i style="height: 30px;
+				  width: 30px;
+				  text-align: center;
+				  line-height: 30px;
+				  background: #000;
+				  color: #fff;
+				  font-size: 22px;
+				  margin-left: 5px;" 
+		   class="' . $__templater->escape($__vars['node']['xgt_style_fa_ikon']) . '"></i>
+	',
+				)
+,array(
 					'class' => ($__vars['customPermissions'][$__vars['node']['node_id']] ? 'dataList-cell--highlighted' : ''),
 					'href' => $__templater->func('link', array('nodes/permissions', $__vars['node'], ), false),
 					'_type' => 'action',
