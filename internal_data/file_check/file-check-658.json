@@ -80,6 +80,7 @@
             "js/xf/attachment_manager.js",
             "js/xf/core/action.min.js",
             "js/xf/editor-compiled.js",
+            "payment_callback.php",
             "src/XF/Admin/Controller/AbstractNode.php",
             "src/XF/Admin/Controller/Moderator.php",
             "src/XF/Admin/Controller/Notice.php",
@@ -195,6 +196,11 @@
             "src/addons/FS/PaymentRedirection/_data/options.xml",
             "src/addons/FS/PaymentRedirection/_data/phrases.xml"
         ],
+        "FS/CoinPaymentsIntegration": [
+            "src/addons/FS/CoinPaymentsIntegration/addon.json",
+            "src/addons/FS/CoinPaymentsIntegration/Payment/CoinPayments.php",
+            "src/addons/FS/CoinPaymentsIntegration/_data/options.xml"
+        ],
         "FS/DiscussionThread": [
             "src/addons/FS/DiscussionThread/addon.json",
             "src/addons/FS/DiscussionThread/XF/Entity/Thread.php",
@@ -202,6 +208,7 @@
             "src/addons/FS/DiscussionThread/_data/class_extensions.xml",
             "src/addons/FS/DiscussionThread/_data/options.xml",
             "src/addons/FS/DiscussionThread/_data/phrases.xml",
+            "src/addons/FS/DiscussionThread/_data/templates.xml",
             "src/addons/FS/DiscussionThread/_data/template_modifications.xml"
         ],
         "FS/DownloadThreadAttachments": [
@@ -391,6 +398,10 @@
             "src/addons/FS/XFMG/_data/templates.xml",
             "src/addons/FS/XFMG/_data/template_modifications.xml"
         ],
+        "JUM/ConnectedAccounts": [
+            "src/addons/JUM/ConnectedAccounts/addon.json",
+            "src/addons/JUM/ConnectedAccounts/_data/class_extensions.xml"
+        ],
         "nick97/WatchList": [
             "src/addons/nick97/WatchList/addon.json",
             "src/addons/nick97/WatchList/_data/template_modifications.xml"
@@ -463,6 +474,6 @@
         ]
     },
     "total_missing": 6,
-    "total_inconsistent": 319,
-    "total_checked": 15866
+    "total_inconsistent": 326,
+    "total_checked": 18830
 }
