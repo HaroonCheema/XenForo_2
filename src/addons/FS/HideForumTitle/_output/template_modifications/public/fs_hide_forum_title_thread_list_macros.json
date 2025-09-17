@@ -2,7 +2,7 @@
     "template": "thread_list_macros",
     "description": "fs_hide_forum_title_thread_list_macros",
     "execution_order": 10,
-    "enabled": true,
+    "enabled": false,
     "action": "str_replace",
     "find": "{$thread.Forum.title}",
     "replace": "{$thread.Forum.Node.getNodeTitle()}"
