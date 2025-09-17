@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="admin" template="tools_rebuild" modification_key="fs_tools_rebuild_missing_thumbnails" description="fs_tools_rebuild_missing_thumbnails" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<!--[XF:after_thumbnails]-->]]></find>
+    <replace><![CDATA[$0
+
+<xf:macro name="rebuild_job"
+	arg-header="{{ phrase('fs_rebuild_attachment_missing_thumbnails') }}"
+	arg-job="FS\RebuildMissingThumbnails:AttachmentMissingThumb" />]]></replace>
+  </modification>
+</template_modifications>

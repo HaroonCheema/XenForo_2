@@ -1,1 +1,1 @@
-[FS] Rebuild attachment missing thumbnails
+Rebuild attachment missing thumbnails
