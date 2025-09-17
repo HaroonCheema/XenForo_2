@@ -202,6 +202,11 @@ return array(
 ' . '
 
 ' . $__templater->callMacro(null, 'rebuild_job', array(
+		'header' => '[FS] Rebuild attachment missing thumbnails',
+		'job' => 'FS\\RebuildMissingThumbnails:AttachmentMissingThumb',
+	), $__vars) . '
+
+' . $__templater->callMacro(null, 'rebuild_job', array(
 		'header' => 'Rebuild conversations',
 		'job' => 'XF:Conversation',
 	), $__vars) . '
