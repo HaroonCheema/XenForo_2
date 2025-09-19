@@ -203,7 +203,7 @@ return array(
 
 ' . $__templater->callMacro(null, 'rebuild_job', array(
 		'header' => 'Rebuild attachment missing thumbnails',
-		'job' => 'FS\\RebuildMissingThumbnails:AttachmentMissingThumb',
+		'job' => 'D2\\RebuildMissingThumbnails:AttachmentMissingThumb',
 	), $__vars) . '
 
 ' . $__templater->callMacro(null, 'rebuild_job', array(

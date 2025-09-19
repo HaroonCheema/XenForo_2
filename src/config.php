@@ -19,6 +19,6 @@ $config['enableLivePayments'] = false;
 
 $config['debug'] = true;
 
-$config['development']['defaultAddOn'] = 'FS/RebuildMissingThumbnails';
+$config['development']['defaultAddOn'] = 'D2/RebuildMissingThumbnails';
 
 $config['development']['enabled'] = true;
