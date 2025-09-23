@@ -1,0 +1,73 @@
+<?php
+
+$config['db']['host'] = 'localhost';
+$config['db']['port'] = '3306';
+$config['db']['username'] = 'nawcc_xf';
+$config['db']['password'] = ',zRZiS4PsoT.';
+$config['db']['dbname'] = 'nawcc_xf';
+
+$config['debug'] = false;
+$config['cookie']['domain'] = 'dev.nawcc.org';
+
+$config['enableListeners'] = true;
+$config['superAdmins'] = '1'; /*, 98, 1145, 38546, 1875'; */
+$config['maxImageResizePixelCount'] = 30000000;
+$config['enableAddOnArchiveInstaller'] = true;
+
+// Session/DB cache 
+/*
+$config['cache']['enabled'] = true;
+$config['cache']['sessions'] = true;
+$config['cache']['provider'] = 'Filesystem';
+$config['cache']['config'] = [
+   'directory' => '/home/nawcc/domains/dev.nawcc.org/public_html/internal_data/xfcache'];
+
+// Guest Full Page Cache
+$config['pageCache']['enabled'] = true;
+$config['pageCache']['lifetime'] = 900;
+$config['pageCache']['recordSessionActivity'] = true;
+$config['cache']['context']['page']['provider'] = 'Filesystem';
+$config['cache']['context']['page']['config'] = [
+   'directory' => '/home/nawcc/domains/dev.nawcc.org/public_html/internal_data/xfcache'];
+*/
+
+// Enable debug mode for Ken only
+/*
+if ( $_SERVER['REMOTE_ADDR'] == '158.62.254.21' )
+{
+        $config['debug'] = true;
+}
+*/
+
+/*
+$s3 = function()
+{
+   return new \Aws\S3\S3Client([
+      'credentials' => [
+         'key' => 'DO00VE9N7V82TYKF23U3',
+         'secret' => 'hPoI/d2LjadGmuOF5nixgH08JXLaltSxuXEz5JUq1fQ'
+      ],
+      'region' => 'nyc3',
+      'version' => 'latest',
+      'endpoint' => 'https://nyc3.digitaloceanspaces.com'
+   ]);
+};
+
+
+$config['fsAdapters']['data'] = function() use($s3)
+{
+   return new \League\Flysystem\AwsS3v3\AwsS3Adapter($s3(), 'nawcc', 'data');
+};
+
+
+$config['externalDataUrl'] = function($externalPath, $canonical)
+{
+   return 'https://nawcc.nyc3.digitaloceanspaces.com/data/' . $externalPath;
+};
+
+$config['fsAdapters']['internal-data'] = function() use($s3)
+{
+   return new \League\Flysystem\AwsS3v3\AwsS3Adapter($s3(), 'nawcc', 'internal_data');
+};
+*/
+

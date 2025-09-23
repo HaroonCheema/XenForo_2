@@ -1,0 +1,2 @@
+Maximum number of images to be replaced with the error. Within a post. after that the image is only removed. 
+0 = disabled

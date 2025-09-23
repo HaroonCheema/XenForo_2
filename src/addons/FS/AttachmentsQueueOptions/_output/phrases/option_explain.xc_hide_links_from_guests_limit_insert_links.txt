@@ -1,0 +1,2 @@
+Maximum number of links to be replaced with the error. Within a post. after that the link is only removed. 
+0 = disabled

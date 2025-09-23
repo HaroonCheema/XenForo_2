@@ -1,0 +1,65 @@
+{
+    "xc_hide_link_from_guests_allowed_nodes.json": {
+        "hash": "cead7d4c1699f7a1b3924e7c6e5ba5b8"
+    },
+    "xc_hide_link_from_guests_attach_allowed_nodes.json": {
+        "hash": "8b6571970500c1f460ccae6318e23430"
+    },
+    "xc_hide_link_from_guests_image_allowed_nodes.json": {
+        "hash": "31f3a761511a7b3afb6b072fd7ff16fe"
+    },
+    "xc_hide_link_from_guests_media_allowed_nodes.json": {
+        "hash": "0ba3b95894de64fdec69069f0d8bf372"
+    },
+    "xc_hide_links_from_guests_allow_internal_img.json": {
+        "hash": "1c55c658bae6a46655d7d9a3e6edb602"
+    },
+    "xc_hide_links_from_guests_allow_internal_links.json": {
+        "hash": "055666c6b4d16939817d6d02713eeb1e"
+    },
+    "xc_hide_links_from_guests_anonym_url.json": {
+        "hash": "f2835f47c17e78d305211633466e8e77"
+    },
+    "xc_hide_links_from_guests_atta_no_validated_email.json": {
+        "hash": "efd331390f0c9387ca56d33d31146334"
+    },
+    "xc_hide_links_from_guests_enable_hide_attach.json": {
+        "hash": "b15fd549acd0da2eaf66a8dcfc4062bb"
+    },
+    "xc_hide_links_from_guests_enable_hide_image.json": {
+        "hash": "990037c067a4adbd4dd51ca076c78719"
+    },
+    "xc_hide_links_from_guests_enable_hide_link.json": {
+        "hash": "82896b25260a2217a1722896e57edbd2"
+    },
+    "xc_hide_links_from_guests_enable_hide_media.json": {
+        "hash": "c37ff8a3b32a79fb2a2a3ee12e8b2210"
+    },
+    "xc_hide_links_from_guests_image_no_validated_email.json": {
+        "hash": "e3e414affac3fc0b2cc274ea22636d34"
+    },
+    "xc_hide_links_from_guests_img_websites_excluded.json": {
+        "hash": "7d5e3e2df32e88c7092ac85bff3fcb9a"
+    },
+    "xc_hide_links_from_guests_limit_insert_attach.json": {
+        "hash": "87ceccab73a946d4f7505d612ce2268e"
+    },
+    "xc_hide_links_from_guests_limit_insert_image.json": {
+        "hash": "d0e6b42118104c427af2b210a6352fd9"
+    },
+    "xc_hide_links_from_guests_limit_insert_links.json": {
+        "hash": "6e0833ba89e383882f4f4cbc5774b626"
+    },
+    "xc_hide_links_from_guests_limit_insert_media.json": {
+        "hash": "3d782cdec9d9f19dfcfd47e7b4234c82"
+    },
+    "xc_hide_links_from_guests_media_no_validated_email.json": {
+        "hash": "3c49b2e2e3598e6cd4a248857d111510"
+    },
+    "xc_hide_links_from_guests_no_validated_email.json": {
+        "hash": "8a09da8077e2a28ca2a67779298427d1"
+    },
+    "xc_hide_links_from_guests_websites_excluded.json": {
+        "hash": "35554f04dea1e126639fac033d91a2cb"
+    }
+}

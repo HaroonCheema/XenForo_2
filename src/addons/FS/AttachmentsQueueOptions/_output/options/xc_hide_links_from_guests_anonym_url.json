@@ -1,0 +1,13 @@
+{
+    "edit_format": "textbox",
+    "edit_format_params": "",
+    "data_type": "string",
+    "sub_options": [],
+    "validation_class": "",
+    "validation_method": "",
+    "advanced": false,
+    "default_value": "https://anonym.es/?",
+    "relations": {
+        "fs_attachment_queue_guest_opt": 30
+    }
+}

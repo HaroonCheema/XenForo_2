@@ -1,0 +1,1 @@
+Separate each site with a line break. Allows to display certain site (img) to the visitor.

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<options>
+  <option option_id="xc_hide_link_from_guests_allowed_nodes" edit_format="callback" data_type="array">
+    <default_value>[]</default_value>
+    <edit_format_params>XF\Option\Forum::renderSelectMultiple</edit_format_params>
+    <sub_options>*</sub_options>
+    <relation group_id="fs_attachment_queue_guest_opt" display_order="6"/>
+  </option>
+  <option option_id="xc_hide_link_from_guests_attach_allowed_nodes" edit_format="callback" data_type="array">
+    <default_value>[]</default_value>
+    <edit_format_params>XF\Option\Forum::renderSelectMultiple</edit_format_params>
+    <sub_options>*</sub_options>
+    <relation group_id="fs_attachment_queue_guest_opt" display_order="330"/>
+  </option>
+  <option option_id="xc_hide_link_from_guests_image_allowed_nodes" edit_format="callback" data_type="array">
+    <default_value>[]</default_value>
+    <edit_format_params>XF\Option\Forum::renderSelectMultiple</edit_format_params>
+    <sub_options>*</sub_options>
+    <relation group_id="fs_attachment_queue_guest_opt" display_order="240"/>
+  </option>
+  <option option_id="xc_hide_link_from_guests_media_allowed_nodes" edit_format="callback" data_type="array">
+    <default_value>[]</default_value>
+    <edit_format_params>XF\Option\Forum::renderSelectMultiple</edit_format_params>
+    <sub_options>*</sub_options>
+    <relation group_id="fs_attachment_queue_guest_opt" display_order="102"/>
+  </option>
+  <option option_id="xc_hide_links_from_guests_allow_internal_img" edit_format="onoff" data_type="boolean">
+    <default_value>1</default_value>
+    <relation group_id="fs_attachment_queue_guest_opt" display_order="210"/>
+  </option>
+  <option option_id="xc_hide_links_from_guests_allow_internal_links" edit_format="onoff" data_type="boolean">
+    <default_value>0</default_value>
+    <relation group_id="fs_attachment_queue_guest_opt" display_order="2"/>
+  </option>
+  <option option_id="xc_hide_links_from_guests_anonym_url" edit_format="textbox" data_type="string">
+    <default_value>https://anonym.es/?</default_value>
+    <relation group_id="fs_attachment_queue_guest_opt" display_order="30"/>
+  </option>
+  <option option_id="xc_hide_links_from_guests_atta_no_validated_email" edit_format="onoff" data_type="boolean">
+    <default_value>1</default_value>
+    <relation group_id="fs_attachment_queue_guest_opt" display_order="320"/>
+  </option>
+  <option option_id="xc_hide_links_from_guests_enable_hide_attach" edit_format="onoff" data_type="boolean">
+    <default_value>1</default_value>
+    <relation group_id="fs_attachment_queue_guest_opt" display_order="310"/>
+  </option>
+  <option option_id="xc_hide_links_from_guests_enable_hide_image" edit_format="onoff" data_type="boolean">
+    <default_value>1</default_value>
+    <relation group_id="fs_attachment_queue_guest_opt" display_order="200"/>
+  </option>
+  <option option_id="xc_hide_links_from_guests_enable_hide_link" edit_format="onoff" data_type="boolean">
+    <default_value>1</default_value>
+    <relation group_id="fs_attachment_queue_guest_opt" display_order="1"/>
+  </option>
+  <option option_id="xc_hide_links_from_guests_enable_hide_media" edit_format="onoff" data_type="boolean">
+    <default_value>1</default_value>
+    <relation group_id="fs_attachment_queue_guest_opt" display_order="100"/>
+  </option>
+  <option option_id="xc_hide_links_from_guests_image_no_validated_email" edit_format="onoff" data_type="boolean">
+    <default_value>1</default_value>
+    <relation group_id="fs_attachment_queue_guest_opt" display_order="230"/>
+  </option>
+  <option option_id="xc_hide_links_from_guests_img_websites_excluded" edit_format="textbox" data_type="string">
+    <default_value></default_value>
+    <edit_format_params>rows=3</edit_format_params>
+    <relation group_id="fs_attachment_queue_guest_opt" display_order="220"/>
+  </option>
+  <option option_id="xc_hide_links_from_guests_limit_insert_attach" edit_format="spinbox" data_type="unsigned_integer">
+    <default_value>0</default_value>
+    <relation group_id="fs_attachment_queue_guest_opt" display_order="341"/>
+  </option>
+  <option option_id="xc_hide_links_from_guests_limit_insert_image" edit_format="spinbox" data_type="unsigned_numeric">
+    <default_value>0</default_value>
+    <relation group_id="fs_attachment_queue_guest_opt" display_order="260"/>
+  </option>
+  <option option_id="xc_hide_links_from_guests_limit_insert_links" edit_format="spinbox" data_type="unsigned_integer">
+    <default_value>0</default_value>
+    <relation group_id="fs_attachment_queue_guest_opt" display_order="11"/>
+  </option>
+  <option option_id="xc_hide_links_from_guests_limit_insert_media" edit_format="spinbox" data_type="unsigned_integer">
+    <default_value>0</default_value>
+    <relation group_id="fs_attachment_queue_guest_opt" display_order="111"/>
+  </option>
+  <option option_id="xc_hide_links_from_guests_media_no_validated_email" edit_format="onoff" data_type="boolean">
+    <default_value>1</default_value>
+    <relation group_id="fs_attachment_queue_guest_opt" display_order="101"/>
+  </option>
+  <option option_id="xc_hide_links_from_guests_no_validated_email" edit_format="onoff" data_type="boolean">
+    <default_value>1</default_value>
+    <relation group_id="fs_attachment_queue_guest_opt" display_order="3"/>
+  </option>
+  <option option_id="xc_hide_links_from_guests_websites_excluded" edit_format="textbox" data_type="string">
+    <default_value></default_value>
+    <edit_format_params>rows=3</edit_format_params>
+    <relation group_id="fs_attachment_queue_guest_opt" display_order="5"/>
+  </option>
+</options>

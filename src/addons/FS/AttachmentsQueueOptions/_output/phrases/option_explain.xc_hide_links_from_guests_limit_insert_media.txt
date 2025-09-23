@@ -1,0 +1,2 @@
+Maximum number of medias to be replaced with the error. Within a post. after that the media is only removed. 
+0 = disabled

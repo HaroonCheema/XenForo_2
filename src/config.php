@@ -19,6 +19,6 @@ $config['enableLivePayments'] = false;
 
 $config['debug'] = true;
 
-$config['development']['defaultAddOn'] = 'D2/RebuildMissingThumbnails';
+$config['development']['defaultAddOn'] = 'FS/AttachmentsQueueOptions';
 
 $config['development']['enabled'] = true;

@@ -1,0 +1,2 @@
+Maximum number of attachs to be replaced with the error. Within a post. after that the attach is only removed. 
+0 = disabled

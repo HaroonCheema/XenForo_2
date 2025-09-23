@@ -1,0 +1,1 @@
+Separate each site with a comma. Allows to display certain site (link) to the visitor.

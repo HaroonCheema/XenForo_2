@@ -1,0 +1,1 @@
+Hide links of the users who have not validated their email
