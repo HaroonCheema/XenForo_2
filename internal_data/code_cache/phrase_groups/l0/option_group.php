@@ -99,6 +99,7 @@ return array (
   'option_group.mraRenameAttachments' => '[MMO] Rename Attachments',
   'option_group.newsfeed' => 'News feed',
   'option_group.nfGiftUpgrades' => 'NixFifty: Gift Upgrades',
+  'option_group.nf_joomla_bdrige' => '[NF] Joomla Bridge',
   'option_group.nick97traktIntegration' => '[nick97] Trakt Integration',
   'option_group.nodeList' => 'Node & forum list',
   'option_group.ozzmodz_badges' => '[OzzModz] Badges',

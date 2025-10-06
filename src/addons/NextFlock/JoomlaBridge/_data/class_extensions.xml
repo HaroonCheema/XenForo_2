@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class_extensions>
+  <extension from_class="XF\Admin\Controller\User" to_class="NextFlock\JoomlaBridge\XF\Admin\Controller\User" execute_order="10" active="1"/>
+  <extension from_class="XF\ControllerPlugin\Login" to_class="NextFlock\JoomlaBridge\XF\ControllerPlugin\Login" execute_order="10" active="1"/>
+  <extension from_class="XF\Pub\Controller\Account" to_class="NextFlock\JoomlaBridge\XF\Pub\Controller\Account" execute_order="10" active="1"/>
+  <extension from_class="XF\Pub\Controller\Forum" to_class="NextFlock\JoomlaBridge\XF\Pub\Controller\Forum" execute_order="10" active="1"/>
+  <extension from_class="XF\Pub\Controller\Logout" to_class="NextFlock\JoomlaBridge\XF\Pub\Controller\Logout" execute_order="10" active="1"/>
+  <extension from_class="XF\Pub\Controller\Register" to_class="NextFlock\JoomlaBridge\XF\Pub\Controller\Register" execute_order="10" active="1"/>
+</class_extensions>

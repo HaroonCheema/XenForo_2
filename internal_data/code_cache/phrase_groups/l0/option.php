@@ -592,6 +592,8 @@ return array (
   'option.newsFeedMessageSnippetLength' => 'News feed message snippet maximum length',
   'option.nfAllowGiftingOnWarnedContent' => 'Allow gifting on warned content',
   'option.nfDisplayGiftingOnWarnedContent' => 'Displaying gifting on warned content',
+  'option.nf_jb_baseurl' => 'Joomla BaseUrl',
+  'option.nf_jb_token' => 'Api Token',
   'option.nick97_trakt_api_key' => 'Trakt API key',
   'option.nick97_watch_list_trakt_api_key' => 'Trakt API key',
   'option.node_id_for_thumb' => 'Select Thumbnail Node',

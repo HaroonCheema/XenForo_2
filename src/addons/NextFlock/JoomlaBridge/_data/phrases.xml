@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="option.nf_jb_baseurl" version_id="9000" version_string="0.9.0"><![CDATA[Joomla BaseUrl]]></phrase>
+  <phrase title="option.nf_jb_token" version_id="9000" version_string="0.9.0"><![CDATA[Api Token]]></phrase>
+  <phrase title="option_explain.nf_jb_baseurl" version_id="9000" version_string="0.9.0"><![CDATA[Joomla base url , dont add the backslash at the end "/"]]></phrase>
+  <phrase title="option_explain.nf_jb_token" version_id="9000" version_string="0.9.0"><![CDATA[]]></phrase>
+  <phrase title="option_group.nf_joomla_bdrige" version_id="9000" version_string="0.9.0"><![CDATA[[NF] Joomla Bridge]]></phrase>
+  <phrase title="option_group_description.nf_joomla_bdrige" version_id="9000" version_string="0.9.0"><![CDATA[Joomla Bridge Options]]></phrase>
+</phrases>

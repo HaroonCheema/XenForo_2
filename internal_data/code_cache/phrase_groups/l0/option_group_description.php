@@ -103,6 +103,7 @@ You may set a user into \'discouraged\' mode by editing their user profile, or d
 <br />
 It is possible to filter the news feed down to just users you follow, or a single user.',
   'option_group_description.nfGiftUpgrades' => 'Options that control the Gift Upgrade add-on.',
+  'option_group_description.nf_joomla_bdrige' => 'Joomla Bridge Options',
   'option_group_description.nick97traktIntegration' => 'Options for the Trakt Movies and TV Show',
   'option_group_description.nodeList' => 'The node and forum list is the primary navigational structure for XenForo\'s forums and pages.',
   'option_group_description.ozzmodz_badges' => 'Manage global settings for Badges',
