@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<routes>
+  <route route_type="admin" route_prefix="call-counts" format=":int&lt;thread_id,title&gt;/" controller="FS\CallWhatsApp:CallCounter" context="call_counts"/>
+  <route route_type="admin" route_prefix="call-logs" format=":int&lt;thread_id,title&gt;/" controller="FS\CallWhatsApp:CallLog" context="call_logs"/>
+</routes>

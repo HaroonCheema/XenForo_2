@@ -143,6 +143,7 @@ return array (
   'option_group.xc_hide_links_from_guests' => '[XenConcept] Hide links / Medias / Images (BbCode)',
   'option_group.xc_threadsaleitem' => '[FS] Thread Sale Item',
   'option_group.xenforoMessenger' => '[021] XenForo Messenger',
+  'option_group.xf_callwhats_up' => '[FS] Call WhatsUp',
   'option_group.xfmg' => 'XenForo Media Gallery',
   'option_group.xfrm' => 'XenForo Resource Manager',
   'option_group.xgtForumistatistik_Secenekleri' => '📊 [XGT] Forum istatistik - Seçenekler',

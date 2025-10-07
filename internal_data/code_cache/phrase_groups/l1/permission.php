@@ -59,6 +59,7 @@ return array (
   'permission.bsChat_useAiBots' => 'Use AI bots',
   'permission.bsChat_viewBannedList' => 'View banned list',
   'permission.bypassPasswordGroup_bypassPassword' => 'Bypass Password',
+  'permission.call_whats_app_show' => 'Allow to display call & whats up button ?',
   'permission.conversation_aibGdEMaxRepliesPerConv' => 'Max replies per conversation',
   'permission.conversation_aibGdEMaxRepsPerDayConv' => 'Max replies in conversations per day',
   'permission.conversation_aibGdEUse' => 'Use bots in conversation',

@@ -16,7 +16,7 @@ return array(
 		'type' => 'tel',
 		'required' => 'required',
 	), array(
-		'label' => 'Phone Number',
+		'label' => 'Phone',
 		'hint' => 'Required',
 	)) . '
 						' . $__templater->formSubmitRow(array(

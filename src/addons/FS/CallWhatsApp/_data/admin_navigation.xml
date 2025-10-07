@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<admin_navigation>
+  <admin_navigation_entry navigation_id="call_counts" parent_navigation_id="whats_uplogs" display_order="20" link="call-counts" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="call_logs" parent_navigation_id="whats_uplogs" display_order="10" link="call-logs" debug_only="0" development_only="0" hide_no_children="0"/>
+  <admin_navigation_entry navigation_id="whats_uplogs" display_order="100" icon="fa-phone" debug_only="0" development_only="0" hide_no_children="0"/>
+</admin_navigation>

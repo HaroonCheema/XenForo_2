@@ -236,7 +236,7 @@ return array(
 		<div class="contentRow contentRow--alignMiddle' . (($__vars['depth'] > 1) ? (' u-depth' . ($__vars['depth'] - 1)) : '') . '">
 			<div class="contentRow-main">
 				<h2 class="contentRow-title">
-					<a href="' . ($__vars['node']['snog_posid'] ? $__templater->func('link', array('form/select', array('posid' => $__vars['node']['snog_posid'], ), ), true) : $__templater->func('link', array('forums/post-thread', $__vars['node'], ), true)) . '" class="fauxBlockLink-blockLink">
+					<a href="' . (($__vars['node']['snog_posid'] ? $__templater->func('link', array('form/select', array('posid' => $__vars['node']['snog_posid'], ), ), false) : $__vars['__globals']['item']) ? $__templater->func('link', array('forums/post-thread', $__vars['node'], array('item_id' => $__vars['__globals']['item']['item_id'], ), ), true) : $__templater->func('link', array('forums/post-thread', $__vars['node'], ), true)) . '" class="fauxBlockLink-blockLink">
 						' . $__templater->escape($__vars['node']['title']) . '
 					</a>
 				</h2>

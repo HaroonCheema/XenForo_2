@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="admin" title="call_counts" version_id="1000700" version_string="1.0.7"><![CDATA[<xf:title>{{ phrase('fs_call_logs') }}</xf:title>
+
+<xf:if is="$callCounts is not empty">
+	<xf:form action="" class="block" ajax="true">
+		<div class="block-outer">
+				<xf:macro id="filter_macros::quick_filter" arg-key="calllogs"
+					arg-ajax="{{ link('call-counts', null) }}"
+					arg-class="block-outer-opposite" />
+		</div>
+		<div class="block-container">
+			<div class="block-body">
+				<xf:datalist data-xf-init="responsive-data-list">
+					<xf:datarow rowtype="header">
+						<xf:cell>{{ phrase('thread') }}</xf:cell>
+						
+						<xf:cell>{{phrase('call_count')}}</xf:cell>
+						<xf:cell>{{phrase('whatsup_count')}}</xf:cell>
+					</xf:datarow>
+
+					<xf:foreach loop="$callCounts" value="$log">
+						
+						<xf:datarow>
+							<xf:cell><a href="{{ link_type('public', 'threads',$log.Thread) }}" target="_blank">{$log.Thread.title}</a></xf:cell>
+							
+							<xf:cell>{{$log.call_count}}</xf:cell>
+							<xf:cell>{{$log.whatsapp_count}}</xf:cell>
+						</xf:datarow>
+					</xf:foreach>
+				</xf:datalist>
+			</div>
+			<div class="block-footer">
+				<span class="block-footer-counter">{{ display_totals($callCounts, $total) }}</span>
+			</div>
+		</div>
+	</xf:form>
+<xf:else />
+	<div class="blockMessage">{{ phrase('no_results_found') }}</div>
+</xf:if>
+
+<xf:pagenav 
+	page="{$page}" 
+	perpage="{$perPage}" 
+	total="{$total}"
+	link="call-counts" 
+	params="{$filters}" 
+	wrapperclass="js-filterHide block-outer block-outer--after" />]]></template>
+  <template type="admin" title="call_logs" version_id="1000800" version_string="1.0.8"><![CDATA[<xf:title>{{ phrase('fs_call_logs') }}</xf:title>
+
+<xf:if is="$callLogs is not empty">
+	<xf:form action="" class="block" ajax="true">
+		<div class="block-outer">
+			<xf:macro id="filter_macros::quick_filter" arg-key="calllogs"
+					arg-ajax="{{ link('call-logs', null) }}"
+					arg-class="block-outer-opposite" />
+		</div>
+		<div class="block-container">
+			<div class="block-body">
+				<xf:datalist data-xf-init="responsive-data-list">
+					<xf:datarow rowtype="header">
+						<xf:cell>{{ phrase('thread') }}</xf:cell>
+						<xf:cell>{{ phrase('post') }}</xf:cell>
+						<xf:cell>{{ phrase('phone_number') }}</xf:cell>
+						<xf:cell>{{ phrase('gender') }}</xf:cell>
+						<xf:cell>{{ phrase('city') }}</xf:cell>
+						<xf:cell>{{ phrase('action_type') }}</xf:cell>
+						<xf:cell>{{ phrase('username') }}</xf:cell>
+						<xf:cell>{{ phrase('ip_address') }}</xf:cell>
+						<xf:cell>{{ phrase('timestamp') }}</xf:cell>
+						<xf:comment>
+							<xf:cell>{{phrase('call_count')}}</xf:cell>
+							<xf:cell>{{phrase('whatsup_count')}}</xf:cell>
+						</xf:comment>
+					</xf:datarow>
+
+					<xf:foreach loop="$callLogs" value="$log">
+						
+						<xf:datarow>
+							<xf:cell><a href="{{ link_type('public', 'threads',$log.Thread) }}" target="_blank">{$log.Thread.title}</a></xf:cell>
+							<xf:cell><a href="{{ link_type('public', 'threads', $log.Thread) }}#post-{{$log.post_id}}" target="_blank">Post</a></xf:cell>
+							<xf:cell>{$log.phone_number}</xf:cell>
+							<xf:cell>{$log.gender}</xf:cell>
+							<xf:cell>{$log.city}</xf:cell>
+							<xf:cell>{$log.action_type}</xf:cell>
+							<xf:cell>
+								<xf:if is="$log.user_id">
+									<a href="{{ link('users/edit', $log.User) }}" target="_blank">{$log.username}</a>
+								<xf:else />
+									{$log.username}
+								</xf:if>
+							</xf:cell>
+							<xf:cell>{$log.ip_address}</xf:cell>
+							<xf:cell><xf:date time="$log.timestamp"/></xf:cell>
+							<xf:comment>
+								<xf:cell>{{$log.ThreadCounter.call_count}}</xf:cell>
+								<xf:cell>{{$log.ThreadCounter.whatsapp_count}}</xf:cell>
+							</xf:comment>
+						</xf:datarow>
+					</xf:foreach>
+				</xf:datalist>
+			</div>
+			<div class="block-footer">
+				<span class="block-footer-counter">{{ display_totals($callLogs, $total) }}</span>
+			</div>
+		</div>
+	</xf:form>
+<xf:else />
+	<div class="blockMessage">{{ phrase('no_results_found') }}</div>
+</xf:if>
+
+<xf:pagenav 
+		page="{$page}" 
+		perpage="{$perPage}" 
+		total="{$total}"
+		link="call-logs" 
+		params="{$filters}" 
+		wrapperclass="js-filterHide block-outer block-outer--after" />]]></template>
+  <template type="public" title="call_whatsup" version_id="1000900" version_string="1.0.9"><![CDATA[<xf:set var="$allowCallWhatsup" value="{$thread.canCallNumber()}" />
+<xf:if is="$allowCallWhatsup">
+	<div class="whats-call-container">
+		<button type="button" class="thread-whatups  js-noTouchProxy"
+			data-xf-init="thread-call-log"
+			data-thread-id="{$thread.thread_id}"
+				data-action-type="whatsapp">
+			<xf:fa icon="fab fa-whatsapp" />
+			<span class="button-text">WhatsApp</span>
+		</button>
+
+		<button type="button" class="thread-phonecall"
+				data-xf-init="thread-call-log"
+				data-thread-id="{$thread.thread_id}"
+				data-action-type="call">
+			<xf:fa icon="fas fa-phone" />
+			<span class="button-text">Call</span>
+		</button>
+
+	</div>
+	<xf:js addon="CallWhatsApp" src="threadcall/call-log.js?{{$xf.time}}" />
+</xf:if>]]></template>
+  <template type="public" title="whatsup_call.less" version_id="1000700" version_string="1.0.7"><![CDATA[/* Container styling */
+.whats-call-container {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+/* Common button styles */
+.whats-call-container button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    color: #fff;
+}
+
+/* WhatsApp button */
+.thread-whatups {
+    background-color: #25D366; /* WhatsApp green */
+}
+
+.thread-whatups:hover {
+    background-color: #1ebe57;
+}
+
+/* Call button */
+.thread-phonecall {
+    background-color: #0099FF; /* Blue */
+}
+
+.thread-phonecall:hover {
+    background-color: #0099FF;
+}
+
+/* Button text styling */
+.whats-call-container .button-text {
+    margin-left: 4px;
+}
+
+/* Responsive: stack on small screens */
+@media (max-width: 480px) {
+    .whats-call-container {
+        flex-direction: column;
+        gap: 8px;
+    }
+}
+body[data-template="forum_view"] {
+	
+	.whats-call-container {
+		display: flex !important;
+		gap: 0px !important;
+		flex-wrap: unset !important;  
+		margin-top: 2px !important;
+		justify-content: space-around !important;
+		margin-bottom: 2px !important;
+	}
+	.whats-call-container button {
+		    display: block !important;
+			padding: 6px 20px !important;
+			font-size: 10px !important;
+			font-weight: 600;
+			border: none;
+			border-radius: 6px;
+			cursor: pointer;
+			transition: all 0.2s ease-in-out;
+    		color: #fff;
+	}
+	.whats-call-container .button-text {
+		margin-left: 0px;
+	}
+}
+@media (max-width: 480px) {
+	body[data-template="forum_view"] .whats-call-container button {
+		margin-top: 5px !important;
+	}
+}]]></template>
+</templates>

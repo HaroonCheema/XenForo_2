@@ -17,6 +17,7 @@ return array (
   'permission_interface.bsRtcAiBots' => 'Real-Time Chat – AI Bots',
   'permission_interface.bsRtcModerator' => 'Real-Time Chat – Moderator Permissions',
   'permission_interface.bsXFWebsockets' => '[021] XenForo WebSockets',
+  'permission_interface.call_whats_app' => '[FS] Call Whats App',
   'permission_interface.conversationModeratorPermissions' => 'Conversation moderator permissions',
   'permission_interface.conversationPermissions' => 'Conversation permissions',
   'permission_interface.d_monetize' => 'Monetize',

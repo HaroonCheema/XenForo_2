@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="action_type" version_id="1000200" version_string="1.0.2"><![CDATA[Action Type]]></phrase>
+  <phrase title="admin_navigation.call_counts" version_id="1000200" version_string="1.0.2"><![CDATA[Thread Call Counts]]></phrase>
+  <phrase title="admin_navigation.call_logs" version_id="1000200" version_string="1.0.2"><![CDATA[Call Logs]]></phrase>
+  <phrase title="admin_navigation.whats_uplogs" version_id="1000200" version_string="1.0.2"><![CDATA[Call Whats App Logs]]></phrase>
+  <phrase title="call_count" version_id="1000200" version_string="1.0.2"><![CDATA[Call]]></phrase>
+  <phrase title="city" version_id="1000200" version_string="1.0.2"><![CDATA[City]]></phrase>
+  <phrase title="fs_call_logs" version_id="1000200" version_string="1.0.2"><![CDATA[Call Logs]]></phrase>
+  <phrase title="fs_opening_call" version_id="1000100" version_string="1.0.1"><![CDATA[Opening Call......]]></phrase>
+  <phrase title="fs_opening_whatsapp" version_id="1000100" version_string="1.0.1"><![CDATA[Opening Whatsup.......]]></phrase>
+  <phrase title="fs_whatsapp_default_message" version_id="1000100" version_string="1.0.1"><![CDATA[Hi, I read your reviews on PUNTERFORUM, I’d like to meet you as soon as possibile.]]></phrase>
+  <phrase title="gender" version_id="1000200" version_string="1.0.2"><![CDATA[Gender]]></phrase>
+  <phrase title="option.enabled_whatsup_forums" version_id="1000100" version_string="1.0.1"><![CDATA[Enabled Forums]]></phrase>
+  <phrase title="option.toggle_logging" version_id="1000100" version_string="1.0.1"><![CDATA[Toggle Logging ON/OFF]]></phrase>
+  <phrase title="option_explain.enabled_whatsup_forums" version_id="1000100" version_string="1.0.1"><![CDATA[Select which forums display Call & WhatsApp buttons.]]></phrase>
+  <phrase title="option_explain.toggle_logging" version_id="1000100" version_string="1.0.1"><![CDATA[]]></phrase>
+  <phrase title="option_group.xf_callwhats_up" version_id="1000100" version_string="1.0.1"><![CDATA[[FS] Call WhatsUp]]></phrase>
+  <phrase title="option_group_description.xf_callwhats_up" version_id="1000100" version_string="1.0.1"><![CDATA[Settings for Call & WhatsApp buttons.]]></phrase>
+  <phrase title="permission.call_whats_app_show" version_id="1000100" version_string="1.0.1"><![CDATA[Allow to display call & whats up button ?]]></phrase>
+  <phrase title="permission_interface.call_whats_app" version_id="1000100" version_string="1.0.1"><![CDATA[[FS] Call Whats App]]></phrase>
+  <phrase title="phone_number" version_id="1000200" version_string="1.0.2"><![CDATA[Phone]]></phrase>
+  <phrase title="timestamp" version_id="1000200" version_string="1.0.2"><![CDATA[Date]]></phrase>
+  <phrase title="whatsup_count" version_id="1000200" version_string="1.0.2"><![CDATA[Whats up]]></phrase>
+</phrases>

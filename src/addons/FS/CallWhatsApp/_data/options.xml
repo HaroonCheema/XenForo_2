@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<options>
+  <option option_id="enabled_whatsup_forums" edit_format="callback" data_type="array" advanced="0">
+    <default_value>[]</default_value>
+    <edit_format_params>\XF\Option\Forum::renderSelectMultiple</edit_format_params>
+    <sub_options>*</sub_options>
+    <relation group_id="xf_callwhats_up" display_order="20"/>
+  </option>
+  <option option_id="toggle_logging" edit_format="onoff" data_type="integer" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="xf_callwhats_up" display_order="10"/>
+  </option>
+</options>

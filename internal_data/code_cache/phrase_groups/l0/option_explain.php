@@ -425,6 +425,7 @@ By default, we will always serve the graphics from the preferred CDN, though if 
 <br />
 This option requires that the specified account is a catch-all account or supports a "+" as a wildcard separator (such as in Gmail). For example, if this option is enabled with a bounce address of bounce@example.com, the email might be returned to bounce+123abc+user=domain.com@example.com.',
   'option_explain.enable_first_image_url' => '',
+  'option_explain.enabled_whatsup_forums' => 'Select which forums display Call & WhatsApp buttons.',
   'option_explain.extraCaptchaKeys' => 'This option can\'t be edited manually. It is edited only via the "captcha" option.',
   'option_explain.facebookLike' => 'If this feature is enabled, a Facebook button will be displayed on various pages including the thread view page, allowing Facebook users to share it with their Facebook friends.',
   'option_explain.floodCheckLength' => 'Users will have to wait this many seconds between posting messages. Users with the permission "Can bypass flood check" will be exempt from this option.',
@@ -1135,6 +1136,7 @@ Example :  80px if you using grid addon add 100% or leave it blank',
   'option_explain.tmdbthreads_watchProviderRegion' => '',
   'option_explain.tmdbthreads_watchProviderRegions' => 'Leave it empty to disable.<br />
 Phrases can be translated with "snog_movies_country.{countryCode}" key.',
+  'option_explain.toggle_logging' => '',
   'option_explain.tosForceWhitelist' => 'If you decide to <a href="admin.php?force-agreement/terms" target="_blank">Force terms and rules agreement</a> then the routes listed here will bypass being redirected to the force agreement page. The route path is the section of the URL to a page after your main forum directory URL, such as forums/ or pages/page-name/. Do not reference a route filter here.',
   'option_explain.tosUrl' => 'This link will be shown in the footer and users will have to agree to the terms and rules during registration.',
   'option_explain.tourn_user_conversation_id' => 'the person who start the conversation from the admin side should not be register in user side',
