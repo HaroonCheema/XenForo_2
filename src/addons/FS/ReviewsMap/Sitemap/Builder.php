@@ -157,7 +157,20 @@ class Builder
 			return null;
 		}
 
-		$records = $handler->getRecords($lastId);
+		if ($contentType == 'thread') {
+			$records = $handler->getThreadRecords($lastId);
+		} else {
+			$records = $handler->getRecords($lastId);
+		}
+
+		// $options = \XF::options();
+
+		// $threadLimits = intval($options->fs_thread_sitemap_limits);
+
+		// echo "<pre>";
+		// var_dump($threadLimits, $records);
+		// exit;
+
 		if (!$records || !count($records)) {
 			return null;
 		}

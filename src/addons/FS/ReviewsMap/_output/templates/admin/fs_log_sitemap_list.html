@@ -1,0 +1,46 @@
+<xf:title>{{ phrase('fs_sitemap_log') }}</xf:title>
+
+<xf:pageaction>
+	<xf:button href="{{ base_url('reviewsmap.php') }}" target="_blank" icon="export">{{ phrase('fs_download_sitemap') }}</xf:button>
+</xf:pageaction>
+
+<xf:if is="$entries is not empty">
+	<div class="block">
+		<div class="block-container">
+			<div class="block-body">
+				<xf:datalist data-xf-init="responsive-data-list">
+					<xf:datarow rowtype="header">
+						<xf:cell>{{ phrase('start_date') }}</xf:cell>
+						<xf:cell>{{ phrase('completion_date') }}</xf:cell>
+						<xf:cell class="dataList-cell--min">{{ phrase('total_files') }}</xf:cell>
+						<xf:cell class="dataList-cell--min">{{ phrase('total_urls') }}</xf:cell>
+						<xf:cell class="dataList-cell--min">{{ phrase('compressed') }}</xf:cell>
+					</xf:datarow>
+
+					<xf:foreach loop="$entries" value="$entry">
+						<xf:datarow rowclass="{{ $entry.is_active ? 'dataList-row--highlighted' : '' }}">
+							<xf:cell>
+								<xf:date time="{$entry.reviewmap_id}" data-full-date="true" />
+							</xf:cell>
+							<xf:cell>
+								<xf:if is="$entry.complete_date">
+									<xf:date time="{$entry.complete_date}" data-full-date="true" />
+									<xf:else />
+									{{ phrase('n_a') }}
+								</xf:if>
+							</xf:cell>
+							<xf:cell>{$entry.file_count|number}</xf:cell>
+							<xf:cell>{$entry.entry_count|number}</xf:cell>
+							<xf:cell>{{ $entry.is_compressed ? phrase('yes') : phrase('no') }}</xf:cell>
+						</xf:datarow>
+					</xf:foreach>
+				</xf:datalist>
+			</div>
+			<div class="block-footer">
+				<span class="block-footer-counter">{{ display_totals($entries, $total) }}</span>
+			</div>
+		</div>
+	</div>
+	<xf:else />
+	<div class="blockMessage">{{ phrase('there_no_sitemap_logs_to_display') }}</div>
+</xf:if>

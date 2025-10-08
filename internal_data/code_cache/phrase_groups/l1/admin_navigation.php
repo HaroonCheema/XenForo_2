@@ -168,6 +168,7 @@ return array (
   'admin_navigation.fs_search_own_thread' => 'Add',
   'admin_navigation.fs_select_team' => '[FS] Create Team',
   'admin_navigation.fs_show_icon_in_nav_add' => 'Add icon',
+  'admin_navigation.fs_thread_sitemapLog' => 'Thread sitemap log',
   'admin_navigation.fs_user_car_details_add' => 'Add Car Details',
   'admin_navigation.fs_user_car_location_add' => 'Add Location',
   'admin_navigation.fs_user_car_model' => 'Car Details',

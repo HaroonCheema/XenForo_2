@@ -1,0 +1,13 @@
+{
+    "edit_format": "radio",
+    "edit_format_params": "view_count={{ phrase('Views') }}\nreply_count={{ phrase('Replies') }}",
+    "data_type": "string",
+    "sub_options": [],
+    "validation_class": "",
+    "validation_method": "",
+    "advanced": false,
+    "default_value": "view_count",
+    "relations": {
+        "reviewmap": 60
+    }
+}

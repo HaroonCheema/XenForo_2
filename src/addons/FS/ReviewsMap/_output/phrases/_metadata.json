@@ -1,15 +1,57 @@
 {
+    "admin_navigation.fs_thread_sitemapLog.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "125cd1c04e7250d0736159fbcaa15ab6"
+    },
     "cron_entry.fs_sitemap.txt": {
         "global_cache": false,
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
         "hash": "4ea999ff1d4bac0cb56d5c6f4e4b839a"
     },
+    "fs_download_sitemap.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "b0edf36ed95cddd572f7427a6a063924"
+    },
     "fs_rebuild_thread_sitemap.txt": {
         "global_cache": false,
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
         "hash": "863165593d48070310dc87c66b0311b9"
+    },
+    "fs_sitemap_log.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "125cd1c04e7250d0736159fbcaa15ab6"
+    },
+    "option.fs_thread_sitemap_from.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "5da618e8e4b89c66fe86e32cdafde142"
+    },
+    "option.fs_thread_sitemap_limits.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d97477d6d8a838ead9348185bb5b6742"
+    },
+    "option.fs_thread_sitemap_order_by.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "4a0622b1647e49dd5c738185bb8f0df2"
+    },
+    "option.fs_thread_sitemap_to.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "e12167aa0a7698e6ebc92b4ce3909b53"
     },
     "option.reviewmapAutoRebuild.txt": {
         "global_cache": false,
@@ -28,6 +70,30 @@
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
         "hash": "508ff54a74c09beb70225d2d340aaace"
+    },
+    "option_explain.fs_thread_sitemap_from.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "option_explain.fs_thread_sitemap_limits.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "7c7de6403c7250053112039a17269537"
+    },
+    "option_explain.fs_thread_sitemap_order_by.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "option_explain.fs_thread_sitemap_to.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
     },
     "option_explain.reviewmapAutoRebuild.txt": {
         "global_cache": false,

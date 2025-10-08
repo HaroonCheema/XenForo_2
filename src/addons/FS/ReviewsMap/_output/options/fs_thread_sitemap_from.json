@@ -1,0 +1,13 @@
+{
+    "edit_format": "template",
+    "edit_format_params": "fs_thread_sitemap_from_to",
+    "data_type": "string",
+    "sub_options": [],
+    "validation_class": "",
+    "validation_method": "",
+    "advanced": false,
+    "default_value": "",
+    "relations": {
+        "reviewmap": 70
+    }
+}

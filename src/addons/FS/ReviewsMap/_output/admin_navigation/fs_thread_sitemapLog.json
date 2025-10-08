@@ -1,0 +1,10 @@
+{
+    "parent_navigation_id": "logsMisc",
+    "display_order": 1002,
+    "link": "logs/reviewmap",
+    "icon": "",
+    "admin_permission_id": "viewLogs",
+    "debug_only": false,
+    "development_only": false,
+    "hide_no_children": false
+}

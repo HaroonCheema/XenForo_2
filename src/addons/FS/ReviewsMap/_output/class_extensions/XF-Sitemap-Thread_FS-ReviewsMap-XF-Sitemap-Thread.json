@@ -1,0 +1,6 @@
+{
+    "from_class": "XF\\Sitemap\\Thread",
+    "to_class": "FS\\ReviewsMap\\XF\\Sitemap\\Thread",
+    "execute_order": 10,
+    "active": true
+}
