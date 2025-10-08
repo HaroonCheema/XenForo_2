@@ -1,0 +1,1 @@
+If desired, you may include additional URLs that would not otherwise be included in the reviewmap. Place each URL on separate lines. Note that these URLs must match your board URL or they will not be included. Partial URLs will be converted to absolute URLs automatically.

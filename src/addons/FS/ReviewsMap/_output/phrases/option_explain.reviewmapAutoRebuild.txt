@@ -1,0 +1,1 @@
+If this option is enabled, the reviewmap will be rebuilt automatically periodically. If this option is disabled, the reviewmap will only be updated when it is rebuilt manually through <i>Tools &gt; Rebuild caches</i>. The current reviewmap can be accessed via <a href="reviewsmap.php">reviewsmap.php</a>.

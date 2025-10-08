@@ -1,0 +1,1 @@
+Once a reviewmap is built, if this option is enabled, the updated version will be automatically submitted to the search engines specified. {$url} is replaced with your reviewmap URL automatically. If this option is not enabled, search engines will only know about the reviewmap if it is listed in robots.txt or if you manually submit it to them.

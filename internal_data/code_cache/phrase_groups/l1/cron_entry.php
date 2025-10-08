@@ -46,6 +46,7 @@ return array (
   'cron_entry.fs_schdulerposting' => 'Scheduler posting',
   'cron_entry.fs_scheduleBanUsers' => '[FS] Schedule Ban User',
   'cron_entry.fs_send_email_from_table' => '[FS] Send E-mail from table',
+  'cron_entry.fs_sitemap' => '[FS] Rebuild Thread sitemap',
   'cron_entry.fs_upgradeUsergroup' => '[FS] Upgrade Usergroup by Messages',
   'cron_entry.fs_upgradeUsergroups' => '[FS] Upgrade Usergroup by Login',
   'cron_entry.fs_zoom_meeting_fresh_tok' => '[FS] Zoom refresh Token',

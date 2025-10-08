@@ -1,0 +1,16 @@
+{
+    "edit_format": "onofftextbox",
+    "edit_format_params": "onoff=enabled\nvalue=urls\ntype=textarea\nrows=3\ndefault=https://www.google.com/webmasters/tools/ping?reviewmap={$url}\\nhttps://www.bing.com/ping?reviewmap={$url}",
+    "data_type": "array",
+    "sub_options": [
+        "enabled",
+        "urls"
+    ],
+    "validation_class": "",
+    "validation_method": "",
+    "advanced": false,
+    "default_value": "{\"enabled\":\"1\",\"urls\":\"https:\\/\\/www.google.com\\/webmasters\\/tools\\/ping?reviewmap={$url}\\nhttps:\\/\\/www.bing.com\\/ping?reviewmap={$url}\"}",
+    "relations": {
+        "reviewmap": 20
+    }
+}

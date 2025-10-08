@@ -1,0 +1,62 @@
+{
+    "cron_entry.fs_sitemap.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "4ea999ff1d4bac0cb56d5c6f4e4b839a"
+    },
+    "fs_rebuild_thread_sitemap.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "863165593d48070310dc87c66b0311b9"
+    },
+    "option.reviewmapAutoRebuild.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "a9d4be2690241334945c82027dcf4125"
+    },
+    "option.reviewmapAutoSubmit.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "057e234146de5bfdb37a20a385b346a5"
+    },
+    "option.reviewmapExtraUrls.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "508ff54a74c09beb70225d2d340aaace"
+    },
+    "option_explain.reviewmapAutoRebuild.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "ee38cfd93eac04f9895533c414bee84b"
+    },
+    "option_explain.reviewmapAutoSubmit.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "1e28871cff0934881b813bbb76cd0375"
+    },
+    "option_explain.reviewmapExtraUrls.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "a8df0936f5b828b17f619420189a193a"
+    },
+    "option_group.reviewmap.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "6219aecbfd84f4d427daf41f2b990f6b"
+    },
+    "option_group_description.reviewmap.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "ee029663ef06380cec1366fd81e0d745"
+    }
+}

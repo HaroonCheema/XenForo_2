@@ -1,0 +1,1 @@
+These options allow you to control how the XML reviewmap is generated and submitted to search engines. The reviewmap can be used to speed up search engine indexing of your site.

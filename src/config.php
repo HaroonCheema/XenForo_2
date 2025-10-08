@@ -19,6 +19,6 @@ $config['enableLivePayments'] = false;
 
 $config['debug'] = true;
 
-$config['development']['defaultAddOn'] = 'FS/AttachmentsQueueOptions';
+$config['development']['defaultAddOn'] = 'FS/ReviewsMap';
 
 $config['development']['enabled'] = true;

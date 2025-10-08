@@ -202,6 +202,16 @@ return array(
 ' . '
 
 ' . $__templater->callMacro(null, 'rebuild_job', array(
+		'header' => 'Rebuild thread sitemap',
+		'job' => 'FS\\ReviewsMap:ThreadSitemap',
+	), $__vars) . '
+
+' . $__templater->callMacro(null, 'rebuild_job', array(
+		'header' => 'Rebuild attachment missing thumbnails',
+		'job' => 'FS\\RebuildMissingThumbnails:AttachmentMissingThumb',
+	), $__vars) . '
+
+' . $__templater->callMacro(null, 'rebuild_job', array(
 		'header' => 'Rebuild attachment missing thumbnails',
 		'job' => 'D2\\RebuildMissingThumbnails:AttachmentMissingThumb',
 	), $__vars) . '

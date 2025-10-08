@@ -108,6 +108,7 @@ return array (
   'option_group.performance' => 'System and performance',
   'option_group.postCounter' => '[FS] Post Counter',
   'option_group.pwa' => 'PWA options',
+  'option_group.reviewmap' => '[FS] Thread XML reviewmap generation',
   'option_group.scheduled' => '[FS] Scheduled Ban User',
   'option_group.searchOptions' => 'Search options',
   'option_group.seo' => 'Search engine optimization (SEO)',

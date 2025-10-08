@@ -112,6 +112,7 @@ It is possible to filter the news feed down to just users you follow, or a singl
   'option_group_description.performance' => 'Options here allow you to turn off or tweak systems in order to fine-tune the performance of your site.',
   'option_group_description.postCounter' => 'For Display limited Forums.',
   'option_group_description.pwa' => 'This group controls the options that will be shown on the PWA setup helper.',
+  'option_group_description.reviewmap' => 'These options allow you to control how the XML reviewmap is generated and submitted to search engines. The reviewmap can be used to speed up search engine indexing of your site.',
   'option_group_description.scheduled' => '',
   'option_group_description.searchOptions' => 'These options control the behavior of the search system built-in to XenForo to allow searching of messages and other content.',
   'option_group_description.seo' => 'You may tweak various link-building and content display options here.',
