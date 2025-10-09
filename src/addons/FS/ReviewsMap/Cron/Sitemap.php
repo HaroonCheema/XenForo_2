@@ -8,7 +8,7 @@ class Sitemap
     {
         $app = \XF::app();
         if ($app->options()->reviewmapAutoRebuild) {
-            $app->jobManager()->enqueueUnique('fsSitemapAuto', 'FS\HideUsernames:ThreadSitemap', [], false);
+            $app->jobManager()->enqueueUnique('fsSitemapAuto', 'FS\ReviewsMap:ThreadSitemap', [], false);
         }
     }
 }

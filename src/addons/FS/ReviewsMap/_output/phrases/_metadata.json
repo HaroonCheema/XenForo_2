@@ -33,7 +33,7 @@
         "global_cache": false,
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
-        "hash": "5da618e8e4b89c66fe86e32cdafde142"
+        "hash": "111893dc2ad3535a627f8d904e9acf80"
     },
     "option.fs_thread_sitemap_limits.txt": {
         "global_cache": false,
@@ -51,7 +51,7 @@
         "global_cache": false,
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
-        "hash": "e12167aa0a7698e6ebc92b4ce3909b53"
+        "hash": "7d6da8f6cb6897fb1a8ce7f74e826c2e"
     },
     "option.reviewmapAutoRebuild.txt": {
         "global_cache": false,
