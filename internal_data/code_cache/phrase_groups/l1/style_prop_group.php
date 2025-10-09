@@ -48,6 +48,7 @@ return array (
   'style_prop_group.thmonetizeUserUpgrades' => '[TH] Monetize: User upgrades',
   'style_prop_group.thuserimprovements_trophies' => '[TH] User Improvements: Trophies',
   'style_prop_group.tooltip' => 'Tooltips',
+  'style_prop_group.xaScAppearance' => 'Showcase: Appearance',
   'style_prop_group.xc_hide_link_from_guests' => '[XenConcept] Hide links / Medias / Images (BbCode) to guests',
   'style_prop_group.xenforoMessengerMessages' => '[XenForo Messenger] Messages',
   'style_prop_group.xenforoMessengerRooms' => '[XenForo Messenger] Conversations',

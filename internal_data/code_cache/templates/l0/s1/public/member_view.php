@@ -380,6 +380,17 @@ return array(
 		$__finalCompiled .= '
 
 ';
+		if ($__templater->method($__vars['xf']['visitor'], 'canViewShowcaseItems', array()) AND $__vars['user']['xa_sc_item_count']) {
+			$__finalCompiled .= '
+	<a href="' . $__templater->func('link', array('showcase/authors', $__vars['user'], ), true) . '"
+	   class="tabs-tab"
+	   id="sc_items"
+	   role="tab">' . 'Showcase items' . '</a>
+';
+		}
+		$__finalCompiled .= '
+
+';
 		if ($__vars['xf']['options']['siropuReferralSystemMemberProfileReferralTab'] AND $__vars['user']['siropu_rs_referral_count']) {
 			$__finalCompiled .= '
 	<a href="' . $__templater->func('link', array('members/referrals', $__vars['user'], ), true) . '"
@@ -683,6 +694,16 @@ return array(
 		if ($__templater->method($__vars['xf']['visitor'], 'canViewResources', array()) AND $__vars['user']['xfrm_resource_count']) {
 			$__finalCompiled .= '
 	<li data-href="' . $__templater->func('link', array('resources/authors', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="resources">
+		<div class="blockMessage">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
+	</li>
+';
+		}
+		$__finalCompiled .= '
+
+';
+		if ($__templater->method($__vars['xf']['visitor'], 'canViewShowcaseItems', array()) AND $__vars['user']['xa_sc_item_count']) {
+			$__finalCompiled .= '
+	<li data-href="' . $__templater->func('link', array('showcase/authors', $__vars['user'], array('from_profile' => 1, ), ), true) . '" role="tabpanel" aria-labelledby="sc_items">
 		<div class="blockMessage">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
 	</li>
 ';

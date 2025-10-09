@@ -22,6 +22,20 @@ return array(
 ';
 	}
 	$__finalCompiled .= '
+';
+	if ($__templater->method($__vars['xf']['visitor'], 'canViewShowcaseItems', array())) {
+		$__finalCompiled .= '
+	<a class="' . $__templater->escape($__vars['baseClass']) . ' ' . (($__vars['pageSelected'] == 'sc_new_item') ? $__templater->escape($__vars['selectedClass']) : '') . '" href="' . $__templater->func('link', array('whats-new/showcase-items', ), true) . '" rel="nofollow">' . 'New showcase items' . '</a>
+	';
+		if ($__templater->method($__vars['xf']['visitor'], 'canViewShowcaseComments', array())) {
+			$__finalCompiled .= '	
+		<a class="' . $__templater->escape($__vars['baseClass']) . ' ' . (($__vars['pageSelected'] == 'sc_new_comment') ? $__templater->escape($__vars['selectedClass']) : '') . '" href="' . $__templater->func('link', array('whats-new/showcase-comments', ), true) . '" rel="nofollow">' . 'New showcase comments' . '</a>
+	';
+		}
+		$__finalCompiled .= '	
+';
+	}
+	$__finalCompiled .= '
 ' . '
 <a class="' . $__templater->escape($__vars['baseClass']) . ' ' . (($__vars['pageSelected'] == 'fs_questions') ? $__templater->escape($__vars['selectedClass']) : '') . '" href="' . $__templater->func('link', array('whats-new/questions', ), true) . '" rel="nofollow">' . 'New Questions' . '</a>
 <a class="' . $__templater->escape($__vars['baseClass']) . ' ' . (($__vars['pageSelected'] == 'fs_answers') ? $__templater->escape($__vars['selectedClass']) : '') . '" href="' . $__templater->func('link', array('whats-new/answers', ), true) . '" rel="nofollow">' . 'New Answers' . '</a>

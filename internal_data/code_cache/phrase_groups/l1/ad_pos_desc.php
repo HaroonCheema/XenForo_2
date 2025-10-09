@@ -22,6 +22,8 @@ return array (
   'ad_pos_desc.post_above_content' => 'This position is above the message content in every post.',
   'ad_pos_desc.post_below_container' => 'This position is below the message container for every post.',
   'ad_pos_desc.post_below_content' => 'This position is below the message content in every post.',
+  'ad_pos_desc.sc_item_view_above_item_sections_content' => 'Advertising position above the item sections content when viewing an item.',
+  'ad_pos_desc.sc_item_view_below_item_sections_content' => 'Advertising position below the item sections content when viewing an item.',
   'ad_pos_desc.thread_view_above_messages' => 'Advertising position above the list of messages when viewing a thread.',
   'ad_pos_desc.thread_view_below_messages' => 'Advertising position below the list of messages when viewing a thread.',
 );

@@ -20,6 +20,7 @@ return array (
   'custom_bb_code_title.product' => 'Product embed',
   'custom_bb_code_title.release' => 'TMDb release date',
   'custom_bb_code_title.runtime' => 'TMDb runtime',
+  'custom_bb_code_title.showcase' => 'Showcase: Item embed',
   'custom_bb_code_title.tab' => 'Adds a tab',
   'custom_bb_code_title.xen_word_highlight' => 'Highlight in red',
 );

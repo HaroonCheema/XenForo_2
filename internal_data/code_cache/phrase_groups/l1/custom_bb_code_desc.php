@@ -20,6 +20,7 @@ return array (
   'custom_bb_code_desc.product' => 'BB code for displaying products.',
   'custom_bb_code_desc.release' => 'For formatting old XF1 TMDb movie threads',
   'custom_bb_code_desc.runtime' => 'For formatting old XF1 TMDb movie threads',
+  'custom_bb_code_desc.showcase' => 'BB code for displaying showcase items',
   'custom_bb_code_desc.tab' => 'Adds a 35px tab',
   'custom_bb_code_desc.xen_word_highlight' => 'Highlight banned words in red using bbcode.',
 );

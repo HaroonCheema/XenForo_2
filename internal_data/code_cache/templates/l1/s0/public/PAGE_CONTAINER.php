@@ -562,6 +562,14 @@ return array(
 ';
 	}
 	$__compilerTemp2 .= '
+';
+	if ($__vars['xf']['visitor']['is_moderator'] AND ($__templater->method($__vars['xf']['visitor'], 'canViewShowcaseItems', array()) AND $__templater->method($__vars['xf']['visitor'], 'canViewShowcaseItemQueue', array()))) {
+		$__compilerTemp2 .= '
+	<a href="' . $__templater->func('link', array('showcase/item-queue', ), true) . '" class="menu-linkRow">' . 'Showcase: Item queue' . '</a>
+';
+	}
+	$__compilerTemp2 .= '
+
 ' . '
 							';
 	if (strlen(trim($__compilerTemp2)) > 0) {

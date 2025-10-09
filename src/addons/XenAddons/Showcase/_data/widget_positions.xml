@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<widget_positions>
+  <widget_position position_id="xa_sc_author_list_sidenav" active="1"/>
+  <widget_position position_id="xa_sc_author_sidenav" active="1"/>
+  <widget_position position_id="xa_sc_category_above_items" active="1"/>
+  <widget_position position_id="xa_sc_category_sidenav" active="1"/>
+  <widget_position position_id="xa_sc_index_above_items" active="1"/>
+  <widget_position position_id="xa_sc_index_sidenav" active="1"/>
+  <widget_position position_id="xa_sc_modular_index_main" active="1"/>
+  <widget_position position_id="xa_sc_modular_index_sidebar" active="1"/>
+</widget_positions>

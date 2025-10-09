@@ -1179,6 +1179,100 @@ Use the textbox above to specify a format. <b>{title}</b> will be replaced with 
   'option_explain.watchAlertActiveOnly' => 'If enabled, watched content alerts and emails will only be sent to users that have visited within the specified number of days. This can improve performance on large or very active installations.',
   'option_explain.webShare' => 'On supported devices, this button will open the browser\'s web share prompt, allowing users to share the current page to other applications.',
   'option_explain.whatsAppShare' => 'If a user clicks this button WhatsApp will open a list of users with whom to share the current page URL and title.',
+  'option_explain.xaScAllowedFileExtensions' => 'List the file extensions that are allowed to be uploaded to items. Use spaces or line break between extensions.',
+  'option_explain.xaScAuthorOtherItemsCount' => 'The maximum number of items to display in the "More from [author name]" sidebar block. Use 0 to disable this block.',
+  'option_explain.xaScAutoUnfeatureItems' => 'If enabled, will automatically unfeature any featured items that are older than x days (from the date the item was featured).',
+  'option_explain.xaScCategoryOtherItemsCount' => 'The maximum number of items to display in the "More in [category]" sidebar block. Use 0 to disable this block.',
+  'option_explain.xaScCommentAllowedFileExtensions' => 'List the file extensions that are allowed to be uploaded to comments. Use spaces or line break between extensions.',
+  'option_explain.xaScCommentAttachmentMaxFileSize' => 'Provide the maximum comment attachment file size in kilobytes (KB). Attachments over this size will be rejected.',
+  'option_explain.xaScCommentMaxLength' => 'The maximum number of characters that can be in an item comment. This includes BB code. Use 0 to disable the limit.',
+  'option_explain.xaScCommentsPerPage' => '',
+  'option_explain.xaScDefaultFeaturedMapMarkerIconUrl' => '',
+  'option_explain.xaScDefaultMapMarkerIconUrl' => '',
+  'option_explain.xaScDisplayCoverImageHeader' => 'If enabled, will display the cover image (or the category image) in the header area.  This will also launch the gallery to view image attachments.',
+  'option_explain.xaScDisplayCoverImageSidebar' => 'If enabled, will display the cover image in a sidebar block above the item details block.',
+  'option_explain.xaScDisplayDescriptionHeader' => 'If enabled, will display the brief description in the header area.',
+  'option_explain.xaScDisplayDescriptionItemDetails' => 'If enabled, will display the brief description in the item details area.',
+  'option_explain.xaScDisplaySectionsOnThread' => 'When enabled, will display sections 1-6 content (rich text and custom fields) on the associated discussion thread above the messages.
+<br><br>
+<b>Note</b>: If you have the option to display sections as Tabs, only Section 1 will be displayed,',
+  'option_explain.xaScEnableAuthorList' => 'If enabled, members will be able to browse an alphabetical list of authors. This can have performance implications with a large number of authors.',
+  'option_explain.xaScExcludeFeaturedItemsFromListing' => 'When enabled, will remove duplicate items from the Showcase Index and Category pages that are already being fetched for the featured items carousel or grid block.',
+  'option_explain.xaScExpandCategoryNav' => 'When enabled, the Category navigation block will expand the entire category tree.
+<br><br>
+<b>Note:</b> If you wish to control expanding category navigation on a per category level, <b>do not set this option</b> as this option overrides the per category option.  Instead, use the per category option instead!',
+  'option_explain.xaScFeaturedItemsDisplayType' => 'Choose the display type you want to use to display featured items on showcase index, category pages and other various pages with item listings.',
+  'option_explain.xaScFeaturedItemsLimit' => 'The number of featured items you want to fetch for display in the featured items carousel on Showcase index and Showcase category pages.  Use 0 to disable the featured items carousel or grid block.  <b>Note:</b> The featured grid block is limited to displaying 3 items.',
+  'option_explain.xaScFilesLocation' => 'Controls where the collection of uploaded file attachments will be displayed',
+  'option_explain.xaScGalleryDisplayType' => 'Controls the display type (single block or multiple blocks) of the image gallery when set to "Own tab".',
+  'option_explain.xaScGalleryLocation' => 'Controls where the collection of uploaded images will be displayed',
+  'option_explain.xaScGoogleMapsEmbedApiKey' => 'Input your Google Maps Embed API Key here. Instructions on generating and retrieving your Google Maps Embed API key can be found <a href="https://developers.google.com/maps/documentation/embed/guide#api_key">here</a>.',
+  'option_explain.xaScGoogleMapsGeocodingApiKey' => 'Input your Google Maps Geocoding API Key here. Instructions on generating and retrieving your Google Maps Geocoding API key can be found <a href="https://developers.google.com/maps/documentation/geocoding/get-api-key">here</a>.',
+  'option_explain.xaScGoogleMapsJavaScriptApiKey' => 'Input your Google Maps JavaScript API Key here. Instructions on generating and retrieving your Google Maps JavaScript API key can be found <a href="https://developers.google.com/maps/documentation/javascript/get-api-key">here</a>.',
+  'option_explain.xaScIncludeCommentsImagesInGallery' => 'This option allows you to include comments image attachments from the comments section in the image gallery. This option is only available when the \'Image gallery location\' option is set to "Own tab".',
+  'option_explain.xaScIncludePostsImagesInGallery' => 'This option allows you to include posts image attachments from the associated discussion thread, in the  showcase item image gallery. This option is only available when the \'Image gallery location\' option is set to "Own tab".',
+  'option_explain.xaScIncludeReviewsImages' => 'This option allows you to include reviews image attachments in the showcase item image gallery. This option is only available when the \'Image gallery location\' option is set to "Own tab".',
+  'option_explain.xaScIndexPageType' => 'Choose the type of Home Page that you want to use for Showcase.  
+<br>
+<ul>
+<li>Standard = Index of all items in a filterable listing.</li>
+<li>Modular = Blank page with Main and Sidebar Widget Locations</li>
+</ul>',
+  'option_explain.xaScItemAttachmentMaxFileSize' => 'Provide the maximum item attachment file size in kilobytes (KB). Attachments over this size will be rejected.
+<br><br>
+<b>Important Note:</b> The option "Maximum attachments per items" has been removed and is now set via Showcase Permissions!',
+  'option_explain.xaScItemDeleteThreadAction' => 'When an item is deleted, take this action with any automatically created thread associated with the item.',
+  'option_explain.xaScItemListLayoutType' => 'Choose the layout type you want to use to display items on showcase index, category pages and other various pages with item listings.  <b>Note</b>:  Individual category pages can override this setting and use a different layout type.',
+  'option_explain.xaScItemMaxLength' => 'The maximum number of characters that can be in an item. This includes BB code. <b>Note</b>: Use 0 to disable the limit.',
+  'option_explain.xaScItemsPerPage' => 'The number of items that will be listed per page on various pages with item listings.  <b>Note:</b> does not apply to pages using grid view layout!',
+  'option_explain.xaScItemsPerPageGridView' => 'The number of items that will be listed per page on various pages with item listings that use the grid view layout type.',
+  'option_explain.xaScItemsPerPageItemView' => 'The number of items that will be listed per page on various pages with item listings that use the item view layout type.',
+  'option_explain.xaScItemsPerPageTileView' => 'The number of items that will be listed per page on various pages with item listings that use the tile view layout type.',
+  'option_explain.xaScLatestReviewsCutOffDays' => 'This is the number of days old that a review can be in order for it to be fetched.  Reviews that are older than the cutoff date will not be displayed.  Leave this option set to 0 to bypass the cut off date.',
+  'option_explain.xaScLatestUpdatesCutOffDays' => 'This is the number of days old that an update can be in order for it to be fetched.  Updates that are older than the cutoff date will not be displayed.  Leave this option set to 0 to bypass the cut off date.',
+  'option_explain.xaScLimitedViewItemLength' => 'Users that do not have the permission to view full items will only see this number of characters of the Section 1 message for the item.',
+  'option_explain.xaScListDefaultOrder' => 'When viewing various pages with item listings, this will be the default sort order that is set.',
+  'option_explain.xaScLocalizeGoogleMaps' => 'When enabled, will localize various google maps (both Embed API generated and JS API generated) throughout Showcase, based on XF language settings for the viewing user.',
+  'option_explain.xaScLocationDisplayType' => 'Controls how the location data will be displayed when viewing an item',
+  'option_explain.xaScMarkerClustering' => 'When enabled, the MarkerClustererPlus library used in combination with the Maps JavaScript API, will combine map markers of close proximity to one another into clusters to simplify the display of markers on the map at various zoom levels.',
+  'option_explain.xaScMetaDescription' => 'Enter a meta description for your Showcase Home Page. This will be placed inside the meta description tag on the SC Index page, so avoid using HTML.',
+  'option_explain.xaScMinimumReviewLength' => 'If a review is entered, it will not be accepted unless it is at least this long. If a review is not required, this setting will be ignored if no review is entered.',
+  'option_explain.xaScMoreFromAuthorLayoutType' => 'When the "Display location" above is set to "Below item", you can choose the layout type you want to use to display items in the "More from [author]" block.',
+  'option_explain.xaScMoreFromAuthorLocation' => 'Controls where the "More from [author name]" block will be displayed',
+  'option_explain.xaScMoreInCategoryLayoutType' => 'When the "Display location" above is set to "Below item", you can choose the layout type you want to use to display items in the "More in [category name]" block.',
+  'option_explain.xaScMoreInCategoryLocation' => 'Controls where the More in [category name] block will be displayed',
+  'option_explain.xaScOverrideStyle' => 'The style selected here will be displayed on all showcase pages instead of the default style.',
+  'option_explain.xaScRecentReviewsCount' => 'The maximum number of recent reviews to display on the main item view page. 
+<br />
+<b>Note</b>: Use 0 to disable this block.',
+  'option_explain.xaScRecentUpdatesCount' => 'The maximum number of recent item updates to display on the main item overview page. 
+<br />
+<b>Note</b>: Use 0 to disable this block.',
+  'option_explain.xaScRequireReviewTitle' => 'If enabled, a review title must be included when posting new reviews or editing existing reviews.',
+  'option_explain.xaScReviewAllowedFileExtensions' => 'List the file extensions that are allowed to be uploaded to reviews. Use spaces or line break between extensions.',
+  'option_explain.xaScReviewAttachmentMaxFileSize' => 'Provide the maximum review attachment file size in kilobytes (KB). Attachments over this size will be rejected.',
+  'option_explain.xaScReviewMaxLength' => 'The maximum number of characters that can be in an item review. This includes BB code. Use 0 to disable the limit.',
+  'option_explain.xaScReviewReplyMaxLength' => 'The maximum number of characters that can be in a review reply. Use 0 to disable the limit.',
+  'option_explain.xaScReviewsPerPage' => '',
+  'option_explain.xaScSectionsDisplayType' => 'Choose how you want sections 2-6 to display on an item.
+<br>
+<ul>
+<li>Stacked = Sections 2-6 will be displayed on the overview page with Section 1 stacked from top to bottom in order</li>
+<li>Tabbed = Sections 2-6 will be displayed in their own individual tab (its own page)</li>
+</ul>',
+  'option_explain.xaScShowPointsOfInterest' => 'When enabled, will include points of interest on Category maps (this is default standard with google maps).  Disable this option if you want to "clean up" the map from looking cluttered.
+<br>
+<b>Note</b>:  This does not apply to individual item maps.',
+  'option_explain.xaScShowRatingFilters' => 'If enabled, the ave rating filter will be enabled on item listing pages',
+  'option_explain.xaScShowTitleFilters' => 'If enabled, the title filter will be enabled on item listing pages',
+  'option_explain.xaScShowcaseSearchFormTabOrder' => 'Allows you to set the display order of the [Search showcase] tab.',
+  'option_explain.xaScSignatureOnComments' => 'When enabled, signatures will display on comments just like they do on posts.',
+  'option_explain.xaScSnippetLengthIV' => 'The number of characters of the item preview to display on the item view layout type.',
+  'option_explain.xaScSnippetLengthLV' => 'The number of characters of the item preview to display on the list view layout type.',
+  'option_explain.xaScUnreadCounter' => 'If enabled, the count of unread items will display above the "Showcase" navigation tab.',
+  'option_explain.xaScUpdateMaxLength' => 'The maximum number of characters that can be in an item update. This includes BB code. Use 0 to disable the limit.',
+  'option_explain.xaScUpdateReplyMaxLength' => 'The maximum number of characters that can be in an item update reply. Use 0 to disable the limit.',
+  'option_explain.xaScUpdatesPerPage' => '',
   'option_explain.xb_change_the_path_to_the_tmp_file' => 'This option allows you to change the value for your TMP file, by default :  <b>/tmp</b>.',
   'option_explain.xb_enable' => 'This option allows you to enable the avatar gallery in your forum.',
   'option_explain.xb_slider_videos' => 'Number of videos to display in sliders',

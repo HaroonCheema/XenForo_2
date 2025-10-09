@@ -22,6 +22,8 @@ return array (
   'ad_pos.post_above_content' => 'Post: Above message content',
   'ad_pos.post_below_container' => 'Post: Below message container',
   'ad_pos.post_below_content' => 'Post: Below message content',
+  'ad_pos.sc_item_view_above_item_sections_content' => 'Showcase Item view: Above item sections content',
+  'ad_pos.sc_item_view_below_item_sections_content' => 'Showcase Item view: Below item sections content',
   'ad_pos.thread_view_above_messages' => 'Thread view: Above message list',
   'ad_pos.thread_view_below_messages' => 'Thread view: Below message list',
 );

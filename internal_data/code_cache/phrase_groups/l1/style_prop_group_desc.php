@@ -48,6 +48,7 @@ return array (
   'style_prop_group_desc.thmonetizeUserUpgrades' => 'Styling for user upgrades and upgrade pages.',
   'style_prop_group_desc.thuserimprovements_trophies' => 'Styling related to trophies and the trophy showcase.',
   'style_prop_group_desc.tooltip' => 'Tooltips are (usually) small hints that appear when the mouse pointer hovers over page elements that may require additional information to convey their purpose or content.',
+  'style_prop_group_desc.xaScAppearance' => 'A number of properties to control the appearance of XenAddons Showcase',
   'style_prop_group_desc.xc_hide_link_from_guests' => '',
   'style_prop_group_desc.xenforoMessengerMessages' => '',
   'style_prop_group_desc.xenforoMessengerRooms' => '',

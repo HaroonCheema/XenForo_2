@@ -642,6 +642,132 @@ return array(
 		'_type' => 'option',
 	),
 	array(
+		'name' => 'user_criteria[xa_sc_item_count][rule]',
+		'value' => 'xa_sc_item_count',
+		'selected' => $__vars['criteria']['xa_sc_item_count'],
+		'label' => 'Showcase: User has added at least X items' . $__vars['xf']['language']['label_separator'],
+		'_dependent' => array($__templater->formNumberBox(array(
+		'name' => 'user_criteria[xa_sc_item_count][data][items]',
+		'value' => $__vars['criteria']['xa_sc_item_count']['items'],
+		'size' => '5',
+		'min' => '0',
+		'step' => '1',
+	))),
+		'_type' => 'option',
+	),
+	array(
+		'name' => 'user_criteria[xa_sc_item_count_nmt][rule]',
+		'value' => 'xa_sc_item_count_nmt',
+		'selected' => $__vars['criteria']['xa_sc_item_count_nmt'],
+		'label' => 'Showcase: User has added no more than X items' . $__vars['xf']['language']['label_separator'],
+		'_dependent' => array($__templater->formNumberBox(array(
+		'name' => 'user_criteria[xa_sc_item_count_nmt][data][items]',
+		'value' => $__vars['criteria']['xa_sc_item_count_nmt']['items'],
+		'size' => '5',
+		'min' => '0',
+		'step' => '1',
+	))),
+		'_type' => 'option',
+	),
+	array(
+		'name' => 'user_criteria[xa_sc_item_prefix][rule]',
+		'value' => 'xa_sc_item_prefix',
+		'selected' => $__vars['criteria']['xa_sc_item_prefix'],
+		'label' => 'Showcase: User has at least 1 item with the prefix id' . $__vars['xf']['language']['label_separator'],
+		'_dependent' => array($__templater->formNumberBox(array(
+		'name' => 'user_criteria[xa_sc_item_prefix][data][prefix_id]',
+		'value' => $__vars['criteria']['xa_sc_item_prefix']['prefix_id'],
+		'size' => '5',
+		'min' => '0',
+		'step' => '1',
+	))),
+		'_type' => 'option',
+	),
+	array(
+		'name' => 'user_criteria[xa_sc_featured_item_count][rule]',
+		'value' => 'xa_sc_featured_item_count',
+		'selected' => $__vars['criteria']['xa_sc_featured_item_count'],
+		'label' => 'Showcase: User has at least X items currently featured' . $__vars['xf']['language']['label_separator'],
+		'_dependent' => array($__templater->formNumberBox(array(
+		'name' => 'user_criteria[xa_sc_featured_item_count][data][items]',
+		'value' => $__vars['criteria']['xa_sc_featured_item_count']['items'],
+		'size' => '5',
+		'min' => '0',
+		'step' => '1',
+	))),
+		'_type' => 'option',
+	),
+	array(
+		'name' => 'user_criteria[xa_sc_featured_item_count_nmt][rule]',
+		'value' => 'xa_sc_featured_item_count_nmt',
+		'selected' => $__vars['criteria']['xa_sc_featured_item_count_nmt'],
+		'label' => 'Showcase: User has no more than X items currently featured' . $__vars['xf']['language']['label_separator'],
+		'_dependent' => array($__templater->formNumberBox(array(
+		'name' => 'user_criteria[xa_sc_featured_item_count_nmt][data][items]',
+		'value' => $__vars['criteria']['xa_sc_featured_item_count_nmt']['items'],
+		'size' => '5',
+		'min' => '0',
+		'step' => '1',
+	))),
+		'_type' => 'option',
+	),
+	array(
+		'name' => 'user_criteria[xa_sc_comment_count][rule]',
+		'value' => 'xa_sc_comment_count',
+		'selected' => $__vars['criteria']['xa_sc_comment_count'],
+		'label' => 'Showcase: User has posted at least X comments' . $__vars['xf']['language']['label_separator'],
+		'_dependent' => array($__templater->formNumberBox(array(
+		'name' => 'user_criteria[xa_sc_comment_count][data][comments]',
+		'value' => $__vars['criteria']['xa_sc_comment_count']['comments'],
+		'size' => '5',
+		'min' => '0',
+		'step' => '1',
+	))),
+		'_type' => 'option',
+	),
+	array(
+		'name' => 'user_criteria[xa_sc_comment_count_nmt][rule]',
+		'value' => 'xa_sc_comment_count_nmt',
+		'selected' => $__vars['criteria']['xa_sc_comment_count_nmt'],
+		'label' => 'Showcase: User has posted no more than X comments' . $__vars['xf']['language']['label_separator'],
+		'_dependent' => array($__templater->formNumberBox(array(
+		'name' => 'user_criteria[xa_sc_comment_count_nmt][data][comments]',
+		'value' => $__vars['criteria']['xa_sc_comment_count_nmt']['comments'],
+		'size' => '5',
+		'min' => '0',
+		'step' => '1',
+	))),
+		'_type' => 'option',
+	),
+	array(
+		'name' => 'user_criteria[xa_sc_review_count][rule]',
+		'value' => 'xa_sc_review_count',
+		'selected' => $__vars['criteria']['xa_sc_review_count'],
+		'label' => 'Showcase: User has posted at least X reviews' . $__vars['xf']['language']['label_separator'],
+		'_dependent' => array($__templater->formNumberBox(array(
+		'name' => 'user_criteria[xa_sc_review_count][data][reviews]',
+		'value' => $__vars['criteria']['xa_sc_review_count']['reviews'],
+		'size' => '5',
+		'min' => '0',
+		'step' => '1',
+	))),
+		'_type' => 'option',
+	),
+	array(
+		'name' => 'user_criteria[xa_sc_review_count_nmt][rule]',
+		'value' => 'xa_sc_review_count_nmt',
+		'selected' => $__vars['criteria']['xa_sc_review_count_nmt'],
+		'label' => 'Showcase: User has posted no more than X reviews' . $__vars['xf']['language']['label_separator'],
+		'_dependent' => array($__templater->formNumberBox(array(
+		'name' => 'user_criteria[xa_sc_review_count_nmt][data][reviews]',
+		'value' => $__vars['criteria']['xa_sc_review_count_nmt']['reviews'],
+		'size' => '5',
+		'min' => '0',
+		'step' => '1',
+	))),
+		'_type' => 'option',
+	),
+	array(
 		'name' => 'user_criteria[resource_count][rule]',
 		'value' => 'resource_count',
 		'selected' => $__vars['criteria']['resource_count'],
@@ -1424,6 +1550,132 @@ return array(
 		'_type' => 'option',
 	),
 	array(
+		'name' => 'user_criteria[xa_sc_item_count][rule]',
+		'value' => 'xa_sc_item_count',
+		'selected' => $__vars['criteria']['xa_sc_item_count'],
+		'label' => 'Showcase: User has added at least X items' . $__vars['xf']['language']['label_separator'],
+		'_dependent' => array($__templater->formNumberBox(array(
+		'name' => 'user_criteria[xa_sc_item_count][data][items]',
+		'value' => $__vars['criteria']['xa_sc_item_count']['items'],
+		'size' => '5',
+		'min' => '0',
+		'step' => '1',
+	))),
+		'_type' => 'option',
+	),
+	array(
+		'name' => 'user_criteria[xa_sc_item_count_nmt][rule]',
+		'value' => 'xa_sc_item_count_nmt',
+		'selected' => $__vars['criteria']['xa_sc_item_count_nmt'],
+		'label' => 'Showcase: User has added no more than X items' . $__vars['xf']['language']['label_separator'],
+		'_dependent' => array($__templater->formNumberBox(array(
+		'name' => 'user_criteria[xa_sc_item_count_nmt][data][items]',
+		'value' => $__vars['criteria']['xa_sc_item_count_nmt']['items'],
+		'size' => '5',
+		'min' => '0',
+		'step' => '1',
+	))),
+		'_type' => 'option',
+	),
+	array(
+		'name' => 'user_criteria[xa_sc_item_prefix][rule]',
+		'value' => 'xa_sc_item_prefix',
+		'selected' => $__vars['criteria']['xa_sc_item_prefix'],
+		'label' => 'Showcase: User has at least 1 item with the prefix id' . $__vars['xf']['language']['label_separator'],
+		'_dependent' => array($__templater->formNumberBox(array(
+		'name' => 'user_criteria[xa_sc_item_prefix][data][prefix_id]',
+		'value' => $__vars['criteria']['xa_sc_item_prefix']['prefix_id'],
+		'size' => '5',
+		'min' => '0',
+		'step' => '1',
+	))),
+		'_type' => 'option',
+	),
+	array(
+		'name' => 'user_criteria[xa_sc_featured_item_count][rule]',
+		'value' => 'xa_sc_featured_item_count',
+		'selected' => $__vars['criteria']['xa_sc_featured_item_count'],
+		'label' => 'Showcase: User has at least X items currently featured' . $__vars['xf']['language']['label_separator'],
+		'_dependent' => array($__templater->formNumberBox(array(
+		'name' => 'user_criteria[xa_sc_featured_item_count][data][items]',
+		'value' => $__vars['criteria']['xa_sc_featured_item_count']['items'],
+		'size' => '5',
+		'min' => '0',
+		'step' => '1',
+	))),
+		'_type' => 'option',
+	),
+	array(
+		'name' => 'user_criteria[xa_sc_featured_item_count_nmt][rule]',
+		'value' => 'xa_sc_featured_item_count_nmt',
+		'selected' => $__vars['criteria']['xa_sc_featured_item_count_nmt'],
+		'label' => 'Showcase: User has no more than X items currently featured' . $__vars['xf']['language']['label_separator'],
+		'_dependent' => array($__templater->formNumberBox(array(
+		'name' => 'user_criteria[xa_sc_featured_item_count_nmt][data][items]',
+		'value' => $__vars['criteria']['xa_sc_featured_item_count_nmt']['items'],
+		'size' => '5',
+		'min' => '0',
+		'step' => '1',
+	))),
+		'_type' => 'option',
+	),
+	array(
+		'name' => 'user_criteria[xa_sc_comment_count][rule]',
+		'value' => 'xa_sc_comment_count',
+		'selected' => $__vars['criteria']['xa_sc_comment_count'],
+		'label' => 'Showcase: User has posted at least X comments' . $__vars['xf']['language']['label_separator'],
+		'_dependent' => array($__templater->formNumberBox(array(
+		'name' => 'user_criteria[xa_sc_comment_count][data][comments]',
+		'value' => $__vars['criteria']['xa_sc_comment_count']['comments'],
+		'size' => '5',
+		'min' => '0',
+		'step' => '1',
+	))),
+		'_type' => 'option',
+	),
+	array(
+		'name' => 'user_criteria[xa_sc_comment_count_nmt][rule]',
+		'value' => 'xa_sc_comment_count_nmt',
+		'selected' => $__vars['criteria']['xa_sc_comment_count_nmt'],
+		'label' => 'Showcase: User has posted no more than X comments' . $__vars['xf']['language']['label_separator'],
+		'_dependent' => array($__templater->formNumberBox(array(
+		'name' => 'user_criteria[xa_sc_comment_count_nmt][data][comments]',
+		'value' => $__vars['criteria']['xa_sc_comment_count_nmt']['comments'],
+		'size' => '5',
+		'min' => '0',
+		'step' => '1',
+	))),
+		'_type' => 'option',
+	),
+	array(
+		'name' => 'user_criteria[xa_sc_review_count][rule]',
+		'value' => 'xa_sc_review_count',
+		'selected' => $__vars['criteria']['xa_sc_review_count'],
+		'label' => 'Showcase: User has posted at least X reviews' . $__vars['xf']['language']['label_separator'],
+		'_dependent' => array($__templater->formNumberBox(array(
+		'name' => 'user_criteria[xa_sc_review_count][data][reviews]',
+		'value' => $__vars['criteria']['xa_sc_review_count']['reviews'],
+		'size' => '5',
+		'min' => '0',
+		'step' => '1',
+	))),
+		'_type' => 'option',
+	),
+	array(
+		'name' => 'user_criteria[xa_sc_review_count_nmt][rule]',
+		'value' => 'xa_sc_review_count_nmt',
+		'selected' => $__vars['criteria']['xa_sc_review_count_nmt'],
+		'label' => 'Showcase: User has posted no more than X reviews' . $__vars['xf']['language']['label_separator'],
+		'_dependent' => array($__templater->formNumberBox(array(
+		'name' => 'user_criteria[xa_sc_review_count_nmt][data][reviews]',
+		'value' => $__vars['criteria']['xa_sc_review_count_nmt']['reviews'],
+		'size' => '5',
+		'min' => '0',
+		'step' => '1',
+	))),
+		'_type' => 'option',
+	),
+	array(
 		'name' => 'user_criteria[resource_count][rule]',
 		'value' => 'resource_count',
 		'selected' => $__vars['criteria']['resource_count'],
@@ -1707,8 +1959,8 @@ return array(
 		}
 	}
 	$__compilerTemp8 = array();
-	if ($__templater->isTraversable($__vars['data']['xfrmCategories'])) {
-		foreach ($__vars['data']['xfrmCategories'] AS $__vars['option']) {
+	if ($__templater->isTraversable($__vars['data']['scCategories'])) {
+		foreach ($__vars['data']['scCategories'] AS $__vars['option']) {
 			$__compilerTemp8[] = array(
 				'value' => $__vars['option']['value'],
 				'label' => $__templater->escape($__vars['option']['label']),
@@ -1717,9 +1969,19 @@ return array(
 		}
 	}
 	$__compilerTemp9 = array();
+	if ($__templater->isTraversable($__vars['data']['xfrmCategories'])) {
+		foreach ($__vars['data']['xfrmCategories'] AS $__vars['option']) {
+			$__compilerTemp9[] = array(
+				'value' => $__vars['option']['value'],
+				'label' => $__templater->escape($__vars['option']['label']),
+				'_type' => 'option',
+			);
+		}
+	}
+	$__compilerTemp10 = array();
 	if ($__templater->isTraversable($__vars['data']['xfmgCategories'])) {
 		foreach ($__vars['data']['xfmgCategories'] AS $__vars['option']) {
-			$__compilerTemp9[] = array(
+			$__compilerTemp10[] = array(
 				'value' => $__vars['option']['value'],
 				'label' => $__templater->escape($__vars['option']['label']),
 				'_type' => 'option',
@@ -1733,32 +1995,32 @@ return array(
 		overflow: auto;
 	}
 ');
-	$__compilerTemp10 = array();
+	$__compilerTemp11 = array();
 	if ($__templater->isTraversable($__vars['data']['nodes'])) {
 		foreach ($__vars['data']['nodes'] AS $__vars['option']) {
-			$__compilerTemp10[] = array(
+			$__compilerTemp11[] = array(
 				'value' => $__vars['option']['value'],
 				'label' => $__templater->escape($__vars['option']['label']),
 				'_type' => 'option',
 			);
 		}
 	}
-	$__compilerTemp11 = array();
-	$__compilerTemp12 = $__templater->method($__vars['data']['styleTree'], 'getFlattened', array(0, ));
-	if ($__templater->isTraversable($__compilerTemp12)) {
-		foreach ($__compilerTemp12 AS $__vars['treeEntry']) {
-			$__compilerTemp11[] = array(
+	$__compilerTemp12 = array();
+	$__compilerTemp13 = $__templater->method($__vars['data']['styleTree'], 'getFlattened', array(0, ));
+	if ($__templater->isTraversable($__compilerTemp13)) {
+		foreach ($__compilerTemp13 AS $__vars['treeEntry']) {
+			$__compilerTemp12[] = array(
 				'value' => $__vars['treeEntry']['record']['style_id'],
 				'label' => $__templater->func('repeat', array('--', $__vars['treeEntry']['depth'], ), true) . ' ' . $__templater->escape($__vars['treeEntry']['record']['title']),
 				'_type' => 'option',
 			);
 		}
 	}
-	$__compilerTemp13 = array();
-	$__compilerTemp14 = $__templater->method($__vars['data']['styleTree'], 'getFlattened', array(0, ));
-	if ($__templater->isTraversable($__compilerTemp14)) {
-		foreach ($__compilerTemp14 AS $__vars['treeEntry']) {
-			$__compilerTemp13[] = array(
+	$__compilerTemp14 = array();
+	$__compilerTemp15 = $__templater->method($__vars['data']['styleTree'], 'getFlattened', array(0, ));
+	if ($__templater->isTraversable($__compilerTemp15)) {
+		foreach ($__compilerTemp15 AS $__vars['treeEntry']) {
+			$__compilerTemp14[] = array(
 				'value' => $__vars['treeEntry']['record']['style_id'],
 				'label' => $__templater->func('repeat', array('--', $__vars['treeEntry']['depth'], ), true) . ' ' . $__templater->escape($__vars['treeEntry']['record']['title']),
 				'_type' => 'option',
@@ -1932,6 +2194,30 @@ return array(
 			' . '
 			' . $__templater->formCheckBoxRow(array(
 	), array(array(
+		'name' => 'page_criteria[sc_categories][rule]',
+		'value' => 'sc_categories',
+		'selected' => $__vars['criteria']['sc_categories'],
+		'label' => 'Page is within showcase categories' . $__vars['xf']['language']['label_separator'],
+		'_dependent' => array($__templater->formSelect(array(
+		'name' => 'page_criteria[sc_categories][data][sc_category_ids]',
+		'multiple' => 'true',
+		'value' => $__vars['criteria']['sc_categories']['sc_category_ids'],
+	), $__compilerTemp8), $__templater->formCheckBox(array(
+	), array(array(
+		'name' => 'page_criteria[sc_categories][data][sc_category_only]',
+		'value' => '1',
+		'selected' => $__vars['criteria']['sc_categories']['sc_category_only'],
+		'label' => 'Only display within selected categories (rather than including child categories)',
+		'_type' => 'option',
+	)))),
+		'_type' => 'option',
+	)), array(
+		'label' => 'Showcase categories',
+	)) . '
+
+<hr class="formRowSep" />
+			' . $__templater->formCheckBoxRow(array(
+	), array(array(
 		'name' => 'page_criteria[xfrm_categories][rule]',
 		'value' => 'xfrm_categories',
 		'selected' => $__vars['criteria']['xfrm_categories'],
@@ -1940,7 +2226,7 @@ return array(
 		'name' => 'page_criteria[xfrm_categories][data][resource_category_ids]',
 		'multiple' => 'true',
 		'value' => $__vars['criteria']['xfrm_categories']['resource_category_ids'],
-	), $__compilerTemp8), $__templater->formCheckBox(array(
+	), $__compilerTemp9), $__templater->formCheckBox(array(
 	), array(array(
 		'name' => 'page_criteria[xfrm_categories][data][category_only]',
 		'value' => '1',
@@ -1964,7 +2250,7 @@ return array(
 		'name' => 'page_criteria[xfmg_categories][data][category_ids]',
 		'multiple' => 'true',
 		'value' => $__vars['criteria']['xfmg_categories']['category_ids'],
-	), $__compilerTemp9), $__templater->formCheckBox(array(
+	), $__compilerTemp10), $__templater->formCheckBox(array(
 	), array(array(
 		'name' => 'page_criteria[xfmg_categories][data][category_only]',
 		'value' => '1',
@@ -1999,7 +2285,7 @@ return array(
 		'name' => 'page_criteria[nodes_not][data][node_ids]',
 		'value' => $__vars['criteria']['nodes_not']['node_ids'],
 		'data-page-critaria' => 'node',
-	), $__compilerTemp10) . '
+	), $__compilerTemp11) . '
 			' . $__templater->formCheckBox(array(
 		'style' => 'margin-top: 25px;',
 	), array(array(
@@ -2036,7 +2322,7 @@ return array(
 		'_dependent' => array($__templater->formSelect(array(
 		'name' => 'page_criteria[style][data][style_id]',
 		'value' => $__vars['criteria']['style']['style_id'],
-	), $__compilerTemp11)),
+	), $__compilerTemp12)),
 		'_type' => 'option',
 	),
 	array(
@@ -2124,7 +2410,7 @@ return array(
 		'_dependent' => array($__templater->formSelect(array(
 		'name' => 'page_criteria[style_not][data][style_id]',
 		'value' => $__vars['criteria']['style_not']['style_id'],
-	), $__compilerTemp13)),
+	), $__compilerTemp14)),
 		'_type' => 'option',
 	)), array(
 	)) . '

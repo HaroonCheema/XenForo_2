@@ -55,6 +55,12 @@ return array(
 		$__finalCompiled .= '
 	';
 		$__templater->includeJs(array(
+			'src' => 'xenaddons/showcase/editor.js',
+			'min' => '1',
+		));
+		$__finalCompiled .= '
+';
+		$__templater->includeJs(array(
 			'src' => 'xfmg/editor.js',
 			'min' => '1',
 		));

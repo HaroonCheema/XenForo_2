@@ -1079,6 +1079,34 @@ return array(
 ';
 	}
 	$__compilerTemp2 .= '
+			';
+	if ($__templater->method($__vars['post'], 'canConvertPostToScUpdate', array())) {
+		$__compilerTemp2 .= '
+				<a href="' . $__templater->func('link', array('posts/convert-post-to-sc-update', $__vars['post'], ), true) . '" 
+					class="actionBar-action actionBar-action--convert actionBar-action--menuItem"
+					data-xf-click="overlay">' . 'Convert to update' . '</a>
+
+				';
+		$__vars['hasActionBarMenu'] = true;
+		$__compilerTemp2 .= '
+			';
+	}
+	$__compilerTemp2 .= '
+
+			';
+	if ($__templater->method($__vars['post'], 'canConvertPostToScReview', array())) {
+		$__compilerTemp2 .= '
+				<a href="' . $__templater->func('link', array('posts/convert-post-to-sc-review', $__vars['post'], ), true) . '" 
+					class="actionBar-action actionBar-action--convert actionBar-action--menuItem"
+					data-xf-click="overlay">' . 'Convert to review' . '</a>
+
+				';
+		$__vars['hasActionBarMenu'] = true;
+		$__compilerTemp2 .= '
+			';
+	}
+	$__compilerTemp2 .= '
+
 ';
 	if ($__vars['hasActionBarMenu']) {
 		$__compilerTemp2 .= '

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<member_stats>
+  <member_stat member_stat_key="xa_sc_most_item_comments" sort_order="xa_sc_comment_count" sort_direction="desc" permission_limit="xa_showcase-view" show_value="1" user_limit="20" display_order="910" overview_display="1" active="1" cache_lifetime="60"><![CDATA[[]]]></member_stat>
+  <member_stat member_stat_key="xa_sc_most_items" sort_order="xa_sc_item_count" sort_direction="desc" permission_limit="xa_showcase-view" show_value="1" user_limit="20" display_order="910" overview_display="1" active="1" cache_lifetime="60"><![CDATA[[]]]></member_stat>
+</member_stats>

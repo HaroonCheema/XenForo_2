@@ -141,6 +141,40 @@ return array(
 		}
 		$__finalCompiled .= '
 ';
+		if ($__templater->method($__vars['xf']['visitor'], 'canViewShowcaseItems', array())) {
+			$__finalCompiled .= '
+	';
+			if ($__vars['user']['xa_sc_item_count']) {
+				$__finalCompiled .= '
+		<dl class="pairs pairs--rows pairs--rows--centered menu-fauxLinkRow">
+			<dt>' . 'Showcase items' . '</dt>
+			<dd>
+				<a href="' . $__templater->func('link', array('showcase/authors', $__vars['user'], ), true) . '" class="menu-fauxLinkRow-linkRow u-concealed">
+					' . $__templater->filter($__vars['user']['xa_sc_item_count'], array(array('number', array()),), true) . '
+				</a>
+			</dd>
+		</dl>
+	';
+			}
+			$__finalCompiled .= '
+	';
+			if ($__vars['user']['xa_sc_comment_count']) {
+				$__finalCompiled .= '
+		<dl class="pairs pairs--rows pairs--rows--centered menu-fauxLinkRow">
+			<dt>' . 'Showcase comments' . '</dt>
+			<dd>
+				<span class="menu-fauxLinkRow-linkRow u-concealed">
+					' . $__templater->filter($__vars['user']['xa_sc_comment_count'], array(array('number', array()),), true) . '
+				</span>
+			</dd>
+		</dl>
+	';
+			}
+			$__finalCompiled .= '
+';
+		}
+		$__finalCompiled .= '
+';
 		if ($__templater->method($__vars['xf']['visitor'], 'canViewResources', array()) AND $__vars['user']['xfrm_resource_count']) {
 			$__finalCompiled .= '
 	<dl class="pairs pairs--rows pairs--rows--centered menu-fauxLinkRow">
@@ -404,7 +438,15 @@ return array(
 <a href="' . $__templater->func('link', array('search/member', null, array('user_id' => $__vars['user']['user_id'], 'content' => 'thread', 'thread_type' => 'question', 'qa_nodes' => array($__vars['questionForumIds'], ), ), ), true) . '" rel="nofollow" class="menu-linkRow">' . 'Find all questions by ' . $__templater->escape($__vars['user']['username']) . '' . '</a>
 <a href="' . $__templater->func('link', array('search/member', null, array('user_id' => $__vars['user']['user_id'], 'content' => 'fs_answer', ), ), true) . '" rel="nofollow" class="menu-linkRow">' . 'Find all answers by ' . $__templater->escape($__vars['user']['username']) . '' . '</a>
 <a href="' . $__templater->func('link', array('search/member', null, array('user_id' => $__vars['user']['user_id'], 'content' => 'thread', 'thread_type' => 'article', ), ), true) . '" rel="nofollow" class="menu-linkRow">' . 'Find all articles by ' . $__templater->escape($__vars['user']['username']) . '' . '</a>
-	' . '
+	';
+		if ($__templater->method($__vars['xf']['visitor'], 'canViewShowcaseItems', array()) AND $__vars['user']['xa_sc_item_count']) {
+			$__compilerTemp2 .= '
+	<a href="' . $__templater->func('link', array('search/member', null, array('user_id' => $__vars['user']['user_id'], 'content' => 'sc_item', ), ), true) . '" rel="nofollow" class="menu-linkRow">' . 'Find all showcase items by ' . $__templater->escape($__vars['user']['username']) . '' . '</a>
+';
+		}
+		$__compilerTemp2 .= '
+
+' . '
 						</div>
 					</div>
 				</div>

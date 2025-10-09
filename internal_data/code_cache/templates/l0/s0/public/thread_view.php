@@ -342,7 +342,15 @@ return array(
 											';
 	}
 	$__compilerTemp3 .= '
-											' . '
+											';
+	if ($__templater->method($__vars['thread'], 'canConvertThreadToScItem', array())) {
+		$__compilerTemp3 .= '
+	<a href="' . $__templater->func('link', array('threads/convert-thread-to-sc-item', $__vars['thread'], ), true) . '" data-xf-click="overlay" class="menu-linkRow">' . 'Showcase: Convert thread to item' . '</a>
+';
+	}
+	$__compilerTemp3 .= '
+
+' . '
 											';
 	if ($__templater->method($__vars['thread'], 'canUseInlineModeration', array())) {
 		$__compilerTemp3 .= '

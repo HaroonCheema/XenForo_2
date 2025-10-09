@@ -11,6 +11,8 @@ return array (
   'member_stat.siropuReferralSystemMostReferrals' => 'Most referrals',
   'member_stat.staff_members' => 'Staff members',
   'member_stat.todays_birthdays' => 'Today\'s birthdays',
+  'member_stat.xa_sc_most_item_comments' => 'Most showcase item comments',
+  'member_stat.xa_sc_most_items' => 'Most showcase items',
   'member_stat.xfmg_most_albums' => 'Most albums',
   'member_stat.xfmg_most_media_items' => 'Most media items',
   'member_stat.xfrm_most_resources' => 'Most resources',

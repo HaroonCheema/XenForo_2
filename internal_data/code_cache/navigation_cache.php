@@ -462,6 +462,18 @@ return function($__templater, $__selectedNav, array $__vars)
 			}
 		}
 
+		if (($__vars['xf']['reply']['containerKey'] == ('node-' . $__vars['xf']['options']['fs_questionAnswerForum']))) {
+			$__navTemp = [
+		'title' => \XF::phrase('nav.fs_question_answers_searchForums'),
+		'href' => $__templater->func('link', array('search', null, array('type' => 'questionAnswer', ), ), false),
+		'attributes' => [],
+	];
+			if ($__navTemp) {
+				$__tree['forums']['children']['fs_question_answers_searchForums'] = $__navTemp;
+				$__flat['fs_question_answers_searchForums'] =& $__tree['forums']['children']['fs_question_answers_searchForums'];
+			}
+		}
+
 		if ($__templater->method($__vars['xf']['visitor'], 'canSearch', array())) {
 			$__navTemp = [
 		'title' => \XF::phrase('nav.searchForums'),
@@ -476,13 +488,15 @@ return function($__templater, $__selectedNav, array $__vars)
 
 		if (($__vars['xf']['reply']['containerKey'] == ('node-' . $__vars['xf']['options']['fs_questionAnswerForum']))) {
 			$__navTemp = [
-		'title' => \XF::phrase('nav.fs_question_answers_searchForums'),
-		'href' => $__templater->func('link', array('search', null, array('type' => 'questionAnswer', ), ), false),
-		'attributes' => [],
+		'title' => \XF::phrase('nav.fs_question_answers_markForumsRead'),
+		'href' => $__templater->func('link', array('forums/', ), false) . $__vars['xf']['options']['fs_questionAnswerForum'] . '/mark-read&date=$xf.time',
+		'attributes' => [
+			'data-xf-click' => 'overlay',
+		],
 	];
 			if ($__navTemp) {
-				$__tree['forums']['children']['fs_question_answers_searchForums'] = $__navTemp;
-				$__flat['fs_question_answers_searchForums'] =& $__tree['forums']['children']['fs_question_answers_searchForums'];
+				$__tree['forums']['children']['fs_question_answers_markForumsRead'] = $__navTemp;
+				$__flat['fs_question_answers_markForumsRead'] =& $__tree['forums']['children']['fs_question_answers_markForumsRead'];
 			}
 		}
 
@@ -497,20 +511,6 @@ return function($__templater, $__selectedNav, array $__vars)
 			if ($__navTemp) {
 				$__tree['forums']['children']['markForumsRead'] = $__navTemp;
 				$__flat['markForumsRead'] =& $__tree['forums']['children']['markForumsRead'];
-			}
-		}
-
-		if (($__vars['xf']['reply']['containerKey'] == ('node-' . $__vars['xf']['options']['fs_questionAnswerForum']))) {
-			$__navTemp = [
-		'title' => \XF::phrase('nav.fs_question_answers_markForumsRead'),
-		'href' => $__templater->func('link', array('forums/', ), false) . $__vars['xf']['options']['fs_questionAnswerForum'] . '/mark-read&date=$xf.time',
-		'attributes' => [
-			'data-xf-click' => 'overlay',
-		],
-	];
-			if ($__navTemp) {
-				$__tree['forums']['children']['fs_question_answers_markForumsRead'] = $__navTemp;
-				$__flat['fs_question_answers_markForumsRead'] =& $__tree['forums']['children']['fs_question_answers_markForumsRead'];
 			}
 		}
 
@@ -678,16 +678,106 @@ return function($__templater, $__selectedNav, array $__vars)
 			$__flat['BRATR_newThreadRatings'] =& $__tree['whatsNew']['children']['BRATR_newThreadRatings'];
 		}
 
+		if ($__templater->method($__vars['xf']['visitor'], 'canViewShowcaseItems', array())) {
+			$__navTemp = [
+		'title' => \XF::phrase('nav.xaScWhatsNewNewShowcaseItems'),
+		'href' => $__templater->func('link', array('whats-new/showcase-items', ), false),
+		'attributes' => [
+			'rel' => 'nofollow',
+		],
+	];
+			if ($__navTemp) {
+				$__tree['whatsNew']['children']['xaScWhatsNewNewShowcaseItems'] = $__navTemp;
+				$__flat['xaScWhatsNewNewShowcaseItems'] =& $__tree['whatsNew']['children']['xaScWhatsNewNewShowcaseItems'];
+			}
+		}
+
+		if (($__templater->method($__vars['xf']['visitor'], 'canViewShowcaseItems', array()) AND $__templater->method($__vars['xf']['visitor'], 'canViewShowcaseComments', array()))) {
+			$__navTemp = [
+		'title' => \XF::phrase('nav.xaScWhatsNewShowcaseComments'),
+		'href' => $__templater->func('link', array('whats-new/showcase-comments', ), false),
+		'attributes' => [
+			'rel' => 'nofollow',
+		],
+	];
+			if ($__navTemp) {
+				$__tree['whatsNew']['children']['xaScWhatsNewShowcaseComments'] = $__navTemp;
+				$__flat['xaScWhatsNewShowcaseComments'] =& $__tree['whatsNew']['children']['xaScWhatsNewShowcaseComments'];
+			}
+		}
+
 	}
 
 	$__navTemp = [
-		'title' => \XF::phrase('nav.fs_quiz'),
-		'href' => $__templater->func('link', array('quiz', ), false),
+		'title' => \XF::phrase('nav.fs_auction_category'),
+		'href' => $__templater->func('link', array('auction', ), false),
 		'attributes' => [],
 	];
 	if ($__navTemp) {
-		$__tree['fs_quiz'] = $__navTemp;
-		$__flat['fs_quiz'] =& $__tree['fs_quiz'];
+		$__tree['fs_auction_category'] = $__navTemp;
+		$__flat['fs_auction_category'] =& $__tree['fs_auction_category'];
+		if (empty($__tree['fs_auction_category']['children'])) { $__tree['fs_auction_category']['children'] = []; }
+
+		$__navTemp = [
+		'title' => \XF::phrase('nav.auctionAddListing'),
+		'href' => $__templater->func('link', array('auction/add', ), false),
+		'attributes' => [
+			'data-xf-click' => 'overlay',
+		],
+	];
+		if ($__navTemp) {
+			$__tree['fs_auction_category']['children']['auctionAddListing'] = $__navTemp;
+			$__flat['auctionAddListing'] =& $__tree['fs_auction_category']['children']['auctionAddListing'];
+		}
+
+	}
+
+	$__navTemp = [
+		'title' => \XF::phrase('nav.fs_escrow'),
+		'href' => $__templater->func('link', array('escrow', ), false),
+		'attributes' => [],
+	];
+	if ($__navTemp) {
+		$__tree['fs_escrow'] = $__navTemp;
+		$__flat['fs_escrow'] =& $__tree['fs_escrow'];
+		if (empty($__tree['fs_escrow']['children'])) { $__tree['fs_escrow']['children'] = []; }
+
+		$__navTemp = [
+		'title' => \XF::phrase('nav.fs_escrow_add'),
+		'href' => $__templater->func('link', array('escrow/add', ), false),
+		'attributes' => [],
+	];
+		if ($__navTemp) {
+			$__tree['fs_escrow']['children']['fs_escrow_add'] = $__navTemp;
+			$__flat['fs_escrow_add'] =& $__tree['fs_escrow']['children']['fs_escrow_add'];
+		}
+
+	}
+
+	if ($__templater->method($__vars['xf']['visitor'], 'haspermission', array('fs_forum_group_permission', 'add', ))) {
+		$__navTemp = [
+		'title' => \XF::phrase('nav.fs_forumGroups_index'),
+		'href' => $__templater->func('link', array('forumGroups', ), false),
+		'attributes' => [],
+	];
+		if ($__navTemp) {
+			$__tree['fs_forumGroups_index'] = $__navTemp;
+			$__flat['fs_forumGroups_index'] =& $__tree['fs_forumGroups_index'];
+			if (empty($__tree['fs_forumGroups_index']['children'])) { $__tree['fs_forumGroups_index']['children'] = []; }
+
+			$__navTemp = [
+		'title' => \XF::phrase('nav.forumGroupsAddSubForum'),
+		'href' => $__templater->func('link', array('forumGroups/add', ), false),
+		'attributes' => [
+			'data-xf-click' => 'overlay',
+		],
+	];
+			if ($__navTemp) {
+				$__tree['fs_forumGroups_index']['children']['forumGroupsAddSubForum'] = $__navTemp;
+				$__flat['forumGroupsAddSubForum'] =& $__tree['fs_forumGroups_index']['children']['forumGroupsAddSubForum'];
+			}
+
+		}
 	}
 
 	if ($__templater->method($__vars['xf']['visitor'], 'canViewMedia', array())) {
@@ -856,76 +946,14 @@ return function($__templater, $__selectedNav, array $__vars)
 		}
 	}
 
-	if ($__templater->method($__vars['xf']['visitor'], 'haspermission', array('fs_forum_group_permission', 'add', ))) {
-		$__navTemp = [
-		'title' => \XF::phrase('nav.fs_forumGroups_index'),
-		'href' => $__templater->func('link', array('forumGroups', ), false),
-		'attributes' => [],
-	];
-		if ($__navTemp) {
-			$__tree['fs_forumGroups_index'] = $__navTemp;
-			$__flat['fs_forumGroups_index'] =& $__tree['fs_forumGroups_index'];
-			if (empty($__tree['fs_forumGroups_index']['children'])) { $__tree['fs_forumGroups_index']['children'] = []; }
-
-			$__navTemp = [
-		'title' => \XF::phrase('nav.forumGroupsAddSubForum'),
-		'href' => $__templater->func('link', array('forumGroups/add', ), false),
-		'attributes' => [
-			'data-xf-click' => 'overlay',
-		],
-	];
-			if ($__navTemp) {
-				$__tree['fs_forumGroups_index']['children']['forumGroupsAddSubForum'] = $__navTemp;
-				$__flat['forumGroupsAddSubForum'] =& $__tree['fs_forumGroups_index']['children']['forumGroupsAddSubForum'];
-			}
-
-		}
-	}
-
 	$__navTemp = [
-		'title' => \XF::phrase('nav.fs_escrow'),
-		'href' => $__templater->func('link', array('escrow', ), false),
+		'title' => \XF::phrase('nav.fs_quiz'),
+		'href' => $__templater->func('link', array('quiz', ), false),
 		'attributes' => [],
 	];
 	if ($__navTemp) {
-		$__tree['fs_escrow'] = $__navTemp;
-		$__flat['fs_escrow'] =& $__tree['fs_escrow'];
-		if (empty($__tree['fs_escrow']['children'])) { $__tree['fs_escrow']['children'] = []; }
-
-		$__navTemp = [
-		'title' => \XF::phrase('nav.fs_escrow_add'),
-		'href' => $__templater->func('link', array('escrow/add', ), false),
-		'attributes' => [],
-	];
-		if ($__navTemp) {
-			$__tree['fs_escrow']['children']['fs_escrow_add'] = $__navTemp;
-			$__flat['fs_escrow_add'] =& $__tree['fs_escrow']['children']['fs_escrow_add'];
-		}
-
-	}
-
-	$__navTemp = [
-		'title' => \XF::phrase('nav.fs_auction_category'),
-		'href' => $__templater->func('link', array('auction', ), false),
-		'attributes' => [],
-	];
-	if ($__navTemp) {
-		$__tree['fs_auction_category'] = $__navTemp;
-		$__flat['fs_auction_category'] =& $__tree['fs_auction_category'];
-		if (empty($__tree['fs_auction_category']['children'])) { $__tree['fs_auction_category']['children'] = []; }
-
-		$__navTemp = [
-		'title' => \XF::phrase('nav.auctionAddListing'),
-		'href' => $__templater->func('link', array('auction/add', ), false),
-		'attributes' => [
-			'data-xf-click' => 'overlay',
-		],
-	];
-		if ($__navTemp) {
-			$__tree['fs_auction_category']['children']['auctionAddListing'] = $__navTemp;
-			$__flat['auctionAddListing'] =& $__tree['fs_auction_category']['children']['auctionAddListing'];
-		}
-
+		$__tree['fs_quiz'] = $__navTemp;
+		$__flat['fs_quiz'] =& $__tree['fs_quiz'];
 	}
 
 	if ($__templater->method($__vars['xf']['visitor'], 'canViewResources', array())) {
@@ -1156,6 +1184,20 @@ return function($__templater, $__selectedNav, array $__vars)
 		}
 	}
 
+	if ($__templater->method($__vars['xf']['visitor'], 'canViewMeeting', array())) {
+		$__navTemp = [
+		'title' => \XF::phrase('nav.fs_zoom_meetings'),
+		'href' => $__templater->func('link', array('video-chat', ), false),
+		'attributes' => [
+			'target' => '"_blank"',
+		],
+	];
+		if ($__navTemp) {
+			$__tree['fs_zoom_meetings'] = $__navTemp;
+			$__flat['fs_zoom_meetings'] =& $__tree['fs_zoom_meetings'];
+		}
+	}
+
 	$__navTemp = [
 		'title' => \XF::phrase('nav.createCrud'),
 		'href' => $__templater->func('link', array('crud', ), false),
@@ -1176,20 +1218,6 @@ return function($__templater, $__selectedNav, array $__vars)
 			$__flat['addRecord'] =& $__tree['createCrud']['children']['addRecord'];
 		}
 
-	}
-
-	if ($__templater->method($__vars['xf']['visitor'], 'canViewMeeting', array())) {
-		$__navTemp = [
-		'title' => \XF::phrase('nav.fs_zoom_meetings'),
-		'href' => $__templater->func('link', array('video-chat', ), false),
-		'attributes' => [
-			'target' => '"_blank"',
-		],
-	];
-		if ($__navTemp) {
-			$__tree['fs_zoom_meetings'] = $__navTemp;
-			$__flat['fs_zoom_meetings'] =& $__tree['fs_zoom_meetings'];
-		}
 	}
 
 	if ($__templater->method($__vars['xf']['visitor'], 'canViewDbtechCredits', array())) {
@@ -1224,6 +1252,208 @@ return function($__templater, $__selectedNav, array $__vars)
 	if ($__navTemp) {
 		$__tree['xb_videos'] = $__navTemp;
 		$__flat['xb_videos'] =& $__tree['xb_videos'];
+	}
+
+	if ($__templater->method($__vars['xf']['visitor'], 'canViewShowcaseItems', array())) {
+		$__navTemp = [
+		'title' => \XF::phrase('nav.xa_showcase'),
+		'href' => $__templater->func('link', array('showcase', ), false),
+		'attributes' => [],
+	];
+		if ($__navTemp) {
+			$__tree['xa_showcase'] = $__navTemp;
+			$__flat['xa_showcase'] =& $__tree['xa_showcase'];
+			if (empty($__tree['xa_showcase']['children'])) { $__tree['xa_showcase']['children'] = []; }
+
+			$__navTemp = [
+		'title' => \XF::phrase('nav.xa_scNewItems'),
+		'href' => $__templater->func('link', array('whats-new/showcase-items', ), false),
+		'attributes' => [
+			'rel' => 'nofollow',
+		],
+	];
+			if ($__navTemp) {
+				$__tree['xa_showcase']['children']['xa_scNewItems'] = $__navTemp;
+				$__flat['xa_scNewItems'] =& $__tree['xa_showcase']['children']['xa_scNewItems'];
+			}
+
+			if ($__templater->method($__vars['xf']['visitor'], 'canViewShowcaseComments', array())) {
+				$__navTemp = [
+		'title' => \XF::phrase('nav.xa_scNewComments'),
+		'href' => $__templater->func('link', array('whats-new/showcase-comments', ), false),
+		'attributes' => [
+			'rel' => 'nofollow',
+		],
+	];
+				if ($__navTemp) {
+					$__tree['xa_showcase']['children']['xa_scNewComments'] = $__navTemp;
+					$__flat['xa_scNewComments'] =& $__tree['xa_showcase']['children']['xa_scNewComments'];
+				}
+			}
+
+			$__navTemp = [
+		'title' => \XF::phrase('nav.xa_scLatestContent'),
+		'href' => $__templater->func('link', array('showcase/latest-reviews', ), false),
+		'attributes' => [],
+	];
+			if ($__navTemp) {
+				$__tree['xa_showcase']['children']['xa_scLatestContent'] = $__navTemp;
+				$__flat['xa_scLatestContent'] =& $__tree['xa_showcase']['children']['xa_scLatestContent'];
+				if (empty($__tree['xa_showcase']['children']['xa_scLatestContent']['children'])) { $__tree['xa_showcase']['children']['xa_scLatestContent']['children'] = []; }
+
+				$__navTemp = [
+		'title' => \XF::phrase('nav.xa_scLlatestReviews'),
+		'href' => $__templater->func('link', array('showcase/latest-reviews', ), false),
+		'attributes' => [
+			'rel' => 'nofollow',
+		],
+	];
+				if ($__navTemp) {
+					$__tree['xa_showcase']['children']['xa_scLatestContent']['children']['xa_scLlatestReviews'] = $__navTemp;
+					$__flat['xa_scLlatestReviews'] =& $__tree['xa_showcase']['children']['xa_scLatestContent']['children']['xa_scLlatestReviews'];
+				}
+
+				$__navTemp = [
+		'title' => \XF::phrase('nav.xa_scLlatestUpdates'),
+		'href' => $__templater->func('link', array('showcase/latest-updates', ), false),
+		'attributes' => [
+			'rel' => 'nofollow',
+		],
+	];
+				if ($__navTemp) {
+					$__tree['xa_showcase']['children']['xa_scLatestContent']['children']['xa_scLlatestUpdates'] = $__navTemp;
+					$__flat['xa_scLlatestUpdates'] =& $__tree['xa_showcase']['children']['xa_scLatestContent']['children']['xa_scLlatestUpdates'];
+				}
+
+			}
+
+			if ($__vars['xf']['visitor']['user_id']) {
+				$__navTemp = [
+		'title' => \XF::phrase('nav.xa_scYourContent'),
+		'href' => $__templater->func('link', array('showcase/authors', $__vars['xf']['visitor'], ), false),
+		'attributes' => [],
+	];
+				if ($__navTemp) {
+					$__tree['xa_showcase']['children']['xa_scYourContent'] = $__navTemp;
+					$__flat['xa_scYourContent'] =& $__tree['xa_showcase']['children']['xa_scYourContent'];
+					if (empty($__tree['xa_showcase']['children']['xa_scYourContent']['children'])) { $__tree['xa_showcase']['children']['xa_scYourContent']['children'] = []; }
+
+					if ($__vars['xf']['visitor']['user_id']) {
+						$__navTemp = [
+		'title' => \XF::phrase('nav.xa_scYourPublishedItems'),
+		'href' => $__templater->func('link', array('showcase/authors', $__vars['xf']['visitor'], ), false),
+		'attributes' => [],
+	];
+						if ($__navTemp) {
+							$__tree['xa_showcase']['children']['xa_scYourContent']['children']['xa_scYourPublishedItems'] = $__navTemp;
+							$__flat['xa_scYourPublishedItems'] =& $__tree['xa_showcase']['children']['xa_scYourContent']['children']['xa_scYourPublishedItems'];
+						}
+					}
+
+					if ($__vars['xf']['visitor']['user_id']) {
+						$__navTemp = [
+		'title' => \XF::phrase('nav.xa_scYourItemsAwaitingPublishing'),
+		'href' => $__templater->func('link', array('showcase/authors/awaiting-publishing', $__vars['xf']['visitor'], ), false),
+		'attributes' => [],
+	];
+						if ($__navTemp) {
+							$__tree['xa_showcase']['children']['xa_scYourContent']['children']['xa_scYourItemsAwaitingPublishing'] = $__navTemp;
+							$__flat['xa_scYourItemsAwaitingPublishing'] =& $__tree['xa_showcase']['children']['xa_scYourContent']['children']['xa_scYourItemsAwaitingPublishing'];
+						}
+					}
+
+					if ($__vars['xf']['visitor']['user_id']) {
+						$__navTemp = [
+		'title' => \XF::phrase('nav.xa_scYourDrafts'),
+		'href' => $__templater->func('link', array('showcase/authors/drafts', $__vars['xf']['visitor'], ), false),
+		'attributes' => [],
+	];
+						if ($__navTemp) {
+							$__tree['xa_showcase']['children']['xa_scYourContent']['children']['xa_scYourDrafts'] = $__navTemp;
+							$__flat['xa_scYourDrafts'] =& $__tree['xa_showcase']['children']['xa_scYourContent']['children']['xa_scYourDrafts'];
+						}
+					}
+
+					if ($__vars['xf']['visitor']['user_id']) {
+						$__navTemp = [
+		'title' => \XF::phrase('nav.xa_scYourReviews'),
+		'href' => $__templater->func('link', array('showcase/authors/reviews', $__vars['xf']['visitor'], ), false),
+		'attributes' => [],
+	];
+						if ($__navTemp) {
+							$__tree['xa_showcase']['children']['xa_scYourContent']['children']['xa_scYourReviews'] = $__navTemp;
+							$__flat['xa_scYourReviews'] =& $__tree['xa_showcase']['children']['xa_scYourContent']['children']['xa_scYourReviews'];
+						}
+					}
+
+				}
+			}
+
+			if ($__vars['xf']['visitor']['user_id']) {
+				$__navTemp = [
+		'title' => \XF::phrase('nav.xa_scWatchedContent'),
+		'href' => $__templater->func('link', array('watched/showcase-items', ), false),
+		'attributes' => [],
+	];
+				if ($__navTemp) {
+					$__tree['xa_showcase']['children']['xa_scWatchedContent'] = $__navTemp;
+					$__flat['xa_scWatchedContent'] =& $__tree['xa_showcase']['children']['xa_scWatchedContent'];
+					if (empty($__tree['xa_showcase']['children']['xa_scWatchedContent']['children'])) { $__tree['xa_showcase']['children']['xa_scWatchedContent']['children'] = []; }
+
+					if ($__vars['xf']['visitor']['user_id']) {
+						$__navTemp = [
+		'title' => \XF::phrase('nav.xa_scWatchedItems'),
+		'href' => $__templater->func('link', array('watched/showcase-items', ), false),
+		'attributes' => [],
+	];
+						if ($__navTemp) {
+							$__tree['xa_showcase']['children']['xa_scWatchedContent']['children']['xa_scWatchedItems'] = $__navTemp;
+							$__flat['xa_scWatchedItems'] =& $__tree['xa_showcase']['children']['xa_scWatchedContent']['children']['xa_scWatchedItems'];
+						}
+					}
+
+					if ($__vars['xf']['visitor']['user_id']) {
+						$__navTemp = [
+		'title' => \XF::phrase('nav.xa_scWatchedCategories'),
+		'href' => $__templater->func('link', array('watched/showcase-categories', ), false),
+		'attributes' => [],
+	];
+						if ($__navTemp) {
+							$__tree['xa_showcase']['children']['xa_scWatchedContent']['children']['xa_scWatchedCategories'] = $__navTemp;
+							$__flat['xa_scWatchedCategories'] =& $__tree['xa_showcase']['children']['xa_scWatchedContent']['children']['xa_scWatchedCategories'];
+						}
+					}
+
+				}
+			}
+
+			if ($__templater->method($__vars['xf']['visitor'], 'canSearch', array())) {
+				$__navTemp = [
+		'title' => \XF::phrase('nav.xa_scSearchItems'),
+		'href' => $__templater->func('link', array('search', null, array('type' => 'sc_item', ), ), false),
+		'attributes' => [],
+	];
+				if ($__navTemp) {
+					$__tree['xa_showcase']['children']['xa_scSearchItems'] = $__navTemp;
+					$__flat['xa_scSearchItems'] =& $__tree['xa_showcase']['children']['xa_scSearchItems'];
+				}
+			}
+
+			if ($__vars['xf']['visitor']['user_id']) {
+				$__navTemp = [
+		'title' => \XF::phrase('nav.xa_scMarkRead'),
+		'href' => $__templater->func('link', array('showcase/mark-read', null, array('date' => $__vars['xf']['time'], ), ), false),
+		'attributes' => [
+			'data-xf-click' => 'overlay',
+		],
+	];
+				if ($__navTemp) {
+					$__tree['xa_showcase']['children']['xa_scMarkRead'] = $__navTemp;
+					$__flat['xa_scMarkRead'] =& $__tree['xa_showcase']['children']['xa_scMarkRead'];
+				}
+			}
+
+		}
 	}
 
 	if (($__vars['xf']['options']['siropuAdsManagerEnabled'] AND ((!$__vars['xf']['options']['siropuAdsManagerMenuLink']) AND $__templater->method($__vars['xf']['visitor'], 'hasPermission', array('siropuAdsManager', 'createAds', ))))) {

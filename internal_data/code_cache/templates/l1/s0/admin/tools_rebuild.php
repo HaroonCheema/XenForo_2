@@ -409,6 +409,7 @@ return array(
 	), $__vars) . '
 <!--[Brivium\\AdvancedThreadRating:ThreadRatingBottom]-->
 ' . '
+' . $__templater->includeTemplate('xa_sc_tools_rebuild', $__vars) . '
 ' . $__templater->includeTemplate('xfmg_tools_rebuild', $__vars) . '
 ' . $__templater->includeTemplate('xfrm_tools_rebuild', $__vars) . '
 ' . $__templater->includeTemplate('snog_tv_tools_rebuild', $__vars) . '

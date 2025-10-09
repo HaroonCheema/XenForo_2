@@ -139,6 +139,7 @@ return array (
   'option_group.traktWatchLists' => '[nick97] Watch List',
   'option_group.users' => 'User options',
   'option_group.usersAndRegistration' => 'User registration',
+  'option_group.xaShowcase' => 'Showcase',
   'option_group.xb_avatar_gallery' => '[XB] AvatarGallery',
   'option_group.xb_stop_human_span' => '[XB] Stop Human Spam',
   'option_group.xc_hide_links_from_guests' => '[XenConcept] Hide links / Medias / Images (BbCode)',
