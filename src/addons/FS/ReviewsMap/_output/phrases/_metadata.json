@@ -23,6 +23,12 @@
         "version_string": "1.0.0 Alpha",
         "hash": "863165593d48070310dc87c66b0311b9"
     },
+    "fs_reviewmap_contents_can_be_controlled_via_reviewmap_options.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "8d09360c52d552a29bcf547485f83c3b"
+    },
     "fs_sitemap_log.txt": {
         "global_cache": false,
         "version_id": 1000010,

@@ -201,8 +201,15 @@ return array(
 	), $__vars) . '
 ' . '
 
+';
+	$__vars['fsReviewmapBody'] = $__templater->preEscaped('
+	' . $__templater->formInfoRow('The sitemap contents can be controlled via the <a href="admin.php?options/groups/reviewmap/">[FS] Thread XML reviewmap generation</a> options.', array(
+	)) . '
+');
+	$__finalCompiled .= '
 ' . $__templater->callMacro(null, 'rebuild_job', array(
 		'header' => 'Rebuild thread sitemap',
+		'body' => $__vars['fsReviewmapBody'],
 		'job' => 'FS\\ReviewsMap:ThreadSitemap',
 	), $__vars) . '
 

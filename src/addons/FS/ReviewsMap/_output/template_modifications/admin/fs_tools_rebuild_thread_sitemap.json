@@ -5,5 +5,5 @@
     "enabled": true,
     "action": "str_replace",
     "find": "<!--[XF:after_thumbnails]-->",
-    "replace": "$0\n\n<xf:macro name=\"rebuild_job\"\n\targ-header=\"{{ phrase('fs_rebuild_thread_sitemap') }}\"\n\targ-job=\"FS\\ReviewsMap:ThreadSitemap\" />"
+    "replace": "$0\n\n<xf:set var=\"$fsReviewmapBody\">\n\t<xf:inforow>{{ phrase('fs_reviewmap_contents_can_be_controlled_via_reviewmap_options') }}</xf:inforow>\n</xf:set>\n<xf:macro name=\"rebuild_job\"\n\t\t  arg-header=\"{{ phrase('fs_rebuild_thread_sitemap') }}\"\n\t\t  arg-body=\"{$fsReviewmapBody}\"\n\t\t  arg-job=\"FS\\ReviewsMap:ThreadSitemap\" />"
 }
