@@ -1,6 +1,6 @@
 <?php
 
-namespace FS\ArticleThreadUrl;
+namespace XB\ArticleThreadUrl;
 
 use XF\AddOn\AbstractSetup;
 use XF\AddOn\StepRunnerInstallTrait;

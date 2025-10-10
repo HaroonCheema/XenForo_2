@@ -1,6 +1,6 @@
 {
     "from_class": "XF\\Mvc\\Router",
-    "to_class": "FS\\ArticleThreadUrl\\XF\\Mvc\\Router",
+    "to_class": "XB\\ArticleThreadUrl\\XF\\Mvc\\Router",
     "execute_order": 10,
     "active": true
 }

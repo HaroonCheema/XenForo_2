@@ -1,6 +1,6 @@
 <?php
 
-namespace FS\ArticleThreadUrl\XF\Mvc;
+namespace XB\ArticleThreadUrl\XF\Mvc;
 
 use XF\Mvc\RouteBuiltLink;
 use function is_string;
