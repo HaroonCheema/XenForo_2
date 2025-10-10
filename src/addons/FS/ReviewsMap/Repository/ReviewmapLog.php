@@ -155,6 +155,8 @@ class ReviewmapLog extends Repository
 		// }
 
 		$types = [
+			'sc_category' => 'XenAddons\Showcase\Sitemap\Category',
+			'sc_item' => 'XenAddons\Showcase\Sitemap\Item',
 			'thread' => 'XF\Sitemap\Thread'
 		];
 
