@@ -17,16 +17,20 @@ class Thread extends XFCP_Thread
         $endDate = strtotime($options->fs_thread_sitemap_to);
 
         $totalThreads = \XF::finder('XF:Thread')->where('discussion_state', 'visible');
+        // $isDateApplied = false;
 
         if ($startDate && !$endDate) {
             $totalThreads->where('post_date', '>', $startDate);
+            // $isDateApplied = true;
         } elseif ($endDate && !$startDate) {
             $totalThreads->where('post_date', '<', $endDate);
+            // $isDateApplied = true;
         } elseif ($startDate && $endDate && ($endDate > $startDate)) {
             $totalThreads->where('post_date', '>', $startDate)->where('post_date', '<', $endDate);
+            // $isDateApplied = true;
         }
 
-        $threadIds = $totalThreads->order($threadOrderBy, 'desc')->limitByPage(1, $threadLimits)->pluckfrom('thread_id')->fetch()->toArray();
+        $threadIds = $totalThreads->order($threadOrderBy, 'desc')->limit($threadLimits)->pluckfrom('thread_id')->fetch()->toArray();
 
         if (!$threadIds) {
             return [];
@@ -35,7 +39,10 @@ class Thread extends XFCP_Thread
         $lastThreadId = $start;
 
         if ($start != 0) {
-            $threadIds = array_values($threadIds);
+
+            // if ($isDateApplied) {
+            //     $threadIds = array_values($threadIds);
+            // }
 
             if (($pos = array_search($lastThreadId, $threadIds)) !== false) {
                 $threadIds = array_slice($threadIds, $pos + 1);
@@ -44,6 +51,13 @@ class Thread extends XFCP_Thread
 
         if (empty($threadIds)) {
             return [];
+        }
+
+        $newThreadIds = [];
+        if (!empty($threadIds)) {
+            foreach ($threadIds as $id) {
+                $newThreadIds[$id] = $id;
+            }
         }
 
         // $ids = $this->getIds('xf_thread', 'thread_id', $start, $threadLimits);
