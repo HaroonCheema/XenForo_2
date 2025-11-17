@@ -2,7 +2,7 @@
     "template": "forum_list",
     "description": "Remove QuestionsAnswers forum form list",
     "execution_order": 10,
-    "enabled": true,
+    "enabled": false,
     "action": "preg_replace",
     "find": "/<xf:macro name=\"node_list_entry\" arg-node=\"!\" arg-extras=\"!\" arg-children=\"!\" arg-childExtras=\"!\" arg-depth=\"1\">.*?<\\/xf:macro>/si",
     "replace": "<xf:macro name=\"node_list_entry\" arg-node=\"!\" arg-extras=\"!\" arg-children=\"!\" arg-childExtras=\"!\" arg-depth=\"1\">\n\t<xf:if is=\"$node.node_id  != $xf.options.fs_questionAnswerForum\">\n\t\t<xf:css src=\"node_list.less\" />\n\t\t<xf:set var=\"$nodeTemplate\" value=\"{{ $node.getNodeTemplateRenderer($depth) }}\" />\n\t\t<xf:if is=\"$nodeTemplate.macro\">\n\t\t\t<xf:macro template=\"{$nodeTemplate.template}\" name=\"{$nodeTemplate.macro}\"\n\t\t\t\targ-node=\"{$node}\"\n\t\t\t\targ-extras=\"{$extras}\"\n\t\t\t\targ-children=\"{$children}\"\n\t\t\t\targ-childExtras=\"{$childExtras}\"\n\t\t\t\targ-depth=\"{$depth}\" />\n\t\t<xf:elseif is=\"{$nodeTemplate.template}\" />\n\t\t\t<xf:include template=\"{$nodeTemplate.template}\" />\n\t\t</xf:if>\n\t</xf:if>\n</xf:macro>"
