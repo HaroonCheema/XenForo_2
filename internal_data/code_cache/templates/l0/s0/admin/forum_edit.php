@@ -322,6 +322,21 @@ return array(
 		'node' => $__vars['node'],
 	), $__vars) . '
 
+<hr class="formRowSep" />
+
+' . $__templater->formTextBoxRow(array(
+		'name' => 'node[txt_clr]',
+		'value' => $__vars['node']['txt_clr'],
+	), array(
+		'label' => 'Section text color',
+	)) . '
+' . $__templater->formTextBoxRow(array(
+		'name' => 'node[bg_clr]',
+		'value' => $__vars['node']['bg_clr'],
+	), array(
+		'label' => 'Section background color',
+	)) . '
+
 ' . $__compilerTemp2 . '
 
 ' . $__compilerTemp3 . '

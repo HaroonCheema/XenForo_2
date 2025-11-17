@@ -1,0 +1,9 @@
+{
+    "template": "node_list_forum",
+    "description": "fs_node_list_forum_bg_clr_change",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<div class=\"node-body\">",
+    "replace": "<div class=\"node-body\" style=\"{{$node.bg_clr != '' ? 'background-color: '. {$node.bg_clr}.';' : ''}}\">"
+}

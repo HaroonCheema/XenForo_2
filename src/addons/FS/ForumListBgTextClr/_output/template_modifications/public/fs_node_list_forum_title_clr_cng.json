@@ -1,0 +1,9 @@
+{
+    "template": "node_list_forum",
+    "description": "fs_node_list_forum_title_clr_cng",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/<h3 class=\"node-title\">.*?<\\/h3>/is",
+    "replace": "<h3 class=\"node-title\">\n\t<a href=\"{{ link('forums', $node) }}\" data-xf-init=\"{{ $descriptionDisplay == 'tooltip' ? 'element-tooltip' : '' }}\" data-shortcut=\"node-description\" style=\"{{$node.txt_clr != '' ? 'color: '. {$node.txt_clr}.';' : ''}}\">{$node.title}</a>\n</h3>"
+}

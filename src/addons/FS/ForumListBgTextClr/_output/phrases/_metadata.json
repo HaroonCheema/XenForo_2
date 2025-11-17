@@ -1,0 +1,14 @@
+{
+    "fs_forum_list_bg_color.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "701908ef1471ffcce850678b639b6fda"
+    },
+    "fs_forum_list_txt_color.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "2c9e2c78ac29b01714b598f03a282560"
+    }
+}

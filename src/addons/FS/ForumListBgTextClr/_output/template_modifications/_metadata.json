@@ -1,0 +1,20 @@
+{
+    "admin/fs_forum_edit_txt_bg_clr_field.json": {
+        "hash": "401faecaba0aeb73e1e6c0e06af35a96"
+    },
+    "public/fs_node_list_forum_bg_clr_change.json": {
+        "hash": "befd3ec5c13d0f0718e9fcc22b81fe74"
+    },
+    "public/fs_node_list_forum_msg_clr_change.json": {
+        "hash": "aa7034ac9d5327c1f35f1458e586af95"
+    },
+    "public/fs_node_list_forum_thrd_clr_change.json": {
+        "hash": "3a01e496ee1a2185b75efc601ba75aa9"
+    },
+    "public/fs_node_list_forum_thrd_title_clr_change.json": {
+        "hash": "97e3aa3c3098b73e36760ed3e57e1c2c"
+    },
+    "public/fs_node_list_forum_title_clr_cng.json": {
+        "hash": "0650be19510a45bf5f5f9089a16cf869"
+    }
+}

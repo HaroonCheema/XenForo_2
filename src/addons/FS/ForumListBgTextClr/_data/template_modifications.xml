@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="admin" template="forum_edit" modification_key="fs_forum_edit_txt_bg_clr_field" description="fs_forum_edit_txt_bg_clr_field" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:macro template="node_edit_macros" name="description" arg-node="{$node}" />]]></find>
+    <replace><![CDATA[$0
+
+<hr class="formRowSep" />
+
+<xf:textboxrow name="node[txt_clr]" value="{$node.txt_clr}" label="{{ phrase('fs_forum_list_txt_color') }}" />
+<xf:textboxrow name="node[bg_clr]" value="{$node.bg_clr}" label="{{ phrase('fs_forum_list_bg_color') }}" />]]></replace>
+  </modification>
+  <modification type="public" template="node_list_forum" modification_key="fs_node_list_forum_bg_clr_change" description="fs_node_list_forum_bg_clr_change" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<div class="node-body">]]></find>
+    <replace><![CDATA[<div class="node-body" style="{{$node.bg_clr != '' ? 'background-color: '. {$node.bg_clr}.';' : ''}}">]]></replace>
+  </modification>
+  <modification type="public" template="node_list_forum" modification_key="fs_node_list_forum_msg_clr_change" description="fs_node_list_forum_msg_clr_change" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<dd>{$extras.message_count|number_short(1)}</dd>]]></find>
+    <replace><![CDATA[<dd style="{{$node.txt_clr != '' ? 'color: '. {$node.txt_clr}.';' : ''}}">{$extras.message_count|number_short(1)}</dd>]]></replace>
+  </modification>
+  <modification type="public" template="node_list_forum" modification_key="fs_node_list_forum_thrd_clr_change" description="fs_node_list_forum_thrd_clr_change" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<dd>{$extras.discussion_count|number_short(1)}</dd>]]></find>
+    <replace><![CDATA[<dd style="{{$node.txt_clr != '' ? 'color: '. {$node.txt_clr}.';' : ''}}">{$extras.discussion_count|number_short(1)}</dd>]]></replace>
+  </modification>
+  <modification type="public" template="node_list_forum" modification_key="fs_node_list_forum_thrd_title_clr_change" description="fs_node_list_forum_thrd_title_clr_change" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<xf:if is="\$extras\.LastThread\.isUnread\(\)">.*?<\/xf:if>/is]]></find>
+    <replace><![CDATA[<xf:if is="$extras.LastThread.isUnread()">
+	<a href="{{ link('threads/unread', $extras.LastThread) }}" style="{{$node.txt_clr != '' ? 'color: '. {$node.txt_clr}.';' : ''}}" class="node-extra-title" title="{$extras.LastThread.title}">{{ prefix('thread', $extras.LastThread) }}{$extras.LastThread.title}</a>
+	<xf:else />
+	<a href="{{ link('threads/post', $extras.LastThread, {'post_id': $extras.last_post_id}) }}" style="{{$node.txt_clr != '' ? 'color: '. {$node.txt_clr}.';' : ''}}" class="node-extra-title" title="{$extras.LastThread.title}">{{ prefix('thread', $extras.LastThread) }}{$extras.LastThread.title}</a>
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="node_list_forum" modification_key="fs_node_list_forum_title_clr_cng" description="fs_node_list_forum_title_clr_cng" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<h3 class="node-title">.*?<\/h3>/is]]></find>
+    <replace><![CDATA[<h3 class="node-title">
+	<a href="{{ link('forums', $node) }}" data-xf-init="{{ $descriptionDisplay == 'tooltip' ? 'element-tooltip' : '' }}" data-shortcut="node-description" style="{{$node.txt_clr != '' ? 'color: '. {$node.txt_clr}.';' : ''}}">{$node.title}</a>
+</h3>]]></replace>
+  </modification>
+</template_modifications>

@@ -93,7 +93,7 @@ return array(
 	$__finalCompiled .= '
 
 	<div class="node node--id' . $__templater->escape($__vars['node']['node_id']) . ' node--depth' . $__templater->escape($__vars['depth']) . ' node--forum ' . ($__vars['extras']['hasNew'] ? 'node--unread' : 'node--read') . '">
-		<div class="node-body">
+		<div class="node-body" style="' . (($__vars['node']['bg_clr'] != '') ? (('background-color: ' . $__templater->escape($__vars['node']['bg_clr'])) . ';') : '') . '">
 			';
 	if ($__templater->method($__vars['node'], 'getIcon', array())) {
 		$__finalCompiled .= '
@@ -135,8 +135,8 @@ return array(
 	$__vars['descriptionDisplay'] = $__templater->func('property', array('nodeListDescriptionDisplay', ), false);
 	$__finalCompiled .= '
 				<h3 class="node-title">
-					<a href="' . $__templater->func('link', array('forums', $__vars['node'], ), true) . '" data-xf-init="' . (($__vars['descriptionDisplay'] == 'tooltip') ? 'element-tooltip' : '') . '" data-shortcut="node-description">' . $__templater->escape($__templater->method($__vars['node'], 'getNodeTitle', array())) . '</a>
-				</h3>
+	<a href="' . $__templater->func('link', array('forums', $__vars['node'], ), true) . '" data-xf-init="' . (($__vars['descriptionDisplay'] == 'tooltip') ? 'element-tooltip' : '') . '" data-shortcut="node-description" style="' . (($__vars['node']['txt_clr'] != '') ? (('color: ' . $__templater->escape($__vars['node']['txt_clr'])) . ';') : '') . '">' . $__templater->escape($__vars['node']['title']) . '</a>
+</h3>
 				';
 	if (!$__templater->test($__vars['node']['TVForum'], 'empty', array())) {
 		$__finalCompiled .= '
@@ -159,11 +159,11 @@ return array(
 						<div class="node-statsMeta">
 							<dl class="pairs pairs--inline">
 								<dt>' . 'Threads' . '</dt>
-								<dd>' . $__templater->filter($__vars['extras']['discussion_count'], array(array('number_short', array(1, )),), true) . '</dd>
+								<dd style="' . (($__vars['node']['txt_clr'] != '') ? (('color: ' . $__templater->escape($__vars['node']['txt_clr'])) . ';') : '') . '">' . $__templater->filter($__vars['extras']['discussion_count'], array(array('number_short', array(1, )),), true) . '</dd>
 							</dl>
 							<dl class="pairs pairs--inline">
 								<dt>' . 'Messages' . '</dt>
-								<dd>' . $__templater->filter($__vars['extras']['message_count'], array(array('number_short', array(1, )),), true) . '</dd>
+								<dd style="' . (($__vars['node']['txt_clr'] != '') ? (('color: ' . $__templater->escape($__vars['node']['txt_clr'])) . ';') : '') . '">' . $__templater->filter($__vars['extras']['message_count'], array(array('number_short', array(1, )),), true) . '</dd>
 							</dl>
 						</div>
 					';
@@ -220,11 +220,11 @@ return array(
 
 					<dl class="pairs pairs--rows">
 						<dt>' . 'Threads' . '</dt>
-						<dd>' . $__templater->filter($__vars['extras']['discussion_count'], array(array('number_short', array(1, )),), true) . '</dd>
+						<dd style="' . (($__vars['node']['txt_clr'] != '') ? (('color: ' . $__templater->escape($__vars['node']['txt_clr'])) . ';') : '') . '">' . $__templater->filter($__vars['extras']['discussion_count'], array(array('number_short', array(1, )),), true) . '</dd>
 					</dl>
 					<dl class="pairs pairs--rows">
 						<dt>' . 'Messages' . '</dt>
-						<dd>' . $__templater->filter($__vars['extras']['message_count'], array(array('number_short', array(1, )),), true) . '</dd>
+						<dd style="' . (($__vars['node']['txt_clr'] != '') ? (('color: ' . $__templater->escape($__vars['node']['txt_clr'])) . ';') : '') . '">' . $__templater->filter($__vars['extras']['message_count'], array(array('number_short', array(1, )),), true) . '</dd>
 					</dl>
 				</div>
 			';
@@ -259,12 +259,12 @@ return array(
 						';
 		if ($__templater->method($__vars['extras']['LastThread'], 'isUnread', array())) {
 			$__finalCompiled .= '
-							<a href="' . $__templater->func('link', array('threads/unread', $__vars['extras']['LastThread'], ), true) . '" class="node-extra-title" title="' . $__templater->escape($__vars['extras']['LastThread']['title']) . '">' . $__templater->func('prefix', array('thread', $__vars['extras']['LastThread'], ), true) . $__templater->escape($__vars['extras']['LastThread']['title']) . '</a>
-						';
+	<a href="' . $__templater->func('link', array('threads/unread', $__vars['extras']['LastThread'], ), true) . '" style="' . (($__vars['node']['txt_clr'] != '') ? (('color: ' . $__templater->escape($__vars['node']['txt_clr'])) . ';') : '') . '" class="node-extra-title" title="' . $__templater->escape($__vars['extras']['LastThread']['title']) . '">' . $__templater->func('prefix', array('thread', $__vars['extras']['LastThread'], ), true) . $__templater->escape($__vars['extras']['LastThread']['title']) . '</a>
+	';
 		} else {
 			$__finalCompiled .= '
-							<a href="' . $__templater->func('link', array('threads/post', $__vars['extras']['LastThread'], array('post_id' => $__vars['extras']['last_post_id'], ), ), true) . '" class="node-extra-title" title="' . $__templater->escape($__vars['extras']['LastThread']['title']) . '">' . $__templater->func('prefix', array('thread', $__vars['extras']['LastThread'], ), true) . $__templater->escape($__vars['extras']['LastThread']['title']) . '</a>
-						';
+	<a href="' . $__templater->func('link', array('threads/post', $__vars['extras']['LastThread'], array('post_id' => $__vars['extras']['last_post_id'], ), ), true) . '" style="' . (($__vars['node']['txt_clr'] != '') ? (('color: ' . $__templater->escape($__vars['node']['txt_clr'])) . ';') : '') . '" class="node-extra-title" title="' . $__templater->escape($__vars['extras']['LastThread']['title']) . '">' . $__templater->func('prefix', array('thread', $__vars['extras']['LastThread'], ), true) . $__templater->escape($__vars['extras']['LastThread']['title']) . '</a>
+';
 		}
 		$__finalCompiled .= '
 					</div>

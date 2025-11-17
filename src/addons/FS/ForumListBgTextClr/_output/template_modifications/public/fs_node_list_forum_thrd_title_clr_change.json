@@ -1,0 +1,9 @@
+{
+    "template": "node_list_forum",
+    "description": "fs_node_list_forum_thrd_title_clr_change",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/<xf:if is=\"\\$extras\\.LastThread\\.isUnread\\(\\)\">.*?<\\/xf:if>/is",
+    "replace": "<xf:if is=\"$extras.LastThread.isUnread()\">\n\t<a href=\"{{ link('threads/unread', $extras.LastThread) }}\" style=\"{{$node.txt_clr != '' ? 'color: '. {$node.txt_clr}.';' : ''}}\" class=\"node-extra-title\" title=\"{$extras.LastThread.title}\">{{ prefix('thread', $extras.LastThread) }}{$extras.LastThread.title}</a>\n\t<xf:else />\n\t<a href=\"{{ link('threads/post', $extras.LastThread, {'post_id': $extras.last_post_id}) }}\" style=\"{{$node.txt_clr != '' ? 'color: '. {$node.txt_clr}.';' : ''}}\" class=\"node-extra-title\" title=\"{$extras.LastThread.title}\">{{ prefix('thread', $extras.LastThread) }}{$extras.LastThread.title}</a>\n</xf:if>"
+}

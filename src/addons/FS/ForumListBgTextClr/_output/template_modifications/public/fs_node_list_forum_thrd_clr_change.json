@@ -1,0 +1,9 @@
+{
+    "template": "node_list_forum",
+    "description": "fs_node_list_forum_thrd_clr_change",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<dd>{$extras.discussion_count|number_short(1)}</dd>",
+    "replace": "<dd style=\"{{$node.txt_clr != '' ? 'color: '. {$node.txt_clr}.';' : ''}}\">{$extras.discussion_count|number_short(1)}</dd>"
+}
