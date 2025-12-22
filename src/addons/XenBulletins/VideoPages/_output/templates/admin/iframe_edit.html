@@ -1,0 +1,73 @@
+<xf:if is="$data.isInsert()">
+	<xf:title>{{ phrase('Add Record') }}</xf:title>
+<xf:else />
+	<xf:title>{{ phrase('Edit Record:') }} {$data.iframe_title}</xf:title>
+</xf:if>
+
+<xf:pageaction if="$data.isUpdate()">
+	<xf:button href="{{ link('brand/delete', $data) }}" icon="delete" overlay="true" />
+</xf:pageaction>
+<xf:form action="{{ link('iframe/save', $data) }}"  class="block" ajax="true">
+	
+	<div class="block-container">
+		<div class="block-body">
+			<xf:textboxrow name="iframe_title" value="{$data.iframe_title}" maxlength="{{ max_length($data, 'iframe_title') }}"
+				label="{{ phrase('Iframe Title') }}" />
+			
+            <xf:textboxrow name="iframe_URL" type="url" value="{$data.iframe_URL}" maxlength="{{ max_length($data, 'iframe_URL') }}"
+				label="{{ phrase('Iframe URL') }}" />
+	
+			<xf:selectrow name="video_id" value="{{ $data.video_id}}" label="{{ phrase('Brand Title') }}" class="" explain="{{ phrase('Select one from Brand Title or Rons Interview ') }}"  >
+				<xf:option value="{{$sponsor.video_feature}}" selected="true" >{{$sponsor.video_feature}}</xf:option>
+				<xf:foreach loop="$iframeSites" value="$sponsor" selected="{{$sponsor.video_id}}">
+			    <xf:option  value="{{$sponsor.video_id}}" >{{$sponsor.video_feature}}</xf:option>
+				
+				</xf:foreach>
+			
+			</xf:selectrow>
+			
+			<xf:selectrow name="display_day" value="{$data.display_day}" label="{{ phrase('Display Day') }}"
+                explain="{{ phrase('Select which day this video should display') }}">
+				<xf:option value="7">Unknown</xf:option>
+                <xf:option value="0">{{ phrase('Sunday') }}</xf:option>
+                <xf:option value="1">{{ phrase('Monday') }}</xf:option>
+                <xf:option value="2">{{ phrase('Tuesday') }}</xf:option>
+                <xf:option value="3">{{ phrase('Wednesday') }}</xf:option>
+                <xf:option value="4">{{ phrase('Thursday') }}</xf:option>
+                <xf:option value="5">{{ phrase('Friday') }}</xf:option>
+                <xf:option value="6">{{ phrase('Saturday') }}</xf:option>
+            </xf:selectrow>
+          	 
+				<xf:uploadrow name="video_thumbnail" accept=".jpeg,.jpg,.png" 
+				label="{{ phrase('thumbnail') }}"  />
+			<xf:checkboxrow>
+						<xf:option name="rons" value="1" selected="{$data.rons}"
+					   label="{{ phrase('Rons Interview') }}" data-hide="true">
+				<xf:dependent>
+			<xf:checkbox>
+						<xf:option name="rons_featured" value="1" selected="{$data.rons_featured}"
+					   label="{{ phrase('rons_featured') }}" />
+					</xf:checkbox>
+					
+					
+				</xf:dependent>
+				
+				</xf:option>
+				
+				
+				
+				
+			</xf:checkboxrow>
+			
+			
+			
+			
+			<xf:checkboxrow>
+			<xf:option name="feature" value="1" selected="{$data.feature}"
+					 	label="{{ phrase('Feature Video') }}" />
+			</xf:checkboxrow>
+			</div>
+
+		<xf:submitrow sticky="true" icon="save" />
+	</div>
+</xf:form>

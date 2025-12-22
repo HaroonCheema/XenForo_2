@@ -1,0 +1,11 @@
+{
+    "parent_navigation_id": "EWRporta2",
+    "display_order": 9,
+    "navigation_type_id": "basic",
+    "type_config": {
+        "link": "{{ link('ewr-porta/authors') }}",
+        "display_condition": "",
+        "extra_attributes": []
+    },
+    "enabled": false
+}

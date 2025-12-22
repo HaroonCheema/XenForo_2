@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style_properties>
+  <style_property property_name="EWRporta_dateblock" group_name="EWRporta" title="Enable offset date block" property_type="value" value_type="boolean" value_group="articles" display_order="100">
+    <value>1</value>
+  </style_property>
+  <style_property property_name="EWRporta_dateblock_margin" group_name="EWRporta" title="Date block margin" property_type="value" value_type="unit" depends_on="EWRporta_dateblock" value_group="articles" display_order="200">
+    <value>"-15px"</value>
+  </style_property>
+  <style_property property_name="EWRporta_feature_height" group_name="EWRporta_feature" title="Slider height" property_type="value" value_type="unit" value_group="slider" display_order="100">
+    <value>"400px"</value>
+  </style_property>
+  <style_property property_name="EWRporta_feature_media_margin" group_name="EWRporta_feature" title="Media width (margin)" property_type="value" value_type="unit" value_group="media" display_order="1400">
+    <value>"20px"</value>
+  </style_property>
+  <style_property property_name="EWRporta_feature_media_medium" group_name="EWRporta_feature" title="Media width (medium)" property_type="value" value_type="unit" value_group="media" display_order="1200">
+    <value>"400px"</value>
+  </style_property>
+  <style_property property_name="EWRporta_feature_media_narrow" group_name="EWRporta_feature" title="Media width (narrow)" property_type="value" value_type="unit" value_group="media" display_order="1300">
+    <value>"288px"</value>
+  </style_property>
+  <style_property property_name="EWRporta_feature_media_wide" group_name="EWRporta_feature" title="Media width (wide)" property_type="value" value_type="unit" value_group="media" display_order="1100">
+    <value>"480px"</value>
+  </style_property>
+  <style_property property_name="EWRporta_feature_media_width" group_name="EWRporta_feature" title="Media width" property_type="value" value_type="unit" value_group="media" display_order="1000">
+    <value>"640px"</value>
+  </style_property>
+  <style_property property_name="EWRporta_feature_medium" group_name="EWRporta_feature" title="Slider height (medium)" property_type="value" value_type="unit" value_group="slider" display_order="300">
+    <value>"225px"</value>
+  </style_property>
+  <style_property property_name="EWRporta_feature_narrow" group_name="EWRporta_feature" title="Slider height (narrow)" property_type="value" value_type="unit" value_group="slider" display_order="400">
+    <value>"162px"</value>
+  </style_property>
+  <style_property property_name="EWRporta_feature_wide" group_name="EWRporta_feature" title="Slider height (wide)" property_type="value" value_type="unit" value_group="slider" display_order="200">
+    <value>"290px"</value>
+  </style_property>
+  <style_property property_name="EWRporta_header" group_name="EWRporta" title="Enable article headers" property_type="value" value_type="boolean" value_group="articles" display_order="300">
+    <value>1</value>
+  </style_property>
+  <style_property property_name="EWRporta_header_height" group_name="EWRporta" title="Article header height" property_type="value" value_type="unit" depends_on="EWRporta_header" value_group="articles" display_order="400">
+    <value>"200px"</value>
+  </style_property>
+  <style_property property_name="EWRporta_header_linked" group_name="EWRporta" title="Article headers ignore modals" property_type="value" value_type="boolean" value_group="articles" display_order="600">
+    <value>0</value>
+  </style_property>
+  <style_property property_name="EWRporta_header_title" group_name="EWRporta" title="Article Icon Header Title" property_type="css" display_order="10000" css_components="text,background,extra">
+    <value>{
+    "font-size": "28px",
+    "color": "rgb(255, 255, 255)",
+    "text-decoration": "none",
+    "background-color": "linear-gradient(rgba(0,0,0,0), @xf-contentBg)",
+    "extra": "height: 100px;\nfont-family: Impact, Charcoal, sans-serif;\ntext-decoration: none;\ntext-shadow:\n\t 1px  1px 0 black,\n\t 1px -1px 0 black,\n\t-1px  1px 0 black,\n\t-1px -1px 0 black;"
+}</value>
+  </style_property>
+  <style_property property_name="EWRporta_infinite" group_name="EWRporta" title="Enable infinite scrolling" property_type="value" value_type="boolean" value_group="infinite" display_order="1000">
+    <value>1</value>
+  </style_property>
+  <style_property property_name="EWRporta_infinite_after" group_name="EWRporta" title="After X pages" property_type="value" value_type="number" depends_on="EWRporta_infinite_click" value_group="infinite" display_order="1200">
+    <value>"0"</value>
+  </style_property>
+  <style_property property_name="EWRporta_infinite_click" group_name="EWRporta" title="Require click to load" property_type="value" value_type="boolean" depends_on="EWRporta_infinite" value_group="infinite" display_order="1100">
+    <value>1</value>
+  </style_property>
+  <style_property property_name="EWRporta_infinite_history" group_name="EWRporta" title="Append page numbers while scrolling" property_type="value" value_type="boolean" depends_on="EWRporta_infinite" value_group="infinite" display_order="1300">
+    <value>0</value>
+  </style_property>
+  <style_property property_name="EWRporta_masonry" group_name="EWRporta" title="Enable masonry grid" property_type="value" value_type="boolean" value_group="masonry" display_order="2000">
+    <value>1</value>
+  </style_property>
+  <style_property property_name="EWRporta_masonry_columns" group_name="EWRporta" title="Masonry columns" property_type="value" value_type="number" depends_on="EWRporta_masonry" value_group="masonry" display_order="2100">
+    <value_parameters>min=2</value_parameters>
+    <value>"2"</value>
+  </style_property>
+  <style_property property_name="EWRporta_masonry_medium" group_name="EWRporta" title="Masonry columns (medium)" property_type="value" value_type="number" depends_on="EWRporta_masonry" value_group="masonry" display_order="2300">
+    <value_parameters>min=1</value_parameters>
+    <value>"1"</value>
+  </style_property>
+  <style_property property_name="EWRporta_masonry_wide" group_name="EWRporta" title="Masonry columns (wide)" property_type="value" value_type="number" depends_on="EWRporta_masonry" value_group="masonry" display_order="2200">
+    <value_parameters>min=2</value_parameters>
+    <value>"2"</value>
+  </style_property>
+</style_properties>

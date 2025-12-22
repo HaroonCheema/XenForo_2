@@ -1,5 +1,6 @@
 <?php
 return array (
+  'admin_permission.EWRporta' => '[8WR] XenPorta 2 > Manage Portal',
   'admin_permission.FTSlider' => '[XD] Featured Threads Slider',
   'admin_permission.FThread_Perm' => '[XD] Feature Threads',
   'admin_permission.activitySummary' => 'Manage activity summary',

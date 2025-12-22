@@ -2,6 +2,7 @@
 return array (
   'permission_interface.BR_AdvancedThreadRating' => 'Brivium - Advanced Thread Rating',
   'permission_interface.BR_ModeratorThreadRating' => 'Brivium - Moderator Advanced Thread Rating',
+  'permission_interface.EWRporta' => '[8WR] XenPorta 2 (Portal) PRO',
   'permission_interface.FTSlider' => '[XTR] Featured Threads Slider',
   'permission_interface.OwnerPagePostModeratorPermissions' => 'OwnerPage post moderator permissions',
   'permission_interface.OwnerPagePostPermissions' => 'OwnerPage post permissions',

@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation>
-  <navigation_entry navigation_id="xb_videos" display_order="1200" navigation_type_id="basic" enabled="1"><![CDATA[{"link":"{{ link('videos') }}","display_condition":"","extra_attributes":[]}]]></navigation_entry>
+  <navigation_entry navigation_id="xb_videos" display_order="100" navigation_type_id="basic" enabled="1"><![CDATA[{"link":"{{ link('videos') }}","display_condition":"","extra_attributes":[]}]]></navigation_entry>
 </navigation>

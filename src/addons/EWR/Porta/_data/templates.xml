@@ -1,0 +1,2171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="admin" title="EWRporta.less" version_id="1" version_string="0.0.0.1"><![CDATA[.iconicLinks-list > li > a { padding: 30px; }
+
+.porta-category-form li { display: inline-flex; min-width: 250px; }]]></template>
+  <template type="admin" title="EWRporta_article_edit" version_id="2015" version_string="2.0.1.5"><![CDATA[<xf:title>{{ phrase('EWRporta_edit_article_promotion:') }} {$article.Thread.title}</xf:title>
+
+<xf:breadcrumb href="{{ link('ewr-porta/articles') }}">{{ phrase('EWRporta_articles') }}</xf:breadcrumb>
+
+<xf:pageaction>
+	<xf:button href="{{ link('ewr-porta/articles/delete', $thread) }}" icon="delete" overlay="true" />
+</xf:pageaction>
+
+<xf:css src="EWRporta.less" />
+
+<xf:form action="{{ link('ewr-porta/articles/save', $thread) }}" ajax="true" class="block">
+	<div class="block-container">
+		
+		<xf:macro template="public:EWRporta_article_edit" name="edit_block"
+			arg-article="{$article}" arg-thread="{$thread}"
+			arg-categories="{$categories}" arg-nonCategories="{$nonCategories}"
+			arg-attachData="{$attachData}" arg-images="{$images}" />
+
+		<xf:submitrow sticky="true" icon="save" />
+	</div>
+</xf:form>]]></template>
+  <template type="admin" title="EWRporta_article_list" version_id="1300" version_string="1.3.0.0"><![CDATA[<xf:title>{{ phrase('EWRporta_articles') }}</xf:title>
+
+<div class="block">
+	<div class="block-outer">
+		<xf:macro template="filter_macros" name="quick_filter"
+			arg-key="articles"
+			arg-ajax="{{ link('ewr-porta/articles') }}"
+			arg-class="block-outer-opposite" />
+	</div>
+	<div class="block-container">
+		<h3 class="block-header">{{ phrase('EWRporta_articles') }}</h3>
+		
+		<div class="block-body">
+			<xf:datalist>
+				<xf:foreach loop="$articles" value="$article">
+					<xf:datarow>
+						<xf:main
+							href="{{ link('ewr-porta/articles/edit', $article) }}"
+							hash="{$article.thread_id}"
+							label="{$article.Thread.title}"
+							hint="{$article.article_title}"
+							dir="auto" />
+						<xf:action href="{{ link('ewr-porta/articles/edit', $article) }}">
+								<xf:date time="{$article.article_date}" />
+						</xf:action>
+						<xf:delete href="{{ link('ewr-porta/articles/delete', $article) }}"
+							tooltip="{{ phrase('delete') }}" />
+					</xf:datarow>
+				</xf:foreach>
+				<xf:if is="$filter AND $total > $perPage">
+					<xf:datarow rowclass="dataList-row--note dataList-row--noHover js-filterForceShow">
+						<xf:cell colspan="2">{{ phrase('more_records_matching_filter_more_specific') }}</xf:cell>
+					</xf:datarow>
+				</xf:if>
+			</xf:datalist>
+		</div>
+		
+		<div class="block-footer">
+			<span class="block-footer-counter">{{ display_totals($articles, $total) }}</span>
+		</div>
+	</div>
+
+	<xf:pagenav
+		page="{$page}" perpage="{$perPage}" total="{$total}"
+		link="ewr-porta/articles"
+		wrapperclass="js-filterHide block-outer block-outer--after" />
+</div>]]></template>
+  <template type="admin" title="EWRporta_author_edit" version_id="1300" version_string="1.3.0.0"><![CDATA[<xf:if is="!$author">
+	<xf:title>{{ phrase('EWRporta_add_author') }}</xf:title>
+<xf:else />
+	<xf:title>{{ phrase('EWRporta_edit_author:') }} {$author.author_name}</xf:title>
+</xf:if>
+
+<xf:breadcrumb href="{{ link('ewr-porta/authors') }}">{{ phrase('EWRporta_authors') }}</xf:breadcrumb>
+
+<xf:pageaction if="$author">
+	<xf:button href="{{ link('ewr-porta/authors/delete', $author) }}" icon="delete" overlay="true" />
+</xf:pageaction>
+
+<xf:form action="{{ link('ewr-porta/authors/save', $author) }}" upload="true" ajax="true" class="block">
+	<div class="block-container">
+
+		<xf:macro template="public:EWRporta_author_edit" name="edit_block"
+			arg-author="{$author}" />
+
+		<xf:submitrow sticky="true" icon="save" />
+	</div>
+</xf:form>]]></template>
+  <template type="admin" title="EWRporta_author_list" version_id="1" version_string="0.0.0.1"><![CDATA[<xf:title>{{ phrase('EWRporta_authors') }}</xf:title>
+
+<xf:pageaction>
+	<xf:button href="{{ link('ewr-porta/authors/add') }}" icon="add">{{ phrase('EWRporta_add_author') }}</xf:button>
+</xf:pageaction>
+
+<div class="block">
+	<div class="block-outer">
+		<xf:macro template="filter_macros" name="quick_filter" arg-key="authors" arg-class="block-outer-opposite" />
+	</div>
+	<div class="block-container">
+		<h3 class="block-header">{{ phrase('EWRporta_authors') }}</h3>
+		<div class="block-body">
+			<xf:datalist>
+				<xf:foreach loop="$authors" value="$author">
+					<xf:datarow>
+						<xf:main
+							hash="{$author.user_id}"
+							href="{{ link('ewr-porta/authors/edit', $author) }}"
+							label="{$author.author_name}" />
+						<xf:cell href="{{ link('ewr-porta/authors/edit', $author) }}">
+							<span class="dataList-hint">{$author.author_status}</span>
+						</xf:cell>
+						<xf:action href="{{ link('ewr-porta/authors/edit', $author) }}">
+							{$author.author_order}
+						</xf:action>
+						<xf:delete href="{{ link('ewr-porta/authors/delete', $author) }}" />
+					</xf:datarow>
+				<xf:else />
+					<xf:datarow rowclass="dataList-row--noHover dataList-row--note">
+						<xf:cell class="dataList-cell--noSearch">
+							{{ phrase('no_items_to_display') }}
+						</xf:cell>
+					</xf:datarow>
+				</xf:foreach>
+			</xf:datalist>
+		</div>
+		<div class="block-footer">
+			<span class="block-footer-counter">{{ display_totals($total) }}</span>
+		</div>
+	</div>
+</div>]]></template>
+  <template type="admin" title="EWRporta_category_edit" version_id="1" version_string="0.0.0.1"><![CDATA[<xf:if is="!$category">
+	<xf:title>{{ phrase('add_category') }}</xf:title>
+<xf:else />
+	<xf:title>{{ phrase('edit_category:') }} {$category.category_name}</xf:title>
+</xf:if>
+
+<xf:breadcrumb href="{{ link('ewr-porta/categories') }}">{{ phrase('categories') }}</xf:breadcrumb>
+
+<xf:pageaction if="$category">
+	<xf:button href="{{ link('ewr-porta/categories/delete', $category) }}" icon="delete" overlay="true" />
+</xf:pageaction>
+
+<xf:form action="{{ link('ewr-porta/categories/save', $category) }}" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			
+			<xf:textboxrow name="category[category_name]" value="{$category.category_name}"
+				label="{{ phrase('category') }}" />
+			<xf:textarearow name="category[category_description]" value="{$category.category_description}"
+				label="{{ phrase('description') }}" autosize="true" />
+			
+			<xf:checkboxrow>
+				<xf:option name="style_override" selected="$category.style_id"
+					label="{{ phrase('override_user_style_choice') }}"
+					explain="{{ phrase('if_specified_all_visitors_view_using_selected_style') }}">
+
+					<xf:select name="category[style_id]" value="{$category.style_id}">
+						<xf:foreach loop="$styleTree.getFlattened(0)" value="$treeEntry">
+							<xf:option value="{$treeEntry.record.style_id}">{{ repeat('--', $treeEntry.depth) }} {$treeEntry.record.title}</xf:option>
+						</xf:foreach>
+					</xf:select>
+
+				</xf:option>
+			</xf:checkboxrow>
+				
+		</div>
+
+		<xf:submitrow sticky="true" icon="save" />
+	</div>
+</xf:form>]]></template>
+  <template type="admin" title="EWRporta_category_list" version_id="2014" version_string="2.0.1.4"><![CDATA[<xf:title>{{ phrase('categories') }}</xf:title>
+
+<xf:pageaction>
+	<xf:button href="{{ link('ewr-porta/categories/add') }}" icon="add">{{ phrase('add_category') }}</xf:button>
+</xf:pageaction>
+
+<div class="block">
+	<div class="block-outer">
+		<xf:macro template="filter_macros" name="quick_filter" arg-key="games" arg-class="block-outer-opposite" />
+	</div>
+	<div class="block-container">
+		<h3 class="block-header">{{ phrase('categories') }}</h3>
+		<div class="block-body">
+			<xf:datalist>
+				<xf:foreach loop="$categories" value="$category">
+					<xf:datarow>
+						<xf:main hash="{$category.category_id}"
+							href="{{ link('ewr-porta/categories/edit', $category) }}" label="{$category.category_name}" />
+						<xf:cell href="{{ link('ewr-porta/categories/edit', $category) }}">
+							<span class="dataList-hint">{$category.category_description}</span>
+						</xf:cell>
+						<xf:delete href="{{ link('ewr-porta/categories/delete', $category) }}" />
+					</xf:datarow>
+				<xf:else />
+					<xf:datarow rowclass="dataList-row--noHover dataList-row--note">
+						<xf:cell class="dataList-cell--noSearch">
+							{{ phrase('no_items_to_display') }}
+						</xf:cell>
+					</xf:datarow>
+				</xf:foreach>
+			</xf:datalist>
+		</div>
+		<div class="block-footer">
+			<span class="block-footer-counter">{{ display_totals($total) }}</span>
+		</div>
+	</div>
+</div>]]></template>
+  <template type="admin" title="EWRporta_feature_edit" version_id="2013" version_string="2.0.1.3"><![CDATA[<xf:title>{{ phrase('EWRporta_edit_feature_promotion:') }} {$feature.Thread.title}</xf:title>
+
+<xf:breadcrumb href="{{ link('ewr-porta/features') }}">{{ phrase('EWRporta_features') }}</xf:breadcrumb>
+
+<xf:pageaction>
+	<xf:button href="{{ link('ewr-porta/features/delete', $thread) }}" icon="delete" overlay="true" />
+</xf:pageaction>
+
+<xf:css src="EWRporta.less" />
+<xf:js src="8wayrun/porta/portal.js" />
+
+<xf:form action="{{ link('ewr-porta/features/save', $thread) }}" ajax="true" class="block">
+	<div class="block-container">
+		
+		<xf:macro template="public:EWRporta_feature_edit" name="edit_block"
+			arg-feature="{$feature}" arg-thread="{$thread}" />
+
+		<xf:submitrow sticky="true" icon="save" />
+	</div>
+</xf:form>]]></template>
+  <template type="admin" title="EWRporta_feature_list" version_id="1" version_string="0.0.0.1"><![CDATA[<xf:title>{{ phrase('EWRporta_features') }}</xf:title>
+
+<div class="block">
+	<div class="block-outer">
+		<xf:macro template="filter_macros" name="quick_filter"
+			arg-key="features"
+			arg-ajax="{{ link('ewr-porta/features') }}"
+			arg-class="block-outer-opposite" />
+	</div>
+	<div class="block-container">
+		<h3 class="block-header">{{ phrase('EWRporta_features') }}</h3>
+		
+		<div class="block-body">
+			<xf:datalist>
+				<xf:foreach loop="$features" value="$feature">
+					<xf:datarow>
+						<xf:main
+							hash="{$feature.thread_id}"
+							href="{{ link('ewr-porta/features/edit', $feature) }}"
+							label="{$feature.Thread.title}"
+							hint="{$feature.feature_title}"
+							dir="auto" />
+						<xf:action href="{{ link('ewr-porta/features/edit', $feature) }}">
+							<xf:date time="{$feature.feature_date}" />
+						</xf:action>
+						<xf:delete href="{{ link('ewr-porta/features/delete', $feature) }}"
+							tooltip="{{ phrase('delete') }}" />
+					</xf:datarow>
+				</xf:foreach>
+				<xf:if is="$filter AND $total > $perPage">
+					<xf:datarow rowclass="dataList-row--note dataList-row--noHover js-filterForceShow">
+						<xf:cell colspan="2">{{ phrase('more_records_matching_filter_more_specific') }}</xf:cell>
+					</xf:datarow>
+				</xf:if>
+			</xf:datalist>
+		</div>
+		
+		<div class="block-footer">
+			<span class="block-footer-counter">{{ display_totals($features, $total) }}</span>
+		</div>
+	</div>
+
+	<xf:pagenav
+		page="{$page}" perpage="{$perPage}" total="{$total}"
+		link="ewr-porta/features"
+		wrapperclass="js-filterHide block-outer block-outer--after" />
+</div>]]></template>
+  <template type="admin" title="EWRporta_index" version_id="2100" version_string="2.1.0.0"><![CDATA[<xf:title>{{ phrase('option_group.EWRporta') }}</xf:title>
+<xf:description>{{ phrase('option_group_description.EWRporta') }}</xf:description>
+
+<xf:css src="EWRporta.less" />
+
+<div class="iconicLinks">
+	<ul class="iconicLinks-list">
+		<li>
+			<a href="{{ link('ewr-porta/categories') }}">
+				<div class="iconicLinks-icon"><xf:fa icon="fa-fw fa-folder-open" /></div>
+				<div class="iconicLinks-title">{{ phrase('categories') }}</div>
+			</a>
+		</li>
+		<li>
+			<a href="{{ link('ewr-porta/articles') }}">
+				<div class="iconicLinks-icon"><xf:fa icon="fa-fw fa-newspaper" /></div>
+				<div class="iconicLinks-title">{{ phrase('EWRporta_articles') }}</div>
+			</a>
+		</li>
+		<li>
+			<a href="{{ link('ewr-porta/features') }}">
+				<div class="iconicLinks-icon"><xf:fa icon="fa-fw fa-images" /></div>
+				<div class="iconicLinks-title">{{ phrase('EWRporta_features') }}</div>
+			</a>
+		</li>
+	</ul>
+</div>
+
+<div class="iconicLinks">
+	<ul class="iconicLinks-list">
+		<li>
+			<a href="{{ link('ewr-porta/authors') }}">
+				<div class="iconicLinks-icon"><xf:fa icon="fa-fw fa-users" /></div>
+				<div class="iconicLinks-title">{{ phrase('EWRporta_authors') }}</div>
+			</a>
+		</li>
+		<li>
+			<a href="{{ link('widgets') }}">
+				<div class="iconicLinks-icon"><xf:fa icon="fa-fw fa-cogs" /></div>
+				<div class="iconicLinks-title">{{ phrase('widgets') }}</div>
+			</a>
+		</li>
+		<li>
+			<a href="{{ link('options/groups/EWRporta/') }}">
+				<div class="iconicLinks-icon"><xf:fa icon="fa-fw fa-sliders-h" /></div>
+				<div class="iconicLinks-title">{{ phrase('options') }}</div>
+			</a>
+		</li>
+	</ul>
+</div>]]></template>
+  <template type="admin" title="EWRporta_index_promote" version_id="2015" version_string="2.0.1.5"><![CDATA[<xf:title>{{ phrase('confirm_action') }}</xf:title>
+
+<xf:form action="{{ link('ewr-porta/promote') }}" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:inforow rowtype="confirm">
+				<b>{{ phrase('EWRporta_create_articles_from_forum') }}</b>
+			</xf:inforow>
+			<xf:selectrow name="node_id" value="0" label="{{ phrase('forum') }}">
+				<xf:foreach loop="$nodeTree" value="$treeEntry">
+					<xf:option value="{$treeEntry.value}">{$treeEntry.label}</xf:option>
+				</xf:foreach>
+			</xf:selectrow>
+		</div>
+		<xf:submitrow rowtype="simple" icon="refresh" />
+	</div>
+</xf:form>]]></template>
+  <template type="admin" title="import_config_EWRporta_porta121" version_id="1" version_string="0.0.0.1"><![CDATA[<h3 class="block-formSectionHeader">{{ phrase('source_database_configuration') }}</h3>
+<xf:if is="!$baseConfig.db.host">
+	<xf:textboxrow name="config[db][host]" value="localhost"
+		label="{{ phrase('mysql_server') }}"
+		placeholder="$config['db']['host']" />
+	<xf:textboxrow name="config[db][port]" value="3306"
+		label="{{ phrase('mysql_port') }}"
+		placeholder="$config['db']['port']" />
+	<xf:textboxrow name="config[db][username]"
+		label="{{ phrase('mysql_user_name') }}"
+		placeholder="$config['db']['username']" />
+	<xf:textboxrow name="config[db][password]" autocomplete="off"
+		label="{{ phrase('mysql_password') }}"
+		placeholder="$config['db']['password']" />
+	<xf:textboxrow name="config[db][dbname]"
+		label="{{ phrase('mysql_database_name') }}"
+		placeholder="$config['db']['dbname']" />
+<xf:else />
+	<xf:formrow label="{{ phrase('mysql_server') }}">{$fullConfig.db.host}:{$fullConfig.db.dbname}</xf:formrow>
+</xf:if>]]></template>
+  <template type="admin" title="option_template_EWRporta_article_format" version_id="2014" version_string="2.0.1.4"><![CDATA[<xf:checkboxrow label="{$option.title}" hint="{$hintHtml}" explain="{$explainHtml}" html="{$listedHtml}">
+	<xf:option name="{$inputName}[article]" value="1" selected="{$option.option_value.article}"
+			label="{{ phrase('EWRporta_enable_custom_article_layout') }}">
+		<xf:checkbox>
+			<xf:option name="{$inputName}[comments]" value="1" selected="{$option.option_value.comments}"
+				label="{{ phrase('EWRporta_enable_simple_comments') }}" />
+			<xf:option name="{$inputName}[author]" value="1" selected="{$option.option_value.author}"
+				label="{{ phrase('EWRporta_show_author_byline') }}" />
+			<xf:option name="{$inputName}[attach]" value="1" selected="{$option.option_value.attach}"
+				label="{{ phrase('EWRporta_show_attach_gallery') }}" />
+		</xf:checkbox>
+	</xf:option>
+</xf:checkboxrow>]]></template>
+  <template type="admin" title="widget_def_options_EWRporta_articles" version_id="1" version_string="0.0.0.1"><![CDATA[<hr class="formRowSep" />
+
+<xf:numberboxrow name="options[limit]" value="{$options.limit}" min="1"
+	label="{{ phrase('maximum_entries') }}" />
+
+<xf:selectrow name="options[category]" value="{$options.category}" label="{{ phrase('category') }}">
+	<xf:option value="">( {{ phrase('unspecified') }} )</xf:option>
+	<xf:foreach loop="$categories" value="$category">
+		<xf:option value="{$category.category_id}">{$category.category_name}</xf:option>
+	</xf:foreach>
+</xf:selectrow>
+
+<xf:selectrow name="options[author]" value="{$options.author}" label="{{ phrase('author') }}">
+	<xf:option value="">( {{ phrase('unspecified') }} )</xf:option>
+	<xf:foreach loop="$authors" value="$author">
+		<xf:option value="{$author.user_id}">{$author.author_name} ({$author.User->username})</xf:option>
+	</xf:foreach>
+</xf:selectrow>
+
+<xf:checkboxrow>
+	<xf:option name="options[masonry]" selected="$options.masonry">
+		{{ phrase('style_prop.EWRporta_masonry') }}
+	</xf:option>
+</xf:checkboxrow>]]></template>
+  <template type="admin" title="widget_def_options_EWRporta_countdown" version_id="1" version_string="0.0.0.1"><![CDATA[<hr class="formRowSep" />
+
+<xf:formrow label="{{ phrase('date') }}" rowtype="input">
+	<div class="inputGroup">
+		<xf:dateinput name="options[date]" value="{{ date($options.date, 'Y-m-d') }}" />
+		<span class="inputGroup-splitter"></span>
+		<xf:textbox name="options[time]" value="{$options.time}" type="time" />
+	</div>
+</xf:formrow>
+
+<xf:selectrow name="options[zone]" value="{$options.zone}" label="{{ phrase('time_zone') }}">
+	<xf:options source="$timeZones" />
+</xf:selectrow>
+
+<xf:textarearow name="options[active]" value="{$options.active}" autosize="true"
+			   label="{{ phrase('EWRporta_countdown_active_text') }}" />
+
+<xf:textarearow name="options[inactive]" value="{$options.inactive}" autosize="true"
+			   label="{{ phrase('EWRporta_countdown_inactive_text') }}" />]]></template>
+  <template type="admin" title="widget_def_options_EWRporta_discord" version_id="1" version_string="0.0.0.1"><![CDATA[<hr class="formRowSep" />
+
+<xf:textboxrow name="options[server]" value="{$options.server}" label="{{ phrase('EWRporta_discord_server_id') }}" />
+<xf:numberboxrow name="options[height]" value="{$options.height}" min="300" label="{{ phrase('height') }}" />
+
+<hr class="formRowSep" />
+
+<xf:checkboxrow>
+	<xf:option name="options[advanced_mode]" value="1" selected="{$options.advanced_mode}"
+		label="{{ phrase('advanced_mode') }}"
+		hint="{{ phrase('if_enabled_html_for_your_page_will_not_be_contained_within_block') }}" />
+</xf:checkboxrow>]]></template>
+  <template type="admin" title="widget_def_options_EWRporta_facebook" version_id="1" version_string="0.0.0.1"><![CDATA[<hr class="formRowSep" />
+
+<xf:textboxrow name="options[href]" value="{$options.href}" label="{{ phrase('EWRporta_facebook_page_url') }}" />
+<xf:numberboxrow name="options[height]" value="{$options.height}" min="300" label="{{ phrase('height') }}" />
+
+<xf:checkboxrow>
+	<xf:option name="options[small_header]" selected="$options.small_header">
+		{{ phrase('EWRporta_facebook_small_header') }}
+	</xf:option>
+	<xf:option name="options[hide_cover]" selected="$options.hide_cover">
+		{{ phrase('EWRporta_facebook_hide_cover') }}
+	</xf:option>
+	<xf:option name="options[hide_cta]" selected="$options.hide_cta">
+		{{ phrase('EWRporta_facebook_hide_cta') }}
+	</xf:option>
+	<xf:option name="options[show_facepile]" selected="$options.show_facepile">
+		{{ phrase('EWRporta_facebook_show_facepile') }}
+	</xf:option>
+</xf:checkboxrow>
+
+<hr class="formRowSep" />
+
+<xf:checkboxrow>
+	<xf:option name="options[advanced_mode]" value="1" selected="{$options.advanced_mode}"
+		label="{{ phrase('advanced_mode') }}"
+		hint="{{ phrase('if_enabled_html_for_your_page_will_not_be_contained_within_block') }}" />
+</xf:checkboxrow>]]></template>
+  <template type="admin" title="widget_def_options_EWRporta_features" version_id="2103" version_string="2.1.0.3"><![CDATA[<hr class="formRowSep" />
+
+<xf:textboxrow name="options[relocate]" value="{$options.relocate}"
+	label="{{ phrase('EWRporta_features_relocate_slider') }}"
+	explain="{{ phrase('EWRporta_features_relocate_slider_hint') }}" />
+
+<xf:selectrow name="options[mode]" value="{$options.mode}" label="{{ phrase('EWRporta_features_transition_mode') }}">
+	<xf:option value="fade">fade</xf:option>
+	<xf:option value="horizontal">horizontal</xf:option>
+	<xf:option value="vertical">vertical</xf:option>
+</xf:selectrow>
+
+<xf:numberboxrow name="options[speed]" value="{$options.speed}" min="0" step="100"
+	label="{{ phrase('EWRporta_features_transition_speed') }}" />
+<xf:numberboxrow name="options[auto]" value="{$options.auto}" min="0" step="100"
+	label="{{ phrase('EWRporta_features_transition_frequency') }}" />
+
+<xf:checkboxrow>
+	<xf:option name="options[pager]" selected="$options.pager">
+		{{ phrase('EWRporta_features_show_pager_bullets') }}
+	</xf:option>
+	<xf:option name="options[controls]" selected="$options.controls">
+		{{ phrase('EWRporta_features_show_prev_next_controls') }}
+	</xf:option>
+	<xf:option name="options[autoControls]" selected="$options.autoControls">
+		{{ phrase('EWRporta_features_show_start_stop_controls') }}
+	</xf:option>
+	<xf:option name="options[progress]" selected="$options.progress">
+		{{ phrase('EWRporta_features_show_progress_bar') }}
+	</xf:option>
+</xf:checkboxrow>
+
+<hr class="formRowSep" />
+
+<xf:numberboxrow name="options[limit]" value="{$options.limit}" min="1"
+	label="{{ phrase('maximum_entries') }}" />
+<xf:numberboxrow name="options[trim]" value="{$options.trim}" min="0"
+	label="{{ phrase('EWRporta_excerpt_trim') }}" />
+
+<xf:checkboxrow>
+	<xf:option name="options[category]" selected="$options.category">
+		{{ phrase('EWRporta_features_show_on_category_pages') }}
+	</xf:option>
+	<xf:option name="options[author]" selected="$options.author">
+		{{ phrase('EWRporta_features_show_on_author_pages') }}
+	</xf:option>
+	<xf:option name="options[pages]" selected="$options.pages">
+		{{ phrase('EWRporta_features_show_on_pages_beyond_first') }}
+	</xf:option>
+</xf:checkboxrow>]]></template>
+  <template type="admin" title="widget_def_options_EWRporta_twitter" version_id="1" version_string="0.0.0.1"><![CDATA[<hr class="formRowSep" />
+
+<xf:textboxrow name="options[widget_id]" value="{$options.widget_id}" label="{{ phrase('EWRporta_twitter_widget_id') }}" />
+<xf:textboxrow name="options[search]" value="{$options.search}" label="{{ phrase('EWRporta_twitter_search_text') }}" />
+<xf:textboxrow name="options[related]" value="{$options.related}" label="{{ phrase('EWRporta_twitter_related_users') }}" />
+<xf:numberboxrow name="options[height]" value="{$options.height}" min="300" label="{{ phrase('height') }}" />
+
+<xf:checkboxrow>
+	<xf:option name="options[chrome][noheader]" value="noheader" selected="$options.chrome.noheader">
+		{{ phrase('EWRporta_twitter_hide_header') }}
+	</xf:option>
+	<xf:option name="options[chrome][nofooter]" value="nofooter" selected="$options.chrome.nofooter">
+		{{ phrase('EWRporta_twitter_hide_footer') }}
+	</xf:option>
+	<xf:option name="options[chrome][noborders]" value="noborders" selected="$options.chrome.noborders">
+		{{ phrase('EWRporta_twitter_hide_borders') }}
+	</xf:option>
+	<xf:option name="options[chrome][transparent]" value="transparent" selected="$options.chrome.transparent">
+		{{ phrase('EWRporta_twitter_hide_background') }}
+	</xf:option>
+	<xf:option name="options[chrome][noscrollbar]" value="noscrollbar" selected="$options.chrome.noscrollbar">
+		{{ phrase('EWRporta_twitter_hide_scrollbar') }}
+	</xf:option>
+</xf:checkboxrow>
+
+<hr class="formRowSep" />
+
+<xf:checkboxrow>
+	<xf:option name="options[advanced_mode]" value="1" selected="{$options.advanced_mode}"
+		label="{{ phrase('advanced_mode') }}"
+		hint="{{ phrase('if_enabled_html_for_your_page_will_not_be_contained_within_block') }}" />
+</xf:checkboxrow>]]></template>
+  <template type="public" title="EWRporta.less" version_id="2202" version_string="2.2.0.2"><![CDATA[.porta-article .message .message-body
+{
+	margin: 10px;
+}
+
+.porta-listInline-left { float: left; }
+.porta-listInline-right { float: right; }
+.porta-category-form li { display: inline-flex; min-width: 240px; }
+
+.p-body-header:has(+ .p-body-main--withSidebar) .porta-listInline-right
+{
+	margin-right: ~"calc(@xf-sidebarWidth + @xf-pageEdgeSpacer)"; 
+}
+
+.porta-author-block
+{
+	.contentRow-main { margin-right: 10px; }
+	
+	.porta-author-byline { margin-top: 10px; }
+	.porta-author-byline, .porta-author-byline div { display: block; }
+	.porta-author-image.contentRow-figure
+	{
+		.xf-messageUserBlock(no-border);
+		border-right: @xf-messageUserBlock--border-width solid @xf-messageUserBlock--border-color;
+		
+		padding: 10px;
+		width: 170px;
+	}
+
+	.porta-author-icon
+	{
+		float: right;
+		padding-right: 10px;
+	}
+}
+
+.porta-block-icon
+{
+	.xf-messageUserBlock;
+	display: grid;
+	float: right;
+	margin-left: 10px;
+	max-width: 60%;
+	padding: 10px;
+	
+	>a { display: grid; }
+}
+
+.porta-widgets-split
+{
+	display: flex;
+	flex-wrap: wrap;
+	align-items: stretch;
+	margin: 0 -((@xf-pageEdgeSpacer) / 2) 0;
+	width: auto;
+
+	> *
+	{
+		margin: 0 ((@xf-pageEdgeSpacer) / 2) @xf-elementSpacer;
+		min-width: @xf-sidebarWidth;
+		flex: 1 1 @xf-sidebarWidth;
+	}
+
+	.block-container
+	{
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+
+		.block-footer
+		{
+			margin-top: auto;
+		}
+	}
+}
+
+@media (max-width: @xf-responsiveWide)
+{
+	.porta-listInline-right { margin-right: 0; }
+}
+
+@media (max-width: @xf-responsiveEdgeSpacerRemoval)
+{
+	.porta-widgets-split
+	{
+		display: block;
+		margin-left: 0;
+		margin-right: 0;
+
+		> *
+		{
+			margin-left: 0;
+			margin-right: 0;
+			min-width: 0;
+		}
+	}
+}]]></template>
+  <template type="public" title="EWRporta_article_delete" version_id="2011" version_string="2.0.1.1"><![CDATA[<xf:title>{{ phrase('confirm_action') }}</xf:title>
+
+<xf:form action="{{ link('threads/article-delete', $article.Thread) }}" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:inforow rowtype="confirm">
+				{{ phrase('EWRporta_please_confirm_that_you_want_to_delete_the_article_promotion_for:') }}
+				<strong><a href="{{ link('threads', $article.Thread) }}">{$article.Thread.title}</a></strong>
+			</xf:inforow>
+		</div>
+		<xf:submitrow rowtype="simple" icon="delete" />
+	</div>
+</xf:form>]]></template>
+  <template type="public" title="EWRporta_article_edit" version_id="2103" version_string="2.1.0.3"><![CDATA[<xf:if is="!$article">
+	<xf:title>{{ phrase('EWRporta_promote_to_article') }}</xf:title>
+<xf:else />
+	<xf:title>{{ phrase('EWRporta_edit_article_promotion') }}</xf:title>
+</xf:if>
+
+<xf:breadcrumb source="$thread.getBreadcrumbs()" />
+
+<xf:css src="EWRporta.less" />
+
+<xf:form action="{{ link('threads/article-edit', $thread) }}" class="block" ajax="true">
+	<div class="block-container">
+		
+		<xf:macro name="edit_block"
+			arg-article="{$article}" arg-thread="{$thread}"
+			arg-categories="{$categories}" arg-nonCategories="{$nonCategories}"
+			arg-attachData="{$attachData}" arg-images="{$images}" arg-medios="{$medios}" />
+
+		<xf:submitrow icon="save" sticky="true">
+			<xf:html>
+				<xf:if is="$article AND {{ $xf.visitor.hasPermission('EWRporta', 'modArticles') }}">
+					<xf:button href="{{ link('threads/article-delete', $thread) }}" icon="delete"
+						overlay="true">{{ phrase('delete...') }}</xf:button>
+				</xf:if>
+			</xf:html>
+		</xf:submitrow>
+	</div>
+</xf:form>
+
+
+
+
+<xf:macro name="edit_block" arg-article="!" arg-thread="!" arg-categories="!" arg-nonCategories="!"
+		arg-attachData="" arg-images="" arg-medios="">
+	<div class="block-body">
+		<xf:radiorow name="article[article_icon][type]" label ="{{ phrase('EWRporta_icon') }}"
+				value="{$article.article_icon.type}">
+			<xf:option value="" label= "{{ phrase('disabled') }}" selected="{{ !$article.article_icon }}" />
+			<xf:option value="avatar" label="{{ phrase('avatar') }}" />
+			
+			<xf:if is="$attachData.attachments is not empty">
+				<xf:option value="attach" label="{{ phrase('attachment') }}">
+					<xf:dependent>
+						<xf:select name="article[article_icon][data]" value="{$article.article_icon.data}">
+							<xf:foreach loop="$attachData.attachments" value="$attach">
+								<xf:option value="{$attach.attachment_id}">
+									{$attach.attachment_id} -> {$attach.Data.filename}
+								</xf:option>
+							</xf:foreach>
+						</xf:select>
+					</xf:dependent>
+				</xf:option>
+			</xf:if>
+			
+			<xf:if is="$images is not empty">
+				<xf:option value="image" label="{{ phrase('image') }}">
+					<xf:dependent>
+						<xf:select name="article[article_icon][data]" value="{$article.article_icon.data}">
+							<xf:foreach loop="$images" value="$image">
+								<xf:option value="{$image.url}">
+									{$image.host} -> {$image.file}
+								</xf:option>
+							</xf:foreach>
+						</xf:select>
+					</xf:dependent>
+				</xf:option>
+			</xf:if>
+			
+			<xf:if is="$medios is not empty">
+				<xf:option value="medio" label="{{ phrase('EWRmedio_media') }}">
+					<xf:dependent>
+						<xf:select name="article[article_icon][data]" value="{$article.article_icon.data}">
+							<xf:foreach loop="$medios" value="$medio">
+								<xf:option value="{$medio.media_id}">
+									{$medio.media_title}
+								</xf:option>
+							</xf:foreach>
+						</xf:select>
+					</xf:dependent>
+				</xf:option>
+			</xf:if>
+		</xf:radiorow>
+
+		<xf:textboxrow name="article[article_break]" value="{$article.article_break}"
+			label="{{ phrase('EWRporta_break_text') }}" />
+
+		<xf:formrow label="{{ phrase('date') }}" rowtype="input">
+			<div class="inputGroup">
+				<xf:dateinput name="date"
+					value="{{ date($article ? $article.article_date : $thread.post_date, 'picker') }}" />
+				<span class="inputGroup-splitter"></span>
+				<xf:textbox type="time" name="time"
+					value="{{ date($article ? $article.article_date : $thread.post_date, 'H:i') }}" />
+			</div>
+		</xf:formrow>
+
+		<xf:checkboxrow>
+			<xf:option name="article[article_format]" value="1"
+				selected="{{ $article ? $article.article_format : true }}"
+				label="{{ phrase('EWRporta_format_thread_as_article') }}" />
+			<xf:option name="article[article_sticky]" value="1" selected="{$article.article_sticky}"
+				label="{{ phrase('EWRporta_sticky_to_article_index') }}" />
+			<xf:option name="article[article_exclude]" value="1" selected="{$article.article_exclude}"
+				hint="{{ phrase('EWRporta_exclude_from_article_index_hint') }}"
+				label="{{ phrase('EWRporta_exclude_from_article_index') }}" />
+		</xf:checkboxrow>
+	</div>
+
+	<h2 class="block-formSectionHeader">
+		<span class="collapseTrigger collapseTrigger--block{{ $article.article_title ? ' is-active' : '' }}"
+				data-xf-click="toggle" data-target="< :up :next">
+			<span class="block-formSectionHeader-aligner">{{ phrase('EWRporta_excerpt') }}</span>
+		</span>
+	</h2>
+	<div class="block-body block-body--collapsible{{ $article.article_title ? ' is-active' : '' }}">
+		<xf:checkboxrow>
+			<xf:option name="custom_excerpt" value="1"
+				checked="{{ $article.article_title ? true : false  }}"
+				data-xf-init="disabler"
+				data-container="#Excerpt"
+				data-hide="true"
+				label="{{ phrase('EWRporta_use_custom_title_and_excerpt') }}" />
+		</xf:checkboxrow>
+
+		<div id="Excerpt">
+			<xf:textboxrow name="article[article_title]"
+				maxlength="{{ max_length('XF:Thread', 'title') }}" label="{{ phrase('title') }}"
+				value="{{ $article.article_title ?: $thread.title }}" />
+
+			<xf:textarearow name="article[article_excerpt]" rows="6" autosize="true"
+				maxlength="{$xf.options.messageMaxLength}" label="{{ phrase('message') }}" placeholder="{$thread.FirstPost.message}"
+				value="{{ $article.article_excerpt ?: ($xf.options.EWRporta_articles_prefill ? $thread.FirstPost.message : '') }}" />
+		</div>
+	</div>
+
+	<h2 class="block-formSectionHeader">
+		<span class="block-formSectionHeader-aligner">{{ phrase('categories') }}</span>
+	</h2>
+	<div class="block-body porta-category-form">
+		<xf:checkboxrow>
+			<xf:foreach loop="$categories" value="$category">
+				<xf:option name="catlinks[{$category.category_id}]" value="{$category.category_id}"
+					selected="true" label="{$category.category_name}" />
+			</xf:foreach>
+		</xf:checkboxrow>
+		<xf:checkboxrow>
+			<xf:foreach loop="$nonCategories" value="$category">
+				<xf:option name="catlinks[{$category.category_id}]" value="{$category.category_id}"
+					selected="false" label="{$category.category_name}" />
+			</xf:foreach>
+		</xf:checkboxrow>
+	</div>
+</xf:macro>]]></template>
+  <template type="public" title="EWRporta_article_macros" version_id="2201" version_string="2.2.0.1"><![CDATA[<xf:macro name="post" extends="post_macros::post">
+	<xf:extension name="extra_classes">message--simple <xf:extensionparent /></xf:extension>
+	<xf:extension name="user_cell"><xf:macro name="post_user_info" arg-post="{$post}" /></xf:extension>
+	<xf:extension name="attribution"><xf:macro name="post_attribution" arg-post="{$post}" arg-thread="{$thread}" /></xf:extension>
+	<xf:extension name="signature" />
+</xf:macro>
+
+<xf:macro name="answer" extends="post_question_macros::answer">
+	<xf:extension name="extra_classes">message--simple <xf:extensionparent /></xf:extension>
+	<xf:extension name="user_cell"><xf:macro name="post_user_info" arg-post="{$post}" /></xf:extension>
+	<xf:extension name="attribution"><xf:macro name="post_attribution" arg-post="{$post}" arg-thread="{$thread}" /></xf:extension>
+	<xf:extension name="signature" />
+</xf:macro>
+
+<xf:macro name="suggestion" extends="post_suggestion_macros::suggestion">
+	<xf:extension name="extra_classes">message--simple <xf:extensionparent /></xf:extension>
+	<xf:extension name="user_cell"><xf:macro name="post_user_info" arg-post="{$post}" /></xf:extension>
+	<xf:extension name="attribution"><xf:macro name="post_attribution" arg-post="{$post}" arg-thread="{$thread}" /></xf:extension>
+	<xf:extension name="signature" />
+</xf:macro>
+
+<xf:macro name="post_user_info" arg-post="!">
+	<div class="message-cell message-cell--user">
+		<xf:macro template="message_macros" name="user_info_simple" arg-user="{$post.User}"
+				  arg-fallbackName="{$post.username}"/>
+	</div>
+</xf:macro>
+	
+<xf:macro name="post_attribution" arg-post="!" arg-thread="!" arg-hidePosition="{{ false }}">
+	<header class="message-attribution message-attribution--plain">
+		<div class="message-attribution-main">
+			<ul class="listInline listInline--bullet">
+				<li class="message-attribution-user">
+					<h4 class="attribution">
+						<xf:username user="$post.User" rich="true" defaultname="{$post.username}" />
+					</h4>
+				</li>
+				<li><a href="{{ link('threads/post', $thread, {'post_id': $post.post_id}) }}"
+					   class="u-concealed" rel="nofollow"><xf:date time="{$post.post_date}"/></a></li>
+			</ul>
+		</div>
+
+		<ul class="message-attribution-opposite message-attribution-opposite--list">
+			<xf:if is="$post.isUnread()">
+				<li><span class="message-newIndicator">{{ phrase('new') }}</span></li>
+			</xf:if>
+			<li>
+				<a href="{{ link('threads/post', $thread, {'post_id': $post.post_id}) }}"
+					class="message-attribution-gadget"
+					data-xf-init="share-tooltip" data-href="{{ link('posts/share', $post) }}"
+					rel="nofollow">
+					<xf:fa icon="fa-share-alt"/>
+				</a>
+			</li>
+			<xf:if contentcheck="true">
+				<li>
+					<xf:contentcheck>
+						<xf:macro template="bookmark_macros" name="link"
+							arg-content="{$post}"
+							arg-class="message-attribution-gadget bookmarkLink--highlightable"
+							arg-confirmUrl="{{ link('posts/bookmark', $post) }}"
+							arg-showText="{{ false }}"/>
+					</xf:contentcheck>
+				</li>
+			</xf:if>
+			<xf:if is="!$hidePosition">
+				<li>
+					<a href="{{ link('threads/post', $thread, {'post_id': $post.post_id}) }}" rel="nofollow">
+						#{{ number($post.position + 1) }}
+					</a>
+				</li>
+			</xf:if>
+		</ul>
+	</header>
+</xf:macro>
+
+<xf:macro name="thread_tools" arg-thread="!" arg-article="!" arg-feature="!">
+	<xf:if contentcheck="true">
+		<div class="menu-separator"></div>
+
+		<xf:contentcheck>
+			<xf:if is="$xf.visitor.hasPermission('EWRporta', 'submitArticles')">
+				<a href="{{ link('threads/article-edit', $thread) }}"
+						class="menu-linkRow">
+					<xf:if is="{$article} AND {$article.canEdit()}">
+						{{ phrase('EWRporta_edit_article_promotion') }}
+					<xf:else />
+						{{ phrase('EWRporta_promote_to_article') }}
+					</xf:if>
+				</a>
+			</xf:if>
+
+			<xf:if is="$xf.visitor.hasPermission('EWRporta', 'submitFeatures')">
+				<a href="{{ link('threads/feature-edit', $thread) }}"
+						class="menu-linkRow">
+					<xf:if is="{$feature}">
+						{{ phrase('EWRporta_edit_feature_promotion') }}
+					<xf:else />
+						{{ phrase('EWRporta_promote_to_feature') }}
+					</xf:if>
+				</a>
+			</xf:if>
+		</xf:contentcheck>
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="thread_promote" arg-thread="!" arg-rowType="">
+	<xf:checkboxrow hideempty="true" rowtype="{$rowType}" label="{{ phrase('EWRporta_articles') }}">
+		<xf:if is="{{ $xf.visitor.hasPermission('EWRporta', 'submitArticles') }}">
+			<xf:option name="article-promote" value="1"
+				selected="{{ in_array($thread.node_id, $xf.options.EWRporta_article_forums) }}"
+				label="{{ phrase('EWRporta_promote_to_article') }}"
+				hint="{{ phrase('EWRporta_promote_to_article_hint') }}">
+			</xf:option>
+		</xf:if>
+	</xf:checkboxrow>
+</xf:macro>]]></template>
+  <template type="public" title="EWRporta_article_thread_view" version_id="2201" version_string="2.2.0.1"><![CDATA[<xf:extends template="{$templateOverrides.ewr_porta_thread_type}" />
+
+<xf:extension name="ewr_porta_description">
+	<ul class="listInline porta-listInline-right listInline--bullet">
+		<xf:foreach loop="$categories" value="$category">
+			<li>
+				<xf:fa icon="fa-hashtag" />
+				<span class="u-srOnly">{{ phrase('category') }}</span>
+				<a href="{{ link('ewr-porta/categories', $category) }}" class="u-concealed">
+					{$category.category_name}</a>
+			</li>	
+		</xf:foreach>
+	</ul>
+</xf:extension>
+
+<xf:extension name="pinned_block_classes">porta-article <xf:extensionparent /></xf:extension>
+
+<xf:extension name="content_top">
+	<xf:css src="EWRporta.less" />
+	
+	<xf:if is="$feature">
+		<xf:macro template="metadata_macros" name="metadata" arg-twitterCard="summary_large_image"
+			arg-imageUrl="{{ base_url($feature.image) }}" />
+	<xf:elseif is="$article.article_icon.type == 'medio' AND {$article.article_icon.data}" />
+		<xf:macro template="metadata_macros" name="metadata" arg-twitterCard="summary_large_image"
+			arg-imageUrl="{{ base_url($article.article_icon.data.image) }}" />
+	<xf:elseif is="$article.article_icon.type == 'attach' AND {$pinnedPost.Attachments.{$article.article_icon.data}}" />
+		<xf:macro template="metadata_macros" name="metadata" arg-twitterCard="summary_large_image"
+			arg-imageUrl="{{ link('full:ewr-porta/attachments', $pinnedPost.Attachments.{$article.article_icon.data}) }}" />
+	<xf:elseif is="$article.article_icon.type == 'image' AND $xf.options.EWRporta_icon_external" />
+		<xf:macro template="metadata_macros" name="metadata" arg-twitterCard="summary_large_image"
+			arg-imageUrl="{$article.article_icon.data}" />
+	</xf:if>
+	
+	<xf:widgetpos id="ewr_porta_article_sidebar" context-thread="{$thread}" context-author="{$author}" position="sidebar" />
+	
+	<xf:extensionparent />
+</xf:extension>
+
+<xf:extension name="above_messages_below_pinned">
+	<xf:extensionparent />
+	
+	<xf:if is="$thread.showPortaAuthor()">
+		<xf:macro template="EWRporta_author_macros" name="author_block"
+			arg-author="{$thread.FirstPost.PortaAuthor}" />
+	</xf:if>
+</xf:extension>]]></template>
+  <template type="public" title="EWRporta_articles.less" version_id="2101" version_string="2.1.0.1"><![CDATA[.porta-article-pager { margin-top: -(@xf-elementSpacer); }
+.porta-article-loader { display: none; text-align: center; }
+
+.porta-article-item
+{
+	margin-bottom: @xf-elementSpacer;
+	
+	.porta-article-header
+	{
+		display: block;
+		overflow: hidden;
+		position: relative;
+		
+		.porta-header-image
+		{
+			background-position: center;
+			background-size: cover;
+			height: @xf-EWRporta_header_height;
+		}
+		
+		.porta-header-medio
+		{
+			background-position: center;
+			background-size: cover;
+			height: @xf-EWRporta_medio_height;
+		}
+	
+		.porta-header-text
+		{
+			position: absolute; bottom: 0; left: 0; right: 0;
+			.xf-EWRporta_header_title;
+
+			>span
+			{
+				position: absolute; bottom: 0; left: 0; right: 0;
+				padding: 0 @xf-elementSpacer;
+			}
+		}
+
+		.porta-header-play
+		{
+			position: absolute;
+			top: 0; bottom: 20px; left: 0; right: 0;
+
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-direction: column;
+
+			.fa--xf
+			{
+				color: @xf-textColorAttention;
+				font-size: 100px;
+				text-shadow: 1px 1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, -1px -1px 0 #000000;
+			}
+		}
+	}
+
+	.porta-article-date
+	{
+		float: left;
+		padding: @xf-paddingLarge 0;
+		margin-left: @xf-EWRporta_dateblock_margin;
+
+		.porta-date-block
+		{
+			.xf-messageUserBlock;
+			width: 50px;
+			padding: 10px;
+			text-align: center;
+			text-transform: uppercase;
+			white-space: nowrap;
+
+			b { display: block; font-size: 1.5em; }
+		}
+	}
+
+	.message-inner { display: block; }
+	.message-body .bbWrapper { display: inline; }
+	.block-header { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+}
+
+.porta-masonry
+{
+	margin: 0 ~"calc(-@{xf-sidebarSpacer} / 2)";
+	
+	.porta-article-item
+	{
+		display: inline-block;
+		width: ~"calc(100% / @xf-EWRporta_masonry_columns)";
+		
+		.porta-article-container
+		{
+			margin: 0 ~"calc(@xf-sidebarSpacer / 2)";
+		}
+	}
+}
+
+.porta-article-status
+{
+	display: none;
+	
+	.porta-article-ellipse
+	{
+		font-size: 20px;
+		position: relative;
+		width: 4em;
+		height: 1em;
+		margin: 10px auto;
+
+		.loader-ellipse-dot
+		{
+			display: block;
+			width: 1em;
+			height: 1em;
+			border-radius: 0.5em;
+			background: @xf-textColor;
+			position: absolute;
+			animation-duration: 0.5s;
+			animation-timing-function: ease;
+			animation-iteration-count: infinite;
+		}
+
+		.loader-ellipse-dot:nth-child(1),
+		.loader-ellipse-dot:nth-child(2) { left: 0; }
+		.loader-ellipse-dot:nth-child(3) { left: 1.5em; }
+		.loader-ellipse-dot:nth-child(4) { left: 3em; }
+
+		@keyframes reveal { from { transform: scale(0.001); } to { transform: scale(1); } }
+		@keyframes slide { to { transform: translateX(1.5em) } }
+
+		.loader-ellipse-dot:nth-child(1) { animation-name: reveal; }
+		.loader-ellipse-dot:nth-child(2),
+		.loader-ellipse-dot:nth-child(3) { animation-name: slide; }
+		.loader-ellipse-dot:nth-child(4) { animation-name: reveal; animation-direction: reverse; }
+	}
+}
+
+@media (max-width: @xf-responsiveWide)
+{
+	.porta-masonry
+	{
+		.porta-article-item
+		{
+			width: ~"calc(100% / @xf-EWRporta_masonry_wide)";
+		}
+	}
+}
+
+@media (max-width: @xf-responsiveMedium)
+{
+	.porta-masonry
+	{
+		margin: 0 -@xf-pageEdgeSpacer;
+
+		.porta-article-item
+		{
+			width: ~"calc(100% / @xf-EWRporta_masonry_medium)";
+		}
+	}
+
+	.porta-article-item .porta-article-date
+	{
+		margin-left: -10px;
+
+		.porta-date-block
+		{
+			width: auto;
+			padding: 10px 5px;
+			transform: rotate(180deg);
+			writing-mode: vertical-rl;
+
+			b { display: inline; font-size: initial; }
+		}
+	}
+}
+
+@media (max-width: @xf-responsiveNarrow)
+{
+	.porta-masonry
+	{
+		.porta-article-item
+		{
+			display: block;
+			width: 100%;
+
+			.porta-article-container
+			{
+				margin: 0;
+			}
+		}
+	}
+	
+	.porta-article-item .porta-article-date
+	{
+		display: none;
+	}
+}]]></template>
+  <template type="public" title="EWRporta_articles_author" version_id="2020" version_string="2.0.2.0"><![CDATA[<xf:title>{$author.author_name}</xf:title>
+<xf:description>{$author.author_status}</xf:description>
+
+<xf:head option="rss_forum"><link rel="alternate" type="application/rss+xml"
+	title="{{ phrase('rss_feed_for_x', {'title': $author.author_name})|for_attr }}"
+	href="{{ link('ewr-porta/authors/index.rss', $author) }}" /></xf:head>
+
+<div class="porta-articles-above-full">
+	<xf:widgetpos id="ewr_porta_articles_above_full" context-page="{$page}" context-author="{$author}" />
+</div>
+
+<div class="porta-articles-above-split porta-widgets-split">
+	<xf:widgetpos id="ewr_porta_articles_above_split" context-page="{$page}" context-author="{$author}" />
+</div>
+
+<xf:macro template="EWRporta_author_macros" name="author_block"
+	 arg-author="{$author}" />
+
+<xf:macro template="EWRporta_articles_macros" name="articles_block"
+	arg-link="ewr-porta/authors"
+	arg-data="{$author}"
+	arg-articles="{$articles}"
+	arg-catlinks="{$catlinks}"
+	arg-attachments="{$attachments}"
+	arg-page="{$page}"
+	arg-perPage="{$perPage}"
+	arg-total="{$total}" />
+
+<div class="porta-articles-below-full">
+	<xf:widgetpos id="ewr_porta_articles_below_full" context-page="{$page}" context-author="{$author}" />
+</div>
+
+<div class="porta-articles-below-split porta-widgets-split">
+	<xf:widgetpos id="ewr_porta_articles_below_split" context-page="{$page}" context-author="{$author}" />
+</div>
+
+<xf:widgetpos id="ewr_porta_articles_sidenav" context-page="{$page}" context-author="{$author}" position="sidenav" />
+<xf:widgetpos id="ewr_porta_articles_sidebar" context-page="{$page}" context-author="{$author}" position="sidebar" />]]></template>
+  <template type="public" title="EWRporta_articles_category" version_id="2020" version_string="2.0.2.0"><![CDATA[<xf:title>{$category.category_name}</xf:title>
+<xf:description>{$category.category_description}</xf:description>
+
+<xf:head option="rss_forum"><link rel="alternate" type="application/rss+xml"
+	title="{{ phrase('rss_feed_for_x', {'title': $category.category_name})|for_attr }}"
+	href="{{ link('ewr-porta/categories/index.rss', $category) }}" /></xf:head>
+
+<div class="porta-articles-above-full">
+	<xf:widgetpos id="ewr_porta_articles_above_full" context-page="{$page}" context-category="{$category}" />
+</div>
+
+<div class="porta-articles-above-split porta-widgets-split">
+	<xf:widgetpos id="ewr_porta_articles_above_split" context-page="{$page}" context-category="{$category}" />
+</div>
+
+<xf:macro template="EWRporta_articles_macros" name="articles_block"
+	arg-link="ewr-porta/categories"
+	arg-data="{$category}"
+	arg-articles="{$articles}"
+	arg-catlinks="{$catlinks}"
+	arg-attachments="{$attachments}"
+	arg-page="{$page}"
+	arg-perPage="{$perPage}"
+	arg-total="{$total}" />
+
+<div class="porta-articles-below-full">
+	<xf:widgetpos id="ewr_porta_articles_below_full" context-page="{$page}" context-category="{$category}" />
+</div>
+
+<div class="porta-articles-below-split porta-widgets-split">
+	<xf:widgetpos id="ewr_porta_articles_below_split" context-page="{$page}" context-category="{$category}" />
+</div>
+
+<xf:widgetpos id="ewr_porta_articles_sidenav" context-page="{$page}" context-category="{$category}" position="sidenav" />
+<xf:widgetpos id="ewr_porta_articles_sidebar" context-page="{$page}" context-category="{$category}" position="sidebar" />]]></template>
+  <template type="public" title="EWRporta_articles_index" version_id="2020" version_string="2.0.2.0"><![CDATA[<xf:if is="!$xf.options.EWRporta_header">
+	<xf:h1 hidden="true" />
+</xf:if>
+
+<xf:if is="$xf.options.EWRporta_title">
+	<xf:title>{$xf.options.EWRporta_title}</xf:title>
+</xf:if>
+<xf:macro template="metadata_macros" name="description"
+	arg-description="{{$xf.options.EWRporta_metadesc ? $xf.options.EWRporta_metadesc : $xf.options.boardDescription }}" />
+
+<xf:head option="rss_forum"><link rel="alternate" type="application/rss+xml"
+	title="{{ phrase('rss_feed_for_x', {'title': $xf.options.EWRporta_title ?: $xf.options.boardTitle})|for_attr }}"
+	href="{{ link('ewr-porta/index.rss', '-') }}" /></xf:head>
+
+<div class="porta-articles-above-full">
+	<xf:widgetpos id="ewr_porta_articles_above_full" context-page="{$page}" />
+</div>
+
+<div class="porta-articles-above-split porta-widgets-split">
+	<xf:widgetpos id="ewr_porta_articles_above_split" context-page="{$page}" />
+</div>
+
+<xf:macro template="EWRporta_articles_macros" name="articles_block"
+	arg-link="ewr-porta"
+	arg-articles="{$articles}"
+	arg-catlinks="{$catlinks}"
+	arg-attachments="{$attachments}"
+	arg-page="{$page}"
+	arg-perPage="{$perPage}"
+	arg-total="{$total}" />
+
+<div class="porta-articles-below-full">
+	<xf:widgetpos id="ewr_porta_articles_below_full" context-page="{$page}" />
+</div>
+
+<div class="porta-articles-below-split porta-widgets-split">
+	<xf:widgetpos id="ewr_porta_articles_below_split" context-page="{$page}" />
+</div>
+
+<xf:widgetpos id="ewr_porta_articles_sidenav" context-page="{$page}" position="sidenav" />
+<xf:widgetpos id="ewr_porta_articles_sidebar" context-page="{$page}" position="sidebar" />]]></template>
+  <template type="public" title="EWRporta_articles_macros" version_id="2107" version_string="2.1.0.7"><![CDATA[<xf:macro name="articles_block" arg-link="!" arg-articles="!" arg-catlinks="!" arg-attachments="!" 
+		arg-page="!" arg-perPage="!" arg-total="!" arg-data="">
+
+	<xf:css src="message.less" />
+	<xf:css src="EWRporta.less" />
+	<xf:css src="EWRporta_articles.less" />
+	
+	<xf:if is="property('EWRporta_infinite') AND $page == 1 AND $total > $perPage">
+		<xf:set var="$infnt">1</xf:set>
+		<xf:js src="8wayrun/porta/infinite.js" />
+	</xf:if>
+
+	<xf:if is="property('EWRporta_masonry')">
+		<xf:set var="$msnry">1</xf:set>
+		<xf:js src="8wayrun/porta/images.js" />
+		<xf:js src="8wayrun/porta/masonry.js" />
+	</xf:if>
+	
+	<xf:js src="8wayrun/porta/portal.js" />
+	
+	<div class="block {{ $infnt ? 'porta-infinite' : '' }} {{ $msnry ? 'porta-masonry' : '' }}"
+			data-xf-init="{{ $infnt ? 'porta-infinite' : '' }} {{ $msnry ? 'porta-masonry' : '' }}"
+			data-masonry="{$msnry}"
+		 	data-click="{{ property('EWRporta_infinite_click') }}"
+		 	data-after="{{ property('EWRporta_infinite_after') }}"
+		 	data-history="{{ property('EWRporta_infinite_history') }}">
+		<xf:foreach loop="$articles" i="$i" value="$article"><xf:trim>
+			<xf:macro name="article_block"
+				arg-article="{$article}"
+				arg-catlinks="{$catlinks.{$article.thread_id}}"
+				arg-attachments="{$attachments}" />
+		</xf:trim><xf:widgetpos id="ewr_porta_articles_after_article" context-i="{$i}" /></xf:foreach>
+	</div>
+	
+	<xf:if is="$infnt">
+		<div class="block porta-article-status">
+			<div class="porta-article-ellipse infinite-scroll-request">
+				<span class="loader-ellipse-dot"></span>
+				<span class="loader-ellipse-dot"></span>
+				<span class="loader-ellipse-dot"></span>
+				<span class="loader-ellipse-dot"></span>
+			</div>
+		</div>
+
+		<div class="block porta-article-loader">
+			<xf:button class="porta-article-button button--cta">{{ phrase('EWRporta_load_more...') }}</xf:button>
+		</div>
+	</xf:if>
+	
+	<div class="block porta-article-pager">
+		<div class="block-outer block-outer--after">
+			<xf:pagenav page="{$page}" perpage="{$perPage}" total="{$total}"
+				link="{$link}" data="{$data}" wrapperclass="block-outer-main" />
+		</div>
+	</div>
+</xf:macro>
+
+
+
+<xf:macro name="article_block" arg-article="!" arg-catlinks="!" arg-attachments="!">
+	<div class="porta-article-item">
+		<div class="block-container porta-article-container">
+
+			<xf:if contentcheck="true">
+				<a class="porta-article-header" data-cache="false"
+					data-xf-click="{{ (!property('EWRporta_header_linked') && $article.article_icon.type == 'medio')
+						? 'overlay' : '' }}"
+					href="{{ (!property('EWRporta_header_linked') && $article.article_icon.link)
+						? $article.article_icon.link : link('threads', $article.Thread) }}">
+					
+					<xf:contentcheck>
+						<xf:macro name="article_header"
+							arg-article="{$article}"
+							arg-attachments="{$attachments}" />
+					</xf:contentcheck>
+
+					<div class="porta-header-text">
+						<span>
+							<xf:if is="$article.Thread.prefix_id">{{ prefix('thread', $article.Thread, 'html', '') }}</xf:if>
+							{{ $article.article_title ?: $article.Thread.title }}
+						</span>
+					</div>
+				</a>
+			<xf:else />
+				<h2 class="block-header">
+					<a href="{{ link('threads', $article.Thread) }}">
+						<xf:if is="$article.Thread.prefix_id">{{ prefix('thread', $article.Thread, 'html', '') }}</xf:if>
+						{{ $article.article_title ?: $article.Thread.title }}
+					</a>
+				</h2>
+			</xf:if>
+
+			<div class="block-body message-inner">
+				<xf:if is="{{ property('EWRporta_dateblock') }}">
+					<div class="message-cell porta-article-date">
+						<div class="porta-date-block">
+							<xf:if is="$article.article_sticky">
+								<b><xf:fa icon="fa-thumbtack" /></b>
+								{{ phrase('EWRporta_pin') }}
+							<xf:else/>
+								{{ time($article.article_date, 'M') }}
+								<b>{{ time($article.article_date, 'd') }}</b>
+							</xf:if>
+						</div>
+					</div>
+				</xf:if>
+				<div class="message-cell message-main">
+					<header class="message-attribution">
+						<div class="message-attribution-main">
+							<ul class="listInline listInline--bullet">
+								<li>
+									<xf:fa icon="fa-user" />
+									<a href="{{ link('ewr-porta/authors', $article.Thread.User) }}" class="u-concealed">
+										{{ $article.Thread.User ? $article.Thread.User.username : $article.Thread.username }}</a>
+								</li>
+								<li>
+									<xf:fa icon="fa-clock" />
+									<a href="{{ link('threads', $article.Thread) }}" class="u-concealed">
+										<xf:date time="$article.article_date" data-full-old-date="true" /></a>
+								</li>
+							</ul>
+						</div>
+
+						<div class="message-attribution-opposite">
+							<ul class="listInline listInline--bullet">
+								<li>
+									<xf:fa icon="fa-eye" />
+									{$article.Thread.view_count|NUMBER}
+								</li>
+								<li>
+									<xf:fa icon="fa-comments" />
+									{$article.Thread.reply_count|NUMBER}
+								</li>
+							</ul>
+						</div>
+					</header>
+
+					<div class="message-body">
+						<xf:if contentcheck="true">
+							<div class="porta-block-icon">
+								<xf:contentcheck>
+									<xf:macro name="article_icon"
+										arg-article="{$article}"
+										arg-attachments="{$attachments}" />
+								</xf:contentcheck>
+							</div>
+						</xf:if>
+
+						{{ bb_code($article.article_excerpt, 'ewr_porta_article', $article.Thread.FirstPost) }}
+
+						<xf:if is="$article.article_break">
+							<a href="{{ link('threads', $article.Thread) }}">{$article.article_break}</a>.
+						</xf:if>
+					</div>
+				</div>
+			</div>
+
+			<div class="block-footer">
+				<div class="block-footer-counter">
+					<xf:foreach loop="$catlinks" value="$catlink">
+						<xf:button href="{{ link('ewr-porta/categories', $catlink.Category) }}">
+							{$catlink.Category.category_name}
+						</xf:button>		
+					</xf:foreach>
+				</div>
+				<div class="block-footer-controls">
+					<xf:button href="{{ link('threads', $article.Thread) }}" fa="fa-sign-in">
+						{{ phrase('continue...') }}
+					</xf:button>
+				</div>
+			</div>
+		</div>
+	</div>
+</xf:macro>
+
+
+
+
+
+<xf:macro name="article_header" arg-article="!" arg-attachments="!">
+	<xf:if is="{{ property('EWRporta_header') }}">
+		<xf:if is="$article.article_icon.type == 'medio' AND {$article.article_icon.data}">
+			<div class="porta-header-medio"
+				style="background-image: url('{{ base_url($article.article_icon.data.image) }}');">
+			</div>
+			<div class="porta-header-play"><xf:fa icon="fab fa-youtube" /></div>
+		<xf:elseif is="$article.article_icon.type == 'attach' AND {$attachments.{$article.article_icon.data}}" />
+			<div class="porta-header-image"
+				style="background-image: url('{{ link('full:ewr-porta/attachments', $attachments.{$article.article_icon.data}) }}');">
+			</div>
+		<xf:elseif is="$article.article_icon.type == 'image' AND $xf.options.EWRporta_icon_external" />
+			<div class="porta-header-image"
+				style="background-image: url('{$article.article_icon.data}');">
+			</div>
+		</xf:if>
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="article_icon" arg-article="!" arg-attachments="!">
+	<xf:if is="!property('EWRporta_header') AND
+			$article.article_icon.type == 'attach' AND
+			{$attachments.{$article.article_icon.data}}">
+		<a href="{{ link('threads', $article.Thread) }}">
+			<img border="0"
+				alt="{$attachments.{$article.article_icon.data}.filename}"
+				src="{$attachments.{$article.article_icon.data}.thumbnail_url}" />
+		</a>
+	<xf:elseif is="!property('EWRporta_header') AND
+			$article.article_icon.type == 'image' AND
+			$xf.options.EWRporta_icon_external" />
+		<a href="{{ link('threads', $article.Thread) }}">
+			<img border="0"
+				alt="{$article.article_icon.data}"
+				src="{$article.article_icon.data}" />
+		</a>
+	<xf:elseif is="$article.article_icon.type == 'avatar'" />
+		<xf:avatar user="$article.Thread.User" size="s"
+			defaultname="{$article.Thread.username}" itemprop="image" />
+	</xf:if>
+</xf:macro>]]></template>
+  <template type="public" title="EWRporta_author_edit" version_id="2018" version_string="2.0.1.8"><![CDATA[<xf:title>{{ phrase('EWRporta_edit_author') }}</xf:title>
+
+<xf:breadcrumb href="{{ link('ewr-porta/authors', $author) }}">{$author.author_name}</xf:breadcrumb>
+
+<xf:css src="EWRporta.less" />
+
+<xf:form action="{{ link('ewr-porta/authors/edit', $author) }}" class="block" upload="true" ajax="true">
+	<div class="block-container">
+		
+		<xf:macro name="edit_block" arg-author="{$author}" />
+
+		<xf:submitrow icon="save" sticky="true" />
+	</div>
+</xf:form>
+
+
+
+
+<xf:macro name="edit_block" arg-author="!">
+	<div class="block-body" data-xf-init="porta-upload">
+
+		<xf:textboxrow name="username" ac="single" value="{$author.User.username}"
+			label="{{ phrase('user') }}" readonly="{{ $author ? 'readonly' : ''}}" />
+		<xf:textboxrow name="author[author_name]" value="{$author.author_name}"
+			label="{{ phrase('name') }}" />
+		<xf:textboxrow name="author[author_status]" value="{$author.author_status}"
+			label="{{ phrase('status') }}" />
+
+		<xf:uploadrow name="upload" accept=".gif,.jpeg,.jpg,.jpe,.png"
+			label="{{ phrase('image') }}"
+			explain="{{ phrase('it_is_recommended_that_you_use_image_that_is_at_least_x_pixels', {
+				'width': '150',
+				'height': '200'
+			}) }}">
+		</xf:uploadrow>
+
+		<xf:if is="{$author.image}">
+			<xf:formrow rowtype="noLabel">
+				<img src="{{ base_url($author.image) }}" />
+			</xf:formrow>
+		</xf:if>
+
+		<xf:editorrow name="byline" value="{$author.author_byline}"
+			label="{{ phrase('EWRporta_byline') }}" />
+		<xf:numberboxrow name="author[author_order]" value="{$author.author_order}" min="1"
+			label="{{ phrase('display_order') }}"  />
+
+	</div>
+</xf:macro>]]></template>
+  <template type="public" title="EWRporta_author_macros" version_id="2200" version_string="2.2.0.0"><![CDATA[<xf:macro name="author_block" arg-author="!">
+	<div class="block">
+		<div class="block-container">
+			<div class="block-body">
+				<div class="contentRow contentRow--alignMiddle porta-author-block">
+					<div class="contentRow-figure porta-author-image">
+						<img src="{{ base_url($author.image) }}" alt="{$author.author_name}" />
+					</div>
+					<div class="contentRow-main">
+						<div class="porta-author-icon">
+							<xf:avatar user="$author.User" size="s" defaultname="{$author.User.username}" />
+						</div>
+
+						<h3 class="message-articleUserName porta-author-name">
+							<a href="{{ link('ewr-porta/authors', $author.User) }}">{$author.author_name}</a>
+
+							<xf:if is="{{ $xf.visitor->hasAdminPermission('EWRporta') }} OR
+									   {{ $xf.visitor->user_id == $author.user_id}}">
+								<a href="{{ link('ewr-porta/authors/edit', $author.User) }}">
+									<xf:fa icon="fa-pencil" />
+								</a>
+							</xf:if>
+						</h3>
+
+						<div class="message-articleWrittenBy porta-author-status">{$author.author_status}</div>
+
+						<div class="message-articleUserBlurb porta-author-byline">
+							{{ bb_code($author.author_byline, 'ewr_porta_author', $author) }}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</xf:macro>]]></template>
+  <template type="public" title="EWRporta_authors" version_id="1" version_string="0.0.0.1"><![CDATA[<xf:title>{{ phrase('EWRporta_authors') }}</xf:title>
+
+<xf:css src="message.less" />
+<xf:css src="EWRporta.less" />
+
+<xf:foreach loop="$authors" value="$author">
+	<xf:macro template="EWRporta_author_macros" name="author_block"
+		arg-author="{$author}" />
+</xf:foreach>
+
+<xf:widgetpos id="ewr_porta_articles_sidenav" context-page="{$page}" position="sidenav" />
+<xf:widgetpos id="ewr_porta_articles_sidebar" context-page="{$page}" position="sidebar" />]]></template>
+  <template type="public" title="EWRporta_feature_delete" version_id="2011" version_string="2.0.1.1"><![CDATA[<xf:title>{{ phrase('confirm_action') }}</xf:title>
+
+<xf:form action="{{ link('threads/feature-delete', $feature.Thread) }}" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:inforow rowtype="confirm">
+				{{ phrase('EWRporta_please_confirm_that_you_want_to_delete_the_feature_promotion_for:') }}
+				<strong><a href="{{ link('threads', $feature.Thread) }}">{$feature.Thread.title}</a></strong>
+			</xf:inforow>
+		</div>
+		<xf:submitrow rowtype="simple" icon="delete" />
+	</div>
+</xf:form>]]></template>
+  <template type="public" title="EWRporta_feature_edit" version_id="2101" version_string="2.1.0.1"><![CDATA[<xf:if is="!$feature">
+	<xf:title>{{ phrase('EWRporta_promote_to_feature') }}</xf:title>
+<xf:else />
+	<xf:title>{{ phrase('EWRporta_edit_feature_promotion') }}</xf:title>
+</xf:if>
+
+<xf:breadcrumb source="$thread.getBreadcrumbs()" />
+
+<xf:css src="EWRporta.less" />
+<xf:js src="8wayrun/porta/portal.js" />
+
+<xf:form action="{{ link('threads/feature-edit', $thread) }}) }}"
+		class="block" upload="true" ajax="true">
+	<div class="block-container">
+		
+		<xf:macro name="edit_block"
+			arg-feature="{$feature}" arg-thread="{$thread}" />
+
+		<xf:submitrow icon="save" sticky="true">
+			<xf:html>
+				<xf:if is="$feature AND {{ $xf.visitor.hasPermission('EWRporta', 'modFeatures') }}">
+					<xf:button href="{{ link('threads/feature/delete', $thread) }}" icon="delete"
+						overlay="true">{{ phrase('delete...') }}</xf:button>
+				</xf:if>
+			</xf:html>
+		</xf:submitrow>
+	</div>
+</xf:form>
+
+
+
+
+<xf:macro name="edit_block" arg-feature="!" arg-thread="!">
+	<div class="block-body" data-xf-init="porta-upload">
+		<xf:uploadrow name="upload" accept=".gif,.jpeg,.jpg,.jpe,.png"
+			label="{{ phrase('image') }}"
+			explain="{{ phrase('it_is_recommended_that_you_use_image_that_is_at_least_x_pixels', {
+					'width': $xf.options.EWRporta_feature_dimensions.width,
+					'height': $xf.options.EWRporta_feature_dimensions.height
+				}) }}" />
+
+		<xf:if is="{$feature.image}">
+			<xf:formrow rowtype="fullWidth noLabel">
+				<img src="{{ base_url($feature.image) }}" />
+			</xf:formrow>
+		</xf:if>
+
+		<xf:textboxrow name="feature[feature_media]" value="{{ $feature.feature_media }}"
+			label="{{ phrase('media') }}" explain="{{ phrase('EWRporta_media_hint') }}" />
+
+		<xf:formrow label="{{ phrase('date') }}" rowtype="input">
+			<div class="inputGroup">
+				<xf:dateinput name="date"
+					value="{{ date($feature ? $feature.feature_date : $thread.post_date, 'picker') }}" />
+				<span class="inputGroup-splitter"></span>
+				<xf:textbox type="time" name="time"
+					value="{{ date($feature ? $feature.feature_date : $thread.post_date, 'H:i') }}" />
+			</div>
+		</xf:formrow>
+	</div>
+
+	<h2 class="block-formSectionHeader">
+		<span class="collapseTrigger collapseTrigger--block{{ $feature.feature_title ? ' is-active' : '' }}"
+				data-xf-click="toggle" data-target="< :up :next">
+			<span class="block-formSectionHeader-aligner">{{ phrase('EWRporta_excerpt') }}</span>
+		</span>
+	</h2>
+	<div class="block-body block-body--collapsible{{ $feature.feature_title ? ' is-active' : '' }}">
+		<xf:checkboxrow>
+			<xf:option name="custom_excerpt" value="1"
+				checked="{{ $feature.feature_title ? true : false  }}"
+				data-xf-init="disabler"
+				data-container="#Excerpt"
+				data-hide="false"
+				label="{{ phrase('EWRporta_use_custom_title_and_excerpt') }}" />
+		</xf:checkboxrow>
+
+		<div id="Excerpt">
+			<xf:textboxrow name="feature[feature_title]"
+				maxlength="{{ max_length('XF:Thread', 'title') }}" label="{{ phrase('title') }}"
+				value="{{ $feature.feature_title ?: $thread.title }}" />
+
+			<xf:textarearow name="feature[feature_excerpt]" rows="6" autosize="true"
+				maxlength="{$xf.options.messageMaxLength}" label="{{ phrase('message') }}" placeholder="{$thread.FirstPost.message}"
+				value="{{ $feature.feature_excerpt ?: ($xf.options.EWRporta_articles_prefill ? $thread.FirstPost.message : '') }}" />
+		</div>
+	</div>
+</xf:macro>]]></template>
+  <template type="public" title="widget_EWRporta_articles" version_id="2018" version_string="2.0.1.8"><![CDATA[<xf:if is="$articles is not empty">
+	<xf:css src="message.less" />
+	<xf:css src="EWRporta.less" />
+	<xf:css src="EWRporta_articles.less" />
+
+	<xf:if is="$options.masonry">
+		<xf:set var="$msnry">1</xf:set>
+		<xf:js src="8wayrun/porta/images.js" />
+		<xf:js src="8wayrun/porta/masonry.js" />
+	</xf:if>
+	
+	<xf:js src="8wayrun/porta/portal.js" />
+	
+	<div class="block {{ $msnry ? 'porta-masonry' : '' }}" {{ widget_data($widget) }}
+			data-xf-init="{{ $msnry ? 'porta-masonry' : '' }}">
+		<xf:foreach loop="$articles" value="$article"><xf:trim>
+			<xf:macro template="EWRporta_articles_macros" name="article_block"
+				arg-article="{$article}"
+				arg-catlinks="{$catlinks.{$article.thread_id}}"
+				arg-attachments="{$attachments}" />
+		</xf:trim></xf:foreach>
+	</div>
+</xf:if>]]></template>
+  <template type="public" title="widget_EWRporta_categories" version_id="2025" version_string="2.0.2.5"><![CDATA[<div class="block"{{ widget_data($widget) }}>
+	<div class="block-container">
+		<h3 class="block-minorHeader">{$title}</h3>
+		<div class="block-body block-row">
+			<xf:foreach loop="$categories" value="$category">
+				<dl class="pairs pairs--justified">
+					<dt><a href="{{ link('ewr-porta/categories', $category) }}">{$category.category_name}</a></dt>
+					<dd><a href="{{ link('ewr-porta/categories', $category) }}">{$category.count|NUMBER}</a></dd>
+				</dl>
+			</xf:foreach>
+		</div>
+	</div>
+</div>]]></template>
+  <template type="public" title="widget_EWRporta_countdown" version_id="2022" version_string="2.0.2.2"><![CDATA[<xf:css src="widget_EWRporta_countdown.less" />
+<xf:js src="8wayrun/porta/countdown.js" />
+
+<div class="block porta-countdown"{{ widget_data($widget) }}
+		data-xf-init="porta-countdown" data-datetime="{$options.datetime}">
+	<div class="block-container">
+		<h3 class="block-minorHeader">{$title}</h3>
+		<div class="block-body">
+			<div class="unit days full">
+				<div class="poll">000</div>
+				<div class="text">{{ phrase('days') }}</div>
+			</div>
+			<div class="unit hour">
+				<div class="poll">00</div>
+				<div class="text">{{ phrase('hours') }}</div>
+			</div>
+			<div class="unit mins">
+				<div class="poll">00</div>
+				<div class="text">{{ phrase('minutes') }}</div>
+			</div>
+			<div class="unit secs">
+				<div class="poll">00</div>
+				<div class="text">{{ phrase('seconds') }}</div>
+			</div>
+			
+			<xf:if is="{$options.active}">
+				<div class="unit active full">
+					{$options.active|RAW}
+				</div>
+			</xf:if>
+			<xf:if is="{$options.inactive}">
+				<div class="unit inactive full">
+					{$options.inactive|RAW}
+				</div>
+			</xf:if>
+		</div>
+	</div>
+</div>]]></template>
+  <template type="public" title="widget_EWRporta_countdown.less" version_id="1300" version_string="1.3.0.0"><![CDATA[.porta-countdown .block-body
+{
+	display: flex;
+	flex-flow: wrap;
+	padding: 6px 5px;
+	text-align: center;
+
+	.unit
+	{
+		background-color: rgba(0,0,0,0.1);
+		border-radius: 3px;
+		flex: 1;
+		margin: 5px;
+		padding: 10px;
+
+		.poll
+		{
+			color: white;
+			font-family: fantasy;
+			font-size: 36px;
+			text-shadow:
+				 1px  1px 0 black,
+				 1px -1px 0 black,
+				-1px  1px 0 black,
+				-1px -1px 0 black;
+		}
+		.text
+		{
+			font-size: 10px;
+			text-transform: lowercase;
+		}
+	}
+	.unit.full { flex-basis: 100%; }
+	.unit.inactive { display: none; }
+	.days .poll { font-size: 96px; line-height: 100px; }
+}]]></template>
+  <template type="public" title="widget_EWRporta_discord" version_id="2108" version_string="2.1.0.8"><![CDATA[<xf:set var="$html">
+	<iframe src="https://discord.com/widget?id={$options.server}&theme={{ property('styleType') }}"
+		width="100%" height="{$options.height}" allowtransparency="true" frameborder="0"></iframe>
+</xf:set>
+
+<xf:if is="!$options.advanced_mode">
+	<div class="block">
+		<div class="block-container">
+			<h3 class="block-minorHeader">{$title}</h3>
+			<div class="block-body block-row">
+				{$html}
+			</div>
+		</div>
+	</div>
+<xf:else />
+	<div class="block">
+		{$html}
+	</div>
+</xf:if>]]></template>
+  <template type="public" title="widget_EWRporta_facebook" version_id="2013" version_string="2.0.1.3"><![CDATA[<xf:set var="$html">
+	<script src="//connect.facebook.net/en_US/all.js#xfbml=1"></script>
+	<div class="fb-page" style="width: 100%"
+		data-tabs="timeline"
+		data-href="{$options.href}"
+		data-height="{$options.height}"
+		data-small-header="{{ $options.small_header ? 'true' : 'false' }}"
+		data-hide-cover="{{ $options.hide_cover ? 'true' : 'false' }}"
+		data-hide-cta="{{ $options.hide_cta ? 'true' : 'false' }}"
+		data-show-facepile="{{ $options.show_facepile ? 'true' : 'false' }}"
+		data-width="500"
+		data-adapt-container-width="true">
+	</div>
+</xf:set>
+
+<xf:if is="!$options.advanced_mode">
+	<div class="block">
+		<div class="block-container">
+			<h3 class="block-minorHeader">{$title}</h3>
+			<div class="block-body block-row">
+				{$html}
+			</div>
+		</div>
+	</div>
+<xf:else />
+	<div class="block">
+		{$html}
+	</div>
+</xf:if>]]></template>
+  <template type="public" title="widget_EWRporta_features" version_id="2105" version_string="2.1.0.5"><![CDATA[<xf:if is="$features is not empty">
+	<xf:css src="widget_EWRporta_features.less" />
+
+	<xf:js src="8wayrun/porta/slider.js" />
+	<xf:js src="8wayrun/porta/portal.js" />
+
+	<div class="block porta-features porta-features-fix"{{ widget_data($widget) }}
+		 data-xf-init="porta-features" data-relocate="{$options.relocate}"
+		 data-mode="{$options.mode}" data-speed="{$options.speed}" data-auto="{$options.auto}"
+		 data-pager="{$options.pager}" data-controls="{$options.controls}"
+		 data-autoControls="{$options.autoControls}" data-progress="{$options.progress}">
+		<div class="porta-features-container">
+			<xf:foreach loop="$features" value="$feature" i="$key">
+				<xf:macro name="feature_item" arg-feature="{$feature}" arg-key="{$key}" arg-options="{$options}" />
+			</xf:foreach>
+		</div>
+
+		<xf:if is="{$options.progress}">
+			<div class="bx-progress">&nbsp;</div>
+		</xf:if>
+	</div>
+</xf:if>
+
+
+<xf:macro name="feature_item" arg-feature="!" arg-key="!" arg-options="!">
+	<div class="porta-features-item feature-{$key}" style="background-image: url('{{ base_url($feature.image) }}');">
+		<a class="porta-features-fix" href="{{ link('threads', $feature.Thread) }}">
+			<div class="porta-features-summary">
+				<div class="title">{{ $feature.feature_title ? $feature.feature_title : $feature.Thread.title }}</div>
+				<div class="description">
+					{{ snippet($feature.feature_excerpt, $options.trim ?: $xf.options.EWRporta_articles_trim, {'stripBbCode': true}) }}
+				</div>
+			</div>
+		</a>
+
+		<xf:if is="{$feature.feature_media}">
+			<div class="porta-features-media" data-slide="{$key}" data-media="{$feature.feature_media}">
+				<div id="youTube{$key}"></div>
+			</div>
+			<div class="bx-controls-volume">
+				<a class="bx-unmute" href="">Unmute</a>
+				<a class="bx-mute active" href="">Mute</a>
+			</div>
+		</xf:if>
+	</div>
+</xf:macro>]]></template>
+  <template type="public" title="widget_EWRporta_features.less" version_id="1" version_string="0.0.0.1"><![CDATA[.porta-features
+{
+	.xf-blockBorder();
+	border-radius: @xf-blockBorderRadius;
+	position: relative;
+
+	.porta-features-item
+	{
+		background-position: center center;
+		background-repeat: no-repeat;
+		background-size: auto 100%;
+
+		>a
+		{
+			display: block;
+			position: relative;
+			z-index: 90;
+		}
+
+		.porta-features-summary
+		{
+			position: absolute; bottom: 0; left: 0; right: 0;
+			background-color: rgba(0,0,0,0.5);
+			padding: 15px 20px 20px;
+			color: white;
+
+			>div { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+			.title { font-size: 1.5em; font-weight: bold; }
+		}
+
+		.porta-features-media
+		{
+			position: absolute; top: 0; bottom: 0; left: 0; right: 0; z-index: 80;
+			margin: @xf-EWRporta_feature_media_margin auto;
+			width: @xf-EWRporta_feature_media_width;
+			height: (@xf-EWRporta_feature_height - (@xf-EWRporta_feature_media_margin * 2));
+		}
+	}
+
+	.has-media .porta-features-summary { display: none; }
+	.has-media .bx-controls-volume { display: initial; }
+}
+
+.porta-features-fix
+{
+	height: @xf-EWRporta_feature_height;
+	overflow: hidden;
+}
+
+@media (max-width: @xf-responsiveWide)
+{
+	.porta-features-fix { height: @xf-EWRporta_feature_wide; }
+	.porta-features .porta-features-item .porta-features-media
+	{
+		margin: (@xf-EWRporta_feature_media_margin / 2) auto;
+		width: @xf-EWRporta_feature_media_wide;
+		height: (@xf-EWRporta_feature_wide - @xf-EWRporta_feature_media_margin);
+	}
+}
+
+@media (max-width: @xf-responsiveMedium)
+{
+	.porta-features-fix { height: @xf-EWRporta_feature_medium; }
+	.porta-features .porta-features-item .porta-features-media
+	{
+		margin: 0 auto;
+		width: @xf-EWRporta_feature_media_medium;
+		height: @xf-EWRporta_feature_medium;
+	}
+}
+
+@media (max-width: @xf-responsiveNarrow)
+{
+	.porta-features-fix { height: @xf-EWRporta_feature_narrow; }
+	.porta-features .porta-features-item .porta-features-media
+	{
+		width: @xf-EWRporta_feature_media_narrow;
+		height: @xf-EWRporta_feature_narrow;
+	}
+}
+
+@media (max-width: @xf-responsiveEdgeSpacerRemoval)
+{
+	.porta-features
+	{
+		margin-left: -@xf-pageEdgeSpacer;
+		margin-right: -@xf-pageEdgeSpacer;
+	}
+}
+
+/*---------------------------------------*/
+/*           BXSLIDER LAYOUT             */
+/*---------------------------------------*/
+
+/* ITEM CONTROLS */
+
+.porta-features
+{
+	.bx-pager
+	{
+		position: absolute;
+		top: 10px;
+		text-align: center;
+		width: 100%;
+	}
+	.bx-pager .bx-pager-item { position: relative; z-index: 100; display: inline-block; }
+	.bx-pager.bx-default-pager a
+	{
+		background: rgba(128, 128, 128, 0.5);
+		margin: 0 3px;
+		border-radius: 8px;
+		display: block;
+		text-indent: -9999px;
+		box-shadow: 0px 0px 2px #FFF inset;
+		width: 16px;
+		height: 16px;
+	}
+	.bx-pager.bx-default-pager a:hover
+	{
+		background-color: rgb(128, 128, 128);
+	}
+	.bx-pager.bx-default-pager a.active
+	{
+		background-color: rgb(0, 0, 0);
+	}
+}
+
+/* PREV/NEXT CONTROLS */
+
+.porta-features
+{
+	.bx-controls-direction
+	{
+	}
+
+	.bx-controls-direction a
+	{
+		background-image: url('styles/8wayrun/porta/_slider.png');
+		background-repeat: no-repeat;
+		margin-top: -16px;
+		position: absolute;
+		text-indent: -9999px;
+		z-index: 100;
+		width: 32px;
+		height: 32px;
+	}
+
+	.bx-controls-direction .bx-prev
+	{
+		top: 50%;
+		left: 10px;
+	}
+
+	.bx-controls-direction .bx-next
+	{
+		top: 50%;
+		right: 10px;
+	}
+
+	.bx-controls-direction .bx-prev { background-position: 0 -32px; }
+	.bx-controls-direction .bx-prev:hover { background-position: 0 0; }
+	.bx-controls-direction .bx-next { background-position: -32px -32px; }
+	.bx-controls-direction .bx-next:hover { background-position: -32px 0; }
+	.bx-controls-direction .disabled { display: none; }
+}
+
+/* START/STOP CONTROLS */
+
+.porta-features
+{
+	.bx-controls-auto
+	{
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		z-index: 100;
+	}
+	.bx-controls-auto a
+	{
+		background-image: url('styles/8wayrun/porta/_slider.png');
+		background-repeat: no-repeat;
+		display: block;
+		text-indent: -9999px;
+		width: 32px;
+		height: 32px;
+	}
+
+	.bx-controls-auto .active { display: none; }
+	.bx-controls-auto .bx-start { background-position: -64px -32px; }
+	.bx-controls-auto .bx-start:hover { background-position: -64px 0; }
+	.bx-controls-auto .bx-stop { background-position: -96px -32px; }
+	.bx-controls-auto .bx-stop:hover { background-position: -96px 0; }
+}
+
+
+/* VOLUME BUTTON */
+
+.porta-features
+{
+	.bx-controls-volume
+	{
+		display: none;
+		position: absolute;
+		right: 10px;
+		bottom: 10px;
+		z-index: 100;
+	}
+	.bx-controls-volume a
+	{
+		background-image: url('styles/8wayrun/porta/_slider.png');
+		background-repeat: no-repeat;
+		display: block;
+		text-indent: -9999px;
+		width: 64px;
+		height: 64px;
+	}
+
+	.bx-controls-volume .active { display: none; }
+	.bx-controls-volume .bx-unmute { background-position: -128px 0; }
+	.bx-controls-volume .bx-unmute:hover { background-position: -192px 0; }
+	.bx-controls-volume .bx-mute { background-position: -192px 0; }
+	.bx-controls-volume .bx-mute:hover { background-position: -128px 0; }
+}
+
+/* PROGRESS BAR */
+
+.porta-features
+{
+	.bx-progress
+	{
+		background-color: red;
+		border-top: 1px solid black;
+		position: absolute;
+		bottom: 0;
+		z-index: 100;
+		width: 0;
+		height: 5px;
+	}
+}]]></template>
+  <template type="public" title="widget_EWRporta_twitter" version_id="1" version_string="0.0.0.1"><![CDATA[<xf:set var="$html">
+	<a class="twitter-timeline" href="https://twitter.com/search?q={$options.search}"
+			data-widget-id="{$options.widget_id}"
+			data-related="{$options.related}"
+			data-height="{$options.height}"
+			data-chrome="{$options.chrome}"
+			data-theme="{{ property('styleType') }}"
+			data-dnt="true">
+		{$options.search}
+	</a>
+	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</xf:set>
+
+<xf:if is="!$options.advanced_mode">
+	<div class="block">
+		<div class="block-container">
+			<h3 class="block-minorHeader">{$title}</h3>
+			<div class="block-body block-row">
+				{$html}
+			</div>
+		</div>
+	</div>
+<xf:else />
+	<div class="block">
+		{$html}
+	</div>
+</xf:if>]]></template>
+</templates>

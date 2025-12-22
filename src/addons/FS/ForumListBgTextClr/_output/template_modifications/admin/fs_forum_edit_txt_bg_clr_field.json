@@ -5,5 +5,5 @@
     "enabled": true,
     "action": "str_replace",
     "find": "<xf:macro template=\"node_edit_macros\" name=\"description\" arg-node=\"{$node}\" />",
-    "replace": "$0\n\n<hr class=\"formRowSep\" />\n\n<xf:textboxrow name=\"node[txt_clr]\" value=\"{$node.txt_clr}\" label=\"{{ phrase('fs_forum_list_txt_color') }}\" />\n<xf:textboxrow name=\"node[bg_clr]\" value=\"{$node.bg_clr}\" label=\"{{ phrase('fs_forum_list_bg_color') }}\" />"
+    "replace": "$0\n\n<hr class=\"formRowSep\" />\n\n<xf:textboxrow name=\"node[txt_clr]\" value=\"{$node.txt_clr}\" label=\"{{ phrase('fs_forum_list_txt_color') }}\" />\n<xf:textboxrow name=\"node[bg_clr]\" value=\"{$node.bg_clr}\" label=\"{{ phrase('fs_forum_list_bg_color') }}\" />\n<xf:checkboxrow>\n\t<xf:option name=\"node[only_title]\" selected=\"$node.only_title\"\n\t\t\t   label=\"{{ phrase('fs_forum_only_title') }}\"\n\t\t\t   hint=\"{{ phrase('fs_forum_only_title_explain') }}\" />\n</xf:checkboxrow>"
 }

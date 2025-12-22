@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<options>
+  <option option_id="xb_featureVideosLimit" edit_format="spinbox" data_type="integer">
+    <default_value>10</default_value>
+    <relation group_id="brand_viedo" display_order="8"/>
+  </option>
+</options>

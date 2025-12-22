@@ -46,7 +46,7 @@ class ThumbnailGenerator extends AbstractService {
     
     public function getTempThumbnailFromImage($sourceFile, $abstractedDestination, $width = null, $height = null) {
         $tempThumbFile = null;
-        var_dump($sourceFile);exit;
+
         if ($width === null || $height === null) {
             $imageInfo = getimagesize($sourceFile);
             if (!$imageInfo) {

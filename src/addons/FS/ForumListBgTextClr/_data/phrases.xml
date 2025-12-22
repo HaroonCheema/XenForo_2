@@ -2,4 +2,6 @@
 <phrases>
   <phrase title="fs_forum_list_bg_color" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Section background color]]></phrase>
   <phrase title="fs_forum_list_txt_color" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Section text color]]></phrase>
+  <phrase title="fs_forum_only_title" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Only forum title]]></phrase>
+  <phrase title="fs_forum_only_title_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[If checked then color only apply on forum title otherwise on all.]]></phrase>
 </phrases>

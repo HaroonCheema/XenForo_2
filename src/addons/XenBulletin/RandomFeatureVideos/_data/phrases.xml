@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="feature_video" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Feature video]]></phrase>
+  <phrase title="feature_videos_limit_exceeded" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Feature videos limit exceeded, yon can't mark as feature video more than {limit}]]></phrase>
+  <phrase title="option.xb_featureVideosLimit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Feature Videos Limit]]></phrase>
+  <phrase title="option_explain.xb_featureVideosLimit" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[how many videos can be added as feature video]]></phrase>
+</phrases>

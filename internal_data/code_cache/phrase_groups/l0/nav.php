@@ -1,6 +1,11 @@
 <?php
 return array (
   'nav.BRATR_newThreadRatings' => 'New Thread Ratings',
+  'nav.EWRporta2' => 'Home',
+  'nav.EWRporta_authors' => 'Authors',
+  'nav.EWRporta_latest' => 'Latest activity',
+  'nav.EWRporta_newsfeed' => 'Your news feed',
+  'nav.EWRporta_whatsnaw' => 'What\'s new',
   'nav.FTSlider_list_nav' => 'Featured threads',
   'nav._default' => 'Default (no selected tab)',
   'nav.addRecord' => 'Add',
@@ -86,7 +91,6 @@ return array (
   'nav.siropuChatSanctions' => 'Sanctions',
   'nav.siropuChatTopChatters' => 'Top chatters',
   'nav.snog_forms_nav' => 'Forms',
-  'nav.thMonetize_accountUpgrades' => 'Account upgrades',
   'nav.tournament_pub' => 'Tournaments',
   'nav.unansweredThreads' => 'Unanswered threads',
   'nav.upgradeAccount' => 'Upgrade',

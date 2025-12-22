@@ -1,0 +1,9 @@
+{
+    "template": "iframe_edit",
+    "description": "fs_iframe_edit_add_more_day_field",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/<xf:selectrow name=\"display_day\" value=\"{\\$data\\.display_day}\" label=\"{{ phrase\\('Display Day'\\) }}\".*?<\\/xf:selectrow>/is",
+    "replace": "$0\n\n<xf:numberboxrow name=\"for_days\" value=\"{$data.for_days}\" min=\"1\" max=\"7\" step=\"1\"\n\t\t\t\t\t\t\t label=\"{{ phrase('xb_for_days') }}\"\n\t\t\t\t\t\t\t explain=\"{{ phrase('xb_for_days_explain') }}\" />"
+}

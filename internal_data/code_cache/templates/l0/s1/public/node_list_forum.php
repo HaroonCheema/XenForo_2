@@ -159,11 +159,11 @@ return array(
 						<div class="node-statsMeta">
 							<dl class="pairs pairs--inline">
 								<dt>' . 'Threads' . '</dt>
-								<dd style="' . (($__vars['node']['txt_clr'] != '') ? (('color: ' . $__templater->escape($__vars['node']['txt_clr'])) . ';') : '') . '">' . $__templater->filter($__vars['extras']['discussion_count'], array(array('number_short', array(1, )),), true) . '</dd>
+								<dd style="' . ((($__vars['node']['txt_clr'] != '') AND (!$__vars['node']['only_title'])) ? (('color: ' . $__templater->escape($__vars['node']['txt_clr'])) . ';') : '') . '">' . $__templater->filter($__vars['extras']['discussion_count'], array(array('number_short', array(1, )),), true) . '</dd>
 							</dl>
 							<dl class="pairs pairs--inline">
 								<dt>' . 'Messages' . '</dt>
-								<dd style="' . (($__vars['node']['txt_clr'] != '') ? (('color: ' . $__templater->escape($__vars['node']['txt_clr'])) . ';') : '') . '">' . $__templater->filter($__vars['extras']['message_count'], array(array('number_short', array(1, )),), true) . '</dd>
+								<dd style="' . ((($__vars['node']['txt_clr'] != '') AND (!$__vars['node']['only_title'])) ? (('color: ' . $__templater->escape($__vars['node']['txt_clr'])) . ';') : '') . '">' . $__templater->filter($__vars['extras']['message_count'], array(array('number_short', array(1, )),), true) . '</dd>
 							</dl>
 						</div>
 					';
@@ -220,11 +220,11 @@ return array(
 
 					<dl class="pairs pairs--rows">
 						<dt>' . 'Threads' . '</dt>
-						<dd style="' . (($__vars['node']['txt_clr'] != '') ? (('color: ' . $__templater->escape($__vars['node']['txt_clr'])) . ';') : '') . '">' . $__templater->filter($__vars['extras']['discussion_count'], array(array('number_short', array(1, )),), true) . '</dd>
+						<dd style="' . ((($__vars['node']['txt_clr'] != '') AND (!$__vars['node']['only_title'])) ? (('color: ' . $__templater->escape($__vars['node']['txt_clr'])) . ';') : '') . '">' . $__templater->filter($__vars['extras']['discussion_count'], array(array('number_short', array(1, )),), true) . '</dd>
 					</dl>
 					<dl class="pairs pairs--rows">
 						<dt>' . 'Messages' . '</dt>
-						<dd style="' . (($__vars['node']['txt_clr'] != '') ? (('color: ' . $__templater->escape($__vars['node']['txt_clr'])) . ';') : '') . '">' . $__templater->filter($__vars['extras']['message_count'], array(array('number_short', array(1, )),), true) . '</dd>
+						<dd style="' . ((($__vars['node']['txt_clr'] != '') AND (!$__vars['node']['only_title'])) ? (('color: ' . $__templater->escape($__vars['node']['txt_clr'])) . ';') : '') . '">' . $__templater->filter($__vars['extras']['message_count'], array(array('number_short', array(1, )),), true) . '</dd>
 					</dl>
 				</div>
 			';
@@ -259,11 +259,11 @@ return array(
 						';
 		if ($__templater->method($__vars['extras']['LastThread'], 'isUnread', array())) {
 			$__finalCompiled .= '
-	<a href="' . $__templater->func('link', array('threads/unread', $__vars['extras']['LastThread'], ), true) . '" style="' . (($__vars['node']['txt_clr'] != '') ? (('color: ' . $__templater->escape($__vars['node']['txt_clr'])) . ';') : '') . '" class="node-extra-title" title="' . $__templater->escape($__vars['extras']['LastThread']['title']) . '">' . $__templater->func('prefix', array('thread', $__vars['extras']['LastThread'], ), true) . $__templater->escape($__vars['extras']['LastThread']['title']) . '</a>
+	<a href="' . $__templater->func('link', array('threads/unread', $__vars['extras']['LastThread'], ), true) . '" style="' . ((($__vars['node']['txt_clr'] != '') AND (!$__vars['node']['only_title'])) ? (('color: ' . $__templater->escape($__vars['node']['txt_clr'])) . ';') : '') . '" class="node-extra-title" title="' . $__templater->escape($__vars['extras']['LastThread']['title']) . '">' . $__templater->func('prefix', array('thread', $__vars['extras']['LastThread'], ), true) . $__templater->escape($__vars['extras']['LastThread']['title']) . '</a>
 	';
 		} else {
 			$__finalCompiled .= '
-	<a href="' . $__templater->func('link', array('threads/post', $__vars['extras']['LastThread'], array('post_id' => $__vars['extras']['last_post_id'], ), ), true) . '" style="' . (($__vars['node']['txt_clr'] != '') ? (('color: ' . $__templater->escape($__vars['node']['txt_clr'])) . ';') : '') . '" class="node-extra-title" title="' . $__templater->escape($__vars['extras']['LastThread']['title']) . '">' . $__templater->func('prefix', array('thread', $__vars['extras']['LastThread'], ), true) . $__templater->escape($__vars['extras']['LastThread']['title']) . '</a>
+	<a href="' . $__templater->func('link', array('threads/post', $__vars['extras']['LastThread'], array('post_id' => $__vars['extras']['last_post_id'], ), ), true) . '" style="' . ((($__vars['node']['txt_clr'] != '') AND (!$__vars['node']['only_title'])) ? (('color: ' . $__templater->escape($__vars['node']['txt_clr'])) . ';') : '') . '" class="node-extra-title" title="' . $__templater->escape($__vars['extras']['LastThread']['title']) . '">' . $__templater->func('prefix', array('thread', $__vars['extras']['LastThread'], ), true) . $__templater->escape($__vars['extras']['LastThread']['title']) . '</a>
 ';
 		}
 		$__finalCompiled .= '

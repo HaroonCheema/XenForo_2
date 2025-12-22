@@ -1,6 +1,13 @@
 <?php
 return array (
   'widget_def.BRATR_newRatings' => 'Brivium - New Thread Ratings',
+  'widget_def.EWRporta_articles' => 'XenPorta > Articles',
+  'widget_def.EWRporta_categories' => 'XenPorta > Categories',
+  'widget_def.EWRporta_countdown' => 'XenPorta > Countdown',
+  'widget_def.EWRporta_discord' => 'XenPorta > Discord',
+  'widget_def.EWRporta_facebook' => 'XenPorta > Facebook',
+  'widget_def.EWRporta_features' => 'XenPorta > Features',
+  'widget_def.EWRporta_twitter' => 'XenPorta > Twitter',
   'widget_def.FTSlider_widget' => '[XTR] Featured Thread Slider',
   'widget_def.FeaturedProvider' => 'Featured Provider',
   'widget_def.RealTimeChat' => 'Real Time Chat',
@@ -33,7 +40,6 @@ return array (
   'widget_def.new_profile_posts' => 'New profile posts',
   'widget_def.new_threads' => 'New threads',
   'widget_def.newest_members' => 'Newest members',
-  'widget_def.nfRecentGiftUpgrades' => 'Gifted posts',
   'widget_def.online_statistics' => 'Online statistics',
   'widget_def.php_callback' => 'PHP callback',
   'widget_def.questionAnswerStatistics' => 'Question Answers Statistics',

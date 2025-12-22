@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<widget_definitions>
+  <widget_definition definition_id="EWRporta_articles" definition_class="EWR\Porta\Widget\Articles"/>
+  <widget_definition definition_id="EWRporta_categories" definition_class="EWR\Porta\Widget\Categories"/>
+  <widget_definition definition_id="EWRporta_countdown" definition_class="EWR\Porta\Widget\Countdown"/>
+  <widget_definition definition_id="EWRporta_discord" definition_class="EWR\Porta\Widget\Discord"/>
+  <widget_definition definition_id="EWRporta_facebook" definition_class="EWR\Porta\Widget\Facebook"/>
+  <widget_definition definition_id="EWRporta_features" definition_class="EWR\Porta\Widget\Features"/>
+  <widget_definition definition_id="EWRporta_twitter" definition_class="EWR\Porta\Widget\Twitter"/>
+</widget_definitions>

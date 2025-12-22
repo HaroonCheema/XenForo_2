@@ -1,0 +1,6 @@
+{
+    "from_class": "XenBulletins\\VideoPages\\Entity\\Iframe",
+    "to_class": "FS\\IframeVideoChanges\\XB\\VideoPages\\Entity\\Iframe",
+    "execute_order": 10,
+    "active": true
+}

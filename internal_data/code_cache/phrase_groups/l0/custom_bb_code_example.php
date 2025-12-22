@@ -17,6 +17,8 @@ return array (
   'custom_bb_code_example.movie' => '',
   'custom_bb_code_example.plot' => '',
   'custom_bb_code_example.poster' => '',
+  'custom_bb_code_example.prbreak' => '',
+  'custom_bb_code_example.prebreak' => '',
   'custom_bb_code_example.product' => '[PRODUCT=product, X]Product BB Code[/PRODUCT]',
   'custom_bb_code_example.release' => '',
   'custom_bb_code_example.runtime' => '',

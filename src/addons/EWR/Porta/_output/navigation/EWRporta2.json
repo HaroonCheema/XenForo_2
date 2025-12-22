@@ -1,0 +1,11 @@
+{
+    "parent_navigation_id": "",
+    "display_order": 100,
+    "navigation_type_id": "basic",
+    "type_config": {
+        "link": "{{ link('ewr-porta') }}",
+        "display_condition": "$xf.options.EWRporta_navtab",
+        "extra_attributes": []
+    },
+    "enabled": true
+}

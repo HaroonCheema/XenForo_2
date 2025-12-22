@@ -41,7 +41,7 @@ return array(
 	if ($__vars['xf']['app']['userUpgradeCount']) {
 		$__compilerTemp5 .= '
 					<a class="blockLink ' . (($__vars['pageSelected'] == 'upgrades') ? 'is-selected' : '') . '" href="' . $__templater->func('link', array('account/upgrades', ), true) . '">
-						' . 'Account upgrades' . '
+						' . 'account_upgrades' . '
 					</a>
 				';
 	}
@@ -68,8 +68,6 @@ return array(
 			<div class="block-body">
 				' . '
 				<a class="blockLink" href="' . $__templater->func('link', array('members', $__vars['xf']['visitor'], ), true) . '">' . 'Your profile' . '</a>
-
-<a class="blockLink" href="' . $__templater->func('link', array('media/users', $__vars['xf']['visitor'], ), true) . '">' . 'My photo' . '</a>
 				<a class="blockLink ' . (($__vars['pageSelected'] == 'alerts') ? 'is-selected' : '') . '" href="' . $__templater->func('link', array('account/alerts', ), true) . '">
 					' . 'Alerts' . '
 				</a>

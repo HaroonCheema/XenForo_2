@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 2f3ad291cc28e06faed92afa20bb8d14
+// FROM HASH: f64243fb21f109ef2954dfefe48b732f
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -37,9 +37,19 @@ return array(
 				array(
 					'_type' => 'cell',
 					'html' => '
+                                ' . $__templater->escape($__templater->method($__vars['function'], 'getDaysFrom', array())) . '
+                            ',
+				),
+				array(
+					'_type' => 'cell',
+					'html' => '
 								
 								
 								' . $__templater->escape($__vars['function']['Brand']['video_feature']),
+				),
+				array(
+					'_type' => 'cell',
+					'html' => ($__vars['function']['feature'] ? 'Yes' : 'No'),
 				),
 				array(
 					'href' => $__templater->func('link', array('iframe/edit', $__vars['function'], ), false),
@@ -67,7 +77,15 @@ return array(
 		),
 		array(
 			'_type' => 'cell',
+			'html' => 'Day',
+		),
+		array(
+			'_type' => 'cell',
 			'html' => 'Brand Title',
+		),
+		array(
+			'_type' => 'cell',
+			'html' => 'Feature video',
 		),
 		array(
 			'class' => 'dataList-cell--min',

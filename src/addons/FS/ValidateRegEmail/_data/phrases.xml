@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="fs_validate_email_spam_detected" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Spam detected. Please use a valid email address.]]></phrase>
+  <phrase title="option.fs_validate_email_api_key" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Api Key]]></phrase>
+  <phrase title="option_explain.fs_validate_email_api_key" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You can get api key from here <a href="https://app.emaillistverify.com/api" target="_blank">Email list verify</a>.]]></phrase>
+  <phrase title="option_group.fs_validate_email" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Validate E-mail]]></phrase>
+  <phrase title="option_group_description.fs_validate_email" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+</phrases>

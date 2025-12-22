@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <templates>
-  <template type="admin" title="add_iframevalues" version_id="1020000" version_string="1.2"><![CDATA[<xf:title>{{ phrase('Add Iframe Videos') }}</xf:title>
+  <template type="admin" title="add_iframevalues" version_id="1070000" version_string="1.7"><![CDATA[<xf:title>{{ phrase('Add Iframe Videos') }}</xf:title>
 <xf:form action="{{ link('iframe/save', $data) }}"  class="block" ajax="true">
 	
 	<div class="block-container">
@@ -17,6 +17,18 @@
 					<xf:option value="{{$sponsor.video_id}}" >{{$sponsor.video_feature}}</xf:option>
 				</xf:foreach>
 			</xf:selectrow>
+			
+			<xf:selectrow name="display_day" value="{$data.display_day}" label="{{ phrase('Display Day') }}"
+                explain="{{ phrase('Select which day this video should display') }}">
+				<xf:option value="7">Unknown</xf:option>
+                <xf:option value="0">{{ phrase('Sunday') }}</xf:option>
+                <xf:option value="1">{{ phrase('Monday') }}</xf:option>
+                <xf:option value="2">{{ phrase('Tuesday') }}</xf:option>
+                <xf:option value="3">{{ phrase('Wednesday') }}</xf:option>
+                <xf:option value="4">{{ phrase('Thursday') }}</xf:option>
+                <xf:option value="5">{{ phrase('Friday') }}</xf:option>
+                <xf:option value="6">{{ phrase('Saturday') }}</xf:option>
+            </xf:selectrow>
 			
 			<xf:checkboxrow>
 						<xf:option name="rons" value="1" selected="{$data.rons}"
@@ -195,7 +207,7 @@
 	</div>
 	</div>
 </xf:form>]]></template>
-  <template type="admin" title="iframe" version_id="1030000" version_string="1.3"><![CDATA[<xf:title>{{ phrase('iframe_video') }}</xf:title>
+  <template type="admin" title="iframe" version_id="1040000" version_string="1.4"><![CDATA[<xf:title>{{ phrase('iframe_video') }}</xf:title>
 <xf:pageaction>
 	<xf:button href="{{ link('iframe/add') }}" icon="add">{{ phrase('add_iframe_video') }}</xf:button>
 </xf:pageaction>
@@ -208,6 +220,7 @@
 					<xf:datarow rowtype="header">
 						<xf:cell>{{ phrase('Iframe Title') }}</xf:cell>
 					    <xf:cell>{{ phrase('Iframe Link') }}</xf:cell>
+						<xf:cell>{{ phrase('Day') }}</xf:cell>
 					    <xf:cell>{{ phrase('Brand Title') }}</xf:cell>
 						 <xf:cell class="dataList-cell--min">&nbsp;</xf:cell>
 						<xf:cell class="dataList-cell--min">&nbsp;</xf:cell>
@@ -217,6 +230,25 @@
 						<xf:datarow>
 							<xf:cell>{$function.iframe_title}</xf:cell>
 							<xf:cell>{$function.iframe_URL}</xf:cell>
+							<xf:cell>
+                                <xf:if is="{$function.display_day} == 0">
+                                    {{ phrase('Sunday') }}
+                                <xf:elseif is="{$function.display_day} == 1" />
+                                    {{ phrase('Monday') }}
+                                <xf:elseif is="{$function.display_day} == 2" />
+                                    {{ phrase('Tuesday') }}
+                                <xf:elseif is="{$function.display_day} == 3" />
+                                    {{ phrase('Wednesday') }}
+                                <xf:elseif is="{$function.display_day} == 4" />
+                                    {{ phrase('Thursday') }}
+                                <xf:elseif is="{$function.display_day} == 5" />
+                                    {{ phrase('Friday') }}
+                                <xf:elseif is="{$function.display_day} == 6" />
+                                    {{ phrase('Saturday') }}
+                                <xf:else />
+                                    {{ phrase('Unknown') }}
+                                </xf:if>
+                            </xf:cell>
 							<xf:cell>
 								
 								
@@ -239,7 +271,7 @@
 		link="functions" params="{$filters}"
 		wrapperclass="block-outer block-outer--after" />
 </xf:form>]]></template>
-  <template type="admin" title="iframe_edit" version_id="1020000" version_string="1.2"><![CDATA[<xf:if is="$data.isInsert()">
+  <template type="admin" title="iframe_edit" version_id="1070000" version_string="1.7"><![CDATA[<xf:if is="$data.isInsert()">
 	<xf:title>{{ phrase('Add Record') }}</xf:title>
 <xf:else />
 	<xf:title>{{ phrase('Edit Record:') }} {$data.iframe_title}</xf:title>
@@ -266,8 +298,21 @@
 				</xf:foreach>
 			
 			</xf:selectrow>
-          	 
 			
+			<xf:selectrow name="display_day" value="{$data.display_day}" label="{{ phrase('Display Day') }}"
+                explain="{{ phrase('Select which day this video should display') }}">
+				<xf:option value="7">Unknown</xf:option>
+                <xf:option value="0">{{ phrase('Sunday') }}</xf:option>
+                <xf:option value="1">{{ phrase('Monday') }}</xf:option>
+                <xf:option value="2">{{ phrase('Tuesday') }}</xf:option>
+                <xf:option value="3">{{ phrase('Wednesday') }}</xf:option>
+                <xf:option value="4">{{ phrase('Thursday') }}</xf:option>
+                <xf:option value="5">{{ phrase('Friday') }}</xf:option>
+                <xf:option value="6">{{ phrase('Saturday') }}</xf:option>
+            </xf:selectrow>
+          	 
+				<xf:uploadrow name="video_thumbnail" accept=".jpeg,.jpg,.png" 
+				label="{{ phrase('thumbnail') }}"  />
 			<xf:checkboxrow>
 						<xf:option name="rons" value="1" selected="{$data.rons}"
 					   label="{{ phrase('Rons Interview') }}" data-hide="true">

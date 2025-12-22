@@ -7,9 +7,11 @@ use XenBulletins\VideoPages\Entity;
 use XF\Mvc\ParameterBag;
 use XF\Mvc\Entity\Finder;
 
-class Iframe extends AbstractController {
+class Iframe extends AbstractController
+{
 
-    public function actionIndex() {
+    public function actionIndex()
+    {
 
         $sites = $this->finder('XenBulletins\VideoPages:Iframe')->with('Brand')->order('iframe_title')->fetch();
         $viewParams = [
@@ -19,7 +21,8 @@ class Iframe extends AbstractController {
         return $this->view('XenBulletins\VideoPages:Iframe', 'iframe', $viewParams);
     }
 
-    public function actionAdd() {
+    public function actionAdd()
+    {
         $sites = $this->em()->create('XenBulletins\VideoPages:Iframe');
         $sites = $this->finder('XenBulletins\VideoPages:AddVideo');
         $sql = "SELECT * FROM `xf_videopages` ORDER BY `video_link` ASC ";
@@ -37,7 +40,8 @@ class Iframe extends AbstractController {
 
     //////////////////////////***save***/////////////////////////////
 
-    public function actionSave(ParameterBag $params) {
+    public function actionSave(ParameterBag $params)
+    {
         $this->assertPostOnly();
 
         if ($params->iframe_id) {
@@ -50,7 +54,8 @@ class Iframe extends AbstractController {
         return $this->redirect($this->buildLink('iframe'));
     }
 
-    public function extractVideoID($iframe_URL) {
+    public function extractVideoID($iframe_URL)
+    {
 
         $sites = $this->finder('XenBulletins\VideoPages:Iframe')->with('video')->fetch();
         var_dump($sites);
@@ -59,18 +64,19 @@ class Iframe extends AbstractController {
             'data' => $sites
         ];
 
-
         $regExp = "/^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/";
         preg_match($regExp, $iframe_URL, $viewParams);
 
         return $video[7];
     }
 
-    function getYouTubeThumbnailImage($iframe_id) {
+    function getYouTubeThumbnailImage($iframe_id)
+    {
         return "https://i3.ytimg.com/vi/$iframe_id/hqdefault.jpg"; //pass 0,1,2,3 for different sizes like 0.jpg, 1.jpg
     }
 
-    public function createEmbedDataHandler($bbCodeMediaSiteId) {
+    public function createEmbedDataHandler($bbCodeMediaSiteId)
+    {
         $handlers = $this->getEmbedDataHandlers();
 
         if (isset($handlers[$bbCodeMediaSiteId])) {
@@ -88,12 +94,12 @@ class Iframe extends AbstractController {
         return new $handlerClass($this->app());
     }
 
-    protected function getEmbedDataHandlers() {
+    protected function getEmbedDataHandlers()
+    {
         $handlers = [
             'imgur' => 'XenBulletins\VideoPages:Imgur',
             'vimeo' => 'XenBulletins\VideoPages:Vimeo',
-            'youtube' => 'XenBulletins\VideoPages:YouTube',
-            'facebook' => 'XenBulletins\VideoPages:FaceBook'
+            'youtube' => 'XenBulletins\VideoPages:YouTube'
         ];
 
         $this->app()->fire('xfmg_embed_data_handler_prepare', [&$handlers]);
@@ -101,14 +107,19 @@ class Iframe extends AbstractController {
         return $handlers;
     }
 
-    public function getAbstractedTempThumbnailPathProof($match) {
+    public function getAbstractedTempThumbnailPathProof($match)
+    {
         $tempId = $match['media_id'];
 
-        return sprintf('data://xfvp/temp/%s-%s.jpg', $tempId, $match['media_site_id']
+        return sprintf(
+            'data://xfvp/temp/%s-%s.jpg',
+            $tempId,
+            $match['media_site_id']
         );
     }
 
-    protected function tagSaveProcess(\XenBulletins\VideoPages\Entity\Iframe $function) {
+    protected function tagSaveProcess(\XenBulletins\VideoPages\Entity\Iframe $function)
+    {
 
         $form = $this->formAction();
         $input = $this->filter([
@@ -118,17 +129,37 @@ class Iframe extends AbstractController {
             'rons' => 'UINT',
             'feature' => 'UINT',
             'rons_featured' => 'UINT',
+            'display_day' => 'UINT',
+            'for_days' => 'UINT',
         ]);
 
+        if ($input['display_day'] != 7) {
+
+            $displaydayExit = $this->finder('XenBulletins\VideoPages:Iframe')->where('display_day', $input['display_day']);
+
+            if ($function->iframe_id) {
+                $displaydayExit->where('iframe_id', '!=', $function->iframe_id);
+            }
+
+            $displaydayExit = $displaydayExit->fetchOne();
+
+            if ($displaydayExit && $displaydayExit->feature) {
+
+                throw $this->exception($this->error($displaydayExit->iframe_title . " Already Added on that day.....!"));
+            }
+
+            if ($displaydayExit && !$displaydayExit->feature) {
+
+
+                $displaydayExit->fastUpdate('display_day', 7);
+            }
+        }
 
 
 
-        
-        
+
         $bbCodeMediaSiteRepo = $this->repository('XF:BbCodeMediaSite');
         $sites = $bbCodeMediaSiteRepo->findActiveMediaSites()->fetch();
-
-
 
         $allowed = ['youtube', 'vimeo', 'facebook'];
 
@@ -138,23 +169,49 @@ class Iframe extends AbstractController {
             }
         }
 
-//        var_dump($sites);exit;
+
 
         $match = $bbCodeMediaSiteRepo->urlMatchesMediaSiteList($input['iframe_URL'], $sites);
 
-        
-        $embedDataHandler = $this->createEmbedDataHandler($match['media_site_id']);
-        $thumbnailGenerator = $this->service('XenBulletins\VideoPages:Media\ThumbnailGenerator');
-        $tempFile = $embedDataHandler->getTempThumbnailPath($input['iframe_URL'], $match['media_site_id'], $match['media_id']);
+        $thumbnail = '';
+        if ($match['media_site_id'] != 'facebook') {
+            $embedDataHandler = $this->createEmbedDataHandler($match['media_site_id']);
+            $thumbnailGenerator = $this->service('XenBulletins\VideoPages:Media\ThumbnailGenerator');
+            $tempFile = $embedDataHandler->getTempThumbnailPath($input['iframe_URL'], $match['media_site_id'], $match['media_id']);
 
-        $abstractedThumbnailPath = $this->getAbstractedTempThumbnailPathProof($match);
-//var_dump($abstractedThumbnailPath);exit;
-        $thumbnailGenerator->getTempThumbnailFromImage($tempFile, $abstractedThumbnailPath);
+            $abstractedThumbnailPath = $this->getAbstractedTempThumbnailPathProof($match);
 
-        $thumbnail = $match['media_id'] . "-" . $match['media_site_id'] . ".jpg";
+            $thumbnailGenerator->getTempThumbnailFromImage($tempFile, $abstractedThumbnailPath);
+
+            $thumbnail = $match['media_id'] . "-" . $match['media_site_id'] . ".jpg";
+        } else {
+            //upload thumbnail for facebook
+
+            $time = time();
+
+            $abstractpath = sprintf('data://facebook/%d.jpg', $time);
+
+            $thumbnail = sprintf('https://whatsbestforum.com/data/facebook/%d.jpg', $time);
+
+            $fbthumb = $this->request->getFile('video_thumbnail', false, false);
+            $imageManager = \XF::app()->imageManager();
+            $image = $imageManager->imageFromFile($fbthumb->getTempFile());
+
+            $newTempFile = \XF\Util\File::getTempFile();
+            if ($newTempFile && $image->save($newTempFile, null, 95)) {
+                $outputFiles['o'] = $newTempFile;
+                $baseFile = $newTempFile;
+                $width = $image->getWidth();
+                $height = $image->getHeight();
+            }
+
+            foreach ($outputFiles as $code => $file) {
+
+                \XF\Util\File::copyFileToAbstractedPath($file, $abstractpath);
+            }
+        }
 
 
-       
 
 
 
@@ -163,9 +220,9 @@ class Iframe extends AbstractController {
             $video_id = explode("?v=", $link); // For videos like http://www.youtube.com/watch?v=...
             if (empty($video_id[1]))
                 $video_id = explode("/v/", $link); // For videos like http://www.youtube.com/watch/v/..
-//      if (empty($video_id[1]))
-//      $video_id = explode("/embed/", $link);
-            $provider="youtube";
+            //      if (empty($video_id[1]))
+            //      $video_id = explode("/embed/", $link);
+            $provider = "youtube";
             $video_id = explode("&", $video_id[1]); // Deleting any other params
             $video_id = $video_id[0];
             $feature = "https://www.youtube.com/embed/" . $video_id;
@@ -174,10 +231,10 @@ class Iframe extends AbstractController {
 
 
             $iframe_URL = "http://www.youtube.com/watch?v=" . $video_id;
-        }elseif (preg_match('~^https?:\/\/www\.facebook\.com.*\/(video(s)?|watch|story)(\.php?|\/).+$~', $input['iframe_URL'])) {
+        } elseif (preg_match('~^https?:\/\/www\.facebook\.com.*\/(video(s)?|watch|story)(\.php?|\/).+$~', $input['iframe_URL'])) {
 
             if (preg_match("~(?:t\.\d+/)?(\d+)~i", $input['iframe_URL'], $matches)) {
-                $provider="facebook";
+                $provider = "facebook";
                 $video_id = $matches[1];
                 $iframe_URL = $input['iframe_URL'];
                 $feature = "https://www.facebook.com/video/embed?video_id=$video_id";
@@ -186,14 +243,14 @@ class Iframe extends AbstractController {
 
             $link = $input['iframe_URL'];
             $video_id = explode("com/", $link); // For videos like http://www.youtube.com/watch?v=...
-//     if (empty($video_id[1]))
-//     $video_id = explode("/video/", $link); // For videos like http://www.youtube.com/watch/v/..
-//        
-                 $provider="vimeo";
+            //     if (empty($video_id[1]))
+            //     $video_id = explode("/video/", $link); // For videos like http://www.youtube.com/watch/v/..
+            //        
+            $provider = "vimeo";
             $video_id = explode("&", $video_id[1]); // Deleting any other params
 
             $video_id = $video_id[0];
-          //  $thumbnail = $this->getVimeoVideoThumbnailByVideoId($video_id, 'medium');
+            //  $thumbnail = $this->getVimeoVideoThumbnailByVideoId($video_id, 'medium');
             $iframe_URL = 'https://player.vimeo.com/' . $video_id;
             $feature = 'https://player.vimeo.com/video/' . $video_id;
         }
@@ -204,14 +261,13 @@ class Iframe extends AbstractController {
             throw $this->exception($this->error(\XF::phrase('select one from Brand Link or Rons Interview  ')));
         }
 
-        
-        if(($input['rons_featured'] or $input['feature']) and $provider=="facebook")
-        {
-             throw $this->exception($this->error(\XF::phrase('facebook video can not be added as feature video')));
+
+        if (($input['rons_featured'] or $input['feature']) and $provider == "facebook") {
+            throw $this->exception($this->error(\XF::phrase('facebook video can not be added as feature video')));
         }
-        
-        
-        
+
+
+
         $input['iframe_URL'] = $iframe_URL;
         $function->iframe_title = $input['iframe_title'];
         $function->iframe_URL = $input['iframe_URL'];
@@ -221,17 +277,19 @@ class Iframe extends AbstractController {
         $function->feature = $input['feature'];
         $function->provider = $provider;
         $function->rons_featured = $input['rons_featured'];
+        $function->for_days = $input['for_days'] ?? 1;
         $function->thumbNail = $thumbnail;
         $function->feature_embed = $feature;
         $iframe_URL = $function->iframe_URL;
 
-//        var_dump($iframe_id);exit;s
+        //        var_dump($iframe_id);exit;s
 
         $form->basicEntitySave($function, $input);
         return $form;
     }
 
-    function getVimeoVideoThumbnailByVideoId($id = '', $thumbType = 'medium') {
+    function getVimeoVideoThumbnailByVideoId($id = '', $thumbType = 'medium')
+    {
 
         $id = trim($id);
 
@@ -263,7 +321,8 @@ class Iframe extends AbstractController {
     }
 
     /////////////////////////////***Edit Function***//////////////////////
-    public function functionAddEdit($site) {
+    public function functionAddEdit($site)
+    {
         $sql = "SELECT * FROM `xf_videopages` ORDER BY `video_link` ASC ";
         $db = \XF::db();
         $iframeSites = $db->query($sql)->fetchAll();
@@ -275,18 +334,21 @@ class Iframe extends AbstractController {
         return $this->view('XenBulletins\VideoPages:Iframe\Edit', 'iframe_edit', $viewParams);
     }
 
-    public function actionEdit(ParameterBag $params) {
+    public function actionEdit(ParameterBag $params)
+    {
         $site = $this->assertFunctionExists($params->iframe_id);
 
         return $this->functionAddEdit($site);
     }
 
-    protected function assertFunctionExists($id, $with = null, $phraseKey = null) {
+    protected function assertFunctionExists($id, $with = null, $phraseKey = null)
+    {
         return $this->assertRecordExists('XenBulletins\VideoPages:Iframe', $id, $with, $phraseKey);
     }
 
-//*******************Delete Function**************************************************
-    public function actionDelete(ParameterBag $params) {
+    //*******************Delete Function**************************************************
+    public function actionDelete(ParameterBag $params)
+    {
 
         $site = $this->assertFunctionExists($params->iframe_id);
 
@@ -294,8 +356,11 @@ class Iframe extends AbstractController {
         $plugin = $this->plugin('XF:Delete');
 
         return $plugin->actionDelete(
-                        $site, $this->buildLink('iframe/delete', $site), $this->buildLink('iframe/edit', $site), $this->buildLink('iframe'), $site->iframe_title
+            $site,
+            $this->buildLink('iframe/delete', $site),
+            $this->buildLink('iframe/edit', $site),
+            $this->buildLink('iframe'),
+            $site->iframe_title
         );
     }
-
 }

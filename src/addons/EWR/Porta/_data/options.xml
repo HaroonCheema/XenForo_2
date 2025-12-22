@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<options>
+  <option option_id="EWRporta_article_format" edit_format="template" data_type="array" advanced="0">
+    <default_value>{"article":"1","comments":"1","author":"1","attach":false}</default_value>
+    <edit_format_params>option_template_EWRporta_article_format</edit_format_params>
+    <sub_options>article
+comments
+author
+attach
+*</sub_options>
+    <relation group_id="EWRporta" display_order="3001"/>
+  </option>
+  <option option_id="EWRporta_article_forums" edit_format="callback" data_type="array" advanced="0">
+    <default_value>["0"]</default_value>
+    <edit_format_params>XF\Option\Forum::renderSelectMultiple</edit_format_params>
+    <sub_options>*</sub_options>
+    <relation group_id="EWRporta" display_order="3003"/>
+  </option>
+  <option option_id="EWRporta_articles_permission" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="EWRporta" display_order="1006"/>
+  </option>
+  <option option_id="EWRporta_articles_perpage" edit_format="spinbox" data_type="unsigned_integer" advanced="0">
+    <default_value>20</default_value>
+    <edit_format_params>min=1</edit_format_params>
+    <relation group_id="EWRporta" display_order="1001"/>
+  </option>
+  <option option_id="EWRporta_articles_prefill" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>0</default_value>
+    <relation group_id="EWRporta" display_order="1003"/>
+  </option>
+  <option option_id="EWRporta_articles_stripbb" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>0</default_value>
+    <relation group_id="EWRporta" display_order="1005"/>
+  </option>
+  <option option_id="EWRporta_articles_stripnl" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>0</default_value>
+    <relation group_id="EWRporta" display_order="1004"/>
+  </option>
+  <option option_id="EWRporta_articles_trim" edit_format="spinbox" data_type="unsigned_integer" advanced="0">
+    <default_value>1000</default_value>
+    <edit_format_params>min=0
+step=50</edit_format_params>
+    <relation group_id="EWRporta" display_order="1002"/>
+  </option>
+  <option option_id="EWRporta_feature_dimensions" edit_format="template" data_type="array" advanced="0">
+    <default_value>{"width":"1200","height":"400"}</default_value>
+    <edit_format_params>option_template_attachmentMaxDimensions</edit_format_params>
+    <sub_options>width
+height</sub_options>
+    <relation group_id="EWRporta" display_order="4001"/>
+  </option>
+  <option option_id="EWRporta_header" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="EWRporta" display_order="2"/>
+  </option>
+  <option option_id="EWRporta_icon_external" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>0</default_value>
+    <relation group_id="EWRporta" display_order="2001"/>
+  </option>
+  <option option_id="EWRporta_metadesc" edit_format="textbox" data_type="string" advanced="0">
+    <default_value></default_value>
+    <relation group_id="EWRporta" display_order="4"/>
+  </option>
+  <option option_id="EWRporta_navtab" edit_format="onoff" data_type="boolean" advanced="0">
+    <default_value>1</default_value>
+    <relation group_id="EWRporta" display_order="1"/>
+  </option>
+  <option option_id="EWRporta_title" edit_format="textbox" data_type="string" advanced="0">
+    <default_value></default_value>
+    <relation group_id="EWRporta" display_order="3"/>
+  </option>
+</options>

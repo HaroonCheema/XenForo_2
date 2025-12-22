@@ -1,0 +1,1 @@
+If checked then color only apply on forum title otherwise on all.

@@ -223,6 +223,12 @@ return array(
 		$__templater->modifySidebarHtml('_xfWidgetPositionSidebarb0eaf214bfd96ea7ecb2b4bcfd224b64', $__templater->widgetPosition('forum_list_sidebar', array()), 'replace');
 		$__finalCompiled .= '
 
+';
+		$__templater->includeCss('EWRporta.less');
+		$__finalCompiled .= '
+<div class="porta-forumlist-above-split porta-widgets-split">
+	' . $__templater->widgetPosition('ewr_porta_forumlist_above_split', array()) . '
+</div>
 ' . $__templater->widgetPosition('forum_list_above_nodes', array()) . '
 ' . ($__vars['xf']['addonFlareForumStatsForumStatRepo'] ? $__templater->filter($__templater->method($__vars['xf']['addonFlareForumStatsForumStatRepo'], 'renderForumStats', array('forum_list_above_nodes', )), array(array('raw', array()),), true) : null) . '
 ' . $__templater->callMacro('xgt_FrmIstatistik_konumlar_macros', 'xgt_istatistik_konum', array(
@@ -241,6 +247,9 @@ return array(
 			'position' => '!',
 		), $__vars) . '
 ' . $__templater->widgetPosition('forum_list_below_nodes', array()) . '
+<div class="porta-forumlist-below-split porta-widgets-split">
+	' . $__templater->widgetPosition('ewr_porta_forumlist_below_split', array()) . '
+</div>
 
 ';
 		$__templater->setPageParam('head.' . 'rss_forum', $__templater->preEscaped('<link rel="alternate" type="application/rss+xml" title="' . $__templater->filter('RSS feed for ' . $__vars['xf']['options']['boardTitle'] . '', array(array('for_attr', array()),), true) . '" href="' . $__templater->func('link', array('forums/index.rss', '-', ), true) . '" />'));

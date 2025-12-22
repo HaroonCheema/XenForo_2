@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="admin" template="add_iframevalues" modification_key="fs_add_iframevalues_add_more_day_field" description="fs_add_iframevalues_add_more_day_field" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<xf:selectrow name="display_day" value="{\$data\.display_day}" label="{{ phrase\('Display Day'\) }}".*?<\/xf:selectrow>/is]]></find>
+    <replace><![CDATA[$0
+
+<xf:numberboxrow name="for_days" value="{$data.for_days}" min="1" max="7" step="1"
+							 label="{{ phrase('xb_for_days') }}"
+							 explain="{{ phrase('xb_for_days_explain') }}" />]]></replace>
+  </modification>
+  <modification type="admin" template="iframe" modification_key="fs_iframe_selected_days" description="fs_iframe_selected_days" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<xf:if is="{\$function\.display_day} == 0">.*?<\/xf:if>/is]]></find>
+    <replace><![CDATA[{{$function.getDaysFrom()}}]]></replace>
+  </modification>
+  <modification type="admin" template="iframe_edit" modification_key="fs_iframe_edit_add_more_day_field" description="fs_iframe_edit_add_more_day_field" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<xf:selectrow name="display_day" value="{\$data\.display_day}" label="{{ phrase\('Display Day'\) }}".*?<\/xf:selectrow>/is]]></find>
+    <replace><![CDATA[$0
+
+<xf:numberboxrow name="for_days" value="{$data.for_days}" min="1" max="7" step="1"
+							 label="{{ phrase('xb_for_days') }}"
+							 explain="{{ phrase('xb_for_days_explain') }}" />]]></replace>
+  </modification>
+</template_modifications>

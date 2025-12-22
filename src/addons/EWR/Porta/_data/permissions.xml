@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<permissions>
+  <permission permission_group_id="EWRporta" permission_id="modArticles" permission_type="flag" interface_group_id="EWRporta" display_order="8"/>
+  <permission permission_group_id="EWRporta" permission_id="modFeatures" permission_type="flag" interface_group_id="EWRporta" display_order="9"/>
+  <permission permission_group_id="EWRporta" permission_id="submitArticles" permission_type="flag" interface_group_id="EWRporta" display_order="6"/>
+  <permission permission_group_id="EWRporta" permission_id="submitFeatures" permission_type="flag" interface_group_id="EWRporta" display_order="7"/>
+</permissions>

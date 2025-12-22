@@ -1,5 +1,7 @@
 <?php
 return array (
+  'style_prop_group.EWRporta' => '[8WR] XenPorta 2 (Portal) PRO',
+  'style_prop_group.EWRporta_feature' => '[8WR] XenPorta 2 (Portal) PRO > Feature Slider',
   'style_prop_group.FTSlider_style_options' => '[XTR] Featured Threads Slider',
   'style_prop_group.afPaidRegistrations' => '[AddonFlare] Paid Registrations',
   'style_prop_group.af_forumstats' => '[AddonFlare] AJAX Advanced Forum Stats',
@@ -45,7 +47,6 @@ return array (
   'style_prop_group.snog_movies' => '[OzzModz] TMDb Movie Thread Starter',
   'style_prop_group.snog_tv' => '[OzzModz] TMDb TV Thread Starter',
   'style_prop_group.tab' => 'Tabs',
-  'style_prop_group.thmonetizeUserUpgrades' => '[TH] Monetize: User upgrades',
   'style_prop_group.thuserimprovements_trophies' => '[TH] User Improvements: Trophies',
   'style_prop_group.tooltip' => 'Tooltips',
   'style_prop_group.xaScAppearance' => 'Showcase: Appearance',

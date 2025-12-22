@@ -4,6 +4,7 @@ return array (
   'option_group_description.BSRealTimeChatOptions' => '',
   'option_group_description.CMTV_Math' => 'How and where to render math on your forum.',
   'option_group_description.DC_LinkProxy' => '',
+  'option_group_description.EWRporta' => 'Add-on from 8WAYRUN.',
   'option_group_description.FTSlider_Options' => 'Featured Threads Slider Options',
   'option_group_description.Fs_NodeIcon' => '',
   'option_group_description.TvThreads' => 'Options for the TMDb TV thread starter add-on',
@@ -86,6 +87,7 @@ You may set a user into \'discouraged\' mode by editing their user profile, or d
   'option_group_description.fs_thread_thumbnail' => '',
   'option_group_description.fs_tractor_by_net_api' => '',
   'option_group_description.fs_translator' => '[FS] Translator',
+  'option_group_description.fs_validate_email' => '',
   'option_group_description.fs_watch_email_alerts' => '',
   'option_group_description.fs_web_ranking' => '',
   'option_group_description.fs_welcome_banner' => '',
@@ -102,7 +104,6 @@ You may set a user into \'discouraged\' mode by editing their user profile, or d
   'option_group_description.newsfeed' => 'The news feed, or activity stream is a constantly-updated log of things that your registered members do, which can be viewed back by other visitors.<br />
 <br />
 It is possible to filter the news feed down to just users you follow, or a single user.',
-  'option_group_description.nfGiftUpgrades' => 'Options that control the Gift Upgrade add-on.',
   'option_group_description.nf_joomla_bdrige' => 'Joomla Bridge Options',
   'option_group_description.nick97traktIntegration' => 'Options for the Trakt Movies and TV Show',
   'option_group_description.nodeList' => 'The node and forum list is the primary navigational structure for XenForo\'s forums and pages.',

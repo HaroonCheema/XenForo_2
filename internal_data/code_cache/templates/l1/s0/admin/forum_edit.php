@@ -336,6 +336,15 @@ return array(
 	), array(
 		'label' => 'Section background color',
 	)) . '
+' . $__templater->formCheckBoxRow(array(
+	), array(array(
+		'name' => 'node[only_title]',
+		'selected' => $__vars['node']['only_title'],
+		'label' => 'Only forum title',
+		'hint' => 'If checked then color only apply on forum title otherwise on all.',
+		'_type' => 'option',
+	)), array(
+	)) . '
 
 ' . $__compilerTemp2 . '
 

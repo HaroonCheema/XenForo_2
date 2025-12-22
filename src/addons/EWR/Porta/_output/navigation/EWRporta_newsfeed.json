@@ -1,0 +1,13 @@
+{
+    "parent_navigation_id": "EWRporta2",
+    "display_order": 2,
+    "navigation_type_id": "basic",
+    "type_config": {
+        "link": "{{ link('whats-new/news-feed') }}",
+        "display_condition": "$xf.options.enableNewsFeed AND $xf.visitor.user_id",
+        "extra_attributes": {
+            "rel": "nofollow"
+        }
+    },
+    "enabled": false
+}

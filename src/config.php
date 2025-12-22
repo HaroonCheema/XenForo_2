@@ -19,6 +19,6 @@ $config['enableLivePayments'] = false;
 
 $config['debug'] = true;
 
-$config['development']['defaultAddOn'] = 'FS/ForumListBgTextClr';
+$config['development']['defaultAddOn'] = 'FS/ValidateRegEmail';
 
 $config['development']['enabled'] = true;

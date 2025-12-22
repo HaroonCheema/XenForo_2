@@ -5,5 +5,5 @@
     "enabled": true,
     "action": "str_replace",
     "find": "<dd>{$extras.message_count|number_short(1)}</dd>",
-    "replace": "<dd style=\"{{$node.txt_clr != '' ? 'color: '. {$node.txt_clr}.';' : ''}}\">{$extras.message_count|number_short(1)}</dd>"
+    "replace": "<dd style=\"{{($node.txt_clr != '' && !$node.only_title) ? 'color: '. {$node.txt_clr}.';' : ''}}\">{$extras.message_count|number_short(1)}</dd>"
 }

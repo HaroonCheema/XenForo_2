@@ -24,7 +24,8 @@ class Iframe extends Entity {
             'date' => ['type' => self::UINT, 'required' => true, 'default' => \XF::$time, ],
             'feature' => ['type' => self::UINT, 'required' => true ],
             'rons_featured' => ['type' => self::UINT],
-            'feature_embed' => ['type'=>self::STR ]
+            'feature_embed' => ['type'=>self::STR ],
+            'display_day' => ['type' => self::UINT, 'required' => true, 'default' => 7]
         ];
         $structure->getters = [];
         $structure->relations = [

@@ -17,6 +17,8 @@ return array (
   'custom_bb_code_desc.movie' => 'For formatting old XF1 TMDb movie threads',
   'custom_bb_code_desc.plot' => 'For formatting old XF1 TMDb movie threads',
   'custom_bb_code_desc.poster' => 'For formatting old XF1 TMDb movie threads',
+  'custom_bb_code_desc.prbreak' => '',
+  'custom_bb_code_desc.prebreak' => '',
   'custom_bb_code_desc.product' => 'BB code for displaying products.',
   'custom_bb_code_desc.release' => 'For formatting old XF1 TMDb movie threads',
   'custom_bb_code_desc.runtime' => 'For formatting old XF1 TMDb movie threads',

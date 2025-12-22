@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<routes>
+  <route route_type="admin" route_prefix="ewr-porta" controller="EWR\Porta:Index" context="EWRporta"/>
+  <route route_type="admin" route_prefix="ewr-porta" sub_name="articles" format="articles/:int&lt;thread_id&gt;/" controller="EWR\Porta:Article" context="EWRporta"/>
+  <route route_type="admin" route_prefix="ewr-porta" sub_name="authors" format="authors/:int&lt;user_id&gt;/" controller="EWR\Porta:Author" context="EWRporta"/>
+  <route route_type="admin" route_prefix="ewr-porta" sub_name="categories" format="categories/:int&lt;category_id&gt;/" controller="EWR\Porta:Category" context="EWRporta"/>
+  <route route_type="admin" route_prefix="ewr-porta" sub_name="features" format="features/:int&lt;thread_id&gt;/" controller="EWR\Porta:Feature" context="EWRporta"/>
+  <route route_type="public" route_prefix="ewr-porta" format=":int&lt;thread_id,title&gt;/:page" controller="EWR\Porta:Article" context="EWRporta"/>
+  <route route_type="public" route_prefix="ewr-porta" sub_name="attachments" format="attachments/:int&lt;attachment_id,filename&gt;/" controller="EWR\Porta:Attachment"/>
+  <route route_type="public" route_prefix="ewr-porta" sub_name="authors" format="authors/:int&lt;user_id,username&gt;/:page" controller="EWR\Porta:Author" context="EWRporta"/>
+  <route route_type="public" route_prefix="ewr-porta" sub_name="categories" format="categories/:int&lt;category_id,category_name&gt;/:page" controller="EWR\Porta:Category" context="EWRporta"/>
+</routes>

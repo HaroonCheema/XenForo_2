@@ -608,13 +608,19 @@ return array(
 	$__finalCompiled .= '
 
 		';
-	if ($__vars['post']['attach_count'] AND $__vars['xf']['visitor']['user_id']) {
+	if (((!$__templater->method($__vars['post'], 'isFirstPost', array())) OR (!$__templater->method($__vars['thread'], 'isPortaArticle', array()))) OR $__templater->method($__vars['thread'], 'showPortaAttach', array())) {
 		$__finalCompiled .= '
+	';
+		if ($__vars['post']['attach_count'] AND $__vars['xf']['visitor']['user_id']) {
+			$__finalCompiled .= '
 	' . $__templater->callMacro('message_macros', 'attachments', array(
-			'attachments' => $__vars['post']['Attachments'],
-			'message' => $__vars['post'],
-			'canView' => $__templater->method($__vars['thread'], 'canViewAttachments', array()),
-		), $__vars) . '
+				'attachments' => $__vars['post']['Attachments'],
+				'message' => $__vars['post'],
+				'canView' => $__templater->method($__vars['thread'], 'canViewAttachments', array()),
+			), $__vars) . '
+';
+		}
+		$__finalCompiled .= '
 ';
 	}
 	$__finalCompiled .= '
@@ -1152,7 +1158,7 @@ return array(
 	';
 	$__templater->includeCss('message.less');
 	$__finalCompiled .= '
-	<div class="message message--deleted message--post' . ($__templater->method($__vars['post'], 'isIgnored', array()) ? ' is-ignored' : '') . ($__templater->method($__vars['post'], 'isUnread', array()) ? ' is-unread' : '') . ' js-post js-inlineModContainer"
+	<div class="message ' . ((!$__templater->method($__vars['thread'], 'showPortaComments', array())) ?: 'message--simple') . ' message--deleted message--post' . ($__templater->method($__vars['post'], 'isIgnored', array()) ? ' is-ignored' : '') . ($__templater->method($__vars['post'], 'isUnread', array()) ? ' is-unread' : '') . ' js-post js-inlineModContainer"
 		data-author="' . ($__templater->escape($__vars['post']['User']['username']) ?: $__templater->escape($__vars['post']['username'])) . '"
 		data-content="post-' . $__templater->escape($__vars['post']['post_id']) . '">
 

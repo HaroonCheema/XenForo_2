@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: adec05ca7ced18a86e5a05068a1712b0
+// FROM HASH: 41da98e4d591263193a69c453a7f25a4
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -55,8 +55,6 @@ return array(
 	$__finalCompiled .= '
 </h3>
 			
-			' . $__templater->func('dump', array($__vars['options']['term'], ), true) . '
-
 			<div class="contentRow-snippet">' . $__templater->func('bb_code_snippet', array($__vars['thread']['FirstPost']['message'], 'post', $__vars['thread']['FirstPost'], 300, ), true) . '</div>
 
 			';

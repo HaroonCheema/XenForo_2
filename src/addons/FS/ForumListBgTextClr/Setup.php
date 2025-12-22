@@ -20,6 +20,16 @@ class Setup extends AbstractSetup
 		$this->alterTable('xf_node', function (\XF\Db\Schema\Alter $table) {
 			$table->addColumn('txt_clr', 'varbinary', 50)->setDefault('');
 			$table->addColumn('bg_clr', 'varbinary', 50)->setDefault('');
+			$table->addColumn('only_title', 'tinyint', 3)->setDefault(1);
+		});
+	}
+
+	// ############################### UPGRADE ###########################
+
+	public function upgrade1000100Step1(array $stepParams)
+	{
+		$this->alterTable('xf_node', function (\XF\Db\Schema\Alter $table) {
+			$table->addColumn('only_title', 'tinyint', 3)->setDefault(1);
 		});
 	}
 
@@ -28,7 +38,7 @@ class Setup extends AbstractSetup
 	public function uninstallStep1()
 	{
 		$this->schemaManager()->alterTable('xf_node', function (\XF\Db\Schema\Alter $table) {
-			$table->dropColumns(['txt_clr', 'bg_clr']);
+			$table->dropColumns(['txt_clr', 'bg_clr', 'only_title']);
 		});
 	}
 }

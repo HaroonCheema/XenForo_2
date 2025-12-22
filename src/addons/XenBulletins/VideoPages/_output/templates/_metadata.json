@@ -1,7 +1,17 @@
 {
-    "public/brand_view.html": {
-        "version_id": 1040000,
-        "version_string": "1.4",
-        "hash": "63d5d645ae50962206a94a832d3690e6"
+    "admin/add_iframevalues.html": {
+        "version_id": 1080000,
+        "version_string": "1.8",
+        "hash": "035be984b6874737feb9bded498e5478"
+    },
+    "admin/iframe.html": {
+        "version_id": 1080000,
+        "version_string": "1.8",
+        "hash": "f64243fb21f109ef2954dfefe48b732f"
+    },
+    "admin/iframe_edit.html": {
+        "version_id": 1080000,
+        "version_string": "1.8",
+        "hash": "91ca58068dc47796369473a97b16c5e0"
     }
 }

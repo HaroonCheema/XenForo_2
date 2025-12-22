@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="EWRporta_add_author" version_id="1" version_string="0.0.0.1"><![CDATA[Add author]]></phrase>
+  <phrase title="EWRporta_articles" version_id="1" version_string="0.0.0.1"><![CDATA[Articles]]></phrase>
+  <phrase title="EWRporta_authors" version_id="1" version_string="0.0.0.1"><![CDATA[Authors]]></phrase>
+  <phrase title="EWRporta_break_text" version_id="1" version_string="0.0.0.1"><![CDATA[Break text]]></phrase>
+  <phrase title="EWRporta_byline" version_id="1" version_string="0.0.0.1"><![CDATA[Byline]]></phrase>
+  <phrase title="EWRporta_category_links" version_id="1300" version_string="1.3.0.0"><![CDATA[Category links]]></phrase>
+  <phrase title="EWRporta_click_here_to_view_article_text" version_id="2023" version_string="2.0.2.3"><![CDATA[Click here to view article text]]></phrase>
+  <phrase title="EWRporta_countdown_active_text" version_id="1" version_string="0.0.0.1"><![CDATA[Active text]]></phrase>
+  <phrase title="EWRporta_countdown_inactive_text" version_id="1" version_string="0.0.0.1"><![CDATA[Inactive text]]></phrase>
+  <phrase title="EWRporta_create_articles_from_forum" version_id="2000" version_string="2.0.0.0"><![CDATA[Automatically create articles from forum threads]]></phrase>
+  <phrase title="EWRporta_discord_server_id" version_id="1" version_string="0.0.0.1"><![CDATA[Server ID]]></phrase>
+  <phrase title="EWRporta_edit_article_promotion" version_id="1" version_string="0.0.0.1"><![CDATA[Edit article promotion]]></phrase>
+  <phrase title="EWRporta_edit_author" version_id="1" version_string="0.0.0.1"><![CDATA[Edit author]]></phrase>
+  <phrase title="EWRporta_edit_feature_promotion" version_id="1" version_string="0.0.0.1"><![CDATA[Edit feature promotion]]></phrase>
+  <phrase title="EWRporta_enable_custom_article_layout" version_id="1" version_string="0.0.0.1"><![CDATA[Enable custom article layout]]></phrase>
+  <phrase title="EWRporta_enable_simple_comments" version_id="1" version_string="0.0.0.1"><![CDATA[Enable simple comments]]></phrase>
+  <phrase title="EWRporta_excerpt" version_id="1" version_string="0.0.0.1"><![CDATA[Excerpt]]></phrase>
+  <phrase title="EWRporta_excerpt_trim" version_id="1" version_string="0.0.0.1"><![CDATA[Excerpt trim]]></phrase>
+  <phrase title="EWRporta_exclude_from_article_index" version_id="1" version_string="0.0.0.1"><![CDATA[Exclude from article index]]></phrase>
+  <phrase title="EWRporta_exclude_from_article_index_hint" version_id="1" version_string="0.0.0.1"><![CDATA[Article will only appear when viewing categories and authors.]]></phrase>
+  <phrase title="EWRporta_facebook_hide_cover" version_id="1" version_string="0.0.0.1"><![CDATA[Hide cover]]></phrase>
+  <phrase title="EWRporta_facebook_hide_cta" version_id="1" version_string="0.0.0.1"><![CDATA[Hide call-to-action]]></phrase>
+  <phrase title="EWRporta_facebook_page_url" version_id="1" version_string="0.0.0.1"><![CDATA[Page URL]]></phrase>
+  <phrase title="EWRporta_facebook_show_facepile" version_id="1" version_string="0.0.0.1"><![CDATA[Show facepile]]></phrase>
+  <phrase title="EWRporta_facebook_small_header" version_id="1" version_string="0.0.0.1"><![CDATA[Small header]]></phrase>
+  <phrase title="EWRporta_features" version_id="1" version_string="0.0.0.1"><![CDATA[Features]]></phrase>
+  <phrase title="EWRporta_features_relocate_slider" version_id="1" version_string="0.0.0.1"><![CDATA[Relocate slider]]></phrase>
+  <phrase title="EWRporta_features_relocate_slider_hint" version_id="1" version_string="0.0.0.1"><![CDATA[The slider will be detached and inserted before this element.]]></phrase>
+  <phrase title="EWRporta_features_show_on_author_pages" version_id="1" version_string="0.0.0.1"><![CDATA[Show on author pages]]></phrase>
+  <phrase title="EWRporta_features_show_on_category_pages" version_id="1" version_string="0.0.0.1"><![CDATA[Show on category pages]]></phrase>
+  <phrase title="EWRporta_features_show_on_pages_beyond_first" version_id="1" version_string="0.0.0.1"><![CDATA[Show on pages beyond the first]]></phrase>
+  <phrase title="EWRporta_features_show_pager_bullets" version_id="1" version_string="0.0.0.1"><![CDATA[Show pager bullets]]></phrase>
+  <phrase title="EWRporta_features_show_prev_next_controls" version_id="1" version_string="0.0.0.1"><![CDATA[Show prev/next controls]]></phrase>
+  <phrase title="EWRporta_features_show_progress_bar" version_id="1" version_string="0.0.0.1"><![CDATA[Show progress bar]]></phrase>
+  <phrase title="EWRporta_features_show_start_stop_controls" version_id="1" version_string="0.0.0.1"><![CDATA[Show start/stop controls]]></phrase>
+  <phrase title="EWRporta_features_transition_frequency" version_id="1" version_string="0.0.0.1"><![CDATA[Transition frequency]]></phrase>
+  <phrase title="EWRporta_features_transition_mode" version_id="1" version_string="0.0.0.1"><![CDATA[Transition mode]]></phrase>
+  <phrase title="EWRporta_features_transition_speed" version_id="1" version_string="0.0.0.1"><![CDATA[Transition speed]]></phrase>
+  <phrase title="EWRporta_format_thread_as_article" version_id="1" version_string="0.0.0.1"><![CDATA[Format thread as an article]]></phrase>
+  <phrase title="EWRporta_icon" version_id="1" version_string="0.0.0.1"><![CDATA[Icon]]></phrase>
+  <phrase title="EWRporta_load_more" version_id="1" version_string="0.0.0.1"><![CDATA[Load more]]></phrase>
+  <phrase title="EWRporta_media_hint" version_id="1" version_string="0.0.0.1"><![CDATA[Embed a YouTube video directly into the fold by adding the <b>VIDEO ID</b> here.]]></phrase>
+  <phrase title="EWRporta_pin" version_id="2104" version_string="2.1.0.4"><![CDATA[PIN]]></phrase>
+  <phrase title="EWRporta_please_confirm_that_you_want_to_delete_the_article_promotion_for" version_id="1" version_string="0.0.0.1"><![CDATA[Please confirm that you want to delete the article promotion for]]></phrase>
+  <phrase title="EWRporta_please_confirm_that_you_want_to_delete_the_feature_promotion_for" version_id="1" version_string="0.0.0.1"><![CDATA[Please confirm that you want to delete the feature promotion for]]></phrase>
+  <phrase title="EWRporta_promote_to_article" version_id="1" version_string="0.0.0.1"><![CDATA[Promote to article]]></phrase>
+  <phrase title="EWRporta_promote_to_article_hint" version_id="1300" version_string="1.3.0.0"><![CDATA[You will be redirected to the article promotion page after posting this thread]]></phrase>
+  <phrase title="EWRporta_promote_to_feature" version_id="1" version_string="0.0.0.1"><![CDATA[Promote to feature]]></phrase>
+  <phrase title="EWRporta_show_attach_gallery" version_id="1" version_string="0.0.0.1"><![CDATA[Show attachment gallery]]></phrase>
+  <phrase title="EWRporta_show_author_byline" version_id="1" version_string="0.0.0.1"><![CDATA[Show author byline block]]></phrase>
+  <phrase title="EWRporta_sticky_to_article_index" version_id="1" version_string="0.0.0.1"><![CDATA[Sticky to article index]]></phrase>
+  <phrase title="EWRporta_twitter_hide_background" version_id="1" version_string="0.0.0.1"><![CDATA[Hide background]]></phrase>
+  <phrase title="EWRporta_twitter_hide_borders" version_id="1" version_string="0.0.0.1"><![CDATA[Hide borders]]></phrase>
+  <phrase title="EWRporta_twitter_hide_footer" version_id="1" version_string="0.0.0.1"><![CDATA[Hide footer]]></phrase>
+  <phrase title="EWRporta_twitter_hide_header" version_id="1" version_string="0.0.0.1"><![CDATA[Hide header]]></phrase>
+  <phrase title="EWRporta_twitter_hide_scrollbar" version_id="1" version_string="0.0.0.1"><![CDATA[Hide scrollbar]]></phrase>
+  <phrase title="EWRporta_twitter_related_users" version_id="1" version_string="0.0.0.1"><![CDATA[Related users]]></phrase>
+  <phrase title="EWRporta_twitter_search_text" version_id="1" version_string="0.0.0.1"><![CDATA[Search text]]></phrase>
+  <phrase title="EWRporta_twitter_widget_id" version_id="1" version_string="0.0.0.1"><![CDATA[Widget ID]]></phrase>
+  <phrase title="EWRporta_use_custom_title_and_excerpt" version_id="1" version_string="0.0.0.1"><![CDATA[Use custom title and excerpt]]></phrase>
+  <phrase title="EWRporta_viewing_article_author" version_id="2012" version_string="2.0.1.2"><![CDATA[Viewing article author]]></phrase>
+  <phrase title="EWRporta_viewing_article_category" version_id="2012" version_string="2.0.1.2"><![CDATA[Viewing article category]]></phrase>
+  <phrase title="EWRporta_viewing_the_article_index" version_id="2012" version_string="2.0.1.2"><![CDATA[Viewing the article index]]></phrase>
+  <phrase title="admin_navigation.EWRporta" version_id="1" version_string="0.0.0.1"><![CDATA[[8WR] XenPorta 2 (Portal) PRO]]></phrase>
+  <phrase title="admin_permission.EWRporta" version_id="1" version_string="0.0.0.1"><![CDATA[[8WR] XenPorta 2 > Manage Portal]]></phrase>
+  <phrase title="custom_bb_code_desc.prbreak" version_id="1" version_string="0.0.0.1"><![CDATA[]]></phrase>
+  <phrase title="custom_bb_code_desc.prebreak" version_id="1" version_string="0.0.0.1"><![CDATA[]]></phrase>
+  <phrase title="custom_bb_code_example.prbreak" version_id="1" version_string="0.0.0.1"><![CDATA[]]></phrase>
+  <phrase title="custom_bb_code_example.prebreak" version_id="1" version_string="0.0.0.1"><![CDATA[]]></phrase>
+  <phrase title="custom_bb_code_output.prbreak" version_id="1" version_string="0.0.0.1"><![CDATA[]]></phrase>
+  <phrase title="custom_bb_code_output.prebreak" version_id="1" version_string="0.0.0.1"><![CDATA[]]></phrase>
+  <phrase title="custom_bb_code_title.prbreak" version_id="1" version_string="0.0.0.1"><![CDATA[[8WR] XenPorta Prbreak]]></phrase>
+  <phrase title="custom_bb_code_title.prebreak" version_id="1" version_string="0.0.0.1"><![CDATA[[8WR] XenPorta Prebreak]]></phrase>
+  <phrase title="nav.EWRporta2" version_id="2203" version_string="2.2.0.3"><![CDATA[Home]]></phrase>
+  <phrase title="nav.EWRporta_authors" version_id="1" version_string="0.0.0.1"><![CDATA[Authors]]></phrase>
+  <phrase title="nav.EWRporta_latest" version_id="1" version_string="0.0.0.1"><![CDATA[Latest activity]]></phrase>
+  <phrase title="nav.EWRporta_newsfeed" version_id="1" version_string="0.0.0.1"><![CDATA[Your news feed]]></phrase>
+  <phrase title="nav.EWRporta_whatsnaw" version_id="1" version_string="0.0.0.1"><![CDATA[What's new]]></phrase>
+  <phrase title="option.EWRporta_article_format" version_id="1" version_string="0.0.0.1"><![CDATA[Article Format]]></phrase>
+  <phrase title="option.EWRporta_article_forums" version_id="1300" version_string="1.3.0.0"><![CDATA[Auto-promote forums]]></phrase>
+  <phrase title="option.EWRporta_articles_permission" version_id="2014" version_string="2.0.1.4"><![CDATA[Ignore thread view permissions]]></phrase>
+  <phrase title="option.EWRporta_articles_perpage" version_id="1" version_string="0.0.0.1"><![CDATA[Articles per page]]></phrase>
+  <phrase title="option.EWRporta_articles_prefill" version_id="2018" version_string="2.0.1.8"><![CDATA[Prefill excerpt text with thread content]]></phrase>
+  <phrase title="option.EWRporta_articles_stripbb" version_id="1" version_string="0.0.0.1"><![CDATA[Strip bbcode from excerpt text]]></phrase>
+  <phrase title="option.EWRporta_articles_stripnl" version_id="1" version_string="0.0.0.1"><![CDATA[Strip line breaks from excerpt text]]></phrase>
+  <phrase title="option.EWRporta_articles_trim" version_id="1" version_string="0.0.0.1"><![CDATA[Excerpt trim]]></phrase>
+  <phrase title="option.EWRporta_feature_dimensions" version_id="1" version_string="0.0.0.1"><![CDATA[Feature dimensions]]></phrase>
+  <phrase title="option.EWRporta_header" version_id="2018" version_string="2.0.1.8"><![CDATA[Enable portal header]]></phrase>
+  <phrase title="option.EWRporta_icon_external" version_id="1" version_string="0.0.0.1"><![CDATA[Enable external image icons]]></phrase>
+  <phrase title="option.EWRporta_metadesc" version_id="1" version_string="0.0.0.1"><![CDATA[Portal meta description]]></phrase>
+  <phrase title="option.EWRporta_navtab" version_id="1" version_string="0.0.0.1"><![CDATA[Enable navigation tab]]></phrase>
+  <phrase title="option.EWRporta_title" version_id="2016" version_string="2.0.1.6"><![CDATA[Portal title]]></phrase>
+  <phrase title="option_explain.EWRporta_article_format" version_id="1" version_string="0.0.0.1"><![CDATA[Layout options only apply to threads formatted as articles.]]></phrase>
+  <phrase title="option_explain.EWRporta_article_forums" version_id="1300" version_string="1.3.0.0"><![CDATA["Promote to article" will be checked on these forums when posting threads.]]></phrase>
+  <phrase title="option_explain.EWRporta_articles_permission" version_id="2014" version_string="2.0.1.4"><![CDATA[Users will see all articles on the article lists, regardless of permissions.]]></phrase>
+  <phrase title="option_explain.EWRporta_articles_perpage" version_id="1" version_string="0.0.0.1"><![CDATA[The number of articles to display per page on article lists.]]></phrase>
+  <phrase title="option_explain.EWRporta_articles_prefill" version_id="2018" version_string="2.0.1.8"><![CDATA[If disabled, thread content will be a placeholder only.]]></phrase>
+  <phrase title="option_explain.EWRporta_articles_stripbb" version_id="1" version_string="0.0.0.1"><![CDATA[Recommended to only use with "Strip line breaks" option.]]></phrase>
+  <phrase title="option_explain.EWRporta_articles_stripnl" version_id="1" version_string="0.0.0.1"><![CDATA[Text will be stripped of line breaks and appear as a paragraph.]]></phrase>
+  <phrase title="option_explain.EWRporta_articles_trim" version_id="1" version_string="0.0.0.1"><![CDATA[Excerpts will be trimmed if no [prebreak] is found. (0 to disable)]]></phrase>
+  <phrase title="option_explain.EWRporta_feature_dimensions" version_id="1" version_string="0.0.0.1"><![CDATA[Uploaded feature slider images will be resized DOWN to this maximum size.]]></phrase>
+  <phrase title="option_explain.EWRporta_header" version_id="2018" version_string="2.0.1.8"><![CDATA[]]></phrase>
+  <phrase title="option_explain.EWRporta_icon_external" version_id="1" version_string="0.0.0.1"><![CDATA[You probably don't want to use external images as your promotion icons.]]></phrase>
+  <phrase title="option_explain.EWRporta_metadesc" version_id="1" version_string="0.0.0.1"><![CDATA[Leave blank to use your XenForo board meta description.]]></phrase>
+  <phrase title="option_explain.EWRporta_navtab" version_id="1" version_string="0.0.0.1"><![CDATA[]]></phrase>
+  <phrase title="option_explain.EWRporta_title" version_id="2016" version_string="2.0.1.6"><![CDATA[Leave blank to use your XenForo board title.]]></phrase>
+  <phrase title="option_group.EWRporta" version_id="1" version_string="0.0.0.1"><![CDATA[[8WR] XenPorta 2 (Portal) PRO]]></phrase>
+  <phrase title="option_group_description.EWRporta" version_id="1300" version_string="1.3.0.0"><![CDATA[Add-on from 8WAYRUN.]]></phrase>
+  <phrase title="permission.EWRporta_modArticles" version_id="1" version_string="0.0.0.1"><![CDATA[Moderate article promotions]]></phrase>
+  <phrase title="permission.EWRporta_modFeatures" version_id="1" version_string="0.0.0.1"><![CDATA[Moderate feature promotions]]></phrase>
+  <phrase title="permission.EWRporta_submitArticles" version_id="1" version_string="0.0.0.1"><![CDATA[Submit article promotions]]></phrase>
+  <phrase title="permission.EWRporta_submitFeatures" version_id="1" version_string="0.0.0.1"><![CDATA[Submit feature promotions]]></phrase>
+  <phrase title="permission_interface.EWRporta" version_id="1" version_string="0.0.0.1"><![CDATA[[8WR] XenPorta 2 (Portal) PRO]]></phrase>
+  <phrase title="style_prop.EWRporta_dateblock" version_id="1" version_string="0.0.0.1"><![CDATA[Enable offset date block]]></phrase>
+  <phrase title="style_prop.EWRporta_dateblock_margin" version_id="1" version_string="0.0.0.1"><![CDATA[Date block margin]]></phrase>
+  <phrase title="style_prop.EWRporta_feature_height" version_id="1" version_string="0.0.0.1"><![CDATA[Slider height]]></phrase>
+  <phrase title="style_prop.EWRporta_feature_media_margin" version_id="1" version_string="0.0.0.1"><![CDATA[Media width (margin)]]></phrase>
+  <phrase title="style_prop.EWRporta_feature_media_medium" version_id="1" version_string="0.0.0.1"><![CDATA[Media width (medium)]]></phrase>
+  <phrase title="style_prop.EWRporta_feature_media_narrow" version_id="1" version_string="0.0.0.1"><![CDATA[Media width (narrow)]]></phrase>
+  <phrase title="style_prop.EWRporta_feature_media_wide" version_id="1" version_string="0.0.0.1"><![CDATA[Media width (wide)]]></phrase>
+  <phrase title="style_prop.EWRporta_feature_media_width" version_id="1" version_string="0.0.0.1"><![CDATA[Media width]]></phrase>
+  <phrase title="style_prop.EWRporta_feature_medium" version_id="1" version_string="0.0.0.1"><![CDATA[Slider height (medium)]]></phrase>
+  <phrase title="style_prop.EWRporta_feature_narrow" version_id="1" version_string="0.0.0.1"><![CDATA[Slider height (narrow)]]></phrase>
+  <phrase title="style_prop.EWRporta_feature_wide" version_id="1" version_string="0.0.0.1"><![CDATA[Slider height (wide)]]></phrase>
+  <phrase title="style_prop.EWRporta_header" version_id="1" version_string="0.0.0.1"><![CDATA[Enable article headers]]></phrase>
+  <phrase title="style_prop.EWRporta_header_height" version_id="1" version_string="0.0.0.1"><![CDATA[Article header height]]></phrase>
+  <phrase title="style_prop.EWRporta_header_linked" version_id="2022" version_string="2.0.2.2"><![CDATA[Article headers ignore modals]]></phrase>
+  <phrase title="style_prop.EWRporta_header_title" version_id="1" version_string="0.0.0.1"><![CDATA[Article Icon Header Title]]></phrase>
+  <phrase title="style_prop.EWRporta_infinite" version_id="1" version_string="0.0.0.1"><![CDATA[Enable infinite scrolling]]></phrase>
+  <phrase title="style_prop.EWRporta_infinite_after" version_id="1" version_string="0.0.0.1"><![CDATA[After X pages]]></phrase>
+  <phrase title="style_prop.EWRporta_infinite_click" version_id="1" version_string="0.0.0.1"><![CDATA[Require click to load]]></phrase>
+  <phrase title="style_prop.EWRporta_infinite_history" version_id="2013" version_string="2.0.1.3"><![CDATA[Append page numbers while scrolling]]></phrase>
+  <phrase title="style_prop.EWRporta_masonry" version_id="1" version_string="0.0.0.1"><![CDATA[Enable masonry grid]]></phrase>
+  <phrase title="style_prop.EWRporta_masonry_columns" version_id="1" version_string="0.0.0.1"><![CDATA[Masonry columns]]></phrase>
+  <phrase title="style_prop.EWRporta_masonry_medium" version_id="1" version_string="0.0.0.1"><![CDATA[Masonry columns (medium)]]></phrase>
+  <phrase title="style_prop.EWRporta_masonry_wide" version_id="1" version_string="0.0.0.1"><![CDATA[Masonry columns (wide)]]></phrase>
+  <phrase title="style_prop_desc.EWRporta_dateblock" version_id="1" version_string="0.0.0.1"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.EWRporta_dateblock_margin" version_id="1" version_string="0.0.0.1"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.EWRporta_feature_height" version_id="1" version_string="0.0.0.1"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.EWRporta_feature_media_margin" version_id="1" version_string="0.0.0.1"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.EWRporta_feature_media_medium" version_id="1" version_string="0.0.0.1"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.EWRporta_feature_media_narrow" version_id="1" version_string="0.0.0.1"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.EWRporta_feature_media_wide" version_id="1" version_string="0.0.0.1"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.EWRporta_feature_media_width" version_id="1" version_string="0.0.0.1"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.EWRporta_feature_medium" version_id="1" version_string="0.0.0.1"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.EWRporta_feature_narrow" version_id="1" version_string="0.0.0.1"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.EWRporta_feature_wide" version_id="1" version_string="0.0.0.1"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.EWRporta_header" version_id="1" version_string="0.0.0.1"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.EWRporta_header_height" version_id="1" version_string="0.0.0.1"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.EWRporta_header_linked" version_id="2022" version_string="2.0.2.2"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.EWRporta_header_title" version_id="1" version_string="0.0.0.1"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.EWRporta_infinite" version_id="1" version_string="0.0.0.1"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.EWRporta_infinite_after" version_id="1" version_string="0.0.0.1"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.EWRporta_infinite_click" version_id="1" version_string="0.0.0.1"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.EWRporta_infinite_history" version_id="2013" version_string="2.0.1.3"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.EWRporta_masonry" version_id="1" version_string="0.0.0.1"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.EWRporta_masonry_columns" version_id="1" version_string="0.0.0.1"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.EWRporta_masonry_medium" version_id="1" version_string="0.0.0.1"><![CDATA[]]></phrase>
+  <phrase title="style_prop_desc.EWRporta_masonry_wide" version_id="1" version_string="0.0.0.1"><![CDATA[]]></phrase>
+  <phrase title="style_prop_group.EWRporta" version_id="1" version_string="0.0.0.1"><![CDATA[[8WR] XenPorta 2 (Portal) PRO]]></phrase>
+  <phrase title="style_prop_group.EWRporta_feature" version_id="1" version_string="0.0.0.1"><![CDATA[[8WR] XenPorta 2 (Portal) PRO > Feature Slider]]></phrase>
+  <phrase title="style_prop_group_desc.EWRporta" version_id="2000" version_string="2.0.0.0"><![CDATA[Add-on from 8WAYRUN.]]></phrase>
+  <phrase title="style_prop_group_desc.EWRporta_feature" version_id="2000" version_string="2.0.0.0"><![CDATA[Add-on from 8WAYRUN.]]></phrase>
+  <phrase title="widget_def.EWRporta_articles" version_id="1" version_string="0.0.0.1"><![CDATA[XenPorta > Articles]]></phrase>
+  <phrase title="widget_def.EWRporta_categories" version_id="2016" version_string="2.0.1.6"><![CDATA[XenPorta > Categories]]></phrase>
+  <phrase title="widget_def.EWRporta_countdown" version_id="1" version_string="0.0.0.1"><![CDATA[XenPorta > Countdown]]></phrase>
+  <phrase title="widget_def.EWRporta_discord" version_id="1" version_string="0.0.0.1"><![CDATA[XenPorta > Discord]]></phrase>
+  <phrase title="widget_def.EWRporta_facebook" version_id="1" version_string="0.0.0.1"><![CDATA[XenPorta > Facebook]]></phrase>
+  <phrase title="widget_def.EWRporta_features" version_id="1" version_string="0.0.0.1"><![CDATA[XenPorta > Features]]></phrase>
+  <phrase title="widget_def.EWRporta_twitter" version_id="1" version_string="0.0.0.1"><![CDATA[XenPorta > Twitter]]></phrase>
+  <phrase title="widget_def_desc.EWRporta_articles" version_id="1" version_string="0.0.0.1"><![CDATA[Displays a list of articles (no pager).]]></phrase>
+  <phrase title="widget_def_desc.EWRporta_categories" version_id="2016" version_string="2.0.1.6"><![CDATA[Displays the list of categories.]]></phrase>
+  <phrase title="widget_def_desc.EWRporta_countdown" version_id="1" version_string="0.0.0.1"><![CDATA[Displays a countdown clock.]]></phrase>
+  <phrase title="widget_def_desc.EWRporta_discord" version_id="1" version_string="0.0.0.1"><![CDATA[Displays an official Discord widget.]]></phrase>
+  <phrase title="widget_def_desc.EWRporta_facebook" version_id="1" version_string="0.0.0.1"><![CDATA[Displays a Facebook page widget.]]></phrase>
+  <phrase title="widget_def_desc.EWRporta_features" version_id="1" version_string="0.0.0.1"><![CDATA[Displays the feature slider.]]></phrase>
+  <phrase title="widget_def_desc.EWRporta_twitter" version_id="1" version_string="0.0.0.1"><![CDATA[Displays a Twitter search widget.]]></phrase>
+  <phrase title="widget_pos.ewr_porta_article_sidebar" version_id="1" version_string="0.0.0.1"><![CDATA[XenPorta > Article view: Sidebar]]></phrase>
+  <phrase title="widget_pos.ewr_porta_articles_above_full" version_id="1" version_string="0.0.0.1"><![CDATA[XenPorta > Articles list: Above (full)]]></phrase>
+  <phrase title="widget_pos.ewr_porta_articles_above_split" version_id="1" version_string="0.0.0.1"><![CDATA[XenPorta > Articles list: Above (split)]]></phrase>
+  <phrase title="widget_pos.ewr_porta_articles_after_article" version_id="2020" version_string="2.0.2.0"><![CDATA[XenPorta > Articles list: After article]]></phrase>
+  <phrase title="widget_pos.ewr_porta_articles_below_full" version_id="1" version_string="0.0.0.1"><![CDATA[XenPorta > Articles list: Below (full)]]></phrase>
+  <phrase title="widget_pos.ewr_porta_articles_below_split" version_id="1" version_string="0.0.0.1"><![CDATA[XenPorta > Articles list: Below (split)]]></phrase>
+  <phrase title="widget_pos.ewr_porta_articles_sidebar" version_id="1" version_string="0.0.0.1"><![CDATA[XenPorta > Articles list: Sidebar]]></phrase>
+  <phrase title="widget_pos.ewr_porta_articles_sidenav" version_id="1" version_string="0.0.0.1"><![CDATA[XenPorta > Articles list: Sidenav]]></phrase>
+  <phrase title="widget_pos.ewr_porta_forumlist_above_split" version_id="1" version_string="0.0.0.1"><![CDATA[XenPorta > Forum list: Above (split)]]></phrase>
+  <phrase title="widget_pos.ewr_porta_forumlist_below_split" version_id="1" version_string="0.0.0.1"><![CDATA[XenPorta > Forum list: Below (split)]]></phrase>
+  <phrase title="widget_pos_desc.ewr_porta_article_sidebar" version_id="1" version_string="0.0.0.1"><![CDATA[Position in the sidebar while viewing an article. Widget templates rendered in this position can use the current entity in the <code>{$context.thread}</code> and <code>{$context.author}</code> params.]]></phrase>
+  <phrase title="widget_pos_desc.ewr_porta_articles_above_full" version_id="1" version_string="0.0.0.1"><![CDATA[Position above main content while viewing an articles list. Widget templates rendered in this position can use the current entity in the <code>{$context.author}</code> and <code>{$context.category}</code> params.]]></phrase>
+  <phrase title="widget_pos_desc.ewr_porta_articles_above_split" version_id="1" version_string="0.0.0.1"><![CDATA[Position above main content while viewing an articles list. Widget templates rendered in this position can use the current entity in the <code>{$context.author}</code> and <code>{$context.category}</code> params.]]></phrase>
+  <phrase title="widget_pos_desc.ewr_porta_articles_after_article" version_id="2020" version_string="2.0.2.0"><![CDATA[Position after an article while viewing an articles list. Widget templates rendered in this position can use the current article count in the <code>{$context.i}</code> param.]]></phrase>
+  <phrase title="widget_pos_desc.ewr_porta_articles_below_full" version_id="1" version_string="0.0.0.1"><![CDATA[Position below main content while viewing an articles list. Widget templates rendered in this position can use the current entity in the <code>{$context.author}</code> and <code>{$context.category}</code> params.]]></phrase>
+  <phrase title="widget_pos_desc.ewr_porta_articles_below_split" version_id="1" version_string="0.0.0.1"><![CDATA[Position below main content while viewing an articles list. Widget templates rendered in this position can use the current entity in the <code>{$context.author}</code> and <code>{$context.category}</code> params.]]></phrase>
+  <phrase title="widget_pos_desc.ewr_porta_articles_sidebar" version_id="1" version_string="0.0.0.1"><![CDATA[Position in the sidebar while viewing an articles list. Widget templates rendered in this position can use the current entity in the <code>{$context.author}</code> and <code>{$context.category}</code> params.]]></phrase>
+  <phrase title="widget_pos_desc.ewr_porta_articles_sidenav" version_id="1" version_string="0.0.0.1"><![CDATA[Position in the sidenav while viewing an articles list. Widget templates rendered in this position can use the current entity in the <code>{$context.author}</code> and <code>{$context.category}</code> params.]]></phrase>
+  <phrase title="widget_pos_desc.ewr_porta_forumlist_above_split" version_id="1" version_string="0.0.0.1"><![CDATA[A position inside the main content area of the forum list above the node tree.]]></phrase>
+  <phrase title="widget_pos_desc.ewr_porta_forumlist_below_split" version_id="1" version_string="0.0.0.1"><![CDATA[A position inside the main content area of the forum list below the node tree.]]></phrase>
+</phrases>

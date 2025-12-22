@@ -146,14 +146,20 @@ return array(
 		';
 	if (!$__vars['isListItem']) {
 		$__finalCompiled .= '
-			<aside class="message-articleUserInfo">
+			';
+		if (!$__templater->method($__vars['thread'], 'showPortaAuthor', array())) {
+			$__finalCompiled .= '
+	<aside class="message-articleUserInfo">
 				<div class="message-cell">
 					' . $__templater->callMacro(null, 'author_info', array(
-			'user' => $__vars['post']['User'],
-			'fallbackName' => $__vars['post']['username'],
-		), $__vars) . '
+				'user' => $__vars['post']['User'],
+				'fallbackName' => $__vars['post']['username'],
+			), $__vars) . '
 				</div>
 			</aside>
+';
+		}
+		$__finalCompiled .= '
 		';
 	}
 	$__finalCompiled .= '

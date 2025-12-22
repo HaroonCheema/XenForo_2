@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 1108ec6831a95e51a3b1983acfe56843
+// FROM HASH: 035be984b6874737feb9bded498e5478
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -50,6 +50,64 @@ return array(
 	), $__compilerTemp1, array(
 		'label' => 'Brand Title',
 		'explain' => 'Select one from Brand Title or Rons Interview ',
+	)) . '
+			
+			' . $__templater->formSelectRow(array(
+		'name' => 'display_day',
+		'value' => $__vars['data']['display_day'],
+	), array(array(
+		'value' => '7',
+		'label' => 'Unknown',
+		'_type' => 'option',
+	),
+	array(
+		'value' => '0',
+		'label' => 'Sunday',
+		'_type' => 'option',
+	),
+	array(
+		'value' => '1',
+		'label' => 'Monday',
+		'_type' => 'option',
+	),
+	array(
+		'value' => '2',
+		'label' => 'Tuesday',
+		'_type' => 'option',
+	),
+	array(
+		'value' => '3',
+		'label' => 'Wednesday',
+		'_type' => 'option',
+	),
+	array(
+		'value' => '4',
+		'label' => 'Thursday',
+		'_type' => 'option',
+	),
+	array(
+		'value' => '5',
+		'label' => 'Friday',
+		'_type' => 'option',
+	),
+	array(
+		'value' => '6',
+		'label' => 'Saturday',
+		'_type' => 'option',
+	)), array(
+		'label' => 'Display Day',
+		'explain' => 'Select which day this video should display',
+	)) . '
+
+' . $__templater->formNumberBoxRow(array(
+		'name' => 'for_days',
+		'value' => $__vars['data']['for_days'],
+		'min' => '1',
+		'max' => '7',
+		'step' => '1',
+	), array(
+		'label' => 'For days',
+		'explain' => 'From here you can set more days for the same video...!',
 	)) . '
 			
 			' . $__templater->formCheckBoxRow(array(

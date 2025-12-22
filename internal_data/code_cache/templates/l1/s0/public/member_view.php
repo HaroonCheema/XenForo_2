@@ -456,18 +456,7 @@ return array(
 ';
 		}
 		$__finalCompiled .= '
-' . '
-	';
-		if ($__vars['user']['comp_verify_key'] AND ($__vars['xf']['visitor']['is_admin'] OR $__vars['xf']['visitor']['is_moderator'])) {
-			$__finalCompiled .= '
-		<a href="' . $__templater->func('link', array('members/com-verify', $__vars['user'], ), true) . '"
-		   class="tabs-tab"
-		   id="com-verify"
-		   role="tab">' . 'Verification' . '</a>
-	';
-		}
-		$__finalCompiled .= '
-	';
+';
 		if ($__templater->method($__vars['xf']['visitor'], 'hasPermission', array('fs_thread_scoring_system', 'can_view', ))) {
 			$__finalCompiled .= '
 	<a href="' . $__templater->func('link', array('members/my-points-score', $__vars['user'], ), true) . '"
@@ -745,19 +734,6 @@ return array(
 ';
 		}
 		$__finalCompiled .= '
-' . '
-';
-		if ($__vars['user']['comp_verify_key'] AND ($__vars['xf']['visitor']['is_admin'] OR $__vars['xf']['visitor']['is_moderator'])) {
-			$__finalCompiled .= '
-
-<li data-href="' . $__templater->func('link', array('members/com-verify', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="com-verify">
-		<div class="blockMessage">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
-	</li>
-	
-';
-		}
-		$__finalCompiled .= '
-
 ';
 		if ($__templater->method($__vars['xf']['visitor'], 'hasPermission', array('fs_thread_scoring_system', 'can_view', ))) {
 			$__finalCompiled .= '

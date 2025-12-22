@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style_property_groups>
+  <style_property_group group_name="EWRporta" title="[8WR] XenPorta 2 (Portal) PRO" description="Add-on from 8WAYRUN." display_order="10000"/>
+  <style_property_group group_name="EWRporta_feature" title="[8WR] XenPorta 2 (Portal) PRO &gt; Feature Slider" description="Add-on from 8WAYRUN." display_order="10001"/>
+</style_property_groups>

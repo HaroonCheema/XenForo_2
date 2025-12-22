@@ -1573,6 +1573,11 @@ return array(
 				' . $__templater->func('copyright') . '
 				' . $__templater->callback('DBTech\\eCommerce\\Template\\Callback\\Copyright', 'getCopyrightText', '', array()) . '
 				' . '' . '
+<div class="porta-copyright">
+	<a href="https://xenforo.com/community/resources/6023/"
+		target="_blank">XenPorta 2 PRO</a> &copy; Jason Axelrod of
+	<a href="https://8wayrun.com/" target="_blank">8WAYRUN</a>
+</div>
 			';
 	if (strlen(trim($__compilerTemp19)) > 0) {
 		$__finalCompiled .= '

@@ -1,5 +1,9 @@
 <?php
 return array (
+  'permission.EWRporta_modArticles' => 'Moderate article promotions',
+  'permission.EWRporta_modFeatures' => 'Moderate feature promotions',
+  'permission.EWRporta_submitArticles' => 'Submit article promotions',
+  'permission.EWRporta_submitFeatures' => 'Submit feature promotions',
   'permission.FTSlider_permissions_FTSlider_moderate' => 'Moderate featured threads slider',
   'permission.FTSlider_permissions_FTSlider_submit' => 'Submit featured threads promotion',
   'permission.FTSlider_permissions_FTSlider_view' => 'View featured threads slider',
@@ -196,7 +200,6 @@ return array (
   'permission.forum_postThread' => 'Post new thread',
   'permission.forum_react' => 'React to posts',
   'permission.forum_scheduledPosting' => 'Create scheduled publications',
-  'permission.forum_snog_edit_episodes' => 'Can edit TV episodes',
   'permission.forum_snog_edit_shows' => 'Can edit TV shows',
   'permission.forum_stickUnstickThread' => 'Stick / unstick thread',
   'permission.forum_tagAnyThread' => 'Tag any thread',

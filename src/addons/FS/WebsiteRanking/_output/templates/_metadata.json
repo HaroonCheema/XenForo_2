@@ -1,4 +1,9 @@
 {
+    "public/fs_website_ranking_forum_list.html": {
+        "version_id": 1000300,
+        "version_string": "1.0.3 Alpha",
+        "hash": "237cebbcecc15b0265fdc7271151206b"
+    },
     "public/fs_wr_forum_post_issue.html": {
         "version_id": 1000100,
         "version_string": "1.0.1 Alpha",

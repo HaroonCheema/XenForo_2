@@ -13,6 +13,7 @@ class Node extends XFCP_Node
 
 		$structure->columns['txt_clr'] = ['type' => self::STR, 'maxLength' => 50, 'default' => ''];
 		$structure->columns['bg_clr'] = ['type' => self::STR, 'maxLength' => 50, 'default' => ''];
+		$structure->columns['only_title'] = ['type' => self::BOOL, 'default' => true];
 
 		return $structure;
 	}

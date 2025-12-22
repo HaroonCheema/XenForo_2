@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: f27107e95704e24f386c6ee51de5c9a0
+// FROM HASH: 237cebbcecc15b0265fdc7271151206b
 return array(
 'macros' => array('node_list_entry' => array(
 'arguments' => function($__templater, array $__vars) { return array(
@@ -33,7 +33,6 @@ return array(
 	';
 	} else if ($__vars['nodeTemplate']['template']) {
 		$__finalCompiled .= '
-		' . $__templater->func('dump', array('elseif', ), true) . '
 		' . $__templater->includeTemplate($__vars['nodeTemplate']['template'], $__vars) . '
 	';
 	}

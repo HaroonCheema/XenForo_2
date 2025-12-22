@@ -1,0 +1,1 @@
+You can get api key from here <a href="https://app.emaillistverify.com/api" target="_blank">Email list verify</a>.

@@ -1,0 +1,9 @@
+{
+    "template": "iframe",
+    "description": "fs_iframe_selected_days",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/<xf:if is=\"{\\$function\\.display_day} == 0\">.*?<\\/xf:if>/is",
+    "replace": "{{$function.getDaysFrom()}}"
+}

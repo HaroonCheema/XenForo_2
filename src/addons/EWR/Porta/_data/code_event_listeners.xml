@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<code_event_listeners>
+  <listener event_id="import_importer_classes" execute_order="10" callback_class="EWR\Porta\Listener\Importer" callback_method="importImporterClass" active="1"/>
+  <listener event_id="user_content_change_init" execute_order="10" callback_class="EWR\Porta\Listener\UserManagement" callback_method="userContentChangeInit" active="1"/>
+  <listener event_id="user_delete_clean_init" execute_order="10" callback_class="EWR\Porta\Listener\UserManagement" callback_method="userDeleteCleanInit" active="1"/>
+</code_event_listeners>

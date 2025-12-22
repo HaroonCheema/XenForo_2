@@ -17,6 +17,8 @@ return array (
   'custom_bb_code_title.movie' => 'TMDb movie',
   'custom_bb_code_title.plot' => 'TMDb plot',
   'custom_bb_code_title.poster' => 'TMDb poster container',
+  'custom_bb_code_title.prbreak' => '[8WR] XenPorta Prbreak',
+  'custom_bb_code_title.prebreak' => '[8WR] XenPorta Prebreak',
   'custom_bb_code_title.product' => 'Product embed',
   'custom_bb_code_title.release' => 'TMDb release date',
   'custom_bb_code_title.runtime' => 'TMDb runtime',

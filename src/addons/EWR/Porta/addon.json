@@ -1,0 +1,19 @@
+{
+    "legacy_addon_id": "EWRporta2",
+    "title": "[8WR] XenPorta 2 (Portal) PRO",
+    "description": "Portal and featured threads. Add-on from 8WAYRUN.",
+    "version_id": 2203,
+    "version_string": "2.2.0.3",
+    "dev": "Jaxel",
+    "dev_url": "https://xenforo.com/community/resources/authors/1295/",
+    "faq_url": "https://xenforo.com/community/resources/6023/field?field=faq",
+    "support_url": "https://xenforo.com/community/resources/6023/",
+    "extra_urls": [],
+    "require": {
+        "XF": [
+            2020000,
+            "XenForo 2.2.0+"
+        ]
+    },
+    "icon": "fa-newspaper"
+}

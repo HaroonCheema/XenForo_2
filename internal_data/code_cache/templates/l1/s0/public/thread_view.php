@@ -1,7 +1,13 @@
 <?php
 // FROM HASH: 3532e3622dc6b3bc36e81d1779900643
 return array(
-'extensions' => array('structured_data_extra_params' => function($__templater, array $__vars, $__extensions = null)
+'extensions' => array('ewr_porta_description' => function($__templater, array $__vars, $__extensions = null)
+{
+	$__finalCompiled = '';
+	
+	return $__finalCompiled;
+},
+'structured_data_extra_params' => function($__templater, array $__vars, $__extensions = null)
 {
 	return array();
 },
@@ -351,6 +357,11 @@ return array(
 	$__compilerTemp3 .= '
 
 ' . '
+' . $__templater->callMacro('EWRporta_article_macros', 'thread_tools', array(
+		'thread' => $__vars['thread'],
+		'article' => $__vars['article'],
+		'feature' => $__vars['feature'],
+	), $__vars) . '
 											';
 	if ($__templater->method($__vars['thread'], 'canUseInlineModeration', array())) {
 		$__compilerTemp3 .= '
@@ -804,6 +815,7 @@ return array(
 		';
 	}
 	$__templater->pageParams['pageDescription'] = $__templater->preEscaped('
+	' . $__templater->renderExtension('ewr_porta_description', $__vars, $__extensions) . '
 	<ul class="listInline listInline--bullet">
 		<li>
 			' . $__templater->fontAwesome('fa-user', array(

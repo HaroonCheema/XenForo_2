@@ -358,7 +358,13 @@ return array(
 	';
 		if ((!$__vars['xf']['visitor']['user_id']) AND (!$__templater->method($__vars['forum'], 'canCreateThreadPreReg', array()))) {
 			$__compilerTemp10 .= '
-					' . $__templater->includeTemplate('fs_add_register_form_fields', $__vars) . '
+					' . $__templater->formTextBoxRow(array(
+				'name' => '_xfUsername',
+				'data-xf-init' => 'guest-username',
+				'maxlength' => $__templater->func('max_length', array($__vars['xf']['visitor'], 'username', ), false),
+			), array(
+				'label' => 'Name',
+			)) . '
 				';
 		} else if ($__vars['xf']['visitor']['user_id']) {
 			$__compilerTemp10 .= '
@@ -378,6 +384,9 @@ return array(
 ';
 			}
 			$__compilerTemp10 .= '
+' . $__templater->callMacro('EWRporta_article_macros', 'thread_promote', array(
+				'thread' => $__vars['thread'],
+			), $__vars) . '
 				';
 		}
 		$__compilerTemp10 .= '	
