@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="public" title="fs_article_search_results" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:if is="$search.search_query">
+	<xf:title page="{$page}">{{ phrase('search_results_for_query:') }} {$search.search_query}</xf:title>
+	<xf:h1>{{ phrase('search_results_for_query:') }} <a href="{{ link('search', $search, {'searchform': '1'}) }}"><em>{$search.search_query}</em></a></xf:h1>
+<xf:else />
+	<xf:title page="{$page}">{{ phrase('search_results') }}</xf:title>
+</xf:if>
+
+<xf:css src="search_results.less" />
+
+<xf:breadcrumb href="{{ link('full:search') }}">{{ phrase('search') }}</xf:breadcrumb>
+
+<xf:head option="robots"><meta name="robots" content="noindex" /></xf:head>
+
+<xf:if is="$activeModType">
+	<xf:js src="xf/inline_mod.js" min="1" />
+</xf:if>
+
+<div class="block block--articles block--messages block--previews" data-xf-init="inline-mod" data-type="thread" data-href="{{ link('inline-mod') }}">
+	<xf:if is="$search.warnings">
+		<div class="block-outer">
+			<ol class="listPlain blockMessage blockMessage--warning blockMessage--close">
+				<xf:foreach loop="$search.warnings" value="$warning">
+					<li>{$warning}</li>
+				</xf:foreach>
+			</ol>
+		</div>
+	</xf:if>
+	<xf:if is="$modTypes">
+		<div class="block-outer">
+			<div class="block-outer-opposite">
+				<div class="buttonGroup">
+					<xf:if is="$activeModType">
+						<xf:macro template="inline_mod_macros" name="button" />
+					</xf:if>
+					<div class="buttonGroup-buttonWrapper">
+						<xf:button class="button--link menuTrigger" data-xf-click="menu" aria-expanded="false" aria-haspopup="true">{{ phrase('enable_moderation') }}</xf:button>
+						<div class="menu" data-menu="menu" aria-hidden="true">
+							<div class="menu-content">
+								<h3 class="menu-header">{{ phrase('enable_moderation') }}</h3>
+								<xf:foreach loop="$modTypes" key="$type" value="$text">
+									<a href="{{ link('search', $search, {'mod': $type,  'page': ($page > 1 ? $page : '')}) }}" class="menu-linkRow {{ $activeModType == $type ? 'is-selected' : '' }}">{$text}</a>
+								</xf:foreach>
+								<xf:if is="$activeModType">
+									<hr class="menu-separator" />
+									<a href="{{ link('search', $search, {'page': ($page > 1 ? $page : '')}) }}" class="menu-linkRow">{{ phrase('disable') }}</a>
+								</xf:if>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</xf:if>
+
+	<div class="block-container">
+		<ol class="block-body">
+			<xf:foreach loop="$results" value="$result">
+				{{ $result.render({'mod': $activeModType})|raw }}
+			</xf:foreach>
+		</ol>
+		<xf:if is="{$getOlderResultsDate}">
+			<div class="block-footer">
+				<span class="block-footer-controls"><xf:button href="{{ link('search/older', $search, {'before': $getOlderResultsDate}) }}" class="button--link">
+					{{ phrase('view_older_results') }}
+				</xf:button></span>
+			</div>
+		</xf:if>
+	</div>
+
+	<div class="block-outer block-outer--after">
+		<xf:pagenav
+			page="{$page}" perpage="{$perPage}" total="{$search.result_count}"
+			link="search" data="{$search}" params="{{ {'mod': $activeModType} }}"
+			wrapperclass="block-outer-main" />
+		<xf:showignored wrapperclass="block-outer-opposite" />
+	</div>
+</div>
+
+<xf:if is="$activeModType">
+	<xf:js src="xf/inline_mod.js" min="1" />
+</xf:if>]]></template>
+  <template type="public" title="fs_article_serach_widget" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<div class="block"{{ widget_data($widget) }}>
+	<div class="block-container">
+		<h3 class="block-minorHeader">
+			<a href="{{ link('#') }}" rel="nofollow">{{ $title ?: 'Article Search' }}</a>
+		</h3>
+		<ul class="block-body">
+			<form action="{{ link('search/article-search') }}" method="post"
+				  class="menu-content"
+				  data-xf-init="quick-search">
+
+				<!--[XF:search_menu:above_input]-->
+				<div class="menu-row">
+					<xf:if is="$searchConstraints">
+						<div class="inputGroup inputGroup--joined">
+							<xf:textbox name="keywords"
+										placeholder="{{ phrase('search...') }}"
+										aria-label="{{ phrase('search') }}"
+										data-menu-autofocus="true" />
+							<xf:select name="constraints"
+									   class="js-quickSearch-constraint"
+									   aria-label="{{ phrase('search_within') }}">
+
+								<xf:option value="">{{ phrase('everywhere') }}</xf:option>
+								<xf:foreach loop="$searchConstraints" key="$constraintName" value="$constraint">
+									<xf:option value="{$constraint|json}">{$constraintName}</xf:option>
+								</xf:foreach>
+							</xf:select>
+						</div>
+						<xf:else />
+						<xf:textbox name="keywords"
+									placeholder="{{ phrase('search...') }}"
+									aria-label="{{ phrase('search') }}"
+									data-menu-autofocus="true" />
+					</xf:if>
+				</div>
+
+				<!--[XF:search_menu:above_title_only]-->
+				<div class="menu-row">
+					<xf:checkbox standalone="true">
+						<xf:option name="c[title_only]">
+							<xf:label>
+								{{ phrase('search_titles_only') }}
+
+								<xf:if is="$xf.options.enableTagging">
+									<span tabindex="0" role="button"
+										  data-xf-init="tooltip" data-trigger="hover focus click" title="{{ phrase('tags_will_also_be_searched') }}">
+
+										<xf:fa icon="far fa-question-circle" class="u-muted u-smaller" />
+									</span>
+								</xf:if>
+							</xf:label>
+						</xf:option>
+					</xf:checkbox>
+				</div>
+				<!--[XF:search_menu:above_member]-->
+				<div class="menu-row">
+					<div class="inputGroup">
+						<span class="inputGroup-text" id="ctrl_search_menu_by_member">{{ phrase('by:') }}</span>
+						<input type="text" class="input" name="c[users]" data-xf-init="auto-complete" placeholder="{{ phrase('member')|for_attr }}" aria-labelledby="ctrl_search_menu_by_member" />
+					</div>
+				</div>
+
+				<div class="menu-row">
+					<div class="inputGroup">
+
+						<ul class="inputList">
+							<li><xf:select name="c[nodes][]" size="5" value="">
+								<xf:option value="">{{ phrase('all_forums') }}</xf:option>
+								<xf:foreach loop="$nodeTree.getFlattened(0)" value="$treeEntry">
+									<xf:option value="{$treeEntry.record.node_id}">{{ repeat('&nbsp;&nbsp;', $treeEntry.depth)|raw }} {$treeEntry.record.title}</xf:option>
+								</xf:foreach>
+								</xf:select></li>
+							<li><xf:checkbox standalone="true">
+								<xf:option name="c[child_nodes]" selected="{{ (!$input.c || $input.c.child_nodes) }}" label="{{ phrase('search_sub_forums_as_well') }}" />
+								</xf:checkbox></li>
+						</ul>
+					</div>
+				</div>
+
+				<xf:hiddenval name="search_type">post</xf:hiddenval>
+				<xf:hiddenval name="order">date</xf:hiddenval>
+
+				<div class="menu-footer">
+					<span class="menu-footer-controls">
+						<xf:button type="submit" class="button--primary" icon="search" />
+					</span>
+				</div>
+
+				<xf:csrf />
+			</form>
+		</ul>
+	</div>
+</div>]]></template>
+</templates>

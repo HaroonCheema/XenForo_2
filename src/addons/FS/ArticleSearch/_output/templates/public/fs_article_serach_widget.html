@@ -1,0 +1,93 @@
+<div class="block"{{ widget_data($widget) }}>
+	<div class="block-container">
+		<h3 class="block-minorHeader">
+			<a href="{{ link('#') }}" rel="nofollow">{{ $title ?: 'Article Search' }}</a>
+		</h3>
+		<ul class="block-body">
+			<form action="{{ link('search/article-search') }}" method="post"
+				  class="menu-content"
+				  data-xf-init="quick-search">
+
+				<!--[XF:search_menu:above_input]-->
+				<div class="menu-row">
+					<xf:if is="$searchConstraints">
+						<div class="inputGroup inputGroup--joined">
+							<xf:textbox name="keywords"
+										placeholder="{{ phrase('search...') }}"
+										aria-label="{{ phrase('search') }}"
+										data-menu-autofocus="true" />
+							<xf:select name="constraints"
+									   class="js-quickSearch-constraint"
+									   aria-label="{{ phrase('search_within') }}">
+
+								<xf:option value="">{{ phrase('everywhere') }}</xf:option>
+								<xf:foreach loop="$searchConstraints" key="$constraintName" value="$constraint">
+									<xf:option value="{$constraint|json}">{$constraintName}</xf:option>
+								</xf:foreach>
+							</xf:select>
+						</div>
+						<xf:else />
+						<xf:textbox name="keywords"
+									placeholder="{{ phrase('search...') }}"
+									aria-label="{{ phrase('search') }}"
+									data-menu-autofocus="true" />
+					</xf:if>
+				</div>
+
+				<!--[XF:search_menu:above_title_only]-->
+				<div class="menu-row">
+					<xf:checkbox standalone="true">
+						<xf:option name="c[title_only]">
+							<xf:label>
+								{{ phrase('search_titles_only') }}
+
+								<xf:if is="$xf.options.enableTagging">
+									<span tabindex="0" role="button"
+										  data-xf-init="tooltip" data-trigger="hover focus click" title="{{ phrase('tags_will_also_be_searched') }}">
+
+										<xf:fa icon="far fa-question-circle" class="u-muted u-smaller" />
+									</span>
+								</xf:if>
+							</xf:label>
+						</xf:option>
+					</xf:checkbox>
+				</div>
+				<!--[XF:search_menu:above_member]-->
+				<div class="menu-row">
+					<div class="inputGroup">
+						<span class="inputGroup-text" id="ctrl_search_menu_by_member">{{ phrase('by:') }}</span>
+						<input type="text" class="input" name="c[users]" data-xf-init="auto-complete" placeholder="{{ phrase('member')|for_attr }}" aria-labelledby="ctrl_search_menu_by_member" />
+					</div>
+				</div>
+
+				<div class="menu-row">
+					<div class="inputGroup">
+
+						<ul class="inputList">
+							<li><xf:select name="c[nodes][]" size="5" value="">
+								<xf:option value="">{{ phrase('all_forums') }}</xf:option>
+								<xf:foreach loop="$nodeTree.getFlattened(0)" value="$treeEntry">
+									<xf:option value="{$treeEntry.record.node_id}">{{ repeat('&nbsp;&nbsp;', $treeEntry.depth)|raw }} {$treeEntry.record.title}</xf:option>
+								</xf:foreach>
+								</xf:select></li>
+							<li><xf:checkbox standalone="true">
+								<xf:option name="c[child_nodes]" selected="{{ (!$input.c || $input.c.child_nodes) }}" label="{{ phrase('search_sub_forums_as_well') }}" />
+								</xf:checkbox></li>
+						</ul>
+					</div>
+				</div>
+
+				<xf:hiddenval name="search_type">post</xf:hiddenval>
+				<xf:hiddenval name="order">date</xf:hiddenval>
+
+				<div class="menu-footer">
+					<span class="menu-footer-controls">
+						<xf:button type="submit" class="button--primary" icon="search" />
+					</span>
+				</div>
+
+				<xf:csrf />
+			</form>
+		</ul>
+	</div>
+</div>

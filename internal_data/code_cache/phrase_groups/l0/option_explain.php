@@ -463,6 +463,7 @@ This option requires that the specified account is a catch-all account or suppor
   'option_explain.fsPrivateConversationQuoteMessage' => 'Select to quote the post in conversation. If unchecked, a link to the post will be used.',
   'option_explain.fsShowLanguage' => '',
   'option_explain.fsWidgetLook' => '',
+  'option_explain.fs_article_forum_id' => 'Enter specific forum id where you want to display search widget.',
   'option_explain.fs_assign_group_applicable' => 'Use as default group for registration.',
   'option_explain.fs_attachment_queue_pending_img' => '',
   'option_explain.fs_attachment_queue_rejected_img' => '',

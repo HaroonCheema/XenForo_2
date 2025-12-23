@@ -43,6 +43,7 @@ return array (
   'option_group.fsEscrow' => '[FS] Escrow',
   'option_group.fs_MediaTagSetting' => '[FS] Media-Tag-Setting',
   'option_group.fs_age_verification' => '[FS] Female Age Verification',
+  'option_group.fs_article_search_threads' => '[FS] Article search',
   'option_group.fs_assign_group' => '[FS] Assign Group',
   'option_group.fs_attachment_approval_queue' => '[FS] Attachment Approval Queue',
   'option_group.fs_avatar_gallery' => '[FS] Avatar Gallery',

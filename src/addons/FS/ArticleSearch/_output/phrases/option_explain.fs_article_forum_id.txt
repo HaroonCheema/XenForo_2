@@ -1,0 +1,1 @@
+Enter specific forum id where you want to display search widget.

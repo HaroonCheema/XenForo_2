@@ -1,0 +1,9 @@
+{
+    "template": "search_result_thread",
+    "description": "fs_article_search_change_format",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/<li class=\"block-row block-row--separated {{ \\$thread\\.isIgnored\\(\\) \\? 'is-ignored' : '' }} js-inlineModContainer\" data-author=\"{{ \\$thread\\.User\\.username \\?: \\$thread\\.username }}\">.*?<\\/div>\n<\\/li>/is",
+    "replace": "<xf:if is=\"$thread.Forum.forum_type_id == 'article'\">\n\t<xf:macro name=\"article_helper\"\n\t\t\t  arg-thread=\"{$thread}\"\n\t\t\t  arg-post=\"{$thread.FirstPost}\"\n\t\t\t  arg-forum=\"{$thread.Forum}\"\n\t\t\t  args=\"null\"  />\n\t<xf:else />\n\t$0\n</xf:if>\n\n<xf:macro name=\"article_helper\"\n\t\t  arg-thread=\"!\"\n\t\t  arg-post=\"!\"\n\t\t  arg-forum=\"!\"\n\t\t  arg-allowInlineMod=\"{{ true }}\">\n\n\t<xf:css src=\"message.less\" />\n\t<xf:css src=\"structured_list.less\" />\n\n\t<xf:if is=\"$forum.type_config.display_style == 'expanded'\">\n\t\t<xf:macro name=\"post_article_macros::article\"\n\t\t\t\t  arg-thread=\"{$thread}\"\n\t\t\t\t  arg-post=\"{$thread.FirstPost}\"\n\t\t\t\t  arg-forum=\"{$forum}\"\n\t\t\t\t  arg-isListItem=\"{{ true }}\"\n\t\t\t\t  args=\"{$templateOverrides.thread_list_macro_args}\"  />\n\t\t<xf:else />\n\t\t<xf:macro name=\"post_article_macros::article_preview\"\n\t\t\t\t  arg-thread=\"{$thread}\"\n\t\t\t\t  arg-post=\"{$thread.FirstPost}\"\n\t\t\t\t  arg-forum=\"{$forum}\"\n\t\t\t\t  args=\"{$templateOverrides.thread_list_macro_args}\"  />\n\t</xf:if>\n</xf:macro>"
+}

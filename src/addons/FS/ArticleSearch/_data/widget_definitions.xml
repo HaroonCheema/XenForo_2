@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<widget_definitions>
+  <widget_definition definition_id="fs_article_search_widget" definition_class="FS\ArticleSearch\Widget\ArticleSearchWidg"/>
+</widget_definitions>

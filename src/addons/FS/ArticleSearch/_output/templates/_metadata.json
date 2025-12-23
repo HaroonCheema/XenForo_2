@@ -1,0 +1,12 @@
+{
+    "public/fs_article_search_results.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d26970e24766cd3c82683eb66f6a7168"
+    },
+    "public/fs_article_serach_widget.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "c776a903947e2c368adbc83173dcb4f0"
+    }
+}

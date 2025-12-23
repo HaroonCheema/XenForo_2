@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="search_result_thread" modification_key="fs_article_search_change_format" description="fs_article_search_change_format" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<li class="block-row block-row--separated {{ \$thread\.isIgnored\(\) \? 'is-ignored' : '' }} js-inlineModContainer" data-author="{{ \$thread\.User\.username \?: \$thread\.username }}">.*?<\/div>
+<\/li>/is]]></find>
+    <replace><![CDATA[<xf:if is="$thread.Forum.forum_type_id == 'article'">
+	<xf:macro name="article_helper"
+			  arg-thread="{$thread}"
+			  arg-post="{$thread.FirstPost}"
+			  arg-forum="{$thread.Forum}"
+			  args="null"  />
+	<xf:else />
+	$0
+</xf:if>
+
+<xf:macro name="article_helper"
+		  arg-thread="!"
+		  arg-post="!"
+		  arg-forum="!"
+		  arg-allowInlineMod="{{ true }}">
+
+	<xf:css src="message.less" />
+	<xf:css src="structured_list.less" />
+
+	<xf:if is="$forum.type_config.display_style == 'expanded'">
+		<xf:macro name="post_article_macros::article"
+				  arg-thread="{$thread}"
+				  arg-post="{$thread.FirstPost}"
+				  arg-forum="{$forum}"
+				  arg-isListItem="{{ true }}"
+				  args="{$templateOverrides.thread_list_macro_args}"  />
+		<xf:else />
+		<xf:macro name="post_article_macros::article_preview"
+				  arg-thread="{$thread}"
+				  arg-post="{$thread.FirstPost}"
+				  arg-forum="{$forum}"
+				  args="{$templateOverrides.thread_list_macro_args}"  />
+	</xf:if>
+</xf:macro>]]></replace>
+  </modification>
+</template_modifications>

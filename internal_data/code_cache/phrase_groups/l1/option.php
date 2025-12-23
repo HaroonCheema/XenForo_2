@@ -395,6 +395,7 @@ return array (
   'option.fsPrivateConversationQuoteMessage' => 'Quote message',
   'option.fsShowLanguage' => 'Show floating language selector',
   'option.fsWidgetLook' => 'Widget look',
+  'option.fs_article_forum_id' => 'Specific forum id',
   'option.fs_assign_group_applicable' => 'Applicable Group',
   'option.fs_attachment_queue_pending_img' => 'Pending img url',
   'option.fs_attachment_queue_rejected_img' => 'Rejected img url',

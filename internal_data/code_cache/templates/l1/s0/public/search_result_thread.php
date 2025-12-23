@@ -1,110 +1,168 @@
 <?php
 // FROM HASH: 41da98e4d591263193a69c453a7f25a4
 return array(
+'macros' => array('article_helper' => array(
+'arguments' => function($__templater, array $__vars) { return array(
+		'thread' => '!',
+		'post' => '!',
+		'forum' => '!',
+		'allowInlineMod' => true,
+	); },
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
 	$__finalCompiled = '';
-	$__finalCompiled .= '<li class="block-row block-row--separated ' . ($__templater->method($__vars['thread'], 'isIgnored', array()) ? 'is-ignored' : '') . ' js-inlineModContainer" data-author="' . ($__templater->escape($__vars['thread']['User']['username']) ?: $__templater->escape($__vars['thread']['username'])) . '">
+	$__finalCompiled .= '
+
+	';
+	$__templater->includeCss('message.less');
+	$__finalCompiled .= '
+	';
+	$__templater->includeCss('structured_list.less');
+	$__finalCompiled .= '
+
+	';
+	if ($__vars['forum']['type_config']['display_style'] == 'expanded') {
+		$__finalCompiled .= '
+		' . $__templater->callMacro(null, 'post_article_macros::article', $__templater->combineMacroArgumentAttributes($__vars['templateOverrides']['thread_list_macro_args'], array(
+			'thread' => $__vars['thread'],
+			'post' => $__vars['thread']['FirstPost'],
+			'forum' => $__vars['forum'],
+			'isListItem' => true,
+		)), $__vars) . '
+		';
+	} else {
+		$__finalCompiled .= '
+		' . $__templater->callMacro(null, 'post_article_macros::article_preview', $__templater->combineMacroArgumentAttributes($__vars['templateOverrides']['thread_list_macro_args'], array(
+			'thread' => $__vars['thread'],
+			'post' => $__vars['thread']['FirstPost'],
+			'forum' => $__vars['forum'],
+		)), $__vars) . '
+	';
+	}
+	$__finalCompiled .= '
+';
+	return $__finalCompiled;
+}
+)),
+'code' => function($__templater, array $__vars, $__extensions = null)
+{
+	$__finalCompiled = '';
+	if ($__vars['thread']['Forum']['forum_type_id'] == 'article') {
+		$__finalCompiled .= '
+	' . $__templater->callMacro(null, 'article_helper', $__templater->combineMacroArgumentAttributes(null, array(
+			'thread' => $__vars['thread'],
+			'post' => $__vars['thread']['FirstPost'],
+			'forum' => $__vars['thread']['Forum'],
+		)), $__vars) . '
+	';
+	} else {
+		$__finalCompiled .= '
+	<li class="block-row block-row--separated ' . ($__templater->method($__vars['thread'], 'isIgnored', array()) ? 'is-ignored' : '') . ' js-inlineModContainer" data-author="' . ($__templater->escape($__vars['thread']['User']['username']) ?: $__templater->escape($__vars['thread']['username'])) . '">
 	<div class="contentRow ' . ((!$__templater->method($__vars['thread'], 'isVisible', array())) ? 'is-deleted' : '') . '">
 		<span class="contentRow-figure">
 			';
-	if (!$__templater->test($__vars['thread']['Movie'], 'empty', array())) {
-		$__finalCompiled .= '
-				' . $__templater->includeTemplate('snog_movie_search_result_thread_poster', $__vars) . '
-			';
-	} else {
-		$__finalCompiled .= '
-			';
-		if (!$__templater->test($__vars['thread']['TV'], 'empty', array())) {
+		if (!$__templater->test($__vars['thread']['Movie'], 'empty', array())) {
 			$__finalCompiled .= '
-				' . $__templater->includeTemplate('snog_tv_search_result_thread_poster', $__vars) . '
+				' . $__templater->includeTemplate('snog_movie_search_result_thread_poster', $__vars) . '
 			';
 		} else {
 			$__finalCompiled .= '
+			';
+			if (!$__templater->test($__vars['thread']['TV'], 'empty', array())) {
+				$__finalCompiled .= '
+				' . $__templater->includeTemplate('snog_tv_search_result_thread_poster', $__vars) . '
+			';
+			} else {
+				$__finalCompiled .= '
 			' . $__templater->func('avatar', array($__vars['thread']['User'], 's', false, array(
-				'defaultname' => $__vars['thread']['username'],
-			))) . '
+					'defaultname' => $__vars['thread']['username'],
+				))) . '
+			';
+			}
+			$__finalCompiled .= '
+
 			';
 		}
 		$__finalCompiled .= '
-
-			';
-	}
-	$__finalCompiled .= '
 
 		</span>
 		<div class="contentRow-main">
 			<h3 class="contentRow-title">
 				<a href="' . $__templater->func('link', array('threads', $__vars['thread'], ), true) . '">' . $__templater->func('prefix', array('thread', $__vars['thread'], ), true);
-	$__compilerTemp1 = $__vars;
-	$__compilerTemp1['columnList'] = $__vars['thread']['Forum']['display_fields']['forum_view']['prefix'];
-	$__compilerTemp1['fieldData'] = $__vars['thread']['custom_fields'];
-	$__finalCompiled .= trim('
+		$__compilerTemp1 = $__vars;
+		$__compilerTemp1['columnList'] = $__vars['thread']['Forum']['display_fields']['forum_view']['prefix'];
+		$__compilerTemp1['fieldData'] = $__vars['thread']['custom_fields'];
+		$__finalCompiled .= trim('
 ' . $__templater->includeTemplate('altf_list_prefix', $__compilerTemp1) . '
 ') . ' ' . $__templater->func('highlight', array($__vars['thread']['title'], $__vars['options']['term'], ), true) . '</a>
 			';
-	if ($__templater->method($__vars['thread'], 'canDisplayThreadRating', array())) {
-		$__finalCompiled .= '
+		if ($__templater->method($__vars['thread'], 'canDisplayThreadRating', array())) {
+			$__finalCompiled .= '
 	' . $__templater->callMacro('BRATR_rating_macros', 'stars_text', array(
-			'rating' => $__vars['thread']['brivium_rating_avg'],
-			'count' => $__vars['thread']['brivium_rating_count'],
-			'rowClass' => 'block-outer-opposite',
-		), $__vars) . '
+				'rating' => $__vars['thread']['brivium_rating_avg'],
+				'count' => $__vars['thread']['brivium_rating_count'],
+				'rowClass' => 'block-outer-opposite',
+			), $__vars) . '
 ';
-	}
-	$__finalCompiled .= '
+		}
+		$__finalCompiled .= '
 </h3>
 			
 			<div class="contentRow-snippet">' . $__templater->func('bb_code_snippet', array($__vars['thread']['FirstPost']['message'], 'post', $__vars['thread']['FirstPost'], 300, ), true) . '</div>
 
 			';
-	$__compilerTemp2 = $__vars;
-	$__compilerTemp2['columnList'] = $__vars['thread']['Forum']['display_fields']['search']['metadata'];
-	$__compilerTemp2['fieldData'] = $__vars['thread']['custom_fields'];
-	$__finalCompiled .= $__templater->includeTemplate('altf_thread_field_search_list', $__compilerTemp2) . '
+		$__compilerTemp2 = $__vars;
+		$__compilerTemp2['columnList'] = $__vars['thread']['Forum']['display_fields']['search']['metadata'];
+		$__compilerTemp2['fieldData'] = $__vars['thread']['custom_fields'];
+		$__finalCompiled .= $__templater->includeTemplate('altf_thread_field_search_list', $__compilerTemp2) . '
 <div class="contentRow-minor contentRow-minor--hideLinks">
 				<ul class="listInline listInline--bullet">
 					';
-	if (($__vars['options']['mod'] == 'thread') AND $__templater->method($__vars['thread'], 'canUseInlineModeration', array())) {
-		$__finalCompiled .= '
+		if (($__vars['options']['mod'] == 'thread') AND $__templater->method($__vars['thread'], 'canUseInlineModeration', array())) {
+			$__finalCompiled .= '
 						<li>' . $__templater->formCheckBox(array(
-			'standalone' => 'true',
-		), array(array(
-			'value' => $__vars['thread']['thread_id'],
-			'class' => 'js-inlineModToggle',
-			'data-xf-init' => 'tooltip',
-			'title' => 'Select for moderation',
-			'_type' => 'option',
-		))) . '</li>
+				'standalone' => 'true',
+			), array(array(
+				'value' => $__vars['thread']['thread_id'],
+				'class' => 'js-inlineModToggle',
+				'data-xf-init' => 'tooltip',
+				'title' => 'Select for moderation',
+				'_type' => 'option',
+			))) . '</li>
 					';
-	}
-	$__finalCompiled .= '
+		}
+		$__finalCompiled .= '
 					<li>' . $__templater->func('username_link', array($__vars['thread']['User'], false, array(
-		'defaultname' => $__vars['thread']['username'],
-	))) . '</li>
+			'defaultname' => $__vars['thread']['username'],
+		))) . '</li>
 					<li>' . 'Thread' . '</li>
 					<li>' . $__templater->func('date_dynamic', array($__vars['thread']['post_date'], array(
-	))) . '</li>
+		))) . '</li>
 					';
-	if ($__vars['xf']['options']['enableTagging'] AND $__vars['thread']['tags']) {
-		$__finalCompiled .= '
+		if ($__vars['xf']['options']['enableTagging'] AND $__vars['thread']['tags']) {
+			$__finalCompiled .= '
 						<li>
 							' . $__templater->callMacro('tag_macros', 'simple_list', array(
-			'tags' => $__vars['thread']['tags'],
-			'containerClass' => 'contentRow-minor',
-			'highlightTerm' => ($__vars['options']['tag'] ?: $__vars['options']['term']),
-		), $__vars) . '
+				'tags' => $__vars['thread']['tags'],
+				'containerClass' => 'contentRow-minor',
+				'highlightTerm' => ($__vars['options']['tag'] ?: $__vars['options']['term']),
+			), $__vars) . '
 						</li>
 					';
-	}
-	$__finalCompiled .= '
+		}
+		$__finalCompiled .= '
 					<li>' . 'Replies' . $__vars['xf']['language']['label_separator'] . ' ' . $__templater->filter($__vars['thread']['reply_count'], array(array('number', array()),), true) . '</li>
 					<li>' . 'Forum' . $__vars['xf']['language']['label_separator'] . ' <a href="' . $__templater->func('link', array('forums', $__vars['thread']['Forum'], ), true) . '">' . $__templater->escape($__vars['thread']['Forum']['title']) . '</a></li>
 				</ul>
 			</div>
 		</div>
 	</div>
-</li>';
+</li>
+';
+	}
+	$__finalCompiled .= '
+
+';
 	return $__finalCompiled;
 }
 );
