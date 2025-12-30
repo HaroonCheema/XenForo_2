@@ -1,12 +1,17 @@
 {
+    "admin/widget_def_options_article_search_widget.html": {
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "fbbf0c94f56819a65efa3665fda142b9"
+    },
     "public/fs_article_search_results.html": {
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
         "hash": "d26970e24766cd3c82683eb66f6a7168"
     },
     "public/fs_article_serach_widget.html": {
-        "version_id": 1000010,
-        "version_string": "1.0.0 Alpha",
-        "hash": "c776a903947e2c368adbc83173dcb4f0"
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
+        "hash": "aa8b9dcb89dc933fff40d7b600b1945d"
     }
 }

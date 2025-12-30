@@ -23,16 +23,16 @@
         "version_string": "1.0.0 Alpha",
         "hash": "d41d8cd98f00b204e9800998ecf8427e"
     },
-    "widget_def.fs_article_search_widget.txt": {
+    "widget_def.article_search_widget.txt": {
         "global_cache": false,
-        "version_id": 1000010,
-        "version_string": "1.0.0 Alpha",
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
         "hash": "8238599bd8e7eaf2e7fdd96c8f34e0b1"
     },
-    "widget_def_desc.fs_article_search_widget.txt": {
+    "widget_def_desc.article_search_widget.txt": {
         "global_cache": false,
-        "version_id": 1000010,
-        "version_string": "1.0.0 Alpha",
+        "version_id": 1000100,
+        "version_string": "1.0.1 Alpha",
         "hash": "8238599bd8e7eaf2e7fdd96c8f34e0b1"
     }
 }

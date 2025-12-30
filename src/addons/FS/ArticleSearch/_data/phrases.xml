@@ -4,6 +4,6 @@
   <phrase title="option_explain.fs_article_forum_id" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter specific forum id where you want to display search widget.]]></phrase>
   <phrase title="option_group.fs_article_search_threads" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Article search]]></phrase>
   <phrase title="option_group_description.fs_article_search_threads" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
-  <phrase title="widget_def.fs_article_search_widget" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Search from article]]></phrase>
-  <phrase title="widget_def_desc.fs_article_search_widget" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Search from article]]></phrase>
+  <phrase title="widget_def.article_search_widget" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[[FS] Search from article]]></phrase>
+  <phrase title="widget_def_desc.article_search_widget" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[[FS] Search from article]]></phrase>
 </phrases>

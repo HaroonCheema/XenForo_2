@@ -100,10 +100,6 @@ class Search extends XFCP_Search
 			'input' => $input
 		];
 
-		// echo "<pre>";
-		// var_dump($viewParams);
-		// exit;
-
 		$typeHandler = null;
 		if ($type && $searcher->isValidContentType($type)) {
 			$typeHandler = $searcher->handler($type);

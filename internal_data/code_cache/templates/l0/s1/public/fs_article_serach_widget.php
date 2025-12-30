@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: c776a903947e2c368adbc83173dcb4f0
+// FROM HASH: aa8b9dcb89dc933fff40d7b600b1945d
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -96,43 +96,10 @@ return array(
 					</div>
 				</div>
 
-				<div class="menu-row">
-					<div class="inputGroup">
-
-						<ul class="inputList">
-							<li>';
-	$__compilerTemp3 = array(array(
-		'value' => '',
-		'label' => 'All forums',
-		'_type' => 'option',
-	));
-	$__compilerTemp4 = $__templater->method($__vars['nodeTree'], 'getFlattened', array(0, ));
-	if ($__templater->isTraversable($__compilerTemp4)) {
-		foreach ($__compilerTemp4 AS $__vars['treeEntry']) {
-			$__compilerTemp3[] = array(
-				'value' => $__vars['treeEntry']['record']['node_id'],
-				'label' => $__templater->filter($__templater->func('repeat', array('&nbsp;&nbsp;', $__vars['treeEntry']['depth'], ), false), array(array('raw', array()),), true) . ' ' . $__templater->escape($__vars['treeEntry']['record']['title']),
-				'_type' => 'option',
-			);
-		}
-	}
-	$__finalCompiled .= $__templater->formSelect(array(
-		'name' => 'c[nodes][]',
-		'size' => '5',
-		'value' => '',
-	), $__compilerTemp3) . '</li>
-							<li>' . $__templater->formCheckBox(array(
-		'standalone' => 'true',
-	), array(array(
-		'name' => 'c[child_nodes]',
-		'selected' => ((!$__vars['input']['c']) OR $__vars['input']['c']['child_nodes']),
-		'label' => 'Search sub-forums as well',
-		'_type' => 'option',
-	))) . '</li>
-						</ul>
-					</div>
-				</div>
-
+				' . $__templater->formHiddenVal('c[nodes][]', $__vars['node_id'], array(
+	)) . '
+				' . $__templater->formHiddenVal('c[child_nodes]', '1', array(
+	)) . '
 				' . $__templater->formHiddenVal('search_type', 'post', array(
 	)) . '
 				' . $__templater->formHiddenVal('order', 'date', array(

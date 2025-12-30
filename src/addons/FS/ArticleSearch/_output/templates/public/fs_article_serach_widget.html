@@ -60,23 +60,8 @@
 					</div>
 				</div>
 
-				<div class="menu-row">
-					<div class="inputGroup">
-
-						<ul class="inputList">
-							<li><xf:select name="c[nodes][]" size="5" value="">
-								<xf:option value="">{{ phrase('all_forums') }}</xf:option>
-								<xf:foreach loop="$nodeTree.getFlattened(0)" value="$treeEntry">
-									<xf:option value="{$treeEntry.record.node_id}">{{ repeat('&nbsp;&nbsp;', $treeEntry.depth)|raw }} {$treeEntry.record.title}</xf:option>
-								</xf:foreach>
-								</xf:select></li>
-							<li><xf:checkbox standalone="true">
-								<xf:option name="c[child_nodes]" selected="{{ (!$input.c || $input.c.child_nodes) }}" label="{{ phrase('search_sub_forums_as_well') }}" />
-								</xf:checkbox></li>
-						</ul>
-					</div>
-				</div>
-
+				<xf:hiddenval name="c[nodes][]">{{$node_id}}</xf:hiddenval>
+				<xf:hiddenval name="c[child_nodes]">1</xf:hiddenval>
 				<xf:hiddenval name="search_type">post</xf:hiddenval>
 				<xf:hiddenval name="order">date</xf:hiddenval>
 

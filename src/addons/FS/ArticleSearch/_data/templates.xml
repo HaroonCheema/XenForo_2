@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <templates>
+  <template type="admin" title="widget_def_options_article_search_widget" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[<hr class="formRowSep" />
+
+<xf:selectrow name="options[node_id]" value="{{ $options.node_id ?: '' }}" size="7"
+			  label="{{ phrase('forum_limit') }}"
+			  explain="{{ phrase('only_include_threads_in_selected_forums') }}">
+
+	<xf:option value="">{{ phrase('all_forums') }}</xf:option>
+	<xf:foreach loop="$nodeTree.getFlattened(0)" value="$treeEntry">
+		<xf:option value="{$treeEntry.record.node_id}" disabled="{{ $treeEntry.record.node_type_id != 'Forum' }}">
+			{{ repeat('&nbsp;&nbsp;', $treeEntry.depth)|raw }} {$treeEntry.record.title}
+		</xf:option>
+	</xf:foreach>
+</xf:selectrow>
+
+<hr class="formRowSep" />]]></template>
   <template type="public" title="fs_article_search_results" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:if is="$search.search_query">
 	<xf:title page="{$page}">{{ phrase('search_results_for_query:') }} {$search.search_query}</xf:title>
 	<xf:h1>{{ phrase('search_results_for_query:') }} <a href="{{ link('search', $search, {'searchform': '1'}) }}"><em>{$search.search_query}</em></a></xf:h1>
@@ -81,7 +96,7 @@
 <xf:if is="$activeModType">
 	<xf:js src="xf/inline_mod.js" min="1" />
 </xf:if>]]></template>
-  <template type="public" title="fs_article_serach_widget" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<div class="block"{{ widget_data($widget) }}>
+  <template type="public" title="fs_article_serach_widget" version_id="1000100" version_string="1.0.1 Alpha"><![CDATA[<div class="block"{{ widget_data($widget) }}>
 	<div class="block-container">
 		<h3 class="block-minorHeader">
 			<a href="{{ link('#') }}" rel="nofollow">{{ $title ?: 'Article Search' }}</a>
@@ -143,23 +158,8 @@
 					</div>
 				</div>
 
-				<div class="menu-row">
-					<div class="inputGroup">
-
-						<ul class="inputList">
-							<li><xf:select name="c[nodes][]" size="5" value="">
-								<xf:option value="">{{ phrase('all_forums') }}</xf:option>
-								<xf:foreach loop="$nodeTree.getFlattened(0)" value="$treeEntry">
-									<xf:option value="{$treeEntry.record.node_id}">{{ repeat('&nbsp;&nbsp;', $treeEntry.depth)|raw }} {$treeEntry.record.title}</xf:option>
-								</xf:foreach>
-								</xf:select></li>
-							<li><xf:checkbox standalone="true">
-								<xf:option name="c[child_nodes]" selected="{{ (!$input.c || $input.c.child_nodes) }}" label="{{ phrase('search_sub_forums_as_well') }}" />
-								</xf:checkbox></li>
-						</ul>
-					</div>
-				</div>
-
+				<xf:hiddenval name="c[nodes][]">{{$node_id}}</xf:hiddenval>
+				<xf:hiddenval name="c[child_nodes]">1</xf:hiddenval>
 				<xf:hiddenval name="search_type">post</xf:hiddenval>
 				<xf:hiddenval name="order">date</xf:hiddenval>
 
