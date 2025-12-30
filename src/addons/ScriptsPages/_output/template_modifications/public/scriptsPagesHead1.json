@@ -1,0 +1,9 @@
+{
+    "template": "PAGE_CONTAINER",
+    "description": "Modify head tag (2.3+).",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:macro template=\"helper_js_global\" name=\"head\" arg-app=\"public\" />",
+    "replace": "$0\n\n<xf:if is=\"$script_page\">\n\t<xf:if is=\"$script_page.head\">\n\t\t{$script_page.head|raw}\n\t</xf:if>\n</xf:if>"
+}

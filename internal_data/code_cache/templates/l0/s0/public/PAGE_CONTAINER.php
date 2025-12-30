@@ -351,7 +351,17 @@ return array(
       };
     </script>
 
-	<title>' . $__templater->func('page_title', array('%s | %s', $__vars['xf']['options']['boardTitle'], $__vars['pageNumber'])) . '</title>
+	<title>';
+	if ($__vars['script_page'] AND $__vars['script_page']['title']) {
+		$__finalCompiled .= '
+	' . $__templater->filter($__vars['script_page']['title'], array(array('raw', array()),), true) . '
+';
+	} else {
+		$__finalCompiled .= '
+	' . $__templater->func('page_title', array('%s | %s', $__vars['xf']['options']['boardTitle'], $__vars['pageNumber'])) . '
+';
+	}
+	$__finalCompiled .= '</title>
 
 	<link rel="manifest" href="' . $__templater->func('base_url', array('webmanifest.php', ), true) . '">
 	';
@@ -449,6 +459,20 @@ return array(
 	' . $__templater->callMacro('helper_js_global', 'head', array(
 		'app' => 'public',
 	), $__vars) . '
+
+';
+	if ($__vars['script_page']) {
+		$__finalCompiled .= '
+	';
+		if ($__vars['script_page']['head']) {
+			$__finalCompiled .= '
+		' . $__templater->filter($__vars['script_page']['head'], array(array('raw', array()),), true) . '
+	';
+		}
+		$__finalCompiled .= '
+';
+	}
+	$__finalCompiled .= '
 
 	';
 	if ($__templater->func('property', array('publicFaviconUrl', ), false)) {
@@ -1573,6 +1597,16 @@ return array(
 				' . $__templater->func('copyright') . '
 				' . $__templater->callback('DBTech\\eCommerce\\Template\\Callback\\Copyright', 'getCopyrightText', '', array()) . '
 				' . '' . '
+
+';
+	if (!$__templater->func('vbresults_brandingfreelicense', array(), false)) {
+		$__compilerTemp19 .= '
+	<div style="margin: 0 auto;">
+		<a class="u-concealed" target="_blank" href="https://vbresults.com/branding-free-license?utm_source=' . $__templater->escape($__vars['xf']['options']['boardUrl']) . '&utm_medium=web&utm_campaign=xenforo&utm_content=footer&utm_term=ScriptsPages">Custom PHP Pages by vbresults.com</a>
+	</div>
+';
+	}
+	$__compilerTemp19 .= '
 <div class="porta-copyright">
 	<a href="https://xenforo.com/community/resources/6023/"
 		target="_blank">XenPorta 2 PRO</a> &copy; Jason Axelrod of

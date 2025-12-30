@@ -78,6 +78,7 @@ return array (
   'nav.newPosts' => 'New posts',
   'nav.newProfilePosts' => 'New profile posts',
   'nav.nick97WatchList' => 'Watch List',
+  'nav.pedigrees' => 'Pedigrees',
   'nav.registeredMembers' => 'Registered members',
   'nav.searchForums' => 'Search forums',
   'nav.searchProfilePosts' => 'Search profile posts',

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="public" title="scripts_pages_raw" version_id="1" version_string="0.0.1"><![CDATA[{$content|raw}]]></template>
+</templates>

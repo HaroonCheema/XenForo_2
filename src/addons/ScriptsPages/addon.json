@@ -1,0 +1,22 @@
+{
+    "legacy_addon_id": "",
+    "title": "[vbresults.com] Custom PHP Pages",
+    "description": "Create custom PHP pages with or without the XF layout.",
+    "version_id": 30,
+    "version_string": "1.2.2",
+    "dev": "vbresults",
+    "dev_url": "https://vbresults.com",
+    "faq_url": "",
+    "support_url": "",
+    "extra_urls": {
+        "Branding-Free License": "https://vbresults.com/branding-free-license",
+        "Rate this Add-on": "https://xenforo.com/community/resources/custom-php-pages.9286/rate"
+    },
+    "require": {
+        "php": [
+            "7.1.0",
+            "PHP 7.1.0+"
+        ]
+    },
+    "icon": "icon.png"
+}

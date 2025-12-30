@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="PAGE_CONTAINER" modification_key="ScriptsPagesPageContainer1" description="Append page element." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[{{ phrase('extra_copyright') }}]]></find>
+    <replace><![CDATA[$0
+
+<xf:if is="!vbresults_brandingfreelicense()">
+	<div style="margin: 0 auto;">
+		<a class="u-concealed" target="_blank" href="https://vbresults.com/branding-free-license?utm_source={$xf.options.boardUrl}&utm_medium=web&utm_campaign=xenforo&utm_content=footer&utm_term=ScriptsPages">Custom PHP Pages by vbresults.com</a>
+	</div>
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="PAGE_CONTAINER" modification_key="ScriptsPagesPageContainer2" description="Add header meta." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:macro id="helper_js_global::head" arg-app="public" arg-jsState="{$jsState}" />]]></find>
+    <replace><![CDATA[$0
+
+<meta name="generator" content="vbresults/ScriptsPages" />]]></replace>
+  </modification>
+  <modification type="public" template="PAGE_CONTAINER" modification_key="scriptsPagesHead" description="Modify head tag (2.2-)." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:macro template="helper_js_global" name="head" arg-app="public" />]]></find>
+    <replace><![CDATA[$0
+
+<xf:if is="$script_page">
+	<xf:if is="$script_page.head">
+		{$script_page.head|raw}
+	</xf:if>
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="PAGE_CONTAINER" modification_key="scriptsPagesHead1" description="Modify head tag (2.3+)." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:macro id="helper_js_global::head" arg-app="public" arg-jsState="{$jsState}" />]]></find>
+    <replace><![CDATA[$0
+
+<xf:if is="$script_page">
+	<xf:if is="$script_page.head">
+		{$script_page.head|raw}
+	</xf:if>
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="PAGE_CONTAINER" modification_key="scriptsPagesTitle" description="Modify title." execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:title formatter="%s | %s" fallback="{$xf.options.boardTitle}" page="{$pageNumber}" />]]></find>
+    <replace><![CDATA[<xf:if is="$script_page && $script_page.title">
+	{$script_page.title|raw}
+<xf:else />
+	$0
+</xf:if>]]></replace>
+  </modification>
+</template_modifications>

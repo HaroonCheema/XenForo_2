@@ -1,0 +1,9 @@
+{
+    "template": "PAGE_CONTAINER",
+    "description": "Add header meta.",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:macro template=\"helper_js_global\" name=\"head\" arg-app=\"public\" />",
+    "replace": "$0\n\n<meta name=\"generator\" content=\"vbresults/ScriptsPages\" />"
+}
