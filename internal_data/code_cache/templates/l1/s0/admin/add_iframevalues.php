@@ -52,9 +52,9 @@ return array(
 		'explain' => 'Select one from Brand Title or Rons Interview ',
 	)) . '
 			
-			' . $__templater->formSelectRow(array(
+			' . $__templater->formRadioRow(array(
 		'name' => 'display_day',
-		'value' => $__vars['data']['display_day'],
+		'value' => '7',
 	), array(array(
 		'value' => '7',
 		'label' => 'Unknown',

@@ -24,6 +24,7 @@ return array (
   'cron_entry.dbtecheCommerceGeoIp' => 'DragonByte eCommerce: Update GeoIP database',
   'cron_entry.dcLinkProxyResetPassword' => 'D.C Style - Link Proxy Reset Password',
   'cron_entry.deleteExpiredBans' => 'Delete expired bans',
+  'cron_entry.delete_first_quoted_posts' => '[FS] Delete first quoted posts',
   'cron_entry.downgradeExpired' => 'Downgrade expired user upgrades',
   'cron_entry.emailBounce' => 'Process email bounces',
   'cron_entry.emailUnsubscribe' => 'Process email unsubscribe requests',

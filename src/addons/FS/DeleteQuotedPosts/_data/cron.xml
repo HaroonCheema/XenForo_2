@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cron>
+  <entry entry_id="delete_first_quoted_posts" cron_class="FS\DeleteQuotedPosts\Cron\DeleteFirstQuotedPosts" cron_method="deleteFirstQuotedPosts" active="1"><![CDATA[{"day_type":"dom","dom":[-1],"hours":[0],"minutes":[0]}]]></entry>
+</cron>
