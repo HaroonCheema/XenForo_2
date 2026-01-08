@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class_extensions>
+  <extension from_class="XenBulletins\VideoPages\Admin\Controller\Iframe" to_class="FS\IframeVideoChanges\XB\VideoPages\Admin\Controller\Iframe" execute_order="10" active="1"/>
   <extension from_class="XenBulletins\VideoPages\Entity\Iframe" to_class="FS\IframeVideoChanges\XB\VideoPages\Entity\Iframe" execute_order="10" active="1"/>
+  <extension from_class="XenBulletins\VideoPages\Pub\Controller\FetchVideo" to_class="FS\IframeVideoChanges\XB\VideoPages\Pub\Controller\FetchVideo" execute_order="10" active="1"/>
 </class_extensions>

@@ -1,13 +1,10 @@
 <?php
 
-namespace XenBulletins\VideoPages\Pub\Controller;
+namespace FS\IframeVideoChanges\XB\VideoPages\Pub\Controller;
 
-use XF\Pub\Controller\AbstractController;
-use XenBulletins\DepositDetail\Entity;
 use XF\Mvc\ParameterBag;
-use XF\Mvc\Entity\Finder;
 
-class FetchVideo extends AbstractController
+class FetchVideo extends XFCP_FetchVideo
 {
 
     public function actionIndex(ParameterBag $params)
@@ -15,8 +12,6 @@ class FetchVideo extends AbstractController
 
         // $currentDay = date('w', \XF::$time);
         // $currentDay = 1;
-
-
 
         $options = \XF::options();
 
@@ -39,11 +34,39 @@ class FetchVideo extends AbstractController
         //  $iframes = $this->finder('XenBulletins\VideoPages:Iframe')->where('video_id', '>', 0)->order('date','desc');
         //feature video
         // $feature = $this->finder('XenBulletins\VideoPages:Iframe')->where('feature','1')->order('date','DESC')->fetch();
-        $feature = "SELECT * FROM xf_iframe 
-                WHERE feature = 1 
-                AND display_day = $currentDay 
-                ORDER BY date DESC 
-                LIMIT 1";
+        // $feature = "SELECT * FROM xf_iframe 
+        //         WHERE feature = 1 
+        //         AND display_day = $currentDay 
+        //         ORDER BY date DESC 
+        //         LIMIT 1";
+        // $feature = "SELECT * FROM xf_iframe 
+        //         WHERE feature = 1 
+        //         AND display_day = $currentDay 
+        //         ORDER BY date DESC 
+        //         LIMIT 1";
+        //         $feature = "
+        //     SELECT *
+        //     FROM xf_iframe
+        //     WHERE feature = 1
+        //       AND (
+        //             (display_day <= $currentDay AND (display_day + for_days - 1) >= $currentDay)
+        //             OR
+        //             (display_day > (display_day + for_days - 1)
+        //                 AND ($currentDay >= display_day OR $currentDay <= ((display_day + for_days - 1) % 7))
+        //             )
+        //           )
+        //     ORDER BY date DESC
+        //     LIMIT 1
+        // ";
+
+        $feature = "
+    SELECT *
+    FROM xf_iframe
+    WHERE feature = 1
+      AND FIND_IN_SET(?, CAST(display_day AS CHAR))
+    ORDER BY date DESC
+    LIMIT 1
+";
 
         $latestRecord = \XF::options()->latestRecord;
 
@@ -61,7 +84,9 @@ class FetchVideo extends AbstractController
         $db = \XF::db();
 
         //  $ronsvideo = $db->query($rons)->fetchAll();
-        $featurevideo = $db->query($feature)->fetchAll();
+        // $featurevideo = $db->query($feature)->fetchAll();
+        $featurevideo = $db->fetchRow($feature, [$currentDay]);
+
         $latestvideo1 = $db->query($latest1)->fetchAll();
 
         if (!$featurevideo) {
@@ -70,12 +95,9 @@ class FetchVideo extends AbstractController
             // $featurevideo = $db->query($feature)->fetchAll();
         }
 
-
         $pieces = array_chunk($latestvideo1, 30);
 
         ////////////////////////////////////////////////////////////////////////////////
-
-
 
         $articleRepo = $this->getArticleRepo();
 
@@ -97,8 +119,6 @@ class FetchVideo extends AbstractController
 
         //////////////////////////////////////////////////////////////////////////////
 
-
-
         $adverts = $this->Finder('XenBulletin\Advert:Advert')->order('advert_id', 'desc')->fetch();
 
         $viewParams = [
@@ -109,37 +129,12 @@ class FetchVideo extends AbstractController
             'latestvideo1' => isset($pieces[0]) ? $pieces[0] : [],
             'latestvideo2' => isset($pieces[1]) ? $pieces[1] : [],
             //  'latestvideo3' => isset($pieces[2]) ? $pieces[2] : [],
-            'featurevideo' => isset($featurevideo[0]) ? $featurevideo[0] : '',
+            'featurevideo' => $featurevideo ?? '',
             'videobrand' => $videobrand,
             'iframes' => $videobrand,
             'adverts' => $adverts
         ] + $viewParams2;
 
         return $this->view('XenBulletins\VideoPages:AddVideo', 'brand_view', $viewParams);
-    }
-
-    protected function getArticleRepo()
-    {
-        return $this->repository('EWR\Porta:Article');
-    }
-
-    public function actionBrand()
-    {
-        $brand = 'SELECT * FROM xf_iframe WHERE iframe_id =' . $params->iframe_id;
-        $iframes = $this->finder('XenBulletins\VideoPages:Iframe')->fetch();
-
-        $options = \XF::options();
-        $sliderVideosOption = $options->xb_slider_videos;
-
-        $db = \XF::db();
-        $brand = $db->query($brand)->fetchAll();
-        $video = $this->finder('XenBulletins\VideoPages:AddVideo')->limit($sliderVideosOption)->fetch();
-
-        $viewParams = [
-            'brand' => $brand[0],
-            'video' => $video,
-            'iframes' => $iframes
-        ];
-        return $this->view('XenBulletins\VideoPages:AddVideo', 'videoslist', $viewParams);
     }
 }

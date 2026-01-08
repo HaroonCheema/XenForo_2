@@ -77,8 +77,8 @@ return array(
 		'explain' => 'Select one from Brand Title or Rons Interview ',
 	)) . '
 			
-			' . $__templater->formRadioRow(array(
-		'name' => 'display_day',
+			' . $__templater->formCheckBoxRow(array(
+		'name' => 'display_day[]',
 		'value' => $__vars['data']['display_day'],
 	), array(array(
 		'value' => '7',
@@ -122,17 +122,6 @@ return array(
 	)), array(
 		'label' => 'Display Day',
 		'explain' => 'Select which day this video should display',
-	)) . '
-
-' . $__templater->formNumberBoxRow(array(
-		'name' => 'for_days',
-		'value' => $__vars['data']['for_days'],
-		'min' => '1',
-		'max' => '7',
-		'step' => '1',
-	), array(
-		'label' => 'For days',
-		'explain' => 'From here you can set more days for the same video...!',
 	)) . '
           	 
 				' . $__templater->formUploadRow(array(

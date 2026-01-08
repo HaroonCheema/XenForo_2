@@ -1,0 +1,6 @@
+{
+    "from_class": "XenBulletins\\VideoPages\\Pub\\Controller\\FetchVideo",
+    "to_class": "FS\\IframeVideoChanges\\XB\\VideoPages\\Pub\\Controller\\FetchVideo",
+    "execute_order": 10,
+    "active": true
+}

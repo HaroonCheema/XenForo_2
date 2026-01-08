@@ -1,5 +1,11 @@
 {
+    "XenBulletins-VideoPages-Admin-Controller-Iframe_FS-IframeVideoChanges-XB-VideoPages-Admin-Controller-Iframe.json": {
+        "hash": "6a31c93c8b9ff01ae72fc0c5e6065c09"
+    },
     "XenBulletins-VideoPages-Entity-Iframe_FS-IframeVideoChanges-XB-VideoPages-Entity-Iframe.json": {
         "hash": "6830a9df88a107fc4a1da3dc92480208"
+    },
+    "XenBulletins-VideoPages-Pub-Controller-FetchVideo_FS-IframeVideoChanges-XB-VideoPages-Pub-Controller-FetchVideo.json": {
+        "hash": "b0d44258af0766466bbac1775ccf3d67"
     }
 }

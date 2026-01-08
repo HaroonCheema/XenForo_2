@@ -53,7 +53,6 @@ class Setup extends AbstractSetup
             );
             $table->addColumn('display_day', 'int')->setDefault(7);
         });
-
     }
 
     public function upgrade1020000Step1()
@@ -82,11 +81,6 @@ class Setup extends AbstractSetup
     {
 
         $sm = $this->schemaManager();
-
-        $sm->alterTable('xf_iframe', function (Alter $table) {
-
-            $table->addColumn('for_days', 'int')->setDefault(1);
-        });
     }
 
     public function uninstallStep1(array $stepParams = [])

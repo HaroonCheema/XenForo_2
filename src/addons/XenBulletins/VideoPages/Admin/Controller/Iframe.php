@@ -130,7 +130,6 @@ class Iframe extends AbstractController
             'feature' => 'UINT',
             'rons_featured' => 'UINT',
             'display_day' => 'UINT',
-            'for_days' => 'UINT',
         ]);
 
         if ($input['display_day'] != 7) {
@@ -277,7 +276,6 @@ class Iframe extends AbstractController
         $function->feature = $input['feature'];
         $function->provider = $provider;
         $function->rons_featured = $input['rons_featured'];
-        $function->for_days = $input['for_days'] ?? 1;
         $function->thumbNail = $thumbnail;
         $function->feature_embed = $feature;
         $iframe_URL = $function->iframe_URL;

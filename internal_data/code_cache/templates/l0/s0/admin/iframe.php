@@ -25,7 +25,9 @@ return array(
 		if ($__templater->isTraversable($__vars['data'])) {
 			foreach ($__vars['data'] AS $__vars['function']) {
 				$__compilerTemp2 .= '
-						' . $__templater->dataRow(array(
+						';
+				$__vars['selectDays'] = $__templater->preEscaped($__templater->escape($__templater->method($__vars['function'], 'getDaysFrom', array())));
+				$__compilerTemp2 .= $__templater->dataRow(array(
 				), array(array(
 					'_type' => 'cell',
 					'html' => $__templater->escape($__vars['function']['iframe_title']),
@@ -37,7 +39,9 @@ return array(
 				array(
 					'_type' => 'cell',
 					'html' => '
-                                ' . $__templater->escape($__templater->method($__vars['function'], 'getDaysFrom', array())) . '
+                                ' . '' . '
+
+<span title="' . $__templater->escape($__vars['selectDays']) . '">' . $__templater->func('snippet', array($__vars['selectDays'], 20, array('stripBbCode' => true, ), ), true) . '</span>
                             ',
 				),
 				array(

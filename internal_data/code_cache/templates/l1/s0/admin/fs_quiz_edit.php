@@ -69,10 +69,10 @@ return array(
 			' . $__templater->formTextAreaRow(array(
 		'name' => 'quiz_des',
 		'value' => ($__vars['quiz'] ? $__vars['quiz']['quiz_des'] : ''),
-		'placeholder' => 'Quiz Description',
+		'placeholder' => 'fs_quiz_des',
 		'dir' => 'ltr',
 	), array(
-		'label' => 'Quiz Description',
+		'label' => 'fs_quiz_des',
 	)) . '
 				' . $__templater->formTokenInputRow(array(
 		'name' => 'quiz_questions',

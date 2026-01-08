@@ -5,5 +5,5 @@
     "enabled": true,
     "action": "preg_replace",
     "find": "/<xf:if is=\"{\\$function\\.display_day} == 0\">.*?<\\/xf:if>/is",
-    "replace": "{{$function.getDaysFrom()}}"
+    "replace": "<xf:set var=\"$selectDays\">{{ $function.getDaysFrom() }}</xf:set>\n\n<span title=\"{{$selectDays}}\">{{ snippet($selectDays, 20, {'stripBbCode': true}) }}</span>"
 }
