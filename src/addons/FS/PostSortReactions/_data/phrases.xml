@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="fs_reaction_1m" version_id="1000000" version_string="1.0.0"><![CDATA[Sort by reactions (1 Month)]]></phrase>
+  <phrase title="fs_reaction_1y" version_id="1000000" version_string="1.0.0"><![CDATA[Sort by reactions (1 Year)]]></phrase>
+  <phrase title="fs_reaction_7d" version_id="1000000" version_string="1.0.0"><![CDATA[Sort by reactions (7 Days)]]></phrase>
+  <phrase title="fs_reaction_all" version_id="1000000" version_string="1.0.0"><![CDATA[Sort by reactions (All time)]]></phrase>
+  <phrase title="fs_reaction_today" version_id="1000000" version_string="1.0.0"><![CDATA[Sort by reactions (Today)]]></phrase>
+</phrases>

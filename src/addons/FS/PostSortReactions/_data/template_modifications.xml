@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="thread_view" modification_key="fs_add_sort_dropdown_menu" description="Add sort dropdown menu" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:extension name="post_sort_filter">]]></find>
+    <replace><![CDATA[$0
+		<div style="display: inline-block; margin-right:20px; margin-top:-2px">
+				<xf:form action="{{ link('threads', $thread) }}" method="get">
+					
+					<xf:if is="$xf.visitor.user_id">
+					
+					<xf:select name="order" value="{{ $order }}" onchange="this.form.submit()">
+						<xf:option value="post_date">{{ phrase('thread_sort.post_date') }}</xf:option>
+						<xf:option value="reaction_all">{{ phrase('fs_reaction_all') }}</xf:option>
+						<xf:option value="reaction_1y">{{ phrase('fs_reaction_1y') }}</xf:option>
+						<xf:option value="reaction_1m">{{ phrase('fs_reaction_1m') }}</xf:option>
+						<xf:option value="reaction_7d">{{ phrase('fs_reaction_7d') }}</xf:option>
+						<xf:option value="reaction_today">{{ phrase('fs_reaction_today') }}</xf:option>
+					</xf:select>
+						
+					</xf:if>
+					
+					<xf:if is="$preId">
+						<input type="hidden" name="prefix_id" value="{{ $preId }}" />
+					</xf:if>
+				</xf:form>
+			</div>]]></replace>
+  </modification>
+  <modification type="public" template="thread_view" modification_key="fs_hide_available_sort_options" description="Hide available sort options" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:if is="($posts is not empty OR $filters)">]]></find>
+    <replace><![CDATA[<xf:if is="($posts is not empty OR $filters) and 1==2">]]></replace>
+  </modification>
+</template_modifications>
