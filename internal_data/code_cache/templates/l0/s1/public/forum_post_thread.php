@@ -358,13 +358,7 @@ return array(
 	';
 		if ((!$__vars['xf']['visitor']['user_id']) AND (!$__templater->method($__vars['forum'], 'canCreateThreadPreReg', array()))) {
 			$__compilerTemp10 .= '
-					' . $__templater->formTextBoxRow(array(
-				'name' => '_xfUsername',
-				'data-xf-init' => 'guest-username',
-				'maxlength' => $__templater->func('max_length', array($__vars['xf']['visitor'], 'username', ), false),
-			), array(
-				'label' => 'Name',
-			)) . '
+					' . $__templater->includeTemplate('fs_add_register_form_fields', $__vars) . '
 				';
 		} else if ($__vars['xf']['visitor']['user_id']) {
 			$__compilerTemp10 .= '
