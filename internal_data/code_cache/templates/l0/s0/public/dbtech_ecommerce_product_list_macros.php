@@ -25,7 +25,7 @@ return array(
 	$__templater->includeCss('dbtech_ecommerce.less');
 	$__finalCompiled .= '
 
-	<div class="productList-product structItem structItem--product ' . ($__vars['product']['prefix_id'] ? ('is-prefix' . $__templater->escape($__vars['product']['prefix_id'])) : '') . ' ' . ($__templater->method($__vars['product'], 'isIgnored', array()) ? 'is-ignored' : '') . ' ' . (($__vars['product']['product_state'] == 'moderated') ? 'is-moderated' : '') . ' ' . (($__vars['product']['product_state'] == 'deleted') ? 'is-deleted' : '') . ' js-inlineModContainer js-productListItem-' . $__templater->escape($__vars['product']['product_id']) . '" data-author="' . ($__templater->escape($__vars['product']['User']['username']) ?: $__templater->escape($__vars['product']['username'])) . '" data-xf-init="touch-proxy">
+	<div class="productList-product structItem structItem--product ' . ($__vars['product']['sv_prefix_ids'] ? ('is-prefix' . $__templater->filter($__vars['product']['sv_prefix_ids'], array(array('join', array(' is-prefix', )),), true)) : '') . ' ' . ($__templater->method($__vars['product'], 'isIgnored', array()) ? 'is-ignored' : '') . ' ' . (($__vars['product']['product_state'] == 'moderated') ? 'is-moderated' : '') . ' ' . (($__vars['product']['product_state'] == 'deleted') ? 'is-deleted' : '') . ' js-inlineModContainer js-productListItem-' . $__templater->escape($__vars['product']['product_id']) . '" data-author="' . ($__templater->escape($__vars['product']['User']['username']) ?: $__templater->escape($__vars['product']['username'])) . '" data-xf-init="touch-proxy">
 		<div class="structItem-cell structItem-cell--icon structItem-cell--iconExpanded">
 			';
 	if ($__vars['product']['Sale']) {
@@ -123,11 +123,11 @@ return array(
 					';
 		if ($__vars['category']) {
 			$__finalCompiled .= '
-						<a href="' . $__templater->func('link', array('dbtech-ecommerce/categories', $__vars['category'], array('prefix_id' => $__vars['product']['prefix_id'], ), ), true) . '" class="labelLink">' . $__templater->func('prefix', array('dbtechEcommerceProduct', $__vars['product'], 'html', '', ), true) . '</a>
+						' . $__templater->func('prefix_filters', array('dbtechEcommerceProduct', 'dbtech-ecommerce/categories', $__vars['category'], $__vars['product'], $__vars['__globals']['filters'], ), true) . '
 					';
 		} else {
 			$__finalCompiled .= '
-						<a href="' . $__templater->func('link', array('dbtech-ecommerce', null, array('prefix_id' => $__vars['product']['prefix_id'], ), ), true) . '" class="labelLink">' . $__templater->func('prefix', array('dbtechEcommerceProduct', $__vars['product'], 'html', '', ), true) . '</a>
+						' . $__templater->func('prefix_filters', array('dbtechEcommerceProduct', 'dbtech-ecommerce', null, $__vars['product'], $__vars['__globals']['filters'], ), true) . '
 					';
 		}
 		$__finalCompiled .= '
@@ -463,7 +463,7 @@ return array(
 	$__templater->includeCss('dbtech_ecommerce.less');
 	$__finalCompiled .= '
 
-	<div class="productList-product productList-product-grid node ' . ($__vars['product']['prefix_id'] ? ('is-prefix' . $__templater->escape($__vars['product']['prefix_id'])) : '') . ' ' . ($__templater->method($__vars['product'], 'isIgnored', array()) ? 'is-ignored' : '') . ' ' . (($__vars['product']['product_state'] == 'moderated') ? 'is-moderated' : '') . ' ' . (($__vars['product']['product_state'] == 'deleted') ? 'is-deleted' : '') . ' js-inlineModContainer js-productListItem-' . $__templater->escape($__vars['product']['product_id']) . '" data-author="' . ($__templater->escape($__vars['product']['User']['username']) ?: $__templater->escape($__vars['product']['username'])) . '" data-xf-init="touch-proxy">
+	<div class="productList-product productList-product-grid node ' . ($__vars['product']['sv_prefix_ids'] ? ('is-prefix' . $__templater->filter($__vars['product']['sv_prefix_ids'], array(array('join', array(' is-prefix', )),), true)) : '') . ' ' . ($__templater->method($__vars['product'], 'isIgnored', array()) ? 'is-ignored' : '') . ' ' . (($__vars['product']['product_state'] == 'moderated') ? 'is-moderated' : '') . ' ' . (($__vars['product']['product_state'] == 'deleted') ? 'is-deleted' : '') . ' js-inlineModContainer js-productListItem-' . $__templater->escape($__vars['product']['product_id']) . '" data-author="' . ($__templater->escape($__vars['product']['User']['username']) ?: $__templater->escape($__vars['product']['username'])) . '" data-xf-init="touch-proxy">
 		';
 	if ($__vars['product']['Sale']) {
 		$__finalCompiled .= '
@@ -512,11 +512,11 @@ return array(
 					';
 		if ($__vars['category']) {
 			$__finalCompiled .= '
-						<a href="' . $__templater->func('link', array('dbtech-ecommerce/categories', $__vars['category'], array('prefix_id' => $__vars['product']['prefix_id'], ), ), true) . '" class="labelLink">' . $__templater->func('prefix', array('dbtechEcommerceProduct', $__vars['product'], 'html', '', ), true) . '</a>
+						' . $__templater->func('prefix_filters', array('dbtechEcommerceProduct', 'dbtech-ecommerce/categories', $__vars['category'], $__vars['product'], $__vars['__globals']['filters'], ), true) . '
 					';
 		} else {
 			$__finalCompiled .= '
-						<a href="' . $__templater->func('link', array('dbtech-ecommerce', null, array('prefix_id' => $__vars['product']['prefix_id'], ), ), true) . '" class="labelLink">' . $__templater->func('prefix', array('dbtechEcommerceProduct', $__vars['product'], 'html', '', ), true) . '</a>
+						' . $__templater->func('prefix_filters', array('dbtechEcommerceProduct', 'dbtech-ecommerce', null, $__vars['product'], $__vars['__globals']['filters'], ), true) . '
 					';
 		}
 		$__finalCompiled .= '

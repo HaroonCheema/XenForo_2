@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="option.pp_applicable_forums" version_id="1000100" version_string="1.0.1"><![CDATA[Applicable forums]]></phrase>
+  <phrase title="option.pp_exclude_prefix" version_id="1000100" version_string="1.0.1"><![CDATA[Excluded Prefix IDs]]></phrase>
+  <phrase title="option.pp_videos_and_clips_ids" version_id="1010700" version_string="1.1.7"><![CDATA[Videos & Clips Prefix IDs for dropdown]]></phrase>
+  <phrase title="option_explain.pp_applicable_forums" version_id="1000100" version_string="1.0.1"><![CDATA[Select the forums on which Multi Prefix will be work]]></phrase>
+  <phrase title="option_explain.pp_exclude_prefix" version_id="1000100" version_string="1.0.1"><![CDATA[Enter the ID of prefix that will not be display in Post Prefix dropdown (yon can enter multiple IDs separated by comma).]]></phrase>
+  <phrase title="option_explain.pp_videos_and_clips_ids" version_id="1010700" version_string="1.1.7"><![CDATA[Enter the IDs of the prefixes that will be displayed under the "Videos & Clips" post prefix dropdown (you can enter multiple IDs separated by commas).]]></phrase>
+  <phrase title="option_group.fs_post_prefix" version_id="1000100" version_string="1.0.1"><![CDATA[[FS] Post Prefix]]></phrase>
+  <phrase title="option_group_description.fs_post_prefix" version_id="1000100" version_string="1.0.1"><![CDATA[]]></phrase>
+  <phrase title="please_select_at_least_one_prefix" version_id="1000700" version_string="1.0.7"><![CDATA[Please select at least one prefix]]></phrase>
+  <phrase title="thread_prefix_group.0" version_id="1010600" version_string="1.1.6"><![CDATA[Ungrouped]]></phrase>
+  <phrase title="videos_and_clips" version_id="1010700" version_string="1.1.7"><![CDATA[Videos & Clips]]></phrase>
+</phrases>

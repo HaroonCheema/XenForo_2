@@ -385,10 +385,13 @@ return array(
 		';
 	if ($__vars['filters']['prefix_id']) {
 		$__finalCompiled .= '
-			<li><a href="' . $__templater->func('link', array('forums', $__vars['forum'], $__templater->filter($__vars['filters'], array(array('replace', array('prefix_id', null, )),), false), ), true) . '"
-				class="filterBar-filterToggle" data-xf-init="tooltip" title="' . $__templater->filter('Remove this filter', array(array('for_attr', array()),), true) . '">
-				<span class="filterBar-filterToggle-label">' . 'Prefix' . $__vars['xf']['language']['label_separator'] . '</span>
-				' . $__templater->func('prefix_title', array('thread', $__vars['filters']['prefix_id'], ), true) . '</a></li>
+';
+		$__compilerTemp1 = $__vars;
+		$__compilerTemp1['prefixType'] = 'thread';
+		$__compilerTemp1['baseLinkPath'] = 'forums';
+		$__compilerTemp1['container'] = $__vars['forum'];
+		$__finalCompiled .= $__templater->includeTemplate('sv_multiprefix_filter', $__compilerTemp1) . '
+
 		';
 	}
 	$__finalCompiled .= '

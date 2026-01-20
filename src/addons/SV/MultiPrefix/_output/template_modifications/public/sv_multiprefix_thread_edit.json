@@ -1,0 +1,9 @@
+{
+    "template": "thread_edit",
+    "description": "Enable multi prefixes when editing a thread",
+    "execution_order": 6281,
+    "enabled": false,
+    "action": "str_replace",
+    "find": "prefix-value=\"{$thread.prefix_id}\"",
+    "replace": "$0\nmulti-prefix-value=\"{{ $thread.sv_prefix_ids }}\" multi-prefix-content-parent=\"{{ $thread.Forum }}\" multi-prefix-content=\"{{ $thread }}\" full-row=\"{{ true }}\""
+}

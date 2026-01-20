@@ -231,6 +231,9 @@ return array(
 	}
 	$__finalCompiled .= '
 
+';
+	$__vars['svMultiPrefixSubtitle'] = (($__vars['svMultiPrefixSubtitle'] === null) ? $__templater->func('property', array('svMultiPrefixSubtitle', ), false) : $__vars['svMultiPrefixSubtitle']);
+	$__finalCompiled .= '
 			<div class="node-extra">
 				';
 	if ($__vars['extras']['privateInfo']) {
@@ -239,7 +242,50 @@ return array(
 				';
 	} else if ($__vars['extras']['LastThread']) {
 		$__finalCompiled .= '
-					<div class="node-extra-icon">
+';
+		if ($__vars['svMultiPrefixSubtitle'] === 'subtitle') {
+			$__finalCompiled .= '
+	';
+			$__vars['isSubTitle'] = true;
+			$__finalCompiled .= '
+	';
+			$__vars['isSubTitle2'] = $__templater->func('property', array('svMultiPrefixSubTitlePrefixUnderThreadInfo', ), false);
+			$__finalCompiled .= '	
+	';
+			$__compilerTemp1 = '';
+			$__compilerTemp2 = '';
+			$__compilerTemp2 .= '
+				' . $__templater->func('prefix', array('thread', $__vars['extras']['LastThread'], ), true) . '
+			';
+			if (strlen(trim($__compilerTemp2)) > 0) {
+				$__compilerTemp1 .= '
+		';
+				$__templater->includeCss('svMultiPrefix_node_list_forum_subtitle2.less');
+				$__compilerTemp1 .= '
+
+		<div class="node-extra-row node-extra-row--svPrefixes">
+			' . $__compilerTemp2 . '
+		</div>
+	';
+			}
+			$__vars['svPrefixHtml'] = $__templater->preEscaped(trim($__compilerTemp1 . '
+'));
+			$__finalCompiled .= '
+	';
+			if (!$__templater->func('strlen', array($__vars['svPrefixHtml'], ), false)) {
+				$__vars['isSubTitle'] = false;
+			}
+			$__finalCompiled .= '
+';
+		} else {
+			$__finalCompiled .= '
+	';
+			$__vars['isSubTitle'] = false;
+			$__finalCompiled .= '
+';
+		}
+		$__finalCompiled .= '
+					<div class="node-extra-icon' . ($__vars['isSubTitle'] ? ' node-extra-icon--prefix' : '') . '">
 						';
 		if ($__templater->method($__vars['xf']['visitor'], 'isIgnoring', array($__vars['extras']['last_post_user_id'], ))) {
 			$__finalCompiled .= '
@@ -259,15 +305,21 @@ return array(
 						';
 		if ($__templater->method($__vars['extras']['LastThread'], 'isUnread', array())) {
 			$__finalCompiled .= '
-	<a href="' . $__templater->func('link', array('threads/unread', $__vars['extras']['LastThread'], ), true) . '" style="' . ((($__vars['node']['txt_clr'] != '') AND (!$__vars['node']['only_title'])) ? (('color: ' . $__templater->escape($__vars['node']['txt_clr'])) . ';') : '') . '" class="node-extra-title" title="' . $__templater->escape($__vars['extras']['LastThread']['title']) . '">' . $__templater->func('prefix', array('thread', $__vars['extras']['LastThread'], ), true) . $__templater->escape($__vars['extras']['LastThread']['title']) . '</a>
+	<a href="' . $__templater->func('link', array('threads/unread', $__vars['extras']['LastThread'], ), true) . '" style="' . ((($__vars['node']['txt_clr'] != '') AND (!$__vars['node']['only_title'])) ? (('color: ' . $__templater->escape($__vars['node']['txt_clr'])) . ';') : '') . '" class="node-extra-title" title="' . $__templater->escape($__vars['extras']['LastThread']['title']) . '">' . (($__vars['svMultiPrefixSubtitle'] == '') ? $__templater->func('prefix', array('thread', $__vars['extras']['LastThread'], ), true) : '') . $__templater->escape($__vars['extras']['LastThread']['title']) . (($__vars['svMultiPrefixSubtitle'] === 'suffix') ? $__templater->func('prefix', array('thread', $__vars['extras']['LastThread'], ), true) : '') . '</a>
 	';
 		} else {
 			$__finalCompiled .= '
-	<a href="' . $__templater->func('link', array('threads/post', $__vars['extras']['LastThread'], array('post_id' => $__vars['extras']['last_post_id'], ), ), true) . '" style="' . ((($__vars['node']['txt_clr'] != '') AND (!$__vars['node']['only_title'])) ? (('color: ' . $__templater->escape($__vars['node']['txt_clr'])) . ';') : '') . '" class="node-extra-title" title="' . $__templater->escape($__vars['extras']['LastThread']['title']) . '">' . $__templater->func('prefix', array('thread', $__vars['extras']['LastThread'], ), true) . $__templater->escape($__vars['extras']['LastThread']['title']) . '</a>
+	<a href="' . $__templater->func('link', array('threads/post', $__vars['extras']['LastThread'], array('post_id' => $__vars['extras']['last_post_id'], ), ), true) . '" style="' . ((($__vars['node']['txt_clr'] != '') AND (!$__vars['node']['only_title'])) ? (('color: ' . $__templater->escape($__vars['node']['txt_clr'])) . ';') : '') . '" class="node-extra-title" title="' . $__templater->escape($__vars['extras']['LastThread']['title']) . '">' . (($__vars['svMultiPrefixSubtitle'] == '') ? $__templater->func('prefix', array('thread', $__vars['extras']['LastThread'], ), true) : '') . $__templater->escape($__vars['extras']['LastThread']['title']) . (($__vars['svMultiPrefixSubtitle'] === 'suffix') ? $__templater->func('prefix', array('thread', $__vars['extras']['LastThread'], ), true) : '') . '</a>
 ';
 		}
 		$__finalCompiled .= '
 					</div>
+';
+		if ($__vars['isSubTitle'] AND (!$__vars['isSubTitle2'])) {
+			$__finalCompiled .= $__templater->filter($__vars['svPrefixHtml'], array(array('raw', array()),), true);
+		}
+		$__finalCompiled .= '
+
 					<div class="node-extra-row">
 						<ul class="listInline listInline--bullet">
 							<li>' . $__templater->func('date_dynamic', array($__vars['extras']['last_post_date'], array(
@@ -288,6 +340,11 @@ return array(
 		$__finalCompiled .= '
 						</ul>
 					</div>
+';
+		if ($__vars['isSubTitle'] AND $__vars['isSubTitle2']) {
+			$__finalCompiled .= $__templater->filter($__vars['svPrefixHtml'], array(array('raw', array()),), true);
+		}
+		$__finalCompiled .= '
 				';
 	} else {
 		$__finalCompiled .= '

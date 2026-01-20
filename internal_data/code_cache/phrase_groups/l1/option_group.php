@@ -68,6 +68,7 @@ return array (
   'option_group.fs_package_rating' => '[FS] Package Rating',
   'option_group.fs_payment_redirection' => '[FS] Payment Redirection',
   'option_group.fs_plisio_payment_gateway' => 'Plisio Payment Gateway',
+  'option_group.fs_post_prefix' => '[FS] Post Prefix',
   'option_group.fs_post_schdueling' => '[FS] Post schedule',
   'option_group.fs_private_conversation' => '[FS] Private Coversation',
   'option_group.fs_production_complete' => '[FS] Production',

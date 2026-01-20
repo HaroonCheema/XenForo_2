@@ -1,5 +1,11 @@
 {
     "public/sv_multiprefix_forum_filters.json": {
         "hash": "77915d7c52f73419a389a8ffaf01ccef"
+    },
+    "public/sv_multiprefix_thread_edit.json": {
+        "hash": "697075065dc08ee5bfd35764bf5efa08"
+    },
+    "public/sv_multiprefix_thread_move.json": {
+        "hash": "c48bea7055f2c5df97a20a114c334614"
     }
 }

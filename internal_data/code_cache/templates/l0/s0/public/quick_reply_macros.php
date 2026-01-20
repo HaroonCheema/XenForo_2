@@ -21,6 +21,7 @@ return array(
 		'deferred' => false,
 		'showGuestControls' => true,
 		'previewUrl' => '',
+		'prefixes' => '',
 	); },
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -73,6 +74,7 @@ return array(
 		'simpleSubmit' => $__vars['simpleSubmit'],
 		'showGuestControls' => $__vars['showGuestControls'],
 		'previewUrl' => $__vars['previewUrl'],
+		'prefixes' => $__vars['prefixes'],
 	), $__vars) . '
 					');
 	$__finalCompiled .= '
@@ -120,6 +122,7 @@ return array(
 		'simpleSubmit' => false,
 		'showGuestControls' => true,
 		'previewUrl' => '',
+		'prefixes' => '',
 	); },
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -128,7 +131,24 @@ return array(
 	';
 	if ($__vars['thread'] AND (!$__templater->test($__vars['thread']['TV'], 'empty', array()) AND (!$__vars['thread']['TV']['tv_episode']))) {
 		$__finalCompiled .= '
-	' . $__templater->formEditor(array(
+	';
+		if ($__vars['thread'] AND $__templater->func('is_applicable_forum', array($__vars['thread']['Forum'], ), false)) {
+			$__finalCompiled .= '
+	<div class="prefixContainer">
+		' . $__templater->callMacro('sv_multiprefix_prefix_macros', 'select', array(
+				'name' => 'sv_prefix_ids',
+				'prefixes' => $__vars['prefixes'],
+				'multiple' => true,
+				'contentParent' => $__vars['thread']['Forum'],
+				'type' => 'thread',
+				'forumPrefixesLimit' => $__vars['force_limit_prefix'],
+				'required' => true,
+			), $__vars) . '
+	</div>
+';
+		}
+		$__finalCompiled .= '
+' . $__templater->formEditor(array(
 			'name' => 'message',
 			'value' => $__vars['message'],
 			'attachments' => ($__vars['attachmentData'] ? $__vars['attachmentData']['attachments'] : array()),
@@ -142,7 +162,24 @@ return array(
 ';
 	} else {
 		$__finalCompiled .= '
-	' . $__templater->formEditor(array(
+	';
+		if ($__vars['thread'] AND $__templater->func('is_applicable_forum', array($__vars['thread']['Forum'], ), false)) {
+			$__finalCompiled .= '
+	<div class="prefixContainer">
+		' . $__templater->callMacro('sv_multiprefix_prefix_macros', 'select', array(
+				'name' => 'sv_prefix_ids',
+				'prefixes' => $__vars['prefixes'],
+				'multiple' => true,
+				'contentParent' => $__vars['thread']['Forum'],
+				'type' => 'thread',
+				'forumPrefixesLimit' => $__vars['force_limit_prefix'],
+				'required' => true,
+			), $__vars) . '
+	</div>
+';
+		}
+		$__finalCompiled .= '
+' . $__templater->formEditor(array(
 			'name' => 'message',
 			'value' => $__vars['message'],
 			'attachments' => ($__vars['attachmentData'] ? $__vars['attachmentData']['attachments'] : array()),

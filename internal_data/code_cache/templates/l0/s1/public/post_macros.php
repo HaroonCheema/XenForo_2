@@ -387,6 +387,13 @@ return array(
 
 		<ul class="message-attribution-opposite message-attribution-opposite--list ' . $__templater->escape($__vars['oppositeClass']) . '">
 ';
+	if ($__vars['post']['sv_prefix_ids']) {
+		$__finalCompiled .= '
+	' . $__templater->func('prefix', array('thread', $__vars['post'], 'html-clicky', ), true) . '
+';
+	}
+	$__finalCompiled .= '
+';
 	if ($__vars['post']['bratr_star']) {
 		$__finalCompiled .= '
 	' . $__templater->callMacro('BRATR_rating_macros', 'stars', array(

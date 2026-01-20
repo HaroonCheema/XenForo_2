@@ -1,0 +1,19 @@
+{
+    "legacy_addon_id": "",
+    "title": "[FS] Post-Prefix",
+    "description": "",
+    "version_id": 1020000,
+    "version_string": "1.2.0",
+    "dev": "",
+    "dev_url": "",
+    "faq_url": "",
+    "support_url": "",
+    "extra_urls": [],
+    "require": {
+        "SV/MultiPrefix": [
+            "*",
+            "Multiprefix Addon"
+        ]
+    },
+    "icon": ""
+}

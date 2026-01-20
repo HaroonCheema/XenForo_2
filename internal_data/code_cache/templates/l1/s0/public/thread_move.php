@@ -15,11 +15,45 @@ return array(
 	$__finalCompiled .= '
 
 ';
-	$__compilerTemp1 = array();
-	$__compilerTemp2 = $__templater->method($__vars['nodeTree'], 'getFlattened', array(0, ));
-	if ($__templater->isTraversable($__compilerTemp2)) {
-		foreach ($__compilerTemp2 AS $__vars['treeEntry']) {
-			$__compilerTemp1[] = array(
+	$__compilerTemp1 = '';
+	if ($__templater->func('is_applicable_forum', array($__vars['thread']['Forum'], ), false)) {
+		$__compilerTemp1 .= '
+	' . $__templater->formPrefixInputRow(($__templater->method($__vars['thread'], 'isPrefixEditable', array()) ? $__vars['prefixes'] : array()), array(
+			'type' => 'thread',
+			'prefix-value' => $__vars['thread']['prefix_id'],
+			'multi-prefix-value' => $__vars['thread']['sv_prefix_ids'],
+			'multi-prefix-content-parent' => $__vars['thread']['Forum'],
+			'multi-prefix-content' => $__vars['thread'],
+			'full-row' => true,
+			'textbox-value' => $__vars['thread']['title'],
+			'href' => $__templater->func('link', array('forums/prefixes', ), false),
+			'listen-to' => '< .js-prefixListenContainer | .js-nodeList',
+			'autofocus' => 'autofocus',
+			'maxlength' => $__templater->func('max_length', array($__vars['thread'], 'title', ), false),
+		), array(
+			'label' => 'Title',
+		)) . '
+';
+	} else {
+		$__compilerTemp1 .= '
+	' . $__templater->formPrefixInputRow(($__templater->method($__vars['thread'], 'isPrefixEditable', array()) ? $__vars['prefixes'] : array()), array(
+			'type' => 'thread',
+			'prefix-value' => $__vars['thread']['prefix_id'],
+			'textbox-value' => $__vars['thread']['title'],
+			'href' => $__templater->func('link', array('forums/prefixes', ), false),
+			'listen-to' => '< .js-prefixListenContainer | .js-nodeList',
+			'autofocus' => 'autofocus',
+			'maxlength' => $__templater->func('max_length', array($__vars['thread'], 'title', ), false),
+		), array(
+			'label' => 'Title',
+		)) . '
+';
+	}
+	$__compilerTemp2 = array();
+	$__compilerTemp3 = $__templater->method($__vars['nodeTree'], 'getFlattened', array(0, ));
+	if ($__templater->isTraversable($__compilerTemp3)) {
+		foreach ($__compilerTemp3 AS $__vars['treeEntry']) {
+			$__compilerTemp2[] = array(
 				'value' => $__vars['treeEntry']['record']['node_id'],
 				'disabled' => (($__vars['treeEntry']['record']['node_type_id'] != 'Forum') ? 'disabled' : ''),
 				'label' => '
@@ -29,9 +63,9 @@ return array(
 			);
 		}
 	}
-	$__compilerTemp3 = '';
+	$__compilerTemp4 = '';
 	if ($__templater->method($__vars['thread'], 'canSendModeratorActionAlert', array())) {
-		$__compilerTemp3 .= '
+		$__compilerTemp4 .= '
 				' . $__templater->callMacro('helper_action', 'thread_alert', array(
 			'selected' => true,
 		), $__vars) . '
@@ -40,17 +74,7 @@ return array(
 	$__finalCompiled .= $__templater->form('
 	<div class="block-container">
 		<div class="block-body js-prefixListenContainer">
-			' . $__templater->formPrefixInputRow(($__templater->method($__vars['thread'], 'isPrefixEditable', array()) ? $__vars['prefixes'] : array()), array(
-		'type' => 'thread',
-		'prefix-value' => $__vars['thread']['prefix_id'],
-		'textbox-value' => $__vars['thread']['title'],
-		'href' => $__templater->func('link', array('forums/prefixes', ), false),
-		'listen-to' => '< .js-prefixListenContainer | .js-nodeList',
-		'autofocus' => 'autofocus',
-		'maxlength' => $__templater->func('max_length', array($__vars['thread'], 'title', ), false),
-	), array(
-		'label' => 'Title',
-	)) . '
+			' . $__compilerTemp1 . '
 
 			' . $__templater->formSelectRow(array(
 		'name' => 'target_node_id',
@@ -59,7 +83,7 @@ return array(
 		'data-xf-init' => 'input-validator',
 		'data-validation-url' => $__templater->func('link', array('threads/move-warnings', $__vars['thread'], ), false),
 		'data-error-target' => '< dd | .js-threadMoveWarnings',
-	), $__compilerTemp1, array(
+	), $__compilerTemp2, array(
 		'label' => 'Destination forum',
 		'explain' => '
 					<div class="block-rowMessage block-rowMessage--important u-hidden u-hidden--transition js-threadMoveWarnings"></div>
@@ -80,7 +104,7 @@ return array(
 	)), array(
 	)) . '
 
-			' . $__compilerTemp3 . '
+			' . $__compilerTemp4 . '
 		</div>
 		' . $__templater->formSubmitRow(array(
 		'icon' => 'save',

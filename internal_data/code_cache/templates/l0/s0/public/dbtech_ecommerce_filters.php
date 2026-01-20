@@ -13,6 +13,7 @@ return array(
 				' . $__templater->callMacro('prefix_macros', 'select', array(
 			'prefixes' => $__vars['prefixesGrouped'],
 			'type' => 'dbtechEcommerceProduct',
+			'multiple' => true,
 			'selected' => ($__vars['filters']['prefix_id'] ?: 0),
 			'name' => 'prefix_id',
 			'noneLabel' => $__vars['xf']['language']['parenthesis_open'] . 'Any' . $__vars['xf']['language']['parenthesis_close'],

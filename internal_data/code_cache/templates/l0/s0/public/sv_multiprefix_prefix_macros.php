@@ -68,6 +68,7 @@ return array(
 		'forumPrefixesLimit' => 0,
 		'contentParent' => false,
 		'content' => false,
+		'required' => false,
 	); },
 'code' => function($__templater, array $__vars, $__extensions = null)
 {

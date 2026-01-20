@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="post_edit" modification_key="fs_add_multi_prefix_select_in_post_edit" description="Add Multi prefix select input in post_edit template" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:editorrow name="message" value="{$post.message}"]]></find>
+    <replace><![CDATA[<xf:if is="is_applicable_forum($forum) && !$post.isFirstPost()">
+	<div class="prefixContainer">
+		<xf:macro template="sv_multiprefix_prefix_macros" name="select"
+				  arg-name="sv_prefix_ids"
+				  arg-prefixes="{$prefixes}"
+				  arg-multiple="{{ true }}"
+				  arg-selected="{$post.sv_prefix_ids}"
+				  arg-contentParent="{$forum}"
+				  arg-type="thread"
+				  arg-forumPrefixesLimit="{$force_limit_prefix}" 
+				  arg-required="{{ true }}" />
+	</div>
+
+</xf:if>
+$0]]></replace>
+  </modification>
+  <modification type="public" template="post_macros" modification_key="show_post_prefix_in_post_header" description="display post Prefixes in post header" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<ul class="message-attribution-opposite message-attribution-opposite--list {$oppositeClass}">]]></find>
+    <replace><![CDATA[$0
+<xf:if is="$post.sv_prefix_ids">
+	{{ prefix('thread', $post, 'html-clicky') }}
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="quick_reply_macros" modification_key="fs_add_multi_prefix_select" description="Add Multi prefix select input in quick_reply_macro template" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:editor name="message"]]></find>
+    <replace><![CDATA[<xf:if is="$thread && is_applicable_forum($thread.Forum)">
+	<div class="prefixContainer">
+		<xf:macro template="sv_multiprefix_prefix_macros" name="select"
+				  arg-name="sv_prefix_ids"
+				  arg-prefixes="{$prefixes}"
+				  arg-multiple="{{ true }}"
+				  arg-contentParent="{$thread.Forum}"
+				  arg-type="thread"
+				  arg-forumPrefixesLimit="{$force_limit_prefix}"
+				  arg-required="{{ true }}" />
+	</div>
+</xf:if>
+$0]]></replace>
+  </modification>
+  <modification type="public" template="quick_reply_macros" modification_key="pass_prefixes_arg_to_editor_macro" description="Pass prefixes and thread arg to editor macro" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[arg-previewUrl="{$previewUrl}"]]></find>
+    <replace><![CDATA[$0
+arg-prefixes="{$prefixes}"
+arg-thread="{$thread}"]]></replace>
+  </modification>
+  <modification type="public" template="quick_reply_macros" modification_key="receive_prefixes_arg" description="Receive prefixes and thread arg in 'body macro' and  'editor macro' on quick reply maco" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[arg-previewUrl=""]]></find>
+    <replace><![CDATA[$0
+arg-prefixes=""
+arg-thread=""]]></replace>
+  </modification>
+  <modification type="public" template="sv_multiprefix_prefix_macros" modification_key="fs_add_required_argument_in_select_macro" description="Add required argument in select macro" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[arg-content="{{ false }}"]]></find>
+    <replace><![CDATA[$0
+arg-required="{{ false }}"]]></replace>
+  </modification>
+  <modification type="public" template="sv_multiprefix_prefix_macros" modification_key="fs_make_select_required" description="Make Multi prefix Select input required" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/ <xf:select.*?>/si]]></find>
+    <replace><![CDATA[ <xf:select name="{$name}" value="{$selected}" multiple="{$multiple}" class="{$class}" placeholder="{{ phrase('prefix') }}"
+			  data-xf-init="{{ ($href AND $listenTo) ? 'sv-multi-prefix-loader' : '' }} sv-multi-prefix-menu"
+			  data-href="{$href}"
+			  data-listen-to="{$listenTo}"
+			  data-min-tokens="{$min_tokens}"
+			  data-max-tokens="{$max_tokens}" required="{$required}">]]></replace>
+  </modification>
+  <modification type="public" template="thread_edit" modification_key="pp_thread_edit" description="Enable multi prefixes when editing a thread (applicable forums based)." execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<xf:prefixinputrow.*?\/>/si]]></find>
+    <replace><![CDATA[<xf:if is="is_applicable_forum($thread.Forum)">
+	<xf:prefixinputrow
+				label="{{ phrase('title') }}"
+				prefixes="{{ $thread.isPrefixEditable() ? $prefixes : [] }}"
+				type="thread"
+				prefix-value="{$thread.prefix_id}"
+				multi-prefix-value="{{ $thread.sv_prefix_ids }}" multi-prefix-content-parent="{{ $thread.Forum }}" multi-prefix-content="{{ $thread }}" full-row="{{ true }}"
+				textbox-value="{$thread.title}"
+				placeholder="{{ phrase('title...') }}"
+				autofocus="autofocus"
+				maxlength="{{ max_length($thread, 'title') }}"
+				help-href="{{ link('forums/prefix-help', $forum) }}"/>
+<xf:else />
+	$0
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="thread_move" modification_key="pp_thread_move" description="Enable multi prefixes when moving a thread (Applicable Forum based)" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<xf:prefixinputrow.*?\/>/si]]></find>
+    <replace><![CDATA[<xf:if is="is_applicable_forum($thread.Forum)">
+	<xf:prefixinputrow
+				label="{{ phrase('title') }}"
+				prefixes="{{ $thread.isPrefixEditable() ? $prefixes : [] }}"
+				type="thread"
+				prefix-value="{$thread.prefix_id}"
+				multi-prefix-value="{{ $thread.sv_prefix_ids }}" multi-prefix-content-parent="{{ $thread.Forum }}" multi-prefix-content="{{ $thread }}" full-row="{{ true }}"
+				textbox-value="{$thread.title}"
+				href="{{ link('forums/prefixes') }}"
+				listen-to="< .js-prefixListenContainer | .js-nodeList"
+				autofocus="autofocus"
+				maxlength="{{ max_length($thread, 'title') }}" />
+<xf:else />
+	$0
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="thread_view" modification_key="add_prefixes_arg_to_body_macro" description="pass prefixes and thread arg to 'body macro' on quick_reply_macros template" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[arg-previewUrl="{{ link('threads/reply-preview', $thread) }}"]]></find>
+    <replace><![CDATA[$0
+arg-prefixes="{{ $prefixes }}"
+arg-thread="{{ $thread }}"]]></replace>
+  </modification>
+  <modification type="public" template="thread_view" modification_key="thread_view_dropdown" description="Add post prefix drop down option" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[			<xf:if is="!$isFirstPostPinned">
+				{$threadActionsHtml}
+			</xf:if>
+]]></find>
+    <replace><![CDATA[<xf:include template="prefixdropdown" />
+$0]]></replace>
+  </modification>
+  <modification type="public" template="thread_view" modification_key="thread_view_pag_nav" description="Pag Nav Prefixposts controller and param handling" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[link="threads" data="{$thread}" params="{$pageNavFilters}" hash="{$pageNavHash}"]]></find>
+    <replace><![CDATA[$0
+params="{{ {'prefix_id': $preId == 0 ? null : $preId,'order': $pageNavFilters.order == $defaultOrder ? null : $pageNavFilters.order}}}"]]></replace>
+  </modification>
+  <modification type="public" template="thread_view" modification_key="thread_view_reaction" description="Reaction score order params with prefix dropdown" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<a href="{{ link('threads', $thread, $pageNavFilters|replace({'order': $sortKey == $defaultOrder ? null : $sortKey})) }}"]]></find>
+    <replace><![CDATA[<a href="{{ link('threads', $thread, $pageNavFilters|replace({'prefix_id': $preId == 0 ? null : $preId,'order': $sortKey == $defaultOrder ? null : $sortKey})) }}"]]></replace>
+  </modification>
+</template_modifications>
