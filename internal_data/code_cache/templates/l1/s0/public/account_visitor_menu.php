@@ -158,7 +158,7 @@ return array(
 	$__compilerTemp5 = '';
 	if ($__vars['xf']['app']['userUpgradeCount']) {
 		$__compilerTemp5 .= '
-			<li><a href="' . $__templater->func('link', array('account/upgrades', ), true) . '" class="menu-linkRow">' . 'Account upgrades' . '</a></li>
+			<li><a href="' . $__templater->func('link', array('account/upgrades', ), true) . '" class="menu-linkRow">' . 'account_upgrades' . '</a></li>
 		';
 	}
 	$__compilerTemp6 = '';

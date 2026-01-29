@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 9633335b44f3e7d35857919a39d3f94d
+// FROM HASH: d1ffd28a1f3dc51ddbdc1eb30fbf9722
 return array(
 'extends' => function($__templater, array $__vars) { return 'fs_tbn_forum_view'; },
 'extensions' => array('thread_list_block_classes' => function($__templater, array $__vars, $__extensions = null)
@@ -141,7 +141,7 @@ return array(
 	';
 	if ($__vars['forum']['type_config']['display_style'] == 'expanded') {
 		$__finalCompiled .= '
-		' . $__templater->callMacro(null, 'post_article_macros::article', $__templater->combineMacroArgumentAttributes($__vars['templateOverrides']['thread_list_macro_args'], array(
+		' . $__templater->callMacro(null, 'fs_tbn_post_article_macros::article', $__templater->combineMacroArgumentAttributes($__vars['templateOverrides']['thread_list_macro_args'], array(
 			'thread' => $__vars['thread'],
 			'post' => $__vars['thread']['FirstPost'],
 			'forum' => $__vars['forum'],
@@ -150,7 +150,7 @@ return array(
 	';
 	} else {
 		$__finalCompiled .= '
-		' . $__templater->callMacro(null, 'post_article_macros::article_preview', $__templater->combineMacroArgumentAttributes($__vars['templateOverrides']['thread_list_macro_args'], array(
+		' . $__templater->callMacro(null, 'fs_tbn_post_article_macros::article_preview', $__templater->combineMacroArgumentAttributes($__vars['templateOverrides']['thread_list_macro_args'], array(
 			'thread' => $__vars['thread'],
 			'post' => $__vars['thread']['FirstPost'],
 			'forum' => $__vars['forum'],

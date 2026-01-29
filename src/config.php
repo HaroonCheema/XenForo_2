@@ -19,6 +19,6 @@ $config['enableLivePayments'] = false;
 
 $config['debug'] = true;
 
-$config['development']['defaultAddOn'] = 'FS/IframeVideoChanges';
+$config['development']['defaultAddOn'] = 'FS/TractorByNetMyThreads';
 
 $config['development']['enabled'] = true;

@@ -10,8 +10,23 @@
         "hash": "4480987b5875201c95c258cd316c8e95"
     },
     "public/fs_tbn_forum_view_type_article.html": {
+        "version_id": 1000900,
+        "version_string": "1.0.9 Alpha",
+        "hash": "d1ffd28a1f3dc51ddbdc1eb30fbf9722"
+    },
+    "public/fs_tbn_post_article_macros.html": {
+        "version_id": 1000800,
+        "version_string": "1.0.8 Alpha",
+        "hash": "cf6643ffb18c0942e13af3ccd2efe797"
+    },
+    "public/fs_tbn_thread_delete.html": {
         "version_id": 1000700,
         "version_string": "1.0.7 Alpha",
-        "hash": "9633335b44f3e7d35857919a39d3f94d"
+        "hash": "ae1babcdde60c7e5f3acec12e79f4cb4"
+    },
+    "public/fs_tbn_thread_edit.html": {
+        "version_id": 1000800,
+        "version_string": "1.0.8 Alpha",
+        "hash": "917f0bff26d12c30ad1cc1d4c999aaa6"
     }
 }

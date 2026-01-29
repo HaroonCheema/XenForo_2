@@ -85,14 +85,14 @@
 	arg-allowInlineMod="{{ true }}">
 
 	<xf:if is="$forum.type_config.display_style == 'expanded'">
-		<xf:macro name="post_article_macros::article"
+		<xf:macro name="fs_tbn_post_article_macros::article"
 			arg-thread="{$thread}"
 			arg-post="{$thread.FirstPost}"
 			arg-forum="{$forum}"
 			arg-isListItem="{{ true }}"
 			args="{$templateOverrides.thread_list_macro_args}"  />
 	<xf:else />
-		<xf:macro name="post_article_macros::article_preview"
+		<xf:macro name="fs_tbn_post_article_macros::article_preview"
 			arg-thread="{$thread}"
 			arg-post="{$thread.FirstPost}"
 			arg-forum="{$forum}"
