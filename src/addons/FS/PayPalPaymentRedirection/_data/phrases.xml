@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="option.fs_payment_site_base_url" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Base URL]]></phrase>
+  <phrase title="option_explain.fs_payment_site_base_url" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter the base URL of your payment site. Do not include a trailing "/" or "index.php". The URL should look similar to this: https://www.example.com/forum]]></phrase>
+  <phrase title="option_group.fs_paypal_payment_redirect" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] PayPal payment redirect]]></phrase>
+  <phrase title="option_group_description.fs_paypal_payment_redirect" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+</phrases>

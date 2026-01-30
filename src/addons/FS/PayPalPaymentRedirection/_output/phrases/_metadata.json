@@ -1,0 +1,26 @@
+{
+    "option.fs_payment_site_base_url.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "ade86bc4899761ad46c52e381b6228bb"
+    },
+    "option_explain.fs_payment_site_base_url.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "c550ac9d5c6cfe8b85d12e5439c8bad0"
+    },
+    "option_group.fs_paypal_payment_redirect.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "e919dbdb6936c971d1a5d181ca5fca64"
+    },
+    "option_group_description.fs_paypal_payment_redirect.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    }
+}

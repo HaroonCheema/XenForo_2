@@ -458,6 +458,7 @@ return array (
   'option.fs_logo_slider_logos' => 'Logo box',
   'option.fs_mts_customMsgColor' => 'Custom message Text Color',
   'option.fs_mts_customMsgbackGroundColor' => 'Custom message Background Color',
+  'option.fs_payment_site_base_url' => 'Base URL',
   'option.fs_phoneNumberFieldId' => 'Phone Number Field ID',
   'option.fs_pkg_rat_applicable_userGroups' => 'Applicable User Upgrade Ids',
   'option.fs_plisio_gateway_site_url' => 'Proxy site URL',
