@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="fs_state_icon" version_id="1000300" version_string="1.0.3"><![CDATA[Upload state icon]]></phrase>
+  <phrase title="fs_state_icon_disp" version_id="1000300" version_string="1.0.3"><![CDATA[State icon]]></phrase>
+  <phrase title="option.fs_state_icon_dimenstions" version_id="1000300" version_string="1.0.3"><![CDATA[State icon dimensions]]></phrase>
+  <phrase title="option_explain.fs_state_icon_dimenstions" version_id="1000300" version_string="1.0.3"><![CDATA[]]></phrase>
+  <phrase title="option_group.fs_state_opt" version_id="1000300" version_string="1.0.3"><![CDATA[[FS] All states]]></phrase>
+  <phrase title="option_group_description.fs_state_opt" version_id="1000300" version_string="1.0.3"><![CDATA[]]></phrase>
+  <phrase title="widget_def.all_states_home" version_id="1000100" version_string="1.0.1"><![CDATA[[FS] All States]]></phrase>
+  <phrase title="widget_def_desc.all_states_home" version_id="1000100" version_string="1.0.1"><![CDATA[]]></phrase>
+</phrases>

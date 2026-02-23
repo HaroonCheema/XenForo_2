@@ -491,6 +491,7 @@ return array (
   'option.fs_show_icon' => 'Show Icon',
   'option.fs_show_nav_icon_dimensions' => 'Icon dimensions',
   'option.fs_show_nav_icon_space' => 'Space from tabs',
+  'option.fs_state_icon_dimenstions' => 'State icon dimensions',
   'option.fs_subscrip_applicable_userGroups' => 'Applicable Upgrade Ids',
   'option.fs_tbn_my_thread_forum_id' => 'My thread forum',
   'option.fs_tbn_my_thread_minimum_items' => 'Minimum Items',

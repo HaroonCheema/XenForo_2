@@ -4,7 +4,6 @@ return array(
 'macros' => array('body' => array(
 'arguments' => function($__templater, array $__vars) { return array(
 		'message' => '',
-		'thread' => '',
 		'attachmentData' => null,
 		'forceHash' => '',
 		'messageSelector' => '',
@@ -22,6 +21,7 @@ return array(
 		'showGuestControls' => true,
 		'previewUrl' => '',
 		'prefixes' => '',
+		'thread' => '',
 	); },
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -58,7 +58,6 @@ return array(
 	$__vars['editorHtml'] = $__templater->preEscaped('
 						' . $__templater->callMacro(null, 'editor', array(
 		'message' => $__vars['message'],
-		'thread' => $__vars['thread'],
 		'attachmentData' => $__vars['attachmentData'],
 		'forceHash' => $__vars['forceHash'],
 		'messageSelector' => $__vars['messageSelector'],
@@ -75,6 +74,7 @@ return array(
 		'showGuestControls' => $__vars['showGuestControls'],
 		'previewUrl' => $__vars['previewUrl'],
 		'prefixes' => $__vars['prefixes'],
+		'thread' => $__vars['thread'],
 	), $__vars) . '
 					');
 	$__finalCompiled .= '
@@ -106,7 +106,6 @@ return array(
 'editor' => array(
 'arguments' => function($__templater, array $__vars) { return array(
 		'message' => '',
-		'thread' => '',
 		'attachmentData' => null,
 		'forceHash' => '',
 		'messageSelector' => '',
@@ -123,75 +122,39 @@ return array(
 		'showGuestControls' => true,
 		'previewUrl' => '',
 		'prefixes' => '',
+		'thread' => '',
 	); },
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
 	$__finalCompiled = '';
 	$__finalCompiled .= '
 	';
-	if ($__vars['thread'] AND (!$__templater->test($__vars['thread']['TV'], 'empty', array()) AND (!$__vars['thread']['TV']['tv_episode']))) {
+	if ($__vars['thread'] AND $__templater->func('is_applicable_forum', array($__vars['thread']['Forum'], ), false)) {
 		$__finalCompiled .= '
-	';
-		if ($__vars['thread'] AND $__templater->func('is_applicable_forum', array($__vars['thread']['Forum'], ), false)) {
-			$__finalCompiled .= '
 	<div class="prefixContainer">
 		' . $__templater->callMacro('sv_multiprefix_prefix_macros', 'select', array(
-				'name' => 'sv_prefix_ids',
-				'prefixes' => $__vars['prefixes'],
-				'multiple' => true,
-				'contentParent' => $__vars['thread']['Forum'],
-				'type' => 'thread',
-				'forumPrefixesLimit' => $__vars['force_limit_prefix'],
-				'required' => true,
-			), $__vars) . '
+			'name' => 'sv_prefix_ids',
+			'prefixes' => $__vars['prefixes'],
+			'multiple' => true,
+			'contentParent' => $__vars['thread']['Forum'],
+			'type' => 'thread',
+			'forumPrefixesLimit' => $__vars['force_limit_prefix'],
+			'required' => true,
+		), $__vars) . '
 	</div>
-';
-		}
-		$__finalCompiled .= '
-' . $__templater->formEditor(array(
-			'name' => 'message',
-			'value' => $__vars['message'],
-			'attachments' => ($__vars['attachmentData'] ? $__vars['attachmentData']['attachments'] : array()),
-			'data-min-height' => $__vars['minHeight'],
-			'placeholder' => $__vars['placeholder'],
-			'data-deferred' => ($__vars['deferred'] ? 'on' : 'off'),
-			'data-xf-key' => 'r',
-			'data-preview-url' => $__vars['previewUrl'],
-		)) . '
-	' . $__templater->includeTemplate('snog_tv_quick_reply_episode', $__vars) . '
-';
-	} else {
-		$__finalCompiled .= '
-	';
-		if ($__vars['thread'] AND $__templater->func('is_applicable_forum', array($__vars['thread']['Forum'], ), false)) {
-			$__finalCompiled .= '
-	<div class="prefixContainer">
-		' . $__templater->callMacro('sv_multiprefix_prefix_macros', 'select', array(
-				'name' => 'sv_prefix_ids',
-				'prefixes' => $__vars['prefixes'],
-				'multiple' => true,
-				'contentParent' => $__vars['thread']['Forum'],
-				'type' => 'thread',
-				'forumPrefixesLimit' => $__vars['force_limit_prefix'],
-				'required' => true,
-			), $__vars) . '
-	</div>
-';
-		}
-		$__finalCompiled .= '
-' . $__templater->formEditor(array(
-			'name' => 'message',
-			'value' => $__vars['message'],
-			'attachments' => ($__vars['attachmentData'] ? $__vars['attachmentData']['attachments'] : array()),
-			'data-min-height' => $__vars['minHeight'],
-			'placeholder' => $__vars['placeholder'],
-			'data-deferred' => ($__vars['deferred'] ? 'on' : 'off'),
-			'data-xf-key' => 'r',
-			'data-preview-url' => $__vars['previewUrl'],
-		)) . '
 ';
 	}
 	$__finalCompiled .= '
+' . $__templater->formEditor(array(
+		'name' => 'message',
+		'value' => $__vars['message'],
+		'attachments' => ($__vars['attachmentData'] ? $__vars['attachmentData']['attachments'] : array()),
+		'data-min-height' => $__vars['minHeight'],
+		'placeholder' => $__vars['placeholder'],
+		'data-deferred' => ($__vars['deferred'] ? 'on' : 'off'),
+		'data-xf-key' => 'r',
+		'data-preview-url' => $__vars['previewUrl'],
+	)) . '
 
 	';
 	if ((!$__vars['xf']['visitor']['user_id']) AND $__vars['showGuestControls']) {
@@ -230,37 +193,7 @@ return array(
 
 	<div class="formButtonGroup ' . ($__vars['simpleSubmit'] ? 'formButtonGroup--simple' : '') . '">
 		<div class="formButtonGroup-primary">
-			';
-	if ($__vars['thread']) {
-		$__finalCompiled .= '
-				';
-		$__vars['qrform'] = $__templater->method($__vars['thread'], 'getQrform', array());
-		$__finalCompiled .= '
-				';
-		if ($__vars['qrform']) {
-			$__finalCompiled .= '
-					';
-			if ((!$__vars['qrform']['qrstarter']) OR ($__vars['qrform']['qrstarter'] AND ($__vars['xf']['visitor']['user_id'] == $__vars['thread']['user_id']))) {
-				$__finalCompiled .= '
-						' . $__templater->button('
-							' . $__templater->escape($__vars['qrform']['qrbutton']) . '
-						', array(
-					'href' => $__templater->func('link', array('form/select', $__vars['qrform'], array('thread' => $__vars['thread']['thread_id'], ), ), false) . ' ',
-					'class' => 'button--cta',
-					'icon' => 'write',
-				), '', array(
-				)) . '
-					';
-			}
-			$__finalCompiled .= '
-				';
-		}
-		$__finalCompiled .= '
-			';
-	}
-	$__finalCompiled .= '
-
-' . $__templater->button('
+			' . $__templater->button('
 				' . ($__templater->escape($__vars['submitText']) ?: 'Post reply') . '
 			', array(
 		'type' => 'submit',

@@ -94,26 +94,10 @@ return array(
 
 	<div class="node node--id' . $__templater->escape($__vars['node']['node_id']) . ' node--depth' . $__templater->escape($__vars['depth']) . ' node--forum ' . ($__vars['extras']['hasNew'] ? 'node--unread' : 'node--read') . '">
 		<div class="node-body" style="' . (($__vars['node']['bg_clr'] != '') ? (('background-color: ' . $__templater->escape($__vars['node']['bg_clr'])) . ';') : '') . '">
-			';
-	if ($__templater->method($__vars['node'], 'getIcon', array())) {
-		$__finalCompiled .= '
-	<div class="node-icon--custom read" 
-		 style="background-image: url(' . $__templater->func('base_url', array($__templater->method($__vars['node'], 'getIcon', array()), ), true) . ');
-				width: ' . $__templater->escape($__vars['xf']['options']['Fs_NodeIcon_nodeDimensions']['width']) . 'px;
-				height: ' . $__templater->escape($__vars['xf']['options']['Fs_NodeIcon_nodeDimensions']['height']) . 'px;">
-	</div>
-';
-	} else {
-		$__finalCompiled .= '
-	<span class="node-icon" aria-hidden="true"
-		  style="width: ' . $__templater->escape($__vars['xf']['options']['Fs_NodeIcon_nodeDimensions']['width']) . 'px;
-				 height: ' . $__templater->escape($__vars['xf']['options']['Fs_NodeIcon_nodeDimensions']['height']) . 'px;">
-		' . $__templater->fontAwesome(($__templater->escape($__templater->method($__vars['node']['Data']['TypeHandler'], 'getTypeIconClass', array())) ?: 'fa-comments'), array(
-		)) . '
-	</span>
-';
-	}
-	$__finalCompiled .= '
+			<span class="node-icon" aria-hidden="true">
+				' . $__templater->fontAwesome(($__templater->escape($__templater->method($__vars['node']['Data']['TypeHandler'], 'getTypeIconClass', array())) ?: 'fa-comments'), array(
+	)) . '
+			</span>
 			<div class="node-main js-nodeMain">
 				';
 	if ($__vars['chooseName']) {
@@ -138,13 +122,6 @@ return array(
 	<a href="' . $__templater->func('link', array('forums', $__vars['node'], ), true) . '" data-xf-init="' . (($__vars['descriptionDisplay'] == 'tooltip') ? 'element-tooltip' : '') . '" data-shortcut="node-description" style="' . (($__vars['node']['txt_clr'] != '') ? (('color: ' . $__templater->escape($__vars['node']['txt_clr'])) . ';') : '') . '">' . $__templater->escape($__vars['node']['title']) . '</a>
 </h3>
 				';
-	if (!$__templater->test($__vars['node']['TVForum'], 'empty', array())) {
-		$__finalCompiled .= '
-	' . $__templater->includeTemplate('snog_tv_node_info', $__vars) . '
-';
-	}
-	$__finalCompiled .= '
-';
 	if (($__vars['descriptionDisplay'] != 'none') AND $__vars['node']['description']) {
 		$__finalCompiled .= '
 					<div class="node-description ' . (($__vars['descriptionDisplay'] == 'tooltip') ? 'node-description--tooltip js-nodeDescTooltip' : '') . '">' . $__templater->filter($__vars['node']['description'], array(array('raw', array()),), true) . '</div>
@@ -208,16 +185,6 @@ return array(
 	if (!$__vars['extras']['privateInfo']) {
 		$__finalCompiled .= '
 				<div class="node-stats">
-';
-		if ((!$__vars['node']['TVForum']['tv_parent_id']) AND $__vars['node']['TVForum']['tv_id']) {
-			$__finalCompiled .= '
-	' . $__templater->callMacro('rating_macros', 'stars', array(
-				'rating' => $__vars['node']['TVForum']['tv_rating'],
-			), $__vars) . '
-';
-		}
-		$__finalCompiled .= '
-
 					<dl class="pairs pairs--rows">
 						<dt>' . 'Threads' . '</dt>
 						<dd style="' . ((($__vars['node']['txt_clr'] != '') AND (!$__vars['node']['only_title'])) ? (('color: ' . $__templater->escape($__vars['node']['txt_clr'])) . ';') : '') . '">' . $__templater->filter($__vars['extras']['discussion_count'], array(array('number_short', array(1, )),), true) . '</dd>

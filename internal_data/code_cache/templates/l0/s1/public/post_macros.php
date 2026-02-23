@@ -703,26 +703,23 @@ return array(
 	if ($__templater->test($__vars['thread']['Movie'], 'empty', array()) OR (!$__templater->method($__vars['post'], 'isFirstPost', array()))) {
 		$__compilerTemp1 .= '
 	';
-		if ($__templater->test($__vars['thread']['TV'], 'empty', array()) OR (!$__templater->method($__vars['post'], 'isFirstPost', array()))) {
+		if ($__templater->method($__vars['thread'], 'canReply', array()) OR $__templater->method($__vars['thread'], 'canReplyPreReg', array())) {
 			$__compilerTemp1 .= '
-	';
-			if ($__templater->method($__vars['thread'], 'canReply', array()) OR $__templater->method($__vars['thread'], 'canReplyPreReg', array())) {
-				$__compilerTemp1 .= '
 				';
-				$__vars['quoteLink'] = $__templater->preEscaped($__templater->func('link', array('threads/reply', $__vars['thread'], array('quote' => $__vars['post']['post_id'], ), ), true));
-				$__compilerTemp1 .= '
+			$__vars['quoteLink'] = $__templater->preEscaped($__templater->func('link', array('threads/reply', $__vars['thread'], array('quote' => $__vars['post']['post_id'], ), ), true));
+			$__compilerTemp1 .= '
 
 				';
-				if ($__vars['xf']['options']['multiQuote'] AND $__vars['xf']['visitor']['user_id']) {
-					$__compilerTemp1 .= '
+			if ($__vars['xf']['options']['multiQuote'] AND $__vars['xf']['visitor']['user_id']) {
+				$__compilerTemp1 .= '
 					<a href="' . $__templater->escape($__vars['quoteLink']) . '"
 						class="actionBar-action actionBar-action--mq u-jsOnly js-multiQuote"
 						title="' . $__templater->filter('Toggle multi-quote', array(array('for_attr', array()),), true) . '"
 						data-message-id="' . $__templater->escape($__vars['post']['post_id']) . '"
 						data-mq-action="add">' . 'Quote' . '</a>
 				';
-				}
-				$__compilerTemp1 .= '
+			}
+			$__compilerTemp1 .= '
 
 				<a href="' . $__templater->escape($__vars['quoteLink']) . '"
 					class="actionBar-action actionBar-action--reply"
@@ -730,9 +727,6 @@ return array(
 					data-xf-click="quote"
 					data-quote-href="' . $__templater->func('link', array('posts/quote', $__vars['post'], ), true) . '">' . 'Reply' . '</a>
 			';
-			}
-			$__compilerTemp1 .= '
-';
 		}
 		$__compilerTemp1 .= '
 ';
@@ -854,7 +848,6 @@ return array(
 ';
 	}
 	$__compilerTemp2 .= '
-			' . $__templater->includeTemplate('snog_tv_post_macros_action_bar', $__vars) . '
 			';
 	if ($__vars['post']['edit_count'] AND $__templater->method($__vars['post'], 'canViewHistory', array())) {
 		$__compilerTemp2 .= '
@@ -1019,39 +1012,6 @@ return array(
 	}
 
 </style>
-';
-	if (!$__templater->test($__vars['post']['Promotions'], 'empty', array())) {
-		$__compilerTemp2 .= '
-	';
-		if ($__templater->method($__vars['xf']['visitor'], 'canApproveAdvancedForms', array()) AND $__vars['post']['Promotions']['approve']) {
-			$__compilerTemp2 .= '
-		<a href="' . $__templater->func('link', array('form/approve', array('posid' => $__vars['post']['post_id'], ), ), true) . '"
-		   class="actionBar-action actionBar-action--warn actionBar-action--menuItem"
-		   data-xf-click="overlay">
-			' . 'Approve' . '
-		</a>
-	
-		<a href="' . $__templater->func('link', array('form/deny', array('posid' => $__vars['post']['post_id'], ), ), true) . '"
-		   class="actionBar-action actionBar-action--warn actionBar-action--menuItem"
-		   data-xf-click="overlay">
-			' . 'Deny' . '
-		</a>
-	';
-		}
-		$__compilerTemp2 .= '
-	';
-		if ($__templater->method($__vars['xf']['visitor'], 'canExtendAdvancedFormsPolls', array()) AND $__vars['post']['Promotions']['poll_id']) {
-			$__compilerTemp2 .= '
-		<a href="' . $__templater->func('link', array('form/extend', array('posid' => $__vars['post']['post_id'], ), ), true) . '"
-		   class="actionBar-action actionBar-action--warn actionBar-action--menuItem">
-			' . 'Extend' . '
-		</a>
-	';
-		}
-		$__compilerTemp2 .= '
-';
-	}
-	$__compilerTemp2 .= '
 			';
 	if ($__templater->method($__vars['post'], 'canConvertPostToScUpdate', array())) {
 		$__compilerTemp2 .= '

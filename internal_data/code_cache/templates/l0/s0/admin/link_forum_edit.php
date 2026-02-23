@@ -32,51 +32,7 @@ return array(
 	}
 	$__finalCompiled .= '
 
-';
-	$__compilerTemp1 = '';
-	if ($__templater->method($__vars['xf']['visitor'], 'canEditIcon', array())) {
-		$__compilerTemp1 .= '
-	' . $__templater->formUploadRow(array(
-			'name' => 'upload',
-			'accept' => '.gif,.jpeg,.jpg,.jpe,.png',
-		), array(
-			'label' => 'Icon',
-			'explain' => 'It is recommended that you use an image that is at least ' . $__templater->escape($__vars['xf']['options']['Fs_NodeIcon_nodeDimensions']['width']) . 'x' . $__templater->escape($__vars['xf']['options']['Fs_NodeIcon_nodeDimensions']['height']) . ' pixels.',
-		)) . '
-';
-	}
-	$__compilerTemp2 = '';
-	if (!$__templater->method($__vars['node'], 'isInsert', array())) {
-		$__compilerTemp2 .= '
-	';
-		if ($__templater->method($__vars['node'], 'getIcon', array())) {
-			$__compilerTemp2 .= '
-		' . $__templater->formRow('
-			<img src="' . $__templater->func('base_url', array($__templater->method($__vars['node'], 'getIcon', array()), ), true) . '" />
-			<br/>
-			' . $__templater->button('', array(
-				'href' => $__templater->func('link', array('forums/delete-icon', $__vars['node'], ), false),
-				'icon' => 'delete',
-				'overlay' => 'true',
-			), '', array(
-			)) . '
-		', array(
-				'label' => 'Custom node icon',
-			)) . '
-	';
-		} else {
-			$__compilerTemp2 .= '
-		' . $__templater->formRow('
-			' . 'No icon' . '
-		', array(
-				'label' => 'Custom node icon',
-			)) . '
-	';
-		}
-		$__compilerTemp2 .= '
-';
-	}
-	$__finalCompiled .= $__templater->form('
+' . $__templater->form('
 	<div class="block-container">
 		<div class="block-body">
 			' . $__templater->callMacro('node_edit_macros', 'title', array(
@@ -85,10 +41,6 @@ return array(
 			' . $__templater->callMacro('node_edit_macros', 'description', array(
 		'node' => $__vars['node'],
 	), $__vars) . '
-
-' . $__compilerTemp1 . '
-
-' . $__compilerTemp2 . '
 
 			' . $__templater->formTextBoxRow(array(
 		'name' => 'link_url',

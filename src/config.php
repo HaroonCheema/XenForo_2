@@ -19,6 +19,6 @@ $config['enableLivePayments'] = false;
 
 $config['debug'] = true;
 
-$config['development']['defaultAddOn'] = 'FS/PayPalPaymentRedirection';
+$config['development']['defaultAddOn'] = 'FS/AllStates';
 
 $config['development']['enabled'] = true;

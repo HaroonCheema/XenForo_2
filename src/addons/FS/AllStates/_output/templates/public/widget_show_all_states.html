@@ -1,0 +1,66 @@
+<xf:css src="show_all_states.less"/>
+<xf:if is="$nodes is not empty">
+    <div class="block"{{ widget_data($widget) }}>
+        <div class="block-container">
+            <h3 class="block-minorHeader">{$title}</h3>
+            <div class="block-body">
+                <div class="attractive-states-slider-wrapper">
+                    <button class="slider-arrow slider-arrow--prev" aria-label="Previous" style="margin: 0 3px;">&#8249;</button>
+                    <div class="attractive-states-track-outer">
+                        <ul class="listHeap attractive-states">
+                            <xf:foreach loop="$nodes" value="$node">
+                                <li>
+                                    <a class="attractive-state" href="{{ link('categories', $node) }}">
+                                        <span class="state-title">
+                                            <xf:if is="$node.getStateIcon()">
+                                                <img
+                                                    class="state-icon"
+                                                    src="{{ base_url($node.getStateIcon()) }}"
+                                                    alt="{$node.title}"
+                                                    style="width: {$xf.options.fs_state_icon_dimenstions.width}px; height: {$xf.options.fs_state_icon_dimenstions.height}px;"
+                                                    loading="lazy"
+                                                />
+                                            </xf:if> {$node.title}
+                                        </span>
+                                    </a>
+                                </li>
+                            </xf:foreach>
+                        </ul>
+                    </div>
+                    <button class="slider-arrow slider-arrow--next" aria-label="Next" style="margin: 0 3px;">&#8250;</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</xf:if>
+
+<script>
+(function() {
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.attractive-states-slider-wrapper').forEach(function(wrapper) {
+            const track = wrapper.querySelector('.attractive-states');
+            const prev  = wrapper.querySelector('.slider-arrow--prev');
+            const next  = wrapper.querySelector('.slider-arrow--next');
+            const scrollAmount = 220;
+
+            next.addEventListener('click', function() {
+                track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            });
+            prev.addEventListener('click', function() {
+                track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            });
+
+            function updateArrows() {
+                prev.style.opacity = track.scrollLeft <= 0 ? '0.3' : '1';
+                prev.style.pointerEvents = track.scrollLeft <= 0 ? 'none' : 'auto';
+                const atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 2;
+                next.style.opacity = atEnd ? '0.3' : '1';
+                next.style.pointerEvents = atEnd ? 'none' : 'auto';
+            }
+
+            track.addEventListener('scroll', updateArrows);
+            updateArrows();
+        });
+    });
+})();
+</script>

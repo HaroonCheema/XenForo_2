@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<widget_definitions>
+  <widget_definition definition_id="all_states_home" definition_class="FS\AllStates\Widget\State"/>
+</widget_definitions>

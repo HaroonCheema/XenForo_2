@@ -1,0 +1,38 @@
+{
+    "fs_state_icon.txt": {
+        "global_cache": false,
+        "version_id": 1000300,
+        "version_string": "1.0.3",
+        "hash": "24663e53b33df749ddd33a33a1e4a2fd"
+    },
+    "fs_state_icon_disp.txt": {
+        "global_cache": false,
+        "version_id": 1000300,
+        "version_string": "1.0.3",
+        "hash": "07d1d9abcbe04d558d4e7b183aa80965"
+    },
+    "option.fs_state_icon_dimenstions.txt": {
+        "global_cache": false,
+        "version_id": 1000300,
+        "version_string": "1.0.3",
+        "hash": "6961674b26d8128f076292622fa390a7"
+    },
+    "option_explain.fs_state_icon_dimenstions.txt": {
+        "global_cache": false,
+        "version_id": 1000300,
+        "version_string": "1.0.3",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "option_group.fs_state_opt.txt": {
+        "global_cache": false,
+        "version_id": 1000300,
+        "version_string": "1.0.3",
+        "hash": "12b0dc29e02b26096cd5cb58f507199b"
+    },
+    "option_group_description.fs_state_opt.txt": {
+        "global_cache": false,
+        "version_id": 1000300,
+        "version_string": "1.0.3",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    }
+}

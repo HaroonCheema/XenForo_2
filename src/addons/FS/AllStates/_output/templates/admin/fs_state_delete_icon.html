@@ -1,0 +1,16 @@
+<xf:title>{{ phrase('please_confirm_delete_icon') }}</xf:title>
+
+<xf:form action="{{ link('categories/delete-icon', $node) }}" class="block" ajax="true">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:inforow rowtype="confirm">
+				{{ phrase('please_confirm_that_you_want_to_delete_following:') }}
+
+				<xf:formrow rowtype="fullWidth noLabel">
+					<img src="{{ base_url($node.getStateIcon()) }}" style="width: 250px; height: 250px;"/>
+				</xf:formrow>
+			</xf:inforow>
+			<xf:submitrow rowtype="simple" icon="delete" />
+		</div>
+	</div>
+</xf:form>

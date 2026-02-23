@@ -41,7 +41,7 @@ return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
 	$__finalCompiled = '';
-	$__templater->pageParams['pageTitle'] = $__templater->preEscaped('Nodes');
+	$__templater->pageParams['pageTitle'] = $__templater->preEscaped('nodes');
 	$__finalCompiled .= '
 
 ';
@@ -86,12 +86,12 @@ return array(
 				$__compilerTemp1 .= '
 						';
 				$__compilerTemp3 = '';
-				if ($__templater->method($__vars['node'], 'getIcon', array())) {
+				if ($__templater->method($__vars['node'], 'getStateIcon', array())) {
 					$__compilerTemp3 .= '
-	<div class="nodeIcon--custom"
-		 style="background-image: url(' . $__templater->func('base_url', array($__templater->method($__vars['node'], 'getIcon', array()), ), true) . ')">
+	<div class="stateIcon--custom"
+		 style="background-image: url(' . $__templater->func('base_url', array($__templater->method($__vars['node'], 'getStateIcon', array()), ), true) . ')">
 	</div>
-';
+	';
 				} else {
 					$__compilerTemp3 .= '
 	' . $__templater->callMacro(null, 'node_icon', array(

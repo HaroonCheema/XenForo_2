@@ -28,25 +28,12 @@ return array(
 						';
 				$__vars['node'] = $__vars['treeEntry']['record'];
 				$__compilerTemp1 .= '
-						';
-				$__compilerTemp3 = '';
-				if ($__templater->method($__vars['node'], 'getIcon', array())) {
-					$__compilerTemp3 .= '
-	<div class="nodeIcon--custom"
-		 style="background-image: url(' . $__templater->func('base_url', array($__templater->method($__vars['node'], 'getIcon', array()), ), true) . ')">
-	</div>
-';
-				} else {
-					$__compilerTemp3 .= '
-	<i class="nodeIcon nodeIcon--' . $__templater->escape($__vars['node']['NodeType']['node_type_id']) . '"></i>
-';
-				}
-				$__compilerTemp1 .= $__templater->dataRow(array(
+						' . $__templater->dataRow(array(
 					'rowclass' => ($__vars['customPermissions'][$__vars['node']['node_id']] ? 'dataList-row--custom' : ''),
 				), array(array(
 					'class' => 'dataList-cell--min',
 					'_type' => 'cell',
-					'html' => $__compilerTemp3,
+					'html' => '<i class="nodeIcon nodeIcon--' . $__templater->escape($__vars['node']['NodeType']['node_type_id']) . '"></i>',
 				),
 				array(
 					'class' => 'dataList-cell--link dataList-cell--main',

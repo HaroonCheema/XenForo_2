@@ -559,6 +559,7 @@ This option requires that the specified account is a catch-all account or suppor
   'option_explain.fs_show_icon' => '',
   'option_explain.fs_show_nav_icon_dimensions' => '',
   'option_explain.fs_show_nav_icon_space' => '',
+  'option_explain.fs_state_icon_dimenstions' => '',
   'option_explain.fs_subscrip_applicable_userGroups' => 'Enter the Applicable User Upgrade Ids Comma separated like 1,2,3,4.',
   'option_explain.fs_tbn_my_thread_forum_id' => '',
   'option_explain.fs_tbn_my_thread_minimum_items' => 'Minimum item in specific forum to allow used my threads.',

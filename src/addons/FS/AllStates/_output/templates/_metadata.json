@@ -1,0 +1,17 @@
+{
+    "admin/fs_state_delete_icon.html": {
+        "version_id": 1000300,
+        "version_string": "1.0.3",
+        "hash": "95559dfc8cbe7ade344dbd19ec8ed191"
+    },
+    "public/show_all_states.less": {
+        "version_id": 1000400,
+        "version_string": "1.0.4",
+        "hash": "3dd58cc1cd4d947feeefbd1ee6d3af4e"
+    },
+    "public/widget_show_all_states.html": {
+        "version_id": 1000300,
+        "version_string": "1.0.3",
+        "hash": "9add65c72d8ca11524213fc9df0c11d6"
+    }
+}

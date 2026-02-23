@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="admin" template="app.less" modification_key="fs_state_add_icon_css" description="fs_state_add_icon_css" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/^(.*)$/is]]></find>
+    <replace><![CDATA[$0
+
+.stateIcon--custom {
+width: 15px;
+height: 15px;
+background-size: cover;
+background-position: center;
+}]]></replace>
+  </modification>
+  <modification type="admin" template="category_edit" modification_key="fs_state_icon_add_edit" description="fs_state_icon_add_edit" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:macro template="node_edit_macros" name="description" arg-node="{$node}" />]]></find>
+    <replace><![CDATA[$0
+
+
+<xf:uploadrow name="stateIcon" accept=".gif,.jpeg,.jpg,.jpe,.png"
+			  label="{{ phrase('fs_state_icon') }}"
+			  explain="{{ phrase('it_is_recommended_that_you_use_image_that_is_at_least_x_pixels', {
+					   'width': $xf.options.fs_state_icon_dimenstions.width,
+					   'height': $xf.options.fs_state_icon_dimenstions.height
+					   }) }}" />
+
+<xf:if is="!$category.isInsert()">
+	<xf:if is="{$node.getStateIcon()}">
+		<xf:formrow label="{{ phrase('fs_state_icon_disp') }}">
+			<img src="{{ base_url($node.getStateIcon()) }}" style="width: 250px; height: 250px;"/>
+			<br/>
+			<xf:button href="{{ link('categories/delete-icon', $node) }}" icon="delete" overlay="true" />
+		</xf:formrow>
+	</xf:if>
+</xf:if>]]></replace>
+  </modification>
+  <modification type="admin" template="node_list" modification_key="fs_state_display_icon" description="fs_state_display_icon" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:macro name="node_icon" arg-node="{$node}" />]]></find>
+    <replace><![CDATA[<xf:if is="$node.getStateIcon()">
+	<div class="stateIcon--custom"
+		 style="background-image: url({{ base_url($node.getStateIcon()) }})">
+	</div>
+	<xf:else/>
+	$0
+</xf:if>]]></replace>
+  </modification>
+</template_modifications>

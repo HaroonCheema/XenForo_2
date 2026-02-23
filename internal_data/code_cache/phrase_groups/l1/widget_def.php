@@ -14,6 +14,7 @@ return array (
   'widget_def.TopUsers' => 'Top Users',
   'widget_def.UserStates' => 'User States',
   'widget_def.WelcomeBanner' => 'Welcome Banner',
+  'widget_def.all_states_home' => '[FS] All States',
   'widget_def.altf_filter_widget' => 'Thread Filter Widget',
   'widget_def.article_search_widget' => '[FS] Search from article',
   'widget_def.birthdays' => 'Today\'s birthdays',

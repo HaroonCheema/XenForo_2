@@ -317,19 +317,6 @@ return array(
 	$__compilerTemp3 .= '
 
 ';
-	if (($__vars['forum']['forum_type_id'] == 'snog_tv') AND $__templater->method($__vars['xf']['visitor'], 'hasPermission', array('tvthreads_interface', 'add_info', ))) {
-		$__compilerTemp3 .= '
-	';
-		if (!$__vars['thread']['TV']) {
-			$__compilerTemp3 .= '
-		<a href="' . $__templater->func('link', array('tv/addinfo', $__vars['thread'], ), true) . '" data-xf-click="overlay" class="menu-linkRow">' . 'Add TV show info' . '</a>
-	';
-		}
-		$__compilerTemp3 .= '
-';
-	}
-	$__compilerTemp3 .= '
-';
 	if ((($__templater->func('property', array('snog_movies_posterUpdateButtonPosition', ), false) == 'thread_tools_menu') AND ($__vars['thread']['Movie'] AND ($__vars['xf']['visitor']['is_admin'] OR $__vars['xf']['visitor']['is_moderator'])))) {
 		$__compilerTemp3 .= '
 												<a href="' . $__templater->func('link', array('movies/poster', $__vars['thread']['Movie'], ), true) . '" data-xf-click="overlay" class="menu-linkRow">
@@ -339,15 +326,6 @@ return array(
 	}
 	$__compilerTemp3 .= '
 
-											';
-	if ((($__templater->func('property', array('snog_tv_posterUpdateButtonPosition', ), false) == 'thread_tools_menu') AND ($__vars['thread']['TV'] AND ($__vars['xf']['visitor']['is_admin'] OR $__vars['xf']['visitor']['is_moderator'])))) {
-		$__compilerTemp3 .= '
-												<a href="' . $__templater->func('link', array('tv/poster', $__vars['thread']['TV'], ), true) . '" data-xf-click="overlay" class="menu-linkRow">
-													' . 'Check for new poster' . '
-												</a>
-											';
-	}
-	$__compilerTemp3 .= '
 											';
 	if ($__templater->method($__vars['thread'], 'canConvertThreadToScItem', array())) {
 		$__compilerTemp3 .= '
@@ -1287,76 +1265,42 @@ return array(
 	if ($__templater->method($__vars['thread'], 'canReply', array()) OR $__vars['isPreRegReply']) {
 		$__finalCompiled .= '
 	';
-		if (!$__templater->test($__vars['thread']['Form'], 'empty', array()) AND $__vars['thread']['Form']['quickreply']) {
-			$__finalCompiled .= '
-	' . $__templater->callMacro('snog_forms_macro', 'form', array(
-				'form' => $__vars['thread']['Form'],
-				'warnings' => $__vars['formWarnings'],
-				'questions' => $__vars['formQuestions'],
-				'conditionQuestions' => $__vars['conditionQuestions'],
-				'canSubmit' => $__vars['canSubmitForm'],
-				'attachmentData' => $__vars['attachmentData'],
-				'nodeTree' => $__vars['nodeTree'],
-			), $__vars) . '
+		$__templater->includeJs(array(
+			'src' => 'xf/message.js',
+			'min' => '1',
+		));
+		$__finalCompiled .= $__templater->form('
 
-';
-		} else {
-			$__finalCompiled .= '
-	';
-			$__compilerTemp11 = '';
-			if (!$__templater->test($__vars['thread']['TV'], 'empty', array()) AND (!$__vars['thread']['TV']['tv_episode'])) {
-				$__compilerTemp11 .= '
-	';
-				$__templater->includeJs(array(
-					'src' => 'Snog/TV/message.min.js',
-				));
-				$__compilerTemp11 .= '
-';
-			} else {
-				$__compilerTemp11 .= '
-	';
-				$__templater->includeJs(array(
-					'src' => 'xf/message.js',
-					'min' => '1',
-				));
-				$__compilerTemp11 .= '
-';
-			}
-			$__finalCompiled .= $__templater->form('
-
-		' . $__compilerTemp11 . '
+		' . '' . '
 
 		<div class="block-container">
 			<div class="block-body">
 				' . $__templater->callMacro('quick_reply_macros', 'body', array(
-				'message' => $__vars['thread']['draft_reply']['message'],
-				'thread' => $__vars['thread'],
-				'attachmentData' => $__vars['attachmentData'],
-				'forceHash' => $__vars['thread']['draft_reply']['attachment_hash'],
-				'messageSelector' => '.js-post',
-				'multiQuoteHref' => $__templater->func('link', array('threads/multi-quote', $__vars['thread'], ), false),
-				'multiQuoteStorageKey' => 'multiQuoteThread',
-				'lastDate' => $__vars['lastPost']['post_date'],
-				'lastKnownDate' => $__vars['thread']['last_post_date'],
-				'loadExtra' => $__vars['isSimpleDateDisplay'],
-				'showGuestControls' => (!$__vars['isPreRegReply']),
-				'previewUrl' => $__templater->func('link', array('threads/reply-preview', $__vars['thread'], ), false),
-				'prefixes' => $__vars['prefixes'],
-			), $__vars) . '
+			'message' => $__vars['thread']['draft_reply']['message'],
+			'attachmentData' => $__vars['attachmentData'],
+			'forceHash' => $__vars['thread']['draft_reply']['attachment_hash'],
+			'messageSelector' => '.js-post',
+			'multiQuoteHref' => $__templater->func('link', array('threads/multi-quote', $__vars['thread'], ), false),
+			'multiQuoteStorageKey' => 'multiQuoteThread',
+			'lastDate' => $__vars['lastPost']['post_date'],
+			'lastKnownDate' => $__vars['thread']['last_post_date'],
+			'loadExtra' => $__vars['isSimpleDateDisplay'],
+			'showGuestControls' => (!$__vars['isPreRegReply']),
+			'previewUrl' => $__templater->func('link', array('threads/reply-preview', $__vars['thread'], ), false),
+			'prefixes' => $__vars['prefixes'],
+			'thread' => $__vars['thread'],
+		), $__vars) . '
 			</div>
 		</div>
 	', array(
-				'action' => $__templater->func('link', array('threads/add-reply', $__vars['thread'], ), false),
-				'id' => 'quickReplyForm',
-				'ajax' => 'true',
-				'draft' => $__templater->func('link', array('threads/draft', $__vars['thread'], ), false),
-				'class' => 'block js-quickReply',
-				'data-xf-init' => 'attachment-manager quick-reply' . (($__templater->method($__vars['xf']['visitor'], 'isShownCaptcha', array()) AND (!$__vars['isPreRegReply'])) ? ' guest-captcha' : ''),
-				'data-message-container' => 'div[data-type=\'post\'] .js-replyNewMessageContainer',
-			)) . '
-';
-		}
-		$__finalCompiled .= '
+			'action' => $__templater->func('link', array('threads/add-reply', $__vars['thread'], ), false),
+			'id' => 'quickReplyForm',
+			'ajax' => 'true',
+			'draft' => $__templater->func('link', array('threads/draft', $__vars['thread'], ), false),
+			'class' => 'block js-quickReply',
+			'data-xf-init' => 'attachment-manager quick-reply' . (($__templater->method($__vars['xf']['visitor'], 'isShownCaptcha', array()) AND (!$__vars['isPreRegReply'])) ? ' guest-captcha' : ''),
+			'data-message-container' => 'div[data-type=\'post\'] .js-replyNewMessageContainer',
+		)) . '
 ';
 	}
 	$__finalCompiled .= '

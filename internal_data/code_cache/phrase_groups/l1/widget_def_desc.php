@@ -13,6 +13,7 @@ return array (
   'widget_def_desc.TopUsers' => '',
   'widget_def_desc.UserStates' => '',
   'widget_def_desc.WelcomeBanner' => 'Welcome Banner Threads',
+  'widget_def_desc.all_states_home' => '',
   'widget_def_desc.altf_filter_widget' => 'A widget to allow filtering the current forum by custom fields',
   'widget_def_desc.article_search_widget' => '[FS] Search from article',
   'widget_def_desc.birthdays' => 'A block containing a heap of avatars of users whose birthday is today.',
