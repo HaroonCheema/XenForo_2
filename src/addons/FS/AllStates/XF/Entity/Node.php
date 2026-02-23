@@ -26,19 +26,19 @@ class Node extends XFCP_Node
     //     return $parent;
     // }
 
-    protected function _postSave()
-    {
-        if ($upload = \xf::app()->request->getFile('stateIcon', false, false)) {
-            \xf::app()->repository('FS\AllStates:Node')->setIconFromUpload($this, $upload);
-        }
-    }
+    // protected function _postSave()
+    // {
+    //     if ($upload = \xf::app()->request->getFile('stateIcon', false, false)) {
+    //         \xf::app()->repository('FS\AllStates:Node')->setIconFromUpload($this, $upload);
+    //     }
+    // }
 
-    protected function _postDelete()
-    {
-        $parent = parent::_postDelete();
+    // protected function _postDelete()
+    // {
+    //     $parent = parent::_postDelete();
 
-        \XF\Util\File::deleteFromAbstractedPath('data://stateIcons/' . $this->node_id . '.jpg');
+    //     \XF\Util\File::deleteFromAbstractedPath('data://stateIcons/' . $this->node_id . '.jpg');
 
-        return $parent;
-    }
+    //     return $parent;
+    // }
 }

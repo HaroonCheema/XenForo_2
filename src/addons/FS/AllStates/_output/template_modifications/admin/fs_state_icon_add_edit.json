@@ -2,7 +2,7 @@
     "template": "category_edit",
     "description": "fs_state_icon_add_edit",
     "execution_order": 10,
-    "enabled": true,
+    "enabled": false,
     "action": "str_replace",
     "find": "<xf:macro template=\"node_edit_macros\" name=\"description\" arg-node=\"{$node}\" />",
     "replace": "$0\n\n\n<xf:uploadrow name=\"stateIcon\" accept=\".gif,.jpeg,.jpg,.jpe,.png\"\n\t\t\t  label=\"{{ phrase('fs_state_icon') }}\"\n\t\t\t  explain=\"{{ phrase('it_is_recommended_that_you_use_image_that_is_at_least_x_pixels', {\n\t\t\t\t\t   'width': $xf.options.fs_state_icon_dimenstions.width,\n\t\t\t\t\t   'height': $xf.options.fs_state_icon_dimenstions.height\n\t\t\t\t\t   }) }}\" />\n\n<xf:if is=\"!$category.isInsert()\">\n\t<xf:if is=\"{$node.getStateIcon()}\">\n\t\t<xf:formrow label=\"{{ phrase('fs_state_icon_disp') }}\">\n\t\t\t<img src=\"{{ base_url($node.getStateIcon()) }}\" style=\"width: 250px; height: 250px;\"/>\n\t\t\t<br/>\n\t\t\t<xf:button href=\"{{ link('categories/delete-icon', $node) }}\" icon=\"delete\" overlay=\"true\" />\n\t\t</xf:formrow>\n\t</xf:if>\n</xf:if>"
