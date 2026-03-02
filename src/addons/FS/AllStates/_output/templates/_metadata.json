@@ -5,8 +5,8 @@
         "hash": "95559dfc8cbe7ade344dbd19ec8ed191"
     },
     "public/show_all_states.less": {
-        "version_id": 1000400,
-        "version_string": "1.0.4",
+        "version_id": 1000700,
+        "version_string": "1.0.7",
         "hash": "3dd58cc1cd4d947feeefbd1ee6d3af4e"
     },
     "public/widget_show_all_states.html": {

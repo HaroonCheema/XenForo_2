@@ -17,11 +17,23 @@
         "version_string": "1.0.3",
         "hash": "6961674b26d8128f076292622fa390a7"
     },
+    "option.fs_stats_exclude_cat_ids.txt": {
+        "global_cache": false,
+        "version_id": 1000600,
+        "version_string": "1.0.6",
+        "hash": "4f4dc73ef2eddef0431667450e4dc8ca"
+    },
     "option_explain.fs_state_icon_dimenstions.txt": {
         "global_cache": false,
         "version_id": 1000300,
         "version_string": "1.0.3",
         "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "option_explain.fs_stats_exclude_cat_ids.txt": {
+        "global_cache": false,
+        "version_id": 1000600,
+        "version_string": "1.0.6",
+        "hash": "bbeae43345a098fedd8aad5bad5d41fb"
     },
     "option_group.fs_state_opt.txt": {
         "global_cache": false,

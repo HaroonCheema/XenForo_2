@@ -21,7 +21,17 @@ class State extends AbstractWidget
 	{
 		$params = parent::getDefaultTemplateParams($context);
 		if ($context == 'options') {
-			$params['categories'] = $this->finder('XF:Node')->where('node_type_id', 'Category')->fetch();
+			$catFinder = $this->finder('XF:Node')->where('node_type_id', 'Category')->where('parent_node_id', 0);
+
+			$options = \XF::options();
+
+			$catIds = explode(',', $options->fs_stats_exclude_cat_ids);
+
+			if ($catIds) {
+				$catFinder->where('node_id', '!=', $catIds);
+			}
+
+			$params['categories'] = $catFinder->fetch();
 		}
 		return $params;
 	}
@@ -32,11 +42,17 @@ class State extends AbstractWidget
 		$options = $this->options;
 		$nodeIds = $options['node_ids'];
 
-		// Step 1: Fetch all nodes once (to build the tree without N+1 queries)
 		$allNodes = $this->finder('XF:Node')->fetch();
 
-		// Step 2: Get category nodes
-		$nodeFinder = $this->finder('XF:Node')->where('node_type_id', 'Category');
+		$options = \XF::options();
+
+		$catIds = explode(',', $options->fs_stats_exclude_cat_ids);
+
+		$nodeFinder = $this->finder('XF:Node')->where('node_type_id', 'Category')->where('parent_node_id', 0);
+
+		if ($catIds) {
+			$nodeFinder->where('node_id', '!=', $catIds);
+		}
 
 		if ($nodeIds && !in_array(0, $nodeIds)) {
 			$nodeFinder->where('node_id', $nodeIds);
@@ -44,20 +60,16 @@ class State extends AbstractWidget
 
 		$categories = $nodeFinder->fetch();
 
-		// Step 3: Build a parent->children map from ALL nodes
 		$childrenMap = [];
 		foreach ($allNodes as $node) {
 			$childrenMap[$node->parent_node_id][] = $node->node_id;
 		}
 
-		// Step 4: For each category, recursively get ALL descendant node IDs
-		// then find max last_post_date from xf_thread for those descendants
 		$db = \XF::db();
 
 		$categoryScores = [];
 
 		foreach ($categories as $category) {
-			// Recursively collect all descendant node IDs
 			$descendantIds = $this->getAllDescendantNodeIds($category->node_id, $childrenMap);
 
 			if (empty($descendantIds)) {
@@ -78,13 +90,10 @@ class State extends AbstractWidget
 			$categoryScores[$category->node_id] = (int)($maxLastPost ?? 0);
 		}
 
-		// Step 5: Sort categories by their max last_post_date ascending
 		$categoriesArray = $categories->toArray();
 
 		uasort($categoriesArray, function ($a, $b) use ($categoryScores) {
 			return $categoryScores[$a->node_id] <=> $categoryScores[$b->node_id];
-			// For descending (newest first), swap $a and $b:
-			// return $categoryScores[$b->node_id] <=> $categoryScores[$a->node_id];
 		});
 
 		$viewParams = [
@@ -96,9 +105,7 @@ class State extends AbstractWidget
 		return $this->renderer('widget_show_all_states', $viewParams);
 	}
 
-	/**
-	 * Recursively collect all descendant node IDs for a given parent node ID.
-	 */
+
 	protected function getAllDescendantNodeIds(int $parentId, array $childrenMap): array
 	{
 		$ids = [];
@@ -109,7 +116,6 @@ class State extends AbstractWidget
 
 		foreach ($childrenMap[$parentId] as $childId) {
 			$ids[] = $childId;
-			// Recurse into this child's children
 			$ids = array_merge($ids, $this->getAllDescendantNodeIds($childId, $childrenMap));
 		}
 

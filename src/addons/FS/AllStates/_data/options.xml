@@ -7,4 +7,8 @@
 height</sub_options>
     <relation group_id="fs_state_opt" display_order="1"/>
   </option>
+  <option option_id="fs_stats_exclude_cat_ids" edit_format="textbox" data_type="string">
+    <default_value>357,60</default_value>
+    <relation group_id="fs_state_opt" display_order="2"/>
+  </option>
 </options>

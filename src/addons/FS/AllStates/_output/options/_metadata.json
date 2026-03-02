@@ -1,5 +1,8 @@
 {
     "fs_state_icon_dimenstions.json": {
         "hash": "694417913fc053eba2ea93493ffa3000"
+    },
+    "fs_stats_exclude_cat_ids.json": {
+        "hash": "a7f666c9c4045ade9227e5b6520cb5ea"
     }
 }
