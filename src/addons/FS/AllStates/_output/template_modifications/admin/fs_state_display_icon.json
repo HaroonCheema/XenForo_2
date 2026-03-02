@@ -1,9 +1,0 @@
-{
-    "template": "node_list",
-    "description": "fs_state_display_icon",
-    "execution_order": 10,
-    "enabled": false,
-    "action": "str_replace",
-    "find": "<xf:macro name=\"node_icon\" arg-node=\"{$node}\" />",
-    "replace": "<xf:if is=\"$node.getStateIcon()\">\n\t<div class=\"stateIcon--custom\"\n\t\t style=\"background-image: url({{ base_url($node.getStateIcon()) }})\">\n\t</div>\n\t<xf:else/>\n\t$0\n</xf:if>"
-}

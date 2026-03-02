@@ -8,10 +8,10 @@ class Node extends XFCP_Node
 {
     public function getStateIcon()
     {
-        $icon = 'data://stateIcons/' . $this->node_id . '.jpg';
+        $icon = 'data://mainStateIcons/' . $this->node_id . '.png';
 
         if (\XF\Util\File::abstractedPathExists($icon)) {
-            return $this->app()->applyExternalDataUrl('stateIcons/' . $this->node_id . '.jpg?' . (time() + rand(1, 9999)), true);
+            return $this->app()->applyExternalDataUrl('mainStateIcons/' . $this->node_id . '.png?' . (time() + rand(1, 9999)), true);
         }
 
         return;

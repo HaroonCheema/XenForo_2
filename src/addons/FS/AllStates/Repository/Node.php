@@ -15,7 +15,7 @@ class Node extends Repository
 			throw new \XF\PrintableException(reset($errors));
 		}
 
-		$target = 'data://stateIcons/' . $node->node_id . '.jpg';
+		$target = 'data://mainStateIcons/' . $node->node_id . '.jpg';
 
 		try {
 			$image = \XF::app()->imageManager->imageFromFile($upload->getTempFile());
