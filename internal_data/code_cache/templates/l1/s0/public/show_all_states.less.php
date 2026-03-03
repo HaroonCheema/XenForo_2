@@ -1,5 +1,5 @@
 <?php
-// FROM HASH: 3dd58cc1cd4d947feeefbd1ee6d3af4e
+// FROM HASH: d507230fe564e48e828942ffd7cdbc88
 return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
@@ -168,8 +168,9 @@ return array(
 	}
 
 	@media (max-width: 600px) {
-		li { width: 80px; min-width: 65px; }
-		.state-title { font-size: 12px; padding: 8px 6px 6px; }
+		li {  min-width: 65px; }
+		.state-title { font-size: 10px; padding: 8px 6px 6px; }
+		.state-icon {padding: 8px;}
 	}
 }
 

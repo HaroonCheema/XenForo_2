@@ -11,7 +11,8 @@ class Node extends XFCP_Node
         $icon = 'data://mainStateIcons/' . $this->node_id . '.png';
 
         if (\XF\Util\File::abstractedPathExists($icon)) {
-            return $this->app()->applyExternalDataUrl('mainStateIcons/' . $this->node_id . '.png?' . (time() + rand(1, 9999)), true);
+            return $this->app()->applyExternalDataUrl('mainStateIcons/' . $this->node_id . '.png', true);
+            // return $this->app()->applyExternalDataUrl('mainStateIcons/' . $this->node_id . '.png?' . (time() + rand(1, 9999)), true);
         }
 
         return;
