@@ -19,6 +19,6 @@ $config['enableLivePayments'] = false;
 
 $config['debug'] = true;
 
-$config['development']['defaultAddOn'] = 'FS/AllStates';
+$config['development']['defaultAddOn'] = 'FS/MultipleRouteFilters';
 
 $config['development']['enabled'] = true;

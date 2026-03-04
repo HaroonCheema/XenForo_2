@@ -1,0 +1,6 @@
+{
+    "from_class": "XF\\Mvc\\Dispatcher",
+    "to_class": "FS\\MultipleRouteFilters\\XF\\Mvc\\Dispatcher",
+    "execute_order": 10,
+    "active": true
+}
