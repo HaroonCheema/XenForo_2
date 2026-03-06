@@ -1,2 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<routes/>
+<routes>
+  <route route_type="admin" route_prefix="multi-route-filters" format=":int&lt;route_filter_id&gt;/" controller="FS\MultipleRouteFilters:MultiRouteFilter" context="multiRouteFilters"/>
+</routes>

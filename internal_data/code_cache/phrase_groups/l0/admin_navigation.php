@@ -201,6 +201,7 @@ return array (
   'admin_navigation.messageUsers' => 'Message users',
   'admin_navigation.moderatorLog' => 'Moderator log',
   'admin_navigation.moderators' => 'Moderators',
+  'admin_navigation.multiRouteFilters' => 'Multiple route filters',
   'admin_navigation.navigation' => 'Public navigation',
   'admin_navigation.nodePermissions' => 'Node permissions',
   'admin_navigation.notices' => 'Notices',

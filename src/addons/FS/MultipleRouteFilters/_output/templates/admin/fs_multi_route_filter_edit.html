@@ -1,0 +1,45 @@
+<xf:if is="$routeFilter.isInsert()">
+	<xf:title>{{ phrase('add_route_filter') }}</xf:title>
+	<xf:else />
+	<xf:title>{{ phrase('edit_route_filter:') }} {$routeFilter.find_route}</xf:title>
+</xf:if>
+
+<xf:pageaction if="$routeFilter.isUpdate()">
+	<xf:button href="{{ link('multi-route-filters/delete', $routeFilter) }}" icon="delete" overlay="true" />
+</xf:pageaction>
+
+<xf:form action="{{ link('multi-route-filters/save', $routeFilter) }}" ajax="true" class="block">
+	<div class="block-container">
+		<div class="block-body">
+
+			<xf:textboxrow name="find_route" value="{$routeFilter.find_route_readable}"
+						   maxlength="{{ max_length($routeFilter, 'find_route') }}"
+						   label="{{ phrase('find_route') }}"
+						   explain="{{ phrase('you_should_only_enter_route_part_of_url_here_example', {
+									'fullUrl': $fullThreadLink,
+									'route': $routeValue
+									}) }}"
+						   dir="ltr" />
+
+			<xf:textboxrow name="replace_route" value="{$routeFilter.replace_route_readable}"
+						   maxlength="{{ max_length($routeFilter, 'replace_route') }}"
+						   label="{{ phrase('replace_with') }}"
+						   explain="{{ phrase('route_filter_find_replace_fields_support_wildcards') }}"
+						   dir="ltr" />
+
+			<xf:comment>
+
+				<xf:checkboxrow>
+					<xf:option name="enabled" value="1" selected="$routeFilter.enabled"
+							   label="{{ phrase('enabled') }}" />
+					<xf:option name="url_to_route_only" value="1" selected="$routeFilter.url_to_route_only"
+							   label="{{ phrase('incoming_url_conversion_only') }}"
+							   hint="{{ phrase('if_selected_this_filter_will_only_be_used_to_change_incoming_urls') }}" />
+				</xf:checkboxrow>
+
+			</xf:comment>
+		</div>
+
+		<xf:submitrow sticy="true" icon="save" />
+	</div>
+</xf:form>

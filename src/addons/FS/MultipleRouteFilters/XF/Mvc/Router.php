@@ -5,9 +5,37 @@ namespace FS\MultipleRouteFilters\XF\Mvc;
 class Router extends XFCP_Router
 {
 
+    protected $multiRouteFiltersIn = [];
+    protected $multiRouteFiltersOut = [];
+
+    public function setRouteFilters(array $routeFiltersIn, array $routeFiltersOut)
+    {
+        $parent = parent::setRouteFilters($routeFiltersIn, $routeFiltersOut);
+
+        // $repo = \XF::app()->repository('FS\MultipleRouteFilters:MultiRouteFilter');
+
+        $repo = $this->getRouteFilterRepo();
+
+        $cache = $repo->getRouteFilterCacheData();
+
+        $this->multiRouteFiltersIn = $cache['in'];
+        $this->multiRouteFiltersOut = $cache['out'];
+
+        return $parent;
+    }
+
+    /**
+     * @return \FS\MultipleRouteFilters\Repository\MultiRouteFilter
+     */
+    protected function getRouteFilterRepo()
+    {
+        return \XF::app()->repository('FS\MultipleRouteFilters:MultiRouteFilter');
+    }
+
     public function applyMultiRouteFilterToUrl($prefix, $routeUrl)
     {
-        $filters = $this->routeFiltersOut;
+
+        $filters = $this->multiRouteFiltersOut;
 
         if (isset($filters[$prefix])) {
             if (!isset($this->routeFiltersOutRegex[$prefix])) {
@@ -42,6 +70,8 @@ class Router extends XFCP_Router
             // $newPrefix = strstr($routeUrl, '/', true);
             $parts = explode('/', $routeUrl, 2);
             $newPrefix = $parts[0];
+
+
 
             if ($newPrefix === false || $newPrefix === $prefix) {
                 break;

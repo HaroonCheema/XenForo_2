@@ -4,7 +4,7 @@ return array(
 'code' => function($__templater, array $__vars, $__extensions = null)
 {
 	$__finalCompiled = '';
-	$__templater->pageParams['pageTitle'] = $__templater->preEscaped('Custom BB codes');
+	$__templater->pageParams['pageTitle'] = $__templater->preEscaped('custom_bb_codes');
 	$__finalCompiled .= '
 
 ';
@@ -63,13 +63,6 @@ return array(
 					'explain' => $__templater->escape($__vars['bbCode']['description']),
 					'_type' => 'main',
 					'html' => '',
-				);
-				$__compilerTemp3[] = array(
-					'href' => $__templater->func('link', array('bb-codes/permissions', $__vars['bbCode'], ), false),
-					'_type' => 'action',
-					'html' => '
-	' . 'Permissions' . '
-',
 				);
 				if (!$__vars['exportView']) {
 					$__compilerTemp3[] = array(

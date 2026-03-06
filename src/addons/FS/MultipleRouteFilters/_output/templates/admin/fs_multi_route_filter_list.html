@@ -1,0 +1,62 @@
+<xf:title>{{ phrase('fs_multiple_route_filters') }}</xf:title>
+
+<xf:comment>
+	<xf:description>{{ phrase('route_filters_allow_you_to_change_standard_urls') }}</xf:description>
+</xf:comment>
+
+<xf:pageaction>
+	<xf:button href="{{ link('multi-route-filters/add') }}" icon="add">{{ phrase('add_route_filter') }}</xf:button>
+</xf:pageaction>
+
+<xf:if is="$routeFilters is not empty">
+	<xf:form action="{{ link('multi-route-filters/toggle') }}" class="block" ajax="true">
+		<div class="block-outer">
+			<xf:macro template="filter_macros" name="quick_filter" arg-key="route-filters" arg-class="block-outer-opposite" />
+		</div>
+		<div class="block-container">
+			<div class="block-body">
+				<xf:datalist>
+					<xf:datarow rowtype="header">
+						<xf:cell>{{ phrase('find') }}</xf:cell>
+						<xf:cell>{{ phrase('replace') }}</xf:cell>
+						<xf:cell>&nbsp;</xf:cell>
+						<xf:comment>						
+							<xf:cell>&nbsp;</xf:cell>
+						</xf:comment>
+					</xf:datarow>
+					<xf:foreach loop="$routeFilters" value="$routeFilter">
+						<xf:datarow delete="{{ link('multi-route-filters/delete', $routeFilter) }}">
+
+							<xf:comment>
+								<xf:cell href="{{ link('multi-route-filters/edit', $routeFilter) }}">
+									{$routeFilter.find_route_readable}
+								</xf:cell>
+								<xf:cell href="{{ link('multi-route-filters/edit', $routeFilter) }}">
+									{$routeFilter.replace_route_readable}
+								</xf:cell>
+							</xf:comment>
+
+							<xf:cell>
+								{$routeFilter.find_route_readable}
+							</xf:cell>
+							<xf:cell>
+								{$routeFilter.replace_route_readable}
+							</xf:cell>
+
+							<xf:comment>
+								<xf:toggle name="enabled[{$routeFilter.route_filter_id}]"
+										   selected="$routeFilter.enabled" class="dataList-cell--separated" submit="true"
+										   tooltip="{{ phrase('enable_disable_route_filter') }}" />
+							</xf:comment>
+						</xf:datarow>
+					</xf:foreach>
+				</xf:datalist>
+			</div>
+			<div class="block-footer">
+				<span class="block-footer-counter">{{ display_totals($routeFilters) }}</span>
+			</div>
+		</div>
+	</xf:form>
+	<xf:else />
+	<div class="blockMessage">{{ phrase('no_items_have_been_created_yet') }}</div>
+</xf:if>

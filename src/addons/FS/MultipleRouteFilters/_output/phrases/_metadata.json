@@ -1,0 +1,14 @@
+{
+    "admin_navigation.multiRouteFilters.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "2eef6ba220c83e5795c95907dd169398"
+    },
+    "fs_multiple_route_filters.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "cfc94c839c7fb7629db452553b138b58"
+    }
+}
