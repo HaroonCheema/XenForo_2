@@ -1,0 +1,9 @@
+{
+    "template": "xa_sc_category_edit",
+    "description": "fs_showcase_cat_add_url_field",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:textboxrow name=\"og_title\" value=\"{$category.og_title}\"",
+    "replace": "<xf:textboxrow name=\"short_url\" value=\"{$category.short_url}\"\n\t\t\t\tlabel=\"{{ phrase('fs_showcase_cate_short_url') }}\" />\n\n$0"
+}

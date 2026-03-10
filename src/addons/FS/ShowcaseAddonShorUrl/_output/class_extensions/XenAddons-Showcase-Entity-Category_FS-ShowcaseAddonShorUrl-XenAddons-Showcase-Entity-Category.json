@@ -1,0 +1,6 @@
+{
+    "from_class": "XenAddons\\Showcase\\Entity\\Category",
+    "to_class": "FS\\ShowcaseAddonShorUrl\\XenAddons\\Showcase\\Entity\\Category",
+    "execute_order": 10,
+    "active": true
+}

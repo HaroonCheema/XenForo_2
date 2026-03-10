@@ -19,6 +19,6 @@ $config['enableLivePayments'] = false;
 
 $config['debug'] = true;
 
-$config['development']['defaultAddOn'] = 'FS/MultipleRouteFilters';
+$config['development']['defaultAddOn'] = 'FS/ShowcaseAddonShorUrl';
 
 $config['development']['enabled'] = true;
