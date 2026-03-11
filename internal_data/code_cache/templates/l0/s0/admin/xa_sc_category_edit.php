@@ -263,6 +263,13 @@ return array(
 	)) . '
 
 			' . $__templater->formTextBoxRow(array(
+		'name' => 'short_url',
+		'value' => $__vars['category']['short_url'],
+	), array(
+		'label' => 'Short Url',
+	)) . '
+ 
+' . $__templater->formTextBoxRow(array(
 		'name' => 'og_title',
 		'value' => $__vars['category']['og_title'],
 		'maxlength' => $__templater->func('max_length', array($__vars['category'], 'og_title', ), false),

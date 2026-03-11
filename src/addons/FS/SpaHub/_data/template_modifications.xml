@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="admin" template="xa_sc_category_edit" modification_key="short_url" description="Short url" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:textboxrow name="og_title" value="{$category.og_title}"]]></find>
+    <replace><![CDATA[<xf:textboxrow name="short_url" value="{$category.short_url}"
+				label="{{ phrase('fs_showcase_cate_short_url') }}" />
+ 
+$0]]></replace>
+  </modification>
+</template_modifications>
