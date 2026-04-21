@@ -152,6 +152,15 @@
             "src/addons/devsell/BitcoinPayments/_data/phrases.xml",
             "src/addons/devsell/BitcoinPayments/_data/templates.xml"
         ],
+        "FS/AllStates": [
+            "src/addons/FS/AllStates/addon.json",
+            "src/addons/FS/AllStates/Widget/State.php",
+            "src/addons/FS/AllStates/_data/class_extensions.xml",
+            "src/addons/FS/AllStates/_data/options.xml",
+            "src/addons/FS/AllStates/_data/option_groups.xml",
+            "src/addons/FS/AllStates/_data/phrases.xml",
+            "src/addons/FS/AllStates/_data/templates.xml"
+        ],
         "FS/ApproveThreadPost": [
             "src/addons/FS/ApproveThreadPost/addon.json",
             "src/addons/FS/ApproveThreadPost/Entity/Forum.php",
@@ -283,6 +292,10 @@
         "FS/PostCounter": [
             "src/addons/FS/PostCounter/XF/Entity/Thread.php"
         ],
+        "FS/PostSortReactions": [
+            "src/addons/FS/PostSortReactions/addon.json",
+            "src/addons/FS/PostSortReactions/XF/Pub/Controller/Thread.php"
+        ],
         "FS/QuestionAnswers": [
             "src/addons/FS/QuestionAnswers/addon.json",
             "src/addons/FS/QuestionAnswers/Helper.php",
@@ -348,6 +361,10 @@
         "FS/SecurityQuestion": [
             "src/addons/FS/SecurityQuestion/Pub/Controller/SecurityQuestion.php",
             "src/addons/FS/SecurityQuestion/Setup.php"
+        ],
+        "FS/SpaHub": [
+            "src/addons/FS/SpaHub/Api/Controller/Spas.php",
+            "src/addons/FS/SpaHub/XenAddons/Showcase/Entity/Category.php"
         ],
         "FS/SwbFemaleVerify": [
             "src/addons/FS/SwbFemaleVerify/addon.json",
@@ -488,6 +505,6 @@
         ]
     },
     "total_missing": 6,
-    "total_inconsistent": 334,
-    "total_checked": 18043
+    "total_inconsistent": 345,
+    "total_checked": 18142
 }
