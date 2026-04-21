@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="fs_nowpayments_api_key" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Api key]]></phrase>
+  <phrase title="fs_nowpayments_ipn_urln" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[IPN URL]]></phrase>
+  <phrase title="fs_nowpayments_secret_key" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[IPN Secret key]]></phrase>
+  <phrase title="fs_you_must_provide_all_data" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You must provide all data!]]></phrase>
+</phrases>

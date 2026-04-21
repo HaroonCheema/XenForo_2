@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="admin" title="payment_profile_now_payments" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[<xf:textboxrow name="options[ipn_urln]" value="{$profile.options.ipn_urln}"
+			   autocomplete="text"
+			   label="{{ phrase('fs_nowpayments_ipn_urln') }}"
+			   hint="{{ phrase('required') }}">
+</xf:textboxrow>
+<xf:passwordboxrow name="options[api_key]" value="{$profile.options.api_key}" type="password" 
+				   autocomplete="new-password"
+				   label="{{ phrase('fs_nowpayments_api_key') }}"
+				   hint="{{ phrase('required') }}">
+</xf:passwordboxrow>
+
+<xf:passwordboxrow name="options[secret_key]" value="{$profile.options.secret_key}" type="password" 
+				   autocomplete="new-password"
+				   label="{{ phrase('fs_nowpayments_secret_key') }}"
+				   hint="{{ phrase('required') }}">
+</xf:passwordboxrow>]]></template>
+</templates>

@@ -1,0 +1,26 @@
+{
+    "fs_nowpayments_api_key.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "62c7594948c1231bbae9f948b1535b7e"
+    },
+    "fs_nowpayments_ipn_urln.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "0815fadbb71e44e411d729c98a97360c"
+    },
+    "fs_nowpayments_secret_key.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "9a7f6c8fba4b147dd5a0f8688335beec"
+    },
+    "fs_you_must_provide_all_data.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "829e9833da42ce6ffe8a23c3f9f45cbc"
+    }
+}

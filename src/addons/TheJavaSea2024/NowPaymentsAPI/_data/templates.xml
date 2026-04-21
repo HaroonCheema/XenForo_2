@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+  <template type="admin" title="payment_profile_NowPaymentsAPI" version_id="1000070" version_string="1.0.0"><![CDATA[
+  
+  <xf:textboxrow name="options[ipn_urln]" value="{$profile.options.ipn_urln}"
+			   autocomplete="text"
+			   label="{{ phrase('javasea_nowpayments_ipn_urln') }}"
+			   hint="{{ phrase('required') }}">
+</xf:textboxrow>
+<xf:passwordboxrow name="options[api_key]" value="{$profile.options.api_key}" type="password" 
+				   autocomplete="new-password"
+				   label="{{ phrase('javasea_nowpayments_api_key') }}"
+				   hint="{{ phrase('required') }}">
+</xf:passwordboxrow>
+
+<xf:passwordboxrow name="options[secret_key]" value="{$profile.options.secret_key}" type="password" 
+				   autocomplete="new-password"
+				   label="{{ phrase('javasea_nowpayments_secret_key') }}"
+				   hint="{{ phrase('required') }}">
+</xf:passwordboxrow>]]></template>
+</templates>

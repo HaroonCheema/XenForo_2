@@ -1,0 +1,23 @@
+{
+    "legacy_addon_id": "",
+    "title": "TheJavaSea.ME: NowPayments.io",
+    "description": "Accept cryptocurrency payments online on your website.",
+    "version_id": 1000070,
+    "version_string": "1.0.0",
+    "dev": "Marks-Man",
+    "dev_url": "https://thejavasea.me/",
+    "faq_url": "",
+    "support_url": "https://thejavasea.me/",
+    "extra_urls": [],
+    "require": {
+        "php": [
+            "7.1",
+            "PHP 7.1+"
+        ],
+        "XF": [
+            2020070,
+            "XenForo 2.2.0+"
+        ]
+    },
+    "icon": "icon.png"
+}
