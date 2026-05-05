@@ -500,6 +500,7 @@ return array (
   'option.fs_team_mobile_dimensions' => 'Team icon dimensions',
   'option.fs_teams_total' => 'Team Allowed',
   'option.fs_thread_end_date' => 'Date end',
+  'option.fs_thread_post_link_user_ids' => 'Applicable User Ids',
   'option.fs_thread_rules' => 'Thread Rules',
   'option.fs_thread_scoring_list_format' => 'List format',
   'option.fs_thread_scoring_list_order' => 'List order by',

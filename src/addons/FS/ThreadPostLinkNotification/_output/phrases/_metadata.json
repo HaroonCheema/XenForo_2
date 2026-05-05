@@ -1,0 +1,32 @@
+{
+    "option.fs_thread_post_link_user_ids.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "0620084577d21efcf4382029dc279e35"
+    },
+    "option_explain.fs_thread_post_link_user_ids.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "93d456f3b9f0fd0afd885d8d768e8a35"
+    },
+    "option_group.fs_post_thread_link.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "34f1461b32d63127f547b028c358f52d"
+    },
+    "option_group_description.fs_post_thread_link.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "x_used_a_link_in_this_thread_y.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "1476da77c5cf3928ae4621479a56cd4a"
+    }
+}

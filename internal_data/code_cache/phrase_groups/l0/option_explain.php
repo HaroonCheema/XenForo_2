@@ -568,6 +568,7 @@ This option requires that the specified account is a catch-all account or suppor
   'option_explain.fs_team_mobile_dimensions' => '',
   'option_explain.fs_teams_total' => 'Total number of teams user can select...!',
   'option_explain.fs_thread_end_date' => 'Select the end date or leave it empty for current month...!',
+  'option_explain.fs_thread_post_link_user_ids' => 'Enter the Applicable User Ids Comma separated like 1,2,3,4.',
   'option_explain.fs_thread_rules' => '',
   'option_explain.fs_thread_scoring_list_format' => '',
   'option_explain.fs_thread_scoring_list_order' => '',

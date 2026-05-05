@@ -73,6 +73,7 @@ You may set a user into \'discouraged\' mode by editing their user profile, or d
   'option_group_description.fs_plisio_payment_gateway' => '',
   'option_group_description.fs_post_prefix' => '',
   'option_group_description.fs_post_schdueling' => '',
+  'option_group_description.fs_post_thread_link' => '',
   'option_group_description.fs_private_conversation' => 'Option here control the Private Coversation add-on.',
   'option_group_description.fs_production_complete' => '',
   'option_group_description.fs_question_answers' => '',

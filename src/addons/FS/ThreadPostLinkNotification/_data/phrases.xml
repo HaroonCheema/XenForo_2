@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="option.fs_thread_post_link_user_ids" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Applicable User Ids]]></phrase>
+  <phrase title="option_explain.fs_thread_post_link_user_ids" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter the Applicable User Ids Comma separated like 1,2,3,4.]]></phrase>
+  <phrase title="option_group.fs_post_thread_link" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[[FS] Thread post link notify]]></phrase>
+  <phrase title="option_group_description.fs_post_thread_link" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[]]></phrase>
+  <phrase title="x_used_a_link_in_this_thread_y" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[{name} used a link in this thread {title} .]]></phrase>
+</phrases>

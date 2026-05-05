@@ -309,14 +309,6 @@ return array(
 	$__compilerTemp3 .= '
 
 ';
-	if ($__templater->method($__vars['xf']['visitor'], 'hasPermission', array('fs_thread_replace_links', 'can_replace_link', ))) {
-		$__compilerTemp3 .= '
-	<a href="' . $__templater->func('link', array('threads/replace-links', $__vars['thread'], ), true) . '" data-xf-click="overlay" class="menu-linkRow">' . 'Replace Link' . '</a>
-';
-	}
-	$__compilerTemp3 .= '
-
-';
 	if ((($__templater->func('property', array('snog_movies_posterUpdateButtonPosition', ), false) == 'thread_tools_menu') AND ($__vars['thread']['Movie'] AND ($__vars['xf']['visitor']['is_admin'] OR $__vars['xf']['visitor']['is_moderator'])))) {
 		$__compilerTemp3 .= '
 												<a href="' . $__templater->func('link', array('movies/poster', $__vars['thread']['Movie'], ), true) . '" data-xf-click="overlay" class="menu-linkRow">
