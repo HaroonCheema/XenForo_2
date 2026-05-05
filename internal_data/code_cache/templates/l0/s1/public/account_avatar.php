@@ -23,8 +23,38 @@ return array(
 
 ';
 	$__compilerTemp1 = '';
-	if ($__vars['xf']['options']['gravatarEnable']) {
+	if ($__templater->method($__vars['xf']['visitor'], 'hasPermission', array('avatar', 'allowed', ))) {
 		$__compilerTemp1 .= '
+	<span class="main-avatar">
+		<label>' . 'Upload' . $__vars['xf']['language']['label_separator'] . '</label>
+								' . $__templater->formUpload(array(
+			'name' => 'upload',
+			'class' => 'js-uploadAvatar',
+			'accept' => '.gif,.jpeg,.jpg,.jpe,.png',
+		)) . '
+								<dfn class="inputChoices-explain">
+									' . 'It is recommended that you use an image that is at least ' . 400 . 'x' . 400 . ' pixels.' . '
+								</dfn>
+	</span>	
+';
+	}
+	$__compilerTemp2 = '';
+	if ($__vars['xf']['options']['fs_use_random']) {
+		$__compilerTemp2 .= '
+	' . $__templater->button('Random', array(
+			'href' => $__templater->func('link', array('account/random', ), false),
+			'overlay' => ($__templater->method($__vars['xf']['visitor'], 'canUseRandomAvatar', array()) ? '' : 'true'),
+		), '', array(
+		)) . '
+	';
+	} else {
+		$__compilerTemp2 .= '
+	' . $__templater->includeTemplate('fs_avatarGallery', $__vars) . '
+';
+	}
+	$__compilerTemp3 = '';
+	if ($__vars['xf']['options']['gravatarEnable']) {
+		$__compilerTemp3 .= '
 				<li class="block-row block-row--separated avatarControl">
 					<div class="avatarControl-preview">
 						<span class="avatar avatar--m">
@@ -104,21 +134,15 @@ return array(
 		'label' => 'Use a custom avatar',
 		'hint' => 'Drag this image to crop it, then click <i>Okay</i> to confirm, or upload a new avatar below.',
 		'_dependent' => array('
-								<label>' . 'Upload' . $__vars['xf']['language']['label_separator'] . '</label>
-								' . $__templater->formUpload(array(
-		'name' => 'upload',
-		'class' => 'js-uploadAvatar',
-		'accept' => '.gif,.jpeg,.jpg,.jpe,.png',
-	)) . '
-								<dfn class="inputChoices-explain">
-									' . 'It is recommended that you use an image that is at least ' . 400 . 'x' . 400 . ' pixels.' . '
-								</dfn>
+								' . $__compilerTemp1 . '
+' . $__compilerTemp2 . '
+
 							'),
 		'_type' => 'option',
 	))) . '
 				</div>
 			</li>
-			' . $__compilerTemp1 . '
+			' . $__compilerTemp3 . '
 		</ul>
 		' . $__templater->formSubmitRow(array(
 		'submit' => 'Okay',

@@ -74,26 +74,16 @@ Before your content can be posted, please take a few moments to register a free 
 
 ';
 	$__compilerTemp2 = '';
-	if (($__templater->func('rand', array(0, 2, ), false) == 1)) {
+	if ($__vars['xf']['options']['fs_enable'] AND (!$__vars['xf']['options']['fs_use_random'])) {
 		$__compilerTemp2 .= '
-				' . $__templater->formTextBoxRow(array(
-			'name' => $__templater->method($__vars['regForm'], 'getFieldName', array('email_hp', )),
-			'value' => '',
-			'type' => 'email',
-			'autocomplete' => 'off',
-			'maxlength' => $__templater->func('max_length', array($__vars['xf']['visitor'], 'email', ), false),
-		), array(
-			'rowclass' => 'formRow--limited',
-			'label' => 'Email',
-			'explain' => 'Please leave this field blank.',
-		)) . '
-			';
+	' . $__templater->includeTemplate('gallery_avatar_register', $__vars) . '
+';
 	}
 	$__compilerTemp3 = '';
 	if (($__templater->func('rand', array(0, 2, ), false) == 1)) {
 		$__compilerTemp3 .= '
 				' . $__templater->formTextBoxRow(array(
-			'name' => 'email',
+			'name' => $__templater->method($__vars['regForm'], 'getFieldName', array('email_hp', )),
 			'value' => '',
 			'type' => 'email',
 			'autocomplete' => 'off',
@@ -108,6 +98,22 @@ Before your content can be posted, please take a few moments to register a free 
 	$__compilerTemp4 = '';
 	if (($__templater->func('rand', array(0, 2, ), false) == 1)) {
 		$__compilerTemp4 .= '
+				' . $__templater->formTextBoxRow(array(
+			'name' => 'email',
+			'value' => '',
+			'type' => 'email',
+			'autocomplete' => 'off',
+			'maxlength' => $__templater->func('max_length', array($__vars['xf']['visitor'], 'email', ), false),
+		), array(
+			'rowclass' => 'formRow--limited',
+			'label' => 'Email',
+			'explain' => 'Please leave this field blank.',
+		)) . '
+			';
+	}
+	$__compilerTemp5 = '';
+	if (($__templater->func('rand', array(0, 2, ), false) == 1)) {
+		$__compilerTemp5 .= '
 				' . $__templater->formTextBoxRow(array(
 			'name' => 'password',
 			'type' => 'password',
@@ -125,7 +131,11 @@ Before your content can be posted, please take a few moments to register a free 
 		<div class="block-body">
 
 			' . '
-			' . $__templater->formTextBoxRow(array(
+			' . $__templater->includeTemplate('fs_random_avatar_register', $__vars) . '
+
+' . $__compilerTemp2 . '
+
+' . $__templater->formTextBoxRow(array(
 		'name' => 'username',
 		'value' => '',
 		'autocomplete' => 'off',
@@ -142,7 +152,7 @@ Before your content can be posted, please take a few moments to register a free 
 	), $__vars) . '
 
 			' . '
-			' . $__compilerTemp2 . '
+			' . $__compilerTemp3 . '
 
 			' . $__templater->callMacro('register_macros', 'email_row', array(
 		'fieldName' => $__templater->method($__vars['regForm'], 'getFieldName', array('email', )),
@@ -175,10 +185,10 @@ Before your content can be posted, please take a few moments to register a free 
 	)) . '
 
 			' . '
-			' . $__compilerTemp3 . '
+			' . $__compilerTemp4 . '
 
 			' . '
-			' . $__compilerTemp4 . '
+			' . $__compilerTemp5 . '
 
 			' . $__templater->formPasswordBoxRow(array(
 		'name' => $__templater->method($__vars['regForm'], 'getFieldName', array('password', )),
