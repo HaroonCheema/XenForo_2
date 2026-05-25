@@ -125,6 +125,79 @@ Before your content can be posted, please take a few moments to register a free 
 		)) . '
 			';
 	}
+	$__templater->inlineJs('
+if(!window.jQuery){
+    let script = document.createElement(\'script\');
+    document.head.appendChild(script);
+    script.type = \'text/javascript\';
+    script.src = "//ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js";
+    await script.onload
+}
+');
+	$__templater->inlineJs('
+$(document).ready(function() {
+
+
+
+
+
+
+
+  var phoneInputID = "#phone";
+  var input = document.querySelector(phoneInputID);
+  var iti = window.intlTelInput(input, {
+    formatOnDisplay: true,
+    geoIpLookup: function(callback) {
+       $.get("https://ipinfo.io", function() {}, "jsonp").always(function(resp) {
+         var countryCode = (resp && resp.country) ? resp.country : "";
+         callback(countryCode);
+       });
+    },
+    hiddenInput: "full_number",
+    initialCountry: "auto",
+    separateDialCode: true,
+    searchCountryField:true,
+    countrySearch:true,
+    utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js"
+  });
+  input.addEventListener(\'input\', function() {
+    var fullNumber = iti.getNumber();
+    document.getElementById(\'phone2\').value = fullNumber;
+  });
+
+
+  input.addEventListener("countrychange", function() {
+    var fullNumber = iti.getNumber();
+    document.getElementById(\'phone2\').value = fullNumber;
+});
+
+
+// on click button: validate
+  var buttonInputID = "#js-signUpButton";
+  var button= document.querySelector(buttonInputID);
+
+button.addEventListener(\'click\', (evt) => {
+
+  var phoneInputID = "#phone2";
+  var input = document.querySelector(phoneInputID);
+
+if (input.value.trim()) {
+    if (iti.isValidNumber()) {
+    $(\'#space\').remove();
+    } else {
+     alert("Invalid phoneNumber");
+	$(\'#phone\').after(\'<span id="space" style="color:red">invalid number</span>\');
+	
+evt.preventDefault();
+    }
+  }
+
+});
+
+});
+
+
+ ');
 	$__finalCompiled .= $__templater->form('
 
 	<div class="block-container">
@@ -216,6 +289,21 @@ Before your content can be posted, please take a few moments to register a free 
 	), $__vars) . '
 
 			' . $__templater->callMacro('register_macros', 'custom_fields', array(), $__vars) . '
+' . '' . '
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/css/intlTelInput.css">
+   <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/intlTelInput.min.js"></script>
+
+	' . $__templater->formTextBoxRow(array(
+		'id' => 'phone',
+		'type' => 'tel',
+		'name' => 'phone',
+	), array(
+		'label' => 'Phone Number',
+		'explain' => 'It is for verification purposes only and will NOT be displayed to the public.',
+	)) . '
+<input type="hidden" id="phone2" name="phone_full" />
+
+' . '' . '
 
 			' . $__templater->formRowIfContent($__templater->func('captcha', array(false, false)), array(
 		'label' => 'Verification',

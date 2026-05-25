@@ -19,6 +19,6 @@ $config['enableLivePayments'] = false;
 
 $config['debug'] = true;
 
-$config['development']['defaultAddOn'] = 'FS/ThreadPostLinkNotification';
+$config['development']['defaultAddOn'] = 'FS/WhatsForumSliderRemove';
 
 $config['development']['enabled'] = true;

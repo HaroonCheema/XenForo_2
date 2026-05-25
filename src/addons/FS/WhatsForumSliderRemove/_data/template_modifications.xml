@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="extra.less" modification_key="fs_whats_best_forum_remove_heading" description="fs_whats_best_forum_remove_heading" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/^(.*)$/is]]></find>
+    <replace><![CDATA[$0
+
+.a-slider-heading
+{
+display: none;
+}
+
+.owl-carousel:has(.xb-item-block) .owl-dots {
+    margin-top: 10px;
+}
+
+.owl-carousel:has(.xb-item-block) .owl-dots .owl-dot span {
+    display: none;
+}
+
+.owl-carousel:has(.sliding-carousel-block) .owl-dots {
+    margin-top: 10px;
+}
+
+.owl-carousel:has(.sliding-carousel-block) .owl-dots .owl-dot {
+    display: none;
+}]]></replace>
+  </modification>
+</template_modifications>

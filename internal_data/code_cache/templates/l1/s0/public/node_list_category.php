@@ -16,15 +16,17 @@ return array(
 	<div class="block block--category block--category' . $__templater->escape($__vars['node']['node_id']) . '">
 		<span class="u-anchorTarget" id="' . $__templater->escape($__templater->method($__vars['node']['Data'], 'getCategoryAnchor', array())) . '"></span>
 		<div class="block-container">
-			<h2 class="block-header">
+						<h2 class="block-header">
+				<span class="collapseTrigger collapseTrigger--block is-active" data-xf-click="toggle" data-target="< :up:next">
 				<a href="' . $__templater->func('link', array('categories', $__vars['node'], ), true) . '">' . $__templater->escape($__templater->method($__vars['node'], 'getNodeTitle', array())) . '</a>
 				';
 	if ($__vars['node']['description']) {
 		$__finalCompiled .= '<span class="block-desc">' . $__templater->filter($__vars['node']['description'], array(array('raw', array()),), true) . '</span>';
 	}
 	$__finalCompiled .= '
+				</span>
 			</h2>
-			<div class="block-body">
+			<div class="block-body block-body--collapsible is-active fs-grid-list">
 				' . $__templater->callMacro('forum_list', 'node_list', array(
 		'children' => $__vars['children'],
 		'extras' => $__vars['childExtras'],
@@ -55,7 +57,25 @@ return array(
 	$__finalCompiled .= '
 	<div class="node node--id' . $__templater->escape($__vars['node']['node_id']) . ' node--depth' . $__templater->escape($__vars['depth']) . ' node--category ' . ($__vars['extras']['hasNew'] ? 'node--unread' : 'node--read') . '">
 		<div class="node-body">
-			<span class="node-icon" aria-hidden="true"><i></i></span>
+			';
+	if ($__templater->method($__vars['node'], 'getIcon', array())) {
+		$__finalCompiled .= '
+	<div class="node-icon--custom read" 
+		 style="background-image: url(' . $__templater->func('base_url', array($__templater->method($__vars['node'], 'getIcon', array()), ), true) . ');
+				width: ' . $__templater->escape($__vars['xf']['options']['Fs_NodeIcon_nodeDimensions']['width']) . 'px;
+				height: ' . $__templater->escape($__vars['xf']['options']['Fs_NodeIcon_nodeDimensions']['height']) . 'px;">
+	</div>
+';
+	} else {
+		$__finalCompiled .= '
+	<span class="node-icon" aria-hidden="true"
+		  style="width: ' . $__templater->escape($__vars['xf']['options']['Fs_NodeIcon_nodeDimensions']['width']) . 'px;
+				 height: ' . $__templater->escape($__vars['xf']['options']['Fs_NodeIcon_nodeDimensions']['height']) . 'px;">
+		<i></i>
+	</span>
+';
+	}
+	$__finalCompiled .= '
 			<div class="node-main js-nodeMain">
 				';
 	$__vars['descriptionDisplay'] = $__templater->func('property', array('nodeListDescriptionDisplay', ), false);

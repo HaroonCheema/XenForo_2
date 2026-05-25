@@ -5,6 +5,7 @@ return array(
 {
 	$__finalCompiled = '';
 	$__finalCompiled .= '
+' . $__templater->includeTemplate('Fs_NodeIcon_icon.less', $__vars) . '
 
 .itemFavouriteClr
 {
@@ -15,6 +16,27 @@ color: #1d9f1d !important;
 {
 background-color: #1d9f1d !important;
 color: #fff !important;
+}
+
+.a-slider-heading
+{
+display: none;
+}
+
+.owl-carousel:has(.xb-item-block) .owl-dots {
+    margin-top: 10px;
+}
+
+.owl-carousel:has(.xb-item-block) .owl-dots .owl-dot span {
+    display: none;
+}
+
+.owl-carousel:has(.sliding-carousel-block) .owl-dots {
+    margin-top: 10px;
+}
+
+.owl-carousel:has(.sliding-carousel-block) .owl-dots .owl-dot {
+    display: none;
 }';
 	return $__finalCompiled;
 }

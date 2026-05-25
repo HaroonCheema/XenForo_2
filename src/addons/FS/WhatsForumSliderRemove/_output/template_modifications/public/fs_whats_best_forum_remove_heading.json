@@ -1,0 +1,9 @@
+{
+    "template": "extra.less",
+    "description": "fs_whats_best_forum_remove_heading",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "preg_replace",
+    "find": "/^(.*)$/is",
+    "replace": "$0\n\n.a-slider-heading\n{\ndisplay: none;\n}\n\n.owl-carousel:has(.xb-item-block) .owl-dots {\n    margin-top: 10px;\n}\n\n.owl-carousel:has(.xb-item-block) .owl-dots .owl-dot span {\n    display: none;\n}\n\n.owl-carousel:has(.sliding-carousel-block) .owl-dots {\n    margin-top: 10px;\n}\n\n.owl-carousel:has(.sliding-carousel-block) .owl-dots .owl-dot {\n    display: none;\n}"
+}

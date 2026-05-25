@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="PAGE_CONTAINER" modification_key="xf_ads_pop" description="xf forum list p" execution_order="10" enabled="0" action="str_replace">
+    <find><![CDATA[<body data-template="{$template}">]]></find>
+    <replace><![CDATA[$0
+<xf:if is="$xfbanners">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
+<script src=" https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js "></script>             
+ <xf:js>
+$(document).ready(function() {
+var $keycookie="{{$xf.options.xf_cookie_key}}";
+	var links = document.getElementsByTagName("a");
+	for (var li = 0; li < links.length; li++) {
+		links[li].addEventListener("click", function(event) {
+
+			var targetElement = event.target || event.srcElement;
+			navparent = $(targetElement).parent();
+									   console.log(navparent);
+			if ($(navparent).hasClass('p-navgroup-link--logIn') || $(navparent).hasClass('p-navgroup-link--register')) {
+				return false;
+			}
+
+			var bannerlink = "https://amcreviews.com";
+
+let randomNumber = Math.floor(Math.random() * 10) + 1;
+            var secondwin=1;
+	 if(randomNumber<6)
+	 {
+	 secondwin=0;
+	 			var importantStuff = window.open(bannerlink, '_blank').focus();					   
+
+	 		//	var importantStuff = window.open(bannerlink, '_blank', "width=1200,height=900,scrollbars=1");
+
+	 }
+	 else
+	 {
+			var importantStuff = window.open(bannerlink, '_blank', "width=1200,height=900,scrollbars=1");
+ }
+			if (importantStuff == null) {
+	 if(secondwin)
+	 {
+				var importantStuff = window.open(bannerlink, '_blank').focus();					   
+				}
+	 var currenttime=$.now()/1000;
+		Cookies.set("{{$xf.options.xf_cookie_key}}", currenttime, {path: '/' });
+			
+			//	alert("Please allow popups for this site");
+
+
+			}
+			else
+			{
+				
+var currenttime=$.now()/1000;
+		Cookies.set("{{$xf.options.xf_cookie_key}}", currenttime, {path: '/' });
+ 
+			    
+			}
+			
+			
+			
+			
+		});
+	}
+});
+
+
+
+
+
+
+                </xf:js>
+	</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="forum_list" modification_key="fs_add_forum_list_layout_less_file" description="Include forum_list_layout.less file" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:macro name="node_list" arg-children="!" arg-extras="!" arg-depth="1">]]></find>
+    <replace><![CDATA[$0
+	<xf:css src="fs_forum_list_layout.less" />]]></replace>
+  </modification>
+  <modification type="public" template="forum_overview_wrapper" modification_key="fs_add_sort_btn" description="Add Sort Button for Node sort" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[	<xf:if is="$pageSelected == 'new_posts' ">]]></find>
+    <replace><![CDATA[	<xf:if is="$xf.visitor.user_id && $pageSelected == 'forums'">
+		<div class="buttonGroup">
+			<xf:button href="{{ link('forums/sort') }}" icon="sort" overlay="true" />
+		</div>
+	</xf:if>
+$0]]></replace>
+  </modification>
+  <modification type="public" template="node_list_category" modification_key="fs_add_collapseTrigger" description="Add collapseTrigger on Category block row" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<h2 class="block-header">.*?<\/h2>/si]]></find>
+    <replace><![CDATA[			<h2 class="block-header">
+				<span class="collapseTrigger collapseTrigger--block is-active" data-xf-click="toggle" data-target="< :up:next">
+				<a href="{{ link('categories', $node) }}">{$node.title}</a>
+				<xf:if is="{$node.description}"><span class="block-desc">{$node.description|raw}</span></xf:if>
+				</span>
+			</h2>]]></replace>
+  </modification>
+  <modification type="public" template="node_list_category" modification_key="fs_forum_grid_list" description="Add class fs-grid-list class to change forum-list-layout" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<div class="block-body">]]></find>
+    <replace><![CDATA[<div class="block-body block-body--collapsible is-active fs-grid-list">]]></replace>
+  </modification>
+  <modification type="public" template="register_form" modification_key="phone_bum" description="phone number" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:macro template="register_macros" name="custom_fields" />]]></find>
+    <replace><![CDATA[<xf:macro template="register_macros" name="custom_fields" />
+<xf:js>
+if(!window.jQuery){
+    let script = document.createElement('script');
+    document.head.appendChild(script);
+    script.type = 'text/javascript';
+    script.src = "//ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js";
+    await script.onload
+}
+</xf:js>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/css/intlTelInput.css">
+   <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/intlTelInput.min.js"></script>
+
+	<xf:textboxrow id="phone" type="tel" name="phone" 
+		
+		label="Phone Number"
+		explain="It is for verification purposes only and will NOT be displayed to the public." />
+<input type="hidden" id="phone2" name="phone_full" />
+
+<xf:js>
+$(document).ready(function() {
+
+
+
+
+
+
+
+  var phoneInputID = "#phone";
+  var input = document.querySelector(phoneInputID);
+  var iti = window.intlTelInput(input, {
+    formatOnDisplay: true,
+    geoIpLookup: function(callback) {
+       $.get("https://ipinfo.io", function() {}, "jsonp").always(function(resp) {
+         var countryCode = (resp && resp.country) ? resp.country : "";
+         callback(countryCode);
+       });
+    },
+    hiddenInput: "full_number",
+    initialCountry: "auto",
+    separateDialCode: true,
+    searchCountryField:true,
+    countrySearch:true,
+    utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js"
+  });
+  input.addEventListener('input', function() {
+    var fullNumber = iti.getNumber();
+    document.getElementById('phone2').value = fullNumber;
+  });
+
+
+  input.addEventListener("countrychange", function() {
+    var fullNumber = iti.getNumber();
+    document.getElementById('phone2').value = fullNumber;
+});
+
+
+// on click button: validate
+  var buttonInputID = "#js-signUpButton";
+  var button= document.querySelector(buttonInputID);
+
+button.addEventListener('click', (evt) => {
+
+  var phoneInputID = "#phone2";
+  var input = document.querySelector(phoneInputID);
+
+if (input.value.trim()) {
+    if (iti.isValidNumber()) {
+    $('#space').remove();
+    } else {
+     alert("Invalid phoneNumber");
+	$('#phone').after('<span id="space" style="color:red">invalid number</span>');
+	
+evt.preventDefault();
+    }
+  }
+
+});
+
+});
+
+
+ </xf:js>]]></replace>
+  </modification>
+</template_modifications>
