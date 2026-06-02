@@ -12,21 +12,8 @@ return array(
 
 ';
 	$__compilerTemp1 = '';
-	if ($__vars['xf']['visitor']['user_id'] AND ($__vars['pageSelected'] == 'forums')) {
-		$__compilerTemp1 .= '
-		<div class="buttonGroup">
-			' . $__templater->button('', array(
-			'href' => $__templater->func('link', array('forums/sort', ), false),
-			'icon' => 'sort',
-			'overlay' => 'true',
-		), '', array(
-		)) . '
-		</div>
-	';
-	}
-	$__compilerTemp2 = '';
 	if ($__vars['pageSelected'] == 'new_posts') {
-		$__compilerTemp2 .= '
+		$__compilerTemp1 .= '
 		' . $__templater->button('
 			' . 'Forum list' . '
 		', array(
@@ -36,10 +23,10 @@ return array(
 		)) . '
 	';
 	} else {
-		$__compilerTemp2 .= '
+		$__compilerTemp1 .= '
 		';
 		if ($__templater->method($__vars['xf']['visitor'], 'hasPermission', array('forum', 'postReviewAlert', ))) {
-			$__compilerTemp2 .= '
+			$__compilerTemp1 .= '
 
 	' . $__templater->button('
 		' . 'Post review' . '
@@ -64,12 +51,12 @@ return array(
 
 ';
 		}
-		$__compilerTemp2 .= '
+		$__compilerTemp1 .= '
 	';
 	}
-	$__compilerTemp3 = '';
+	$__compilerTemp2 = '';
 	if (($__templater->method($__vars['xf']['visitor'], 'canCreateThread', array()) OR $__templater->method($__vars['xf']['visitor'], 'canCreateThreadPreReg', array())) AND ($__vars['xf']['visitor']['is_admin'] OR $__vars['xf']['visitor']['is_moderator'])) {
-		$__compilerTemp3 .= '
+		$__compilerTemp2 .= '
 	' . $__templater->button('
 		' . 'Post thread' . $__vars['xf']['language']['ellipsis'] . '
 	', array(
@@ -84,7 +71,6 @@ return array(
 	$__templater->pageParams['pageAction'] = $__templater->preEscaped('
 	' . $__compilerTemp1 . '
 	' . $__compilerTemp2 . '
-	' . $__compilerTemp3 . '
 ');
 	$__finalCompiled .= '
 

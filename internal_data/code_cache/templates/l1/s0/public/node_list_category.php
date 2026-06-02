@@ -16,17 +16,15 @@ return array(
 	<div class="block block--category block--category' . $__templater->escape($__vars['node']['node_id']) . '">
 		<span class="u-anchorTarget" id="' . $__templater->escape($__templater->method($__vars['node']['Data'], 'getCategoryAnchor', array())) . '"></span>
 		<div class="block-container">
-						<h2 class="block-header">
-				<span class="collapseTrigger collapseTrigger--block is-active" data-xf-click="toggle" data-target="< :up:next">
+			<h2 class="block-header">
 				<a href="' . $__templater->func('link', array('categories', $__vars['node'], ), true) . '">' . $__templater->escape($__templater->method($__vars['node'], 'getNodeTitle', array())) . '</a>
 				';
 	if ($__vars['node']['description']) {
 		$__finalCompiled .= '<span class="block-desc">' . $__templater->filter($__vars['node']['description'], array(array('raw', array()),), true) . '</span>';
 	}
 	$__finalCompiled .= '
-				</span>
 			</h2>
-			<div class="block-body block-body--collapsible is-active fs-grid-list">
+			<div class="block-body">
 				' . $__templater->callMacro('forum_list', 'node_list', array(
 		'children' => $__vars['children'],
 		'extras' => $__vars['childExtras'],

@@ -51,9 +51,6 @@ return array(
 	$__finalCompiled = '';
 	$__finalCompiled .= '
 	';
-	$__templater->includeCss('fs_forum_list_layout.less');
-	$__finalCompiled .= '
-	';
 	$__templater->includeCss('node_list.less');
 	$__finalCompiled .= '
 	';
