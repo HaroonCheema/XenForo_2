@@ -316,41 +316,6 @@ return array(
 	$__vars['description'] = $__templater->preEscaped($__templater->func('page_description'));
 	$__finalCompiled .= '
 
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script type="text/javascript" id="MathJax-script" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-</script>
- <script>
-	 
-      MathJax = {
-		  
-        options: {
-          renderActions: {
-            find: [
-              10,
-              function (doc) {
-				  
-                for (const node of document.querySelectorAll("formula")) {
-			
-                  const math = new doc.options.MathItem(
-                    node.textContent,
-                    doc.inputJax[0],
-                    false
-                  );
-                  const text = document.createTextNode("");
-                  node.parentNode.replaceChild(text, node);
-                  math.start = { node: text, delim: "", n: 0 };
-                  math.end = { node: text, delim: "", n: 0 };
-                  doc.math.push(math);
-                }
-              },
-              "",
-            ],
-          },
-        },
-      };
-    </script>
-
 	<title>';
 	if ($__vars['script_page'] AND $__vars['script_page']['title']) {
 		$__finalCompiled .= '
@@ -616,6 +581,7 @@ return array(
 				';
 	}
 	$__compilerTemp1 .= '
+' . $__templater->includeTemplate('lau_staff_bar', $__vars) . '
 
 ';
 	if ($__vars['xf']['visitor']['is_admin'] OR $__vars['xf']['visitor']['is_moderator']) {
@@ -1292,7 +1258,17 @@ return array(
 		'navTree' => $__vars['navTree'],
 		'selectedNavEntry' => $__vars['selectedNavEntry'],
 	), $__vars) . '
-		' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
+		';
+	if ($__vars['xf']['session']['lau_id']) {
+		$__finalCompiled .= '
+	<div class="blockMessage blockMessage--important blockMessage--iconic">
+		' . '"' . $__templater->escape($__vars['xf']['session']['lau_from_name']) . '", you are currently using "' . $__templater->escape($__vars['xf']['session']['lau_to_name']) . '" account. Click <a href="' . $__templater->func('link', array('logout/lauout', ), true) . '">here</a> to go back to your account.' . '
+	</div>
+';
+	}
+	$__finalCompiled .= '
+
+' . $__templater->callMacro('siropu_ads_manager_ad_macros', 'ad_unit', array(
 		'position' => 'container_breadcrumb_top_below',
 	), $__vars) . '
 ' . $__templater->callMacro('xgt_FrmIstatistik_konumlar_macros', 'xgt_istatistik_konum', array(

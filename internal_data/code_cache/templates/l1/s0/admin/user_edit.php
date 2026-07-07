@@ -101,6 +101,12 @@ return array(
 					<a href="' . $__templater->func('link', array('users/resend-confirmation', $__vars['user'], ), true) . '" class="menu-linkRow" data-xf-click="overlay">' . 'Resend account confirmation' . '</a>
 				';
 		}
+		$__compilerTemp6 = '';
+		if ($__templater->method($__vars['xf']['visitor'], 'canUseLAU', array()) AND ($__vars['xf']['options']['lau_DisplayLoginCard'] AND (($__vars['user']['user_id'] != $__vars['xf']['visitor']['user_id']) AND (!$__templater->func('in_array', array($__vars['user']['user_id'], $__vars['xf']['options']['lau_DisallowedUsers'], ), false))))) {
+			$__compilerTemp6 .= '
+	<a href="' . $__templater->func('link_type', array('public', 'login/lauin', null, array('username' => $__vars['user']['username'], ), ), true) . '" class="menu-linkRow">' . 'Login as User' . '</a>
+';
+		}
 		$__templater->pageParams['pageAction'] = $__templater->preEscaped('
 	<div>
 		' . $__templater->button('', array(
@@ -132,7 +138,9 @@ return array(
 				' . $__compilerTemp4 . '
 
 				' . $__compilerTemp5 . '
-				' . '
+				' . $__compilerTemp6 . '
+
+' . '
 			</div>
 		</div>
 	</div>
@@ -153,44 +161,44 @@ return array(
 	if ($__vars['user']['user_id']) {
 		$__finalCompiled .= '
 	';
-		$__compilerTemp6 = '';
-		$__compilerTemp6 .= '
+		$__compilerTemp7 = '';
+		$__compilerTemp7 .= '
 				' . '
 				';
 		if ($__vars['user']['is_admin']) {
-			$__compilerTemp6 .= '
+			$__compilerTemp7 .= '
 					<li><a href="' . $__templater->func('link', array('admins/edit', $__vars['user'], ), true) . '">' . ($__vars['user']['is_super_admin'] ? 'Super administrator' : 'Administrator') . '</a></li>
 				';
 		}
-		$__compilerTemp6 .= '
+		$__compilerTemp7 .= '
 				';
 		if ($__vars['user']['is_moderator']) {
-			$__compilerTemp6 .= '
+			$__compilerTemp7 .= '
 					<li><a href="' . $__templater->func('link', array('moderators', ), true) . '">' . 'Moderator' . '</a></li>
 				';
 		}
-		$__compilerTemp6 .= '
+		$__compilerTemp7 .= '
 				';
 		if ($__vars['user']['Option']['is_discouraged']) {
-			$__compilerTemp6 .= '
+			$__compilerTemp7 .= '
 					<li>' . 'Discouraged' . '</li>
 				';
 		}
-		$__compilerTemp6 .= '
+		$__compilerTemp7 .= '
 				';
 		if ($__vars['user']['is_banned']) {
-			$__compilerTemp6 .= '
+			$__compilerTemp7 .= '
 					<li><a href="' . $__templater->func('link', array('banning/users/lift', $__vars['user'], ), true) . '" data-xf-click="overlay">' . 'Banned' . '</a></li>
 				';
 		}
-		$__compilerTemp6 .= '
+		$__compilerTemp7 .= '
 				' . '
 			';
-		if (strlen(trim($__compilerTemp6)) > 0) {
+		if (strlen(trim($__compilerTemp7)) > 0) {
 			$__finalCompiled .= '
 		<div class="block-outer">
 			<ul class="listInline listInline--bullet">
-			' . $__compilerTemp6 . '
+			' . $__compilerTemp7 . '
 			</ul>
 		</div>
 	';
@@ -201,9 +209,9 @@ return array(
 	$__finalCompiled .= '
 
 	';
-	$__compilerTemp7 = '';
+	$__compilerTemp8 = '';
 	if ($__vars['user']['is_super_admin']) {
-		$__compilerTemp7 .= '
+		$__compilerTemp8 .= '
 			<div class="block-body">
 				' . $__templater->formPasswordBoxRow(array(
 			'name' => 'visitor_password',
@@ -214,9 +222,9 @@ return array(
 			</div>
 		';
 	}
-	$__compilerTemp8 = '';
+	$__compilerTemp9 = '';
 	if ($__vars['user']['user_id']) {
-		$__compilerTemp8 .= '
+		$__compilerTemp9 .= '
 					<a class="tabs-tab" role="tab" tabindex="0"
 						id="user-extras"
 						aria-controls="user-extras"
@@ -239,9 +247,9 @@ aria-controls="user-credit"
 href="' . $__templater->func('link', array('users/edit', $__vars['user'], ), true) . '#user-credit">' . 'Thread Credit History' . '</a>
 				';
 	}
-	$__compilerTemp9 = '';
+	$__compilerTemp10 = '';
 	if ($__templater->method($__vars['user'], 'exists', array())) {
-		$__compilerTemp9 .= '
+		$__compilerTemp10 .= '
 							' . $__templater->formCheckBox(array(
 			'style' => 'margin-top: 5px;',
 		), array(array(
@@ -251,9 +259,9 @@ href="' . $__templater->func('link', array('users/edit', $__vars['user'], ), tru
 		))) . '
 						';
 	}
-	$__compilerTemp10 = '';
+	$__compilerTemp11 = '';
 	if ($__vars['user']['username_date']) {
-		$__compilerTemp10 .= '
+		$__compilerTemp11 .= '
 						' . $__templater->formRow('
 							' . $__templater->func('date_dynamic', array($__vars['user']['username_date'], array(
 		))) . '
@@ -262,9 +270,9 @@ href="' . $__templater->func('link', array('users/edit', $__vars['user'], ), tru
 		)) . '
 					';
 	}
-	$__compilerTemp11 = '';
+	$__compilerTemp12 = '';
 	if ($__vars['user']['next_allowed_username_change']) {
-		$__compilerTemp11 .= '
+		$__compilerTemp12 .= '
 						' . $__templater->formRow('
 							' . $__templater->func('date_dynamic', array($__vars['user']['next_allowed_username_change'], array(
 		))) . '
@@ -273,9 +281,9 @@ href="' . $__templater->func('link', array('users/edit', $__vars['user'], ), tru
 		)) . '
 					';
 	}
-	$__compilerTemp12 = '';
+	$__compilerTemp13 = '';
 	if ($__templater->method($__vars['user'], 'exists', array())) {
-		$__compilerTemp12 .= '
+		$__compilerTemp13 .= '
 						' . $__templater->formRadioRow(array(
 			'name' => 'change_password',
 		), array(array(
@@ -304,7 +312,7 @@ href="' . $__templater->func('link', array('users/edit', $__vars['user'], ), tru
 		)) . '
 					';
 	} else {
-		$__compilerTemp12 .= '
+		$__compilerTemp13 .= '
 						' . $__templater->formTextBoxRow(array(
 			'name' => 'password',
 			'autocomplete' => 'off',
@@ -313,9 +321,9 @@ href="' . $__templater->func('link', array('users/edit', $__vars['user'], ), tru
 		)) . '
 					';
 	}
-	$__compilerTemp13 = '';
+	$__compilerTemp14 = '';
 	if ($__vars['user']['user_id']) {
-		$__compilerTemp13 .= '
+		$__compilerTemp14 .= '
 						' . $__templater->formTextBoxRow(array(
 			'name' => 'add_balance',
 			'value' => '0',
@@ -324,9 +332,9 @@ href="' . $__templater->func('link', array('users/edit', $__vars['user'], ), tru
 			'explain' => $__templater->escape($__vars['user']['reviews_balance']) . ' days of access remaining',
 		)) . '
 ';
-		$__compilerTemp14 = '';
+		$__compilerTemp15 = '';
 		if ($__vars['user']['Option']['use_tfa']) {
-			$__compilerTemp14 .= '
+			$__compilerTemp15 .= '
 								<ul class="inputChoices">
 									<li class="inputChoices-choice inputChoices-plainChoice">' . 'Enabled' . '</li>
 									<li class="inputChoices-choice">' . $__templater->formCheckBox(array(
@@ -339,12 +347,12 @@ href="' . $__templater->func('link', array('users/edit', $__vars['user'], ), tru
 								</ul>
 							';
 		} else {
-			$__compilerTemp14 .= '
+			$__compilerTemp15 .= '
 								' . 'Disabled' . '
 							';
 		}
-		$__compilerTemp13 .= $__templater->formRow('
-							' . $__compilerTemp14 . '
+		$__compilerTemp14 .= $__templater->formRow('
+							' . $__compilerTemp15 . '
 						', array(
 			'label' => 'Two-step verification',
 		)) . '
@@ -391,7 +399,7 @@ href="' . $__templater->func('link', array('users/edit', $__vars['user'], ), tru
 		)) . '
 						';
 		if ($__vars['user']['last_activity']) {
-			$__compilerTemp13 .= '
+			$__compilerTemp14 .= '
 							' . $__templater->formRow('
 								' . $__templater->func('date_dynamic', array($__vars['user']['last_activity'], array(
 			))) . '
@@ -400,54 +408,54 @@ href="' . $__templater->func('link', array('users/edit', $__vars['user'], ), tru
 			)) . '
 						';
 		}
-		$__compilerTemp13 .= '
+		$__compilerTemp14 .= '
 					';
 	}
-	$__compilerTemp15 = '';
+	$__compilerTemp16 = '';
 	if ($__vars['user']['user_id']) {
-		$__compilerTemp15 .= '
+		$__compilerTemp16 .= '
 							';
 		if (!$__vars['user']['is_moderator']) {
-			$__compilerTemp15 .= '<a href="' . $__templater->func('link', array('moderators', ), true) . '">' . 'Make this user a moderator' . '</a>';
+			$__compilerTemp16 .= '<a href="' . $__templater->func('link', array('moderators', ), true) . '">' . 'Make this user a moderator' . '</a>';
 		}
-		$__compilerTemp15 .= '
+		$__compilerTemp16 .= '
 							';
 		if ((!$__vars['user']['is_admin']) AND (!$__vars['user']['is_moderator'])) {
-			$__compilerTemp15 .= '/';
+			$__compilerTemp16 .= '/';
 		}
-		$__compilerTemp15 .= '
+		$__compilerTemp16 .= '
 							';
 		if (!$__vars['user']['is_admin']) {
-			$__compilerTemp15 .= '<a href="' . $__templater->func('link', array('admins', ), true) . '">' . 'Make this user an administrator' . '</a>';
+			$__compilerTemp16 .= '<a href="' . $__templater->func('link', array('admins', ), true) . '">' . 'Make this user an administrator' . '</a>';
 		}
-		$__compilerTemp15 .= '
+		$__compilerTemp16 .= '
 						';
 	}
 	$__vars['_userChangesHtml'] = $__templater->preEscaped('
-						' . $__compilerTemp15 . '
+						' . $__compilerTemp16 . '
 					');
-	$__compilerTemp16 = $__templater->mergeChoiceOptions(array(), $__vars['userGroups']);
 	$__compilerTemp17 = $__templater->mergeChoiceOptions(array(), $__vars['userGroups']);
-	$__compilerTemp18 = array(array(
+	$__compilerTemp18 = $__templater->mergeChoiceOptions(array(), $__vars['userGroups']);
+	$__compilerTemp19 = array(array(
 		'value' => '0',
 		'label' => $__vars['xf']['language']['parenthesis_open'] . 'Use default style' . $__vars['xf']['language']['parenthesis_close'],
 		'_type' => 'option',
 	));
-	$__compilerTemp19 = $__templater->method($__vars['styleTree'], 'getFlattened', array(0, ));
-	if ($__templater->isTraversable($__compilerTemp19)) {
-		foreach ($__compilerTemp19 AS $__vars['treeEntry']) {
-			$__compilerTemp18[] = array(
+	$__compilerTemp20 = $__templater->method($__vars['styleTree'], 'getFlattened', array(0, ));
+	if ($__templater->isTraversable($__compilerTemp20)) {
+		foreach ($__compilerTemp20 AS $__vars['treeEntry']) {
+			$__compilerTemp19[] = array(
 				'value' => $__vars['treeEntry']['record']['style_id'],
 				'label' => $__templater->func('repeat', array('--', $__vars['treeEntry']['depth'], ), true) . ' ' . $__templater->escape($__vars['treeEntry']['record']['title']),
 				'_type' => 'option',
 			);
 		}
 	}
-	$__compilerTemp20 = array();
-	$__compilerTemp21 = $__templater->method($__vars['languageTree'], 'getFlattened', array(0, ));
-	if ($__templater->isTraversable($__compilerTemp21)) {
-		foreach ($__compilerTemp21 AS $__vars['treeEntry']) {
-			$__compilerTemp20[] = array(
+	$__compilerTemp21 = array();
+	$__compilerTemp22 = $__templater->method($__vars['languageTree'], 'getFlattened', array(0, ));
+	if ($__templater->isTraversable($__compilerTemp22)) {
+		foreach ($__compilerTemp22 AS $__vars['treeEntry']) {
+			$__compilerTemp21[] = array(
 				'value' => $__vars['treeEntry']['record']['language_id'],
 				'label' => $__templater->func('repeat', array('--', $__vars['treeEntry']['depth'], ), true) . '
 								' . $__templater->escape($__vars['treeEntry']['record']['title']),
@@ -455,32 +463,24 @@ href="' . $__templater->func('link', array('users/edit', $__vars['user'], ), tru
 			);
 		}
 	}
-	$__compilerTemp22 = '';
+	$__compilerTemp23 = '';
 	if (!$__templater->func('in_array', array('', $__vars['xf']['options']['tmdbthreads_watchProviderRegions'], ), false)) {
-		$__compilerTemp22 .= '
+		$__compilerTemp23 .= '
 				';
-		$__compilerTemp23 = $__templater->mergeChoiceOptions(array(), $__vars['snogMoviesWatchRegions']);
-		$__compilerTemp22 .= $__templater->formSelectRow(array(
+		$__compilerTemp24 = $__templater->mergeChoiceOptions(array(), $__vars['snogMoviesWatchRegions']);
+		$__compilerTemp23 .= $__templater->formSelectRow(array(
 			'name' => 'option[snog_movies_tmdb_watch_region]',
 			'value' => $__vars['user']['Option']['snog_movies_tmdb_watch_region'],
-		), $__compilerTemp23, array(
+		), $__compilerTemp24, array(
 			'label' => 'Movie watch providers default region',
 		)) . '
 			';
 	}
-	$__compilerTemp24 = $__templater->mergeChoiceOptions(array(), $__vars['timeZones']);
-	$__compilerTemp25 = '';
-	if ($__vars['user']['user_id']) {
-		$__compilerTemp25 .= '
-				<li data-href="' . $__templater->func('link', array('users/extra', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="user-extras">
-					<div class="block-body block-row">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
-				</li>
-			';
-	}
+	$__compilerTemp25 = $__templater->mergeChoiceOptions(array(), $__vars['timeZones']);
 	$__compilerTemp26 = '';
 	if ($__vars['user']['user_id']) {
 		$__compilerTemp26 .= '
-				<li data-href="' . $__templater->func('link', array('users/user-ips', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="user-ips">
+				<li data-href="' . $__templater->func('link', array('users/extra', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="user-extras">
 					<div class="block-body block-row">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
 				</li>
 			';
@@ -488,7 +488,7 @@ href="' . $__templater->func('link', array('users/edit', $__vars['user'], ), tru
 	$__compilerTemp27 = '';
 	if ($__vars['user']['user_id']) {
 		$__compilerTemp27 .= '
-				<li data-href="' . $__templater->func('link', array('users/change-log', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="user-changes">
+				<li data-href="' . $__templater->func('link', array('users/user-ips', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="user-ips">
 					<div class="block-body block-row">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
 				</li>
 			';
@@ -496,7 +496,7 @@ href="' . $__templater->func('link', array('users/edit', $__vars['user'], ), tru
 	$__compilerTemp28 = '';
 	if ($__vars['user']['user_id']) {
 		$__compilerTemp28 .= '
-				<li data-href="' . $__templater->func('link', array('permissions/users', $__vars['user'], array('tabbed' => 1, ), ), true) . '" role="tabpanel" aria-labelledby="user-permissions">
+				<li data-href="' . $__templater->func('link', array('users/change-log', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="user-changes">
 					<div class="block-body block-row">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
 				</li>
 			';
@@ -504,21 +504,29 @@ href="' . $__templater->func('link', array('users/edit', $__vars['user'], ), tru
 	$__compilerTemp29 = '';
 	if ($__vars['user']['user_id']) {
 		$__compilerTemp29 .= '
+				<li data-href="' . $__templater->func('link', array('permissions/users', $__vars['user'], array('tabbed' => 1, ), ), true) . '" role="tabpanel" aria-labelledby="user-permissions">
+					<div class="block-body block-row">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
+				</li>
+			';
+	}
+	$__compilerTemp30 = '';
+	if ($__vars['user']['user_id']) {
+		$__compilerTemp30 .= '
 <li data-href="' . $__templater->func('link', array('users/thread-credit', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="user-credit">
 <div class="block-body block-row">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
 </li>
 ';
 	}
-	$__compilerTemp30 = '';
+	$__compilerTemp31 = '';
 	if ($__vars['user']['user_id']) {
-		$__compilerTemp30 .= '
+		$__compilerTemp31 .= '
 	<li data-href="' . $__templater->func('link', array('users/sotd', $__vars['user'], ), true) . '" role="tabpanel" aria-labelledby="sotd">
 		<div class="block-body block-row">' . 'Loading' . $__vars['xf']['language']['ellipsis'] . '</div>
 	</li>
 ';
 	}
 	$__finalCompiled .= $__templater->form('
-		' . $__compilerTemp7 . '
+		' . $__compilerTemp8 . '
 
 		<h2 class="block-tabHeader tabs hScroller" data-xf-init="tabs h-scroller" data-state="replace" role="tablist">
 			<span class="hScroller-scroll">
@@ -527,7 +535,7 @@ href="' . $__templater->func('link', array('users/edit', $__vars['user'], ), tru
 					id="user-details"
 					aria-controls="user-details"
 					href="' . $__templater->func('link', array('users/edit', $__vars['user'], ), true) . '#user-details">' . 'User details' . '</a>
-				' . $__compilerTemp8 . '
+				' . $__compilerTemp9 . '
 				<a class="tabs-tab" role="tab" tabindex="0"
    id="sotd"
    aria-controls="sotd"
@@ -549,12 +557,12 @@ href="' . $__templater->func('link', array('users/edit', $__vars['user'], ), tru
 		'maxlength' => ($__vars['xf']['options']['usernameLength']['max'] ?: $__templater->func('max_length', array($__vars['user'], 'username', ), false)),
 	), array(
 		'label' => 'Username',
-		'html' => $__compilerTemp9,
+		'html' => $__compilerTemp10,
 	)) . '
 
-					' . $__compilerTemp10 . '
-
 					' . $__compilerTemp11 . '
+
+					' . $__compilerTemp12 . '
 
 					' . $__templater->formTextBoxRow(array(
 		'name' => 'user[email]',
@@ -566,9 +574,9 @@ href="' . $__templater->func('link', array('users/edit', $__vars['user'], ), tru
 		'label' => 'Email',
 	)) . '
 
-					' . $__compilerTemp12 . '
-
 					' . $__compilerTemp13 . '
+
+					' . $__compilerTemp14 . '
 
 					<hr class="formRowSep" />
 
@@ -577,7 +585,7 @@ href="' . $__templater->func('link', array('users/edit', $__vars['user'], ), tru
 					' . $__templater->formSelectRow(array(
 		'name' => 'user[user_group_id]',
 		'value' => $__vars['user']['user_group_id'],
-	), $__compilerTemp16, array(
+	), $__compilerTemp17, array(
 		'label' => 'User group',
 		'explain' => $__templater->filter($__vars['_userChangesHtml'], array(array('raw', array()),), true),
 	)) . '
@@ -586,7 +594,7 @@ href="' . $__templater->func('link', array('users/edit', $__vars['user'], ), tru
 		'name' => 'user[secondary_group_ids]',
 		'value' => $__vars['user']['secondary_group_ids'],
 		'listclass' => 'listColumns',
-	), $__compilerTemp17, array(
+	), $__compilerTemp18, array(
 		'label' => 'Secondary user groups',
 	)) . '
 
@@ -793,7 +801,7 @@ href="' . $__templater->func('link', array('users/edit', $__vars['user'], ), tru
 					' . $__templater->formSelectRow(array(
 		'name' => 'user[style_id]',
 		'value' => $__vars['user']['style_id'],
-	), $__compilerTemp18, array(
+	), $__compilerTemp19, array(
 		'label' => 'Style',
 	)) . '
 
@@ -802,16 +810,16 @@ href="' . $__templater->func('link', array('users/edit', $__vars['user'], ), tru
 					' . $__templater->formSelectRow(array(
 		'name' => 'user[language_id]',
 		'value' => $__vars['user']['language_id'],
-	), $__compilerTemp20, array(
+	), $__compilerTemp21, array(
 		'label' => 'Language',
 	)) . '
 
-								' . $__compilerTemp22 . '
+								' . $__compilerTemp23 . '
 
 ' . $__templater->formSelectRow(array(
 		'name' => 'user[timezone]',
 		'value' => $__vars['user']['timezone'],
-	), $__compilerTemp24, array(
+	), $__compilerTemp25, array(
 		'label' => 'Time zone',
 	)) . '
 
@@ -1013,15 +1021,15 @@ href="' . $__templater->func('link', array('users/edit', $__vars['user'], ), tru
 	)) . '
 			</li>
 
-			' . $__compilerTemp25 . '
-
 			' . $__compilerTemp26 . '
 
 			' . $__compilerTemp27 . '
 
 			' . $__compilerTemp28 . '
-' . $__compilerTemp29 . '
-			' . $__compilerTemp30 . '
+
+			' . $__compilerTemp29 . '
+' . $__compilerTemp30 . '
+			' . $__compilerTemp31 . '
 
 ' . $__templater->includeTemplate('fs_user_car_details_add_edit_pane', $__vars) . '
 			' . $__templater->includeTemplate('dbtech_credits_user_edit_pane', $__vars) . '

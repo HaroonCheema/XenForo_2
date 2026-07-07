@@ -250,6 +250,7 @@ return array (
   'permission.general_bypassUserPrivacy' => 'Bypass user privacy',
   'permission.general_bypassUserTagLimit' => 'Bypass user content tag limit',
   'permission.general_canBypassStopBannedWords' => 'Can Bypass Stop-Banned-Words',
+  'permission.general_canUseLau' => 'Can use "Login as User"',
   'permission.general_changeUsername' => 'Change username',
   'permission.general_changeUsernameNoApproval' => 'Change username without approval',
   'permission.general_cleanSpam' => 'Use the spam cleaner',

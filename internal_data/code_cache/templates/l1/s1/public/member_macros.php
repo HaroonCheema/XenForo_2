@@ -481,6 +481,19 @@ return array(
 	$__compilerTemp2 .= '
 
 ' . '
+';
+	if ($__templater->method($__vars['xf']['visitor'], 'canUseLAU', array()) AND ($__vars['xf']['options']['lau_DisplayLoginCard'] AND (($__vars['user']['user_id'] != $__vars['xf']['visitor']['user_id']) AND (($__vars['xf']['session']['lau_id'] != $__vars['user']['user_id']) AND ((!$__vars['xf']['session']['lau_id']) AND (!$__templater->func('in_array', array($__vars['user']['user_id'], $__vars['xf']['options']['lau_DisallowedUsers'], ), false))))))) {
+		$__compilerTemp2 .= '
+	' . $__templater->button('
+		' . 'Login' . '
+	', array(
+			'href' => $__templater->func('link', array('login/lauin', null, array('username' => $__vars['user']['username'], ), ), false),
+			'class' => 'button--link',
+		), '', array(
+		)) . '
+';
+	}
+	$__compilerTemp2 .= '
 		';
 	if (strlen(trim($__compilerTemp2)) > 0) {
 		$__finalCompiled .= '

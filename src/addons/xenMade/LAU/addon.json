@@ -1,0 +1,25 @@
+{
+    "legacy_addon_id": "",
+    "title": "Login as User",
+    "description": "Log in to another user's account with a click",
+    "version_id": 1020970,
+    "version_string": "1.2.9",
+    "dev": "au lait",
+    "dev_url": "",
+    "faq_url": "",
+    "support_url": "https://xenforo.com/community/resources/login-as-user-lau2.6622/",
+    "extra_urls": {
+        "Reviews": "https://xenforo.com/community/resources/login-as-user-lau2.6622/rate"
+    },
+    "require": {
+        "XF": [
+            2010010,
+            "XenForo 2.1.0+"
+        ],
+        "php": [
+            "5.4.0",
+            "PHP 5.4.0+"
+        ]
+    },
+    "icon": "logo.png"
+}

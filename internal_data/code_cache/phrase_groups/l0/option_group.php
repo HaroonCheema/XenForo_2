@@ -100,6 +100,7 @@ return array (
   'option_group.hematthumb' => '[Xenbros]Thread Thumbnail',
   'option_group.hou_attachments' => '[HoU] Attachments List with Like',
   'option_group.imageLinkProxy' => 'Image and link proxy',
+  'option_group.lau_settings' => 'Login as User (LAU2)',
   'option_group.logging' => 'Logging options',
   'option_group.mediaEmbedding' => 'Media embedding',
   'option_group.messageOptions' => 'Messages',

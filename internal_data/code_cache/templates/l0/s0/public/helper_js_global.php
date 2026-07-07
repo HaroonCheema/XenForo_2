@@ -36,10 +36,6 @@ return array(
 	}
 	$__finalCompiled .= '
 
-' . $__templater->includeTemplate('CMTV_Math_katex', $__vars) . '
-';
-	$__templater->includeCss('CMTV_Math.less');
-	$__finalCompiled .= '
 	';
 	if ($__vars['xf']['fullJs']) {
 		$__finalCompiled .= '
@@ -98,7 +94,6 @@ return array(
 	}
 	$__finalCompiled .= '
 	<!--XF:JS-->
-' . $__templater->includeTemplate('CMTV_Math_js', $__vars) . '
 	<script>
 		jQuery.extend(true, XF.config, {
 			// ' . '
