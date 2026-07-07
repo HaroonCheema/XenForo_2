@@ -1,0 +1,9 @@
+{
+    "template": "tag_edit",
+    "description": "fs_tag_permission_tag_edit",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "</xf:checkboxrow>",
+    "replace": "$0\n\n<xf:selectrow name=\"fs_usergroup_ids[]\" multiple=\"multiple\" size=\"5\" value=\"{{$tag.fs_usergroup_ids}}\"\n\t\t\t  label=\"{{ phrase('fs_tag_applicable_user_groups') }}\"\n\t\t\t  >\n\t<xf:foreach loop=\"$userGroups\" value=\"$userGroup\">\n\t\t<xf:option value=\"{$userGroup.user_group_id}\">{$userGroup.title}</xf:option>\n\t</xf:foreach>\n</xf:selectrow>"
+}

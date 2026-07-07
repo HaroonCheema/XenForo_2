@@ -103,7 +103,6 @@ return array(
 			' . $__compilerTemp5 . '
 
 			<hr class="formRowSep" />
-' . $__templater->includeTemplate('tagess_thread_batch_update_confirm', $__vars) . '
 
 			' . $__templater->formCheckBoxRow(array(
 	), array(array(

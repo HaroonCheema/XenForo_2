@@ -495,18 +495,6 @@ return function($__templater, $__selectedNav, array $__vars)
 					}
 				}
 
-				if ($__templater->method($__vars['xf']['visitor'], 'canWatchTag', array())) {
-					$__navTemp = [
-		'title' => \XF::phrase('nav.watchedTags'),
-		'href' => $__templater->func('link', array('watched/tags', ), false),
-		'attributes' => [],
-	];
-					if ($__navTemp) {
-						$__tree['forums']['children']['watched']['children']['watchedTags'] = $__navTemp;
-						$__flat['watchedTags'] =& $__tree['forums']['children']['watched']['children']['watchedTags'];
-					}
-				}
-
 			}
 		}
 

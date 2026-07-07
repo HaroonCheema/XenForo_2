@@ -22,7 +22,6 @@ return array(
 ';
 	if ($__templater->method($__vars['tag'], 'isUpdate', array())) {
 		$__templater->pageParams['pageAction'] = $__templater->preEscaped('
-' . $__templater->includeTemplate('avForumsTagEss_tag_edit_pageaction', $__vars) . '
 	' . $__templater->button('', array(
 			'href' => $__templater->func('link', array('tags/delete', $__vars['tag'], ), false),
 			'icon' => 'delete',
@@ -33,7 +32,18 @@ return array(
 	}
 	$__finalCompiled .= '
 
-' . $__templater->form('
+';
+	$__compilerTemp1 = array();
+	if ($__templater->isTraversable($__vars['userGroups'])) {
+		foreach ($__vars['userGroups'] AS $__vars['userGroup']) {
+			$__compilerTemp1[] = array(
+				'value' => $__vars['userGroup']['user_group_id'],
+				'label' => $__templater->escape($__vars['userGroup']['title']),
+				'_type' => 'option',
+			);
+		}
+	}
+	$__finalCompiled .= $__templater->form('
 	<div class="block-container">
 		<div class="block-body">
 			' . $__templater->formTextBoxRow(array(
@@ -54,8 +64,6 @@ return array(
 		'explain' => 'This will be used to uniquely identify this tag in a URL. It may only contain a-z, 0-9, - and _. Leave this blank to automatically generate it.',
 	)) . '
 
-			' . $__templater->includeTemplate('avForumsTagEss_tag_edit', $__vars) . '
-
 			' . $__templater->formCheckBoxRow(array(
 	), array(array(
 		'name' => 'permanent',
@@ -64,6 +72,15 @@ return array(
 		'hint' => 'Making a tag permanent prevents it from being removed when it is no longer in use.',
 		'_type' => 'option',
 	)), array(
+	)) . '
+
+' . $__templater->formSelectRow(array(
+		'name' => 'fs_usergroup_ids[]',
+		'multiple' => 'multiple',
+		'size' => '5',
+		'value' => $__vars['tag']['fs_usergroup_ids'],
+	), $__compilerTemp1, array(
+		'label' => 'Select applicable usergroups',
 	)) . '
 		</div>
 

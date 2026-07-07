@@ -19,6 +19,6 @@ $config['enableLivePayments'] = false;
 
 $config['debug'] = true;
 
-$config['development']['defaultAddOn'] = 'FS/WhatsForumSliderRemove';
+$config['development']['defaultAddOn'] = 'FS/TagPermissions';
 
 $config['development']['enabled'] = true;

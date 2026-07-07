@@ -1,0 +1,6 @@
+{
+    "from_class": "XF\\Admin\\Controller\\Tag",
+    "to_class": "FS\\TagPermissions\\XF\\Admin\\Controller\\Tag",
+    "execute_order": 10,
+    "active": true
+}

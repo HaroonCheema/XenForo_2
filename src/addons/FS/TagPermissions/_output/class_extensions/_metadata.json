@@ -1,0 +1,14 @@
+{
+    "XF-Admin-Controller-Tag_FS-TagPermissions-XF-Admin-Controller-Tag.json": {
+        "hash": "d28717d17f0ede124727fd3672b0bb15"
+    },
+    "XF-Entity-Tag_FS-TagPermissions-XF-Entity-Tag.json": {
+        "hash": "5ad292244aadd45ea8496fd0d9a6725f"
+    },
+    "XF-Entity-Thread_FS-TagPermissions-XF-Entity-Thread.json": {
+        "hash": "e4c4e351aef4f99eefff6a278d314178"
+    },
+    "XF-Repository-Tag_FS-TagPermissions-XF-Repository-Tag.json": {
+        "hash": "76a90585bc8340cf63d96cff15a156c0"
+    }
+}

@@ -490,15 +490,11 @@ return array(
 
 		' . $__compilerTemp12 . '
 	</div>
-
-' . $__templater->includeTemplate('avForumsTagEss_forum_post_thread_tag_suggestion_js', $__vars) . '
-' . $__templater->formHiddenVal('nodeId', $__vars['forum']['node_id'], array(
-	)) . '
 ', array(
 		'action' => $__templater->func('link', array('forums/post-thread', $__vars['forum'], ), false),
 		'ajax' => 'true',
 		'class' => 'block',
-		'data-xf-init' => ' ' . ($__vars['xf']['options']['tagessSuggestTags'] ? 'tagess-suggest-from-title' : '') . ' tagess-suggest-from-prefix attachment-manager',
+		'data-xf-init' => 'attachment-manager',
 		'draft' => (($__vars['forum']['node_id'] == $__vars['xf']['options']['fs_escrow_applicable_forum']) ? '' : $__templater->func('link', array('forums/draft', $__vars['forum'], ), false)),
 	)) . '
 

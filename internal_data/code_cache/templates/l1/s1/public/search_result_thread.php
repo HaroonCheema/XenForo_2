@@ -90,11 +90,11 @@ return array(
 					<li>' . $__templater->func('date_dynamic', array($__vars['thread']['post_date'], array(
 	))) . '</li>
 					';
-	if ($__vars['xf']['options']['enableTagging'] AND $__vars['thread']['tags']) {
+	if ($__vars['xf']['options']['enableTagging'] AND $__templater->method($__vars['thread'], 'getTags', array())) {
 		$__finalCompiled .= '
 						<li>
 							' . $__templater->callMacro('tag_macros', 'simple_list', array(
-			'tags' => $__vars['thread']['tags'],
+			'tags' => $__templater->method($__vars['thread'], 'getTags', array()),
 			'containerClass' => 'contentRow-minor',
 			'highlightTerm' => ($__vars['options']['tag'] ?: $__vars['options']['term']),
 		), $__vars) . '

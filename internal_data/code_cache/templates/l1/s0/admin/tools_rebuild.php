@@ -275,8 +275,6 @@ return array(
 		'class' => 'block',
 	)) . '
 ' . '
-' . $__templater->includeTemplate('tools_rebuild_tagess_wiki', $__vars) . '
-' . $__templater->includeTemplate('tools_rebuild_tagess_prune', $__vars) . '
 
 ';
 	$__vars['postMdBody'] = $__templater->preEscaped('

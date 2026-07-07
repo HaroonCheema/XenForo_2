@@ -1,0 +1,11 @@
+{
+    "admin/fs_tag_permission_tag_edit.json": {
+        "hash": "362141f65815d608501d8162b8feaba8"
+    },
+    "public/fs_tag_search_result_thread.json": {
+        "hash": "3bf3e38ea19d9aba232bb68e18cc5736"
+    },
+    "public/fs_tags_thread_view.json": {
+        "hash": "8aa4cf0089aa32318b0be016559e637d"
+    }
+}

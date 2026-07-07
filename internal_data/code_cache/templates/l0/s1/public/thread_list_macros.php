@@ -477,9 +477,6 @@ return array(
 					';
 		}
 		$__finalCompiled .= '
-<ul class="structItem-parts">
-' . $__templater->includeTemplate('avForumsTagEss_thread_list_macros', $__vars) . '
-</ul>
 				';
 	}
 	$__finalCompiled .= '

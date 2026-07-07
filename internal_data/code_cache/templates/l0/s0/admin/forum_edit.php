@@ -516,7 +516,6 @@ return array(
 		'explain' => 'This will require users to provide at least this many tags when creating a thread.',
 	)) . '
 
-			' . $__templater->includeTemplate('avForumsTagEss_forum_edit_default_tags', $__vars) . '
 			' . $__templater->formRadioRow(array(
 		'name' => 'allowed_watch_notifications',
 		'value' => $__vars['forum']['allowed_watch_notifications'],

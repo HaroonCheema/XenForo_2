@@ -842,27 +842,15 @@ return array(
 		}
 	}
 	$__compilerTemp8 = '';
-	if ($__vars['xf']['options']['enableTagging'] AND ($__templater->method($__vars['thread'], 'canEditTags', array()) OR $__vars['thread']['tags'])) {
+	if ($__vars['xf']['options']['enableTagging'] AND ($__templater->method($__vars['thread'], 'canEditTags', array()) OR $__templater->method($__vars['thread'], 'getTags', array()))) {
 		$__compilerTemp8 .= '
-';
-		if ($__vars['xf']['options']['tagess_categoriesEnabledThread']) {
-			$__compilerTemp8 .= '
-	' . $__templater->includeTemplate('avForumsTagEss_thread_view_grouped_tags', $__vars) . '
-';
-		} else {
-			$__compilerTemp8 .= '
-
 			<li>
 				' . $__templater->callMacro('tag_macros', 'list', array(
-				'tags' => $__vars['thread']['tags'],
-				'tagList' => 'tagList--thread-' . $__vars['thread']['thread_id'],
-				'editLink' => ($__templater->method($__vars['thread'], 'canEditTags', array()) ? $__templater->func('link', array('threads/tags', $__vars['thread'], ), false) : ''),
-			), $__vars) . '
+			'tags' => $__templater->method($__vars['thread'], 'getTags', array()),
+			'tagList' => 'tagList--thread-' . $__vars['thread']['thread_id'],
+			'editLink' => ($__templater->method($__vars['thread'], 'canEditTags', array()) ? $__templater->func('link', array('threads/tags', $__vars['thread'], ), false) : ''),
+		), $__vars) . '
 			</li>
-';
-		}
-		$__compilerTemp8 .= '
-
 		';
 	}
 	$__templater->pageParams['pageDescription'] = $__templater->preEscaped('

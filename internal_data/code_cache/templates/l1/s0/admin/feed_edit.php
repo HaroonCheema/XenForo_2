@@ -176,7 +176,6 @@ return array(
 				',
 	)) . '
 
-			' . $__templater->includeTemplate('avForumsTagEss_feed_edit_default_tags', $__vars) . '
 			' . $__templater->formPrefixInputRow($__vars['prefixes'], array(
 		'textbox-name' => 'title_template',
 		'textbox-value' => $__vars['feed']['title_template'],
